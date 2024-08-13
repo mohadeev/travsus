@@ -9,7 +9,7 @@ const WithAuth = (WrappedComponent: any) => {
 		if (status === 'unauthenticated') {
 			router.push('/login')
 		}
-	}, [status])
+	}, [status, router])
 	return (props: any) => {
 		if (status === 'loading') {
 			return <div>Loading...</div>
