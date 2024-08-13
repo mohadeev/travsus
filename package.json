@@ -3,9 +3,9 @@
   "version": "0.2.4",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "prisma generate && next dev",
+    "build": "prisma generate && next build",
+    "start": "prisma generate && next start",
     "lint": "next lint"
   },
   "prettier": "@epic-web/config/prettier",
