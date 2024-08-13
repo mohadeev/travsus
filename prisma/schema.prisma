@@ -1,0 +1,26 @@
+// schema.prisma
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id       String    @id @default(auto()) @map("_id") @db.ObjectId
+  email             String   @unique
+  username          String?
+  phone             String?
+  password          String
+  senders           Json?
+  date              DateTime @default(now())
+  library           Json?
+  accountData       Json?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@map("users")
+}
