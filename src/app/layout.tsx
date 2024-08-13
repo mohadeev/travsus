@@ -1,3 +1,4 @@
+// 'use client'
 import { Poppins } from 'next/font/google'
 import SiteHeader from './(client-components)/(Header)/SiteHeader'
 import ClientCommons from './ClientCommons'
@@ -9,6 +10,10 @@ import Footer from '@/components/Footer'
 import FooterNav from '@/components/FooterNav'
 import { Metadata } from 'next'
 import ThemeProvider from './theme-provider'
+import { Provider } from 'react-redux'
+import { store } from './libs/redux/store'
+import { Providers } from './GlobalRedux/provider'
+import AuthProvider from './context/AuthProvider'
 
 const poppins = Poppins({
 	subsets: ['latin'],
@@ -34,16 +39,19 @@ export default function RootLayout({
 	return (
 		<html lang="en" className={poppins.className}>
 			<ThemeProvider>
-				<body className="bg-white text-base text-neutral-900 dark:bg-neutral-900 dark:text-neutral-200">
-					<div>
-						<SiteHeader />
-						{children}
-						<FooterNav />
-						<Footer />
-					</div>
-
-					<ClientCommons />
-				</body>
+				<AuthProvider>
+					<Providers>
+						<body className="bg-white text-base text-neutral-900 dark:bg-neutral-900 dark:text-neutral-200">
+							<div>
+								<SiteHeader />
+								{children}
+								<FooterNav />
+								<Footer />
+							</div>
+							<ClientCommons />
+						</body>
+					</Providers>
+				</AuthProvider>
 			</ThemeProvider>
 		</html>
 	)
