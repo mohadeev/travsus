@@ -7,6 +7,7 @@ import userReducer from './Features/userReducer/userReducer'
 export const store = configureStore({
 	reducer: {
 		counter: counterReducer,
+		userReducer,
 	},
 })
 

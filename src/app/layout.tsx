@@ -11,7 +11,6 @@ import FooterNav from '@/components/FooterNav'
 import { Metadata } from 'next'
 import ThemeProvider from './theme-provider'
 import { Provider } from 'react-redux'
-import { store } from './libs/redux/store'
 import { Providers } from './GlobalRedux/provider'
 import AuthProvider from './context/AuthProvider'
 
