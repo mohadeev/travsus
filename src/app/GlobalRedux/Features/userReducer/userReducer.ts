@@ -1,35 +1,32 @@
 'use client'
 
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-export interface CounterState {
+export interface UserReducer {
 	isUserLoggedIn: boolean
 	userData: object
-	value: number
 }
 
-const initialState: CounterState = {
+const initialState: UserReducer = {
 	isUserLoggedIn: false,
 	userData: {},
-	value: 0,
 }
 
-export const counterSlice = createSlice({
-	name: 'counter',
+export const userReducer = createSlice({
+	name: 'user',
 	initialState,
 	reducers: {
-		increment: (state) => {
-			state.value += 1
+		setUser(state, action: PayloadAction<any>) {
+			state.isUserLoggedIn = true
+			state.userData = action.payload
 		},
-		decrement: (state) => {
-			state.value -= 1
-		},
-		incrementByAmount: (state, action) => {
-			state.value += action.payload
+		clearUser(state) {
+			state.isUserLoggedIn = false
+			state.userData = {}
 		},
 	},
 })
 
-export const { increment, decrement, incrementByAmount } = counterSlice.actions
+export const { setUser, clearUser } = userReducer.actions
 
-export default counterSlice.reducer
+export default userReducer.reducer

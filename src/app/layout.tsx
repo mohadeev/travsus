@@ -13,6 +13,7 @@ import ThemeProvider from './theme-provider'
 import { Provider } from 'react-redux'
 import { Providers } from './GlobalRedux/provider'
 import AuthProvider from './context/AuthProvider'
+import AuthWatcher from './context/AuthWatcher'
 
 const poppins = Poppins({
 	subsets: ['latin'],
@@ -40,6 +41,7 @@ export default function RootLayout({
 			<ThemeProvider>
 				<AuthProvider>
 					<Providers>
+						<AuthWatcher />
 						<body className="bg-white text-base text-neutral-900 dark:bg-neutral-900 dark:text-neutral-200">
 							<div>
 								<SiteHeader />
