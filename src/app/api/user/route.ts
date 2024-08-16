@@ -59,12 +59,3 @@ export async function POST(req: Request) {
 }
 
 // Manejo de otros métodos HTTP no permitidos
-export function handleRequestMethod(req: NextRequest) {
-	const allowedMethods = ['PUT']
-	if (!allowedMethods.includes(req.method)) {
-		return NextResponse.json(
-			{ error: `Method ${req.method} Not Allowed` },
-			{ status: 405 },
-		)
-	}
-}
