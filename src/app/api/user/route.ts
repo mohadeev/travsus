@@ -7,7 +7,7 @@ import { getServerSession } from 'next-auth'
 const prisma = new PrismaClient()
 
 // Función PUT para actualizar datos de usuario
-export async function POST(req: NextRequest) {
+export async function POST(req: Request) {
 	try {
 		const session: any = await getServerSession(authOptions)
 		const emailSession = session?.user?.email
