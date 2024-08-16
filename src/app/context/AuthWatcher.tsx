@@ -28,7 +28,7 @@ function AuthWatcher() {
 			dispatch(clearUser())
 			console.log('session?.user', 'unauthenticated')
 		}
-	}, [session, status])
+	}, [session, status, dispatch])
 
 	return null
 }

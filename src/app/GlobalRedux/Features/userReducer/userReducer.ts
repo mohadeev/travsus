@@ -17,7 +17,7 @@ export const updateUser: any = createAsyncThunk(
 	'user/updateUser',
 	async (userData, { rejectWithValue }) => {
 		try {
-			const response = await axios.put('/api/user', userData)
+			const response = await axios.post('/api/user', userData)
 			return response.data
 		} catch (error: any) {
 			return rejectWithValue(error.response.data)
