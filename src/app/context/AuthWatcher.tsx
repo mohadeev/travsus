@@ -7,20 +7,28 @@ import {
 	clearUser,
 	setUser,
 } from '../GlobalRedux/Features/userReducer/userReducer'
+import basedGetUrlRequestLogedIn from '../utils/basedGetUrlRequestLogedIn'
 
 function AuthWatcher() {
 	const { data: session, status } = useSession()
 	const dispatch = useDispatch()
-	console.log('session?.user', session?.user)
 
 	useEffect(() => {
 		if (status === 'authenticated' && session?.user) {
-			dispatch(setUser(session?.user))
+			;(async () => {
+				basedGetUrlRequestLogedIn('/api/user/userData').then((res) => {
+					const message = res?.message
+					const user = res?.user
+					if (user?.id && message) {
+						dispatch(setUser(user))
+					}
+				})
+			})()
 		} else if (status === 'unauthenticated') {
 			dispatch(clearUser())
 			console.log('session?.user', 'unauthenticated')
 		}
-	}, [session, status, dispatch])
+	}, [session, status])
 
 	return null
 }

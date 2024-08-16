@@ -6,7 +6,6 @@ import { authOptions } from '../../auth/[...nextauth]/authOptions'
 export async function GET(request: NextRequest) {
 	try {
 		const session: any = await getServerSession(authOptions)
-		console.log('session', session)
 		if (!session || !session?.user?.email) {
 			return NextResponse.json(
 				{ message: 'Not authenticated' },
@@ -20,8 +19,8 @@ export async function GET(request: NextRequest) {
 		if (!user) {
 			return NextResponse.json({ message: 'User not found' }, { status: 404 })
 		}
-
-		return NextResponse.json({ user: user })
+		console.log('user', user)
+		return NextResponse.json({ user: user, message: 'user_found' })
 	} catch (error) {
 		console.error('Error fetching user data:', error)
 		return NextResponse.error()

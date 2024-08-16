@@ -4,12 +4,16 @@ import Avatar from '@/shared/Avatar'
 import SwitchDarkMode2 from '@/shared/SwitchDarkMode2'
 import Link from 'next/link'
 import { signOut } from 'next-auth/react'
+import { useSelector } from 'react-redux'
 
 interface Props {
 	className?: string
 }
 
 export default function AvatarDropdown({ className = '' }: Props) {
+	const isUserLoggedIn = useSelector(
+		(state: any) => state.userReducer.isUserLoggedIn,
+	)
 	return (
 		<>
 			<Popover className={`AvatarDropdown relative flex ${className}`}>
