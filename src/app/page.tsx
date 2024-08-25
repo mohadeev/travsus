@@ -221,6 +221,7 @@ import SectionGridCategoryBox from '@/components/SectionGridCategoryBox'
 import SectionHero3 from '@/app/(server-components)/SectionHero3'
 import CardCategory6 from '@/components/CardCategory6'
 import SectionGridFeaturePlaces from '@/components/SectionGridFeaturePlaces'
+import SectionGridFilterCard from './(experience-listings)/SectionGridFilterCard'
 
 const DEMO_CATS_2: TaxonomyType[] = [
 	{
@@ -275,12 +276,11 @@ function PageHome3() {
 		<main className="nc-PageHome3 relative overflow-hidden">
 			{/* GLASSMOPHIN */}
 			<BgGlassmorphism />
-
+			{/* <SectionGridFilterCard className="pb-24 lg:pb-28" /> */}
 			{/* SECTION HERO */}
 			<div className="container mb-24 px-1 sm:px-4">
 				<SectionHero3 className="" />
 			</div>
-
 			<div className="container relative mb-24 space-y-24">
 				{/* SECTION 1 */}
 				<div className="grid grid-cols-12 gap-6">
@@ -295,17 +295,17 @@ function PageHome3() {
 						<CardCategory6 taxonomy={DEMO_CATS_2[4]} />
 					</div>
 				</div>
-
 				{/* SECTION */}
 				<SectionGridCategoryBox />
 
 				{/* SECTION */}
-				<div className="relative py-16">
+				{/* <div className="relative py-16">
 					<BackgroundSection />
 					<SectionGridAuthorBox boxCard="box2" />
-				</div>
+				</div> */}
 
-				<SectionGridFeaturePlaces />
+				{/* <SectionGridFeaturePlaces /> */}
+				<SectionGridFilterCard />
 
 				{/* SECTION */}
 				<SectionSubscribe2 />

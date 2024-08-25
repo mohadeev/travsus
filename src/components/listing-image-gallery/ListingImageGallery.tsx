@@ -107,7 +107,7 @@ const ListingImageGallery: FC<Props> = ({ images = DEMO_IMAGE }) => {
 							className="after:content after:shadow-highlight group relative mb-5 block w-full cursor-zoom-in after:pointer-events-none after:absolute after:inset-0 after:rounded-lg focus:outline-none"
 						>
 							<Image
-								alt="chisfis listing gallery "
+								alt="Travsus listing gallery "
 								className="transform rounded-lg brightness-90 transition will-change-auto focus:outline-none group-hover:brightness-110"
 								style={{
 									transform: 'translate3d(0, 0, 0)',

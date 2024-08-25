@@ -14,6 +14,7 @@ import { Provider } from 'react-redux'
 import { Providers } from './GlobalRedux/provider'
 import AuthProvider from './context/AuthProvider'
 import AuthWatcher from './context/AuthWatcher'
+import TestAnything from './TestAnything'
 
 const poppins = Poppins({
 	subsets: ['latin'],
@@ -22,9 +23,9 @@ const poppins = Poppins({
 })
 
 export const metadata: Metadata = {
-	title: 'Chisfis - Booking online React Next Template',
+	title: 'Travsus - Booking online React Next Template',
 	description: 'Booking online & rental online React Next Template',
-	keywords: 'Chisfis, Booking online, React Next Template',
+	keywords: 'Travsus, Booking online, React Next Template',
 	// viewport:
 	// 	'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no',
 }
@@ -48,6 +49,7 @@ export default function RootLayout({
 								{children}
 								<FooterNav />
 								<Footer />
+								<TestAnything />
 							</div>
 							<ClientCommons />
 						</body>

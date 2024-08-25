@@ -15,7 +15,7 @@ const SectionHero3: FC<SectionHero3Props> = ({ className = "" }) => {
     >
       <div className="absolute z-10 inset-x-0 top-[10%] sm:top-[15%] text-center flex flex-col items-center max-w-2xl mx-auto space-y-4 lg:space-y-5 xl:space-y-8">
         <span className="sm:text-lg md:text-xl font-semibold text-neutral-900">
-          Booking tax-free from Chis. platform
+          Booking tax-free from {process.env.NEXT_PUBLIC_PLATFROM_NAME} platform
         </span>
         <h2 className="font-bold text-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl !leading-[115%] ">
           New generation <br /> of booking

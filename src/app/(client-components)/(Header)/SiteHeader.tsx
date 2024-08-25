@@ -167,7 +167,7 @@ const SiteHeader = () => {
 												<a
 													className="flex w-full items-center justify-center !rounded-xl bg-primary-6000 px-4 py-2 text-sm font-medium text-white hover:bg-primary-700"
 													href={
-														'https://themeforest.net/item/chisfis-online-booking-nextjs-template/43399526'
+														'https://themeforest.net/item/Travsus-online-booking-nextjs-template/43399526'
 													}
 													target="_blank"
 													rel="noopener noreferrer"

@@ -2,8 +2,17 @@ import prisma from '@/prisma'
 import { NextRequest, NextResponse } from 'next/server'
 import { getServerSession } from 'next-auth/next'
 import { authOptions } from '../../auth/[...nextauth]/authOptions'
+import { parse } from 'cookie'
 //coment
 export async function GET(request: NextRequest) {
+	const cookies = request.headers.get('cookie')
+	const parsedCookies = cookies ? parse(cookies) : {}
+	const geoCookie = parsedCookies.customGeo
+
+	// Parse geolocation data from the cookie
+	const customGeo = geoCookie ? JSON.parse(geoCookie) : {}
+	console.log(customGeo)
+
 	try {
 		const session: any = await getServerSession(authOptions)
 		if (!session || !session?.user?.email) {

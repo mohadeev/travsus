@@ -3,38 +3,45 @@
  */
 
 const nextConfig = {
-  reactStrictMode: false,
-  experimental: {
-    typedRoutes: true,
-  },
-  images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "images.pexels.com",
-        port: "",
-        pathname: "/**",
-      },
-      {
-        protocol: "https",
-        hostname: "images.unsplash.com",
-        port: "",
-        pathname: "/**",
-      },
-      {
-        protocol: "https",
-        hostname: "a0.muscache.com",
-        port: "",
-        pathname: "/**",
-      },
-      {
-        protocol: "https",
-        hostname: "www.gstatic.com",
-        port: "",
-        pathname: "/**",
-      },
-    ],
-  },
-};
+	reactStrictMode: false,
+	experimental: {
+		typedRoutes: true,
+	},
+	images: {
+		remotePatterns: [
+			{
+				protocol: 'https',
+				hostname: 'images.pexels.com',
+				port: '',
+				pathname: '/**',
+			},
+			{
+				protocol: 'https',
+				hostname: 'media-cdn.tripadvisor.com',
+				port: '',
+				pathname: '/**',
+			},
 
-module.exports = nextConfig;
+			{
+				protocol: 'https',
+				hostname: 'images.unsplash.com',
+				port: '',
+				pathname: '/**',
+			},
+			{
+				protocol: 'https',
+				hostname: 'a0.muscache.com',
+				port: '',
+				pathname: '/**',
+			},
+			{
+				protocol: 'https',
+				hostname: 'www.gstatic.com',
+				port: '',
+				pathname: '/**',
+			},
+		],
+	},
+}
+
+module.exports = nextConfig
