@@ -23,7 +23,7 @@ const TestAnything = () => {
 
 			if (cities.length > 0) {
 				console.log(`Famous cities in ${country}:`)
-				cities.forEach((city) => {
+				cities.forEach((city:any) => {
 					console.log(city)
 					console.log(`${city.display_name}`)
 				})
