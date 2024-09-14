@@ -1,4 +1,4 @@
-export const tripadvisorApi = async ({ params, method, locationId }) => {
+export const tripadvisorApi = async ({ params, method, locationId }: any) => {
 	const methods = [
 		{
 			name: 'search',
@@ -13,7 +13,7 @@ export const tripadvisorApi = async ({ params, method, locationId }) => {
 			url: `https://api.content.tripadvisor.com/api/v1/location/${locationId}/photos?`,
 		},
 	]
-	const { url } = methods.find((meth) => meth.name === method)
+	const { url }: any = methods.find((meth) => meth.name === method)
 	const options = { method: 'GET', headers: { accept: 'application/json' } }
 	const language = params.language ? params.language : 'en'
 	params.language = language
