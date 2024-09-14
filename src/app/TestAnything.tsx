@@ -4,7 +4,7 @@ import axios from 'axios'
 const TestAnything = () => {
 	const country = 'United States'
 
-	async function getFamousCities(country) {
+	async function getFamousCities(country:any) {
 		try {
 			const response = await axios.get(
 				'https://nominatim.openstreetmap.org/search',
