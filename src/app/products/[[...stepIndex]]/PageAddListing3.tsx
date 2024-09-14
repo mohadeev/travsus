@@ -27,8 +27,10 @@ const PageAddListing3: FC<PageAddListing3Props> = () => {
 				{/* ITEM */}
 				<FormItem label="Country/Region">
 					<Select>
-						{allCountries.map(() => (
-							<option value="Viet Nam">Viet Nam</option>
+						{allCountries.map((country: any) => (
+							<option key={country?.name?.common} value={country?.name?.common}>
+								{country?.name?.common}
+							</option>
 						))}
 						{/* <option value="Viet Nam">Viet Nam</option>
 						<option value="Thailand">Thailand</option>
@@ -56,7 +58,7 @@ const PageAddListing3: FC<PageAddListing3Props> = () => {
 						<Input />
 					</FormItem>
 				</div>
-				<div>
+				{/* <div>
 					<Label>Detailed address</Label>
 					<span className="mt-1 block text-sm text-neutral-500 dark:text-neutral-400">
 						1110 Pennsylvania Avenue NW, Washington, DC 20230
@@ -85,7 +87,7 @@ const PageAddListing3: FC<PageAddListing3Props> = () => {
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> */}
 			</div>
 		</>
 	)
