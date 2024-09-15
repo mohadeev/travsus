@@ -5,7 +5,7 @@ import prisma from '@/prisma'
 // This function handles the GET request for city and country data
 export async function GET(request: NextRequest) {
 	const subcategoryNames = ['city', 'municipality']
-	const places = await prisma.$runCommandRaw({
+	const places: any = await prisma.$runCommandRaw({
 		aggregate: 'places',
 		pipeline: [
 			{

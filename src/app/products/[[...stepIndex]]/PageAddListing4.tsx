@@ -18,40 +18,26 @@ const PageAddListing2: FC<PageAddListing2Props> = () => {
 	return (
 		<>
 			<div className="space-y-8">
+				<h2 className="text-2xl font-semibold">Inclusions </h2>
+				<FormItem label="">
+					<span className="mt-2 block text-neutral-500 dark:text-neutral-400">
+						List all the features that are included in the price so customers
+						understand the value for money of your activity. Start a new line
+						for each one.
+					</span>
+					<Textarea placeholder="..." rows={8} />
+				</FormItem>
 				<h2 className="text-2xl font-semibold">
-					Your place description for client
+					What is not included? (optional)
 				</h2>
-				<br />
-				<FormItem label="What is the customer-facing title of your product?">
-					<Input />
-				</FormItem>
-				<FormItem label="Add a full description">
+				<FormItem label="">
 					<span className="mt-2 block text-neutral-500 dark:text-neutral-400">
-						Provide all the details about what the customer will see and
-						experience during the activity, in the correct order. Bring the
-						activity to life and write at least 500 characters.
+						Name what customers need to pay extra for or what they may expect to
+						see that isn’t included in the price. This allows customers to
+						appropriately set their expectations.
 					</span>
-					<Textarea placeholder="..." rows={14} />
+					<Textarea placeholder="..." rows={8} />
 				</FormItem>
-				<div>
-					<h6 className="text-1sl font-semibold">Summarize the highlights</h6>
-					<span className="mt-2 block text-neutral-500 dark:text-neutral-400">
-						Provide all the details about what the customer will see and
-						experience during the activity, in the correct order. Bring the
-						activity to life and write at least 500 characters.
-					</span>
-					<div className="space-y-2">
-						{phrases.map((placeholder, index) => (
-							<FormItem
-								key={index}
-
-								// label="What is the customer-facing title of your product?"
-							>
-								<Input placeholder={placeholder} />
-							</FormItem>
-						))}
-					</div>
-				</div>
 			</div>
 		</>
 	)
