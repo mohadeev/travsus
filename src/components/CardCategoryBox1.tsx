@@ -14,7 +14,7 @@ const CardCategoryBox1: FC<CardCategoryBox1Props> = ({
 	className = '',
 	taxonomy,
 }) => {
-	const { count, href = '/', tripadvisorData } = taxonomy
+	const { count, href = '/', tripadvisorData } :any= taxonomy
 	const { locationPhotos, locationDetails } = tripadvisorData
 	const { name } = locationDetails
 	const firstTHumbnails = locationPhotos?.[0]?.images?.large?.url
