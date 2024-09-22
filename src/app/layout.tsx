@@ -16,6 +16,7 @@ import AuthProvider from './context/AuthProvider'
 import AuthWatcher from './context/AuthWatcher'
 import TestAnything from './TestAnything'
 import { headers } from 'next/headers'
+import { redirect } from 'next/navigation'
 
 const poppins = Poppins({
 	subsets: ['latin'],
@@ -50,9 +51,13 @@ export default function RootLayout({
 
 	// Combine conditions into one variable
 	const subdomainStatus = isLocalhost || hasSubdomain
+	if (!subdomainStatus && parts.length <= 1) {
+		redirect('/comming-soon')
+	}
+	console.log('isLocalhost', isLocalhost, hasSubdomain)
 	return (
 		<html lang="en" className={poppins.className}>
-			{subdomainStatus ? (
+			{hasSubdomain && isLocalhost ? (
 				<ThemeProvider>
 					<AuthProvider>
 						<Providers>
