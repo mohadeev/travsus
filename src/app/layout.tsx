@@ -51,7 +51,7 @@ export default function RootLayout({
 
 	// Combine conditions into one variable
 	const subdomainStatus = isLocalhost || hasSubdomain
-	if (!subdomainStatus && parts.length <= 1) {
+	if (!isLocalhost && parts.length <= 1) {
 		redirect('/comming-soon')
 	}
 	console.log('isLocalhost', isLocalhost, hasSubdomain)
