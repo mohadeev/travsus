@@ -128,8 +128,8 @@ const PageAddListing3: FC<PageAddListing3Props> = () => {
 			<div className="space-y-8">
 				<FormItem label="What else do customers need to know before your activity? (optional)">
 					<span className="mb-2 mt-2 block space-y-10 text-xs text-neutral-500 dark:text-neutral-400">
-						Provide any other logistical information that hasn't been covered
-						elsewhere. This appears on the voucher.
+						Provide any other logistical information that hasn&apos;t been
+						covered elsewhere. This appears on the voucher.
 					</span>
 					<Textarea placeholder="..." rows={5} />
 				</FormItem>
