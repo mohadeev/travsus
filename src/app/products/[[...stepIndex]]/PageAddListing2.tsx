@@ -1,12 +1,15 @@
+'use client'
+
 import React, { FC } from 'react'
 import Textarea from '@/shared/Textarea'
 import FormItem from '../FormItem'
 import Input from '@/shared/Input'
+import { useSelector } from 'react-redux'
+import handleChangeCreateTour from './handleChangeCreateTour'
 
 export interface PageAddListing2Props {}
 
 const PageAddListing2: FC<PageAddListing2Props> = () => {
-	const inputs = Array.from({ length: 5 }, (_, i) => `Input ${i + 1}`)
 	const phrases = [
 		"Discover the city's most iconic landmarks and hidden gems",
 		"Learn about the city's history, culture, and architecture",
@@ -14,6 +17,10 @@ const PageAddListing2: FC<PageAddListing2Props> = () => {
 		"Visit the city's most famous landmarks and attractions",
 		'Enjoy a guided tour of the city with a local guide',
 	]
+	const service = useSelector(
+		(state: any) => state.creatingServiceSlice.service,
+	)
+	console.log(JSON.stringify(service))
 
 	return (
 		<>
@@ -23,7 +30,14 @@ const PageAddListing2: FC<PageAddListing2Props> = () => {
 				</h2>
 				<br />
 				<FormItem label="What is the customer-facing title of your product?">
-					<Input />
+					{service.name}
+
+					<Input
+						onChange={(e) => {
+							handleChangeCreateTour({ path: 'name', value: e.target.value })
+						}}
+						defaultValue={service.name}
+					/>
 				</FormItem>
 				<FormItem label="Add a full description">
 					<span className="mt-2 block text-neutral-500 dark:text-neutral-400">
@@ -31,7 +45,17 @@ const PageAddListing2: FC<PageAddListing2Props> = () => {
 						experience during the activity, in the correct order. Bring the
 						activity to life and write at least 500 characters.
 					</span>
-					<Textarea placeholder="..." rows={14} />
+					<Textarea
+						placeholder="..."
+						onChange={(e) => {
+							handleChangeCreateTour({
+								path: 'overview',
+								value: e.target.value,
+							})
+						}}
+						defaultValue={service.overview}
+						rows={14}
+					/>
 				</FormItem>
 				<div>
 					<h6 className="text-1sl font-semibold">Summarize the highlights</h6>
@@ -41,15 +65,25 @@ const PageAddListing2: FC<PageAddListing2Props> = () => {
 						activity to life and write at least 500 characters.
 					</span>
 					<div className="space-y-2">
-						{phrases.map((placeholder, index) => (
-							<FormItem
-								key={index}
+						{service?.highlights?.length <= 0
+							? phrases.map((placeholder, index) => (
+									<FormItem
+										key={index}
 
-								// label="What is the customer-facing title of your product?"
-							>
-								<Input placeholder={placeholder} />
-							</FormItem>
-						))}
+										// label="What is the customer-facing title of your product?"
+									>
+										<Input placeholder={placeholder} />
+									</FormItem>
+								))
+							: service?.highlights?.map((placeholder: any, index: any) => (
+									<FormItem
+										key={index}
+
+										// label="What is the customer-facing title of your product?"
+									>
+										<Input defaultValue={placeholder.name} />
+									</FormItem>
+								))}
 					</div>
 				</div>
 			</div>

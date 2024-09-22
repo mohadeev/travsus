@@ -49,7 +49,7 @@ export default function RootLayout({
 								{children}
 								<FooterNav />
 								<Footer />
-								<TestAnything />
+								{/* <TestAnything /> */}
 							</div>
 							<ClientCommons />
 						</body>

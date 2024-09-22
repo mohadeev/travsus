@@ -34,7 +34,7 @@ const initialState: State = {
 }
 
 // Define the type for the action payload
-interface UpdateStatePayload {
+interface UpdateServiceStatePayload {
 	path: string
 	value: any
 }
@@ -74,15 +74,19 @@ const creatingServiceSlice = createSlice({
 	initialState,
 	reducers: {
 		// Update state based on dynamic path using Map and no loops
-		updateState: (state, action: PayloadAction<UpdateStatePayload>) => {
+		updateServiceState: (
+			state,
+			action: PayloadAction<UpdateServiceStatePayload>,
+		) => {
 			const { path, value } = action.payload
 			updateNestedStateWithMap(state, path, value)
+			console.log('service', state.service)
 		},
 	},
 })
 
 // Export the action
-export const { updateState } = creatingServiceSlice.actions
+export const { updateServiceState } = creatingServiceSlice.actions
 
 // Export the reducer to be included in the store
 export default creatingServiceSlice.reducer

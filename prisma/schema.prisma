@@ -29,30 +29,31 @@ model User {
 
  model Tour {
   id       String    @id @default(auto()) @map("_id") @db.ObjectId
-  creator    Json     // Unstructured data, stored as JSON
+  creator    String?     // Unstructured data, stored as JSON
   name       String
-  subtitle   String
+  subtitle   String?
   overview   String
-  slug       String
-  images     String[] // Array of Strings
-  people     String[] // Array of Strings
-  services   String[] // Array of Strings
-  places     String[] // Array of Strings
-  highlights String[] // Array of Strings
-  days       String[] // Array of Strings
-  paths      String[] // Array of Strings
+  productCategory String?
+  slug       String?
+  images     Json[]// Array of Strings
+  people     Json[]// Array of Strings
+  services   Json[]// Array of Strings
+  places     Json[]// Array of Strings
+  highlights Json[] // Array of Strings
+  days       Json[] // Array of Strings
+  paths      Json[]// Array of Strings
   price      String
-  region     String[] // Array of Strings
-  descount   String
-  start      String // Reference to the StartEnd model
-  end        String // Reference to the StartEnd model
+  region     Json[] // Array of Strings
+  descount   String?
+  start      Json // Reference to the StartEnd model
+  end        Json // Reference to the StartEnd model
   reviews    Json[]   // Array of JSON objects for storing reviews
   lang       String
   tourfor    String
   updated    Boolean  @default(false) // Default value set to false
-  conclusion String
-  tags       String[] // Array of Strings
-  keyphrase  String[] // Array of Strings (corrected spelling from "keyphease")
+  conclusion String?
+  tags       Json[] // Array of Strings
+  keyphrase  Json[]// Array of Strings (corrected spelling from "keyphease")
   createdAt  DateTime @default(now())  // Auto set the createdAt field
   updatedAt  DateTime @updatedAt       // Auto set the updatedAt field
   @@map("tours")
