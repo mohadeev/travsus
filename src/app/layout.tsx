@@ -41,13 +41,18 @@ export default function RootLayout({
 	const headersList = headers()
 	const host = headersList.get('host') || '' // e.g., sub.example.com
 	const parts = host.split('.')
-	console.log(parts)
-	const subdomain = parts.length >= 2 ? parts[0] : null // Extract the subdomain
 
+	// Check if the environment is local or production
+	const isLocalhost = process.env.NODE_ENV === 'development'
+
+	// Determine if there's a subdomain
+	const hasSubdomain = parts.length >= 2 // Subdomain exists if more than two parts
+
+	// Combine conditions into one variable
+	const subdomainStatus = isLocalhost || hasSubdomain
 	return (
 		<html lang="en" className={poppins.className}>
-			{children}
-			{subdomain ? (
+			{subdomainStatus ? (
 				<ThemeProvider>
 					<AuthProvider>
 						<Providers>
@@ -65,7 +70,9 @@ export default function RootLayout({
 					</AuthProvider>
 				</ThemeProvider>
 			) : (
-				''
+				<body className="bg-white text-base text-neutral-900 dark:bg-neutral-900 dark:text-neutral-200">
+					{children}
+				</body>
 			)}
 		</html>
 	)

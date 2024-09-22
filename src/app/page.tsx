@@ -222,6 +222,7 @@ import SectionHero3 from '@/app/(server-components)/SectionHero3'
 import CardCategory6 from '@/components/CardCategory6'
 import SectionGridFeaturePlaces from '@/components/SectionGridFeaturePlaces'
 import SectionGridFilterCard from './(experience-listings)/SectionGridFilterCard'
+import { headers } from 'next/headers'
 
 const DEMO_CATS_2: TaxonomyType[] = [
 	{
@@ -272,6 +273,18 @@ const DEMO_CATS_2: TaxonomyType[] = [
 ]
 
 function PageHome3() {
+	const headersList = headers()
+	const host = headersList.get('host') || '' // e.g., sub.example.com
+	const parts = host.split('.')
+
+	// Check if the environment is local or production
+	const isLocalhost = process.env.NODE_ENV === 'development'
+
+	// Determine if there's a subdomain
+	const hasSubdomain = parts.length >= 2 // Subdomain exists if more than two parts
+
+	// Combine conditions into one variable
+	const subdomainStatus = isLocalhost || hasSubdomain
 	return (
 		<main className="nc-PageHome3 relative overflow-hidden">
 			{/* GLASSMOPHIN */}
