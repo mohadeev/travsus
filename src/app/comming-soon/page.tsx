@@ -65,7 +65,11 @@ export default function Home() {
 					Coming Soon
 				</h1>
 				<div className="text-2xl md:text-4xl">
-					{timerComponents.length ? timerComponents : <span>Time's up!</span>}
+					{timerComponents.length ? (
+						timerComponents
+					) : (
+						<span>Time&apos;s up!</span>
+					)}
 				</div>
 			</div>
 		</div>
