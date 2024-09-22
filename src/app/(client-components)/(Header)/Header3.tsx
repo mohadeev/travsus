@@ -183,7 +183,7 @@ const Header3: FC<Header3Props> = ({ className = '' }) => {
 									href={'/products/q=create?step=1'}
 									className="hidden items-center self-center rounded-full border border-neutral-300 px-4 py-2 text-sm font-medium text-gray-700 hover:border-neutral-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 dark:border-neutral-700 dark:text-neutral-300 xl:inline-flex"
 								>
-									List your property lñsdvlñsv
+									List your property
 								</Link>
 
 								<NotifyDropdown />
