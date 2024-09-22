@@ -15,6 +15,7 @@ import { Providers } from './GlobalRedux/provider'
 import AuthProvider from './context/AuthProvider'
 import AuthWatcher from './context/AuthWatcher'
 import TestAnything from './TestAnything'
+import { headers } from 'next/headers'
 
 const poppins = Poppins({
 	subsets: ['latin'],
@@ -37,25 +38,35 @@ export default function RootLayout({
 	children: React.ReactNode
 	params: any
 }) {
+	const headersList = headers()
+	const host = headersList.get('host') || '' // e.g., sub.example.com
+	const parts = host.split('.')
+	console.log(parts)
+	const subdomain = parts.length >= 2 ? parts[0] : null // Extract the subdomain
+
 	return (
 		<html lang="en" className={poppins.className}>
-			<ThemeProvider>
-				<AuthProvider>
-					<Providers>
-						<AuthWatcher />
-						<body className="bg-white text-base text-neutral-900 dark:bg-neutral-900 dark:text-neutral-200">
-							<div>
-								<SiteHeader />
-								{children}
-								<FooterNav />
-								<Footer />
-								{/* <TestAnything /> */}
-							</div>
-							<ClientCommons />
-						</body>
-					</Providers>
-				</AuthProvider>
-			</ThemeProvider>
+			{children}
+			{subdomain ? (
+				<ThemeProvider>
+					<AuthProvider>
+						<Providers>
+							<AuthWatcher />
+							<body className="bg-white text-base text-neutral-900 dark:bg-neutral-900 dark:text-neutral-200">
+								<div>
+									<SiteHeader />
+									{children}
+									<FooterNav />
+									<Footer />
+								</div>
+								<ClientCommons />
+							</body>
+						</Providers>
+					</AuthProvider>
+				</ThemeProvider>
+			) : (
+				''
+			)}
 		</html>
 	)
 }
