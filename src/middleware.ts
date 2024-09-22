@@ -59,14 +59,14 @@ export async function middleware(request: NextRequest) {
 				return response
 			}
 		} else {
-			request.customGeo = JSON.parse(geoCookie)
+			// request.customGeo = JSON.parse(geoCookie)
 		}
 	} catch (error) {
 		console.error('Error fetching geolocation data in middleware:', error)
 		// Attach an error message if something goes wrong
-		request.customGeo = {
-			message: 'Failed to fetch geolocation data',
-		}
+		// request.customGeo = {
+		// 	message: 'Failed to fetch geolocation data',
+		// }
 	}
 
 	return NextResponse.next()
