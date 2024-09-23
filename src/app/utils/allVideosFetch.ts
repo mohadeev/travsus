@@ -15,14 +15,14 @@ const allVideosFetch = async (Length: any) => {
       try {
         return await basedGetUrlRequest(
           "/api/get/video/display/display?" + queryString,
-          false
+          
         );
       } catch (err) {}
     } else {
       try {
         return await basedGetUrlRequest(
           "/api/get/video/display/display?" + queryString,
-          false
+          
         );
       } catch (err) {}
     }
@@ -31,14 +31,14 @@ const allVideosFetch = async (Length: any) => {
       try {
         return await basedGetUrlRequest(
           "/api/get/video/display/" + Length,
-          false
+          
         );
       } catch (err) {}
     } else {
       try {
         return await basedGetUrlRequest(
           "/api/get/video/display/display?length=" + 0,
-          false
+          
         );
       } catch (err) {}
     }
