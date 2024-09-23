@@ -13,7 +13,9 @@ interface Props {
 export default function AvatarDropdown({ className = '' }: Props) {
 	const isUserLoggedIn = useSelector(
 		(state: any) => state.userReducer.isUserLoggedIn,
-	)
+	) 
+	const user = useSelector((state: any) => state.userReducer.userData)
+
 	return (
 		<>
 			<Popover className={`AvatarDropdown relative flex ${className}`}>
@@ -40,7 +42,7 @@ export default function AvatarDropdown({ className = '' }: Props) {
 											<Avatar sizeClass="w-12 h-12" />
 
 											<div className="flex-grow">
-												<h4 className="font-semibold">Eden Smith</h4>
+												<h4 className="font-semibold">user?.accountData?.lastname</h4>
 												<p className="mt-0.5 text-xs">Los Angeles, CA</p>
 											</div>
 										</div>

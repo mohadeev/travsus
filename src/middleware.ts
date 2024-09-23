@@ -61,15 +61,20 @@ export async function middleware(request: NextRequest) {
 		} else {
 			// request.customGeo = JSON.parse(geoCookie)
 		}
-	} catch (error) {
-		console.error('Error fetching geolocation data in middleware:', error)
-		// Attach an error message if something goes wrong
-		// request.customGeo = {
-		// 	message: 'Failed to fetch geolocation data',
-		// }
-	}
+	} catch (error) {}
+	const url = new URL(request.url)
+	const origin = url.origin
+	const pathname = url.pathname
+	const requestHeaders = new Headers(request.headers)
+	requestHeaders.set('x-url', request.url)
+	requestHeaders.set('x-origin', origin)
+	requestHeaders.set('x-pathname', pathname)
 
-	return NextResponse.next()
+	return NextResponse.next({
+		request: {
+			headers: requestHeaders,
+		},
+	})
 }
 
 export const config = {
