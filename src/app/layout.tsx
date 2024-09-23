@@ -67,10 +67,27 @@ export default function RootLayout({
 	// }, [pathname])
 	useEffect(() => {
 		if (typeof window !== 'undefined') {
-			const script = document.createElement('script')
-			script.async = true
-			script.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-WHQK9Z5M'
-			document.head.appendChild(script)
+			// Add Google Tag Manager Script
+			const gtmScript = document.createElement('script')
+			gtmScript.async = true
+			gtmScript.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-WHQK9Z5M'
+			document.head.appendChild(gtmScript)
+
+			// Add Google Analytics Script (gtag.js)
+			const gaScript = document.createElement('script')
+			gaScript.async = true
+			gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-C7S8V9MJWG'
+			document.head.appendChild(gaScript)
+
+			// Google Analytics configuration
+			const gaInitScript = document.createElement('script')
+			gaInitScript.innerHTML = `
+				window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
+				gtag('js', new Date());
+				gtag('config', 'G-C7S8V9MJWG');
+			`
+			document.head.appendChild(gaInitScript)
 		}
 	}, [])
 
