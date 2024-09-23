@@ -17,7 +17,8 @@ export interface SectionGridHasMapProps {}
 
 const SectionGridHasMap: FC<SectionGridHasMapProps> = () => {
 	const [currentHoverID, setCurrentHoverID] = useState<string | number>(-1)
-	const [showFullMapFixed, setShowFullMapFixed] = useState(false)
+	const [showFullMapFixed, setShowFullMapFixed] = useState(false) 
+
 
 	return (
 		<div>

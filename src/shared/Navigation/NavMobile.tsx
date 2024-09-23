@@ -115,9 +115,9 @@ const NavMobile: React.FC<NavMobileProps> = ({
 
 					<div className="mt-4 flex items-center justify-between">
 						<SocialsList itemClass="w-9 h-9 flex items-center justify-center rounded-full bg-neutral-100 text-xl dark:bg-neutral-800 dark:text-neutral-300" />
-						<span className="block">
+						{/* <span className="block">
 							<SwitchDarkMode className="bg-neutral-100 dark:bg-neutral-800" />
-						</span>
+						</span> */}
 					</div>
 				</div>
 				<span className="absolute right-2 top-2 p-1">

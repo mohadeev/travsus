@@ -13,7 +13,7 @@ interface Props {
 export default function AvatarDropdown({ className = '' }: Props) {
 	const isUserLoggedIn = useSelector(
 		(state: any) => state.userReducer.isUserLoggedIn,
-	) 
+	)
 	const user = useSelector((state: any) => state.userReducer.userData)
 
 	return (
@@ -42,8 +42,10 @@ export default function AvatarDropdown({ className = '' }: Props) {
 											<Avatar sizeClass="w-12 h-12" />
 
 											<div className="flex-grow">
-												<h4 className="font-semibold">user?.accountData?.lastname</h4>
-												<p className="mt-0.5 text-xs">Los Angeles, CA</p>
+												<h4 className="font-semibold">
+													{user?.accountData?.firstname}
+												</h4>
+												{/* <p className="mt-0.5 text-xs">Los Angeles, CA</p> */}
 											</div>
 										</div>
 
@@ -166,7 +168,7 @@ export default function AvatarDropdown({ className = '' }: Props) {
 										<div className="w-full border-b border-neutral-200 dark:border-neutral-700" />
 
 										{/* ------------------ 2 --------------------- */}
-										<div className="-m-3 flex items-center justify-between rounded-lg p-2 transition duration-150 ease-in-out hover:bg-neutral-100 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50 dark:hover:bg-neutral-700">
+										{/* <div className="-m-3 flex items-center justify-between rounded-lg p-2 transition duration-150 ease-in-out hover:bg-neutral-100 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50 dark:hover:bg-neutral-700">
 											<div className="flex items-center">
 												<div className="flex flex-shrink-0 items-center justify-center text-neutral-500 dark:text-neutral-300">
 													<svg
@@ -204,7 +206,7 @@ export default function AvatarDropdown({ className = '' }: Props) {
 												</div>
 											</div>
 											<SwitchDarkMode2 />
-										</div>
+										</div> */}
 
 										{/* ------------------ 2 --------------------- */}
 										<Link

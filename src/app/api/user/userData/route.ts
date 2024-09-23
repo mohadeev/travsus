@@ -11,7 +11,7 @@ export async function GET(request: NextRequest) {
 
 	// Parse geolocation data from the cookie
 	const customGeo = geoCookie ? JSON.parse(geoCookie) : {}
-	// console.log(customGeo)
+	console.log(customGeo)
 
 	try {
 		const session: any = await getServerSession(authOptions)
@@ -21,12 +21,13 @@ export async function GET(request: NextRequest) {
 				{ status: 401 },
 			)
 		}
-		const user = await prisma.user.findUnique({
+		const user: any = await prisma.user.findUnique({
 			where: { email: session.user.email },
 		})
 		if (!user) {
 			return NextResponse.json({ message: 'User not found' }, { status: 404 })
 		}
+		user.currentGeo = customGeo
 		return NextResponse.json({ user: user, message: 'user_found' })
 	} catch (error) {
 		console.error('Error fetching user data:', error)

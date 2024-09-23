@@ -29,10 +29,10 @@ model User {
 
  model Tour {
   id       String    @id @default(auto()) @map("_id") @db.ObjectId
-  creator    String?     // Unstructured data, stored as JSON
-  name       String
+  creator    Json?     // Unstructured data, stored as JSON
+  name       String?
   subtitle   String?
-  overview   String
+  overview   String?
   productCategory String?
   slug       String?
   images     Json[]// Array of Strings
@@ -42,14 +42,14 @@ model User {
   highlights Json[] // Array of Strings
   days       Json[] // Array of Strings
   paths      Json[]// Array of Strings
-  price      String
+  price      String?
   region     Json[] // Array of Strings
   descount   String?
-  start      Json // Reference to the StartEnd model
-  end        Json // Reference to the StartEnd model
+  start      Json? // Reference to the StartEnd model
+  end        Json? // Reference to the StartEnd model
   reviews    Json[]   // Array of JSON objects for storing reviews
-  lang       String
-  tourfor    String
+  lang       String?
+  tourfor    String?
   updated    Boolean  @default(false) // Default value set to false
   conclusion String?
   tags       Json[] // Array of Strings

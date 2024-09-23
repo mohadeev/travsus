@@ -21,11 +21,11 @@ export async function GET(request: NextRequest) {
 		// const newTripadvisorApi = await tripadvisorApi(obj)
 		interstingPlaces.map(async ({ name }) => {
 			// const existingPlace = await prisma.place.findMany()
-			const places :any= await prisma.place.findMany()
+			const places: any = await prisma.place.findMany()
 			console.log('places', places)
 			// Filter the places array to find the exact match within the nested JSON
 			const existingPlace = places.find(
-				(place:any) => place.tripadvisorData?.locationDetails?.name === name,
+				(place: any) => place.tripadvisorData?.locationDetails?.name === name,
 			)
 
 			if (existingPlace) {
@@ -66,7 +66,7 @@ export async function GET(request: NextRequest) {
 					tripadvisorData: placeData, // Pass the JSON object as-is
 				},
 			})
-			console.log('placeData', newPlace)
+			// console.log('placeData', newPlace)
 		})
 
 		return NextResponse.json({})
