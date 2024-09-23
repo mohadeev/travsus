@@ -27,7 +27,7 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 	const {
 		images: galleryImgs,
 		address,
-		title,
+		name: title,
 		id: href,
 		like,
 		saleOff,
