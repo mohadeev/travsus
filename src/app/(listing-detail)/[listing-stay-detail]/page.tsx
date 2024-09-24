@@ -1,61 +1,56 @@
 'use client'
 
-import { FC, Fragment, useState } from 'react'
-import { Dialog, Transition, TransitionChild } from '@headlessui/react'
+import React, { FC, useState } from 'react'
 import { ArrowRightIcon, Squares2X2Icon } from '@heroicons/react/24/outline'
 import CommentListing from '@/components/CommentListing'
 import FiveStartIconForRate from '@/components/FiveStartIconForRate'
-import StartRating from '@/components/StartRating'
 import Avatar from '@/shared/Avatar'
 import Badge from '@/shared/Badge'
 import ButtonCircle from '@/shared/ButtonCircle'
 import ButtonPrimary from '@/shared/ButtonPrimary'
 import ButtonSecondary from '@/shared/ButtonSecondary'
-import ButtonClose from '@/shared/ButtonClose'
 import Input from '@/shared/Input'
-import LikeSaveBtns from '@/components/LikeSaveBtns'
-import Image from 'next/image'
 import { usePathname, useRouter } from 'next/navigation'
-import { Amenities_demos, PHOTOS } from './constant'
+import LikeSaveBtns from '@/components/LikeSaveBtns'
+import StartRating from '@/components/StartRating'
+import { includes_demo, PHOTOS } from './constant'
+import Image from 'next/image'
 import StayDatesRangeInput from './StayDatesRangeInput'
 import GuestsInput from './GuestsInput'
 import SectionDateRange from '../SectionDateRange'
 import { Route } from 'next'
+import { useSelector } from 'react-redux'
 
-export interface ListingStayDetailPageProps {}
+export interface ListingExperiencesDetailPageProps {}
 
-const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({}) => {
-	//
-
-	let [isOpenModalAmenities, setIsOpenModalAmenities] = useState(false)
-
+const ListingExperiencesDetailPage: FC<
+	ListingExperiencesDetailPageProps
+> = ({}) => {
+	const {
+		name: title,
+		region,
+		start,
+	}: any = useSelector((state: any) => state.creatingServiceSlice.service)
 	const thisPathname = usePathname()
 	const router = useRouter()
-
-	function closeModalAmenities() {
-		setIsOpenModalAmenities(false)
-	}
-
-	function openModalAmenities() {
-		setIsOpenModalAmenities(true)
-	}
 
 	const handleOpenModalImageGallery = () => {
 		router.push(`${thisPathname}/?modal=PHOTO_TOUR_SCROLLABLE` as Route)
 	}
+	let newLocation = region
 
 	const renderSection1 = () => {
 		return (
 			<div className="listingSection__wrap !space-y-6">
 				{/* 1 */}
 				<div className="flex items-center justify-between">
-					<Badge name="Wooden house" />
+					<Badge color="pink" name="Travsus" />
 					<LikeSaveBtns />
 				</div>
 
 				{/* 2 */}
 				<h2 className="text-2xl font-semibold sm:text-3xl lg:text-4xl">
-					Beach House in Collingwood
+					{title}
 				</h2>
 
 				{/* 3 */}
@@ -64,7 +59,12 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({}) => {
 					<span>·</span>
 					<span>
 						<i className="las la-map-marker-alt"></i>
-						<span className="ml-1"> Tokyo, Jappan</span>
+						{newLocation?.map(({ country }: any) => (
+							<span className="ml-1">
+								{country} - {start?.name}
+								{/* <span className="ml-1"> Tokyo, Jappan</span> */}
+							</span>
+						))}
 					</span>
 				</div>
 
@@ -84,29 +84,17 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({}) => {
 
 				{/* 6 */}
 				<div className="flex items-center justify-between space-x-8 text-sm text-neutral-700 dark:text-neutral-300 xl:justify-start xl:space-x-12">
-					<div className="flex items-center space-x-3">
-						<i className="las la-user text-2xl"></i>
-						<span className="">
-							6 <span className="hidden sm:inline-block">guests</span>
-						</span>
+					<div className="flex flex-col items-center space-y-3 text-center sm:flex-row sm:space-x-3 sm:space-y-0 sm:text-left">
+						<i className="las la-clock text-2xl"></i>
+						<span className="">3.5 hours</span>
 					</div>
-					<div className="flex items-center space-x-3">
-						<i className="las la-bed text-2xl"></i>
-						<span className=" ">
-							6 <span className="hidden sm:inline-block">beds</span>
-						</span>
+					<div className="flex flex-col items-center space-y-3 text-center sm:flex-row sm:space-x-3 sm:space-y-0 sm:text-left">
+						<i className="las la-user-friends text-2xl"></i>
+						<span className="">Up to 10 people</span>
 					</div>
-					<div className="flex items-center space-x-3">
-						<i className="las la-bath text-2xl"></i>
-						<span className=" ">
-							3 <span className="hidden sm:inline-block">baths</span>
-						</span>
-					</div>
-					<div className="flex items-center space-x-3">
-						<i className="las la-door-open text-2xl"></i>
-						<span className=" ">
-							2 <span className="hidden sm:inline-block">bedrooms</span>
-						</span>
+					<div className="flex flex-col items-center space-y-3 text-center sm:flex-row sm:space-x-3 sm:space-y-0 sm:text-left">
+						<i className="las la-language text-2xl"></i>
+						<span className="">English, VietNames</span>
 					</div>
 				</div>
 			</div>
@@ -116,26 +104,51 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({}) => {
 	const renderSection2 = () => {
 		return (
 			<div className="listingSection__wrap">
-				<h2 className="text-2xl font-semibold">Stay information</h2>
+				<h2 className="text-2xl font-semibold">Experiences descriptions</h2>
 				<div className="w-14 border-b border-neutral-200 dark:border-neutral-700"></div>
 				<div className="text-neutral-6000 dark:text-neutral-300">
-					<span>
-						Providing lake views, The Symphony 9 Tam Coc in Ninh Binh provides
-						accommodation, an outdoor swimming pool, a bar, a shared lounge, a
-						garden and barbecue facilities. Complimentary WiFi is provided.
-					</span>
-					<br />
-					<br />
-					<span>
-						There is a private bathroom with bidet in all units, along with a
-						hairdryer and free toiletries.
-					</span>
-					<br /> <br />
-					<span>
-						The Symphony 9 Tam Coc offers a terrace. Both a bicycle rental
-						service and a car rental service are available at the accommodation,
-						while cycling can be enjoyed nearby.
-					</span>
+					<p>
+						TRANG AN BOAT TOUR & MUA CAVE CLIMBING TOUR FROM HANOI
+						<br />
+						<br />
+						07:30 – 08:00 – Our guide will meet you at your hotel/stay and start
+						a 120km comfortable Limousine bus journey through the verdant
+						landscape. Stopover for a rest on the way.
+						<br />
+						<br />
+						BAI DINH PAGODA EXPLORER.
+						<br />
+						<br />
+						10:30 – Arrive Bai Dinh pagoda complex, get on electric cars to
+						visit massive architecture.
+						<br />
+						<br />
+						12:15 – Enjoy the buffet lunch at our restaurant, a great place to
+						savor the flavours of Vietnamese food.
+						<br />
+						<br />
+						TRANG AN TOUR ON BOAT.
+						<br />
+						<br />
+						13:30 – Visit Trang An Grottoes, get on a rowing boat traveling
+						along the river with scenic mountain and green fields landscape.
+						<br />
+						<br />
+						MUA CAVE HIKING. TAKE PICTURE
+						<br />
+						<br />
+						15:45 – Arrive at Mua Cave and start an amazing trek up to the top
+						of Ngoa Long mountain.
+						<br />
+						<br />
+						17:30 – 20:00 – Return to our Limousine bus and then come back to
+						Hanoi. Drop you off at your hotel/stay. Other things to note
+						<br />
+						<br />
+						It is one full day tour. Start from 07.30 AM and finish at 20.00. We
+						just put one hour and default departure time because we have many
+						other tours. IF you need any further details
+					</p>
 				</div>
 			</div>
 		)
@@ -145,145 +158,22 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({}) => {
 		return (
 			<div className="listingSection__wrap">
 				<div>
-					<h2 className="text-2xl font-semibold">Amenities </h2>
+					<h2 className="text-2xl font-semibold">Include </h2>
 					<span className="mt-2 block text-neutral-500 dark:text-neutral-400">
-						{` About the property's amenities and services`}
+						Included in the price
 					</span>
 				</div>
 				<div className="w-14 border-b border-neutral-200 dark:border-neutral-700"></div>
 				{/* 6 */}
-				<div className="grid grid-cols-1 gap-6 text-sm text-neutral-700 dark:text-neutral-300 xl:grid-cols-3">
-					{Amenities_demos.filter((_, i) => i < 12).map((item) => (
-						<div key={item.name} className="flex items-center space-x-3">
-							<i className={`las text-3xl ${item.icon}`}></i>
-							<span className=" ">{item.name}</span>
-						</div>
-					))}
-				</div>
-
-				{/* ----- */}
-				<div className="w-14 border-b border-neutral-200"></div>
-				<div>
-					<ButtonSecondary onClick={openModalAmenities}>
-						View more 20 amenities
-					</ButtonSecondary>
-				</div>
-				{renderMotalAmenities()}
-			</div>
-		)
-	}
-
-	const renderMotalAmenities = () => {
-		return (
-			<Transition appear show={isOpenModalAmenities} as={Fragment}>
-				<Dialog
-					as="div"
-					className="fixed inset-0 z-50 overflow-y-auto"
-					onClose={closeModalAmenities}
-				>
-					<div className="min-h-screen px-4 text-center">
-						<TransitionChild
-							as={Fragment}
-							enter="ease-out duration-300"
-							enterFrom="opacity-0"
-							enterTo="opacity-100"
-							leave="ease-in duration-200"
-							leaveFrom="opacity-100"
-							leaveTo="opacity-0"
-						>
-							<div className="fixed inset-0 bg-black bg-opacity-40" />
-						</TransitionChild>
-
-						{/* This element is to trick the browser into centering the modal contents. */}
-						<span
-							className="inline-block h-screen align-middle"
-							aria-hidden="true"
-						>
-							&#8203;
-						</span>
-						<TransitionChild
-							as={Fragment}
-							enter="ease-out duration-300"
-							enterFrom="opacity-0 scale-95"
-							enterTo="opacity-100 scale-100"
-							leave="ease-in duration-200"
-							leaveFrom="opacity-100 scale-100"
-							leaveTo="opacity-0 scale-95"
-						>
-							<div className="inline-block h-screen w-full max-w-4xl py-8">
-								<div className="inline-flex h-full w-full transform flex-col overflow-hidden rounded-2xl bg-white pb-2 text-left align-middle shadow-xl transition-all dark:border dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-100">
-									<div className="relative flex-shrink-0 border-b border-neutral-200 px-6 py-4 text-center dark:border-neutral-800">
-										<h3
-											className="text-lg font-medium leading-6 text-gray-900"
-											id="headlessui-dialog-title-70"
-										>
-											Amenities
-										</h3>
-										<span className="absolute left-3 top-3">
-											<ButtonClose onClick={closeModalAmenities} />
-										</span>
-									</div>
-									<div className="divide-y divide-neutral-200 overflow-auto px-8 text-neutral-700 dark:text-neutral-300">
-										{Amenities_demos.filter((_, i) => i < 1212).map((item) => (
-											<div
-												key={item.name}
-												className="flex items-center space-x-5 py-2.5 sm:py-4 lg:space-x-8 lg:py-5"
-											>
-												<i
-													className={`las text-4xl text-neutral-6000 ${item.icon}`}
-												></i>
-												<span>{item.name}</span>
-											</div>
-										))}
-									</div>
-								</div>
+				<div className="grid grid-cols-1 gap-6 text-sm text-neutral-700 dark:text-neutral-300 lg:grid-cols-2">
+					{includes_demo
+						.filter((_, i) => i < 12)
+						.map((item) => (
+							<div key={item.name} className="flex items-center space-x-3">
+								<i className="las la-check-circle text-2xl"></i>
+								<span>{item.name}</span>
 							</div>
-						</TransitionChild>
-					</div>
-				</Dialog>
-			</Transition>
-		)
-	}
-
-	const renderSection4 = () => {
-		return (
-			<div className="listingSection__wrap">
-				{/* HEADING */}
-				<div>
-					<h2 className="text-2xl font-semibold">Room Rates </h2>
-					<span className="mt-2 block text-neutral-500 dark:text-neutral-400">
-						Prices may increase on weekends or holidays
-					</span>
-				</div>
-				<div className="w-14 border-b border-neutral-200 dark:border-neutral-700"></div>
-				{/* CONTENT */}
-				<div className="flow-root">
-					<div className="-mb-4 text-sm text-neutral-6000 dark:text-neutral-300 sm:text-base">
-						<div className="flex items-center justify-between space-x-4 rounded-lg bg-neutral-100 p-4 dark:bg-neutral-800">
-							<span>Monday - Thursday</span>
-							<span>$199</span>
-						</div>
-						<div className="flex items-center justify-between space-x-4 rounded-lg p-4">
-							<span>Monday - Thursday</span>
-							<span>$199</span>
-						</div>
-						<div className="flex items-center justify-between space-x-4 rounded-lg bg-neutral-100 p-4 dark:bg-neutral-800">
-							<span>Friday - Sunday</span>
-							<span>$219</span>
-						</div>
-						<div className="flex items-center justify-between space-x-4 rounded-lg p-4">
-							<span>Rent by month</span>
-							<span>-8.34 %</span>
-						</div>
-						<div className="flex items-center justify-between space-x-4 rounded-lg bg-neutral-100 p-4 dark:bg-neutral-800">
-							<span>Minimum number of nights</span>
-							<span>1 night</span>
-						</div>
-						<div className="flex items-center justify-between space-x-4 rounded-lg p-4">
-							<span>Max number of nights</span>
-							<span>90 nights</span>
-						</div>
-					</div>
+						))}
 				</div>
 			</div>
 		)
@@ -468,42 +358,31 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({}) => {
 				<div>
 					<h4 className="text-lg font-semibold">Cancellation policy</h4>
 					<span className="mt-3 block text-neutral-500 dark:text-neutral-400">
-						Refund 50% of the booking value when customers cancel the room
-						within 48 hours after successful booking and 14 days before the
-						check-in time. <br />
-						Then, cancel the room 14 days before the check-in time, get a 50%
-						refund of the total amount paid (minus the service fee).
+						Any experience can be canceled and fully refunded within 24 hours of
+						purchase, or at least 7 days before the experience starts.
 					</span>
 				</div>
 				<div className="w-14 border-b border-neutral-200 dark:border-neutral-700" />
 
 				{/* CONTENT */}
 				<div>
-					<h4 className="text-lg font-semibold">Check-in time</h4>
-					<div className="mt-3 max-w-md text-sm text-neutral-500 dark:text-neutral-400 sm:text-base">
-						<div className="flex justify-between space-x-10 rounded-lg bg-neutral-100 p-3 dark:bg-neutral-800">
-							<span>Check-in</span>
-							<span>08:00 am - 12:00 am</span>
-						</div>
-						<div className="flex justify-between space-x-10 p-3">
-							<span>Check-out</span>
-							<span>02:00 pm - 04:00 pm</span>
-						</div>
-					</div>
+					<h4 className="text-lg font-semibold">Guest requirements</h4>
+					<span className="mt-3 block text-neutral-500 dark:text-neutral-400">
+						Up to 10 guests ages 4 and up can attend. Parents may also bring
+						children under 2 years of age.
+					</span>
 				</div>
 				<div className="w-14 border-b border-neutral-200 dark:border-neutral-700" />
 
 				{/* CONTENT */}
 				<div>
-					<h4 className="text-lg font-semibold">Special Note</h4>
+					<h4 className="text-lg font-semibold">What to bring</h4>
 					<div className="prose sm:prose">
 						<ul className="mt-3 space-y-2 text-neutral-500 dark:text-neutral-400">
 							<li>
-								Ban and I will work together to keep the landscape and
-								environment green and clean by not littering, not using
-								stimulants and respecting people around.
+								Formal Wear To Visit Bai Dinh Pagoda Be ready before 7.30 Am.
 							</li>
-							<li>Do not sing karaoke past 11:30</li>
+							<li>We will pick up from 07.30 to 08.00 AM</li>
 						</ul>
 					</div>
 				</div>
@@ -517,14 +396,15 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({}) => {
 				{/* PRICE */}
 				<div className="flex justify-between">
 					<span className="text-3xl font-semibold">
-						$119
+						$19
 						<span className="ml-1 text-base font-normal text-neutral-500 dark:text-neutral-400">
-							/night
+							/person
 						</span>
 					</span>
 					<StartRating />
 				</div>
 
+				{/* FORM */}
 				{/* FORM */}
 				<form className="flex flex-col rounded-3xl border border-neutral-200 dark:border-neutral-700">
 					<StayDatesRangeInput className="z-[11] flex-1" />
@@ -535,8 +415,8 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({}) => {
 				{/* SUM */}
 				<div className="flex flex-col space-y-4">
 					<div className="flex justify-between text-neutral-6000 dark:text-neutral-300">
-						<span>$119 x 3 night</span>
-						<span>$357</span>
+						<span>$19 x 3 adults</span>
+						<span>$57</span>
 					</div>
 					<div className="flex justify-between text-neutral-6000 dark:text-neutral-300">
 						<span>Service charge</span>
@@ -556,36 +436,36 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({}) => {
 	}
 
 	return (
-		<div className="nc-ListingStayDetailPage">
-			{/*  HEADER */}
+		<div className={`nc-ListingExperiencesDetailPage`}>
+			{/* SINGLE HEADER */}
 			<header className="rounded-md sm:rounded-xl">
-				<div className="relative grid grid-cols-3 gap-1 sm:grid-cols-4 sm:gap-2">
+				<div className="relative grid grid-cols-4 gap-1 sm:gap-2">
 					<div
-						className="relative col-span-2 row-span-3 cursor-pointer overflow-hidden rounded-md sm:row-span-2 sm:rounded-xl"
+						className="relative col-span-3 row-span-3 cursor-pointer overflow-hidden rounded-md sm:rounded-xl"
 						onClick={handleOpenModalImageGallery}
 					>
 						<Image
+							alt="photo 1"
 							fill
 							className="rounded-md object-cover sm:rounded-xl"
 							src={PHOTOS[0]}
-							alt=""
 							sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
 						/>
 						<div className="absolute inset-0 bg-neutral-900 bg-opacity-20 opacity-0 transition-opacity hover:opacity-100"></div>
 					</div>
-					{PHOTOS.filter((_, i) => i >= 1 && i < 5).map((item, index) => (
+					{PHOTOS.filter((_, i) => i >= 1 && i < 4).map((item, index) => (
 						<div
 							key={index}
 							className={`relative overflow-hidden rounded-md sm:rounded-xl ${
-								index >= 3 ? 'hidden sm:block' : ''
+								index >= 2 ? 'block' : ''
 							}`}
 						>
-							<div className="aspect-h-3 aspect-w-4 sm:aspect-h-5 sm:aspect-w-6">
+							<div className="aspect-h-3 aspect-w-4">
 								<Image
+									alt="photos"
 									fill
-									className="rounded-md object-cover sm:rounded-xl"
+									className="h-full w-full rounded-md object-cover sm:rounded-xl"
 									src={item || ''}
-									alt=""
 									sizes="400px"
 								/>
 							</div>
@@ -598,27 +478,27 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({}) => {
 						</div>
 					))}
 
-					<button
-						className="absolute bottom-3 left-3 z-10 hidden rounded-xl bg-neutral-100 px-4 py-2 text-neutral-500 hover:bg-neutral-200 md:flex md:items-center md:justify-center"
+					<div
+						className="absolute bottom-3 left-3 z-10 hidden cursor-pointer rounded-xl bg-neutral-100 px-4 py-2 text-neutral-500 hover:bg-neutral-200 md:flex md:items-center md:justify-center"
 						onClick={handleOpenModalImageGallery}
 					>
 						<Squares2X2Icon className="h-5 w-5" />
 						<span className="ml-2 text-sm font-medium text-neutral-800">
 							Show all photos
 						</span>
-					</button>
+					</div>
 				</div>
 			</header>
 
-			{/* MAIN */}
+			{/* MAIn */}
 			<main className="relative z-10 mt-11 flex flex-col lg:flex-row">
 				{/* CONTENT */}
 				<div className="w-full space-y-8 lg:w-3/5 lg:space-y-10 lg:pr-10 xl:w-2/3">
 					{renderSection1()}
 					{renderSection2()}
 					{renderSection3()}
-					{renderSection4()}
 					<SectionDateRange />
+
 					{renderSection5()}
 					{renderSection6()}
 					{renderSection7()}
@@ -634,4 +514,4 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({}) => {
 	)
 }
 
-export default ListingStayDetailPage
+export default ListingExperiencesDetailPage

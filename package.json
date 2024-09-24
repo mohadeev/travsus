@@ -30,6 +30,7 @@
     "axios": "^1.7.4",
     "cities.json": "^1.1.39",
     "client-only": "^0.0.1",
+    "cloudinary": "^2.5.0",
     "cookie": "^0.6.0",
     "country-city-search": "^1.0.2",
     "eslint": "8.54.0",

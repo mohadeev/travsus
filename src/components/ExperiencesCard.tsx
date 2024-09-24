@@ -8,6 +8,7 @@ import SaleOffBadge from '@/components/SaleOffBadge'
 import Badge from '@/shared/Badge'
 import Link from 'next/link'
 import { MapPinIcon } from '@heroicons/react/24/outline'
+import { Route } from '@/routers/types'
 
 export interface ExperiencesCardProps {
 	className?: string
@@ -28,7 +29,6 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 		images: galleryImgs,
 		address,
 		name: title,
-		id: href,
 		like,
 		saleOff,
 		isAds,
@@ -36,7 +36,22 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 		reviewStart,
 		reviewCount,
 		id,
+		region,
+		start,
 	}: any = data
+	let newLocation = region
+	if (region.length >= 1) {
+		region[0].city = start?.name || ''
+	}
+
+	function convertString(input: string) {
+		return input?.toLowerCase()?.replace(/\s+/g, '-')
+	}
+
+	let result = convertString(title)
+	const href = `/q=tour?serviceId=${id}&name=${result}` as Route
+
+	console.log(result) // Output: "hello_world_this_is_a_test"
 
 	const renderSliderGallery = () => {
 		return (
@@ -59,7 +74,11 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 				<div className="space-y-2">
 					<div className="flex items-center space-x-2 text-sm text-neutral-500 dark:text-neutral-400">
 						{size === 'default' && <MapPinIcon className="h-4 w-4" />}
-						<span className="">{address}</span>
+						{newLocation?.map(({ country, city }: any) => (
+							<span className="">
+								{country} - {city}
+							</span>
+						))}
 					</div>
 
 					<div className="flex items-center space-x-2">
