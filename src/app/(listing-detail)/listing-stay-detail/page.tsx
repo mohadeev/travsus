@@ -60,7 +60,7 @@ const ListingExperiencesDetailPage: FC<
 					<span>
 						<i className="las la-map-marker-alt"></i>
 						{newLocation?.map(({ country }: any) => (
-							<span className="ml-1">
+							<span key={country} className="ml-1">
 								{country} - {start?.name}
 								{/* <span className="ml-1"> Tokyo, Jappan</span> */}
 							</span>
