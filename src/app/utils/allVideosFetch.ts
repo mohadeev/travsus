@@ -1,7 +1,6 @@
 import basedGetUrlRequest from "./basedGetUrlRequest";
 
 const allVideosFetch = async (Length: any) => {
-  console.log(Length);
   const queryString = window.location.search;
   const params = new URLSearchParams(queryString);
   const category = params.get("category");

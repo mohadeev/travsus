@@ -27,10 +27,7 @@ const LocationInput: FC<LocationInputProps> = ({
 	className = 'nc-flex-1.5',
 	divHideVerticalLineClass = 'left-10 -right-0.5',
 }) => {
-	// console.log(cities)
-
 	// Example: Find a specific city (e.g., by its name or other criteria)
-	const city = cities.find((city) => city.name === 'Marrakech')
 	const containerRef = useRef<HTMLDivElement>(null)
 	const inputRef = useRef<HTMLInputElement>(null)
 	const [searchResulte, setSearchResulte] = useState([])

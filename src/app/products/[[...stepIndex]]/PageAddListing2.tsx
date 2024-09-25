@@ -20,7 +20,6 @@ const PageAddListing2: FC<PageAddListing2Props> = () => {
 	const service = useSelector(
 		(state: any) => state.creatingServiceSlice.service,
 	)
-	console.log(JSON.stringify(service))
 
 	return (
 		<>

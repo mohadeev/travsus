@@ -109,7 +109,6 @@ const SectionGridCategoryBox: React.FC<SectionGridCategoryBoxProps> = ({
 		;(async () => {
 			const newGetFamoustCitiesArround: any = await getFamoustCitiesArround()
 			setNewCatecories(newGetFamoustCitiesArround?.places)
-			console.log('newGetFamoustCitiesArround', newGetFamoustCitiesArround)
 		})()
 	}, [])
 

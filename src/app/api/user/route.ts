@@ -11,7 +11,6 @@ export async function POST(req: Request) {
 	try {
 		const session: any = await getServerSession(authOptions)
 		const emailSession = session?.user?.email
-		console.log('emailSession', emailSession)
 		if (!session || !session?.user?.email) {
 			return NextResponse.json(
 				{ message: 'Not authenticated' },

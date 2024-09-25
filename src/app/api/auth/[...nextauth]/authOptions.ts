@@ -42,8 +42,6 @@ export const authOptions: any = {
 	],
 	callbacks: {
 		async jwt({ token, account }: { token: any; account?: any }) {
-			//console.log('account', account)
-			//console.log('token', token)
 
 			// Add the access token to the JWT token if it exists
 			if (account) {
@@ -88,7 +86,6 @@ export const authOptions: any = {
 	// 		return token
 	// 	},
 	// 	async session({ session, user }: any) {
-	// 		//console.log('user', user)
 	// 		// Include user.id in session
 	// 		if (user) {
 	// 			session.user.id = user.id

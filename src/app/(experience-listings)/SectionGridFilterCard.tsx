@@ -27,7 +27,6 @@ const SectionGridFilterCard: FC<SectionGridFilterCardProps> = ({
 	useEffect(() => {
 		allToursFetch().then((data) => {
 			if (data?.allToursData) {
-				console.log('data', data.allToursData)
 				setServicesData(data.allToursData)
 			}
 		})

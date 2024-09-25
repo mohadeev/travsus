@@ -11,7 +11,6 @@ export async function GET(request: NextRequest) {
 
 	// Parse geolocation data from the cookie
 	const customGeo = geoCookie ? JSON.parse(geoCookie) : {}
-	console.log(customGeo)
 
 	try {
 		const session: any = await getServerSession(authOptions)

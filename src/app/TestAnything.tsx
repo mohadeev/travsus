@@ -4,7 +4,7 @@ import axios from 'axios'
 const TestAnything = () => {
 	const country = 'United States'
 
-	async function getFamousCities(country:any) {
+	async function getFamousCities(country: any) {
 		try {
 			const response = await axios.get(
 				'https://nominatim.openstreetmap.org/search',
@@ -22,11 +22,7 @@ const TestAnything = () => {
 			const cities = response.data
 
 			if (cities.length > 0) {
-				console.log(`Famous cities in ${country}:`)
-				cities.forEach((city:any) => {
-					console.log(city)
-					console.log(`${city.display_name}`)
-				})
+				cities.forEach((city: any) => {})
 			} else {
 				console.log(`No cities found for ${country}.`)
 			}
@@ -54,7 +50,6 @@ const TestAnything = () => {
 		// 	})
 		// 	.then((data) => {
 		// 		// Process and log the data
-		// 		console.log(data)
 		// 	})
 		// 	.catch((error) => {
 		// 		console.error('Error:', error)

@@ -51,7 +51,6 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 	let result = convertString(title)
 	const href = `/q=tour?serviceId=${id}&name=${result}` as Route
 
-	console.log(result) // Output: "hello_world_this_is_a_test"
 
 	const renderSliderGallery = () => {
 		return (

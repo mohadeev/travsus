@@ -38,7 +38,6 @@ const SiteHeader = () => {
 	const isUserLoggedIn = useSelector(
 		(state: any) => state.userReducer.isUserLoggedIn,
 	)
-	console.log('isUserLoggedIn', isUserLoggedIn)
 
 	const anchorRef = useRef<HTMLDivElement>(null)
 

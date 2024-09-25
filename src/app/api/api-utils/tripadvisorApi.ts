@@ -22,9 +22,7 @@ export const tripadvisorApi = async ({ params, method, locationId }: any) => {
 	// Create a URLSearchParams paramsect from the paramsect
 	const queryString = new URLSearchParams(params).toString()
 	try {
-		const finalString = `&${queryString}`
 		const linkFetch = `${url}key=${process.env.TRIPADVISOR_ACCESS_TOKEN}&${queryString}`
-		console.log(linkFetch)
 		const response = await fetch(linkFetch, options)
 		const data = await response.json()
 		return { data: data, error: false }

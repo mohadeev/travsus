@@ -80,7 +80,6 @@ const creatingServiceSlice = createSlice({
 		) => {
 			const { path, value } = action.payload
 			updateNestedStateWithMap(state, path, value)
-			console.log('service', state.service)
 		},
 	},
 })

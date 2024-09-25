@@ -18,6 +18,7 @@ import TestAnything from './TestAnything'
 // import { headers } from 'next/headers'
 import { redirect } from 'next/navigation'
 import { usePathname } from 'next/navigation'
+import { useEffect, useState } from 'react'
 
 const poppins = Poppins({
 	subsets: ['latin'],
@@ -47,12 +48,8 @@ export default function RootLayout({
 	// Check if the environment is local or production
 	const isLocalhost = process.env.NODE_ENV === 'development'
 	const pathname = usePathname()
-	console.log('pathname', pathname)
 	const hasSubdomain = pathname.includes('coming-soon')
-	//  parts.length >= 2 // Subdomain exists if more than two parts
-	// if (!pathname.includes('coming-soon')) {
-	// 	redirect('coming-soon')
-	// }
+
 
 	const [windowIn, setWindowIn] = useState(false)
 	// useEffect(() => {
@@ -137,22 +134,4 @@ export default function RootLayout({
 			)}
 		</html>
 	)
-}
-import type { InferGetServerSidePropsType, GetServerSideProps } from 'next'
-import { useEffect, useState } from 'react'
-
-export async function GetServerSideProps(context: any) {
-	const { req } = context
-	const host = req.headers.host // localhost:3000
-	const protocol = req.headers['x-forwarded-proto'] || 'http' // Get protocol
-
-	// Get the full URL, including path
-	const fullUrl = `${protocol}://${host}${req.url}`
-	console.log('fullUrl', fullUrl)
-
-	return {
-		props: {
-			fullUrl, // Pass full URL to the component as a prop
-		},
-	}
 }

@@ -3,7 +3,6 @@ import React from 'react'
 import allHeadersReqJson from './allHeadersReqJson'
 
 const basedPostUrlRequestLogedIn = async (url: string, body: any) => {
-	console.log('body: ', JSON.stringify(body))
 
 	const response = await fetch(url, {
 		method: 'POST',

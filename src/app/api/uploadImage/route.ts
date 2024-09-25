@@ -8,7 +8,6 @@ import prisma from '@/prisma'
 import cloudinary from '@/utils/cloudinary'
 
 export async function POST(request: any) {
-	console.log('reesut maded her')
 
 	try {
 		const formData = await request.formData()
