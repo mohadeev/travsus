@@ -75,7 +75,7 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 					<div className="flex items-center space-x-2 text-sm text-neutral-500 dark:text-neutral-400">
 						{size === 'default' && <MapPinIcon className="h-4 w-4" />}
 						{newLocation?.map(({ country, city }: any) => (
-							<span className="">
+							<span className="" key={city}>
 								{country} - {city}
 							</span>
 						))}
