@@ -271,8 +271,8 @@ const ListingExperiencesDetailPage: FC<
 
 				{/* comment */}
 				<div className="divide-y divide-neutral-100 dark:divide-neutral-800">
-					{reviews?.map((review: any) => (
-						<CommentListing {...review} className="py-8" />
+					{reviews?.map((review: any, i: number) => (
+						<CommentListing key={i} {...review} className="py-8" />
 					))}
 
 					<div className="pt-8">
