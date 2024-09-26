@@ -17,8 +17,8 @@ import getFetchDataFromApi from '@/utils/getFetchDataFromApi'
 const DetailtLayout = ({ children }: { children: ReactNode }) => {
 	const dispatch = useDispatch()
 	const thisPathname = usePathname()
-	// const searchParams = useSearchParams()
-	// const serviceId = searchParams.get('serviceId')
+	const searchParams = useSearchParams()
+	const serviceId = searchParams.get('serviceId')
 
 	const getImageGalleryListing = () => {
 		if (thisPathname?.includes('/listing-stay-detail')) {
@@ -34,21 +34,21 @@ const DetailtLayout = ({ children }: { children: ReactNode }) => {
 		return []
 	}
 
-	// useEffect(() => {
-	// 	;(async () => {
-	// 		try {
-	// 			const serviceData = await getFetchDataFromApi(
-	// 				'/api/listing/get/getTourData?',
-	// 				{
-	// 					id: serviceId,
-	// 				},
-	// 			)
-	// 			dispatch(updateServiceState({ path: 'service', value: serviceData }))
-	// 		} catch (error) {
-	// 			console.error(error)
-	// 		}
-	// 	})()
-	// }, [serviceId, dispatch]) // Dispatch included in the dependency array
+	useEffect(() => {
+		;(async () => {
+			try {
+				const serviceData = await getFetchDataFromApi(
+					'/api/listing/get/getTourData?',
+					{
+						id: serviceId,
+					},
+				)
+				dispatch(updateServiceState({ path: 'service', value: serviceData }))
+			} catch (error) {
+				console.error(error)
+			}
+		})()
+	}, [serviceId, dispatch]) // Dispatch included in the dependency array
 
 	return (
 		<div className="ListingDetailPage">
