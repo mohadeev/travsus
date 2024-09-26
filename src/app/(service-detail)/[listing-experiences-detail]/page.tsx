@@ -271,10 +271,10 @@ const ListingExperiencesDetailPage: FC<
 
 				{/* comment */}
 				<div className="divide-y divide-neutral-100 dark:divide-neutral-800">
-					{/* <CommentListing className="py-8" />
-					<CommentListing className="py-8" />
-					<CommentListing className="py-8" />
-					<CommentListing className="py-8" /> */}
+					{reviews?.map((review: any) => (
+						<CommentListing {...review} className="py-8" />
+					))}
+
 					<div className="pt-8">
 						<ButtonSecondary>View more 20 reviews</ButtonSecondary>
 					</div>
@@ -351,6 +351,18 @@ const ListingExperiencesDetailPage: FC<
 						</ul>
 					</div>
 				</div>
+			</div>
+		)
+	}
+	const itinerary = () => {
+		return (
+			<div className="listingSection__wrap">
+				{/* <div className="relative h-[100px] w-[3px] rounded-full bg-transparent">
+					<div className="absolute left-1/2 top-0 flex h-[40px] w-[40px] -translate-x-1/2 transform items-center justify-center rounded-full bg-black text-white">
+						1
+					</div>
+					
+				</div> */}
 			</div>
 		)
 	}
@@ -480,7 +492,9 @@ const ListingExperiencesDetailPage: FC<
 				{/* CONTENT */}
 				<div className="w-full space-y-8 lg:w-3/5 lg:space-y-10 lg:pr-10 xl:w-2/3">
 					{renderSection1()}
+
 					{renderSection2()}
+					{itinerary()}
 					{renderSection3()}
 					<SectionDateRange />
 

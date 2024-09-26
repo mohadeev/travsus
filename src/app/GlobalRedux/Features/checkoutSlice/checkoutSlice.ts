@@ -60,12 +60,12 @@ function updateNestedStateWithMap(state: any, path: string, value: any) {
 }
 
 // Create the slice
-const creatingServiceSlice = createSlice({
+const checkoutSlice = createSlice({
 	name: 'state',
 	initialState,
 	reducers: {
 		// Update state based on dynamic path using Map and no loops
-		updateServiceState: (
+		updateCheckoutServiceState: (
 			state,
 			action: PayloadAction<UpdateServiceStatePayload>,
 		) => {
@@ -76,7 +76,7 @@ const creatingServiceSlice = createSlice({
 })
 
 // Export the action
-export const { updateServiceState } = creatingServiceSlice.actions
+export const { updateCheckoutServiceState } = checkoutSlice.actions
 
 // Export the reducer to be included in the store
-export default creatingServiceSlice.reducer
+export default checkoutSlice.reducer
