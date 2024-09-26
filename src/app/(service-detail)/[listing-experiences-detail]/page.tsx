@@ -19,6 +19,7 @@ import StayDatesRangeInput from './StayDatesRangeInput'
 import GuestsInput from './GuestsInput'
 import SectionDateRange from '../SectionDateRange'
 import { Route } from 'next'
+import { useSelector } from 'react-redux'
 
 export interface ListingExperiencesDetailPageProps {}
 
@@ -32,6 +33,13 @@ const ListingExperiencesDetailPage: FC<
 		router.push(`${thisPathname}/?modal=PHOTO_TOUR_SCROLLABLE` as Route)
 	}
 
+	const {
+		name: title,
+		region,
+		start,
+	}: any = useSelector((state: any) => state.creatingServiceSlice.service)
+	let newLocation = region
+
 	const renderSection1 = () => {
 		return (
 			<div className="listingSection__wrap !space-y-6">
@@ -43,7 +51,7 @@ const ListingExperiencesDetailPage: FC<
 
 				{/* 2 */}
 				<h2 className="text-2xl font-semibold sm:text-3xl lg:text-4xl">
-					Trang An Boat Tour & Mua Cave
+					{title}
 				</h2>
 
 				{/* 3 */}
@@ -52,7 +60,12 @@ const ListingExperiencesDetailPage: FC<
 					<span>·</span>
 					<span>
 						<i className="las la-map-marker-alt"></i>
-						<span className="ml-1"> Tokyo, Jappan</span>
+						{newLocation?.map(({ country }: any) => (
+							<span key={country} className="ml-1">
+								{country} - {start?.name}
+								{/* <span className="ml-1"> Tokyo, Jappan</span> */}
+							</span>
+						))}
 					</span>
 				</div>
 
