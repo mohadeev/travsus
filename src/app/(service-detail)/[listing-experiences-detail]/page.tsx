@@ -20,6 +20,7 @@ import GuestsInput from './GuestsInput'
 import SectionDateRange from '../SectionDateRange'
 import { Route } from 'next'
 import { useSelector } from 'react-redux'
+import handleCreateBooking from '@/utils/api-utils/handleCreateBooking'
 
 export interface ListingExperiencesDetailPageProps {}
 
@@ -43,6 +44,8 @@ const ListingExperiencesDetailPage: FC<
 	}: any = useSelector((state: any) => state.creatingServiceSlice.service)
 	const PHOTOS: any = images?.map(({ url }: any) => url)
 	let newLocation = region
+	const regionC = newLocation?.length > 0 ? newLocation[0]?.region : ''
+	const country = newLocation?.length > 0 ? newLocation[0]?.country : ''
 
 	const renderSection1 = () => {
 		return (
@@ -64,12 +67,9 @@ const ListingExperiencesDetailPage: FC<
 					<span>·</span>
 					<span>
 						<i className="las la-map-marker-alt"></i>
-						{newLocation?.map(({ country }: any) => (
-							<span key={country} className="ml-1">
-								{country} - {start?.name}
-								{/* <span className="ml-1"> Tokyo, Jappan</span> */}
-							</span>
-						))}
+						<span className="ml-1">
+							{country} - {start?.name}
+						</span>
 					</span>
 				</div>
 
@@ -290,7 +290,11 @@ const ListingExperiencesDetailPage: FC<
 				<div>
 					<h2 className="text-2xl font-semibold">Location</h2>
 					<span className="mt-2 block text-neutral-500 dark:text-neutral-400">
-						San Diego, CA, United States of America (SAN-San Diego Intl.)
+						<span className="mt-2 block text-neutral-500 dark:text-neutral-400">
+							{regionC} - &nbsp;
+							{country} - &nbsp;
+							{start?.name}
+						</span>
 					</span>
 				</div>
 				<div className="w-14 border-b border-neutral-200 dark:border-neutral-700" />
@@ -407,7 +411,9 @@ const ListingExperiencesDetailPage: FC<
 				</div>
 
 				{/* SUBMIT */}
-				<ButtonPrimary href={'/checkout'}>Reserve</ButtonPrimary>
+				<ButtonPrimary onClick={() => handleCreateBooking({})}>
+					Reserve
+				</ButtonPrimary>
 			</div>
 		)
 	}
@@ -498,7 +504,7 @@ const ListingExperiencesDetailPage: FC<
 					{renderSection3()}
 					<SectionDateRange />
 
-					{renderSection5()}
+					{/* {renderSection5()} */}
 					{renderSection6()}
 					{renderSection7()}
 					{renderSection8()}

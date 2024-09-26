@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { getServerSession } from 'next-auth/next'
 import { authOptions } from '../../auth/[...nextauth]/authOptions'
 import { parse } from 'cookie'
+import currentServerUser from '../currentServerUser'
 //coment
 export async function GET(request: NextRequest) {
 	const cookies = request.headers.get('cookie')
@@ -13,6 +14,8 @@ export async function GET(request: NextRequest) {
 	const customGeo = geoCookie ? JSON.parse(geoCookie) : {}
 
 	try {
+		const currentUser = await currentServerUser()
+		// console.log('currentUser: ', currentUser)
 		const session: any = await getServerSession(authOptions)
 		if (!session || !session?.user?.email) {
 			return NextResponse.json(

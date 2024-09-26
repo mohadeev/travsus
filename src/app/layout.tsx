@@ -1,5 +1,9 @@
 'use client'
 import { Poppins } from 'next/font/google'
+import { Inter } from '@next/font/google'
+
+import allins from 'next/font/google'
+
 import SiteHeader from './(client-components)/(Header)/SiteHeader'
 import ClientCommons from './ClientCommons'
 import './globals.css'
@@ -21,6 +25,11 @@ import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
 const poppins = Poppins({
+	subsets: ['latin'],
+	display: 'swap',
+	weight: ['300', '400', '500', '600', '700'],
+})
+const inter = Inter({
 	subsets: ['latin'],
 	display: 'swap',
 	weight: ['300', '400', '500', '600', '700'],
@@ -50,18 +59,8 @@ export default function RootLayout({
 	const pathname = usePathname()
 	const hasSubdomain = pathname.includes('coming-soon')
 
-
 	const [windowIn, setWindowIn] = useState(false)
-	// useEffect(() => {
-	// 	if (typeof window !== 'undefined') {
-	// 		setWindowIn(true)
-	// 		const hostname = window.location.hostname
-	// 		const domainParts = hostname.split('.')
-	// 		if (domainParts.length <= 1 && !hasSubdomain) {
-	// 			redirect('coming-soon')
-	// 		}
-	// 	}
-	// }, [pathname])
+
 	useEffect(() => {
 		if (typeof window !== 'undefined') {
 			// Add Google Tag Manager Script
@@ -89,7 +88,7 @@ export default function RootLayout({
 	}, [])
 
 	return (
-		<html lang="en" className={poppins.className}>
+		<html lang="en" className={inter.className}>
 			<head>
 				{/* Google Tag Manager - GTM */}
 				<script

@@ -397,7 +397,7 @@ const ListingCarDetailPage: FC<ListingCarDetailPageProps> = ({}) => {
         </div>
 
         {/* SUBMIT */}
-        <ButtonPrimary href={"/checkout"}>Reserve</ButtonPrimary>
+        <ButtonPrimary href={"/checkout/id" as Route}>Reserve</ButtonPrimary>
       </div>
     );
   };
