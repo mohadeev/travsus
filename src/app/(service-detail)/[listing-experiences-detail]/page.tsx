@@ -13,7 +13,7 @@ import Input from '@/shared/Input'
 import { usePathname, useRouter } from 'next/navigation'
 import LikeSaveBtns from '@/components/LikeSaveBtns'
 import StartRating from '@/components/StartRating'
-import { includes_demo, PHOTOS } from './constant'
+import { includes_demo } from './constant'
 import Image from 'next/image'
 import StayDatesRangeInput from './StayDatesRangeInput'
 import GuestsInput from './GuestsInput'
@@ -37,7 +37,10 @@ const ListingExperiencesDetailPage: FC<
 		name: title,
 		region,
 		start,
+		images,
+		overview,
 	}: any = useSelector((state: any) => state.creatingServiceSlice.service)
+	const PHOTOS: any = images?.map(({ url }: any) => url)
 	let newLocation = region
 
 	const renderSection1 = () => {
@@ -75,7 +78,7 @@ const ListingExperiencesDetailPage: FC<
 					<span className="ml-2.5 text-neutral-500 dark:text-neutral-400">
 						Hosted by{' '}
 						<span className="font-medium text-neutral-900 dark:text-neutral-200">
-							Kevin Francis
+							Travsus{' '}
 						</span>
 					</span>
 				</div>
@@ -106,50 +109,8 @@ const ListingExperiencesDetailPage: FC<
 		return (
 			<div className="listingSection__wrap">
 				<h2 className="text-2xl font-semibold">Experiences descriptions</h2>
-				<div className="w-14 border-b border-neutral-200 dark:border-neutral-700"></div>
 				<div className="text-neutral-6000 dark:text-neutral-300">
-					<p>
-						TRANG AN BOAT TOUR & MUA CAVE CLIMBING TOUR FROM HANOI
-						<br />
-						<br />
-						07:30 – 08:00 – Our guide will meet you at your hotel/stay and start
-						a 120km comfortable Limousine bus journey through the verdant
-						landscape. Stopover for a rest on the way.
-						<br />
-						<br />
-						BAI DINH PAGODA EXPLORER.
-						<br />
-						<br />
-						10:30 – Arrive Bai Dinh pagoda complex, get on electric cars to
-						visit massive architecture.
-						<br />
-						<br />
-						12:15 – Enjoy the buffet lunch at our restaurant, a great place to
-						savor the flavours of Vietnamese food.
-						<br />
-						<br />
-						TRANG AN TOUR ON BOAT.
-						<br />
-						<br />
-						13:30 – Visit Trang An Grottoes, get on a rowing boat traveling
-						along the river with scenic mountain and green fields landscape.
-						<br />
-						<br />
-						MUA CAVE HIKING. TAKE PICTURE
-						<br />
-						<br />
-						15:45 – Arrive at Mua Cave and start an amazing trek up to the top
-						of Ngoa Long mountain.
-						<br />
-						<br />
-						17:30 – 20:00 – Return to our Limousine bus and then come back to
-						Hanoi. Drop you off at your hotel/stay. Other things to note
-						<br />
-						<br />
-						It is one full day tour. Start from 07.30 AM and finish at 20.00. We
-						just put one hour and default departure time because we have many
-						other tours. IF you need any further details
-					</p>
+					<p>{overview}</p>
 				</div>
 			</div>
 		)
@@ -447,7 +408,7 @@ const ListingExperiencesDetailPage: FC<
 					>
 						<Image
 							fill
-							src={PHOTOS[0]}
+							src={PHOTOS?.length >= 1 ? PHOTOS[0] : ''}
 							alt="photo 0"
 							className="rounded-md object-cover sm:rounded-xl"
 							sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
@@ -463,7 +424,7 @@ const ListingExperiencesDetailPage: FC<
 						<Image
 							fill
 							className="rounded-md object-cover sm:rounded-xl"
-							src={PHOTOS[1]}
+							src={PHOTOS?.length >= 1 ? PHOTOS[1] : ''}
 							alt="photo 1"
 							sizes="400px"
 						/>
@@ -471,30 +432,32 @@ const ListingExperiencesDetailPage: FC<
 					</div>
 
 					{/*  */}
-					{PHOTOS.filter((_, i) => i >= 2 && i < 4).map((item, index) => (
-						<div
-							key={index}
-							className={`relative overflow-hidden rounded-md sm:rounded-xl ${
-								index >= 2 ? 'block' : ''
-							}`}
-						>
-							<div className="aspect-h-3 aspect-w-4">
-								<Image
-									fill
-									className="h-full w-full rounded-md object-cover sm:rounded-xl"
-									src={item || ''}
-									alt="photos"
-									sizes="400px"
+					{PHOTOS?.filter((_: any, i: number) => i >= 2 && i < 4).map(
+						(item: any, index: any) => (
+							<div
+								key={index}
+								className={`relative overflow-hidden rounded-md sm:rounded-xl ${
+									index >= 2 ? 'block' : ''
+								}`}
+							>
+								<div className="aspect-h-3 aspect-w-4">
+									<Image
+										fill
+										className="h-full w-full rounded-md object-cover sm:rounded-xl"
+										src={item || ''}
+										alt="photos"
+										sizes="400px"
+									/>
+								</div>
+
+								{/* OVERLAY */}
+								<div
+									className="absolute inset-0 cursor-pointer bg-neutral-900 bg-opacity-20 opacity-0 transition-opacity hover:opacity-100"
+									onClick={handleOpenModalImageGallery}
 								/>
 							</div>
-
-							{/* OVERLAY */}
-							<div
-								className="absolute inset-0 cursor-pointer bg-neutral-900 bg-opacity-20 opacity-0 transition-opacity hover:opacity-100"
-								onClick={handleOpenModalImageGallery}
-							/>
-						</div>
-					))}
+						),
+					)}
 
 					<div
 						className="absolute bottom-3 left-3 z-10 hidden cursor-pointer rounded-xl bg-neutral-100 px-4 py-2 text-neutral-500 hover:bg-neutral-200 md:flex md:items-center md:justify-center"

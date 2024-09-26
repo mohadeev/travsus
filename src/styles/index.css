@@ -488,8 +488,10 @@
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .hiddenScrollbar {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 .z-max {
@@ -535,11 +537,13 @@
 }
 
 .nc-origin-100 {
-  transform-origin: 100% 50% 0px;
+  -webkit-transform-origin: 100% 50% 0px;
+          transform-origin: 100% 50% 0px;
 }
 
 .nc-origin-50 {
-  transform-origin: 50% 50% 0px;
+  -webkit-transform-origin: 50% 50% 0px;
+          transform-origin: 50% 50% 0px;
 }
 
 .nc-hero-field-padding {
@@ -552,22 +556,27 @@
 
 .nc-hero-field-focused {
   @apply rounded-full dark:bg-white/5;
-  box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+  -webkit-box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+          box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
 }
 
 .ListingDetailPage .nc-hero-field-focused {
   @apply rounded-3xl shadow-2xl;
 }
+
 .ListingDetailPage.nc-ListingExperiencesDetailPage .ExperiencesDateSingleInput .nc-hero-field-focused {
   @apply rounded-r-none;
 }
+
 .ListingDetailPage.nc-ListingExperiencesDetailPage .listingExperiencesDetailPage__GuestsInput .nc-hero-field-focused {
   @apply rounded-l-none;
 }
+
 .ListingDetailPage .DateRangePickerInput_clearDates,
 .ListingDetailPage .SingleDatePickerInput_clearDate {
   @apply rounded-full bg-neutral-200/90 dark:bg-white/10;
 }
+
 .ListingDetailPage .DateRangePickerInput_clearDates svg,
 .ListingDetailPage .SingleDatePickerInput_clearDate svg {
   @apply w-2 fill-neutral-700 dark:fill-neutral-300;
@@ -583,50 +592,74 @@
 
 .nc-hero-field-focused--2 {
   @apply rounded-full dark:bg-white/5;
-  box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+  -webkit-box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+          box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
 }
 
 .nc-flex-1 {
-  flex: 1 0 0%;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 0%;
+          flex: 1 0 0%;
 }
 
 .nc-flex-1\.5 {
-  flex: 1.5 0 0%;
+  -webkit-box-flex: 1.5;
+      -ms-flex: 1.5 0 0%;
+          flex: 1.5 0 0%;
 }
 
 .nc-flex-1\.5-auto {
-  flex: 1.5 0 auto;
+  -webkit-box-flex: 1.5;
+      -ms-flex: 1.5 0 auto;
+          flex: 1.5 0 auto;
 }
 
 .nc-flex-2 {
-  flex: 2 0 0%;
+  -webkit-box-flex: 2;
+      -ms-flex: 2 0 0%;
+          flex: 2 0 0%;
 }
 
 .nc-flex-2-auto {
-  flex: 2 0 auto;
+  -webkit-box-flex: 2;
+      -ms-flex: 2 0 auto;
+          flex: 2 0 auto;
 }
 
 .nc-flex-2\.5 {
-  flex: 2.5 0 0%;
+  -webkit-box-flex: 2.5;
+      -ms-flex: 2.5 0 0%;
+          flex: 2.5 0 0%;
 }
 
 @screen lg {
   .lg\:nc-flex-1\.5 {
-    flex: 1.5 0 0%;
+    -webkit-box-flex: 1.5;
+        -ms-flex: 1.5 0 0%;
+            flex: 1.5 0 0%;
   }
   .lg\:nc-flex-1\.5-auto {
-    flex: 1.5 0 auto;
+    -webkit-box-flex: 1.5;
+        -ms-flex: 1.5 0 auto;
+            flex: 1.5 0 auto;
   }
   .lg\:nc-flex-2 {
-    flex: 2 0 0%;
+    -webkit-box-flex: 2;
+        -ms-flex: 2 0 0%;
+            flex: 2 0 0%;
   }
   .lg\:nc-flex-2-auto {
-    flex: 2 0 auto;
+    -webkit-box-flex: 2;
+        -ms-flex: 2 0 auto;
+            flex: 2 0 auto;
   }
   .lg\:nc-flex-2\.5 {
-    flex: 2.5 0 0%;
+    -webkit-box-flex: 2.5;
+        -ms-flex: 2.5 0 0%;
+            flex: 2.5 0 0%;
   }
 }
+
 .nc-icon-field {
   @apply w-5 h-5 lg:w-7 lg:h-7;
 }
@@ -651,11 +684,11 @@ button.gm-control-active.gm-fullscreen-control {
   @apply w-full flex flex-col rounded-2xl border-b border-t border-l border-r border-neutral-200 dark:border-neutral-700 space-y-6 xl:space-y-7 pb-10 p-2 sm:p-4 xl:px-8 xl:py-6;
 }
 
-input[type=time]::-webkit-calendar-picker-indicator {
+input[type="time"]::-webkit-calendar-picker-indicator {
   @apply dark:bg-neutral-500 rounded-md;
 }
 
-[type=button] {
+[type="button"] {
   -webkit-appearance: none !important;
 }
 
@@ -711,6 +744,15 @@ input[type=time]::-webkit-calendar-picker-indicator {
   @apply translate-y-full;
 }
 
+@-webkit-keyframes myblur {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 @keyframes myblur {
   0% {
     opacity: 0;
@@ -719,8 +761,10 @@ input[type=time]::-webkit-calendar-picker-indicator {
     opacity: 1;
   }
 }
+
 .nc-custom-shadow-1 {
-  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+  -webkit-box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+          box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
 }
 
 .react-datepicker {
@@ -755,21 +799,27 @@ input[type=time]::-webkit-calendar-picker-indicator {
   @apply w-full flex items-center justify-center cursor-pointer empty:opacity-0 empty:cursor-auto empty:hover:bg-transparent text-sm;
   @apply empty:bg-transparent !important;
 }
+
 .react-datepicker__day span {
   @apply rounded-full hover:bg-gray-100 dark:hover:bg-gray-700/60;
 }
+
 .react-datepicker__day--in-range, .react-datepicker__day--in-selecting-range {
   @apply bg-gray-100 dark:bg-gray-700/50 rounded-none;
 }
+
 .react-datepicker__day--range-start, .react-datepicker__day--selecting-range-start {
   @apply rounded-l-full;
 }
+
 .react-datepicker__day--range-end, .react-datepicker__day--selecting-range-end {
   @apply rounded-r-full;
 }
+
 .react-datepicker__day--selected span, .react-datepicker__day--range-start span, .react-datepicker__day--range-end span, .react-datepicker__day--selecting-range-start span, .react-datepicker__day--selecting-range-end span {
   @apply bg-primary-500 dark:bg-primary-500 text-white rounded-full hover:bg-primary-500 dark:hover:bg-primary-500;
 }
+
 .react-datepicker__day--disabled {
   @apply text-neutral-400 dark:text-neutral-500;
 }
@@ -782,6 +832,7 @@ input[type=time]::-webkit-calendar-picker-indicator {
 .addListingDatePickerExclude .react-datepicker__day--disabled {
   @apply relative bg-gray-100 dark:bg-gray-700/50 rounded-none empty:opacity-0;
 }
+
 .addListingDatePickerExclude .react-datepicker__day--disabled::after {
   content: "";
   @apply block h-full absolute border-l border-neutral-300 dark:border-neutral-700 rotate-45;
@@ -789,4 +840,5 @@ input[type=time]::-webkit-calendar-picker-indicator {
 
 .nc-header-bg {
   @apply bg-white/70 dark:bg-neutral-900/60 backdrop-blur-2xl backdrop-filter;
-}/*# sourceMappingURL=index.css.map */
+}
+/*# sourceMappingURL=index.css.map */
