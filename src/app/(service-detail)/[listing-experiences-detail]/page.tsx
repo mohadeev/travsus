@@ -39,6 +39,7 @@ const ListingExperiencesDetailPage: FC<
 		start,
 		images,
 		overview,
+		reviews,
 	}: any = useSelector((state: any) => state.creatingServiceSlice.service)
 	const PHOTOS: any = images?.map(({ url }: any) => url)
 	let newLocation = region
@@ -244,7 +245,9 @@ const ListingExperiencesDetailPage: FC<
 		return (
 			<div className="listingSection__wrap">
 				{/* HEADING */}
-				<h2 className="text-2xl font-semibold">Reviews (23 reviews)</h2>
+				<h2 className="text-2xl font-semibold">
+					Reviews ({reviews?.length} reviews)
+				</h2>
 				<div className="w-14 border-b border-neutral-200 dark:border-neutral-700"></div>
 
 				{/* Content */}
@@ -268,10 +271,10 @@ const ListingExperiencesDetailPage: FC<
 
 				{/* comment */}
 				<div className="divide-y divide-neutral-100 dark:divide-neutral-800">
+					{/* <CommentListing className="py-8" />
 					<CommentListing className="py-8" />
 					<CommentListing className="py-8" />
-					<CommentListing className="py-8" />
-					<CommentListing className="py-8" />
+					<CommentListing className="py-8" /> */}
 					<div className="pt-8">
 						<ButtonSecondary>View more 20 reviews</ButtonSecondary>
 					</div>
