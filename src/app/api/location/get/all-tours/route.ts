@@ -7,8 +7,12 @@ export async function GET(request: NextRequest) {
 		const { searchParams } = new URL(request.url)
 		const tourId = searchParams.get('id')
 
-
 		const allToursData = await prisma.tour.findMany({
+			where: {
+				images: {
+					isEmpty: false, // This checks that the array has at least one element
+				},
+			},
 			// Example filter:
 			// where: {
 			//   start: { name: "Marrakech" },
