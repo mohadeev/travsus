@@ -429,19 +429,36 @@ const ListingExperiencesDetailPage: FC<
 			<header className="rounded-md sm:rounded-xl">
 				<div className="relative grid grid-cols-4 gap-1 sm:gap-2">
 					<div
-						className="relative col-span-3 row-span-3 cursor-pointer overflow-hidden rounded-md sm:rounded-xl"
+						className="relative col-span-2 row-span-2 cursor-pointer overflow-hidden rounded-md sm:rounded-xl"
 						onClick={handleOpenModalImageGallery}
 					>
 						<Image
-							alt="photo 1"
 							fill
-							className="rounded-md object-cover sm:rounded-xl"
 							src={PHOTOS[0]}
+							alt="photo 0"
+							className="rounded-md object-cover sm:rounded-xl"
 							sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
 						/>
 						<div className="absolute inset-0 bg-neutral-900 bg-opacity-20 opacity-0 transition-opacity hover:opacity-100"></div>
 					</div>
-					{PHOTOS.filter((_, i) => i >= 1 && i < 4).map((item, index) => (
+
+					{/*  */}
+					<div
+						className="relative col-span-1 row-span-2 cursor-pointer overflow-hidden rounded-md sm:rounded-xl"
+						onClick={handleOpenModalImageGallery}
+					>
+						<Image
+							fill
+							className="rounded-md object-cover sm:rounded-xl"
+							src={PHOTOS[1]}
+							alt="photo 1"
+							sizes="400px"
+						/>
+						<div className="absolute inset-0 bg-neutral-900 bg-opacity-20 opacity-0 transition-opacity hover:opacity-100"></div>
+					</div>
+
+					{/*  */}
+					{PHOTOS.filter((_, i) => i >= 2 && i < 4).map((item, index) => (
 						<div
 							key={index}
 							className={`relative overflow-hidden rounded-md sm:rounded-xl ${
@@ -450,10 +467,10 @@ const ListingExperiencesDetailPage: FC<
 						>
 							<div className="aspect-h-3 aspect-w-4">
 								<Image
-									alt="photos"
 									fill
 									className="h-full w-full rounded-md object-cover sm:rounded-xl"
 									src={item || ''}
+									alt="photos"
 									sizes="400px"
 								/>
 							</div>
@@ -471,6 +488,7 @@ const ListingExperiencesDetailPage: FC<
 						onClick={handleOpenModalImageGallery}
 					>
 						<Squares2X2Icon className="h-5 w-5" />
+
 						<span className="ml-2 text-sm font-medium text-neutral-800">
 							Show all photos
 						</span>
