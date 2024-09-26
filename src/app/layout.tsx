@@ -1,6 +1,6 @@
 'use client'
 import { Poppins } from 'next/font/google'
-import { Inter } from '@next/font/google'
+// import { Inter } from '@next/font/google'
 
 import allins from 'next/font/google'
 
@@ -29,7 +29,10 @@ const poppins = Poppins({
 	display: 'swap',
 	weight: ['300', '400', '500', '600', '700'],
 })
-const inter = Inter({
+import { Inter_Tight } from 'next/font/google'
+
+// If loading a variable font, you don't need to specify the font weight
+const inter = Inter_Tight({
 	subsets: ['latin'],
 	display: 'swap',
 	weight: ['300', '400', '500', '600', '700'],
