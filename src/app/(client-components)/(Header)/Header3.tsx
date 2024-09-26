@@ -90,6 +90,7 @@ const Header3: FC<Header3Props> = ({ className = '' }) => {
 						onTabChange={setCurrentTab}
 						defaultTab={currentTab}
 					/>
+					
 				</div>
 			</div>
 		)
@@ -175,7 +176,6 @@ const Header3: FC<Header3Props> = ({ className = '' }) => {
 							</div>
 							{renderHeroSearch()}
 						</div>
-
 						{/* NAV */}
 						<div className="relative z-10 hidden flex-1 justify-end text-neutral-700 dark:text-neutral-100 md:flex">
 							<div className="flex space-x-1">

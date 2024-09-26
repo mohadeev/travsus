@@ -114,7 +114,7 @@ export default function SharedModal({
 											<ChevronLeftIcon className="h-6 w-6" />
 										</button>
 									)}
-									{index + 1 < images.length && (
+									{index + 1 < images?.length && (
 										<button
 											className="absolute right-3 top-[calc(50%-16px)] rounded-full bg-black/50 p-3 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white focus:outline-none"
 											style={{ transform: 'translate3d(0, 0, 0)' }}
@@ -179,7 +179,7 @@ export default function SharedModal({
 								className="mx-auto mb-6 mt-6 flex aspect-[3/2] h-14"
 							>
 								<AnimatePresence initial={false}>
-									{filteredImages.map(({ id, url }) => (
+									{filteredImages?.map(({ id, url }) => (
 										<motion.button
 											initial={{
 												width: '0%',
@@ -198,7 +198,7 @@ export default function SharedModal({
 													? 'z-20 rounded-md shadow shadow-black/50'
 													: 'z-10'
 											} ${id === 0 ? 'rounded-l-md' : ''} ${
-												id === images.length - 1 ? 'rounded-r-md' : ''
+												id === images?.length - 1 ? 'rounded-r-md' : ''
 											} relative inline-block w-full shrink-0 transform-gpu overflow-hidden focus:outline-none`}
 										>
 											<Image

@@ -58,7 +58,7 @@ export default function GallerySlider({
 		trackMouse: true,
 	})
 
-	let currentImage: any = images[index]?.url || ''
+	let currentImage: any = images?.length >= 1 ? images[index]?.url : ''
 
 	return (
 		<MotionConfig
@@ -114,7 +114,7 @@ export default function GallerySlider({
 									<ChevronLeftIcon className="h-4 w-4" />
 								</button>
 							)}
-							{index + 1 < images.length && (
+							{index + 1 < images?.length && (
 								<button
 									className="absolute right-3 top-[calc(50%-16px)] flex h-8 w-8 items-center justify-center rounded-full border border-neutral-200 bg-white hover:border-neutral-300 focus:outline-none dark:border-neutral-6000 dark:bg-neutral-900 dark:hover:border-neutral-500"
 									style={{ transform: 'translate3d(0, 0, 0)' }}
@@ -129,7 +129,7 @@ export default function GallerySlider({
 					{/* Bottom Nav bar */}
 					<div className="absolute inset-x-0 bottom-0 h-10 rounded-b-lg bg-gradient-to-t from-neutral-900 opacity-50"></div>
 					<div className="absolute bottom-2 left-1/2 flex -translate-x-1/2 transform items-center justify-center space-x-1.5">
-						{images.map((_: any, i: any) => (
+						{images?.map((_: any, i: any) => (
 							<button
 								className={`h-1.5 w-1.5 rounded-full ${
 									i === index ? 'bg-white' : 'bg-white/60'

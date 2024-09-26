@@ -42,7 +42,7 @@ export default function Modal({
 	}
 
 	useKeypress('ArrowRight', () => {
-		if (index + 1 < images.length) {
+		if (index + 1 < images?.length) {
 			changePhotoId(index + 1)
 		}
 	})

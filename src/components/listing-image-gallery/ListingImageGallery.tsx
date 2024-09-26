@@ -96,7 +96,7 @@ const ListingImageGallery: FC<Props> = ({ images = DEMO_IMAGE }) => {
 				)}
 
 				<div className="columns-1 gap-4 sm:columns-2 xl:columns-3">
-					{images.map(({ id, url }) => (
+					{images?.map(({ id, url }) => (
 						<div
 							key={id}
 							onClick={() => {

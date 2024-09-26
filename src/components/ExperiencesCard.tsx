@@ -40,7 +40,7 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 		start,
 	}: any = data
 	let newLocation = region
-	if (region.length >= 1) {
+	if (region?.length >= 1) {
 		region[0].city = start?.name || ''
 	}
 
@@ -50,7 +50,6 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 
 	let result = convertString(title)
 	const href = `/q=tour?serviceId=${id}&name=${result}` as Route
-
 
 	const renderSliderGallery = () => {
 		return (
