@@ -9,7 +9,7 @@ import { ReactNode, Suspense, useEffect } from 'react'
 import MobileFooterSticky from './(components)/MobileFooterSticky'
 import { imageGallery as listingStayImageGallery } from './listing-stay-detail/constant'
 import { imageGallery as listingCarImageGallery } from './listing-car-detail/constant'
-import { imageGallery as listingExperienceImageGallery } from './[listing-experiences-detail]/constant'
+import { imageGallery as listingExperienceImageGallery } from './listing-experiences-detail/constant'
 import { updateServiceState } from '../GlobalRedux/Features/creatingServiceSlice/creatingServiceSlice'
 import { useDispatch } from 'react-redux'
 import getFetchDataFromApi from '@/utils/getFetchDataFromApi'
@@ -17,8 +17,8 @@ import getFetchDataFromApi from '@/utils/getFetchDataFromApi'
 const DetailtLayout = ({ children }: { children: ReactNode }) => {
 	const dispatch = useDispatch()
 	const thisPathname = usePathname()
-	const searchParams = useSearchParams()
-	const serviceId = searchParams.get('serviceId')
+	// const searchParams = useSearchParams()
+	// const serviceId = searchParams.get('serviceId')
 
 	const getImageGalleryListing = () => {
 		if (thisPathname?.includes('/listing-stay-detail')) {
@@ -34,21 +34,21 @@ const DetailtLayout = ({ children }: { children: ReactNode }) => {
 		return []
 	}
 
-	useEffect(() => {
-		;(async () => {
-			try {
-				const serviceData = await getFetchDataFromApi(
-					'/api/listing/get/getTourData?',
-					{
-						id: serviceId,
-					},
-				)
-				dispatch(updateServiceState({ path: 'service', value: serviceData }))
-			} catch (error) {
-				console.error(error)
-			}
-		})()
-	}, [serviceId, dispatch]) // Dispatch included in the dependency array
+	// useEffect(() => {
+	// 	;(async () => {
+	// 		try {
+	// 			const serviceData = await getFetchDataFromApi(
+	// 				'/api/listing/get/getTourData?',
+	// 				{
+	// 					id: serviceId,
+	// 				},
+	// 			)
+	// 			dispatch(updateServiceState({ path: 'service', value: serviceData }))
+	// 		} catch (error) {
+	// 			console.error(error)
+	// 		}
+	// 	})()
+	// }, [serviceId, dispatch]) // Dispatch included in the dependency array
 
 	return (
 		<div className="ListingDetailPage">
