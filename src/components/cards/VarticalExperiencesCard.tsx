@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import React from 'react'
 
 const VarticalExperiencesCard = ({ data }: any) => {
@@ -8,7 +9,7 @@ const VarticalExperiencesCard = ({ data }: any) => {
 	return (
 		<main className="flex w-full flex-col items-center justify-center">
 			<div className="border-10 border-blac relative h-[400px] w-full cursor-pointer overflow-hidden rounded-[40px] border-[10px] border-solid border-black text-white">
-				<img
+				<Image
 					src={firstImage}
 					alt={name}
 					className="absolute h-full w-full object-cover transition-opacity duration-300"
