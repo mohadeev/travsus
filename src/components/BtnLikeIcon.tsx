@@ -6,15 +6,19 @@ export interface BtnLikeIconProps {
 	className?: string
 	colorClass?: string
 	isLiked?: boolean
+	onClick?: any
 }
 
 const BtnLikeIcon: FC<BtnLikeIconProps> = ({
 	className = '',
 	colorClass = 'text-white bg-black bg-opacity-30 hover:bg-opacity-50',
 	isLiked = false,
+	onClick,
 }) => {
 	const [likedState, setLikedState] = useState(isLiked)
-	const handleAddToWishList = () => {}
+	const handleAddToWishList = () => {
+    
+  }
 
 	return (
 		<div

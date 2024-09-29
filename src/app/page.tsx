@@ -210,7 +210,7 @@
 // }
 
 // export default PageHome;
-
+// 'use client'
 import React from 'react'
 import SectionSubscribe2 from '@/components/SectionSubscribe2'
 import BackgroundSection from '@/components/BackgroundSection'
@@ -223,6 +223,11 @@ import CardCategory6 from '@/components/CardCategory6'
 import SectionGridFeaturePlaces from '@/components/SectionGridFeaturePlaces'
 import SectionGridFilterCard from './(experience-listings)/SectionGridFilterCard'
 import { headers } from 'next/headers'
+import sendEmail from '@/utils/email/sendMail'
+import VarticalExperiencesCard from '@/components/cards/VarticalExperiencesCard'
+import SectionGridVerticalCard from './(car-listings)/SectionGridVerticalCard'
+
+// import WellcomeTemplate from '@/components/email-templates/WellcomeTemplate'
 
 const DEMO_CATS_2: TaxonomyType[] = [
 	{
@@ -272,19 +277,51 @@ const DEMO_CATS_2: TaxonomyType[] = [
 	},
 ]
 
-function PageHome3() {
-	const headersList = headers()
-	const host = headersList.get('host') || '' // e.g., sub.example.com
-	const parts = host.split('.')
+async function PageHome3() {
+	// const response = await fetch('/api/send-email', {
+	// 	method: 'POST',
+	// 	body: JSON.stringify({ data: 'data' }),
+	// })
+	// console.log(response)
+	// sendEmail({
+	// 	to: 'skendoulmohamed@gmail.com',
+	// 	subject: 'first email',
+	// 	message: 'this is the first email data',
+	// 	Template: <WellcomeTemplate />,
+	// })
+	// useEffect(() => {
+	// 	function handleSubmit() {
+	// 		const postData = async () => {
+	// 			const data = {
+	// 				title: 'title',
+	// 				post: 'post',
+	// 			}
 
-	// Check if the environment is local or production
-	const isLocalhost = process.env.NODE_ENV === 'development'
+	// 			const response = await fetch('/api/send-email', {
+	// 				method: 'POST',
+	// 			})
+	// 			return response.json()
+	// 		}
+	// 		postData().then((data) => {
+	// 			alert(data.message)
+	// 		})
+	// 	}
 
-	// Determine if there's a subdomain
-	const hasSubdomain = parts.length >= 2 // Subdomain exists if more than two parts
+	// 	return () => {}
+	// }, [])
 
-	// Combine conditions into one variable
-	const subdomainStatus = isLocalhost || hasSubdomain
+	// const headersList = headers()
+	// const host = headersList.get('host') || '' // e.g., sub.example.com
+	// const parts = host.split('.')
+
+	// // Check if the environment is local or production
+	// const isLocalhost = process.env.NODE_ENV === 'development'
+
+	// // Determine if there's a subdomain
+	// const hasSubdomain = parts.length >= 2 // Subdomain exists if more than two parts
+
+	// // Combine conditions into one variable
+	// const subdomainStatus = isLocalhost || hasSubdomain
 	return (
 		<main className="nc-PageHome3 relative overflow-hidden">
 			{/* GLASSMOPHIN */}
@@ -322,6 +359,9 @@ function PageHome3() {
 
 				{/* SECTION */}
 				<SectionSubscribe2 />
+				{/* <WellcomeTemplate /> */}
+				{/* <VarticalExperiencesCard /> */}
+				<SectionGridVerticalCard />
 			</div>
 		</main>
 	)

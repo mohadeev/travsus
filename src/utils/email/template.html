@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>React in HTML with CSS</title>
+		<!-- CSS for styling -->
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				text-align: center;
+				margin-top: 50px;
+			}
+
+			.app {
+				padding: 20px;
+				background-color: #f0f0f0;
+				border-radius: 10px;
+				display: inline-block;
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+			}
+
+			h1 {
+				color: #333;
+			}
+
+			button {
+				background-color: #007bff;
+				color: white;
+				border: none;
+				padding: 10px 20px;
+				border-radius: 5px;
+				cursor: pointer;
+				font-size: 16px;
+			}
+
+			button:hover {
+				background-color: #0056b3;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- Container for React App -->
+		<div id="root"></div>
+
+		<!-- Load React and ReactDOM from a CDN -->
+		<script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+		<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+
+		<!-- Babel to compile JSX -->
+		<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+		<!-- React App -->
+		<script type="text/babel">
+			function App() {
+				const [count, setCount] = React.useState(0)
+
+				return (
+					<div className="app">
+						<h1>Hello, React!</h1>
+						<p>You clicked {count} times</p>
+						<button onClick={() => setCount(count + 1)}>Click me</button>
+					</div>
+				)
+			}
+
+			ReactDOM.render(<App />, document.getElementById('root'))
+		</script>
+	</body>
+</html>
+
+// import React from 'react' // import ReactDOMServer from 'react-dom/server' //
+const Template = () => { // return
+<div>template</div>
+// } // const Markup = ReactDOMServer.renderToString(<template />) //
+console.log(Markup) // export default Markup
