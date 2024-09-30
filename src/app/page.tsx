@@ -361,7 +361,7 @@ async function PageHome3() {
 				<SectionSubscribe2 />
 				{/* <WellcomeTemplate /> */}
 				{/* <VarticalExperiencesCard /> */}
-				<SectionGridVerticalCard />
+				{/* <SectionGridVerticalCard /> */}
 			</div>
 		</main>
 	)
