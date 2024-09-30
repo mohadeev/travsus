@@ -332,6 +332,7 @@ async function PageHome3() {
 			{/* SECTION HERO */}
 			<div className="container mb-24 px-1 sm:px-4">
 				<SectionHero3 className="" />
+				
 			</div>
 			<div className="container relative mb-24 space-y-24">
 				{/* SECTION 1 */}

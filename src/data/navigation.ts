@@ -165,123 +165,147 @@ const templatesChildrenMenus: NavItemType[] = [
 ]
 
 export const NAVIGATION_DEMO: NavItemType[] = [
+	// 	Tours
+	// Excursions
+	// Destinations
+	// Contact
 	{
 		id: ncNanoId(),
-		href: '/',
+		href: '/tours' as Route,
 		name: 'Home',
-		type: 'dropdown',
-		children: demoChildMenus,
-		isNew: true,
+		// type: 'dropdown',
+		// children: demoChildMenus,
+		// isNew: true,
 	},
 	{
 		id: ncNanoId(),
-		href: '/',
-		name: 'Five columns',
-		type: 'megaMenu',
-		megaMenu: megaMenuDemo,
+		href: '/excursions' as Route,
+		name: 'Excursions',
+		// type: 'dropdown',
+		// children: demoChildMenus,
+		// isNew: true,
 	},
 	{
 		id: ncNanoId(),
-		href: '/listing-stay',
-		name: 'Listing Page',
-		type: 'dropdown',
-		children: [
-			{
-				id: ncNanoId(),
-				href: '/listing-stay',
-				name: 'Stay listings',
-				type: 'dropdown',
-				children: [
-					{ id: ncNanoId(), href: '/listing-stay', name: 'Stay page' },
-					{
-						id: ncNanoId(),
-						href: '/listing-stay-map',
-						name: 'Stay page (map)',
-					},
-					{ id: ncNanoId(), href: '/listing-stay-detail', name: 'Stay Detail' },
-				],
-			},
-
-			//
-			{
-				id: ncNanoId(),
-				href: '/listing-experiences',
-				name: 'Experiences listings',
-				type: 'dropdown',
-				children: [
-					{
-						id: ncNanoId(),
-						href: '/listing-experiences',
-						name: 'Experiences page',
-					},
-					{
-						id: ncNanoId(),
-						href: '/listing-experiences-map',
-						name: 'Experiences page (map)',
-					},
-					{
-						id: ncNanoId(),
-						href: '/listing-experiences-detail',
-						name: 'Experiences Detail',
-					},
-				],
-			},
-
-			//
-			{
-				id: ncNanoId(),
-				href: '/listing-car',
-				name: 'Cars listings',
-				type: 'dropdown',
-				children: [
-					{ id: ncNanoId(), href: '/listing-car', name: 'Cars page' },
-					{ id: ncNanoId(), href: '/listing-car-map', name: 'Cars page (map)' },
-					{ id: ncNanoId(), href: '/listing-car-detail', name: 'Car Detail' },
-				],
-			},
-
-			//
-			{
-				id: ncNanoId(),
-				href: '/listing-real-estate',
-				name: 'Real Estate Listings',
-				type: 'dropdown',
-				children: [
-					{
-						id: ncNanoId(),
-						href: '/listing-real-estate',
-						name: 'Real Estate Listings',
-					},
-					{
-						id: ncNanoId(),
-						href: '/listing-real-estate-map',
-						name: 'Real Estate Maps',
-					},
-				],
-			},
-			//
-			{
-				id: ncNanoId(),
-				href: '/listing-flights',
-				name: 'Flights listings',
-			},
-		],
+		href: '/destinations' as Route,
+		name: 'Destinations',
+		// type: 'dropdown',
+		// children: demoChildMenus,
+		// isNew: true,
 	},
-	{
-		id: ncNanoId(),
-		href: '/author',
-		name: 'Templates',
-		type: 'dropdown',
-		children: templatesChildrenMenus,
-	},
-
-	{
-		id: ncNanoId(),
-		href: '/blog',
-		name: 'Other pages',
-		type: 'dropdown',
-		children: otherPageChildMenus,
-	},
+	// {
+	// 	id: ncNanoId(),
+	// 	href: '/',
+	// 	name: 'Home',
+	// 	type: 'dropdown',
+	// 	children: demoChildMenus,
+	// 	isNew: true,
+	// },
+	// {
+	// 	id: ncNanoId(),
+	// 	href: '/',
+	// 	name: 'Five columns',
+	// 	type: 'megaMenu',
+	// 	megaMenu: megaMenuDemo,
+	// },
+	// {
+	// 	id: ncNanoId(),
+	// 	href: '/listing-stay',
+	// 	name: 'Listing Page',
+	// 	type: 'dropdown',
+	// 	children: [
+	// 		{
+	// 			id: ncNanoId(),
+	// 			href: '/listing-stay',
+	// 			name: 'Stay listings',
+	// 			type: 'dropdown',
+	// 			children: [
+	// 				{ id: ncNanoId(), href: '/listing-stay', name: 'Stay page' },
+	// 				{
+	// 					id: ncNanoId(),
+	// 					href: '/listing-stay-map',
+	// 					name: 'Stay page (map)',
+	// 				},
+	// 				{ id: ncNanoId(), href: '/listing-stay-detail', name: 'Stay Detail' },
+	// 			],
+	// 		},
+	// 		//
+	// 		{
+	// 			id: ncNanoId(),
+	// 			href: '/listing-experiences',
+	// 			name: 'Experiences listings',
+	// 			type: 'dropdown',
+	// 			children: [
+	// 				{
+	// 					id: ncNanoId(),
+	// 					href: '/listing-experiences',
+	// 					name: 'Experiences page',
+	// 				},
+	// 				{
+	// 					id: ncNanoId(),
+	// 					href: '/listing-experiences-map',
+	// 					name: 'Experiences page (map)',
+	// 				},
+	// 				{
+	// 					id: ncNanoId(),
+	// 					href: '/listing-experiences-detail',
+	// 					name: 'Experiences Detail',
+	// 				},
+	// 			],
+	// 		},
+	// 		//
+	// 		{
+	// 			id: ncNanoId(),
+	// 			href: '/listing-car',
+	// 			name: 'Cars listings',
+	// 			type: 'dropdown',
+	// 			children: [
+	// 				{ id: ncNanoId(), href: '/listing-car', name: 'Cars page' },
+	// 				{ id: ncNanoId(), href: '/listing-car-map', name: 'Cars page (map)' },
+	// 				{ id: ncNanoId(), href: '/listing-car-detail', name: 'Car Detail' },
+	// 			],
+	// 		},
+	// 		//
+	// 		{
+	// 			id: ncNanoId(),
+	// 			href: '/listing-real-estate',
+	// 			name: 'Real Estate Listings',
+	// 			type: 'dropdown',
+	// 			children: [
+	// 				{
+	// 					id: ncNanoId(),
+	// 					href: '/listing-real-estate',
+	// 					name: 'Real Estate Listings',
+	// 				},
+	// 				{
+	// 					id: ncNanoId(),
+	// 					href: '/listing-real-estate-map',
+	// 					name: 'Real Estate Maps',
+	// 				},
+	// 			],
+	// 		},
+	// 		//
+	// 		{
+	// 			id: ncNanoId(),
+	// 			href: '/listing-flights',
+	// 			name: 'Flights listings',
+	// 		},
+	// 	],
+	// },
+	// {
+	// 	id: ncNanoId(),
+	// 	href: '/author',
+	// 	name: 'Templates',
+	// 	type: 'dropdown',
+	// 	children: templatesChildrenMenus,
+	// },
+	// {
+	// 	id: ncNanoId(),
+	// 	href: '/blog',
+	// 	name: 'Other pages',
+	// 	type: 'dropdown',
+	// 	children: otherPageChildMenus,
+	// },
 ]
 
 export const NAVIGATION_DEMO_2: NavItemType[] = [

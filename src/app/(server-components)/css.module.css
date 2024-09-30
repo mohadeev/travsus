@@ -1,0 +1,10 @@
+.className {
+	position: relative;
+	max-width: 1250px;
+	margin: 20px auto;
+}
+
+.img {
+	object-fit: cover;
+	object-position: bottom;
+}
