@@ -226,6 +226,7 @@ import { headers } from 'next/headers'
 import sendEmail from '@/utils/email/sendMail'
 import VarticalExperiencesCard from '@/components/cards/VarticalExperiencesCard'
 import SectionGridVerticalCard from './(car-listings)/SectionGridVerticalCard'
+import { signOut } from 'next-auth/react'
 
 // import WellcomeTemplate from '@/components/email-templates/WellcomeTemplate'
 
@@ -322,6 +323,7 @@ async function PageHome3() {
 
 	// // Combine conditions into one variable
 	// const subdomainStatus = isLocalhost || hasSubdomain
+	// signOut()
 	return (
 		<main className="nc-PageHome3 relative overflow-hidden">
 			{/* GLASSMOPHIN */}

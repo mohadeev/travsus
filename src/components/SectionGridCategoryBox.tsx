@@ -121,7 +121,7 @@ const SectionGridCategoryBox: React.FC<SectionGridCategoryBoxProps> = ({
 				Explore nearby here
 			</Heading>
 			<div className={`grid ${gridClassName} gap-5 sm:gap-6 md:gap-8`}>
-				{newCatecories.map((item, i) => (
+				{newCatecories?.map((item, i) => (
 					<CardComponentName key={i} taxonomy={item} />
 				))}
 			</div>

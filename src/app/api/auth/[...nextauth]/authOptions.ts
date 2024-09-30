@@ -1,6 +1,8 @@
 import GoogleProvider from 'next-auth/providers/google'
 import CredentialsProvider from 'next-auth/providers/credentials'
-import prisma from '@/prisma' // Assuming you have prisma properly set up
+import prisma from '@/prisma' // Ensure this imports your Prisma client
+import splitName from './utils/splitName'
+import sendEmail from '@/utils/email/sendMail'
 
 export const authOptions: any = {
 	providers: [
@@ -39,15 +41,52 @@ export const authOptions: any = {
 	],
 	callbacks: {
 		async signIn({ user }: { user: any }) {
-			// Check if user exists in your database using Prisma
+			// Check if the user exists in Prisma
 			const existingUser = await prisma.user.findUnique({
-				where: { email: user.email }, // Assuming the user object contains an email field
+				where: { email: user.email }, // Assuming the `user` object contains the email from the provider
 			})
 
 			if (existingUser) {
 				console.log('yes') // User exists
 			} else {
-				console.log('no') // User does not exist
+				// If the user doesn't exist, register the new user in Prisma
+				const { firstname, lastname } = splitName(user?.name)
+				console.log('user', firstname, lastname)
+				console.log('user', user)
+
+
+				try {
+					await prisma.user
+						.create({
+							data: {
+								email: user.email, // Email should come from the user object
+								username: user.name || '', // You can handle default username or null values here
+								password: '', // Since you are using providers like Google, there may be no password, adjust accordingly
+								phone: null, // Can be adjusted based on available data
+								senders: {}, // Set default or null values
+								library: {}, // Set default or null values
+								accountData: { firstname, lastname }, // Set default or null values
+							},
+						})
+						.then(() => {
+							if (user.email) {
+								sendEmail({
+									to: user.email,
+									subject: '',
+									message: '',
+									type: 'welcome',
+									emailData: {
+										name: firstname,
+										email: user.email,
+									},
+								})
+							}
+						})
+					console.log('no, user registered')
+				} catch (error) {
+					console.error('Error registering user:', error)
+					return false // Handle registration failure
+				}
 			}
 
 			return true // Continue the sign-in process

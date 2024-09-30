@@ -24,7 +24,7 @@ export async function GET(request: NextRequest) {
 			// 	// creator: true,
 			// },
 		})
-		console.log('allToursData', allToursData)
+		// console.log('allToursData', allToursData)
 
 		// Return the tour data as a JSON response
 		return NextResponse.json({ allToursData })

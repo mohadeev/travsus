@@ -4,7 +4,7 @@ import { emailTemplatesHeader } from './EmailTemplatesHeader'
 import { werticalExperienceCard } from './welcome/VerticalExperienceCard'
 import { EmailText } from './EmailText'
 import { EmailBlackButton } from './EmailBlackButton'
-export const welcomeTemplate = `
+export const welcomeTemplate = (data: any) => `
 <!DOCTYPE html>
 <html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" lang="en">
 <head>
@@ -32,7 +32,7 @@ font-family: Helvetica, Arial, sans-serif;
 <div style="max-width: 500px; margin:  0 auto;">
 ${emailTemplatesHeader} 
 ${welcomeHeaderMedia}  
-${EmailText('🌍 Your journey begins now, Travsus! ✨', 'color: rgb(0, 0, 0);  font-size: 50px; line-height: 54px; font-weight: bold;')}
+${EmailText('🌍 Your journey begins now, {{name}}! ✨', 'color: rgb(0, 0, 0);  font-size: 50px; line-height: 54px; font-weight: bold;')}
 ${EmailText('🎉 Welcome to the Travsus community! Get ready for travel inspiration straight to your inbox and curated recommendations from passionate travelers. ✨✈️🗺️ Exciting adventures are just around the corner!', '')}
 ${EmailBlackButton('Start exploring!', 'https://www.travsus.com/')} 
 ${EmailText('Adventure Awaits: Explore Diverse Experiences!', 'font-size: 20px; font-weight: 600;')}

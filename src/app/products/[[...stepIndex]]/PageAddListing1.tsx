@@ -22,7 +22,7 @@ const PageAddListing1: FC<PageAddListing1Props> = () => {
 			<div className="w-14 border-b border-neutral-200 dark:border-neutral-700"></div>
 			{/* FORM */}
 			<div className="space-y-8">
-				productCategory: {productCategory}
+				{/* productCategory: {productCategory} */}
 				{/* ITEM */}
 				<FormItem
 					label="Choose a product category"

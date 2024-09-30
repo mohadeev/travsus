@@ -90,7 +90,6 @@ const Header3: FC<Header3Props> = ({ className = '' }) => {
 						onTabChange={setCurrentTab}
 						defaultTab={currentTab}
 					/>
-					
 				</div>
 			</div>
 		)
@@ -165,6 +164,7 @@ const Header3: FC<Header3Props> = ({ className = '' }) => {
 						{/* Logo (lg+) */}
 						<div className="relative z-10 hidden flex-1 items-center md:flex">
 							<Logo />
+							
 						</div>
 
 						<div className="mx-auto flex flex-[2] lg:flex-none">
