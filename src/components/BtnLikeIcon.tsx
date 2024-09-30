@@ -1,5 +1,6 @@
 'use client'
 
+import addAndRemoveToWishList from '@/utils/api-utils/addAndRemoveToWishList'
 import React, { FC, useState } from 'react'
 
 export interface BtnLikeIconProps {
@@ -7,6 +8,7 @@ export interface BtnLikeIconProps {
 	colorClass?: string
 	isLiked?: boolean
 	onClick?: any
+	serviceId?: string
 }
 
 const BtnLikeIcon: FC<BtnLikeIconProps> = ({
@@ -14,11 +16,13 @@ const BtnLikeIcon: FC<BtnLikeIconProps> = ({
 	colorClass = 'text-white bg-black bg-opacity-30 hover:bg-opacity-50',
 	isLiked = false,
 	onClick,
+	serviceId,
 }) => {
 	const [likedState, setLikedState] = useState(isLiked)
-	const handleAddToWishList = () => {
-    
-  }
+
+	const handleAddToWishList = async () => {  
+		await addAndRemoveToWishList({ serviceId })
+	}
 
 	return (
 		<div
@@ -27,7 +31,10 @@ const BtnLikeIcon: FC<BtnLikeIconProps> = ({
 			} ${colorClass} ${className}`}
 			data-nc-id="BtnLikeIcon"
 			title="Save"
-			onClick={() => setLikedState(!likedState)}
+			onClick={() => {
+				handleAddToWishList()
+				setLikedState(!likedState)
+			}}
 			// onClick={() => setLikedState(!likedState)}
 		>
 			<svg

@@ -35,7 +35,7 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 		price,
 		reviewStart,
 		reviewCount,
-		id,
+		id: serviceId,
 		region,
 		start,
 	}: any = data
@@ -49,20 +49,23 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 	}
 
 	let result = convertString(title)
-	const href = `/q=tour?serviceId=${id}&name=${result}` as Route
+	const href = `/q=tour?serviceId=${serviceId}&name=${result}` as Route
 
 	const renderSliderGallery = () => {
 		return (
 			<div className="relative w-full overflow-hidden rounded-2xl">
 				<GallerySlider
-					uniqueID={`ExperiencesCard_${id}`}
+					uniqueID={`ExperiencesCard_${serviceId}`}
 					ratioClass={ratioClass}
 					galleryImgs={galleryImgs}
 					href={href}
 				/>
 				<BtnLikeIcon
-					onClick={() => {}}
+					onClick={() => {
+						alert('fdf')
+					}}
 					isLiked={like}
+					serviceId={serviceId}
 					className="absolute right-3 top-3"
 				/>
 				{saleOff && <SaleOffBadge className="absolute left-3 top-3" />}

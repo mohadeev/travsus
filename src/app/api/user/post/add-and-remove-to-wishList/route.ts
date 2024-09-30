@@ -9,14 +9,12 @@ export async function POST(request: NextRequest) {
 
 		// Parse the request body to JSON
 		const body = await request.json()
-		const tourData: any = body?.tourData
-		const tourId: any = tourData?.id
+		const { serviceId }: any = body || {}
+		console.log('Parsed body:', serviceId)
+		// await updateListing(serviceId, tourData)
 
-		console.log('Parsed body:', tourId)
-		await updateListing(tourId, tourData)
-
-		// Check if `tourId` is provided
-		if (!tourId) {
+		// Check if `serviceId` is provided
+		if (!serviceId) {
 			return NextResponse.json(
 				{ message: 'Tour ID is required' },
 				{ status: 400 },
@@ -28,7 +26,7 @@ export async function POST(request: NextRequest) {
 		// Fetch the tour from the database using Prisma (MongoDB ID)
 		const tour = await prisma.tour.findUnique({
 			where: {
-				id: tourId, // MongoDB ID is a string
+				id: serviceId, // MongoDB ID is a string
 			},
 		})
 
