@@ -29,8 +29,6 @@ const PageAddListing2: FC<PageAddListing2Props> = () => {
 				</h2>
 				<br />
 				<FormItem label="What is the customer-facing title of your product?">
-					{service.name}
-
 					<Input
 						onChange={(e) => {
 							handleChangeCreateTour({ path: 'name', value: e.target.value })

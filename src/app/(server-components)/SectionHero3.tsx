@@ -19,7 +19,7 @@ const SectionHero3: FC<SectionHero3Props> = ({ className = '' }) => {
 				<span className="font-semibold text-neutral-900 sm:text-lg md:text-xl">
 					Booking tax-free from {process.env.NEXT_PUBLIC_PLATFROM_NAME} platform
 				</span>
-				<h2 className="text-3xl font-bold !leading-[115%] text-black sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
+				<h2 className="text-3xl font-bold !leading-[115%] text-black sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl">
 					New generation <br /> of booking
 				</h2>
 				<ButtonPrimary
@@ -31,7 +31,7 @@ const SectionHero3: FC<SectionHero3Props> = ({ className = '' }) => {
 			</div>
 
 			{/* Image Section */}
-			<div className="aspect-h-3 aspect-w-4 relative sm:aspect-h-7 sm:aspect-w-16 lg:aspect-h-8 lg:aspect-w-16 xl:aspect-h-8">
+			<div className="aspect-h-3 aspect-w-4 relative sm:aspect-h-7 sm:aspect-w-16 lg:aspect-h-8 lg:aspect-w-16 xl:aspect-h-7">
 				<Image
 					className={`${css.img} absolute inset-0 rounded-xl object-cover`}
 					src={imagePng}
