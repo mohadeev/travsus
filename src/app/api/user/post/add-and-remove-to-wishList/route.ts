@@ -2,16 +2,19 @@ import { NextRequest, NextResponse } from 'next/server'
 import prisma from '@/prisma'
 import updateListing from '@/app/api/api-utils/updateListing'
 import currentServerUser from '@/app/api/user/currentServerUser'
+import getUserData from '../../getUserData'
+import { Prisma } from '@prisma/client'
 
 export async function POST(request: NextRequest) {
 	try {
-		const currentUser = await currentServerUser()
+		const userData: any = await getUserData()
+
+		console.log('currentUser', userData)
 
 		// Parse the request body to JSON
 		const body = await request.json()
 		const { serviceId }: any = body || {}
 		console.log('Parsed body:', serviceId)
-		// await updateListing(serviceId, tourData)
 
 		// Check if `serviceId` is provided
 		if (!serviceId) {
@@ -21,26 +24,47 @@ export async function POST(request: NextRequest) {
 			)
 		}
 
-		// Update the tour listing using your utility function
+		// Access the savedList from the currentUser
+		let updatedSavedList: any = userData?.savedList
+			? [...userData?.savedList]
+			: []
 
-		// Fetch the tour from the database using Prisma (MongoDB ID)
-		const tour = await prisma.tour.findUnique({
-			where: {
-				id: serviceId, // MongoDB ID is a string
-			},
-		})
+		let isAdded = false
 
-		// Check if the tour exists
-		if (!tour) {
-			return NextResponse.json({ message: 'Tour not found' }, { status: 404 })
+		// Check if the serviceId is already in the savedList
+		if (updatedSavedList.includes(serviceId)) {
+			// Remove the serviceId from the savedList
+			updatedSavedList = updatedSavedList.filter((id: any) => id !== serviceId)
+			isAdded = false // Indicating the serviceId was removed
+		} else {
+			// Add the serviceId to the savedList
+			updatedSavedList.push(serviceId)
+			isAdded = true // Indicating the serviceId was added
 		}
 
-		// Return the tour data as a JSON response
-		return NextResponse.json(tour)
+		const updateData = {
+			...(updatedSavedList && {
+				savedList: updatedSavedList, // Update the `savedList` only if it exists
+			}),
+		}
+
+		// Update the user's savedList in the database
+		await prisma.user.update({
+			where: {
+				id: userData?.id, // No need to fetch the user, use userData.id directly
+			},
+			data: updateData,
+		})
+
+		// Send the appropriate response based on whether the serviceId was added or removed
+		return NextResponse.json({
+			message: 'Saved list updated successfully',
+			added: isAdded, // true if added, false if removed
+		})
 	} catch (error) {
-		console.error('Error fetching tour:', error)
+		console.error('Error updating saved list:', error)
 		return NextResponse.json(
-			{ message: 'Error fetching tour data' },
+			{ message: 'Error updating saved list' },
 			{ status: 500 },
 		)
 	} finally {

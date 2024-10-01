@@ -21,7 +21,7 @@ model User {
   accountData       Json?
   createdAt         DateTime @default(now())
   updatedAt         DateTime @updatedAt
-
+  savedList Json?
   @@map("users")
 }
  
