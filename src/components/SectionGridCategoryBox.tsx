@@ -1,9 +1,10 @@
 'use client'
 import CardCategoryBox1 from '@/components/CardCategoryBox1'
-import Heading from '@/shared/Heading'
+import Heading, { HeadingSkeleton } from '@/shared/Heading'
 import { TaxonomyType } from '@/data/types'
 import React, { useEffect, useState } from 'react'
 import { getFamoustCitiesArround } from '@/utils/getFamoustCitiesArround'
+import ContainerCardCategoryBox1Skeleton from './ContainerCardCategoryBox1Skeleton'
 
 export interface SectionGridCategoryBoxProps {
 	categories?: TaxonomyType[]
@@ -105,25 +106,34 @@ const SectionGridCategoryBox: React.FC<SectionGridCategoryBoxProps> = ({
 		default:
 			CardComponentName = CardCategoryBox1
 	}
+	const [loading, setLoading] = useState(true);
+
 	useEffect(() => {
 		;(async () => {
 			const newGetFamoustCitiesArround: any = await getFamoustCitiesArround()
 			setNewCatecories(newGetFamoustCitiesArround?.places)
+			if(newGetFamoustCitiesArround?.places){
+				setLoading(false)
+			}
+			
 		})()
 	}, [])
 
 	return (
-		<div className={`nc-SectionGridCategoryBox relative ${className}`}>
-			<Heading
+		<div className={`nc-SectionGridCategoryBox relative ${className}`}> 
+			{loading ?  <HeadingSkeleton isCenter={headingCenter}/>: <Heading
 				desc="Discover great places near where you live"
 				isCenter={headingCenter}
 			>
 				Explore nearby here
-			</Heading>
+			</Heading>}
+			
 			<div className={`grid ${gridClassName} gap-5 sm:gap-6 md:gap-8`}>
 				{newCatecories?.map((item, i) => (
 					<CardComponentName key={i} taxonomy={item} />
 				))}
+				{loading && <ContainerCardCategoryBox1Skeleton />}
+				
 			</div>
 		</div>
 	)

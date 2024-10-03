@@ -8,6 +8,8 @@ import Heading2 from '@/shared/Heading2'
 import ExperiencesCard from '@/components/ExperiencesCard'
 import { useSelector } from 'react-redux'
 import allToursFetch from '@/utils/allToursFetch'
+import ContainerExperiencesCardSkeleton from '@/components/ContainerExperiencesCardSkeleton'
+import { HeadingSkeleton } from '@/shared/Heading'
 
 export interface SectionGridFilterCardProps {
 	className?: string
@@ -24,10 +26,14 @@ const SectionGridFilterCard: FC<SectionGridFilterCardProps> = ({
 }) => {
 	const user = useSelector((state: any) => state.userReducer.userData)
 	const [servicesData, setServicesData] = useState([])
+	const [loading, setLoading] = useState(true);
+
+	
 	useEffect(() => {
 		allToursFetch().then((data) => {
 			if (data?.allToursData) {
 				setServicesData(data.allToursData)
+				setLoading(false)
 			}
 		})
 
@@ -36,17 +42,23 @@ const SectionGridFilterCard: FC<SectionGridFilterCardProps> = ({
 
 	return (
 		<div className={`nc-SectionGridFilterCard ${className}`}>
-			<Heading2
-				heading={'Experiences in ' + user?.currentGeo?.country}
-				subHeading={
-					<span className="mt-3 block text-neutral-500 dark:text-neutral-400">
-						233 experiences
-						<span className="mx-2">·</span>
-						Aug 12 - 18
-						<span className="mx-2">·</span>2 Guests
-					</span>
-				}
-			/>
+			
+			{loading ? (
+  <HeadingSkeleton isCenter={false} />
+) : (
+  <Heading2
+    heading={`Experiences in ${user?.currentGeo?.country}`}
+    subHeading={
+      <span className="mt-3 block text-neutral-500 dark:text-neutral-400">
+        233 experiences
+        <span className="mx-2">·</span>
+        Aug 12 - 18
+        <span className="mx-2">·</span>
+        2 Guests
+      </span>
+    }
+  />
+)}
 
 			<div className="mb-8 lg:mb-11">
 				<TabFilters />
@@ -55,6 +67,8 @@ const SectionGridFilterCard: FC<SectionGridFilterCardProps> = ({
 				{servicesData.map((stay: any) => (
 					<ExperiencesCard key={stay?.id} data={stay} />
 				))}
+				{loading && 	<ContainerExperiencesCardSkeleton />}
+
 			</div>
 			<div className="mt-16 flex items-center justify-center">
 				<Pagination />

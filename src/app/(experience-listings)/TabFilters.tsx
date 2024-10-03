@@ -545,3 +545,21 @@ const TabFilters = () => {
 }
 
 export default TabFilters
+
+export const TabFiltersSkeleton = () => {
+	return (
+		<div className="flex gap-4">
+			{/* Type of Experiences Skeleton */}
+			<div className="w-32 h-10 bg-gray-200 rounded animate-pulse"></div>
+
+			{/* Time of Day Skeleton */}
+			<div className="w-32 h-10 bg-gray-200 rounded animate-pulse"></div>
+
+			{/* Price Range Skeleton */}
+			<div className="w-48 h-10 bg-gray-200 rounded animate-pulse"></div>
+
+			{/* More Filters Button Skeleton */}
+			<div className="w-28 h-10 bg-gray-200 rounded animate-pulse"></div>
+		</div>
+	)
+}

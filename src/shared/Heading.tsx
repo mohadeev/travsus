@@ -1,4 +1,5 @@
 import React, { HTMLAttributes, ReactNode } from "react";
+import  { FC } from 'react'
 
 export interface HeadingProps extends HTMLAttributes<HTMLHeadingElement> {
   fontClass?: string;
@@ -34,3 +35,22 @@ const Heading: React.FC<HeadingProps> = ({
 };
 
 export default Heading;
+
+export interface HeadingSkeletonProps {
+  className?: string
+  isCenter?: boolean
+}
+export const HeadingSkeleton : FC<HeadingSkeletonProps> = ({
+  className = 'mb-10',
+  isCenter = false,
+}) => {
+  return (
+    <div className={`nc-Section-Heading relative ${className} animate-pulse`}>
+      <div className={isCenter ? 'text-center w-full max-w-2xl mx-auto mb-4' : 'max-w-2xl'}>
+        <div className={`h-8 bg-gray-300 rounded w-3/4 ${isCenter ? 'mx-auto' : ''}`}></div>
+        <div className={`h-5 bg-gray-300 rounded w-1/2 mt-3 ${isCenter ? 'mx-auto' : ''}`}></div>
+      </div>
+    </div>
+  )
+}
+
