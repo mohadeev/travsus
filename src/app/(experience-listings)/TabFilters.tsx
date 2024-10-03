@@ -56,7 +56,7 @@ const timeOfdays = [
 const moreFilter1 = typeOfExpriences
 const moreFilter2 = timeOfdays
 
-const TabFilters = () => {
+const TabFilters = ({loading}:any) => {
 	const [isOpenMoreFilter, setisOpenMoreFilter] = useState(false)
 	//
 	const [isOnSale, setIsOnSale] = useState(true)
@@ -531,14 +531,20 @@ const TabFilters = () => {
 	return (
 		<div className="flex lg:space-x-4">
 			<div className="hidden space-x-4 lg:flex">
-				{renderTabsTypeOfPlace()}
+				
+				{loading ? <TabFiltersSkeleton /> :<>
+					{renderTabsTypeOfPlace()}
 				{renderTabsPriceRage()}
 				{renderTabsTimeOfDay()}
 				{renderTabOnSale()}
+				</> }
+				
 			</div>
 			<div className="flex space-x-4 lg:hidden">
-				{renderTabMobileFilter()}
+				{loading ? <TabFiltersSkeleton /> :<>
+					{renderTabMobileFilter()}
 				{renderTabOnSale()}
+				</> }
 			</div>
 		</div>
 	)
@@ -550,16 +556,16 @@ export const TabFiltersSkeleton = () => {
 	return (
 		<div className="flex gap-4">
 			{/* Type of Experiences Skeleton */}
-			<div className="w-32 h-10 bg-gray-200 rounded animate-pulse"></div>
+			<div className="w-32 h-10 bg-gray-200 rounded-full animate-pulse"></div>
 
 			{/* Time of Day Skeleton */}
-			<div className="w-32 h-10 bg-gray-200 rounded animate-pulse"></div>
+			<div className="w-32 h-10 bg-gray-200 rounded-full animate-pulse"></div>
 
 			{/* Price Range Skeleton */}
-			<div className="w-48 h-10 bg-gray-200 rounded animate-pulse"></div>
+			<div className="w-48 h-10 bg-gray-200 rounded-full animate-pulse"></div>
 
 			{/* More Filters Button Skeleton */}
-			<div className="w-28 h-10 bg-gray-200 rounded animate-pulse"></div>
+			<div className="w-28 h-10 bg-gray-200 rounded-full animate-pulse"></div>
 		</div>
 	)
 }
