@@ -65,7 +65,7 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 					onClick={() => {
 						alert('fdf')
 					}}
-					isLiked={like}
+					isLiked={liked}
 					serviceId={serviceId}
 					className="absolute right-3 top-3"
 				/>
@@ -105,7 +105,7 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 						{` `}
 						{size === 'default' && (
 							<span className="text-sm font-normal text-neutral-500 dark:text-neutral-400">
-								/person
+								/person here
 							</span>
 						)}
 					</span>

@@ -1,33 +1,29 @@
-import axios from 'axios'
 import { NextRequest, NextResponse } from 'next/server'
 import prisma from '@/prisma'
+import getUserData from '@/app/api/user/getUserData'
+
 export async function GET(request: NextRequest) {
 	try {
-		// Extract query parameters from the request URL
-		const { searchParams } = new URL(request.url)
-		const tourId = searchParams.get('id')
+		const userData: any = await getUserData() 
+		const { savedList } = userData // Extract the savedList from user data
 
+		// Fetch all tours with images
 		const allToursData = await prisma.tour.findMany({
 			where: {
 				images: {
 					isEmpty: false, // This checks that the array has at least one element
 				},
 			},
-			// Example filter:
-			// where: {
-			//   start: { name: "Marrakech" },
-			//   creator: { id: "openai", model: "gpt-4-1106-preview" },
-			// },
-			// include: {
-			// 	// Include related models if necessary
-			// 	// start: true,
-			// 	// creator: true,
-			// },
 		})
-		// console.log('allToursData', allToursData)
 
-		// Return the tour data as a JSON response
-		return NextResponse.json({ allToursData })
+		// Map through all tours and check if each tour ID is in the savedList
+		const modifiedToursData = allToursData.map(tour => ({
+			...tour,
+			liked: savedList.includes(tour.id) // Check if the tour ID is in the savedList
+		}))
+
+		// Return the modified tour data as a JSON response
+		return NextResponse.json({ allToursData: modifiedToursData })
 	} catch (error) {
 		console.error('Error fetching tour:', error)
 		return NextResponse.json(

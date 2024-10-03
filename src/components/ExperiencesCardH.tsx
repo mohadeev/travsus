@@ -105,7 +105,7 @@ const ExperiencesCardH: FC<ExperiencesCardHProps> = ({
             {price}
             {` `}
             <span className="text-sm text-neutral-500 dark:text-neutral-400 font-normal">
-              /person
+              /person here
             </span>
           </span>
         </div>

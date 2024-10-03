@@ -6,30 +6,30 @@ import ExperiencesSearchForm from './(experiences-search-form)/ExperiencesSearch
 import RentalCarSearchForm from './(car-search-form)/RentalCarSearchForm'
 import FlightSearchForm from './(flight-search-form)/FlightSearchForm'
 
-export type SearchTab = 'Stays' | 'Experiences' | 'Cars' | 'Flights'
+export type SearchTab = 'Experiences' | 'Stays'| 'Cars' | 'Flights'
 
 export interface HeroSearchFormProps {
 	className?: string
 	currentTab?: SearchTab
-	currentPage?: 'Stays' | 'Experiences' | 'Cars' | 'Flights'
+	currentPage?: 'Experiences' | 'Stays'| 'Cars' | 'Flights'
 }
 
 const HeroSearchForm: FC<HeroSearchFormProps> = ({
 	className = '',
-	currentTab = 'Stays',
+	currentTab = 'Experiences',
 	currentPage,
 }) => {
-	const tabs: SearchTab[] = ['Stays', 'Experiences', 'Cars', 'Flights']
+	const tabs: SearchTab[] = ['Experiences','Stays', 'Cars', 'Flights']
 	const [tabActive, setTabActive] = useState<SearchTab>(currentTab)
 
 	const renderTab = () => {
 		return (
 			<ul className="hiddenScrollbar ml-2 flex space-x-5 overflow-x-auto sm:ml-6 sm:space-x-8 md:ml-12 lg:space-x-11">
 				{tabs.map((tab) => {
-					const active = tab === tabActive
+					const active = tab !== tabActive
 					return (
 						<li
-							onClick={() => setTabActive(tab)}
+							onClick={() => {alert("here");setTabActive(tab)}}
 							className={`flex flex-shrink-0 cursor-pointer items-center text-sm font-medium lg:text-base ${
 								active
 									? ''
@@ -40,7 +40,7 @@ const HeroSearchForm: FC<HeroSearchFormProps> = ({
 							{active && (
 								<span className="mr-2 block h-2.5 w-2.5 rounded-full bg-neutral-800 dark:bg-neutral-100" />
 							)}
-							<span>{tab}</span>
+							<span>{tab} 1</span>
 						</li>
 					)
 				})}

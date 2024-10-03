@@ -13,12 +13,15 @@ import React, { Fragment, useEffect, useState } from 'react'
 import ButtonSecondary from '@/shared/ButtonSecondary'
 import { useSession } from 'next-auth/react'
 import basedGetUrlRequestLogedIn from '@/app/utils/basedGetUrlRequestLogedIn'
+import ContainerExperiencesCardSkeleton from '@/components/ContainerExperiencesCardSkeleton'
 
 const AccountSavelists = () => {
 	let [categories] = useState(['Stays', 'Experiences', 'Cars']) 
 	const [savedList, setSavedList] = useState([])
 	const { data: session, status } = useSession()
 	// const dispatch = useDispatch()
+	const [loading, setLoading] = useState(true);
+
 
 	useEffect(() => {
 		if (status === 'authenticated' && session?.user) {
@@ -26,7 +29,8 @@ const AccountSavelists = () => {
 				basedGetUrlRequestLogedIn('/api/user/get/account-savelists').then(
 					(res) => { 
 						if(res?.list){
-							setSavedList(res?.list)
+							setSavedList(res?.list) 
+							setLoading(false);
 						}
 				console.log('res', res)
 						
@@ -84,7 +88,8 @@ const AccountSavelists = () => {
 											<ExperiencesCard key={stay?.id} data={stay} />
 										),
 									)}
-								</div>
+								{loading && 	<ContainerExperiencesCardSkeleton />}
+								</div> 
 								<div className="mt-11 flex items-center justify-center">
 									<ButtonSecondary>Show me more</ButtonSecondary>
 								</div>

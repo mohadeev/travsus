@@ -379,7 +379,7 @@ const ListingExperiencesDetailPage: FC<
 					<span className="text-3xl font-semibold">
 						$19
 						<span className="ml-1 text-base font-normal text-neutral-500 dark:text-neutral-400">
-							/person
+							/person 23454454
 						</span>
 					</span>
 					<StartRating />

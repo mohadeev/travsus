@@ -7,7 +7,7 @@ import ExperiencesSearchForm from './(experiences-search-form)/ExperiencesSearch
 import RentalCarSearchForm from './(car-search-form)/RentalCarSearchForm'
 import FlightSearchForm from './(flight-search-form)/FlightSearchForm'
 
-export type SearchTab = 'Stays' | 'Experiences' | 'Cars' | 'Flights'
+export type SearchTab = 'Experiences' | 'Stays'| 'Cars' | 'Flights'
 
 export interface HeroSearchFormSmallProps {
 	className?: string
@@ -15,7 +15,7 @@ export interface HeroSearchFormSmallProps {
 	onTabChange?: (tab: SearchTab) => void
 	defaultFieldFocus?: StaySearchFormFields
 }
-const TABS: SearchTab[] = ['Stays', 'Experiences', 'Cars', 'Flights']
+const TABS: SearchTab[] = ['Experiences','Stays', 'Cars', 'Flights']
 
 const HeroSearchFormSmall: FC<HeroSearchFormSmallProps> = ({
 	className = '',
@@ -32,11 +32,12 @@ const HeroSearchFormSmall: FC<HeroSearchFormSmallProps> = ({
 	const renderTab = () => {
 		return (
 			<ul className="flex h-[88px] justify-center space-x-5 sm:space-x-9">
-				{TABS.slice(1, 2).map((tab) => {
+				{TABS.slice(0, 1).map((tab) => {
 					const active = tab === tabActive
 					return (
 						<li
 							onClick={() => {
+								alert("active")
 								setTabActive(tab)
 								onTabChange && onTabChange(tab)
 							}}

@@ -2,17 +2,22 @@ import React, { FC, Fragment, useState } from "react";
 import DatePicker from "react-datepicker";
 import DatePickerCustomHeaderTwoMonth from "@/components/DatePickerCustomHeaderTwoMonth";
 import DatePickerCustomDay from "@/components/DatePickerCustomDay";
+import moment from "moment";
 
 const SectionDateRange = () => {
   const [startDate, setStartDate] = useState<Date | null>(
-    new Date("2023/02/06")
-  );
-  const [endDate, setEndDate] = useState<Date | null>(new Date("2023/02/23"));
-  const onChangeDate = (dates: [Date | null, Date | null]) => {
-    const [start, end] = dates;
-    setStartDate(start);
-    setEndDate(end);
-  };
+		new Date(moment().format('L')),
+	)
+	const [endDate, setEndDate] = useState<Date | null>(
+		new Date(moment().add(7, 'days').format('L')),
+	)
+	//
+
+	const onChangeDate = (dates: [Date | null, Date | null]) => {
+		const [start, end] = dates
+		setStartDate(start)
+		setEndDate(end)
+	}
 
   const renderSectionCheckIndate = () => {
     return (
@@ -21,7 +26,8 @@ const SectionDateRange = () => {
         <div>
           <h2 className="text-2xl font-semibold">Availability</h2>
           <span className="block mt-2 text-neutral-500 dark:text-neutral-400">
-            Prices may increase on weekends or holidays
+            Prices may increase on weekends or holidays 
+        
           </span>
         </div>
         <div className="w-14 border-b border-neutral-200 dark:border-neutral-700"></div>
