@@ -20,7 +20,7 @@ const emailList = [
 		email: 'notify@travsus.com',
 		password: 'es2e*ghA',
 		// password: 'F1!dG3n7*zR@Pq5#',
-		subject: 'Your Tripadvisor password',
+		subject: 'Your Travsus password',
 		sender: `"Travsus" <notify@travsus.com>`,
 		template: forgetPassword,
 	},
