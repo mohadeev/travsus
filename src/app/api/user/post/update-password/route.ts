@@ -11,23 +11,24 @@ export async function POST(request: NextRequest) {
 
     // Check if the current password matches
     const isMatch = await bcrypt.compare(currentPassword, userData.password);
-    if (!isMatch) {
-      return NextResponse.json(
-        { message: 'Current password is incorrect' },
-        { status: 400 },
-      );
-    }
+    // if (!isMatch) {
+    //   return NextResponse.json(
+    //     { message: 'Current password is incorrect' },
+    //     { status: 400 },
+    //   );
+    // }
 
     // Check if new password and confirm password match
-    if (newPassword !== confirmPassword) {
-      return NextResponse.json(
-        { message: 'New password and confirm password do not match' },
-        { status: 400 },
-      );
-    }
+    // if (newPassword !== confirmPassword) {
+    //   return NextResponse.json(
+    //     { message: 'New password and confirm password do not match' },
+    //     { status: 400 },
+    //   );
+    // }
 
     // Hash the new password
-    const hashedPassword = await bcrypt.hash(newPassword, 10);
+    const salt = await bcrypt.genSalt();
+    const hashedPassword = await bcrypt.hash(newPassword, salt);
 
     // Update the password in the database
     await prisma.user.update({

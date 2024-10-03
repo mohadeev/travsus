@@ -105,7 +105,7 @@ export const authOptions: any = {
 			return session
 		},
 	},
-	secret: process.env.NEXTAUTH_SECRET as string,
+	secret: process.env.ACCESS_TOKEN_SECRET as string,
 }
 
 // // import type { NextAuthauthOptions } from 'next-auth'
@@ -225,7 +225,7 @@ export const authOptions: any = {
 // 	// 	},
 // 	// },
 
-// 	secret: process.env.NEXTAUTH_SECRET as string,
+// 	secret: process.env.ACCESS_TOKEN_SECRET as string,
 // 	// callbacks: {
 // 	// 	async session({ session, token }: any) {
 // 	// 		session.userId = token.id as string

@@ -22,6 +22,8 @@ model User {
   createdAt         DateTime @default(now())
   updatedAt         DateTime @updatedAt
   savedList Json?
+  passwordResetToken   String?  // Token for password reset
+  passwordResetTokenExpiry DateTime? 
   @@map("users")
 }
  
