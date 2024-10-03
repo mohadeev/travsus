@@ -9,11 +9,35 @@ import {
 	DEMO_EXPERIENCES_LISTINGS,
 	DEMO_STAY_LISTINGS,
 } from '@/data/listings'
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import ButtonSecondary from '@/shared/ButtonSecondary'
+import { useSession } from 'next-auth/react'
+import basedGetUrlRequestLogedIn from '@/app/utils/basedGetUrlRequestLogedIn'
 
 const AccountSavelists = () => {
-	let [categories] = useState(['Stays', 'Experiences', 'Cars'])
+	let [categories] = useState(['Stays', 'Experiences', 'Cars']) 
+	const [savedList, setSavedList] = useState([])
+	const { data: session, status } = useSession()
+	// const dispatch = useDispatch()
+
+	useEffect(() => {
+		if (status === 'authenticated' && session?.user) {
+			;(async () => {
+				basedGetUrlRequestLogedIn('/api/user/get/account-savelists').then(
+					(res) => { 
+						if(res?.list){
+							setSavedList(res?.list)
+						}
+				console.log('res', res)
+						
+					},
+				)
+			})()
+		} else if (status === 'unauthenticated') {
+			// dispatch(clearUser())
+			console.log('session?.user', 'unauthenticated')
+		}
+	}, [session, status])
 
 	const renderSection1 = () => {
 		return (
@@ -55,9 +79,9 @@ const AccountSavelists = () => {
 							</Tab.Panel> */}
 							<Tab.Panel className="mt-8">
 								<div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 lg:grid-cols-3 xl:grid-cols-4">
-									{DEMO_EXPERIENCES_LISTINGS.filter((_, i) => i < 8).map(
-										(stay) => (
-											<ExperiencesCard key={stay.id} data={stay} />
+									{savedList?.filter((_, i) => i < 8).map(
+										(stay:any) => (
+											<ExperiencesCard key={stay?.id} data={stay} />
 										),
 									)}
 								</div>

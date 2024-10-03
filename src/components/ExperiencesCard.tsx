@@ -38,6 +38,7 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 		id: serviceId,
 		region,
 		start,
+		liked
 	}: any = data
 	let newLocation = region
 	if (region?.length >= 1) {
