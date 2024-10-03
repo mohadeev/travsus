@@ -88,7 +88,8 @@ const AccountSavelists = () => {
 											<ExperiencesCard key={stay?.id} data={stay} />
 										),
 									)}
-								{!loading && 	<ContainerExperiencesCardSkeleton />}
+								{loading && 	<ContainerExperiencesCardSkeleton />}
+								<ContainerExperiencesCardSkeleton />
 								</div> 
 								<div className="mt-11 flex items-center justify-center">
 									<ButtonSecondary>Show me more</ButtonSecondary>
