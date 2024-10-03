@@ -64,7 +64,7 @@ export async function GET(request: NextRequest) {
 			liked: true, // Add the flag to each tour
 		}))
 
-		console.log("list:", list)
+		console.log("tour list:", list)
 
 		// Send the fetched tours as a response
 		return NextResponse.json({ list, message: 'tours_found' })
