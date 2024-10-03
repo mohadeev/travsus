@@ -22,7 +22,7 @@ export async function GET(request: NextRequest) {
 		console.log("currentUser", userData)
 
 		// Validate IDs in savedList
-		savedList = savedList.filter((id: string) => isValidObjectId(id))
+		savedList = savedList?.filter((id: string) => isValidObjectId(id)) || []
 
 		// Fetch the session to verify the user
 		const session: any = await getServerSession(authOptions)

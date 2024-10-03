@@ -7,11 +7,11 @@ function withAuth<T>(WrappedComponent: ComponentType<any>) {
 		const { data: session, status } = useSession()
 		const router = useRouter()
 
-		useEffect(() => {
-			if (status === 'unauthenticated') {
-				router.push('/login')
-			}
-		}, [status, router])
+		// useEffect(() => {
+		// 	if (status === 'unauthenticated') {
+		// 		// router.push('/login')
+		// 	}
+		// }, [status, router])
 
 		if (status === 'loading') {
 			return <div>Loading...</div>

@@ -32,13 +32,13 @@ export async function POST(request: NextRequest) {
 		let isAdded = false
 
 		// Check if the serviceId is already in the savedList
-		if (updatedSavedList.includes(serviceId)) {
+		if (updatedSavedList?.includes(serviceId)) {
 			// Remove the serviceId from the savedList
-			updatedSavedList = updatedSavedList.filter((id: any) => id !== serviceId)
+			updatedSavedList = updatedSavedList?.filter((id: any) => id !== serviceId)
 			isAdded = false // Indicating the serviceId was removed
 		} else {
 			// Add the serviceId to the savedList
-			updatedSavedList.push(serviceId)
+			updatedSavedList?.push(serviceId)
 			isAdded = true // Indicating the serviceId was added
 		}
 

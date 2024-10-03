@@ -19,7 +19,7 @@ export async function GET(request: NextRequest) {
 		// Map through all tours and check if each tour ID is in the savedList
 		const modifiedToursData = allToursData.map(tour => ({
 			...tour,
-			liked: savedList.includes(tour.id) // Check if the tour ID is in the savedList
+			liked: savedList?.includes(tour.id) // Check if the tour ID is in the savedList
 		}))
 
 		// Return the modified tour data as a JSON response
