@@ -13,6 +13,7 @@ import Header3 from './Header3'
 import { usePathname } from 'next/navigation'
 import { useThemeMode } from '@/utils/useThemeMode'
 import { useSelector } from 'react-redux'
+import HeaderSkeleton from './HeaderSkeleton'
 
 export type SiteHeaders = 'Header 1' | 'Header 2' | 'Header 3'
 
@@ -210,12 +211,21 @@ const SiteHeader = () => {
 			return <Header className={headerClassName} navType="MainNav1" />
 		}
 	}
-
+	const [loading, setLoading] = useState(true);
+	useEffect(()=>{
+		setTimeout(() => {
+			setLoading(false);
+		}, 0);
+	}, [])
 	return (
 		<>
+		{loading ? <HeaderSkeleton />: <>
 			{/* {renderControlSelections()} */}
-			{renderHeader()}
+			{renderHeader()}  
 			<div ref={anchorRef} className="invisible absolute h-1"></div>
+			</>}
+		
+		
 		</>
 	)
 }
