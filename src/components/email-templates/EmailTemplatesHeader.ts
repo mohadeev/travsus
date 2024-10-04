@@ -6,7 +6,7 @@ export const emailTemplatesHeader = ` <div style="max-width: 500px; display: fle
         rel="noopener noreferrer"
       >
         <img
-          src="https://www.urexcursion.com/images/logo/main-two/Frame1logo-500-500-cuted.png"
+          src="https://www.travsus.com/images/logo/dark/travsus_circul_dark.png"
           height="35"
           alt="Travsus"
           style="height: 35px;"
