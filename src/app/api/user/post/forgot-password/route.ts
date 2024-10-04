@@ -62,6 +62,7 @@ export async function POST(req: NextRequest) {
       emailData: {
         // name: firstname,
         email: user.email,
+        restLink: `${process.env.NEXT_PUBLIC_SITE_URL}/reset-password/q?token=${resetToken}`
       },
     })
 
