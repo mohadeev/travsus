@@ -10,20 +10,22 @@ generator client {
 }
 
 model User {
-  id       String    @id @default(auto()) @map("_id") @db.ObjectId
-  email             String   @unique
-  username          String?
-  phone             String?
-  password          String
-  senders           Json?
-  date              DateTime @default(now())
-  library           Json?
-  accountData       Json?
-  createdAt         DateTime @default(now())
-  updatedAt         DateTime @updatedAt
-  savedList Json?
-  passwordResetToken   String?  // Token for password reset
-  passwordResetTokenExpiry DateTime? 
+  id                     String    @id @default(auto()) @map("_id") @db.ObjectId
+  email                  String    @unique
+  username               String?
+  phone                  String?
+  password               String
+  senders                Json?
+  date                   DateTime  @default(now())
+  library                Json?
+  accountData            Json?
+  createdAt             DateTime   @default(now())
+  updatedAt             DateTime   @updatedAt
+  savedList             Json?
+  passwordResetToken     String?   // Optional: Token for password reset
+  passwordResetTokens    String[]   // Array of used password reset tokens
+  passwordHistory        String[]   // Array of user's password history
+  passwordResetTokenExpiry DateTime? // Optional: Expiry for the reset token
   @@map("users")
 }
  

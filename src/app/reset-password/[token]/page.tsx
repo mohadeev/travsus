@@ -1,9 +1,10 @@
-"use client";
+// Import necessary hooks
+'use client';
 
 import React, { useState } from "react";
 import Input from "@/shared/Input";
 import ButtonPrimary from "@/shared/ButtonPrimary";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation"; // Import useSearchParams
 import axios from "axios"; // HTTP client
 
 const ResetPasswordPage: React.FC = () => {
@@ -13,13 +14,14 @@ const ResetPasswordPage: React.FC = () => {
   const [success, setSuccess] = useState(false);
 
   const router = useRouter();
-  // const { token } = router.query; // Assuming you have dynamic token in the URL
-const token  = ""
+  const searchParams = useSearchParams(); // Get search params from URL
+  const token = searchParams.get('token') || ""; // Extract the token from query params
+
   // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Simple password match validation
+    // Simple password match validation (local validation)
     if (newPassword !== confirmPassword) {
       setError("Passwords do not match!");
       return;
@@ -27,22 +29,33 @@ const token  = ""
 
     try {
       // Send a request to your API to reset the password
-      const response = await axios.post("/api/reset-password", {
+      const response = await axios.post("/api/user/post/update-password", {
         token, // Token from URL
         newPassword,
+        confirmPassword
       });
 
-      if (response.data.success) {
+      // If password reset is successful
+      if (response.status === 200) {
         setSuccess(true);
+        setError(null); // Clear any errors
         // Redirect the user to login or dashboard after password reset
         setTimeout(() => {
           router.push("/login");
         }, 2000);
       } else {
+        // Display the backend message or a default error message
         setError(response.data.message || "Something went wrong!");
       }
-    } catch (err) {
-      setError("Failed to reset password. Please try again.");
+    } catch (err: any) {
+      // Handle errors from backend
+      if (err.response && err.response.data && err.response.data.message) {
+        // Use backend error message if available
+        setError(err.response.data.message);
+      } else {
+        // Fallback error message
+        setError("Failed to reset password. Please try again.");
+      }
     }
   };
 
@@ -53,7 +66,10 @@ const token  = ""
           Reset Password
         </h2>
         <div className="mx-auto max-w-md space-y-6">
+          {/* Display error message */}
           {error && <div className="text-red-500">{error}</div>}
+
+          {/* Display success message */}
           {success && <div className="text-green-500">Password reset successfully!</div>}
 
           <form className="grid grid-cols-1 gap-6" onSubmit={handleSubmit}>
