@@ -12,11 +12,11 @@
 
 // 	const socialMedia = [
 // 		{
-// 			link: 'https://www.facebook.com/urexcursion',
+// 			link: 'https://www.facebook.com/travsus',
 // 			icon: '/images/logo/socail_media/facebook.png', // Use local paths for optimization
 // 		},
 // 		{
-// 			link: 'https://www.instagram.com/ur_excursion/',
+// 			link: 'https://www.instagram.com/travsusofficial/',
 // 			icon: '/images/logo/socail_media/instagram.png',
 // 		},
 // 	]
@@ -30,7 +30,7 @@
 // 		<div style={main}>
 // 			<div style={headerContainer}>
 // 				<a
-// 					href="https://www.urexcursion.com/"
+// 					href=${process.env.NEXT_PUBLIC_SITE_URL}
 // 					style={{ color: '#000000', textDecoration: 'none' }}
 // 					target="_blank"
 // 					rel="noopener noreferrer"
@@ -50,7 +50,7 @@
 // 					<br />
 // 					<p style={paragraph}>
 // 						Please click on the link below within 24 hours to reset your Ur
-// 						Excursion password.
+// 						 password.
 // 					</p>
 // 					<br />
 // 					<br />
@@ -75,14 +75,14 @@
 // 					<br />
 // 					<p style={paragraph}>The Travsus Support Team</p>
 // 					<br />
-// 					<a href="http://www.urexcursion.com" style={paragraph}>
-// 						http://www.urexcursion.com
+// 					<a href=${process.env.NEXT_PUBLIC_SITE_URL} style={paragraph}>
+// 						https://www.travsus.com
 // 					</a>
 // 				</div>
 // 			</div>
 // 			<div style={bottomContainer}>
 // 				<a
-// 					href="http://www.urexcursion.com"
+// 					href=${process.env.NEXT_PUBLIC_SITE_URL}
 // 					style={{ color: '#000000', textDecoration: 'none' }}
 // 					target="_blank"
 // 					rel="noopener noreferrer"
@@ -96,13 +96,13 @@
 // 				</a>
 // 				<div style={containerTextBottom}>
 // 					<p style={verysmallText}>
-// 						© urexcursion .Travsus Platforms, LLC., Calle Mayor, 1 20400 Tolosa
+// 						© travsus .Travsus Platforms,Ltd., Calle Mayor, 1 20400 Tolosa
 // 						Guipúzcoa Spain.
 // 					</p>
 // 					<p style={verysmallTextMarginTop}>
-// 						© 2024 Travsus LLC. All rights reserved. Travsus, the Travsus logo,
+// 						© 2024 Travsus Ltd. All rights reserved. Travsus, the Travsus logo,
 // 						the trail marker logo, Travelers&apos; Choice and the
-// 						Travelers&apos; Choice logo are trademarks of Travsus LLC in the US
+// 						Travelers&apos; Choice logo are trademarks of Travsus Ltd in the US
 // 						and other countries.
 // 					</p>
 // 				</div>
