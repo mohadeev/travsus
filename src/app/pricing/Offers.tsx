@@ -3,76 +3,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Check, Search } from "lucide-react";
-import { Button, Switch, Input, Badge } from "@/components/ui"; // Import from index.ts
-
-const offers = [
-  {
-    name: "Free Version",
-    price: "$0/month",
-    features: [
-      "Basic Tour Listing",
-      "Standard Search Placement",
-      "1 Image",
-      "15% Commission on Bookings",
-    ],
-  },
-  {
-    name: "Basic Starter",
-    price: "$10/month",
-    features: [
-      "Improved Search Ranking (Top 50%)",
-      "Up to 3 Images",
-      "Basic Support",
-      "Basic Analytics Access",
-      "15% Commission on Bookings",
-    ],
-  },
-  {
-    name: "Basic Boost",
-    price: "$50/month",
-    features: [
-      "Boosted Search Results (Top 30%)",
-      "Up to 5 Images",
-      "Priority Support",
-      "Basic Analytics Dashboard",
-      "15% Commission on Bookings",
-    ],
-  },
-  {
-    name: "Ultimate Pro",
-    price: "$250/month",
-    features: [
-      "Top Search Placement (Top 5%)",
-      "Unlimited Sponsored Listings",
-      "Custom Branding",
-      "Exclusive Analytics & Insights",
-      "Personal Account Manager",
-      "10% Commission on Bookings",
-    ],
-  },
-  {
-    name: "Enterprise Pro",
-    price: "$1,000/month",
-    features: [
-      "Top 3% Search Placement",
-      "Unlimited Sponsored Listings & Campaigns",
-      "Multi-Channel Marketing Support",
-      "Personalized Account Strategy",
-      "7% Commission on Bookings",
-    ],
-  },
-  {
-    name: "Legacy Premium",
-    price: "$5,000/month",
-    features: [
-      "Highest Priority in Search (Top 1%)",
-      "Exclusive International Campaigns",
-      "Dedicated Marketing & Branding Team",
-      "Full Custom Features & Integrations",
-      "4% Commission on Bookings",
-    ],
-  },
-];
+import { Button, ControlledSwitches, Input, Badge } from "@/components/ui"; // Import from index.ts
+import offers from "./offersData.json";
 
 export default function AdvancedPricing() {
   const [isAnnual, setIsAnnual] = useState(false);
@@ -88,9 +20,9 @@ export default function AdvancedPricing() {
   );
 
   return (
-    <div className="bg-gradient-light">
+    <div className="bg-gradient-light px-0 py-[100px]">
       {/* Gradient background for the top section */}
-      <div className="h-screen flex justify-center items-center">
+      <div className="flex justify-center items-center">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-4xl text-center">
             <h2 className="text-base font-semibold leading-7 text-gray-900">
@@ -110,9 +42,9 @@ export default function AdvancedPricing() {
               <span className="text-base font-semibold leading-6 text-gray-900">
                 Monthly
               </span>
-              <Switch
+              <ControlledSwitches
                 checked={isAnnual}
-                onCheckedChange={setIsAnnual}
+                onCheckedChange={() => { setIsAnnual(!isAnnual) }}
                 className="data-[state=checked]:bg-primary"
               />
               <span className="text-base font-semibold leading-6 text-gray-900">
@@ -142,16 +74,23 @@ export default function AdvancedPricing() {
       {/* Cards section without gradient */}
       <div className="mx-auto max-w-7xl px-6 lg:px-8 mt-16">
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
-          {filteredOffers.map((offer) => (
+          {filteredOffers.map((offer, index) => (
             <motion.div
               key={offer.name}
-              className="rounded-3xl p-8 ring-1 ring-gray-700 bg-gray-100"
+              className="rounded-3xl p-8 ring-1 ring-gray-700 bg-gray-100 relative"
               initial={{ scale: 1 }}
               animate={{ scale: hoveredPlan === offer.name ? 1.05 : 1 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
               onMouseEnter={() => setHoveredPlan(offer.name)}
               onMouseLeave={() => setHoveredPlan(null)}
             >
+              {/* Recommended Badge */}
+              {offer.recommended && (
+                <div className="absolute top-4 right-4">
+                  <Badge variant="primary">Recommended</Badge>
+                </div>
+              )}
+
               <h3 className="text-2xl font-bold tracking-tight text-gray-900">
                 {offer.name}
               </h3>
@@ -175,6 +114,15 @@ export default function AdvancedPricing() {
                   </li>
                 ))}
               </ul>
+
+              {/* Large Tour Operator Badge at the bottom center for the last three offers */}
+              {offer.largeTourOperator && (
+                <div className="mt-6 text-center">
+                  <Badge variant={"green"} className="bg-green-500 text-white">
+                    Large Tour Operator
+                  </Badge>
+                </div>
+              )}
             </motion.div>
           ))}
         </div>

@@ -1,7 +1,7 @@
 interface BadgeProps {
     className?: string;
     children: React.ReactNode;
-    variant?: "primary" | "secondary";
+    variant?: string
   }
   
   export function Badge({ className, children, variant = "primary" }: BadgeProps) {

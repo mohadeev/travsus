@@ -1,20 +1,35 @@
-import React from "react";
-// commnet
-interface SwitchProps {
-  checked: boolean;
-  onCheckedChange: (checked: boolean) => void;
-  className?: string;
-}
+import * as React from 'react';
+import Switch from '@mui/material/Switch';
 
-export function Switch({ checked, onCheckedChange, className }: SwitchProps) {
+export  function ControlledSwitches({onCheckedChange , checked}:any) {
+
+
+
   return (
-    <label className={`switch ${className}`}>
-      <input
-        type="checkbox"
-        checked={checked}
-        onChange={(e) => onCheckedChange(e.target.checked)}
-      />
-      <span className="slider round"></span>
-    </label>
+    <Switch
+      checked={checked}
+      onChange={onCheckedChange}
+      inputProps={{ 'aria-label': 'controlled' }}
+      sx={{
+        '&.MuiSwitch-root': {
+          color: '#ccc', // Default color (off)
+        },
+        '&.MuiSwitch-root.Mui-checked': {
+          color: '#000', // Color when checked (black)
+        },
+        '& .MuiSwitch-thumb': {
+          backgroundColor: '#fff', // Thumb color (white)
+        },
+        '& .MuiSwitch-thumb.Mui-checked': {
+          backgroundColor: '#fff', // Thumb color when checked (white)
+        },
+        '& .MuiSwitch-track': {
+          backgroundColor: '#ccc', // Track color (off)
+        },
+        '& .MuiSwitch-track.Mui-checked': {
+          backgroundColor: '#000', // Track color when checked (black)
+        },
+      }}
+    />
   );
 }
