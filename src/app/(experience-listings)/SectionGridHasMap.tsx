@@ -50,9 +50,9 @@ const SectionGridHasMap: FC<SectionGridHasMapProps> = () => {
 						))}
 					</div>
 					<div className="mt-16 flex items-center justify-center">
-						<Pagination   currentPage={1}
+						{/* <Pagination   currentPage={1}
           totalPages={8}
-          onPageChange={()=>{}}/>
+          onPageChange={()=>{}}/> */}
 					</div>
 				</div>
 
