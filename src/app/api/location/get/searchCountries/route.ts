@@ -2,6 +2,8 @@ import axios from 'axios'
 import { NextRequest, NextResponse } from 'next/server'
 
 // This function handles the GET request for city and country data
+export const dynamic = 'force-dynamic' // This ensures the route is always dynamic
+
 export async function GET(request: NextRequest) {
 	try {
 		const { searchParams } = new URL(request.url)
