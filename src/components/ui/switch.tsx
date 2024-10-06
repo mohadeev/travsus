@@ -9,6 +9,7 @@ export  function ControlledSwitches({onCheckedChange , checked}:any) {
     <Switch
       checked={checked}
       onChange={onCheckedChange}
+      onClick={onCheckedChange}
       inputProps={{ 'aria-label': 'controlled' }}
       sx={{
         '&.MuiSwitch-root': {
