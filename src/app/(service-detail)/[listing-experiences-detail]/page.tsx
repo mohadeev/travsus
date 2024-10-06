@@ -421,7 +421,7 @@ const ListingExperiencesDetailPage: FC<
 	return (
 		<div className={`nc-ListingExperiencesDetailPage`}>
 			{/* SINGLE HEADER */}
-			<SkeletonLoader />
+			{!PHOTOS && <SkeletonLoader />}	
 			<header className="rounded-md sm:rounded-xl">
 				<div className="relative grid grid-cols-4 gap-1 sm:gap-2">
 					<div
