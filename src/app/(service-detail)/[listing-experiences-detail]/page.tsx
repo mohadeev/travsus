@@ -411,7 +411,7 @@ const ListingExperiencesDetailPage: FC<
 				</div>
 
 				{/* SUBMIT */}
-				<ButtonPrimary onClick={() => handleCreateBooking({})}>
+				<ButtonPrimary onClick={() => handleCreateBooking({}).then((res)=>{ console.log(res) }).catch((err)=>{console.log(err)})}>
 					Reserve
 				</ButtonPrimary>
 			</div>

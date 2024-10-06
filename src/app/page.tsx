@@ -225,7 +225,6 @@ import SectionGridFilterCard from './(experience-listings)/SectionGridFilterCard
 import { headers } from 'next/headers'
 import sendEmail from '@/utils/email/sendMail'
 import VarticalExperiencesCard from '@/components/cards/VarticalExperiencesCard'
-import SectionGridVerticalCard from './(car-listings)/SectionGridVerticalCard'
 import { signOut } from 'next-auth/react'
 
 // import WellcomeTemplate from '@/components/email-templates/WellcomeTemplate'
