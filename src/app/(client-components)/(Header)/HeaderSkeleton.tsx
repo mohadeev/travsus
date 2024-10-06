@@ -1,6 +1,6 @@
 const HeaderSkeleton = () => {
     return (
-      <header className="sticky top-0 z-40 shadow-sm dark:border-b dark:border-neutral-700 ">
+      <header className="sticky top-0 z-40 shadow-sm dark:border-b dark:border-neutral-700 bg-white">
         <div className="relative flex h-[88px] px-4 lg:container">
           <div className="flex flex-1 justify-between items-center">
             {/* Logo Skeleton */}
