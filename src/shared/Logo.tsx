@@ -4,7 +4,7 @@ import logoLightImg from '@/images/logo-light.png'
 import LogoSvgLight from './LogoSvgLight'
 import LogoSvg from './LogoSvg'
 import Link from 'next/link'
-import Image, { StaticImageData } from 'next/image'
+import { StaticImageData } from 'next/image'
 
 export interface LogoProps {
 	img?: StaticImageData
@@ -28,7 +28,7 @@ const Logo: React.FC<LogoProps> = ({
 			{/* THIS USE FOR MY CLIENT */}
 			{/* PLEASE UN COMMENT BELLOW CODE AND USE IT */}
 			{img ? (
-				<Image
+				<img
 					className={`block max-h-12 ${imgLight ? 'dark:hidden' : ''}`}
 					src={img.src}
 					alt="Logo"
@@ -37,7 +37,7 @@ const Logo: React.FC<LogoProps> = ({
 				'Logo Here'
 			)}
 			{imgLight && (
-				<Image
+				<img
 					className="hidden max-h-12 dark:block"
 					src={imgLight.src}
 					alt="Logo-Light"
