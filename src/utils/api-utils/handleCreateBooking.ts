@@ -6,7 +6,7 @@ const handleCreateBooking = async (body: any) => {
 		body,
 	)
 		.then((res: any) => {
-			console.log('res', res)
+			// console.log('res', res)
 		})
 		.catch((err) => {
 			console.log('err', err)

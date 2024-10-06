@@ -6,6 +6,13 @@ import currentServerUser from '@/app/api/user/currentServerUser'
 export async function POST(request: NextRequest) {
 	try {
 		const currentUser = await currentServerUser()
+		if(!currentUser){
+			console.log("user not found")
+			return NextResponse.json(
+				{ message: 'user not found' },
+				{ status: 400 },
+			)
+		}
 
 		// Parse the request body to JSON
 		const body = await request.json()
