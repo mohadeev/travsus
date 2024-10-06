@@ -1,6 +1,9 @@
 import axios from 'axios'
 import { NextRequest, NextResponse } from 'next/server'
 import prisma from '@/prisma'
+
+export const dynamic = 'force-dynamic' // This ensures the route is always dynamic
+
 export async function GET(request: NextRequest) {
 	try {
 		// Extract query parameters from the request URL
