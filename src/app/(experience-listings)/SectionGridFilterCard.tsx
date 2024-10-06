@@ -71,8 +71,8 @@
 // 			</div>
 // 			<div className="mt-16 flex items-center justify-center">
 // 				<Pagination   currentPage={1}
-          totalPages={8}
-          onPageChange={()=>{}}/>
+        //   totalPages={8}
+        //   onPageChange={()=>{}}/>
 // 			</div>
 // 		</div>
 // 	)
