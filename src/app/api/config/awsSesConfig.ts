@@ -14,15 +14,15 @@ const sesClient = new SESClient({
 export default sesClient;
 
 // Example function to send an email
-export const sendEmail = async (emailParams) => {
-    const command = new SendEmailCommand(emailParams);
+// export const sendEmail = async (emailParams) => {
+//     const command = new SendEmailCommand(emailParams);
 
-    try {
-        const response = await sesClient.send(command);
-        console.log('Email sent successfully:', response);
-        return response;
-    } catch (error) {
-        console.error('Error sending email:', error);
-        throw error;
-    }
-};
+//     try {
+//         const response = await sesClient.send(command);
+//         console.log('Email sent successfully:', response);
+//         return response;
+//     } catch (error) {
+//         console.error('Error sending email:', error);
+//         throw error;
+//     }
+// };
