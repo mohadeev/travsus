@@ -47,7 +47,7 @@ export async function GET(request: NextRequest) {
 			type: feature.place_type[0], // 'place' for cities, 'country' for countries
 			coordinates: feature.center, // Longitude and Latitude
 		}))
-		console.log('locationData', locationData)
+		// console.log('locationData', locationData)
 		// Return the fetched data as a JSON response
 		return NextResponse.json(locationData)
 	} catch (error) {

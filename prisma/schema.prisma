@@ -19,19 +19,20 @@ model User {
   date                   DateTime  @default(now())
   library                Json?
   accountData            Json?
-  createdAt             DateTime   @default(now())
-  updatedAt             DateTime   @updatedAt
-  savedList             Json?
+  createdAt              DateTime  @default(now())
+  updatedAt              DateTime  @updatedAt
+  savedList              Json?
   passwordResetToken     String?   // Optional: Token for password reset
-  passwordResetTokens    String[]   // Array of used password reset tokens
-  passwordHistory        String[]   // Array of user's password history
+  passwordResetTokens    String[]  // Array of used password reset tokens
+  passwordHistory        String[]  // Array of user's password history
   passwordResetTokenExpiry DateTime? // Optional: Expiry for the reset token
+
+  bookings               Booking[]  // Relation to Booking model
+
   @@map("users")
 }
- 
 
-
- model Tour {
+model Tour {
   id       String    @id @default(auto()) @map("_id") @db.ObjectId
   creator    Json?     // Unstructured data, stored as JSON
   name       String?
@@ -39,30 +40,32 @@ model User {
   overview   String?
   productCategory String?
   slug       String?
-  images     Json[]// Array of Strings
-  people     Json[]// Array of Strings
-  services   Json[]// Array of Strings
-  places     Json[]// Array of Strings
+  images     Json[] // Array of Strings
+  people     Json[] // Array of Strings
+  services   Json[] // Array of Strings
+  places     Json[] // Array of Strings
   highlights Json[] // Array of Strings
   days       Json[] // Array of Strings
-  paths      Json[]// Array of Strings
+  paths      Json[] // Array of Strings
   price      String?
   region     Json[] // Array of Strings
   descount   String?
-  start      Json? // Reference to the StartEnd model
-  end        Json? // Reference to the StartEnd model
-  reviews    Json[]   // Array of JSON objects for storing reviews
+  start      Json?  // Reference to the StartEnd model
+  end        Json?  // Reference to the StartEnd model
+  reviews    Json[] // Array of JSON objects for storing reviews
   lang       String?
   tourfor    String?
   updated    Boolean  @default(false) // Default value set to false
   conclusion String?
-  tags       Json[] // Array of Strings
-  keyphrase  Json[]// Array of Strings (corrected spelling from "keyphease")
-  createdAt  DateTime @default(now())  // Auto set the createdAt field
-  updatedAt  DateTime @updatedAt       // Auto set the updatedAt field
+  tags       Json[]  // Array of Strings
+  keyphrase  Json[]  // Array of Strings (corrected spelling from "keyphrase")
+  createdAt  DateTime @default(now()) // Auto set the createdAt field
+  updatedAt  DateTime @updatedAt      // Auto set the updatedAt field
+
+  bookings   Booking[]  // Relation to Booking model
+
   @@map("tours")
 }
-
 
 model Place {
   id              String    @id @default(auto()) @map("_id") @db.ObjectId
@@ -71,4 +74,18 @@ model Place {
   updatedAt       DateTime  @updatedAt       // Auto set the updatedAt field
   
   @@map("places")
-} 
+}
+
+model Booking {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  user          User     @relation(fields: [userId], references: [id])  // Relation to User
+  userId        String   @db.ObjectId  // Foreign key for the User
+  tour          Tour     @relation(fields: [tourId], references: [id])  // Relation to Tour
+  tourId        String   @db.ObjectId  // Foreign key for the Tour
+  numberOfSeats Int      // Number of seats booked
+  startDate     DateTime // Start date of the tour booking
+  createdAt     DateTime @default(now()) // Auto set the createdAt field
+  updatedAt     DateTime @updatedAt      // Auto set the updatedAt field
+
+  @@map("bookings")
+}

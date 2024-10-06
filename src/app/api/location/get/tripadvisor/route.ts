@@ -22,7 +22,7 @@ export async function GET(request: NextRequest) {
 		interstingPlaces.map(async ({ name }) => {
 			// const existingPlace = await prisma.place.findMany()
 			const places: any = await prisma.place.findMany()
-			console.log('places', places)
+			// console.log('places', places)
 			// Filter the places array to find the exact match within the nested JSON
 			const existingPlace = places.find(
 				(place: any) => place.tripadvisorData?.locationDetails?.name === name,
@@ -76,7 +76,7 @@ export async function GET(request: NextRequest) {
 		// Return error message
 		return NextResponse.json(
 			{ message: 'Error fetching location data' },
-			{ status: 500 },
+			// { status: 500 },
 		)
 	}
 }
