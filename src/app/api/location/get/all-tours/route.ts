@@ -2,11 +2,13 @@ import { NextRequest, NextResponse } from 'next/server'
 import prisma from '@/prisma'
 import getUserData from '@/app/api/user/getUserData'
 
+export const dynamic = 'force-dynamic' // This ensures the route is always dynamic
+
 export async function GET(request: NextRequest) {
     try {
-        const { searchParams } = new URL(request.url)
-        const page = parseInt(searchParams.get('page') || '1') // Default to page 1
-        const limit = parseInt(searchParams.get('limit') || '8') // Default limit
+        const { searchParams } = request.nextUrl // Use nextUrl instead of new URL(request.url)
+        const page = parseInt(searchParams.get('page') || '1')
+        const limit = parseInt(searchParams.get('limit') || '8')
 
         const userData: any = await getUserData()
         const { savedList } = userData || {}
@@ -25,8 +27,8 @@ export async function GET(request: NextRequest) {
                     isEmpty: false,
                 },
             },
-            skip: (page - 1) * limit, // Skip tours for pagination
-            take: limit, // Limit results
+            skip: (page - 1) * limit,
+            take: limit,
         })
 
         const modifiedToursData = allToursData.map((tour) => ({
