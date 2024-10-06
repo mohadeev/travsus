@@ -1,24 +1,24 @@
-// 'use client'
-// import React, { FC, useEffect, useState } from 'react'
-// import { DEMO_EXPERIENCES_LISTINGS } from '@/data/listings'
-// import { ExperiencesDataType, StayDataType } from '@/data/types'
-// import Pagination from '@/shared/Pagination'
-// import TabFilters from './TabFilters'
-// import Heading2 from '@/shared/Heading2'
-// import ExperiencesCard from '@/components/ExperiencesCard'
-// import { useSelector } from 'react-redux'
-// import allToursFetch from '@/utils/allToursFetch'
-// import ContainerExperiencesCardSkeleton from '@/components/ContainerExperiencesCardSkeleton'
-// import { HeadingSkeleton } from '@/shared/Heading'
+'use client'
+import React, { FC, useEffect, useState, useRef } from 'react'
+import { DEMO_EXPERIENCES_LISTINGS } from '@/data/listings'
+import { ExperiencesDataType, StayDataType } from '@/data/types'
+import Pagination from '@/shared/Pagination'
+import TabFilters from './TabFilters'
+import Heading2 from '@/shared/Heading2'
+import ExperiencesCard from '@/components/ExperiencesCard'
+import { useSelector } from 'react-redux'
+import allToursFetch from '@/utils/allToursFetch'
+import ContainerExperiencesCardSkeleton from '@/components/ContainerExperiencesCardSkeleton'
+import { HeadingSkeleton } from '@/shared/Heading'
 
-// export interface SectionGridFilterCardProps {
-// 	className?: string
-// 	data?: StayDataType[]
-// }
+export interface SectionGridFilterCardProps {
+	className?: string
+	data?: StayDataType[]
+}
 
-// const DEMO_DATA: ExperiencesDataType[] = DEMO_EXPERIENCES_LISTINGS.filter(
-// 	(_, i) => i < 8,
-// )
+const DEMO_DATA: ExperiencesDataType[] = DEMO_EXPERIENCES_LISTINGS.filter(
+	(_, i) => i < 8,
+)
 
 // const SectionGridFilterCard: FC<SectionGridFilterCardProps> = ({
 // 	className = '',
@@ -79,18 +79,12 @@
 // }
 
 // export default SectionGridFilterCard
-'use client'
 
-import React, { FC, useEffect, useRef, useState } from 'react'
-import Pagination from '@/shared/Pagination'
-import Heading2 from '@/shared/Heading2'
-import ExperiencesCard from '@/components/ExperiencesCard'
-import allToursFetch from '@/utils/allToursFetch'
-import ContainerExperiencesCardSkeleton from '@/components/ContainerExperiencesCardSkeleton'
-import { HeadingSkeleton } from '@/shared/Heading'
-import TabFilters from './TabFilters'
 
-const SectionGridFilterCard: FC = ({ className = '' }: any) => {
+const SectionGridFilterCard: FC<SectionGridFilterCardProps> = ({
+	className = '',
+	data = DEMO_DATA,
+}) => {
   const [servicesData, setServicesData] = useState([])
   const [loading, setLoading] = useState(true)
   const [currentPage, setCurrentPage] = useState(1)

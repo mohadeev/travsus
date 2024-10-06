@@ -39,10 +39,9 @@ const SectionGridFilterCard: FC<SectionGridFilterCardProps> = ({
         ))}
       </div>
       <div className="flex mt-16 justify-center items-center">
-        <Pagination   currentPage={1}
+      <Pagination   currentPage={1}
           totalPages={8}
-          onPageChange={()=>{}}/>
-      </div>
+          onPageChange={()=>{}}/>      </div>
     </div>
   );
 };
