@@ -10,6 +10,7 @@
   },
   "prettier": "@epic-web/config/prettier",
   "dependencies": {
+    "@aws-sdk/client-ses": "^3.665.0",
     "@babel/core": "^7.25.2",
     "@emotion/styled": "^11.13.0",
     "@epic-web/config": "^1.12.0",
