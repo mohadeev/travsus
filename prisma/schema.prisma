@@ -28,8 +28,25 @@ model User {
   passwordResetTokenExpiry DateTime? // Optional: Expiry for the reset token
 
   bookings               Booking[]  // Relation to Booking model
+  subscriptions          Subscription[] // Relation to Subscription model
 
   @@map("users")
+}
+
+
+model Subscription {
+  id                String    @id @default(auto()) @map("_id") @db.ObjectId
+  userId            String    @db.ObjectId // Reference to User
+  subscriptionType  String    // Type of subscription (e.g., monthly, yearly)
+  startDate         DateTime  // Subscription start date
+  endDate           DateTime? // Subscription end date (optional)
+  isActive          Boolean   @default(true) // Is the subscription active
+  createdAt         DateTime  @default(now()) // Creation date
+  updatedAt         DateTime  @updatedAt // Update date
+
+  user              User      @relation(fields: [userId], references: [id]) // Relation to User model
+
+  @@map("subscriptions")
 }
 
 model Tour {
