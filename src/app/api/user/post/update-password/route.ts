@@ -57,9 +57,9 @@
 
 //     // Check if the token has already been used
 //     if (user.passwordResetTokens.includes(token)) {
-//       console.error('password reset link has already been used.');
+//       console.error('Password reset token has already been used');
 //       return NextResponse.json(
-//         { message: 'This password reset link has already been used..' },
+//         { message: 'This password reset token has already been used.' },
 //         { status: 400 }
 //       );
 //     }
@@ -189,9 +189,9 @@ export async function POST(request: NextRequest) {
     }
 
     if (user.passwordResetTokens.includes(token)) {
-      console.error('password reset link has already been used.');
+      console.error('Password reset token has already been used');
       return NextResponse.json(
-        { message: 'This password reset link has already been used..' },
+        { message: 'This password reset token has already been used.' },
         { status: 400 }
       );
     }

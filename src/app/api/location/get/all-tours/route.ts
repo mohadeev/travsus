@@ -3,35 +3,50 @@ import prisma from '@/prisma'
 import getUserData from '@/app/api/user/getUserData'
 
 export async function GET(request: NextRequest) {
-	try {
-		const userData: any = await getUserData() 
-		const { savedList } = userData // Extract the savedList from user data
+    try {
+        const { searchParams } = new URL(request.url)
+        const page = parseInt(searchParams.get('page') || '1') // Default to page 1
+        const limit = parseInt(searchParams.get('limit') || '8') // Default limit
 
-		// Fetch all tours with images
-		const allToursData = await prisma.tour.findMany({
-			where: {
-				images: {
-					isEmpty: false, // This checks that the array has at least one element
-				},
-			},
-		})
+        const userData: any = await getUserData()
+        const { savedList } = userData || {}
 
-		// Map through all tours and check if each tour ID is in the savedList
-		const modifiedToursData = allToursData.map(tour => ({
-			...tour,
-			liked: savedList?.includes(tour.id) // Check if the tour ID is in the savedList
-		}))
+        const totalTours = await prisma.tour.count({
+            where: {
+                images: {
+                    isEmpty: false,
+                },
+            },
+        })
 
-		// Return the modified tour data as a JSON response
-		return NextResponse.json({ allToursData: modifiedToursData })
-	} catch (error) {
-		console.error('Error fetching tour:', error)
-		return NextResponse.json(
-			{ message: 'Error fetching tour data' },
-			{ status: 500 },
-		)
-	} finally {
-		// Close the Prisma client connection
-		await prisma.$disconnect()
-	}
+        const allToursData = await prisma.tour.findMany({
+            where: {
+                images: {
+                    isEmpty: false,
+                },
+            },
+            skip: (page - 1) * limit, // Skip tours for pagination
+            take: limit, // Limit results
+        })
+
+        const modifiedToursData = allToursData.map((tour) => ({
+            ...tour,
+            liked: savedList?.includes(tour.id),
+        }))
+
+        return NextResponse.json({
+            allToursData: modifiedToursData,
+            totalTours,
+            page,
+            totalPages: Math.ceil(totalTours / limit),
+        })
+    } catch (error) {
+        console.error('Error fetching tour:', error)
+        return NextResponse.json(
+            { message: 'Error fetching tour data' },
+            { status: 500 }
+        )
+    } finally {
+        await prisma.$disconnect()
+    }
 }

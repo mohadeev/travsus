@@ -4,15 +4,20 @@ import { authOptions } from '../auth/[...nextauth]/authOptions'
 import prisma from '@/prisma'
 
 const getUserData = async () => {
-	const currentUser: any = await currentServerUser()
+	const currentUser: any = await currentServerUser() 
+	console.log('currentUser', currentUser)
+	
+if(currentUser){
 	const user = await prisma.user.findUnique({
 		where: {
 			email: currentUser?.user?.email, // Assuming `currentUser` has the user ID
 		},
 	})
-	console.log('currentUser?.user?.email: ', user)
-
 	return user
+}else {
+	return null
+}
+	
 }
 
 export default getUserData
