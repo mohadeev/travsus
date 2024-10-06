@@ -1,4 +1,4 @@
-export { Button } from './buttonfdf';
+export { Button } from './button';
 export { Switch } from './switch';
 export { Input } from './input';
 export { Badge } from './badge';
