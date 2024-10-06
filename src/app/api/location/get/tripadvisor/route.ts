@@ -47,12 +47,12 @@ export async function GET(request: NextRequest) {
 			const firstRecommendedpPlace = newTripadvisorApi?.data?.data?.[0]
 			const locationDetails = await tripadvisorApi({
 				method: 'details',
-				locationId: firstRecommendedpPlace.location_id,
+				locationId: firstRecommendedpPlace?.location_id,
 				params: { searchQuery: firstRecommendedpPlace },
 			})
 			const placeFotos = await tripadvisorApi({
 				method: 'photos',
-				locationId: firstRecommendedpPlace.location_id,
+				locationId: firstRecommendedpPlace?.location_id,
 				params: { searchQuery: firstRecommendedpPlace },
 			})
 
