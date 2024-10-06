@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { DEMO_POSTS } from "@/data/posts";
 import SectionAds from "./SectionAds";
