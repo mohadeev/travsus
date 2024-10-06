@@ -21,7 +21,7 @@ import SectionDateRange from '../SectionDateRange'
 import { Route } from 'next'
 import { useSelector } from 'react-redux'
 import handleCreateBooking from '@/utils/api-utils/handleCreateBooking'
-
+import { SkeletonLoader } from './SkeletonLoader'
 export interface ListingExperiencesDetailPageProps {}
 
 const ListingExperiencesDetailPage: FC<
@@ -421,6 +421,7 @@ const ListingExperiencesDetailPage: FC<
 	return (
 		<div className={`nc-ListingExperiencesDetailPage`}>
 			{/* SINGLE HEADER */}
+			<SkeletonLoader />
 			<header className="rounded-md sm:rounded-xl">
 				<div className="relative grid grid-cols-4 gap-1 sm:gap-2">
 					<div
