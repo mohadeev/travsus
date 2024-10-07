@@ -115,7 +115,7 @@ const SectionGridFilterCard: FC<SectionGridFilterCardProps> = ({
       block: 'start', // Align to the top of the div
     })
   }
-
+console.log("servicesData: " , servicesData)
   return (
     // Attach the ref to the div you want to scroll to
     <div ref={sectionRef} className={`nc-SectionGridFilterCard ${className}`}>

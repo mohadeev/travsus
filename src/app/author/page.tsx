@@ -16,10 +16,13 @@ import Avatar from "@/shared/Avatar";
 import ButtonSecondary from "@/shared/ButtonSecondary";
 import SocialsList from "@/shared/SocialsList";
 import handelFetchAllBookings from "@/utils/api-utils/handelFetchAllBookings";
+import { useSelector } from "react-redux";
 
 export interface AuthorPageProps {}
 
 const AuthorPage: FC<AuthorPageProps> = ({}) => {
+  const user = useSelector((state: any) => state.userReducer.userData)
+
   let [categories] = useState(["Bookings", "Experiences"]);
   const [bookings, setBookings] = useState<any>([])
   useEffect(()=>{ 
@@ -30,7 +33,7 @@ const AuthorPage: FC<AuthorPageProps> = ({}) => {
     })()
     
   } , [])
-console.log("bookings: " , bookings)
+console.log("user: " , user)
 
   const renderSidebar = () => {
     return (
@@ -43,14 +46,13 @@ console.log("bookings: " , bookings)
 
         {/* ---- */}
         <div className="space-y-3 text-center flex flex-col items-center">
-          <h2 className="text-3xl font-semibold">Kevin Francis</h2>
+          <h2 className="text-3xl font-semibold">{user?.accountData?.firstname} {user?.accountData?.lastname}</h2>
           <StartRating className="!text-base" />
         </div>
 
         {/* ---- */}
         <p className="text-neutral-500 dark:text-neutral-400">
-          Providing lake views, The Symphony 9 Tam Coc in Ninh Binh provides
-          accommodation, an outdoor.
+        {user?.accountData?.about}
         </p>
 
         {/* ---- */}
