@@ -98,3 +98,13 @@ model Booking {
 
   @@map("bookings")
 }
+
+
+model Place {
+  id              String    @id @default(auto()) @map("_id") @db.ObjectId
+  tripadvisorData Json      // Unstructured data, stored as JSON
+  createdAt       DateTime  @default(now())  // Auto set the createdAt field
+  updatedAt       DateTime  @updatedAt       // Auto set the updatedAt field
+  
+  @@map("places")
+} 

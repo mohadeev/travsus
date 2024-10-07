@@ -5,10 +5,10 @@ const handleCreateBooking = async (body: any) => {
 		'/api/listing/post/change-ownership',
 		body,
 	)
-return 	await basedPostUrlRequestLogedIn(
-		'/api/booking/post/create-booking',
-		body,
-	)
+// return 	await basedPostUrlRequestLogedIn(
+// 		'/api/booking/post/create-booking',
+// 		body,
+// 	)
 }
 
 export default handleCreateBooking
