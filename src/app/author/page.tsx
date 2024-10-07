@@ -17,6 +17,7 @@ import ButtonSecondary from "@/shared/ButtonSecondary";
 import SocialsList from "@/shared/SocialsList";
 import handelFetchAllBookings from "@/utils/api-utils/handelFetchAllBookings";
 import { useSelector } from "react-redux";
+import moment from "moment";
 
 export interface AuthorPageProps {}
 
