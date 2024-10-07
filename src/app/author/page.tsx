@@ -34,6 +34,8 @@ const AuthorPage: FC<AuthorPageProps> = ({}) => {
     
   } , [])
 console.log("user: " , user)
+const joinedDate = moment(user?.createdAt).format('MMMM YYYY'); // e.g. 'March 2016'
+
 
   const renderSidebar = () => {
     return (
@@ -121,7 +123,7 @@ console.log("user: " , user)
               />
             </svg>
             <span className="text-neutral-6000 dark:text-neutral-300">
-              Joined in March 2016
+              Joined in {joinedDate}
             </span>
           </div>
         </div>
