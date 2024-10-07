@@ -12,7 +12,8 @@ if(currentUser){
 		where: {
 			email: currentUser?.user?.email, // Assuming `currentUser` has the user ID
 		},
-	})
+	}) 
+	// console.log('user', user)	
 	return user
 }else {
 	return null

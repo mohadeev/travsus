@@ -163,7 +163,6 @@ console.log("bookings: " , bookings)
                 <div className="mt-8 grid grid-cols-1 gap-6 md:gap-7 sm:grid-cols-2">
                   {bookings?.map((stay:any) => (
                       <ExperiencesCard key={stay.id} data={stay.tour} />
-                      
                     ))}
                 </div>
                 <div className="flex mt-11 justify-center items-center">

@@ -29,10 +29,10 @@ model User {
 
   bookings               Booking[]  // Relation to Booking model
   subscriptions          Subscription[] // Relation to Subscription model
+  toursCreated           Tour[]  // Relation to Tours created by the user
 
   @@map("users")
 }
-
 
 model Subscription {
   id                String    @id @default(auto()) @map("_id") @db.ObjectId
@@ -50,47 +50,39 @@ model Subscription {
 }
 
 model Tour {
-  id       String    @id @default(auto()) @map("_id") @db.ObjectId
-  creator    Json?     // Unstructured data, stored as JSON
-  name       String?
-  subtitle   String?
-  overview   String?
+  id            String    @id @default(auto()) @map("_id") @db.ObjectId
+  creatorId     String    @db.ObjectId  // Foreign key for User
+  creator       User      @relation(fields: [creatorId], references: [id]) // Relation to User (creator of the tour)
+  name          String?
+  subtitle      String?
+  overview      String?
   productCategory String?
-  slug       String?
-  images     Json[] // Array of Strings
-  people     Json[] // Array of Strings
-  services   Json[] // Array of Strings
-  places     Json[] // Array of Strings
-  highlights Json[] // Array of Strings
-  days       Json[] // Array of Strings
-  paths      Json[] // Array of Strings
-  price      String?
-  region     Json[] // Array of Strings
-  descount   String?
-  start      Json?  // Reference to the StartEnd model
-  end        Json?  // Reference to the StartEnd model
-  reviews    Json[] // Array of JSON objects for storing reviews
-  lang       String?
-  tourfor    String?
-  updated    Boolean  @default(false) // Default value set to false
-  conclusion String?
-  tags       Json[]  // Array of Strings
-  keyphrase  Json[]  // Array of Strings (corrected spelling from "keyphrase")
-  createdAt  DateTime @default(now()) // Auto set the createdAt field
-  updatedAt  DateTime @updatedAt      // Auto set the updatedAt field
+  slug          String?
+  images        Json[]    // Array of Strings
+  people        Json[]    // Array of Strings
+  services      Json[]    // Array of Strings
+  places        Json[]    // Array of Strings
+  highlights    Json[]    // Array of Strings
+  days          Json[]    // Array of Strings
+  paths         Json[]    // Array of Strings
+  price         String?
+  region        Json[]    // Array of Strings
+  descount      String?
+  start         Json?     // Reference to the StartEnd model
+  end           Json?     // Reference to the StartEnd model
+  reviews       Json[]    // Array of JSON objects for storing reviews
+  lang          String?
+  tourfor       String?
+  updated       Boolean   @default(false) // Default value set to false
+  conclusion    String?
+  tags          Json[]    // Array of Strings
+  keyphrase     Json[]    // Array of Strings (corrected spelling from "keyphrase")
+  createdAt     DateTime  @default(now()) // Auto set the createdAt field
+  updatedAt     DateTime  @updatedAt      // Auto set the updatedAt field
 
-  bookings   Booking[]  // Relation to Booking model
+  bookings      Booking[] // Relation to Booking model
 
   @@map("tours")
-}
-
-model Place {
-  id              String    @id @default(auto()) @map("_id") @db.ObjectId
-  tripadvisorData Json      // Unstructured data, stored as JSON
-  createdAt       DateTime  @default(now())  // Auto set the createdAt field
-  updatedAt       DateTime  @updatedAt       // Auto set the updatedAt field
-  
-  @@map("places")
 }
 
 model Booking {
