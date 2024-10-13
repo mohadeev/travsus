@@ -26,13 +26,49 @@ model User {
   passwordResetTokens    String[]  // Array of used password reset tokens
   passwordHistory        String[]  // Array of user's password history
   passwordResetTokenExpiry DateTime? // Optional: Expiry for the reset token
-
-  bookings               Booking[]  // Relation to Booking model
-  subscriptions          Subscription[] // Relation to Subscription model
-  toursCreated           Tour[]  // Relation to Tours created by the user
+  businesses             Business[] @relation("UserBusinesses")
+  bookings               Booking[]  @relation("UserBookings")
+  subscriptions          Subscription[] @relation("UserSubscriptions")
+  toursCreated           Tour[]  @relation("UserTours")
+  profileImage        Json?    // JSON object storing {url, public_id}
 
   @@map("users")
 }
+ 
+model Business {
+  id                  String   @id @default(auto()) @map("_id") @db.ObjectId
+  creatorId           String   @db.ObjectId  // Foreign key for User
+  name                String?
+  adminName           String?
+  email               String   @unique
+  phoneNumber         String
+  address             String?
+  country             String?
+  registrationNumber  String?  // Optional registration number
+  bankName            String?
+  accountNumber       String?
+  registrationDate    DateTime?
+
+  // Profile Image
+  profileImage        Json?    // JSON object storing {url, public_id}
+
+  // Cover Image
+  coverImage          Json?    // JSON object storing {url, public_id}
+
+  // Relation to Tours created by the business
+  toursCreated        Tour[]   @relation("BusinessTours")
+
+  // Creator relation to the User model
+  creator             User     @relation("UserBusinesses", fields: [creatorId], references: [id])
+
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  @@map("businesses")
+}
+
+
+
 
 model Subscription {
   id                String    @id @default(auto()) @map("_id") @db.ObjectId
@@ -44,7 +80,7 @@ model Subscription {
   createdAt         DateTime  @default(now()) // Creation date
   updatedAt         DateTime  @updatedAt // Update date
 
-  user              User      @relation(fields: [userId], references: [id]) // Relation to User model
+  user              User      @relation("UserSubscriptions", fields: [userId], references: [id]) // Relation to User model
 
   @@map("subscriptions")
 }
@@ -52,44 +88,45 @@ model Subscription {
 model Tour {
   id            String    @id @default(auto()) @map("_id") @db.ObjectId
   creatorId     String    @db.ObjectId  // Foreign key for User
-  creator       User      @relation(fields: [creatorId], references: [id]) // Relation to User (creator of the tour)
+  creator       User      @relation("UserTours", fields: [creatorId], references: [id]) // Relation to User (creator of the tour)
+  businessId    String?   @db.ObjectId  // Foreign key for Business
+  business      Business? @relation("BusinessTours", fields: [businessId], references: [id]) // Relation to Business model
   name          String?
   subtitle      String?
   overview      String?
   productCategory String?
   slug          String?
-  images        Json[]    // Array of Strings
-  people        Json[]    // Array of Strings
-  services      Json[]    // Array of Strings
-  places        Json[]    // Array of Strings
-  highlights    Json[]    // Array of Strings
-  days          Json[]    // Array of Strings
-  paths         Json[]    // Array of Strings
+  images        Json[]    // Array of images (stored as JSON)
+  people        Json[]    // Array of people data (stored as JSON)
+  services      Json[]    // Array of services (stored as JSON)
+  places        Json[]    // Array of places (stored as JSON)
+  highlights    Json[]    // Array of highlights (stored as JSON)
+  days          Json[]    // Array of days itinerary (stored as JSON)
+  paths         Json[]    // Array of paths (stored as JSON)
   price         String?
-  region        Json[]    // Array of Strings
-  descount      String?
-  start         Json?     // Reference to the StartEnd model
-  end           Json?     // Reference to the StartEnd model
-  reviews       Json[]    // Array of JSON objects for storing reviews
+  discount      String?   // Corrected spelling
+  start         Json?     // Start location (stored as JSON)
+  end           Json?     // End location (stored as JSON)
+  reviews       Json[]    // Array of reviews (stored as JSON)
   lang          String?
-  tourfor       String?
+  tourfor       String?   // Audience (target group)
   updated       Boolean   @default(false) // Default value set to false
   conclusion    String?
-  tags          Json[]    // Array of Strings
-  keyphrase     Json[]    // Array of Strings (corrected spelling from "keyphrase")
+  tags          Json[]    // Array of tags (stored as JSON)
+  keyphrase     Json[]    // Array of key phrases (stored as JSON)
   createdAt     DateTime  @default(now()) // Auto set the createdAt field
   updatedAt     DateTime  @updatedAt      // Auto set the updatedAt field
 
-  bookings      Booking[] // Relation to Booking model
+  bookings      Booking[] @relation("TourBookings") // Relation to Booking model
 
   @@map("tours")
 }
 
 model Booking {
   id            String   @id @default(auto()) @map("_id") @db.ObjectId
-  user          User     @relation(fields: [userId], references: [id])  // Relation to User
+  user          User     @relation("UserBookings", fields: [userId], references: [id])  // Relation to User
   userId        String   @db.ObjectId  // Foreign key for the User
-  tour          Tour     @relation(fields: [tourId], references: [id])  // Relation to Tour
+  tour          Tour     @relation("TourBookings", fields: [tourId], references: [id])  // Relation to Tour
   tourId        String   @db.ObjectId  // Foreign key for the Tour
   numberOfSeats Int      // Number of seats booked
   startDate     DateTime // Start date of the tour booking
@@ -99,7 +136,6 @@ model Booking {
   @@map("bookings")
 }
 
-
 model Place {
   id              String    @id @default(auto()) @map("_id") @db.ObjectId
   tripadvisorData Json      // Unstructured data, stored as JSON
@@ -107,4 +143,4 @@ model Place {
   updatedAt       DateTime  @updatedAt       // Auto set the updatedAt field
   
   @@map("places")
-} 
+}

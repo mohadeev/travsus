@@ -36,6 +36,8 @@ const Avatar: FC<AvatarProps> = ({
 		>
 			{url && (
 				<Image
+					width={70}
+					height={70}
 					className={`absolute inset-0 h-full w-full object-cover ${radius}`}
 					src={url}
 					alt={name}

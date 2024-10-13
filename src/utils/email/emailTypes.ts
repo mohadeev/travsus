@@ -24,7 +24,6 @@ const emailList = [
 		sender: `"Travsus" <notifications@travsus.com>`,
 		template: forgetPassword,
 	},
-	
 ]
 
 export default emailTypes

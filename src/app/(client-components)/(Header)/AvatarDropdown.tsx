@@ -15,6 +15,7 @@ export default function AvatarDropdown({ className = '' }: Props) {
 		(state: any) => state.userReducer.isUserLoggedIn,
 	)
 	const user = useSelector((state: any) => state.userReducer.userData)
+	const profileImageUrl = user?.profileImage?.url
 
 	return (
 		<>
@@ -24,7 +25,10 @@ export default function AvatarDropdown({ className = '' }: Props) {
 						<Popover.Button
 							className={`flex h-10 w-10 items-center justify-center self-center rounded-full text-slate-700 hover:bg-slate-100 focus:outline-none dark:text-slate-300 dark:hover:bg-slate-800 sm:h-12 sm:w-12`}
 						>
-							<Avatar sizeClass="w-8 h-8 sm:w-9 sm:h-9" />
+							<Avatar
+								sizeClass="w-8 h-8 sm:w-9 sm:h-9"
+								imgUrl={profileImageUrl}
+							/>
 						</Popover.Button>
 						<Transition
 							as={Fragment}
@@ -87,6 +91,33 @@ export default function AvatarDropdown({ className = '' }: Props) {
 										</Link>
 
 										{/* ------------------ 2 --------------------- */}
+										<Link
+											href={'/dashboard'}
+											className="-m-3 flex items-center rounded-lg p-2 transition duration-150 ease-in-out hover:bg-neutral-100 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50 dark:hover:bg-neutral-700"
+											onClick={() => close()}
+										>
+											<div className="flex flex-shrink-0 items-center justify-center text-neutral-500 dark:text-neutral-300">
+												<svg
+													width="24"
+													height="24"
+													viewBox="0 0 24 24"
+													fill="none"
+												>
+													<path
+														d="M3 13h4v8H3v-8zM3 3h4v8H3V3zM9 13h4v8H9v-8zM9 3h4v8H9V3zM15 13h4v8h-4v-8zM15 3h4v8h-4V3z"
+														stroke="currentColor"
+														strokeWidth="1.5"
+														strokeMiterlimit="10"
+														strokeLinecap="round"
+														strokeLinejoin="round"
+													/>
+												</svg>
+											</div>
+											<div className="ml-4">
+												<p className="text-sm font-medium">{'My Business'}</p>
+											</div>
+										</Link>
+										{/* ---------------------------------------------------- */}
 										<Link
 											href={'/author'}
 											className="-m-3 flex items-center rounded-lg p-2 transition duration-150 ease-in-out hover:bg-neutral-100 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50 dark:hover:bg-neutral-700"

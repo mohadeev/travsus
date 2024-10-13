@@ -133,7 +133,7 @@ const Header3: FC<Header3Props> = ({ className = '' }) => {
 					className="ml-auto flex-shrink-0 cursor-pointer pr-2"
 					onClick={() => setShowHeroSearch('location')}
 				>
-					<span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary-6000 text-white">
+					<span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-white">
 						<MagnifyingGlassIcon className="h-5 w-5" />
 					</span>
 				</div>

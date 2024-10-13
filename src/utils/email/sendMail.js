@@ -7,44 +7,28 @@ import nodemailer from 'nodemailer'
 import fs from 'fs'
 import path from 'path'
 import emailTypes from './emailTypes'
-import awsSesConfig from '@/app/api/config/awsSesConfig'
-
-// Define the sendEmail function as a const and export it as default
-// interface EmailOptions {
-// 	to: string
-// 	subject: string
-// 	message: string
-// 	Template: any // Accepting a React component as a template
-// }
+import { ServerClient } from 'postmark'
 
 const sendEmail = async ({ to, subject, message, type, emailData }) => {
+	const ACTIVE_PROD_EMAILS = process.env.ACTIVE_PROD_EMAILS
+	const client = new ServerClient('d4835374-38d7-4278-bf9b-714d93328258')
 	const emailTyp = emailTypes({ type })
-	// console.log(emailTyp)
 	try {
-		const transporter = nodemailer.createTransport({
-			host: 'smtp.zoho.eu', // Use 'smtp.zoho.eu' for the EU region or 'smtp.zoho.com' for the US
-			port: 465, // Use 465 for SSL
-			secure: true, // Use SSL
-			auth: {
-				user: emailTyp.email, // Your Zoho email address from env variables
-				pass: emailTyp.password, // Your Zoho App-Specific Password from env variables
-			},
-		})
-		// const transporter = nodemailer.createTransport({
-		// 	SES: new awsSesConfig.SES({ apiVersion: '2010-12-01' }),
-		// })
+		try {
+			const response = await client.sendEmail({
+				From: emailTyp.sender, // Sender email address
+				To: to, // Recipient email address
+				Subject: emailTyp.subject, // Subject line
+				HtmlBody: compileWelcomeTemplate(emailTyp.template, emailData), // HTML body
+				// TextBody: 'Hello from Postmark!', // Plain text body
+				// MessageStream: 'outbound', // Message stream type
+			})
 
-		// Set up the email data (recipient, subject, and content)
-		const mailOptions = {
-			from: emailTyp.sender, // Display company name
-			to: to, // Recipient's email address
-			subject: emailTyp.subject, // Subject of the email
-			html: compileWelcomeTemplate(emailTyp.template, emailData),
+			console.log(`Email sent successfully! Message ID: ${response.MessageID}`)
+		} catch (error) {
+			console.error('Error sending email:', error)
 		}
-
-		// Send the email
-		const info = await transporter.sendMail(mailOptions)
-		console.log('Message sent: %s', info.messageId)
+		//------------------------------------------------------------------------
 	} catch (error) {
 		console.error('Error sending email:', error)
 		throw new Error('Failed to send email')

@@ -8,14 +8,13 @@ import prisma from '@/prisma'
 import cloudinary from '@/utils/cloudinary'
 
 export async function POST(request: any) {
-
 	try {
 		const formData = await request.formData()
 		const file = formData.get('file')
 		const bytes = await file.arrayBuffer()
 		const buffer = Buffer.from(bytes)
 		const response: any = await new Promise((resolve, reject) => {
-			cloudinary.uploader
+			cloudinary.v2.uploader
 				.upload_stream({}, (error: any, result: any) => {
 					if (error) {
 						return reject(error)
