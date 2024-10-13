@@ -162,7 +162,6 @@ const AccountImage: FC<AccountImageProps> = () => {
 						</span> */}
 					</div>
 				</div>
-
 				{/* File upload area */}
 				<div
 					className={`relative mb-5.5 block w-full cursor-pointer appearance-none rounded-2xl border ${
@@ -234,9 +233,8 @@ const AccountImage: FC<AccountImageProps> = () => {
 						</div>
 					)}
 				</div>
-
 				{error && <p className="text-red-500">{error}</p>}
-
+				{/* // */}
 				{/* Save and Cancel Buttons */}
 			</form>
 		</div>
