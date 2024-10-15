@@ -34,7 +34,7 @@ const PageAddListing5: FC<PageAddListing5Props> = () => {
 	const renderNoInclude = (text: string) => {
 		return (
 			<div className="flex items-center justify-between py-3">
-				<span className="font-medium text-neutral-6000 dark:text-neutral-400">
+				<span className="text-neutral-6000 font-medium dark:text-neutral-400">
 					{text}
 				</span>
 				<i className="las la-times-circle cursor-pointer text-2xl text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100"></i>
@@ -53,7 +53,7 @@ const PageAddListing5: FC<PageAddListing5Props> = () => {
 				<h2 className="text-2xl font-semibold">
 					Activity Details & Interactions
 				</h2>
-				<span className="mt-2 block text-neutral-500 dark:text-neutral-400">
+				<span className="smallTextGray">
 					Participants must confirm their understanding of any specific
 					requirements or guidelines before finalizing their booking.
 				</span>

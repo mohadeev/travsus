@@ -98,7 +98,7 @@ const Header3: FC<Header3Props> = ({ className = '' }) => {
 	const renderButtonOpenHeroSearch = () => {
 		return (
 			<div
-				className={`relative flex w-full items-center justify-between rounded-full border border-neutral-200 shadow transition-all hover:shadow-md dark:border-neutral-6000 ${
+				className={`dark:border-neutral-6000 relative flex w-full items-center justify-between rounded-full border border-neutral-200 shadow transition-all hover:shadow-md ${
 					showHeroSearch
 						? 'pointer-events-none invisible -translate-x-0 translate-y-20 scale-x-[2.55] scale-y-[1.8] opacity-0'
 						: 'visible'
@@ -164,7 +164,6 @@ const Header3: FC<Header3Props> = ({ className = '' }) => {
 						{/* Logo (lg+) */}
 						<div className="relative z-10 hidden flex-1 items-center md:flex">
 							<Logo />
-							
 						</div>
 
 						<div className="mx-auto flex flex-[2] lg:flex-none">
@@ -183,7 +182,7 @@ const Header3: FC<Header3Props> = ({ className = '' }) => {
 									href={'/products/q=create?step=1'}
 									className="hidden items-center self-center rounded-full border border-neutral-300 px-4 py-2 text-sm font-medium text-gray-700 hover:border-neutral-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 dark:border-neutral-700 dark:text-neutral-300 xl:inline-flex"
 								>
-									List your property 2
+									List your property
 								</Link>
 
 								<NotifyDropdown />

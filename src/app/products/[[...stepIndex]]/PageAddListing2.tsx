@@ -37,7 +37,7 @@ const PageAddListing2: FC<PageAddListing2Props> = () => {
 					/>
 				</FormItem>
 				<FormItem label="Add a full description">
-					<span className="mt-2 block text-neutral-500 dark:text-neutral-400">
+					<span className="smallTextGray">
 						Provide all the details about what the customer will see and
 						experience during the activity, in the correct order. Bring the
 						activity to life and write at least 500 characters.
@@ -51,12 +51,12 @@ const PageAddListing2: FC<PageAddListing2Props> = () => {
 							})
 						}}
 						defaultValue={service.overview}
-						rows={14}
+						rows={8}
 					/>
 				</FormItem>
 				<div>
 					<h6 className="text-1sl font-semibold">Summarize the highlights</h6>
-					<span className="mt-2 block text-neutral-500 dark:text-neutral-400">
+					<span className="smallTextGray">
 						Provide all the details about what the customer will see and
 						experience during the activity, in the correct order. Bring the
 						activity to life and write at least 500 characters.

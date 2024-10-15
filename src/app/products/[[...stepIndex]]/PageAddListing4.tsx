@@ -20,7 +20,7 @@ const PageAddListing2: FC<PageAddListing2Props> = () => {
 			<div className="space-y-8">
 				<h2 className="text-2xl font-semibold">Inclusions </h2>
 				<FormItem label="">
-					<span className="mt-2 block text-neutral-500 dark:text-neutral-400">
+					<span className="smallTextGray">
 						List all the features that are included in the price so customers
 						understand the value for money of your activity. Start a new line
 						for each one.
@@ -31,7 +31,7 @@ const PageAddListing2: FC<PageAddListing2Props> = () => {
 					What is not included? (optional)
 				</h2>
 				<FormItem label="">
-					<span className="mt-2 block text-neutral-500 dark:text-neutral-400">
+					<span className="smallTextGray">
 						Name what customers need to pay extra for or what they may expect to
 						see that isn’t included in the price. This allows customers to
 						appropriately set their expectations.

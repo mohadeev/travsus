@@ -2,15 +2,16 @@
 import React, { useEffect, useState } from 'react'
 import Breadcrumb from '@/components/Breadcrumbs/Breadcrumb'
 import DefaultLayout from '@/components/Layouts/DefaultLayout'
+import Page from '@/app/products/[[...stepIndex]]/page'
 
 // }
 
-const Settings = () => {
+const subPage = (params: any) => {
 	return (
 		<DefaultLayout>
-			<div className="mx-auto max-w-270"></div>
+			<Page {...params} />
 		</DefaultLayout>
 	)
 }
 
-export default Settings
+export default subPage

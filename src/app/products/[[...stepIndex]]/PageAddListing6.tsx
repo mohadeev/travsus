@@ -96,16 +96,14 @@ const PageAddListing3: FC<PageAddListing3Props> = () => {
 			{CheckboxesTagsItemsData.map(({ data, title, description }) => (
 				<div key={title} className="space-y-8">
 					<FormItem label={title}>
-						<span className="mb-2 mt-2 block space-y-10 text-xs text-neutral-500 dark:text-neutral-400">
-							{description}
-						</span>
+						<span className="smallTextGray">{description}</span>
 						<CheckboxesTags options={data} />
 					</FormItem>
 				</div>
 			))}
 			<div className="space-y-8">
 				<FormItem label="Add custom information before booking (optional)">
-					<span className="mb-2 mt-2 block space-y-10 text-xs text-neutral-500 dark:text-neutral-400">
+					<span className="smallTextGray">
 						Add any remaining information that customers must know before they
 						book. This information appears on the activity details page.
 					</span>
@@ -113,7 +111,7 @@ const PageAddListing3: FC<PageAddListing3Props> = () => {
 				</FormItem>
 			</div>
 			<FormItem label="How can customers contact you in case of an emergency? (optional)">
-				<span className="mb-2 mt-2 block space-y-10 text-xs text-neutral-500 dark:text-neutral-400">
+				<span className="smallTextGray">
 					This information appears on the voucher.
 				</span>
 				<Input
@@ -127,7 +125,7 @@ const PageAddListing3: FC<PageAddListing3Props> = () => {
 
 			<div className="space-y-8">
 				<FormItem label="What else do customers need to know before your activity? (optional)">
-					<span className="mb-2 mt-2 block space-y-10 text-xs text-neutral-500 dark:text-neutral-400">
+					<span className="smallTextGray">
 						Provide any other logistical information that hasn&apos;t been
 						covered elsewhere. This appears on the voucher.
 					</span>
