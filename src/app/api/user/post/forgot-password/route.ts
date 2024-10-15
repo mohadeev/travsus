@@ -52,7 +52,7 @@ export async function POST(req: NextRequest) {
 			},
 		})
 		sendEmail({
-			to: 'ceo@travsus.com',
+			to: user.email,
 			subject: '',
 			message: '',
 			type: 'forgetPassword',
