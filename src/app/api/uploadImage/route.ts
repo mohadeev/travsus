@@ -20,7 +20,7 @@ cloudinary.config({
 	secure: true,
 })
 
-export default cloudinary
+// export default cloudinary
 
 export async function POST(request: any) {
 	console.log('here')
