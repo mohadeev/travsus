@@ -70,7 +70,7 @@ const config: Config = {
           700: customColors("--c-primary-700"),
           800: customColors("--c-primary-800"),
           900: customColors("--c-primary-900"),   
-          DEFAULT: "#3C50E0",
+          DEFAULT: "#000",
         },
         secondary: {
           50: customColors("--c-secondary-50"),

@@ -7,7 +7,8 @@ import handleChangeCreateTour from './handleChangeCreateTour'
 
 export interface PageAddListing1Props {}
 
-const PageAddListing1: FC<PageAddListing1Props> = () => {
+const PageAddListing1: FC<PageAddListing1Props> = (params:any) => {
+	console.log('paramsparamsparams: ', params.values)
 	const productCategoryList = [
 		{ title: 'Tour', value: 'tour' },
 		{ title: 'Attraction ticket', value: 'attraction-ticket' },
@@ -26,10 +27,11 @@ const PageAddListing1: FC<PageAddListing1Props> = () => {
 				{/* ITEM */}
 				<FormItem
 					label="Choose a product category"
-					desc="Hotel: Professional hospitality businesses that usually have a unique style or theme defining their brand and decor"
+					desc="Create and manage unique travel experiences for your clients."
 				>
 					<Select
 						value={productCategory}
+						name="productCategory"
 						onChange={(event) =>
 							handleChangeCreateTour({
 								path: 'productCategory',

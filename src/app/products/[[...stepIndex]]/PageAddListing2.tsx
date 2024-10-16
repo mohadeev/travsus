@@ -51,7 +51,7 @@ const PageAddListing2: FC<PageAddListing2Props> = () => {
 							})
 						}}
 						defaultValue={service.overview}
-						rows={8}
+						rows={4}
 					/>
 				</FormItem>
 				<div>

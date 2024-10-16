@@ -14,31 +14,41 @@ import allCountries from '@/constants/allCountries'
 export interface PageAddListing3Props {}
 
 const PageAddListing3: FC<PageAddListing3Props> = () => {
+	const address = {
+		streetAddress: '123 Main St',
+		buildingNumber: '12A',
+		suiteNumber: 'Suite 300',
+		postOfficeBox: 'P.O. Box 456',
+		city: 'New York',
+		state: 'NY',
+		postalCode: '10001',
+		country: 'Morocco',
+		geoCoordinates: {
+			latitude: 40.712776,
+			longitude: -74.005974,
+		},
+		addressType: 'Residential',
+		landmark: 'Near Central Park',
+		subdivision: 'Manhattan',
+		timeZone: 'America/New_York',
+		isPrimary: true,
+		notes: 'Leave package with the doorman.',
+	}
+	console.log(allCountries[2]?.name?.common)
 	return (
 		<>
-			<h2 className="text-2xl font-semibold">Your place location</h2>
+			<h2 className="text-2xl font-semibold">Your place location sñvslñdv</h2>
 			<div className="w-14 border-b border-neutral-200 dark:border-neutral-700"></div>
 			{/* FORM */}
 			<div className="space-y-8">
-				{/* <ButtonSecondary>
-					<MapPinIcon className="h-5 w-5 text-neutral-500 dark:text-neutral-400" />
-					<span className="ml-3">Use current location sdv´sdvlsd</span>
-				</ButtonSecondary> */}
 				{/* ITEM */}
 				<FormItem label="Country/Region">
-					<Select>
+					<Select value={address?.country}>
 						{allCountries.map((country: any) => (
 							<option key={country?.name?.common} value={country?.name?.common}>
 								{country?.name?.common}
 							</option>
 						))}
-						{/* <option value="Viet Nam">Viet Nam</option>
-						<option value="Thailand">Thailand</option>
-						<option value="France">France</option>
-						<option value="Singapore">Singapore</option>
-						<option value="Jappan">Jappan</option>
-						<option value="Korea">Korea</option>
-						<option value="...">...</option> */}
 					</Select>
 				</FormItem>
 				<FormItem label="Street">

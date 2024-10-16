@@ -25,7 +25,7 @@ const PageAddListing2: FC<PageAddListing2Props> = () => {
 						understand the value for money of your activity. Start a new line
 						for each one.
 					</span>
-					<Textarea placeholder="..." rows={8} />
+					<Textarea placeholder="..." rows={4} />
 				</FormItem>
 				<h2 className="text-2xl font-semibold">
 					What is not included? (optional)
@@ -36,7 +36,7 @@ const PageAddListing2: FC<PageAddListing2Props> = () => {
 						see that isn’t included in the price. This allows customers to
 						appropriately set their expectations.
 					</span>
-					<Textarea placeholder="..." rows={8} />
+					<Textarea placeholder="..." rows={4} />
 				</FormItem>
 			</div>
 		</>

@@ -19,6 +19,7 @@ import { updateServiceState } from '@/app/GlobalRedux/Features/creatingServiceSl
 import getFetchDataFromApi from '@/utils/getFetchDataFromApi'
 import { Route } from 'next'
 import { useDispatch, useSelector } from 'react-redux'
+import { Form } from 'react-final-form'
 
 const components = [
 	PageAddListing1,
@@ -133,7 +134,8 @@ const CommonLayout: FC<CommonLayoutProps> = ({ children, params }: any) => {
 		})()
 	}, [serviceId, dispatch]) // Dispatch included in the dependency array
 
-	const handleClickPulbishProduct = async () => {
+	const handleClickPulbishProduct = async (values: any) => {
+		console.log(values)
 		if (index > 9) {
 			const body: any = { tourData: service }
 			await basedPostUrlRequestLogedIn('/api/listing/post/edit-listing', body)
@@ -147,44 +149,51 @@ const CommonLayout: FC<CommonLayoutProps> = ({ children, params }: any) => {
 	}
 
 	const arr = Array(10).fill(null) // Fills the array with 0s
-	console.log(currenthref(1 + 1))
+	const onSubmit = () => {}
 	return (
 		<div className={`nc-PageAddListing1 flex items-start justify-start`}>
-			<div className="mx-auto flex max-w-3xl flex-col items-start justify-start space-y-10 pt-0">
-				<div className="flex flex-row items-start justify-start gap-2 overflow-auto">
-					{arr.map((_, i) => (
-						<Link
-							key={i}
-							href={currenthref(i + 1)}
-							className={`inline-flex h-11 w-11 items-center justify-center rounded-full ${
-								i + 1 === index
-									? 'bg-primary text-white'
-									: 'text-neutral-6000 border border-neutral-200 bg-white hover:bg-neutral-100 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800'
-							}`}
-							// className={`inline-flex cursor-pointer items-center justify-between rounded-full border border-neutral-300 ${
-							// 	i + 1 === index
-							// 		? 'hover:text-neutral bg-primary text-neutral-50'
-							// 		: 'bg-white'
-							// } px-5 py-2 transition duration-150 ease-in-out hover:border-neutral-400 hover:bg-neutral-100 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50 dark:border-neutral-700 dark:bg-neutral-800 dark:hover:bg-neutral-700`}
-						>
-							{i + 1}
-						</Link>
-					))}
-				</div>
-				<div>
-					<span className="text-4xl font-semibold">{index}</span>{' '}
-					<span className="text-lg text-neutral-500 dark:text-neutral-400">
-						/ 10
-					</span>
-				</div>
-				<div className="listingSection__wrap">{children}</div>
-				<div className="flex justify-end space-x-5">
-					<ButtonSecondary href={backtHref}>Go back</ButtonSecondary>
-					<ButtonPrimary onClick={handleClickPulbishProduct}>
-						{nextBtnText || 'Continue'}
-					</ButtonPrimary>
-				</div>
-			</div>
+			<Form
+				onSubmit={onSubmit}
+				// validate={validate}
+				initialValues={{productCategory: "tour"}}
+				render={({ handleSubmit, form, submitting, pristine, values }) => (
+					<form className="mx-auto flex max-w-3xl flex-col items-start justify-start space-y-10 pt-0">
+						<div className="flex flex-row items-start justify-start gap-2 overflow-auto">
+							{arr.map((_, i) => (
+								<Link
+									key={i}
+									href={currenthref(i + 1)}
+									className={`inline-flex h-11 w-11 items-center justify-center rounded-full ${
+										i + 1 === index
+											? 'bg-primary text-white'
+											: 'text-neutral-6000 border border-neutral-200 bg-white hover:bg-neutral-100 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800'
+									}`}
+								>
+									{i + 1}
+								</Link>
+							))}
+						</div>
+						<div>
+							<span className="text-4xl font-semibold">{index}</span>{' '}
+							<span className="text-lg text-neutral-500 dark:text-neutral-400">
+								/ 10
+							</span>
+						</div>
+						<div className="listingSection__wrap">
+							{React.Children.map(children, (child) => {
+								// Clone each child and pass the values prop
+								return React.cloneElement(child, { values })
+							})}
+						</div>
+						<div className="flex justify-end space-x-5">
+							<ButtonSecondary href={backtHref}>Go back</ButtonSecondary>
+							<ButtonPrimary onClick={() => handleClickPulbishProduct(values)}>
+								{nextBtnText || 'Continue'}
+							</ButtonPrimary>
+						</div>
+					</form>
+				)}
+			/>
 		</div>
 	)
 }

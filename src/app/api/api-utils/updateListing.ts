@@ -37,7 +37,7 @@ async function updateListing(tourId: string, newTourData: any) {
 				}),
 			},
 		})
-		console.log('Tour updated successfully:', updatedTour)
+		console.log('Tour updated successfully:', updatedTour.id)
 		return updatedTour
 	} catch (error) {
 		console.error('Error updating tour:', error)
