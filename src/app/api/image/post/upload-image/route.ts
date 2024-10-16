@@ -1,126 +1,116 @@
 import { NextRequest, NextResponse } from 'next/server'
-import prisma from '@/prisma'
+import prisma from '@/prisma' // Import Prisma client
 import { imageUploader } from '@/utils/api-utils/imageUploader'
 import getUserData from '@/app/api/user/getUserData'
 import cloudinary from '@/utils/cloudinary'
 
+// Function to upload image and return the image object
 const uploadImage = async (
 	file: Blob,
 ): Promise<{ url: string; public_id: string }> => {
-	try {
-		const arrayBuffer = await file.arrayBuffer()
-		const fileBuffer = Buffer.from(arrayBuffer)
-		const uploadResult = await imageUploader(fileBuffer, 'uploads')
-		return {
-			url: uploadResult.url,
-			public_id: uploadResult.public_id,
-		}
-	} catch (error) {
-		console.error('Error uploading image:', error)
-		throw new Error('Failed to upload image')
+	// Convert ArrayBuffer to Buffer
+	const arrayBuffer = await file.arrayBuffer()
+	const fileBuffer = Buffer.from(arrayBuffer) // Convert to Buffer
+
+	const uploadResult = await imageUploader(fileBuffer, 'uploads') // Pass Buffer
+	return {
+		url: uploadResult.url, // Use 'url'
+		public_id: uploadResult.public_id,
 	}
 }
 
+// Function to update user's profile image and remove the previous one
 const updateUserProfileImage = async (
 	userId: string,
 	newImage: { url: string; public_id: string },
 ) => {
-	try {
-		const user = await prisma.user.findUnique({
-			where: { id: userId },
-			select: { profileImage: true },
-		})
+	const user: any = await prisma.user.findUnique({
+		where: { id: userId },
+		select: { profileImage: true },
+	})
 
-		if (user?.profileImage) {
-			await removeImageFromCloudinary(user.profileImage.public_id)
-		}
-
-		const updatedUser = await prisma.user.update({
-			where: { id: userId },
-			data: { profileImage: newImage },
-		})
-		return updatedUser.profileImage
-	} catch (error) {
-		console.error('Error updating user profile image:', error)
-		throw new Error('Failed to update user profile image')
+	if (user?.profileImage) {
+		// Remove previous image from Cloudinary if exists
+		await removeImageFromCloudinary(user?.profileImage?.public_id)
 	}
+
+	// Update with the new image object
+	await prisma.user.update({
+		where: { id: userId },
+		data: {
+			profileImage: newImage,
+		},
+	})
+	return newImage
 }
 
+// Function to update business's profile/cover image and remove the previous one
 const updateBusinessImage = async (
 	businessId: string,
 	newImage: { url: string; public_id: string },
 	imageType: 'profile' | 'cover',
 ) => {
-	try {
-		const business = await prisma.business.findUnique({
-			where: { id: businessId },
-			select: { profileImage: true, coverImage: true },
-		})
+	const business: any = await prisma.business.findUnique({
+		where: { id: businessId },
+		select: { profileImage: true, coverImage: true },
+	})
 
-		if (imageType === 'profile' && business?.profileImage) {
-			await removeImageFromCloudinary(business.profileImage.public_id)
-		} else if (imageType === 'cover' && business?.coverImage) {
-			await removeImageFromCloudinary(business.coverImage.public_id)
-		}
-
-		const updatedBusiness = await prisma.business.update({
-			where: { id: businessId },
-			data: {
-				[imageType === 'profile' ? 'profileImage' : 'coverImage']: newImage,
-			},
-		})
-		return updatedBusiness[
-			imageType === 'profile' ? 'profileImage' : 'coverImage'
-		]
-	} catch (error) {
-		console.error('Error updating business image:', error)
-		throw new Error('Failed to update business image')
+	if (imageType === 'profile' && business?.profileImage) {
+		// Remove previous profile image from Cloudinary
+		await removeImageFromCloudinary(business.profileImage.public_id)
+	} else if (imageType === 'cover' && business?.coverImage) {
+		// Remove previous cover image from Cloudinary
+		await removeImageFromCloudinary(business.coverImage.public_id)
 	}
+
+	// Update with the new image object
+	await prisma.business.update({
+		where: { id: businessId },
+		data: {
+			[imageType === 'profile' ? 'profileImage' : 'coverImage']: newImage,
+		},
+	})
+	return newImage
 }
 
+// Function to push a new image into the tour's images array
 const updateTourImages = async (
 	tourId: string,
 	newImage: { url: string; public_id: string },
 ) => {
-	try {
-		const updatedTour = await prisma.tour.update({
-			where: { id: tourId },
-			data: {
-				images: {
-					push: newImage,
-				},
+	await prisma.tour.update({
+		where: { id: tourId },
+		data: {
+			images: {
+				push: newImage, // Add new image to the array
 			},
-		})
-		return updatedTour.images
-	} catch (error) {
-		console.error('Error updating tour images:', error)
-		throw new Error('Failed to update tour images')
-	}
+		},
+	})
 }
 
+// Function to remove an image from Cloudinary using its public_id
 const removeImageFromCloudinary = async (public_id: string) => {
-	try {
-		await cloudinary.v2.uploader.destroy(public_id)
-	} catch (error) {
-		console.error('Error removing image from Cloudinary:', error)
-		throw new Error('Failed to remove image from Cloudinary')
-	}
+	// Logic to remove the image from Cloudinary based on the public_id
+	await cloudinary.v2.uploader.destroy(public_id)
 }
 
 export async function POST(request: NextRequest) {
 	try {
-		const userData = await getUserData()
-		if (!userData?.id) {
-			return NextResponse.json(
-				{ message: 'User not authenticated' },
-				{ status: 401 },
-			)
-		}
+		// const userData: any = await getUserData()
+		const userData = { id: '345678765432345676543' }
+		// Ensure user is logged in
+		// if (!userData?.id) {
+		// 	return NextResponse.json(
+		// 		{ message: 'User not authenticated' },
+		// 		{ status: 401 },
+		// 	)
+		// }
 
+		// Extract the type and ID from the request URL
 		const { searchParams } = new URL(request.url)
-		const type = searchParams.get('type')
+		const type = searchParams.get('type') // 'user', 'business', or 'tour'
 		const id = searchParams.get('id')
-		const imageType = searchParams.get('imageType')
+		const imageType = searchParams.get('imageType') // 'profile' or 'cover' for businesses
 
 		if (!type || !id) {
 			return NextResponse.json(
@@ -129,8 +119,11 @@ export async function POST(request: NextRequest) {
 			)
 		}
 
+		// Extract the file from the request body
 		const formData = await request.formData()
 		const file = formData.get('file') as Blob
+		console.log('userId', userData.id)
+		console.log('file: ', file)
 
 		if (!file) {
 			return NextResponse.json(
@@ -139,36 +132,45 @@ export async function POST(request: NextRequest) {
 			)
 		}
 
+		// Upload the image
 		const newImage = await uploadImage(file)
-
-		let result
+		let resData = null
+		// Handle image updates based on the type
 		if (type === 'user') {
-			result = await updateUserProfileImage(userData.id, newImage)
+			// Update the user's profile image and remove the previous one
+			const userProfileImage = await updateUserProfileImage(
+				userData.id,
+				newImage,
+			)
+			return NextResponse.json(userProfileImage, { status: 200 })
 		} else if (type === 'business') {
-			if (!imageType || (imageType !== 'profile' && imageType !== 'cover')) {
+			// Update business profile/cover image and remove the previous one
+			if (!imageType) {
 				return NextResponse.json(
-					{
-						message:
-							'Valid image type (profile or cover) is required for business',
-					},
+					{ message: 'Image type (profile or cover) is required for business' },
 					{ status: 400 },
 				)
 			}
-			result = await updateBusinessImage(id, newImage, imageType)
+			const businessImage = await updateBusinessImage(
+				id,
+				newImage,
+				imageType as 'profile' | 'cover',
+			)
+			// resData = businessImage
+			return NextResponse.json(businessImage, { status: 200 })
 		} else if (type === 'tour') {
-			result = await updateTourImages(id, newImage)
+			// Push new image to the tour's images array
+			await updateTourImages(id, newImage)
 		} else {
 			return NextResponse.json(
 				{ message: 'Invalid type provided' },
 				{ status: 400 },
 			)
 		}
-
-		return NextResponse.json(result, { status: 200 })
 	} catch (error) {
-		console.error('Unhandled error:', error)
+		console.error(error)
 		return NextResponse.json(
-			{ message: 'An unexpected error occurred during the upload.' },
+			{ message: 'An error occurred during the upload.' },
 			{ status: 500 },
 		)
 	}
