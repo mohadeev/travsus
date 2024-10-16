@@ -150,15 +150,16 @@ const CommonLayout: FC<CommonLayoutProps> = ({ children, params }: any) => {
 
 	const arr = Array(10).fill(null) // Fills the array with 0s
 	const onSubmit = () => {}
+
 	return (
 		<div className={`nc-PageAddListing1 flex items-start justify-start`}>
 			<Form
 				onSubmit={onSubmit}
 				// validate={validate}
-				initialValues={{ productCategory: 'tour' }}
+				initialValues={service}
 				render={({ handleSubmit, form, submitting, pristine, values }) => (
 					<form className="mx-auto flex w-full max-w-3xl flex-col items-start justify-start space-y-10 overflow-hidden pt-0">
-						<div className="flex max-w-5xl flex-row items-start justify-start gap-2 overflow-auto">
+						<div className="max-w-1xl flex flex-row items-start justify-start gap-2 overflow-auto lg:max-w-5xl">
 							{arr.map((_, i) => (
 								<Link
 									key={i}

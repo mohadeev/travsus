@@ -116,8 +116,9 @@ model Tour {
   keyphrase     Json[]    // Array of key phrases (stored as JSON)
   createdAt     DateTime  @default(now()) // Auto set the createdAt field
   updatedAt     DateTime  @updatedAt      // Auto set the updatedAt field
-
   bookings      Booking[] @relation("TourBookings") // Relation to Booking model
+  addressId String?  // Foreign key reference to Address
+  address    Address? @relation(fields: [addressId], references: [id]) // Relation to Address
 
   @@map("tours")
 }
@@ -143,4 +144,31 @@ model Place {
   updatedAt       DateTime  @updatedAt       // Auto set the updatedAt field
   
   @@map("places")
+}
+
+
+model Address {
+  id                String   @id @default(auto()) @map("_id") @test.ObjectId // MongoDB ObjectId
+  streetAddress     String
+  buildingNumber    String?
+  suiteNumber       String?
+  postOfficeBox     String?
+  city              String
+  state             String
+  postalCode        String
+  country           String
+  geoCoordinates    GeoCoordinates?
+  addressType       String
+  landmark          String?
+  subdivision       String?
+  timeZone          String?
+  isPrimary         Boolean
+  notes             String?
+  users             User[]   @relation("UserAddresses") // Optional: if you want to track multiple users
+}
+
+model GeoCoordinates {
+  id        String @id @default(auto()) @map("_id") @test.ObjectId // MongoDB ObjectId
+  latitude  Float
+  longitude Float
 }
