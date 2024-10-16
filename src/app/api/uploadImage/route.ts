@@ -13,11 +13,10 @@ cloudinary.config({
 	api_secret: process.env.CLOUDINARY_API_SECRET,
 	secure: true,
 })
-
 export async function POST(request: NextRequest) {
 	try {
 		const formData = await request.formData()
-		const file = formData.get('file') as File
+		const file = formData.get('file') as File | null
 
 		if (!file) {
 			return NextResponse.json({ error: 'No file provided' }, { status: 400 })
@@ -48,4 +47,9 @@ export async function POST(request: NextRequest) {
 			{ status: 500 },
 		)
 	}
+}
+
+// This is necessary for Vercel to handle OPTIONS requests properly
+export async function OPTIONS(request: NextRequest) {
+	return NextResponse.json({}, { status: 200 })
 }
