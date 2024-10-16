@@ -67,6 +67,8 @@ const CommonLayout: FC<CommonLayoutProps> = ({ children, params }: any) => {
 	const pathname = usePathname()
 	const searchParams = useSearchParams()
 	const dispatch = useDispatch()
+	const Router = useRouter()
+
 	const step = searchParams.get('step')
 	const serviceId = searchParams.get('serviceId')
 	const service = useSelector(
@@ -135,7 +137,6 @@ const CommonLayout: FC<CommonLayoutProps> = ({ children, params }: any) => {
 	}, [serviceId, dispatch]) // Dispatch included in the dependency array
 
 	const handleClickPulbishProduct = async (values: any) => {
-		console.log(values)
 		if (index > 9) {
 			const body: any = { tourData: service }
 			await basedPostUrlRequestLogedIn('/api/listing/post/edit-listing', body)
@@ -145,11 +146,16 @@ const CommonLayout: FC<CommonLayoutProps> = ({ children, params }: any) => {
 				.catch((err) => {
 					console.log('err', err)
 				})
+		} else {
+			Router.push(nextHref)
+			//
 		}
 	}
 
 	const arr = Array(10).fill(null) // Fills the array with 0s
-	const onSubmit = () => {}
+	const onSubmit = (e: any) => {
+		e.preventDefault()
+	}
 
 	return (
 		<div className={`nc-PageAddListing1 flex items-start justify-start`}>
@@ -158,7 +164,10 @@ const CommonLayout: FC<CommonLayoutProps> = ({ children, params }: any) => {
 				// validate={validate}
 				initialValues={service}
 				render={({ handleSubmit, form, submitting, pristine, values }) => (
-					<form className="mx-auto flex w-full max-w-3xl flex-col items-start justify-start space-y-10 overflow-hidden pt-0">
+					<form
+						onSubmit={handleSubmit}
+						className="mx-auto flex w-full max-w-3xl flex-col items-start justify-start space-y-10 overflow-hidden pt-0"
+					>
 						<div className="max-w-1xl flex flex-row items-start justify-start gap-2 overflow-auto lg:max-w-5xl">
 							{arr.map((_, i) => (
 								<Link

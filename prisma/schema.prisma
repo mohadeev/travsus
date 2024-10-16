@@ -9,32 +9,7 @@ generator client {
   provider = "prisma-client-js"
 }
 
-model User {
-  id                     String    @id @default(auto()) @map("_id") @db.ObjectId
-  email                  String    @unique
-  username               String?
-  phone                  String?
-  password               String
-  senders                Json?
-  date                   DateTime  @default(now())
-  library                Json?
-  accountData            Json?
-  createdAt              DateTime  @default(now())
-  updatedAt              DateTime  @updatedAt
-  savedList              Json?
-  passwordResetToken     String?   // Optional: Token for password reset
-  passwordResetTokens    String[]  // Array of used password reset tokens
-  passwordHistory        String[]  // Array of user's password history
-  passwordResetTokenExpiry DateTime? // Optional: Expiry for the reset token
-  businesses             Business[] @relation("UserBusinesses")
-  bookings               Booking[]  @relation("UserBookings")
-  subscriptions          Subscription[] @relation("UserSubscriptions")
-  toursCreated           Tour[]  @relation("UserTours")
-  profileImage        Json?    // JSON object storing {url, public_id}
 
-  @@map("users")
-}
- 
 model Business {
   id                  String   @id @default(auto()) @map("_id") @db.ObjectId
   creatorId           String   @db.ObjectId  // Foreign key for User
@@ -85,43 +60,6 @@ model Subscription {
   @@map("subscriptions")
 }
 
-model Tour {
-  id            String    @id @default(auto()) @map("_id") @db.ObjectId
-  creatorId     String    @db.ObjectId  // Foreign key for User
-  creator       User      @relation("UserTours", fields: [creatorId], references: [id]) // Relation to User (creator of the tour)
-  businessId    String?   @db.ObjectId  // Foreign key for Business
-  business      Business? @relation("BusinessTours", fields: [businessId], references: [id]) // Relation to Business model
-  name          String?
-  subtitle      String?
-  overview      String?
-  productCategory String?
-  slug          String?
-  images        Json[]    // Array of images (stored as JSON)
-  people        Json[]    // Array of people data (stored as JSON)
-  services      Json[]    // Array of services (stored as JSON)
-  places        Json[]    // Array of places (stored as JSON)
-  highlights    Json[]    // Array of highlights (stored as JSON)
-  days          Json[]    // Array of days itinerary (stored as JSON)
-  paths         Json[]    // Array of paths (stored as JSON)
-  price         String?
-  discount      String?   // Corrected spelling
-  start         Json?     // Start location (stored as JSON)
-  end           Json?     // End location (stored as JSON)
-  reviews       Json[]    // Array of reviews (stored as JSON)
-  lang          String?
-  tourfor       String?   // Audience (target group)
-  updated       Boolean   @default(false) // Default value set to false
-  conclusion    String?
-  tags          Json[]    // Array of tags (stored as JSON)
-  keyphrase     Json[]    // Array of key phrases (stored as JSON)
-  createdAt     DateTime  @default(now()) // Auto set the createdAt field
-  updatedAt     DateTime  @updatedAt      // Auto set the updatedAt field
-  bookings      Booking[] @relation("TourBookings") // Relation to Booking model
-  addressId String?  // Foreign key reference to Address
-  address    Address? @relation(fields: [addressId], references: [id]) // Relation to Address
-
-  @@map("tours")
-}
 
 model Booking {
   id            String   @id @default(auto()) @map("_id") @db.ObjectId
@@ -147,28 +85,99 @@ model Place {
 }
 
 
+
+
+
+model User {
+  id                     String    @id @default(auto()) @map("_id") @db.ObjectId
+  email                  String    @unique
+  username               String?
+  phone                  String?
+  password               String
+  senders                Json?
+  date                   DateTime  @default(now())
+  library                Json?
+  accountData            Json?
+  createdAt              DateTime  @default(now())
+  updatedAt              DateTime  @updatedAt
+  savedList              Json?
+  passwordResetToken     String?   
+  passwordResetTokens    String[]  
+  passwordHistory        String[]  
+  passwordResetTokenExpiry DateTime? 
+  businesses             Business[] @relation("UserBusinesses")
+  bookings               Booking[]  @relation("UserBookings")
+  subscriptions          Subscription[] @relation("UserSubscriptions")
+  toursCreated           Tour[]  @relation("UserTours")
+  address                Address? @relation("UserAddresses", fields: [addressId], references: [id])
+  addressId              String?   // Foreign key to Address
+  profileImage           Json?    
+
+  @@map("users")
+}
+
+
+
+model Tour {
+  id            String    @id @default(auto()) @map("_id") @db.ObjectId
+  creatorId     String    @db.ObjectId
+  creator       User      @relation("UserTours", fields: [creatorId], references: [id])
+  businessId    String?   @db.ObjectId
+  business      Business? @relation("BusinessTours", fields: [businessId], references: [id])
+  name          String?
+  subtitle      String?
+  overview      String?
+  productCategory String?
+  slug          String?
+  images        Json[]
+  people        Json[]
+  services      Json[]
+  places        Json[]
+  highlights    Json[]
+  days          Json[]
+  paths         Json[]
+  price         String?
+  discount      String?
+  start         Json?
+  end           Json?
+  reviews       Json[]
+  lang          String?
+  tourfor       String?
+  updated       Boolean   @default(false)
+  conclusion    String?
+  tags          Json[]
+  keyphrase     Json[]
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  bookings      Booking[] @relation("TourBookings")
+  addressId     String?   @db.ObjectId // Foreign key to Address
+  address       Address?  @relation("TourAddresses", fields: [addressId], references: [id])
+}
 model Address {
-  id                String   @id @default(auto()) @map("_id") @test.ObjectId // MongoDB ObjectId
-  streetAddress     String
-  buildingNumber    String?
-  suiteNumber       String?
-  postOfficeBox     String?
-  city              String
-  state             String
-  postalCode        String
-  country           String
-  geoCoordinates    GeoCoordinates?
-  addressType       String
-  landmark          String?
-  subdivision       String?
-  timeZone          String?
-  isPrimary         Boolean
-  notes             String?
-  users             User[]   @relation("UserAddresses") // Optional: if you want to track multiple users
+  id               String          @id @default(auto()) @map("_id") @db.ObjectId
+  streetAddress    String
+  buildingNumber   String?
+  suiteNumber      String?
+  postOfficeBox    String?
+  city             String
+  state            String
+  postalCode       String
+  country          String
+  addressType      String
+  geoCoordinates   GeoCoordinates? @relation("AddressGeoCoordinates", fields: [geoCoordinatesId], references: [id])
+  geoCoordinatesId String?         @unique @db.ObjectId // Foreign key for GeoCoordinates, now with @unique
+  landmark         String?
+  subdivision      String?
+  timeZone         String?
+  isPrimary        Boolean
+  notes            String?
+  users            User[]          @relation("UserAddresses")
+  tours            Tour[]          @relation("TourAddresses")
 }
 
 model GeoCoordinates {
-  id        String @id @default(auto()) @map("_id") @test.ObjectId // MongoDB ObjectId
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
   latitude  Float
   longitude Float
+  address   Address? @relation("AddressGeoCoordinates")
 }
