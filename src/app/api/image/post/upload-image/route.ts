@@ -132,6 +132,8 @@ export async function POST(request: NextRequest) {
 			)
 		}
 
+		const newImageD = await uploadImage(file)
+		console.log('newImageD', newImageD)
 		// Upload the image
 		const newImage = await uploadImage(file)
 		let resData = null
