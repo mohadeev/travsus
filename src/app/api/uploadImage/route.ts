@@ -7,6 +7,17 @@ import { writeFile } from 'fs/promises'
 // /utils/cloudinary.ts
 import { v2 as cloudinary } from 'cloudinary'
 
+if (
+	!process.env.CLOUDINARY_CLOUD_NAME ||
+	!process.env.CLOUDINARY_API_KEY ||
+	!process.env.CLOUDINARY_API_SECRET
+) {
+	console.error('Missing Cloudinary environment variables')
+	throw new Error('Missing Cloudinary environment variables')
+} else {
+	console.log('200, everything is good')
+}
+
 cloudinary.config({
 	cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
 	api_key: process.env.CLOUDINARY_API_KEY,
@@ -14,23 +25,33 @@ cloudinary.config({
 	secure: true,
 })
 export async function POST(request: NextRequest) {
+	console.log('POST request received')
 	try {
 		const formData = await request.formData()
 		const file = formData.get('file') as File | null
 
 		if (!file) {
+			console.log('No file provided')
 			return NextResponse.json({ error: 'No file provided' }, { status: 400 })
 		}
+
+		console.log('File received, size:', file.size)
 
 		const bytes = await file.arrayBuffer()
 		const buffer = Buffer.from(bytes)
 
+		console.log('Uploading to Cloudinary')
 		const result = await new Promise((resolve, reject) => {
 			const uploadStream = cloudinary.uploader.upload_stream(
 				{ resource_type: 'auto' },
 				(error, result) => {
-					if (error) reject(error)
-					else resolve(result)
+					if (error) {
+						console.error('Cloudinary upload error:', error)
+						reject(error)
+					} else {
+						console.log('Cloudinary upload successful')
+						resolve(result)
+					}
 				},
 			)
 
@@ -39,17 +60,25 @@ export async function POST(request: NextRequest) {
 
 		const { secure_url } = result as { secure_url: string }
 
+		console.log('Upload complete, returning URL:', secure_url)
 		return NextResponse.json({ secure_url }, { status: 200 })
 	} catch (error) {
-		console.error('Error uploading image:', error)
+		console.error('Error in upload route:', error)
 		return NextResponse.json(
-			{ error: 'Error uploading image' },
+			{
+				error: 'Internal server error',
+				details: error instanceof Error ? error.message : String(error),
+			},
 			{ status: 500 },
 		)
 	}
 }
 
-// This is necessary for Vercel to handle OPTIONS requests properly
 export async function OPTIONS(request: NextRequest) {
 	return NextResponse.json({}, { status: 200 })
+}
+
+// Explicitly set the runtime to nodejs
+export const config = {
+	runtime: 'nodejs',
 }
