@@ -99,7 +99,7 @@ const Settings = () => {
 		<DefaultLayout>
 			<div className="mx-auto max-w-270">
 				<h1 className="mb-6 text-3xl font-bold">Settings</h1>
-				<p className="mb-8">
+				<p className="smallTextGray mb-8 text-sm">
 					This space is where you centralize and update all your business and
 					details. Make sure it is up to date before you start a project so you
 					can be paid.
