@@ -5,7 +5,18 @@ import path from 'path'
 import { writeFileSync } from 'fs'
 import { writeFile } from 'fs/promises'
 import prisma from '@/prisma'
-import cloudinary from '@/utils/cloudinary'
+// import cloudinary from '@/utils/cloudinary'
+// /utils/cloudinary.ts
+import { v2 as cloudinary } from 'cloudinary'
+
+cloudinary.config({
+	cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+	api_key: process.env.CLOUDINARY_API_KEY,
+	api_secret: process.env.CLOUDINARY_API_SECRET,
+	secure: true,
+})
+
+export default cloudinary
 
 export async function POST(request: any) {
 	console.log('here')
@@ -15,7 +26,7 @@ export async function POST(request: any) {
 		const bytes = await file.arrayBuffer()
 		const buffer = Buffer.from(bytes)
 		const response: any = await new Promise((resolve, reject) => {
-			cloudinary.v2.uploader
+			cloudinary.uploader
 				.upload_stream({}, (error: any, result: any) => {
 					if (error) {
 						return reject(error)
