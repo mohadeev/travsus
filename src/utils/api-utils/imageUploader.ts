@@ -20,22 +20,25 @@ export const imageUploader = async (
 		folder, // Specify the folder
 		...options, // Additional options like public_id or transformations
 	}
-	const response = await new Promise((resolve, reject) => {
-		cloudinary.v2.uploader
-			.upload_stream(uploadOptions, (error, result) => {
-				if (error) {
-					return reject(error)
-				}
-				resolve({
-					url: result?.secure_url, // Use the 'secure_url' as 'url'
-					public_id: result?.public_id, // Return the public_id for future reference
+	try {
+		const response = await new Promise((resolve, reject) => {
+			cloudinary.v2.uploader
+				.upload_stream(uploadOptions, (error, result) => {
+					if (error) {
+						return reject(error)
+					}
+					resolve({
+						url: result?.secure_url, // Use the 'secure_url' as 'url'
+						public_id: result?.public_id, // Return the public_id for future reference
+					})
 				})
-			})
-			.end(fileBuffer)
-	})
-	console.log(response)
-
-	return response
+				.end(fileBuffer)
+		})
+		console.log(response)
+		return response
+	} catch (error) {
+		console.log('error: ', error)
+	}
 
 	// return new Promise((resolve, reject) => {
 	// 	// Use Cloudinary's upload stream method
