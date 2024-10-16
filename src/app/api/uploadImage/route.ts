@@ -29,6 +29,7 @@ export async function POST(request: any) {
 		const file = formData.get('file')
 		const bytes = await file.arrayBuffer()
 		const buffer = Buffer.from(bytes)
+		console.log('buffer: ', buffer)
 		const response: any = await new Promise((resolve, reject) => {
 			cloudinary.uploader
 				.upload_stream({}, (error: any, result: any) => {
