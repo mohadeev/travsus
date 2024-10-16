@@ -9,7 +9,7 @@ export const imageUploader = async (
 	fileBuffer: Buffer,
 	folder: string,
 	options: cloudinary.UploadApiOptions = {},
-): Promise<UploadResult> => {
+): Promise<any> => {
 	// Ensure fileBuffer is a Buffer instance
 	if (!(fileBuffer instanceof Buffer)) {
 		throw new Error('Invalid file format. Expected a Buffer.')
@@ -20,26 +20,42 @@ export const imageUploader = async (
 		folder, // Specify the folder
 		...options, // Additional options like public_id or transformations
 	}
-
-	return new Promise((resolve, reject) => {
-		// Use Cloudinary's upload stream method
-		const uploadStream = cloudinary.v2.uploader.upload_stream(
-			uploadOptions,
-			(error, result: any) => {
+	const response = await new Promise((resolve, reject) => {
+		cloudinary.v2.uploader
+			.upload_stream(uploadOptions, (error, result) => {
 				if (error) {
-					console.error('Image upload error:', error) // Log the error
-					return reject(error) // Reject on error
+					return reject(error)
 				}
-
-				// Resolve the promise with the upload result
 				resolve({
-					url: result.secure_url, // Use the 'secure_url' as 'url'
-					public_id: result.public_id, // Return the public_id for future reference
+					url: result?.secure_url, // Use the 'secure_url' as 'url'
+					public_id: result?.public_id, // Return the public_id for future reference
 				})
-			},
-		)
-
-		// Write the buffer to the stream
-		uploadStream.end(fileBuffer)
+			})
+			.end(fileBuffer)
 	})
+	console.log(response)
+
+	return response
+
+	// return new Promise((resolve, reject) => {
+	// 	// Use Cloudinary's upload stream method
+	// 	const uploadStream = cloudinary.v2.uploader.upload_stream(
+	// 		uploadOptions,
+	// 		(error, result: any) => {
+	// 			if (error) {
+	// 				console.error('Image upload error:', error) // Log the error
+	// 				return reject(error) // Reject on error
+	// 			}
+
+	// 			// Resolve the promise with the upload result
+	// 			resolve({
+	// 				url: result.secure_url, // Use the 'secure_url' as 'url'
+	// 				public_id: result.public_id, // Return the public_id for future reference
+	// 			})
+	// 		},
+	// 	)
+
+	// 	// Write the buffer to the stream
+	// 	uploadStream.end(fileBuffer)
+	// })
 }

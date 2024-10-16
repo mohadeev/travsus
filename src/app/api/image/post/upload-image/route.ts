@@ -8,14 +8,22 @@ import cloudinary from '@/utils/cloudinary'
 const uploadImage = async (
 	file: Blob,
 ): Promise<{ url: string; public_id: string }> => {
-	// Convert ArrayBuffer to Buffer
-	const arrayBuffer = await file.arrayBuffer()
-	const fileBuffer = Buffer.from(arrayBuffer) // Convert to Buffer
+	try {
+		// Convert ArrayBuffer to Buffer
+		const arrayBuffer = await file.arrayBuffer()
+		const fileBuffer = Buffer.from(arrayBuffer) // Convert to Buffer
 
-	const uploadResult = await imageUploader(fileBuffer, 'uploads') // Pass Buffer
-	return {
-		url: uploadResult.url, // Use 'url'
-		public_id: uploadResult.public_id,
+		const uploadResult = await imageUploader(fileBuffer, 'uploads') // Pass Buffer
+		return {
+			url: uploadResult.url, // Use 'url'
+			public_id: uploadResult.public_id,
+		}
+	} catch (error) {
+		console.log('error', error)
+		return {
+			url: '', // Use 'url'
+			public_id: '',
+		}
 	}
 }
 
