@@ -41,7 +41,7 @@ export async function POST(request: any) {
 		})
 		const secure_url = response?.secure_url
 		// const newImages = [...story.images, response]
-
+		console.log(response)
 		return NextResponse.json(response, { status: 200 })
 	} catch (error) {
 		console.error('Error uploading image:', error)
