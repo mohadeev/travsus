@@ -37,7 +37,7 @@ const PageAddListing3: FC<PageAddListing3Props> = () => {
 	console.log(allCountries[2]?.name?.common)
 	return (
 		<>
-			<h2 className="text-2xl font-semibold">Your place location sñvslñdv</h2>
+			<h2 className="text-2xl font-semibold">Your place location</h2>
 			<div className="w-14 border-b border-neutral-200 dark:border-neutral-700"></div>
 			{/* FORM */}
 			<div className="space-y-8">

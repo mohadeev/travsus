@@ -155,10 +155,10 @@ const CommonLayout: FC<CommonLayoutProps> = ({ children, params }: any) => {
 			<Form
 				onSubmit={onSubmit}
 				// validate={validate}
-				initialValues={{productCategory: "tour"}}
+				initialValues={{ productCategory: 'tour' }}
 				render={({ handleSubmit, form, submitting, pristine, values }) => (
-					<form className="mx-auto flex max-w-3xl flex-col items-start justify-start space-y-10 pt-0">
-						<div className="flex flex-row items-start justify-start gap-2 overflow-auto">
+					<form className="mx-auto flex w-full max-w-3xl flex-col items-start justify-start space-y-10 overflow-hidden pt-0">
+						<div className="flex max-w-5xl flex-row items-start justify-start gap-2 overflow-auto">
 							{arr.map((_, i) => (
 								<Link
 									key={i}
