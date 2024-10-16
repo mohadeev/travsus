@@ -8,22 +8,14 @@ import cloudinary from '@/utils/cloudinary'
 const uploadImage = async (
 	file: Blob,
 ): Promise<{ url: string; public_id: string }> => {
-	try {
-		// Convert ArrayBuffer to Buffer
-		const arrayBuffer = await file.arrayBuffer()
-		const fileBuffer = Buffer.from(arrayBuffer) // Convert to Buffer
+	// Convert ArrayBuffer to Buffer
+	const arrayBuffer = await file.arrayBuffer()
+	const fileBuffer = Buffer.from(arrayBuffer) // Convert to Buffer
 
-		const uploadResult = await imageUploader(fileBuffer, 'uploads') // Pass Buffer
-		return {
-			url: uploadResult.url, // Use 'url'
-			public_id: uploadResult.public_id,
-		}
-	} catch (error) {
-		console.log('error', error)
-		return {
-			url: '', // Use 'url'
-			public_id: '',
-		}
+	const uploadResult = await imageUploader(fileBuffer, 'uploads') // Pass Buffer
+	return {
+		url: uploadResult.url, // Use 'url'
+		public_id: uploadResult.public_id,
 	}
 }
 
@@ -104,15 +96,15 @@ const removeImageFromCloudinary = async (public_id: string) => {
 
 export async function POST(request: NextRequest) {
 	try {
-		// const userData: any = await getUserData()
-		const userData = { id: '345678765432345676543' }
+		const userData: any = await getUserData()
+
 		// Ensure user is logged in
-		// if (!userData?.id) {
-		// 	return NextResponse.json(
-		// 		{ message: 'User not authenticated' },
-		// 		{ status: 401 },
-		// 	)
-		// }
+		if (!userData?.id) {
+			return NextResponse.json(
+				{ message: 'User not authenticated' },
+				{ status: 401 },
+			)
+		}
 
 		// Extract the type and ID from the request URL
 		const { searchParams } = new URL(request.url)
@@ -130,8 +122,6 @@ export async function POST(request: NextRequest) {
 		// Extract the file from the request body
 		const formData = await request.formData()
 		const file = formData.get('file') as Blob
-		console.log('userId', userData.id)
-		console.log('file: ', file)
 
 		if (!file) {
 			return NextResponse.json(
@@ -140,8 +130,6 @@ export async function POST(request: NextRequest) {
 			)
 		}
 
-		const newImageD = await uploadImage(file)
-		console.log('newImageD', newImageD)
 		// Upload the image
 		const newImage = await uploadImage(file)
 		let resData = null
@@ -185,3 +173,9 @@ export async function POST(request: NextRequest) {
 		)
 	}
 }
+
+export async function OPTIONS(request: NextRequest) {
+	return NextResponse.json({}, { status: 200 })
+}
+
+export const runtime = 'nodejs'
