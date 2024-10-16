@@ -79,6 +79,8 @@ export async function OPTIONS(request: NextRequest) {
 }
 
 // Explicitly set the runtime to nodejs
-export const config = {
-	runtime: 'nodejs',
-}
+// export const config = {
+// 	runtime: 'nodejs',
+// }
+
+export const runtime = 'nodejs'
