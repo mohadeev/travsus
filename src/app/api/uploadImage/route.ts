@@ -8,11 +8,15 @@ import prisma from '@/prisma'
 // import cloudinary from '@/utils/cloudinary'
 // /utils/cloudinary.ts
 import { v2 as cloudinary } from 'cloudinary'
-
+const CLOUDINARY_CLOUD_NAME = 'travsus'
+const CLOUDINARY_API_KEY = '897269291229847'
+const CLOUDINARY_API_SECRET = 'AQyEfyG6TSHFyGZx8epX_X5doaM'
+const CLOUDINARY_URL =
+	'cloudinary://897269291229847:AQyEfyG6TSHFyGZx8epX_X5doaM@travsus'
 cloudinary.config({
-	cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-	api_key: process.env.CLOUDINARY_API_KEY,
-	api_secret: process.env.CLOUDINARY_API_SECRET,
+	cloud_name: CLOUDINARY_CLOUD_NAME,
+	api_key: CLOUDINARY_API_KEY,
+	api_secret: CLOUDINARY_API_SECRET,
 	secure: true,
 })
 
