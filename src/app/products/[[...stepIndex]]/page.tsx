@@ -137,8 +137,9 @@ const CommonLayout: FC<CommonLayoutProps> = ({ children, params }: any) => {
 	}, [serviceId, dispatch]) // Dispatch included in the dependency array
 
 	const handleClickPulbishProduct = async (values: any) => {
+		console.log('values: ', values)
 		if (index > 9) {
-			const body: any = { tourData: service }
+			const body: any = { tourData: values }
 			await basedPostUrlRequestLogedIn('/api/listing/post/edit-listing', body)
 				.then((res: any) => {
 					console.log('res', res)
@@ -156,6 +157,7 @@ const CommonLayout: FC<CommonLayoutProps> = ({ children, params }: any) => {
 	const onSubmit = (e: any) => {
 		e.preventDefault()
 	}
+	console.log('services:', service)
 
 	return (
 		<div className={`nc-PageAddListing1 flex items-start justify-start`}>
@@ -186,7 +188,7 @@ const CommonLayout: FC<CommonLayoutProps> = ({ children, params }: any) => {
 						<div>
 							<span className="text-4xl font-semibold">{index}</span>{' '}
 							<span className="text-lg text-neutral-500 dark:text-neutral-400">
-								/ 10
+								/ 10 {service?.name}
 							</span>
 						</div>
 						<div className="listingSection__wrap">

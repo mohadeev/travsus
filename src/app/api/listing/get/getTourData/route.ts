@@ -1,4 +1,3 @@
-import axios from 'axios'
 import { NextRequest, NextResponse } from 'next/server'
 import prisma from '@/prisma'
 
@@ -18,12 +17,20 @@ export async function GET(request: NextRequest) {
 			)
 		}
 
-		// Fetch the tour from the database using Prisma (MongoDB ID)
+		// Fetch the tour along with its address and geo-coordinates from the database using Prisma (MongoDB ID)
 		const tour = await prisma.tour.findUnique({
 			where: {
-				id: '631e46a1027691bd18f0cfdd', // MongoDB ID is a string
+				id: tourId, // MongoDB ID is a string
+			},
+			include: {
+				address: {
+					include: {
+						geoCoordinates: true, // Include geoCoordinates in the address
+					},
+				},
 			},
 		})
+
 		console.log('tour:', tour)
 
 		// Check if the tour exists
@@ -31,7 +38,7 @@ export async function GET(request: NextRequest) {
 			return NextResponse.json({ message: 'Tour not found' }, { status: 404 })
 		}
 
-		// Return the tour data as a JSON response
+		// Return the tour data along with the address as a JSON response
 		return NextResponse.json(tour)
 	} catch (error) {
 		console.error('Error fetching tour:', error)

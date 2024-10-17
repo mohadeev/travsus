@@ -175,6 +175,7 @@ model Address {
   notes            String?
   users            User[]          @relation("UserAddresses")
   tours            Tour[]          @relation("TourAddresses")
+  @@map("addresses")
 }
 
 model GeoCoordinates {

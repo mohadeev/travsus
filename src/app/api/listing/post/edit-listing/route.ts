@@ -9,7 +9,7 @@ export async function POST(request: NextRequest) {
 		const tourData: any = body?.tourData
 		const tourId: any = tourData?.id // Make sure you're extracting tourId from body
 
-		console.log('Parsed body:', tourId)
+		// console.log('Parsed body:', tourId)
 		await updateListing(tourId, tourData)
 
 		// Check if `tourId` is provided

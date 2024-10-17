@@ -6,6 +6,8 @@ import FormItem from '../FormItem'
 import Input from '@/shared/Input'
 import { useSelector } from 'react-redux'
 import handleChangeCreateTour from './handleChangeCreateTour'
+import { Field } from 'react-final-form'
+import FieldInputFormItem from '@/app/add-listing/FieldInputFormItem'
 
 export interface PageAddListing2Props {}
 
@@ -28,14 +30,11 @@ const PageAddListing2: FC<PageAddListing2Props> = () => {
 					Your place description for client
 				</h2>
 				<br />
-				<FormItem label="What is the customer-facing title of your product?">
-					<Input
-						onChange={(e) => {
-							handleChangeCreateTour({ path: 'name', value: e.target.value })
-						}}
-						defaultValue={service.name}
-					/>
-				</FormItem>
+				<FieldInputFormItem
+					name={'name'}
+					label="What is the customer-facing title of your product?"
+					placeholder="What is the customer-facing title of your product?"
+				/>
 				<FormItem label="Add a full description">
 					<span className="smallTextGray">
 						Provide all the details about what the customer will see and
