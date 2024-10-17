@@ -3,18 +3,18 @@
  */
 
 const nextConfig = {
-	// reactStrictMode: false,
-	// experimental: {
-	// 	typedRoutes: true,
-	// },
-	reactStrictMode: true,
+	reactStrictMode: false,
 	experimental: {
-		appDir: true,
+		typedRoutes: true,
 	},
-	webpack: (config) => {
-		config.externals = [...config.externals, 'cloudinary']
-		return config
-	},
+	// reactStrictMode: true,
+	// experimental: {
+	// 	appDir: true,
+	// },
+	// webpack: (config) => {
+	// 	config.externals = [...config.externals, 'cloudinary']
+	// 	return config
+	// },
 	images: {
 		remotePatterns: [
 			{

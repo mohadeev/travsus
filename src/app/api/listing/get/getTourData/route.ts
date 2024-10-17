@@ -21,9 +21,10 @@ export async function GET(request: NextRequest) {
 		// Fetch the tour from the database using Prisma (MongoDB ID)
 		const tour = await prisma.tour.findUnique({
 			where: {
-				id: tourId, // MongoDB ID is a string
+				id: '631e46a1027691bd18f0cfdd', // MongoDB ID is a string
 			},
 		})
+		console.log('tour:', tour)
 
 		// Check if the tour exists
 		if (!tour) {

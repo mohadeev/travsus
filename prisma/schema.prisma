@@ -119,7 +119,7 @@ model User {
 
 
 model Tour {
-  id            String    @id @default(auto()) @map("_id") @db.ObjectId
+  id                     String    @id @default(auto()) @map("_id") @db.ObjectId
   creatorId     String    @db.ObjectId
   creator       User      @relation("UserTours", fields: [creatorId], references: [id])
   businessId    String?   @db.ObjectId
@@ -152,6 +152,8 @@ model Tour {
   bookings      Booking[] @relation("TourBookings")
   addressId     String?   @db.ObjectId // Foreign key to Address
   address       Address?  @relation("TourAddresses", fields: [addressId], references: [id])
+    @@map("tours")
+
 }
 model Address {
   id               String          @id @default(auto()) @map("_id") @db.ObjectId
