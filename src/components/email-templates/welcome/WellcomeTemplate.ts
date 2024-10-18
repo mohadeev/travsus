@@ -1,9 +1,9 @@
-import { welcomeHeaderMedia } from './welcome/WelcomeHeaderMedia'
-import { emailTemplatesFooter } from './EmailTemplatesFooter'
-import { emailTemplatesHeader } from './EmailTemplatesHeader'
-import { werticalExperienceCard } from './welcome/VerticalExperienceCard'
-import { EmailText } from './EmailText'
-import { EmailBlackButton } from './EmailBlackButton'
+import { welcomeHeaderMedia } from './WelcomeHeaderMedia'
+import { emailTemplatesFooter } from '../EmailTemplatesFooter'
+import { emailTemplatesHeader } from '../EmailTemplatesHeader'
+import { werticalExperienceCard } from './VerticalExperienceCard'
+import { EmailText } from '../EmailText'
+import { EmailBlackButton } from '../EmailBlackButton'
 export const welcomeTemplate = (data: any) => `
 <!DOCTYPE html>
 <html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" lang="en">

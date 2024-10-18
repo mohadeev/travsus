@@ -1,4 +1,4 @@
-import { welcomeTemplate } from '@/components/email-templates/WellcomeTemplate'
+import { welcomeTemplate } from '@/components/email-templates/welcome/WellcomeTemplate'
 // utils/sendEmail.ts
 import handlebars from 'handlebars'
 // import * as welcomeTemplate from './template.html'

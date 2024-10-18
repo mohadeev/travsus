@@ -1,5 +1,6 @@
+import { bookingConfirmation } from '@/components/email-templates/bookingConfirmation/bookingConfirmation'
 import { forgetPassword } from '@/components/email-templates/forget-password/forgetPassword'
-import { welcomeTemplate } from '@/components/email-templates/WellcomeTemplate'
+import { welcomeTemplate } from '@/components/email-templates/welcome/WellcomeTemplate'
 
 const emailTypes = ({ type }: any) => {
 	return emailList.find((list) => list.type === type)
@@ -24,6 +25,16 @@ const emailList = [
 		sender: `"Travsus" <notifications@travsus.com>`,
 		template: forgetPassword,
 	},
+	{
+		type: 'forgetPassword',
+		email: 'notifications@travsus.com',
+		password: 'es2e*ghA',
+		// password: 'F1!dG3n7*zR@Pq5#',
+		subject: 'Your Travsus password',
+		sender: `"Travsus" <notifications@travsus.com>`,
+		template: bookingConfirmation,
+	},
+	
 ]
 
 export default emailTypes
