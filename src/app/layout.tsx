@@ -85,7 +85,6 @@ export default function RootLayout({
 	// }, [])
 	// const pathname = usePathname()
 	const isDashboardPath = pathname?.startsWith('/dashboard') ?? false
-	console.log('isDashboardPath: ', isDashboardPath)
 
 	return (
 		<html lang="en" className={inter.className}>
