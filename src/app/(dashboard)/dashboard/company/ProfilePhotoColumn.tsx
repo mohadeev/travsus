@@ -5,12 +5,15 @@ import ButtonPrimary from '@/shared/ButtonPrimary'
 import ButtonSecondary from '@/shared/ButtonSecondary'
 import { clientUploadImage } from '@/utils/clientUploadImage'
 import avatar1 from '@/images/avatars/user-profile.webp'
+import { businessSliceState } from '@/app/GlobalRedux/Features/businessSlice/businessSlice'
+import { useDispatch } from 'react-redux'
 
 const ProfilePhotoColumn = ({ companyData }: any) => {
 	const { id: businessId, profileImage } = companyData || {}
 	const [file, setFile] = useState<File | null>(null)
 	const [loading, setLoading] = useState(false)
 	const [error, setError] = useState<string | null>(null)
+	const dispatch = useDispatch()
 	const [uploadedImage, setUploadedImage] = useState<string | null>('')
 	const [isDragActive, setIsDragActive] = useState(false)
 
@@ -51,6 +54,13 @@ const ProfilePhotoColumn = ({ companyData }: any) => {
 				file,
 				'profile',
 			)
+			dispatch(
+				businessSliceState({
+					path: 'company.profileImage',
+					value: { url: result.url },
+				}),
+			)
+
 			setUploadedImage(result.url || '')
 		} catch (err) {
 			setError(

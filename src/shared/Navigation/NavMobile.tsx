@@ -134,7 +134,7 @@ const NavMobile: React.FC<NavMobileProps> = ({
 					target="_blank"
 					rel="noopener noreferrer"
 				>
-					<ButtonPrimary>Get Template</ButtonPrimary>
+					<ButtonPrimary>Sign up</ButtonPrimary>
 				</a>
 
 				<LangDropdown

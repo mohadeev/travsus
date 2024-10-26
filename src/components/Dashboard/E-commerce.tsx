@@ -15,7 +15,7 @@ const ChartThree = dynamic(() => import('@/components/Charts/ChartThree'), {
 	ssr: false,
 })
 
-const ECommerce: React.FC = () => {
+const ECommerce = ({ servicesData }: any) => {
 	return (
 		<>
 			<div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5">
@@ -121,7 +121,7 @@ const ECommerce: React.FC = () => {
 				<ChartThree />
 				<MapOne />
 				<div className="col-span-12 xl:col-span-8">
-					<TableOne />
+					<TableOne servicesData={servicesData} />
 				</div>
 				<ChatCard />
 			</div>

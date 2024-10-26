@@ -3,16 +3,26 @@ import { Form, Field, FieldRenderProps } from 'react-final-form'
 import Input from '@/shared/Input' // Assuming your Input component is designed to work with final form
 import ButtonPrimary from '@/shared/ButtonPrimary'
 import updateCompanyInfo from '@/utils/api-utils/updateCompanyInfo'
+import { businessSliceState } from '@/app/GlobalRedux/Features/businessSlice/businessSlice'
+import { useDispatch } from 'react-redux'
 
 interface FormValues {
 	name: string
 	address: string
 	registrationNumber?: string // Optional
 }
-
 const CompanyInformation = ({ companyData }: any) => {
+	const dispatch = useDispatch()
+
 	const onSubmit = async (formValues: FormValues) => {
 		await updateCompanyInfo(formValues).then((data) => {
+			console.log('data: ', data)
+			dispatch(
+				businessSliceState({
+					path: 'company.name',
+					value: data?.name,
+				}),
+			)
 			console.log('data:', data)
 		})
 	}
