@@ -217,10 +217,6 @@ export async function OPTIONS(request: NextRequest) {
 	)
 }
 
-export const config = {
-	api: {
-		bodyParser: false,
-	},
-}
-
 export const runtime = 'nodejs'
+
+export const dynamic = 'force-dynamic'
