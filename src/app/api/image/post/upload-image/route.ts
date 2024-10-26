@@ -1,25 +1,22 @@
 import { NextRequest, NextResponse } from 'next/server'
-import prisma from '@/prisma' // Import Prisma client
+import prisma from '@/prisma'
 import { imageUploader } from '@/utils/api-utils/imageUploader'
 import getUserData from '@/app/api/user/getUserData'
 import cloudinary from '@/utils/cloudinary'
 
-// Function to upload image and return the image object
 const uploadImage = async (
 	file: Blob,
 ): Promise<{ url: string; public_id: string }> => {
-	// Convert ArrayBuffer to Buffer
 	const arrayBuffer = await file.arrayBuffer()
-	const fileBuffer = Buffer.from(arrayBuffer) // Convert to Buffer
+	const fileBuffer = Buffer.from(arrayBuffer)
 
-	const uploadResult = await imageUploader(fileBuffer, 'uploads') // Pass Buffer
+	const uploadResult = await imageUploader(fileBuffer, 'uploads')
 	return {
-		url: uploadResult.url, // Use 'url'
+		url: uploadResult.url,
 		public_id: uploadResult.public_id,
 	}
 }
 
-// Function to update user's profile image and remove the previous one
 const updateUserProfileImage = async (
 	userId: string,
 	newImage: { url: string; public_id: string },
@@ -30,21 +27,18 @@ const updateUserProfileImage = async (
 	})
 
 	if (user?.profileImage) {
-		// Remove previous image from Cloudinary if exists
 		await removeImageFromCloudinary(user?.profileImage?.public_id)
 	}
 
-	// Update with the new image object
-	await prisma.user.update({
+	const updatedUser = await prisma.user.update({
 		where: { id: userId },
 		data: {
 			profileImage: newImage,
 		},
 	})
-	return newImage
+	return updatedUser.profileImage
 }
 
-// Function to update business's profile/cover image and remove the previous one
 const updateBusinessImage = async (
 	businessId: string,
 	newImage: { url: string; public_id: string },
@@ -56,41 +50,38 @@ const updateBusinessImage = async (
 	})
 
 	if (imageType === 'profile' && business?.profileImage) {
-		// Remove previous profile image from Cloudinary
 		await removeImageFromCloudinary(business.profileImage.public_id)
 	} else if (imageType === 'cover' && business?.coverImage) {
-		// Remove previous cover image from Cloudinary
 		await removeImageFromCloudinary(business.coverImage.public_id)
 	}
 
-	// Update with the new image object
-	await prisma.business.update({
+	const updatedBusiness = await prisma.business.update({
 		where: { id: businessId },
 		data: {
 			[imageType === 'profile' ? 'profileImage' : 'coverImage']: newImage,
 		},
 	})
-	return newImage
+	return imageType === 'profile'
+		? updatedBusiness.profileImage
+		: updatedBusiness.coverImage
 }
 
-// Function to push a new image into the tour's images array
 const updateTourImages = async (
 	tourId: string,
 	newImage: { url: string; public_id: string },
 ) => {
-	await prisma.tour.update({
+	const updatedTour = await prisma.tour.update({
 		where: { id: tourId },
 		data: {
 			images: {
-				push: newImage, // Add new image to the array
+				push: newImage,
 			},
 		},
 	})
+	return updatedTour.images
 }
 
-// Function to remove an image from Cloudinary using its public_id
 const removeImageFromCloudinary = async (public_id: string) => {
-	// Logic to remove the image from Cloudinary based on the public_id
 	await cloudinary.v2.uploader.destroy(public_id)
 }
 
@@ -98,84 +89,138 @@ export async function POST(request: NextRequest) {
 	try {
 		const userData: any = await getUserData()
 
-		// Ensure user is logged in
 		if (!userData?.id) {
 			return NextResponse.json(
 				{ message: 'User not authenticated' },
-				{ status: 401 },
+				{
+					status: 401,
+					headers: {
+						'Access-Control-Allow-Origin': '*',
+						'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+						'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+					},
+				},
 			)
 		}
 
-		// Extract the type and ID from the request URL
 		const { searchParams } = new URL(request.url)
-		const type = searchParams.get('type') // 'user', 'business', or 'tour'
+		const type = searchParams.get('type')
 		const id = searchParams.get('id')
-		const imageType = searchParams.get('imageType') // 'profile' or 'cover' for businesses
+		const imageType = searchParams.get('imageType')
 
 		if (!type || !id) {
 			return NextResponse.json(
 				{ message: 'Type and ID are required' },
-				{ status: 400 },
+				{
+					status: 400,
+					headers: {
+						'Access-Control-Allow-Origin': '*',
+						'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+						'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+					},
+				},
 			)
 		}
 
-		// Extract the file from the request body
 		const formData = await request.formData()
 		const file = formData.get('file') as Blob
 
 		if (!file) {
 			return NextResponse.json(
 				{ message: 'Image file is required' },
-				{ status: 400 },
+				{
+					status: 400,
+					headers: {
+						'Access-Control-Allow-Origin': '*',
+						'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+						'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+					},
+				},
 			)
 		}
 
-		// Upload the image
 		const newImage = await uploadImage(file)
 		let resData = null
-		// Handle image updates based on the type
+
 		if (type === 'user') {
-			// Update the user's profile image and remove the previous one
-			const userProfileImage = await updateUserProfileImage(
-				userData.id,
-				newImage,
-			)
-			return NextResponse.json(userProfileImage, { status: 200 })
+			resData = await updateUserProfileImage(userData.id, newImage)
 		} else if (type === 'business') {
-			// Update business profile/cover image and remove the previous one
 			if (!imageType) {
 				return NextResponse.json(
 					{ message: 'Image type (profile or cover) is required for business' },
-					{ status: 400 },
+					{
+						status: 400,
+						headers: {
+							'Access-Control-Allow-Origin': '*',
+							'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+							'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+						},
+					},
 				)
 			}
-			const businessImage = await updateBusinessImage(
+			resData = await updateBusinessImage(
 				id,
 				newImage,
 				imageType as 'profile' | 'cover',
 			)
-			// resData = businessImage
-			return NextResponse.json(businessImage, { status: 200 })
 		} else if (type === 'tour') {
-			// Push new image to the tour's images array
-			await updateTourImages(id, newImage)
+			resData = await updateTourImages(id, newImage)
 		} else {
 			return NextResponse.json(
 				{ message: 'Invalid type provided' },
-				{ status: 400 },
+				{
+					status: 400,
+					headers: {
+						'Access-Control-Allow-Origin': '*',
+						'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+						'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+					},
+				},
 			)
 		}
+
+		return NextResponse.json(resData, {
+			status: 200,
+			headers: {
+				'Access-Control-Allow-Origin': '*',
+				'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+				'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+			},
+		})
 	} catch (error) {
-		console.error(error)
+		console.error('Error in image upload:', error)
 		return NextResponse.json(
 			{ message: 'An error occurred during the upload.' },
-			{ status: 500 },
+			{
+				status: 500,
+				headers: {
+					'Access-Control-Allow-Origin': '*',
+					'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+					'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+				},
+			},
 		)
 	}
 }
 
 export async function OPTIONS(request: NextRequest) {
-	return NextResponse.json({}, { status: 200 })
+	return NextResponse.json(
+		{},
+		{
+			status: 200,
+			headers: {
+				'Access-Control-Allow-Origin': '*',
+				'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+				'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+			},
+		},
+	)
+}
+
+export const config = {
+	api: {
+		bodyParser: false,
+	},
 }
 
 export const runtime = 'nodejs'
