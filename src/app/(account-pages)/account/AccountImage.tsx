@@ -7,7 +7,7 @@ import ButtonPrimary from '@/shared/ButtonPrimary'
 import ButtonSecondary from '@/shared/ButtonSecondary'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateUser } from '@/app/GlobalRedux/Features/userReducer/userReducer'
-import { clientUploadImage } from '@/utils/clientUploadImage' // Import your image upload function
+import  clientUploadImage  from '@/utils/clientUploadImage' // Import your image upload function
 import Image from 'next/image'
 import avatarPlaceholder from '@/images/avatars/user-profile.webp' // Default avatar image
 
