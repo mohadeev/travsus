@@ -95,4 +95,5 @@ const nextConfig = {
 	},
 }
 
+//change
 module.exports = nextConfig
