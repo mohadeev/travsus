@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import prisma from '@/prisma'
+import prisma from '@/lib/prisma'
 import bcrypt from 'bcryptjs'
 import { v4 as uuidv4 } from 'uuid'
 import { sendVerificationEmail } from '@/utils/email'
