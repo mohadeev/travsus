@@ -1,3 +1,4 @@
+import getUserData from '@/app/api/user/getUserData'
 import prisma from '@/lib/prisma'
 
 // Remove this line as it's not necessary and might cause circular dependency issues
@@ -29,3 +30,5 @@ export async function getUserByEmail(email: string) {
 		},
 	})
 }
+
+export { getUserData }
