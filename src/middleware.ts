@@ -107,4 +107,5 @@ function checkAuth(request: NextRequest): boolean {
 
 export const config = {
 	matcher: ['/((?!_next/static|_next/image|favicon.ico).*)'],
+	runtime: 'experimental-edge',
 }
