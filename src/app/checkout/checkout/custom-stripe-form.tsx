@@ -33,7 +33,7 @@ const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
 	userId,
 	userEmail,
 	booking,
-}) => {
+}: any) => {
 	const router = useRouter()
 	const stripe: any = useStripe()
 	const elements: any = useElements()

@@ -19,6 +19,8 @@ import { GuestsObject } from '@/app/(client-components)/type'
 import CustomStripeForm from './custom-stripe-form'
 import getFetchDataFromApi from '@/utils/getFetchDataFromApi'
 import { useRouter, useSearchParams } from 'next/navigation'
+import { Suspense } from 'react'
+
 import { useDispatch, useSelector } from 'react-redux'
 import {
 	bookOwnHotelsReducers,
@@ -144,100 +146,102 @@ const CheckOutPagePageMain: FC<CheckOutPagePageMainProps> = ({
 	const isNotInitiated = Object.keys(accommodation).length > 0
 	const renderMain = () => {
 		return (
-			<div className="flex w-full flex-col space-y-8 border-neutral-200 px-0 dark:border-neutral-700 sm:rounded-2xl sm:border sm:p-6 xl:p-8">
-				<h2 className="text-3xl font-semibold lg:text-4xl">
-					Confirm and payment
-				</h2>
-				<div className="border-b border-neutral-200 dark:border-neutral-700"></div>
-				<div>
+			<Suspense>
+				<div className="flex w-full flex-col space-y-8 border-neutral-200 px-0 dark:border-neutral-700 sm:rounded-2xl sm:border sm:p-6 xl:p-8">
+					<h2 className="text-3xl font-semibold lg:text-4xl">
+						Confirm and payment
+					</h2>
+					<div className="border-b border-neutral-200 dark:border-neutral-700"></div>
 					<div>
-						<h3 className="text-2xl font-semibold">Your trip</h3>
-						<NcModal
-							renderTrigger={(openModal) => (
-								<span
-									onClick={() => openModal()}
-									className="mt-1 block cursor-pointer underline lg:hidden"
-								>
-									View booking details
-								</span>
-							)}
-							renderContent={renderSidebar}
-							modalTitle="Booking details"
-						/>
-					</div>
-					<div className="z-10 mt-6 flex flex-col divide-y divide-neutral-200 overflow-hidden rounded-3xl border border-neutral-200 dark:divide-neutral-700 dark:border-neutral-700 sm:flex-row sm:divide-x sm:divide-y-0">
-						<ModalSelectDate
-							renderChildren={({ openModal }) => (
-								<button
-									onClick={openModal}
-									className="flex flex-1 justify-between space-x-5 p-5 text-left hover:bg-neutral-50 dark:hover:bg-neutral-800"
-									type="button"
-								>
-									<div className="flex flex-col">
-										<span className="text-sm text-neutral-400">Date</span>
-										<span className="mt-1.5 text-lg font-semibold">
-											{converSelectedDateToString([
-												new Date(booking?.selectedDate?.startDate),
-												new Date(booking?.selectedDate?.endDate),
-											])}
-										</span>
-									</div>
-									<PencilSquareIcon className="text-neutral-6000 h-6 w-6 dark:text-neutral-400" />
-								</button>
-							)}
-						/>
-
-						<ModalSelectGuests
-							AcommodationAndTransport={
-								<AcommodationAndTransport
-									GuestsInput={
-										<GuestsInput
-											className="flex-1"
-											onChange={handleGuestsChange}
-											defaultValue={guests}
-										/>
-									}
-									RowBedAccommodationSelector={
-										<RowBedAccommodationSelector
-											defaultValue={accommodation}
-											onChange={handleAccomodationChange}
-										/>
-									}
-									bookOwnHotels={bookOwnHotels}
-									handleBookOwnHotels={handleBookOwnHotels}
-								/>
-							}
-							renderChildren={({ openModal }) => (
-								<button
-									type="button"
-									onClick={openModal}
-									className="flex flex-1 justify-between space-x-5 p-5 text-left hover:bg-neutral-50 dark:hover:bg-neutral-800"
-								>
-									<div className="flex flex-col">
-										<span className="text-sm text-neutral-400">Guests</span>
-										<span className="mt-1.5 text-lg font-semibold">
-											<span className="line-clamp-1">
-												{`${
-													guests?.guestAdults || 0
-												} Adults, ${guests?.guestChildren || 0} children`}
+						<div>
+							<h3 className="text-2xl font-semibold">Your trip</h3>
+							<NcModal
+								renderTrigger={(openModal) => (
+									<span
+										onClick={() => openModal()}
+										className="mt-1 block cursor-pointer underline lg:hidden"
+									>
+										View booking details
+									</span>
+								)}
+								renderContent={renderSidebar}
+								modalTitle="Booking details"
+							/>
+						</div>
+						<div className="z-10 mt-6 flex flex-col divide-y divide-neutral-200 overflow-hidden rounded-3xl border border-neutral-200 dark:divide-neutral-700 dark:border-neutral-700 sm:flex-row sm:divide-x sm:divide-y-0">
+							<ModalSelectDate
+								renderChildren={({ openModal }) => (
+									<button
+										onClick={openModal}
+										className="flex flex-1 justify-between space-x-5 p-5 text-left hover:bg-neutral-50 dark:hover:bg-neutral-800"
+										type="button"
+									>
+										<div className="flex flex-col">
+											<span className="text-sm text-neutral-400">Date</span>
+											<span className="mt-1.5 text-lg font-semibold">
+												{converSelectedDateToString([
+													new Date(booking?.selectedDate?.startDate),
+													new Date(booking?.selectedDate?.endDate),
+												])}
 											</span>
-										</span>
-									</div>
-									<PencilSquareIcon className="text-neutral-6000 h-6 w-6 dark:text-neutral-400" />
-								</button>
-							)}
-						/>
-					</div>
-				</div>
+										</div>
+										<PencilSquareIcon className="text-neutral-6000 h-6 w-6 dark:text-neutral-400" />
+									</button>
+								)}
+							/>
 
-				<div>
-					<h3 className="text-2xl font-semibold">Pay with</h3>
-					<div className="my-5 w-14 border-b border-neutral-200 dark:border-neutral-700"></div>
-					<div className="mt-6">
-						<CustomStripeForm booking={booking} />
+							<ModalSelectGuests
+								AcommodationAndTransport={
+									<AcommodationAndTransport
+										GuestsInput={
+											<GuestsInput
+												className="flex-1"
+												onChange={handleGuestsChange}
+												defaultValue={guests}
+											/>
+										}
+										RowBedAccommodationSelector={
+											<RowBedAccommodationSelector
+												defaultValue={accommodation}
+												onChange={handleAccomodationChange}
+											/>
+										}
+										bookOwnHotels={bookOwnHotels}
+										handleBookOwnHotels={handleBookOwnHotels}
+									/>
+								}
+								renderChildren={({ openModal }) => (
+									<button
+										type="button"
+										onClick={openModal}
+										className="flex flex-1 justify-between space-x-5 p-5 text-left hover:bg-neutral-50 dark:hover:bg-neutral-800"
+									>
+										<div className="flex flex-col">
+											<span className="text-sm text-neutral-400">Guests</span>
+											<span className="mt-1.5 text-lg font-semibold">
+												<span className="line-clamp-1">
+													{`${
+														guests?.guestAdults || 0
+													} Adults, ${guests?.guestChildren || 0} children`}
+												</span>
+											</span>
+										</div>
+										<PencilSquareIcon className="text-neutral-6000 h-6 w-6 dark:text-neutral-400" />
+									</button>
+								)}
+							/>
+						</div>
+					</div>
+
+					<div>
+						<h3 className="text-2xl font-semibold">Pay with</h3>
+						<div className="my-5 w-14 border-b border-neutral-200 dark:border-neutral-700"></div>
+						<div className="mt-6">
+							<CustomStripeForm booking={booking} />
+						</div>
 					</div>
 				</div>
-			</div>
+			</Suspense>
 		)
 	}
 
