@@ -84,43 +84,30 @@ const nextConfig = {
 			},
 		],
 	},
+
+	// webpack: (config, { isServer }) => {
+	// 	// Existing configurations (if any)
+
+	// 	// Add babel-loader
+	// 	config.module.rules.push({
+	// 		test: /\.(js|jsx|ts|tsx)$/,
+	// 		exclude: /node_modules/,
+	// 		use: {
+	// 			loader: 'babel-loader',
+	// 			options: {
+	// 				presets: ['next/babel'],
+	// 			},
+	// 		},
+	// 	})
+
+	// 	return config
+	// },
+	// Your existing configurations for typescript and eslint
 	typescript: {
-		// !! WARN !!
-		// Dangerously allow production builds to successfully complete even if
-		// your project has type errors.
-		// !! WARN !!
 		ignoreBuildErrors: true,
 	},
 	eslint: {
-		// Warning: This allows production builds to successfully complete even if
-		// your project has ESLint errors.
 		ignoreDuringBuilds: true,
-	},
-	webpack: (config, { isServer }) => {
-		if (!isServer) {
-			config.resolve.fallback = {
-				...config.resolve.fallback,
-				fs: false,
-			}
-		}
-
-		// Ignore specific module errors
-		config.module.rules.push({
-			test: /\.(js|jsx|ts|tsx)$/,
-			use: [
-				{
-					loader: 'babel-loader',
-					options: {
-						plugins: [
-							['@babel/plugin-transform-react-jsx', { runtime: 'automatic' }],
-						],
-					},
-				},
-			],
-			exclude: /node_modules/,
-		})
-
-		return config
 	},
 }
 

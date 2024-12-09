@@ -1,3 +1,5 @@
+"use client"
+
 import React, { InputHTMLAttributes, useState } from 'react'
 import ReactPhoneInput from './ReactPhoneInput'
 import Label from '@/components/Label'
