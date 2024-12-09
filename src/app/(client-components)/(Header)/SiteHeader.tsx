@@ -140,7 +140,7 @@ const SiteHeader = () => {
 						{({ open }) => (
 							<>
 								<Popover.Button
-									className={`z-10 rounded-xl border border-neutral-200 bg-white p-2.5 shadow-xl hover:bg-neutral-100 focus:outline-none dark:border-primary-6000 dark:bg-primary-6000 dark:hover:bg-primary-700 ${
+									className={`dark:border-primary-6000 dark:bg-primary-6000 z-10 rounded-xl border border-neutral-200 bg-white p-2.5 shadow-xl hover:bg-neutral-100 focus:outline-none dark:hover:bg-primary-700 ${
 										open ? 'ring-primary-500 focus:ring-2' : ''
 									}`}
 								>
@@ -165,7 +165,7 @@ const SiteHeader = () => {
 											</div>
 											<div className="bg-gray-50 p-5 dark:bg-white/5">
 												<a
-													className="flex w-full items-center justify-center !rounded-xl bg-primary-6000 px-4 py-2 text-sm font-medium text-white hover:bg-primary-700"
+													className="bg-primary-6000 flex w-full items-center justify-center !rounded-xl px-4 py-2 text-sm font-medium text-white hover:bg-primary-700"
 													href={
 														'https://themeforest.net/item/Travsus-online-booking-nextjs-template/43399526'
 													}
@@ -205,27 +205,31 @@ const SiteHeader = () => {
 		// 	default:
 		// 		return <Header3 className={headerClassName} />
 		// }
-		if (isUserLoggedIn) {
-			return <Header3 className={headerClassName} />
-		} else {
-			return <Header className={headerClassName} navType="MainNav1" />
-		}
+		// if (isUserLoggedIn) {
+		// 	return <Header3 className={headerClassName} />
+		// } else {
+		// 	return <Header className={headerClassName} navType="MainNav1" />
+		// }
+		return <Header3 className={headerClassName} />
+
 	}
-	const [loading, setLoading] = useState(true);
-	useEffect(()=>{
+	const [loading, setLoading] = useState(true)
+	useEffect(() => {
 		setTimeout(() => {
-			setLoading(false);
-		}, 0);
+			setLoading(false)
+		}, 10)
 	}, [])
 	return (
 		<>
-		{loading ? <HeaderSkeleton />: <>
-			{/* {renderControlSelections()} */}
-			{renderHeader()}  
-			<div ref={anchorRef} className="invisible absolute h-1"></div>
-			</>}
-		
-		
+			{loading ? (
+				<HeaderSkeleton />
+			) : (
+				<>
+					{/* {renderControlSelections()} */}
+					{renderHeader()}
+					<div ref={anchorRef} className="invisible absolute h-1"></div>
+				</>
+			)}
 		</>
 	)
 }

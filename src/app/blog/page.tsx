@@ -1,43 +1,45 @@
-"use client";
-import React from "react";
-import { DEMO_POSTS } from "@/data/posts";
-import SectionAds from "./SectionAds";
-import SectionMagazine5 from "./SectionMagazine5";
-import SectionLatestPosts from "./SectionLatestPosts";
-import BgGlassmorphism from "@/components/BgGlassmorphism";
-import SectionSubscribe2 from "@/components/SectionSubscribe2";
+import React from 'react'
+// import SectionLatestPosts from '@/components/SectionLatestPosts'
+import BgGlassmorphism from '@/components/BgGlassmorphism'
+import SectionSubscribe2 from '@/components/SectionSubscribe2'
+import { getBlogPosts } from '@/app/actions/getBlogPosts'
+import SectionLatestPosts from './SectionLatestPosts'
 
-// DEMO DATA
-const POSTS = DEMO_POSTS;
+export const dynamic = 'force-dynamic'
 
-// DEMO POST FOR MAGAZINE SECTION
-const MAGAZINE1_POSTS = POSTS.filter((_, i) => i >= 0 && i < 8);
-//
+const POSTS_PER_PAGE = 10
 
-const BlogPage: React.FC = () => {
-  return (
-    <div className="nc-BlogPage overflow-hidden relative">
-      {/* ======== BG GLASS ======== */}
-      <BgGlassmorphism />
-      {/* ======== ALL SECTIONS ======== */}
-      {/* ======= START CONTAINER ============= */}
-      <div className="container relative">
-        {/* === SECTION 1 === */}
-        <div className="pt-12 pb-16 lg:pb-28">
-          <SectionMagazine5 posts={MAGAZINE1_POSTS} />
-        </div>
+export default async function BlogPage({
+	searchParams,
+}: {
+	searchParams: { page?: string }
+}) {
+	const currentPage = Number(searchParams.page) || 1
+	const allPosts = await getBlogPosts()
 
-        {/* === SECTION 1 === */}
-        <SectionAds />
+	const totalPages = Math.ceil(allPosts.length / POSTS_PER_PAGE)
+	const startIndex = (currentPage - 1) * POSTS_PER_PAGE
+	const endIndex = startIndex + POSTS_PER_PAGE
+	const currentPosts = allPosts.slice(startIndex, endIndex)
 
-        {/* === SECTION 8 === */}
-        <SectionLatestPosts className="py-16 lg:py-28" />
+	return (
+		<div className="nc-BlogPage relative overflow-hidden">
+			{/* ======== BG GLASS ======== */}
+			<BgGlassmorphism />
+			{/* ======== ALL SECTIONS ======== */}
+			{/* ======= START CONTAINER ============= */}
+			<div className="container relative">
+				{/* === SECTION 8 === */}
+				<SectionLatestPosts
+					className="py-16 lg:py-28"
+					posts={currentPosts}
+					currentPage={currentPage}
+					totalPages={totalPages}
+				/>
 
-        {/* === SECTION 1 === */}
-        <SectionSubscribe2 className="pb-16 lg:pb-28" />
-      </div>
-    </div>
-  );
-};
-
-export default BlogPage;
+				{/* === SECTION 1 === */}
+				<SectionSubscribe2 className="pb-16 lg:pb-28" />
+			</div>
+		</div>
+	)
+}

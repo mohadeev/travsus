@@ -28,7 +28,6 @@ const DEMO_DATA: ExperiencesDataType[] = DEMO_EXPERIENCES_LISTINGS.filter(
 // 	const [servicesData, setServicesData] = useState([])
 // 	const [loading, setLoading] = useState(true);
 
-	
 // 	useEffect(() => {
 // 		allToursFetch().then((data) => {
 // 			if (data?.allToursData) {
@@ -42,7 +41,7 @@ const DEMO_DATA: ExperiencesDataType[] = DEMO_EXPERIENCES_LISTINGS.filter(
 
 // 	return (
 // 		<div className={`nc-SectionGridFilterCard ${className}`}>
-			
+
 // 			{loading ? (
 //   <HeadingSkeleton isCenter={false} />
 // ) : (
@@ -71,8 +70,8 @@ const DEMO_DATA: ExperiencesDataType[] = DEMO_EXPERIENCES_LISTINGS.filter(
 // 			</div>
 // 			<div className="mt-16 flex items-center justify-center">
 // 				<Pagination   currentPage={1}
-        //   totalPages={8}
-        //   onPageChange={()=>{}}/>
+//   totalPages={8}
+//   onPageChange={()=>{}}/>
 // 			</div>
 // 		</div>
 // 	)
@@ -80,73 +79,75 @@ const DEMO_DATA: ExperiencesDataType[] = DEMO_EXPERIENCES_LISTINGS.filter(
 
 // export default SectionGridFilterCard
 
-
 const SectionGridFilterCard: FC<SectionGridFilterCardProps> = ({
 	className = '',
 	data = DEMO_DATA,
 }) => {
-  const [servicesData, setServicesData] = useState([])
-  const [loading, setLoading] = useState(true)
-  const [currentPage, setCurrentPage] = useState(1)
-  const [totalPages, setTotalPages] = useState(1)
+	const [servicesData, setServicesData] = useState([])
+	const [loading, setLoading] = useState(true)
+	const [currentPage, setCurrentPage] = useState(1)
+	const [totalPages, setTotalPages] = useState(1)
 
-  // Create a ref for the container div
-  const sectionRef = useRef<HTMLDivElement>(null)
+	// Create a ref for the container div
+	const sectionRef = useRef<HTMLDivElement>(null)
 
-  useEffect(() => {
-    const fetchTours = async () => {
-      setLoading(true)
-      const data = await allToursFetch(currentPage)
-      if (data?.allToursData) {
-        setServicesData(data.allToursData)
-        setTotalPages(data.totalPages)
-        setLoading(false)
-      }
-    }
-    fetchTours()
-  }, [currentPage])
+	useEffect(() => {
+		const fetchTours = async () => {
+			setLoading(true)
+			const data = await allToursFetch(currentPage)
+			if (data?.allToursData) {
+				setServicesData(data.allToursData)
+				setTotalPages(data.totalPages)
+				setLoading(false)
+			}
+		}
+		fetchTours()
+	}, [currentPage])
 
-  const handlePageChange = (newPage: number) => {
-    setCurrentPage(newPage)
+	const handlePageChange = (newPage: number) => {
+		setCurrentPage(newPage)
 
-    // Scroll to the specific div using the ref
-    sectionRef.current?.scrollIntoView({
-      behavior: 'smooth', // Smooth scrolling effect
-      block: 'start', // Align to the top of the div
-    })
-  }
-console.log("servicesData: " , servicesData)
-  return (
-    // Attach the ref to the div you want to scroll to
-    <div ref={sectionRef} className={`nc-SectionGridFilterCard ${className}`}>
-      {loading ? (
-        <HeadingSkeleton isCenter={false} />
-      ) : (
-        <Heading2
-          heading="Discover New Experiences"
-          subHeading="Explore the best tours and experiences"
-        />
-      )} 
-	  			<div className="mb-8 lg:mb-11">
- 				<TabFilters loading={loading}/>
- 			</div>
+		// Scroll to the specific div using the ref
+		sectionRef.current?.scrollIntoView({
+			behavior: 'smooth', // Smooth scrolling effect
+			block: 'start', // Align to the top of the div
+		})
+	}
+	return (
+		// Attach the ref to the div you want to scroll to
+		<div
+			ref={sectionRef}
+			id="experiences_container"
+			className={`nc-SectionGridFilterCard ${className}`}
+		>
+			{loading ? (
+				<HeadingSkeleton isCenter={false} />
+			) : (
+				<Heading2
+					heading="Discover New Experiences"
+					subHeading="Explore the best tours and experiences"
+				/>
+			)}
+			{/* <div className="mb-8 lg:mb-11">
+				<TabFilters loading={loading} />
+			</div> */}
 
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 lg:grid-cols-3 2xl:grid-cols-4">
-        {servicesData.map((stay: any) => (
-          <ExperiencesCard key={stay?.id} data={stay} />
-        ))}
-        {loading && <ContainerExperiencesCardSkeleton />}
-      </div>
+			<div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 lg:grid-cols-3 2xl:grid-cols-4">
+				{servicesData.map((stay: any) => (
+					<ExperiencesCard key={stay?.id} data={stay} />
+				))}
+				{loading && <ContainerExperiencesCardSkeleton />}
+			</div>
 
-      <div className="mt-16 flex items-center justify-center">
-        <Pagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          onPageChange={handlePageChange}
-        />
-      </div>
-    </div>
-  )
+			<div className="mt-16 flex items-center justify-center">
+				<Pagination
+					currentPage={currentPage}
+					totalPages={totalPages}
+					onPageChange={handlePageChange}
+				/>
+			</div>
+		</div>
+	)
 }
 
 export default SectionGridFilterCard

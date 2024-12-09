@@ -6,6 +6,9 @@ const nextConfig = {
 	reactStrictMode: false,
 	experimental: {
 		typedRoutes: true,
+		serverActions: {
+			bodySizeLimit: '10mb',
+		},
 	},
 	// reactStrictMode: true,
 	// experimental: {
@@ -64,6 +67,18 @@ const nextConfig = {
 			{
 				protocol: 'https',
 				hostname: 'www.travsus.com',
+				port: '',
+				pathname: '/**',
+			},
+			{
+				protocol: 'https',
+				hostname: 'media.licdn.com',
+				port: '',
+				pathname: '/**',
+			},
+			{
+				protocol: 'https',
+				hostname: 'dynamic-media-cdn.tripadvisor.com',
 				port: '',
 				pathname: '/**',
 			},

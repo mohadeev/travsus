@@ -648,6 +648,10 @@ button.gm-control-active.gm-fullscreen-control {
   @apply flex w-full flex-col space-y-6 border-b border-neutral-200 px-0 pb-10 dark:border-neutral-700 sm:space-y-8 sm:rounded-2xl sm:border-l sm:border-r sm:border-t sm:p-4 xl:p-8;
 }
 
+.listingSection__wrap_no_border_color {
+  @apply flex w-full flex-col space-y-6 sm:space-y-8 sm:rounded-2xl sm:p-4 xl:p-8;
+}
+
 .smallTextGray {
   @apply my-4 mt-2 block text-xs text-neutral-500 dark:text-neutral-400;
 }

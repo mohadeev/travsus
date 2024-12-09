@@ -32,7 +32,8 @@ export async function GET(request: NextRequest) {
 			{
 				params: {
 					access_token: mapboxAccessToken,
-					types: 'place,country', // Filter for cities and countries
+					types: 'region',
+					//'place,country', // Filter for cities and countries
 					limit: 6, // Limit the number of results
 				},
 			},

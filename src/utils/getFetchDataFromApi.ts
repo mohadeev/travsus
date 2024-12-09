@@ -9,7 +9,8 @@ async function getFetchDataFromApi<T>(
 			params: queryParams, // Adds query parameters to the request
 		}
 
-		const apiResponse: AxiosResponse<T> = await axios.get(apiUrl, axiosConfig)
+		const apiResponse: AxiosResponse<T> = await axios.get(apiUrl, axiosConfig) 
+		
 		return apiResponse.data
 	} catch (error) {
 		console.error('Error fetching data from API:', error)

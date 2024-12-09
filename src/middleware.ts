@@ -3,26 +3,33 @@ import { parse } from 'cookie'
 import { serialize } from 'cookie'
 
 export async function middleware(request: NextRequest) {
+	const isAuthenticated = checkAuth(request)
+
+	const country = request.geo?.country || 'US'
+
+	if (country === 'ES') {
+		return new NextResponse(null, { status: 403 })
+	}
+
 	try {
-		// Extract the IP address from the request headers
 		let ip = request.headers.get('x-forwarded-for') || '127.0.0.1'
-		// Use a fallback IP address if 'x-forwarded-for' is "::1" (localhost)
+
 		if (ip === '::1') {
-			ip = '79.116.108.40' // Replace with your desired fallback IP address
+			ip = '79.116.108.40'
 		}
+
 		const cookies = request.headers.get('cookie')
 		const parsedCookies = cookies ? parse(cookies) : {}
 		const geoCookie = parsedCookies.customGeo
+
 		if (!geoCookie) {
-			// Fetch geolocation data from GeoJS API
 			const geoResponse = await fetch(
 				`https://get.geojs.io/v1/ip/geo/${ip}.json`,
 			)
 			const geoData = await geoResponse.json()
-			// If geolocation data is found, set it in a cookie
+
 			if (geoData) {
 				const { city, country, latitude, longitude, timezone } = geoData
-				// Create a cookie with the geolocation data
 				const geoDataString = JSON.stringify({
 					city,
 					country,
@@ -31,17 +38,17 @@ export async function middleware(request: NextRequest) {
 					timezone,
 					message: 'Geo location fetched successfully',
 				})
+
 				const geoCookieHeader = serialize('customGeo', geoDataString, {
 					httpOnly: true,
-					secure: process.env.NODE_ENV === 'production', // Use 'secure' flag in production
-					maxAge: 86400, // 1 day in seconds
+					secure: process.env.NODE_ENV === 'production',
+					maxAge: 86400,
 					path: '/',
 				})
 				const response = NextResponse.next()
 				response.headers.set('Set-Cookie', geoCookieHeader)
 				return response
 			} else {
-				// Set a default value if no location is found
 				const geoCookieHeader = serialize(
 					'customGeo',
 					JSON.stringify({
@@ -49,8 +56,8 @@ export async function middleware(request: NextRequest) {
 					}),
 					{
 						httpOnly: true,
-						secure: process.env.NODE_ENV === 'production', // Use 'secure' flag in production
-						maxAge: 86400, // 1 day in seconds
+						secure: process.env.NODE_ENV === 'production',
+						maxAge: 86400,
 						path: '/',
 					},
 				)
@@ -58,13 +65,13 @@ export async function middleware(request: NextRequest) {
 				response.headers.set('Set-Cookie', geoCookieHeader)
 				return response
 			}
-		} else {
-			// request.customGeo = JSON.parse(geoCookie)
 		}
 	} catch (error) {}
+
 	const url = new URL(request.url)
 	const origin = url.origin
-	const pathname = url.pathname
+	const pathname = request.nextUrl.pathname
+
 	const requestHeaders = new Headers(request.headers)
 	requestHeaders.set('x-url', request.url)
 	requestHeaders.set('x-origin', origin)
@@ -77,6 +84,27 @@ export async function middleware(request: NextRequest) {
 	})
 }
 
+function isPublicRoute(pathname: string) {
+	const publicRoutes = [
+		'/login',
+		'/register',
+		'/forgot-password',
+		'/api/auth',
+		'/api/trpc',
+		'/404',
+	]
+	return (
+		publicRoutes.some((route) => pathname.startsWith(route)) ||
+		pathname === '/' ||
+		pathname.startsWith('/q=')
+	)
+}
+
+function checkAuth(request: NextRequest): boolean {
+	const sessionToken = request.cookies.get('next-auth.session-token')
+	return !!sessionToken
+}
+
 export const config = {
-	matcher: ['/api/:path*'], // Apply to all API routes
+	matcher: ['/((?!_next/static|_next/image|favicon.ico).*)'],
 }

@@ -1,5 +1,6 @@
 'use client'
 
+import { useAuthAction } from '@/app/hooks/useAuthAction'
 import addAndRemoveToWishList from '@/utils/api-utils/addAndRemoveToWishList'
 import React, { FC, useState } from 'react'
 
@@ -20,10 +21,21 @@ const BtnLikeIcon: FC<BtnLikeIconProps> = ({
 }) => {
 	const [likedState, setLikedState] = useState(isLiked)
 
-	const handleAddToWishList = async () => {  
+	// const handleAddToWishList = async () => {
+	// 	await addAndRemoveToWishList({ serviceId })
+	// }
+	const handleAddToWishList = useAuthAction(async () => {
+		setLikedState(!likedState)
 		await addAndRemoveToWishList({ serviceId })
-	}
-
+			.then((res: any) => {
+				if (res?.added === false || res?.added === true) {
+					setLikedState(res?.added)
+				}
+			})
+			.catch(() => {
+				setLikedState(!likedState)
+			})
+	})
 	return (
 		<div
 			className={`nc-BtnLikeIcon flex h-8 w-8 cursor-pointer items-center justify-center rounded-full ${
@@ -33,7 +45,6 @@ const BtnLikeIcon: FC<BtnLikeIconProps> = ({
 			title="Save"
 			onClick={() => {
 				handleAddToWishList()
-				setLikedState(!likedState)
 			}}
 			// onClick={() => setLikedState(!likedState)}
 		>

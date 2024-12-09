@@ -2,11 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-
+*,
+body,
+html {
+	font-family:
+		SF Pro Display,
+		Inter Tight,
+		sans-serif;
+}
 
 @layer utilities {
-    .bg-gradient-light {
-        background: linear-gradient(135deg, #cadeec8f 0%, #FDE2E4 100%);
-    }
-  }
-  
+	.bg-gradient-light {
+		background: linear-gradient(135deg, #cadeec8f 0%, #fde2e4 100%);
+	}
+}

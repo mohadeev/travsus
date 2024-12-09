@@ -24,6 +24,6 @@ export async function GET(request: NextRequest) {
 		cursor: {}, // Required cursor option
 	})
 
-	// console.log('places', places)
+	console.log('places', places)
 	return NextResponse.json({ places: places?.cursor?.firstBatch || [] })
 }

@@ -17,6 +17,7 @@ export async function GET(request: NextRequest) {
 		const currentUser = await currentServerUser()
 		// console.log('currentUser: ', currentUser)
 		const session: any = await getServerSession(authOptions)
+		// console.log('auth-options.ts---------------------------:', session)
 		if (!session || !session?.user?.email) {
 			return NextResponse.json(
 				{ message: 'Not authenticated' },

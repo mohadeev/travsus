@@ -63,16 +63,91 @@ model Subscription {
 
 model Booking {
   id            String   @id @default(auto()) @map("_id") @db.ObjectId
-  user          User     @relation("UserBookings", fields: [userId], references: [id])  // Relation to User
-  userId        String   @db.ObjectId  // Foreign key for the User
-  tour          Tour     @relation("TourBookings", fields: [tourId], references: [id])  // Relation to Tour
-  tourId        String   @db.ObjectId  // Foreign key for the Tour
-  numberOfSeats Int      // Number of seats booked
-  startDate     DateTime // Start date of the tour booking
-  createdAt     DateTime @default(now()) // Auto set the createdAt field
-  updatedAt     DateTime @updatedAt      // Auto set the updatedAt field
-
+  customer       User     @relation("CustomerBookings", fields: [customerId], references: [id])
+  customerId     String   @db.ObjectId
+  provider       User     @relation("ProviderBookings", fields: [providerId], references: [id])
+  providerId     String   @db.ObjectId
+  tour          Tour     @relation("TourBookings", fields: [tourId], references: [id])
+  tourId        String   @db.ObjectId
+  duration      Int      // Duration of the booking in days
+  services      Json[]   // Array of services booked
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  accommodation Accommodation? 
+  bookOwnHotels Boolean?
+  bookingState String 
+  guests Guests?
+  bookingStates BookingStates[]
+  pricePerSeat Int? 
+  serviceCharge Int?
+  subtotal Int?
+  totalPrice Float?
+  lineItems LineItem[]
+  selectedDate   SelectedDate?
+  paymentIntentId String?
+  orderNumber String   @unique 
+  receiptNumber String   @unique 
+  invoiceNumber String @unique
+  bookingReference String @unique 
+  paymentMethod   PaymentMethod? @relation(fields: [paymentMethodId], references: [id])
+  paymentMethodId String?        @db.ObjectId
   @@map("bookings")
+} 
+
+
+
+enum RoomType {
+  SINGLE
+  TWIN
+  COUPLE
+}
+
+enum AccommodationClass {
+  STANDARD
+  LUXURY
+}
+
+type OccupancyCount {
+  adult Int
+  child Int
+}
+
+type RoomOccupancy {
+  single  OccupancyCount
+  twin    OccupancyCount
+  couple  OccupancyCount
+}
+
+type Accommodation {
+  Standard RoomOccupancy
+  Luxury   RoomOccupancy
+}
+type Guests {
+  guestAdults Int 
+  guestChildren Int
+}
+
+type BookingStates {
+  state     String
+  by        String
+  createdAt DateTime @default(now())
+  updatedAt DateTime
+}
+
+
+type SelectedDate {
+  startDate Int
+  endDate   Int
+}
+
+type LineItem  {
+  description     String
+  unitPrice       Float
+  totalPrice      Float
+  totalGuests     Int
+  serviceQuantity Int
+  includeInTotal  Boolean
+  currency        String
 }
 
 model Place {
@@ -92,6 +167,7 @@ model User {
   id                     String    @id @default(auto()) @map("_id") @db.ObjectId
   email                  String    @unique
   username               String?
+  name                   String?
   phone                  String?
   password               String
   senders                Json?
@@ -106,55 +182,132 @@ model User {
   passwordHistory        String[]  
   passwordResetTokenExpiry DateTime? 
   businesses             Business[] @relation("UserBusinesses")
-  bookings               Booking[]  @relation("UserBookings")
+  customerBookings   Booking[] @relation("CustomerBookings") // Bookings where the user is the customer
+  providerBookings   Booking[] @relation("ProviderBookings") // Bookings where the user is the provider
   subscriptions          Subscription[] @relation("UserSubscriptions")
   toursCreated           Tour[]  @relation("UserTours")
   address                Address? @relation("UserAddresses", fields: [addressId], references: [id])
   addressId              String?   // Foreign key to Address
   profileImage           Json?    
+  paymentMethods   PaymentMethod[] 
+  stripeCustomerId String?
+  emailVerified          Boolean   @default(false)
+  verificationLinkToken  String?   @unique
+  verificationCodeToken  String?   @unique
+  verificationTokenExpiry DateTime?
+  verificationCode       String?
+  verificationCodeExpiry DateTime?
+  posts         Post[]
 
   @@map("users")
 }
 
 
+model PaymentMethod {
+  id                     String    @id @default(auto()) @map("_id") @db.ObjectId
+  user                  User     @relation(fields: [userId], references: [id])
+  userId                String   @db.ObjectId  // Foreign key to User
+  stripePaymentMethodId String   // ID from Stripe
+  type                  String?  // E.g., "card" or other types
+  last4                 String?  // Last 4 digits for card display
+  brand                 String?  // Card brand
+  exp_month             Int?     // Expiration month
+  exp_year              Int?     // Expiration year
+  cardHolder            String?  // Name of the card holder
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+  bookings              Booking[] // New relation to Booking
+
+  // New billing information fields
+  billingAddressLine1   String?
+  billingAddressLine2   String?
+  billingCity           String?
+  billingState          String?
+  billingPostalCode     String?
+  billingCountry        String?
+
+  @@map("payment_methods")
+}
 
 model Tour {
-  id                     String    @id @default(auto()) @map("_id") @db.ObjectId
-  creatorId     String    @db.ObjectId
-  creator       User      @relation("UserTours", fields: [creatorId], references: [id])
-  businessId    String?   @db.ObjectId
-  business      Business? @relation("BusinessTours", fields: [businessId], references: [id])
-  name          String?
-  subtitle      String?
-  overview      String?
+  id             String    @id @default(auto()) @map("_id") @db.ObjectId
+  creatorId      String    @db.ObjectId
+  creator        User      @relation("UserTours", fields: [creatorId], references: [id])
+  businessId     String?   @db.ObjectId
+  business       Business? @relation("BusinessTours", fields: [businessId], references: [id])
+  name           String?
+  subtitle       String?
+  overview       String?
   productCategory String?
-  slug          String?
-  images        Json[]
-  people        Json[]
-  services      Json[]
-  places        Json[]
-  highlights    Json[]
-  days          Json[]
-  paths         Json[]
-  price         String?
-  discount      String?
-  start         Json?
-  end           Json?
-  reviews       Json[]
-  lang          String?
-  tourfor       String?
-  updated       Boolean   @default(false)
-  conclusion    String?
-  tags          Json[]
-  keyphrase     Json[]
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
-  bookings      Booking[] @relation("TourBookings")
-  addressId     String?   @db.ObjectId // Foreign key to Address
-  address       Address?  @relation("TourAddresses", fields: [addressId], references: [id])
-    @@map("tours")
+  slug           String?
+  images         Json[]
+  people         Json[]
+  services       Json[]
+  places         Json[]
+  highlights     Json[]
+  days           Json[]
+  paths          Json[]
+  price          String?
+  discount       String?
+  start          Json?
+  end            Json?
+  reviews        Json[]
+  lang           String?
+  tourfor        String?
+  updated        Boolean   @default(false)
+  conclusion     String?
+  tags           Json[]
+  keyphrase      Json[]
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  bookings       Booking[] @relation("TourBookings")
+  addressId      String?   @db.ObjectId // Foreign key to Address
+  address        Address?  @relation("TourAddresses", fields: [addressId], references: [id])
+  pricingTiers   PricingTier[]
+  accommodations Accommodations[] // New field for accommodations
 
+  @@map("tours")
 }
+
+type PricingTier {
+  minSeats    Int?
+  maxSeats    Int?
+  pricing     Pricing?
+}
+
+type Pricing {
+  pricePerDay Float?
+  totalPrice  Float?
+  currency    String?
+}
+
+// New types for accommodation
+type Accommodations {
+  name        String
+  description String?
+  pricingTiers AccommodationPricingTier[]
+}
+
+type AccommodationPricingTier {
+  name       String
+  minSeats   Int?
+  maxSeats   Int?
+  bedOptions BedOption[]
+}
+
+type BedOption {
+  bedType      BedType
+  maxOccupancy Int
+  basePrice    Float
+  currency     String
+}
+
+enum BedType {
+  SINGLE
+  TWIN
+  COUPLE
+}
+
 model Address {
   id               String          @id @default(auto()) @map("_id") @db.ObjectId
   streetAddress    String
@@ -165,7 +318,7 @@ model Address {
   state            String
   postalCode       String
   country          String
-  addressType      String
+  addressType      String?
   geoCoordinates   GeoCoordinates? @relation("AddressGeoCoordinates", fields: [geoCoordinatesId], references: [id])
   geoCoordinatesId String?         @unique @db.ObjectId // Foreign key for GeoCoordinates, now with @unique
   landmark         String?
@@ -183,4 +336,59 @@ model GeoCoordinates {
   latitude  Float
   longitude Float
   address   Address? @relation("AddressGeoCoordinates")
+}
+
+model Counter {
+  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  name  String @unique
+  value Int
+}
+
+
+model NewsletterSubscription {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  email      String   @unique
+  subscribed Boolean  @default(true)
+  types      String[] @default([])
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  tokens token[]
+  @@map("newsletter")
+}
+
+type token {
+  token      String
+  expired Boolean
+}
+ 
+
+model Post {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  title         String
+  content       String
+  excerpt       String
+  featuredImage String?
+  author        User     @relation(fields: [authorId], references: [id])
+  authorId      String   @db.ObjectId
+  createdAt     DateTime @default(now())
+  tags          String[]
+  imageIds      String[] @db.ObjectId
+}
+
+type Image {
+  id       String @db.ObjectId
+  url      String
+  publicId String
+}
+
+
+
+model TravelSpot {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  subtitle    String
+  content     String
+  imageUrl    String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }

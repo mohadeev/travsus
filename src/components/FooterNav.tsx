@@ -12,6 +12,10 @@ import isInViewport from '@/utils/isInViewport'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { House } from '@phosphor-icons/react'
+import { useSession } from 'next-auth/react'
+import { useAuthAction } from '@/app/hooks/useAuthAction'
+import Avatar from '@/shared/Avatar'
+import { useSelector } from 'react-redux'
 
 let WIN_PREV_POSITION = 0
 if (typeof window !== 'undefined') {
@@ -22,6 +26,7 @@ interface NavItem {
 	name: string
 	link?: PathName
 	icon: any
+	authRequired?: boolean
 }
 
 const NAV: NavItem[] = [
@@ -34,11 +39,13 @@ const NAV: NavItem[] = [
 		name: 'Wishlists',
 		link: '/account-savelists',
 		icon: HeartIcon,
+		authRequired: true,
 	},
 	{
 		name: 'Log in',
 		link: '/account',
 		icon: UserCircleIcon,
+		authRequired: true,
 	},
 	{
 		name: 'Menu',
@@ -48,14 +55,27 @@ const NAV: NavItem[] = [
 
 const FooterNav = () => {
 	const containerRef = useRef<HTMLDivElement>(null)
-
 	const pathname = usePathname()
+	const { data: session } = useSession()
+	const user = useSelector((state: any) => state.userReducer.userData)
+	const profileImageUrl = user?.profileImage?.url
+	const isUserLoggedIn = !!user
+
+	const handleSignIn = useAuthAction(async () => {
+		// Add your sign-in logic here
+		console.log('Sign in action')
+	})
 
 	useEffect(() => {
 		if (typeof window !== 'undefined') {
 			window.addEventListener('scroll', handleEvent)
 		}
-		// eslint-disable-next-line react-hooks/exhaustive-deps
+
+		return () => {
+			if (typeof window !== 'undefined') {
+				window.removeEventListener('scroll', handleEvent)
+			}
+		}
 	}, [])
 
 	const handleEvent = () => {
@@ -65,10 +85,6 @@ const FooterNav = () => {
 	}
 
 	const showHideHeaderMenu = () => {
-		// if (typeof window === "undefined" || window?.innerWidth >= 768) {
-		//   return null;
-		// }
-
 		let currentScrollPos = window.pageYOffset
 		if (!containerRef.current) return
 
@@ -97,6 +113,42 @@ const FooterNav = () => {
 
 	const renderItem = (item: NavItem, index: number) => {
 		const isActive = pathname === item.link
+		const isAuthenticated = !!session
+
+		if (item.name === 'Log in' && isUserLoggedIn) {
+			return (
+				<div
+					key={index}
+					className={`flex flex-col items-center justify-between text-neutral-500 dark:text-neutral-300/90`}
+				>
+					<Avatar
+						sizeClass="h-6 w-6"
+						imgUrl={profileImageUrl}
+						userName={user?.accountData?.firstname || 'User'}
+					/>
+					<span className="mt-1 text-[11px] leading-none">
+						{user?.accountData?.firstname
+							? user.accountData.firstname.slice(0, 6) + '...'
+							: 'User'}
+					</span>
+				</div>
+			)
+		}
+
+		if (item.authRequired && !isAuthenticated) {
+			return (
+				<button
+					key={index}
+					onClick={handleSignIn}
+					className={`flex flex-col items-center justify-between text-neutral-500 dark:text-neutral-300/90`}
+				>
+					<item.icon className={`h-6 w-6`} />
+					<span className="mt-1 text-[11px] leading-none">
+						{item.name === 'Log in' ? 'Sign in' : item.name}
+					</span>
+				</button>
+			)
+		}
 
 		return item.link ? (
 			<Link

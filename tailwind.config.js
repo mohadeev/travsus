@@ -116,7 +116,11 @@ const config: Config = {
         danger: "#D34053",
         warning: "#FFA70B",
       },
+      lineHeight: {
+        'auto': '70px',
+      },
       fontSize: {
+        '8xl': "80px",
         "title-xxl": ["44px", "55px"],
         "title-xxl2": ["42px", "58px"],
         "title-xl": ["36px", "45px"],
@@ -127,6 +131,9 @@ const config: Config = {
         "title-sm": ["20px", "26px"],
         "title-sm2": ["22px", "28px"],
         "title-xsm": ["18px", "24px"],
+      },
+      backgroundColor: {
+        trans: "rgba(0, 0, 0, 0)",
       },
       spacing: {
         4.5: "1.125rem",
@@ -275,6 +282,7 @@ const config: Config = {
         9: "9",
         1: "1",
       },
+      
       opacity: {
         65: ".65",
       },

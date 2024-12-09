@@ -4,7 +4,12 @@ import BackgroundSection from '@/components/BackgroundSection'
 import ListingImageGallery from '@/components/listing-image-gallery/ListingImageGallery'
 import SectionSliderNewCategories from '@/components/SectionSliderNewCategories'
 import SectionSubscribe2 from '@/components/SectionSubscribe2'
-import { usePathname, useSearchParams } from 'next/navigation'
+import {
+	notFound,
+	usePathname,
+	useRouter,
+	useSearchParams,
+} from 'next/navigation'
 import { ReactNode, Suspense, useEffect } from 'react'
 import MobileFooterSticky from './(components)/MobileFooterSticky'
 // import { imageGallery as listingStayImageGallery } from './listing-stay-detail-1/constant'
@@ -13,13 +18,15 @@ import { imageGallery as listingExperienceImageGallery } from './[listing-experi
 import { updateServiceState } from '../GlobalRedux/Features/creatingServiceSlice/creatingServiceSlice'
 import { useDispatch } from 'react-redux'
 import getFetchDataFromApi from '@/utils/getFetchDataFromApi'
+import { Router } from 'lucide-react'
+import { toggleOverlay } from '../GlobalRedux/Features/overlaySlice/overlaySlice'
 
 const DetailtLayout = ({ children }: { children: ReactNode }) => {
 	const dispatch = useDispatch()
 	const thisPathname = usePathname()
 	const searchParams = useSearchParams()
 	const serviceId = searchParams.get('serviceId')
-
+	const router = useRouter()
 	const getImageGalleryListing = () => {
 		// if (thisPathname?.includes('/listing-stay-detail')) {
 		// 	return listingStayImageGallery
@@ -32,10 +39,13 @@ const DetailtLayout = ({ children }: { children: ReactNode }) => {
 		// }
 		return listingExperienceImageGallery
 	}
-
+	if (serviceId === null) {
+		notFound()
+	}
 	useEffect(() => {
 		;(async () => {
 			try {
+				dispatch(toggleOverlay({ isVisible: false }))
 				const serviceData = await getFetchDataFromApi(
 					'/api/listing/get/getTourData?',
 					{
@@ -43,8 +53,21 @@ const DetailtLayout = ({ children }: { children: ReactNode }) => {
 					},
 				)
 				dispatch(updateServiceState({ path: 'service', value: serviceData }))
-			} catch (error) {
-				console.error(error)
+			} catch (error: any) {
+				const { code } = error?.response.data.code || {}
+				const status = error.status || {}
+				if (code === 'P2023') {
+					dispatch(
+						toggleOverlay({
+							type: 'oops',
+							data: { name: 'err' },
+							isVisible: true,
+						}),
+					)
+				} else if (status >= 400) {
+					// console.log('shoud make showOverlay here ')
+					router.push('/not-found')
+				}
 			}
 		})()
 	}, [serviceId, dispatch]) // Dispatch included in the dependency array

@@ -1,18 +1,24 @@
 import { NextRequest, NextResponse } from 'next/server'
 import prisma from '@/prisma'
+import getUserData from '@/app/api/user/getUserData'
 
 export const dynamic = 'force-dynamic' // This ensures the route is always dynamic
 
 export async function GET(request: NextRequest) {
 	try {
+		const userData: any = await getUserData()
+		const { savedList } = userData || {}
+		console.log('userData:', userData)
+
 		// Extract query parameters from the request URL
 		const { searchParams } = new URL(request.url)
 		const tourId = searchParams.get('id')
+		const isLiked = savedList?.includes(tourId)
 
 		// Check if `id` parameter is provided
 		if (!tourId) {
 			return NextResponse.json(
-				{ message: 'Tour ID is required' },
+				{ message: 'service-id-is-required' },
 				{ status: 400 },
 			)
 		}
@@ -30,20 +36,19 @@ export async function GET(request: NextRequest) {
 				},
 			},
 		})
-
-		console.log('tour:', tour)
-
-		// Check if the tour exists
 		if (!tour) {
-			return NextResponse.json({ message: 'Tour not found' }, { status: 404 })
+			return NextResponse.json(
+				{ message: 'service-not-found' },
+				{ status: 404 },
+			)
 		}
-
-		// Return the tour data along with the address as a JSON response
-		return NextResponse.json(tour)
+		const newTour = { ...tour, ...{ liked: isLiked } }
+		return NextResponse.json(newTour)
 	} catch (error) {
-		console.error('Error fetching tour:', error)
+		// console.error('Error fetching tour:', error)
+		console.log('error:', error)
 		return NextResponse.json(
-			{ message: 'Error fetching tour data' },
+			{ message: 'Error fetching tour data', code: error, error },
 			{ status: 500 },
 		)
 	} finally {

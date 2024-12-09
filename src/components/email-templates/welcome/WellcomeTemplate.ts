@@ -1,7 +1,7 @@
-import { welcomeHeaderMedia } from './WelcomeHeaderMedia'
+import { welcomeHeaderMedia } from '../WelcomeHeaderMedia'
 import { emailTemplatesFooter } from '../EmailTemplatesFooter'
 import { emailTemplatesHeader } from '../EmailTemplatesHeader'
-import { werticalExperienceCard } from './VerticalExperienceCard'
+import { werticalExperienceCard } from '../VerticalExperienceCard'
 import { EmailText } from '../EmailText'
 import { EmailBlackButton } from '../EmailBlackButton'
 export const welcomeTemplate = (data: any) => `
@@ -39,7 +39,7 @@ ${EmailText('Adventure Awaits: Explore Diverse Experiences!', 'font-size: 20px; 
 ${werticalExperienceCard}  
 ${EmailBlackButton('See all!', 'https://www.travsus.com/')} 
 
-${emailTemplatesFooter}
+${emailTemplatesFooter()}
 </div>
 </body>
 

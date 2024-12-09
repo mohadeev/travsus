@@ -24,23 +24,28 @@ export interface AuthorPageProps {}
 const AuthorPage: FC<AuthorPageProps> = ({}) => {
 	const user = useSelector((state: any) => state.userReducer.userData)
 
-	let [categories] = useState(['Bookings', 'Experiences'])
+	let [categories] = useState([
+		'Bookings', //'Experiences'
+	])
 	const [bookings, setBookings] = useState<any>([])
 	useEffect(() => {
 		;(async () => {
 			const newBooking = await handelFetchAllBookings()
+			console.log(JSON.stringify(newBooking))
 			setBookings(newBooking)
 			console.log('newBooking', newBooking)
 		})()
 	}, [])
-	console.log('user: ', user)
 	const joinedDate = moment(user?.createdAt).format('MMMM YYYY') // e.g. 'March 2016'
-
+	const { id, profileImage } = useSelector(
+		(state: any) => state.userReducer.userData,
+	)
 	const renderSidebar = () => {
 		return (
 			<div className="flex w-full flex-col items-center space-y-6 border-neutral-200 px-0 text-center dark:border-neutral-700 sm:space-y-7 sm:rounded-2xl sm:border sm:p-6 xl:p-8">
 				<Avatar
-					hasChecked
+					imgUrl={profileImage?.url}
+					hasChecked={true}
 					hasCheckedClass="w-6 h-6 -top-0.5 right-2"
 					sizeClass="w-28 h-28"
 				/>

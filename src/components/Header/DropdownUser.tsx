@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import ClickOutside from '@/components/ClickOutside'
 import { useSelector } from 'react-redux'
+import Avatar from '@/shared/Avatar'
 
 const DropdownUser = () => {
 	const [dropdownOpen, setDropdownOpen] = useState(false)
@@ -22,16 +23,21 @@ const DropdownUser = () => {
 					<span className="block text-xs"></span>
 				</span>
 				<span className="h-12 w-12 rounded-full">
-					<Image
-						width={112}
-						height={112}
-						src={company?.profileImage?.url}
-						style={{
-							width: 'auto',
-							height: 'auto',
-						}}
-						alt="User"
+					<Avatar
+						sizeClass="w-8 h-8 sm:w-9 sm:h-9"
+						imgUrl={company?.profileImage?.url}
 					/>
+					{/* <Image
+						width={60}
+						height={60}
+						src={company?.profileImage?.url}
+						// style={{
+						// 	width: 'auto',
+						// 	height: 'auto',
+						// }}
+						alt="User"
+						className="h-[60px] w-[60px] rounded-full object-cover object-center"
+					/> */}
 				</span>
 
 				<svg

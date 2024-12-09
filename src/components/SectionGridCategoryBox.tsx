@@ -106,34 +106,37 @@ const SectionGridCategoryBox: React.FC<SectionGridCategoryBoxProps> = ({
 		default:
 			CardComponentName = CardCategoryBox1
 	}
-	const [loading, setLoading] = useState(true);
+	const [loading, setLoading] = useState(true)
 
 	useEffect(() => {
 		;(async () => {
 			const newGetFamoustCitiesArround: any = await getFamoustCitiesArround()
+			console.log('newGetFamoustCitiesArround: ', newGetFamoustCitiesArround)
 			setNewCatecories(newGetFamoustCitiesArround?.places)
-			if(newGetFamoustCitiesArround?.places){
+			if (newGetFamoustCitiesArround?.places) {
 				setLoading(false)
 			}
-			
 		})()
 	}, [])
 
 	return (
-		<div className={`nc-SectionGridCategoryBox relative ${className}`}> 
-			{loading ?  <HeadingSkeleton isCenter={headingCenter}/>: <Heading
-				desc="Discover great places near where you live"
-				isCenter={headingCenter}
-			>
-				Explore nearby here
-			</Heading>}
-			
+		<div className={`nc-SectionGridCategoryBox relative ${className}`}>
+			{loading ? (
+				<HeadingSkeleton isCenter={headingCenter} />
+			) : (
+				<Heading
+					desc="Discover great places near where you live"
+					isCenter={headingCenter}
+				>
+					Explore nearby
+				</Heading>
+			)}
+			newCatecories{newCatecories?.length}
 			<div className={`grid ${gridClassName} gap-5 sm:gap-6 md:gap-8`}>
 				{newCatecories?.map((item, i) => (
 					<CardComponentName key={i} taxonomy={item} />
 				))}
 				{loading && <ContainerCardCategoryBox1Skeleton />}
-				
 			</div>
 		</div>
 	)

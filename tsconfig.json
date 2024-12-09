@@ -30,6 +30,6 @@
 			"@/*": ["./src/*"]
 		}
 	},
-	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/utils/email/sendMail.js", "src/utils/email/.template.ts", "src/app/CardImage.jsx"],
+	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/utils/email/sendMail.ts", "src/utils/email/.template.ts", "src/app/CardImage.jsx"],
 	"exclude": ["node_modules"]
 }

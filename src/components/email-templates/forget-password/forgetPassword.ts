@@ -1,18 +1,18 @@
-import { emailTemplatesFooter } from "../EmailTemplatesFooter"
-import { emailTemplatesHeader } from "../EmailTemplatesHeader"
+import { emailTemplatesFooter } from '../EmailTemplatesFooter'
+import { emailTemplatesHeader } from '../EmailTemplatesHeader'
 
-export const forgetPassword = (data:any)=> {
-  return(`<!DOCTYPE html>
+export const forgetPassword = (data: any) => {
+	return `<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Reset Password</title>
   </head>
-  <body style="background-color: #fff; color: #000; margin: 0; padding: 0; font-family: Arial, sans-serif;">
+  <body style="background-color: #fff; color: #000; margin: 0; padding: 0; font-family: Helvetica, Arial, sans-serif;">
 
     <!-- Header Section -->
-   ${emailTemplatesHeader}
+   ${emailTemplatesHeader()}
     <!-- Main Content Section -->
     <div style="max-width: 500px; margin: 20px auto; padding: 10px;">
       <p style="font-size: 16px; font-weight: 400; line-height: 23px; color: #000;">
@@ -35,9 +35,7 @@ export const forgetPassword = (data:any)=> {
     </div>
 
     <!-- Footer Section -->
-   ${emailTemplatesFooter}
+   ${emailTemplatesFooter()}
   </body>
 </html>`
-
-)
 }

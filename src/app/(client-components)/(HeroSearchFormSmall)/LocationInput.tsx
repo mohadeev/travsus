@@ -63,7 +63,7 @@ const LocationInput: FC<LocationInputProps> = ({
 		return (
 			<>
 				<h3 className="mt-2 block px-4 text-base font-semibold text-neutral-800 dark:text-neutral-100 sm:mt-0 sm:px-8">
-					Recent searches
+					Recent searches desktop
 				</h3>
 				<div className="mt-2">
 					{[

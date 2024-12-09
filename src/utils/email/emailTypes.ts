@@ -1,7 +1,9 @@
 import { bookingCancellation } from '@/components/email-templates/bookingCancellation/bookingCancellation'
 import { bookingConfirmation } from '@/components/email-templates/bookingConfirmation/bookingConfirmation'
 import { forgetPassword } from '@/components/email-templates/forget-password/forgetPassword'
+import { newsletterWelcomeTemplate } from '@/components/email-templates/newsletterWelcomeTemplate/newsletterWelcomeTemplate'
 import { paymentConfirmation } from '@/components/email-templates/paymentConfirmation/paymentConfirmation'
+import { refundConfirmation } from '@/components/email-templates/refundConfirmation/refundConfirmation'
 import { reminderNotification } from '@/components/email-templates/reminderNotification/reminderNotification'
 import { welcomeTemplate } from '@/components/email-templates/welcome/WellcomeTemplate'
 
@@ -19,30 +21,30 @@ const emailList = [
 	},
 	{
 		type: 'forgetPassword',
-		email: 'notifications@travsus.com',
+		email: 'no-reply@travsus.com',
 		subject: 'Your Travsus password',
-		sender: `"Travsus" <notifications@travsus.com>`,
+		sender: `"Travsus" <no-reply@travsus.com>`,
 		template: forgetPassword,
 	},
 	{
-		type: 'forgetPassword',
-		email: 'notifications@travsus.com',
-		subject: 'Your Travsus password',
-		sender: `"Travsus" <notifications@travsus.com>`,
+		type: 'bookingConfirmation',
+		email: 'no-reply@travsus.com',
+		subject: 'Your Travsus booking confirmation',
+		sender: `"Travsus" <no-reply@travsus.com>`,
 		template: bookingConfirmation,
 	},
 	{
 		type: 'bookingCancellation',
-		email: 'notifications@travsus.com',
+		email: 'no-reply@travsus.com',
 		subject: 'Your Travsus booking cancellation',
-		sender: `"Travsus" <notifications@travsus.com>`,
+		sender: `"Travsus" <no-reply@travsus.com>`,
 		template: bookingCancellation,
 	},
 	{
 		type: 'bookingCancellation',
-		email: 'notifications@travsus.com',
+		email: 'no-reply@travsus.com',
 		subject: 'Your Travsus booking cancellation',
-		sender: `"Travsus" <notifications@travsus.com>`,
+		sender: `"Travsus" <no-reply@travsus.com>`,
 		template: bookingCancellation,
 	},
 	{
@@ -55,10 +57,25 @@ const emailList = [
 
 	{
 		type: 'paymentConfirmation',
-		email: 'notifications@travsus.com',
-		subject: 'Your Travsus booking cancellation',
-		sender: `"Travsus" <notifications@travsus.com>`,
+		email: 'payment@travsus.com',
+		subject: 'Your Travsus payment confirmation',
+		sender: `"Travsus" <payment@travsus.com>`,
 		template: paymentConfirmation,
+	},
+	{
+		type: 'newsletterWelcomeTemplate',
+		email: 'notifications@travsus.com',
+		subject: 'Welcome to Our Newsletter',
+		sender: `"Travsus" <notifications@travsus.com>`,
+		template: newsletterWelcomeTemplate,
+	},
+
+	{
+		type: 'refundConfirmation',
+		email: 'payment@travsus.com',
+		subject: 'Your Travsus refund confirmation',
+		sender: `"Travsus" <payment@travsus.com>`,
+		template: refundConfirmation,
 	},
 ]
 

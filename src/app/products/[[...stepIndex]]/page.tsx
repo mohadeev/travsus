@@ -1,4 +1,5 @@
 'use client'
+
 import React, { FC, useEffect } from 'react'
 import PageAddListing1 from './PageAddListing1'
 import PageAddListing2 from './PageAddListing2'
@@ -20,6 +21,7 @@ import getFetchDataFromApi from '@/utils/getFetchDataFromApi'
 import { Route } from 'next'
 import { useDispatch, useSelector } from 'react-redux'
 import { Form } from 'react-final-form'
+import dummyTourData from './dummyTourData.json'
 
 const components = [
 	PageAddListing1,
@@ -71,6 +73,8 @@ const CommonLayout: FC<CommonLayoutProps> = ({ children, params }: any) => {
 
 	const step = searchParams.get('step')
 	const serviceId = searchParams.get('serviceId')
+	const stepName: string = searchParams.get('name') || ''
+
 	const service = useSelector(
 		(state: any) => state.creatingServiceSlice.service,
 	)
@@ -137,8 +141,19 @@ const CommonLayout: FC<CommonLayoutProps> = ({ children, params }: any) => {
 	}, [serviceId, dispatch]) // Dispatch included in the dependency array
 
 	const handleClickPulbishProduct = async (values: any) => {
-		console.log('values: ', values)
-		if (index > 9) {
+		if (index == 1 && stepName === 'new') {
+			await basedPostUrlRequestLogedIn(
+				'/api/listing/post/initiate-service',
+				dummyTourData,
+			)
+				.then((res: any) => {
+					console.log('res', res)
+				})
+				.catch((err) => {
+					console.log('err', err)
+				})
+			alert('hello world')
+		} else if (index > 9) {
 			const body: any = { tourData: values }
 			await basedPostUrlRequestLogedIn('/api/listing/post/edit-listing', body)
 				.then((res: any) => {
@@ -193,7 +208,6 @@ const CommonLayout: FC<CommonLayoutProps> = ({ children, params }: any) => {
 						</div>
 						<div className="listingSection__wrap">
 							{React.Children.map(children, (child) => {
-								// Clone each child and pass the values prop
 								return React.cloneElement(child, { values })
 							})}
 						</div>

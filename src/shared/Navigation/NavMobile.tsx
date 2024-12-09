@@ -9,9 +9,9 @@ import { NAVIGATION_DEMO } from '@/data/navigation'
 import ButtonPrimary from '@/shared/ButtonPrimary'
 import SocialsList from '@/shared/SocialsList'
 import { ChevronDownIcon } from '@heroicons/react/24/solid'
-import SwitchDarkMode from '@/shared/SwitchDarkMode'
 import Link from 'next/link'
 import LangDropdown from '@/app/(client-components)/(Header)/LangDropdown'
+import { useSession } from 'next-auth/react'
 
 export interface NavMobileProps {
 	data?: NavItemType[]
@@ -22,6 +22,8 @@ const NavMobile: React.FC<NavMobileProps> = ({
 	data = NAVIGATION_DEMO,
 	onClickClose,
 }) => {
+	const { data: session } = useSession()
+
 	const _renderMenuChild = (item: NavItemType) => {
 		return (
 			<ul className="nav-mobile-sub-menu pb-1 pl-6 text-base">
@@ -115,9 +117,6 @@ const NavMobile: React.FC<NavMobileProps> = ({
 
 					<div className="mt-4 flex items-center justify-between">
 						<SocialsList itemClass="w-9 h-9 flex items-center justify-center rounded-full bg-neutral-100 text-xl dark:bg-neutral-800 dark:text-neutral-300" />
-						{/* <span className="block">
-							<SwitchDarkMode className="bg-neutral-100 dark:bg-neutral-800" />
-						</span> */}
 					</div>
 				</div>
 				<span className="absolute right-2 top-2 p-1">
@@ -127,15 +126,18 @@ const NavMobile: React.FC<NavMobileProps> = ({
 			<ul className="flex flex-col space-y-1 px-2 py-6">
 				{data.map(_renderItem)}
 			</ul>
-			<div className="flex items-center justify-between px-5 py-6">
-				<a
-					className="inline-block"
-					href="https://themeforest.net/item/Travsus-online-booking-nextjs-template/43399526"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					<ButtonPrimary>Sign up</ButtonPrimary>
-				</a>
+			<div
+				className={`"flex py-6" items-center justify-between px-5 ${!session && 'justify-end'}`}
+			>
+				{!session && (
+					<Link
+						className="inline-block"
+						href="/signup"
+						rel="noopener noreferrer"
+					>
+						<ButtonPrimary>Sign up</ButtonPrimary>
+					</Link>
+				)}
 
 				<LangDropdown
 					className="flex"

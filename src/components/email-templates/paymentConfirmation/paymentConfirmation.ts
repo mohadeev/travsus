@@ -9,33 +9,33 @@ export const paymentConfirmation = (data: any) => {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Payment Confirmation</title>
   </head>
-  <body style="background-color: #fff; color: #000; margin: 0; padding: 0; font-family: Arial, sans-serif;">
+  <body style="background-color: #fff; color: #000; margin: 0; padding: 0; font-family: Helvetica, Arial, sans-serif;">
 
     <!-- Header Section -->
-    ${emailTemplatesHeader}
+    ${emailTemplatesHeader()}
 
     <!-- Main Content Section -->
     <div style="max-width: 500px; margin: 20px auto; padding: 10px;">
       <p style="font-size: 16px; font-weight: 400; line-height: 23px; color: #000;">
-        Hello {{name}},
+        Hello ${data.name},
         <br /><br />
         Thank you for your payment to Travsus. We're writing to confirm that your payment has been successfully processed.
         <br /><br />
         <b>Payment Details:</b>
         <br />
-        <b>Transaction ID:</b> {{transactionId}}
+        <b>Transaction ID:</b> ${data.transactionId}
         <br />
-        <b>Date:</b> {{paymentDate}}
+        <b>Date:</b> ${data.paymentDate}
         <br />
-        <b>Amount:</b> {{amount}}
+        <b>Amount:</b> ${data.amount}
         <br />
-        <b>Payment Method:</b> {{paymentMethod}}
+        <b>Payment Method:</b> ${data.paymentMethod}
         <br />
-        <b>Description:</b> {{description}}
+        <b>Description:</b> ${data.description}
         <br /><br />
         You can view your payment details and download the receipt by clicking the button below:
         <br /><br />
-        <a href="{{receiptLink}}" style="font-size: 16px; color: #fff; cursor: pointer; background-color: #000000; padding: 10px 20px; text-decoration: none; border-radius: 20px;">View Receipt</a>
+        <a href="${data.receiptLink}" style="font-size: 16px; color: #fff; cursor: pointer; background-color: #000000; padding: 10px 20px; text-decoration: none; border-radius: 20px;">View Receipt</a>
         <br /><br />
         If you have any questions about this payment or if you believe there's an error, please don't hesitate to contact our customer support team immediately.
         <br /><br />
@@ -50,7 +50,7 @@ export const paymentConfirmation = (data: any) => {
     </div>
 
     <!-- Footer Section -->
-    ${emailTemplatesFooter}
+    ${emailTemplatesFooter()}
   </body>
 </html>`
 }

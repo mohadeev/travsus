@@ -4,26 +4,26 @@ const prisma = new PrismaClient()
 
 async function updateListing(tourId: string, newTourData: any) {
 	console.log('address  is here: ', newTourData.address)
-	const address = {
-		streetAddress: '123 Main St',
-		buildingNumber: '5A',
-		suiteNumber: 'Suite 200',
-		postOfficeBox: 'PO Box 123',
-		city: 'New York',
-		state: 'NY',
-		postalCode: '10001',
-		country: 'USA',
-		addressType: 'Business',
-		landmark: 'Near Central Park',
-		subdivision: 'Upper East Side',
-		timeZone: 'America/New_York',
-		isPrimary: true,
-		notes: 'Main office location',
-		geoCoordinates: {
-			latitude: 40.7128,
-			longitude: -74.006,
-		},
-	}
+	// const address = {
+	// 	streetAddress: '123 Main St',
+	// 	buildingNumber: '5A',
+	// 	suiteNumber: 'Suite 200',
+	// 	postOfficeBox: 'PO Box 123',
+	// 	city: 'New York',
+	// 	state: 'NY',
+	// 	postalCode: '10001',
+	// 	country: 'USA',
+	// 	addressType: 'Business',
+	// 	landmark: 'Near Central Park',
+	// 	subdivision: 'Upper East Side',
+	// 	timeZone: 'America/New_York',
+	// 	isPrimary: true,
+	// 	notes: 'Main office location',
+	// 	geoCoordinates: {
+	// 		latitude: 40.7128,
+	// 		longitude: -74.006,
+	// 	},
+	// }
 	// newTourData.address = address
 	try {
 		const updatedTour = await prisma.tour.update({
@@ -66,11 +66,11 @@ async function updateListing(tourId: string, newTourData: any) {
 									state: newTourData.address.state,
 									postalCode: newTourData.address.postalCode,
 									country: newTourData.address.country,
-									addressType: newTourData.address.addressType,
+									addressType: newTourData.address.addressType || '',
 									landmark: newTourData.address.landmark,
 									subdivision: newTourData.address.subdivision,
 									timeZone: newTourData.address.timeZone,
-									isPrimary: newTourData.address.isPrimary,
+									isPrimary: newTourData.address.isPrimary || false,
 									notes: newTourData.address.notes,
 
 									// Handle GeoCoordinates if provided
@@ -93,11 +93,11 @@ async function updateListing(tourId: string, newTourData: any) {
 									state: newTourData.address.state,
 									postalCode: newTourData.address.postalCode,
 									country: newTourData.address.country,
-									addressType: newTourData.address.addressType,
+									addressType: newTourData.address.addressType || '',
 									landmark: newTourData.address.landmark,
 									subdivision: newTourData.address.subdivision,
 									timeZone: newTourData.address.timeZone,
-									isPrimary: newTourData.address.isPrimary,
+									isPrimary: newTourData.address.isPrimary || false,
 									notes: newTourData.address.notes,
 
 									// Handle GeoCoordinates update

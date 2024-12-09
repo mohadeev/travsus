@@ -3,17 +3,16 @@ import React from 'react'
 import allHeadersReqJson from './allHeadersReqJson'
 
 const basedPostUrlRequestLogedIn = async (url: string, body: any) => {
-
 	const response = await fetch(url, {
 		method: 'POST',
-		// headers,
-		headers: {
-			'Content-Type': 'application/json',
-		},
+		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify(body),
 	})
-	const data = await response.json()
-	return data
+	const result = await response.json()
+	return result
+	if (!response.ok) {
+		throw new Error(url, result.message)
+	}
 }
 
 export default basedPostUrlRequestLogedIn

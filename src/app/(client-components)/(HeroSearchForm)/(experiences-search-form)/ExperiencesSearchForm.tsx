@@ -17,6 +17,7 @@ const ExperiencesSearchForm: FC<ExperiencesSearchFormProps> = ({}) => {
 					className="flex-1"
 					buttonSubmitHref="/listing-experiences"
 				/>
+				
 			</form>
 		)
 	}

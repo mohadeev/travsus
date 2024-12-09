@@ -9,10 +9,10 @@ export const bookingModificationConfirmation = (data: any) => {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Booking Modification Confirmation</title>
   </head>
-  <body style="background-color: #fff; color: #000; margin: 0; padding: 0; font-family: Arial, sans-serif;">
+  <body style="background-color: #fff; color: #000; margin: 0; padding: 0; font-family: Helvetica, Arial, sans-serif;">
 
     <!-- Header Section -->
-    ${emailTemplatesHeader}
+    ${emailTemplatesHeader()}
 
     <!-- Main Content Section -->
     <div style="max-width: 500px; margin: 20px auto; padding: 10px;">
@@ -57,7 +57,7 @@ export const bookingModificationConfirmation = (data: any) => {
     </div>
 
     <!-- Footer Section -->
-    ${emailTemplatesFooter}
+    ${emailTemplatesFooter()}
   </body>
 </html>`
 }

@@ -16,6 +16,7 @@ import {
 } from '@headlessui/react'
 import LikeSaveBtns from '../LikeSaveBtns'
 import { Route } from 'next'
+import { useSelector } from 'react-redux'
 
 const PHOTOS: string[] = [
 	'https://images.pexels.com/photos/6129967/pexels-photo-6129967.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260',
@@ -60,6 +61,16 @@ const ListingImageGallery: FC<Props> = ({ images = DEMO_IMAGE }) => {
 	const isShowModal = modal === 'PHOTO_TOUR_SCROLLABLE'
 	const router = useRouter()
 	const [lastViewedPhoto, setLastViewedPhoto] = useLastViewedPhoto()
+	const {
+		name: title,
+		region,
+		start,
+		images: serviceImages,
+		overview,
+		reviews,
+		days,
+		liked,
+	}: any = useSelector((state: any) => state.creatingServiceSlice.service)
 
 	const lastViewedPhotoRef = useRef<HTMLDivElement>(null)
 	const thisPathname = usePathname()
@@ -83,7 +94,7 @@ const ListingImageGallery: FC<Props> = ({ images = DEMO_IMAGE }) => {
 				{photoId && (
 					<Suspense>
 						<Modal
-							images={images}
+							images={serviceImages}
 							onClose={() => {
 								// @ts-ignore
 								setLastViewedPhoto(photoId)
@@ -96,7 +107,7 @@ const ListingImageGallery: FC<Props> = ({ images = DEMO_IMAGE }) => {
 				)}
 
 				<div className="columns-1 gap-4 sm:columns-2 xl:columns-3">
-					{images?.map(({ id, url }) => (
+					{serviceImages?.map(({ id, url }: any) => (
 						<div
 							key={id}
 							onClick={() => {
@@ -106,6 +117,7 @@ const ListingImageGallery: FC<Props> = ({ images = DEMO_IMAGE }) => {
 							ref={id === Number(lastViewedPhoto) ? lastViewedPhotoRef : null}
 							className="after:content after:shadow-highlight group relative mb-5 block w-full cursor-zoom-in after:pointer-events-none after:absolute after:inset-0 after:rounded-lg focus:outline-none"
 						>
+							{/* url: {url} */}
 							<Image
 								alt="Travsus listing gallery "
 								className="transform rounded-lg brightness-90 transition will-change-auto focus:outline-none group-hover:brightness-110"
@@ -148,7 +160,7 @@ const ListingImageGallery: FC<Props> = ({ images = DEMO_IMAGE }) => {
 							>
 								<ArrowLeftIcon className="h-6 w-6" />
 							</button>
-							<LikeSaveBtns />
+							{/* <LikeSaveBtns /> */}
 						</div>
 
 						<div className="flex min-h-full items-center justify-center pt-0 text-center sm:p-4">

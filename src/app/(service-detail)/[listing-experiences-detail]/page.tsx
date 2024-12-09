@@ -1,16 +1,17 @@
 'use client'
 
-import React, { FC, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { ArrowRightIcon, Squares2X2Icon } from '@heroicons/react/24/outline'
 import CommentListing from '@/components/CommentListing'
 import FiveStartIconForRate from '@/components/FiveStartIconForRate'
 import Avatar from '@/shared/Avatar'
 import Badge from '@/shared/Badge'
+import TransportBreakdown from './TransportBreakdown'
 import ButtonCircle from '@/shared/ButtonCircle'
 import ButtonPrimary from '@/shared/ButtonPrimary'
 import ButtonSecondary from '@/shared/ButtonSecondary'
 import Input from '@/shared/Input'
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import LikeSaveBtns from '@/components/LikeSaveBtns'
 import StartRating from '@/components/StartRating'
 import { includes_demo } from './constant'
@@ -19,19 +20,60 @@ import StayDatesRangeInput from './StayDatesRangeInput'
 import GuestsInput from './GuestsInput'
 import SectionDateRange from '../SectionDateRange'
 import { Route } from 'next'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import handleCreateBooking from '@/utils/api-utils/handleCreateBooking'
 import { SkeletonLoader } from './SkeletonLoader'
+import {
+	resetBooking,
+	setPricePerSeat,
+	setSeats,
+	setSelectedDate,
+} from '@/app/GlobalRedux/Features/bookingSlice/bookingSlice'
+import RenderSidebar from './RenderSidebar'
+import TourItinerary from './TourItinerary'
+import ListingExperiencesDetailsImages from './ListingExperiencesDetailsImages'
+import TourListingHeader from './listing-components/TourListingHeader'
 export interface ListingExperiencesDetailPageProps {}
 
 const ListingExperiencesDetailPage: FC<
 	ListingExperiencesDetailPageProps
 > = ({}) => {
 	const thisPathname = usePathname()
+	const dispatch = useDispatch()
 	const router = useRouter()
+	const searchParams = useSearchParams()
+	const pathname = usePathname()
 
+	const { booking } = useSelector((state: any) => state.bookingSlice)
+
+	const initialPrice = 100
+	useEffect(() => {
+		// Update the price when the component mounts or when initialPrice changes
+		dispatch(setPricePerSeat(initialPrice))
+	}, [dispatch, initialPrice])
+	const handleDateChange = (date: string) => {
+		dispatch(setSelectedDate(date))
+	}
+
+	const handleSeatsChange = (seats: any) => {
+		// console.log('seats: ', seats)
+		// dispatch(setSeats(seats))
+	}
+
+	const handleResetBooking = () => {
+		dispatch(resetBooking())
+	}
 	const handleOpenModalImageGallery = () => {
-		router.push(`${thisPathname}/?modal=PHOTO_TOUR_SCROLLABLE` as Route)
+		const current = new URLSearchParams(Array.from(searchParams.entries()))
+
+		// Set the modal parameter
+		current.set('modal', 'PHOTO_TOUR_SCROLLABLE')
+
+		// Create the new search string
+		const search = current.toString()
+		const query = search ? `?${search}` : ''
+
+		router.push(`${pathname}${query}` as Route)
 	}
 
 	const {
@@ -41,7 +83,10 @@ const ListingExperiencesDetailPage: FC<
 		images,
 		overview,
 		reviews,
+		days,
+		liked,
 	}: any = useSelector((state: any) => state.creatingServiceSlice.service)
+
 	const PHOTOS: any = images?.map(({ url }: any) => url)
 	let newLocation = region
 	const regionC = newLocation?.length > 0 ? newLocation[0]?.region : ''
@@ -53,7 +98,7 @@ const ListingExperiencesDetailPage: FC<
 				{/* 1 */}
 				<div className="flex items-center justify-between">
 					<Badge color="pink" name="Travsus" />
-					<LikeSaveBtns />
+					<LikeSaveBtns liked={liked} />
 				</div>
 
 				{/* 2 */}
@@ -91,7 +136,7 @@ const ListingExperiencesDetailPage: FC<
 				<div className="flex items-center justify-between space-x-8 text-sm text-neutral-700 dark:text-neutral-300 xl:justify-start xl:space-x-12">
 					<div className="flex flex-col items-center space-y-3 text-center sm:flex-row sm:space-x-3 sm:space-y-0 sm:text-left">
 						<i className="las la-clock text-2xl"></i>
-						<span className="">3.5 hours</span>
+						<span className="">{days?.length}</span>
 					</div>
 					<div className="flex flex-col items-center space-y-3 text-center sm:flex-row sm:space-x-3 sm:space-y-0 sm:text-left">
 						<i className="las la-user-friends text-2xl"></i>
@@ -170,7 +215,7 @@ const ListingExperiencesDetailPage: FC<
 				</div>
 
 				{/* desc */}
-				<span className="block text-neutral-6000 dark:text-neutral-300">
+				<span className="text-neutral-6000 block dark:text-neutral-300">
 					Providing lake views, The Symphony 9 Tam Coc in Ninh Binh provides
 					accommodation, an outdoor swimming pool, a bar, a shared lounge, a
 					garden and barbecue facilities...
@@ -371,139 +416,21 @@ const ListingExperiencesDetailPage: FC<
 		)
 	}
 
-	const renderSidebar = () => {
-		return (
-			<div className="listingSectionSidebar__wrap shadow-xl">
-				{/* PRICE */}
-				<div className="flex justify-between">
-					<span className="text-3xl font-semibold">
-						$19
-						<span className="ml-1 text-base font-normal text-neutral-500 dark:text-neutral-400">
-							/person 
-						</span>
-					</span>
-					<StartRating />
-				</div>
-
-				{/* FORM */}
-				{/* FORM */}
-				<form className="flex flex-col rounded-3xl border border-neutral-200 dark:border-neutral-700">
-					<StayDatesRangeInput className="z-[11] flex-1" />
-					<div className="w-full border-b border-neutral-200 dark:border-neutral-700"></div>
-					<GuestsInput className="flex-1" />
-				</form>
-
-				{/* SUM */}
-				<div className="flex flex-col space-y-4">
-					<div className="flex justify-between text-neutral-6000 dark:text-neutral-300">
-						<span>$19 x 3 adults</span>
-						<span>$57</span>
-					</div>
-					<div className="flex justify-between text-neutral-6000 dark:text-neutral-300">
-						<span>Service charge</span>
-						<span>$0</span>
-					</div>
-					<div className="border-b border-neutral-200 dark:border-neutral-700"></div>
-					<div className="flex justify-between font-semibold">
-						<span>Total</span>
-						<span>$199</span>
-					</div>
-				</div>
-
-				{/* SUBMIT */}
-				<ButtonPrimary onClick={() => handleCreateBooking({}).then((res)=>{ console.log("" , res) }).catch((err)=>{console.log("err", err)})}>
-					Reserve
-				</ButtonPrimary>
-			</div>
-		)
-	}
-
 	return (
 		<div className={`nc-ListingExperiencesDetailPage`}>
-			{/* SINGLE HEADER */}
-			{!PHOTOS && <SkeletonLoader />}	
-			<header className="rounded-md sm:rounded-xl">
-				<div className="relative grid grid-cols-4 gap-1 sm:gap-2">
-					<div
-						className="relative col-span-2 row-span-2 cursor-pointer overflow-hidden rounded-md sm:rounded-xl"
-						onClick={handleOpenModalImageGallery}
-					>
-						<Image
-							fill
-							src={PHOTOS?.length >= 1 ? PHOTOS[0] : ''}
-							alt="photo 0"
-							className="rounded-md object-cover sm:rounded-xl"
-							sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
-						/>
-						<div className="absolute inset-0 bg-neutral-900 bg-opacity-20 opacity-0 transition-opacity hover:opacity-100"></div>
-					</div>
-
-					{/*  */}
-					<div
-						className="relative col-span-1 row-span-2 cursor-pointer overflow-hidden rounded-md sm:rounded-xl"
-						onClick={handleOpenModalImageGallery}
-					>
-						<Image
-							fill
-							className="rounded-md object-cover sm:rounded-xl"
-							src={PHOTOS?.length >= 1 ? PHOTOS[1] : ''}
-							alt="photo 1"
-							sizes="400px"
-						/>
-						<div className="absolute inset-0 bg-neutral-900 bg-opacity-20 opacity-0 transition-opacity hover:opacity-100"></div>
-					</div>
-
-					{/*  */}
-					{PHOTOS?.filter((_: any, i: number) => i >= 2 && i < 4).map(
-						(item: any, index: any) => (
-							<div
-								key={index}
-								className={`relative overflow-hidden rounded-md sm:rounded-xl ${
-									index >= 2 ? 'block' : ''
-								}`}
-							>
-								<div className="aspect-h-3 aspect-w-4">
-									<Image
-										fill
-										className="h-full w-full rounded-md object-cover sm:rounded-xl"
-										src={item || ''}
-										alt="photos"
-										sizes="400px"
-									/>
-								</div>
-
-								{/* OVERLAY */}
-								<div
-									className="absolute inset-0 cursor-pointer bg-neutral-900 bg-opacity-20 opacity-0 transition-opacity hover:opacity-100"
-									onClick={handleOpenModalImageGallery}
-								/>
-							</div>
-						),
-					)}
-
-					<div
-						className="absolute bottom-3 left-3 z-10 hidden cursor-pointer rounded-xl bg-neutral-100 px-4 py-2 text-neutral-500 hover:bg-neutral-200 md:flex md:items-center md:justify-center"
-						onClick={handleOpenModalImageGallery}
-					>
-						<Squares2X2Icon className="h-5 w-5" />
-
-						<span className="ml-2 text-sm font-medium text-neutral-800">
-							Show all photos
-						</span>
-					</div>
-				</div>
-			</header>
-
 			{/* MAIn */}
+			<ListingExperiencesDetailsImages />
 			<main className="relative z-10 mt-11 flex flex-col lg:flex-row">
 				{/* CONTENT */}
 				<div className="w-full space-y-8 lg:w-3/5 lg:space-y-10 lg:pr-10 xl:w-2/3">
-					{renderSection1()}
-
+				<TourListingHeader />
 					{renderSection2()}
-					{itinerary()}
+					<TourItinerary days={days} />
+
+					{/* {itinerary()} */}
 					{renderSection3()}
-					<SectionDateRange />
+
+					{/* <SectionDateRange /> */}
 
 					{/* {renderSection5()} */}
 					{renderSection6()}
@@ -513,7 +440,9 @@ const ListingExperiencesDetailPage: FC<
 
 				{/* SIDEBAR */}
 				<div className="mt-14 hidden flex-grow lg:mt-0 lg:block">
-					<div className="sticky top-28">{renderSidebar()}</div>
+					<div className="top-28">
+						<RenderSidebar />
+					</div>
 				</div>
 			</main>
 		</div>
