@@ -84,32 +84,25 @@ const nextConfig = {
 			},
 		],
 	},
-
-	// webpack: (config, { isServer }) => {
-	// 	// Existing configurations (if any)
-
-	// 	// Add babel-loader
-	// 	config.module.rules.push({
-	// 		test: /\.(js|jsx|ts|tsx)$/,
-	// 		exclude: /node_modules/,
-	// 		use: {
-	// 			loader: 'babel-loader',
-	// 			options: {
-	// 				presets: ['next/babel'],
-	// 			},
-	// 		},
-	// 	})
-
-	// 	return config
-	// },
-	// Your existing configurations for typescript and eslint
 	typescript: {
+		// !! WARN !!
+		// Dangerously allow production builds to successfully complete even if
+		// your project has type errors.
+		// !! WARN !!
 		ignoreBuildErrors: true,
 	},
 	eslint: {
+		// Warning: This allows production builds to successfully complete even if
+		// your project has ESLint errors.
 		ignoreDuringBuilds: true,
 	},
-	
+}
+
+// Check for the NEXT_IGNORE_BUILD_ERRORS environment variable
+if (process.env.NEXT_IGNORE_BUILD_ERRORS === '1') {
+	console.log('Ignoring build errors')
+	nextConfig.typescript.ignoreBuildErrors = true
+	nextConfig.eslint.ignoreDuringBuilds = true
 }
 
 module.exports = nextConfig
