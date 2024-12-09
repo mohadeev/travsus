@@ -13,6 +13,6 @@ export async function updateBooking(bookingId: string, updateData: any) {
 		return updatedBooking
 	} catch (error) {
 		console.error('Error updating booking:', error)
-		throw new Error('Booking update failed.')
+		console.error('Booking update failed.')
 	}
 }

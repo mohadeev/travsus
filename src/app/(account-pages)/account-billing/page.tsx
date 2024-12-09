@@ -48,7 +48,7 @@ const AccountBilling: React.FC = () => {
 		try {
 			const response = await fetch('/api/get-payment-methods')
 			if (!response.ok) {
-				throw new Error('Failed to fetch payment methods')
+				console.error('Failed to fetch payment methods')
 			}
 			const data: ApiResponse = await response.json()
 			setPaymentMethods(data.paymentMethods)
@@ -98,7 +98,7 @@ const AccountBilling: React.FC = () => {
 				body: JSON.stringify({ id }),
 			})
 			if (!response.ok) {
-				throw new Error('Failed to remove payment method')
+				console.error('Failed to remove payment method')
 			}
 			await fetchPaymentMethods()
 			toast({
@@ -152,7 +152,7 @@ const AccountBilling: React.FC = () => {
 			})
 
 			if (!response.ok) {
-				throw new Error('Failed to update payment method')
+				console.error('Failed to update payment method')
 			}
 
 			await fetchPaymentMethods()

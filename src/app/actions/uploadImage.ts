@@ -1,6 +1,6 @@
 export async function uploadImage(file: File): Promise<any> {
 	if (!file) {
-		throw new Error('File is required')
+		console.error('File is required')
 	}
 
 	const formData = new FormData()
@@ -10,7 +10,7 @@ export async function uploadImage(file: File): Promise<any> {
 	console.log('externalServerOrigin:', externalServerOrigin)
 
 	if (!externalServerOrigin) {
-		throw new Error(
+		console.error(
 			'External server origin is not defined in environment variables',
 		)
 	}
@@ -27,7 +27,7 @@ export async function uploadImage(file: File): Promise<any> {
 		if (!response.ok) {
 			const errorText = await response.text()
 			console.error('Error response from server:', errorText)
-			throw new Error(`Failed to upload image: ${response.statusText}`)
+			console.error(`Failed to upload image: ${response.statusText}`)
 		}
 
 		const data = await response.json()
@@ -36,7 +36,7 @@ export async function uploadImage(file: File): Promise<any> {
 		return data
 	} catch (error) {
 		console.error('Error uploading image to external server:', error)
-		throw new Error('Failed to upload image')
+		console.error('Failed to upload image')
 	}
 }
 

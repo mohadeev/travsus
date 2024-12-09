@@ -11,7 +11,7 @@ const basedPostUrlRequestLogedIn = async (url: string, body: any) => {
 	const result = await response.json()
 	return result
 	if (!response.ok) {
-		throw new Error(url, result.message)
+		console.error(url, result.message)
 	}
 }
 

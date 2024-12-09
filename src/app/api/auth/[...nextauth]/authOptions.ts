@@ -21,7 +21,7 @@ export const authOptions: NextAuthOptions = {
 
 				if (!credentials?.email || !credentials?.password) {
 					console.log('Missing credentials')
-					throw new Error('Email and password are required')
+					console.error('Email and password are required')
 				}
 
 				try {
@@ -32,7 +32,7 @@ export const authOptions: NextAuthOptions = {
 					console.log('User lookup result:', user ? 'Found' : 'Not found')
 
 					if (!user || !user.password) {
-						throw new Error('No user found with this email')
+						console.error('No user found with this email')
 					}
 
 					const isPasswordValid = await bcrypt.compare(
@@ -45,7 +45,7 @@ export const authOptions: NextAuthOptions = {
 					)
 
 					if (!isPasswordValid) {
-						throw new Error('Invalid password')
+						console.error('Invalid password')
 					}
 
 					console.log('Authorization successful')

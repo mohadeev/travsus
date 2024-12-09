@@ -33,6 +33,6 @@ export async function createOrderNumber() {
 		})
 	} catch (error) {
 		console.error('Failed to create order numbers:', error)
-		throw new Error('Failed to create order numbers')
+		console.error('Failed to create order numbers')
 	}
 }

@@ -3,7 +3,7 @@ import axios from 'axios'
 // Comment: Utility function to search for countries
 export async function searchCountries(name: any) {
 	if (!name) {
-		throw new Error('Country name is required')
+		console.error('Country name is required')
 	}
 
 	try {

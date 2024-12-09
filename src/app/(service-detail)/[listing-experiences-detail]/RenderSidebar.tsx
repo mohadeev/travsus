@@ -190,7 +190,7 @@ const RenderSidebar: FC<RenderSidebarProps> = ({}) => {
 								})
 
 								if (!response.ok) {
-									throw new Error('Failed to create booking')
+									console.error('Failed to create booking')
 								}
 
 								return response.json()

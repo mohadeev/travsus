@@ -61,7 +61,7 @@ const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
 
 		if (!response.ok) {
 			setCurrentStatus('')
-			throw new Error('Failed to create booking')
+			console.error('Failed to create booking')
 		}
 		setCurrentStatus('')
 
@@ -73,7 +73,7 @@ const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
 			try {
 				const response = await fetch(`/api/payment-methods?userId=${userId}`)
 				if (!response.ok) {
-					throw new Error('Failed to fetch payment methods')
+					console.error('Failed to fetch payment methods')
 				}
 				const data = await response.json()
 				setPaymentMethods(data.paymentMethods)
@@ -120,7 +120,7 @@ const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
 	const initiatePayment = async (formData: any) => {
 		const cardElement = elements.getElement(CardElement)
 		if (!cardElement) {
-			throw new Error('Card element not found. Please refresh and try again.')
+			console.error('Card element not found. Please refresh and try again.')
 		}
 
 		const { paymentMethod, error: paymentMethodError } =
@@ -141,13 +141,13 @@ const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
 			})
 
 		if (paymentMethodError) {
-			throw new Error(
+			console.error(
 				paymentMethodError.message || 'Failed to create payment method',
 			)
 		}
 
 		if (!paymentMethod || !paymentMethod.id) {
-			throw new Error('Failed to create payment method. Please try again.')
+			console.error('Failed to create payment method. Please try again.')
 		}
 
 		const paymentMethodId = paymentMethod.id
@@ -172,7 +172,7 @@ const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
 		})
 
 		if (!saveResponse.ok) {
-			throw new Error('Failed to save new payment method. Please try again.')
+			console.error('Failed to save new payment method. Please try again.')
 		}
 
 		const response = await fetch('/api/initiate-payment', {
@@ -188,7 +188,7 @@ const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
 
 		if (!response.ok) {
 			const result = await response.json()
-			throw new Error(result.message || 'Failed to initiate payment')
+			console.error(result.message || 'Failed to initiate payment')
 		}
 
 		const { clientSecret } = await response.json()
@@ -199,7 +199,7 @@ const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
 
 	const processExistingPaymentMethod = async () => {
 		if (!selectedPaymentMethod) {
-			throw new Error('Please select a payment method to charge.')
+			console.error('Please select a payment method to charge.')
 		}
 
 		const response = await fetch('/api/process-payment', {
@@ -216,7 +216,7 @@ const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
 
 		if (!response.ok) {
 			const result = await response.json()
-			throw new Error(result.message || 'Payment processing failed')
+			console.error(result.message || 'Payment processing failed')
 		}
 
 		const { paymentIntentId, requiresCapture } = await response.json()
@@ -238,7 +238,7 @@ const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
 
 		if (!response.ok) {
 			const result = await response.json()
-			throw new Error(result.message || 'Payment capture failed')
+			console.error(result.message || 'Payment capture failed')
 		}
 
 		setSuccess('Payment captured successfully!')
@@ -263,7 +263,7 @@ const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
 				await stripe.confirmCardPayment(clientSecret)
 
 			if (error) {
-				throw new Error(error.message || 'Payment confirmation failed')
+				console.error(error.message || 'Payment confirmation failed')
 			}
 
 			if (paymentIntent.status === 'requires_capture') {
@@ -272,7 +272,7 @@ const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
 				setSuccess('Payment confirmed and captured successfully!')
 				setPaymentConfirmed(true)
 			} else {
-				throw new Error(`Payment failed with status: ${paymentIntent.status}`)
+				console.error(`Payment failed with status: ${paymentIntent.status}`)
 			}
 		} catch (error) {
 			console.error('Error in payment confirmation:', error)

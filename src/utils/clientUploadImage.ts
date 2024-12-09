@@ -7,7 +7,7 @@
 // 	imageType?: 'profile' | 'cover', // Optional parameter for business image type
 // ) {
 // 	if (!type || !id || !file) {
-// 		throw new Error('Type, ID, and file are required')
+// 		console.error('Type, ID, and file are required')
 // 	}
 
 // 	const formData = new FormData()
@@ -31,7 +31,7 @@
 // 		return response.data // You can return the response data or URL as needed
 // 	} catch (error) {
 // 		console.error('Error uploading image:', error)
-// 		throw new Error('Failed to upload image')
+// 		console.error('Failed to upload image')
 // 	}
 // }
 
@@ -40,7 +40,7 @@ import axios from 'axios'
 // Function to upload an image file to the external server
 export async function clientUploadImage(file: File): Promise<any> {
 	if (!file) {
-		throw new Error('File is required')
+		console.error('File is required')
 	}
 
 	const formData = new FormData()
@@ -51,7 +51,7 @@ export async function clientUploadImage(file: File): Promise<any> {
 	console.log('externalServerOrigin:', externalServerOrigin)
 
 	if (!externalServerOrigin) {
-		throw new Error(
+		console.error(
 			'External server origin is not defined in environment variables',
 		)
 	}
@@ -70,7 +70,7 @@ export async function clientUploadImage(file: File): Promise<any> {
 		if (!response.ok) {
 			const errorText = await response.text()
 			console.error('Error response from server:', errorText)
-			throw new Error(`Failed to upload image: ${response.statusText}`)
+			console.error(`Failed to upload image: ${response.statusText}`)
 		}
 
 		// Parse the response as JSON
@@ -81,7 +81,7 @@ export async function clientUploadImage(file: File): Promise<any> {
 		return data
 	} catch (error) {
 		console.error('Error uploading image to external server:', error)
-		throw new Error('Failed to upload image')
+		console.error('Failed to upload image')
 	}
 }
 
@@ -93,7 +93,7 @@ export async function clientSaveImage(
 	imageType?: 'profile' | 'cover', // Optional for business images
 ) {
 	if (!type || !id || !uploadedData) {
-		throw new Error('Type, ID, and imageUrl are required')
+		console.error('Type, ID, and imageUrl are required')
 	}
 
 	// Build the save request URL with query parameters for type and id
@@ -120,7 +120,7 @@ export async function clientSaveImage(
 		return saveResponse.data
 	} catch (error) {
 		console.error('Error saving image:', error)
-		throw new Error('Failed to save image')
+		console.error('Failed to save image')
 	}
 }
 

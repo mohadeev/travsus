@@ -17,6 +17,6 @@ export async function getBlogPosts() {
 		return posts
 	} catch (error) {
 		console.error('Error fetching blog posts:', error)
-		throw new Error('Failed to fetch blog posts')
+		console.error('Failed to fetch blog posts')
 	}
 }

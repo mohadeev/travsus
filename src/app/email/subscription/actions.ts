@@ -9,7 +9,7 @@ export async function updateSubscriptions(
 ) {
 	// Verify the token (implement your own token verification logic)
 	if (!verifyToken(userId, token)) {
-		throw new Error('Invalid token')
+		console.error('Invalid token')
 	}
 
 	try {
@@ -40,7 +40,7 @@ export async function updateSubscriptions(
 		if (!response.ok) {
 			const errorData = await response.json()
 			console.error('Error details:', errorData)
-			throw new Error(
+			console.error(
 				`Failed to update subscriptions: ${response.status} ${response.statusText}`,
 			)
 		}
@@ -52,7 +52,7 @@ export async function updateSubscriptions(
 	} catch (error) {
 		console.error('Error updating subscriptions:', error)
 		console.error('Error details:', error)
-		throw new Error('Failed to update subscriptions')
+		console.error('Failed to update subscriptions')
 	}
 }
 

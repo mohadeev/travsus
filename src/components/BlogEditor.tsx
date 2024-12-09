@@ -265,7 +265,7 @@ export default function BlogEditor({
 					router.refresh()
 				}
 			} else {
-				throw new Error(result.error)
+				console.error(result.error)
 			}
 		} catch (error) {
 			console.error('Error saving post:', error)

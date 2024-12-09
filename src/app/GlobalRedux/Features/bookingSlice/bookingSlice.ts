@@ -30,7 +30,7 @@ export const updateLineItemsAsync = createAsyncThunk(
 			//   body: JSON.stringify(body),
 			// })
 			// if (!response.ok) {
-			//   throw new Error('Failed to update line items')
+			//   console.error('Failed to update line items')
 			// }
 			// const data = await response.json()
 			// return data

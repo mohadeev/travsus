@@ -15,11 +15,11 @@ export async function checkBookingStatus({ bookingId, serviceId }: any) {
 		})
 
 		if (!booking) {
-			throw new Error('Booking not found')
+			console.error('Booking not found')
 		}
 
 		if (booking.tourId !== serviceId) {
-			throw new Error('Service ID does not match the booking')
+			console.error('Service ID does not match the booking')
 		}
 
 		const isPaymentAccepted = booking.bookingState === 'PAYMENT_ACCEPTED'

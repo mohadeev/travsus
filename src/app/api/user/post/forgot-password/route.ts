@@ -26,7 +26,7 @@ export async function POST(req: NextRequest) {
 		// Generate JWT token for password reset
 		const secretKey = process.env.ACCESS_TOKEN_SECRET
 		if (!secretKey) {
-			throw new Error('Secret key not set in environment variables')
+			console.error('Secret key not set in environment variables')
 		}
 
 		// Payload for JWT token

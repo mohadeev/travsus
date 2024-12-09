@@ -42,6 +42,6 @@ export async function generatePDF(pdfData: PDFData): Promise<Buffer> {
 		return pdfBuffer
 	} catch (error) {
 		console.error('Error generating PDF:', error)
-		throw new Error('Failed to generate PDF')
+		console.error('Failed to generate PDF')
 	}
 }

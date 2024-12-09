@@ -12,7 +12,7 @@ export const imageUploader = async (
 ): Promise<any> => {
 	// Ensure fileBuffer is a Buffer instance
 	if (!(fileBuffer instanceof Buffer)) {
-		throw new Error('Invalid file format. Expected a Buffer.')
+		console.error('Invalid file format. Expected a Buffer.')
 	}
 
 	const uploadOptions: cloudinary.UploadApiOptions = {

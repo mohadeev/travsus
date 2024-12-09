@@ -49,7 +49,7 @@ const sendEmail = async ({ to, subject, message, type, emailData }: any) => {
 		return response
 	} catch (error) {
 		console.error('Error sending email:', error)
-		throw new Error('Failed to send email')
+		console.error('Failed to send email')
 	}
 }
 

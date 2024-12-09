@@ -25,7 +25,7 @@ export default function DefaultLayout({
 
 			// Check if the request was successful
 			if (!response.ok) {
-				throw new Error(`Error: ${response.status}`)
+				console.error(`Error: ${response.status}`)
 			}
 
 			const data = await response.json()

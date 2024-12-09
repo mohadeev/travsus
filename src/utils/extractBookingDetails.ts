@@ -91,7 +91,7 @@ interface Obj {
 
 export const extractBookingDetails = async ({ booking }: Obj) => {
 	if (!booking) {
-		throw new Error('Booking data is missing')
+		console.error('Booking data is missing')
 	}
 
 	const {
