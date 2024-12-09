@@ -7,7 +7,7 @@ import generateGuestsObject from './generateGuestsObject'
 import predictAccommodation from './predictAccommodation'
 import taxLineItem from './taxLineItem'
 import { saveLastBookingUpdates } from '../api-utils/actions/booking/saveLastBookingUpdates'
-import { routeFunction } from './updateLineItemsLogic'
+import { updateLineItemsLogic } from './updateLineItemsLogic'
 
 export async function POST(request: NextRequest) {
 	const referer = request.headers.get('referer') || ''
@@ -146,7 +146,7 @@ export async function POST(request: NextRequest) {
 		selectedDate,
 	}
 	// console.log('accommodation', accommodation)
-	const newData = await routeFunction({ tour, body })
+	const newData = await updateLineItemsLogic({ tour, body })
 	console.log('newData: ', newData)
 	await saveLastBookingUpdates({ request, booking: newbooking })
 	return NextResponse.json({ ...newData, ...{ status: 200 } })
