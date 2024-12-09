@@ -1,7 +1,4 @@
-/**
- * @type {import('next').NextConfig}
- */
-
+/** @type {import('next').NextConfig} */
 const nextConfig = {
 	reactStrictMode: false,
 	experimental: {
@@ -10,95 +7,54 @@ const nextConfig = {
 			bodySizeLimit: '10mb',
 		},
 	},
-	// reactStrictMode: true,
-	// experimental: {
-	// 	appDir: true,
-	// },
-	// webpack: (config) => {
-	// 	config.externals = [...config.externals, 'cloudinary']
-	// 	return config
-	// },
 	images: {
 		remotePatterns: [
-			{
-				protocol: 'https',
-				hostname: 'images.pexels.com',
-				port: '',
-				pathname: '/**',
-			},
-
-			{
-				protocol: 'https',
-				hostname: 'media-cdn.tripadvisor.com',
-				port: '',
-				pathname: '/**',
-			},
-
-			{
-				protocol: 'https',
-				hostname: 'images.unsplash.com',
-				port: '',
-				pathname: '/**',
-			},
-			{
-				protocol: 'https',
-				hostname: 'a0.muscache.com',
-				port: '',
-				pathname: '/**',
-			},
-			{
-				protocol: 'https',
-				hostname: 'www.gstatic.com',
-				port: '',
-				pathname: '/**',
-			},
-			{
-				protocol: 'https',
-				hostname: 'res.cloudinary.com',
-				port: '',
-				pathname: '/**',
-			},
-			{
-				protocol: 'http',
-				hostname: 'res.cloudinary.com',
-				port: '',
-				pathname: '/**',
-			},
-			{
-				protocol: 'https',
-				hostname: 'www.travsus.com',
-				port: '',
-				pathname: '/**',
-			},
-			{
-				protocol: 'https',
-				hostname: 'media.licdn.com',
-				port: '',
-				pathname: '/**',
-			},
-			{
-				protocol: 'https',
-				hostname: 'dynamic-media-cdn.tripadvisor.com',
-				port: '',
-				pathname: '/**',
-			},
+			{ protocol: 'https', hostname: 'images.pexels.com' },
+			{ protocol: 'https', hostname: 'media-cdn.tripadvisor.com' },
+			{ protocol: 'https', hostname: 'images.unsplash.com' },
+			{ protocol: 'https', hostname: 'a0.muscache.com' },
+			{ protocol: 'https', hostname: 'www.gstatic.com' },
+			{ protocol: 'https', hostname: 'res.cloudinary.com' },
+			{ protocol: 'http', hostname: 'res.cloudinary.com' },
+			{ protocol: 'https', hostname: 'www.travsus.com' },
+			{ protocol: 'https', hostname: 'media.licdn.com' },
+			{ protocol: 'https', hostname: 'dynamic-media-cdn.tripadvisor.com' },
 		],
 	},
 	typescript: {
-		// !! WARN !!
-		// Dangerously allow production builds to successfully complete even if
-		// your project has type errors.
-		// !! WARN !!
 		ignoreBuildErrors: true,
 	},
 	eslint: {
-		// Warning: This allows production builds to successfully complete even if
-		// your project has ESLint errors.
 		ignoreDuringBuilds: true,
 	},
+	webpack: (config, { dev, isServer }) => {
+		if (!dev && !isServer) {
+			Object.assign(config.resolve.alias, {
+				'react/jsx-runtime.js': 'preact/compat/jsx-runtime',
+				react: 'preact/compat',
+				'react-dom/test-utils': 'preact/test-utils',
+				'react-dom': 'preact/compat',
+			})
+		}
+
+		// Prevent API route generation during build
+		if (process.env.NEXT_PUBLIC_SKIP_API_ROUTES === '1' && !isServer) {
+			config.resolve.fallback = {
+				...config.resolve.fallback,
+				fs: false,
+				net: false,
+				tls: false,
+				child_process: false,
+			}
+		}
+
+		return config
+	},
+	// Prevent automatic static optimization
+	unstable_runtimeJS: true,
 }
 
-// Check for the NEXT_IGNORE_BUILD_ERRORS environment variable
+// Ignore build errors if environment variable is set
 if (process.env.NEXT_IGNORE_BUILD_ERRORS === '1') {
 	console.log('Ignoring build errors')
 	nextConfig.typescript.ignoreBuildErrors = true

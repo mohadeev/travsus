@@ -1,141 +1,201 @@
-import React from 'react';
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Designer Platform</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
 
-interface OrderConfirmationEmailProps {
-  trackingNumber: string;
-  customerName: string;
-  shippingAddress: string;
-  orderNumber: string;
-  orderDate: string;
-}
+			body {
+				font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+					sans-serif;
+				background-color: #fff;
+			}
 
-export const NikeOrderConfirmationEmail: React.FC<OrderConfirmationEmailProps> = ({
-  trackingNumber,
-  customerName,
-  shippingAddress,
-  orderNumber,
-  orderDate,
-}) => {
-  return (
-    <html dir="ltr" lang="en">
-      <head>
-        <meta content="text/html; charset=UTF-8" httpEquiv="Content-Type" />
-        <meta name="x-apple-disable-message-reformatting" />
-        <style>
-          {`
-            @media only screen and (max-width: 600px) {
-              .container {
-                width: 100% !important;
-              }
-              .content {
-                padding: 20px !important;
-              }
-            }
-          `}
-        </style>
-      </head>
-      <body style={{
-        backgroundColor: '#ffffff',
-        fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif',
-        margin: 0,
-        padding: 0,
-      }}>
-        <table align="center" width="100%" border={0} cellPadding="0" cellSpacing="0" role="presentation" style={{maxWidth: '600px', margin: '10px auto', width: '600px', border: '1px solid #E5E5E5'}}>
-          <tbody>
-            <tr style={{width: '100%'}}>
-              <td>
-                {/* Tracking Number Section */}
-                <table align="center" width="100%" border={0} cellPadding="0" cellSpacing="0" role="presentation" style={{padding: '22px 40px', backgroundColor: '#F7F7F7'}}>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <table align="center" width="100%" border={0} cellPadding="0" cellSpacing="0" role="presentation">
-                          <tbody style={{width: '100%'}}>
-                            <tr style={{width: '100%'}}>
-                              <td>
-                                <p style={{fontSize: '14px', lineHeight: '2', margin: '0', fontWeight: 'bold'}}>Tracking Number</p>
-                                <p style={{fontSize: '14px', lineHeight: '1.4', margin: '12px 0 0 0', fontWeight: '500', color: '#6F6F6F'}}>{trackingNumber}</p>
-                              </td>
-                              <td align="right">
-                                <a href="#" style={{color: '#000', textDecorationLine: 'none', border: '1px solid #929292', fontSize: '16px', textDecoration: 'none', padding: '10px 0px', width: '220px', display: 'block', textAlign: 'center', fontWeight: '500'}}>
-                                  Track Package
-                                </a>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+			.navbar {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				padding: 1rem 2rem;
+				border-bottom: 1px solid #e5e5e5;
+			}
 
-                {/* Main Content */}
-                <table align="center" width="100%" border={0} cellPadding="0" cellSpacing="0" role="presentation" style={{padding: '40px 74px', textAlign: 'center'}}>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <img alt="Nike" height="22" src="https://react-email-demo-k6qpz0pxq-resend.vercel.app/static/nike-logo.png" style={{display: 'block', outline: 'none', border: 'none', textDecoration: 'none', margin: 'auto'}} width="66" />
-                        <h1 style={{fontSize: '32px', lineHeight: '1.3', fontWeight: '700', textAlign: 'center', letterSpacing: '-1px'}}>It's On Its Way.</h1>
-                        <p style={{fontSize: '14px', lineHeight: '2', margin: '0', color: '#747474', fontWeight: '500'}}>Your order's is on its way. Use the link above to track its progress.</p>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+			.nav-links {
+				display: flex;
+				gap: 2rem;
+			}
 
-                {/* Shipping Information */}
-                <table align="center" width="100%" border={0} cellPadding="0" cellSpacing="0" role="presentation" style={{paddingLeft: '40px', paddingRight: '40px', paddingTop: '22px', paddingBottom: '22px'}}>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <p style={{fontSize: '15px', lineHeight: '2', margin: '0', fontWeight: 'bold'}}>Shipping to: {customerName}</p>
-                        <p style={{fontSize: '14px', lineHeight: '2', margin: '0', color: '#747474', fontWeight: '500'}}>{shippingAddress}</p>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+			.nav-links a {
+				text-decoration: none;
+				color: #333;
+				font-size: 0.9rem;
+			}
 
-                {/* Order Information */}
-                <table align="center" width="100%" border={0} cellPadding="0" cellSpacing="0" role="presentation" style={{paddingLeft: '40px', paddingRight: '40px', paddingTop: '22px', paddingBottom: '22px'}}>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <table align="center" width="100%" border={0} cellPadding="0" cellSpacing="0" role="presentation" style={{display: 'inline-flex', marginBottom: '40px'}}>
-                          <tbody style={{width: '100%'}}>
-                            <tr style={{width: '100%'}}>
-                              <td style={{width: '170px'}}>
-                                <p style={{fontSize: '14px', lineHeight: '2', margin: '0', fontWeight: 'bold'}}>Order Number</p>
-                                <p style={{fontSize: '14px', lineHeight: '1.4', margin: '12px 0 0 0', fontWeight: '500', color: '#6F6F6F'}}>{orderNumber}</p>
-                              </td>
-                              <td>
-                                <p style={{fontSize: '14px', lineHeight: '2', margin: '0', fontWeight: 'bold'}}>Order Date</p>
-                                <p style={{fontSize: '14px', lineHeight: '1.4', margin: '12px 0 0 0', fontWeight: '500', color: '#6F6F6F'}}>{orderDate}</p>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                        <table align="center" width="100%" border={0} cellPadding="0" cellSpacing="0" role="presentation">
-                          <tbody style={{width: '100%'}}>
-                            <tr style={{width: '100%'}}>
-                              <td align="center">
-                                <a href="#" style={{color: '#000', textDecorationLine: 'none', border: '1px solid #929292', fontSize: '16px', textDecoration: 'none', padding: '10px 0px', width: '220px', display: 'block', textAlign: 'center', fontWeight: '500'}}>
-                                  Order Status
-                                </a>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+			.auth-buttons {
+				display: flex;
+				gap: 1rem;
+			}
 
-                {/* Footer content would go here */}
-                
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </body>
-    </html>
-  );
-};
+			.btn {
+				padding: 0.5rem 1rem;
+				border-radius: 8px;
+				font-size: 0.9rem;
+				cursor: pointer;
+			}
 
+			.btn-primary {
+				background-color: #0d0c22;
+				color: white;
+				border: none;
+			}
+
+			.btn-secondary {
+				background-color: transparent;
+				color: #0d0c22;
+				border: none;
+			}
+
+			.hero {
+				text-align: center;
+				padding: 4rem 1rem;
+				max-width: 800px;
+				margin: 0 auto;
+			}
+
+			.hero h1 {
+				font-family: 'Playfair Display', serif;
+				font-size: 3.5rem;
+				color: #0d0c22;
+				margin-bottom: 1rem;
+				line-height: 1.2;
+			}
+
+			.hero p {
+				color: #6e6d7a;
+				font-size: 1.1rem;
+				margin-bottom: 2rem;
+			}
+
+			.search-container {
+				position: relative;
+				max-width: 600px;
+				margin: 0 auto;
+			}
+
+			.search-bar {
+				width: 100%;
+				padding: 1rem;
+				padding-right: 120px;
+				border: 1px solid #e5e5e5;
+				border-radius: 8px;
+				font-size: 1rem;
+				background-color: #f8f7f4;
+			}
+
+			.search-filter {
+				position: absolute;
+				right: 60px;
+				top: 50%;
+				transform: translateY(-50%);
+				padding: 0.5rem;
+				border: none;
+				background: transparent;
+				color: #6e6d7a;
+				cursor: pointer;
+			}
+
+			.search-button {
+				position: absolute;
+				right: 8px;
+				top: 50%;
+				transform: translateY(-50%);
+				background-color: #ea4c89;
+				color: white;
+				border: none;
+				padding: 0.5rem;
+				border-radius: 6px;
+				cursor: pointer;
+			}
+
+			.trending {
+				display: flex;
+				gap: 1rem;
+				justify-content: center;
+				margin-top: 1.5rem;
+			}
+
+			.trending span {
+				color: #6e6d7a;
+				font-size: 0.9rem;
+			}
+
+			.trending a {
+				color: #0d0c22;
+				text-decoration: none;
+				font-size: 0.9rem;
+				padding: 0.5rem 1rem;
+				background-color: #f8f7f4;
+				border-radius: 8px;
+			}
+		</style>
+	</head>
+	<body>
+		<nav class="navbar">
+			<div class="nav-links">
+				<a href="#">Explore</a>
+				<a href="#">Hire a Designer</a>
+				<a href="#">Find Jobs</a>
+				<a href="#">Blog</a>
+			</div>
+			<div class="auth-buttons">
+				<button class="btn btn-secondary">Sign up</button>
+				<button class="btn btn-primary">Log in</button>
+			</div>
+		</nav>
+
+		<section class="hero">
+			<h1>Discover the world's<br />top designers</h1>
+			<p>
+				Explore work from the most talented and accomplished designers<br />ready
+				to take on your next project
+			</p>
+
+			<div class="search-container">
+				<input
+					type="text"
+					class="search-bar"
+					placeholder="What are you looking for?"
+				/>
+				<button class="search-filter">Shots ▼</button>
+				<button class="search-button">
+					<svg
+						width="16"
+						height="16"
+						viewBox="0 0 16 16"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path
+							d="M15.8898 14.6524L12.0963 10.8588C13.0246 9.71855 13.5714 8.27331 13.5714 6.78571C13.5714 3.04457 10.5268 0 6.78571 0C3.04457 0 0 3.04457 0 6.78571C0 10.5268 3.04457 13.5714 6.78571 13.5714C8.27331 13.5714 9.71855 13.0246 10.8588 12.0963L14.6524 15.8898C14.8893 16.1267 15.2755 16.1267 15.5124 15.8898L15.8898 15.5124C16.1267 15.2755 16.1267 14.8893 15.8898 14.6524ZM6.78571 12C3.91331 12 1.57143 9.65812 1.57143 6.78571C1.57143 3.91331 3.91331 1.57143 6.78571 1.57143C9.65812 1.57143 12 3.91331 12 6.78571C12 9.65812 9.65812 12 6.78571 12Z"
+							fill="white"
+						/>
+					</svg>
+				</button>
+			</div>
+
+			<div class="trending">
+				<span>Trending searches:</span>
+				<a href="#">landing page</a>
+				<a href="#">e-commerce</a>
+				<a href="#">mobile app</a>
+				<a href="#">logo design</a>
+				<a href="#">dashboard</a>
+			</div>
+		</section>
+	</body>
+</html>
