@@ -96,6 +96,32 @@ const nextConfig = {
 		// your project has ESLint errors.
 		ignoreDuringBuilds: true,
 	},
+	webpack: (config, { isServer }) => {
+		if (!isServer) {
+			config.resolve.fallback = {
+				...config.resolve.fallback,
+				fs: false,
+			}
+		}
+
+		// Ignore specific module errors
+		config.module.rules.push({
+			test: /\.(js|jsx|ts|tsx)$/,
+			use: [
+				{
+					loader: 'babel-loader',
+					options: {
+						plugins: [
+							['@babel/plugin-transform-react-jsx', { runtime: 'automatic' }],
+						],
+					},
+				},
+			],
+			exclude: /node_modules/,
+		})
+
+		return config
+	},
 }
 
 module.exports = nextConfig
