@@ -2,7 +2,7 @@ import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit'
 import updateNestedStateWithMap from '../../updateNestedStateWithMap'
 import { updateLineItemsLogic } from '../../../api/updateLineItems/updateLineItemsLogic'
 import { RootState } from '../../store'
-
+//
 const initialState: any = {
 	booking: {
 		serviceCharge: 10,
