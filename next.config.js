@@ -109,6 +109,31 @@ const nextConfig = {
 	eslint: {
 		ignoreDuringBuilds: true,
 	},
+	webpack: (config, { isServer }) => {
+		// This will ignore specific module errors
+		config.ignoreWarnings = [
+			{ module: /node_modules\/node-fetch\/lib\/index\.js/ },
+			{ module: /node_modules\/jsonwebtoken/ },
+			{ module: /node_modules\/jose\/dist\/node\/cjs/ },
+		]
+
+		// Ignore specific errors
+		config.module.rules.push({
+			test: /\.(js|jsx|ts|tsx)$/,
+			use: [
+				{
+					loader: 'babel-loader',
+					options: {
+						presets: ['next/babel'],
+						plugins: ['@babel/plugin-transform-react-jsx'],
+					},
+				},
+			],
+			exclude: /node_modules/,
+		})
+
+		return config
+	},
 }
 
 module.exports = nextConfig
