@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server'
 import prisma from '@/lib/prisma'
 import bcrypt from 'bcryptjs'
 import { v4 as uuidv4 } from 'uuid'
-import { sendVerificationEmail } from '@/utils/email'
+// import { sendVerificationEmail } from '@/utils/email'
 
 function generateVerificationCode(): string {
 	return Math.floor(100000 + Math.random() * 900000).toString()
@@ -53,12 +53,12 @@ export async function POST(req: Request) {
 		})
 
 		// Send verification email
-		await sendVerificationEmail(
-			user.email,
-			verificationLinkToken,
-			verificationCodeToken,
-			verificationCode,
-		)
+		// await sendVerificationEmail(
+		// 	user.email,
+		// 	verificationLinkToken,
+		// 	verificationCodeToken,
+		// 	verificationCode,
+		// )
 
 		return NextResponse.json({
 			success: true,
