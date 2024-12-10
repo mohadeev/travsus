@@ -34,7 +34,7 @@ export default function AvatarDropdown({ className = '' }: Props) {
 					<Popover.Button
 						className={`flex h-10 w-10 items-center justify-center self-center rounded-full text-slate-700 hover:bg-slate-100 focus:outline-none dark:text-slate-300 dark:hover:bg-slate-800 sm:h-12 sm:w-12`}
 					>
-						{isUserLoggedIn ? (
+						{profileImageUrl ? (
 							<Avatar
 								sizeClass="w-8 h-8 sm:w-9 sm:h-9"
 								imgUrl={profileImageUrl}
@@ -71,7 +71,10 @@ export default function AvatarDropdown({ className = '' }: Props) {
 									{isUserLoggedIn ? (
 										<>
 											<div className="flex items-center space-x-3">
-												<Avatar sizeClass="w-12 h-12" />
+												<Avatar
+													imgUrl={profileImageUrl}
+													sizeClass="w-12 h-12"
+												/>
 												<div className="flex-grow">
 													<h4 className="font-semibold">
 														{user?.accountData?.firstname}
@@ -112,7 +115,7 @@ export default function AvatarDropdown({ className = '' }: Props) {
 													<p className="text-sm font-medium">{'My Account'}</p>
 												</div>
 											</Link>
-											<Link
+											{/* <Link
 												href={'/dashboard'}
 												className="-m-3 flex items-center rounded-lg p-2 transition duration-150 ease-in-out hover:bg-neutral-100 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50 dark:hover:bg-neutral-700"
 												onClick={() => close()}
@@ -137,7 +140,7 @@ export default function AvatarDropdown({ className = '' }: Props) {
 												<div className="ml-4">
 													<p className="text-sm font-medium">{'My Business'}</p>
 												</div>
-											</Link>
+											</Link> */}
 											<Link
 												href={'/author'}
 												className="-m-3 flex items-center rounded-lg p-2 transition duration-150 ease-in-out hover:bg-neutral-100 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50 dark:hover:bg-neutral-700"
