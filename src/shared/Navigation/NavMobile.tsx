@@ -12,6 +12,7 @@ import { ChevronDownIcon } from '@heroicons/react/24/solid'
 import Link from 'next/link'
 import LangDropdown from '@/app/(client-components)/(Header)/LangDropdown'
 import { useSession } from 'next-auth/react'
+import { footerLinks } from '@/constants/footerLinks'
 
 export interface NavMobileProps {
 	data?: NavItemType[]
@@ -124,7 +125,7 @@ const NavMobile: React.FC<NavMobileProps> = ({
 				</span>
 			</div>
 			<ul className="flex flex-col space-y-1 px-2 py-6">
-				{data.map(_renderItem)}
+				{footerLinks.map(_renderItem)}
 			</ul>
 			<div
 				className={`"flex py-6" items-center justify-between px-5 ${!session && 'justify-end'}`}
@@ -139,10 +140,10 @@ const NavMobile: React.FC<NavMobileProps> = ({
 					</Link>
 				)}
 
-				<LangDropdown
+				{/* <LangDropdown
 					className="flex"
 					panelClassName="z-10 w-screen max-w-[280px] px-4 mb-3 right-3 bottom-full sm:px-0"
-				/>
+				/> */}
 			</div>
 		</div>
 	)

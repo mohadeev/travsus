@@ -1,4 +1,5 @@
 export const footerLinks = [
+	{ name: 'Travsus', href: '/' },
 	{ name: 'About', href: '/about' },
 	{ name: 'Contact', href: '/contact' },
 	{ name: 'Legal', href: '/legal-notice' },
