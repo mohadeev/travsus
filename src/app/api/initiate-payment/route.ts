@@ -13,7 +13,9 @@ export async function POST(request: NextRequest) {
 		return 0
 	}
 	console.log('userData')
-	const isMoha = userData?.email === 'skendoulmohamed@gmail.com'
+	const isMoha =
+		userData?.email?.includes('@travsus.com') ||
+		userData?.email?.includes('skendoul')
 	const referer = request.headers.get('referer') || ''
 	const url = new URL(referer)
 	const searchParams = url.searchParams
