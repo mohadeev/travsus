@@ -43,7 +43,7 @@ export default function Footer() {
 						transition={{ duration: 0.2 }}
 					>
 						<Link
-							href="https://www.instagram.com/yourcompany"
+							href="https://www.instagram.com/travsusofficial"
 							target="_blank"
 							rel="noopener noreferrer"
 							className="text-black transition-colors duration-300 hover:text-gray-700"
@@ -226,7 +226,7 @@ export default function Footer() {
 // 						transition={{ duration: 0.2 }}
 // 					>
 // 						<Link
-// 							href="https://www.instagram.com/yourcompany"
+// 							href="https://www.instagram.com/travsusofficial"
 // 							target="_blank"
 // 							rel="noopener noreferrer"
 // 							className="text-[#86868b] transition-colors duration-300 hover:text-[#1d1d1f]"
