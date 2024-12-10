@@ -9,8 +9,7 @@ interface ConditionalComponentProps {
 export default function ConditionalComponent({
 	component: Component,
 }: ConditionalComponentProps) {
-	const isVisible = true
-	//useComponentVisibility()
+	const isVisible = useComponentVisibility()
 
 	if (!isVisible) {
 		return null
