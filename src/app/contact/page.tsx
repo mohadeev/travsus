@@ -1,18 +1,17 @@
-import React, { FC } from 'react'
+'use client'
+
+import React, { useState } from 'react'
 import SectionSubscribe2 from '@/components/SectionSubscribe2'
 import SocialsList from '@/shared/SocialsList'
 import Label from '@/components/Label'
 import Input from '@/shared/Input'
 import Textarea from '@/shared/Textarea'
 import ButtonPrimary from '@/shared/ButtonPrimary'
+import { sendEmail } from '../actions/sendEmail'
 
 export interface PageContactProps {}
 
 const info = [
-	// {
-	// 	title: '🗺 ADDRESS',
-	// 	desc: 'Photo booth tattooed prism, portland taiyaki hoodie neutra typewriter',
-	// },
 	{
 		title: '💌 EMAIL',
 		desc: 'contact@travsus.com',
@@ -23,7 +22,24 @@ const info = [
 	},
 ]
 
-const PageContact: FC<PageContactProps> = ({}) => {
+const PageContact: React.FC<PageContactProps> = () => {
+	const [isLoading, setIsLoading] = useState(false)
+	const [formStatus, setFormStatus] = useState<'idle' | 'success' | 'error'>(
+		'idle',
+	)
+
+	const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+		event.preventDefault()
+		setIsLoading(true)
+		setFormStatus('idle')
+
+		const formData = new FormData(event.currentTarget)
+		const result = await sendEmail(formData)
+
+		setIsLoading(false)
+		setFormStatus(result.success ? 'success' : 'error')
+	}
+
 	return (
 		<div className={`nc-PageContact overflow-hidden`}>
 			<div className="mb-24 lg:mb-32">
@@ -51,33 +67,44 @@ const PageContact: FC<PageContactProps> = ({}) => {
 							</div>
 						</div>
 						<div>
-							<form className="grid grid-cols-1 gap-6" action="#" method="post">
+							<form className="grid grid-cols-1 gap-6" onSubmit={handleSubmit}>
 								<label className="block">
 									<Label>Full name</Label>
-
 									<Input
 										placeholder="Example Doe"
 										type="text"
 										className="mt-1"
+										name="name"
+										required
 									/>
 								</label>
 								<label className="block">
 									<Label>Email address</Label>
-
 									<Input
 										type="email"
 										placeholder="example@example.com"
 										className="mt-1"
+										name="email"
+										required
 									/>
 								</label>
 								<label className="block">
 									<Label>Message</Label>
-
-									<Textarea className="mt-1" rows={6} />
+									<Textarea className="mt-1" rows={6} name="message" required />
 								</label>
 								<div>
-									<ButtonPrimary type="submit">Send Message</ButtonPrimary>
+									<ButtonPrimary type="submit" disabled={isLoading}>
+										{isLoading ? 'Sending...' : 'Send Message'}
+									</ButtonPrimary>
 								</div>
+								{formStatus === 'success' && (
+									<p className="text-green-600">Message sent successfully!</p>
+								)}
+								{formStatus === 'error' && (
+									<p className="text-red-600">
+										Failed to send message. Please try again.
+									</p>
+								)}
 							</form>
 						</div>
 					</div>
