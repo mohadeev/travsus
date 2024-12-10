@@ -1,7 +1,7 @@
 import { generatePDF } from '@/lib/generatePDF'
 import sendEmail from '@/utils/email/sendMail'
 
-export async function bookingConfirmationEmail(bookingData: any) {
+export const bookingConfirmationEmail = async (bookingData: any) => {
 	console.log(JSON.stringify(bookingData))
 	try {
 		const invoicePdfBuffer = await generatePDF({

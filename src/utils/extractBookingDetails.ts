@@ -117,9 +117,8 @@ export const extractBookingDetails = async ({ booking }: Obj) => {
 		bookingId: id,
 		bookingState: bookingState || 'Unknown',
 		dates: {
-			startDate:
-				new Date(selectedDate?.startDate).toLocaleDateString() || 'N/A',
-			endDate: new Date(selectedDate?.endDate).toLocaleDateString() || 'N/A',
+			startDate: new Date(selectedDate?.startDate) || 'N/A',
+			endDate: new Date(selectedDate?.endDate) || 'N/A',
 		},
 		orderDate: new Date(booking?.createdAt).toLocaleDateString(),
 		customer: {
