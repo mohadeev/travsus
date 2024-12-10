@@ -7,6 +7,8 @@
 	align-items: center;
 	justify-content: center;
 	padding: 0;
+	max-width: 1263.2px;
+	margin: 0 auto;
 }
 
 .hero {
@@ -68,15 +70,15 @@
 	color: #000000;
 	margin-bottom: 1rem;
 	line-height: 1.2;
-	font-weight: 700;
+	font-weight: 800;
 }
 
 .heroDescription {
-	font-size: 1.125rem;
+	font-size: 1.025rem;
 	color: #333333;
 	margin-bottom: 2rem;
 	line-height: 1.6;
-	font-weight: 300;
+	font-weight: 400;
 }
 
 .ctaButton {
