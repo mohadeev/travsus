@@ -52,42 +52,34 @@ export default function Home() {
 					</div>
 				</div>
 				<div className={styles.imageGrid}>
-					<div className={styles.imageItem}>
-						<Image
-							src="https://images.pexels.com/photos/3155666/pexels-photo-3155666.jpeg?auto=compress&cs=tinysrgb&w=800"
-							alt="Airplane flying over clouds"
-							layout="fill"
-							objectFit="cover"
-							className={styles.sliderImage}
-						/>
-					</div>
-					<div className={styles.imageItem}>
-						<Image
-							src="https://images.pexels.com/photos/1271619/pexels-photo-1271619.jpeg?auto=compress&cs=tinysrgb&w=800"
-							alt="Person with luggage in airport"
-							layout="fill"
-							objectFit="cover"
-							className={styles.sliderImage}
-						/>
-					</div>
-					<div className={styles.imageItem}>
-						<Image
-							src="https://images.pexels.com/photos/2325446/pexels-photo-2325446.jpeg?auto=compress&cs=tinysrgb&w=800"
-							alt="Scenic mountain landscape"
-							layout="fill"
-							objectFit="cover"
-							className={styles.sliderImage}
-						/>
-					</div>
-					<div className={styles.imageItem}>
-						<Image
-							src="https://images.pexels.com/photos/1430677/pexels-photo-1430677.jpeg?auto=compress&cs=tinysrgb&w=800"
-							alt="Beach resort"
-							layout="fill"
-							objectFit="cover"
-							className={styles.sliderImage}
-						/>
-					</div>
+					{[
+						{
+							src: 'https://images.pexels.com/photos/3155666/pexels-photo-3155666.jpeg?auto=compress&cs=tinysrgb&w=800',
+							alt: 'Airplane flying over clouds',
+						},
+						{
+							src: 'https://images.pexels.com/photos/1271619/pexels-photo-1271619.jpeg?auto=compress&cs=tinysrgb&w=800',
+							alt: 'Person with luggage in airport',
+						},
+						{
+							src: 'https://images.pexels.com/photos/2325446/pexels-photo-2325446.jpeg?auto=compress&cs=tinysrgb&w=800',
+							alt: 'Scenic mountain landscape',
+						},
+						{
+							src: 'https://images.pexels.com/photos/1430677/pexels-photo-1430677.jpeg?auto=compress&cs=tinysrgb&w=800',
+							alt: 'Beach resort',
+						},
+					].map((image, index) => (
+						<div key={index} className={styles.imageItem}>
+							<Image
+								src={image.src}
+								alt={image.alt}
+								layout="fill"
+								objectFit="cover"
+								className={styles.sliderImage}
+							/>
+						</div>
+					))}
 				</div>
 			</div>
 		</div>

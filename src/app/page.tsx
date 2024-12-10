@@ -16,6 +16,7 @@ import VarticalExperiencesCard from '@/components/cards/VarticalExperiencesCard'
 import { Metadata } from 'next'
 import { JsonLd } from 'react-schemaorg'
 import { getAppPaths } from '@/utils/getAppPaths'
+import Home from './test/page'
 
 // Detailed metadata only for homepage
 export const metadata: Metadata = {
@@ -87,7 +88,8 @@ async function PageHome3() {
 				{/* <SectionGridFilterCard className="pb-24 lg:pb-28" /> */}
 				{/* SECTION HERO */}
 				<div className="container mb-24 px-1 sm:px-4">
-					<SectionHero3 className="" />
+					<Home />
+					{/* <SectionHero3 className="" /> */}
 				</div>
 				<div className="container relative mb-24 space-y-24">
 					{/* SECTION 1 */}
