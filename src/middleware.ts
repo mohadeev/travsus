@@ -7,9 +7,9 @@ export async function middleware(request: NextRequest) {
 
 	const country = request.geo?.country || 'US'
 
-	if (country === 'ES') {
-		return new NextResponse(null, { status: 403 })
-	}
+	// if (country === 'ES') {
+	// 	return new NextResponse(null, { status: 403 })
+	// }
 
 	try {
 		let ip = request.headers.get('x-forwarded-for') || '127.0.0.1'

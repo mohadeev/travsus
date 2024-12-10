@@ -4,12 +4,16 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>FLYGO - Modern Travel Agency</title>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;600;700&display=swap"
+			rel="stylesheet"
+		/>
 		<style>
 			* {
 				margin: 0;
 				padding: 0;
 				box-sizing: border-box;
-				font-family: 'Arial', sans-serif;
+				font-family: 'Inter Tight', sans-serif;
 			}
 
 			body {
@@ -21,6 +25,8 @@
 				background-color: #ffffff;
 				padding: 1rem 2rem;
 				box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+				position: relative;
+				z-index: 10;
 			}
 
 			.navbar-content {
@@ -33,7 +39,7 @@
 
 			.logo {
 				font-size: 1.5rem;
-				font-weight: bold;
+				font-weight: 700;
 				color: #000000;
 			}
 
@@ -62,6 +68,8 @@
 				flex-direction: row;
 				border-radius: 30px;
 				overflow: hidden;
+				position: relative;
+				z-index: 1;
 			}
 
 			.hero-content {
@@ -73,17 +81,19 @@
 			}
 
 			.hero-title {
-				font-size: 3rem;
+				font-size: 3.5rem;
 				color: #000000;
 				margin-bottom: 1rem;
 				line-height: 1.2;
+				font-weight: 700;
 			}
 
 			.hero-description {
-				font-size: 1rem;
+				font-size: 1.1rem;
 				color: #333333;
 				margin-bottom: 2rem;
 				line-height: 1.6;
+				font-weight: 300;
 			}
 
 			.cta-button {
@@ -92,14 +102,17 @@
 				color: #ffffff;
 				padding: 0.75rem 1.5rem;
 				text-decoration: none;
-				font-weight: bold;
-				transition: background-color 0.3s ease;
+				font-weight: 600;
+				transition:
+					background-color 0.3s ease,
+					transform 0.3s ease;
 				align-self: flex-start;
 				border-radius: 30px;
 			}
 
 			.cta-button:hover {
 				background-color: #333333;
+				transform: translateY(-2px);
 			}
 
 			.stats {
@@ -113,11 +126,16 @@
 				background-color: #f8f8f8;
 				padding: 1rem;
 				border-radius: 20px;
+				transition: transform 0.3s ease;
+			}
+
+			.stat-item:hover {
+				transform: translateY(-5px);
 			}
 
 			.stat-number {
 				font-size: 2rem;
-				font-weight: bold;
+				font-weight: 700;
 				color: #000000;
 			}
 
@@ -125,6 +143,7 @@
 				font-size: 0.9rem;
 				color: #333333;
 				margin-top: 0.5rem;
+				font-weight: 400;
 			}
 
 			.image-grid {
@@ -141,6 +160,12 @@
 				overflow: hidden;
 				aspect-ratio: 1 / 1;
 				border-radius: 20px;
+				box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+				transition: transform 0.3s ease;
+			}
+
+			.image-item:hover {
+				transform: scale(1.05);
 			}
 
 			.slider-image {
@@ -148,10 +173,6 @@
 				height: 100%;
 				object-fit: cover;
 				transition: transform 0.3s ease;
-			}
-
-			.image-item:hover .slider-image {
-				transform: scale(1.05);
 			}
 
 			@media (max-width: 1024px) {
