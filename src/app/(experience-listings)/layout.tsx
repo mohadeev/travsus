@@ -31,13 +31,13 @@ const Layout = ({ children }: { children: ReactNode }) => {
 				{/* SECTION 1 */}
 				<div className="relative py-16">
 					<BackgroundSection />
-					<SectionSliderNewCategories
+					{/* <SectionSliderNewCategories
 						heading="Explore by types of stays"
 						subHeading="Explore houses based on 10 types of stays"
 						categoryCardType="card5"
 						itemPerRow={5}
 						sliderStyle="style2"
-					/>
+					/> */}
 				</div>
 
 				{/* SECTION */}

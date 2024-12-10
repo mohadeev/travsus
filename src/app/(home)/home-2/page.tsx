@@ -179,12 +179,12 @@ function PageHome2() {
 					<SectionGridAuthorBox boxCard="box2" />
 				</div>
 
-				<SectionSliderNewCategories
+				{/* <SectionSliderNewCategories
 					heading="Explore by types of stays"
 					subHeading="Explore houses based on 10 types of stays"
 					categoryCardType="card5"
 					itemPerRow={5}
-				/>
+				/> */}
 
 				<SectionSubscribe2 />
 			</div>
