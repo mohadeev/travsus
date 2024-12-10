@@ -17,53 +17,38 @@
 			}
 
 			body {
-				background-color: #ffffff;
+				background-color: #f0f2f5;
 				color: #000000;
-			}
-
-			.navbar {
-				background-color: #ffffff;
-				padding: 1rem 2rem;
-				box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 				position: relative;
-				z-index: 10;
-			}
-
-			.navbar-content {
+				overflow-x: hidden;
+				min-height: 100vh;
 				display: flex;
-				justify-content: space-between;
 				align-items: center;
-				max-width: 1200px;
-				margin: 0 auto;
+				justify-content: center;
 			}
 
-			.logo {
-				font-size: 1.5rem;
-				font-weight: 700;
-				color: #000000;
-			}
-
-			.nav-links {
-				display: flex;
-				gap: 2rem;
-			}
-
-			.nav-links a {
-				text-decoration: none;
-				color: #000000;
-				font-weight: 500;
-				transition: opacity 0.3s ease;
-			}
-
-			.nav-links a:hover {
-				opacity: 0.7;
+			@keyframes rotateGradient {
+				0% {
+					transform: rotate(0deg);
+				}
+				100% {
+					transform: rotate(360deg);
+				}
 			}
 
 			.hero {
 				max-width: 1200px;
+				width: 90%;
 				margin: 2rem auto;
-				background-color: #ffffff;
-				box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+				background: conic-gradient(
+					from 0deg,
+					rgba(255, 100, 100, 0.2),
+					rgba(100, 100, 255, 0.2),
+					rgba(100, 255, 100, 0.2),
+					rgba(255, 255, 100, 0.2),
+					rgba(255, 100, 100, 0.2)
+				);
+				backdrop-filter: blur(10px);
 				display: flex;
 				flex-direction: row;
 				border-radius: 30px;
@@ -72,12 +57,38 @@
 				z-index: 1;
 			}
 
+			.hero::before {
+				content: '';
+				position: absolute;
+				top: -50%;
+				left: -50%;
+				right: -50%;
+				bottom: -50%;
+				background: inherit;
+				z-index: -1;
+				animation: rotateGradient 20s linear infinite;
+			}
+
+			.hero::after {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background: rgba(255, 255, 255, 0.5);
+				backdrop-filter: blur(10px);
+				z-index: -1;
+			}
+
 			.hero-content {
 				flex: 1;
 				padding: 3rem;
 				display: flex;
 				flex-direction: column;
 				justify-content: center;
+				position: relative;
+				z-index: 2;
 			}
 
 			.hero-title {
@@ -98,20 +109,19 @@
 
 			.cta-button {
 				display: inline-block;
-				background-color: #000000;
+				background-color: rgba(0, 0, 0, 0.8);
 				color: #ffffff;
 				padding: 0.75rem 1.5rem;
 				text-decoration: none;
 				font-weight: 600;
-				transition:
-					background-color 0.3s ease,
-					transform 0.3s ease;
+				transition: all 0.3s ease;
 				align-self: flex-start;
 				border-radius: 30px;
+				backdrop-filter: blur(5px);
 			}
 
 			.cta-button:hover {
-				background-color: #333333;
+				background-color: rgba(0, 0, 0, 1);
 				transform: translateY(-2px);
 			}
 
@@ -123,10 +133,11 @@
 
 			.stat-item {
 				text-align: left;
-				background-color: #f8f8f8;
+				background-color: rgba(255, 255, 255, 0.6);
+				backdrop-filter: blur(5px);
 				padding: 1rem;
 				border-radius: 20px;
-				transition: transform 0.3s ease;
+				transition: all 0.3s ease;
 			}
 
 			.stat-item:hover {
@@ -153,6 +164,8 @@
 				grid-template-rows: repeat(2, 1fr);
 				gap: 1rem;
 				padding: 1rem;
+				position: relative;
+				z-index: 2;
 			}
 
 			.image-item {
@@ -160,8 +173,7 @@
 				overflow: hidden;
 				aspect-ratio: 1 / 1;
 				border-radius: 20px;
-				box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-				transition: transform 0.3s ease;
+				transition: all 0.3s ease;
 			}
 
 			.image-item:hover {
@@ -172,7 +184,6 @@
 				width: 100%;
 				height: 100%;
 				object-fit: cover;
-				transition: transform 0.3s ease;
 			}
 
 			@media (max-width: 1024px) {
@@ -186,15 +197,6 @@
 			}
 
 			@media (max-width: 768px) {
-				.navbar-content {
-					flex-direction: column;
-					align-items: flex-start;
-				}
-
-				.nav-links {
-					margin-top: 1rem;
-				}
-
 				.hero-content {
 					padding: 2rem;
 				}
@@ -215,39 +217,29 @@
 		</style>
 	</head>
 	<body>
-		<nav class="navbar">
-			<div class="navbar-content">
-				<div class="logo">FLYGO</div>
-				<div class="nav-links">
-					<a href="#">Home</a>
-					<a href="#">Destinations</a>
-					<a href="#">About Us</a>
-					<a href="#">Contact</a>
-				</div>
-			</div>
-		</nav>
-
 		<div class="hero">
 			<div class="hero-content">
-				<h1 class="hero-title">TRAVEL AROUND THE WORLD</h1>
+				<h1 class="hero-title">Your Journey, You Deserve the Best</h1>
 				<p class="hero-description">
-					We're working to accelerate change within the tourism industry by
-					bringing together leading experts. This means we can empower people to
-					make more informed travel decisions.
+					Experience the journey of a lifetime with our expert travel planning.
+					We curate unforgettable adventures tailored just for you, ensuring
+					every moment is filled with luxury, excitement, and unparalleled
+					comfort. Book with us and unlock exclusive perks, insider access, and
+					stress-free travel that will exceed your wildest dreams.
 				</p>
 				<a href="#" class="cta-button">Read more</a>
 				<div class="stats">
 					<div class="stat-item">
-						<div class="stat-number">76%</div>
-						<div class="stat-label">Satisfaction Rate</div>
+						<div class="stat-number">Best</div>
+						<div class="stat-label">Prices Provided</div>
 					</div>
 					<div class="stat-item">
-						<div class="stat-number">8/10</div>
-						<div class="stat-label">Customer Rating</div>
+						<div class="stat-number">Pro</div>
+						<div class="stat-label">No Hidden Fees</div>
 					</div>
 					<div class="stat-item">
-						<div class="stat-number">83.5</div>
-						<div class="stat-label">Success Score</div>
+						<div class="stat-number">5-Star</div>
+						<div class="stat-label">Service Quality</div>
 					</div>
 				</div>
 			</div>
@@ -288,15 +280,8 @@
 			let currentIndex = 0
 
 			function changeImage() {
-				images[currentIndex].style.opacity = '0.7'
 				currentIndex = (currentIndex + 1) % images.length
-				images[currentIndex].style.opacity = '1'
 			}
-
-			// Set initial opacity
-			images.forEach((img, index) => {
-				img.style.opacity = index === 0 ? '1' : '0.7'
-			})
 
 			// Change image every 5 seconds
 			setInterval(changeImage, 5000)
