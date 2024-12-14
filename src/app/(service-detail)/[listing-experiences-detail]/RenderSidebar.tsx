@@ -72,19 +72,9 @@ const RenderSidebar: FC<RenderSidebarProps> = ({}) => {
 
 	const handleGuestsChange = async (data: any) => {
 		const newGuests = data?.guests
-		console.log('newGuests:', newGuests)
 		dispatch(
 			localUpdateLineItemsLogicAsync({ value: { guests: newGuests }, tour }),
 		)
-		// await dispatch(setGustes(newGuests))
-		// await dispatch(
-		// 	updateLineItemsAsync({
-		// 		guests: newGuests,
-		// 		booking: {
-		// 			...booking,
-		// 		},
-		// 	}),
-		// )
 	}
 	const handleAccomodationChange = async (data: any) => {
 		const newAccommodation = data

@@ -22,7 +22,6 @@ export async function POST(request: NextRequest) {
 			{ status: bookingRole.status },
 		)
 	}
-	console.log('bookingRole:', allowed)
 	if (!serviceId || !bookingId) {
 		console.error('POST /api/process-payment - Missing required fields')
 		return NextResponse.json(
@@ -95,7 +94,9 @@ export async function POST(request: NextRequest) {
 		const newTotalAmount = totalAmount(bookingInitiated?.lineItems)
 		console.log('newTotalAmount: ', newTotalAmount)
 		const amountInCents = Math.round(newTotalAmount * 100) // 362879
-		const isMoha = userData?.email?.includes('@travsus.com') || userData?.email?.includes('skendoul')
+		const isMoha =
+			userData?.email?.includes('@travsus.com') ||
+			userData?.email?.includes('skendoul')
 		const paymentIntent = await stripe.paymentIntents.create({
 			amount: isMoha ? 55 : amountInCents,
 			currency,

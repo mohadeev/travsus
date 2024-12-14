@@ -26,7 +26,6 @@ const StayDatesRangeInput: FC<any> = ({
 		new Date(moment().add(3, 'days').format('L')),
 	)
 	//
-	console.log('endDate: ', endDate)
 	const onChangeDate = (dates: [Date | null, Date | null]) => {
 		const [start, end] = dates
 		let newEnd = null

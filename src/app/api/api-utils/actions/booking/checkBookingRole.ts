@@ -12,9 +12,28 @@ export async function checkBookingRole(request: NextRequest) {
 		const searchParams = url.searchParams
 		const serviceId: string = searchParams.get('serviceId') || ''
 		const bookingId: string = searchParams.get('bookingId') || ''
-		if (!currentUserId || !bookingId) {
+
+		if (!currentUserId) {
 			return {
-				error: 'Missing required parameters',
+				error: 'User not authenticated',
+				allowed: false,
+				status: 401,
+			}
+		}
+
+		if (!bookingId) {
+			return {
+				error: 'Missing bookingId parameter',
+				allowed: false,
+				status: 400,
+			}
+		}
+
+		// Validate bookingId format (assuming it's a MongoDB ObjectId)
+		const objectIdRegex = /^[0-9a-fA-F]{24}$/
+		if (!objectIdRegex.test(bookingId)) {
+			return {
+				error: 'Invalid bookingId format',
 				allowed: false,
 				status: 400,
 			}
@@ -54,6 +73,9 @@ export async function checkBookingRole(request: NextRequest) {
 		}
 	} catch (error) {
 		console.error('Error checking booking role:', error)
+		if (error instanceof Error) {
+			return { error: error.message, allowed: false, status: 500 }
+		}
 		return { error: 'Internal server error', allowed: false, status: 500 }
 	} finally {
 		await prisma.$disconnect()

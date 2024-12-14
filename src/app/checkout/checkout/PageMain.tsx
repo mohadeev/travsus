@@ -30,10 +30,10 @@ import {
 	updateLineItemsAsync,
 } from '@/app/GlobalRedux/Features/bookingSlice/bookingSlice'
 import RowBedAccommodationSelector from '@/app/(service-detail)/[listing-experiences-detail]/RowBedAccommodationSelector'
-import GuestsInput from '@/app/(service-detail)/[listing-experiences-detail]/GuestsInput'
 import AcommodationAndTransport from '@/app/(service-detail)/[listing-experiences-detail]/listing-components/AcommodationAndTransport'
 import LineItemsBreakdown from '@/app/(service-detail)/[listing-experiences-detail]/LineItemsBreakdown'
 import { checkBooking } from '@/lib/checkBooking'
+import GuestsInput from '@/app/(service-detail)/[listing-experiences-detail]/GuestsInput'
 
 export interface CheckOutPagePageMainProps {
 	className?: string
@@ -84,7 +84,6 @@ const CheckOutPagePageMain: FC<CheckOutPagePageMainProps> = ({
 	}, [bookingId])
 	const handleGuestsChange = async (data: any) => {
 		const newGuests = data?.guests
-		console.log('newGuests:', newGuests)
 		dispatch(
 			localUpdateLineItemsLogicAsync({ value: { guests: newGuests }, tour }),
 		)
@@ -170,6 +169,7 @@ const CheckOutPagePageMain: FC<CheckOutPagePageMainProps> = ({
 						</div>
 						<div className="z-10 mt-6 flex flex-col divide-y divide-neutral-200 overflow-hidden rounded-3xl border border-neutral-200 dark:divide-neutral-700 dark:border-neutral-700 sm:flex-row sm:divide-x sm:divide-y-0">
 							<ModalSelectDate
+								name={'ghalo'}
 								renderChildren={({ openModal }) => (
 									<button
 										onClick={openModal}

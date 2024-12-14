@@ -6,8 +6,10 @@ import prisma from '@/prisma' // Prisma client instance
 import { extractBookingDetails } from '@/utils/extractBookingDetails'
 
 export async function GET(request: NextRequest) {
-	const prismaBooking: any = await prisma.booking.findUnique({
-		where: { id: '675825988a95ae7f9af5e972' },
+	const prismaBooking: any = await prisma.booking.findFirst({
+		orderBy: {
+			createdAt: 'desc', // Replace 'createdAt' with your timestamp field
+		},
 		include: {
 			customer: true,
 			provider: true,
@@ -15,7 +17,7 @@ export async function GET(request: NextRequest) {
 			paymentMethod: true,
 		},
 	})
-	console.log('prismaBooking:', JSON.stringify(prismaBooking))
+	// console.log('prismaBooking:', JSON.stringify(prismaBooking))
 	try {
 		const result = await bookingConfirmationEmail(prismaBooking)
 		if (result?.success) {
