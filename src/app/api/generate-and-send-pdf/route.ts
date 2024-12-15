@@ -1,45 +1,21 @@
 import { NextResponse } from 'next/server'
 import sgMail from '@sendgrid/mail'
 import jsPDF from 'jspdf'
+import sendEmail from '@/utils/email/sendMail'
 
-// Set up SendGrid API key
-sgMail.setApiKey(process.env.SENDGRID_API_KEY as string)
-
-export async function GET() {
+export async function POST() {
 	try {
-		// Create a new PDF document
-		const doc = new jsPDF()
-
-		// Add content to the PDF
-		doc.setFontSize(16)
-		doc.text('Hello from Next.js!', 20, 20)
-		doc.setFontSize(12)
-		doc.text('This is a sample PDF generated using jsPDF.', 20, 30)
-
-		// Generate PDF buffer
-		const pdfBuffer = doc.output('arraybuffer')
-
-		// Encode PDF to base64
-		const pdfBase64 = Buffer.from(pdfBuffer).toString('base64')
-
-		// Prepare email
-		const msg = {
+		sendEmail({
 			to: 'skendoulmohamed@gmail.com',
-			from: 'example@travsus.com',
-			subject: 'Your Generated PDF',
-			text: 'Please find attached the generated PDF.',
-			attachments: [
-				{
-					content: pdfBase64,
-					filename: 'generated.pdf',
-					type: 'application/pdf',
-					disposition: 'attachment',
-				},
-			],
-		}
-
-		// Send email
-		await sgMail.send(msg)
+			subject: 'Testing',
+			message: 'Testing',
+			type: 'forgetPassword',
+			emailData: {
+				// name: firstname,
+				email: 'skendoulmohamed@gmail.com',
+				restLink: `${process.env.NEXT_PUBLIC_SITE_URL}/reset-password/q?token=${''}`,
+			},
+		})
 
 		return NextResponse.json({ message: 'PDF generated and sent successfully' })
 	} catch (error) {
