@@ -19,6 +19,8 @@ import { Inter_Tight } from 'next/font/google'
 import Script from 'next/script'
 import { CombinedCookieConsent } from './privacy-policy/CombinedCookieConsent'
 import ConditionalComponent from '@/components/ConditionalComponent'
+import { useEffect } from 'react'
+import { wakeUpServer } from '@/utils/wakeUpServer'
 
 export default function RootLayout({
 	children,
@@ -31,6 +33,9 @@ export default function RootLayout({
 	const pathname = usePathname()
 	const hasSubdomain = pathname.includes('coming-soon')
 	const isDashboardPath = pathname?.startsWith('/dashboard') ?? false
+	useEffect(() => {
+		wakeUpServer()
+	}, [])
 
 	return (
 		<html lang="en">

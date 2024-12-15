@@ -47,7 +47,7 @@ export async function clientUploadImage(file: File): Promise<any> {
 	formData.append('file', file)
 
 	// Get the external server origin or domain from environment variables
-	const externalServerOrigin = process.env.NEXT_PUBLIC_EXTERNAL_IMAGE_UPLOAD_URL
+	const externalServerOrigin = process.env.NEXT_PUBLIC_EXTERNAL_SERVER
 	console.log('externalServerOrigin:', externalServerOrigin)
 
 	if (!externalServerOrigin) {

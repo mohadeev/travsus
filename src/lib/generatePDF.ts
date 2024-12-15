@@ -7,7 +7,7 @@ interface PDFData {
 	data: Record<string, string | number>
 }
 
-const externalServerOrigin = process.env.NEXT_PUBLIC_EXTERNAL_IMAGE_UPLOAD_URL
+const externalServerOrigin = process.env.NEXT_PUBLIC_EXTERNAL_SERVER
 
 export async function generatePDF(pdfData: PDFData): Promise<string> {
 	try {

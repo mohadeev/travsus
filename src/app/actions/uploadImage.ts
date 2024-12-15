@@ -6,7 +6,7 @@ export async function uploadImage(file: File): Promise<any> {
 	const formData = new FormData()
 	formData.append('file', file)
 
-	const externalServerOrigin = process.env.NEXT_PUBLIC_EXTERNAL_IMAGE_UPLOAD_URL
+	const externalServerOrigin = process.env.NEXT_PUBLIC_EXTERNAL_SERVER
 	console.log('externalServerOrigin:', externalServerOrigin)
 
 	if (!externalServerOrigin) {

@@ -48,7 +48,7 @@ export async function POST(request: NextRequest) {
 				paymentMethod: true,
 			},
 		})
-		await bookingConfirmationEmail(bookingInitiated)
+		bookingConfirmationEmail(bookingInitiated)
 		return NextResponse.json({
 			success: true,
 			paymentIntentId: paymentIntent.id,

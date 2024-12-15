@@ -24,9 +24,10 @@ const stripePromise = loadStripe(
 )
 
 interface CustomStripeFormProps {
-	userId: string
-	userEmail: string
-	booking: any
+	userId?: string
+	userEmail?: string
+	booking?: any
+
 }
 
 const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
