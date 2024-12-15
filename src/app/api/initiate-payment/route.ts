@@ -31,7 +31,7 @@ export async function POST(request: NextRequest) {
 	}
 	const { email: userEmail, id: userId } = userData
 
-	if (!userId || !userEmail || !paymentMethodId || !amount || !currency) {
+	if (!userId || !userEmail || !paymentMethodId || !currency) {
 		console.error('POST /api/initiate-payment - Missing required fields')
 		return NextResponse.json(
 			{ message: 'Missing required fields' },
@@ -55,13 +55,13 @@ export async function POST(request: NextRequest) {
 		})
 
 		// Check if the booking already has a paymentIntentId
-		if (bookingInitiated?.paymentIntentId) {
-			console.log('POST /api/initiate-payment - Duplicate booking detected')
-			return NextResponse.json(
-				{ message: 'Duplicate booking is not allowed' },
-				{ status: 400 },
-			)
-		}
+		// if (bookingInitiated?.paymentIntentId) {
+		// 	console.log('POST /api/initiate-payment - Duplicate booking detected')
+		// 	return NextResponse.json(
+		// 		{ message: 'Duplicate booking is not allowed' },
+		// 		{ status: 400 },
+		// 	)
+		// }
 
 		let user = await prisma.user.findUnique({
 			where: { id: userId },

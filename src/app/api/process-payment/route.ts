@@ -35,7 +35,7 @@ export async function POST(request: NextRequest) {
 	})
 	const userData: any = await getUserData({})
 	const { email: userEmail, id: userId } = userData
-	if (!userId || !userEmail || !paymentMethodId || !amount || !currency) {
+	if (!userId || !userEmail || !paymentMethodId || !currency) {
 		console.error('POST /api/process-payment - Missing required fields')
 		return NextResponse.json(
 			{ message: 'Missing required fields' },

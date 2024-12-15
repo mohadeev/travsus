@@ -121,6 +121,7 @@ const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
 		const cardElement = elements.getElement(CardElement)
 		if (!cardElement) {
 			console.error('Card element not found. Please refresh and try again.')
+			return
 		}
 
 		const { paymentMethod, error: paymentMethodError } =
@@ -144,10 +145,12 @@ const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
 			console.error(
 				paymentMethodError.message || 'Failed to create payment method',
 			)
+			return
 		}
 
 		if (!paymentMethod || !paymentMethod.id) {
 			console.error('Failed to create payment method. Please try again.')
+			return
 		}
 
 		const paymentMethodId = paymentMethod.id
@@ -173,6 +176,7 @@ const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
 
 		if (!saveResponse.ok) {
 			console.error('Failed to save new payment method. Please try again.')
+			return
 		}
 
 		const response = await fetch('/api/initiate-payment', {
@@ -186,46 +190,53 @@ const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
 			}),
 		})
 
+		const result = await response.json()
+
 		if (!response.ok) {
-			const result = await response.json()
 			console.error(result.message || 'Failed to initiate payment')
+			return
 		}
 
-		const { clientSecret } = await response.json()
+		const { clientSecret } = result
 		setClientSecret(clientSecret)
 
 		setSuccess('Payment initiated. Please confirm the payment.')
 	}
-
 	const processExistingPaymentMethod = async () => {
 		if (!selectedPaymentMethod) {
 			console.error('Please select a payment method to charge.')
+			return
 		}
 
-		const response = await fetch('/api/process-payment', {
-			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({
-				userId,
-				userEmail,
-				paymentMethodId: selectedPaymentMethod,
-				amount: 55,
-				currency: 'eur',
-			}),
-		})
+		try {
+			const response = await fetch('/api/process-payment', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({
+					userId,
+					userEmail,
+					paymentMethodId: selectedPaymentMethod,
+					currency: 'eur',
+				}),
+			})
 
-		if (!response.ok) {
 			const result = await response.json()
-			console.error(result.message || 'Payment processing failed')
-		}
 
-		const { paymentIntentId, requiresCapture } = await response.json()
+			if (!response.ok) {
+				throw new Error(result.message || 'Payment processing failed')
+			}
 
-		if (requiresCapture) {
-			await capturePayment(paymentIntentId)
-		} else {
-			setSuccess('Payment processed successfully!')
-			setPaymentConfirmed(true)
+			const { paymentIntentId, requiresCapture } = result
+
+			if (requiresCapture) {
+				await capturePayment(paymentIntentId)
+			} else {
+				setSuccess('Payment processed successfully!')
+				setPaymentConfirmed(true)
+			}
+		} catch (error: any) {
+			console.error(error.message)
+			setError(error.message)
 		}
 	}
 
@@ -274,7 +285,7 @@ const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
 			} else {
 				console.error(`Payment failed with status: ${paymentIntent.status}`)
 			}
-		} catch (error) {
+		} catch (error: any) {
 			console.error('Error in payment confirmation:', error)
 			setError(error.message || 'An error occurred during payment confirmation')
 		} finally {

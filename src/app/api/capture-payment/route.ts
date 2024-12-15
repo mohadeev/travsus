@@ -12,7 +12,7 @@ export async function POST(request: NextRequest) {
 	const serviceId = searchParams.get('serviceId')
 	const bookingId = searchParams.get('bookingId')
 	if (!serviceId || !bookingId) {
-		console.error('POST /api/process-payment - Missing required fields')
+		console.error('POST /api/capture-payment - Missing required fields')
 		return NextResponse.json(
 			{ message: 'Missing required fields' },
 			{ status: 400 },
@@ -48,7 +48,7 @@ export async function POST(request: NextRequest) {
 				paymentMethod: true,
 			},
 		})
-		await bookingConfirmationEmail(bookingInitiated)
+		bookingConfirmationEmail(bookingInitiated)
 		return NextResponse.json({
 			success: true,
 			paymentIntentId: paymentIntent.id,

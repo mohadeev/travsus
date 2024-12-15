@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { parse } from 'cookie'
-import { serialize } from 'cookie'
+import { parse, serialize } from 'cookie'
 
 export async function middleware(request: NextRequest) {
 	const isAuthenticated = checkAuth(request)
@@ -77,11 +76,16 @@ export async function middleware(request: NextRequest) {
 	requestHeaders.set('x-origin', origin)
 	requestHeaders.set('x-pathname', pathname)
 
-	return NextResponse.next({
+	// Set the server response timeout to 5 minutes (300000 ms)
+	const response = NextResponse.next({
 		request: {
 			headers: requestHeaders,
 		},
 	})
+	response.headers.set('Connection', 'Keep-Alive')
+	response.headers.set('Keep-Alive', 'timeout=300')
+
+	return response
 }
 
 function isPublicRoute(pathname: string) {

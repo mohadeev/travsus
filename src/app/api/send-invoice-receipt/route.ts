@@ -5,7 +5,7 @@ import { emailTemplatesHeader } from '@/components/email-templates/EmailTemplate
 import prisma from '@/prisma' // Prisma client instance
 import { extractBookingDetails } from '@/utils/extractBookingDetails'
 
-export async function GET(request: NextRequest) {
+export async function POST(request: NextRequest) {
 	const prismaBooking: any = await prisma.booking.findFirst({
 		orderBy: {
 			createdAt: 'desc', // Replace 'createdAt' with your timestamp field

@@ -19,9 +19,9 @@ const data = {
 	line1: '123 Test Street',
 	line2: 'Apt 4B',
 	city: 'Test City',
-	state: 'CA',
-	postal_code: '12345',
-	country: 'US',
+	state: 'Gipozcoa',
+	postal_code: '20490',
+	country: 'ES',
 }
 
 const NewCardForm: React.FC<NewCardFormProps> = ({
@@ -51,7 +51,7 @@ const NewCardForm: React.FC<NewCardFormProps> = ({
 									type="text"
 									required
 									className="mt-1 block w-full"
-									value={data.cardHolder} // Hardcoded value
+									//defaultValue={data.cardHolder} // Hardcoded value
 								/>
 							</div>
 						)}
@@ -68,7 +68,7 @@ const NewCardForm: React.FC<NewCardFormProps> = ({
 											type="text"
 											required
 											className="mt-1 block w-full"
-											value={data.line1} // Hardcoded value
+											//defaultValue={data.line1} // Hardcoded value
 										/>
 									</div>
 								)}
@@ -82,7 +82,7 @@ const NewCardForm: React.FC<NewCardFormProps> = ({
 											id="line2"
 											type="text"
 											className="mt-1 block w-full"
-											value={data.line2} // Hardcoded value
+											//defaultValue={data.line2} // Hardcoded value
 										/>
 									</div>
 								)}
@@ -99,7 +99,7 @@ const NewCardForm: React.FC<NewCardFormProps> = ({
 											type="text"
 											required
 											className="mt-1 block w-full"
-											value={data.city} // Hardcoded value
+											//defaultValue={data.city} // Hardcoded value
 										/>
 									</div>
 								)}
@@ -114,7 +114,7 @@ const NewCardForm: React.FC<NewCardFormProps> = ({
 											type="text"
 											required
 											className="mt-1 block w-full"
-											value={data.state} // Hardcoded value
+											//defaultValue={data.state} // Hardcoded value
 										/>
 									</div>
 								)}
@@ -131,7 +131,7 @@ const NewCardForm: React.FC<NewCardFormProps> = ({
 											type="text"
 											required
 											className="mt-1 block w-full"
-											value={data.postal_code} // Hardcoded value
+											//defaultValue={data.postal_code} // Hardcoded value
 										/>
 									</div>
 								)}
@@ -146,7 +146,7 @@ const NewCardForm: React.FC<NewCardFormProps> = ({
 											type="text"
 											required
 											className="mt-1 block w-full"
-											value={data.country} // Hardcoded value
+											//defaultValue={data.country} // Hardcoded value
 										/>
 									</div>
 								)}
