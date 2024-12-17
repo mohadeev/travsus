@@ -1,3 +1,4 @@
+import { companyProfile } from '@/constants/companyProfile'
 import { Metadata } from 'next'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 
@@ -17,8 +18,8 @@ TRAVSUS places a platform www.travsus.com at the disposition of its Users, throu
 The details of TRAVSUS are as follows:
 
 - Name: TRAVSUS
-- Address: [Your Address], Ireland
-- Contact Email: [Your Contact Email]
+- Address: ${companyProfile.legalAddress}
+- Contact Email: ${companyProfile.contactEmail}
 - Internal Complaint Management System: www.travsus.com/contact/
 
 ## 1. GENERAL CONDITIONS OF WEBSITE USE AND ACCESS
@@ -224,7 +225,7 @@ Therefore, TRAVSUS will not be liable for the correct provision of such addition
 
 However, if the User books additional travel services during the same visit on the TRAVSUS Booking Website, these services will form part of linked travel services. In this case, as required by European Union law, TRAVSUS has signed a protection guarantee to refund the User for payments made to TRAVSUS for services that have not been provided due to the insolvency of TRAVSUS and, if necessary, for repatriation. Please note that no refund will be made in the event of insolvency of the relevant service provider.
 
-TRAVSUS has entered into an insolvency protection guarantee with [Insert details of the guarantor entity], contract number [Insert contract number]. The company's tax identification number is [Insert tax ID] and its registered address is located at [Insert address]. [Insert company name] is registered in [Insert registry details]. Telephone number: [Insert phone number].
+TRAVSUS has entered into an insolvency protection guarantee with [Insert details of the guarantor entity], contract number [Insert contract number]. The company's tax identification number is [Insert tax ID] and its registered address is located at ${companyProfile.legalAddress}. ${companyProfile.legalName}  is registered in [Insert registry details]. Telephone number: [Insert phone number].
 
 If services are not provided due to the insolvency of TRAVSUS, Users may contact said entity or, where applicable, the competent authority.
 
@@ -286,7 +287,7 @@ If the User considers that their claims have not been met in the ways indicated 
 export default function GeneralConditionsPage() {
 	return (
 		<div className="mx-auto max-w-4xl px-4 py-8">
-			<h1 className="leading-auto mb-20 text-center text-8xl font-extrabold">
+			<h1 className="mb-6 text-center text-4xl font-bold">
 				General Conditions of Use
 			</h1>
 			<div className="prose prose-sm max-w-none">

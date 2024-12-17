@@ -1,3 +1,4 @@
+import { companyProfile } from '@/constants/companyProfile'
 import { Metadata } from 'next'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 
@@ -20,7 +21,7 @@ Below, we outline the conditions under which TRAVSUS processes your personal dat
 
 - Company Name: TRAVSUS LIMITED ("TRAVSUS")
 - Company Registration Number: 123456
-- Address: ${process.env.NEXT_PUBLIC_LEGAL_NAME}
+- Address: ${companyProfile.legalName}
 - Email: privacy@travsus.com
 
 ## 3. Who is the TRAVSUS Data Protection Officer (DPO) and how can they help you?
@@ -211,7 +212,7 @@ We may update this Privacy Policy from time to time. The most current version wi
 If you have any questions about this Privacy Policy or our data practices, please contact us at:
 
 TRAVSUS LIMITED
-${process.env.NEXT_PUBLIC_LEGAL_NAME}
+${companyProfile.legalName}
 Email: privacy@travsus.com
 Phone: +353 1 234 5678
 
@@ -240,7 +241,7 @@ const components = {
 export default function PrivacyPolicyPage() {
 	return (
 		<div className="mx-auto max-w-4xl px-4 py-8">
-			<h1 className="mb-6 text-center text-5xl font-bold">
+			<h1 className="mb-6 text-center text-4xl font-bold">
 				Data Protection and Privacy Policy
 			</h1>
 			<div className="prose prose-sm max-w-none">

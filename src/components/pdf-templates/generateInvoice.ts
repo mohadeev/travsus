@@ -3,6 +3,7 @@ import { JSDOM } from 'jsdom'
 import { createCanvas } from 'canvas'
 import { formatCurrency } from '@/utils/formatCurrency'
 import { filteredLineItems } from '@/utils/lineItemsUtils'
+import { companyProfile } from '@/constants/companyProfile'
 
 interface Booking {
 	tour: {
@@ -474,7 +475,7 @@ export const generateInvoice = async (booking: Booking): Promise<string> => {
           </div>
           <div class="footer">
             <p>
-              ${process.env.NEXT_PUBLIC_LEGAL_NAME || 'Travsus'} | Provider: ${booking.provider?.accountData?.firstname || 'N/A'} | Email: ${booking.provider?.accountData?.firstname || 'N/A'}
+              ${companyProfile.legalName || 'Travsus'} | Provider: ${booking.provider?.accountData?.firstname || 'N/A'} | Email: ${booking.provider?.email || 'N/A'}
             </p>
             <p>
               Thank you for choosing us. If you have any questions about this invoice, please contact us.

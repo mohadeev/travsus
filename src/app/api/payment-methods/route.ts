@@ -26,6 +26,7 @@ export async function GET(request: NextRequest) {
 				stripePaymentMethodId: true,
 				last4: true,
 				brand: true,
+				isDefault: true,
 			},
 		})
 

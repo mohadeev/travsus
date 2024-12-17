@@ -1,3 +1,5 @@
+import { companyProfile } from '@/constants/companyProfile'
+
 interface SignatureParams {
 	[key: string]: any
 	style?: 'center' | 'left'
@@ -106,11 +108,9 @@ export const ceoSignature = (params: SignatureParams = {}): string => {
 										style="padding: 0; font-size: 13px; line-height: 1.8; text-align: ${style};"
 									>
 										<p style="margin: 0; font-weight: bold">
-											${process.env.NEXT_PUBLIC_LEGAL_NAME}
+											${companyProfile.legalName}
 										</p>
-										<p style="margin: 0">
-											${process.env.NEXT_PUBLIC_LEGAL_LOCATION}
-										</p>
+										<p style="margin: 0">${companyProfile.legalAddress}</p>
 										<p
 											style="margin: 10px 0; font-size: 12px; font-style: italic"
 										>
@@ -146,7 +146,7 @@ export const ceoSignature = (params: SignatureParams = {}): string => {
 										</p>
 										<p style="margin: 0">
 											Travsus and its logos are trademarks of
-											${process.env.NEXT_PUBLIC_LEGAL_NAME} in Spain and other
+											${companyProfile.legalName} in Irland, Spain and other
 											countries.
 										</p>
 									</td>

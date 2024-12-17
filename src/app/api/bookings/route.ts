@@ -33,7 +33,6 @@ export async function POST(request: NextRequest) {
 		// 		tour: true, // Include tour details (optional)
 		// 	},
 		// })
-		const numberRef = await createOrderNumber()
 		if (bookingInitiated) {
 			await updateBooking(bookingInitiated.id, {
 				accommodation,
@@ -44,6 +43,7 @@ export async function POST(request: NextRequest) {
 			})
 			return NextResponse.json(bookingInitiated, { status: 200 })
 		}
+		const numberRef = await createOrderNumber()
 		const newBooking = await prisma.booking.create({
 			data: {
 				customer: { connect: { id: id } },

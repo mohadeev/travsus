@@ -1,3 +1,4 @@
+import { companyProfile } from '@/constants/companyProfile'
 import { Metadata } from 'next'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 
@@ -135,9 +136,9 @@ The date at the top of this Cookie Policy indicates when it was last updated.
 
 If you have any questions about our use of cookies or this Cookie Policy, please contact us at:
 
-TRAVSUS LIMITED
-${process.env.NEXT_PUBLIC_LEGAL_LOCATION}
-Email: privacy@travsus.com
+${companyProfile.legalName}
+${companyProfile.legalAddress}
+Email: ${companyProfile.privacyEmail}
 Phone: +353 1 234 5678
 
 Last updated: 24 November 2023

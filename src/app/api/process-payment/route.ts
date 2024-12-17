@@ -35,7 +35,7 @@ export async function POST(request: NextRequest) {
 	})
 	const userData: any = await getUserData({})
 	const { email: userEmail, id: userId } = userData
-	if (!userId || !userEmail || !paymentMethodId || !currency) {
+	if (!userId || !userEmail || !currency) {
 		console.error('POST /api/process-payment - Missing required fields')
 		return NextResponse.json(
 			{ message: 'Missing required fields' },
@@ -58,15 +58,6 @@ export async function POST(request: NextRequest) {
 			},
 		})
 
-		// Check if the booking already has a paymentIntentId
-		// if (bookingInitiated?.paymentIntentId) {
-		// 	console.log('POST /api/process-payment - Duplicate booking detected')
-		// 	return NextResponse.json(
-		// 		{ message: 'Duplicate booking is not allowed' },
-		// 		{ status: 400 },
-		// 	)
-		// }
-
 		let user = await prisma.user.findUnique({
 			where: { id: userId },
 			select: { stripeCustomerId: true },
@@ -88,11 +79,36 @@ export async function POST(request: NextRequest) {
 		if (!user.stripeCustomerId) {
 			return null
 		}
+
+		// Fetch the user's payment methods
+		const userPaymentMethods = await prisma.paymentMethod.findMany({
+			where: { userId: userId },
+			orderBy: { isDefault: 'desc' },
+		})
+
+		// Use the provided paymentMethodId or fall back to the default
+		let selectedPaymentMethodId = paymentMethodId
+		if (!selectedPaymentMethodId) {
+			const defaultPaymentMethod = userPaymentMethods.find(
+				(method) => method.isDefault,
+			)
+			if (defaultPaymentMethod) {
+				selectedPaymentMethodId = defaultPaymentMethod.stripePaymentMethodId
+			} else if (userPaymentMethods.length > 0) {
+				selectedPaymentMethodId = userPaymentMethods[0].stripePaymentMethodId
+			} else {
+				console.error('POST /api/process-payment - No payment method available')
+				return NextResponse.json(
+					{ message: 'No payment method available' },
+					{ status: 400 },
+				)
+			}
+		}
+
 		console.log(
 			`POST /api/process-payment - Creating PaymentIntent for user ${userId}`,
 		)
 		const newTotalAmount = totalAmount(bookingInitiated?.lineItems)
-		console.log('newTotalAmount: ', newTotalAmount)
 		const amountInCents = Math.round(newTotalAmount * 100) // 362879
 		const isMoha =
 			userData?.email?.includes('@travsus.com') ||
@@ -101,7 +117,7 @@ export async function POST(request: NextRequest) {
 			amount: isMoha ? 55 : amountInCents,
 			currency,
 			customer: user.stripeCustomerId,
-			payment_method: paymentMethodId,
+			payment_method: selectedPaymentMethodId,
 			off_session: true,
 			confirm: true,
 			capture_method: 'manual',
@@ -115,12 +131,16 @@ export async function POST(request: NextRequest) {
 		const paymentMethod: any = await prisma.paymentMethod.findFirst({
 			where: {
 				userId: userId,
-				stripePaymentMethodId: paymentMethodId,
+				stripePaymentMethodId: selectedPaymentMethodId,
 			},
 		})
-		console.log('Duplicate booking detected:', paymentMethod)
+		console.log('Payment method used:', paymentMethod)
 		await updateBooking(bookingId, {
 			paymentIntentId: paymentIntent.id,
+			paymentMethodId: paymentMethod?.id,
+		})
+		await connectPaymentMethodToBooking({
+			bookingId,
 			paymentMethodId: paymentMethod?.id,
 		})
 		console.log(
@@ -141,4 +161,21 @@ export async function POST(request: NextRequest) {
 			{ status: 500 },
 		)
 	}
+}
+
+const connectPaymentMethodToBooking = async ({
+	paymentMethodId,
+	bookingId,
+}: any) => {
+	const booking = await prisma.booking.update({
+		where: {
+			id: bookingId,
+		},
+		data: {
+			paymentMethod: { connect: { id: paymentMethodId } },
+		},
+		include: { paymentMethod: true },
+	})
+	console.log('booking:', booking)
+	return booking
 }

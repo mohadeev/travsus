@@ -1,3 +1,4 @@
+import { companyProfile } from '@/constants/companyProfile'
 import { footerLinks } from '@/constants/footerLinks'
 
 export const emailTemplatesFooter = () => {
@@ -49,15 +50,14 @@ export const emailTemplatesFooter = () => {
       "
 				>
 					<p style="margin: 0">
-						© travsus. ${process.env.NEXT_PUBLIC_LEGAL_NAME},
-						${process.env.NEXT_PUBLIC_LEGAL_LOCATION}, Guipúzcoa Spain.
+						© travsus. ${companyProfile.legalName},
+						${companyProfile.legalAddress}
 					</p>
 					<p style="margin: 10px 0 0">
-						© 2024 ${process.env.NEXT_PUBLIC_LEGAL_NAME} All rights reserved.
-						Travsus, the Travsus logo, the trail marker logo, Travelers' Choice,
-						and the Travelers' Choice logo are trademarks of
-						${process.env.NEXT_PUBLIC_LEGAL_NAME} in the Spain and other
-						countries.
+						© 2024 ${companyProfile.legalName} All rights reserved. Travsus,
+						the Travsus logo, the trail marker logo, Travelers' Choice, and the
+						Travelers' Choice logo are trademarks of ${companyProfile.legalName}
+						in the Spain and other countries.
 					</p>
 				</td>
 			</tr>

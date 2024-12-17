@@ -16,7 +16,7 @@ import totalAmount from '@/app/(service-detail)/[listing-experiences-detail]/tot
 import { useSelector } from 'react-redux'
 import Spinner from '@/components/ui/Spinner'
 import { Route } from 'next'
-import { useRouter } from 'next/navigation'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import ButtonPrimary from '@/shared/ButtonPrimary'
 
 const stripePromise = loadStripe(
@@ -27,7 +27,6 @@ interface CustomStripeFormProps {
 	userId?: string
 	userEmail?: string
 	booking?: any
-
 }
 
 const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
@@ -42,10 +41,21 @@ const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
 	const [success, setSuccess] = useState<string>('')
 	const [loading, setLoading] = useState<boolean>(false)
 	const [paymentMethods, setPaymentMethods] = useState<any[]>([])
+	const [paymentMethodsFetched, setPaymentMethodsFetched] =
+		useState<boolean>(false)
+	const searchParams = useSearchParams()
+	const pathname = usePathname()
+	const [showNewPaymentForm, setShowNewPaymentForm] = useState(false)
+	const [saveAsNewPaymentMethod, setSaveAsNewPaymentMethod] = useState(false)
+	const handleAddParam = (param: any) => {
+		const params = new URLSearchParams(searchParams.toString())
+		params.set(param.key, param.value)
+		router.push(`${pathname}?${params.toString()}`)
+	}
+
 	const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<
 		string | null
 	>(null)
-	const [newPaymentMethod, setNewPaymentMethod] = useState<boolean>(false)
 	const [clientSecret, setClientSecret] = useState<string | null>(null)
 	const [paymentConfirmed, setPaymentConfirmed] = useState<boolean>(false)
 	const newTotalAmount = totalAmount(booking?.lineItems)
@@ -63,10 +73,14 @@ const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
 		if (!response.ok) {
 			setCurrentStatus('')
 			console.error('Failed to create booking')
+			throw new Error('Failed to create booking')
 		}
-		setCurrentStatus('')
 
-		return response.json()
+		setCurrentStatus('')
+		const bookingData = await response.json()
+		const { id } = bookingData
+		handleAddParam({ key: 'bookingId', value: id })
+		return bookingData
 	}
 
 	useEffect(() => {
@@ -74,13 +88,25 @@ const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
 			try {
 				const response = await fetch(`/api/payment-methods?userId=${userId}`)
 				if (!response.ok) {
-					console.error('Failed to fetch payment methods')
+					throw new Error('Failed to fetch payment methods')
 				}
 				const data = await response.json()
 				setPaymentMethods(data.paymentMethods)
+				setPaymentMethodsFetched(true)
+				if (data.paymentMethods.length === 0) {
+					setShowNewPaymentForm(true)
+				} else {
+					const defaultMethod = data.paymentMethods.find(
+						(method: any) => method.isDefault,
+					)
+					if (defaultMethod) {
+						setSelectedPaymentMethod(defaultMethod.stripePaymentMethodId)
+					}
+				}
 			} catch (error) {
 				console.error('Error fetching payment methods:', error)
 				setError('Failed to load payment methods. Please try again.')
+				setPaymentMethodsFetched(true)
 			}
 		}
 
@@ -99,12 +125,13 @@ const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
 		}
 
 		try {
-			await createBooking()
-			if (newPaymentMethod) {
-				await initiatePayment(formData)
-			} else {
-				await processExistingPaymentMethod()
-			}
+			await createBooking().then(async () => {
+				if (showNewPaymentForm) {
+					await initiatePayment(formData)
+				} else {
+					await processExistingPaymentMethod()
+				}
+			})
 		} catch (error: any) {
 			console.error('Error in payment handling:', error)
 			setError(
@@ -112,9 +139,11 @@ const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
 			)
 		} finally {
 			setLoading(false)
-			router.push(
-				`/checkout/checkout?bookingId=${booking.id}&serviceId=${tour.id}` as Route,
-			)
+			if (booking?.id) {
+				router.push(
+					`/checkout/checkout?bookingId=${booking.id}&serviceId=${tour.id}` as Route,
+				)
+			}
 		}
 	}
 
@@ -156,28 +185,30 @@ const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
 
 		const paymentMethodId = paymentMethod.id
 
-		const saveResponse = await fetch('/api/payment-methods', {
-			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({
-				userId,
-				userEmail,
-				paymentMethodId,
-				cardHolder: formData.cardHolder,
-				billingAddress: {
-					line1: formData.line1,
-					line2: formData.line2,
-					city: formData.city,
-					state: formData.state,
-					postal_code: formData.postal_code,
-					country: formData.country,
-				},
-			}),
-		})
+		if (saveAsNewPaymentMethod) {
+			const saveResponse = await fetch('/api/payment-methods', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({
+					userId,
+					userEmail,
+					paymentMethodId,
+					cardHolder: formData.cardHolder,
+					billingAddress: {
+						line1: formData.line1,
+						line2: formData.line2,
+						city: formData.city,
+						state: formData.state,
+						postal_code: formData.postal_code,
+						country: formData.country,
+					},
+				}),
+			})
 
-		if (!saveResponse.ok) {
-			console.error('Failed to save new payment method. Please try again.')
-			return
+			if (!saveResponse.ok) {
+				console.error('Failed to save new payment method. Please try again.')
+				return
+			}
 		}
 
 		const response = await fetch('/api/initiate-payment', {
@@ -203,10 +234,15 @@ const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
 
 		setSuccess('Payment initiated. Please confirm the payment.')
 	}
+
 	const processExistingPaymentMethod = async () => {
 		if (!selectedPaymentMethod) {
-			console.error('Please select a payment method to charge.')
-			return
+			const defaultMethod = paymentMethods.find((method) => method.isDefault)
+			if (!defaultMethod) {
+				setError('Please select a payment method or add a new one.')
+				return
+			}
+			setSelectedPaymentMethod(defaultMethod.stripePaymentMethodId)
 		}
 
 		try {
@@ -269,23 +305,23 @@ const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
 		}
 
 		try {
-			await createBooking()
+			await createBooking().then(async () => {
+				const { paymentIntent, error } =
+					await stripe.confirmCardPayment(clientSecret)
 
-			const { paymentIntent, error } =
-				await stripe.confirmCardPayment(clientSecret)
+				if (error) {
+					console.error(error.message || 'Payment confirmation failed')
+				}
 
-			if (error) {
-				console.error(error.message || 'Payment confirmation failed')
-			}
-
-			if (paymentIntent.status === 'requires_capture') {
-				await capturePayment(paymentIntent.id)
-			} else if (paymentIntent.status === 'succeeded') {
-				setSuccess('Payment confirmed and captured successfully!')
-				setPaymentConfirmed(true)
-			} else {
-				console.error(`Payment failed with status: ${paymentIntent.status}`)
-			}
+				if (paymentIntent.status === 'requires_capture') {
+					await capturePayment(paymentIntent.id)
+				} else if (paymentIntent.status === 'succeeded') {
+					setSuccess('Payment confirmed and captured successfully!')
+					setPaymentConfirmed(true)
+				} else {
+					console.error(`Payment failed with status: ${paymentIntent.status}`)
+				}
+			})
 		} catch (error: any) {
 			console.error('Error in payment confirmation:', error)
 			setError(error.message || 'An error occurred during payment confirmation')
@@ -294,112 +330,118 @@ const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
 		}
 	}
 
+	if (!paymentMethodsFetched) {
+		return <Spinner />
+	}
+
+	const bookingId = searchParams.get('bookingId')
+
 	return (
 		<div className="mx-auto w-full max-w-md">
-			{paymentMethods.length > 0 && (
-				<div className="mb-4">
-					<Label htmlFor="existingPaymentMethods">
-						Select Existing Payment Method:
-					</Label>
-					<select
-						id="existingPaymentMethods"
-						value={selectedPaymentMethod || ''}
-						onChange={(e) => {
-							setSelectedPaymentMethod(e.target.value)
-							setNewPaymentMethod(false)
-						}}
-						className="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-					>
-						<option value="">-- Select a payment method --</option>
-						{paymentMethods.map((method) => (
-							<option
-								key={method.stripePaymentMethodId}
-								value={method.stripePaymentMethodId}
+			{!bookingId && (
+				<ButtonPrimary
+					className="mt-4 w-full"
+					onClick={createBooking}
+					loading={currentStatus === 'loading'}
+					disabled={currentStatus === 'loading'}
+				>
+					{currentStatus === 'loading' ? 'Processing...' : 'Reserve'}
+				</ButtonPrimary>
+			)}
+
+			{bookingId && (
+				<>
+					{paymentMethods.length > 0 && !showNewPaymentForm && (
+						<div className="mb-4">
+							<Label htmlFor="existingPaymentMethods">
+								Select Payment Method:
+							</Label>
+							<select
+								id="existingPaymentMethods"
+								value={selectedPaymentMethod || ''}
+								onChange={(e) => setSelectedPaymentMethod(e.target.value)}
+								className="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
 							>
-								{method.brand} **** **** **** {method.last4} -{' '}
-								{method.cardHolder}
-							</option>
-						))}
-					</select>
-				</div>
-			)}
+								{paymentMethods.map((method) => (
+									<option
+										key={method.stripePaymentMethodId}
+										value={method.stripePaymentMethodId}
+									>
+										{method.brand} **** **** **** {method.last4} -{' '}
+										{method.cardHolder}
+										{method.isDefault ? ' (Default)' : ''}
+									</option>
+								))}
+							</select>
+						</div>
+					)}
 
-			<div className="mb-4">
-				<label className="inline-flex items-center">
-					<input
-						type="checkbox"
-						checked={newPaymentMethod}
-						onChange={(e) => {
-							setNewPaymentMethod(e.target.checked)
-							if (e.target.checked) {
-								setSelectedPaymentMethod(null)
+					{!showNewPaymentForm && paymentMethods.length > 0 && (
+						<ButtonPrimary
+							className="mt-4 w-full"
+							onClick={() => setShowNewPaymentForm(true)}
+						>
+							Use another payment method
+						</ButtonPrimary>
+					)}
+
+					{showNewPaymentForm && (
+						<div className="mt-4">
+							<NewCardForm onSubmit={handlePayment} loading={loading} />
+							<div className="mt-2">
+								<label className="inline-flex items-center">
+									<input
+										type="checkbox"
+										checked={saveAsNewPaymentMethod}
+										onChange={(e) =>
+											setSaveAsNewPaymentMethod(e.target.checked)
+										}
+										className="form-checkbox h-5 w-5 text-indigo-600"
+									/>
+									<span className="ml-2 text-sm text-gray-700">
+										Save as new payment method
+									</span>
+								</label>
+							</div>
+						</div>
+					)}
+
+					{!clientSecret && !paymentConfirmed && (
+						<ButtonPrimary
+							className="mt-4 w-full"
+							onClick={() => handlePayment({})}
+							loading={
+								loading || status === 'loading' || currentStatus === 'loading'
 							}
-						}}
-						className="form-checkbox h-5 w-5 text-indigo-600"
-					/>
-					<span className="ml-2 text-sm text-gray-700">
-						Save as new payment method
-					</span>
-				</label>
-			</div>
+							disabled={loading || currentStatus === 'loading'}
+						>
+							{loading || currentStatus === 'loading'
+								? 'Processing...'
+								: `Pay €${newTotalAmount}`}
+						</ButtonPrimary>
+					)}
 
-			{newPaymentMethod && (
-				<NewCardForm onSubmit={handlePayment} loading={loading} />
+					{clientSecret && !paymentConfirmed && (
+						<ButtonPrimary
+							className="mt-4 w-full"
+							onClick={confirmPayment}
+							loading={
+								loading || status === 'loading' || currentStatus === 'loading'
+							}
+							disabled={
+								loading || status === 'loading' || currentStatus === 'loading'
+							}
+						>
+							{loading || currentStatus === 'loading'
+								? 'Processing...'
+								: 'Confirm Payment'}
+						</ButtonPrimary>
+					)}
+
+					{error && <Alert variant="destructive">{error}</Alert>}
+					{success && <Alert variant="default">{success}</Alert>}
+				</>
 			)}
-
-			{!clientSecret && !paymentConfirmed && (
-				<ButtonPrimary
-					className="mt-4 w-full"
-					onClick={() => handlePayment({})}
-					loading={
-						loading || status === 'loading' || currentStatus === 'loading'
-					}
-					disabled={loading || currentStatus === 'loading'}
-				>
-					{newPaymentMethod
-						? 'Add new card'
-						: loading || currentStatus === 'loading'
-							? 'Processing...'
-							: `Pay €${newTotalAmount}`}
-				</ButtonPrimary>
-			)}
-
-			{clientSecret && !paymentConfirmed && (
-				<ButtonPrimary
-					className="mt-4 w-full"
-					onClick={confirmPayment}
-					loading={
-						loading || status === 'loading' || currentStatus === 'loading'
-					}
-					disabled={
-						loading || status === 'loading' || currentStatus === 'loading'
-					}
-				>
-					{loading || currentStatus === 'loading'
-						? 'Processing...'
-						: 'Confirm Payment'}
-				</ButtonPrimary>
-			)}
-
-			{paymentConfirmed && (
-				<ButtonPrimary
-					className="mt-4 w-full"
-					onClick={() => handlePayment({})}
-					loading={
-						loading || status === 'loading' || currentStatus === 'loading'
-					}
-					disabled={loading || currentStatus === 'loading'}
-				>
-					{newPaymentMethod
-						? 'Add new card'
-						: loading || currentStatus === 'loading'
-							? 'Processing...'
-							: `Pay €${newTotalAmount}`}
-				</ButtonPrimary>
-			)}
-
-			{error && <Alert variant="destructive">{error}</Alert>}
-			{success && <Alert variant="default">{success}</Alert>}
 		</div>
 	)
 }

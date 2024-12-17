@@ -7,7 +7,6 @@ interface PDFData {
 	data: Record<string, string | number>
 }
 
-const externalServerOrigin = process.env.NEXT_PUBLIC_EXTERNAL_SERVER
 
 export async function generatePDF(pdfData: PDFData): Promise<string> {
 	try {
@@ -16,6 +15,7 @@ export async function generatePDF(pdfData: PDFData): Promise<string> {
 			newPdfType?.template,
 			pdfData.data,
 		)
+		const externalServerOrigin = process.env.NEXT_PUBLIC_EXTERNAL_SERVER
 
 		const response = await axios.post(
 			`${externalServerOrigin}/api/pdf/generatepdf`,
@@ -29,7 +29,7 @@ export async function generatePDF(pdfData: PDFData): Promise<string> {
 			},
 		)
 
-		return response.data.pdfBase64
+		return htmlContent
 	} catch (error) {
 		console.error('Error generating PDF:', error)
 		throw new Error('Failed to generate PDF')
