@@ -1,3 +1,4 @@
+import { companyProfile } from '@/constants/companyProfile'
 import { Metadata } from 'next'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 
@@ -19,7 +20,7 @@ The access and/or use of the Website grants you the capacity of user, and you ac
 
 The user (hereafter referred to as user) may contact TRAVSUS via www.travsus.com/contact/.
 
-Public Administrations wishing to contact TRAVSUS should do so electronically, preferably using the official electronic communication channels. If they cannot use these channels for accredited reasons, they should notify any issue arising through the corresponding electronic platform of the Public Administration to the e-mail [Insert TRAVSUS contact email].
+Public Administrations wishing to contact TRAVSUS should do so electronically, preferably using the official electronic communication channels. If they cannot use these channels for accredited reasons, they should notify any issue arising through the corresponding electronic platform of the Public Administration to the e-mail ${companyProfile.contactEmail}.
 
 ## 2. Use of the Website
 
@@ -135,8 +136,8 @@ For any questions or concerns regarding this Legal Notice or the use of the Webs
 
 TRAVSUS LIMITED
 [Insert TRAVSUS Address]
-Email: [Insert TRAVSUS Contact Email]
-Phone: [Insert TRAVSUS Phone Number]
+Email: ${companyProfile.contactEmail}
+Phone: ${companyProfile.contactPhone}
 
 Last updated: [Insert Date]
 `

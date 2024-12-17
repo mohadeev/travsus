@@ -65,7 +65,7 @@ These cookies enable enhanced functionality and personalization on our Website.
 
 ## 3. Who's responsible for the processing of cookies on this website?
 
-TRAVSUS LIMITED, with its registered office at 123 Main Street, Dublin 2, D02 A123, Ireland, is the owner of the Website and the party responsible for the processing of the cookies used here. Our contact details are accessible in the Legal Notice on this page.
+TRAVSUS LIMITED, with its registered office at ${companyProfile.legalAddress}, is the owner of the Website and the party responsible for the processing of the cookies used here. Our contact details are accessible in the Legal Notice on this page.
 
 There may also be cookies from third parties, as explained in section 2.2 above. These third parties may have access to the information collected by their respective cookies.
 
@@ -139,9 +139,9 @@ If you have any questions about our use of cookies or this Cookie Policy, please
 ${companyProfile.legalName}
 ${companyProfile.legalAddress}
 Email: ${companyProfile.privacyEmail}
-Phone: +353 1 234 5678
+Phone: ${companyProfile.contactPhone}
 
-Last updated: 24 November 2023
+Last updated: 27 December 2024
 `
 
 const components = {

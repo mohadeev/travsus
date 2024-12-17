@@ -216,7 +216,7 @@ ${companyProfile.legalName}
 Email: privacy@travsus.com
 Phone: +353 1 234 5678
 
-Last updated: 24 November 2023
+Last updated: 27 December 2024
 `
 
 const components = {
