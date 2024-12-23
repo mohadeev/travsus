@@ -261,7 +261,7 @@ const CheckOutPagePageMain: FC<CheckOutPagePageMainProps> = ({
 				</div>
 
 				<div>
-					<h3 className="text-2xl font-semibold">Pay with</h3>
+					<h3 className="text-2xl font-semibold">Pay with lksdv</h3>
 					<div className="my-5 w-14 border-b border-neutral-200 dark:border-neutral-700"></div>
 
 					<div className="mt-6">

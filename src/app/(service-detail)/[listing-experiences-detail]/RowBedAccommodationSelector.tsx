@@ -113,6 +113,16 @@ const BedTypeSelector: React.FC<BedTypeSelectorProps> = ({
 			couple: { adult: 0, child: 0 },
 		},
 	)
+	useEffect(() => {
+		setBedCount(
+			defaultValue || {
+				single: { adult: 0, child: 0 },
+				twin: { adult: 0, child: 0 },
+				couple: { adult: 0, child: 0 },
+			},
+		)
+	}, [defaultValue])
+	console.log('bedCount', bedCount)
 	const [currentIndex, setCurrentIndex] = useState(0)
 	const [isModalOpen, setIsModalOpen] = useState(false)
 
@@ -419,6 +429,24 @@ const RowBedAccommodationSelector: React.FC<
 			},
 		},
 	)
+	console.log('defaultValue', defaultValue)
+	console.log('selection', selection)
+	useEffect(() => {
+		setSelection(
+			defaultValue || {
+				Standard: {
+					single: { adult: 0, child: 0 },
+					twin: { adult: 0, child: 0 },
+					couple: { adult: 0, child: 0 },
+				},
+				Luxury: {
+					single: { adult: 0, child: 0 },
+					twin: { adult: 0, child: 0 },
+					couple: { adult: 0, child: 0 },
+				},
+			},
+		)
+	}, [defaultValue])
 
 	const handleChange = (
 		accommodationType: AccommodationType,

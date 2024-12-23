@@ -201,6 +201,9 @@
 }
 
 @media (max-width: 768px) {
+	.ctaButton {
+		width: 100%;
+	}
 	.heroContent {
 		padding: 2rem;
 	}
@@ -213,8 +216,9 @@
 		flex-direction: column;
 		align-items: center;
 		gap: 1rem;
+		width: 100%;
 	}
 	.statItem {
-		width: 100;
+		width: 100%;
 	}
 }

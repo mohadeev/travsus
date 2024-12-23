@@ -1,131 +1,64 @@
-// 'use client'
-import React from 'react'
-import SectionSubscribe2 from '@/components/SectionSubscribe2'
-import BackgroundSection from '@/components/BackgroundSection'
-import BgGlassmorphism from '@/components/BgGlassmorphism'
-import { TaxonomyType } from '@/data/types'
-import SectionGridAuthorBox from '@/components/SectionGridAuthorBox'
-import SectionGridCategoryBox from '@/components/SectionGridCategoryBox'
-import SectionHero3 from '@/app/(server-components)/SectionHero3'
-import CardCategory6 from '@/components/CardCategory6'
-import SectionGridFeaturePlaces from '@/components/SectionGridFeaturePlaces'
-import SectionGridFilterCard from './(experience-listings)/SectionGridFilterCard'
-import { headers } from 'next/headers'
-import sendEmail from '@/utils/email/sendMail'
-import VarticalExperiencesCard from '@/components/cards/VarticalExperiencesCard'
 import { Metadata } from 'next'
-import { JsonLd } from 'react-schemaorg'
-import { getAppPaths } from '@/utils/getAppPaths'
-import Home from './test/page'
+import ClientHomePage from './ClientHomePage'
 
-// Detailed metadata only for homepage
 export const metadata: Metadata = {
-	title: 'Travsus - New Generation of Booking',
-	description: 'Booking tax-free from platform. Keep calm & travel on.',
+	title:
+		'Travsus - Luxury Travel Experiences | Expert Travel Planning & Exclusive Perks',
+	description:
+		'Experience the journey of a lifetime with Travsus. Discover expert travel planning, exclusive perks, and stress-free luxury adventures. Book your unforgettable journey today.',
 	keywords: [
-		'Morocco travel',
-		'global tours',
-		'authentic experiences',
-		'adventure travel',
-		'cultural tours',
+		'luxury travel',
+		'expert travel planning',
+		'exclusive travel perks',
+		'luxury adventures',
+		'stress-free travel',
+		'premium travel experiences',
+		'personalized journeys',
+		'luxury accommodations',
+		'VIP travel services',
+		'global destinations',
 	],
 	openGraph: {
 		type: 'website',
-		title: 'Travsus - New Generation of Booking',
-		description: 'Booking tax-free from platform. Keep calm & travel on.',
+		title: 'Travsus - Your Journey, You Deserve the Best',
+		description:
+			'Experience luxury travel with expert planning, exclusive perks, and stress-free adventures. Unlock a world of premium experiences with Travsus.',
 		url: 'https://www.travsus.com',
 		siteName: 'Travsus',
 		images: [
 			{
-				url: '/og-image.jpg',
+				url: '/hero-image.jpg',
 				width: 1200,
 				height: 630,
-				alt: 'Travsus - New Generation of Booking',
+				alt: 'Travsus Luxury Travel Experiences',
+			},
+			{
+				url: '/features-image.jpg',
+				width: 800,
+				height: 800,
+				alt: 'Travsus Premium Services',
 			},
 		],
 	},
+	twitter: {
+		card: 'summary_large_image',
+		site: '@travsus',
+		creator: '@travsus',
+		title: 'Travsus - Luxury Travel Experiences',
+		description:
+			'Expert travel planning with exclusive perks and stress-free adventures.',
+		images: ['/hero-image.jpg'],
+	},
+	alternates: {
+		canonical: 'https://www.travsus.com',
+		languages: {
+			'en-US': 'https://www.travsus.com/en-US',
+			'fr-FR': 'https://www.travsus.com/fr-FR',
+			'ar-AE': 'https://www.travsus.com/ar-AE',
+		},
+	},
 }
 
-async function PageHome3() {
-	return (
-		<>
-			<JsonLd<any>
-				item={{
-					'@context': 'https://schema.org',
-					'@type': 'Organization',
-					name: 'Travsus',
-					url: 'https://www.travsus.com',
-					logo: 'https://www.travsus.com/logo.png',
-					sameAs: [
-						'https://www.facebook.com/travsus',
-						'https://www.instagram.com/travsusofficial',
-						'https://www.twitter.com/travsus',
-					],
-					description:
-						'New generation of booking. Booking tax-free from platform. Keep calm & travel on.',
-				}}
-			/>
-			<JsonLd<any>
-				item={{
-					'@context': 'https://schema.org',
-					'@type': 'WebSite',
-					name: 'Travsus',
-					url: 'https://www.travsus.com',
-					potentialAction: {
-						'@type': 'SearchAction',
-						target: {
-							'@type': 'EntryPoint',
-							urlTemplate:
-								'https://www.travsus.com/search?q={search_term_string}',
-						},
-						'query-input': 'required name=search_term_string',
-					},
-				}}
-			/>
-			<main className="nc-PageHome3 relative overflow-hidden">
-				{/* GLASSMOPHIN */}
-				<BgGlassmorphism />
-				{/* <SectionGridFilterCard className="pb-24 lg:pb-28" /> */}
-				{/* SECTION HERO */}
-				<div className="container mb-24 px-1 sm:px-4">
-					<Home />
-					{/* <SectionHero3 className="" /> */}
-				</div>
-				<div className="container relative mb-24 space-y-24">
-					{/* SECTION 1 */}
-					{/* <div className="grid grid-cols-12 gap-6">
-					<div className="col-span-12 flex sm:col-span-6 lg:col-span-4">
-						<CardCategory6 taxonomy={DEMO_CATS_2[0]} />
-					</div>
-					<div className="col-span-12 grid grid-rows-2 gap-6 sm:col-span-6 lg:col-span-4">
-						<CardCategory6 taxonomy={DEMO_CATS_2[3]} />
-						<CardCategory6 taxonomy={DEMO_CATS_2[1]} />
-					</div>
-					<div className="col-span-12 flex sm:col-span-6 lg:col-span-4">
-						<CardCategory6 taxonomy={DEMO_CATS_2[4]} />
-					</div>
-				</div> */}
-					{/* SECTION */}
-					{/* <SectionGridCategoryBox /> */}
-
-					{/* SECTION */}
-					{/* <div className="relative py-16">
-					<BackgroundSection />
-					<SectionGridAuthorBox boxCard="box2" />
-				</div> */}
-
-					{/* <SectionGridFeaturePlaces /> */}
-					<SectionGridFilterCard />
-
-					{/* SECTION */}
-					<SectionSubscribe2 />
-					{/* <WellcomeTemplate /> */}
-					{/* <VarticalExperiencesCard /> */}
-					{/* <SectionGridVerticalCard /> */}
-				</div>
-			</main>
-		</>
-	)
+export default function Home() {
+	return <ClientHomePage />
 }
-
-export default PageHome3

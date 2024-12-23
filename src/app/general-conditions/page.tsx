@@ -225,7 +225,7 @@ Therefore, TRAVSUS will not be liable for the correct provision of such addition
 
 However, if the User books additional travel services during the same visit on the TRAVSUS Booking Website, these services will form part of linked travel services. In this case, as required by European Union law, TRAVSUS has signed a protection guarantee to refund the User for payments made to TRAVSUS for services that have not been provided due to the insolvency of TRAVSUS and, if necessary, for repatriation. Please note that no refund will be made in the event of insolvency of the relevant service provider.
 
-TRAVSUS has entered into an insolvency protection guarantee with [Insert details of the guarantor entity], contract number [Insert contract number]. The company's tax identification number is [Insert tax ID] and its registered address is located at ${companyProfile.legalAddress}. ${companyProfile.legalName}  is registered in [Insert registry details]. Telephone number: ${companyProfile.contactPhone}.
+TRAVSUS has entered into an insolvency protection guarantee with  ${companyProfile.guarantorEntity}, contract number ${companyProfile.contractNumber}. The company's tax identification number is ${companyProfile.vatNumber} and its registered address is located at ${companyProfile.legalAddress}. ${companyProfile.legalName}  is registered in ${companyProfile.registryDetails}. Telephone number: ${companyProfile.contactPhone}.
 
 If services are not provided due to the insolvency of TRAVSUS, Users may contact said entity or, where applicable, the competent authority.
 
@@ -247,7 +247,7 @@ As TRAVSUS allows Users to publish their reviews on the present Website, Users m
 
 ## 12. PROTECTION OF PERSONAL DATA
 
-[Insert detailed privacy policy here, compliant with GDPR and Irish data protection laws]
+[https://www.travsus.com/privacy-policy](https://www.travsus.com/privacy-policy)
 
 ## 13. MODIFICATIONS
 

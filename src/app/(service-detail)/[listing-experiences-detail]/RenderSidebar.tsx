@@ -31,6 +31,7 @@ import RowBedAccommodationSelector from './RowBedAccommodationSelector'
 import AcommodationAndTransport from './listing-components/AcommodationAndTransport'
 import SidebarSkeletonLoader from './SidebarSkeletonLoader'
 import { Button } from '@/components/ui'
+import { updateLineItemsLogic } from '@/app/api/updateLineItems/updateLineItemsLogic'
 export interface RenderSidebarProps {}
 
 const RenderSidebar: FC<RenderSidebarProps> = ({}) => {
@@ -39,33 +40,24 @@ const RenderSidebar: FC<RenderSidebarProps> = ({}) => {
 	const dispatch = useDispatch()
 	const { booking, status } = useSelector((state: any) => state.bookingSlice)
 	const { guests, lineItems, accommodation, transport, bookOwnHotels } = booking
-
-	const seats = booking?.seats
+	console.log(
+		'----------------------------------accommodation:-------------------------------------',
+		accommodation,
+	)
 	const totalGuests: number = guests?.guestAdults + guests?.guestChildren
 	const { name: title, price }: any = useSelector(
 		(state: any) => state.creatingServiceSlice.service,
 	)
-	const defaultValue = 2
 	useEffect(() => {
 		if (price >= 1) {
 			dispatch(setPricePerSeat(price))
 		}
 	}, [dispatch, price])
-	// useEffect(() => {
-	// 	dispatch(setSeats(defaultValue))
-	// }, [])
+
 	const handleDateChange = (date: string) => {
 		dispatch(setSelectedDate(date))
 	}
 
-	const handleSeatsChange = (seats: any) => {
-		// console.log('seats: ', seats)
-		// dispatch(setSeats(seats))
-	}
-
-	const handleResetBooking = () => {
-		dispatch(resetBooking())
-	}
 	const handleOpenModalImageGallery = () => {
 		router.push(`${thisPathname}/?modal=PHOTO_TOUR_SCROLLABLE` as Route)
 	}
@@ -110,6 +102,17 @@ const RenderSidebar: FC<RenderSidebarProps> = ({}) => {
 	useEffect(() => {
 		dispatch(updateProvidedService({ path: 'booking.tour', value: tour }))
 	}, [booking])
+	useEffect(() => {
+		if (tour && booking.lineItems >= 0) {
+			dispatch(
+				localUpdateLineItemsLogicAsync({
+					value: { guestAdults: 2, guestChildren: 0 },
+					tour,
+				}),
+			)
+		}
+	}, [booking])
+
 	const [currentStatus, setCurrentStatus] = useState('')
 	return (
 		<div className="listingSectionSidebar__wrap shadow-xl">
@@ -253,153 +256,4 @@ interface LineItem {
 	totalGuests: number
 	serviceQuantity: number
 	currency: string
-}
-
-function calculateAccommodationPrice(
-	guests: GuestSelection,
-	pricing: Accommodation[],
-): LineItem {
-	let totalPrice = 0
-	let totalGuests = 0
-	let currency = ''
-
-	for (const [accommodationType, bedSelection] of Object.entries(guests)) {
-		const accommodation = pricing.find((a) => a.name === accommodationType)
-		if (!accommodation) continue
-
-		const pricingTier = accommodation.pricingTiers[0] // Assuming only one pricing tier per accommodation type
-
-		for (const [bedType, guestCount] of Object.entries(bedSelection)) {
-			const bedOption = pricingTier.bedOptions.find(
-				(bo) => bo.bedType === bedType.toUpperCase(),
-			)
-			if (!bedOption) continue
-
-			let adultCount = 0
-			let childCount = 0
-
-			if (typeof guestCount === 'number') {
-				adultCount = guestCount
-			} else {
-				adultCount = guestCount.adult || 0
-				childCount = guestCount.child || 0
-			}
-
-			totalPrice += bedOption.basePrice * (adultCount + childCount)
-			totalGuests += adultCount + childCount
-			currency = bedOption.currency
-		}
-	}
-
-	const unitPrice = totalGuests > 0 ? totalPrice / totalGuests : 0
-
-	return {
-		description: 'Accommodation',
-		unitPrice: parseFloat(unitPrice.toFixed(2)),
-		totalPrice: parseFloat(totalPrice.toFixed(2)),
-		totalGuests,
-		serviceQuantity: 1, // Assuming one night stay, adjust if needed
-		currency,
-	}
-}
-
-// Example usage:
-const guests = {
-	Standard: { single: { adult: 3, child: 3 }, twin: 0, couple: 1 },
-	Luxury: { single: { adult: 2, child: 1 }, twin: { adult: 1 }, couple: 0 },
-}
-
-const pricing: Accommodation[] = [
-	{
-		name: 'Luxury',
-		description: 'Experience ultimate comfort and elegance',
-		pricingTiers: [
-			{
-				name: 'Luxury',
-				minSeats: 1,
-				maxSeats: 4,
-				bedOptions: [
-					{ bedType: 'TWIN', maxOccupancy: 2, basePrice: 100, currency: 'EUR' },
-					{
-						bedType: 'SINGLE',
-						maxOccupancy: 1,
-						basePrice: 50,
-						currency: 'EUR',
-					},
-					{
-						bedType: 'COUPLE',
-						maxOccupancy: 2,
-						basePrice: 100,
-						currency: 'EUR',
-					},
-				],
-			},
-		],
-	},
-	{
-		name: 'Standard',
-		description: 'Comfortable and affordable accommodation',
-		pricingTiers: [
-			{
-				name: 'Standard',
-				minSeats: 1,
-				maxSeats: 4,
-				bedOptions: [
-					{ bedType: 'TWIN', maxOccupancy: 2, basePrice: 70, currency: 'EUR' },
-					{
-						bedType: 'SINGLE',
-						maxOccupancy: 1,
-						basePrice: 35,
-						currency: 'EUR',
-					},
-					{
-						bedType: 'COUPLE',
-						maxOccupancy: 2,
-						basePrice: 70,
-						currency: 'EUR',
-					},
-				],
-			},
-		],
-	},
-]
-
-// const result = calculateAccommodationPrice(guests, pricing)
-export function countGuests(roomData: any) {
-	let guestAdults = 0
-	let guestChildren = 0
-
-	// Helper function to add guests
-	function addGuests(data: any) {
-		if (typeof data === 'number') {
-			guestAdults += data
-		} else {
-			guestAdults += data.adult || 0
-			guestChildren += data.child || 0
-		}
-	}
-
-	// Iterate through room types and configurations
-	for (const roomType in roomData) {
-		for (const bedType in roomData[roomType]) {
-			const bedData = roomData[roomType][bedType]
-
-			if (bedType === 'couple') {
-				// For couple, count as 2 adults if it's a number
-				if (typeof bedData === 'number') {
-					guestAdults += 2 * bedData
-				} else {
-					addGuests(bedData)
-				}
-			} else {
-				addGuests(bedData)
-			}
-		}
-	}
-
-	return {
-		guestAdults,
-		guestChildren,
-		guestInfants: 0,
-	}
 }

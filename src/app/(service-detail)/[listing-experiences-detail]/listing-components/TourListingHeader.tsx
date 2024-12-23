@@ -85,7 +85,6 @@ const TourListingHeader = () => {
 				{title}
 			</h2>
 
-			{/* 3 */}
 			<div className="flex items-center space-x-4">
 				<StartRating />
 				<span>·</span>
@@ -115,15 +114,18 @@ const TourListingHeader = () => {
 			<div className="flex items-center justify-between space-x-8 text-sm text-neutral-700 dark:text-neutral-300 xl:justify-start xl:space-x-12">
 				<div className="flex flex-col items-center space-y-3 text-center sm:flex-row sm:space-x-3 sm:space-y-0 sm:text-left">
 					<i className="las la-clock text-2xl"></i>
-					<span className="">{days?.length}</span>
+					<span className="">{days?.length} Days</span>
 				</div>
 				<div className="flex flex-col items-center space-y-3 text-center sm:flex-row sm:space-x-3 sm:space-y-0 sm:text-left">
 					<i className="las la-user-friends text-2xl"></i>
-					<span className="">Up to 10 people</span>
+					<span className="">from 1 to 100 people</span>
 				</div>
 				<div className="flex flex-col items-center space-y-3 text-center sm:flex-row sm:space-x-3 sm:space-y-0 sm:text-left">
 					<i className="las la-language text-2xl"></i>
-					<span className="">English, VietNames</span>
+					<span className="">
+						{' '}
+						English, Spanish, Frensh, Italain, Portogish.
+					</span>
 				</div>
 			</div>
 		</div>

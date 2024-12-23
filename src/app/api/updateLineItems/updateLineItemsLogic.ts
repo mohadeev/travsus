@@ -59,7 +59,6 @@ export async function updateLineItemsLogic(data: TourData) {
 			includeInTotal: true,
 			currency: 'EUR',
 		}
-		console.log('transportLineItem:', transportLineItem)
 		lineItems.push(transportLineItem)
 	} else if (guests) {
 		const totalGuests = guests.guestAdults + guests.guestChildren
@@ -130,13 +129,11 @@ export async function updateLineItemsLogic(data: TourData) {
 	const newTaxLineItem = taxLineItem(lineItems)
 	lineItems.push(newTaxLineItem)
 
-	console.log('guests', guests)
 	const newbooking = {
 		lineItems,
 		guests,
 		accommodation,
 	}
-	console.log('accommodation', accommodation)
 	return { ...newbooking, status: 200 }
 }
 

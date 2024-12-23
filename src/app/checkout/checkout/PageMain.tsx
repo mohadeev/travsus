@@ -56,6 +56,8 @@ const CheckOutPagePageMain: FC<CheckOutPagePageMainProps> = ({
 	const { booking } = useSelector((state: any) => state.bookingSlice)
 	const { guests, lineItems, accommodation, transport, bookOwnHotels, tour } =
 		booking
+	console.log('guests:', guests)
+	console.log('booking:', booking)
 	useEffect(() => {
 		;(async () => {
 			const hanleCheckingBookning = await checkBooking()

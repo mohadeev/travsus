@@ -14,7 +14,7 @@ These General Terms of Use regulate the access, navigation and use of the presen
 
 ## 1. Right to information
 
-We hereby inform you that the ownership of the Website under the domain: https://www.travsus.com/ (hereinafter, the "Website"), is owned by TRAVSUS LIMITED (hereinafter, "TRAVSUS"), with Company Registration Number: [Insert CRO number] and registered office at [Insert TRAVSUS address], Ireland and registered in the Companies Registration Office.
+We hereby inform you that the ownership of the Website under the domain: https://www.travsus.com/ (hereinafter, the "Website"), is owned by TRAVSUS LIMITED (hereinafter, "TRAVSUS"), with Company Registration Number: ${companyProfile?.registrationNumber} and registered office at ${companyProfile?.legalAddress}, Ireland and registered in the Companies Registration Office.
 
 The access and/or use of the Website grants you the capacity of user, and you accept, from such access and/or use, the following Legal Notice.
 
@@ -58,7 +58,7 @@ The temporary reproduction and storage of the contents of the Website are permit
 
 The lawfulness of the intellectual or industrial property rights pertaining to the Contents provided by the users is the exclusive responsibility of such users, so the User shall not hold TRAVSUS liable for any third party claim related to the unlawful use of the Contents of the Website.
 
-For any inquiries or issues related to intellectual and industrial property, please contact [Insert TRAVSUS IP email].
+For any inquiries or issues related to intellectual and industrial property, please contact ${companyProfile?.contactEmail}.
 
 ## 4. Liability and Guarantees
 
@@ -86,23 +86,23 @@ The TRAVSUS Whistleblower Channel is managed in accordance with the principles a
 
 Reporting through the TRAVSUS Whistleblower Channel can be done by:
 
-1. Completing the online form available at [Insert Whistleblower Channel URL]
-2. Sending an email to [Insert Whistleblower email]
+1. Completing the online form available at [https://travsus.com/report/confidential](https://travsus.com/report/confidential)
+2. Sending an email to ${companyProfile?.contactEmail}
 3. Scheduling a face-to-face or telephone meeting with the Compliance Officer
 
 TRAVSUS guarantees the confidentiality of all reports and the protection of the whistleblower against any form of retaliation.
 
 ## 6. Data Protection
 
-TRAVSUS processes personal data in accordance with Regulation (EU) 2016/679 (General Data Protection Regulation) and the Data Protection Act 2018. For detailed information on how we process your personal data, please refer to our Privacy Policy available at [Insert Privacy Policy URL].
+TRAVSUS processes personal data in accordance with Regulation (EU) 2016/679 (General Data Protection Regulation) and the Data Protection Act 2018. For detailed information on how we process your personal data, please refer to our Privacy Policy available at [https://www.travsus.com/privacy-policy](https://www.travsus.com/privacy-policy).
 
-The User has the right to access, rectify, erase, restrict processing, object to processing, and data portability. These rights can be exercised by contacting our Data Protection Officer at [Insert DPO email].
+The User has the right to access, rectify, erase, restrict processing, object to processing, and data portability. These rights can be exercised by contacting our Data Protection Officer at ${companyProfile?.dpoEmail}.
 
 For any complaints regarding data protection, you may contact the Data Protection Commission (www.dataprotection.ie).
 
 ## 7. Cookies
 
-TRAVSUS uses cookies and similar technologies to enhance user experience, analyze website traffic, and personalize content. By using our Website, you consent to the use of cookies in accordance with our Cookie Policy available at [Insert Cookie Policy URL].
+TRAVSUS uses cookies and similar technologies to enhance user experience, analyze website traffic, and personalize content. By using our Website, you consent to the use of cookies in accordance with our Cookie Policy available at [https://www.travsus.com/cookie-policy](https://www.travsus.com/cookie-policy).
 
 You can manage your cookie preferences through your browser settings or our cookie management tool available on the Website.
 
@@ -134,15 +134,20 @@ If any provision of these General Terms of Use is found to be unlawful, void, or
 
 For any questions or concerns regarding this Legal Notice or the use of the Website, please contact us at:
 
-TRAVSUS LIMITED
-[Insert TRAVSUS Address]
+${companyProfile?.legalName}
+
+Address: ${companyProfile?.legalAddress}
+
 Email: ${companyProfile.contactEmail}
+
 Phone: ${companyProfile.contactPhone}
 
-Last updated: [Insert Date]
+
+Last updated: 27 December 2024
 `
 
 export default function LegalNoticePage() {
+	console.log('companyProfile', companyProfile)
 	return (
 		<div className="mx-auto max-w-4xl px-4 py-8">
 			<h1 className="mb-6 text-center text-2xl font-bold">Legal Notice</h1>

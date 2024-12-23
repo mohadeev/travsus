@@ -1,3 +1,5 @@
+
+
 export function getCompanyProfile() {
 	const profileString = process.env.NEXT_PUBLIC_COMPANY_PROFILE
 	if (!profileString) {

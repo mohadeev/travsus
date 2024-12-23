@@ -136,15 +136,17 @@ const ListingExperiencesDetailPage: FC<
 				<div className="flex items-center justify-between space-x-8 text-sm text-neutral-700 dark:text-neutral-300 xl:justify-start xl:space-x-12">
 					<div className="flex flex-col items-center space-y-3 text-center sm:flex-row sm:space-x-3 sm:space-y-0 sm:text-left">
 						<i className="las la-clock text-2xl"></i>
-						<span className="">{days?.length}</span>
+						<span className="">{days?.length} Days</span>
 					</div>
 					<div className="flex flex-col items-center space-y-3 text-center sm:flex-row sm:space-x-3 sm:space-y-0 sm:text-left">
 						<i className="las la-user-friends text-2xl"></i>
-						<span className="">Up to 10 people</span>
+						<span className="">from 1 to 100 people</span>
 					</div>
 					<div className="flex flex-col items-center space-y-3 text-center sm:flex-row sm:space-x-3 sm:space-y-0 sm:text-left">
 						<i className="las la-language text-2xl"></i>
-						<span className="">English, VietNames</span>
+						<span className="">
+							English, Spanish, Frensh, Italain, Portogish.
+						</span>
 					</div>
 				</div>
 			</div>
@@ -372,8 +374,27 @@ const ListingExperiencesDetailPage: FC<
 				<div>
 					<h4 className="text-lg font-semibold">Cancellation policy</h4>
 					<span className="mt-3 block text-neutral-500 dark:text-neutral-400">
-						Any experience can be canceled and fully refunded within 24 hours of
-						purchase, or at least 7 days before the experience starts.
+						Each service provided by TRAVSUS on the present Website (activities,
+						day trips, guided tours and transfers) has its own specific
+						cancellation policy. The User can check each specific cancellation
+						policy in the description part of each activity (in the Website) or
+						on the confirmation email that TRAVSUS will send the User once the
+						reservation has been made. Hence, the specific cancellation
+						conditions will be applicable to each service, which establish the
+						cancellation time and possible penalisation. TRAVSUS will manage
+						cancellations and will confirm the cancellation policies of each
+						activity, excursion, guided tour and/or transfer. If the PROVIDER
+						does not have availability on the reserved date, TRAVSUS will offer
+						the customer an alternate date or schedule, which must be accepted
+						or declined by the customer. If no reply about the alternative
+						option is received within 72 hours, the booking will be cancelled
+						and refunded immediately. In either case, TRAVSUS will send the
+						relevant documentation. IN ACCORDANCE WITH THE ABOVE, AND BY
+						ACCEPTING THESE GENERAL TERMS OF USE, THE USERS DECLARE TO HAVE
+						EXPRESSLY READ AND ACCEPTED THE PRESENT CANCELLATION POLICY AND
+						HEREBY AGREE TO THE CANCELLATION POLICIES OF EACH ACTIVITY, DAY
+						TRIP, GUIDED TOUR AND / OR TRANSFER THAT ARE RESERVED ON THE PRESENT
+						WEBSITE.
 					</span>
 				</div>
 				<div className="w-14 border-b border-neutral-200 dark:border-neutral-700" />
@@ -382,7 +403,7 @@ const ListingExperiencesDetailPage: FC<
 				<div>
 					<h4 className="text-lg font-semibold">Guest requirements</h4>
 					<span className="mt-3 block text-neutral-500 dark:text-neutral-400">
-						Up to 10 guests ages 4 and up can attend. Parents may also bring
+						Up to 100 guests ages 4 and up can attend. Parents may also bring
 						children under 2 years of age.
 					</span>
 				</div>
@@ -392,12 +413,16 @@ const ListingExperiencesDetailPage: FC<
 				<div>
 					<h4 className="text-lg font-semibold">What to bring</h4>
 					<div className="prose sm:prose">
-						<ul className="mt-3 space-y-2 text-neutral-500 dark:text-neutral-400">
-							<li>
-								Formal Wear To Visit Bai Dinh Pagoda Be ready before 7.30 Am.
-							</li>
-							<li>We will pick up from 07.30 to 08.00 AM</li>
-						</ul>
+						{travelChecklist.map((category, index) => (
+							<div key={index}>
+								<h5 className="text-lg font-semibold">{category.category}</h5>
+								<ul>
+									{category.items.map((item, idx) => (
+										<li key={idx}>{item}</li>
+									))}
+								</ul>
+							</div>
+						))}
 					</div>
 				</div>
 			</div>
@@ -423,7 +448,7 @@ const ListingExperiencesDetailPage: FC<
 			<main className="relative z-10 mt-11 flex flex-col lg:flex-row">
 				{/* CONTENT */}
 				<div className="w-full space-y-8 lg:w-3/5 lg:space-y-10 lg:pr-10 xl:w-2/3">
-				<TourListingHeader />
+					<TourListingHeader />
 					{renderSection2()}
 					<TourItinerary days={days} />
 
@@ -450,3 +475,72 @@ const ListingExperiencesDetailPage: FC<
 }
 
 export default ListingExperiencesDetailPage
+
+const travelChecklist = [
+	{
+		category: 'Clothing',
+		items: [
+			'Lightweight, breathable clothes: Cotton or linen for hot days.',
+			'Modest clothing: Long skirts, dresses, and loose pants are recommended for women.',
+			'Layers: A light jacket or sweater for cooler evenings and mountain areas.',
+			'Comfortable shoes: For walking, hiking, and exploring cities like Marrakech and Fez.',
+			'Swimwear: For beaches, pools, or traditional hammams (spas).',
+		],
+	},
+	{
+		category: 'Accessories',
+		items: [
+			'Sunscreen and sunglasses: The sun can be intense, especially in desert areas.',
+			'Wide-brimmed hat or scarf: For sun protection and to cover up when needed.',
+			'Reusable water bottle: Stay hydrated while being eco-friendly.',
+			'Daypack: For carrying essentials during day trips.',
+		],
+	},
+	{
+		category: 'Travel Essentials',
+		items: [
+			'Passport and visa (if required): Ensure they are valid for your travel dates.',
+			'Travel insurance: For emergencies or unexpected situations.',
+			"Cash in Moroccan Dirham (MAD): Many places, especially smaller shops, don't accept cards.",
+			'Plug adapter: Morocco uses type C and E plugs, with a voltage of 220V.',
+		],
+	},
+	{
+		category: 'Health and Safety',
+		items: [
+			'Basic first-aid kit: Include band-aids, pain relievers, and any prescription medications.',
+			'Insect repellent: Useful, especially if visiting during warmer months.',
+			'Hand sanitizer and wet wipes: For cleanliness on the go.',
+		],
+	},
+	{
+		category: 'Technology',
+		items: [
+			'Phone and charger: Consider purchasing a local SIM card for affordable internet access.',
+			'Power bank: To keep devices charged during long excursions.',
+			"Camera: To capture Morocco's stunning landscapes and architecture.",
+		],
+	},
+	{
+		category: 'Special Activities',
+		items: [
+			'Hiking gear: If trekking in the Atlas Mountains or other hiking areas.',
+			'Warm clothing: If visiting the Sahara Desert at night, as temperatures can drop significantly.',
+			'Snorkeling or diving gear: If planning water adventures along the coast.',
+		],
+	},
+	{
+		category: 'Cultural Considerations',
+		items: [
+			'Small gifts: If invited to someone’s home, it’s polite to bring a token of appreciation.',
+			'Phrasebook or translation app: Learning a few phrases in Tamazight or French can be helpful.',
+		],
+	},
+	{
+		category: 'Optional Items',
+		items: [
+			'Notebook or journal: To document your experiences.',
+			'Books or e-reader: For downtime during travel.',
+		],
+	},
+]

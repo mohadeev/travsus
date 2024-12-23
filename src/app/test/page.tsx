@@ -17,6 +17,18 @@ export default function Home() {
 
 		return () => clearInterval(interval)
 	}, [])
+	const handlePageChange = () => {
+		const experiencesContainer = document.getElementById(
+			'experiences_container',
+		)
+
+		if (experiencesContainer) {
+			experiencesContainer.scrollIntoView({
+				behavior: 'smooth',
+				block: 'start',
+			})
+		}
+	}
 
 	return (
 		<div className={styles.container}>
@@ -33,9 +45,9 @@ export default function Home() {
 						insider access, and stress-free travel that will exceed your wildest
 						dreams.
 					</p>
-					<a href="#" className={styles.ctaButton}>
+					<button onClick={handlePageChange} className={styles.ctaButton}>
 						Read more
-					</a>
+					</button>
 					<div className={styles.stats}>
 						<div className={styles.statItem}>
 							<div className={styles.statNumber}>Best</div>

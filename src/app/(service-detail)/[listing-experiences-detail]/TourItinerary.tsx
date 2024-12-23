@@ -77,7 +77,7 @@ export default function TourItinerary({
 
 	return (
 		<section
-			className="mx-auto max-w-4xl p-6"
+			className="mx-auto max-w-[100%] py-6"
 			aria-labelledby="tour-itinerary-heading"
 		>
 			<h2 id="tour-itinerary-heading" className="mb-8 text-2xl font-semibold">

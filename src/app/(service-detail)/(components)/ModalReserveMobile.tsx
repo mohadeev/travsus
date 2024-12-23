@@ -2,6 +2,7 @@ import React, { FC, Fragment, useState } from 'react'
 import CheckOutPagePageMain from '@/app/checkout/checkout/PageMain'
 import { Dialog, Transition } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/solid'
+import RenderSidebar from '../[listing-experiences-detail]/RenderSidebar'
 
 interface ModalReserveMobileProps {
 	renderChildren?: (p: { openModal: () => void }) => React.ReactNode
@@ -60,9 +61,9 @@ const ModalReserveMobile: FC<ModalReserveMobileProps> = ({
 											</button>
 										</div>
 
-										<div className="flex flex-1 flex-col py-1 pt-12">
-											<div className="flex-1 bg-white dark:bg-neutral-900">
-												<CheckOutPagePageMain />
+										<div className="flex w-full items-center justify-center bg-white py-1 pt-12">
+											<div className="w-full max-w-md bg-white dark:bg-neutral-900">
+												<RenderSidebar />
 											</div>
 										</div>
 									</>

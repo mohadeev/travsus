@@ -23,7 +23,7 @@ export async function POST(request: NextRequest) {
 		const paymentIntent = await stripe.paymentIntents.capture(paymentIntentId)
 
 		const bookingInitiated = await prisma.booking.findFirst({
-			where: { id: '6760ad2aef5c1bf3f7c55243' },
+			where: { id: bookingId },
 			include: {
 				paymentMethod: true,
 				customer: true,
