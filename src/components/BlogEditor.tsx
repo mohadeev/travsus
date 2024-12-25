@@ -378,7 +378,6 @@ export default function BlogEditor({
 								rel="noopener noreferrer"
 							>
 								<Eye className="h-5 w-5" />
-								<Eye className="h-5 w-5" />
 								<span>View Post</span>
 							</a>
 						</Button>

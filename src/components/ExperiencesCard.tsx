@@ -105,7 +105,7 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 						{` `}
 						{size === 'default' && (
 							<span className="text-sm font-normal text-neutral-500 dark:text-neutral-400">
-								/person here
+								/person
 							</span>
 						)}
 					</span>

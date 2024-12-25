@@ -198,7 +198,7 @@ model User {
   verificationCode       String?
   verificationCodeExpiry DateTime?
   posts         Post[]
-
+  isAdmin   Boolean   @default(false)
   @@map("users")
 }
 
