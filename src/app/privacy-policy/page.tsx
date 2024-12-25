@@ -20,15 +20,15 @@ Below, we outline the conditions under which TRAVSUS processes your personal dat
 ## 2. Who is in charge of processing your data?
 
 - Company Name: TRAVSUS LIMITED ("TRAVSUS")
-- Company Registration Number: 123456
-- Address: ${companyProfile.legalName}
-- Email: privacy@travsus.com
+- Company Registration Number: ${companyProfile.registrationNumber}
+- Address: ${companyProfile.legalAddress}
+- Email: ${companyProfile.privacyEmail}
 
 ## 3. Who is the TRAVSUS Data Protection Officer (DPO) and how can they help you?
 
 The DPO is a figure, legally foreseen, whose main functions are to inform and advise TRAVSUS on the obligations that affect it in terms of personal data protection and to supervise its compliance.
 
-In addition, the DPO acts as a point of contact for any matter relating to the processing of personal data. If you have any questions, comments, or suggestions about how we use your personal data, you can contact them by writing to dpo@travsus.com.
+In addition, the DPO acts as a point of contact for any matter relating to the processing of personal data. If you have any questions, comments, or suggestions about how we use your personal data, you can contact them by writing to ${companyProfile.dpoEmail}.
 
 ## 4. For what purpose do we process your personal data?
 
@@ -211,10 +211,13 @@ We may update this Privacy Policy from time to time. The most current version wi
 
 If you have any questions about this Privacy Policy or our data practices, please contact us at:
 
-TRAVSUS LIMITED
+${companyProfile.fullLegalName}
+
 ${companyProfile.legalName}
-Email: privacy@travsus.com
-Phone: +353 1 234 5678
+
+Email: ${companyProfile.privacyEmail}
+
+Phone: ${companyProfile.contactPhone}
 
 Last updated: 27 December 2024
 `

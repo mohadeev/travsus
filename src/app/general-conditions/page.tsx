@@ -187,7 +187,7 @@ vii. Manipulated and extrapolated content: It is expressly forbidden to publish 
 
 Communications between TRAVSUS and the Users should be made by email with an acknowledgement of receipt or via another means of communication.
 
-i. Communication to TRAVSUS must be sent to reservas@travsus.com or to www.travsus.com/contact/
+i. Communication to TRAVSUS must be sent to ${companyProfile.bookingsEmail} or to www.travsus.com/contact/
 ii. Communication to the Users will take place using the email used to register.
 
 ## 10. PRODUCT LIABILITY

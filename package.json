@@ -31,6 +31,7 @@
     "@react-email/components": "^0.0.25",
     "@react-email/render": "^1.0.1",
     "@react-icons/all-files": "^4.1.0",
+    "@react-pdf/renderer": "^4.1.5",
     "@reduxjs/toolkit": "^2.2.7",
     "@sendgrid/mail": "^8.1.4",
     "@sendinblue/client": "^3.3.1",

@@ -32,6 +32,7 @@ import AcommodationAndTransport from './listing-components/AcommodationAndTransp
 import SidebarSkeletonLoader from './SidebarSkeletonLoader'
 import { Button } from '@/components/ui'
 import { updateLineItemsLogic } from '@/app/api/updateLineItems/updateLineItemsLogic'
+
 export interface RenderSidebarProps {}
 
 const RenderSidebar: FC<RenderSidebarProps> = ({}) => {
@@ -48,14 +49,20 @@ const RenderSidebar: FC<RenderSidebarProps> = ({}) => {
 	const { name: title, price }: any = useSelector(
 		(state: any) => state.creatingServiceSlice.service,
 	)
+	const [currentStatus, setCurrentStatus] = useState('')
+	const [isDateSelected, setIsDateSelected] = useState(false)
+	const [isShaking, setIsShaking] = useState(false)
+	const [showError, setShowError] = useState(false)
 	useEffect(() => {
 		if (price >= 1) {
 			dispatch(setPricePerSeat(price))
 		}
 	}, [dispatch, price])
 
-	const handleDateChange = (date: string) => {
+	const handleDateChange = (date: any) => {
 		dispatch(setSelectedDate(date))
+		setIsDateSelected(!!date.startDate)
+		setShowError(false)
 	}
 
 	const handleOpenModalImageGallery = () => {
@@ -77,13 +84,6 @@ const RenderSidebar: FC<RenderSidebarProps> = ({}) => {
 			}),
 		)
 	}
-	// useEffect(() => {
-	// 	dispatch(
-	// 		updateLineItemsAsync({
-	// 			booking: booking,
-	// 		}),
-	// 	)
-	// }, [])
 	const transportLineItem = booking?.lineItems.find(
 		({ description }: any) => description === 'transport',
 	)
@@ -113,11 +113,45 @@ const RenderSidebar: FC<RenderSidebarProps> = ({}) => {
 		}
 	}, [booking])
 
-	const [currentStatus, setCurrentStatus] = useState('')
-	return (
-		<div className="listingSectionSidebar__wrap shadow-xl">
-			{/* <SidebarSkeletonLoader /> */}
+	const handleReserveClick = () => {
+		if (!isDateSelected) {
+			setIsShaking(true)
+			setShowError(true)
+			setTimeout(() => setIsShaking(false), 1500) // 3 flashes in 1.5 seconds
+		} else {
+			const createBooking = async () => {
+				setCurrentStatus('loading')
+				const response = await fetch('/api/bookings', {
+					method: 'POST',
+					body: JSON.stringify(booking),
+				})
 
+				if (!response.ok) {
+					console.error('Failed to create booking')
+				}
+
+				return response.json()
+			}
+			createBooking()
+				.then((result) => {
+					if (result) {
+						router.push(
+							`/checkout/checkout?bookingId=${result.id}&serviceId=${tour.id}` as Route,
+						)
+					}
+					setCurrentStatus('')
+				})
+				.catch((error) => {
+					setCurrentStatus('')
+					console.error('Error:', error)
+				})
+		}
+	}
+
+	return (
+		<div
+			className={`listingSectionSidebar__wrap shadow-xl ${isShaking ? 'shake' : ''}`}
+		>
 			{tour.days ? (
 				<>
 					<div className="flex justify-between">
@@ -140,6 +174,7 @@ const RenderSidebar: FC<RenderSidebarProps> = ({}) => {
 							className="z-[11] flex-1"
 							onChange={handleDateChange}
 							value={booking.selectedDate}
+							isFlashing={isShaking}
 						/>
 						<div className="w-full border-b border-neutral-200 dark:border-neutral-700"></div>
 						{isNotInitiated && (
@@ -174,86 +209,45 @@ const RenderSidebar: FC<RenderSidebarProps> = ({}) => {
 						loading={currentStatus === 'loading'}
 						className="mt-4 w-full"
 						disabled={currentStatus === 'loading'}
-						onClick={() => {
-							const createBooking = async () => {
-								setCurrentStatus('loading')
-								const response = await fetch('/api/bookings', {
-									method: 'POST',
-									body: JSON.stringify(booking),
-								})
-
-								if (!response.ok) {
-									console.error('Failed to create booking')
-								}
-
-								return response.json()
-							}
-							createBooking()
-								.then((result) => {
-									if (result) {
-										router.push(
-											`/checkout/checkout?bookingId=${result.id}&serviceId=${tour.id}` as Route,
-										)
-									}
-									setCurrentStatus('')
-								})
-								.catch((error) => {
-									setCurrentStatus('')
-									console.error('Error:', error)
-								})
-						}}
+						onClick={handleReserveClick}
 					>
 						{status === 'loading' ? 'Processing...' : 'Reserve'}
 					</Button>
+					{showError && (
+						<p className="mt-2 text-sm text-red-500">
+							You need to select a date
+						</p>
+					)}
 				</>
 			) : (
 				<SidebarSkeletonLoader />
 			)}
+			<style jsx>{`
+				@keyframes shake {
+					0%,
+					100% {
+						transform: translateX(0);
+					}
+					10%,
+					30%,
+					50%,
+					70%,
+					90% {
+						transform: translateX(-5px);
+					}
+					20%,
+					40%,
+					60%,
+					80% {
+						transform: translateX(5px);
+					}
+				}
+				.shake {
+					animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+				}
+			`}</style>
 		</div>
 	)
 }
 
 export default RenderSidebar
-
-type BedType = 'SINGLE' | 'TWIN' | 'COUPLE'
-type AccommodationType = 'Standard' | 'Luxury'
-
-interface GuestCount {
-	adult: number
-	child: number
-}
-
-interface GuestSelection {
-	[key: string]: {
-		[key: string]: GuestCount | number
-	}
-}
-
-interface BedOption {
-	bedType: BedType
-	maxOccupancy: number
-	basePrice: number
-	currency: string
-}
-
-interface PricingTier {
-	name: string
-	minSeats: number
-	maxSeats: number
-	bedOptions: BedOption[]
-}
-
-interface Accommodation {
-	name: AccommodationType
-	description: string
-	pricingTiers: PricingTier[]
-}
-
-interface LineItem {
-	description: string
-	unitPrice: number
-	totalPrice: number
-	totalGuests: number
-	serviceQuantity: number
-	currency: string
-}

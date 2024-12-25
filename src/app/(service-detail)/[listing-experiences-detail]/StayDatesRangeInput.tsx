@@ -8,16 +8,22 @@ import DatePickerCustomDay from '@/components/DatePickerCustomDay'
 import DatePicker from 'react-datepicker'
 import ClearDataButton from '@/app/(client-components)/(HeroSearchForm)/ClearDataButton'
 import moment from 'moment'
+import styles from './StayDatesRangeInput.module.css'
 
 export interface StayDatesRangeInputProps {
 	className?: string
 	duration?: number
+	onChange: (dates: any) => void
+	value?: any
+	isFlashing?: boolean
 }
 
-const StayDatesRangeInput: FC<any> = ({
+const StayDatesRangeInput: FC<StayDatesRangeInputProps> = ({
 	className = 'flex-1',
 	onChange,
 	duration = 3,
+	value,
+	isFlashing = false,
 }) => {
 	const [startDate, setStartDate] = useState<Date | null>(
 		new Date(moment().format('L')),
@@ -25,7 +31,7 @@ const StayDatesRangeInput: FC<any> = ({
 	const [endDate, setEndDate] = useState<Date | null>(
 		new Date(moment().add(3, 'days').format('L')),
 	)
-	//
+
 	const onChangeDate = (dates: [Date | null, Date | null]) => {
 		const [start, end] = dates
 		let newEnd = null
@@ -46,7 +52,9 @@ const StayDatesRangeInput: FC<any> = ({
 
 	const renderInput = () => {
 		return (
-			<>
+			<div
+				className={`relative flex w-full flex-1 items-center gap-1 focus:outline-none ${styles.inputWrapper} ${isFlashing ? styles.flashing : ''}`}
+			>
 				<div className="text-neutral-300 dark:text-neutral-400">
 					<CalendarIcon className="h-5 w-5 lg:h-7 lg:w-7" />
 				</div>
@@ -68,7 +76,7 @@ const StayDatesRangeInput: FC<any> = ({
 						{'Check in - Check out'}
 					</span>
 				</div>
-			</>
+			</div>
 		)
 	}
 
@@ -77,7 +85,7 @@ const StayDatesRangeInput: FC<any> = ({
 			{({ open }) => (
 				<>
 					<Popover.Button
-						className={`relative flex flex-1 items-center space-x-3 p-3 focus:outline-none ${
+						className={`relative flex flex-1 items-center focus:outline-none ${
 							open ? 'shadow-lg' : ''
 						}`}
 					>
