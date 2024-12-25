@@ -9,7 +9,7 @@ const MobileFooterSticky = () => {
 		new Date('2023/02/06'),
 	)
 	const [endDate, setEndDate] = useState<Date | null>(new Date('2023/02/23'))
-
+//
 	return (
 		<div className="dark:border-neutral-6000 fixed inset-x-0 bottom-0 z-40 block border-t border-neutral-200 bg-white py-2 dark:bg-neutral-800 sm:py-3 lg:hidden">
 			<ModalReserveMobile
