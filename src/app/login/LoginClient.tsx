@@ -96,7 +96,7 @@ export default function LoginClient({
 	useEffect(() => {
 		if (session) {
 			if (isModal) {
-				onClose?.()
+				// onClose?.()
 			} else {
 				router.push('/')
 			}
@@ -258,6 +258,7 @@ export default function LoginClient({
 									<Input
 										type="password"
 										name="password"
+										placeholder="***************"
 										className="mt-1"
 										required
 										value={password}

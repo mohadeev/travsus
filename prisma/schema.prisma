@@ -199,8 +199,15 @@ model User {
   verificationCodeExpiry DateTime?
   posts         Post[]
   isAdmin   Boolean   @default(false)
+  forumPosts             ForumPost[]
+  forumComments          ForumComment[] @relation("CommentAuthor")
+  likedCommentIds        String[]  @db.ObjectId
+  dislikedCommentIds     String[]  @db.ObjectId
+  likedComments          ForumComment[] @relation("LikedComments", fields: [likedCommentIds], references: [id])
+  dislikedComments       ForumComment[] @relation("DislikedComments", fields: [dislikedCommentIds], references: [id])
   @@map("users")
 }
+
 
 
 model PaymentMethod {
@@ -407,3 +414,53 @@ model WhistleblowerReport {
   submittedAt      DateTime @default(now())
   lastUpdated      DateTime @updatedAt
 }
+
+model Spin {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  prizeNumber Int
+  timestamp   DateTime
+  winner      Winner?
+}
+
+model Winner {
+  id     String@id @default(auto()) @map("_id") @db.ObjectId
+  spinId  String @unique @db.ObjectId
+  spin    Spin   @relation(fields: [spinId], references: [id])
+  code    String @unique
+}
+
+
+model ForumPost {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  title     String
+  content   String
+  excerpt   String
+  author    User     @relation(fields: [authorId], references: [id])
+  authorId  String   @db.ObjectId
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  tags      String[]
+  category  String
+  likes     Int      @default(0)
+  views     Int      @default(0)
+  comments  ForumComment[]
+}
+
+model ForumComment {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  content       String
+  author        User     @relation("CommentAuthor", fields: [authorId], references: [id])
+  authorId      String   @db.ObjectId
+  post          ForumPost @relation(fields: [postId], references: [id])
+  postId        String   @db.ObjectId
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  parentId      String?  @db.ObjectId
+  parent        ForumComment? @relation("CommentReplies", fields: [parentId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  replies       ForumComment[] @relation("CommentReplies")
+  likedByIds    String[] @db.ObjectId
+  dislikedByIds String[] @db.ObjectId
+  likedBy       User[]   @relation("LikedComments", fields: [likedByIds], references: [id])
+  dislikedBy    User[]   @relation("DislikedComments", fields: [dislikedByIds], references: [id])
+}
+

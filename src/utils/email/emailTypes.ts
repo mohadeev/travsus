@@ -5,6 +5,7 @@ import { newsletterWelcomeTemplate } from '@/components/email-templates/newslett
 import { paymentConfirmation } from '@/components/email-templates/paymentConfirmation/paymentConfirmation'
 import { refundConfirmation } from '@/components/email-templates/refundConfirmation/refundConfirmation'
 import { reminderNotification } from '@/components/email-templates/reminderNotification/reminderNotification'
+import { verifyEmailAddress } from '@/components/email-templates/verifyEmailAddress/verifyEmailAddress'
 import { welcomeTemplate } from '@/components/email-templates/welcome/WellcomeTemplate'
 
 const emailTypes = ({ type }: any) => {
@@ -26,6 +27,14 @@ const emailList = [
 		sender: `Travsus <no-reply@travsus.com>`,
 		template: forgetPassword,
 	},
+	{
+		type: 'verifyEmailAddress',
+		email: 'no-reply@travsus.com',
+		subject: 'Your Email for Travsus',
+		sender: `Travsus <no-reply@travsus.com>`,
+		template: verifyEmailAddress,
+	},
+
 	{
 		type: 'bookingConfirmation',
 		email: 'no-reply@travsus.com',

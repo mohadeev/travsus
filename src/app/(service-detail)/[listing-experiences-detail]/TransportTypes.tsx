@@ -7,7 +7,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 const transportTypes = [
 	{
-		name: 'Prado',
+		name: 'SUV (prado)',
 		image: '/images/transports/prado.png',
 		minPeople: 1,
 		maxPeople: 5,

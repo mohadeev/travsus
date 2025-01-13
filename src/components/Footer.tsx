@@ -55,7 +55,7 @@ export default function Footer() {
 				</div>
 
 				<p className="mt-8 text-center text-xs leading-5">
-					Copyright © {currentYear} Travsus.com. All rights reserved.
+					Copyright © {currentYear} TRAVSUS.COM. All rights reserved.
 				</p>
 			</div>
 		</footer>

@@ -1,11 +1,10 @@
-import { NextAuthOptions, User, Session } from 'next-auth'
+import { NextAuthOptions, User } from 'next-auth'
 import { JWT } from 'next-auth/jwt'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import GoogleProvider from 'next-auth/providers/google'
 import bcrypt from 'bcryptjs'
 import prisma from '@/lib/prisma'
 
-// Generate a strong secret if one is not provided
 const secret = process.env.NEXTAUTH_SECRET
 
 export const authOptions: NextAuthOptions = {
@@ -21,7 +20,7 @@ export const authOptions: NextAuthOptions = {
 
 				if (!credentials?.email || !credentials?.password) {
 					console.log('Missing credentials')
-					console.error('Email and password are required')
+					throw new Error('Email and password are required')
 				}
 
 				try {
@@ -32,7 +31,7 @@ export const authOptions: NextAuthOptions = {
 					console.log('User lookup result:', user ? 'Found' : 'Not found')
 
 					if (!user || !user.password) {
-						console.error('No user found with this email')
+						throw new Error('No user found with this email')
 					}
 
 					const isPasswordValid = await bcrypt.compare(
@@ -45,7 +44,7 @@ export const authOptions: NextAuthOptions = {
 					)
 
 					if (!isPasswordValid) {
-						console.error('Invalid password')
+						throw new Error('Invalid password')
 					}
 
 					console.log('Authorization successful')
@@ -74,33 +73,20 @@ export const authOptions: NextAuthOptions = {
 	},
 	callbacks: {
 		async jwt({ token, user }: { token: JWT; user?: User }) {
-			// console.log('token, user ', token, user)
-			// console.log({ token, user })
-			// console.log('JWT Callback - Input:', {
-			// 	tokenId: token?.id,
-			// 	userId: user?.id,
-			// })
 			if (user) {
 				token.id = user.id
 			}
-			// console.log('JWT Callback - Output:', { tokenId: token.id })
 			return token
 		},
 		async session({ session, token }: { session: any; token: JWT }) {
-			// console.log('Session Callback - Input:', {
-			// 	sessionUserId: session.user?.id,
-			// 	tokenId: token.id,
-			// })
-			// console.log('session, token: ', token)
 			if (session.user) {
 				session.user.id = token.id as string
 			}
-			// console.log('Session Callback - Output:', {
-			// 	sessionUserId: session.user?.id,
-			// })
 			return session
 		},
 	},
 	secret: secret,
 	debug: process.env.NODE_ENV === 'development',
 }
+
+export default authOptions

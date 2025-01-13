@@ -6,6 +6,7 @@ import { parse } from 'cookie'
 import currentServerUser from '../currentServerUser'
 //coment
 export async function GET(request: NextRequest) {
+	console.log('data')
 	const cookies = request.headers.get('cookie')
 	const parsedCookies = cookies ? parse(cookies) : {}
 	const geoCookie = parsedCookies.customGeo
@@ -17,6 +18,8 @@ export async function GET(request: NextRequest) {
 		const currentUser = await currentServerUser()
 		// console.log('currentUser: ', currentUser)
 		const session: any = await getServerSession(authOptions)
+		console.log('session', session)
+
 		// console.log('auth-options.ts---------------------------:', session)
 		if (!session || !session?.user?.email) {
 			return NextResponse.json(

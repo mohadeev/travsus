@@ -93,6 +93,7 @@ const nextConfig = {
 	experimental: {
 		missingSuspenseWithCSRBailout: false,
 	},
+	
 }
 
 //change

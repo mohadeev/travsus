@@ -115,7 +115,7 @@ const FooterNav = () => {
 		const isActive = pathname === item.link
 		const isAuthenticated = !!session
 
-		if (item.name === 'Log in' && isUserLoggedIn) {
+		if (item.name === 'Log in' && isAuthenticated) {
 			return (
 				<div
 					key={index}
@@ -134,7 +134,7 @@ const FooterNav = () => {
 				</div>
 			)
 		}
-
+		// console.log('isAuthenticated:', isAuthenticated)
 		if (item.authRequired && !isAuthenticated) {
 			return (
 				<button

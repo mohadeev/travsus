@@ -51,6 +51,7 @@ const NewCardForm: React.FC<NewCardFormProps> = ({
 									type="text"
 									required
 									className="mt-1 block w-full"
+									placeholder="Enter card holder name"
 									//defaultValue={data.cardHolder} // Hardcoded value
 								/>
 							</div>
@@ -68,6 +69,7 @@ const NewCardForm: React.FC<NewCardFormProps> = ({
 											type="text"
 											required
 											className="mt-1 block w-full"
+											placeholder="Enter address line 1"
 											//defaultValue={data.line1} // Hardcoded value
 										/>
 									</div>
@@ -82,6 +84,7 @@ const NewCardForm: React.FC<NewCardFormProps> = ({
 											id="line2"
 											type="text"
 											className="mt-1 block w-full"
+											placeholder="Enter address line 2 (optional)"
 											//defaultValue={data.line2} // Hardcoded value
 										/>
 									</div>
@@ -99,6 +102,7 @@ const NewCardForm: React.FC<NewCardFormProps> = ({
 											type="text"
 											required
 											className="mt-1 block w-full"
+											placeholder="Enter city"
 											//defaultValue={data.city} // Hardcoded value
 										/>
 									</div>
@@ -114,6 +118,7 @@ const NewCardForm: React.FC<NewCardFormProps> = ({
 											type="text"
 											required
 											className="mt-1 block w-full"
+											placeholder="Enter state"
 											//defaultValue={data.state} // Hardcoded value
 										/>
 									</div>
@@ -131,6 +136,7 @@ const NewCardForm: React.FC<NewCardFormProps> = ({
 											type="text"
 											required
 											className="mt-1 block w-full"
+											placeholder="Enter postal code"
 											//defaultValue={data.postal_code} // Hardcoded value
 										/>
 									</div>
@@ -146,6 +152,7 @@ const NewCardForm: React.FC<NewCardFormProps> = ({
 											type="text"
 											required
 											className="mt-1 block w-full"
+											placeholder="Enter country"
 											//defaultValue={data.country} // Hardcoded value
 										/>
 									</div>

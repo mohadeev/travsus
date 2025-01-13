@@ -122,7 +122,6 @@ const BedTypeSelector: React.FC<BedTypeSelectorProps> = ({
 			},
 		)
 	}, [defaultValue])
-	console.log('bedCount', bedCount)
 	const [currentIndex, setCurrentIndex] = useState(0)
 	const [isModalOpen, setIsModalOpen] = useState(false)
 
@@ -429,8 +428,6 @@ const RowBedAccommodationSelector: React.FC<
 			},
 		},
 	)
-	console.log('defaultValue', defaultValue)
-	console.log('selection', selection)
 	useEffect(() => {
 		setSelection(
 			defaultValue || {

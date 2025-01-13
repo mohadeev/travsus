@@ -12,7 +12,7 @@ export interface People {
 const FOUNDER_DEMO: People[] = [
 	{
 		id: '1',
-		name: `Skendoul Mouha`,
+		name: `Skendoul Massin`,
 		job: 'founder and Chief Executive',
 		avatar:
 			'https://media.licdn.com/dms/image/v2/D4D03AQETvP90A5Anlg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1714695083171?e=1738800000&v=beta&t=uqOlKoNUdi99P-vPDLFcYf_jl0VHXwt2lcYZws-A2Hg',

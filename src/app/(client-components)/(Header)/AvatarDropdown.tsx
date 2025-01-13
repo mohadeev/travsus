@@ -17,15 +17,20 @@ export default function AvatarDropdown({ className = '' }: Props) {
 	const user = useSelector((state: any) => state.userReducer.userData)
 	const profileImageUrl = user?.profileImage?.url
 
-	const handleSignIn = useAuthAction(async () => {
-		// Add your sign-in logic here
-		console.log('Sign in action')
-	})
+	const handleSignIn = useAuthAction(
+		async () => {
+			// Add your sign-in logic here
+			console.log('Sign in action')
+		},
+		{ auth: 'login', authMode: '' },
+	)
 
-	const handleSignUp = useAuthAction(async () => {
-		// Add your sign-up logic here
-		console.log('Sign up action')
-	})
+	const handleSignUp = useAuthAction(
+		async () => {
+			console.log('Sign up action')
+		},
+		{ auth: 'signup', authMode: '' },
+	)
 
 	return (
 		<Popover className={`AvatarDropdown relative flex ${className}`}>

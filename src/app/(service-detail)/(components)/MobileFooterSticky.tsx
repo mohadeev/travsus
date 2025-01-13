@@ -3,13 +3,33 @@ import ModalSelectDate from '@/components/ModalSelectDate'
 import ButtonPrimary from '@/shared/ButtonPrimary'
 import converSelectedDateToString from '@/utils/converSelectedDateToString'
 import ModalReserveMobile from './ModalReserveMobile'
+import { useSelector } from 'react-redux'
+import { formatCurrency } from '@/utils/formatCurrency'
 
 const MobileFooterSticky = () => {
+	const { booking, status } = useSelector((state: any) => state.bookingSlice)
+	const { guests, lineItems, accommodation, transport, bookOwnHotels } = booking
+	console.log(
+		'----------------------------------accommodation:-------------------------------------',
+		accommodation,
+	)
+	const totalGuests: number = guests?.guestAdults + guests?.guestChildren
+	const { name: title, price }: any = useSelector(
+		(state: any) => state.creatingServiceSlice.service,
+	)
+	const filteredLineItems = lineItems?.filter(
+		({ includeInTotal }: any) => includeInTotal === true,
+	)
+	const totalAmount = filteredLineItems.reduce((total: any, item: any) => {
+		return total + item.totalPrice
+	}, 0)
+	const priceStart = totalAmount / totalGuests
+
 	const [startDate, setStartDate] = useState<Date | null>(
 		new Date('2023/02/06'),
 	)
 	const [endDate, setEndDate] = useState<Date | null>(new Date('2023/02/23'))
-//
+	//
 	return (
 		<div className="dark:border-neutral-6000 fixed inset-x-0 bottom-0 z-40 block border-t border-neutral-200 bg-white py-2 dark:bg-neutral-800 sm:py-3 lg:hidden">
 			<ModalReserveMobile
@@ -17,9 +37,10 @@ const MobileFooterSticky = () => {
 					<div className="container flex items-center justify-between">
 						<div className="">
 							<span className="block text-xl font-semibold">
-								$311
+								{formatCurrency(priceStart)}
+
 								<span className="ml-1 text-sm font-normal text-neutral-500 dark:text-neutral-400">
-									/night
+									/ per person
 								</span>
 							</span>
 							<span

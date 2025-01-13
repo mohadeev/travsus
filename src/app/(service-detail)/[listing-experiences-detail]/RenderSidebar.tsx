@@ -32,6 +32,7 @@ import AcommodationAndTransport from './listing-components/AcommodationAndTransp
 import SidebarSkeletonLoader from './SidebarSkeletonLoader'
 import { Button } from '@/components/ui'
 import { updateLineItemsLogic } from '@/app/api/updateLineItems/updateLineItemsLogic'
+import { formatCurrency } from '@/utils/formatCurrency'
 
 export interface RenderSidebarProps {}
 
@@ -49,6 +50,12 @@ const RenderSidebar: FC<RenderSidebarProps> = ({}) => {
 	const { name: title, price }: any = useSelector(
 		(state: any) => state.creatingServiceSlice.service,
 	)
+	const filteredLineItems = lineItems?.filter(
+		({ includeInTotal }: any) => includeInTotal === true,
+	)
+	const totalAmount = filteredLineItems.reduce((total: any, item: any) => {
+		return total + item.totalPrice
+	}, 0)
 	const [currentStatus, setCurrentStatus] = useState('')
 	const [isDateSelected, setIsDateSelected] = useState(false)
 	const [isShaking, setIsShaking] = useState(false)
@@ -134,10 +141,12 @@ const RenderSidebar: FC<RenderSidebarProps> = ({}) => {
 			}
 			createBooking()
 				.then((result) => {
-					if (result) {
+					if (result.id) {
 						router.push(
 							`/checkout/checkout?bookingId=${result.id}&serviceId=${tour.id}` as Route,
 						)
+					} else {
+						alert('no booking created')
 					}
 					setCurrentStatus('')
 				})
@@ -147,6 +156,7 @@ const RenderSidebar: FC<RenderSidebarProps> = ({}) => {
 				})
 		}
 	}
+	const priceStart = totalAmount / totalGuests
 
 	return (
 		<div
@@ -156,9 +166,9 @@ const RenderSidebar: FC<RenderSidebarProps> = ({}) => {
 				<>
 					<div className="flex justify-between">
 						<span className="text-3xl font-semibold">
-							${booking.pricePerSeat}
+							{formatCurrency(priceStart)}
 							<span className="ml-1 text-base font-normal text-neutral-500 dark:text-neutral-400">
-								/person
+								/per person
 							</span>
 						</span>
 						<StartRating />

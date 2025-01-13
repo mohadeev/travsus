@@ -5,6 +5,7 @@ import BgGlassmorphism from '@/components/BgGlassmorphism'
 import SectionGridFilterCard from './(experience-listings)/SectionGridFilterCard'
 import { JsonLd } from 'react-schemaorg'
 import Home from './test/page'
+import Roulette from '@/components/Roulette/Roulette'
 
 function ClientHomePage() {
 	return (
@@ -101,7 +102,9 @@ function ClientHomePage() {
 				<BgGlassmorphism />
 				{/* <SectionGridFilterCard className="pb-24 lg:pb-28" /> */}
 				{/* SECTION HERO */}
+
 				<div className="container mb-24 px-1 sm:px-4">
+					{/* <Roulette /> */}
 					<Home />
 					{/* <SectionHero3 className="" /> */}
 				</div>

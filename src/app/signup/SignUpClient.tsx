@@ -1,13 +1,16 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
-import { useRouter } from 'next/navigation'
-import { signIn } from 'next-auth/react'
+import { useRouter, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import Input from '@/shared/Input'
 import ButtonPrimary from '@/shared/ButtonPrimary'
 import SocialLoginButtons from '@/components/SocialLoginButtons'
 import { Skeleton } from '@/components/ui/skeleton'
+import VerifyEmailCodePage from './VerifyEmailCodePage'
+import EmailVerificationForm from '../verify-email/code/EmailVerificationForm'
+import { signIn } from 'next-auth/react'
+import { useAuthAction } from '../hooks/useAuthAction'
 
 function SignUpSkeleton({ isModal }: { isModal?: boolean }) {
 	return (
@@ -59,17 +62,35 @@ export default function SignUpClient({
 	onSwitchToLogin,
 }: SignUpClientProps) {
 	const router = useRouter()
-	const [name, setName] = useState('')
+	const [firstName, setFirstName] = useState('')
+	const [lastName, setLastName] = useState('')
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 	const [loading, setLoading] = useState(false)
+
 	const [isPageLoading, setIsPageLoading] = useState(true)
 	const [error, setError] = useState<string | null>(null)
+	const [showVerification, setShowVerification] = useState(false)
+	const [verificationCodeToken, setVerificationCodeToken] = useState('')
+	const searchParams = useSearchParams()
+	const authMode = searchParams.get('authMode')
 
 	useEffect(() => {
 		const timer = setTimeout(() => setIsPageLoading(false), 1000)
 		return () => clearTimeout(timer)
 	}, [])
+
+	const func = useAuthAction(async () => {}, {
+		auth: 'signup',
+		authMode: 'code',
+		verificationCodeToken: verificationCodeToken,
+	})
+
+	useEffect(() => {
+		if (verificationCodeToken?.length >= 1) {
+			func()
+		}
+	}, [verificationCodeToken])
 
 	const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault()
@@ -80,31 +101,28 @@ export default function SignUpClient({
 			const response = await fetch('/api/auth/signup', {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ name, email, password }),
+				body: JSON.stringify({ firstName, lastName, email, password }),
 			})
 
 			if (response.ok) {
-				// Sign up successful, now log in
+				const data = await response.json()
+				if (isModal) {
+					setVerificationCodeToken(data.verificationCodeToken)
+				}
 				const result = await signIn('credentials', {
 					redirect: false,
 					email,
 					password,
 				})
-
 				if (result?.error) {
 					setError(result.error)
-				} else {
-					if (isModal) {
-						onClose?.()
-					} else {
-						router.push('/')
-					}
 				}
 			} else {
 				const data = await response.json()
 				setError(data.message || 'An error occurred during sign up')
 			}
 		} catch (error) {
+			console.error(error)
 			setError('An unexpected error occurred. Please try again.')
 		} finally {
 			setLoading(false)
@@ -122,6 +140,10 @@ export default function SignUpClient({
 
 	if (isPageLoading) {
 		return <SignUpSkeleton isModal={isModal} />
+	}
+
+	if (authMode === 'code') {
+		return <EmailVerificationForm />
 	}
 
 	return (
@@ -149,19 +171,34 @@ export default function SignUpClient({
 						<div className="absolute left-0 top-1/2 w-full -translate-y-1/2 transform border border-neutral-100 dark:border-neutral-800"></div>
 					</div>
 					<form className="grid grid-cols-1 gap-6" onSubmit={handleSubmit}>
-						<label className="block">
-							<span className="text-neutral-800 dark:text-neutral-200">
-								Full name
-							</span>
-							<Input
-								type="text"
-								placeholder="Example Doe"
-								className="mt-1"
-								value={name}
-								onChange={(e) => setName(e.target.value)}
-								required
-							/>
-						</label>
+						<div className="grid grid-cols-2 gap-4">
+							<label className="block">
+								<span className="text-neutral-800 dark:text-neutral-200">
+									First name
+								</span>
+								<Input
+									type="text"
+									placeholder="John"
+									className="mt-1"
+									value={firstName}
+									onChange={(e) => setFirstName(e.target.value)}
+									required
+								/>
+							</label>
+							<label className="block">
+								<span className="text-neutral-800 dark:text-neutral-200">
+									Last name
+								</span>
+								<Input
+									type="text"
+									placeholder="Doe"
+									className="mt-1"
+									value={lastName}
+									onChange={(e) => setLastName(e.target.value)}
+									required
+								/>
+							</label>
+						</div>
 						<label className="block">
 							<span className="text-neutral-800 dark:text-neutral-200">
 								Email address

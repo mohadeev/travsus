@@ -111,10 +111,10 @@ export const emailTemplatesFooter = () => {
 					<p style="margin: 10px 0 0">
 						Need help? Contact us at
 						<a
-							href="mailto:contact@traversus.com"
+							href="mailto:contact@travsus.com"
 							target="_blank"
 							style="text-decoration: none; color: #000"
-							>contact@traversus.com</a
+							>contact@travsus.com</a
 						>.
 					</p>
 				</td>
