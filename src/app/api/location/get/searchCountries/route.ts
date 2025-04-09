@@ -1,60 +1,55 @@
-import axios from 'axios'
+import { placesClient } from '@/lib/prisma'
 import { NextRequest, NextResponse } from 'next/server'
 
-// This function handles the GET request for city and country data
-export const dynamic = 'force-dynamic' // This ensures the route is always dynamic
+export const dynamic = 'force-dynamic' // Ensure it's always dynamic
 
 export async function GET(request: NextRequest) {
 	try {
+		const prisma = placesClient
 		const { searchParams } = new URL(request.url)
-		const name = searchParams.get('name')
+		const query = searchParams.get('q')?.trim().toLowerCase() || ''
 
-		if (!name) {
-			return NextResponse.json(
-				{ message: 'Search name is required' },
-				{ status: 400 },
-			)
-		}
+		if (!query) return NextResponse.json([], { status: 200 }) // Return empty if no query
 
-		// Get the Mapbox access token from environment variables
-		const mapboxAccessToken = process.env.MAPBOX_ACCESS_TOKEN
-
-		if (!mapboxAccessToken) {
-			return NextResponse.json(
-				{ message: 'Mapbox access token is missing' },
-				{ status: 500 },
-			)
-		}
-
-		// Fetch data from the Mapbox Geocoding API
-		const response = await axios.get(
-			`https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(name)}.json`,
-			{
-				params: {
-					access_token: mapboxAccessToken,
-					types: 'region',
-					//'place,country', // Filter for cities and countries
-					limit: 6, // Limit the number of results
+		// Optimized Query: Search directly inside translations
+		const countries = await prisma.country.findMany({
+			where: {
+				content: {
+					translations: {
+						some: {
+							text: { contains: query, mode: 'insensitive' },
+						},
+					},
 				},
 			},
-		)
+			select: {
+				code: true,
+				content: {
+					select: {
+						translations: {
+							where: { language: 'en' },
+							select: { text: true },
+						},
+					},
+				},
+			},
+			take: 10, // Limit results to 10 for performance
+		})
 
-		const resData = response.data.features
-
-		// Extract and format the relevant data from the response
-		const locationData = resData.map((feature: any) => ({
-			name: feature.text,
-			place_name: feature.place_name,
-			type: feature.place_type[0], // 'place' for cities, 'country' for countries
-			coordinates: feature.center, // Longitude and Latitude
+		// Transform to frontend format
+		const locationData = countries.map(({ code, content }) => ({
+			name: content.translations[0]?.text || 'N/A',
+			place_name: content.translations[0]?.text || 'N/A',
+			type: 'country',
+			coordinates: null, // No coordinates needed
 		}))
-		// console.log('locationData', locationData)
-		// Return the fetched data as a JSON response
-		return NextResponse.json(locationData)
+
+		console.log('Optimized locationData:', locationData)
+		return NextResponse.json(locationData, { status: 200 })
 	} catch (error) {
-		console.error('Error fetching location data:', error)
+		console.error('❌ Error fetching countries:', error)
 		return NextResponse.json(
-			{ message: 'Error fetching location data' },
+			{ message: 'Error fetching countries' },
 			{ status: 500 },
 		)
 	}

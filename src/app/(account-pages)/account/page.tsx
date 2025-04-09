@@ -1,191 +1,142 @@
-'use client'
-import React, { useState, FC, useEffect } from 'react'
-import Label from '@/components/Label'
-import Avatar from '@/shared/Avatar'
-import ButtonPrimary from '@/shared/ButtonPrimary'
-import Input from '@/shared/Input'
-import Select from '@/shared/Select'
-import Textarea from '@/shared/Textarea'
-import { useDispatch, useSelector } from 'react-redux'
-import { ChangeEvent } from 'react'
-import { updateUser } from '@/app/GlobalRedux/Features/userReducer/userReducer'
-import PhoneInput from 'react-phone-number-input'
-import AccountImage from './AccountImage'
+import Link from 'next/link'
+import {
+	Bell,
+	Building2,
+	CreditCard,
+	Eye,
+	FileText,
+	Gift,
+	Globe,
+	LayoutGrid,
+	Lock,
+	MapPin,
+} from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
 
-export interface AccountPageProps {}
+// Define the type for our settings items
+type SettingItem = {
+	title: string
+	description: string
+	icon: LucideIcon
+	href: string
+}
 
-const AccountPage = () => {
-	const dispatch = useDispatch()
+export default function AccountPage() {
+	// Array of settings items
+	const settingsItems: SettingItem[] = [
+		{
+			title: 'Personal info',
+			description: 'Provide personal details and how we can reach you',
+			icon: LayoutGrid,
+			href: '/account-settings/personal-info',
+		},
+		{
+			title: 'Login & security',
+			description: 'Update your password and secure your account',
+			icon: Lock,
+			href: '/account-settings/login-and-security',
+		},
+		{
+			title: 'Payments & payouts',
+			description: 'Review payments, payouts, coupons, and gift cards',
+			icon: CreditCard,
+			href: '/account-settings/payment-methods',
+		},
+		{
+			title: 'Taxes',
+			description: 'Manage taxpayer information and tax documents',
+			icon: FileText,
+			href: '/account-settings/taxes',
+		},
+		{
+			title: 'Notifications',
+			description:
+				'Choose notification preferences and how you want to be contacted',
+			icon: Bell,
+			href: '/account-settings/notifications',
+		},
+		{
+			title: 'Privacy & sharing',
+			description:
+				'Manage your personal data, connected services, and data sharing settings',
+			icon: Eye,
+			href: '/account-settings/privacy-and-sharing',
+		},
+		{
+			title: 'Global preferences',
+			description: 'Set your default language, currency, and timezone',
+			icon: Globe,
+			href: '/account-settings/preferences',
+		},
+		{
+			title: 'Travel for work',
+			description: 'Add a work email for business trip benefits',
+			icon: MapPin,
+			href: '/account-settings/travsus-for-work',
+		},
+		{
+			title: 'Professional hosting tools',
+			description:
+				'Get professional tools if you manage several properties on travsus',
+			icon: Building2,
+			href: '/account-settings/professional-hosting',
+		},
+		{
+			title: 'Referral credit & coupon',
+			description: 'You have € 0 referral credits and coupon. Learn more.',
+			icon: Gift,
+			href: '/account-settings/invite',
+		},
+	]
 
-	// Assuming RootState is the type of your Redux state
-	const user = useSelector((state: any) => state.userReducer.userData)
-
-	// Defining the type of formData state
-	interface FormData {
-		lastname: string
-		firstname: string
-		gender: string
-		username: string
-		email: string
-		dateOfBirth: string
-		address: string
-		phone: string
-		about: string
-	}
-
-	const [formData, setFormData] = useState<FormData>({
-		lastname: user?.accountData?.lastname || '',
-		firstname: user?.accountData?.firstname || '',
-		gender: user?.accountData?.gender || 'Male',
-		username: user?.username || '',
-		email: user?.email || '',
-		dateOfBirth: user?.accountData?.dateOfBirth || '',
-		address: user?.accountData?.address || '',
-		phone: user?.phone || '',
-		about: user?.accountData?.about || '',
-	})
-	useEffect(() => {
-		setFormData({
-			lastname: user?.accountData?.lastname || '',
-			firstname: user?.accountData?.firstname || '',
-			gender: user?.accountData?.gender || 'Male',
-			username: user?.username || '',
-			email: user?.email || '',
-			dateOfBirth: user?.accountData?.dateOfBirth || '',
-			address: user?.accountData?.address || '',
-			phone: user?.phone || '',
-			about: user?.accountData?.about || '',
-		})
-
-		return () => {}
-	}, [user])
-
-	// Type for ChangeEvent
-	const handleChange = (
-		e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
-	) => {
-		if (e?.target?.name) {
-			setFormData({
-				...formData,
-				[e.target.name]: e.target.value,
-			})
-		}
-	}
-
-	const handleChangePhone = (value: string) => {
-		if (value) {
-			setFormData({
-				...formData,
-				phone: value,
-			})
-		}
-	}
-	// Type for FormEvent
-	const handleSubmit = async (e: any) => {
-		e.preventDefault()
-		// Dispatch the updateUser action with formData
-		dispatch(updateUser(formData))
-	}
 	return (
-		<div className="w-full space-y-6 sm:space-y-8">
-			{/* HEADING */}
-			<h2 className="text-3xl font-semibold">Account infomation</h2>
-			{/* <div className="w-14 border-b border-neutral-200 dark:border-neutral-700"></div> */}
-			<div className="flex w-full flex-col items-start justify-between gap-5 lg:flex-row">
-				<AccountImage />
-				<form
-					onSubmit={handleSubmit}
-					className="mt-10 w-full max-w-3xl flex-grow space-y-6 lg:mt-0 lg:pl-0"
-				>
-					<div>
-						<Label>Name</Label>
-						<Input
-							className="mt-1.5"
-							defaultValue={formData.firstname}
-							name="firstname"
-							onChange={handleChange}
-						/>
-						<Label>Last name</Label>
-						<Input
-							className="mt-1.5"
-							defaultValue={formData.lastname}
-							name="lastname"
-							onChange={handleChange}
-						/>
+		<div className="flex min-h-screen flex-col">
+			<main className="mx-auto max-w-6xl flex-1 px-6 py-8 md:px-20">
+				{/* Account Header */}
+				<div className="mb-8">
+					<h1 className="mb-1 text-3xl font-semibold">Account</h1>
+					<div className="flex items-center text-gray-700">
+						<span>Mohamed Skendoul, skendoulmohamed@gmail.com</span>
+						<span className="mx-2">·</span>
+						<Link href="#" className="font-medium text-black underline">
+							Go to profile
+						</Link>
 					</div>
-					{/* ---- */}
-					<div>
-						<Label>Gender</Label>
-						<Select className="mt-1.5">
-							<option value="Male">Male</option>
-							<option value="Female">Female</option>
-							<option value="Other">Other</option>
-						</Select>
-					</div>
-					{/* ---- */}
-					<div>
-						<Label>Username</Label>
-						<Input
-							className="mt-1.5"
-							name="username"
-							defaultValue={formData.username}
-							onChange={handleChange}
-						/>
-					</div>
-					{/* ---- */}
-					<div>
-						<Label>Email</Label>
-						<Input
-							className="mt-1.5"
-							defaultValue={formData.email}
-							name="email"
-							onChange={handleChange}
-						/>
-					</div>
-					{/* ---- */}
-					<div className="max-w-lg">
-						<Label>Date of birth</Label>
-						<Input
-							className="mt-1.5"
-							type="date"
-							name="dateOfBirth"
-							defaultValue={formData.dateOfBirth}
-							onChange={handleChange}
-						/>
-					</div>
-					{/* ---- */}
-					<div>
-						<Label>Addess</Label>
-						<Input className="mt-1.5" defaultValue="New york, USA" />
-					</div>
-					{/* ---- */}
-					<div>
-						<Label>Phone number</Label>
-						<Input
-							className="mt-1.5"
-							value={formData.phone}
-							name="phone"
-							type="phone"
-							onChange={(value: any) => handleChangePhone(value)}
-						/>
-					</div>
-					{/* ---- */}
-					<div>
-						<Label>About you</Label>
-						<Textarea
-							className="mt-1.5"
-							name="about"
-							onChange={handleChange}
-							defaultValue={formData.about}
-						/>
-					</div>
-					<div className="pt-2">
-						<ButtonPrimary type="submit">Update info</ButtonPrimary>
-					</div>
-				</form>
-			</div>
+				</div>
+
+				{/* Account Settings Grid */}
+				<div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+					{settingsItems.map((item, index) => {
+						const Icon = item.icon
+						return (
+							<Link
+								key={index}
+								href={item.href}
+								className="rounded-xl border border-gray-200 p-6 transition-shadow hover:shadow-md"
+							>
+								<div className="mb-4 flex items-start">
+									<Icon className="mr-4 h-8 w-8" />
+									<div>
+										<h2 className="mb-1 text-lg font-semibold">{item.title}</h2>
+										<p className="text-sm text-gray-600">{item.description}</p>
+									</div>
+								</div>
+							</Link>
+						)
+					})}
+				</div>
+
+				{/* Deactivate Account */}
+				<div className="mt-12 text-center">
+					<p className="mb-2 text-gray-700">Need to deactivate your account?</p>
+					<Link
+						href="/account-delete/reasons"
+						className="font-medium text-gray-700 underline"
+					>
+						Take care of that now
+					</Link>
+				</div>
+			</main>
 		</div>
 	)
 }
-
-export default AccountPage

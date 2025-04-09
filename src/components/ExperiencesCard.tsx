@@ -1,14 +1,18 @@
-import React, { FC } from 'react'
+'use client'
+
+import { type FC, useEffect, useState } from 'react'
 import GallerySlider from '@/components/GallerySlider'
 import { DEMO_EXPERIENCES_LISTINGS } from '@/data/listings'
-import { ExperiencesDataType } from '@/data/types'
+import type { ExperiencesDataType } from '@/data/types'
 import StartRating from '@/components/StartRating'
 import BtnLikeIcon from '@/components/BtnLikeIcon'
 import SaleOffBadge from '@/components/SaleOffBadge'
 import Badge from '@/shared/Badge'
 import Link from 'next/link'
 import { MapPinIcon } from '@heroicons/react/24/outline'
-import { Route } from '@/routers/types'
+import type { Route } from '@/routers/types'
+import { updateLineItemsLogic } from '@/app/api/updateLineItems/updateLineItemsLogic'
+import { formatCurrency } from '@/utils/formatCurrency'
 
 export interface ExperiencesCardProps {
 	className?: string
@@ -38,9 +42,33 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 		id: serviceId,
 		region,
 		start,
-		liked
+		liked,
 	}: any = data
-	let newLocation = region
+	const [priceData, setPriceData] = useState({})
+
+	useEffect(() => {
+		const pricesData = async () => {
+			const prices: any = await updateLineItemsLogic({ tour: data, body: {} })
+			setPriceData(prices)
+		}
+		pricesData()
+	}, [])
+
+	// const { booking, status } = useSelector((state: any) => state.bookingSlice)
+	const { guests, lineItems, accommodation, transport, bookOwnHotels }: any =
+		priceData || {}
+
+	const totalGuests: number = guests?.guestAdults + guests?.guestChildren
+
+	const filteredLineItems = lineItems?.filter(
+		({ includeInTotal }: any) => includeInTotal === true,
+	)
+	const totalAmount = filteredLineItems?.reduce((total: any, item: any) => {
+		return total + item.totalPrice
+	}, 0)
+	const priceStart = totalAmount / totalGuests
+
+	const newLocation = region
 	if (region?.length >= 1) {
 		region[0].city = start?.name || ''
 	}
@@ -49,21 +77,28 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 		return input?.toLowerCase()?.replace(/\s+/g, '-')
 	}
 
-	let result = convertString(title)
+	const result = convertString(title)
 	const href = `/q=tour?serviceId=${serviceId}&name=${result}` as Route
 
 	const renderSliderGallery = () => {
 		return (
-			<div className="relative w-full overflow-hidden rounded-2xl">
+			<div
+				className={`relative ${
+					size === 'small'
+						? 'w-[220px] sm:w-[250px] md:w-[280px]'
+						: 'mx-auto w-full max-w-[300px] sm:max-w-none'
+				}`}
+			>
 				<GallerySlider
 					uniqueID={`ExperiencesCard_${serviceId}`}
 					ratioClass={ratioClass}
 					galleryImgs={galleryImgs}
 					href={href}
+					galleryClass="rounded-md" // Changed from rounded-xl to rounded-md to match CountryCard
 				/>
 				<BtnLikeIcon
 					onClick={() => {
-						alert('fdf')
+						// alert('fdf')
 					}}
 					isLiked={liked}
 					serviceId={serviceId}
@@ -76,35 +111,35 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 
 	const renderContent = () => {
 		return (
-			<div className={size === 'default' ? 'space-y-3 py-4' : 'space-y-1 p-3'}>
+			<div
+				className={`pt-3 ${
+					size === 'small'
+						? 'w-[220px] sm:w-[250px] md:w-[280px]'
+						: 'mx-auto w-full max-w-[300px] sm:max-w-none'
+				}`}
+			>
 				<div className="space-y-2">
-					<div className="flex items-center space-x-2 text-sm text-neutral-500 dark:text-neutral-400">
-						{size === 'default' && <MapPinIcon className="h-4 w-4" />}
-						{newLocation?.map(({ country, city }: any) => (
-							<span className="" key={city}>
-								{country} - {city}
-							</span>
-						))}
+					<div className="flex items-center text-sm leading-none text-neutral-500 dark:text-neutral-400">
+						{size === 'default' && <MapPinIcon className="mr-1 h-4 w-4" />}
+						<span>
+							{data?.startAddress?.country} - {data?.startAddress?.city}
+						</span>
 					</div>
 
-					<div className="flex items-center space-x-2">
-						{isAds && <Badge name="ADS" color="green" />}
+					<div className="flex items-center">
+						{isAds && <Badge name="ADS" color="green" className="mr-2" />}
 						<h2
-							className={`font-medium capitalize ${
-								size === 'default' ? 'text-base' : 'text-base'
-							}`}
+							className={`font-medium capitalize leading-tight ${size === 'default' ? 'text-base' : 'text-base'}`}
 						>
-							<span className="line-clamp-1">{title}</span>
+							<span className="line-clamp-2">{title}</span>
 						</h2>
 					</div>
 				</div>
-				<div className="border-b border-neutral-100 dark:border-neutral-800"></div>
-				<div className="flex items-center justify-between">
+				<div className="mt-2 flex items-center justify-between">
 					<span className="text-base font-semibold">
-						{price}
-						{` `}
+						{formatCurrency(priceStart)}
 						{size === 'default' && (
-							<span className="text-sm font-normal text-neutral-500 dark:text-neutral-400">
+							<span className="ml-1 text-sm font-normal text-neutral-500 dark:text-neutral-400">
 								/person
 							</span>
 						)}
@@ -117,8 +152,10 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 
 	return (
 		<div className={`nc-ExperiencesCard group relative ${className}`}>
-			{renderSliderGallery()}
-			<Link href={href}>{renderContent()}</Link>
+			<Link href={href} className="block overflow-hidden rounded-md">
+				{renderSliderGallery()}
+			</Link>
+			<div>{renderContent()}</div>
 		</div>
 	)
 }

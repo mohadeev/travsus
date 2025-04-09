@@ -56,8 +56,6 @@ const CheckOutPagePageMain: FC<CheckOutPagePageMainProps> = ({
 	const { booking } = useSelector((state: any) => state.bookingSlice)
 	const { guests, lineItems, accommodation, transport, bookOwnHotels, tour } =
 		booking
-	console.log('guests:', guests)
-	console.log('booking:', booking)
 	useEffect(() => {
 		;(async () => {
 			const hanleCheckingBookning = await checkBooking()
@@ -249,14 +247,116 @@ const CheckOutPagePageMain: FC<CheckOutPagePageMainProps> = ({
 
 	return (
 		<div className={`nc-CheckOutPagePageMain ${className}`}>
-			<main className="container mb-24 mt-11 flex flex-col-reverse lg:mb-32 lg:flex-row">
-				<div className="w-full lg:w-3/5 lg:pr-10 xl:w-2/3">{renderMain()}</div>
-				<div className="hidden lg:block lg:w-[35%] lg:max-w-[35%]">
-					{renderSidebar()}
-				</div>
-			</main>
+			{booking?.id ? (
+				<main className="container mb-24 mt-11 flex flex-col-reverse lg:mb-32 lg:flex-row">
+					<div className="w-full lg:w-3/5 lg:pr-10 xl:w-2/3">
+						{renderMain()}
+					</div>
+					<div className="hidden lg:block lg:w-[35%] lg:max-w-[35%]">
+						{renderSidebar()}
+					</div>
+				</main>
+			) : (
+				<CheckoutPageSkeleton />
+			)}
 		</div>
 	)
 }
 
 export default CheckOutPagePageMain
+
+export function CheckoutPageSkeleton() {
+	return (
+		<div className="container mb-24 mt-11 flex flex-col-reverse lg:mb-32 lg:flex-row">
+			{/* Main Content */}
+			<div className="w-full lg:w-3/5 lg:pr-10 xl:w-2/3">
+				<div className="flex w-full flex-col space-y-8 px-0 sm:rounded-2xl sm:p-6 xl:p-8">
+					{/* Title */}
+					<div className="h-10 w-64 animate-pulse rounded-lg bg-gray-200"></div>
+					<div className="border-b border-neutral-200"></div>
+
+					{/* Trip Section */}
+					<div className="space-y-4">
+						<div className="h-8 w-32 animate-pulse rounded-lg bg-gray-200"></div>
+						{/* Date and Guests Selector */}
+						<div className="mt-6 flex flex-col divide-y divide-neutral-200 overflow-hidden rounded-3xl border border-neutral-200 sm:flex-row sm:divide-x sm:divide-y-0">
+							<div className="flex flex-1 space-x-5 p-5">
+								<div className="flex flex-1 flex-col space-y-2">
+									<div className="h-4 w-16 animate-pulse rounded bg-gray-200"></div>
+									<div className="h-6 w-32 animate-pulse rounded bg-gray-200"></div>
+								</div>
+								<div className="h-6 w-6 animate-pulse rounded bg-gray-200"></div>
+							</div>
+							<div className="flex flex-1 space-x-5 p-5">
+								<div className="flex flex-1 flex-col space-y-2">
+									<div className="h-4 w-16 animate-pulse rounded bg-gray-200"></div>
+									<div className="h-6 w-40 animate-pulse rounded bg-gray-200"></div>
+								</div>
+								<div className="h-6 w-6 animate-pulse rounded bg-gray-200"></div>
+							</div>
+						</div>
+					</div>
+
+					{/* Payment Section */}
+					<div className="space-y-4">
+						<div className="h-8 w-32 animate-pulse rounded-lg bg-gray-200"></div>
+						<div className="my-5 w-14 border-b border-neutral-200"></div>
+						{/* Payment Form Skeleton */}
+						<div className="space-y-4">
+							<div className="h-12 w-full animate-pulse rounded-lg bg-gray-200"></div>
+							<div className="grid grid-cols-2 gap-4">
+								<div className="h-12 animate-pulse rounded-lg bg-gray-200"></div>
+								<div className="h-12 animate-pulse rounded-lg bg-gray-200"></div>
+							</div>
+							<div className="h-12 w-full animate-pulse rounded-lg bg-gray-200"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			{/* Sidebar */}
+			<div className="hidden lg:block lg:w-[35%] lg:max-w-[35%]">
+				<div className="flex w-full flex-col space-y-6 px-0 sm:space-y-8 sm:rounded-2xl sm:p-6 xl:p-8">
+					{/* Tour Image and Info */}
+					<div className="flex flex-col sm:flex-row sm:items-center">
+						<div className="w-full flex-shrink-0 sm:w-40">
+							<div className="aspect-h-3 aspect-w-4 animate-pulse overflow-hidden rounded-2xl bg-gray-200"></div>
+						</div>
+						<div className="space-y-3 py-5 sm:px-5">
+							<div className="space-y-2">
+								<div className="h-4 w-32 animate-pulse rounded bg-gray-200"></div>
+								<div className="h-6 w-48 animate-pulse rounded bg-gray-200"></div>
+							</div>
+							<div className="h-4 w-24 animate-pulse rounded bg-gray-200"></div>
+						</div>
+					</div>
+
+					{/* Price Breakdown */}
+					<div className="space-y-4">
+						{/* Headers */}
+						<div className="grid grid-cols-4 gap-4">
+							<div className="col-span-2 h-4 animate-pulse rounded bg-gray-200"></div>
+							<div className="h-4 animate-pulse rounded bg-gray-200"></div>
+							<div className="h-4 animate-pulse rounded bg-gray-200"></div>
+						</div>
+
+						{/* Price Items */}
+						{[...Array(3)].map((_, i) => (
+							<div key={i} className="grid grid-cols-4 gap-4">
+								<div className="col-span-2 h-4 animate-pulse rounded bg-gray-200"></div>
+								<div className="h-4 animate-pulse rounded bg-gray-200"></div>
+								<div className="h-4 animate-pulse rounded bg-gray-200"></div>
+							</div>
+						))}
+
+						{/* Total */}
+						<div className="mt-6 grid grid-cols-2 gap-4">
+							<div className="h-6 animate-pulse rounded bg-gray-200"></div>
+							<div className="h-6 animate-pulse rounded bg-gray-200"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	)
+}

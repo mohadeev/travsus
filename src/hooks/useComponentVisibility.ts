@@ -19,7 +19,7 @@ export function useComponentVisibility() {
 			const currentTime = hour * 60 + minute
 
 			const isWeekday = day >= 1 && day <= 5
-			const isWorkHours = currentTime >= 8 * 60 && currentTime < 20 * 60
+			const isWorkHours = currentTime >= 8 * 60 && currentTime < 17 * 60
 
 			setIsVisible(!(isWeekday && isWorkHours))
 		}

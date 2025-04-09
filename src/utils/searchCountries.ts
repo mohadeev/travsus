@@ -7,9 +7,13 @@ export async function searchCountries(name: any) {
 	}
 
 	try {
-		const response = await axios.get('/api/location/get/searchCountries', {
-			params: { name: name?.placeName },
-		})
+		const response = await axios.get(
+			`${process.env.NEXT_PUBLIC_EXTERNAL_SERVER}/api/location/get/searchCountries`,
+			{
+				params: { q: name?.placeName },
+			},
+		)
+		console.log('response.data', response.data)
 		return response.data
 	} catch (error) {
 		console.log('Error fetching countries:', error)

@@ -1,4 +1,4 @@
-import type { Config } from "tailwindcss";
+// import type { Config } from "tailwindcss";
 import defaultTheme from "tailwindcss/defaultTheme";
 const colors = require("tailwindcss/colors");
 
@@ -27,8 +27,8 @@ const config: Config = {
     container: {
       center: true,
       padding: {
-        DEFAULT: "1rem",
-        "2xl": "128px",
+        DEFAULT: "2rem",
+        "2xl": "186px",
       },
     },
     fontFamily: {

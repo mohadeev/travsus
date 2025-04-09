@@ -1,25 +1,20 @@
 'use client'
 
-import BackgroundSection from '@/components/BackgroundSection'
-import ListingImageGallery from '@/components/listing-image-gallery/ListingImageGallery'
-import SectionSliderNewCategories from '@/components/SectionSliderNewCategories'
-import SectionSubscribe2 from '@/components/SectionSubscribe2'
+import { useEffect, useState, ReactNode, Suspense } from 'react'
 import {
-	notFound,
 	usePathname,
-	useRouter,
 	useSearchParams,
+	useRouter,
+	notFound,
 } from 'next/navigation'
-import { ReactNode, Suspense, useEffect } from 'react'
-import MobileFooterSticky from './(components)/MobileFooterSticky'
-// import { imageGallery as listingStayImageGallery } from './listing-stay-detail-1/constant'
-// import { imageGallery as listingCarImageGallery } from './listing-car-detail-1/constant'
-import { imageGallery as listingExperienceImageGallery } from './[listing-experiences-detail]/constant'
-import { updateServiceState } from '../GlobalRedux/Features/creatingServiceSlice/creatingServiceSlice'
 import { useDispatch } from 'react-redux'
-import getFetchDataFromApi from '@/utils/getFetchDataFromApi'
-import { Router } from 'lucide-react'
 import { toggleOverlay } from '../GlobalRedux/Features/overlaySlice/overlaySlice'
+import { updateServiceState } from '../GlobalRedux/Features/creatingServiceSlice/creatingServiceSlice'
+import getFetchDataFromApi from '@/utils/getFetchDataFromApi'
+import { updateLineItemsLogic } from '@/app/api/updateLineItems/updateLineItemsLogic'
+import ListingImageGallery from '@/components/listing-image-gallery/ListingImageGallery'
+import MobileFooterSticky from './(components)/MobileFooterSticky'
+import { imageGallery as listingExperienceImageGallery } from './[listing-experiences-detail]/constant'
 
 const DetailtLayout = ({ children }: { children: ReactNode }) => {
 	const dispatch = useDispatch()
@@ -27,35 +22,40 @@ const DetailtLayout = ({ children }: { children: ReactNode }) => {
 	const searchParams = useSearchParams()
 	const serviceId = searchParams.get('serviceId')
 	const router = useRouter()
-	const getImageGalleryListing = () => {
-		// if (thisPathname?.includes('/listing-stay-detail')) {
-		// 	return listingStayImageGallery
-		// }
-		// if (thisPathname?.includes('/listing-car-detail')) {
-		// 	return listingCarImageGallery
-		// }
-		// if (thisPathname?.includes('/listing-experiences-detail')) {
-		// 	return listingExperienceImageGallery
-		// }
-		return listingExperienceImageGallery
-	}
-	if (serviceId === null) {
+
+	// State to store tour data & price
+	const [tourData, setTourData] = useState<any>(null)
+	const [priceData, setPriceData] = useState<any>(null)
+
+	if (!serviceId) {
 		notFound()
 	}
+
 	useEffect(() => {
 		;(async () => {
 			try {
 				dispatch(toggleOverlay({ isVisible: false }))
+
+				// Fetch tour details
 				const serviceData = await getFetchDataFromApi(
 					'/api/listing/get/getTourData?',
-					{
-						id: serviceId,
-					},
+					{ id: serviceId },
 				)
+				setTourData(serviceData)
+
+				// Fetch dynamic pricing
+				const prices = await updateLineItemsLogic({
+					tour: serviceData,
+					body: {},
+				})
+				setPriceData(prices)
+
+				// Update global state
 				dispatch(updateServiceState({ path: 'service', value: serviceData }))
 			} catch (error: any) {
-				const { code } = error?.response.data.code || {}
-				const status = error.status || {}
+				const { code } = error?.response?.data?.code || {}
+				const status = error?.status || {}
+
 				if (code === 'P2023') {
 					dispatch(
 						toggleOverlay({
@@ -65,37 +65,112 @@ const DetailtLayout = ({ children }: { children: ReactNode }) => {
 						}),
 					)
 				} else if (status >= 400) {
-					// console.log('shoud make showOverlay here ')
 					router.push('/not-found')
 				}
 			}
 		})()
-	}, [serviceId, dispatch]) // Dispatch included in the dependency array
+	}, [serviceId, dispatch])
+
+	// Calculate price dynamically
+	const guests = priceData?.guests
+	const lineItems = priceData?.lineItems
+	const totalGuests = guests?.guestAdults + guests?.guestChildren || 1
+
+	const filteredLineItems = lineItems?.filter(
+		(item: any) => item.includeInTotal,
+	)
+	const totalAmount = filteredLineItems?.reduce(
+		(total: any, item: any) => total + item.totalPrice,
+		0,
+	)
+	const priceStart = totalAmount / totalGuests || 100 // Default price if not available
+
+	// ✅ Extract image URLs from tourData.images array
+	const imageUrls = tourData?.images?.map((img: any) => img.url) || []
+
+	// ✅ Extract reviews (ensure it's always present to avoid SEO errors)
+	const reviews = tourData?.reviews?.length
+		? tourData.reviews.map((review: any) => ({
+				'@type': 'Review',
+				reviewRating: {
+					'@type': 'Rating',
+					ratingValue: review.ratingValue || 5,
+					bestRating: 5,
+				},
+				author: {
+					'@type': 'Person',
+					name: review.author || 'Anonymous',
+				},
+				reviewBody: review.reviewBody || 'Amazing experience!',
+			}))
+		: [] // ✅ Fix: If no reviews, set as empty array instead of undefined
+
+	// ✅ Generate Structured Data for Google (Fixed errors)
+	const tourSchema = tourData
+		? {
+				'@context': 'https://schema.org',
+				'@type': 'TouristTrip', // ✅ Changed from 'TouristAttraction' to 'TouristTrip'
+				name: tourData.name,
+				description: tourData.overview,
+				image: imageUrls, // ✅ Ensuring image URLs are always included
+				aggregateRating: tourData.reviewCount
+					? {
+							'@type': 'AggregateRating',
+							ratingValue: tourData.rating || 4.5,
+							reviewCount: tourData.reviewCount,
+						}
+					: undefined, // ✅ Prevents error when reviewCount is missing
+				address: {
+					'@type': 'PostalAddress',
+					addressLocality: tourData.startAddress?.city || 'Unknown City',
+					addressCountry: tourData.startAddress?.country || 'Unknown Country',
+				},
+				geo: tourData.geo
+					? {
+							'@type': 'GeoCoordinates',
+							latitude: tourData.geo?.lat || 0,
+							longitude: tourData.geo?.lng || 0,
+						}
+					: undefined, // ✅ Prevents error if geo is missing
+				duration: tourData.duration ? `PT${tourData.duration}H` : 'PT4H', // Duration in ISO format
+				offers: {
+					'@type': 'Offer',
+					price: priceStart.toFixed(2), // Dynamic price
+					priceCurrency: tourData.currency || 'USD',
+					validFrom: new Date().toISOString(), // When the offer is valid
+					availability: 'https://schema.org/InStock',
+					provider: {
+						'@type': 'Organization',
+						name: 'TRAVSUS',
+						url: 'https://travsus.com',
+					},
+				},
+				performer: {
+					'@type': 'Person',
+					name: 'Experienced Guide',
+				},
+				openingHours: 'Mo-Su 08:00-18:00', // Default hours
+				review: reviews, // ✅ Ensuring the review field is always present
+			}
+		: null
 
 	return (
 		<div className="ListingDetailPage">
 			<Suspense>
-				<ListingImageGallery images={getImageGalleryListing()} />
+				<ListingImageGallery images={listingExperienceImageGallery} />
 			</Suspense>
 
 			<div className="ListingDetailPage__content container">{children}</div>
 
-			{/* OTHER SECTION */}
-			{/* <div className="container py-24 lg:py-32">
-				<div className="relative py-16">
-					<BackgroundSection />
-					<SectionSliderNewCategories
-						heading="Explore by types of stays"
-						subHeading="Explore houses based on 10 types of stays"
-						categoryCardType="card5"
-						itemPerRow={5}
-						sliderStyle="style2"
-					/>
-				</div>
-				<SectionSubscribe2 className="pt-24 lg:pt-32" />
-			</div> */}
+			{/* ✅ SEO Structured Data for Tour (Ensured valid JSON-LD) */}
+			{tourSchema && (
+				<script
+					type="application/ld+json"
+					dangerouslySetInnerHTML={{ __html: JSON.stringify(tourSchema) }}
+				/>
+			)}
 
-			{/* STICKY FOOTER MOBILE */}
+			{/* ✅ STICKY FOOTER MOBILE */}
 			<MobileFooterSticky />
 		</div>
 	)

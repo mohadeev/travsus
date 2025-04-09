@@ -33,6 +33,7 @@ import SidebarSkeletonLoader from './SidebarSkeletonLoader'
 import { Button } from '@/components/ui'
 import { updateLineItemsLogic } from '@/app/api/updateLineItems/updateLineItemsLogic'
 import { formatCurrency } from '@/utils/formatCurrency'
+import { useAuthAction } from '@/app/hooks/useAuthAction'
 
 export interface RenderSidebarProps {}
 
@@ -41,11 +42,9 @@ const RenderSidebar: FC<RenderSidebarProps> = ({}) => {
 	const router = useRouter()
 	const dispatch = useDispatch()
 	const { booking, status } = useSelector((state: any) => state.bookingSlice)
+	const user = useSelector((state: any) => state.userReducer.userData)
 	const { guests, lineItems, accommodation, transport, bookOwnHotels } = booking
-	console.log(
-		'----------------------------------accommodation:-------------------------------------',
-		accommodation,
-	)
+
 	const totalGuests: number = guests?.guestAdults + guests?.guestChildren
 	const { name: title, price }: any = useSelector(
 		(state: any) => state.creatingServiceSlice.service,
@@ -70,10 +69,6 @@ const RenderSidebar: FC<RenderSidebarProps> = ({}) => {
 		dispatch(setSelectedDate(date))
 		setIsDateSelected(!!date.startDate)
 		setShowError(false)
-	}
-
-	const handleOpenModalImageGallery = () => {
-		router.push(`${thisPathname}/?modal=PHOTO_TOUR_SCROLLABLE` as Route)
 	}
 
 	const handleGuestsChange = async (data: any) => {
@@ -120,7 +115,23 @@ const RenderSidebar: FC<RenderSidebarProps> = ({}) => {
 		}
 	}, [booking])
 
-	const handleReserveClick = () => {
+	// const handleAddToWishList = useAuthAction(async () => {
+	// 		dispatch(updateServiceState({ path: 'service.liked', value: !liked }))
+	// 		await addAndRemoveToWishList({ serviceId })
+	// 			.then((res: any) => {
+	// 				if (res?.added === false || res?.added === true) {
+	// 					dispatch(
+	// 						updateServiceState({ path: 'service.liked', value: res?.added }),
+	// 					)
+
+	// 				}
+	// 			})
+	// 			.catch(() => {
+	// 				dispatch(updateServiceState({ path: 'service.liked', value: !liked }))
+	// 			})
+	// 	})
+
+	const handleReserveClick = useAuthAction(async () => {
 		if (!isDateSelected) {
 			setIsShaking(true)
 			setShowError(true)
@@ -155,7 +166,7 @@ const RenderSidebar: FC<RenderSidebarProps> = ({}) => {
 					console.error('Error:', error)
 				})
 		}
-	}
+	})
 	const priceStart = totalAmount / totalGuests
 
 	return (
@@ -218,7 +229,11 @@ const RenderSidebar: FC<RenderSidebarProps> = ({}) => {
 					<Button
 						loading={currentStatus === 'loading'}
 						className="mt-4 w-full"
-						disabled={currentStatus === 'loading'}
+						disabled={
+							currentStatus === 'loading'
+							// (process.env.NODE_ENV === 'development' &&
+							// 	user?.email !== 'skendoulmohamed@gmail.com')
+						}
 						onClick={handleReserveClick}
 					>
 						{status === 'loading' ? 'Processing...' : 'Reserve'}

@@ -21,6 +21,9 @@ import { CombinedCookieConsent } from './privacy-policy/CombinedCookieConsent'
 import ConditionalComponent from '@/components/ConditionalComponent'
 import { useEffect } from 'react'
 import { wakeUpServer } from '@/utils/wakeUpServer'
+import createMailRelayUser from '@/utils/crm/createMailRelayUser'
+import NewsletterModal from './newsletter-modal'
+import { PlanTripModal } from './plan-trip-modal'
 
 export default function RootLayout({
 	children,
@@ -35,11 +38,24 @@ export default function RootLayout({
 	const isDashboardPath = pathname?.startsWith('/dashboard') ?? false
 	useEffect(() => {
 		wakeUpServer()
+		// ;(async () => {
+		// 	try {
+		// 		const response = await createMailRelayUser({
+		// 			email: 'dev@travsus.com',
+		// 			name: 'Ghalo',
+		// 			group_ids: [1],
+		// 		})
+		// 		alert('User created:' + response)
+		// 	} catch (error) {
+		// 		console.log('Error:', (error as Error).message)
+		// 	}
+		// })()
 	}, [])
 
 	return (
 		<html lang="en">
 			<head>
+				<meta name="google-adsense-account" content="ca-pub-9261275339248060" />
 				<link rel="preconnect" href="//fdn.fontcdn.ir" />
 				<link rel="preconnect" href="//v1.fontapi.ir" />
 				<link
@@ -102,11 +118,16 @@ export default function RootLayout({
 							<Providers>
 								<AuthWatcher />
 								<body className="bg-white text-base text-neutral-900 dark:bg-neutral-900 dark:text-neutral-200">
+									{/* <NewsletterModal /> */}
 									<div>
 										<CombinedCookieConsent />
+										{/* <PlanTripModal isOpen={true} onClose={()=>{}}/> */}
 										{!isDashboardPath && (
-											<ConditionalComponent component={SiteHeader} />
-										)}{' '}
+											<ConditionalComponent
+												show={true}
+												component={SiteHeader}
+											/>
+										)}
 										{children}
 										{!isDashboardPath && (
 											<>

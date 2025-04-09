@@ -101,7 +101,7 @@ const bookingSlice = createSlice({
 		},
 		updateBookingLineItems: (state, action: PayloadAction<any>) => {
 			const { path, value } = action.payload
-			updateNestedStateWithMap(state, path, value)
+			state.booking.lineItems = value
 		},
 		updateProvidedService: (state, action: PayloadAction<any>) => {
 			const { path, value } = action.payload

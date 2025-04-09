@@ -8,7 +8,7 @@ export async function GET(request: NextRequest) {
 	try {
 		const userData: any = await getUserData()
 		const { savedList } = userData || {}
-		console.log('userData:', userData)
+		// console.log('userData:', userData)
 
 		// Extract query parameters from the request URL
 		const { searchParams } = new URL(request.url)
@@ -29,13 +29,18 @@ export async function GET(request: NextRequest) {
 				id: tourId, // MongoDB ID is a string
 			},
 			include: {
-				address: {
-					include: {
-						geoCoordinates: true, // Include geoCoordinates in the address
-					},
-				},
+				startAddress: true,
+				endAddress: true,
+				// address: {
+				// 	include: {
+				// 		geoCoordinates: true, // Include geoCoordinates in the address
+				// 	},
+				// },
 			},
 		})
+
+		// console.log('accommodations', JSON.stringify(tour?.accommodations))
+		// console.log('pricingTiers', JSON.stringify(tour?.pricingTiers))
 		if (!tour) {
 			return NextResponse.json(
 				{ message: 'service-not-found' },

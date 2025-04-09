@@ -36,11 +36,11 @@ export async function GET(request: NextRequest) {
 			include: {
 				tour: {
 					include: {
-						address: {
-							include: {
-								geoCoordinates: true,
-							},
-						},
+						// address: {
+						// 	include: {
+						// 		geoCoordinates: true,
+						// 	},
+						// },
 					},
 				},
 				customer: true, // Include user information if needed

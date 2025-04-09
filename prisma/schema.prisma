@@ -7,6 +7,7 @@ datasource db {
 
 generator client {
   provider = "prisma-client-js"
+  binaryTargets = ["native", "windows", "rhel-openssl-3.0.x"]
 }
 
 
@@ -205,7 +206,13 @@ model User {
   dislikedCommentIds     String[]  @db.ObjectId
   likedComments          ForumComment[] @relation("LikedComments", fields: [likedCommentIds], references: [id])
   dislikedComments       ForumComment[] @relation("DislikedComments", fields: [dislikedCommentIds], references: [id])
+  
+  referredById    String?   @db.ObjectId
+  referredBy      User?     @relation("UserReferrals", fields: [referredById], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  referredUsers   User[]    @relation("UserReferrals") // Must not specify `fields` or `references`
+  referralLinks   ReferralLink[] @relation("UserReferralLinks")
   @@map("users")
+
 }
 
 
@@ -231,7 +238,13 @@ model PaymentMethod {
   billingPostalCode      String?
   billingCountry         String?
   isDefault Boolean? @default(false)
+  isTemporary Boolean? @default(false)
   @@map("payment_methods")
+}
+
+type Faq {
+  question String
+  answer   String
 }
 
 model Tour {
@@ -250,7 +263,7 @@ model Tour {
   services       Json[]
   places         Json[]
   highlights     Json[]
-  days           Json[]
+  days           Day[]    
   paths          Json[]
   price          String?
   discount       String?
@@ -266,11 +279,16 @@ model Tour {
   createdAt      DateTime  @default(now())
   updatedAt      DateTime  @updatedAt
   bookings       Booking[] @relation("TourBookings")
-  addressId      String?   @db.ObjectId // Foreign key to Address
-  address        Address?  @relation("TourAddresses", fields: [addressId], references: [id])
+//addressId      String?   @db.ObjectId
+//address        Address?  @relation("TourAddresses", fields: [addressId], references: [id])
   pricingTiers   PricingTier[]
-  accommodations Accommodations[] // New field for accommodations
-
+  accommodations Accommodations[]
+  startAddressId String?   @db.ObjectId
+  startAddress   Address?  @relation("TourStartAddress", fields: [startAddressId], references: [id])
+  endAddressId   String?   @db.ObjectId
+  endAddress     Address?  @relation("TourEndAddress", fields: [endAddressId], references: [id])
+  faq            Faq[]
+  inclusions     Inclusions?  // ✅ Added inclusions just like FAQ  
   @@map("tours")
 }
 
@@ -278,6 +296,21 @@ type PricingTier {
   minSeats    Int?
   maxSeats    Int?
   pricing     Pricing?
+}
+
+type Inclusions {
+  luxury   LuxuryInclusion
+  standard StandardInclusion
+}
+
+type LuxuryInclusion {
+  private String[]
+  shared  String[]
+}
+
+type StandardInclusion {
+  private String[]
+  shared  String[]
 }
 
 type Pricing {
@@ -313,34 +346,33 @@ enum BedType {
   COUPLE
 }
 
-model Address {
-  id               String          @id @default(auto()) @map("_id") @db.ObjectId
-  streetAddress    String
-  buildingNumber   String?
-  suiteNumber      String?
-  postOfficeBox    String?
-  city             String
-  state            String
-  postalCode       String
-  country          String
-  addressType      String?
-  geoCoordinates   GeoCoordinates? @relation("AddressGeoCoordinates", fields: [geoCoordinatesId], references: [id])
-  geoCoordinatesId String?         @unique @db.ObjectId // Foreign key for GeoCoordinates, now with @unique
-  landmark         String?
-  subdivision      String?
-  timeZone         String?
-  isPrimary        Boolean
-  notes            String?
-  users            User[]          @relation("UserAddresses")
-  tours            Tour[]          @relation("TourAddresses")
-  @@map("addresses")
+type GeoCoordinates {
+  lat  Float
+  log Float
 }
 
-model GeoCoordinates {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  latitude  Float
-  longitude Float
-  address   Address? @relation("AddressGeoCoordinates")
+model Address {
+  id             String       @id @default(auto()) @map("_id") @db.ObjectId
+  streetAddress  String?
+  buildingNumber String?
+  suiteNumber    String?
+  postOfficeBox  String?
+  city           String?
+  state          String?
+  postalCode     String?
+  country        String?
+  landmark       String?
+  subdivision    String?
+  timeZone       String?
+  isPrimary      Boolean?
+  notes          String?
+  geoCoordinates GeoCoordinates
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+  //tours          Tour[]         @relation("TourAddresses")
+  toursAsStart   Tour[]         @relation("TourStartAddress")
+  toursAsEnd     Tour[]         @relation("TourEndAddress")
+  users          User[]         @relation("UserAddresses")  // Add this line
 }
 
 model Counter {
@@ -464,3 +496,41 @@ model ForumComment {
   dislikedBy    User[]   @relation("DislikedComments", fields: [dislikedByIds], references: [id])
 }
 
+
+
+
+
+
+
+
+model ReferralLink {
+  id               String    @id @default(auto()) @map("_id") @db.ObjectId
+  userId           String    @db.ObjectId
+  user             User      @relation("UserReferralLinks", fields: [userId], references: [id], onDelete: Cascade)
+
+  code             String    @unique
+  commissionType   CommissionType 
+  commissionValue  Float   
+  isLifetime       Boolean  @default(false) 
+  maxUses          Int?      // Maximum number of times this referral can be used
+  usedCount        Int      @default(0) // Tracks how many times it has been used
+  startDate        DateTime? 
+  endDate          DateTime? 
+
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime?  @updatedAt
+}
+
+
+// Add this type definition for Day
+type Day {
+  name        String
+  description String?
+  cityId      String?   // Make cityId optional (nullable)
+  cityName    String?   // Make cityName optional (nullable)
+} 
+
+enum CommissionType {
+  PERCENTAGE // Example: 5% commission
+  FIXED_AMOUNT // Example: 10€ per booking
+}

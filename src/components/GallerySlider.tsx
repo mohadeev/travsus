@@ -107,7 +107,7 @@ export default function GallerySlider({
 						<div className="opacity-0 transition-opacity group-hover/cardGallerySlider:opacity-100">
 							{index > 0 && (
 								<button
-									className="absolute left-3 top-[calc(50%-16px)] flex h-8 w-8 items-center justify-center rounded-full border border-neutral-200 bg-white hover:border-neutral-300 focus:outline-none dark:border-neutral-6000 dark:bg-neutral-900 dark:hover:border-neutral-500"
+									className="dark:border-neutral-6000 absolute left-3 top-[calc(50%-16px)] flex h-8 w-8 items-center justify-center rounded-full border border-neutral-200 bg-white hover:border-neutral-300 focus:outline-none dark:bg-neutral-900 dark:hover:border-neutral-500"
 									style={{ transform: 'translate3d(0, 0, 0)' }}
 									onClick={() => changePhotoId(index - 1)}
 								>
@@ -116,7 +116,7 @@ export default function GallerySlider({
 							)}
 							{index + 1 < images?.length && (
 								<button
-									className="absolute right-3 top-[calc(50%-16px)] flex h-8 w-8 items-center justify-center rounded-full border border-neutral-200 bg-white hover:border-neutral-300 focus:outline-none dark:border-neutral-6000 dark:bg-neutral-900 dark:hover:border-neutral-500"
+									className="dark:border-neutral-6000 absolute right-3 top-[calc(50%-16px)] flex h-8 w-8 items-center justify-center rounded-full border border-neutral-200 bg-white hover:border-neutral-300 focus:outline-none dark:bg-neutral-900 dark:hover:border-neutral-500"
 									style={{ transform: 'translate3d(0, 0, 0)' }}
 									onClick={() => changePhotoId(index + 1)}
 								>

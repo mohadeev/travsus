@@ -1,87 +1,29 @@
 'use client'
-import React, { FC, useEffect, useState, useRef } from 'react'
+import { type FC, useEffect, useState, useRef } from 'react'
 import { DEMO_EXPERIENCES_LISTINGS } from '@/data/listings'
-import { ExperiencesDataType, StayDataType } from '@/data/types'
+import type { ExperiencesDataType, StayDataType } from '@/data/types'
 import Pagination from '@/shared/Pagination'
-import TabFilters from './TabFilters'
 import Heading2 from '@/shared/Heading2'
 import ExperiencesCard from '@/components/ExperiencesCard'
-import { useSelector } from 'react-redux'
 import allToursFetch from '@/utils/allToursFetch'
 import ContainerExperiencesCardSkeleton from '@/components/ContainerExperiencesCardSkeleton'
 import { HeadingSkeleton } from '@/shared/Heading'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 export interface SectionGridFilterCardProps {
 	className?: string
 	data?: StayDataType[]
+	layout?: 'row' | 'column'
 }
 
 const DEMO_DATA: ExperiencesDataType[] = DEMO_EXPERIENCES_LISTINGS.filter(
 	(_, i) => i < 8,
 )
 
-// const SectionGridFilterCard: FC<SectionGridFilterCardProps> = ({
-// 	className = '',
-// 	data = DEMO_DATA,
-// }) => {
-// 	const user = useSelector((state: any) => state.userReducer.userData)
-// 	const [servicesData, setServicesData] = useState([])
-// 	const [loading, setLoading] = useState(true);
-
-// 	useEffect(() => {
-// 		allToursFetch().then((data) => {
-// 			if (data?.allToursData) {
-// 				setServicesData(data.allToursData)
-// 				setLoading(false)
-// 			}
-// 		})
-
-// 		return () => {}
-// 	}, [])
-
-// 	return (
-// 		<div className={`nc-SectionGridFilterCard ${className}`}>
-
-// 			{loading ? (
-//   <HeadingSkeleton isCenter={false} />
-// ) : (
-//   <Heading2
-//     heading={`Experiences in ${user?.currentGeo?.country}`}
-//     subHeading={
-//       <span className="mt-3 block text-neutral-500 dark:text-neutral-400">
-//         233 experiences
-//         <span className="mx-2">·</span>
-//         Aug 12 - 18
-//         <span className="mx-2">·</span>
-//         2 Guests
-//       </span>
-//     }
-//   />
-// )}
-// 			<div className="mb-8 lg:mb-11">
-// 				<TabFilters loading={loading}/>
-// 			</div>
-// 			<div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 lg:grid-cols-3 2xl:grid-cols-4">
-// 				{servicesData.map((stay: any) => (
-// 					<ExperiencesCard key={stay?.id} data={stay} />
-// 				))}
-// 				{loading && 	<ContainerExperiencesCardSkeleton />}
-
-// 			</div>
-// 			<div className="mt-16 flex items-center justify-center">
-// 				<Pagination   currentPage={1}
-//   totalPages={8}
-//   onPageChange={()=>{}}/>
-// 			</div>
-// 		</div>
-// 	)
-// }
-
-// export default SectionGridFilterCard
-
 const SectionGridFilterCard: FC<SectionGridFilterCardProps> = ({
 	className = '',
 	data = DEMO_DATA,
+	layout = 'column',
 }) => {
 	const [servicesData, setServicesData] = useState([])
 	const [loading, setLoading] = useState(true)
@@ -90,6 +32,19 @@ const SectionGridFilterCard: FC<SectionGridFilterCardProps> = ({
 
 	// Create a ref for the container div
 	const sectionRef = useRef<HTMLDivElement>(null)
+	const scrollContainerRef = useRef<HTMLDivElement>(null)
+
+	const scrollLeft = () => {
+		if (scrollContainerRef.current) {
+			scrollContainerRef.current.scrollBy({ left: -300, behavior: 'smooth' })
+		}
+	}
+
+	const scrollRight = () => {
+		if (scrollContainerRef.current) {
+			scrollContainerRef.current.scrollBy({ left: 300, behavior: 'smooth' })
+		}
+	}
 
 	useEffect(() => {
 		const fetchTours = async () => {
@@ -113,6 +68,7 @@ const SectionGridFilterCard: FC<SectionGridFilterCardProps> = ({
 			block: 'start', // Align to the top of the div
 		})
 	}
+
 	return (
 		// Attach the ref to the div you want to scroll to
 		<div
@@ -120,6 +76,17 @@ const SectionGridFilterCard: FC<SectionGridFilterCardProps> = ({
 			id="experiences_container"
 			className={`nc-SectionGridFilterCard ${className}`}
 		>
+			{/* Custom CSS for hiding scrollbars */}
+			<style jsx global>{`
+				.hide-scrollbar::-webkit-scrollbar {
+					display: none;
+				}
+				.hide-scrollbar {
+					-ms-overflow-style: none;
+					scrollbar-width: none;
+				}
+			`}</style>
+
 			{loading ? (
 				<HeadingSkeleton isCenter={false} />
 			) : (
@@ -128,24 +95,68 @@ const SectionGridFilterCard: FC<SectionGridFilterCardProps> = ({
 					subHeading="Explore the best tours and experiences"
 				/>
 			)}
-			{/* <div className="mb-8 lg:mb-11">
-				<TabFilters loading={loading} />
-			</div> */}
 
-			<div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 lg:grid-cols-3 2xl:grid-cols-4">
-				{servicesData.map((stay: any) => (
-					<ExperiencesCard key={stay?.id} data={stay} />
-				))}
-				{loading && <ContainerExperiencesCardSkeleton />}
-			</div>
+			{layout === 'column' ? (
+				// Column layout - grid view with pagination
+				<>
+					<div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+						{!loading &&
+							servicesData.map((stay: any) => (
+								<ExperiencesCard key={stay?.id} data={stay} />
+							))}
+						{loading && <ContainerExperiencesCardSkeleton />}
+					</div>
 
-			<div className="mt-16 flex items-center justify-center">
-				<Pagination
-					currentPage={currentPage}
-					totalPages={totalPages}
-					onPageChange={handlePageChange}
-				/>
-			</div>
+					{!loading && (
+						<div className="mt-16 flex items-center justify-center">
+							<Pagination
+								currentPage={currentPage}
+								totalPages={totalPages}
+								onPageChange={handlePageChange}
+							/>
+						</div>
+					)}
+				</>
+			) : (
+				// Row layout - horizontal scrolling with navigation arrows
+				<div className="relative">
+					{/* Left navigation arrow - only show when not loading */}
+					{!loading && (
+						<button
+							onClick={scrollLeft}
+							className="absolute left-0 top-1/2 z-10 flex h-7 w-7 -translate-x-1/2 -translate-y-1/2 transform items-center justify-center rounded-full border border-black bg-white transition-colors duration-200 hover:bg-black hover:text-white focus:outline-none sm:h-8 sm:w-8 md:h-10 md:w-10"
+							aria-label="Scroll left"
+						>
+							<ChevronLeft className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5" />
+						</button>
+					)}
+
+					{/* Scrollable container */}
+					<div
+						ref={scrollContainerRef}
+						className="hide-scrollbar flex gap-5 overflow-x-auto py-0"
+					>
+						{!loading &&
+							servicesData.map((stay: any) => (
+								<div key={stay?.id} className="flex-none">
+									<ExperiencesCard data={stay} size="small" />
+								</div>
+							))}
+						{loading && <ContainerExperiencesCardSkeleton />}
+					</div>
+
+					{/* Right navigation arrow - only show when not loading */}
+					{!loading && (
+						<button
+							onClick={scrollRight}
+							className="absolute right-0 top-1/2 z-10 flex h-7 w-7 -translate-y-1/2 translate-x-1/2 transform items-center justify-center rounded-full border border-black bg-white transition-colors duration-200 hover:bg-black hover:text-white focus:outline-none sm:h-8 sm:w-8 md:h-10 md:w-10"
+							aria-label="Scroll right"
+						>
+							<ChevronRight className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5" />
+						</button>
+					)}
+				</div>
+			)}
 		</div>
 	)
 }

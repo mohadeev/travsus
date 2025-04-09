@@ -26,10 +26,16 @@ export async function GET(request: NextRequest) {
 					isEmpty: false,
 				},
 			},
+			include: {
+				startAddress: true,
+				endAddress: true,
+			},
 			skip: (page - 1) * limit,
 			take: limit,
 		})
-
+		allToursData.map((tour) => {
+			// console.log('startAddress', tour?.endAddress.city)
+		})
 		const modifiedToursData = allToursData.map((tour) => ({
 			...tour,
 			liked: savedList?.includes(tour.id),

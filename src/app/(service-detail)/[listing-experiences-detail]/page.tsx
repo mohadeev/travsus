@@ -1,6 +1,6 @@
 'use client'
 
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC, useEffect, useRef, useState } from 'react'
 import { ArrowRightIcon, Squares2X2Icon } from '@heroicons/react/24/outline'
 import CommentListing from '@/components/CommentListing'
 import FiveStartIconForRate from '@/components/FiveStartIconForRate'
@@ -33,7 +33,32 @@ import RenderSidebar from './RenderSidebar'
 import TourItinerary from './TourItinerary'
 import ListingExperiencesDetailsImages from './ListingExperiencesDetailsImages'
 import TourListingHeader from './listing-components/TourListingHeader'
+import ExperiencesDescriptionSkeleton from './ExperiencesDescriptionSkeleton'
+import SectionGridFilterCard from '@/app/(experience-listings)/SectionGridFilterCard'
+import L from 'leaflet'
+import 'leaflet/dist/leaflet.css'
+// import MapComponent from './MapComponent'
+import dynamic from 'next/dynamic'
+import TourFAQ from './FAQProps'
+import ReviewSystem from './ReviewSystem'
+import Included from './Included'
+import { ChevronDown, ChevronRight, Heart } from 'lucide-react'
+import Link from 'next/link'
+
+const MapComponent = dynamic(() => import('./MapComponent'), {
+	ssr: false,
+})
+
 export interface ListingExperiencesDetailPageProps {}
+
+interface Address {
+	streetAddress?: string
+	buildingNumber?: string
+	city?: string
+	state?: string
+	postalCode?: string
+	country?: string
+}
 
 const ListingExperiencesDetailPage: FC<
 	ListingExperiencesDetailPageProps
@@ -63,129 +88,44 @@ const ListingExperiencesDetailPage: FC<
 	const handleResetBooking = () => {
 		dispatch(resetBooking())
 	}
-	const handleOpenModalImageGallery = () => {
-		const current = new URLSearchParams(Array.from(searchParams.entries()))
-
-		// Set the modal parameter
-		current.set('modal', 'PHOTO_TOUR_SCROLLABLE')
-
-		// Create the new search string
-		const search = current.toString()
-		const query = search ? `?${search}` : ''
-
-		router.push(`${pathname}${query}` as Route)
-	}
 
 	const {
 		name: title,
 		region,
 		start,
+		id,
 		images,
 		overview,
 		reviews,
 		days,
 		liked,
+		startAddress,
+		faq,
+		inclusions,
 	}: any = useSelector((state: any) => state.creatingServiceSlice.service)
 
-	const PHOTOS: any = images?.map(({ url }: any) => url)
-	let newLocation = region
-	const regionC = newLocation?.length > 0 ? newLocation[0]?.region : ''
-	const country = newLocation?.length > 0 ? newLocation[0]?.country : ''
-
-	const renderSection1 = () => {
-		return (
-			<div className="listingSection__wrap !space-y-6">
-				{/* 1 */}
-				<div className="flex items-center justify-between">
-					<Badge color="pink" name="Travsus" />
-					<LikeSaveBtns liked={liked} />
-				</div>
-
-				{/* 2 */}
-				<h2 className="text-2xl font-semibold sm:text-3xl lg:text-4xl">
-					{title}
-				</h2>
-
-				{/* 3 */}
-				<div className="flex items-center space-x-4">
-					<StartRating />
-					<span>·</span>
-					<span>
-						<i className="las la-map-marker-alt"></i>
-						<span className="ml-1">
-							{country} - {start?.name}
-						</span>
-					</span>
-				</div>
-
-				{/* 4 */}
-				<div className="flex items-center">
-					<Avatar hasChecked sizeClass="h-10 w-10" radius="rounded-full" />
-					<span className="ml-2.5 text-neutral-500 dark:text-neutral-400">
-						Hosted by{' '}
-						<span className="font-medium text-neutral-900 dark:text-neutral-200">
-							Travsus{' '}
-						</span>
-					</span>
-				</div>
-
-				{/* 5 */}
-				<div className="w-full border-b border-neutral-100 dark:border-neutral-700" />
-
-				{/* 6 */}
-				<div className="flex items-center justify-between space-x-8 text-sm text-neutral-700 dark:text-neutral-300 xl:justify-start xl:space-x-12">
-					<div className="flex flex-col items-center space-y-3 text-center sm:flex-row sm:space-x-3 sm:space-y-0 sm:text-left">
-						<i className="las la-clock text-2xl"></i>
-						<span className="">{days?.length} Days</span>
-					</div>
-					<div className="flex flex-col items-center space-y-3 text-center sm:flex-row sm:space-x-3 sm:space-y-0 sm:text-left">
-						<i className="las la-user-friends text-2xl"></i>
-						<span className="">from 1 to 100 people</span>
-					</div>
-					<div className="flex flex-col items-center space-y-3 text-center sm:flex-row sm:space-x-3 sm:space-y-0 sm:text-left">
-						<i className="las la-language text-2xl"></i>
-						<span className="">
-							English, Spanish, Frensh, Italain, Portogish.
-						</span>
-					</div>
-				</div>
-			</div>
-		)
-	}
+	const city = startAddress?.city
 
 	const renderSection2 = () => {
 		return (
-			<div className="listingSection__wrap">
-				<h2 className="text-2xl font-semibold">Experiences descriptions</h2>
-				<div className="text-neutral-6000 dark:text-neutral-300">
-					<p>{overview}</p>
-				</div>
-			</div>
-		)
-	}
-
-	const renderSection3 = () => {
-		return (
-			<div className="listingSection__wrap">
-				<div>
-					<h2 className="text-2xl font-semibold">Include </h2>
-					<span className="mt-2 block text-neutral-500 dark:text-neutral-400">
-						Included in the price
-					</span>
-				</div>
-				<div className="w-14 border-b border-neutral-200 dark:border-neutral-700"></div>
-				{/* 6 */}
-				<div className="grid grid-cols-1 gap-6 text-sm text-neutral-700 dark:text-neutral-300 lg:grid-cols-2">
-					{includes_demo
-						.filter((_, i) => i < 12)
-						.map((item) => (
-							<div key={item.name} className="flex items-center space-x-3">
-								<i className="las la-check-circle text-2xl"></i>
-								<span>{item.name}</span>
-							</div>
-						))}
-				</div>
-			</div>
+			<>
+				{overview ? (
+					<div className="space-y-0 p-0">
+						<div className="max-w-3xl">
+							<h2 className="my-4 text-2xl font-semibold">Overview</h2>
+							<p className="mb-0.5 rounded-lg bg-gray-50 p-4 text-sm leading-relaxed text-black md:text-base">
+								{overview}
+								<button className="flex items-center text-sm font-medium text-black md:text-base">
+									Read more{' '}
+									<ChevronDown className="ml-1 h-4 w-4 md:h-5 md:w-5" />
+								</button>
+							</p>
+						</div>
+					</div>
+				) : (
+					<ExperiencesDescriptionSkeleton className="listingSection__wrap_no_border" />
+				)}
+			</>
 		)
 	}
 
@@ -330,39 +270,6 @@ const ListingExperiencesDetailPage: FC<
 		)
 	}
 
-	const renderSection7 = () => {
-		return (
-			<div className="listingSection__wrap">
-				{/* HEADING */}
-				<div>
-					<h2 className="text-2xl font-semibold">Location</h2>
-					<span className="mt-2 block text-neutral-500 dark:text-neutral-400">
-						<span className="mt-2 block text-neutral-500 dark:text-neutral-400">
-							{regionC} - &nbsp;
-							{country} - &nbsp;
-							{start?.name}
-						</span>
-					</span>
-				</div>
-				<div className="w-14 border-b border-neutral-200 dark:border-neutral-700" />
-
-				{/* MAP */}
-				<div className="aspect-h-5 aspect-w-5 z-0 rounded-xl ring-1 ring-black/10 sm:aspect-h-3">
-					<div className="z-0 overflow-hidden rounded-xl">
-						<iframe
-							width="100%"
-							height="100%"
-							loading="lazy"
-							allowFullScreen
-							referrerPolicy="no-referrer-when-downgrade"
-							src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAGVJfZMAKYfZ71nzL_v5i3LjTTWnCYwTY&q=Eiffel+Tower,Paris+France"
-						></iframe>
-					</div>
-				</div>
-			</div>
-		)
-	}
-
 	const renderSection8 = () => {
 		return (
 			<div className="listingSection__wrap">
@@ -428,49 +335,104 @@ const ListingExperiencesDetailPage: FC<
 			</div>
 		)
 	}
-	const itinerary = () => {
-		return (
-			<div className="listingSection__wrap">
-				{/* <div className="relative h-[100px] w-[3px] rounded-full bg-transparent">
-					<div className="absolute left-1/2 top-0 flex h-[40px] w-[40px] -translate-x-1/2 transform items-center justify-center rounded-full bg-black text-white">
-						1
-					</div>
-					
-				</div> */}
-			</div>
-		)
-	}
 
 	return (
-		<div className={`nc-ListingExperiencesDetailPage`}>
-			{/* MAIn */}
-			<ListingExperiencesDetailsImages />
-			<main className="relative z-10 mt-11 flex flex-col lg:flex-row">
-				{/* CONTENT */}
-				<div className="w-full space-y-8 lg:w-3/5 lg:space-y-10 lg:pr-10 xl:w-2/3">
-					<TourListingHeader />
-					{renderSection2()}
-					<TourItinerary days={days} />
-
-					{/* {itinerary()} */}
-					{renderSection3()}
-
-					{/* <SectionDateRange /> */}
-
-					{/* {renderSection5()} */}
-					{/* {renderSection6()} */}
-					{renderSection7()}
-					{renderSection8()}
-				</div>
-
-				{/* SIDEBAR */}
-				<div className="mt-14 hidden flex-grow lg:mt-0 lg:block">
-					<div className="top-28">
-						<RenderSidebar />
+		<>
+			<div className={`nc-ListingExperiencesDetailPage`}>
+				{/* <h2
+					className="my-10 text-2xl font-semibold sm:text-3xl lg:text-5xl"
+					style={{ fontWeight: '800' }}
+				>
+					{title}
+				</h2> */}
+				<div>
+					<div className="mt-2 flex flex-col px-0 py-2 text-xs md:mt-4 md:flex-row md:items-center md:justify-between md:px-0">
+						<div className="mb-1 flex items-center md:mb-0">
+							<Link href="/" className="text-black hover:underline">
+								TRAVSUS
+							</Link>
+							<ChevronRight className="mx-1 h-2.5 w-2.5 text-black" />
+							<Link
+								href="#"
+								className="flex items-center text-black hover:underline"
+							>
+								{city}
+								<ChevronRight className="mx-1 h-2.5 w-2.5 text-black" />
+								{title}
+								<ChevronDown className="ml-1 h-2.5 w-2.5" />
+							</Link>
+						</div>
+						<div className="text-black">
+							<span>
+								Plan Your Trip to {city}: Best {city} Travel Guide
+							</span>
+						</div>
 					</div>
 				</div>
-			</main>
-		</div>
+				<div className="mb-4 flex flex-row items-center justify-between md:mb-6">
+					{/* Morocco heading always on left */}
+					<h1 className="text-3xl font-extrabold text-black md:text-4xl">
+						{title}
+					</h1>
+
+					{/* Save button always on right */}
+					{/* <button
+						className="flex h-10 w-10 items-center justify-center rounded-full border border-black hover:bg-gray-50 md:h-12 md:w-12"
+						aria-label="Save"
+					>
+						<Heart className="h-5 w-5 md:h-6 md:w-6" />
+					</button> */}
+					<div className="flex items-center justify-between">
+						{/* <Badge
+							className="flex h-10 w-10 items-center justify-center rounded-full border border-black hover:bg-gray-50 md:h-12 md:w-12"
+							color="pink"
+							name="Travsus"
+						/> */}
+						<LikeSaveBtns
+							className="flex h-10 w-10 items-center justify-center rounded-full border border-black hover:bg-gray-50 md:h-12 md:w-12"
+							liked={liked}
+						/>
+					</div>
+				</div>
+			</div>
+
+			<ListingExperiencesDetailsImages />
+			<div className={`nc-ListingExperiencesDetailPage`}>
+				{/* MAIn */}
+				<main className="relative z-10 mt-11 flex flex-col lg:flex-row">
+					{/* CONTENT */}
+					<div className="w-full space-y-8 lg:w-3/5 lg:space-y-10 lg:pr-10 xl:w-2/3">
+						{renderSection2()}
+						{/* <TourListingHeader /> */}
+						<Included />
+						{days && <TourItinerary itinerary={days} days={days} />}
+					</div>
+
+					{/* SIDEBAR */}
+					<div className="mt-14 hidden flex-grow lg:mt-0 lg:block">
+						<div className="top-28">
+							<RenderSidebar />
+						</div>
+					</div>
+				</main>
+				<MapComponent startAddress={startAddress} />
+				{/* {itinerary()} */}
+				{/* {renderSection3()} */}
+
+				{/* <SectionDateRange /> */}
+
+				{/* {renderSection5()} */}
+				{/* {renderSection6()} */}
+				<TourFAQ faqs={faq} />
+
+				{/* {renderSection8()} */}
+				<ReviewSystem serviceId={id} serviceName={title} />
+				<SectionGridFilterCard
+					layout="row"
+					className={'mb-10 mt-10 pb-24 lg:pb-28'}
+				/>
+			</div>
+		</>
 	)
 }
 

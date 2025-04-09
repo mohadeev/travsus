@@ -59,6 +59,7 @@ const TourListingHeader = () => {
 		reviews,
 		days,
 		liked,
+		startAddress,
 	}: any = useSelector((state: any) => state.creatingServiceSlice.service)
 
 	let newLocation = region
@@ -72,29 +73,29 @@ const TourListingHeader = () => {
 	return (
 		<div className="listingSection__wrap_no_border_color !space-y-6">
 			{/* 1 */}
-			<div className="flex items-center justify-between">
+			{/* <div className="flex items-center justify-between">
 				<Badge color="pink" name="Travsus" />
 				<LikeSaveBtns liked={liked} />
-			</div>
+			</div> */}
 
 			{/* 2 */}
-			<h2
+			{/* <h2
 				className="text-2xl font-semibold sm:text-3xl lg:text-4xl"
 				style={{ fontWeight: '700' }}
 			>
 				{title}
-			</h2>
+			</h2> */}
 
-			<div className="flex items-center space-x-4">
+			{/* <div className="flex items-center space-x-4">
 				<StartRating />
 				<span>·</span>
 				<span>
 					<i className="las la-map-marker-alt"></i>
 					<span className="ml-1">
-						{country} - {start?.name}
+						{startAddress?.country} - {startAddress?.city}
 					</span>
 				</span>
-			</div>
+			</div> */}
 
 			{/* 4 */}
 			<div className="flex items-center">

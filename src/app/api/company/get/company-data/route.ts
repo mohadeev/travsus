@@ -1,13 +1,12 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { type NextRequest, NextResponse } from 'next/server'
 import prisma from '@/prisma'
 import getUserData from '@/app/api/user/getUserData'
 
 export async function GET(request: NextRequest) {
-	console.log('here')
 	try {
 		// Retrieve user data to get the creatorId
 		const userData = await getUserData()
-
+		console.log('userData: ', userData)
 		// Ensure userData contains creatorId
 		if (!userData || !userData.id) {
 			return NextResponse.json(

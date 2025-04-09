@@ -72,17 +72,44 @@ export const authOptions: NextAuthOptions = {
 		signIn: '/login',
 	},
 	callbacks: {
-		async jwt({ token, user }: { token: JWT; user?: User }) {
-			if (user) {
-				token.id = user.id
+		async signIn({ user, account, profile }) {
+			// Only proceed for Google provider
+			if (account?.provider === 'google' && user.email) {
+				try {
+					// Check if user exists in database
+					const existingUser = await prisma.user.findUnique({
+						where: { email: user.email },
+					})
+
+					// If user doesn't exist, create a new one
+					if (!existingUser && user.email) {
+						// Split the name into first and last name
+						const nameParts = user.name ? user.name.split(' ') : ['', '']
+						const firstName = nameParts[0]
+						const lastName = nameParts.slice(1).join(' ')
+
+						await prisma.user.create({
+							data: {
+								email: user.email,
+								accountData: {
+									firstname: firstName,
+									lastname: lastName,
+								},
+								password: '', // Empty password for Google users
+								emailVerified: true, // Google accounts are already verified
+							},
+						})
+						console.log('New Google user created:', user.email)
+					}
+
+					return true // Allow sign in
+				} catch (error) {
+					console.error('Error in Google sign in:', error)
+					return false // Deny sign in on error
+				}
 			}
-			return token
-		},
-		async session({ session, token }: { session: any; token: JWT }) {
-			if (session.user) {
-				session.user.id = token.id as string
-			}
-			return session
+
+			return true // Allow sign in for other providers
 		},
 	},
 	secret: secret,

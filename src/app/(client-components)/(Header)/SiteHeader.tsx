@@ -10,10 +10,10 @@ import { PathName } from '@/routers/types'
 import Link from 'next/link'
 import Header from './Header'
 import Header3 from './Header3'
-import { usePathname } from 'next/navigation'
 import { useThemeMode } from '@/utils/useThemeMode'
 import { useSelector } from 'react-redux'
 import HeaderSkeleton from './HeaderSkeleton'
+import { usePathname } from 'next/navigation'
 
 export type SiteHeaders = 'Header 1' | 'Header 2' | 'Header 3'
 
@@ -140,7 +140,7 @@ const SiteHeader = () => {
 						{({ open }) => (
 							<>
 								<Popover.Button
-									className={`dark:border-primary-6000 dark:bg-primary-6000 z-10 rounded-xl border border-neutral-200 bg-white p-2.5 shadow-xl hover:bg-neutral-100 focus:outline-none dark:hover:bg-primary-700 ${
+									className={`dark:border-primary-6000 dark:bg-primary-6000 z-11 rounded-xl border border-neutral-200 bg-white p-2.5 shadow-xl hover:bg-neutral-100 focus:outline-none dark:hover:bg-primary-700 ${
 										open ? 'ring-primary-500 focus:ring-2' : ''
 									}`}
 								>
@@ -155,7 +155,7 @@ const SiteHeader = () => {
 									leaveFrom="opacity-100 translate-y-0"
 									leaveTo="opacity-0 translate-y-1"
 								>
-									<Popover.Panel className="absolute right-0 z-10 mt-3 w-screen max-w-sm">
+									<Popover.Panel className="z-11 absolute right-0 mt-3 w-screen max-w-sm">
 										<div className="nc-custom-shadow-1 overflow-hidden rounded-2xl bg-white dark:bg-neutral-800">
 											<div className="relative p-6">
 												<span className="text-xl font-semibold">Customize</span>
@@ -188,12 +188,13 @@ const SiteHeader = () => {
 	}
 
 	const renderHeader = () => {
-		let headerClassName = 'shadow-sm dark:border-b dark:border-neutral-700'
-		if (PAGES_HIDE_HEADER_BORDER.includes(pathname as PathName)) {
-			headerClassName = isTopOfPage
-				? ''
-				: 'shadow-sm dark:border-b dark:border-neutral-700'
-		}
+		let headerClassName = ''
+		// 'shadow-sm dark:border-b dark:border-neutral-700'
+		// if (PAGES_HIDE_HEADER_BORDER.includes(pathname as PathName)) {
+		// 	headerClassName = isTopOfPage
+		// 		? ''
+		// 		: 'shadow-sm dark:border-b dark:border-neutral-700'
+		// }
 		// switch (headerSelected) {
 		// 	case 'Header 1':
 		// 		return <Header className={headerClassName} navType="MainNav1" />
@@ -211,7 +212,6 @@ const SiteHeader = () => {
 		// 	return <Header className={headerClassName} navType="MainNav1" />
 		// }
 		return <Header3 className={headerClassName} />
-
 	}
 	const [loading, setLoading] = useState(true)
 	useEffect(() => {
@@ -219,13 +219,39 @@ const SiteHeader = () => {
 			setLoading(false)
 		}, 10)
 	}, [])
+	const isHomePage = pathname === '/'
+
 	return (
 		<>
 			{loading ? (
 				<HeaderSkeleton />
 			) : (
 				<>
-					{/* {renderControlSelections()} */}
+					{isHomePage && (
+						<div className="absolute w-[100%]">
+							<div
+								className="z-11 absolute left-1/2 h-[700px] w-full -translate-x-1/2 -translate-y-[100px] bg-[length:100%] bg-center bg-no-repeat md:bg-[length:50%] md:bg-center"
+								style={{
+									backgroundImage:
+										"url('https://cdn.prod.website-files.com/645a9acecda2e0594fac6126/6580a563d237ee85c9237ccb_gradient-noise-purple-azure.png')",
+									// backgroundRepeat: 'no-repeat',
+									// backgroundSize: '50%',
+									// backgroundPosition: 'top',
+								}}
+							></div>
+							<div
+								className="z-11 absolute left-1/2 h-[700px] w-full -translate-x-1/2 -translate-y-[100px]"
+								style={{
+									backgroundImage:
+										"url('https://uploads-ssl.webflow.com/645a9acecda2e0594fac6126/65809a10c85f59a63201a8a5_noise-light.png')",
+									// backgroundRepeat: 'no-repeat',
+									// backgroundSize: '50%',
+									// backgroundPosition: 'top',
+								}}
+							></div>
+						</div>
+					)}
+
 					{renderHeader()}
 					<div ref={anchorRef} className="invisible absolute h-1"></div>
 				</>

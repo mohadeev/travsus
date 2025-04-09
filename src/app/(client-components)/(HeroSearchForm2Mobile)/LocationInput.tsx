@@ -18,7 +18,7 @@ const LocationInput: FC<Props> = ({
 	defaultValue = 'United States',
 	headingText = 'Where to?',
 }) => {
-	const [value, setValue] = useState('')
+	const [value, setValue] = useState<any>({})
 	const containerRef = useRef(null)
 	const inputRef = useRef(null)
 
@@ -26,11 +26,11 @@ const LocationInput: FC<Props> = ({
 		setValue(defaultValue)
 	}, [defaultValue])
 
-	const handleSelectLocation = (item: string) => {
+	const handleSelectLocation = (item: any) => {
 		// DO NOT REMOVE SETTIMEOUT FUNC
 		setTimeout(() => {
 			setValue(item)
-			onChange && onChange(item)
+			onChange && onChange(item.name)
 		}, 0)
 	}
 
@@ -52,7 +52,7 @@ const LocationInput: FC<Props> = ({
 							<div
 								className="mb-1 flex items-center space-x-3 py-2 text-sm"
 								onClick={() => handleSelectLocation(item)}
-								key={item}
+								key={item.name}
 							>
 								<MapPinIcon className="h-5 w-5 text-neutral-500 dark:text-neutral-400" />
 								<span className="">{item?.name}</span>
@@ -98,11 +98,12 @@ const LocationInput: FC<Props> = ({
 						: renderSearchValues({
 								heading: 'Popular destinations phone',
 								items: [
-									'Australia',
-									'Canada',
-									'Germany',
-									'United Kingdom',
-									'United Arab Emirates',
+									{ name: 'Morocco' },
+									{ name: 'Australia' },
+									{ name: 'Canada' },
+									{ name: 'Germany' },
+									{ name: 'United Kingdom' },
+									{ name: 'United Arab Emirates' },
 								],
 							})}
 				</div>

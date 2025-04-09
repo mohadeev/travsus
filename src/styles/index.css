@@ -556,6 +556,13 @@
   box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
 }
 
+.container {
+  max-width: 1152px;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
 .ListingDetailPage .nc-hero-field-focused {
   @apply rounded-3xl shadow-2xl;
 }
@@ -662,7 +669,7 @@ button.gm-control-active.gm-fullscreen-control {
 }
 
 .listingSectionSidebar__wrap {
-  @apply flex w-full flex-col space-y-6 rounded-2xl border-b border-l border-r border-t border-neutral-200 p-2 pb-10 dark:border-neutral-700 sm:p-4 xl:space-y-7 xl:px-8 xl:py-6;
+  @apply flex w-full flex-col space-y-6 rounded-xl border-neutral-200 p-2 pb-10 dark:border-neutral-700 sm:border sm:p-4 sm:shadow xl:space-y-7 xl:px-8 xl:py-6;
 }
 
 input[type=time]::-webkit-calendar-picker-indicator {

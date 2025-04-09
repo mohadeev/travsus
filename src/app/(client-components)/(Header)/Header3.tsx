@@ -98,7 +98,7 @@ const Header3: FC<Header3Props> = ({ className = '' }) => {
 	const renderButtonOpenHeroSearch = () => {
 		return (
 			<div
-				className={`dark:border-neutral-6000 relative flex w-full items-center justify-between rounded-full border border-neutral-200 shadow transition-all hover:shadow-md ${
+				className={`dark:border-neutral-6000 relative flex w-full items-center justify-between rounded-full border border-neutral-200 bg-white shadow transition-all hover:shadow-md ${
 					showHeroSearch
 						? 'pointer-events-none invisible -translate-x-0 translate-y-20 scale-x-[2.55] scale-y-[1.8] opacity-0'
 						: 'visible'
@@ -140,6 +140,16 @@ const Header3: FC<Header3Props> = ({ className = '' }) => {
 			</div>
 		)
 	}
+	const [showDiv, setShowDiv] = useState(false)
+
+	useEffect(() => {
+		const handleScroll = () => {
+			setShowDiv(window.scrollY >= 50)
+		}
+
+		window.addEventListener('scroll', handleScroll)
+		return () => window.removeEventListener('scroll', handleScroll)
+	}, [])
 
 	return (
 		<>
@@ -151,14 +161,15 @@ const Header3: FC<Header3Props> = ({ className = '' }) => {
 			{showHeroSearch && <div id="nc-Header-3-anchor"></div>}
 			<header ref={headerInnerRef} className={`sticky top-0 z-40 ${className}`}>
 				<div
-					className={`absolute inset-x-0 top-0 h-full bg-white transition-transform will-change-[transform,opacity] dark:bg-neutral-900 ${showHeroSearch ? 'duration-75' : ''} ${
+					className={`absolute inset-x-0 top-0 h-full transition-transform will-change-[transform,opacity] dark:bg-neutral-900 ${showHeroSearch ? 'duration-75' : ''} ${
 						showHeroSearch
 							? currentTab === 'Cars' || currentTab === 'Flights'
 								? 'scale-y-[4.4]'
 								: 'scale-y-[3.4]'
 							: ''
-					}`}
+					} ${showDiv && 'bg-white'} ${showHeroSearch && 'bg-white'}`}
 				></div>
+
 				<div className="relative flex h-[88px] px-4 lg:container">
 					<div className="flex flex-1 justify-between">
 						{/* Logo (lg+) */}
@@ -170,7 +181,7 @@ const Header3: FC<Header3Props> = ({ className = '' }) => {
 							<div className="hidden flex-1 self-center lg:flex">
 								{renderButtonOpenHeroSearch()}
 							</div>
-							<div className="mx-auto w-full max-w-lg flex-1 self-center lg:hidden">
+							<div className="mx-auto w-full max-w-lg flex-1 self-center md:hidden">
 								<HeroSearchForm2MobileFactory />
 							</div>
 							{renderHeroSearch()}

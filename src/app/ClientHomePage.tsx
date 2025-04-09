@@ -6,6 +6,7 @@ import SectionGridFilterCard from './(experience-listings)/SectionGridFilterCard
 import { JsonLd } from 'react-schemaorg'
 import Home from './test/page'
 import Roulette from '@/components/Roulette/Roulette'
+import CountryCardList from '@/components/CountryCardList'
 
 function ClientHomePage() {
 	return (
@@ -97,15 +98,16 @@ function ClientHomePage() {
 					},
 				}}
 			/>
-			<main className="nc-PageHome3 relative overflow-hidden">
+			<main className="nc-PageHome3 relative">
 				{/* GLASSMOPHIN */}
 				<BgGlassmorphism />
 				{/* <SectionGridFilterCard className="pb-24 lg:pb-28" /> */}
 				{/* SECTION HERO */}
 
-				<div className="container mb-24 px-1 sm:px-4">
+				<div className="mb-24 px-0 sm:px-0">
 					{/* <Roulette /> */}
 					<Home />
+
 					{/* <SectionHero3 className="" /> */}
 				</div>
 				<div className="container relative mb-24 space-y-24">
@@ -132,14 +134,16 @@ function ClientHomePage() {
           </div> */}
 
 					{/* <SectionGridFeaturePlaces /> */}
-					<SectionGridFilterCard />
+					<SectionGridFilterCard layout="row" />
+					<CountryCardList layout="row" />
 
 					{/* SECTION */}
-					<SectionSubscribe2 />
 					{/* <WellcomeTemplate /> */}
 					{/* <VarticalExperiencesCard /> */}
 					{/* <SectionGridVerticalCard /> */}
 				</div>
+				<SectionSubscribe2 />
+
 			</main>
 		</>
 	)

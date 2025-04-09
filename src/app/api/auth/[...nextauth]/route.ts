@@ -45,7 +45,7 @@ async function updateTourCreator() {
 				email: 'skendoulmohamed@gmail.com',
 			},
 		})
-		console.log('user:', user.id)
+		// console.log('user:', user.id)
 
 		if (!user) {
 			console.log('User not found with the specified email.')
@@ -69,4 +69,20 @@ async function updateTourCreator() {
 	}
 }
 
-updateTourCreator()
+// updateTourCreator()
+
+// console.log('heereerer')
+// ;(async () => {
+// 	const bookingInitiated: any = await prisma.booking.findFirst({
+// 		where: { id: '6794fc07dc24f9494aa628e3' },
+// 		include: {
+// 			customer: true,
+// 			provider: true,
+// 			tour: true,
+// 			paymentMethod: true,
+// 		},
+// 	})
+// 	console.log('bookingInitiated:', bookingInitiated.paymentMethod)
+// })()
+
+console.log('here')

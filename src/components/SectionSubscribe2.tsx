@@ -1,77 +1,50 @@
 'use client'
 
-import React, { FC, useState, useRef, useEffect } from 'react'
-import ButtonCircle from '@/shared/ButtonCircle'
-import rightImg from '@/images/SVG-subcribe2.png'
-import Badge from '@/shared/Badge'
-import Input from '@/shared/Input'
-import Image from 'next/image'
-import { Motion, spring } from 'react-motion'
-import Button from '@/shared/Button'
+import type React from 'react'
 
-export interface SectionSubscribe2Props {
-	className?: string
-}
+import { useState } from 'react'
 
-const newsletterTypes = [
-	{ id: 'deals', label: '🏷️ Exclusive Deals' },
-	{ id: 'tips', label: '💡 Travel Tips' },
-	{ id: 'reviews', label: '⭐ Destination Reviews' },
-	{ id: 'inspiration', label: '✈️ Travel Inspiration' },
-]
-
+// Message map from your existing component
 const messageMap = {
 	EMAIL_REQUIRED:
 		"📭 Oops! It looks like you forgot to enter an email address. Let's try that again!",
 	INVALID_EMAIL:
 		"🤔 Hmm, that email doesn't look quite right. Remember, it should be no more than 60 characters long. Double-check and give it another go!",
-	TYPES_REQUIRED:
-		"🎯 Almost there! Don't forget to pick at least one exciting newsletter type!",
-	ALREADY_SUBSCRIBED:
-		"🌟 Great news! You're already part of our awesome newsletter family. Stay tuned for more amazing content!",
 	SUBSCRIPTION_SUCCESS:
 		"🎉 Woohoo! You're officially part of our travel-loving community. Get ready for some incredible adventures in your inbox!",
 	SERVER_ERROR:
-		'😱 Uh-oh! Something went wrong on our end. Our team of travel gnomes is working on it. Please try again later!',
-	RATE_LIMIT_EXCEEDED:
-		"🚫 Whoa there, eager traveler! You've reached the request limit. Take a breather and try again in a bit.",
+		'😱 Uh-oh! Something went wrong on our end. Our team is working on it. Please try again later!',
 }
 
-const SectionSubscribe2: FC<SectionSubscribe2Props> = ({ className = '' }) => {
+interface NewsletterSimpleProps {
+	className?: string
+}
+
+export default function NewsletterSimple({
+	className = '',
+}: NewsletterSimpleProps) {
 	const [email, setEmail] = useState('')
-	const [isDropdownOpen, setIsDropdownOpen] = useState(false)
-	const [selectedTypes, setSelectedTypes] = useState<string[]>(
-		newsletterTypes.map((type) => type.id),
-	)
 	const [isLoading, setIsLoading] = useState(false)
 	const [message, setMessage] = useState('')
 	const [isError, setIsError] = useState(false)
-	const dropdownRef = useRef<HTMLDivElement>(null)
 
-	const toggleDropdown = () => {
-		setIsDropdownOpen(!isDropdownOpen)
-	}
-
-	const handleTypeChange = (typeId: string) => {
-		setSelectedTypes((prev) =>
-			prev.includes(typeId)
-				? prev.filter((id) => id !== typeId)
-				: [...prev, typeId],
-		)
-	}
-
+	// Form submission handler
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault()
+
+		// Validation
+		if (!email) {
+			setMessage(messageMap.EMAIL_REQUIRED)
+			setIsError(true)
+			return
+		}
+
 		if (email.length > 60) {
 			setMessage(messageMap.INVALID_EMAIL)
 			setIsError(true)
 			return
 		}
-		if (selectedTypes.length === 0) {
-			setMessage(messageMap.TYPES_REQUIRED)
-			setIsError(true)
-			return
-		}
+
 		setIsLoading(true)
 		setMessage('')
 		setIsError(false)
@@ -82,24 +55,20 @@ const SectionSubscribe2: FC<SectionSubscribe2Props> = ({ className = '' }) => {
 				headers: {
 					'Content-Type': 'application/json',
 				},
-				body: JSON.stringify({ email, types: selectedTypes }),
+				body: JSON.stringify({
+					email,
+					types: ['deals', 'tips', 'reviews', 'inspiration'],
+				}),
 			})
 
 			const data = await response.json()
 
 			if (response.ok) {
-				setMessage(messageMap[data.code as keyof typeof messageMap])
+				setMessage(messageMap.SUBSCRIPTION_SUCCESS)
 				setIsError(false)
 				setEmail('')
-				setSelectedTypes(newsletterTypes.map((type) => type.id))
-			} else if (response.status === 429) {
-				setMessage(messageMap.RATE_LIMIT_EXCEEDED)
-				setIsError(true)
 			} else {
-				setMessage(
-					messageMap[data.code as keyof typeof messageMap] ||
-						messageMap.SERVER_ERROR,
-				)
+				setMessage(messageMap.SERVER_ERROR)
 				setIsError(true)
 			}
 		} catch (error) {
@@ -108,138 +77,77 @@ const SectionSubscribe2: FC<SectionSubscribe2Props> = ({ className = '' }) => {
 		}
 
 		setIsLoading(false)
-		setIsDropdownOpen(false)
 	}
 
-	useEffect(() => {
-		const handleClickOutside = (event: MouseEvent) => {
-			if (
-				dropdownRef.current &&
-				!dropdownRef.current.contains(event.target as Node)
-			) {
-				setIsDropdownOpen(false)
-			}
-		}
-
-		document.addEventListener('mousedown', handleClickOutside)
-		return () => {
-			document.removeEventListener('mousedown', handleClickOutside)
-		}
-	}, [])
-
 	return (
-		<div
-			className={`nc-SectionSubscribe2 relative flex flex-col lg:flex-row lg:items-center ${className}`}
-			data-nc-id="SectionSubscribe2"
-		>
-			<div className="mb-10 flex-shrink-0 lg:mb-0 lg:mr-10 lg:w-2/5">
-				<h2 className="text-4xl font-semibold">Join our newsletter 🎉</h2>
-				<span className="mt-5 block text-neutral-500 dark:text-neutral-400">
-					Read and share new perspectives on just about any topic. Everyone's
-					welcome! 🌍✨
-				</span>
-				<ul className="mt-10 space-y-4">
-					<li className="flex items-center space-x-4">
-						<Badge name="01" />
-						<span className="font-medium text-neutral-700 dark:text-neutral-300">
-							Get more discounts 💰
-						</span>
-					</li>
-					<li className="flex items-center space-x-4">
-						<Badge color="red" name="02" />
-						<span className="font-medium text-neutral-700 dark:text-neutral-300">
-							Get premium magazines 📚
-						</span>
-					</li>
-				</ul>
-				<form className="relative mt-10 max-w-sm" onSubmit={handleSubmit}>
-					<div className="relative">
-						<Input
-							required
-							aria-required
-							placeholder="Enter your email (max 60 characters)"
-							type="email"
-							rounded="rounded-full"
-							sizeClass="h-12 px-5 py-3"
-							value={email}
-							onChange={(e) => setEmail(e.target.value)}
-							disabled={isLoading}
-							maxLength={60}
-						/>
-						<ButtonCircle
-							type="button"
-							className="absolute right-1.5 top-1/2 -translate-y-1/2 transform"
-							size="w-10 h-10"
-							disabled={isLoading}
-							onClick={toggleDropdown}
-						>
-							<i className="las la-arrow-down text-xl"></i>
-						</ButtonCircle>
+		<section className={`py-12 ${className}`}>
+			<div className="w-full px-4">
+				<div
+					className="w-full rounded-xl p-8 shadow-sm"
+					style={{ backgroundColor: '#F5F5F7' }}
+				>
+					<div className="text-center">
+						<h2 className="text-3xl font-bold text-black">
+							Join Our Newsletter
+						</h2>
+						<p className="mt-3 text-gray-600">
+							Stay updated with our latest offers, travel tips, and exclusive
+							deals. Sign up today and be the first to know about our special
+							promotions.
+						</p>
 					</div>
-					<div className="relative" ref={dropdownRef}>
-						<Motion
-							style={{
-								opacity: spring(isDropdownOpen ? 1 : 0),
-								scale: spring(isDropdownOpen ? 1 : 0.95),
-							}}
-						>
-							{(interpolatedStyle) => (
-								<div
-									className={`absolute right-0 z-10 mt-2 w-56 divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none ${isDropdownOpen ? '' : 'hidden'}`}
-									style={{
-										opacity: interpolatedStyle.opacity,
-										transform: `scale(${interpolatedStyle.scale})`,
-										transformOrigin: 'top right',
-									}}
-								>
-									{isDropdownOpen && (
-										<>
-											<div className="py-1">
-												{newsletterTypes.map((type) => (
-													<label
-														key={type.id}
-														className="flex cursor-pointer items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-													>
-														<input
-															type="checkbox"
-															className="form-checkbox h-5 w-5 text-indigo-600"
-															checked={selectedTypes.includes(type.id)}
-															onChange={() => handleTypeChange(type.id)}
-														/>
-														<span className="ml-2">{type.label}</span>
-													</label>
-												))}
-											</div>
-											<div className="py-1">
-												<Button
-													loading={isLoading}
-													type="submit"
-													className="font- w-full rounded-full bg-black px-6 py-2 text-sm font-medium text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2"
-													disabled={isLoading}
-												>
-													{isLoading ? 'Subscribing... 🕒' : 'Subscribe 🚀'}
-												</Button>
-											</div>
-										</>
-									)}
+
+					<form onSubmit={handleSubmit} className="mt-6">
+						<div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+							<div className="relative w-full sm:w-64 md:w-80">
+								<div className="absolute inset-y-0 left-3 flex items-center">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										className="h-5 w-5 text-gray-400"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										strokeWidth="2"
+										strokeLinecap="round"
+										strokeLinejoin="round"
+									>
+										<rect x="2" y="4" width="20" height="16" rx="2"></rect>
+										<path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+									</svg>
 								</div>
-							)}
-						</Motion>
-					</div>
-				</form>
-				{message && (
-					<p
-						className={`mt-3 text-sm ${isError ? 'text-red-600 dark:text-red-400' : 'text-green-600 dark:text-green-400'} rounded-lg bg-opacity-20 p-3`}
-					>
-						{message}
-					</p>
-				)}
+								<input
+									type="email"
+									value={email}
+									onChange={(e) => setEmail(e.target.value)}
+									placeholder="Enter your email"
+									className="w-full rounded-md border border-gray-300 bg-white py-3 pl-10 pr-3 focus:border-gray-500 focus:outline-none"
+									maxLength={60}
+									disabled={isLoading}
+								/>
+							</div>
+							<button
+								type="submit"
+								className="rounded-md bg-black px-6 py-3 font-medium text-white hover:bg-gray-800 disabled:cursor-not-allowed disabled:opacity-70"
+								disabled={isLoading}
+							>
+								{isLoading ? 'Subscribing...' : 'SIGN UP'}
+							</button>
+						</div>
+
+						{message && (
+							<div
+								className={`mt-4 rounded-md p-3 ${isError ? 'bg-red-50 text-red-700' : 'bg-green-50 text-green-700'}`}
+							>
+								<p className="text-sm">{message}</p>
+							</div>
+						)}
+
+						<p className="mt-4 text-center text-sm text-gray-500">
+							We respect your privacy and will never share your information.
+						</p>
+					</form>
+				</div>
 			</div>
-			<div className="flex-grow">
-				<Image alt="" src={rightImg} />
-			</div>
-		</div>
+		</section>
 	)
 }
-
-export default SectionSubscribe2
