@@ -97,7 +97,9 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
 			}
 		}
 
-		fetchReviews()
+		if (serviceId) {
+			fetchReviews()
+		}
 	}, [serviceId])
 
 	const handleRatingChange = (newRating: number) => {
@@ -528,7 +530,7 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
 										sizeClass="h-12 w-12"
 										radius="rounded-full"
 										imgUrl={
-											review.userImage || '/placeholder.svg?height=50&width=50'
+											review.userImage || ""
 										}
 									/>
 									<div>

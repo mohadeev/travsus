@@ -8,34 +8,236 @@ import {
 	CardDescription,
 	CardHeader,
 	CardTitle,
+	CardFooter,
 } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
-import { ChevronRight, Users } from 'lucide-react'
+import {
+	ChevronRight,
+	Users,
+	Calendar,
+	CreditCard,
+	Loader2,
+	CheckCircle,
+	AlertCircle,
+} from 'lucide-react'
+import { format } from 'date-fns'
+import { Calendar as CalendarComponent } from '@/components/ui/calendar'
+import {
+	Popover,
+	PopoverContent,
+	PopoverTrigger,
+} from '@/components/ui/popover'
+import { cn } from '@/lib/utils'
+import {
+	Dialog,
+	DialogContent,
+	DialogDescription,
+	DialogHeader,
+	DialogTitle,
+} from '@/components/ui/dialog'
+
+// Mock Stripe for demo purposes
+const stripePromise = Promise.resolve({
+	elements: () => ({
+		create: () => ({}),
+	}),
+	confirmPayment: async () => ({ paymentIntent: { status: 'succeeded' } }),
+})
+
+// Auth check function (mock for demo)
+const useAuthAction = (action) => {
+	const [isLoading, setIsLoading] = useState(false)
+
+	const handleAction = async (...args) => {
+		setIsLoading(true)
+		try {
+			// In a real app, check if user is authenticated
+			const isAuthenticated = true // Mock authentication
+
+			if (!isAuthenticated) {
+				alert('Please sign in to continue')
+				return
+			}
+
+			// User is authenticated, proceed with the action
+			return await action(...args)
+		} catch (error) {
+			console.error('Auth action error:', error)
+		} finally {
+			setIsLoading(false)
+		}
+	}
+
+	return [handleAction, isLoading]
+}
+
+// Checkout Form Component
+function CheckoutForm({ onSuccess, onError }) {
+	const [isLoading, setIsLoading] = useState(false)
+	const [errorMessage, setErrorMessage] = useState('')
+
+	const handleSubmit = async (e) => {
+		e.preventDefault()
+		setIsLoading(true)
+		setErrorMessage('')
+
+		try {
+			// Simulate payment processing
+			await new Promise((resolve) => setTimeout(resolve, 2000))
+
+			// Simulate successful payment
+			onSuccess()
+		} catch (error) {
+			console.error('Payment error:', error)
+			setErrorMessage('Failed to process payment. Please try again.')
+			onError()
+		} finally {
+			setIsLoading(false)
+		}
+	}
+
+	return (
+		<form onSubmit={handleSubmit} className="space-y-6">
+			<div className="space-y-4">
+				<div className="rounded-md border p-4">
+					<Label htmlFor="cardNumber">Card Number</Label>
+					<Input
+						id="cardNumber"
+						placeholder="4242 4242 4242 4242"
+						className="mt-1"
+					/>
+				</div>
+
+				<div className="grid grid-cols-2 gap-4">
+					<div>
+						<Label htmlFor="expiry">Expiry Date</Label>
+						<Input id="expiry" placeholder="MM/YY" className="mt-1" />
+					</div>
+					<div>
+						<Label htmlFor="cvc">CVC</Label>
+						<Input id="cvc" placeholder="123" className="mt-1" />
+					</div>
+				</div>
+			</div>
+
+			{errorMessage && (
+				<div className="mt-2 text-sm text-red-500">{errorMessage}</div>
+			)}
+
+			<Button
+				type="submit"
+				disabled={isLoading}
+				className="w-full bg-black hover:bg-gray-800"
+			>
+				{isLoading ? (
+					<>
+						<Loader2 className="mr-2 h-4 w-4 animate-spin" />
+						Processing...
+					</>
+				) : (
+					'Pay Now'
+				)}
+			</Button>
+
+			<p className="text-muted-foreground mt-4 text-center text-xs">
+				Your payment is secure and encrypted. By proceeding, you agree to our
+				terms and conditions.
+			</p>
+		</form>
+	)
+}
 
 export default function PricingCalculator() {
-	const { t } = useLanguage()
+	const { t, getLocalizedHref } = useLanguage()
 	const [tourType, setTourType] = useState<'private' | 'shared'>('private')
 	const [people, setPeople] = useState<number>(2)
 	const [price, setPrice] = useState<number | null>(null)
 	const [pricePerPerson, setPricePerPerson] = useState<number | null>(null)
+	const [date, setDate] = useState<Date | undefined>(undefined)
+	const [isDateSelected, setIsDateSelected] = useState(false)
+	const [isShaking, setIsShaking] = useState(false)
+	const [showError, setShowError] = useState(false)
+	const [currentStatus, setCurrentStatus] = useState('')
+
+	// State for checkout flow
+	const [checkoutOpen, setCheckoutOpen] = useState(false)
+	const [paymentStatus, setPaymentStatus] = useState<
+		'idle' | 'processing' | 'success' | 'error'
+	>('idle')
+	const [bookingReference, setBookingReference] = useState('')
 
 	const calculatePrice = () => {
-		if (tourType === 'private') {
-			// Private tour: €25 in Merzouga + €25 in Dades + €450 for transport
-			const totalPrice = (25 + 25) * people + 450
-			const perPerson = totalPrice / people
-			setPrice(totalPrice)
-			setPricePerPerson(perPerson)
-		} else {
-			// Shared tour: €25 in Merzouga + €25 in Dades + €30 per person for transport
-			const totalPrice = (25 + 25 + 30) * people
-			const perPerson = totalPrice / people
-			setPrice(totalPrice)
-			setPricePerPerson(perPerson)
+		// Fixed price of 80€ per person
+		const perPerson = 80
+		const totalPrice = perPerson * people
+
+		setPrice(totalPrice)
+		setPricePerPerson(perPerson)
+	}
+
+	// Create booking object
+	const createBookingObject = () => {
+		return {
+			tourType,
+			people,
+			totalPrice: price,
+			pricePerPerson,
+			date: date ? format(date, 'yyyy-MM-dd') : null,
+			tourName: '3-Day Desert Tour: Marrakech to Merzouga',
+			tourId: 'morocco-desert-tour',
 		}
+	}
+
+	// Handle successful payment
+	const handlePaymentSuccess = () => {
+		setPaymentStatus('success')
+		// Generate a booking reference
+		setBookingReference(
+			`BKG-${Date.now().toString().slice(-6)}-${Math.floor(Math.random() * 1000)}`,
+		)
+
+		// In a real app, you would send a confirmation email here
+		console.log('Sending confirmation email...')
+	}
+
+	// Handle payment error
+	const handlePaymentError = () => {
+		setPaymentStatus('error')
+	}
+
+	// Handle booking with auth check
+	const [handleReserveClick, isProcessing] = useAuthAction(async () => {
+		if (!isDateSelected) {
+			setIsShaking(true)
+			setShowError(true)
+			setTimeout(() => setIsShaking(false), 1500)
+			return
+		}
+
+		setCurrentStatus('loading')
+
+		try {
+			// Create booking (in a real app, this would be an API call)
+			const booking = createBookingObject()
+			console.log('Creating booking:', booking)
+
+			// Open checkout modal
+			setCheckoutOpen(true)
+			setPaymentStatus('idle')
+		} catch (error) {
+			console.error('Error:', error)
+		} finally {
+			setCurrentStatus('')
+		}
+	})
+
+	// Reset checkout flow
+	const resetCheckout = () => {
+		setCheckoutOpen(false)
+		setPaymentStatus('idle')
 	}
 
 	return (
@@ -46,16 +248,17 @@ export default function PricingCalculator() {
 						{t('pricing.title')}
 					</h2>
 					<p className="text-muted-foreground text-lg">
-						Choose between private and shared tours based on your preferences
+						Book your adventure today at just{' '}
+						<span className="font-bold">80€ per person</span>
 					</p>
 				</div>
 
 				<div className="mx-auto max-w-lg">
 					<Card>
 						<CardHeader>
-							<CardTitle>Calculate Your Tour Price</CardTitle>
+							<CardTitle>Book Your Tour</CardTitle>
 							<CardDescription>
-								Select your preferred tour type and number of travelers
+								Select your preferred tour type, date, and number of travelers
 							</CardDescription>
 						</CardHeader>
 						<CardContent className="space-y-6">
@@ -71,7 +274,7 @@ export default function PricingCalculator() {
 									<Label htmlFor="private" className="flex-1">
 										<span className="font-medium">{t('pricing.private')}</span>
 										<p className="text-muted-foreground text-sm">
-											{t('pricing.privatePerPersonLabel')}
+											Exclusive tour for your group only
 										</p>
 									</Label>
 								</div>
@@ -80,7 +283,7 @@ export default function PricingCalculator() {
 									<Label htmlFor="shared" className="flex-1">
 										<span className="font-medium">{t('pricing.shared')}</span>
 										<p className="text-muted-foreground text-sm">
-											{t('pricing.sharedPerPersonLabel')}
+											Join other travelers (max 8 people per group)
 										</p>
 									</Label>
 								</div>
@@ -102,6 +305,46 @@ export default function PricingCalculator() {
 										className="w-24"
 									/>
 								</div>
+							</div>
+
+							<div className="space-y-2">
+								<Label htmlFor="date">Select Date</Label>
+								<Popover>
+									<PopoverTrigger asChild>
+										<Button
+											variant="outline"
+											className={cn(
+												'w-full justify-start text-left font-normal',
+												!date && 'text-muted-foreground',
+												isShaking && 'animate-shake border-red-500',
+											)}
+										>
+											<Calendar className="mr-2 h-4 w-4" />
+											{date ? format(date, 'PPP') : <span>Pick a date</span>}
+										</Button>
+									</PopoverTrigger>
+									<PopoverContent className="w-auto p-0">
+										<CalendarComponent
+											mode="single"
+											selected={date}
+											onSelect={(date) => {
+												setDate(date)
+												setIsDateSelected(!!date)
+												setShowError(false)
+											}}
+											initialFocus
+											disabled={(date) => {
+												// Disable dates in the past
+												return date < new Date(new Date().setHours(0, 0, 0, 0))
+											}}
+										/>
+									</PopoverContent>
+								</Popover>
+								{showError && (
+									<p className="mt-1 text-sm text-red-500">
+										Please select a date for your tour
+									</p>
+								)}
 							</div>
 
 							<Button
@@ -129,9 +372,161 @@ export default function PricingCalculator() {
 								</div>
 							)}
 						</CardContent>
+						<CardFooter>
+							<Button
+								onClick={handleReserveClick}
+								disabled={!price || isProcessing}
+								className="w-full bg-black text-white hover:bg-gray-800"
+							>
+								{isProcessing ? (
+									<>
+										<Loader2 className="mr-2 h-4 w-4 animate-spin" />
+										Processing...
+									</>
+								) : (
+									<>
+										<CreditCard className="mr-2 h-4 w-4" />
+										Book Now with Secure Payment
+									</>
+								)}
+							</Button>
+						</CardFooter>
 					</Card>
 				</div>
 			</div>
+
+			{/* Checkout Dialog */}
+			<Dialog open={checkoutOpen} onOpenChange={setCheckoutOpen}>
+				<DialogContent className="sm:max-w-md">
+					<DialogHeader>
+						{paymentStatus === 'idle' && (
+							<>
+								<DialogTitle>Complete Your Booking</DialogTitle>
+								<DialogDescription>
+									Secure payment for your 3-Day Desert Tour from Marrakech to
+									Merzouga
+								</DialogDescription>
+							</>
+						)}
+
+						{paymentStatus === 'success' && (
+							<DialogTitle className="flex items-center justify-center text-center">
+								<CheckCircle className="mr-2 h-8 w-8 text-green-500" />
+								Booking Confirmed!
+							</DialogTitle>
+						)}
+
+						{paymentStatus === 'error' && (
+							<DialogTitle className="flex items-center justify-center text-center">
+								<AlertCircle className="mr-2 h-8 w-8 text-red-500" />
+								Payment Failed
+							</DialogTitle>
+						)}
+					</DialogHeader>
+
+					{paymentStatus === 'idle' && (
+						<>
+							<div className="mb-6 space-y-2">
+								<div className="flex justify-between">
+									<span className="text-muted-foreground text-sm">Tour:</span>
+									<span className="font-medium">
+										3-Day Desert Tour: Marrakech to Merzouga
+									</span>
+								</div>
+								<div className="flex justify-between">
+									<span className="text-muted-foreground text-sm">Date:</span>
+									<span className="font-medium">
+										{date ? format(date, 'PPP') : 'Not selected'}
+									</span>
+								</div>
+								<div className="flex justify-between">
+									<span className="text-muted-foreground text-sm">
+										Travelers:
+									</span>
+									<span className="font-medium">{people}</span>
+								</div>
+								<div className="mt-2 flex justify-between border-t pt-2">
+									<span className="text-sm font-medium">Total:</span>
+									<span className="font-bold">€{price?.toFixed(2)}</span>
+								</div>
+							</div>
+
+							<CheckoutForm
+								onSuccess={handlePaymentSuccess}
+								onError={handlePaymentError}
+							/>
+						</>
+					)}
+
+					{paymentStatus === 'success' && (
+						<div className="space-y-4">
+							<div className="rounded-lg bg-gray-50 p-4">
+								<p className="text-muted-foreground mb-2 text-sm">
+									Booking Reference
+								</p>
+								<p className="font-medium">{bookingReference}</p>
+							</div>
+
+							<div className="grid grid-cols-2 gap-4">
+								<div>
+									<p className="text-muted-foreground text-sm">Tour Date</p>
+									<p className="font-medium">
+										{date ? format(date, 'PPP') : 'Not selected'}
+									</p>
+								</div>
+								<div>
+									<p className="text-muted-foreground text-sm">Travelers</p>
+									<p className="font-medium">{people}</p>
+								</div>
+								<div>
+									<p className="text-muted-foreground text-sm">Tour Type</p>
+									<p className="font-medium capitalize">{tourType}</p>
+								</div>
+								<div>
+									<p className="text-muted-foreground text-sm">Total Amount</p>
+									<p className="font-medium">€{price?.toFixed(2)}</p>
+								</div>
+							</div>
+
+							<p className="text-muted-foreground text-center text-sm">
+								A confirmation email has been sent to your email address.
+							</p>
+
+							<Button
+								onClick={() => setCheckoutOpen(false)}
+								className="w-full bg-black hover:bg-gray-800"
+							>
+								Close
+							</Button>
+						</div>
+					)}
+
+					{paymentStatus === 'error' && (
+						<div className="space-y-4">
+							<p className="text-center">
+								Your payment could not be processed. Please try again or contact
+								our support team.
+							</p>
+
+							<div className="flex space-x-2">
+								<Button
+									onClick={() => setPaymentStatus('idle')}
+									className="flex-1 bg-black hover:bg-gray-800"
+								>
+									Try Again
+								</Button>
+								<Button
+									onClick={() => setCheckoutOpen(false)}
+									variant="outline"
+									className="flex-1"
+								>
+									Cancel
+								</Button>
+							</div>
+						</div>
+					)}
+				</DialogContent>
+			</Dialog>
 		</section>
 	)
 }

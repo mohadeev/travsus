@@ -1,10 +1,10 @@
 'use client'
 
-import { useEffect, useRef, useImperativeHandle, forwardRef } from 'react'
-import L from 'leaflet'
-import 'leaflet/dist/leaflet.css'
+import { forwardRef } from 'react'
+import dynamic from 'next/dynamic'
 import { MapIcon, Navigation } from 'lucide-react'
 
+// Define your interfaces
 interface Day {
 	name: string
 	description?: string
@@ -24,8 +24,56 @@ interface TourMapProps {
 	monochrome?: boolean
 }
 
-// Using forwardRef to expose methods to parent component
-const TourMap = forwardRef<
+// Create a loading component
+const MapLoading = ({ height = 500 }: { height?: number }) => (
+	<div className="overflow-hidden rounded-lg shadow-sm">
+		<div className="flex justify-end gap-2 border-b bg-white p-2">
+			<button
+				disabled
+				className="flex items-center gap-1 rounded-full border border-gray-200 bg-gray-100 px-3 py-1.5 text-xs font-medium text-black shadow-sm"
+			>
+				<MapIcon size={14} />
+				<span>View All</span>
+			</button>
+			<button
+				disabled
+				className="flex items-center gap-1 rounded-full bg-black px-3 py-1.5 text-xs font-medium text-white shadow-sm"
+			>
+				<Navigation size={14} />
+				<span>Directions</span>
+			</button>
+		</div>
+		<div className="relative">
+			<div
+				className="flex items-center justify-center bg-gray-100"
+				style={{ height: `${height}px`, width: '100%' }}
+			>
+				<div className="text-center">
+					<MapIcon className="mx-auto h-12 w-12 text-gray-400" />
+					<p className="mt-2 text-sm text-gray-500">Loading map...</p>
+				</div>
+			</div>
+		</div>
+		<div className="flex flex-wrap gap-3 bg-gray-50 p-3 text-sm">
+			<div className="flex items-center gap-1">
+				<div className="h-4 w-4 rounded-full bg-black"></div>
+				<span>Tour Days</span>
+			</div>
+			<div className="flex items-center gap-1">
+				<div className="h-4 w-4 rounded-full bg-black"></div>
+				<span>Selected Day</span>
+			</div>
+			<div className="flex items-center gap-1">
+				<div className="h-1 w-8 bg-black"></div>
+				<span>Route</span>
+			</div>
+		</div>
+	</div>
+)
+
+// Create a separate component for the actual map implementation
+// This will be dynamically imported with ssr: false
+const InnerTourMap = forwardRef<
 	{ zoomToDay: (dayIndex: number) => void },
 	TourMapProps
 >(
@@ -33,6 +81,14 @@ const TourMap = forwardRef<
 		{ days, selectedDayIndex, onDaySelect, height = 500, monochrome = false },
 		ref,
 	) => {
+		// Keep all your original TourMap code here, unchanged
+		// This component will only be loaded on the client side
+
+		// Import required modules
+		const { useEffect, useRef, useImperativeHandle } = require('react')
+		const L = require('leaflet')
+		require('leaflet/dist/leaflet.css')
+
 		const mapRef = useRef<HTMLDivElement>(null)
 		const leafletMapRef = useRef<L.Map | null>(null)
 		const routeLayerRef = useRef<L.Polyline | null>(null)
@@ -356,6 +412,22 @@ const TourMap = forwardRef<
 		)
 	},
 )
+
+InnerTourMap.displayName = 'InnerTourMap'
+
+// Dynamically import the inner component with ssr: false
+const DynamicTourMap = dynamic(() => Promise.resolve(InnerTourMap), {
+	ssr: false,
+	loading: MapLoading,
+})
+
+// Export the dynamic component as the default export
+const TourMap = forwardRef<
+	{ zoomToDay: (dayIndex: number) => void },
+	TourMapProps
+>((props, ref) => {
+	return <DynamicTourMap {...props} ref={ref} />
+})
 
 TourMap.displayName = 'TourMap'
 

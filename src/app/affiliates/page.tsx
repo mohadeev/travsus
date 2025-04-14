@@ -879,7 +879,7 @@ export default function ReferralProgramPage() {
 					className="relative w-full overflow-hidden bg-[#f8f9fa] py-12 md:py-24 lg:py-32"
 				>
 					<motion.div
-						className="absolute inset-0 -z-10 bg-[url('/placeholder.svg?height=500&width=500')] bg-repeat opacity-5"
+						className="absolute inset-0 -z-10 bg-[url('/')] bg-repeat opacity-5"
 						style={{ backgroundPosition: `0 ${backgroundY.get()}px` }}
 					/>
 
