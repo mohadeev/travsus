@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { DashboardShell } from '@/components/dashboard/shell'
+// import { DashboardShell } from '@/components/dashboard/shell'
 import { DashboardHeader } from '@/components/dashboard/header'
 import { Button } from '@/components/ui/button'
 import {
@@ -15,6 +15,7 @@ import {
 import { initializeBlankTour } from '@/app/actions/tourActions'
 import { toast } from '@/components/ui/use-toast'
 import { Map, Plus } from 'lucide-react'
+import { DashboardShell } from '@/components/dashboard/shell'
 
 export default function CreateTourPage() {
 	const router = useRouter()
