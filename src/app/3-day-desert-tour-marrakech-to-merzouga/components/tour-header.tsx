@@ -102,7 +102,6 @@ export default function TourHeader() {
 
 						<Link href={getLocalizedHref('#pricing')}>
 							<Button
-								size="sm"
 								className="rounded-full bg-black px-6 hover:bg-gray-800"
 							>
 								{t('nav.book')}

@@ -63,7 +63,6 @@ export default function HeroSection() {
 				>
 					<Link href={getLocalizedHref('#pricing')}>
 						<Button
-							size="lg"
 							className="rounded-full bg-black px-8 text-white hover:bg-gray-800"
 						>
 							{t('hero.cta')}

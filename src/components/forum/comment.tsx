@@ -25,7 +25,7 @@ import {
 import { cn } from '@/lib/utils'
 import { updateCommentVotes } from '@/app/actions/forum/updateCommentVotes'
 import { useToast } from '@/components/ui/use-toast'
-import { CommentForm } from '@/app/forum/page'
+// import { CommentForm } from '@/app/forum/page'
 
 interface CommentProps {
 	comment: any
@@ -263,13 +263,13 @@ export function Comment({
 				</div>
 			</div>
 
-			{isReplying && currentUserId && (
+			{/* {isReplying && currentUserId && (
 				<CommentForm
 					postId={postId}
 					parentId={comment.id}
 					onCommentAdded={handleReplyAdded}
 				/>
-			)}
+			)} */}
 
 			{showReplies && replies.length > 0 && (
 				<div className="ml-8 mt-4 space-y-4">

@@ -257,3 +257,5 @@ export async function getTours(searchQuery = '') {
 		return { success: false, error: (error as Error).message, tours: [] }
 	}
 }
+
+export const initiateTour = () => {}

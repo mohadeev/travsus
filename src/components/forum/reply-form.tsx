@@ -2,9 +2,10 @@
 
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
-import { Textarea } from '@/components/ui/textarea'
+// import { Textarea } from '@/components/ui/textarea'
 import { addComment } from '@/app/actions/forum/addComment'
 import { useToast } from '@/components/ui/use-toast'
+import Textarea from '@/shared/Textarea'
 
 interface ReplyFormProps {
 	postId: string

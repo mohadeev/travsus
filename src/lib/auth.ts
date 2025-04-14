@@ -1,5 +1,6 @@
 import getUserData from '@/app/api/user/getUserData'
 import prisma from '@/lib/prisma'
+import { authOptions } from '@/app/api/auth/[...nextauth]/authOptions'
 
 // Remove this line as it's not necessary and might cause circular dependency issues
 // import userData from '@/app/api/user/getUserData'
@@ -31,4 +32,5 @@ export async function getUserByEmail(email: string) {
 	})
 }
 
-export { getUserData }
+export { getUserData, authOptions }
+// import { authOptions } from '@/lib/auth'

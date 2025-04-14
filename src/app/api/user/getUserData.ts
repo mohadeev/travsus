@@ -28,3 +28,4 @@ const getUserData = async (data?: any) => {
 }
 
 export default getUserData
+export { getUserData }

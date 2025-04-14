@@ -112,7 +112,7 @@ export default function TourItinerary() {
 	]
 
 	// Custom styling for the tabs
-	const getTabStyle = (day) => {
+	const getTabStyle = (day:any) => {
 		if (day === activeTab) {
 			return 'bg-black text-white'
 		}

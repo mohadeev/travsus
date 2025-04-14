@@ -18,7 +18,6 @@ export default function BookingCTA() {
 					<div className="flex justify-center">
 						<Link href={getLocalizedHref('#pricing')}>
 							<button
-								size="lg"
 								className="rounded-full bg-white px-8 py-3 font-medium text-black hover:bg-gray-100"
 							>
 								{t('booking.button')}

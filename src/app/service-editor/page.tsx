@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import InitiateTour from './components/InitiateTour'
 import TourBuilder from './components/TourBuilder'
-import { getTourById, updateTour } from '@/app/actions/tourActions'
+import { updateTour } from '@/app/actions/tourActions'
 
 export default function ServiceEditorPage() {
 	const [tourData, setTourData] = useState<any>(null)
@@ -20,23 +20,23 @@ export default function ServiceEditorPage() {
 
 	useEffect(() => {
 		const fetchTourData = async () => {
-			if (active === 'create' && serviceId) {
-				try {
-					const tour = await getTourById(serviceId)
-					if (tour) {
-						setTourData(tour)
-					} else {
-						console.error('Tour not found')
-						router.push('/service-editor')
-					}
-				} catch (error) {
-					console.error('Error fetching tour:', error)
-				} finally {
-					setIsLoading(false)
-				}
-			} else {
-				setIsLoading(false)
-			}
+			// if (active === 'create' && serviceId) {
+			// 	try {
+			// 		const tour = await getTourById(serviceId)
+			// 		if (tour) {
+			// 			setTourData(tour)
+			// 		} else {
+			// 			console.error('Tour not found')
+			// 			router.push('/service-editor')
+			// 		}
+			// 	} catch (error) {
+			// 		console.error('Error fetching tour:', error)
+			// 	} finally {
+			// 		setIsLoading(false)
+			// 	}
+			// } else {
+			// 	setIsLoading(false)
+			// }
 		}
 
 		fetchTourData()
