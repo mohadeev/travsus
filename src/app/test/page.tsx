@@ -49,12 +49,12 @@ export default function HomeBanner() {
 							: 'translate-y-10 opacity-0',
 					)}
 				>
-					<h1 className="font-serif mb-6 text-4xl font-bold tracking-tight text-black sm:text-5xl md:text-6xl lg:text-7xl">
+					<h1 className="font-serif mb-6 text-4xl font-bold tracking-tight text-black sm:text-5xl md:text-6xl lg:text-[80px] lg:font-extrabold">
 						Travel with <span className="text-primary">Ultimate</span>{' '}
 						Flexibility
 					</h1>
 					<p className="mx-auto mb-10 max-w-2xl text-lg text-gray-700 sm:text-xl md:text-2xl">
-						Book, Cancel, Refund — Anytime, Anywhere in the World
+						Book, Cancel, Refund - Anytime, Anywhere in the World.
 					</p>
 				</div>
 

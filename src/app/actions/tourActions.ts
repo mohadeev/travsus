@@ -2,100 +2,117 @@
 
 import { PrismaClient } from '@prisma/client'
 import { revalidatePath } from 'next/cache'
-import  getUserData  from '@/app/api/user/getUserData'
+import { getUserData } from '@/app/api/user/getUserData'
 
 const prisma = new PrismaClient()
 
 export async function updateTour(tourId: string, newTourData: any) {
-	console.log('Updating tour with ID:', tourId)
-
 	try {
-		const updatedTour = await prisma.tour.update({
-			where: { id: tourId },
-			data: {
+		// Make API call to update tour
+		const response = await fetch(`/api/dashboard/tours/${tourId}`, {
+			method: 'PUT',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
 				name: newTourData.name,
 				subtitle: newTourData.subtitle,
 				overview: newTourData.overview,
 				slug: newTourData.slug,
+				highlights: newTourData.highlights,
+				days: newTourData.days,
+				price: newTourData.price,
+				discount: newTourData.discount,
 				images: newTourData.images,
+				tags: newTourData.tags,
+				lang: newTourData.lang,
 				people: newTourData.people,
 				services: newTourData.services,
 				places: newTourData.places,
-				highlights: newTourData.highlights,
-				days: newTourData.days,
 				paths: newTourData.paths,
-				price: newTourData.price,
-				discount: newTourData.discount,
-				start: newTourData.start,
-				end: newTourData.end,
 				reviews: newTourData.reviews,
-				lang: newTourData.lang,
 				tourfor: newTourData.tourfor,
-				updated: newTourData.updated,
+				updated: true,
 				conclusion: newTourData.conclusion,
-				tags: newTourData.tags,
 				keyphrase: newTourData.keyphrase,
 				productCategory: newTourData.productCategory,
-				// Address handling removed
-			},
+				pricingTiers: newTourData.pricingTiers, // Transportation pricing tiers
+				accommodations: newTourData.accommodations, // Accommodations data
+			}),
 		})
 
-		console.log('Tour updated successfully:', updatedTour.id)
+		if (!response.ok) {
+			const errorData = await response.json()
+			return {
+				success: false,
+				error: errorData.message || 'Failed to update tour',
+			}
+		}
 
-		// Revalidate the tours page to reflect the changes
-		revalidatePath('/dashboard/tours')
-		revalidatePath(`/dashboard/tours/${tourId}/edit`)
-
-		return { success: true, tour: updatedTour }
+		const data = await response.json()
+		return { success: true, data }
 	} catch (error) {
 		console.error('Error updating tour:', error)
-		return { success: false, error: (error as Error).message }
+		return {
+			success: false,
+			error:
+				(error as Error).message || 'An error occurred while updating the tour',
+		}
 	}
 }
 
 export async function createTour(tourData: any) {
 	try {
-		const newTour = await prisma.tour.create({
-			data: {
-				name: tourData.name || 'Untitled Tour',
+		// Make API call to create tour
+		const response = await fetch('/api/dashboard/tours/create', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				name: tourData.name,
 				subtitle: tourData.subtitle,
 				overview: tourData.overview,
-				slug:
-					tourData.slug ||
-					tourData.name?.toLowerCase().replace(/\s+/g, '-') ||
-					`tour-${Date.now()}`,
-				images: tourData.images || [],
-				people: tourData.people,
-				services: tourData.services,
-				places: tourData.places,
+				slug: tourData.slug,
 				highlights: tourData.highlights || [],
 				days: tourData.days || [],
-				paths: tourData.paths,
 				price: tourData.price,
 				discount: tourData.discount,
-				start: tourData.start,
-				end: tourData.end,
-				reviews: tourData.reviews || [],
-				lang: tourData.lang || 'EN',
-				tourfor: tourData.tourfor,
-				updated: true,
-				conclusion: tourData.conclusion,
+				images: tourData.images || [],
 				tags: tourData.tags || [],
-				keyphrase: tourData.keyphrase,
-				productCategory: tourData.productCategory,
-				// Address handling removed
-			},
+				lang: tourData.lang || 'EN',
+				people: tourData.people || [],
+				services: tourData.services || [],
+				places: tourData.places || [],
+				paths: tourData.paths || [],
+				reviews: tourData.reviews || [],
+				tourfor: tourData.tourfor || '',
+				updated: true,
+				conclusion: tourData.conclusion || '',
+				keyphrase: tourData.keyphrase || [],
+				productCategory: tourData.productCategory || '',
+				pricingTiers: tourData.pricingTiers || [], // Transportation pricing tiers
+				accommodations: tourData.accommodations || [], // Accommodations data
+			}),
 		})
 
-		console.log('Tour created successfully:', newTour.id)
+		if (!response.ok) {
+			const errorData = await response.json()
+			return {
+				success: false,
+				error: errorData.message || 'Failed to create tour',
+			}
+		}
 
-		// Revalidate the tours page to reflect the changes
-		revalidatePath('/dashboard/tours')
-
-		return { success: true, tour: newTour }
+		const data = await response.json()
+		return { success: true, data }
 	} catch (error) {
 		console.error('Error creating tour:', error)
-		return { success: false, error: (error as Error).message }
+		return {
+			success: false,
+			error:
+				(error as Error).message || 'An error occurred while creating the tour',
+		}
 	}
 }
 
@@ -105,6 +122,7 @@ export async function getTour(tourId: string) {
 			where: { id: tourId },
 			// Address include removed
 		})
+		console.log('accommodationTypes', JSON.stringify(tour?.accommodations))
 
 		if (!tour) {
 			return { success: false, error: 'Tour not found' }

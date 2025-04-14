@@ -270,14 +270,18 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
 	}
 
 	return (
-		<div className="w-full">
+		<div className="mb-10 mt-10 w-full">
 			{/* Reviews Section */}
 			<div className="">
 				<div className="mb-4 flex items-center justify-between">
 					<h2 className="text-2xl font-semibold">Reviews ({reviews.length})</h2>
-					<ButtonPrimary onClick={() => setShowReviewForm(!showReviewForm)}>
-						Write a Review
-					</ButtonPrimary>
+					{reviews.length >= 1 ? (
+						<ButtonPrimary onClick={() => setShowReviewForm(!showReviewForm)}>
+							Write a Review
+						</ButtonPrimary>
+					) : (
+						''
+					)}
 				</div>
 
 				{/* Review Form */}

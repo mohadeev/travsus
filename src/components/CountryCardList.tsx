@@ -26,26 +26,34 @@ const DEFAULT_COUNTRY_CODES = [
 	'IDN',
 ]
 
-export interface CountryCardListProps {
+export interface LocationCardListProps {
 	className?: string
 	itemClassName?: string
 	cardSize?: 'default' | 'small'
-	countryCodes?: string[]
+	locationType: 'country' | 'city' | 'place'
+	countryCodes?: string[] // For countries
+	countryCode?: string // For cities within a country
+	cityName?: string // For places within a city by name
 	layout?: 'row' | 'column'
 	heading?: string
 	subHeading?: string
+	limit?: number
 }
 
-const CountryCardList: FC<CountryCardListProps> = ({
+const LocationCardList: FC<LocationCardListProps> = ({
 	className = '',
 	itemClassName = '',
 	cardSize = 'default',
+	locationType = 'country',
 	countryCodes = DEFAULT_COUNTRY_CODES,
+	countryCode,
+	cityName,
 	layout = 'column',
 	heading = 'Popular Destinations',
 	subHeading = 'Explore top destinations around the world',
+	limit = 16,
 }) => {
-	const [countries, setCountries] = useState<CountryDataType[]>([])
+	const [locations, setLocations] = useState<CountryDataType[]>([])
 	const [loading, setLoading] = useState(true)
 	const [error, setError] = useState<string | null>(null)
 	const scrollContainerRef = useRef<HTMLDivElement>(null)
@@ -62,103 +70,145 @@ const CountryCardList: FC<CountryCardListProps> = ({
 		}
 	}
 
-	// For testing/development - use this mock data if API fails
-	const mockCountries: CountryDataType[] = [
+	// Mock data for fallback
+	const mockLocations: CountryDataType[] = [
 		{
 			id: '1',
 			name: 'Morocco',
 			image:
-				'https://images.pexels.com/photos/3889986/pexels-photo-3889986.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+				'https://images.pexels.com/photos/3889986/pexels-photo-3889986.jpeg',
 			code3: 'MAR',
+			url: '/destinations/morocco',
 		},
 		{
 			id: '2',
-			name: 'France',
+			name: 'Marrakech',
 			image:
-				'https://images.pexels.com/photos/3889986/pexels-photo-3889986.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-			code3: 'FRA',
-		},
-		{
-			id: '3',
-			name: 'Italy',
-			image:
-				'https://images.pexels.com/photos/3889986/pexels-photo-3889986.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-			code3: 'ITA',
-		},
-		{
-			id: '4',
-			name: 'Japan',
-			image:
-				'https://images.pexels.com/photos/3889986/pexels-photo-3889986.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-			code3: 'JPN',
-		},
-		{
-			id: '5',
-			name: 'United States',
-			image:
-				'https://images.pexels.com/photos/3889986/pexels-photo-3889986.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-			code3: 'USA',
-		},
-		{
-			id: '5',
-			name: 'United States',
-			image:
-				'https://images.pexels.com/photos/3889986/pexels-photo-3889986.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-			code3: 'IDA',
+				'https://images.pexels.com/photos/4577793/pexels-photo-4577793.jpeg',
+			code3: 'MAR',
+			url: '/destinations/morocco/marrakech',
 		},
 	]
 
 	useEffect(() => {
-		const fetchCountries = async () => {
+		const fetchLocations = async () => {
 			try {
 				setLoading(true)
-				// Join the country codes with commas for the API query
-				const codesParam = countryCodes.join(',')
-				const response = await fetch(`/api/countries?codes=${codesParam}`)
+				let url = ''
+
+				// Determine which API endpoint to use based on location type
+				if (locationType === 'country') {
+					// Fetch countries
+					const codesParam = countryCodes.join(',')
+					url = `/api/countries?codes=${codesParam}&limit=${limit}`
+				} else if (locationType === 'city' && countryCode) {
+					// Fetch cities for a specific country
+					url = `/api/cities?countryCode=${countryCode}&limit=${limit}`
+				} else if (locationType === 'place' && cityName) {
+					// Fetch places for a specific city by name
+					url = `/api/placesByCityName?name=${encodeURIComponent(cityName)}&limit=${limit}`
+				} else {
+					// Default to popular cities
+					url = `/api/cities/popular?limit=${limit}`
+				}
+
+				const response = await fetch(url)
 
 				if (!response.ok) {
-					throw new Error('Failed to fetch countries')
+					throw new Error(`Failed to fetch ${locationType}s`)
 				}
 
 				const data = await response.json()
 
-				if (!data.countries || data.countries.length === 0) {
-					setError('No countries found')
-					setLoading(false)
-					return
+				// Process the data based on the location type and API response format
+				let formattedLocations: CountryDataType[] = []
+
+				if (locationType === 'country' && data.countries) {
+					// Format country data
+					formattedLocations = data.countries.map((country: any) => {
+						const translation = country.content?.translations?.[0]
+						const name = translation?.text || country.code3
+						const imageUrl = country.image?.url || country.image?.uploadFrom
+
+						return {
+							id: country.id,
+							name: name,
+							image: imageUrl,
+							code3: country.code3,
+							url: `/destinations/${country.code3.toLowerCase()}`,
+						}
+					})
+				} else if (locationType === 'place' && cityName && data.data) {
+					// Format places data
+					formattedLocations = data.data.map((place: any) => {
+						return {
+							id: place.id,
+							name: place.name,
+							image: place.image?.url || place.image?.uploadFrom,
+							url: `/places/${place.id}`,
+						}
+					})
+				} else if (data.cities || data.data) {
+					// Format city data
+					const cityList = data.cities || data.data || []
+					formattedLocations = cityList.map((city: any) => {
+						const translation = city.content?.translations?.[0]
+						const name = translation?.text || city.name || 'Unknown City'
+						const cityCountryCode = city.code3 || countryCode
+						const imageUrl = city.image?.url || city.image?.uploadFrom
+
+						return {
+							id: city.id,
+							name: name,
+							image: imageUrl,
+							code3: cityCountryCode,
+							url: `/destinations/${cityCountryCode?.toLowerCase()}/${name.toLowerCase().replace(/\s+/g, '-')}`,
+						}
+					})
 				}
 
-				// Transform API data to match CountryDataType
-				const formattedCountries = data.countries.map((country: any) => {
-					// Get the English name from translations
-					const translation = country.content.translations[0]
-					const name = translation?.text || country.code3
-
-					// Get image URL from the country data
-					const imageUrl = country.image?.url || country.image?.uploadFrom
-
-					return {
-						id: country.id,
-						name: name,
-						image: imageUrl, // Pass the image URL to the CountryCard
-						year: '2025',
-						code3: country.code3,
-						url: `/destinations/${country.code3.toLowerCase()}`,
-					}
-				})
-
-				setCountries(formattedCountries)
+				if (formattedLocations.length === 0) {
+					setError(`No ${locationType}s found`)
+					// Use mock data if no results
+					setLocations(mockLocations)
+				} else {
+					setLocations(formattedLocations)
+				}
 			} catch (err) {
-				console.error('Error fetching countries:', err)
+				console.error(`Error fetching ${locationType}s:`, err)
 				// Use mock data if API fails
-				setCountries(mockCountries)
+				setLocations(mockLocations)
+				setError(`Failed to load ${locationType}s`)
 			} finally {
 				setLoading(false)
 			}
 		}
 
-		fetchCountries()
-	}, [countryCodes])
+		fetchLocations()
+	}, [locationType, countryCodes, countryCode, cityName, limit])
+
+	// Customize heading based on location type
+	const getDefaultHeading = () => {
+		if (locationType === 'country') return 'Popular Countries'
+		if (locationType === 'city')
+			return countryCode ? `Cities in ${countryCode}` : 'Popular Cities'
+		if (locationType === 'place')
+			return cityName ? `Places in ${cityName}` : 'Places to Visit'
+		return 'Popular Destinations'
+	}
+
+	// Customize subheading based on location type
+	const getDefaultSubheading = () => {
+		if (locationType === 'country')
+			return 'Explore top countries around the world'
+		if (locationType === 'city') return 'Discover amazing cities to visit'
+		if (locationType === 'place') return 'Must-see attractions and experiences'
+		return 'Explore top destinations around the world'
+	}
+
+	// Use custom headings if provided, otherwise use defaults
+	const displayHeading = heading || getDefaultHeading()
+	const displaySubheading = subHeading || getDefaultSubheading()
 
 	return (
 		<div>
@@ -169,23 +219,23 @@ const CountryCardList: FC<CountryCardListProps> = ({
 					<div className="mt-2 h-4 w-96 animate-pulse rounded bg-gray-200"></div>
 				</div>
 			) : (
-				<Heading2 heading={heading} subHeading={subHeading} />
+				<Heading2 heading={displayHeading} subHeading={displaySubheading} />
 			)}
 
 			{/* Content section */}
 			{loading ? (
 				<div
-					className={`nc-CountryCardList grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 ${className}`}
+					className={`grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 ${className}`}
 				>
 					<ContainerExperiencesCardSkeleton />
 				</div>
-			) : error && countries.length === 0 ? (
+			) : error && locations.length === 0 ? (
 				<div className="rounded-lg bg-red-50 p-4 text-center text-red-700 dark:bg-red-900/20 dark:text-red-400">
 					<p>{error}</p>
 				</div>
-			) : countries.length === 0 ? (
+			) : locations.length === 0 ? (
 				<div className="rounded-lg bg-amber-50 p-4 text-center text-amber-700 dark:bg-amber-900/20 dark:text-amber-400">
-					<p>No destinations found</p>
+					<p>No {locationType}s found</p>
 				</div>
 			) : (
 				<>
@@ -203,9 +253,9 @@ const CountryCardList: FC<CountryCardListProps> = ({
 					{layout === 'column' ? (
 						// Column layout - grid view
 						<div
-							className={`nc-CountryCardList grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 ${className}`}
+							className={`grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 ${className}`}
 						>
-							{countries.map((item) => (
+							{locations.map((item) => (
 								<div key={item.id} className={`${itemClassName}`}>
 									<CountryCard data={item} size={cardSize} />
 								</div>
@@ -228,7 +278,7 @@ const CountryCardList: FC<CountryCardListProps> = ({
 								ref={scrollContainerRef}
 								className={`hide-scrollbar flex gap-5 overflow-x-auto py-0 ${className}`}
 							>
-								{countries.map((item) => (
+								{locations.map((item) => (
 									<div key={item.id} className={`flex-none ${itemClassName}`}>
 										<CountryCard data={item} size="small" />
 									</div>
@@ -251,4 +301,4 @@ const CountryCardList: FC<CountryCardListProps> = ({
 	)
 }
 
-export default CountryCardList
+export default LocationCardList

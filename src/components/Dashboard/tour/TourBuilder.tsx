@@ -20,15 +20,18 @@ import TourOverview from './TourOverview'
 import TourHighlights from './TourHighlights'
 import TourItinerary from './TourItinerary'
 import TourPricing from './TourPricing'
+import TourAccommodations from './TourAccommodations' // Add this import
 import TourImages from './TourImages'
 import TourReview from './TourReview'
 
+// Update the steps array to include accommodations after pricing
 const steps = [
 	{ id: 'basic-info', title: 'Basic Info' },
 	{ id: 'overview', title: 'Overview' },
 	{ id: 'highlights', title: 'Highlights' },
 	{ id: 'itinerary', title: 'Itinerary' },
 	{ id: 'pricing', title: 'Pricing' },
+	{ id: 'accommodations', title: 'Accommodations' }, // Add new step here
 	{ id: 'images', title: 'Images' },
 	{ id: 'review', title: 'Review' },
 ]
@@ -47,7 +50,10 @@ export default function TourBuilder({ tour }: TourBuilderProps) {
 	const [stepStatus, setStepStatus] = useState<
 		Record<string, 'complete' | 'incomplete' | 'error'>
 	>({})
+	const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false)
+	const [isSaving, setIsSaving] = useState(false)
 	const autoSaveTimeout = useRef<NodeJS.Timeout | null>(null)
+	// Update the tourData state to include accommodations
 	const [tourData, setTourData] = useState({
 		id: tour?.id || '',
 		name: tour?.name || '',
@@ -59,7 +65,7 @@ export default function TourBuilder({ tour }: TourBuilderProps) {
 		price: tour?.price || '',
 		discount: tour?.discount || '',
 		images: tour?.images || [],
-		// Removed region, start, end, tags
+		tags: tour?.tags || [],
 		lang: tour?.lang || 'EN',
 		// Add other fields that match the Prisma schema
 		people: tour?.people || [],
@@ -71,11 +77,13 @@ export default function TourBuilder({ tour }: TourBuilderProps) {
 		updated: true,
 		conclusion: tour?.conclusion || '',
 		keyphrase: tour?.keyphrase || [],
-		productCategory: tour?.productCategory || '',
+		productCategory: tour?.productCategory || [],
+		pricingTiers: tour?.pricingTiers || [], // Added pricingTiers field
+		accommodations: tour?.accommodations || [], // Add accommodations field
 	})
+	console.log('accommodations', JSON.stringify(tour?.accommodations))
 
 	// Add auto-save state to track saving status
-	const [isSaving, setIsSaving] = useState(false)
 
 	// Check all steps on initial load and when data changes
 	useEffect(() => {
@@ -128,6 +136,9 @@ export default function TourBuilder({ tour }: TourBuilderProps) {
 		// Update local state first for immediate UI feedback
 		setTourData(updatedTourData)
 
+		// Mark that we have unsaved changes
+		setHasUnsavedChanges(true)
+
 		// Clear validation errors for updated fields
 		const updatedFields = Object.keys(data)
 		if (updatedFields.length > 0) {
@@ -142,48 +153,43 @@ export default function TourBuilder({ tour }: TourBuilderProps) {
 				return newErrors
 			})
 		}
+	}
 
-		// Auto-save changes to the server
-		if (updatedTourData.id) {
-			try {
-				// Use a debounced save to prevent too many API calls
-				if (autoSaveTimeout.current) {
-					clearTimeout(autoSaveTimeout.current)
-				}
+	const handleSave = async () => {
+		if (!tourData.id) return
 
-				setIsSaving(true)
-				autoSaveTimeout.current = setTimeout(async () => {
-					console.log('Saving tour data:', updatedTourData)
-					const result = await updateTour(updatedTourData.id, updatedTourData)
-					if (result.success) {
-						console.log('Auto-saved changes successfully')
-						toast({
-							title: 'Changes saved',
-							description: 'Your changes have been automatically saved.',
-							duration: 2000,
-						})
-					} else {
-						console.error('Failed to auto-save:', result.error)
-						toast({
-							title: 'Failed to save changes',
-							description:
-								result.error || 'There was a problem saving your changes.',
-							variant: 'destructive',
-						})
-					}
-					autoSaveTimeout.current = null
-					setIsSaving(false)
-				}, 1000) // Wait 1 second after typing stops before saving
-			} catch (error) {
-				console.error('Error auto-saving tour:', error)
+		try {
+			setIsSaving(true)
+			console.log('Saving tour data:', tourData)
+			const result = await updateTour(tourData.id, tourData)
+
+			if (result.success) {
+				console.log('Saved changes successfully')
 				toast({
-					title: 'Error saving changes',
+					title: 'Changes saved',
+					description: 'Your changes have been saved.',
+					duration: 2000,
+				})
+				setHasUnsavedChanges(false)
+			} else {
+				console.error('Failed to save:', result.error)
+				toast({
+					title: 'Failed to save changes',
 					description:
-						(error as Error).message || 'An unexpected error occurred.',
+						result.error || 'There was a problem saving your changes.',
 					variant: 'destructive',
 				})
-				setIsSaving(false)
 			}
+		} catch (error) {
+			console.error('Error saving tour:', error)
+			toast({
+				title: 'Error saving changes',
+				description:
+					(error as Error).message || 'An unexpected error occurred.',
+				variant: 'destructive',
+			})
+		} finally {
+			setIsSaving(false)
 		}
 	}
 
@@ -231,6 +237,7 @@ export default function TourBuilder({ tour }: TourBuilderProps) {
 		return steps.findIndex((step) => step.id === activeTab)
 	}
 
+	// Add validation for the accommodations step in the validateStep function
 	const validateStep = (stepId: string, updateErrors = true): boolean => {
 		const errors: string[] = []
 
@@ -265,6 +272,11 @@ export default function TourBuilder({ tour }: TourBuilderProps) {
 				break
 
 			case 'itinerary':
+				// Dispatch an event to notify the itinerary component before validation
+				if (typeof window !== 'undefined') {
+					window.dispatchEvent(new Event('validateItinerary'))
+				}
+
 				if (!tourData.days || tourData.days.length === 0) {
 					errors.push('At least one day in the itinerary is required')
 				} else {
@@ -280,6 +292,13 @@ export default function TourBuilder({ tour }: TourBuilderProps) {
 			case 'pricing':
 				if (!tourData.price || tourData.price.trim() === '') {
 					errors.push('Price is required')
+				}
+				break
+
+			case 'accommodations':
+				// Add validation for accommodations
+				if (!tourData.accommodations || tourData.accommodations.length === 0) {
+					errors.push('At least one accommodation is required')
 				}
 				break
 
@@ -384,6 +403,9 @@ export default function TourBuilder({ tour }: TourBuilderProps) {
 						: 'Tour created successfully',
 					description: 'Your tour has been saved and is ready to publish.',
 				})
+
+				// Clear unsaved changes flag
+				setHasUnsavedChanges(false)
 
 				// Redirect to tours page
 				router.push('/dashboard/tours')
@@ -652,6 +674,12 @@ export default function TourBuilder({ tour }: TourBuilderProps) {
 					<TabsContent value="pricing">
 						<TourPricing tourData={tourData} updateTourData={updateTourData} />
 					</TabsContent>
+					<TabsContent value="accommodations">
+						<TourAccommodations
+							tourData={tourData}
+							updateTourData={updateTourData}
+						/>
+					</TabsContent>
 					<TabsContent value="images">
 						<TourImages tourData={tourData} updateTourData={updateTourData} />
 					</TabsContent>
@@ -664,51 +692,59 @@ export default function TourBuilder({ tour }: TourBuilderProps) {
 			{/* Navigation Buttons */}
 			<div className="flex justify-between">
 				<div className="text-muted-foreground text-sm">
-					{isSaving ? (
-						<span className="flex items-center">
-							<svg
-								className="text-muted-foreground -ml-1 mr-2 h-4 w-4 animate-spin"
-								xmlns="http://www.w3.org/2000/svg"
-								fill="none"
-								viewBox="0 0 24 24"
-							>
-								<circle
-									className="opacity-25"
-									cx="12"
-									cy="12"
-									r="10"
-									stroke="currentColor"
-									strokeWidth="4"
-								></circle>
-								<path
-									className="opacity-75"
-									fill="currentColor"
-									d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-								></path>
-							</svg>
-							Saving changes...
+					{hasUnsavedChanges ? (
+						<span className="flex items-center text-amber-600">
+							<AlertCircle className="mr-2 h-4 w-4" />
+							You have unsaved changes
 						</span>
 					) : (
-						<span className="flex items-center">
-							<svg
-								className="mr-2 h-4 w-4 text-green-500"
-								fill="none"
-								stroke="currentColor"
-								viewBox="0 0 24 24"
-								xmlns="http://www.w3.org/2000/svg"
-							>
-								<path
-									strokeLinecap="round"
-									strokeLinejoin="round"
-									strokeWidth="2"
-									d="M5 13l4 4L19 7"
-								></path>
-							</svg>
+						<span className="flex items-center text-green-600">
+							<CheckCircle2 className="mr-2 h-4 w-4" />
 							All changes saved
 						</span>
 					)}
 				</div>
 				<div className="flex space-x-2">
+					<Button
+						type="button"
+						variant="outline"
+						size="sm"
+						onClick={handleSave}
+						disabled={!hasUnsavedChanges || isSaving || !tourData.id}
+						className="mr-2 h-9 scale-110 transform text-sm"
+					>
+						{isSaving ? (
+							<>
+								<svg
+									className="mr-2 h-4 w-4 animate-spin"
+									xmlns="http://www.w3.org/2000/svg"
+									fill="none"
+									viewBox="0 0 24 24"
+								>
+									<circle
+										className="opacity-25"
+										cx="12"
+										cy="12"
+										r="10"
+										stroke="currentColor"
+										strokeWidth="4"
+									></circle>
+									<path
+										className="opacity-75"
+										fill="currentColor"
+										d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+									></path>
+								</svg>
+								Saving...
+							</>
+						) : (
+							<>
+								<Save className="mr-2 h-4 w-4" />
+								Save
+							</>
+						)}
+					</Button>
+
 					<button
 						onClick={handlePrevious}
 						disabled={getCurrentStepIndex() === 0}

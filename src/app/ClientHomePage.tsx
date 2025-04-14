@@ -135,15 +135,35 @@ function ClientHomePage() {
 
 					{/* <SectionGridFeaturePlaces /> */}
 					<SectionGridFilterCard layout="row" />
-					<CountryCardList layout="row" />
+					{/* <CountryCardList layout="row" /> */}
+					<CountryCardList
+						locationType="country"
+						// countryCodes={['MAR', 'FRA', 'ESP']}
+						// locationType="country"
+						layout="row"
+						// countryCodes={['MAR', 'FRA', 'ESP']}
+						// heading="Popular Countries"
+					/>
 
+					<CountryCardList
+						locationType="city"
+						countryCode="MAR"
+						// locationType="country"
+						layout="row"
+						// countryCodes={['MAR', 'FRA', 'ESP']}
+						// heading="Popular Countries"
+					/>
+					<CountryCardList
+						locationType="place"
+						cityName="Marrakech"
+						layout="row"
+					/>
 					{/* SECTION */}
 					{/* <WellcomeTemplate /> */}
 					{/* <VarticalExperiencesCard /> */}
 					{/* <SectionGridVerticalCard /> */}
 				</div>
 				<SectionSubscribe2 />
-
 			</main>
 		</>
 	)

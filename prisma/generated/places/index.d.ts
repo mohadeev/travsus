@@ -24,15 +24,20 @@ export type GeoCoordinates = $Result.DefaultSelection<Prisma.$GeoCoordinatesPayl
  */
 export type Image = $Result.DefaultSelection<Prisma.$ImagePayload>
 /**
+ * Model City
+ * 
+ */
+export type City = $Result.DefaultSelection<Prisma.$CityPayload>
+/**
  * Model Country
  * 
  */
 export type Country = $Result.DefaultSelection<Prisma.$CountryPayload>
 /**
- * Model City
+ * Model Place
  * 
  */
-export type City = $Result.DefaultSelection<Prisma.$CityPayload>
+export type Place = $Result.DefaultSelection<Prisma.$PlacePayload>
 /**
  * Model TranslatableContent
  * 
@@ -51,8 +56,8 @@ export type TranslatedText = $Result.DefaultSelection<Prisma.$TranslatedTextPayl
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Countries
- * const countries = await prisma.country.findMany()
+ * // Fetch zero or more Cities
+ * const cities = await prisma.city.findMany()
  * ```
  *
  * 
@@ -72,8 +77,8 @@ export class PrismaClient<
    * @example
    * ```
    * const prisma = new PrismaClient()
-   * // Fetch zero or more Countries
-   * const countries = await prisma.country.findMany()
+   * // Fetch zero or more Cities
+   * const cities = await prisma.city.findMany()
    * ```
    *
    * 
@@ -135,6 +140,16 @@ export class PrismaClient<
   $extends: $Extensions.ExtendsHook<"extends", Prisma.TypeMapCb, ExtArgs>
 
       /**
+   * `prisma.city`: Exposes CRUD operations for the **City** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Cities
+    * const cities = await prisma.city.findMany()
+    * ```
+    */
+  get city(): Prisma.CityDelegate<ExtArgs>;
+
+  /**
    * `prisma.country`: Exposes CRUD operations for the **Country** model.
     * Example usage:
     * ```ts
@@ -145,14 +160,14 @@ export class PrismaClient<
   get country(): Prisma.CountryDelegate<ExtArgs>;
 
   /**
-   * `prisma.city`: Exposes CRUD operations for the **City** model.
+   * `prisma.place`: Exposes CRUD operations for the **Place** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Cities
-    * const cities = await prisma.city.findMany()
+    * // Fetch zero or more Places
+    * const places = await prisma.place.findMany()
     * ```
     */
-  get city(): Prisma.CityDelegate<ExtArgs>;
+  get place(): Prisma.PlaceDelegate<ExtArgs>;
 
   /**
    * `prisma.translatableContent`: Exposes CRUD operations for the **TranslatableContent** model.
@@ -614,8 +629,9 @@ export namespace Prisma {
 
 
   export const ModelName: {
-    Country: 'Country',
     City: 'City',
+    Country: 'Country',
+    Place: 'Place',
     TranslatableContent: 'TranslatableContent',
     TranslatedText: 'TranslatedText'
   };
@@ -633,10 +649,84 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "country" | "city" | "translatableContent" | "translatedText"
+      modelProps: "city" | "country" | "place" | "translatableContent" | "translatedText"
       txIsolationLevel: never
     }
     model: {
+      City: {
+        payload: Prisma.$CityPayload<ExtArgs>
+        fields: Prisma.CityFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CityFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CityPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CityFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CityPayload>
+          }
+          findFirst: {
+            args: Prisma.CityFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CityPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CityFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CityPayload>
+          }
+          findMany: {
+            args: Prisma.CityFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CityPayload>[]
+          }
+          create: {
+            args: Prisma.CityCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CityPayload>
+          }
+          createMany: {
+            args: Prisma.CityCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.CityDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CityPayload>
+          }
+          update: {
+            args: Prisma.CityUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CityPayload>
+          }
+          deleteMany: {
+            args: Prisma.CityDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CityUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.CityUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CityPayload>
+          }
+          aggregate: {
+            args: Prisma.CityAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCity>
+          }
+          groupBy: {
+            args: Prisma.CityGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CityGroupByOutputType>[]
+          }
+          findRaw: {
+            args: Prisma.CityFindRawArgs<ExtArgs>
+            result: JsonObject
+          }
+          aggregateRaw: {
+            args: Prisma.CityAggregateRawArgs<ExtArgs>
+            result: JsonObject
+          }
+          count: {
+            args: Prisma.CityCountArgs<ExtArgs>
+            result: $Utils.Optional<CityCountAggregateOutputType> | number
+          }
+        }
+      }
       Country: {
         payload: Prisma.$CountryPayload<ExtArgs>
         fields: Prisma.CountryFieldRefs
@@ -711,77 +801,77 @@ export namespace Prisma {
           }
         }
       }
-      City: {
-        payload: Prisma.$CityPayload<ExtArgs>
-        fields: Prisma.CityFieldRefs
+      Place: {
+        payload: Prisma.$PlacePayload<ExtArgs>
+        fields: Prisma.PlaceFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.CityFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CityPayload> | null
+            args: Prisma.PlaceFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PlacePayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.CityFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CityPayload>
+            args: Prisma.PlaceFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PlacePayload>
           }
           findFirst: {
-            args: Prisma.CityFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CityPayload> | null
+            args: Prisma.PlaceFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PlacePayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.CityFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CityPayload>
+            args: Prisma.PlaceFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PlacePayload>
           }
           findMany: {
-            args: Prisma.CityFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CityPayload>[]
+            args: Prisma.PlaceFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PlacePayload>[]
           }
           create: {
-            args: Prisma.CityCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CityPayload>
+            args: Prisma.PlaceCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PlacePayload>
           }
           createMany: {
-            args: Prisma.CityCreateManyArgs<ExtArgs>
+            args: Prisma.PlaceCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           delete: {
-            args: Prisma.CityDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CityPayload>
+            args: Prisma.PlaceDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PlacePayload>
           }
           update: {
-            args: Prisma.CityUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CityPayload>
+            args: Prisma.PlaceUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PlacePayload>
           }
           deleteMany: {
-            args: Prisma.CityDeleteManyArgs<ExtArgs>
+            args: Prisma.PlaceDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.CityUpdateManyArgs<ExtArgs>
+            args: Prisma.PlaceUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           upsert: {
-            args: Prisma.CityUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CityPayload>
+            args: Prisma.PlaceUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PlacePayload>
           }
           aggregate: {
-            args: Prisma.CityAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateCity>
+            args: Prisma.PlaceAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePlace>
           }
           groupBy: {
-            args: Prisma.CityGroupByArgs<ExtArgs>
-            result: $Utils.Optional<CityGroupByOutputType>[]
+            args: Prisma.PlaceGroupByArgs<ExtArgs>
+            result: $Utils.Optional<PlaceGroupByOutputType>[]
           }
           findRaw: {
-            args: Prisma.CityFindRawArgs<ExtArgs>
+            args: Prisma.PlaceFindRawArgs<ExtArgs>
             result: JsonObject
           }
           aggregateRaw: {
-            args: Prisma.CityAggregateRawArgs<ExtArgs>
+            args: Prisma.PlaceAggregateRawArgs<ExtArgs>
             result: JsonObject
           }
           count: {
-            args: Prisma.CityCountArgs<ExtArgs>
-            result: $Utils.Optional<CityCountAggregateOutputType> | number
+            args: Prisma.PlaceCountArgs<ExtArgs>
+            result: $Utils.Optional<PlaceCountAggregateOutputType> | number
           }
         }
       }
@@ -1077,15 +1167,48 @@ export namespace Prisma {
 
 
   /**
+   * Count Type CityCountOutputType
+   */
+
+  export type CityCountOutputType = {
+    places: number
+  }
+
+  export type CityCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    places?: boolean | CityCountOutputTypeCountPlacesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * CityCountOutputType without action
+   */
+  export type CityCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CityCountOutputType
+     */
+    select?: CityCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * CityCountOutputType without action
+   */
+  export type CityCountOutputTypeCountPlacesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PlaceWhereInput
+  }
+
+
+  /**
    * Count Type CountryCountOutputType
    */
 
   export type CountryCountOutputType = {
     cities: number
+    places: number
   }
 
   export type CountryCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     cities?: boolean | CountryCountOutputTypeCountCitiesArgs
+    places?: boolean | CountryCountOutputTypeCountPlacesArgs
   }
 
   // Custom InputTypes
@@ -1106,6 +1229,13 @@ export namespace Prisma {
     where?: CityWhereInput
   }
 
+  /**
+   * CountryCountOutputType without action
+   */
+  export type CountryCountOutputTypeCountPlacesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PlaceWhereInput
+  }
+
 
   /**
    * Count Type TranslatableContentCountOutputType
@@ -1115,12 +1245,14 @@ export namespace Prisma {
     translations: number
     countries: number
     cities: number
+    places: number
   }
 
   export type TranslatableContentCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     translations?: boolean | TranslatableContentCountOutputTypeCountTranslationsArgs
     countries?: boolean | TranslatableContentCountOutputTypeCountCountriesArgs
     cities?: boolean | TranslatableContentCountOutputTypeCountCitiesArgs
+    places?: boolean | TranslatableContentCountOutputTypeCountPlacesArgs
   }
 
   // Custom InputTypes
@@ -1153,6 +1285,13 @@ export namespace Prisma {
    */
   export type TranslatableContentCountOutputTypeCountCitiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: CityWhereInput
+  }
+
+  /**
+   * TranslatableContentCountOutputType without action
+   */
+  export type TranslatableContentCountOutputTypeCountPlacesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PlaceWhereInput
   }
 
 
@@ -1243,9 +1382,9 @@ export namespace Prisma {
     name: "Image"
     objects: {}
     scalars: {
-      url: string
-      public_id: string
-      uploadFrom: string
+      url: string | null
+      public_id: string | null
+      uploadFrom: string | null
     }
     composites: {}
   }
@@ -1275,6 +1414,1048 @@ export namespace Prisma {
      * Select specific fields to fetch from the Image
      */
     select?: ImageSelect<ExtArgs> | null
+  }
+
+
+  /**
+   * Model City
+   */
+
+  export type AggregateCity = {
+    _count: CityCountAggregateOutputType | null
+    _avg: CityAvgAggregateOutputType | null
+    _sum: CitySumAggregateOutputType | null
+    _min: CityMinAggregateOutputType | null
+    _max: CityMaxAggregateOutputType | null
+  }
+
+  export type CityAvgAggregateOutputType = {
+    population: number | null
+  }
+
+  export type CitySumAggregateOutputType = {
+    population: number | null
+  }
+
+  export type CityMinAggregateOutputType = {
+    id: string | null
+    countryId: string | null
+    contentId: string | null
+    population: number | null
+    timezone: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    code3: string | null
+    type: string | null
+  }
+
+  export type CityMaxAggregateOutputType = {
+    id: string | null
+    countryId: string | null
+    contentId: string | null
+    population: number | null
+    timezone: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    code3: string | null
+    type: string | null
+  }
+
+  export type CityCountAggregateOutputType = {
+    id: number
+    countryId: number
+    contentId: number
+    population: number
+    timezone: number
+    createdAt: number
+    updatedAt: number
+    code3: number
+    type: number
+    _all: number
+  }
+
+
+  export type CityAvgAggregateInputType = {
+    population?: true
+  }
+
+  export type CitySumAggregateInputType = {
+    population?: true
+  }
+
+  export type CityMinAggregateInputType = {
+    id?: true
+    countryId?: true
+    contentId?: true
+    population?: true
+    timezone?: true
+    createdAt?: true
+    updatedAt?: true
+    code3?: true
+    type?: true
+  }
+
+  export type CityMaxAggregateInputType = {
+    id?: true
+    countryId?: true
+    contentId?: true
+    population?: true
+    timezone?: true
+    createdAt?: true
+    updatedAt?: true
+    code3?: true
+    type?: true
+  }
+
+  export type CityCountAggregateInputType = {
+    id?: true
+    countryId?: true
+    contentId?: true
+    population?: true
+    timezone?: true
+    createdAt?: true
+    updatedAt?: true
+    code3?: true
+    type?: true
+    _all?: true
+  }
+
+  export type CityAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which City to aggregate.
+     */
+    where?: CityWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Cities to fetch.
+     */
+    orderBy?: CityOrderByWithRelationInput | CityOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CityWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Cities from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Cities.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Cities
+    **/
+    _count?: true | CityCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: CityAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: CitySumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CityMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CityMaxAggregateInputType
+  }
+
+  export type GetCityAggregateType<T extends CityAggregateArgs> = {
+        [P in keyof T & keyof AggregateCity]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCity[P]>
+      : GetScalarType<T[P], AggregateCity[P]>
+  }
+
+
+
+
+  export type CityGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CityWhereInput
+    orderBy?: CityOrderByWithAggregationInput | CityOrderByWithAggregationInput[]
+    by: CityScalarFieldEnum[] | CityScalarFieldEnum
+    having?: CityScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CityCountAggregateInputType | true
+    _avg?: CityAvgAggregateInputType
+    _sum?: CitySumAggregateInputType
+    _min?: CityMinAggregateInputType
+    _max?: CityMaxAggregateInputType
+  }
+
+  export type CityGroupByOutputType = {
+    id: string
+    countryId: string
+    contentId: string
+    population: number | null
+    timezone: string | null
+    createdAt: Date
+    updatedAt: Date
+    code3: string | null
+    type: string | null
+    _count: CityCountAggregateOutputType | null
+    _avg: CityAvgAggregateOutputType | null
+    _sum: CitySumAggregateOutputType | null
+    _min: CityMinAggregateOutputType | null
+    _max: CityMaxAggregateOutputType | null
+  }
+
+  type GetCityGroupByPayload<T extends CityGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CityGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CityGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CityGroupByOutputType[P]>
+            : GetScalarType<T[P], CityGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CitySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    countryId?: boolean
+    contentId?: boolean
+    geo?: boolean | GeoCoordinatesDefaultArgs<ExtArgs>
+    image?: boolean | ImageDefaultArgs<ExtArgs>
+    population?: boolean
+    timezone?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    code3?: boolean
+    type?: boolean
+    country?: boolean | CountryDefaultArgs<ExtArgs>
+    content?: boolean | TranslatableContentDefaultArgs<ExtArgs>
+    places?: boolean | City$placesArgs<ExtArgs>
+    _count?: boolean | CityCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["city"]>
+
+
+  export type CitySelectScalar = {
+    id?: boolean
+    countryId?: boolean
+    contentId?: boolean
+    population?: boolean
+    timezone?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    code3?: boolean
+    type?: boolean
+  }
+
+  export type CityInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    country?: boolean | CountryDefaultArgs<ExtArgs>
+    content?: boolean | TranslatableContentDefaultArgs<ExtArgs>
+    places?: boolean | City$placesArgs<ExtArgs>
+    _count?: boolean | CityCountOutputTypeDefaultArgs<ExtArgs>
+  }
+
+  export type $CityPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "City"
+    objects: {
+      country: Prisma.$CountryPayload<ExtArgs>
+      content: Prisma.$TranslatableContentPayload<ExtArgs>
+      places: Prisma.$PlacePayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      countryId: string
+      contentId: string
+      population: number | null
+      timezone: string | null
+      createdAt: Date
+      updatedAt: Date
+      code3: string | null
+      type: string | null
+    }, ExtArgs["result"]["city"]>
+    composites: {
+      geo: Prisma.$GeoCoordinatesPayload
+      image: Prisma.$ImagePayload | null
+    }
+  }
+
+  type CityGetPayload<S extends boolean | null | undefined | CityDefaultArgs> = $Result.GetResult<Prisma.$CityPayload, S>
+
+  type CityCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<CityFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: CityCountAggregateInputType | true
+    }
+
+  export interface CityDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['City'], meta: { name: 'City' } }
+    /**
+     * Find zero or one City that matches the filter.
+     * @param {CityFindUniqueArgs} args - Arguments to find a City
+     * @example
+     * // Get one City
+     * const city = await prisma.city.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CityFindUniqueArgs>(args: SelectSubset<T, CityFindUniqueArgs<ExtArgs>>): Prisma__CityClient<$Result.GetResult<Prisma.$CityPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one City that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {CityFindUniqueOrThrowArgs} args - Arguments to find a City
+     * @example
+     * // Get one City
+     * const city = await prisma.city.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CityFindUniqueOrThrowArgs>(args: SelectSubset<T, CityFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CityClient<$Result.GetResult<Prisma.$CityPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first City that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CityFindFirstArgs} args - Arguments to find a City
+     * @example
+     * // Get one City
+     * const city = await prisma.city.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CityFindFirstArgs>(args?: SelectSubset<T, CityFindFirstArgs<ExtArgs>>): Prisma__CityClient<$Result.GetResult<Prisma.$CityPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first City that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CityFindFirstOrThrowArgs} args - Arguments to find a City
+     * @example
+     * // Get one City
+     * const city = await prisma.city.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CityFindFirstOrThrowArgs>(args?: SelectSubset<T, CityFindFirstOrThrowArgs<ExtArgs>>): Prisma__CityClient<$Result.GetResult<Prisma.$CityPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more Cities that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CityFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Cities
+     * const cities = await prisma.city.findMany()
+     * 
+     * // Get first 10 Cities
+     * const cities = await prisma.city.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const cityWithIdOnly = await prisma.city.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CityFindManyArgs>(args?: SelectSubset<T, CityFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CityPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a City.
+     * @param {CityCreateArgs} args - Arguments to create a City.
+     * @example
+     * // Create one City
+     * const City = await prisma.city.create({
+     *   data: {
+     *     // ... data to create a City
+     *   }
+     * })
+     * 
+     */
+    create<T extends CityCreateArgs>(args: SelectSubset<T, CityCreateArgs<ExtArgs>>): Prisma__CityClient<$Result.GetResult<Prisma.$CityPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many Cities.
+     * @param {CityCreateManyArgs} args - Arguments to create many Cities.
+     * @example
+     * // Create many Cities
+     * const city = await prisma.city.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CityCreateManyArgs>(args?: SelectSubset<T, CityCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a City.
+     * @param {CityDeleteArgs} args - Arguments to delete one City.
+     * @example
+     * // Delete one City
+     * const City = await prisma.city.delete({
+     *   where: {
+     *     // ... filter to delete one City
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CityDeleteArgs>(args: SelectSubset<T, CityDeleteArgs<ExtArgs>>): Prisma__CityClient<$Result.GetResult<Prisma.$CityPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one City.
+     * @param {CityUpdateArgs} args - Arguments to update one City.
+     * @example
+     * // Update one City
+     * const city = await prisma.city.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CityUpdateArgs>(args: SelectSubset<T, CityUpdateArgs<ExtArgs>>): Prisma__CityClient<$Result.GetResult<Prisma.$CityPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more Cities.
+     * @param {CityDeleteManyArgs} args - Arguments to filter Cities to delete.
+     * @example
+     * // Delete a few Cities
+     * const { count } = await prisma.city.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CityDeleteManyArgs>(args?: SelectSubset<T, CityDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Cities.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CityUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Cities
+     * const city = await prisma.city.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CityUpdateManyArgs>(args: SelectSubset<T, CityUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one City.
+     * @param {CityUpsertArgs} args - Arguments to update or create a City.
+     * @example
+     * // Update or create a City
+     * const city = await prisma.city.upsert({
+     *   create: {
+     *     // ... data to create a City
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the City we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CityUpsertArgs>(args: SelectSubset<T, CityUpsertArgs<ExtArgs>>): Prisma__CityClient<$Result.GetResult<Prisma.$CityPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+    /**
+     * Find zero or more Cities that matches the filter.
+     * @param {CityFindRawArgs} args - Select which filters you would like to apply.
+     * @example
+     * const city = await prisma.city.findRaw({
+     *   filter: { age: { $gt: 25 } } 
+     * })
+     */
+    findRaw(args?: CityFindRawArgs): Prisma.PrismaPromise<JsonObject>
+
+    /**
+     * Perform aggregation operations on a City.
+     * @param {CityAggregateRawArgs} args - Select which aggregations you would like to apply.
+     * @example
+     * const city = await prisma.city.aggregateRaw({
+     *   pipeline: [
+     *     { $match: { status: "registered" } },
+     *     { $group: { _id: "$country", total: { $sum: 1 } } }
+     *   ]
+     * })
+     */
+    aggregateRaw(args?: CityAggregateRawArgs): Prisma.PrismaPromise<JsonObject>
+
+
+    /**
+     * Count the number of Cities.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CityCountArgs} args - Arguments to filter Cities to count.
+     * @example
+     * // Count the number of Cities
+     * const count = await prisma.city.count({
+     *   where: {
+     *     // ... the filter for the Cities we want to count
+     *   }
+     * })
+    **/
+    count<T extends CityCountArgs>(
+      args?: Subset<T, CityCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CityCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a City.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CityAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CityAggregateArgs>(args: Subset<T, CityAggregateArgs>): Prisma.PrismaPromise<GetCityAggregateType<T>>
+
+    /**
+     * Group by City.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CityGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CityGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CityGroupByArgs['orderBy'] }
+        : { orderBy?: CityGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CityGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCityGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the City model
+   */
+  readonly fields: CityFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for City.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CityClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    country<T extends CountryDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CountryDefaultArgs<ExtArgs>>): Prisma__CountryClient<$Result.GetResult<Prisma.$CountryPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    content<T extends TranslatableContentDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TranslatableContentDefaultArgs<ExtArgs>>): Prisma__TranslatableContentClient<$Result.GetResult<Prisma.$TranslatableContentPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    places<T extends City$placesArgs<ExtArgs> = {}>(args?: Subset<T, City$placesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PlacePayload<ExtArgs>, T, "findMany"> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the City model
+   */ 
+  interface CityFieldRefs {
+    readonly id: FieldRef<"City", 'String'>
+    readonly countryId: FieldRef<"City", 'String'>
+    readonly contentId: FieldRef<"City", 'String'>
+    readonly population: FieldRef<"City", 'Int'>
+    readonly timezone: FieldRef<"City", 'String'>
+    readonly createdAt: FieldRef<"City", 'DateTime'>
+    readonly updatedAt: FieldRef<"City", 'DateTime'>
+    readonly code3: FieldRef<"City", 'String'>
+    readonly type: FieldRef<"City", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * City findUnique
+   */
+  export type CityFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the City
+     */
+    select?: CitySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CityInclude<ExtArgs> | null
+    /**
+     * Filter, which City to fetch.
+     */
+    where: CityWhereUniqueInput
+  }
+
+  /**
+   * City findUniqueOrThrow
+   */
+  export type CityFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the City
+     */
+    select?: CitySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CityInclude<ExtArgs> | null
+    /**
+     * Filter, which City to fetch.
+     */
+    where: CityWhereUniqueInput
+  }
+
+  /**
+   * City findFirst
+   */
+  export type CityFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the City
+     */
+    select?: CitySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CityInclude<ExtArgs> | null
+    /**
+     * Filter, which City to fetch.
+     */
+    where?: CityWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Cities to fetch.
+     */
+    orderBy?: CityOrderByWithRelationInput | CityOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Cities.
+     */
+    cursor?: CityWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Cities from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Cities.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Cities.
+     */
+    distinct?: CityScalarFieldEnum | CityScalarFieldEnum[]
+  }
+
+  /**
+   * City findFirstOrThrow
+   */
+  export type CityFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the City
+     */
+    select?: CitySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CityInclude<ExtArgs> | null
+    /**
+     * Filter, which City to fetch.
+     */
+    where?: CityWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Cities to fetch.
+     */
+    orderBy?: CityOrderByWithRelationInput | CityOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Cities.
+     */
+    cursor?: CityWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Cities from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Cities.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Cities.
+     */
+    distinct?: CityScalarFieldEnum | CityScalarFieldEnum[]
+  }
+
+  /**
+   * City findMany
+   */
+  export type CityFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the City
+     */
+    select?: CitySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CityInclude<ExtArgs> | null
+    /**
+     * Filter, which Cities to fetch.
+     */
+    where?: CityWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Cities to fetch.
+     */
+    orderBy?: CityOrderByWithRelationInput | CityOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Cities.
+     */
+    cursor?: CityWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Cities from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Cities.
+     */
+    skip?: number
+    distinct?: CityScalarFieldEnum | CityScalarFieldEnum[]
+  }
+
+  /**
+   * City create
+   */
+  export type CityCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the City
+     */
+    select?: CitySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CityInclude<ExtArgs> | null
+    /**
+     * The data needed to create a City.
+     */
+    data: XOR<CityCreateInput, CityUncheckedCreateInput>
+  }
+
+  /**
+   * City createMany
+   */
+  export type CityCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Cities.
+     */
+    data: CityCreateManyInput | CityCreateManyInput[]
+  }
+
+  /**
+   * City update
+   */
+  export type CityUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the City
+     */
+    select?: CitySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CityInclude<ExtArgs> | null
+    /**
+     * The data needed to update a City.
+     */
+    data: XOR<CityUpdateInput, CityUncheckedUpdateInput>
+    /**
+     * Choose, which City to update.
+     */
+    where: CityWhereUniqueInput
+  }
+
+  /**
+   * City updateMany
+   */
+  export type CityUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Cities.
+     */
+    data: XOR<CityUpdateManyMutationInput, CityUncheckedUpdateManyInput>
+    /**
+     * Filter which Cities to update
+     */
+    where?: CityWhereInput
+  }
+
+  /**
+   * City upsert
+   */
+  export type CityUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the City
+     */
+    select?: CitySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CityInclude<ExtArgs> | null
+    /**
+     * The filter to search for the City to update in case it exists.
+     */
+    where: CityWhereUniqueInput
+    /**
+     * In case the City found by the `where` argument doesn't exist, create a new City with this data.
+     */
+    create: XOR<CityCreateInput, CityUncheckedCreateInput>
+    /**
+     * In case the City was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CityUpdateInput, CityUncheckedUpdateInput>
+  }
+
+  /**
+   * City delete
+   */
+  export type CityDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the City
+     */
+    select?: CitySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CityInclude<ExtArgs> | null
+    /**
+     * Filter which City to delete.
+     */
+    where: CityWhereUniqueInput
+  }
+
+  /**
+   * City deleteMany
+   */
+  export type CityDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Cities to delete
+     */
+    where?: CityWhereInput
+  }
+
+  /**
+   * City findRaw
+   */
+  export type CityFindRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The query predicate filter. If unspecified, then all documents in the collection will match the predicate. ${@link https://docs.mongodb.com/manual/reference/operator/query MongoDB Docs}.
+     */
+    filter?: InputJsonValue
+    /**
+     * Additional options to pass to the `find` command ${@link https://docs.mongodb.com/manual/reference/command/find/#command-fields MongoDB Docs}.
+     */
+    options?: InputJsonValue
+  }
+
+  /**
+   * City aggregateRaw
+   */
+  export type CityAggregateRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * An array of aggregation stages to process and transform the document stream via the aggregation pipeline. ${@link https://docs.mongodb.com/manual/reference/operator/aggregation-pipeline MongoDB Docs}.
+     */
+    pipeline?: InputJsonValue[]
+    /**
+     * Additional options to pass to the `aggregate` command ${@link https://docs.mongodb.com/manual/reference/command/aggregate/#command-fields MongoDB Docs}.
+     */
+    options?: InputJsonValue
+  }
+
+  /**
+   * City.places
+   */
+  export type City$placesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Place
+     */
+    select?: PlaceSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PlaceInclude<ExtArgs> | null
+    where?: PlaceWhereInput
+    orderBy?: PlaceOrderByWithRelationInput | PlaceOrderByWithRelationInput[]
+    cursor?: PlaceWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PlaceScalarFieldEnum | PlaceScalarFieldEnum[]
+  }
+
+  /**
+   * City without action
+   */
+  export type CityDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the City
+     */
+    select?: CitySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CityInclude<ExtArgs> | null
   }
 
 
@@ -1462,6 +2643,7 @@ export namespace Prisma {
     type?: boolean
     content?: boolean | TranslatableContentDefaultArgs<ExtArgs>
     cities?: boolean | Country$citiesArgs<ExtArgs>
+    places?: boolean | Country$placesArgs<ExtArgs>
     _count?: boolean | CountryCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["country"]>
 
@@ -1479,6 +2661,7 @@ export namespace Prisma {
   export type CountryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     content?: boolean | TranslatableContentDefaultArgs<ExtArgs>
     cities?: boolean | Country$citiesArgs<ExtArgs>
+    places?: boolean | Country$placesArgs<ExtArgs>
     _count?: boolean | CountryCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -1487,6 +2670,7 @@ export namespace Prisma {
     objects: {
       content: Prisma.$TranslatableContentPayload<ExtArgs>
       cities: Prisma.$CityPayload<ExtArgs>[]
+      places: Prisma.$PlacePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -1864,6 +3048,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     content<T extends TranslatableContentDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TranslatableContentDefaultArgs<ExtArgs>>): Prisma__TranslatableContentClient<$Result.GetResult<Prisma.$TranslatableContentPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
     cities<T extends Country$citiesArgs<ExtArgs> = {}>(args?: Subset<T, Country$citiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CityPayload<ExtArgs>, T, "findMany"> | Null>
+    places<T extends Country$placesArgs<ExtArgs> = {}>(args?: Subset<T, Country$placesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PlacePayload<ExtArgs>, T, "findMany"> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2246,6 +3431,26 @@ export namespace Prisma {
   }
 
   /**
+   * Country.places
+   */
+  export type Country$placesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Place
+     */
+    select?: PlaceSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PlaceInclude<ExtArgs> | null
+    where?: PlaceWhereInput
+    orderBy?: PlaceOrderByWithRelationInput | PlaceOrderByWithRelationInput[]
+    cursor?: PlaceWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PlaceScalarFieldEnum | PlaceScalarFieldEnum[]
+  }
+
+  /**
    * Country without action
    */
   export type CountryDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2261,415 +3466,464 @@ export namespace Prisma {
 
 
   /**
-   * Model City
+   * Model Place
    */
 
-  export type AggregateCity = {
-    _count: CityCountAggregateOutputType | null
-    _avg: CityAvgAggregateOutputType | null
-    _sum: CitySumAggregateOutputType | null
-    _min: CityMinAggregateOutputType | null
-    _max: CityMaxAggregateOutputType | null
+  export type AggregatePlace = {
+    _count: PlaceCountAggregateOutputType | null
+    _avg: PlaceAvgAggregateOutputType | null
+    _sum: PlaceSumAggregateOutputType | null
+    _min: PlaceMinAggregateOutputType | null
+    _max: PlaceMaxAggregateOutputType | null
   }
 
-  export type CityAvgAggregateOutputType = {
-    population: number | null
+  export type PlaceAvgAggregateOutputType = {
+    rating: number | null
   }
 
-  export type CitySumAggregateOutputType = {
-    population: number | null
+  export type PlaceSumAggregateOutputType = {
+    rating: number | null
   }
 
-  export type CityMinAggregateOutputType = {
+  export type PlaceMinAggregateOutputType = {
     id: string | null
+    cityId: string | null
     countryId: string | null
     contentId: string | null
-    population: number | null
-    timezone: string | null
+    type: string | null
+    category: string | null
+    subcategory: string | null
+    rating: number | null
+    address: string | null
+    website: string | null
+    phone: string | null
     createdAt: Date | null
     updatedAt: Date | null
-    code3: string | null
-    type: string | null
   }
 
-  export type CityMaxAggregateOutputType = {
+  export type PlaceMaxAggregateOutputType = {
     id: string | null
+    cityId: string | null
     countryId: string | null
     contentId: string | null
-    population: number | null
-    timezone: string | null
+    type: string | null
+    category: string | null
+    subcategory: string | null
+    rating: number | null
+    address: string | null
+    website: string | null
+    phone: string | null
     createdAt: Date | null
     updatedAt: Date | null
-    code3: string | null
-    type: string | null
   }
 
-  export type CityCountAggregateOutputType = {
+  export type PlaceCountAggregateOutputType = {
     id: number
+    cityId: number
     countryId: number
     contentId: number
-    population: number
-    timezone: number
+    type: number
+    category: number
+    subcategory: number
+    tags: number
+    rating: number
+    address: number
+    website: number
+    phone: number
     createdAt: number
     updatedAt: number
-    code3: number
-    type: number
     _all: number
   }
 
 
-  export type CityAvgAggregateInputType = {
-    population?: true
+  export type PlaceAvgAggregateInputType = {
+    rating?: true
   }
 
-  export type CitySumAggregateInputType = {
-    population?: true
+  export type PlaceSumAggregateInputType = {
+    rating?: true
   }
 
-  export type CityMinAggregateInputType = {
+  export type PlaceMinAggregateInputType = {
     id?: true
+    cityId?: true
     countryId?: true
     contentId?: true
-    population?: true
-    timezone?: true
+    type?: true
+    category?: true
+    subcategory?: true
+    rating?: true
+    address?: true
+    website?: true
+    phone?: true
     createdAt?: true
     updatedAt?: true
-    code3?: true
-    type?: true
   }
 
-  export type CityMaxAggregateInputType = {
+  export type PlaceMaxAggregateInputType = {
     id?: true
+    cityId?: true
     countryId?: true
     contentId?: true
-    population?: true
-    timezone?: true
+    type?: true
+    category?: true
+    subcategory?: true
+    rating?: true
+    address?: true
+    website?: true
+    phone?: true
     createdAt?: true
     updatedAt?: true
-    code3?: true
-    type?: true
   }
 
-  export type CityCountAggregateInputType = {
+  export type PlaceCountAggregateInputType = {
     id?: true
+    cityId?: true
     countryId?: true
     contentId?: true
-    population?: true
-    timezone?: true
+    type?: true
+    category?: true
+    subcategory?: true
+    tags?: true
+    rating?: true
+    address?: true
+    website?: true
+    phone?: true
     createdAt?: true
     updatedAt?: true
-    code3?: true
-    type?: true
     _all?: true
   }
 
-  export type CityAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PlaceAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which City to aggregate.
+     * Filter which Place to aggregate.
      */
-    where?: CityWhereInput
+    where?: PlaceWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Cities to fetch.
+     * Determine the order of Places to fetch.
      */
-    orderBy?: CityOrderByWithRelationInput | CityOrderByWithRelationInput[]
+    orderBy?: PlaceOrderByWithRelationInput | PlaceOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: CityWhereUniqueInput
+    cursor?: PlaceWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Cities from the position of the cursor.
+     * Take `±n` Places from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Cities.
+     * Skip the first `n` Places.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned Cities
+     * Count returned Places
     **/
-    _count?: true | CityCountAggregateInputType
+    _count?: true | PlaceCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: CityAvgAggregateInputType
+    _avg?: PlaceAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: CitySumAggregateInputType
+    _sum?: PlaceSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: CityMinAggregateInputType
+    _min?: PlaceMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: CityMaxAggregateInputType
+    _max?: PlaceMaxAggregateInputType
   }
 
-  export type GetCityAggregateType<T extends CityAggregateArgs> = {
-        [P in keyof T & keyof AggregateCity]: P extends '_count' | 'count'
+  export type GetPlaceAggregateType<T extends PlaceAggregateArgs> = {
+        [P in keyof T & keyof AggregatePlace]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateCity[P]>
-      : GetScalarType<T[P], AggregateCity[P]>
+        : GetScalarType<T[P], AggregatePlace[P]>
+      : GetScalarType<T[P], AggregatePlace[P]>
   }
 
 
 
 
-  export type CityGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: CityWhereInput
-    orderBy?: CityOrderByWithAggregationInput | CityOrderByWithAggregationInput[]
-    by: CityScalarFieldEnum[] | CityScalarFieldEnum
-    having?: CityScalarWhereWithAggregatesInput
+  export type PlaceGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PlaceWhereInput
+    orderBy?: PlaceOrderByWithAggregationInput | PlaceOrderByWithAggregationInput[]
+    by: PlaceScalarFieldEnum[] | PlaceScalarFieldEnum
+    having?: PlaceScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: CityCountAggregateInputType | true
-    _avg?: CityAvgAggregateInputType
-    _sum?: CitySumAggregateInputType
-    _min?: CityMinAggregateInputType
-    _max?: CityMaxAggregateInputType
+    _count?: PlaceCountAggregateInputType | true
+    _avg?: PlaceAvgAggregateInputType
+    _sum?: PlaceSumAggregateInputType
+    _min?: PlaceMinAggregateInputType
+    _max?: PlaceMaxAggregateInputType
   }
 
-  export type CityGroupByOutputType = {
+  export type PlaceGroupByOutputType = {
     id: string
-    countryId: string
+    cityId: string | null
+    countryId: string | null
     contentId: string
-    population: number | null
-    timezone: string | null
+    type: string
+    category: string
+    subcategory: string | null
+    tags: string[]
+    rating: number | null
+    address: string | null
+    website: string | null
+    phone: string | null
     createdAt: Date
     updatedAt: Date
-    code3: string | null
-    type: string | null
-    _count: CityCountAggregateOutputType | null
-    _avg: CityAvgAggregateOutputType | null
-    _sum: CitySumAggregateOutputType | null
-    _min: CityMinAggregateOutputType | null
-    _max: CityMaxAggregateOutputType | null
+    _count: PlaceCountAggregateOutputType | null
+    _avg: PlaceAvgAggregateOutputType | null
+    _sum: PlaceSumAggregateOutputType | null
+    _min: PlaceMinAggregateOutputType | null
+    _max: PlaceMaxAggregateOutputType | null
   }
 
-  type GetCityGroupByPayload<T extends CityGroupByArgs> = Prisma.PrismaPromise<
+  type GetPlaceGroupByPayload<T extends PlaceGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<CityGroupByOutputType, T['by']> &
+      PickEnumerable<PlaceGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof CityGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof PlaceGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], CityGroupByOutputType[P]>
-            : GetScalarType<T[P], CityGroupByOutputType[P]>
+              : GetScalarType<T[P], PlaceGroupByOutputType[P]>
+            : GetScalarType<T[P], PlaceGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type CitySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type PlaceSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    cityId?: boolean
     countryId?: boolean
     contentId?: boolean
     geo?: boolean | GeoCoordinatesDefaultArgs<ExtArgs>
     image?: boolean | ImageDefaultArgs<ExtArgs>
-    population?: boolean
-    timezone?: boolean
+    type?: boolean
+    category?: boolean
+    subcategory?: boolean
+    tags?: boolean
+    rating?: boolean
+    address?: boolean
+    website?: boolean
+    phone?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    code3?: boolean
-    type?: boolean
-    country?: boolean | CountryDefaultArgs<ExtArgs>
+    city?: boolean | Place$cityArgs<ExtArgs>
+    country?: boolean | Place$countryArgs<ExtArgs>
     content?: boolean | TranslatableContentDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["city"]>
+  }, ExtArgs["result"]["place"]>
 
 
-  export type CitySelectScalar = {
+  export type PlaceSelectScalar = {
     id?: boolean
+    cityId?: boolean
     countryId?: boolean
     contentId?: boolean
-    population?: boolean
-    timezone?: boolean
+    type?: boolean
+    category?: boolean
+    subcategory?: boolean
+    tags?: boolean
+    rating?: boolean
+    address?: boolean
+    website?: boolean
+    phone?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    code3?: boolean
-    type?: boolean
   }
 
-  export type CityInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    country?: boolean | CountryDefaultArgs<ExtArgs>
+  export type PlaceInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    city?: boolean | Place$cityArgs<ExtArgs>
+    country?: boolean | Place$countryArgs<ExtArgs>
     content?: boolean | TranslatableContentDefaultArgs<ExtArgs>
   }
 
-  export type $CityPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "City"
+  export type $PlacePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Place"
     objects: {
-      country: Prisma.$CountryPayload<ExtArgs>
+      city: Prisma.$CityPayload<ExtArgs> | null
+      country: Prisma.$CountryPayload<ExtArgs> | null
       content: Prisma.$TranslatableContentPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      countryId: string
+      cityId: string | null
+      countryId: string | null
       contentId: string
-      population: number | null
-      timezone: string | null
+      type: string
+      category: string
+      subcategory: string | null
+      tags: string[]
+      rating: number | null
+      address: string | null
+      website: string | null
+      phone: string | null
       createdAt: Date
       updatedAt: Date
-      code3: string | null
-      type: string | null
-    }, ExtArgs["result"]["city"]>
+    }, ExtArgs["result"]["place"]>
     composites: {
       geo: Prisma.$GeoCoordinatesPayload
       image: Prisma.$ImagePayload | null
     }
   }
 
-  type CityGetPayload<S extends boolean | null | undefined | CityDefaultArgs> = $Result.GetResult<Prisma.$CityPayload, S>
+  type PlaceGetPayload<S extends boolean | null | undefined | PlaceDefaultArgs> = $Result.GetResult<Prisma.$PlacePayload, S>
 
-  type CityCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<CityFindManyArgs, 'select' | 'include' | 'distinct'> & {
-      select?: CityCountAggregateInputType | true
+  type PlaceCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<PlaceFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: PlaceCountAggregateInputType | true
     }
 
-  export interface CityDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['City'], meta: { name: 'City' } }
+  export interface PlaceDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Place'], meta: { name: 'Place' } }
     /**
-     * Find zero or one City that matches the filter.
-     * @param {CityFindUniqueArgs} args - Arguments to find a City
+     * Find zero or one Place that matches the filter.
+     * @param {PlaceFindUniqueArgs} args - Arguments to find a Place
      * @example
-     * // Get one City
-     * const city = await prisma.city.findUnique({
+     * // Get one Place
+     * const place = await prisma.place.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends CityFindUniqueArgs>(args: SelectSubset<T, CityFindUniqueArgs<ExtArgs>>): Prisma__CityClient<$Result.GetResult<Prisma.$CityPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+    findUnique<T extends PlaceFindUniqueArgs>(args: SelectSubset<T, PlaceFindUniqueArgs<ExtArgs>>): Prisma__PlaceClient<$Result.GetResult<Prisma.$PlacePayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
 
     /**
-     * Find one City that matches the filter or throw an error with `error.code='P2025'` 
+     * Find one Place that matches the filter or throw an error with `error.code='P2025'` 
      * if no matches were found.
-     * @param {CityFindUniqueOrThrowArgs} args - Arguments to find a City
+     * @param {PlaceFindUniqueOrThrowArgs} args - Arguments to find a Place
      * @example
-     * // Get one City
-     * const city = await prisma.city.findUniqueOrThrow({
+     * // Get one Place
+     * const place = await prisma.place.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends CityFindUniqueOrThrowArgs>(args: SelectSubset<T, CityFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CityClient<$Result.GetResult<Prisma.$CityPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+    findUniqueOrThrow<T extends PlaceFindUniqueOrThrowArgs>(args: SelectSubset<T, PlaceFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PlaceClient<$Result.GetResult<Prisma.$PlacePayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
 
     /**
-     * Find the first City that matches the filter.
+     * Find the first Place that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CityFindFirstArgs} args - Arguments to find a City
+     * @param {PlaceFindFirstArgs} args - Arguments to find a Place
      * @example
-     * // Get one City
-     * const city = await prisma.city.findFirst({
+     * // Get one Place
+     * const place = await prisma.place.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends CityFindFirstArgs>(args?: SelectSubset<T, CityFindFirstArgs<ExtArgs>>): Prisma__CityClient<$Result.GetResult<Prisma.$CityPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+    findFirst<T extends PlaceFindFirstArgs>(args?: SelectSubset<T, PlaceFindFirstArgs<ExtArgs>>): Prisma__PlaceClient<$Result.GetResult<Prisma.$PlacePayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
 
     /**
-     * Find the first City that matches the filter or
+     * Find the first Place that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CityFindFirstOrThrowArgs} args - Arguments to find a City
+     * @param {PlaceFindFirstOrThrowArgs} args - Arguments to find a Place
      * @example
-     * // Get one City
-     * const city = await prisma.city.findFirstOrThrow({
+     * // Get one Place
+     * const place = await prisma.place.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends CityFindFirstOrThrowArgs>(args?: SelectSubset<T, CityFindFirstOrThrowArgs<ExtArgs>>): Prisma__CityClient<$Result.GetResult<Prisma.$CityPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+    findFirstOrThrow<T extends PlaceFindFirstOrThrowArgs>(args?: SelectSubset<T, PlaceFindFirstOrThrowArgs<ExtArgs>>): Prisma__PlaceClient<$Result.GetResult<Prisma.$PlacePayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
 
     /**
-     * Find zero or more Cities that matches the filter.
+     * Find zero or more Places that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CityFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {PlaceFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all Cities
-     * const cities = await prisma.city.findMany()
+     * // Get all Places
+     * const places = await prisma.place.findMany()
      * 
-     * // Get first 10 Cities
-     * const cities = await prisma.city.findMany({ take: 10 })
+     * // Get first 10 Places
+     * const places = await prisma.place.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const cityWithIdOnly = await prisma.city.findMany({ select: { id: true } })
+     * const placeWithIdOnly = await prisma.place.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends CityFindManyArgs>(args?: SelectSubset<T, CityFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CityPayload<ExtArgs>, T, "findMany">>
+    findMany<T extends PlaceFindManyArgs>(args?: SelectSubset<T, PlaceFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PlacePayload<ExtArgs>, T, "findMany">>
 
     /**
-     * Create a City.
-     * @param {CityCreateArgs} args - Arguments to create a City.
+     * Create a Place.
+     * @param {PlaceCreateArgs} args - Arguments to create a Place.
      * @example
-     * // Create one City
-     * const City = await prisma.city.create({
+     * // Create one Place
+     * const Place = await prisma.place.create({
      *   data: {
-     *     // ... data to create a City
+     *     // ... data to create a Place
      *   }
      * })
      * 
      */
-    create<T extends CityCreateArgs>(args: SelectSubset<T, CityCreateArgs<ExtArgs>>): Prisma__CityClient<$Result.GetResult<Prisma.$CityPayload<ExtArgs>, T, "create">, never, ExtArgs>
+    create<T extends PlaceCreateArgs>(args: SelectSubset<T, PlaceCreateArgs<ExtArgs>>): Prisma__PlaceClient<$Result.GetResult<Prisma.$PlacePayload<ExtArgs>, T, "create">, never, ExtArgs>
 
     /**
-     * Create many Cities.
-     * @param {CityCreateManyArgs} args - Arguments to create many Cities.
+     * Create many Places.
+     * @param {PlaceCreateManyArgs} args - Arguments to create many Places.
      * @example
-     * // Create many Cities
-     * const city = await prisma.city.createMany({
+     * // Create many Places
+     * const place = await prisma.place.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends CityCreateManyArgs>(args?: SelectSubset<T, CityCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends PlaceCreateManyArgs>(args?: SelectSubset<T, PlaceCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Delete a City.
-     * @param {CityDeleteArgs} args - Arguments to delete one City.
+     * Delete a Place.
+     * @param {PlaceDeleteArgs} args - Arguments to delete one Place.
      * @example
-     * // Delete one City
-     * const City = await prisma.city.delete({
+     * // Delete one Place
+     * const Place = await prisma.place.delete({
      *   where: {
-     *     // ... filter to delete one City
+     *     // ... filter to delete one Place
      *   }
      * })
      * 
      */
-    delete<T extends CityDeleteArgs>(args: SelectSubset<T, CityDeleteArgs<ExtArgs>>): Prisma__CityClient<$Result.GetResult<Prisma.$CityPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+    delete<T extends PlaceDeleteArgs>(args: SelectSubset<T, PlaceDeleteArgs<ExtArgs>>): Prisma__PlaceClient<$Result.GetResult<Prisma.$PlacePayload<ExtArgs>, T, "delete">, never, ExtArgs>
 
     /**
-     * Update one City.
-     * @param {CityUpdateArgs} args - Arguments to update one City.
+     * Update one Place.
+     * @param {PlaceUpdateArgs} args - Arguments to update one Place.
      * @example
-     * // Update one City
-     * const city = await prisma.city.update({
+     * // Update one Place
+     * const place = await prisma.place.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -2679,30 +3933,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends CityUpdateArgs>(args: SelectSubset<T, CityUpdateArgs<ExtArgs>>): Prisma__CityClient<$Result.GetResult<Prisma.$CityPayload<ExtArgs>, T, "update">, never, ExtArgs>
+    update<T extends PlaceUpdateArgs>(args: SelectSubset<T, PlaceUpdateArgs<ExtArgs>>): Prisma__PlaceClient<$Result.GetResult<Prisma.$PlacePayload<ExtArgs>, T, "update">, never, ExtArgs>
 
     /**
-     * Delete zero or more Cities.
-     * @param {CityDeleteManyArgs} args - Arguments to filter Cities to delete.
+     * Delete zero or more Places.
+     * @param {PlaceDeleteManyArgs} args - Arguments to filter Places to delete.
      * @example
-     * // Delete a few Cities
-     * const { count } = await prisma.city.deleteMany({
+     * // Delete a few Places
+     * const { count } = await prisma.place.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends CityDeleteManyArgs>(args?: SelectSubset<T, CityDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends PlaceDeleteManyArgs>(args?: SelectSubset<T, PlaceDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Cities.
+     * Update zero or more Places.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CityUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {PlaceUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many Cities
-     * const city = await prisma.city.updateMany({
+     * // Update many Places
+     * const place = await prisma.place.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -2712,79 +3966,79 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends CityUpdateManyArgs>(args: SelectSubset<T, CityUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends PlaceUpdateManyArgs>(args: SelectSubset<T, PlaceUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create or update one City.
-     * @param {CityUpsertArgs} args - Arguments to update or create a City.
+     * Create or update one Place.
+     * @param {PlaceUpsertArgs} args - Arguments to update or create a Place.
      * @example
-     * // Update or create a City
-     * const city = await prisma.city.upsert({
+     * // Update or create a Place
+     * const place = await prisma.place.upsert({
      *   create: {
-     *     // ... data to create a City
+     *     // ... data to create a Place
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the City we want to update
+     *     // ... the filter for the Place we want to update
      *   }
      * })
      */
-    upsert<T extends CityUpsertArgs>(args: SelectSubset<T, CityUpsertArgs<ExtArgs>>): Prisma__CityClient<$Result.GetResult<Prisma.$CityPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+    upsert<T extends PlaceUpsertArgs>(args: SelectSubset<T, PlaceUpsertArgs<ExtArgs>>): Prisma__PlaceClient<$Result.GetResult<Prisma.$PlacePayload<ExtArgs>, T, "upsert">, never, ExtArgs>
 
     /**
-     * Find zero or more Cities that matches the filter.
-     * @param {CityFindRawArgs} args - Select which filters you would like to apply.
+     * Find zero or more Places that matches the filter.
+     * @param {PlaceFindRawArgs} args - Select which filters you would like to apply.
      * @example
-     * const city = await prisma.city.findRaw({
+     * const place = await prisma.place.findRaw({
      *   filter: { age: { $gt: 25 } } 
      * })
      */
-    findRaw(args?: CityFindRawArgs): Prisma.PrismaPromise<JsonObject>
+    findRaw(args?: PlaceFindRawArgs): Prisma.PrismaPromise<JsonObject>
 
     /**
-     * Perform aggregation operations on a City.
-     * @param {CityAggregateRawArgs} args - Select which aggregations you would like to apply.
+     * Perform aggregation operations on a Place.
+     * @param {PlaceAggregateRawArgs} args - Select which aggregations you would like to apply.
      * @example
-     * const city = await prisma.city.aggregateRaw({
+     * const place = await prisma.place.aggregateRaw({
      *   pipeline: [
      *     { $match: { status: "registered" } },
      *     { $group: { _id: "$country", total: { $sum: 1 } } }
      *   ]
      * })
      */
-    aggregateRaw(args?: CityAggregateRawArgs): Prisma.PrismaPromise<JsonObject>
+    aggregateRaw(args?: PlaceAggregateRawArgs): Prisma.PrismaPromise<JsonObject>
 
 
     /**
-     * Count the number of Cities.
+     * Count the number of Places.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CityCountArgs} args - Arguments to filter Cities to count.
+     * @param {PlaceCountArgs} args - Arguments to filter Places to count.
      * @example
-     * // Count the number of Cities
-     * const count = await prisma.city.count({
+     * // Count the number of Places
+     * const count = await prisma.place.count({
      *   where: {
-     *     // ... the filter for the Cities we want to count
+     *     // ... the filter for the Places we want to count
      *   }
      * })
     **/
-    count<T extends CityCountArgs>(
-      args?: Subset<T, CityCountArgs>,
+    count<T extends PlaceCountArgs>(
+      args?: Subset<T, PlaceCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], CityCountAggregateOutputType>
+          : GetScalarType<T['select'], PlaceCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a City.
+     * Allows you to perform aggregations operations on a Place.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CityAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {PlaceAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -2804,13 +4058,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends CityAggregateArgs>(args: Subset<T, CityAggregateArgs>): Prisma.PrismaPromise<GetCityAggregateType<T>>
+    aggregate<T extends PlaceAggregateArgs>(args: Subset<T, PlaceAggregateArgs>): Prisma.PrismaPromise<GetPlaceAggregateType<T>>
 
     /**
-     * Group by City.
+     * Group by Place.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CityGroupByArgs} args - Group by arguments.
+     * @param {PlaceGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -2825,14 +4079,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends CityGroupByArgs,
+      T extends PlaceGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: CityGroupByArgs['orderBy'] }
-        : { orderBy?: CityGroupByArgs['orderBy'] },
+        ? { orderBy: PlaceGroupByArgs['orderBy'] }
+        : { orderBy?: PlaceGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -2881,22 +4135,23 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, CityGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCityGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, PlaceGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPlaceGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the City model
+   * Fields of the Place model
    */
-  readonly fields: CityFieldRefs;
+  readonly fields: PlaceFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for City.
+   * The delegate class that acts as a "Promise-like" for Place.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__CityClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__PlaceClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    country<T extends CountryDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CountryDefaultArgs<ExtArgs>>): Prisma__CountryClient<$Result.GetResult<Prisma.$CountryPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    city<T extends Place$cityArgs<ExtArgs> = {}>(args?: Subset<T, Place$cityArgs<ExtArgs>>): Prisma__CityClient<$Result.GetResult<Prisma.$CityPayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
+    country<T extends Place$countryArgs<ExtArgs> = {}>(args?: Subset<T, Place$countryArgs<ExtArgs>>): Prisma__CountryClient<$Result.GetResult<Prisma.$CountryPayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
     content<T extends TranslatableContentDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TranslatableContentDefaultArgs<ExtArgs>>): Prisma__TranslatableContentClient<$Result.GetResult<Prisma.$TranslatableContentPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -2924,319 +4179,324 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the City model
+   * Fields of the Place model
    */ 
-  interface CityFieldRefs {
-    readonly id: FieldRef<"City", 'String'>
-    readonly countryId: FieldRef<"City", 'String'>
-    readonly contentId: FieldRef<"City", 'String'>
-    readonly population: FieldRef<"City", 'Int'>
-    readonly timezone: FieldRef<"City", 'String'>
-    readonly createdAt: FieldRef<"City", 'DateTime'>
-    readonly updatedAt: FieldRef<"City", 'DateTime'>
-    readonly code3: FieldRef<"City", 'String'>
-    readonly type: FieldRef<"City", 'String'>
+  interface PlaceFieldRefs {
+    readonly id: FieldRef<"Place", 'String'>
+    readonly cityId: FieldRef<"Place", 'String'>
+    readonly countryId: FieldRef<"Place", 'String'>
+    readonly contentId: FieldRef<"Place", 'String'>
+    readonly type: FieldRef<"Place", 'String'>
+    readonly category: FieldRef<"Place", 'String'>
+    readonly subcategory: FieldRef<"Place", 'String'>
+    readonly tags: FieldRef<"Place", 'String[]'>
+    readonly rating: FieldRef<"Place", 'Float'>
+    readonly address: FieldRef<"Place", 'String'>
+    readonly website: FieldRef<"Place", 'String'>
+    readonly phone: FieldRef<"Place", 'String'>
+    readonly createdAt: FieldRef<"Place", 'DateTime'>
+    readonly updatedAt: FieldRef<"Place", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * City findUnique
+   * Place findUnique
    */
-  export type CityFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PlaceFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the City
+     * Select specific fields to fetch from the Place
      */
-    select?: CitySelect<ExtArgs> | null
+    select?: PlaceSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CityInclude<ExtArgs> | null
+    include?: PlaceInclude<ExtArgs> | null
     /**
-     * Filter, which City to fetch.
+     * Filter, which Place to fetch.
      */
-    where: CityWhereUniqueInput
+    where: PlaceWhereUniqueInput
   }
 
   /**
-   * City findUniqueOrThrow
+   * Place findUniqueOrThrow
    */
-  export type CityFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PlaceFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the City
+     * Select specific fields to fetch from the Place
      */
-    select?: CitySelect<ExtArgs> | null
+    select?: PlaceSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CityInclude<ExtArgs> | null
+    include?: PlaceInclude<ExtArgs> | null
     /**
-     * Filter, which City to fetch.
+     * Filter, which Place to fetch.
      */
-    where: CityWhereUniqueInput
+    where: PlaceWhereUniqueInput
   }
 
   /**
-   * City findFirst
+   * Place findFirst
    */
-  export type CityFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PlaceFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the City
+     * Select specific fields to fetch from the Place
      */
-    select?: CitySelect<ExtArgs> | null
+    select?: PlaceSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CityInclude<ExtArgs> | null
+    include?: PlaceInclude<ExtArgs> | null
     /**
-     * Filter, which City to fetch.
+     * Filter, which Place to fetch.
      */
-    where?: CityWhereInput
+    where?: PlaceWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Cities to fetch.
+     * Determine the order of Places to fetch.
      */
-    orderBy?: CityOrderByWithRelationInput | CityOrderByWithRelationInput[]
+    orderBy?: PlaceOrderByWithRelationInput | PlaceOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Cities.
+     * Sets the position for searching for Places.
      */
-    cursor?: CityWhereUniqueInput
+    cursor?: PlaceWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Cities from the position of the cursor.
+     * Take `±n` Places from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Cities.
+     * Skip the first `n` Places.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Cities.
+     * Filter by unique combinations of Places.
      */
-    distinct?: CityScalarFieldEnum | CityScalarFieldEnum[]
+    distinct?: PlaceScalarFieldEnum | PlaceScalarFieldEnum[]
   }
 
   /**
-   * City findFirstOrThrow
+   * Place findFirstOrThrow
    */
-  export type CityFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PlaceFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the City
+     * Select specific fields to fetch from the Place
      */
-    select?: CitySelect<ExtArgs> | null
+    select?: PlaceSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CityInclude<ExtArgs> | null
+    include?: PlaceInclude<ExtArgs> | null
     /**
-     * Filter, which City to fetch.
+     * Filter, which Place to fetch.
      */
-    where?: CityWhereInput
+    where?: PlaceWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Cities to fetch.
+     * Determine the order of Places to fetch.
      */
-    orderBy?: CityOrderByWithRelationInput | CityOrderByWithRelationInput[]
+    orderBy?: PlaceOrderByWithRelationInput | PlaceOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Cities.
+     * Sets the position for searching for Places.
      */
-    cursor?: CityWhereUniqueInput
+    cursor?: PlaceWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Cities from the position of the cursor.
+     * Take `±n` Places from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Cities.
+     * Skip the first `n` Places.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Cities.
+     * Filter by unique combinations of Places.
      */
-    distinct?: CityScalarFieldEnum | CityScalarFieldEnum[]
+    distinct?: PlaceScalarFieldEnum | PlaceScalarFieldEnum[]
   }
 
   /**
-   * City findMany
+   * Place findMany
    */
-  export type CityFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PlaceFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the City
+     * Select specific fields to fetch from the Place
      */
-    select?: CitySelect<ExtArgs> | null
+    select?: PlaceSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CityInclude<ExtArgs> | null
+    include?: PlaceInclude<ExtArgs> | null
     /**
-     * Filter, which Cities to fetch.
+     * Filter, which Places to fetch.
      */
-    where?: CityWhereInput
+    where?: PlaceWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Cities to fetch.
+     * Determine the order of Places to fetch.
      */
-    orderBy?: CityOrderByWithRelationInput | CityOrderByWithRelationInput[]
+    orderBy?: PlaceOrderByWithRelationInput | PlaceOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing Cities.
+     * Sets the position for listing Places.
      */
-    cursor?: CityWhereUniqueInput
+    cursor?: PlaceWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Cities from the position of the cursor.
+     * Take `±n` Places from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Cities.
+     * Skip the first `n` Places.
      */
     skip?: number
-    distinct?: CityScalarFieldEnum | CityScalarFieldEnum[]
+    distinct?: PlaceScalarFieldEnum | PlaceScalarFieldEnum[]
   }
 
   /**
-   * City create
+   * Place create
    */
-  export type CityCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PlaceCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the City
+     * Select specific fields to fetch from the Place
      */
-    select?: CitySelect<ExtArgs> | null
+    select?: PlaceSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CityInclude<ExtArgs> | null
+    include?: PlaceInclude<ExtArgs> | null
     /**
-     * The data needed to create a City.
+     * The data needed to create a Place.
      */
-    data: XOR<CityCreateInput, CityUncheckedCreateInput>
+    data: XOR<PlaceCreateInput, PlaceUncheckedCreateInput>
   }
 
   /**
-   * City createMany
+   * Place createMany
    */
-  export type CityCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PlaceCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many Cities.
+     * The data used to create many Places.
      */
-    data: CityCreateManyInput | CityCreateManyInput[]
+    data: PlaceCreateManyInput | PlaceCreateManyInput[]
   }
 
   /**
-   * City update
+   * Place update
    */
-  export type CityUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PlaceUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the City
+     * Select specific fields to fetch from the Place
      */
-    select?: CitySelect<ExtArgs> | null
+    select?: PlaceSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CityInclude<ExtArgs> | null
+    include?: PlaceInclude<ExtArgs> | null
     /**
-     * The data needed to update a City.
+     * The data needed to update a Place.
      */
-    data: XOR<CityUpdateInput, CityUncheckedUpdateInput>
+    data: XOR<PlaceUpdateInput, PlaceUncheckedUpdateInput>
     /**
-     * Choose, which City to update.
+     * Choose, which Place to update.
      */
-    where: CityWhereUniqueInput
+    where: PlaceWhereUniqueInput
   }
 
   /**
-   * City updateMany
+   * Place updateMany
    */
-  export type CityUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PlaceUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update Cities.
+     * The data used to update Places.
      */
-    data: XOR<CityUpdateManyMutationInput, CityUncheckedUpdateManyInput>
+    data: XOR<PlaceUpdateManyMutationInput, PlaceUncheckedUpdateManyInput>
     /**
-     * Filter which Cities to update
+     * Filter which Places to update
      */
-    where?: CityWhereInput
+    where?: PlaceWhereInput
   }
 
   /**
-   * City upsert
+   * Place upsert
    */
-  export type CityUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PlaceUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the City
+     * Select specific fields to fetch from the Place
      */
-    select?: CitySelect<ExtArgs> | null
+    select?: PlaceSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CityInclude<ExtArgs> | null
+    include?: PlaceInclude<ExtArgs> | null
     /**
-     * The filter to search for the City to update in case it exists.
+     * The filter to search for the Place to update in case it exists.
      */
-    where: CityWhereUniqueInput
+    where: PlaceWhereUniqueInput
     /**
-     * In case the City found by the `where` argument doesn't exist, create a new City with this data.
+     * In case the Place found by the `where` argument doesn't exist, create a new Place with this data.
      */
-    create: XOR<CityCreateInput, CityUncheckedCreateInput>
+    create: XOR<PlaceCreateInput, PlaceUncheckedCreateInput>
     /**
-     * In case the City was found with the provided `where` argument, update it with this data.
+     * In case the Place was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<CityUpdateInput, CityUncheckedUpdateInput>
+    update: XOR<PlaceUpdateInput, PlaceUncheckedUpdateInput>
   }
 
   /**
-   * City delete
+   * Place delete
    */
-  export type CityDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PlaceDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the City
+     * Select specific fields to fetch from the Place
      */
-    select?: CitySelect<ExtArgs> | null
+    select?: PlaceSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CityInclude<ExtArgs> | null
+    include?: PlaceInclude<ExtArgs> | null
     /**
-     * Filter which City to delete.
+     * Filter which Place to delete.
      */
-    where: CityWhereUniqueInput
+    where: PlaceWhereUniqueInput
   }
 
   /**
-   * City deleteMany
+   * Place deleteMany
    */
-  export type CityDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PlaceDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Cities to delete
+     * Filter which Places to delete
      */
-    where?: CityWhereInput
+    where?: PlaceWhereInput
   }
 
   /**
-   * City findRaw
+   * Place findRaw
    */
-  export type CityFindRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PlaceFindRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * The query predicate filter. If unspecified, then all documents in the collection will match the predicate. ${@link https://docs.mongodb.com/manual/reference/operator/query MongoDB Docs}.
      */
@@ -3248,9 +4508,9 @@ export namespace Prisma {
   }
 
   /**
-   * City aggregateRaw
+   * Place aggregateRaw
    */
-  export type CityAggregateRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PlaceAggregateRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * An array of aggregation stages to process and transform the document stream via the aggregation pipeline. ${@link https://docs.mongodb.com/manual/reference/operator/aggregation-pipeline MongoDB Docs}.
      */
@@ -3262,9 +4522,9 @@ export namespace Prisma {
   }
 
   /**
-   * City without action
+   * Place.city
    */
-  export type CityDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Place$cityArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the City
      */
@@ -3273,6 +4533,36 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: CityInclude<ExtArgs> | null
+    where?: CityWhereInput
+  }
+
+  /**
+   * Place.country
+   */
+  export type Place$countryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Country
+     */
+    select?: CountrySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CountryInclude<ExtArgs> | null
+    where?: CountryWhereInput
+  }
+
+  /**
+   * Place without action
+   */
+  export type PlaceDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Place
+     */
+    select?: PlaceSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PlaceInclude<ExtArgs> | null
   }
 
 
@@ -3435,6 +4725,7 @@ export namespace Prisma {
     translations?: boolean | TranslatableContent$translationsArgs<ExtArgs>
     countries?: boolean | TranslatableContent$countriesArgs<ExtArgs>
     cities?: boolean | TranslatableContent$citiesArgs<ExtArgs>
+    places?: boolean | TranslatableContent$placesArgs<ExtArgs>
     _count?: boolean | TranslatableContentCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["translatableContent"]>
 
@@ -3450,6 +4741,7 @@ export namespace Prisma {
     translations?: boolean | TranslatableContent$translationsArgs<ExtArgs>
     countries?: boolean | TranslatableContent$countriesArgs<ExtArgs>
     cities?: boolean | TranslatableContent$citiesArgs<ExtArgs>
+    places?: boolean | TranslatableContent$placesArgs<ExtArgs>
     _count?: boolean | TranslatableContentCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -3459,6 +4751,7 @@ export namespace Prisma {
       translations: Prisma.$TranslatedTextPayload<ExtArgs>[]
       countries: Prisma.$CountryPayload<ExtArgs>[]
       cities: Prisma.$CityPayload<ExtArgs>[]
+      places: Prisma.$PlacePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -3831,6 +5124,7 @@ export namespace Prisma {
     translations<T extends TranslatableContent$translationsArgs<ExtArgs> = {}>(args?: Subset<T, TranslatableContent$translationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TranslatedTextPayload<ExtArgs>, T, "findMany"> | Null>
     countries<T extends TranslatableContent$countriesArgs<ExtArgs> = {}>(args?: Subset<T, TranslatableContent$countriesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CountryPayload<ExtArgs>, T, "findMany"> | Null>
     cities<T extends TranslatableContent$citiesArgs<ExtArgs> = {}>(args?: Subset<T, TranslatableContent$citiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CityPayload<ExtArgs>, T, "findMany"> | Null>
+    places<T extends TranslatableContent$placesArgs<ExtArgs> = {}>(args?: Subset<T, TranslatableContent$placesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PlacePayload<ExtArgs>, T, "findMany"> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4247,6 +5541,26 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: CityScalarFieldEnum | CityScalarFieldEnum[]
+  }
+
+  /**
+   * TranslatableContent.places
+   */
+  export type TranslatableContent$placesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Place
+     */
+    select?: PlaceSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PlaceInclude<ExtArgs> | null
+    where?: PlaceWhereInput
+    orderBy?: PlaceOrderByWithRelationInput | PlaceOrderByWithRelationInput[]
+    cursor?: PlaceWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PlaceScalarFieldEnum | PlaceScalarFieldEnum[]
   }
 
   /**
@@ -5208,19 +6522,6 @@ export namespace Prisma {
    * Enums
    */
 
-  export const CountryScalarFieldEnum: {
-    id: 'id',
-    code: 'code',
-    code3: 'code3',
-    contentId: 'contentId',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt',
-    type: 'type'
-  };
-
-  export type CountryScalarFieldEnum = (typeof CountryScalarFieldEnum)[keyof typeof CountryScalarFieldEnum]
-
-
   export const CityScalarFieldEnum: {
     id: 'id',
     countryId: 'countryId',
@@ -5234,6 +6535,39 @@ export namespace Prisma {
   };
 
   export type CityScalarFieldEnum = (typeof CityScalarFieldEnum)[keyof typeof CityScalarFieldEnum]
+
+
+  export const CountryScalarFieldEnum: {
+    id: 'id',
+    code: 'code',
+    code3: 'code3',
+    contentId: 'contentId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    type: 'type'
+  };
+
+  export type CountryScalarFieldEnum = (typeof CountryScalarFieldEnum)[keyof typeof CountryScalarFieldEnum]
+
+
+  export const PlaceScalarFieldEnum: {
+    id: 'id',
+    cityId: 'cityId',
+    countryId: 'countryId',
+    contentId: 'contentId',
+    type: 'type',
+    category: 'category',
+    subcategory: 'subcategory',
+    tags: 'tags',
+    rating: 'rating',
+    address: 'address',
+    website: 'website',
+    phone: 'phone',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type PlaceScalarFieldEnum = (typeof PlaceScalarFieldEnum)[keyof typeof PlaceScalarFieldEnum]
 
 
   export const TranslatableContentScalarFieldEnum: {
@@ -5294,20 +6628,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'DateTime'
-   */
-  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
-    
-
-
-  /**
-   * Reference to a field of type 'DateTime[]'
-   */
-  export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
-    
-
-
-  /**
    * Reference to a field of type 'Int'
    */
   export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
@@ -5318,6 +6638,20 @@ export namespace Prisma {
    * Reference to a field of type 'Int[]'
    */
   export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'DateTime'
+   */
+  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+  /**
+   * Reference to a field of type 'DateTime[]'
+   */
+  export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
     
 
 
@@ -5338,80 +6672,6 @@ export namespace Prisma {
    */
 
 
-  export type CountryWhereInput = {
-    AND?: CountryWhereInput | CountryWhereInput[]
-    OR?: CountryWhereInput[]
-    NOT?: CountryWhereInput | CountryWhereInput[]
-    id?: StringFilter<"Country"> | string
-    code?: StringFilter<"Country"> | string
-    code3?: StringFilter<"Country"> | string
-    contentId?: StringFilter<"Country"> | string
-    geo?: XOR<GeoCoordinatesCompositeFilter, GeoCoordinatesObjectEqualityInput>
-    image?: XOR<ImageNullableCompositeFilter, ImageObjectEqualityInput> | null
-    createdAt?: DateTimeFilter<"Country"> | Date | string
-    updatedAt?: DateTimeFilter<"Country"> | Date | string
-    type?: StringNullableFilter<"Country"> | string | null
-    content?: XOR<TranslatableContentRelationFilter, TranslatableContentWhereInput>
-    cities?: CityListRelationFilter
-  }
-
-  export type CountryOrderByWithRelationInput = {
-    id?: SortOrder
-    code?: SortOrder
-    code3?: SortOrder
-    contentId?: SortOrder
-    geo?: GeoCoordinatesOrderByInput
-    image?: ImageOrderByInput
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    type?: SortOrder
-    content?: TranslatableContentOrderByWithRelationInput
-    cities?: CityOrderByRelationAggregateInput
-  }
-
-  export type CountryWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    code?: string
-    code3?: string
-    AND?: CountryWhereInput | CountryWhereInput[]
-    OR?: CountryWhereInput[]
-    NOT?: CountryWhereInput | CountryWhereInput[]
-    contentId?: StringFilter<"Country"> | string
-    geo?: XOR<GeoCoordinatesCompositeFilter, GeoCoordinatesObjectEqualityInput>
-    image?: XOR<ImageNullableCompositeFilter, ImageObjectEqualityInput> | null
-    createdAt?: DateTimeFilter<"Country"> | Date | string
-    updatedAt?: DateTimeFilter<"Country"> | Date | string
-    type?: StringNullableFilter<"Country"> | string | null
-    content?: XOR<TranslatableContentRelationFilter, TranslatableContentWhereInput>
-    cities?: CityListRelationFilter
-  }, "id" | "code" | "code3">
-
-  export type CountryOrderByWithAggregationInput = {
-    id?: SortOrder
-    code?: SortOrder
-    code3?: SortOrder
-    contentId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    type?: SortOrder
-    _count?: CountryCountOrderByAggregateInput
-    _max?: CountryMaxOrderByAggregateInput
-    _min?: CountryMinOrderByAggregateInput
-  }
-
-  export type CountryScalarWhereWithAggregatesInput = {
-    AND?: CountryScalarWhereWithAggregatesInput | CountryScalarWhereWithAggregatesInput[]
-    OR?: CountryScalarWhereWithAggregatesInput[]
-    NOT?: CountryScalarWhereWithAggregatesInput | CountryScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Country"> | string
-    code?: StringWithAggregatesFilter<"Country"> | string
-    code3?: StringWithAggregatesFilter<"Country"> | string
-    contentId?: StringWithAggregatesFilter<"Country"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"Country"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"Country"> | Date | string
-    type?: StringNullableWithAggregatesFilter<"Country"> | string | null
-  }
-
   export type CityWhereInput = {
     AND?: CityWhereInput | CityWhereInput[]
     OR?: CityWhereInput[]
@@ -5429,6 +6689,7 @@ export namespace Prisma {
     type?: StringNullableFilter<"City"> | string | null
     country?: XOR<CountryRelationFilter, CountryWhereInput>
     content?: XOR<TranslatableContentRelationFilter, TranslatableContentWhereInput>
+    places?: PlaceListRelationFilter
   }
 
   export type CityOrderByWithRelationInput = {
@@ -5445,6 +6706,7 @@ export namespace Prisma {
     type?: SortOrder
     country?: CountryOrderByWithRelationInput
     content?: TranslatableContentOrderByWithRelationInput
+    places?: PlaceOrderByRelationAggregateInput
   }
 
   export type CityWhereUniqueInput = Prisma.AtLeast<{
@@ -5464,6 +6726,7 @@ export namespace Prisma {
     type?: StringNullableFilter<"City"> | string | null
     country?: XOR<CountryRelationFilter, CountryWhereInput>
     content?: XOR<TranslatableContentRelationFilter, TranslatableContentWhereInput>
+    places?: PlaceListRelationFilter
   }, "id">
 
   export type CityOrderByWithAggregationInput = {
@@ -5498,6 +6761,197 @@ export namespace Prisma {
     type?: StringNullableWithAggregatesFilter<"City"> | string | null
   }
 
+  export type CountryWhereInput = {
+    AND?: CountryWhereInput | CountryWhereInput[]
+    OR?: CountryWhereInput[]
+    NOT?: CountryWhereInput | CountryWhereInput[]
+    id?: StringFilter<"Country"> | string
+    code?: StringFilter<"Country"> | string
+    code3?: StringFilter<"Country"> | string
+    contentId?: StringFilter<"Country"> | string
+    geo?: XOR<GeoCoordinatesCompositeFilter, GeoCoordinatesObjectEqualityInput>
+    image?: XOR<ImageNullableCompositeFilter, ImageObjectEqualityInput> | null
+    createdAt?: DateTimeFilter<"Country"> | Date | string
+    updatedAt?: DateTimeFilter<"Country"> | Date | string
+    type?: StringNullableFilter<"Country"> | string | null
+    content?: XOR<TranslatableContentRelationFilter, TranslatableContentWhereInput>
+    cities?: CityListRelationFilter
+    places?: PlaceListRelationFilter
+  }
+
+  export type CountryOrderByWithRelationInput = {
+    id?: SortOrder
+    code?: SortOrder
+    code3?: SortOrder
+    contentId?: SortOrder
+    geo?: GeoCoordinatesOrderByInput
+    image?: ImageOrderByInput
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    type?: SortOrder
+    content?: TranslatableContentOrderByWithRelationInput
+    cities?: CityOrderByRelationAggregateInput
+    places?: PlaceOrderByRelationAggregateInput
+  }
+
+  export type CountryWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    code?: string
+    code3?: string
+    AND?: CountryWhereInput | CountryWhereInput[]
+    OR?: CountryWhereInput[]
+    NOT?: CountryWhereInput | CountryWhereInput[]
+    contentId?: StringFilter<"Country"> | string
+    geo?: XOR<GeoCoordinatesCompositeFilter, GeoCoordinatesObjectEqualityInput>
+    image?: XOR<ImageNullableCompositeFilter, ImageObjectEqualityInput> | null
+    createdAt?: DateTimeFilter<"Country"> | Date | string
+    updatedAt?: DateTimeFilter<"Country"> | Date | string
+    type?: StringNullableFilter<"Country"> | string | null
+    content?: XOR<TranslatableContentRelationFilter, TranslatableContentWhereInput>
+    cities?: CityListRelationFilter
+    places?: PlaceListRelationFilter
+  }, "id" | "code" | "code3">
+
+  export type CountryOrderByWithAggregationInput = {
+    id?: SortOrder
+    code?: SortOrder
+    code3?: SortOrder
+    contentId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    type?: SortOrder
+    _count?: CountryCountOrderByAggregateInput
+    _max?: CountryMaxOrderByAggregateInput
+    _min?: CountryMinOrderByAggregateInput
+  }
+
+  export type CountryScalarWhereWithAggregatesInput = {
+    AND?: CountryScalarWhereWithAggregatesInput | CountryScalarWhereWithAggregatesInput[]
+    OR?: CountryScalarWhereWithAggregatesInput[]
+    NOT?: CountryScalarWhereWithAggregatesInput | CountryScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Country"> | string
+    code?: StringWithAggregatesFilter<"Country"> | string
+    code3?: StringWithAggregatesFilter<"Country"> | string
+    contentId?: StringWithAggregatesFilter<"Country"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Country"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Country"> | Date | string
+    type?: StringNullableWithAggregatesFilter<"Country"> | string | null
+  }
+
+  export type PlaceWhereInput = {
+    AND?: PlaceWhereInput | PlaceWhereInput[]
+    OR?: PlaceWhereInput[]
+    NOT?: PlaceWhereInput | PlaceWhereInput[]
+    id?: StringFilter<"Place"> | string
+    cityId?: StringNullableFilter<"Place"> | string | null
+    countryId?: StringNullableFilter<"Place"> | string | null
+    contentId?: StringFilter<"Place"> | string
+    geo?: XOR<GeoCoordinatesCompositeFilter, GeoCoordinatesObjectEqualityInput>
+    image?: XOR<ImageNullableCompositeFilter, ImageObjectEqualityInput> | null
+    type?: StringFilter<"Place"> | string
+    category?: StringFilter<"Place"> | string
+    subcategory?: StringNullableFilter<"Place"> | string | null
+    tags?: StringNullableListFilter<"Place">
+    rating?: FloatNullableFilter<"Place"> | number | null
+    address?: StringNullableFilter<"Place"> | string | null
+    website?: StringNullableFilter<"Place"> | string | null
+    phone?: StringNullableFilter<"Place"> | string | null
+    createdAt?: DateTimeFilter<"Place"> | Date | string
+    updatedAt?: DateTimeFilter<"Place"> | Date | string
+    city?: XOR<CityNullableRelationFilter, CityWhereInput> | null
+    country?: XOR<CountryNullableRelationFilter, CountryWhereInput> | null
+    content?: XOR<TranslatableContentRelationFilter, TranslatableContentWhereInput>
+  }
+
+  export type PlaceOrderByWithRelationInput = {
+    id?: SortOrder
+    cityId?: SortOrder
+    countryId?: SortOrder
+    contentId?: SortOrder
+    geo?: GeoCoordinatesOrderByInput
+    image?: ImageOrderByInput
+    type?: SortOrder
+    category?: SortOrder
+    subcategory?: SortOrder
+    tags?: SortOrder
+    rating?: SortOrder
+    address?: SortOrder
+    website?: SortOrder
+    phone?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    city?: CityOrderByWithRelationInput
+    country?: CountryOrderByWithRelationInput
+    content?: TranslatableContentOrderByWithRelationInput
+  }
+
+  export type PlaceWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: PlaceWhereInput | PlaceWhereInput[]
+    OR?: PlaceWhereInput[]
+    NOT?: PlaceWhereInput | PlaceWhereInput[]
+    cityId?: StringNullableFilter<"Place"> | string | null
+    countryId?: StringNullableFilter<"Place"> | string | null
+    contentId?: StringFilter<"Place"> | string
+    geo?: XOR<GeoCoordinatesCompositeFilter, GeoCoordinatesObjectEqualityInput>
+    image?: XOR<ImageNullableCompositeFilter, ImageObjectEqualityInput> | null
+    type?: StringFilter<"Place"> | string
+    category?: StringFilter<"Place"> | string
+    subcategory?: StringNullableFilter<"Place"> | string | null
+    tags?: StringNullableListFilter<"Place">
+    rating?: FloatNullableFilter<"Place"> | number | null
+    address?: StringNullableFilter<"Place"> | string | null
+    website?: StringNullableFilter<"Place"> | string | null
+    phone?: StringNullableFilter<"Place"> | string | null
+    createdAt?: DateTimeFilter<"Place"> | Date | string
+    updatedAt?: DateTimeFilter<"Place"> | Date | string
+    city?: XOR<CityNullableRelationFilter, CityWhereInput> | null
+    country?: XOR<CountryNullableRelationFilter, CountryWhereInput> | null
+    content?: XOR<TranslatableContentRelationFilter, TranslatableContentWhereInput>
+  }, "id">
+
+  export type PlaceOrderByWithAggregationInput = {
+    id?: SortOrder
+    cityId?: SortOrder
+    countryId?: SortOrder
+    contentId?: SortOrder
+    type?: SortOrder
+    category?: SortOrder
+    subcategory?: SortOrder
+    tags?: SortOrder
+    rating?: SortOrder
+    address?: SortOrder
+    website?: SortOrder
+    phone?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: PlaceCountOrderByAggregateInput
+    _avg?: PlaceAvgOrderByAggregateInput
+    _max?: PlaceMaxOrderByAggregateInput
+    _min?: PlaceMinOrderByAggregateInput
+    _sum?: PlaceSumOrderByAggregateInput
+  }
+
+  export type PlaceScalarWhereWithAggregatesInput = {
+    AND?: PlaceScalarWhereWithAggregatesInput | PlaceScalarWhereWithAggregatesInput[]
+    OR?: PlaceScalarWhereWithAggregatesInput[]
+    NOT?: PlaceScalarWhereWithAggregatesInput | PlaceScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Place"> | string
+    cityId?: StringNullableWithAggregatesFilter<"Place"> | string | null
+    countryId?: StringNullableWithAggregatesFilter<"Place"> | string | null
+    contentId?: StringWithAggregatesFilter<"Place"> | string
+    type?: StringWithAggregatesFilter<"Place"> | string
+    category?: StringWithAggregatesFilter<"Place"> | string
+    subcategory?: StringNullableWithAggregatesFilter<"Place"> | string | null
+    tags?: StringNullableListFilter<"Place">
+    rating?: FloatNullableWithAggregatesFilter<"Place"> | number | null
+    address?: StringNullableWithAggregatesFilter<"Place"> | string | null
+    website?: StringNullableWithAggregatesFilter<"Place"> | string | null
+    phone?: StringNullableWithAggregatesFilter<"Place"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"Place"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Place"> | Date | string
+  }
+
   export type TranslatableContentWhereInput = {
     AND?: TranslatableContentWhereInput | TranslatableContentWhereInput[]
     OR?: TranslatableContentWhereInput[]
@@ -5509,6 +6963,7 @@ export namespace Prisma {
     translations?: TranslatedTextListRelationFilter
     countries?: CountryListRelationFilter
     cities?: CityListRelationFilter
+    places?: PlaceListRelationFilter
   }
 
   export type TranslatableContentOrderByWithRelationInput = {
@@ -5519,6 +6974,7 @@ export namespace Prisma {
     translations?: TranslatedTextOrderByRelationAggregateInput
     countries?: CountryOrderByRelationAggregateInput
     cities?: CityOrderByRelationAggregateInput
+    places?: PlaceOrderByRelationAggregateInput
   }
 
   export type TranslatableContentWhereUniqueInput = Prisma.AtLeast<{
@@ -5532,6 +6988,7 @@ export namespace Prisma {
     translations?: TranslatedTextListRelationFilter
     countries?: CountryListRelationFilter
     cities?: CityListRelationFilter
+    places?: PlaceListRelationFilter
   }, "id">
 
   export type TranslatableContentOrderByWithAggregationInput = {
@@ -5614,89 +7071,6 @@ export namespace Prisma {
     type?: StringNullableWithAggregatesFilter<"TranslatedText"> | string | null
   }
 
-  export type CountryCreateInput = {
-    id?: string
-    code: string
-    code3: string
-    geo: XOR<GeoCoordinatesCreateEnvelopeInput, GeoCoordinatesCreateInput>
-    image?: XOR<ImageNullableCreateEnvelopeInput, ImageCreateInput> | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    type?: string | null
-    content: TranslatableContentCreateNestedOneWithoutCountriesInput
-    cities?: CityCreateNestedManyWithoutCountryInput
-  }
-
-  export type CountryUncheckedCreateInput = {
-    id?: string
-    code: string
-    code3: string
-    contentId: string
-    geo: XOR<GeoCoordinatesCreateEnvelopeInput, GeoCoordinatesCreateInput>
-    image?: XOR<ImageNullableCreateEnvelopeInput, ImageCreateInput> | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    type?: string | null
-    cities?: CityUncheckedCreateNestedManyWithoutCountryInput
-  }
-
-  export type CountryUpdateInput = {
-    code?: StringFieldUpdateOperationsInput | string
-    code3?: StringFieldUpdateOperationsInput | string
-    geo?: XOR<GeoCoordinatesUpdateEnvelopeInput, GeoCoordinatesCreateInput>
-    image?: XOR<ImageNullableUpdateEnvelopeInput, ImageCreateInput> | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    type?: NullableStringFieldUpdateOperationsInput | string | null
-    content?: TranslatableContentUpdateOneRequiredWithoutCountriesNestedInput
-    cities?: CityUpdateManyWithoutCountryNestedInput
-  }
-
-  export type CountryUncheckedUpdateInput = {
-    code?: StringFieldUpdateOperationsInput | string
-    code3?: StringFieldUpdateOperationsInput | string
-    contentId?: StringFieldUpdateOperationsInput | string
-    geo?: XOR<GeoCoordinatesUpdateEnvelopeInput, GeoCoordinatesCreateInput>
-    image?: XOR<ImageNullableUpdateEnvelopeInput, ImageCreateInput> | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    type?: NullableStringFieldUpdateOperationsInput | string | null
-    cities?: CityUncheckedUpdateManyWithoutCountryNestedInput
-  }
-
-  export type CountryCreateManyInput = {
-    id?: string
-    code: string
-    code3: string
-    contentId: string
-    geo: XOR<GeoCoordinatesCreateEnvelopeInput, GeoCoordinatesCreateInput>
-    image?: XOR<ImageNullableCreateEnvelopeInput, ImageCreateInput> | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    type?: string | null
-  }
-
-  export type CountryUpdateManyMutationInput = {
-    code?: StringFieldUpdateOperationsInput | string
-    code3?: StringFieldUpdateOperationsInput | string
-    geo?: XOR<GeoCoordinatesUpdateEnvelopeInput, GeoCoordinatesCreateInput>
-    image?: XOR<ImageNullableUpdateEnvelopeInput, ImageCreateInput> | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    type?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type CountryUncheckedUpdateManyInput = {
-    code?: StringFieldUpdateOperationsInput | string
-    code3?: StringFieldUpdateOperationsInput | string
-    contentId?: StringFieldUpdateOperationsInput | string
-    geo?: XOR<GeoCoordinatesUpdateEnvelopeInput, GeoCoordinatesCreateInput>
-    image?: XOR<ImageNullableUpdateEnvelopeInput, ImageCreateInput> | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    type?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
   export type CityCreateInput = {
     id?: string
     geo: XOR<GeoCoordinatesCreateEnvelopeInput, GeoCoordinatesCreateInput>
@@ -5709,6 +7083,7 @@ export namespace Prisma {
     type?: string | null
     country: CountryCreateNestedOneWithoutCitiesInput
     content: TranslatableContentCreateNestedOneWithoutCitiesInput
+    places?: PlaceCreateNestedManyWithoutCityInput
   }
 
   export type CityUncheckedCreateInput = {
@@ -5723,6 +7098,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     code3?: string | null
     type?: string | null
+    places?: PlaceUncheckedCreateNestedManyWithoutCityInput
   }
 
   export type CityUpdateInput = {
@@ -5736,6 +7112,7 @@ export namespace Prisma {
     type?: NullableStringFieldUpdateOperationsInput | string | null
     country?: CountryUpdateOneRequiredWithoutCitiesNestedInput
     content?: TranslatableContentUpdateOneRequiredWithoutCitiesNestedInput
+    places?: PlaceUpdateManyWithoutCityNestedInput
   }
 
   export type CityUncheckedUpdateInput = {
@@ -5749,6 +7126,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     code3?: NullableStringFieldUpdateOperationsInput | string | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    places?: PlaceUncheckedUpdateManyWithoutCityNestedInput
   }
 
   export type CityCreateManyInput = {
@@ -5789,6 +7167,219 @@ export namespace Prisma {
     type?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
+  export type CountryCreateInput = {
+    id?: string
+    code: string
+    code3: string
+    geo: XOR<GeoCoordinatesCreateEnvelopeInput, GeoCoordinatesCreateInput>
+    image?: XOR<ImageNullableCreateEnvelopeInput, ImageCreateInput> | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    type?: string | null
+    content: TranslatableContentCreateNestedOneWithoutCountriesInput
+    cities?: CityCreateNestedManyWithoutCountryInput
+    places?: PlaceCreateNestedManyWithoutCountryInput
+  }
+
+  export type CountryUncheckedCreateInput = {
+    id?: string
+    code: string
+    code3: string
+    contentId: string
+    geo: XOR<GeoCoordinatesCreateEnvelopeInput, GeoCoordinatesCreateInput>
+    image?: XOR<ImageNullableCreateEnvelopeInput, ImageCreateInput> | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    type?: string | null
+    cities?: CityUncheckedCreateNestedManyWithoutCountryInput
+    places?: PlaceUncheckedCreateNestedManyWithoutCountryInput
+  }
+
+  export type CountryUpdateInput = {
+    code?: StringFieldUpdateOperationsInput | string
+    code3?: StringFieldUpdateOperationsInput | string
+    geo?: XOR<GeoCoordinatesUpdateEnvelopeInput, GeoCoordinatesCreateInput>
+    image?: XOR<ImageNullableUpdateEnvelopeInput, ImageCreateInput> | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+    content?: TranslatableContentUpdateOneRequiredWithoutCountriesNestedInput
+    cities?: CityUpdateManyWithoutCountryNestedInput
+    places?: PlaceUpdateManyWithoutCountryNestedInput
+  }
+
+  export type CountryUncheckedUpdateInput = {
+    code?: StringFieldUpdateOperationsInput | string
+    code3?: StringFieldUpdateOperationsInput | string
+    contentId?: StringFieldUpdateOperationsInput | string
+    geo?: XOR<GeoCoordinatesUpdateEnvelopeInput, GeoCoordinatesCreateInput>
+    image?: XOR<ImageNullableUpdateEnvelopeInput, ImageCreateInput> | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+    cities?: CityUncheckedUpdateManyWithoutCountryNestedInput
+    places?: PlaceUncheckedUpdateManyWithoutCountryNestedInput
+  }
+
+  export type CountryCreateManyInput = {
+    id?: string
+    code: string
+    code3: string
+    contentId: string
+    geo: XOR<GeoCoordinatesCreateEnvelopeInput, GeoCoordinatesCreateInput>
+    image?: XOR<ImageNullableCreateEnvelopeInput, ImageCreateInput> | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    type?: string | null
+  }
+
+  export type CountryUpdateManyMutationInput = {
+    code?: StringFieldUpdateOperationsInput | string
+    code3?: StringFieldUpdateOperationsInput | string
+    geo?: XOR<GeoCoordinatesUpdateEnvelopeInput, GeoCoordinatesCreateInput>
+    image?: XOR<ImageNullableUpdateEnvelopeInput, ImageCreateInput> | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type CountryUncheckedUpdateManyInput = {
+    code?: StringFieldUpdateOperationsInput | string
+    code3?: StringFieldUpdateOperationsInput | string
+    contentId?: StringFieldUpdateOperationsInput | string
+    geo?: XOR<GeoCoordinatesUpdateEnvelopeInput, GeoCoordinatesCreateInput>
+    image?: XOR<ImageNullableUpdateEnvelopeInput, ImageCreateInput> | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type PlaceCreateInput = {
+    id?: string
+    geo: XOR<GeoCoordinatesCreateEnvelopeInput, GeoCoordinatesCreateInput>
+    image?: XOR<ImageNullableCreateEnvelopeInput, ImageCreateInput> | null
+    type: string
+    category: string
+    subcategory?: string | null
+    tags?: PlaceCreatetagsInput | string[]
+    rating?: number | null
+    address?: string | null
+    website?: string | null
+    phone?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    city?: CityCreateNestedOneWithoutPlacesInput
+    country?: CountryCreateNestedOneWithoutPlacesInput
+    content: TranslatableContentCreateNestedOneWithoutPlacesInput
+  }
+
+  export type PlaceUncheckedCreateInput = {
+    id?: string
+    cityId?: string | null
+    countryId?: string | null
+    contentId: string
+    geo: XOR<GeoCoordinatesCreateEnvelopeInput, GeoCoordinatesCreateInput>
+    image?: XOR<ImageNullableCreateEnvelopeInput, ImageCreateInput> | null
+    type: string
+    category: string
+    subcategory?: string | null
+    tags?: PlaceCreatetagsInput | string[]
+    rating?: number | null
+    address?: string | null
+    website?: string | null
+    phone?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PlaceUpdateInput = {
+    geo?: XOR<GeoCoordinatesUpdateEnvelopeInput, GeoCoordinatesCreateInput>
+    image?: XOR<ImageNullableUpdateEnvelopeInput, ImageCreateInput> | null
+    type?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    subcategory?: NullableStringFieldUpdateOperationsInput | string | null
+    tags?: PlaceUpdatetagsInput | string[]
+    rating?: NullableFloatFieldUpdateOperationsInput | number | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    city?: CityUpdateOneWithoutPlacesNestedInput
+    country?: CountryUpdateOneWithoutPlacesNestedInput
+    content?: TranslatableContentUpdateOneRequiredWithoutPlacesNestedInput
+  }
+
+  export type PlaceUncheckedUpdateInput = {
+    cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    countryId?: NullableStringFieldUpdateOperationsInput | string | null
+    contentId?: StringFieldUpdateOperationsInput | string
+    geo?: XOR<GeoCoordinatesUpdateEnvelopeInput, GeoCoordinatesCreateInput>
+    image?: XOR<ImageNullableUpdateEnvelopeInput, ImageCreateInput> | null
+    type?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    subcategory?: NullableStringFieldUpdateOperationsInput | string | null
+    tags?: PlaceUpdatetagsInput | string[]
+    rating?: NullableFloatFieldUpdateOperationsInput | number | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PlaceCreateManyInput = {
+    id?: string
+    cityId?: string | null
+    countryId?: string | null
+    contentId: string
+    geo: XOR<GeoCoordinatesCreateEnvelopeInput, GeoCoordinatesCreateInput>
+    image?: XOR<ImageNullableCreateEnvelopeInput, ImageCreateInput> | null
+    type: string
+    category: string
+    subcategory?: string | null
+    tags?: PlaceCreatetagsInput | string[]
+    rating?: number | null
+    address?: string | null
+    website?: string | null
+    phone?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PlaceUpdateManyMutationInput = {
+    geo?: XOR<GeoCoordinatesUpdateEnvelopeInput, GeoCoordinatesCreateInput>
+    image?: XOR<ImageNullableUpdateEnvelopeInput, ImageCreateInput> | null
+    type?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    subcategory?: NullableStringFieldUpdateOperationsInput | string | null
+    tags?: PlaceUpdatetagsInput | string[]
+    rating?: NullableFloatFieldUpdateOperationsInput | number | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PlaceUncheckedUpdateManyInput = {
+    cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    countryId?: NullableStringFieldUpdateOperationsInput | string | null
+    contentId?: StringFieldUpdateOperationsInput | string
+    geo?: XOR<GeoCoordinatesUpdateEnvelopeInput, GeoCoordinatesCreateInput>
+    image?: XOR<ImageNullableUpdateEnvelopeInput, ImageCreateInput> | null
+    type?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    subcategory?: NullableStringFieldUpdateOperationsInput | string | null
+    tags?: PlaceUpdatetagsInput | string[]
+    rating?: NullableFloatFieldUpdateOperationsInput | number | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type TranslatableContentCreateInput = {
     id?: string
     entity: string
@@ -5797,6 +7388,7 @@ export namespace Prisma {
     translations?: TranslatedTextCreateNestedManyWithoutContentInput
     countries?: CountryCreateNestedManyWithoutContentInput
     cities?: CityCreateNestedManyWithoutContentInput
+    places?: PlaceCreateNestedManyWithoutContentInput
   }
 
   export type TranslatableContentUncheckedCreateInput = {
@@ -5807,6 +7399,7 @@ export namespace Prisma {
     translations?: TranslatedTextUncheckedCreateNestedManyWithoutContentInput
     countries?: CountryUncheckedCreateNestedManyWithoutContentInput
     cities?: CityUncheckedCreateNestedManyWithoutContentInput
+    places?: PlaceUncheckedCreateNestedManyWithoutContentInput
   }
 
   export type TranslatableContentUpdateInput = {
@@ -5816,6 +7409,7 @@ export namespace Prisma {
     translations?: TranslatedTextUpdateManyWithoutContentNestedInput
     countries?: CountryUpdateManyWithoutContentNestedInput
     cities?: CityUpdateManyWithoutContentNestedInput
+    places?: PlaceUpdateManyWithoutContentNestedInput
   }
 
   export type TranslatableContentUncheckedUpdateInput = {
@@ -5825,6 +7419,7 @@ export namespace Prisma {
     translations?: TranslatedTextUncheckedUpdateManyWithoutContentNestedInput
     countries?: CountryUncheckedUpdateManyWithoutContentNestedInput
     cities?: CityUncheckedUpdateManyWithoutContentNestedInput
+    places?: PlaceUncheckedUpdateManyWithoutContentNestedInput
   }
 
   export type TranslatableContentCreateManyInput = {
@@ -5938,20 +7533,21 @@ export namespace Prisma {
   }
 
   export type ImageObjectEqualityInput = {
-    url: string
-    public_id: string
-    uploadFrom: string
+    url?: string | null
+    public_id?: string | null
+    uploadFrom?: string | null
   }
 
-  export type DateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+    isSet?: boolean
   }
 
   export type StringNullableFilter<$PrismaModel = never> = {
@@ -5970,15 +7566,31 @@ export namespace Prisma {
     isSet?: boolean
   }
 
+  export type DateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type CountryRelationFilter = {
+    is?: CountryWhereInput
+    isNot?: CountryWhereInput
+  }
+
   export type TranslatableContentRelationFilter = {
     is?: TranslatableContentWhereInput
     isNot?: TranslatableContentWhereInput
   }
 
-  export type CityListRelationFilter = {
-    every?: CityWhereInput
-    some?: CityWhereInput
-    none?: CityWhereInput
+  export type PlaceListRelationFilter = {
+    every?: PlaceWhereInput
+    some?: PlaceWhereInput
+    none?: PlaceWhereInput
   }
 
   export type GeoCoordinatesOrderByInput = {
@@ -5992,106 +7604,8 @@ export namespace Prisma {
     uploadFrom?: SortOrder
   }
 
-  export type CityOrderByRelationAggregateInput = {
+  export type PlaceOrderByRelationAggregateInput = {
     _count?: SortOrder
-  }
-
-  export type CountryCountOrderByAggregateInput = {
-    id?: SortOrder
-    code?: SortOrder
-    code3?: SortOrder
-    contentId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    type?: SortOrder
-  }
-
-  export type CountryMaxOrderByAggregateInput = {
-    id?: SortOrder
-    code?: SortOrder
-    code3?: SortOrder
-    contentId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    type?: SortOrder
-  }
-
-  export type CountryMinOrderByAggregateInput = {
-    id?: SortOrder
-    code?: SortOrder
-    code3?: SortOrder
-    contentId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    type?: SortOrder
-  }
-
-  export type StringWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[] | ListStringFieldRefInput<$PrismaModel>
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedStringFilter<$PrismaModel>
-    _max?: NestedStringFilter<$PrismaModel>
-  }
-
-  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-
-  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
-    isSet?: boolean
-  }
-
-  export type IntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
-    isSet?: boolean
-  }
-
-  export type CountryRelationFilter = {
-    is?: CountryWhereInput
-    isNot?: CountryWhereInput
   }
 
   export type CityCountOrderByAggregateInput = {
@@ -6138,6 +7652,24 @@ export namespace Prisma {
     population?: SortOrder
   }
 
+  export type StringWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
+  }
+
   export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
     in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
@@ -6152,6 +7684,183 @@ export namespace Prisma {
     _sum?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedIntNullableFilter<$PrismaModel>
     _max?: NestedIntNullableFilter<$PrismaModel>
+    isSet?: boolean
+  }
+
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+    isSet?: boolean
+  }
+
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type CityListRelationFilter = {
+    every?: CityWhereInput
+    some?: CityWhereInput
+    none?: CityWhereInput
+  }
+
+  export type CityOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type CountryCountOrderByAggregateInput = {
+    id?: SortOrder
+    code?: SortOrder
+    code3?: SortOrder
+    contentId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    type?: SortOrder
+  }
+
+  export type CountryMaxOrderByAggregateInput = {
+    id?: SortOrder
+    code?: SortOrder
+    code3?: SortOrder
+    contentId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    type?: SortOrder
+  }
+
+  export type CountryMinOrderByAggregateInput = {
+    id?: SortOrder
+    code?: SortOrder
+    code3?: SortOrder
+    contentId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    type?: SortOrder
+  }
+
+  export type StringNullableListFilter<$PrismaModel = never> = {
+    equals?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    has?: string | StringFieldRefInput<$PrismaModel> | null
+    hasEvery?: string[] | ListStringFieldRefInput<$PrismaModel>
+    hasSome?: string[] | ListStringFieldRefInput<$PrismaModel>
+    isEmpty?: boolean
+  }
+
+  export type FloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+    isSet?: boolean
+  }
+
+  export type CityNullableRelationFilter = {
+    is?: CityWhereInput | null
+    isNot?: CityWhereInput | null
+  }
+
+  export type CountryNullableRelationFilter = {
+    is?: CountryWhereInput | null
+    isNot?: CountryWhereInput | null
+  }
+
+  export type PlaceCountOrderByAggregateInput = {
+    id?: SortOrder
+    cityId?: SortOrder
+    countryId?: SortOrder
+    contentId?: SortOrder
+    type?: SortOrder
+    category?: SortOrder
+    subcategory?: SortOrder
+    tags?: SortOrder
+    rating?: SortOrder
+    address?: SortOrder
+    website?: SortOrder
+    phone?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PlaceAvgOrderByAggregateInput = {
+    rating?: SortOrder
+  }
+
+  export type PlaceMaxOrderByAggregateInput = {
+    id?: SortOrder
+    cityId?: SortOrder
+    countryId?: SortOrder
+    contentId?: SortOrder
+    type?: SortOrder
+    category?: SortOrder
+    subcategory?: SortOrder
+    rating?: SortOrder
+    address?: SortOrder
+    website?: SortOrder
+    phone?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PlaceMinOrderByAggregateInput = {
+    id?: SortOrder
+    cityId?: SortOrder
+    countryId?: SortOrder
+    contentId?: SortOrder
+    type?: SortOrder
+    category?: SortOrder
+    subcategory?: SortOrder
+    rating?: SortOrder
+    address?: SortOrder
+    website?: SortOrder
+    phone?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PlaceSumOrderByAggregateInput = {
+    rating?: SortOrder
+  }
+
+  export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
     isSet?: boolean
   }
 
@@ -6237,9 +7946,112 @@ export namespace Prisma {
   }
 
   export type ImageCreateInput = {
-    url: string
-    public_id: string
-    uploadFrom: string
+    url?: string | null
+    public_id?: string | null
+    uploadFrom?: string | null
+  }
+
+  export type CountryCreateNestedOneWithoutCitiesInput = {
+    create?: XOR<CountryCreateWithoutCitiesInput, CountryUncheckedCreateWithoutCitiesInput>
+    connectOrCreate?: CountryCreateOrConnectWithoutCitiesInput
+    connect?: CountryWhereUniqueInput
+  }
+
+  export type TranslatableContentCreateNestedOneWithoutCitiesInput = {
+    create?: XOR<TranslatableContentCreateWithoutCitiesInput, TranslatableContentUncheckedCreateWithoutCitiesInput>
+    connectOrCreate?: TranslatableContentCreateOrConnectWithoutCitiesInput
+    connect?: TranslatableContentWhereUniqueInput
+  }
+
+  export type PlaceCreateNestedManyWithoutCityInput = {
+    create?: XOR<PlaceCreateWithoutCityInput, PlaceUncheckedCreateWithoutCityInput> | PlaceCreateWithoutCityInput[] | PlaceUncheckedCreateWithoutCityInput[]
+    connectOrCreate?: PlaceCreateOrConnectWithoutCityInput | PlaceCreateOrConnectWithoutCityInput[]
+    createMany?: PlaceCreateManyCityInputEnvelope
+    connect?: PlaceWhereUniqueInput | PlaceWhereUniqueInput[]
+  }
+
+  export type PlaceUncheckedCreateNestedManyWithoutCityInput = {
+    create?: XOR<PlaceCreateWithoutCityInput, PlaceUncheckedCreateWithoutCityInput> | PlaceCreateWithoutCityInput[] | PlaceUncheckedCreateWithoutCityInput[]
+    connectOrCreate?: PlaceCreateOrConnectWithoutCityInput | PlaceCreateOrConnectWithoutCityInput[]
+    createMany?: PlaceCreateManyCityInputEnvelope
+    connect?: PlaceWhereUniqueInput | PlaceWhereUniqueInput[]
+  }
+
+  export type GeoCoordinatesUpdateEnvelopeInput = {
+    set?: GeoCoordinatesCreateInput
+    update?: GeoCoordinatesUpdateInput
+  }
+
+  export type ImageNullableUpdateEnvelopeInput = {
+    set?: ImageCreateInput | null
+    upsert?: ImageUpsertInput
+    unset?: boolean
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+    unset?: boolean
+  }
+
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+    unset?: boolean
+  }
+
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
+  }
+
+  export type CountryUpdateOneRequiredWithoutCitiesNestedInput = {
+    create?: XOR<CountryCreateWithoutCitiesInput, CountryUncheckedCreateWithoutCitiesInput>
+    connectOrCreate?: CountryCreateOrConnectWithoutCitiesInput
+    upsert?: CountryUpsertWithoutCitiesInput
+    connect?: CountryWhereUniqueInput
+    update?: XOR<XOR<CountryUpdateToOneWithWhereWithoutCitiesInput, CountryUpdateWithoutCitiesInput>, CountryUncheckedUpdateWithoutCitiesInput>
+  }
+
+  export type TranslatableContentUpdateOneRequiredWithoutCitiesNestedInput = {
+    create?: XOR<TranslatableContentCreateWithoutCitiesInput, TranslatableContentUncheckedCreateWithoutCitiesInput>
+    connectOrCreate?: TranslatableContentCreateOrConnectWithoutCitiesInput
+    upsert?: TranslatableContentUpsertWithoutCitiesInput
+    connect?: TranslatableContentWhereUniqueInput
+    update?: XOR<XOR<TranslatableContentUpdateToOneWithWhereWithoutCitiesInput, TranslatableContentUpdateWithoutCitiesInput>, TranslatableContentUncheckedUpdateWithoutCitiesInput>
+  }
+
+  export type PlaceUpdateManyWithoutCityNestedInput = {
+    create?: XOR<PlaceCreateWithoutCityInput, PlaceUncheckedCreateWithoutCityInput> | PlaceCreateWithoutCityInput[] | PlaceUncheckedCreateWithoutCityInput[]
+    connectOrCreate?: PlaceCreateOrConnectWithoutCityInput | PlaceCreateOrConnectWithoutCityInput[]
+    upsert?: PlaceUpsertWithWhereUniqueWithoutCityInput | PlaceUpsertWithWhereUniqueWithoutCityInput[]
+    createMany?: PlaceCreateManyCityInputEnvelope
+    set?: PlaceWhereUniqueInput | PlaceWhereUniqueInput[]
+    disconnect?: PlaceWhereUniqueInput | PlaceWhereUniqueInput[]
+    delete?: PlaceWhereUniqueInput | PlaceWhereUniqueInput[]
+    connect?: PlaceWhereUniqueInput | PlaceWhereUniqueInput[]
+    update?: PlaceUpdateWithWhereUniqueWithoutCityInput | PlaceUpdateWithWhereUniqueWithoutCityInput[]
+    updateMany?: PlaceUpdateManyWithWhereWithoutCityInput | PlaceUpdateManyWithWhereWithoutCityInput[]
+    deleteMany?: PlaceScalarWhereInput | PlaceScalarWhereInput[]
+  }
+
+  export type StringFieldUpdateOperationsInput = {
+    set?: string
+  }
+
+  export type PlaceUncheckedUpdateManyWithoutCityNestedInput = {
+    create?: XOR<PlaceCreateWithoutCityInput, PlaceUncheckedCreateWithoutCityInput> | PlaceCreateWithoutCityInput[] | PlaceUncheckedCreateWithoutCityInput[]
+    connectOrCreate?: PlaceCreateOrConnectWithoutCityInput | PlaceCreateOrConnectWithoutCityInput[]
+    upsert?: PlaceUpsertWithWhereUniqueWithoutCityInput | PlaceUpsertWithWhereUniqueWithoutCityInput[]
+    createMany?: PlaceCreateManyCityInputEnvelope
+    set?: PlaceWhereUniqueInput | PlaceWhereUniqueInput[]
+    disconnect?: PlaceWhereUniqueInput | PlaceWhereUniqueInput[]
+    delete?: PlaceWhereUniqueInput | PlaceWhereUniqueInput[]
+    connect?: PlaceWhereUniqueInput | PlaceWhereUniqueInput[]
+    update?: PlaceUpdateWithWhereUniqueWithoutCityInput | PlaceUpdateWithWhereUniqueWithoutCityInput[]
+    updateMany?: PlaceUpdateManyWithWhereWithoutCityInput | PlaceUpdateManyWithWhereWithoutCityInput[]
+    deleteMany?: PlaceScalarWhereInput | PlaceScalarWhereInput[]
   }
 
   export type TranslatableContentCreateNestedOneWithoutCountriesInput = {
@@ -6255,6 +8067,13 @@ export namespace Prisma {
     connect?: CityWhereUniqueInput | CityWhereUniqueInput[]
   }
 
+  export type PlaceCreateNestedManyWithoutCountryInput = {
+    create?: XOR<PlaceCreateWithoutCountryInput, PlaceUncheckedCreateWithoutCountryInput> | PlaceCreateWithoutCountryInput[] | PlaceUncheckedCreateWithoutCountryInput[]
+    connectOrCreate?: PlaceCreateOrConnectWithoutCountryInput | PlaceCreateOrConnectWithoutCountryInput[]
+    createMany?: PlaceCreateManyCountryInputEnvelope
+    connect?: PlaceWhereUniqueInput | PlaceWhereUniqueInput[]
+  }
+
   export type CityUncheckedCreateNestedManyWithoutCountryInput = {
     create?: XOR<CityCreateWithoutCountryInput, CityUncheckedCreateWithoutCountryInput> | CityCreateWithoutCountryInput[] | CityUncheckedCreateWithoutCountryInput[]
     connectOrCreate?: CityCreateOrConnectWithoutCountryInput | CityCreateOrConnectWithoutCountryInput[]
@@ -6262,28 +8081,11 @@ export namespace Prisma {
     connect?: CityWhereUniqueInput | CityWhereUniqueInput[]
   }
 
-  export type StringFieldUpdateOperationsInput = {
-    set?: string
-  }
-
-  export type GeoCoordinatesUpdateEnvelopeInput = {
-    set?: GeoCoordinatesCreateInput
-    update?: GeoCoordinatesUpdateInput
-  }
-
-  export type ImageNullableUpdateEnvelopeInput = {
-    set?: ImageCreateInput | null
-    upsert?: ImageUpsertInput
-    unset?: boolean
-  }
-
-  export type DateTimeFieldUpdateOperationsInput = {
-    set?: Date | string
-  }
-
-  export type NullableStringFieldUpdateOperationsInput = {
-    set?: string | null
-    unset?: boolean
+  export type PlaceUncheckedCreateNestedManyWithoutCountryInput = {
+    create?: XOR<PlaceCreateWithoutCountryInput, PlaceUncheckedCreateWithoutCountryInput> | PlaceCreateWithoutCountryInput[] | PlaceUncheckedCreateWithoutCountryInput[]
+    connectOrCreate?: PlaceCreateOrConnectWithoutCountryInput | PlaceCreateOrConnectWithoutCountryInput[]
+    createMany?: PlaceCreateManyCountryInputEnvelope
+    connect?: PlaceWhereUniqueInput | PlaceWhereUniqueInput[]
   }
 
   export type TranslatableContentUpdateOneRequiredWithoutCountriesNestedInput = {
@@ -6308,6 +8110,20 @@ export namespace Prisma {
     deleteMany?: CityScalarWhereInput | CityScalarWhereInput[]
   }
 
+  export type PlaceUpdateManyWithoutCountryNestedInput = {
+    create?: XOR<PlaceCreateWithoutCountryInput, PlaceUncheckedCreateWithoutCountryInput> | PlaceCreateWithoutCountryInput[] | PlaceUncheckedCreateWithoutCountryInput[]
+    connectOrCreate?: PlaceCreateOrConnectWithoutCountryInput | PlaceCreateOrConnectWithoutCountryInput[]
+    upsert?: PlaceUpsertWithWhereUniqueWithoutCountryInput | PlaceUpsertWithWhereUniqueWithoutCountryInput[]
+    createMany?: PlaceCreateManyCountryInputEnvelope
+    set?: PlaceWhereUniqueInput | PlaceWhereUniqueInput[]
+    disconnect?: PlaceWhereUniqueInput | PlaceWhereUniqueInput[]
+    delete?: PlaceWhereUniqueInput | PlaceWhereUniqueInput[]
+    connect?: PlaceWhereUniqueInput | PlaceWhereUniqueInput[]
+    update?: PlaceUpdateWithWhereUniqueWithoutCountryInput | PlaceUpdateWithWhereUniqueWithoutCountryInput[]
+    updateMany?: PlaceUpdateManyWithWhereWithoutCountryInput | PlaceUpdateManyWithWhereWithoutCountryInput[]
+    deleteMany?: PlaceScalarWhereInput | PlaceScalarWhereInput[]
+  }
+
   export type CityUncheckedUpdateManyWithoutCountryNestedInput = {
     create?: XOR<CityCreateWithoutCountryInput, CityUncheckedCreateWithoutCountryInput> | CityCreateWithoutCountryInput[] | CityUncheckedCreateWithoutCountryInput[]
     connectOrCreate?: CityCreateOrConnectWithoutCountryInput | CityCreateOrConnectWithoutCountryInput[]
@@ -6322,19 +8138,48 @@ export namespace Prisma {
     deleteMany?: CityScalarWhereInput | CityScalarWhereInput[]
   }
 
-  export type CountryCreateNestedOneWithoutCitiesInput = {
-    create?: XOR<CountryCreateWithoutCitiesInput, CountryUncheckedCreateWithoutCitiesInput>
-    connectOrCreate?: CountryCreateOrConnectWithoutCitiesInput
+  export type PlaceUncheckedUpdateManyWithoutCountryNestedInput = {
+    create?: XOR<PlaceCreateWithoutCountryInput, PlaceUncheckedCreateWithoutCountryInput> | PlaceCreateWithoutCountryInput[] | PlaceUncheckedCreateWithoutCountryInput[]
+    connectOrCreate?: PlaceCreateOrConnectWithoutCountryInput | PlaceCreateOrConnectWithoutCountryInput[]
+    upsert?: PlaceUpsertWithWhereUniqueWithoutCountryInput | PlaceUpsertWithWhereUniqueWithoutCountryInput[]
+    createMany?: PlaceCreateManyCountryInputEnvelope
+    set?: PlaceWhereUniqueInput | PlaceWhereUniqueInput[]
+    disconnect?: PlaceWhereUniqueInput | PlaceWhereUniqueInput[]
+    delete?: PlaceWhereUniqueInput | PlaceWhereUniqueInput[]
+    connect?: PlaceWhereUniqueInput | PlaceWhereUniqueInput[]
+    update?: PlaceUpdateWithWhereUniqueWithoutCountryInput | PlaceUpdateWithWhereUniqueWithoutCountryInput[]
+    updateMany?: PlaceUpdateManyWithWhereWithoutCountryInput | PlaceUpdateManyWithWhereWithoutCountryInput[]
+    deleteMany?: PlaceScalarWhereInput | PlaceScalarWhereInput[]
+  }
+
+  export type PlaceCreatetagsInput = {
+    set: string[]
+  }
+
+  export type CityCreateNestedOneWithoutPlacesInput = {
+    create?: XOR<CityCreateWithoutPlacesInput, CityUncheckedCreateWithoutPlacesInput>
+    connectOrCreate?: CityCreateOrConnectWithoutPlacesInput
+    connect?: CityWhereUniqueInput
+  }
+
+  export type CountryCreateNestedOneWithoutPlacesInput = {
+    create?: XOR<CountryCreateWithoutPlacesInput, CountryUncheckedCreateWithoutPlacesInput>
+    connectOrCreate?: CountryCreateOrConnectWithoutPlacesInput
     connect?: CountryWhereUniqueInput
   }
 
-  export type TranslatableContentCreateNestedOneWithoutCitiesInput = {
-    create?: XOR<TranslatableContentCreateWithoutCitiesInput, TranslatableContentUncheckedCreateWithoutCitiesInput>
-    connectOrCreate?: TranslatableContentCreateOrConnectWithoutCitiesInput
+  export type TranslatableContentCreateNestedOneWithoutPlacesInput = {
+    create?: XOR<TranslatableContentCreateWithoutPlacesInput, TranslatableContentUncheckedCreateWithoutPlacesInput>
+    connectOrCreate?: TranslatableContentCreateOrConnectWithoutPlacesInput
     connect?: TranslatableContentWhereUniqueInput
   }
 
-  export type NullableIntFieldUpdateOperationsInput = {
+  export type PlaceUpdatetagsInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type NullableFloatFieldUpdateOperationsInput = {
     set?: number | null
     increment?: number
     decrement?: number
@@ -6343,20 +8188,32 @@ export namespace Prisma {
     unset?: boolean
   }
 
-  export type CountryUpdateOneRequiredWithoutCitiesNestedInput = {
-    create?: XOR<CountryCreateWithoutCitiesInput, CountryUncheckedCreateWithoutCitiesInput>
-    connectOrCreate?: CountryCreateOrConnectWithoutCitiesInput
-    upsert?: CountryUpsertWithoutCitiesInput
-    connect?: CountryWhereUniqueInput
-    update?: XOR<XOR<CountryUpdateToOneWithWhereWithoutCitiesInput, CountryUpdateWithoutCitiesInput>, CountryUncheckedUpdateWithoutCitiesInput>
+  export type CityUpdateOneWithoutPlacesNestedInput = {
+    create?: XOR<CityCreateWithoutPlacesInput, CityUncheckedCreateWithoutPlacesInput>
+    connectOrCreate?: CityCreateOrConnectWithoutPlacesInput
+    upsert?: CityUpsertWithoutPlacesInput
+    disconnect?: boolean
+    delete?: CityWhereInput | boolean
+    connect?: CityWhereUniqueInput
+    update?: XOR<XOR<CityUpdateToOneWithWhereWithoutPlacesInput, CityUpdateWithoutPlacesInput>, CityUncheckedUpdateWithoutPlacesInput>
   }
 
-  export type TranslatableContentUpdateOneRequiredWithoutCitiesNestedInput = {
-    create?: XOR<TranslatableContentCreateWithoutCitiesInput, TranslatableContentUncheckedCreateWithoutCitiesInput>
-    connectOrCreate?: TranslatableContentCreateOrConnectWithoutCitiesInput
-    upsert?: TranslatableContentUpsertWithoutCitiesInput
+  export type CountryUpdateOneWithoutPlacesNestedInput = {
+    create?: XOR<CountryCreateWithoutPlacesInput, CountryUncheckedCreateWithoutPlacesInput>
+    connectOrCreate?: CountryCreateOrConnectWithoutPlacesInput
+    upsert?: CountryUpsertWithoutPlacesInput
+    disconnect?: boolean
+    delete?: CountryWhereInput | boolean
+    connect?: CountryWhereUniqueInput
+    update?: XOR<XOR<CountryUpdateToOneWithWhereWithoutPlacesInput, CountryUpdateWithoutPlacesInput>, CountryUncheckedUpdateWithoutPlacesInput>
+  }
+
+  export type TranslatableContentUpdateOneRequiredWithoutPlacesNestedInput = {
+    create?: XOR<TranslatableContentCreateWithoutPlacesInput, TranslatableContentUncheckedCreateWithoutPlacesInput>
+    connectOrCreate?: TranslatableContentCreateOrConnectWithoutPlacesInput
+    upsert?: TranslatableContentUpsertWithoutPlacesInput
     connect?: TranslatableContentWhereUniqueInput
-    update?: XOR<XOR<TranslatableContentUpdateToOneWithWhereWithoutCitiesInput, TranslatableContentUpdateWithoutCitiesInput>, TranslatableContentUncheckedUpdateWithoutCitiesInput>
+    update?: XOR<XOR<TranslatableContentUpdateToOneWithWhereWithoutPlacesInput, TranslatableContentUpdateWithoutPlacesInput>, TranslatableContentUncheckedUpdateWithoutPlacesInput>
   }
 
   export type TranslatedTextCreateNestedManyWithoutContentInput = {
@@ -6380,6 +8237,13 @@ export namespace Prisma {
     connect?: CityWhereUniqueInput | CityWhereUniqueInput[]
   }
 
+  export type PlaceCreateNestedManyWithoutContentInput = {
+    create?: XOR<PlaceCreateWithoutContentInput, PlaceUncheckedCreateWithoutContentInput> | PlaceCreateWithoutContentInput[] | PlaceUncheckedCreateWithoutContentInput[]
+    connectOrCreate?: PlaceCreateOrConnectWithoutContentInput | PlaceCreateOrConnectWithoutContentInput[]
+    createMany?: PlaceCreateManyContentInputEnvelope
+    connect?: PlaceWhereUniqueInput | PlaceWhereUniqueInput[]
+  }
+
   export type TranslatedTextUncheckedCreateNestedManyWithoutContentInput = {
     create?: XOR<TranslatedTextCreateWithoutContentInput, TranslatedTextUncheckedCreateWithoutContentInput> | TranslatedTextCreateWithoutContentInput[] | TranslatedTextUncheckedCreateWithoutContentInput[]
     connectOrCreate?: TranslatedTextCreateOrConnectWithoutContentInput | TranslatedTextCreateOrConnectWithoutContentInput[]
@@ -6399,6 +8263,13 @@ export namespace Prisma {
     connectOrCreate?: CityCreateOrConnectWithoutContentInput | CityCreateOrConnectWithoutContentInput[]
     createMany?: CityCreateManyContentInputEnvelope
     connect?: CityWhereUniqueInput | CityWhereUniqueInput[]
+  }
+
+  export type PlaceUncheckedCreateNestedManyWithoutContentInput = {
+    create?: XOR<PlaceCreateWithoutContentInput, PlaceUncheckedCreateWithoutContentInput> | PlaceCreateWithoutContentInput[] | PlaceUncheckedCreateWithoutContentInput[]
+    connectOrCreate?: PlaceCreateOrConnectWithoutContentInput | PlaceCreateOrConnectWithoutContentInput[]
+    createMany?: PlaceCreateManyContentInputEnvelope
+    connect?: PlaceWhereUniqueInput | PlaceWhereUniqueInput[]
   }
 
   export type TranslatedTextUpdateManyWithoutContentNestedInput = {
@@ -6443,6 +8314,20 @@ export namespace Prisma {
     deleteMany?: CityScalarWhereInput | CityScalarWhereInput[]
   }
 
+  export type PlaceUpdateManyWithoutContentNestedInput = {
+    create?: XOR<PlaceCreateWithoutContentInput, PlaceUncheckedCreateWithoutContentInput> | PlaceCreateWithoutContentInput[] | PlaceUncheckedCreateWithoutContentInput[]
+    connectOrCreate?: PlaceCreateOrConnectWithoutContentInput | PlaceCreateOrConnectWithoutContentInput[]
+    upsert?: PlaceUpsertWithWhereUniqueWithoutContentInput | PlaceUpsertWithWhereUniqueWithoutContentInput[]
+    createMany?: PlaceCreateManyContentInputEnvelope
+    set?: PlaceWhereUniqueInput | PlaceWhereUniqueInput[]
+    disconnect?: PlaceWhereUniqueInput | PlaceWhereUniqueInput[]
+    delete?: PlaceWhereUniqueInput | PlaceWhereUniqueInput[]
+    connect?: PlaceWhereUniqueInput | PlaceWhereUniqueInput[]
+    update?: PlaceUpdateWithWhereUniqueWithoutContentInput | PlaceUpdateWithWhereUniqueWithoutContentInput[]
+    updateMany?: PlaceUpdateManyWithWhereWithoutContentInput | PlaceUpdateManyWithWhereWithoutContentInput[]
+    deleteMany?: PlaceScalarWhereInput | PlaceScalarWhereInput[]
+  }
+
   export type TranslatedTextUncheckedUpdateManyWithoutContentNestedInput = {
     create?: XOR<TranslatedTextCreateWithoutContentInput, TranslatedTextUncheckedCreateWithoutContentInput> | TranslatedTextCreateWithoutContentInput[] | TranslatedTextUncheckedCreateWithoutContentInput[]
     connectOrCreate?: TranslatedTextCreateOrConnectWithoutContentInput | TranslatedTextCreateOrConnectWithoutContentInput[]
@@ -6485,6 +8370,20 @@ export namespace Prisma {
     deleteMany?: CityScalarWhereInput | CityScalarWhereInput[]
   }
 
+  export type PlaceUncheckedUpdateManyWithoutContentNestedInput = {
+    create?: XOR<PlaceCreateWithoutContentInput, PlaceUncheckedCreateWithoutContentInput> | PlaceCreateWithoutContentInput[] | PlaceUncheckedCreateWithoutContentInput[]
+    connectOrCreate?: PlaceCreateOrConnectWithoutContentInput | PlaceCreateOrConnectWithoutContentInput[]
+    upsert?: PlaceUpsertWithWhereUniqueWithoutContentInput | PlaceUpsertWithWhereUniqueWithoutContentInput[]
+    createMany?: PlaceCreateManyContentInputEnvelope
+    set?: PlaceWhereUniqueInput | PlaceWhereUniqueInput[]
+    disconnect?: PlaceWhereUniqueInput | PlaceWhereUniqueInput[]
+    delete?: PlaceWhereUniqueInput | PlaceWhereUniqueInput[]
+    connect?: PlaceWhereUniqueInput | PlaceWhereUniqueInput[]
+    update?: PlaceUpdateWithWhereUniqueWithoutContentInput | PlaceUpdateWithWhereUniqueWithoutContentInput[]
+    updateMany?: PlaceUpdateManyWithWhereWithoutContentInput | PlaceUpdateManyWithWhereWithoutContentInput[]
+    deleteMany?: PlaceScalarWhereInput | PlaceScalarWhereInput[]
+  }
+
   export type TranslatableContentCreateNestedOneWithoutTranslationsInput = {
     create?: XOR<TranslatableContentCreateWithoutTranslationsInput, TranslatableContentUncheckedCreateWithoutTranslationsInput>
     connectOrCreate?: TranslatableContentCreateOrConnectWithoutTranslationsInput
@@ -6525,20 +8424,21 @@ export namespace Prisma {
     AND?: ImageWhereInput | ImageWhereInput[]
     OR?: ImageWhereInput[]
     NOT?: ImageWhereInput | ImageWhereInput[]
-    url?: StringFilter<"Image"> | string
-    public_id?: StringFilter<"Image"> | string
-    uploadFrom?: StringFilter<"Image"> | string
+    url?: StringNullableFilter<"Image"> | string | null
+    public_id?: StringNullableFilter<"Image"> | string | null
+    uploadFrom?: StringNullableFilter<"Image"> | string | null
   }
 
-  export type NestedDateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+    isSet?: boolean
   }
 
   export type NestedStringNullableFilter<$PrismaModel = never> = {
@@ -6554,6 +8454,17 @@ export namespace Prisma {
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
     isSet?: boolean
+  }
+
+  export type NestedDateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
@@ -6582,50 +8493,6 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntFilter<$PrismaModel> | number
-  }
-
-  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-
-  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
-    isSet?: boolean
-  }
-
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
-    isSet?: boolean
   }
 
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -6657,6 +8524,266 @@ export namespace Prisma {
     isSet?: boolean
   }
 
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+    isSet?: boolean
+  }
+
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
+    isSet?: boolean
+  }
+
+  export type CountryCreateWithoutCitiesInput = {
+    id?: string
+    code: string
+    code3: string
+    geo: XOR<GeoCoordinatesCreateEnvelopeInput, GeoCoordinatesCreateInput>
+    image?: XOR<ImageNullableCreateEnvelopeInput, ImageCreateInput> | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    type?: string | null
+    content: TranslatableContentCreateNestedOneWithoutCountriesInput
+    places?: PlaceCreateNestedManyWithoutCountryInput
+  }
+
+  export type CountryUncheckedCreateWithoutCitiesInput = {
+    id?: string
+    code: string
+    code3: string
+    contentId: string
+    geo: XOR<GeoCoordinatesCreateEnvelopeInput, GeoCoordinatesCreateInput>
+    image?: XOR<ImageNullableCreateEnvelopeInput, ImageCreateInput> | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    type?: string | null
+    places?: PlaceUncheckedCreateNestedManyWithoutCountryInput
+  }
+
+  export type CountryCreateOrConnectWithoutCitiesInput = {
+    where: CountryWhereUniqueInput
+    create: XOR<CountryCreateWithoutCitiesInput, CountryUncheckedCreateWithoutCitiesInput>
+  }
+
+  export type TranslatableContentCreateWithoutCitiesInput = {
+    id?: string
+    entity: string
+    code3?: string | null
+    type?: string | null
+    translations?: TranslatedTextCreateNestedManyWithoutContentInput
+    countries?: CountryCreateNestedManyWithoutContentInput
+    places?: PlaceCreateNestedManyWithoutContentInput
+  }
+
+  export type TranslatableContentUncheckedCreateWithoutCitiesInput = {
+    id?: string
+    entity: string
+    code3?: string | null
+    type?: string | null
+    translations?: TranslatedTextUncheckedCreateNestedManyWithoutContentInput
+    countries?: CountryUncheckedCreateNestedManyWithoutContentInput
+    places?: PlaceUncheckedCreateNestedManyWithoutContentInput
+  }
+
+  export type TranslatableContentCreateOrConnectWithoutCitiesInput = {
+    where: TranslatableContentWhereUniqueInput
+    create: XOR<TranslatableContentCreateWithoutCitiesInput, TranslatableContentUncheckedCreateWithoutCitiesInput>
+  }
+
+  export type PlaceCreateWithoutCityInput = {
+    id?: string
+    geo: XOR<GeoCoordinatesCreateEnvelopeInput, GeoCoordinatesCreateInput>
+    image?: XOR<ImageNullableCreateEnvelopeInput, ImageCreateInput> | null
+    type: string
+    category: string
+    subcategory?: string | null
+    tags?: PlaceCreatetagsInput | string[]
+    rating?: number | null
+    address?: string | null
+    website?: string | null
+    phone?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    country?: CountryCreateNestedOneWithoutPlacesInput
+    content: TranslatableContentCreateNestedOneWithoutPlacesInput
+  }
+
+  export type PlaceUncheckedCreateWithoutCityInput = {
+    id?: string
+    countryId?: string | null
+    contentId: string
+    geo: XOR<GeoCoordinatesCreateEnvelopeInput, GeoCoordinatesCreateInput>
+    image?: XOR<ImageNullableCreateEnvelopeInput, ImageCreateInput> | null
+    type: string
+    category: string
+    subcategory?: string | null
+    tags?: PlaceCreatetagsInput | string[]
+    rating?: number | null
+    address?: string | null
+    website?: string | null
+    phone?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PlaceCreateOrConnectWithoutCityInput = {
+    where: PlaceWhereUniqueInput
+    create: XOR<PlaceCreateWithoutCityInput, PlaceUncheckedCreateWithoutCityInput>
+  }
+
+  export type PlaceCreateManyCityInputEnvelope = {
+    data: PlaceCreateManyCityInput | PlaceCreateManyCityInput[]
+  }
+
+  export type GeoCoordinatesUpdateInput = {
+    lat?: FloatFieldUpdateOperationsInput | number
+    log?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type ImageUpsertInput = {
+    set: ImageCreateInput | null
+    update: ImageUpdateInput
+  }
+
+  export type CountryUpsertWithoutCitiesInput = {
+    update: XOR<CountryUpdateWithoutCitiesInput, CountryUncheckedUpdateWithoutCitiesInput>
+    create: XOR<CountryCreateWithoutCitiesInput, CountryUncheckedCreateWithoutCitiesInput>
+    where?: CountryWhereInput
+  }
+
+  export type CountryUpdateToOneWithWhereWithoutCitiesInput = {
+    where?: CountryWhereInput
+    data: XOR<CountryUpdateWithoutCitiesInput, CountryUncheckedUpdateWithoutCitiesInput>
+  }
+
+  export type CountryUpdateWithoutCitiesInput = {
+    code?: StringFieldUpdateOperationsInput | string
+    code3?: StringFieldUpdateOperationsInput | string
+    geo?: XOR<GeoCoordinatesUpdateEnvelopeInput, GeoCoordinatesCreateInput>
+    image?: XOR<ImageNullableUpdateEnvelopeInput, ImageCreateInput> | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+    content?: TranslatableContentUpdateOneRequiredWithoutCountriesNestedInput
+    places?: PlaceUpdateManyWithoutCountryNestedInput
+  }
+
+  export type CountryUncheckedUpdateWithoutCitiesInput = {
+    code?: StringFieldUpdateOperationsInput | string
+    code3?: StringFieldUpdateOperationsInput | string
+    contentId?: StringFieldUpdateOperationsInput | string
+    geo?: XOR<GeoCoordinatesUpdateEnvelopeInput, GeoCoordinatesCreateInput>
+    image?: XOR<ImageNullableUpdateEnvelopeInput, ImageCreateInput> | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+    places?: PlaceUncheckedUpdateManyWithoutCountryNestedInput
+  }
+
+  export type TranslatableContentUpsertWithoutCitiesInput = {
+    update: XOR<TranslatableContentUpdateWithoutCitiesInput, TranslatableContentUncheckedUpdateWithoutCitiesInput>
+    create: XOR<TranslatableContentCreateWithoutCitiesInput, TranslatableContentUncheckedCreateWithoutCitiesInput>
+    where?: TranslatableContentWhereInput
+  }
+
+  export type TranslatableContentUpdateToOneWithWhereWithoutCitiesInput = {
+    where?: TranslatableContentWhereInput
+    data: XOR<TranslatableContentUpdateWithoutCitiesInput, TranslatableContentUncheckedUpdateWithoutCitiesInput>
+  }
+
+  export type TranslatableContentUpdateWithoutCitiesInput = {
+    entity?: StringFieldUpdateOperationsInput | string
+    code3?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+    translations?: TranslatedTextUpdateManyWithoutContentNestedInput
+    countries?: CountryUpdateManyWithoutContentNestedInput
+    places?: PlaceUpdateManyWithoutContentNestedInput
+  }
+
+  export type TranslatableContentUncheckedUpdateWithoutCitiesInput = {
+    entity?: StringFieldUpdateOperationsInput | string
+    code3?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+    translations?: TranslatedTextUncheckedUpdateManyWithoutContentNestedInput
+    countries?: CountryUncheckedUpdateManyWithoutContentNestedInput
+    places?: PlaceUncheckedUpdateManyWithoutContentNestedInput
+  }
+
+  export type PlaceUpsertWithWhereUniqueWithoutCityInput = {
+    where: PlaceWhereUniqueInput
+    update: XOR<PlaceUpdateWithoutCityInput, PlaceUncheckedUpdateWithoutCityInput>
+    create: XOR<PlaceCreateWithoutCityInput, PlaceUncheckedCreateWithoutCityInput>
+  }
+
+  export type PlaceUpdateWithWhereUniqueWithoutCityInput = {
+    where: PlaceWhereUniqueInput
+    data: XOR<PlaceUpdateWithoutCityInput, PlaceUncheckedUpdateWithoutCityInput>
+  }
+
+  export type PlaceUpdateManyWithWhereWithoutCityInput = {
+    where: PlaceScalarWhereInput
+    data: XOR<PlaceUpdateManyMutationInput, PlaceUncheckedUpdateManyWithoutCityInput>
+  }
+
+  export type PlaceScalarWhereInput = {
+    AND?: PlaceScalarWhereInput | PlaceScalarWhereInput[]
+    OR?: PlaceScalarWhereInput[]
+    NOT?: PlaceScalarWhereInput | PlaceScalarWhereInput[]
+    id?: StringFilter<"Place"> | string
+    cityId?: StringNullableFilter<"Place"> | string | null
+    countryId?: StringNullableFilter<"Place"> | string | null
+    contentId?: StringFilter<"Place"> | string
+    type?: StringFilter<"Place"> | string
+    category?: StringFilter<"Place"> | string
+    subcategory?: StringNullableFilter<"Place"> | string | null
+    tags?: StringNullableListFilter<"Place">
+    rating?: FloatNullableFilter<"Place"> | number | null
+    address?: StringNullableFilter<"Place"> | string | null
+    website?: StringNullableFilter<"Place"> | string | null
+    phone?: StringNullableFilter<"Place"> | string | null
+    createdAt?: DateTimeFilter<"Place"> | Date | string
+    updatedAt?: DateTimeFilter<"Place"> | Date | string
+  }
+
   export type TranslatableContentCreateWithoutCountriesInput = {
     id?: string
     entity: string
@@ -6664,6 +8791,7 @@ export namespace Prisma {
     type?: string | null
     translations?: TranslatedTextCreateNestedManyWithoutContentInput
     cities?: CityCreateNestedManyWithoutContentInput
+    places?: PlaceCreateNestedManyWithoutContentInput
   }
 
   export type TranslatableContentUncheckedCreateWithoutCountriesInput = {
@@ -6673,6 +8801,7 @@ export namespace Prisma {
     type?: string | null
     translations?: TranslatedTextUncheckedCreateNestedManyWithoutContentInput
     cities?: CityUncheckedCreateNestedManyWithoutContentInput
+    places?: PlaceUncheckedCreateNestedManyWithoutContentInput
   }
 
   export type TranslatableContentCreateOrConnectWithoutCountriesInput = {
@@ -6691,6 +8820,7 @@ export namespace Prisma {
     code3?: string | null
     type?: string | null
     content: TranslatableContentCreateNestedOneWithoutCitiesInput
+    places?: PlaceCreateNestedManyWithoutCityInput
   }
 
   export type CityUncheckedCreateWithoutCountryInput = {
@@ -6704,6 +8834,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     code3?: string | null
     type?: string | null
+    places?: PlaceUncheckedCreateNestedManyWithoutCityInput
   }
 
   export type CityCreateOrConnectWithoutCountryInput = {
@@ -6715,14 +8846,49 @@ export namespace Prisma {
     data: CityCreateManyCountryInput | CityCreateManyCountryInput[]
   }
 
-  export type GeoCoordinatesUpdateInput = {
-    lat?: FloatFieldUpdateOperationsInput | number
-    log?: FloatFieldUpdateOperationsInput | number
+  export type PlaceCreateWithoutCountryInput = {
+    id?: string
+    geo: XOR<GeoCoordinatesCreateEnvelopeInput, GeoCoordinatesCreateInput>
+    image?: XOR<ImageNullableCreateEnvelopeInput, ImageCreateInput> | null
+    type: string
+    category: string
+    subcategory?: string | null
+    tags?: PlaceCreatetagsInput | string[]
+    rating?: number | null
+    address?: string | null
+    website?: string | null
+    phone?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    city?: CityCreateNestedOneWithoutPlacesInput
+    content: TranslatableContentCreateNestedOneWithoutPlacesInput
   }
 
-  export type ImageUpsertInput = {
-    set: ImageCreateInput | null
-    update: ImageUpdateInput
+  export type PlaceUncheckedCreateWithoutCountryInput = {
+    id?: string
+    cityId?: string | null
+    contentId: string
+    geo: XOR<GeoCoordinatesCreateEnvelopeInput, GeoCoordinatesCreateInput>
+    image?: XOR<ImageNullableCreateEnvelopeInput, ImageCreateInput> | null
+    type: string
+    category: string
+    subcategory?: string | null
+    tags?: PlaceCreatetagsInput | string[]
+    rating?: number | null
+    address?: string | null
+    website?: string | null
+    phone?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PlaceCreateOrConnectWithoutCountryInput = {
+    where: PlaceWhereUniqueInput
+    create: XOR<PlaceCreateWithoutCountryInput, PlaceUncheckedCreateWithoutCountryInput>
+  }
+
+  export type PlaceCreateManyCountryInputEnvelope = {
+    data: PlaceCreateManyCountryInput | PlaceCreateManyCountryInput[]
   }
 
   export type TranslatableContentUpsertWithoutCountriesInput = {
@@ -6742,6 +8908,7 @@ export namespace Prisma {
     type?: NullableStringFieldUpdateOperationsInput | string | null
     translations?: TranslatedTextUpdateManyWithoutContentNestedInput
     cities?: CityUpdateManyWithoutContentNestedInput
+    places?: PlaceUpdateManyWithoutContentNestedInput
   }
 
   export type TranslatableContentUncheckedUpdateWithoutCountriesInput = {
@@ -6750,6 +8917,7 @@ export namespace Prisma {
     type?: NullableStringFieldUpdateOperationsInput | string | null
     translations?: TranslatedTextUncheckedUpdateManyWithoutContentNestedInput
     cities?: CityUncheckedUpdateManyWithoutContentNestedInput
+    places?: PlaceUncheckedUpdateManyWithoutContentNestedInput
   }
 
   export type CityUpsertWithWhereUniqueWithoutCountryInput = {
@@ -6783,7 +8951,56 @@ export namespace Prisma {
     type?: StringNullableFilter<"City"> | string | null
   }
 
-  export type CountryCreateWithoutCitiesInput = {
+  export type PlaceUpsertWithWhereUniqueWithoutCountryInput = {
+    where: PlaceWhereUniqueInput
+    update: XOR<PlaceUpdateWithoutCountryInput, PlaceUncheckedUpdateWithoutCountryInput>
+    create: XOR<PlaceCreateWithoutCountryInput, PlaceUncheckedCreateWithoutCountryInput>
+  }
+
+  export type PlaceUpdateWithWhereUniqueWithoutCountryInput = {
+    where: PlaceWhereUniqueInput
+    data: XOR<PlaceUpdateWithoutCountryInput, PlaceUncheckedUpdateWithoutCountryInput>
+  }
+
+  export type PlaceUpdateManyWithWhereWithoutCountryInput = {
+    where: PlaceScalarWhereInput
+    data: XOR<PlaceUpdateManyMutationInput, PlaceUncheckedUpdateManyWithoutCountryInput>
+  }
+
+  export type CityCreateWithoutPlacesInput = {
+    id?: string
+    geo: XOR<GeoCoordinatesCreateEnvelopeInput, GeoCoordinatesCreateInput>
+    image?: XOR<ImageNullableCreateEnvelopeInput, ImageCreateInput> | null
+    population?: number | null
+    timezone?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    code3?: string | null
+    type?: string | null
+    country: CountryCreateNestedOneWithoutCitiesInput
+    content: TranslatableContentCreateNestedOneWithoutCitiesInput
+  }
+
+  export type CityUncheckedCreateWithoutPlacesInput = {
+    id?: string
+    countryId: string
+    contentId: string
+    geo: XOR<GeoCoordinatesCreateEnvelopeInput, GeoCoordinatesCreateInput>
+    image?: XOR<ImageNullableCreateEnvelopeInput, ImageCreateInput> | null
+    population?: number | null
+    timezone?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    code3?: string | null
+    type?: string | null
+  }
+
+  export type CityCreateOrConnectWithoutPlacesInput = {
+    where: CityWhereUniqueInput
+    create: XOR<CityCreateWithoutPlacesInput, CityUncheckedCreateWithoutPlacesInput>
+  }
+
+  export type CountryCreateWithoutPlacesInput = {
     id?: string
     code: string
     code3: string
@@ -6793,9 +9010,10 @@ export namespace Prisma {
     updatedAt?: Date | string
     type?: string | null
     content: TranslatableContentCreateNestedOneWithoutCountriesInput
+    cities?: CityCreateNestedManyWithoutCountryInput
   }
 
-  export type CountryUncheckedCreateWithoutCitiesInput = {
+  export type CountryUncheckedCreateWithoutPlacesInput = {
     id?: string
     code: string
     code3: string
@@ -6805,48 +9023,88 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     type?: string | null
+    cities?: CityUncheckedCreateNestedManyWithoutCountryInput
   }
 
-  export type CountryCreateOrConnectWithoutCitiesInput = {
+  export type CountryCreateOrConnectWithoutPlacesInput = {
     where: CountryWhereUniqueInput
-    create: XOR<CountryCreateWithoutCitiesInput, CountryUncheckedCreateWithoutCitiesInput>
+    create: XOR<CountryCreateWithoutPlacesInput, CountryUncheckedCreateWithoutPlacesInput>
   }
 
-  export type TranslatableContentCreateWithoutCitiesInput = {
+  export type TranslatableContentCreateWithoutPlacesInput = {
     id?: string
     entity: string
     code3?: string | null
     type?: string | null
     translations?: TranslatedTextCreateNestedManyWithoutContentInput
     countries?: CountryCreateNestedManyWithoutContentInput
+    cities?: CityCreateNestedManyWithoutContentInput
   }
 
-  export type TranslatableContentUncheckedCreateWithoutCitiesInput = {
+  export type TranslatableContentUncheckedCreateWithoutPlacesInput = {
     id?: string
     entity: string
     code3?: string | null
     type?: string | null
     translations?: TranslatedTextUncheckedCreateNestedManyWithoutContentInput
     countries?: CountryUncheckedCreateNestedManyWithoutContentInput
+    cities?: CityUncheckedCreateNestedManyWithoutContentInput
   }
 
-  export type TranslatableContentCreateOrConnectWithoutCitiesInput = {
+  export type TranslatableContentCreateOrConnectWithoutPlacesInput = {
     where: TranslatableContentWhereUniqueInput
-    create: XOR<TranslatableContentCreateWithoutCitiesInput, TranslatableContentUncheckedCreateWithoutCitiesInput>
+    create: XOR<TranslatableContentCreateWithoutPlacesInput, TranslatableContentUncheckedCreateWithoutPlacesInput>
   }
 
-  export type CountryUpsertWithoutCitiesInput = {
-    update: XOR<CountryUpdateWithoutCitiesInput, CountryUncheckedUpdateWithoutCitiesInput>
-    create: XOR<CountryCreateWithoutCitiesInput, CountryUncheckedCreateWithoutCitiesInput>
+  export type CityUpsertWithoutPlacesInput = {
+    update: XOR<CityUpdateWithoutPlacesInput, CityUncheckedUpdateWithoutPlacesInput>
+    create: XOR<CityCreateWithoutPlacesInput, CityUncheckedCreateWithoutPlacesInput>
+    where?: CityWhereInput
+  }
+
+  export type CityUpdateToOneWithWhereWithoutPlacesInput = {
+    where?: CityWhereInput
+    data: XOR<CityUpdateWithoutPlacesInput, CityUncheckedUpdateWithoutPlacesInput>
+  }
+
+  export type CityUpdateWithoutPlacesInput = {
+    geo?: XOR<GeoCoordinatesUpdateEnvelopeInput, GeoCoordinatesCreateInput>
+    image?: XOR<ImageNullableUpdateEnvelopeInput, ImageCreateInput> | null
+    population?: NullableIntFieldUpdateOperationsInput | number | null
+    timezone?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    code3?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: CountryUpdateOneRequiredWithoutCitiesNestedInput
+    content?: TranslatableContentUpdateOneRequiredWithoutCitiesNestedInput
+  }
+
+  export type CityUncheckedUpdateWithoutPlacesInput = {
+    countryId?: StringFieldUpdateOperationsInput | string
+    contentId?: StringFieldUpdateOperationsInput | string
+    geo?: XOR<GeoCoordinatesUpdateEnvelopeInput, GeoCoordinatesCreateInput>
+    image?: XOR<ImageNullableUpdateEnvelopeInput, ImageCreateInput> | null
+    population?: NullableIntFieldUpdateOperationsInput | number | null
+    timezone?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    code3?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type CountryUpsertWithoutPlacesInput = {
+    update: XOR<CountryUpdateWithoutPlacesInput, CountryUncheckedUpdateWithoutPlacesInput>
+    create: XOR<CountryCreateWithoutPlacesInput, CountryUncheckedCreateWithoutPlacesInput>
     where?: CountryWhereInput
   }
 
-  export type CountryUpdateToOneWithWhereWithoutCitiesInput = {
+  export type CountryUpdateToOneWithWhereWithoutPlacesInput = {
     where?: CountryWhereInput
-    data: XOR<CountryUpdateWithoutCitiesInput, CountryUncheckedUpdateWithoutCitiesInput>
+    data: XOR<CountryUpdateWithoutPlacesInput, CountryUncheckedUpdateWithoutPlacesInput>
   }
 
-  export type CountryUpdateWithoutCitiesInput = {
+  export type CountryUpdateWithoutPlacesInput = {
     code?: StringFieldUpdateOperationsInput | string
     code3?: StringFieldUpdateOperationsInput | string
     geo?: XOR<GeoCoordinatesUpdateEnvelopeInput, GeoCoordinatesCreateInput>
@@ -6855,9 +9113,10 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     type?: NullableStringFieldUpdateOperationsInput | string | null
     content?: TranslatableContentUpdateOneRequiredWithoutCountriesNestedInput
+    cities?: CityUpdateManyWithoutCountryNestedInput
   }
 
-  export type CountryUncheckedUpdateWithoutCitiesInput = {
+  export type CountryUncheckedUpdateWithoutPlacesInput = {
     code?: StringFieldUpdateOperationsInput | string
     code3?: StringFieldUpdateOperationsInput | string
     contentId?: StringFieldUpdateOperationsInput | string
@@ -6866,33 +9125,36 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    cities?: CityUncheckedUpdateManyWithoutCountryNestedInput
   }
 
-  export type TranslatableContentUpsertWithoutCitiesInput = {
-    update: XOR<TranslatableContentUpdateWithoutCitiesInput, TranslatableContentUncheckedUpdateWithoutCitiesInput>
-    create: XOR<TranslatableContentCreateWithoutCitiesInput, TranslatableContentUncheckedCreateWithoutCitiesInput>
+  export type TranslatableContentUpsertWithoutPlacesInput = {
+    update: XOR<TranslatableContentUpdateWithoutPlacesInput, TranslatableContentUncheckedUpdateWithoutPlacesInput>
+    create: XOR<TranslatableContentCreateWithoutPlacesInput, TranslatableContentUncheckedCreateWithoutPlacesInput>
     where?: TranslatableContentWhereInput
   }
 
-  export type TranslatableContentUpdateToOneWithWhereWithoutCitiesInput = {
+  export type TranslatableContentUpdateToOneWithWhereWithoutPlacesInput = {
     where?: TranslatableContentWhereInput
-    data: XOR<TranslatableContentUpdateWithoutCitiesInput, TranslatableContentUncheckedUpdateWithoutCitiesInput>
+    data: XOR<TranslatableContentUpdateWithoutPlacesInput, TranslatableContentUncheckedUpdateWithoutPlacesInput>
   }
 
-  export type TranslatableContentUpdateWithoutCitiesInput = {
+  export type TranslatableContentUpdateWithoutPlacesInput = {
     entity?: StringFieldUpdateOperationsInput | string
     code3?: NullableStringFieldUpdateOperationsInput | string | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
     translations?: TranslatedTextUpdateManyWithoutContentNestedInput
     countries?: CountryUpdateManyWithoutContentNestedInput
+    cities?: CityUpdateManyWithoutContentNestedInput
   }
 
-  export type TranslatableContentUncheckedUpdateWithoutCitiesInput = {
+  export type TranslatableContentUncheckedUpdateWithoutPlacesInput = {
     entity?: StringFieldUpdateOperationsInput | string
     code3?: NullableStringFieldUpdateOperationsInput | string | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
     translations?: TranslatedTextUncheckedUpdateManyWithoutContentNestedInput
     countries?: CountryUncheckedUpdateManyWithoutContentNestedInput
+    cities?: CityUncheckedUpdateManyWithoutContentNestedInput
   }
 
   export type TranslatedTextCreateWithoutContentInput = {
@@ -6930,6 +9192,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     type?: string | null
     cities?: CityCreateNestedManyWithoutCountryInput
+    places?: PlaceCreateNestedManyWithoutCountryInput
   }
 
   export type CountryUncheckedCreateWithoutContentInput = {
@@ -6942,6 +9205,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     type?: string | null
     cities?: CityUncheckedCreateNestedManyWithoutCountryInput
+    places?: PlaceUncheckedCreateNestedManyWithoutCountryInput
   }
 
   export type CountryCreateOrConnectWithoutContentInput = {
@@ -6964,6 +9228,7 @@ export namespace Prisma {
     code3?: string | null
     type?: string | null
     country: CountryCreateNestedOneWithoutCitiesInput
+    places?: PlaceCreateNestedManyWithoutCityInput
   }
 
   export type CityUncheckedCreateWithoutContentInput = {
@@ -6977,6 +9242,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     code3?: string | null
     type?: string | null
+    places?: PlaceUncheckedCreateNestedManyWithoutCityInput
   }
 
   export type CityCreateOrConnectWithoutContentInput = {
@@ -6986,6 +9252,51 @@ export namespace Prisma {
 
   export type CityCreateManyContentInputEnvelope = {
     data: CityCreateManyContentInput | CityCreateManyContentInput[]
+  }
+
+  export type PlaceCreateWithoutContentInput = {
+    id?: string
+    geo: XOR<GeoCoordinatesCreateEnvelopeInput, GeoCoordinatesCreateInput>
+    image?: XOR<ImageNullableCreateEnvelopeInput, ImageCreateInput> | null
+    type: string
+    category: string
+    subcategory?: string | null
+    tags?: PlaceCreatetagsInput | string[]
+    rating?: number | null
+    address?: string | null
+    website?: string | null
+    phone?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    city?: CityCreateNestedOneWithoutPlacesInput
+    country?: CountryCreateNestedOneWithoutPlacesInput
+  }
+
+  export type PlaceUncheckedCreateWithoutContentInput = {
+    id?: string
+    cityId?: string | null
+    countryId?: string | null
+    geo: XOR<GeoCoordinatesCreateEnvelopeInput, GeoCoordinatesCreateInput>
+    image?: XOR<ImageNullableCreateEnvelopeInput, ImageCreateInput> | null
+    type: string
+    category: string
+    subcategory?: string | null
+    tags?: PlaceCreatetagsInput | string[]
+    rating?: number | null
+    address?: string | null
+    website?: string | null
+    phone?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PlaceCreateOrConnectWithoutContentInput = {
+    where: PlaceWhereUniqueInput
+    create: XOR<PlaceCreateWithoutContentInput, PlaceUncheckedCreateWithoutContentInput>
+  }
+
+  export type PlaceCreateManyContentInputEnvelope = {
+    data: PlaceCreateManyContentInput | PlaceCreateManyContentInput[]
   }
 
   export type TranslatedTextUpsertWithWhereUniqueWithoutContentInput = {
@@ -7061,6 +9372,22 @@ export namespace Prisma {
     data: XOR<CityUpdateManyMutationInput, CityUncheckedUpdateManyWithoutContentInput>
   }
 
+  export type PlaceUpsertWithWhereUniqueWithoutContentInput = {
+    where: PlaceWhereUniqueInput
+    update: XOR<PlaceUpdateWithoutContentInput, PlaceUncheckedUpdateWithoutContentInput>
+    create: XOR<PlaceCreateWithoutContentInput, PlaceUncheckedCreateWithoutContentInput>
+  }
+
+  export type PlaceUpdateWithWhereUniqueWithoutContentInput = {
+    where: PlaceWhereUniqueInput
+    data: XOR<PlaceUpdateWithoutContentInput, PlaceUncheckedUpdateWithoutContentInput>
+  }
+
+  export type PlaceUpdateManyWithWhereWithoutContentInput = {
+    where: PlaceScalarWhereInput
+    data: XOR<PlaceUpdateManyMutationInput, PlaceUncheckedUpdateManyWithoutContentInput>
+  }
+
   export type TranslatableContentCreateWithoutTranslationsInput = {
     id?: string
     entity: string
@@ -7068,6 +9395,7 @@ export namespace Prisma {
     type?: string | null
     countries?: CountryCreateNestedManyWithoutContentInput
     cities?: CityCreateNestedManyWithoutContentInput
+    places?: PlaceCreateNestedManyWithoutContentInput
   }
 
   export type TranslatableContentUncheckedCreateWithoutTranslationsInput = {
@@ -7077,6 +9405,7 @@ export namespace Prisma {
     type?: string | null
     countries?: CountryUncheckedCreateNestedManyWithoutContentInput
     cities?: CityUncheckedCreateNestedManyWithoutContentInput
+    places?: PlaceUncheckedCreateNestedManyWithoutContentInput
   }
 
   export type TranslatableContentCreateOrConnectWithoutTranslationsInput = {
@@ -7101,6 +9430,7 @@ export namespace Prisma {
     type?: NullableStringFieldUpdateOperationsInput | string | null
     countries?: CountryUpdateManyWithoutContentNestedInput
     cities?: CityUpdateManyWithoutContentNestedInput
+    places?: PlaceUpdateManyWithoutContentNestedInput
   }
 
   export type TranslatableContentUncheckedUpdateWithoutTranslationsInput = {
@@ -7109,6 +9439,7 @@ export namespace Prisma {
     type?: NullableStringFieldUpdateOperationsInput | string | null
     countries?: CountryUncheckedUpdateManyWithoutContentNestedInput
     cities?: CityUncheckedUpdateManyWithoutContentNestedInput
+    places?: PlaceUncheckedUpdateManyWithoutContentNestedInput
   }
 
   export type FloatFilter<$PrismaModel = never> = {
@@ -7120,6 +9451,89 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type PlaceCreateManyCityInput = {
+    id?: string
+    countryId?: string | null
+    contentId: string
+    geo: XOR<GeoCoordinatesCreateEnvelopeInput, GeoCoordinatesCreateInput>
+    image?: XOR<ImageNullableCreateEnvelopeInput, ImageCreateInput> | null
+    type: string
+    category: string
+    subcategory?: string | null
+    tags?: PlaceCreatetagsInput | string[]
+    rating?: number | null
+    address?: string | null
+    website?: string | null
+    phone?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type FloatFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type ImageUpdateInput = {
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    public_id?: NullableStringFieldUpdateOperationsInput | string | null
+    uploadFrom?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type PlaceUpdateWithoutCityInput = {
+    geo?: XOR<GeoCoordinatesUpdateEnvelopeInput, GeoCoordinatesCreateInput>
+    image?: XOR<ImageNullableUpdateEnvelopeInput, ImageCreateInput> | null
+    type?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    subcategory?: NullableStringFieldUpdateOperationsInput | string | null
+    tags?: PlaceUpdatetagsInput | string[]
+    rating?: NullableFloatFieldUpdateOperationsInput | number | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    country?: CountryUpdateOneWithoutPlacesNestedInput
+    content?: TranslatableContentUpdateOneRequiredWithoutPlacesNestedInput
+  }
+
+  export type PlaceUncheckedUpdateWithoutCityInput = {
+    countryId?: NullableStringFieldUpdateOperationsInput | string | null
+    contentId?: StringFieldUpdateOperationsInput | string
+    geo?: XOR<GeoCoordinatesUpdateEnvelopeInput, GeoCoordinatesCreateInput>
+    image?: XOR<ImageNullableUpdateEnvelopeInput, ImageCreateInput> | null
+    type?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    subcategory?: NullableStringFieldUpdateOperationsInput | string | null
+    tags?: PlaceUpdatetagsInput | string[]
+    rating?: NullableFloatFieldUpdateOperationsInput | number | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PlaceUncheckedUpdateManyWithoutCityInput = {
+    countryId?: NullableStringFieldUpdateOperationsInput | string | null
+    contentId?: StringFieldUpdateOperationsInput | string
+    geo?: XOR<GeoCoordinatesUpdateEnvelopeInput, GeoCoordinatesCreateInput>
+    image?: XOR<ImageNullableUpdateEnvelopeInput, ImageCreateInput> | null
+    type?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    subcategory?: NullableStringFieldUpdateOperationsInput | string | null
+    tags?: PlaceUpdatetagsInput | string[]
+    rating?: NullableFloatFieldUpdateOperationsInput | number | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CityCreateManyCountryInput = {
@@ -7135,18 +9549,22 @@ export namespace Prisma {
     type?: string | null
   }
 
-  export type FloatFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
-  }
-
-  export type ImageUpdateInput = {
-    url?: StringFieldUpdateOperationsInput | string
-    public_id?: StringFieldUpdateOperationsInput | string
-    uploadFrom?: StringFieldUpdateOperationsInput | string
+  export type PlaceCreateManyCountryInput = {
+    id?: string
+    cityId?: string | null
+    contentId: string
+    geo: XOR<GeoCoordinatesCreateEnvelopeInput, GeoCoordinatesCreateInput>
+    image?: XOR<ImageNullableCreateEnvelopeInput, ImageCreateInput> | null
+    type: string
+    category: string
+    subcategory?: string | null
+    tags?: PlaceCreatetagsInput | string[]
+    rating?: number | null
+    address?: string | null
+    website?: string | null
+    phone?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type CityUpdateWithoutCountryInput = {
@@ -7159,6 +9577,7 @@ export namespace Prisma {
     code3?: NullableStringFieldUpdateOperationsInput | string | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
     content?: TranslatableContentUpdateOneRequiredWithoutCitiesNestedInput
+    places?: PlaceUpdateManyWithoutCityNestedInput
   }
 
   export type CityUncheckedUpdateWithoutCountryInput = {
@@ -7171,6 +9590,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     code3?: NullableStringFieldUpdateOperationsInput | string | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    places?: PlaceUncheckedUpdateManyWithoutCityNestedInput
   }
 
   export type CityUncheckedUpdateManyWithoutCountryInput = {
@@ -7183,6 +9603,57 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     code3?: NullableStringFieldUpdateOperationsInput | string | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type PlaceUpdateWithoutCountryInput = {
+    geo?: XOR<GeoCoordinatesUpdateEnvelopeInput, GeoCoordinatesCreateInput>
+    image?: XOR<ImageNullableUpdateEnvelopeInput, ImageCreateInput> | null
+    type?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    subcategory?: NullableStringFieldUpdateOperationsInput | string | null
+    tags?: PlaceUpdatetagsInput | string[]
+    rating?: NullableFloatFieldUpdateOperationsInput | number | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    city?: CityUpdateOneWithoutPlacesNestedInput
+    content?: TranslatableContentUpdateOneRequiredWithoutPlacesNestedInput
+  }
+
+  export type PlaceUncheckedUpdateWithoutCountryInput = {
+    cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    contentId?: StringFieldUpdateOperationsInput | string
+    geo?: XOR<GeoCoordinatesUpdateEnvelopeInput, GeoCoordinatesCreateInput>
+    image?: XOR<ImageNullableUpdateEnvelopeInput, ImageCreateInput> | null
+    type?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    subcategory?: NullableStringFieldUpdateOperationsInput | string | null
+    tags?: PlaceUpdatetagsInput | string[]
+    rating?: NullableFloatFieldUpdateOperationsInput | number | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PlaceUncheckedUpdateManyWithoutCountryInput = {
+    cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    contentId?: StringFieldUpdateOperationsInput | string
+    geo?: XOR<GeoCoordinatesUpdateEnvelopeInput, GeoCoordinatesCreateInput>
+    image?: XOR<ImageNullableUpdateEnvelopeInput, ImageCreateInput> | null
+    type?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    subcategory?: NullableStringFieldUpdateOperationsInput | string | null
+    tags?: PlaceUpdatetagsInput | string[]
+    rating?: NullableFloatFieldUpdateOperationsInput | number | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type TranslatedTextCreateManyContentInput = {
@@ -7217,6 +9688,24 @@ export namespace Prisma {
     type?: string | null
   }
 
+  export type PlaceCreateManyContentInput = {
+    id?: string
+    cityId?: string | null
+    countryId?: string | null
+    geo: XOR<GeoCoordinatesCreateEnvelopeInput, GeoCoordinatesCreateInput>
+    image?: XOR<ImageNullableCreateEnvelopeInput, ImageCreateInput> | null
+    type: string
+    category: string
+    subcategory?: string | null
+    tags?: PlaceCreatetagsInput | string[]
+    rating?: number | null
+    address?: string | null
+    website?: string | null
+    phone?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
   export type TranslatedTextUpdateWithoutContentInput = {
     code3?: NullableStringFieldUpdateOperationsInput | string | null
     language?: StringFieldUpdateOperationsInput | string
@@ -7247,6 +9736,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     type?: NullableStringFieldUpdateOperationsInput | string | null
     cities?: CityUpdateManyWithoutCountryNestedInput
+    places?: PlaceUpdateManyWithoutCountryNestedInput
   }
 
   export type CountryUncheckedUpdateWithoutContentInput = {
@@ -7258,6 +9748,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     type?: NullableStringFieldUpdateOperationsInput | string | null
     cities?: CityUncheckedUpdateManyWithoutCountryNestedInput
+    places?: PlaceUncheckedUpdateManyWithoutCountryNestedInput
   }
 
   export type CountryUncheckedUpdateManyWithoutContentInput = {
@@ -7280,6 +9771,7 @@ export namespace Prisma {
     code3?: NullableStringFieldUpdateOperationsInput | string | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
     country?: CountryUpdateOneRequiredWithoutCitiesNestedInput
+    places?: PlaceUpdateManyWithoutCityNestedInput
   }
 
   export type CityUncheckedUpdateWithoutContentInput = {
@@ -7292,6 +9784,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     code3?: NullableStringFieldUpdateOperationsInput | string | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    places?: PlaceUncheckedUpdateManyWithoutCityNestedInput
   }
 
   export type CityUncheckedUpdateManyWithoutContentInput = {
@@ -7304,6 +9797,57 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     code3?: NullableStringFieldUpdateOperationsInput | string | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type PlaceUpdateWithoutContentInput = {
+    geo?: XOR<GeoCoordinatesUpdateEnvelopeInput, GeoCoordinatesCreateInput>
+    image?: XOR<ImageNullableUpdateEnvelopeInput, ImageCreateInput> | null
+    type?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    subcategory?: NullableStringFieldUpdateOperationsInput | string | null
+    tags?: PlaceUpdatetagsInput | string[]
+    rating?: NullableFloatFieldUpdateOperationsInput | number | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    city?: CityUpdateOneWithoutPlacesNestedInput
+    country?: CountryUpdateOneWithoutPlacesNestedInput
+  }
+
+  export type PlaceUncheckedUpdateWithoutContentInput = {
+    cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    countryId?: NullableStringFieldUpdateOperationsInput | string | null
+    geo?: XOR<GeoCoordinatesUpdateEnvelopeInput, GeoCoordinatesCreateInput>
+    image?: XOR<ImageNullableUpdateEnvelopeInput, ImageCreateInput> | null
+    type?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    subcategory?: NullableStringFieldUpdateOperationsInput | string | null
+    tags?: PlaceUpdatetagsInput | string[]
+    rating?: NullableFloatFieldUpdateOperationsInput | number | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PlaceUncheckedUpdateManyWithoutContentInput = {
+    cityId?: NullableStringFieldUpdateOperationsInput | string | null
+    countryId?: NullableStringFieldUpdateOperationsInput | string | null
+    geo?: XOR<GeoCoordinatesUpdateEnvelopeInput, GeoCoordinatesCreateInput>
+    image?: XOR<ImageNullableUpdateEnvelopeInput, ImageCreateInput> | null
+    type?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    subcategory?: NullableStringFieldUpdateOperationsInput | string | null
+    tags?: PlaceUpdatetagsInput | string[]
+    rating?: NullableFloatFieldUpdateOperationsInput | number | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type NestedFloatFilter<$PrismaModel = never> = {
@@ -7323,6 +9867,10 @@ export namespace Prisma {
    * Aliases for legacy arg types
    */
     /**
+     * @deprecated Use CityCountOutputTypeDefaultArgs instead
+     */
+    export type CityCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = CityCountOutputTypeDefaultArgs<ExtArgs>
+    /**
      * @deprecated Use CountryCountOutputTypeDefaultArgs instead
      */
     export type CountryCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = CountryCountOutputTypeDefaultArgs<ExtArgs>
@@ -7339,13 +9887,17 @@ export namespace Prisma {
      */
     export type ImageArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ImageDefaultArgs<ExtArgs>
     /**
+     * @deprecated Use CityDefaultArgs instead
+     */
+    export type CityArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = CityDefaultArgs<ExtArgs>
+    /**
      * @deprecated Use CountryDefaultArgs instead
      */
     export type CountryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = CountryDefaultArgs<ExtArgs>
     /**
-     * @deprecated Use CityDefaultArgs instead
+     * @deprecated Use PlaceDefaultArgs instead
      */
-    export type CityArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = CityDefaultArgs<ExtArgs>
+    export type PlaceArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = PlaceDefaultArgs<ExtArgs>
     /**
      * @deprecated Use TranslatableContentDefaultArgs instead
      */

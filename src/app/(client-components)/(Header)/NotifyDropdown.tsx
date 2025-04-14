@@ -84,7 +84,7 @@ const NotifyDropdown: FC<Props> = ({ className = '' }) => {
 														{item.time}
 													</p>
 												</div>
-												<span className="absolute right-1 top-1/2 h-2 w-2 -translate-y-1/2 transform rounded-full bg-blue-500"></span>
+												{/* <span className="absolute right-1 top-1/2 h-2 w-2 -translate-y-1/2 transform rounded-full bg-blue-500"></span> */}
 											</a>
 										))}
 									</div>

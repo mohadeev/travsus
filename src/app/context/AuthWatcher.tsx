@@ -1,5 +1,5 @@
 'use client'
-import { SessionProvider, useSession } from 'next-auth/react'
+import { SessionProvider, signOut, useSession } from 'next-auth/react'
 import { Provider as ReduxProvider, useDispatch } from 'react-redux'
 import { AppProps } from 'next/app'
 import { useEffect } from 'react'
@@ -21,6 +21,9 @@ function AuthWatcher() {
 					const user = res?.user
 					if (user?.id && message) {
 						dispatch(setUser(user))
+					} else {
+						signOut()
+						dispatch(clearUser())
 					}
 				})
 			})()

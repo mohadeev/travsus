@@ -55,6 +55,7 @@ export default function CMSAdmin() {
 			const filteredResults = newSearchCountries.filter(
 				(item: any) => item.type === 'country' || item.type === 'city',
 			)
+			console.log('filteredResults: ', filteredResults)
 			setSearchResults(filteredResults)
 		} catch (error) {
 			console.error('Error searching:', error)
@@ -212,13 +213,16 @@ export default function CMSAdmin() {
 								{/* Display existing image */}
 								{result.image ? (
 									<div className="mb-4">
-										<h4 className="mb-2 text-sm font-medium">Current Image</h4>
+										<h4 className="mb-2 text-sm font-medium">
+											Current Image {JSON.stringify(result.image.url)}
+										</h4>
 										<div className="aspect-video relative overflow-hidden rounded-md border">
 											{result.image.url ? (
 												<Image
-													src={result.image.url || '/placeholder.svg'}
+													src={result.image.url}
 													alt={`${result.name} image`}
-													fill
+													width={'200'}
+													height={'200'}
 													className="object-cover"
 												/>
 											) : (

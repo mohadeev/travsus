@@ -124,7 +124,7 @@ export default function RootLayout({
 										{/* <PlanTripModal isOpen={true} onClose={()=>{}}/> */}
 										{!isDashboardPath && (
 											<ConditionalComponent
-												show={true}
+												show={false}
 												component={SiteHeader}
 											/>
 										)}

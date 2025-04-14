@@ -9,22 +9,7 @@ generator client {
   output   = "../prisma/generated/places"
 }
 
-// Country Model
-model Country {
-  id        String              @id @default(auto()) @map("_id") @db.ObjectId
-  code      String              @unique
-  code3     String              @unique // 3-letter ISO 3166-1 alpha-3 (e.g., "USA")
-  contentId String              @db.ObjectId
-  content   TranslatableContent @relation(fields: [contentId], references: [id])
-  cities    City[]              @relation("CountryCities")
-  geo       GeoCoordinates
-  image     Image? // Added image field
-  createdAt DateTime            @default(now())
-  updatedAt DateTime            @updatedAt
-  type      String?
-}
-
-// City Model
+// City Model - Add the places relation
 model City {
   id         String              @id @default(auto()) @map("_id") @db.ObjectId
   countryId  String              @db.ObjectId
@@ -32,13 +17,53 @@ model City {
   contentId  String              @db.ObjectId
   content    TranslatableContent @relation(fields: [contentId], references: [id])
   geo        GeoCoordinates
-  image      Image? // Added image field
+  image      Image?
   population Int?
   timezone   String?
   createdAt  DateTime            @default(now())
   updatedAt  DateTime            @updatedAt
   code3      String?
   type       String?
+  places     Place[] // Add this line to create the opposite relation
+}
+
+// Country Model - Add the places relation
+model Country {
+  id        String              @id @default(auto()) @map("_id") @db.ObjectId
+  code      String              @unique
+  code3     String              @unique
+  contentId String              @db.ObjectId
+  content   TranslatableContent @relation(fields: [contentId], references: [id])
+  cities    City[]              @relation("CountryCities")
+  geo       GeoCoordinates
+  image     Image?
+  createdAt DateTime            @default(now())
+  updatedAt DateTime            @updatedAt
+  type      String?
+  places    Place[] // Add this line to create the opposite relation
+}
+
+// Place Model - Add relation names to match
+model Place {
+  id          String              @id @default(auto()) @map("_id") @db.ObjectId
+  cityId      String?             @db.ObjectId
+  city        City?               @relation(fields: [cityId], references: [id])
+  countryId   String?             @db.ObjectId
+  country     Country?            @relation(fields: [countryId], references: [id])
+  contentId   String              @db.ObjectId
+  content     TranslatableContent @relation(fields: [contentId], references: [id])
+  geo         GeoCoordinates
+  image       Image?
+  type        String
+  category    String
+  subcategory String?
+  tags        String[]
+  rating      Float?
+  address     String?
+  website     String?
+  phone       String?
+  createdAt   DateTime            @default(now())
+  updatedAt   DateTime            @updatedAt
 }
 
 // Translatable Content Model
@@ -49,6 +74,7 @@ model TranslatableContent {
   // Opposite Relations
   countries    Country[]
   cities       City[]
+  places       Place[] // Add this line
   code3        String? // Stores the country name
   type         String? // Stores "country" or "city"
 }
@@ -72,7 +98,7 @@ type GeoCoordinates {
 
 // Image Embedded Type
 type Image {
-  url        String
-  public_id  String // ID to identify the image in cloud storage
-  uploadFrom String // Source of the image (e.g., "internet", "local")
+  url        String?
+  public_id  String? // ID to identify the image in cloud storage
+  uploadFrom String? // Source of the image (e.g., "internet", "local")
 }

@@ -44,8 +44,9 @@ import ReviewSystem from './ReviewSystem'
 import Included from './Included'
 import { ChevronDown, ChevronRight, Heart } from 'lucide-react'
 import Link from 'next/link'
+import TourItineraryWithMap from './tour-itinerary-with-map'
 
-const MapComponent = dynamic(() => import('./MapComponent'), {
+const MapComponent = dynamic(() => import('./tour-map'), {
 	ssr: false,
 })
 
@@ -100,6 +101,7 @@ const ListingExperiencesDetailPage: FC<
 		days,
 		liked,
 		startAddress,
+		endAddress,
 		faq,
 		inclusions,
 	}: any = useSelector((state: any) => state.creatingServiceSlice.service)
@@ -405,7 +407,7 @@ const ListingExperiencesDetailPage: FC<
 						{renderSection2()}
 						{/* <TourListingHeader /> */}
 						<Included />
-						{days && <TourItinerary itinerary={days} days={days} />}
+						{/* {days && <TourItinerary itinerary={days} days={days} />} */}
 					</div>
 
 					{/* SIDEBAR */}
@@ -415,7 +417,15 @@ const ListingExperiencesDetailPage: FC<
 						</div>
 					</div>
 				</main>
-				<MapComponent startAddress={startAddress} />
+				{days && (
+					<TourItineraryWithMap
+						days={days}
+						// startAddress={startAddress}
+						// endAddress={endAddress}
+						// addresses={addresses}
+					/>
+				)}
+
 				{/* {itinerary()} */}
 				{/* {renderSection3()} */}
 

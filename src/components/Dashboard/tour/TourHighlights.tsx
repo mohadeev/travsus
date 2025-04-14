@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
-import { Button } from '@/components/ui/button'
 import { Plus, Trash, AlertCircle } from 'lucide-react'
 
 interface TourHighlightsProps {
@@ -49,7 +48,8 @@ export default function TourHighlights({
 		updateTourData({ highlights: newHighlights })
 	}
 
-	const hasHighlights = tourData.highlights && tourData.highlights.length > 0
+	const hasHighlights =
+		Array.isArray(tourData.highlights) && tourData.highlights.length > 0
 	const hasEmptyHighlights =
 		hasHighlights &&
 		tourData.highlights.some((h) => !h.name || h.name.trim() === '')
@@ -103,21 +103,19 @@ export default function TourHighlights({
 								placeholder="Enter highlight"
 							/>
 						</div>
-						<Button
+						<button
 							type="button"
 							onClick={() => handleRemoveHighlight(index)}
-							variant="ghost"
-							size="icon"
-							className="mt-6 h-10 w-10 rounded-full bg-slate-900 text-white hover:bg-slate-800"
+							className="mt-6 flex h-10 w-10 items-center justify-center rounded-full bg-slate-900 text-white hover:bg-slate-800"
 						>
 							<Trash className="h-4 w-4" />
-						</Button>
+						</button>
 					</div>
 				))}
 			</div>
 
 			{/* Add new highlight */}
-			<div className="mt-6 flex items-end space-x-2">
+			<div className="mt-6 flex items-center space-x-2">
 				<div className="flex-grow">
 					<Input
 						type="text"
@@ -129,7 +127,7 @@ export default function TourHighlights({
 							}
 						}}
 						placeholder="Enter new highlight"
-						className={showEmptyError ? 'border-red-300' : ''}
+						className={`w-full ${showEmptyError ? 'border-red-300' : ''}`}
 						onKeyDown={(e) => {
 							if (e.key === 'Enter') {
 								e.preventDefault()
@@ -143,14 +141,13 @@ export default function TourHighlights({
 						</p>
 					)}
 				</div>
-				<Button
+				<button
 					type="button"
 					onClick={handleAddHighlight}
-					className="rounded-full bg-slate-900 text-white hover:bg-slate-800"
+					className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 bg-white text-black hover:bg-gray-50"
 				>
-					<Plus className="mr-2 h-4 w-4" />
-					Add Highlight
-				</Button>
+					<Plus className="h-5 w-5" />
+				</button>
 			</div>
 		</div>
 	)

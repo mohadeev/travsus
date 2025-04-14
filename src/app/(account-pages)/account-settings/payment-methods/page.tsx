@@ -3,8 +3,10 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { ChevronRight, CreditCard, Wallet } from 'lucide-react'
-import ButtonPrimary from '@/shared/ButtonPrimary'
 import { useToast } from '@/hooks/useToast'
+import PayoutMethodsList from '@/components/payout/payout-methods-list'
+import AddPayoutMethodForm from '@/components/payout/add-payout-method-form'
+import { useSelector } from 'react-redux'
 
 interface PaymentMethod {
 	id: string
@@ -15,29 +17,59 @@ interface PaymentMethod {
 	expYear: number
 }
 
+interface PayoutMethod {
+	id: string
+	type: string
+	email?: string
+	accountHolderName?: string
+	accountNumber?: string
+	bankName?: string
+	country: string
+	currency: string
+	isDefault: boolean
+}
+
 export default function PaymentMethodsPage() {
 	const [activeTab, setActiveTab] = useState('payments')
 	const [paymentMethods, setPaymentMethods] = useState<PaymentMethod[]>([])
+	const [payoutMethods, setPayoutMethods] = useState<PayoutMethod[]>([])
 	const [loading, setLoading] = useState(true)
+	const [showAddPayoutForm, setShowAddPayoutForm] = useState(false)
 	const { toast } = useToast()
+	const { userData } = useSelector((state: any) => state.userReducer)
 
-	// Mock data for demonstration
+	// Fetch payment methods and payout methods
 	useEffect(() => {
-		// In a real app, this would be an API call
-		setTimeout(() => {
-			setPaymentMethods([
-				{
-					id: 'pm_1',
-					type: 'card',
-					last4: '4242',
-					brand: 'Visa',
-					expMonth: 12,
-					expYear: 2025,
-				},
-			])
-			setLoading(false)
-		}, 1000)
-	}, [])
+		const fetchData = async () => {
+			setLoading(true)
+			try {
+				// Fetch payment methods
+				const paymentResponse = await fetch('/api/payment-methods')
+				if (paymentResponse.ok) {
+					const data = await paymentResponse.json()
+					setPaymentMethods(data.paymentMethods || [])
+				}
+
+				// Fetch payout methods
+				const payoutResponse = await fetch('/api/payout-methods')
+				if (payoutResponse.ok) {
+					const data = await payoutResponse.json()
+					setPayoutMethods(data.payoutMethods || [])
+				}
+			} catch (error) {
+				console.error('Error fetching data:', error)
+				toast({
+					title: 'Error',
+					description: 'Failed to load your payment and payout methods',
+					variant: 'destructive',
+				})
+			} finally {
+				setLoading(false)
+			}
+		}
+
+		fetchData()
+	}, [toast])
 
 	const handleAddPaymentMethod = () => {
 		// This would open a modal or redirect to add payment method page
@@ -67,6 +99,127 @@ export default function PaymentMethodsPage() {
 			title: 'Add Coupon',
 			description: 'This would open a form to add a coupon code.',
 		})
+	}
+
+	const handleAddPayoutMethod = () => {
+		setShowAddPayoutForm(true)
+	}
+
+	const handlePayoutFormCancel = () => {
+		setShowAddPayoutForm(false)
+	}
+
+	const handlePayoutFormSubmit = async (data: any) => {
+		try {
+			const response = await fetch('/api/payout-methods', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(data),
+			})
+
+			if (!response.ok) {
+				const errorData = await response.json()
+				throw new Error(errorData.message || 'Failed to add payout method')
+			}
+
+			const result = await response.json()
+
+			// Add the new payout method to the state
+			setPayoutMethods((prev) => [...prev, result.payoutMethod])
+			setShowAddPayoutForm(false)
+
+			toast({
+				title: 'Success',
+				description: 'Payout method added successfully',
+			})
+		} catch (error) {
+			console.error('Error adding payout method:', error)
+			toast({
+				title: 'Error',
+				description:
+					error instanceof Error
+						? error.message
+						: 'Failed to add payout method',
+				variant: 'destructive',
+			})
+		}
+	}
+
+	const handleDeletePayoutMethod = async (id: string) => {
+		try {
+			const response = await fetch('/api/payout-methods', {
+				method: 'DELETE',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({ id }),
+			})
+
+			if (!response.ok) {
+				const errorData = await response.json()
+				throw new Error(errorData.message || 'Failed to delete payout method')
+			}
+
+			// Remove the deleted payout method from the state
+			setPayoutMethods((prev) => prev.filter((method) => method.id !== id))
+
+			toast({
+				title: 'Success',
+				description: 'Payout method removed successfully',
+			})
+		} catch (error) {
+			console.error('Error deleting payout method:', error)
+			toast({
+				title: 'Error',
+				description:
+					error instanceof Error
+						? error.message
+						: 'Failed to delete payout method',
+				variant: 'destructive',
+			})
+		}
+	}
+
+	const handleSetDefaultPayoutMethod = async (id: string) => {
+		try {
+			const response = await fetch('/api/payout-methods', {
+				method: 'PATCH',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({ id, action: 'setDefault' }),
+			})
+
+			if (!response.ok) {
+				const errorData = await response.json()
+				throw new Error(errorData.message || 'Failed to update payout method')
+			}
+
+			// Update the state to reflect the new default payout method
+			setPayoutMethods((prev) =>
+				prev.map((method) => ({
+					...method,
+					isDefault: method.id === id,
+				})),
+			)
+
+			toast({
+				title: 'Success',
+				description: 'Default payout method updated',
+			})
+		} catch (error) {
+			console.error('Error setting default payout method:', error)
+			toast({
+				title: 'Error',
+				description:
+					error instanceof Error
+						? error.message
+						: 'Failed to update payout method',
+				variant: 'destructive',
+			})
+		}
 	}
 
 	return (
@@ -174,7 +327,7 @@ export default function PaymentMethodsPage() {
 
 					{/* travsus Gift Credit Section */}
 					<div>
-						<h2 className="mb-2 text-xl font-semibold">travsus gift credit</h2>
+						<h2 className="mb-2 text-xl font-semibold">Travsus gift credit</h2>
 						<button
 							onClick={handleAddGiftCard}
 							className="rounded-lg bg-black px-4 py-2 text-white hover:bg-gray-800"
@@ -200,21 +353,58 @@ export default function PaymentMethodsPage() {
 				</div>
 			) : (
 				<div className="space-y-8">
-					<div>
-						<h2 className="mb-4 text-xl font-semibold">Payout methods</h2>
-						<p className="mb-6 text-gray-600">
-							When you receive a payment for a reservation, we call that payment
-							to you a "payout." Our secure payment system supports several
-							payout methods, which can be set up below.
-						</p>
-						<p className="mb-6 text-gray-600">
-							To get paid, you need to set up a payout method. travsus releases
-							payouts about 24 hours after a guest's scheduled check-in time.
-							The time it takes for the funds to appear in your account depends
-							on your payout method.
-						</p>
-						<ButtonPrimary>Add payout method</ButtonPrimary>
-					</div>
+					{!showAddPayoutForm ? (
+						<div>
+							<h2 className="mb-2 text-xl font-semibold">
+								How you'll get paid
+							</h2>
+							<p className="mb-6 text-gray-600">
+								Add at least one payout method so we know where to send your
+								money.
+							</p>
+
+							{loading ? (
+								<div className="py-4">Loading payout methods...</div>
+							) : (
+								<PayoutMethodsList
+									payoutMethods={payoutMethods}
+									onAddMethod={handleAddPayoutMethod}
+									onDeleteMethod={handleDeletePayoutMethod}
+									onSetDefault={handleSetDefaultPayoutMethod}
+								/>
+							)}
+
+							{/* Help section */}
+							<div className="mt-12 rounded-lg bg-gray-50 p-6">
+								<h3 className="mb-6 text-xl font-semibold">Need help?</h3>
+								<div className="space-y-4">
+									<button className="flex w-full items-center justify-between border-b border-gray-200 py-2">
+										<span className="font-medium">
+											When you'll get your payout
+										</span>
+										<ChevronRight className="h-5 w-5" />
+									</button>
+
+									<button className="flex w-full items-center justify-between border-b border-gray-200 py-2">
+										<span className="font-medium">How payouts work</span>
+										<ChevronRight className="h-5 w-5" />
+									</button>
+
+									<button className="flex w-full items-center justify-between border-b border-gray-200 py-2">
+										<span className="font-medium">
+											Go to your transaction history
+										</span>
+										<ChevronRight className="h-5 w-5" />
+									</button>
+								</div>
+							</div>
+						</div>
+					) : (
+						<AddPayoutMethodForm
+							onCancel={handlePayoutFormCancel}
+							onSubmit={handlePayoutFormSubmit}
+						/>
+					)}
 				</div>
 			)}
 
