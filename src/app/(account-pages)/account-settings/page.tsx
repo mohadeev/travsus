@@ -2,7 +2,7 @@ import Link from 'next/link'
 ;<div className="mt-12 text-center">
 	<p className="mb-2 text-gray-700">Need to delete your account?</p>
 	<Link
-		href="/account-settings/deactivate"
+		href="/account/deactivate"
 		className="font-medium text-gray-700 underline hover:text-red-600"
 	>
 		Take care of that now
@@ -15,7 +15,7 @@ export default function AccountSettingsPage() {
 			<div className="mt-12 text-center">
 				<p className="mb-2 text-gray-700">Need to delete your account?</p>
 				<Link
-					href="/account-settings/deactivate"
+					href="/account/deactivate"
 					className="font-medium text-gray-700 underline hover:text-red-600"
 				>
 					Take care of that now

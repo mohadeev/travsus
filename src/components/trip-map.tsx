@@ -383,11 +383,8 @@ const TourMap = forwardRef<
 				</div>
 
 				{/* MAP */}
-				<div className="leaflet-map-container relative" style={{ zIndex: 1 }}>
-					<div
-						ref={mapRef}
-						style={{ height: `${height}px`, width: '100%', zIndex: 1 }}
-					/>
+				<div className="leaflet-map-container relative " style={{ zIndex: 1 }}>
+					<div ref={mapRef} style={{ height: `${height}px`, width: '100%' zIndex: 1}} />
 				</div>
 
 				{/* LEGEND */}

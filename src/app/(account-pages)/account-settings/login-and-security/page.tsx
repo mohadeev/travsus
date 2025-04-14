@@ -13,10 +13,7 @@ export default function LoginAndSecurityPage() {
 		<div className="mx-auto max-w-4xl px-6 py-8">
 			{/* Breadcrumb */}
 			<div className="mb-6 flex items-center text-sm">
-				<Link
-					href="/account-settings"
-					className="text-gray-600 hover:underline"
-				>
+				<Link href="/account" className="text-gray-600 hover:underline">
 					Account
 				</Link>
 				<ChevronRight className="mx-2 h-4 w-4 text-gray-500" />

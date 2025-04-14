@@ -124,15 +124,18 @@ export default function RootLayout({
 										{/* <PlanTripModal isOpen={true} onClose={()=>{}}/> */}
 										{!isDashboardPath && (
 											<ConditionalComponent
-												show={false}
+												show={true}
 												component={SiteHeader}
 											/>
 										)}
 										{children}
 										{!isDashboardPath && (
 											<>
-												<ConditionalComponent component={FooterNav} />
-												<ConditionalComponent component={Footer} />
+												<ConditionalComponent
+													show={true}
+													component={FooterNav}
+												/>
+												<ConditionalComponent show={true} component={Footer} />
 												{/* <FooterNav />
 												<Footer /> */}
 											</>

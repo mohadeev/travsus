@@ -231,23 +231,23 @@ const SiteHeader = () => {
 						<div className="absolute w-[100%]">
 							<div
 								className="z-11 absolute left-1/2 h-[700px] w-full -translate-x-1/2 -translate-y-[100px] bg-[length:100%] bg-center bg-no-repeat md:bg-[length:50%] md:bg-center"
-								style={{
-									backgroundImage:
-										"url('https://cdn.prod.website-files.com/645a9acecda2e0594fac6126/6580a563d237ee85c9237ccb_gradient-noise-purple-azure.png')",
-									// backgroundRepeat: 'no-repeat',
-									// backgroundSize: '50%',
-									// backgroundPosition: 'top',
-								}}
+								// style={{
+								// 	backgroundImage:
+								// 		// "url('https://cdn.prod.website-files.com/645a9acecda2e0594fac6126/6580a563d237ee85c9237ccb_gradient-noise-purple-azure.png')",
+								// 	// backgroundRepeat: 'no-repeat',
+								// 	// backgroundSize: '50%',
+								// 	// backgroundPosition: 'top',
+								// }}
 							></div>
 							<div
 								className="z-11 absolute left-1/2 h-[700px] w-full -translate-x-1/2 -translate-y-[100px]"
-								style={{
-									backgroundImage:
-										"url('https://uploads-ssl.webflow.com/645a9acecda2e0594fac6126/65809a10c85f59a63201a8a5_noise-light.png')",
-									// backgroundRepeat: 'no-repeat',
-									// backgroundSize: '50%',
-									// backgroundPosition: 'top',
-								}}
+								// style={{
+								// 	backgroundImage:
+								// 		"url('https://uploads-ssl.webflow.com/645a9acecda2e0594fac6126/65809a10c85f59a63201a8a5_noise-light.png')",
+								// 	// backgroundRepeat: 'no-repeat',
+								// 	// backgroundSize: '50%',
+								// 	// backgroundPosition: 'top',
+								// }}
 							></div>
 						</div>
 					)}

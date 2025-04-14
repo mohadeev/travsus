@@ -8,10 +8,7 @@ export default function AccountPage() {
 		<div className="mx-auto max-w-4xl px-6 py-8">
 			{/* Breadcrumb */}
 			<div className="mb-6 flex items-center text-sm">
-				<Link
-					href="/account-settings"
-					className="text-gray-600 hover:underline"
-				>
+				<Link href="/account" className="text-gray-600 hover:underline">
 					Account
 				</Link>
 				<ChevronRight className="mx-2 h-4 w-4 text-gray-500" />
@@ -31,7 +28,7 @@ export default function AccountPage() {
 					</p>
 					<div className="grid gap-4 sm:grid-cols-2">
 						<Link
-							href="/account-settings/personal-info"
+							href="/account/personal-info"
 							className="flex items-center justify-between rounded-lg border border-gray-200 p-4 hover:border-gray-300 hover:shadow-sm"
 						>
 							<div>
@@ -43,7 +40,7 @@ export default function AccountPage() {
 							<ChevronRight className="h-5 w-5 text-gray-400" />
 						</Link>
 						<Link
-							href="/account-settings/login-and-security"
+							href="/account/login-and-security"
 							className="flex items-center justify-between rounded-lg border border-gray-200 p-4 hover:border-gray-300 hover:shadow-sm"
 						>
 							<div>
@@ -65,7 +62,7 @@ export default function AccountPage() {
 					</p>
 					<div className="grid gap-4 sm:grid-cols-2">
 						<Link
-							href="/account-settings/payment-methods"
+							href="/account/payment-methods"
 							className="flex items-center justify-between rounded-lg border border-gray-200 p-4 hover:border-gray-300 hover:shadow-sm"
 						>
 							<div>
@@ -77,7 +74,7 @@ export default function AccountPage() {
 							<ChevronRight className="h-5 w-5 text-gray-400" />
 						</Link>
 						<Link
-							href="/account-settings/payouts"
+							href="/account/payouts"
 							className="flex items-center justify-between rounded-lg border border-gray-200 p-4 hover:border-gray-300 hover:shadow-sm"
 						>
 							<div>
@@ -99,7 +96,7 @@ export default function AccountPage() {
 					</p>
 					<div className="grid gap-4 sm:grid-cols-2">
 						<Link
-							href="/account-settings/preferences"
+							href="/account/preferences"
 							className="flex items-center justify-between rounded-lg border border-gray-200 p-4 hover:border-gray-300 hover:shadow-sm"
 						>
 							<div>
@@ -111,7 +108,7 @@ export default function AccountPage() {
 							<ChevronRight className="h-5 w-5 text-gray-400" />
 						</Link>
 						<Link
-							href="/account-settings/notifications"
+							href="/account/notifications"
 							className="flex items-center justify-between rounded-lg border border-gray-200 p-4 hover:border-gray-300 hover:shadow-sm"
 						>
 							<div>
@@ -121,7 +118,7 @@ export default function AccountPage() {
 							<ChevronRight className="h-5 w-5 text-gray-400" />
 						</Link>
 						<Link
-							href="/account-settings/privacy"
+							href="/account/privacy"
 							className="flex items-center justify-between rounded-lg border border-gray-200 p-4 hover:border-gray-300 hover:shadow-sm"
 						>
 							<div>
@@ -137,7 +134,7 @@ export default function AccountPage() {
 					{/* Deactivation link */}
 					<div className="mt-8 border-t border-gray-200 pt-4">
 						<Link
-							href="/account-settings/deactivate"
+							href="/account/deactivate"
 							className="text-gray-600 hover:text-red-600 hover:underline"
 						>
 							Need to deactivate your account?

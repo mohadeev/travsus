@@ -28,64 +28,64 @@ export default function AccountPage() {
 			title: 'Personal info',
 			description: 'Provide personal details and how we can reach you',
 			icon: LayoutGrid,
-			href: '/account-settings/personal-info',
+			href: '/account/personal-info',
 		},
 		{
 			title: 'Login & security',
 			description: 'Update your password and secure your account',
 			icon: Lock,
-			href: '/account-settings/login-and-security',
+			href: '/account/login-and-security',
 		},
 		{
 			title: 'Payments & payouts',
 			description: 'Review payments, payouts, coupons, and gift cards',
 			icon: CreditCard,
-			href: '/account-settings/payment-methods',
+			href: '/account/payment-methods',
 		},
 		{
 			title: 'Taxes',
 			description: 'Manage taxpayer information and tax documents',
 			icon: FileText,
-			href: '/account-settings/taxes',
+			href: '/account/taxes',
 		},
 		{
 			title: 'Notifications',
 			description:
 				'Choose notification preferences and how you want to be contacted',
 			icon: Bell,
-			href: '/account-settings/notifications',
+			href: '/account/notifications',
 		},
 		{
 			title: 'Privacy & sharing',
 			description:
 				'Manage your personal data, connected services, and data sharing settings',
 			icon: Eye,
-			href: '/account-settings/privacy-and-sharing',
+			href: '/account/privacy-and-sharing',
 		},
 		{
 			title: 'Global preferences',
 			description: 'Set your default language, currency, and timezone',
 			icon: Globe,
-			href: '/account-settings/preferences',
+			href: '/account/preferences',
 		},
 		{
 			title: 'Travel for work',
 			description: 'Add a work email for business trip benefits',
 			icon: MapPin,
-			href: '/account-settings/travsus-for-work',
+			href: '/account/travsus-for-work',
 		},
 		{
 			title: 'Professional hosting tools',
 			description:
 				'Get professional tools if you manage several properties on travsus',
 			icon: Building2,
-			href: '/account-settings/professional-hosting',
+			href: '/account/professional-hosting',
 		},
 		{
 			title: 'Referral credit & coupon',
 			description: 'You have € 0 referral credits and coupon. Learn more.',
 			icon: Gift,
-			href: '/account-settings/invite',
+			href: '/account/invite',
 		},
 	]
 
