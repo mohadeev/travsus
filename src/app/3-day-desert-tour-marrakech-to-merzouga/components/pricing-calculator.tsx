@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useLanguage } from './language-provider'
 import {
 	Card,
@@ -15,7 +15,6 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import {
-	ChevronRight,
 	Users,
 	Calendar,
 	CreditCard,
@@ -38,36 +37,54 @@ import {
 	DialogHeader,
 	DialogTitle,
 } from '@/components/ui/dialog'
+import { useRouter } from 'next/navigation'
 
-// Mock Stripe for demo purposes
-const stripePromise = Promise.resolve({
-	elements: () => ({
-		create: () => ({}),
-	}),
-	confirmPayment: async () => ({ paymentIntent: { status: 'succeeded' } }),
-})
+// Define the tour object
+const tour = {
+	id: 'morocco-desert-tour',
+	name: '3-Day Desert Tour: Marrakech to Merzouga',
+}
 
-// Auth check function (mock for demo)
+// Use the provided authentication hook
 const useAuthAction = (action) => {
 	const [isLoading, setIsLoading] = useState(false)
+	const router = useRouter()
 
-	const handleAction = async (...args) => {
-		setIsLoading(true)
-		try {
-			// In a real app, check if user is authenticated
-			const isAuthenticated = true // Mock authentication
+	const handleAction = async () => {
+		if (!isDateSelected) {
+			setIsShaking(true)
+			setShowError(true)
+			setTimeout(() => setIsShaking(false), 1500) // 3 flashes in 1.5 seconds
+		} else {
+			setCurrentStatus('loading')
+			const createBooking = async () => {
+				setCurrentStatus('loading')
+				const response = await fetch('/api/bookings', {
+					method: 'POST',
+					body: JSON.stringify(booking),
+				})
 
-			if (!isAuthenticated) {
-				alert('Please sign in to continue')
-				return
+				if (!response.ok) {
+					console.error('Failed to create booking')
+				}
+
+				return response.json()
 			}
-
-			// User is authenticated, proceed with the action
-			return await action(...args)
-		} catch (error) {
-			console.error('Auth action error:', error)
-		} finally {
-			setIsLoading(false)
+			createBooking()
+				.then((result) => {
+					if (result.id) {
+						router.push(
+							`/checkout/checkout?bookingId=${result.id}&serviceId=${tour.id}`,
+						)
+					} else {
+						alert('no booking created')
+					}
+					setCurrentStatus('')
+				})
+				.catch((error) => {
+					setCurrentStatus('')
+					console.error('Error:', error)
+				})
 		}
 	}
 
@@ -155,12 +172,13 @@ export default function PricingCalculator() {
 	const [tourType, setTourType] = useState<'private' | 'shared'>('private')
 	const [people, setPeople] = useState<number>(2)
 	const [price, setPrice] = useState<number | null>(null)
-	const [pricePerPerson, setPricePerPerson] = useState<number | null>(null)
+	const [pricePerPerson, setPricePerPerson] = useState<number | null>(80) // Default to 80€
 	const [date, setDate] = useState<Date | undefined>(undefined)
 	const [isDateSelected, setIsDateSelected] = useState(false)
 	const [isShaking, setIsShaking] = useState(false)
 	const [showError, setShowError] = useState(false)
 	const [currentStatus, setCurrentStatus] = useState('')
+	const [booking, setBooking] = useState(null)
 
 	// State for checkout flow
 	const [checkoutOpen, setCheckoutOpen] = useState(false)
@@ -169,14 +187,15 @@ export default function PricingCalculator() {
 	>('idle')
 	const [bookingReference, setBookingReference] = useState('')
 
-	const calculatePrice = () => {
+	// Calculate price automatically when people changes
+	useEffect(() => {
 		// Fixed price of 80€ per person
 		const perPerson = 80
 		const totalPrice = perPerson * people
 
 		setPrice(totalPrice)
 		setPricePerPerson(perPerson)
-	}
+	}, [people])
 
 	// Create booking object
 	const createBookingObject = () => {
@@ -208,8 +227,8 @@ export default function PricingCalculator() {
 		setPaymentStatus('error')
 	}
 
-	// Handle booking with auth check
-	const [handleReserveClick, isProcessing] = useAuthAction(async () => {
+	// Use the provided authentication hook
+	const handleReserveClick = useAuthAction(async () => {
 		if (!isDateSelected) {
 			setIsShaking(true)
 			setShowError(true)
@@ -347,14 +366,6 @@ export default function PricingCalculator() {
 								)}
 							</div>
 
-							<Button
-								onClick={calculatePrice}
-								className="w-full bg-black hover:bg-gray-800"
-							>
-								{t('pricing.calculateButton')}
-								<ChevronRight className="ml-2 h-4 w-4" />
-							</Button>
-
 							{price && pricePerPerson && (
 								<div className="bg-muted mt-4 rounded-lg p-4">
 									<div className="flex justify-between">
@@ -375,10 +386,10 @@ export default function PricingCalculator() {
 						<CardFooter>
 							<Button
 								onClick={handleReserveClick}
-								disabled={!price || isProcessing}
+								disabled={!price || currentStatus === 'loading'}
 								className="w-full bg-black text-white hover:bg-gray-800"
 							>
-								{isProcessing ? (
+								{currentStatus === 'loading' ? (
 									<>
 										<Loader2 className="mr-2 h-4 w-4 animate-spin" />
 										Processing...
