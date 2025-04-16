@@ -16,20 +16,11 @@ import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import {
 	Users,
-	Calendar,
 	CreditCard,
 	Loader2,
 	CheckCircle,
 	AlertCircle,
 } from 'lucide-react'
-import { format } from 'date-fns'
-import { Calendar as CalendarComponent } from '@/components/ui/calendar'
-import {
-	Popover,
-	PopoverContent,
-	PopoverTrigger,
-} from '@/components/ui/popover'
-import { cn } from '@/lib/utils'
 import {
 	Dialog,
 	DialogContent,
@@ -38,6 +29,7 @@ import {
 	DialogTitle,
 } from '@/components/ui/dialog'
 import { useRouter } from 'next/navigation'
+import StayDatesRangeInput from '@/app/(service-detail)/[listing-experiences-detail]/StayDatesRangeInput'
 
 // Define the tour object
 const tour = {
@@ -49,6 +41,11 @@ const tour = {
 const useAuthAction = (action) => {
 	const [isLoading, setIsLoading] = useState(false)
 	const router = useRouter()
+	const [isDateSelected, setIsDateSelected] = useState(true)
+	const [isShaking, setIsShaking] = useState(false)
+	const [showError, setShowError] = useState(false)
+	const [currentStatus, setCurrentStatus] = useState('')
+	const [booking, setBooking] = useState(null)
 
 	const handleAction = async () => {
 		if (!isDateSelected) {
@@ -173,8 +170,14 @@ export default function PricingCalculator() {
 	const [people, setPeople] = useState<number>(2)
 	const [price, setPrice] = useState<number | null>(null)
 	const [pricePerPerson, setPricePerPerson] = useState<number | null>(80) // Default to 80€
-	const [date, setDate] = useState<Date | undefined>(undefined)
-	const [isDateSelected, setIsDateSelected] = useState(false)
+	const [selectedDates, setSelectedDates] = useState<{
+		startDate: number | null
+		endDate: number | null
+	}>({
+		startDate: new Date().getTime(),
+		endDate: new Date(new Date().setDate(new Date().getDate() + 2)).getTime(),
+	})
+	const [isDateSelected, setIsDateSelected] = useState(true) // Default to true since we have default dates
 	const [isShaking, setIsShaking] = useState(false)
 	const [showError, setShowError] = useState(false)
 	const [currentStatus, setCurrentStatus] = useState('')
@@ -197,6 +200,14 @@ export default function PricingCalculator() {
 		setPricePerPerson(perPerson)
 	}, [people])
 
+	// Handle date change
+	const handleDateChange = (dates) => {
+		console.log('Date changed:', dates)
+		setSelectedDates(dates)
+		setIsDateSelected(!!dates.startDate)
+		setShowError(false)
+	}
+
 	// Create booking object
 	const createBookingObject = () => {
 		return {
@@ -204,7 +215,9 @@ export default function PricingCalculator() {
 			people,
 			totalPrice: price,
 			pricePerPerson,
-			date: date ? format(date, 'yyyy-MM-dd') : null,
+			date: selectedDates.startDate
+				? new Date(selectedDates.startDate).toISOString().split('T')[0]
+				: null,
 			tourName: '3-Day Desert Tour: Marrakech to Merzouga',
 			tourId: 'morocco-desert-tour',
 		}
@@ -252,12 +265,6 @@ export default function PricingCalculator() {
 			setCurrentStatus('')
 		}
 	})
-
-	// Reset checkout flow
-	const resetCheckout = () => {
-		setCheckoutOpen(false)
-		setPaymentStatus('idle')
-	}
 
 	return (
 		<section id="pricing" className="bg-gray-50 py-16 md:py-24">
@@ -327,38 +334,13 @@ export default function PricingCalculator() {
 							</div>
 
 							<div className="space-y-2">
-								<Label htmlFor="date">Select Date</Label>
-								<Popover>
-									<PopoverTrigger asChild>
-										<Button
-											variant="outline"
-											className={cn(
-												'w-full justify-start text-left font-normal',
-												!date && 'text-muted-foreground',
-												isShaking && 'animate-shake border-red-500',
-											)}
-										>
-											<Calendar className="mr-2 h-4 w-4" />
-											{date ? format(date, 'PPP') : <span>Pick a date</span>}
-										</Button>
-									</PopoverTrigger>
-									<PopoverContent className="w-auto p-0">
-										<CalendarComponent
-											mode="single"
-											selected={date}
-											onSelect={(date) => {
-												setDate(date)
-												setIsDateSelected(!!date)
-												setShowError(false)
-											}}
-											initialFocus
-											disabled={(date) => {
-												// Disable dates in the past
-												return date < new Date(new Date().setHours(0, 0, 0, 0))
-											}}
-										/>
-									</PopoverContent>
-								</Popover>
+								<Label>Select Dates</Label>
+								<StayDatesRangeInput
+									duration={3}
+									onChange={handleDateChange}
+									value={selectedDates}
+									isFlashing={isShaking}
+								/>
 								{showError && (
 									<p className="mt-1 text-sm text-red-500">
 										Please select a date for your tour
@@ -447,7 +429,16 @@ export default function PricingCalculator() {
 								<div className="flex justify-between">
 									<span className="text-muted-foreground text-sm">Date:</span>
 									<span className="font-medium">
-										{date ? format(date, 'PPP') : 'Not selected'}
+										{selectedDates.startDate
+											? new Date(selectedDates.startDate).toLocaleDateString(
+													'en-US',
+													{
+														month: 'short',
+														day: '2-digit',
+														year: 'numeric',
+													},
+												)
+											: 'Not selected'}
 									</span>
 								</div>
 								<div className="flex justify-between">
@@ -482,7 +473,15 @@ export default function PricingCalculator() {
 								<div>
 									<p className="text-muted-foreground text-sm">Tour Date</p>
 									<p className="font-medium">
-										{date ? format(date, 'PPP') : 'Not selected'}
+										{selectedDates.startDate
+											? new Date(selectedDates.startDate).toLocaleDateString(
+													'en-US',
+													{
+														month: 'short',
+														day: '2-digit',
+													},
+												)
+											: 'Not selected'}
 									</p>
 								</div>
 								<div>

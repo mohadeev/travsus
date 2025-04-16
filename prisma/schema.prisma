@@ -63,6 +63,7 @@ model Subscription {
 
 
 model Booking {
+  
   id            String   @id @default(auto()) @map("_id") @db.ObjectId
   customer       User     @relation("CustomerBookings", fields: [customerId], references: [id])
   customerId     String   @db.ObjectId
@@ -75,7 +76,8 @@ model Booking {
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
   accommodation Accommodation? 
-  bookOwnHotels Boolean?
+  bookOwnHotels Boolean? @default(true)
+  includeInTotal  Boolean?
   bookingState String 
   guests Guests?
   bookingStates BookingStates[]
@@ -92,6 +94,7 @@ model Booking {
   bookingReference String @unique 
   paymentMethod   PaymentMethod? @relation(fields: [paymentMethodId], references: [id])
   paymentMethodId String?        @db.ObjectId
+
   @@map("bookings")
 } 
 

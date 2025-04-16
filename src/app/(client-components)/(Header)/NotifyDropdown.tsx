@@ -47,7 +47,7 @@ const NotifyDropdown: FC<Props> = ({ className = '' }) => {
 								open ? '' : 'text-opacity-90'
 							} group relative inline-flex h-10 w-10 items-center justify-center self-center rounded-full text-base font-medium hover:bg-gray-100 hover:text-opacity-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 dark:hover:bg-neutral-800 sm:h-12 sm:w-12`}
 						>
-							<span className="absolute right-2 top-2 h-2 w-2 rounded-full bg-blue-500"></span>
+							{/* <span className="absolute right-2 top-2 h-2 w-2 rounded-full bg-blue-500"></span> */}
 							<BellIcon className="h-6 w-6" />
 						</Popover.Button>
 						<Transition

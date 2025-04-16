@@ -162,11 +162,10 @@ export default function DestinationPage({
 				{/* Banner Image - full width on mobile */}
 				<div className="px-0 pb-3 pt-3 md:pb-4 md:pt-4">
 					<div className="relative h-[300px] w-full overflow-hidden md:h-[500px] md:rounded-[16px]">
-						<Image
-							src={countryData?.image || '/placeholder.svg'}
+						<img
+							src={countryData?.image}
 							alt={countryData?.name}
-							fill
-							className="object-cover"
+							className="h-full w-full object-cover"
 							priority
 						/>
 						<div className="absolute bottom-3 right-3 flex items-center gap-2 rounded-full border border-black bg-black px-3 py-1 md:bottom-4 md:right-4 md:px-4 md:py-1.5">

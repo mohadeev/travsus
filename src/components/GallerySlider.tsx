@@ -87,11 +87,11 @@ export default function GallerySlider({
 								exit="exit"
 								className="absolute inset-0"
 							>
-								<Image
+								<img
 									src={currentImage || ''}
-									fill
+									// fill
 									alt="listing card gallery"
-									className={`object-cover ${imageClass}`}
+									className={`object-cover ${imageClass} h-full w-full`}
 									onLoad={() => setLoaded(true)}
 									sizes="(max-width: 1025px) 100vw, 300px"
 								/>

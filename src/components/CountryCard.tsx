@@ -54,8 +54,8 @@ const CountryCard: FC<CountryCardProps> = ({
 				<div
 					className={`aspect-h-3 aspect-w-3 ${size === 'small' ? 'w-[220px] sm:w-[250px] md:w-[280px]' : 'w-full'}`}
 				>
-					<Image
-						src={image || DEFAULT_FALLBACK_IMAGE}
+					<img
+						src={image}
 						alt={name}
 						fill
 						className="object-cover transition-transform duration-300 group-hover:scale-105"

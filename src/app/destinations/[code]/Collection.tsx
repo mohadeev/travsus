@@ -150,11 +150,11 @@ export default function CollectionsGrid({
 					layout === 'row' ? 'w-[220px] sm:w-[250px] md:w-[280px]' : 'w-full'
 				} ${layout === 'column' ? 'aspect-[1/1.1]' : 'aspect-[1/1.3]'}`}
 			>
-				<Image
+				<img
 					src={collection.imageUrl || '/placeholder.svg'}
 					alt={collection.title}
 					fill
-					className="object-cover transition-transform duration-300 group-hover:scale-105"
+					className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
 					sizes={
 						layout === 'row'
 							? '(max-width: 640px) 220px, (max-width: 768px) 250px, 280px'
