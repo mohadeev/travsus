@@ -9,12 +9,14 @@ import Heading2 from '@/shared/Heading2'
 // Default country codes to fetch
 const DEFAULT_COUNTRY_CODES = [
 	'MAR',
+
 	'FRA',
 	'ITA',
 	'JPN',
 	'PER',
 	'AUS',
 	'USA',
+	'THA',
 	'ARE',
 	'ZAF',
 	'GRC',
@@ -71,24 +73,7 @@ const LocationCardList: FC<LocationCardListProps> = ({
 	}
 
 	// Mock data for fallback
-	const mockLocations: CountryDataType[] = [
-		{
-			id: '1',
-			name: 'Morocco',
-			image:
-				'https://images.pexels.com/photos/3889986/pexels-photo-3889986.jpeg',
-			code3: 'MAR',
-			url: '/destinations/morocco',
-		},
-		{
-			id: '2',
-			name: 'Marrakech',
-			image:
-				'https://images.pexels.com/photos/4577793/pexels-photo-4577793.jpeg',
-			code3: 'MAR',
-			url: '/destinations/morocco/marrakech',
-		},
-	]
+	const mockLocations: CountryDataType[] = []
 
 	useEffect(() => {
 		const fetchLocations = async () => {

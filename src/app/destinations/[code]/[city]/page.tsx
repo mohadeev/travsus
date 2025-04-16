@@ -103,12 +103,15 @@ export default function DestinationPage({
 
 	return (
 		<>
-			<div className="mx-auto max-w-6xl" onClick={() => setShowModal(true)}>
+			<div className="mx-auto max-w-6xl">
 				{/* Navigation Bar with divider */}
 				<div className="px-4 md:px-0">
 					<nav className="relative flex items-center border-b border-black py-3">
 						{/* Scrollable navigation for all screen sizes */}
-						<div className="hide-scrollbar flex items-center overflow-x-auto">
+						<div
+							onClick={() => setShowModal(true)}
+							className="hide-scrollbar flex items-center overflow-x-auto"
+						>
 							{[
 								countryData?.name,
 								'Hotels',
@@ -170,7 +173,7 @@ export default function DestinationPage({
 						/>
 						<div className="absolute bottom-3 right-3 flex items-center gap-2 rounded-full border border-black bg-black px-3 py-1 md:bottom-4 md:right-4 md:px-4 md:py-1.5">
 							<Camera className="h-3 w-3 text-white md:h-4 md:w-4" />
-							<span className="text-xs text-white md:text-sm">2,072</span>
+							<span className="text-xs text-white md:text-sm">1</span>
 						</div>
 						<div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 transform space-x-1.5 md:bottom-4 md:space-x-2">
 							{Array.from({ length: 5 }).map((_, index) => (

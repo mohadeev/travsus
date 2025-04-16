@@ -52,9 +52,7 @@ type AccountFormValues = z.infer<typeof accountFormSchema>
 export function AccountSettings() {
 	const [isLoading, setIsLoading] = useState(false)
 	const [error, setError] = useState<string | null>(null)
-	const [avatarUrl, setAvatarUrl] = useState<string>(
-		'/placeholder.svg?height=80&width=80',
-	)
+	const [avatarUrl, setAvatarUrl] = useState<string>('/')
 
 	// Initialize form with empty values
 	const form = useForm<AccountFormValues>({

@@ -203,7 +203,8 @@ export default function CMSAdmin() {
 									<div>
 										<span>{result.name}</span>
 										<span className="bg-muted ml-2 rounded-full px-2 py-1 text-xs">
-											{result.type}
+											{result.type}{' '}
+											{result?.code3 ? `code3 : ${result?.code3}` : ''}
 										</span>
 									</div>
 								</CardTitle>

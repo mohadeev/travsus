@@ -101,9 +101,7 @@ export default function CollectionsGrid({
 							if (!firstPlace) return null
 
 							const imageUrl =
-								firstPlace.image?.url ||
-								firstPlace.image?.uploadFrom ||
-								'/placeholder.svg'
+								firstPlace.image?.url || firstPlace.image?.uploadFrom || '/'
 							const name = firstPlace.name || category
 
 							let description = ''

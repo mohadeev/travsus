@@ -8,6 +8,7 @@ const DEFAULT_COUNTRY_CODES = [
 	'ITA',
 	'JPN',
 	'PER',
+	'THA',
 	'AUS',
 	'USA',
 	'ARE',
