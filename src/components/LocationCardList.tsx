@@ -33,8 +33,8 @@ export interface LocationCardListProps {
 	itemClassName?: string
 	cardSize?: 'default' | 'small'
 	locationType: 'country' | 'city' | 'place'
-	countryCodes?: string[] // For countries
-	countryCode?: string // For cities within a country
+	countryDCodes?: string[] // For countries
+	countryId?: string // For cities within a country
 	cityName?: string // For places within a city by name
 	layout?: 'row' | 'column'
 	heading?: string
@@ -48,8 +48,8 @@ const LocationCardList: FC<LocationCardListProps> = ({
 	itemClassName = '',
 	cardSize = 'default',
 	locationType = 'country',
-	countryCodes = DEFAULT_COUNTRY_CODES,
-	countryCode,
+	countryDCodes = DEFAULT_COUNTRY_CODES,
+	countryId,
 	cityName,
 	layout = 'column',
 	heading = 'Popular Destinations',
@@ -86,11 +86,11 @@ const LocationCardList: FC<LocationCardListProps> = ({
 				// Determine which API endpoint to use based on location type
 				if (locationType === 'country') {
 					// Fetch countries
-					const codesParam = countryCodes.join(',')
+					const codesParam = countryDCodes.join(',')
 					url = `/api/countries?codes=${codesParam}&limit=${limit}`
-				} else if (locationType === 'city' && countryCode) {
+				} else if (locationType === 'city' && countryId) {
 					// Fetch cities for a specific country
-					url = `/api/cities?countryCode=${countryCode}&limit=${limit}`
+					url = `/api/cities?countryId=${countryId}&limit=${limit}`
 				} else if (locationType === 'place' && cityName) {
 					// Fetch places for a specific city by name
 					url = `/api/placesByCityName?name=${encodeURIComponent(cityName)}&limit=${limit}`
@@ -141,15 +141,15 @@ const LocationCardList: FC<LocationCardListProps> = ({
 					formattedLocations = cityList.map((city: any) => {
 						const translation = city.content?.translations?.[0]
 						const name = translation?.text || city.name || 'Unknown City'
-						const cityCountryCode = city.code3 || countryCode
+						const cityCountryId = city.code3 || countryId
 						const imageUrl = city.image?.url || city.image?.uploadFrom
 
 						return {
 							id: city.id,
 							name: name,
 							image: imageUrl,
-							code3: cityCountryCode,
-							url: `/destinations/${cityCountryCode?.toLowerCase()}/${name.toLowerCase().replace(/\s+/g, '-')}?lcId=${city.id}`,
+							code3: cityCountryId,
+							url: `/destinations/${cityCountryId?.toLowerCase()}/${name.toLowerCase().replace(/\s+/g, '-')}?lcId=${city.id}`,
 						}
 					})
 				}
@@ -172,13 +172,13 @@ const LocationCardList: FC<LocationCardListProps> = ({
 		}
 
 		fetchLocations()
-	}, [locationType, countryCodes, countryCode, cityName, limit])
+	}, [locationType, countryDCodes, countryId, cityName, limit])
 
 	// Customize heading based on location type
 	const getDefaultHeading = () => {
 		if (locationType === 'country') return 'Popular Countries'
 		if (locationType === 'city')
-			return countryCode ? `Cities in ${countryCode}` : 'Popular Cities'
+			return countryId ? `Cities in ${countryId}` : 'Popular Cities'
 		if (locationType === 'place')
 			return cityName ? `Places in ${cityName}` : 'Places to Visit'
 		return 'Popular Destinations'

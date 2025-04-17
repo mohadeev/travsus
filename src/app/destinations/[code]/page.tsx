@@ -227,10 +227,8 @@ export default function DestinationPage({
 				/>
 				<CountryCardList
 					locationType="city"
-					countryCode={code.toUpperCase()}
-					// locationType="country"
+					countryId={countryData?.id}
 					layout="row"
-					// countryCodes={['MAR', 'FRA', 'ESP']}
 					// heading="Popular Countries"
 				/>
 

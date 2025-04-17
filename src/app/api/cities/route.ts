@@ -4,26 +4,24 @@ import { NextResponse } from 'next/server'
 export async function GET(request: Request) {
 	try {
 		const { searchParams } = new URL(request.url)
-		const countryCode = searchParams.get('countryCode')
+		const countryId = searchParams.get('countryId')
 		const limit = searchParams.get('limit')
-			? parseInt(searchParams.get('limit')!)
+			? Number.parseInt(searchParams.get('limit')!)
 			: 16
 
-		if (!countryCode) {
+		if (!countryId) {
 			return NextResponse.json(
-				{ error: 'Country code is required' },
+				{ error: 'Country ID is required' },
 				{ status: 400 },
 			)
 		}
 
 		const prisma = placesClient
 
-		// Fetch cities directly by country code (code3)
+		// Fetch cities directly by countryId
 		const cities = await prisma.city.findMany({
 			where: {
-				country: {
-					code3: countryCode,
-				},
+				countryId: countryId, // Use countryId directly
 				// Only get cities that have an image
 				image: {
 					isNot: null,
@@ -56,7 +54,7 @@ export async function GET(request: Request) {
 		return NextResponse.json({
 			cities: citiesWithImages,
 			total: citiesWithImages.length,
-			countryCode,
+			countryId, // Return countryId instead of countryCode
 		})
 	} catch (error) {
 		console.error('Error fetching cities:', error)
