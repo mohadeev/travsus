@@ -8,22 +8,22 @@ import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 
 export default function HomeBanner() {
-	const [isVisible, setIsVisible] = useState(false)
+	const [isVisible, setIsVisible] = useState(true)
 
 	useEffect(() => {
 		setIsVisible(true)
 
-		const handleScroll = () => {
-			const scrollPosition = window.scrollY
-			if (scrollPosition > 100) {
-				setIsVisible(false)
-			} else {
-				setIsVisible(true)
-			}
-		}
+		// const handleScroll = () => {
+		// 	const scrollPosition = window.scrollY
+		// 	if (scrollPosition > 100) {
+		// 		setIsVisible(false)
+		// 	} else {
+		// 		setIsVisible(true)
+		// 	}
+		// }
 
-		window.addEventListener('scroll', handleScroll)
-		return () => window.removeEventListener('scroll', handleScroll)
+		// window.addEventListener('scroll', handleScroll)
+		// return () => window.removeEventListener('scroll', handleScroll)
 	}, [])
 
 	const handlePageChange = () => {
@@ -40,7 +40,7 @@ export default function HomeBanner() {
 
 	return (
 		<div className="relative mb-12 w-full">
-			<div className="relative z-20 flex min-h-[85vh] flex-col items-center justify-center px-4 text-center sm:px-6 lg:px-8">
+			<div className="relative z-20 flex min-h-[auto] flex-col items-center justify-center px-4 text-center sm:px-6 lg:px-8">
 				<div
 					className={cn(
 						'max-w-5xl transition-all duration-1000',
@@ -59,7 +59,7 @@ export default function HomeBanner() {
 				</div>
 
 				{/* Features */}
-				<div
+				{/* <div
 					className={cn(
 						'mb-12 flex w-full max-w-4xl flex-col items-center justify-center gap-8 transition-all delay-300 duration-1000 sm:flex-row',
 						isVisible
@@ -85,7 +85,7 @@ export default function HomeBanner() {
 						description="100% money back guarantee"
 						onClick={handlePageChange}
 					/>
-				</div>
+				</div> */}
 
 				{/* CTA Button */}
 				<div
