@@ -110,7 +110,7 @@ function ClientHomePage() {
 
 					{/* <SectionHero3 className="" /> */}
 				</div>
-				<div className="container bg-red p-0 px-0">
+				<div className="container p-0 px-0">
 					{/* SECTION 1 */}
 					{/* <div className="grid grid-cols-12 gap-6">
             <div className="col-span-12 flex sm:col-span-6 lg:col-span-4">
