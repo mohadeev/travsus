@@ -45,6 +45,7 @@ import Included from './Included'
 import { ChevronDown, ChevronRight, Heart } from 'lucide-react'
 import Link from 'next/link'
 import TourItineraryWithMap from './tour-itinerary-with-map'
+import TourHeader from './TourHeader'
 
 const MapComponent = dynamic(() => import('./tour-map'), {
 	ssr: false,
@@ -340,64 +341,7 @@ const ListingExperiencesDetailPage: FC<
 
 	return (
 		<>
-			<div className={`nc-ListingExperiencesDetailPage`}>
-				{/* <h2
-					className="my-10 text-2xl font-semibold sm:text-3xl lg:text-5xl"
-					style={{ fontWeight: '800' }}
-				>
-					{title}
-				</h2> */}
-				<div>
-					<div className="mt-2 flex flex-col px-0 py-2 text-xs md:mt-4 md:flex-row md:items-center md:justify-between md:px-0">
-						<div className="mb-1 flex items-center md:mb-0">
-							<Link href="/" className="text-black hover:underline">
-								TRAVSUS
-							</Link>
-							<ChevronRight className="mx-1 h-2.5 w-2.5 text-black" />
-							<Link
-								href="#"
-								className="flex items-center text-black hover:underline"
-							>
-								{city}
-								<ChevronRight className="mx-1 h-2.5 w-2.5 text-black" />
-								{title}
-								<ChevronDown className="ml-1 h-2.5 w-2.5" />
-							</Link>
-						</div>
-						<div className="text-black">
-							<span>
-								Plan Your Trip to {city}: Best {city} Travel Guide
-							</span>
-						</div>
-					</div>
-				</div>
-				<div className="mb-4 flex flex-row items-center justify-between md:mb-6">
-					{/* Morocco heading always on left */}
-					<h1 className="text-3xl font-extrabold text-black md:text-4xl">
-						{title}
-					</h1>
-
-					{/* Save button always on right */}
-					{/* <button
-						className="flex h-10 w-10 items-center justify-center rounded-full border border-black hover:bg-gray-50 md:h-12 md:w-12"
-						aria-label="Save"
-					>
-						<Heart className="h-5 w-5 md:h-6 md:w-6" />
-					</button> */}
-					<div className="flex items-center justify-between">
-						{/* <Badge
-							className="flex h-10 w-10 items-center justify-center rounded-full border border-black hover:bg-gray-50 md:h-12 md:w-12"
-							color="pink"
-							name="Travsus"
-						/> */}
-						<LikeSaveBtns
-							className="flex h-10 w-10 items-center justify-center rounded-full border border-black hover:bg-gray-50 md:h-12 md:w-12"
-							liked={liked}
-						/>
-					</div>
-				</div>
-			</div>
-
+			<TourHeader />
 			<ListingExperiencesDetailsImages />
 			<div className={`nc-ListingExperiencesDetailPage`}>
 				{/* MAIn */}
