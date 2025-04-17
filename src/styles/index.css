@@ -566,6 +566,9 @@
 	/* padding-left: 20px; */
 	/* padding-right: 20px; */
 }
+.text-black {
+	color: black;
+}
 
 .ListingDetailPage .nc-hero-field-focused {
 	@apply rounded-3xl shadow-2xl;
