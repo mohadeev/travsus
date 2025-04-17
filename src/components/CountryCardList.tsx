@@ -196,7 +196,7 @@ const LocationCardList: FC<LocationCardListProps> = ({
 	const displaySubheading = subHeading || getDefaultSubheading()
 
 	return (
-		<div>
+		<div className="my-15 px-4 md:px-0">
 			{/* Heading section */}
 			{loading ? (
 				<div className="mb-5">

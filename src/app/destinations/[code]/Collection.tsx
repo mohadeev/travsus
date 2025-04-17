@@ -1,6 +1,4 @@
 'use client'
-
-import Image from 'next/image'
 import Link from 'next/link'
 import { useState, useRef, useEffect } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
@@ -193,7 +191,7 @@ export default function CollectionsGrid({
 				}
 			`}</style>
 
-			<div className="container mx-auto px-4 py-8">
+			<div className="my-15 px-4 py-8 md:px-0 md:py-0">
 				<Heading2
 					heading={heading}
 					subHeading={

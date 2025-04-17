@@ -74,7 +74,7 @@ const SectionGridFilterCard: FC<SectionGridFilterCardProps> = ({
 		<div
 			ref={sectionRef}
 			id="experiences_container"
-			className={`nc-SectionGridFilterCard ${className}`}
+			className={`nc-SectionGridFilterCard px-4 md:px-0 ${className} my-15`}
 		>
 			{/* Custom CSS for hiding scrollbars */}
 			<style jsx global>{`
