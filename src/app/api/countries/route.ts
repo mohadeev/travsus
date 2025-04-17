@@ -9,6 +9,7 @@ const DEFAULT_COUNTRY_CODES = [
 	'JPN',
 	'PER',
 	'THA',
+	'VNM',
 	'AUS',
 	'USA',
 	'ARE',

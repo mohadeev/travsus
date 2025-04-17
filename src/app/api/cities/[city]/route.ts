@@ -288,6 +288,7 @@ export async function GET(
 			timezone: city.timezone,
 		}
 
+		console.log("",)
 		// Return the data without cache control headers
 		return NextResponse.json(cityData)
 	} catch (error) {

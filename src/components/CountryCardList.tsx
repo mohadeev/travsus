@@ -9,12 +9,12 @@ import Heading2 from '@/shared/Heading2'
 // Default country codes to fetch
 const DEFAULT_COUNTRY_CODES = [
 	'MAR',
-
 	'FRA',
 	'ITA',
 	'JPN',
 	'PER',
 	'AUS',
+	'VNM',
 	'USA',
 	'THA',
 	'ARE',
