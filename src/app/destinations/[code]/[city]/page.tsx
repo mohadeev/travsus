@@ -11,14 +11,18 @@ import CountryCardList from '@/components/LocationCardList'
 import FeatureNotificationForm from '@/app/feature-notification-form'
 import SectionGridFilterCard from '@/app/(experience-listings)/SectionGridFilterCard'
 import CollectionsGrid from '@/components/CollectionsGrid'
+import ReadeMore from './ReadeMore'
 
 export default function DestinationPage({
 	params,
+	searchParams,
 }: {
 	params: { city: string }
+	searchParams: any
 }) {
 	// Extract the country code from the URL parameters
 	const { city } = params
+	console.log('searchParams: ', searchParams)
 
 	// State for country data, loading state, and errors
 	const [countryData, setCountryData] = useState(null)
@@ -34,7 +38,7 @@ export default function DestinationPage({
 		const fetchCountryData = async () => {
 			try {
 				// Make sure the URL is correct
-				const apiUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/api/cities/${city}`
+				const apiUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/api/cities/${searchParams.lcId}`
 				console.log('Fetching from:', apiUrl)
 
 				const res = await fetch(apiUrl, {
@@ -211,14 +215,7 @@ export default function DestinationPage({
 						</button>
 					</div>
 
-					<div className="max-w-3xl">
-						<p className="mb-0.5 text-sm leading-relaxed text-black md:text-base">
-							{countryData?.description}
-						</p>
-						<button className="flex items-center text-sm font-medium text-black md:text-base">
-							Read more <ChevronDown className="ml-1 h-4 w-4 md:h-5 md:w-5" />
-						</button>
-					</div>
+					<ReadeMore countryData={countryData} />
 				</div>
 				{/* <CollectionsGrid layout={'row'} /> */}
 				<CollectionsGrid

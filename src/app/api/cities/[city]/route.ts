@@ -46,139 +46,20 @@ export async function GET(
 	{ params }: { params: { city: string } },
 ) {
 	try {
-		const cityName = params.city
-		console.log('Searching for city with name:', cityName)
+		const cityId = params.city
+		console.log('Searching for city with ID:', cityId)
 
-		if (!cityName) {
+		if (!cityId) {
 			return NextResponse.json(
-				{ error: 'City name is required' },
+				{ error: 'City ID is required' },
 				{ status: 400 },
 			)
 		}
 
-		// Normalize the search term - lowercase, trim, and handle URL encoding
-		const normalizedCityName = cityName.toLowerCase().trim()
-
-		// Create variations of the city name to improve matching
-		const cityVariations = [
-			normalizedCityName, // Original normalized name
-			normalizedCityName.replace(/-/g, ' '), // Replace hyphens with spaces
-			normalizedCityName.replace(/-/g, ''), // Remove hyphens completely
-			decodeURIComponent(normalizedCityName), // URL decoded version
-			decodeURIComponent(normalizedCityName).replace(/-/g, ' '), // URL decoded with spaces
-		]
-
-		// Remove duplicates from variations
-		const uniqueVariations = [...new Set(cityVariations)]
-		console.log('Searching for city variations:', uniqueVariations)
-
-		// First, try to find an exact match with any of the variations
-		const exactMatchTranslations = await placesClient.translatedText.findMany({
+		// Find the city directly by ID
+		const city = await placesClient.city.findUnique({
 			where: {
-				OR: uniqueVariations.map((variation) => ({
-					text: { equals: variation, mode: 'insensitive' },
-				})),
-				type: 'city',
-			},
-			select: { contentId: true, text: true },
-		})
-
-		// If we have exact matches, use those
-		let contentIds = exactMatchTranslations.map((t) => t.contentId)
-
-		// If no exact matches, try to find matches that contain any part of the compound name
-		if (contentIds.length === 0) {
-			// For compound names, split by hyphen or space and search for each part
-			const nameParts = decodeURIComponent(normalizedCityName)
-				.replace(/-/g, ' ')
-				.split(' ')
-				.filter((part) => part.length > 2) // Only use parts with more than 2 characters
-
-			if (nameParts.length > 1) {
-				console.log('Searching for compound name parts:', nameParts)
-
-				// Search for cities that contain all parts of the compound name
-				const compoundMatches = await placesClient.translatedText.findMany({
-					where: {
-						AND: nameParts.map((part) => ({
-							text: { contains: part, mode: 'insensitive' },
-						})),
-						type: 'city',
-					},
-					select: { contentId: true, text: true },
-				})
-
-				contentIds = compoundMatches.map((t) => t.contentId)
-			}
-		}
-
-		// If still no matches, try starts with for each variation
-		if (contentIds.length === 0) {
-			const startsWithTranslations = await placesClient.translatedText.findMany(
-				{
-					where: {
-						OR: uniqueVariations.map((variation) => ({
-							text: { startsWith: variation, mode: 'insensitive' },
-						})),
-						type: 'city',
-					},
-					select: { contentId: true, text: true },
-				},
-			)
-
-			contentIds = startsWithTranslations.map((t) => t.contentId)
-		}
-
-		// If still no matches, fall back to contains search but with stricter matching
-		if (contentIds.length === 0) {
-			// Get all potential matches
-			const containsTranslations = await placesClient.translatedText.findMany({
-				where: {
-					OR: uniqueVariations.map((variation) => ({
-						text: { contains: variation, mode: 'insensitive' },
-					})),
-					type: 'city',
-				},
-				select: { contentId: true, text: true },
-				take: 10, // Get more results to filter
-			})
-
-			// Filter results to prioritize better matches
-			// Sort by relevance - shorter names are more likely to be exact matches
-			const sortedTranslations = containsTranslations.sort((a, b) => {
-				// Prioritize matches that contain more of the search terms
-				const aLower = a.text.toLowerCase()
-				const bLower = b.text.toLowerCase()
-
-				// Count how many variations are found in each text
-				const aMatches = uniqueVariations.filter((v) =>
-					aLower.includes(v),
-				).length
-				const bMatches = uniqueVariations.filter((v) =>
-					bLower.includes(v),
-				).length
-
-				if (aMatches !== bMatches) {
-					return bMatches - aMatches // Higher match count first
-				}
-
-				// If same match count, prefer shorter names
-				return a.text.length - b.text.length
-			})
-
-			contentIds = sortedTranslations.map((t) => t.contentId)
-		}
-
-		if (contentIds.length === 0) {
-			return NextResponse.json({ error: 'City not found' }, { status: 404 })
-		}
-
-		console.log('here')
-
-		// Find the city with matching content ID
-		const city = await placesClient.city.findFirst({
-			where: {
-				contentId: { in: contentIds },
+				id: cityId,
 			},
 			include: {
 				content: {
@@ -191,11 +72,9 @@ export async function GET(
 					},
 				},
 				country: {
-					// Use only select instead of both include and select
 					select: {
 						code: true,
 						code3: true,
-						// Include content and its translations
 						content: {
 							include: {
 								translations: {
@@ -288,7 +167,6 @@ export async function GET(
 			timezone: city.timezone,
 		}
 
-		console.log("",)
 		// Return the data without cache control headers
 		return NextResponse.json(cityData)
 	} catch (error) {

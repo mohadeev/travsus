@@ -135,14 +135,9 @@ function ClientHomePage() {
 
 					{/* <SectionGridFeaturePlaces /> */}
 					<SectionGridFilterCard layout="row" />
-					{/* <CountryCardList layout="row" /> */}
 					<CountryCardList
 						locationType="country"
-						// countryCodes={['MAR', 'FRA', 'ESP']}
-						// locationType="country"
 						layout="row"
-						// countryCodes={['MAR', 'FRA', 'ESP']}
-						// heading="Popular Countries"
 					/>
 
 					<CountryCardList

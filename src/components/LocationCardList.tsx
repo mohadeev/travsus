@@ -122,7 +122,7 @@ const LocationCardList: FC<LocationCardListProps> = ({
 							name: name,
 							image: imageUrl,
 							code3: country.code3,
-							url: `/destinations/${country.code3.toLowerCase()}`,
+							url: `/destinations/${name}?lcId=${country?.id}`,
 						}
 					})
 				} else if (locationType === 'place' && cityName && data.data) {
@@ -149,7 +149,7 @@ const LocationCardList: FC<LocationCardListProps> = ({
 							name: name,
 							image: imageUrl,
 							code3: cityCountryCode,
-							url: `/destinations/${cityCountryCode?.toLowerCase()}/${name.toLowerCase().replace(/\s+/g, '-')}`,
+							url: `/destinations/${cityCountryCode?.toLowerCase()}/${name.toLowerCase().replace(/\s+/g, '-')}?lcId=${city.id}`,
 						}
 					})
 				}
