@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import CountryCardList from '@/components/CountryCardList'
+import CountryCardList from '@/components/LocationCardList'
 import type { CountryDataType } from '@/components/CountryCard'
 
 export default function DestinationsPage() {

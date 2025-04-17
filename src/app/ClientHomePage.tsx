@@ -6,7 +6,7 @@ import SectionGridFilterCard from './(experience-listings)/SectionGridFilterCard
 import { JsonLd } from 'react-schemaorg'
 import Home from './test/page'
 import Roulette from '@/components/Roulette/Roulette'
-import CountryCardList from '@/components/CountryCardList'
+import CountryCardList from '@/components/LocationCardList'
 
 function ClientHomePage() {
 	return (

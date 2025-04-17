@@ -14,6 +14,7 @@ export interface SectionGridFilterCardProps {
 	className?: string
 	data?: StayDataType[]
 	layout?: 'row' | 'column'
+	showArrowsIconsInPhone?: boolean // New parameter - opposite of hideArrowsIconsInPhone
 }
 
 const DEMO_DATA: ExperiencesDataType[] = DEMO_EXPERIENCES_LISTINGS.filter(
@@ -24,6 +25,7 @@ const SectionGridFilterCard: FC<SectionGridFilterCardProps> = ({
 	className = '',
 	data = DEMO_DATA,
 	layout = 'column',
+	showArrowsIconsInPhone = false, // Default to false - arrows hidden on mobile by default
 }) => {
 	const [servicesData, setServicesData] = useState([])
 	const [loading, setLoading] = useState(true)
@@ -74,7 +76,7 @@ const SectionGridFilterCard: FC<SectionGridFilterCardProps> = ({
 		<div
 			ref={sectionRef}
 			id="experiences_container"
-			className={`nc-SectionGridFilterCard px-4 md:px-0 ${className} my-15`}
+			className={`nc-SectionGridFilterCard my-10 px-4 md:px-0 ${className}`}
 		>
 			{/* Custom CSS for hiding scrollbars */}
 			<style jsx global>{`
@@ -124,7 +126,7 @@ const SectionGridFilterCard: FC<SectionGridFilterCardProps> = ({
 					{!loading && (
 						<button
 							onClick={scrollLeft}
-							className="absolute left-0 top-1/3 z-10 flex h-7 w-7 -translate-x-1/2 -translate-y-1/2 transform items-center justify-center rounded-full border border-black bg-white transition-colors duration-200 hover:bg-black hover:text-white focus:outline-none sm:h-8 sm:w-8 md:h-10 md:w-10"
+							className={`absolute left-0 top-1/3 z-10 ${showArrowsIconsInPhone ? 'flex' : 'hidden md:flex'} h-7 w-7 -translate-x-1/2 -translate-y-1/2 transform items-center justify-center rounded-full border border-black bg-white transition-colors duration-200 hover:bg-black hover:text-white focus:outline-none sm:h-8 sm:w-8 md:h-10 md:w-10`}
 							aria-label="Scroll left"
 						>
 							<ChevronLeft className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5" />
@@ -149,7 +151,7 @@ const SectionGridFilterCard: FC<SectionGridFilterCardProps> = ({
 					{!loading && (
 						<button
 							onClick={scrollRight}
-							className="absolute right-0 top-1/3 z-10 flex h-7 w-7 -translate-y-1/2 translate-x-1/2 transform items-center justify-center rounded-full border border-black bg-white transition-colors duration-200 hover:bg-black hover:text-white focus:outline-none sm:h-8 sm:w-8 md:h-10 md:w-10"
+							className={`absolute right-0 top-1/3 z-10 ${showArrowsIconsInPhone ? 'flex' : 'hidden md:flex'} h-7 w-7 -translate-y-1/2 translate-x-1/2 transform items-center justify-center rounded-full border border-black bg-white transition-colors duration-200 hover:bg-black hover:text-white focus:outline-none sm:h-8 sm:w-8 md:h-10 md:w-10`}
 							aria-label="Scroll right"
 						>
 							<ChevronRight className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5" />

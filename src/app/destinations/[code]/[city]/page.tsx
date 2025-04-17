@@ -5,7 +5,7 @@ import { Camera, Heart, ChevronDown, ChevronRight } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 // import CollectionsGrid from './Collection'
-import CountryCardList from '@/components/CountryCardList'
+import CountryCardList from '@/components/LocationCardList'
 
 // import SectionGridFilterCard from '../(experience-listings)/SectionGridFilterCard'
 import FeatureNotificationForm from '@/app/feature-notification-form'

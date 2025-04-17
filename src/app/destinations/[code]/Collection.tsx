@@ -18,6 +18,7 @@ interface CollectionsGridProps {
 	heading?: string
 	subHeading?: string
 	limit?: number
+	showArrowsIconsInPhone?: boolean // New parameter - opposite of hideArrowsIconsInPhone
 }
 
 export default function CollectionsGrid({
@@ -27,6 +28,7 @@ export default function CollectionsGrid({
 	heading = 'Browse collections',
 	subHeading = 'Get ideas on what to do, see, and eat',
 	limit = 16,
+	showArrowsIconsInPhone = false, // Default to false - arrows hidden on mobile by default
 }: CollectionsGridProps) {
 	const scrollContainerRef = useRef<HTMLDivElement>(null)
 	const [collections, setCollections] = useState<Collection[]>([])
@@ -191,7 +193,7 @@ export default function CollectionsGrid({
 				}
 			`}</style>
 
-			<div className="my-15 px-4 py-8 md:px-0 md:py-0">
+			<div className="my-10 px-4 md:px-0">
 				<Heading2
 					heading={heading}
 					subHeading={
@@ -229,7 +231,7 @@ export default function CollectionsGrid({
 						{/* Left navigation arrow */}
 						<button
 							onClick={scrollLeft}
-							className="absolute left-0 top-1/2 z-10 flex h-7 w-7 -translate-x-1/2 -translate-y-1/2 transform items-center justify-center rounded-full border border-black bg-white transition-colors duration-200 hover:bg-black hover:text-white focus:outline-none sm:h-8 sm:w-8 md:h-10 md:w-10"
+							className={`absolute left-0 top-1/2 z-10 ${showArrowsIconsInPhone ? 'flex' : 'hidden md:flex'} h-7 w-7 -translate-x-1/2 -translate-y-1/2 transform items-center justify-center rounded-full border border-black bg-white transition-colors duration-200 hover:bg-black hover:text-white focus:outline-none sm:h-8 sm:w-8 md:h-10 md:w-10`}
 							aria-label="Scroll left"
 						>
 							<ChevronLeft className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5" />
@@ -250,7 +252,7 @@ export default function CollectionsGrid({
 						{/* Right navigation arrow */}
 						<button
 							onClick={scrollRight}
-							className="absolute right-0 top-1/2 z-10 flex h-7 w-7 -translate-y-1/2 translate-x-1/2 transform items-center justify-center rounded-full border border-black bg-white transition-colors duration-200 hover:bg-black hover:text-white focus:outline-none sm:h-8 sm:w-8 md:h-10 md:w-10"
+							className={`absolute right-0 top-1/2 z-10 ${showArrowsIconsInPhone ? 'flex' : 'hidden md:flex'} h-7 w-7 -translate-y-1/2 translate-x-1/2 transform items-center justify-center rounded-full border border-black bg-white transition-colors duration-200 hover:bg-black hover:text-white focus:outline-none sm:h-8 sm:w-8 md:h-10 md:w-10`}
 							aria-label="Scroll right"
 						>
 							<ChevronRight className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5" />
