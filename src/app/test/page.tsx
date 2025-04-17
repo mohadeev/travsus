@@ -39,7 +39,7 @@ export default function HomeBanner() {
 	}
 
 	return (
-		<div className="relative mb-12 w-full">
+		<div className="relative w-full py-12">
 			<div className="relative z-20 flex min-h-[auto] flex-col items-center justify-center px-4 text-center sm:px-6 lg:px-8">
 				<div
 					className={cn(
@@ -49,11 +49,11 @@ export default function HomeBanner() {
 							: 'translate-y-10 opacity-0',
 					)}
 				>
-					<h1 className="font-serif mb-6 text-4xl font-bold tracking-tight text-black sm:text-5xl md:text-6xl lg:text-[80px] lg:font-extrabold">
+					<h1 className="font-serif mb-6 text-7xl font-extrabold tracking-tight text-black sm:text-5xl md:text-6xl lg:text-[80px] lg:font-extrabold">
 						Travel with <span className="text-primary">Ultimate</span>{' '}
 						Flexibility
 					</h1>
-					<p className="mx-auto mb-10 max-w-2xl text-lg text-gray-700 sm:text-xl md:text-2xl">
+					<p className="mx-auto mb-10 max-w-2xl text-lg text-black sm:text-xl md:text-2xl">
 						Book, Cancel, Refund - Anytime, Anywhere in the World.
 					</p>
 				</div>
