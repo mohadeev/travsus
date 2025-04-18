@@ -76,7 +76,7 @@ export default function DeleteAccountPage() {
 	}
 
 	const handleStayWithUs = () => {
-		router.push('/account')
+		router.push('/account-settings')
 		toast({
 			title: "We're glad you're staying!",
 			description: 'Thank you for continuing your journey with us.',
@@ -147,7 +147,10 @@ export default function DeleteAccountPage() {
 		<div className="mx-auto max-w-4xl px-6 py-8">
 			{/* Breadcrumb */}
 			<div className="mb-6 flex items-center text-sm">
-				<Link href="/account" className="text-gray-600 hover:underline">
+				<Link
+					href="/account-settings"
+					className="text-gray-600 hover:underline"
+				>
 					Account
 				</Link>
 				<ChevronRight className="mx-2 h-4 w-4 text-gray-500" />

@@ -16,26 +16,24 @@ import basedGetUrlRequestLogedIn from '@/app/utils/basedGetUrlRequestLogedIn'
 import ContainerExperiencesCardSkeleton from '@/components/ContainerExperiencesCardSkeleton'
 
 const AccountSavelists = () => {
-	let [categories] = useState(['Stays', 'Experiences', 'Cars']) 
+	let [categories] = useState(['Stays', 'Experiences', 'Cars'])
 	const [savedList, setSavedList] = useState([])
 	const { data: session, status } = useSession()
 	// const dispatch = useDispatch()
-	const [loading, setLoading] = useState(true);
-
+	const [loading, setLoading] = useState(true)
 
 	useEffect(() => {
 		if (status === 'authenticated' && session?.user) {
 			;(async () => {
-				basedGetUrlRequestLogedIn('/api/user/get/account-savelists').then(
-					(res) => { 
-						if(res?.list){
-							setSavedList(res?.list) 
-							setLoading(false);
-						}
-				console.log('res', res)
-						
-					},
-				)
+				basedGetUrlRequestLogedIn(
+					'/api/user/get/account-settings-savelists',
+				).then((res) => {
+					if (res?.list) {
+						setSavedList(res?.list)
+						setLoading(false)
+					}
+					console.log('res', res)
+				})
 			})()
 		} else if (status === 'unauthenticated') {
 			// dispatch(clearUser())
@@ -83,13 +81,13 @@ const AccountSavelists = () => {
 							</Tab.Panel> */}
 							<Tab.Panel className="mt-8">
 								<div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 lg:grid-cols-3 xl:grid-cols-4">
-									{savedList?.filter((_, i) => i < 8).map(
-										(stay:any) => (
+									{savedList
+										?.filter((_, i) => i < 8)
+										.map((stay: any) => (
 											<ExperiencesCard key={stay?.id} data={stay} />
-										),
-									)}
-								{loading && 	<ContainerExperiencesCardSkeleton />}
-								</div> 
+										))}
+									{loading && <ContainerExperiencesCardSkeleton />}
+								</div>
 								<div className="mt-11 flex items-center justify-center">
 									<ButtonSecondary>Show me more</ButtonSecondary>
 								</div>

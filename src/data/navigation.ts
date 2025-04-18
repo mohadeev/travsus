@@ -155,7 +155,7 @@ const templatesChildrenMenus: NavItemType[] = [
 	{ id: ncNanoId(), href: '/pay-done', name: 'Pay done' },
 	//
 	{ id: ncNanoId(), href: '/author', name: 'Author page' },
-	{ id: ncNanoId(), href: '/account', name: 'Account page' },
+	{ id: ncNanoId(), href: '/account-settings', name: 'Account page' },
 	//
 	{
 		id: ncNanoId(),

@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { ChevronRight, Shield } from 'lucide-react'
-import AccountPass from '@/components/AccountPass'
+import AccountPass from '@/components/account-settingsPass'
 
 export default function LoginAndSecurityPage() {
 	const [activeTab, setActiveTab] = useState('login')
@@ -13,7 +13,10 @@ export default function LoginAndSecurityPage() {
 		<div className="mx-auto max-w-4xl px-6 py-8">
 			{/* Breadcrumb */}
 			<div className="mb-6 flex items-center text-sm">
-				<Link href="/account" className="text-gray-600 hover:underline">
+				<Link
+					href="/account-settings"
+					className="text-gray-600 hover:underline"
+				>
 					Account
 				</Link>
 				<ChevronRight className="mx-2 h-4 w-4 text-gray-500" />
@@ -86,7 +89,7 @@ export default function LoginAndSecurityPage() {
 									<h3 className="font-medium">Deactivate your account</h3>
 								</div>
 								<Link
-									href="/account-delete/reasons"
+									href="/account-settings-delete/reasons"
 									className="font-medium text-red-500 underline"
 								>
 									Deactivate
