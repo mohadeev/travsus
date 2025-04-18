@@ -46,9 +46,11 @@ const RenderSidebar: FC<RenderSidebarProps> = ({}) => {
 	const { guests, lineItems, accommodation, transport, bookOwnHotels } = booking
 
 	const totalGuests: number = guests?.guestAdults + guests?.guestChildren
-	const { name: title, price }: any = useSelector(
-		(state: any) => state.creatingServiceSlice.service,
-	)
+	const {
+		name: title,
+		price,
+		days,
+	}: any = useSelector((state: any) => state.creatingServiceSlice.service)
 	const filteredLineItems = lineItems?.filter(
 		({ includeInTotal }: any) => includeInTotal === true,
 	)
@@ -196,6 +198,7 @@ const RenderSidebar: FC<RenderSidebarProps> = ({}) => {
 							onChange={handleDateChange}
 							value={booking.selectedDate}
 							isFlashing={isShaking}
+							duration={days?.length}
 						/>
 						<div className="w-full border-b border-neutral-200 dark:border-neutral-700"></div>
 						{isNotInitiated && (
