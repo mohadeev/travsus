@@ -1,3 +1,4 @@
+"use client"
 import Link from 'next/link'
 import {
 	Bell,
@@ -12,6 +13,7 @@ import {
 	MapPin,
 } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
+import { useSelector } from 'react-redux'
 
 // Define the type for our settings items
 type SettingItem = {
@@ -89,6 +91,10 @@ export default function AccountPage() {
 		},
 	]
 
+	const { userData } = useSelector((state: any) => state.userReducer)
+	const userEmail = userData?.email || 'user@example.com'
+	const userName =
+		userData?.name || userData?.accountData?.firstname || 'traveler'
 	return (
 		<div className="flex min-h-screen flex-col">
 			<main className="mx-auto max-w-6xl flex-1 px-6 py-8 md:px-20">
@@ -96,7 +102,9 @@ export default function AccountPage() {
 				<div className="mb-8">
 					<h1 className="mb-1 text-3xl font-semibold">Account</h1>
 					<div className="flex items-center text-gray-700">
-						<span>Mohamed Skendoul, skendoulmohamed@gmail.com</span>
+						<span>
+							{userName}, {userEmail}
+						</span>
 						<span className="mx-2">·</span>
 						<Link href="#" className="font-medium text-black underline">
 							Go to profile
