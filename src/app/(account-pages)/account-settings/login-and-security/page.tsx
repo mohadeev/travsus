@@ -3,7 +3,8 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { ChevronRight, Shield } from 'lucide-react'
-import AccountPass from '@/components/account-settingsPass'
+import AccountPass from '@/components/AccountPass'
+// import AccountPass from '@/components/account-settingsPass'
 
 export default function LoginAndSecurityPage() {
 	const [activeTab, setActiveTab] = useState('login')

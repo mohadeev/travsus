@@ -43,7 +43,7 @@ const NAV: NavItem[] = [
 	},
 	{
 		name: 'Log in',
-		link: '/account-settings-settings',
+		link: '/account-settings',
 		icon: UserCircleIcon,
 		authRequired: true,
 	},
@@ -119,7 +119,7 @@ const FooterNav = () => {
 		if (item.name === 'Log in' && isAuthenticated) {
 			return (
 				<div
-					onMouseDown={() => Router.push('/account-settings-settings')}
+					onMouseDown={() => Router.push('/account-settings')}
 					key={index}
 					className={`flex flex-col items-center justify-between text-neutral-500 dark:text-neutral-300/90`}
 				>
