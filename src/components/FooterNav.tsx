@@ -10,7 +10,7 @@ import { PathName } from '@/routers/types'
 import MenuBar from '@/shared/MenuBar'
 import isInViewport from '@/utils/isInViewport'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { House } from '@phosphor-icons/react'
 import { useSession } from 'next-auth/react'
 import { useAuthAction } from '@/app/hooks/useAuthAction'
@@ -43,7 +43,7 @@ const NAV: NavItem[] = [
 	},
 	{
 		name: 'Log in',
-		link: '/account',
+		link: '/account-settings',
 		icon: UserCircleIcon,
 		authRequired: true,
 	},
@@ -56,6 +56,7 @@ const NAV: NavItem[] = [
 const FooterNav = () => {
 	const containerRef = useRef<HTMLDivElement>(null)
 	const pathname = usePathname()
+	const Router = useRouter()
 	const { data: session } = useSession()
 	const user = useSelector((state: any) => state.userReducer.userData)
 	const profileImageUrl = user?.profileImage?.url
@@ -118,6 +119,7 @@ const FooterNav = () => {
 		if (item.name === 'Log in' && isAuthenticated) {
 			return (
 				<div
+					onMouseDown={() => Router.push('/account-settings')}
 					key={index}
 					className={`flex flex-col items-center justify-between text-neutral-500 dark:text-neutral-300/90`}
 				>
