@@ -6,7 +6,8 @@ import SectionGridFilterCard from './(experience-listings)/SectionGridFilterCard
 import { JsonLd } from 'react-schemaorg'
 import Home from './test/page'
 import Roulette from '@/components/Roulette/Roulette'
-import CountryCardList from '@/components/LocationCardList'
+import CountryCardList from '@/components/ItemsCardList'
+import ItemsCardList from '@/components/ItemsCardList'
 
 function ClientHomePage() {
 	return (
@@ -134,17 +135,23 @@ function ClientHomePage() {
           </div> */}
 
 					{/* <SectionGridFeaturePlaces /> */}
-					<SectionGridFilterCard layout="row" />
+					{/* <SectionGridFilterCard layout="row" /> */}
+					<ItemsCardList
+						locationType="tour"
+						heading="Popular Tours"
+						subHeading="Discover exciting tours and experiences"
+						currentPage={1}
+						layout="row"
+					/>
 					<CountryCardList locationType="country" layout="row" />
 
 					<CountryCardList
 						locationType="city"
-						countryCode="67e120b734623c9e568da348"
-						// locationType="country"
+						countryId="67e120b734623c9e568da348"
 						layout="row"
-						// countryCodes={['MAR', 'FRA', 'ESP']}
-						// heading="Popular Countries"
+						heading="Popular Cities"
 					/>
+
 					<CountryCardList
 						locationType="place"
 						cityName="Marrakech"

@@ -5,35 +5,16 @@ import CountryCard, { type CountryDataType } from './CountryCard'
 import ContainerExperiencesCardSkeleton from './ContainerExperiencesCardSkeleton'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import Heading2 from '@/shared/Heading2'
+import ExperiencesCard from '@/components/ExperiencesCard'
+import allToursFetch from '@/utils/allToursFetch'
 
 // Default country codes to fetch
-const DEFAULT_COUNTRY_CODES = [
-	'MAR',
-	'FRA',
-	'ITA',
-	'JPN',
-	'PER',
-	'AUS',
-	'VNM',
-	'USA',
-	'THA',
-	'ARE',
-	'ZAF',
-	'GRC',
-	'TUR',
-	'PYF',
-	'ESP',
-	'EGY',
-	'CAN',
-	'IDN',
-]
 
-export interface LocationCardListProps {
+export interface ItemsCardListProps {
 	className?: string
 	itemClassName?: string
 	cardSize?: 'default' | 'small'
-	locationType: 'country' | 'city' | 'place'
-	countryDCodes?: string[] // For countries
+	locationType: 'country' | 'city' | 'place' | 'tour'
 	countryId?: string // For cities within a country
 	cityName?: string // For places within a city by name
 	layout?: 'row' | 'column'
@@ -41,14 +22,14 @@ export interface LocationCardListProps {
 	subHeading?: string
 	limit?: number
 	showArrowsIconsInPhone?: boolean // New parameter - opposite of hideArrowsIconsInPhone
+	currentPage?: number // For tour pagination
 }
 
-const LocationCardList: FC<LocationCardListProps> = ({
+const ItemsCardList: FC<ItemsCardListProps> = ({
 	className = '',
 	itemClassName = '',
 	cardSize = 'default',
 	locationType = 'country',
-	countryDCodes = DEFAULT_COUNTRY_CODES,
 	countryId,
 	cityName,
 	layout = 'column',
@@ -56,8 +37,11 @@ const LocationCardList: FC<LocationCardListProps> = ({
 	subHeading = 'Explore top destinations around the world',
 	limit = 16,
 	showArrowsIconsInPhone = false, // Default to false - arrows hidden on mobile by default
+	currentPage = 1, // Default to first page for tours
 }) => {
 	const [locations, setLocations] = useState<CountryDataType[]>([])
+	const [toursData, setToursData] = useState<any[]>([])
+	const [totalPages, setTotalPages] = useState(1)
 	const [loading, setLoading] = useState(true)
 	const [error, setError] = useState<string | null>(null)
 	const scrollContainerRef = useRef<HTMLDivElement>(null)
@@ -81,13 +65,33 @@ const LocationCardList: FC<LocationCardListProps> = ({
 		const fetchLocations = async () => {
 			try {
 				setLoading(true)
-				let url = ''
 
+				// Handle tour type separately
+				if (locationType === 'tour') {
+					try {
+						const data = await allToursFetch(currentPage)
+						if (data?.allToursData) {
+							setToursData(data.allToursData)
+							setTotalPages(data.totalPages)
+						} else {
+							setError('No tours found')
+							setToursData([])
+						}
+					} catch (err) {
+						console.error('Error fetching tours:', err)
+						setError('Failed to load tours')
+						setToursData([])
+					} finally {
+						setLoading(false)
+					}
+					return // Exit early for tours
+				}
+
+				let url = ''
 				// Determine which API endpoint to use based on location type
 				if (locationType === 'country') {
 					// Fetch countries
-					const codesParam = countryDCodes.join(',')
-					url = `/api/countries?codes=${codesParam}&limit=${limit}`
+					url = `/api/countries?codes=${[]}&limit=${limit}`
 				} else if (locationType === 'city' && countryId) {
 					// Fetch cities for a specific country
 					url = `/api/cities?countryId=${countryId}&limit=${limit}`
@@ -106,6 +110,7 @@ const LocationCardList: FC<LocationCardListProps> = ({
 				}
 
 				const data = await response.json()
+				console.log(data)
 
 				// Process the data based on the location type and API response format
 				let formattedLocations: CountryDataType[] = []
@@ -172,7 +177,7 @@ const LocationCardList: FC<LocationCardListProps> = ({
 		}
 
 		fetchLocations()
-	}, [locationType, countryDCodes, countryId, cityName, limit])
+	}, [locationType, countryId, cityName, limit, currentPage])
 
 	// Customize heading based on location type
 	const getDefaultHeading = () => {
@@ -181,6 +186,7 @@ const LocationCardList: FC<LocationCardListProps> = ({
 			return countryId ? `Cities in ${countryId}` : 'Popular Cities'
 		if (locationType === 'place')
 			return cityName ? `Places in ${cityName}` : 'Places to Visit'
+		if (locationType === 'tour') return 'Popular Tours'
 		return 'Popular Destinations'
 	}
 
@@ -190,6 +196,8 @@ const LocationCardList: FC<LocationCardListProps> = ({
 			return 'Explore top countries around the world'
 		if (locationType === 'city') return 'Discover amazing cities to visit'
 		if (locationType === 'place') return 'Must-see attractions and experiences'
+		if (locationType === 'tour')
+			return 'Discover exciting tours and experiences'
 		return 'Explore top destinations around the world'
 	}
 
@@ -216,6 +224,82 @@ const LocationCardList: FC<LocationCardListProps> = ({
 				>
 					<ContainerExperiencesCardSkeleton />
 				</div>
+			) : locationType === 'tour' ? (
+				// Tours content
+				toursData.length === 0 ? (
+					<div className="rounded-lg bg-amber-50 p-4 text-center text-amber-700 dark:bg-amber-900/20 dark:text-amber-400">
+						<p>No tours found</p>
+					</div>
+				) : (
+					<>
+						{/* Custom CSS for hiding scrollbars */}
+						<style jsx global>{`
+							.hide-scrollbar::-webkit-scrollbar {
+								display: none;
+							}
+							.hide-scrollbar {
+								-ms-overflow-style: none;
+								scrollbar-width: none;
+							}
+						`}</style>
+
+						{layout === 'column' ? (
+							// Column layout - grid view for tours
+							<div
+								className={`grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 ${className}`}
+							>
+								{toursData.map((stay) => (
+									<ExperiencesCard key={stay?.id} data={stay} />
+								))}
+							</div>
+						) : (
+							// Row layout - horizontal scrolling with navigation arrows for tours
+							<div className="relative">
+								{/* Left navigation arrow */}
+								<button
+									onClick={scrollLeft}
+									className={`absolute left-0 top-1/3 z-10 ${showArrowsIconsInPhone ? 'flex' : 'hidden md:flex'} h-7 w-7 -translate-x-1/2 -translate-y-1/2 transform items-center justify-center rounded-full border border-black bg-white transition-colors duration-200 hover:bg-black hover:text-white focus:outline-none sm:h-8 sm:w-8 md:h-10 md:w-10`}
+									aria-label="Scroll left"
+								>
+									<ChevronLeft className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5" />
+								</button>
+
+								{/* Scrollable container */}
+								<div
+									ref={scrollContainerRef}
+									className="hide-scrollbar flex gap-5 overflow-x-auto py-0"
+								>
+									{!loading &&
+										toursData.map((stay: any) => (
+											<div key={stay?.id} className="flex-none">
+												<ExperiencesCard data={stay} size="small" />
+											</div>
+										))}
+									{loading && <ContainerExperiencesCardSkeleton />}
+								</div>
+								{/* <div
+									ref={scrollContainerRef}
+									className={`hide-scrollbar flex gap-5 overflow-x-auto py-0`}
+								>
+									{toursData.map((stay) => (
+										<div key={stay?.id} className={`flex-none`}>
+											<ExperiencesCard data={stay} />
+										</div>
+									))}
+								</div> */}
+
+								{/* Right navigation arrow */}
+								<button
+									onClick={scrollRight}
+									className={`absolute right-0 top-1/3 z-10 ${showArrowsIconsInPhone ? 'flex' : 'hidden md:flex'} h-7 w-7 -translate-y-1/2 translate-x-1/2 transform items-center justify-center rounded-full border border-black bg-white transition-colors duration-200 hover:bg-black hover:text-white focus:outline-none sm:h-8 sm:w-8 md:h-10 md:w-10`}
+									aria-label="Scroll right"
+								>
+									<ChevronRight className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5" />
+								</button>
+							</div>
+						)}
+					</>
+				)
 			) : error && locations.length === 0 ? (
 				<div className="rounded-lg bg-red-50 p-4 text-center text-red-700 dark:bg-red-900/20 dark:text-red-400">
 					<p>{error}</p>
@@ -288,4 +372,4 @@ const LocationCardList: FC<LocationCardListProps> = ({
 	)
 }
 
-export default LocationCardList
+export default ItemsCardList

@@ -144,7 +144,7 @@ export default function RootLayout({
 										<AuthModal />
 									</div>
 									<ClientCommons />
-									<TrackingScript />
+									{/* <TrackingScript /> */}
 								</body>
 							</Providers>
 						</AuthProvider>
