@@ -94,6 +94,7 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 					ratioClass={ratioClass}
 					galleryImgs={galleryImgs}
 					href={href}
+					navigation={false}
 					galleryClass="rounded-md" // Changed from rounded-xl to rounded-md to match CountryCard
 				/>
 				<BtnLikeIcon

@@ -24,6 +24,7 @@ import { wakeUpServer } from '@/utils/wakeUpServer'
 import createMailRelayUser from '@/utils/crm/createMailRelayUser'
 import NewsletterModal from './newsletter-modal'
 import { PlanTripModal } from './plan-trip-modal'
+import TrackingScript from './tracking-script'
 
 export default function RootLayout({
 	children,
@@ -143,6 +144,7 @@ export default function RootLayout({
 										<AuthModal />
 									</div>
 									<ClientCommons />
+									<TrackingScript />
 								</body>
 							</Providers>
 						</AuthProvider>

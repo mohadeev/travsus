@@ -2,59 +2,78 @@ import { Metadata } from 'next'
 import ClientHomePage from './ClientHomePage'
 
 export const metadata: Metadata = {
-	title:
-		'Travsus - Luxury Travel Experiences | Expert Travel Planning & Exclusive Perks',
+	title: 'Travsus - Your Ultimate Tour Provider',
 	description:
-		'Experience the journey of a lifetime with Travsus. Discover expert travel planning, exclusive perks, and stress-free luxury adventures. Book your unforgettable journey today.',
+		'Book exclusive guided tours with Travsus. Explore top destinations with expert guides, seamless planning, and unforgettable experiences.',
 	keywords: [
-		'luxury travel',
-		'expert travel planning',
-		'exclusive travel perks',
-		'luxury adventures',
-		'stress-free travel',
-		'premium travel experiences',
-		'personalized journeys',
-		'luxury accommodations',
-		'VIP travel services',
-		'global destinations',
+		'guided tours',
+		'best travel experiences',
+		'private tours',
+		'group tours',
+		'adventure tours',
+		'cultural tours',
+		'sightseeing trips',
+		'historical tours',
+		'nature excursions',
+		'VIP travel experiences',
+		'custom travel packages',
 	],
 	openGraph: {
 		type: 'website',
-		title: 'Travsus - Your Journey, You Deserve the Best',
+		title: 'Travsus - Book Exclusive Guided Tours',
 		description:
-			'Experience luxury travel with expert planning, exclusive perks, and stress-free adventures. Unlock a world of premium experiences with Travsus.',
+			'Join expert-led tours for a seamless and unforgettable travel experience. Discover cultural, adventure, and sightseeing tours with Travsus.',
 		url: 'https://www.travsus.com',
 		siteName: 'Travsus',
 		images: [
 			{
-				url: '/hero-image.jpg',
+				url: 'https://res.cloudinary.com/travsus/image/upload/v1740585144/xvqum5xjt3pkqhmff9rb.jpg',
 				width: 1200,
 				height: 630,
-				alt: 'Travsus Luxury Travel Experiences',
+				alt: 'Travsus - Expert Guided Tours',
 			},
 			{
-				url: '/features-image.jpg',
+				url: 'https://res.cloudinary.com/travsus/image/upload/v1740585036/r2vftjk08n7urzo15vbi.jpg',
 				width: 800,
 				height: 800,
-				alt: 'Travsus Premium Services',
+				alt: 'Travsus - Personalized Travel Experiences',
 			},
 		],
 	},
-	twitter: {
-		card: 'summary_large_image',
-		site: '@travsus',
-		creator: '@travsus',
-		title: 'Travsus - Luxury Travel Experiences',
-		description:
-			'Expert travel planning with exclusive perks and stress-free adventures.',
-		images: ['/hero-image.jpg'],
-	},
 	alternates: {
 		canonical: 'https://www.travsus.com',
-		languages: {
-			'en-US': 'https://www.travsus.com/en-US',
-			'fr-FR': 'https://www.travsus.com/fr-FR',
-			'ar-AE': 'https://www.travsus.com/ar-AE',
+	},
+	structuredData: {
+		'@context': 'https://schema.org',
+		'@type': 'TourOperator',
+		name: 'Travsus',
+		url: 'https://www.travsus.com',
+		logo: 'https://res.cloudinary.com/travsus/image/upload/v1741705203/unnamed_12_bwhvkl.png',
+		description:
+			'Book expertly guided tours and personalized travel experiences with Travsus. Explore top destinations with confidence.',
+		telephone: '+34 614 52 04 61',
+		email: 'contact@travsus.com',
+		address: {
+			'@type': 'PostalAddress',
+			streetAddress: 'Unit 1A Heatherview Business Park Athlone Road #8144',
+			addressLocality: 'Longford',
+			addressRegion: 'Co Longford',
+			postalCode: 'N39KD82',
+			addressCountry: 'Ireland',
+		},
+		sameAs: ['https://www.instagram.com/travsusofficial/'],
+		openingHours: '24/7',
+		priceRange: '$$',
+		geo: {
+			'@type': 'GeoCoordinates',
+			latitude: '53.727',
+			longitude: '-7.793',
+		},
+		contactPoint: {
+			'@type': 'ContactPoint',
+			telephone: '+34 614 52 04 61',
+			email: 'contact@travsus.com',
+			contactType: 'customer service',
 		},
 	},
 }
