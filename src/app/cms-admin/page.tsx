@@ -53,7 +53,10 @@ export default function CMSAdmin() {
 			})
 			// Filter to only include countries and cities
 			const filteredResults = newSearchCountries.filter(
-				(item: any) => item.type === 'country' || item.type === 'city',
+				(item: any) =>
+					item.type === 'country' ||
+					item.type === 'city' ||
+					item.type === 'place',
 			)
 			console.log('filteredResults: ', filteredResults)
 			setSearchResults(filteredResults)

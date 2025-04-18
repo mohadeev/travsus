@@ -1,7 +1,10 @@
 'use client'
 
-import React, { useEffect } from 'react'
+import type React from 'react'
+import { useEffect, Fragment } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
+import { Dialog, Transition } from '@headlessui/react'
+import { XMarkIcon } from '@heroicons/react/24/solid'
 import LoginClient from '@/app/login/LoginClient'
 import SignUpClient from '@/app/signup/SignUpClient'
 import { useRepeatedOverlay } from '@/app/hooks/useRepeatedOverlay'
@@ -56,57 +59,61 @@ const AuthModal: React.FC = () => {
 		originalCloseOverlay()
 	}
 
-	const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
-		if (e.target === e.currentTarget) {
-			closeOverlay()
-		}
-	}
+	const isModalVisible =
+		overlayState?.isVisible && overlayState.type === 'authModal'
+	const isLoginMode = overlayState?.data?.mode !== 'signup'
 
-	if (!overlayState?.isVisible || overlayState.type !== 'authModal') {
+	if (!isModalVisible) {
 		return null
 	}
 
-	const isLoginMode = overlayState.data?.mode !== 'signup'
-
 	return (
-		<div
-			className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
-			onClick={handleOverlayClick}
+		<Dialog
+			as="div"
+			className="relative z-[100]"
+			open={isModalVisible}
+			onClose={closeOverlay}
 		>
-			<div className="relative w-full max-w-md rounded-lg bg-white p-6 dark:bg-neutral-800">
-				<div className="absolute left-6 top-6">
-					<Logo />
+			<Transition show={isModalVisible} as={Fragment} appear>
+				<div className="fixed inset-0 bg-black bg-opacity-50">
+					<div className="flex min-h-full items-center justify-center p-4">
+						<Dialog.Panel className="relative w-full max-w-md transform overflow-hidden rounded-lg bg-white p-6 shadow-xl transition-all dark:bg-neutral-800">
+							<div className="absolute left-6 top-6">
+								<Logo />
+							</div>
+							<button
+								onClick={closeOverlay}
+								className="absolute right-4 top-4 p-2 text-gray-500 hover:text-gray-700 focus:outline-none dark:text-gray-400 dark:hover:text-gray-200"
+							>
+								<XMarkIcon className="h-5 w-5" />
+							</button>
+							<div className="mt-12">
+								{isLoginMode ? (
+									<LoginClient
+										isModal={true}
+										onClose={closeOverlay}
+										onSwitchToSignup={switchMode}
+										onSwitchToForgotPassword={() =>
+											toggleOverlay({
+												type: 'authModal',
+												data: { mode: 'forgotPassword' },
+												isVisible: true,
+											})
+										}
+									/>
+								) : (
+									<SignUpClient
+										isModal={true}
+										onClose={closeOverlay}
+										onSwitchToLogin={switchMode}
+									/>
+								)}
+							</div>
+						</Dialog.Panel>
+					</div>
 				</div>
-				<button
-					onClick={closeOverlay}
-					className="absolute right-4 top-4 p-2 text-3xl text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
-				>
-					&times;
-				</button>
-				<div className="mt-12">
-					{isLoginMode ? (
-						<LoginClient
-							isModal={true}
-							onClose={closeOverlay}
-							onSwitchToSignup={switchMode}
-							onSwitchToForgotPassword={() =>
-								toggleOverlay({
-									type: 'authModal',
-									data: { mode: 'forgotPassword' },
-									isVisible: true,
-								})
-							}
-						/>
-					) : (
-						<SignUpClient
-							isModal={true}
-							onClose={closeOverlay}
-							onSwitchToLogin={switchMode}
-						/>
-					)}
-				</div>
-			</div>
-		</div>
+			</Transition>
+		</Dialog>
 	)
 }
 

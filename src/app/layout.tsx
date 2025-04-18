@@ -120,8 +120,10 @@ export default function RootLayout({
 								<AuthWatcher />
 								<body className="bg-white text-base text-neutral-900 dark:bg-neutral-900 dark:text-neutral-200">
 									{/* <NewsletterModal /> */}
+									<AuthModal />
 									<div>
 										<CombinedCookieConsent />
+										<AuthModal />
 										{/* <PlanTripModal isOpen={true} onClose={()=>{}}/> */}
 										{!isDashboardPath && (
 											<ConditionalComponent
@@ -141,7 +143,6 @@ export default function RootLayout({
 												<Footer /> */}
 											</>
 										)}
-										<AuthModal />
 									</div>
 									<ClientCommons />
 									{/* <TrackingScript /> */}
