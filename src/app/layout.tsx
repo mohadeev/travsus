@@ -119,7 +119,7 @@ export default function RootLayout({
 							<Providers>
 								<AuthWatcher />
 								<body className="bg-white text-base text-neutral-900 dark:bg-neutral-900 dark:text-neutral-200">
-									{/* <NewsletterModal /> */}
+									<NewsletterModal />
 									<AuthModal />
 									<div>
 										<CombinedCookieConsent />

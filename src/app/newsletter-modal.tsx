@@ -1,6 +1,9 @@
 'use client'
 
+import type React from 'react'
+
 import { useState, useEffect, useRef } from 'react'
+import { useSelector } from 'react-redux'
 import { X } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -33,7 +36,8 @@ const messageMap = {
 }
 
 export default function NewsletterModal() {
-	const [isOpen, setIsOpen] = useState(true)
+	const { userData } = useSelector((state: any) => state.userReducer)
+	const [isOpen, setIsOpen] = useState(!userData)
 	const [email, setEmail] = useState('')
 	const [isDropdownOpen, setIsDropdownOpen] = useState(false)
 	const [selectedTypes, setSelectedTypes] = useState<string[]>(
@@ -43,6 +47,13 @@ export default function NewsletterModal() {
 	const [message, setMessage] = useState('')
 	const [isError, setIsError] = useState(false)
 	const dropdownRef = useRef<HTMLDivElement>(null)
+
+	// Check if user logs in while modal is open
+	useEffect(() => {
+		if (userData) {
+			setIsOpen(false)
+		}
+	}, [userData])
 
 	// Toggle newsletter types dropdown
 	const toggleDropdown = () => {
@@ -170,7 +181,7 @@ export default function NewsletterModal() {
 				<div className="relative hidden w-1/2 md:block">
 					<div className="absolute inset-0 bg-gradient-to-b from-gray-100/10 to-gray-800/30" />
 					<Image
-						src="https://images.pexels.com/photos/31439670/pexels-photo-31439670.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+						src="https://res.cloudinary.com/travsus/image/upload/v1744996477/ChatGPT_Image_Apr_16_2025_09_15_13_PM_redfxm.png"
 						alt="Desert sand dunes under blue sky"
 						width={600}
 						height={800}
