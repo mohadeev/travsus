@@ -219,7 +219,7 @@ export default function DestinationPage({
 				</div>
 				<CollectionsGrid
 					cityId={countryData?.id}
-					layout="row"
+					layout="column"
 					// countryCode="MAR"
 					// placeType="restaurant"
 					// heading="Restaurants in Marrakech"

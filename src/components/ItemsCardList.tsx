@@ -347,11 +347,11 @@ const ItemsCardList: FC<ItemsCardListProps> = ({
 							{/* Scrollable container */}
 							<div
 								ref={scrollContainerRef}
-								className={`hide-scrollbar flex gap-5 overflow-x-auto py-0 ${className}`}
+								className={`hide-scrollbar flex gap-2 overflow-x-auto py-0 ${className}`}
 							>
 								{locations.map((item) => (
 									<div key={item.id} className={`flex-none ${itemClassName}`}>
-										<CountryCard data={item} size="small" />
+										<CountryCard className={"rounded-2xl"} data={item} size="small" />
 									</div>
 								))}
 							</div>

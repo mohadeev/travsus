@@ -5,10 +5,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import type { Route } from '@/routers/types'
 
-// Default fallback image if no image URL is provided
-const DEFAULT_FALLBACK_IMAGE =
-	'https://images.pexels.com/photos/31187683/pexels-photo-31187683/free-photo-of-serene-hillside-landscape-with-soft-mist.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load'
-
 // Simplified data structure for countries
 export interface CountryDataType {
 	id: string
@@ -48,7 +44,7 @@ const CountryCard: FC<CountryCardProps> = ({
 		<div className={`nc-CountryCard group relative ${className}`}>
 			<Link
 				href={href}
-				className="relative block w-full overflow-hidden rounded-md"
+				className="relative block w-full overflow-hidden rounded-xl"
 			>
 				{/* Image with aspect ratio */}
 				<div
@@ -57,13 +53,12 @@ const CountryCard: FC<CountryCardProps> = ({
 					<img
 						src={image}
 						alt={name}
-						fill
-						className="object-cover transition-transform duration-300 group-hover:scale-105"
-						sizes={
-							size === 'small'
-								? '(max-width: 640px) 220px, (max-width: 768px) 250px, 280px'
-								: '(max-width: 640px) 300px, (max-width: 1024px) 50vw, 33vw'
-						}
+						className="rounded-xl object-cover transition-transform duration-300 group-hover:scale-105"
+						// sizes={
+						// 	size === 'small'
+						// 		? '(max-width: 640px) 220px, (max-width: 768px) 250px, 280px'
+						// 		: '(max-width: 640px) 300px, (max-width: 1024px) 50vw, 33vw'
+						// }
 					/>
 				</div>
 
@@ -75,7 +70,7 @@ const CountryCard: FC<CountryCardProps> = ({
 				)} */}
 
 				{/* Gradient overlay for better text visibility */}
-				<div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/70"></div>
+				<div className="absolute inset-0 rounded-xl bg-gradient-to-b from-transparent via-transparent to-black/70"></div>
 
 				{/* Country name - now inside the image and bigger */}
 				<div className="absolute bottom-4 left-4 z-10">
