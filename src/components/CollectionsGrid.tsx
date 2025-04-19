@@ -110,7 +110,7 @@ export default function CollectionsGrid({
 			className="group relative overflow-hidden transition-all duration-300"
 		>
 			<div
-				className={`relative overflow-hidden rounded-md ${
+				className={`relative overflow-hidden rounded-xl ${
 					layout === 'row' ? 'w-[220px] sm:w-[250px] md:w-[280px]' : 'w-full'
 				} ${layout === 'column' ? 'aspect-[1/1.1]' : 'aspect-[1/1.3]'}`}
 			>
@@ -205,7 +205,7 @@ export default function CollectionsGrid({
 						{/* Scrollable container */}
 						<div
 							ref={scrollContainerRef}
-							className="hide-scrollbar flex gap-5 overflow-x-auto py-0"
+							className="hide-scrollbar flex gap-3 overflow-x-auto py-0"
 						>
 							{collections.map((collection) => (
 								<div key={collection.id} className="flex-none">
