@@ -381,10 +381,10 @@ const ListingExperiencesDetailPage: FC<
 
 				{/* {renderSection8()} */}
 				<ReviewSystem serviceId={id} serviceName={title} />
-				<SectionGridFilterCard
+				{/* <SectionGridFilterCard
 					layout="row"
 					className={'mb-10 mt-10 pb-24 lg:pb-28'}
-				/>
+				/> */}
 			</div>
 		</>
 	)
