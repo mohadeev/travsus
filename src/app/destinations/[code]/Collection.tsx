@@ -15,6 +15,7 @@ interface CollectionsGridProps {
 	layout?: 'row' | 'column'
 	countryCode?: string // Country code like "MAR"
 	cityName?: string // City name like "Marrakech"
+	cityId?: string
 	heading?: string
 	subHeading?: string
 	limit?: number
@@ -25,6 +26,7 @@ export default function CollectionsGrid({
 	layout = 'column',
 	countryCode,
 	cityName,
+	cityId,
 	heading = 'Browse collections',
 	subHeading = 'Get ideas on what to do, see, and eat',
 	limit = 16,
@@ -60,10 +62,10 @@ export default function CollectionsGrid({
 					url = `/api/placesByCountry?countryCode=${countryCode}&limit=${limit}`
 				} else if (cityName) {
 					// Fetch places by city name
-					url = `/api/placesByCityName?name=${encodeURIComponent(cityName)}&limit=${limit}`
+					url = `/api/placesByCityId?cityId=${cityId}&limit=${limit}`
 				} else {
 					// Default to Marrakech if no location specified
-					url = `/api/placesByCityName?name=Marrakech&limit=${limit}`
+					url = `/api/placesByCityId?cityId=${cityId}&limit=${limit}`
 				}
 
 				const response = await fetch(url)
@@ -135,7 +137,7 @@ export default function CollectionsGrid({
 		}
 
 		fetchCollections()
-	}, [countryCode, cityName, limit])
+	}, [countryCode, cityId, limit])
 
 	// Collection card component to avoid duplication
 	const CollectionCard = ({ collection }: { collection: Collection }) => (

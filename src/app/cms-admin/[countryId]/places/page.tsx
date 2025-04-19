@@ -4,8 +4,21 @@ import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Loader2, Plus, ArrowLeft, MapPin } from 'lucide-react'
+import {
+	Card,
+	CardContent,
+	CardHeader,
+	CardTitle,
+	CardFooter,
+} from '@/components/ui/card'
+import {
+	Loader2,
+	Plus,
+	ArrowLeft,
+	MapPin,
+	Trash2,
+	AlertCircle,
+} from 'lucide-react'
 import Link from 'next/link'
 import {
 	Select,
@@ -14,6 +27,16 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from '@/components/ui/select'
+import {
+	AlertDialog,
+	AlertDialogAction,
+	AlertDialogCancel,
+	AlertDialogContent,
+	AlertDialogDescription,
+	AlertDialogFooter,
+	AlertDialogHeader,
+	AlertDialogTitle,
+} from '@/components/ui/alert-dialog'
 
 // Function to validate image URL
 const isValidImageUrl = (url: string) => {
@@ -51,6 +74,10 @@ export default function CountryPlacesAdmin({
 		Record<string, string>
 	>({})
 	const [selectedCity, setSelectedCity] = useState<string>('all')
+	const [updatingCityFor, setUpdatingCityFor] = useState<string | null>(null)
+	const [deletingPlace, setDeletingPlace] = useState<string | null>(null)
+	const [placeToDelete, setPlaceToDelete] = useState<string | null>(null)
+	const [deleteDialogOpen, setDeleteDialogOpen] = useState(false)
 
 	// Update the useEffect to use the updated API endpoint
 	useEffect(() => {
@@ -179,6 +206,133 @@ export default function CountryPlacesAdmin({
 		}
 	}
 
+	// Update city for a place
+	const updatePlaceCity = async (placeId: string, cityId: string | null) => {
+		setUpdatingCityFor(placeId)
+
+		try {
+			// Update the place with the new city ID
+			await fetch('/api/update-place-city', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+					placeId,
+					cityId,
+				}),
+			})
+
+			// Update the UI to show the new city
+			setPlaces((prev) =>
+				prev.map((place) => {
+					if (place.id === placeId) {
+						// Find the city name if cityId is provided
+						const cityName = cityId
+							? cities.find((city) => city.id === cityId)?.name ||
+								'Unknown City'
+							: null
+
+						return {
+							...place,
+							cityId: cityId,
+							cityName: cityName || 'No City',
+						}
+					}
+					return place
+				}),
+			)
+
+			// Show success message
+			setSuccessMessages((prev) => ({
+				...prev,
+				[placeId]: cityId
+					? 'City updated successfully!'
+					: 'City removed successfully!',
+			}))
+
+			// Clear success message after 3 seconds
+			setTimeout(() => {
+				setSuccessMessages((prev) => {
+					const updated = { ...prev }
+					delete updated[placeId]
+					return updated
+				})
+			}, 3000)
+		} catch (error) {
+			console.error('Error updating city:', error)
+			setValidationErrors((prev) => ({
+				...prev,
+				[placeId]: 'Failed to update city',
+			}))
+		} finally {
+			setUpdatingCityFor(null)
+		}
+	}
+
+	// Open delete confirmation dialog
+	const confirmDeletePlace = (placeId: string) => {
+		setPlaceToDelete(placeId)
+		setDeleteDialogOpen(true)
+	}
+
+	// Delete a place
+	const deletePlace = async () => {
+		if (!placeToDelete) return
+
+		setDeletingPlace(placeToDelete)
+		setDeleteDialogOpen(false)
+
+		try {
+			// Delete the place
+			await fetch('/api/delete-place', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+					placeId: placeToDelete,
+				}),
+			})
+
+			// Remove the place from the UI
+			setPlaces((prev) => prev.filter((place) => place.id !== placeToDelete))
+
+			// Show temporary success message
+			setSuccessMessages((prev) => ({
+				...prev,
+				global: 'Place deleted successfully!',
+			}))
+
+			// Clear success message after 3 seconds
+			setTimeout(() => {
+				setSuccessMessages((prev) => {
+					const updated = { ...prev }
+					delete updated.global
+					return updated
+				})
+			}, 3000)
+		} catch (error) {
+			console.error('Error deleting place:', error)
+			setValidationErrors((prev) => ({
+				...prev,
+				global: 'Failed to delete place',
+			}))
+
+			// Clear error message after 5 seconds
+			setTimeout(() => {
+				setValidationErrors((prev) => {
+					const updated = { ...prev }
+					delete updated.global
+					return updated
+				})
+			}, 5000)
+		} finally {
+			setDeletingPlace(null)
+			setPlaceToDelete(null)
+		}
+	}
+
 	// Filter places based on selected city
 	const filteredPlaces =
 		selectedCity === 'all'
@@ -195,6 +349,20 @@ export default function CountryPlacesAdmin({
 					Places in {countryName || countryId}
 				</h1>
 			</div>
+
+			{/* Global success/error messages */}
+			{successMessages.global && (
+				<div className="mb-4 rounded-md bg-green-50 p-4 text-green-700">
+					<p>{successMessages.global}</p>
+				</div>
+			)}
+
+			{validationErrors.global && (
+				<div className="mb-4 flex items-center gap-2 rounded-md bg-red-50 p-4 text-red-700">
+					<AlertCircle className="h-5 w-5" />
+					<p>{validationErrors.global}</p>
+				</div>
+			)}
 
 			{loading ? (
 				<div className="flex items-center justify-center py-12">
@@ -213,10 +381,10 @@ export default function CountryPlacesAdmin({
 								Filter by City
 							</label>
 							<Select value={selectedCity} onValueChange={setSelectedCity}>
-								<SelectTrigger className="w-[200px]" id="city-filter">
+								<SelectTrigger className="w-[200px] bg-white" id="city-filter">
 									<SelectValue placeholder="Select a city" />
 								</SelectTrigger>
-								<SelectContent>
+								<SelectContent className="bg-white">
 									<SelectItem value="all">All Cities</SelectItem>
 									{cities.map((city) => (
 										<SelectItem key={city.id} value={city.id}>
@@ -338,7 +506,59 @@ export default function CountryPlacesAdmin({
 												</p>
 											)}
 										</div>
+
+										{/* City selection */}
+										<div className="mt-4 space-y-2">
+											<h4 className="text-sm font-medium">City Assignment</h4>
+											<div className="flex gap-2">
+												<Select
+													value={place.cityId || 'none'}
+													onValueChange={(value) =>
+														updatePlaceCity(
+															place.id,
+															value === 'none' ? null : value,
+														)
+													}
+													disabled={updatingCityFor === place.id}
+												>
+													<SelectTrigger className="w-full bg-white">
+														<SelectValue placeholder="Select a city" />
+													</SelectTrigger>
+													<SelectContent className="bg-white">
+														<SelectItem value="none">No City</SelectItem>
+														{cities.map((city) => (
+															<SelectItem key={city.id} value={city.id}>
+																{city.name}
+															</SelectItem>
+														))}
+													</SelectContent>
+												</Select>
+
+												{updatingCityFor === place.id && (
+													<div className="flex items-center">
+														<Loader2 className="h-4 w-4 animate-spin" />
+													</div>
+												)}
+											</div>
+										</div>
 									</CardContent>
+
+									<CardFooter className="border-t pt-4">
+										<Button
+											variant="destructive"
+											size="sm"
+											className="ml-auto flex items-center gap-1"
+											onClick={() => confirmDeletePlace(place.id)}
+											disabled={deletingPlace === place.id}
+										>
+											{deletingPlace === place.id ? (
+												<Loader2 className="h-4 w-4 animate-spin" />
+											) : (
+												<Trash2 className="h-4 w-4" />
+											)}
+											Delete Place
+										</Button>
+									</CardFooter>
 								</Card>
 							))}
 						</div>
@@ -358,6 +578,30 @@ export default function CountryPlacesAdmin({
 					)}
 				</>
 			)}
+
+			{/* Delete confirmation dialog */}
+			<AlertDialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
+				<AlertDialogContent>
+					<AlertDialogHeader>
+						<AlertDialogTitle>
+							Are you sure you want to delete this place?
+						</AlertDialogTitle>
+						<AlertDialogDescription>
+							This action cannot be undone. This will permanently delete the
+							place and all associated data.
+						</AlertDialogDescription>
+					</AlertDialogHeader>
+					<AlertDialogFooter>
+						<AlertDialogCancel>Cancel</AlertDialogCancel>
+						<AlertDialogAction
+							onClick={deletePlace}
+							className="bg-red-600 hover:bg-red-700"
+						>
+							Delete
+						</AlertDialogAction>
+					</AlertDialogFooter>
+				</AlertDialogContent>
+			</AlertDialog>
 		</div>
 	)
 }

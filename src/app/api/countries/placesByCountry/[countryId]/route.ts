@@ -1,4 +1,3 @@
-// import { placesClient } from '@/libs/prisma'
 import { placesClient } from '@/lib/prisma'
 import { NextResponse } from 'next/server'
 
@@ -8,6 +7,7 @@ export async function GET(
 ) {
 	try {
 		const { countryId } = params
+		console.log('countryId', countryId)
 
 		if (!countryId) {
 			return NextResponse.json(

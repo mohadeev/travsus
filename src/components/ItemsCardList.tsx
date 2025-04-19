@@ -16,7 +16,7 @@ export interface ItemsCardListProps {
 	cardSize?: 'default' | 'small'
 	locationType: 'country' | 'city' | 'place' | 'tour'
 	countryId?: string // For cities within a country
-	cityName?: string // For places within a city by name
+	cityId?: string // For places within a city by name
 	layout?: 'row' | 'column'
 	heading?: string
 	subHeading?: string
@@ -31,7 +31,7 @@ const ItemsCardList: FC<ItemsCardListProps> = ({
 	cardSize = 'default',
 	locationType = 'country',
 	countryId,
-	cityName,
+	cityId,
 	layout = 'column',
 	heading = 'Popular Destinations',
 	subHeading = 'Explore top destinations around the world',
@@ -95,9 +95,9 @@ const ItemsCardList: FC<ItemsCardListProps> = ({
 				} else if (locationType === 'city' && countryId) {
 					// Fetch cities for a specific country
 					url = `/api/cities?countryId=${countryId}&limit=${limit}`
-				} else if (locationType === 'place' && cityName) {
+				} else if (locationType === 'place' && cityId) {
 					// Fetch places for a specific city by name
-					url = `/api/placesByCityName?name=${encodeURIComponent(cityName)}&limit=${limit}`
+					url = `/api/placesByCityId?cityId=${encodeURIComponent(cityId)}&limit=${limit}`
 				} else {
 					// Default to popular cities
 					url = `/api/cities/popular?limit=${limit}`
@@ -130,7 +130,7 @@ const ItemsCardList: FC<ItemsCardListProps> = ({
 							url: `/destinations/${name}?lcId=${country?.id}`,
 						}
 					})
-				} else if (locationType === 'place' && cityName && data.data) {
+				} else if (locationType === 'place' && cityId && data.data) {
 					// Format places data
 					formattedLocations = data.data.map((place: any) => {
 						return {
@@ -177,7 +177,7 @@ const ItemsCardList: FC<ItemsCardListProps> = ({
 		}
 
 		fetchLocations()
-	}, [locationType, countryId, cityName, limit, currentPage])
+	}, [locationType, countryId, cityId, limit, currentPage])
 
 	// Customize heading based on location type
 	const getDefaultHeading = () => {
@@ -185,7 +185,7 @@ const ItemsCardList: FC<ItemsCardListProps> = ({
 		if (locationType === 'city')
 			return countryId ? `Cities in ${countryId}` : 'Popular Cities'
 		if (locationType === 'place')
-			return cityName ? `Places in ${cityName}` : 'Places to Visit'
+			return cityId ? `Places in ${cityId}` : 'Places to Visit'
 		if (locationType === 'tour') return 'Popular Tours'
 		return 'Popular Destinations'
 	}

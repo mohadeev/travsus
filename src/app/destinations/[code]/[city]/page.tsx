@@ -217,9 +217,10 @@ export default function DestinationPage({
 
 					<ReadeMore countryData={countryData} />
 				</div>
+				{countryData?.id}
 				{/* <CollectionsGrid layout={'row'} /> */}
 				<CollectionsGrid
-					cityName={countryData?.name}
+					cityId={countryData?.id}
 					layout="row"
 					// countryCode="MAR"
 					// placeType="restaurant"

@@ -16,7 +16,7 @@ interface Collection {
 interface CollectionsGridProps {
 	layout?: 'row' | 'column'
 	countryCode?: string // Country code like "MAR"
-	cityName?: string // City name like "Marrakech"
+	cityId?: string // City name like "Marrakech"
 	heading?: string
 	subHeading?: string
 	limit?: number
@@ -25,7 +25,7 @@ interface CollectionsGridProps {
 export default function CollectionsGrid({
 	layout = 'column',
 	countryCode,
-	cityName,
+	cityId,
 	heading = 'Browse collections',
 	subHeading = 'Get ideas on what to do, see, and eat',
 	limit = 16,
@@ -58,12 +58,12 @@ export default function CollectionsGrid({
 				if (countryCode) {
 					// Fetch places by country code
 					url = `/api/placesByCountry?countryCode=${countryCode}&limit=${limit}`
-				} else if (cityName) {
+				} else if (cityId) {
 					// Fetch places by city name
-					url = `/api/placesByCityName?name=${encodeURIComponent(cityName)}&limit=${limit}`
+					url = `/api/placesByCityId?cityId=${encodeURIComponent(cityId)}&limit=${limit}`
 				} else {
 					// Default to Marrakech if no location specified
-					url = `/api/placesByCityName?name=Marrakech&limit=${limit}`
+					url = `/api/placesByCityId?cityId=Marrakech&limit=${limit}`
 				}
 
 				const response = await fetch(url)
@@ -109,9 +109,9 @@ export default function CollectionsGrid({
 							let description = ''
 							if (countryCode) {
 								const cityCount = new Set(placesArray.map((p) => p.cityId)).size
-								description = `Discover ${placesArray.length} places across ${cityCount} cities in ${locationName}`
+								// description = `Discover ${placesArray.length} places across ${cityCount} cities in ${locationName}`
 							} else {
-								description = `Discover ${placesArray.length} places in ${locationName}`
+								// description = `Discover ${placesArray.length} places in ${locationName}`
 							}
 
 							return {
@@ -137,12 +137,12 @@ export default function CollectionsGrid({
 		}
 
 		fetchCollections()
-	}, [countryCode, cityName, limit])
+	}, [countryCode, cityId, limit])
 
 	// Collection card component to avoid duplication
 	const CollectionCard = ({ collection }: { collection: Collection }) => (
 		<Link
-			href={`/collections/${collection.id}${cityName ? `?city=${encodeURIComponent(cityName)}` : countryCode ? `?country=${countryCode}` : ''}`}
+			href={`/collections/${collection.id}${cityId ? `?city=${encodeURIComponent(cityId)}` : countryCode ? `?country=${countryCode}` : ''}`}
 			className="group relative overflow-hidden transition-all duration-300"
 		>
 			<div
@@ -150,11 +150,10 @@ export default function CollectionsGrid({
 					layout === 'row' ? 'w-[220px] sm:w-[250px] md:w-[280px]' : 'w-full'
 				} ${layout === 'column' ? 'aspect-[1/1.1]' : 'aspect-[1/1.3]'}`}
 			>
-				<Image
+				<img
 					src={collection.imageUrl || '/placeholder.svg'}
 					alt={collection.title}
-					fill
-					className="object-cover transition-transform duration-300 group-hover:scale-105"
+					className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
 					sizes={
 						layout === 'row'
 							? '(max-width: 640px) 220px, (max-width: 768px) 250px, 280px'
