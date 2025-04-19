@@ -5,7 +5,7 @@ import { Card } from '@/components/ui/card'
 import { Heart } from 'lucide-react'
 import { useState } from 'react'
 
-interface InstagramCardProps {
+interface ResponsiveCardProps {
 	colorScheme?:
 		| 'instagram-gradient'
 		| 'sunset-vibes'
@@ -13,19 +13,15 @@ interface InstagramCardProps {
 		| 'mint-berry'
 		| 'coral-dreams'
 		| 'random'
-	width?: string
-	height?: string
 	className?: string
 	showHeart?: boolean
 }
 
-export default function InstagramCard({
+export default function ResponsiveCard({
 	colorScheme = 'instagram-gradient',
-	width = 'w-full',
-	height = 'h-64',
 	className,
 	showHeart = true,
-}: InstagramCardProps) {
+}: ResponsiveCardProps) {
 	const [liked, setLiked] = useState(false)
 
 	// Define Instagram-inspired color schemes
@@ -71,8 +67,6 @@ export default function InstagramCard({
 		<Card
 			className={cn(
 				'relative h-full w-full overflow-hidden rounded-xl',
-				width,
-				height,
 				className,
 			)}
 		>
