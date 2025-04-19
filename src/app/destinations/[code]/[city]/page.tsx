@@ -217,8 +217,6 @@ export default function DestinationPage({
 
 					<ReadeMore countryData={countryData} />
 				</div>
-				{countryData?.id}
-				{/* <CollectionsGrid layout={'row'} /> */}
 				<CollectionsGrid
 					cityId={countryData?.id}
 					layout="row"
@@ -236,7 +234,7 @@ export default function DestinationPage({
 					// heading="Popular Countries"
 				/> */}
 
-				<SectionGridFilterCard layout={'row'} />
+				{/* <SectionGridFilterCard layout={'row'} /> */}
 
 				{/* Custom CSS for hiding scrollbars */}
 				<style jsx global>{`

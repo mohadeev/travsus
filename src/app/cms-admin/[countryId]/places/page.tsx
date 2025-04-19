@@ -284,8 +284,10 @@ export default function CountryPlacesAdmin({
 		setDeleteDialogOpen(false)
 
 		try {
+			console.log(`Attempting to delete place with ID: ${placeToDelete}`)
+
 			// Delete the place
-			await fetch('/api/delete-place', {
+			const response = await fetch('/api/delete-place', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
@@ -294,6 +296,14 @@ export default function CountryPlacesAdmin({
 					placeId: placeToDelete,
 				}),
 			})
+
+			const result = await response.json()
+
+			if (!response.ok) {
+				throw new Error(result.error || 'Failed to delete place')
+			}
+
+			console.log(`Successfully deleted place with ID: ${placeToDelete}`)
 
 			// Remove the place from the UI
 			setPlaces((prev) => prev.filter((place) => place.id !== placeToDelete))
@@ -316,7 +326,7 @@ export default function CountryPlacesAdmin({
 			console.error('Error deleting place:', error)
 			setValidationErrors((prev) => ({
 				...prev,
-				global: 'Failed to delete place',
+				global: `Failed to delete place: ${error instanceof Error ? error.message : 'Unknown error'}`,
 			}))
 
 			// Clear error message after 5 seconds

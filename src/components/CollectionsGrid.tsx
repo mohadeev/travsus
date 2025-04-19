@@ -60,7 +60,7 @@ export default function CollectionsGrid({
 					url = `/api/placesByCountry?countryCode=${countryCode}&limit=${limit}`
 				} else if (cityId) {
 					// Fetch places by city name
-					url = `/api/placesByCityId?cityId=${encodeURIComponent(cityId)}&limit=${limit}`
+					url = `/api/placesByCityId?cityId=${cityId}&limit=${limit}`
 				} else {
 					// Default to Marrakech if no location specified
 					url = `/api/placesByCityId?cityId=Marrakech&limit=${limit}`
@@ -87,44 +87,7 @@ export default function CollectionsGrid({
 					setLocationName(data.country.name)
 				}
 
-				// Process the data based on the API response format
-				let newCollections: Collection[] = []
-
-				// Use categorized data from the API
-				if (data.categorized) {
-					newCollections = Object.entries(data.categorized)
-						.map(([category, places]) => {
-							// Get a representative place and image
-							const placesArray = Array.isArray(places) ? places : [places]
-							const firstPlace = placesArray[0]
-
-							if (!firstPlace) return null
-
-							const imageUrl =
-								firstPlace.image?.url ||
-								firstPlace.image?.uploadFrom ||
-								'/placeholder.svg'
-							const name = firstPlace.name || category
-
-							let description = ''
-							if (countryCode) {
-								const cityCount = new Set(placesArray.map((p) => p.cityId)).size
-								// description = `Discover ${placesArray.length} places across ${cityCount} cities in ${locationName}`
-							} else {
-								// description = `Discover ${placesArray.length} places in ${locationName}`
-							}
-
-							return {
-								id: category,
-								title: name,
-								description: description,
-								imageUrl: imageUrl,
-							}
-						})
-						.filter(Boolean)
-				}
-
-				setCollections(newCollections)
+				setCollections(data.data)
 			} catch (err) {
 				console.error('Error fetching collections:', err)
 				setError(
@@ -151,7 +114,7 @@ export default function CollectionsGrid({
 				} ${layout === 'column' ? 'aspect-[1/1.1]' : 'aspect-[1/1.3]'}`}
 			>
 				<img
-					src={collection.imageUrl || '/placeholder.svg'}
+					src={collection?.image || '/placeholder.svg'}
 					alt={collection.title}
 					className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
 					sizes={
