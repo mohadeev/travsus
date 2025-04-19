@@ -114,17 +114,21 @@ export default function CollectionsGrid({
 					layout === 'row' ? 'w-[220px] sm:w-[250px] md:w-[280px]' : 'w-full'
 				} ${layout === 'column' ? 'aspect-[1/1.1]' : 'aspect-[1/1.3]'}`}
 			>
-				{/* <img
-					src={collection?.image}
-					alt={collection.title}
-					className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-					sizes={
-						layout === 'row'
-							? '(max-width: 640px) 220px, (max-width: 768px) 250px, 280px'
-							: '(max-width: 640px) 100%, (max-width: 1024px) 50vw, 33vw'
-					}
-				/> */}
-				<InstagramCard />
+				{collection?.image ? (
+					<img
+						src={collection?.image}
+						alt={collection.title}
+						className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+						sizes={
+							layout === 'row'
+								? '(max-width: 640px) 220px, (max-width: 768px) 250px, 280px'
+								: '(max-width: 640px) 100%, (max-width: 1024px) 50vw, 33vw'
+						}
+					/>
+				) : (
+					<InstagramCard />
+				)}
+
 				{/* Black gradient from bottom for text visibility */}
 				<div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/70"></div>
 
