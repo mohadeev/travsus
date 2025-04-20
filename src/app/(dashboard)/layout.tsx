@@ -4,14 +4,15 @@ import type React from 'react'
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { usePathname } from 'next/navigation'
-import { useState } from 'react'
+import { usePathname, useRouter } from 'next/navigation'
+import { useState, useEffect } from 'react'
 import { ChevronRight, Menu } from 'lucide-react'
 
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { Nav } from '@/components/dashboard/nav'
+import { getCompanyData } from '@/lib/api-client'
 
 export default function DashboardLayout({
 	children,
@@ -19,7 +20,52 @@ export default function DashboardLayout({
 	children: React.ReactNode
 }) {
 	const [isCollapsed, setIsCollapsed] = useState(false)
+	const [isLoading, setIsLoading] = useState(true)
 	const pathname = usePathname()
+	const router = useRouter()
+
+	useEffect(() => {
+		async function checkCompanyExists() {
+			try {
+				setIsLoading(true)
+				const companyData = await getCompanyData()
+				console.log('companyData: ', companyData)
+
+				// Check if company data exists and has essential fields
+				if (
+					!companyData ||
+					!companyData.id ||
+					!companyData.name ||
+					Object.keys(companyData).length === 0
+				) {
+					// Redirect to list-my-business page if no company exists
+					router.push('/list-my-business')
+				}
+			} catch (error) {
+				console.error('Error checking company:', error)
+				// Redirect on error (likely no company found)
+				router.push('/list-my-business')
+			} finally {
+				setIsLoading(false)
+			}
+		}
+
+		checkCompanyExists()
+	}, [router])
+
+	// Show loading state while checking for company
+	if (isLoading) {
+		return (
+			<div className="flex min-h-screen items-center justify-center">
+				<div className="flex flex-col items-center">
+					<div className="h-8 w-8 animate-spin rounded-full border-b-2 border-t-2 border-blue-500"></div>
+					<p className="mt-4 text-sm text-gray-500">
+						Loading your dashboard...
+					</p>
+				</div>
+			</div>
+		)
+	}
 
 	return (
 		<div className="flex min-h-screen flex-col">

@@ -1,230 +1,394 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
-import { Form, Field } from 'react-final-form'
+import { useState, useRef, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import Input from '@/shared/Input'
-import ButtonPrimary from '@/shared/ButtonPrimary'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useForm } from 'react-hook-form'
+import * as z from 'zod'
+import { ArrowRight, Loader2 } from 'lucide-react'
+import { motion } from 'framer-motion'
+
+import { Button } from '@/components/ui/button'
+import {
+	Form,
+	FormControl,
+	FormField,
+	FormItem,
+	FormMessage,
+} from '@/components/ui/form'
+import { Input } from '@/components/ui/input'
+import { toast } from '@/components/ui/use-toast'
 import updateCompanyInfo from '@/utils/api-utils/updateCompanyInfo'
+import { useAuthAction } from '@/app/hooks/useAuthAction'
 
-interface FormValues {
-	name: string
-	country: string
-}
-
-interface CompanyData {
-	name: string
-	country: string
-}
+const formSchema = z.object({
+	name: z
+		.string()
+		.min(2, { message: 'Company name must be at least 2 characters.' }),
+	country: z.string().min(1, { message: 'Please select a country.' }),
+})
 
 const countries = [
 	{ value: 'us', label: 'United States' },
 	{ value: 'uk', label: 'United Kingdom' },
 	{ value: 'ca', label: 'Canada' },
 	{ value: 'au', label: 'Australia' },
-	// Add more countries as needed
+	{ value: 'de', label: 'Germany' },
+	{ value: 'fr', label: 'France' },
+	{ value: 'jp', label: 'Japan' },
+	{ value: 'sg', label: 'Singapore' },
+	{ value: 'ae', label: 'United Arab Emirates' },
+	{ value: 'br', label: 'Brazil' },
 ]
 
-const ListMyBusiness: React.FC<{ companyData: CompanyData }> = ({
+interface CompanyData {
+	name: string
+	country: string
+}
+
+export default function ListMyBusiness({
 	companyData,
-}) => {
+}: {
+	companyData: CompanyData
+}) {
 	const [isSubmitting, setIsSubmitting] = useState(false)
-	const [submitError, setSubmitError] = useState<string | null>(null)
-	const [submitSuccess, setSubmitSuccess] = useState(false)
 	const router = useRouter()
+	const formRef = useRef<HTMLFormElement>(null)
+	const nameInputRef = useRef<HTMLInputElement>(null)
 
-	const { name, country } = companyData || {}
+	const form = useForm<z.infer<typeof formSchema>>({
+		resolver: zodResolver(formSchema),
+		defaultValues: {
+			name: companyData?.name || '',
+			country: companyData?.country || '',
+		},
+	})
 
+	// Set focus to the name input when the component mounts
 	useEffect(() => {
-		if (submitSuccess) {
-			const timer = setTimeout(() => {
-				router.push('/dashboard/company')
-			}, 3000)
-			return () => clearTimeout(timer)
+		if (nameInputRef.current) {
+			nameInputRef.current.focus()
 		}
-	}, [submitSuccess, router])
+	}, [])
 
-	const onSubmit = async (values: FormValues) => {
+	// Handle keyboard shortcuts
+	useEffect(() => {
+		const handleKeyDown = (e: KeyboardEvent) => {
+			// Alt+S to submit the form
+			if (e.altKey && e.key === 's') {
+				e.preventDefault()
+				handleSubmit()
+			}
+		}
+
+		window.addEventListener('keydown', handleKeyDown)
+		return () => window.removeEventListener('keydown', handleKeyDown)
+	}, [form])
+
+	// Create the authenticated submission handler
+	const handleSubmit = useAuthAction(async () => {
+		if (!form.formState.isValid) {
+			form.trigger()
+			return
+		}
+
+		const values = form.getValues()
 		setIsSubmitting(true)
-		setSubmitError(null)
-		setSubmitSuccess(false)
 
 		try {
-			const data = await updateCompanyInfo(values)
-			console.log('data:', data)
-			setSubmitSuccess(true)
+			await updateCompanyInfo(values)
+
+			toast({
+				title: 'Company registered successfully',
+				description: "Your business has been set up and you're ready to go.",
+				variant: 'default',
+			})
+
+			// Redirect after successful submission
+			setTimeout(() => {
+				router.push('/dashboard')
+			}, 1500)
 		} catch (error) {
-			setSubmitError(
-				'An error occurred while updating company information. Please try again.',
-			)
+			console.error('Error updating company:', error)
+			toast({
+				title: 'Something went wrong',
+				description:
+					'There was an error registering your company. Please try again.',
+				variant: 'destructive',
+			})
 		} finally {
 			setIsSubmitting(false)
 		}
+	})
+
+	const containerVariants = {
+		hidden: { opacity: 0 },
+		visible: {
+			opacity: 1,
+			transition: {
+				staggerChildren: 0.1,
+			},
+		},
 	}
 
-	const validate = (values: FormValues) => {
-		const errors: Partial<FormValues> = {}
-		if (!values.name) errors.name = 'Company name is required'
-		if (!values.country) errors.country = 'Country is required'
-		return errors
+	const itemVariants = {
+		hidden: { y: 20, opacity: 0 },
+		visible: {
+			y: 0,
+			opacity: 1,
+			transition: {
+				type: 'spring',
+				stiffness: 100,
+			},
+		},
 	}
 
 	return (
-		<div className="flex min-h-screen items-center justify-center bg-gray-50 p-4">
-			<div className="w-full max-w-lg rounded-lg bg-white p-6 shadow-lg">
-				<h1 className="mb-4 text-center text-3xl font-bold text-blue-600">
-					🚀 Welcome to Your Business Journey!
-				</h1>
-				<p className="mb-6 text-center text-lg text-gray-700">
-					We&apos;re thrilled to help you take the first step in showcasing your
-					business to the world. Let&apos;s get your company registered and make
-					your mark!
-				</p>
-				<h3 className="mb-2 text-center font-medium text-black">
-					Company Information
-				</h3>
-				<p className="mb-6 text-center text-sm text-gray-600">
-					All elements on this page are necessary to issue your invoices. No
-					data will appear on your profile.
-				</p>
-				<Form
-					onSubmit={onSubmit}
-					initialValues={{ name, country }}
-					validate={validate}
-					render={({ handleSubmit, submitting, pristine }) => (
-						<form onSubmit={handleSubmit} className="space-y-6">
-							<Field name="name">
-								{({ input, meta }) => (
-									<div className="space-y-2">
-										<label
-											htmlFor="name"
-											className="block text-sm font-medium text-gray-700"
-										>
-											Company Name
-										</label>
-										<Input
-											{...input}
-											id="name"
-											type="text"
-											placeholder="Acme Inc."
-											className={`w-full ${meta.touched && meta.error ? 'border-red-500' : ''}`}
-										/>
-										{meta.touched && meta.error && (
-											<p className="text-sm text-red-500">{meta.error}</p>
-										)}
-									</div>
-								)}
-							</Field>
-							<Field name="country">
-								{({ input, meta }) => (
-									<div className="space-y-2">
-										<label
-											htmlFor="country"
-											className="block text-sm font-medium text-gray-700"
-										>
-											Country of Establishment
-										</label>
-										<select
-											{...input}
-											id="country"
-											className={`w-full rounded-md border border-gray-300 bg-white px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 ${
-												meta.touched && meta.error ? 'border-red-500' : ''
-											}`}
-										>
-											<option value="">Select a country</option>
-											{countries.map((country) => (
-												<option key={country.value} value={country.value}>
-													{country.label}
-												</option>
-											))}
-										</select>
-										{meta.touched && meta.error && (
-											<p className="text-sm text-red-500">{meta.error}</p>
-										)}
-									</div>
-								)}
-							</Field>
-							<ButtonPrimary
-								type="submit"
-								className="w-full"
-								disabled={submitting || pristine || isSubmitting}
-							>
-								{isSubmitting ? (
-									<div className="flex items-center justify-center">
-										<svg
-											className="mr-3 h-5 w-5 animate-spin text-white"
-											xmlns="http://www.w3.org/2000/svg"
-											fill="none"
-											viewBox="0 0 24 24"
-										>
-											<circle
-												className="opacity-25"
-												cx="12"
-												cy="12"
-												r="10"
-												stroke="currentColor"
-												strokeWidth="4"
-											></circle>
-											<path
-												className="opacity-75"
-												fill="currentColor"
-												d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-											></path>
-										</svg>
-										Launching...
-									</div>
-								) : (
-									'🚀 Continue to Launch!'
-								)}
-							</ButtonPrimary>
-						</form>
-					)}
-				/>
-				{submitError && (
-					<div className="mt-4 rounded-md bg-red-50 p-4">
-						<div className="flex">
-							<div className="flex-shrink-0">
-								<svg
-									className="h-5 w-5 text-red-400"
-									viewBox="0 0 20 20"
-									fill="currentColor"
-								>
-									<path
-										fillRule="evenodd"
-										d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
-										clipRule="evenodd"
-									/>
-								</svg>
-							</div>
-							<div className="ml-3">
-								<h3 className="text-sm font-medium text-red-800">Error</h3>
-								<div className="mt-2 text-sm text-red-700">{submitError}</div>
-							</div>
-						</div>
-					</div>
-				)}
-				{submitSuccess && (
-					<div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-						<div className="rounded-lg bg-white p-8 text-center">
-							<div className="mb-4 text-6xl">🎉</div>
-							<h2 className="mb-2 text-2xl font-bold text-green-600">
-								Success!
+		<div className="min-h-screen bg-white text-black">
+			{/* Skip to content link - hidden visually but available for keyboard users */}
+			<a
+				href="#main-content"
+				className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-white focus:p-4 focus:text-black focus:outline-none focus:ring-2 focus:ring-black"
+			>
+				Skip to main content
+			</a>
+
+			<main
+				id="main-content"
+				className="container mx-auto px-6 py-16 md:px-8 md:py-24"
+				tabIndex={-1}
+			>
+				<motion.div
+					initial="hidden"
+					animate="visible"
+					variants={containerVariants}
+					className="mx-auto max-w-5xl"
+				>
+					<motion.div variants={itemVariants} className="mb-16 md:mb-24">
+						<h1 className="mb-6 text-5xl font-extrabold leading-tight tracking-tight md:text-7xl">
+							Register your business.
+							<br />
+							<span className="text-black">Unlock your potential.</span>
+						</h1>
+						<p className="max-w-3xl text-xl text-gray-500 md:text-2xl">
+							Join thousands of businesses that trust our platform for their
+							operations.
+						</p>
+					</motion.div>
+
+					<div className="grid grid-cols-1 gap-16 md:grid-cols-2 md:gap-24">
+						<motion.div variants={itemVariants} className="space-y-8">
+							<h2 className="text-3xl font-extrabold md:text-4xl">
+								Why businesses choose us
 							</h2>
-							<p className="mb-4 text-gray-600">
-								Your company information has been updated.
-							</p>
-							<p className="text-gray-500">
-								Redirecting to dashboard in 3 seconds...
-							</p>
-							<div className="mt-4 h-2 w-full overflow-hidden rounded-full bg-gray-200">
-								<div className="h-full w-full animate-pulse bg-blue-500" />
+
+							<div className="space-y-12">
+								<div>
+									<h3 className="mb-3 text-2xl font-medium">Global Reach</h3>
+									<p className="text-lg text-gray-500">
+										Connect with clients and partners from around the world with
+										our platform's international capabilities.
+									</p>
+								</div>
+
+								<div>
+									<h3 className="mb-3 text-2xl font-medium">
+										Enterprise Security
+									</h3>
+									<p className="text-lg text-gray-500">
+										Your data is protected with industry-leading security
+										measures and compliance standards.
+									</p>
+								</div>
+
+								<div>
+									<h3 className="mb-3 text-2xl font-medium">
+										Seamless Experience
+									</h3>
+									<p className="text-lg text-gray-500">
+										Our intuitive platform makes managing your business
+										operations simple and efficient.
+									</p>
+								</div>
 							</div>
-						</div>
+
+							<div className="pt-8">
+								<div className="flex flex-wrap gap-x-8 gap-y-4">
+									{[
+										{ number: '5,000+', label: 'Businesses' },
+										{ number: '150+', label: 'Countries' },
+										{ number: '99.9%', label: 'Uptime' },
+									].map((stat, index) => (
+										<div key={index}>
+											<p className="text-3xl font-bold">{stat.number}</p>
+											<p className="text-gray-500">{stat.label}</p>
+										</div>
+									))}
+								</div>
+							</div>
+						</motion.div>
+
+						<motion.div variants={itemVariants} className="space-y-12">
+							<h2 className="text-3xl font-extrabold md:text-4xl">
+								Register your company
+							</h2>
+
+							<Form {...form}>
+								<form
+									ref={formRef}
+									onSubmit={(e) => {
+										e.preventDefault()
+										handleSubmit()
+									}}
+									className="space-y-8"
+									noValidate
+								>
+									<FormField
+										control={form.control}
+										name="name"
+										render={({ field }) => (
+											<FormItem className="flex flex-col space-y-4">
+												<label
+													htmlFor="company-name"
+													className="text-xl font-medium"
+												>
+													Company Name
+												</label>
+												<FormControl>
+													<Input
+														id="company-name"
+														placeholder="Enter your company name"
+														{...field}
+														ref={nameInputRef}
+														aria-required="true"
+														className="h-16 rounded-xl border-gray-300 bg-gray-50 px-4 text-lg focus:border-black focus:ring-black"
+														onKeyDown={(e) => {
+															if (e.key === 'Enter') {
+																e.preventDefault()
+																const countrySelect =
+																	document.getElementById('country-select')
+																countrySelect?.focus()
+															}
+														}}
+													/>
+												</FormControl>
+												<FormMessage className="text-base" />
+											</FormItem>
+										)}
+									/>
+
+									<FormField
+										control={form.control}
+										name="country"
+										render={({ field }) => (
+											<FormItem className="flex flex-col space-y-4">
+												<label
+													htmlFor="country-select"
+													className="text-xl font-medium"
+												>
+													Country
+												</label>
+												<FormControl>
+													<div className="relative">
+														<select
+															id="country-select"
+															{...field}
+															className="h-16 w-full appearance-none rounded-xl border-gray-300 bg-gray-50 px-4 text-lg transition-colors duration-200 focus:border-black focus:outline-none focus:ring-2 focus:ring-black"
+															aria-invalid={!!form.formState.errors.country}
+															aria-required="true"
+															onKeyDown={(e) => {
+																if (e.key === 'Enter') {
+																	e.preventDefault()
+																	const submitButton =
+																		document.getElementById('submit-button')
+																	submitButton?.focus()
+																}
+															}}
+														>
+															<option value="" disabled>
+																Select your country
+															</option>
+															{countries.map((country) => (
+																<option
+																	key={country.value}
+																	value={country.value}
+																>
+																	{country.label}
+																</option>
+															))}
+														</select>
+														<div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4">
+															<svg
+																className="h-5 w-5 text-gray-400"
+																xmlns="http://www.w3.org/2000/svg"
+																viewBox="0 0 20 20"
+																fill="currentColor"
+																aria-hidden="true"
+															>
+																<path
+																	fillRule="evenodd"
+																	d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+																	clipRule="evenodd"
+																/>
+															</svg>
+														</div>
+													</div>
+												</FormControl>
+												<FormMessage className="text-base" />
+											</FormItem>
+										)}
+									/>
+
+									<Button
+										id="submit-button"
+										type="button"
+										onClick={handleSubmit}
+										className="mt-12 h-16 w-full rounded-xl bg-black text-xl font-medium text-white hover:bg-gray-900"
+										disabled={isSubmitting}
+										aria-busy={isSubmitting}
+									>
+										{isSubmitting ? (
+											<>
+												<Loader2
+													className="mr-2 h-5 w-5 animate-spin"
+													aria-hidden="true"
+												/>
+												<span>Processing...</span>
+											</>
+										) : (
+											<>
+												<span>Continue</span>
+												<ArrowRight
+													className="ml-2 h-5 w-5"
+													aria-hidden="true"
+												/>
+											</>
+										)}
+									</Button>
+
+									<p className="pt-4 text-center text-sm text-gray-500">
+										By registering, you agree to our{' '}
+										<a
+											href="#"
+											className="rounded-sm text-black hover:underline focus:outline-none focus:ring-2 focus:ring-black"
+										>
+											Terms of Service
+										</a>{' '}
+										and{' '}
+										<a
+											href="#"
+											className="rounded-sm text-black hover:underline focus:outline-none focus:ring-2 focus:ring-black"
+										>
+											Privacy Policy
+										</a>
+										.
+									</p>
+								</form>
+							</Form>
+						</motion.div>
 					</div>
-				)}
-			</div>
+				</motion.div>
+			</main>
 		</div>
 	)
 }
-
-export default ListMyBusiness
