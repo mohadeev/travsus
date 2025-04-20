@@ -2,10 +2,18 @@ import type { Metadata } from 'next'
 import { DashboardShell } from '@/components/dashboard/shell'
 import { DashboardHeader } from '@/components/dashboard/header'
 import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import {
+	Card,
+	CardContent,
+	CardDescription,
+	CardHeader,
+	CardTitle,
+} from '@/components/ui/card'
 import { CalendarDateRangePicker } from '@/components/dashboard/date-range-picker'
 import { Icons } from '@/components/icons'
-import { getDashboardStats, getRecentBookings } from '@/lib/actions'
+import { getDashboardStats, getRecentBookings, getTours } from '@/lib/actions'
+import { RecentBookings } from '@/components/dashboard/recent-bookings'
+import { RecentTours } from '@/components/dashboard/recent-tours'
 
 export const metadata: Metadata = {
 	title: 'Dashboard',
@@ -15,6 +23,7 @@ export const metadata: Metadata = {
 export default async function DashboardPage() {
 	const stats = await getDashboardStats()
 	const recentBookings = await getRecentBookings()
+	const recentTours = await getTours('', 5) // Get 5 most recent tours
 
 	return (
 		<DashboardShell>
@@ -84,6 +93,30 @@ export default async function DashboardPage() {
 						<p className="text-muted-foreground text-xs">
 							+{stats.customerSatisfaction.percentageChange}% from last month
 						</p>
+					</CardContent>
+				</Card>
+			</div>
+			<div className="grid gap-4 md:grid-cols-2">
+				<Card>
+					<CardHeader>
+						<CardTitle>Recent Bookings</CardTitle>
+						<CardDescription>
+							You have received {recentBookings.length} bookings recently.
+						</CardDescription>
+					</CardHeader>
+					<CardContent>
+						<RecentBookings bookings={recentBookings} />
+					</CardContent>
+				</Card>
+				<Card>
+					<CardHeader>
+						<CardTitle>Recent Tours</CardTitle>
+						<CardDescription>
+							Your {recentTours.length} most recent tours.
+						</CardDescription>
+					</CardHeader>
+					<CardContent>
+						<RecentTours tours={recentTours} />
 					</CardContent>
 				</Card>
 			</div>
