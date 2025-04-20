@@ -154,7 +154,7 @@ function ClientHomePage() {
 
 					<CountryCardList
 						locationType="place"
-						cityName="Marrakech"
+						cityId="67e120b734623c9e568da348"
 						layout="row"
 					/>
 					{/* SECTION */}

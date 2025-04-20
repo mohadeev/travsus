@@ -49,7 +49,7 @@ export const newsletterWelcomeTemplate = (data: any) => `
 <div style="max-width: 500px; margin: 0 auto;">
     ${emailTemplatesHeader()}
     ${newsletterHeaderMedia}
-    ${EmailText('📬 Welcome to Our Newsletter, {{name}}! 🎉', 'color: rgb(0, 0, 0); font-size: 50px; line-height: 54px; font-weight: bold;')}
+    ${EmailText('📬 Welcome to Our Newsletter 🎉', 'color: rgb(0, 0, 0); font-size: 50px; line-height: 54px; font-weight: bold;')}
     ${EmailText('Thank you for subscribing! Get ready for exclusive content, insider tips, and the latest updates delivered straight to your inbox. 🚀📚💡 Exciting insights await!', '')}
     ${EmailBlackButton('Explore Our Content', 'https://www.example.com/blog')}
     ${EmailText('Featured Articles Just for You:', 'font-size: 20px; font-weight: 600;')}
