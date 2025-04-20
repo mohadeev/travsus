@@ -137,10 +137,7 @@ export default function DashboardLayout({
 								<Menu className="h-6 w-6 text-black" />
 							</div>
 						</SheetTrigger>
-						<SheetContent
-							side="left"
-							className="h-full w-72 overflow-y-auto bg-white p-0"
-						>
+						<SheetContent side="left" className="h-full w-72 bg-white p-0">
 							<div className="flex w-full items-start border-b bg-white px-6 py-4">
 								<Image
 									src="https://www.travsus.com/_next/static/media/logo.d4fff429.png"
@@ -159,7 +156,7 @@ export default function DashboardLayout({
 			<div className="flex-1 items-start md:grid md:grid-cols-[220px_1fr] lg:grid-cols-[240px_1fr]">
 				<aside
 					className={cn(
-						'fixed top-16 z-30 hidden h-[calc(100vh-4rem)] w-full shrink-0 overflow-y-auto border-r bg-white py-6 pr-2 md:sticky md:block',
+						'fixed top-16 z-30 hidden h-[calc(100vh-4rem)] w-full shrink-0 overflow-y border-r bg-white py-6 pr-2 md:sticky md:block',
 						isCollapsed ? 'md:w-[70px]' : 'md:w-[220px] lg:w-[240px]',
 					)}
 				>
