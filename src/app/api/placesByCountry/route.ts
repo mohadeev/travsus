@@ -4,25 +4,25 @@ import { NextResponse } from 'next/server'
 export async function GET(request: Request) {
 	try {
 		const { searchParams } = new URL(request.url)
-		const countryCode = searchParams.get('countryCode')
+		const countryId = searchParams.get('countryId')
 		const limit = searchParams.get('limit')
 			? parseInt(searchParams.get('limit')!)
 			: 50
 
-		if (!countryCode) {
+		if (!countryId) {
 			return NextResponse.json(
 				{ error: 'Country code is required' },
 				{ status: 400 },
 			)
 		}
 
-		console.log(`🔎 Searching for country by code: ${countryCode}`)
+		console.log(`🔎 Searching for country by code: ${countryId}`)
 		const prisma = placesClient
 
 		// Find the country by code3
 		const country = await prisma.country.findFirst({
 			where: {
-				code3: countryCode,
+				id: countryId,
 			},
 			include: {
 				content: {
@@ -37,13 +37,13 @@ export async function GET(request: Request) {
 
 		if (!country) {
 			return NextResponse.json({
-				message: `No country found with code: ${countryCode}`,
+				message: `No country found with code: ${countryId}`,
 				found: false,
 				data: [],
 			})
 		}
 
-		const countryName = country.content.translations[0]?.text || countryCode
+		const countryName = country.content.translations[0]?.text || countryId
 		console.log(`🌍 Found country: ${countryName} (ID: ${country.id})`)
 
 		// Find cities in this country
@@ -139,8 +139,9 @@ export async function GET(request: Request) {
 			return {
 				id: place.id,
 				name: nameTranslation?.text || 'Unnamed Place',
+				title: nameTranslation?.text || 'Unnamed Place',
 				description: descriptionTranslation?.text || '',
-				image: place.image,
+				image: place.image?.url,
 				coordinates: place.geo,
 				address: place.address,
 				type: place.type,
@@ -203,7 +204,7 @@ export async function GET(request: Request) {
 			country: {
 				id: country.id,
 				name: countryName,
-				code3: countryCode,
+				code3: countryId,
 				image: country.image,
 			},
 			data: placesData,

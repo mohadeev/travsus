@@ -61,8 +61,6 @@ export async function POST(req: Request) {
 		})
 
 		console.log('User created successfully')
-
-		console.log('moroccostartour@gmail.com:', 'moroccostartour@gmail.com')
 		await sendEmail({
 			to: user.email,
 			type: 'verifyEmailAddress',
@@ -73,7 +71,6 @@ export async function POST(req: Request) {
 			},
 		})
 		console.log('Verification email sent')
-
 		console.log('Sending success response')
 		return NextResponse.json({
 			success: true,

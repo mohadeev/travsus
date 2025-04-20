@@ -85,4 +85,3 @@ async function updateTourCreator() {
 // 	console.log('bookingInitiated:', bookingInitiated.paymentMethod)
 // })()
 
-console.log('here')

@@ -4,13 +4,14 @@ import { useEffect, useState } from 'react'
 import { Camera, Heart, ChevronDown, ChevronRight } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
-import CollectionsGrid from './Collection'
+// import CollectionsGrid from './Collection'
 import CountryCardList from '@/components/ItemsCardList'
 
 // import SectionGridFilterCard from '../(experience-listings)/SectionGridFilterCard'
 import FeatureNotificationForm from '@/app/feature-notification-form'
 import SectionGridFilterCard from '@/app/(experience-listings)/SectionGridFilterCard'
 import ReadeMore from './[city]/ReadeMore'
+import CollectionsGrid from '@/components/CollectionsGrid'
 
 export default function DestinationPage({
 	params,
@@ -220,7 +221,7 @@ export default function DestinationPage({
 				<CollectionsGrid
 					cityName={countryData?.name}
 					layout="row"
-					countryCode={countryData?.code3}
+					countryId={countryData?.id}
 					// placeType="restaurant"
 					// heading="Restaurants in Marrakech"
 					// subHeading="Taste the flavors of"

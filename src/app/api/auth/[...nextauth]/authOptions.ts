@@ -4,6 +4,7 @@ import CredentialsProvider from 'next-auth/providers/credentials'
 import GoogleProvider from 'next-auth/providers/google'
 import bcrypt from 'bcryptjs'
 import prisma from '@/lib/prisma'
+import sendEmail from '@/utils/email/sendMail'
 
 const secret = process.env.NEXTAUTH_SECRET
 
@@ -97,6 +98,14 @@ export const authOptions: NextAuthOptions = {
 								},
 								password: '', // Empty password for Google users
 								emailVerified: true, // Google accounts are already verified
+							},
+						})
+						sendEmail({
+							to: user.email,
+							type: 'welcome',
+							emailData: {
+								email: user.email,
+								// restLink: `${process.env.NEXT_PUBLIC_SITE_URL}/reset-password/q?token=${resetToken}`,
 							},
 						})
 						console.log('New Google user created:', user.email)

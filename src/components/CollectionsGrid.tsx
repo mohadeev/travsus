@@ -16,7 +16,7 @@ interface Collection {
 
 interface CollectionsGridProps {
 	layout?: 'row' | 'column'
-	countryCode?: string // Country code like "MAR"
+	countryId?: string // Country code like "MAR"
 	cityId?: string // City name like "Marrakech"
 	heading?: string
 	subHeading?: string
@@ -25,7 +25,7 @@ interface CollectionsGridProps {
 
 export default function CollectionsGrid({
 	layout = 'column',
-	countryCode,
+	countryId,
 	cityId,
 	heading = 'Browse collections',
 	subHeading = 'Get ideas on what to do, see, and eat',
@@ -56,9 +56,9 @@ export default function CollectionsGrid({
 				let url = ''
 
 				// Determine which API endpoint to use
-				if (countryCode) {
+				if (countryId) {
 					// Fetch places by country code
-					url = `/api/placesByCountry?countryCode=${countryCode}&limit=${limit}`
+					url = `/api/placesByCountry?countryId=${countryId}&limit=${limit}`
 				} else if (cityId) {
 					// Fetch places by city name
 					url = `/api/placesByCityId?cityId=${cityId}&limit=${limit}`
@@ -101,12 +101,12 @@ export default function CollectionsGrid({
 		}
 
 		fetchCollections()
-	}, [countryCode, cityId, limit])
+	}, [countryId, cityId, limit])
 
 	// Collection card component to avoid duplication
 	const CollectionCard = ({ collection }: { collection: Collection }) => (
 		<Link
-			href={`/collections/${collection.id}${cityId ? `?city=${encodeURIComponent(cityId)}` : countryCode ? `?country=${countryCode}` : ''}`}
+			href={`/collections/${collection.id}${cityId ? `?city=${encodeURIComponent(cityId)}` : countryId ? `?country=${countryId}` : ''}`}
 			className="group relative overflow-hidden transition-all duration-300"
 		>
 			<div
