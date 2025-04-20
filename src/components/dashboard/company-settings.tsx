@@ -236,7 +236,7 @@ export function CompanySettings() {
 	// Render edit form for company name
 	const renderCompanyNameEditForm = () => (
 		<div className="mt-2 space-y-4">
-			<div className="relative rounded-lg border border-gray-300">
+			<div className="relative w-[110%] rounded-lg border border-gray-300">
 				<label
 					htmlFor="name"
 					className="absolute left-3 top-2 text-xs text-gray-500"
@@ -282,7 +282,7 @@ export function CompanySettings() {
 	// Render edit form for country
 	const renderCountryEditForm = () => (
 		<div className="mt-2 space-y-4">
-			<div className="relative rounded-lg border border-gray-300">
+			<div className="relative w-[110%] rounded-lg border border-gray-300">
 				<label
 					htmlFor="country"
 					className="absolute left-3 top-2 text-xs text-gray-500"
@@ -328,7 +328,7 @@ export function CompanySettings() {
 	// Render edit form for email
 	const renderEmailEditForm = () => (
 		<div className="mt-2 space-y-4">
-			<div className="relative rounded-lg border border-gray-300">
+			<div className="relative w-[110%] rounded-lg border border-gray-300">
 				<label
 					htmlFor="email"
 					className="absolute left-3 top-2 text-xs text-gray-500"
@@ -374,7 +374,7 @@ export function CompanySettings() {
 	// Render edit form for phone number
 	const renderPhoneNumberEditForm = () => (
 		<div className="mt-2 space-y-4">
-			<div className="relative rounded-lg border border-gray-300">
+			<div className="relative w-[110%] rounded-lg border border-gray-300">
 				<label
 					htmlFor="phoneNumber"
 					className="absolute left-3 top-2 text-xs text-gray-500"
@@ -420,7 +420,7 @@ export function CompanySettings() {
 	// Render edit form for admin name
 	const renderAdminNameEditForm = () => (
 		<div className="mt-2 space-y-4">
-			<div className="relative rounded-lg border border-gray-300">
+			<div className="relative w-[110%] rounded-lg border border-gray-300">
 				<label
 					htmlFor="adminName"
 					className="absolute left-3 top-2 text-xs text-gray-500"
@@ -466,7 +466,7 @@ export function CompanySettings() {
 	// Render edit form for address
 	const renderAddressEditForm = () => (
 		<div className="mt-2 space-y-4">
-			<div className="relative rounded-lg border border-gray-300">
+			<div className="relative w-[110%] rounded-lg border border-gray-300">
 				<label
 					htmlFor="address"
 					className="absolute left-3 top-2 text-xs text-gray-500"
@@ -512,7 +512,7 @@ export function CompanySettings() {
 	// Render edit form for registration number
 	const renderRegistrationNumberEditForm = () => (
 		<div className="mt-2 space-y-4">
-			<div className="relative rounded-lg border border-gray-300">
+			<div className="relative w-[110%] rounded-lg border border-gray-300">
 				<label
 					htmlFor="registrationNumber"
 					className="absolute left-3 top-2 text-xs text-gray-500"
@@ -561,7 +561,7 @@ export function CompanySettings() {
 	// Render edit form for bank name
 	const renderBankNameEditForm = () => (
 		<div className="mt-2 space-y-4">
-			<div className="relative rounded-lg border border-gray-300">
+			<div className="relative w-[110%] rounded-lg border border-gray-300">
 				<label
 					htmlFor="bankName"
 					className="absolute left-3 top-2 text-xs text-gray-500"
@@ -607,7 +607,7 @@ export function CompanySettings() {
 	// Render edit form for account number
 	const renderAccountNumberEditForm = () => (
 		<div className="mt-2 space-y-4">
-			<div className="relative rounded-lg border border-gray-300">
+			<div className="relative w-[110%] rounded-lg border border-gray-300">
 				<label
 					htmlFor="accountNumber"
 					className="absolute left-3 top-2 text-xs text-gray-500"
