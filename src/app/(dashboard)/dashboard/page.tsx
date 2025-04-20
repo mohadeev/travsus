@@ -28,13 +28,13 @@ export default async function DashboardPage() {
 	return (
 		<DashboardShell>
 			<DashboardHeader heading="Dashboard" text="Overview of your tour agency">
-				<div className="flex items-center gap-2">
+				{/* <div className="flex items-center gap-2">
 					<CalendarDateRangePicker />
 					<Button>
 						<Icons.download className="mr-2 h-4 w-4" />
 						Download
 					</Button>
-				</div>
+				</div> */}
 			</DashboardHeader>
 			<div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
 				<Card>
