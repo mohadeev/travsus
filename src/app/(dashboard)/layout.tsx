@@ -29,7 +29,6 @@ export default function DashboardLayout({
 			try {
 				setIsLoading(true)
 				const companyData = await getCompanyData()
-				console.log('companyData: ', companyData)
 
 				// Check if company data exists and has essential fields
 				if (
@@ -79,31 +78,27 @@ export default function DashboardLayout({
 									<span className="sr-only">Toggle Menu</span>
 								</Button>
 							</SheetTrigger>
-							<SheetContent side="left" className="w-72">
-								<div className="flex flex-col items-center py-4">
+							<SheetContent side="left" className="w-72 bg-white p-0">
+								<div className="flex w-full items-start border-b bg-white px-6 py-4">
 									<Image
 										src="https://www.travsus.com/_next/static/media/logo.d4fff429.png"
 										alt="TRAVSUS Logo"
 										width={120}
 										height={40}
 									/>
-									<span className="text-muted-foreground mt-1 text-xs font-medium">
-										Business1
-									</span>
 								</div>
-								<Nav isCollapsed={false} />
+								<div className="h-full bg-white">
+									<Nav isCollapsed={false} />
+								</div>
 							</SheetContent>
 						</Sheet>
-						<Link href="/" className="hidden flex-col items-center md:flex">
+						<Link href="/" className="hidden md:block">
 							<Image
 								src="https://www.travsus.com/_next/static/media/logo.d4fff429.png"
 								alt="TRAVSUS Logo"
 								width={100}
 								height={40}
 							/>
-							<span className="text-muted-foreground mt-1 text-xs font-medium">
-								Business
-							</span>
 						</Link>
 
 						<p
@@ -140,22 +135,18 @@ export default function DashboardLayout({
 			<div className="flex-1 items-start md:grid md:grid-cols-[220px_1fr] lg:grid-cols-[240px_1fr]">
 				<aside
 					className={cn(
-						'fixed top-16 z-30 hidden h-[calc(100vh-4rem)] w-full shrink-0 overflow-y-auto border-r py-6 pr-2 md:sticky md:block',
+						'fixed top-16 z-30 hidden h-[calc(100vh-4rem)] w-full shrink-0 overflow-y-auto border-r bg-white py-6 pr-2 md:sticky md:block',
 						isCollapsed ? 'md:w-[70px]' : 'md:w-[220px] lg:w-[240px]',
 					)}
 				>
 					{!isCollapsed && (
-						<div className="mb-6 flex flex-col items-center md:hidden">
+						<div className="mb-6 px-6 md:hidden">
 							<Image
 								src="https://www.travsus.com/_next/static/media/logo.d4fff429.png"
 								alt="TRAVSUS Logo"
 								width={120}
 								height={40}
-								className="mb-1"
 							/>
-							<span className="text-muted-foreground text-xs font-medium">
-								Business
-							</span>
 						</div>
 					)}
 					<Nav isCollapsed={isCollapsed} />

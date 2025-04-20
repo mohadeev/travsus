@@ -10,6 +10,7 @@ import {
 	Home,
 	Map,
 	Settings,
+	Users,
 	Plus,
 	Clock,
 	Check,
@@ -21,8 +22,8 @@ import { cn } from '@/lib/utils'
 import {
 	Tooltip,
 	TooltipContent,
-	TooltipProvider,
 	TooltipTrigger,
+	TooltipProvider,
 } from '@/components/ui/tooltip'
 
 interface NavProps {
@@ -33,31 +34,31 @@ export function Nav({ isCollapsed }: NavProps) {
 	const pathname = usePathname()
 
 	return (
-		<div
-			data-collapsed={isCollapsed}
-			className="group flex flex-col gap-4 py-2 data-[collapsed=true]:py-2"
-		>
-			<nav className="grid gap-1 px-2 group-[[data-collapsed=true]]:justify-center group-[[data-collapsed=true]]:px-2">
-				<TooltipProvider delayDuration={0}>
+		<TooltipProvider>
+			<div
+				data-collapsed={isCollapsed}
+				className="group flex flex-col gap-4 bg-white py-2 data-[collapsed=true]:py-2"
+			>
+				<nav className="grid gap-1 px-2 group-[[data-collapsed=true]]:justify-center group-[[data-collapsed=true]]:px-2">
 					{navItems.map((item, index) => {
 						const isActive = pathname === item.href
 						return (
-							<Tooltip key={index}>
+							<Tooltip key={index} delayDuration={0}>
 								<TooltipTrigger asChild>
 									<Link
 										href={item.href}
 										className={cn(
-											'flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors',
+											'hover:bg-accent hover:text-accent-foreground flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium',
 											isActive
-												? 'bg-slate-800 text-white'
-												: 'text-muted-foreground hover:bg-slate-100 hover:text-slate-900',
+												? 'bg-accent text-accent-foreground'
+												: 'transparent',
 											isCollapsed ? 'justify-center' : '',
 										)}
 									>
 										<item.icon
 											className={cn(
 												'h-5 w-5',
-												isActive ? 'text-white' : 'text-muted-foreground',
+												isActive ? 'text-primary' : 'text-muted-foreground',
 											)}
 										/>
 										{!isCollapsed && <span>{item.title}</span>}
@@ -66,7 +67,7 @@ export function Nav({ isCollapsed }: NavProps) {
 								{isCollapsed && (
 									<TooltipContent
 										side="right"
-										className="flex items-center gap-4 border-slate-700 bg-slate-800 text-white"
+										className="flex items-center gap-4 border-gray-200 bg-white"
 									>
 										{item.title}
 									</TooltipContent>
@@ -74,112 +75,88 @@ export function Nav({ isCollapsed }: NavProps) {
 							</Tooltip>
 						)
 					})}
-				</TooltipProvider>
-			</nav>
+				</nav>
 
-			{!isCollapsed && (
-				<>
-					<div className="mt-2">
-						<div className="px-3 py-2">
-							<h2 className="mb-2 px-4 text-lg font-semibold tracking-tight">
-								Tours
-							</h2>
-							<div className="space-y-1">
-								{tourItems.map((item, index) => {
-									const isActive = pathname === item.href
-									return (
+				{!isCollapsed && (
+					<>
+						<div className="mt-2">
+							<div className="px-3 py-2">
+								<h2 className="mb-2 px-4 text-lg font-semibold tracking-tight">
+									Tours
+								</h2>
+								<div className="space-y-1">
+									{tourItems.map((item, index) => (
 										<Link
 											key={index}
 											href={item.href}
 											className={cn(
-												'flex w-full items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors',
-												isActive
-													? 'bg-slate-100 text-slate-900'
-													: 'text-muted-foreground hover:bg-slate-100 hover:text-slate-900',
+												'hover:bg-accent hover:text-accent-foreground flex w-full items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium',
+												pathname === item.href
+													? 'bg-accent text-accent-foreground'
+													: 'transparent',
 											)}
 										>
-											<item.icon
-												className={cn(
-													'h-4 w-4',
-													isActive ? 'text-slate-900' : '',
-												)}
-											/>
+											<item.icon className="h-4 w-4" />
 											{item.title}
 										</Link>
-									)
-								})}
+									))}
+								</div>
 							</div>
 						</div>
-					</div>
 
-					<div className="mt-2">
-						<div className="px-3 py-2">
-							<h2 className="mb-2 px-4 text-lg font-semibold tracking-tight">
-								Bookings
-							</h2>
-							<div className="space-y-1">
-								{bookingItems.map((item, index) => {
-									const isActive = pathname === item.href
-									return (
+						<div className="mt-2">
+							<div className="px-3 py-2">
+								<h2 className="mb-2 px-4 text-lg font-semibold tracking-tight">
+									Bookings
+								</h2>
+								<div className="space-y-1">
+									{bookingItems.map((item, index) => (
 										<Link
 											key={index}
 											href={item.href}
 											className={cn(
-												'flex w-full items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors',
-												isActive
-													? 'bg-slate-100 text-slate-900'
-													: 'text-muted-foreground hover:bg-slate-100 hover:text-slate-900',
+												'hover:bg-accent hover:text-accent-foreground flex w-full items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium',
+												pathname === item.href
+													? 'bg-accent text-accent-foreground'
+													: 'transparent',
 											)}
 										>
-											<item.icon
-												className={cn(
-													'h-4 w-4',
-													isActive ? 'text-slate-900' : '',
-												)}
-											/>
+											<item.icon className="h-4 w-4" />
 											{item.title}
 										</Link>
-									)
-								})}
+									))}
+								</div>
 							</div>
 						</div>
-					</div>
 
-					<div className="mt-2">
-						<div className="px-3 py-2">
-							<h2 className="mb-2 px-4 text-lg font-semibold tracking-tight">
-								Finance
-							</h2>
-							<div className="space-y-1">
-								{financeItems.map((item, index) => {
-									const isActive = pathname === item.href
-									return (
+						<div className="mt-2">
+							<div className="px-3 py-2">
+								<h2 className="mb-2 px-4 text-lg font-semibold tracking-tight">
+									Finance
+								</h2>
+								<div className="space-y-1">
+									{financeItems.map((item, index) => (
 										<Link
 											key={index}
 											href={item.href}
 											className={cn(
-												'flex w-full items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors',
-												isActive
-													? 'bg-slate-100 text-slate-900'
-													: 'text-muted-foreground hover:bg-slate-100 hover:text-slate-900',
+												'hover:bg-accent hover:text-accent-foreground flex w-full items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium',
+												pathname === item.href
+													? 'bg-accent text-accent-foreground'
+													: 'transparent',
 											)}
 										>
-											<item.icon
-												className={cn(
-													'h-4 w-4',
-													isActive ? 'text-slate-900' : '',
-												)}
-											/>
+											<item.icon className="h-4 w-4" />
 											{item.title}
 										</Link>
-									)
-								})}
+									))}
+								</div>
 							</div>
 						</div>
-					</div>
-				</>
-			)}
-		</div>
+					</>
+				)}
+			</div>
+		</TooltipProvider>
 	)
 }
 
@@ -198,6 +175,11 @@ const navItems = [
 		title: 'Bookings',
 		href: '/dashboard/bookings',
 		icon: Calendar,
+	},
+	{
+		title: 'Customers',
+		href: '/dashboard/customers',
+		icon: Users,
 	},
 	{
 		title: 'Finance',

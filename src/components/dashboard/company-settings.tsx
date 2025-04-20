@@ -688,7 +688,7 @@ export function CompanySettings() {
 	}
 
 	return (
-		<div className="mx-auto max-w-4xl px-6 py-8">
+		<div className="max-w-full px-6 py-8">
 			{/* Breadcrumb */}
 			<div className="mb-6 flex items-center text-sm">
 				<Link

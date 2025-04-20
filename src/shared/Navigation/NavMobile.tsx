@@ -111,10 +111,10 @@ const NavMobile: React.FC<NavMobileProps> = ({
 			<div className="px-5 py-6">
 				<Logo />
 				<div className="mt-5 flex flex-col text-sm text-neutral-700 dark:text-neutral-300">
-					<span>
+					{/* <span>
 						Discover the most outstanding articles on all topics of life. Write
 						your stories and share them
-					</span>
+					</span> */}
 
 					<div className="mt-4 flex items-center justify-between">
 						<SocialsList itemClass="w-9 h-9 flex items-center justify-center rounded-full bg-neutral-100 text-xl dark:bg-neutral-800 dark:text-neutral-300" />
