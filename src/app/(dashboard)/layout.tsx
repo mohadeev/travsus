@@ -137,7 +137,10 @@ export default function DashboardLayout({
 								<Menu className="h-6 w-6 text-black" />
 							</div>
 						</SheetTrigger>
-						<SheetContent side="left" className="w-72 bg-white p-0">
+						<SheetContent
+							side="left"
+							className="h-full w-72 overflow-y-auto bg-white p-0"
+						>
 							<div className="flex w-full items-start border-b bg-white px-6 py-4">
 								<Image
 									src="https://www.travsus.com/_next/static/media/logo.d4fff429.png"
@@ -146,7 +149,7 @@ export default function DashboardLayout({
 									height={40}
 								/>
 							</div>
-							<div className="h-full bg-white">
+							<div className="h-full overflow-y-auto bg-white">
 								<Nav isCollapsed={false} />
 							</div>
 						</SheetContent>
@@ -172,7 +175,7 @@ export default function DashboardLayout({
 					)}
 					<Nav isCollapsed={isCollapsed} />
 				</aside>
-				<main className="flex w-full flex-col overflow-hidden px-4 pt-6 md:px-6">
+				<main className="flex w-full flex-col overflow-y-visible px-4 pt-6 md:px-6">
 					{children}
 				</main>
 			</div>
