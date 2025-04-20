@@ -6,10 +6,9 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname, useRouter } from 'next/navigation'
 import { useState, useEffect } from 'react'
-import { ChevronRight, Menu } from 'lucide-react'
+import { Menu } from 'lucide-react'
 
 import { cn } from '@/lib/utils'
-import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { Nav } from '@/components/dashboard/nav'
 import { getCompanyData } from '@/lib/api-client'
@@ -70,29 +69,19 @@ export default function DashboardLayout({
 		<div className="flex min-h-screen flex-col">
 			<header className="sticky top-0 z-40 border-b bg-white">
 				<div className="flex h-16 items-center justify-between px-4 py-4 md:px-6">
-					<div className="flex items-center gap-2">
-						<Sheet>
-							<SheetTrigger asChild>
-								<Button variant="outline" size="icon" className="md:hidden">
-									<Menu className="h-5 w-5" />
-									<span className="sr-only">Toggle Menu</span>
-								</Button>
-							</SheetTrigger>
-							<SheetContent side="left" className="w-72 bg-white p-0">
-								<div className="flex w-full items-start border-b bg-white px-6 py-4">
-									<Image
-										src="https://www.travsus.com/_next/static/media/logo.d4fff429.png"
-										alt="TRAVSUS Logo"
-										width={120}
-										height={40}
-									/>
-								</div>
-								<div className="h-full bg-white">
-									<Nav isCollapsed={false} />
-								</div>
-							</SheetContent>
-						</Sheet>
-						<Link href="/" className="hidden md:block">
+					{/* Mobile: Logo on left */}
+					<div className="md:hidden">
+						<Image
+							src="https://www.travsus.com/_next/static/media/logo.d4fff429.png"
+							alt="TRAVSUS Logo"
+							width={100}
+							height={40}
+						/>
+					</div>
+
+					{/* Desktop: Logo and collapse button */}
+					<div className="hidden items-center gap-2 md:flex">
+						<Link href="/">
 							<Image
 								src="https://www.travsus.com/_next/static/media/logo.d4fff429.png"
 								alt="TRAVSUS Logo"
@@ -101,35 +90,67 @@ export default function DashboardLayout({
 							/>
 						</Link>
 
-						<p
+						<button
 							onClick={() => setIsCollapsed(!isCollapsed)}
-							className={cn(
-								'flex hidden cursor-pointer items-center gap-2 rounded-lg bg-white px-3 py-2 text-sm font-medium text-white transition-colors md:flex',
-							)}
+							className="flex items-center gap-2 rounded-lg bg-white px-3 py-2 text-sm font-medium transition-colors"
 						>
-							<span className={cn('h-5 w-5 text-black')}>
-								<ChevronRight
-									className={cn(
-										'h-4 w-4 transition-all',
-										isCollapsed ? '' : 'rotate-180',
-									)}
-								/>{' '}
+							<span className="h-5 w-5 text-black">
+								{isCollapsed ? (
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="24"
+										height="24"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										strokeWidth="2"
+										strokeLinecap="round"
+										strokeLinejoin="round"
+										className="h-4 w-4"
+									>
+										<polyline points="9 18 15 12 9 6" />
+									</svg>
+								) : (
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="24"
+										height="24"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										strokeWidth="2"
+										strokeLinecap="round"
+										strokeLinejoin="round"
+										className="h-4 w-4"
+									>
+										<polyline points="15 18 9 12 15 6" />
+									</svg>
+								)}
 							</span>
-						</p>
+						</button>
 					</div>
-					<nav className="flex items-center">
-						<p
-							className={cn(
-								'flex cursor-pointer items-center gap-2 rounded-lg bg-white px-3 py-2 text-sm font-medium text-white transition-colors',
-							)}
-						>
-							<span className={cn('h-5 w-5 text-black')}>
-								<ChevronRight
-									className={cn('h-4 w-4 rotate-180 transition-all')}
-								/>{' '}
-							</span>
-						</p>
-					</nav>
+
+					{/* Mobile: Menu button on right */}
+					<Sheet>
+						<SheetTrigger asChild>
+							<div className="cursor-pointer md:hidden">
+								<Menu className="h-6 w-6 text-black" />
+							</div>
+						</SheetTrigger>
+						<SheetContent side="left" className="w-72 bg-white p-0">
+							<div className="flex w-full items-start border-b bg-white px-6 py-4">
+								<Image
+									src="https://www.travsus.com/_next/static/media/logo.d4fff429.png"
+									alt="TRAVSUS Logo"
+									width={120}
+									height={40}
+								/>
+							</div>
+							<div className="h-full bg-white">
+								<Nav isCollapsed={false} />
+							</div>
+						</SheetContent>
+					</Sheet>
 				</div>
 			</header>
 			<div className="flex-1 items-start md:grid md:grid-cols-[220px_1fr] lg:grid-cols-[240px_1fr]">
