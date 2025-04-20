@@ -54,6 +54,7 @@ export default function HomeBanner() {
 						Flexibility
 					</h1>
 					<p className="mx-auto mb-10 max-w-2xl text-lg text-black sm:text-xl md:text-2xl">
+						{/* HOTELS + HOMES + TOURS = TRAVSUS */}
 						Book, Cancel, Refund - Anytime, Anywhere only in TRAVSUS.
 					</p>
 				</div>

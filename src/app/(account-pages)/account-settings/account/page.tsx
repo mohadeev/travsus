@@ -107,9 +107,9 @@ export default function AccountPage() {
 							{userName}, {userEmail}
 						</span>
 						<span className="mx-2">·</span>
-						<Link href="#" className="font-medium text-black underline">
+						{/* <Link href="#" className="font-medium text-black underline">
 							Go to profile
-						</Link>
+						</Link> */}
 					</div>
 				</div>
 
