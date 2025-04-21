@@ -54,7 +54,7 @@ export const newsletterWelcomeTemplate = (data: any) => `
     ${EmailBlackButton('Explore Our Content', 'https://www.example.com/blog')}
     ${EmailText('Featured Articles Just for You:', 'font-size: 20px; font-weight: 600;')}
     ${featuredArticleCard}
-    ${EmailBlackButton('Read More', 'https://www.example.com/featured-articles')}
+    ${EmailBlackButton('Read More', 'https://www.travsus.com/blog')}
     ${emailTemplatesFooter()}
 </div>
 </body>
