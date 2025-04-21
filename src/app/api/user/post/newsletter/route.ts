@@ -1,14 +1,21 @@
 import { NextResponse } from 'next/server'
-import { NextRequest } from 'next/server'
+import type { NextRequest } from 'next/server'
 import prisma from '@/lib/prisma'
 import { rateLimit } from '@/lib/rateLimit'
 import sendEmail from '@/utils/email/sendMail'
 
 const limiter = rateLimit(4, 60000) // 4 requests per minute
+const TEST_EMAILS = ['skendoulmohamed@gmail.com']
+const TEST_DOMAINS = ['travsus.com']
 
 function isValidEmail(email: string): boolean {
 	const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 	return emailRegex.test(email) && email.length <= 60
+}
+
+function isTestEmail(email: string): boolean {
+	if (TEST_EMAILS.includes(email)) return true
+	return TEST_DOMAINS.some((domain) => email.endsWith(`@${domain}`))
 }
 
 export async function POST(req: NextRequest) {
@@ -29,6 +36,28 @@ export async function POST(req: NextRequest) {
 					return
 				}
 
+				// For test emails, we can bypass some validation and DB operations
+				if (isTestEmail(email)) {
+					console.log('Sending test email to:', email)
+
+					// Send test email
+					await sendEmail({
+						to: email,
+						subject: 'Test Newsletter Welcome',
+						message: '',
+						type: 'newsletterWelcomeTemplate',
+						emailData: {
+							// Test data can be added here
+						},
+					})
+
+					resolve(
+						NextResponse.json({ code: 'TEST_EMAIL_SENT' }, { status: 200 }),
+					)
+					return
+				}
+
+				// Normal flow for non-test emails
 				if (!types || !Array.isArray(types) || types.length === 0) {
 					resolve(
 						NextResponse.json({ code: 'TYPES_REQUIRED' }, { status: 400 }),
@@ -56,30 +85,14 @@ export async function POST(req: NextRequest) {
 					},
 				})
 
-				// const email = 'skendoulmohamed@gmail.com'
-				// const fullname = ''
-				sendEmail({
+				await sendEmail({
 					to: email,
-					subject: '',
+					subject: 'Welcome to Our Newsletter',
 					message: '',
 					type: 'newsletterWelcomeTemplate',
-					emailData: {
-						// ...{
-						// 	name: fullname,
-						// 	email,
-						// 	restLink: `${process.env.NEXT_PUBLIC_SITE_URL}/reset-password/q?token=${'resetToken'}`,
-						// },
-						...{
-							// name: 'Jane Smith',
-							// transactionId: 'TRV-PAY-98765',
-							// paymentDate: '2023-06-30',
-							// amount: '$500.00',
-							// paymentMethod: 'Visa ending in 1234',
-							// description: 'Deposit for Paris trip (Booking Ref: TRVS12345)',
-							// receiptLink: 'https://www.travsus.com/payments/TRV-PAY-98765',
-						},
-					},
+					emailData: {},
 				})
+
 				resolve(
 					NextResponse.json({ code: 'SUBSCRIPTION_SUCCESS' }, { status: 201 }),
 				)
