@@ -83,7 +83,7 @@ export default function BlogPostPage() {
 	return (
 		<div className="container mx-auto p-4">
 			<article className="mx-auto max-w-3xl">
-				<h1 className="mb-4 text-5xl font-extrabold">{post.title}</h1>
+				<h1 className="mb-4 text-4xl font-bold">{post.title}</h1>
 				<div className="mb-6 flex items-center justify-between text-gray-500">
 					<div></div>
 					{isAuthor && (
@@ -114,6 +114,10 @@ export default function BlogPostPage() {
 										month: 'long',
 										day: 'numeric',
 									})}
+								</span>
+								<span className="mx-2 font-semibold">·</span>
+								<span className="text-neutral-700 dark:text-neutral-300">
+									6 min read
 								</span>
 							</div>
 						</div>

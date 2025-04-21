@@ -1,13 +1,34 @@
-import { getBlogPost } from '@/app/actions/getBlogPost'
+import type React from 'react'
 import getUserData from '@/app/api/user/getUserData'
-import { Metadata } from 'next'
+import type { Metadata } from 'next'
+import { notFound } from 'next/navigation'
+
+// Helper function to fetch post data from API
+async function getPostFromApi(id: string) {
+	const response = await fetch(
+		`${process.env.NEXT_PUBLIC_SITE_URL || ''}/api/blog/${id}`,
+		{
+			cache: 'no-store',
+		},
+	)
+
+	if (!response.ok) {
+		if (response.status === 404) {
+			return null
+		}
+		throw new Error(`Failed to fetch post: ${response.statusText}`)
+	}
+
+	return response.json()
+}
 
 export async function generateMetadata({
 	params,
 }: {
 	params: { slug: string }
 }): Promise<Metadata> {
-	const post: any = (await getBlogPost(params.slug)) || {}
+	console.log('slug:', params.slug)
+	const post = await getPostFromApi(params.slug)
 
 	if (!post) {
 		return {
@@ -15,23 +36,24 @@ export async function generateMetadata({
 		}
 	}
 
-	const { title, excerpt, author }: any = post
-	const authorName: any =
+	const { title, excerpt, author } = post
+	const authorName =
 		author?.username ||
 		`${author?.accountData?.firstname} ${author?.accountData?.lastname}`
 
 	return {
-		title: `${title} | Travsus`,
+		title: `${title} | Your Blog Name`,
 		description: excerpt,
 		openGraph: {
 			title: title,
 			description: excerpt,
 			type: 'article',
 			authors: [authorName],
-			publishedTime: `${post.createdAt}`,
+			publishedTime: post.createdAt,
 			images: [
 				{
-					url: post.featuredImage || 'https://travsus.com/default-og-image.jpg',
+					url:
+						post.featuredImage || 'https://yourblog.com/default-og-image.jpg',
 					width: 1200,
 					height: 630,
 					alt: title,
@@ -43,11 +65,11 @@ export async function generateMetadata({
 			title: title,
 			description: excerpt,
 			images: [
-				post.featuredImage || 'https://travsus.com/default-twitter-image.jpg',
+				post.featuredImage || 'https://yourblog.com/default-twitter-image.jpg',
 			],
 		},
 		alternates: {
-			canonical: `https://travsus.com/blog/${params.slug}`,
+			canonical: `https://yourblog.com/blog/${params.slug}`,
 		},
 	}
 }
@@ -59,13 +81,12 @@ export default async function BlogPostLayout({
 	children: React.ReactNode
 	params: { slug: string }
 }) {
-	const post = await getBlogPost(params.slug)
+	const post = await getPostFromApi(params.slug)
 	const { id: currentUserId } = (await getUserData()) || {}
 
 	if (!post) {
-		return null // or a 404 component
+		notFound()
 	}
-	const { author }: any = post
 
 	const jsonLd = {
 		'@context': 'https://schema.org',
@@ -76,16 +97,17 @@ export default async function BlogPostLayout({
 			'@type': 'Person',
 			name:
 				post.author?.username ||
-				`${author?.accountData?.firstname} ${author?.accountData?.lastname}`,
+				`${post.author?.accountData?.firstname} ${post.author?.accountData?.lastname}`,
 		},
 		datePublished: post.createdAt,
-		image: post.featuredImage || 'https://travsus.com/default-schema-image.jpg',
+		image:
+			post.featuredImage || 'https://yourblog.com/default-schema-image.jpg',
 		publisher: {
 			'@type': 'Organization',
 			name: 'Your Blog Name',
 			logo: {
 				'@type': 'ImageObject',
-				url: 'https://travsus.com/logo.png',
+				url: 'https://yourblog.com/logo.png',
 			},
 		},
 	}
