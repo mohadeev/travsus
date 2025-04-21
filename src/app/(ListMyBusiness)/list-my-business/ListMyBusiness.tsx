@@ -165,7 +165,7 @@ export default function ListMyBusiness({
 					className="mx-auto max-w-5xl"
 				>
 					<motion.div variants={itemVariants} className="mb-16 md:mb-24">
-						<h1 className="mb-6 text-5xl font-extrabold leading-tight tracking-tight md:text-7xl">
+						<h1 className="mb-6 text-7xl font-extrabold leading-tight tracking-tight ">
 							Register your business.
 							<br />
 							<span className="text-black">Unlock your potential.</span>
