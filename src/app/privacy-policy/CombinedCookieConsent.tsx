@@ -9,6 +9,7 @@ import { Label } from '@/components/ui/label'
 import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
 import Logo from '@/shared/Logo'
+import ButtonSecondary from '@/shared/ButtonSecondary'
 
 type ConsentOption = {
 	id: string
@@ -291,20 +292,20 @@ export function CombinedCookieConsent() {
 				</div>
 
 				<div className="flex flex-col justify-end gap-2 sm:flex-row">
-					<Button
+					<ButtonSecondary
 						variant="outline"
 						onClick={handleRejectAll}
 						className="sm:order-1"
 					>
 						Reject All
-					</Button>
-					<Button
+					</ButtonSecondary>
+					<ButtonSecondary
 						variant="outline"
 						onClick={handleShowPurposes}
-						className="sm:order-2"
+						className=":order-2"
 					>
 						Show Purposes
-					</Button>
+					</ButtonSecondary>
 					<Button onClick={handleAgreeAll} className="sm:order-3">
 						I Accept
 					</Button>
