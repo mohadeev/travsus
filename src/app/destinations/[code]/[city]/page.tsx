@@ -193,7 +193,7 @@ export default function DestinationPage({
 					{/* Sponsored text moved outside the image */}
 					<p className="mt-1 px-4 text-xs text-black md:mt-2 md:px-0 md:text-sm">
 						{countryData?.name === 'Morocco'
-							? 'Sponsored by' + countryData?.name
+							? 'Sponsored by ' + countryData?.name
 							: ''}
 					</p>
 				</div>
