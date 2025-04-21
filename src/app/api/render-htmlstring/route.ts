@@ -1,5 +1,6 @@
 import { bookingConfirmation } from '@/components/email-templates/bookingConfirmation/bookingConfirmation'
 import { emailTemplatesFooter } from '@/components/email-templates/EmailTemplatesFooter'
+import { newsletterWelcomeTemplate } from '@/components/email-templates/newsletterWelcomeTemplate/newsletterWelcomeTemplate'
 import { thankyouEmailTemplate } from '@/components/email-templates/thank-you-email/thank-you-email'
 import { generateInvoice } from '@/components/pdf-templates/generateInvoice'
 import { generateReceipt } from '@/components/pdf-templates/generateReceipt'
@@ -665,8 +666,8 @@ table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: under
 	const invoiceHtml = await generateInvoice(bookingData)
 	const receiptHtml = await generateReceipt(bookingData)
 	const bookingConfirmationHtml = await bookingConfirmation(bookingData)
-
-	return new NextResponse(html, {
+	const data = await newsletterWelcomeTemplate({})
+	return new NextResponse(data, {
 		status: 200,
 		headers: {
 			'Content-Type': 'text/html',

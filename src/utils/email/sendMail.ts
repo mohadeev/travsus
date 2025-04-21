@@ -17,7 +17,7 @@ const sendEmail = async ({ to, subject, message, type, emailData }: any) => {
 		let emailSender = 'notifications@travsus.com' // Default sender
 
 		if (emailTyp && emailTyp.template) {
-			emailContent = await compileTemplate(emailTyp.template, emailData)
+			emailContent = await compileTemplate(await emailTyp.template, emailData)
 			emailSubject = emailTyp.subject
 			emailSender = emailTyp.sender
 		}

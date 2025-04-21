@@ -12,31 +12,6 @@ function isValidEmail(email: string): boolean {
 }
 
 export async function POST(req: NextRequest) {
-	const email = 'skendoulmohamed@gmail.com'
-	const fullname = 'Skendoul Mohamed'
-	sendEmail({
-		to: email,
-		subject: '',
-		message: '',
-		type: 'newsletterWelcomeTemplate',
-		emailData: {
-			...{
-				name: fullname,
-				email,
-				restLink: `${process.env.NEXT_PUBLIC_SITE_URL}/reset-password/q?token=${'resetToken'}`,
-			},
-			...{
-				name: 'Jane Smith',
-				transactionId: 'TRV-PAY-98765',
-				paymentDate: '2023-06-30',
-				amount: '$500.00',
-				paymentMethod: 'Visa ending in 1234',
-				description: 'Deposit for Paris trip (Booking Ref: TRVS12345)',
-				receiptLink: 'https://www.travsus.com/payments/TRV-PAY-98765',
-			},
-		},
-	})
-	
 	return new Promise<NextResponse>((resolve) => {
 		limiter(req, NextResponse.next(), async () => {
 			try {
@@ -68,7 +43,7 @@ export async function POST(req: NextRequest) {
 
 				if (existingSubscription) {
 					resolve(
-						NextResponse.json({ code: 'ALREADY_SUBSCRIBED' }, { status: 400 }),
+						NextResponse.json({ code: 'ALREADY_SUBSCRIBED' }, { status: 200 }),
 					)
 					return
 				}
@@ -81,6 +56,30 @@ export async function POST(req: NextRequest) {
 					},
 				})
 
+				// const email = 'skendoulmohamed@gmail.com'
+				// const fullname = ''
+				sendEmail({
+					to: email,
+					subject: '',
+					message: '',
+					type: 'newsletterWelcomeTemplate',
+					emailData: {
+						// ...{
+						// 	name: fullname,
+						// 	email,
+						// 	restLink: `${process.env.NEXT_PUBLIC_SITE_URL}/reset-password/q?token=${'resetToken'}`,
+						// },
+						...{
+							// name: 'Jane Smith',
+							// transactionId: 'TRV-PAY-98765',
+							// paymentDate: '2023-06-30',
+							// amount: '$500.00',
+							// paymentMethod: 'Visa ending in 1234',
+							// description: 'Deposit for Paris trip (Booking Ref: TRVS12345)',
+							// receiptLink: 'https://www.travsus.com/payments/TRV-PAY-98765',
+						},
+					},
+				})
 				resolve(
 					NextResponse.json({ code: 'SUBSCRIPTION_SUCCESS' }, { status: 201 }),
 				)
