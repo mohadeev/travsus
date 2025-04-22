@@ -12,6 +12,7 @@ import { cn } from '@/lib/utils'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { Nav } from '@/components/dashboard/nav'
 import { getCompanyData } from '@/lib/api-client'
+import { CompanySelector } from '@/components/dashboard/company-selector'
 
 export default function DashboardLayout({
 	children,
@@ -69,18 +70,9 @@ export default function DashboardLayout({
 		<div className="flex min-h-screen flex-col">
 			<header className="sticky top-0 z-40 border-b bg-white">
 				<div className="flex h-16 items-center justify-between px-4 py-4 md:px-6">
-					{/* Mobile: Logo on left */}
-					<div className="md:hidden">
-						<Image
-							src="https://www.travsus.com/_next/static/media/logo.d4fff429.png"
-							alt="TRAVSUS Logo"
-							width={100}
-							height={40}
-						/>
-					</div>
-
-					{/* Desktop: Logo and collapse button */}
-					<div className="hidden items-center gap-2 md:flex">
+					{/* Left side: Logo */}
+					<div className="flex items-center">
+						{/* Logo */}
 						<Link href="/">
 							<Image
 								src="https://www.travsus.com/_next/static/media/logo.d4fff429.png"
@@ -90,73 +82,82 @@ export default function DashboardLayout({
 							/>
 						</Link>
 
-						<button
-							onClick={() => setIsCollapsed(!isCollapsed)}
-							className="flex items-center gap-2 rounded-lg bg-white px-3 py-2 text-sm font-medium transition-colors"
-						>
-							<span className="h-5 w-5 text-black">
-								{isCollapsed ? (
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										width="24"
-										height="24"
-										viewBox="0 0 24 24"
-										fill="none"
-										stroke="currentColor"
-										strokeWidth="2"
-										strokeLinecap="round"
-										strokeLinejoin="round"
-										className="h-4 w-4"
-									>
-										<polyline points="9 18 15 12 9 6" />
-									</svg>
-								) : (
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										width="24"
-										height="24"
-										viewBox="0 0 24 24"
-										fill="none"
-										stroke="currentColor"
-										strokeWidth="2"
-										strokeLinecap="round"
-										strokeLinejoin="round"
-										className="h-4 w-4"
-									>
-										<polyline points="15 18 9 12 15 6" />
-									</svg>
-								)}
-							</span>
-						</button>
+						{/* Desktop: Collapse button */}
+						<div className="ml-2 hidden md:block">
+							<button
+								onClick={() => setIsCollapsed(!isCollapsed)}
+								className="flex items-center gap-2 rounded-lg bg-white px-3 py-2 text-sm font-medium transition-colors"
+							>
+								<span className="h-5 w-5 text-black">
+									{isCollapsed ? (
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											width="24"
+											height="24"
+											viewBox="0 0 24 24"
+											fill="none"
+											stroke="currentColor"
+											strokeWidth="2"
+											strokeLinecap="round"
+											strokeLinejoin="round"
+											className="h-4 w-4"
+										>
+											<polyline points="9 18 15 12 9 6" />
+										</svg>
+									) : (
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											width="24"
+											height="24"
+											viewBox="0 0 24 24"
+											fill="none"
+											stroke="currentColor"
+											strokeWidth="2"
+											strokeLinecap="round"
+											strokeLinejoin="round"
+											className="h-4 w-4"
+										>
+											<polyline points="15 18 9 12 15 6" />
+										</svg>
+									)}
+								</span>
+							</button>
+						</div>
 					</div>
 
-					{/* Mobile: Menu button on right */}
-					<Sheet>
-						<SheetTrigger asChild>
-							<div className="cursor-pointer md:hidden">
-								<Menu className="h-6 w-6 text-black" />
-							</div>
-						</SheetTrigger>
-						<SheetContent side="left" className="h-full w-72 bg-white p-0">
-							<div className="flex w-full items-start border-b bg-white px-6 py-4">
-								<Image
-									src="https://www.travsus.com/_next/static/media/logo.d4fff429.png"
-									alt="TRAVSUS Logo"
-									width={120}
-									height={40}
-								/>
-							</div>
-							<div className="h-full overflow-y-auto bg-white">
-								<Nav isCollapsed={false} />
-							</div>
-						</SheetContent>
-					</Sheet>
+					{/* Right side: Company Selector and Menu */}
+					<div className="flex items-center gap-2">
+						{/* Company Selector - visible on both mobile and desktop */}
+						<CompanySelector />
+
+						{/* Mobile: Menu button */}
+						<Sheet>
+							<SheetTrigger asChild>
+								<div className="cursor-pointer md:hidden">
+									<Menu className="h-6 w-6 text-black" />
+								</div>
+							</SheetTrigger>
+							<SheetContent side="left" className="h-full w-72 bg-white p-0">
+								<div className="flex w-full items-start border-b bg-white px-6 py-4">
+									<Image
+										src="https://www.travsus.com/_next/static/media/logo.d4fff429.png"
+										alt="TRAVSUS Logo"
+										width={120}
+										height={40}
+									/>
+								</div>
+								<div className="h-full overflow-y-auto bg-white">
+									<Nav isCollapsed={false} />
+								</div>
+							</SheetContent>
+						</Sheet>
+					</div>
 				</div>
 			</header>
 			<div className="flex-1 items-start md:grid md:grid-cols-[220px_1fr] lg:grid-cols-[240px_1fr]">
 				<aside
 					className={cn(
-						'fixed top-16 z-30 hidden h-[calc(100vh-4rem)] w-full shrink-0 overflow-y border-r bg-white py-6 pr-2 md:sticky md:block',
+						'overflow-y fixed top-16 z-30 hidden h-[calc(100vh-4rem)] w-full shrink-0 border-r bg-white py-6 pr-2 md:sticky md:block',
 						isCollapsed ? 'md:w-[70px]' : 'md:w-[220px] lg:w-[240px]',
 					)}
 				>

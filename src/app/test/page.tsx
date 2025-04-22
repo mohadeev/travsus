@@ -49,7 +49,7 @@ export default function HomeBanner() {
 							: 'translate-y-10 opacity-0',
 					)}
 				>
-					<h1 className="font-serif mb-6 text-7xl font-extrabold tracking-tight text-black sm:text-5xl md:text-6xl lg:text-[120px] lg:font-extrabold">
+					<h1 className="font-serif mb-6 text-7xl font-extrabold tracking-tight text-black sm:text-5xl md:text-6xl lg:text-[100px] lg:font-extrabold">
 						Travel with <span className="text-primary">Ultimate</span>{' '}
 						Flexibility
 					</h1>
