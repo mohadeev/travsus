@@ -49,7 +49,7 @@ export function CompanySettings() {
 	}
 
 	const handleEditCompany = (companyId: string) => {
-		// Navigate to edit company page (to be implemented)
+		// Navigate to edit company page
 		router.push(`/dashboard/company/${companyId}/edit`)
 	}
 

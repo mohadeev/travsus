@@ -101,12 +101,12 @@ export function CompanySelector() {
 				aria-expanded={isOpen}
 				aria-haspopup="true"
 			>
-				{activeCompany ? (
+				{activeCompany && activeCompany.company ? (
 					<>
-						{activeCompany.logo ? (
+						{activeCompany.company.logo ? (
 							<Image
-								src={activeCompany?.logo || '/placeholder.svg'}
-								alt={activeCompany?.name}
+								src={activeCompany.company.logo || '/placeholder.svg'}
+								alt={activeCompany.company.name}
 								width={16}
 								height={16}
 								className="rounded-sm md:h-5 md:w-5"
@@ -114,12 +114,12 @@ export function CompanySelector() {
 						) : (
 							<div className="flex h-4 w-4 items-center justify-center rounded-sm bg-gray-200 md:h-5 md:w-5">
 								<span className="text-xs font-medium text-gray-600">
-									{activeCompany?.name?.charAt(0)}
+									{activeCompany.company.name.charAt(0)}
 								</span>
 							</div>
 						)}
 						<span className="flex-1 truncate text-left text-xs font-medium md:text-sm">
-							{activeCompany?.name}
+							{activeCompany.company.name}
 						</span>
 					</>
 				) : (
@@ -177,7 +177,9 @@ export function CompanySelector() {
 										<div
 											key={company.id}
 											className={`flex cursor-pointer items-center gap-3 px-4 py-3 hover:bg-gray-50 ${
-												activeCompany?.id === company.id ? 'bg-gray-50' : ''
+												activeCompany?.company?.id === company.id
+													? 'bg-gray-50'
+													: ''
 											}`}
 											onClick={() => handleSelectCompany(company)}
 										>
@@ -255,7 +257,9 @@ export function CompanySelector() {
 								<div
 									key={company.id}
 									className={`flex cursor-pointer items-center gap-2 px-3 py-2 hover:bg-gray-100 ${
-										activeCompany?.id === company.id ? 'bg-gray-100' : ''
+										activeCompany?.company?.id === company.id
+											? 'bg-gray-100'
+											: ''
 									}`}
 									onClick={() => handleSelectCompany(company)}
 								>
