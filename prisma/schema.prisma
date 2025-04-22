@@ -39,7 +39,8 @@ model Business {
 
   createdAt           DateTime @default(now())
   updatedAt           DateTime @updatedAt
-
+  type               String   @default("TRAVEL_AGENCY") //
+  isActive           Boolean  @default(false)  // Added isActive field
   @@map("businesses")
 }
 

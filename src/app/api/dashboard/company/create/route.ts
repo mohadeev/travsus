@@ -4,48 +4,69 @@ import getUserData from '@/app/api/user/getUserData'
 
 export async function POST(request: Request) {
 	try {
-		const data = await request.json()
-
-		// Validate required fields
-		if (!data.name || !data.email) {
-			return NextResponse.json(
-				{ success: false, message: 'Name and email are required' },
-				{ status: 400 },
-			)
-		}
-
-		// Get the current user's ID
+		// Get the current user
 		const userData = await getUserData()
 
 		if (!userData || !userData.id) {
 			return NextResponse.json(
-				{ success: false, message: 'User not found or not authenticated' },
+				{ message: 'User not found or not authenticated' },
 				{ status: 401 },
 			)
 		}
 
-		// Create new company using Prisma
-		const newCompany = await prisma.business.create({
-			data: {
+		// Get request body
+		const body = await request.json()
+
+		// Validate required fields
+		if (!body.name || !body.email) {
+			return NextResponse.json(
+				{ message: 'Company name and email are required' },
+				{ status: 400 },
+			)
+		}
+
+		// Validate company type
+		const validTypes = ['TRAVEL_AGENCY', 'STAY']
+		if (!validTypes.includes(body.type)) {
+			return NextResponse.json(
+				{ message: 'Invalid company type' },
+				{ status: 400 },
+			)
+		}
+
+		// Check if this is the first company for the user
+		const existingCompaniesCount = await prisma.business.count({
+			where: {
 				creatorId: userData.id,
-				name: data.name,
-				email: data.email,
-				phoneNumber: data.phoneNumber || '',
-				address: data.address || '',
-				country: data.country || '',
-				registrationNumber: data.registrationNumber || '',
 			},
 		})
 
-		return NextResponse.json({
-			success: true,
-			message: 'Company created successfully',
-			company: newCompany,
+		// If this is the first company, set it as active
+		const isActive = existingCompaniesCount === 0
+
+		// Create new company
+		const newCompany = await prisma.business.create({
+			data: {
+				name: body.name,
+				email: body.email,
+				phoneNumber: body.phoneNumber || null,
+				address: body.address || null,
+				country: body.country || null,
+				registrationNumber: body.registrationNumber || null,
+				type: body.type,
+				isActive: isActive,
+				creatorId: userData.id,
+			},
 		})
+
+		return NextResponse.json(
+			{ success: true, company: newCompany },
+			{ status: 201 },
+		)
 	} catch (error) {
 		console.error('Error creating company:', error)
 		return NextResponse.json(
-			{ success: false, message: 'Failed to create company' },
+			{ message: 'Error creating company' },
 			{ status: 500 },
 		)
 	} finally {

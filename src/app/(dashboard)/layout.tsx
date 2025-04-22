@@ -11,7 +11,6 @@ import { Menu } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { Nav } from '@/components/dashboard/nav'
-import { getCompanyData } from '@/lib/api-client'
 import { CompanySelector } from '@/components/dashboard/company-selector'
 
 export default function DashboardLayout({
@@ -25,34 +24,34 @@ export default function DashboardLayout({
 	const router = useRouter()
 
 	useEffect(() => {
-		async function checkCompanyExists() {
+		async function checkActiveCompany() {
 			try {
 				setIsLoading(true)
-				const companyData = await getCompanyData()
+				const response = await fetch('/api/dashboard/company/active')
 
-				// Check if company data exists and has essential fields
-				if (
-					!companyData ||
-					!companyData.id ||
-					!companyData.name ||
-					Object.keys(companyData).length === 0
-				) {
-					// Redirect to list-my-business page if no company exists
-					router.push('/list-my-business')
+				if (!response.ok) {
+					if (response.status === 404) {
+						// No companies found, redirect to create company page
+						router.push('/dashboard/company/create')
+						return
+					}
+					throw new Error('Failed to fetch active company')
 				}
+
+				// If we get here, we have an active company
 			} catch (error) {
-				console.error('Error checking company:', error)
-				// Redirect on error (likely no company found)
-				router.push('/list-my-business')
+				console.error('Error checking active company:', error)
+				// On error, redirect to create company page
+				router.push('/dashboard/company/create')
 			} finally {
 				setIsLoading(false)
 			}
 		}
 
-		checkCompanyExists()
+		checkActiveCompany()
 	}, [router])
 
-	// Show loading state while checking for company
+	// Show loading state while checking for active company
 	if (isLoading) {
 		return (
 			<div className="flex min-h-screen items-center justify-center">

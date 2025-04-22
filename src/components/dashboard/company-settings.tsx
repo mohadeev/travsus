@@ -19,7 +19,10 @@ import {
 	AlertCircle,
 	ChevronRight,
 	Loader2,
+	Star,
 } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { toast } from '@/components/ui/use-toast'
 
 type InfoItem = {
 	id: string
@@ -33,6 +36,7 @@ export function CompanySettings() {
 	const [isLoading, setIsLoading] = useState(false)
 	const [error, setError] = useState<string | null>(null)
 	const [editingField, setEditingField] = useState<string | null>(null)
+	const [companies, setCompanies] = useState<any[]>([])
 	const router = useRouter()
 
 	// Form data state
@@ -48,53 +52,63 @@ export function CompanySettings() {
 		adminName: '',
 	})
 
-	// Fetch company data on component mount
+	// Fetch companies on component mount
 	useEffect(() => {
-		const fetchCompanyData = async () => {
+		const fetchCompanies = async () => {
 			setIsLoading(true)
 			setError(null)
 			try {
-				const response = await fetch('/api/dashboard/company/company-data')
-
-				if (response.status === 404) {
-					// No company found, redirect to list-my-business page
-					router.push('/list-my-business')
-					return
-				}
+				const response = await fetch('/api/dashboard/companies')
 
 				if (!response.ok) {
-					throw new Error('Failed to fetch company data')
+					throw new Error('Failed to fetch companies')
 				}
 
 				const data = await response.json()
+				setCompanies(data.companies || [])
 
-				// If data is empty or doesn't have required fields, redirect
-				if (!data || (!data.name && !data.email && !data.phoneNumber)) {
-					router.push('/list-my-business')
-					return
+				// Find the active company
+				const activeCompany = data.companies.find(
+					(company: any) => company.isActive,
+				)
+
+				if (activeCompany) {
+					// Update form values with active company data
+					setFormData({
+						name: activeCompany.name || '',
+						email: activeCompany.email || '',
+						phoneNumber: activeCompany.phoneNumber || '',
+						address: activeCompany.address || '',
+						country: activeCompany.country || '',
+						registrationNumber: activeCompany.registrationNumber || '',
+						bankName: activeCompany.bankName || '',
+						accountNumber: activeCompany.accountNumber || '',
+						adminName: activeCompany.adminName || '',
+					})
+				} else if (data.companies.length > 0) {
+					// If no active company but companies exist, use the first one
+					const firstCompany = data.companies[0]
+					setFormData({
+						name: firstCompany.name || '',
+						email: firstCompany.email || '',
+						phoneNumber: firstCompany.phoneNumber || '',
+						address: firstCompany.address || '',
+						country: firstCompany.country || '',
+						registrationNumber: firstCompany.registrationNumber || '',
+						bankName: firstCompany.bankName || '',
+						accountNumber: firstCompany.accountNumber || '',
+						adminName: firstCompany.adminName || '',
+					})
 				}
-
-				// Update form values with fetched data
-				setFormData({
-					name: data.name || '',
-					email: data.email || '',
-					phoneNumber: data.phoneNumber || '',
-					address: data.address || '',
-					country: data.country || '',
-					registrationNumber: data.registrationNumber || '',
-					bankName: data.bankName || '',
-					accountNumber: data.accountNumber || '',
-					adminName: data.adminName || '',
-				})
 			} catch (err) {
-				setError('Failed to load company data. Please try again later.')
+				setError('Failed to load companies. Please try again later.')
 				console.error(err)
 			} finally {
 				setIsLoading(false)
 			}
 		}
 
-		fetchCompanyData()
+		fetchCompanies()
 	}, [router])
 
 	// Handle form input changes
@@ -164,6 +178,41 @@ export function CompanySettings() {
 		} catch (err) {
 			setError('Failed to update company settings. Please try again.')
 			console.error(err)
+		} finally {
+			setIsLoading(false)
+		}
+	}
+
+	// Set a company as active
+	const handleSetActive = async (companyId: string) => {
+		try {
+			setIsLoading(true)
+			const response = await fetch('/api/dashboard/company/set-active', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({ companyId }),
+			})
+
+			if (!response.ok) {
+				throw new Error('Failed to set active company')
+			}
+
+			toast({
+				title: 'Success',
+				description: 'Active company updated successfully',
+			})
+
+			// Refresh the page to update all components
+			router.refresh()
+		} catch (error) {
+			console.error('Error setting active company:', error)
+			toast({
+				title: 'Error',
+				description: 'Failed to set active company. Please try again.',
+				variant: 'destructive',
+			})
 		} finally {
 			setIsLoading(false)
 		}
@@ -279,404 +328,67 @@ export function CompanySettings() {
 		</div>
 	)
 
-	// Render edit form for country
-	const renderCountryEditForm = () => (
-		<div className="mt-2 space-y-4">
-			<div className="relative w-[110%] rounded-lg border border-gray-300">
-				<label
-					htmlFor="country"
-					className="absolute left-3 top-2 text-xs text-gray-500"
-				>
-					Country
-				</label>
-				<input
-					type="text"
-					id="country"
-					name="country"
-					value={formData.country}
-					onChange={handleChange}
-					className="w-full rounded-lg px-3 pb-3 pt-7 focus:outline-none focus:ring-2 focus:ring-black"
-				/>
+	// Render companies list
+	const renderCompaniesList = () => (
+		<div className="mt-8 space-y-4">
+			<h2 className="text-xl font-semibold">Your Companies</h2>
+			<div className="rounded-lg border border-gray-200">
+				{companies.map((company) => (
+					<div
+						key={company.id}
+						className="flex items-center justify-between border-b border-gray-200 p-4 last:border-0"
+					>
+						<div className="flex items-center gap-3">
+							<div className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100">
+								<span className="text-lg font-medium">
+									{company.name.charAt(0)}
+								</span>
+							</div>
+							<div>
+								<p className="font-medium">{company.name}</p>
+								<p className="text-sm text-gray-500">
+									{company.type === 'TRAVEL_AGENCY'
+										? 'Travel Agency'
+										: 'Hotel/Stay'}
+								</p>
+							</div>
+							{company.isActive && (
+								<div className="ml-2 flex items-center gap-1 rounded-full bg-yellow-100 px-2 py-1 text-xs font-medium text-yellow-800">
+									<Star className="h-3 w-3 fill-yellow-500 text-yellow-500" />
+									Active
+								</div>
+							)}
+						</div>
+						{!company.isActive && (
+							<Button
+								variant="outline"
+								size="sm"
+								onClick={() => handleSetActive(company.id)}
+								disabled={isLoading}
+								className="text-xs"
+							>
+								{isLoading ? (
+									<Loader2 className="h-3 w-3 animate-spin" />
+								) : (
+									'Set as Active'
+								)}
+							</Button>
+						)}
+					</div>
+				))}
 			</div>
-			<div className="flex items-center justify-between">
-				<button
-					onClick={() => handleSave('country')}
-					disabled={isLoading}
-					className="flex items-center rounded-lg bg-black px-6 py-3 font-medium text-white hover:bg-gray-800 disabled:bg-gray-400"
+			<div className="flex justify-end">
+				<Button
+					onClick={() => router.push('/dashboard/company/create')}
+					className="mt-2"
 				>
-					{isLoading ? (
-						<>
-							<Loader2 className="mr-2 h-4 w-4 animate-spin" />
-							Saving...
-						</>
-					) : (
-						'Save'
-					)}
-				</button>
-				<button
-					onClick={handleCancel}
-					className="font-medium text-gray-700 hover:underline"
-					disabled={isLoading}
-				>
-					Cancel
-				</button>
+					Add New Company
+				</Button>
 			</div>
-			{error && <p className="mt-2 text-sm text-red-500">{error}</p>}
 		</div>
 	)
 
-	// Render edit form for email
-	const renderEmailEditForm = () => (
-		<div className="mt-2 space-y-4">
-			<div className="relative w-[110%] rounded-lg border border-gray-300">
-				<label
-					htmlFor="email"
-					className="absolute left-3 top-2 text-xs text-gray-500"
-				>
-					Email address
-				</label>
-				<input
-					type="email"
-					id="email"
-					name="email"
-					value={formData.email}
-					onChange={handleChange}
-					className="w-full rounded-lg px-3 pb-3 pt-7 focus:outline-none focus:ring-2 focus:ring-black"
-				/>
-			</div>
-			<div className="flex items-center justify-between">
-				<button
-					onClick={() => handleSave('email')}
-					disabled={isLoading}
-					className="flex items-center rounded-lg bg-black px-6 py-3 font-medium text-white hover:bg-gray-800 disabled:bg-gray-400"
-				>
-					{isLoading ? (
-						<>
-							<Loader2 className="mr-2 h-4 w-4 animate-spin" />
-							Saving...
-						</>
-					) : (
-						'Save'
-					)}
-				</button>
-				<button
-					onClick={handleCancel}
-					className="font-medium text-gray-700 hover:underline"
-					disabled={isLoading}
-				>
-					Cancel
-				</button>
-			</div>
-			{error && <p className="mt-2 text-sm text-red-500">{error}</p>}
-		</div>
-	)
-
-	// Render edit form for phone number
-	const renderPhoneNumberEditForm = () => (
-		<div className="mt-2 space-y-4">
-			<div className="relative w-[110%] rounded-lg border border-gray-300">
-				<label
-					htmlFor="phoneNumber"
-					className="absolute left-3 top-2 text-xs text-gray-500"
-				>
-					Phone number
-				</label>
-				<input
-					type="tel"
-					id="phoneNumber"
-					name="phoneNumber"
-					value={formData.phoneNumber}
-					onChange={handleChange}
-					className="w-full rounded-lg px-3 pb-3 pt-7 focus:outline-none focus:ring-2 focus:ring-black"
-				/>
-			</div>
-			<div className="flex items-center justify-between">
-				<button
-					onClick={() => handleSave('phoneNumber')}
-					disabled={isLoading}
-					className="flex items-center rounded-lg bg-black px-6 py-3 font-medium text-white hover:bg-gray-800 disabled:bg-gray-400"
-				>
-					{isLoading ? (
-						<>
-							<Loader2 className="mr-2 h-4 w-4 animate-spin" />
-							Saving...
-						</>
-					) : (
-						'Save'
-					)}
-				</button>
-				<button
-					onClick={handleCancel}
-					className="font-medium text-gray-700 hover:underline"
-					disabled={isLoading}
-				>
-					Cancel
-				</button>
-			</div>
-			{error && <p className="mt-2 text-sm text-red-500">{error}</p>}
-		</div>
-	)
-
-	// Render edit form for admin name
-	const renderAdminNameEditForm = () => (
-		<div className="mt-2 space-y-4">
-			<div className="relative w-[110%] rounded-lg border border-gray-300">
-				<label
-					htmlFor="adminName"
-					className="absolute left-3 top-2 text-xs text-gray-500"
-				>
-					Admin Name
-				</label>
-				<input
-					type="text"
-					id="adminName"
-					name="adminName"
-					value={formData.adminName}
-					onChange={handleChange}
-					className="w-full rounded-lg px-3 pb-3 pt-7 focus:outline-none focus:ring-2 focus:ring-black"
-				/>
-			</div>
-			<div className="flex items-center justify-between">
-				<button
-					onClick={() => handleSave('adminName')}
-					disabled={isLoading}
-					className="flex items-center rounded-lg bg-black px-6 py-3 font-medium text-white hover:bg-gray-800 disabled:bg-gray-400"
-				>
-					{isLoading ? (
-						<>
-							<Loader2 className="mr-2 h-4 w-4 animate-spin" />
-							Saving...
-						</>
-					) : (
-						'Save'
-					)}
-				</button>
-				<button
-					onClick={handleCancel}
-					className="font-medium text-gray-700 hover:underline"
-					disabled={isLoading}
-				>
-					Cancel
-				</button>
-			</div>
-			{error && <p className="mt-2 text-sm text-red-500">{error}</p>}
-		</div>
-	)
-
-	// Render edit form for address
-	const renderAddressEditForm = () => (
-		<div className="mt-2 space-y-4">
-			<div className="relative w-[110%] rounded-lg border border-gray-300">
-				<label
-					htmlFor="address"
-					className="absolute left-3 top-2 text-xs text-gray-500"
-				>
-					Address
-				</label>
-				<textarea
-					id="address"
-					name="address"
-					value={formData.address}
-					onChange={handleChange}
-					rows={3}
-					className="w-full rounded-lg px-3 pb-3 pt-7 focus:outline-none focus:ring-2 focus:ring-black"
-				/>
-			</div>
-			<div className="flex items-center justify-between">
-				<button
-					onClick={() => handleSave('address')}
-					disabled={isLoading}
-					className="flex items-center rounded-lg bg-black px-6 py-3 font-medium text-white hover:bg-gray-800 disabled:bg-gray-400"
-				>
-					{isLoading ? (
-						<>
-							<Loader2 className="mr-2 h-4 w-4 animate-spin" />
-							Saving...
-						</>
-					) : (
-						'Save'
-					)}
-				</button>
-				<button
-					onClick={handleCancel}
-					className="font-medium text-gray-700 hover:underline"
-					disabled={isLoading}
-				>
-					Cancel
-				</button>
-			</div>
-			{error && <p className="mt-2 text-sm text-red-500">{error}</p>}
-		</div>
-	)
-
-	// Render edit form for registration number
-	const renderRegistrationNumberEditForm = () => (
-		<div className="mt-2 space-y-4">
-			<div className="relative w-[110%] rounded-lg border border-gray-300">
-				<label
-					htmlFor="registrationNumber"
-					className="absolute left-3 top-2 text-xs text-gray-500"
-				>
-					Registration Number
-				</label>
-				<input
-					type="text"
-					id="registrationNumber"
-					name="registrationNumber"
-					value={formData.registrationNumber}
-					onChange={handleChange}
-					className="w-full rounded-lg px-3 pb-3 pt-7 focus:outline-none focus:ring-2 focus:ring-black"
-				/>
-			</div>
-			<p className="text-xs text-gray-500">
-				Your company's registration number (optional).
-			</p>
-			<div className="flex items-center justify-between">
-				<button
-					onClick={() => handleSave('registrationNumber')}
-					disabled={isLoading}
-					className="flex items-center rounded-lg bg-black px-6 py-3 font-medium text-white hover:bg-gray-800 disabled:bg-gray-400"
-				>
-					{isLoading ? (
-						<>
-							<Loader2 className="mr-2 h-4 w-4 animate-spin" />
-							Saving...
-						</>
-					) : (
-						'Save'
-					)}
-				</button>
-				<button
-					onClick={handleCancel}
-					className="font-medium text-gray-700 hover:underline"
-					disabled={isLoading}
-				>
-					Cancel
-				</button>
-			</div>
-			{error && <p className="mt-2 text-sm text-red-500">{error}</p>}
-		</div>
-	)
-
-	// Render edit form for bank name
-	const renderBankNameEditForm = () => (
-		<div className="mt-2 space-y-4">
-			<div className="relative w-[110%] rounded-lg border border-gray-300">
-				<label
-					htmlFor="bankName"
-					className="absolute left-3 top-2 text-xs text-gray-500"
-				>
-					Bank Name
-				</label>
-				<input
-					type="text"
-					id="bankName"
-					name="bankName"
-					value={formData.bankName}
-					onChange={handleChange}
-					className="w-full rounded-lg px-3 pb-3 pt-7 focus:outline-none focus:ring-2 focus:ring-black"
-				/>
-			</div>
-			<div className="flex items-center justify-between">
-				<button
-					onClick={() => handleSave('bankName')}
-					disabled={isLoading}
-					className="flex items-center rounded-lg bg-black px-6 py-3 font-medium text-white hover:bg-gray-800 disabled:bg-gray-400"
-				>
-					{isLoading ? (
-						<>
-							<Loader2 className="mr-2 h-4 w-4 animate-spin" />
-							Saving...
-						</>
-					) : (
-						'Save'
-					)}
-				</button>
-				<button
-					onClick={handleCancel}
-					className="font-medium text-gray-700 hover:underline"
-					disabled={isLoading}
-				>
-					Cancel
-				</button>
-			</div>
-			{error && <p className="mt-2 text-sm text-red-500">{error}</p>}
-		</div>
-	)
-
-	// Render edit form for account number
-	const renderAccountNumberEditForm = () => (
-		<div className="mt-2 space-y-4">
-			<div className="relative w-[110%] rounded-lg border border-gray-300">
-				<label
-					htmlFor="accountNumber"
-					className="absolute left-3 top-2 text-xs text-gray-500"
-				>
-					Account Number
-				</label>
-				<input
-					type="text"
-					id="accountNumber"
-					name="accountNumber"
-					value={formData.accountNumber}
-					onChange={handleChange}
-					className="w-full rounded-lg px-3 pb-3 pt-7 focus:outline-none focus:ring-2 focus:ring-black"
-				/>
-			</div>
-			<div className="flex items-center justify-between">
-				<button
-					onClick={() => handleSave('accountNumber')}
-					disabled={isLoading}
-					className="flex items-center rounded-lg bg-black px-6 py-3 font-medium text-white hover:bg-gray-800 disabled:bg-gray-400"
-				>
-					{isLoading ? (
-						<>
-							<Loader2 className="mr-2 h-4 w-4 animate-spin" />
-							Saving...
-						</>
-					) : (
-						'Save'
-					)}
-				</button>
-				<button
-					onClick={handleCancel}
-					className="font-medium text-gray-700 hover:underline"
-					disabled={isLoading}
-				>
-					Cancel
-				</button>
-			</div>
-			{error && <p className="mt-2 text-sm text-red-500">{error}</p>}
-		</div>
-	)
-
-	// Get the appropriate edit form based on the field being edited
-	const getEditForm = (fieldId: string) => {
-		switch (fieldId) {
-			case 'companyName':
-				return renderCompanyNameEditForm()
-			case 'country':
-				return renderCountryEditForm()
-			case 'email':
-				return renderEmailEditForm()
-			case 'phoneNumber':
-				return renderPhoneNumberEditForm()
-			case 'adminName':
-				return renderAdminNameEditForm()
-			case 'address':
-				return renderAddressEditForm()
-			case 'registrationNumber':
-				return renderRegistrationNumberEditForm()
-			case 'bankName':
-				return renderBankNameEditForm()
-			case 'accountNumber':
-				return renderAccountNumberEditForm()
-			default:
-				return null
-		}
-	}
-
-	if (isLoading && Object.values(formData).every((value) => value === '')) {
+	if (isLoading && companies.length === 0) {
 		return (
 			<div className="flex h-[70vh] w-full items-center justify-center">
 				<div className="flex flex-col items-center space-y-4">
@@ -703,6 +415,18 @@ export function CompanySettings() {
 
 			{/* Page Title */}
 			<h1 className="mb-8 text-3xl font-semibold">Company Settings</h1>
+
+			{/* Active Company Info */}
+			<div className="mb-6 rounded-lg border border-yellow-200 bg-yellow-50 p-4">
+				<div className="flex items-center gap-2">
+					<Star className="h-5 w-5 fill-yellow-500 text-yellow-500" />
+					<h2 className="text-lg font-medium">Active Company</h2>
+				</div>
+				<p className="mt-1 text-sm text-gray-600">
+					This is your currently active company. All dashboard data and
+					operations will use this company.
+				</p>
+			</div>
 
 			{/* Company Info Items */}
 			<div className="space-y-6">
@@ -740,6 +464,9 @@ export function CompanySettings() {
 					</div>
 				))}
 			</div>
+
+			{/* Companies List */}
+			{renderCompaniesList()}
 
 			{/* Info Cards */}
 			<div className="mt-12 space-y-6">
@@ -779,4 +506,15 @@ export function CompanySettings() {
 			</div>
 		</div>
 	)
+
+	// Get the appropriate edit form based on the field being edited
+	function getEditForm(fieldId: string) {
+		switch (fieldId) {
+			case 'companyName':
+				return renderCompanyNameEditForm()
+			// Add other edit forms as needed
+			default:
+				return null
+		}
+	}
 }
