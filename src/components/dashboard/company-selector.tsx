@@ -1,36 +1,35 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
-import { ChevronDown, Plus, Search, Check, X } from 'lucide-react'
+import { ChevronDown, Plus, Search, X, Star } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import { Input } from '@/components/ui/input'
 import { toast } from '@/components/ui/use-toast'
 import { cn } from '@/lib/utils'
-
-// Match the Prisma business model structure
-interface Company {
-	id: string
-	name: string
-	logo?: string | null
-	email: string
-	phoneNumber?: string | null
-	address?: string | null
-	country?: string | null
-	registrationNumber?: string | null
-	creatorId: string
-	createdAt?: Date
-	updatedAt?: Date
-}
+import { useDispatch, useSelector } from 'react-redux'
+import {
+	setActiveCompany,
+	selectAllCompanies,
+	selectActiveCompany,
+	selectCompanyStatus,
+	type Company,
+} from '@/app/GlobalRedux/Features/companySlice/companySlice'
+import type { AppDispatch } from '@/app/GlobalRedux/store'
 
 export function CompanySelector() {
-	const [companies, setCompanies] = useState<Company[]>([])
-	const [selectedCompany, setSelectedCompany] = useState<Company | null>(null)
 	const [searchQuery, setSearchQuery] = useState('')
-	const [isLoading, setIsLoading] = useState(true)
 	const [isOpen, setIsOpen] = useState(false)
 	const dropdownRef = useRef<HTMLDivElement>(null)
 	const router = useRouter()
+	const dispatch = useDispatch<AppDispatch>()
+
+	// Get company data from Redux
+	const companies = useSelector(selectAllCompanies)
+	const activeCompany = useSelector(selectActiveCompany)
+	const status = useSelector(selectCompanyStatus)
+	const isLoading = status === 'loading'
+
 	const isMobile =
 		typeof window !== 'undefined' ? window.innerWidth < 768 : false
 
@@ -63,53 +62,23 @@ export function CompanySelector() {
 		}
 	}, [isMobile, isOpen])
 
-	// Fetch companies on component mount
-	useEffect(() => {
-		async function fetchCompanies() {
-			try {
-				setIsLoading(true)
-				const response = await fetch('/api/dashboard/companies')
-
-				if (!response.ok) {
-					throw new Error('Failed to fetch companies')
-				}
-
-				const data = await response.json()
-				console.log('Fetched companies data:', data)
-
-				// Make sure we handle the real data structure
-				if (data.companies && Array.isArray(data.companies)) {
-					setCompanies(data.companies)
-
-					// Set the first company as selected if available and no company is currently selected
-					if (data.companies.length > 0 && !selectedCompany) {
-						setSelectedCompany(data.companies[0])
-					}
-				} else {
-					// Handle case where no companies exist
-					setCompanies([])
-				}
-			} catch (error) {
-				console.error('Error fetching companies:', error)
-				toast({
-					title: 'Error',
-					description: 'Failed to load companies. Please refresh the page.',
-					variant: 'destructive',
-				})
-			} finally {
-				setIsLoading(false)
-			}
-		}
-
-		fetchCompanies()
-	}, [selectedCompany])
-
 	// Handle company selection
-	const handleSelectCompany = (company: Company) => {
-		setSelectedCompany(company)
-		setIsOpen(false)
-		// Update URL with company ID
-		router.push(`/dashboard?company=${company.id}`)
+	const handleSelectCompany = async (company: Company) => {
+		try {
+			await dispatch(setActiveCompany(company.id)).unwrap()
+			setIsOpen(false)
+			toast({
+				title: 'Company Changed',
+				description: `Active company changed to ${company.name}`,
+			})
+		} catch (error) {
+			console.error('Error setting active company:', error)
+			toast({
+				title: 'Error',
+				description: 'Failed to set active company. Please try again.',
+				variant: 'destructive',
+			})
+		}
 	}
 
 	// Handle adding a new company
@@ -119,7 +88,7 @@ export function CompanySelector() {
 	}
 
 	// Filter companies based on search query
-	const filteredCompanies = companies.filter((company) =>
+	const filteredCompanies = companies?.filter((company) =>
 		company.name.toLowerCase().includes(searchQuery.toLowerCase()),
 	)
 
@@ -132,12 +101,12 @@ export function CompanySelector() {
 				aria-expanded={isOpen}
 				aria-haspopup="true"
 			>
-				{selectedCompany ? (
+				{activeCompany ? (
 					<>
-						{selectedCompany.logo ? (
+						{activeCompany.logo ? (
 							<Image
-								src={selectedCompany.logo || '/placeholder.svg'}
-								alt={selectedCompany.name}
+								src={activeCompany?.logo || '/placeholder.svg'}
+								alt={activeCompany?.name}
 								width={16}
 								height={16}
 								className="rounded-sm md:h-5 md:w-5"
@@ -145,12 +114,12 @@ export function CompanySelector() {
 						) : (
 							<div className="flex h-4 w-4 items-center justify-center rounded-sm bg-gray-200 md:h-5 md:w-5">
 								<span className="text-xs font-medium text-gray-600">
-									{selectedCompany.name.charAt(0)}
+									{activeCompany?.name?.charAt(0)}
 								</span>
 							</div>
 						)}
 						<span className="flex-1 truncate text-left text-xs font-medium md:text-sm">
-							{selectedCompany.name}
+							{activeCompany?.name}
 						</span>
 					</>
 				) : (
@@ -208,7 +177,7 @@ export function CompanySelector() {
 										<div
 											key={company.id}
 											className={`flex cursor-pointer items-center gap-3 px-4 py-3 hover:bg-gray-50 ${
-												selectedCompany?.id === company.id ? 'bg-gray-50' : ''
+												activeCompany?.id === company.id ? 'bg-gray-50' : ''
 											}`}
 											onClick={() => handleSelectCompany(company)}
 										>
@@ -230,8 +199,8 @@ export function CompanySelector() {
 											<span className="flex-1 text-sm font-medium">
 												{company.name}
 											</span>
-											{selectedCompany?.id === company.id && (
-												<Check className="h-5 w-5 text-green-600" />
+											{company.isActive && (
+												<Star className="h-4 w-4 fill-yellow-500 text-yellow-500" />
 											)}
 										</div>
 									))}
@@ -286,7 +255,7 @@ export function CompanySelector() {
 								<div
 									key={company.id}
 									className={`flex cursor-pointer items-center gap-2 px-3 py-2 hover:bg-gray-100 ${
-										selectedCompany?.id === company.id ? 'bg-gray-100' : ''
+										activeCompany?.id === company.id ? 'bg-gray-100' : ''
 									}`}
 									onClick={() => handleSelectCompany(company)}
 								>
@@ -306,8 +275,8 @@ export function CompanySelector() {
 										</div>
 									)}
 									<span className="flex-1 text-sm">{company.name}</span>
-									{selectedCompany?.id === company.id && (
-										<Check className="h-4 w-4 text-green-600" />
+									{company.isActive && (
+										<Star className="h-4 w-4 fill-yellow-500 text-yellow-500" />
 									)}
 								</div>
 							))

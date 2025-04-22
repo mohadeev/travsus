@@ -1,25 +1,30 @@
 'use client'
 
+import type React from 'react'
+
 import { Provider, useSelector } from 'react-redux'
-import { RootState, store } from './store'
-import { Component } from 'lucide-react'
+import { PersistGate } from 'redux-persist/integration/react'
+import { type RootState, store, persistor } from './store'
 import ErrorMessage from '@/components/ui/error-message'
 
-export function Providers({ children }: any) {
+export function ReduxProvider({ children }: { children: React.ReactNode }) {
 	return (
 		<Provider store={store}>
-			<OverlayPovider children={children} />
+			<PersistGate loading={null} persistor={persistor}>
+				<OverlayProvider>{children}</OverlayProvider>
+			</PersistGate>
 		</Provider>
 	)
 }
 
-const OverlayPovider = ({ children }: any) => {
+const OverlayProvider = ({ children }: { children: React.ReactNode }) => {
 	const { isVisible, type } = useSelector(
 		(state: RootState) => state.overlaySlice,
 	)
-	const activeComponenets: any = overlayComponenets.find(
+	const activeComponents: any = overlayComponents.find(
 		({ name }: any) => name === type,
 	)
-	return <>{isVisible ? activeComponenets.component({}) : children}</>
+	return <>{isVisible ? activeComponents?.component({}) : children}</>
 }
-const overlayComponenets = [{ name: 'oops', component: ErrorMessage }]
+
+const overlayComponents = [{ name: 'oops', component: ErrorMessage }]

@@ -9,7 +9,7 @@ import 'rc-slider/assets/index.css'
 import Footer from '@/components/Footer'
 import FooterNav from '@/components/FooterNav'
 import ThemeProvider from './theme-provider'
-import { Providers } from './GlobalRedux/provider'
+import { ReduxProvider } from './GlobalRedux/provider'
 import AuthProvider from './context/AuthProvider'
 import AuthWatcher from './context/AuthWatcher'
 import { usePathname } from 'next/navigation'
@@ -21,7 +21,7 @@ import { CombinedCookieConsent } from './privacy-policy/CombinedCookieConsent'
 import ConditionalComponent from '@/components/ConditionalComponent'
 import { useEffect } from 'react'
 import { wakeUpServer } from '@/utils/wakeUpServer'
-import createMailRelayUser from '@/utils/crm/createMailRelayUser'
+// import createMailRelayUser from '@/utils/crm/createMailRelayUser'
 import NewsletterModal from './newsletter-modal'
 import { PlanTripModal } from './plan-trip-modal'
 import TrackingScript from './tracking-script'
@@ -116,7 +116,7 @@ export default function RootLayout({
 				<>
 					<ThemeProvider>
 						<AuthProvider>
-							<Providers>
+							<ReduxProvider>
 								<AuthWatcher />
 								<body className="bg-white text-base text-neutral-900 dark:bg-neutral-900 dark:text-neutral-200">
 									<NewsletterModal />
@@ -147,7 +147,7 @@ export default function RootLayout({
 									<ClientCommons />
 									{/* <TrackingScript /> */}
 								</body>
-							</Providers>
+							</ReduxProvider>
 						</AuthProvider>
 					</ThemeProvider>
 				</>

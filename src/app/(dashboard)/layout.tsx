@@ -7,11 +7,21 @@ import Image from 'next/image'
 import { usePathname, useRouter } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import { Menu } from 'lucide-react'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { cn } from '@/lib/utils'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { Nav } from '@/components/dashboard/nav'
 import { CompanySelector } from '@/components/dashboard/company-selector'
+import { DashboardShell } from '@/components/dashboard/shell'
+import {
+	fetchCompanies,
+	fetchActiveCompany,
+	selectActiveCompany,
+	selectCompanyStatus,
+	setActiveCompany,
+} from '@/app/GlobalRedux/Features/companySlice/companySlice'
+import type { AppDispatch } from '@/app/GlobalRedux/store'
 
 export default function DashboardLayout({
 	children,
@@ -19,37 +29,51 @@ export default function DashboardLayout({
 	children: React.ReactNode
 }) {
 	const [isCollapsed, setIsCollapsed] = useState(false)
-	const [isLoading, setIsLoading] = useState(true)
+	const [isLoading, setIsLoading] = useState(false)
 	const pathname = usePathname()
 	const router = useRouter()
+	const dispatch = useDispatch<AppDispatch>()
+
+	// Get company data from Redux
+	const activeCompany = useSelector(selectActiveCompany)
+	const companyStatus = useSelector(selectCompanyStatus)
 
 	useEffect(() => {
-		async function checkActiveCompany() {
+		async function loadCompanyData() {
 			try {
-				setIsLoading(true)
-				const response = await fetch('/api/dashboard/company/active')
-
-				if (!response.ok) {
-					if (response.status === 404) {
-						// No companies found, redirect to create company page
-						router.push('/dashboard/company/create')
-						return
-					}
-					throw new Error('Failed to fetch active company')
+				// setIsLoading(true)
+				// Fetch companies first
+				const companiesResult = await dispatch(fetchCompanies()).unwrap()
+				console.log('companiesResult', companiesResult)
+				// If we have no companies, redirect to create company page
+				if (!companiesResult || companiesResult.length === 0) {
+					router.push('/dashboard/company/create')
+					return
 				}
 
-				// If we get here, we have an active company
+				// Try to fetch active company
+				try {
+					await dispatch(fetchActiveCompany()).unwrap()
+				} catch (error) {
+					console.error('Error fetching active company:', error)
+					// If we have companies but no active company, set the first one as active
+					if (companiesResult.length > 0) {
+						await dispatch(setActiveCompany(companiesResult[0].id)).unwrap()
+					} else {
+						router.push('/dashboard/company/create')
+					}
+				}
 			} catch (error) {
-				console.error('Error checking active company:', error)
-				// On error, redirect to create company page
+				console.error('Error loading company data:', error)
+				// If no companies exist, redirect to create company page
 				router.push('/dashboard/company/create')
 			} finally {
 				setIsLoading(false)
 			}
 		}
 
-		checkActiveCompany()
-	}, [router])
+		loadCompanyData()
+	}, [dispatch, router])
 
 	// Show loading state while checking for active company
 	if (isLoading) {
@@ -63,6 +87,12 @@ export default function DashboardLayout({
 				</div>
 			</div>
 		)
+	}
+
+	// If no active company and not loading, redirect to create company
+	if (!activeCompany && companyStatus === 'succeeded') {
+		router.push('/dashboard/company/create')
+		return null
 	}
 
 	return (
@@ -173,7 +203,7 @@ export default function DashboardLayout({
 					<Nav isCollapsed={isCollapsed} />
 				</aside>
 				<main className="flex w-full flex-col overflow-y-visible px-4 pt-6 md:px-6">
-					{children}
+					<DashboardShell>{children}</DashboardShell>
 				</main>
 			</div>
 		</div>

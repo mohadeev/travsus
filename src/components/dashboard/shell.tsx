@@ -20,3 +20,4 @@ export function DashboardShell({
 		</div>
 	)
 }
+export const Shell = DashboardShell

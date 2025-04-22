@@ -6,7 +6,7 @@ export async function GET() {
 	try {
 		// Retrieve user data to get the creatorId
 		const userData = await getUserData()
-		console.log('User data for companies:', userData)
+		// console.log('User data for companies:', userData)
 
 		// Ensure userData contains creatorId
 		if (!userData || !userData.id) {
@@ -27,9 +27,9 @@ export async function GET() {
 			],
 		})
 
-		console.log('Found companies:', companies)
+		// console.log('Found companies:', companies)
 
-		return NextResponse.json({ companies })
+		return NextResponse.json(companies)
 	} catch (error) {
 		console.error('Error fetching companies:', error)
 		return NextResponse.json(
