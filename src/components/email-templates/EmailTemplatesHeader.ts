@@ -11,7 +11,7 @@ export const emailTemplatesHeader = (params: Params = {}): string => {
 			role="presentation"
 			cellspacing="0"
 			cellpadding="0"
-			style="width: 100%; max-width: 500px; margin: 0 auto; text-align: ${style};"
+			style="width: 100%; max-width: 500px; margin: 0 auto; margin: 40px 0;text-align: ${style};"
 		>
 			<tr>
 				<td style="padding: 0;">
@@ -22,10 +22,9 @@ export const emailTemplatesHeader = (params: Params = {}): string => {
 						style="color: #000000; text-decoration: none; display: inline-block;"
 					>
 						<img
-							src="https://www.travsus.com/images/logo/dark/travsus_circul_dark.png"
-							height="80"
+							src="https://www.travsus.com/images/logo/dark/travsus_text_dark_bg_transparent.png"
 							alt="Travsus"
-							style="height: 80px; max-width: 80px; display: block; margin: 0 auto;"
+							style="height: 30px; max-height: 30px; display: inline-block"
 						/>
 					</a>
 				</td>

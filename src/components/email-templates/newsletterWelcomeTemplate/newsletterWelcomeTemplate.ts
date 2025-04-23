@@ -11,8 +11,8 @@ const prisma = new PrismaClient()
 const newsletterHeaderMedia = `
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
   <tr>
-    <td style="background-color: #f0f0f0; padding: 20px; text-align: center;">
-      <img src="https://example.com/newsletter-header.jpg" alt="Newsletter Welcome" style="max-width: 100%; height: auto;">
+    <td style="background-color: #fff; padding: 20px; text-align: center;">
+      <img src="https://res.cloudinary.com/travsus/image/upload/v1745394098/25a57983-6153-4c3b-b66d-0120d6c6aa20_s5pduu.png" alt="Newsletter Welcome" style="max-width: 100%; height: auto; max-height: 200px">
     </td>
   </tr>
 </table>
@@ -145,7 +145,6 @@ export const newsletterWelcomeTemplate = async (data: any) => {
         <tr>
           <td>
             ${emailTemplatesHeader()}
-            ${newsletterHeaderMedia}
             ${EmailText('📬 Welcome to Our Newsletter 🎉', 'color: rgb(0, 0, 0); font-size: 50px; line-height: 54px; font-weight: bold;')}
             ${EmailText('Thank you for subscribing! Get ready for exclusive content, insider tips, and the latest updates delivered straight to your inbox. 🚀📚💡 Exciting insights await!', '')}
             

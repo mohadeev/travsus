@@ -54,7 +54,7 @@ export const emailTemplatesFooter = () => {
 						${companyProfile.legalAddress}
 					</p>
 					<p style="margin: 10px 0 0">
-						© 2024 ${companyProfile.legalName} All rights reserved. Travsus,
+						© 2025 ${companyProfile.legalName} All rights reserved. Travsus,
 						the Travsus logo, the trail marker logo, Travelers' Choice, and the
 						Travelers' Choice logo are trademarks of ${companyProfile.legalName}
 						in the Spain and other countries.
