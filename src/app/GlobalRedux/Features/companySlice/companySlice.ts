@@ -172,6 +172,7 @@ const companySlice = createSlice({
 			.addCase(
 				setActiveCompany.fulfilled,
 				(state, action: PayloadAction<Company>) => {
+					console.log('state.companies: ', state.companies)
 					state.status = 'succeeded'
 					state.activeCompany = action.payload
 					state.lastFetched = Date.now()

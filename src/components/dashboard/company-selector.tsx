@@ -201,7 +201,7 @@ export function CompanySelector() {
 											<span className="flex-1 text-sm font-medium">
 												{company.name}
 											</span>
-											{company.isActive && (
+											{activeCompany?.company?.id === company.id && (
 												<Star className="h-4 w-4 fill-yellow-500 text-yellow-500" />
 											)}
 										</div>
@@ -248,12 +248,8 @@ export function CompanySelector() {
 
 					{/* Companies List */}
 					<div className="max-h-[300px] overflow-y-auto py-1">
-						{isLoading ? (
-							<div className="p-4 text-center text-sm text-gray-500">
-								Loading companies...
-							</div>
-						) : filteredCompanies.length > 0 ? (
-							filteredCompanies.map((company) => (
+						{filteredCompanies.length > 0 ? (
+							filteredCompanies.map((company: any) => (
 								<div
 									key={company.id}
 									className={`flex cursor-pointer items-center gap-2 px-3 py-2 hover:bg-gray-100 ${
