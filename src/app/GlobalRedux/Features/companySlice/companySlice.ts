@@ -99,7 +99,7 @@ export const fetchActiveCompany = createAsyncThunk(
 
 export const setActiveCompany = createAsyncThunk(
 	'company/setActiveCompany',
-	async (companyId: string, { rejectWithValue }) => {
+	async (companyId: string, { getState, rejectWithValue }) => {
 		try {
 			const response = await fetch('/api/dashboard/company/set-active', {
 				method: 'POST',
@@ -166,13 +166,29 @@ const companySlice = createSlice({
 				state.error = action.payload as string
 			})
 			// Set active company
-			.addCase(setActiveCompany.pending, (state) => {
+			.addCase(setActiveCompany.pending, (state, action) => {
 				state.status = 'loading'
+
+				// Immediately update the active company locally for better UX
+				const companyId = action.meta.arg
+				const selectedCompany = state.companies.find(
+					(company) => company.id === companyId,
+				)
+
+				if (selectedCompany) {
+					// Set the selected company as active locally
+					state.activeCompany = selectedCompany
+
+					// Update the companies array to reflect the change
+					state.companies = state.companies.map((company) => ({
+						...company,
+						isActive: company.id === companyId,
+					}))
+				}
 			})
 			.addCase(
 				setActiveCompany.fulfilled,
 				(state, action: PayloadAction<Company>) => {
-					console.log('state.companies: ', state.companies)
 					state.status = 'succeeded'
 					state.activeCompany = action.payload
 					state.lastFetched = Date.now()
