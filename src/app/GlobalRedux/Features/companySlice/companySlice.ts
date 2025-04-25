@@ -23,6 +23,7 @@ interface CompanyState {
 	status: 'idle' | 'loading' | 'succeeded' | 'failed'
 	error: string | null
 	lastFetched: number | null
+	isChangingActive: boolean // New state to track active company changes separately
 }
 
 // Initial state
@@ -32,6 +33,7 @@ const initialState: CompanyState = {
 	status: 'idle',
 	error: null,
 	lastFetched: null,
+	isChangingActive: false,
 }
 
 // Async thunks
@@ -167,7 +169,8 @@ const companySlice = createSlice({
 			})
 			// Set active company
 			.addCase(setActiveCompany.pending, (state, action) => {
-				state.status = 'loading'
+				// Don't set status to loading, just track that we're changing the active company
+				state.isChangingActive = true
 
 				// Immediately update the active company locally for better UX
 				const companyId = action.meta.arg
@@ -192,7 +195,11 @@ const companySlice = createSlice({
 			.addCase(
 				setActiveCompany.fulfilled,
 				(state, action: PayloadAction<any>) => {
-					state.status = 'succeeded'
+					// Keep the status as succeeded if it was already succeeded
+					if (state.status === 'loading') {
+						state.status = 'succeeded'
+					}
+					state.isChangingActive = false
 					state.activeCompany = action.payload
 					state.lastFetched = Date.now()
 
@@ -216,7 +223,11 @@ const companySlice = createSlice({
 				},
 			)
 			.addCase(setActiveCompany.rejected, (state, action) => {
-				state.status = 'failed'
+				// Only set status to failed if it was loading
+				if (state.status === 'loading') {
+					state.status = 'failed'
+				}
+				state.isChangingActive = false
 				state.error = action.payload as string
 			})
 	},
@@ -234,6 +245,9 @@ export const selectActiveCompany = (state: RootState) => {
 }
 export const selectCompanyStatus = (state: RootState) => {
 	return state.company?.status || 'idle'
+}
+export const selectIsChangingActive = (state: RootState) => {
+	return state.company?.isChangingActive || false
 }
 export const selectCompanyError = (state: RootState) =>
 	state.company?.error || null

@@ -105,7 +105,7 @@ export default function TourBuilder({
 	}
 
 	return (
-		<div className="rounded-lg bg-white p-6 shadow-md">
+		<div className="overflow-auto rounded-lg bg-white p-6 shadow-md">
 			<nav aria-label="Progress">
 				<ol role="list" className="mb-8 flex items-center justify-between">
 					{steps.map((s, index) => (

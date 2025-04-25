@@ -186,7 +186,7 @@ export default function DashboardLayout({
 			<div className="flex-1 items-start md:grid md:grid-cols-[220px_1fr] lg:grid-cols-[240px_1fr]">
 				<aside
 					className={cn(
-						'overflow-y fixed top-16 z-30 hidden h-[calc(100vh-4rem)] w-full shrink-0 border-r bg-white py-6 pr-2 md:sticky md:block',
+						'fixed top-16 z-30 hidden h-[calc(100vh-4rem)] w-full shrink-0 border-r bg-white py-6 pr-2 md:sticky md:block',
 						isCollapsed ? 'md:w-[70px]' : 'md:w-[220px] lg:w-[240px]',
 					)}
 				>
@@ -202,7 +202,7 @@ export default function DashboardLayout({
 					)}
 					<Nav isCollapsed={isCollapsed} />
 				</aside>
-				<main className="flex w-full flex-col overflow-y-visible px-4 pt-6 md:px-6">
+				<main className="flex w-full flex-col overflow-auto px-4 pb-20 pt-6 md:px-6">
 					<DashboardShell>{children}</DashboardShell>
 				</main>
 			</div>

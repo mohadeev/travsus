@@ -13,6 +13,7 @@ import {
 	selectAllCompanies,
 	selectActiveCompany,
 	selectCompanyStatus,
+	selectIsChangingActive,
 	type Company,
 } from '@/app/GlobalRedux/Features/companySlice/companySlice'
 import type { AppDispatch } from '@/app/GlobalRedux/store'
@@ -28,7 +29,10 @@ export function CompanySelector() {
 	const companies = useSelector(selectAllCompanies)
 	const activeCompany = useSelector(selectActiveCompany)
 	const status = useSelector(selectCompanyStatus)
-	const isLoading = status === 'loading'
+	const isChangingActive = useSelector(selectIsChangingActive)
+
+	// Only show loading for initial fetch, not when changing active company
+	const isLoading = status === 'loading' && companies.length === 0
 
 	const isMobile =
 		typeof window !== 'undefined' ? window.innerWidth < 768 : false

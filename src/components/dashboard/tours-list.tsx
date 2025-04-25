@@ -10,17 +10,10 @@ import {
 	TableRow,
 } from '@/components/ui/table'
 import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Edit, ArrowUpDown, Search, MoreHorizontal, Trash } from 'lucide-react'
 import Link from 'next/link'
 import { formatCurrency, formatDate } from '@/lib/utils'
-import {
-	DropdownMenu,
-	DropdownMenuContent,
-	DropdownMenuItem,
-	DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
 import { Card, CardContent } from '@/components/ui/card'
 import { Skeleton } from '@/components/ui/skeleton'
 
@@ -44,6 +37,7 @@ export function ToursList({ initialTours = [] }: ToursListProps) {
 	const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc')
 	const [loading, setLoading] = useState(initialTours.length === 0)
 	const [currentPage, setCurrentPage] = useState(1)
+	const [openActionId, setOpenActionId] = useState<string | null>(null)
 	const toursPerPage = 10
 
 	useEffect(() => {
@@ -52,6 +46,23 @@ export function ToursList({ initialTours = [] }: ToursListProps) {
 			setLoading(false)
 		}
 	}, [initialTours])
+
+	// Close dropdown when clicking outside
+	useEffect(() => {
+		function handleClickOutside(event: MouseEvent) {
+			if (
+				openActionId &&
+				!(event.target as Element).closest('.action-dropdown')
+			) {
+				setOpenActionId(null)
+			}
+		}
+
+		document.addEventListener('mousedown', handleClickOutside)
+		return () => {
+			document.removeEventListener('mousedown', handleClickOutside)
+		}
+	}, [openActionId])
 
 	// Filter tours based on search query
 	const filteredTours = tours.filter((tour) =>
@@ -88,6 +99,10 @@ export function ToursList({ initialTours = [] }: ToursListProps) {
 
 	const handlePageChange = (page: number) => {
 		setCurrentPage(page)
+	}
+
+	const toggleActionMenu = (id: string) => {
+		setOpenActionId(openActionId === id ? null : id)
 	}
 
 	if (loading) {
@@ -136,54 +151,49 @@ export function ToursList({ initialTours = [] }: ToursListProps) {
 					<TableHeader>
 						<TableRow>
 							<TableHead className="w-[200px]">
-								<Button
-									variant="ghost"
+								<div
 									onClick={() => handleSort('name')}
-									className="p-0 font-medium"
+									className="flex cursor-pointer items-center font-medium"
 								>
 									Tour Name
 									<ArrowUpDown className="ml-2 h-4 w-4" />
-								</Button>
+								</div>
 							</TableHead>
 							<TableHead>
-								<Button
-									variant="ghost"
+								<div
 									onClick={() => handleSort('price')}
-									className="p-0 font-medium"
+									className="flex cursor-pointer items-center font-medium"
 								>
 									Price
 									<ArrowUpDown className="ml-2 h-4 w-4" />
-								</Button>
+								</div>
 							</TableHead>
 							<TableHead>
-								<Button
-									variant="ghost"
+								<div
 									onClick={() => handleSort('status')}
-									className="p-0 font-medium"
+									className="flex cursor-pointer items-center font-medium"
 								>
 									Status
 									<ArrowUpDown className="ml-2 h-4 w-4" />
-								</Button>
+								</div>
 							</TableHead>
 							<TableHead>
-								<Button
-									variant="ghost"
+								<div
 									onClick={() => handleSort('bookings')}
-									className="p-0 font-medium"
+									className="flex cursor-pointer items-center font-medium"
 								>
 									Bookings
 									<ArrowUpDown className="ml-2 h-4 w-4" />
-								</Button>
+								</div>
 							</TableHead>
 							<TableHead>
-								<Button
-									variant="ghost"
+								<div
 									onClick={() => handleSort('createdAt')}
-									className="p-0 font-medium"
+									className="flex cursor-pointer items-center font-medium"
 								>
 									Created At
 									<ArrowUpDown className="ml-2 h-4 w-4" />
-								</Button>
+								</div>
 							</TableHead>
 							<TableHead className="text-right">Actions</TableHead>
 						</TableRow>
@@ -210,26 +220,40 @@ export function ToursList({ initialTours = [] }: ToursListProps) {
 									<TableCell>{tour.bookings}</TableCell>
 									<TableCell>{formatDate(tour.createdAt)}</TableCell>
 									<TableCell className="text-right">
-										<DropdownMenu>
-											<DropdownMenuTrigger asChild>
-												<Button variant="ghost" className="h-8 w-8 p-0">
-													<span className="sr-only">Open menu</span>
-													<MoreHorizontal className="h-4 w-4" />
-												</Button>
-											</DropdownMenuTrigger>
-											<DropdownMenuContent align="end">
-												<DropdownMenuItem asChild>
-													<Link href={`/dashboard/tours/${tour.id}/edit`}>
-														<Edit className="mr-2 h-4 w-4" />
-														Edit
-													</Link>
-												</DropdownMenuItem>
-												<DropdownMenuItem className="text-red-600">
-													<Trash className="mr-2 h-4 w-4" />
-													Delete
-												</DropdownMenuItem>
-											</DropdownMenuContent>
-										</DropdownMenu>
+										<div className="action-dropdown relative inline-block">
+											<button
+												onClick={() => toggleActionMenu(tour.id)}
+												className="rounded-full p-1 text-slate-600 hover:bg-slate-100"
+											>
+												<MoreHorizontal className="h-5 w-5" />
+											</button>
+
+											{openActionId === tour.id && (
+												<div
+													className="absolute right-0 top-full z-50 mt-1 w-36 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5"
+													style={{ minWidth: '150px' }}
+												>
+													<div
+														className="py-1"
+														role="menu"
+														aria-orientation="vertical"
+													>
+														<Link
+															href={`/dashboard/tours/${tour.id}/edit`}
+															className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+														>
+															<Edit className="mr-3 h-4 w-4" /> Edit
+														</Link>
+														<button
+															className="flex w-full items-center px-4 py-2 text-sm text-red-600 hover:bg-gray-100"
+															role="menuitem"
+														>
+															<Trash className="mr-3 h-4 w-4" /> Delete
+														</button>
+													</div>
+												</div>
+											)}
+										</div>
 									</TableCell>
 								</TableRow>
 							))
@@ -281,16 +305,17 @@ export function ToursList({ initialTours = [] }: ToursListProps) {
 									</div>
 								</div>
 								<div className="bg-muted/30 flex justify-end gap-2 p-4">
-									<Link href={`/dashboard/tours/${tour.id}/edit`}>
-										<Button size="sm" variant="outline">
-											<Edit className="mr-2 h-4 w-4" />
-											Edit
-										</Button>
+									<Link
+										href={`/dashboard/tours/${tour.id}/edit`}
+										className="inline-flex items-center justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+									>
+										<Edit className="mr-2 h-4 w-4" />
+										Edit
 									</Link>
-									<Button size="sm" variant="outline" className="text-red-600">
+									<button className="inline-flex items-center justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-red-600 hover:bg-gray-50">
 										<Trash className="mr-2 h-4 w-4" />
 										Delete
-									</Button>
+									</button>
 								</div>
 							</CardContent>
 						</Card>
@@ -305,22 +330,20 @@ export function ToursList({ initialTours = [] }: ToursListProps) {
 						Page {currentPage} of {totalPages}
 					</div>
 					<div className="flex gap-1">
-						<Button
-							variant="outline"
-							size="sm"
+						<button
 							onClick={() => handlePageChange(currentPage - 1)}
 							disabled={currentPage === 1}
+							className="inline-flex items-center justify-center rounded-md border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50"
 						>
 							Previous
-						</Button>
-						<Button
-							variant="outline"
-							size="sm"
+						</button>
+						<button
 							onClick={() => handlePageChange(currentPage + 1)}
 							disabled={currentPage === totalPages}
+							className="inline-flex items-center justify-center rounded-md border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50"
 						>
 							Next
-						</Button>
+						</button>
 					</div>
 				</div>
 			)}

@@ -11,7 +11,7 @@ export function DashboardShell({
 	return (
 		<div
 			className={cn(
-				'grid w-full items-start gap-8 overflow-visible',
+				'grid h-full w-full items-start gap-8 overflow-auto',
 				className,
 			)}
 			{...props}

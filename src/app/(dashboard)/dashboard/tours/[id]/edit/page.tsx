@@ -2,8 +2,9 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { DashboardShell } from '@/components/dashboard/shell'
 import { DashboardHeader } from '@/components/dashboard/header'
-import TourBuilder from '@/components/dashboard/tour/TourBuilder'
+// import TourBuilder from '@/components/dashboard/tour/TourBuilder'
 import { getTour } from '@/app/actions/tourActions'
+import { TourBuilder } from '@/components/dashboard/tour-builder'
 
 export const metadata: Metadata = {
 	title: 'Edit Tour',
@@ -33,6 +34,12 @@ export default async function EditTourPage({
 						: 'Complete your tour setup'
 				}
 			/>
+			<TourBuilder tour={tour} />
+			<TourBuilder tour={tour} />
+			<TourBuilder tour={tour} />
+			<TourBuilder tour={tour} />
+			<TourBuilder tour={tour} />
+
 			<TourBuilder tour={tour} />
 		</DashboardShell>
 	)
