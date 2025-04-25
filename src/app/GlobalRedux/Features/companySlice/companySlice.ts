@@ -19,7 +19,7 @@ export interface Company {
 
 interface CompanyState {
 	companies: Company[]
-	activeCompany: Company | null
+	activeCompany: any // Using 'any' to match your data structure
 	status: 'idle' | 'loading' | 'succeeded' | 'failed'
 	error: string | null
 	lastFetched: number | null
@@ -155,7 +155,7 @@ const companySlice = createSlice({
 			})
 			.addCase(
 				fetchActiveCompany.fulfilled,
-				(state, action: PayloadAction<Company>) => {
+				(state, action: PayloadAction<any>) => {
 					state.status = 'succeeded'
 					state.activeCompany = action.payload
 					state.lastFetched = Date.now()
@@ -177,7 +177,10 @@ const companySlice = createSlice({
 
 				if (selectedCompany) {
 					// Set the selected company as active locally
-					state.activeCompany = selectedCompany
+					// Using the structure activeCompany.company to match your data structure
+					state.activeCompany = {
+						company: selectedCompany,
+					}
 
 					// Update the companies array to reflect the change
 					state.companies = state.companies.map((company) => ({
@@ -188,23 +191,27 @@ const companySlice = createSlice({
 			})
 			.addCase(
 				setActiveCompany.fulfilled,
-				(state, action: PayloadAction<Company>) => {
+				(state, action: PayloadAction<any>) => {
 					state.status = 'succeeded'
 					state.activeCompany = action.payload
 					state.lastFetched = Date.now()
 
-					// Update the company in the companies array
-					const index = state.companies.findIndex(
-						(c) => c.id === action.payload.id,
-					)
-					if (index !== -1) {
-						// Set all companies to inactive
-						state.companies = state.companies.map((c) => ({
-							...c,
-							isActive: false,
-						}))
-						// Set the selected company to active
-						state.companies[index] = { ...action.payload, isActive: true }
+					// Update the company in the companies array if needed
+					if (action.payload && action.payload.company) {
+						const companyId = action.payload.company.id
+						const index = state.companies.findIndex((c) => c.id === companyId)
+						if (index !== -1) {
+							// Set all companies to inactive
+							state.companies = state.companies.map((c) => ({
+								...c,
+								isActive: false,
+							}))
+							// Set the selected company to active
+							state.companies[index] = {
+								...state.companies[index],
+								isActive: true,
+							}
+						}
 					}
 				},
 			)
