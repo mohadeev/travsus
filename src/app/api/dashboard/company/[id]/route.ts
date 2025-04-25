@@ -1,5 +1,5 @@
 import { type NextRequest, NextResponse } from 'next/server'
-import { db } from '@/lib/db'
+import prisma from '@/prisma'
 
 export async function GET(
 	request: NextRequest,
@@ -9,7 +9,7 @@ export async function GET(
 		const companyId = params.id
 
 		// Fetch the company from the database
-		const company = await db.business.findUnique({
+		const company = await prisma.business.findUnique({
 			where: {
 				id: companyId,
 			},
@@ -38,7 +38,7 @@ export async function PUT(
 		const data = await request.json()
 
 		// Update the company in the database
-		const updatedCompany = await db.business.update({
+		const updatedCompany = await prisma.business.update({
 			where: {
 				id: companyId,
 			},
