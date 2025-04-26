@@ -74,7 +74,8 @@ export async function PUT(
 		const id = params.id
 
 		// Get the current user
-		const userData = await getUserData()
+		const userData = await getUserData({})
+		console.log('userData: ', userData)
 
 		// Check if user is authenticated
 		if (!userData || !userData.id) {

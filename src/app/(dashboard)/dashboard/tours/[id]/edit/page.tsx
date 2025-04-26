@@ -35,12 +35,6 @@ export default async function EditTourPage({
 				}
 			/>
 			<TourBuilder tour={tour} />
-			<TourBuilder tour={tour} />
-			<TourBuilder tour={tour} />
-			<TourBuilder tour={tour} />
-			<TourBuilder tour={tour} />
-
-			<TourBuilder tour={tour} />
 		</DashboardShell>
 	)
 }

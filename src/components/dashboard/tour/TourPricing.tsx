@@ -279,10 +279,7 @@ export default function TourPricing({
 						'/placeholder.svg?height=100&width=100'
 
 					return (
-						<Card
-							key={index}
-							className="overflow-hidden border-l-4 border-l-slate-800"
-						>
+						<Card key={index} className="overflow-hidden">
 							<CardContent className="p-0">
 								<div className="flex flex-col md:flex-row">
 									{/* Transport Image and Info - Left Column */}
@@ -364,59 +361,30 @@ export default function TourPricing({
 											</div>
 										</div>
 
-										<div className="mt-4 grid grid-cols-2 gap-4">
-											<div className="space-y-2">
-												<Label
-													htmlFor={`pricePerDay-${index}`}
-													className="text-xs font-medium"
-												>
-													Price Per Day
-												</Label>
-												<div className="relative">
-													<span className="absolute left-3 top-2">€</span>
-													<Input
-														type="number"
-														id={`pricePerDay-${index}`}
-														value={tier.pricing.pricePerDay}
-														onChange={(e) =>
-															handleTierChange(
-																index,
-																'pricePerDay',
-																e.target.value,
-															)
-														}
-														className="h-8 pl-7 text-sm"
-														min="0"
-														step="0.01"
-													/>
-												</div>
-											</div>
-
-											<div className="space-y-2">
-												<Label
-													htmlFor={`totalPrice-${index}`}
-													className="text-xs font-medium"
-												>
-													Total Price
-												</Label>
-												<div className="relative">
-													<span className="absolute left-3 top-2">€</span>
-													<Input
-														type="number"
-														id={`totalPrice-${index}`}
-														value={tier.pricing.totalPrice}
-														onChange={(e) =>
-															handleTierChange(
-																index,
-																'totalPrice',
-																e.target.value,
-															)
-														}
-														className="h-8 pl-7 text-sm"
-														min="0"
-														step="0.01"
-													/>
-												</div>
+										<div className="mt-4 space-y-2">
+											<Label
+												htmlFor={`totalPrice-${index}`}
+												className="text-xs font-medium"
+											>
+												Total Price
+											</Label>
+											<div className="relative">
+												<span className="absolute left-3 top-2">€</span>
+												<Input
+													type="number"
+													id={`totalPrice-${index}`}
+													value={tier.pricing.totalPrice}
+													onChange={(e) =>
+														handleTierChange(
+															index,
+															'totalPrice',
+															e.target.value,
+														)
+													}
+													className="h-8 pl-7 text-sm"
+													min="0"
+													step="0.01"
+												/>
 											</div>
 										</div>
 									</div>

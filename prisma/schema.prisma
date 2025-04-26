@@ -297,6 +297,8 @@ model Tour {
   endAddress     Address?  @relation("TourEndAddress", fields: [endAddressId], references: [id])
   faq            Faq[]
   inclusions     Inclusions?  // ✅ Added inclusions just like FAQ  
+  durationType String?
+	includesOvernight Boolean?
   @@map("tours")
 }
 

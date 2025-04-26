@@ -9,37 +9,40 @@ const prisma = new PrismaClient()
 export async function updateTour(tourId: string, newTourData: any) {
 	try {
 		// Make API call to update tour
-		const response = await fetch(`/api/dashboard/tours/${tourId}`, {
-			method: 'PUT',
-			headers: {
-				'Content-Type': 'application/json',
+		const response = await fetch(
+			`/api/dashboard/tours/${tourId}`,
+			{
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+					name: newTourData.name,
+					subtitle: newTourData.subtitle,
+					overview: newTourData.overview,
+					slug: newTourData.slug,
+					highlights: newTourData.highlights,
+					days: newTourData.days,
+					price: newTourData.price,
+					discount: newTourData.discount,
+					images: newTourData.images,
+					tags: newTourData.tags,
+					lang: newTourData.lang,
+					people: newTourData.people,
+					services: newTourData.services,
+					places: newTourData.places,
+					paths: newTourData.paths,
+					reviews: newTourData.reviews,
+					tourfor: newTourData.tourfor,
+					updated: true,
+					conclusion: newTourData.conclusion,
+					keyphrase: newTourData.keyphrase,
+					productCategory: newTourData.productCategory,
+					pricingTiers: newTourData.pricingTiers, // Transportation pricing tiers
+					accommodations: newTourData.accommodations, // Accommodations data
+				}),
 			},
-			body: JSON.stringify({
-				name: newTourData.name,
-				subtitle: newTourData.subtitle,
-				overview: newTourData.overview,
-				slug: newTourData.slug,
-				highlights: newTourData.highlights,
-				days: newTourData.days,
-				price: newTourData.price,
-				discount: newTourData.discount,
-				images: newTourData.images,
-				tags: newTourData.tags,
-				lang: newTourData.lang,
-				people: newTourData.people,
-				services: newTourData.services,
-				places: newTourData.places,
-				paths: newTourData.paths,
-				reviews: newTourData.reviews,
-				tourfor: newTourData.tourfor,
-				updated: true,
-				conclusion: newTourData.conclusion,
-				keyphrase: newTourData.keyphrase,
-				productCategory: newTourData.productCategory,
-				pricingTiers: newTourData.pricingTiers, // Transportation pricing tiers
-				accommodations: newTourData.accommodations, // Accommodations data
-			}),
-		})
+		)
 
 		if (!response.ok) {
 			const errorData = await response.json()

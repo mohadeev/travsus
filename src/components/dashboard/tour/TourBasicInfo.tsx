@@ -3,6 +3,7 @@
 import type React from 'react'
 
 import { useState } from 'react'
+import { useFormContext } from 'react-hook-form'
 import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import {
@@ -14,48 +15,34 @@ import {
 } from '@/components/ui/select'
 import { Badge } from '@/components/ui/badge'
 import { X, Plus } from 'lucide-react'
+import {
+	FormField,
+	FormItem,
+	FormControl,
+	FormMessage,
+} from '@/components/ui/form'
+import type { TourFormValues } from '../tour-builder'
 
-interface TourBasicInfoProps {
-	tourData: {
-		name?: string
-		subtitle?: string
-		lang?: string
-		tags?: string[]
-	}
-	updateTourData: (data: Partial<TourBasicInfoProps['tourData']>) => void
-}
-
-export default function TourBasicInfo({
-	tourData,
-	updateTourData,
-}: TourBasicInfoProps) {
+export default function TourBasicInfo() {
 	const [newTag, setNewTag] = useState('')
+	const { control, watch, setValue } = useFormContext<TourFormValues>()
 
-	const handleChange = (
-		e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
-	) => {
-		const { name, value } = e.target
-		updateTourData({ [name]: value })
-	}
+	// Get current tags from form
+	const tags = watch('tags') || []
 
 	const handleAddTag = () => {
 		if (!newTag.trim()) return
 
-		const currentTags = tourData.tags || []
 		// Check if tag already exists (case insensitive)
-		if (
-			!currentTags.some((tag) => tag.toLowerCase() === newTag.toLowerCase())
-		) {
-			updateTourData({ tags: [...currentTags, newTag.trim()] })
+		if (!tags.some((tag) => tag.toLowerCase() === newTag.toLowerCase())) {
+			setValue('tags', [...tags, newTag.trim()], { shouldValidate: true })
 		}
 		setNewTag('')
 	}
 
 	const handleRemoveTag = (tagToRemove: string) => {
-		const updatedTags = (tourData.tags || []).filter(
-			(tag) => tag !== tagToRemove,
-		)
-		updateTourData({ tags: updatedTags })
+		const updatedTags = tags.filter((tag) => tag !== tagToRemove)
+		setValue('tags', updatedTags, { shouldValidate: true })
 	}
 
 	const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -68,54 +55,67 @@ export default function TourBasicInfo({
 	return (
 		<div className="space-y-6">
 			<div className="space-y-4">
-				<div className="space-y-2">
-					<Label htmlFor="name" className="flex items-center">
-						Tour Name <span className="ml-1 text-red-500">*</span>
-					</Label>
-					<Input
-						id="name"
-						name="name"
-						value={tourData.name ?? ''}
-						onChange={handleChange}
-						placeholder="Enter tour name"
-						className={`w-full ${!tourData.name ? 'border-red-300' : ''}`}
-						required
-					/>
-					{!tourData.name && (
-						<p className="mt-1 text-sm text-red-500">Tour name is required</p>
+				{/* Tour Name Field */}
+				<FormField
+					control={control}
+					name="name"
+					render={({ field }) => (
+						<FormItem>
+							<Label htmlFor="name" className="flex items-center">
+								Tour Name <span className="ml-1 text-red-500">*</span>
+							</Label>
+							<FormControl>
+								<Input id="name" placeholder="Enter tour name" {...field} />
+							</FormControl>
+							<FormMessage />
+						</FormItem>
 					)}
-				</div>
+				/>
 
-				<div className="space-y-2">
-					<Label htmlFor="subtitle">Subtitle</Label>
-					<Input
-						id="subtitle"
-						name="subtitle"
-						value={tourData.subtitle ?? ''}
-						onChange={handleChange}
-						placeholder="Enter a catchy subtitle"
-						className="w-full"
-					/>
-				</div>
+				{/* Subtitle Field */}
+				<FormField
+					control={control}
+					name="subtitle"
+					render={({ field }) => (
+						<FormItem>
+							<Label htmlFor="subtitle">Subtitle</Label>
+							<FormControl>
+								<Input
+									id="subtitle"
+									placeholder="Enter a catchy subtitle"
+									{...field}
+								/>
+							</FormControl>
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
 
-				<div className="space-y-2">
-					<Label htmlFor="lang">Language</Label>
-					<Select
-						value={tourData.lang ?? 'EN'}
-						onValueChange={(value) => updateTourData({ lang: value })}
-					>
-						<SelectTrigger id="lang">
-							<SelectValue placeholder="Select language" />
-						</SelectTrigger>
-						<SelectContent>
-							<SelectItem value="EN">English</SelectItem>
-							<SelectItem value="ES">Spanish</SelectItem>
-							<SelectItem value="FR">French</SelectItem>
-							<SelectItem value="DE">German</SelectItem>
-							<SelectItem value="IT">Italian</SelectItem>
-						</SelectContent>
-					</Select>
-				</div>
+				{/* Language Field */}
+				<FormField
+					control={control}
+					name="lang"
+					render={({ field }) => (
+						<FormItem>
+							<Label htmlFor="lang">Language</Label>
+							<Select onValueChange={field.onChange} value={field.value}>
+								<FormControl>
+									<SelectTrigger id="lang">
+										<SelectValue placeholder="Select language" />
+									</SelectTrigger>
+								</FormControl>
+								<SelectContent>
+									<SelectItem value="EN">English</SelectItem>
+									<SelectItem value="ES">Spanish</SelectItem>
+									<SelectItem value="FR">French</SelectItem>
+									<SelectItem value="DE">German</SelectItem>
+									<SelectItem value="IT">Italian</SelectItem>
+								</SelectContent>
+							</Select>
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
 
 				{/* Tags Section */}
 				<div className="mt-4 space-y-2">
@@ -125,7 +125,7 @@ export default function TourBasicInfo({
 					</p>
 
 					<div className="mb-3 flex flex-wrap gap-2">
-						{(tourData.tags || []).map((tag, index) => (
+						{tags.map((tag, index) => (
 							<Badge
 								key={index}
 								variant="secondary"
@@ -151,6 +151,7 @@ export default function TourBasicInfo({
 							onKeyDown={handleKeyDown}
 							placeholder="Add a tag (e.g., adventure, family-friendly)"
 							className="w-full"
+							// No required attribute
 						/>
 						<button
 							type="button"

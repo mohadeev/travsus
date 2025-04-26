@@ -202,7 +202,7 @@ export default function DashboardLayout({
 					)}
 					<Nav isCollapsed={isCollapsed} />
 				</aside>
-				<main className="flex w-full flex-col overflow-auto px-4 pb-20 pt-6 md:px-6">
+				<main className="flex w-full flex-col px-4 pb-20 pt-6 md:px-6">
 					<DashboardShell>{children}</DashboardShell>
 				</main>
 			</div>

@@ -118,10 +118,10 @@ export default function RootLayout({
 						<AuthProvider>
 							<ReduxProvider>
 								<AuthWatcher />
-								<body className="bg-white text-base text-neutral-900 dark:bg-neutral-900 dark:text-neutral-200">
+								<body className="overflow-auto bg-white text-base text-neutral-900 dark:bg-neutral-900 dark:text-neutral-200">
 									<NewsletterModal />
 									<AuthModal />
-									<div>
+									<div className="overflow-auto">
 										<CombinedCookieConsent />
 										<AuthModal />
 										{/* <PlanTripModal isOpen={true} onClose={()=>{}}/> */}

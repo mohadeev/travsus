@@ -6,9 +6,11 @@
 body,
 html {
 	font-family:
-		SF Pro Display,
 		Inter Tight,
 		sans-serif;
+}
+body {
+	overflow: auto;
 }
 
 @layer utilities {

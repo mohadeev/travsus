@@ -1,10 +1,21 @@
 'use client'
 import { Input } from '@/components/ui/input'
+import type React from 'react'
+
 import Textarea from '@/shared/Textarea'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import { Plus, Trash, AlertCircle, Eye, EyeOff } from 'lucide-react'
 import { useState, useEffect } from 'react'
+import { Checkbox } from '@/components/ui/checkbox'
+import { Label } from '@/components/ui/label'
+import {
+	Select,
+	SelectContent,
+	SelectItem,
+	SelectTrigger,
+	SelectValue,
+} from '@/components/ui/select'
 
 interface Day {
 	name: string
@@ -15,6 +26,9 @@ interface Day {
 interface TourItineraryProps {
 	tourData: {
 		days?: Day[]
+		duration?: number
+		durationType?: string
+		includesOvernight?: boolean
 	}
 	updateTourData: (data: Partial<TourItineraryProps['tourData']>) => void
 }
@@ -62,6 +76,26 @@ export default function TourItinerary({
 		updateTourData({ days: newDays })
 	}
 
+	// Duration handlers
+	const handleDurationChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		const value = Number.parseInt(e.target.value)
+		if (!isNaN(value) && value > 0) {
+			updateTourData({ duration: value })
+		}
+	}
+
+	const handleDurationTypeChange = (value: string) => {
+		updateTourData({
+			durationType: value,
+			// Reset overnight if changing to hours
+			includesOvernight: value === 'hours' ? false : tourData.includesOvernight,
+		})
+	}
+
+	const handleOvernightChange = (checked: boolean) => {
+		updateTourData({ includesOvernight: checked })
+	}
+
 	const hasDays = tourData.days && tourData.days.length > 0
 	const hasEmptyDays =
 		hasDays &&
@@ -87,6 +121,68 @@ export default function TourItinerary({
 
 	return (
 		<div className="space-y-6">
+			{/* Duration Section */}
+			<div className="space-y-4">
+				<h2 className="text-xl font-bold">Tour Duration</h2>
+				<div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+					<div>
+						<Label
+							htmlFor="duration"
+							className="mb-2 block text-sm font-medium"
+						>
+							Duration
+						</Label>
+						<Input
+							id="duration"
+							type="number"
+							min="1"
+							value={tourData.duration || ''}
+							onChange={handleDurationChange}
+							placeholder="Enter duration"
+							className="w-full"
+						/>
+					</div>
+					<div>
+						<Label
+							htmlFor="durationType"
+							className="mb-2 block text-sm font-medium"
+						>
+							Unit
+						</Label>
+						<Select
+							value={tourData.durationType || 'days'}
+							onValueChange={handleDurationTypeChange}
+						>
+							<SelectTrigger id="durationType" className="w-full">
+								<SelectValue placeholder="Select unit" />
+							</SelectTrigger>
+							<SelectContent>
+								<SelectItem value="hours">Hours</SelectItem>
+								<SelectItem value="days">Days</SelectItem>
+							</SelectContent>
+						</Select>
+					</div>
+				</div>
+
+				{/* Overnight option - only show for days */}
+				{tourData.durationType === 'days' && (
+					<div className="flex items-center space-x-2 pt-2">
+						<Checkbox
+							id="overnight"
+							checked={tourData.includesOvernight || false}
+							onCheckedChange={handleOvernightChange}
+						/>
+						<Label
+							htmlFor="overnight"
+							className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+						>
+							Includes overnight stay (days and nights)
+						</Label>
+					</div>
+				)}
+			</div>
+
+			{/* Itinerary Section */}
 			<div className="flex items-center justify-between">
 				<div>
 					<h2 className="flex items-center text-xl font-bold">
