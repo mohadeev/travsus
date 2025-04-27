@@ -5,11 +5,10 @@
 *,
 body,
 html {
-	font-family:
-		Inter Tight,
-		sans-serif;
+	font-family: Inter Tight;
 }
-body {
+body,
+html {
 	overflow: auto;
 }
 

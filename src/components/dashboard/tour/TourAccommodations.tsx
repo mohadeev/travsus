@@ -13,6 +13,7 @@ import {
 	Star,
 	Edit,
 	Plus,
+	Building,
 } from 'lucide-react'
 
 // Define the bed types
@@ -338,336 +339,332 @@ export default function TourAccommodations({
 			) : (
 				<div className="space-y-6">
 					{accommodations.map((accommodation, accIndex) => (
-						<Card
-							key={accIndex}
-							className="overflow-hidden border-l-4 border-l-slate-800"
-						>
+						<Card key={accIndex} className="overflow-hidden">
 							<CardContent className="p-0">
-								<div className="flex flex-col md:flex-row">
-									{/* Accommodation Type and Info - Left Column */}
-									<div className="flex flex-col items-center justify-center bg-slate-50 p-4 text-center md:w-1/3">
-										<div className="relative mb-2 flex h-16 w-16 items-center justify-center">
-											<Hotel className="h-12 w-12 text-slate-700" />
+								{/* Accommodation Header */}
+								<div className="flex items-center justify-between border-b border-slate-100 bg-slate-50 p-4">
+									<div className="flex items-center">
+										<Building className="mr-3 h-6 w-6 text-slate-700" />
+										<div>
+											<h3 className="text-lg font-bold text-slate-800">
+												{accommodation.name}
+											</h3>
+											<p className="text-sm text-slate-600">
+												{accommodation.description}
+											</p>
 										</div>
-										<h3 className="text-md font-bold text-slate-800">
-											{accommodation.name}
-										</h3>
-										<p className="mt-1 text-xs text-slate-600">
-											{accommodation.description}
-										</p>
+									</div>
+									<div className="text-sm font-medium text-slate-700">
 										{accommodation.pricingTiers[0] && (
-											<div className="mt-3 text-xs font-medium text-slate-700">
+											<span>
 												Capacity: {accommodation.pricingTiers[0].minSeats}-
 												{accommodation.pricingTiers[0].maxSeats} people
-											</div>
+											</span>
 										)}
 									</div>
+								</div>
 
-									{/* Accommodation Details - Right Column */}
-									<div className="border-t border-slate-100 p-4 md:w-2/3 md:border-l md:border-t-0">
-										<div className="mb-3 flex items-start justify-between">
-											<h4 className="text-sm font-semibold text-slate-700">
-												{accommodation.name} Details
-											</h4>
-											<button
-												type="button"
-												onClick={() => removeAccommodation(accIndex)}
-												className="flex h-6 w-6 items-center justify-center rounded-full border border-gray-300 bg-white text-gray-600 hover:bg-gray-50"
+								{/* Accommodation Details */}
+								<div className="p-5">
+									<div className="mb-4 flex items-center justify-between">
+										<h4 className="text-base font-semibold text-slate-700">
+											{accommodation.name} Details
+										</h4>
+										<button
+											type="button"
+											onClick={() => removeAccommodation(accIndex)}
+											className="flex h-6 w-6 items-center justify-center rounded-full border border-gray-300 bg-white text-gray-600 hover:bg-gray-50"
+										>
+											<span className="sr-only">Remove</span>
+											<Trash className="h-3 w-3" />
+										</button>
+									</div>
+
+									<div className="mb-5 grid grid-cols-2 gap-5">
+										<div>
+											<Label
+												htmlFor={`acc-name-${accIndex}`}
+												className="mb-1.5 block text-sm font-medium"
 											>
-												<span className="sr-only">Remove</span>
-												<Trash className="h-3 w-3" />
-											</button>
+												Accommodation Name
+											</Label>
+											<Input
+												id={`acc-name-${accIndex}`}
+												value={accommodation.name}
+												onChange={(e) =>
+													updateAccommodation(accIndex, {
+														name: e.target.value,
+													})
+												}
+												className="h-9"
+											/>
 										</div>
-
-										<div className="mb-4 grid grid-cols-2 gap-4">
-											<div className="space-y-2">
-												<Label
-													htmlFor={`acc-name-${accIndex}`}
-													className="text-xs font-medium"
-												>
-													Accommodation Name
-												</Label>
-												<Input
-													id={`acc-name-${accIndex}`}
-													value={accommodation.name}
-													onChange={(e) =>
-														updateAccommodation(accIndex, {
-															name: e.target.value,
-														})
-													}
-													className="h-10 text-sm"
-												/>
-											</div>
-											<div className="space-y-2">
-												<Label
-													htmlFor={`acc-desc-${accIndex}`}
-													className="text-xs font-medium"
-												>
-													Description
-												</Label>
-												<Input
-													id={`acc-desc-${accIndex}`}
-													value={accommodation.description}
-													onChange={(e) =>
-														updateAccommodation(accIndex, {
-															description: e.target.value,
-														})
-													}
-													className="h-10 text-sm"
-												/>
-											</div>
+										<div>
+											<Label
+												htmlFor={`acc-desc-${accIndex}`}
+												className="mb-1.5 block text-sm font-medium"
+											>
+												Description
+											</Label>
+											<Input
+												id={`acc-desc-${accIndex}`}
+												value={accommodation.description}
+												onChange={(e) =>
+													updateAccommodation(accIndex, {
+														description: e.target.value,
+													})
+												}
+												className="h-9"
+											/>
 										</div>
+									</div>
 
-										{/* Pricing Tiers */}
-										{accommodation.pricingTiers.map((tier, tierIndex) => (
-											<div key={tierIndex} className="mt-4">
-												<div className="mb-2 flex items-center justify-between">
-													<h5 className="flex items-center text-sm font-semibold">
-														<Star className="mr-1 h-4 w-4 text-amber-500" />
-														Pricing Details
-													</h5>
+									{/* Pricing Tiers */}
+									{accommodation.pricingTiers.map((tier, tierIndex) => (
+										<div key={tierIndex} className="mt-6">
+											<div className="mb-3 flex items-center">
+												<Star className="mr-1.5 h-4 w-4 text-amber-500" />
+												<h5 className="text-base font-semibold">
+													Pricing Details
+												</h5>
+											</div>
+
+											<div className="mb-5 grid grid-cols-3 gap-5">
+												<div>
+													<Label
+														htmlFor={`tier-name-${accIndex}-${tierIndex}`}
+														className="mb-1.5 block text-sm font-medium"
+													>
+														Tier Name
+													</Label>
+													<Input
+														id={`tier-name-${accIndex}-${tierIndex}`}
+														value={tier.name}
+														onChange={(e) =>
+															updatePricingTier(accIndex, tierIndex, {
+																name: e.target.value,
+															})
+														}
+														className="h-9"
+													/>
+												</div>
+												<div>
+													<Label
+														htmlFor={`min-seats-${accIndex}-${tierIndex}`}
+														className="mb-1.5 block text-sm font-medium"
+													>
+														Min Capacity
+													</Label>
+													<Input
+														id={`min-seats-${accIndex}-${tierIndex}`}
+														type="number"
+														value={tier.minSeats}
+														onChange={(e) =>
+															updatePricingTier(accIndex, tierIndex, {
+																minSeats: Number.parseInt(e.target.value),
+															})
+														}
+														className="h-9"
+														min="1"
+													/>
+												</div>
+												<div>
+													<Label
+														htmlFor={`max-seats-${accIndex}-${tierIndex}`}
+														className="mb-1.5 block text-sm font-medium"
+													>
+														Max Capacity
+													</Label>
+													<Input
+														id={`max-seats-${accIndex}-${tierIndex}`}
+														type="number"
+														value={tier.maxSeats}
+														onChange={(e) =>
+															updatePricingTier(accIndex, tierIndex, {
+																maxSeats: Number.parseInt(e.target.value),
+															})
+														}
+														className="h-9"
+														min={tier.minSeats}
+													/>
+												</div>
+											</div>
+
+											{/* Bed Options */}
+											<div className="rounded-md bg-slate-50 p-4">
+												<div className="mb-3 flex items-center justify-between">
+													<h6 className="text-sm font-medium text-slate-700">
+														Bed Options
+													</h6>
+													<Button
+														variant="outline"
+														size="sm"
+														onClick={() => addBedOption(accIndex, tierIndex)}
+														className="h-8 px-3 text-xs"
+													>
+														<Plus className="mr-1 h-3 w-3" />
+														Add Bed Option
+													</Button>
 												</div>
 
-												<div className="mb-4 grid grid-cols-3 gap-4">
-													<div className="space-y-2">
-														<Label
-															htmlFor={`tier-name-${accIndex}-${tierIndex}`}
-															className="text-xs font-medium"
+												<div className="space-y-3">
+													{tier.bedOptions.map((option, optionIndex) => (
+														<div
+															key={optionIndex}
+															className="rounded border border-slate-200 bg-white p-3"
 														>
-															Tier Name
-														</Label>
-														<Input
-															id={`tier-name-${accIndex}-${tierIndex}`}
-															value={tier.name}
-															onChange={(e) =>
-																updatePricingTier(accIndex, tierIndex, {
-																	name: e.target.value,
-																})
-															}
-															className="h-10 text-sm"
-														/>
-													</div>
-													<div className="space-y-2">
-														<Label
-															htmlFor={`min-seats-${accIndex}-${tierIndex}`}
-															className="text-xs font-medium"
-														>
-															Min Capacity
-														</Label>
-														<Input
-															id={`min-seats-${accIndex}-${tierIndex}`}
-															type="number"
-															value={tier.minSeats}
-															onChange={(e) =>
-																updatePricingTier(accIndex, tierIndex, {
-																	minSeats: Number.parseInt(e.target.value),
-																})
-															}
-															className="h-10 text-sm"
-															min="1"
-														/>
-													</div>
-													<div className="space-y-2">
-														<Label
-															htmlFor={`max-seats-${accIndex}-${tierIndex}`}
-															className="text-xs font-medium"
-														>
-															Max Capacity
-														</Label>
-														<Input
-															id={`max-seats-${accIndex}-${tierIndex}`}
-															type="number"
-															value={tier.maxSeats}
-															onChange={(e) =>
-																updatePricingTier(accIndex, tierIndex, {
-																	maxSeats: Number.parseInt(e.target.value),
-																})
-															}
-															className="h-10 text-sm"
-															min={tier.minSeats}
-														/>
-													</div>
-												</div>
-
-												{/* Bed Options */}
-												<div className="rounded-md bg-slate-50 p-4">
-													<div className="mb-3 flex items-center justify-between">
-														<h6 className="text-sm font-medium text-slate-700">
-															Bed Options
-														</h6>
-														<Button
-															variant="outline"
-															size="sm"
-															onClick={() => addBedOption(accIndex, tierIndex)}
-															className="h-9 px-3 text-xs"
-														>
-															<Plus className="mr-1 h-3 w-3" />
-															Add Bed Option
-														</Button>
-													</div>
-
-													<div className="space-y-3">
-														{tier.bedOptions.map((option, optionIndex) => (
-															<div
-																key={optionIndex}
-																className="rounded border border-slate-200 bg-white p-3"
-															>
-																<div className="mb-2 flex items-center justify-between">
-																	<div className="flex items-center">
-																		<span className="text-sm font-medium">
-																			{getBedTypeLabel(option.bedType)}
-																		</span>
-																		<span className="ml-2 text-xs text-slate-500">
-																			(Max: {option.maxOccupancy}{' '}
-																			{option.maxOccupancy === 1
-																				? 'person'
-																				: 'people'}
+															<div className="mb-2 flex items-center justify-between">
+																<div className="flex items-center">
+																	<span className="text-sm font-medium">
+																		{getBedTypeLabel(option.bedType)}
+																	</span>
+																	<span className="ml-2 text-xs text-slate-500">
+																		(Max: {option.maxOccupancy}{' '}
+																		{option.maxOccupancy === 1
+																			? 'person'
+																			: 'people'}
+																		)
+																	</span>
+																</div>
+																<div className="flex items-center space-x-1">
+																	<button
+																		type="button"
+																		onClick={() =>
+																			setEditingBedOption({
+																				accIndex,
+																				tierIndex,
+																				optionIndex,
+																			})
+																		}
+																		className="flex h-6 w-6 items-center justify-center rounded-full border border-gray-300 bg-white text-gray-600 hover:bg-gray-50"
+																	>
+																		<Edit className="h-3 w-3" />
+																		<span className="sr-only">Edit</span>
+																	</button>
+																	<button
+																		type="button"
+																		onClick={() =>
+																			removeBedOption(
+																				accIndex,
+																				tierIndex,
+																				optionIndex,
 																			)
-																		</span>
-																	</div>
-																	<div className="flex items-center space-x-1">
-																		<button
-																			type="button"
-																			onClick={() =>
-																				setEditingBedOption({
-																					accIndex,
-																					tierIndex,
-																					optionIndex,
-																				})
-																			}
-																			className="flex h-6 w-6 items-center justify-center rounded-full border border-gray-300 bg-white text-gray-600 hover:bg-gray-50"
+																		}
+																		className="flex h-6 w-6 items-center justify-center rounded-full border border-gray-300 bg-white text-gray-600 hover:bg-gray-50"
+																	>
+																		<Trash className="h-3 w-3" />
+																		<span className="sr-only">Remove</span>
+																	</button>
+																</div>
+															</div>
+
+															{editingBedOption &&
+															editingBedOption.accIndex === accIndex &&
+															editingBedOption.tierIndex === tierIndex &&
+															editingBedOption.optionIndex === optionIndex ? (
+																<div className="mt-2 grid grid-cols-3 gap-2">
+																	<div>
+																		<Label
+																			htmlFor={`bed-type-${accIndex}-${tierIndex}-${optionIndex}`}
+																			className="mb-1 block text-xs font-medium"
 																		>
-																			<Edit className="h-3 w-3" />
-																			<span className="sr-only">Edit</span>
-																		</button>
-																		<button
-																			type="button"
-																			onClick={() =>
-																				removeBedOption(
+																			Bed Type
+																		</Label>
+																		<select
+																			id={`bed-type-${accIndex}-${tierIndex}-${optionIndex}`}
+																			value={option.bedType}
+																			onChange={(e) =>
+																				updateBedOption(
 																					accIndex,
 																					tierIndex,
 																					optionIndex,
+																					{
+																						bedType: e.target.value,
+																						maxOccupancy:
+																							BED_TYPES.find(
+																								(type) =>
+																									type.value === e.target.value,
+																							)?.maxOccupancy || 1,
+																					},
 																				)
 																			}
-																			className="flex h-6 w-6 items-center justify-center rounded-full border border-gray-300 bg-white text-gray-600 hover:bg-gray-50"
+																			className="h-9 w-full rounded-md border border-slate-200 bg-white px-3 text-sm"
 																		>
-																			<Trash className="h-3 w-3" />
-																			<span className="sr-only">Remove</span>
-																		</button>
+																			{BED_TYPES.map((type) => (
+																				<option
+																					key={type.value}
+																					value={type.value}
+																				>
+																					{type.label}
+																				</option>
+																			))}
+																		</select>
 																	</div>
-																</div>
-
-																{editingBedOption &&
-																editingBedOption.accIndex === accIndex &&
-																editingBedOption.tierIndex === tierIndex &&
-																editingBedOption.optionIndex === optionIndex ? (
-																	<div className="mt-2 grid grid-cols-3 gap-2">
-																		<div className="space-y-1">
-																			<Label
-																				htmlFor={`bed-type-${accIndex}-${tierIndex}-${optionIndex}`}
-																				className="text-xs"
-																			>
-																				Bed Type
-																			</Label>
-																			<select
-																				id={`bed-type-${accIndex}-${tierIndex}-${optionIndex}`}
-																				value={option.bedType}
+																	<div>
+																		<Label
+																			htmlFor={`base-price-${accIndex}-${tierIndex}-${optionIndex}`}
+																			className="mb-1 block text-xs font-medium"
+																		>
+																			Base Price
+																		</Label>
+																		<div className="relative">
+																			<span className="absolute left-3 top-2 text-sm">
+																				€
+																			</span>
+																			<Input
+																				id={`base-price-${accIndex}-${tierIndex}-${optionIndex}`}
+																				type="number"
+																				value={option.basePrice}
 																				onChange={(e) =>
 																					updateBedOption(
 																						accIndex,
 																						tierIndex,
 																						optionIndex,
 																						{
-																							bedType: e.target.value,
-																							maxOccupancy:
-																								BED_TYPES.find(
-																									(type) =>
-																										type.value ===
-																										e.target.value,
-																								)?.maxOccupancy || 1,
+																							basePrice: Number.parseInt(
+																								e.target.value,
+																							),
 																						},
 																					)
 																				}
-																				className="h-10 w-full rounded-md border border-slate-200 bg-white px-3 text-sm"
-																			>
-																				{BED_TYPES.map((type) => (
-																					<option
-																						key={type.value}
-																						value={type.value}
-																					>
-																						{type.label}
-																					</option>
-																				))}
-																			</select>
-																		</div>
-																		<div className="space-y-1">
-																			<Label
-																				htmlFor={`base-price-${accIndex}-${tierIndex}-${optionIndex}`}
-																				className="text-xs"
-																			>
-																				Base Price
-																			</Label>
-																			<div className="relative">
-																				<span className="absolute left-3 top-2.5 text-sm">
-																					€
-																				</span>
-																				<Input
-																					id={`base-price-${accIndex}-${tierIndex}-${optionIndex}`}
-																					type="number"
-																					value={option.basePrice}
-																					onChange={(e) =>
-																						updateBedOption(
-																							accIndex,
-																							tierIndex,
-																							optionIndex,
-																							{
-																								basePrice: Number.parseInt(
-																									e.target.value,
-																								),
-																							},
-																						)
-																					}
-																					className="h-10 pl-7 text-sm"
-																					min="0"
-																				/>
-																			</div>
-																		</div>
-																		<div className="flex items-end">
-																			<Button
-																				size="sm"
-																				onClick={() =>
-																					setEditingBedOption(null)
-																				}
-																				className="mr-2 h-9 scale-110 transform text-sm"
-																			>
-																				Save
-																			</Button>
+																				className="h-9 pl-7 text-sm"
+																				min="0"
+																			/>
 																		</div>
 																	</div>
-																) : (
-																	<div className="text-sm">
-																		<span className="font-medium">
-																			€{option.basePrice}
-																		</span>
-																		<span className="ml-1 text-xs text-slate-500">
-																			per night
-																		</span>
+																	<div className="flex items-end">
+																		<Button
+																			size="sm"
+																			onClick={() => setEditingBedOption(null)}
+																			className="h-9 text-xs"
+																		>
+																			Save
+																		</Button>
 																	</div>
-																)}
-															</div>
-														))}
+																</div>
+															) : (
+																<div className="text-sm">
+																	<span className="font-medium">
+																		€{option.basePrice}
+																	</span>
+																	<span className="ml-1 text-xs text-slate-500">
+																		per night
+																	</span>
+																</div>
+															)}
+														</div>
+													))}
 
-														{tier.bedOptions.length === 0 && (
-															<div className="py-3 text-center text-sm text-slate-500">
-																No bed options added. Click "Add Bed Option" to
-																add one.
-															</div>
-														)}
-													</div>
+													{tier.bedOptions.length === 0 && (
+														<div className="py-3 text-center text-sm text-slate-500">
+															No bed options added. Click "Add Bed Option" to
+															add one.
+														</div>
+													)}
 												</div>
 											</div>
-										))}
-									</div>
+										</div>
+									))}
 								</div>
 							</CardContent>
 						</Card>

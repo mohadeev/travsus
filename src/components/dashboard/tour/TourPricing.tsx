@@ -10,29 +10,41 @@ import { AlertCircle, Trash } from 'lucide-react'
 // Default transport types with descriptions
 const transportTypes = [
 	{
+		name: 'Passat',
+		image:
+			'https://res.cloudinary.com/travsus/image/upload/v1745698557/passat_vycrhv.png',
+		minPeople: 1,
+		maxPeople: 4,
+		description: 'Comfortable sedan for small groups and couples',
+	},
+	{
 		name: 'SUV (prado)',
-		image: '/images/transports/prado.png',
+		image:
+			'https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png',
 		minPeople: 1,
 		maxPeople: 5,
 		description: 'Comfortable SUV for small groups and families',
 	},
 	{
 		name: 'Mercedes Vito',
-		image: '/images/transports/vito.png',
+		image:
+			'https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png',
 		minPeople: 6,
 		maxPeople: 8,
 		description: 'Luxury van perfect for medium-sized groups',
 	},
 	{
-		name: 'Mercedes Minivan',
-		image: '/images/transports/mercedes-minivan.png',
+		name: 'Mini Bus',
+		image:
+			'https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png',
 		minPeople: 9,
 		maxPeople: 19,
 		description: 'Spacious minivan for larger groups with extra luggage',
 	},
 	{
 		name: 'Big Bus',
-		image: '/images/transports/bus.png',
+		image:
+			'https://res.cloudinary.com/travsus/image/upload/v1745698557/bus_ziyi99.png',
 		minPeople: 20,
 		maxPeople: 40,
 		description: 'Full-sized coach for large groups and extended tours',
@@ -43,9 +55,22 @@ const transportTypes = [
 const defaultPricingTiers = [
 	{
 		minSeats: 1,
+		maxSeats: 4,
+		transportType: 'Passat',
+		transportImage:
+			'https://res.cloudinary.com/travsus/image/upload/v1745698557/passat_vycrhv.png',
+		pricing: {
+			pricePerDay: 100,
+			totalPrice: 500,
+			currency: 'EUR',
+		},
+	},
+	{
+		minSeats: 1,
 		maxSeats: 5,
 		transportType: 'SUV (prado)',
-		transportImage: '/images/transports/prado.png',
+		transportImage:
+			'https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png',
 		pricing: {
 			pricePerDay: 100,
 			totalPrice: 500,
@@ -56,7 +81,8 @@ const defaultPricingTiers = [
 		minSeats: 6,
 		maxSeats: 8,
 		transportType: 'Mercedes Vito',
-		transportImage: '/images/transports/vito.png',
+		transportImage:
+			'https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png',
 		pricing: {
 			pricePerDay: 100,
 			totalPrice: 500,
@@ -66,8 +92,9 @@ const defaultPricingTiers = [
 	{
 		minSeats: 9,
 		maxSeats: 19,
-		transportType: 'Mercedes Minivan',
-		transportImage: '/images/transports/mercedes-minivan.png',
+		transportType: 'Mini Bus',
+		transportImage:
+			'https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png',
 		pricing: {
 			pricePerDay: 100,
 			totalPrice: 500,
@@ -78,7 +105,8 @@ const defaultPricingTiers = [
 		minSeats: 20,
 		maxSeats: 40,
 		transportType: 'Big Bus',
-		transportImage: '/images/transports/bus.png',
+		transportImage:
+			'https://res.cloudinary.com/travsus/image/upload/v1745698557/bus_ziyi99.png',
 		pricing: {
 			pricePerDay: 100,
 			totalPrice: 500,

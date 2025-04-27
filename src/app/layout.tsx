@@ -57,6 +57,12 @@ export default function RootLayout({
 		<html lang="en">
 			<head>
 				<meta name="google-adsense-account" content="ca-pub-9261275339248060" />
+				<link rel="preconnect" href="https://fonts.googleapis.com" />
+				<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
+				<link
+					href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap"
+					rel="stylesheet"
+				></link>
 				<link rel="preconnect" href="//fdn.fontcdn.ir" />
 				<link rel="preconnect" href="//v1.fontapi.ir" />
 				<link

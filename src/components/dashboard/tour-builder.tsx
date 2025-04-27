@@ -10,6 +10,7 @@ import TourBasicInfo from './tour/TourBasicInfo'
 import TourOverviewHighlights from './tour/TourOverviewHighlights'
 import TourItinerary from './tour/TourItinerary'
 import TourPricing from './tour/TourPricing'
+import TourAccommodations from './tour/TourAccommodations'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { toast } from '@/components/ui/use-toast'
@@ -38,7 +39,7 @@ export function TourBuilder({ tour }: { tour?: any }) {
 
 	// Initialize tour data state
 	const [tourData, setTourData] = useState({
-		// id: tour?.id || '',
+		id: tour?.id || '',
 		name: tour?.name || '',
 		subtitle: tour?.subtitle || '',
 		overview: tour?.overview || '',
@@ -96,6 +97,10 @@ export function TourBuilder({ tour }: { tour?: any }) {
 		// If changing from pricing tab, trigger validation
 		if (activeTab === 'pricing') {
 			window.dispatchEvent(new Event('validatePricing'))
+		}
+		// If changing from accommodations tab, trigger validation
+		if (activeTab === 'accommodations') {
+			window.dispatchEvent(new Event('validateAccommodations'))
 		}
 		setActiveTab(tab)
 	}
@@ -226,6 +231,17 @@ export function TourBuilder({ tour }: { tour?: any }) {
 						>
 							Pricing
 						</button>
+						<button
+							type="button"
+							className={`border-b-2 px-4 py-2 ${
+								activeTab === 'accommodations'
+									? 'border-black font-medium'
+									: 'border-transparent'
+							}`}
+							onClick={() => handleTabChange('accommodations')}
+						>
+							Accommodations
+						</button>
 					</div>
 
 					{/* Content based on active tab */}
@@ -275,6 +291,20 @@ export function TourBuilder({ tour }: { tour?: any }) {
 							</CardHeader>
 							<CardContent>
 								<TourPricing
+									tourData={tourData}
+									updateTourData={updateTourData}
+								/>
+							</CardContent>
+						</Card>
+					)}
+
+					{activeTab === 'accommodations' && (
+						<Card>
+							<CardHeader>
+								<CardTitle>Tour Accommodations</CardTitle>
+							</CardHeader>
+							<CardContent>
+								<TourAccommodations
 									tourData={tourData}
 									updateTourData={updateTourData}
 								/>
