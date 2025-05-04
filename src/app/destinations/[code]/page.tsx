@@ -215,7 +215,7 @@ export default function DestinationPage({
 						</button>
 					</div>
 
-					<ReadeMore countryData={countryData} />
+					<ReadeMore description={countryData?.description} />
 				</div>
 				{/* <CollectionsGrid layout={'row'} /> */}
 				<CollectionsGrid

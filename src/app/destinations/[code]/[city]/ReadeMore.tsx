@@ -3,11 +3,7 @@
 import { ChevronDown, ChevronUp } from 'lucide-react'
 import { useState } from 'react'
 
-const ReadMore = ({
-	countryData,
-}: {
-	countryData: { description: string }
-}) => {
+const ReadMore = ({ description }: any) => {
 	const [isExpanded, setIsExpanded] = useState(false)
 
 	// Function to truncate text to first 200 characters
@@ -23,14 +19,14 @@ const ReadMore = ({
 	}
 
 	// If no description is provided, return empty div
-	if (!countryData?.description) return <div></div>
+	if (!description) return <div></div>
 
 	return (
 		<div className="relative max-w-3xl">
 			<p className="text-sm leading-relaxed text-black md:text-base">
 				{isExpanded ? (
 					<>
-						{countryData.description}{' '}
+						{description}{' '}
 						<span
 							onClick={toggleReadMore}
 							className="ml-1 inline-flex cursor-pointer items-center text-sm font-medium text-black md:text-base"
@@ -40,7 +36,7 @@ const ReadMore = ({
 					</>
 				) : (
 					<>
-						{truncateText(countryData.description, 200)}
+						{truncateText(description, 200)}
 						<span className="inline">...</span>{' '}
 						<span
 							onClick={toggleReadMore}

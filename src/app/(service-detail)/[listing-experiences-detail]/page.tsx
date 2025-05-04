@@ -46,6 +46,7 @@ import { ChevronDown, ChevronRight, Heart } from 'lucide-react'
 import Link from 'next/link'
 import TourItineraryWithMap from './tour-itinerary-with-map'
 import TourHeader from './TourHeader'
+import ReadMore from '@/app/destinations/[code]/[city]/ReadeMore'
 
 const MapComponent = dynamic(() => import('./tour-map'), {
 	ssr: false,
@@ -115,14 +116,18 @@ const ListingExperiencesDetailPage: FC<
 				{overview ? (
 					<div className="space-y-0 p-0">
 						<div className="max-w-3xl">
-							<h2 className="my-4 text-2xl font-semibold">Overview</h2>
-							<p className="mb-0.5 rounded-lg bg-gray-50 p-4 text-sm leading-relaxed text-black md:text-base">
+							<h4 className="my-4 text-2xl font-semibold">Overview</h4>
+							<div className="mb-0.5 rounded-lg bg-gray-50 p-4 text-sm leading-relaxed text-black md:text-base">
+								<ReadMore description={overview} />
+							</div>
+
+							{/* <p className="mb-0.5 rounded-lg bg-gray-50 p-4 text-sm leading-relaxed text-black md:text-base">
 								{overview}
 								<button className="flex items-center text-sm font-medium text-black md:text-base">
 									Read more{' '}
 									<ChevronDown className="ml-1 h-4 w-4 md:h-5 md:w-5" />
 								</button>
-							</p>
+							</p> */}
 						</div>
 					</div>
 				) : (
@@ -362,12 +367,18 @@ const ListingExperiencesDetailPage: FC<
 					</div>
 				</main>
 				{days && (
-					<TourItineraryWithMap
-						days={days}
-						// startAddress={startAddress}
-						// endAddress={endAddress}
-						// addresses={addresses}
-					/>
+					<div>
+						<h4 className="my-4 text-2xl font-semibold">Itinerary</h4>
+
+						{days && (
+							<TourItineraryWithMap
+								days={days}
+								// startAddress={startAddress}
+								// endAddress={endAddress}
+								// addresses={addresses}
+							/>
+						)}
+					</div>
 				)}
 
 				{/* {itinerary()} */}
