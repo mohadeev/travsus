@@ -1,90 +1,80 @@
 'use client'
 
-import React, { useState } from 'react'
-import { Card } from '@/components/ui/card'
+import { useState } from 'react'
+import { useSelector } from 'react-redux'
 import { ChevronDown, ChevronUp } from 'lucide-react'
 
-interface FAQ {
-	question: string
-	answer: string
-}
+const FAQs = () => {
+	const { faqs }: any = useSelector(
+		(state: any) => state.creatingServiceSlice.service,
+	)
+	const [isOpen, setIsOpen] = useState(false)
 
-interface FAQProps {
-	faqs: FAQ[]
-}
+	if (!faqs || faqs.length === 0) return null
 
-export default function TourFAQ({ faqs }: FAQProps) {
-	if (!faqs) {
-		return null
-	}
-	const [openIndex, setOpenIndex] = useState<number | null>(null)
-
-	const toggleFAQ = (index: number) => {
-		setOpenIndex(openIndex === index ? null : index)
+	const toggleAccordion = () => {
+		setIsOpen(!isOpen)
 	}
 
+	// SEO Schema for FAQs
 	const faqSchema = {
 		'@context': 'https://schema.org',
 		'@type': 'FAQPage',
-		mainEntity:
-			faqs && faqs.length > 0
-				? faqs.map((faq) => ({
-						'@type': 'Question',
-						name: faq.question,
-						acceptedAnswer: {
-							'@type': 'Answer',
-							text: faq.answer,
-						},
-					}))
-				: [],
+		mainEntity: faqs.map((faq: any) => ({
+			'@type': 'Question',
+			name: faq.question,
+			acceptedAnswer: {
+				'@type': 'Answer',
+				text: faq.answer,
+			},
+		})),
 	}
 
 	return (
-		<>
-			{faqs.length >= 1 ? (
-				<section className="listingSection__wrap_no_border_color">
-					<h2 className="mb-8 text-2xl font-semibold">
-						Frequently Asked Questions
-					</h2>
-					<div className="space-y-4">
-						{faqs?.map((faq, index) => (
-							<Card
-								key={index}
-								className="p-6 transition-shadow hover:shadow-lg"
-							>
-								<div
-									className="flex cursor-pointer items-start justify-between"
-									onClick={() => toggleFAQ(index)}
-									role="button"
-									aria-expanded={openIndex === index}
-									aria-controls={`faq-${index}`}
-								>
-									<h3 className="font-medium">{faq.question}</h3>
-									{openIndex === index ? (
-										<ChevronUp className="h-5 w-5 text-primary" />
-									) : (
-										<ChevronDown className="h-5 w-5 text-primary" />
-									)}
-								</div>
-								{openIndex === index && (
-									<div
-										id={`faq-${index}`}
-										className="text-muted-foreground mt-4"
-									>
-										<p>{faq.answer}</p>
-									</div>
-								)}
-							</Card>
-						))}
+		<div className="">
+			<div className="overflow-hidden rounded-lg border border-gray-200 shadow-sm dark:border-gray-700">
+				<div
+					className="flex cursor-pointer items-center justify-between p-4 transition-colors hover:bg-gray-50 dark:hover:bg-gray-800"
+					onClick={toggleAccordion}
+				>
+					<div>
+						<h2 className="text-xl font-semibold">
+							Frequently Asked Questions
+						</h2>
+						<span className="text-sm text-neutral-500 dark:text-neutral-400">
+							Common questions about this tour
+						</span>
 					</div>
+					{isOpen ? (
+						<ChevronUp className="h-5 w-5" />
+					) : (
+						<ChevronDown className="h-5 w-5" />
+					)}
+				</div>
 
-					{/* SEO Structured Data for FAQ */}
-					<script
-						type="application/ld+json"
-						dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-					/>
-				</section>
-			) : null}
-		</>
+				{isOpen && (
+					<div className="border-t border-gray-200 p-4 dark:border-gray-700">
+						<div className="space-y-4">
+							{faqs.map((faq: any, idx: number) => (
+								<div key={idx} className="mb-4 last:mb-0">
+									<h3 className="mb-2 font-medium">{faq.question}</h3>
+									<p className="text-sm text-gray-700 dark:text-gray-300">
+										{faq.answer}
+									</p>
+								</div>
+							))}
+						</div>
+					</div>
+				)}
+			</div>
+
+			{/* SEO Structured Data for FAQ */}
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+			/>
+		</div>
 	)
 }
+
+export default FAQs

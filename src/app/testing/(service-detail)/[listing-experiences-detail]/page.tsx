@@ -351,6 +351,7 @@ const ListingExperiencesDetailPage: FC<
 						{renderSection2()}
 						{/* <TourListingHeader /> */}
 						<Included />
+						<TourFAQ />
 						{/* {days && <TourItinerary itinerary={days} days={days} />} */}
 					</div>
 
@@ -377,10 +378,9 @@ const ListingExperiencesDetailPage: FC<
 
 				{/* {renderSection5()} */}
 				{/* {renderSection6()} */}
-				<TourFAQ faqs={faq} />
 
 				{/* {renderSection8()} */}
-				<ReviewSystem serviceId={id} serviceName={title} />
+				{/* <ReviewSystem serviceId={id} serviceName={title} /> */}
 				{/* <SectionGridFilterCard
 					layout="row"
 					className={'mb-10 mt-10 pb-24 lg:pb-28'}
