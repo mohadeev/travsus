@@ -132,16 +132,17 @@ function ClientHomePage() {
             <BackgroundSection />
             <SectionGridAuthorBox boxCard="box2" />
           </div> */}
-
-					{/* <SectionGridFeaturePlaces /> */}
-					{/* <SectionGridFilterCard layout="row" /> */}
-					{/* <ItemsCardList
+					<ItemsCardList
 						locationType="tour"
 						heading="Popular Tours"
 						subHeading="Discover exciting tours and experiences"
 						currentPage={1}
 						layout="row"
 					/>
+
+					{/* <SectionGridFeaturePlaces /> */}
+					{/* <SectionGridFilterCard layout="row" /> */}
+					{/* 
 					<ItemsCardList locationType="country" layout="row" />
 
 					<ItemsCardList

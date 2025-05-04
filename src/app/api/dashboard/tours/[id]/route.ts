@@ -101,7 +101,7 @@ export async function PUT(
 		}
 
 		// Parse the request body
-		const body = await request.json()
+		const body: any = await request.json()
 
 		// Get the tour to ensure it belongs to this business
 		const existingTour = await prisma.tour.findFirst({
@@ -119,12 +119,18 @@ export async function PUT(
 		}
 
 		// Update the tour
+		let newObject
+		if (body) {
+			const { id, ...dataNewObject }: any = body
+			newObject = dataNewObject
+		}
+
 		const updatedTour = await prisma.tour.update({
 			where: {
 				id,
 			},
 			data: {
-				...body,
+				...newObject,
 				updated: true,
 			},
 		})

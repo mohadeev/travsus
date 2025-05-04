@@ -95,7 +95,7 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 					galleryImgs={galleryImgs}
 					href={href}
 					navigation={false}
-					galleryClass="rounded-md" // Changed from rounded-xl to rounded-md to match CountryCard
+					galleryClass="rounded-xl" // Changed from rounded-xl to rounded-xl to match CountryCard
 				/>
 				<BtnLikeIcon
 					onClick={() => {
@@ -153,7 +153,7 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 
 	return (
 		<div className={`nc-ExperiencesCard group relative ${className}`}>
-			<Link href={href} className="block overflow-hidden rounded-md">
+			<Link href={href} className="block overflow-hidden rounded-xl">
 				{renderSliderGallery()}
 			</Link>
 			<div>{renderContent()}</div>

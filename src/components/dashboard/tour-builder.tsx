@@ -40,7 +40,7 @@ export function TourBuilder({ tour }: { tour?: any }) {
 
 	// Initialize tour data state
 	const [tourData, setTourData] = useState({
-		// id: tour?.id || '',
+		id: tour?.id || '',
 		name: tour?.name || '',
 		subtitle: tour?.subtitle || '',
 		overview: tour?.overview || '',
