@@ -5,36 +5,10 @@ import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 
-const transportTypes = [
-	{
-		name: 'SUV (prado)',
-		image: '/images/transports/prado.png',
-		minPeople: 1,
-		maxPeople: 5,
-	},
-	{
-		name: 'Mercedes Vito',
-		image: '/images/transports/vito.png',
-		minPeople: 6,
-		maxPeople: 8,
-	},
-	{
-		name: 'Mercedes Minivan',
-		image: '/images/transports/mercedes-minivan.png',
-		minPeople: 9,
-		maxPeople: 19,
-	},
-	{
-		name: 'Big Bus',
-		image: '/images/transports/bus.png',
-		minPeople: 20,
-		maxPeople: 40,
-	},
-]
-
-export default function TransportTypes({
+export default function pricingTiers({
 	peopleCount,
 	transportLineItem,
+	pricingTiers,
 }: any) {
 	// const peopleCount
 
@@ -48,8 +22,8 @@ export default function TransportTypes({
 	}
 
 	const getRecommendedTransport = () => {
-		return transportTypes.find(
-			(type) => peopleCount >= type.minPeople && peopleCount <= type.maxPeople,
+		return pricingTiers.find(
+			(type) => peopleCount >= type.minSeats && peopleCount <= type.maxSeats,
 		)
 	}
 
@@ -57,19 +31,19 @@ export default function TransportTypes({
 		const recommended = getRecommendedTransport()
 		if (recommended) {
 			setSelectedType(recommended)
-			setCurrentIndex(transportTypes.indexOf(recommended))
+			setCurrentIndex(pricingTiers.indexOf(recommended))
 		}
 	}, [peopleCount])
 
 	const handlePrev = () => {
 		setCurrentIndex((prevIndex) =>
-			prevIndex > 0 ? prevIndex - 1 : transportTypes.length - 1,
+			prevIndex > 0 ? prevIndex - 1 : pricingTiers.length - 1,
 		)
 	}
 
 	const handleNext = () => {
 		setCurrentIndex((prevIndex) =>
-			prevIndex < transportTypes.length - 1 ? prevIndex + 1 : 0,
+			prevIndex < pricingTiers.length - 1 ? prevIndex + 1 : 0,
 		)
 	}
 
@@ -98,9 +72,9 @@ export default function TransportTypes({
 						className="absolute inset-0 flex items-center justify-center"
 					>
 						{(() => {
-							const type = transportTypes[currentIndex]
+							const type = pricingTiers[currentIndex]
 							const isRecommended =
-								getRecommendedTransport()?.name === type.name
+								getRecommendedTransport()?.name === type.transportType
 							const isSelected = selectedType === type
 							return (
 								<div
@@ -113,15 +87,17 @@ export default function TransportTypes({
 									}`}
 								>
 									<Image
-										src={type.image}
-										alt={type.name}
+										src={type.transportImage}
+										alt={type.transportType}
 										width={80}
 										height={80}
 										className="mb-2"
 									/>
-									<span className="text-sm font-medium">{type.name}</span>
+									<span className="text-sm font-medium">
+										{type.transportType}
+									</span>
 									<span className="mt-1 text-xs">
-										{type.minPeople} - {type.maxPeople}
+										{type.minSeats} - {type.maxSeats}
 										{/* {peopleCount} */}
 									</span>
 									{isRecommended && (
@@ -151,7 +127,7 @@ export default function TransportTypes({
 			</div>
 
 			<div className="mt-4 flex justify-center space-x-2">
-				{transportTypes.map((_, index) => (
+				{pricingTiers.map((_, index) => (
 					<button
 						key={index}
 						onClick={() => setCurrentIndex(index)}

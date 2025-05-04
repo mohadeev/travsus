@@ -61,7 +61,7 @@ const defaultPricingTiers = [
 			'https://res.cloudinary.com/travsus/image/upload/v1745698557/passat_vycrhv.png',
 		pricing: {
 			pricePerDay: 100,
-			totalPrice: 500,
+			totalPrice: 450,
 			currency: 'EUR',
 		},
 	},
@@ -73,7 +73,7 @@ const defaultPricingTiers = [
 			'https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png',
 		pricing: {
 			pricePerDay: 100,
-			totalPrice: 500,
+			totalPrice: 450,
 			currency: 'EUR',
 		},
 	},
@@ -97,7 +97,7 @@ const defaultPricingTiers = [
 			'https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png',
 		pricing: {
 			pricePerDay: 100,
-			totalPrice: 500,
+			totalPrice: 600,
 			currency: 'EUR',
 		},
 	},
@@ -109,7 +109,7 @@ const defaultPricingTiers = [
 			'https://res.cloudinary.com/travsus/image/upload/v1745698557/bus_ziyi99.png',
 		pricing: {
 			pricePerDay: 100,
-			totalPrice: 500,
+			totalPrice: 3000,
 			currency: 'EUR',
 		},
 	},

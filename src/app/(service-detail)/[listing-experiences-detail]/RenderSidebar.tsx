@@ -50,6 +50,7 @@ const RenderSidebar: FC<RenderSidebarProps> = ({}) => {
 		name: title,
 		price,
 		days,
+		pricingTiers,
 	}: any = useSelector((state: any) => state.creatingServiceSlice.service)
 	const filteredLineItems = lineItems?.filter(
 		({ includeInTotal }: any) => includeInTotal === true,
@@ -225,6 +226,7 @@ const RenderSidebar: FC<RenderSidebarProps> = ({}) => {
 					<TransportTypes
 						cd={totalGuests}
 						peopleCount={totalGuests}
+						pricingTiers={pricingTiers}
 						transportLineItem={transportLineItem}
 					/>
 

@@ -298,6 +298,7 @@ model Tour {
   faq            Faq[]
   inclusions     Inclusions?  // ✅ Added inclusions just like FAQ  
   durationType String?
+  duration Int?
 	includesOvernight Boolean?
   @@map("tours")
 }
