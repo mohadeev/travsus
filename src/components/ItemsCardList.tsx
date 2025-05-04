@@ -97,7 +97,7 @@ const ItemsCardList: FC<ItemsCardListProps> = ({
 					url = `/api/cities?countryId=${countryId}&limit=${limit}`
 				} else if (locationType === 'place' && cityId) {
 					// Fetch places for a specific city by name
-					url = `/api/placesByCityId?cityId=${encodeURIComponent(cityId)}&limit=${limit}`
+					url = `/api/placesByCityId?cityId=${cityId}&limit=${limit}`
 				} else {
 					// Default to popular cities
 					url = `/api/cities/popular?limit=${limit}`

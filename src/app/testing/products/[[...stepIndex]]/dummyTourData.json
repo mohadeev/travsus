@@ -1,0 +1,66 @@
+{
+	"creatorId": "user_id_here",
+	"businessId": "business_id_here",
+	"name": "Amazing Europe Tour",
+	"subtitle": "Discover the heart of Europe",
+	"overview": "A 10-day journey through the most beautiful cities in Europe",
+	"productCategory": "Group Tour",
+	"slug": "amazing-europe-tour",
+	"images": [{ "url": "https://example.com/image1.jpg" }],
+	"people": [{ "name": "John Doe", "role": "Tour Guide" }],
+	"services": [
+		{ "name": "Guided Tours", "description": "Expert-led tours in each city" }
+	],
+	"places": [{ "name": "Paris", "country": "France" }],
+	"highlights": ["Eiffel Tower", "Louvre Museum"],
+	"days": [
+		{
+			"day": 1,
+			"title": "Arrival in Paris",
+			"description": "Welcome to the City of Lights!"
+		}
+	],
+	"paths": [{ "from": "Paris", "to": "Rome" }],
+	"price": "2999",
+	"discount": "10%",
+	"start": { "date": "2023-06-01" },
+	"end": { "date": "2023-06-10" },
+	"reviews": [],
+	"lang": "en",
+	"tourfor": "Adults",
+	"conclusion": "An unforgettable European adventure",
+	"tags": ["Europe", "City Tours"],
+	"keyphrase": ["European vacation", "cultural tour"],
+	"pricingTiers": [
+		{
+			"minSeats": 10,
+			"maxSeats": 20,
+			"pricing": {
+				"pricePerDay": 299.9,
+				"totalPrice": 2999.0,
+				"currency": "USD"
+			}
+		}
+	],
+	"accommodations": [
+		{
+			"name": "Luxury Hotels",
+			"description": "5-star accommodations throughout the tour",
+			"pricingTiers": [
+				{
+					"name": "Standard Room",
+					"minSeats": 1,
+					"maxSeats": 2,
+					"bedOptions": [
+						{
+							"bedType": "TWIN",
+							"maxOccupancy": 2,
+							"basePrice": 200.0,
+							"currency": "USD"
+						}
+					]
+				}
+			]
+		}
+	]
+}

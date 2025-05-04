@@ -1,0 +1,125 @@
+.container,
+.active_container,
+.container_last {
+	display: flex;
+	flex-direction: row;
+	/* padding: 50px 0; */
+}
+.is_last_icon_container,
+.icon_container {
+	width: 35px;
+	height: 35px;
+	background-color: #000;
+	border-radius: 50px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	color: #fff;
+	transition: all 2s ease-in-out;
+}
+.icon_first {
+	font-size: 13px;
+	font-style: italic;
+}
+
+.text_container__last,
+.text_container {
+	width: calc(100% - 35px);
+	height: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: center;
+	row-gap: 5px;
+	padding-bottom: 20px;
+}
+
+/* .container_left {
+} */
+
+.container_div_name {
+	height: 100%;
+	width: 35px;
+	padding: 0;
+	flex-grow: 1;
+	flex: 1;
+	height: inherit;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	/* background-color: red; */
+}
+.container_line {
+	height: calc(100% - 35px);
+	position: relative;
+	/* background-color: red; */
+}
+.centered_container {
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 4px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	justify-content: space-between;
+	gap: 2px;
+	max-height: 100%;
+	overflow: hidden;
+	transition: all 2s ease-in-out;
+}
+.dot {
+	min-width: 4px;
+	background-color: #000;
+	border-radius: 50%;
+	aspect-ratio: 1 / 1;
+}
+.title_container {
+	min-height: 35px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: center;
+	cursor: pointer;
+	/* background-color: yellow; */
+}
+.title {
+	font-size: 15px;
+	font-weight: 600;
+	margin-left: 10px;
+	cursor: pointer;
+}
+.text {
+	font-size: 14px;
+	max-height: 40px;
+	overflow: hidden;
+	position: relative;
+}
+.text > span {
+	font-size: 14px;
+	position: absolute;
+	bottom: -3px;
+	right: 0;
+	z-index: 4;
+	background-color: #fff;
+}
+.text_active {
+	font-size: 14px;
+}
+.text > .hidden_text {
+	visibility: hidden;
+	font-size: 1px;
+	position: absolute;
+	left: -9999px;
+	top: -9999px;
+}
+@media screen and (max-width: 600px) {
+	.text_container__last,
+	.text_container {
+		row-gap: 10px;
+	}
+}

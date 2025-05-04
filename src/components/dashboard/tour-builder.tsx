@@ -11,6 +11,7 @@ import TourOverviewHighlights from './tour/TourOverviewHighlights'
 import TourItinerary from './tour/TourItinerary'
 import TourPricing from './tour/TourPricing'
 import TourAccommodations from './tour/TourAccommodations'
+import TourImages from './tour/TourImages'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { toast } from '@/components/ui/use-toast'
@@ -39,7 +40,7 @@ export function TourBuilder({ tour }: { tour?: any }) {
 
 	// Initialize tour data state
 	const [tourData, setTourData] = useState({
-		id: tour?.id || '',
+		// id: tour?.id || '',
 		name: tour?.name || '',
 		subtitle: tour?.subtitle || '',
 		overview: tour?.overview || '',
@@ -101,6 +102,10 @@ export function TourBuilder({ tour }: { tour?: any }) {
 		// If changing from accommodations tab, trigger validation
 		if (activeTab === 'accommodations') {
 			window.dispatchEvent(new Event('validateAccommodations'))
+		}
+		// If changing from images tab, trigger validation
+		if (activeTab === 'images') {
+			window.dispatchEvent(new Event('validateImages'))
 		}
 		setActiveTab(tab)
 	}
@@ -234,6 +239,17 @@ export function TourBuilder({ tour }: { tour?: any }) {
 						<button
 							type="button"
 							className={`border-b-2 px-4 py-2 ${
+								activeTab === 'images'
+									? 'border-black font-medium'
+									: 'border-transparent'
+							}`}
+							onClick={() => handleTabChange('images')}
+						>
+							Images
+						</button>
+						<button
+							type="button"
+							className={`border-b-2 px-4 py-2 ${
 								activeTab === 'accommodations'
 									? 'border-black font-medium'
 									: 'border-transparent'
@@ -291,6 +307,20 @@ export function TourBuilder({ tour }: { tour?: any }) {
 							</CardHeader>
 							<CardContent>
 								<TourPricing
+									tourData={tourData}
+									updateTourData={updateTourData}
+								/>
+							</CardContent>
+						</Card>
+					)}
+
+					{activeTab === 'images' && (
+						<Card>
+							<CardHeader>
+								<CardTitle>Tour Images</CardTitle>
+							</CardHeader>
+							<CardContent>
+								<TourImages
 									tourData={tourData}
 									updateTourData={updateTourData}
 								/>

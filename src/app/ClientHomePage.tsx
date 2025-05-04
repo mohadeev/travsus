@@ -6,7 +6,6 @@ import SectionGridFilterCard from './(experience-listings)/SectionGridFilterCard
 import { JsonLd } from 'react-schemaorg'
 import Home from './test/page'
 import Roulette from '@/components/Roulette/Roulette'
-import CountryCardList from '@/components/ItemsCardList'
 import ItemsCardList from '@/components/ItemsCardList'
 
 function ClientHomePage() {
@@ -101,7 +100,7 @@ function ClientHomePage() {
 			/>
 			<main className="nc-PageHome3 relative">
 				{/* GLASSMOPHIN */}
-				<BgGlassmorphism />
+				{/* <BgGlassmorphism /> */}
 				{/* <SectionGridFilterCard className="pb-24 lg:pb-28" /> */}
 				{/* SECTION HERO */}
 
@@ -136,27 +135,27 @@ function ClientHomePage() {
 
 					{/* <SectionGridFeaturePlaces /> */}
 					{/* <SectionGridFilterCard layout="row" /> */}
-					<ItemsCardList
+					{/* <ItemsCardList
 						locationType="tour"
 						heading="Popular Tours"
 						subHeading="Discover exciting tours and experiences"
 						currentPage={1}
 						layout="row"
 					/>
-					<CountryCardList locationType="country" layout="row" />
+					<ItemsCardList locationType="country" layout="row" />
 
-					<CountryCardList
+					<ItemsCardList
 						locationType="city"
 						countryId="67e120b734623c9e568da348"
 						layout="row"
 						heading="Popular Cities"
-					/>
+					/> */}
 
-					<CountryCardList
+					{/* <ItemsCardList
 						locationType="place"
 						cityId="67e120b734623c9e568da348"
 						layout="row"
-					/>
+					/> */}
 					{/* SECTION */}
 					{/* <WellcomeTemplate /> */}
 					{/* <VarticalExperiencesCard /> */}

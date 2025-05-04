@@ -1,6 +1,7 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import type React from 'react'
+import { useState, useEffect } from 'react'
 import { useEditor, EditorContent } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import Image from '@tiptap/extension-image'
@@ -21,12 +22,21 @@ import {
 	AlignCenter,
 	AlignRight,
 	ChevronDown,
+	FileCode,
 } from 'lucide-react'
 import { uploadImage } from '@/app/actions/uploadImage'
 import { Button } from '@/components/ui/button'
 
-const MenuBar = ({ editor }: { editor: any }) => {
-	if (!editor) {
+const MenuBar = ({
+	editor,
+	isHtmlMode,
+	toggleHtmlMode,
+}: {
+	editor: any
+	isHtmlMode: boolean
+	toggleHtmlMode: () => void
+}) => {
+	if (!editor && !isHtmlMode) {
 		return null
 	}
 
@@ -81,84 +91,6 @@ const MenuBar = ({ editor }: { editor: any }) => {
 		)
 	}
 
-	return (
-		<div className="menu-bar mb-4 flex flex-wrap gap-2 rounded-lg bg-neutral-100 p-2 dark:bg-neutral-800">
-			<button
-				onClick={() => editor.chain().focus().setParagraph().run()}
-				className={`rounded p-2 ${editor.isActive('paragraph') ? 'bg-primary-200 dark:bg-primary-700' : 'bg-white dark:bg-neutral-700'}`}
-			>
-				P
-			</button>
-			<button
-				onClick={() => editor.chain().focus().toggleBold().run()}
-				className={`rounded p-2 ${editor.isActive('bold') ? 'bg-primary-200 dark:bg-primary-700' : 'bg-white dark:bg-neutral-700'}`}
-			>
-				<Bold size={18} />
-			</button>
-			<button
-				onClick={() => editor.chain().focus().toggleItalic().run()}
-				className={`rounded p-2 ${editor.isActive('italic') ? 'bg-primary-200 dark:bg-primary-700' : 'bg-white dark:bg-neutral-700'}`}
-			>
-				<Italic size={18} />
-			</button>
-			<HeadingDropdown editor={editor} />
-			<button
-				onClick={() => editor.chain().focus().toggleBulletList().run()}
-				className={`rounded p-2 ${editor.isActive('bulletList') ? 'bg-primary-200 dark:bg-primary-700' : 'bg-white dark:bg-neutral-700'}`}
-			>
-				<List size={18} />
-			</button>
-			<button
-				onClick={() => editor.chain().focus().toggleOrderedList().run()}
-				className={`rounded p-2 ${editor.isActive('orderedList') ? 'bg-primary-200 dark:bg-primary-700' : 'bg-white dark:bg-neutral-700'}`}
-			>
-				<ListOrdered size={18} />
-			</button>
-			<button
-				onClick={() => editor.chain().focus().toggleCodeBlock().run()}
-				className={`rounded p-2 ${editor.isActive('codeBlock') ? 'bg-primary-200 dark:bg-primary-700' : 'bg-white dark:bg-neutral-700'}`}
-			>
-				<Code size={18} />
-			</button>
-			<button
-				onClick={() => editor.chain().focus().toggleBlockquote().run()}
-				className={`rounded p-2 ${editor.isActive('blockquote') ? 'bg-primary-200 dark:bg-primary-700' : 'bg-white dark:bg-neutral-700'}`}
-			>
-				<Quote size={18} />
-			</button>
-			<button
-				onClick={() => editor.chain().focus().setHorizontalRule().run()}
-				className="rounded bg-white p-2 dark:bg-neutral-700"
-			>
-				<Minus size={18} />
-			</button>
-			<button
-				onClick={addImage}
-				className="rounded bg-white p-2 dark:bg-neutral-700"
-			>
-				<ImageIcon size={18} />
-			</button>
-			<button
-				onClick={() => editor.chain().focus().setTextAlign('left').run()}
-				className={`rounded p-2 ${editor.isActive({ textAlign: 'left' }) ? 'bg-primary-200 dark:bg-primary-700' : 'bg-white dark:bg-neutral-700'}`}
-			>
-				<AlignLeft size={18} />
-			</button>
-			<button
-				onClick={() => editor.chain().focus().setTextAlign('center').run()}
-				className={`rounded p-2 ${editor.isActive({ textAlign: 'center' }) ? 'bg-primary-200 dark:bg-primary-700' : 'bg-white dark:bg-neutral-700'}`}
-			>
-				<AlignCenter size={18} />
-			</button>
-			<button
-				onClick={() => editor.chain().focus().setTextAlign('right').run()}
-				className={`rounded p-2 ${editor.isActive({ textAlign: 'right' }) ? 'bg-primary-200 dark:bg-primary-700' : 'bg-white dark:bg-neutral-700'}`}
-			>
-				<AlignRight size={18} />
-			</button>
-		</div>
-	)
-
 	async function addImage() {
 		const input = document.createElement('input')
 		input.type = 'file'
@@ -176,6 +108,96 @@ const MenuBar = ({ editor }: { editor: any }) => {
 		}
 		input.click()
 	}
+
+	return (
+		<div className="menu-bar mb-4 flex flex-wrap gap-2 rounded-lg bg-neutral-100 p-2 dark:bg-neutral-800">
+			<button
+				onClick={toggleHtmlMode}
+				className={`rounded p-2 ${isHtmlMode ? 'bg-primary-200 dark:bg-primary-700' : 'bg-white dark:bg-neutral-700'}`}
+				title={isHtmlMode ? 'Switch to visual editor' : 'Switch to HTML mode'}
+			>
+				<FileCode size={18} />
+			</button>
+
+			{!isHtmlMode && editor && (
+				<>
+					<button
+						onClick={() => editor.chain().focus().setParagraph().run()}
+						className={`rounded p-2 ${editor.isActive('paragraph') ? 'bg-primary-200 dark:bg-primary-700' : 'bg-white dark:bg-neutral-700'}`}
+					>
+						P
+					</button>
+					<button
+						onClick={() => editor.chain().focus().toggleBold().run()}
+						className={`rounded p-2 ${editor.isActive('bold') ? 'bg-primary-200 dark:bg-primary-700' : 'bg-white dark:bg-neutral-700'}`}
+					>
+						<Bold size={18} />
+					</button>
+					<button
+						onClick={() => editor.chain().focus().toggleItalic().run()}
+						className={`rounded p-2 ${editor.isActive('italic') ? 'bg-primary-200 dark:bg-primary-700' : 'bg-white dark:bg-neutral-700'}`}
+					>
+						<Italic size={18} />
+					</button>
+					<HeadingDropdown editor={editor} />
+					<button
+						onClick={() => editor.chain().focus().toggleBulletList().run()}
+						className={`rounded p-2 ${editor.isActive('bulletList') ? 'bg-primary-200 dark:bg-primary-700' : 'bg-white dark:bg-neutral-700'}`}
+					>
+						<List size={18} />
+					</button>
+					<button
+						onClick={() => editor.chain().focus().toggleOrderedList().run()}
+						className={`rounded p-2 ${editor.isActive('orderedList') ? 'bg-primary-200 dark:bg-primary-700' : 'bg-white dark:bg-neutral-700'}`}
+					>
+						<ListOrdered size={18} />
+					</button>
+					<button
+						onClick={() => editor.chain().focus().toggleCodeBlock().run()}
+						className={`rounded p-2 ${editor.isActive('codeBlock') ? 'bg-primary-200 dark:bg-primary-700' : 'bg-white dark:bg-neutral-700'}`}
+					>
+						<Code size={18} />
+					</button>
+					<button
+						onClick={() => editor.chain().focus().toggleBlockquote().run()}
+						className={`rounded p-2 ${editor.isActive('blockquote') ? 'bg-primary-200 dark:bg-primary-700' : 'bg-white dark:bg-neutral-700'}`}
+					>
+						<Quote size={18} />
+					</button>
+					<button
+						onClick={() => editor.chain().focus().setHorizontalRule().run()}
+						className="rounded bg-white p-2 dark:bg-neutral-700"
+					>
+						<Minus size={18} />
+					</button>
+					<button
+						onClick={addImage}
+						className="rounded bg-white p-2 dark:bg-neutral-700"
+					>
+						<ImageIcon size={18} />
+					</button>
+					<button
+						onClick={() => editor.chain().focus().setTextAlign('left').run()}
+						className={`rounded p-2 ${editor.isActive({ textAlign: 'left' }) ? 'bg-primary-200 dark:bg-primary-700' : 'bg-white dark:bg-neutral-700'}`}
+					>
+						<AlignLeft size={18} />
+					</button>
+					<button
+						onClick={() => editor.chain().focus().setTextAlign('center').run()}
+						className={`rounded p-2 ${editor.isActive({ textAlign: 'center' }) ? 'bg-primary-200 dark:bg-primary-700' : 'bg-white dark:bg-neutral-700'}`}
+					>
+						<AlignCenter size={18} />
+					</button>
+					<button
+						onClick={() => editor.chain().focus().setTextAlign('right').run()}
+						className={`rounded p-2 ${editor.isActive({ textAlign: 'right' }) ? 'bg-primary-200 dark:bg-primary-700' : 'bg-white dark:bg-neutral-700'}`}
+					>
+						<AlignRight size={18} />
+					</button>
+				</>
+			)}
+		</div>
+	)
 }
 
 export default function BlogEditor({
@@ -191,8 +213,12 @@ export default function BlogEditor({
 	const [isLoading, setIsLoading] = useState(false)
 	const [authorUsername, setAuthorUsername] = useState('')
 	const [authorId, setAuthorId] = useState('')
+	const [isHtmlMode, setIsHtmlMode] = useState(false)
+	const [htmlContent, setHtmlContent] = useState('')
+	const [visualContent, setVisualContent] = useState('')
 	const router = useRouter()
 
+	// Create editor only when in visual mode
 	const editor = useEditor({
 		extensions: [
 			StarterKit,
@@ -205,15 +231,20 @@ export default function BlogEditor({
 				types: ['heading', 'paragraph'],
 			}),
 		],
-		content: '',
+		content: visualContent,
 		editorProps: {
 			attributes: {
 				class:
 					'prose prose-sm sm:prose lg:prose-lg xl:prose-2xl mx-auto focus:outline-none',
 			},
 		},
+		onUpdate: ({ editor }) => {
+			// Store the current content for visual mode
+			setVisualContent(editor.getHTML())
+		},
 	})
 
+	// Load post data
 	useEffect(() => {
 		if (postId) {
 			setIsLoading(true)
@@ -223,7 +254,16 @@ export default function BlogEditor({
 					if (post) {
 						setTitle(post.title)
 						setExcerpt(post.excerpt)
-						editor?.commands.setContent(post.content)
+
+						// Set both content states
+						setVisualContent(post.content)
+						setHtmlContent(post.content)
+
+						// If editor exists, set its content
+						if (editor) {
+							editor.commands.setContent(post.content)
+						}
+
 						setTags(post.tags.join(', '))
 						setAuthorUsername(post.author.username || 'Unknown Author')
 						setAuthorId(post.author.id)
@@ -237,6 +277,28 @@ export default function BlogEditor({
 		}
 	}, [postId, editor])
 
+	// Toggle between HTML and visual modes
+	const toggleHtmlMode = () => {
+		if (isHtmlMode) {
+			// Switching from HTML to visual mode
+			setVisualContent(htmlContent)
+
+			// If editor exists, update its content
+			if (editor) {
+				editor.commands.setContent(htmlContent)
+			}
+		} else {
+			// Switching from visual to HTML mode
+			// Get the latest content from the editor
+			if (editor) {
+				setHtmlContent(editor.getHTML())
+			}
+		}
+
+		// Toggle the mode
+		setIsHtmlMode(!isHtmlMode)
+	}
+
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault()
 		if (postId && authorId !== userId) {
@@ -247,7 +309,15 @@ export default function BlogEditor({
 		const formData = new FormData()
 		formData.append('title', title)
 		formData.append('excerpt', excerpt)
-		formData.append('content', editor?.getHTML() || '')
+
+		// Use the appropriate content based on the current mode
+		const content = isHtmlMode
+			? htmlContent
+			: editor
+				? editor.getHTML()
+				: visualContent
+		formData.append('content', content)
+
 		formData.append('tags', tags)
 		if (postId) formData.append('id', postId)
 
@@ -336,11 +406,25 @@ export default function BlogEditor({
 					>
 						Content
 					</label>
-					<MenuBar editor={editor} />
-					<EditorContent
+					<MenuBar
 						editor={editor}
-						className="min-h-[300px] rounded border p-2 focus:ring focus:ring-primary-300 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-200"
+						isHtmlMode={isHtmlMode}
+						toggleHtmlMode={toggleHtmlMode}
 					/>
+
+					{isHtmlMode ? (
+						<textarea
+							value={htmlContent}
+							onChange={(e) => setHtmlContent(e.target.value)}
+							className="font-mono min-h-[300px] w-full rounded border p-2 text-sm focus:ring focus:ring-primary-300 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-200"
+							rows={15}
+						/>
+					) : (
+						<EditorContent
+							editor={editor}
+							className="min-h-[300px] rounded border p-2 focus:ring focus:ring-primary-300 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-200"
+						/>
+					)}
 				</div>
 				<div>
 					<label

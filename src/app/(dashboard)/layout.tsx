@@ -47,7 +47,7 @@ export default function DashboardLayout({
 				console.log('companiesResult', companiesResult)
 				// If we have no companies, redirect to create company page
 				if (!companiesResult || companiesResult.length === 0) {
-					router.push('/dashboard/company/create')
+					// router.push('/dashboard/company/create')
 					return
 				}
 
@@ -60,13 +60,13 @@ export default function DashboardLayout({
 					if (companiesResult.length > 0) {
 						await dispatch(setActiveCompany(companiesResult[0].id)).unwrap()
 					} else {
-						router.push('/dashboard/company/create')
+						// router.push('/dashboard/company/create')
 					}
 				}
 			} catch (error) {
 				console.error('Error loading company data:', error)
 				// If no companies exist, redirect to create company page
-				router.push('/dashboard/company/create')
+				// router.push('/dashboard/company/create')
 			} finally {
 				setIsLoading(false)
 			}

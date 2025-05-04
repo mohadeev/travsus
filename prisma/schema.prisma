@@ -306,6 +306,8 @@ type PricingTier {
   minSeats    Int?
   maxSeats    Int?
   pricing     Pricing?
+  transportType String?
+  transportImage String?
 }
 
 type Inclusions {
@@ -561,6 +563,7 @@ model PayoutMethod {
 
 // Add this type definition for Day
 type Day {
+  hidden      Boolean   @default(false)
   name        String
   description String?
   cityId      String?   // Make cityId optional (nullable)

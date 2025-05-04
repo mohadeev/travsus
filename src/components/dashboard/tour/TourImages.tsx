@@ -245,7 +245,7 @@ export default function TourImages({
 			{hasImages ? (
 				<div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
 					{tourData.images?.map((image, index) => (
-						<Card key={index} className="overflow-hidden">
+						<Card key={index} className="overflow-hidden shadow-md">
 							<div className="relative">
 								{/* Image */}
 								<div className="relative h-48 w-full overflow-hidden bg-slate-100">

@@ -46,8 +46,8 @@ interface TourReviewProps {
 			isFeatured?: boolean
 		}[]
 		region?: { region?: string; country?: string }
-		start?: { name?: string }
-		end?: { name?: string }
+		// start?: { name?: string }
+		// end?: { name?: string }
 		lang?: string
 		tags?: string[]
 	}
