@@ -77,6 +77,8 @@ export default function Footer() {
 					are not responsible for their actions or policies. Cancellation and
 					refund policies vary by provider. <br />
 					Please review terms before booking.
+					<br />
+					
 				</p>
 			</div>
 		</footer>
