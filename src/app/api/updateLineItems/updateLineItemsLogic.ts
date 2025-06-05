@@ -29,6 +29,7 @@ export async function updateLineItemsLogic(data: TourData) {
 	const { tour, body } = data
 	const lineItems: LineItem[] = []
 	let { guests, accommodation, booking } = body
+	console.log('guests, accommodation, booking', guests, accommodation, booking)
 	const accommodations: any = tour?.accommodations
 
 	let accommodationLineItem: any = {}

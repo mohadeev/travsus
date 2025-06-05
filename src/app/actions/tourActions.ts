@@ -125,7 +125,7 @@ export async function getTour(tourId: string) {
 			where: { id: tourId },
 			// Address include removed
 		})
-		console.log('accommodationTypes', JSON.stringify(tour?.accommodations))
+		// console.log('accommodationTypes', JSON.stringify(tour?.accommodations))
 
 		if (!tour) {
 			return { success: false, error: 'Tour not found' }

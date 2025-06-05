@@ -45,7 +45,7 @@ const RenderSidebar: FC<RenderSidebarProps> = ({}) => {
 	const user = useSelector((state: any) => state.userReducer.userData)
 	const { guests, lineItems, accommodation, transport, bookOwnHotels } = booking
 
-	const totalGuests: number = guests?.guestAdults + guests?.guestChildren
+	const totalGuests: number = guests?.guestAdults + guests?.guestChildren || 2
 	const {
 		name: title,
 		price,
@@ -107,6 +107,7 @@ const RenderSidebar: FC<RenderSidebarProps> = ({}) => {
 	useEffect(() => {
 		dispatch(updateProvidedService({ path: 'booking.tour', value: tour }))
 	}, [booking])
+	console.log('booking.lineItems: ', booking.lineItems)
 	useEffect(() => {
 		if (tour && booking.lineItems >= 0) {
 			dispatch(
@@ -171,6 +172,8 @@ const RenderSidebar: FC<RenderSidebarProps> = ({}) => {
 		}
 	})
 	const priceStart = totalAmount / totalGuests
+	console.log('totalAmount', totalAmount)
+	console.log('totalGuests', totalGuests)
 
 	return (
 		<div
