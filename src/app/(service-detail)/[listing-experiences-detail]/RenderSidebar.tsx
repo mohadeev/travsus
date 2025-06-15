@@ -107,7 +107,6 @@ const RenderSidebar: FC<RenderSidebarProps> = ({}) => {
 	useEffect(() => {
 		dispatch(updateProvidedService({ path: 'booking.tour', value: tour }))
 	}, [booking])
-	console.log('booking.lineItems: ', booking.lineItems)
 	useEffect(() => {
 		if (tour && booking.lineItems >= 0) {
 			dispatch(
@@ -172,8 +171,6 @@ const RenderSidebar: FC<RenderSidebarProps> = ({}) => {
 		}
 	})
 	const priceStart = totalAmount / totalGuests
-	console.log('totalAmount', totalAmount)
-	console.log('totalGuests', totalGuests)
 
 	return (
 		<div

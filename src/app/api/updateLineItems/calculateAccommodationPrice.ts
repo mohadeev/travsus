@@ -53,7 +53,6 @@ function calculateAccommodationPrice(
 	}
 
 	function calculateTotalCost(data: any, pricing: any) {
-		console.log('pricing:', pricing)
 		let totalCost = 0
 
 		for (const category in data) {
@@ -80,8 +79,6 @@ function calculateAccommodationPrice(
 
 	const totalCost = calculateTotalCost(guests, pricing)
 	const result = calculateTotalPeople(guests)
-	console.log('result', result)
-	console.log('totalCost', totalCost)
 
 	return {
 		description: 'accommodation',

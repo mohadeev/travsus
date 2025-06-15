@@ -36,8 +36,7 @@ const AccountSavelists = () => {
 				})
 			})()
 		} else if (status === 'unauthenticated') {
-			// dispatch(clearUser())
-			console.log('session?.user', 'unauthenticated')
+			dispatch(clearUser())
 		}
 	}, [session, status])
 

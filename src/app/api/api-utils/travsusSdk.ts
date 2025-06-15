@@ -63,12 +63,10 @@ const functions = [
 			})
 			let findedTier
 			if (totalGuests >= 40) {
-				console.log('is here 1')
 				findedTier = tour.pricingTiers.find(
 					(eachTier: any) => eachTier.maxSeats >= 40,
 				)
 			} else {
-				console.log('is here 2')
 
 				findedTier = tour.pricingTiers.find(
 					(eachTier: any) =>
@@ -77,7 +75,6 @@ const functions = [
 				)
 			}
 
-			console.log('findedTier', findedTier)
 			return findedTier
 		},
 	},
@@ -92,12 +89,10 @@ const functions = [
 			})
 			let findedTier
 			if (totalGuests >= 40) {
-				console.log('is here 1')
 				findedTier = tour.pricingTiers.find(
 					(eachTier: any) => eachTier.maxSeats >= 40,
 				)
 			} else {
-				console.log('is here 2')
 
 				findedTier = tour.pricingTiers.find(
 					(eachTier: any) =>
@@ -106,7 +101,6 @@ const functions = [
 				)
 			}
 
-			console.log('findedTier', findedTier)
 			return findedTier
 		},
 	},
