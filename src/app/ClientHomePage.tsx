@@ -135,7 +135,7 @@ function ClientHomePage() {
 					<ItemsCardList
 						locationType="tour"
 						heading="Popular Tours"
-						subHeading="Discover exciting tours and experiences"
+						// subHeading="Discover exciting tours and experiences"
 						currentPage={1}
 						layout="row"
 					/>

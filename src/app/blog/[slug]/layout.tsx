@@ -42,7 +42,7 @@ export async function generateMetadata({
 		`${author?.accountData?.firstname} ${author?.accountData?.lastname}`
 
 	return {
-		title: `${title} | Your Blog Name`,
+		title: `${title} | TRAVSUS`,
 		description: excerpt,
 		openGraph: {
 			title: title,
