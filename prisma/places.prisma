@@ -9,7 +9,6 @@ generator client {
   output   = "../prisma/generated/places"
 }
 
-
 // City Model - Add the places relation
 model City {
   id         String               @id @default(auto()) @map("_id") @db.ObjectId
@@ -67,20 +66,25 @@ model Place {
   updatedAt    DateTime             @updatedAt
 }
 
+// AlternativeName Embedded Type - ADD THIS NEW TYPE
+type AlternativeName {
+  text      String
+  source    String   // "user_search", "ai_correction", etc.
+  createdAt DateTime @default(now())
+}
 
-
-
-// Translatable Content Model
+// Translatable Content Model - UPDATE THIS MODEL
 model TranslatableContent {
-  id            String               @id @default(auto()) @map("_id") @db.ObjectId
-  entity        String
-  translations  TranslatedText[]
+  id               String               @id @default(auto()) @map("_id") @db.ObjectId
+  entity           String
+  translations     TranslatedText[]
+  alternativeNames AlternativeName[]    // ADD THIS NEW FIELD
   // Opposite Relations
-  countries     Country[]
-  cities        City[]
-  places        Place[]              // Add this line
-  code3         String?              // Stores the country name
-  type          String?              // Stores "country" or "city"
+  countries        Country[]
+  cities           City[]
+  places           Place[]
+  code3            String?              // Stores the country name
+  type             String?              // Stores "country" or "city"
 }
 
 // Translated Text Model

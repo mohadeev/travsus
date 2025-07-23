@@ -5,10 +5,12 @@ import { useEffect, Fragment } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { Dialog, Transition } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/solid'
-import LoginClient from '@/app/login/LoginClient'
-import SignUpClient from '@/app/signup/SignUpClient'
+// import LoginClient from '@/app/login/LoginClient'
+// import SignUpClient from '@/app/signup/SignUpClient'
 import { useRepeatedOverlay } from '@/app/hooks/useRepeatedOverlay'
 import Logo from '@/shared/Logo'
+import LoginClient from '@/app/[locale]/login/LoginClient'
+import SignUpClient from '@/app/[locale]/signup/SignUpClient'
 
 const AuthModal: React.FC = () => {
 	const {

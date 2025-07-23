@@ -14,6 +14,11 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
 
 
 /**
+ * Model AlternativeName
+ * 
+ */
+export type AlternativeName = $Result.DefaultSelection<Prisma.$AlternativeNamePayload>
+/**
  * Model GeoCoordinates
  * 
  */
@@ -247,8 +252,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 5.21.1
-   * Query Engine version: bf0e5e8a04cada8225617067eaa03d041e2bba36
+   * Prisma Client JS version: 5.22.0
+   * Query Engine version: 605197351a3c8bdd595af2d2a9bc3025bca48ea2
    */
   export type PrismaVersion = {
     client: string
@@ -1298,6 +1303,67 @@ export namespace Prisma {
   /**
    * Models
    */
+
+  /**
+   * Model AlternativeName
+   */
+
+
+
+
+
+  export type AlternativeNameSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    text?: boolean
+    source?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["alternativeName"]>
+
+
+  export type AlternativeNameSelectScalar = {
+    text?: boolean
+    source?: boolean
+    createdAt?: boolean
+  }
+
+
+  export type $AlternativeNamePayload = {
+    name: "AlternativeName"
+    objects: {}
+    scalars: {
+      text: string
+      source: string
+      createdAt: Date
+    }
+    composites: {}
+  }
+
+  type AlternativeNameGetPayload<S extends boolean | null | undefined | AlternativeNameDefaultArgs> = $Result.GetResult<Prisma.$AlternativeNamePayload, S>
+
+
+
+
+
+  /**
+   * Fields of the AlternativeName model
+   */ 
+  interface AlternativeNameFieldRefs {
+    readonly text: FieldRef<"AlternativeName", 'String'>
+    readonly source: FieldRef<"AlternativeName", 'String'>
+    readonly createdAt: FieldRef<"AlternativeName", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * AlternativeName without action
+   */
+  export type AlternativeNameDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AlternativeName
+     */
+    select?: AlternativeNameSelect<ExtArgs> | null
+  }
+
 
   /**
    * Model GeoCoordinates
@@ -4720,6 +4786,7 @@ export namespace Prisma {
   export type TranslatableContentSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     entity?: boolean
+    alternativeNames?: boolean | AlternativeNameDefaultArgs<ExtArgs>
     code3?: boolean
     type?: boolean
     translations?: boolean | TranslatableContent$translationsArgs<ExtArgs>
@@ -4759,7 +4826,9 @@ export namespace Prisma {
       code3: string | null
       type: string | null
     }, ExtArgs["result"]["translatableContent"]>
-    composites: {}
+    composites: {
+      alternativeNames: Prisma.$AlternativeNamePayload[]
+    }
   }
 
   type TranslatableContentGetPayload<S extends boolean | null | undefined | TranslatableContentDefaultArgs> = $Result.GetResult<Prisma.$TranslatableContentPayload, S>
@@ -6958,6 +7027,7 @@ export namespace Prisma {
     NOT?: TranslatableContentWhereInput | TranslatableContentWhereInput[]
     id?: StringFilter<"TranslatableContent"> | string
     entity?: StringFilter<"TranslatableContent"> | string
+    alternativeNames?: AlternativeNameCompositeListFilter | AlternativeNameObjectEqualityInput[]
     code3?: StringNullableFilter<"TranslatableContent"> | string | null
     type?: StringNullableFilter<"TranslatableContent"> | string | null
     translations?: TranslatedTextListRelationFilter
@@ -6969,6 +7039,7 @@ export namespace Prisma {
   export type TranslatableContentOrderByWithRelationInput = {
     id?: SortOrder
     entity?: SortOrder
+    alternativeNames?: AlternativeNameOrderByCompositeAggregateInput
     code3?: SortOrder
     type?: SortOrder
     translations?: TranslatedTextOrderByRelationAggregateInput
@@ -6983,6 +7054,7 @@ export namespace Prisma {
     OR?: TranslatableContentWhereInput[]
     NOT?: TranslatableContentWhereInput | TranslatableContentWhereInput[]
     entity?: StringFilter<"TranslatableContent"> | string
+    alternativeNames?: AlternativeNameCompositeListFilter | AlternativeNameObjectEqualityInput[]
     code3?: StringNullableFilter<"TranslatableContent"> | string | null
     type?: StringNullableFilter<"TranslatableContent"> | string | null
     translations?: TranslatedTextListRelationFilter
@@ -7383,6 +7455,7 @@ export namespace Prisma {
   export type TranslatableContentCreateInput = {
     id?: string
     entity: string
+    alternativeNames?: XOR<AlternativeNameListCreateEnvelopeInput, AlternativeNameCreateInput> | AlternativeNameCreateInput[]
     code3?: string | null
     type?: string | null
     translations?: TranslatedTextCreateNestedManyWithoutContentInput
@@ -7394,6 +7467,7 @@ export namespace Prisma {
   export type TranslatableContentUncheckedCreateInput = {
     id?: string
     entity: string
+    alternativeNames?: XOR<AlternativeNameListCreateEnvelopeInput, AlternativeNameCreateInput> | AlternativeNameCreateInput[]
     code3?: string | null
     type?: string | null
     translations?: TranslatedTextUncheckedCreateNestedManyWithoutContentInput
@@ -7404,6 +7478,7 @@ export namespace Prisma {
 
   export type TranslatableContentUpdateInput = {
     entity?: StringFieldUpdateOperationsInput | string
+    alternativeNames?: XOR<AlternativeNameListUpdateEnvelopeInput, AlternativeNameCreateInput> | AlternativeNameCreateInput[]
     code3?: NullableStringFieldUpdateOperationsInput | string | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
     translations?: TranslatedTextUpdateManyWithoutContentNestedInput
@@ -7414,6 +7489,7 @@ export namespace Prisma {
 
   export type TranslatableContentUncheckedUpdateInput = {
     entity?: StringFieldUpdateOperationsInput | string
+    alternativeNames?: XOR<AlternativeNameListUpdateEnvelopeInput, AlternativeNameCreateInput> | AlternativeNameCreateInput[]
     code3?: NullableStringFieldUpdateOperationsInput | string | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
     translations?: TranslatedTextUncheckedUpdateManyWithoutContentNestedInput
@@ -7425,18 +7501,21 @@ export namespace Prisma {
   export type TranslatableContentCreateManyInput = {
     id?: string
     entity: string
+    alternativeNames?: XOR<AlternativeNameListCreateEnvelopeInput, AlternativeNameCreateInput> | AlternativeNameCreateInput[]
     code3?: string | null
     type?: string | null
   }
 
   export type TranslatableContentUpdateManyMutationInput = {
     entity?: StringFieldUpdateOperationsInput | string
+    alternativeNames?: XOR<AlternativeNameListUpdateEnvelopeInput, AlternativeNameCreateInput> | AlternativeNameCreateInput[]
     code3?: NullableStringFieldUpdateOperationsInput | string | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type TranslatableContentUncheckedUpdateManyInput = {
     entity?: StringFieldUpdateOperationsInput | string
+    alternativeNames?: XOR<AlternativeNameListUpdateEnvelopeInput, AlternativeNameCreateInput> | AlternativeNameCreateInput[]
     code3?: NullableStringFieldUpdateOperationsInput | string | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
   }
@@ -7864,6 +7943,21 @@ export namespace Prisma {
     isSet?: boolean
   }
 
+  export type AlternativeNameCompositeListFilter = {
+    equals?: AlternativeNameObjectEqualityInput[]
+    every?: AlternativeNameWhereInput
+    some?: AlternativeNameWhereInput
+    none?: AlternativeNameWhereInput
+    isEmpty?: boolean
+    isSet?: boolean
+  }
+
+  export type AlternativeNameObjectEqualityInput = {
+    text: string
+    source: string
+    createdAt: Date | string
+  }
+
   export type TranslatedTextListRelationFilter = {
     every?: TranslatedTextWhereInput
     some?: TranslatedTextWhereInput
@@ -7874,6 +7968,10 @@ export namespace Prisma {
     every?: CountryWhereInput
     some?: CountryWhereInput
     none?: CountryWhereInput
+  }
+
+  export type AlternativeNameOrderByCompositeAggregateInput = {
+    _count?: SortOrder
   }
 
   export type TranslatedTextOrderByRelationAggregateInput = {
@@ -8216,6 +8314,16 @@ export namespace Prisma {
     update?: XOR<XOR<TranslatableContentUpdateToOneWithWhereWithoutPlacesInput, TranslatableContentUpdateWithoutPlacesInput>, TranslatableContentUncheckedUpdateWithoutPlacesInput>
   }
 
+  export type AlternativeNameListCreateEnvelopeInput = {
+    set?: AlternativeNameCreateInput | AlternativeNameCreateInput[]
+  }
+
+  export type AlternativeNameCreateInput = {
+    text: string
+    source: string
+    createdAt?: Date | string
+  }
+
   export type TranslatedTextCreateNestedManyWithoutContentInput = {
     create?: XOR<TranslatedTextCreateWithoutContentInput, TranslatedTextUncheckedCreateWithoutContentInput> | TranslatedTextCreateWithoutContentInput[] | TranslatedTextUncheckedCreateWithoutContentInput[]
     connectOrCreate?: TranslatedTextCreateOrConnectWithoutContentInput | TranslatedTextCreateOrConnectWithoutContentInput[]
@@ -8270,6 +8378,13 @@ export namespace Prisma {
     connectOrCreate?: PlaceCreateOrConnectWithoutContentInput | PlaceCreateOrConnectWithoutContentInput[]
     createMany?: PlaceCreateManyContentInputEnvelope
     connect?: PlaceWhereUniqueInput | PlaceWhereUniqueInput[]
+  }
+
+  export type AlternativeNameListUpdateEnvelopeInput = {
+    set?: AlternativeNameCreateInput | AlternativeNameCreateInput[]
+    push?: AlternativeNameCreateInput | AlternativeNameCreateInput[]
+    updateMany?: AlternativeNameUpdateManyInput
+    deleteMany?: AlternativeNameDeleteManyInput
   }
 
   export type TranslatedTextUpdateManyWithoutContentNestedInput = {
@@ -8573,6 +8688,15 @@ export namespace Prisma {
     isSet?: boolean
   }
 
+  export type AlternativeNameWhereInput = {
+    AND?: AlternativeNameWhereInput | AlternativeNameWhereInput[]
+    OR?: AlternativeNameWhereInput[]
+    NOT?: AlternativeNameWhereInput | AlternativeNameWhereInput[]
+    text?: StringFilter<"AlternativeName"> | string
+    source?: StringFilter<"AlternativeName"> | string
+    createdAt?: DateTimeFilter<"AlternativeName"> | Date | string
+  }
+
   export type CountryCreateWithoutCitiesInput = {
     id?: string
     code: string
@@ -8607,6 +8731,7 @@ export namespace Prisma {
   export type TranslatableContentCreateWithoutCitiesInput = {
     id?: string
     entity: string
+    alternativeNames?: XOR<AlternativeNameListCreateEnvelopeInput, AlternativeNameCreateInput> | AlternativeNameCreateInput[]
     code3?: string | null
     type?: string | null
     translations?: TranslatedTextCreateNestedManyWithoutContentInput
@@ -8617,6 +8742,7 @@ export namespace Prisma {
   export type TranslatableContentUncheckedCreateWithoutCitiesInput = {
     id?: string
     entity: string
+    alternativeNames?: XOR<AlternativeNameListCreateEnvelopeInput, AlternativeNameCreateInput> | AlternativeNameCreateInput[]
     code3?: string | null
     type?: string | null
     translations?: TranslatedTextUncheckedCreateNestedManyWithoutContentInput
@@ -8732,6 +8858,7 @@ export namespace Prisma {
 
   export type TranslatableContentUpdateWithoutCitiesInput = {
     entity?: StringFieldUpdateOperationsInput | string
+    alternativeNames?: XOR<AlternativeNameListUpdateEnvelopeInput, AlternativeNameCreateInput> | AlternativeNameCreateInput[]
     code3?: NullableStringFieldUpdateOperationsInput | string | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
     translations?: TranslatedTextUpdateManyWithoutContentNestedInput
@@ -8741,6 +8868,7 @@ export namespace Prisma {
 
   export type TranslatableContentUncheckedUpdateWithoutCitiesInput = {
     entity?: StringFieldUpdateOperationsInput | string
+    alternativeNames?: XOR<AlternativeNameListUpdateEnvelopeInput, AlternativeNameCreateInput> | AlternativeNameCreateInput[]
     code3?: NullableStringFieldUpdateOperationsInput | string | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
     translations?: TranslatedTextUncheckedUpdateManyWithoutContentNestedInput
@@ -8787,6 +8915,7 @@ export namespace Prisma {
   export type TranslatableContentCreateWithoutCountriesInput = {
     id?: string
     entity: string
+    alternativeNames?: XOR<AlternativeNameListCreateEnvelopeInput, AlternativeNameCreateInput> | AlternativeNameCreateInput[]
     code3?: string | null
     type?: string | null
     translations?: TranslatedTextCreateNestedManyWithoutContentInput
@@ -8797,6 +8926,7 @@ export namespace Prisma {
   export type TranslatableContentUncheckedCreateWithoutCountriesInput = {
     id?: string
     entity: string
+    alternativeNames?: XOR<AlternativeNameListCreateEnvelopeInput, AlternativeNameCreateInput> | AlternativeNameCreateInput[]
     code3?: string | null
     type?: string | null
     translations?: TranslatedTextUncheckedCreateNestedManyWithoutContentInput
@@ -8904,6 +9034,7 @@ export namespace Prisma {
 
   export type TranslatableContentUpdateWithoutCountriesInput = {
     entity?: StringFieldUpdateOperationsInput | string
+    alternativeNames?: XOR<AlternativeNameListUpdateEnvelopeInput, AlternativeNameCreateInput> | AlternativeNameCreateInput[]
     code3?: NullableStringFieldUpdateOperationsInput | string | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
     translations?: TranslatedTextUpdateManyWithoutContentNestedInput
@@ -8913,6 +9044,7 @@ export namespace Prisma {
 
   export type TranslatableContentUncheckedUpdateWithoutCountriesInput = {
     entity?: StringFieldUpdateOperationsInput | string
+    alternativeNames?: XOR<AlternativeNameListUpdateEnvelopeInput, AlternativeNameCreateInput> | AlternativeNameCreateInput[]
     code3?: NullableStringFieldUpdateOperationsInput | string | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
     translations?: TranslatedTextUncheckedUpdateManyWithoutContentNestedInput
@@ -9034,6 +9166,7 @@ export namespace Prisma {
   export type TranslatableContentCreateWithoutPlacesInput = {
     id?: string
     entity: string
+    alternativeNames?: XOR<AlternativeNameListCreateEnvelopeInput, AlternativeNameCreateInput> | AlternativeNameCreateInput[]
     code3?: string | null
     type?: string | null
     translations?: TranslatedTextCreateNestedManyWithoutContentInput
@@ -9044,6 +9177,7 @@ export namespace Prisma {
   export type TranslatableContentUncheckedCreateWithoutPlacesInput = {
     id?: string
     entity: string
+    alternativeNames?: XOR<AlternativeNameListCreateEnvelopeInput, AlternativeNameCreateInput> | AlternativeNameCreateInput[]
     code3?: string | null
     type?: string | null
     translations?: TranslatedTextUncheckedCreateNestedManyWithoutContentInput
@@ -9141,6 +9275,7 @@ export namespace Prisma {
 
   export type TranslatableContentUpdateWithoutPlacesInput = {
     entity?: StringFieldUpdateOperationsInput | string
+    alternativeNames?: XOR<AlternativeNameListUpdateEnvelopeInput, AlternativeNameCreateInput> | AlternativeNameCreateInput[]
     code3?: NullableStringFieldUpdateOperationsInput | string | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
     translations?: TranslatedTextUpdateManyWithoutContentNestedInput
@@ -9150,6 +9285,7 @@ export namespace Prisma {
 
   export type TranslatableContentUncheckedUpdateWithoutPlacesInput = {
     entity?: StringFieldUpdateOperationsInput | string
+    alternativeNames?: XOR<AlternativeNameListUpdateEnvelopeInput, AlternativeNameCreateInput> | AlternativeNameCreateInput[]
     code3?: NullableStringFieldUpdateOperationsInput | string | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
     translations?: TranslatedTextUncheckedUpdateManyWithoutContentNestedInput
@@ -9299,6 +9435,15 @@ export namespace Prisma {
     data: PlaceCreateManyContentInput | PlaceCreateManyContentInput[]
   }
 
+  export type AlternativeNameUpdateManyInput = {
+    where: AlternativeNameWhereInput
+    data: AlternativeNameUpdateInput
+  }
+
+  export type AlternativeNameDeleteManyInput = {
+    where: AlternativeNameWhereInput
+  }
+
   export type TranslatedTextUpsertWithWhereUniqueWithoutContentInput = {
     where: TranslatedTextWhereUniqueInput
     update: XOR<TranslatedTextUpdateWithoutContentInput, TranslatedTextUncheckedUpdateWithoutContentInput>
@@ -9391,6 +9536,7 @@ export namespace Prisma {
   export type TranslatableContentCreateWithoutTranslationsInput = {
     id?: string
     entity: string
+    alternativeNames?: XOR<AlternativeNameListCreateEnvelopeInput, AlternativeNameCreateInput> | AlternativeNameCreateInput[]
     code3?: string | null
     type?: string | null
     countries?: CountryCreateNestedManyWithoutContentInput
@@ -9401,6 +9547,7 @@ export namespace Prisma {
   export type TranslatableContentUncheckedCreateWithoutTranslationsInput = {
     id?: string
     entity: string
+    alternativeNames?: XOR<AlternativeNameListCreateEnvelopeInput, AlternativeNameCreateInput> | AlternativeNameCreateInput[]
     code3?: string | null
     type?: string | null
     countries?: CountryUncheckedCreateNestedManyWithoutContentInput
@@ -9426,6 +9573,7 @@ export namespace Prisma {
 
   export type TranslatableContentUpdateWithoutTranslationsInput = {
     entity?: StringFieldUpdateOperationsInput | string
+    alternativeNames?: XOR<AlternativeNameListUpdateEnvelopeInput, AlternativeNameCreateInput> | AlternativeNameCreateInput[]
     code3?: NullableStringFieldUpdateOperationsInput | string | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
     countries?: CountryUpdateManyWithoutContentNestedInput
@@ -9435,6 +9583,7 @@ export namespace Prisma {
 
   export type TranslatableContentUncheckedUpdateWithoutTranslationsInput = {
     entity?: StringFieldUpdateOperationsInput | string
+    alternativeNames?: XOR<AlternativeNameListUpdateEnvelopeInput, AlternativeNameCreateInput> | AlternativeNameCreateInput[]
     code3?: NullableStringFieldUpdateOperationsInput | string | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
     countries?: CountryUncheckedUpdateManyWithoutContentNestedInput
@@ -9706,6 +9855,12 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
+  export type AlternativeNameUpdateInput = {
+    text?: StringFieldUpdateOperationsInput | string
+    source?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type TranslatedTextUpdateWithoutContentInput = {
     code3?: NullableStringFieldUpdateOperationsInput | string | null
     language?: StringFieldUpdateOperationsInput | string
@@ -9878,6 +10033,10 @@ export namespace Prisma {
      * @deprecated Use TranslatableContentCountOutputTypeDefaultArgs instead
      */
     export type TranslatableContentCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = TranslatableContentCountOutputTypeDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use AlternativeNameDefaultArgs instead
+     */
+    export type AlternativeNameArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = AlternativeNameDefaultArgs<ExtArgs>
     /**
      * @deprecated Use GeoCoordinatesDefaultArgs instead
      */
