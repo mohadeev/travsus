@@ -6,6 +6,7 @@ import { motion } from 'framer-motion'
 import Logo from '@/shared/Logo'
 import { footerLinks } from '@/constants/footerLinks'
 import type { Route } from 'next'
+import LanguagePreferencesModal from '@/app/(client-components)/(Header)/LanguagePreferencesModal'
 
 export default function Footer() {
 	const currentYear = new Date().getFullYear()
@@ -13,10 +14,12 @@ export default function Footer() {
 	return (
 		<footer className="bg-[#f5f5f7] text-black">
 			<div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
-				<div className="mb-8 flex justify-center">
+				<div className="mb-8 flex flex-col items-center justify-center">
 					<Link href="/" className="inline-block">
 						<Logo />
 					</Link>
+					<br />
+					<LanguagePreferencesModal variant={'footer'} />
 				</div>
 
 				<nav
@@ -78,7 +81,6 @@ export default function Footer() {
 					refund policies vary by provider. <br />
 					Please review terms before booking.
 					<br />
-					
 				</p>
 			</div>
 		</footer>

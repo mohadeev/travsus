@@ -168,7 +168,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\skend\\OneDrive\\Escritorio\\my-apps\\stagin\\stagin\\prisma\\generated\\places",
+      "value": "C:\\Users\\Usuario\\s\\travsus\\prisma\\generated\\places",
       "fromEnvVar": null
     },
     "config": {
@@ -182,7 +182,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\skend\\OneDrive\\Escritorio\\my-apps\\stagin\\stagin\\prisma\\places.prisma",
+    "sourceFilePath": "C:\\Users\\Usuario\\s\\travsus\\prisma\\places.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {

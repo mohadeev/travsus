@@ -9,8 +9,53 @@ import Roulette from '@/components/Roulette/Roulette'
 import ItemsCardList from '@/components/ItemsCardList'
 import SectionGridFeaturePlaces from '@/components/SectionGridFeaturePlaces'
 import { useTranslations } from 'next-intl'
+import ExperiencesCard from '@/components/ExperiencesCard'
 
 function ClientHomePage() {
+	const DUMMY_EXPERIENCE = {
+		id: 'tour123',
+		name: '3-Day Sahara Desert Adventure',
+		images: [
+			'/images/tours/sahara1.jpg',
+			'/images/tours/sahara2.jpg',
+			'/images/tours/sahara3.jpg',
+		],
+		address: {
+			country: 'Morocco',
+			city: 'Merzouga',
+			street: 'Sahara Desert Road',
+		},
+		startAddress: {
+			country: 'Morocco',
+			city: 'Errachidia',
+			street: 'Airport Pickup',
+		},
+		region: [
+			{
+				city: 'Merzouga',
+				country: 'Morocco',
+				location: {
+					lat: 31.1001,
+					lng: -4.0006,
+				},
+			},
+		],
+		start: {
+			name: 'Errachidia',
+			location: {
+				lat: 31.9311,
+				lng: -4.4245,
+			},
+		},
+		liked: false,
+		like: 14,
+		saleOff: true,
+		isAds: false,
+		price: 300,
+		reviewStart: 4.7,
+		reviewCount: 83,
+	}
+
 	const t = useTranslations('HomePage')
 
 	return (
@@ -105,6 +150,7 @@ function ClientHomePage() {
 			<main className="nc-PageHome3 relative">
 				<div className="mb-24 px-0 sm:px-0">
 					<Home />
+					{/* <ExperiencesCard data={DUMMY_EXPERIENCE} /> */}
 				</div>
 				<div className="container p-0 px-0">
 					<ItemsCardList
@@ -130,6 +176,7 @@ function ClientHomePage() {
 						layout="row"
 					/>
 				</div>
+
 				<SectionSubscribe2 />
 			</main>
 		</>

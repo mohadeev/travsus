@@ -7,7 +7,8 @@ import Label from '@/components/Label'
 import Input from '@/shared/Input'
 import Textarea from '@/shared/Textarea'
 import ButtonPrimary from '@/shared/ButtonPrimary'
-import { sendEmail } from '../actions/sendEmail'
+import { sendEmail } from '@/app/actions/sendEmail'
+// import { sendEmail } from '../actions/sendEmail'
 
 export interface PageContactProps {}
 

@@ -13,6 +13,7 @@ import { usePathname } from 'next/navigation'
 import HeroSearchFormSmall from '../(HeroSearchFormSmall)/HeroSearchFormSmall'
 import { StaySearchFormFields } from '../type'
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
+import LanguagePreferencesModal from './LanguagePreferencesModal'
 
 interface Header3Props {
 	className?: string
@@ -195,7 +196,7 @@ const Header3: FC<Header3Props> = ({ className = '' }) => {
 								>
 									List your property 2435667765432
 								</Link> */}
-
+								<LanguagePreferencesModal variant={'nav'} />
 								<NotifyDropdown />
 								<AvatarDropdown />
 								<MenuBar />

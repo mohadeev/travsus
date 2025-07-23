@@ -78,7 +78,7 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 	}
 
 	const result = convertString(title)
-	const href = `/q=tour?serviceId=${serviceId}&name=${result}` as Route
+	const href = `/africa/morocco/errachidia/merzouga/tours/3-days/q=tour?serviceId=${serviceId}&name=${result}` as Route
 
 	const renderSliderGallery = () => {
 		return (
