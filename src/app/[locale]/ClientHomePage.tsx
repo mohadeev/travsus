@@ -150,7 +150,6 @@ function ClientHomePage() {
 			<main className="nc-PageHome3 relative">
 				<div className="mb-24 px-0 sm:px-0">
 					<Home />
-					{/* <ExperiencesCard data={DUMMY_EXPERIENCE} /> */}
 				</div>
 				<div className="container p-0 px-0">
 					<ItemsCardList

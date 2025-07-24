@@ -1,8 +1,11 @@
 // app/[locale]/[continent]/[country]/[region]/[city]/[category]/[name]/[id]/tours/page.tsx
 'use client'
+
+import { useTranslations } from 'next-intl'
 import { useParams } from 'next/navigation'
 
 export default function TourPage() {
+	const t = useTranslations('HomePage')
 	const params = useParams()
 
 	const { locale, continent, country, region, city, category, name, id } =
