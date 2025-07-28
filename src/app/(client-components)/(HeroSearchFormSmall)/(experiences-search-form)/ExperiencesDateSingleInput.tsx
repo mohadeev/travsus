@@ -7,6 +7,8 @@ import DatePickerCustomDay from '@/components/DatePickerCustomDay'
 import DatePicker from 'react-datepicker'
 import ClearDataButton from '../ClearDataButton'
 import moment from 'moment'
+import { useTranslations } from '@/lib/i18n'
+
 export interface StayDatesRangeInputProps {
 	className?: string
 	fieldClassName?: string
@@ -16,13 +18,13 @@ const StayDatesRangeInput: FC<StayDatesRangeInputProps> = ({
 	className = '[ lg:nc-flex-2 ]',
 	fieldClassName = '[ nc-hero-field-padding--small ]',
 }) => {
+	const t = useTranslations('StayDatesRangeInput')
 	const [startDate, setStartDate] = useState<Date | null>(
 		new Date(moment().format('L')),
 	)
 	const [endDate, setEndDate] = useState<Date | null>(
 		new Date(moment().add(7, 'days').format('L')),
 	)
-	//
 
 	const onChangeDate = (dates: [Date | null, Date | null]) => {
 		const [start, end] = dates
@@ -38,7 +40,7 @@ const StayDatesRangeInput: FC<StayDatesRangeInputProps> = ({
 						{startDate?.toLocaleDateString('en-US', {
 							month: 'short',
 							day: '2-digit',
-						}) || 'Add dates'}
+						}) || t('add_dates')}
 						{endDate
 							? ' - ' +
 								endDate?.toLocaleDateString('en-US', {
@@ -48,7 +50,7 @@ const StayDatesRangeInput: FC<StayDatesRangeInputProps> = ({
 							: ''}
 					</span>
 					<span className="mt-1 block text-sm font-light leading-none text-neutral-400">
-						{'Check in - Check out'}
+						{t('check_in_out')}
 					</span>
 				</div>
 			</>
@@ -100,7 +102,7 @@ const StayDatesRangeInput: FC<StayDatesRangeInputProps> = ({
 									renderDayContents={(day, date) => (
 										<DatePickerCustomDay dayOfMonth={day} date={date} />
 									)}
-									minDate={new Date()} // Block all past dates
+									minDate={new Date()}
 								/>
 							</div>
 						</Popover.Panel>

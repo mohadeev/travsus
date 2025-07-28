@@ -5,12 +5,14 @@ import Link from 'next/link'
 import { signOut } from 'next-auth/react'
 import { useSelector } from 'react-redux'
 import { useAuthAction } from '@/app/hooks/useAuthAction'
+import { useTranslations } from '@/lib/i18n'
 
 interface Props {
 	className?: string
 }
 
 export default function AvatarDropdown({ className = '' }: Props) {
+	const t = useTranslations('AvatarDropdown')
 	const isUserLoggedIn = useSelector(
 		(state: any) => state.userReducer.isUserLoggedIn,
 	)
@@ -19,7 +21,6 @@ export default function AvatarDropdown({ className = '' }: Props) {
 
 	const handleSignIn = useAuthAction(
 		async () => {
-			// Add your sign-in logic here
 			console.log('Sign in action')
 		},
 		{ auth: 'login', authMode: '' },
@@ -117,35 +118,11 @@ export default function AvatarDropdown({ className = '' }: Props) {
 													</svg>
 												</div>
 												<div className="ml-4">
-													<p className="text-sm font-medium">{'My Account'}</p>
+													<p className="text-sm font-medium">
+														{t('my_account')}
+													</p>
 												</div>
 											</Link>
-											{/* <Link
-												href={'/dashboard'}
-												className="-m-3 flex items-center rounded-lg p-2 transition duration-150 ease-in-out hover:bg-neutral-100 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50 dark:hover:bg-neutral-700"
-												onClick={() => close()}
-											>
-												<div className="flex flex-shrink-0 items-center justify-center text-neutral-500 dark:text-neutral-300">
-													<svg
-														width="24"
-														height="24"
-														viewBox="0 0 24 24"
-														fill="none"
-													>
-														<path
-															d="M3 13h4v8H3v-8zM3 3h4v8H3V3zM9 13h4v8H9v-8zM9 3h4v8H9V3zM15 13h4v8h-4v-8zM15 3h4v8h-4V3z"
-															stroke="currentColor"
-															strokeWidth="1.5"
-															strokeMiterlimit="10"
-															strokeLinecap="round"
-															strokeLinejoin="round"
-														/>
-													</svg>
-												</div>
-												<div className="ml-4">
-													<p className="text-sm font-medium">{'My Business'}</p>
-												</div>
-											</Link> */}
 											<Link
 												href={'/bookings'}
 												className="-m-3 flex items-center rounded-lg p-2 transition duration-150 ease-in-out hover:bg-neutral-100 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50 dark:hover:bg-neutral-700"
@@ -193,7 +170,9 @@ export default function AvatarDropdown({ className = '' }: Props) {
 													</svg>
 												</div>
 												<div className="ml-4">
-													<p className="text-sm font-medium">{'My bookings'}</p>
+													<p className="text-sm font-medium">
+														{t('my_bookings')}
+													</p>
 												</div>
 											</Link>
 											<Link
@@ -218,7 +197,7 @@ export default function AvatarDropdown({ className = '' }: Props) {
 													</svg>
 												</div>
 												<div className="ml-4">
-													<p className="text-sm font-medium">{'Wishlist'}</p>
+													<p className="text-sm font-medium">{t('wishlist')}</p>
 												</div>
 											</Link>
 											<div className="w-full border-b border-neutral-200 dark:border-neutral-700" />
@@ -280,7 +259,7 @@ export default function AvatarDropdown({ className = '' }: Props) {
 													</svg>
 												</div>
 												<div className="ml-4">
-													<p className="text-sm font-medium">{'Help'}</p>
+													<p className="text-sm font-medium">{t('help')}</p>
 												</div>
 											</Link>
 											<Link
@@ -323,7 +302,7 @@ export default function AvatarDropdown({ className = '' }: Props) {
 													onClick={() => signOut({ callbackUrl: '/' })}
 													className="ml-4"
 												>
-													<p className="text-sm font-medium">{'Log out'}</p>
+													<p className="text-sm font-medium">{t('log_out')}</p>
 												</div>
 											</Link>
 										</>
@@ -370,7 +349,7 @@ export default function AvatarDropdown({ className = '' }: Props) {
 													</svg>
 												</div>
 												<div className="ml-4">
-													<p className="text-sm font-medium">Log In</p>
+													<p className="text-sm font-medium">{t('log_in')}</p>
 												</div>
 											</Link>
 											<Link
@@ -407,7 +386,7 @@ export default function AvatarDropdown({ className = '' }: Props) {
 													</svg>
 												</div>
 												<div className="ml-4">
-													<p className="text-sm font-medium">Sign Up</p>
+													<p className="text-sm font-medium">{t('sign_up')}</p>
 												</div>
 											</Link>
 											<div className="w-full border-b border-neutral-200 dark:border-neutral-700" />
@@ -469,7 +448,7 @@ export default function AvatarDropdown({ className = '' }: Props) {
 													</svg>
 												</div>
 												<div className="ml-4">
-													<p className="text-sm font-medium">Help</p>
+													<p className="text-sm font-medium">{t('help')}</p>
 												</div>
 											</Link>
 											<Link
@@ -495,14 +474,14 @@ export default function AvatarDropdown({ className = '' }: Props) {
 													</svg>
 												</div>
 												<div className="ml-4">
-													<p className="text-sm font-medium">Wish List</p>
+													<p className="text-sm font-medium">{t('wishlist')}</p>
 												</div>
 											</Link>
 											<div
 												onClick={() => signOut({ callbackUrl: '/' })}
 												className="ml-4"
 											>
-												<p className="text-sm font-medium">{'Log out'}</p>
+												<p className="text-sm font-medium">{t('log_out')}</p>
 											</div>
 										</>
 									)}

@@ -13,6 +13,7 @@ import Link from 'next/link'
 import LangDropdown from '@/app/(client-components)/(Header)/LangDropdown'
 import { useSession } from 'next-auth/react'
 import { footerLinks } from '@/constants/footerLinks'
+import { useTranslations } from '@/lib/i18n'
 
 export interface NavMobileProps {
 	data?: NavItemType[]
@@ -66,6 +67,7 @@ const NavMobile: React.FC<NavMobileProps> = ({
 			</ul>
 		)
 	}
+	const footerT = useTranslations('footer')
 
 	const _renderItem = (item: NavItemType, index: number) => {
 		return (
@@ -83,7 +85,7 @@ const NavMobile: React.FC<NavMobileProps> = ({
 					<span
 						className={`py-2.5 pr-3 ${!item.children ? 'block w-full' : ''}`}
 					>
-						{item.name}
+						{footerT(item.name)}
 					</span>
 					{item.children && (
 						<span className="flex flex-1" onClick={(e) => e.preventDefault()}>

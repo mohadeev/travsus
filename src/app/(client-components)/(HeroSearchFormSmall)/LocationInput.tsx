@@ -1,14 +1,12 @@
 'use client'
 
-import React, { useState } from 'react'
-import { FC } from 'react'
-import { useEffect } from 'react'
+import React, { useState, useRef, useEffect, FC } from 'react'
 import ClearDataButton from './ClearDataButton'
-import { useRef } from 'react'
 import useOutsideAlerter from '@/hooks/useOutsideAlerter'
 import { MapPinIcon } from '@heroicons/react/24/outline'
 import { searchCountries } from '@/utils/searchCountries'
 import cities from 'cities.json'
+import { useTranslations } from '@/lib/i18n'
 
 export interface LocationInputProps {
 	onInputDone?: (value: string) => void
@@ -22,16 +20,15 @@ export interface LocationInputProps {
 const LocationInput: FC<LocationInputProps> = ({
 	autoFocus = false,
 	onInputDone,
-	placeHolder = 'Location',
-	desc = 'Where are you going?',
+	placeHolder,
+	desc,
 	className = 'nc-flex-1.5',
 	divHideVerticalLineClass = 'left-10 -right-0.5',
 }) => {
-	// Example: Find a specific city (e.g., by its name or other criteria)
+	const locationT = useTranslations('location_input')
 	const containerRef = useRef<HTMLDivElement>(null)
 	const inputRef = useRef<HTMLInputElement>(null)
 	const [searchResulte, setSearchResulte] = useState([])
-
 	const [value, setValue] = useState('')
 	const [showPopover, setShowPopover] = useState(autoFocus)
 
@@ -59,11 +56,12 @@ const LocationInput: FC<LocationInputProps> = ({
 		onInputDone && onInputDone(item)
 		setShowPopover(false)
 	}
+
 	const renderRecentSearches = () => {
 		return (
 			<>
 				<h3 className="mt-2 block px-4 text-base font-semibold text-neutral-800 dark:text-neutral-100 sm:mt-0 sm:px-8">
-					Recent searches
+					{locationT('location_Recent_Searches')}
 				</h3>
 				<div className="mt-2">
 					{[
@@ -110,6 +108,7 @@ const LocationInput: FC<LocationInputProps> = ({
 			</>
 		)
 	}
+
 	const handleChangeInput = async (e: any) => {
 		const value = e.target.value
 		setValue(e.currentTarget.value)
@@ -128,14 +127,18 @@ const LocationInput: FC<LocationInputProps> = ({
 				<div className="flex-1">
 					<input
 						className={`block w-full truncate border-none bg-transparent p-0 font-semibold placeholder-neutral-800 focus:placeholder-neutral-400 focus:outline-none focus:ring-0 dark:placeholder-neutral-200 xl:text-base`}
-						placeholder={placeHolder}
+						placeholder={locationT('location_Placeholder')}
 						value={value}
 						autoFocus={showPopover}
 						onChange={handleChangeInput}
 						ref={inputRef}
 					/>
 					<span className="mt-0.5 block text-sm font-light text-neutral-400">
-						<span className="line-clamp-1">{!!value ? placeHolder : desc}</span>
+						<span className="line-clamp-1">
+							{!!value
+								? locationT('location_Placeholder')
+								: locationT('location_Description')}
+						</span>
 					</span>
 					{value && showPopover && (
 						<ClearDataButton onClick={() => setValue('')} />

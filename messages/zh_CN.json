@@ -1,7 +1,13 @@
 {
   "footer": {
-    "footer_Copyright": "版权所有 © {year} TRAVSUS LTD. 保留所有权利。",
-    "footer_Disclaimer": "所有价格以实际供应情况为准，可能会无预告变动。可能会收取额外税费。强烈建议购买旅行保险。\n我们不对意外的取消或延误负责。护照和签证由旅客自行负责。\n请在预订前检查入境要求。航班时间和酒店供应情况可能会变更。\n我们不保证特定住宿或航班时间。对于旅行期间产生的任何损失、损害或伤害，我们不承担责任。\n特别优惠和折扣受条款限制。可能会有停用日期。\n我们仅作为航空公司、酒店和旅行社的代理，不对其行为或政策负责。\n取消和退款政策因供应商而异。预订前请查看条款。",
-    "footer_Instagram": "Instagram"
+    "About": "关于我们",
+    "Affiliate Program": "联盟计划",
+    "Contact": "联系我们",
+    "Cookies": "Cookies",
+    "Forum": "论坛",
+    "Legal": "法律声明",
+    "Privacy Policy": "隐私政策",
+    "Terms of Use": "使用条款",
+    "Travsus": "Travsus"
   }
 }

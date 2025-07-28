@@ -1,0 +1,131 @@
+{
+  "footer": {
+    "footer_Copyright": "Direitos autorais © {year} TRAVSUS LTD. Todos os direitos reservados.",
+    "footer_Disclaimer": "Todos os preços estão sujeitos à disponibilidade e podem mudar sem aviso prévio. Podem ser aplicados impostos e taxas adicionais. Recomendamos fortemente o seguro de viagem.\nNão nos responsabilizamos por cancelamentos ou atrasos imprevistos. Passaportes e vistos são responsabilidade do viajante.\nVerifique os requisitos de entrada antes de reservar. Horários de voos e disponibilidade de hotéis estão sujeitos a alterações.\nNão garantimos acomodações específicas ou horários de voo. Não nos responsabilizamos por perdas, danos ou lesões durante a viagem.\nPromoções e descontos especiais estão sujeitos a termos e condições. Datas de blackout podem ser aplicadas.\nAtuamos apenas como agentes para companhias aéreas, hotéis e operadores turísticos e não somos responsáveis por suas ações ou políticas.\nAs políticas de cancelamento e reembolso variam conforme o fornecedor. Por favor, revise os termos antes de reservar.",
+    "footer_Instagram": "Instagram"
+  },
+  "guests_AddGuests": {
+    "0": "A",
+    "1": "d",
+    "2": "i",
+    "3": "c",
+    "4": "i",
+    "5": "o",
+    "6": "n",
+    "7": "a",
+    "8": "r",
+    "9": " ",
+    "10": "h",
+    "11": "ó",
+    "12": "s",
+    "13": "p",
+    "14": "e",
+    "15": "d",
+    "16": "e",
+    "17": "s"
+  },
+  "guests_Adults": {
+    "0": "A",
+    "1": "d",
+    "2": "u",
+    "3": "l",
+    "4": "t",
+    "5": "o",
+    "6": "s"
+  },
+  "guests_AdultsDesc": {
+    "0": "1",
+    "1": "3",
+    "2": " ",
+    "3": "a",
+    "4": "n",
+    "5": "o",
+    "6": "s",
+    "7": " ",
+    "8": "o",
+    "9": "u",
+    "10": " ",
+    "11": "m",
+    "12": "a",
+    "13": "i",
+    "14": "s"
+  },
+  "guests_Children": {
+    "0": "C",
+    "1": "r",
+    "2": "i",
+    "3": "a",
+    "4": "n",
+    "5": "ç",
+    "6": "a",
+    "7": "s"
+  },
+  "guests_ChildrenDesc": {
+    "0": "I",
+    "1": "d",
+    "2": "a",
+    "3": "d",
+    "4": "e",
+    "5": "s",
+    "6": " ",
+    "7": "2",
+    "8": "–",
+    "9": "1",
+    "10": "2"
+  },
+  "guests_Guests": {
+    "0": "H",
+    "1": "ó",
+    "2": "s",
+    "3": "p",
+    "4": "e",
+    "5": "d",
+    "6": "e",
+    "7": "s"
+  },
+  "guests_Infants": {
+    "0": "B",
+    "1": "e",
+    "2": "b",
+    "3": "ê",
+    "4": "s"
+  },
+  "guests_InfantsDesc": {
+    "0": "I",
+    "1": "d",
+    "2": "a",
+    "3": "d",
+    "4": "e",
+    "5": "s",
+    "6": " ",
+    "7": "0",
+    "8": "–",
+    "9": "2"
+  },
+  "guests_Submit": {
+    "0": "E",
+    "1": "n",
+    "2": "v",
+    "3": "i",
+    "4": "a",
+    "5": "r"
+  },
+  "guests_TotalGuests": {
+    "0": "{",
+    "1": "c",
+    "2": "o",
+    "3": "u",
+    "4": "n",
+    "5": "t",
+    "6": "}",
+    "7": " ",
+    "8": "H",
+    "9": "ó",
+    "10": "s",
+    "11": "p",
+    "12": "e",
+    "13": "d",
+    "14": "e",
+    "15": "s"
+  }
+}

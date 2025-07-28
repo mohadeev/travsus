@@ -9,7 +9,7 @@ import { useTranslations } from 'next-intl'
 export default function LoginAndSecurityPage() {
 	const [activeTab, setActiveTab] = useState('login')
 	const [showPasswordUpdate, setShowPasswordUpdate] = useState(false)
-	const t = useTranslations('accountsettings_loginandsecurity_page')
+	const t = useTranslations('LoginSecurityPage')
 
 	return (
 		<div className="mx-auto max-w-4xl px-6 py-8">
@@ -19,14 +19,14 @@ export default function LoginAndSecurityPage() {
 					href="/account-settings"
 					className="text-gray-600 hover:underline"
 				>
-					{t('Account')}
+					{t('account')}
 				</Link>
 				<ChevronRight className="mx-2 h-4 w-4 text-gray-500" />
-				<span className="text-gray-800">{t('Login_Security')}</span>
+				<span className="text-gray-800">{t('login_security')}</span>
 			</div>
 
 			{/* Page Title */}
-			<h1 className="mb-8 text-3xl font-semibold">{t('Login_Security')}</h1>
+			<h1 className="mb-8 text-3xl font-semibold">{t('login_security')}</h1>
 
 			{/* Tabs */}
 			<div className="mb-8 border-b border-gray-200">
@@ -39,7 +39,7 @@ export default function LoginAndSecurityPage() {
 						}`}
 						onClick={() => setActiveTab('login')}
 					>
-						{t('Login')}
+						{t('login')}
 					</button>
 					<button
 						className={`px-1 pb-4 ${
@@ -49,7 +49,7 @@ export default function LoginAndSecurityPage() {
 						}`}
 						onClick={() => setActiveTab('shared')}
 					>
-						{t('Shared_Access')}
+						{t('shared_access')}
 					</button>
 				</div>
 			</div>
@@ -57,22 +57,22 @@ export default function LoginAndSecurityPage() {
 			{activeTab === 'login' ? (
 				<div className="space-y-8">
 					<div>
-						<h2 className="mb-6 text-2xl font-medium">{t('Login')}</h2>
+						<h2 className="mb-6 text-2xl font-medium">{t('login')}</h2>
 
 						{/* Password Section */}
 						<div className="border-b border-gray-200 py-6">
 							<div className="flex items-center justify-between">
 								<div>
-									<h3 className="font-medium">{t('Password')}</h3>
+									<h3 className="font-medium">{t('password')}</h3>
 									<p className="mt-1 text-sm text-gray-500">
-										{t('Last_Updated_2_Years_Ago')}
+										{t('last_updated')}
 									</p>
 								</div>
 								<button
 									onClick={() => setShowPasswordUpdate(!showPasswordUpdate)}
 									className="font-medium text-black underline"
 								>
-									{showPasswordUpdate ? t('Cancel') : t('Update')}
+									{showPasswordUpdate ? t('cancel') : t('update')}
 								</button>
 							</div>
 
@@ -85,18 +85,16 @@ export default function LoginAndSecurityPage() {
 
 						{/* Account Section */}
 						<div className="py-6">
-							<h2 className="mb-6 text-2xl font-medium">{t('Account_2')}</h2>
+							<h2 className="mb-6 text-2xl font-medium">{t('account')}</h2>
 							<div className="flex items-center justify-between">
 								<div>
-									<h3 className="font-medium">
-										{t('Deactivate_Your_Account')}
-									</h3>
+									<h3 className="font-medium">{t('deactivate_account')}</h3>
 								</div>
 								<Link
 									href="/account-settings-delete/reasons"
 									className="font-medium text-red-500 underline"
 								>
-									{t('Deactivate')}
+									{t('deactivate')}
 								</Link>
 							</div>
 						</div>
@@ -104,10 +102,10 @@ export default function LoginAndSecurityPage() {
 				</div>
 			) : (
 				<div className="space-y-8">
-					<h2 className="mb-6 text-2xl font-medium">{t('Shared_Access')}</h2>
-					<p className="text-gray-600">{t('You_Can_Give_Trusted_Friends')}</p>
+					<h2 className="mb-6 text-2xl font-medium">{t('shared_access')}</h2>
+					<p className="text-gray-600">{t('shared_access_description')}</p>
 					<button className="rounded-lg border border-black px-6 py-2 font-medium hover:bg-gray-100">
-						{t('Add_Trusted_Person')}
+						{t('add_trusted_person')}
 					</button>
 				</div>
 			)}
@@ -120,21 +118,20 @@ export default function LoginAndSecurityPage() {
 					</div>
 					<div>
 						<h2 className="mb-2 text-lg font-semibold">
-							{t('Keeping_Your_Account_Secure')}
+							{t('account_security_title')}
 						</h2>
 						<p className="mb-4 text-gray-600">
-							{t('We_Regularly_Review_Accounts')}
+							{t('account_security_description')}
 						</p>
 						<p className="text-gray-600">
-							{t('Learn_About_Safety_Tips')}{' '}
+							{t('safety_tips')}{' '}
 							<Link href="#" className="font-medium text-black underline">
-								{t('Guests')}
+								{t('guests')}
 							</Link>{' '}
-							and{' '}
+							{t('and')}{' '}
 							<Link href="#" className="font-medium text-black underline">
-								{t('Hosts')}
+								{t('hosts')}
 							</Link>
-							.
 						</p>
 					</div>
 				</div>

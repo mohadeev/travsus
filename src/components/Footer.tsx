@@ -7,12 +7,11 @@ import Logo from '@/shared/Logo'
 import { footerLinks } from '@/constants/footerLinks'
 import type { Route } from 'next'
 import LanguagePreferencesModal from '@/app/(client-components)/(Header)/LanguagePreferencesModal'
-import { useTranslations } from 'next-intl'
+import { useTranslations } from '@/lib/i18n'
 
 export default function Footer() {
 	const currentYear = new Date().getFullYear()
-	const t = useTranslations('footer')
-	const to = useTranslations('UserProfile')
+	const footerT = useTranslations('footer')
 
 	return (
 		<footer className="bg-[#f5f5f7] text-black">
@@ -40,7 +39,7 @@ export default function Footer() {
 								href={link.href as Route}
 								className="text-xs transition-colors duration-300 hover:text-gray-700"
 							>
-								{link.name}
+								{footerT(link.name)}
 							</Link>
 						</motion.div>
 					))}
@@ -57,21 +56,19 @@ export default function Footer() {
 							rel="noopener noreferrer"
 							className="text-black transition-colors duration-300 hover:text-gray-700"
 						>
-							<span className="sr-only">{t('footer_Instagram')}</span>
+							<span className="sr-only">{footerT('footer_Instagram')}</span>
 							<Instagram className="h-6 w-6" aria-hidden="true" />
 						</Link>
 					</motion.div>
 				</div>
 
 				<p className="mt-8 text-center text-xs leading-5">
-					{t('footer_Copyright', { year: 'sss' })}
+					{footerT('footer_Copyright', { year: currentYear })}
 				</p>
-				{to('title')}
 
 				<p className="mt-4 text-center text-[10px] leading-4 text-gray-600">
-					{t('footer_Disclaimer')}
+					{footerT('footer_Disclaimer')}
 				</p>
-				<p>{t('key', { name: "slkdvslkdv" })}</p>
 			</div>
 		</footer>
 	)

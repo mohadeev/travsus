@@ -1,1 +1,13 @@
-{}
+{
+  "footer": {
+    "About": "О компании",
+    "Affiliate Program": "Партнёрская программа",
+    "Contact": "Контакты",
+    "Cookies": "Файлы cookie",
+    "Forum": "Форум",
+    "Legal": "Юридическая информация",
+    "Privacy Policy": "Политика конфиденциальности",
+    "Terms of Use": "Условия использования",
+    "Travsus": "Travsus"
+  }
+}

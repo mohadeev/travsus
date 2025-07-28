@@ -16,6 +16,7 @@ import {
 	Edit,
 	Loader2,
 } from 'lucide-react'
+import { useTranslations } from '@/lib/i18n'
 
 type InfoItem = {
 	id: string
@@ -27,6 +28,7 @@ type InfoItem = {
 }
 
 export default function PersonalInfoPage() {
+	const t = useTranslations('PersonalInfoPage')
 	const dispatch = useDispatch()
 	const { userData, loading, error } = useSelector(
 		(state: any) => state.userReducer,
@@ -39,7 +41,7 @@ export default function PersonalInfoPage() {
 	const [formData, setFormData] = useState({
 		firstname: userData?.accountData?.firstname || '',
 		lastname: userData?.accountData?.lastname || '',
-		gender: userData?.accountData?.gender || 'Male',
+		gender: userData?.accountData?.gender || t('default_gender'),
 		username: userData?.username || '',
 		email: userData?.email || '',
 		dateOfBirth: userData?.accountData?.dateOfBirth || '',
@@ -53,7 +55,7 @@ export default function PersonalInfoPage() {
 		setFormData({
 			firstname: userData?.accountData?.firstname || '',
 			lastname: userData?.accountData?.lastname || '',
-			gender: userData?.accountData?.gender || 'Male',
+			gender: userData?.accountData?.gender || t('default_gender'),
 			username: userData?.username || '',
 			email: userData?.email || '',
 			dateOfBirth: userData?.accountData?.dateOfBirth || '',
@@ -61,7 +63,7 @@ export default function PersonalInfoPage() {
 			phone: userData?.phone || '',
 			about: userData?.accountData?.about || '',
 		})
-	}, [userData])
+	}, [userData, t])
 
 	// Handle form input changes
 	const handleChange = (
@@ -126,7 +128,6 @@ export default function PersonalInfoPage() {
 				break
 		}
 
-		// Dispatch the update action with the correct data structure
 		dispatch(updateUser(updatedData) as any)
 		setEditingField(null)
 	}
@@ -134,11 +135,10 @@ export default function PersonalInfoPage() {
 	// Cancel editing
 	const handleCancel = () => {
 		setEditingField(null)
-		// Reset form data to current user data
 		setFormData({
 			firstname: userData?.accountData?.firstname || '',
 			lastname: userData?.accountData?.lastname || '',
-			gender: userData?.accountData?.gender || 'Male',
+			gender: userData?.accountData?.gender || t('default_gender'),
 			username: userData?.username || '',
 			email: userData?.email || '',
 			dateOfBirth: userData?.accountData?.dateOfBirth || '',
@@ -154,16 +154,16 @@ export default function PersonalInfoPage() {
 			legalName:
 				userData?.accountData?.firstname && userData?.accountData?.lastname
 					? `${userData.accountData.firstname} ${userData.accountData.lastname}`
-					: 'Not provided',
-			gender: userData?.accountData?.gender || 'Not provided',
-			username: userData?.username || 'Not provided',
-			email: userData?.email || 'Not provided',
+					: t('not_provided'),
+			gender: userData?.accountData?.gender || t('not_provided'),
+			username: userData?.username || t('not_provided'),
+			email: userData?.email || t('not_provided'),
 			dateOfBirth: userData?.accountData?.dateOfBirth
 				? new Date(userData.accountData.dateOfBirth).toLocaleDateString()
-				: 'Not provided',
-			phone: userData?.phone || 'Not provided',
-			address: userData?.accountData?.address || 'Not provided',
-			about: userData?.accountData?.about || 'Not provided',
+				: t('not_provided'),
+			phone: userData?.phone || t('not_provided'),
+			address: userData?.accountData?.address || t('not_provided'),
+			about: userData?.accountData?.about || t('not_provided'),
 		}
 	}
 
@@ -173,56 +173,57 @@ export default function PersonalInfoPage() {
 	const personalInfoItems: InfoItem[] = [
 		{
 			id: 'legalName',
-			title: 'Legal name',
+			title: t('legal_name_title'),
 			value: userDisplayData.legalName,
+			description: t('legal_name_description'),
 			actionType: 'edit',
 			icon: User,
 		},
 		{
 			id: 'gender',
-			title: 'Gender',
+			title: t('gender_title'),
 			value: userDisplayData.gender,
 			actionType: 'edit',
 			icon: User,
 		},
 		{
 			id: 'username',
-			title: 'Username',
+			title: t('username_title'),
 			value: userDisplayData.username,
 			actionType: 'edit',
 			icon: User,
 		},
 		{
 			id: 'email',
-			title: 'Email address',
+			title: t('email_title'),
 			value: userDisplayData.email,
 			actionType: 'edit',
 			icon: Mail,
 		},
 		{
 			id: 'dateOfBirth',
-			title: 'Date of birth',
+			title: t('dob_title'),
 			value: userDisplayData.dateOfBirth,
 			actionType: 'edit',
 			icon: User,
 		},
 		{
 			id: 'address',
-			title: 'Address',
+			title: t('address_title'),
 			value: userDisplayData.address,
 			actionType: 'edit',
 			icon: MapPin,
 		},
 		{
 			id: 'phone',
-			title: 'Phone number',
+			title: t('phone_title'),
 			value: userDisplayData.phone,
 			actionType: 'edit',
 			icon: Phone,
 		},
 		{
 			id: 'about',
-			title: 'About you',
+			title: t('about_title'),
 			value: userDisplayData.about,
 			actionType: 'edit',
 			icon: User,
@@ -232,9 +233,7 @@ export default function PersonalInfoPage() {
 	// Render edit form for legal name
 	const renderLegalNameEditForm = () => (
 		<div className="mt-2 space-y-4">
-			<p className="text-gray-600">
-				Make sure this matches the name on your government ID.
-			</p>
+			<p className="text-gray-600">{t('legal_name_edit_description')}</p>
 			<div className="flex flex-col gap-4 md:flex-row">
 				<div className="flex-1">
 					<div className="relative rounded-lg border border-gray-300">
@@ -242,7 +241,7 @@ export default function PersonalInfoPage() {
 							htmlFor="firstname"
 							className="absolute left-3 top-2 text-xs text-gray-500"
 						>
-							First name
+							{t('first_name_label')}
 						</label>
 						<input
 							type="text"
@@ -260,7 +259,7 @@ export default function PersonalInfoPage() {
 							htmlFor="lastname"
 							className="absolute left-3 top-2 text-xs text-gray-500"
 						>
-							Last name
+							{t('last_name_label')}
 						</label>
 						<input
 							type="text"
@@ -282,10 +281,10 @@ export default function PersonalInfoPage() {
 					{loading ? (
 						<>
 							<Loader2 className="mr-2 h-4 w-4 animate-spin" />
-							Saving...
+							{t('saving')}
 						</>
 					) : (
-						'Save'
+						t('save')
 					)}
 				</button>
 				<button
@@ -293,7 +292,7 @@ export default function PersonalInfoPage() {
 					className="font-medium text-gray-700 hover:underline"
 					disabled={loading}
 				>
-					Cancel
+					{t('cancel')}
 				</button>
 			</div>
 			{error && <p className="mt-2 text-sm text-red-500">{error}</p>}
@@ -308,7 +307,7 @@ export default function PersonalInfoPage() {
 					htmlFor="gender"
 					className="absolute left-3 top-2 text-xs text-gray-500"
 				>
-					Gender
+					{t('gender_label')}
 				</label>
 				<select
 					id="gender"
@@ -317,9 +316,9 @@ export default function PersonalInfoPage() {
 					onChange={handleChange}
 					className="w-full rounded-lg px-3 pb-3 pt-7 focus:outline-none focus:ring-2 focus:ring-black"
 				>
-					<option value="Male">Male</option>
-					<option value="Female">Female</option>
-					<option value="Other">Other</option>
+					<option value="Male">{t('gender_male')}</option>
+					<option value="Female">{t('gender_female')}</option>
+					<option value="Other">{t('gender_other')}</option>
 				</select>
 			</div>
 			<div className="flex items-center justify-between">
@@ -331,10 +330,10 @@ export default function PersonalInfoPage() {
 					{loading ? (
 						<>
 							<Loader2 className="mr-2 h-4 w-4 animate-spin" />
-							Saving...
+							{t('saving')}
 						</>
 					) : (
-						'Save'
+						t('save')
 					)}
 				</button>
 				<button
@@ -342,7 +341,7 @@ export default function PersonalInfoPage() {
 					className="font-medium text-gray-700 hover:underline"
 					disabled={loading}
 				>
-					Cancel
+					{t('cancel')}
 				</button>
 			</div>
 			{error && <p className="mt-2 text-sm text-red-500">{error}</p>}
@@ -357,7 +356,7 @@ export default function PersonalInfoPage() {
 					htmlFor="username"
 					className="absolute left-3 top-2 text-xs text-gray-500"
 				>
-					Username
+					{t('username_label')}
 				</label>
 				<input
 					type="text"
@@ -377,10 +376,10 @@ export default function PersonalInfoPage() {
 					{loading ? (
 						<>
 							<Loader2 className="mr-2 h-4 w-4 animate-spin" />
-							Saving...
+							{t('saving')}
 						</>
 					) : (
-						'Save'
+						t('save')
 					)}
 				</button>
 				<button
@@ -388,7 +387,7 @@ export default function PersonalInfoPage() {
 					className="font-medium text-gray-700 hover:underline"
 					disabled={loading}
 				>
-					Cancel
+					{t('cancel')}
 				</button>
 			</div>
 			{error && <p className="mt-2 text-sm text-red-500">{error}</p>}
@@ -403,7 +402,7 @@ export default function PersonalInfoPage() {
 					htmlFor="email"
 					className="absolute left-3 top-2 text-xs text-gray-500"
 				>
-					Email address
+					{t('email_label')}
 				</label>
 				<input
 					type="email"
@@ -423,10 +422,10 @@ export default function PersonalInfoPage() {
 					{loading ? (
 						<>
 							<Loader2 className="mr-2 h-4 w-4 animate-spin" />
-							Saving...
+							{t('saving')}
 						</>
 					) : (
-						'Save'
+						t('save')
 					)}
 				</button>
 				<button
@@ -434,7 +433,7 @@ export default function PersonalInfoPage() {
 					className="font-medium text-gray-700 hover:underline"
 					disabled={loading}
 				>
-					Cancel
+					{t('cancel')}
 				</button>
 			</div>
 			{error && <p className="mt-2 text-sm text-red-500">{error}</p>}
@@ -449,7 +448,7 @@ export default function PersonalInfoPage() {
 					htmlFor="dateOfBirth"
 					className="absolute left-3 top-2 text-xs text-gray-500"
 				>
-					Date of birth
+					{t('dob_label')}
 				</label>
 				<input
 					type="date"
@@ -469,10 +468,10 @@ export default function PersonalInfoPage() {
 					{loading ? (
 						<>
 							<Loader2 className="mr-2 h-4 w-4 animate-spin" />
-							Saving...
+							{t('saving')}
 						</>
 					) : (
-						'Save'
+						t('save')
 					)}
 				</button>
 				<button
@@ -480,7 +479,7 @@ export default function PersonalInfoPage() {
 					className="font-medium text-gray-700 hover:underline"
 					disabled={loading}
 				>
-					Cancel
+					{t('cancel')}
 				</button>
 			</div>
 			{error && <p className="mt-2 text-sm text-red-500">{error}</p>}
@@ -495,7 +494,7 @@ export default function PersonalInfoPage() {
 					htmlFor="address"
 					className="absolute left-3 top-2 text-xs text-gray-500"
 				>
-					Address
+					{t('address_label')}
 				</label>
 				<input
 					type="text"
@@ -515,10 +514,10 @@ export default function PersonalInfoPage() {
 					{loading ? (
 						<>
 							<Loader2 className="mr-2 h-4 w-4 animate-spin" />
-							Saving...
+							{t('saving')}
 						</>
 					) : (
-						'Save'
+						t('save')
 					)}
 				</button>
 				<button
@@ -526,7 +525,7 @@ export default function PersonalInfoPage() {
 					className="font-medium text-gray-700 hover:underline"
 					disabled={loading}
 				>
-					Cancel
+					{t('cancel')}
 				</button>
 			</div>
 			{error && <p className="mt-2 text-sm text-red-500">{error}</p>}
@@ -541,7 +540,7 @@ export default function PersonalInfoPage() {
 					htmlFor="phone"
 					className="absolute left-3 top-2 text-xs text-gray-500"
 				>
-					Phone number
+					{t('phone_label')}
 				</label>
 				<input
 					type="tel"
@@ -561,10 +560,10 @@ export default function PersonalInfoPage() {
 					{loading ? (
 						<>
 							<Loader2 className="mr-2 h-4 w-4 animate-spin" />
-							Saving...
+							{t('saving')}
 						</>
 					) : (
-						'Save'
+						t('save')
 					)}
 				</button>
 				<button
@@ -572,7 +571,7 @@ export default function PersonalInfoPage() {
 					className="font-medium text-gray-700 hover:underline"
 					disabled={loading}
 				>
-					Cancel
+					{t('cancel')}
 				</button>
 			</div>
 			{error && <p className="mt-2 text-sm text-red-500">{error}</p>}
@@ -587,7 +586,7 @@ export default function PersonalInfoPage() {
 					htmlFor="about"
 					className="absolute left-3 top-2 text-xs text-gray-500"
 				>
-					About you
+					{t('about_label')}
 				</label>
 				<textarea
 					id="about"
@@ -607,10 +606,10 @@ export default function PersonalInfoPage() {
 					{loading ? (
 						<>
 							<Loader2 className="mr-2 h-4 w-4 animate-spin" />
-							Saving...
+							{t('saving')}
 						</>
 					) : (
-						'Save'
+						t('save')
 					)}
 				</button>
 				<button
@@ -618,7 +617,7 @@ export default function PersonalInfoPage() {
 					className="font-medium text-gray-700 hover:underline"
 					disabled={loading}
 				>
-					Cancel
+					{t('cancel')}
 				</button>
 			</div>
 			{error && <p className="mt-2 text-sm text-red-500">{error}</p>}
@@ -657,14 +656,14 @@ export default function PersonalInfoPage() {
 					href="/account-settings"
 					className="text-gray-600 hover:underline"
 				>
-					Account
+					{t('account')}
 				</Link>
 				<ChevronRight className="mx-2 h-4 w-4 text-gray-500" />
-				<span className="text-gray-800">Personal info</span>
+				<span className="text-gray-800">{t('personal_info')}</span>
 			</div>
 
 			{/* Page Title */}
-			<h1 className="mb-8 text-3xl font-semibold">Personal info</h1>
+			<h1 className="mb-8 text-3xl font-semibold">{t('page_title')}</h1>
 
 			{/* Personal Info Items */}
 			<div className="space-y-6">
@@ -696,10 +695,10 @@ export default function PersonalInfoPage() {
 									className="font-medium text-gray-700 hover:underline"
 								>
 									{item.actionType === 'edit'
-										? 'Edit'
+										? t('edit')
 										: item.actionType === 'add'
-											? 'Add'
-											: 'Start'}
+											? t('add')
+											: t('start')}
 								</button>
 							)}
 						</div>
@@ -716,11 +715,9 @@ export default function PersonalInfoPage() {
 						</div>
 						<div>
 							<h2 className="mb-2 text-lg font-semibold">
-								Why isn't my info shown here?
+								{t('info_hidden_title')}
 							</h2>
-							<p className="text-gray-600">
-								We're hiding some account details to protect your identity.
-							</p>
+							<p className="text-gray-600">{t('info_hidden_description')}</p>
 						</div>
 					</div>
 				</div>
@@ -732,13 +729,9 @@ export default function PersonalInfoPage() {
 						</div>
 						<div>
 							<h2 className="mb-2 text-lg font-semibold">
-								Which details can be edited?
+								{t('editable_info_title')}
 							</h2>
-							<p className="text-gray-600">
-								Contact info and personal details can be edited. If this info
-								was used to verify your identity, you'll need to get verified
-								again the next time you book —or to continue hosting.
-							</p>
+							<p className="text-gray-600">{t('editable_info_description')}</p>
 						</div>
 					</div>
 				</div>
@@ -750,12 +743,9 @@ export default function PersonalInfoPage() {
 						</div>
 						<div>
 							<h2 className="mb-2 text-lg font-semibold">
-								What info is shared with others?
+								{t('shared_info_title')}
 							</h2>
-							<p className="text-gray-600">
-								travsus only releases contact information for Hosts and guests
-								after a reservation is confirmed.
-							</p>
+							<p className="text-gray-600">{t('shared_info_description')}</p>
 						</div>
 					</div>
 				</div>
