@@ -1,1 +1,7 @@
-{}
+{
+  "footer": {
+    "footer_Copyright": "Direitos autorais © {year} TRAVSUS LTD. Todos os direitos reservados.",
+    "footer_Disclaimer": "Todos os preços estão sujeitos à disponibilidade e podem mudar sem aviso prévio. Podem ser aplicados impostos e taxas adicionais. Recomendamos fortemente o seguro de viagem.\nNão nos responsabilizamos por cancelamentos ou atrasos imprevistos. Passaportes e vistos são responsabilidade do viajante.\nVerifique os requisitos de entrada antes de reservar. Horários de voos e disponibilidade de hotéis estão sujeitos a alterações.\nNão garantimos acomodações específicas ou horários de voo. Não nos responsabilizamos por perdas, danos ou lesões durante a viagem.\nPromoções e descontos especiais estão sujeitos a termos e condições. Datas de blackout podem ser aplicadas.\nAtuamos apenas como agentes para companhias aéreas, hotéis e operadores turísticos e não somos responsáveis por suas ações ou políticas.\nAs políticas de cancelamento e reembolso variam conforme o fornecedor. Por favor, revise os termos antes de reservar.",
+    "footer_Instagram": "Instagram"
+  }
+}

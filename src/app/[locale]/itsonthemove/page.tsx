@@ -1,11 +1,13 @@
 import React from 'react'
+import { useTranslations } from 'next-intl'
 
 const page = () => {
+	const t = useTranslations('itsonthemove_page')
 	return (
 		<div className="container">
-			Our website has been reviewed and approved by itsonthemove.com -{' '}
+			{t('itsonthemove_page_Our_Website_Has_Been_Reviewed')}{' '}
 			<a href="https://www.itsonthemove.com/Holiday-Tours/C17-1-0.htm">
-				Holiday Tours Listings
+				{t('itsonthemove_page_Holiday_Tours_Listings')}
 			</a>
 		</div>
 	)

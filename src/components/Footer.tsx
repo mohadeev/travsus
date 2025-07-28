@@ -7,9 +7,12 @@ import Logo from '@/shared/Logo'
 import { footerLinks } from '@/constants/footerLinks'
 import type { Route } from 'next'
 import LanguagePreferencesModal from '@/app/(client-components)/(Header)/LanguagePreferencesModal'
+import { useTranslations } from 'next-intl'
 
 export default function Footer() {
 	const currentYear = new Date().getFullYear()
+	const t = useTranslations('footer')
+	const to = useTranslations('UserProfile')
 
 	return (
 		<footer className="bg-[#f5f5f7] text-black">
@@ -54,34 +57,21 @@ export default function Footer() {
 							rel="noopener noreferrer"
 							className="text-black transition-colors duration-300 hover:text-gray-700"
 						>
-							<span className="sr-only">Instagram</span>
+							<span className="sr-only">{t('footer_Instagram')}</span>
 							<Instagram className="h-6 w-6" aria-hidden="true" />
 						</Link>
 					</motion.div>
 				</div>
 
 				<p className="mt-8 text-center text-xs leading-5">
-					Copyright © {currentYear} TRAVSUS LTD. All rights reserved.
+					{t('footer_Copyright', { year: 'sss' })}
 				</p>
+				{to('title')}
 
 				<p className="mt-4 text-center text-[10px] leading-4 text-gray-600">
-					All prices are subject to availability and may change without notice.
-					Additional taxes and fees may apply. Travel insurance is highly
-					recommended.
-					<br /> We are not responsible for unforeseen cancellations or delays.
-					Passports and visas are the responsibility of the traveler. <br />
-					Please check entry requirements before booking. Airline schedules and
-					hotel availability are subject to change. We do not guarantee specific
-					accommodations or flight times. We are not liable for any losses,
-					damages, or injuries incurred during travel. Special promotions and
-					discounts are subject to terms and conditions.
-					<br /> Blackout dates may apply. <br />
-					We act solely as an agent for airlines, hotels, and tour operators and
-					are not responsible for their actions or policies. Cancellation and
-					refund policies vary by provider. <br />
-					Please review terms before booking.
-					<br />
+					{t('footer_Disclaimer')}
 				</p>
+				<p>{t('key', { name: "slkdvslkdv" })}</p>
 			</div>
 		</footer>
 	)

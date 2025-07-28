@@ -1,6 +1,24 @@
 {
-	"HomePage": {
-		"title": "Hello world ccn!",
-		"about": "Go to the about page"
-	}
+  "about": {
+    "about_Discover_Breathtaking_Destinations": "Objevte dech beroucí destinace s odborným vedením",
+    "about_Explore_A_World_Of_Possibilities": "Prozkoumejte svět možností s naší rozsáhlou sítí destinací",
+    "about_From_Flights_To_Accommodations": "Od letů po ubytování, aktivity až po místní tipy - vše je rychlé k uspořádání, intuitivní k řízení a je vybaveno vestavěnou pokročilou ochranou. Když potřebujete radu, naši cestovní experti jsou k dispozici bez nákladů. Je to vše, co potřebujete pro vaši cestu - vše na jednom místě",
+    "about_Get_In_Touch": "Kontaktujte nás",
+    "about_Join_Our_Community_Of_Satisfied": "Přidejte se k naší komunitě spokojených světoběžníků a vytvořte si trvalé vzpomínky",
+    "about_Join_Thousands_Of_Satisfied_Travelers": "Přidejte se k tisícům spokojených cestovatelů, kteří objevili snadnost a radost z prozkoumávání světa s Travsus. Vaše další dobrodružství je jen kliknutí daleko",
+    "about_Our_Travel_Experts_Bring_Years": "Naši cestovní experti přinášejí roky zkušeností k vytvoření vaší dokonalé cesty",
+    "about_Ready_To_Start_Your_Journey": "Připraveni začít vaši cestu?",
+    "about_Real_Experts": "Skuteční experti",
+    "about_Round_The_Clock_Assistance": "Podpora nepřetržitě zajišťuje, že na své cestě nejste nikdy sami",
+    "about_Sarah_T_Adventure_Enthusiast": "- Sarah T., nadšenec do dobrodružství",
+    "about_Simplicity_In_Travel": "Jednoduchost v cestování",
+    "about_Travsus_Revolutionizes_Your_Journey": "Travsus revolucionalizuje vaši cestu od snu k destinaci",
+    "about_Travsus_Transformed_The_Way_I_Travel": "\"Travsus změnil způsob, jakým cestuji. Jejich odborné doporučení a plynulý proces rezervace udělaly mou cestu na Bali nezapomenutelnou. Už si nedokážu představit plánování dovolené bez nich!\"",
+    "about_What_Our_Travelers_Say": "Co říkají naši cestovatelé",
+    "about_With_Travsus_Youre_Not_Just": "S Travsus nezískáváte jen cestovní aplikaci - získáváte přístup k týmu vášnivých cestovních expertů s hlubokými znalostmi destinací po celém světě. Naši experti vytvářejí jedinečné zážitky, poskytují insider tipy a zajišťují, že vaše cesta je mimořádná"
+  },
+  "HomePage": {
+    "about": "Go to the about page",
+    "title": "Hello world ccn!"
+  }
 }

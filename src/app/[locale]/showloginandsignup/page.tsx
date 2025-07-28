@@ -5,8 +5,10 @@ import ButtonPrimary from '@/shared/ButtonPrimary'
 import { useRepeatedOverlay } from '@/app/hooks/useRepeatedOverlay'
 import { useAuthAction } from '@/app/hooks/useAuthAction'
 import AuthModal from '@/components/AuthModal'
+import { useTranslations } from 'next-intl'
 
 const ShowLoginAndSignup: React.FC = () => {
+	const t = useTranslations('showloginandsignup_page')
 	const { toggleOverlay } = useRepeatedOverlay('authModal')
 
 	const showLoginModal = () => {
@@ -26,18 +28,24 @@ const ShowLoginAndSignup: React.FC = () => {
 	}
 
 	const handleSave = useAuthAction(() => {
-		alert('Item saved successfully!')
+		alert(t('showloginandsignup_page_Item_Saved_Successfully'))
 	})
 
 	return (
 		<div className="container mx-auto mt-20 text-center">
-			<h1 className="mb-10 text-3xl font-bold">Login and Signup Demo</h1>
+			<h1 className="mb-10 text-3xl font-bold">
+				{t('showloginandsignup_page_Login_And_Signup_Demo')}
+			</h1>
 			<div className="space-x-4">
-				<ButtonPrimary onClick={showLoginModal}>Show Login Modal</ButtonPrimary>
-				<ButtonPrimary onClick={showSignupModal}>
-					Show Signup Modal
+				<ButtonPrimary onClick={showLoginModal}>
+					{t('showloginandsignup_page_Show_Login_Modal')}
 				</ButtonPrimary>
-				<ButtonPrimary onClick={handleSave}>Save</ButtonPrimary>
+				<ButtonPrimary onClick={showSignupModal}>
+					{t('showloginandsignup_page_Show_Signup_Modal')}
+				</ButtonPrimary>
+				<ButtonPrimary onClick={handleSave}>
+					{t('showloginandsignup_page_Save')}
+				</ButtonPrimary>
 			</div>
 			<AuthModal />
 		</div>

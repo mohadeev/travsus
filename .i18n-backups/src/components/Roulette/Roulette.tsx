@@ -1,0 +1,267 @@
+'use client'
+
+import React, { useState, useEffect, useRef } from 'react'
+import { Wheel } from 'react-custom-roulette'
+import confetti from 'canvas-confetti'
+
+const data = [
+	{ option: '10€' },
+	{ option: '20€' },
+	{ option: '50€' },
+	{ option: '100€' },
+	{ option: '200€' },
+	{ option: '500€' },
+	{ option: '75€' },
+	{ option: '1000€' },
+	{ option: '5€' },
+	{ option: '150€' },
+	{ option: '300€' },
+	{ option: '750€' },
+	{ option: '25€' },
+	{ option: '400€' },
+	{ option: '600€' },
+	{ option: '0€' },
+	{ option: '250€' },
+	{ option: '900€' },
+]
+
+export default function WheelGame() {
+	const [mustSpin, setMustSpin] = useState(false)
+	const [prizeNumber, setPrizeNumber] = useState(2)
+	const [showResult, setShowResult] = useState(false)
+	const [isLoading, setIsLoading] = useState(false)
+	const [error, setError] = useState<string | null>(null)
+	const [winnerCode, setWinnerCode] = useState<string | null>(null)
+	const [timeLeft, setTimeLeft] = useState<number | null>(null)
+
+	const spinningSound = useRef<HTMLAudioElement | null>(null)
+	const winningSound = useRef<HTMLAudioElement | null>(null)
+	const resultRef = useRef<HTMLDivElement>(null)
+	const wheelRef = useRef<HTMLDivElement>(null)
+	// experiencesContainerRef removed
+
+	useEffect(() => {
+		spinningSound.current = new Audio('/sound/roulette.mp3')
+		winningSound.current = new Audio('/sound/winning.mp3')
+	}, [])
+
+	useEffect(() => {
+		let timer: NodeJS.Timeout
+		if (timeLeft !== null && timeLeft > 0) {
+			timer = setInterval(() => {
+				setTimeLeft((prev) => (prev !== null ? prev - 1 : null))
+			}, 1000)
+		}
+		return () => clearInterval(timer)
+	}, [timeLeft])
+
+	const handleSpinClick = async () => {
+		if (!mustSpin && !isLoading) {
+			setIsLoading(true)
+			setError(null)
+			setWinnerCode(null)
+			setTimeLeft(null)
+
+			// Scroll to wheel immediately
+			if (wheelRef.current) {
+				wheelRef.current.scrollIntoView({
+					behavior: 'smooth',
+					block: 'start',
+				})
+			}
+
+			try {
+				const response = await fetch('/api/spin', { method: 'POST' })
+				if (!response.ok) {
+					throw new Error('Failed to fetch prize number')
+				}
+				const data = await response.json()
+				setPrizeNumber(0)
+				setWinnerCode(data.winnerCode)
+				setMustSpin(true)
+				setShowResult(false)
+				if (spinningSound.current) {
+					spinningSound.current.currentTime = 0
+					spinningSound.current.play()
+				}
+			} catch (err) {
+				setError('An error occurred. Please try again.')
+				console.error('Error spinning wheel:', err)
+			} finally {
+				setIsLoading(false)
+			}
+		}
+	}
+
+	const handleStopSpinning = () => {
+		setMustSpin(false)
+		setShowResult(true)
+		if (spinningSound.current) {
+			spinningSound.current.pause()
+			spinningSound.current.currentTime = 0
+		}
+		if (data[prizeNumber].option !== '0€' && winningSound.current) {
+			winningSound.current.play()
+			setTimeLeft(2 * 60 * 60) // 2 hours in seconds
+
+			// Scroll to result banner when a prize is won
+			if (resultRef.current) {
+				resultRef.current.scrollIntoView({
+					behavior: 'smooth',
+					block: 'start',
+				})
+			}
+		}
+		if (data[prizeNumber].option !== '0€') {
+			confetti({
+				particleCount: 100,
+				spread: 70,
+				origin: { y: 0.6 },
+			})
+		}
+	}
+
+	const formatTime = (seconds: number) => {
+		const hours = Math.floor(seconds / 3600)
+		const minutes = Math.floor((seconds % 3600) / 60)
+		const remainingSeconds = seconds % 60
+		return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`
+	}
+
+	return (
+		<div className="mx-auto flex min-h-screen max-w-[1263.2px] flex-col items-center justify-center p-0 font-['Inter_Tight',sans-serif]">
+			{showResult && (
+				<div ref={resultRef} className="mb-8 w-full text-center">
+					<h2 className="mb-4 text-3xl font-bold text-black">
+						{data[prizeNumber].option === '0€'
+							? 'Better luck next time! 🍀'
+							: 'Congratulations! 🏆'}
+					</h2>
+					<p className="mb-4 text-6xl font-bold text-black">
+						{data[prizeNumber].option}
+					</p>
+					{winnerCode && (
+						<>
+							<button className="mb-4 rounded-full bg-black px-6 py-3 text-base font-semibold text-white shadow-lg transition duration-300 ease-in-out hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50">
+								Claim your prize
+							</button>
+							<p className="mb-2 text-sm font-bold text-black">
+								Hurry! Claim your prize now! 🏃‍♂️💨
+							</p>
+							<p className="mb-4 text-sm text-black">
+								Your winner code:{' '}
+								<span className="font-semibold">{winnerCode}</span>
+							</p>
+							{timeLeft !== null && (
+								<div className="mb-4 text-3xl font-bold text-red-500">
+									Time left: {formatTime(timeLeft)}
+								</div>
+							)}
+						</>
+					)}
+				</div>
+			)}
+			<div
+				className="relative z-10 my-6 w-full overflow-hidden rounded-3xl"
+				style={{
+					background:
+						'conic-gradient(from 0deg, rgba(255, 100, 100, 0.2), rgba(100, 100, 255, 0.2), rgba(100, 255, 100, 0.2), rgba(255, 255, 100, 0.2), rgba(255, 100, 100, 0.2))',
+					backdropFilter: 'blur(10px)',
+				}}
+			>
+				<div className="absolute inset-[-50%] z-[-1] animate-[rotateGradient_20s_linear_infinite] bg-inherit"></div>
+				<div className="absolute inset-0 z-[-1] bg-white/50 backdrop-blur-[10px]"></div>
+				<div className="relative z-[2] flex flex-col items-center p-12 text-center">
+					<h1 className="mb-4 text-5xl font-black leading-tight text-black">
+						Wheel of Fortune
+					</h1>
+					<p className="mb-8 text-base font-normal leading-relaxed text-gray-700">
+						Spin the wheel and win amazing prizes!
+					</p>
+					<div ref={wheelRef} className="mb-8 flex flex-col items-center">
+						<div className="mb-6">
+							<Wheel
+								mustStartSpinning={mustSpin}
+								prizeNumber={prizeNumber}
+								data={data}
+								outerBorderColor={['#f2f2f2']}
+								outerBorderWidth={[10]}
+								innerBorderColor={['#f2f2f2']}
+								radiusLineColor={['#dedede']}
+								radiusLineWidth={[1]}
+								fontSize={15}
+								textColors={[
+									'#ffffff',
+									'#000000',
+									'#000000',
+									'#ffffff',
+									'#000000',
+									'#000000',
+									'#ffffff',
+									'#000000',
+									'#000000',
+									'#ffffff',
+									'#000000',
+									'#000000',
+									'#ffffff',
+									'#000000',
+									'#000000',
+									'#ffffff',
+									'#000000',
+									'#000000',
+								]}
+								backgroundColors={[
+									'#000000',
+									'#FFFFFF',
+									'#FFE4D6',
+									'#000000',
+									'#FFFFFF',
+									'#FFE4D6',
+									'#000000',
+									'#FFFFFF',
+									'#FFE4D6',
+									'#000000',
+									'#FFFFFF',
+									'#FFE4D6',
+									'#000000',
+									'#FFFFFF',
+									'#FFE4D6',
+									'#000000',
+									'#FFFFFF',
+									'#FFE4D6',
+								]}
+								onStopSpinning={handleStopSpinning}
+							/>
+						</div>
+						<button
+							className="rounded-full bg-black px-6 py-3 text-lg font-semibold text-white shadow-lg transition duration-300 ease-in-out hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 disabled:cursor-not-allowed disabled:opacity-50"
+							onClick={handleSpinClick}
+							disabled={mustSpin || isLoading}
+						>
+							{isLoading ? 'Loading...' : 'SPIN NOW!'}
+						</button>
+					</div>
+					{error && (
+						<div className="mt-4 rounded bg-red-600 p-2 font-semibold text-white">
+							{error}
+						</div>
+					)}
+					<div className="mt-12 flex justify-center gap-5">
+						<div className="cursor-pointer rounded-lg bg-white/60 p-4 text-center backdrop-blur-sm transition-all duration-300 ease-in-out hover:-translate-y-1">
+							<div className="text-2xl font-bold text-black">100+</div>
+							<div className="mt-2 text-sm font-normal text-gray-700">
+								Prizes Won
+							</div>
+						</div>
+						<div className="cursor-pointer rounded-lg bg-white/60 p-4 text-center backdrop-blur-sm transition-all duration-300 ease-in-out hover:-translate-y-1">
+							<div className="text-2xl font-bold text-black">30+</div>
+							<div className="mt-2 text-sm font-normal text-gray-700">
+								Happy Clients
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	)
+}

@@ -1,29 +1,27 @@
 import { Metadata } from 'next'
 import LoginClient from './LoginClient'
+import { useTranslations } from 'next-intl'
 
 type Props = {
 	searchParams: { forgot?: string }
 }
 
-export async function generateMetadata({
-	searchParams,
-}: Props): Promise<Metadata> {
-	const isForgotPassword = searchParams.forgot === 'true'
+// export function generateMetadata({ searchParams }: Props): Promise<Metadata> {
+// 	const isForgotPassword = searchParams.forgot === 'true'
+// 	const t = useTranslations(login_page_Reset)
 
-	if (isForgotPassword) {
-		return {
-			title: 'Forgot Password | Travsus',
-			description:
-				'Reset your password securely and regain access to your account.',
-		}
-	}
+// 	if (isForgotPassword) {
+// 		return {
+// 			title: t('login_page_Forgot_Password'),
+// 			description: t('login_page_Reset_Your_Password_Securely'),
+// 		}
+// 	}
 
-	return {
-		title: 'Login | Travsus',
-		description:
-			'Securely log in to your account and access your personalized dashboard.',
-	}
-}
+// 	return {
+// 		title: t('login_page_Login'),
+// 		description: t('login_page_Securely_Log_In_To_Your_Account'),
+// 	}
+// }
 
 export default function LoginPage({ searchParams }: Props) {
 	const isForgotPassword = searchParams.forgot === 'true'

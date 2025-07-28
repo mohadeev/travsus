@@ -1,5 +1,3 @@
-'use client'
-
 import { Tab } from '@headlessui/react'
 import CarCard from '@/components/CarCard'
 import CommentListing from '@/components/CommentListing'
@@ -18,14 +16,16 @@ import SocialsList from '@/shared/SocialsList'
 import handelFetchAllBookings from '@/utils/api-utils/handelFetchAllBookings'
 import { useSelector } from 'react-redux'
 import moment from 'moment'
+import { useTranslations } from 'next-intl'
 
 export interface AuthorPageProps {}
 
 const AuthorPage: FC<AuthorPageProps> = ({}) => {
+	const t = useTranslations('author_page')
 	const user = useSelector((state: any) => state.userReducer.userData)
 
 	let [categories] = useState([
-		'Bookings', //'Experiences'
+		t('author_page_Bookings'), //'Experiences'
 	])
 	const [bookings, setBookings] = useState<any>([])
 	useEffect(() => {
@@ -90,7 +90,7 @@ const AuthorPage: FC<AuthorPageProps> = ({}) => {
 							/>
 						</svg>
 						<span className="text-neutral-6000 dark:text-neutral-300">
-							Ha Noi, Viet Nam
+							{t('author_page_Ha_Noi_Viet_Nam')}
 						</span>
 					</div>
 					<div className="flex items-center space-x-4">
@@ -109,7 +109,7 @@ const AuthorPage: FC<AuthorPageProps> = ({}) => {
 							/>
 						</svg>
 						<span className="text-neutral-6000 dark:text-neutral-300">
-							Speaking English
+							{t('author_page_Speaking_English')}
 						</span>
 					</div>
 
@@ -129,7 +129,7 @@ const AuthorPage: FC<AuthorPageProps> = ({}) => {
 							/>
 						</svg>
 						<span className="text-neutral-6000 dark:text-neutral-300">
-							Joined in {joinedDate}
+							{t('author_page_Joined_In_Date', { joinedDate: joinedDate })}
 						</span>
 					</div>
 				</div>
@@ -141,10 +141,11 @@ const AuthorPage: FC<AuthorPageProps> = ({}) => {
 		return (
 			<div className="listingSection__wrap">
 				<div>
-					<h2 className="text-2xl font-semibold">{`${user?.accountData?.firstname} ${user?.accountData?.lastname}'s listings`}</h2>
+					<h2 className="text-2xl font-semibold">
+						{t('author_page_Listings', { user: user })}
+					</h2>
 					<span className="mt-2 block text-neutral-500 dark:text-neutral-400">
-						{`${user?.accountData?.firstname} ${user?.accountData?.lastname}'s listings is very rich, 5 star reviews help him to be
-            more branded.`}
+						{t('author_page_Listings_Description', { user: user })}
 					</span>
 				</div>
 				<div className="w-14 border-b border-neutral-200 dark:border-neutral-700"></div>
@@ -178,7 +179,9 @@ const AuthorPage: FC<AuthorPageProps> = ({}) => {
 										: ''}
 								</div>
 								<div className="mt-11 flex items-center justify-center">
-									<ButtonSecondary>Show me more</ButtonSecondary>
+									<ButtonSecondary>
+										{t('author_page_Show_Me_More')}
+									</ButtonSecondary>
 								</div>
 							</Tab.Panel>
 							<Tab.Panel className="">
@@ -190,7 +193,9 @@ const AuthorPage: FC<AuthorPageProps> = ({}) => {
 									)}
 								</div>
 								<div className="mt-11 flex items-center justify-center">
-									<ButtonSecondary>Show me more</ButtonSecondary>
+									<ButtonSecondary>
+										{t('author_page_Show_Me_More')}
+									</ButtonSecondary>
 								</div>
 							</Tab.Panel>
 							<Tab.Panel className="">
@@ -200,7 +205,9 @@ const AuthorPage: FC<AuthorPageProps> = ({}) => {
 									))}
 								</div>
 								<div className="mt-11 flex items-center justify-center">
-									<ButtonSecondary>Show me more</ButtonSecondary>
+									<ButtonSecondary>
+										{t('author_page_Show_Me_More')}
+									</ButtonSecondary>
 								</div>
 							</Tab.Panel>
 						</Tab.Panels>
@@ -214,7 +221,7 @@ const AuthorPage: FC<AuthorPageProps> = ({}) => {
 		return (
 			<div className="listingSection__wrap">
 				{/* HEADING */}
-				<h2 className="text-2xl font-semibold">Reviews (23 reviews)</h2>
+				<h2 className="text-2xl font-semibold">{t('author_page_Reviews')}</h2>
 				<div className="w-14 border-b border-neutral-200 dark:border-neutral-700"></div>
 
 				{/* comment */}
@@ -224,7 +231,9 @@ const AuthorPage: FC<AuthorPageProps> = ({}) => {
 					<CommentListing hasListingTitle className="py-8" />
 					<CommentListing hasListingTitle className="py-8" />
 					<div className="pt-8">
-						<ButtonSecondary>View more 20 reviews</ButtonSecondary>
+						<ButtonSecondary>
+							{t('author_page_View_More_20_Reviews')}
+						</ButtonSecondary>
 					</div>
 				</div>
 			</div>

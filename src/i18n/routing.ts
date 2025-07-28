@@ -20,8 +20,7 @@ export const routing = defineRouting({
 		'en_NZ',
 		'en_PH',
 		'en_SG',
-		'en_US',
-		'eu_ES',
+		'eu',
 		'en_ZA',
 		'es_AR',
 		'es_CL',
@@ -58,5 +57,6 @@ export const routing = defineRouting({
 		'zh_Hant_HK',
 		'zh_TW',
 	],
+	// Used when no locale matches
 	defaultLocale: 'en_US',
 })

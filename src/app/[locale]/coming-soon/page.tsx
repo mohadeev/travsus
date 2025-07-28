@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { useTranslations } from 'next-intl'
 
 type TimeLeft = {
 	days?: number
@@ -10,6 +11,7 @@ type TimeLeft = {
 }
 
 export default function Home() {
+	const t = useTranslations('comingsoon_page')
 	const calculateTimeLeft = (): TimeLeft => {
 		const difference = +new Date('2025-01-01') - +new Date()
 		let timeLeft: TimeLeft = {}
@@ -62,13 +64,13 @@ export default function Home() {
 		<div className="flex min-h-screen items-center justify-center bg-black text-white">
 			<div className="text-center">
 				<h1 className="mb-6 animate-pulse text-7xl font-extrabold md:text-9xl">
-					Coming Soon
+					{t('comingsoon_page_Coming_Soon')}
 				</h1>
 				<div className="text-2xl md:text-4xl">
 					{timerComponents.length ? (
 						timerComponents
 					) : (
-						<span>Time&apos;s up!</span>
+						<span>{t('comingsoon_page_Times_Up')}</span>
 					)}
 				</div>
 			</div>

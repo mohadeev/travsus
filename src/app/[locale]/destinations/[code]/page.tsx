@@ -4,14 +4,11 @@ import { useEffect, useState } from 'react'
 import { Camera, Heart, ChevronDown, ChevronRight } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
-// import CollectionsGrid from './Collection'
 import CountryCardList from '@/components/ItemsCardList'
-
-// import SectionGridFilterCard from '../(experience-listings)/SectionGridFilterCard'
 import FeatureNotificationForm from '@/app/feature-notification-form'
-// import SectionGridFilterCard from '@/app/(experience-listings)/SectionGridFilterCard'
 import ReadeMore from '../../../(client-components)/ReadeMore'
 import CollectionsGrid from '@/components/CollectionsGrid'
+import { useTranslations } from 'next-intl'
 
 export default function DestinationPage({
 	params,
@@ -20,23 +17,19 @@ export default function DestinationPage({
 	params: { code: string }
 	searchParams: any
 }) {
-	// Extract the country code from the URL parameters
+	const t = useTranslations('destinations_code_page')
 	const { code } = params
-
-	// State for country data, loading state, and errors
 	const [countryData, setCountryData] = useState(null)
 	const [isLoading, setIsLoading] = useState(true)
 	const [error, setError] = useState(null)
 	const [showModal, setShowModal] = useState(false)
 
 	useEffect(() => {
-		// Reset states when country code changes
 		setIsLoading(true)
 		setError(null)
 
 		const fetchCountryData = async () => {
 			try {
-				// Make sure the URL is correct
 				const apiUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/api/countries/${searchParams?.lcId}`
 				console.log('Fetching from:', apiUrl)
 
@@ -45,7 +38,7 @@ export default function DestinationPage({
 					headers: {
 						'Content-Type': 'application/json',
 					},
-					cache: 'no-store', // Prevent caching
+					cache: 'no-store',
 				})
 
 				console.log('API response status:', res.status)
@@ -66,34 +59,36 @@ export default function DestinationPage({
 		}
 
 		fetchCountryData()
-	}, [code]) // Re-run when country code changes
+	}, [code])
 
-	// Show loading state
 	if (isLoading) {
 		return (
 			<div className="destination-layout">
 				<main>
 					<div className="p-8 text-center">
-						<h1 className="mb-4 text-2xl font-bold">Loading...</h1>
-						<p>Fetching information for {code.toUpperCase()}</p>
+						<h1 className="mb-4 text-2xl font-bold">{t('Loading')}</h1>
+						<p>
+							{t('Fetching_Information_For')} {code.toUpperCase()}
+						</p>
 					</div>
 				</main>
 			</div>
 		)
 	}
 
-	// Show error state
 	if (error) {
 		return (
 			<div className="destination-layout">
 				<main>
 					<div className="p-8 text-center">
-						<h1 className="mb-4 text-2xl font-bold">Country Not Found</h1>
+						<h1 className="mb-4 text-2xl font-bold">
+							{t('Country_Not_Found')}
+						</h1>
 						<p>
-							Sorry, we couldn't find information for the country code: {code}
+							{t('Sorry_We_Couldnt_Find_Information')} {code}
 						</p>
 						<p className="mt-4 text-sm text-gray-500">
-							Please check that the country code is correct and try again.
+							{t('Please_Check_That_The_Country_Code')}
 						</p>
 					</div>
 				</main>
@@ -101,30 +96,27 @@ export default function DestinationPage({
 		)
 	}
 
-	// Main content - previously in MoroccoTravelPage
 	console.log('countryData: ', countryData)
 
 	return (
 		<>
 			<div className="mx-auto max-w-6xl">
-				{/* Navigation Bar with divider */}
 				<div className="px-4 md:px-0">
 					<nav className="relative flex items-center border-b border-black py-3">
-						{/* Scrollable navigation for all screen sizes */}
 						<div
 							className="hide-scrollbar flex items-center overflow-x-auto"
 							onClick={() => setShowModal(true)}
 						>
 							{[
 								countryData?.name,
-								'Hotels',
-								'Things to Do',
-								'Restaurants',
-								'Flights',
-								'Vacation Rentals',
-								'Cruises',
-								'Rental Cars',
-								'Forums',
+								t('Hotels'),
+								t('Things_To_Do'),
+								t('Restaurants'),
+								t('Flights'),
+								t('Vacation_Rentals'),
+								t('Cruises'),
+								t('Rental_Cars'),
+								t('Forums'),
 							].map((item, index) => (
 								<Link
 									key={item}
@@ -142,7 +134,6 @@ export default function DestinationPage({
 					</nav>
 				</div>
 
-				{/* Breadcrumb Navigation - responsive */}
 				<div className="mt-2 flex flex-col px-4 py-2 text-xs md:mt-4 md:flex-row md:items-center md:justify-between md:px-0">
 					<div className="mb-1 flex items-center md:mb-0">
 						<Link href="#" className="text-black hover:underline">
@@ -159,13 +150,12 @@ export default function DestinationPage({
 					</div>
 					<div className="text-black">
 						<span>
-							Plan Your Trip to {countryData?.name}: Best {countryData?.name}{' '}
-							Travel Guide
+							{t('Plan_Your_Trip_To')} {countryData?.name}:{' '}
+							{t('Best_Travel_Guide')} {countryData?.name}
 						</span>
 					</div>
 				</div>
 
-				{/* Banner Image - full width on mobile */}
 				<div className="px-0 pb-3 pt-3 md:pb-4 md:pt-4">
 					<div className="relative h-[300px] w-full overflow-hidden md:h-[500px] md:rounded-[16px]">
 						<Image
@@ -190,26 +180,22 @@ export default function DestinationPage({
 						</div>
 					</div>
 
-					{/* Sponsored text moved outside the image */}
 					<p className="mt-1 px-4 text-xs text-black md:mt-2 md:px-0 md:text-sm">
 						{countryData?.name === 'Morocco'
-							? 'Sponsored by ' + countryData?.name
+							? t('Sponsored_By') + countryData?.name
 							: ''}
 					</p>
 				</div>
 
-				{/* Content Section - Morocco on left, Save on right */}
 				<div className="px-4 py-5 md:px-0 md:py-8">
 					<div className="mb-4 flex flex-row items-center justify-between md:mb-6">
-						{/* Morocco heading always on left */}
 						<h1 className="text-3xl font-extrabold text-black md:text-5xl">
 							{countryData?.name}
 						</h1>
 
-						{/* Save button always on right */}
 						<button
 							className="flex h-10 w-10 items-center justify-center rounded-full border border-black hover:bg-gray-50 md:h-12 md:w-12"
-							aria-label="Save"
+							aria-label={t('Save')}
 						>
 							<Heart className="h-5 w-5 md:h-6 md:w-6" />
 						</button>
@@ -217,25 +203,17 @@ export default function DestinationPage({
 
 					<ReadeMore description={countryData?.description} />
 				</div>
-				{/* <CollectionsGrid layout={'row'} /> */}
 				<CollectionsGrid
 					cityName={countryData?.name}
 					layout="row"
 					countryId={countryData?.id}
-					// placeType="restaurant"
-					// heading="Restaurants in Marrakech"
-					// subHeading="Taste the flavors of"
 				/>
 				<CountryCardList
 					locationType="city"
 					countryId={countryData?.id}
 					layout="row"
-					// heading="Popular Countries"
 				/>
 
-				{/* <SectionGridFilterCard layout={'row'} /> */}
-
-				{/* Custom CSS for hiding scrollbars */}
 				<style jsx global>{`
 					.hide-scrollbar::-webkit-scrollbar {
 						display: none;
@@ -246,10 +224,6 @@ export default function DestinationPage({
 					}
 				`}</style>
 			</div>
-			{/* <FeatureNotificationForm
-				isOpen={showModal}
-				onClose={() => setShowModal(false)}
-			/> */}
 		</>
 	)
 }

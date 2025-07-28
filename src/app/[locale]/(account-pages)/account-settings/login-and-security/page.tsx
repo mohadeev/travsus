@@ -4,11 +4,12 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { ChevronRight, Shield } from 'lucide-react'
 import AccountPass from '@/components/AccountPass'
-// import AccountPass from '@/components/account-settingsPass'
+import { useTranslations } from 'next-intl'
 
 export default function LoginAndSecurityPage() {
 	const [activeTab, setActiveTab] = useState('login')
 	const [showPasswordUpdate, setShowPasswordUpdate] = useState(false)
+	const t = useTranslations('accountsettings_loginandsecurity_page')
 
 	return (
 		<div className="mx-auto max-w-4xl px-6 py-8">
@@ -18,14 +19,14 @@ export default function LoginAndSecurityPage() {
 					href="/account-settings"
 					className="text-gray-600 hover:underline"
 				>
-					Account
+					{t('Account')}
 				</Link>
 				<ChevronRight className="mx-2 h-4 w-4 text-gray-500" />
-				<span className="text-gray-800">Login & security</span>
+				<span className="text-gray-800">{t('Login_Security')}</span>
 			</div>
 
 			{/* Page Title */}
-			<h1 className="mb-8 text-3xl font-semibold">Login & security</h1>
+			<h1 className="mb-8 text-3xl font-semibold">{t('Login_Security')}</h1>
 
 			{/* Tabs */}
 			<div className="mb-8 border-b border-gray-200">
@@ -38,7 +39,7 @@ export default function LoginAndSecurityPage() {
 						}`}
 						onClick={() => setActiveTab('login')}
 					>
-						LOGIN
+						{t('Login')}
 					</button>
 					<button
 						className={`px-1 pb-4 ${
@@ -48,7 +49,7 @@ export default function LoginAndSecurityPage() {
 						}`}
 						onClick={() => setActiveTab('shared')}
 					>
-						SHARED ACCESS
+						{t('Shared_Access')}
 					</button>
 				</div>
 			</div>
@@ -56,22 +57,22 @@ export default function LoginAndSecurityPage() {
 			{activeTab === 'login' ? (
 				<div className="space-y-8">
 					<div>
-						<h2 className="mb-6 text-2xl font-medium">Login</h2>
+						<h2 className="mb-6 text-2xl font-medium">{t('Login')}</h2>
 
 						{/* Password Section */}
 						<div className="border-b border-gray-200 py-6">
 							<div className="flex items-center justify-between">
 								<div>
-									<h3 className="font-medium">Password</h3>
+									<h3 className="font-medium">{t('Password')}</h3>
 									<p className="mt-1 text-sm text-gray-500">
-										Last updated 2 years ago
+										{t('Last_Updated_2_Years_Ago')}
 									</p>
 								</div>
 								<button
 									onClick={() => setShowPasswordUpdate(!showPasswordUpdate)}
 									className="font-medium text-black underline"
 								>
-									{showPasswordUpdate ? 'Cancel' : 'Update'}
+									{showPasswordUpdate ? t('Cancel') : t('Update')}
 								</button>
 							</div>
 
@@ -84,16 +85,18 @@ export default function LoginAndSecurityPage() {
 
 						{/* Account Section */}
 						<div className="py-6">
-							<h2 className="mb-6 text-2xl font-medium">Account</h2>
+							<h2 className="mb-6 text-2xl font-medium">{t('Account_2')}</h2>
 							<div className="flex items-center justify-between">
 								<div>
-									<h3 className="font-medium">Deactivate your account</h3>
+									<h3 className="font-medium">
+										{t('Deactivate_Your_Account')}
+									</h3>
 								</div>
 								<Link
 									href="/account-settings-delete/reasons"
 									className="font-medium text-red-500 underline"
 								>
-									Deactivate
+									{t('Deactivate')}
 								</Link>
 							</div>
 						</div>
@@ -101,13 +104,10 @@ export default function LoginAndSecurityPage() {
 				</div>
 			) : (
 				<div className="space-y-8">
-					<h2 className="mb-6 text-2xl font-medium">Shared Access</h2>
-					<p className="text-gray-600">
-						You can give trusted friends and family members access to your
-						travsus account. Learn more about shared access.
-					</p>
+					<h2 className="mb-6 text-2xl font-medium">{t('Shared_Access')}</h2>
+					<p className="text-gray-600">{t('You_Can_Give_Trusted_Friends')}</p>
 					<button className="rounded-lg border border-black px-6 py-2 font-medium hover:bg-gray-100">
-						Add trusted person
+						{t('Add_Trusted_Person')}
 					</button>
 				</div>
 			)}
@@ -120,21 +120,19 @@ export default function LoginAndSecurityPage() {
 					</div>
 					<div>
 						<h2 className="mb-2 text-lg font-semibold">
-							Keeping your account secure
+							{t('Keeping_Your_Account_Secure')}
 						</h2>
 						<p className="mb-4 text-gray-600">
-							We regularly review accounts to make sure they're secure as
-							possible. We'll also let you know if there's more we can do to
-							increase the security of your account.
+							{t('We_Regularly_Review_Accounts')}
 						</p>
 						<p className="text-gray-600">
-							Learn about safety tips for{' '}
+							{t('Learn_About_Safety_Tips')}{' '}
 							<Link href="#" className="font-medium text-black underline">
-								guests
+								{t('Guests')}
 							</Link>{' '}
 							and{' '}
 							<Link href="#" className="font-medium text-black underline">
-								hosts
+								{t('Hosts')}
 							</Link>
 							.
 						</p>

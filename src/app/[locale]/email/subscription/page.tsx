@@ -16,12 +16,13 @@ import { AlertCircle, CheckCircle } from 'lucide-react'
 import { useSession } from 'next-auth/react'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { Skeleton } from '@/components/ui/skeleton'
+import { useTranslations } from 'next-intl'
 
 const newsletterTypes = [
-	{ id: 'deals', label: 'Deals' },
-	{ id: 'tips', label: 'Tips' },
-	{ id: 'reviews', label: 'Reviews' },
-	{ id: 'inspiration', label: 'Inspiration' },
+	{ id: 'deals', label: 'email_subscription_page_Deals' },
+	{ id: 'tips', label: 'email_subscription_page_Tips' },
+	{ id: 'reviews', label: 'email_subscription_page_Reviews' },
+	{ id: 'inspiration', label: 'email_subscription_page_Inspiration' },
 ]
 
 function SkeletonLoading() {
@@ -49,6 +50,7 @@ function SkeletonLoading() {
 }
 
 export default function SubscriptionPage() {
+	const t = useTranslations('email_subscription_page')
 	const searchParams = useSearchParams()
 	const [status, setStatus] = useState<
 		'loading' | 'idle' | 'success' | 'error'
@@ -68,7 +70,7 @@ export default function SubscriptionPage() {
 		const fetchSubscriptionData = async () => {
 			if (!token) {
 				setStatus('error')
-				setMessage('Invalid token')
+				setMessage(t('Invalid_Token'))
 				setIsInitialLoad(false)
 				return
 			}
@@ -81,7 +83,8 @@ export default function SubscriptionPage() {
 					setTypes(data.types)
 					setIsSubscribed(data.subscribed)
 					setGreeting(
-						data.greeting || `Hello ${data.email}! Great to see you again! 👋`,
+						data.greeting ||
+							t('Hello_Email_Great_To_See_You_Again', { email: data.email }),
 					)
 					setStatus('idle')
 				} else if (data.emailMismatch) {
@@ -98,13 +101,13 @@ export default function SubscriptionPage() {
 				}
 			} catch (error) {
 				setStatus('error')
-				setMessage('An error occurred while fetching your subscription data')
+				setMessage(t('An_Error_Occurred_Fetching_Subscription_Data'))
 			}
 			setIsInitialLoad(false)
 		}
 
 		fetchSubscriptionData()
-	}, [token])
+	}, [token, t])
 
 	const handleTypeToggle = (typeId: string) => {
 		setTypes((prev) =>
@@ -146,7 +149,7 @@ export default function SubscriptionPage() {
 			}
 		} catch (error) {
 			setStatus('error')
-			setMessage('An error occurred while processing your request')
+			setMessage(t('An_Error_Occurred_Fetching_Subscription_Data'))
 		}
 	}
 
@@ -162,10 +165,10 @@ export default function SubscriptionPage() {
 		return (
 			<Alert variant="destructive" className="mx-auto mt-10 w-[350px]">
 				<AlertCircle className="h-4 w-4" />
-				<AlertTitle>Oops! Email Mismatch 🕵️‍♀️</AlertTitle>
+				<AlertTitle>{t('Oops_Email_Mismatch')}</AlertTitle>
 				<AlertDescription>
 					{message}
-					Please log out and try again, or use the correct account.
+					{t('Please_Log_Out_And_Try_Again')}
 				</AlertDescription>
 			</Alert>
 		)
@@ -175,10 +178,10 @@ export default function SubscriptionPage() {
 		return (
 			<Alert variant="destructive" className="mx-auto mt-10 w-[350px]">
 				<AlertCircle className="h-4 w-4" />
-				<AlertTitle>Token Expired</AlertTitle>
+				<AlertTitle>{t('Token_Expired')}</AlertTitle>
 				<AlertDescription>
 					{message}
-					Please request a new token to manage your subscriptions.
+					{t('Please_Request_New_Token')}
 				</AlertDescription>
 			</Alert>
 		)
@@ -188,22 +191,20 @@ export default function SubscriptionPage() {
 		<div className="flex min-h-screen items-center justify-center bg-gray-100">
 			<Card className="w-[350px]">
 				<CardHeader>
-					<CardTitle>Manage Your Subscriptions</CardTitle>
+					<CardTitle>{t('Manage_Your_Subscriptions')}</CardTitle>
 					{greeting && (
 						<CardDescription className="text-sm font-medium text-green-600">
 							{greeting}
 						</CardDescription>
 					)}
-					<CardDescription>
-						Choose the types of newsletters you want to receive
-					</CardDescription>
+					<CardDescription>{t('Choose_Types_Of_Newsletters')}</CardDescription>
 				</CardHeader>
 				<CardContent>
-					{status === 'loading' && <p>Updating your preferences...</p>}
+					{status === 'loading' && <p>{t('Updating_Your_Preferences')}</p>}
 					{status === 'error' && (
 						<Alert variant="destructive">
 							<AlertCircle className="h-4 w-4" />
-							<AlertTitle>Error</AlertTitle>
+							<AlertTitle>{t('Error')}</AlertTitle>
 							<AlertDescription>{message}</AlertDescription>
 						</Alert>
 					)}
@@ -220,7 +221,7 @@ export default function SubscriptionPage() {
 										htmlFor={type.id}
 										className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
 									>
-										{type.label}
+										{t(type.label)}
 									</label>
 								</div>
 							))}
@@ -239,7 +240,7 @@ export default function SubscriptionPage() {
 						onClick={handleSubmit}
 						disabled={status === 'loading'}
 					>
-						{status === 'loading' ? 'Updating...' : 'Update Preferences'}
+						{status === 'loading' ? t('Updating') : t('Update_Preferences')}
 					</Button>
 				</CardFooter>
 			</Card>

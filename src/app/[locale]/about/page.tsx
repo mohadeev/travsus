@@ -14,7 +14,7 @@ import {
 } from 'lucide-react'
 import { useRef } from 'react'
 import AnimatedFeatures from '@/components/AnimatedFeatures'
-// import AnimatedFeatures from '@/components/AnimatedFeatures'
+import { useTranslations } from 'next-intl'
 
 function AnimatedSection({ children, className }) {
 	const ref = useRef(null)
@@ -35,6 +35,8 @@ function AnimatedSection({ children, className }) {
 }
 
 export default function PageAbout() {
+	const t = useTranslations('about_page')
+
 	return (
 		<div className="relative overflow-hidden bg-white">
 			{/* Hero Section */}
@@ -47,7 +49,7 @@ export default function PageAbout() {
 							transition={{ duration: 0.8, delay: 0.2 }}
 							className="mb-6 text-7xl font-black tracking-tight md:text-8xl"
 						>
-							Simplicity <span className="">in travel.</span>
+							{t('about_page_Simplicity_In_Travel')}
 						</motion.h1>
 						<motion.p
 							initial={{ opacity: 0, y: 20 }}
@@ -55,7 +57,7 @@ export default function PageAbout() {
 							transition={{ duration: 0.8, delay: 0.4 }}
 							className="mx-auto mb-8 max-w-3xl text-2xl font-medium leading-tight text-[#1d1d1f] md:text-3xl"
 						>
-							Travsus revolutionizes your journey from dream to destination.
+							{t('about_page_Travsus_Revolutionizes_Your_Journey')}
 						</motion.p>
 						<motion.p
 							initial={{ opacity: 0, y: 20 }}
@@ -63,11 +65,7 @@ export default function PageAbout() {
 							transition={{ duration: 0.8, delay: 0.6 }}
 							className="mx-auto max-w-4xl text-xl leading-relaxed text-[#86868b] md:text-2xl"
 						>
-							From flights to accommodations, activities to local insights —
-							everything is quick to arrange, intuitive to manage, and comes
-							with advanced protection built in. When you need guidance, our
-							Travel Experts are available at no cost. It's everything you need
-							for your journey — all in one place.
+							{t('about_page_From_Flights_To_Accommodations')}
 						</motion.p>
 					</div>
 				</div>
@@ -92,7 +90,7 @@ export default function PageAbout() {
 									transition={{ duration: 0.8, delay: 0.4 }}
 									className="text-2xl font-bold leading-tight text-white md:text-3xl lg:text-5xl"
 								>
-									Discover breathtaking destinations with expert guidance
+									{t('about_page_Discover_Breathtaking_Destinations')}
 								</motion.h2>
 							</div>
 						</div>
@@ -118,7 +116,7 @@ export default function PageAbout() {
 								transition={{ duration: 0.8, delay: 0.2 }}
 								className="mb-6 text-7xl font-black tracking-tight text-[#1d1d1f]"
 							>
-								Real experts.
+								{t('about_page_Real_Experts')}
 							</motion.h2>
 							<motion.p
 								initial={{ opacity: 0, y: 20 }}
@@ -126,8 +124,7 @@ export default function PageAbout() {
 								transition={{ duration: 0.8, delay: 0.4 }}
 								className="mb-4 text-2xl font-medium text-[#1d1d1f]"
 							>
-								Our travel experts bring years of experience to create your
-								perfect trip.
+								{t('about_page_Our_Travel_Experts_Bring_Years')}
 							</motion.p>
 							<motion.p
 								initial={{ opacity: 0, y: 20 }}
@@ -135,11 +132,7 @@ export default function PageAbout() {
 								transition={{ duration: 0.8, delay: 0.6 }}
 								className="mx-auto max-w-4xl text-xl text-[#86868b]"
 							>
-								With Travsus, you're not just getting a travel app – you're
-								gaining access to a team of passionate travel experts with deep
-								knowledge of destinations worldwide. Our experts curate unique
-								experiences, provide insider tips, and ensure your journey is
-								nothing short of extraordinary.
+								{t('about_page_With_Travsus_Youre_Not_Just')}
 							</motion.p>
 						</div>
 						<div className="grid gap-8 md:grid-cols-2">
@@ -182,20 +175,17 @@ export default function PageAbout() {
 							{
 								number: '150+',
 								text: 'Destinations',
-								description:
-									'Explore a world of possibilities with our extensive network of destinations.',
+								description: t('about_page_Explore_A_World_Of_Possibilities'),
 							},
 							{
 								number: '24/7',
 								text: 'Expert Support',
-								description:
-									"Round-the-clock assistance ensures you're never alone on your journey.",
+								description: t('about_page_Round_The_Clock_Assistance'),
 							},
 							{
 								number: '1M+',
 								text: 'Happy Travelers',
-								description:
-									'Join our community of satisfied globetrotters and create lasting memories.',
+								description: t('about_page_Join_Our_Community_Of_Satisfied'),
 							},
 						].map((stat, index) => (
 							<motion.div
@@ -227,7 +217,7 @@ export default function PageAbout() {
 							transition={{ duration: 0.8, delay: 0.2 }}
 							className="mb-8 text-5xl font-bold text-[#1d1d1f]"
 						>
-							What Our Travelers Say
+							{t('about_page_What_Our_Travelers_Say')}
 						</motion.h2>
 						<motion.blockquote
 							initial={{ opacity: 0, y: 20 }}
@@ -235,10 +225,7 @@ export default function PageAbout() {
 							transition={{ duration: 0.8, delay: 0.4 }}
 							className="mb-6 text-2xl italic text-[#1d1d1f]"
 						>
-							"Travsus transformed the way I travel. Their expert
-							recommendations and seamless booking process made my trip to Bali
-							unforgettable. I can't imagine planning a vacation without them
-							now!"
+							{t('about_page_Travsus_Transformed_The_Way_I_Travel')}
 						</motion.blockquote>
 						<motion.p
 							initial={{ opacity: 0, y: 20 }}
@@ -246,7 +233,7 @@ export default function PageAbout() {
 							transition={{ duration: 0.8, delay: 0.6 }}
 							className="text-xl font-medium text-[#86868b]"
 						>
-							- Sarah T., Adventure Enthusiast
+							{t('about_page_Sarah_T_Adventure_Enthusiast')}
 						</motion.p>
 					</div>
 				</div>
@@ -261,7 +248,7 @@ export default function PageAbout() {
 						transition={{ duration: 0.8, delay: 0.2 }}
 						className="mb-6 text-5xl font-black text-[#1d1d1f]"
 					>
-						Ready to start your journey?
+						{t('about_page_Ready_To_Start_Your_Journey')}
 					</motion.h2>
 					<motion.p
 						initial={{ opacity: 0, y: 20 }}
@@ -269,9 +256,7 @@ export default function PageAbout() {
 						transition={{ duration: 0.8, delay: 0.4 }}
 						className="mx-auto mb-8 max-w-2xl text-xl text-[#86868b]"
 					>
-						Join thousands of satisfied travelers who have discovered the ease
-						and joy of exploring the world with Travsus. Your next adventure is
-						just a click away.
+						{t('about_page_Join_Thousands_Of_Satisfied_Travelers')}
 					</motion.p>
 					<motion.div
 						initial={{ opacity: 0, y: 20 }}
@@ -280,7 +265,7 @@ export default function PageAbout() {
 						className="flex justify-center"
 					>
 						<Button asChild>
-							<Link href="/contact">Get in touch</Link>
+							<Link href="/contact">{t('about_page_Get_In_Touch')}</Link>
 						</Button>
 					</motion.div>
 				</div>

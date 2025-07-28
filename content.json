@@ -1,0 +1,65 @@
+{
+	"en_US": {
+		"footer": {
+			"footer_Instagram": "Instagram",
+			"footer_Copyright": "Copyright © {{year}} TRAVSUS LTD. All rights reserved.",
+			"footer_Disclaimer": "All prices are subject to availability and may change without notice. Additional taxes and fees may apply. Travel insurance is highly recommended.\nWe are not responsible for unforeseen cancellations or delays. Passports and visas are the responsibility of the traveler.\nPlease check entry requirements before booking. Airline schedules and hotel availability are subject to change.\nWe do not guarantee specific accommodations or flight times. We are not liable for any losses, damages, or injuries incurred during travel.\nSpecial promotions and discounts are subject to terms and conditions. Blackout dates may apply.\nWe act solely as an agent for airlines, hotels, and tour operators and are not responsible for their actions or policies.\nCancellation and refund policies vary by provider. Please review terms before booking."
+		}
+	},
+	"zh_CN": {
+		"footer": {
+			"footer_Instagram": "Instagram",
+			"footer_Copyright": "版权所有 © {year} TRAVSUS LTD. 保留所有权利。",
+			"footer_Disclaimer": "所有价格以实际供应情况为准，可能会无预告变动。可能会收取额外税费。强烈建议购买旅行保险。\n我们不对意外的取消或延误负责。护照和签证由旅客自行负责。\n请在预订前检查入境要求。航班时间和酒店供应情况可能会变更。\n我们不保证特定住宿或航班时间。对于旅行期间产生的任何损失、损害或伤害，我们不承担责任。\n特别优惠和折扣受条款限制。可能会有停用日期。\n我们仅作为航空公司、酒店和旅行社的代理，不对其行为或政策负责。\n取消和退款政策因供应商而异。预订前请查看条款。"
+		}
+	},
+	"es_ES": {
+		"footer": {
+			"footer_Instagram": "Instagram",
+			"footer_Copyright": "Derechos de autor © {year} TRAVSUS LTD. Todos los derechos reservados.",
+			"footer_Disclaimer": "Todos los precios están sujetos a disponibilidad y pueden cambiar sin previo aviso. Pueden aplicarse impuestos y tasas adicionales. Se recomienda encarecidamente contratar un seguro de viaje.\nNo somos responsables de cancelaciones o retrasos imprevistos. Los pasaportes y visados son responsabilidad del viajero.\nPor favor, revise los requisitos de entrada antes de reservar. Los horarios de los vuelos y la disponibilidad de los hoteles están sujetos a cambios.\nNo garantizamos alojamientos específicos ni horarios de vuelo. No somos responsables de pérdidas, daños o lesiones durante el viaje.\nLas promociones especiales y los descuentos están sujetos a términos y condiciones. Pueden aplicarse fechas restringidas.\nActuamos únicamente como intermediarios de aerolíneas, hoteles y operadores turísticos y no somos responsables de sus acciones o políticas.\nLas políticas de cancelación y reembolso varían según el proveedor. Revise los términos antes de reservar."
+		}
+	},
+	"fr_FR": {
+		"footer": {
+			"footer_Instagram": "Instagram",
+			"footer_Copyright": "Droits d’auteur © {year} TRAVSUS LTD. Tous droits réservés.",
+			"footer_Disclaimer": "Tous les prix sont soumis à disponibilité et peuvent être modifiés sans préavis. Des taxes et frais supplémentaires peuvent s'appliquer. Une assurance voyage est fortement recommandée.\nNous ne sommes pas responsables des annulations ou retards imprévus. Les passeports et visas sont à la charge du voyageur.\nVeuillez vérifier les exigences d'entrée avant de réserver. Les horaires des vols et la disponibilité des hôtels sont susceptibles de changer.\nNous ne garantissons pas des hébergements ou des horaires de vol spécifiques. Nous ne sommes pas responsables des pertes, dommages ou blessures survenus pendant le voyage.\nLes promotions spéciales et les réductions sont soumises à conditions. Des périodes d’indisponibilité peuvent s’appliquer.\nNous agissons uniquement en tant qu’agent pour les compagnies aériennes, les hôtels et les voyagistes et ne sommes pas responsables de leurs actions ou politiques.\nLes politiques d’annulation et de remboursement varient selon les prestataires. Veuillez consulter les conditions avant de réserver."
+		}
+	},
+	"de_DE": {
+		"footer": {
+			"footer_Instagram": "Instagram",
+			"footer_Copyright": "Urheberrecht © {year} TRAVSUS LTD. Alle Rechte vorbehalten.",
+			"footer_Disclaimer": "Alle Preise unterliegen der Verfügbarkeit und können ohne Vorankündigung geändert werden. Zusätzliche Steuern und Gebühren können anfallen. Eine Reiseversicherung wird dringend empfohlen.\nWir übernehmen keine Verantwortung für unvorhergesehene Stornierungen oder Verspätungen. Reisepässe und Visa liegen in der Verantwortung des Reisenden.\nBitte prüfen Sie die Einreisebestimmungen vor der Buchung. Flugpläne und Hotelverfügbarkeiten können sich ändern.\nWir garantieren keine bestimmten Unterkünfte oder Flugzeiten. Wir haften nicht für Verluste, Schäden oder Verletzungen während der Reise.\nSonderangebote und Rabatte unterliegen den Geschäftsbedingungen. Sperrzeiten können gelten.\nWir handeln ausschließlich als Vermittler für Fluggesellschaften, Hotels und Reiseveranstalter und sind nicht verantwortlich für deren Handlungen oder Richtlinien.\nStornierungs- und Rückerstattungsrichtlinien variieren je nach Anbieter. Bitte prüfen Sie die Bedingungen vor der Buchung."
+		}
+	},
+	"ja_JP": {
+		"footer": {
+			"footer_Instagram": "インスタグラム",
+			"footer_Copyright": "著作権 © {year} TRAVSUS LTD. 無断転載を禁じます。",
+			"footer_Disclaimer": "すべての価格は在庫状況により変動する可能性があり、予告なく変更される場合があります。追加の税金および手数料が適用されることがあります。旅行保険の加入を強く推奨します。\n予期せぬキャンセルや遅延について責任を負いません。パスポートとビザは旅行者の責任です。\n予約前に入国要件を確認してください。航空会社のスケジュールやホテルの空室状況は変更されることがあります。\n特定の宿泊施設やフライト時間を保証するものではありません。旅行中の損失、損害、けがについては責任を負いません。\n特別プロモーションおよび割引は条件が適用されます。ブラックアウト期間がある場合があります。\n私たちは航空会社、ホテル、ツアーオペレーターの代理としてのみ活動しており、その行動やポリシーについて責任を負いません。\nキャンセルおよび返金ポリシーは提供者により異なります。予約前に条件を確認してください。"
+		}
+	},
+	"ko_KR": {
+		"footer": {
+			"footer_Instagram": "인스타그램",
+			"footer_Copyright": "저작권 © {year} TRAVSUS LTD. 판권 소유.",
+			"footer_Disclaimer": "모든 가격은 재고 상황에 따라 변동될 수 있으며 사전 공지 없이 변경될 수 있습니다. 추가 세금 및 수수료가 적용될 수 있습니다. 여행 보험 가입을 강력히 권장합니다.\n예기치 않은 취소 또는 지연에 대해 책임을 지지 않습니다. 여권 및 비자는 여행자의 책임입니다.\n예약 전 입국 요건을 확인하세요. 항공 일정 및 호텔 이용 가능 여부는 변경될 수 있습니다.\n특정 숙박 시설 또는 항공 시간은 보장하지 않습니다. 여행 중 발생하는 손실, 손해 또는 부상에 대해 책임지지 않습니다.\n특별 프로모션 및 할인은 조건에 따라 다릅니다. 블랙아웃 날짜가 적용될 수 있습니다.\n항공사, 호텔 및 여행사 대리인으로서 그들의 행위나 정책에 대해 책임지지 않습니다.\n취소 및 환불 정책은 공급자에 따라 다릅니다. 예약 전에 약관을 검토하세요."
+		}
+	},
+	"it_IT": {
+		"footer": {
+			"footer_Instagram": "Instagram",
+			"footer_Copyright": "Copyright © {year} TRAVSUS LTD. Tutti i diritti riservati.",
+			"footer_Disclaimer": "Tutti i prezzi sono soggetti a disponibilità e possono cambiare senza preavviso. Possono essere applicate tasse e costi aggiuntivi. Si consiglia vivamente di stipulare un'assicurazione di viaggio.\nNon siamo responsabili per cancellazioni o ritardi imprevisti. I passaporti e i visti sono responsabilità del viaggiatore.\nControllare i requisiti di ingresso prima di prenotare. Gli orari dei voli e la disponibilità degli hotel possono variare.\nNon garantiamo sistemazioni specifiche o orari di volo. Non siamo responsabili per eventuali perdite, danni o lesioni durante il viaggio.\nLe promozioni speciali e gli sconti sono soggetti a termini e condizioni. Possono essere applicate date di esclusione.\nAgiamo esclusivamente come agenti per compagnie aeree, hotel e tour operator e non siamo responsabili delle loro azioni o politiche.\nLe politiche di cancellazione e rimborso variano in base al fornitore. Si prega di verificare i termini prima di prenotare."
+		}
+	},
+	"pt_BR": {
+		"footer": {
+			"footer_Instagram": "Instagram",
+			"footer_Copyright": "Direitos autorais © {year} TRAVSUS LTD. Todos os direitos reservados.",
+			"footer_Disclaimer": "Todos os preços estão sujeitos à disponibilidade e podem mudar sem aviso prévio. Podem ser aplicados impostos e taxas adicionais. Recomendamos fortemente o seguro de viagem.\nNão nos responsabilizamos por cancelamentos ou atrasos imprevistos. Passaportes e vistos são responsabilidade do viajante.\nVerifique os requisitos de entrada antes de reservar. Horários de voos e disponibilidade de hotéis estão sujeitos a alterações.\nNão garantimos acomodações específicas ou horários de voo. Não nos responsabilizamos por perdas, danos ou lesões durante a viagem.\nPromoções e descontos especiais estão sujeitos a termos e condições. Datas de blackout podem ser aplicadas.\nAtuamos apenas como agentes para companhias aéreas, hotéis e operadores turísticos e não somos responsáveis por suas ações ou políticas.\nAs políticas de cancelamento e reembolso variam conforme o fornecedor. Por favor, revise os termos antes de reservar."
+		}
+	}
+}

@@ -8,6 +8,7 @@ import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Loader2, Plus, X } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 
 // Function to validate image URL
 const isValidImageUrl = (url: string) => {
@@ -24,6 +25,7 @@ const isValidImageUrl = (url: string) => {
 }
 
 export default function CMSAdmin() {
+	const t = useTranslations('cmsadmin_countryId_page')
 	const [value, setValue] = useState('')
 	const [searchResults, setSearchResults] = useState<any[]>([])
 	const [loading, setLoading] = useState(false)
@@ -85,14 +87,17 @@ export default function CMSAdmin() {
 	const saveImageUrl = async (id: string, type: string, url: string) => {
 		// Validate URL
 		if (!url.trim()) {
-			setValidationErrors((prev) => ({ ...prev, [id]: 'URL cannot be empty' }))
+			setValidationErrors((prev) => ({
+				...prev,
+				[id]: t('URL_cannot_be_empty'),
+			}))
 			return
 		}
 
 		if (!isValidImageUrl(url)) {
 			setValidationErrors((prev) => ({
 				...prev,
-				[id]: 'Please enter a valid image URL',
+				[id]: t('Please_enter_a_valid_image_URL'),
 			}))
 			return
 		}
@@ -150,7 +155,7 @@ export default function CMSAdmin() {
 			// Show success message
 			setSuccessMessages((prev) => ({
 				...prev,
-				[id]: 'Image added successfully!',
+				[id]: t('Image_added_successfully'),
 			}))
 
 			// Clear success message after 3 seconds
@@ -165,7 +170,7 @@ export default function CMSAdmin() {
 			console.error('Error saving image URL:', error)
 			setValidationErrors((prev) => ({
 				...prev,
-				[id]: 'Failed to save image URL',
+				[id]: t('Failed_to_save_image_URL'),
 			}))
 		} finally {
 			setSavingImageFor(null)
@@ -174,16 +179,18 @@ export default function CMSAdmin() {
 
 	return (
 		<div className="container mx-auto py-8">
-			<h1 className="mb-6 text-3xl font-bold">CMS Admin - Image Management</h1>
+			<h1 className="mb-6 text-3xl font-bold">
+				{t('CMS_Admin_Image_Management')}
+			</h1>
 
 			<div className="mb-8">
 				<label htmlFor="search" className="mb-2 block text-sm font-medium">
-					Search for Countries or Cities
+					{t('Search_for_Countries_or_Cities')}
 				</label>
 				<Input
 					id="search"
 					type="text"
-					placeholder="Type to search..."
+					placeholder={t('Type_to_search')}
 					value={value}
 					onChange={handleChangeInput}
 					className="w-full max-w-md"
@@ -193,7 +200,7 @@ export default function CMSAdmin() {
 			{loading && (
 				<div className="text-muted-foreground flex items-center gap-2">
 					<Loader2 className="h-4 w-4 animate-spin" />
-					<span>Searching...</span>
+					<span>{t('Searching')}</span>
 				</div>
 			)}
 
@@ -218,7 +225,7 @@ export default function CMSAdmin() {
 								{result.image ? (
 									<div className="mb-4">
 										<h4 className="mb-2 text-sm font-medium">
-											Current Image {JSON.stringify(result.image.url)}
+											{t('Current_Image')} {JSON.stringify(result.image.url)}
 										</h4>
 										<div className="aspect-video relative overflow-hidden rounded-md border">
 											{result.image.url ? (
@@ -240,20 +247,20 @@ export default function CMSAdmin() {
 									</div>
 								) : (
 									<p className="text-muted-foreground mb-4 text-sm">
-										No image yet
+										{t('No_image_yet')}
 									</p>
 								)}
 
 								{/* Add new image */}
 								<div className="space-y-2">
 									<h4 className="text-sm font-medium">
-										{result.image ? 'Update Image' : 'Add Image'}
+										{result.image ? t('Update_Image') : t('Add_Image')}
 									</h4>
 
 									<div className="flex gap-2">
 										<Input
 											type="url"
-											placeholder="Enter image URL"
+											placeholder={t('Enter_image_URL')}
 											value={newImageUrls[result.id] || ''}
 											onChange={(e) =>
 												handleImageUrlChange(result.id, e.target.value)
@@ -308,7 +315,7 @@ export default function CMSAdmin() {
 					))}
 				</div>
 			) : value.length > 1 && !loading ? (
-				<p className="text-muted-foreground">No results found</p>
+				<p className="text-muted-foreground">{t('No_results_found')}</p>
 			) : null}
 		</div>
 	)

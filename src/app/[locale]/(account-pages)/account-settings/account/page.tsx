@@ -15,6 +15,7 @@ import {
 } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import { useSelector } from 'react-redux'
+import { useTranslations } from 'use-intl'
 
 // Define the type for our settings items
 type SettingItem = {
@@ -25,68 +26,79 @@ type SettingItem = {
 }
 
 export default function AccountPage() {
+	const t = useTranslations("accountsettings_account_page_Personal")
+
 	// Array of settings items
 	const settingsItems: SettingItem[] = [
 		{
-			title: 'Personal info',
-			description: 'Provide personal details and how we can reach you',
+			title: t('accountsettings_account_page_Personal_Info_Title'),
+			description: t('accountsettings_account_page_Personal_Info_Description'),
 			icon: LayoutGrid,
 			href: '/account-settings/personal-info',
 		},
 		{
-			title: 'Login & security',
-			description: 'Update your password and secure your account',
+			title: t('accountsettings_account_page_Login_Security_Title'),
+			description: t('accountsettings_account_page_Login_Security_Description'),
 			icon: Lock,
 			href: '/account-settings/login-and-security',
 		},
 		{
-			title: 'Payments & payouts',
-			description: 'Review payments, payouts, coupons, and gift cards',
+			title: t('accountsettings_account_page_Payments_Payouts_Title'),
+			description: t(
+				'accountsettings_account_page_Payments_Payouts_Description',
+			),
 			icon: CreditCard,
 			href: '/account-settings/payment-methods',
 		},
 		{
-			title: 'Taxes',
-			description: 'Manage taxpayer information and tax documents',
+			title: t('accountsettings_account_page_Taxes_Title'),
+			description: t('accountsettings_account_page_Taxes_Description'),
 			icon: FileText,
 			href: '/account-settings/taxes',
 		},
 		{
-			title: 'Notifications',
-			description:
-				'Choose notification preferences and how you want to be contacted',
+			title: t('accountsettings_account_page_Notifications_Title'),
+			description: t('accountsettings_account_page_Notifications_Description'),
 			icon: Bell,
 			href: '/account-settings/notifications',
 		},
 		{
-			title: 'Privacy & sharing',
-			description:
-				'Manage your personal data, connected services, and data sharing settings',
+			title: t('accountsettings_account_page_Privacy_Sharing_Title'),
+			description: t(
+				'accountsettings_account_page_Privacy_Sharing_Description',
+			),
 			icon: Eye,
 			href: '/account-settings/privacy-and-sharing',
 		},
 		{
-			title: 'Global preferences',
-			description: 'Set your default language, currency, and timezone',
+			title: t('accountsettings_account_page_Global_Preferences_Title'),
+			description: t(
+				'accountsettings_account_page_Global_Preferences_Description',
+			),
 			icon: Globe,
 			href: '/account-settings/preferences',
 		},
 		{
-			title: 'Travel for work',
-			description: 'Add a work email for business trip benefits',
+			title: t('accountsettings_account_page_Travel_For_Work_Title'),
+			description: t(
+				'accountsettings_account_page_Travel_For_Work_Description',
+			),
 			icon: MapPin,
 			href: '/account-settings/travsus-for-work',
 		},
 		{
-			title: 'Professional hosting tools',
-			description:
-				'Get professional tools if you manage several properties on travsus',
+			title: t('accountsettings_account_page_Professional_Hosting_Tools_Title'),
+			description: t(
+				'accountsettings_account_page_Professional_Hosting_Tools_Description',
+			),
 			icon: Building2,
 			href: '/account-settings/professional-hosting',
 		},
 		{
-			title: 'Referral credit & coupon',
-			description: 'You have € 0 referral credits and coupon. Learn more.',
+			title: t('accountsettings_account_page_Referral_Credit_Coupon_Title'),
+			description: t(
+				'accountsettings_account_page_Referral_Credit_Coupon_Description',
+			),
 			icon: Gift,
 			href: '/account-settings/invite',
 		},
@@ -101,7 +113,9 @@ export default function AccountPage() {
 			<main className="mx-auto max-w-6xl flex-1 px-6 py-8 md:px-20">
 				{/* Account Header */}
 				<div className="mb-8">
-					<h1 className="mb-1 text-3xl font-semibold">Account</h1>
+					<h1 className="mb-1 text-3xl font-semibold">
+						{t('accountsettings_account_page_Account_Header')}
+					</h1>
 					<div className="flex items-center text-gray-700">
 						<span>
 							{userName}, {userEmail}
@@ -137,12 +151,14 @@ export default function AccountPage() {
 
 				{/* Deactivate Account */}
 				<div className="mt-12 text-center">
-					<p className="mb-2 text-gray-700">Need to deactivate your account?</p>
+					<p className="mb-2 text-gray-700">
+						{t('accountsettings_account_page_Need_To_Deactivate_Your_Account')}
+					</p>
 					<Link
 						href="/account-settings/deactivate"
 						className="font-medium text-gray-700 underline"
 					>
-						Take care of that now
+						{t('accountsettings_account_page_Take_Care_Of_That_Now')}
 					</Link>
 				</div>
 			</main>
