@@ -1,14 +1,10 @@
-const fs = require('fs/promises')
+const fs = require('fs').promises
 const path = require('path')
 const OpenAI = require('openai')
 
 // Configuration
 const CONFIG = {
-	// Source directories to process
-	SOURCE_DIRS: [
-		path.join(process.cwd(), 'src', 'app', '[locale]'),
-		path.join(process.cwd(), 'src', 'components'),
-	],
+	SOURCE_DIR: path.join(process.cwd(), 'src'),
 	MESSAGES_DIR: path.join(process.cwd(), 'messages'),
 	BACKUP_DIR: path.join(process.cwd(), '.i18n-backups'),
 
@@ -16,8 +12,7 @@ const CONFIG = {
 	OPENAI_API_KEY:
 		'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',
 	OPENAI_MODEL: 'gpt-4',
-	OPENAI_TEMPERATURE: 0.2,
-	MAX_CONCURRENT: 3, // Max concurrent OpenAI requests
+	OPENAI_TEMPERATURE: 0.1, // Maximum determinism
 }
 
 const openai = new OpenAI({
@@ -33,368 +28,383 @@ async function createBackup(filePath, content) {
 
 	await fs.mkdir(backupDir, { recursive: true })
 	await fs.writeFile(backupPath, content, 'utf-8')
+	console.log(`📂 Backup created: ${backupPath}`)
 }
 
-async function getFilesToProcess() {
+async function getTsxFiles() {
 	const files = []
+	const entries = await fs.readdir(CONFIG.SOURCE_DIR, {
+		recursive: true,
+		withFileTypes: true,
+	})
 
-	for (const dir of CONFIG.SOURCE_DIRS) {
-		const entries = await fs.readdir(dir, {
-			withFileTypes: true,
-			recursive: true,
-		})
-
-		for (const entry of entries) {
-			if (
-				entry.isFile() &&
-				(entry.name.endsWith('.tsx') || entry.name.endsWith('.jsx'))
-			) {
-				const fullPath = path.join(entry.path, entry.name)
-
-				// Skip files in [locale] directory that are not pages
-				if (fullPath.includes('[locale]') && !fullPath.includes('page.')) {
-					continue
-				}
-
-				files.push(fullPath)
-			}
+	for (const entry of entries) {
+		if (
+			entry.isFile() &&
+			(entry.name.endsWith('.tsx') || entry.name.endsWith('.jsx'))
+		) {
+			files.push(path.join(entry.path, entry.name))
 		}
 	}
 
 	return files
 }
 
-function generateNamespace(filePath) {
-	const relativePath = path.relative(process.cwd(), filePath)
-
-	// Remove src/app/[locale]/ prefix for pages
-	let cleanPath = relativePath
-		.replace(/^src[\\/]app[\\/]\[locale\][\\/]/, '')
-		.replace(/^src[\\/]components[\\/]/, 'components/')
-		.replace(/\.[jt]sx$/, '')
-
-	// Replace path separators with underscores
-	cleanPath = cleanPath.replace(/[\\/]/g, '_')
-
-	// Remove special characters
-	cleanPath = cleanPath.replace(/[^a-zA-Z0-9_]/g, '')
-
-	// Shorten if too long
-	if (cleanPath.length > 40) {
-		const parts = cleanPath.split('_')
-		cleanPath = parts.slice(-3).join('_')
-	}
-
-	return cleanPath
-}
-
-async function getLanguages(mode) {
-	if (mode === 'default') {
-		return ['en_US', 'es_ES']
-	}
-
+async function getAvailableLanguages() {
 	try {
 		const files = await fs.readdir(CONFIG.MESSAGES_DIR)
 		return files
 			.filter((file) => file.endsWith('.json'))
-			.map((file) => file.replace('.json', ''))
+			.map((file) => file.replace('.json', '').replace('_', '-'))
 	} catch (error) {
 		console.error('❌ Could not read messages directory:', error.message)
-		return ['en_US', 'es_ES'] // Fallback to default
+		return ['en-US', 'es-ES'] // Fallback to default
 	}
 }
 
-// === Text Extraction ===
-async function extractTextForTranslation(filePath, content) {
-	const namespace = generateNamespace(filePath)
+// === Core Processing ===
 
-	const prompt = `
-You are an internationalization assistant. Analyze this React component and:
+async function processFileWithAI(filePath, namespace) {
+	try {
+		const content = await fs.readFile(filePath, 'utf-8')
 
-1. Extract ALL user-facing text that needs translation
-2. Generate CLEAN KEYS in format: "${namespace}_Descriptive_Key" 
-3. Return ONLY this JSON format:
+		// Skip files without the required import
+		if (!content.includes("import { useTranslations } from '@/lib/i18n'")) {
+			console.log(
+				`⏩ Skipping ${path.basename(filePath)} - missing i18n import`,
+			)
+			return null
+		}
 
+		// Create backup before processing
+		await createBackup(filePath, content)
+
+		const prompt = `
+# STRICT INSTRUCTIONS FOR INTERNATIONALIZATION
+
+You are an expert React/Next.js developer. Transform this component EXACTLY as specified:
+
+## REQUIREMENTS
+1. MUST use: import { useTranslations } from '@/lib/i18n'
+2. MUST call useTranslations with namespace: "${namespace}"
+3. MUST generate keys in format: ${namespace}_Descriptive_Key
+4. Replace ONLY user-facing static text (no code, no props, no variables)
+5. PRESERVE ALL formatting, whitespace, and code structure
+6. DO NOT change any functionality or logic
+7. DO NOT add or remove any imports except the required i18n import
+8. ABSOLUTELY NO DOTTED KEYS (${namespace}_Key.subkey is FORBIDDEN)
+9. JSON MUST HAVE NAMESPACE OBJECT: { "${namespace}": { key: value } }
+
+## KEY GENERATION RULES
+- Create keys from text content: "Book your trip" → ${namespace}_Book_Your_Trip
+- Keep keys under 40 characters
+- Maintain consistent casing (Title_Case_With_Underscores)
+- NEVER use dots in keys (${namespace}_Key.subkey is ILLEGAL)
+
+## OUTPUT FORMAT
+Return ONLY this exact format:
+---CODE:
+<transformed code>
+---MESSAGES:
 {
-  "namespace": "${namespace}",
-  "strings": {
-    "${namespace}_Simplicity_In_Travel": "Simplicity in travel",
-    "${namespace}_Book_Your_Trip": "Book your trip"
+  "${namespace}": {
+    "${namespace}_Key1": "Original text 1",
+    "${namespace}_Key2": "Original text 2"
   }
 }
 
-KEY RULES:
-- Prefix with "${namespace}_"
-- Use Title_Case_With_Underscores
-- Remove special characters
-- Keep under 40 chars
-- MUST be unique
-- NO generic keys
+## EXAMPLE TRANSFORMATION
+
+BEFORE:
+<div className="container">
+  <h1>Welcome to our site</h1>
+  <p>Book your trip today</p>
+</div>
+
+AFTER:
+import { useTranslations } from '@/lib/i18n';
+
+export default function Component() {
+  const t = useTranslations("${namespace}");
+  
+  return (
+    <div className="container">
+      <h1>{t('${namespace}_Welcome_To_Our_Site')}</h1>
+      <p>{t('${namespace}_Book_Your_Trip_Today')}</p>
+    </div>
+  );
+}
+
+---MESSAGES:
+{
+  "${namespace}": {
+    "${namespace}_Welcome_To_Our_Site": "Welcome to our site",
+    "${namespace}_Book_Your_Trip_Today": "Book your trip today"
+  }
+}
+
+## COMPONENT TO PROCESS:
+${content}
 `
 
-	console.log(`🔍 Extracting text for ${path.basename(filePath)}...`)
-	const result = await openai.chat.completions.create({
-		model: CONFIG.OPENAI_MODEL,
-		temperature: 0.1,
-		messages: [
-			{ role: 'system', content: prompt },
-			{ role: 'user', content: content },
-		],
-	})
+		console.log(`💬 Processing ${path.basename(filePath)} with AI...`)
+		const result = await openai.chat.completions.create({
+			model: CONFIG.OPENAI_MODEL,
+			temperature: CONFIG.OPENAI_TEMPERATURE,
+			messages: [
+				{
+					role: 'system',
+					content:
+						'You are a senior React developer specializing in internationalization. Follow instructions EXACTLY.',
+				},
+				{ role: 'user', content: prompt },
+			],
+		})
 
-	// Parse JSON from response
-	const response = result.choices[0].message.content
-	try {
-		const jsonStart = response.indexOf('{')
-		const jsonEnd = response.lastIndexOf('}') + 1
-		return JSON.parse(response.slice(jsonStart, jsonEnd))
+		const output = result.choices[0].message.content
+		const codeMatch = output.match(/---CODE:\s*([\s\S]*?)---MESSAGES:/)
+		const msgMatch = output.match(/---MESSAGES:\s*([\s\S]*)$/)
+
+		if (!codeMatch || !msgMatch) {
+			console.error('❌ FAILED TO PARSE AI OUTPUT FOR:', filePath)
+			console.error('RAW OUTPUT:', output)
+			throw new Error('AI response format invalid')
+		}
+
+		// Parse and validate messages
+		const messages = JSON.parse(msgMatch[1].trim())
+
+		// Validate namespace structure
+		if (!messages[namespace]) {
+			throw new Error(`Namespace "${namespace}" missing in AI output`)
+		}
+
+		// Validate key format
+		for (const key in messages[namespace]) {
+			if (key.includes('.')) {
+				throw new Error(`FORBIDDEN KEY FORMAT: ${key} - DOTS NOT ALLOWED`)
+			}
+			if (!key.startsWith(`${namespace}_`)) {
+				throw new Error(
+					`KEY MUST START WITH NAMESPACE: ${key} should start with ${namespace}_`,
+				)
+			}
+		}
+
+		return {
+			newCode: codeMatch[1].trim(),
+			messages,
+		}
 	} catch (error) {
-		console.error('❌ Key generation failed. AI response:', response)
-		throw new Error('Failed to parse key mappings')
+		console.error(`❌ CRITICAL ERROR PROCESSING ${filePath}:`, error.message)
+		return null
 	}
 }
 
-// === Translation ===
-async function translateStrings(strings, sourceLang, targetLang) {
+async function translateMessages(englishMessages, targetLang) {
+	if (targetLang === 'en-US') return englishMessages
+
+	const namespace = Object.keys(englishMessages)[0]
+	const strings = englishMessages[namespace]
+
 	const prompt = `
-Translate these UI strings from ${sourceLang} to ${targetLang}:
+# STRICT TRANSLATION INSTRUCTIONS
 
-RULES:
-1. Use formal, business-appropriate language
-2. Maintain consistent terminology
-3. Keep Title_Case if present
-4. Preserve numbers/symbols
-5. Return EXACT SAME JSON FORMAT with translations
+Translate these UI strings from English to ${targetLang}:
 
-Input:
-${JSON.stringify(strings, null, 2)}
+## RULES
+1. Use formal business language
+2. Maintain EXACT terminology from original
+3. Preserve ALL variables like {year} exactly as-is
+4. Keep capitalization and punctuation identical
+5. Return ONLY the JSON object with translations
+6. ABSOLUTELY NO CHANGES TO KEYS - TRANSLATE VALUES ONLY
+7. MAINTAIN NAMESPACE STRUCTURE: { "${namespace}": { key: value } }
 
-Output ONLY the translated JSON object.`
+## INPUT STRINGS:
+${JSON.stringify({ [namespace]: strings }, null, 2)}
+
+## OUTPUT FORMAT:
+{
+  "${namespace}": {
+    <EXACT SAME KEYS WITH TRANSLATED VALUES>
+  }
+}
+
+DO NOT RETURN ANYTHING ELSE! ONLY THE JSON OBJECT!
+`
 
 	console.log(`🌍 Translating to ${targetLang}...`)
 	const result = await openai.chat.completions.create({
 		model: CONFIG.OPENAI_MODEL,
-		temperature: 0.3,
-		messages: [{ role: 'system', content: prompt }],
+		temperature: CONFIG.OPENAI_TEMPERATURE,
+		messages: [
+			{
+				role: 'system',
+				content:
+					'You are a professional translator. Follow instructions EXACTLY.',
+			},
+			{ role: 'user', content: prompt },
+		],
 	})
 
-	// Parse JSON from response
-	const response = result.choices[0].message.content
-	try {
-		const jsonStart = response.indexOf('{')
-		const jsonEnd = response.lastIndexOf('}') + 1
-		return JSON.parse(response.slice(jsonStart, jsonEnd))
-	} catch (error) {
-		console.error('❌ Translation failed. AI response:', response)
-		throw new Error('Failed to parse translation response')
+	const translations = JSON.parse(result.choices[0].message.content)
+
+	// Validate translations
+	if (!translations[namespace]) {
+		throw new Error(`Namespace "${namespace}" missing in translation`)
+	}
+
+	const originalKeys = Object.keys(strings)
+	const translatedKeys = Object.keys(translations[namespace])
+
+	if (originalKeys.length !== translatedKeys.length) {
+		throw new Error('KEY COUNT MISMATCH IN TRANSLATION')
+	}
+
+	for (const key of originalKeys) {
+		if (!translations[namespace][key]) {
+			throw new Error(`MISSING KEY IN TRANSLATION: ${key}`)
+		}
+		if (key.includes('.')) {
+			throw new Error(`FORBIDDEN KEY FORMAT: ${key}`)
+		}
+	}
+
+	return translations
+}
+
+async function updateSourceFile(filePath, newCode) {
+	// Final validation before writing
+	if (newCode.includes("import { useTranslations } from '@/lib/i18n'")) {
+		await fs.writeFile(filePath, newCode, 'utf-8')
+		console.log(`✏️ UPDATED: ${path.basename(filePath)}`)
+	} else {
+		throw new Error('I18N IMPORT MISSING IN OUTPUT CODE')
 	}
 }
 
-// === Update Source File ===
-async function updateSourceFile(filePath, translations) {
-	const originalContent = await fs.readFile(filePath, 'utf-8')
-	const namespace = translations.namespace
-
-	const prompt = `
-Transform this React component:
-
-1. Replace ALL user-facing text with t('key') 
-   (keys from provided translations)
-2. Preserve all formatting/code structure
-3. Add useTranslations import if missing
-4. Return ONLY the transformed code
-
-AVAILABLE KEYS:
-${JSON.stringify(translations.strings, null, 2)}
-
-ORIGINAL FILE:
-${originalContent}
-`
-
-	console.log(`✏️  Updating ${path.basename(filePath)}...`)
-	const result = await openai.chat.completions.create({
-		model: CONFIG.OPENAI_MODEL,
-		temperature: 0,
-		messages: [{ role: 'system', content: prompt }],
-	})
-
-	await fs.writeFile(filePath, result.choices[0].message.content, 'utf-8')
-}
-
-// === Update Translation File ===
-async function updateTranslationFile(language, namespace, strings) {
-	const filePath = path.join(CONFIG.MESSAGES_DIR, `${language}.json`)
+async function updateTranslationFiles(lang, messages) {
+	// Convert to filename format (es-ES → es_ES.json)
+	const filename = `${lang.replace('-', '_')}.json`
+	const filePath = path.join(CONFIG.MESSAGES_DIR, filename)
 
 	let content = {}
 	try {
 		const fileContent = await fs.readFile(filePath, 'utf-8')
 		content = JSON.parse(fileContent)
-	} catch (error) {
-		if (error.code !== 'ENOENT') {
-			console.error(`❌ Error reading ${filePath}:`, error.message)
-		}
+	} catch {
+		// File doesn't exist yet
 	}
 
-	// Create namespace if it doesn't exist
+	const namespace = Object.keys(messages)[0]
+	const newStrings = messages[namespace]
+
+	// Create namespace if needed
 	if (!content[namespace]) {
 		content[namespace] = {}
 	}
 
-	// Add new strings (preserve existing translations)
-	for (const [key, value] of Object.entries(strings)) {
+	// Add new translations without overwriting existing ones
+	for (const [key, value] of Object.entries(newStrings)) {
+		// Validate key format
+		if (key.includes('.')) {
+			throw new Error(`FORBIDDEN KEY FORMAT: ${key} - USE UNDERSCORES ONLY`)
+		}
+
 		if (!content[namespace][key]) {
 			content[namespace][key] = value
 		}
 	}
 
 	await fs.writeFile(filePath, JSON.stringify(content, null, 2), 'utf-8')
-	console.log(`✅ Saved ${language}.json for ${namespace}`)
-	return Object.keys(strings).length
-}
-
-// === Process Queue with Concurrency ===
-async function processWithConcurrency(tasks, maxConcurrent) {
-	const results = []
-	const executing = []
-
-	for (const task of tasks) {
-		const p = task().then((result) => {
-			executing.splice(executing.indexOf(p), 1)
-			return result
-		})
-
-		executing.push(p)
-		results.push(p)
-
-		if (executing.length >= maxConcurrent) {
-			await Promise.race(executing)
-		}
-	}
-
-	return Promise.all(results)
+	console.log(`✅ UPDATED: ${filename} for namespace ${namespace}`)
 }
 
 // === Main Function ===
-async function main(mode = 'default') {
+
+async function main() {
 	try {
-		console.log(`🚀 Starting i18n automation (mode: ${mode})`)
+		console.log('🚀 STARTING STRICT NAMESPACE-BASED I18N AUTOMATION')
+		console.log('🔒 STRICT RULES ENFORCED:')
+		console.log(
+			'   1. NAMESPACE OBJECT STRUCTURE: { "namespace": { key: value } }',
+		)
+		console.log('   2. NO DOTTED KEYS - UNDERSCORES ONLY')
+		console.log(
+			'   3. KEYS MUST START WITH NAMESPACE (e.g., footer_footer_Disclaimer)',
+		)
+		console.log('   4. ZERO TOLERANCE FOR DEVIATIONS')
 
-		// Validate mode
-		if (!['default', 'all'].includes(mode)) {
-			throw new Error('Invalid mode. Use "default" or "all"')
-		}
-
-		// 1. Ensure directories exist
+		// Ensure directories exist
 		await fs.mkdir(CONFIG.BACKUP_DIR, { recursive: true })
 		await fs.mkdir(CONFIG.MESSAGES_DIR, { recursive: true })
 
-		// 2. Get files and languages
-		const files = await getFilesToProcess()
-		const languages = await getLanguages(mode)
+		// 1. Get all files and languages
+		const files = await getTsxFiles()
+		const languages = await getAvailableLanguages()
 
 		if (files.length === 0) {
-			console.log('ℹ️ No files found to process')
+			console.log('ℹ️ No .tsx files found')
 			return
 		}
 
-		console.log(`📂 Found ${files.length} files to process`)
-		console.log(
-			`🌐 Processing ${languages.length} languages: ${languages.join(', ')}`,
-		)
+		console.log(`📂 FILES TO PROCESS: ${files.length}`)
+		console.log(`🌐 LANGUAGES: ${languages.join(', ')}`)
 
-		// 3. Create tasks queue
-		const tasks = []
-		let fileCount = 0
+		// 2. Process each file
+		for (const [index, filePath] of files.entries()) {
+			try {
+				console.log(`\n=== PROCESSING FILE ${index + 1}/${files.length} ===`)
+				console.log(`📄 ${path.relative(CONFIG.SOURCE_DIR, filePath)}`)
 
-		for (const filePath of files) {
-			tasks.push(async () => {
-				try {
-					fileCount++
-					console.log(
-						`\n📄 [${fileCount}/${files.length}] Processing ${path.relative(process.cwd(), filePath)}`,
-					)
+				// Derive namespace from file path
+				const relativePath = path.relative(CONFIG.SOURCE_DIR, filePath)
+				const namespace = relativePath
+					.replace(/\.tsx$/, '')
+					.replace(/\.jsx$/, '')
+					.replace(/[\\/]/g, '_')
+					.replace(/[^a-zA-Z0-9_]/g, '')
 
-					// Read file content
-					const content = await fs.readFile(filePath, 'utf-8')
+				// Process file with AI
+				const result = await processFileWithAI(filePath, namespace)
+				if (!result) continue
 
-					// Create backup
-					await createBackup(filePath, content)
+				// Update source file
+				await updateSourceFile(filePath, result.newCode)
 
-					// Extract English strings
-					const englishData = await extractTextForTranslation(filePath, content)
+				// Process each language
+				for (const lang of languages) {
+					try {
+						let messages
 
-					// Update source file with t() calls
-					await updateSourceFile(filePath, englishData)
-
-					// Process each language sequentially
-					for (const lang of languages) {
-						try {
-							let translations
-
-							if (lang === 'en_US') {
-								// For English, use the original strings
-								translations = englishData.strings
-							} else {
-								// For other languages, translate
-								translations = await translateStrings(
-									englishData.strings,
-									'English',
-									lang,
-								)
-							}
-
-							// Save immediately after translation
-							await updateTranslationFile(
-								lang,
-								englishData.namespace,
-								translations,
-							)
-						} catch (error) {
-							console.error(
-								`❌ Failed to process ${lang} for ${filePath}:`,
-								error.message,
-							)
+						if (lang === 'en-US') {
+							// Use English messages as-is
+							messages = result.messages
+						} else {
+							// Translate for other languages
+							messages = await translateMessages(result.messages, lang)
 						}
+
+						// Update translation file
+						await updateTranslationFiles(lang, messages)
+					} catch (error) {
+						console.error(`❌ TRANSLATION FAILED FOR ${lang}:`, error.message)
 					}
-
-					return { filePath, success: true }
-				} catch (error) {
-					console.error(`❌ Failed to process ${filePath}:`, error.message)
-					return { filePath, success: false, error: error.message }
 				}
-			})
+
+				console.log(`✅ SUCCESS: ${path.basename(filePath)} processed`)
+			} catch (error) {
+				console.error(`💥 PROCESSING FAILURE: ${filePath} - ${error.message}`)
+			}
 		}
 
-		// 4. Process files with concurrency control
-		console.log(
-			`\n🚦 Processing files (concurrency: ${CONFIG.MAX_CONCURRENT})...`,
-		)
-		const results = await processWithConcurrency(tasks, CONFIG.MAX_CONCURRENT)
-
-		// 5. Report results
-		const successCount = results.filter((r) => r.success).length
-		const errorCount = results.filter((r) => !r.success).length
-
-		console.log('\n🎉 Processing complete!')
-		console.log(`✅ Successfully processed: ${successCount} files`)
-		console.log(`❌ Failed to process: ${errorCount} files`)
-
-		if (errorCount > 0) {
-			console.log('\nFailed files:')
-			results
-				.filter((r) => !r.success)
-				.forEach((r) => {
-					console.log(`- ${r.filePath}: ${r.error}`)
-				})
-		}
-
-		console.log('\n✅ All done! Internationalization complete!')
+		console.log('\n🎉 OPERATION COMPLETE!')
+		console.log('🔥 ALL FILES INTERNATIONALIZED WITH PRECISION!')
 	} catch (error) {
-		console.error('❌ Fatal error:', error.message)
-		process.exit(1)
+		console.error('💣 FATAL SYSTEM FAILURE:', error.message)
 	}
 }
 
-// Parse command line argument
-const mode = process.argv[2] || 'default'
-main('default')
+// Run the script
+main()
