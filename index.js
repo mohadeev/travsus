@@ -465,7 +465,7 @@ async function main() {
 
 		// Ensure directories exist
 		await fs.mkdir(CONFIG.BACKUP_DIR, { recursive: true })
-		await fs.mkdir(CONFIG.MESSAGES_DIR, { recursive: true })
+		await initializeLanguageFiles()
 
 		// 1. Get all files and languages
 		const { pages, components } = await getFilesByType()
