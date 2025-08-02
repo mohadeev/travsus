@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import gradientNoisePurpleAzure from '@/images/6580a563d237ee85c9237ccb_gradient-noise-purple-azure.png'
 import noiseLight from '@/images/65809a10c85f59a63201a8a5_noise-light.png'
-import { useTranslations } from 'next-intl'
+import { useTranslations } from '@/lib/i18n'
 
 export default function Page() {
 	const t = useTranslations('rights_zz_page')

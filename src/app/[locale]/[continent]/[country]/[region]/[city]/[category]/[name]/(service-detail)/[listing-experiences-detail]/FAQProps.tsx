@@ -3,6 +3,7 @@
 import React, { useState } from 'react'
 import { Card } from '@/components/ui/card'
 import { ChevronDown, ChevronUp } from 'lucide-react'
+import { useTranslations } from '@/lib/i18n'
 
 interface FAQ {
 	question: string
@@ -14,6 +15,7 @@ interface FAQProps {
 }
 
 export default function TourFAQ({ faqs }: FAQProps) {
+	const t = useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_FAQProps");
 	if (!faqs) {
 		return null
 	}
@@ -44,7 +46,7 @@ export default function TourFAQ({ faqs }: FAQProps) {
 			{faqs.length >= 1 ? (
 				<section className="listingSection__wrap_no_border_color">
 					<h2 className="mb-8 text-2xl font-semibold">
-						Frequently Asked Questions
+						{t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_FAQProps_Frequently_Asked_Questions')}
 					</h2>
 					<div className="space-y-4">
 						{faqs?.map((faq, index) => (

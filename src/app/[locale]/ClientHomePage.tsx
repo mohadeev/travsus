@@ -8,7 +8,7 @@ import Home from './test/page'
 import Roulette from '@/components/Roulette/Roulette'
 import ItemsCardList from '@/components/ItemsCardList'
 import SectionGridFeaturePlaces from '@/components/SectionGridFeaturePlaces'
-import { useTranslations } from 'next-intl'
+import { useTranslations } from '@/lib/i18n'
 import ExperiencesCard from '@/components/ExperiencesCard'
 
 function ClientHomePage() {
@@ -56,7 +56,7 @@ function ClientHomePage() {
 		reviewCount: 83,
 	}
 
-	const t = useTranslations('HomePage')
+	const t = useTranslations('app_locale_ClientHomePage')
 
 	return (
 		<>
@@ -73,13 +73,12 @@ function ClientHomePage() {
 						'https://www.twitter.com/travsus',
 						'https://www.linkedin.com/company/travsus',
 					],
-					description:
-						'Premium travel experiences with expert planning and exclusive perks.',
-					slogan: 'Your Journey, You Deserve the Best',
+					description: t('app_locale_ClientHomePage_Premium_Travel_Experiences'),
+					slogan: t('app_locale_ClientHomePage_Your_Journey_You_Deserve'),
 					award: [
-						'Best Price Guarantee',
-						'No Hidden Fees',
-						'5-Star Service Quality',
+						t('app_locale_ClientHomePage_Best_Price_Guarantee'),
+						t('app_locale_ClientHomePage_No_Hidden_Fees'),
+						t('app_locale_ClientHomePage_5_Star_Service_Quality'),
 					],
 				}}
 			/>
@@ -106,35 +105,34 @@ function ClientHomePage() {
 					'@type': 'TravelAgency',
 					name: 'Travsus',
 					url: 'https://www.travsus.com',
-					description:
-						'Expert travel planning with luxury experiences and exclusive perks.',
-					areaServed: 'Worldwide',
+					description: t('app_locale_ClientHomePage_Expert_Travel_Planning'),
+					areaServed: t('app_locale_ClientHomePage_Worldwide'),
 					hasOfferCatalog: {
 						'@type': 'OfferCatalog',
-						name: 'Travel Services',
+						name: t('app_locale_ClientHomePage_Travel_Services'),
 						itemListElement: [
 							{
 								'@type': 'Offer',
 								itemOffered: {
 									'@type': 'Service',
-									name: 'Expert Travel Planning',
-									description: 'Personalized travel planning by experts',
+									name: t('app_locale_ClientHomePage_Expert_Travel_Planning'),
+									description: t('app_locale_ClientHomePage_Personalized_Travel_Planning'),
 								},
 							},
 							{
 								'@type': 'Offer',
 								itemOffered: {
 									'@type': 'Service',
-									name: 'Luxury Accommodations',
-									description: 'Premium hotels and exclusive properties',
+									name: t('app_locale_ClientHomePage_Luxury_Accommodations'),
+									description: t('app_locale_ClientHomePage_Premium_Hotels'),
 								},
 							},
 							{
 								'@type': 'Offer',
 								itemOffered: {
 									'@type': 'Service',
-									name: 'VIP Services',
-									description: 'Exclusive perks and insider access',
+									name: t('app_locale_ClientHomePage_VIP_Services'),
+									description: t('app_locale_ClientHomePage_Exclusive_Perks'),
 								},
 							},
 						],
@@ -154,8 +152,8 @@ function ClientHomePage() {
 				<div className="container p-0 px-0">
 					<ItemsCardList
 						locationType="tour"
-						heading="Popular Tours"
-						subHeading="Discover exciting tours and experiences"
+						heading={t('app_locale_ClientHomePage_Popular_Tours')}
+						subHeading={t('app_locale_ClientHomePage_Discover_Exciting_Tours')}
 						currentPage={1}
 						layout="row"
 					/>
@@ -167,7 +165,7 @@ function ClientHomePage() {
 						locationType="city"
 						countryId="67e120b734623c9e568da348"
 						layout="row"
-						heading="Popular Cities"
+						heading={t('app_locale_ClientHomePage_Popular_Cities')}
 					/>
 					<ItemsCardList
 						locationType="place"

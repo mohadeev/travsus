@@ -4,6 +4,7 @@ import React, { FC, Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/solid'
 import ButtonPrimary from '@/shared/ButtonPrimary'
+import { useTranslations } from '@/lib/i18n'
 
 interface ModalSelectGuestsProps {
 	renderChildren?: (p: { openModal: () => void }) => React.ReactNode
@@ -15,6 +16,7 @@ const ModalSelectGuests: FC<ModalSelectGuestsProps> = ({
 	AcommodationAndTransport,
 }) => {
 	const [showModal, setShowModal] = useState(false)
+	const t = useTranslations("components_ModalSelectGuests")
 
 	function closeModal() {
 		setShowModal(false)
@@ -28,7 +30,7 @@ const ModalSelectGuests: FC<ModalSelectGuestsProps> = ({
 		return renderChildren ? (
 			renderChildren({ openModal })
 		) : (
-			<button onClick={openModal}>Select Date</button>
+			<button onClick={openModal}>{t('components_ModalSelectGuests_Select_Date')}</button>
 		)
 	}
 
@@ -83,7 +85,7 @@ const ModalSelectGuests: FC<ModalSelectGuestsProps> = ({
 												className="flex-shrink-0 font-semibold underline"
 												onClick={() => {}}
 											>
-												Clear data
+												{t('components_ModalSelectGuests_Clear_Data')}
 											</button>
 											<ButtonPrimary
 												sizeClass="px-6 py-3 !rounded-xl"
@@ -91,7 +93,7 @@ const ModalSelectGuests: FC<ModalSelectGuestsProps> = ({
 													closeModal()
 												}}
 											>
-												Save
+												{t('components_ModalSelectGuests_Save')}
 											</ButtonPrimary>
 										</div>
 									</>

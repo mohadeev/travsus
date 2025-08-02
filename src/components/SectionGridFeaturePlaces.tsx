@@ -5,6 +5,7 @@ import ButtonPrimary from '@/shared/ButtonPrimary'
 import HeaderFilter from './HeaderFilter'
 import StayCard from './StayCard'
 import StayCard2 from './StayCard2'
+import { useTranslations } from '@/lib/i18n'
 
 // OTHER DEMO WILL PASS PROPS
 const DEMO_DATA: StayDataType[] = DEMO_STAY_LISTINGS.filter((_, i) => i < 8)
@@ -29,6 +30,7 @@ const SectionGridFeaturePlaces: FC<SectionGridFeaturePlacesProps> = ({
 	tabs = ['New York', 'Tokyo', 'Paris', 'London'],
 	cardType = 'card2',
 }) => {
+	const t = useTranslations("components_SectionGridFeaturePlaces");
 	const renderCard = (stay: StayDataType) => {
 		let CardName = StayCard
 		switch (cardType) {
@@ -50,9 +52,9 @@ const SectionGridFeaturePlaces: FC<SectionGridFeaturePlacesProps> = ({
 		<div className="nc-SectionGridFeaturePlaces relative">
 			<HeaderFilter
 				tabActive={'New York'}
-				subHeading={subHeading}
+				subHeading={t('components_SectionGridFeaturePlaces_Popular_Places')}
 				tabs={tabs}
-				heading={heading}
+				heading={t('components_SectionGridFeaturePlaces_Featured_Places')}
 			/>
 			<div
 				className={`grid gap-6 sm:grid-cols-2 md:gap-8 lg:grid-cols-3 xl:grid-cols-4 ${gridClass}`}
@@ -60,7 +62,7 @@ const SectionGridFeaturePlaces: FC<SectionGridFeaturePlacesProps> = ({
 				{stayListings.map((stay) => renderCard(stay))}
 			</div>
 			<div className="mt-16 flex items-center justify-center">
-				<ButtonPrimary loading>Show me more</ButtonPrimary>
+				<ButtonPrimary loading>{t('components_SectionGridFeaturePlaces_Show_Me_More')}</ButtonPrimary>
 			</div>
 		</div>
 	)

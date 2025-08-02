@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import Avatar from "@/shared/Avatar";
 import { PostDataType } from "@/data/types";
 import Link from "next/link";
+import { useTranslations } from '@/lib/i18n';
 
 export interface PostCardMetaV2Props {
   className?: string;
@@ -17,6 +18,8 @@ const PostCardMetaV2: FC<PostCardMetaV2Props> = ({
   size = "normal",
 }) => {
   const { date, author, title } = meta;
+  const t = useTranslations("components_PostCardMetaV2");
+
   return (
     <div
       className={`nc-PostCardMetaV2 inline-flex items-center flex-wrap text-neutral-800 dark:text-neutral-200 ${
@@ -49,7 +52,7 @@ const PostCardMetaV2: FC<PostCardMetaV2Props> = ({
               {author.displayName}
             </span>
             <span className="text-neutral-500 dark:text-neutral-400 mx-[6px] font-medium">
-              ·
+              {t('components_PostCardMetaV2_Separator')}
             </span>
             <span className="text-neutral-500 dark:text-neutral-400 font-normal">
               {date}

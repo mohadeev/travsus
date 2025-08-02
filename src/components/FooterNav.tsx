@@ -16,6 +16,7 @@ import { useSession } from 'next-auth/react'
 import { useAuthAction } from '@/app/hooks/useAuthAction'
 import Avatar from '@/shared/Avatar'
 import { useSelector } from 'react-redux'
+import { useTranslations } from '@/lib/i18n'
 
 let WIN_PREV_POSITION = 0
 if (typeof window !== 'undefined') {
@@ -54,6 +55,7 @@ const NAV: NavItem[] = [
 ]
 
 const FooterNav = () => {
+	const t = useTranslations("components_FooterNav");
 	const containerRef = useRef<HTMLDivElement>(null)
 	const pathname = usePathname()
 	const Router = useRouter()
@@ -131,7 +133,7 @@ const FooterNav = () => {
 					<span className="mt-1 text-[11px] leading-none">
 						{user?.accountData?.firstname
 							? user.accountData.firstname.slice(0, 6) + '...'
-							: 'User'}
+							: t('components_FooterNav_User')}
 					</span>
 				</div>
 			)
@@ -146,7 +148,7 @@ const FooterNav = () => {
 				>
 					<item.icon className={`h-6 w-6`} />
 					<span className="mt-1 text-[11px] leading-none">
-						{item.name === 'Log in' ? 'Sign in' : item.name}
+						{item.name === 'Log in' ? t('components_FooterNav_Sign_In') : t(`components_FooterNav_${item.name.replace(' ', '_')}`)}
 					</span>
 				</button>
 			)
@@ -166,7 +168,7 @@ const FooterNav = () => {
 						isActive ? 'text-red-600' : ''
 					}`}
 				>
-					{item.name}
+					{t(`components_FooterNav_${item.name.replace(' ', '_')}`)}
 				</span>
 			</Link>
 		) : (
@@ -177,7 +179,7 @@ const FooterNav = () => {
 				}`}
 			>
 				<item.icon iconClassName="w-6 h-6" className={``} />
-				<span className="mt-1 text-[11px] leading-none">{item.name}</span>
+				<span className="mt-1 text-[11px] leading-none">{t(`components_FooterNav_${item.name.replace(' ', '_')}`)}</span>
 			</div>
 		)
 	}

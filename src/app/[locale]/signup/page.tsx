@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { useTranslations } from 'next-intl'
+import { useTranslations } from '@/lib/i18n'
 import SignUpClient from './SignUpClient'
 
 export const metadata: Metadata = {

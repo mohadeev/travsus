@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import { notFound } from 'next/navigation'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Skeleton } from '@/components/ui/skeleton'
+import { useTranslations } from '@/lib/i18n'
 
 function SkeletonLoading() {
 	return (
@@ -21,6 +22,7 @@ function SkeletonLoading() {
 }
 
 const VerifyEmailTokenPage: React.FC = () => {
+	const t = useTranslations('rights_verifyemail_token_page')
 	const [error, setError] = useState<string | null>(null)
 	const [success, setSuccess] = useState<string | null>(null)
 	const [isLoading, setIsLoading] = useState(true)
@@ -47,13 +49,13 @@ const VerifyEmailTokenPage: React.FC = () => {
 			const data = await response.json()
 
 			if (response.ok) {
-				setSuccess('Email verified successfully. Redirecting to login...')
+				setSuccess(t('Email_Verified_Successfully'))
 				setTimeout(() => router.push('/login'), 3000)
 			} else {
-				setError(data.error || 'An error occurred during email verification.')
+				setError(data.error || t('Error_Occurred_During_Verification'))
 			}
 		} catch (error) {
-			setError('An error occurred during email verification.')
+			setError(t('Error_Occurred_During_Verification'))
 		} finally {
 			setIsLoading(false)
 		}
@@ -71,7 +73,9 @@ const VerifyEmailTokenPage: React.FC = () => {
 		<div className="container mx-auto px-4 py-8">
 			<Card className="mx-auto max-w-md">
 				<CardHeader>
-					<CardTitle className="text-center">Verify Your Email</CardTitle>
+					<CardTitle className="text-center">
+						{t('Verify_Your_Email')}
+					</CardTitle>
 				</CardHeader>
 				<CardContent>
 					{error && (
@@ -86,7 +90,7 @@ const VerifyEmailTokenPage: React.FC = () => {
 					)}
 					{!error && !success && (
 						<div className="text-center">
-							<p>Verifying your email...</p>
+							<p>{t('Verifying_Your_Email')}</p>
 						</div>
 					)}
 				</CardContent>

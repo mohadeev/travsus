@@ -10,6 +10,7 @@ import DatePickerCustomDay from './DatePickerCustomDay'
 import { setSelectedDate } from '@/app/GlobalRedux/Features/bookingSlice/bookingSlice'
 import { useDispatch } from 'react-redux'
 import moment from 'moment'
+import { useTranslations } from '@/lib/i18n'
 
 interface ModalSelectDateProps {
 	renderChildren?: (p: { openModal: () => void }) => React.ReactNode
@@ -22,6 +23,7 @@ const ModalSelectDate: FC<ModalSelectDateProps> = ({
 	name,
 	duration = 3,
 }) => {
+	const t = useTranslations("components_ModalSelectDate");
 	const [showModal, setShowModal] = useState(false)
 
 	const [startDate, setStartDate] = useState<Date | null>(
@@ -31,14 +33,6 @@ const ModalSelectDate: FC<ModalSelectDateProps> = ({
 		new Date(moment().add(3, 'days').format('L')),
 	)
 
-	// const onChangeDate = (dates: [Date | null, Date | null]) => {
-	// 	const [start, end] = dates
-	// 	setStartDate(start)
-	// 	setEndDate(end)
-	// }
-
-	// FOR RESET ALL DATA WHEN CLICK CLEAR BUTTON
-	//
 	function closeModal() {
 		setShowModal(false)
 	}
@@ -51,7 +45,7 @@ const ModalSelectDate: FC<ModalSelectDateProps> = ({
 		return renderChildren ? (
 			renderChildren({ openModal })
 		) : (
-			<button onClick={openModal}>Select Date</button>
+			<button onClick={openModal}>{t('components_ModalSelectDate_Select_Date')}</button>
 		)
 	}
 	const dispatch = useDispatch()
@@ -111,7 +105,7 @@ const ModalSelectDate: FC<ModalSelectDateProps> = ({
 												<div className="flex flex-1 animate-[myblur_0.4s_ease-in-out] flex-col overflow-auto transition-opacity">
 													<div className="p-5">
 														<span className="block text-xl font-semibold sm:text-2xl">
-															{` When's your trip?`}
+															{t('components_ModalSelectDate_Whens_Your_Trip')}
 														</span>
 													</div>
 													<div className="relative z-10 flex flex-1">
@@ -151,7 +145,7 @@ const ModalSelectDate: FC<ModalSelectDateProps> = ({
 													onChangeDate([null, null])
 												}}
 											>
-												Clear dates
+												{t('components_ModalSelectDate_Clear_Dates')}
 											</button>
 											<ButtonPrimary
 												sizeClass="px-6 py-3 !rounded-xl"
@@ -159,7 +153,7 @@ const ModalSelectDate: FC<ModalSelectDateProps> = ({
 													closeModal()
 												}}
 											>
-												Save
+												{t('components_ModalSelectDate_Save')}
 											</ButtonPrimary>
 										</div>
 									</>

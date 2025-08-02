@@ -296,5 +296,320 @@
     "test_page_Plan_Your_Flexible_Trip": "柔軟な旅行を計画しましょう",
     "test_page_Simple_Booking_Process": "簡単な予約プロセス",
     "test_page_Travel_With_Ultimate_Flexibility": "究極の柔軟性で旅行する"
+  },
+  "app_locale_transtest_page": {
+    "app_locale_transtest_page_Translate_This_Page_To_Test_It": "このページをテストするために翻訳してください"
+  },
+  "components_AccountPass": {
+    "components_AccountPass_New_And_Confirm_Password_Not_Match": "新しいパスワードと確認用パスワードが一致しません",
+    "components_AccountPass_Failed_To_Update_Password": "パスワードの更新に失敗しました",
+    "components_AccountPass_Password_Updated_Successfully": "パスワードは正常に更新されました",
+    "components_AccountPass_Error_Updating_Password": "パスワードの更新エラー",
+    "components_AccountPass_Current_Password": "現在のパスワード",
+    "components_AccountPass_New_Password": "新しいパスワード",
+    "components_AccountPass_Confirm_Password": "パスワードを確認する",
+    "components_AccountPass_Updating": "更新中",
+    "components_AccountPass_Update_Password": "パスワードを更新する"
+  },
+  "components_AnimatedFeatures": {
+    "components_AnimatedFeatures_Personal_Travel_Assistant": "パーソナル旅行アシスタント",
+    "components_AnimatedFeatures_Personal_Travel_Assistant_Description": "AIによるパーソナルアシスタントと共に、これまでにない旅行体験をお楽しみください。リアルタイムの推奨事項、即時のサポート、お客様に合わせた旅程を提供します。",
+    "components_AnimatedFeatures_24_7_Personalized_Support": "24/7パーソナライズされたサポート",
+    "components_AnimatedFeatures_AI_Driven_Recommendations": "AIによる推奨",
+    "components_AnimatedFeatures_Real_Time_Itinerary_Updates": "リアルタイムの旅程更新",
+    "components_AnimatedFeatures_AI_Powered_Travel_Assistant": "AIによる旅行アシスタント",
+    "components_AnimatedFeatures_Smart_Booking": "スマートブッキング",
+    "components_AnimatedFeatures_Smart_Booking_Description": "複雑な予約プロセスにさようなら。当社のスマートブッキングシステムは最先端の技術を活用して、最適な取引とオプションを見つけます。",
+    "components_AnimatedFeatures_One_Tap_Booking_For_All_Your_Needs": "すべてのニーズに対するワンタップ予約",
+    "components_AnimatedFeatures_Price_Prediction_And_Alerts": "価格予測とアラート",
+    "components_AnimatedFeatures_Flexible_Cancellation_Options": "柔軟なキャンセルオプション",
+    "components_AnimatedFeatures_Smart_Booking_System": "スマートブッキングシステム"
+  },
+  "components_BtnLikeIcon": {
+    "components_BtnLikeIcon_Save": "保存"
+  },
+  "components_CarCard": {
+    "components_CarCard_Car": "車",
+    "components_CarCard_Ads": "広告",
+    "components_CarCard_Seats": "席",
+    "components_CarCard_Per_Day": "/日"
+  },
+  "components_CarCardH": {
+    "components_CarCardH_Ads": "広告",
+    "components_CarCardH_4_Seats": "4席",
+    "components_CarCardH_Auto_Gearbox": "自動ギアボックス",
+    "components_CarCardH_2_Bags": "2つのバッグ",
+    "components_CarCardH_Car_Owner": "車の所有者",
+    "components_CarCardH_Per_Day": "/日"
+  },
+  "components_CardAuthorBox": {
+    "components_CardAuthorBox_New_York": "ニューヨーク"
+  },
+  "components_CardCategory1": {
+    "components_CardCategory1_Articles": "記事"
+  },
+  "components_CardCategory3": {
+    "components_CardCategory3_Properties": "プロパティ"
+  },
+  "components_CardCategory4": {
+    "components_CardCategory4_Properties": "プロパティ",
+    "components_CardCategory4_Cars": "車",
+    "components_CardCategory4_Experiences": "経験"
+  },
+  "components_CardCategory5": {
+    "components_CardCategory5_Properties": "プロパティ"
+  },
+  "components_CardCategory6": {
+    "components_CardCategory6_Properties": "プロパティ"
+  },
+  "components_CardCategoryBox1": {
+    "components_CardCategoryBox1_Minutes_Drive": "19分のドライブ"
+  },
+  "components_Collection": {
+    "components_Collection_Show_More": "もっと見る"
+  },
+  "components_CollectionsGrid": {
+    "components_CollectionsGrid_Failed_To_Fetch_Collections": "コレクションの取得に失敗しました",
+    "components_CollectionsGrid_No_Collections_Found": "コレクションが見つかりません",
+    "components_CollectionsGrid_Error_Fetching_Collections": "コレクションの取得エラー：",
+    "components_CollectionsGrid_An_Unknown_Error_Occurred": "未知のエラーが発生しました",
+    "components_CollectionsGrid_No_Collections_Found_For_This_Location": "この場所のコレクションは見つかりませんでした。",
+    "components_CollectionsGrid_Scroll_Left": "左にスクロール",
+    "components_CollectionsGrid_Scroll_Right": "右にスクロール"
+  },
+  "components_CommentListing": {
+    "components_CommentListing_Review_In": " レビュー ",
+    "components_CommentListing_The_Lounge_And_Bar": "ラウンジ＆バー"
+  },
+  "components_CountryCard": {
+    "components_CountryCard_Country_Name": "国名"
+  },
+  "components_DatePickerCustomHeaderTwoMonth": {
+    "components_DatePickerCustomHeaderTwoMonth_Previous_Month": "前の月",
+    "components_DatePickerCustomHeaderTwoMonth_Next_Month": "次の月"
+  },
+  "components_ExperiencesCard": {
+    "components_ExperiencesCard_Ads": "広告",
+    "components_ExperiencesCard_Per_Person": "/人"
+  },
+  "components_ExperiencesCardH": {
+    "components_ExperiencesCardH_Ads": "広告",
+    "components_ExperiencesCardH_Making_A_Cup_Of_Coffee": "ベトナムでコーヒーを一杯作ることは、途中でほとんど自由な時間がないほどのプロセスです。しかし、それは一日を始めるのに特に複雑な作業ではありません",
+    "components_ExperiencesCardH_3_Hours": "3時間",
+    "components_ExperiencesCardH_Up_To_6_People": "最大6人",
+    "components_ExperiencesCardH_Hosted_By": "主催者",
+    "components_ExperiencesCardH_Per_Person": "/人"
+  },
+  "components_FlightCard": {
+    "components_FlightCard_Monday_August_12_10": "月曜日、8月12日 · 10:00",
+    "components_FlightCard_Tokyo_International_Airport": "東京国際空港 (HND)",
+    "components_FlightCard_Monday_August_16_10": "月曜日、8月16日 · 10:00",
+    "components_FlightCard_Singapore_International_Airport": "シンガポール国際空港 (SIN)",
+    "components_FlightCard_Trip_Time_7_Hours_45_Minutes": "所要時間：7時間45分",
+    "components_FlightCard_ANA_Business_Class_Boeing_787_NH_847": "ANA · ビジネスクラス · ボーイング787 · NH 847",
+    "components_FlightCard_Transit_Time_15_Hours_45_Minutes_Bangkok": "乗継時間：15時間45分 - バンコク (BKK)",
+    "components_FlightCard_Nonstop": "直行",
+    "components_FlightCard_1_Stop": "1回の停止",
+    "components_FlightCard_Round_Trip": "往復"
+  },
+  "components_FooterNav": {
+    "components_FooterNav_Travsus": "Travsus",
+    "components_FooterNav_Wishlists": "ウィッシュリスト",
+    "components_FooterNav_Log_in": "ログイン",
+    "components_FooterNav_Menu": "メニュー",
+    "components_FooterNav_User": "ユーザー",
+    "components_FooterNav_Sign_In": "サインイン"
+  },
+  "components_GallerySlider": {
+    "components_GallerySlider_Listing_Card_Gallery": "リスティングカードギャラリー"
+  },
+  "components_GroupToursList": {
+    "components_GroupToursList_Hot_Group_Tours": "注目の団体ツアー"
+  },
+  "components_HeaderFilter": {
+    "components_HeaderFilter_View_All": "すべて表示"
+  },
+  "components_ItemsCardList": {
+    "components_ItemsCardList_No_Tours_Found": "ツアーが見つかりません",
+    "components_ItemsCardList_Error_Fetching_Tours": "ツアーの取得エラー：",
+    "components_ItemsCardList_Failed_To_Load_Tours": "ツアーの読み込みに失敗しました",
+    "components_ItemsCardList_Failed_To_Fetch_Locations": "場所の取得に失敗しました",
+    "components_ItemsCardList_Unknown_City": "不明な都市",
+    "components_ItemsCardList_No_Locations_Found": "場所が見つかりません",
+    "components_ItemsCardList_Error_Fetching_Locations": "場所の取得エラー：",
+    "components_ItemsCardList_Failed_To_Load_Locations": "場所の読み込みに失敗しました",
+    "components_ItemsCardList_Popular_Countries": "人気のある国",
+    "components_ItemsCardList_Cities_In": "都市：",
+    "components_ItemsCardList_Popular_Cities": "人気の都市",
+    "components_ItemsCardList_Places_In": "場所：",
+    "components_ItemsCardList_Places_To_Visit": "訪れるべき場所",
+    "components_ItemsCardList_Popular_Tours": "人気のツアー",
+    "components_ItemsCardList_Popular_Destinations": "人気の目的地",
+    "components_ItemsCardList_Explore_Top_Countries": "世界中のトップ国を探索する",
+    "components_ItemsCardList_Discover_Amazing_Cities": "訪れるべき素晴らしい都市を発見する",
+    "components_ItemsCardList_Must_See_Attractions": "見逃せないアトラクションと体験",
+    "components_ItemsCardList_Scroll_Left": "左にスクロール",
+    "components_ItemsCardList_Scroll_Right": "右にスクロール"
+  },
+  "components_LikeSaveBtns": {
+    "components_LikeSaveBtns_Tour_Link_Copied": "🎉 ツアーリンクをコピーしました！",
+    "components_LikeSaveBtns_Copy_Failed": "😕 おっと！コピーに失敗しました",
+    "components_LikeSaveBtns_Email_Subject": "🌍 Travsusから素晴らしいツアーをご覧ください！",
+    "components_LikeSaveBtns_Email_Body": "こんにちは！👋 この素晴らしいツアーを見つけて、あなたもきっと気に入ると思いました！🏞️✈️\n\nこちらをご覧ください：${url}\n\n次の冒険を計画しましょう！🗺️🧳",
+    "components_LikeSaveBtns_Share_Tour": "ツアーを共有する",
+    "components_LikeSaveBtns_Copy_Tour_Link": "🔗 ツアーリンクをコピーする",
+    "components_LikeSaveBtns_Email_Tour": "✉️ ツアーをメールする",
+    "components_LikeSaveBtns_Save_Tour": "ツアーを保存する"
+  },
+  "components_MapContainer": {
+    "components_MapContainer_Search_As_I_Move_The_Map": "マップを移動するときに検索する"
+  },
+  "components_ModalSelectDate": {
+    "components_ModalSelectDate_Select_Date": "日付を選択",
+    "components_ModalSelectDate_Whens_Your_Trip": " あなたの旅行はいつですか？",
+    "components_ModalSelectDate_Clear_Dates": "日付をクリア",
+    "components_ModalSelectDate_Save": "保存"
+  },
+  "components_ModalSelectGuests": {
+    "components_ModalSelectGuests_Select_Date": "日付を選択",
+    "components_ModalSelectGuests_Clear_Data": "データをクリア",
+    "components_ModalSelectGuests_Save": "保存"
+  },
+  "components_PostCardMetaV2": {
+    "components_PostCardMetaV2_Separator": "·"
+  },
+  "components_PropertyCardH": {
+    "components_PropertyCardH_6_Beds": "6つのベッド",
+    "components_PropertyCardH_3_Baths": "3つのバス",
+    "components_PropertyCardH_1200_Sq_Fit": "1200 平方フィット",
+    "components_PropertyCardH_4_Network": "4 ネットワーク",
+    "components_PropertyCardH_Family": "家族",
+    "components_PropertyCardH_Ads": "広告"
+  },
+  "components_SaleOffBadge": {
+    "components_SaleOffBadge_Desc": "本日10％オフ"
+  },
+  "components_SectionBecomeAnAuthor": {
+    "components_SectionBecomeAnAuthor_Why_Did_You_Choose_Us": "なぜ私たちを選んだのですか？",
+    "components_SectionBecomeAnAuthor_Accompanying_Us_You_Have_A_Trip": "私たちと一緒に、あなたは経験豊富な旅を持っています。Travsusでは、宿泊施設、リゾートヴィラ、ホテル、個人の家、アパートメントの予約が迅速、便利で簡単になります。",
+    "components_SectionBecomeAnAuthor_Become_An_Author": "著者になる"
+  },
+  "components_SectionClientSay": {
+    "components_SectionClientSay_Lets_See_What_People_Think": "Travsusについて人々が何を考えているか見てみましょう",
+    "components_SectionClientSay_Good_News_From_Far_Away": "遠くからの良いニュース"
+  },
+  "components_SectionGridAuthorBox": {
+    "components_SectionGridAuthorBox_Rating_Based_On_Customer_Reviews": "顧客のレビューに基づく評価",
+    "components_SectionGridAuthorBox_Top_10_Author_Of_The_Month": "月間トップ10著者",
+    "components_SectionGridAuthorBox_Show_Me_More": "もっと見せてください",
+    "components_SectionGridAuthorBox_Become_A_Host": "ホストになる"
+  },
+  "components_SectionGridCategoryBox": {
+    "components_SectionGridCategoryBox_Discover_Great_Places": "あなたの住んでいる近くの素晴らしい場所を発見してください",
+    "components_SectionGridCategoryBox_Explore_Nearby": "近くを探索する"
+  },
+  "app_locale_CardImage": {
+    "app_locale_CardImage_Hello": "こんにちは",
+    "app_locale_CardImage_Age": "年齢"
+  },
+  "app_locale_ClientHomePage": {
+    "app_locale_ClientHomePage_Premium_Travel_Experiences": "専門家の計画と独占特典を備えたプレミアムな旅行体験。",
+    "app_locale_ClientHomePage_Your_Journey_You_Deserve": "あなたの旅、あなたは最高のものを受けるべきです",
+    "app_locale_ClientHomePage_Best_Price_Guarantee": "最低価格保証",
+    "app_locale_ClientHomePage_No_Hidden_Fees": "隠れた手数料はありません",
+    "app_locale_ClientHomePage_5_Star_Service_Quality": "5つ星のサービス品質",
+    "app_locale_ClientHomePage_Expert_Travel_Planning": "豪華な体験と独占特典を備えた専門家による旅行計画。",
+    "app_locale_ClientHomePage_Worldwide": "世界中",
+    "app_locale_ClientHomePage_Travel_Services": "旅行サービス",
+    "app_locale_ClientHomePage_Personalized_Travel_Planning": "専門家によるパーソナライズされた旅行計画",
+    "app_locale_ClientHomePage_Luxury_Accommodations": "豪華な宿泊施設",
+    "app_locale_ClientHomePage_Premium_Hotels": "プレミアムホテルと独占物件",
+    "app_locale_ClientHomePage_VIP_Services": "VIPサービス",
+    "app_locale_ClientHomePage_Exclusive_Perks": "独占特典とインサイダーアクセス",
+    "app_locale_ClientHomePage_Popular_Tours": "人気のツアー",
+    "app_locale_ClientHomePage_Discover_Exciting_Tours": "エキサイティングなツアーや体験を発見",
+    "app_locale_ClientHomePage_Popular_Cities": "人気の都市"
+  },
+  "app_locale_featurenotificationform": {
+    "app_locale_featurenotificationform_Coming_Soon": "近日公開",
+    "app_locale_featurenotificationform_Enter_Your_Email_Address": "あなたのメールアドレスを入力してください",
+    "app_locale_featurenotificationform_Submitting": "送信中...",
+    "app_locale_featurenotificationform_Notify_Me": "通知する",
+    "app_locale_featurenotificationform_By_Signing_Up": "サインアップすることで、私たちの",
+    "app_locale_featurenotificationform_Terms_And_Conditions": "利用規約"
+  },
+  "app_locale_newslettermodal": {
+    "app_locale_newslettermodal_Sign_Up_Today": "今日登録する",
+    "app_locale_newslettermodal_Its_Easy_And_Free": "簡単で無料です",
+    "app_locale_newslettermodal_Email_Address": "メールアドレス",
+    "app_locale_newslettermodal_Enter_Your_Email_Address": "メールアドレスを入力してください（最大60文字）",
+    "app_locale_newslettermodal_Select_Newsletter_Types": "ニュースレターの種類を選択してください（{selectedTypes.length} つ選択済み）",
+    "app_locale_newslettermodal_Subscribing": "購読中...",
+    "app_locale_newslettermodal_Sign_Up": "登録する",
+    "app_locale_newslettermodal_By_Signing_Up_I_Agree_To_The": "登録することで、私は以下の",
+    "app_locale_newslettermodal_Terms_And_Conditions": "利用規約に同意します"
+  },
+  "app_locale_referralprogrammodal": {
+    "app_locale_referralprogrammodal_Earn": "獲得",
+    "app_locale_referralprogrammodal_Per_Month": "毎月",
+    "app_locale_referralprogrammodal_Join_Our_Referral_Program": "私たちの紹介プログラムに参加して、新規顧客を私たちのプラットフォームに紹介することで、最大で月€2500のコミッションを獲得します。紹介する人数が多ければ多いほど、獲得できる金額も増えます！",
+    "app_locale_referralprogrammodal_Enter_Your_Email_Address": "あなたのメールアドレスを入力してください",
+    "app_locale_referralprogrammodal_Submitting": "送信中...",
+    "app_locale_referralprogrammodal_Join_Program": "プログラムに参加する",
+    "app_locale_referralprogrammodal_By_Signing_Up": "サインアップすることで、あなたは私たちの",
+    "app_locale_referralprogrammodal_Terms_And_Conditions": "利用規約"
+  },
+  "app_locale_TestAnything": {
+    "app_locale_TestAnything_Test_Anything": "何でもテスト"
+  },
+  "app_locale_continent_country_region_city_category_name_servicedetail_SectionDateRange": {
+    "app_locale_continent_country_region_city_category_name_servicedetail_SectionDateRange_Availability": "利用可能性",
+    "app_locale_continent_country_region_city_category_name_servicedetail_SectionDateRange_Prices_May_Increase": "週末や祝日には価格が上がる可能性があります"
+  },
+  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer": {
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Arrival_At_Marrakech": "マラケシュ到着",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Visit_Jemaa_El_Fnaa": "ジャマ・エル・フナを訪れる",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Explore_Bahia_Palace": "バヒア宮殿を探索する",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Day_Trip_To_Ouzoud_Falls": "ウズド滝への日帰り旅行",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Travel_To_Essaouira": "エッサウィラへの旅行",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Beach_Day_Seafood_Dinner": "ビーチデイ＆シーフードディナー",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Visit_Ait_Ben_Haddou": "アイト・ベン・ハドゥを訪れる",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Cross_The_Atlas_Mountains": "アトラス山脈を越える",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Explore_Merzouga_Desert": "メルズーガ砂漠を探索する",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Camel_Trek_At_Sunset": "夕日のラクダトレッキング",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Visit_Fes_Medina": "フェズ・メディナを訪れる",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Explore_Fes_Tanneries": "フェズのタンナリーを探索する",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Shopping_In_Fes_Souks": "フェズのスークでのショッピング",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Departure_From_Fes": "フェズからの出発",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_See_More": "もっと見る",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Show_Less": "表示を減らす"
+  },
+  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_FAQProps": {
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_FAQProps_Frequently_Asked_Questions": "よくある質問"
+  },
+  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput": {
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Guests": "ゲスト",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Add_Guests": "ゲストを追加",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Adults": "大人",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Ages_13_Or_Above": "13歳以上",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Children": "子供",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Ages_1_13": "1歳～13歳"
+  },
+  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_Included": {
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_Included_Included": "含まれています",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_Included_Everything_Included_In_Your_Package": "パッケージに含まれるすべて"
+  },
+  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_LineItemsBreakdown": {
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_LineItemsBreakdown_Grand_Total": "総計"
+  },
+  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ListingExperiencesDetailsImages": {
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ListingExperiencesDetailsImages_Show_All_Photos": "すべての写真を表示"
+  },
+  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page": {
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page_Overview": "概要",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page_Host_Information": "ホスト情報",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page_Reviews": "レビュー",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page_reviews": "レビュー",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page_Things_to_know": "知っておくべきこと"
   }
 }

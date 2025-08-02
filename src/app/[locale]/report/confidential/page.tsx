@@ -1,4 +1,4 @@
-import { useTranslations } from 'next-intl'
+import { useTranslations } from '@/lib/i18n'
 import { WhistleblowerChannel } from '@/components/WhistleblowerChannel/WhistleblowerChannel'
 
 // export const metadata = {

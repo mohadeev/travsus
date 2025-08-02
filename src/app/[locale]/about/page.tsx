@@ -14,7 +14,7 @@ import {
 } from 'lucide-react'
 import { useRef } from 'react'
 import AnimatedFeatures from '@/components/AnimatedFeatures'
-import { useTranslations } from 'next-intl'
+import { useTranslations } from '@/lib/i18n'
 
 function AnimatedSection({ children, className }) {
 	const ref = useRef(null)

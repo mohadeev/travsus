@@ -16,7 +16,7 @@ import SocialsList from '@/shared/SocialsList'
 import handelFetchAllBookings from '@/utils/api-utils/handelFetchAllBookings'
 import { useSelector } from 'react-redux'
 import moment from 'moment'
-import { useTranslations } from 'next-intl'
+import { useTranslations } from '@/lib/i18n'
 
 export interface AuthorPageProps {}
 

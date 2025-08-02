@@ -8,8 +8,10 @@ import { useSearchParams } from 'next/navigation'
 import React, { useState, useRef, useEffect } from 'react'
 import { Motion, spring } from 'react-motion'
 import { useDispatch } from 'react-redux'
+import { useTranslations } from '@/lib/i18n'
 
 const LikeSaveBtns = ({ liked }: any) => {
+	const t = useTranslations("components_LikeSaveBtns");
 	const [isDropdownOpen, setIsDropdownOpen] = useState(false)
 	const [copySuccess, setCopySuccess] = useState('')
 	const timeoutRef = useRef<NodeJS.Timeout | null>(null)
@@ -23,21 +25,21 @@ const LikeSaveBtns = ({ liked }: any) => {
 	const handleCopyLink = async () => {
 		try {
 			await navigator.clipboard.writeText(window.location.href)
-			setCopySuccess('🎉 Tour link copied!')
+			setCopySuccess(t('components_LikeSaveBtns_Tour_Link_Copied'))
 			if (timeoutRef.current) clearTimeout(timeoutRef.current)
 			timeoutRef.current = setTimeout(() => setCopySuccess(''), 2000)
 		} catch (err) {
-			setCopySuccess('😕 Oops! Copy failed')
+			setCopySuccess(t('components_LikeSaveBtns_Copy_Failed'))
 		}
 		setIsDropdownOpen(false)
 	}
 
 	const handleEmail = () => {
 		const subject = encodeURIComponent(
-			'🌍 Check out this amazing tour from Travsus!',
+			t('components_LikeSaveBtns_Email_Subject'),
 		)
 		const body = encodeURIComponent(
-			`Hey there! 👋 I found this incredible tour and thought you'd love it! 🏞️✈️\n\nTake a look: ${window.location.href}\n\nLet's plan our next adventure! 🗺️🧳`,
+			t('components_LikeSaveBtns_Email_Body', { url: window.location.href }),
 		)
 		window.location.href = `mailto:?subject=${subject}&body=${body}`
 		setIsDropdownOpen(false)
@@ -100,7 +102,7 @@ const LikeSaveBtns = ({ liked }: any) => {
 								d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"
 							/>
 						</svg>
-						<span className="ml-2.5 hidden sm:block">Share Tour</span>
+						<span className="ml-2.5 hidden sm:block">{t('components_LikeSaveBtns_Share_Tour')}</span>
 					</span>
 					<Motion
 						style={{
@@ -129,14 +131,14 @@ const LikeSaveBtns = ({ liked }: any) => {
 											className="block w-full rounded-md px-4 py-2 text-left text-sm text-neutral-700 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-300 dark:hover:bg-neutral-700 dark:hover:text-neutral-100"
 											role="menuitem"
 										>
-											🔗 Copy Tour Link
+											{t('components_LikeSaveBtns_Copy_Tour_Link')}
 										</button>
 										<button
 											onClick={handleEmail}
 											className="block w-full rounded-md px-4 py-2 text-left text-sm text-neutral-700 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-300 dark:hover:bg-neutral-700 dark:hover:text-neutral-100"
 											role="menuitem"
 										>
-											✉️ Email Tour
+											{t('components_LikeSaveBtns_Email_Tour')}
 										</button>
 									</div>
 								</div>
@@ -160,9 +162,8 @@ const LikeSaveBtns = ({ liked }: any) => {
 					)}
 					<span
 						className="ml-2.5 hidden sm:block"
-						// onClick={handleAddToWishList}
 					>
-						Save Tour
+						{t('components_LikeSaveBtns_Save_Tour')}
 					</span>
 				</span>
 			</div>

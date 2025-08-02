@@ -1,5 +1,6 @@
 import { formatCurrency } from '@/utils/formatCurrency'
 import type React from 'react'
+import { useTranslations } from '@/lib/i18n'
 
 // Define the type for each line item
 interface LineItem {
@@ -20,6 +21,8 @@ interface LineItemsBreakdownProps {
 const LineItemsBreakdown: React.FC<LineItemsBreakdownProps> = ({
 	lineItems,
 }) => {
+	const t = useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_LineItemsBreakdown");
+
 	// Calculate the total amount for all line items
 	const filteredLineItems = lineItems?.filter(
 		({ includeInTotal }) => includeInTotal === true,
@@ -45,7 +48,7 @@ const LineItemsBreakdown: React.FC<LineItemsBreakdownProps> = ({
 
 			{/* Grand Total */}
 			<div className="flex justify-between py-1 font-bold">
-				<div>Grand Total</div>
+				<div>{t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_LineItemsBreakdown_Grand_Total')}</div>
 				<div>{formatCurrency(totalAmount)}</div>
 			</div>
 		</div>

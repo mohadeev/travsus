@@ -5,7 +5,7 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import { notFound } from 'next/navigation'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Skeleton } from '@/components/ui/skeleton'
-import { useTranslations } from 'next-intl'
+import { useTranslations } from '@/lib/i18n'
 
 function SkeletonLoading() {
 	return (

@@ -1,4 +1,4 @@
-import { useTranslations } from 'next-intl'
+import { useTranslations } from '@/lib/i18n'
 import { CreateCompanyForm } from '@/components/dashboard/create-company-form'
 
 export default function CreateCompanyPage() {

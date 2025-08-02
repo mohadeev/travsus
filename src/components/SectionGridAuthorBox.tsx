@@ -1,3 +1,4 @@
+import { useTranslations } from '@/lib/i18n';
 import CardAuthorBox from "@/components/CardAuthorBox";
 import CardAuthorBox2 from "@/components/CardAuthorBox2";
 import Heading from "@/shared/Heading";
@@ -22,13 +23,15 @@ const SectionGridAuthorBox: FC<SectionGridAuthorBoxProps> = ({
   boxCard = "box1",
   gridClassName = "grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 ",
 }) => {
+  const t = useTranslations("components_SectionGridAuthorBox");
+  
   return (
     <div
       className={`nc-SectionGridAuthorBox relative ${className}`}
       data-nc-id="SectionGridAuthorBox"
     >
-      <Heading desc="Rating based on customer reviews" isCenter>
-        Top 10 author of the month
+      <Heading desc={t('components_SectionGridAuthorBox_Rating_Based_On_Customer_Reviews')} isCenter>
+        {t('components_SectionGridAuthorBox_Top_10_Author_Of_The_Month')}
       </Heading>
       <div className={`grid gap-6 md:gap-8 ${gridClassName}`}>
         {authors.map((author, index) =>
@@ -44,8 +47,8 @@ const SectionGridAuthorBox: FC<SectionGridAuthorBoxProps> = ({
         )}
       </div>
       <div className="mt-16 flex flex-col sm:flex-row justify-center space-y-3 sm:space-y-0 sm:space-x-5">
-        <ButtonSecondary loading>Show me more </ButtonSecondary>
-        <ButtonPrimary>Become a host</ButtonPrimary>
+        <ButtonSecondary loading>{t('components_SectionGridAuthorBox_Show_Me_More')}</ButtonSecondary>
+        <ButtonPrimary>{t('components_SectionGridAuthorBox_Become_A_Host')}</ButtonPrimary>
       </div>
     </div>
   );

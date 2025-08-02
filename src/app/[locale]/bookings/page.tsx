@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { useTranslations } from 'next-intl'
+import { useTranslations } from '@/lib/i18n'
 // import { BookingsList } from './bookings-list'
 import handelFetchAllBookings from '@/utils/api-utils/handelFetchAllBookings'
 import { BookingsList } from './bookings-list'

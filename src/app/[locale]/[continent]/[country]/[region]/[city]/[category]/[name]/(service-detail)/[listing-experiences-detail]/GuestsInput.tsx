@@ -5,6 +5,7 @@ import { Popover, Transition } from '@headlessui/react'
 import NcInputNumber from '@/components/NcInputNumber'
 import { UserPlusIcon } from '@heroicons/react/24/outline'
 import ClearDataButton from '@/app/(client-components)/(HeroSearchForm)/ClearDataButton'
+import { useTranslations } from '@/lib/i18n'
 
 export interface GuestsObject {
 	guestAdults: number
@@ -22,6 +23,7 @@ const GuestsInput: FC<GuestsInputProps> = ({
 	onChange,
 	defaultValue,
 }) => {
+	const t = useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput");
 	const totalGuests = defaultValue.guestAdults + defaultValue.guestChildren
 
 	const handleChangeData = (value: number, type: keyof GuestsObject) => {
@@ -53,10 +55,10 @@ const GuestsInput: FC<GuestsInputProps> = ({
 							</div>
 							<div className="flex-grow">
 								<span className="block font-semibold xl:text-lg">
-									{totalGuests || ''} Guests
+									{totalGuests || ''} {t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Guests')}
 								</span>
 								<span className="mt-1 block text-sm font-light leading-none text-neutral-400">
-									{totalGuests ? 'Guests' : 'Add guests'}
+									{totalGuests ? t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Guests') : t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Add_Guests')}
 								</span>
 							</div>
 
@@ -82,8 +84,8 @@ const GuestsInput: FC<GuestsInputProps> = ({
 								onChange={(value) =>
 									onChange(handleChangeData(value, 'guestAdults'))
 								}
-								label="Adults"
-								desc="Ages 13 or above"
+								label={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Adults')}
+								desc={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Ages_13_Or_Above')}
 							/>
 							<NcInputNumber
 								className="mt-6 w-full"
@@ -91,8 +93,8 @@ const GuestsInput: FC<GuestsInputProps> = ({
 								onChange={(value) =>
 									onChange(handleChangeData(value, 'guestChildren'))
 								}
-								label="Children"
-								desc="Ages 1–13"
+								label={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Children')}
+								desc={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Ages_1_13')}
 							/>
 						</Popover.Panel>
 					</Transition>

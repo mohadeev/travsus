@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { useTranslations } from 'next-intl'
+import { useTranslations } from '@/lib/i18n'
 import { DashboardShell } from '@/components/dashboard/shell'
 import { DashboardHeader } from '@/components/dashboard/header'
 import { Button } from '@/components/ui/button'

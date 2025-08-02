@@ -14,6 +14,7 @@ import type { Route } from '@/routers/types'
 import { updateLineItemsLogic } from '@/app/api/updateLineItems/updateLineItemsLogic'
 import { formatCurrency } from '@/utils/formatCurrency'
 import slugify from '@/utils/slugify'
+import { useTranslations } from '@/lib/i18n'
 
 export interface ExperiencesCardProps {
 	className?: string
@@ -30,6 +31,7 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 	data = DEMO_DATA,
 	ratioClass = 'aspect-w-3 aspect-h-3',
 }) => {
+	const t = useTranslations("components_ExperiencesCard");
 	const {
 		images: galleryImgs,
 		address,
@@ -130,7 +132,7 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 					</div>
 
 					<div className="flex items-center">
-						{isAds && <Badge name="ADS" color="green" className="mr-2" />}
+						{isAds && <Badge name={t('components_ExperiencesCard_Ads')} color="green" className="mr-2" />}
 						<h2
 							className={`font-medium capitalize leading-tight ${size === 'default' ? 'text-base' : 'text-base'}`}
 						>
@@ -143,7 +145,7 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 						{formatCurrency(priceStart)}
 						{size === 'default' && (
 							<span className="ml-1 text-sm font-normal text-neutral-500 dark:text-neutral-400">
-								/person
+								{t('components_ExperiencesCard_Per_Person')}
 							</span>
 						)}
 					</span>

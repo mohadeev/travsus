@@ -4,11 +4,12 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { ChevronRight, Shield } from 'lucide-react'
 import AccountPass from '@/components/AccountPass'
-// import AccountPass from '@/components/account-settingsPass'
+import { useTranslations } from '@/lib/i18n'
 
 export default function LoginAndSecurityPage() {
 	const [activeTab, setActiveTab] = useState('login')
 	const [showPasswordUpdate, setShowPasswordUpdate] = useState(false)
+	const t = useTranslations('LoginSecurityPage')
 
 	return (
 		<div className="mx-auto max-w-4xl px-6 py-8">
@@ -18,14 +19,14 @@ export default function LoginAndSecurityPage() {
 					href="/account-settings"
 					className="text-gray-600 hover:underline"
 				>
-					Account
+					{t('account')}
 				</Link>
 				<ChevronRight className="mx-2 h-4 w-4 text-gray-500" />
-				<span className="text-gray-800">Login & security</span>
+				<span className="text-gray-800">{t('login_security')}</span>
 			</div>
 
 			{/* Page Title */}
-			<h1 className="mb-8 text-3xl font-semibold">Login & security</h1>
+			<h1 className="mb-8 text-3xl font-semibold">{t('login_security')}</h1>
 
 			{/* Tabs */}
 			<div className="mb-8 border-b border-gray-200">
@@ -38,7 +39,7 @@ export default function LoginAndSecurityPage() {
 						}`}
 						onClick={() => setActiveTab('login')}
 					>
-						LOGIN
+						{t('login')}
 					</button>
 					<button
 						className={`px-1 pb-4 ${
@@ -48,7 +49,7 @@ export default function LoginAndSecurityPage() {
 						}`}
 						onClick={() => setActiveTab('shared')}
 					>
-						SHARED ACCESS
+						{t('shared_access')}
 					</button>
 				</div>
 			</div>
@@ -56,22 +57,22 @@ export default function LoginAndSecurityPage() {
 			{activeTab === 'login' ? (
 				<div className="space-y-8">
 					<div>
-						<h2 className="mb-6 text-2xl font-medium">Login</h2>
+						<h2 className="mb-6 text-2xl font-medium">{t('login')}</h2>
 
 						{/* Password Section */}
 						<div className="border-b border-gray-200 py-6">
 							<div className="flex items-center justify-between">
 								<div>
-									<h3 className="font-medium">Password</h3>
+									<h3 className="font-medium">{t('password')}</h3>
 									<p className="mt-1 text-sm text-gray-500">
-										Last updated 2 years ago
+										{t('last_updated')}
 									</p>
 								</div>
 								<button
 									onClick={() => setShowPasswordUpdate(!showPasswordUpdate)}
 									className="font-medium text-black underline"
 								>
-									{showPasswordUpdate ? 'Cancel' : 'Update'}
+									{showPasswordUpdate ? t('cancel') : t('update')}
 								</button>
 							</div>
 
@@ -84,16 +85,16 @@ export default function LoginAndSecurityPage() {
 
 						{/* Account Section */}
 						<div className="py-6">
-							<h2 className="mb-6 text-2xl font-medium">Account</h2>
+							<h2 className="mb-6 text-2xl font-medium">{t('account')}</h2>
 							<div className="flex items-center justify-between">
 								<div>
-									<h3 className="font-medium">Deactivate your account</h3>
+									<h3 className="font-medium">{t('deactivate_account')}</h3>
 								</div>
 								<Link
 									href="/account-settings-delete/reasons"
 									className="font-medium text-red-500 underline"
 								>
-									Deactivate
+									{t('deactivate')}
 								</Link>
 							</div>
 						</div>
@@ -101,13 +102,10 @@ export default function LoginAndSecurityPage() {
 				</div>
 			) : (
 				<div className="space-y-8">
-					<h2 className="mb-6 text-2xl font-medium">Shared Access</h2>
-					<p className="text-gray-600">
-						You can give trusted friends and family members access to your
-						travsus account. Learn more about shared access.
-					</p>
+					<h2 className="mb-6 text-2xl font-medium">{t('shared_access')}</h2>
+					<p className="text-gray-600">{t('shared_access_description')}</p>
 					<button className="rounded-lg border border-black px-6 py-2 font-medium hover:bg-gray-100">
-						Add trusted person
+						{t('add_trusted_person')}
 					</button>
 				</div>
 			)}
@@ -120,23 +118,20 @@ export default function LoginAndSecurityPage() {
 					</div>
 					<div>
 						<h2 className="mb-2 text-lg font-semibold">
-							Keeping your account secure
+							{t('account_security_title')}
 						</h2>
 						<p className="mb-4 text-gray-600">
-							We regularly review accounts to make sure they're secure as
-							possible. We'll also let you know if there's more we can do to
-							increase the security of your account.
+							{t('account_security_description')}
 						</p>
 						<p className="text-gray-600">
-							Learn about safety tips for{' '}
+							{t('safety_tips')}{' '}
 							<Link href="#" className="font-medium text-black underline">
-								guests
+								{t('guests')}
 							</Link>{' '}
-							and{' '}
+							{t('and')}{' '}
 							<Link href="#" className="font-medium text-black underline">
-								hosts
+								{t('hosts')}
 							</Link>
-							.
 						</p>
 					</div>
 				</div>

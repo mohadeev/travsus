@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux'
 import { SkeletonLoader } from './SkeletonLoader'
 import Image from 'next/image'
 import { Route } from 'next'
+import { useTranslations } from '@/lib/i18n'
 
 export interface ListingExperiencesDetailsImagesProps {}
 
@@ -16,6 +17,7 @@ const ListingExperiencesDetailsImages: FC<
 	const router = useRouter()
 	const searchParams = useSearchParams()
 	const pathname = usePathname()
+	const t = useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ListingExperiencesDetailsImages");
 
 	const handleOpenModalImageGallery = (photoId: number) => {
 		const current = new URLSearchParams(Array.from(searchParams.entries()))
@@ -102,7 +104,7 @@ const ListingExperiencesDetailsImages: FC<
 						>
 							<Squares2X2Icon className="h-5 w-5" />
 							<span className="ml-2 text-sm font-medium text-neutral-800">
-								Show all photos
+								{t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ListingExperiencesDetailsImages_Show_All_Photos')}
 							</span>
 						</div>
 					</div>

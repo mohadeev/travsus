@@ -4,6 +4,7 @@ import { StarIcon } from "@heroicons/react/24/solid";
 import Avatar from "@/shared/Avatar";
 import Badge from "@/shared/Badge";
 import Link from "next/link";
+import { useTranslations } from '@/lib/i18n';
 
 export interface CardAuthorBoxProps {
   className?: string;
@@ -17,6 +18,8 @@ const CardAuthorBox: FC<CardAuthorBoxProps> = ({
   index,
 }) => {
   const { displayName, href = "/", avatar, starRating } = author;
+  const t = useTranslations("components_CardAuthorBox");
+  
   return (
     <Link
       href={href}
@@ -42,7 +45,7 @@ const CardAuthorBox: FC<CardAuthorBoxProps> = ({
         <span
           className={`block mt-1.5 text-sm text-neutral-500 dark:text-neutral-400`}
         >
-          New York
+          {t('components_CardAuthorBox_New_York')}
         </span>
       </div>
       <div className="py-2 px-5 mt-4 bg-neutral-100 dark:bg-neutral-800 rounded-full flex items-center justify-center ">

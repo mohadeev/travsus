@@ -12,7 +12,7 @@ import {
 	MapPin,
 } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
-import { useTranslations } from 'next-intl'
+import { useTranslations } from '@/lib/i18n'
 
 // Define the type for our settings items
 type SettingItem = {

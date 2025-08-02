@@ -14,7 +14,7 @@ import {
 } from 'lucide-react'
 import { useRef } from 'react'
 import AnimatedFeatures from '@/components/AnimatedFeatures'
-import { useTranslations } from 'next-intl'
+import { useTranslations } from '@/lib/i18n'
 
 function AnimatedSection({ children, className }) {
 	const ref = useRef(null)
@@ -35,7 +35,7 @@ function AnimatedSection({ children, className }) {
 }
 
 export default function PageAbout() {
-	const t = useTranslations('about')
+	const t = useTranslations('about_page')
 
 	return (
 		<div className="relative overflow-hidden bg-white">
@@ -49,7 +49,7 @@ export default function PageAbout() {
 							transition={{ duration: 0.8, delay: 0.2 }}
 							className="mb-6 text-7xl font-black tracking-tight md:text-8xl"
 						>
-							{t('about_Simplicity_In_Travel')}
+							{t('about_page_Simplicity_In_Travel')}
 						</motion.h1>
 						<motion.p
 							initial={{ opacity: 0, y: 20 }}
@@ -57,7 +57,7 @@ export default function PageAbout() {
 							transition={{ duration: 0.8, delay: 0.4 }}
 							className="mx-auto mb-8 max-w-3xl text-2xl font-medium leading-tight text-[#1d1d1f] md:text-3xl"
 						>
-							{t('about_Travsus_Revolutionizes_Your_Journey')}
+							{t('about_page_Travsus_Revolutionizes_Your_Journey')}
 						</motion.p>
 						<motion.p
 							initial={{ opacity: 0, y: 20 }}
@@ -65,7 +65,7 @@ export default function PageAbout() {
 							transition={{ duration: 0.8, delay: 0.6 }}
 							className="mx-auto max-w-4xl text-xl leading-relaxed text-[#86868b] md:text-2xl"
 						>
-							{t('about_From_Flights_To_Accommodations')}
+							{t('about_page_From_Flights_To_Accommodations')}
 						</motion.p>
 					</div>
 				</div>
@@ -90,7 +90,7 @@ export default function PageAbout() {
 									transition={{ duration: 0.8, delay: 0.4 }}
 									className="text-2xl font-bold leading-tight text-white md:text-3xl lg:text-5xl"
 								>
-									{t('about_Discover_Breathtaking_Destinations')}
+									{t('about_page_Discover_Breathtaking_Destinations')}
 								</motion.h2>
 							</div>
 						</div>
@@ -116,7 +116,7 @@ export default function PageAbout() {
 								transition={{ duration: 0.8, delay: 0.2 }}
 								className="mb-6 text-7xl font-black tracking-tight text-[#1d1d1f]"
 							>
-								{t('about_Real_Experts')}
+								{t('about_page_Real_Experts')}
 							</motion.h2>
 							<motion.p
 								initial={{ opacity: 0, y: 20 }}
@@ -124,7 +124,7 @@ export default function PageAbout() {
 								transition={{ duration: 0.8, delay: 0.4 }}
 								className="mb-4 text-2xl font-medium text-[#1d1d1f]"
 							>
-								{t('about_Our_Travel_Experts_Bring_Years')}
+								{t('about_page_Our_Travel_Experts_Bring_Years')}
 							</motion.p>
 							<motion.p
 								initial={{ opacity: 0, y: 20 }}
@@ -132,7 +132,7 @@ export default function PageAbout() {
 								transition={{ duration: 0.8, delay: 0.6 }}
 								className="mx-auto max-w-4xl text-xl text-[#86868b]"
 							>
-								{t('about_With_Travsus_Youre_Not_Just')}
+								{t('about_page_With_Travsus_Youre_Not_Just')}
 							</motion.p>
 						</div>
 						<div className="grid gap-8 md:grid-cols-2">
@@ -175,17 +175,17 @@ export default function PageAbout() {
 							{
 								number: '150+',
 								text: 'Destinations',
-								description: t('about_Explore_A_World_Of_Possibilities'),
+								description: t('about_page_Explore_A_World_Of_Possibilities'),
 							},
 							{
 								number: '24/7',
 								text: 'Expert Support',
-								description: t('about_Round_The_Clock_Assistance'),
+								description: t('about_page_Round_The_Clock_Assistance'),
 							},
 							{
 								number: '1M+',
 								text: 'Happy Travelers',
-								description: t('about_Join_Our_Community_Of_Satisfied'),
+								description: t('about_page_Join_Our_Community_Of_Satisfied'),
 							},
 						].map((stat, index) => (
 							<motion.div
@@ -217,7 +217,7 @@ export default function PageAbout() {
 							transition={{ duration: 0.8, delay: 0.2 }}
 							className="mb-8 text-5xl font-bold text-[#1d1d1f]"
 						>
-							{t('about_What_Our_Travelers_Say')}
+							{t('about_page_What_Our_Travelers_Say')}
 						</motion.h2>
 						<motion.blockquote
 							initial={{ opacity: 0, y: 20 }}
@@ -225,7 +225,7 @@ export default function PageAbout() {
 							transition={{ duration: 0.8, delay: 0.4 }}
 							className="mb-6 text-2xl italic text-[#1d1d1f]"
 						>
-							{t('about_Travsus_Transformed_The_Way_I_Travel')}
+							{t('about_page_Travsus_Transformed_The_Way_I_Travel')}
 						</motion.blockquote>
 						<motion.p
 							initial={{ opacity: 0, y: 20 }}
@@ -233,7 +233,7 @@ export default function PageAbout() {
 							transition={{ duration: 0.8, delay: 0.6 }}
 							className="text-xl font-medium text-[#86868b]"
 						>
-							{t('about_Sarah_T_Adventure_Enthusiast')}
+							{t('about_page_Sarah_T_Adventure_Enthusiast')}
 						</motion.p>
 					</div>
 				</div>
@@ -248,7 +248,7 @@ export default function PageAbout() {
 						transition={{ duration: 0.8, delay: 0.2 }}
 						className="mb-6 text-5xl font-black text-[#1d1d1f]"
 					>
-						{t('about_Ready_To_Start_Your_Journey')}
+						{t('about_page_Ready_To_Start_Your_Journey')}
 					</motion.h2>
 					<motion.p
 						initial={{ opacity: 0, y: 20 }}
@@ -256,7 +256,7 @@ export default function PageAbout() {
 						transition={{ duration: 0.8, delay: 0.4 }}
 						className="mx-auto mb-8 max-w-2xl text-xl text-[#86868b]"
 					>
-						{t('about_Join_Thousands_Of_Satisfied_Travelers')}
+						{t('about_page_Join_Thousands_Of_Satisfied_Travelers')}
 					</motion.p>
 					<motion.div
 						initial={{ opacity: 0, y: 20 }}
@@ -265,7 +265,7 @@ export default function PageAbout() {
 						className="flex justify-center"
 					>
 						<Button asChild>
-							<Link href="/contact">{t('about_Get_In_Touch')}</Link>
+							<Link href="/contact">{t('about_page_Get_In_Touch')}</Link>
 						</Button>
 					</motion.div>
 				</div>

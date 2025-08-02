@@ -1,10 +1,12 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { useTranslations } from '@/lib/i18n'
 import CountryCardList from '@/components/ItemsCardList'
 import type { CountryDataType } from '@/components/CountryCard'
 
 export default function DestinationsPage() {
+	const t = useTranslations('destinations_page')
 	const [countries, setCountries] = useState<CountryDataType[]>([])
 	const [loading, setLoading] = useState(true)
 	const [error, setError] = useState<string | null>(null)
@@ -34,7 +36,7 @@ export default function DestinationsPage() {
 				setCountries(formattedCountries)
 			} catch (err) {
 				console.error('Error fetching countries:', err)
-				setError('Failed to load destinations. Please try again later.')
+				setError(t('destinations_page_Failed_To_Load_Destinations'))
 			} finally {
 				setLoading(false)
 			}
@@ -48,7 +50,7 @@ export default function DestinationsPage() {
 			<div className="container mx-auto flex min-h-[50vh] items-center justify-center py-16">
 				<div className="text-center">
 					<div className="mb-4 h-12 w-12 animate-spin rounded-full border-4 border-primary border-t-transparent"></div>
-					<p>Loading destinations...</p>
+					<p>{t('destinations_page_Loading_Destinations')}</p>
 				</div>
 			</div>
 		)
@@ -69,10 +71,10 @@ export default function DestinationsPage() {
 		<div className="container mx-auto py-16">
 			<div className="mb-10 text-center">
 				<h1 className="mb-2 text-3xl font-bold md:text-4xl">
-					2025's Travelers' Choice Awards
+					{t('destinations_page_Travelers_Choice_Awards')}
 				</h1>
 				<h2 className="text-xl text-neutral-500 dark:text-neutral-400">
-					Best of the Best Destinations
+					{t('destinations_page_Best_Of_The_Best_Destinations')}
 				</h2>
 			</div>
 

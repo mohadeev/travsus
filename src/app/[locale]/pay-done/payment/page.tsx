@@ -11,12 +11,12 @@ import { useSearchParams } from 'next/navigation'
 import { BookingCard } from '@/app/checkout/checkout/BookingBreakDownCard'
 import { Button } from '@/components/ui'
 import converSelectedDateToString from '@/utils/converSelectedDateToString'
-import { useTranslations } from 'next-intl'
+import { useTranslations } from '@/lib/i18n'
 
 export interface PayPageProps {}
 
 const PayPage: FC<PayPageProps> = () => {
-	const t = useTranslations("paydone_payment_page")
+	const t = useTranslations('paydone_payment_page')
 	const { booking, status } = useSelector((state: any) => state.bookingSlice)
 	const { guests, lineItems, accommodation, transport, bookOwnHotels } = booking
 	const searchParams = useSearchParams()

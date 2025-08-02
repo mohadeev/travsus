@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import LoginClient from './LoginClient'
-import { useTranslations } from 'next-intl'
+import { useTranslations } from '@/lib/i18n'
 
 type Props = {
 	searchParams: { forgot?: string }

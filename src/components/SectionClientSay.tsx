@@ -16,6 +16,7 @@ import { AnimatePresence, motion, MotionConfig } from 'framer-motion'
 import Image from 'next/image'
 import { useSwipeable } from 'react-swipeable'
 import { variants } from '@/utils/animationVariants'
+import { useTranslations } from '@/lib/i18n'
 
 export interface SectionClientSayProps {
 	className?: string
@@ -52,6 +53,7 @@ const SectionClientSay: FC<SectionClientSayProps> = ({
 }) => {
 	const [index, setIndex] = useState(0)
 	const [direction, setDirection] = useState(0)
+	const t = useTranslations("components_SectionClientSay");
 
 	function changeItemId(newVal: number) {
 		if (newVal > index) {
@@ -117,8 +119,8 @@ const SectionClientSay: FC<SectionClientSayProps> = ({
 
 	return (
 		<div className={`nc-SectionClientSay relative ${className} `}>
-			<Heading desc="Let's see what people think of Travsus" isCenter>
-				Good news from far away
+			<Heading desc={t('components_SectionClientSay_Lets_See_What_People_Think')} isCenter>
+				{t('components_SectionClientSay_Good_News_From_Far_Away')}
 			</Heading>
 			<div className="relative mx-auto max-w-2xl md:mb-16">
 				{renderBg()}

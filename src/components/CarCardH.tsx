@@ -8,6 +8,7 @@ import Badge from "@/shared/Badge";
 import Avatar from "@/shared/Avatar";
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslations } from '@/lib/i18n';
 
 export interface CarCardHProps {
   className?: string;
@@ -31,6 +32,8 @@ const CarCardH: FC<CarCardHProps> = ({ className = "", data = DEMO_DATA }) => {
     featuredImage,
   } = data;
 
+  const t = useTranslations("components_CarCardH");
+
   const renderSliderGallery = () => {
     return (
       <div className="relative w-full flex items-center justify-center md:w-72 flex-shrink-0 border-r border-neutral-200/80 dark:border-neutral-700">
@@ -53,7 +56,7 @@ const CarCardH: FC<CarCardHProps> = ({ className = "", data = DEMO_DATA }) => {
       <div className="flex-grow p-3 sm:p-5 flex flex-col">
         <div className="space-y-2">
           <div className="flex items-center space-x-2">
-            {isAds && <Badge name="ADS" color="green" />}
+            {isAds && <Badge name={t('components_CarCardH_Ads')} color="green" />}
             <h2 className="text-xl font-semibold capitalize">
               <span className="line-clamp-1">{title}</span>
             </h2>
@@ -72,11 +75,11 @@ const CarCardH: FC<CarCardHProps> = ({ className = "", data = DEMO_DATA }) => {
         <div className="hidden sm:block w-14 border-b border-neutral-200/80 dark:border-neutral-700 my-4"></div>
         {/* SHOW MOBILE */}
         <div className="flex sm:hidden items-center text-sm text-neutral-500 dark:text-neutral-400 space-x-2 mt-4 sm:mt-0">
-          <span>4 seats</span>
+          <span>{t('components_CarCardH_4_Seats')}</span>
           <span>· </span>
-          <span>Auto gearbox</span>
+          <span>{t('components_CarCardH_Auto_Gearbox')}</span>
           <span>· </span>
-          <span>4 seats</span>
+          <span>{t('components_CarCardH_4_Seats')}</span>
         </div>
         {/* SHOW DESK */}
         <div className="hidden sm:flex items-center space-x-8">
@@ -84,21 +87,21 @@ const CarCardH: FC<CarCardHProps> = ({ className = "", data = DEMO_DATA }) => {
           <div className="flex items-center space-x-2">
             <i className="las la-user-friends text-xl"></i>
             <span className="text-sm text-neutral-500 dark:text-neutral-400">
-              4 seats
+              {t('components_CarCardH_4_Seats')}
             </span>
           </div>
           {/* --- */}
           <div className="flex items-center space-x-2">
             <i className="las la-dharmachakra text-xl"></i>
             <span className="text-sm text-neutral-500 dark:text-neutral-400">
-              Auto gearbox
+              {t('components_CarCardH_Auto_Gearbox')}
             </span>
           </div>
           {/* --- */}
           <div className="flex items-center space-x-2">
             <i className="las la-suitcase text-xl"></i>
             <span className="text-sm text-neutral-500 dark:text-neutral-400">
-              2 bags
+              {t('components_CarCardH_2_Bags')}
             </span>
           </div>
         </div>
@@ -108,7 +111,7 @@ const CarCardH: FC<CarCardHProps> = ({ className = "", data = DEMO_DATA }) => {
           <div className="flex items-center space-x-3 text-sm text-neutral-700  dark:text-neutral-300">
             <Avatar imgUrl={author.avatar} userName={author.displayName} />
             <span className="hidden sm:inline-block">
-              <span className="hidden sm:inline">Car owner </span>{" "}
+              <span className="hidden sm:inline">{t('components_CarCardH_Car_Owner')} </span>{" "}
               {author.displayName}
             </span>
           </div>
@@ -116,7 +119,7 @@ const CarCardH: FC<CarCardHProps> = ({ className = "", data = DEMO_DATA }) => {
             {price}
             {` `}
             <span className="text-sm text-neutral-500 dark:text-neutral-400 font-normal">
-              /day
+              {t('components_CarCardH_Per_Day')}
             </span>
           </span>
         </div>

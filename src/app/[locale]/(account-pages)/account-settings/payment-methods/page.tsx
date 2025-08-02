@@ -7,7 +7,7 @@ import { useToast } from '@/hooks/useToast'
 import PayoutMethodsList from '@/components/payout/payout-methods-list'
 import AddPayoutMethodForm from '@/components/payout/add-payout-method-form'
 import { useSelector } from 'react-redux'
-import { useTranslations } from 'next-intl'
+import { useTranslations } from '@/lib/i18n'
 
 interface PaymentMethod {
 	id: string

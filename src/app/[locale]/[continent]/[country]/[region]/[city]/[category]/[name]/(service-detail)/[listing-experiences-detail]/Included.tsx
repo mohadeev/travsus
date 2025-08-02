@@ -3,12 +3,14 @@
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { ChevronDown, ChevronUp, Check } from 'lucide-react'
+import { useTranslations } from '@/lib/i18n'
 
 const Included = () => {
 	const { inclusions }: any = useSelector(
 		(state: any) => state.creatingServiceSlice.service,
 	)
 	const [isOpen, setIsOpen] = useState(false)
+	const t = useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_Included");
 
 	if (!inclusions) return null
 
@@ -36,9 +38,9 @@ const Included = () => {
 					onClick={toggleAccordion}
 				>
 					<div>
-						<h2 className="text-xl font-semibold">Included</h2>
+						<h2 className="text-xl font-semibold">{t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_Included_Included')}</h2>
 						<span className="text-sm text-neutral-500 dark:text-neutral-400">
-							Everything included in your package
+							{t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_Included_Everything_Included_In_Your_Package')}
 						</span>
 					</div>
 					{isOpen ? (

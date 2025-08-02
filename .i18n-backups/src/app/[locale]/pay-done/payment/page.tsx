@@ -11,10 +11,12 @@ import { useSearchParams } from 'next/navigation'
 import { BookingCard } from '@/app/checkout/checkout/BookingBreakDownCard'
 import { Button } from '@/components/ui'
 import converSelectedDateToString from '@/utils/converSelectedDateToString'
+import { useTranslations } from '@/lib/i18n'
 
 export interface PayPageProps {}
 
 const PayPage: FC<PayPageProps> = () => {
+	const t = useTranslations('paydone_payment_page')
 	const { booking, status } = useSelector((state: any) => state.bookingSlice)
 	const { guests, lineItems, accommodation, transport, bookOwnHotels } = booking
 	const searchParams = useSearchParams()
@@ -42,14 +44,16 @@ const PayPage: FC<PayPageProps> = () => {
 		return (
 			<div className="flex w-full flex-col space-y-10 px-0 sm:rounded-2xl sm:p-6 xl:p-8">
 				<h2 className="text-3xl font-semibold lg:text-4xl">
-					Congratulation 🎉
+					{t('paydone_payment_page_Congratulation')}
 				</h2>
 
 				<div className="border-b border-neutral-200 dark:border-neutral-700"></div>
 
 				{/* ------------------------ */}
 				<div className="space-y-6">
-					<h3 className="text-2xl font-semibold">Your booking</h3>
+					<h3 className="text-2xl font-semibold">
+						{t('paydone_payment_page_Your_Booking')}
+					</h3>
 					<div className="flex flex-col sm:flex-row sm:items-center">
 						<BookingCard booking={booking} />
 					</div>
@@ -71,7 +75,9 @@ const PayPage: FC<PayPageProps> = () => {
 							</svg>
 
 							<div className="flex flex-col">
-								<span className="text-sm text-neutral-400">Date</span>
+								<span className="text-sm text-neutral-400">
+									{t('paydone_payment_page_Date')}
+								</span>
 								<span className="mt-1.5 text-lg font-semibold">
 									{converSelectedDateToString([
 										new Date(booking?.selectedDate?.startDate),
@@ -97,10 +103,12 @@ const PayPage: FC<PayPageProps> = () => {
 							</svg>
 
 							<div className="flex flex-col">
-								<span className="text-sm text-neutral-400">Guests</span>
-								<span className="mt-1.5 text-lg font-semibold">{`${
-									guests?.guestAdults || 0
-								} Adults, ${guests?.guestChildren || 0} children`}</span>
+								<span className="text-sm text-neutral-400">
+									{t('paydone_payment_page_Guests')}
+								</span>
+								<span className="mt-1.5 text-lg font-semibold">
+									{t('paydone_payment_page_Adults_Children')}
+								</span>
 							</div>
 						</div>
 					</div>
@@ -112,46 +120,10 @@ const PayPage: FC<PayPageProps> = () => {
 						<LineItemsBreakdown lineItems={booking?.lineItems} />
 					</div>
 				</div>
-				{/* <div className="mx-auto max-w-xl">
-					<LineItemsBreakdown lineItems={booking?.lineItems} />
-				</div> */}
-				{/* <div className="justify-start space-y-6 bg-slate-500">
-					<h3 className="text-2xl font-semibold">Booking detail</h3>
-					<div className="flex flex-col space-y-4">
-						<LineItemsBreakdown lineItems={booking?.lineItems} />
-						<div className="text-neutral-6000 flex dark:text-neutral-300">
-							<span className="flex-1">Booking code</span>
-							<span className="flex-1 font-medium text-neutral-900 dark:text-neutral-100">
-								#222-333-111
-							</span>
-						</div>
-						<div className="text-neutral-6000 flex dark:text-neutral-300">
-							<span className="flex-1">Date</span>
-							<span className="flex-1 font-medium text-neutral-900 dark:text-neutral-100">
-								12 Aug, 2021
-							</span>
-						</div>
-						<div className="text-neutral-6000 flex dark:text-neutral-300">
-							<span className="flex-1">Total</span>
-							<span className="flex-1 font-medium text-neutral-900 dark:text-neutral-100">
-								$199
-							</span>
-						</div>
-						<div className="text-neutral-6000 flex justify-between dark:text-neutral-300">
-							<span className="flex-1">Payment method</span>
-							<span className="flex-1 font-medium text-neutral-900 dark:text-neutral-100">
-								Credit card
-							</span>
-						</div>
-					</div>
-				</div> */}
 				<div>
-					{/* {(() => {
-						const [states, setState] = useState(true)
-						return <Button loading={states}>Manege</Button>
-					})()} */}
-
-					<ButtonPrimary loading={false}> Manaage booking</ButtonPrimary>
+					<ButtonPrimary loading={false}>
+						{t('paydone_payment_page_Manage_Booking')}
+					</ButtonPrimary>
 				</div>
 			</div>
 		)

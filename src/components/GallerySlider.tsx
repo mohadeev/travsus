@@ -8,6 +8,7 @@ import { useSwipeable } from 'react-swipeable'
 import { variants } from '@/utils/animationVariants'
 import Link from 'next/link'
 import { Route } from '@/routers/types'
+import { useTranslations } from '@/lib/i18n'
 
 export interface GallerySliderProps {
 	className?: string
@@ -34,6 +35,7 @@ export default function GallerySlider({
 	const [index, setIndex] = useState(0)
 	const [direction, setDirection] = useState(0)
 	const images: any = galleryImgs
+	const t = useTranslations("components_GallerySlider")
 
 	function changePhotoId(newVal: number) {
 		if (newVal > index) {
@@ -90,7 +92,7 @@ export default function GallerySlider({
 								<img
 									src={currentImage || ''}
 									// fill
-									alt="listing card gallery"
+									alt={t('components_GallerySlider_Listing_Card_Gallery')}
 									className={`object-cover ${imageClass} h-full w-full`}
 									onLoad={() => setLoaded(true)}
 									sizes="(max-width: 1025px) 100vw, 300px"

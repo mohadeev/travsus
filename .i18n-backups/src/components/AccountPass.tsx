@@ -4,8 +4,10 @@ import type React from 'react'
 import { useState } from 'react'
 import ButtonPrimary from '@/shared/ButtonPrimary'
 import { Loader2 } from 'lucide-react'
+import { useTranslations } from '@/lib/i18n'
 
 const AccountPass = () => {
+	const t = useTranslations('components_AccountPass')
 	const [currentPassword, setCurrentPassword] = useState('')
 	const [newPassword, setNewPassword] = useState('')
 	const [confirmPassword, setConfirmPassword] = useState('')
@@ -20,7 +22,7 @@ const AccountPass = () => {
 		setLoading(true)
 
 		if (newPassword !== confirmPassword) {
-			setError('New password and confirm password do not match.')
+			setError(t('components_AccountPass_New_And_Confirm_Password_Not_Match'))
 			setLoading(false)
 			return
 		}
@@ -37,15 +39,17 @@ const AccountPass = () => {
 			const data = await response.json()
 
 			if (!response.ok) {
-				setError(data.message || 'Failed to update password.')
+				setError(
+					data.message || t('components_AccountPass_Failed_To_Update_Password'),
+				)
 			} else {
-				setSuccess('Password updated successfully!')
+				setSuccess(t('components_AccountPass_Password_Updated_Successfully'))
 				setCurrentPassword('')
 				setNewPassword('')
 				setConfirmPassword('')
 			}
 		} catch (error) {
-			setError('An error occurred while updating the password.')
+			setError(t('components_AccountPass_Error_Updating_Password'))
 		} finally {
 			setLoading(false)
 		}
@@ -59,7 +63,7 @@ const AccountPass = () => {
 						htmlFor="current-password"
 						className="mb-1 block text-sm font-medium text-gray-700"
 					>
-						Current password
+						{t('components_AccountPass_Current_Password')}
 					</label>
 					<div className="relative rounded-lg border border-gray-300">
 						<input
@@ -78,7 +82,7 @@ const AccountPass = () => {
 						htmlFor="new-password"
 						className="mb-1 block text-sm font-medium text-gray-700"
 					>
-						New password
+						{t('components_AccountPass_New_Password')}
 					</label>
 					<div className="relative rounded-lg border border-gray-300">
 						<input
@@ -97,7 +101,7 @@ const AccountPass = () => {
 						htmlFor="confirm-password"
 						className="mb-1 block text-sm font-medium text-gray-700"
 					>
-						Confirm password
+						{t('components_AccountPass_Confirm_Password')}
 					</label>
 					<div className="relative rounded-lg border border-gray-300">
 						<input
@@ -123,10 +127,10 @@ const AccountPass = () => {
 						{loading ? (
 							<>
 								<Loader2 className="mr-2 h-4 w-4 animate-spin" />
-								Updating...
+								{t('components_AccountPass_Updating')}
 							</>
 						) : (
-							'Update password'
+							t('components_AccountPass_Update_Password')
 						)}
 					</ButtonPrimary>
 				</div>

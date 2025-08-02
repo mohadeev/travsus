@@ -4,7 +4,7 @@ import SectionSliderNewCategories from '@/components/SectionSliderNewCategories'
 import SectionSubscribe2 from '@/components/SectionSubscribe2'
 import React, { FC } from 'react'
 import SectionGridFilterCard from '../SectionGridFilterCard'
-import { useTranslations } from 'next-intl'
+import { useTranslations } from '@/lib/i18n'
 
 export interface ListingFlightsPageProps {}
 

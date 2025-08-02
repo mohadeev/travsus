@@ -7,6 +7,7 @@ import { useToast } from '@/hooks/useToast'
 import PayoutMethodsList from '@/components/payout/payout-methods-list'
 import AddPayoutMethodForm from '@/components/payout/add-payout-method-form'
 import { useSelector } from 'react-redux'
+import { useTranslations } from '@/lib/i18n'
 
 interface PaymentMethod {
 	id: string
@@ -30,6 +31,7 @@ interface PayoutMethod {
 }
 
 export default function PaymentMethodsPage() {
+	const t = useTranslations('PaymentMethodsPage')
 	const [activeTab, setActiveTab] = useState('payments')
 	const [paymentMethods, setPaymentMethods] = useState<PaymentMethod[]>([])
 	const [payoutMethods, setPayoutMethods] = useState<PayoutMethod[]>([])
@@ -38,19 +40,16 @@ export default function PaymentMethodsPage() {
 	const { toast } = useToast()
 	const { userData } = useSelector((state: any) => state.userReducer)
 
-	// Fetch payment methods and payout methods
 	useEffect(() => {
 		const fetchData = async () => {
 			setLoading(true)
 			try {
-				// Fetch payment methods
 				const paymentResponse = await fetch('/api/payment-methods')
 				if (paymentResponse.ok) {
 					const data = await paymentResponse.json()
 					setPaymentMethods(data.paymentMethods || [])
 				}
 
-				// Fetch payout methods
 				const payoutResponse = await fetch('/api/payout-methods')
 				if (payoutResponse.ok) {
 					const data = await payoutResponse.json()
@@ -59,8 +58,8 @@ export default function PaymentMethodsPage() {
 			} catch (error) {
 				console.error('Error fetching data:', error)
 				toast({
-					title: 'Error',
-					description: 'Failed to load your payment and payout methods',
+					title: t('error'),
+					description: t('failed_to_load'),
 					variant: 'destructive',
 				})
 			} finally {
@@ -69,35 +68,33 @@ export default function PaymentMethodsPage() {
 		}
 
 		fetchData()
-	}, [toast])
+	}, [toast, t])
 
 	const handleAddPaymentMethod = () => {
-		// This would open a modal or redirect to add payment method page
 		toast({
-			title: 'Add Payment Method',
-			description:
-				'This feature would open a form to add a new payment method.',
+			title: t('add_payment_method'),
+			description: t('add_payment_method_desc'),
 		})
 	}
 
 	const handleManagePayments = () => {
 		toast({
-			title: 'Manage Payments',
-			description: 'This would show your payment history and details.',
+			title: t('manage_payments'),
+			description: t('keep_track_of_payments'),
 		})
 	}
 
 	const handleAddGiftCard = () => {
 		toast({
-			title: 'Add Gift Card',
-			description: 'This would open a form to add a gift card.',
+			title: t('add_gift_card'),
+			description: t('travsus_gift_credit'),
 		})
 	}
 
 	const handleAddCoupon = () => {
 		toast({
-			title: 'Add Coupon',
-			description: 'This would open a form to add a coupon code.',
+			title: t('add_coupon'),
+			description: t('your_coupons'),
 		})
 	}
 
@@ -121,27 +118,23 @@ export default function PaymentMethodsPage() {
 
 			if (!response.ok) {
 				const errorData = await response.json()
-				throw new Error(errorData.message || 'Failed to add payout method')
+				throw new Error(errorData.message || t('failed_to_add_payout'))
 			}
 
 			const result = await response.json()
-
-			// Add the new payout method to the state
 			setPayoutMethods((prev) => [...prev, result.payoutMethod])
 			setShowAddPayoutForm(false)
 
 			toast({
-				title: 'Success',
-				description: 'Payout method added successfully',
+				title: t('success'),
+				description: t('payout_method_added'),
 			})
 		} catch (error) {
 			console.error('Error adding payout method:', error)
 			toast({
-				title: 'Error',
+				title: t('error'),
 				description:
-					error instanceof Error
-						? error.message
-						: 'Failed to add payout method',
+					error instanceof Error ? error.message : t('failed_to_add_payout'),
 				variant: 'destructive',
 			})
 		}
@@ -159,24 +152,21 @@ export default function PaymentMethodsPage() {
 
 			if (!response.ok) {
 				const errorData = await response.json()
-				throw new Error(errorData.message || 'Failed to delete payout method')
+				throw new Error(errorData.message || t('failed_to_delete_payout'))
 			}
 
-			// Remove the deleted payout method from the state
 			setPayoutMethods((prev) => prev.filter((method) => method.id !== id))
 
 			toast({
-				title: 'Success',
-				description: 'Payout method removed successfully',
+				title: t('success'),
+				description: t('payout_method_removed'),
 			})
 		} catch (error) {
 			console.error('Error deleting payout method:', error)
 			toast({
-				title: 'Error',
+				title: t('error'),
 				description:
-					error instanceof Error
-						? error.message
-						: 'Failed to delete payout method',
+					error instanceof Error ? error.message : t('failed_to_delete_payout'),
 				variant: 'destructive',
 			})
 		}
@@ -194,10 +184,9 @@ export default function PaymentMethodsPage() {
 
 			if (!response.ok) {
 				const errorData = await response.json()
-				throw new Error(errorData.message || 'Failed to update payout method')
+				throw new Error(errorData.message || t('failed_to_update_payout'))
 			}
 
-			// Update the state to reflect the new default payout method
 			setPayoutMethods((prev) =>
 				prev.map((method) => ({
 					...method,
@@ -206,17 +195,15 @@ export default function PaymentMethodsPage() {
 			)
 
 			toast({
-				title: 'Success',
-				description: 'Default payout method updated',
+				title: t('success'),
+				description: t('default_payout_updated'),
 			})
 		} catch (error) {
 			console.error('Error setting default payout method:', error)
 			toast({
-				title: 'Error',
+				title: t('error'),
 				description:
-					error instanceof Error
-						? error.message
-						: 'Failed to update payout method',
+					error instanceof Error ? error.message : t('failed_to_update_payout'),
 				variant: 'destructive',
 			})
 		}
@@ -230,14 +217,14 @@ export default function PaymentMethodsPage() {
 					href="/account-settings"
 					className="text-gray-600 hover:underline"
 				>
-					Account
+					{t('account')}
 				</Link>
 				<ChevronRight className="mx-2 h-4 w-4 text-gray-500" />
-				<span className="text-gray-800">Payments & payouts</span>
+				<span className="text-gray-800">{t('payments_payouts')}</span>
 			</div>
 
 			{/* Page Title */}
-			<h1 className="mb-8 text-3xl font-semibold">Payments & payouts</h1>
+			<h1 className="mb-8 text-3xl font-semibold">{t('payments_payouts')}</h1>
 
 			{/* Tabs */}
 			<div className="mb-8 border-b border-gray-200">
@@ -250,7 +237,7 @@ export default function PaymentMethodsPage() {
 						}`}
 						onClick={() => setActiveTab('payments')}
 					>
-						Payments
+						{t('payments')}
 					</button>
 					<button
 						className={`px-1 pb-4 ${
@@ -260,7 +247,7 @@ export default function PaymentMethodsPage() {
 						}`}
 						onClick={() => setActiveTab('payouts')}
 					>
-						Payouts
+						{t('payouts')}
 					</button>
 				</div>
 			</div>
@@ -269,28 +256,25 @@ export default function PaymentMethodsPage() {
 				<div className="space-y-12">
 					{/* Your Payments Section */}
 					<div>
-						<h2 className="mb-2 text-xl font-semibold">Your payments</h2>
-						<p className="mb-4 text-gray-600">
-							Keep track of all your payments and refunds.
-						</p>
+						<h2 className="mb-2 text-xl font-semibold">{t('your_payments')}</h2>
+						<p className="mb-4 text-gray-600">{t('keep_track_of_payments')}</p>
 						<button
 							onClick={handleManagePayments}
 							className="rounded-lg bg-black px-4 py-2 text-white hover:bg-gray-800"
 						>
-							Manage payments
+							{t('manage_payments')}
 						</button>
 					</div>
 
 					{/* Payment Methods Section */}
 					<div>
-						<h2 className="mb-2 text-xl font-semibold">Payment methods</h2>
-						<p className="mb-4 text-gray-600">
-							Add a payment method using our secure payment system, then start
-							planning your next trip.
-						</p>
+						<h2 className="mb-2 text-xl font-semibold">
+							{t('payment_methods')}
+						</h2>
+						<p className="mb-4 text-gray-600">{t('add_payment_method_desc')}</p>
 
 						{loading ? (
-							<div className="py-4">Loading payment methods...</div>
+							<div className="py-4">{t('loading_payment_methods')}</div>
 						) : (
 							<div className="space-y-4">
 								{paymentMethods.map((method) => (
@@ -305,12 +289,12 @@ export default function PaymentMethodsPage() {
 													{method.brand} •••• {method.last4}
 												</p>
 												<p className="text-sm text-gray-500">
-													Expires {method.expMonth}/{method.expYear}
+													{t('expires')} {method.expMonth}/{method.expYear}
 												</p>
 											</div>
 										</div>
 										<button className="font-medium text-black underline">
-											Edit
+											{t('edit')}
 										</button>
 									</div>
 								))}
@@ -319,35 +303,37 @@ export default function PaymentMethodsPage() {
 									onClick={handleAddPaymentMethod}
 									className="rounded-lg bg-black px-4 py-2 text-white hover:bg-gray-800"
 								>
-									Add payment method
+									{t('add_payment_method')}
 								</button>
 							</div>
 						)}
 					</div>
 
-					{/* travsus Gift Credit Section */}
+					{/* Gift Credit Section */}
 					<div>
-						<h2 className="mb-2 text-xl font-semibold">Travsus gift credit</h2>
+						<h2 className="mb-2 text-xl font-semibold">
+							{t('travsus_gift_credit')}
+						</h2>
 						<button
 							onClick={handleAddGiftCard}
 							className="rounded-lg bg-black px-4 py-2 text-white hover:bg-gray-800"
 						>
-							Add gift card
+							{t('add_gift_card')}
 						</button>
 					</div>
 
 					{/* Coupons Section */}
 					<div>
-						<h2 className="mb-2 text-xl font-semibold">Coupons</h2>
+						<h2 className="mb-2 text-xl font-semibold">{t('coupons')}</h2>
 						<div className="mb-4 flex items-center justify-between">
-							<p>Your coupons</p>
+							<p>{t('your_coupons')}</p>
 							<p>0</p>
 						</div>
 						<button
 							onClick={handleAddCoupon}
 							className="rounded-lg bg-black px-4 py-2 text-white hover:bg-gray-800"
 						>
-							Add coupon
+							{t('add_coupon')}
 						</button>
 					</div>
 				</div>
@@ -356,15 +342,12 @@ export default function PaymentMethodsPage() {
 					{!showAddPayoutForm ? (
 						<div>
 							<h2 className="mb-2 text-xl font-semibold">
-								How you'll get paid
+								{t('how_youll_get_paid')}
 							</h2>
-							<p className="mb-6 text-gray-600">
-								Add at least one payout method so we know where to send your
-								money.
-							</p>
+							<p className="mb-6 text-gray-600">{t('add_payout_method')}</p>
 
 							{loading ? (
-								<div className="py-4">Loading payout methods...</div>
+								<div className="py-4">{t('loading_payout_methods')}</div>
 							) : (
 								<PayoutMethodsList
 									payoutMethods={payoutMethods}
@@ -376,23 +359,21 @@ export default function PaymentMethodsPage() {
 
 							{/* Help section */}
 							<div className="mt-12 rounded-lg bg-gray-50 p-6">
-								<h3 className="mb-6 text-xl font-semibold">Need help?</h3>
+								<h3 className="mb-6 text-xl font-semibold">{t('need_help')}</h3>
 								<div className="space-y-4">
 									<button className="flex w-full items-center justify-between border-b border-gray-200 py-2">
-										<span className="font-medium">
-											When you'll get your payout
-										</span>
+										<span className="font-medium">{t('when_payout')}</span>
 										<ChevronRight className="h-5 w-5" />
 									</button>
 
 									<button className="flex w-full items-center justify-between border-b border-gray-200 py-2">
-										<span className="font-medium">How payouts work</span>
+										<span className="font-medium">{t('how_payouts_work')}</span>
 										<ChevronRight className="h-5 w-5" />
 									</button>
 
 									<button className="flex w-full items-center justify-between border-b border-gray-200 py-2">
 										<span className="font-medium">
-											Go to your transaction history
+											{t('transaction_history')}
 										</span>
 										<ChevronRight className="h-5 w-5" />
 									</button>
@@ -416,15 +397,11 @@ export default function PaymentMethodsPage() {
 					</div>
 					<div>
 						<h2 className="mb-2 text-lg font-semibold">
-							Make all payments through travsus
+							{t('make_all_payments')}
 						</h2>
-						<p className="mb-4 text-gray-600">
-							Always pay and communicate through travsus to ensure you're
-							protected under our Terms of Service, Payments Terms of Service,
-							cancellation, and other safeguards.
-						</p>
+						<p className="mb-4 text-gray-600">{t('pay_through_travsus')}</p>
 						<Link href="#" className="font-medium text-black underline">
-							Learn more
+							{t('learn_more')}
 						</Link>
 					</div>
 				</div>

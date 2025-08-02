@@ -8,6 +8,7 @@ import AnyReactComponent from '@/components/AnyReactComponent/AnyReactComponent'
 import { FC } from 'react'
 import Checkbox from '@/shared/Checkbox'
 import { CarDataType, ExperiencesDataType, StayDataType } from '@/data/types'
+import { useTranslations } from '@/lib/i18n'
 
 interface MapContainerProps {
 	currentHoverID: string | number
@@ -20,9 +21,10 @@ const MapContainer: FC<MapContainerProps> = ({
 	DEMO_DATA,
 	listingType,
 }) => {
+	const t = useTranslations("components_MapContainer");
+
 	return (
 		<>
-			{/* BELLOW IS MY GOOGLE API KEY -- PLEASE DELETE AND TYPE YOUR API KEY */}
 			<Map
 				style={{
 					width: '100%',
@@ -38,7 +40,7 @@ const MapContainer: FC<MapContainerProps> = ({
 						<Checkbox
 							className="text-xs text-neutral-800 xl:text-sm"
 							name="search_as_i_move"
-							label="Search as I move the map"
+							label={t('components_MapContainer_Search_As_I_Move_The_Map')}
 						/>
 					</div>
 				</MapControl>

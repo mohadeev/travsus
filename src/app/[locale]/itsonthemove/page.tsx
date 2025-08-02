@@ -1,5 +1,5 @@
 import React from 'react'
-import { useTranslations } from 'next-intl'
+import { useTranslations } from '@/lib/i18n'
 
 const page = () => {
 	const t = useTranslations('itsonthemove_page')

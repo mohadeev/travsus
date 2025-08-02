@@ -14,7 +14,7 @@ import ButtonSecondary from '@/shared/ButtonSecondary'
 import { useSession } from 'next-auth/react'
 import basedGetUrlRequestLogedIn from '@/app/utils/basedGetUrlRequestLogedIn'
 import ContainerExperiencesCardSkeleton from '@/components/ContainerExperiencesCardSkeleton'
-import { useTranslations } from 'next-intl'
+import { useTranslations } from '@/lib/i18n'
 
 const AccountSavelists = () => {
 	let [categories] = useState(['Stays', 'Experiences', 'Cars'])

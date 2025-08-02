@@ -6,7 +6,7 @@ import ButtonPrimary from '@/shared/ButtonPrimary'
 import SocialsList from '@/shared/SocialsList'
 import Avatar from '@/shared/Avatar'
 import { useState, useEffect } from 'react'
-import { useTranslations } from 'next-intl'
+import { useTranslations } from '@/lib/i18n'
 
 export const SkeletonLoader = () => {
 	return (

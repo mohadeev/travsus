@@ -8,7 +8,7 @@ import CountryCardList from '@/components/ItemsCardList'
 import FeatureNotificationForm from '@/app/feature-notification-form'
 import ReadeMore from '../../../(client-components)/ReadeMore'
 import CollectionsGrid from '@/components/CollectionsGrid'
-import { useTranslations } from 'next-intl'
+import { useTranslations } from '@/lib/i18n'
 
 export default function DestinationPage({
 	params,

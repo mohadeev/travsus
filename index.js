@@ -8,9 +8,9 @@ const CONFIG = {
 	MESSAGES_DIR: path.join(process.cwd(), 'messages'),
 	BACKUP_DIR: path.join(process.cwd(), '.i18n-backups'),
 
-	// Static OpenAI API Key
+	// Updated OpenAI API Key
 	OPENAI_API_KEY:
-		'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',
+		'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',
 	OPENAI_MODEL: 'gpt-4',
 	OPENAI_TEMPERATURE: 0.1, // Maximum determinism
 }
@@ -19,7 +19,25 @@ const openai = new OpenAI({
 	apiKey: CONFIG.OPENAI_API_KEY,
 })
 
+// Supported languages
+const SUPPORTED_LANGUAGES = [
+	'en-US', // English (United States)
+	'es-ES', // Spanish (Spain)
+	'de-DE', // German (Germany)
+	'ja-JP', // Japanese (Japan)
+	'pt-PT', // Portuguese (Portugal)
+	'it-IT', // Italian (Italy)
+	'fr-FR', // French (France)
+	'ru-RU', // Russian (Russia)
+	'zh-CN', // Chinese (Simplified)
+	'ko-KR', // Korean (South Korea)
+]
+
 // === Utility Functions ===
+function cleanTripleBackticks(input) {
+	if (typeof input !== 'string') return input
+	return input.replace(/^\s*```[a-z]*\s*\n?/, '').replace(/\n?\s*```\s*$/, '')
+}
 
 async function createBackup(filePath, content) {
 	const relativePath = path.relative(process.cwd(), filePath)
@@ -31,23 +49,44 @@ async function createBackup(filePath, content) {
 	console.log(`📂 Backup created: ${backupPath}`)
 }
 
-async function getTsxFiles() {
-	const files = []
-	const entries = await fs.readdir(CONFIG.SOURCE_DIR, {
+async function getFilesByType() {
+	const pages = []
+	const components = []
+
+	const localeDir = path.join(CONFIG.SOURCE_DIR, 'app', '[locale]')
+	const componentsDir = path.join(CONFIG.SOURCE_DIR, 'components')
+
+	// Get all locale pages
+	const localeEntries = await fs.readdir(localeDir, {
 		recursive: true,
 		withFileTypes: true,
 	})
 
-	for (const entry of entries) {
+	for (const entry of localeEntries) {
 		if (
 			entry.isFile() &&
 			(entry.name.endsWith('.tsx') || entry.name.endsWith('.jsx'))
 		) {
-			files.push(path.join(entry.path, entry.name))
+			pages.push(path.join(entry.path, entry.name))
 		}
 	}
 
-	return files
+	// Get all components
+	const componentEntries = await fs.readdir(componentsDir, {
+		recursive: true,
+		withFileTypes: true,
+	})
+
+	for (const entry of componentEntries) {
+		if (
+			entry.isFile() &&
+			(entry.name.endsWith('.tsx') || entry.name.endsWith('.jsx'))
+		) {
+			components.push(path.join(entry.path, entry.name))
+		}
+	}
+
+	return { pages, components }
 }
 
 async function getAvailableLanguages() {
@@ -55,10 +94,15 @@ async function getAvailableLanguages() {
 		const files = await fs.readdir(CONFIG.MESSAGES_DIR)
 		return files
 			.filter((file) => file.endsWith('.json'))
-			.map((file) => file.replace('.json', '').replace('_', '-'))
+			.map((file) => {
+				// Convert existing filenames to proper hyphen format
+				const lang = file.replace('.json', '')
+				return lang.includes('_') ? lang.replace('_', '-') : lang
+			})
+			.filter((lang) => SUPPORTED_LANGUAGES.includes(lang))
 	} catch (error) {
 		console.error('❌ Could not read messages directory:', error.message)
-		return ['en-US', 'es-ES'] // Fallback to default
+		return SUPPORTED_LANGUAGES // Return all supported languages
 	}
 }
 
@@ -68,11 +112,9 @@ async function processFileWithAI(filePath, namespace) {
 	try {
 		const content = await fs.readFile(filePath, 'utf-8')
 
-		// Skip files without the required import
-		if (!content.includes("import { useTranslations } from '@/lib/i18n'")) {
-			console.log(
-				`⏩ Skipping ${path.basename(filePath)} - missing i18n import`,
-			)
+		// Skip files that ALREADY have translations
+		if (content.includes("import { useTranslations } from '@/lib/i18n'")) {
+			console.log(`⏩ Skipping ${path.basename(filePath)} - already translated`)
 			return null
 		}
 
@@ -86,7 +128,7 @@ You are an expert React/Next.js developer. Transform this component EXACTLY as s
 
 ## REQUIREMENTS
 1. MUST use: import { useTranslations } from '@/lib/i18n'
-2. MUST call useTranslations with namespace: "${namespace}"
+2. MUST call useTranslations with namespace: "${namespace}" (EXACTLY THIS STRING)
 3. MUST generate keys in format: ${namespace}_Descriptive_Key
 4. Replace ONLY user-facing static text (no code, no props, no variables)
 5. PRESERVE ALL formatting, whitespace, and code structure
@@ -125,6 +167,7 @@ AFTER:
 import { useTranslations } from '@/lib/i18n';
 
 export default function Component() {
+  // WARNING: MUST USE "${namespace}" EXACTLY AS PROVIDED
   const t = useTranslations("${namespace}");
   
   return (
@@ -155,7 +198,7 @@ ${content}
 				{
 					role: 'system',
 					content:
-						'You are a senior React developer specializing in internationalization. Follow instructions EXACTLY.',
+						'You are a senior React developer specializing in internationalization. Follow instructions EXACTLY. MUST use the provided namespace string without modification.',
 				},
 				{ role: 'user', content: prompt },
 			],
@@ -171,8 +214,12 @@ ${content}
 			throw new Error('AI response format invalid')
 		}
 
+		// Clean triple backticks from both code and messages
+		let newCode = cleanTripleBackticks(codeMatch[1].trim())
+		const messagesStr = cleanTripleBackticks(msgMatch[1].trim())
+
 		// Parse and validate messages
-		const messages = JSON.parse(msgMatch[1].trim())
+		const messages = JSON.parse(messagesStr)
 
 		// Validate namespace structure
 		if (!messages[namespace]) {
@@ -191,8 +238,18 @@ ${content}
 			}
 		}
 
+		// Validate namespace usage in code
+		const namespaceRegex = new RegExp(
+			`useTranslations\\s*\\(\\s*["'\`]${namespace}["'\`]\\s*\\)`,
+		)
+		if (!namespaceRegex.test(newCode)) {
+			throw new Error(
+				`NAMESPACE "${namespace}" NOT USED IN useTranslations CALL`,
+			)
+		}
+
 		return {
-			newCode: codeMatch[1].trim(),
+			newCode,
 			messages,
 		}
 	} catch (error) {
@@ -248,7 +305,11 @@ DO NOT RETURN ANYTHING ELSE! ONLY THE JSON OBJECT!
 		],
 	})
 
-	const translations = JSON.parse(result.choices[0].message.content)
+	// Clean triple backticks from translation response
+	const cleanedResponse = cleanTripleBackticks(
+		result.choices[0].message.content,
+	)
+	const translations = JSON.parse(cleanedResponse)
 
 	// Validate translations
 	if (!translations[namespace]) {
@@ -285,8 +346,8 @@ async function updateSourceFile(filePath, newCode) {
 }
 
 async function updateTranslationFiles(lang, messages) {
-	// Convert to filename format (es-ES → es_ES.json)
-	const filename = `${lang.replace('-', '_')}.json`
+	// Use hyphen format for filename (en-US.json)
+	const filename = `${lang}.json`
 	const filePath = path.join(CONFIG.MESSAGES_DIR, filename)
 
 	let content = {}
@@ -321,6 +382,71 @@ async function updateTranslationFiles(lang, messages) {
 	console.log(`✅ UPDATED: ${filename} for namespace ${namespace}`)
 }
 
+// Process a batch of files
+async function processFiles(files, languages, batchName) {
+	if (files.length === 0) {
+		console.log(`ℹ️ No files found in ${batchName}`)
+		return
+	}
+
+	console.log(
+		`\n🚀 STARTING ${batchName.toUpperCase()} PROCESSING (${files.length} files)`,
+	)
+
+	for (const [index, filePath] of files.entries()) {
+		try {
+			console.log(`\n=== PROCESSING FILE ${index + 1}/${files.length} ===`)
+			console.log(`📄 ${path.relative(CONFIG.SOURCE_DIR, filePath)}`)
+
+			// Skip if already has translations
+			const content = await fs.readFile(filePath, 'utf-8')
+			if (content.includes("import { useTranslations } from '@/lib/i18n'")) {
+				console.log(`⏩ Skipping - already translated`)
+				continue
+			}
+
+			// Derive namespace from file path
+			const relativePath = path.relative(CONFIG.SOURCE_DIR, filePath)
+			const namespace = relativePath
+				.replace(/\.tsx$/, '')
+				.replace(/\.jsx$/, '')
+				.replace(/[\\/]/g, '_')
+				.replace(/[^a-zA-Z0-9_]/g, '')
+
+			// Process file with AI
+			const result = await processFileWithAI(filePath, namespace)
+			if (!result) continue
+
+			// Update source file
+			await updateSourceFile(filePath, result.newCode)
+
+			// Process each language
+			for (const lang of languages) {
+				try {
+					let messages
+
+					if (lang === 'en-US') {
+						// Use English messages as-is
+						messages = result.messages
+					} else {
+						// Translate for other languages
+						messages = await translateMessages(result.messages, lang)
+					}
+
+					// Update translation file
+					await updateTranslationFiles(lang, messages)
+				} catch (error) {
+					console.error(`❌ TRANSLATION FAILED FOR ${lang}:`, error.message)
+				}
+			}
+
+			console.log(`✅ SUCCESS: ${path.basename(filePath)} processed`)
+		} catch (error) {
+			console.error(`💥 PROCESSING FAILURE: ${filePath} - ${error.message}`)
+		}
+	}
+}
+
 // === Main Function ===
 
 async function main() {
@@ -335,72 +461,28 @@ async function main() {
 			'   3. KEYS MUST START WITH NAMESPACE (e.g., footer_footer_Disclaimer)',
 		)
 		console.log('   4. ZERO TOLERANCE FOR DEVIATIONS')
+		console.log('🌐 SUPPORTED LANGUAGES:', SUPPORTED_LANGUAGES.join(', '))
 
 		// Ensure directories exist
 		await fs.mkdir(CONFIG.BACKUP_DIR, { recursive: true })
 		await fs.mkdir(CONFIG.MESSAGES_DIR, { recursive: true })
 
 		// 1. Get all files and languages
-		const files = await getTsxFiles()
+		const { pages, components } = await getFilesByType()
 		const languages = await getAvailableLanguages()
 
-		if (files.length === 0) {
-			console.log('ℹ️ No .tsx files found')
-			return
-		}
-
-		console.log(`📂 FILES TO PROCESS: ${files.length}`)
+		console.log(`📂 PAGES TO PROCESS: ${pages.length}`)
+		console.log(`🧩 COMPONENTS TO PROCESS: ${components.length}`)
 		console.log(`🌐 LANGUAGES: ${languages.join(', ')}`)
 
-		// 2. Process each file
-		for (const [index, filePath] of files.entries()) {
-			try {
-				console.log(`\n=== PROCESSING FILE ${index + 1}/${files.length} ===`)
-				console.log(`📄 ${path.relative(CONFIG.SOURCE_DIR, filePath)}`)
+		// Phase 1: Process all locale pages first
+		await processFiles(pages, languages, 'pages')
 
-				// Derive namespace from file path
-				const relativePath = path.relative(CONFIG.SOURCE_DIR, filePath)
-				const namespace = relativePath
-					.replace(/\.tsx$/, '')
-					.replace(/\.jsx$/, '')
-					.replace(/[\\/]/g, '_')
-					.replace(/[^a-zA-Z0-9_]/g, '')
-
-				// Process file with AI
-				const result = await processFileWithAI(filePath, namespace)
-				if (!result) continue
-
-				// Update source file
-				await updateSourceFile(filePath, result.newCode)
-
-				// Process each language
-				for (const lang of languages) {
-					try {
-						let messages
-
-						if (lang === 'en-US') {
-							// Use English messages as-is
-							messages = result.messages
-						} else {
-							// Translate for other languages
-							messages = await translateMessages(result.messages, lang)
-						}
-
-						// Update translation file
-						await updateTranslationFiles(lang, messages)
-					} catch (error) {
-						console.error(`❌ TRANSLATION FAILED FOR ${lang}:`, error.message)
-					}
-				}
-
-				console.log(`✅ SUCCESS: ${path.basename(filePath)} processed`)
-			} catch (error) {
-				console.error(`💥 PROCESSING FAILURE: ${filePath} - ${error.message}`)
-			}
-		}
+		// Phase 2: Process all components after pages are done
+		await processFiles(components, languages, 'components')
 
 		console.log('\n🎉 OPERATION COMPLETE!')
-		console.log('🔥 ALL FILES INTERNATIONALIZED WITH PRECISION!')
+		console.log('🔥 ALL FILES PROCESSED IN CORRECT ORDER!')
 	} catch (error) {
 		console.error('💣 FATAL SYSTEM FAILURE:', error.message)
 	}

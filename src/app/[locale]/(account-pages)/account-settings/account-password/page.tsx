@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import Label from '@/components/Label'
 import ButtonPrimary from '@/shared/ButtonPrimary'
 import Input from '@/shared/Input'
-import { useTranslations } from 'next-intl'
+import { useTranslations } from '@/lib/i18n'
 
 const AccountPass = () => {
 	const t = useTranslations('accountsettings_accountpassword_page')

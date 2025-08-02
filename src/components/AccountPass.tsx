@@ -4,7 +4,7 @@ import type React from 'react'
 import { useState } from 'react'
 import ButtonPrimary from '@/shared/ButtonPrimary'
 import { Loader2 } from 'lucide-react'
-import { useTranslations } from 'next-intl'
+import { useTranslations } from '@/lib/i18n'
 
 const AccountPass = () => {
 	const t = useTranslations('components_AccountPass')

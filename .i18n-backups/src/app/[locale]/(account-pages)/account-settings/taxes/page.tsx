@@ -8,8 +8,10 @@ import ButtonPrimary from '@/shared/ButtonPrimary'
 import { useToast } from '@/hooks/useToast'
 import { useSelector, useDispatch } from 'react-redux'
 import { updateUser } from '@/app/GlobalRedux/Features/userReducer/userReducer'
+import { useTranslations } from '@/lib/i18n'
 
 export default function TaxesPage() {
+	const t = useTranslations('TaxesPage')
 	const [activeTab, setActiveTab] = useState('taxpayers')
 	const { toast } = useToast()
 	const dispatch = useDispatch()
@@ -59,8 +61,8 @@ export default function TaxesPage() {
 		)
 
 		toast({
-			title: 'Success',
-			description: 'Tax information updated successfully',
+			title: t('success'),
+			description: t('tax_info_updated'),
 		})
 
 		setShowTaxInfoForm(false)
@@ -79,8 +81,8 @@ export default function TaxesPage() {
 		)
 
 		toast({
-			title: 'Success',
-			description: 'VAT information updated successfully',
+			title: t('success'),
+			description: t('vat_info_updated'),
 		})
 
 		setShowVatForm(false)
@@ -101,14 +103,14 @@ export default function TaxesPage() {
 					href="/account-settings"
 					className="text-gray-600 hover:underline"
 				>
-					Account
+					{t('account')}
 				</Link>
 				<ChevronRight className="mx-2 h-4 w-4 text-gray-500" />
-				<span className="text-gray-800">Taxes</span>
+				<span className="text-gray-800">{t('taxes')}</span>
 			</div>
 
 			{/* Page Title */}
-			<h1 className="mb-8 text-3xl font-semibold">Taxes</h1>
+			<h1 className="mb-8 text-3xl font-semibold">{t('page_title')}</h1>
 
 			{/* Tabs */}
 			<div className="mb-8 border-b border-gray-200">
@@ -121,7 +123,7 @@ export default function TaxesPage() {
 						}`}
 						onClick={() => setActiveTab('taxpayers')}
 					>
-						Taxpayers
+						{t('taxpayers_tab')}
 					</button>
 					<button
 						className={`px-1 pb-4 ${
@@ -131,7 +133,7 @@ export default function TaxesPage() {
 						}`}
 						onClick={() => setActiveTab('documents')}
 					>
-						Tax documents
+						{t('documents_tab')}
 					</button>
 				</div>
 			</div>
@@ -140,11 +142,11 @@ export default function TaxesPage() {
 				<div className="space-y-12">
 					{/* Taxpayer Information Section */}
 					<div>
-						<h2 className="mb-2 text-xl font-semibold">Taxpayer information</h2>
+						<h2 className="mb-2 text-xl font-semibold">{t('taxpayer_info')}</h2>
 						<p className="mb-4 text-gray-600">
-							Tax info is required for most countries/regions.{' '}
+							{t('tax_info_required')}{' '}
 							<Link href="#" className="underline">
-								Learn more
+								{t('learn_more')}
 							</Link>
 						</p>
 
@@ -155,7 +157,7 @@ export default function TaxesPage() {
 										<div className="flex justify-between">
 											<div>
 												<p className="font-medium">
-													Tax ID: {userData.taxInfo.taxId}
+													{t('tax_id')}: {userData.taxInfo.taxId}
 												</p>
 												<p className="text-sm text-gray-500">
 													{userData.taxInfo.address}, {userData.taxInfo.city},{' '}
@@ -167,7 +169,7 @@ export default function TaxesPage() {
 												onClick={() => setShowTaxInfoForm(true)}
 												className="font-medium text-black underline"
 											>
-												Edit
+												{t('edit')}
 											</button>
 										</div>
 									</div>
@@ -176,7 +178,7 @@ export default function TaxesPage() {
 										onClick={() => setShowTaxInfoForm(true)}
 										className="rounded-lg bg-black px-4 py-2 text-white hover:bg-gray-800"
 									>
-										Add tax info
+										{t('add_tax_info')}
 									</button>
 								)}
 							</div>
@@ -186,12 +188,12 @@ export default function TaxesPage() {
 								className="space-y-4 rounded-lg border border-gray-200 p-6"
 							>
 								<h3 className="mb-2 text-lg font-medium">
-									Add tax information
+									{t('add_tax_info')}
 								</h3>
 
 								<div>
 									<label className="mb-1 block text-sm font-medium text-gray-700">
-										Tax ID Number
+										{t('tax_id_number')}
 									</label>
 									<input
 										type="text"
@@ -205,7 +207,7 @@ export default function TaxesPage() {
 
 								<div>
 									<label className="mb-1 block text-sm font-medium text-gray-700">
-										Country
+										{t('country')}
 									</label>
 									<select
 										name="country"
@@ -214,19 +216,19 @@ export default function TaxesPage() {
 										className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-black"
 										required
 									>
-										<option value="">Select a country</option>
-										<option value="United States">United States</option>
-										<option value="Canada">Canada</option>
-										<option value="United Kingdom">United Kingdom</option>
-										<option value="France">France</option>
-										<option value="Germany">Germany</option>
-										<option value="Spain">Spain</option>
+										<option value="">{t('select_country')}</option>
+										<option value="United States">{t('countries.us')}</option>
+										<option value="Canada">{t('countries.ca')}</option>
+										<option value="United Kingdom">{t('countries.uk')}</option>
+										<option value="France">{t('countries.fr')}</option>
+										<option value="Germany">{t('countries.de')}</option>
+										<option value="Spain">{t('countries.es')}</option>
 									</select>
 								</div>
 
 								<div>
 									<label className="mb-1 block text-sm font-medium text-gray-700">
-										Address
+										{t('address')}
 									</label>
 									<input
 										type="text"
@@ -241,7 +243,7 @@ export default function TaxesPage() {
 								<div className="grid grid-cols-2 gap-4">
 									<div>
 										<label className="mb-1 block text-sm font-medium text-gray-700">
-											City
+											{t('city')}
 										</label>
 										<input
 											type="text"
@@ -254,7 +256,7 @@ export default function TaxesPage() {
 									</div>
 									<div>
 										<label className="mb-1 block text-sm font-medium text-gray-700">
-											State/Province
+											{t('state_province')}
 										</label>
 										<input
 											type="text"
@@ -269,7 +271,7 @@ export default function TaxesPage() {
 
 								<div>
 									<label className="mb-1 block text-sm font-medium text-gray-700">
-										Postal Code
+										{t('postal_code')}
 									</label>
 									<input
 										type="text"
@@ -283,14 +285,14 @@ export default function TaxesPage() {
 
 								<div className="flex space-x-4 pt-2">
 									<ButtonPrimary type="submit" disabled={loading}>
-										{loading ? 'Saving...' : 'Save'}
+										{loading ? t('saving') : t('save')}
 									</ButtonPrimary>
 									<button
 										type="button"
 										onClick={() => setShowTaxInfoForm(false)}
 										className="rounded-lg border border-gray-300 px-4 py-2 hover:bg-gray-50"
 									>
-										Cancel
+										{t('cancel')}
 									</button>
 								</div>
 							</form>
@@ -299,13 +301,11 @@ export default function TaxesPage() {
 
 					{/* VAT Section */}
 					<div>
-						<h2 className="mb-2 text-xl font-semibold">
-							Value Added Tax (VAT)
-						</h2>
+						<h2 className="mb-2 text-xl font-semibold">{t('vat_title')}</h2>
 						<p className="mb-4 text-gray-600">
-							If you are VAT-registered, please add your VAT ID.{' '}
+							{t('vat_description')}{' '}
 							<Link href="#" className="underline">
-								Learn more
+								{t('learn_more')}
 							</Link>
 						</p>
 
@@ -316,17 +316,17 @@ export default function TaxesPage() {
 										<div className="flex justify-between">
 											<div>
 												<p className="font-medium">
-													VAT ID: {userData.taxInfo.vatId}
+													{t('vat_id')}: {userData.taxInfo.vatId}
 												</p>
 												<p className="text-sm text-gray-500">
-													Country: {userData.taxInfo.vatCountry}
+													{t('country')}: {userData.taxInfo.vatCountry}
 												</p>
 											</div>
 											<button
 												onClick={() => setShowVatForm(true)}
 												className="font-medium text-black underline"
 											>
-												Edit
+												{t('edit')}
 											</button>
 										</div>
 									</div>
@@ -335,7 +335,7 @@ export default function TaxesPage() {
 										onClick={() => setShowVatForm(true)}
 										className="rounded-lg bg-black px-4 py-2 text-white hover:bg-gray-800"
 									>
-										Add VAT ID Number
+										{t('add_vat_id')}
 									</button>
 								)}
 							</div>
@@ -345,12 +345,12 @@ export default function TaxesPage() {
 								className="space-y-4 rounded-lg border border-gray-200 p-6"
 							>
 								<h3 className="mb-2 text-lg font-medium">
-									Add VAT information
+									{t('add_vat_info')}
 								</h3>
 
 								<div>
 									<label className="mb-1 block text-sm font-medium text-gray-700">
-										VAT ID Number
+										{t('vat_id_number')}
 									</label>
 									<input
 										type="text"
@@ -364,7 +364,7 @@ export default function TaxesPage() {
 
 								<div>
 									<label className="mb-1 block text-sm font-medium text-gray-700">
-										Country
+										{t('country')}
 									</label>
 									<select
 										name="vatCountry"
@@ -373,26 +373,26 @@ export default function TaxesPage() {
 										className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-black"
 										required
 									>
-										<option value="">Select a country</option>
-										<option value="United Kingdom">United Kingdom</option>
-										<option value="France">France</option>
-										<option value="Germany">Germany</option>
-										<option value="Spain">Spain</option>
-										<option value="Italy">Italy</option>
-										<option value="Netherlands">Netherlands</option>
+										<option value="">{t('select_country')}</option>
+										<option value="United Kingdom">{t('countries.uk')}</option>
+										<option value="France">{t('countries.fr')}</option>
+										<option value="Germany">{t('countries.de')}</option>
+										<option value="Spain">{t('countries.es')}</option>
+										<option value="Italy">{t('countries.it')}</option>
+										<option value="Netherlands">{t('countries.nl')}</option>
 									</select>
 								</div>
 
 								<div className="flex space-x-4 pt-2">
 									<ButtonPrimary type="submit" disabled={loading}>
-										{loading ? 'Saving...' : 'Save'}
+										{loading ? t('saving') : t('save')}
 									</ButtonPrimary>
 									<button
 										type="button"
 										onClick={() => setShowVatForm(false)}
 										className="rounded-lg border border-gray-300 px-4 py-2 hover:bg-gray-50"
 									>
-										Cancel
+										{t('cancel')}
 									</button>
 								</div>
 							</form>
@@ -402,15 +402,11 @@ export default function TaxesPage() {
 			) : (
 				<div className="space-y-8">
 					<div>
-						<p className="mb-4 text-gray-600">
-							Tax documents required for filing taxes are available to review
-							and download here.
-						</p>
+						<p className="mb-4 text-gray-600">{t('tax_docs_description')}</p>
 						<p className="mb-6 text-gray-600">
-							You can also file taxes using detailed earnings info, available in
-							the{' '}
+							{t('tax_docs_alternative')}{' '}
 							<Link href="#" className="underline">
-								earnings summary
+								{t('earnings_summary')}
 							</Link>
 							.
 						</p>
@@ -426,21 +422,21 @@ export default function TaxesPage() {
 										{yearData.documents.map((doc, index) => (
 											<li key={index} className="flex items-center">
 												<FileText className="mr-2 h-5 w-5 text-gray-500" />
-												<span>Document name</span>
+												<span>{t('document_name')}</span>
 											</li>
 										))}
 									</ul>
 								) : (
-									<p className="text-gray-500">No tax document issued</p>
+									<p className="text-gray-500">{t('no_tax_docs')}</p>
 								)}
 							</div>
 						))}
 
 						<div className="mt-6">
 							<p className="text-gray-600">
-								For tax documents issued prior to 2021,{' '}
+								{t('prior_tax_docs')}{' '}
 								<Link href="#" className="underline">
-									contact us
+									{t('contact_us')}
 								</Link>
 								.
 							</p>
@@ -451,11 +447,11 @@ export default function TaxesPage() {
 
 			{/* Help Section */}
 			<div className="mt-12 border-t border-gray-200 pt-6">
-				<h2 className="mb-2 text-xl font-semibold">Need help?</h2>
+				<h2 className="mb-2 text-xl font-semibold">{t('need_help')}</h2>
 				<p className="text-gray-600">
-					Get answers to questions about taxes in our{' '}
+					{t('help_description')}{' '}
 					<Link href="#" className="underline">
-						Help Center
+						{t('help_center')}
 					</Link>
 					.
 				</p>

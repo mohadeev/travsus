@@ -292,5 +292,320 @@
     "test_page_Plan_Your_Flexible_Trip": "规划灵活旅行",
     "test_page_Simple_Booking_Process": "简易预订流程",
     "test_page_Travel_With_Ultimate_Flexibility": "享受极致灵活的出行体验"
+  },
+  "app_locale_transtest_page": {
+    "app_locale_transtest_page_Translate_This_Page_To_Test_It": "翻译此页面进行测试"
+  },
+  "components_AccountPass": {
+    "components_AccountPass_New_And_Confirm_Password_Not_Match": "新密码和确认密码不匹配",
+    "components_AccountPass_Failed_To_Update_Password": "更新密码失败",
+    "components_AccountPass_Password_Updated_Successfully": "密码更新成功",
+    "components_AccountPass_Error_Updating_Password": "更新密码时出错",
+    "components_AccountPass_Current_Password": "当前密码",
+    "components_AccountPass_New_Password": "新密码",
+    "components_AccountPass_Confirm_Password": "确认密码",
+    "components_AccountPass_Updating": "正在更新",
+    "components_AccountPass_Update_Password": "更新密码"
+  },
+  "components_AnimatedFeatures": {
+    "components_AnimatedFeatures_Personal_Travel_Assistant": "个人旅行助手",
+    "components_AnimatedFeatures_Personal_Travel_Assistant_Description": "通过我们的AI驱动的个人助手，体验前所未有的旅行。获取实时推荐，即时支持和定制行程。",
+    "components_AnimatedFeatures_24_7_Personalized_Support": "24/7个性化支持",
+    "components_AnimatedFeatures_AI_Driven_Recommendations": "AI驱动的推荐",
+    "components_AnimatedFeatures_Real_Time_Itinerary_Updates": "实时行程更新",
+    "components_AnimatedFeatures_AI_Powered_Travel_Assistant": "AI驱动的旅行助手",
+    "components_AnimatedFeatures_Smart_Booking": "智能预订",
+    "components_AnimatedFeatures_Smart_Booking_Description": "告别复杂的预订流程。我们的智能预订系统利用尖端技术为您找到最好的交易和选项。",
+    "components_AnimatedFeatures_One_Tap_Booking_For_All_Your_Needs": "一键预订满足您的所有需求",
+    "components_AnimatedFeatures_Price_Prediction_And_Alerts": "价格预测和警报",
+    "components_AnimatedFeatures_Flexible_Cancellation_Options": "灵活的取消选项",
+    "components_AnimatedFeatures_Smart_Booking_System": "智能预订系统"
+  },
+  "components_BtnLikeIcon": {
+    "components_BtnLikeIcon_Save": "保存"
+  },
+  "components_CarCard": {
+    "components_CarCard_Car": "汽车",
+    "components_CarCard_Ads": "广告",
+    "components_CarCard_Seats": "座位",
+    "components_CarCard_Per_Day": "/天"
+  },
+  "components_CarCardH": {
+    "components_CarCardH_Ads": "广告",
+    "components_CarCardH_4_Seats": "4个座位",
+    "components_CarCardH_Auto_Gearbox": "自动变速器",
+    "components_CarCardH_2_Bags": "2个包",
+    "components_CarCardH_Car_Owner": "车主",
+    "components_CarCardH_Per_Day": "/天"
+  },
+  "components_CardAuthorBox": {
+    "components_CardAuthorBox_New_York": "纽约"
+  },
+  "components_CardCategory1": {
+    "components_CardCategory1_Articles": "文章"
+  },
+  "components_CardCategory3": {
+    "components_CardCategory3_Properties": "属性"
+  },
+  "components_CardCategory4": {
+    "components_CardCategory4_Properties": "属性",
+    "components_CardCategory4_Cars": "汽车",
+    "components_CardCategory4_Experiences": "经验"
+  },
+  "components_CardCategory5": {
+    "components_CardCategory5_Properties": "属性"
+  },
+  "components_CardCategory6": {
+    "components_CardCategory6_Properties": "属性"
+  },
+  "components_CardCategoryBox1": {
+    "components_CardCategoryBox1_Minutes_Drive": "19分钟驾驶"
+  },
+  "components_Collection": {
+    "components_Collection_Show_More": "显示更多"
+  },
+  "components_CollectionsGrid": {
+    "components_CollectionsGrid_Failed_To_Fetch_Collections": "无法获取收藏",
+    "components_CollectionsGrid_No_Collections_Found": "未找到收藏",
+    "components_CollectionsGrid_Error_Fetching_Collections": "获取收藏时出错：",
+    "components_CollectionsGrid_An_Unknown_Error_Occurred": "发生未知错误",
+    "components_CollectionsGrid_No_Collections_Found_For_This_Location": "此位置未找到收藏。",
+    "components_CollectionsGrid_Scroll_Left": "向左滚动",
+    "components_CollectionsGrid_Scroll_Right": "向右滚动"
+  },
+  "components_CommentListing": {
+    "components_CommentListing_Review_In": " 在 ",
+    "components_CommentListing_The_Lounge_And_Bar": "休息室和酒吧"
+  },
+  "components_CountryCard": {
+    "components_CountryCard_Country_Name": "国家名称"
+  },
+  "components_DatePickerCustomHeaderTwoMonth": {
+    "components_DatePickerCustomHeaderTwoMonth_Previous_Month": "上个月",
+    "components_DatePickerCustomHeaderTwoMonth_Next_Month": "下个月"
+  },
+  "components_ExperiencesCard": {
+    "components_ExperiencesCard_Ads": "广告",
+    "components_ExperiencesCard_Per_Person": "/人"
+  },
+  "components_ExperiencesCardH": {
+    "components_ExperiencesCardH_Ads": "广告",
+    "components_ExperiencesCardH_Making_A_Cup_Of_Coffee": "在越南制作一杯咖啡是一个完整的过程，你几乎没有空闲的时间。但这也不是一个真正复杂的任务来开始一天",
+    "components_ExperiencesCardH_3_Hours": "3小时",
+    "components_ExperiencesCardH_Up_To_6_People": "最多6人",
+    "components_ExperiencesCardH_Hosted_By": "主办方",
+    "components_ExperiencesCardH_Per_Person": "/人"
+  },
+  "components_FlightCard": {
+    "components_FlightCard_Monday_August_12_10": "星期一，8月12日 · 10:00",
+    "components_FlightCard_Tokyo_International_Airport": "东京国际机场 (HND)",
+    "components_FlightCard_Monday_August_16_10": "星期一，8月16日 · 10:00",
+    "components_FlightCard_Singapore_International_Airport": "新加坡国际机场 (SIN)",
+    "components_FlightCard_Trip_Time_7_Hours_45_Minutes": "旅行时间：7小时45分钟",
+    "components_FlightCard_ANA_Business_Class_Boeing_787_NH_847": "全日空 · 商务舱 · 波音787 · NH 847",
+    "components_FlightCard_Transit_Time_15_Hours_45_Minutes_Bangkok": "中转时间：15小时45分钟 - 曼谷 (BKK)",
+    "components_FlightCard_Nonstop": "直飞",
+    "components_FlightCard_1_Stop": "1次停靠",
+    "components_FlightCard_Round_Trip": "往返"
+  },
+  "components_FooterNav": {
+    "components_FooterNav_Travsus": "Travsus",
+    "components_FooterNav_Wishlists": "愿望清单",
+    "components_FooterNav_Log_in": "登录",
+    "components_FooterNav_Menu": "菜单",
+    "components_FooterNav_User": "用户",
+    "components_FooterNav_Sign_In": "登入"
+  },
+  "components_GallerySlider": {
+    "components_GallerySlider_Listing_Card_Gallery": "列表卡片画廊"
+  },
+  "components_GroupToursList": {
+    "components_GroupToursList_Hot_Group_Tours": "热门团体游"
+  },
+  "components_HeaderFilter": {
+    "components_HeaderFilter_View_All": "查看全部"
+  },
+  "components_ItemsCardList": {
+    "components_ItemsCardList_No_Tours_Found": "未找到旅行团",
+    "components_ItemsCardList_Error_Fetching_Tours": "获取旅行团错误：",
+    "components_ItemsCardList_Failed_To_Load_Tours": "无法加载旅行团",
+    "components_ItemsCardList_Failed_To_Fetch_Locations": "无法获取位置",
+    "components_ItemsCardList_Unknown_City": "未知城市",
+    "components_ItemsCardList_No_Locations_Found": "未找到位置",
+    "components_ItemsCardList_Error_Fetching_Locations": "获取位置错误：",
+    "components_ItemsCardList_Failed_To_Load_Locations": "无法加载位置",
+    "components_ItemsCardList_Popular_Countries": "热门国家",
+    "components_ItemsCardList_Cities_In": "城市在",
+    "components_ItemsCardList_Popular_Cities": "热门城市",
+    "components_ItemsCardList_Places_In": "地点在",
+    "components_ItemsCardList_Places_To_Visit": "要参观的地方",
+    "components_ItemsCardList_Popular_Tours": "热门旅行团",
+    "components_ItemsCardList_Popular_Destinations": "热门目的地",
+    "components_ItemsCardList_Explore_Top_Countries": "探索世界各地的顶级国家",
+    "components_ItemsCardList_Discover_Amazing_Cities": "发现令人惊叹的城市",
+    "components_ItemsCardList_Must_See_Attractions": "必看的景点和体验",
+    "components_ItemsCardList_Scroll_Left": "向左滚动",
+    "components_ItemsCardList_Scroll_Right": "向右滚动"
+  },
+  "components_LikeSaveBtns": {
+    "components_LikeSaveBtns_Tour_Link_Copied": "🎉 巡回链接已复制！",
+    "components_LikeSaveBtns_Copy_Failed": "😕 哎呀！复制失败",
+    "components_LikeSaveBtns_Email_Subject": "🌍 看看这个来自Travsus的精彩旅行！",
+    "components_LikeSaveBtns_Email_Body": "嘿！👋 我发现了这个令人难以置信的旅行，我想你会喜欢它！🏞️✈️\n\n看看这个：${url}\n\n让我们计划我们的下一次冒险！🗺️🧳",
+    "components_LikeSaveBtns_Share_Tour": "分享旅行",
+    "components_LikeSaveBtns_Copy_Tour_Link": "🔗 复制旅行链接",
+    "components_LikeSaveBtns_Email_Tour": "✉️ 电子邮件旅行",
+    "components_LikeSaveBtns_Save_Tour": "保存旅行"
+  },
+  "components_MapContainer": {
+    "components_MapContainer_Search_As_I_Move_The_Map": "随着我移动地图进行搜索"
+  },
+  "components_ModalSelectDate": {
+    "components_ModalSelectDate_Select_Date": "选择日期",
+    "components_ModalSelectDate_Whens_Your_Trip": "您的旅行是什么时候？",
+    "components_ModalSelectDate_Clear_Dates": "清除日期",
+    "components_ModalSelectDate_Save": "保存"
+  },
+  "components_ModalSelectGuests": {
+    "components_ModalSelectGuests_Select_Date": "选择日期",
+    "components_ModalSelectGuests_Clear_Data": "清除数据",
+    "components_ModalSelectGuests_Save": "保存"
+  },
+  "components_PostCardMetaV2": {
+    "components_PostCardMetaV2_Separator": "·"
+  },
+  "components_PropertyCardH": {
+    "components_PropertyCardH_6_Beds": "6张床",
+    "components_PropertyCardH_3_Baths": "3个浴室",
+    "components_PropertyCardH_1200_Sq_Fit": "1200平方英尺",
+    "components_PropertyCardH_4_Network": "4网络",
+    "components_PropertyCardH_Family": "家庭",
+    "components_PropertyCardH_Ads": "广告"
+  },
+  "components_SaleOffBadge": {
+    "components_SaleOffBadge_Desc": "今天-10%"
+  },
+  "components_SectionBecomeAnAuthor": {
+    "components_SectionBecomeAnAuthor_Why_Did_You_Choose_Us": "为什么选择我们？",
+    "components_SectionBecomeAnAuthor_Accompanying_Us_You_Have_A_Trip": "与我们同行，您将拥有充满体验的旅程。使用Travsus，预订住宿，度假别墅，酒店，私人住宅，公寓...变得快速，方便且容易。",
+    "components_SectionBecomeAnAuthor_Become_An_Author": "成为作者"
+  },
+  "components_SectionClientSay": {
+    "components_SectionClientSay_Lets_See_What_People_Think": "让我们看看人们对Travsus的看法",
+    "components_SectionClientSay_Good_News_From_Far_Away": "来自远方的好消息"
+  },
+  "components_SectionGridAuthorBox": {
+    "components_SectionGridAuthorBox_Rating_Based_On_Customer_Reviews": "基于客户评价的评分",
+    "components_SectionGridAuthorBox_Top_10_Author_Of_The_Month": "本月十大作者",
+    "components_SectionGridAuthorBox_Show_Me_More": "显示更多",
+    "components_SectionGridAuthorBox_Become_A_Host": "成为主持人"
+  },
+  "components_SectionGridCategoryBox": {
+    "components_SectionGridCategoryBox_Discover_Great_Places": "发现您居住地附近的美好地方",
+    "components_SectionGridCategoryBox_Explore_Nearby": "探索附近"
+  },
+  "app_locale_CardImage": {
+    "app_locale_CardImage_Hello": "你好",
+    "app_locale_CardImage_Age": "年龄"
+  },
+  "app_locale_ClientHomePage": {
+    "app_locale_ClientHomePage_Premium_Travel_Experiences": "专业规划和独家优惠的高级旅行体验。",
+    "app_locale_ClientHomePage_Your_Journey_You_Deserve": "您的旅程，您应得的最好",
+    "app_locale_ClientHomePage_Best_Price_Guarantee": "最低价格保证",
+    "app_locale_ClientHomePage_No_Hidden_Fees": "无隐藏费用",
+    "app_locale_ClientHomePage_5_Star_Service_Quality": "五星级服务质量",
+    "app_locale_ClientHomePage_Expert_Travel_Planning": "专家旅行规划，提供豪华体验和独家优惠。",
+    "app_locale_ClientHomePage_Worldwide": "全球",
+    "app_locale_ClientHomePage_Travel_Services": "旅行服务",
+    "app_locale_ClientHomePage_Personalized_Travel_Planning": "专家定制的旅行规划",
+    "app_locale_ClientHomePage_Luxury_Accommodations": "豪华住宿",
+    "app_locale_ClientHomePage_Premium_Hotels": "高级酒店和独家物业",
+    "app_locale_ClientHomePage_VIP_Services": "VIP服务",
+    "app_locale_ClientHomePage_Exclusive_Perks": "独家优惠和内部访问",
+    "app_locale_ClientHomePage_Popular_Tours": "热门旅行",
+    "app_locale_ClientHomePage_Discover_Exciting_Tours": "发现令人兴奋的旅行和体验",
+    "app_locale_ClientHomePage_Popular_Cities": "热门城市"
+  },
+  "app_locale_featurenotificationform": {
+    "app_locale_featurenotificationform_Coming_Soon": "即将推出",
+    "app_locale_featurenotificationform_Enter_Your_Email_Address": "请输入您的电子邮件地址",
+    "app_locale_featurenotificationform_Submitting": "正在提交...",
+    "app_locale_featurenotificationform_Notify_Me": "通知我",
+    "app_locale_featurenotificationform_By_Signing_Up": "通过注册，您同意我们的",
+    "app_locale_featurenotificationform_Terms_And_Conditions": "条款与条件"
+  },
+  "app_locale_newslettermodal": {
+    "app_locale_newslettermodal_Sign_Up_Today": "立即注册",
+    "app_locale_newslettermodal_Its_Easy_And_Free": "简单且免费",
+    "app_locale_newslettermodal_Email_Address": "电子邮件地址",
+    "app_locale_newslettermodal_Enter_Your_Email_Address": "输入您的电子邮件地址（最多60个字符）",
+    "app_locale_newslettermodal_Select_Newsletter_Types": "选择通讯类型（已选择{selectedTypes.length}种）",
+    "app_locale_newslettermodal_Subscribing": "正在订阅...",
+    "app_locale_newslettermodal_Sign_Up": "注册",
+    "app_locale_newslettermodal_By_Signing_Up_I_Agree_To_The": "通过注册，我同意",
+    "app_locale_newslettermodal_Terms_And_Conditions": "条款和条件"
+  },
+  "app_locale_referralprogrammodal": {
+    "app_locale_referralprogrammodal_Earn": "赚取",
+    "app_locale_referralprogrammodal_Per_Month": "每月",
+    "app_locale_referralprogrammodal_Join_Our_Referral_Program": "加入我们的推荐计划，通过将新客户推荐到我们的平台，每月可赚取高达€2500的佣金。您推荐的人越多，您赚的就越多！",
+    "app_locale_referralprogrammodal_Enter_Your_Email_Address": "输入您的电子邮件地址",
+    "app_locale_referralprogrammodal_Submitting": "提交中...",
+    "app_locale_referralprogrammodal_Join_Program": "加入计划",
+    "app_locale_referralprogrammodal_By_Signing_Up": "通过注册，您同意我们的",
+    "app_locale_referralprogrammodal_Terms_And_Conditions": "条款和条件"
+  },
+  "app_locale_TestAnything": {
+    "app_locale_TestAnything_Test_Anything": "测试任何事物"
+  },
+  "app_locale_continent_country_region_city_category_name_servicedetail_SectionDateRange": {
+    "app_locale_continent_country_region_city_category_name_servicedetail_SectionDateRange_Availability": "可用性",
+    "app_locale_continent_country_region_city_category_name_servicedetail_SectionDateRange_Prices_May_Increase": "周末或假日价格可能会上涨"
+  },
+  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer": {
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Arrival_At_Marrakech": "抵达马拉喀什",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Visit_Jemaa_El_Fnaa": "参观杰玛艾芙纳广场",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Explore_Bahia_Palace": "探索巴希亚宫",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Day_Trip_To_Ouzoud_Falls": "前往乌祖德瀑布的一日游",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Travel_To_Essaouira": "前往索维拉",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Beach_Day_Seafood_Dinner": "海滩日&海鲜晚餐",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Visit_Ait_Ben_Haddou": "参观艾特本哈杜",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Cross_The_Atlas_Mountains": "穿越阿特拉斯山脉",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Explore_Merzouga_Desert": "探索梅尔祖卡沙漠",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Camel_Trek_At_Sunset": "日落时分的骆驼之旅",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Visit_Fes_Medina": "参观菲斯麦地那",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Explore_Fes_Tanneries": "探索菲斯制革厂",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Shopping_In_Fes_Souks": "在菲斯市场购物",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Departure_From_Fes": "离开菲斯",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_See_More": "查看更多",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Show_Less": "显示较少"
+  },
+  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_FAQProps": {
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_FAQProps_Frequently_Asked_Questions": "常见问题"
+  },
+  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput": {
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Guests": "客人",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Add_Guests": "添加客人",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Adults": "成人",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Ages_13_Or_Above": "13岁或以上",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Children": "儿童",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Ages_1_13": "1-13岁"
+  },
+  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_Included": {
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_Included_Included": "包含",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_Included_Everything_Included_In_Your_Package": "您的套餐中包含的所有内容"
+  },
+  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_LineItemsBreakdown": {
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_LineItemsBreakdown_Grand_Total": "总计"
+  },
+  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ListingExperiencesDetailsImages": {
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ListingExperiencesDetailsImages_Show_All_Photos": "显示所有照片"
+  },
+  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page": {
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page_Overview": "概述",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page_Host_Information": "主持人信息",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page_Reviews": "评论",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page_reviews": "评论",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page_Things_to_know": "须知"
   }
 }

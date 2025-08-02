@@ -1,5 +1,4 @@
-"use client";
-
+import { useTranslations } from '@/lib/i18n';
 import Image from "next/image";
 import React, { FC, useState } from "react";
 
@@ -17,6 +16,7 @@ export interface FlightCardProps {
 
 const FlightCard: FC<FlightCardProps> = ({ className = "", data }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const t = useTranslations("components_FlightCard");
 
   const renderDetailTop = () => {
     return (
@@ -41,26 +41,26 @@ const FlightCard: FC<FlightCardProps> = ({ className = "", data }) => {
             <div className="ml-4 space-y-10 text-sm">
               <div className="flex flex-col space-y-1">
                 <span className=" text-neutral-500 dark:text-neutral-400">
-                  Monday, August 12 · 10:00
+                  {t('components_FlightCard_Monday_August_12_10')}
                 </span>
                 <span className=" font-semibold">
-                  Tokyo International Airport (HND)
+                  {t('components_FlightCard_Tokyo_International_Airport')}
                 </span>
               </div>
               <div className="flex flex-col space-y-1">
                 <span className=" text-neutral-500 dark:text-neutral-400">
-                  Monday, August 16 · 10:00
+                  {t('components_FlightCard_Monday_August_16_10')}
                 </span>
                 <span className=" font-semibold">
-                  Singapore International Airport (SIN)
+                  {t('components_FlightCard_Singapore_International_Airport')}
                 </span>
               </div>
             </div>
           </div>
           <div className="border-l border-neutral-200 dark:border-neutral-700 md:mx-6 lg:mx-10"></div>
           <ul className="text-sm text-neutral-500 dark:text-neutral-400 space-y-1 md:space-y-2">
-            <li>Trip time: 7 hours 45 minutes</li>
-            <li>ANA · Business class · Boeing 787 · NH 847</li>
+            <li>{t('components_FlightCard_Trip_Time_7_Hours_45_Minutes')}</li>
+            <li>{t('components_FlightCard_ANA_Business_Class_Boeing_787_NH_847')}</li>
           </ul>
         </div>
       </div>
@@ -75,7 +75,7 @@ const FlightCard: FC<FlightCardProps> = ({ className = "", data }) => {
         <div className="my-7 md:my-10 space-y-5 md:pl-24">
           <div className="border-t border-neutral-200 dark:border-neutral-700" />
           <div className="text-neutral-700 dark:text-neutral-300 text-sm md:text-base">
-            Transit time: 15 hours 45 minutes - Bangkok (BKK)
+            {t('components_FlightCard_Transit_Time_15_Hours_45_Minutes_Bangkok')}
           </div>
           <div className="border-t border-neutral-200 dark:border-neutral-700" />
         </div>
@@ -136,7 +136,7 @@ const FlightCard: FC<FlightCardProps> = ({ className = "", data }) => {
             </div>
 
             <div className="text-sm text-neutral-500 font-normal mt-0.5">
-              <span className="VG3hNb">Nonstop</span>
+              <span className="VG3hNb">{t('components_FlightCard_Nonstop')}</span>
               <span className="mx-2">·</span>
               <span>7h 45m</span>
               <span className="mx-2">·</span>
@@ -162,7 +162,7 @@ const FlightCard: FC<FlightCardProps> = ({ className = "", data }) => {
 
           {/* TYPE */}
           <div className="hidden lg:block flex-[4] whitespace-nowrap">
-            <div className="font-medium text-lg">1 stop</div>
+            <div className="font-medium text-lg">{t('components_FlightCard_1_Stop')}</div>
             <div className="text-sm text-neutral-500 font-normal mt-0.5">
               2 hours 15 minutes BKK
             </div>
@@ -176,7 +176,7 @@ const FlightCard: FC<FlightCardProps> = ({ className = "", data }) => {
               </span>
             </div>
             <div className="text-xs sm:text-sm text-neutral-500 font-normal mt-0.5">
-              round-trip
+              {t('components_FlightCard_Round_Trip')}
             </div>
           </div>
         </div>

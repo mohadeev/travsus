@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
+import { useTranslations } from '@/lib/i18n'
 
 interface Day {
   name: string
@@ -16,6 +17,7 @@ interface DotsContainerProps {
 }
 
 export default function DotsContainer({ days, onDayClick, selectedDayIndex }: DotsContainerProps) {
+  const t = useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer");
   const [dotDensity, setDotDensity] = useState(8) // 8px or 4px spacing between dots
   const [dotsPerDay, setDotsPerDay] = useState<number[][]>(Array(days.length).fill([]))
   // Track expanded state for each day individually
@@ -25,20 +27,20 @@ export default function DotsContainer({ days, onDayClick, selectedDayIndex }: Do
 
   // Sample itinerary items
   const itineraryItems = [
-    "Arrival at Marrakech",
-    "Visit Jemaa el-Fnaa",
-    "Explore Bahia Palace",
-    "Day trip to Ouzoud Falls",
-    "Travel to Essaouira",
-    "Beach day & seafood dinner",
-    "Visit Ait Ben Haddou",
-    "Cross the Atlas Mountains",
-    "Explore Merzouga Desert",
-    "Camel trek at sunset",
-    "Visit Fes Medina",
-    "Explore Fes tanneries",
-    "Shopping in Fes souks",
-    "Departure from Fes",
+    t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Arrival_At_Marrakech'),
+    t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Visit_Jemaa_El_Fnaa'),
+    t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Explore_Bahia_Palace'),
+    t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Day_Trip_To_Ouzoud_Falls'),
+    t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Travel_To_Essaouira'),
+    t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Beach_Day_Seafood_Dinner'),
+    t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Visit_Ait_Ben_Haddou'),
+    t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Cross_The_Atlas_Mountains'),
+    t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Explore_Merzouga_Desert'),
+    t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Camel_Trek_At_Sunset'),
+    t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Visit_Fes_Medina'),
+    t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Explore_Fes_Tanneries'),
+    t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Shopping_In_Fes_Souks'),
+    t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Departure_From_Fes'),
   ]
 
   // Toggle expansion for a specific day
@@ -186,7 +188,7 @@ export default function DotsContainer({ days, onDayClick, selectedDayIndex }: Do
                         toggleExpand(index)
                       }}
                     >
-                      See more
+                      {t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_See_More')}
                     </span>
                   )}
                 </p>
@@ -198,7 +200,7 @@ export default function DotsContainer({ days, onDayClick, selectedDayIndex }: Do
                       toggleExpand(index)
                     }}
                   >
-                    Show less
+                    {t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Show_Less')}
                   </span>
                 )}
               </div>

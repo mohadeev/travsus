@@ -11,31 +11,30 @@ import {
 } from 'lucide-react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
+import { useTranslations } from '@/lib/i18n'
 
 const features = [
 	{
-		title: 'Personal Travel Assistant',
-		description:
-			'Experience travel like never before with our AI-powered personal assistant. Get real-time recommendations, instant support, and tailored itineraries.',
+		title: 'components_AnimatedFeatures_Personal_Travel_Assistant',
+		description: 'components_AnimatedFeatures_Personal_Travel_Assistant_Description',
 		items: [
-			{ icon: Clock, text: '24/7 personalized support' },
-			{ icon: Smartphone, text: 'AI-driven recommendations' },
-			{ icon: RefreshCcw, text: 'Real-time itinerary updates' },
+			{ icon: Clock, text: 'components_AnimatedFeatures_24_7_Personalized_Support' },
+			{ icon: Smartphone, text: 'components_AnimatedFeatures_AI_Driven_Recommendations' },
+			{ icon: RefreshCcw, text: 'components_AnimatedFeatures_Real_Time_Itinerary_Updates' },
 		],
 		image: 'https://res.cloudinary.com/travsus/image/upload/v1744151941/brandmoment2_size-desktop_zcojix.jpg',
-		alt: 'AI-powered travel assistant',
+		alt: 'components_AnimatedFeatures_AI_Powered_Travel_Assistant',
 	},
 	{
-		title: 'Smart Booking',
-		description:
-			'Say goodbye to complicated booking processes. Our smart booking system leverages cutting-edge technology to find you the best deals and options.',
+		title: 'components_AnimatedFeatures_Smart_Booking',
+		description: 'components_AnimatedFeatures_Smart_Booking_Description',
 		items: [
-			{ icon: CreditCard, text: 'One-tap booking for all your needs' },
-			{ icon: TrendingUp, text: 'Price prediction and alerts' },
-			{ icon: Calendar, text: 'Flexible cancellation options' },
+			{ icon: CreditCard, text: 'components_AnimatedFeatures_One_Tap_Booking_For_All_Your_Needs' },
+			{ icon: TrendingUp, text: 'components_AnimatedFeatures_Price_Prediction_And_Alerts' },
+			{ icon: Calendar, text: 'components_AnimatedFeatures_Flexible_Cancellation_Options' },
 		],
 		image: 'https://images.pexels.com/photos/7412069/pexels-photo-7412069.jpeg',
-		alt: 'Smart booking system',
+		alt: 'components_AnimatedFeatures_Smart_Booking_System',
 	},
 ]
 
@@ -49,6 +48,7 @@ function FeatureSection({ feature, index }) {
 	const y = useTransform(scrollYProgress, [0, 1], [100, -100])
 	const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.9, 1.05, 0.9])
 	const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.6, 1, 0.6])
+	const t = useTranslations("components_AnimatedFeatures")
 
 	return (
 		<motion.div
@@ -62,9 +62,9 @@ function FeatureSection({ feature, index }) {
 						initial={{ opacity: 0, y: -20 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.5, delay: 0.2 }}
-						className={`mb-4 text-4xl font-bold text-gray-900 ${feature.title === 'Smart Booking' ? 'font-extrabold' : ''}`}
+						className={`mb-4 text-4xl font-bold text-gray-900 ${t(feature.title) === 'Smart Booking' ? 'font-extrabold' : ''}`}
 					>
-						{feature.title}
+						{t(feature.title)}
 					</motion.h2>
 					<motion.p
 						initial={{ opacity: 0 }}
@@ -72,7 +72,7 @@ function FeatureSection({ feature, index }) {
 						transition={{ duration: 0.5, delay: 0.4 }}
 						className="mb-8 text-sm font-normal leading-relaxed text-black"
 					>
-						{feature.description}
+						{t(feature.description)}
 					</motion.p>
 					<ul className="space-y-4">
 						{feature.items.map((item, itemIndex) => (
@@ -86,7 +86,7 @@ function FeatureSection({ feature, index }) {
 								<div className="rounded-full bg-black p-2">
 									<item.icon className="h-5 w-5 text-white" />
 								</div>
-								<span className="text-sm">{item.text}</span>
+								<span className="text-sm">{t(item.text)}</span>
 							</motion.li>
 						))}
 					</ul>
@@ -100,7 +100,7 @@ function FeatureSection({ feature, index }) {
 					<div className="relative h-[400px] overflow-hidden rounded-2xl shadow-lg">
 						<Image
 							src={feature.image || '/placeholder.svg'}
-							alt={feature.alt}
+							alt={t(feature.alt)}
 							fill
 							className="object-cover"
 						/>

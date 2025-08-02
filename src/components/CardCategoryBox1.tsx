@@ -4,6 +4,7 @@ import Badge from '@/shared/Badge'
 import convertNumbThousand from '@/utils/convertNumbThousand'
 import Link from 'next/link'
 import Image from 'next/image'
+import { useTranslations } from '@/lib/i18n'
 
 export interface CardCategoryBox1Props {
 	className?: string
@@ -20,6 +21,9 @@ const CardCategoryBox1: FC<CardCategoryBox1Props> = ({
 	const firstTHumbnails = locationPhotos?.[0]?.images?.large?.url
 	console.log('firstTHumbnails', firstTHumbnails)
 	const thumbnail = firstTHumbnails
+
+	const t = useTranslations("components_CardCategoryBox1");
+
 	return (
 		<Link
 			href={href}
@@ -47,7 +51,7 @@ const CardCategoryBox1: FC<CardCategoryBox1Props> = ({
 				<span
 					className={`mt-2 block text-sm text-neutral-500 dark:text-neutral-400`}
 				>
-					19 minutes drive
+					{t('components_CardCategoryBox1_Minutes_Drive')}
 				</span>
 			</div>
 		</Link>

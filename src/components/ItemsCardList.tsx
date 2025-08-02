@@ -1,5 +1,4 @@
-'use client'
-
+import { useTranslations } from '@/lib/i18n';
 import { type FC, useEffect, useState, useRef } from 'react'
 import CountryCard, { type CountryDataType } from './CountryCard'
 import ContainerExperiencesCardSkeleton from './ContainerExperiencesCardSkeleton'
@@ -9,21 +8,19 @@ import ExperiencesCard from '@/components/ExperiencesCard'
 import allToursFetch from '@/utils/allToursFetch'
 import Heading from '@/shared/Heading'
 
-// Default country codes to fetch
-
 export interface ItemsCardListProps {
 	className?: string
 	itemClassName?: string
 	cardSize?: 'default' | 'small'
 	locationType: 'country' | 'city' | 'place' | 'tour'
-	countryId?: string // For cities within a country
-	cityId?: string // For places within a city by name
+	countryId?: string
+	cityId?: string
 	layout?: 'row' | 'column'
 	heading?: string
 	subHeading?: string
 	limit?: number
-	showArrowsIconsInPhone?: boolean // New parameter - opposite of hideArrowsIconsInPhone
-	currentPage?: number // For tour pagination
+	showArrowsIconsInPhone?: boolean
+	currentPage?: number
 }
 
 const ItemsCardList: FC<ItemsCardListProps> = ({
@@ -37,13 +34,14 @@ const ItemsCardList: FC<ItemsCardListProps> = ({
 	heading = 'Popular Destinations',
 	subHeading = 'Explore top destinations around the world',
 	limit = 16,
-	showArrowsIconsInPhone = false, // Default to false - arrows hidden on mobile by default
-	currentPage = 1, // Default to first page for tours
+	showArrowsIconsInPhone = false,
+	currentPage = 1,
 }) => {
+	const t = useTranslations("components_ItemsCardList");
 	const [locations, setLocations] = useState<CountryDataType[]>([])
 	const [toursData, setToursData] = useState<any[]>([])
 	const [totalPages, setTotalPages] = useState(1)
-	const [loading, setLoading] = useState(true)
+	const [loading, setLoading] = useState(false)
 	const [error, setError] = useState<string | null>(null)
 	const scrollContainerRef = useRef<HTMLDivElement>(null)
 
@@ -59,15 +57,13 @@ const ItemsCardList: FC<ItemsCardListProps> = ({
 		}
 	}
 
-	// Mock data for fallback
 	const mockLocations: CountryDataType[] = []
 
 	useEffect(() => {
 		const fetchLocations = async () => {
 			try {
-				setLoading(true)
+				// setLoading(true)
 
-				// Handle tour type separately
 				if (locationType === 'tour') {
 					try {
 						const data = await allToursFetch(currentPage)
@@ -75,49 +71,42 @@ const ItemsCardList: FC<ItemsCardListProps> = ({
 							setToursData(data.allToursData)
 							setTotalPages(data.totalPages)
 						} else {
-							setError('No tours found')
+							setError(t('components_ItemsCardList_No_Tours_Found'))
 							setToursData([])
 						}
 					} catch (err) {
-						console.error('Error fetching tours:', err)
-						setError('Failed to load tours')
+						console.error(t('components_ItemsCardList_Error_Fetching_Tours'), err)
+						setError(t('components_ItemsCardList_Failed_To_Load_Tours'))
 						setToursData([])
 					} finally {
 						setLoading(false)
 					}
-					return // Exit early for tours
+					return
 				}
 
 				let url = ''
-				// Determine which API endpoint to use based on location type
 				if (locationType === 'country') {
-					// Fetch countries
 					url = `/api/countries?codes=${[]}&limit=${limit}`
 				} else if (locationType === 'city' && countryId) {
-					// Fetch cities for a specific country
 					url = `/api/cities?countryId=${countryId}&limit=${limit}`
 				} else if (locationType === 'place' && cityId) {
-					// Fetch places for a specific city by name
 					url = `/api/placesByCityId?cityId=${cityId}&limit=${limit}`
 				} else {
-					// Default to popular cities
 					url = `/api/cities/popular?limit=${limit}`
 				}
 
 				const response = await fetch(url)
 
 				if (!response.ok) {
-					throw new Error(`Failed to fetch ${locationType}s`)
+					throw new Error(t('components_ItemsCardList_Failed_To_Fetch_Locations'))
 				}
 
 				const data = await response.json()
 				console.log(data)
 
-				// Process the data based on the location type and API response format
 				let formattedLocations: CountryDataType[] = []
 
 				if (locationType === 'country' && data.countries) {
-					// Format country data
 					formattedLocations = data.countries.map((country: any) => {
 						const translation = country.content?.translations?.[0]
 						const name = translation?.text || country.code3
@@ -132,7 +121,6 @@ const ItemsCardList: FC<ItemsCardListProps> = ({
 						}
 					})
 				} else if (locationType === 'place' && cityId && data.data) {
-					// Format places data
 					formattedLocations = data.data.map((place: any) => {
 						return {
 							id: place.id,
@@ -142,11 +130,10 @@ const ItemsCardList: FC<ItemsCardListProps> = ({
 						}
 					})
 				} else if (data.cities || data.data) {
-					// Format city data
 					const cityList = data.cities || data.data || []
 					formattedLocations = cityList.map((city: any) => {
 						const translation = city.content?.translations?.[0]
-						const name = translation?.text || city.name || 'Unknown City'
+						const name = translation?.text || city.name || t('components_ItemsCardList_Unknown_City')
 						const cityCountryId = city.code3 || countryId
 						const imageUrl = city.image?.url || city.image?.uploadFrom
 
@@ -161,53 +148,47 @@ const ItemsCardList: FC<ItemsCardListProps> = ({
 				}
 
 				if (formattedLocations.length === 0) {
-					setError(`No ${locationType}s found`)
-					// Use mock data if no results
+					setError(t('components_ItemsCardList_No_Locations_Found'))
 					setLocations(mockLocations)
 				} else {
 					setLocations(formattedLocations)
 				}
 			} catch (err) {
-				console.error(`Error fetching ${locationType}s:`, err)
-				// Use mock data if API fails
+				console.error(t('components_ItemsCardList_Error_Fetching_Locations'), err)
 				setLocations(mockLocations)
-				setError(`Failed to load ${locationType}s`)
+				setError(t('components_ItemsCardList_Failed_To_Load_Locations'))
 			} finally {
 				setLoading(false)
 			}
 		}
 
 		fetchLocations()
-	}, [locationType, countryId, cityId, limit, currentPage])
+	}, [locationType, countryId, cityId, limit, currentPage, t])
 
-	// Customize heading based on location type
 	const getDefaultHeading = () => {
-		if (locationType === 'country') return 'Popular Countries'
+		if (locationType === 'country') return t('components_ItemsCardList_Popular_Countries')
 		if (locationType === 'city')
-			return countryId ? `Cities in ${countryId}` : 'Popular Cities'
+			return countryId ? `${t('components_ItemsCardList_Cities_In')} ${countryId}` : t('components_ItemsCardList_Popular_Cities')
 		if (locationType === 'place')
-			return cityId ? `Places in ${cityId}` : 'Places to Visit'
-		if (locationType === 'tour') return 'Popular Tours'
-		return 'Popular Destinations'
+			return cityId ? `${t('components_ItemsCardList_Places_In')} ${cityId}` : t('components_ItemsCardList_Places_To_Visit')
+		if (locationType === 'tour') return t('components_ItemsCardList_Popular_Tours')
+		return t('components_ItemsCardList_Popular_Destinations')
 	}
 
-	// Customize subheading based on location type
 	const getDefaultSubheading = () => {
 		if (locationType === 'country')
-			return 'Explore top countries around the world'
-		if (locationType === 'city') return 'Discover amazing cities to visit'
-		if (locationType === 'place') return 'Must-see attractions and experiences'
+			return t('components_ItemsCardList_Explore_Top_Countries')
+		if (locationType === 'city') return t('components_ItemsCardList_Discover_Amazing_Cities')
+		if (locationType === 'place') return t('components_ItemsCardList_Must_See_Attractions')
 		if (locationType === 'tour') return ''
 		return ''
 	}
 
-	// Use custom headings if provided, otherwise use defaults
 	const displayHeading = heading || getDefaultHeading()
 	const displaySubheading = subHeading || getDefaultSubheading()
 
 	return (
 		<div className="my-10 px-4 md:px-0">
-			{/* Heading section */}
 			{loading ? (
 				<div className="mb-5">
 					<div className="h-8 w-64 animate-pulse rounded bg-gray-200"></div>
@@ -217,7 +198,6 @@ const ItemsCardList: FC<ItemsCardListProps> = ({
 				<Heading desc={displaySubheading}>{displayHeading}</Heading>
 			)}
 
-			{/* Content section */}
 			{loading ? (
 				<div
 					className={`grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 ${className}`}
@@ -225,14 +205,12 @@ const ItemsCardList: FC<ItemsCardListProps> = ({
 					<ContainerExperiencesCardSkeleton />
 				</div>
 			) : locationType === 'tour' ? (
-				// Tours content
 				toursData.length === 0 ? (
 					<div className="rounded-lg bg-amber-50 p-4 text-center text-amber-700 dark:bg-amber-900/20 dark:text-amber-400">
-						<p>No tours found</p>
+						<p>{t('components_ItemsCardList_No_Tours_Found')}</p>
 					</div>
 				) : (
 					<>
-						{/* Custom CSS for hiding scrollbars */}
 						<style jsx global>{`
 							.hide-scrollbar::-webkit-scrollbar {
 								display: none;
@@ -244,7 +222,6 @@ const ItemsCardList: FC<ItemsCardListProps> = ({
 						`}</style>
 
 						{layout === 'column' ? (
-							// Column layout - grid view for tours
 							<div
 								className={`grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 ${className}`}
 							>
@@ -253,18 +230,15 @@ const ItemsCardList: FC<ItemsCardListProps> = ({
 								))}
 							</div>
 						) : (
-							// Row layout - horizontal scrolling with navigation arrows for tours
 							<div className="relative">
-								{/* Left navigation arrow */}
 								<button
 									onClick={scrollLeft}
 									className={`absolute left-0 top-1/3 z-10 ${showArrowsIconsInPhone ? 'flex' : 'hidden md:flex'} h-7 w-7 -translate-x-1/2 -translate-y-1/2 transform items-center justify-center rounded-full border border-black bg-white transition-colors duration-200 hover:bg-black hover:text-white focus:outline-none sm:h-8 sm:w-8 md:h-10 md:w-10`}
-									aria-label="Scroll left"
+									aria-label={t('components_ItemsCardList_Scroll_Left')}
 								>
 									<ChevronLeft className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5" />
 								</button>
 
-								{/* Scrollable container */}
 								<div
 									ref={scrollContainerRef}
 									className="hide-scrollbar flex gap-5 overflow-x-auto py-0"
@@ -277,22 +251,11 @@ const ItemsCardList: FC<ItemsCardListProps> = ({
 										))}
 									{loading && <ContainerExperiencesCardSkeleton />}
 								</div>
-								{/* <div
-									ref={scrollContainerRef}
-									className={`hide-scrollbar flex gap-5 overflow-x-auto py-0`}
-								>
-									{toursData.map((stay) => (
-										<div key={stay?.id} className={`flex-none`}>
-											<ExperiencesCard data={stay} />
-										</div>
-									))}
-								</div> */}
 
-								{/* Right navigation arrow */}
 								<button
 									onClick={scrollRight}
 									className={`absolute right-0 top-1/3 z-10 ${showArrowsIconsInPhone ? 'flex' : 'hidden md:flex'} h-7 w-7 -translate-y-1/2 translate-x-1/2 transform items-center justify-center rounded-full border border-black bg-white transition-colors duration-200 hover:bg-black hover:text-white focus:outline-none sm:h-8 sm:w-8 md:h-10 md:w-10`}
-									aria-label="Scroll right"
+									aria-label={t('components_ItemsCardList_Scroll_Right')}
 								>
 									<ChevronRight className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5" />
 								</button>
@@ -306,11 +269,10 @@ const ItemsCardList: FC<ItemsCardListProps> = ({
 				</div>
 			) : locations.length === 0 ? (
 				<div className="rounded-lg bg-amber-50 p-4 text-center text-amber-700 dark:bg-amber-900/20 dark:text-amber-400">
-					<p>No {locationType}s found</p>
+					<p>{t('components_ItemsCardList_No_Locations_Found')}</p>
 				</div>
 			) : (
 				<>
-					{/* Custom CSS for hiding scrollbars */}
 					<style jsx global>{`
 						.hide-scrollbar::-webkit-scrollbar {
 							display: none;
@@ -322,7 +284,6 @@ const ItemsCardList: FC<ItemsCardListProps> = ({
 					`}</style>
 
 					{layout === 'column' ? (
-						// Column layout - grid view
 						<div
 							className={`grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 ${className}`}
 						>
@@ -333,18 +294,15 @@ const ItemsCardList: FC<ItemsCardListProps> = ({
 							))}
 						</div>
 					) : (
-						// Row layout - horizontal scrolling with navigation arrows
 						<div className="relative">
-							{/* Left navigation arrow */}
 							<button
 								onClick={scrollLeft}
 								className={`absolute left-0 top-1/2 z-10 ${showArrowsIconsInPhone ? 'flex' : 'hidden md:flex'} h-7 w-7 -translate-x-1/2 -translate-y-1/2 transform items-center justify-center rounded-full border border-black bg-white transition-colors duration-200 hover:bg-black hover:text-white focus:outline-none sm:h-8 sm:w-8 md:h-10 md:w-10`}
-								aria-label="Scroll left"
+								aria-label={t('components_ItemsCardList_Scroll_Left')}
 							>
 								<ChevronLeft className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5" />
 							</button>
 
-							{/* Scrollable container */}
 							<div
 								ref={scrollContainerRef}
 								className={`hide-scrollbar flex gap-2 overflow-x-auto py-0 ${className}`}
@@ -360,11 +318,10 @@ const ItemsCardList: FC<ItemsCardListProps> = ({
 								))}
 							</div>
 
-							{/* Right navigation arrow */}
 							<button
 								onClick={scrollRight}
 								className={`absolute right-0 top-1/2 z-10 ${showArrowsIconsInPhone ? 'flex' : 'hidden md:flex'} h-7 w-7 -translate-y-1/2 translate-x-1/2 transform items-center justify-center rounded-full border border-black bg-white transition-colors duration-200 hover:bg-black hover:text-white focus:outline-none sm:h-8 sm:w-8 md:h-10 md:w-10`}
-								aria-label="Scroll right"
+								aria-label={t('components_ItemsCardList_Scroll_Right')}
 							>
 								<ChevronRight className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5" />
 							</button>

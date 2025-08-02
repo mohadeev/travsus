@@ -1,8 +1,8 @@
 import React from 'react'
-import { useTranslations } from 'next-intl'
+import { useTranslations } from '@/lib/i18n'
 
 export default function ErrorMessage() {
-	const t = useTranslations(components_ui)
+	const t = useTranslations('components_ui')
 
 	return (
 		<div className="flex min-h-screen items-center justify-center bg-gray-100">

@@ -1,6 +1,7 @@
 'use client'
 
 import type React from 'react'
+import { useTranslations } from 'use-intl'
 
 import { useState } from 'react'
 import { Label } from '@/components/ui/label'
@@ -22,6 +23,7 @@ export default function TourOverviewHighlights({
 	tourData,
 	updateTourData,
 }: TourOverviewHighlightsProps) {
+	const t = useTranslations("dashboard_tour_TourOverviewHighlights")
 	const [newHighlight, setNewHighlight] = useState('')
 
 	// Overview handlers
@@ -61,30 +63,35 @@ export default function TourOverviewHighlights({
 		<div className="space-y-8">
 			{/* Overview Section */}
 			<div className="space-y-4">
-				<h2 className="text-xl font-bold">Tour Overview</h2>
+				<h2 className="text-xl font-bold">
+					{t('dashboard_tour_TourOverviewHighlights_Tour_Overview')}
+				</h2>
 				<div className="space-y-2">
 					<Label
 						htmlFor="overview"
 						className="flex items-center text-sm font-medium"
 					>
-						Tour Overview
+						{t('dashboard_tour_TourOverviewHighlights_Tour_Overview')}
 					</Label>
 					<Textarea
 						id="overview"
 						value={tourData.overview ?? ''}
 						onChange={handleOverviewChange}
 						className="h-64 w-full"
-						placeholder="Provide a detailed description of your tour. What makes it special? What can travelers expect?"
+						placeholder={t(
+							'dashboard_tour_TourOverviewHighlights_Provide_A_Detailed_Description',
+						)}
 					/>
 				</div>
 			</div>
 
 			{/* Highlights Section */}
 			<div className="space-y-4">
-				<h2 className="text-xl font-bold">Tour Highlights</h2>
+				<h2 className="text-xl font-bold">
+					{t('dashboard_tour_TourOverviewHighlights_Tour_Highlights')}
+				</h2>
 				<p className="text-muted-foreground text-sm">
-					Add key highlights or features that make your tour special. These will
-					be prominently displayed to potential customers.
+					{t('dashboard_tour_TourOverviewHighlights_Add_Key_Highlights')}
 				</p>
 
 				{/* Existing highlights */}
@@ -96,7 +103,8 @@ export default function TourOverviewHighlights({
 									htmlFor={`highlight-${index}`}
 									className="mb-1 block text-sm font-medium"
 								>
-									Highlight {index + 1}
+									{t('dashboard_tour_TourOverviewHighlights_Highlight')}{' '}
+									{index + 1}
 								</Label>
 								<Input
 									type="text"
@@ -104,7 +112,9 @@ export default function TourOverviewHighlights({
 									value={highlight.name}
 									onChange={(e) => handleHighlightChange(index, e.target.value)}
 									className="w-full"
-									placeholder="Enter highlight"
+									placeholder={t(
+										'dashboard_tour_TourOverviewHighlights_Enter_Highlight',
+									)}
 								/>
 							</div>
 							<button
@@ -125,7 +135,9 @@ export default function TourOverviewHighlights({
 							type="text"
 							value={newHighlight}
 							onChange={(e) => setNewHighlight(e.target.value)}
-							placeholder="Enter new highlight"
+							placeholder={t(
+								'dashboard_tour_TourOverviewHighlights_Enter_New_Highlight',
+							)}
 							className="w-full"
 							onKeyDown={(e) => {
 								if (e.key === 'Enter') {

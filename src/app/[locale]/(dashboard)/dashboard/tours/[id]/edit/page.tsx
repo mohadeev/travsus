@@ -4,7 +4,7 @@ import { DashboardShell } from '@/components/dashboard/shell'
 import { DashboardHeader } from '@/components/dashboard/header'
 import { getTour } from '@/app/actions/tourActions'
 import { TourBuilder } from '@/components/dashboard/tour-builder'
-import { useTranslations } from 'next-intl'
+import { useTranslations } from '@/lib/i18n'
 
 // export const metadata: Metadata = {
 // 	title: t('dashboard_dashboard_tours_id_edit_page_Edit_Tour'),

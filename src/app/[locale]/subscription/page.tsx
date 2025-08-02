@@ -2,7 +2,7 @@ import { CheckIcon } from '@heroicons/react/24/solid'
 import React, { FC } from 'react'
 import ButtonPrimary from '@/shared/ButtonPrimary'
 import ButtonSecondary from '@/shared/ButtonSecondary'
-import { useTranslations } from 'next-intl'
+import { useTranslations } from '@/lib/i18n'
 
 export interface PageSubcriptionProps {}
 

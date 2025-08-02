@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react'
 import { X } from 'lucide-react'
 import Link from 'next/link'
 import Logo from '@/shared/Logo'
+import { useTranslations } from '@/lib/i18n'
 
 // Message map for referral program
 const messageMap = {
@@ -33,6 +34,7 @@ export default function ReferralProgramModal({
 	const [isLoading, setIsLoading] = useState(false)
 	const [message, setMessage] = useState('')
 	const [isError, setIsError] = useState(false)
+	const t = useTranslations("app_locale_referralprogrammodal")
 
 	// Form submission handler
 	const handleSubmit = async (e: React.FormEvent) => {
@@ -129,22 +131,21 @@ export default function ReferralProgramModal({
 					<div className="px-8 py-6">
 						<div className="text-center">
 							<h1 className="text-6xl font-black leading-tight text-black">
-								EARN <span className="text-green-600">€2500</span>
+								{t('app_locale_referralprogrammodal_Earn')}
+								<span className="text-green-600">€2500</span>
 							</h1>
 							<div className="mb-6 mt-4">
 								<div className="relative">
 									<div className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 transform bg-gray-200"></div>
 									<div className="relative inline-block bg-black px-4 py-1 text-4xl font-extrabold tracking-widest text-white">
-										PER MONTH
+										{t('app_locale_referralprogrammodal_Per_Month')}
 									</div>
 								</div>
 							</div>
 						</div>
 
 						<p className="mt-8 text-center text-gray-600">
-							Join our referral program and earn up to €2500 per month in
-							commissions by referring new customers to our platform. The more
-							people you refer, the more you earn!
+							{t('app_locale_referralprogrammodal_Join_Our_Referral_Program')}
 						</p>
 
 						{message && (
@@ -181,7 +182,7 @@ export default function ReferralProgramModal({
 										id="email"
 										value={email}
 										onChange={(e) => setEmail(e.target.value)}
-										placeholder="Enter your email address"
+										placeholder={t('app_locale_referralprogrammodal_Enter_Your_Email_Address')}
 										className="w-full rounded border border-gray-300 py-3 pl-10 pr-3 focus:border-gray-500 focus:outline-none"
 										maxLength={60}
 										disabled={isLoading}
@@ -192,15 +193,15 @@ export default function ReferralProgramModal({
 									className="rounded bg-black py-3 font-medium text-white hover:bg-gray-800 disabled:cursor-not-allowed disabled:opacity-70"
 									disabled={isLoading}
 								>
-									{isLoading ? 'Submitting...' : 'JOIN PROGRAM'}
+									{isLoading ? t('app_locale_referralprogrammodal_Submitting') : t('app_locale_referralprogrammodal_Join_Program')}
 								</button>
 							</div>
 						</form>
 
 						<p className="mt-4 text-center text-xs text-gray-500">
-							By signing up, you agree to our{' '}
+							{t('app_locale_referralprogrammodal_By_Signing_Up')}
 							<Link href="#" className="text-gray-700 hover:underline">
-								Terms & Conditions
+								{t('app_locale_referralprogrammodal_Terms_And_Conditions')}
 							</Link>
 						</p>
 					</div>

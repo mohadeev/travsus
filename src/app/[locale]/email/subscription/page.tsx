@@ -16,7 +16,7 @@ import { AlertCircle, CheckCircle } from 'lucide-react'
 import { useSession } from 'next-auth/react'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { Skeleton } from '@/components/ui/skeleton'
-import { useTranslations } from 'next-intl'
+import { useTranslations } from '@/lib/i18n'
 
 const newsletterTypes = [
 	{ id: 'deals', label: 'email_subscription_page_Deals' },

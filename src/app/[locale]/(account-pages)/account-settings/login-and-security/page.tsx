@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { ChevronRight, Shield } from 'lucide-react'
 import AccountPass from '@/components/AccountPass'
-import { useTranslations } from 'next-intl'
+import { useTranslations } from '@/lib/i18n'
 
 export default function LoginAndSecurityPage() {
 	const [activeTab, setActiveTab] = useState('login')

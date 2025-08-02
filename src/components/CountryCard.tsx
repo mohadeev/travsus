@@ -4,6 +4,7 @@ import type { FC } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import type { Route } from '@/routers/types'
+import { useTranslations } from '@/lib/i18n'
 
 // Simplified data structure for countries
 export interface CountryDataType {
@@ -31,6 +32,7 @@ const CountryCard: FC<CountryCardProps> = ({
 	data,
 }) => {
 	const { id, name, image, year, url } = data
+	const t = useTranslations("components_CountryCard");
 
 	// Create URL-friendly version of country name
 	function convertString(input: string) {
@@ -54,27 +56,15 @@ const CountryCard: FC<CountryCardProps> = ({
 						src={image}
 						alt={name}
 						className="rounded-xl object-cover transition-transform duration-300 group-hover:scale-105"
-						// sizes={
-						// 	size === 'small'
-						// 		? '(max-width: 640px) 220px, (max-width: 768px) 250px, 280px'
-						// 		: '(max-width: 640px) 300px, (max-width: 1024px) 50vw, 33vw'
-						// }
 					/>
 				</div>
-
-				{/* Year badge */}
-				{/* {year && (
-					<div className="absolute left-3 top-3 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-yellow-500 text-xs font-bold text-black">
-						{year}
-					</div>
-				)} */}
 
 				{/* Gradient overlay for better text visibility */}
 				<div className="absolute inset-0 rounded-xl bg-gradient-to-b from-transparent via-transparent to-black/70"></div>
 
 				{/* Country name - now inside the image and bigger */}
 				<div className="absolute bottom-4 left-4 z-10">
-					<h2 className="text-3xl font-bold text-white">{name}</h2>
+					<h2 className="text-3xl font-bold text-white">{t('components_CountryCard_Country_Name')}</h2>
 				</div>
 			</Link>
 		</div>

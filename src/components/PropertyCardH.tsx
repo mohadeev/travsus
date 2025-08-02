@@ -7,6 +7,7 @@ import SaleOffBadge from "@/components/SaleOffBadge";
 import Badge from "@/shared/Badge";
 import { StayDataType } from "@/data/types";
 import Link from "next/link";
+import { useTranslations } from '@/lib/i18n';
 
 export interface PropertyCardHProps {
   className?: string;
@@ -31,6 +32,8 @@ const PropertyCardH: FC<PropertyCardHProps> = ({
     reviewCount,
     id,
   } = data;
+
+  const t = useTranslations("components_PropertyCardH");
 
   const renderSliderGallery = () => {
     return (
@@ -58,7 +61,7 @@ const PropertyCardH: FC<PropertyCardHProps> = ({
             <i className="las la-bed text-lg"></i>
           </span>
           <span className="text-xs text-neutral-500 dark:text-neutral-400">
-            6 beds
+            {t('components_PropertyCardH_6_Beds')}
           </span>
         </div>
 
@@ -68,7 +71,7 @@ const PropertyCardH: FC<PropertyCardHProps> = ({
             <i className="las la-bath text-lg"></i>
           </span>
           <span className="text-xs text-neutral-500 dark:text-neutral-400">
-            3 baths
+            {t('components_PropertyCardH_3_Baths')}
           </span>
         </div>
 
@@ -78,7 +81,7 @@ const PropertyCardH: FC<PropertyCardHProps> = ({
             <i className="las la-expand-arrows-alt text-lg"></i>
           </span>
           <span className="text-xs text-neutral-500 dark:text-neutral-400">
-            1200 Sq. Fit
+            {t('components_PropertyCardH_1200_Sq_Fit')}
           </span>
         </div>
       </div>
@@ -94,7 +97,7 @@ const PropertyCardH: FC<PropertyCardHProps> = ({
               name={
                 <div className="flex items-center">
                   <i className="text-sm las la-share-alt"></i>
-                  <span className="ml-1">4 Network</span>
+                  <span className="ml-1">{t('components_PropertyCardH_4_Network')}</span>
                 </div>
               }
             />
@@ -102,14 +105,14 @@ const PropertyCardH: FC<PropertyCardHProps> = ({
               name={
                 <div className="flex items-center">
                   <i className="text-sm las la-user-friends"></i>
-                  <span className="ml-1">Family</span>
+                  <span className="ml-1">{t('components_PropertyCardH_Family')}</span>
                 </div>
               }
               color="yellow"
             />
           </div>
           <div className="flex items-center space-x-2">
-            {isAds && <Badge name="ADS" color="green" />}
+            {isAds && <Badge name={t('components_PropertyCardH_Ads')} color="green" />}
             <h2 className="text-lg font-medium capitalize">
               <span className="line-clamp-2">{title}</span>
             </h2>

@@ -287,5 +287,320 @@
     "test_page_Plan_Your_Flexible_Trip": "유연한 여행 계획하기",
     "test_page_Simple_Booking_Process": "간단한 예약 절차",
     "test_page_Travel_With_Ultimate_Flexibility": "최고의 유연성으로 여행하기"
+  },
+  "app_locale_transtest_page": {
+    "app_locale_transtest_page_Translate_This_Page_To_Test_It": "이 페이지를 번역하여 테스트하십시오"
+  },
+  "components_AccountPass": {
+    "components_AccountPass_New_And_Confirm_Password_Not_Match": "새 비밀번호와 확인 비밀번호가 일치하지 않습니다",
+    "components_AccountPass_Failed_To_Update_Password": "비밀번호 업데이트에 실패했습니다",
+    "components_AccountPass_Password_Updated_Successfully": "비밀번호가 성공적으로 업데이트되었습니다",
+    "components_AccountPass_Error_Updating_Password": "비밀번호 업데이트 오류",
+    "components_AccountPass_Current_Password": "현재 비밀번호",
+    "components_AccountPass_New_Password": "새 비밀번호",
+    "components_AccountPass_Confirm_Password": "비밀번호 확인",
+    "components_AccountPass_Updating": "업데이트 중",
+    "components_AccountPass_Update_Password": "비밀번호 업데이트"
+  },
+  "components_AnimatedFeatures": {
+    "components_AnimatedFeatures_Personal_Travel_Assistant": "개인 여행 보조원",
+    "components_AnimatedFeatures_Personal_Travel_Assistant_Description": "AI 기반의 개인 보조원과 함께 전례 없는 여행을 경험해보세요. 실시간 추천, 즉시 지원, 맞춤형 일정을 받으실 수 있습니다.",
+    "components_AnimatedFeatures_24_7_Personalized_Support": "24/7 맞춤형 지원",
+    "components_AnimatedFeatures_AI_Driven_Recommendations": "AI 주도 추천",
+    "components_AnimatedFeatures_Real_Time_Itinerary_Updates": "실시간 일정 업데이트",
+    "components_AnimatedFeatures_AI_Powered_Travel_Assistant": "AI 기반 여행 보조원",
+    "components_AnimatedFeatures_Smart_Booking": "스마트 예약",
+    "components_AnimatedFeatures_Smart_Booking_Description": "복잡한 예약 과정에 작별 인사를 하세요. 저희의 스마트 예약 시스템은 최첨단 기술을 활용하여 최고의 거래와 옵션을 찾아드립니다.",
+    "components_AnimatedFeatures_One_Tap_Booking_For_All_Your_Needs": "모든 필요한 것을 한 번의 탭으로 예약",
+    "components_AnimatedFeatures_Price_Prediction_And_Alerts": "가격 예측 및 알림",
+    "components_AnimatedFeatures_Flexible_Cancellation_Options": "유연한 취소 옵션",
+    "components_AnimatedFeatures_Smart_Booking_System": "스마트 예약 시스템"
+  },
+  "components_BtnLikeIcon": {
+    "components_BtnLikeIcon_Save": "저장"
+  },
+  "components_CarCard": {
+    "components_CarCard_Car": "자동차",
+    "components_CarCard_Ads": "광고",
+    "components_CarCard_Seats": "좌석",
+    "components_CarCard_Per_Day": "/일"
+  },
+  "components_CarCardH": {
+    "components_CarCardH_Ads": "광고",
+    "components_CarCardH_4_Seats": "4석",
+    "components_CarCardH_Auto_Gearbox": "자동 기어박스",
+    "components_CarCardH_2_Bags": "2개의 가방",
+    "components_CarCardH_Car_Owner": "차주",
+    "components_CarCardH_Per_Day": "/일"
+  },
+  "components_CardAuthorBox": {
+    "components_CardAuthorBox_New_York": "뉴욕"
+  },
+  "components_CardCategory1": {
+    "components_CardCategory1_Articles": "기사"
+  },
+  "components_CardCategory3": {
+    "components_CardCategory3_Properties": "속성"
+  },
+  "components_CardCategory4": {
+    "components_CardCategory4_Properties": "속성",
+    "components_CardCategory4_Cars": "자동차",
+    "components_CardCategory4_Experiences": "경험"
+  },
+  "components_CardCategory5": {
+    "components_CardCategory5_Properties": "속성"
+  },
+  "components_CardCategory6": {
+    "components_CardCategory6_Properties": "속성"
+  },
+  "components_CardCategoryBox1": {
+    "components_CardCategoryBox1_Minutes_Drive": "19분 거리"
+  },
+  "components_Collection": {
+    "components_Collection_Show_More": "더 보기"
+  },
+  "components_CollectionsGrid": {
+    "components_CollectionsGrid_Failed_To_Fetch_Collections": "컬렉션을 가져오는 데 실패했습니다",
+    "components_CollectionsGrid_No_Collections_Found": "컬렉션이 없습니다",
+    "components_CollectionsGrid_Error_Fetching_Collections": "컬렉션을 가져오는 중 오류 발생:",
+    "components_CollectionsGrid_An_Unknown_Error_Occurred": "알 수 없는 오류가 발생했습니다",
+    "components_CollectionsGrid_No_Collections_Found_For_This_Location": "이 위치에 대한 컬렉션이 없습니다.",
+    "components_CollectionsGrid_Scroll_Left": "왼쪽으로 스크롤",
+    "components_CollectionsGrid_Scroll_Right": "오른쪽으로 스크롤"
+  },
+  "components_CommentListing": {
+    "components_CommentListing_Review_In": " 리뷰 위치 ",
+    "components_CommentListing_The_Lounge_And_Bar": "라운지 & 바"
+  },
+  "components_CountryCard": {
+    "components_CountryCard_Country_Name": "국가 이름"
+  },
+  "components_DatePickerCustomHeaderTwoMonth": {
+    "components_DatePickerCustomHeaderTwoMonth_Previous_Month": "이전 달",
+    "components_DatePickerCustomHeaderTwoMonth_Next_Month": "다음 달"
+  },
+  "components_ExperiencesCard": {
+    "components_ExperiencesCard_Ads": "광고",
+    "components_ExperiencesCard_Per_Person": "/인당"
+  },
+  "components_ExperiencesCardH": {
+    "components_ExperiencesCardH_Ads": "광고",
+    "components_ExperiencesCardH_Making_A_Cup_Of_Coffee": "베트남에서 커피 한 잔을 만드는 것은 중간에 여유 시간이 거의 없는 전체 과정입니다. 그러나 하루를 시작하는 데 복잡하지 않은 작업이기도 합니다",
+    "components_ExperiencesCardH_3_Hours": "3시간",
+    "components_ExperiencesCardH_Up_To_6_People": "최대 6명",
+    "components_ExperiencesCardH_Hosted_By": "주최자",
+    "components_ExperiencesCardH_Per_Person": "/인당"
+  },
+  "components_FlightCard": {
+    "components_FlightCard_Monday_August_12_10": "월요일, 8월 12일 · 10:00",
+    "components_FlightCard_Tokyo_International_Airport": "도쿄 국제공항 (HND)",
+    "components_FlightCard_Monday_August_16_10": "월요일, 8월 16일 · 10:00",
+    "components_FlightCard_Singapore_International_Airport": "싱가포르 국제공항 (SIN)",
+    "components_FlightCard_Trip_Time_7_Hours_45_Minutes": "여행 시간: 7시간 45분",
+    "components_FlightCard_ANA_Business_Class_Boeing_787_NH_847": "ANA · 비즈니스 클래스 · 보잉 787 · NH 847",
+    "components_FlightCard_Transit_Time_15_Hours_45_Minutes_Bangkok": "환승 시간: 15시간 45분 - 방콕 (BKK)",
+    "components_FlightCard_Nonstop": "무정차",
+    "components_FlightCard_1_Stop": "1회 중간 정착",
+    "components_FlightCard_Round_Trip": "왕복"
+  },
+  "components_FooterNav": {
+    "components_FooterNav_Travsus": "트래브서스",
+    "components_FooterNav_Wishlists": "위시리스트",
+    "components_FooterNav_Log_in": "로그인",
+    "components_FooterNav_Menu": "메뉴",
+    "components_FooterNav_User": "사용자",
+    "components_FooterNav_Sign_In": "로그인"
+  },
+  "components_GallerySlider": {
+    "components_GallerySlider_Listing_Card_Gallery": "리스팅 카드 갤러리"
+  },
+  "components_GroupToursList": {
+    "components_GroupToursList_Hot_Group_Tours": "인기 그룹 투어"
+  },
+  "components_HeaderFilter": {
+    "components_HeaderFilter_View_All": "모두 보기"
+  },
+  "components_ItemsCardList": {
+    "components_ItemsCardList_No_Tours_Found": "투어를 찾을 수 없습니다",
+    "components_ItemsCardList_Error_Fetching_Tours": "투어를 가져오는 중 오류 발생:",
+    "components_ItemsCardList_Failed_To_Load_Tours": "투어를 로드하는 데 실패했습니다",
+    "components_ItemsCardList_Failed_To_Fetch_Locations": "위치를 가져오는 데 실패했습니다",
+    "components_ItemsCardList_Unknown_City": "알 수 없는 도시",
+    "components_ItemsCardList_No_Locations_Found": "위치를 찾을 수 없습니다",
+    "components_ItemsCardList_Error_Fetching_Locations": "위치를 가져오는 중 오류 발생:",
+    "components_ItemsCardList_Failed_To_Load_Locations": "위치를 로드하는 데 실패했습니다",
+    "components_ItemsCardList_Popular_Countries": "인기 있는 국가들",
+    "components_ItemsCardList_Cities_In": "도시들",
+    "components_ItemsCardList_Popular_Cities": "인기 있는 도시들",
+    "components_ItemsCardList_Places_In": "장소들",
+    "components_ItemsCardList_Places_To_Visit": "방문할 장소들",
+    "components_ItemsCardList_Popular_Tours": "인기 있는 투어들",
+    "components_ItemsCardList_Popular_Destinations": "인기 있는 목적지들",
+    "components_ItemsCardList_Explore_Top_Countries": "세계 주요 국가들을 탐험해보세요",
+    "components_ItemsCardList_Discover_Amazing_Cities": "방문할 만한 놀라운 도시들을 발견하세요",
+    "components_ItemsCardList_Must_See_Attractions": "꼭 봐야 할 명소와 경험들",
+    "components_ItemsCardList_Scroll_Left": "왼쪽으로 스크롤",
+    "components_ItemsCardList_Scroll_Right": "오른쪽으로 스크롤"
+  },
+  "components_LikeSaveBtns": {
+    "components_LikeSaveBtns_Tour_Link_Copied": "🎉 투어 링크가 복사되었습니다!",
+    "components_LikeSaveBtns_Copy_Failed": "😕 이런! 복사 실패",
+    "components_LikeSaveBtns_Email_Subject": "🌍 Travsus에서 이 놀라운 투어를 확인해보세요!",
+    "components_LikeSaveBtns_Email_Body": "안녕하세요! 👋 이 놀라운 투어를 찾았고, 당신이 좋아할 것 같아요! 🏞️✈️\n\n보러 가보세요: ${url}\n\n다음 모험을 계획해 봅시다! 🗺️🧳",
+    "components_LikeSaveBtns_Share_Tour": "투어 공유",
+    "components_LikeSaveBtns_Copy_Tour_Link": "🔗 투어 링크 복사",
+    "components_LikeSaveBtns_Email_Tour": "✉️ 투어 이메일",
+    "components_LikeSaveBtns_Save_Tour": "투어 저장"
+  },
+  "components_MapContainer": {
+    "components_MapContainer_Search_As_I_Move_The_Map": "지도를 움직일 때마다 검색하기"
+  },
+  "components_ModalSelectDate": {
+    "components_ModalSelectDate_Select_Date": "날짜 선택",
+    "components_ModalSelectDate_Whens_Your_Trip": " 여행은 언제인가요?",
+    "components_ModalSelectDate_Clear_Dates": "날짜 지우기",
+    "components_ModalSelectDate_Save": "저장"
+  },
+  "components_ModalSelectGuests": {
+    "components_ModalSelectGuests_Select_Date": "날짜 선택",
+    "components_ModalSelectGuests_Clear_Data": "데이터 지우기",
+    "components_ModalSelectGuests_Save": "저장"
+  },
+  "components_PostCardMetaV2": {
+    "components_PostCardMetaV2_Separator": "·"
+  },
+  "components_PropertyCardH": {
+    "components_PropertyCardH_6_Beds": "6개의 침대",
+    "components_PropertyCardH_3_Baths": "3개의 욕실",
+    "components_PropertyCardH_1200_Sq_Fit": "1200 제곱 피트",
+    "components_PropertyCardH_4_Network": "4 네트워크",
+    "components_PropertyCardH_Family": "가족",
+    "components_PropertyCardH_Ads": "광고"
+  },
+  "components_SaleOffBadge": {
+    "components_SaleOffBadge_Desc": "오늘 -10%"
+  },
+  "components_SectionBecomeAnAuthor": {
+    "components_SectionBecomeAnAuthor_Why_Did_You_Choose_Us": "왜 우리를 선택하셨나요?",
+    "components_SectionBecomeAnAuthor_Accompanying_Us_You_Have_A_Trip": "우리와 함께하면, 경험 가득한 여행을 가질 수 있습니다. Travsus와 함께라면 숙박 예약, 리조트 빌라, 호텔, 개인 주택, 아파트 등이 빠르고 편리하며 쉽게 이루어집니다.",
+    "components_SectionBecomeAnAuthor_Become_An_Author": "저자가 되다"
+  },
+  "components_SectionClientSay": {
+    "components_SectionClientSay_Lets_See_What_People_Think": "사람들이 Travsus에 대해 어떻게 생각하는지 봅시다",
+    "components_SectionClientSay_Good_News_From_Far_Away": "먼 곳에서 온 좋은 소식"
+  },
+  "components_SectionGridAuthorBox": {
+    "components_SectionGridAuthorBox_Rating_Based_On_Customer_Reviews": "고객 리뷰를 기반으로 한 평가",
+    "components_SectionGridAuthorBox_Top_10_Author_Of_The_Month": "이달의 상위 10명 저자",
+    "components_SectionGridAuthorBox_Show_Me_More": "더 보여주세요",
+    "components_SectionGridAuthorBox_Become_A_Host": "호스트가 되세요"
+  },
+  "components_SectionGridCategoryBox": {
+    "components_SectionGridCategoryBox_Discover_Great_Places": "당신이 사는 곳 근처의 멋진 장소를 발견하세요",
+    "components_SectionGridCategoryBox_Explore_Nearby": "근처를 탐색하세요"
+  },
+  "app_locale_CardImage": {
+    "app_locale_CardImage_Hello": "안녕하세요",
+    "app_locale_CardImage_Age": "나이"
+  },
+  "app_locale_ClientHomePage": {
+    "app_locale_ClientHomePage_Premium_Travel_Experiences": "전문 계획 및 독점적인 혜택을 갖춘 프리미엄 여행 경험.",
+    "app_locale_ClientHomePage_Your_Journey_You_Deserve": "당신의 여행, 당신은 최고를 받을 자격이 있습니다",
+    "app_locale_ClientHomePage_Best_Price_Guarantee": "최저가 보장",
+    "app_locale_ClientHomePage_No_Hidden_Fees": "숨겨진 비용 없음",
+    "app_locale_ClientHomePage_5_Star_Service_Quality": "5성급 서비스 품질",
+    "app_locale_ClientHomePage_Expert_Travel_Planning": "고급 경험과 독점적인 혜택을 갖춘 전문 여행 계획.",
+    "app_locale_ClientHomePage_Worldwide": "전세계",
+    "app_locale_ClientHomePage_Travel_Services": "여행 서비스",
+    "app_locale_ClientHomePage_Personalized_Travel_Planning": "전문가에 의한 맞춤형 여행 계획",
+    "app_locale_ClientHomePage_Luxury_Accommodations": "고급 숙박 시설",
+    "app_locale_ClientHomePage_Premium_Hotels": "프리미엄 호텔 및 독점적인 부동산",
+    "app_locale_ClientHomePage_VIP_Services": "VIP 서비스",
+    "app_locale_ClientHomePage_Exclusive_Perks": "독점적인 혜택과 내부 접근",
+    "app_locale_ClientHomePage_Popular_Tours": "인기 투어",
+    "app_locale_ClientHomePage_Discover_Exciting_Tours": "흥미진진한 투어와 경험을 발견하십시오",
+    "app_locale_ClientHomePage_Popular_Cities": "인기 도시"
+  },
+  "app_locale_featurenotificationform": {
+    "app_locale_featurenotificationform_Coming_Soon": "곧 출시 예정",
+    "app_locale_featurenotificationform_Enter_Your_Email_Address": "이메일 주소를 입력하세요",
+    "app_locale_featurenotificationform_Submitting": "제출 중...",
+    "app_locale_featurenotificationform_Notify_Me": "알림 받기",
+    "app_locale_featurenotificationform_By_Signing_Up": "가입함으로써, 당신은 우리의",
+    "app_locale_featurenotificationform_Terms_And_Conditions": "이용 약관에 동의합니다"
+  },
+  "app_locale_newslettermodal": {
+    "app_locale_newslettermodal_Sign_Up_Today": "오늘 가입하세요",
+    "app_locale_newslettermodal_Its_Easy_And_Free": "간편하고 무료입니다",
+    "app_locale_newslettermodal_Email_Address": "이메일 주소",
+    "app_locale_newslettermodal_Enter_Your_Email_Address": "이메일 주소를 입력하세요 (최대 60자)",
+    "app_locale_newslettermodal_Select_Newsletter_Types": "뉴스레터 유형 선택 ({selectedTypes.length}개 선택됨)",
+    "app_locale_newslettermodal_Subscribing": "구독 중...",
+    "app_locale_newslettermodal_Sign_Up": "가입하기",
+    "app_locale_newslettermodal_By_Signing_Up_I_Agree_To_The": "가입함으로써 동의합니다",
+    "app_locale_newslettermodal_Terms_And_Conditions": "이용 약관"
+  },
+  "app_locale_referralprogrammodal": {
+    "app_locale_referralprogrammodal_Earn": "벌다",
+    "app_locale_referralprogrammodal_Per_Month": "월간",
+    "app_locale_referralprogrammodal_Join_Our_Referral_Program": "우리의 추천 프로그램에 가입하고 새로운 고객을 우리 플랫폼에 추천함으로써 월 €2500까지의 수수료를 벌어보세요. 추천하는 사람이 많을수록 더 많이 벌 수 있습니다!",
+    "app_locale_referralprogrammodal_Enter_Your_Email_Address": "이메일 주소를 입력하세요",
+    "app_locale_referralprogrammodal_Submitting": "제출 중...",
+    "app_locale_referralprogrammodal_Join_Program": "프로그램 가입",
+    "app_locale_referralprogrammodal_By_Signing_Up": "가입함으로써, 당신은 우리의",
+    "app_locale_referralprogrammodal_Terms_And_Conditions": "이용 약관에 동의합니다"
+  },
+  "app_locale_TestAnything": {
+    "app_locale_TestAnything_Test_Anything": "무엇이든 테스트"
+  },
+  "app_locale_continent_country_region_city_category_name_servicedetail_SectionDateRange": {
+    "app_locale_continent_country_region_city_category_name_servicedetail_SectionDateRange_Availability": "가능성",
+    "app_locale_continent_country_region_city_category_name_servicedetail_SectionDateRange_Prices_May_Increase": "주말이나 공휴일에 가격이 상승할 수 있습니다"
+  },
+  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer": {
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Arrival_At_Marrakech": "마라케시 도착",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Visit_Jemaa_El_Fnaa": "제마 엘프나 방문",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Explore_Bahia_Palace": "바히아 궁전 탐험",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Day_Trip_To_Ouzoud_Falls": "우주드 폭포 일일 여행",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Travel_To_Essaouira": "에사우이라 여행",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Beach_Day_Seafood_Dinner": "해변에서의 하루 & 해산물 저녁 식사",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Visit_Ait_Ben_Haddou": "아이트 벤 하두 방문",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Cross_The_Atlas_Mountains": "아틀라스 산맥 횡단",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Explore_Merzouga_Desert": "메르주가 사막 탐험",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Camel_Trek_At_Sunset": "일몰 시 카멜 트레킹",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Visit_Fes_Medina": "페스 메디나 방문",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Explore_Fes_Tanneries": "페스 가죽공장 탐험",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Shopping_In_Fes_Souks": "페스 수크에서 쇼핑",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Departure_From_Fes": "페스 출발",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_See_More": "더 보기",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Show_Less": "간략히 보기"
+  },
+  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_FAQProps": {
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_FAQProps_Frequently_Asked_Questions": "자주 묻는 질문"
+  },
+  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput": {
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Guests": "손님",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Add_Guests": "손님 추가",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Adults": "성인",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Ages_13_Or_Above": "13세 이상",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Children": "어린이",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Ages_1_13": "1세–13세"
+  },
+  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_Included": {
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_Included_Included": "포함됨",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_Included_Everything_Included_In_Your_Package": "패키지에 포함된 모든 것"
+  },
+  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_LineItemsBreakdown": {
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_LineItemsBreakdown_Grand_Total": "총 합계"
+  },
+  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ListingExperiencesDetailsImages": {
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ListingExperiencesDetailsImages_Show_All_Photos": "모든 사진 보기"
+  },
+  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page": {
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page_Overview": "개요",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page_Host_Information": "호스트 정보",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page_Reviews": "리뷰",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page_reviews": "리뷰",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page_Things_to_know": "알아두어야 할 사항"
   }
 }

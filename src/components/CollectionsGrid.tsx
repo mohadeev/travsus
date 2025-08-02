@@ -6,6 +6,7 @@ import { useState, useRef, useEffect } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import Heading2 from '@/shared/Heading2'
 import InstagramCard from './InstagramCard'
+import { useTranslations } from '@/lib/i18n'
 
 interface Collection {
 	id: string
@@ -31,6 +32,7 @@ export default function CollectionsGrid({
 	subHeading = 'Get ideas on what to do, see, and eat',
 	limit = 16,
 }: CollectionsGridProps) {
+	const t = useTranslations("components_CollectionsGrid");
 	const scrollContainerRef = useRef<HTMLDivElement>(null)
 	const [collections, setCollections] = useState<Collection[]>([])
 	const [loading, setLoading] = useState(true)
@@ -70,13 +72,13 @@ export default function CollectionsGrid({
 				const response = await fetch(url)
 
 				if (!response.ok) {
-					throw new Error(`Failed to fetch collections`)
+					throw new Error(t('components_CollectionsGrid_Failed_To_Fetch_Collections'))
 				}
 
 				const data = await response.json()
 
 				if (!data.found || !data.data || data.data.length === 0) {
-					setError(`No collections found`)
+					setError(t('components_CollectionsGrid_No_Collections_Found'))
 					setCollections([])
 					return
 				}
@@ -90,9 +92,9 @@ export default function CollectionsGrid({
 
 				setCollections(data.data)
 			} catch (err) {
-				console.error('Error fetching collections:', err)
+				console.error(t('components_CollectionsGrid_Error_Fetching_Collections'), err)
 				setError(
-					err instanceof Error ? err.message : 'An unknown error occurred',
+					err instanceof Error ? err.message : t('components_CollectionsGrid_An_Unknown_Error_Occurred'),
 				)
 				setCollections([])
 			} finally {
@@ -184,7 +186,7 @@ export default function CollectionsGrid({
 					// Empty state
 					<div className="rounded-md bg-gray-50 p-8 text-center">
 						<p className="text-gray-600">
-							No collections found for this location.
+							{t('components_CollectionsGrid_No_Collections_Found_For_This_Location')}
 						</p>
 					</div>
 				) : layout === 'column' ? (
@@ -201,7 +203,7 @@ export default function CollectionsGrid({
 						<button
 							onClick={scrollLeft}
 							className="absolute left-0 top-1/2 z-10 flex h-7 w-7 -translate-x-1/2 -translate-y-1/2 transform items-center justify-center rounded-full border border-black bg-white transition-colors duration-200 hover:bg-black hover:text-white focus:outline-none sm:h-8 sm:w-8 md:h-10 md:w-10"
-							aria-label="Scroll left"
+							aria-label={t('components_CollectionsGrid_Scroll_Left')}
 						>
 							<ChevronLeft className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5" />
 						</button>
@@ -222,7 +224,7 @@ export default function CollectionsGrid({
 						<button
 							onClick={scrollRight}
 							className="absolute right-0 top-1/2 z-10 flex h-7 w-7 -translate-y-1/2 translate-x-1/2 transform items-center justify-center rounded-full border border-black bg-white transition-colors duration-200 hover:bg-black hover:text-white focus:outline-none sm:h-8 sm:w-8 md:h-10 md:w-10"
-							aria-label="Scroll right"
+							aria-label={t('components_CollectionsGrid_Scroll_Right')}
 						>
 							<ChevronRight className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5" />
 						</button>

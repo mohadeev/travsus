@@ -1,5 +1,5 @@
 import Breadcrumb from '@/components/Breadcrumbs/Breadcrumb'
-import { useTranslations } from 'next-intl'
+import { useTranslations } from '@/lib/i18n'
 import { Metadata } from 'next'
 import DefaultLayout from '@/components/Layouts/DefaultLayout'
 import SelectGroupOne from '@/components/SelectGroup/SelectGroupOne'

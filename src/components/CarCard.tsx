@@ -7,6 +7,7 @@ import SaleOffBadge from '@/components/SaleOffBadge'
 import Badge from '@/shared/Badge'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useTranslations } from '@/lib/i18n'
 
 export interface CarCardProps {
 	className?: string
@@ -35,6 +36,8 @@ const CarCard: FC<CarCardProps> = ({
 		gearshift,
 	} = data
 
+	const t = useTranslations("components_CarCard");
+
 	const renderSliderGallery = () => {
 		return (
 			<div className="relative w-full overflow-hidden rounded-2xl">
@@ -42,7 +45,7 @@ const CarCard: FC<CarCardProps> = ({
 					<Image
 						fill
 						src={featuredImage}
-						alt="car"
+						alt={t('components_CarCard_Car')}
 						sizes="(max-width: 640px) 100vw, 350px"
 					/>
 				</div>
@@ -57,7 +60,7 @@ const CarCard: FC<CarCardProps> = ({
 			<div className={size === 'default' ? 'space-y-4 p-5' : 'space-y-2 p-3'}>
 				<div className="space-y-2">
 					<div className="flex items-center space-x-2">
-						{isAds && <Badge name="ADS" color="green" />}
+						{isAds && <Badge name={t('components_CarCard_Ads')} color="green" />}
 						<h2
 							className={`capitalize ${
 								size === 'default'
@@ -69,7 +72,7 @@ const CarCard: FC<CarCardProps> = ({
 						</h2>
 					</div>
 					<div className="flex items-center space-x-2 text-sm text-neutral-500 dark:text-neutral-400">
-						<span className="">{seats} seats</span>
+						<span className="">{seats} {t('components_CarCard_Seats')}</span>
 						<span>-</span>
 						<span className="">{gearshift} </span>
 					</div>
@@ -81,7 +84,7 @@ const CarCard: FC<CarCardProps> = ({
 						{` `}
 						{size === 'default' && (
 							<span className="text-sm font-normal text-neutral-500 dark:text-neutral-400">
-								/day
+								{t('components_CarCard_Per_Day')}
 							</span>
 						)}
 					</span>

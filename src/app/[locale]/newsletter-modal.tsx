@@ -1,6 +1,7 @@
 'use client'
 
 import type React from 'react'
+import { useTranslations } from '@/lib/i18n'
 
 import { useState, useEffect, useRef } from 'react'
 import { useSelector } from 'react-redux'
@@ -9,7 +10,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Logo from '@/shared/Logo'
 
-// Newsletter types from your existing component
 const newsletterTypes = [
 	{ id: 'deals', label: '🏷️ Exclusive Deals' },
 	{ id: 'tips', label: '💡 Travel Tips' },
@@ -17,7 +17,6 @@ const newsletterTypes = [
 	{ id: 'inspiration', label: '✈️ Travel Inspiration' },
 ]
 
-// Message map from your existing component
 const messageMap = {
 	EMAIL_REQUIRED:
 		"📭 Oops! It looks like you forgot to enter an email address. Let's try that again!",
@@ -48,23 +47,20 @@ export default function NewsletterModal() {
 	const [isError, setIsError] = useState(false)
 	const dropdownRef = useRef<HTMLDivElement>(null)
 
-	// Check if user logs in while modal is open
+	const t = useTranslations("app_locale_newslettermodal")
+
 	useEffect(() => {
 		if (isUserLoggedIn) {
 			setIsOpen(false)
 		}
 	}, [isUserLoggedIn])
 
-	// Add this useEffect for delayed display and localStorage check
 	useEffect(() => {
-		// Don't show modal if user is logged in
 		if (isUserLoggedIn) return
 
-		// Check if user has previously closed the modal
 		const hasClosedModal =
 			localStorage.getItem('hasClosedNewsletterModal') === 'true'
 
-		// If user hasn't closed it before, show after 30 seconds
 		if (!hasClosedModal) {
 			const timer = setTimeout(() => {
 				setIsOpen(true)
@@ -74,12 +70,10 @@ export default function NewsletterModal() {
 		}
 	}, [isUserLoggedIn])
 
-	// Toggle newsletter types dropdown
 	const toggleDropdown = () => {
 		setIsDropdownOpen(!isDropdownOpen)
 	}
 
-	// Handle newsletter type selection
 	const handleTypeChange = (typeId: string) => {
 		setSelectedTypes((prev) =>
 			prev.includes(typeId)
@@ -88,11 +82,9 @@ export default function NewsletterModal() {
 		)
 	}
 
-	// Form submission handler
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault()
 
-		// Validation
 		if (!email) {
 			setMessage(messageMap.EMAIL_REQUIRED)
 			setIsError(true)
@@ -153,7 +145,6 @@ export default function NewsletterModal() {
 		setIsDropdownOpen(false)
 	}
 
-	// Close dropdown when clicking outside
 	useEffect(() => {
 		const handleClickOutside = (event: MouseEvent) => {
 			if (
@@ -170,14 +161,11 @@ export default function NewsletterModal() {
 		}
 	}, [])
 
-	// Prevent scrolling when modal is open
 	useEffect(() => {
 		if (isOpen) {
-			// Disable scrolling on body
 			document.body.style.overflow = 'hidden'
 		}
 
-		// Cleanup function to re-enable scrolling when modal closes or component unmounts
 		return () => {
 			document.body.style.overflow = 'auto'
 		}
@@ -188,7 +176,6 @@ export default function NewsletterModal() {
 	return (
 		<div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
 			<div className="relative flex h-auto max-h-[90vh] w-[90%] max-w-4xl overflow-hidden rounded-lg bg-white">
-				{/* Close button */}
 				<button
 					onClick={() => {
 						setIsOpen(false)
@@ -199,7 +186,6 @@ export default function NewsletterModal() {
 					<X className="h-6 w-6" />
 				</button>
 
-				{/* Left side - Image */}
 				<div className="relative hidden w-1/2 md:block">
 					<div className="absolute inset-0 bg-gradient-to-b from-gray-100/10 to-gray-800/30" />
 					<Image
@@ -211,16 +197,12 @@ export default function NewsletterModal() {
 					/>
 				</div>
 
-				{/* Right side - Content */}
 				<div className="flex w-full flex-col md:w-1/2">
-					{/* Logo aligned with close button - Fixed at top */}
 					<div className="px-8 pt-4">
 						<Logo className="h-[40px] w-[100px]" />
 					</div>
 
-					{/* Scrollable content area with fixed height */}
 					<div className="flex h-[500px] max-h-[calc(90vh-140px)] flex-col justify-between">
-						{/* Main content with scrolling - Always show scrollbar */}
 						<div
 							className="custom-scrollbar flex-grow overflow-y-scroll px-8 py-6"
 							style={{
@@ -230,11 +212,10 @@ export default function NewsletterModal() {
 						>
 							<div className="min-h-[400px]">
 								<h1 className="text-4xl font-extrabold text-black sm:text-5xl">
-									SIGN UP TODAY
+									{t('app_locale_newslettermodal_Sign_Up_Today')}
 								</h1>
 								<div className="mt-2 text-xl sm:text-2xl">
-									IT'S <span className="font-bold text-black">EASY</span> AND{' '}
-									<span className="font-bold text-black">FREE</span>
+									{t('app_locale_newslettermodal_Its_Easy_And_Free')}
 								</div>
 
 								<form
@@ -242,9 +223,8 @@ export default function NewsletterModal() {
 									onSubmit={handleSubmit}
 									className="mt-8"
 								>
-									{/* Email input first */}
 									<label htmlFor="email" className="mb-2 block font-medium">
-										Email Address
+										{t('app_locale_newslettermodal_Email_Address')}
 									</label>
 									<div className="relative">
 										<div className="absolute inset-y-0 left-3 flex items-center">
@@ -267,14 +247,13 @@ export default function NewsletterModal() {
 											id="email"
 											value={email}
 											onChange={(e) => setEmail(e.target.value)}
-											placeholder="Enter your email address (max 60 characters)"
+											placeholder={t('app_locale_newslettermodal_Enter_Your_Email_Address')}
 											className="w-full rounded border border-gray-300 py-3 pl-10 pr-3 focus:border-gray-500 focus:outline-none"
 											maxLength={60}
 											disabled={isLoading}
 										/>
 									</div>
 
-									{/* Newsletter types dropdown right after email input */}
 									<div className="relative mt-4" ref={dropdownRef}>
 										<button
 											type="button"
@@ -283,8 +262,7 @@ export default function NewsletterModal() {
 											disabled={isLoading}
 										>
 											<span>
-												Select newsletter types ({selectedTypes.length}{' '}
-												selected)
+												{t('app_locale_newslettermodal_Select_Newsletter_Types')}
 											</span>
 											<svg
 												className="h-5 w-5 text-gray-400"
@@ -323,84 +301,6 @@ export default function NewsletterModal() {
 										)}
 									</div>
 
-									{/* Text right before bullet points */}
-									{/* <p className="mt-6 text-gray-700">Just a few reasons to sign up to our newsletter ...</p> */}
-
-									{/* Bullet points after the text */}
-									{/* <div className="mt-3 grid gap-3">
-                    <div className="flex items-center gap-2">
-                      <div className="flex h-6 w-6 items-center justify-center rounded-full bg-black text-white">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="h-4 w-4"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="3"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        >
-                          <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>
-                      </div>
-                      <span className="font-medium">Exclusive newsletter offers</span>
-                    </div>
-
-                    <div className="flex items-center gap-2">
-                      <div className="flex h-6 w-6 items-center justify-center rounded-full bg-black text-white">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="h-4 w-4"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="3"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        >
-                          <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>
-                      </div>
-                      <span className="font-medium">Discounts & promotions</span>
-                    </div>
-
-                    <div className="flex items-center gap-2">
-                      <div className="flex h-6 w-6 items-center justify-center rounded-full bg-black text-white">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="h-4 w-4"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="3"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        >
-                          <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>
-                      </div>
-                      <span className="font-medium">Bi-weekly & monthly prizes</span>
-                    </div>
-
-                    <div className="flex items-center gap-2">
-                      <div className="flex h-6 w-6 items-center justify-center rounded-full bg-black text-white">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="h-4 w-4"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="3"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        >
-                          <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>
-                      </div>
-                      <span className="font-medium">Latest product releases</span>
-                    </div>
-                  </div> */}
-
 									{message && (
 										<div
 											className={`mt-4 rounded-md p-3 ${isError ? 'bg-red-50 text-red-700' : 'bg-green-50 text-green-700'}`}
@@ -412,7 +312,6 @@ export default function NewsletterModal() {
 							</div>
 						</div>
 
-						{/* Fixed footer with button and terms */}
 						<div className="border-t border-gray-200 bg-white px-8 py-4">
 							<button
 								type="submit"
@@ -421,13 +320,13 @@ export default function NewsletterModal() {
 								disabled={isLoading}
 								onClick={handleSubmit}
 							>
-								{isLoading ? 'Subscribing...' : 'SIGN UP'}
+								{isLoading ? t('app_locale_newslettermodal_Subscribing') : t('app_locale_newslettermodal_Sign_Up')}
 							</button>
 
 							<p className="mt-4 text-xs text-gray-500">
-								By signing up I agree to the{' '}
+								{t('app_locale_newslettermodal_By_Signing_Up_I_Agree_To_The')}{' '}
 								<Link href="#" className="text-gray-700 hover:underline">
-									Terms & Conditions
+									{t('app_locale_newslettermodal_Terms_And_Conditions')}
 								</Link>
 							</p>
 						</div>

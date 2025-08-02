@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import ButtonSecondary from "@/shared/ButtonSecondary";
 import Link from "next/link";
 import Image from "next/image";
+import { useTranslations } from '@/lib/i18n';
 
 export interface CollectionProps {
   className?: string;
@@ -18,6 +19,8 @@ const Collection: FC<CollectionProps> = ({
   desc = "The most popular <br /> in the world",
   color,
 }) => {
+  const t = useTranslations("components_Collection");
+
   return (
     <Link href={"/listing-stay"} className={`nc-Collection block ${className}`}>
       <div
@@ -52,7 +55,7 @@ const Collection: FC<CollectionProps> = ({
                 sizeClass="py-3 px-4 sm:py-3.5 sm:px-6"
                 fontSize="text-sm font-medium"
               >
-                Show more
+                {t('components_Collection_Show_More')}
               </ButtonSecondary>
             </div>
           </div>

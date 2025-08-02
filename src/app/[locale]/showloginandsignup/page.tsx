@@ -5,7 +5,7 @@ import ButtonPrimary from '@/shared/ButtonPrimary'
 import { useRepeatedOverlay } from '@/app/hooks/useRepeatedOverlay'
 import { useAuthAction } from '@/app/hooks/useAuthAction'
 import AuthModal from '@/components/AuthModal'
-import { useTranslations } from 'next-intl'
+import { useTranslations } from '@/lib/i18n'
 
 const ShowLoginAndSignup: React.FC = () => {
 	const t = useTranslations('showloginandsignup_page')

@@ -1,5 +1,6 @@
 import React from 'react'
 import { TourCard } from './TourCard'
+import { useTranslations } from '@/lib/i18n'
 
 // This would typically come from your API
 const mockTours = [
@@ -26,9 +27,11 @@ const mockTours = [
 ]
 
 export function GroupToursList() {
+	const t = useTranslations("components_GroupToursList");
+
 	return (
 		<div className="container mx-auto py-8">
-			<h1 className="mb-6 text-3xl font-bold">Hot Group Tours</h1>
+			<h1 className="mb-6 text-3xl font-bold">{t('components_GroupToursList_Hot_Group_Tours')}</h1>
 			<div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
 				{mockTours.map((tour) => (
 					<TourCard

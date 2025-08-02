@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react'
 import { X } from 'lucide-react'
 import Link from 'next/link'
 import Logo from '@/shared/Logo'
+import { useTranslations } from '@/lib/i18n'
 
 // Message map for feature notification
 const messageMap = {
@@ -36,6 +37,8 @@ export default function FeatureComingSoonModal({
 	const [isLoading, setIsLoading] = useState(false)
 	const [message, setMessage] = useState('')
 	const [isError, setIsError] = useState(false)
+
+	const t = useTranslations("app_locale_featurenotificationform");
 
 	// Form submission handler
 	const handleSubmit = async (e: React.FormEvent) => {
@@ -139,7 +142,7 @@ export default function FeatureComingSoonModal({
 								<div className="relative">
 									<div className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 transform bg-gray-200"></div>
 									<div className="relative inline-block bg-black px-4 py-1 text-4xl font-extrabold tracking-widest text-white">
-										COMING SOON
+										{t('app_locale_featurenotificationform_Coming_Soon')}
 									</div>
 								</div>
 							</div>
@@ -183,7 +186,7 @@ export default function FeatureComingSoonModal({
 										id="email"
 										value={email}
 										onChange={(e) => setEmail(e.target.value)}
-										placeholder="Enter your email address"
+										placeholder={t('app_locale_featurenotificationform_Enter_Your_Email_Address')}
 										className="w-full rounded border border-gray-300 py-3 pl-10 pr-3 focus:border-gray-500 focus:outline-none"
 										maxLength={60}
 										disabled={isLoading}
@@ -194,15 +197,15 @@ export default function FeatureComingSoonModal({
 									className="rounded bg-black py-3 font-medium text-white hover:bg-gray-800 disabled:cursor-not-allowed disabled:opacity-70"
 									disabled={isLoading}
 								>
-									{isLoading ? 'Submitting...' : 'NOTIFY ME'}
+									{isLoading ? t('app_locale_featurenotificationform_Submitting') : t('app_locale_featurenotificationform_Notify_Me')}
 								</button>
 							</div>
 						</form>
 
 						<p className="mt-4 text-center text-xs text-gray-500">
-							By signing up, you agree to our{' '}
+							{t('app_locale_featurenotificationform_By_Signing_Up')}{' '}
 							<Link href="#" className="text-gray-700 hover:underline">
-								Terms & Conditions
+								{t('app_locale_featurenotificationform_Terms_And_Conditions')}
 							</Link>
 						</p>
 					</div>

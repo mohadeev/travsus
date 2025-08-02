@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { useTranslations } from '@/lib/i18n'
 import { DashboardShell } from '@/components/dashboard/shell'
 import { DashboardHeader } from '@/components/dashboard/header'
 import {
@@ -20,78 +21,76 @@ export const metadata: Metadata = {
 }
 
 export default function AnalyticsPage() {
+	const t = useTranslations('dashboard_dashboard_analytics_page')
+
 	return (
 		<DashboardShell>
 			<DashboardHeader
-				heading="Analytics"
-				text="Track and visualize your business performance"
+				heading={t('Analytics')}
+				text={t('Track_And_Visualize_Your_Business_Performance')}
 			>
 				<CalendarDateRangePicker />
 			</DashboardHeader>
 			<div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
 				<Card>
 					<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-						<CardTitle className="text-sm font-medium">Total Revenue</CardTitle>
+						<CardTitle className="text-sm font-medium">
+							{t('Total_Revenue')}
+						</CardTitle>
 					</CardHeader>
 					<CardContent>
 						<div className="text-2xl font-bold">$45,231.89</div>
 						<p className="text-muted-foreground text-xs">
-							0 from last month
+							{t('0_From_Last_Month')}
 						</p>
 					</CardContent>
 				</Card>
 				<Card>
 					<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
 						<CardTitle className="text-sm font-medium">
-							Bookings Conversion
+							{t('Bookings_Conversion')}
 						</CardTitle>
 					</CardHeader>
 					<CardContent>
 						<div className="text-2xl font-bold">0%</div>
-						<p className="text-muted-foreground text-xs">
-							0% from last month
-						</p>
+						<p className="text-muted-foreground text-xs">0% from last month</p>
 					</CardContent>
 				</Card>
 				<Card>
 					<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
 						<CardTitle className="text-sm font-medium">
-							Average Order Value
+							{t('Average_Order_Value')}
 						</CardTitle>
 					</CardHeader>
 					<CardContent>
 						<div className="text-2xl font-bold">$1,298</div>
-						<p className="text-muted-foreground text-xs">
-							0% from last month
-						</p>
+						<p className="text-muted-foreground text-xs">0% from last month</p>
 					</CardContent>
 				</Card>
 				<Card>
 					<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
 						<CardTitle className="text-sm font-medium">
-							Customer Satisfaction
+							{t('Customer_Satisfaction')}
 						</CardTitle>
 					</CardHeader>
 					<CardContent>
 						<div className="text-2xl font-bold">5/5</div>
-						<p className="text-muted-foreground text-xs">
-							0% from last month
-						</p>
+						<p className="text-muted-foreground text-xs">0% from last month</p>
 					</CardContent>
 				</Card>
 			</div>
 			<Tabs defaultValue="overview" className="mt-6 w-full">
 				<TabsList className="grid w-full grid-cols-3 md:w-[400px]">
-					<TabsTrigger value="overview">Revenue</TabsTrigger>
-					<TabsTrigger value="sales">Sales</TabsTrigger>
-					<TabsTrigger value="performance">Performance</TabsTrigger>
+					<TabsTrigger value="overview">{t('Revenue')}</TabsTrigger>
+					<TabsTrigger value="sales">{t('Sales')}</TabsTrigger>
+					<TabsTrigger value="performance">{t('Performance')}</TabsTrigger>
 				</TabsList>
 				<TabsContent value="overview">
 					<Card>
 						<CardHeader>
-							<CardTitle>Revenue Overview</CardTitle>
+							<CardTitle>{t('Revenue_Overview')}</CardTitle>
 							<CardDescription>
-								Monthly revenue for the current year
+								{t('Monthly_Revenue_For_The_Current_Year')}
 							</CardDescription>
 						</CardHeader>
 						<CardContent className="pl-2">
@@ -102,9 +101,9 @@ export default function AnalyticsPage() {
 				<TabsContent value="sales">
 					<Card>
 						<CardHeader>
-							<CardTitle>Sales Analytics</CardTitle>
+							<CardTitle>{t('Sales_Analytics')}</CardTitle>
 							<CardDescription>
-								Tour sales by category and location
+								{t('Tour_Sales_By_Category_And_Location')}
 							</CardDescription>
 						</CardHeader>
 						<CardContent>
@@ -115,9 +114,9 @@ export default function AnalyticsPage() {
 				<TabsContent value="performance">
 					<Card>
 						<CardHeader>
-							<CardTitle>Performance Metrics</CardTitle>
+							<CardTitle>{t('Performance_Metrics')}</CardTitle>
 							<CardDescription>
-								Key performance indicators for your business
+								{t('Key_Performance_Indicators_For_Your_Business')}
 							</CardDescription>
 						</CardHeader>
 						<CardContent>

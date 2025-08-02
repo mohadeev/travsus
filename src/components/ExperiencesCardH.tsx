@@ -8,6 +8,7 @@ import SaleOffBadge from '@/components/SaleOffBadge'
 import Badge from '@/shared/Badge'
 import Avatar from '@/shared/Avatar'
 import Link from 'next/link'
+import { useTranslations } from '@/lib/i18n'
 
 export interface ExperiencesCardHProps {
 	className?: string
@@ -35,6 +36,8 @@ const ExperiencesCardH: FC<ExperiencesCardHProps> = ({
 		id,
 	} = data
 
+	const t = useTranslations("components_ExperiencesCardH");
+
 	const renderSliderGallery = () => {
 		return (
 			<div className="relative w-full flex-shrink-0 overflow-hidden md:w-72">
@@ -55,7 +58,7 @@ const ExperiencesCardH: FC<ExperiencesCardHProps> = ({
 			<div className="flex flex-grow flex-col p-3 sm:p-5">
 				<div className="space-y-2">
 					<div className="flex items-center space-x-2">
-						{isAds && <Badge name="ADS" color="green" />}
+						{isAds && <Badge name={t('components_ExperiencesCardH_Ads')} color="green" />}
 						<h2 className="text-lg font-medium capitalize">
 							<span className="line-clamp-1">{title}</span>
 						</h2>
@@ -73,22 +76,20 @@ const ExperiencesCardH: FC<ExperiencesCardHProps> = ({
 				</div>
 				<div className="mt-4 hidden text-sm text-neutral-500 dark:text-neutral-400 sm:block">
 					<span className="line-clamp-2">
-						{`Making a cup of coffee in Vietnam is a whole process that you barely
-            have free time in the middle. But it's also not a really complicated
-            task to start the day with`}
+						{t('components_ExperiencesCardH_Making_A_Cup_Of_Coffee')}
 					</span>
 				</div>
 				<div className="mt-4 flex items-center space-x-8">
 					<div className="flex items-center space-x-2">
 						<i className="las la-clock text-lg"></i>
 						<span className="text-sm text-neutral-500 dark:text-neutral-400">
-							3 hours
+							{t('components_ExperiencesCardH_3_Hours')}
 						</span>
 					</div>
 					<div className="flex items-center space-x-2">
 						<i className="las la-user text-lg"></i>
 						<span className="text-sm text-neutral-500 dark:text-neutral-400">
-							Up to 6 people
+							{t('components_ExperiencesCardH_Up_To_6_People')}
 						</span>
 					</div>
 				</div>
@@ -97,7 +98,7 @@ const ExperiencesCardH: FC<ExperiencesCardHProps> = ({
 					<div className="flex items-center space-x-3 text-sm text-neutral-700 dark:text-neutral-300">
 						<Avatar imgUrl={author.avatar} userName={author.displayName} />
 						<span className="hidden sm:inline-block">
-							<span className="hidden sm:inline">Hosted by</span>{' '}
+							<span className="hidden sm:inline">{t('components_ExperiencesCardH_Hosted_By')}</span>{' '}
 							{author.displayName}
 						</span>
 					</div>
@@ -105,7 +106,7 @@ const ExperiencesCardH: FC<ExperiencesCardHProps> = ({
 						{price}
 						{` `}
 						<span className="text-sm font-normal text-neutral-500 dark:text-neutral-400">
-							/person
+							{t('components_ExperiencesCardH_Per_Person')}
 						</span>
 					</span>
 				</div>

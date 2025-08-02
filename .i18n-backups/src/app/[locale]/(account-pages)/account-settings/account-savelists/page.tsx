@@ -14,12 +14,13 @@ import ButtonSecondary from '@/shared/ButtonSecondary'
 import { useSession } from 'next-auth/react'
 import basedGetUrlRequestLogedIn from '@/app/utils/basedGetUrlRequestLogedIn'
 import ContainerExperiencesCardSkeleton from '@/components/ContainerExperiencesCardSkeleton'
+import { useTranslations } from '@/lib/i18n'
 
 const AccountSavelists = () => {
 	let [categories] = useState(['Stays', 'Experiences', 'Cars'])
 	const [savedList, setSavedList] = useState([])
 	const { data: session, status } = useSession()
-	// const dispatch = useDispatch()
+	const t = useTranslations('accountsettings_accountsavelists_page')
 	const [loading, setLoading] = useState(true)
 
 	useEffect(() => {
@@ -44,7 +45,9 @@ const AccountSavelists = () => {
 		return (
 			<div className="space-y-6 sm:space-y-8">
 				<div>
-					<h2 className="text-3xl font-semibold">Save lists</h2>
+					<h2 className="text-3xl font-semibold">
+						{t('accountsettings_accountsavelists_page_Save_Lists')}
+					</h2>
 				</div>
 				<div className="w-14 border-b border-neutral-200 dark:border-neutral-700"></div>
 
@@ -68,16 +71,6 @@ const AccountSavelists = () => {
 							))}
 						</Tab.List>
 						<Tab.Panels>
-							{/* <Tab.Panel className="mt-8">
-								<div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 lg:grid-cols-3 xl:grid-cols-4">
-									{DEMO_STAY_LISTINGS.filter((_, i) => i < 8).map((stay) => (
-										<StayCard key={stay.id} data={stay} />
-									))}
-								</div>
-								<div className="mt-11 flex items-center justify-center">
-									<ButtonSecondary>Show me more</ButtonSecondary>
-								</div>
-							</Tab.Panel> */}
 							<Tab.Panel className="mt-8">
 								<div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 lg:grid-cols-3 xl:grid-cols-4">
 									{savedList
@@ -88,19 +81,11 @@ const AccountSavelists = () => {
 									{loading && <ContainerExperiencesCardSkeleton />}
 								</div>
 								<div className="mt-11 flex items-center justify-center">
-									<ButtonSecondary>Show me more</ButtonSecondary>
+									<ButtonSecondary>
+										{t('accountsettings_accountsavelists_page_Show_Me_More')}
+									</ButtonSecondary>
 								</div>
 							</Tab.Panel>
-							{/* <Tab.Panel className="mt-8">
-								<div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 lg:grid-cols-3 xl:grid-cols-4">
-									{DEMO_CAR_LISTINGS.filter((_, i) => i < 8).map((stay) => (
-										<CarCard key={stay.id} data={stay} />
-									))}
-								</div>
-								<div className="mt-11 flex items-center justify-center">
-									<ButtonSecondary>Show me more</ButtonSecondary>
-								</div>
-							</Tab.Panel> */}
 						</Tab.Panels>
 					</Tab.Group>
 				</div>

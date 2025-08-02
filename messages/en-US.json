@@ -862,5 +862,314 @@
   },
   "UserProfile": {
     "title": "svsdñvlsñldv profile {name}"
+  },
+  "app_locale_transtest_page": {
+    "app_locale_transtest_page_Translate_This_Page_To_Test_It": "transalte this page to test it"
+  },
+  "components_AnimatedFeatures": {
+    "components_AnimatedFeatures_Personal_Travel_Assistant": "Personal Travel Assistant",
+    "components_AnimatedFeatures_Personal_Travel_Assistant_Description": "Experience travel like never before with our AI-powered personal assistant. Get real-time recommendations, instant support, and tailored itineraries.",
+    "components_AnimatedFeatures_24_7_Personalized_Support": "24/7 personalized support",
+    "components_AnimatedFeatures_AI_Driven_Recommendations": "AI-driven recommendations",
+    "components_AnimatedFeatures_Real_Time_Itinerary_Updates": "Real-time itinerary updates",
+    "components_AnimatedFeatures_AI_Powered_Travel_Assistant": "AI-powered travel assistant",
+    "components_AnimatedFeatures_Smart_Booking": "Smart Booking",
+    "components_AnimatedFeatures_Smart_Booking_Description": "Say goodbye to complicated booking processes. Our smart booking system leverages cutting-edge technology to find you the best deals and options.",
+    "components_AnimatedFeatures_One_Tap_Booking_For_All_Your_Needs": "One-tap booking for all your needs",
+    "components_AnimatedFeatures_Price_Prediction_And_Alerts": "Price prediction and alerts",
+    "components_AnimatedFeatures_Flexible_Cancellation_Options": "Flexible cancellation options",
+    "components_AnimatedFeatures_Smart_Booking_System": "Smart booking system"
+  },
+  "components_BtnLikeIcon": {
+    "components_BtnLikeIcon_Save": "Save"
+  },
+  "components_CarCard": {
+    "components_CarCard_Car": "car",
+    "components_CarCard_Ads": "ADS",
+    "components_CarCard_Seats": "seats",
+    "components_CarCard_Per_Day": "/day"
+  },
+  "components_CarCardH": {
+    "components_CarCardH_Ads": "ADS",
+    "components_CarCardH_4_Seats": "4 seats",
+    "components_CarCardH_Auto_Gearbox": "Auto gearbox",
+    "components_CarCardH_2_Bags": "2 bags",
+    "components_CarCardH_Car_Owner": "Car owner",
+    "components_CarCardH_Per_Day": "/day"
+  },
+  "components_CardAuthorBox": {
+    "components_CardAuthorBox_New_York": "New York"
+  },
+  "components_CardCategory1": {
+    "components_CardCategory1_Articles": "Articles"
+  },
+  "components_CardCategory3": {
+    "components_CardCategory3_Properties": "properties"
+  },
+  "components_CardCategory4": {
+    "components_CardCategory4_Properties": "properties",
+    "components_CardCategory4_Cars": "cars",
+    "components_CardCategory4_Experiences": "experiences"
+  },
+  "components_CardCategory5": {
+    "components_CardCategory5_Properties": "properties"
+  },
+  "components_CardCategory6": {
+    "components_CardCategory6_Properties": "properties"
+  },
+  "components_CardCategoryBox1": {
+    "components_CardCategoryBox1_Minutes_Drive": "19 minutes drive"
+  },
+  "components_Collection": {
+    "components_Collection_Show_More": "Show more"
+  },
+  "components_CollectionsGrid": {
+    "components_CollectionsGrid_Failed_To_Fetch_Collections": "Failed to fetch collections",
+    "components_CollectionsGrid_No_Collections_Found": "No collections found",
+    "components_CollectionsGrid_Error_Fetching_Collections": "Error fetching collections:",
+    "components_CollectionsGrid_An_Unknown_Error_Occurred": "An unknown error occurred",
+    "components_CollectionsGrid_No_Collections_Found_For_This_Location": "No collections found for this location.",
+    "components_CollectionsGrid_Scroll_Left": "Scroll left",
+    "components_CollectionsGrid_Scroll_Right": "Scroll right"
+  },
+  "components_CommentListing": {
+    "components_CommentListing_Review_In": " review in ",
+    "components_CommentListing_The_Lounge_And_Bar": "The Lounge & Bar"
+  },
+  "components_CountryCard": {
+    "components_CountryCard_Country_Name": "Country Name"
+  },
+  "components_DatePickerCustomHeaderTwoMonth": {
+    "components_DatePickerCustomHeaderTwoMonth_Previous_Month": "Previous Month",
+    "components_DatePickerCustomHeaderTwoMonth_Next_Month": "Next Month"
+  },
+  "components_ExperiencesCard": {
+    "components_ExperiencesCard_Ads": "ADS",
+    "components_ExperiencesCard_Per_Person": "/person"
+  },
+  "components_ExperiencesCardH": {
+    "components_ExperiencesCardH_Ads": "ADS",
+    "components_ExperiencesCardH_Making_A_Cup_Of_Coffee": "Making a cup of coffee in Vietnam is a whole process that you barely have free time in the middle. But it's also not a really complicated task to start the day with",
+    "components_ExperiencesCardH_3_Hours": "3 hours",
+    "components_ExperiencesCardH_Up_To_6_People": "Up to 6 people",
+    "components_ExperiencesCardH_Hosted_By": "Hosted by",
+    "components_ExperiencesCardH_Per_Person": "/person"
+  },
+  "components_FlightCard": {
+    "components_FlightCard_Monday_August_12_10": "Monday, August 12 · 10:00",
+    "components_FlightCard_Tokyo_International_Airport": "Tokyo International Airport (HND)",
+    "components_FlightCard_Monday_August_16_10": "Monday, August 16 · 10:00",
+    "components_FlightCard_Singapore_International_Airport": "Singapore International Airport (SIN)",
+    "components_FlightCard_Trip_Time_7_Hours_45_Minutes": "Trip time: 7 hours 45 minutes",
+    "components_FlightCard_ANA_Business_Class_Boeing_787_NH_847": "ANA · Business class · Boeing 787 · NH 847",
+    "components_FlightCard_Transit_Time_15_Hours_45_Minutes_Bangkok": "Transit time: 15 hours 45 minutes - Bangkok (BKK)",
+    "components_FlightCard_Nonstop": "Nonstop",
+    "components_FlightCard_1_Stop": "1 stop",
+    "components_FlightCard_Round_Trip": "round-trip"
+  },
+  "components_FooterNav": {
+    "components_FooterNav_Travsus": "Travsus",
+    "components_FooterNav_Wishlists": "Wishlists",
+    "components_FooterNav_Log_in": "Log in",
+    "components_FooterNav_Menu": "Menu",
+    "components_FooterNav_User": "User",
+    "components_FooterNav_Sign_In": "Sign in"
+  },
+  "components_GallerySlider": {
+    "components_GallerySlider_Listing_Card_Gallery": "listing card gallery"
+  },
+  "components_GroupToursList": {
+    "components_GroupToursList_Hot_Group_Tours": "Hot Group Tours"
+  },
+  "components_HeaderFilter": {
+    "components_HeaderFilter_View_All": "View all"
+  },
+  "components_ItemsCardList": {
+    "components_ItemsCardList_No_Tours_Found": "No tours found",
+    "components_ItemsCardList_Error_Fetching_Tours": "Error fetching tours:",
+    "components_ItemsCardList_Failed_To_Load_Tours": "Failed to load tours",
+    "components_ItemsCardList_Failed_To_Fetch_Locations": "Failed to fetch locations",
+    "components_ItemsCardList_Unknown_City": "Unknown City",
+    "components_ItemsCardList_No_Locations_Found": "No locations found",
+    "components_ItemsCardList_Error_Fetching_Locations": "Error fetching locations:",
+    "components_ItemsCardList_Failed_To_Load_Locations": "Failed to load locations",
+    "components_ItemsCardList_Popular_Countries": "Popular Countries",
+    "components_ItemsCardList_Cities_In": "Cities in",
+    "components_ItemsCardList_Popular_Cities": "Popular Cities",
+    "components_ItemsCardList_Places_In": "Places in",
+    "components_ItemsCardList_Places_To_Visit": "Places to Visit",
+    "components_ItemsCardList_Popular_Tours": "Popular Tours",
+    "components_ItemsCardList_Popular_Destinations": "Popular Destinations",
+    "components_ItemsCardList_Explore_Top_Countries": "Explore top countries around the world",
+    "components_ItemsCardList_Discover_Amazing_Cities": "Discover amazing cities to visit",
+    "components_ItemsCardList_Must_See_Attractions": "Must-see attractions and experiences",
+    "components_ItemsCardList_Scroll_Left": "Scroll left",
+    "components_ItemsCardList_Scroll_Right": "Scroll right"
+  },
+  "components_LikeSaveBtns": {
+    "components_LikeSaveBtns_Tour_Link_Copied": "🎉 Tour link copied!",
+    "components_LikeSaveBtns_Copy_Failed": "😕 Oops! Copy failed",
+    "components_LikeSaveBtns_Email_Subject": "🌍 Check out this amazing tour from Travsus!",
+    "components_LikeSaveBtns_Email_Body": "Hey there! 👋 I found this incredible tour and thought you'd love it! 🏞️✈️\n\nTake a look: ${url}\n\nLet's plan our next adventure! 🗺️🧳",
+    "components_LikeSaveBtns_Share_Tour": "Share Tour",
+    "components_LikeSaveBtns_Copy_Tour_Link": "🔗 Copy Tour Link",
+    "components_LikeSaveBtns_Email_Tour": "✉️ Email Tour",
+    "components_LikeSaveBtns_Save_Tour": "Save Tour"
+  },
+  "components_MapContainer": {
+    "components_MapContainer_Search_As_I_Move_The_Map": "Search as I move the map"
+  },
+  "components_ModalSelectDate": {
+    "components_ModalSelectDate_Select_Date": "Select Date",
+    "components_ModalSelectDate_Whens_Your_Trip": " When's your trip?",
+    "components_ModalSelectDate_Clear_Dates": "Clear dates",
+    "components_ModalSelectDate_Save": "Save"
+  },
+  "components_ModalSelectGuests": {
+    "components_ModalSelectGuests_Select_Date": "Select Date",
+    "components_ModalSelectGuests_Clear_Data": "Clear data",
+    "components_ModalSelectGuests_Save": "Save"
+  },
+  "components_PostCardMetaV2": {
+    "components_PostCardMetaV2_Separator": "·"
+  },
+  "components_PropertyCardH": {
+    "components_PropertyCardH_6_Beds": "6 beds",
+    "components_PropertyCardH_3_Baths": "3 baths",
+    "components_PropertyCardH_1200_Sq_Fit": "1200 Sq. Fit",
+    "components_PropertyCardH_4_Network": "4 Network",
+    "components_PropertyCardH_Family": "Family",
+    "components_PropertyCardH_Ads": "ADS"
+  },
+  "components_SaleOffBadge": {
+    "components_SaleOffBadge_Desc": "-10% today"
+  },
+  "components_SectionBecomeAnAuthor": {
+    "components_SectionBecomeAnAuthor_Why_Did_You_Choose_Us": "Why did you choose us?",
+    "components_SectionBecomeAnAuthor_Accompanying_Us_You_Have_A_Trip": "Accompanying us, you have a trip full of experiences. With Travsus, booking accommodation, resort villas, hotels, private houses, apartments... becomes fast, convenient and easy.",
+    "components_SectionBecomeAnAuthor_Become_An_Author": "Become an author"
+  },
+  "components_SectionClientSay": {
+    "components_SectionClientSay_Lets_See_What_People_Think": "Let's see what people think of Travsus",
+    "components_SectionClientSay_Good_News_From_Far_Away": "Good news from far away"
+  },
+  "components_SectionGridAuthorBox": {
+    "components_SectionGridAuthorBox_Rating_Based_On_Customer_Reviews": "Rating based on customer reviews",
+    "components_SectionGridAuthorBox_Top_10_Author_Of_The_Month": "Top 10 author of the month",
+    "components_SectionGridAuthorBox_Show_Me_More": "Show me more",
+    "components_SectionGridAuthorBox_Become_A_Host": "Become a host"
+  },
+  "components_SectionGridCategoryBox": {
+    "components_SectionGridCategoryBox_Discover_Great_Places": "Discover great places near where you live",
+    "components_SectionGridCategoryBox_Explore_Nearby": "Explore nearby"
+  },
+  "components_SectionGridFeaturePlaces": {
+    "components_SectionGridFeaturePlaces_Featured_Places": "Featured places to stay",
+    "components_SectionGridFeaturePlaces_Popular_Places": "Popular places to stay that Travsus recommends for you",
+    "components_SectionGridFeaturePlaces_Show_Me_More": "Show me more"
+  },
+  "app_locale_CardImage": {
+    "app_locale_CardImage_Hello": "Hello",
+    "app_locale_CardImage_Age": "age"
+  },
+  "app_locale_ClientHomePage": {
+    "app_locale_ClientHomePage_Premium_Travel_Experiences": "Premium travel experiences with expert planning and exclusive perks.",
+    "app_locale_ClientHomePage_Your_Journey_You_Deserve": "Your Journey, You Deserve the Best",
+    "app_locale_ClientHomePage_Best_Price_Guarantee": "Best Price Guarantee",
+    "app_locale_ClientHomePage_No_Hidden_Fees": "No Hidden Fees",
+    "app_locale_ClientHomePage_5_Star_Service_Quality": "5-Star Service Quality",
+    "app_locale_ClientHomePage_Expert_Travel_Planning": "Expert travel planning with luxury experiences and exclusive perks.",
+    "app_locale_ClientHomePage_Worldwide": "Worldwide",
+    "app_locale_ClientHomePage_Travel_Services": "Travel Services",
+    "app_locale_ClientHomePage_Personalized_Travel_Planning": "Personalized travel planning by experts",
+    "app_locale_ClientHomePage_Luxury_Accommodations": "Luxury Accommodations",
+    "app_locale_ClientHomePage_Premium_Hotels": "Premium hotels and exclusive properties",
+    "app_locale_ClientHomePage_VIP_Services": "VIP Services",
+    "app_locale_ClientHomePage_Exclusive_Perks": "Exclusive perks and insider access",
+    "app_locale_ClientHomePage_Popular_Tours": "Popular Tours",
+    "app_locale_ClientHomePage_Discover_Exciting_Tours": "Discover exciting tours and experiences",
+    "app_locale_ClientHomePage_Popular_Cities": "Popular Cities"
+  },
+  "app_locale_featurenotificationform": {
+    "app_locale_featurenotificationform_Coming_Soon": "COMING SOON",
+    "app_locale_featurenotificationform_Enter_Your_Email_Address": "Enter your email address",
+    "app_locale_featurenotificationform_Submitting": "Submitting...",
+    "app_locale_featurenotificationform_Notify_Me": "NOTIFY ME",
+    "app_locale_featurenotificationform_By_Signing_Up": "By signing up, you agree to our",
+    "app_locale_featurenotificationform_Terms_And_Conditions": "Terms & Conditions"
+  },
+  "app_locale_newslettermodal": {
+    "app_locale_newslettermodal_Sign_Up_Today": "SIGN UP TODAY",
+    "app_locale_newslettermodal_Its_Easy_And_Free": "IT'S EASY AND FREE",
+    "app_locale_newslettermodal_Email_Address": "Email Address",
+    "app_locale_newslettermodal_Enter_Your_Email_Address": "Enter your email address (max 60 characters)",
+    "app_locale_newslettermodal_Select_Newsletter_Types": "Select newsletter types ({selectedTypes.length} selected)",
+    "app_locale_newslettermodal_Subscribing": "Subscribing...",
+    "app_locale_newslettermodal_Sign_Up": "SIGN UP",
+    "app_locale_newslettermodal_By_Signing_Up_I_Agree_To_The": "By signing up I agree to the",
+    "app_locale_newslettermodal_Terms_And_Conditions": "Terms & Conditions"
+  },
+  "app_locale_referralprogrammodal": {
+    "app_locale_referralprogrammodal_Earn": "EARN",
+    "app_locale_referralprogrammodal_Per_Month": "PER MONTH",
+    "app_locale_referralprogrammodal_Join_Our_Referral_Program": "Join our referral program and earn up to €2500 per month in commissions by referring new customers to our platform. The more people you refer, the more you earn!",
+    "app_locale_referralprogrammodal_Enter_Your_Email_Address": "Enter your email address",
+    "app_locale_referralprogrammodal_Submitting": "Submitting...",
+    "app_locale_referralprogrammodal_Join_Program": "JOIN PROGRAM",
+    "app_locale_referralprogrammodal_By_Signing_Up": "By signing up, you agree to our",
+    "app_locale_referralprogrammodal_Terms_And_Conditions": "Terms & Conditions"
+  },
+  "app_locale_TestAnything": {
+    "app_locale_TestAnything_Test_Anything": "TestAnything"
+  },
+  "app_locale_continent_country_region_city_category_name_servicedetail_SectionDateRange": {
+    "app_locale_continent_country_region_city_category_name_servicedetail_SectionDateRange_Availability": "Availability",
+    "app_locale_continent_country_region_city_category_name_servicedetail_SectionDateRange_Prices_May_Increase": "Prices may increase on weekends or holidays"
+  },
+  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer": {
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Arrival_At_Marrakech": "Arrival at Marrakech",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Visit_Jemaa_El_Fnaa": "Visit Jemaa el-Fnaa",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Explore_Bahia_Palace": "Explore Bahia Palace",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Day_Trip_To_Ouzoud_Falls": "Day trip to Ouzoud Falls",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Travel_To_Essaouira": "Travel to Essaouira",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Beach_Day_Seafood_Dinner": "Beach day & seafood dinner",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Visit_Ait_Ben_Haddou": "Visit Ait Ben Haddou",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Cross_The_Atlas_Mountains": "Cross the Atlas Mountains",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Explore_Merzouga_Desert": "Explore Merzouga Desert",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Camel_Trek_At_Sunset": "Camel trek at sunset",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Visit_Fes_Medina": "Visit Fes Medina",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Explore_Fes_Tanneries": "Explore Fes tanneries",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Shopping_In_Fes_Souks": "Shopping in Fes souks",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Departure_From_Fes": "Departure from Fes",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_See_More": "See more",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Show_Less": "Show less"
+  },
+  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_FAQProps": {
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_FAQProps_Frequently_Asked_Questions": "Frequently Asked Questions"
+  },
+  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput": {
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Guests": "Guests",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Add_Guests": "Add guests",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Adults": "Adults",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Ages_13_Or_Above": "Ages 13 or above",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Children": "Children",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Ages_1_13": "Ages 1–13"
+  },
+  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_Included": {
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_Included_Included": "Included",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_Included_Everything_Included_In_Your_Package": "Everything included in your package"
+  },
+  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_LineItemsBreakdown": {
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_LineItemsBreakdown_Grand_Total": "Grand Total"
+  },
+  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ListingExperiencesDetailsImages": {
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ListingExperiencesDetailsImages_Show_All_Photos": "Show all photos"
+  },
+  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page": {
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page_Overview": "Overview",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page_Host_Information": "Host Information",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page_Reviews": "Reviews",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page_reviews": "reviews",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page_Things_to_know": "Things to know"
   }
 }

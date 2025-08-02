@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { useTranslations } from 'next-intl'
+import { useTranslations } from '@/lib/i18n'
 import CountryCardList from '@/components/ItemsCardList'
 import type { CountryDataType } from '@/components/CountryCard'
 

@@ -1,6 +1,6 @@
 import flatpickr from 'flatpickr'
 import { useEffect } from 'react'
-import { useTranslations } from 'next-intl'
+import { useTranslations } from '@/lib/i18n'
 
 const DatePickerTwo = () => {
 	const t = useTranslations('FormElements_DatePicker_DatePickerTwo')

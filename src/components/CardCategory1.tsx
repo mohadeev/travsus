@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import { TaxonomyType } from "@/data/types";
 import Link from "next/link";
 import Image from "next/image";
+import { useTranslations } from '@/lib/i18n';
 
 export interface CardCategory1Props {
   className?: string;
@@ -15,6 +16,8 @@ const CardCategory1: FC<CardCategory1Props> = ({
   taxonomy,
 }) => {
   const { count, name, href = "/", thumbnail } = taxonomy;
+  const t = useTranslations("components_CardCategory1");
+  
   return (
     <Link
       href={href}
@@ -42,7 +45,7 @@ const CardCategory1: FC<CardCategory1Props> = ({
             size === "large" ? "text-sm" : "text-xs"
           } block mt-[2px] text-neutral-500 dark:text-neutral-400`}
         >
-          {count} Articles
+          {count} {t('components_CardCategory1_Articles')}
         </span>
       </div>
     </Link>

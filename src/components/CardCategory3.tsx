@@ -3,6 +3,7 @@ import { TaxonomyType } from "@/data/types";
 import convertNumbThousand from "@/utils/convertNumbThousand";
 import Link from "next/link";
 import Image from "next/image";
+import { useTranslations } from '@/lib/i18n';
 
 export interface CardCategory3Props {
   className?: string;
@@ -14,6 +15,8 @@ const CardCategory3: FC<CardCategory3Props> = ({
   taxonomy,
 }) => {
   const { count, name, href = "/", thumbnail } = taxonomy;
+  const t = useTranslations("components_CardCategory3");
+
   return (
     <Link href={href} className={`nc-CardCategory3 flex flex-col ${className}`}>
       <div
@@ -37,7 +40,7 @@ const CardCategory3: FC<CardCategory3Props> = ({
         <span
           className={`block mt-1.5 text-sm text-neutral-6000 dark:text-neutral-400`}
         >
-          {convertNumbThousand(count || 0)} properties
+          {convertNumbThousand(count || 0)} {t('components_CardCategory3_Properties')}
         </span>
       </div>
     </Link>

@@ -3,6 +3,7 @@
 import { useAuthAction } from '@/app/hooks/useAuthAction'
 import addAndRemoveToWishList from '@/utils/api-utils/addAndRemoveToWishList'
 import React, { FC, useState } from 'react'
+import { useTranslations } from '@/lib/i18n'
 
 export interface BtnLikeIconProps {
 	className?: string
@@ -20,10 +21,8 @@ const BtnLikeIcon: FC<BtnLikeIconProps> = ({
 	serviceId,
 }) => {
 	const [likedState, setLikedState] = useState(isLiked)
+	const t = useTranslations("components_BtnLikeIcon");
 
-	// const handleAddToWishList = async () => {
-	// 	await addAndRemoveToWishList({ serviceId })
-	// }
 	const handleAddToWishList = useAuthAction(async () => {
 		setLikedState(!likedState)
 		await addAndRemoveToWishList({ serviceId })
@@ -42,11 +41,10 @@ const BtnLikeIcon: FC<BtnLikeIconProps> = ({
 				likedState ? 'nc-BtnLikeIcon--liked' : ''
 			} ${colorClass} ${className}`}
 			data-nc-id="BtnLikeIcon"
-			title="Save"
+			title={t('components_BtnLikeIcon_Save')}
 			onClick={() => {
 				handleAddToWishList()
 			}}
-			// onClick={() => setLikedState(!likedState)}
 		>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"

@@ -6,7 +6,7 @@ import { Plus } from 'lucide-react'
 import { ToursList } from '@/components/dashboard/tours-list'
 import Link from 'next/link'
 import { getTours } from '@/app/actions/tourActions'
-import { useTranslations } from 'next-intl'
+import { useTranslations } from '@/lib/i18n'
 
 // export const metadata: Metadata = {
 // 	title: t('dashboard_dashboard_tours_page_Tours'),
@@ -14,7 +14,7 @@ import { useTranslations } from 'next-intl'
 // }
 
 export default async function ToursPage() {
-	const t = useTranslations("dashboard_dashboard_tours_page")
+	const t = useTranslations('dashboard_dashboard_tours_page')
 	const result = await getTours()
 	const tours = result.success ? result.tours : []
 
