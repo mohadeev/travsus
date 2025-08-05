@@ -13,6 +13,7 @@ import { useRouter } from "next/navigation";
 import ReviewImageGallery from "./ReviewImageGallery";
 import { useSelector } from "react-redux";
 import { useAuthAction } from "@/app/hooks/useAuthAction";
+import { useTranslations } from '@/lib/i18n';
 
 interface ReviewProps {
   serviceId: string;
@@ -41,6 +42,7 @@ interface ReviewType {
 }
 
 const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
+  const t = useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewSystem");
   const router = useRouter();
   const [showReviewForm, setShowReviewForm] = useState(false);
   const [rating, setRating] = useState(0);
@@ -176,11 +178,11 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
         router.refresh();
       } else {
         const error = await response.json();
-        alert(`Error submitting review: ${error.error}`);
+        alert(`${t('Error_Submit_Review')} ${error.error}`);
       }
     } catch (error) {
       console.error("Error submitting review:", error);
-      alert("Failed to submit review. Please try again.");
+      alert(t('Failed_Submit'));
     } finally {
       setIsSubmitting(false);
     }
@@ -231,7 +233,7 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
     return (
       <div className="w-full">
         <h3 className="mb-6 text-4xl font-extrabold">
-          Tell us, how was your visit?
+          {t('Tell_Us_Visit')}
         </h3>
         <div className="mx-auto max-w-xs overflow-hidden rounded-xl border border-neutral-200">
           <div className="p-4">
@@ -245,7 +247,7 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
             >
               <Image
                 src={getImageUrl() || "/placeholder.svg"}
-                alt={title || "Tour image"}
+                alt={title || t('Tour_Title')}
                 width={220}
                 height={220}
                 style={{ objectFit: "cover", width: "100%", height: "100%" }}
@@ -253,10 +255,10 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
             </div>
           </div>
           <div className="p-4">
-            <h4 className="mb-1 text-lg font-bold">{title || "Tour Title"}</h4>
+            <h4 className="mb-1 text-lg font-bold">{title || t('Tour_Title')}</h4>
             {daysCount && (
               <p className="text-sm text-neutral-600">
-                {daysCount} Days {region && `in ${region}`}
+                {daysCount} {t('Days')} {region && `${t('In')} ${region}`}
               </p>
             )}
             {!daysCount && region && (
@@ -266,8 +268,8 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
         </div>
         <div className="mt-4 text-center text-sm">
           <p className="text-neutral-500">
-            Not the right one?{" "}
-            <button className="text-black underline">Change activity</button>
+            {t('Not_Right_One')}{" "}
+            <button className="text-black underline">{t('Change_Activity')}</button>
           </p>
         </div>
       </div>
@@ -279,10 +281,10 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
       {/* Reviews Section */}
       <div className="">
         <div className="mb-4 flex items-center justify-between">
-          <h2 className="text-2xl font-semibold">Reviews ({reviews.length})</h2>
+          <h2 className="text-2xl font-semibold">{t('Reviews')} ({reviews.length})</h2>
           {reviews.length >= 1 ? (
             <ButtonPrimary onClick={() => setShowReviewForm(!showReviewForm)}>
-              Write a Review
+              {t('Write_Review')}
             </ButtonPrimary>
           ) : (
             ""
@@ -304,7 +306,7 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
                   {/* Rating */}
                   <div className="mb-6">
                     <h4 className="mb-3 text-2xl font-semibold">
-                      How would you rate your experience?
+                      {t('Rate_Experience')}
                     </h4>
                     <div className="flex gap-1">
                       {[1, 2, 3, 4, 5].map((circle) => (
@@ -329,7 +331,7 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
                   {/* When did you go */}
                   <div className="mb-6">
                     <h4 className="mb-2 text-lg font-medium">
-                      When did you go?
+                      {t('When_Go')}
                     </h4>
                     <div className="relative">
                       <select
@@ -338,7 +340,7 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
                         className="w-full appearance-none rounded-md border border-neutral-300 bg-white px-4 py-2 md:w-64"
                         required
                       >
-                        <option value="">Select one</option>
+                        <option value="">{t('Select_One')}</option>
                         {generateMonthOptions()}
                       </select>
                       <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-5 w-5 -translate-y-1/2 transform text-neutral-500" />
@@ -348,22 +350,28 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
                   {/* Who did you go with */}
                   <div className="mb-6">
                     <h4 className="mb-2 text-lg font-medium">
-                      Who did you go with?
+                      {t('Who_Go_With')}
                     </h4>
                     <div className="flex flex-wrap gap-2">
-                      {["Business", "Couples", "Family", "Friends", "Solo"].map(
+                      {[
+                        { key: "Business", label: t('Business') },
+                        { key: "Couples", label: t('Couples') },
+                        { key: "Family", label: t('Family') },
+                        { key: "Friends", label: t('Friends') },
+                        { key: "Solo", label: t('Solo') }
+                      ].map(
                         (type) => (
                           <button
-                            key={type}
+                            key={type.key}
                             type="button"
-                            onClick={() => handleTravelTypeSelect(type)}
+                            onClick={() => handleTravelTypeSelect(type.key)}
                             className={`rounded-full border px-4 py-1.5 ${
-                              travelType === type
+                              travelType === type.key
                                 ? "border-black bg-black text-white"
                                 : "border-neutral-200 bg-white text-black hover:border-neutral-400"
                             }`}
                           >
-                            {type}
+                            {type.label}
                           </button>
                         ),
                       )}
@@ -373,45 +381,45 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
                   {/* Write your review */}
                   <div className="mb-6">
                     <h4 className="mb-2 text-lg font-medium">
-                      Write your review
+                      {t('Write_Your_Review')}
                     </h4>
                     <Textarea
                       value={reviewText}
                       onChange={(e) => setReviewText(e.target.value)}
-                      placeholder="Share your experience with other travelers..."
+                      placeholder={t('Share_Experience')}
                       rows={5}
                       maxLength={1000}
                       required
                     />
                     <div className="text-right text-sm text-neutral-500">
-                      {reviewText.length}/1000 max characters
+                      {reviewText.length}/1000 {t('Max_Characters')}
                     </div>
                   </div>
 
                   {/* Title your review */}
                   <div className="mb-6">
                     <h4 className="mb-2 text-lg font-medium">
-                      Title your review
+                      {t('Title_Your_Review')}
                     </h4>
                     <Input
                       type="text"
                       value={reviewTitle}
                       onChange={(e) => setReviewTitle(e.target.value)}
-                      placeholder="Summarize your experience"
+                      placeholder={t('Summarize_Experience')}
                       maxLength={120}
                       required
                     />
                     <div className="text-right text-sm text-neutral-500">
-                      {reviewTitle.length}/120 max characters
+                      {reviewTitle.length}/120 {t('Max_Characters')}
                     </div>
                   </div>
 
                   {/* Add photos */}
                   <div className="mb-6">
                     <h4 className="mb-2 text-lg font-medium">
-                      Add some photos
+                      {t('Add_Photos')}
                     </h4>
-                    <p className="mb-3 text-sm text-neutral-500">Optional</p>
+                    <p className="mb-3 text-sm text-neutral-500">{t('Optional')}</p>
 
                     <div className="rounded-md bg-[#F2F2F2] p-6 text-center">
                       {imagePreviewUrls.length > 0 ? (
@@ -440,10 +448,10 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
                       <label className="flex cursor-pointer flex-col items-center justify-center">
                         <Camera className="mb-2 h-8 w-8 text-neutral-400" />
                         <span className="font-medium text-neutral-600">
-                          Click to add photos
+                          {t('Click_Add_Photos')}
                         </span>
                         <span className="text-sm text-neutral-500">
-                          or drag and drop
+                          {t('Drag_Drop')}
                         </span>
                         <input
                           type="file"
@@ -467,13 +475,7 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
                         required
                       />
                       <span className="text-sm text-neutral-600">
-                        I certify that this review is based on my own experience
-                        and is my genuine opinion of this establishment, and
-                        that I have no personal or business relationship with
-                        this establishment, and have not been offered any
-                        incentive or payment originating from the establishment
-                        to write this review. I understand that Travsus has a
-                        zero-tolerance policy on fake reviews.
+                        {t('Certify_Review')}
                       </span>
                     </label>
                   </div>
@@ -483,10 +485,10 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
                       type="button"
                       onClick={() => setShowReviewForm(false)}
                     >
-                      Cancel
+                      {t('Cancel')}
                     </ButtonSecondary>
                     <ButtonPrimary type="submit" disabled={isSubmitting}>
-                      {isSubmitting ? "Submitting..." : "Submit"}
+                      {isSubmitting ? t('Submitting') : t('Submit')}
                     </ButtonPrimary>
                   </div>
                 </form>
@@ -540,7 +542,7 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
                       <div className="flex items-center text-sm text-neutral-500">
                         <span>{review.author.location}</span>
                         <span className="mx-2">•</span>
-                        <span>{review.author.contributions} contributions</span>
+                        <span>{review.author.contributions} {t('Contributions')}</span>
                       </div>
                     )}
                   </div>
@@ -568,9 +570,9 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
                   <p className="mb-3 text-neutral-700">{review.content}</p>
 
                   <div className="mb-3 text-sm text-neutral-500">
-                    <span>Date of experience: {review.travelDate}</span>
+                    <span>{t('Date_Experience')} {review.travelDate}</span>
                     <span className="mx-2">•</span>
-                    <span>Trip type: {review.travelType}</span>
+                    <span>{t('Trip_Type')} {review.travelType}</span>
                   </div>
 
                   {review.images && review.images.length > 0 && (
@@ -582,19 +584,19 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
           </div>
         ) : (
           <div className="nc-custom-shadow-1 rounded-lg py-10 text-center">
-            <h3 className="mb-2 text-lg font-medium">No reviews yet</h3>
+            <h3 className="mb-2 text-lg font-medium">{t('No_Reviews_Yet')}</h3>
             <p className="mb-4 text-neutral-500">
-              Be the first to share your experience
+              {t('First_Share')}
             </p>
             <ButtonPrimary onClick={() => setShowReviewForm(true)}>
-              Write a Review
+              {t('Write_Review')}
             </ButtonPrimary>
           </div>
         )}
 
         {reviews.length > 5 && (
           <div className="mt-6 text-center">
-            <ButtonPrimary>Load More Reviews</ButtonPrimary>
+            <ButtonPrimary>{t('Load_More_Reviews')}</ButtonPrimary>
           </div>
         )}
       </div>

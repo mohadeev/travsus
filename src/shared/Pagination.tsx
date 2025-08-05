@@ -1,4 +1,5 @@
 import React, { FC } from 'react'
+import { useTranslations } from '@/lib/i18n'
 
 export interface PaginationProps {
 	className?: string
@@ -13,6 +14,8 @@ const Pagination: FC<PaginationProps> = ({
 	totalPages,
 	onPageChange,
 }) => {
+	const t = useTranslations("shared_Pagination");
+
 	const renderPageNumbers = () => {
 		const pages = []
 		for (let i = 1; i <= totalPages; i++) {

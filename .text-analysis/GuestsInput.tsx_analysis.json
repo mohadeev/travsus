@@ -1,0 +1,34 @@
+{
+  "file": "C:\\Users\\Usuario\\s\\travsus\\src\\app\\(client-components)\\(HeroSearchForm2Mobile)\\GuestsInput.tsx",
+  "timestamp": "2025-08-02T11:52:03.458Z",
+  "hasTranslatableText": true,
+  "textCount": 5,
+  "texts": [
+    {
+      "type": "jsx_attribute",
+      "text": "mb-5 block font-semibold text-xl sm:text-2xl",
+      "context": " className=\"mb-5 block font-semibold text-xl sm:text-2xl\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "w-full",
+      "context": "\r\n        className=\"w-full\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "w-full mt-6",
+      "context": "\r\n        className=\"w-full mt-6\""
+    },
+    {
+      "type": "return_string",
+      "text": "flex flex-col relative p-5 ${className}",
+      "context": "return (\r\n    <div className={`flex flex-col relative p-5 ${className}`"
+    },
+    {
+      "type": "template_literal",
+      "text": "Who's coming?",
+      "context": "`Who's coming?`"
+    }
+  ],
+  "fileSize": 2816
+}

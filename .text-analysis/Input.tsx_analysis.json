@@ -1,0 +1,19 @@
+{
+  "file": "C:\\Users\\Usuario\\s\\travsus\\src\\shared\\Input.tsx",
+  "timestamp": "2025-08-02T11:40:51.211Z",
+  "hasTranslatableText": true,
+  "textCount": 2,
+  "texts": [
+    {
+      "type": "jsx_attribute",
+      "text": "absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 focus:outline-none",
+      "context": "\r\n\t\t\t\t\t\t\t\t\tclassName=\"absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 focus:outline-none\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "h-5 w-5",
+      "context": " className=\"h-5 w-5\""
+    }
+  ],
+  "fileSize": 2392
+}

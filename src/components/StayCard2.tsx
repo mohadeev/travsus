@@ -7,6 +7,7 @@ import BtnLikeIcon from "@/components/BtnLikeIcon";
 import SaleOffBadge from "@/components/SaleOffBadge";
 import Badge from "@/shared/Badge";
 import Link from "next/link";
+import { useTranslations } from '@/lib/i18n';
 
 export interface StayCard2Props {
   className?: string;
@@ -21,6 +22,8 @@ const StayCard2: FC<StayCard2Props> = ({
   className = "",
   data = DEMO_DATA,
 }) => {
+  const t = useTranslations("components_StayCard2");
+  
   const {
     galleryImgs,
     listingCategory,
@@ -58,10 +61,10 @@ const StayCard2: FC<StayCard2Props> = ({
       <div className={size === "default" ? "mt-3 space-y-3" : "mt-2 space-y-2"}>
         <div className="space-y-2">
           <span className="text-sm text-neutral-500 dark:text-neutral-400">
-            {listingCategory.name} · {bedrooms} beds
+            {listingCategory.name} · {bedrooms} {t('components_StayCard2_Beds')}
           </span>
           <div className="flex items-center space-x-2">
-            {isAds && <Badge name="ADS" color="green" />}
+            {isAds && <Badge name={t('components_StayCard2_ADS')} color="green" />}
             <h2
               className={`font-semibold capitalize text-neutral-900 dark:text-white ${
                 size === "default" ? "text-base" : "text-base"
@@ -102,7 +105,7 @@ const StayCard2: FC<StayCard2Props> = ({
             {` `}
             {size === "default" && (
               <span className="text-sm text-neutral-500 dark:text-neutral-400 font-normal">
-                /night
+                {t('components_StayCard2_Per_Night')}
               </span>
             )}
           </span>

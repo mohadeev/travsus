@@ -1,0 +1,14 @@
+{
+  "file": "C:\\Users\\Usuario\\s\\travsus\\src\\shared\\SocialsList.tsx",
+  "timestamp": "2025-08-02T11:43:39.757Z",
+  "hasTranslatableText": true,
+  "textCount": 1,
+  "texts": [
+    {
+      "type": "return_string",
+      "text": "nc-SocialsList flex space-x-2.5 text-2xl text-neutral-6000 dark:text-neutral-300 ${className}",
+      "context": "return (\r\n\t\t<nav\r\n\t\t\tclassName={`nc-SocialsList flex space-x-2.5 text-2xl text-neutral-6000 dark:text-neutral-300 ${className}`"
+    }
+  ],
+  "fileSize": 1129
+}

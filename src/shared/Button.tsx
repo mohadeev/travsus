@@ -1,5 +1,6 @@
 'use client'
 
+import { useTranslations } from '@/lib/i18n'
 import Spinner from '@/components/ui/Spinner'
 import { Route } from '@/routers/types'
 import Link from 'next/link'
@@ -33,6 +34,8 @@ const Button: FC<ButtonProps> = ({
 	loading,
 	onClick = () => {},
 }) => {
+	const t = useTranslations("shared_Button");
+	
 	const CLASSES = `nc-Button relative h-auto inline-flex items-center justify-center rounded-full transition-colors ${fontSize} ${sizeClass} ${translate} ${className} `
 
 	const _renderLoading = ({ props }: any) => {
@@ -70,7 +73,7 @@ const Button: FC<ButtonProps> = ({
 				onClick={onClick}
 				rel={targetBlank ? 'noopener noreferrer' : undefined}
 			>
-				{children || `This is Link`}
+				{children || t('shared_Button_This_Is_Link')}
 			</Link>
 		)
 	}

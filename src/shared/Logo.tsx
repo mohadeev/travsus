@@ -5,6 +5,7 @@ import LogoSvgLight from './LogoSvgLight'
 import LogoSvg from './LogoSvg'
 import Link from 'next/link'
 import { StaticImageData } from 'next/image'
+import { useTranslations } from '@/lib/i18n'
 
 export interface LogoProps {
 	img?: StaticImageData
@@ -17,6 +18,8 @@ const Logo: React.FC<LogoProps> = ({
 	imgLight = logoLightImg,
 	className = 'w-24',
 }) => {
+	const t = useTranslations("shared_Logo");
+	
 	return (
 		<Link
 			href="/"
@@ -28,16 +31,16 @@ const Logo: React.FC<LogoProps> = ({
 				<img
 					className={`block max-h-12 ${imgLight ? 'dark:hidden' : ''}`}
 					src={img.src}
-					alt="Logo"
+					alt={t('shared_Logo_Alt_Text')}
 				/>
 			) : (
-				'Logo Here'
+				t('shared_Logo_Fallback_Text')
 			)}
 			{imgLight && (
 				<img
 					className="hidden max-h-12 dark:block"
 					src={imgLight.src}
-					alt="Logo-Light"
+					alt={t('shared_Logo_Light_Alt_Text')}
 				/>
 			)}
 		</Link>

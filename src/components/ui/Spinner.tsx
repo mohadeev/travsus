@@ -1,4 +1,5 @@
 import React from 'react'
+import { useTranslations } from '@/lib/i18n'
 
 interface SpinnerProps {
 	size?: number
@@ -6,6 +7,8 @@ interface SpinnerProps {
 }
 
 export default function Spinner({ size = 25, color = '#fff' }: SpinnerProps) {
+	const t = useTranslations("components_ui_Spinner");
+	
 	return (
 		<div className="inline-block" style={{ width: size, height: size }}>
 			<svg

@@ -1,0 +1,128 @@
+
+=== FILE: C:\Users\Usuario\s\travsus\src\components\ContainerExperiencesCardSkeleton.tsx ===
+=== NAMESPACE: components_ContainerExperiencesCardSkeleton ===
+=== PROMPT ===
+# ULTRA-STRICT INTERNATIONALIZATION INSTRUCTIONS
+
+Transform this TSX file to use internationalization. Follow these rules EXACTLY:
+
+## CRITICAL NAMESPACE REQUIREMENT:
+- You MUST use the exact namespace: "components_ContainerExperiencesCardSkeleton"
+- The useTranslations call MUST be: useTranslations("components_ContainerExperiencesCardSkeleton")
+- Do NOT modify this namespace in any way
+- Do NOT use any other namespace
+
+## EXACT REQUIREMENTS:
+1. Add this import: import { useTranslations } from '@/lib/i18n'
+2. Add this hook call: const t = useTranslations("components_ContainerExperiencesCardSkeleton");
+3. Replace static text with: t('components_ContainerExperiencesCardSkeleton_Key_Name')
+4. Generate keys like: components_ContainerExperiencesCardSkeleton_Welcome_Message, components_ContainerExperiencesCardSkeleton_Button_Text
+
+## VALIDATION CHECKLIST:
+✓ Import added: import { useTranslations } from '@/lib/i18n'
+✓ Hook called with EXACT namespace: useTranslations("components_ContainerExperiencesCardSkeleton")
+✓ Keys start with namespace: components_ContainerExperiencesCardSkeleton_*
+✓ No dots in keys (use underscores)
+✓ Complete file transformation
+
+## EXAMPLE TRANSFORMATION:
+BEFORE:
+export default function MyComponent() {
+  return <div>Hello World</div>
+}
+
+AFTER:
+import { useTranslations } from '@/lib/i18n'
+
+export default function MyComponent() {
+  const t = useTranslations("components_ContainerExperiencesCardSkeleton");
+  return <div>{t('components_ContainerExperiencesCardSkeleton_Hello_World')}</div>
+}
+
+## OUTPUT FORMAT:
+---CODE:
+<COMPLETE TSX FILE WITH EXACT NAMESPACE>
+---MESSAGES:
+{
+  "components_ContainerExperiencesCardSkeleton": {
+    "components_ContainerExperiencesCardSkeleton_Key1": "Original text 1",
+    "components_ContainerExperiencesCardSkeleton_Key2": "Original text 2"
+  }
+}
+
+## FILE TO TRANSFORM:
+// ContainerExperiencesCardSkeleton.tsx
+
+import React from 'react'
+import ExperiencesCardSkeleton from './ExperiencesCardSkeleton' // Import the skeleton component
+
+const ContainerExperiencesCardSkeleton: React.FC = () => {
+	// Generate an array of length 10 to create 10 skeleton cards
+	const skeletons = Array.from({ length: 4 }, (_, index) => (
+		<ExperiencesCardSkeleton key={index} size="default" /> // or size="small" based on your needs
+	))
+
+	return <>{skeletons}</>
+}
+
+export default ContainerExperiencesCardSkeleton
+
+
+REMEMBER: Use EXACTLY "components_ContainerExperiencesCardSkeleton" - do not change it!
+
+=== RESPONSE ===
+<Thinking>
+Looking at this TSX file, I need to transform it to use internationalization following the exact requirements:
+
+1. The file is `ContainerExperiencesCardSkeleton.tsx`
+2. I need to use the exact namespace: "components_ContainerExperiencesCardSkeleton"
+3. I need to add the import: `import { useTranslations } from '@/lib/i18n'`
+4. I need to add the hook call: `const t = useTranslations("components_ContainerExperiencesCardSkeleton");`
+
+However, looking at this specific file, I notice that it doesn't actually contain any static text that needs to be translated. The file only:
+- Imports React and another component
+- Creates an array of skeleton components
+- Returns JSX with no text content
+
+The only "text" in the file is:
+- Comments (which typically aren't translated)
+- The `key={index}` prop (which is a technical identifier, not user-facing text)
+- The `size="default"` prop (which is a technical parameter, not user-facing text)
+
+Since there's no actual user-facing text to translate, I should still follow the instructions to add the import and hook call as required, but there won't be any translation keys to generate since there's no translatable content.
+
+Let me transform the file according to the requirements:
+</Thinking>
+
+---CODE:
+```tsx
+// ContainerExperiencesCardSkeleton.tsx
+
+import React from 'react'
+import { useTranslations } from '@/lib/i18n'
+import ExperiencesCardSkeleton from './ExperiencesCardSkeleton' // Import the skeleton component
+
+const ContainerExperiencesCardSkeleton: React.FC = () => {
+	const t = useTranslations("components_ContainerExperiencesCardSkeleton");
+	
+	// Generate an array of length 10 to create 10 skeleton cards
+	const skeletons = Array.from({ length: 4 }, (_, index) => (
+		<ExperiencesCardSkeleton key={index} size="default" /> // or size="small" based on your needs
+	))
+
+	return <>{skeletons}</>
+}
+
+export default ContainerExperiencesCardSkeleton
+```
+
+---MESSAGES:
+```json
+{
+  "components_ContainerExperiencesCardSkeleton": {}
+}
+```
+
+Note: This component contains no user-facing text that requires translation. It only renders skeleton components programmatically. The import and hook have been added as required, but no translation keys were needed since there's no translatable content in this file.
+
+=== END ===

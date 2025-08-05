@@ -5,12 +5,14 @@ import type React from "react"
 import { useState } from "react"
 import Image from "next/image"
 import { X } from "lucide-react"
+import { useTranslations } from '@/lib/i18n'
 
 interface ReviewImageGalleryProps {
   images: string[]
 }
 
 const ReviewImageGallery: React.FC<ReviewImageGalleryProps> = ({ images }) => {
+  const t = useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewImageGallery");
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
 
   if (!images || images.length === 0) {
@@ -28,7 +30,7 @@ const ReviewImageGallery: React.FC<ReviewImageGalleryProps> = ({ images }) => {
           >
             <Image
               src={img || "/placeholder.svg"}
-              alt="Review photo"
+              alt={t('Review_Photo_Alt')}
               width={120}
               height={120}
               className="object-cover h-full w-full transition-transform hover:scale-110"
@@ -55,7 +57,7 @@ const ReviewImageGallery: React.FC<ReviewImageGalleryProps> = ({ images }) => {
             </button>
             <Image
               src={selectedImage || "/placeholder.svg"}
-              alt="Review photo"
+              alt={t('Review_Photo_Alt')}
               width={1200}
               height={800}
               className="object-contain w-full h-full"
@@ -68,4 +70,3 @@ const ReviewImageGallery: React.FC<ReviewImageGalleryProps> = ({ images }) => {
 }
 
 export default ReviewImageGallery
-

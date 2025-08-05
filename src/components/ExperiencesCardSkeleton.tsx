@@ -1,8 +1,11 @@
 // ExperiencesCardSkeleton.tsx
 
 import React from 'react';
+import { useTranslations } from '@/lib/i18n';
 
 const ExperiencesCardSkeleton: React.FC<{ size?: 'default' | 'small' }> = ({ size = 'default' }) => {
+  const t = useTranslations("components_ExperiencesCardSkeleton");
+  
   return (
     <div className={`nc-ExperiencesCardSkeleton group relative rounded-lg overflow-hidden`}>
       {/* Skeleton for gallery slider */}

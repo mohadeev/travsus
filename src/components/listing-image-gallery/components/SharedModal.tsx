@@ -1,5 +1,6 @@
 'use client'
 
+import { useTranslations } from '@/lib/i18n'
 import {
 	ArrowDownTrayIcon,
 	ArrowTopRightOnSquareIcon,
@@ -38,6 +39,7 @@ export default function SharedModal({
 	currentPhoto,
 	direction,
 }: SharedModalProps) {
+	const t = useTranslations("components_listingimagegallery_components_SharedModal");
 	const [loaded, setLoaded] = useState(false)
 
 	let filteredImages = images?.filter((img: ListingGalleryImage) =>
@@ -68,12 +70,12 @@ export default function SharedModal({
 			}}
 		>
 			<div
-				className="wide:h-full xl:taller-than-854:h-auto relative z-50 flex aspect-[3/2] w-full max-w-7xl items-center"
+				className={t('components_listingimagegallery_components_SharedModal_Container_Main_Classes')}
 				{...handlers}
 			>
 				{/* Main image */}
-				<div className="w-full overflow-hidden">
-					<div className="relative flex aspect-[3/2] items-center justify-center">
+				<div className={t('components_listingimagegallery_components_SharedModal_Image_Container_Classes')}>
+					<div className={t('components_listingimagegallery_components_SharedModal_Image_Wrapper_Classes')}>
 						<AnimatePresence initial={false} custom={direction}>
 							<motion.div
 								key={index}
@@ -89,7 +91,7 @@ export default function SharedModal({
 									width={navigation ? 1280 : 1920}
 									height={navigation ? 853 : 1280}
 									priority
-									alt="Travsus listing gallery"
+									alt={t('components_listingimagegallery_components_SharedModal_Gallery_Alt_Text')}
 									onLoad={() => setLoaded(true)}
 									sizes="(max-width: 1025px) 100vw, 1280px"
 								/>
@@ -99,73 +101,73 @@ export default function SharedModal({
 				</div>
 
 				{/* Buttons + bottom nav bar */}
-				<div className="absolute inset-0 mx-auto flex max-w-7xl items-center justify-center">
+				<div className={t('components_listingimagegallery_components_SharedModal_Buttons_Container_Classes')}>
 					{/* Buttons */}
 					{loaded && (
-						<div className="relative aspect-[3/2] max-h-full w-full">
+						<div className={t('components_listingimagegallery_components_SharedModal_Image_Aspect_Classes')}>
 							{navigation && (
 								<>
 									{index > 0 && (
 										<button
-											className="absolute left-3 top-[calc(50%-16px)] rounded-full bg-black/50 p-3 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white focus:outline-none"
+											className={t('components_listingimagegallery_components_SharedModal_Left_Button_Classes')}
 											style={{ transform: 'translate3d(0, 0, 0)' }}
 											onClick={() => changePhotoId(index - 1)}
 										>
-											<ChevronLeftIcon className="h-6 w-6" />
+											<ChevronLeftIcon className={t('components_listingimagegallery_components_SharedModal_Chevron_Icon_Classes')} />
 										</button>
 									)}
 									{index + 1 < images?.length && (
 										<button
-											className="absolute right-3 top-[calc(50%-16px)] rounded-full bg-black/50 p-3 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white focus:outline-none"
+											className={t('components_listingimagegallery_components_SharedModal_Right_Button_Classes')}
 											style={{ transform: 'translate3d(0, 0, 0)' }}
 											onClick={() => changePhotoId(index + 1)}
 										>
-											<ChevronRightIcon className="h-6 w-6" />
+											<ChevronRightIcon className={t('components_listingimagegallery_components_SharedModal_Chevron_Icon_Classes')} />
 										</button>
 									)}
 								</>
 							)}
-							<div className="absolute right-0 top-0 flex items-center gap-2 p-3 text-white">
+							<div className={t('components_listingimagegallery_components_SharedModal_Top_Right_Container_Classes')}>
 								{navigation ? (
 									<a
 										href={currentImage?.url}
-										className="rounded-full bg-black/50 p-2 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white"
+										className={t('components_listingimagegallery_components_SharedModal_Action_Button_Classes')}
 										target="_blank"
-										title="Open fullsize version"
+										title={t('components_listingimagegallery_components_SharedModal_Open_Fullsize_Title')}
 										rel="noreferrer"
 									>
-										<ArrowTopRightOnSquareIcon className="h-5 w-5" />
+										<ArrowTopRightOnSquareIcon className={t('components_listingimagegallery_components_SharedModal_Small_Icon_Classes')} />
 									</a>
 								) : (
 									<a
 										href={`https://twitter.com/intent/tweet?text=Check%20out%20this%20pic%20from%20Travsus%20!%0A%0A${location.href}`}
-										className="rounded-full bg-black/50 p-2 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white"
+										className={t('components_listingimagegallery_components_SharedModal_Action_Button_Classes')}
 										target="_blank"
-										title="Open fullsize version"
+										title={t('components_listingimagegallery_components_SharedModal_Open_Fullsize_Title')}
 										rel="noreferrer"
 									>
-										<Twitter className="h-5 w-5" />
+										<Twitter className={t('components_listingimagegallery_components_SharedModal_Small_Icon_Classes')} />
 									</a>
 								)}
 								<button
 									onClick={() =>
 										downloadPhoto(currentImage?.url || '', `${index}.jpg`)
 									}
-									className="rounded-full bg-black/50 p-2 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white"
-									title="Download fullsize version"
+									className={t('components_listingimagegallery_components_SharedModal_Action_Button_Classes')}
+									title={t('components_listingimagegallery_components_SharedModal_Download_Title')}
 								>
-									<ArrowDownTrayIcon className="h-5 w-5" />
+									<ArrowDownTrayIcon className={t('components_listingimagegallery_components_SharedModal_Small_Icon_Classes')} />
 								</button>
 							</div>
-							<div className="absolute left-0 top-0 flex items-center gap-2 p-3 text-white">
+							<div className={t('components_listingimagegallery_components_SharedModal_Top_Left_Container_Classes')}>
 								<button
 									onClick={() => closeModal()}
-									className="rounded-full bg-black/50 p-2 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white"
+									className={t('components_listingimagegallery_components_SharedModal_Action_Button_Classes')}
 								>
 									{navigation ? (
-										<XMarkIcon className="h-5 w-5" />
+										<XMarkIcon className={t('components_listingimagegallery_components_SharedModal_Small_Icon_Classes')} />
 									) : (
-										<ArrowUturnLeftIcon className="h-5 w-5" />
+										<ArrowUturnLeftIcon className={t('components_listingimagegallery_components_SharedModal_Small_Icon_Classes')} />
 									)}
 								</button>
 							</div>
@@ -173,10 +175,10 @@ export default function SharedModal({
 					)}
 					{/* Bottom Nav bar */}
 					{navigation && (
-						<div className="fixed inset-x-0 bottom-0 z-40 overflow-hidden bg-gradient-to-b from-black/0 to-black/60">
+						<div className={t('components_listingimagegallery_components_SharedModal_Bottom_Nav_Classes')}>
 							<motion.div
 								initial={false}
-								className="mx-auto mb-6 mt-6 flex aspect-[3/2] h-14"
+								className={t('components_listingimagegallery_components_SharedModal_Thumbnail_Container_Classes')}
 							>
 								<AnimatePresence initial={false}>
 									{filteredImages?.map(({ id, url }) => (
@@ -202,7 +204,7 @@ export default function SharedModal({
 											} relative inline-block w-full shrink-0 transform-gpu overflow-hidden focus:outline-none`}
 										>
 											<Image
-												alt="small photos on the bottom"
+												alt={t('components_listingimagegallery_components_SharedModal_Thumbnail_Alt_Text')}
 												width={180}
 												height={120}
 												className={`${

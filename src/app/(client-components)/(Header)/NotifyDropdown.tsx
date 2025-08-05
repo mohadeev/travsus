@@ -1,5 +1,5 @@
 'use client'
-
+import { useTranslations } from '@/lib/i18n'
 import { Popover, Transition } from '@headlessui/react'
 import { FC, Fragment } from 'react'
 import Avatar from '@/shared/Avatar'
@@ -37,6 +37,8 @@ interface Props {
 }
 
 const NotifyDropdown: FC<Props> = ({ className = '' }) => {
+	const t = useTranslations('Jan03_NotifyDropdown_q8w5')
+
 	return (
 		<>
 			<Popover className={`relative flex ${className}`}>
@@ -62,7 +64,9 @@ const NotifyDropdown: FC<Props> = ({ className = '' }) => {
 							<Popover.Panel className="absolute -right-28 top-full z-10 w-screen max-w-xs px-4 sm:right-0 sm:max-w-sm sm:px-0">
 								<div className="overflow-hidden rounded-2xl shadow-lg ring-1 ring-black ring-opacity-5">
 									<div className="relative grid gap-8 bg-white p-7 dark:bg-neutral-800">
-										<h3 className="text-xl font-semibold">Notifications</h3>
+										<h3 className="text-xl font-semibold">
+											{t('Notifications_Title')}
+										</h3>
 										{notifications.map((item, index) => (
 											<a
 												key={index}

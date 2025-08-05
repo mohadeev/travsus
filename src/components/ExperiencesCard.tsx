@@ -31,7 +31,7 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 	data = DEMO_DATA,
 	ratioClass = 'aspect-w-3 aspect-h-3',
 }) => {
-	const t = useTranslations("components_ExperiencesCard");
+	const t = useTranslations('components_ExperiencesCard')
 	const {
 		images: galleryImgs,
 		address,
@@ -48,7 +48,7 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 		liked,
 	}: any = data
 	const [priceData, setPriceData] = useState({})
-	console.log("data: " , data)
+	console.log('data: ', data)
 
 	useEffect(() => {
 		const pricesData = async () => {
@@ -126,17 +126,23 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 				<div className="space-y-2">
 					<div className="flex items-center text-sm leading-none text-neutral-500 dark:text-neutral-400">
 						{size === 'default' && <MapPinIcon className="mr-1 h-4 w-4" />}
-						<span>
+						<button className="rounded-md border border-black px-2 py-1 text-xs font-bold text-black">
 							{data?.startAddress?.country} - {data?.startAddress?.city}
-						</span>
+						</button>
 					</div>
 
 					<div className="flex items-center">
-						{isAds && <Badge name={t('components_ExperiencesCard_Ads')} color="green" className="mr-2" />}
+						{isAds && (
+							<Badge
+								name={t('components_ExperiencesCard_Ads')}
+								color="green"
+								className="mr-2"
+							/>
+						)}
 						<h2
-							className={`font-medium capitalize leading-tight ${size === 'default' ? 'text-base' : 'text-base'}`}
+							className={`font-semibold capitalize leading-tight ${size === 'default' ? 'text-base' : 'text-base'}`}
 						>
-							<span className="line-clamp-2">{title}</span>
+							{title}
 						</h2>
 					</div>
 				</div>
@@ -149,7 +155,7 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 							</span>
 						)}
 					</span>
-					<StartRating reviewCount={reviewCount} point={reviewStart} />
+					{/* <StartRating reviewCount={reviewCount} point={reviewStart} /> */}
 				</div>
 			</div>
 		)

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import NcInputNumber from "@/components/NcInputNumber";
 import { FC } from "react";
 import { GuestsObject } from "../type";
+import { useTranslations } from '@/lib/i18n';
 
 export interface GuestsInputProps {
   defaultValue?: GuestsObject;
@@ -15,6 +16,8 @@ const GuestsInput: FC<GuestsInputProps> = ({
   onChange,
   className = "",
 }) => {
+  const t = useTranslations("app_clientcomponents_HeroSearchForm2Mobile_GuestsInput");
+  
   const [guestAdultsInputValue, setGuestAdultsInputValue] = useState(
     defaultValue?.guestAdults || 0
   );
@@ -59,23 +62,23 @@ const GuestsInput: FC<GuestsInputProps> = ({
   return (
     <div className={`flex flex-col relative p-5 ${className}`}>
       <span className="mb-5 block font-semibold text-xl sm:text-2xl">
-        {`Who's coming?`}
+        {t('app_clientcomponents_HeroSearchForm2Mobile_GuestsInput_Whos_Coming')}
       </span>
       <NcInputNumber
         className="w-full"
         defaultValue={guestAdultsInputValue}
         onChange={(value) => handleChangeData(value, "guestAdults")}
         max={20}
-        label="Adults"
-        desc="Ages 13 or above"
+        label={t('app_clientcomponents_HeroSearchForm2Mobile_GuestsInput_Adults_Label')}
+        desc={t('app_clientcomponents_HeroSearchForm2Mobile_GuestsInput_Adults_Desc')}
       />
       <NcInputNumber
         className="w-full mt-6"
         defaultValue={guestChildrenInputValue}
         onChange={(value) => handleChangeData(value, "guestChildren")}
         max={20}
-        label="Children"
-        desc="Ages 2–12"
+        label={t('app_clientcomponents_HeroSearchForm2Mobile_GuestsInput_Children_Label')}
+        desc={t('app_clientcomponents_HeroSearchForm2Mobile_GuestsInput_Children_Desc')}
       />
 
       <NcInputNumber
@@ -83,8 +86,8 @@ const GuestsInput: FC<GuestsInputProps> = ({
         defaultValue={guestInfantsInputValue}
         onChange={(value) => handleChangeData(value, "guestInfants")}
         max={20}
-        label="Infants"
-        desc="Ages 0–2"
+        label={t('app_clientcomponents_HeroSearchForm2Mobile_GuestsInput_Infants_Label')}
+        desc={t('app_clientcomponents_HeroSearchForm2Mobile_GuestsInput_Infants_Desc')}
       />
     </div>
   );

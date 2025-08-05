@@ -1,5 +1,6 @@
 import type React from 'react'
 import type { ReactNode } from 'react'
+import { useTranslations } from '@/lib/i18n'
 
 export interface Heading2Props {
 	heading?: ReactNode
@@ -12,6 +13,8 @@ const Heading2: React.FC<Heading2Props> = ({
 	heading = '',
 	subHeading,
 }) => {
+	const t = useTranslations("shared_Heading2");
+	
 	return (
 		<div className={`mb-5 ${className}`}>
 			<h2 className="text-xl font-bold md:text-2xl lg:text-3xl">{heading}</h2>

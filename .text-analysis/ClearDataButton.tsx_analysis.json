@@ -1,0 +1,19 @@
+{
+  "file": "C:\\Users\\Usuario\\s\\travsus\\src\\app\\(client-components)\\(HeroSearchForm)\\ClearDataButton.tsx",
+  "timestamp": "2025-08-02T12:36:45.465Z",
+  "hasTranslatableText": true,
+  "textCount": 2,
+  "texts": [
+    {
+      "type": "jsx_attribute",
+      "text": "absolute z-10 w-5 h-5 lg:w-6 lg:h-6 text-sm bg-neutral-200 dark:bg-neutral-800 rounded-full flex items-center justify-center right-1 lg:right-3 top-1/2 transform -translate-y-1/2",
+      "context": "\r\n      className=\" absolute z-10 w-5 h-5 lg:w-6 lg:h-6 text-sm bg-neutral-200 dark:bg-neutral-800 rounded-full flex items-center justify-center right-1 lg:right-3 top-1/2 transform -translate-y-1/2\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "w-4 h-4",
+      "context": " className=\"w-4 h-4\""
+    }
+  ],
+  "fileSize": 646
+}

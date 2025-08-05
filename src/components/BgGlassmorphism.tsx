@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import { useTranslations } from '@/lib/i18n'
 
 export interface BgGlassmorphismProps {
   className?: string;
@@ -7,6 +8,8 @@ export interface BgGlassmorphismProps {
 const BgGlassmorphism: FC<BgGlassmorphismProps> = ({
   className = "absolute inset-x-0 md:top-10 xl:top-40 min-h-0 pl-20 py-24 flex overflow-hidden z-0",
 }) => {
+  const t = useTranslations("components_BgGlassmorphism");
+  
   return (
     <div
       className={`nc-BgGlassmorphism ${className}`}

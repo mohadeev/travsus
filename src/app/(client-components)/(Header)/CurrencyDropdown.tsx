@@ -11,6 +11,7 @@ import {
   BanknotesIcon,
 } from "@heroicons/react/24/outline";
 import { Fragment } from "react";
+import { useTranslations } from '@/lib/i18n';
 
 export const headerCurrency = [
   {
@@ -47,6 +48,8 @@ export const headerCurrency = [
 ];
 
 export default function CurrencyDropdown() {
+  const t = useTranslations("app_clientcomponents_Header_CurrencyDropdown");
+
   return (
     <div className="CurrencyDropdown">
       <Popover className="relative">
@@ -57,8 +60,8 @@ export default function CurrencyDropdown() {
                 ${open ? "" : "text-opacity-80"}
                 group px-3 py-1.5 border-neutral-300 hover:border-neutral-400 dark:border-neutral-700 rounded-full inline-flex items-center text-sm text-gray-700 dark:text-neutral-300 font-medium hover:text-opacity-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75`}
             >
-              <BanknotesIcon className="w-5 h-5 opacity-80" />
-              <span className="ml-2 select-none">Currency</span>
+              <BanknotesIcon className={t('app_clientcomponents_Header_CurrencyDropdown_Banknotes_Icon_Classes')} />
+              <span className={t('app_clientcomponents_Header_CurrencyDropdown_Currency_Span_Classes')}>Currency</span>
               <ChevronDownIcon
                 className={`${open ? "-rotate-180" : "text-opacity-70"}
                   ml-2 h-4 w-4  group-hover:text-opacity-80 transition ease-in-out duration-150`}
@@ -74,9 +77,9 @@ export default function CurrencyDropdown() {
               leaveFrom="opacity-100 translate-y-0"
               leaveTo="opacity-0 translate-y-1"
             >
-              <Popover.Panel className="absolute z-10 w-screen max-w-[140px] px-4 mt-4 right-0 sm:px-0">
-                <div className="overflow-hidden rounded-2xl shadow-lg ring-1 ring-black ring-opacity-5">
-                  <div className="relative grid gap-7 bg-white dark:bg-neutral-800 p-7">
+              <Popover.Panel className={t('app_clientcomponents_Header_CurrencyDropdown_Panel_Classes')}>
+                <div className={t('app_clientcomponents_Header_CurrencyDropdown_Panel_Container_Classes')}>
+                  <div className={t('app_clientcomponents_Header_CurrencyDropdown_Grid_Container_Classes')}>
                     {headerCurrency.map((item, index) => (
                       <a
                         key={index}
@@ -88,8 +91,8 @@ export default function CurrencyDropdown() {
                             : "opacity-80"
                         }`}
                       >
-                        <item.icon className="w-[18px] h-[18px] " />
-                        <p className="ml-2 text-sm font-medium ">{item.name}</p>
+                        <item.icon className={t('app_clientcomponents_Header_CurrencyDropdown_Currency_Icon_Classes')} />
+                        <p className={t('app_clientcomponents_Header_CurrencyDropdown_Currency_Name_Classes')}>{item.name}</p>
                       </a>
                     ))}
                   </div>

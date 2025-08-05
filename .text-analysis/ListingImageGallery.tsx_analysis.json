@@ -1,0 +1,84 @@
+{
+  "file": "C:\\Users\\Usuario\\s\\travsus\\src\\components\\listing-image-gallery\\ListingImageGallery.tsx",
+  "timestamp": "2025-08-02T12:32:49.893Z",
+  "hasTranslatableText": true,
+  "textCount": 15,
+  "texts": [
+    {
+      "type": "jsx_attribute",
+      "text": "w-full max-w-full overflow-hidden",
+      "context": " className=\"w-full max-w-full overflow-hidden\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "flex h-screen w-full items-center justify-center",
+      "context": " className=\"flex h-screen w-full items-center justify-center\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "w-full columns-1 gap-4 sm:columns-2 xl:columns-3",
+      "context": " className=\"w-full columns-1 gap-4 sm:columns-2 xl:columns-3\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "after:content group relative mb-5 block w-full cursor-zoom-in after:pointer-events-none after:absolute after:inset-0 after:rounded-lg focus:outline-none",
+      "context": "\r\n\t\t\t\t\t\t\tclassName=\"after:content group relative mb-5 block w-full cursor-zoom-in after:pointer-events-none after:absolute after:inset-0 after:rounded-lg focus:outline-none\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "aspect-[3/2] w-full overflow-hidden rounded-lg",
+      "context": " className=\"aspect-[3/2] w-full overflow-hidden rounded-lg\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "Travsus listing gallery",
+      "context": "\r\n\t\t\t\t\t\t\t\t\talt=\"Travsus listing gallery\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "h-auto w-full transform rounded-lg object-cover brightness-90 transition will-change-auto focus:outline-none group-hover:brightness-110",
+      "context": "\r\n\t\t\t\t\t\t\t\t\tclassName=\"h-auto w-full transform rounded-lg object-cover brightness-90 transition will-change-auto focus:outline-none group-hover:brightness-110\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "relative z-40",
+      "context": " className=\"relative z-40\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "fixed inset-0 bg-white",
+      "context": " className=\"fixed inset-0 bg-white\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "fixed inset-0 overflow-y-auto",
+      "context": " className=\"fixed inset-0 overflow-y-auto\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "sticky top-0 z-10 flex items-center justify-between bg-white p-4 xl:px-10",
+      "context": " className=\"sticky top-0 z-10 flex items-center justify-between bg-white p-4 xl:px-10\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "flex h-10 w-10 items-center justify-center rounded-full hover:bg-neutral-100 focus:outline-none focus:ring-0",
+      "context": "\r\n\t\t\t\t\t\t\t\tclassName=\"flex h-10 w-10 items-center justify-center rounded-full hover:bg-neutral-100 focus:outline-none focus:ring-0\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "h-6 w-6",
+      "context": " className=\"h-6 w-6\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "flex min-h-full items-center justify-center p-0 text-center sm:p-4",
+      "context": " className=\"flex min-h-full items-center justify-center p-0 text-center sm:p-4\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "mx-auto w-full max-w-screen-lg transform overflow-hidden p-4 pt-0 text-left transition-all",
+      "context": " className=\"mx-auto w-full max-w-screen-lg transform overflow-hidden p-4 pt-0 text-left transition-all\""
+    }
+  ],
+  "fileSize": 6901
+}

@@ -1,0 +1,29 @@
+{
+  "file": "C:\\Users\\Usuario\\s\\travsus\\src\\shared\\SwitchDarkMode.tsx",
+  "timestamp": "2025-08-02T11:48:51.143Z",
+  "hasTranslatableText": true,
+  "textCount": 4,
+  "texts": [
+    {
+      "type": "jsx_attribute",
+      "text": "sr-only",
+      "context": " className=\"sr-only\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "w-7 h-7",
+      "context": " className=\"w-7 h-7\""
+    },
+    {
+      "type": "jsx_content",
+      "text": "Enable dark mode",
+      "context": ">Enable dark mode<"
+    },
+    {
+      "type": "return_string",
+      "text": "self-center text-2xl md:text-3xl w-12 h-12 rounded-full text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:outline-none flex items-center justify-center ${className}",
+      "context": "return (\r\n    <button\r\n      onClick={_toogleDarkMode}\r\n      className={`self-center text-2xl md:text-3xl w-12 h-12 rounded-full text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:outline-none flex items-center justify-center ${className}`"
+    }
+  ],
+  "fileSize": 1011
+}

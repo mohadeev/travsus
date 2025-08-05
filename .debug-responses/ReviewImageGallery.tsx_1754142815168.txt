@@ -1,0 +1,237 @@
+
+=== FILE: C:\Users\Usuario\s\travsus\src\app\[locale]\[continent]\[country]\[region]\[city]\[category]\[name]\(service-detail)\[listing-experiences-detail]\ReviewImageGallery.tsx ===
+=== NAMESPACE: app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewImageGallery ===
+=== PROMPT ===
+# ULTRA-STRICT INTERNATIONALIZATION INSTRUCTIONS
+
+Transform this TSX file to use internationalization.
+
+## CRITICAL NAMESPACE AND KEY REQUIREMENTS:
+- You MUST use the exact namespace: "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewImageGallery"
+- The useTranslations call MUST be: useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewImageGallery")
+- Keys should be simple descriptive names WITHOUT the namespace prefix
+- Example: t('Welcome_Message') NOT t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewImageGallery_Welcome_Message')
+
+## EXACT REQUIREMENTS:
+1. Add this import: import { useTranslations } from '@/lib/i18n'
+2. Add this hook call: const t = useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewImageGallery");
+3. Replace static text with: t('Simple_Key_Name')
+4. Generate simple keys like: Welcome_Message, Button_Text, Error_Message
+
+## KEY FORMAT RULES:
+- Use descriptive names: Welcome_Message, Submit_Button, Error_Text
+- NO namespace prefix in keys
+- Use Title_Case_With_Underscores
+- Keep keys under 30 characters
+
+## OUTPUT FORMAT:
+---CODE:
+<COMPLETE TSX FILE WITH EXACT NAMESPACE>
+---MESSAGES:
+{
+  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewImageGallery": {
+	"Welcome_Message": "Welcome to our site",
+	"Button_Text": "Click here",
+	"Error_Message": "Something went wrong"
+  }
+}
+
+## EXAMPLE TRANSFORMATION:
+
+BEFORE:
+<div>
+  <h1>Welcome to our site</h1>
+  <button>Click here</button>
+  <p>Something went wrong</p>
+</div>
+
+AFTER:
+import { useTranslations } from '@/lib/i18n';
+
+export default function Component() {
+  const t = useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewImageGallery");
+  
+  return (
+	<div>
+	  <h1>{t('Welcome_Message')}</h1>
+	  <button>{t('Button_Text')}</button>
+	  <p>{t('Error_Message')}</p>
+	</div>
+  );
+}
+
+---MESSAGES:
+{
+  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewImageGallery": {
+	"Welcome_Message": "Welcome to our site",
+	"Button_Text": "Click here", 
+	"Error_Message": "Something went wrong"
+  }
+}
+
+## FILE TO TRANSFORM:
+"use client"
+
+import type React from "react"
+
+import { useState } from "react"
+import Image from "next/image"
+import { X } from "lucide-react"
+
+interface ReviewImageGalleryProps {
+  images: string[]
+}
+
+const ReviewImageGallery: React.FC<ReviewImageGalleryProps> = ({ images }) => {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null)
+
+  if (!images || images.length === 0) {
+    return null
+  }
+
+  return (
+    <>
+      <div className="flex gap-2 mt-3 flex-wrap">
+        {images.map((img, idx) => (
+          <div
+            key={idx}
+            className="cursor-pointer relative overflow-hidden rounded-md h-24 w-24"
+            onClick={() => setSelectedImage(img)}
+          >
+            <Image
+              src={img || "/placeholder.svg"}
+              alt="Review photo"
+              width={120}
+              height={120}
+              className="object-cover h-full w-full transition-transform hover:scale-110"
+            />
+          </div>
+        ))}
+      </div>
+
+      {/* Lightbox */}
+      {selectedImage && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center p-4"
+          onClick={() => setSelectedImage(null)}
+        >
+          <div className="relative max-w-4xl max-h-[90vh] w-full">
+            <button
+              className="absolute top-2 right-2 bg-black bg-opacity-50 text-white p-2 rounded-full"
+              onClick={(e) => {
+                e.stopPropagation()
+                setSelectedImage(null)
+              }}
+            >
+              <X size={24} />
+            </button>
+            <Image
+              src={selectedImage || "/placeholder.svg"}
+              alt="Review photo"
+              width={1200}
+              height={800}
+              className="object-contain w-full h-full"
+            />
+          </div>
+        </div>
+      )}
+    </>
+  )
+}
+
+export default ReviewImageGallery
+
+
+
+REMEMBER: 
+- Use EXACTLY "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewImageGallery" in useTranslations()
+- Keys should be simple names WITHOUT namespace prefix
+- JSON structure: { "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewImageGallery": { "Simple_Key": "value" } }
+
+=== RESPONSE ===
+---CODE:
+```tsx
+"use client"
+
+import type React from "react"
+
+import { useState } from "react"
+import Image from "next/image"
+import { X } from "lucide-react"
+import { useTranslations } from '@/lib/i18n'
+
+interface ReviewImageGalleryProps {
+  images: string[]
+}
+
+const ReviewImageGallery: React.FC<ReviewImageGalleryProps> = ({ images }) => {
+  const t = useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewImageGallery");
+  const [selectedImage, setSelectedImage] = useState<string | null>(null)
+
+  if (!images || images.length === 0) {
+    return null
+  }
+
+  return (
+    <>
+      <div className="flex gap-2 mt-3 flex-wrap">
+        {images.map((img, idx) => (
+          <div
+            key={idx}
+            className="cursor-pointer relative overflow-hidden rounded-md h-24 w-24"
+            onClick={() => setSelectedImage(img)}
+          >
+            <Image
+              src={img || "/placeholder.svg"}
+              alt={t('Review_Photo_Alt')}
+              width={120}
+              height={120}
+              className="object-cover h-full w-full transition-transform hover:scale-110"
+            />
+          </div>
+        ))}
+      </div>
+
+      {/* Lightbox */}
+      {selectedImage && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center p-4"
+          onClick={() => setSelectedImage(null)}
+        >
+          <div className="relative max-w-4xl max-h-[90vh] w-full">
+            <button
+              className="absolute top-2 right-2 bg-black bg-opacity-50 text-white p-2 rounded-full"
+              onClick={(e) => {
+                e.stopPropagation()
+                setSelectedImage(null)
+              }}
+            >
+              <X size={24} />
+            </button>
+            <Image
+              src={selectedImage || "/placeholder.svg"}
+              alt={t('Review_Photo_Alt')}
+              width={1200}
+              height={800}
+              className="object-contain w-full h-full"
+            />
+          </div>
+        </div>
+      )}
+    </>
+  )
+}
+
+export default ReviewImageGallery
+```
+
+---MESSAGES:
+```json
+{
+  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewImageGallery": {
+    "Review_Photo_Alt": "Review photo"
+  }
+}
+```
+
+=== END ===

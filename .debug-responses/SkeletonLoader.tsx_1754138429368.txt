@@ -1,0 +1,183 @@
+
+=== FILE: C:\Users\Usuario\s\travsus\src\app\[locale]\[continent]\[country]\[region]\[city]\[category]\[name]\(service-detail)\[listing-experiences-detail]\SkeletonLoader.tsx ===
+=== NAMESPACE: app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader ===
+=== PROMPT ===
+# ULTRA-STRICT INTERNATIONALIZATION INSTRUCTIONS
+
+Transform this TSX file to use internationalization. I've already analyzed it and found 10 translatable texts: "rounded-md sm:rounded-xl", "relative grid grid-cols-4 gap-1 sm:gap-2", "relative col-span-2 row-span-2 animate-pulse rounded-md bg-gray-200 sm:rounded-xl", "absolute inset-0 bg-gray-300 bg-opacity-20", "relative col-span-1 row-span-2 animate-pulse rounded-md bg-gray-200 sm:rounded-xl", "relative animate-pulse overflow-hidden rounded-md bg-gray-200 sm:rounded-xl", "aspect-h-3 aspect-w-4 bg-gray-200", "absolute bottom-3 left-3 z-10 hidden animate-pulse cursor-pointer items-center justify-center rounded-xl bg-gray-200 px-4 py-2 text-gray-500 md:flex", "h-5 w-5 rounded bg-gray-300", "ml-2 h-5 w-16 rounded bg-gray-300 text-sm"
+
+## CRITICAL NAMESPACE REQUIREMENT:
+- You MUST use the exact namespace: "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader"
+- The useTranslations call MUST be: useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader")
+- Do NOT modify this namespace in any way
+
+## EXACT REQUIREMENTS:
+1. Add this import: import { useTranslations } from '@/lib/i18n'
+2. Add this hook call: const t = useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader");
+3. Replace static text with: t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Key_Name')
+4. Generate keys like: app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Welcome_Message, app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Button_Text
+
+## FOCUS ON THESE TEXTS:
+1. "rounded-md sm:rounded-xl" (found in jsx_attribute)
+2. "relative grid grid-cols-4 gap-1 sm:gap-2" (found in jsx_attribute)
+3. "relative col-span-2 row-span-2 animate-pulse rounded-md bg-gray-200 sm:rounded-xl" (found in jsx_attribute)
+4. "absolute inset-0 bg-gray-300 bg-opacity-20" (found in jsx_attribute)
+5. "relative col-span-1 row-span-2 animate-pulse rounded-md bg-gray-200 sm:rounded-xl" (found in jsx_attribute)
+6. "relative animate-pulse overflow-hidden rounded-md bg-gray-200 sm:rounded-xl" (found in jsx_attribute)
+7. "aspect-h-3 aspect-w-4 bg-gray-200" (found in jsx_attribute)
+8. "absolute bottom-3 left-3 z-10 hidden animate-pulse cursor-pointer items-center justify-center rounded-xl bg-gray-200 px-4 py-2 text-gray-500 md:flex" (found in jsx_attribute)
+9. "h-5 w-5 rounded bg-gray-300" (found in jsx_attribute)
+10. "ml-2 h-5 w-16 rounded bg-gray-300 text-sm" (found in jsx_attribute)
+
+## VALIDATION CHECKLIST:
+✓ Import added: import { useTranslations } from '@/lib/i18n'
+✓ Hook called with EXACT namespace: useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader")
+✓ Keys start with namespace: app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_*
+✓ No dots in keys (use underscores)
+✓ All 10 texts translated
+
+## OUTPUT FORMAT:
+---CODE:
+<COMPLETE TSX FILE WITH EXACT NAMESPACE>
+---MESSAGES:
+{
+  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader": {
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Key1": "Original text 1",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Key2": "Original text 2"
+  }
+}
+
+## FILE TO TRANSFORM:
+export const SkeletonLoader = () => {
+	return (
+		<header className="rounded-md sm:rounded-xl">
+			<div className="relative grid grid-cols-4 gap-1 sm:gap-2">
+				{/* Large Image Placeholder */}
+				<div className="relative col-span-2 row-span-2 animate-pulse rounded-md bg-gray-200 sm:rounded-xl">
+					<div className="absolute inset-0 bg-gray-300 bg-opacity-20"></div>
+				</div>
+
+				{/* Small Image Placeholder 1 */}
+				<div className="relative col-span-1 row-span-2 animate-pulse rounded-md bg-gray-200 sm:rounded-xl">
+					<div className="absolute inset-0 bg-gray-300 bg-opacity-20"></div>
+				</div>
+
+				{/* Small Image Placeholders 2 & 3 */}
+				<div className="relative animate-pulse overflow-hidden rounded-md bg-gray-200 sm:rounded-xl">
+					<div className="aspect-h-3 aspect-w-4 bg-gray-200"></div>
+					<div className="absolute inset-0 bg-gray-300 bg-opacity-20"></div>
+				</div>
+				<div className="relative animate-pulse overflow-hidden rounded-md bg-gray-200 sm:rounded-xl">
+					<div className="aspect-h-3 aspect-w-4 bg-gray-200"></div>
+					<div className="absolute inset-0 bg-gray-300 bg-opacity-20"></div>
+				</div>
+
+				{/* "Show all photos" button Placeholder */}
+				<div className="absolute bottom-3 left-3 z-10 hidden animate-pulse cursor-pointer items-center justify-center rounded-xl bg-gray-200 px-4 py-2 text-gray-500 md:flex">
+					<div className="h-5 w-5 rounded bg-gray-300"></div>
+					<span className="ml-2 h-5 w-16 rounded bg-gray-300 text-sm"></span>
+				</div>
+			</div>
+		</header>
+	)
+}
+
+
+REMEMBER: Use EXACTLY "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader" and translate all 10 identified texts!
+
+=== RESPONSE ===
+<Thinking>
+I need to analyze this TSX file and transform it to use internationalization. Looking at the file, I can see it's a SkeletonLoader component with various CSS classes that need to be internationalized.
+
+The user has identified 10 translatable texts, which are all CSS class strings in jsx_attribute positions:
+
+1. "rounded-md sm:rounded-xl"
+2. "relative grid grid-cols-4 gap-1 sm:gap-2"
+3. "relative col-span-2 row-span-2 animate-pulse rounded-md bg-gray-200 sm:rounded-xl"
+4. "absolute inset-0 bg-gray-300 bg-opacity-20"
+5. "relative col-span-1 row-span-2 animate-pulse rounded-md bg-gray-200 sm:rounded-xl"
+6. "relative animate-pulse overflow-hidden rounded-md bg-gray-200 sm:rounded-xl"
+7. "aspect-h-3 aspect-w-4 bg-gray-200"
+8. "absolute bottom-3 left-3 z-10 hidden animate-pulse cursor-pointer items-center justify-center rounded-xl bg-gray-200 px-4 py-2 text-gray-500 md:flex"
+9. "h-5 w-5 rounded bg-gray-300"
+10. "ml-2 h-5 w-16 rounded bg-gray-300 text-sm"
+
+I need to:
+1. Add the import: `import { useTranslations } from '@/lib/i18n'`
+2. Add the hook call with the exact namespace: `const t = useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader");`
+3. Replace each CSS class string with a t() call using keys that start with the namespace
+4. Generate appropriate key names for each CSS class
+
+Let me create meaningful key names for each CSS class:
+1. "rounded-md sm:rounded-xl" → Header_Container_Classes
+2. "relative grid grid-cols-4 gap-1 sm:gap-2" → Grid_Container_Classes
+3. "relative col-span-2 row-span-2 animate-pulse rounded-md bg-gray-200 sm:rounded-xl" → Large_Image_Placeholder_Classes
+4. "absolute inset-0 bg-gray-300 bg-opacity-20" → Overlay_Classes
+5. "relative col-span-1 row-span-2 animate-pulse rounded-md bg-gray-200 sm:rounded-xl" → Small_Image_Placeholder_Classes
+6. "relative animate-pulse overflow-hidden rounded-md bg-gray-200 sm:rounded-xl" → Small_Image_Container_Classes
+7. "aspect-h-3 aspect-w-4 bg-gray-200" → Aspect_Ratio_Classes
+8. "absolute bottom-3 left-3 z-10 hidden animate-pulse cursor-pointer items-center justify-center rounded-xl bg-gray-200 px-4 py-2 text-gray-500 md:flex" → Show_Photos_Button_Classes
+9. "h-5 w-5 rounded bg-gray-300" → Icon_Placeholder_Classes
+10. "ml-2 h-5 w-16 rounded bg-gray-300 text-sm" → Text_Placeholder_Classes
+</Thinking>
+
+---CODE:
+```tsx
+import { useTranslations } from '@/lib/i18n'
+
+export const SkeletonLoader = () => {
+	const t = useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader");
+
+	return (
+		<header className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Header_Container_Classes')}>
+			<div className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Grid_Container_Classes')}>
+				{/* Large Image Placeholder */}
+				<div className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Large_Image_Placeholder_Classes')}>
+					<div className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Overlay_Classes')}></div>
+				</div>
+
+				{/* Small Image Placeholder 1 */}
+				<div className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Small_Image_Placeholder_Classes')}>
+					<div className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Overlay_Classes')}></div>
+				</div>
+
+				{/* Small Image Placeholders 2 & 3 */}
+				<div className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Small_Image_Container_Classes')}>
+					<div className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Aspect_Ratio_Classes')}></div>
+					<div className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Overlay_Classes')}></div>
+				</div>
+				<div className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Small_Image_Container_Classes')}>
+					<div className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Aspect_Ratio_Classes')}></div>
+					<div className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Overlay_Classes')}></div>
+				</div>
+
+				{/* "Show all photos" button Placeholder */}
+				<div className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Show_Photos_Button_Classes')}>
+					<div className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Icon_Placeholder_Classes')}></div>
+					<span className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Text_Placeholder_Classes')}></span>
+				</div>
+			</div>
+		</header>
+	)
+}
+```
+
+---MESSAGES:
+```json
+{
+  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader": {
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Header_Container_Classes": "rounded-md sm:rounded-xl",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Grid_Container_Classes": "relative grid grid-cols-4 gap-1 sm:gap-2",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Large_Image_Placeholder_Classes": "relative col-span-2 row-span-2 animate-pulse rounded-md bg-gray-200 sm:rounded-xl",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Overlay_Classes": "absolute inset-0 bg-gray-300 bg-opacity-20",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Small_Image_Placeholder_Classes": "relative col-span-1 row-span-2 animate-pulse rounded-md bg-gray-200 sm:rounded-xl",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Small_Image_Container_Classes": "relative animate-pulse overflow-hidden rounded-md bg-gray-200 sm:rounded-xl",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Aspect_Ratio_Classes": "aspect-h-3 aspect-w-4 bg-gray-200",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Show_Photos_Button_Classes": "absolute bottom-3 left-3 z-10 hidden animate-pulse cursor-pointer items-center justify-center rounded-xl bg-gray-200 px-4 py-2 text-gray-500 md:flex",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Icon_Placeholder_Classes": "h-5 w-5 rounded bg-gray-300",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Text_Placeholder_Classes": "ml-2 h-5 w-16 rounded bg-gray-300 text-sm"
+  }
+}
+```
+
+=== END ===

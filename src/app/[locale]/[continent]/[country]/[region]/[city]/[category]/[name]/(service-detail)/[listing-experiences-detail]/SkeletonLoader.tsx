@@ -1,31 +1,35 @@
+import { useTranslations } from '@/lib/i18n'
+
 export const SkeletonLoader = () => {
+	const t = useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader");
+
 	return (
-		<header className="rounded-md sm:rounded-xl">
-			<div className="relative grid grid-cols-4 gap-1 sm:gap-2">
+		<header className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Header_Container_Classes')}>
+			<div className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Grid_Container_Classes')}>
 				{/* Large Image Placeholder */}
-				<div className="relative col-span-2 row-span-2 animate-pulse rounded-md bg-gray-200 sm:rounded-xl">
-					<div className="absolute inset-0 bg-gray-300 bg-opacity-20"></div>
+				<div className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Large_Image_Placeholder_Classes')}>
+					<div className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Overlay_Classes')}></div>
 				</div>
 
 				{/* Small Image Placeholder 1 */}
-				<div className="relative col-span-1 row-span-2 animate-pulse rounded-md bg-gray-200 sm:rounded-xl">
-					<div className="absolute inset-0 bg-gray-300 bg-opacity-20"></div>
+				<div className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Small_Image_Placeholder_Classes')}>
+					<div className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Overlay_Classes')}></div>
 				</div>
 
 				{/* Small Image Placeholders 2 & 3 */}
-				<div className="relative animate-pulse overflow-hidden rounded-md bg-gray-200 sm:rounded-xl">
-					<div className="aspect-h-3 aspect-w-4 bg-gray-200"></div>
-					<div className="absolute inset-0 bg-gray-300 bg-opacity-20"></div>
+				<div className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Small_Image_Container_Classes')}>
+					<div className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Aspect_Ratio_Classes')}></div>
+					<div className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Overlay_Classes')}></div>
 				</div>
-				<div className="relative animate-pulse overflow-hidden rounded-md bg-gray-200 sm:rounded-xl">
-					<div className="aspect-h-3 aspect-w-4 bg-gray-200"></div>
-					<div className="absolute inset-0 bg-gray-300 bg-opacity-20"></div>
+				<div className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Small_Image_Container_Classes')}>
+					<div className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Aspect_Ratio_Classes')}></div>
+					<div className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Overlay_Classes')}></div>
 				</div>
 
 				{/* "Show all photos" button Placeholder */}
-				<div className="absolute bottom-3 left-3 z-10 hidden animate-pulse cursor-pointer items-center justify-center rounded-xl bg-gray-200 px-4 py-2 text-gray-500 md:flex">
-					<div className="h-5 w-5 rounded bg-gray-300"></div>
-					<span className="ml-2 h-5 w-16 rounded bg-gray-300 text-sm"></span>
+				<div className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Show_Photos_Button_Classes')}>
+					<div className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Icon_Placeholder_Classes')}></div>
+					<span className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Text_Placeholder_Classes')}></span>
 				</div>
 			</div>
 		</header>

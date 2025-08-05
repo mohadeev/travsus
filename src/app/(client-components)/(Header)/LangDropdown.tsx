@@ -6,6 +6,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { FC, Fragment } from "react";
 import { headerCurrency } from "./CurrencyDropdown";
+import { useTranslations } from '@/lib/i18n';
 
 export const headerLanguage = [
   {
@@ -60,10 +61,18 @@ const LangDropdown: FC<LangDropdownProps> = ({
   panelClassName = "top-full right-0 max-w-sm w-96",
   className = "hidden md:flex",
 }) => {
+  const t = useTranslations("app_clientcomponents_Header_LangDropdown");
+
+  // Update headerLanguage with translated text
+  const translatedHeaderLanguage = headerLanguage.map(item => ({
+    ...item,
+    description: item.description === "United State" ? t('app_clientcomponents_Header_LangDropdown_United_State_Text') : item.description
+  }));
+
   const renderLang = (close: () => void) => {
     return (
-      <div className="grid gap-8 lg:grid-cols-2">
-        {headerLanguage.map((item, index) => (
+      <div className={t('app_clientcomponents_Header_LangDropdown_Lang_Grid_Class')}>
+        {translatedHeaderLanguage.map((item, index) => (
           <a
             key={index}
             href={item.href}
@@ -73,8 +82,8 @@ const LangDropdown: FC<LangDropdownProps> = ({
             }`}
           >
             <div className="">
-              <p className="text-sm font-medium ">{item.name}</p>
-              <p className="text-xs text-gray-500 dark:text-gray-400">
+              <p className={t('app_clientcomponents_Header_LangDropdown_Name_Text_Class')}>{item.name}</p>
+              <p className={t('app_clientcomponents_Header_LangDropdown_Description_Text_Class')}>
                 {item.description}
               </p>
             </div>
@@ -86,7 +95,7 @@ const LangDropdown: FC<LangDropdownProps> = ({
 
   const renderCurr = (close: () => void) => {
     return (
-      <div className="grid gap-7 lg:grid-cols-2">
+      <div className={t('app_clientcomponents_Header_LangDropdown_Currency_Grid_Class')}>
         {headerCurrency.map((item, index) => (
           <a
             key={index}
@@ -96,8 +105,8 @@ const LangDropdown: FC<LangDropdownProps> = ({
               item.active ? "bg-gray-100 dark:bg-gray-700" : "opacity-80"
             }`}
           >
-            <item.icon className="w-[18px] h-[18px] " />
-            <p className="ml-2 text-sm font-medium ">{item.name}</p>
+            <item.icon className={t('app_clientcomponents_Header_LangDropdown_Icon_Size_Class')} />
+            <p className={t('app_clientcomponents_Header_LangDropdown_Currency_Name_Class')}>{item.name}</p>
           </a>
         ))}
       </div>
@@ -106,7 +115,7 @@ const LangDropdown: FC<LangDropdownProps> = ({
 
   return (
     <>
-      <Popover className={`LangDropdown relative ${className}`}>
+      <Popover className={t('app_clientcomponents_Header_LangDropdown_Root_Class').replace('${className}', className || t('app_clientcomponents_Header_LangDropdown_Default_Class'))}>
         {({ open, close }) => (
           <>
             <Popover.Button
@@ -114,9 +123,9 @@ const LangDropdown: FC<LangDropdownProps> = ({
                 ${open ? "" : "text-opacity-80"}
              group self-center h-10 sm:h-12 px-3 py-1.5 inline-flex items-center text-sm text-gray-800 dark:text-neutral-200 font-medium hover:text-opacity-100 focus:outline-none `}
             >
-              <GlobeAltIcon className="w-5 h-5 opacity-80" />
-              <span className="mx-1">/</span>
-              <BanknotesIcon className="w-5 h-5 opacity-80" />
+              <GlobeAltIcon className={t('app_clientcomponents_Header_LangDropdown_Button_Icon_Class')} />
+              <span className={t('app_clientcomponents_Header_LangDropdown_Separator_Class')}>/</span>
+              <BanknotesIcon className={t('app_clientcomponents_Header_LangDropdown_Button_Icon_Class')} />
               <ChevronDownIcon
                 className={`${open ? "-rotate-180" : "text-opacity-70"}
                   ml-1 h-4 w-4  group-hover:text-opacity-80 transition ease-in-out duration-150`}
@@ -133,9 +142,9 @@ const LangDropdown: FC<LangDropdownProps> = ({
               leaveTo="opacity-0 translate-y-1"
             >
               <Popover.Panel className={`absolute z-20  ${panelClassName}`}>
-                <div className="p-3 sm:p-6 rounded-2xl bg-white dark:bg-neutral-800 shadow-lg ring-1 ring-black ring-opacity-5">
+                <div className={t('app_clientcomponents_Header_LangDropdown_Panel_Container_Class')}>
                   <Tab.Group>
-                    <Tab.List className="flex space-x-1 rounded-full bg-gray-100 dark:bg-slate-700 p-1">
+                    <Tab.List className={t('app_clientcomponents_Header_LangDropdown_Tab_List_Class')}>
                       {["Language", "Currency"].map((category) => (
                         <Tab
                           key={category}
@@ -153,7 +162,7 @@ const LangDropdown: FC<LangDropdownProps> = ({
                         </Tab>
                       ))}
                     </Tab.List>
-                    <Tab.Panels className="mt-5">
+                    <Tab.Panels className={t('app_clientcomponents_Header_LangDropdown_Tab_Panels_Class')}>
                       <Tab.Panel
                         className={classNames(
                           "rounded-xl p-3",

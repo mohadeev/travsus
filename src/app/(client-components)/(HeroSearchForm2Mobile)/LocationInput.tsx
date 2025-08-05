@@ -1,5 +1,6 @@
 'use client'
 
+import { useTranslations } from '@/lib/i18n'
 import { searchCountries } from '@/utils/searchCountries'
 import { MapPinIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline'
 import React, { useState, useEffect, useRef, FC } from 'react'
@@ -15,16 +16,17 @@ interface Props {
 const LocationInput: FC<Props> = ({
 	onChange = () => {},
 	className = '',
-	defaultValue = 'United States',
-	headingText = 'Where to?',
+	defaultValue = '',
+	headingText = '',
 }) => {
+	const t = useTranslations("app_clientcomponents_HeroSearchForm2Mobile_LocationInput");
 	const [value, setValue] = useState<any>({})
 	const containerRef = useRef(null)
 	const inputRef = useRef(null)
 
 	useEffect(() => {
-		setValue(defaultValue)
-	}, [defaultValue])
+		setValue(defaultValue || t('app_clientcomponents_HeroSearchForm2Mobile_LocationInput_Default_Country'))
+	}, [defaultValue, t])
 
 	const handleSelectLocation = (item: any) => {
 		// DO NOT REMOVE SETTIMEOUT FUNC
@@ -44,7 +46,7 @@ const LocationInput: FC<Props> = ({
 		return (
 			<>
 				<p className="block text-base font-semibold">
-					{heading || 'Destinations'}
+					{heading || t('app_clientcomponents_HeroSearchForm2Mobile_LocationInput_Destinations_Heading')}
 				</p>
 				<div className="mt-3">
 					{items?.map((item: any) => {
@@ -75,12 +77,12 @@ const LocationInput: FC<Props> = ({
 		<div className={`${className}`} ref={containerRef}>
 			<div className="p-5">
 				<span className="block text-xl font-semibold sm:text-2xl">
-					{headingText}
+					{headingText || t('app_clientcomponents_HeroSearchForm2Mobile_LocationInput_Where_To_Heading')}
 				</span>
 				<div className="relative mt-5">
 					<input
 						className={`block w-full truncate rounded-xl border border-neutral-900 bg-transparent px-4 py-3 pr-12 text-base font-bold leading-none placeholder-neutral-500 placeholder:truncate focus:outline-none focus:ring-0 dark:border-neutral-200 dark:placeholder-neutral-300`}
-						placeholder={'Search destinations'}
+						placeholder={t('app_clientcomponents_HeroSearchForm2Mobile_LocationInput_Search_Placeholder')}
 						value={value}
 						onChange={handleChangeInput}
 						ref={inputRef}
@@ -92,18 +94,18 @@ const LocationInput: FC<Props> = ({
 				<div className="mt-7">
 					{value
 						? renderSearchValues({
-								heading: 'Locations',
+								heading: t('app_clientcomponents_HeroSearchForm2Mobile_LocationInput_Locations_Heading'),
 								items: searchResulte,
 							})
 						: renderSearchValues({
-								heading: 'Popular destinations phone',
+								heading: t('app_clientcomponents_HeroSearchForm2Mobile_LocationInput_Popular_Destinations_Heading'),
 								items: [
-									{ name: 'Morocco' },
-									{ name: 'Australia' },
-									{ name: 'Canada' },
-									{ name: 'Germany' },
-									{ name: 'United Kingdom' },
-									{ name: 'United Arab Emirates' },
+									{ name: t('app_clientcomponents_HeroSearchForm2Mobile_LocationInput_Country_Morocco') },
+									{ name: t('app_clientcomponents_HeroSearchForm2Mobile_LocationInput_Country_Australia') },
+									{ name: t('app_clientcomponents_HeroSearchForm2Mobile_LocationInput_Country_Canada') },
+									{ name: t('app_clientcomponents_HeroSearchForm2Mobile_LocationInput_Country_Germany') },
+									{ name: t('app_clientcomponents_HeroSearchForm2Mobile_LocationInput_Country_United_Kingdom') },
+									{ name: t('app_clientcomponents_HeroSearchForm2Mobile_LocationInput_Country_United_Arab_Emirates') },
 								],
 							})}
 				</div>

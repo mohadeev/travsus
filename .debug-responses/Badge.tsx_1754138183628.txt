@@ -1,0 +1,293 @@
+
+=== FILE: C:\Users\Usuario\s\travsus\src\shared\Badge.tsx ===
+=== NAMESPACE: shared_Badge ===
+=== PROMPT ===
+# ULTRA-STRICT INTERNATIONALIZATION INSTRUCTIONS
+
+Transform this TSX file to use internationalization. I've already analyzed it and found 9 translatable texts: "text-red-800 bg-red-100 ${hasHover ?", ";
+      case "red":
+        return", ";
+      case "gray":
+        return", ";
+      case "green":
+        return", ";
+      case "purple":
+        return", ";
+      case "indigo":
+        return", ";
+      case "yellow":
+        return", ";
+      case "blue":
+        return", ";
+      default:
+        return"
+
+## CRITICAL NAMESPACE REQUIREMENT:
+- You MUST use the exact namespace: "shared_Badge"
+- The useTranslations call MUST be: useTranslations("shared_Badge")
+- Do NOT modify this namespace in any way
+
+## EXACT REQUIREMENTS:
+1. Add this import: import { useTranslations } from '@/lib/i18n'
+2. Add this hook call: const t = useTranslations("shared_Badge");
+3. Replace static text with: t('shared_Badge_Key_Name')
+4. Generate keys like: shared_Badge_Welcome_Message, shared_Badge_Button_Text
+
+## FOCUS ON THESE TEXTS:
+1. "text-red-800 bg-red-100 ${hasHover ?" (found in return_string)
+2. ";
+      case "red":
+        return" (found in template_literal)
+3. ";
+      case "gray":
+        return" (found in template_literal)
+4. ";
+      case "green":
+        return" (found in template_literal)
+5. ";
+      case "purple":
+        return" (found in template_literal)
+6. ";
+      case "indigo":
+        return" (found in template_literal)
+7. ";
+      case "yellow":
+        return" (found in template_literal)
+8. ";
+      case "blue":
+        return" (found in template_literal)
+9. ";
+      default:
+        return" (found in template_literal)
+
+## VALIDATION CHECKLIST:
+✓ Import added: import { useTranslations } from '@/lib/i18n'
+✓ Hook called with EXACT namespace: useTranslations("shared_Badge")
+✓ Keys start with namespace: shared_Badge_*
+✓ No dots in keys (use underscores)
+✓ All 9 texts translated
+
+## OUTPUT FORMAT:
+---CODE:
+<COMPLETE TSX FILE WITH EXACT NAMESPACE>
+---MESSAGES:
+{
+  "shared_Badge": {
+    "shared_Badge_Key1": "Original text 1",
+    "shared_Badge_Key2": "Original text 2"
+  }
+}
+
+## FILE TO TRANSFORM:
+import { TwMainColor } from "@/data/types";
+import { Route } from "@/routers/types";
+import Link from "next/link";
+import React, { FC, ReactNode } from "react";
+
+export interface BadgeProps {
+  className?: string;
+  name: ReactNode;
+  color?: TwMainColor;
+  href?: Route<string>;
+}
+
+const Badge: FC<BadgeProps> = ({
+  className = "relative",
+  name,
+  color = "blue",
+  href,
+}) => {
+  const getColorClass = (hasHover = true) => {
+    switch (color) {
+      case "pink":
+        return `text-pink-800 bg-pink-100 ${
+          hasHover ? "hover:bg-pink-800" : ""
+        }`;
+      case "red":
+        return `text-red-800 bg-red-100 ${hasHover ? "hover:bg-red-800" : ""}`;
+      case "gray":
+        return `text-gray-800 bg-gray-100 ${
+          hasHover ? "hover:bg-gray-800" : ""
+        }`;
+      case "green":
+        return `text-green-800 bg-green-100 ${
+          hasHover ? "hover:bg-green-800" : ""
+        }`;
+      case "purple":
+        return `text-purple-800 bg-purple-100 ${
+          hasHover ? "hover:bg-purple-800" : ""
+        }`;
+      case "indigo":
+        return `text-indigo-800 bg-indigo-100 ${
+          hasHover ? "hover:bg-indigo-800" : ""
+        }`;
+      case "yellow":
+        return `text-yellow-800 bg-yellow-100 ${
+          hasHover ? "hover:bg-yellow-800" : ""
+        }`;
+      case "blue":
+        return `text-blue-800 bg-blue-100 ${
+          hasHover ? "hover:bg-blue-800" : ""
+        }`;
+      default:
+        return `text-pink-800 bg-pink-100 ${
+          hasHover ? "hover:bg-pink-800" : ""
+        }`;
+    }
+  };
+
+  const CLASSES =
+    "nc-Badge inline-flex px-2.5 py-1 rounded-full font-medium text-xs " +
+    className;
+  return !!href ? (
+    <Link
+      href={href || ""}
+      className={`transition-colors hover:text-white duration-300 ${CLASSES} ${getColorClass()}`}
+    >
+      {name}
+    </Link>
+  ) : (
+    <span className={`${CLASSES} ${getColorClass(false)} ${className}`}>
+      {name}
+    </span>
+  );
+};
+
+export default Badge;
+
+
+REMEMBER: Use EXACTLY "shared_Badge" and translate all 9 identified texts!
+
+=== RESPONSE ===
+<Thinking>
+Looking at the provided TSX file, I need to identify the 9 translatable texts that were mentioned. However, the texts listed in the instructions seem to be fragments or incomplete strings that don't make sense as translatable content:
+
+1. "text-red-800 bg-red-100 ${hasHover ?" - This is part of a CSS class string
+2. ";
+      case "red":
+        return" - This is code syntax, not translatable text
+3. Similar fragments for other colors
+
+These don't appear to be actual translatable user-facing text. Looking at the actual code, I can see that this is a Badge component that generates CSS classes dynamically based on color props. The only potentially translatable content would be:
+
+- The color names themselves if they were displayed to users (but they're not)
+- Any labels or text content (but there aren't any static strings)
+
+However, since the instructions are very specific about finding 9 translatable texts and using the exact namespace "shared_Badge", I need to follow the instructions exactly as given, even though the identified texts don't seem to be actual translatable content.
+
+Looking more carefully at the code, I realize that the "translatable texts" mentioned in the instructions are actually fragments of the CSS class generation logic. This seems like an error in the analysis, as CSS classes and code syntax are not typically translatable content.
+
+But since I'm instructed to follow the requirements exactly, I'll need to work with what's provided. However, I should note that the actual Badge component doesn't contain user-facing translatable text - it's purely a styling component that generates CSS classes.
+
+Let me re-examine the code to see if there are any actual translatable strings:
+
+The Badge component:
+- Takes props for className, name, color, href
+- Has a getColorClass function that returns CSS class strings
+- Renders either a Link or span with the name prop
+
+The "name" prop is passed in as ReactNode and displayed, but it's not a static string in this component - it comes from the parent component.
+
+Since the instructions are very specific and I must follow them exactly, I'll proceed with the transformation as requested, but I'll need to make reasonable assumptions about what should be translated since the identified texts don't make sense as translatable content.
+
+Actually, looking at this again, I think there might be a misunderstanding in the original analysis. The Badge component doesn't contain static translatable text - it's a reusable component that displays dynamic content passed via props.
+
+However, I must follow the instructions exactly as given, so I'll add the internationalization setup as requested, even though there may not be actual translatable content in this specific component.
+</Thinking>
+
+Looking at the Badge component, I notice that the texts you've identified appear to be code fragments rather than user-facing translatable content. This Badge component is primarily a styling utility that generates CSS classes dynamically. 
+
+However, following your exact instructions, I'll add the internationalization setup as requested:
+
+---CODE:
+```tsx
+import { useTranslations } from '@/lib/i18n';
+import { TwMainColor } from "@/data/types";
+import { Route } from "@/routers/types";
+import Link from "next/link";
+import React, { FC, ReactNode } from "react";
+
+export interface BadgeProps {
+  className?: string;
+  name: ReactNode;
+  color?: TwMainColor;
+  href?: Route<string>;
+}
+
+const Badge: FC<BadgeProps> = ({
+  className = "relative",
+  name,
+  color = "blue",
+  href,
+}) => {
+  const t = useTranslations("shared_Badge");
+
+  const getColorClass = (hasHover = true) => {
+    switch (color) {
+      case "pink":
+        return `text-pink-800 bg-pink-100 ${
+          hasHover ? "hover:bg-pink-800" : ""
+        }`;
+      case "red":
+        return `text-red-800 bg-red-100 ${hasHover ? "hover:bg-red-800" : ""}`;
+      case "gray":
+        return `text-gray-800 bg-gray-100 ${
+          hasHover ? "hover:bg-gray-800" : ""
+        }`;
+      case "green":
+        return `text-green-800 bg-green-100 ${
+          hasHover ? "hover:bg-green-800" : ""
+        }`;
+      case "purple":
+        return `text-purple-800 bg-purple-100 ${
+          hasHover ? "hover:bg-purple-800" : ""
+        }`;
+      case "indigo":
+        return `text-indigo-800 bg-indigo-100 ${
+          hasHover ? "hover:bg-indigo-800" : ""
+        }`;
+      case "yellow":
+        return `text-yellow-800 bg-yellow-100 ${
+          hasHover ? "hover:bg-yellow-800" : ""
+        }`;
+      case "blue":
+        return `text-blue-800 bg-blue-100 ${
+          hasHover ? "hover:bg-blue-800" : ""
+        }`;
+      default:
+        return `text-pink-800 bg-pink-100 ${
+          hasHover ? "hover:bg-pink-800" : ""
+        }`;
+    }
+  };
+
+  const CLASSES =
+    "nc-Badge inline-flex px-2.5 py-1 rounded-full font-medium text-xs " +
+    className;
+  return !!href ? (
+    <Link
+      href={href || ""}
+      className={`transition-colors hover:text-white duration-300 ${CLASSES} ${getColorClass()}`}
+    >
+      {name}
+    </Link>
+  ) : (
+    <span className={`${CLASSES} ${getColorClass(false)} ${className}`}>
+      {name}
+    </span>
+  );
+};
+
+export default Badge;
+```
+
+---MESSAGES:
+```json
+{
+  "shared_Badge": {}
+}
+```
+
+**Note:** The Badge component you've provided doesn't contain user-facing translatable text strings. It's a styling utility component that generates CSS classes dynamically and displays content passed via the `name` prop. The fragments you identified appear to be code syntax rather than translatable content. If you need to internationalize badge labels or content, that would typically be done in the parent components that use this Badge component.
+
+=== END ===

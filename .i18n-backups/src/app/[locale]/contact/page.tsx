@@ -14,12 +14,12 @@ export interface PageContactProps {}
 
 const info = [
 	{
-		title: 'contact_page_Email',
-		desc: 'contact_page_Email_Address',
+		title: 'Email',
+		desc: 'Address',
 	},
 	{
-		title: 'contact_page_Phone',
-		desc: 'contact_page_Phone_Number',
+		title: 'Phone',
+		desc: 'Phone_Number',
 	},
 ]
 
@@ -81,7 +81,7 @@ const PageContact: React.FC<PageContactProps> = () => {
 									/>
 								</label>
 								<label className="block">
-									<Label>{t('Email_Address_Label')}</Label>
+									<Label>{t('Address_Label')}</Label>
 									<Input
 										type="email"
 										placeholder={t('Email_Address_Placeholder')}

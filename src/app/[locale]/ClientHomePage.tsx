@@ -10,6 +10,7 @@ import ItemsCardList from '@/components/ItemsCardList'
 import SectionGridFeaturePlaces from '@/components/SectionGridFeaturePlaces'
 import { useTranslations } from '@/lib/i18n'
 import ExperiencesCard from '@/components/ExperiencesCard'
+import TravelBanner from './TravelBanner'
 
 function ClientHomePage() {
 	const DUMMY_EXPERIENCE = {
@@ -73,7 +74,9 @@ function ClientHomePage() {
 						'https://www.twitter.com/travsus',
 						'https://www.linkedin.com/company/travsus',
 					],
-					description: t('app_locale_ClientHomePage_Premium_Travel_Experiences'),
+					description: t(
+						'app_locale_ClientHomePage_Premium_Travel_Experiences',
+					),
 					slogan: t('app_locale_ClientHomePage_Your_Journey_You_Deserve'),
 					award: [
 						t('app_locale_ClientHomePage_Best_Price_Guarantee'),
@@ -116,7 +119,9 @@ function ClientHomePage() {
 								itemOffered: {
 									'@type': 'Service',
 									name: t('app_locale_ClientHomePage_Expert_Travel_Planning'),
-									description: t('app_locale_ClientHomePage_Personalized_Travel_Planning'),
+									description: t(
+										'app_locale_ClientHomePage_Personalized_Travel_Planning',
+									),
 								},
 							},
 							{
@@ -147,7 +152,8 @@ function ClientHomePage() {
 			/>
 			<main className="nc-PageHome3 relative">
 				<div className="mb-24 px-0 sm:px-0">
-					<Home />
+					{/* <Home /> */}
+					<TravelBanner />
 				</div>
 				<div className="container p-0 px-0">
 					<ItemsCardList
@@ -167,11 +173,11 @@ function ClientHomePage() {
 						layout="row"
 						heading={t('app_locale_ClientHomePage_Popular_Cities')}
 					/>
-					<ItemsCardList
+					{/* <ItemsCardList
 						locationType="place"
-						cityId="67e120b734623c9e568da348"
+						cityId="67e5a961636b9ead6fb9b280"
 						layout="row"
-					/>
+					/> */}
 				</div>
 
 				<SectionSubscribe2 />

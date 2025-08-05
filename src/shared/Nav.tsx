@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import { useTranslations } from '@/lib/i18n'
 
 export interface NavProps {
   containerClassName?: string;
@@ -11,6 +12,8 @@ const Nav: FC<NavProps> = ({
   className = "",
   children,
 }) => {
+  const t = useTranslations("shared_Nav");
+  
   return (
     <nav className={`nc-Nav ${containerClassName}`} data-nc-id="Nav">
       <ul className={`flex  ${className}`}>{children}</ul>

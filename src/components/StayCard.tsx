@@ -7,6 +7,7 @@ import SaleOffBadge from "@/components/SaleOffBadge";
 import Badge from "@/shared/Badge";
 import Link from "next/link";
 import GallerySlider from "./GallerySlider";
+import { useTranslations } from '@/lib/i18n';
 
 export interface StayCardProps {
   className?: string;
@@ -21,6 +22,8 @@ const StayCard: FC<StayCardProps> = ({
   className = "",
   data = DEMO_DATA,
 }) => {
+  const t = useTranslations("components_StayCard");
+  
   const {
     galleryImgs,
     listingCategory,
@@ -58,10 +61,10 @@ const StayCard: FC<StayCardProps> = ({
       <div className={size === "default" ? "p-4 space-y-4" : "p-3 space-y-1"}>
         <div className={size === "default" ? "space-y-2" : "space-y-1"}>
           <span className="text-sm text-neutral-500 dark:text-neutral-400">
-            {listingCategory.name} · {bedrooms} beds
+            {listingCategory.name} · {bedrooms} {t('components_StayCard_Beds')}
           </span>
           <div className="flex items-center space-x-2">
-            {isAds && <Badge name="ADS" color="green" />}
+            {isAds && <Badge name={t('components_StayCard_ADS')} color="green" />}
             <h2
               className={`font-semibold capitalize text-neutral-900 dark:text-white ${
                 size === "default" ? "text-base" : "text-base"
@@ -102,7 +105,7 @@ const StayCard: FC<StayCardProps> = ({
             {` `}
             {size === "default" && (
               <span className="text-sm text-neutral-500 dark:text-neutral-400 font-normal">
-                /night
+                {t('components_StayCard_Per_Night')}
               </span>
             )}
           </span>

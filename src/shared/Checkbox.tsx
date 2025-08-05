@@ -1,6 +1,7 @@
 "use client";
 
 import React, { FC } from "react";
+import { useTranslations } from '@/lib/i18n';
 
 export interface CheckboxProps {
   label?: string;
@@ -19,6 +20,8 @@ const Checkbox: FC<CheckboxProps> = ({
   defaultChecked,
   onChange,
 }) => {
+  const t = useTranslations("shared_Checkbox");
+  
   return (
     <div className={`flex text-sm sm:text-base ${className}`}>
       <input

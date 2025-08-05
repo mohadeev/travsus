@@ -1,0 +1,59 @@
+{
+  "file": "C:\\Users\\Usuario\\s\\travsus\\src\\app\\[locale]\\[continent]\\[country]\\[region]\\[city]\\[category]\\[name]\\(service-detail)\\[listing-experiences-detail]\\SkeletonLoader.tsx",
+  "timestamp": "2025-08-02T12:40:00.803Z",
+  "hasTranslatableText": true,
+  "textCount": 10,
+  "texts": [
+    {
+      "type": "jsx_attribute",
+      "text": "rounded-md sm:rounded-xl",
+      "context": " className=\"rounded-md sm:rounded-xl\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "relative grid grid-cols-4 gap-1 sm:gap-2",
+      "context": " className=\"relative grid grid-cols-4 gap-1 sm:gap-2\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "relative col-span-2 row-span-2 animate-pulse rounded-md bg-gray-200 sm:rounded-xl",
+      "context": " className=\"relative col-span-2 row-span-2 animate-pulse rounded-md bg-gray-200 sm:rounded-xl\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "absolute inset-0 bg-gray-300 bg-opacity-20",
+      "context": " className=\"absolute inset-0 bg-gray-300 bg-opacity-20\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "relative col-span-1 row-span-2 animate-pulse rounded-md bg-gray-200 sm:rounded-xl",
+      "context": " className=\"relative col-span-1 row-span-2 animate-pulse rounded-md bg-gray-200 sm:rounded-xl\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "relative animate-pulse overflow-hidden rounded-md bg-gray-200 sm:rounded-xl",
+      "context": " className=\"relative animate-pulse overflow-hidden rounded-md bg-gray-200 sm:rounded-xl\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "aspect-h-3 aspect-w-4 bg-gray-200",
+      "context": " className=\"aspect-h-3 aspect-w-4 bg-gray-200\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "absolute bottom-3 left-3 z-10 hidden animate-pulse cursor-pointer items-center justify-center rounded-xl bg-gray-200 px-4 py-2 text-gray-500 md:flex",
+      "context": " className=\"absolute bottom-3 left-3 z-10 hidden animate-pulse cursor-pointer items-center justify-center rounded-xl bg-gray-200 px-4 py-2 text-gray-500 md:flex\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "h-5 w-5 rounded bg-gray-300",
+      "context": " className=\"h-5 w-5 rounded bg-gray-300\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "ml-2 h-5 w-16 rounded bg-gray-300 text-sm",
+      "context": " className=\"ml-2 h-5 w-16 rounded bg-gray-300 text-sm\""
+    }
+  ],
+  "fileSize": 1561
+}

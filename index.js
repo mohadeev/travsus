@@ -1,37 +1,102 @@
 const fs = require('fs').promises
 const path = require('path')
-const OpenAI = require('openai')
 
 // Configuration
 const CONFIG = {
 	SOURCE_DIR: path.join(process.cwd(), 'src'),
 	MESSAGES_DIR: path.join(process.cwd(), 'messages'),
 	BACKUP_DIR: path.join(process.cwd(), '.i18n-backups'),
-
-	// Updated OpenAI API Key
-	OPENAI_API_KEY:
-		'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',
-	OPENAI_MODEL: 'gpt-4',
-	OPENAI_TEMPERATURE: 0.1, // Maximum determinism
+	DEBUG_DIR: path.join(process.cwd(), '.debug-responses'),
+	// v0.dev API Configuration
+	V0_API_KEY: 'v1:oEZc7Ds3ddYfSKemF69xGkoz:jmzcX085FrkfJlDGUwRp4ZoZ',
+	V0_MODEL: 'v0-1.5-md',
+	V0_TEMPERATURE: 0.1,
+	MAX_RETRIES: 2,
 }
-
-const openai = new OpenAI({
-	apiKey: CONFIG.OPENAI_API_KEY,
-})
 
 // Supported languages
 const SUPPORTED_LANGUAGES = [
-	'en-US', // English (United States)
-	'es-ES', // Spanish (Spain)
-	'de-DE', // German (Germany)
-	'ja-JP', // Japanese (Japan)
-	'pt-PT', // Portuguese (Portugal)
-	'it-IT', // Italian (Italy)
-	'fr-FR', // French (France)
-	'ru-RU', // Russian (Russia)
-	'zh-CN', // Chinese (Simplified)
-	'ko-KR', // Korean (South Korea)
+	'en-US',
+	'es-ES',
+	'de-DE',
+	'ja-JP',
+	'pt-PT',
+	'it-IT',
+	'fr-FR',
+	'ru-RU',
+	'zh-CN',
+	'ko-KR',
 ]
+
+// === v0.dev API Function ===
+async function callV0API(prompt, retryCount = 0) {
+	try {
+		console.log(
+			`🤖 Making v0.dev API call (attempt ${retryCount + 1}/${CONFIG.MAX_RETRIES + 1})...`,
+		)
+
+		const response = await fetch('https://api.v0.dev/v1/chat/completions', {
+			method: 'POST',
+			headers: {
+				Authorization: `Bearer ${CONFIG.V0_API_KEY}`,
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				model: CONFIG.V0_MODEL,
+				temperature: CONFIG.V0_TEMPERATURE,
+				max_tokens: 32000,
+				messages: [
+					{
+						role: 'system',
+						content: `You are a senior React developer specializing in internationalization. 
+						FOLLOW ALL INSTRUCTIONS EXACTLY. 
+						PAY SPECIAL ATTENTION TO THE NAMESPACE AND KEY FORMAT REQUIREMENTS.
+						NEVER DEVIATE FROM THE SPECIFIED FORMAT.`,
+					},
+					{ role: 'user', content: prompt },
+				],
+			}),
+		})
+
+		if (!response.ok) {
+			const errorText = await response.text()
+			throw new Error(
+				`v0 API error: ${response.status} ${response.statusText} - ${errorText}`,
+			)
+		}
+
+		const data = await response.json()
+		const content = data.choices[0].message.content
+
+		if (data.choices[0].finish_reason === 'length') {
+			console.log('⚠️ Response was truncated due to length, retrying...')
+			if (retryCount < CONFIG.MAX_RETRIES) {
+				const enhancedPrompt = `${prompt}
+
+CRITICAL: This is a retry request. The previous response was truncated. 
+MUST provide the COMPLETE, FULL transformation. Do not truncate or summarize.`
+
+				await new Promise((resolve) => setTimeout(resolve, 2000))
+				return await callV0API(enhancedPrompt, retryCount + 1)
+			}
+		}
+
+		return content
+	} catch (error) {
+		console.error(
+			`❌ v0 API call failed (attempt ${retryCount + 1}):`,
+			error.message,
+		)
+
+		if (retryCount < CONFIG.MAX_RETRIES) {
+			console.log(`🔄 Retrying in 3 seconds...`)
+			await new Promise((resolve) => setTimeout(resolve, 3000))
+			return await callV0API(prompt, retryCount + 1)
+		}
+
+		throw error
+	}
+}
 
 // === Utility Functions ===
 function cleanTripleBackticks(input) {
@@ -39,11 +104,48 @@ function cleanTripleBackticks(input) {
 	return input.replace(/^\s*```[a-z]*\s*\n?/, '').replace(/\n?\s*```\s*$/, '')
 }
 
+// FIXED: Generate namespace from folder path + filename
+function generateNamespace(filePath) {
+	const relativePath = path.relative(CONFIG.SOURCE_DIR, filePath)
+	const namespace = relativePath
+		.replace(/\.tsx$/, '')
+		.replace(/\.jsx$/, '')
+		.replace(/[\\/]/g, '_')
+		.replace(/[^a-zA-Z0-9_]/g, '')
+		.replace(/_{2,}/g, '_') // Replace multiple underscores with single
+		.replace(/^_|_$/g, '') // Remove leading/trailing underscores
+
+	return namespace
+}
+
+async function saveDebugResponse(filePath, prompt, response, namespace) {
+	try {
+		await fs.mkdir(CONFIG.DEBUG_DIR, { recursive: true })
+		const debugFile = path.join(
+			CONFIG.DEBUG_DIR,
+			`${path.basename(filePath)}_${Date.now()}.txt`,
+		)
+		const debugContent = `
+=== FILE: ${filePath} ===
+=== NAMESPACE: ${namespace} ===
+=== PROMPT ===
+${prompt}
+
+=== RESPONSE ===
+${response}
+
+=== END ===
+`
+		await fs.writeFile(debugFile, debugContent, 'utf-8')
+	} catch (error) {
+		console.error('Failed to save debug response:', error.message)
+	}
+}
+
 async function createBackup(filePath, content) {
 	const relativePath = path.relative(process.cwd(), filePath)
 	const backupPath = path.join(CONFIG.BACKUP_DIR, relativePath)
 	const backupDir = path.dirname(backupPath)
-
 	await fs.mkdir(backupDir, { recursive: true })
 	await fs.writeFile(backupPath, content, 'utf-8')
 	console.log(`📂 Backup created: ${backupPath}`)
@@ -53,37 +155,55 @@ async function getFilesByType() {
 	const pages = []
 	const components = []
 
-	const localeDir = path.join(CONFIG.SOURCE_DIR, 'app', '[locale]')
+	const localeDir = path.join(
+		CONFIG.SOURCE_DIR,
+		'app',
+		'[locale]',
+		'[continent]',
+		'[country]',
+		'[region]',
+		'[city]',
+		'[category]',
+		'[name]',
+	)
 	const componentsDir = path.join(CONFIG.SOURCE_DIR, 'components')
 
 	// Get all locale pages
-	const localeEntries = await fs.readdir(localeDir, {
-		recursive: true,
-		withFileTypes: true,
-	})
+	try {
+		const localeEntries = await fs.readdir(localeDir, {
+			recursive: true,
+			withFileTypes: true,
+		})
 
-	for (const entry of localeEntries) {
-		if (
-			entry.isFile() &&
-			(entry.name.endsWith('.tsx') || entry.name.endsWith('.jsx'))
-		) {
-			pages.push(path.join(entry.path, entry.name))
+		for (const entry of localeEntries) {
+			if (
+				entry.isFile() &&
+				(entry.name.endsWith('.tsx') || entry.name.endsWith('.jsx'))
+			) {
+				pages.push(path.join(entry.path, entry.name))
+			}
 		}
+	} catch (error) {
+		console.log('⚠️ No locale directory found, skipping pages')
 	}
 
 	// Get all components
-	const componentEntries = await fs.readdir(componentsDir, {
-		recursive: true,
-		withFileTypes: true,
-	})
+	try {
+		const componentEntries = await fs.readdir(componentsDir, {
+			recursive: true,
+			withFileTypes: true,
+		})
 
-	for (const entry of componentEntries) {
-		if (
-			entry.isFile() &&
-			(entry.name.endsWith('.tsx') || entry.name.endsWith('.jsx'))
-		) {
-			components.push(path.join(entry.path, entry.name))
+		for (const entry of componentEntries) {
+			if (
+				entry.isFile() &&
+				(entry.name.endsWith('.tsx') || entry.name.endsWith('.jsx'))
+			) {
+				components.push(path.join(entry.path, entry.name))
+			}
 		}
+	} catch (error) {
+		console.log('⚠️ No components directory found, skipping components')
 	}
 
 	return { pages, components }
@@ -95,19 +215,17 @@ async function getAvailableLanguages() {
 		return files
 			.filter((file) => file.endsWith('.json'))
 			.map((file) => {
-				// Convert existing filenames to proper hyphen format
 				const lang = file.replace('.json', '')
 				return lang.includes('_') ? lang.replace('_', '-') : lang
 			})
 			.filter((lang) => SUPPORTED_LANGUAGES.includes(lang))
 	} catch (error) {
 		console.error('❌ Could not read messages directory:', error.message)
-		return SUPPORTED_LANGUAGES // Return all supported languages
+		return SUPPORTED_LANGUAGES
 	}
 }
 
 // === Core Processing ===
-
 async function processFileWithAI(filePath, namespace) {
 	try {
 		const content = await fs.readFile(filePath, 'utf-8')
@@ -118,134 +236,177 @@ async function processFileWithAI(filePath, namespace) {
 			return null
 		}
 
+		// Skip empty files
+		if (content.trim().length < 50) {
+			console.log(`⏩ Skipping ${path.basename(filePath)} - file too small`)
+			return null
+		}
+
 		// Create backup before processing
 		await createBackup(filePath, content)
 
-		const prompt = `
-# STRICT INSTRUCTIONS FOR INTERNATIONALIZATION
+		console.log(`🏷️ Using namespace: "${namespace}"`)
+		console.log(`📊 File size: ${content.length} characters`)
 
-You are an expert React/Next.js developer. Transform this component EXACTLY as specified:
+		const prompt = `# ULTRA-STRICT INTERNATIONALIZATION INSTRUCTIONS
 
-## REQUIREMENTS
-1. MUST use: import { useTranslations } from '@/lib/i18n'
-2. MUST call useTranslations with namespace: "${namespace}" (EXACTLY THIS STRING)
-3. MUST generate keys in format: ${namespace}_Descriptive_Key
-4. Replace ONLY user-facing static text (no code, no props, no variables)
-5. PRESERVE ALL formatting, whitespace, and code structure
-6. DO NOT change any functionality or logic
-7. DO NOT add or remove any imports except the required i18n import
-8. ABSOLUTELY NO DOTTED KEYS (${namespace}_Key.subkey is FORBIDDEN)
-9. JSON MUST HAVE NAMESPACE OBJECT: { "${namespace}": { key: value } }
+Transform this TSX file to use internationalization.
 
-## KEY GENERATION RULES
-- Create keys from text content: "Book your trip" → ${namespace}_Book_Your_Trip
-- Keep keys under 40 characters
-- Maintain consistent casing (Title_Case_With_Underscores)
-- NEVER use dots in keys (${namespace}_Key.subkey is ILLEGAL)
+## CRITICAL NAMESPACE AND KEY REQUIREMENTS:
+- You MUST use the exact namespace: "${namespace}"
+- The useTranslations call MUST be: useTranslations("${namespace}")
+- Keys should be simple descriptive names WITHOUT the namespace prefix
+- Example: t('Welcome_Message') NOT t('${namespace}_Welcome_Message')
 
-## OUTPUT FORMAT
-Return ONLY this exact format:
+## EXACT REQUIREMENTS:
+1. Add this import: import { useTranslations } from '@/lib/i18n'
+2. Add this hook call: const t = useTranslations("${namespace}");
+3. Replace static text with: t('Simple_Key_Name')
+4. Generate simple keys like: Welcome_Message, Button_Text, Error_Message
+
+## KEY FORMAT RULES:
+- Use descriptive names: Welcome_Message, Submit_Button, Error_Text
+- NO namespace prefix in keys
+- Use Title_Case_With_Underscores
+- Keep keys under 30 characters
+
+## OUTPUT FORMAT:
 ---CODE:
-<transformed code>
+<COMPLETE TSX FILE WITH EXACT NAMESPACE>
 ---MESSAGES:
 {
   "${namespace}": {
-    "${namespace}_Key1": "Original text 1",
-    "${namespace}_Key2": "Original text 2"
+	"Welcome_Message": "Welcome to our site",
+	"Button_Text": "Click here",
+	"Error_Message": "Something went wrong"
   }
 }
 
-## EXAMPLE TRANSFORMATION
+## EXAMPLE TRANSFORMATION:
 
 BEFORE:
-<div className="container">
+<div>
   <h1>Welcome to our site</h1>
-  <p>Book your trip today</p>
+  <button>Click here</button>
+  <p>Something went wrong</p>
 </div>
 
 AFTER:
 import { useTranslations } from '@/lib/i18n';
 
 export default function Component() {
-  // WARNING: MUST USE "${namespace}" EXACTLY AS PROVIDED
   const t = useTranslations("${namespace}");
   
   return (
-    <div className="container">
-      <h1>{t('${namespace}_Welcome_To_Our_Site')}</h1>
-      <p>{t('${namespace}_Book_Your_Trip_Today')}</p>
-    </div>
+	<div>
+	  <h1>{t('Welcome_Message')}</h1>
+	  <button>{t('Button_Text')}</button>
+	  <p>{t('Error_Message')}</p>
+	</div>
   );
 }
 
 ---MESSAGES:
 {
   "${namespace}": {
-    "${namespace}_Welcome_To_Our_Site": "Welcome to our site",
-    "${namespace}_Book_Your_Trip_Today": "Book your trip today"
+	"Welcome_Message": "Welcome to our site",
+	"Button_Text": "Click here", 
+	"Error_Message": "Something went wrong"
   }
 }
 
-## COMPONENT TO PROCESS:
+## FILE TO TRANSFORM:
 ${content}
-`
 
-		console.log(`💬 Processing ${path.basename(filePath)} with AI...`)
-		const result = await openai.chat.completions.create({
-			model: CONFIG.OPENAI_MODEL,
-			temperature: CONFIG.OPENAI_TEMPERATURE,
-			messages: [
-				{
-					role: 'system',
-					content:
-						'You are a senior React developer specializing in internationalization. Follow instructions EXACTLY. MUST use the provided namespace string without modification.',
-				},
-				{ role: 'user', content: prompt },
-			],
-		})
+REMEMBER: 
+- Use EXACTLY "${namespace}" in useTranslations()
+- Keys should be simple names WITHOUT namespace prefix
+- JSON structure: { "${namespace}": { "Simple_Key": "value" } }`
 
-		const output = result.choices[0].message.content
+		console.log(`💬 Processing ${path.basename(filePath)} with v0.dev AI...`)
+
+		const output = await callV0API(prompt)
+
+		// Save debug response
+		await saveDebugResponse(filePath, prompt, output, namespace)
+
+		// Check if AI is asking for component code (common error)
+		if (
+			output.includes("don't see the component code") ||
+			output.includes('provide the React component')
+		) {
+			console.error('❌ AI did not receive component code properly')
+			throw new Error('AI did not process component code - check prompt format')
+		}
+
 		const codeMatch = output.match(/---CODE:\s*([\s\S]*?)---MESSAGES:/)
 		const msgMatch = output.match(/---MESSAGES:\s*([\s\S]*)$/)
 
 		if (!codeMatch || !msgMatch) {
 			console.error('❌ FAILED TO PARSE AI OUTPUT FOR:', filePath)
-			console.error('RAW OUTPUT:', output)
+			console.error('Raw output preview:', output.substring(0, 1000))
 			throw new Error('AI response format invalid')
 		}
 
-		// Clean triple backticks from both code and messages
-		let newCode = cleanTripleBackticks(codeMatch[1].trim())
+		const newCode = cleanTripleBackticks(codeMatch[1].trim())
 		const messagesStr = cleanTripleBackticks(msgMatch[1].trim())
+
+		console.log(`🔍 Validating namespace usage in generated code...`)
+
+		// Check if import is present
+		const hasImport = newCode.includes(
+			"import { useTranslations } from '@/lib/i18n'",
+		)
+		console.log(`✓ Has import: ${hasImport}`)
+
+		// Check if exact namespace is used
+		const namespacePattern = `useTranslations("${namespace}")`
+		const hasCorrectNamespace = newCode.includes(namespacePattern)
+		console.log(`✓ Has correct namespace call: ${hasCorrectNamespace}`)
+
+		if (!hasImport) {
+			console.error('❌ Missing import in generated code')
+			throw new Error('I18N IMPORT MISSING IN OUTPUT CODE')
+		}
+
+		if (!hasCorrectNamespace) {
+			console.error(`❌ Namespace "${namespace}" not used correctly`)
+			// Try to find what namespace was actually used
+			const actualNamespaceMatch = newCode.match(
+				/useTranslations\s*$$\s*["'`]([^"'`]+)["'`]\s*$$/,
+			)
+			if (actualNamespaceMatch) {
+				console.error(
+					`❌ AI used namespace: "${actualNamespaceMatch[1]}" instead of "${namespace}"`,
+				)
+			}
+			throw new Error(
+				`NAMESPACE "${namespace}" NOT USED IN useTranslations CALL`,
+			)
+		}
 
 		// Parse and validate messages
 		const messages = JSON.parse(messagesStr)
 
 		// Validate namespace structure
 		if (!messages[namespace]) {
-			throw new Error(`Namespace "${namespace}" missing in AI output`)
+			throw new Error(`Namespace "${namespace}" missing in AI output messages`)
 		}
 
-		// Validate key format
+		// FIXED: Validate key format - keys should NOT have namespace prefix
+		const generatedKeys = Object.keys(messages[namespace])
+		console.log(`✓ Generated ${generatedKeys.length} translation keys`)
+
 		for (const key in messages[namespace]) {
 			if (key.includes('.')) {
 				throw new Error(`FORBIDDEN KEY FORMAT: ${key} - DOTS NOT ALLOWED`)
 			}
-			if (!key.startsWith(`${namespace}_`)) {
+			// FIXED: Keys should NOT start with namespace
+			if (key.startsWith(`${namespace}_`)) {
 				throw new Error(
-					`KEY MUST START WITH NAMESPACE: ${key} should start with ${namespace}_`,
+					`KEY SHOULD NOT HAVE NAMESPACE PREFIX: ${key} should be simple like "Welcome_Message"`,
 				)
 			}
-		}
-
-		// Validate namespace usage in code
-		const namespaceRegex = new RegExp(
-			`useTranslations\\s*\\(\\s*["'\`]${namespace}["'\`]\\s*\\)`,
-		)
-		if (!namespaceRegex.test(newCode)) {
-			throw new Error(
-				`NAMESPACE "${namespace}" NOT USED IN useTranslations CALL`,
-			)
 		}
 
 		return {
@@ -264,79 +425,47 @@ async function translateMessages(englishMessages, targetLang) {
 	const namespace = Object.keys(englishMessages)[0]
 	const strings = englishMessages[namespace]
 
-	const prompt = `
-# STRICT TRANSLATION INSTRUCTIONS
+	const prompt = `# STRICT TRANSLATION INSTRUCTIONS
 
 Translate these UI strings from English to ${targetLang}:
 
-## RULES
-1. Use formal business language
+## RULES:
+1. Use formal business language appropriate for ${targetLang}
 2. Maintain EXACT terminology from original
-3. Preserve ALL variables like {year} exactly as-is
+3. Preserve ALL variables like {year}, {name}, etc. exactly as-is
 4. Keep capitalization and punctuation identical
-5. Return ONLY the JSON object with translations
+5. Return ONLY the complete JSON object with translations
 6. ABSOLUTELY NO CHANGES TO KEYS - TRANSLATE VALUES ONLY
 7. MAINTAIN NAMESPACE STRUCTURE: { "${namespace}": { key: value } }
 
 ## INPUT STRINGS:
 ${JSON.stringify({ [namespace]: strings }, null, 2)}
 
-## OUTPUT FORMAT:
+## OUTPUT FORMAT (JSON ONLY):
 {
   "${namespace}": {
-    <EXACT SAME KEYS WITH TRANSLATED VALUES>
+	<EXACT SAME KEYS WITH TRANSLATED VALUES>
   }
 }
 
-DO NOT RETURN ANYTHING ELSE! ONLY THE JSON OBJECT!
-`
+CRITICAL: Provide translations for ALL strings. Do not truncate.`
 
-	console.log(`🌍 Translating to ${targetLang}...`)
-	const result = await openai.chat.completions.create({
-		model: CONFIG.OPENAI_MODEL,
-		temperature: CONFIG.OPENAI_TEMPERATURE,
-		messages: [
-			{
-				role: 'system',
-				content:
-					'You are a professional translator. Follow instructions EXACTLY.',
-			},
-			{ role: 'user', content: prompt },
-		],
-	})
-
-	// Clean triple backticks from translation response
-	const cleanedResponse = cleanTripleBackticks(
-		result.choices[0].message.content,
+	console.log(
+		`🌍 Translating ${Object.keys(strings).length} strings to ${targetLang}...`,
 	)
+
+	const result = await callV0API(prompt)
+	const cleanedResponse = cleanTripleBackticks(result)
 	const translations = JSON.parse(cleanedResponse)
 
-	// Validate translations
 	if (!translations[namespace]) {
 		throw new Error(`Namespace "${namespace}" missing in translation`)
-	}
-
-	const originalKeys = Object.keys(strings)
-	const translatedKeys = Object.keys(translations[namespace])
-
-	if (originalKeys.length !== translatedKeys.length) {
-		throw new Error('KEY COUNT MISMATCH IN TRANSLATION')
-	}
-
-	for (const key of originalKeys) {
-		if (!translations[namespace][key]) {
-			throw new Error(`MISSING KEY IN TRANSLATION: ${key}`)
-		}
-		if (key.includes('.')) {
-			throw new Error(`FORBIDDEN KEY FORMAT: ${key}`)
-		}
 	}
 
 	return translations
 }
 
 async function updateSourceFile(filePath, newCode) {
-	// Final validation before writing
 	if (newCode.includes("import { useTranslations } from '@/lib/i18n'")) {
 		await fs.writeFile(filePath, newCode, 'utf-8')
 		console.log(`✏️ UPDATED: ${path.basename(filePath)}`)
@@ -346,11 +475,10 @@ async function updateSourceFile(filePath, newCode) {
 }
 
 async function updateTranslationFiles(lang, messages) {
-	// Use hyphen format for filename (en-US.json)
 	const filename = `${lang}.json`
 	const filePath = path.join(CONFIG.MESSAGES_DIR, filename)
-
 	let content = {}
+
 	try {
 		const fileContent = await fs.readFile(filePath, 'utf-8')
 		content = JSON.parse(fileContent)
@@ -361,18 +489,11 @@ async function updateTranslationFiles(lang, messages) {
 	const namespace = Object.keys(messages)[0]
 	const newStrings = messages[namespace]
 
-	// Create namespace if needed
 	if (!content[namespace]) {
 		content[namespace] = {}
 	}
 
-	// Add new translations without overwriting existing ones
 	for (const [key, value] of Object.entries(newStrings)) {
-		// Validate key format
-		if (key.includes('.')) {
-			throw new Error(`FORBIDDEN KEY FORMAT: ${key} - USE UNDERSCORES ONLY`)
-		}
-
 		if (!content[namespace][key]) {
 			content[namespace][key] = value
 		}
@@ -405,13 +526,8 @@ async function processFiles(files, languages, batchName) {
 				continue
 			}
 
-			// Derive namespace from file path
-			const relativePath = path.relative(CONFIG.SOURCE_DIR, filePath)
-			const namespace = relativePath
-				.replace(/\.tsx$/, '')
-				.replace(/\.jsx$/, '')
-				.replace(/[\\/]/g, '_')
-				.replace(/[^a-zA-Z0-9_]/g, '')
+			// Generate namespace from folder path + filename
+			const namespace = generateNamespace(filePath)
 
 			// Process file with AI
 			const result = await processFileWithAI(filePath, namespace)
@@ -424,19 +540,14 @@ async function processFiles(files, languages, batchName) {
 			for (const lang of languages) {
 				try {
 					let messages
-
 					if (lang === 'en-US') {
-						// Use English messages as-is
 						messages = result.messages
 					} else {
-						// Translate for other languages
 						messages = await translateMessages(result.messages, lang)
 					}
-
-					// Update translation file
 					await updateTranslationFiles(lang, messages)
 				} catch (error) {
-					console.error(`❌ TRANSLATION FAILED FOR ${lang}:`, error.message)
+					console.error(`❌ Translation failed for ${lang}:`, error.message)
 				}
 			}
 
@@ -448,26 +559,25 @@ async function processFiles(files, languages, batchName) {
 }
 
 // === Main Function ===
-
 async function main() {
 	try {
-		console.log('🚀 STARTING STRICT NAMESPACE-BASED I18N AUTOMATION')
-		console.log('🔒 STRICT RULES ENFORCED:')
 		console.log(
-			'   1. NAMESPACE OBJECT STRUCTURE: { "namespace": { key: value } }',
+			'🚀 STARTING FIXED v0.dev I18N AUTOMATION - PROPER JSON STRUCTURE',
 		)
-		console.log('   2. NO DOTTED KEYS - UNDERSCORES ONLY')
+		console.log('🔧 FIXES APPLIED:')
+		console.log('   ✅ Namespace = folder_path_filename')
+		console.log('   ✅ Keys are simple names WITHOUT namespace prefix')
 		console.log(
-			'   3. KEYS MUST START WITH NAMESPACE (e.g., footer_footer_Disclaimer)',
+			'   ✅ JSON structure: { "namespace": { "Simple_Key": "value" } }',
 		)
-		console.log('   4. ZERO TOLERANCE FOR DEVIATIONS')
+		console.log('   ✅ NO MORE FLAT KEYS WITH LONG PREFIXES!')
 		console.log('🌐 SUPPORTED LANGUAGES:', SUPPORTED_LANGUAGES.join(', '))
 
 		// Ensure directories exist
 		await fs.mkdir(CONFIG.BACKUP_DIR, { recursive: true })
-		await initializeLanguageFiles()
+		await fs.mkdir(CONFIG.MESSAGES_DIR, { recursive: true })
+		await fs.mkdir(CONFIG.DEBUG_DIR, { recursive: true })
 
-		// 1. Get all files and languages
 		const { pages, components } = await getFilesByType()
 		const languages = await getAvailableLanguages()
 
@@ -475,14 +585,13 @@ async function main() {
 		console.log(`🧩 COMPONENTS TO PROCESS: ${components.length}`)
 		console.log(`🌐 LANGUAGES: ${languages.join(', ')}`)
 
-		// Phase 1: Process all locale pages first
+		// Process pages first, then components
 		await processFiles(pages, languages, 'pages')
-
-		// Phase 2: Process all components after pages are done
 		await processFiles(components, languages, 'components')
 
 		console.log('\n🎉 OPERATION COMPLETE!')
-		console.log('🔥 ALL FILES PROCESSED IN CORRECT ORDER!')
+		console.log(`📋 Debug responses saved in: ${CONFIG.DEBUG_DIR}`)
+		console.log('🎯 JSON STRUCTURE IS NOW PROPER NESTED OBJECTS!')
 	} catch (error) {
 		console.error('💣 FATAL SYSTEM FAILURE:', error.message)
 	}

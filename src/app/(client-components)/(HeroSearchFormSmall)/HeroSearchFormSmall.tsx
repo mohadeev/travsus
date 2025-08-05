@@ -1,6 +1,6 @@
 'use client'
-
 import React, { FC, useEffect, useState } from 'react'
+import { useTranslations } from '@/lib/i18n'
 import { StaySearchFormFields } from '../type'
 import StaySearchForm from './(stay-search-form)/StaySearchForm'
 import ExperiencesSearchForm from './(experiences-search-form)/ExperiencesSearchForm'
@@ -15,10 +15,6 @@ export interface HeroSearchFormSmallProps {
 	onTabChange?: (tab: SearchTab) => void
 	defaultFieldFocus?: StaySearchFormFields
 }
-const TABS: SearchTab[] = [
-	'Experiences',
-	//'Stays', 'Cars', 'Flights'
-]
 
 const HeroSearchFormSmall: FC<HeroSearchFormSmallProps> = ({
 	className = '',
@@ -26,33 +22,39 @@ const HeroSearchFormSmall: FC<HeroSearchFormSmallProps> = ({
 	onTabChange,
 	defaultFieldFocus,
 }) => {
+	const t = useTranslations('Jan03_HeroSearchFormSmall_m9x4')
 	const [tabActive, setTabActive] = useState<SearchTab>(defaultTab)
 
 	useEffect(() => {
 		setTabActive(defaultTab)
 	}, [defaultTab])
 
+	const TABS: any = [
+		{ name: t('Experiences'), key: 'Experiences' },
+		//'Stays', 'Cars', 'Flights'
+	]
+
 	const renderTab = () => {
 		return (
 			<ul className="flex h-[88px] justify-center space-x-5 sm:space-x-9">
-				{TABS.slice(0, 1).map((tab) => {
-					const active = tab === tabActive
+				{TABS.slice(0, 1).map((tab: any) => {
+					const active = tab.key === tabActive
 					return (
 						<li
 							onClick={() => {
 								alert('active')
-								setTabActive(tab)
-								onTabChange && onTabChange(tab)
+								setTabActive(tab.key)
+								onTabChange && onTabChange(tab.key)
 							}}
 							className={`relative flex flex-shrink-0 cursor-pointer items-center text-base ${
 								active
 									? 'font-medium text-neutral-900 dark:text-neutral-200'
 									: 'text-neutral-500 dark:text-neutral-300'
 							} `}
-							key={tab}
+							key={tab.key}
 						>
 							<div className="relative select-none">
-								<span>{tab}</span>
+								<span>{tab.name}</span>
 								{active && (
 									<span className="absolute top-full mr-2 mt-1 block h-0.5 w-full rounded-full bg-neutral-800 dark:bg-neutral-100" />
 								)}
@@ -74,7 +76,6 @@ const HeroSearchFormSmall: FC<HeroSearchFormSmallProps> = ({
 				return <RentalCarSearchForm />
 			case 'Flights':
 				return <FlightSearchForm />
-
 			default:
 				return null
 		}

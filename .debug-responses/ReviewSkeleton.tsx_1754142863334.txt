@@ -1,0 +1,161 @@
+
+=== FILE: C:\Users\Usuario\s\travsus\src\app\[locale]\[continent]\[country]\[region]\[city]\[category]\[name]\(service-detail)\[listing-experiences-detail]\ReviewSkeleton.tsx ===
+=== NAMESPACE: app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewSkeleton ===
+=== PROMPT ===
+# ULTRA-STRICT INTERNATIONALIZATION INSTRUCTIONS
+
+Transform this TSX file to use internationalization.
+
+## CRITICAL NAMESPACE AND KEY REQUIREMENTS:
+- You MUST use the exact namespace: "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewSkeleton"
+- The useTranslations call MUST be: useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewSkeleton")
+- Keys should be simple descriptive names WITHOUT the namespace prefix
+- Example: t('Welcome_Message') NOT t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewSkeleton_Welcome_Message')
+
+## EXACT REQUIREMENTS:
+1. Add this import: import { useTranslations } from '@/lib/i18n'
+2. Add this hook call: const t = useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewSkeleton");
+3. Replace static text with: t('Simple_Key_Name')
+4. Generate simple keys like: Welcome_Message, Button_Text, Error_Message
+
+## KEY FORMAT RULES:
+- Use descriptive names: Welcome_Message, Submit_Button, Error_Text
+- NO namespace prefix in keys
+- Use Title_Case_With_Underscores
+- Keep keys under 30 characters
+
+## OUTPUT FORMAT:
+---CODE:
+<COMPLETE TSX FILE WITH EXACT NAMESPACE>
+---MESSAGES:
+{
+  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewSkeleton": {
+	"Welcome_Message": "Welcome to our site",
+	"Button_Text": "Click here",
+	"Error_Message": "Something went wrong"
+  }
+}
+
+## EXAMPLE TRANSFORMATION:
+
+BEFORE:
+<div>
+  <h1>Welcome to our site</h1>
+  <button>Click here</button>
+  <p>Something went wrong</p>
+</div>
+
+AFTER:
+import { useTranslations } from '@/lib/i18n';
+
+export default function Component() {
+  const t = useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewSkeleton");
+  
+  return (
+	<div>
+	  <h1>{t('Welcome_Message')}</h1>
+	  <button>{t('Button_Text')}</button>
+	  <p>{t('Error_Message')}</p>
+	</div>
+  );
+}
+
+---MESSAGES:
+{
+  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewSkeleton": {
+	"Welcome_Message": "Welcome to our site",
+	"Button_Text": "Click here", 
+	"Error_Message": "Something went wrong"
+  }
+}
+
+## FILE TO TRANSFORM:
+const ReviewSkeleton = () => {
+	return (
+		<div className="animate-pulse border-b border-neutral-200 pb-6">
+			<div className="flex items-start gap-4">
+				<div className="h-12 w-12 rounded-full bg-neutral-200"></div>
+				<div className="flex-1">
+					<div className="mb-2 h-4 w-32 rounded bg-neutral-200"></div>
+					<div className="h-3 w-48 rounded bg-neutral-200"></div>
+				</div>
+			</div>
+			<div className="mt-3">
+				<div className="mb-2 h-4 w-24 rounded bg-neutral-200"></div>
+				<div className="mb-2 h-5 w-64 rounded bg-neutral-200"></div>
+				<div className="mb-1 h-4 w-full rounded bg-neutral-200"></div>
+				<div className="mb-1 h-4 w-full rounded bg-neutral-200"></div>
+				<div className="mb-3 h-4 w-3/4 rounded bg-neutral-200"></div>
+				<div className="h-3 w-48 rounded bg-neutral-200"></div>
+			</div>
+		</div>
+	)
+}
+
+export default ReviewSkeleton
+
+
+REMEMBER: 
+- Use EXACTLY "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewSkeleton" in useTranslations()
+- Keys should be simple names WITHOUT namespace prefix
+- JSON structure: { "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewSkeleton": { "Simple_Key": "value" } }
+
+=== RESPONSE ===
+<Thinking>
+Looking at this TSX file, I can see it's a ReviewSkeleton component that renders a loading skeleton with animated placeholders. The component doesn't actually contain any visible text content - it's just div elements with CSS classes for styling skeleton loading states.
+
+Since this is a skeleton component with no actual text content, there are no strings to internationalize. The component only contains:
+- CSS classes for styling
+- Structural div elements
+- No user-facing text
+
+However, the user is asking me to transform it for internationalization following their exact requirements. Since there's no text content to internationalize, I should still add the required import and useTranslations hook as requested, but there won't be any actual text to replace with t() calls.
+
+I need to:
+1. Add the import: import { useTranslations } from '@/lib/i18n'
+2. Add the hook call with the exact namespace
+3. Since there's no text content, the messages object will be empty for this namespace
+
+Let me follow the exact format they specified.
+</Thinking>
+
+---CODE:
+```tsx
+import { useTranslations } from '@/lib/i18n'
+
+const ReviewSkeleton = () => {
+	const t = useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewSkeleton");
+
+	return (
+		<div className="animate-pulse border-b border-neutral-200 pb-6">
+			<div className="flex items-start gap-4">
+				<div className="h-12 w-12 rounded-full bg-neutral-200"></div>
+				<div className="flex-1">
+					<div className="mb-2 h-4 w-32 rounded bg-neutral-200"></div>
+					<div className="h-3 w-48 rounded bg-neutral-200"></div>
+				</div>
+			</div>
+			<div className="mt-3">
+				<div className="mb-2 h-4 w-24 rounded bg-neutral-200"></div>
+				<div className="mb-2 h-5 w-64 rounded bg-neutral-200"></div>
+				<div className="mb-1 h-4 w-full rounded bg-neutral-200"></div>
+				<div className="mb-1 h-4 w-full rounded bg-neutral-200"></div>
+				<div className="mb-3 h-4 w-3/4 rounded bg-neutral-200"></div>
+				<div className="h-3 w-48 rounded bg-neutral-200"></div>
+			</div>
+		</div>
+	)
+}
+
+export default ReviewSkeleton
+```
+
+---MESSAGES:
+```json
+{
+  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewSkeleton": {
+  }
+}
+```
+
+=== END ===

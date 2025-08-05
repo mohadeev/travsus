@@ -7,7 +7,8 @@ import { updateBooking } from '../api-utils/actions/booking/updateBooking'
 
 export async function POST(request: NextRequest) {
 	console.log('POST /api/initiate-payment - Initiating payment')
-	const { paymentMethodId, amount, currency } = await request.json()
+	const { paymentMethodId, stripePaymentMethodId, amount, currency } =
+		await request.json()
 	const userData = await getUserData({})
 	if (!userData) {
 		return 0
@@ -30,6 +31,13 @@ export async function POST(request: NextRequest) {
 		)
 	}
 	const { email: userEmail, id: userId } = userData
+	console.log(
+		userId,
+		userEmail,
+		paymentMethodId,
+		stripePaymentMethodId,
+		currency,
+	)
 
 	if (!userId || !userEmail || !paymentMethodId || !currency) {
 		console.error('POST /api/initiate-payment - Missing required fields')
@@ -102,7 +110,7 @@ export async function POST(request: NextRequest) {
 			amount: isMoha ? 55 : amountInCents,
 			currency,
 			customer: user.stripeCustomerId,
-			payment_method: paymentMethodId,
+			payment_method: stripePaymentMethodId,
 			setup_future_usage: 'off_session',
 			capture_method: 'manual',
 			metadata: {

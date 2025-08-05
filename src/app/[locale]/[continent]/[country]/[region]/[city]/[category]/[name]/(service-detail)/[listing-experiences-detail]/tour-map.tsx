@@ -1,8 +1,8 @@
 'use client'
-
 import { forwardRef } from 'react'
 import dynamic from 'next/dynamic'
 import { MapIcon, Navigation } from 'lucide-react'
+import { useTranslations } from '@/lib/i18n'
 
 // Define your interfaces
 interface Day {
@@ -25,51 +25,55 @@ interface TourMapProps {
 }
 
 // Create a loading component
-const MapLoading = ({ height = 500 }: { height?: number }) => (
-	<div className="overflow-hidden rounded-lg shadow-sm">
-		<div className="flex justify-end gap-2 border-b bg-white p-2">
-			<button
-				disabled
-				className="flex items-center gap-1 rounded-full border border-gray-200 bg-gray-100 px-3 py-1.5 text-xs font-medium text-black shadow-sm"
-			>
-				<MapIcon size={14} />
-				<span>View All</span>
-			</button>
-			<button
-				disabled
-				className="flex items-center gap-1 rounded-full bg-black px-3 py-1.5 text-xs font-medium text-white shadow-sm"
-			>
-				<Navigation size={14} />
-				<span>Directions</span>
-			</button>
-		</div>
-		<div className="relative">
-			<div
-				className="flex items-center justify-center bg-gray-100"
-				style={{ height: `${height}px`, width: '100%' }}
-			>
-				<div className="text-center">
-					<MapIcon className="mx-auto h-12 w-12 text-gray-400" />
-					<p className="mt-2 text-sm text-gray-500">Loading map...</p>
+const MapLoading = ({ height = 500 }: { height?: number }) => {
+	const t = useTranslations('Jan03_TourMap_n9w5')
+
+	return (
+		<div className="overflow-hidden rounded-lg shadow-sm">
+			<div className="flex justify-end gap-2 border-b bg-white p-2">
+				<button
+					disabled
+					className="flex items-center gap-1 rounded-full border border-gray-200 bg-gray-100 px-3 py-1.5 text-xs font-medium text-black shadow-sm"
+				>
+					<MapIcon size={14} />
+					<span>{t('View_All')}</span>
+				</button>
+				<button
+					disabled
+					className="flex items-center gap-1 rounded-full bg-black px-3 py-1.5 text-xs font-medium text-white shadow-sm"
+				>
+					<Navigation size={14} />
+					<span>{t('Directions')}</span>
+				</button>
+			</div>
+			<div className="relative">
+				<div
+					className="flex items-center justify-center bg-gray-100"
+					style={{ height: `${height}px`, width: '100%' }}
+				>
+					<div className="text-center">
+						<MapIcon className="mx-auto h-12 w-12 text-gray-400" />
+						<p className="mt-2 text-sm text-gray-500">{t('Loading_Map')}</p>
+					</div>
+				</div>
+			</div>
+			<div className="flex flex-wrap gap-3 bg-gray-50 p-3 text-sm">
+				<div className="flex items-center gap-1">
+					<div className="h-4 w-4 rounded-full bg-black"></div>
+					<span>{t('Tour_Days')}</span>
+				</div>
+				<div className="flex items-center gap-1">
+					<div className="h-4 w-4 rounded-full bg-black"></div>
+					<span>{t('Selected_Day')}</span>
+				</div>
+				<div className="flex items-center gap-1">
+					<div className="h-1 w-8 bg-black"></div>
+					<span>{t('Route')}</span>
 				</div>
 			</div>
 		</div>
-		<div className="flex flex-wrap gap-3 bg-gray-50 p-3 text-sm">
-			<div className="flex items-center gap-1">
-				<div className="h-4 w-4 rounded-full bg-black"></div>
-				<span>Tour Days</span>
-			</div>
-			<div className="flex items-center gap-1">
-				<div className="h-4 w-4 rounded-full bg-black"></div>
-				<span>Selected Day</span>
-			</div>
-			<div className="flex items-center gap-1">
-				<div className="h-1 w-8 bg-black"></div>
-				<span>Route</span>
-			</div>
-		</div>
-	</div>
-)
+	)
+}
 
 // Create a separate component for the actual map implementation
 // This will be dynamically imported with ssr: false
@@ -81,14 +85,14 @@ const InnerTourMap = forwardRef<
 		{ days, selectedDayIndex, onDaySelect, height = 500, monochrome = false },
 		ref,
 	) => {
+		const t = useTranslations('Jan03_TourMap_n9w5')
+
 		// Keep all your original TourMap code here, unchanged
 		// This component will only be loaded on the client side
-
 		// Import required modules
 		const { useEffect, useRef, useImperativeHandle } = require('react')
 		const L = require('leaflet')
 		require('leaflet/dist/leaflet.css')
-
 		const mapRef = useRef<HTMLDivElement>(null)
 		const leafletMapRef = useRef<L.Map | null>(null)
 		const routeLayerRef = useRef<L.Polyline | null>(null)
@@ -105,7 +109,6 @@ const InnerTourMap = forwardRef<
 							[day.geoCoordinates.lat, day.geoCoordinates.log],
 							13,
 						)
-
 						// Highlight the marker
 						if (markersRef.current[dayIndex]) {
 							markersRef.current[dayIndex].openPopup()
@@ -196,14 +199,12 @@ const InnerTourMap = forwardRef<
 						[day.geoCoordinates.lat, day.geoCoordinates.log],
 						13,
 					)
-
 					// Open the popup for the selected day
 					if (markersRef.current[selectedDayIndex]) {
 						markersRef.current[selectedDayIndex].openPopup()
 					}
 				}
 			}
-
 			// When the map is shown or hidden, we need to invalidate its size
 			if (leafletMapRef.current) {
 				setTimeout(() => {
@@ -219,7 +220,6 @@ const InnerTourMap = forwardRef<
 			// Clear existing markers and routes
 			markersLayerRef.current.clearLayers()
 			markersRef.current = []
-
 			if (routeLayerRef.current && leafletMapRef.current) {
 				leafletMapRef.current.removeLayer(routeLayerRef.current)
 				routeLayerRef.current = null
@@ -244,7 +244,6 @@ const InnerTourMap = forwardRef<
 
 				// Create marker for each day
 				const isSelected = selectedDayIndex === index
-
 				const dayIcon = L.divIcon({
 					className: 'day-marker',
 					html: `<div class="flex flex-col items-center">
@@ -252,7 +251,7 @@ const InnerTourMap = forwardRef<
                     ${index + 1}
                   </div>
                   <div class="text-xs font-semibold bg-white px-1 py-0.5 rounded shadow mt-1">
-                    ${day.cityName || `Day ${index + 1}`}
+                    ${day.cityName || `${t('Day')} ${index + 1}`}
                   </div>
                 </div>`,
 					iconSize: [40, 40],
@@ -263,8 +262,8 @@ const InnerTourMap = forwardRef<
 					.bindPopup(
 						`
             <div>
-              <h3 class="font-bold">${day.name || `Day ${index + 1}`}</h3>
-              <p class="text-sm">${day.cityName || 'Unknown location'}</p>
+              <h3 class="font-bold">${day.name || `${t('Day')} ${index + 1}`}</h3>
+              <p class="text-sm">${day.cityName || t('Unknown_Location')}</p>
               ${day.description ? `<p class="text-xs mt-1">${day.description.substring(0, 100)}...</p>` : ''}
             </div>
           `,
@@ -316,7 +315,6 @@ const InnerTourMap = forwardRef<
         }
       `
 			document.head.appendChild(style)
-
 			return () => {
 				document.head.removeChild(style)
 			}
@@ -326,7 +324,6 @@ const InnerTourMap = forwardRef<
 		const openGoogleMapsDirections = () => {
 			// Collect all valid coordinates
 			const points: [number, number][] = []
-
 			// Add coordinates for each day
 			days.forEach((day) => {
 				if (day.geoCoordinates?.lat && day.geoCoordinates?.log) {
@@ -335,13 +332,12 @@ const InnerTourMap = forwardRef<
 			})
 
 			if (points.length < 2) {
-				alert('Need at least two locations to show directions')
+				alert(t('Need_Two_Locations_Alert'))
 				return
 			}
 
 			// Create Google Maps directions URL
 			let url = 'https://www.google.com/maps/dir/'
-
 			points.forEach((point) => {
 				url += `${point[0]},${point[1]}/`
 			})
@@ -377,35 +373,33 @@ const InnerTourMap = forwardRef<
 						className="flex items-center gap-1 rounded-full border border-gray-200 bg-gray-100 px-3 py-1.5 text-xs font-medium text-black shadow-sm transition-colors hover:bg-gray-200"
 					>
 						<MapIcon size={14} />
-						<span>View All</span>
+						<span>{t('View_All')}</span>
 					</button>
 					<button
 						onClick={openGoogleMapsDirections}
 						className="flex items-center gap-1 rounded-full bg-black px-3 py-1.5 text-xs font-medium text-white shadow-sm transition-colors hover:bg-gray-800"
 					>
 						<Navigation size={14} />
-						<span>Directions</span>
+						<span>{t('Directions')}</span>
 					</button>
 				</div>
-
 				{/* MAP */}
 				<div className="relative">
 					<div ref={mapRef} style={{ height: `${height}px`, width: '100%' }} />
 				</div>
-
 				{/* LEGEND */}
 				<div className="flex flex-wrap gap-3 bg-gray-50 p-3 text-sm">
 					<div className="flex items-center gap-1">
 						<div className="h-4 w-4 rounded-full bg-black"></div>
-						<span>Tour Days</span>
+						<span>{t('Tour_Days')}</span>
 					</div>
 					<div className="flex items-center gap-1">
 						<div className="h-4 w-4 rounded-full bg-black"></div>
-						<span>Selected Day</span>
+						<span>{t('Selected_Day')}</span>
 					</div>
 					<div className="flex items-center gap-1">
 						<div className="h-1 w-8 bg-black"></div>
-						<span>Route</span>
+						<span>{t('Route')}</span>
 					</div>
 				</div>
 			</div>

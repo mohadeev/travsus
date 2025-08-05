@@ -1,0 +1,14 @@
+{
+  "file": "C:\\Users\\Usuario\\s\\travsus\\src\\shared\\ButtonPrimary.tsx",
+  "timestamp": "2025-08-02T11:37:18.579Z",
+  "hasTranslatableText": true,
+  "textCount": 1,
+  "texts": [
+    {
+      "type": "return_string",
+      "text": "ttnc-ButtonPrimary bg-primary text-neutral-50 hover:bg-primary-700 disabled:bg-opacity-70 ${className}",
+      "context": "return (\r\n\t\t<Button\r\n\t\t\tclassName={`ttnc-ButtonPrimary bg-primary text-neutral-50 hover:bg-primary-700 disabled:bg-opacity-70 ${className}`"
+    }
+  ],
+  "fileSize": 434
+}

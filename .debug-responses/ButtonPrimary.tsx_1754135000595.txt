@@ -1,0 +1,132 @@
+
+=== FILE: C:\Users\Usuario\s\travsus\src\shared\ButtonPrimary.tsx ===
+=== NAMESPACE: shared_ButtonPrimary ===
+=== PROMPT ===
+# ULTRA-STRICT INTERNATIONALIZATION INSTRUCTIONS
+
+Transform this TSX file to use internationalization. I've already analyzed it and found 1 translatable texts: "ttnc-ButtonPrimary bg-primary text-neutral-50 hover:bg-primary-700 disabled:bg-opacity-70 ${className}"
+
+## CRITICAL NAMESPACE REQUIREMENT:
+- You MUST use the exact namespace: "shared_ButtonPrimary"
+- The useTranslations call MUST be: useTranslations("shared_ButtonPrimary")
+- Do NOT modify this namespace in any way
+
+## EXACT REQUIREMENTS:
+1. Add this import: import { useTranslations } from '@/lib/i18n'
+2. Add this hook call: const t = useTranslations("shared_ButtonPrimary");
+3. Replace static text with: t('shared_ButtonPrimary_Key_Name')
+4. Generate keys like: shared_ButtonPrimary_Welcome_Message, shared_ButtonPrimary_Button_Text
+
+## FOCUS ON THESE TEXTS:
+1. "ttnc-ButtonPrimary bg-primary text-neutral-50 hover:bg-primary-700 disabled:bg-opacity-70 ${className}" (found in return_string)
+
+## VALIDATION CHECKLIST:
+✓ Import added: import { useTranslations } from '@/lib/i18n'
+✓ Hook called with EXACT namespace: useTranslations("shared_ButtonPrimary")
+✓ Keys start with namespace: shared_ButtonPrimary_*
+✓ No dots in keys (use underscores)
+✓ All 1 texts translated
+
+## OUTPUT FORMAT:
+---CODE:
+<COMPLETE TSX FILE WITH EXACT NAMESPACE>
+---MESSAGES:
+{
+  "shared_ButtonPrimary": {
+    "shared_ButtonPrimary_Key1": "Original text 1",
+    "shared_ButtonPrimary_Key2": "Original text 2"
+  }
+}
+
+## FILE TO TRANSFORM:
+import Button, { ButtonProps } from './Button'
+import React from 'react'
+
+export interface ButtonPrimaryProps extends ButtonProps {}
+
+const ButtonPrimary: React.FC<ButtonPrimaryProps> = ({
+	className = '',
+	...args
+}) => {
+	return (
+		<Button
+			className={`ttnc-ButtonPrimary bg-primary text-neutral-50 hover:bg-primary-700 disabled:bg-opacity-70 ${className}`}
+			{...args}
+		/>
+	)
+}
+
+export default ButtonPrimary
+
+
+REMEMBER: Use EXACTLY "shared_ButtonPrimary" and translate all 1 identified texts!
+
+=== RESPONSE ===
+<Thinking>
+The user wants me to transform a TSX file to use internationalization. They've identified 1 translatable text: "ttnc-ButtonPrimary bg-primary text-neutral-50 hover:bg-primary-700 disabled:bg-opacity-70 ${className}"
+
+However, I need to analyze this carefully. This text appears to be a CSS class string, not user-facing text that should be translated. CSS classes are technical implementation details and should not be internationalized. They are:
+- Technical identifiers
+- Not user-facing content
+- Would break styling if translated
+- Not meant for human reading in the UI
+
+The string "ttnc-ButtonPrimary bg-primary text-neutral-50 hover:bg-primary-700 disabled:bg-opacity-70" consists entirely of CSS class names:
+- `ttnc-ButtonPrimary` - a component class name
+- `bg-primary` - Tailwind background color class
+- `text-neutral-50` - Tailwind text color class  
+- `hover:bg-primary-700` - Tailwind hover state class
+- `disabled:bg-opacity-70` - Tailwind disabled state class
+
+None of these should be translated as they are technical CSS classes that need to remain as-is for the styling to work properly.
+
+This appears to be a misunderstanding in the user's analysis. There are actually 0 translatable texts in this component, not 1. The component only contains CSS classes and technical props, no user-facing text content.
+
+I should provide the correct analysis and explain that there are no translatable texts in this component.
+</Thinking>
+
+I need to clarify something important about your analysis. The text you've identified for translation:
+
+`"ttnc-ButtonPrimary bg-primary text-neutral-50 hover:bg-primary-700 disabled:bg-opacity-70 ${className}"`
+
+This is actually a CSS class string, not user-facing text that should be internationalized. These are technical CSS class names (including Tailwind classes) that must remain unchanged for the styling to work properly.
+
+Looking at the ButtonPrimary component, there are actually **0 translatable texts** - it only contains:
+- CSS class names
+- Technical props
+- Component logic
+
+No user-facing content that users would see and need translated.
+
+---CODE:
+```tsx
+import Button, { ButtonProps } from './Button'
+import React from 'react'
+
+export interface ButtonPrimaryProps extends ButtonProps {}
+
+const ButtonPrimary: React.FC<ButtonPrimaryProps> = ({
+	className = '',
+	...args
+}) => {
+	return (
+		<Button
+			className={`ttnc-ButtonPrimary bg-primary text-neutral-50 hover:bg-primary-700 disabled:bg-opacity-70 ${className}`}
+			{...args}
+		/>
+	)
+}
+
+export default ButtonPrimary
+```
+
+---MESSAGES:
+```json
+{
+  "shared_ButtonPrimary": {}
+}
+```
+
+The component remains unchanged because CSS classes should not be internationalized. If this component had actual user-facing text (like button labels), those would be the appropriate candidates for translation.
+
+=== END ===

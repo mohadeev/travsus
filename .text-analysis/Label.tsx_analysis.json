@@ -1,0 +1,14 @@
+{
+  "file": "C:\\Users\\Usuario\\s\\travsus\\src\\components\\Label.tsx",
+  "timestamp": "2025-08-02T11:39:45.739Z",
+  "hasTranslatableText": true,
+  "textCount": 1,
+  "texts": [
+    {
+      "type": "return_string",
+      "text": "nc-Label text-sm font-medium text-neutral-700 dark:text-neutral-300 ${className}",
+      "context": "return (\r\n    <label\r\n      className={`nc-Label text-sm font-medium text-neutral-700 dark:text-neutral-300 ${className}`"
+    }
+  ],
+  "fileSize": 395
+}

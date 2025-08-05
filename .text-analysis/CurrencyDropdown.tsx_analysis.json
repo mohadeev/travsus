@@ -1,0 +1,44 @@
+{
+  "file": "C:\\Users\\Usuario\\s\\travsus\\src\\app\\(client-components)\\(Header)\\CurrencyDropdown.tsx",
+  "timestamp": "2025-08-02T11:43:53.994Z",
+  "hasTranslatableText": true,
+  "textCount": 7,
+  "texts": [
+    {
+      "type": "jsx_attribute",
+      "text": "w-5 h-5 opacity-80",
+      "context": " className=\"w-5 h-5 opacity-80\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "ml-2 select-none",
+      "context": " className=\"ml-2 select-none\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "absolute z-10 w-screen max-w-[140px] px-4 mt-4 right-0 sm:px-0",
+      "context": " className=\"absolute z-10 w-screen max-w-[140px] px-4 mt-4 right-0 sm:px-0\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "overflow-hidden rounded-2xl shadow-lg ring-1 ring-black ring-opacity-5",
+      "context": " className=\"overflow-hidden rounded-2xl shadow-lg ring-1 ring-black ring-opacity-5\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "relative grid gap-7 bg-white dark:bg-neutral-800 p-7",
+      "context": " className=\"relative grid gap-7 bg-white dark:bg-neutral-800 p-7\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "w-[18px] h-[18px]",
+      "context": " className=\"w-[18px] h-[18px] \""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "ml-2 text-sm font-medium",
+      "context": " className=\"ml-2 text-sm font-medium \""
+    }
+  ],
+  "fileSize": 3660
+}

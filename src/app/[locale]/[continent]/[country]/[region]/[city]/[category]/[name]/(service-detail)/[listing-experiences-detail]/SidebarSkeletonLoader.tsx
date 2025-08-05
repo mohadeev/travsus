@@ -1,4 +1,8 @@
+import { useTranslations } from '@/lib/i18n';
+
 export default function SkeletonLoader() {
+	const t = useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SidebarSkeletonLoader");
+
 	return (
 		<div className="top-28">
 			{/* <div className="listingSectionSidebar__wrap rounded-xl bg-white p-4 shadow-xl"> */}

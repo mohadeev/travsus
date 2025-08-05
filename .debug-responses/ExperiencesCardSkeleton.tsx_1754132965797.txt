@@ -1,0 +1,164 @@
+
+=== FILE: C:\Users\Usuario\s\travsus\src\components\ExperiencesCardSkeleton.tsx ===
+=== NAMESPACE: components_ExperiencesCardSkeleton ===
+=== PROMPT ===
+# ULTRA-STRICT INTERNATIONALIZATION INSTRUCTIONS
+
+Transform this TSX file to use internationalization. Follow these rules EXACTLY:
+
+## CRITICAL NAMESPACE REQUIREMENT:
+- You MUST use the exact namespace: "components_ExperiencesCardSkeleton"
+- The useTranslations call MUST be: useTranslations("components_ExperiencesCardSkeleton")
+- Do NOT modify this namespace in any way
+- Do NOT use any other namespace
+
+## EXACT REQUIREMENTS:
+1. Add this import: import { useTranslations } from '@/lib/i18n'
+2. Add this hook call: const t = useTranslations("components_ExperiencesCardSkeleton");
+3. Replace static text with: t('components_ExperiencesCardSkeleton_Key_Name')
+4. Generate keys like: components_ExperiencesCardSkeleton_Welcome_Message, components_ExperiencesCardSkeleton_Button_Text
+
+## VALIDATION CHECKLIST:
+✓ Import added: import { useTranslations } from '@/lib/i18n'
+✓ Hook called with EXACT namespace: useTranslations("components_ExperiencesCardSkeleton")
+✓ Keys start with namespace: components_ExperiencesCardSkeleton_*
+✓ No dots in keys (use underscores)
+✓ Complete file transformation
+
+## EXAMPLE TRANSFORMATION:
+BEFORE:
+export default function MyComponent() {
+  return <div>Hello World</div>
+}
+
+AFTER:
+import { useTranslations } from '@/lib/i18n'
+
+export default function MyComponent() {
+  const t = useTranslations("components_ExperiencesCardSkeleton");
+  return <div>{t('components_ExperiencesCardSkeleton_Hello_World')}</div>
+}
+
+## OUTPUT FORMAT:
+---CODE:
+<COMPLETE TSX FILE WITH EXACT NAMESPACE>
+---MESSAGES:
+{
+  "components_ExperiencesCardSkeleton": {
+    "components_ExperiencesCardSkeleton_Key1": "Original text 1",
+    "components_ExperiencesCardSkeleton_Key2": "Original text 2"
+  }
+}
+
+## FILE TO TRANSFORM:
+// ExperiencesCardSkeleton.tsx
+
+import React from 'react';
+
+const ExperiencesCardSkeleton: React.FC<{ size?: 'default' | 'small' }> = ({ size = 'default' }) => {
+  return (
+    <div className={`nc-ExperiencesCardSkeleton group relative rounded-lg overflow-hidden`}>
+      {/* Skeleton for gallery slider */}
+      <div className={`skeleton-gallery ${size === 'default' ? 'aspect-w-3 aspect-h-3' : 'aspect-w-3 aspect-h-2'}`}>
+        {/* Placeholder for loading images */}
+        <div className="bg-gray-200 animate-pulse h-full w-full rounded-lg"></div>
+      </div>
+
+      {/* Skeleton for content */}
+      <div className={size === 'default' ? 'space-y-3 py-4' : 'space-y-1 p-3'}>
+        <div className="flex items-center space-x-2 skeleton-title">
+          <div className="bg-gray-200 animate-pulse h-4 w-1/2 rounded-lg"></div>
+        </div>
+        <div className="flex items-center space-x-2">
+          <div className="bg-gray-200 animate-pulse h-4 w-1/3 rounded-lg"></div>
+        </div>
+        {/* <div className="border-b border-neutral-100 dark:border-neutral-800" /> */}
+        <div className="flex items-center justify-between">
+          <div className="bg-gray-200 animate-pulse h-6 w-1/3 rounded-lg"></div>
+          <div className="bg-gray-200 animate-pulse h-6 w-1/5 rounded-lg"></div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ExperiencesCardSkeleton;
+
+
+REMEMBER: Use EXACTLY "components_ExperiencesCardSkeleton" - do not change it!
+
+=== RESPONSE ===
+<Thinking>
+The user wants me to transform a TSX file to use internationalization with very specific requirements. Let me analyze the file:
+
+1. This is a skeleton component for loading states - it doesn't actually contain any visible text that needs translation
+2. The component only has CSS classes, div elements, and structural markup
+3. There are some comments, but those are developer comments, not user-facing text
+
+Looking at the file more carefully:
+- `// ExperiencesCardSkeleton.tsx` - this is a file comment
+- `{/* Skeleton for gallery slider */}` - this is a developer comment
+- `{/* Placeholder for loading images */}` - this is a developer comment  
+- `{/* <div className="border-b border-neutral-100 dark:border-neutral-800" /> */}` - this is commented out code
+
+None of these are user-facing text that would need internationalization. This is purely a skeleton/loading component with no displayable text content.
+
+However, the user has given very strict instructions to transform the file and follow the exact format. They want me to:
+1. Add the import
+2. Add the hook call with the exact namespace
+3. Replace static text with translation calls
+4. Generate the messages object
+
+Since there's no actual user-facing text to translate in this skeleton component, I should still follow the format but note that there are no translatable strings. I'll add the required import and hook call as instructed, but there won't be any actual translation calls since there's no user-facing text.
+
+Wait, let me re-read the instructions. The user is very emphatic about following the format EXACTLY and transforming the file completely. They want me to add the import and hook call regardless. Since there are no translatable strings, the messages object will be empty for this namespace.
+</Thinking>
+
+---CODE:
+```tsx
+// ExperiencesCardSkeleton.tsx
+
+import React from 'react';
+import { useTranslations } from '@/lib/i18n';
+
+const ExperiencesCardSkeleton: React.FC<{ size?: 'default' | 'small' }> = ({ size = 'default' }) => {
+  const t = useTranslations("components_ExperiencesCardSkeleton");
+  
+  return (
+    <div className={`nc-ExperiencesCardSkeleton group relative rounded-lg overflow-hidden`}>
+      {/* Skeleton for gallery slider */}
+      <div className={`skeleton-gallery ${size === 'default' ? 'aspect-w-3 aspect-h-3' : 'aspect-w-3 aspect-h-2'}`}>
+        {/* Placeholder for loading images */}
+        <div className="bg-gray-200 animate-pulse h-full w-full rounded-lg"></div>
+      </div>
+
+      {/* Skeleton for content */}
+      <div className={size === 'default' ? 'space-y-3 py-4' : 'space-y-1 p-3'}>
+        <div className="flex items-center space-x-2 skeleton-title">
+          <div className="bg-gray-200 animate-pulse h-4 w-1/2 rounded-lg"></div>
+        </div>
+        <div className="flex items-center space-x-2">
+          <div className="bg-gray-200 animate-pulse h-4 w-1/3 rounded-lg"></div>
+        </div>
+        {/* <div className="border-b border-neutral-100 dark:border-neutral-800" /> */}
+        <div className="flex items-center justify-between">
+          <div className="bg-gray-200 animate-pulse h-6 w-1/3 rounded-lg"></div>
+          <div className="bg-gray-200 animate-pulse h-6 w-1/5 rounded-lg"></div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ExperiencesCardSkeleton;
+```
+
+---MESSAGES:
+```json
+{
+  "components_ExperiencesCardSkeleton": {
+  }
+}
+```
+
+=== END ===

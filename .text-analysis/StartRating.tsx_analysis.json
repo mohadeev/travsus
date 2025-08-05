@@ -1,0 +1,34 @@
+{
+  "file": "C:\\Users\\Usuario\\s\\travsus\\src\\components\\StartRating.tsx",
+  "timestamp": "2025-08-02T11:36:28.817Z",
+  "hasTranslatableText": true,
+  "textCount": 5,
+  "texts": [
+    {
+      "type": "jsx_attribute",
+      "text": "pb-[2px]",
+      "context": " className=\"pb-[2px]\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "w-[18px] h-[18px] text-orange-500",
+      "context": " className=\"w-[18px] h-[18px] text-orange-500\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "font-medium",
+      "context": " className=\"font-medium \""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "text-neutral-500 dark:text-neutral-400",
+      "context": " className=\"text-neutral-500 dark:text-neutral-400\""
+    },
+    {
+      "type": "return_string",
+      "text": "nc-StartRating flex items-center space-x-1 text-sm  ${className}",
+      "context": "return (\r\n    <div\r\n      className={`nc-StartRating flex items-center space-x-1 text-sm  ${className}`"
+    }
+  ],
+  "fileSize": 786
+}

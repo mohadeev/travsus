@@ -1,4 +1,6 @@
 'use client'
+import { useTranslations } from '@/lib/i18n'
+import type React from 'react'
 
 import { useState, useEffect } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
@@ -38,6 +40,7 @@ import { Comment } from '@/components/forum/comment'
 import { useToast } from '@/components/ui/use-toast'
 
 export default function ForumPage() {
+	const t = useTranslations('Jan03_Forum_x8k2')
 	const [activePage, setActivePage] = useState<'main' | 'category' | 'post'>(
 		'main',
 	)
@@ -49,55 +52,54 @@ export default function ForumPage() {
 	const [categories, setCategories] = useState([
 		{
 			icon: Globe,
-			name: 'General Travel',
-			description: 'General travel discussions and tips',
+			name: t('General_Travel'),
+			description: t('General_Travel_Description'),
 			posts: 0,
 			color: 'text-blue-500',
 		},
 		{
 			icon: Mountain,
-			name: 'Adventure Travel',
-			description: 'Hiking, climbing, and outdoor adventures',
+			name: t('Adventure_Travel'),
+			description: t('Adventure_Travel_Description'),
 			posts: 0,
 			color: 'text-green-500',
 		},
 		{
 			icon: Umbrella,
-			name: 'Beach Destinations',
-			description: 'Beach holidays and coastal getaways',
+			name: t('Beach_Destinations'),
+			description: t('Beach_Destinations_Description'),
 			posts: 0,
 			color: 'text-yellow-500',
 		},
 		{
 			icon: Plane,
-			name: 'Air Travel',
-			description: 'Flight experiences and airline reviews',
+			name: t('Air_Travel'),
+			description: t('Air_Travel_Description'),
 			posts: 0,
 			color: 'text-purple-500',
 		},
 		{
 			icon: Tent,
-			name: 'Accommodation',
-			description: 'Hotels, hostels, and places to stay',
+			name: t('Accommodation'),
+			description: t('Accommodation_Description'),
 			posts: 0,
 			color: 'text-red-500',
 		},
 		{
 			icon: Map,
-			name: 'Trip Planning',
-			description: 'Itineraries and travel planning help',
+			name: t('Trip_Planning'),
+			description: t('Trip_Planning_Description'),
 			posts: 0,
 			color: 'text-indigo-500',
 		},
 		{
 			icon: Compass,
-			name: 'Travel Guides',
-			description: 'Destination guides and recommendations',
+			name: t('Travel_Guides'),
+			description: t('Travel_Guides_Description'),
 			posts: 0,
 			color: 'text-orange-500',
 		},
 	])
-
 	const user = useSelector((state: any) => state.userReducer.userData)
 	const isLoggedIn = !!user
 	const router = useRouter()
@@ -118,7 +120,6 @@ export default function ForumPage() {
 				console.error('Error fetching category counts:', result.error)
 			}
 		}
-
 		fetchCategoryCounts()
 	}, [])
 
@@ -185,8 +186,8 @@ export default function ForumPage() {
 				onClose()
 			} else {
 				toast({
-					title: 'Error',
-					description: 'Failed to create post. Please try again.',
+					title: t('Error_Title'),
+					description: t('Failed_Create_Post'),
 					variant: 'destructive',
 				})
 			}
@@ -195,14 +196,16 @@ export default function ForumPage() {
 		return (
 			<div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4">
 				<div className="w-full max-w-2xl rounded-lg bg-white p-6">
-					<h2 className="mb-4 text-2xl font-bold">Create New Discussion</h2>
+					<h2 className="mb-4 text-2xl font-bold">
+						{t('Create_New_Discussion')}
+					</h2>
 					<form onSubmit={handleSubmit} className="space-y-4">
 						<div>
 							<label
 								htmlFor="title"
 								className="block text-sm font-medium text-gray-700"
 							>
-								Title
+								{t('Title_Label')}
 							</label>
 							<Input
 								id="title"
@@ -210,7 +213,7 @@ export default function ForumPage() {
 								onChange={(e) => setTitle(e.target.value)}
 								required
 								className="mt-1"
-								placeholder="Enter the title of your discussion"
+								placeholder={t('Title_Placeholder')}
 							/>
 						</div>
 						<div>
@@ -218,7 +221,7 @@ export default function ForumPage() {
 								htmlFor="content"
 								className="block text-sm font-medium text-gray-700"
 							>
-								Content
+								{t('Content_Label')}
 							</label>
 							<Textarea
 								id="content"
@@ -227,7 +230,7 @@ export default function ForumPage() {
 								required
 								className="mt-1"
 								rows={5}
-								placeholder="Write the content of your discussion here"
+								placeholder={t('Content_Placeholder')}
 							/>
 						</div>
 						<div>
@@ -235,11 +238,11 @@ export default function ForumPage() {
 								htmlFor="category"
 								className="block text-sm font-medium text-gray-700"
 							>
-								Category
+								{t('Category_Label')}
 							</label>
 							<Select value={category} onValueChange={setCategory}>
 								<SelectTrigger className="w-full">
-									<SelectValue placeholder="Select a category" />
+									<SelectValue placeholder={t('Select_Category')} />
 								</SelectTrigger>
 								<SelectContent className="bg-white">
 									{categories.map((cat) => (
@@ -255,21 +258,21 @@ export default function ForumPage() {
 								htmlFor="tags"
 								className="block text-sm font-medium text-gray-700"
 							>
-								Tags (comma-separated)
+								{t('Tags_Label')}
 							</label>
 							<Input
 								id="tags"
 								value={tags}
 								onChange={(e) => setTags(e.target.value)}
 								className="mt-1"
-								placeholder="Enter tags separated by commas (e.g., travel, adventure, tips)"
+								placeholder={t('Tags_Placeholder')}
 							/>
 						</div>
 						<div className="flex justify-end space-x-2">
 							<Button type="button" variant="outline" onClick={onClose}>
-								Cancel
+								{t('Cancel_Button')}
 							</Button>
-							<Button type="submit">Create Post</Button>
+							<Button type="submit">{t('Create_Post_Button')}</Button>
 						</div>
 					</form>
 				</div>
@@ -320,13 +323,12 @@ export default function ForumPage() {
 				}
 
 				const result = await addComment(formData)
-
 				if (result.success) {
 					onCommentAdded(result.comment)
 					setContent('')
 					toast({
-						title: 'Success',
-						description: 'Comment added successfully.',
+						title: t('Success_Title'),
+						description: t('Comment_Added_Success'),
 					})
 				} else {
 					throw new Error(result.error || 'Failed to add comment')
@@ -334,8 +336,8 @@ export default function ForumPage() {
 			} catch (error) {
 				console.error('Error adding comment:', error)
 				toast({
-					title: 'Error',
-					description: 'Failed to add comment. Please try again.',
+					title: t('Error_Title'),
+					description: t('Failed_Add_Comment'),
 					variant: 'destructive',
 				})
 				// Remove the optimistic comment
@@ -350,11 +352,13 @@ export default function ForumPage() {
 				<Textarea
 					value={content}
 					onChange={(e) => setContent(e.target.value)}
-					placeholder="Add a comment..."
+					placeholder={t('Add_Comment_Placeholder')}
 					className="mb-2 w-full"
 				/>
 				<Button type="submit" disabled={isSubmitting}>
-					{isSubmitting ? 'Adding Comment...' : 'Add Comment'}
+					{isSubmitting
+						? t('Adding_Comment_Progress')
+						: t('Add_Comment_Button')}
 				</Button>
 			</form>
 		)
@@ -368,7 +372,7 @@ export default function ForumPage() {
 						<div className="relative">
 							<Search className="absolute left-2.5 top-2.5 h-4 w-4 text-gray-500" />
 							<Input
-								placeholder="Search discussions..."
+								placeholder={t('Search_Discussions')}
 								className="h-9 w-full pl-9 text-sm"
 							/>
 						</div>
@@ -377,20 +381,20 @@ export default function ForumPage() {
 						{isLoggedIn ? (
 							<Button
 								variant="outline"
-								className="h-9 px-3 text-sm"
+								className="h-9 bg-transparent px-3 text-sm"
 								onClick={() => setIsCreatingPost(true)}
 							>
-								Start New Discussion
+								{t('Start_New_Discussion')}
 							</Button>
 						) : (
 							<Button
 								variant="outline"
-								className="h-9 px-3 text-sm"
+								className="h-9 bg-transparent px-3 text-sm"
 								onClick={() => {
 									/* Add login logic here */
 								}}
 							>
-								Login
+								{t('Login_Button')}
 							</Button>
 						)}
 					</div>
@@ -421,7 +425,10 @@ export default function ForumPage() {
 								<h3 className="font-semibold">{category.name}</h3>
 								<p className="text-sm text-gray-500">{category.description}</p>
 								<p className="text-sm text-gray-400">
-									{category.posts} post{category.posts !== 1 ? 's' : ''}
+									{category.posts}{' '}
+									{category.posts !== 1
+										? t('Posts_Plural')
+										: t('Post_Singular')}
 								</p>
 							</div>
 						</div>
@@ -434,9 +441,9 @@ export default function ForumPage() {
 	const RecentPosts = ({ categoryFilter = '' }) => (
 		<div className="space-y-4">
 			{isLoading ? (
-				<p>Loading recent posts...</p>
+				<p>{t('Loading_Recent_Posts')}</p>
 			) : recentPosts.length === 0 ? (
-				<p>No recent posts found.</p>
+				<p>{t('No_Recent_Posts')}</p>
 			) : (
 				recentPosts
 					.filter((post) => !categoryFilter || post.category === categoryFilter)
@@ -454,7 +461,9 @@ export default function ForumPage() {
 										<Avatar>
 											{post.author.profileImage?.url ? (
 												<AvatarImage
-													src={post.author.profileImage.url}
+													src={
+														post.author.profileImage.url || '/placeholder.svg'
+													}
 													alt={post.author.username || 'User'}
 													className="object-cover"
 												/>
@@ -484,8 +493,10 @@ export default function ForumPage() {
 												))}
 											</div>
 											<p className="mt-2 text-sm text-gray-500">
-												{post._count.comments} comment
-												{post._count.comments !== 1 ? 's' : ''}
+												{post._count.comments}{' '}
+												{post._count.comments !== 1
+													? t('Comments_Plural')
+													: t('Comment_Singular')}
 											</p>
 										</div>
 									</div>
@@ -505,21 +516,18 @@ export default function ForumPage() {
 	const MainPage = () => (
 		<div className="space-y-8">
 			<div>
-				<h1 className="text-3xl font-bold">Travel Forum</h1>
-				<p className="mt-2 text-gray-600">
-					Join the conversation with fellow travelers and share your experiences
-				</p>
+				<h1 className="text-3xl font-bold">{t('Travel_Forum_Title')}</h1>
+				<p className="mt-2 text-gray-600">{t('Travel_Forum_Description')}</p>
 			</div>
-
 			<div>
-				<h2 className="mb-4 text-2xl font-semibold">Categories</h2>
+				<h2 className="mb-4 text-2xl font-semibold">{t('Categories_Title')}</h2>
 				<ForumCategories />
 			</div>
-
 			<Separator />
-
 			<div>
-				<h2 className="mb-4 text-2xl font-semibold">Recent Discussions</h2>
+				<h2 className="mb-4 text-2xl font-semibold">
+					{t('Recent_Discussions_Title')}
+				</h2>
 				<RecentPosts />
 			</div>
 		</div>
@@ -530,21 +538,21 @@ export default function ForumPage() {
 			<div className="flex items-center gap-4">
 				<Button
 					variant="outline"
-					className="h-9 w-auto px-3 text-sm"
+					className="h-9 w-auto bg-transparent px-3 text-sm"
 					onClick={() => setActivePage('main')}
 				>
 					<ChevronLeft className="mr-1 h-4 w-4" />
-					Back to Travel Guides
+					{t('Back_To_Travel_Guides')}
 				</Button>
 			</div>
-
 			<div>
 				<h1 className="text-3xl font-bold">{activeCategory}</h1>
 				<p className="mt-2 text-gray-600">
-					Discussions and posts related to {activeCategory.toLowerCase()}
+					{t('Category_Description', {
+						category: activeCategory.toLowerCase(),
+					})}
 				</p>
 			</div>
-
 			<RecentPosts categoryFilter={activeCategory} />
 		</div>
 	)
@@ -554,7 +562,6 @@ export default function ForumPage() {
 
 		const handleCommentAdded = (newComment: any) => {
 			if (!newComment) return
-
 			setActivePost((prevPost: any) => {
 				const updatedComments = [...prevPost.comments]
 				if (newComment.parentId) {
@@ -586,13 +593,13 @@ export default function ForumPage() {
 					comments: prevPost.comments.filter((c: any) => c.id !== commentId),
 				}))
 				toast({
-					title: 'Comment removed',
-					description: 'The comment has been successfully removed.',
+					title: t('Comment_Removed_Title'),
+					description: t('Comment_Removed_Success'),
 				})
 			} else {
 				toast({
-					title: 'Error',
-					description: 'Failed to remove comment. Please try again.',
+					title: t('Error_Title'),
+					description: t('Failed_Remove_Comment'),
 					variant: 'destructive',
 				})
 			}
@@ -612,24 +619,23 @@ export default function ForumPage() {
 				<div>
 					<Button
 						variant="outline"
-						className="h-9 w-auto px-3 text-sm"
+						className="h-9 w-auto bg-transparent px-3 text-sm"
 						onClick={() => {
 							setActivePage('main')
 							router.push('/forum')
 						}}
 					>
 						<ChevronLeft className="mr-1 h-4 w-4" />
-						Back to Forum
+						{t('Back_To_Forum')}
 					</Button>
 				</div>
-
 				<div className="rounded-lg bg-white p-6 shadow-md">
 					<h1 className="mb-4 text-3xl font-bold">{activePost.title}</h1>
 					<div className="mb-4 flex items-center space-x-4">
 						<Avatar>
 							{activePost.author.profileImage?.url ? (
 								<AvatarImage
-									src={activePost.author.profileImage.url}
+									src={activePost.author.profileImage.url || '/placeholder.svg'}
 									alt={activePost.author.username || 'User'}
 									className="object-cover"
 								/>
@@ -645,10 +651,10 @@ export default function ForumPage() {
 							<p className="font-semibold">
 								{activePost.author.accountData?.firstname ||
 									activePost.author.username ||
-									'Anonymous'}
+									t('Anonymous_User')}
 							</p>
 							<p className="text-sm text-gray-500">
-								Posted{' '}
+								{t('Posted_Time')}{' '}
 								{formatDistanceToNow(new Date(activePost.createdAt), {
 									addSuffix: true,
 								})}
@@ -667,10 +673,9 @@ export default function ForumPage() {
 						))}
 					</div>
 				</div>
-
 				<div className="rounded-lg bg-white p-6 shadow-md">
 					<h2 className="mb-4 text-xl font-semibold">
-						Comments ({activePost.comments.length})
+						{t('Comments_Count', { count: activePost.comments.length })}
 					</h2>
 					{activePost.comments && activePost.comments.length > 0 ? (
 						<div className="space-y-4">
@@ -694,8 +699,8 @@ export default function ForumPage() {
 						</div>
 					) : (
 						<p className="text-gray-600">
-							No comments yet.{' '}
-							{isLoggedIn ? 'Be the first to comment!' : 'Login to comment.'}
+							{t('No_Comments_Yet')}{' '}
+							{isLoggedIn ? t('Be_First_Comment') : t('Login_To_Comment')}
 						</p>
 					)}
 					{isLoggedIn && (
@@ -714,7 +719,7 @@ export default function ForumPage() {
 			<ForumHeader />
 			<main className="mx-auto max-w-4xl px-4 py-8">
 				{isLoading ? (
-					<p>Loading...</p>
+					<p>{t('Loading_Text')}</p>
 				) : (
 					<>
 						{activePage === 'main' && <MainPage />}

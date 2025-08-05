@@ -1,6 +1,7 @@
 // import { cn } from "@/lib/utils"; // Optional if you're using a utility function for conditional classes
 
 import { cva } from 'class-variance-authority'
+import { useTranslations } from '@/lib/i18n'
 import Spinner from './Spinner'
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -14,6 +15,8 @@ export function Button({
 	children,
 	...props
 }: ButtonProps) {
+	const t = useTranslations("components_ui_button");
+	
 	return (
 		<button
 			className={`flex items-center justify-center rounded-[40px] bg-black px-4 py-3 font-semibold text-white shadow-lg transition duration-200 hover:bg-gray-800 focus:outline-none ${className}`}

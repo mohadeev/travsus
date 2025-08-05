@@ -9,6 +9,12 @@ import DatePicker from 'react-datepicker'
 import ClearDataButton from '@/app/(client-components)/(HeroSearchForm)/ClearDataButton'
 import moment from 'moment'
 import styles from './StayDatesRangeInput.module.css'
+import { useTranslations } from '@/lib/i18n'
+import { useLocale } from 'next-intl'
+import { registerLocale, setDefaultLocale } from 'react-datepicker'
+
+import ja from 'date-fns/locale/ja'
+import locales from '@/lib/dateFnsLocales'
 
 export interface StayDatesRangeInputProps {
 	className?: string
@@ -19,12 +25,22 @@ export interface StayDatesRangeInputProps {
 }
 
 const StayDatesRangeInput: FC<StayDatesRangeInputProps> = ({
-	className = 'flex-1',
+	className = t(
+		'app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_StayDatesRangeInput_Flex_One',
+	),
 	onChange,
 	duration = 3,
 	value,
 	isFlashing = false,
 }) => {
+	const t = useTranslations(
+		'app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_StayDatesRangeInput',
+	)
+	const locale = useLocale()
+	// console.log('locale:')
+	moment.locale(locale) // ar-ma
+	registerLocale(locale, locales[locale])
+
 	const [startDate, setStartDate] = useState<Date | null>(
 		new Date(moment().format('L')),
 	)
@@ -53,27 +69,56 @@ const StayDatesRangeInput: FC<StayDatesRangeInputProps> = ({
 	const renderInput = () => {
 		return (
 			<div
-				className={`relative flex w-full flex-1 items-center gap-1 focus:outline-none ${styles.inputWrapper} ${isFlashing ? styles.flashing : ''}`}
+				className={
+					t(
+						'app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_StayDatesRangeInput_Input_Wrapper_Classes',
+					) + `${styles.inputWrapper} ${isFlashing ? styles.flashing : ''}`
+				}
 			>
-				<div className="text-neutral-300 dark:text-neutral-400">
-					<CalendarIcon className="h-5 w-5 lg:h-7 lg:w-7" />
+				<div
+					className={t(
+						'app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_StayDatesRangeInput_Icon_Text_Classes',
+					)}
+				>
+					<CalendarIcon
+						className={t(
+							'app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_StayDatesRangeInput_Icon_Size_Classes',
+						)}
+					/>
 				</div>
-				<div className="flex-grow text-left">
-					<span className="block font-semibold xl:text-lg">
-						{startDate?.toLocaleDateString('en-US', {
+				<div
+					className={t(
+						'app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_StayDatesRangeInput_Content_Layout_Classes',
+					)}
+				>
+					<span
+						className={t(
+							'app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_StayDatesRangeInput_Date_Display_Classes',
+						)}
+					>
+						{startDate?.toLocaleDateString(locale, {
 							month: 'short',
 							day: '2-digit',
-						}) || 'Add dates'}
+						}) ||
+							t(
+								'app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_StayDatesRangeInput_Add_Dates',
+							)}
 						{endDate
 							? ' - ' +
-								endDate?.toLocaleDateString('en-US', {
+								endDate?.toLocaleDateString(locale, {
 									month: 'short',
 									day: '2-digit',
 								})
 							: ''}
 					</span>
-					<span className="mt-1 block text-sm font-light leading-none text-neutral-400">
-						{'Check in 4 - Check out'}
+					<span
+						className={t(
+							'app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_StayDatesRangeInput_Subtitle_Classes',
+						)}
+					>
+						{t(
+							'app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_StayDatesRangeInput_Check_In_Out',
+						)}
 					</span>
 				</div>
 			</div>
@@ -81,7 +126,13 @@ const StayDatesRangeInput: FC<StayDatesRangeInputProps> = ({
 	}
 
 	return (
-		<Popover className={`StayDatesRangeInput relative z-10 flex ${className}`}>
+		<Popover
+			className={
+				t(
+					'app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_StayDatesRangeInput_Container_Classes',
+				) + ` ${className}`
+			}
+		>
 			{({ open }) => (
 				<>
 					<Popover.Button
@@ -104,9 +155,18 @@ const StayDatesRangeInput: FC<StayDatesRangeInputProps> = ({
 						leaveFrom="opacity-100 translate-y-0"
 						leaveTo="opacity-0 translate-y-1"
 					>
-						<Popover.Panel className="absolute left-auto right-0 top-full z-10 mt-3 w-screen max-w-sm px-4 sm:px-0 lg:max-w-3xl xl:-right-10">
-							<div className="overflow-hidden rounded-3xl bg-white p-8 shadow-lg ring-1 ring-black ring-opacity-5 dark:bg-neutral-800">
+						<Popover.Panel
+							className={t(
+								'app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_StayDatesRangeInput_Panel_Position_Classes',
+							)}
+						>
+							<div
+								className={t(
+									'app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_StayDatesRangeInput_Panel_Style_Classes',
+								)}
+							>
 								<DatePicker
+									locale={locale}
 									selected={startDate}
 									onChange={(dates) => {
 										console.log('dates-dates:', dates)

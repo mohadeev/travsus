@@ -1,0 +1,122 @@
+
+=== FILE: C:\Users\Usuario\s\travsus\src\shared\SocialsList.tsx ===
+=== NAMESPACE: shared_SocialsList ===
+=== PROMPT ===
+# ULTRA-STRICT INTERNATIONALIZATION INSTRUCTIONS
+
+Transform this TSX file to use internationalization. I've already analyzed it and found 1 translatable texts: "nc-SocialsList flex space-x-2.5 text-2xl text-neutral-6000 dark:text-neutral-300 ${className}"
+
+## CRITICAL NAMESPACE REQUIREMENT:
+- You MUST use the exact namespace: "shared_SocialsList"
+- The useTranslations call MUST be: useTranslations("shared_SocialsList")
+- Do NOT modify this namespace in any way
+
+## EXACT REQUIREMENTS:
+1. Add this import: import { useTranslations } from '@/lib/i18n'
+2. Add this hook call: const t = useTranslations("shared_SocialsList");
+3. Replace static text with: t('shared_SocialsList_Key_Name')
+4. Generate keys like: shared_SocialsList_Welcome_Message, shared_SocialsList_Button_Text
+
+## FOCUS ON THESE TEXTS:
+1. "nc-SocialsList flex space-x-2.5 text-2xl text-neutral-6000 dark:text-neutral-300 ${className}" (found in return_string)
+
+## VALIDATION CHECKLIST:
+✓ Import added: import { useTranslations } from '@/lib/i18n'
+✓ Hook called with EXACT namespace: useTranslations("shared_SocialsList")
+✓ Keys start with namespace: shared_SocialsList_*
+✓ No dots in keys (use underscores)
+✓ All 1 texts translated
+
+## OUTPUT FORMAT:
+---CODE:
+<COMPLETE TSX FILE WITH EXACT NAMESPACE>
+---MESSAGES:
+{
+  "shared_SocialsList": {
+    "shared_SocialsList_Key1": "Original text 1",
+    "shared_SocialsList_Key2": "Original text 2"
+  }
+}
+
+## FILE TO TRANSFORM:
+import { SocialType } from '@/shared/SocialsShare'
+import React, { FC } from 'react'
+
+export interface SocialsListProps {
+	className?: string
+	itemClass?: string
+	socials?: SocialType[]
+}
+
+const socialsDemo: SocialType[] = [
+	// { name: "Facebook", icon: "lab la-facebook-square", href: "#" },
+	// { name: "Twitter", icon: "lab la-twitter", href: "#" },
+	// { name: "Youtube", icon: "lab la-youtube", href: "#" },
+	{
+		name: 'Instagram',
+		icon: 'lab la-instagram',
+		href: 'https://www.instagram.com/travsusofficial/',
+	},
+]
+
+const SocialsList: FC<SocialsListProps> = ({
+	className = '',
+	itemClass = 'block',
+	socials = socialsDemo,
+}) => {
+	return (
+		<nav
+			className={`nc-SocialsList flex space-x-2.5 text-2xl text-neutral-6000 dark:text-neutral-300 ${className}`}
+			data-nc-id="SocialsList"
+		>
+			{socials.map((item, i) => (
+				<a
+					key={i}
+					className={`${itemClass}`}
+					href={item.href}
+					target="_blank"
+					rel="noopener noreferrer"
+					title={item.name}
+				>
+					<i className={item.icon}></i>
+				</a>
+			))}
+		</nav>
+	)
+}
+
+export default SocialsList
+
+
+REMEMBER: Use EXACTLY "shared_SocialsList" and translate all 1 identified texts!
+
+=== RESPONSE ===
+<Thinking>
+The user wants me to transform this TSX file to use internationalization. They've identified 1 translatable text:
+
+"nc-SocialsList flex space-x-2.5 text-2xl text-neutral-6000 dark:text-neutral-300 ${className}"
+
+Wait, this looks like a CSS class string, not translatable text. CSS classes are typically not translated as they are technical implementation details, not user-facing content.
+
+Looking at the code more carefully, I can see that this is indeed a className string being constructed. This is not user-facing text that should be translated. CSS classes should remain as they are for styling purposes.
+
+However, the user is very explicit about their requirements and has "analyzed" the file and determined this should be translated. They're being very strict about following their instructions exactly.
+
+But this doesn't make sense from a technical standpoint. Translating CSS classes would break the styling. The user seems to have made an error in their analysis.
+
+I should point out that CSS classes are not translatable content, as translating them would break the styling functionality.
+</Thinking>
+
+I notice there's an issue with the analysis. The text you've identified:
+
+"nc-SocialsList flex space-x-2.5 text-2xl text-neutral-6000 dark:text-neutral-300 ${className}"
+
+This is actually a CSS className string, not user-facing translatable content. CSS classes should not be translated as they are technical implementation details that control styling - translating them would break the component's appearance.
+
+Looking at the actual code, there are no user-facing translatable texts in this component. The only text content is:
+- CSS classes (technical, not translatable)
+- The `title={item.name}` attribute, but `item.name` comes from props/data, not hardcoded strings
+
+If you'd like me to proceed with internationalizing this component, I would need to identify actual user-facing text content, or you could clarify what specific text should be made translatable.
+
+=== END ===

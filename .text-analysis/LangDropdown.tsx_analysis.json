@@ -1,0 +1,79 @@
+{
+  "file": "C:\\Users\\Usuario\\s\\travsus\\src\\app\\(client-components)\\(Header)\\LangDropdown.tsx",
+  "timestamp": "2025-08-02T11:45:12.801Z",
+  "hasTranslatableText": true,
+  "textCount": 14,
+  "texts": [
+    {
+      "type": "jsx_attribute",
+      "text": "hidden md:flex",
+      "context": "\r\n  className = \"hidden md:flex\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "grid gap-8 lg:grid-cols-2",
+      "context": " className=\"grid gap-8 lg:grid-cols-2\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "text-sm font-medium",
+      "context": " className=\"text-sm font-medium \""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "text-xs text-gray-500 dark:text-gray-400",
+      "context": " className=\"text-xs text-gray-500 dark:text-gray-400\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "grid gap-7 lg:grid-cols-2",
+      "context": " className=\"grid gap-7 lg:grid-cols-2\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "w-[18px] h-[18px]",
+      "context": " className=\"w-[18px] h-[18px] \""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "ml-2 text-sm font-medium",
+      "context": " className=\"ml-2 text-sm font-medium \""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "w-5 h-5 opacity-80",
+      "context": " className=\"w-5 h-5 opacity-80\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "mx-1",
+      "context": " className=\"mx-1\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "p-3 sm:p-6 rounded-2xl bg-white dark:bg-neutral-800 shadow-lg ring-1 ring-black ring-opacity-5",
+      "context": " className=\"p-3 sm:p-6 rounded-2xl bg-white dark:bg-neutral-800 shadow-lg ring-1 ring-black ring-opacity-5\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "flex space-x-1 rounded-full bg-gray-100 dark:bg-slate-700 p-1",
+      "context": " className=\"flex space-x-1 rounded-full bg-gray-100 dark:bg-slate-700 p-1\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "mt-5",
+      "context": " className=\"mt-5\""
+    },
+    {
+      "type": "return_string",
+      "text": "LangDropdown relative ${className}",
+      "context": "return (\r\n    <>\r\n      <Popover className={`LangDropdown relative ${className}`"
+    },
+    {
+      "type": "object_property",
+      "text": "United State",
+      "context": "description: \"United State\""
+    }
+  ],
+  "fileSize": 6376
+}

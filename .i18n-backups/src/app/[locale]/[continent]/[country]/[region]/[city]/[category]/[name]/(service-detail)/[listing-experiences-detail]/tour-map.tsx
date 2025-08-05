@@ -40,7 +40,7 @@ const MapLoading = ({ height = 500 }: { height?: number }) => (
 				className="flex items-center gap-1 rounded-full bg-black px-3 py-1.5 text-xs font-medium text-white shadow-sm"
 			>
 				<Navigation size={14} />
-				<span>Directions</span>
+				<span>Directions sdvsdvsdv</span>
 			</button>
 		</div>
 		<div className="relative">
@@ -384,7 +384,7 @@ const InnerTourMap = forwardRef<
 						className="flex items-center gap-1 rounded-full bg-black px-3 py-1.5 text-xs font-medium text-white shadow-sm transition-colors hover:bg-gray-800"
 					>
 						<Navigation size={14} />
-						<span>Directions</span>
+						<span>Directions fvsvsdvsdv</span>
 					</button>
 				</div>
 

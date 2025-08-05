@@ -1,5 +1,6 @@
 'use client'
 
+import { useTranslations } from '@/lib/i18n'
 import Button, { ButtonProps } from './Button'
 import React from 'react'
 
@@ -9,6 +10,8 @@ const ButtonSecondary: React.FC<ButtonSecondaryProps> = ({
 	className = ' ',
 	...args
 }) => {
+	const t = useTranslations("shared_ButtonSecondary");
+	
 	return (
 		<Button
 			className={`ttnc-ButtonSecondary border border-black bg-white font-medium text-neutral-700 hover:bg-neutral-100 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-300 dark:hover:bg-neutral-800 ${className}`}

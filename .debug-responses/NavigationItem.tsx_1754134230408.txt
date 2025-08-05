@@ -1,0 +1,670 @@
+
+=== FILE: C:\Users\Usuario\s\travsus\src\shared\Navigation\NavigationItem.tsx ===
+=== NAMESPACE: shared_Navigation_NavigationItem ===
+=== PROMPT ===
+# ULTRA-STRICT INTERNATIONALIZATION INSTRUCTIONS
+
+Transform this TSX file to use internationalization. Follow these rules EXACTLY:
+
+## CRITICAL NAMESPACE REQUIREMENT:
+- You MUST use the exact namespace: "shared_Navigation_NavigationItem"
+- The useTranslations call MUST be: useTranslations("shared_Navigation_NavigationItem")
+- Do NOT modify this namespace in any way
+- Do NOT use any other namespace
+
+## EXACT REQUIREMENTS:
+1. Add this import: import { useTranslations } from '@/lib/i18n'
+2. Add this hook call: const t = useTranslations("shared_Navigation_NavigationItem");
+3. Replace static text with: t('shared_Navigation_NavigationItem_Key_Name')
+4. Generate keys like: shared_Navigation_NavigationItem_Welcome_Message, shared_Navigation_NavigationItem_Button_Text
+
+## VALIDATION CHECKLIST:
+✓ Import added: import { useTranslations } from '@/lib/i18n'
+✓ Hook called with EXACT namespace: useTranslations("shared_Navigation_NavigationItem")
+✓ Keys start with namespace: shared_Navigation_NavigationItem_*
+✓ No dots in keys (use underscores)
+✓ Complete file transformation
+
+## EXAMPLE TRANSFORMATION:
+BEFORE:
+export default function MyComponent() {
+  return <div>Hello World</div>
+}
+
+AFTER:
+import { useTranslations } from '@/lib/i18n'
+
+export default function MyComponent() {
+  const t = useTranslations("shared_Navigation_NavigationItem");
+  return <div>{t('shared_Navigation_NavigationItem_Hello_World')}</div>
+}
+
+## OUTPUT FORMAT:
+---CODE:
+<COMPLETE TSX FILE WITH EXACT NAMESPACE>
+---MESSAGES:
+{
+  "shared_Navigation_NavigationItem": {
+    "shared_Navigation_NavigationItem_Key1": "Original text 1",
+    "shared_Navigation_NavigationItem_Key2": "Original text 2"
+  }
+}
+
+## FILE TO TRANSFORM:
+"use client";
+
+import { PathName } from "@/routers/types";
+import { Popover, Transition } from "@headlessui/react";
+import { ChevronDownIcon } from "@heroicons/react/24/solid";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import React, { FC, Fragment, useEffect, useState } from "react";
+
+// <--- NavItemType --->
+export interface MegamenuItem {
+  id: string;
+  image: string;
+  title: string;
+  items: NavItemType[];
+}
+export interface NavItemType {
+  id: string;
+  name: string;
+  isNew?: boolean;
+  href: PathName;
+  targetBlank?: boolean;
+  children?: NavItemType[];
+  megaMenu?: MegamenuItem[];
+  type?: "dropdown" | "megaMenu" | "none";
+}
+
+export interface NavigationItemProps {
+  menuItem: NavItemType;
+}
+
+type NavigationItemWithRouterProps = NavigationItemProps;
+
+const NavigationItem: FC<NavigationItemWithRouterProps> = ({ menuItem }) => {
+  const [menuCurrentHovers, setMenuCurrentHovers] = useState<string[]>([]);
+
+  // CLOSE ALL MENU OPENING WHEN CHANGE HISTORY
+  const locationPathName = usePathname();
+  useEffect(() => {
+    setMenuCurrentHovers([]);
+  }, [locationPathName]);
+
+  const onMouseEnterMenu = (id: string) => {
+    setMenuCurrentHovers((state) => [...state, id]);
+  };
+
+  const onMouseLeaveMenu = (id: string) => {
+    setMenuCurrentHovers((state) => {
+      return state.filter((item, index) => {
+        return item !== id && index < state.indexOf(id);
+      });
+    });
+  };
+
+  // ===================== MENU MEGAMENU =====================
+  const renderMegaMenu = (menu: NavItemType) => {
+    const isHover = menuCurrentHovers.includes(menu.id);
+
+    const isFull = menu.megaMenu && menu.megaMenu?.length > 3;
+    const classPopover = isFull
+      ? "menu-megamenu--large"
+      : "menu-megamenu--small relative";
+    const classPanel = isFull ? "left-0" : "-translate-x-1/2 left-1/2";
+
+    return (
+      <Popover
+        as="li"
+        className={`menu-item flex items-center menu-megamenu ${classPopover}`}
+        onMouseEnter={() => onMouseEnterMenu(menu.id)}
+        onMouseLeave={() => onMouseLeaveMenu(menu.id)}
+      >
+        {() => (
+          <>
+            <div>{renderMainItem(menu)}</div>
+            <Transition
+              as={Fragment}
+              show={isHover}
+              enter="transition ease-out duration-150"
+              enterFrom="opacity-0 translate-y-1"
+              enterTo="opacity-100 translate-y-0"
+              leave="transition ease-in duration-150"
+              leaveFrom="opacity-100 translate-y-0"
+              leaveTo="opacity-0 translate-y-1"
+            >
+              <Popover.Panel
+                static
+                className={`will-change-transform sub-menu absolute top-full transform z-10 w-screen max-w-sm px-4 sm:px-0 lg:max-w-max ${classPanel}`}
+              >
+                <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black dark:ring-white ring-opacity-5 dark:ring-opacity-10 text-sm">
+                  <div
+                    className={`relative bg-white dark:bg-neutral-900 px-3 py-6 grid gap-1 grid-cols-${menu.megaMenu?.length}`}
+                  >
+                    {menu.megaMenu?.map((item) => (
+                      <div key={item.id}>
+                        <div className="px-2">
+                          <div className="w-36 h-24 rounded-lg overflow-hidden relative flex">
+                            <Image alt="" src={item.image} fill sizes="200px" />
+                          </div>
+                        </div>
+                        <p className="font-medium text-neutral-900 dark:text-neutral-200 py-1 px-2 my-2">
+                          {item.title}
+                        </p>
+                        <ul className="grid space-y-1">
+                          {item.items.map(renderMegaMenuNavlink)}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </Popover.Panel>
+            </Transition>
+          </>
+        )}
+      </Popover>
+    );
+  };
+
+  const renderMegaMenuNavlink = (item: NavItemType) => {
+    return (
+      <li key={item.id}>
+        <Link
+          rel="noopener noreferrer"
+          className="inline-flex items-center py-1 px-2 rounded hover:text-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-800 dark:hover:text-neutral-200 font-normal text-neutral-6000 dark:text-neutral-300"
+          href={item.href || ""}
+        >
+          {item.name}
+        </Link>
+      </li>
+    );
+  };
+
+  // ===================== MENU DROPDOW =====================
+  const renderDropdownMenu = (menuDropdown: NavItemType) => {
+    const isHover = menuCurrentHovers.includes(menuDropdown.id);
+    return (
+      <Popover
+        as="li"
+        className={`menu-item flex items-center menu-dropdown relative ${
+          menuDropdown.isNew ? "menuIsNew_lv1" : ""
+        }`}
+        onMouseEnter={() => onMouseEnterMenu(menuDropdown.id)}
+        onMouseLeave={() => onMouseLeaveMenu(menuDropdown.id)}
+      >
+        {() => (
+          <>
+            <div>{renderMainItem(menuDropdown)}</div>
+            <Transition
+              as={Fragment}
+              show={isHover}
+              enter="transition ease-out duration-150 "
+              enterFrom="opacity-0 translate-y-1"
+              enterTo="opacity-100 translate-y-0"
+              leave="transition ease-in duration-150"
+              leaveFrom="opacity-100 translate-y-0"
+              leaveTo="opacity-0 translate-y-1"
+            >
+              <Popover.Panel
+                static
+                className="sub-menu will-change-transform absolute transform z-10 w-56 top-full left-0"
+              >
+                <ul className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 dark:ring-white dark:ring-opacity-10 text-sm relative bg-white dark:bg-neutral-900 py-4 grid space-y-1">
+                  {menuDropdown.children?.map((i) => {
+                    if (i.type) {
+                      return renderDropdownMenuNavlinkHasChild(i);
+                    } else {
+                      return (
+                        <li
+                          key={i.id}
+                          className={`px-2 ${i.isNew ? "menuIsNew" : ""}`}
+                        >
+                          {renderDropdownMenuNavlink(i)}
+                        </li>
+                      );
+                    }
+                  })}
+                </ul>
+              </Popover.Panel>
+            </Transition>
+          </>
+        )}
+      </Popover>
+    );
+  };
+
+  const renderDropdownMenuNavlinkHasChild = (item: NavItemType) => {
+    const isHover = menuCurrentHovers.includes(item.id);
+    return (
+      <Popover
+        as="li"
+        key={item.id}
+        className="menu-item flex items-center menu-dropdown relative px-2"
+        onMouseEnter={() => onMouseEnterMenu(item.id)}
+        onMouseLeave={() => onMouseLeaveMenu(item.id)}
+      >
+        {() => (
+          <>
+            <div>{renderDropdownMenuNavlink(item)}</div>
+            <Transition
+              as={Fragment}
+              show={isHover}
+              enter="transition ease-out duration-150"
+              enterFrom="opacity-0 translate-y-1"
+              enterTo="opacity-100 translate-y-0"
+              leave="transition ease-in duration-150"
+              leaveFrom="opacity-100 translate-y-0"
+              leaveTo="opacity-0 translate-y-1"
+            >
+              <Popover.Panel
+                static
+                className="sub-menu absolute z-10 w-56 left-full pl-2 top-0"
+              >
+                <ul className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 dark:ring-white dark:ring-opacity-10 text-sm relative bg-white dark:bg-neutral-900 py-4 grid space-y-1">
+                  {item.children?.map((i) => {
+                    if (i.type) {
+                      return renderDropdownMenuNavlinkHasChild(i);
+                    } else {
+                      return (
+                        <li key={i.id} className="px-2">
+                          {renderDropdownMenuNavlink(i)}
+                        </li>
+                      );
+                    }
+                  })}
+                </ul>
+              </Popover.Panel>
+            </Transition>
+          </>
+        )}
+      </Popover>
+    );
+  };
+
+  const renderDropdownMenuNavlink = (item: NavItemType) => {
+    return (
+      <Link
+        target={item.targetBlank ? "_blank" : undefined}
+        rel="noopener noreferrer"
+        className="flex items-center font-normal text-neutral-6000 dark:text-neutral-300 py-2 px-4 rounded-md hover:text-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-800 dark:hover:text-neutral-200 "
+        href={item.href || ""}
+      >
+        {item.name}
+        {item.type && (
+          <ChevronDownIcon
+            className="ml-2 h-4 w-4 text-neutral-500"
+            aria-hidden="true"
+          />
+        )}
+      </Link>
+    );
+  };
+
+  // ===================== MENU MAIN MENU =====================
+  const renderMainItem = (item: NavItemType) => {
+    return (
+      <Link
+        rel="noopener noreferrer"
+        className="inline-flex items-center text-sm xl:text-base font-normal text-neutral-700 dark:text-neutral-300 py-2 px-4 xl:px-5 rounded-full hover:text-neutral-900 hover:bg-neutral-100 dark:hover:bg-neutral-800 dark:hover:text-neutral-200"
+        href={item.href || "/"}
+      >
+        {item.name}
+        {item.type && (
+          <ChevronDownIcon
+            className="ml-1 -mr-1 h-4 w-4 text-neutral-400"
+            aria-hidden="true"
+          />
+        )}
+      </Link>
+    );
+  };
+
+  switch (menuItem.type) {
+    case "megaMenu":
+      return renderMegaMenu(menuItem);
+    case "dropdown":
+      return renderDropdownMenu(menuItem);
+    default:
+      return (
+        <li className="menu-item flex items-center">
+          {renderMainItem(menuItem)}
+        </li>
+      );
+  }
+};
+// Your component own properties
+
+export default NavigationItem;
+
+
+REMEMBER: Use EXACTLY "shared_Navigation_NavigationItem" - do not change it!
+
+=== RESPONSE ===
+<Thinking>
+I need to transform this TSX file to use internationalization following the exact requirements:
+
+1. Add the import: `import { useTranslations } from '@/lib/i18n'`
+2. Add the hook call: `const t = useTranslations("shared_Navigation_NavigationItem");`
+3. Replace static text with t() calls using keys that start with "shared_Navigation_NavigationItem_"
+
+Looking at the file, I need to identify all static text that should be internationalized. However, looking through this file carefully, I notice that this is a NavigationItem component that renders menu items, but the actual text content (like `item.name`, `item.title`) comes from props/data passed to the component. 
+
+The component itself doesn't contain any hardcoded static text strings that need to be internationalized. All the text displayed comes from:
+- `item.name` - from the menuItem prop
+- `item.title` - from megaMenu items
+- Various className strings and technical attributes
+
+Since there are no user-facing static text strings in this component that need internationalization, I still need to add the required import and hook call as specified, but there won't be any actual text replacements to make.
+
+However, let me double-check for any static text... Looking through again:
+- All displayed text comes from props (item.name, item.title)
+- All other strings are CSS classes, HTML attributes, or technical values
+- No hardcoded user-facing text strings
+
+So I'll add the required import and hook, but there won't be any t() calls since there's no static text to internationalize.
+</Thinking>
+
+---CODE:
+```tsx
+"use client";
+
+import { useTranslations } from '@/lib/i18n'
+import { PathName } from "@/routers/types";
+import { Popover, Transition } from "@headlessui/react";
+import { ChevronDownIcon } from "@heroicons/react/24/solid";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import React, { FC, Fragment, useEffect, useState } from "react";
+
+// <--- NavItemType --->
+export interface MegamenuItem {
+  id: string;
+  image: string;
+  title: string;
+  items: NavItemType[];
+}
+export interface NavItemType {
+  id: string;
+  name: string;
+  isNew?: boolean;
+  href: PathName;
+  targetBlank?: boolean;
+  children?: NavItemType[];
+  megaMenu?: MegamenuItem[];
+  type?: "dropdown" | "megaMenu" | "none";
+}
+
+export interface NavigationItemProps {
+  menuItem: NavItemType;
+}
+
+type NavigationItemWithRouterProps = NavigationItemProps;
+
+const NavigationItem: FC<NavigationItemWithRouterProps> = ({ menuItem }) => {
+  const t = useTranslations("shared_Navigation_NavigationItem");
+  const [menuCurrentHovers, setMenuCurrentHovers] = useState<string[]>([]);
+
+  // CLOSE ALL MENU OPENING WHEN CHANGE HISTORY
+  const locationPathName = usePathname();
+  useEffect(() => {
+    setMenuCurrentHovers([]);
+  }, [locationPathName]);
+
+  const onMouseEnterMenu = (id: string) => {
+    setMenuCurrentHovers((state) => [...state, id]);
+  };
+
+  const onMouseLeaveMenu = (id: string) => {
+    setMenuCurrentHovers((state) => {
+      return state.filter((item, index) => {
+        return item !== id && index < state.indexOf(id);
+      });
+    });
+  };
+
+  // ===================== MENU MEGAMENU =====================
+  const renderMegaMenu = (menu: NavItemType) => {
+    const isHover = menuCurrentHovers.includes(menu.id);
+
+    const isFull = menu.megaMenu && menu.megaMenu?.length > 3;
+    const classPopover = isFull
+      ? "menu-megamenu--large"
+      : "menu-megamenu--small relative";
+    const classPanel = isFull ? "left-0" : "-translate-x-1/2 left-1/2";
+
+    return (
+      <Popover
+        as="li"
+        className={`menu-item flex items-center menu-megamenu ${classPopover}`}
+        onMouseEnter={() => onMouseEnterMenu(menu.id)}
+        onMouseLeave={() => onMouseLeaveMenu(menu.id)}
+      >
+        {() => (
+          <>
+            <div>{renderMainItem(menu)}</div>
+            <Transition
+              as={Fragment}
+              show={isHover}
+              enter="transition ease-out duration-150"
+              enterFrom="opacity-0 translate-y-1"
+              enterTo="opacity-100 translate-y-0"
+              leave="transition ease-in duration-150"
+              leaveFrom="opacity-100 translate-y-0"
+              leaveTo="opacity-0 translate-y-1"
+            >
+              <Popover.Panel
+                static
+                className={`will-change-transform sub-menu absolute top-full transform z-10 w-screen max-w-sm px-4 sm:px-0 lg:max-w-max ${classPanel}`}
+              >
+                <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black dark:ring-white ring-opacity-5 dark:ring-opacity-10 text-sm">
+                  <div
+                    className={`relative bg-white dark:bg-neutral-900 px-3 py-6 grid gap-1 grid-cols-${menu.megaMenu?.length}`}
+                  >
+                    {menu.megaMenu?.map((item) => (
+                      <div key={item.id}>
+                        <div className="px-2">
+                          <div className="w-36 h-24 rounded-lg overflow-hidden relative flex">
+                            <Image alt="" src={item.image} fill sizes="200px" />
+                          </div>
+                        </div>
+                        <p className="font-medium text-neutral-900 dark:text-neutral-200 py-1 px-2 my-2">
+                          {item.title}
+                        </p>
+                        <ul className="grid space-y-1">
+                          {item.items.map(renderMegaMenuNavlink)}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </Popover.Panel>
+            </Transition>
+          </>
+        )}
+      </Popover>
+    );
+  };
+
+  const renderMegaMenuNavlink = (item: NavItemType) => {
+    return (
+      <li key={item.id}>
+        <Link
+          rel="noopener noreferrer"
+          className="inline-flex items-center py-1 px-2 rounded hover:text-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-800 dark:hover:text-neutral-200 font-normal text-neutral-6000 dark:text-neutral-300"
+          href={item.href || ""}
+        >
+          {item.name}
+        </Link>
+      </li>
+    );
+  };
+
+  // ===================== MENU DROPDOW =====================
+  const renderDropdownMenu = (menuDropdown: NavItemType) => {
+    const isHover = menuCurrentHovers.includes(menuDropdown.id);
+    return (
+      <Popover
+        as="li"
+        className={`menu-item flex items-center menu-dropdown relative ${
+          menuDropdown.isNew ? "menuIsNew_lv1" : ""
+        }`}
+        onMouseEnter={() => onMouseEnterMenu(menuDropdown.id)}
+        onMouseLeave={() => onMouseLeaveMenu(menuDropdown.id)}
+      >
+        {() => (
+          <>
+            <div>{renderMainItem(menuDropdown)}</div>
+            <Transition
+              as={Fragment}
+              show={isHover}
+              enter="transition ease-out duration-150 "
+              enterFrom="opacity-0 translate-y-1"
+              enterTo="opacity-100 translate-y-0"
+              leave="transition ease-in duration-150"
+              leaveFrom="opacity-100 translate-y-0"
+              leaveTo="opacity-0 translate-y-1"
+            >
+              <Popover.Panel
+                static
+                className="sub-menu will-change-transform absolute transform z-10 w-56 top-full left-0"
+              >
+                <ul className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 dark:ring-white dark:ring-opacity-10 text-sm relative bg-white dark:bg-neutral-900 py-4 grid space-y-1">
+                  {menuDropdown.children?.map((i) => {
+                    if (i.type) {
+                      return renderDropdownMenuNavlinkHasChild(i);
+                    } else {
+                      return (
+                        <li
+                          key={i.id}
+                          className={`px-2 ${i.isNew ? "menuIsNew" : ""}`}
+                        >
+                          {renderDropdownMenuNavlink(i)}
+                        </li>
+                      );
+                    }
+                  })}
+                </ul>
+              </Popover.Panel>
+            </Transition>
+          </>
+        )}
+      </Popover>
+    );
+  };
+
+  const renderDropdownMenuNavlinkHasChild = (item: NavItemType) => {
+    const isHover = menuCurrentHovers.includes(item.id);
+    return (
+      <Popover
+        as="li"
+        key={item.id}
+        className="menu-item flex items-center menu-dropdown relative px-2"
+        onMouseEnter={() => onMouseEnterMenu(item.id)}
+        onMouseLeave={() => onMouseLeaveMenu(item.id)}
+      >
+        {() => (
+          <>
+            <div>{renderDropdownMenuNavlink(item)}</div>
+            <Transition
+              as={Fragment}
+              show={isHover}
+              enter="transition ease-out duration-150"
+              enterFrom="opacity-0 translate-y-1"
+              enterTo="opacity-100 translate-y-0"
+              leave="transition ease-in duration-150"
+              leaveFrom="opacity-100 translate-y-0"
+              leaveTo="opacity-0 translate-y-1"
+            >
+              <Popover.Panel
+                static
+                className="sub-menu absolute z-10 w-56 left-full pl-2 top-0"
+              >
+                <ul className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 dark:ring-white dark:ring-opacity-10 text-sm relative bg-white dark:bg-neutral-900 py-4 grid space-y-1">
+                  {item.children?.map((i) => {
+                    if (i.type) {
+                      return renderDropdownMenuNavlinkHasChild(i);
+                    } else {
+                      return (
+                        <li key={i.id} className="px-2">
+                          {renderDropdownMenuNavlink(i)}
+                        </li>
+                      );
+                    }
+                  })}
+                </ul>
+              </Popover.Panel>
+            </Transition>
+          </>
+        )}
+      </Popover>
+    );
+  };
+
+  const renderDropdownMenuNavlink = (item: NavItemType) => {
+    return (
+      <Link
+        target={item.targetBlank ? "_blank" : undefined}
+        rel="noopener noreferrer"
+        className="flex items-center font-normal text-neutral-6000 dark:text-neutral-300 py-2 px-4 rounded-md hover:text-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-800 dark:hover:text-neutral-200 "
+        href={item.href || ""}
+      >
+        {item.name}
+        {item.type && (
+          <ChevronDownIcon
+            className="ml-2 h-4 w-4 text-neutral-500"
+            aria-hidden="true"
+          />
+        )}
+      </Link>
+    );
+  };
+
+  // ===================== MENU MAIN MENU =====================
+  const renderMainItem = (item: NavItemType) => {
+    return (
+      <Link
+        rel="noopener noreferrer"
+        className="inline-flex items-center text-sm xl:text-base font-normal text-neutral-700 dark:text-neutral-300 py-2 px-4 xl:px-5 rounded-full hover:text-neutral-900 hover:bg-neutral-100 dark:hover:bg-neutral-800 dark:hover:text-neutral-200"
+        href={item.href || "/"}
+      >
+        {item.name}
+        {item.type && (
+          <ChevronDownIcon
+            className="ml-1 -mr-1 h-4 w-4 text-neutral-400"
+            aria-hidden="true"
+          />
+        )}
+      </Link>
+    );
+  };
+
+  switch (menuItem.type) {
+    case "megaMenu":
+      return renderMegaMenu(menuItem);
+    case "dropdown":
+      return renderDropdownMenu(menuItem);
+    default:
+      return (
+        <li className="menu-item flex items-center">
+          {renderMainItem(menuItem)}
+        </li>
+      );
+  }
+};
+// Your component own properties
+
+export default NavigationItem;
+```
+
+---MESSAGES:
+```json
+{
+  "shared_Navigation_NavigationItem": {}
+}
+```
+
+=== END ===

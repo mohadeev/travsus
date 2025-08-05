@@ -1,5 +1,4 @@
 'use client'
-
 import { useSearchParams } from 'next/navigation'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
@@ -9,8 +8,10 @@ import { updateBookingLineItems } from '@/app/GlobalRedux/Features/bookingSlice/
 import { useDispatch } from 'react-redux'
 import confetti from 'canvas-confetti'
 import DiscountSuccessModal from './discount-success-modal'
+import { useTranslations } from '@/lib/i18n'
 
 export default function PromoCodeForm() {
+	const t = useTranslations('Jan03_PromoCode_r5n8')
 	const searchParams = useSearchParams()
 	const bookingId = searchParams.get('bookingId') // Get bookingId from URL
 	const [promoCode, setPromoCode] = useState('')
@@ -57,7 +58,6 @@ export default function PromoCodeForm() {
 	useEffect(() => {
 		if (showConfetti) {
 			const { pumpkin, tree, heart } = getCustomShapes()
-
 			const defaults = {
 				scalar: 2,
 				spread: 180,
@@ -96,12 +96,13 @@ export default function PromoCodeForm() {
 
 	const handleApplyPromo = async () => {
 		if (!promoCode) {
-			setMessage('Please enter a promo code.')
+			setMessage(t('Please_Enter_Promo_Code'))
 			return
 		}
 
 		setIsSubmitting(true)
 		setMessage('')
+
 		try {
 			const response = await fetch('/api/promo/apply-discount', {
 				method: 'POST',
@@ -112,7 +113,7 @@ export default function PromoCodeForm() {
 			const data = await response.json()
 
 			if (!response.ok) {
-				throw new Error(data.error || 'Failed to apply promo code')
+				throw new Error(data.error || t('Failed_Apply_Promo_Code'))
 			}
 
 			if (data) {
@@ -130,7 +131,7 @@ export default function PromoCodeForm() {
 			}
 
 			console.log('updatedBooking: ', data)
-			setMessage('Promo code applied successfully!')
+			setMessage(t('Promo_Code_Applied_Successfully'))
 
 			// Check if discount was applied successfully
 			if (data.discountApplied) {
@@ -154,16 +155,17 @@ export default function PromoCodeForm() {
 				discountAmount={discountAmount}
 				discountCode={promoCode}
 			/>
-
 			<Card className="mx-auto my-4 w-full max-w-md">
 				<CardHeader>
-					<CardTitle className="text-2xl font-bold">Promo Code</CardTitle>
+					<CardTitle className="text-2xl font-bold">
+						{t('Promo_Code')}
+					</CardTitle>
 				</CardHeader>
 				<CardContent>
 					<div className="flex items-center space-x-2">
 						<Input
 							id="promoCode"
-							placeholder="Enter promo code"
+							placeholder={t('Enter_Promo_Code_Placeholder')}
 							className="flex-grow"
 							value={promoCode}
 							onChange={(e) => setPromoCode(e.target.value)}
@@ -174,12 +176,16 @@ export default function PromoCodeForm() {
 							onClick={handleApplyPromo}
 							disabled={isSubmitting}
 						>
-							{isSubmitting ? 'Applying...' : 'Apply'}
+							{isSubmitting ? t('Applying') : t('Apply')}
 						</Button>
 					</div>
 					{message && (
 						<p
-							className={`mt-2 text-sm ${message.includes('successfully') ? 'text-green-500' : 'text-red-500'}`}
+							className={`mt-2 text-sm ${
+								message.includes(t('Promo_Code_Applied_Successfully'))
+									? 'text-green-500'
+									: 'text-red-500'
+							}`}
 						>
 							{message}
 						</p>

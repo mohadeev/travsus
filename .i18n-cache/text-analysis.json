@@ -1,0 +1,116 @@
+{
+  "C:\\Users\\Usuario\\s\\travsus\\src\\components\\StartRating.tsx": {
+    "hasTranslatableText": true,
+    "textCount": 5,
+    "texts": [
+      {
+        "type": "jsx_attribute",
+        "text": "pb-[2px]",
+        "context": " className=\"pb-[2px]\""
+      },
+      {
+        "type": "jsx_attribute",
+        "text": "w-[18px] h-[18px] text-orange-500",
+        "context": " className=\"w-[18px] h-[18px] text-orange-500\""
+      },
+      {
+        "type": "jsx_attribute",
+        "text": "font-medium",
+        "context": " className=\"font-medium \""
+      },
+      {
+        "type": "jsx_attribute",
+        "text": "text-neutral-500 dark:text-neutral-400",
+        "context": " className=\"text-neutral-500 dark:text-neutral-400\""
+      },
+      {
+        "type": "return_string",
+        "text": "nc-StartRating flex items-center space-x-1 text-sm  ${className}",
+        "context": "return (\r\n    <div\r\n      className={`nc-StartRating flex items-center space-x-1 text-sm  ${className}`"
+      }
+    ],
+    "fileSize": 786
+  },
+  "C:\\Users\\Usuario\\s\\travsus\\src\\shared\\Badge.tsx": {
+    "hasTranslatableText": true,
+    "textCount": 9,
+    "texts": [
+      {
+        "type": "return_string",
+        "text": "text-red-800 bg-red-100 ${hasHover ?",
+        "context": "return `text-red-800 bg-red-100 ${hasHover ? \""
+      },
+      {
+        "type": "template_literal",
+        "text": ";\r\n      case \"red\":\r\n        return",
+        "context": "`;\r\n      case \"red\":\r\n        return `"
+      },
+      {
+        "type": "template_literal",
+        "text": ";\r\n      case \"gray\":\r\n        return",
+        "context": "`;\r\n      case \"gray\":\r\n        return `"
+      },
+      {
+        "type": "template_literal",
+        "text": ";\r\n      case \"green\":\r\n        return",
+        "context": "`;\r\n      case \"green\":\r\n        return `"
+      },
+      {
+        "type": "template_literal",
+        "text": ";\r\n      case \"purple\":\r\n        return",
+        "context": "`;\r\n      case \"purple\":\r\n        return `"
+      },
+      {
+        "type": "template_literal",
+        "text": ";\r\n      case \"indigo\":\r\n        return",
+        "context": "`;\r\n      case \"indigo\":\r\n        return `"
+      },
+      {
+        "type": "template_literal",
+        "text": ";\r\n      case \"yellow\":\r\n        return",
+        "context": "`;\r\n      case \"yellow\":\r\n        return `"
+      },
+      {
+        "type": "template_literal",
+        "text": ";\r\n      case \"blue\":\r\n        return",
+        "context": "`;\r\n      case \"blue\":\r\n        return `"
+      },
+      {
+        "type": "template_literal",
+        "text": ";\r\n      default:\r\n        return",
+        "context": "`;\r\n      default:\r\n        return `"
+      }
+    ],
+    "fileSize": 2065
+  },
+  "C:\\Users\\Usuario\\s\\travsus\\src\\components\\ContainerExperiencesCardSkeleton.tsx": {
+    "hasTranslatableText": false,
+    "textCount": 0,
+    "texts": [],
+    "fileSize": 540
+  },
+  "C:\\Users\\Usuario\\s\\travsus\\src\\shared\\ButtonPrimary.tsx": {
+    "hasTranslatableText": true,
+    "textCount": 1,
+    "texts": [
+      {
+        "type": "return_string",
+        "text": "ttnc-ButtonPrimary bg-primary text-neutral-50 hover:bg-primary-700 disabled:bg-opacity-70 ${className}",
+        "context": "return (\r\n\t\t<Button\r\n\t\t\tclassName={`ttnc-ButtonPrimary bg-primary text-neutral-50 hover:bg-primary-700 disabled:bg-opacity-70 ${className}`"
+      }
+    ],
+    "fileSize": 434
+  },
+  "C:\\Users\\Usuario\\s\\travsus\\src\\shared\\LogoSvg.tsx": {
+    "hasTranslatableText": true,
+    "textCount": 1,
+    "texts": [
+      {
+        "type": "jsx_attribute",
+        "text": "w-full block dark:hidden",
+        "context": "\r\n      className=\"w-full block dark:hidden\""
+      }
+    ],
+    "fileSize": 2427
+  }
+}

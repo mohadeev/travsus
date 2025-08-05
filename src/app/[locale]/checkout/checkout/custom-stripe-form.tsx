@@ -1,5 +1,4 @@
 'use client'
-
 import type React from 'react'
 import { useState, useEffect } from 'react'
 import { loadStripe } from '@stripe/stripe-js'
@@ -9,10 +8,10 @@ import {
 	useElements,
 	CardElement,
 } from '@stripe/react-stripe-js'
-import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert'
+import { Alert } from '@/components/ui/alert'
 import { Label } from '@/components/ui/label'
 import NewCardForm from './new-card-form'
-import totalAmount from '@/app/(service-detail)/[listing-experiences-detail]/totalAmount'
+// import totalAmount from '@/app/(service-detail)/[listing-experiences-detail]/totalAmount'
 import { useSelector } from 'react-redux'
 import Spinner from '@/components/ui/Spinner'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
@@ -21,9 +20,9 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { CreditCard } from 'lucide-react'
 import { Checkbox } from '@/components/ui/checkbox'
-import { Input } from '@/components/ui/input'
-import { Button } from '@/components/ui/button'
 import PromoCodeForm from './PromoCode'
+import totalAmount from '../../[continent]/[country]/[region]/[city]/[category]/[name]/(service-detail)/[listing-experiences-detail]/totalAmount'
+import { useTranslations } from '@/lib/i18n'
 
 const stripePromise = loadStripe(
 	process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!,
@@ -40,6 +39,7 @@ const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
 	userEmail,
 	booking,
 }: any) => {
+	const t = useTranslations('Jan03_CustomStripeForm_t9k6')
 	const router = useRouter()
 	const stripe: any = useStripe()
 	const elements: any = useElements()
@@ -75,13 +75,11 @@ const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
 			method: 'POST',
 			body: JSON.stringify(booking),
 		})
-
 		if (!response.ok) {
 			setCurrentStatus('')
 			console.error('Failed to create booking')
-			throw new Error('Failed to create booking')
+			throw new Error(t('Failed_Create_Booking'))
 		}
-
 		setCurrentStatus('')
 		const bookingData = await response.json()
 		const { id } = bookingData
@@ -93,7 +91,7 @@ const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
 			try {
 				const response = await fetch(`/api/payment-methods?userId=${userId}`)
 				if (!response.ok) {
-					throw new Error('Failed to fetch payment methods')
+					throw new Error(t('Failed_Fetch_Payment_Methods'))
 				}
 				const data = await response.json()
 				setPaymentMethods(data.paymentMethods)
@@ -110,21 +108,19 @@ const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
 				}
 			} catch (error) {
 				console.error('Error fetching payment methods:', error)
-				setError('Failed to load payment methods. Please try again.')
+				setError(t('Failed_Load_Payment_Methods'))
 				setPaymentMethodsFetched(true)
 			}
 		}
-
 		fetchPaymentMethods()
-	}, [userId])
+	}, [userId, t])
 
 	const handlePayment = async (formData: any) => {
 		setLoading(true)
 		setError('')
 		setSuccess('')
-
 		if (!stripe || !elements) {
-			setError('Stripe has not loaded yet. Please try again.')
+			setError(t('Stripe_Not_Loaded'))
 			setLoading(false)
 			return
 		}
@@ -139,9 +135,7 @@ const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
 			})
 		} catch (error: any) {
 			console.error('Error in payment handling:', error)
-			setError(
-				error.message || 'An unexpected error occurred. Please try again.',
-			)
+			setError(error.message || t('Unexpected_Error'))
 		} finally {
 			setLoading(false)
 		}
@@ -150,7 +144,7 @@ const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
 	const initiatePayment = async (formData: any) => {
 		const cardElement = elements.getElement(CardElement)
 		if (!cardElement) {
-			console.error('Card element not found. Please refresh and try again.')
+			console.error(t('Card_Element_Not_Found'))
 			return
 		}
 
@@ -173,18 +167,17 @@ const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
 
 		if (paymentMethodError) {
 			console.error(
-				paymentMethodError.message || 'Failed to create payment method',
+				paymentMethodError.message || t('Failed_Create_Payment_Method'),
 			)
 			return
 		}
 
 		if (!paymentMethod || !paymentMethod.id) {
-			console.error('Failed to create payment method. Please try again.')
+			console.error(t('Failed_Create_Payment_Method'))
 			return
 		}
 
 		const paymentMethodId = paymentMethod.id
-
 		const saveResponse: any = await fetch('/api/payment-methods', {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
@@ -206,13 +199,16 @@ const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
 		})
 
 		if (!saveResponse.ok) {
-			console.error('Failed to process payment method. Please try again.')
+			console.error(t('Failed_Process_Payment_Method'))
 			return
 		}
 
 		const newPaymentMethod: any = await saveResponse.json()
-		const newPaymentMethodId = newPaymentMethod?.paymentMethod?.id
+		const newPaymentMethodId =
+			newPaymentMethod?.paymentMethod?.stripePaymentMethodId
+
 		console.log('newPaymentMethodId: ', newPaymentMethod)
+
 		const response = await fetch('/api/initiate-payment', {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
@@ -226,9 +222,8 @@ const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
 		})
 
 		const result = await response.json()
-
 		if (!response.ok) {
-			console.error(result.message || 'Failed to initiate payment')
+			console.error(result.message || t('Failed_Initiate_Payment'))
 			return
 		}
 
@@ -241,7 +236,7 @@ const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
 		if (!selectedPaymentMethod) {
 			const defaultMethod = paymentMethods.find((method) => method.isDefault)
 			if (!defaultMethod) {
-				setError('Please select a payment method or add a new one.')
+				setError(t('Please_Select_Payment_Method'))
 				return
 			}
 			setSelectedPaymentMethod(defaultMethod.stripePaymentMethodId)
@@ -265,21 +260,20 @@ const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
 				result = JSON.parse(responseData)
 			} catch (parseError) {
 				console.error('Error parsing JSON:', responseData)
-				throw new Error('Invalid response from server')
+				throw new Error(t('Invalid_Server_Response'))
 			}
 
 			if (result.error) {
-				throw new Error(result.err || 'Payment processing failed')
+				throw new Error(result.err || t('Payment_Processing_Failed'))
 			}
 
 			const { paymentIntentId } = result
-
 			const requiresCapture = result.requiresCapture || false
 
 			if (requiresCapture) {
 				await capturePayment(paymentIntentId)
 			} else {
-				setSuccess('Payment processed successfully!')
+				setSuccess(t('Payment_Processed_Successfully'))
 				setPaymentConfirmed(true)
 				router.push(
 					`/pay-done/payment?bookingId=${booking.id}&serviceId=${tour?.id}`,
@@ -287,10 +281,7 @@ const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
 			}
 		} catch (error: any) {
 			console.error('Payment processing error:', error)
-			setError(
-				error.message ||
-					'An unexpected error occurred during payment processing',
-			)
+			setError(error.message || t('Payment_Processing_Error'))
 		}
 	}
 
@@ -308,23 +299,21 @@ const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
 				result = JSON.parse(responseData)
 			} catch (parseError) {
 				console.error('Error parsing JSON:', responseData)
-				throw new Error('Invalid response from server')
+				throw new Error(t('Invalid_Server_Response'))
 			}
 
 			if (result.err) {
-				throw new Error(result.err || 'Payment capture failed')
+				throw new Error(result.err || t('Payment_Capture_Failed'))
 			}
 
-			setSuccess('Payment captured successfully!')
+			setSuccess(t('Payment_Captured_Successfully'))
 			setPaymentConfirmed(true)
 			router.push(
 				`/pay-done/payment?bookingId=${booking.id}&serviceId=${tour?.id}`,
 			)
 		} catch (error: any) {
 			console.error('Payment capture error:', error)
-			setError(
-				error.message || 'An unexpected error occurred during payment capture',
-			)
+			setError(error.message || t('Payment_Capture_Error'))
 		}
 	}
 
@@ -334,7 +323,7 @@ const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
 		setSuccess('')
 
 		if (!stripe || !clientSecret) {
-			setError('Unable to confirm payment. Please try again.')
+			setError(t('Unable_Confirm_Payment'))
 			setLoading(false)
 			return
 		}
@@ -344,23 +333,23 @@ const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
 				await stripe.confirmCardPayment(clientSecret)
 
 			if (error) {
-				console.error(error.message || 'Payment confirmation failed')
-				setError(error.message || 'Payment confirmation failed')
+				console.error(error.message || t('Payment_Confirmation_Failed'))
+				setError(error.message || t('Payment_Confirmation_Failed'))
 			} else if (paymentIntent.status === 'requires_capture') {
 				await capturePayment(paymentIntent.id)
 			} else if (paymentIntent.status === 'succeeded') {
-				setSuccess('Payment confirmed and captured successfully!')
+				setSuccess(t('Payment_Confirmed_Successfully'))
 				setPaymentConfirmed(true)
 				router.push(
 					`/pay-done/payment?bookingId=${booking.id}&serviceId=${tour?.id}`,
 				)
 			} else {
 				console.error(`Payment failed with status: ${paymentIntent.status}`)
-				setError(`Payment failed with status: ${paymentIntent.status}`)
+				setError(t('Payment_Failed_Status', { status: paymentIntent.status }))
 			}
 		} catch (error: any) {
 			console.error('Error in payment confirmation:', error)
-			setError(error.message || 'An error occurred during payment confirmation')
+			setError(error.message || t('Payment_Confirmation_Error'))
 		} finally {
 			setLoading(false)
 		}
@@ -381,7 +370,7 @@ const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
 					loading={currentStatus === 'loading'}
 					disabled={currentStatus === 'loading'}
 				>
-					{currentStatus === 'loading' ? 'Processing...' : 'Reserve'}
+					{currentStatus === 'loading' ? t('Processing') : t('Reserve')}
 				</ButtonPrimary>
 			)}
 
@@ -391,7 +380,7 @@ const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
 						<Card className="mx-auto mb-4 w-full max-w-md">
 							<CardHeader>
 								<CardTitle className="text-2xl font-bold">
-									Select Payment Method
+									{t('Select_Payment_Method')}
 								</CardTitle>
 							</CardHeader>
 							<CardContent>
@@ -423,7 +412,10 @@ const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
 													</span>
 												</span>
 												<span className="text-sm text-gray-500">
-													Expires {method.exp_month}/{method.exp_year}
+													{t('Expires_Date', {
+														month: method.exp_month,
+														year: method.exp_year,
+													})}
 												</span>
 											</Label>
 										</div>
@@ -435,7 +427,7 @@ const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
 											className="flex flex-1 cursor-pointer items-center"
 										>
 											<CreditCard className="mr-2 h-5 w-5 text-blue-500" />
-											<span>Use another card</span>
+											<span>{t('Use_Another_Card')}</span>
 										</Label>
 									</div>
 								</RadioGroup>
@@ -447,7 +439,7 @@ const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
 						<Card className="mx-auto mt-4 w-full max-w-md">
 							<CardHeader>
 								<CardTitle className="text-2xl font-bold">
-									Add New Card
+									{t('Add_New_Card')}
 								</CardTitle>
 							</CardHeader>
 							<CardContent>
@@ -464,13 +456,15 @@ const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
 										htmlFor="saveNewPaymentMethod"
 										className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
 									>
-										Save as new payment method
+										{t('Save_As_New_Payment_Method')}
 									</label>
 								</div>
 							</CardContent>
 						</Card>
 					)}
+
 					<PromoCodeForm />
+
 					{!clientSecret && !paymentConfirmed && (
 						<ButtonPrimary
 							className="mt-4 w-full"
@@ -481,8 +475,8 @@ const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
 							disabled={loading || currentStatus === 'loading'}
 						>
 							{loading || currentStatus === 'loading'
-								? 'Processing...'
-								: `Pay €${newTotalAmount}`}
+								? t('Processing')
+								: t('Pay_Amount', { amount: newTotalAmount })}
 						</ButtonPrimary>
 					)}
 

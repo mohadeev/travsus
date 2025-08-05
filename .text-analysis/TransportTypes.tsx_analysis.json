@@ -1,0 +1,84 @@
+{
+  "file": "C:\\Users\\Usuario\\s\\travsus\\src\\app\\[locale]\\[continent]\\[country]\\[region]\\[city]\\[category]\\[name]\\(service-detail)\\[listing-experiences-detail]\\TransportTypes.tsx",
+  "timestamp": "2025-08-02T12:42:15.047Z",
+  "hasTranslatableText": true,
+  "textCount": 15,
+  "texts": [
+    {
+      "type": "jsx_attribute",
+      "text": "space-y-0 p-0",
+      "context": " className=\"space-y-0 p-0\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "relative h-[200px] overflow-hidden",
+      "context": " className=\"relative h-[200px] overflow-hidden\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "absolute inset-0 flex items-center justify-center",
+      "context": "\r\n\t\t\t\t\t\tclassName=\"absolute inset-0 flex items-center justify-center\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "mb-2",
+      "context": "\r\n\t\t\t\t\t\t\t\t\t\tclassName=\"mb-2\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "text-sm font-medium",
+      "context": " className=\"text-sm font-medium\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "mt-1 text-xs",
+      "context": " className=\"mt-1 text-xs\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "mt-2 text-xs font-semibold text-green-700",
+      "context": " className=\"mt-2 text-xs font-semibold text-green-700\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-white p-2 shadow-md",
+      "context": "\r\n\t\t\t\t\tclassName=\"absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-white p-2 shadow-md\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "Previous transport type",
+      "context": "\r\n\t\t\t\t\taria-label=\"Previous transport type\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "h-6 w-6",
+      "context": " className=\"h-6 w-6\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-white p-2 shadow-md",
+      "context": "\r\n\t\t\t\t\tclassName=\"absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-white p-2 shadow-md\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "Next transport type",
+      "context": "\r\n\t\t\t\t\taria-label=\"Next transport type\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "mt-4 flex justify-center space-x-2",
+      "context": " className=\"mt-4 flex justify-center space-x-2\""
+    },
+    {
+      "type": "jsx_content",
+      "text": "= type.minSeats && peopleCount",
+      "context": ">= type.minSeats && peopleCount <"
+    },
+    {
+      "type": "return_string",
+      "text": "border-2 border-black",
+      "context": "return (\r\n\t\t\t\t\t\t\t\t<div\r\n\t\t\t\t\t\t\t\t\tclassName={`flex w-full flex-col items-center justify-between rounded-lg p-4 transition-colors ${\r\n\t\t\t\t\t\t\t\t\t\tisSelected\r\n\t\t\t\t\t\t\t\t\t\t\t? 'border-2 border-black'"
+    }
+  ],
+  "fileSize": 4163
+}

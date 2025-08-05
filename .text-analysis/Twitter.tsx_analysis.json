@@ -1,0 +1,14 @@
+{
+  "file": "C:\\Users\\Usuario\\s\\travsus\\src\\components\\listing-image-gallery\\components\\Icons\\Twitter.tsx",
+  "timestamp": "2025-08-02T12:29:28.549Z",
+  "hasTranslatableText": true,
+  "textCount": 1,
+  "texts": [
+    {
+      "type": "jsx_attribute",
+      "text": "feather feather-twitter",
+      "context": "\r\n      className=\"feather feather-twitter\""
+    }
+  ],
+  "fileSize": 590
+}

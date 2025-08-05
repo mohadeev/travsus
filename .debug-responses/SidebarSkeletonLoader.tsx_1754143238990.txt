@@ -1,0 +1,237 @@
+
+=== FILE: C:\Users\Usuario\s\travsus\src\app\[locale]\[continent]\[country]\[region]\[city]\[category]\[name]\(service-detail)\[listing-experiences-detail]\SidebarSkeletonLoader.tsx ===
+=== NAMESPACE: app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SidebarSkeletonLoader ===
+=== PROMPT ===
+# ULTRA-STRICT INTERNATIONALIZATION INSTRUCTIONS
+
+Transform this TSX file to use internationalization.
+
+## CRITICAL NAMESPACE AND KEY REQUIREMENTS:
+- You MUST use the exact namespace: "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SidebarSkeletonLoader"
+- The useTranslations call MUST be: useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SidebarSkeletonLoader")
+- Keys should be simple descriptive names WITHOUT the namespace prefix
+- Example: t('Welcome_Message') NOT t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SidebarSkeletonLoader_Welcome_Message')
+
+## EXACT REQUIREMENTS:
+1. Add this import: import { useTranslations } from '@/lib/i18n'
+2. Add this hook call: const t = useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SidebarSkeletonLoader");
+3. Replace static text with: t('Simple_Key_Name')
+4. Generate simple keys like: Welcome_Message, Button_Text, Error_Message
+
+## KEY FORMAT RULES:
+- Use descriptive names: Welcome_Message, Submit_Button, Error_Text
+- NO namespace prefix in keys
+- Use Title_Case_With_Underscores
+- Keep keys under 30 characters
+
+## OUTPUT FORMAT:
+---CODE:
+<COMPLETE TSX FILE WITH EXACT NAMESPACE>
+---MESSAGES:
+{
+  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SidebarSkeletonLoader": {
+	"Welcome_Message": "Welcome to our site",
+	"Button_Text": "Click here",
+	"Error_Message": "Something went wrong"
+  }
+}
+
+## EXAMPLE TRANSFORMATION:
+
+BEFORE:
+<div>
+  <h1>Welcome to our site</h1>
+  <button>Click here</button>
+  <p>Something went wrong</p>
+</div>
+
+AFTER:
+import { useTranslations } from '@/lib/i18n';
+
+export default function Component() {
+  const t = useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SidebarSkeletonLoader");
+  
+  return (
+	<div>
+	  <h1>{t('Welcome_Message')}</h1>
+	  <button>{t('Button_Text')}</button>
+	  <p>{t('Error_Message')}</p>
+	</div>
+  );
+}
+
+---MESSAGES:
+{
+  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SidebarSkeletonLoader": {
+	"Welcome_Message": "Welcome to our site",
+	"Button_Text": "Click here", 
+	"Error_Message": "Something went wrong"
+  }
+}
+
+## FILE TO TRANSFORM:
+export default function SkeletonLoader() {
+	return (
+		<div className="top-28">
+			{/* <div className="listingSectionSidebar__wrap rounded-xl bg-white p-4 shadow-xl"> */}
+			<div className="mb-4 flex justify-between">
+				<div className="h-8 w-24 animate-pulse rounded bg-gray-200"></div>
+				{/* <div className="h-6 w-20 animate-pulse rounded bg-gray-200"></div> */}
+			</div>
+			<div className="mb-4">
+				<div className="mb-2 h-12 w-full animate-pulse rounded-full bg-gray-200"></div>
+				<div className="h-12 w-full animate-pulse rounded-full bg-gray-200"></div>
+			</div>
+			<div className="mb-4">
+				<div className="mb-2 h-4 w-full animate-pulse rounded bg-gray-200"></div>
+				<div className="mb-2 h-4 w-full animate-pulse rounded bg-gray-200"></div>
+				<div className="h-4 w-3/4 animate-pulse rounded bg-gray-200"></div>
+			</div>
+
+			<div className="relative mb-4 h-[200px]">
+				<div className="absolute inset-0 animate-pulse rounded-lg bg-gray-200"></div>
+				{/* <div className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-white p-2 shadow-md">
+					<div className="h-6 w-6 animate-pulse rounded-full bg-gray-200"></div>
+				</div>
+				<div className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-white p-2 shadow-md">
+					<div className="h-6 w-6 animate-pulse rounded-full bg-gray-200"></div>
+				</div> */}
+			</div>
+
+			<div className="mb-4 flex justify-center space-x-2">
+				{/* {[...Array(4)].map((_, index) => (
+					<div
+						key={index}
+						className="h-2 w-2 animate-pulse rounded-full bg-gray-300"
+					></div>
+				))} */}
+			</div>
+			<div className="mb-4">
+				<div className="mb-2 h-6 w-3/4 animate-pulse rounded bg-gray-200"></div>
+				<div className="mb-2 grid grid-cols-10 gap-4">
+					<div className="col-span-4 h-4 animate-pulse rounded bg-gray-200"></div>
+					<div className="col-span-1 h-4 animate-pulse rounded bg-gray-200"></div>
+					<div className="col-span-2 h-4 animate-pulse rounded bg-gray-200"></div>
+					<div className="col-span-3 h-4 animate-pulse rounded bg-gray-200"></div>
+				</div>
+				<div className="mb-2 grid grid-cols-10 gap-4">
+					<div className="col-span-4 h-4 animate-pulse rounded bg-gray-200"></div>
+					<div className="col-span-1 h-4 animate-pulse rounded bg-gray-200"></div>
+					<div className="col-span-2 h-4 animate-pulse rounded bg-gray-200"></div>
+					<div className="col-span-3 h-4 animate-pulse rounded bg-gray-200"></div>
+				</div>
+				<div className="grid grid-cols-10 gap-4">
+					<div className="col-span-4 h-4 animate-pulse rounded bg-gray-200"></div>
+					<div className="col-span-1 h-4 animate-pulse rounded bg-gray-200"></div>
+					<div className="col-span-2 h-4 animate-pulse rounded bg-gray-200"></div>
+					<div className="col-span-3 h-4 animate-pulse rounded bg-gray-200"></div>
+				</div>
+			</div>
+			<div className="h-12 w-full animate-pulse rounded-full bg-gray-200"></div>
+			{/* </div> */}
+		</div>
+	)
+}
+
+
+REMEMBER: 
+- Use EXACTLY "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SidebarSkeletonLoader" in useTranslations()
+- Keys should be simple names WITHOUT namespace prefix
+- JSON structure: { "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SidebarSkeletonLoader": { "Simple_Key": "value" } }
+
+=== RESPONSE ===
+<Thinking>
+Looking at this TSX file, I need to transform it to use internationalization. However, I notice that this is a skeleton loader component that only contains visual elements (divs with styling for loading animations) and no actual text content that needs to be translated.
+
+The component consists entirely of:
+- Divs with CSS classes for styling
+- Skeleton loading animations (gray boxes that pulse)
+- No visible text, labels, or content that would need translation
+
+Since there's no text content to translate, I should still follow the instructions and add the required imports and hook call, but there won't be any actual translation keys needed since there's no text to translate.
+
+Let me follow the exact format requirements:
+1. Add the import: import { useTranslations } from '@/lib/i18n'
+2. Add the hook call with the exact namespace
+3. Since there's no text to translate, the messages object will be empty for this namespace
+</Thinking>
+
+---CODE:
+```tsx
+import { useTranslations } from '@/lib/i18n';
+
+export default function SkeletonLoader() {
+	const t = useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SidebarSkeletonLoader");
+
+	return (
+		<div className="top-28">
+			{/* <div className="listingSectionSidebar__wrap rounded-xl bg-white p-4 shadow-xl"> */}
+			<div className="mb-4 flex justify-between">
+				<div className="h-8 w-24 animate-pulse rounded bg-gray-200"></div>
+				{/* <div className="h-6 w-20 animate-pulse rounded bg-gray-200"></div> */}
+			</div>
+			<div className="mb-4">
+				<div className="mb-2 h-12 w-full animate-pulse rounded-full bg-gray-200"></div>
+				<div className="h-12 w-full animate-pulse rounded-full bg-gray-200"></div>
+			</div>
+			<div className="mb-4">
+				<div className="mb-2 h-4 w-full animate-pulse rounded bg-gray-200"></div>
+				<div className="mb-2 h-4 w-full animate-pulse rounded bg-gray-200"></div>
+				<div className="h-4 w-3/4 animate-pulse rounded bg-gray-200"></div>
+			</div>
+
+			<div className="relative mb-4 h-[200px]">
+				<div className="absolute inset-0 animate-pulse rounded-lg bg-gray-200"></div>
+				{/* <div className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-white p-2 shadow-md">
+					<div className="h-6 w-6 animate-pulse rounded-full bg-gray-200"></div>
+				</div>
+				<div className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-white p-2 shadow-md">
+					<div className="h-6 w-6 animate-pulse rounded-full bg-gray-200"></div>
+				</div> */}
+			</div>
+
+			<div className="mb-4 flex justify-center space-x-2">
+				{/* {[...Array(4)].map((_, index) => (
+					<div
+						key={index}
+						className="h-2 w-2 animate-pulse rounded-full bg-gray-300"
+					></div>
+				))} */}
+			</div>
+			<div className="mb-4">
+				<div className="mb-2 h-6 w-3/4 animate-pulse rounded bg-gray-200"></div>
+				<div className="mb-2 grid grid-cols-10 gap-4">
+					<div className="col-span-4 h-4 animate-pulse rounded bg-gray-200"></div>
+					<div className="col-span-1 h-4 animate-pulse rounded bg-gray-200"></div>
+					<div className="col-span-2 h-4 animate-pulse rounded bg-gray-200"></div>
+					<div className="col-span-3 h-4 animate-pulse rounded bg-gray-200"></div>
+				</div>
+				<div className="mb-2 grid grid-cols-10 gap-4">
+					<div className="col-span-4 h-4 animate-pulse rounded bg-gray-200"></div>
+					<div className="col-span-1 h-4 animate-pulse rounded bg-gray-200"></div>
+					<div className="col-span-2 h-4 animate-pulse rounded bg-gray-200"></div>
+					<div className="col-span-3 h-4 animate-pulse rounded bg-gray-200"></div>
+				</div>
+				<div className="grid grid-cols-10 gap-4">
+					<div className="col-span-4 h-4 animate-pulse rounded bg-gray-200"></div>
+					<div className="col-span-1 h-4 animate-pulse rounded bg-gray-200"></div>
+					<div className="col-span-2 h-4 animate-pulse rounded bg-gray-200"></div>
+					<div className="col-span-3 h-4 animate-pulse rounded bg-gray-200"></div>
+				</div>
+			</div>
+			<div className="h-12 w-full animate-pulse rounded-full bg-gray-200"></div>
+			{/* </div> */}
+		</div>
+	)
+}
+```
+
+---MESSAGES:
+```json
+{
+  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SidebarSkeletonLoader": {
+  }
+}
+```
+
+=== END ===

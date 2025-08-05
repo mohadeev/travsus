@@ -26,10 +26,11 @@ import {
 	updateBookingState,
 	updateLineItemsAsync,
 } from '@/app/GlobalRedux/Features/bookingSlice/bookingSlice'
-import RowBedAccommodationSelector from '@/app/(service-detail)/[listing-experiences-detail]/RowBedAccommodationSelector'
-import GuestsInput from '@/app/(service-detail)/[listing-experiences-detail]/GuestsInput'
-import AcommodationAndTransport from '@/app/(service-detail)/[listing-experiences-detail]/listing-components/AcommodationAndTransport'
-import LineItemsBreakdown from '@/app/(service-detail)/[listing-experiences-detail]/LineItemsBreakdown'
+// import RowBedAccommodationSelector from '../../[continent]/[country]/[region]/[city]/[category]/[name]/(service-detail)/[listing-experiences-detail]/RowBedAccommodationSelector/RowBedAccommodationSelector'
+import GuestsInput from '../../[continent]/[country]/[region]/[city]/[category]/[name]/(service-detail)/[listing-experiences-detail]/RowBedAccommodationSelector/GuestsInput'
+import AcommodationAndTransport from '../../[continent]/[country]/[region]/[city]/[category]/[name]/(service-detail)/[listing-experiences-detail]/RowBedAccommodationSelector/listing-components/AcommodationAndTransport'
+import LineItemsBreakdown from '../../[continent]/[country]/[region]/[city]/[category]/[name]/(service-detail)/[listing-experiences-detail]/RowBedAccommodationSelector/LineItemsBreakdown'
+import RowBedAccommodationSelector from '../../[continent]/[country]/[region]/[city]/[category]/[name]/(service-detail)/[listing-experiences-detail]/RowBedAccommodationSelector'
 
 export interface CheckOutPagePageMainProps {
 	className?: string

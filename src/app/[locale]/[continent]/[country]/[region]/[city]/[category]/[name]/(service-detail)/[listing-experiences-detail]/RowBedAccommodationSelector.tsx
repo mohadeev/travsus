@@ -13,6 +13,7 @@ import {
 	UserRoundIcon,
 	DoorClosedIcon as CloseIcon,
 } from 'lucide-react'
+import { useTranslations } from '@/lib/i18n'
 
 type AccommodationType = 'Standard' | 'Luxury'
 type BedType = 'single' | 'twin' | 'couple'
@@ -24,24 +25,6 @@ interface BedTypeInfo {
 	minPeople: number
 	maxPeople: number
 }
-
-const bedTypes: Record<BedType, BedTypeInfo> = {
-	single: {
-		name: 'Single Bed',
-		icon: BedSingleIcon,
-		minPeople: 1,
-		maxPeople: 1,
-	},
-	twin: { name: 'Twin Beds', icon: BedSingleIcon, minPeople: 1, maxPeople: 2 },
-	couple: {
-		name: 'Couple Bed',
-		icon: BedDoubleIcon,
-		minPeople: 1,
-		maxPeople: 2,
-	},
-}
-
-const accommodationTypes: AccommodationType[] = ['Standard', 'Luxury']
 
 const useClickOutside = (handler: () => void) => {
 	const ref = useRef<HTMLDivElement>(null)
@@ -105,6 +88,24 @@ const BedTypeSelector: React.FC<BedTypeSelectorProps> = ({
 	onChange,
 	defaultValue,
 }) => {
+	const t = useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_RowBedAccommodationSelector");
+
+	const bedTypes: Record<BedType, BedTypeInfo> = {
+		single: {
+			name: t('Single_Bed'),
+			icon: BedSingleIcon,
+			minPeople: 1,
+			maxPeople: 1,
+		},
+		twin: { name: t('Twin_Beds'), icon: BedSingleIcon, minPeople: 1, maxPeople: 2 },
+		couple: {
+			name: t('Couple_Bed'),
+			icon: BedDoubleIcon,
+			minPeople: 1,
+			maxPeople: 2,
+		},
+	}
+
 	const [selectedBedType, setSelectedBedType] = useState<BedType>('single')
 	const [bedCount, setBedCount] = useState<BedTypeSelection>(
 		defaultValue || {
@@ -180,10 +181,10 @@ const BedTypeSelector: React.FC<BedTypeSelectorProps> = ({
 				</div>
 				<div className="flex-grow">
 					<span className="block font-semibold xl:text-lg">
-						{totalBeds || ''} Beds - {accommodationType}
+						{totalBeds || ''} {t('Beds')} - {accommodationType}
 					</span>
 					<span className="mt-1 block text-sm font-light leading-none text-neutral-400">
-						{totalPeople ? `${totalPeople} People` : 'Select beds'}
+						{totalPeople ? `${totalPeople} ${t('People')}` : t('Select_Beds')}
 					</span>
 				</div>
 			</button>
@@ -214,7 +215,7 @@ const BedTypeSelector: React.FC<BedTypeSelectorProps> = ({
 											<div className="relative z-10 flex flex-1 overflow-y-auto">
 												<div className="w-full p-6">
 													<h2 className="mb-6 text-2xl font-bold">
-														Select Beds
+														{t('Select_Beds_Title')}
 													</h2>
 													<div className="relative mb-4 h-[150px] overflow-hidden">
 														<AnimatePresence
@@ -257,7 +258,7 @@ const BedTypeSelector: React.FC<BedTypeSelectorProps> = ({
 																	</span>
 																	<span className="mt-1 text-xs">
 																		{bedTypes[selectedBedType].minPeople} -{' '}
-																		{bedTypes[selectedBedType].maxPeople} People
+																		{bedTypes[selectedBedType].maxPeople} {t('People')}
 																	</span>
 																</div>
 															</motion.div>
@@ -265,14 +266,14 @@ const BedTypeSelector: React.FC<BedTypeSelectorProps> = ({
 														<button
 															onClick={handlePrev}
 															className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-white p-2 shadow-md"
-															aria-label="Previous bed type"
+															aria-label={t('Previous_Bed_Type')}
 														>
 															<ChevronLeft className="h-6 w-6" />
 														</button>
 														<button
 															onClick={handleNext}
 															className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-white p-2 shadow-md"
-															aria-label="Next bed type"
+															aria-label={t('Next_Bed_Type')}
 														>
 															<ChevronRight className="h-6 w-6" />
 														</button>
@@ -288,7 +289,7 @@ const BedTypeSelector: React.FC<BedTypeSelectorProps> = ({
 																		? 'bg-black'
 																		: 'bg-gray-300'
 																}`}
-																aria-label={`Go to bed type ${index + 1}`}
+																aria-label={`${t('Go_To_Bed_Type')} ${index + 1}`}
 															/>
 														))}
 													</div>
@@ -305,7 +306,7 @@ const BedTypeSelector: React.FC<BedTypeSelectorProps> = ({
 																<div className="flex w-full items-center justify-between">
 																	<div className="flex items-center">
 																		<UserIcon className="mr-2 h-5 w-5" />
-																		<span>Adults</span>
+																		<span>{t('Adults')}</span>
 																	</div>
 																	<div className="flex items-center">
 																		<button
@@ -340,7 +341,7 @@ const BedTypeSelector: React.FC<BedTypeSelectorProps> = ({
 																<div className="mt-2 flex w-full items-center justify-between">
 																	<div className="flex items-center">
 																		<UserRoundIcon className="mr-2 h-5 w-5" />
-																		<span>Children</span>
+																		<span>{t('Children')}</span>
 																	</div>
 																	<div className="flex items-center">
 																		<button
@@ -385,13 +386,13 @@ const BedTypeSelector: React.FC<BedTypeSelectorProps> = ({
 											onClick={() => setIsModalOpen(false)}
 											className="rounded-full border border-black bg-white px-4 py-2 text-black hover:bg-gray-100"
 										>
-											Cancel
+											{t('Cancel')}
 										</button>
 										<button
 											onClick={() => setIsModalOpen(false)}
 											className="rounded-full border border-black bg-black px-4 py-2 text-white hover:bg-gray-800"
 										>
-											OK
+											{t('OK')}
 										</button>
 									</div>
 								</motion.div>
@@ -412,6 +413,8 @@ interface RowBedAccommodationSelectorProps {
 const RowBedAccommodationSelector: React.FC<
 	RowBedAccommodationSelectorProps
 > = ({ onChange, defaultValue }) => {
+	const accommodationTypes: AccommodationType[] = ['Standard', 'Luxury']
+	
 	const [selection, setSelection] = useState<
 		Record<AccommodationType, BedTypeSelection>
 	>(

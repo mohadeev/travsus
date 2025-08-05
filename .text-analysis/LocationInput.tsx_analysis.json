@@ -1,0 +1,79 @@
+{
+  "file": "C:\\Users\\Usuario\\s\\travsus\\src\\app\\(client-components)\\(HeroSearchForm2Mobile)\\LocationInput.tsx",
+  "timestamp": "2025-08-02T11:53:18.858Z",
+  "hasTranslatableText": true,
+  "textCount": 14,
+  "texts": [
+    {
+      "type": "jsx_attribute",
+      "text": "United States",
+      "context": "\r\n\tdefaultValue = 'United States'"
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "block text-base font-semibold",
+      "context": " className=\"block text-base font-semibold\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "mt-3",
+      "context": " className=\"mt-3\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "mb-1 flex items-center space-x-3 py-2 text-sm",
+      "context": "\r\n\t\t\t\t\t\t\t\tclassName=\"mb-1 flex items-center space-x-3 py-2 text-sm\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "h-5 w-5 text-neutral-500 dark:text-neutral-400",
+      "context": " className=\"h-5 w-5 text-neutral-500 dark:text-neutral-400\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "p-5",
+      "context": " className=\"p-5\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "block text-xl font-semibold sm:text-2xl",
+      "context": " className=\"block text-xl font-semibold sm:text-2xl\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "relative mt-5",
+      "context": " className=\"relative mt-5\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "absolute right-2.5 top-1/2 -translate-y-1/2",
+      "context": " className=\"absolute right-2.5 top-1/2 -translate-y-1/2\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "h-5 w-5 text-neutral-700 dark:text-neutral-400",
+      "context": " className=\"h-5 w-5 text-neutral-700 dark:text-neutral-400\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "mt-7",
+      "context": " className=\"mt-7\""
+    },
+    {
+      "type": "object_property",
+      "text": "United Kingdom",
+      "context": "name: 'United Kingdom'"
+    },
+    {
+      "type": "object_property",
+      "text": "United Arab Emirates",
+      "context": "name: 'United Arab Emirates'"
+    },
+    {
+      "type": "template_literal",
+      "text": "block w-full truncate rounded-xl border border-neutral-900 bg-transparent px-4 py-3 pr-12 text-base font-bold leading-none placeholder-neutral-500 placeholder:truncate focus:outline-none focus:ring-0 dark:border-neutral-200 dark:placeholder-neutral-300",
+      "context": "`block w-full truncate rounded-xl border border-neutral-900 bg-transparent px-4 py-3 pr-12 text-base font-bold leading-none placeholder-neutral-500 placeholder:truncate focus:outline-none focus:ring-0 dark:border-neutral-200 dark:placeholder-neutral-300`"
+    }
+  ],
+  "fileSize": 3207
+}

@@ -1,0 +1,14 @@
+{
+  "file": "C:\\Users\\Usuario\\s\\travsus\\src\\shared\\Navigation\\Navigation.tsx",
+  "timestamp": "2025-08-02T11:38:59.260Z",
+  "hasTranslatableText": true,
+  "textCount": 1,
+  "texts": [
+    {
+      "type": "jsx_attribute",
+      "text": "nc-Navigation relative hidden lg:flex lg:flex-wrap lg:space-x-1",
+      "context": " className=\"nc-Navigation relative hidden lg:flex lg:flex-wrap lg:space-x-1\""
+    }
+  ],
+  "fileSize": 393
+}

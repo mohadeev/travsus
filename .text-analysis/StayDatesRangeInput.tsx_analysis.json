@@ -1,0 +1,59 @@
+{
+  "file": "C:\\Users\\Usuario\\s\\travsus\\src\\app\\[locale]\\[continent]\\[country]\\[region]\\[city]\\[category]\\[name]\\(service-detail)\\[listing-experiences-detail]\\StayDatesRangeInput.tsx",
+  "timestamp": "2025-08-02T12:37:42.146Z",
+  "hasTranslatableText": true,
+  "textCount": 10,
+  "texts": [
+    {
+      "type": "jsx_attribute",
+      "text": "flex-1",
+      "context": "\r\n\tclassName = 'flex-1'"
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "text-neutral-300 dark:text-neutral-400",
+      "context": " className=\"text-neutral-300 dark:text-neutral-400\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "h-5 w-5 lg:h-7 lg:w-7",
+      "context": " className=\"h-5 w-5 lg:h-7 lg:w-7\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "flex-grow text-left",
+      "context": " className=\"flex-grow text-left\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "block font-semibold xl:text-lg",
+      "context": " className=\"block font-semibold xl:text-lg\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "mt-1 block text-sm font-light leading-none text-neutral-400",
+      "context": " className=\"mt-1 block text-sm font-light leading-none text-neutral-400\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "absolute left-auto right-0 top-full z-10 mt-3 w-screen max-w-sm px-4 sm:px-0 lg:max-w-3xl xl:-right-10",
+      "context": " className=\"absolute left-auto right-0 top-full z-10 mt-3 w-screen max-w-sm px-4 sm:px-0 lg:max-w-3xl xl:-right-10\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "overflow-hidden rounded-3xl bg-white p-8 shadow-lg ring-1 ring-black ring-opacity-5 dark:bg-neutral-800",
+      "context": " className=\"overflow-hidden rounded-3xl bg-white p-8 shadow-lg ring-1 ring-black ring-opacity-5 dark:bg-neutral-800\""
+    },
+    {
+      "type": "return_string",
+      "text": "relative flex w-full flex-1 items-center gap-1 focus:outline-none ${styles.inputWrapper} ${isFlashing ? styles.flashing :",
+      "context": "return (\r\n\t\t\t<div\r\n\t\t\t\tclassName={`relative flex w-full flex-1 items-center gap-1 focus:outline-none ${styles.inputWrapper} ${isFlashing ? styles.flashing : '"
+    },
+    {
+      "type": "return_string",
+      "text": "StayDatesRangeInput relative z-10 flex ${className}",
+      "context": "return (\r\n\t\t<Popover className={`StayDatesRangeInput relative z-10 flex ${className}`"
+    }
+  ],
+  "fileSize": 4172
+}

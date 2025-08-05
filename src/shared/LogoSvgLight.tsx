@@ -1,6 +1,9 @@
 import React from "react";
+import { useTranslations } from '@/lib/i18n'
 
 const LogoSvgLight = () => {
+  const t = useTranslations("shared_LogoSvgLight");
+  
   return (
     <svg
       className="w-full hidden dark:block"

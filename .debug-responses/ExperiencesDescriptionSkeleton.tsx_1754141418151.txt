@@ -1,0 +1,122 @@
+
+=== FILE: C:\Users\Usuario\s\travsus\src\app\[locale]\[continent]\[country]\[region]\[city]\[category]\[name]\(service-detail)\[listing-experiences-detail]\ExperiencesDescriptionSkeleton.tsx ===
+=== NAMESPACE: ExperiencesDescriptionSkeleton ===
+=== PROMPT ===
+# ULTRA-STRICT INTERNATIONALIZATION INSTRUCTIONS
+
+Transform this TSX file to use internationalization. I've provided the component code below.
+
+## CRITICAL NAMESPACE REQUIREMENT:
+- You MUST use the exact namespace: "ExperiencesDescriptionSkeleton"
+- The useTranslations call MUST be: useTranslations("ExperiencesDescriptionSkeleton")
+- Do NOT modify this namespace in any way
+
+## EXACT REQUIREMENTS:
+1. Add this import: import { useTranslations } from '@/lib/i18n'
+2. Add this hook call: const t = useTranslations("ExperiencesDescriptionSkeleton");
+3. Replace static text with: t('ExperiencesDescriptionSkeleton_Key_Name')
+4. Generate keys like: ExperiencesDescriptionSkeleton_Welcome_Message, ExperiencesDescriptionSkeleton_Button_Text
+
+## VALIDATION CHECKLIST:
+✓ Import added: import { useTranslations } from '@/lib/i18n'
+✓ Hook called with EXACT namespace: useTranslations("ExperiencesDescriptionSkeleton")
+✓ Keys start with namespace: ExperiencesDescriptionSkeleton_*
+✓ No dots in keys (use underscores)
+
+## OUTPUT FORMAT:
+---CODE:
+<COMPLETE TSX FILE WITH EXACT NAMESPACE>
+---MESSAGES:
+{
+  "ExperiencesDescriptionSkeleton": {
+    "ExperiencesDescriptionSkeleton_Key1": "Original text 1",
+    "ExperiencesDescriptionSkeleton_Key2": "Original text 2"
+  }
+}
+
+## FILE TO TRANSFORM:
+import type React from 'react'
+
+const ExperiencesDescriptionSkeleton: React.FC = (props: any) => {
+	const { className } = props
+	return (
+		<div className={className}>
+			<div className="space-y-8">
+				<div className="h-8 w-64 animate-pulse rounded-md bg-gray-200" />
+				<div className="space-y-4">
+					{[...Array(4)].map((_, index) => (
+						<div key={index} className="space-y-2">
+							<div className="h-4 w-full animate-pulse rounded-md bg-gray-200" />
+							<div className="h-4 w-5/6 animate-pulse rounded-md bg-gray-200" />
+							<div className="h-4 w-4/6 animate-pulse rounded-md bg-gray-200" />
+						</div>
+					))}
+				</div>
+			</div>
+		</div>
+	)
+}
+
+export default ExperiencesDescriptionSkeleton
+
+
+REMEMBER: Use EXACTLY "ExperiencesDescriptionSkeleton" and replace all user-facing text!
+
+=== RESPONSE ===
+<Thinking>
+Looking at this TSX file, I need to analyze what text content needs to be internationalized. However, I notice that this is a skeleton loading component that only contains animated placeholder divs with no actual text content. 
+
+The component consists of:
+- A main div with className
+- Nested divs with space-y-8
+- A div with h-8 w-64 (likely a title placeholder)
+- A loop creating 4 skeleton text lines
+
+Since this is purely a skeleton/loading component with no user-facing text, there's actually nothing to internationalize. The component only contains HTML structure and CSS classes for creating loading animations.
+
+However, the user is asking me to transform this for internationalization and specifically mentions "replace all user-facing text" and to follow the exact format. Since there's no actual text content in this skeleton component, I should still add the required import and hook call as requested, but there won't be any actual text to replace with translation keys.
+
+I'll add the required import and hook call, but there will be no translation keys needed since there's no text content.
+</Thinking>
+
+---CODE:
+```tsx
+import type React from 'react'
+import { useTranslations } from '@/lib/i18n'
+
+const ExperiencesDescriptionSkeleton: React.FC = (props: any) => {
+	const { className } = props
+	const t = useTranslations("ExperiencesDescriptionSkeleton");
+	
+	return (
+		<div className={className}>
+			<div className="space-y-8">
+				<div className="h-8 w-64 animate-pulse rounded-md bg-gray-200" />
+				<div className="space-y-4">
+					{[...Array(4)].map((_, index) => (
+						<div key={index} className="space-y-2">
+							<div className="h-4 w-full animate-pulse rounded-md bg-gray-200" />
+							<div className="h-4 w-5/6 animate-pulse rounded-md bg-gray-200" />
+							<div className="h-4 w-4/6 animate-pulse rounded-md bg-gray-200" />
+						</div>
+					))}
+				</div>
+			</div>
+		</div>
+	)
+}
+
+export default ExperiencesDescriptionSkeleton
+```
+
+---MESSAGES:
+```json
+{
+  "ExperiencesDescriptionSkeleton": {
+  }
+}
+```
+
+Note: This skeleton component contains no user-facing text content to internationalize. It only consists of animated placeholder elements for loading states. The required import and hook have been added as specified, but no translation keys are needed since there are no text strings to translate.
+
+=== END ===

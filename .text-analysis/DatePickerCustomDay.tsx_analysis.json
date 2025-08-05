@@ -1,0 +1,14 @@
+{
+  "file": "C:\\Users\\Usuario\\s\\travsus\\src\\components\\DatePickerCustomDay.tsx",
+  "timestamp": "2025-08-02T12:35:14.521Z",
+  "hasTranslatableText": true,
+  "textCount": 1,
+  "texts": [
+    {
+      "type": "jsx_attribute",
+      "text": "react-datepicker__day_span",
+      "context": " className=\"react-datepicker__day_span\""
+    }
+  ],
+  "fileSize": 300
+}

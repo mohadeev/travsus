@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
+import { useTranslations } from '@/lib/i18n'
 import TourMap from './tour-map'
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
@@ -30,8 +31,10 @@ interface TourItineraryWithMapProps {
 
 export default function TourItineraryWithMap({
 	days,
-	title = 'Desert Tour',
+	title,
 }: TourItineraryWithMapProps) {
+	const t = useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_touritinerarywithmap");
+	
 	const [selectedDayIndex, setSelectedDayIndex] = useState<number>(0)
 	const [selectedStopIndex, setSelectedStopIndex] = useState<number>(0)
 	const [expandedDays, setExpandedDays] = useState<boolean[]>(
@@ -73,8 +76,8 @@ export default function TourItineraryWithMap({
 	// Get stops for the selected day, or create a default one if none exist
 	const stops = selectedDay.stops || [
 		{
-			name: selectedDay.cityName || 'Tour Stop',
-			description: selectedDay.description || 'No description available',
+			name: selectedDay.cityName || t('Tour_Stop'),
+			description: selectedDay.description || t('No_Description_Available'),
 		},
 	]
 
@@ -181,7 +184,7 @@ export default function TourItineraryWithMap({
 						}`}
 						onClick={() => handleDaySelect(-1)}
 					>
-						Overview
+						{t('Overview')}
 					</button>
 
 					{days.map((day, index) => (
@@ -194,7 +197,7 @@ export default function TourItineraryWithMap({
 							}`}
 							onClick={() => handleDaySelect(index)}
 						>
-							Day {index + 1}
+							{t('Day_Label')} {index + 1}
 						</button>
 					))}
 				</div>
@@ -204,9 +207,9 @@ export default function TourItineraryWithMap({
 			<div className="border-b bg-gray-50 px-6 py-2 text-sm text-black">
 				{selectedDayIndex === -1 ? (
 					<div className="flex gap-2">
-						<span>Full Map</span>
+						<span>{t('Full_Map')}</span>
 						<span>•</span>
-						<span>{days.length} days</span>
+						<span>{days.length} {t('Days_Label')}</span>
 					</div>
 				) : (
 					<div>{selectedDay.name}</div>
@@ -220,9 +223,9 @@ export default function TourItineraryWithMap({
 					{selectedDayIndex === -1 ? (
 						// Overview content
 						<div>
-							<h2 className="mb-4 text-xl font-bold">{title}</h2>
+							<h2 className="mb-4 text-xl font-bold">{title || t('Desert_Tour')}</h2>
 							<p className="mb-6 text-black">
-								{days.length} day journey through{' '}
+								{days.length} {t('Journey_Through')} {' '}
 								{days
 									.map((d) => d.cityName)
 									.filter(Boolean)
@@ -282,7 +285,7 @@ export default function TourItineraryWithMap({
 												<h3 className="font-medium">{stop.name}</h3>
 												{stop.duration && (
 													<p className="mt-1 text-sm text-black">
-														Stop: {stop.duration}
+														{t('Stop_Label')} {stop.duration}
 													</p>
 												)}
 
@@ -337,11 +340,11 @@ export default function TourItineraryWithMap({
 
 			{/* SEO-friendly hidden content - visible to search engines but not to users */}
 			<div className="sr-only">
-				<h2>{title} - Complete Itinerary</h2>
+				<h2>{title || t('Desert_Tour')} - {t('Complete_Itinerary')}</h2>
 				{days.map((day, index) => (
 					<div key={`seo-day-${index}`}>
 						<h3>
-							Day {index + 1}: {day.name}
+							{t('Day_Heading')} {index + 1}: {day.name}
 						</h3>
 						<p>{day.description}</p>
 						{day.stops &&
@@ -349,7 +352,7 @@ export default function TourItineraryWithMap({
 								<div key={`seo-stop-${index}-${stopIndex}`}>
 									<h4>{stop.name}</h4>
 									<p>{stop.description}</p>
-									{stop.duration && <p>Duration: {stop.duration}</p>}
+									{stop.duration && <p>{t('Duration_Label')} {stop.duration}</p>}
 								</div>
 							))}
 					</div>

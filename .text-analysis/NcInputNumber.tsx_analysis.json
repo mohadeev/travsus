@@ -1,0 +1,49 @@
+{
+  "file": "C:\\Users\\Usuario\\s\\travsus\\src\\components\\NcInputNumber.tsx",
+  "timestamp": "2025-08-02T11:50:36.247Z",
+  "hasTranslatableText": true,
+  "textCount": 8,
+  "texts": [
+    {
+      "type": "jsx_attribute",
+      "text": "w-full",
+      "context": "\r\n  className = \"w-full\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "flex flex-col",
+      "context": " className=\"flex flex-col\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "font-medium text-neutral-800 dark:text-neutral-200",
+      "context": " className=\"font-medium text-neutral-800 dark:text-neutral-200\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "text-xs text-neutral-500 dark:text-neutral-400 font-normal",
+      "context": " className=\"text-xs text-neutral-500 dark:text-neutral-400 font-normal\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "w-8 h-8 rounded-full flex items-center justify-center border border-neutral-400 dark:border-neutral-500 bg-white dark:bg-neutral-900 focus:outline-none hover:border-neutral-700 disabled:hover:border-neutral-400 dark:disabled:hover:border-neutral-500 disabled:opacity-50 disabled:cursor-default",
+      "context": "\r\n          className=\"w-8 h-8 rounded-full flex items-center justify-center border border-neutral-400 dark:border-neutral-500 bg-white dark:bg-neutral-900 focus:outline-none hover:border-neutral-700 disabled:hover:border-neutral-400 dark:disabled:hover:border-neutral-500 disabled:opacity-50 disabled:cursor-default\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "w-4 h-4",
+      "context": " className=\"w-4 h-4\""
+    },
+    {
+      "type": "return_string",
+      "text": "nc-NcInputNumber flex items-center justify-between space-x-5 ${className}",
+      "context": "return (\r\n    <div\r\n      className={`nc-NcInputNumber flex items-center justify-between space-x-5 ${className}`"
+    },
+    {
+      "type": "template_literal",
+      "text": "nc-NcInputNumber flex items-center justify-between w-28",
+      "context": "`nc-NcInputNumber flex items-center justify-between w-28`"
+    }
+  ],
+  "fileSize": 2808
+}

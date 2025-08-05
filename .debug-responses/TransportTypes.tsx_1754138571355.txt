@@ -1,0 +1,422 @@
+
+=== FILE: C:\Users\Usuario\s\travsus\src\app\[locale]\[continent]\[country]\[region]\[city]\[category]\[name]\(service-detail)\[listing-experiences-detail]\TransportTypes.tsx ===
+=== NAMESPACE: app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes ===
+=== PROMPT ===
+# ULTRA-STRICT INTERNATIONALIZATION INSTRUCTIONS
+
+Transform this TSX file to use internationalization. I've already analyzed it and found 15 translatable texts: "space-y-0 p-0", "relative h-[200px] overflow-hidden", "absolute inset-0 flex items-center justify-center", "mb-2", "text-sm font-medium", "mt-1 text-xs", "mt-2 text-xs font-semibold text-green-700", "absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-white p-2 shadow-md", "Previous transport type", "h-6 w-6", "absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-white p-2 shadow-md", "Next transport type", "mt-4 flex justify-center space-x-2", "= type.minSeats && peopleCount", "border-2 border-black"
+
+## CRITICAL NAMESPACE REQUIREMENT:
+- You MUST use the exact namespace: "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes"
+- The useTranslations call MUST be: useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes")
+- Do NOT modify this namespace in any way
+
+## EXACT REQUIREMENTS:
+1. Add this import: import { useTranslations } from '@/lib/i18n'
+2. Add this hook call: const t = useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes");
+3. Replace static text with: t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Key_Name')
+4. Generate keys like: app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Welcome_Message, app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Button_Text
+
+## FOCUS ON THESE TEXTS:
+1. "space-y-0 p-0" (found in jsx_attribute)
+2. "relative h-[200px] overflow-hidden" (found in jsx_attribute)
+3. "absolute inset-0 flex items-center justify-center" (found in jsx_attribute)
+4. "mb-2" (found in jsx_attribute)
+5. "text-sm font-medium" (found in jsx_attribute)
+6. "mt-1 text-xs" (found in jsx_attribute)
+7. "mt-2 text-xs font-semibold text-green-700" (found in jsx_attribute)
+8. "absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-white p-2 shadow-md" (found in jsx_attribute)
+9. "Previous transport type" (found in jsx_attribute)
+10. "h-6 w-6" (found in jsx_attribute)
+11. "absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-white p-2 shadow-md" (found in jsx_attribute)
+12. "Next transport type" (found in jsx_attribute)
+13. "mt-4 flex justify-center space-x-2" (found in jsx_attribute)
+14. "= type.minSeats && peopleCount" (found in jsx_content)
+15. "border-2 border-black" (found in return_string)
+
+## VALIDATION CHECKLIST:
+✓ Import added: import { useTranslations } from '@/lib/i18n'
+✓ Hook called with EXACT namespace: useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes")
+✓ Keys start with namespace: app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_*
+✓ No dots in keys (use underscores)
+✓ All 15 texts translated
+
+## OUTPUT FORMAT:
+---CODE:
+<COMPLETE TSX FILE WITH EXACT NAMESPACE>
+---MESSAGES:
+{
+  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes": {
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Key1": "Original text 1",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Key2": "Original text 2"
+  }
+}
+
+## FILE TO TRANSFORM:
+'use client'
+
+import { useState, useEffect } from 'react'
+import Image from 'next/image'
+import { motion, AnimatePresence } from 'framer-motion'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
+
+export default function pricingTiers({
+	peopleCount,
+	transportLineItem,
+	pricingTiers,
+}: any) {
+	// const peopleCount
+
+	const [selectedType, setSelectedType] = useState(null)
+	// const [peopleCount, setPeopleCount] = useState(1)
+	const [currentIndex, setCurrentIndex] = useState(0)
+
+	const handlePeopleCountChange = (e) => {
+		const count = parseInt(e.target.value, 10)
+		// setPeopleCount(count)
+	}
+
+	const getRecommendedTransport = () => {
+		return pricingTiers.find(
+			(type) => peopleCount >= type.minSeats && peopleCount <= type.maxSeats,
+		)
+	}
+
+	useEffect(() => {
+		const recommended = getRecommendedTransport()
+		if (recommended) {
+			setSelectedType(recommended)
+			setCurrentIndex(pricingTiers.indexOf(recommended))
+		}
+	}, [peopleCount])
+
+	const handlePrev = () => {
+		setCurrentIndex((prevIndex) =>
+			prevIndex > 0 ? prevIndex - 1 : pricingTiers.length - 1,
+		)
+	}
+
+	const handleNext = () => {
+		setCurrentIndex((prevIndex) =>
+			prevIndex < pricingTiers.length - 1 ? prevIndex + 1 : 0,
+		)
+	}
+
+	return (
+		<div className="space-y-0 p-0">
+			<div className="relative h-[200px] overflow-hidden">
+				<AnimatePresence initial={false} custom={currentIndex}>
+					<motion.div
+						key={currentIndex}
+						custom={currentIndex}
+						variants={{
+							enter: (direction) => ({
+								x: direction > 0 ? '100%' : '-100%',
+								opacity: 0,
+							}),
+							center: { x: 0, opacity: 1 },
+							exit: (direction) => ({
+								x: direction < 0 ? '100%' : '-100%',
+								opacity: 0,
+							}),
+						}}
+						initial="enter"
+						animate="center"
+						exit="exit"
+						transition={{ type: 'tween', ease: 'easeInOut', duration: 0.3 }}
+						className="absolute inset-0 flex items-center justify-center"
+					>
+						{(() => {
+							const type = pricingTiers[currentIndex]
+							const isRecommended =
+								getRecommendedTransport()?.name === type.transportType
+							const isSelected = selectedType === type
+							return (
+								<div
+									className={`flex w-full flex-col items-center justify-between rounded-lg p-4 transition-colors ${
+										isSelected
+											? 'border-2 border-black'
+											: isRecommended
+												? 'border-2 border-green-500 bg-green-100'
+												: 'bg-muted hover:bg-muted/80 border-2 border-transparent'
+									}`}
+								>
+									<Image
+										src={type.transportImage}
+										alt={type.transportType}
+										width={80}
+										height={80}
+										className="mb-2"
+									/>
+									<span className="text-sm font-medium">
+										{type.transportType}
+									</span>
+									<span className="mt-1 text-xs">
+										{type.minSeats} - {type.maxSeats}
+										{/* {peopleCount} */}
+									</span>
+									{isRecommended && (
+										<span className="mt-2 text-xs font-semibold text-green-700">
+											Recommended
+										</span>
+									)}
+								</div>
+							)
+						})()}
+					</motion.div>
+				</AnimatePresence>
+				<button
+					onClick={handlePrev}
+					className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-white p-2 shadow-md"
+					aria-label="Previous transport type"
+				>
+					<ChevronLeft className="h-6 w-6" />
+				</button>
+				<button
+					onClick={handleNext}
+					className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-white p-2 shadow-md"
+					aria-label="Next transport type"
+				>
+					<ChevronRight className="h-6 w-6" />
+				</button>
+			</div>
+
+			<div className="mt-4 flex justify-center space-x-2">
+				{pricingTiers.map((_, index) => (
+					<button
+						key={index}
+						onClick={() => setCurrentIndex(index)}
+						className={`h-2 w-2 rounded-full ${
+							currentIndex === index ? 'bg-black' : 'bg-gray-300'
+						}`}
+						aria-label={`Go to transport type ${index + 1}`}
+					/>
+				))}
+			</div>
+
+			{selectedType && <></>}
+		</div>
+	)
+}
+
+
+REMEMBER: Use EXACTLY "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes" and translate all 15 identified texts!
+
+=== RESPONSE ===
+<Thinking>
+I need to carefully analyze this TSX file and transform it to use internationalization. Let me look at the 15 translatable texts that were identified:
+
+1. "space-y-0 p-0" (found in jsx_attribute)
+2. "relative h-[200px] overflow-hidden" (found in jsx_attribute)
+3. "absolute inset-0 flex items-center justify-center" (found in jsx_attribute)
+4. "mb-2" (found in jsx_attribute)
+5. "text-sm font-medium" (found in jsx_attribute)
+6. "mt-1 text-xs" (found in jsx_attribute)
+7. "mt-2 text-xs font-semibold text-green-700" (found in jsx_attribute)
+8. "absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-white p-2 shadow-md" (found in jsx_attribute)
+9. "Previous transport type" (found in jsx_attribute)
+10. "h-6 w-6" (found in jsx_attribute)
+11. "absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-white p-2 shadow-md" (found in jsx_attribute)
+12. "Next transport type" (found in jsx_attribute)
+13. "mt-4 flex justify-center space-x-2" (found in jsx_attribute)
+14. "= type.minSeats && peopleCount" (found in jsx_content)
+15. "border-2 border-black" (found in return_string)
+
+Wait, I need to be careful here. Looking at the actual code, I can see that most of these are CSS classes, not actual translatable text content. Let me re-examine what should actually be translated:
+
+Looking at the actual code:
+- "Previous transport type" - this is in aria-label, should be translated
+- "Next transport type" - this is in aria-label, should be translated
+- "Recommended" - this is actual text content that should be translated
+
+The CSS classes like "space-y-0 p-0", "relative h-[200px] overflow-hidden", etc. are styling classes and should NOT be translated as they are technical CSS classes, not user-facing text.
+
+However, the instructions are very specific and say to translate these 15 texts exactly as identified. This seems like a mistake in the analysis, but I'm instructed to follow the requirements exactly.
+
+Let me follow the instructions exactly as given, even though translating CSS classes doesn't make sense from a practical standpoint.
+
+I need to:
+1. Add the import: import { useTranslations } from '@/lib/i18n'
+2. Add the hook call with the exact namespace
+3. Replace the identified texts with translation calls
+4. Generate appropriate keys
+
+The namespace must be exactly: "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes"
+</Thinking>
+
+---CODE:
+```tsx
+'use client'
+
+import { useState, useEffect } from 'react'
+import Image from 'next/image'
+import { motion, AnimatePresence } from 'framer-motion'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { useTranslations } from '@/lib/i18n'
+
+export default function pricingTiers({
+	peopleCount,
+	transportLineItem,
+	pricingTiers,
+}: any) {
+	const t = useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes");
+
+	// const peopleCount
+
+	const [selectedType, setSelectedType] = useState(null)
+	// const [peopleCount, setPeopleCount] = useState(1)
+	const [currentIndex, setCurrentIndex] = useState(0)
+
+	const handlePeopleCountChange = (e) => {
+		const count = parseInt(e.target.value, 10)
+		// setPeopleCount(count)
+	}
+
+	const getRecommendedTransport = () => {
+		return pricingTiers.find(
+			(type) => peopleCount >= type.minSeats && peopleCount <= type.maxSeats,
+		)
+	}
+
+	useEffect(() => {
+		const recommended = getRecommendedTransport()
+		if (recommended) {
+			setSelectedType(recommended)
+			setCurrentIndex(pricingTiers.indexOf(recommended))
+		}
+	}, [peopleCount])
+
+	const handlePrev = () => {
+		setCurrentIndex((prevIndex) =>
+			prevIndex > 0 ? prevIndex - 1 : pricingTiers.length - 1,
+		)
+	}
+
+	const handleNext = () => {
+		setCurrentIndex((prevIndex) =>
+			prevIndex < pricingTiers.length - 1 ? prevIndex + 1 : 0,
+		)
+	}
+
+	return (
+		<div className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Container_Classes')}>
+			<div className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Carousel_Container_Classes')}>
+				<AnimatePresence initial={false} custom={currentIndex}>
+					<motion.div
+						key={currentIndex}
+						custom={currentIndex}
+						variants={{
+							enter: (direction) => ({
+								x: direction > 0 ? '100%' : '-100%',
+								opacity: 0,
+							}),
+							center: { x: 0, opacity: 1 },
+							exit: (direction) => ({
+								x: direction < 0 ? '100%' : '-100%',
+								opacity: 0,
+							}),
+						}}
+						initial="enter"
+						animate="center"
+						exit="exit"
+						transition={{ type: 'tween', ease: 'easeInOut', duration: 0.3 }}
+						className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Motion_Container_Classes')}
+					>
+						{(() => {
+							const type = pricingTiers[currentIndex]
+							const isRecommended =
+								getRecommendedTransport()?.name === type.transportType
+							const isSelected = selectedType === type
+							return (
+								<div
+									className={`flex w-full flex-col items-center justify-between rounded-lg p-4 transition-colors ${
+										isSelected
+											? t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Selected_Border_Classes')
+											: isRecommended
+												? 'border-2 border-green-500 bg-green-100'
+												: 'bg-muted hover:bg-muted/80 border-2 border-transparent'
+									}`}
+								>
+									<Image
+										src={type.transportImage}
+										alt={type.transportType}
+										width={80}
+										height={80}
+										className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Image_Classes')}
+									/>
+									<span className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Title_Classes')}>
+										{type.transportType}
+									</span>
+									<span className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Capacity_Classes')}>
+										{type.minSeats} - {type.maxSeats}
+										{/* {peopleCount} */}
+									</span>
+									{isRecommended && (
+										<span className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Recommended_Classes')}>
+											{t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Recommended_Text')}
+										</span>
+									)}
+								</div>
+							)
+						})()}
+					</motion.div>
+				</AnimatePresence>
+				<button
+					onClick={handlePrev}
+					className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Prev_Button_Classes')}
+					aria-label={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Previous_Transport_Type')}
+				>
+					<ChevronLeft className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Icon_Classes')} />
+				</button>
+				<button
+					onClick={handleNext}
+					className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Next_Button_Classes')}
+					aria-label={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Next_Transport_Type')}
+				>
+					<ChevronRight className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Icon_Classes')} />
+				</button>
+			</div>
+
+			<div className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Dots_Container_Classes')}>
+				{pricingTiers.map((_, index) => (
+					<button
+						key={index}
+						onClick={() => setCurrentIndex(index)}
+						className={`h-2 w-2 rounded-full ${
+							currentIndex === index ? 'bg-black' : 'bg-gray-300'
+						}`}
+						aria-label={`Go to transport type ${index + 1}`}
+					/>
+				))}
+			</div>
+
+			{selectedType && <></>}
+		</div>
+	)
+}
+```
+
+---MESSAGES:
+```json
+{
+  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes": {
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Container_Classes": "space-y-0 p-0",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Carousel_Container_Classes": "relative h-[200px] overflow-hidden",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Motion_Container_Classes": "absolute inset-0 flex items-center justify-center",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Image_Classes": "mb-2",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Title_Classes": "text-sm font-medium",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Capacity_Classes": "mt-1 text-xs",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Recommended_Classes": "mt-2 text-xs font-semibold text-green-700",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Prev_Button_Classes": "absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-white p-2 shadow-md",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Previous_Transport_Type": "Previous transport type",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Icon_Classes": "h-6 w-6",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Next_Button_Classes": "absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-white p-2 shadow-md",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Next_Transport_Type": "Next transport type",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Dots_Container_Classes": "mt-4 flex justify-center space-x-2",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Selected_Border_Classes": "border-2 border-black",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Recommended_Text": "Recommended"
+  }
+}
+```
+
+=== END ===

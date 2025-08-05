@@ -1,0 +1,87 @@
+
+=== FILE: C:\Users\Usuario\s\travsus\src\components\DatePickerCustomDay.tsx ===
+=== NAMESPACE: components_DatePickerCustomDay ===
+=== PROMPT ===
+# ULTRA-STRICT INTERNATIONALIZATION INSTRUCTIONS
+
+Transform this TSX file to use internationalization. I've already analyzed it and found 1 translatable texts: "react-datepicker__day_span"
+
+## CRITICAL NAMESPACE REQUIREMENT:
+- You MUST use the exact namespace: "components_DatePickerCustomDay"
+- The useTranslations call MUST be: useTranslations("components_DatePickerCustomDay")
+- Do NOT modify this namespace in any way
+
+## EXACT REQUIREMENTS:
+1. Add this import: import { useTranslations } from '@/lib/i18n'
+2. Add this hook call: const t = useTranslations("components_DatePickerCustomDay");
+3. Replace static text with: t('components_DatePickerCustomDay_Key_Name')
+4. Generate keys like: components_DatePickerCustomDay_Welcome_Message, components_DatePickerCustomDay_Button_Text
+
+## FOCUS ON THESE TEXTS:
+1. "react-datepicker__day_span" (found in jsx_attribute)
+
+## VALIDATION CHECKLIST:
+✓ Import added: import { useTranslations } from '@/lib/i18n'
+✓ Hook called with EXACT namespace: useTranslations("components_DatePickerCustomDay")
+✓ Keys start with namespace: components_DatePickerCustomDay_*
+✓ No dots in keys (use underscores)
+✓ All 1 texts translated
+
+## OUTPUT FORMAT:
+---CODE:
+<COMPLETE TSX FILE WITH EXACT NAMESPACE>
+---MESSAGES:
+{
+  "components_DatePickerCustomDay": {
+    "components_DatePickerCustomDay_Key1": "Original text 1",
+    "components_DatePickerCustomDay_Key2": "Original text 2"
+  }
+}
+
+## FILE TO TRANSFORM:
+import React, { FC } from "react";
+
+interface Props {
+  dayOfMonth: number;
+  date?: Date | undefined;
+}
+
+const DatePickerCustomDay: FC<Props> = ({ dayOfMonth, date }) => {
+  return <span className="react-datepicker__day_span">{dayOfMonth}</span>;
+};
+
+export default DatePickerCustomDay;
+
+
+REMEMBER: Use EXACTLY "components_DatePickerCustomDay" and translate all 1 identified texts!
+
+=== RESPONSE ===
+---CODE:
+```tsx
+import React, { FC } from "react";
+import { useTranslations } from '@/lib/i18n';
+
+interface Props {
+  dayOfMonth: number;
+  date?: Date | undefined;
+}
+
+const DatePickerCustomDay: FC<Props> = ({ dayOfMonth, date }) => {
+  const t = useTranslations("components_DatePickerCustomDay");
+  
+  return <span className={t('components_DatePickerCustomDay_Day_Span_Class')}>{dayOfMonth}</span>;
+};
+
+export default DatePickerCustomDay;
+```
+
+---MESSAGES:
+```json
+{
+  "components_DatePickerCustomDay": {
+    "components_DatePickerCustomDay_Day_Span_Class": "react-datepicker__day_span"
+  }
+}
+```
+
+=== END ===

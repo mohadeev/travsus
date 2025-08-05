@@ -1,7 +1,7 @@
 'use client'
 
 import type React from 'react'
-import { useTranslations } from 'use-intl'
+import { useTranslations } from '@/lib/i18n'
 
 import { useState, useEffect } from 'react'
 import { Plane, Calendar, RefreshCcw, ChevronDown } from 'lucide-react'
@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 
 export default function HomeBanner() {
-	const t = useTranslations('test_page')
+	const t = useTranslations("app_locale_test_page")
 	const [isVisible, setIsVisible] = useState(true)
 
 	useEffect(() => {
@@ -40,10 +40,10 @@ export default function HomeBanner() {
 					)}
 				>
 					<h1 className="font-serif mb-6 text-7xl font-extrabold tracking-tight text-black sm:text-5xl md:text-6xl lg:text-[100px] lg:font-extrabold">
-						{t('test_page_Travel_With_Ultimate_Flexibility')}
+						{t('app_locale_test_page_Travel_With_Ultimate_Flexibility')}
 					</h1>
 					<p className="mx-auto mb-10 max-w-2xl text-lg font-medium text-black sm:text-xl md:text-2xl">
-						{t('test_page_Book_Cancel_Refund_Anytime_Anywhere')}
+						{t('app_locale_test_page_Book_Cancel_Refund_Anytime_Anywhere')}
 					</p>
 				</div>
 
@@ -60,7 +60,7 @@ export default function HomeBanner() {
 						className="rounded-full bg-primary text-lg font-medium shadow-lg transition-all hover:bg-primary/90 hover:shadow-xl"
 						onClick={handlePageChange}
 					>
-						{t('test_page_Plan_Your_Flexible_Trip')}
+						{t('app_locale_test_page_Plan_Your_Flexible_Trip')}
 					</Button>
 				</div>
 			</div>
@@ -79,7 +79,7 @@ function FeatureItem({
 	description: string
 	onClick: () => void
 }) {
-	const t = useTranslations('test_page')
+	const t = useTranslations("app_locale_test_page")
 
 	return (
 		<div

@@ -8,6 +8,7 @@ import {
 	notFound,
 } from 'next/navigation'
 import { useDispatch } from 'react-redux'
+import { useTranslations } from '@/lib/i18n'
 // import { toggleOverlay } from '../GlobalRedux/Features/overlaySlice/overlaySlice'
 // import { updateServiceState } from '../GlobalRedux/Features/creatingServiceSlice/creatingServiceSlice'
 import getFetchDataFromApi from '@/utils/getFetchDataFromApi'
@@ -19,6 +20,7 @@ import { toggleOverlay } from '@/app/[locale]/GlobalRedux/Features/overlaySlice/
 import { updateServiceState } from '@/app/GlobalRedux/Features/creatingServiceSlice/creatingServiceSlice'
 
 const DetailtLayout = ({ children }: { children: ReactNode }) => {
+	const t = useTranslations("layout");
 	const dispatch = useDispatch()
 	const thisPathname = usePathname()
 	const searchParams = useSearchParams()
@@ -101,9 +103,9 @@ const DetailtLayout = ({ children }: { children: ReactNode }) => {
 				},
 				author: {
 					'@type': 'Person',
-					name: review.author || 'Anonymous',
+					name: review.author || t('layout_Anonymous_User'),
 				},
-				reviewBody: review.reviewBody || 'Amazing experience!',
+				reviewBody: review.reviewBody || t('layout_Default_Review_Text'),
 			}))
 		: [] // ✅ Fix: If no reviews, set as empty array instead of undefined
 
@@ -124,8 +126,8 @@ const DetailtLayout = ({ children }: { children: ReactNode }) => {
 					: undefined, // ✅ Prevents error when reviewCount is missing
 				address: {
 					'@type': 'PostalAddress',
-					addressLocality: tourData.startAddress?.city || 'Unknown City',
-					addressCountry: tourData.startAddress?.country || 'Unknown Country',
+					addressLocality: tourData.startAddress?.city || t('layout_Unknown_City'),
+					addressCountry: tourData.startAddress?.country || t('layout_Unknown_Country'),
 				},
 				geo: tourData.geo
 					? {
@@ -149,7 +151,7 @@ const DetailtLayout = ({ children }: { children: ReactNode }) => {
 				},
 				performer: {
 					'@type': 'Person',
-					name: 'Experienced Guide',
+					name: t('layout_Experienced_Guide'),
 				},
 				openingHours: 'Mo-Su 08:00-18:00', // Default hours
 				review: reviews, // ✅ Ensuring the review field is always present

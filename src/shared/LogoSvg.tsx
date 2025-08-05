@@ -1,9 +1,12 @@
 import React from "react";
+import { useTranslations } from '@/lib/i18n';
 
 const LogoSvg = () => {
+  const t = useTranslations("shared_LogoSvg");
+  
   return (
     <svg
-      className="w-full block dark:hidden"
+      className={t('shared_LogoSvg_Svg_ClassName')}
       viewBox="0 0 65 32"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

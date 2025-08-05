@@ -1,12 +1,8 @@
 'use client'
-
-import React, { useState } from 'react'
 import Checkbox from '@/components/ui/checkbox'
-import { Label } from '@/components/ui/label'
 import { removeLineItem } from '@/app/GlobalRedux/Features/bookingSlice/bookingSlice'
 import { useDispatch } from 'react-redux'
-// import RowBedAccommodationSelector from './RowBedAccommodationSelector'
-// import GuestsInput from './GuestsInput'
+import { useTranslations } from '@/lib/i18n'
 
 export default function AcommodationAndTransport({
 	RowBedAccommodationSelector,
@@ -14,8 +10,9 @@ export default function AcommodationAndTransport({
 	bookOwnHotels,
 	handleBookOwnHotels,
 }: any) {
-	// const [bookOwnHotels, setBookOwnHotels] = useState(false)
+	const t = useTranslations('Jan03_AccommodationTransport_p2k7')
 	const dispatch = useDispatch()
+
 	const handleCheckboxChange = (checked: boolean) => {
 		console.log(checked)
 		handleBookOwnHotels(checked)
@@ -27,12 +24,11 @@ export default function AcommodationAndTransport({
 			<div className="mb-0 flex items-center space-x-2 p-4">
 				<Checkbox
 					checked={bookOwnHotels}
-					label="I have my hotel booked."
+					label={t('Hotel_Already_Booked')}
 					id="terms"
 					onChange={handleCheckboxChange}
 				/>
 			</div>
-
 			{bookOwnHotels ? GuestsInput : RowBedAccommodationSelector}
 		</div>
 	)

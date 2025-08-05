@@ -1,5 +1,5 @@
 'use client'
-
+import { useTranslations } from '@/lib/i18n'
 import { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
@@ -25,6 +25,7 @@ enum DeletionStep {
 }
 
 export default function DeleteAccountPage() {
+	const t = useTranslations('Jan03_DeleteAccount_k5p9')
 	const [currentStep, setCurrentStep] = useState<DeletionStep>(
 		DeletionStep.SELECT_REASON,
 	)
@@ -41,22 +42,21 @@ export default function DeleteAccountPage() {
 		userData?.name || userData?.accountData?.firstname || 'traveler'
 
 	const reasons = [
-		'I have safety or privacy concerns.',
-		"I can't host anymore.",
-		"I can't comply with travsus's Terms of Service / Community Commitment.",
-		'Other',
+		t('Safety_Privacy_Concerns'),
+		t('Cannot_Host_Anymore'),
+		t('Cannot_Comply_Terms'),
+		t('Other_Reason'),
 	]
 
 	const handleContinue = () => {
 		if (!selectedReason) {
 			toast({
-				title: 'Please select a reason',
-				description: 'You need to select a reason to continue.',
+				title: t('Select_Reason_Required'),
+				description: t('Select_Reason_Description'),
 				variant: 'destructive',
 			})
 			return
 		}
-
 		// Go to reconsider step first
 		setCurrentStep(DeletionStep.RECONSIDER)
 	}
@@ -78,8 +78,8 @@ export default function DeleteAccountPage() {
 	const handleStayWithUs = () => {
 		router.push('/account-settings')
 		toast({
-			title: "We're glad you're staying!",
-			description: 'Thank you for continuing your journey with us.',
+			title: t('Glad_Staying_Title'),
+			description: t('Glad_Staying_Description'),
 		})
 	}
 
@@ -96,7 +96,7 @@ export default function DeleteAccountPage() {
 			const data = await response.json()
 
 			if (!response.ok) {
-				throw new Error(data.message || 'Failed to delete account')
+				throw new Error(data.message || t('Failed_Delete_Account'))
 			}
 
 			// Move to the success step
@@ -106,13 +106,12 @@ export default function DeleteAccountPage() {
 			setErrorMessage(
 				error instanceof Error
 					? error.message
-					: 'An unexpected error occurred. Please contact support.',
+					: t('Unexpected_Error_Contact_Support'),
 			)
 			setCurrentStep(DeletionStep.ERROR)
 			toast({
-				title: 'Error',
-				description:
-					'There was a problem deleting your account. Please try again or contact support.',
+				title: t('Error_Title'),
+				description: t('Error_Delete_Description'),
 				variant: 'destructive',
 			})
 		} finally {
@@ -123,23 +122,20 @@ export default function DeleteAccountPage() {
 	const handleClose = async () => {
 		// Sign out the user using NextAuth
 		await signOut({ redirect: false })
-
 		// Redirect to home page
 		router.push('/')
-
 		// Show a toast message
 		toast({
-			title: 'Signed out',
-			description: 'You have been signed out successfully.',
+			title: t('Signed_Out_Title'),
+			description: t('Signed_Out_Description'),
 		})
 	}
 
 	const handleContactSupport = () => {
 		// In a real app, this would open a support form or email
 		toast({
-			title: 'Contact Support',
-			description:
-				'This would open a support form or email in a real application.',
+			title: t('Contact_Support_Title'),
+			description: t('Contact_Support_Description'),
 		})
 	}
 
@@ -151,10 +147,10 @@ export default function DeleteAccountPage() {
 					href="/account-settings"
 					className="text-gray-600 hover:underline"
 				>
-					Account
+					{t('Account_Breadcrumb')}
 				</Link>
 				<ChevronRight className="mx-2 h-4 w-4 text-gray-500" />
-				<span className="text-gray-800">Delete account</span>
+				<span className="text-gray-800">{t('Delete_Account_Breadcrumb')}</span>
 			</div>
 
 			{/* Progress Bar */}
@@ -164,7 +160,7 @@ export default function DeleteAccountPage() {
 						<span
 							className={`mr-2 ${currentStep >= DeletionStep.SELECT_REASON ? 'font-medium' : 'text-gray-500'}`}
 						>
-							1. Select reason
+							{t('Step_Select_Reason')}
 						</span>
 						<ArrowLeft className="h-4 w-4 rotate-180 text-gray-400" />
 					</div>
@@ -172,7 +168,7 @@ export default function DeleteAccountPage() {
 						<span
 							className={`mr-2 ${currentStep >= DeletionStep.CONFIRM ? 'font-medium' : 'text-gray-500'}`}
 						>
-							2. Confirm
+							{t('Step_Confirm')}
 						</span>
 						<ArrowLeft className="h-4 w-4 rotate-180 text-gray-400" />
 					</div>
@@ -185,7 +181,7 @@ export default function DeleteAccountPage() {
 									: 'text-gray-500'
 							}
 						>
-							3. Done
+							{t('Step_Done')}
 						</span>
 					</div>
 				</div>
@@ -211,9 +207,8 @@ export default function DeleteAccountPage() {
 			{currentStep === DeletionStep.SELECT_REASON && (
 				<div className="space-y-6">
 					<h1 className="text-center text-3xl font-semibold">
-						What prompted you to delete your account?
+						{t('What_Prompted_Delete')}
 					</h1>
-
 					<div className="space-y-4 pt-4">
 						{reasons.map((reason) => (
 							<div key={reason} className="border-b border-gray-200 pb-4">
@@ -229,13 +224,12 @@ export default function DeleteAccountPage() {
 							</div>
 						))}
 					</div>
-
 					<div className="flex justify-end pt-4">
 						<button
 							onClick={handleContinue}
 							className="rounded-lg bg-black px-6 py-2 text-white hover:bg-gray-800"
 						>
-							Continue
+							{t('Continue_Button')}
 						</button>
 					</div>
 				</div>
@@ -249,86 +243,66 @@ export default function DeleteAccountPage() {
 							<Heart className="h-10 w-10 text-pink-500" />
 						</div>
 					</div>
-
 					<h1 className="text-center text-3xl font-semibold">
-						We'll miss you, {userName}!
+						{t('Will_Miss_You', { userName })}
 					</h1>
-
 					<div className="rounded-lg border border-gray-200 bg-gray-50 p-6 text-center">
-						<p className="mb-4 text-lg">
-							Before you go, we wanted to let you know that:
-						</p>
+						<p className="mb-4 text-lg">{t('Before_You_Go')}</p>
 						<ul className="space-y-3 text-left">
 							<li className="flex items-start">
 								<span className="mr-2 mt-1 text-pink-500">•</span>
-								<span>
-									Your unique travel experiences and memories with us can't be
-									recovered once deleted
-								</span>
+								<span>{t('Unique_Experiences_Lost')}</span>
 							</li>
 							<li className="flex items-start">
 								<span className="mr-2 mt-1 text-pink-500">•</span>
-								<span>
-									You'll lose access to all your saved trips, bookings, and
-									special offers
-								</span>
+								<span>{t('Lose_Access_Trips')}</span>
 							</li>
 							<li className="flex items-start">
 								<span className="mr-2 mt-1 text-pink-500">•</span>
-								<span>
-									The community will miss your valuable contributions and
-									insights
-								</span>
+								<span>{t('Community_Miss_Contributions')}</span>
 							</li>
 							<li className="flex items-start">
 								<span className="mr-2 mt-1 text-pink-500">•</span>
-								<span>
-									We're constantly improving based on feedback - we'd love to
-									hear how we can do better
-								</span>
+								<span>{t('Constantly_Improving_Feedback')}</span>
 							</li>
 						</ul>
-
 						<div className="mt-6 border-t border-gray-200 pt-6">
 							<p className="mb-4 font-medium">
-								Is there anything we can help with before you make your final
-								decision?
+								{t('Anything_Help_Before_Decision')}
 							</p>
 							<div className="flex flex-col justify-center space-y-3 sm:flex-row sm:space-x-4 sm:space-y-0">
 								<Link href="/help" className="text-black underline">
-									Get help with your account
+									{t('Get_Help_Account')}
 								</Link>
 								<Link href="/contact" className="text-black underline">
-									Contact customer support
+									{t('Contact_Customer_Support')}
 								</Link>
 								<Link href="/feedback" className="text-black underline">
-									Share feedback
+									{t('Share_Feedback')}
 								</Link>
 							</div>
 						</div>
 					</div>
-
 					<div className="flex flex-col space-y-3 pt-6 sm:flex-row sm:justify-between sm:space-y-0">
 						<button
 							onClick={handleBack}
 							className="flex items-center justify-center text-black hover:underline"
 						>
 							<ArrowLeft className="mr-1 h-4 w-4" />
-							Back
+							{t('Back_Button')}
 						</button>
-
 						<div className="flex flex-col space-y-3 sm:flex-row sm:space-x-4 sm:space-y-0">
 							<button
 								onClick={handleStayWithUs}
 								className="rounded-lg bg-black px-6 py-2 text-white hover:bg-gray-800"
 							>
-								I'll stay with Travsus
+								{t('Stay_With_Travsus')}
 							</button>
 							<button
 								onClick={handleProceedToConfirm}
 								className="rounded-lg border border-gray-300 px-6 py-2 text-gray-700 hover:bg-gray-100"
 							>
-								Continue to deletion
+								{t('Continue_To_Deletion')}
 							</button>
 						</div>
 					</div>
@@ -343,77 +317,57 @@ export default function DeleteAccountPage() {
 							<UserX className="h-10 w-10 text-red-500" />
 						</div>
 					</div>
-
 					<h1 className="text-center text-3xl font-semibold">
-						Delete account?
+						{t('Delete_Account_Question')}
 					</h1>
 					<p className="text-center text-gray-600">{userEmail}</p>
-
 					<div className="space-y-6 pt-4">
 						<div className="rounded-lg border border-red-200 bg-red-50 p-4 text-red-700">
-							<p className="font-medium">
-								Warning: This action cannot be undone
-							</p>
-							<p className="mt-1 text-sm">
-								Deleting your account will permanently remove all your data from
-								our systems. You will not be able to recover your account or any
-								of your information.
-							</p>
+							<p className="font-medium">{t('Warning_Cannot_Undo')}</p>
+							<p className="mt-1 text-sm">{t('Warning_Permanent_Delete')}</p>
 						</div>
-
 						<div className="flex">
 							<div className="mr-3 mt-1 flex h-6 w-6 items-center justify-center rounded-full border border-black text-black">
 								<Check className="h-4 w-4" />
 							</div>
-							<p>
-								Your profile, listings, and all personal data will be
-								permanently deleted.
-							</p>
+							<p>{t('Profile_Data_Deleted')}</p>
 						</div>
-
 						<div className="flex">
 							<div className="mr-3 mt-1 flex h-6 w-6 items-center justify-center rounded-full border border-black text-black">
 								<Check className="h-4 w-4" />
 							</div>
-							<p>
-								You won't be able to access this account or any of its data ever
-								again.
-							</p>
+							<p>{t('No_Access_Ever_Again')}</p>
 						</div>
-
 						<div className="flex">
 							<div className="mr-3 mt-1 flex h-6 w-6 items-center justify-center rounded-full border border-black text-black">
 								<Check className="h-4 w-4" />
 							</div>
-							<p>
-								All your reviews, messages, and transaction history will be
-								removed.
-							</p>
+							<p>{t('Reviews_Messages_Removed')}</p>
 						</div>
 					</div>
-
 					<div className="flex flex-col space-y-3 pt-8 sm:flex-row sm:justify-between sm:space-y-0">
 						<button
 							onClick={handleBack}
 							className="flex items-center justify-center text-black hover:underline"
 						>
 							<ArrowLeft className="mr-1 h-4 w-4" />
-							Back
+							{t('Back_Button')}
 						</button>
-
 						<div className="flex flex-col space-y-3 sm:flex-row sm:space-x-4 sm:space-y-0">
 							<button
 								onClick={handleStayWithUs}
 								className="rounded-lg bg-black px-6 py-2 text-white hover:bg-gray-800"
 							>
-								Keep my account
+								{t('Keep_My_Account')}
 							</button>
 							<button
 								onClick={handleDeleteAccount}
 								disabled={isDeleting}
 								className="rounded-lg bg-red-600 px-6 py-2 text-white hover:bg-red-700 disabled:opacity-50"
 							>
-								{isDeleting ? 'Deleting...' : 'Delete account permanently'}
+								{isDeleting
+									? t('Deleting_Progress')
+									: t('Delete_Account_Permanently')}
 							</button>
 						</div>
 					</div>
@@ -428,48 +382,37 @@ export default function DeleteAccountPage() {
 							<Check className="h-10 w-10 text-black" />
 						</div>
 					</div>
-
-					<h1 className="text-3xl font-semibold">Account deleted</h1>
-
+					<h1 className="text-3xl font-semibold">
+						{t('Account_Deleted_Title')}
+					</h1>
 					<div className="space-y-6 px-6">
 						<div className="flex">
 							<div className="mr-3 mt-1 flex h-6 w-6 items-center justify-center rounded-full border border-black text-black">
 								<Check className="h-4 w-4" />
 							</div>
 							<p className="text-left">
-								Your account and all associated data have been permanently
-								deleted.
+								{t('Account_Data_Permanently_Deleted')}
 							</p>
 						</div>
-
 						<div className="flex">
 							<div className="mr-3 mt-1 flex h-6 w-6 items-center justify-center rounded-full border border-black text-black">
 								<Check className="h-4 w-4" />
 							</div>
-							<p className="text-left">
-								You won't be able to access this account or any of its
-								information again.
-							</p>
+							<p className="text-left">{t('No_Access_Information_Again')}</p>
 						</div>
-
 						<div className="mt-6 rounded-lg border border-gray-200 bg-gray-50 p-4">
-							<p className="text-gray-700">
-								We're sorry to see you go. If you ever want to come back, you're
-								always welcome to create a new account.
-							</p>
+							<p className="text-gray-700">{t('Sorry_To_See_Go')}</p>
 							<p className="mt-2 text-gray-700">
-								We appreciate the time you spent with us and wish you all the
-								best on your future travels.
+								{t('Appreciate_Time_Wish_Best')}
 							</p>
 						</div>
 					</div>
-
 					<div className="pt-6">
 						<button
 							onClick={handleClose}
 							className="rounded-lg bg-black px-6 py-2 text-white hover:bg-gray-800"
 						>
-							Sign out and close
+							{t('Sign_Out_Close')}
 						</button>
 					</div>
 				</div>
@@ -483,35 +426,27 @@ export default function DeleteAccountPage() {
 							<AlertTriangle className="h-10 w-10 text-red-500" />
 						</div>
 					</div>
-
 					<h1 className="text-center text-3xl font-semibold">
-						Unable to delete account
+						{t('Unable_Delete_Account')}
 					</h1>
-
 					<div className="rounded-lg border border-red-200 bg-red-50 p-6">
-						<p className="mb-4 font-medium">
-							We encountered a problem while trying to delete your account:
-						</p>
+						<p className="mb-4 font-medium">{t('Problem_Deleting_Account')}</p>
 						<p className="text-red-700">{errorMessage}</p>
-						<p className="mt-4">
-							This could be because you have active bookings, listings, or other
-							data that needs to be resolved first.
-						</p>
+						<p className="mt-4">{t('Active_Bookings_Resolution')}</p>
 					</div>
-
 					<div className="flex justify-between pt-6">
 						<button
 							onClick={handleBack}
 							className="flex items-center text-black hover:underline"
 						>
 							<ArrowLeft className="mr-1 h-4 w-4" />
-							Back
+							{t('Back_Button')}
 						</button>
 						<button
 							onClick={handleContactSupport}
 							className="rounded-lg bg-black px-6 py-2 text-white hover:bg-gray-800"
 						>
-							Contact support
+							{t('Contact_Support_Button')}
 						</button>
 					</div>
 				</div>

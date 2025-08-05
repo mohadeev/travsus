@@ -1,0 +1,192 @@
+
+=== FILE: C:\Users\Usuario\s\travsus\src\shared\Logo.tsx ===
+=== NAMESPACE: shared_Logo ===
+=== PROMPT ===
+# ULTRA-STRICT INTERNATIONALIZATION INSTRUCTIONS
+
+Transform this TSX file to use internationalization. Follow these rules EXACTLY:
+
+## CRITICAL NAMESPACE REQUIREMENT:
+- You MUST use the exact namespace: "shared_Logo"
+- The useTranslations call MUST be: useTranslations("shared_Logo")
+- Do NOT modify this namespace in any way
+- Do NOT use any other namespace
+
+## EXACT REQUIREMENTS:
+1. Add this import: import { useTranslations } from '@/lib/i18n'
+2. Add this hook call: const t = useTranslations("shared_Logo");
+3. Replace static text with: t('shared_Logo_Key_Name')
+4. Generate keys like: shared_Logo_Welcome_Message, shared_Logo_Button_Text
+
+## VALIDATION CHECKLIST:
+✓ Import added: import { useTranslations } from '@/lib/i18n'
+✓ Hook called with EXACT namespace: useTranslations("shared_Logo")
+✓ Keys start with namespace: shared_Logo_*
+✓ No dots in keys (use underscores)
+✓ Complete file transformation
+
+## EXAMPLE TRANSFORMATION:
+BEFORE:
+export default function MyComponent() {
+  return <div>Hello World</div>
+}
+
+AFTER:
+import { useTranslations } from '@/lib/i18n'
+
+export default function MyComponent() {
+  const t = useTranslations("shared_Logo");
+  return <div>{t('shared_Logo_Hello_World')}</div>
+}
+
+## OUTPUT FORMAT:
+---CODE:
+<COMPLETE TSX FILE WITH EXACT NAMESPACE>
+---MESSAGES:
+{
+  "shared_Logo": {
+    "shared_Logo_Key1": "Original text 1",
+    "shared_Logo_Key2": "Original text 2"
+  }
+}
+
+## FILE TO TRANSFORM:
+import React from 'react'
+import logoImg from '@/images/logo.png'
+import logoLightImg from '@/images/logo-light.png'
+import LogoSvgLight from './LogoSvgLight'
+import LogoSvg from './LogoSvg'
+import Link from 'next/link'
+import { StaticImageData } from 'next/image'
+
+export interface LogoProps {
+	img?: StaticImageData
+	imgLight?: StaticImageData
+	className?: string
+}
+
+const Logo: React.FC<LogoProps> = ({
+	img = logoImg,
+	imgLight = logoLightImg,
+	className = 'w-24',
+}) => {
+	return (
+		<Link
+			href="/"
+			className={`ttnc-logo text-primary-6000 inline-block focus:outline-none focus:ring-0 ${className}`}
+		>
+			{/* <LogoSvgLight />
+      <LogoSvg /> */}
+			{img ? (
+				<img
+					className={`block max-h-12 ${imgLight ? 'dark:hidden' : ''}`}
+					src={img.src}
+					alt="Logo"
+				/>
+			) : (
+				'Logo Here'
+			)}
+			{imgLight && (
+				<img
+					className="hidden max-h-12 dark:block"
+					src={imgLight.src}
+					alt="Logo-Light"
+				/>
+			)}
+		</Link>
+	)
+}
+
+export default Logo
+
+
+REMEMBER: Use EXACTLY "shared_Logo" - do not change it!
+
+=== RESPONSE ===
+<Thinking>
+I need to transform this TSX file to use internationalization following the exact requirements:
+
+1. Add the import: `import { useTranslations } from '@/lib/i18n'`
+2. Add the hook call: `const t = useTranslations("shared_Logo");`
+3. Replace static text with translation keys that start with "shared_Logo_"
+4. Generate the messages object
+
+Looking at the file, I can see the following text that needs to be internationalized:
+- "Logo" (alt text for the main logo image)
+- "Logo Here" (fallback text when no image is provided)
+- "Logo-Light" (alt text for the light logo image)
+
+The keys should be:
+- shared_Logo_Alt_Text for "Logo"
+- shared_Logo_Fallback_Text for "Logo Here" 
+- shared_Logo_Light_Alt_Text for "Logo-Light"
+
+I need to make sure to use the exact namespace "shared_Logo" and follow all the requirements exactly.
+</Thinking>
+
+---CODE:
+```tsx
+import React from 'react'
+import logoImg from '@/images/logo.png'
+import logoLightImg from '@/images/logo-light.png'
+import LogoSvgLight from './LogoSvgLight'
+import LogoSvg from './LogoSvg'
+import Link from 'next/link'
+import { StaticImageData } from 'next/image'
+import { useTranslations } from '@/lib/i18n'
+
+export interface LogoProps {
+	img?: StaticImageData
+	imgLight?: StaticImageData
+	className?: string
+}
+
+const Logo: React.FC<LogoProps> = ({
+	img = logoImg,
+	imgLight = logoLightImg,
+	className = 'w-24',
+}) => {
+	const t = useTranslations("shared_Logo");
+	
+	return (
+		<Link
+			href="/"
+			className={`ttnc-logo text-primary-6000 inline-block focus:outline-none focus:ring-0 ${className}`}
+		>
+			{/* <LogoSvgLight />
+      <LogoSvg /> */}
+			{img ? (
+				<img
+					className={`block max-h-12 ${imgLight ? 'dark:hidden' : ''}`}
+					src={img.src}
+					alt={t('shared_Logo_Alt_Text')}
+				/>
+			) : (
+				t('shared_Logo_Fallback_Text')
+			)}
+			{imgLight && (
+				<img
+					className="hidden max-h-12 dark:block"
+					src={imgLight.src}
+					alt={t('shared_Logo_Light_Alt_Text')}
+				/>
+			)}
+		</Link>
+	)
+}
+
+export default Logo
+```
+
+---MESSAGES:
+```json
+{
+  "shared_Logo": {
+    "shared_Logo_Alt_Text": "Logo",
+    "shared_Logo_Fallback_Text": "Logo Here",
+    "shared_Logo_Light_Alt_Text": "Logo-Light"
+  }
+}
+```
+
+=== END ===

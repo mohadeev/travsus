@@ -4,10 +4,12 @@ import React, { Fragment, useState, FC } from 'react'
 import { Popover, Transition } from '@headlessui/react'
 import DatePickerCustomHeaderTwoMonth from '@/components/DatePickerCustomHeaderTwoMonth'
 import DatePickerCustomDay from '@/components/DatePickerCustomDay'
-import DatePicker from 'react-datepicker'
+import DatePicker, { registerLocale } from 'react-datepicker'
 import ClearDataButton from '../ClearDataButton'
 import moment from 'moment'
 import { useTranslations } from '@/lib/i18n'
+import { useLocale } from 'next-intl'
+import locales from '@/lib/dateFnsLocales'
 
 export interface StayDatesRangeInputProps {
 	className?: string
@@ -19,6 +21,10 @@ const StayDatesRangeInput: FC<StayDatesRangeInputProps> = ({
 	fieldClassName = '[ nc-hero-field-padding--small ]',
 }) => {
 	const t = useTranslations('StayDatesRangeInput')
+	const locale = useLocale()
+	console.log('locale:', locale, locales)
+	moment.locale(locale) // ar-ma
+	registerLocale(locale, locales[locale])
 	const [startDate, setStartDate] = useState<Date | null>(
 		new Date(moment().format('L')),
 	)
@@ -37,13 +43,13 @@ const StayDatesRangeInput: FC<StayDatesRangeInputProps> = ({
 			<>
 				<div className="flex-grow text-left">
 					<span className="block font-semibold xl:text-base">
-						{startDate?.toLocaleDateString('en-US', {
+						{startDate?.toLocaleDateString(locale, {
 							month: 'short',
 							day: '2-digit',
 						}) || t('add_dates')}
 						{endDate
 							? ' - ' +
-								endDate?.toLocaleDateString('en-US', {
+								endDate?.toLocaleDateString(locale, {
 									month: 'short',
 									day: '2-digit',
 								})
@@ -88,6 +94,7 @@ const StayDatesRangeInput: FC<StayDatesRangeInputProps> = ({
 						<Popover.Panel className="absolute left-1/2 top-full z-10 mt-3 w-screen max-w-sm -translate-x-1/2 transform px-4 sm:px-0 lg:max-w-3xl">
 							<div className="overflow-hidden rounded-3xl bg-white p-8 shadow-lg ring-1 ring-black ring-opacity-5 dark:bg-neutral-800">
 								<DatePicker
+									locale={'es-ES'}
 									selected={startDate}
 									onChange={onChangeDate}
 									startDate={startDate}

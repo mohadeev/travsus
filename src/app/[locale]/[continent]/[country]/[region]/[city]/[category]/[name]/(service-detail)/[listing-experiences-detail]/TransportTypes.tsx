@@ -4,12 +4,15 @@ import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { useTranslations } from '@/lib/i18n'
 
 export default function pricingTiers({
 	peopleCount,
 	transportLineItem,
 	pricingTiers,
 }: any) {
+	const t = useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes");
+
 	// const peopleCount
 
 	const [selectedType, setSelectedType] = useState(null)
@@ -48,8 +51,8 @@ export default function pricingTiers({
 	}
 
 	return (
-		<div className="space-y-0 p-0">
-			<div className="relative h-[200px] overflow-hidden">
+		<div className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Container_Classes')}>
+			<div className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Carousel_Container_Classes')}>
 				<AnimatePresence initial={false} custom={currentIndex}>
 					<motion.div
 						key={currentIndex}
@@ -69,7 +72,7 @@ export default function pricingTiers({
 						animate="center"
 						exit="exit"
 						transition={{ type: 'tween', ease: 'easeInOut', duration: 0.3 }}
-						className="absolute inset-0 flex items-center justify-center"
+						className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Motion_Container_Classes')}
 					>
 						{(() => {
 							const type = pricingTiers[currentIndex]
@@ -80,7 +83,7 @@ export default function pricingTiers({
 								<div
 									className={`flex w-full flex-col items-center justify-between rounded-lg p-4 transition-colors ${
 										isSelected
-											? 'border-2 border-black'
+											? t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Selected_Border_Classes')
 											: isRecommended
 												? 'border-2 border-green-500 bg-green-100'
 												: 'bg-muted hover:bg-muted/80 border-2 border-transparent'
@@ -91,18 +94,18 @@ export default function pricingTiers({
 										alt={type.transportType}
 										width={80}
 										height={80}
-										className="mb-2"
+										className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Image_Classes')}
 									/>
-									<span className="text-sm font-medium">
+									<span className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Title_Classes')}>
 										{type.transportType}
 									</span>
-									<span className="mt-1 text-xs">
+									<span className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Capacity_Classes')}>
 										{type.minSeats} - {type.maxSeats}
 										{/* {peopleCount} */}
 									</span>
 									{isRecommended && (
-										<span className="mt-2 text-xs font-semibold text-green-700">
-											Recommended
+										<span className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Recommended_Classes')}>
+											{t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Recommended_Text')}
 										</span>
 									)}
 								</div>
@@ -112,21 +115,21 @@ export default function pricingTiers({
 				</AnimatePresence>
 				<button
 					onClick={handlePrev}
-					className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-white p-2 shadow-md"
-					aria-label="Previous transport type"
+					className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Prev_Button_Classes')}
+					aria-label={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Previous_Transport_Type')}
 				>
-					<ChevronLeft className="h-6 w-6" />
+					<ChevronLeft className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Icon_Classes')} />
 				</button>
 				<button
 					onClick={handleNext}
-					className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-white p-2 shadow-md"
-					aria-label="Next transport type"
+					className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Next_Button_Classes')}
+					aria-label={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Next_Transport_Type')}
 				>
-					<ChevronRight className="h-6 w-6" />
+					<ChevronRight className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Icon_Classes')} />
 				</button>
 			</div>
 
-			<div className="mt-4 flex justify-center space-x-2">
+			<div className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Dots_Container_Classes')}>
 				{pricingTiers.map((_, index) => (
 					<button
 						key={index}

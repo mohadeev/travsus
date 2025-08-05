@@ -378,7 +378,7 @@ const TourMap = forwardRef<
 						className="flex items-center gap-1 rounded-full bg-black px-3 py-1.5 text-xs font-medium text-white shadow-sm transition-colors hover:bg-gray-800"
 					>
 						<Navigation size={14} />
-						<span>Directions</span>
+						<span>Directions sdvsdv</span>
 					</button>
 				</div>
 

@@ -1,6 +1,7 @@
 import React from "react";
 import { XMarkIcon } from "@heroicons/react/24/solid";
 import twFocusClass from "@/utils/twFocusClass";
+import { useTranslations } from '@/lib/i18n';
 
 export interface ButtonCloseProps {
   className?: string;
@@ -11,6 +12,8 @@ const ButtonClose: React.FC<ButtonCloseProps> = ({
   className = "",
   onClick = () => {},
 }) => {
+  const t = useTranslations("shared_ButtonClose");
+  
   return (
     <button
       className={
@@ -19,7 +22,7 @@ const ButtonClose: React.FC<ButtonCloseProps> = ({
       }
       onClick={onClick}
     >
-      <span className="sr-only">Close</span>
+      <span className="sr-only">{t('shared_ButtonClose_Close')}</span>
       <XMarkIcon className="w-5 h-5" />
     </button>
   );

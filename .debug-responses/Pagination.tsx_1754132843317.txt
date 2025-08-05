@@ -1,0 +1,183 @@
+
+=== FILE: C:\Users\Usuario\s\travsus\src\shared\Pagination.tsx ===
+=== NAMESPACE: shared_Pagination ===
+=== PROMPT ===
+# ULTRA-STRICT INTERNATIONALIZATION INSTRUCTIONS
+
+Transform this TSX file to use internationalization. Follow these rules EXACTLY:
+
+## CRITICAL NAMESPACE REQUIREMENT:
+- You MUST use the exact namespace: "shared_Pagination"
+- The useTranslations call MUST be: useTranslations("shared_Pagination")
+- Do NOT modify this namespace in any way
+- Do NOT use any other namespace
+
+## EXACT REQUIREMENTS:
+1. Add this import: import { useTranslations } from '@/lib/i18n'
+2. Add this hook call: const t = useTranslations("shared_Pagination");
+3. Replace static text with: t('shared_Pagination_Key_Name')
+4. Generate keys like: shared_Pagination_Welcome_Message, shared_Pagination_Button_Text
+
+## VALIDATION CHECKLIST:
+✓ Import added: import { useTranslations } from '@/lib/i18n'
+✓ Hook called with EXACT namespace: useTranslations("shared_Pagination")
+✓ Keys start with namespace: shared_Pagination_*
+✓ No dots in keys (use underscores)
+✓ Complete file transformation
+
+## EXAMPLE TRANSFORMATION:
+BEFORE:
+export default function MyComponent() {
+  return <div>Hello World</div>
+}
+
+AFTER:
+import { useTranslations } from '@/lib/i18n'
+
+export default function MyComponent() {
+  const t = useTranslations("shared_Pagination");
+  return <div>{t('shared_Pagination_Hello_World')}</div>
+}
+
+## OUTPUT FORMAT:
+---CODE:
+<COMPLETE TSX FILE WITH EXACT NAMESPACE>
+---MESSAGES:
+{
+  "shared_Pagination": {
+    "shared_Pagination_Key1": "Original text 1",
+    "shared_Pagination_Key2": "Original text 2"
+  }
+}
+
+## FILE TO TRANSFORM:
+import React, { FC } from 'react'
+
+export interface PaginationProps {
+	className?: string
+	currentPage: number
+	totalPages: number
+	onPageChange: (page: number) => void
+}
+
+const Pagination: FC<PaginationProps> = ({
+	className = '',
+	currentPage,
+	totalPages,
+	onPageChange,
+}) => {
+	const renderPageNumbers = () => {
+		const pages = []
+		for (let i = 1; i <= totalPages; i++) {
+			pages.push(
+				<button
+					key={i}
+					onClick={() => onPageChange(i)}
+					className={`inline-flex h-11 w-11 items-center justify-center rounded-full ${
+						i === currentPage
+							? 'bg-primary text-white'
+							: 'text-neutral-6000 border border-neutral-200 bg-white hover:bg-neutral-100 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800'
+					}`}
+				>
+					{i}
+				</button>,
+			)
+		}
+		return pages
+	}
+
+	return (
+		<nav
+			className={`nc-Pagination inline-flex space-x-1 text-base font-medium ${className}`}
+		>
+			{renderPageNumbers()}
+		</nav>
+	)
+}
+
+export default Pagination
+
+
+REMEMBER: Use EXACTLY "shared_Pagination" - do not change it!
+
+=== RESPONSE ===
+<Thinking>
+The user wants me to transform this TSX file to use internationalization with very specific requirements:
+
+1. Must use exact namespace "shared_Pagination"
+2. Must add import: `import { useTranslations } from '@/lib/i18n'`
+3. Must add hook call: `const t = useTranslations("shared_Pagination");`
+4. Must replace static text with t('shared_Pagination_Key_Name')
+5. Keys should start with namespace and use underscores
+
+Looking at the file, I need to identify what text needs to be internationalized. In this pagination component, I don't see any visible text strings that need translation - it's mostly just rendering page numbers (which are dynamic) and using CSS classes.
+
+The component renders:
+- Page numbers (which are dynamic: `{i}`)
+- No static text strings like "Previous", "Next", "Page", etc.
+
+Since there are no static text strings to internationalize in this component, I still need to follow the instructions and add the import and hook call, but there won't be any actual text to replace with translation keys.
+
+However, I should still provide the complete transformed file with the required import and hook, even if no text is being translated.
+</Thinking>
+
+---CODE:
+```tsx
+import React, { FC } from 'react'
+import { useTranslations } from '@/lib/i18n'
+
+export interface PaginationProps {
+	className?: string
+	currentPage: number
+	totalPages: number
+	onPageChange: (page: number) => void
+}
+
+const Pagination: FC<PaginationProps> = ({
+	className = '',
+	currentPage,
+	totalPages,
+	onPageChange,
+}) => {
+	const t = useTranslations("shared_Pagination");
+
+	const renderPageNumbers = () => {
+		const pages = []
+		for (let i = 1; i <= totalPages; i++) {
+			pages.push(
+				<button
+					key={i}
+					onClick={() => onPageChange(i)}
+					className={`inline-flex h-11 w-11 items-center justify-center rounded-full ${
+						i === currentPage
+							? 'bg-primary text-white'
+							: 'text-neutral-6000 border border-neutral-200 bg-white hover:bg-neutral-100 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800'
+					}`}
+				>
+					{i}
+				</button>,
+			)
+		}
+		return pages
+	}
+
+	return (
+		<nav
+			className={`nc-Pagination inline-flex space-x-1 text-base font-medium ${className}`}
+		>
+			{renderPageNumbers()}
+		</nav>
+	)
+}
+
+export default Pagination
+```
+
+---MESSAGES:
+```json
+{
+  "shared_Pagination": {}
+}
+```
+
+=== END ===

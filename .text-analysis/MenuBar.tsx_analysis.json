@@ -1,0 +1,44 @@
+{
+  "file": "C:\\Users\\Usuario\\s\\travsus\\src\\shared\\MenuBar.tsx",
+  "timestamp": "2025-08-02T11:47:47.891Z",
+  "hasTranslatableText": true,
+  "textCount": 7,
+  "texts": [
+    {
+      "type": "jsx_attribute",
+      "text": "p-2.5 rounded-lg text-neutral-700 dark:text-neutral-300",
+      "context": "\r\n\tclassName = 'p-2.5 rounded-lg text-neutral-700 dark:text-neutral-300'"
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "relative z-50 overflow-hidden",
+      "context": "\r\n\t\t\t\t\tclassName=\"relative z-50 overflow-hidden\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "fixed inset-0 bg-black/60 dark:bg-black/70",
+      "context": " className=\"fixed inset-0 bg-black/60 dark:bg-black/70\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "fixed inset-0",
+      "context": " className=\"fixed inset-0\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "flex min-h-full justify-end",
+      "context": " className=\"flex min-h-full justify-end\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "w-full max-w-md transform overflow-hidden transition-all",
+      "context": " className=\"w-full max-w-md transform overflow-hidden transition-all\""
+    },
+    {
+      "type": "return_string",
+      "text": "flex items-center justify-center focus:outline-none ${className}",
+      "context": "return (\r\n\t\t<>\r\n\t\t\t<button\r\n\t\t\t\tonClick={handleOpenMenu}\r\n\t\t\t\tclassName={`flex items-center justify-center focus:outline-none ${className}`"
+    }
+  ],
+  "fileSize": 2304
+}

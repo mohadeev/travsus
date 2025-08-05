@@ -6,6 +6,7 @@ import {
 	lineItemsWithoutTax,
 } from '@/utils/lineItemsUtils'
 import moment from 'moment'
+import { getCompanyProfile } from '../../constants/companyProfile'
 
 export const generateReceipt = (booking: any) => {
 	const html = String.raw
@@ -240,8 +241,8 @@ export const generateReceipt = (booking: any) => {
 
 					<div class="footer">
 						<p>
-							Travsus | Mundaiz 50, 20012 San Sebastián, Gipuzkoa | VAT:
-							ES87654321
+							${companyProfile.fullLegalName} | ${companyProfile.legalAddress} |
+							VAT: ${companyProfile.registrationNumber}
 						</p>
 						<p class="thank-you">
 							Thank you for choosing us. This receipt is your proof of purchase.

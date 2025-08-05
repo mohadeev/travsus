@@ -1,0 +1,144 @@
+
+=== FILE: C:\Users\Usuario\s\travsus\src\shared\Heading2.tsx ===
+=== NAMESPACE: shared_Heading2 ===
+=== PROMPT ===
+# ULTRA-STRICT INTERNATIONALIZATION INSTRUCTIONS
+
+Transform this TSX file to use internationalization. Follow these rules EXACTLY:
+
+## CRITICAL NAMESPACE REQUIREMENT:
+- You MUST use the exact namespace: "shared_Heading2"
+- The useTranslations call MUST be: useTranslations("shared_Heading2")
+- Do NOT modify this namespace in any way
+- Do NOT use any other namespace
+
+## EXACT REQUIREMENTS:
+1. Add this import: import { useTranslations } from '@/lib/i18n'
+2. Add this hook call: const t = useTranslations("shared_Heading2");
+3. Replace static text with: t('shared_Heading2_Key_Name')
+4. Generate keys like: shared_Heading2_Welcome_Message, shared_Heading2_Button_Text
+
+## VALIDATION CHECKLIST:
+✓ Import added: import { useTranslations } from '@/lib/i18n'
+✓ Hook called with EXACT namespace: useTranslations("shared_Heading2")
+✓ Keys start with namespace: shared_Heading2_*
+✓ No dots in keys (use underscores)
+✓ Complete file transformation
+
+## EXAMPLE TRANSFORMATION:
+BEFORE:
+export default function MyComponent() {
+  return <div>Hello World</div>
+}
+
+AFTER:
+import { useTranslations } from '@/lib/i18n'
+
+export default function MyComponent() {
+  const t = useTranslations("shared_Heading2");
+  return <div>{t('shared_Heading2_Hello_World')}</div>
+}
+
+## OUTPUT FORMAT:
+---CODE:
+<COMPLETE TSX FILE WITH EXACT NAMESPACE>
+---MESSAGES:
+{
+  "shared_Heading2": {
+    "shared_Heading2_Key1": "Original text 1",
+    "shared_Heading2_Key2": "Original text 2"
+  }
+}
+
+## FILE TO TRANSFORM:
+import type React from 'react'
+import type { ReactNode } from 'react'
+
+export interface Heading2Props {
+	heading?: ReactNode
+	subHeading?: ReactNode
+	className?: string
+}
+
+const Heading2: React.FC<Heading2Props> = ({
+	className = '',
+	heading = '',
+	subHeading,
+}) => {
+	return (
+		<div className={`mb-5 ${className}`}>
+			<h2 className="text-xl font-bold md:text-2xl lg:text-3xl">{heading}</h2>
+			{subHeading && (
+				<p className="mt-2 text-sm text-black md:text-base">{subHeading}</p>
+			)}
+		</div>
+	)
+}
+
+export default Heading2
+
+
+REMEMBER: Use EXACTLY "shared_Heading2" - do not change it!
+
+=== RESPONSE ===
+<Thinking>
+The user wants me to transform a TSX file to use internationalization with very specific requirements:
+
+1. Must use exact namespace "shared_Heading2"
+2. Must import from '@/lib/i18n'
+3. Must use useTranslations("shared_Heading2")
+4. Must replace static text with t() calls
+5. Keys must start with "shared_Heading2_"
+
+Looking at the file, I see it's a Heading2 component that takes heading and subHeading as props. However, there's no static text in this component - the heading and subHeading are passed as props (ReactNode).
+
+Since there's no static text to internationalize in this component (it just renders props), I need to think about what the user expects. The component itself doesn't contain any hardcoded strings that need translation.
+
+However, following the instructions exactly, I need to:
+1. Add the import
+2. Add the hook call with the exact namespace
+3. Since there's no static text, I'll add the hook but it won't be used in this particular component
+
+The user is very strict about following the format exactly, so I'll add the required import and hook call even though there's no static text to translate in this component.
+</Thinking>
+
+---CODE:
+```tsx
+import type React from 'react'
+import type { ReactNode } from 'react'
+import { useTranslations } from '@/lib/i18n'
+
+export interface Heading2Props {
+	heading?: ReactNode
+	subHeading?: ReactNode
+	className?: string
+}
+
+const Heading2: React.FC<Heading2Props> = ({
+	className = '',
+	heading = '',
+	subHeading,
+}) => {
+	const t = useTranslations("shared_Heading2");
+	
+	return (
+		<div className={`mb-5 ${className}`}>
+			<h2 className="text-xl font-bold md:text-2xl lg:text-3xl">{heading}</h2>
+			{subHeading && (
+				<p className="mt-2 text-sm text-black md:text-base">{subHeading}</p>
+			)}
+		</div>
+	)
+}
+
+export default Heading2
+```
+
+---MESSAGES:
+```json
+{
+  "shared_Heading2": {}
+}
+```
+
+=== END ===

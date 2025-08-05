@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import { useTranslations } from '@/lib/i18n';
 
 export interface LabelProps {
   className?: string;
@@ -6,9 +7,11 @@ export interface LabelProps {
 }
 
 const Label: FC<LabelProps> = ({ className = "", children }) => {
+  const t = useTranslations("components_Label");
+
   return (
     <label
-      className={`nc-Label text-sm font-medium text-neutral-700 dark:text-neutral-300 ${className}`}
+      className={`${t('components_Label_Base_Classes')} ${className}`}
     >
       {children}
     </label>

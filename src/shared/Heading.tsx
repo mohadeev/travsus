@@ -1,5 +1,6 @@
 import React, { HTMLAttributes, ReactNode } from "react";
 import  { FC } from 'react'
+import { useTranslations } from '@/lib/i18n'
 
 export interface HeadingProps extends HTMLAttributes<HTMLHeadingElement> {
   fontClass?: string;
@@ -9,11 +10,13 @@ export interface HeadingProps extends HTMLAttributes<HTMLHeadingElement> {
 
 const Heading: React.FC<HeadingProps> = ({
   children,
-  desc = "Discover the most outstanding articles in all topics of life. ",
+  desc,
   className = "mb-10 text-neutral-900 dark:text-neutral-50",
   isCenter = false,
   ...args
 }) => {
+  const t = useTranslations("shared_Heading");
+  
   return (
     <div className={`nc-Section-Heading relative ${className}`}>
       <div
@@ -22,11 +25,11 @@ const Heading: React.FC<HeadingProps> = ({
         }
       >
         <h2 className={`text-3xl md:text-4xl font-semibold`} {...args}>
-          {children || `Section Heading`}
+          {children || t('shared_Heading_Section_Heading')}
         </h2>
-        {desc && (
+        {(desc !== undefined ? desc : t('shared_Heading_Default_Description')) && (
           <span className="block mt-2 md:mt-3 font-normal text-base sm:text-lg text-neutral-500 dark:text-neutral-400">
-            {desc}
+            {desc !== undefined ? desc : t('shared_Heading_Default_Description')}
           </span>
         )}
       </div>
@@ -53,4 +56,3 @@ export const HeadingSkeleton : FC<HeadingSkeletonProps> = ({
     </div>
   )
 }
-

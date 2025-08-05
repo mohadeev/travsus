@@ -4,6 +4,7 @@ import React, { InputHTMLAttributes, useState } from 'react'
 import ReactPhoneInput from './ReactPhoneInput'
 import Label from '@/components/Label'
 import { Eye, EyeOff } from 'lucide-react'
+import { useTranslations } from '@/lib/i18n'
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 	sizeClass?: string
@@ -27,6 +28,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 		},
 		ref,
 	) => {
+		const t = useTranslations("shared_Input");
 		const [showPassword, setShowPassword] = useState(false)
 		const inputType = typeof type === 'undefined' ? 'text' : type
 
@@ -61,12 +63,12 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 								<button
 									type="button"
 									onClick={togglePasswordVisibility}
-									className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 focus:outline-none"
+									className={t('shared_Input_Toggle_Button_Classes')}
 								>
 									{showPassword ? (
-										<EyeOff className="h-5 w-5" />
+										<EyeOff className={t('shared_Input_Icon_Classes')} />
 									) : (
-										<Eye className="h-5 w-5" />
+										<Eye className={t('shared_Input_Icon_Classes')} />
 									)}
 								</button>
 							)}

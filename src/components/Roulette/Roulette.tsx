@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Wheel } from 'react-custom-roulette'
 import confetti from 'canvas-confetti'
+import { useTranslations } from '@/lib/i18n'
 
 const data = [
 	{ option: '10€' },
@@ -26,6 +27,7 @@ const data = [
 ]
 
 export default function WheelGame() {
+	const t = useTranslations("components_Roulette_Roulette");
 	const [mustSpin, setMustSpin] = useState(false)
 	const [prizeNumber, setPrizeNumber] = useState(2)
 	const [showResult, setShowResult] = useState(false)
@@ -73,7 +75,7 @@ export default function WheelGame() {
 			try {
 				const response = await fetch('/api/spin', { method: 'POST' })
 				if (!response.ok) {
-					throw new Error('Failed to fetch prize number')
+					throw new Error(t('components_Roulette_Roulette_Failed_To_Fetch_Prize'))
 				}
 				const data = await response.json()
 				setPrizeNumber(0)
@@ -85,7 +87,7 @@ export default function WheelGame() {
 					spinningSound.current.play()
 				}
 			} catch (err) {
-				setError('An error occurred. Please try again.')
+				setError(t('components_Roulette_Roulette_Error_Occurred'))
 				console.error('Error spinning wheel:', err)
 			} finally {
 				setIsLoading(false)
@@ -134,8 +136,8 @@ export default function WheelGame() {
 				<div ref={resultRef} className="mb-8 w-full text-center">
 					<h2 className="mb-4 text-3xl font-bold text-black">
 						{data[prizeNumber].option === '0€'
-							? 'Better luck next time! 🍀'
-							: 'Congratulations! 🏆'}
+							? t('components_Roulette_Roulette_Better_Luck_Next_Time')
+							: t('components_Roulette_Roulette_Congratulations')}
 					</h2>
 					<p className="mb-4 text-6xl font-bold text-black">
 						{data[prizeNumber].option}
@@ -143,18 +145,18 @@ export default function WheelGame() {
 					{winnerCode && (
 						<>
 							<button className="mb-4 rounded-full bg-black px-6 py-3 text-base font-semibold text-white shadow-lg transition duration-300 ease-in-out hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50">
-								Claim your prize
+								{t('components_Roulette_Roulette_Claim_Your_Prize')}
 							</button>
 							<p className="mb-2 text-sm font-bold text-black">
-								Hurry! Claim your prize now! 🏃‍♂️💨
+								{t('components_Roulette_Roulette_Hurry_Claim_Prize')}
 							</p>
 							<p className="mb-4 text-sm text-black">
-								Your winner code:{' '}
+								{t('components_Roulette_Roulette_Your_Winner_Code')}{' '}
 								<span className="font-semibold">{winnerCode}</span>
 							</p>
 							{timeLeft !== null && (
 								<div className="mb-4 text-3xl font-bold text-red-500">
-									Time left: {formatTime(timeLeft)}
+									{t('components_Roulette_Roulette_Time_Left')} {formatTime(timeLeft)}
 								</div>
 							)}
 						</>
@@ -173,10 +175,10 @@ export default function WheelGame() {
 				<div className="absolute inset-0 z-[-1] bg-white/50 backdrop-blur-[10px]"></div>
 				<div className="relative z-[2] flex flex-col items-center p-12 text-center">
 					<h1 className="mb-4 text-5xl font-black leading-tight text-black">
-						Wheel of Fortune
+						{t('components_Roulette_Roulette_Wheel_Of_Fortune')}
 					</h1>
 					<p className="mb-8 text-base font-normal leading-relaxed text-gray-700">
-						Spin the wheel and win amazing prizes!
+						{t('components_Roulette_Roulette_Spin_Wheel_Description')}
 					</p>
 					<div ref={wheelRef} className="mb-8 flex flex-col items-center">
 						<div className="mb-6">
@@ -238,7 +240,7 @@ export default function WheelGame() {
 							onClick={handleSpinClick}
 							disabled={mustSpin || isLoading}
 						>
-							{isLoading ? 'Loading...' : 'SPIN NOW!'}
+							{isLoading ? t('components_Roulette_Roulette_Loading') : t('components_Roulette_Roulette_Spin_Now')}
 						</button>
 					</div>
 					{error && (
@@ -250,13 +252,13 @@ export default function WheelGame() {
 						<div className="cursor-pointer rounded-lg bg-white/60 p-4 text-center backdrop-blur-sm transition-all duration-300 ease-in-out hover:-translate-y-1">
 							<div className="text-2xl font-bold text-black">100+</div>
 							<div className="mt-2 text-sm font-normal text-gray-700">
-								Prizes Won
+								{t('components_Roulette_Roulette_Prizes_Won')}
 							</div>
 						</div>
 						<div className="cursor-pointer rounded-lg bg-white/60 p-4 text-center backdrop-blur-sm transition-all duration-300 ease-in-out hover:-translate-y-1">
 							<div className="text-2xl font-bold text-black">30+</div>
 							<div className="mt-2 text-sm font-normal text-gray-700">
-								Happy Clients
+								{t('components_Roulette_Roulette_Happy_Clients')}
 							</div>
 						</div>
 					</div>

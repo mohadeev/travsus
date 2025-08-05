@@ -3,17 +3,19 @@
 import { Popover, Transition } from "@headlessui/react";
 import Input from "@/shared/Input";
 import React, { FC, Fragment } from "react";
+import { useTranslations } from '@/lib/i18n';
 
 interface Props {
   className?: string;
 }
 
 const SearchDropdown: FC<Props> = ({ className = "" }) => {
+  const t = useTranslations("app_clientcomponents_Header_SearchDropdown");
   const inputRef = React.createRef<HTMLInputElement>();
 
   return (
     <React.Fragment>
-      <Popover className={`relative ${className}`}>
+      <Popover className={t('app_clientcomponents_Header_SearchDropdown_Container_Classes')}>
         {({ open }) => {
           if (open) {
             setTimeout(() => {
@@ -23,8 +25,8 @@ const SearchDropdown: FC<Props> = ({ className = "" }) => {
 
           return (
             <>
-              <Popover.Button className="text-2xl md:text-[28px] w-12 h-12 rounded-full text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:outline-none flex items-center justify-center">
-                <i className="las la-search"></i>
+              <Popover.Button className={t('app_clientcomponents_Header_SearchDropdown_Button_Classes')}>
+                <i className={t('app_clientcomponents_Header_SearchDropdown_Icon_Classes')}></i>
               </Popover.Button>
 
               <Transition
@@ -39,14 +41,14 @@ const SearchDropdown: FC<Props> = ({ className = "" }) => {
               >
                 <Popover.Panel
                   static
-                  className="absolute right-0 z-10 top-full w-screen max-w-sm"
+                  className={t('app_clientcomponents_Header_SearchDropdown_Panel_Classes')}
                 >
                   <form action="" method="POST">
                     <Input
                       ref={inputRef}
                       rounded="rounded-full"
                       type="search"
-                      placeholder="Type and press enter"
+                      placeholder={t('app_clientcomponents_Header_SearchDropdown_Placeholder_Text')}
                     />
                     <input type="submit" hidden value="" />
                   </form>

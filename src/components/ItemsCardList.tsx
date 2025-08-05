@@ -1,4 +1,4 @@
-import { useTranslations } from '@/lib/i18n';
+import { useTranslations } from '@/lib/i18n'
 import { type FC, useEffect, useState, useRef } from 'react'
 import CountryCard, { type CountryDataType } from './CountryCard'
 import ContainerExperiencesCardSkeleton from './ContainerExperiencesCardSkeleton'
@@ -31,13 +31,13 @@ const ItemsCardList: FC<ItemsCardListProps> = ({
 	countryId,
 	cityId,
 	layout = 'column',
-	heading = 'Popular Destinations',
-	subHeading = 'Explore top destinations around the world',
+	heading = '',
+	subHeading = '',
 	limit = 16,
 	showArrowsIconsInPhone = false,
 	currentPage = 1,
 }) => {
-	const t = useTranslations("components_ItemsCardList");
+	const t = useTranslations('components_ItemsCardList')
 	const [locations, setLocations] = useState<CountryDataType[]>([])
 	const [toursData, setToursData] = useState<any[]>([])
 	const [totalPages, setTotalPages] = useState(1)
@@ -75,7 +75,10 @@ const ItemsCardList: FC<ItemsCardListProps> = ({
 							setToursData([])
 						}
 					} catch (err) {
-						console.error(t('components_ItemsCardList_Error_Fetching_Tours'), err)
+						console.error(
+							t('components_ItemsCardList_Error_Fetching_Tours'),
+							err,
+						)
 						setError(t('components_ItemsCardList_Failed_To_Load_Tours'))
 						setToursData([])
 					} finally {
@@ -98,7 +101,9 @@ const ItemsCardList: FC<ItemsCardListProps> = ({
 				const response = await fetch(url)
 
 				if (!response.ok) {
-					throw new Error(t('components_ItemsCardList_Failed_To_Fetch_Locations'))
+					throw new Error(
+						t('components_ItemsCardList_Failed_To_Fetch_Locations'),
+					)
 				}
 
 				const data = await response.json()
@@ -133,7 +138,10 @@ const ItemsCardList: FC<ItemsCardListProps> = ({
 					const cityList = data.cities || data.data || []
 					formattedLocations = cityList.map((city: any) => {
 						const translation = city.content?.translations?.[0]
-						const name = translation?.text || city.name || t('components_ItemsCardList_Unknown_City')
+						const name =
+							translation?.text ||
+							city.name ||
+							t('components_ItemsCardList_Unknown_City')
 						const cityCountryId = city.code3 || countryId
 						const imageUrl = city.image?.url || city.image?.uploadFrom
 
@@ -154,7 +162,10 @@ const ItemsCardList: FC<ItemsCardListProps> = ({
 					setLocations(formattedLocations)
 				}
 			} catch (err) {
-				console.error(t('components_ItemsCardList_Error_Fetching_Locations'), err)
+				console.error(
+					t('components_ItemsCardList_Error_Fetching_Locations'),
+					err,
+				)
 				setLocations(mockLocations)
 				setError(t('components_ItemsCardList_Failed_To_Load_Locations'))
 			} finally {
@@ -166,20 +177,28 @@ const ItemsCardList: FC<ItemsCardListProps> = ({
 	}, [locationType, countryId, cityId, limit, currentPage, t])
 
 	const getDefaultHeading = () => {
-		if (locationType === 'country') return t('components_ItemsCardList_Popular_Countries')
+		if (locationType === 'country')
+			return t('components_ItemsCardList_Popular_Countries')
 		if (locationType === 'city')
-			return countryId ? `${t('components_ItemsCardList_Cities_In')} ${countryId}` : t('components_ItemsCardList_Popular_Cities')
+			return countryId
+				? `${t('components_ItemsCardList_Cities_In')} ${countryId}`
+				: t('components_ItemsCardList_Popular_Cities')
 		if (locationType === 'place')
-			return cityId ? `${t('components_ItemsCardList_Places_In')} ${cityId}` : t('components_ItemsCardList_Places_To_Visit')
-		if (locationType === 'tour') return t('components_ItemsCardList_Popular_Tours')
+			return cityId
+				? `${t('components_ItemsCardList_Places_In')} ${cityId}`
+				: t('components_ItemsCardList_Places_To_Visit')
+		if (locationType === 'tour')
+			return t('components_ItemsCardList_Popular_Tours')
 		return t('components_ItemsCardList_Popular_Destinations')
 	}
 
 	const getDefaultSubheading = () => {
 		if (locationType === 'country')
 			return t('components_ItemsCardList_Explore_Top_Countries')
-		if (locationType === 'city') return t('components_ItemsCardList_Discover_Amazing_Cities')
-		if (locationType === 'place') return t('components_ItemsCardList_Must_See_Attractions')
+		if (locationType === 'city')
+			return t('components_ItemsCardList_Discover_Amazing_Cities')
+		if (locationType === 'place')
+			return t('components_ItemsCardList_Must_See_Attractions')
 		if (locationType === 'tour') return ''
 		return ''
 	}
@@ -305,7 +324,7 @@ const ItemsCardList: FC<ItemsCardListProps> = ({
 
 							<div
 								ref={scrollContainerRef}
-								className={`hide-scrollbar flex gap-2 overflow-x-auto py-0 ${className}`}
+								className={`hide-scrollbar flex gap-5 overflow-x-auto py-0 ${className}`}
 							>
 								{locations.map((item) => (
 									<div key={item.id} className={`flex-none ${itemClassName}`}>

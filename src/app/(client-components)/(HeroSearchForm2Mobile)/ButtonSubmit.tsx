@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import { PathName } from "@/routers/types";
+import { useTranslations } from '@/lib/i18n';
 
 interface Props {
   className?: string;
@@ -11,6 +12,8 @@ const ButtonSubmit: FC<Props> = ({
   onClick = () => {},
   href = "/listing-stay",
 }) => {
+  const t = useTranslations("app_clientcomponents_HeroSearchForm2Mobile_ButtonSubmit");
+  
   return (
     <button
       type="submit"
@@ -34,7 +37,7 @@ const ButtonSubmit: FC<Props> = ({
           d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
         />
       </svg>
-      <span className="ml-2">Search</span>
+      <span className="ml-2">{t('app_clientcomponents_HeroSearchForm2Mobile_ButtonSubmit_Search_Text')}</span>
     </button>
   );
 };

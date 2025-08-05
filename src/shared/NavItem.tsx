@@ -1,6 +1,7 @@
 "use client";
 
 import React, { FC, ReactNode } from "react";
+import { useTranslations } from '@/lib/i18n';
 import twFocusClass from "@/utils/twFocusClass";
 
 export interface NavItemProps {
@@ -20,6 +21,8 @@ const NavItem: FC<NavItemProps> = ({
   isActive = false,
   renderX,
 }) => {
+  const t = useTranslations("shared_NavItem");
+  
   return (
     <li className="nc-NavItem relative" data-nc-id="NavItem">
       {renderX && renderX}

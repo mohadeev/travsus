@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react'
+import { useTranslations } from '@/lib/i18n'
 
 // import { IoFlag } from '@react-icons/all-files/io5/IoFlag'
 // import { IoLocation } from '@react-icons/all-files/io5/IoLocation'
@@ -18,6 +19,7 @@ interface props {
 }
 
 const Itinerary = ({ isFirst, isLast, dayData, Index, tourData }: any) => {
+	const t = useTranslations("EachDay");
 	const [active, setActive] = useState(false)
 	const containerDiv = React.useRef<HTMLDivElement | null>(null)
 

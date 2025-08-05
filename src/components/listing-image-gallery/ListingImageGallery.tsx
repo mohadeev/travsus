@@ -17,6 +17,7 @@ import {
 import LikeSaveBtns from '../LikeSaveBtns'
 import type { Route } from 'next'
 import { useSelector } from 'react-redux'
+import { useTranslations } from '@/lib/i18n'
 
 const PHOTOS: string[] = [
 	// 'https://images.pexels.com/photos/6129967/pexels-photo-6129967.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260',
@@ -55,6 +56,7 @@ interface Props {
 }
 
 const ListingImageGallery: FC<Props> = ({ images }) => {
+	const t = useTranslations("components_listingimagegallery_ListingImageGallery");
 	const searchParams = useSearchParams()
 	const photoId = searchParams?.get('photoId')
 	const modal = searchParams?.get('modal')
@@ -95,11 +97,11 @@ const ListingImageGallery: FC<Props> = ({ images }) => {
 
 	const renderContent = () => {
 		return (
-			<div className="w-full max-w-full overflow-hidden">
+			<div className={t('components_listingimagegallery_ListingImageGallery_Container_Wrapper_Classes')}>
 				{photoId && (
 					<Suspense
 						fallback={
-							<div className="flex h-screen w-full items-center justify-center">
+							<div className={t('components_listingimagegallery_ListingImageGallery_Loading_Container_Classes')}>
 								Loading...
 							</div>
 						}
@@ -117,7 +119,7 @@ const ListingImageGallery: FC<Props> = ({ images }) => {
 					</Suspense>
 				)}
 
-				<div className="w-full columns-1 gap-4 sm:columns-2 xl:columns-3">
+				<div className={t('components_listingimagegallery_ListingImageGallery_Gallery_Grid_Classes')}>
 					{serviceImages?.map(({ id, url }: any) => (
 						<div
 							key={id}
@@ -126,12 +128,12 @@ const ListingImageGallery: FC<Props> = ({ images }) => {
 								router.push(`${thisPathname}/?${newPathname}` as Route)
 							}}
 							ref={id === Number(lastViewedPhoto) ? lastViewedPhotoRef : null}
-							className="after:content group relative mb-5 block w-full cursor-zoom-in after:pointer-events-none after:absolute after:inset-0 after:rounded-lg focus:outline-none"
+							className={t('components_listingimagegallery_ListingImageGallery_Gallery_Item_Classes')}
 						>
-							<div className="aspect-[3/2] w-full overflow-hidden rounded-lg">
+							<div className={t('components_listingimagegallery_ListingImageGallery_Image_Container_Classes')}>
 								<Image
-									alt="Travsus listing gallery"
-									className="h-auto w-full transform rounded-lg object-cover brightness-90 transition will-change-auto focus:outline-none group-hover:brightness-110"
+									alt={t('components_listingimagegallery_ListingImageGallery_Image_Alt_Text')}
+									className={t('components_listingimagegallery_ListingImageGallery_Image_Classes')}
 									style={{
 										transform: 'translate3d(0, 0, 0)',
 									}}
@@ -151,7 +153,7 @@ const ListingImageGallery: FC<Props> = ({ images }) => {
 	return (
 		<>
 			<Transition appear show={isShowModal} as={Fragment}>
-				<Dialog as="div" className="relative z-40" onClose={handleClose}>
+				<Dialog as="div" className={t('components_listingimagegallery_ListingImageGallery_Dialog_Classes')} onClose={handleClose}>
 					<TransitionChild
 						as={Fragment}
 						enter="ease-out duration-300"
@@ -161,21 +163,21 @@ const ListingImageGallery: FC<Props> = ({ images }) => {
 						leaveFrom="opacity-100"
 						leaveTo="opacity-0"
 					>
-						<div className="fixed inset-0 bg-white" />
+						<div className={t('components_listingimagegallery_ListingImageGallery_Backdrop_Classes')} />
 					</TransitionChild>
 
-					<div className="fixed inset-0 overflow-y-auto">
-						<div className="sticky top-0 z-10 flex items-center justify-between bg-white p-4 xl:px-10">
+					<div className={t('components_listingimagegallery_ListingImageGallery_Overlay_Classes')}>
+						<div className={t('components_listingimagegallery_ListingImageGallery_Header_Classes')}>
 							<button
-								className="flex h-10 w-10 items-center justify-center rounded-full hover:bg-neutral-100 focus:outline-none focus:ring-0"
+								className={t('components_listingimagegallery_ListingImageGallery_Close_Button_Classes')}
 								onClick={handleClose}
 							>
-								<ArrowLeftIcon className="h-6 w-6" />
+								<ArrowLeftIcon className={t('components_listingimagegallery_ListingImageGallery_Icon_Classes')} />
 							</button>
 							<LikeSaveBtns />
 						</div>
 
-						<div className="flex min-h-full items-center justify-center p-0 text-center sm:p-4">
+						<div className={t('components_listingimagegallery_ListingImageGallery_Content_Container_Classes')}>
 							<TransitionChild
 								as={Fragment}
 								enter="ease-out duration-300"
@@ -185,7 +187,7 @@ const ListingImageGallery: FC<Props> = ({ images }) => {
 								leaveFrom="opacity-100 translate-y-0"
 								leaveTo="opacity-0 translate-y-5"
 							>
-								<DialogPanel className="mx-auto w-full max-w-screen-lg transform overflow-hidden p-4 pt-0 text-left transition-all">
+								<DialogPanel className={t('components_listingimagegallery_ListingImageGallery_Dialog_Panel_Classes')}>
 									{renderContent()}
 								</DialogPanel>
 							</TransitionChild>

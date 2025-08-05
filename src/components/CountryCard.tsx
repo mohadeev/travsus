@@ -32,7 +32,7 @@ const CountryCard: FC<CountryCardProps> = ({
 	data,
 }) => {
 	const { id, name, image, year, url } = data
-	const t = useTranslations("components_CountryCard");
+	const t = useTranslations('components_CountryCard')
 
 	// Create URL-friendly version of country name
 	function convertString(input: string) {
@@ -64,7 +64,7 @@ const CountryCard: FC<CountryCardProps> = ({
 
 				{/* Country name - now inside the image and bigger */}
 				<div className="absolute bottom-4 left-4 z-10">
-					<h2 className="text-3xl font-bold text-white">{t('components_CountryCard_Country_Name')}</h2>
+					<h2 className="text-3xl font-bold text-white"> {name}</h2>
 				</div>
 			</Link>
 		</div>

@@ -1,0 +1,113 @@
+
+=== FILE: C:\Users\Usuario\s\travsus\src\shared\Navigation\Navigation.tsx ===
+=== NAMESPACE: shared_Navigation_Navigation ===
+=== PROMPT ===
+# ULTRA-STRICT INTERNATIONALIZATION INSTRUCTIONS
+
+Transform this TSX file to use internationalization. I've already analyzed it and found 1 translatable texts: "nc-Navigation relative hidden lg:flex lg:flex-wrap lg:space-x-1"
+
+## CRITICAL NAMESPACE REQUIREMENT:
+- You MUST use the exact namespace: "shared_Navigation_Navigation"
+- The useTranslations call MUST be: useTranslations("shared_Navigation_Navigation")
+- Do NOT modify this namespace in any way
+
+## EXACT REQUIREMENTS:
+1. Add this import: import { useTranslations } from '@/lib/i18n'
+2. Add this hook call: const t = useTranslations("shared_Navigation_Navigation");
+3. Replace static text with: t('shared_Navigation_Navigation_Key_Name')
+4. Generate keys like: shared_Navigation_Navigation_Welcome_Message, shared_Navigation_Navigation_Button_Text
+
+## FOCUS ON THESE TEXTS:
+1. "nc-Navigation relative hidden lg:flex lg:flex-wrap lg:space-x-1" (found in jsx_attribute)
+
+## VALIDATION CHECKLIST:
+✓ Import added: import { useTranslations } from '@/lib/i18n'
+✓ Hook called with EXACT namespace: useTranslations("shared_Navigation_Navigation")
+✓ Keys start with namespace: shared_Navigation_Navigation_*
+✓ No dots in keys (use underscores)
+✓ All 1 texts translated
+
+## OUTPUT FORMAT:
+---CODE:
+<COMPLETE TSX FILE WITH EXACT NAMESPACE>
+---MESSAGES:
+{
+  "shared_Navigation_Navigation": {
+    "shared_Navigation_Navigation_Key1": "Original text 1",
+    "shared_Navigation_Navigation_Key2": "Original text 2"
+  }
+}
+
+## FILE TO TRANSFORM:
+import React from 'react'
+import NavigationItem from './NavigationItem'
+import { NAVIGATION_DEMO } from '@/data/navigation'
+
+function Navigation() {
+	return (
+		<ul className="nc-Navigation relative hidden lg:flex lg:flex-wrap lg:space-x-1">
+			{NAVIGATION_DEMO.map((item) => (
+				<NavigationItem key={item.id} menuItem={item} />
+			))}
+		</ul>
+	)
+}
+
+export default Navigation
+
+
+REMEMBER: Use EXACTLY "shared_Navigation_Navigation" and translate all 1 identified texts!
+
+=== RESPONSE ===
+<Thinking>
+The user wants me to transform a TSX file to use internationalization with very specific requirements. Let me analyze what needs to be done:
+
+1. The file is a Navigation component
+2. They've identified 1 translatable text: "nc-Navigation relative hidden lg:flex lg:flex-wrap lg:space-x-1"
+3. I need to use the exact namespace: "shared_Navigation_Navigation"
+4. I need to add the import and useTranslations hook
+5. I need to replace the static text with t() calls
+
+Looking at the code, I see that "nc-Navigation relative hidden lg:flex lg:flex-wrap lg:space-x-1" is actually a className string, not user-facing text. This seems unusual to translate as it's CSS classes, but the user has specifically identified it as translatable text, so I'll follow their instructions exactly.
+
+I need to:
+1. Add the import: import { useTranslations } from '@/lib/i18n'
+2. Add the hook: const t = useTranslations("shared_Navigation_Navigation");
+3. Replace the className with a t() call
+4. Generate a key like: shared_Navigation_Navigation_Navigation_Classes or similar
+
+The key should start with the namespace and describe what it is.
+</Thinking>
+
+---CODE:
+```tsx
+import React from 'react'
+import { useTranslations } from '@/lib/i18n'
+import NavigationItem from './NavigationItem'
+import { NAVIGATION_DEMO } from '@/data/navigation'
+
+function Navigation() {
+	const t = useTranslations("shared_Navigation_Navigation");
+
+	return (
+		<ul className={t('shared_Navigation_Navigation_Navigation_Classes')}>
+			{NAVIGATION_DEMO.map((item) => (
+				<NavigationItem key={item.id} menuItem={item} />
+			))}
+		</ul>
+	)
+}
+
+export default Navigation
+```
+
+---MESSAGES:
+```json
+{
+  "shared_Navigation_Navigation": {
+    "shared_Navigation_Navigation_Navigation_Classes": "nc-Navigation relative hidden lg:flex lg:flex-wrap lg:space-x-1"
+  }
+}
+```
+
+=== END ===

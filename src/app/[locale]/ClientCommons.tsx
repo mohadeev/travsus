@@ -3,8 +3,10 @@
 import React, { useEffect } from 'react'
 import { usePathname } from 'next/navigation'
 import { useThemeMode } from '@/utils/useThemeMode'
+import { useTranslations } from '@/lib/i18n'
 
 const ClientCommons = () => {
+	const t = useTranslations("app_locale_ClientCommons");
 	//
 	useThemeMode()
 

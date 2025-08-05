@@ -1,0 +1,14 @@
+{
+  "file": "C:\\Users\\Usuario\\s\\travsus\\src\\shared\\LogoSvg.tsx",
+  "timestamp": "2025-08-02T11:37:35.408Z",
+  "hasTranslatableText": true,
+  "textCount": 1,
+  "texts": [
+    {
+      "type": "jsx_attribute",
+      "text": "w-full block dark:hidden",
+      "context": "\r\n      className=\"w-full block dark:hidden\""
+    }
+  ],
+  "fileSize": 2427
+}

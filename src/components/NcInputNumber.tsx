@@ -2,6 +2,7 @@
 
 import React, { FC, useEffect, useState } from "react";
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/solid";
+import { useTranslations } from '@/lib/i18n';
 
 export interface NcInputNumberProps {
   className?: string;
@@ -14,7 +15,7 @@ export interface NcInputNumberProps {
 }
 
 const NcInputNumber: FC<NcInputNumberProps> = ({
-  className = "w-full",
+  className = t('components_NcInputNumber_Default_Width_Class'),
   defaultValue = 0,
   min = 0,
   max,
@@ -22,6 +23,7 @@ const NcInputNumber: FC<NcInputNumberProps> = ({
   label,
   desc,
 }) => {
+  const t = useTranslations("components_NcInputNumber");
   const [value, setValue] = useState(defaultValue);
 
   useEffect(() => {
@@ -45,12 +47,12 @@ const NcInputNumber: FC<NcInputNumberProps> = ({
 
   const renderLabel = () => {
     return (
-      <div className="flex flex-col">
-        <span className="font-medium text-neutral-800 dark:text-neutral-200">
+      <div className={t('components_NcInputNumber_Label_Container_Class')}>
+        <span className={t('components_NcInputNumber_Label_Text_Class')}>
           {label}
         </span>
         {desc && (
-          <span className="text-xs text-neutral-500 dark:text-neutral-400 font-normal">
+          <span className={t('components_NcInputNumber_Description_Text_Class')}>
             {desc}
           </span>
         )}
@@ -60,30 +62,30 @@ const NcInputNumber: FC<NcInputNumberProps> = ({
 
   return (
     <div
-      className={`nc-NcInputNumber flex items-center justify-between space-x-5 ${className}`}
+      className={`${t('components_NcInputNumber_Main_Container_Class')} ${className}`}
       data-nc-id="NcInputNumber"
     >
       {label && renderLabel()}
 
       <div
-        className={`nc-NcInputNumber flex items-center justify-between w-28`}
+        className={t('components_NcInputNumber_Controls_Container_Class')}
       >
         <button
-          className="w-8 h-8 rounded-full flex items-center justify-center border border-neutral-400 dark:border-neutral-500 bg-white dark:bg-neutral-900 focus:outline-none hover:border-neutral-700 disabled:hover:border-neutral-400 dark:disabled:hover:border-neutral-500 disabled:opacity-50 disabled:cursor-default"
+          className={t('components_NcInputNumber_Button_Class')}
           type="button"
           onClick={handleClickDecrement}
           disabled={min >= value}
         >
-          <MinusIcon className="w-4 h-4" />
+          <MinusIcon className={t('components_NcInputNumber_Icon_Class')} />
         </button>
         <span>{value}</span>
         <button
-          className="w-8 h-8 rounded-full flex items-center justify-center border border-neutral-400 dark:border-neutral-500 bg-white dark:bg-neutral-900 focus:outline-none hover:border-neutral-700 disabled:hover:border-neutral-400 dark:disabled:hover:border-neutral-500 disabled:opacity-50 disabled:cursor-default"
+          className={t('components_NcInputNumber_Button_Class')}
           type="button"
           onClick={handleClickIncrement}
           disabled={max ? max <= value : false}
         >
-          <PlusIcon className="w-4 h-4" />
+          <PlusIcon className={t('components_NcInputNumber_Icon_Class')} />
         </button>
       </div>
     </div>

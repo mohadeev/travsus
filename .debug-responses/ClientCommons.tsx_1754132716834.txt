@@ -1,0 +1,166 @@
+
+=== FILE: C:\Users\Usuario\s\travsus\src\app\[locale]\ClientCommons.tsx ===
+=== NAMESPACE: app_locale_ClientCommons ===
+=== PROMPT ===
+# ULTRA-STRICT INTERNATIONALIZATION INSTRUCTIONS
+
+Transform this TSX file to use internationalization. Follow these rules EXACTLY:
+
+## CRITICAL NAMESPACE REQUIREMENT:
+- You MUST use the exact namespace: "app_locale_ClientCommons"
+- The useTranslations call MUST be: useTranslations("app_locale_ClientCommons")
+- Do NOT modify this namespace in any way
+- Do NOT use any other namespace
+
+## EXACT REQUIREMENTS:
+1. Add this import: import { useTranslations } from '@/lib/i18n'
+2. Add this hook call: const t = useTranslations("app_locale_ClientCommons");
+3. Replace static text with: t('app_locale_ClientCommons_Key_Name')
+4. Generate keys like: app_locale_ClientCommons_Welcome_Message, app_locale_ClientCommons_Button_Text
+
+## VALIDATION CHECKLIST:
+✓ Import added: import { useTranslations } from '@/lib/i18n'
+✓ Hook called with EXACT namespace: useTranslations("app_locale_ClientCommons")
+✓ Keys start with namespace: app_locale_ClientCommons_*
+✓ No dots in keys (use underscores)
+✓ Complete file transformation
+
+## EXAMPLE TRANSFORMATION:
+BEFORE:
+export default function MyComponent() {
+  return <div>Hello World</div>
+}
+
+AFTER:
+import { useTranslations } from '@/lib/i18n'
+
+export default function MyComponent() {
+  const t = useTranslations("app_locale_ClientCommons");
+  return <div>{t('app_locale_ClientCommons_Hello_World')}</div>
+}
+
+## OUTPUT FORMAT:
+---CODE:
+<COMPLETE TSX FILE WITH EXACT NAMESPACE>
+---MESSAGES:
+{
+  "app_locale_ClientCommons": {
+    "app_locale_ClientCommons_Key1": "Original text 1",
+    "app_locale_ClientCommons_Key2": "Original text 2"
+  }
+}
+
+## FILE TO TRANSFORM:
+'use client'
+
+import React, { useEffect } from 'react'
+import { usePathname } from 'next/navigation'
+import { useThemeMode } from '@/utils/useThemeMode'
+
+const ClientCommons = () => {
+	//
+	useThemeMode()
+
+	const pathname = usePathname()
+	//  CUSTOM THEME STYLE
+	useEffect(() => {
+		const $body = document.querySelector('body')
+		if (!$body) return
+
+		let newBodyClass = ''
+
+		if (pathname === '/home-3') {
+			newBodyClass = 'theme-purple-blueGrey'
+		}
+		if (pathname === '/home-2') {
+			newBodyClass = 'theme-cyan-blueGrey'
+		}
+
+		newBodyClass && $body.classList.add(newBodyClass)
+		return () => {
+			newBodyClass && $body.classList.remove(newBodyClass)
+		}
+	}, [pathname])
+
+	return <></>
+}
+
+export default ClientCommons
+
+
+REMEMBER: Use EXACTLY "app_locale_ClientCommons" - do not change it!
+
+=== RESPONSE ===
+<Thinking>
+Looking at this TSX file, I need to transform it to use internationalization following the exact requirements. Let me analyze what needs to be done:
+
+1. The file is a React component called `ClientCommons` that uses client-side hooks
+2. It has `'use client'` directive at the top
+3. It imports React, useEffect, usePathname, and useThemeMode
+4. The component handles theme styling based on pathname
+5. It returns an empty fragment `<></>`
+
+Looking at the code, I don't see any static text strings that need to be internationalized. The component only deals with:
+- Pathname checking (`'/home-3'`, `'/home-2'`)
+- CSS class names (`'theme-purple-blueGrey'`, `'theme-cyan-blueGrey'`)
+- DOM manipulation
+
+However, the instructions are very strict about following the format exactly, so I need to:
+1. Add the import: `import { useTranslations } from '@/lib/i18n'`
+2. Add the hook call: `const t = useTranslations("app_locale_ClientCommons");`
+3. Even though there are no user-facing strings to translate, I should still add these as required
+
+The pathnames and CSS class names are technical identifiers that typically shouldn't be internationalized as they're used for routing and styling logic.
+
+Since there are no actual user-facing text strings to internationalize in this component, the messages object will be empty or I might need to create placeholder entries if required.
+</Thinking>
+
+---CODE:
+```tsx
+'use client'
+
+import React, { useEffect } from 'react'
+import { usePathname } from 'next/navigation'
+import { useThemeMode } from '@/utils/useThemeMode'
+import { useTranslations } from '@/lib/i18n'
+
+const ClientCommons = () => {
+	const t = useTranslations("app_locale_ClientCommons");
+	//
+	useThemeMode()
+
+	const pathname = usePathname()
+	//  CUSTOM THEME STYLE
+	useEffect(() => {
+		const $body = document.querySelector('body')
+		if (!$body) return
+
+		let newBodyClass = ''
+
+		if (pathname === '/home-3') {
+			newBodyClass = 'theme-purple-blueGrey'
+		}
+		if (pathname === '/home-2') {
+			newBodyClass = 'theme-cyan-blueGrey'
+		}
+
+		newBodyClass && $body.classList.add(newBodyClass)
+		return () => {
+			newBodyClass && $body.classList.remove(newBodyClass)
+		}
+	}, [pathname])
+
+	return <></>
+}
+
+export default ClientCommons
+```
+
+---MESSAGES:
+```json
+{
+  "app_locale_ClientCommons": {}
+}
+```
+
+=== END ===

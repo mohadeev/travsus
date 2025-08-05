@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from '@/lib/i18n'
 import { PathName } from "@/routers/types";
 import { Popover, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
@@ -33,6 +34,7 @@ export interface NavigationItemProps {
 type NavigationItemWithRouterProps = NavigationItemProps;
 
 const NavigationItem: FC<NavigationItemWithRouterProps> = ({ menuItem }) => {
+  const t = useTranslations("shared_Navigation_NavigationItem");
   const [menuCurrentHovers, setMenuCurrentHovers] = useState<string[]>([]);
 
   // CLOSE ALL MENU OPENING WHEN CHANGE HISTORY

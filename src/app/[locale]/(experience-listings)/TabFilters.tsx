@@ -16,47 +16,50 @@ import ButtonClose from "@/shared/ButtonClose";
 import Checkbox from "@/shared/Checkbox";
 import convertNumbThousand from "@/utils/convertNumbThousand";
 import Slider from "rc-slider";
-
-// DEMO DATA
-const typeOfExpriences = [
-  {
-    name: "Food & drink",
-    description: "Short description for the experience",
-  },
-  {
-    name: "Art and culture",
-    description: "Short description for the experience",
-  },
-  {
-    name: "Nature and outdoors",
-    description: "Short description for the experience",
-  },
-  {
-    name: "Sports",
-    description: "Short description for the experience",
-  },
-];
-
-const timeOfdays = [
-  {
-    name: "Morning",
-    description: "Start before 12pm",
-  },
-  {
-    name: "Afternoon",
-    description: "Start after 12pm",
-  },
-  {
-    name: "Evening",
-    description: "Start after 5pm",
-  },
-];
-
-//
-const moreFilter1 = typeOfExpriences;
-const moreFilter2 = timeOfdays;
+import { useTranslations } from '@/lib/i18n';
 
 const TabFilters = ({ loading }: any) => {
+  const t = useTranslations("app_locale_experiencelistings_TabFilters");
+  
+  // DEMO DATA
+  const typeOfExpriences = [
+    {
+      name: t('app_locale_experiencelistings_TabFilters_Food_Drink'),
+      description: t('app_locale_experiencelistings_TabFilters_Short_Description_Experience'),
+    },
+    {
+      name: t('app_locale_experiencelistings_TabFilters_Art_Culture'),
+      description: t('app_locale_experiencelistings_TabFilters_Short_Description_Experience'),
+    },
+    {
+      name: t('app_locale_experiencelistings_TabFilters_Nature_Outdoors'),
+      description: t('app_locale_experiencelistings_TabFilters_Short_Description_Experience'),
+    },
+    {
+      name: t('app_locale_experiencelistings_TabFilters_Sports'),
+      description: t('app_locale_experiencelistings_TabFilters_Short_Description_Experience'),
+    },
+  ];
+
+  const timeOfdays = [
+    {
+      name: t('app_locale_experiencelistings_TabFilters_Morning'),
+      description: t('app_locale_experiencelistings_TabFilters_Start_Before_12pm'),
+    },
+    {
+      name: t('app_locale_experiencelistings_TabFilters_Afternoon'),
+      description: t('app_locale_experiencelistings_TabFilters_Start_After_12pm'),
+    },
+    {
+      name: t('app_locale_experiencelistings_TabFilters_Evening'),
+      description: t('app_locale_experiencelistings_TabFilters_Start_After_5pm'),
+    },
+  ];
+
+  //
+  const moreFilter1 = typeOfExpriences;
+  const moreFilter2 = timeOfdays;
+
   const [isOpenMoreFilter, setisOpenMoreFilter] = useState(false);
   //
   const [isOnSale, setIsOnSale] = useState(true);
@@ -94,7 +97,7 @@ const TabFilters = ({ loading }: any) => {
                 open ? "!border-primary-500" : ""
               }`}
             >
-              <span>Type of experiences</span>
+              <span>{t('app_locale_experiencelistings_TabFilters_Type_Of_Experiences')}</span>
               <i className="las la-angle-down ml-2"></i>
             </PopoverButton>
             <Transition
@@ -121,13 +124,13 @@ const TabFilters = ({ loading }: any) => {
                   </div>
                   <div className="flex items-center justify-between bg-neutral-50 p-5 dark:border-t dark:border-neutral-800 dark:bg-neutral-900">
                     <ButtonThird onClick={close} sizeClass="px-4 py-2 sm:px-5">
-                      Clear
+                      {t('app_locale_experiencelistings_TabFilters_Clear')}
                     </ButtonThird>
                     <ButtonPrimary
                       onClick={close}
                       sizeClass="px-4 py-2 sm:px-5"
                     >
-                      Apply
+                      {t('app_locale_experiencelistings_TabFilters_Apply')}
                     </ButtonPrimary>
                   </div>
                 </div>
@@ -149,7 +152,7 @@ const TabFilters = ({ loading }: any) => {
                 open ? "!border-primary-500" : ""
               }`}
             >
-              <span>Time of day</span>
+              <span>{t('app_locale_experiencelistings_TabFilters_Time_Of_Day')}</span>
               <i className="las la-angle-down ml-2"></i>
             </PopoverButton>
             <Transition
@@ -176,13 +179,13 @@ const TabFilters = ({ loading }: any) => {
                   </div>
                   <div className="flex items-center justify-between bg-neutral-50 p-5 dark:border-t dark:border-neutral-800 dark:bg-neutral-900">
                     <ButtonThird onClick={close} sizeClass="px-4 py-2 sm:px-5">
-                      Clear
+                      {t('app_locale_experiencelistings_TabFilters_Clear')}
                     </ButtonThird>
                     <ButtonPrimary
                       onClick={close}
                       sizeClass="px-4 py-2 sm:px-5"
                     >
-                      Apply
+                      {t('app_locale_experiencelistings_TabFilters_Apply')}
                     </ButtonPrimary>
                   </div>
                 </div>
@@ -205,7 +208,7 @@ const TabFilters = ({ loading }: any) => {
                 open ? "!border-primary-500" : ""
               }`}
             >
-              <span>{location ? location?.split(",")[0] : "Location"}</span>
+              <span>{location ? location?.split(",")[0] : t('app_locale_experiencelistings_TabFilters_Location')}</span>
               <i className="las la-angle-down ml-2"></i>
             </PopoverButton>
             <Transition
@@ -232,13 +235,13 @@ const TabFilters = ({ loading }: any) => {
                   </div>
                   <div className="flex items-center justify-between bg-neutral-50 p-5 dark:border-t dark:border-neutral-800 dark:bg-neutral-900">
                     <ButtonThird onClick={close} sizeClass="px-4 py-2 sm:px-5">
-                      Clear
+                      {t('app_locale_experiencelistings_TabFilters_Clear')}
                     </ButtonThird>
                     <ButtonPrimary
                       onClick={close}
                       sizeClass="px-4 py-2 sm:px-5"
                     >
-                      Apply
+                      {t('app_locale_experiencelistings_TabFilters_Apply')}
                     </ButtonPrimary>
                   </div>
                 </div>
@@ -278,7 +281,7 @@ const TabFilters = ({ loading }: any) => {
                 <div className="overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-xl dark:border-neutral-700 dark:bg-neutral-900">
                   <div className="relative flex flex-col space-y-8 px-5 py-6">
                     <div className="space-y-5">
-                      <span className="font-medium">Price per day</span>
+                      <span className="font-medium">{t('app_locale_experiencelistings_TabFilters_Price_Per_Day')}</span>
                       <Slider
                         range
                         min={0}
@@ -295,7 +298,7 @@ const TabFilters = ({ loading }: any) => {
                           htmlFor="minPrice"
                           className="block text-sm font-medium text-neutral-700 dark:text-neutral-300"
                         >
-                          Min price
+                          {t('app_locale_experiencelistings_TabFilters_Min_Price')}
                         </label>
                         <div className="relative mt-1 rounded-md">
                           <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
@@ -318,7 +321,7 @@ const TabFilters = ({ loading }: any) => {
                           htmlFor="maxPrice"
                           className="block text-sm font-medium text-neutral-700 dark:text-neutral-300"
                         >
-                          Max price
+                          {t('app_locale_experiencelistings_TabFilters_Max_Price')}
                         </label>
                         <div className="relative mt-1 rounded-md">
                           <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
@@ -340,13 +343,13 @@ const TabFilters = ({ loading }: any) => {
                   </div>
                   <div className="flex items-center justify-between bg-neutral-50 p-5 dark:border-t dark:border-neutral-800 dark:bg-neutral-900">
                     <ButtonThird onClick={close} sizeClass="px-4 py-2 sm:px-5">
-                      Clear
+                      {t('app_locale_experiencelistings_TabFilters_Clear')}
                     </ButtonThird>
                     <ButtonPrimary
                       onClick={close}
                       sizeClass="px-4 py-2 sm:px-5"
                     >
-                      Apply
+                      {t('app_locale_experiencelistings_TabFilters_Apply')}
                     </ButtonPrimary>
                   </div>
                 </div>
@@ -368,7 +371,7 @@ const TabFilters = ({ loading }: any) => {
         }`}
         onClick={() => setIsOnSale(!isOnSale)}
       >
-        <span>On sale</span>
+        <span>{t('app_locale_experiencelistings_TabFilters_On_Sale')}</span>
         {isOnSale && renderXClear()}
       </div>
     );
@@ -419,7 +422,7 @@ const TabFilters = ({ loading }: any) => {
           onClick={openModalMoreFilter}
         >
           <span>
-            <span className="hidden sm:inline">Experiences</span> filters (3)
+            <span className="hidden sm:inline">{t('app_locale_experiencelistings_TabFilters_Experiences')}</span> {t('app_locale_experiencelistings_TabFilters_Filters')} (3)
           </span>
           {renderXClear()}
         </div>
@@ -466,7 +469,7 @@ const TabFilters = ({ loading }: any) => {
                       as="h3"
                       className="text-lg font-medium leading-6 text-gray-900"
                     >
-                      Experiences filters
+                      {t('app_locale_experiencelistings_TabFilters_Experiences_Filters')}
                     </DialogTitle>
                     <span className="absolute left-3 top-3">
                       <ButtonClose onClick={closeModalMoreFilter} />
@@ -477,14 +480,14 @@ const TabFilters = ({ loading }: any) => {
                     <div className="divide-y divide-neutral-200 px-4 dark:divide-neutral-800 sm:px-6">
                       <div className="py-7">
                         <h3 className="text-xl font-medium">
-                          Type of experiences
+                          {t('app_locale_experiencelistings_TabFilters_Type_Of_Experiences')}
                         </h3>
                         <div className="relative mt-6">
                           {renderMoreFilterItem(moreFilter1)}
                         </div>
                       </div>
                       <div className="py-7">
-                        <h3 className="text-xl font-medium">Time of day</h3>
+                        <h3 className="text-xl font-medium">{t('app_locale_experiencelistings_TabFilters_Time_Of_Day')}</h3>
                         <div className="relative mt-6">
                           {renderMoreFilterItem(moreFilter2)}
                         </div>
@@ -493,7 +496,7 @@ const TabFilters = ({ loading }: any) => {
                       {/* --------- */}
                       {/* ---- */}
                       <div className="py-7">
-                        <h3 className="text-xl font-medium">Range Prices</h3>
+                        <h3 className="text-xl font-medium">{t('app_locale_experiencelistings_TabFilters_Range_Prices')}</h3>
                         <div className="relative mt-6">
                           <div className="relative flex flex-col space-y-8">
                             <div className="space-y-5">
@@ -513,7 +516,7 @@ const TabFilters = ({ loading }: any) => {
                                   htmlFor="minPrice"
                                   className="block text-sm font-medium text-neutral-700 dark:text-neutral-300"
                                 >
-                                  Min price
+                                  {t('app_locale_experiencelistings_TabFilters_Min_Price')}
                                 </label>
                                 <div className="relative mt-1 rounded-md">
                                   <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
@@ -536,7 +539,7 @@ const TabFilters = ({ loading }: any) => {
                                   htmlFor="maxPrice"
                                   className="block text-sm font-medium text-neutral-700 dark:text-neutral-300"
                                 >
-                                  Max price
+                                  {t('app_locale_experiencelistings_TabFilters_Max_Price')}
                                 </label>
                                 <div className="relative mt-1 rounded-md">
                                   <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
@@ -566,13 +569,13 @@ const TabFilters = ({ loading }: any) => {
                       onClick={closeModalMoreFilter}
                       sizeClass="px-4 py-2 sm:px-5"
                     >
-                      Clear
+                      {t('app_locale_experiencelistings_TabFilters_Clear')}
                     </ButtonThird>
                     <ButtonPrimary
                       onClick={closeModalMoreFilter}
                       sizeClass="px-4 py-2 sm:px-5"
                     >
-                      Apply
+                      {t('app_locale_experiencelistings_TabFilters_Apply')}
                     </ButtonPrimary>
                   </div>
                 </div>

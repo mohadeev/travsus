@@ -1,5 +1,6 @@
 'use client'
 import { type FC, useEffect, useState, useRef } from 'react'
+import { useTranslations } from '@/lib/i18n'
 import { DEMO_EXPERIENCES_LISTINGS } from '@/data/listings'
 import type { ExperiencesDataType, StayDataType } from '@/data/types'
 import Pagination from '@/shared/Pagination'
@@ -29,6 +30,7 @@ const SectionGridFilterCard: FC<SectionGridFilterCardProps> = ({
 	layout = 'column',
 	showArrowsIconsInPhone = false, // Default to false - arrows hidden on mobile by default
 }) => {
+	const t = useTranslations("app_locale_experiencelistings_SectionGridFilterCard");
 	const [servicesData, setServicesData] = useState([])
 	const [loading, setLoading] = useState(true)
 	const [currentPage, setCurrentPage] = useState(1)
@@ -99,7 +101,7 @@ const SectionGridFilterCard: FC<SectionGridFilterCardProps> = ({
 				//   heading="Discover New Experiences"
 				//   subHeading="Explore the best tours and experiences"
 				// />
-				<Heading desc={''}>{'Discover New Experiences'}</Heading>
+				<Heading desc={''}>{t('app_locale_experiencelistings_SectionGridFilterCard_Discover_New_Experiences')}</Heading>
 			)}
 
 			{layout === 'column' ? (
@@ -131,7 +133,7 @@ const SectionGridFilterCard: FC<SectionGridFilterCardProps> = ({
 						<button
 							onClick={scrollLeft}
 							className={`absolute left-0 top-1/3 z-10 ${showArrowsIconsInPhone ? 'flex' : 'hidden md:flex'} h-7 w-7 -translate-x-1/2 -translate-y-1/2 transform items-center justify-center rounded-full border border-black bg-white transition-colors duration-200 hover:bg-black hover:text-white focus:outline-none sm:h-8 sm:w-8 md:h-10 md:w-10`}
-							aria-label="Scroll left"
+							aria-label={t('app_locale_experiencelistings_SectionGridFilterCard_Scroll_Left')}
 						>
 							<ChevronLeft className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5" />
 						</button>
@@ -156,7 +158,7 @@ const SectionGridFilterCard: FC<SectionGridFilterCardProps> = ({
 						<button
 							onClick={scrollRight}
 							className={`absolute right-0 top-1/3 z-10 ${showArrowsIconsInPhone ? 'flex' : 'hidden md:flex'} h-7 w-7 -translate-y-1/2 translate-x-1/2 transform items-center justify-center rounded-full border border-black bg-white transition-colors duration-200 hover:bg-black hover:text-white focus:outline-none sm:h-8 sm:w-8 md:h-10 md:w-10`}
-							aria-label="Scroll right"
+							aria-label={t('app_locale_experiencelistings_SectionGridFilterCard_Scroll_Right')}
 						>
 							<ChevronRight className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5" />
 						</button>

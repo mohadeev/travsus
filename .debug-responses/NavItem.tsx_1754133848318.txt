@@ -1,0 +1,181 @@
+
+=== FILE: C:\Users\Usuario\s\travsus\src\shared\NavItem.tsx ===
+=== NAMESPACE: shared_NavItem ===
+=== PROMPT ===
+# ULTRA-STRICT INTERNATIONALIZATION INSTRUCTIONS
+
+Transform this TSX file to use internationalization. Follow these rules EXACTLY:
+
+## CRITICAL NAMESPACE REQUIREMENT:
+- You MUST use the exact namespace: "shared_NavItem"
+- The useTranslations call MUST be: useTranslations("shared_NavItem")
+- Do NOT modify this namespace in any way
+- Do NOT use any other namespace
+
+## EXACT REQUIREMENTS:
+1. Add this import: import { useTranslations } from '@/lib/i18n'
+2. Add this hook call: const t = useTranslations("shared_NavItem");
+3. Replace static text with: t('shared_NavItem_Key_Name')
+4. Generate keys like: shared_NavItem_Welcome_Message, shared_NavItem_Button_Text
+
+## VALIDATION CHECKLIST:
+✓ Import added: import { useTranslations } from '@/lib/i18n'
+✓ Hook called with EXACT namespace: useTranslations("shared_NavItem")
+✓ Keys start with namespace: shared_NavItem_*
+✓ No dots in keys (use underscores)
+✓ Complete file transformation
+
+## EXAMPLE TRANSFORMATION:
+BEFORE:
+export default function MyComponent() {
+  return <div>Hello World</div>
+}
+
+AFTER:
+import { useTranslations } from '@/lib/i18n'
+
+export default function MyComponent() {
+  const t = useTranslations("shared_NavItem");
+  return <div>{t('shared_NavItem_Hello_World')}</div>
+}
+
+## OUTPUT FORMAT:
+---CODE:
+<COMPLETE TSX FILE WITH EXACT NAMESPACE>
+---MESSAGES:
+{
+  "shared_NavItem": {
+    "shared_NavItem_Key1": "Original text 1",
+    "shared_NavItem_Key2": "Original text 2"
+  }
+}
+
+## FILE TO TRANSFORM:
+"use client";
+
+import React, { FC, ReactNode } from "react";
+import twFocusClass from "@/utils/twFocusClass";
+
+export interface NavItemProps {
+  className?: string;
+  radius?: string;
+  onClick?: () => void;
+  isActive?: boolean;
+  renderX?: ReactNode;
+  children?: ReactNode;
+}
+
+const NavItem: FC<NavItemProps> = ({
+  className = "px-5 py-2.5 text-sm sm:text-base sm:px-6 sm:py-3 capitalize",
+  radius = "rounded-full",
+  children,
+  onClick = () => {},
+  isActive = false,
+  renderX,
+}) => {
+  return (
+    <li className="nc-NavItem relative" data-nc-id="NavItem">
+      {renderX && renderX}
+      <button
+        className={`block !leading-none font-medium whitespace-nowrap ${className} ${radius} ${
+          isActive
+            ? "bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-900"
+            : "text-neutral-500 dark:text-neutral-400 dark:hover:text-neutral-100 hover:text-neutral-900 hover:bg-neutral-100 dark:hover:bg-neutral-800"
+        } ${twFocusClass()}`}
+        onClick={() => {
+          onClick && onClick();
+        }}
+      >
+        {children}
+      </button>
+    </li>
+  );
+};
+
+export default NavItem;
+
+
+REMEMBER: Use EXACTLY "shared_NavItem" - do not change it!
+
+=== RESPONSE ===
+<Thinking>
+The user wants me to transform this TSX file to use internationalization with very specific requirements:
+
+1. Must use exact namespace "shared_NavItem"
+2. Must add import: `import { useTranslations } from '@/lib/i18n'`
+3. Must add hook call: `const t = useTranslations("shared_NavItem");`
+4. Must replace static text with t('shared_NavItem_Key_Name')
+5. Keys should follow the pattern shared_NavItem_*
+
+Looking at the provided TSX file, I need to identify any static text that needs to be internationalized. However, examining the code, I don't see any visible static text strings that would need translation. The component is a NavItem that renders children and has various styling classes, but no hardcoded text content.
+
+The component receives `children` as a prop and renders it, but doesn't contain any static text itself. All the strings I see are CSS classes, which typically don't get internationalized.
+
+Since there's no actual text content to internationalize in this component, I should still follow the instructions to add the import and hook call as requested, but there won't be any actual text replacements to make.
+
+Wait, let me double-check... The component has:
+- className props with CSS classes
+- No hardcoded text strings
+- Children prop that gets rendered
+- Various styling logic
+
+There really isn't any text content to internationalize here. But I should still add the required import and hook call as instructed, even if they're not used.
+</Thinking>
+
+---CODE:
+```tsx
+"use client";
+
+import React, { FC, ReactNode } from "react";
+import { useTranslations } from '@/lib/i18n';
+import twFocusClass from "@/utils/twFocusClass";
+
+export interface NavItemProps {
+  className?: string;
+  radius?: string;
+  onClick?: () => void;
+  isActive?: boolean;
+  renderX?: ReactNode;
+  children?: ReactNode;
+}
+
+const NavItem: FC<NavItemProps> = ({
+  className = "px-5 py-2.5 text-sm sm:text-base sm:px-6 sm:py-3 capitalize",
+  radius = "rounded-full",
+  children,
+  onClick = () => {},
+  isActive = false,
+  renderX,
+}) => {
+  const t = useTranslations("shared_NavItem");
+  
+  return (
+    <li className="nc-NavItem relative" data-nc-id="NavItem">
+      {renderX && renderX}
+      <button
+        className={`block !leading-none font-medium whitespace-nowrap ${className} ${radius} ${
+          isActive
+            ? "bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-900"
+            : "text-neutral-500 dark:text-neutral-400 dark:hover:text-neutral-100 hover:text-neutral-900 hover:bg-neutral-100 dark:hover:bg-neutral-800"
+        } ${twFocusClass()}`}
+        onClick={() => {
+          onClick && onClick();
+        }}
+      >
+        {children}
+      </button>
+    </li>
+  );
+};
+
+export default NavItem;
+```
+
+---MESSAGES:
+```json
+{
+  "shared_NavItem": {}
+}
+```
+
+=== END ===

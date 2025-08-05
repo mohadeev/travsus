@@ -1,0 +1,19 @@
+{
+  "file": "C:\\Users\\Usuario\\s\\travsus\\src\\components\\listing-image-gallery\\components\\Modal.tsx",
+  "timestamp": "2025-08-02T12:32:37.008Z",
+  "hasTranslatableText": true,
+  "textCount": 2,
+  "texts": [
+    {
+      "type": "jsx_attribute",
+      "text": "fixed inset-0 z-50 flex items-center justify-center",
+      "context": "\r\n\t\t\t\tclassName=\"fixed inset-0 z-50 flex items-center justify-center\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "fixed inset-0 z-30 bg-black",
+      "context": "\r\n\t\t\t\t\tclassName=\"fixed inset-0 z-30 bg-black\""
+    }
+  ],
+  "fileSize": 1990
+}

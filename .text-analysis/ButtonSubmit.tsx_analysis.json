@@ -1,0 +1,19 @@
+{
+  "file": "C:\\Users\\Usuario\\s\\travsus\\src\\app\\(client-components)\\(HeroSearchForm2Mobile)\\ButtonSubmit.tsx",
+  "timestamp": "2025-08-02T11:49:39.731Z",
+  "hasTranslatableText": true,
+  "textCount": 2,
+  "texts": [
+    {
+      "type": "jsx_attribute",
+      "text": "h-6 w-6",
+      "context": "\r\n        className=\"h-6 w-6\""
+    },
+    {
+      "type": "jsx_attribute",
+      "text": "ml-2",
+      "context": " className=\"ml-2\""
+    }
+  ],
+  "fileSize": 1080
+}
