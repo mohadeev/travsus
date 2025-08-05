@@ -1,3 +1,4 @@
+"use client" 
 import { Tab } from '@headlessui/react'
 import CarCard from '@/components/CarCard'
 import CommentListing from '@/components/CommentListing'

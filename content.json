@@ -1,149 +1,132 @@
 {
+	"en-US": {
+		"Jan03_Invoices_p7q3": {
+			"Invoices": "Invoices",
+			"Manage_Your_Tour_Invoices": "Manage your tour invoices",
+			"Create_And_Manage_Your_Tour_Invoices": "Create and manage your tour invoices",
+			"Export": "Export",
+			"Create_Invoice": "Create Invoice",
+			"Invoice_Summary": "Invoice Summary",
+			"Total_Invoiced": "Total Invoiced",
+			"Pending": "Pending",
+			"Overdue": "Overdue"
+		}
+	},
 	"es-ES": {
-		"destinations_code_page": {
-			"Best_Travel_Guide": "Mejor Guía de Viajes",
-			"Country_Not_Found": "País No Encontrado",
-			"Cruises": "Cruceros",
-			"Fetching_Information_For": "Obteniendo información para",
-			"Flights": "Vuelos",
-			"Forums": "Foros",
-			"Hotels": "Hoteles",
-			"Loading": "Cargando...",
-			"Plan_Your_Trip_To": "Planifica Tu Viaje a",
-			"Please_Check_That_The_Country_Code": "Por favor verifica que el código del país sea correcto e inténtalo de nuevo.",
-			"Rental_Cars": "Alquiler de Coches",
-			"Restaurants": "Restaurantes",
-			"Save": "Guardar",
-			"Sorry_We_Couldnt_Find_Information": "Lo sentimos, no pudimos encontrar información para el código del país:",
-			"Sponsored_By": "Patrocinado por",
-			"Things_To_Do": "Qué Hacer",
-			"Vacation_Rentals": "Alquileres Vacacionales"
+		"Jan03_Invoices_p7q3": {
+			"Invoices": "Facturas",
+			"Manage_Your_Tour_Invoices": "Gestiona tus facturas de tours",
+			"Create_And_Manage_Your_Tour_Invoices": "Crea y gestiona tus facturas de tours",
+			"Export": "Exportar",
+			"Create_Invoice": "Crear Factura",
+			"Invoice_Summary": "Resumen de Facturas",
+			"Total_Invoiced": "Total Facturado",
+			"Pending": "Pendiente",
+			"Overdue": "Vencido"
+		}
+	},
+	"de-DE": {
+		"Jan03_Invoices_p7q3": {
+			"Invoices": "Rechnungen",
+			"Manage_Your_Tour_Invoices": "Verwalten Sie Ihre Tour-Rechnungen",
+			"Create_And_Manage_Your_Tour_Invoices": "Erstellen und verwalten Sie Ihre Tour-Rechnungen",
+			"Export": "Exportieren",
+			"Create_Invoice": "Rechnung Erstellen",
+			"Invoice_Summary": "Rechnungsübersicht",
+			"Total_Invoiced": "Gesamt Berechnet",
+			"Pending": "Ausstehend",
+			"Overdue": "Überfällig"
+		}
+	},
+	"fr-FR": {
+		"Jan03_Invoices_p7q3": {
+			"Invoices": "Factures",
+			"Manage_Your_Tour_Invoices": "Gérez vos factures de circuits",
+			"Create_And_Manage_Your_Tour_Invoices": "Créez et gérez vos factures de circuits",
+			"Export": "Exporter",
+			"Create_Invoice": "Créer une Facture",
+			"Invoice_Summary": "Résumé des Factures",
+			"Total_Invoiced": "Total Facturé",
+			"Pending": "En Attente",
+			"Overdue": "En Retard"
 		}
 	},
 	"ja-JP": {
-		"destinations_code_page": {
-			"Best_Travel_Guide": "最高の旅行ガイド",
-			"Country_Not_Found": "国が見つかりません",
-			"Cruises": "クルーズ",
-			"Fetching_Information_For": "情報を取得中",
-			"Flights": "フライト",
-			"Forums": "フォーラム",
-			"Hotels": "ホテル",
-			"Loading": "読み込み中...",
-			"Plan_Your_Trip_To": "旅行を計画する",
-			"Please_Check_That_The_Country_Code": "国コードが正しいことを確認して、もう一度お試しください。",
-			"Rental_Cars": "レンタカー",
-			"Restaurants": "レストラン",
-			"Save": "保存",
-			"Sorry_We_Couldnt_Find_Information": "申し訳ございませんが、この国コードの情報が見つかりませんでした：",
-			"Sponsored_By": "提供",
-			"Things_To_Do": "やること",
-			"Vacation_Rentals": "バケーションレンタル"
+		"Jan03_Invoices_p7q3": {
+			"Invoices": "請求書",
+			"Manage_Your_Tour_Invoices": "ツアー請求書を管理する",
+			"Create_And_Manage_Your_Tour_Invoices": "ツアー請求書を作成・管理する",
+			"Export": "エクスポート",
+			"Create_Invoice": "請求書を作成",
+			"Invoice_Summary": "請求書サマリー",
+			"Total_Invoiced": "請求総額",
+			"Pending": "保留中",
+			"Overdue": "期限切れ"
 		}
 	},
 	"pt-PT": {
-		"destinations_code_page": {
-			"Best_Travel_Guide": "Melhor Guia de Viagem",
-			"Country_Not_Found": "País Não Encontrado",
-			"Cruises": "Cruzeiros",
-			"Fetching_Information_For": "A obter informações para",
-			"Flights": "Voos",
-			"Forums": "Fóruns",
-			"Hotels": "Hotéis",
-			"Loading": "A carregar...",
-			"Plan_Your_Trip_To": "Planeie a Sua Viagem para",
-			"Please_Check_That_The_Country_Code": "Por favor verifique se o código do país está correto e tente novamente.",
-			"Rental_Cars": "Aluguer de Carros",
-			"Restaurants": "Restaurantes",
-			"Save": "Guardar",
-			"Sorry_We_Couldnt_Find_Information": "Desculpe, não conseguimos encontrar informações para o código do país:",
-			"Sponsored_By": "Patrocinado por",
-			"Things_To_Do": "O Que Fazer",
-			"Vacation_Rentals": "Alojamentos de Férias"
+		"Jan03_Invoices_p7q3": {
+			"Invoices": "Faturas",
+			"Manage_Your_Tour_Invoices": "Gerir as suas faturas de passeios",
+			"Create_And_Manage_Your_Tour_Invoices": "Criar e gerir as suas faturas de passeios",
+			"Export": "Exportar",
+			"Create_Invoice": "Criar Fatura",
+			"Invoice_Summary": "Resumo de Faturas",
+			"Total_Invoiced": "Total Faturado",
+			"Pending": "Pendente",
+			"Overdue": "Em Atraso"
 		}
 	},
 	"it-IT": {
-		"destinations_code_page": {
-			"Best_Travel_Guide": "Migliore Guida di Viaggio",
-			"Country_Not_Found": "Paese Non Trovato",
-			"Cruises": "Crociere",
-			"Fetching_Information_For": "Recupero informazioni per",
-			"Flights": "Voli",
-			"Forums": "Forum",
-			"Hotels": "Hotel",
-			"Loading": "Caricamento...",
-			"Plan_Your_Trip_To": "Pianifica il Tuo Viaggio a",
-			"Please_Check_That_The_Country_Code": "Per favore verifica che il codice del paese sia corretto e riprova.",
-			"Rental_Cars": "Noleggio Auto",
-			"Restaurants": "Ristoranti",
-			"Save": "Salva",
-			"Sorry_We_Couldnt_Find_Information": "Spiacenti, non siamo riusciti a trovare informazioni per il codice del paese:",
-			"Sponsored_By": "Sponsorizzato da",
-			"Things_To_Do": "Cosa Fare",
-			"Vacation_Rentals": "Affitti per Vacanze"
+		"Jan03_Invoices_p7q3": {
+			"Invoices": "Fatture",
+			"Manage_Your_Tour_Invoices": "Gestisci le tue fatture tour",
+			"Create_And_Manage_Your_Tour_Invoices": "Crea e gestisci le tue fatture tour",
+			"Export": "Esporta",
+			"Create_Invoice": "Crea Fattura",
+			"Invoice_Summary": "Riepilogo Fatture",
+			"Total_Invoiced": "Totale Fatturato",
+			"Pending": "In Sospeso",
+			"Overdue": "Scaduto"
 		}
 	},
 	"ru-RU": {
-		"destinations_code_page": {
-			"Best_Travel_Guide": "Лучший Путеводитель",
-			"Country_Not_Found": "Страна Не Найдена",
-			"Cruises": "Круизы",
-			"Fetching_Information_For": "Получение информации для",
-			"Flights": "Авиабилеты",
-			"Forums": "Форумы",
-			"Hotels": "Отели",
-			"Loading": "Загрузка...",
-			"Plan_Your_Trip_To": "Спланируйте Поездку в",
-			"Please_Check_That_The_Country_Code": "Пожалуйста, проверьте правильность кода страны и попробуйте снова.",
-			"Rental_Cars": "Аренда Автомобилей",
-			"Restaurants": "Рестораны",
-			"Save": "Сохранить",
-			"Sorry_We_Couldnt_Find_Information": "Извините, мы не смогли найти информацию для кода страны:",
-			"Sponsored_By": "При поддержке",
-			"Things_To_Do": "Чем Заняться",
-			"Vacation_Rentals": "Аренда Жилья для Отдыха"
+		"Jan03_Invoices_p7q3": {
+			"Invoices": "Счета",
+			"Manage_Your_Tour_Invoices": "Управляйте своими счетами за туры",
+			"Create_And_Manage_Your_Tour_Invoices": "Создавайте и управляйте своими счетами за туры",
+			"Export": "Экспорт",
+			"Create_Invoice": "Создать Счет",
+			"Invoice_Summary": "Сводка по Счетам",
+			"Total_Invoiced": "Общая Сумма Счетов",
+			"Pending": "Ожидающие",
+			"Overdue": "Просроченные"
 		}
 	},
 	"zh-CN": {
-		"destinations_code_page": {
-			"Best_Travel_Guide": "最佳旅行指南",
-			"Country_Not_Found": "未找到国家",
-			"Cruises": "邮轮",
-			"Fetching_Information_For": "正在获取信息",
-			"Flights": "航班",
-			"Forums": "论坛",
-			"Hotels": "酒店",
-			"Loading": "加载中...",
-			"Plan_Your_Trip_To": "规划您的旅行到",
-			"Please_Check_That_The_Country_Code": "请检查国家代码是否正确，然后重试。",
-			"Rental_Cars": "租车",
-			"Restaurants": "餐厅",
-			"Save": "保存",
-			"Sorry_We_Couldnt_Find_Information": "抱歉，我们无法找到该国家代码的信息：",
-			"Sponsored_By": "赞助商",
-			"Things_To_Do": "景点活动",
-			"Vacation_Rentals": "度假租赁"
+		"Jan03_Invoices_p7q3": {
+			"Invoices": "发票",
+			"Manage_Your_Tour_Invoices": "管理您的旅游发票",
+			"Create_And_Manage_Your_Tour_Invoices": "创建和管理您的旅游发票",
+			"Export": "导出",
+			"Create_Invoice": "创建发票",
+			"Invoice_Summary": "发票摘要",
+			"Total_Invoiced": "总开票金额",
+			"Pending": "待处理",
+			"Overdue": "逾期"
 		}
 	},
 	"ko-KR": {
-		"destinations_code_page": {
-			"Best_Travel_Guide": "최고의 여행 가이드",
-			"Country_Not_Found": "국가를 찾을 수 없음",
-			"Cruises": "크루즈",
-			"Fetching_Information_For": "정보를 가져오는 중",
-			"Flights": "항공편",
-			"Forums": "포럼",
-			"Hotels": "호텔",
-			"Loading": "로딩 중...",
-			"Plan_Your_Trip_To": "여행 계획하기",
-			"Please_Check_That_The_Country_Code": "국가 코드가 올바른지 확인하고 다시 시도해 주세요.",
-			"Rental_Cars": "렌터카",
-			"Restaurants": "레스토랑",
-			"Save": "저장",
-			"Sorry_We_Couldnt_Find_Information": "죄송합니다. 해당 국가 코드에 대한 정보를 찾을 수 없습니다:",
-			"Sponsored_By": "후원",
-			"Things_To_Do": "할 일",
-			"Vacation_Rentals": "휴가용 임대"
+		"Jan03_Invoices_p7q3": {
+			"Invoices": "송장",
+			"Manage_Your_Tour_Invoices": "투어 송장을 관리하세요",
+			"Create_And_Manage_Your_Tour_Invoices": "투어 송장을 생성하고 관리하세요",
+			"Export": "내보내기",
+			"Create_Invoice": "송장 생성",
+			"Invoice_Summary": "송장 요약",
+			"Total_Invoiced": "총 송장 금액",
+			"Pending": "대기 중",
+			"Overdue": "연체"
 		}
 	}
 }

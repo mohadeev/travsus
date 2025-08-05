@@ -48,7 +48,6 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 		liked,
 	}: any = data
 	const [priceData, setPriceData] = useState({})
-	console.log('data: ', data)
 
 	useEffect(() => {
 		const pricesData = async () => {

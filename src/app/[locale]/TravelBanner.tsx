@@ -13,12 +13,12 @@ export default function TravelBanner() {
 							alt="Travel and transportation services"
 							width={400}
 							height={400}
-							className="aspect-square mx-auto w-full max-w-[400px] rounded-2xl object-cover"
+							className="aspect-square mx-auto w-full rounded-2xl object-cover lg:max-w-[400px]"
 						/>
 					</div>
 					{/* Content Section - 50% */}
 					<div className="order-1 w-full p-4 text-center lg:order-none lg:w-1/2 lg:text-left">
-						<h1 className="mb-6 text-3xl font-black leading-tight tracking-tight text-black md:text-4xl lg:text-5xl xl:text-6xl">
+						<h1 className="mb-6 text-4xl font-black leading-tight tracking-tight text-black md:text-5xl lg:text-5xl xl:text-6xl">
 							Tu viaje perfecto te está esperando
 						</h1>
 						<p className="mb-8 text-lg font-light leading-relaxed text-gray-600 md:text-xl">

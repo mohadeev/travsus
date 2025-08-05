@@ -1,9 +1,8 @@
 'use client'
-
-import { useTranslations } from '@/lib/i18n'
 import { searchCountries } from '@/utils/searchCountries'
 import { MapPinIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline'
-import React, { useState, useEffect, useRef, FC } from 'react'
+import { useState, useEffect, useRef, type FC } from 'react'
+import { useTranslations } from '@/lib/i18n'
 
 interface Props {
 	onClick?: () => void
@@ -16,17 +15,17 @@ interface Props {
 const LocationInput: FC<Props> = ({
 	onChange = () => {},
 	className = '',
-	defaultValue = '',
-	headingText = '',
+	defaultValue = 'United States',
+	headingText,
 }) => {
-	const t = useTranslations("app_clientcomponents_HeroSearchForm2Mobile_LocationInput");
+	const t = useTranslations('Jan03_LocationInput_k4m9')
 	const [value, setValue] = useState<any>({})
 	const containerRef = useRef(null)
 	const inputRef = useRef(null)
 
 	useEffect(() => {
-		setValue(defaultValue || t('app_clientcomponents_HeroSearchForm2Mobile_LocationInput_Default_Country'))
-	}, [defaultValue, t])
+		setValue(defaultValue)
+	}, [defaultValue])
 
 	const handleSelectLocation = (item: any) => {
 		// DO NOT REMOVE SETTIMEOUT FUNC
@@ -46,7 +45,7 @@ const LocationInput: FC<Props> = ({
 		return (
 			<>
 				<p className="block text-base font-semibold">
-					{heading || t('app_clientcomponents_HeroSearchForm2Mobile_LocationInput_Destinations_Heading')}
+					{heading || t('Destinations')}
 				</p>
 				<div className="mt-3">
 					{items?.map((item: any) => {
@@ -65,7 +64,9 @@ const LocationInput: FC<Props> = ({
 			</>
 		)
 	}
+
 	const [searchResulte, setSearchResulte] = useState([])
+
 	const handleChangeInput = async (e: any) => {
 		const value = e.target.value
 		setValue(e.currentTarget.value)
@@ -77,12 +78,12 @@ const LocationInput: FC<Props> = ({
 		<div className={`${className}`} ref={containerRef}>
 			<div className="p-5">
 				<span className="block text-xl font-semibold sm:text-2xl">
-					{headingText || t('app_clientcomponents_HeroSearchForm2Mobile_LocationInput_Where_To_Heading')}
+					{headingText || t('Where_To')}
 				</span>
 				<div className="relative mt-5">
 					<input
 						className={`block w-full truncate rounded-xl border border-neutral-900 bg-transparent px-4 py-3 pr-12 text-base font-bold leading-none placeholder-neutral-500 placeholder:truncate focus:outline-none focus:ring-0 dark:border-neutral-200 dark:placeholder-neutral-300`}
-						placeholder={t('app_clientcomponents_HeroSearchForm2Mobile_LocationInput_Search_Placeholder')}
+						placeholder={t('Search_Destinations_Placeholder')}
 						value={value}
 						onChange={handleChangeInput}
 						ref={inputRef}
@@ -94,18 +95,18 @@ const LocationInput: FC<Props> = ({
 				<div className="mt-7">
 					{value
 						? renderSearchValues({
-								heading: t('app_clientcomponents_HeroSearchForm2Mobile_LocationInput_Locations_Heading'),
+								heading: t('Locations'),
 								items: searchResulte,
 							})
 						: renderSearchValues({
-								heading: t('app_clientcomponents_HeroSearchForm2Mobile_LocationInput_Popular_Destinations_Heading'),
+								heading: t('Popular_Destinations'),
 								items: [
-									{ name: t('app_clientcomponents_HeroSearchForm2Mobile_LocationInput_Country_Morocco') },
-									{ name: t('app_clientcomponents_HeroSearchForm2Mobile_LocationInput_Country_Australia') },
-									{ name: t('app_clientcomponents_HeroSearchForm2Mobile_LocationInput_Country_Canada') },
-									{ name: t('app_clientcomponents_HeroSearchForm2Mobile_LocationInput_Country_Germany') },
-									{ name: t('app_clientcomponents_HeroSearchForm2Mobile_LocationInput_Country_United_Kingdom') },
-									{ name: t('app_clientcomponents_HeroSearchForm2Mobile_LocationInput_Country_United_Arab_Emirates') },
+									{ name: t('Morocco') },
+									{ name: t('Australia') },
+									{ name: t('Canada') },
+									{ name: t('Germany') },
+									{ name: t('United_Kingdom') },
+									{ name: t('United_Arab_Emirates') },
 								],
 							})}
 				</div>

@@ -374,7 +374,7 @@ const AccountBilling: React.FC = () => {
 											/>
 										)}
 									</Field>
-									<FieldSelectFormItem
+									{/* <FieldSelectFormItem
 										// value="ES"
 										name="billingCountry"
 										label="Choose an option"
@@ -383,7 +383,7 @@ const AccountBilling: React.FC = () => {
 											label: country?.name?.common,
 											value: country?.cca2,
 										}))}
-									/>
+									/> */}
 								</div>
 								<div className="flex justify-between">
 									<ButtonPrimary type="submit" disabled={loading}>
