@@ -914,6 +914,11 @@
     "View_Booking_Details": "Посмотреть детали бронирования",
     "Your_Trip": "Ваша поездка"
   },
+  "Jan03_CompanySettings_s7m4": {
+    "Company_Settings": "Настройки Компании",
+    "Manage_Your_Company_Information": "Управляйте информацией о вашей компании",
+    "Manage_Your_Company_Settings": "Управляйте настройками вашей компании"
+  },
   "Jan03_ConfirmedBookings_w9x1": {
     "Confirmed_Bookings": "Подтвержденные Бронирования",
     "Export": "Экспорт",
@@ -1224,6 +1229,19 @@
     "Tour_Days": "Дни Тура",
     "Unknown_Location": "Неизвестное местоположение",
     "View_All": "Показать Все"
+  },
+  "Jan03_Transactions_v4n8": {
+    "Export": "Экспорт",
+    "Filter": "Фильтр",
+    "Net_Balance": "Чистый Баланс",
+    "Recent_Transactions": "Последние Транзакции",
+    "Total_Credits": "Общие Поступления",
+    "Total_Debits": "Общие Списания",
+    "Total_Transactions": "Общее Количество Транзакций",
+    "Track_All_Your_Financial_Transactions": "Отслеживайте все свои финансовые транзакции",
+    "Transactions": "Транзакции",
+    "Transaction_Summary": "Сводка по Транзакциям",
+    "View_And_Manage_Your_Financial_Transactions": "Просматривайте и управляйте своими финансовыми транзакциями"
   },
   "layout": {
     "layout_Anonymous_User": "Анонимный",

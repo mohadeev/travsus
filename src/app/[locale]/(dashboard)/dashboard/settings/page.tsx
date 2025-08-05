@@ -1,17 +1,31 @@
 import type { Metadata } from 'next'
 import { Suspense } from 'react'
-import { useTranslations } from '@/lib/i18n'
 import { DashboardShell } from '@/components/dashboard/shell'
 import { DashboardHeader } from '@/components/dashboard/header'
 import { CompanySettings } from '@/components/dashboard/company-settings'
 import { Skeleton } from '@/components/ui/skeleton'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
+import { getTranslations } from 'next-intl/server'
 
-export const metadata: Metadata = {
-	title: t('dashboard_dashboard_settings_page_Company_Settings'),
-	description: t(
-		'dashboard_dashboard_settings_page_Manage_Your_Company_Information',
-	),
+interface PageProps {
+	params: Promise<{
+		locale: string
+	}>
+}
+
+export async function generateMetadata({
+	params,
+}: PageProps): Promise<Metadata> {
+	const { locale } = await params
+	const t = await getTranslations({
+		locale,
+		namespace: 'Jan03_CompanySettings_s7m4',
+	})
+
+	return {
+		title: t('Company_Settings'),
+		description: t('Manage_Your_Company_Settings'),
+	}
 }
 
 function SettingsSkeleton() {
@@ -46,15 +60,18 @@ function SettingsSkeleton() {
 	)
 }
 
-export default function SettingsPage() {
-	const t = useTranslations('dashboard')
+export default async function SettingsPage({ params }: PageProps) {
+	const { locale } = await params
+	const t = await getTranslations({
+		locale,
+		namespace: 'Jan03_CompanySettings_s7m4',
+	})
+
 	return (
 		<DashboardShell>
 			<DashboardHeader
-				heading={t('dashboard_dashboard_settings_page_Company_Settings')}
-				text={t(
-					'dashboard_dashboard_settings_page_Manage_Your_Company_Information',
-				)}
+				heading={t('Company_Settings')}
+				text={t('Manage_Your_Company_Information')}
 			/>
 			<Suspense fallback={<SettingsSkeleton />}>
 				<CompanySettings />

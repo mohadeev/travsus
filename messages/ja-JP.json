@@ -870,6 +870,11 @@
     "View_Booking_Details": "予約詳細を表示",
     "Your_Trip": "あなたの旅行"
   },
+  "Jan03_CompanySettings_s7m4": {
+    "Company_Settings": "会社設定",
+    "Manage_Your_Company_Information": "会社情報を管理する",
+    "Manage_Your_Company_Settings": "会社設定を管理する"
+  },
   "Jan03_ConfirmedBookings_w9x1": {
     "Confirmed_Bookings": "確認済み予約",
     "Export": "エクスポート",
@@ -1180,6 +1185,19 @@
     "Tour_Days": "ツアー日程",
     "Unknown_Location": "不明な場所",
     "View_All": "すべて表示"
+  },
+  "Jan03_Transactions_v4n8": {
+    "Export": "エクスポート",
+    "Filter": "フィルター",
+    "Net_Balance": "純残高",
+    "Recent_Transactions": "最近の取引",
+    "Total_Credits": "総入金額",
+    "Total_Debits": "総出金額",
+    "Total_Transactions": "総取引数",
+    "Track_All_Your_Financial_Transactions": "すべての金融取引を追跡する",
+    "Transactions": "取引",
+    "Transaction_Summary": "取引サマリー",
+    "View_And_Manage_Your_Financial_Transactions": "金融取引を表示・管理する"
   },
   "layout": {
     "layout_Anonymous_User": "匿名",

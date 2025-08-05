@@ -849,6 +849,11 @@
     "View_Booking_Details": "查看预订详情",
     "Your_Trip": "您的行程"
   },
+  "Jan03_CompanySettings_s7m4": {
+    "Company_Settings": "公司设置",
+    "Manage_Your_Company_Information": "管理您的公司信息",
+    "Manage_Your_Company_Settings": "管理您的公司设置"
+  },
   "Jan03_ConfirmedBookings_w9x1": {
     "Confirmed_Bookings": "已确认预订",
     "Export": "导出",
@@ -1159,6 +1164,19 @@
     "Tour_Days": "旅游天数",
     "Unknown_Location": "未知位置",
     "View_All": "查看全部"
+  },
+  "Jan03_Transactions_v4n8": {
+    "Export": "导出",
+    "Filter": "筛选",
+    "Net_Balance": "净余额",
+    "Recent_Transactions": "最近交易",
+    "Total_Credits": "总收入",
+    "Total_Debits": "总支出",
+    "Total_Transactions": "总交易数",
+    "Track_All_Your_Financial_Transactions": "跟踪您的所有金融交易",
+    "Transactions": "交易",
+    "Transaction_Summary": "交易摘要",
+    "View_And_Manage_Your_Financial_Transactions": "查看和管理您的金融交易"
   },
   "layout": {
     "layout_Anonymous_User": "匿名用户",

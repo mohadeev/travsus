@@ -1,132 +1,72 @@
 {
 	"en-US": {
-		"Jan03_Invoices_p7q3": {
-			"Invoices": "Invoices",
-			"Manage_Your_Tour_Invoices": "Manage your tour invoices",
-			"Create_And_Manage_Your_Tour_Invoices": "Create and manage your tour invoices",
-			"Export": "Export",
-			"Create_Invoice": "Create Invoice",
-			"Invoice_Summary": "Invoice Summary",
-			"Total_Invoiced": "Total Invoiced",
-			"Pending": "Pending",
-			"Overdue": "Overdue"
+		"Jan03_CompanySettings_s7m4": {
+			"Company_Settings": "Company Settings",
+			"Manage_Your_Company_Settings": "Manage your company settings",
+			"Manage_Your_Company_Information": "Manage your company information"
 		}
 	},
 	"es-ES": {
-		"Jan03_Invoices_p7q3": {
-			"Invoices": "Facturas",
-			"Manage_Your_Tour_Invoices": "Gestiona tus facturas de tours",
-			"Create_And_Manage_Your_Tour_Invoices": "Crea y gestiona tus facturas de tours",
-			"Export": "Exportar",
-			"Create_Invoice": "Crear Factura",
-			"Invoice_Summary": "Resumen de Facturas",
-			"Total_Invoiced": "Total Facturado",
-			"Pending": "Pendiente",
-			"Overdue": "Vencido"
+		"Jan03_CompanySettings_s7m4": {
+			"Company_Settings": "Configuración de la Empresa",
+			"Manage_Your_Company_Settings": "Gestiona la configuración de tu empresa",
+			"Manage_Your_Company_Information": "Gestiona la información de tu empresa"
 		}
 	},
 	"de-DE": {
-		"Jan03_Invoices_p7q3": {
-			"Invoices": "Rechnungen",
-			"Manage_Your_Tour_Invoices": "Verwalten Sie Ihre Tour-Rechnungen",
-			"Create_And_Manage_Your_Tour_Invoices": "Erstellen und verwalten Sie Ihre Tour-Rechnungen",
-			"Export": "Exportieren",
-			"Create_Invoice": "Rechnung Erstellen",
-			"Invoice_Summary": "Rechnungsübersicht",
-			"Total_Invoiced": "Gesamt Berechnet",
-			"Pending": "Ausstehend",
-			"Overdue": "Überfällig"
+		"Jan03_CompanySettings_s7m4": {
+			"Company_Settings": "Unternehmenseinstellungen",
+			"Manage_Your_Company_Settings": "Verwalten Sie Ihre Unternehmenseinstellungen",
+			"Manage_Your_Company_Information": "Verwalten Sie Ihre Unternehmensinformationen"
 		}
 	},
 	"fr-FR": {
-		"Jan03_Invoices_p7q3": {
-			"Invoices": "Factures",
-			"Manage_Your_Tour_Invoices": "Gérez vos factures de circuits",
-			"Create_And_Manage_Your_Tour_Invoices": "Créez et gérez vos factures de circuits",
-			"Export": "Exporter",
-			"Create_Invoice": "Créer une Facture",
-			"Invoice_Summary": "Résumé des Factures",
-			"Total_Invoiced": "Total Facturé",
-			"Pending": "En Attente",
-			"Overdue": "En Retard"
+		"Jan03_CompanySettings_s7m4": {
+			"Company_Settings": "Paramètres de l'Entreprise",
+			"Manage_Your_Company_Settings": "Gérez les paramètres de votre entreprise",
+			"Manage_Your_Company_Information": "Gérez les informations de votre entreprise"
 		}
 	},
 	"ja-JP": {
-		"Jan03_Invoices_p7q3": {
-			"Invoices": "請求書",
-			"Manage_Your_Tour_Invoices": "ツアー請求書を管理する",
-			"Create_And_Manage_Your_Tour_Invoices": "ツアー請求書を作成・管理する",
-			"Export": "エクスポート",
-			"Create_Invoice": "請求書を作成",
-			"Invoice_Summary": "請求書サマリー",
-			"Total_Invoiced": "請求総額",
-			"Pending": "保留中",
-			"Overdue": "期限切れ"
+		"Jan03_CompanySettings_s7m4": {
+			"Company_Settings": "会社設定",
+			"Manage_Your_Company_Settings": "会社設定を管理する",
+			"Manage_Your_Company_Information": "会社情報を管理する"
 		}
 	},
 	"pt-PT": {
-		"Jan03_Invoices_p7q3": {
-			"Invoices": "Faturas",
-			"Manage_Your_Tour_Invoices": "Gerir as suas faturas de passeios",
-			"Create_And_Manage_Your_Tour_Invoices": "Criar e gerir as suas faturas de passeios",
-			"Export": "Exportar",
-			"Create_Invoice": "Criar Fatura",
-			"Invoice_Summary": "Resumo de Faturas",
-			"Total_Invoiced": "Total Faturado",
-			"Pending": "Pendente",
-			"Overdue": "Em Atraso"
+		"Jan03_CompanySettings_s7m4": {
+			"Company_Settings": "Configurações da Empresa",
+			"Manage_Your_Company_Settings": "Gerir as configurações da sua empresa",
+			"Manage_Your_Company_Information": "Gerir as informações da sua empresa"
 		}
 	},
 	"it-IT": {
-		"Jan03_Invoices_p7q3": {
-			"Invoices": "Fatture",
-			"Manage_Your_Tour_Invoices": "Gestisci le tue fatture tour",
-			"Create_And_Manage_Your_Tour_Invoices": "Crea e gestisci le tue fatture tour",
-			"Export": "Esporta",
-			"Create_Invoice": "Crea Fattura",
-			"Invoice_Summary": "Riepilogo Fatture",
-			"Total_Invoiced": "Totale Fatturato",
-			"Pending": "In Sospeso",
-			"Overdue": "Scaduto"
+		"Jan03_CompanySettings_s7m4": {
+			"Company_Settings": "Impostazioni Aziendali",
+			"Manage_Your_Company_Settings": "Gestisci le impostazioni della tua azienda",
+			"Manage_Your_Company_Information": "Gestisci le informazioni della tua azienda"
 		}
 	},
 	"ru-RU": {
-		"Jan03_Invoices_p7q3": {
-			"Invoices": "Счета",
-			"Manage_Your_Tour_Invoices": "Управляйте своими счетами за туры",
-			"Create_And_Manage_Your_Tour_Invoices": "Создавайте и управляйте своими счетами за туры",
-			"Export": "Экспорт",
-			"Create_Invoice": "Создать Счет",
-			"Invoice_Summary": "Сводка по Счетам",
-			"Total_Invoiced": "Общая Сумма Счетов",
-			"Pending": "Ожидающие",
-			"Overdue": "Просроченные"
+		"Jan03_CompanySettings_s7m4": {
+			"Company_Settings": "Настройки Компании",
+			"Manage_Your_Company_Settings": "Управляйте настройками вашей компании",
+			"Manage_Your_Company_Information": "Управляйте информацией о вашей компании"
 		}
 	},
 	"zh-CN": {
-		"Jan03_Invoices_p7q3": {
-			"Invoices": "发票",
-			"Manage_Your_Tour_Invoices": "管理您的旅游发票",
-			"Create_And_Manage_Your_Tour_Invoices": "创建和管理您的旅游发票",
-			"Export": "导出",
-			"Create_Invoice": "创建发票",
-			"Invoice_Summary": "发票摘要",
-			"Total_Invoiced": "总开票金额",
-			"Pending": "待处理",
-			"Overdue": "逾期"
+		"Jan03_CompanySettings_s7m4": {
+			"Company_Settings": "公司设置",
+			"Manage_Your_Company_Settings": "管理您的公司设置",
+			"Manage_Your_Company_Information": "管理您的公司信息"
 		}
 	},
 	"ko-KR": {
-		"Jan03_Invoices_p7q3": {
-			"Invoices": "송장",
-			"Manage_Your_Tour_Invoices": "투어 송장을 관리하세요",
-			"Create_And_Manage_Your_Tour_Invoices": "투어 송장을 생성하고 관리하세요",
-			"Export": "내보내기",
-			"Create_Invoice": "송장 생성",
-			"Invoice_Summary": "송장 요약",
-			"Total_Invoiced": "총 송장 금액",
-			"Pending": "대기 중",
-			"Overdue": "연체"
+		"Jan03_CompanySettings_s7m4": {
+			"Company_Settings": "회사 설정",
+			"Manage_Your_Company_Settings": "회사 설정을 관리하세요",
+			"Manage_Your_Company_Information": "회사 정보를 관리하세요"
 		}
 	}
 }

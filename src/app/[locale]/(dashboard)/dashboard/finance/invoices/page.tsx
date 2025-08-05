@@ -1,19 +1,34 @@
 import type { Metadata } from 'next'
-import { useTranslations } from '@/lib/i18n'
 import { DashboardShell } from '@/components/dashboard/shell'
 import { DashboardHeader } from '@/components/dashboard/header'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { InvoicesList } from '@/components/dashboard/invoices-list'
 import { Button } from '@/components/ui/button'
 import { Download, Plus } from 'lucide-react'
+import { getTranslations } from 'next-intl/server'
 
-export const metadata: Metadata = {
-	title: t('finance_invoices_page_Invoices'),
-	description: t('finance_invoices_page_Create_And_Manage_Your_Tour_Invoices'),
+interface PageProps {
+	params: Promise<{
+		locale: string
+	}>
 }
 
-export default function InvoicesPage() {
-	const t = useTranslations('finance_invoices_page')
+export async function generateMetadata({
+	params,
+}: PageProps): Promise<Metadata> {
+	const { locale } = await params
+	const t = await getTranslations({ locale, namespace: 'Jan03_Invoices_p7q3' })
+
+	return {
+		title: t('Invoices'),
+		description: t('Manage_Your_Tour_Invoices'),
+	}
+}
+
+export default async function InvoicesPage({ params }: PageProps) {
+	const { locale } = await params
+	const t = await getTranslations({ locale, namespace: 'Jan03_Invoices_p7q3' })
+
 	return (
 		<DashboardShell>
 			<DashboardHeader

@@ -1299,6 +1299,11 @@
     "View_Booking_Details": "Voir les détails de la réservation",
     "Your_Trip": "Votre voyage"
   },
+  "Jan03_CompanySettings_s7m4": {
+    "Company_Settings": "Paramètres de l'Entreprise",
+    "Manage_Your_Company_Information": "Gérez les informations de votre entreprise",
+    "Manage_Your_Company_Settings": "Gérez les paramètres de votre entreprise"
+  },
   "Jan03_ConfirmedBookings_w9x1": {
     "Confirmed_Bookings": "Réservations Confirmées",
     "Export": "Exporter",
@@ -1609,6 +1614,19 @@
     "Tour_Days": "Jours du Tour",
     "Unknown_Location": "Emplacement inconnu",
     "View_All": "Voir Tout"
+  },
+  "Jan03_Transactions_v4n8": {
+    "Export": "Exporter",
+    "Filter": "Filtrer",
+    "Net_Balance": "Solde Net",
+    "Recent_Transactions": "Transactions Récentes",
+    "Total_Credits": "Total des Crédits",
+    "Total_Debits": "Total des Débits",
+    "Total_Transactions": "Total des Transactions",
+    "Track_All_Your_Financial_Transactions": "Suivez toutes vos transactions financières",
+    "Transactions": "Transactions",
+    "Transaction_Summary": "Résumé des Transactions",
+    "View_And_Manage_Your_Financial_Transactions": "Voir et gérer vos transactions financières"
   },
   "layout": {
     "layout_Anonymous_User": "Anonyme",

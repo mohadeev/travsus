@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import { useTranslations } from '@/lib/i18n'
 import { DashboardShell } from '@/components/dashboard/shell'
 import { DashboardHeader } from '@/components/dashboard/header'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -7,16 +6,36 @@ import { TransactionsList } from '@/components/dashboard/transactions-list'
 import { Button } from '@/components/ui/button'
 import { Download, Filter } from 'lucide-react'
 import { CalendarDateRangePicker } from '@/components/dashboard/date-range-picker'
+import { getTranslations } from 'next-intl/server'
 
-export const metadata: Metadata = {
-	title: t('finance_transactions_page_Transactions'),
-	description: t(
-		'finance_transactions_page_View_And_Manage_Your_Financial_Transactions',
-	),
+interface PageProps {
+	params: Promise<{
+		locale: string
+	}>
 }
 
-export default function TransactionsPage() {
-	const t = useTranslations('finance_transactions_page')
+export async function generateMetadata({
+	params,
+}: PageProps): Promise<Metadata> {
+	const { locale } = await params
+	const t = await getTranslations({
+		locale,
+		namespace: 'Jan03_Transactions_v4n8',
+	})
+
+	return {
+		title: t('Transactions'),
+		description: t('View_And_Manage_Your_Financial_Transactions'),
+	}
+}
+
+export default async function TransactionsPage({ params }: PageProps) {
+	const { locale } = await params
+	const t = await getTranslations({
+		locale,
+		namespace: 'Jan03_Transactions_v4n8',
+	})
+
 	return (
 		<DashboardShell>
 			<DashboardHeader
