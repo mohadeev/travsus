@@ -1,8 +1,7 @@
 'use client'
-
 import Link from 'next/link'
 import type React from 'react'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateUser } from '@/app/GlobalRedux/Features/userReducer/userReducer'
 import {
@@ -17,6 +16,7 @@ import {
 	Loader2,
 } from 'lucide-react'
 import { useTranslations } from '@/lib/i18n'
+import { Form, Field } from 'react-final-form'
 
 type InfoItem = {
 	id: string
@@ -28,20 +28,19 @@ type InfoItem = {
 }
 
 export default function PersonalInfoPage() {
-	const t = useTranslations('PersonalInfoPage')
+	const t = useTranslations('Jan03_PersonalInfo_d6k9')
 	const dispatch = useDispatch()
 	const { userData, loading, error } = useSelector(
 		(state: any) => state.userReducer,
 	)
-
 	// State for tracking which field is being edited
 	const [editingField, setEditingField] = useState<string | null>(null)
 
-	// Form data for inline editing
-	const [formData, setFormData] = useState({
+	// Get initial values for forms
+	const getInitialValues = () => ({
 		firstname: userData?.accountData?.firstname || '',
 		lastname: userData?.accountData?.lastname || '',
-		gender: userData?.accountData?.gender || t('default_gender'),
+		gender: userData?.accountData?.gender || 'Male',
 		username: userData?.username || '',
 		email: userData?.email || '',
 		dateOfBirth: userData?.accountData?.dateOfBirth || '',
@@ -50,102 +49,68 @@ export default function PersonalInfoPage() {
 		about: userData?.accountData?.about || '',
 	})
 
-	// Update form data when user data changes
-	useEffect(() => {
-		setFormData({
-			firstname: userData?.accountData?.firstname || '',
-			lastname: userData?.accountData?.lastname || '',
-			gender: userData?.accountData?.gender || t('default_gender'),
-			username: userData?.username || '',
-			email: userData?.email || '',
-			dateOfBirth: userData?.accountData?.dateOfBirth || '',
-			address: userData?.accountData?.address || '',
-			phone: userData?.phone || '',
-			about: userData?.accountData?.about || '',
-		})
-	}, [userData, t])
-
-	// Handle form input changes
-	const handleChange = (
-		e: React.ChangeEvent<
-			HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-		>,
-	) => {
-		const { name, value } = e.target
-		setFormData({
-			...formData,
-			[name]: value,
-		})
-	}
-
-	// Save changes for the current editing field
-	const handleSave = (fieldId: string) => {
+	// Handle form submission
+	const handleSubmit = async (values: any, fieldId: string) => {
 		let updatedData = {}
 
 		switch (fieldId) {
 			case 'legalName':
-				updatedData = {
-					firstname: formData.firstname,
-					lastname: formData.lastname,
+				if (values.firstname?.trim() && values.lastname?.trim()) {
+					updatedData = {
+						firstname: values.firstname.trim(),
+						lastname: values.lastname.trim(),
+					}
+				} else {
+					return {
+						firstname: 'First name is required',
+						lastname: 'Last name is required',
+					}
 				}
 				break
 			case 'gender':
-				updatedData = {
-					gender: formData.gender,
-				}
+				updatedData = { gender: values.gender }
 				break
 			case 'username':
-				updatedData = {
-					username: formData.username,
+				if (values.username?.trim()) {
+					updatedData = { username: values.username.trim() }
+				} else {
+					return { username: 'Username is required' }
 				}
 				break
 			case 'email':
-				updatedData = {
-					email: formData.email,
+				if (values.email?.trim()) {
+					updatedData = { email: values.email.trim() }
+				} else {
+					return { email: 'Email is required' }
 				}
 				break
 			case 'dateOfBirth':
-				updatedData = {
-					dateOfBirth: formData.dateOfBirth,
-				}
+				updatedData = { dateOfBirth: values.dateOfBirth }
 				break
 			case 'address':
-				updatedData = {
-					address: formData.address,
-				}
+				updatedData = { address: values.address?.trim() || '' }
 				break
 			case 'phone':
-				updatedData = {
-					phone: formData.phone,
-				}
+				updatedData = { phone: values.phone?.trim() || '' }
 				break
 			case 'about':
-				updatedData = {
-					about: formData.about,
-				}
+				updatedData = { about: values.about?.trim() || '' }
 				break
 			default:
 				break
 		}
 
-		dispatch(updateUser(updatedData) as any)
-		setEditingField(null)
+		try {
+			await dispatch(updateUser(updatedData) as any)
+			setEditingField(null)
+		} catch (err) {
+			console.error('Update failed:', err)
+		}
 	}
 
 	// Cancel editing
 	const handleCancel = () => {
 		setEditingField(null)
-		setFormData({
-			firstname: userData?.accountData?.firstname || '',
-			lastname: userData?.accountData?.lastname || '',
-			gender: userData?.accountData?.gender || t('default_gender'),
-			username: userData?.username || '',
-			email: userData?.email || '',
-			dateOfBirth: userData?.accountData?.dateOfBirth || '',
-			address: userData?.accountData?.address || '',
-			phone: userData?.phone || '',
-			about: userData?.accountData?.about || '',
-		})
 	}
 
 	// Format user data for display
@@ -154,16 +119,16 @@ export default function PersonalInfoPage() {
 			legalName:
 				userData?.accountData?.firstname && userData?.accountData?.lastname
 					? `${userData.accountData.firstname} ${userData.accountData.lastname}`
-					: t('not_provided'),
-			gender: userData?.accountData?.gender || t('not_provided'),
-			username: userData?.username || t('not_provided'),
-			email: userData?.email || t('not_provided'),
+					: t('Not_Provided'),
+			gender: userData?.accountData?.gender || t('Not_Provided'),
+			username: userData?.username || t('Not_Provided'),
+			email: userData?.email || t('Not_Provided'),
 			dateOfBirth: userData?.accountData?.dateOfBirth
 				? new Date(userData.accountData.dateOfBirth).toLocaleDateString()
-				: t('not_provided'),
-			phone: userData?.phone || t('not_provided'),
-			address: userData?.accountData?.address || t('not_provided'),
-			about: userData?.accountData?.about || t('not_provided'),
+				: t('Not_Provided'),
+			phone: userData?.phone || t('Not_Provided'),
+			address: userData?.accountData?.address || t('Not_Provided'),
+			about: userData?.accountData?.about || t('Not_Provided'),
 		}
 	}
 
@@ -173,57 +138,56 @@ export default function PersonalInfoPage() {
 	const personalInfoItems: InfoItem[] = [
 		{
 			id: 'legalName',
-			title: t('legal_name_title'),
+			title: t('Legal_Name'),
 			value: userDisplayData.legalName,
-			description: t('legal_name_description'),
 			actionType: 'edit',
 			icon: User,
 		},
 		{
 			id: 'gender',
-			title: t('gender_title'),
+			title: t('Gender'),
 			value: userDisplayData.gender,
 			actionType: 'edit',
 			icon: User,
 		},
 		{
 			id: 'username',
-			title: t('username_title'),
+			title: t('Username'),
 			value: userDisplayData.username,
 			actionType: 'edit',
 			icon: User,
 		},
 		{
 			id: 'email',
-			title: t('email_title'),
+			title: t('Email_Address'),
 			value: userDisplayData.email,
 			actionType: 'edit',
 			icon: Mail,
 		},
 		{
 			id: 'dateOfBirth',
-			title: t('dob_title'),
+			title: t('Date_Of_Birth'),
 			value: userDisplayData.dateOfBirth,
 			actionType: 'edit',
 			icon: User,
 		},
 		{
 			id: 'address',
-			title: t('address_title'),
+			title: t('Address'),
 			value: userDisplayData.address,
 			actionType: 'edit',
 			icon: MapPin,
 		},
 		{
 			id: 'phone',
-			title: t('phone_title'),
+			title: t('Phone_Number'),
 			value: userDisplayData.phone,
 			actionType: 'edit',
 			icon: Phone,
 		},
 		{
 			id: 'about',
-			title: t('about_title'),
+			title: t('About_You'),
 			value: userDisplayData.about,
 			actionType: 'edit',
 			icon: User,
@@ -232,396 +196,482 @@ export default function PersonalInfoPage() {
 
 	// Render edit form for legal name
 	const renderLegalNameEditForm = () => (
-		<div className="mt-2 space-y-4">
-			<p className="text-gray-600">{t('legal_name_edit_description')}</p>
-			<div className="flex flex-col gap-4 md:flex-row">
-				<div className="flex-1">
-					<div className="relative rounded-lg border border-gray-300">
-						<label
-							htmlFor="firstname"
-							className="absolute left-3 top-2 text-xs text-gray-500"
-						>
-							{t('first_name_label')}
-						</label>
-						<input
-							type="text"
-							id="firstname"
-							name="firstname"
-							value={formData.firstname}
-							onChange={handleChange}
-							className="w-full rounded-lg px-3 pb-3 pt-7 focus:outline-none focus:ring-2 focus:ring-black"
-						/>
+		<Form
+			onSubmit={(values) => handleSubmit(values, 'legalName')}
+			initialValues={getInitialValues()}
+			render={({ handleSubmit, submitting, hasValidationErrors }) => (
+				<form onSubmit={handleSubmit} className="mt-2 space-y-4">
+					<p className="text-gray-600">{t('Legal_Name_Description')}</p>
+					<div className="flex flex-col gap-4 md:flex-row">
+						<div className="flex-1">
+							<Field name="firstname">
+								{({ input, meta }) => (
+									<div className="relative rounded-lg border border-gray-300">
+										<label
+											htmlFor="firstname"
+											className="absolute left-3 top-2 text-xs text-gray-500"
+										>
+											{t('First_Name')}
+										</label>
+										<input
+											{...input}
+											type="text"
+											id="firstname"
+											className="w-full rounded-lg px-3 pb-3 pt-7 focus:outline-none focus:ring-2 focus:ring-black"
+										/>
+										{meta.error && meta.touched && (
+											<p className="mt-1 text-xs text-red-500">{meta.error}</p>
+										)}
+									</div>
+								)}
+							</Field>
+						</div>
+						<div className="flex-1">
+							<Field name="lastname">
+								{({ input, meta }) => (
+									<div className="relative rounded-lg border border-gray-300">
+										<label
+											htmlFor="lastname"
+											className="absolute left-3 top-2 text-xs text-gray-500"
+										>
+											{t('Last_Name')}
+										</label>
+										<input
+											{...input}
+											type="text"
+											id="lastname"
+											className="w-full rounded-lg px-3 pb-3 pt-7 focus:outline-none focus:ring-2 focus:ring-black"
+										/>
+										{meta.error && meta.touched && (
+											<p className="mt-1 text-xs text-red-500">{meta.error}</p>
+										)}
+									</div>
+								)}
+							</Field>
+						</div>
 					</div>
-				</div>
-				<div className="flex-1">
-					<div className="relative rounded-lg border border-gray-300">
-						<label
-							htmlFor="lastname"
-							className="absolute left-3 top-2 text-xs text-gray-500"
+					<div className="flex items-center justify-between">
+						<button
+							type="submit"
+							disabled={submitting || loading || hasValidationErrors}
+							className="flex items-center rounded-lg bg-black px-6 py-3 font-medium text-white hover:bg-gray-800 disabled:bg-gray-400"
 						>
-							{t('last_name_label')}
-						</label>
-						<input
-							type="text"
-							id="lastname"
-							name="lastname"
-							value={formData.lastname}
-							onChange={handleChange}
-							className="w-full rounded-lg px-3 pb-3 pt-7 focus:outline-none focus:ring-2 focus:ring-black"
-						/>
+							{submitting || loading ? (
+								<>
+									<Loader2 className="mr-2 h-4 w-4 animate-spin" />
+									{t('Saving')}
+								</>
+							) : (
+								t('Save')
+							)}
+						</button>
+						<button
+							type="button"
+							onClick={handleCancel}
+							className="font-medium text-gray-700 hover:underline"
+							disabled={submitting || loading}
+						>
+							{t('Cancel')}
+						</button>
 					</div>
-				</div>
-			</div>
-			<div className="flex items-center justify-between">
-				<button
-					onClick={() => handleSave('legalName')}
-					disabled={loading}
-					className="flex items-center rounded-lg bg-black px-6 py-3 font-medium text-white hover:bg-gray-800 disabled:bg-gray-400"
-				>
-					{loading ? (
-						<>
-							<Loader2 className="mr-2 h-4 w-4 animate-spin" />
-							{t('saving')}
-						</>
-					) : (
-						t('save')
-					)}
-				</button>
-				<button
-					onClick={handleCancel}
-					className="font-medium text-gray-700 hover:underline"
-					disabled={loading}
-				>
-					{t('cancel')}
-				</button>
-			</div>
-			{error && <p className="mt-2 text-sm text-red-500">{error}</p>}
-		</div>
+					{error && <p className="mt-2 text-sm text-red-500">{error}</p>}
+				</form>
+			)}
+		/>
 	)
 
 	// Render edit form for gender
 	const renderGenderEditForm = () => (
-		<div className="mt-2 space-y-4">
-			<div className="relative rounded-lg border border-gray-300">
-				<label
-					htmlFor="gender"
-					className="absolute left-3 top-2 text-xs text-gray-500"
-				>
-					{t('gender_label')}
-				</label>
-				<select
-					id="gender"
-					name="gender"
-					value={formData.gender}
-					onChange={handleChange}
-					className="w-full rounded-lg px-3 pb-3 pt-7 focus:outline-none focus:ring-2 focus:ring-black"
-				>
-					<option value="Male">{t('gender_male')}</option>
-					<option value="Female">{t('gender_female')}</option>
-					<option value="Other">{t('gender_other')}</option>
-				</select>
-			</div>
-			<div className="flex items-center justify-between">
-				<button
-					onClick={() => handleSave('gender')}
-					disabled={loading}
-					className="flex items-center rounded-lg bg-black px-6 py-3 font-medium text-white hover:bg-gray-800 disabled:bg-gray-400"
-				>
-					{loading ? (
-						<>
-							<Loader2 className="mr-2 h-4 w-4 animate-spin" />
-							{t('saving')}
-						</>
-					) : (
-						t('save')
-					)}
-				</button>
-				<button
-					onClick={handleCancel}
-					className="font-medium text-gray-700 hover:underline"
-					disabled={loading}
-				>
-					{t('cancel')}
-				</button>
-			</div>
-			{error && <p className="mt-2 text-sm text-red-500">{error}</p>}
-		</div>
+		<Form
+			onSubmit={(values) => handleSubmit(values, 'gender')}
+			initialValues={getInitialValues()}
+			render={({ handleSubmit, submitting }) => (
+				<form onSubmit={handleSubmit} className="mt-2 space-y-4">
+					<Field name="gender">
+						{({ input }) => (
+							<div className="relative rounded-lg border border-gray-300">
+								<label
+									htmlFor="gender"
+									className="absolute left-3 top-2 text-xs text-gray-500"
+								>
+									{t('Gender')}
+								</label>
+								<select
+									{...input}
+									id="gender"
+									className="w-full rounded-lg px-3 pb-3 pt-7 focus:outline-none focus:ring-2 focus:ring-black"
+								>
+									<option value="Male">{t('Male')}</option>
+									<option value="Female">{t('Female')}</option>
+									<option value="Other">{t('Other')}</option>
+								</select>
+							</div>
+						)}
+					</Field>
+					<div className="flex items-center justify-between">
+						<button
+							type="submit"
+							disabled={submitting || loading}
+							className="flex items-center rounded-lg bg-black px-6 py-3 font-medium text-white hover:bg-gray-800 disabled:bg-gray-400"
+						>
+							{submitting || loading ? (
+								<>
+									<Loader2 className="mr-2 h-4 w-4 animate-spin" />
+									{t('Saving')}
+								</>
+							) : (
+								t('Save')
+							)}
+						</button>
+						<button
+							type="button"
+							onClick={handleCancel}
+							className="font-medium text-gray-700 hover:underline"
+							disabled={submitting || loading}
+						>
+							{t('Cancel')}
+						</button>
+					</div>
+					{error && <p className="mt-2 text-sm text-red-500">{error}</p>}
+				</form>
+			)}
+		/>
 	)
 
 	// Render edit form for username
 	const renderUsernameEditForm = () => (
-		<div className="mt-2 space-y-4">
-			<div className="relative rounded-lg border border-gray-300">
-				<label
-					htmlFor="username"
-					className="absolute left-3 top-2 text-xs text-gray-500"
-				>
-					{t('username_label')}
-				</label>
-				<input
-					type="text"
-					id="username"
-					name="username"
-					value={formData.username}
-					onChange={handleChange}
-					className="w-full rounded-lg px-3 pb-3 pt-7 focus:outline-none focus:ring-2 focus:ring-black"
-				/>
-			</div>
-			<div className="flex items-center justify-between">
-				<button
-					onClick={() => handleSave('username')}
-					disabled={loading}
-					className="flex items-center rounded-lg bg-black px-6 py-3 font-medium text-white hover:bg-gray-800 disabled:bg-gray-400"
-				>
-					{loading ? (
-						<>
-							<Loader2 className="mr-2 h-4 w-4 animate-spin" />
-							{t('saving')}
-						</>
-					) : (
-						t('save')
-					)}
-				</button>
-				<button
-					onClick={handleCancel}
-					className="font-medium text-gray-700 hover:underline"
-					disabled={loading}
-				>
-					{t('cancel')}
-				</button>
-			</div>
-			{error && <p className="mt-2 text-sm text-red-500">{error}</p>}
-		</div>
+		<Form
+			onSubmit={(values) => handleSubmit(values, 'username')}
+			initialValues={getInitialValues()}
+			render={({ handleSubmit, submitting, hasValidationErrors }) => (
+				<form onSubmit={handleSubmit} className="mt-2 space-y-4">
+					<Field name="username">
+						{({ input, meta }) => (
+							<div className="relative rounded-lg border border-gray-300">
+								<label
+									htmlFor="username"
+									className="absolute left-3 top-2 text-xs text-gray-500"
+								>
+									{t('Username')}
+								</label>
+								<input
+									{...input}
+									type="text"
+									id="username"
+									className="w-full rounded-lg px-3 pb-3 pt-7 focus:outline-none focus:ring-2 focus:ring-black"
+								/>
+								{meta.error && meta.touched && (
+									<p className="mt-1 text-xs text-red-500">{meta.error}</p>
+								)}
+							</div>
+						)}
+					</Field>
+					<div className="flex items-center justify-between">
+						<button
+							type="submit"
+							disabled={submitting || loading || hasValidationErrors}
+							className="flex items-center rounded-lg bg-black px-6 py-3 font-medium text-white hover:bg-gray-800 disabled:bg-gray-400"
+						>
+							{submitting || loading ? (
+								<>
+									<Loader2 className="mr-2 h-4 w-4 animate-spin" />
+									{t('Saving')}
+								</>
+							) : (
+								t('Save')
+							)}
+						</button>
+						<button
+							type="button"
+							onClick={handleCancel}
+							className="font-medium text-gray-700 hover:underline"
+							disabled={submitting || loading}
+						>
+							{t('Cancel')}
+						</button>
+					</div>
+					{error && <p className="mt-2 text-sm text-red-500">{error}</p>}
+				</form>
+			)}
+		/>
 	)
 
 	// Render edit form for email
 	const renderEmailEditForm = () => (
-		<div className="mt-2 space-y-4">
-			<div className="relative rounded-lg border border-gray-300">
-				<label
-					htmlFor="email"
-					className="absolute left-3 top-2 text-xs text-gray-500"
-				>
-					{t('email_label')}
-				</label>
-				<input
-					type="email"
-					id="email"
-					name="email"
-					value={formData.email}
-					onChange={handleChange}
-					className="w-full rounded-lg px-3 pb-3 pt-7 focus:outline-none focus:ring-2 focus:ring-black"
-				/>
-			</div>
-			<div className="flex items-center justify-between">
-				<button
-					onClick={() => handleSave('email')}
-					disabled={loading}
-					className="flex items-center rounded-lg bg-black px-6 py-3 font-medium text-white hover:bg-gray-800 disabled:bg-gray-400"
-				>
-					{loading ? (
-						<>
-							<Loader2 className="mr-2 h-4 w-4 animate-spin" />
-							{t('saving')}
-						</>
-					) : (
-						t('save')
-					)}
-				</button>
-				<button
-					onClick={handleCancel}
-					className="font-medium text-gray-700 hover:underline"
-					disabled={loading}
-				>
-					{t('cancel')}
-				</button>
-			</div>
-			{error && <p className="mt-2 text-sm text-red-500">{error}</p>}
-		</div>
+		<Form
+			onSubmit={(values) => handleSubmit(values, 'email')}
+			initialValues={getInitialValues()}
+			render={({ handleSubmit, submitting, hasValidationErrors }) => (
+				<form onSubmit={handleSubmit} className="mt-2 space-y-4">
+					<Field name="email">
+						{({ input, meta }) => (
+							<div className="relative rounded-lg border border-gray-300">
+								<label
+									htmlFor="email"
+									className="absolute left-3 top-2 text-xs text-gray-500"
+								>
+									{t('Email_Address')}
+								</label>
+								<input
+									{...input}
+									type="email"
+									id="email"
+									className="w-full rounded-lg px-3 pb-3 pt-7 focus:outline-none focus:ring-2 focus:ring-black"
+								/>
+								{meta.error && meta.touched && (
+									<p className="mt-1 text-xs text-red-500">{meta.error}</p>
+								)}
+							</div>
+						)}
+					</Field>
+					<div className="flex items-center justify-between">
+						<button
+							type="submit"
+							disabled={submitting || loading || hasValidationErrors}
+							className="flex items-center rounded-lg bg-black px-6 py-3 font-medium text-white hover:bg-gray-800 disabled:bg-gray-400"
+						>
+							{submitting || loading ? (
+								<>
+									<Loader2 className="mr-2 h-4 w-4 animate-spin" />
+									{t('Saving')}
+								</>
+							) : (
+								t('Save')
+							)}
+						</button>
+						<button
+							type="button"
+							onClick={handleCancel}
+							className="font-medium text-gray-700 hover:underline"
+							disabled={submitting || loading}
+						>
+							{t('Cancel')}
+						</button>
+					</div>
+					{error && <p className="mt-2 text-sm text-red-500">{error}</p>}
+				</form>
+			)}
+		/>
 	)
 
 	// Render edit form for date of birth
 	const renderDateOfBirthEditForm = () => (
-		<div className="mt-2 space-y-4">
-			<div className="relative rounded-lg border border-gray-300">
-				<label
-					htmlFor="dateOfBirth"
-					className="absolute left-3 top-2 text-xs text-gray-500"
-				>
-					{t('dob_label')}
-				</label>
-				<input
-					type="date"
-					id="dateOfBirth"
-					name="dateOfBirth"
-					value={formData.dateOfBirth}
-					onChange={handleChange}
-					className="w-full rounded-lg px-3 pb-3 pt-7 focus:outline-none focus:ring-2 focus:ring-black"
-				/>
-			</div>
-			<div className="flex items-center justify-between">
-				<button
-					onClick={() => handleSave('dateOfBirth')}
-					disabled={loading}
-					className="flex items-center rounded-lg bg-black px-6 py-3 font-medium text-white hover:bg-gray-800 disabled:bg-gray-400"
-				>
-					{loading ? (
-						<>
-							<Loader2 className="mr-2 h-4 w-4 animate-spin" />
-							{t('saving')}
-						</>
-					) : (
-						t('save')
-					)}
-				</button>
-				<button
-					onClick={handleCancel}
-					className="font-medium text-gray-700 hover:underline"
-					disabled={loading}
-				>
-					{t('cancel')}
-				</button>
-			</div>
-			{error && <p className="mt-2 text-sm text-red-500">{error}</p>}
-		</div>
+		<Form
+			onSubmit={(values) => handleSubmit(values, 'dateOfBirth')}
+			initialValues={getInitialValues()}
+			render={({ handleSubmit, submitting }) => (
+				<form onSubmit={handleSubmit} className="mt-2 space-y-4">
+					<Field name="dateOfBirth">
+						{({ input }) => (
+							<div className="relative rounded-lg border border-gray-300">
+								<label
+									htmlFor="dateOfBirth"
+									className="absolute left-3 top-2 text-xs text-gray-500"
+								>
+									{t('Date_Of_Birth')}
+								</label>
+								<input
+									{...input}
+									type="date"
+									id="dateOfBirth"
+									className="w-full rounded-lg px-3 pb-3 pt-7 focus:outline-none focus:ring-2 focus:ring-black"
+								/>
+							</div>
+						)}
+					</Field>
+					<div className="flex items-center justify-between">
+						<button
+							type="submit"
+							disabled={submitting || loading}
+							className="flex items-center rounded-lg bg-black px-6 py-3 font-medium text-white hover:bg-gray-800 disabled:bg-gray-400"
+						>
+							{submitting || loading ? (
+								<>
+									<Loader2 className="mr-2 h-4 w-4 animate-spin" />
+									{t('Saving')}
+								</>
+							) : (
+								t('Save')
+							)}
+						</button>
+						<button
+							type="button"
+							onClick={handleCancel}
+							className="font-medium text-gray-700 hover:underline"
+							disabled={submitting || loading}
+						>
+							{t('Cancel')}
+						</button>
+					</div>
+					{error && <p className="mt-2 text-sm text-red-500">{error}</p>}
+				</form>
+			)}
+		/>
 	)
 
 	// Render edit form for address
 	const renderAddressEditForm = () => (
-		<div className="mt-2 space-y-4">
-			<div className="relative rounded-lg border border-gray-300">
-				<label
-					htmlFor="address"
-					className="absolute left-3 top-2 text-xs text-gray-500"
-				>
-					{t('address_label')}
-				</label>
-				<input
-					type="text"
-					id="address"
-					name="address"
-					value={formData.address}
-					onChange={handleChange}
-					className="w-full rounded-lg px-3 pb-3 pt-7 focus:outline-none focus:ring-2 focus:ring-black"
-				/>
-			</div>
-			<div className="flex items-center justify-between">
-				<button
-					onClick={() => handleSave('address')}
-					disabled={loading}
-					className="flex items-center rounded-lg bg-black px-6 py-3 font-medium text-white hover:bg-gray-800 disabled:bg-gray-400"
-				>
-					{loading ? (
-						<>
-							<Loader2 className="mr-2 h-4 w-4 animate-spin" />
-							{t('saving')}
-						</>
-					) : (
-						t('save')
-					)}
-				</button>
-				<button
-					onClick={handleCancel}
-					className="font-medium text-gray-700 hover:underline"
-					disabled={loading}
-				>
-					{t('cancel')}
-				</button>
-			</div>
-			{error && <p className="mt-2 text-sm text-red-500">{error}</p>}
-		</div>
+		<Form
+			onSubmit={(values) => handleSubmit(values, 'address')}
+			initialValues={getInitialValues()}
+			render={({ handleSubmit, submitting }) => (
+				<form onSubmit={handleSubmit} className="mt-2 space-y-4">
+					<Field name="address">
+						{({ input }) => (
+							<div className="relative rounded-lg border border-gray-300">
+								<label
+									htmlFor="address"
+									className="absolute left-3 top-2 text-xs text-gray-500"
+								>
+									{t('Address')}
+								</label>
+								<input
+									{...input}
+									type="text"
+									id="address"
+									className="w-full rounded-lg px-3 pb-3 pt-7 focus:outline-none focus:ring-2 focus:ring-black"
+								/>
+							</div>
+						)}
+					</Field>
+					<div className="flex items-center justify-between">
+						<button
+							type="submit"
+							disabled={submitting || loading}
+							className="flex items-center rounded-lg bg-black px-6 py-3 font-medium text-white hover:bg-gray-800 disabled:bg-gray-400"
+						>
+							{submitting || loading ? (
+								<>
+									<Loader2 className="mr-2 h-4 w-4 animate-spin" />
+									{t('Saving')}
+								</>
+							) : (
+								t('Save')
+							)}
+						</button>
+						<button
+							type="button"
+							onClick={handleCancel}
+							className="font-medium text-gray-700 hover:underline"
+							disabled={submitting || loading}
+						>
+							{t('Cancel')}
+						</button>
+					</div>
+					{error && <p className="mt-2 text-sm text-red-500">{error}</p>}
+				</form>
+			)}
+		/>
 	)
 
 	// Render edit form for phone
 	const renderPhoneEditForm = () => (
-		<div className="mt-2 space-y-4">
-			<div className="relative rounded-lg border border-gray-300">
-				<label
-					htmlFor="phone"
-					className="absolute left-3 top-2 text-xs text-gray-500"
-				>
-					{t('phone_label')}
-				</label>
-				<input
-					type="tel"
-					id="phone"
-					name="phone"
-					value={formData.phone}
-					onChange={handleChange}
-					className="w-full rounded-lg px-3 pb-3 pt-7 focus:outline-none focus:ring-2 focus:ring-black"
-				/>
-			</div>
-			<div className="flex items-center justify-between">
-				<button
-					onClick={() => handleSave('phone')}
-					disabled={loading}
-					className="flex items-center rounded-lg bg-black px-6 py-3 font-medium text-white hover:bg-gray-800 disabled:bg-gray-400"
-				>
-					{loading ? (
-						<>
-							<Loader2 className="mr-2 h-4 w-4 animate-spin" />
-							{t('saving')}
-						</>
-					) : (
-						t('save')
-					)}
-				</button>
-				<button
-					onClick={handleCancel}
-					className="font-medium text-gray-700 hover:underline"
-					disabled={loading}
-				>
-					{t('cancel')}
-				</button>
-			</div>
-			{error && <p className="mt-2 text-sm text-red-500">{error}</p>}
-		</div>
+		<Form
+			onSubmit={(values) => handleSubmit(values, 'phone')}
+			initialValues={getInitialValues()}
+			render={({ handleSubmit, submitting }) => (
+				<form onSubmit={handleSubmit} className="mt-2 space-y-4">
+					<Field name="phone">
+						{({ input }) => (
+							<div className="relative rounded-lg border border-gray-300">
+								<label
+									htmlFor="phone"
+									className="absolute left-3 top-2 text-xs text-gray-500"
+								>
+									{t('Phone_Number')}
+								</label>
+								<input
+									{...input}
+									type="tel"
+									id="phone"
+									className="w-full rounded-lg px-3 pb-3 pt-7 focus:outline-none focus:ring-2 focus:ring-black"
+								/>
+							</div>
+						)}
+					</Field>
+					<div className="flex items-center justify-between">
+						<button
+							type="submit"
+							disabled={submitting || loading}
+							className="flex items-center rounded-lg bg-black px-6 py-3 font-medium text-white hover:bg-gray-800 disabled:bg-gray-400"
+						>
+							{submitting || loading ? (
+								<>
+									<Loader2 className="mr-2 h-4 w-4 animate-spin" />
+									{t('Saving')}
+								</>
+							) : (
+								t('Save')
+							)}
+						</button>
+						<button
+							type="button"
+							onClick={handleCancel}
+							className="font-medium text-gray-700 hover:underline"
+							disabled={submitting || loading}
+						>
+							{t('Cancel')}
+						</button>
+					</div>
+					{error && <p className="mt-2 text-sm text-red-500">{error}</p>}
+				</form>
+			)}
+		/>
 	)
 
 	// Render edit form for about
 	const renderAboutEditForm = () => (
-		<div className="mt-2 space-y-4">
-			<div className="relative rounded-lg border border-gray-300">
-				<label
-					htmlFor="about"
-					className="absolute left-3 top-2 text-xs text-gray-500"
-				>
-					{t('about_label')}
-				</label>
-				<textarea
-					id="about"
-					name="about"
-					value={formData.about}
-					onChange={handleChange}
-					rows={4}
-					className="w-full rounded-lg px-3 pb-3 pt-7 focus:outline-none focus:ring-2 focus:ring-black"
-				/>
-			</div>
-			<div className="flex items-center justify-between">
-				<button
-					onClick={() => handleSave('about')}
-					disabled={loading}
-					className="flex items-center rounded-lg bg-black px-6 py-3 font-medium text-white hover:bg-gray-800 disabled:bg-gray-400"
-				>
-					{loading ? (
-						<>
-							<Loader2 className="mr-2 h-4 w-4 animate-spin" />
-							{t('saving')}
-						</>
-					) : (
-						t('save')
-					)}
-				</button>
-				<button
-					onClick={handleCancel}
-					className="font-medium text-gray-700 hover:underline"
-					disabled={loading}
-				>
-					{t('cancel')}
-				</button>
-			</div>
-			{error && <p className="mt-2 text-sm text-red-500">{error}</p>}
-		</div>
+		<Form
+			onSubmit={(values) => handleSubmit(values, 'about')}
+			initialValues={getInitialValues()}
+			render={({ handleSubmit, submitting }) => (
+				<form onSubmit={handleSubmit} className="mt-2 space-y-4">
+					<Field name="about">
+						{({ input }) => (
+							<div className="relative rounded-lg border border-gray-300">
+								<label
+									htmlFor="about"
+									className="absolute left-3 top-2 text-xs text-gray-500"
+								>
+									{t('About_You')}
+								</label>
+								<textarea
+									{...input}
+									id="about"
+									rows={4}
+									className="w-full rounded-lg px-3 pb-3 pt-7 focus:outline-none focus:ring-2 focus:ring-black"
+								/>
+							</div>
+						)}
+					</Field>
+					<div className="flex items-center justify-between">
+						<button
+							type="submit"
+							disabled={submitting || loading}
+							className="flex items-center rounded-lg bg-black px-6 py-3 font-medium text-white hover:bg-gray-800 disabled:bg-gray-400"
+						>
+							{submitting || loading ? (
+								<>
+									<Loader2 className="mr-2 h-4 w-4 animate-spin" />
+									{t('Saving')}
+								</>
+							) : (
+								t('Save')
+							)}
+						</button>
+						<button
+							type="button"
+							onClick={handleCancel}
+							className="font-medium text-gray-700 hover:underline"
+							disabled={submitting || loading}
+						>
+							{t('Cancel')}
+						</button>
+					</div>
+					{error && <p className="mt-2 text-sm text-red-500">{error}</p>}
+				</form>
+			)}
+		/>
 	)
 
 	// Get the appropriate edit form based on the field being edited
@@ -656,15 +706,13 @@ export default function PersonalInfoPage() {
 					href="/account-settings"
 					className="text-gray-600 hover:underline"
 				>
-					{t('account')}
+					{t('Account')}
 				</Link>
 				<ChevronRight className="mx-2 h-4 w-4 text-gray-500" />
-				<span className="text-gray-800">{t('personal_info')}</span>
+				<span className="text-gray-800">{t('Personal_Info')}</span>
 			</div>
-
 			{/* Page Title */}
-			<h1 className="mb-8 text-3xl font-semibold">{t('page_title')}</h1>
-
+			<h1 className="mb-8 text-3xl font-semibold">{t('Personal_Info')}</h1>
 			{/* Personal Info Items */}
 			<div className="space-y-6">
 				{personalInfoItems.map((item) => (
@@ -695,17 +743,16 @@ export default function PersonalInfoPage() {
 									className="font-medium text-gray-700 hover:underline"
 								>
 									{item.actionType === 'edit'
-										? t('edit')
+										? t('Edit')
 										: item.actionType === 'add'
-											? t('add')
-											: t('start')}
+											? t('Add')
+											: t('Start')}
 								</button>
 							)}
 						</div>
 					</div>
 				))}
 			</div>
-
 			{/* Info Cards */}
 			<div className="mt-12 space-y-6">
 				<div className="rounded-xl border border-gray-200 p-6">
@@ -715,13 +762,14 @@ export default function PersonalInfoPage() {
 						</div>
 						<div>
 							<h2 className="mb-2 text-lg font-semibold">
-								{t('info_hidden_title')}
+								{t('Why_Info_Not_Shown_Title')}
 							</h2>
-							<p className="text-gray-600">{t('info_hidden_description')}</p>
+							<p className="text-gray-600">
+								{t('Why_Info_Not_Shown_Description')}
+							</p>
 						</div>
 					</div>
 				</div>
-
 				<div className="rounded-xl border border-gray-200 p-6">
 					<div className="flex items-start">
 						<div className="mr-4 rounded-full bg-pink-100 p-3">
@@ -729,13 +777,14 @@ export default function PersonalInfoPage() {
 						</div>
 						<div>
 							<h2 className="mb-2 text-lg font-semibold">
-								{t('editable_info_title')}
+								{t('Which_Details_Editable_Title')}
 							</h2>
-							<p className="text-gray-600">{t('editable_info_description')}</p>
+							<p className="text-gray-600">
+								{t('Which_Details_Editable_Description')}
+							</p>
 						</div>
 					</div>
 				</div>
-
 				<div className="rounded-xl border border-gray-200 p-6">
 					<div className="flex items-start">
 						<div className="mr-4 rounded-full bg-pink-100 p-3">
@@ -743,9 +792,11 @@ export default function PersonalInfoPage() {
 						</div>
 						<div>
 							<h2 className="mb-2 text-lg font-semibold">
-								{t('shared_info_title')}
+								{t('What_Info_Shared_Title')}
 							</h2>
-							<p className="text-gray-600">{t('shared_info_description')}</p>
+							<p className="text-gray-600">
+								{t('What_Info_Shared_Description')}
+							</p>
 						</div>
 					</div>
 				</div>
