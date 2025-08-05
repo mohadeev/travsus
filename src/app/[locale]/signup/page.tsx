@@ -1,13 +1,27 @@
-import { Metadata } from 'next'
-import { useTranslations } from '@/lib/i18n'
+import type { Metadata } from 'next'
 import SignUpClient from './SignUpClient'
+import { getTranslations } from 'next-intl/server'
 
-export const metadata: Metadata = {
-	title: t('signup_page_Sign_Up_Travsus'),
-	description: t('signup_page_Create_New_Account_And_Join_Our_Community'),
+interface PageProps {
+	params: Promise<{
+		locale: string
+	}>
 }
 
-export default function SignUpPage() {
-	const t = useTranslations('SignUpPage')
-	return <SignUpClient />
+export async function generateMetadata({
+	params,
+}: PageProps): Promise<Metadata> {
+	const { locale } = await params
+	const t = await getTranslations({ locale, namespace: 'Jan03_SignUp_b9k3' })
+
+	return {
+		title: t('Sign_Up_Title'),
+		description: t('Sign_Up_Description'),
+	}
+}
+
+export default async function SignUpPage({ params }: PageProps) {
+	const { locale } = await params
+
+	return <SignUpClient locale={locale} />
 }

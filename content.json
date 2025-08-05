@@ -1,72 +1,62 @@
 {
 	"en-US": {
-		"Jan03_CompanySettings_s7m4": {
-			"Company_Settings": "Company Settings",
-			"Manage_Your_Company_Settings": "Manage your company settings",
-			"Manage_Your_Company_Information": "Manage your company information"
+		"Jan03_SignUp_b9k3": {
+			"Sign_Up_Title": "Sign Up | Travsus",
+			"Sign_Up_Description": "Create a new account and join our community."
 		}
 	},
 	"es-ES": {
-		"Jan03_CompanySettings_s7m4": {
-			"Company_Settings": "Configuración de la Empresa",
-			"Manage_Your_Company_Settings": "Gestiona la configuración de tu empresa",
-			"Manage_Your_Company_Information": "Gestiona la información de tu empresa"
+		"Jan03_SignUp_b9k3": {
+			"Sign_Up_Title": "Registrarse | Travsus",
+			"Sign_Up_Description": "Crea una nueva cuenta y únete a nuestra comunidad."
 		}
 	},
 	"de-DE": {
-		"Jan03_CompanySettings_s7m4": {
-			"Company_Settings": "Unternehmenseinstellungen",
-			"Manage_Your_Company_Settings": "Verwalten Sie Ihre Unternehmenseinstellungen",
-			"Manage_Your_Company_Information": "Verwalten Sie Ihre Unternehmensinformationen"
+		"Jan03_SignUp_b9k3": {
+			"Sign_Up_Title": "Registrieren | Travsus",
+			"Sign_Up_Description": "Erstellen Sie ein neues Konto und treten Sie unserer Gemeinschaft bei."
 		}
 	},
 	"fr-FR": {
-		"Jan03_CompanySettings_s7m4": {
-			"Company_Settings": "Paramètres de l'Entreprise",
-			"Manage_Your_Company_Settings": "Gérez les paramètres de votre entreprise",
-			"Manage_Your_Company_Information": "Gérez les informations de votre entreprise"
+		"Jan03_SignUp_b9k3": {
+			"Sign_Up_Title": "S'inscrire | Travsus",
+			"Sign_Up_Description": "Créez un nouveau compte et rejoignez notre communauté."
 		}
 	},
 	"ja-JP": {
-		"Jan03_CompanySettings_s7m4": {
-			"Company_Settings": "会社設定",
-			"Manage_Your_Company_Settings": "会社設定を管理する",
-			"Manage_Your_Company_Information": "会社情報を管理する"
+		"Jan03_SignUp_b9k3": {
+			"Sign_Up_Title": "サインアップ | Travsus",
+			"Sign_Up_Description": "新しいアカウントを作成して、私たちのコミュニティに参加してください。"
 		}
 	},
 	"pt-PT": {
-		"Jan03_CompanySettings_s7m4": {
-			"Company_Settings": "Configurações da Empresa",
-			"Manage_Your_Company_Settings": "Gerir as configurações da sua empresa",
-			"Manage_Your_Company_Information": "Gerir as informações da sua empresa"
+		"Jan03_SignUp_b9k3": {
+			"Sign_Up_Title": "Registar | Travsus",
+			"Sign_Up_Description": "Crie uma nova conta e junte-se à nossa comunidade."
 		}
 	},
 	"it-IT": {
-		"Jan03_CompanySettings_s7m4": {
-			"Company_Settings": "Impostazioni Aziendali",
-			"Manage_Your_Company_Settings": "Gestisci le impostazioni della tua azienda",
-			"Manage_Your_Company_Information": "Gestisci le informazioni della tua azienda"
+		"Jan03_SignUp_b9k3": {
+			"Sign_Up_Title": "Registrati | Travsus",
+			"Sign_Up_Description": "Crea un nuovo account e unisciti alla nostra comunità."
 		}
 	},
 	"ru-RU": {
-		"Jan03_CompanySettings_s7m4": {
-			"Company_Settings": "Настройки Компании",
-			"Manage_Your_Company_Settings": "Управляйте настройками вашей компании",
-			"Manage_Your_Company_Information": "Управляйте информацией о вашей компании"
+		"Jan03_SignUp_b9k3": {
+			"Sign_Up_Title": "Регистрация | Travsus",
+			"Sign_Up_Description": "Создайте новую учетную запись и присоединяйтесь к нашему сообществу."
 		}
 	},
 	"zh-CN": {
-		"Jan03_CompanySettings_s7m4": {
-			"Company_Settings": "公司设置",
-			"Manage_Your_Company_Settings": "管理您的公司设置",
-			"Manage_Your_Company_Information": "管理您的公司信息"
+		"Jan03_SignUp_b9k3": {
+			"Sign_Up_Title": "注册 | Travsus",
+			"Sign_Up_Description": "创建新账户并加入我们的社区。"
 		}
 	},
 	"ko-KR": {
-		"Jan03_CompanySettings_s7m4": {
-			"Company_Settings": "회사 설정",
-			"Manage_Your_Company_Settings": "회사 설정을 관리하세요",
-			"Manage_Your_Company_Information": "회사 정보를 관리하세요"
+		"Jan03_SignUp_b9k3": {
+			"Sign_Up_Title": "회원가입 | Travsus",
+			"Sign_Up_Description": "새 계정을 만들고 우리 커뮤니티에 참여하세요."
 		}
 	}
 }

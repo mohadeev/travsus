@@ -1162,6 +1162,10 @@
     "Promo_Code": "프로모 코드",
     "Promo_Code_Applied_Successfully": "프로모 코드가 성공적으로 적용되었습니다!"
   },
+  "Jan03_SignUp_b9k3": {
+    "Sign_Up_Description": "새 계정을 만들고 우리 커뮤니티에 참여하세요.",
+    "Sign_Up_Title": "회원가입 | Travsus"
+  },
   "Jan03_TourHeader_x9k2": {
     "Brand_Name": "TRAVSUS",
     "Plan_Trip_Guide": "{city} 여행 계획하기: 최고의 {city} 여행 가이드"

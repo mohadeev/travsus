@@ -1600,6 +1600,10 @@
     "Promo_Code": "Code Promo",
     "Promo_Code_Applied_Successfully": "Code promo appliqué avec succès !"
   },
+  "Jan03_SignUp_b9k3": {
+    "Sign_Up_Description": "Créez un nouveau compte et rejoignez notre communauté.",
+    "Sign_Up_Title": "S'inscrire | Travsus"
+  },
   "Jan03_TourHeader_x9k2": {
     "Brand_Name": "TRAVSUS",
     "Plan_Trip_Guide": "Planifiez votre voyage à {city} : Le meilleur guide de voyage de {city}"
