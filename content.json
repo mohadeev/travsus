@@ -2,7 +2,7 @@
 	"en-US": {
 		"Jan03_TravelBanner_q5w7": {
 			"Travel_Services_Alt": "Travel and transportation services",
-			"Ready_To_Go": "Ready to Go?",
+			"Ready_To_Go": "Ready to Travel?",
 			"Banner_Description": "We design and deliver meaningful tour experiences with quality, care, and professionalism. Travsus — where every journey is expertly guided.",
 			"Plan_Trip": "Plan Trip",
 			"View_Destinations": "View Destinations"
@@ -11,7 +11,7 @@
 	"es-ES": {
 		"Jan03_TravelBanner_q5w7": {
 			"Travel_Services_Alt": "Servicios de viaje y transporte",
-			"Ready_To_Go": "¿Listo para Partir?",
+			"Ready_To_Go": "¿Listo para Viajar?",
 			"Banner_Description": "Diseñamos y ofrecemos experiencias turísticas significativas con calidad, cuidado y profesionalismo. Travsus — donde cada viaje es guiado por expertos.",
 			"Plan_Trip": "Planificar Viaje",
 			"View_Destinations": "Ver Destinos"
@@ -20,7 +20,7 @@
 	"de-DE": {
 		"Jan03_TravelBanner_q5w7": {
 			"Travel_Services_Alt": "Reise- und Transportdienstleistungen",
-			"Ready_To_Go": "Bereit zu Gehen?",
+			"Ready_To_Go": "Bereit zu Reisen?",
 			"Banner_Description": "Wir entwerfen und liefern bedeutungsvolle Tourerlebnisse mit Qualität, Sorgfalt und Professionalität. Travsus — wo jede Reise fachkundig geführt wird.",
 			"Plan_Trip": "Reise Planen",
 			"View_Destinations": "Ziele Ansehen"
@@ -29,7 +29,7 @@
 	"ja-JP": {
 		"Jan03_TravelBanner_q5w7": {
 			"Travel_Services_Alt": "旅行・交通サービス",
-			"Ready_To_Go": "出発準備はOK？",
+			"Ready_To_Go": "旅行の準備はOK？",
 			"Banner_Description": "私たちは品質、配慮、プロフェッショナリズムで意味のあるツアー体験をデザインし、提供します。Travsus — すべての旅が専門的にガイドされる場所。",
 			"Plan_Trip": "旅行を計画",
 			"View_Destinations": "目的地を見る"
@@ -38,7 +38,7 @@
 	"pt-PT": {
 		"Jan03_TravelBanner_q5w7": {
 			"Travel_Services_Alt": "Serviços de viagem e transporte",
-			"Ready_To_Go": "Pronto para Partir?",
+			"Ready_To_Go": "Pronto para Viajar?",
 			"Banner_Description": "Concebemos e oferecemos experiências turísticas significativas com qualidade, cuidado e profissionalismo. Travsus — onde cada viagem é guiada por especialistas.",
 			"Plan_Trip": "Planear Viagem",
 			"View_Destinations": "Ver Destinos"
@@ -47,7 +47,7 @@
 	"it-IT": {
 		"Jan03_TravelBanner_q5w7": {
 			"Travel_Services_Alt": "Servizi di viaggio e trasporto",
-			"Ready_To_Go": "Pronto a Partire?",
+			"Ready_To_Go": "Pronto a Viaggiare?",
 			"Banner_Description": "Progettiamo e offriamo esperienze turistiche significative con qualità, cura e professionalità. Travsus — dove ogni viaggio è guidato da esperti.",
 			"Plan_Trip": "Pianifica Viaggio",
 			"View_Destinations": "Vedi Destinazioni"
@@ -56,7 +56,7 @@
 	"fr-FR": {
 		"Jan03_TravelBanner_q5w7": {
 			"Travel_Services_Alt": "Services de voyage et de transport",
-			"Ready_To_Go": "Prêt à Partir ?",
+			"Ready_To_Go": "Prêt à Voyager ?",
 			"Banner_Description": "Nous concevons et offrons des expériences touristiques significatives avec qualité, soin et professionnalisme. Travsus — où chaque voyage est guidé par des experts.",
 			"Plan_Trip": "Planifier le Voyage",
 			"View_Destinations": "Voir les Destinations"
@@ -65,7 +65,7 @@
 	"ru-RU": {
 		"Jan03_TravelBanner_q5w7": {
 			"Travel_Services_Alt": "Услуги путешествий и транспорта",
-			"Ready_To_Go": "Готовы к Поездке?",
+			"Ready_To_Go": "Готовы к Путешествию?",
 			"Banner_Description": "Мы разрабатываем и предоставляем значимые туристические впечатления с качеством, заботой и профессионализмом. Travsus — где каждое путешествие профессионально сопровождается.",
 			"Plan_Trip": "Планировать Поездку",
 			"View_Destinations": "Посмотреть Направления"
@@ -74,7 +74,7 @@
 	"zh-CN": {
 		"Jan03_TravelBanner_q5w7": {
 			"Travel_Services_Alt": "旅行和交通服务",
-			"Ready_To_Go": "准备出发了吗？",
+			"Ready_To_Go": "准备好旅行了吗？",
 			"Banner_Description": "我们以质量、关怀和专业精神设计并提供有意义的旅游体验。Travsus — 每一次旅程都有专业指导的地方。",
 			"Plan_Trip": "规划旅行",
 			"View_Destinations": "查看目的地"
@@ -83,7 +83,7 @@
 	"ko-KR": {
 		"Jan03_TravelBanner_q5w7": {
 			"Travel_Services_Alt": "여행 및 교통 서비스",
-			"Ready_To_Go": "출발 준비 되셨나요?",
+			"Ready_To_Go": "여행 준비 되셨나요?",
 			"Banner_Description": "우리는 품질, 배려, 전문성으로 의미 있는 투어 경험을 설계하고 제공합니다. Travsus — 모든 여행이 전문적으로 안내되는 곳.",
 			"Plan_Trip": "여행 계획하기",
 			"View_Destinations": "목적지 보기"
