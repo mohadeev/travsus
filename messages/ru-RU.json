@@ -1294,6 +1294,13 @@
     "Transaction_Summary": "Сводка по Транзакциям",
     "View_And_Manage_Your_Financial_Transactions": "Просматривайте и управляйте своими финансовыми транзакциями"
   },
+  "Jan03_TravelBanner_q5w7": {
+    "Banner_Description": "Мы разрабатываем и предоставляем значимые туристические впечатления с качеством, заботой и профессионализмом. Travsus — где каждое путешествие профессионально сопровождается.",
+    "Plan_Trip": "Планировать Поездку",
+    "Ready_To_Go": "Готовы к Поездке?",
+    "Travel_Services_Alt": "Услуги путешествий и транспорта",
+    "View_Destinations": "Посмотреть Направления"
+  },
   "layout": {
     "layout_Anonymous_User": "Анонимный",
     "layout_Default_Review_Text": "Потрясающий опыт!",

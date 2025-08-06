@@ -1,6 +1,9 @@
 import Image from 'next/image'
+import { useTranslations } from '@/lib/i18n'
 
 export default function TravelBanner() {
+	const t = useTranslations('Jan03_TravelBanner_q5w7')
+
 	return (
 		<div className="p-4">
 			{/* Travel Services Banner */}
@@ -10,7 +13,7 @@ export default function TravelBanner() {
 					<div className="order-3 w-full p-4 lg:order-none lg:w-1/2">
 						<Image
 							src="/images/travel-illustration.png"
-							alt="Travel and transportation services"
+							alt={t('Travel_Services_Alt')}
 							width={400}
 							height={400}
 							className="aspect-square mx-auto w-full rounded-2xl object-cover lg:max-w-[450px]"
@@ -19,20 +22,18 @@ export default function TravelBanner() {
 					{/* Content Section - 50% */}
 					<div className="order-1 w-full p-4 text-center lg:order-none lg:w-1/2 lg:text-left">
 						<h1 className="mb-6 text-5xl font-black leading-tight tracking-tight text-black md:text-6xl lg:text-7xl xl:text-[100px]">
-							Ready to Go?
+							{t('Ready_To_Go')}
 						</h1>
 						<p className="mb-8 text-lg font-light leading-relaxed text-gray-600 md:text-xl">
-							We design and deliver meaningful tour experiences with quality,
-							care, and professionalism. Travsus — where every journey is
-							expertly guided.
+							{t('Banner_Description')}
 						</p>
 						{/* Desktop Buttons */}
 						<div className="hidden flex-col justify-center gap-4 sm:flex-row lg:flex lg:justify-start">
 							<button className="rounded-full bg-black px-8 py-3 text-lg font-semibold text-white hover:bg-gray-800">
-								Planificar Viaje
+								{t('Plan_Trip')}
 							</button>
 							<button className="rounded-full border-2 border-black bg-white px-8 py-3 text-lg font-semibold text-black hover:bg-gray-50">
-								Ver Destinos
+								{t('View_Destinations')}
 							</button>
 						</div>
 					</div>
@@ -40,10 +41,10 @@ export default function TravelBanner() {
 					<div className="order-2 w-full p-4 lg:hidden">
 						<div className="flex flex-col justify-center gap-4 sm:flex-row">
 							<button className="rounded-full bg-black px-8 py-3 text-lg font-semibold text-white hover:bg-gray-800">
-								Planificar Viaje
+								{t('Plan_Trip')}
 							</button>
 							<button className="rounded-full border-2 border-black bg-white px-8 py-3 text-lg font-semibold text-black hover:bg-gray-50">
-								Ver Destinos
+								{t('View_Destinations')}
 							</button>
 						</div>
 					</div>

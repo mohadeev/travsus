@@ -1250,6 +1250,13 @@
     "Transaction_Summary": "取引サマリー",
     "View_And_Manage_Your_Financial_Transactions": "金融取引を表示・管理する"
   },
+  "Jan03_TravelBanner_q5w7": {
+    "Banner_Description": "私たちは品質、配慮、プロフェッショナリズムで意味のあるツアー体験をデザインし、提供します。Travsus — すべての旅が専門的にガイドされる場所。",
+    "Plan_Trip": "旅行を計画",
+    "Ready_To_Go": "出発準備はOK？",
+    "Travel_Services_Alt": "旅行・交通サービス",
+    "View_Destinations": "目的地を見る"
+  },
   "layout": {
     "layout_Anonymous_User": "匿名",
     "layout_Default_Review_Text": "素晴らしい体験でした！",

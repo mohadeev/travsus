@@ -1183,6 +1183,13 @@
     "Transaction_Summary": "Resumo de Transações",
     "View_And_Manage_Your_Financial_Transactions": "Ver e gerir as suas transações financeiras"
   },
+  "Jan03_TravelBanner_q5w7": {
+    "Banner_Description": "Concebemos e oferecemos experiências turísticas significativas com qualidade, cuidado e profissionalismo. Travsus — onde cada viagem é guiada por especialistas.",
+    "Plan_Trip": "Planear Viagem",
+    "Ready_To_Go": "Pronto para Partir?",
+    "Travel_Services_Alt": "Serviços de viagem e transporte",
+    "View_Destinations": "Ver Destinos"
+  },
   "layout": {
     "layout_Anonymous_User": "Anónimo",
     "layout_Default_Review_Text": "Experiência fantástica!",

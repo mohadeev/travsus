@@ -1229,6 +1229,13 @@
     "Transaction_Summary": "交易摘要",
     "View_And_Manage_Your_Financial_Transactions": "查看和管理您的金融交易"
   },
+  "Jan03_TravelBanner_q5w7": {
+    "Banner_Description": "我们以质量、关怀和专业精神设计并提供有意义的旅游体验。Travsus — 每一次旅程都有专业指导的地方。",
+    "Plan_Trip": "规划旅行",
+    "Ready_To_Go": "准备出发了吗？",
+    "Travel_Services_Alt": "旅行和交通服务",
+    "View_Destinations": "查看目的地"
+  },
   "layout": {
     "layout_Anonymous_User": "匿名用户",
     "layout_Default_Review_Text": "绝佳体验！",
