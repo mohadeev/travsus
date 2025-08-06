@@ -22,7 +22,6 @@ const StayDatesRangeInput: FC<StayDatesRangeInputProps> = ({
 }) => {
 	const t = useTranslations('StayDatesRangeInput')
 	const locale = useLocale()
-	console.log('locale:', locale, locales)
 	moment.locale(locale) // ar-ma
 	registerLocale(locale, locales[locale])
 	const [startDate, setStartDate] = useState<Date | null>(
