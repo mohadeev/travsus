@@ -13,7 +13,7 @@ export default function TravelBanner() {
 							alt="Travel and transportation services"
 							width={400}
 							height={400}
-							className="aspect-square mx-auto w-full rounded-2xl object-cover lg:max-w-[500px]"
+							className="aspect-square mx-auto w-full rounded-2xl object-cover lg:max-w-[450px]"
 						/>
 					</div>
 					{/* Content Section - 50% */}
