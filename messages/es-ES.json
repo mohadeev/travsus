@@ -1499,6 +1499,19 @@
     "Vietnam": "Vietnam",
     "Vietnamese": "Vietnamita"
   },
+  "Jan03_LocationInput_k4m9": {
+    "Australia": "Australia",
+    "Canada": "Canadá",
+    "Destinations": "Destinos",
+    "Germany": "Alemania",
+    "Locations": "Ubicaciones",
+    "Morocco": "Marruecos",
+    "Popular_Destinations": "Destinos populares",
+    "Search_Destinations_Placeholder": "Buscar destinos",
+    "United_Arab_Emirates": "Emiratos Árabes Unidos",
+    "United_Kingdom": "Reino Unido",
+    "Where_To": "¿A dónde?"
+  },
   "Jan03_NotifyDropdown_q8w5": {
     "Notifications_Title": "Notificaciones"
   },
