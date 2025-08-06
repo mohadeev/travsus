@@ -6,7 +6,7 @@ import GuestsInput from '../GuestsInput'
 import LocationInput from '../LocationInput'
 import DatesRangeInput from '../DatesRangeInput'
 import { useTranslations } from '@/lib/i18n'
-
+//comment
 const StaySearchForm = () => {
 	const t = useTranslations('Jan03_StaySearchForm_m8p4')
 	//
