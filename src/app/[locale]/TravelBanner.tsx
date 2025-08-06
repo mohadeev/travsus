@@ -13,17 +13,18 @@ export default function TravelBanner() {
 							alt="Travel and transportation services"
 							width={400}
 							height={400}
-							className="aspect-square mx-auto w-full rounded-2xl object-cover lg:max-w-[400px]"
+							className="aspect-square mx-auto w-full rounded-2xl object-cover lg:max-w-[500px]"
 						/>
 					</div>
 					{/* Content Section - 50% */}
 					<div className="order-1 w-full p-4 text-center lg:order-none lg:w-1/2 lg:text-left">
-						<h1 className="mb-6 text-4xl font-black leading-tight tracking-tight text-black md:text-5xl lg:text-5xl xl:text-6xl">
-							Tu viaje perfecto te está esperando
+						<h1 className="mb-6 text-5xl font-black leading-tight tracking-tight text-black md:text-6xl lg:text-7xl xl:text-[100px]">
+							Ready to Go?
 						</h1>
 						<p className="mb-8 text-lg font-light leading-relaxed text-gray-600 md:text-xl">
-							Desde vuelos hasta traslados, organizamos cada detalle de tu
-							experiencia de viaje para que solo te preocupes por disfrutar.
+							We design and deliver meaningful tour experiences with quality,
+							care, and professionalism. Travsus — where every journey is
+							expertly guided.
 						</p>
 						{/* Desktop Buttons */}
 						<div className="hidden flex-col justify-center gap-4 sm:flex-row lg:flex lg:justify-start">

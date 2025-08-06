@@ -1,5 +1,4 @@
 'use client'
-
 import { Fragment, useState } from 'react'
 import {
 	Dialog,
@@ -18,10 +17,11 @@ import ButtonSubmit from './ButtonSubmit'
 import { useTimeoutFn } from 'react-use'
 import StaySearchForm from './(stay-search-form)/StaySearchForm'
 import Logo from '@/shared/Logo'
+import { useTranslations } from '@/lib/i18n'
 
 const HeroSearchForm2Mobile = () => {
+	const t = useTranslations('Jan03_HeroSearchMobile_x7k9')
 	const [showModal, setShowModal] = useState(false)
-
 	// FOR RESET ALL DATA WHEN CLICK CLEAR BUTTON
 	const [showDialog, setShowDialog] = useState(false)
 	let [, , resetIsShowingDialog] = useTimeoutFn(() => setShowDialog(true), 1)
@@ -29,11 +29,9 @@ const HeroSearchForm2Mobile = () => {
 	function closeModal() {
 		setShowModal(false)
 	}
-
 	function openModal() {
 		setShowModal(true)
 	}
-
 	const renderButtonOpenModal = () => {
 		return (
 			<div className="flex w-full items-center justify-between">
@@ -49,8 +47,7 @@ const HeroSearchForm2Mobile = () => {
 			</div>
 		)
 	}
-	const TABS: any = [{ name: 'Experiences', key: 'Experiences' }]
-
+	const TABS: any = [{ name: t('Experiences'), id: 'Experiences' }]
 	return (
 		<div className="HeroSearchForm2Mobile">
 			{renderButtonOpenModal()}
@@ -79,7 +76,6 @@ const HeroSearchForm2Mobile = () => {
 													<XMarkIcon className="h-5 w-5 text-black dark:text-white" />
 												</button>
 											</div>
-
 											<TabList className="flex w-full justify-center space-x-6 pt-12 text-sm font-semibold text-neutral-500 dark:text-neutral-400 sm:space-x-8 sm:text-base">
 												{TABS.map((item, index) => (
 													<Tab key={index} as={Fragment}>
@@ -118,7 +114,7 @@ const HeroSearchForm2Mobile = () => {
 														resetIsShowingDialog()
 													}}
 												>
-													Clear all
+													{t('Clear_All')}
 												</button>
 												<ButtonSubmit
 													onClick={() => {

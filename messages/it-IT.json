@@ -1076,6 +1076,10 @@
   "Jan03_HeroSearchFormSmall_m9x4": {
     "Experiences": "Esperienze"
   },
+  "Jan03_HeroSearchMobile_x7k9": {
+    "Clear_All": "Cancella tutto",
+    "Experiences": "Esperienze"
+  },
   "Jan03_Invoices_p7q3": {
     "Create_And_Manage_Your_Tour_Invoices": "Crea e gestisci le tue fatture tour",
     "Create_Invoice": "Crea Fattura",
@@ -1248,6 +1252,18 @@
   "Jan03_SignUp_b9k3": {
     "Sign_Up_Description": "Crea un nuovo account e unisciti alla nostra comunità.",
     "Sign_Up_Title": "Registrati | Travsus"
+  },
+  "Jan03_StaySearchForm_m8p4": {
+    "Add_Date": "Aggiungi data",
+    "Add_Guests": "Aggiungi ospiti",
+    "Guest_Singular": "{count} ospite",
+    "Guests_Plural": "{count} ospiti",
+    "Infant_Singular": "{count} neonato",
+    "Infants_Plural": "{count} neonati",
+    "Location": "Posizione",
+    "When": "Quando",
+    "Where": "Dove",
+    "Who": "Chi"
   },
   "Jan03_TourHeader_x9k2": {
     "Brand_Name": "TRAVSUS",

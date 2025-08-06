@@ -1012,6 +1012,10 @@
   "Jan03_HeroSearchFormSmall_m9x4": {
     "Experiences": "体验"
   },
+  "Jan03_HeroSearchMobile_x7k9": {
+    "Clear_All": "清除全部",
+    "Experiences": "体验"
+  },
   "Jan03_Invoices_p7q3": {
     "Create_And_Manage_Your_Tour_Invoices": "创建和管理您的旅游发票",
     "Create_Invoice": "创建发票",
@@ -1184,6 +1188,18 @@
   "Jan03_SignUp_b9k3": {
     "Sign_Up_Description": "创建新账户并加入我们的社区。",
     "Sign_Up_Title": "注册 | Travsus"
+  },
+  "Jan03_StaySearchForm_m8p4": {
+    "Add_Date": "添加日期",
+    "Add_Guests": "添加客人",
+    "Guest_Singular": "{count}位客人",
+    "Guests_Plural": "{count}位客人",
+    "Infant_Singular": "{count}名婴儿",
+    "Infants_Plural": "{count}名婴儿",
+    "Location": "位置",
+    "When": "何时",
+    "Where": "哪里",
+    "Who": "谁"
   },
   "Jan03_TourHeader_x9k2": {
     "Brand_Name": "TRAVSUS",

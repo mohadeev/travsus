@@ -1033,6 +1033,10 @@
   "Jan03_HeroSearchFormSmall_m9x4": {
     "Experiences": "体験"
   },
+  "Jan03_HeroSearchMobile_x7k9": {
+    "Clear_All": "すべてクリア",
+    "Experiences": "体験"
+  },
   "Jan03_Invoices_p7q3": {
     "Create_And_Manage_Your_Tour_Invoices": "ツアー請求書を作成・管理する",
     "Create_Invoice": "請求書を作成",
@@ -1205,6 +1209,18 @@
   "Jan03_SignUp_b9k3": {
     "Sign_Up_Description": "新しいアカウントを作成して、私たちのコミュニティに参加してください。",
     "Sign_Up_Title": "サインアップ | Travsus"
+  },
+  "Jan03_StaySearchForm_m8p4": {
+    "Add_Date": "日付を追加",
+    "Add_Guests": "ゲストを追加",
+    "Guest_Singular": "{count}名のゲスト",
+    "Guests_Plural": "{count}名のゲスト",
+    "Infant_Singular": "{count}名の乳児",
+    "Infants_Plural": "{count}名の乳児",
+    "Location": "場所",
+    "When": "いつ",
+    "Where": "どこで",
+    "Who": "誰が"
   },
   "Jan03_TourHeader_x9k2": {
     "Brand_Name": "TRAVSUS",

@@ -106,9 +106,6 @@ const ItemsCardList: FC<ItemsCardListProps> = ({
 					)
 				}
 
-				const data = await response.json()
-				console.log(data)
-
 				let formattedLocations: CountryDataType[] = []
 
 				if (locationType === 'country' && data.countries) {

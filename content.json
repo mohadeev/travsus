@@ -1,17 +1,142 @@
 {
+	"en-US": {
+		"Jan03_StaySearchForm_m8p4": {
+			"Where": "Where",
+			"Location": "Location",
+			"When": "When",
+			"Add_Date": "Add date",
+			"Who": "Who",
+			"Guest_Singular": "{count} guest",
+			"Guests_Plural": "{count} guests",
+			"Infant_Singular": "{count} infant",
+			"Infants_Plural": "{count} infants",
+			"Add_Guests": "Add guests"
+		}
+	},
 	"es-ES": {
-		"Jan03_LocationInput_k4m9": {
-			"Australia": "Australia",
-			"Canada": "Canadá",
-			"Destinations": "Destinos",
-			"Germany": "Alemania",
-			"Locations": "Ubicaciones",
-			"Morocco": "Marruecos",
-			"Popular_Destinations": "Destinos populares",
-			"Search_Destinations_Placeholder": "Buscar destinos",
-			"United_Arab_Emirates": "Emiratos Árabes Unidos",
-			"United_Kingdom": "Reino Unido",
-			"Where_To": "¿A dónde?"
+		"Jan03_StaySearchForm_m8p4": {
+			"Where": "Dónde",
+			"Location": "Ubicación",
+			"When": "Cuándo",
+			"Add_Date": "Agregar fecha",
+			"Who": "Quién",
+			"Guest_Singular": "{count} huésped",
+			"Guests_Plural": "{count} huéspedes",
+			"Infant_Singular": "{count} bebé",
+			"Infants_Plural": "{count} bebés",
+			"Add_Guests": "Agregar huéspedes"
+		}
+	},
+	"de-DE": {
+		"Jan03_StaySearchForm_m8p4": {
+			"Where": "Wo",
+			"Location": "Standort",
+			"When": "Wann",
+			"Add_Date": "Datum hinzufügen",
+			"Who": "Wer",
+			"Guest_Singular": "{count} Gast",
+			"Guests_Plural": "{count} Gäste",
+			"Infant_Singular": "{count} Kleinkind",
+			"Infants_Plural": "{count} Kleinkinder",
+			"Add_Guests": "Gäste hinzufügen"
+		}
+	},
+	"ja-JP": {
+		"Jan03_StaySearchForm_m8p4": {
+			"Where": "どこで",
+			"Location": "場所",
+			"When": "いつ",
+			"Add_Date": "日付を追加",
+			"Who": "誰が",
+			"Guest_Singular": "{count}名のゲスト",
+			"Guests_Plural": "{count}名のゲスト",
+			"Infant_Singular": "{count}名の乳児",
+			"Infants_Plural": "{count}名の乳児",
+			"Add_Guests": "ゲストを追加"
+		}
+	},
+	"pt-PT": {
+		"Jan03_StaySearchForm_m8p4": {
+			"Where": "Onde",
+			"Location": "Localização",
+			"When": "Quando",
+			"Add_Date": "Adicionar data",
+			"Who": "Quem",
+			"Guest_Singular": "{count} hóspede",
+			"Guests_Plural": "{count} hóspedes",
+			"Infant_Singular": "{count} bebé",
+			"Infants_Plural": "{count} bebés",
+			"Add_Guests": "Adicionar hóspedes"
+		}
+	},
+	"it-IT": {
+		"Jan03_StaySearchForm_m8p4": {
+			"Where": "Dove",
+			"Location": "Posizione",
+			"When": "Quando",
+			"Add_Date": "Aggiungi data",
+			"Who": "Chi",
+			"Guest_Singular": "{count} ospite",
+			"Guests_Plural": "{count} ospiti",
+			"Infant_Singular": "{count} neonato",
+			"Infants_Plural": "{count} neonati",
+			"Add_Guests": "Aggiungi ospiti"
+		}
+	},
+	"fr-FR": {
+		"Jan03_StaySearchForm_m8p4": {
+			"Where": "Où",
+			"Location": "Emplacement",
+			"When": "Quand",
+			"Add_Date": "Ajouter une date",
+			"Who": "Qui",
+			"Guest_Singular": "{count} invité",
+			"Guests_Plural": "{count} invités",
+			"Infant_Singular": "{count} bébé",
+			"Infants_Plural": "{count} bébés",
+			"Add_Guests": "Ajouter des invités"
+		}
+	},
+	"ru-RU": {
+		"Jan03_StaySearchForm_m8p4": {
+			"Where": "Где",
+			"Location": "Местоположение",
+			"When": "Когда",
+			"Add_Date": "Добавить дату",
+			"Who": "Кто",
+			"Guest_Singular": "{count} гость",
+			"Guests_Plural": "{count} гостей",
+			"Infant_Singular": "{count} младенец",
+			"Infants_Plural": "{count} младенцев",
+			"Add_Guests": "Добавить гостей"
+		}
+	},
+	"zh-CN": {
+		"Jan03_StaySearchForm_m8p4": {
+			"Where": "哪里",
+			"Location": "位置",
+			"When": "何时",
+			"Add_Date": "添加日期",
+			"Who": "谁",
+			"Guest_Singular": "{count}位客人",
+			"Guests_Plural": "{count}位客人",
+			"Infant_Singular": "{count}名婴儿",
+			"Infants_Plural": "{count}名婴儿",
+			"Add_Guests": "添加客人"
+		}
+	},
+	"ko-KR": {
+		"Jan03_StaySearchForm_m8p4": {
+			"Where": "어디서",
+			"Location": "위치",
+			"When": "언제",
+			"Add_Date": "날짜 추가",
+			"Who": "누구",
+			"Guest_Singular": "{count}명의 게스트",
+			"Guests_Plural": "{count}명의 게스트",
+			"Infant_Singular": "{count}명의 유아",
+			"Infants_Plural": "{count}명의 유아",
+			"Add_Guests": "게스트 추가"
 		}
 	}
 }

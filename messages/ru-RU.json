@@ -1077,6 +1077,10 @@
   "Jan03_HeroSearchFormSmall_m9x4": {
     "Experiences": "Впечатления"
   },
+  "Jan03_HeroSearchMobile_x7k9": {
+    "Clear_All": "Очистить всё",
+    "Experiences": "Впечатления"
+  },
   "Jan03_Invoices_p7q3": {
     "Create_And_Manage_Your_Tour_Invoices": "Создавайте и управляйте своими счетами за туры",
     "Create_Invoice": "Создать Счет",
@@ -1249,6 +1253,18 @@
   "Jan03_SignUp_b9k3": {
     "Sign_Up_Description": "Создайте новую учетную запись и присоединяйтесь к нашему сообществу.",
     "Sign_Up_Title": "Регистрация | Travsus"
+  },
+  "Jan03_StaySearchForm_m8p4": {
+    "Add_Date": "Добавить дату",
+    "Add_Guests": "Добавить гостей",
+    "Guest_Singular": "{count} гость",
+    "Guests_Plural": "{count} гостей",
+    "Infant_Singular": "{count} младенец",
+    "Infants_Plural": "{count} младенцев",
+    "Location": "Местоположение",
+    "When": "Когда",
+    "Where": "Где",
+    "Who": "Кто"
   },
   "Jan03_TourHeader_x9k2": {
     "Brand_Name": "TRAVSUS",

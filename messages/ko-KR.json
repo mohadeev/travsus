@@ -1024,6 +1024,10 @@
   "Jan03_HeroSearchFormSmall_m9x4": {
     "Experiences": "체험"
   },
+  "Jan03_HeroSearchMobile_x7k9": {
+    "Clear_All": "모두 지우기",
+    "Experiences": "체험"
+  },
   "Jan03_Invoices_p7q3": {
     "Create_And_Manage_Your_Tour_Invoices": "투어 송장을 생성하고 관리하세요",
     "Create_Invoice": "송장 생성",
@@ -1196,6 +1200,18 @@
   "Jan03_SignUp_b9k3": {
     "Sign_Up_Description": "새 계정을 만들고 우리 커뮤니티에 참여하세요.",
     "Sign_Up_Title": "회원가입 | Travsus"
+  },
+  "Jan03_StaySearchForm_m8p4": {
+    "Add_Date": "날짜 추가",
+    "Add_Guests": "게스트 추가",
+    "Guest_Singular": "{count}명의 게스트",
+    "Guests_Plural": "{count}명의 게스트",
+    "Infant_Singular": "{count}명의 유아",
+    "Infants_Plural": "{count}명의 유아",
+    "Location": "위치",
+    "When": "언제",
+    "Where": "어디서",
+    "Who": "누구"
   },
   "Jan03_TourHeader_x9k2": {
     "Brand_Name": "TRAVSUS",
