@@ -1,5 +1,4 @@
 'use client'
-
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { signIn, useSession } from 'next-auth/react'
@@ -8,6 +7,7 @@ import Input from '@/shared/Input'
 import ButtonPrimary from '@/shared/ButtonPrimary'
 import SocialLoginButtons from '@/components/SocialLoginButtons'
 import { Skeleton } from '@/components/ui/skeleton'
+import { useTranslations } from '@/lib/i18n'
 
 function LoginSkeleton({ isModal }: { isModal?: boolean }) {
 	return (
@@ -83,6 +83,7 @@ export default function LoginClient({
 	onSwitchToForgotPassword,
 	onSwitchToLogin,
 }: LoginClientProps) {
+	const t = useTranslations('Jan03_LoginClient_k9m2')
 	const router = useRouter()
 	const { data: session, status } = useSession()
 	const [emailSent, setEmailSent] = useState(false)
@@ -127,7 +128,7 @@ export default function LoginClient({
 				}
 			}
 		} catch (error) {
-			setError('An unexpected error occurred. Please try again.')
+			setError(t('Unexpected_Error'))
 		} finally {
 			setLoading(false)
 		}
@@ -152,10 +153,10 @@ export default function LoginClient({
 			if (response.ok) {
 				setEmailSent(true)
 			} else {
-				setError('Failed to send password reset email')
+				setError(t('Failed_Send_Reset_Email'))
 			}
 		} catch (error) {
-			setError('An unexpected error occurred. Please try again.')
+			setError(t('Unexpected_Error'))
 		} finally {
 			setLoading(false)
 		}
@@ -208,7 +209,7 @@ export default function LoginClient({
 			<div className={`${isModal ? '' : 'container mb-24 lg:mb-32'}`}>
 				{!isModal && (
 					<h1 className="my-20 flex items-center justify-center text-3xl font-semibold leading-[115%] text-neutral-900 dark:text-neutral-100 md:text-5xl md:leading-[115%]">
-						{showForgotPassword ? 'Forgot Password' : 'Login'}
+						{showForgotPassword ? t('Forgot_Password') : t('Login')}
 					</h1>
 				)}
 				<div className="mx-auto max-w-md space-y-6">
@@ -220,24 +221,25 @@ export default function LoginClient({
 							<span className="block sm:inline">{error}</span>
 						</div>
 					)}
+
 					{!showForgotPassword ? (
 						<>
 							<SocialLoginButtons />
 							<div className="relative text-center">
 								<span className="relative z-10 inline-block bg-white px-4 text-sm font-medium dark:bg-neutral-900 dark:text-neutral-400">
-									OR
+									{t('OR')}
 								</span>
 								<div className="absolute left-0 top-1/2 w-full -translate-y-1/2 transform border border-neutral-100 dark:border-neutral-800"></div>
 							</div>
 							<form className="grid grid-cols-1 gap-6" onSubmit={handleSubmit}>
 								<label className="block">
 									<span className="text-neutral-800 dark:text-neutral-200">
-										Email address
+										{t('Email_Address')}
 									</span>
 									<Input
 										type="email"
 										name="email"
-										placeholder="example@example.com"
+										placeholder={t('Email_Placeholder')}
 										className="mt-1"
 										required
 										value={email}
@@ -246,19 +248,19 @@ export default function LoginClient({
 								</label>
 								<label className="block">
 									<span className="flex items-center justify-between text-neutral-800 dark:text-neutral-200">
-										Password
+										{t('Password')}
 										<Link
 											href="/login?forgot=true"
 											className="text-sm font-medium underline"
 											onClick={handleForgotPassword}
 										>
-											Forgot password?
+											{t('Forgot_Password_Link')}
 										</Link>
 									</span>
 									<Input
 										type="password"
 										name="password"
-										placeholder="***************"
+										placeholder={t('Password_Placeholder')}
 										className="mt-1"
 										required
 										value={password}
@@ -266,54 +268,54 @@ export default function LoginClient({
 									/>
 								</label>
 								<ButtonPrimary type="submit" loading={loading}>
-									{loading ? 'Logging in...' : 'Continue'}
+									{loading ? t('Logging_In') : t('Continue')}
 								</ButtonPrimary>
 							</form>
 							<div className="text-center text-sm">
 								<p className="text-neutral-700 dark:text-neutral-300">
-									Not a member?{' '}
+									{t('Not_Member')}{' '}
 									<Link
 										href="/signup"
 										className="font-semibold underline"
 										onClick={handleJoin}
 									>
-										Join
+										{t('Join')}
 									</Link>{' '}
-									to unlock the best of TRAVSUS.
+									{t('Unlock_Best_Travsus')}
 								</p>
 							</div>
 							<div className="mt-8 text-center text-xs text-neutral-700 dark:text-neutral-300">
 								<p>
-									By proceeding, you agree to our{' '}
+									{t('By_Proceeding_Agree')}{' '}
 									<Link href="/terms" className="underline">
-										Terms of Use
+										{t('Terms_Of_Use')}
 									</Link>{' '}
-									and confirm you have read our{' '}
+									{t('And_Confirm_Read')}{' '}
 									<Link href="/privacy" className="underline">
-										Privacy and Cookie Statement
+										{t('Privacy_Cookie_Statement')}
 									</Link>
 									.
 								</p>
 								<p className="mt-2">
-									This site is protected by reCAPTCHA and the Google{' '}
+									{t('Site_Protected_ReCAPTCHA')}{' '}
 									<a
 										href="https://policies.google.com/privacy"
 										target="_blank"
 										rel="noopener noreferrer"
 										className="underline"
 									>
-										Privacy Policy
+										{t('Privacy_Policy')}
 									</a>{' '}
-									and{' '}
+									{t('And')}{' '}
 									<a
 										href="https://policies.google.com/terms"
 										target="_blank"
 										rel="noopener noreferrer"
 										className="underline"
 									>
-										Terms of Service
+										{t('Terms_Of_Service')}
 									</a>{' '}
-									apply.
+									{t('Apply')}.
 								</p>
 							</div>
 						</>
@@ -325,12 +327,12 @@ export default function LoginClient({
 							>
 								<label className="block">
 									<span className="text-neutral-800 dark:text-neutral-200">
-										Enter your email to reset password
+										{t('Enter_Email_Reset_Password')}
 									</span>
 									<Input
 										type="email"
 										name="email"
-										placeholder="example@example.com"
+										placeholder={t('Email_Placeholder')}
 										className="mt-1"
 										required
 										value={email}
@@ -338,12 +340,12 @@ export default function LoginClient({
 									/>
 								</label>
 								<ButtonPrimary type="submit" loading={loading}>
-									{loading ? 'Sending...' : 'Send Password Reset Email'}
+									{loading ? t('Sending') : t('Send_Password_Reset_Email')}
 								</ButtonPrimary>
 							</form>
 							{emailSent && (
 								<div className="text-center text-green-600">
-									Password reset email has been sent!
+									{t('Password_Reset_Email_Sent')}
 								</div>
 							)}
 							<Link
@@ -351,40 +353,40 @@ export default function LoginClient({
 								className="block cursor-pointer text-center text-neutral-700 underline dark:text-neutral-300"
 								onClick={handleBackToLogin}
 							>
-								Back to Login
+								{t('Back_To_Login')}
 							</Link>
 							<div className="mt-8 text-center text-xs text-neutral-700 dark:text-neutral-300">
 								<p>
-									By proceeding, you agree to our{' '}
+									{t('By_Proceeding_Agree')}{' '}
 									<Link href="/terms" className="underline">
-										Terms of Use
+										{t('Terms_Of_Use')}
 									</Link>{' '}
-									and confirm you have read our{' '}
+									{t('And_Confirm_Read')}{' '}
 									<Link href="/privacy" className="underline">
-										Privacy and Cookie Statement
+										{t('Privacy_Cookie_Statement')}
 									</Link>
 									.
 								</p>
 								<p className="mt-2">
-									This site is protected by reCAPTCHA and the Google{' '}
+									{t('Site_Protected_ReCAPTCHA')}{' '}
 									<a
 										href="https://policies.google.com/privacy"
 										target="_blank"
 										rel="noopener noreferrer"
 										className="underline"
 									>
-										Privacy Policy
+										{t('Privacy_Policy')}
 									</a>{' '}
-									and{' '}
+									{t('And')}{' '}
 									<a
 										href="https://policies.google.com/terms"
 										target="_blank"
 										rel="noopener noreferrer"
 										className="underline"
 									>
-										Terms of Service
+										{t('Terms_Of_Service')}
 									</a>{' '}
-									apply.
+									{t('Apply')}.
 								</p>
 							</div>
 						</>

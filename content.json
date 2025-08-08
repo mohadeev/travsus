@@ -1,212 +1,72 @@
 {
 	"en-US": {
-		"Jan03_ItemsCardList_k8m2": {
-			"No_Tours_Found": "No tours found",
-			"Failed_Load_Tours": "Failed to load tours",
-			"Unknown_City": "Unknown City",
-			"No_Locations_Found": "No {type}s found",
-			"Failed_Load_Locations": "Failed to load {type}s",
-			"Popular_Countries": "Popular Countries",
-			"Cities_In_Country": "Cities in {country}",
-			"Popular_Cities": "Popular Cities",
-			"Places_In_City": "Places in {city}",
-			"Places_To_Visit": "Places to Visit",
-			"Popular_Tours": "Popular Tours",
-			"Popular_Destinations": "Popular Destinations",
-			"Explore_Top_Countries": "Explore top countries around the world",
-			"Discover_Amazing_Cities": "Discover amazing cities to visit",
-			"Must_See_Attractions": "Must-see attractions and experiences",
-			"Scroll_Left": "Scroll left",
-			"Scroll_Right": "Scroll right"
+		"Jan03_SocialLoginButtons_m8n3": {
+			"Continue_With_Facebook": "Continue with Facebook",
+			"Continue_With_Twitter": "Continue with Twitter",
+			"Continue_With_Google": "Continue with Google"
 		}
 	},
 	"es-ES": {
-		"Jan03_ItemsCardList_k8m2": {
-			"No_Tours_Found": "No se encontraron tours",
-			"Failed_Load_Tours": "Error al cargar tours",
-			"Unknown_City": "Ciudad Desconocida",
-			"No_Locations_Found": "No se encontraron {type}",
-			"Failed_Load_Locations": "Error al cargar {type}",
-			"Popular_Countries": "Países Populares",
-			"Cities_In_Country": "Ciudades en {country}",
-			"Popular_Cities": "Ciudades Populares",
-			"Places_In_City": "Lugares en {city}",
-			"Places_To_Visit": "Lugares para Visitar",
-			"Popular_Tours": "Tours Populares",
-			"Popular_Destinations": "Destinos Populares",
-			"Explore_Top_Countries": "Explora los mejores países del mundo",
-			"Discover_Amazing_Cities": "Descubre ciudades increíbles para visitar",
-			"Must_See_Attractions": "Atracciones y experiencias imperdibles",
-			"Scroll_Left": "Desplazar a la izquierda",
-			"Scroll_Right": "Desplazar a la derecha"
+		"Jan03_SocialLoginButtons_m8n3": {
+			"Continue_With_Facebook": "Continuar con Facebook",
+			"Continue_With_Twitter": "Continuar con Twitter",
+			"Continue_With_Google": "Continuar con Google"
 		}
 	},
 	"de-DE": {
-		"Jan03_ItemsCardList_k8m2": {
-			"No_Tours_Found": "Keine Touren gefunden",
-			"Failed_Load_Tours": "Fehler beim Laden der Touren",
-			"Unknown_City": "Unbekannte Stadt",
-			"No_Locations_Found": "Keine {type} gefunden",
-			"Failed_Load_Locations": "Fehler beim Laden von {type}",
-			"Popular_Countries": "Beliebte Länder",
-			"Cities_In_Country": "Städte in {country}",
-			"Popular_Cities": "Beliebte Städte",
-			"Places_In_City": "Orte in {city}",
-			"Places_To_Visit": "Sehenswerte Orte",
-			"Popular_Tours": "Beliebte Touren",
-			"Popular_Destinations": "Beliebte Reiseziele",
-			"Explore_Top_Countries": "Entdecken Sie die besten Länder der Welt",
-			"Discover_Amazing_Cities": "Entdecken Sie erstaunliche Städte zum Besuchen",
-			"Must_See_Attractions": "Sehenswürdigkeiten und Erlebnisse, die man gesehen haben muss",
-			"Scroll_Left": "Nach links scrollen",
-			"Scroll_Right": "Nach rechts scrollen"
+		"Jan03_SocialLoginButtons_m8n3": {
+			"Continue_With_Facebook": "Mit Facebook fortfahren",
+			"Continue_With_Twitter": "Mit Twitter fortfahren",
+			"Continue_With_Google": "Mit Google fortfahren"
 		}
 	},
 	"ja-JP": {
-		"Jan03_ItemsCardList_k8m2": {
-			"No_Tours_Found": "ツアーが見つかりません",
-			"Failed_Load_Tours": "ツアーの読み込みに失敗しました",
-			"Unknown_City": "不明な都市",
-			"No_Locations_Found": "{type}が見つかりません",
-			"Failed_Load_Locations": "{type}の読み込みに失敗しました",
-			"Popular_Countries": "人気の国",
-			"Cities_In_Country": "{country}の都市",
-			"Popular_Cities": "人気の都市",
-			"Places_In_City": "{city}の場所",
-			"Places_To_Visit": "訪問すべき場所",
-			"Popular_Tours": "人気のツアー",
-			"Popular_Destinations": "人気の目的地",
-			"Explore_Top_Countries": "世界のトップ国を探索",
-			"Discover_Amazing_Cities": "訪問すべき素晴らしい都市を発見",
-			"Must_See_Attractions": "必見のアトラクションと体験",
-			"Scroll_Left": "左にスクロール",
-			"Scroll_Right": "右にスクロール"
+		"Jan03_SocialLoginButtons_m8n3": {
+			"Continue_With_Facebook": "Facebookで続行",
+			"Continue_With_Twitter": "Twitterで続行",
+			"Continue_With_Google": "Googleで続行"
 		}
 	},
 	"pt-PT": {
-		"Jan03_ItemsCardList_k8m2": {
-			"No_Tours_Found": "Nenhum tour encontrado",
-			"Failed_Load_Tours": "Falha ao carregar tours",
-			"Unknown_City": "Cidade Desconhecida",
-			"No_Locations_Found": "Nenhum {type} encontrado",
-			"Failed_Load_Locations": "Falha ao carregar {type}",
-			"Popular_Countries": "Países Populares",
-			"Cities_In_Country": "Cidades em {country}",
-			"Popular_Cities": "Cidades Populares",
-			"Places_In_City": "Locais em {city}",
-			"Places_To_Visit": "Locais a Visitar",
-			"Popular_Tours": "Tours Populares",
-			"Popular_Destinations": "Destinos Populares",
-			"Explore_Top_Countries": "Explore os melhores países do mundo",
-			"Discover_Amazing_Cities": "Descubra cidades incríveis para visitar",
-			"Must_See_Attractions": "Atrações e experiências imperdíveis",
-			"Scroll_Left": "Deslocar para a esquerda",
-			"Scroll_Right": "Deslocar para a direita"
+		"Jan03_SocialLoginButtons_m8n3": {
+			"Continue_With_Facebook": "Continuar com Facebook",
+			"Continue_With_Twitter": "Continuar com Twitter",
+			"Continue_With_Google": "Continuar com Google"
 		}
 	},
 	"it-IT": {
-		"Jan03_ItemsCardList_k8m2": {
-			"No_Tours_Found": "Nessun tour trovato",
-			"Failed_Load_Tours": "Impossibile caricare i tour",
-			"Unknown_City": "Città Sconosciuta",
-			"No_Locations_Found": "Nessun {type} trovato",
-			"Failed_Load_Locations": "Impossibile caricare {type}",
-			"Popular_Countries": "Paesi Popolari",
-			"Cities_In_Country": "Città in {country}",
-			"Popular_Cities": "Città Popolari",
-			"Places_In_City": "Luoghi in {city}",
-			"Places_To_Visit": "Luoghi da Visitare",
-			"Popular_Tours": "Tour Popolari",
-			"Popular_Destinations": "Destinazioni Popolari",
-			"Explore_Top_Countries": "Esplora i migliori paesi del mondo",
-			"Discover_Amazing_Cities": "Scopri città incredibili da visitare",
-			"Must_See_Attractions": "Attrazioni ed esperienze da non perdere",
-			"Scroll_Left": "Scorri a sinistra",
-			"Scroll_Right": "Scorri a destra"
+		"Jan03_SocialLoginButtons_m8n3": {
+			"Continue_With_Facebook": "Continua con Facebook",
+			"Continue_With_Twitter": "Continua con Twitter",
+			"Continue_With_Google": "Continua con Google"
 		}
 	},
 	"fr-FR": {
-		"Jan03_ItemsCardList_k8m2": {
-			"No_Tours_Found": "Aucun tour trouvé",
-			"Failed_Load_Tours": "Échec du chargement des tours",
-			"Unknown_City": "Ville Inconnue",
-			"No_Locations_Found": "Aucun {type} trouvé",
-			"Failed_Load_Locations": "Échec du chargement des {type}",
-			"Popular_Countries": "Pays Populaires",
-			"Cities_In_Country": "Villes en {country}",
-			"Popular_Cities": "Villes Populaires",
-			"Places_In_City": "Lieux à {city}",
-			"Places_To_Visit": "Lieux à Visiter",
-			"Popular_Tours": "Tours Populaires",
-			"Popular_Destinations": "Destinations Populaires",
-			"Explore_Top_Countries": "Explorez les meilleurs pays du monde",
-			"Discover_Amazing_Cities": "Découvrez des villes incroyables à visiter",
-			"Must_See_Attractions": "Attractions et expériences incontournables",
-			"Scroll_Left": "Faire défiler vers la gauche",
-			"Scroll_Right": "Faire défiler vers la droite"
+		"Jan03_SocialLoginButtons_m8n3": {
+			"Continue_With_Facebook": "Continuer avec Facebook",
+			"Continue_With_Twitter": "Continuer avec Twitter",
+			"Continue_With_Google": "Continuer avec Google"
 		}
 	},
 	"ru-RU": {
-		"Jan03_ItemsCardList_k8m2": {
-			"No_Tours_Found": "Туры не найдены",
-			"Failed_Load_Tours": "Не удалось загрузить туры",
-			"Unknown_City": "Неизвестный Город",
-			"No_Locations_Found": "{type} не найдены",
-			"Failed_Load_Locations": "Не удалось загрузить {type}",
-			"Popular_Countries": "Популярные Страны",
-			"Cities_In_Country": "Города в {country}",
-			"Popular_Cities": "Популярные Города",
-			"Places_In_City": "Места в {city}",
-			"Places_To_Visit": "Места для Посещения",
-			"Popular_Tours": "Популярные Туры",
-			"Popular_Destinations": "Популярные Направления",
-			"Explore_Top_Countries": "Исследуйте лучшие страны мира",
-			"Discover_Amazing_Cities": "Откройте для себя удивительные города для посещения",
-			"Must_See_Attractions": "Обязательные к посещению достопримечательности и впечатления",
-			"Scroll_Left": "Прокрутить влево",
-			"Scroll_Right": "Прокрутить вправо"
+		"Jan03_SocialLoginButtons_m8n3": {
+			"Continue_With_Facebook": "Продолжить с Facebook",
+			"Continue_With_Twitter": "Продолжить с Twitter",
+			"Continue_With_Google": "Продолжить с Google"
 		}
 	},
 	"zh-CN": {
-		"Jan03_ItemsCardList_k8m2": {
-			"No_Tours_Found": "未找到旅游",
-			"Failed_Load_Tours": "加载旅游失败",
-			"Unknown_City": "未知城市",
-			"No_Locations_Found": "未找到{type}",
-			"Failed_Load_Locations": "加载{type}失败",
-			"Popular_Countries": "热门国家",
-			"Cities_In_Country": "{country}的城市",
-			"Popular_Cities": "热门城市",
-			"Places_In_City": "{city}的地点",
-			"Places_To_Visit": "值得游览的地方",
-			"Popular_Tours": "热门旅游",
-			"Popular_Destinations": "热门目的地",
-			"Explore_Top_Countries": "探索世界顶级国家",
-			"Discover_Amazing_Cities": "发现值得游览的精彩城市",
-			"Must_See_Attractions": "必看景点和体验",
-			"Scroll_Left": "向左滚动",
-			"Scroll_Right": "向右滚动"
+		"Jan03_SocialLoginButtons_m8n3": {
+			"Continue_With_Facebook": "使用Facebook继续",
+			"Continue_With_Twitter": "使用Twitter继续",
+			"Continue_With_Google": "使用Google继续"
 		}
 	},
 	"ko-KR": {
-		"Jan03_ItemsCardList_k8m2": {
-			"No_Tours_Found": "투어를 찾을 수 없습니다",
-			"Failed_Load_Tours": "투어 로드 실패",
-			"Unknown_City": "알 수 없는 도시",
-			"No_Locations_Found": "{type}을(를) 찾을 수 없습니다",
-			"Failed_Load_Locations": "{type} 로드 실패",
-			"Popular_Countries": "인기 국가",
-			"Cities_In_Country": "{country}의 도시",
-			"Popular_Cities": "인기 도시",
-			"Places_In_City": "{city}의 장소",
-			"Places_To_Visit": "방문할 장소",
-			"Popular_Tours": "인기 투어",
-			"Popular_Destinations": "인기 목적지",
-			"Explore_Top_Countries": "세계 최고의 국가들을 탐험하세요",
-			"Discover_Amazing_Cities": "방문할 놀라운 도시들을 발견하세요",
-			"Must_See_Attractions": "꼭 봐야 할 명소와 경험",
-			"Scroll_Left": "왼쪽으로 스크롤",
-			"Scroll_Right": "오른쪽으로 스크롤"
+		"Jan03_SocialLoginButtons_m8n3": {
+			"Continue_With_Facebook": "Facebook으로 계속하기",
+			"Continue_With_Twitter": "Twitter로 계속하기",
+			"Continue_With_Google": "Google로 계속하기"
 		}
 	}
 }
