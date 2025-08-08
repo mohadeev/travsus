@@ -1092,6 +1092,25 @@
     "Pending": "Ожидающие",
     "Total_Invoiced": "Общая Сумма Счетов"
   },
+  "Jan03_ItemsCardList_k8m2": {
+    "Cities_In_Country": "Города в {country}",
+    "Discover_Amazing_Cities": "Откройте для себя удивительные города для посещения",
+    "Explore_Top_Countries": "Исследуйте лучшие страны мира",
+    "Failed_Load_Locations": "Не удалось загрузить {type}",
+    "Failed_Load_Tours": "Не удалось загрузить туры",
+    "Must_See_Attractions": "Обязательные к посещению достопримечательности и впечатления",
+    "No_Locations_Found": "{type} не найдены",
+    "No_Tours_Found": "Туры не найдены",
+    "Places_In_City": "Места в {city}",
+    "Places_To_Visit": "Места для Посещения",
+    "Popular_Cities": "Популярные Города",
+    "Popular_Countries": "Популярные Страны",
+    "Popular_Destinations": "Популярные Направления",
+    "Popular_Tours": "Популярные Туры",
+    "Scroll_Left": "Прокрутить влево",
+    "Scroll_Right": "Прокрутить вправо",
+    "Unknown_City": "Неизвестный Город"
+  },
   "Jan03_LanguagePreferences_m7x4": {
     "Argentina": "Аргентина",
     "Australia": "Австралия",

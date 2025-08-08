@@ -9,7 +9,6 @@ export async function POST(request: NextRequest) {
 	try {
 		const userData: any = await getUserData()
 
-		console.log('currentUser', userData)
 
 		// Parse the request body to JSON
 		const body = await request.json()

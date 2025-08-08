@@ -1048,6 +1048,25 @@
     "Pending": "保留中",
     "Total_Invoiced": "請求総額"
   },
+  "Jan03_ItemsCardList_k8m2": {
+    "Cities_In_Country": "{country}の都市",
+    "Discover_Amazing_Cities": "訪問すべき素晴らしい都市を発見",
+    "Explore_Top_Countries": "世界のトップ国を探索",
+    "Failed_Load_Locations": "{type}の読み込みに失敗しました",
+    "Failed_Load_Tours": "ツアーの読み込みに失敗しました",
+    "Must_See_Attractions": "必見のアトラクションと体験",
+    "No_Locations_Found": "{type}が見つかりません",
+    "No_Tours_Found": "ツアーが見つかりません",
+    "Places_In_City": "{city}の場所",
+    "Places_To_Visit": "訪問すべき場所",
+    "Popular_Cities": "人気の都市",
+    "Popular_Countries": "人気の国",
+    "Popular_Destinations": "人気の目的地",
+    "Popular_Tours": "人気のツアー",
+    "Scroll_Left": "左にスクロール",
+    "Scroll_Right": "右にスクロール",
+    "Unknown_City": "不明な都市"
+  },
   "Jan03_LanguagePreferences_m7x4": {
     "Argentina": "アルゼンチン",
     "Australia": "オーストラリア",

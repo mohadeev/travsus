@@ -1027,6 +1027,25 @@
     "Pending": "待处理",
     "Total_Invoiced": "总开票金额"
   },
+  "Jan03_ItemsCardList_k8m2": {
+    "Cities_In_Country": "{country}的城市",
+    "Discover_Amazing_Cities": "发现值得游览的精彩城市",
+    "Explore_Top_Countries": "探索世界顶级国家",
+    "Failed_Load_Locations": "加载{type}失败",
+    "Failed_Load_Tours": "加载旅游失败",
+    "Must_See_Attractions": "必看景点和体验",
+    "No_Locations_Found": "未找到{type}",
+    "No_Tours_Found": "未找到旅游",
+    "Places_In_City": "{city}的地点",
+    "Places_To_Visit": "值得游览的地方",
+    "Popular_Cities": "热门城市",
+    "Popular_Countries": "热门国家",
+    "Popular_Destinations": "热门目的地",
+    "Popular_Tours": "热门旅游",
+    "Scroll_Left": "向左滚动",
+    "Scroll_Right": "向右滚动",
+    "Unknown_City": "未知城市"
+  },
   "Jan03_LanguagePreferences_m7x4": {
     "Argentina": "阿根廷",
     "Australia": "澳大利亚",

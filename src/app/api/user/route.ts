@@ -10,7 +10,6 @@ const prisma = new PrismaClient()
 export async function POST(req: Request) {
 	try {
 		const session: any = await getServerSession(authOptions)
-		console.log('session', session)
 		const emailSession = session?.user?.email
 		if (!session || !session?.user?.email) {
 			return NextResponse.json(

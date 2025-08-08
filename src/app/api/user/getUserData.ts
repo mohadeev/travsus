@@ -14,7 +14,6 @@ const getUserData = async (data?: any) => {
 	const session: any = await getServerSession(authOptions)
 
 	const currentUser: any = await getServerSession(authOptions)
-	console.log('currentUser', currentUser)
 	if (currentUser) {
 		const user = await prisma.user.findUnique({
 			where: {
@@ -22,7 +21,6 @@ const getUserData = async (data?: any) => {
 			},
 			include,
 		})
-		// console.log('user', user)
 		return user
 	} else {
 		return null

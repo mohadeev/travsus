@@ -1039,6 +1039,25 @@
     "Pending": "대기 중",
     "Total_Invoiced": "총 송장 금액"
   },
+  "Jan03_ItemsCardList_k8m2": {
+    "Cities_In_Country": "{country}의 도시",
+    "Discover_Amazing_Cities": "방문할 놀라운 도시들을 발견하세요",
+    "Explore_Top_Countries": "세계 최고의 국가들을 탐험하세요",
+    "Failed_Load_Locations": "{type} 로드 실패",
+    "Failed_Load_Tours": "투어 로드 실패",
+    "Must_See_Attractions": "꼭 봐야 할 명소와 경험",
+    "No_Locations_Found": "{type}을(를) 찾을 수 없습니다",
+    "No_Tours_Found": "투어를 찾을 수 없습니다",
+    "Places_In_City": "{city}의 장소",
+    "Places_To_Visit": "방문할 장소",
+    "Popular_Cities": "인기 도시",
+    "Popular_Countries": "인기 국가",
+    "Popular_Destinations": "인기 목적지",
+    "Popular_Tours": "인기 투어",
+    "Scroll_Left": "왼쪽으로 스크롤",
+    "Scroll_Right": "오른쪽으로 스크롤",
+    "Unknown_City": "알 수 없는 도시"
+  },
   "Jan03_LanguagePreferences_m7x4": {
     "Argentina": "아르헨티나",
     "Australia": "호주",

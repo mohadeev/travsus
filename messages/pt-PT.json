@@ -981,6 +981,25 @@
     "Pending": "Pendente",
     "Total_Invoiced": "Total Faturado"
   },
+  "Jan03_ItemsCardList_k8m2": {
+    "Cities_In_Country": "Cidades em {country}",
+    "Discover_Amazing_Cities": "Descubra cidades incríveis para visitar",
+    "Explore_Top_Countries": "Explore os melhores países do mundo",
+    "Failed_Load_Locations": "Falha ao carregar {type}",
+    "Failed_Load_Tours": "Falha ao carregar tours",
+    "Must_See_Attractions": "Atrações e experiências imperdíveis",
+    "No_Locations_Found": "Nenhum {type} encontrado",
+    "No_Tours_Found": "Nenhum tour encontrado",
+    "Places_In_City": "Locais em {city}",
+    "Places_To_Visit": "Locais a Visitar",
+    "Popular_Cities": "Cidades Populares",
+    "Popular_Countries": "Países Populares",
+    "Popular_Destinations": "Destinos Populares",
+    "Popular_Tours": "Tours Populares",
+    "Scroll_Left": "Deslocar para a esquerda",
+    "Scroll_Right": "Deslocar para a direita",
+    "Unknown_City": "Cidade Desconhecida"
+  },
   "Jan03_LanguagePreferences_m7x4": {
     "Argentina": "Argentina",
     "Australia": "Austrália",

@@ -1,92 +1,212 @@
 {
 	"en-US": {
-		"Jan03_TravelBanner_q5w7": {
-			"Travel_Services_Alt": "Travel and transportation services",
-			"Ready_To_Go": "Ready to Travel?",
-			"Banner_Description": "We design and deliver meaningful tour experiences with quality, care, and professionalism. Travsus — where every journey is expertly guided.",
-			"Plan_Trip": "Plan Trip",
-			"View_Destinations": "View Destinations"
+		"Jan03_ItemsCardList_k8m2": {
+			"No_Tours_Found": "No tours found",
+			"Failed_Load_Tours": "Failed to load tours",
+			"Unknown_City": "Unknown City",
+			"No_Locations_Found": "No {type}s found",
+			"Failed_Load_Locations": "Failed to load {type}s",
+			"Popular_Countries": "Popular Countries",
+			"Cities_In_Country": "Cities in {country}",
+			"Popular_Cities": "Popular Cities",
+			"Places_In_City": "Places in {city}",
+			"Places_To_Visit": "Places to Visit",
+			"Popular_Tours": "Popular Tours",
+			"Popular_Destinations": "Popular Destinations",
+			"Explore_Top_Countries": "Explore top countries around the world",
+			"Discover_Amazing_Cities": "Discover amazing cities to visit",
+			"Must_See_Attractions": "Must-see attractions and experiences",
+			"Scroll_Left": "Scroll left",
+			"Scroll_Right": "Scroll right"
 		}
 	},
 	"es-ES": {
-		"Jan03_TravelBanner_q5w7": {
-			"Travel_Services_Alt": "Servicios de viaje y transporte",
-			"Ready_To_Go": "¿Listo para Viajar?",
-			"Banner_Description": "Diseñamos y ofrecemos experiencias turísticas significativas con calidad, cuidado y profesionalismo. Travsus — donde cada viaje es guiado por expertos.",
-			"Plan_Trip": "Planificar Viaje",
-			"View_Destinations": "Ver Destinos"
+		"Jan03_ItemsCardList_k8m2": {
+			"No_Tours_Found": "No se encontraron tours",
+			"Failed_Load_Tours": "Error al cargar tours",
+			"Unknown_City": "Ciudad Desconocida",
+			"No_Locations_Found": "No se encontraron {type}",
+			"Failed_Load_Locations": "Error al cargar {type}",
+			"Popular_Countries": "Países Populares",
+			"Cities_In_Country": "Ciudades en {country}",
+			"Popular_Cities": "Ciudades Populares",
+			"Places_In_City": "Lugares en {city}",
+			"Places_To_Visit": "Lugares para Visitar",
+			"Popular_Tours": "Tours Populares",
+			"Popular_Destinations": "Destinos Populares",
+			"Explore_Top_Countries": "Explora los mejores países del mundo",
+			"Discover_Amazing_Cities": "Descubre ciudades increíbles para visitar",
+			"Must_See_Attractions": "Atracciones y experiencias imperdibles",
+			"Scroll_Left": "Desplazar a la izquierda",
+			"Scroll_Right": "Desplazar a la derecha"
 		}
 	},
 	"de-DE": {
-		"Jan03_TravelBanner_q5w7": {
-			"Travel_Services_Alt": "Reise- und Transportdienstleistungen",
-			"Ready_To_Go": "Bereit zu Reisen?",
-			"Banner_Description": "Wir entwerfen und liefern bedeutungsvolle Tourerlebnisse mit Qualität, Sorgfalt und Professionalität. Travsus — wo jede Reise fachkundig geführt wird.",
-			"Plan_Trip": "Reise Planen",
-			"View_Destinations": "Ziele Ansehen"
+		"Jan03_ItemsCardList_k8m2": {
+			"No_Tours_Found": "Keine Touren gefunden",
+			"Failed_Load_Tours": "Fehler beim Laden der Touren",
+			"Unknown_City": "Unbekannte Stadt",
+			"No_Locations_Found": "Keine {type} gefunden",
+			"Failed_Load_Locations": "Fehler beim Laden von {type}",
+			"Popular_Countries": "Beliebte Länder",
+			"Cities_In_Country": "Städte in {country}",
+			"Popular_Cities": "Beliebte Städte",
+			"Places_In_City": "Orte in {city}",
+			"Places_To_Visit": "Sehenswerte Orte",
+			"Popular_Tours": "Beliebte Touren",
+			"Popular_Destinations": "Beliebte Reiseziele",
+			"Explore_Top_Countries": "Entdecken Sie die besten Länder der Welt",
+			"Discover_Amazing_Cities": "Entdecken Sie erstaunliche Städte zum Besuchen",
+			"Must_See_Attractions": "Sehenswürdigkeiten und Erlebnisse, die man gesehen haben muss",
+			"Scroll_Left": "Nach links scrollen",
+			"Scroll_Right": "Nach rechts scrollen"
 		}
 	},
 	"ja-JP": {
-		"Jan03_TravelBanner_q5w7": {
-			"Travel_Services_Alt": "旅行・交通サービス",
-			"Ready_To_Go": "旅行の準備はOK？",
-			"Banner_Description": "私たちは品質、配慮、プロフェッショナリズムで意味のあるツアー体験をデザインし、提供します。Travsus — すべての旅が専門的にガイドされる場所。",
-			"Plan_Trip": "旅行を計画",
-			"View_Destinations": "目的地を見る"
+		"Jan03_ItemsCardList_k8m2": {
+			"No_Tours_Found": "ツアーが見つかりません",
+			"Failed_Load_Tours": "ツアーの読み込みに失敗しました",
+			"Unknown_City": "不明な都市",
+			"No_Locations_Found": "{type}が見つかりません",
+			"Failed_Load_Locations": "{type}の読み込みに失敗しました",
+			"Popular_Countries": "人気の国",
+			"Cities_In_Country": "{country}の都市",
+			"Popular_Cities": "人気の都市",
+			"Places_In_City": "{city}の場所",
+			"Places_To_Visit": "訪問すべき場所",
+			"Popular_Tours": "人気のツアー",
+			"Popular_Destinations": "人気の目的地",
+			"Explore_Top_Countries": "世界のトップ国を探索",
+			"Discover_Amazing_Cities": "訪問すべき素晴らしい都市を発見",
+			"Must_See_Attractions": "必見のアトラクションと体験",
+			"Scroll_Left": "左にスクロール",
+			"Scroll_Right": "右にスクロール"
 		}
 	},
 	"pt-PT": {
-		"Jan03_TravelBanner_q5w7": {
-			"Travel_Services_Alt": "Serviços de viagem e transporte",
-			"Ready_To_Go": "Pronto para Viajar?",
-			"Banner_Description": "Concebemos e oferecemos experiências turísticas significativas com qualidade, cuidado e profissionalismo. Travsus — onde cada viagem é guiada por especialistas.",
-			"Plan_Trip": "Planear Viagem",
-			"View_Destinations": "Ver Destinos"
+		"Jan03_ItemsCardList_k8m2": {
+			"No_Tours_Found": "Nenhum tour encontrado",
+			"Failed_Load_Tours": "Falha ao carregar tours",
+			"Unknown_City": "Cidade Desconhecida",
+			"No_Locations_Found": "Nenhum {type} encontrado",
+			"Failed_Load_Locations": "Falha ao carregar {type}",
+			"Popular_Countries": "Países Populares",
+			"Cities_In_Country": "Cidades em {country}",
+			"Popular_Cities": "Cidades Populares",
+			"Places_In_City": "Locais em {city}",
+			"Places_To_Visit": "Locais a Visitar",
+			"Popular_Tours": "Tours Populares",
+			"Popular_Destinations": "Destinos Populares",
+			"Explore_Top_Countries": "Explore os melhores países do mundo",
+			"Discover_Amazing_Cities": "Descubra cidades incríveis para visitar",
+			"Must_See_Attractions": "Atrações e experiências imperdíveis",
+			"Scroll_Left": "Deslocar para a esquerda",
+			"Scroll_Right": "Deslocar para a direita"
 		}
 	},
 	"it-IT": {
-		"Jan03_TravelBanner_q5w7": {
-			"Travel_Services_Alt": "Servizi di viaggio e trasporto",
-			"Ready_To_Go": "Pronto a Viaggiare?",
-			"Banner_Description": "Progettiamo e offriamo esperienze turistiche significative con qualità, cura e professionalità. Travsus — dove ogni viaggio è guidato da esperti.",
-			"Plan_Trip": "Pianifica Viaggio",
-			"View_Destinations": "Vedi Destinazioni"
+		"Jan03_ItemsCardList_k8m2": {
+			"No_Tours_Found": "Nessun tour trovato",
+			"Failed_Load_Tours": "Impossibile caricare i tour",
+			"Unknown_City": "Città Sconosciuta",
+			"No_Locations_Found": "Nessun {type} trovato",
+			"Failed_Load_Locations": "Impossibile caricare {type}",
+			"Popular_Countries": "Paesi Popolari",
+			"Cities_In_Country": "Città in {country}",
+			"Popular_Cities": "Città Popolari",
+			"Places_In_City": "Luoghi in {city}",
+			"Places_To_Visit": "Luoghi da Visitare",
+			"Popular_Tours": "Tour Popolari",
+			"Popular_Destinations": "Destinazioni Popolari",
+			"Explore_Top_Countries": "Esplora i migliori paesi del mondo",
+			"Discover_Amazing_Cities": "Scopri città incredibili da visitare",
+			"Must_See_Attractions": "Attrazioni ed esperienze da non perdere",
+			"Scroll_Left": "Scorri a sinistra",
+			"Scroll_Right": "Scorri a destra"
 		}
 	},
 	"fr-FR": {
-		"Jan03_TravelBanner_q5w7": {
-			"Travel_Services_Alt": "Services de voyage et de transport",
-			"Ready_To_Go": "Prêt à Voyager ?",
-			"Banner_Description": "Nous concevons et offrons des expériences touristiques significatives avec qualité, soin et professionnalisme. Travsus — où chaque voyage est guidé par des experts.",
-			"Plan_Trip": "Planifier le Voyage",
-			"View_Destinations": "Voir les Destinations"
+		"Jan03_ItemsCardList_k8m2": {
+			"No_Tours_Found": "Aucun tour trouvé",
+			"Failed_Load_Tours": "Échec du chargement des tours",
+			"Unknown_City": "Ville Inconnue",
+			"No_Locations_Found": "Aucun {type} trouvé",
+			"Failed_Load_Locations": "Échec du chargement des {type}",
+			"Popular_Countries": "Pays Populaires",
+			"Cities_In_Country": "Villes en {country}",
+			"Popular_Cities": "Villes Populaires",
+			"Places_In_City": "Lieux à {city}",
+			"Places_To_Visit": "Lieux à Visiter",
+			"Popular_Tours": "Tours Populaires",
+			"Popular_Destinations": "Destinations Populaires",
+			"Explore_Top_Countries": "Explorez les meilleurs pays du monde",
+			"Discover_Amazing_Cities": "Découvrez des villes incroyables à visiter",
+			"Must_See_Attractions": "Attractions et expériences incontournables",
+			"Scroll_Left": "Faire défiler vers la gauche",
+			"Scroll_Right": "Faire défiler vers la droite"
 		}
 	},
 	"ru-RU": {
-		"Jan03_TravelBanner_q5w7": {
-			"Travel_Services_Alt": "Услуги путешествий и транспорта",
-			"Ready_To_Go": "Готовы к Путешествию?",
-			"Banner_Description": "Мы разрабатываем и предоставляем значимые туристические впечатления с качеством, заботой и профессионализмом. Travsus — где каждое путешествие профессионально сопровождается.",
-			"Plan_Trip": "Планировать Поездку",
-			"View_Destinations": "Посмотреть Направления"
+		"Jan03_ItemsCardList_k8m2": {
+			"No_Tours_Found": "Туры не найдены",
+			"Failed_Load_Tours": "Не удалось загрузить туры",
+			"Unknown_City": "Неизвестный Город",
+			"No_Locations_Found": "{type} не найдены",
+			"Failed_Load_Locations": "Не удалось загрузить {type}",
+			"Popular_Countries": "Популярные Страны",
+			"Cities_In_Country": "Города в {country}",
+			"Popular_Cities": "Популярные Города",
+			"Places_In_City": "Места в {city}",
+			"Places_To_Visit": "Места для Посещения",
+			"Popular_Tours": "Популярные Туры",
+			"Popular_Destinations": "Популярные Направления",
+			"Explore_Top_Countries": "Исследуйте лучшие страны мира",
+			"Discover_Amazing_Cities": "Откройте для себя удивительные города для посещения",
+			"Must_See_Attractions": "Обязательные к посещению достопримечательности и впечатления",
+			"Scroll_Left": "Прокрутить влево",
+			"Scroll_Right": "Прокрутить вправо"
 		}
 	},
 	"zh-CN": {
-		"Jan03_TravelBanner_q5w7": {
-			"Travel_Services_Alt": "旅行和交通服务",
-			"Ready_To_Go": "准备好旅行了吗？",
-			"Banner_Description": "我们以质量、关怀和专业精神设计并提供有意义的旅游体验。Travsus — 每一次旅程都有专业指导的地方。",
-			"Plan_Trip": "规划旅行",
-			"View_Destinations": "查看目的地"
+		"Jan03_ItemsCardList_k8m2": {
+			"No_Tours_Found": "未找到旅游",
+			"Failed_Load_Tours": "加载旅游失败",
+			"Unknown_City": "未知城市",
+			"No_Locations_Found": "未找到{type}",
+			"Failed_Load_Locations": "加载{type}失败",
+			"Popular_Countries": "热门国家",
+			"Cities_In_Country": "{country}的城市",
+			"Popular_Cities": "热门城市",
+			"Places_In_City": "{city}的地点",
+			"Places_To_Visit": "值得游览的地方",
+			"Popular_Tours": "热门旅游",
+			"Popular_Destinations": "热门目的地",
+			"Explore_Top_Countries": "探索世界顶级国家",
+			"Discover_Amazing_Cities": "发现值得游览的精彩城市",
+			"Must_See_Attractions": "必看景点和体验",
+			"Scroll_Left": "向左滚动",
+			"Scroll_Right": "向右滚动"
 		}
 	},
 	"ko-KR": {
-		"Jan03_TravelBanner_q5w7": {
-			"Travel_Services_Alt": "여행 및 교통 서비스",
-			"Ready_To_Go": "여행 준비 되셨나요?",
-			"Banner_Description": "우리는 품질, 배려, 전문성으로 의미 있는 투어 경험을 설계하고 제공합니다. Travsus — 모든 여행이 전문적으로 안내되는 곳.",
-			"Plan_Trip": "여행 계획하기",
-			"View_Destinations": "목적지 보기"
+		"Jan03_ItemsCardList_k8m2": {
+			"No_Tours_Found": "투어를 찾을 수 없습니다",
+			"Failed_Load_Tours": "투어 로드 실패",
+			"Unknown_City": "알 수 없는 도시",
+			"No_Locations_Found": "{type}을(를) 찾을 수 없습니다",
+			"Failed_Load_Locations": "{type} 로드 실패",
+			"Popular_Countries": "인기 국가",
+			"Cities_In_Country": "{country}의 도시",
+			"Popular_Cities": "인기 도시",
+			"Places_In_City": "{city}의 장소",
+			"Places_To_Visit": "방문할 장소",
+			"Popular_Tours": "인기 투어",
+			"Popular_Destinations": "인기 목적지",
+			"Explore_Top_Countries": "세계 최고의 국가들을 탐험하세요",
+			"Discover_Amazing_Cities": "방문할 놀라운 도시들을 발견하세요",
+			"Must_See_Attractions": "꼭 봐야 할 명소와 경험",
+			"Scroll_Left": "왼쪽으로 스크롤",
+			"Scroll_Right": "오른쪽으로 스크롤"
 		}
 	}
 }
