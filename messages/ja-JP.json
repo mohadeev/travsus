@@ -1208,8 +1208,19 @@
     "Unexpected_Error": "予期しないエラーが発生しました。もう一度お試しください。",
     "Unlock_Best_Travsus": "してTRAVSUSの最高の機能をアンロックしましょう。"
   },
+  "Jan03_NavMobile_x5y7": {
+    "Sign_Up": "サインアップ"
+  },
   "Jan03_NotifyDropdown_q8w5": {
     "Notifications_Title": "通知"
+  },
+  "Jan03_PayPage_m5k8": {
+    "congratulations": "おめでとうございます！🎉",
+    "date": "日付",
+    "guests": "ゲスト",
+    "guests_count": "大人{adults}名、子供{children}名",
+    "manage_booking": "予約を管理",
+    "your_booking": "あなたの予約"
   },
   "Jan03_PendingBookings_k5m2": {
     "Manage_Your_Pending_Tour_Bookings": "保留中のツアー予約を管理する",
@@ -1255,6 +1266,21 @@
     "Please_Enter_Promo_Code": "プロモコードを入力してください。",
     "Promo_Code": "プロモコード",
     "Promo_Code_Applied_Successfully": "プロモコードが正常に適用されました！"
+  },
+  "Jan03_ResetPassword_r8k5": {
+    "back_to_login": "ログインに戻る",
+    "confirm_password_label": "新しいパスワードの確認",
+    "confirm_password_placeholder": "新しいパスワードを確認",
+    "failed_reset_password": "パスワードのリセットに失敗しました。もう一度お試しください。",
+    "new_password_label": "新しいパスワード",
+    "new_password_placeholder": "新しいパスワードを入力",
+    "password_reset_success": "パスワードが正常にリセットされました！ログインページにリダイレクトしています...",
+    "passwords_not_match": "パスワードが一致しません！",
+    "remember_password": "パスワードを思い出しましたか？",
+    "reset_password_button": "パスワードをリセット",
+    "reset_password_title": "パスワードリセット",
+    "resetting_button": "リセット中...",
+    "something_went_wrong": "何かが間違っています！"
   },
   "Jan03_SignUp_b9k3": {
     "Sign_Up_Description": "新しいアカウントを作成して、私たちのコミュニティに参加してください。",

@@ -3,28 +3,27 @@ import StartRating from '@/components/StartRating'
 import React, { FC, useEffect, useState } from 'react'
 import ButtonPrimary from '@/shared/ButtonPrimary'
 import Image from 'next/image'
-// import LineItemsBreakdown from '../../(service-detail)/[listing-experiences-detail]/LineItemsBreakdown'
+import LineItemsBreakdown from '../../(service-detail)/[listing-experiences-detail]/LineItemsBreakdown'
 import { useDispatch, useSelector } from 'react-redux'
 import getFetchDataFromApi from '@/utils/getFetchDataFromApi'
 import { updateBookingState } from '@/app/GlobalRedux/Features/bookingSlice/bookingSlice'
 import { useSearchParams } from 'next/navigation'
-// import { BookingCard } from '@/app/checkout/checkout/BookingBreakDownCard'
+import { BookingCard } from '@/app/checkout/checkout/BookingBreakDownCard'
 import { Button } from '@/components/ui'
 import converSelectedDateToString from '@/utils/converSelectedDateToString'
-import { useTranslations } from '@/lib/i18n'
-import LineItemsBreakdown from '../../[continent]/[country]/[region]/[city]/[category]/[name]/(service-detail)/[listing-experiences-detail]/LineItemsBreakdown'
-import { BookingCard } from '../../checkout/checkout/BookingBreakDownCard'
+import { useTranslations } from 'next-intl'
 
 export interface PayPageProps {}
 
 const PayPage: FC<PayPageProps> = () => {
-	const t = useTranslations('paydone_payment_page')
+	const t = useTranslations('Jan03_PayPage_m5k8')
 	const { booking, status } = useSelector((state: any) => state.bookingSlice)
 	const { guests, lineItems, accommodation, transport, bookOwnHotels } = booking
 	const searchParams = useSearchParams()
 	const dispatch = useDispatch()
 	const step = searchParams.get('step')
 	const bookingId = searchParams.get('bookingId')
+
 	useEffect(() => {
 		;(async () => {
 			try {
@@ -42,20 +41,17 @@ const PayPage: FC<PayPageProps> = () => {
 			}
 		})()
 	}, [bookingId, dispatch])
+
 	const renderContent = () => {
 		return (
 			<div className="flex w-full flex-col space-y-10 px-0 sm:rounded-2xl sm:p-6 xl:p-8">
 				<h2 className="text-3xl font-semibold lg:text-4xl">
-					{t('paydone_payment_page_Congratulation')}
+					{t('congratulations')}
 				</h2>
-
 				<div className="border-b border-neutral-200 dark:border-neutral-700"></div>
-
 				{/* ------------------------ */}
 				<div className="space-y-6">
-					<h3 className="text-2xl font-semibold">
-						{t('paydone_payment_page_Your_Booking')}
-					</h3>
+					<h3 className="text-2xl font-semibold">{t('your_booking')}</h3>
 					<div className="flex flex-col sm:flex-row sm:items-center">
 						<BookingCard booking={booking} />
 					</div>
@@ -75,11 +71,8 @@ const PayPage: FC<PayPageProps> = () => {
 									strokeLinejoin="round"
 								/>
 							</svg>
-
 							<div className="flex flex-col">
-								<span className="text-sm text-neutral-400">
-									{t('paydone_payment_page_Date')}
-								</span>
+								<span className="text-sm text-neutral-400">{t('date')}</span>
 								<span className="mt-1.5 text-lg font-semibold">
 									{converSelectedDateToString([
 										new Date(booking?.selectedDate?.startDate),
@@ -103,19 +96,18 @@ const PayPage: FC<PayPageProps> = () => {
 									strokeLinejoin="round"
 								/>
 							</svg>
-
 							<div className="flex flex-col">
-								<span className="text-sm text-neutral-400">
-									{t('paydone_payment_page_Guests')}
-								</span>
+								<span className="text-sm text-neutral-400">{t('guests')}</span>
 								<span className="mt-1.5 text-lg font-semibold">
-									{t('paydone_payment_page_Adults_Children')}
+									{t('guests_count', {
+										adults: guests?.guestAdults || 0,
+										children: guests?.guestChildren || 0,
+									})}
 								</span>
 							</div>
 						</div>
 					</div>
 				</div>
-
 				{/* ------------------------ */}
 				<div className="flex w-full justify-start">
 					<div className="p-x-6 w-full max-w-xl">
@@ -123,9 +115,7 @@ const PayPage: FC<PayPageProps> = () => {
 					</div>
 				</div>
 				<div>
-					<ButtonPrimary loading={false}>
-						{t('paydone_payment_page_Manage_Booking')}
-					</ButtonPrimary>
+					<ButtonPrimary loading={false}>{t('manage_booking')}</ButtonPrimary>
 				</div>
 			</div>
 		)

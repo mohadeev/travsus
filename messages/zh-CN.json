@@ -1187,8 +1187,19 @@
     "Unexpected_Error": "发生了意外错误。请重试。",
     "Unlock_Best_Travsus": "解锁TRAVSUS的最佳功能。"
   },
+  "Jan03_NavMobile_x5y7": {
+    "Sign_Up": "注册"
+  },
   "Jan03_NotifyDropdown_q8w5": {
     "Notifications_Title": "通知"
+  },
+  "Jan03_PayPage_m5k8": {
+    "congratulations": "恭喜！🎉",
+    "date": "日期",
+    "guests": "客人",
+    "guests_count": "{adults}位成人，{children}位儿童",
+    "manage_booking": "管理预订",
+    "your_booking": "您的预订"
   },
   "Jan03_PendingBookings_k5m2": {
     "Manage_Your_Pending_Tour_Bookings": "管理您的待处理旅游预订",
@@ -1234,6 +1245,21 @@
     "Please_Enter_Promo_Code": "请输入优惠码。",
     "Promo_Code": "优惠码",
     "Promo_Code_Applied_Successfully": "优惠码应用成功！"
+  },
+  "Jan03_ResetPassword_r8k5": {
+    "back_to_login": "返回登录",
+    "confirm_password_label": "确认新密码",
+    "confirm_password_placeholder": "确认新密码",
+    "failed_reset_password": "重置密码失败。请重试。",
+    "new_password_label": "新密码",
+    "new_password_placeholder": "输入新密码",
+    "password_reset_success": "密码重置成功！正在跳转到登录页面...",
+    "passwords_not_match": "密码不匹配！",
+    "remember_password": "记起密码了吗？",
+    "reset_password_button": "重置密码",
+    "reset_password_title": "重置密码",
+    "resetting_button": "重置中...",
+    "something_went_wrong": "出现了问题！"
   },
   "Jan03_SignUp_b9k3": {
     "Sign_Up_Description": "创建新账户并加入我们的社区。",

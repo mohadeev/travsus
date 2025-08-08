@@ -1639,8 +1639,19 @@
     "Unexpected_Error": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
     "Unlock_Best_Travsus": "um das Beste von TRAVSUS freizuschalten."
   },
+  "Jan03_NavMobile_x5y7": {
+    "Sign_Up": "Registrieren"
+  },
   "Jan03_NotifyDropdown_q8w5": {
     "Notifications_Title": "Benachrichtigungen"
+  },
+  "Jan03_PayPage_m5k8": {
+    "congratulations": "Herzlichen Glückwunsch! 🎉",
+    "date": "Datum",
+    "guests": "Gäste",
+    "guests_count": "{adults} Erwachsene, {children} Kinder",
+    "manage_booking": "Buchung verwalten",
+    "your_booking": "Ihre Buchung"
   },
   "Jan03_PendingBookings_k5m2": {
     "Manage_Your_Pending_Tour_Bookings": "Verwalten Sie Ihre ausstehenden Tourbuchungen",
@@ -1686,6 +1697,21 @@
     "Please_Enter_Promo_Code": "Bitte geben Sie einen Aktionscode ein.",
     "Promo_Code": "Aktionscode",
     "Promo_Code_Applied_Successfully": "Aktionscode erfolgreich angewendet!"
+  },
+  "Jan03_ResetPassword_r8k5": {
+    "back_to_login": "Zurück zum Login",
+    "confirm_password_label": "Neues Passwort Bestätigen",
+    "confirm_password_placeholder": "Neues Passwort bestätigen",
+    "failed_reset_password": "Passwort konnte nicht zurückgesetzt werden. Bitte versuchen Sie es erneut.",
+    "new_password_label": "Neues Passwort",
+    "new_password_placeholder": "Neues Passwort eingeben",
+    "password_reset_success": "Passwort erfolgreich zurückgesetzt! Weiterleitung zum Login...",
+    "passwords_not_match": "Passwörter stimmen nicht überein!",
+    "remember_password": "Erinnern Sie sich an Ihr Passwort?",
+    "reset_password_button": "Passwort Zurücksetzen",
+    "reset_password_title": "Passwort Zurücksetzen",
+    "resetting_button": "Wird zurückgesetzt...",
+    "something_went_wrong": "Etwas ist schief gelaufen!"
   },
   "Jan03_SignUp_b9k3": {
     "Sign_Up_Description": "Erstellen Sie ein neues Konto und treten Sie unserer Gemeinschaft bei.",

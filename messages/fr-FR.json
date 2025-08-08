@@ -1637,8 +1637,19 @@
     "Unexpected_Error": "Une erreur inattendue s'est produite. Veuillez réessayer.",
     "Unlock_Best_Travsus": "pour débloquer le meilleur de TRAVSUS."
   },
+  "Jan03_NavMobile_x5y7": {
+    "Sign_Up": "S'inscrire"
+  },
   "Jan03_NotifyDropdown_q8w5": {
     "Notifications_Title": "Notifications"
+  },
+  "Jan03_PayPage_m5k8": {
+    "congratulations": "Félicitations ! 🎉",
+    "date": "Date",
+    "guests": "Invités",
+    "guests_count": "{adults} Adultes, {children} enfants",
+    "manage_booking": "Gérer la réservation",
+    "your_booking": "Votre réservation"
   },
   "Jan03_PendingBookings_k5m2": {
     "Manage_Your_Pending_Tour_Bookings": "Gérez vos réservations de circuits en attente",
@@ -1684,6 +1695,21 @@
     "Please_Enter_Promo_Code": "Veuillez entrer un code promo.",
     "Promo_Code": "Code Promo",
     "Promo_Code_Applied_Successfully": "Code promo appliqué avec succès !"
+  },
+  "Jan03_ResetPassword_r8k5": {
+    "back_to_login": "Retour à la Connexion",
+    "confirm_password_label": "Confirmer le Nouveau Mot de Passe",
+    "confirm_password_placeholder": "Confirmez le nouveau mot de passe",
+    "failed_reset_password": "Échec de la réinitialisation du mot de passe. Veuillez réessayer.",
+    "new_password_label": "Nouveau Mot de Passe",
+    "new_password_placeholder": "Entrez le nouveau mot de passe",
+    "password_reset_success": "Mot de passe réinitialisé avec succès ! Redirection vers la connexion...",
+    "passwords_not_match": "Les mots de passe ne correspondent pas !",
+    "remember_password": "Vous souvenez-vous de votre mot de passe ?",
+    "reset_password_button": "Réinitialiser le Mot de Passe",
+    "reset_password_title": "Réinitialiser le Mot de Passe",
+    "resetting_button": "Réinitialisation...",
+    "something_went_wrong": "Quelque chose s'est mal passé !"
   },
   "Jan03_SignUp_b9k3": {
     "Sign_Up_Description": "Créez un nouveau compte et rejoignez notre communauté.",

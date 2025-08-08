@@ -818,6 +818,18 @@
     "2": "2",
     "3": "세"
   },
+  "GuestsInput": {
+    "add_guests": "게스트 추가",
+    "adults": "성인",
+    "adults_desc": "13세 이상",
+    "children": "어린이",
+    "children_desc": "2-12세",
+    "guests": "게스트",
+    "infants": "유아",
+    "infants_desc": "0-2세",
+    "submit": "제출",
+    "total_guests": "{count}명의 게스트"
+  },
   "guests_Submit": {
     "0": "제",
     "1": "출"
@@ -1199,8 +1211,19 @@
     "Unexpected_Error": "예상치 못한 오류가 발생했습니다. 다시 시도해 주세요.",
     "Unlock_Best_Travsus": "로 TRAVSUS의 최고 기능을 잠금 해제하세요."
   },
+  "Jan03_NavMobile_x5y7": {
+    "Sign_Up": "회원가입"
+  },
   "Jan03_NotifyDropdown_q8w5": {
     "Notifications_Title": "알림"
+  },
+  "Jan03_PayPage_m5k8": {
+    "congratulations": "축하합니다! 🎉",
+    "date": "날짜",
+    "guests": "게스트",
+    "guests_count": "성인 {adults}명, 어린이 {children}명",
+    "manage_booking": "예약 관리",
+    "your_booking": "귀하의 예약"
   },
   "Jan03_PendingBookings_k5m2": {
     "Manage_Your_Pending_Tour_Bookings": "대기 중인 투어 예약을 관리하세요",
@@ -1246,6 +1269,21 @@
     "Please_Enter_Promo_Code": "프로모 코드를 입력해주세요.",
     "Promo_Code": "프로모 코드",
     "Promo_Code_Applied_Successfully": "프로모 코드가 성공적으로 적용되었습니다!"
+  },
+  "Jan03_ResetPassword_r8k5": {
+    "back_to_login": "로그인으로 돌아가기",
+    "confirm_password_label": "새 비밀번호 확인",
+    "confirm_password_placeholder": "새 비밀번호를 확인하세요",
+    "failed_reset_password": "비밀번호 재설정에 실패했습니다. 다시 시도해 주세요.",
+    "new_password_label": "새 비밀번호",
+    "new_password_placeholder": "새 비밀번호를 입력하세요",
+    "password_reset_success": "비밀번호가 성공적으로 재설정되었습니다! 로그인 페이지로 이동 중...",
+    "passwords_not_match": "비밀번호가 일치하지 않습니다!",
+    "remember_password": "비밀번호가 기억나셨나요?",
+    "reset_password_button": "비밀번호 재설정",
+    "reset_password_title": "비밀번호 재설정",
+    "resetting_button": "재설정 중...",
+    "something_went_wrong": "문제가 발생했습니다!"
   },
   "Jan03_SignUp_b9k3": {
     "Sign_Up_Description": "새 계정을 만들고 우리 커뮤니티에 참여하세요.",

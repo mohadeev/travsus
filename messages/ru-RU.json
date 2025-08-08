@@ -1252,8 +1252,19 @@
     "Unexpected_Error": "Произошла неожиданная ошибка. Пожалуйста, попробуйте еще раз.",
     "Unlock_Best_Travsus": "чтобы разблокировать лучшее в TRAVSUS."
   },
+  "Jan03_NavMobile_x5y7": {
+    "Sign_Up": "Зарегистрироваться"
+  },
   "Jan03_NotifyDropdown_q8w5": {
     "Notifications_Title": "Уведомления"
+  },
+  "Jan03_PayPage_m5k8": {
+    "congratulations": "Поздравляем! 🎉",
+    "date": "Дата",
+    "guests": "Гости",
+    "guests_count": "{adults} взрослых, {children} детей",
+    "manage_booking": "Управлять бронированием",
+    "your_booking": "Ваше бронирование"
   },
   "Jan03_PendingBookings_k5m2": {
     "Manage_Your_Pending_Tour_Bookings": "Управляйте своими ожидающими бронированиями туров",
@@ -1299,6 +1310,21 @@
     "Please_Enter_Promo_Code": "Пожалуйста, введите промокод.",
     "Promo_Code": "Промокод",
     "Promo_Code_Applied_Successfully": "Промокод успешно применен!"
+  },
+  "Jan03_ResetPassword_r8k5": {
+    "back_to_login": "Назад к Входу",
+    "confirm_password_label": "Подтвердить Новый Пароль",
+    "confirm_password_placeholder": "Подтвердите новый пароль",
+    "failed_reset_password": "Не удалось сбросить пароль. Пожалуйста, попробуйте еще раз.",
+    "new_password_label": "Новый Пароль",
+    "new_password_placeholder": "Введите новый пароль",
+    "password_reset_success": "Пароль успешно сброшен! Перенаправление на страницу входа...",
+    "passwords_not_match": "Пароли не совпадают!",
+    "remember_password": "Помните свой пароль?",
+    "reset_password_button": "Сбросить Пароль",
+    "reset_password_title": "Сброс Пароля",
+    "resetting_button": "Сброс...",
+    "something_went_wrong": "Что-то пошло не так!"
   },
   "Jan03_SignUp_b9k3": {
     "Sign_Up_Description": "Создайте новую учетную запись и присоединяйтесь к нашему сообществу.",

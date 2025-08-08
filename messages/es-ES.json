@@ -1566,8 +1566,19 @@
     "Unexpected_Error": "Ocurrió un error inesperado. Por favor inténtalo de nuevo.",
     "Unlock_Best_Travsus": "para desbloquear lo mejor de TRAVSUS."
   },
+  "Jan03_NavMobile_x5y7": {
+    "Sign_Up": "Registrarse"
+  },
   "Jan03_NotifyDropdown_q8w5": {
     "Notifications_Title": "Notificaciones"
+  },
+  "Jan03_PayPage_m5k8": {
+    "congratulations": "¡Felicitaciones! 🎉",
+    "date": "Fecha",
+    "guests": "Huéspedes",
+    "guests_count": "{adults} Adultos, {children} niños",
+    "manage_booking": "Gestionar reserva",
+    "your_booking": "Tu reserva"
   },
   "Jan03_PendingBookings_k5m2": {
     "Manage_Your_Pending_Tour_Bookings": "Gestiona tus reservas de tours pendientes",
@@ -1613,6 +1624,21 @@
     "Please_Enter_Promo_Code": "Por favor ingresa un código promocional.",
     "Promo_Code": "Código Promocional",
     "Promo_Code_Applied_Successfully": "¡Código promocional aplicado exitosamente!"
+  },
+  "Jan03_ResetPassword_r8k5": {
+    "back_to_login": "Volver al Login",
+    "confirm_password_label": "Confirmar Nueva Contraseña",
+    "confirm_password_placeholder": "Confirma nueva contraseña",
+    "failed_reset_password": "Error al restablecer contraseña. Por favor inténtalo de nuevo.",
+    "new_password_label": "Nueva Contraseña",
+    "new_password_placeholder": "Ingresa nueva contraseña",
+    "password_reset_success": "¡Contraseña restablecida exitosamente! Redirigiendo al login...",
+    "passwords_not_match": "¡Las contraseñas no coinciden!",
+    "remember_password": "¿Recuerdas tu contraseña?",
+    "reset_password_button": "Restablecer Contraseña",
+    "reset_password_title": "Restablecer Contraseña",
+    "resetting_button": "Restableciendo...",
+    "something_went_wrong": "¡Algo salió mal!"
   },
   "Jan03_SignUp_b9k3": {
     "Sign_Up_Description": "Crea una nueva cuenta y únete a nuestra comunidad.",

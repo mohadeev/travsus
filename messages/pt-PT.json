@@ -1141,8 +1141,19 @@
     "Unexpected_Error": "Ocorreu um erro inesperado. Por favor tente novamente.",
     "Unlock_Best_Travsus": "para desbloquear o melhor do TRAVSUS."
   },
+  "Jan03_NavMobile_x5y7": {
+    "Sign_Up": "Cadastrar-se"
+  },
   "Jan03_NotifyDropdown_q8w5": {
     "Notifications_Title": "Notificações"
+  },
+  "Jan03_PayPage_m5k8": {
+    "congratulations": "Parabéns! 🎉",
+    "date": "Data",
+    "guests": "Hóspedes",
+    "guests_count": "{adults} Adultos, {children} crianças",
+    "manage_booking": "Gerir reserva",
+    "your_booking": "A sua reserva"
   },
   "Jan03_PendingBookings_k5m2": {
     "Manage_Your_Pending_Tour_Bookings": "Gerir as suas reservas de passeios pendentes",
@@ -1188,6 +1199,21 @@
     "Please_Enter_Promo_Code": "Por favor insira um código promocional.",
     "Promo_Code": "Código Promocional",
     "Promo_Code_Applied_Successfully": "Código promocional aplicado com sucesso!"
+  },
+  "Jan03_ResetPassword_r8k5": {
+    "back_to_login": "Voltar ao Login",
+    "confirm_password_label": "Confirmar Nova Palavra-passe",
+    "confirm_password_placeholder": "Confirme nova palavra-passe",
+    "failed_reset_password": "Falha ao redefinir palavra-passe. Por favor tente novamente.",
+    "new_password_label": "Nova Palavra-passe",
+    "new_password_placeholder": "Insira nova palavra-passe",
+    "password_reset_success": "Palavra-passe redefinida com sucesso! A redirecionar para o login...",
+    "passwords_not_match": "As palavras-passe não coincidem!",
+    "remember_password": "Lembra-se da sua palavra-passe?",
+    "reset_password_button": "Redefinir Palavra-passe",
+    "reset_password_title": "Redefinir Palavra-passe",
+    "resetting_button": "A redefinir...",
+    "something_went_wrong": "Algo correu mal!"
   },
   "Jan03_SignUp_b9k3": {
     "Sign_Up_Description": "Crie uma nova conta e junte-se à nossa comunidade.",

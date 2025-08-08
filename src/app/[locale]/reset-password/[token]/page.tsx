@@ -6,6 +6,7 @@ import Link from 'next/link'
 import Input from '@/shared/Input'
 import ButtonPrimary from '@/shared/ButtonPrimary'
 import { Skeleton } from '@/components/ui/skeleton'
+import { useTranslations } from 'next-intl'
 import axios from 'axios'
 
 function SkeletonLoading() {
@@ -15,7 +16,6 @@ function SkeletonLoading() {
 				<div className="mx-auto max-w-md space-y-6">
 					<div className="space-y-4">
 						<Skeleton className="mx-auto my-20 h-12 w-full" />
-
 						{[1, 2].map((i) => (
 							<Skeleton key={i} className="h-12 w-full" />
 						))}
@@ -28,13 +28,13 @@ function SkeletonLoading() {
 }
 
 export default function ResetPasswordPage() {
+	const t = useTranslations('Jan03_ResetPassword_r8k5')
 	const [newPassword, setNewPassword] = useState('')
 	const [confirmPassword, setConfirmPassword] = useState('')
 	const [error, setError] = useState<string | null>(null)
 	const [success, setSuccess] = useState(false)
 	const [loading, setLoading] = useState(false)
 	const [isPageLoading, setIsPageLoading] = useState(true)
-
 	const router = useRouter()
 	const searchParams = useSearchParams()
 	const token = searchParams.get('token') || ''
@@ -50,7 +50,7 @@ export default function ResetPasswordPage() {
 		setLoading(true)
 
 		if (newPassword !== confirmPassword) {
-			setError('Passwords do not match!')
+			setError(t('passwords_not_match'))
 			setLoading(false)
 			return
 		}
@@ -68,13 +68,13 @@ export default function ResetPasswordPage() {
 					router.push('/login')
 				}, 2000)
 			} else {
-				setError(response.data.message || 'Something went wrong!')
+				setError(response.data.message || t('something_went_wrong'))
 			}
 		} catch (err: any) {
 			if (err.response && err.response.data && err.response.data.message) {
 				setError(err.response.data.message)
 			} else {
-				setError('Failed to reset password. Please try again.')
+				setError(t('failed_reset_password'))
 			}
 		} finally {
 			setLoading(false)
@@ -89,7 +89,7 @@ export default function ResetPasswordPage() {
 		<div className="nc-ResetPassword">
 			<div className="container mb-24 lg:mb-32">
 				<h2 className="my-20 flex items-center justify-center text-3xl font-semibold leading-[115%] text-neutral-900 dark:text-neutral-100 md:text-5xl md:leading-[115%]">
-					Reset Password
+					{t('reset_password_title')}
 				</h2>
 				<div className="mx-auto max-w-md space-y-6">
 					{error && (
@@ -106,18 +106,18 @@ export default function ResetPasswordPage() {
 							role="alert"
 						>
 							<span className="block sm:inline">
-								Password reset successfully! Redirecting to login...
+								{t('password_reset_success')}
 							</span>
 						</div>
 					)}
 					<form className="grid grid-cols-1 gap-6" onSubmit={handleSubmit}>
 						<label className="block">
 							<span className="text-neutral-800 dark:text-neutral-200">
-								New Password
+								{t('new_password_label')}
 							</span>
 							<Input
 								type="password"
-								placeholder="Enter new password"
+								placeholder={t('new_password_placeholder')}
 								className="mt-1"
 								value={newPassword}
 								onChange={(e) => setNewPassword(e.target.value)}
@@ -126,11 +126,11 @@ export default function ResetPasswordPage() {
 						</label>
 						<label className="block">
 							<span className="text-neutral-800 dark:text-neutral-200">
-								Confirm New Password
+								{t('confirm_password_label')}
 							</span>
 							<Input
 								type="password"
-								placeholder="Confirm new password"
+								placeholder={t('confirm_password_placeholder')}
 								className="mt-1"
 								value={confirmPassword}
 								onChange={(e) => setConfirmPassword(e.target.value)}
@@ -138,13 +138,13 @@ export default function ResetPasswordPage() {
 							/>
 						</label>
 						<ButtonPrimary type="submit" loading={loading}>
-							{loading ? 'Resetting...' : 'Reset Password'}
+							{loading ? t('resetting_button') : t('reset_password_button')}
 						</ButtonPrimary>
 					</form>
 					<span className="block text-center text-neutral-700 dark:text-neutral-300">
-						Remember your password?{' '}
+						{t('remember_password')}{' '}
 						<Link href="/login" className="font-semibold underline">
-							Back to Login
+							{t('back_to_login')}
 						</Link>
 					</span>
 				</div>

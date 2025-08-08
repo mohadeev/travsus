@@ -1606,8 +1606,19 @@
     "Unexpected_Error": "An unexpected error occurred. Please try again.",
     "Unlock_Best_Travsus": "to unlock the best of TRAVSUS."
   },
+  "Jan03_NavMobile_x5y7": {
+    "Sign_Up": "Sign up"
+  },
   "Jan03_NotifyDropdown_q8w5": {
     "Notifications_Title": "Notifications"
+  },
+  "Jan03_PayPage_m5k8": {
+    "congratulations": "Congratulation 🎉",
+    "date": "Date",
+    "guests": "Guests",
+    "guests_count": "{adults} Adults, {children} children",
+    "manage_booking": "Manage booking",
+    "your_booking": "Your booking"
   },
   "Jan03_PendingBookings_k5m2": {
     "Manage_Your_Pending_Tour_Bookings": "Manage your pending tour bookings",
@@ -1653,6 +1664,21 @@
     "Please_Enter_Promo_Code": "Please enter a promo code.",
     "Promo_Code": "Promo Code",
     "Promo_Code_Applied_Successfully": "Promo code applied successfully!"
+  },
+  "Jan03_ResetPassword_r8k5": {
+    "back_to_login": "Back to Login",
+    "confirm_password_label": "Confirm New Password",
+    "confirm_password_placeholder": "Confirm new password",
+    "failed_reset_password": "Failed to reset password. Please try again.",
+    "new_password_label": "New Password",
+    "new_password_placeholder": "Enter new password",
+    "password_reset_success": "Password reset successfully! Redirecting to login...",
+    "passwords_not_match": "Passwords do not match!",
+    "remember_password": "Remember your password?",
+    "reset_password_button": "Reset Password",
+    "reset_password_title": "Reset Password",
+    "resetting_button": "Resetting...",
+    "something_went_wrong": "Something went wrong!"
   },
   "Jan03_SignUp_b9k3": {
     "Sign_Up_Description": "Create a new account and join our community.",

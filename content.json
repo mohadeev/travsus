@@ -1,72 +1,102 @@
 {
 	"en-US": {
-		"Jan03_SocialLoginButtons_m8n3": {
-			"Continue_With_Facebook": "Continue with Facebook",
-			"Continue_With_Twitter": "Continue with Twitter",
-			"Continue_With_Google": "Continue with Google"
+		"Jan03_PayPage_m5k8": {
+			"congratulations": "Congratulation 🎉",
+			"your_booking": "Your booking",
+			"date": "Date",
+			"guests": "Guests",
+			"guests_count": "{adults} Adults, {children} children",
+			"manage_booking": "Manage booking"
 		}
 	},
 	"es-ES": {
-		"Jan03_SocialLoginButtons_m8n3": {
-			"Continue_With_Facebook": "Continuar con Facebook",
-			"Continue_With_Twitter": "Continuar con Twitter",
-			"Continue_With_Google": "Continuar con Google"
+		"Jan03_PayPage_m5k8": {
+			"congratulations": "¡Felicitaciones! 🎉",
+			"your_booking": "Tu reserva",
+			"date": "Fecha",
+			"guests": "Huéspedes",
+			"guests_count": "{adults} Adultos, {children} niños",
+			"manage_booking": "Gestionar reserva"
 		}
 	},
 	"de-DE": {
-		"Jan03_SocialLoginButtons_m8n3": {
-			"Continue_With_Facebook": "Mit Facebook fortfahren",
-			"Continue_With_Twitter": "Mit Twitter fortfahren",
-			"Continue_With_Google": "Mit Google fortfahren"
+		"Jan03_PayPage_m5k8": {
+			"congratulations": "Herzlichen Glückwunsch! 🎉",
+			"your_booking": "Ihre Buchung",
+			"date": "Datum",
+			"guests": "Gäste",
+			"guests_count": "{adults} Erwachsene, {children} Kinder",
+			"manage_booking": "Buchung verwalten"
 		}
 	},
 	"ja-JP": {
-		"Jan03_SocialLoginButtons_m8n3": {
-			"Continue_With_Facebook": "Facebookで続行",
-			"Continue_With_Twitter": "Twitterで続行",
-			"Continue_With_Google": "Googleで続行"
+		"Jan03_PayPage_m5k8": {
+			"congratulations": "おめでとうございます！🎉",
+			"your_booking": "あなたの予約",
+			"date": "日付",
+			"guests": "ゲスト",
+			"guests_count": "大人{adults}名、子供{children}名",
+			"manage_booking": "予約を管理"
 		}
 	},
 	"pt-PT": {
-		"Jan03_SocialLoginButtons_m8n3": {
-			"Continue_With_Facebook": "Continuar com Facebook",
-			"Continue_With_Twitter": "Continuar com Twitter",
-			"Continue_With_Google": "Continuar com Google"
+		"Jan03_PayPage_m5k8": {
+			"congratulations": "Parabéns! 🎉",
+			"your_booking": "A sua reserva",
+			"date": "Data",
+			"guests": "Hóspedes",
+			"guests_count": "{adults} Adultos, {children} crianças",
+			"manage_booking": "Gerir reserva"
 		}
 	},
 	"it-IT": {
-		"Jan03_SocialLoginButtons_m8n3": {
-			"Continue_With_Facebook": "Continua con Facebook",
-			"Continue_With_Twitter": "Continua con Twitter",
-			"Continue_With_Google": "Continua con Google"
+		"Jan03_PayPage_m5k8": {
+			"congratulations": "Congratulazioni! 🎉",
+			"your_booking": "La tua prenotazione",
+			"date": "Data",
+			"guests": "Ospiti",
+			"guests_count": "{adults} Adulti, {children} bambini",
+			"manage_booking": "Gestisci prenotazione"
 		}
 	},
 	"fr-FR": {
-		"Jan03_SocialLoginButtons_m8n3": {
-			"Continue_With_Facebook": "Continuer avec Facebook",
-			"Continue_With_Twitter": "Continuer avec Twitter",
-			"Continue_With_Google": "Continuer avec Google"
+		"Jan03_PayPage_m5k8": {
+			"congratulations": "Félicitations ! 🎉",
+			"your_booking": "Votre réservation",
+			"date": "Date",
+			"guests": "Invités",
+			"guests_count": "{adults} Adultes, {children} enfants",
+			"manage_booking": "Gérer la réservation"
 		}
 	},
 	"ru-RU": {
-		"Jan03_SocialLoginButtons_m8n3": {
-			"Continue_With_Facebook": "Продолжить с Facebook",
-			"Continue_With_Twitter": "Продолжить с Twitter",
-			"Continue_With_Google": "Продолжить с Google"
+		"Jan03_PayPage_m5k8": {
+			"congratulations": "Поздравляем! 🎉",
+			"your_booking": "Ваше бронирование",
+			"date": "Дата",
+			"guests": "Гости",
+			"guests_count": "{adults} взрослых, {children} детей",
+			"manage_booking": "Управлять бронированием"
 		}
 	},
 	"zh-CN": {
-		"Jan03_SocialLoginButtons_m8n3": {
-			"Continue_With_Facebook": "使用Facebook继续",
-			"Continue_With_Twitter": "使用Twitter继续",
-			"Continue_With_Google": "使用Google继续"
+		"Jan03_PayPage_m5k8": {
+			"congratulations": "恭喜！🎉",
+			"your_booking": "您的预订",
+			"date": "日期",
+			"guests": "客人",
+			"guests_count": "{adults}位成人，{children}位儿童",
+			"manage_booking": "管理预订"
 		}
 	},
 	"ko-KR": {
-		"Jan03_SocialLoginButtons_m8n3": {
-			"Continue_With_Facebook": "Facebook으로 계속하기",
-			"Continue_With_Twitter": "Twitter로 계속하기",
-			"Continue_With_Google": "Google로 계속하기"
+		"Jan03_PayPage_m5k8": {
+			"congratulations": "축하합니다! 🎉",
+			"your_booking": "귀하의 예약",
+			"date": "날짜",
+			"guests": "게스트",
+			"guests_count": "성인 {adults}명, 어린이 {children}명",
+			"manage_booking": "예약 관리"
 		}
 	}
 }

@@ -1,5 +1,4 @@
 'use client'
-
 import React from 'react'
 import ButtonClose from '@/shared/ButtonClose'
 import Logo from '@/shared/Logo'
@@ -25,6 +24,7 @@ const NavMobile: React.FC<NavMobileProps> = ({
 	onClickClose,
 }) => {
 	const { data: session } = useSession()
+	const t = useTranslations('Jan03_NavMobile_x5y7')
 
 	const _renderMenuChild = (item: NavItemType) => {
 		return (
@@ -67,6 +67,7 @@ const NavMobile: React.FC<NavMobileProps> = ({
 			</ul>
 		)
 	}
+
 	const footerT = useTranslations('footer')
 
 	const _renderItem = (item: NavItemType, index: number) => {
@@ -114,10 +115,9 @@ const NavMobile: React.FC<NavMobileProps> = ({
 				<Logo />
 				<div className="mt-5 flex flex-col text-sm text-neutral-700 dark:text-neutral-300">
 					{/* <span>
-						Discover the most outstanding articles on all topics of life. Write
-						your stories and share them
-					</span> */}
-
+                        Discover the most outstanding articles on all topics of life. Write
+                        your stories and share them
+                    </span> */}
 					<div className="mt-4 flex items-center justify-between">
 						<SocialsList itemClass="w-9 h-9 flex items-center justify-center rounded-full bg-neutral-100 text-xl dark:bg-neutral-800 dark:text-neutral-300" />
 					</div>
@@ -138,14 +138,13 @@ const NavMobile: React.FC<NavMobileProps> = ({
 						href="/signup"
 						rel="noopener noreferrer"
 					>
-						<ButtonPrimary>Sign up</ButtonPrimary>
+						<ButtonPrimary>{t('Sign_Up')}</ButtonPrimary>
 					</Link>
 				)}
-
 				{/* <LangDropdown
-					className="flex"
-					panelClassName="z-10 w-screen max-w-[280px] px-4 mb-3 right-3 bottom-full sm:px-0"
-				/> */}
+                    className="flex"
+                    panelClassName="z-10 w-screen max-w-[280px] px-4 mb-3 right-3 bottom-full sm:px-0"
+                /> */}
 			</div>
 		</div>
 	)

@@ -1251,8 +1251,19 @@
     "Unexpected_Error": "Si è verificato un errore imprevisto. Riprova.",
     "Unlock_Best_Travsus": "per sbloccare il meglio di TRAVSUS."
   },
+  "Jan03_NavMobile_x5y7": {
+    "Sign_Up": "Registrati"
+  },
   "Jan03_NotifyDropdown_q8w5": {
     "Notifications_Title": "Notifiche"
+  },
+  "Jan03_PayPage_m5k8": {
+    "congratulations": "Congratulazioni! 🎉",
+    "date": "Data",
+    "guests": "Ospiti",
+    "guests_count": "{adults} Adulti, {children} bambini",
+    "manage_booking": "Gestisci prenotazione",
+    "your_booking": "La tua prenotazione"
   },
   "Jan03_PendingBookings_k5m2": {
     "Manage_Your_Pending_Tour_Bookings": "Gestisci le tue prenotazioni tour in sospeso",
@@ -1298,6 +1309,21 @@
     "Please_Enter_Promo_Code": "Per favore inserisci un codice promozionale.",
     "Promo_Code": "Codice Promozionale",
     "Promo_Code_Applied_Successfully": "Codice promozionale applicato con successo!"
+  },
+  "Jan03_ResetPassword_r8k5": {
+    "back_to_login": "Torna al Login",
+    "confirm_password_label": "Conferma Nuova Password",
+    "confirm_password_placeholder": "Conferma nuova password",
+    "failed_reset_password": "Impossibile reimpostare la password. Per favore riprova.",
+    "new_password_label": "Nuova Password",
+    "new_password_placeholder": "Inserisci nuova password",
+    "password_reset_success": "Password reimpostata con successo! Reindirizzamento al login...",
+    "passwords_not_match": "Le password non corrispondono!",
+    "remember_password": "Ricordi la tua password?",
+    "reset_password_button": "Reimposta Password",
+    "reset_password_title": "Reimposta Password",
+    "resetting_button": "Reimpostando...",
+    "something_went_wrong": "Qualcosa è andato storto!"
   },
   "Jan03_SignUp_b9k3": {
     "Sign_Up_Description": "Crea un nuovo account e unisciti alla nostra comunità.",
