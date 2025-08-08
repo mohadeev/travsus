@@ -5,6 +5,7 @@ import { useTranslations } from '@/lib/i18n'
 import CountryCardList from '@/components/ItemsCardList'
 import type { CountryDataType } from '@/components/CountryCard'
 
+
 export default function DestinationsPage() {
 	const t = useTranslations('destinations_page')
 	const [countries, setCountries] = useState<CountryDataType[]>([])

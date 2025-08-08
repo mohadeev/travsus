@@ -3,15 +3,16 @@ import StartRating from '@/components/StartRating'
 import React, { FC, useEffect, useState } from 'react'
 import ButtonPrimary from '@/shared/ButtonPrimary'
 import Image from 'next/image'
-import LineItemsBreakdown from '../../(service-detail)/[listing-experiences-detail]/LineItemsBreakdown'
+// import LineItemsBreakdown from '../../(service-detail)/[listing-experiences-detail]/LineItemsBreakdown'
 import { useDispatch, useSelector } from 'react-redux'
 import getFetchDataFromApi from '@/utils/getFetchDataFromApi'
 import { updateBookingState } from '@/app/GlobalRedux/Features/bookingSlice/bookingSlice'
 import { useSearchParams } from 'next/navigation'
-import { BookingCard } from '@/app/checkout/checkout/BookingBreakDownCard'
+// import { BookingCard } from '@/app/checkout/checkout/BookingBreakDownCard'
 import { Button } from '@/components/ui'
 import converSelectedDateToString from '@/utils/converSelectedDateToString'
 import { useTranslations } from 'next-intl'
+import LineItemsBreakdown from '../../[continent]/[country]/[region]/[city]/[category]/[name]/(service-detail)/[listing-experiences-detail]/LineItemsBreakdown'
 
 export interface PayPageProps {}
 

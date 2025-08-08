@@ -9,6 +9,7 @@ import FeatureNotificationForm from '@/app/feature-notification-form'
 import ReadeMore from '../../../(client-components)/ReadeMore'
 import CollectionsGrid from '@/components/CollectionsGrid'
 import { useTranslations } from '@/lib/i18n'
+import DestinationPageSkeleton from './DestinationPageSkeleton'
 
 export default function DestinationPage({
 	params,
@@ -65,12 +66,13 @@ export default function DestinationPage({
 		return (
 			<div className="destination-layout">
 				<main>
-					<div className="p-8 text-center">
+					<DestinationPageSkeleton />
+					{/* <div className="p-8 text-center">
 						<h1 className="mb-4 text-2xl font-bold">{t('Loading')}</h1>
 						<p>
 							{t('Fetching_Information_For')} {code.toUpperCase()}
 						</p>
-					</div>
+					</div> */}
 				</main>
 			</div>
 		)
