@@ -1,102 +1,72 @@
 {
 	"en-US": {
-		"Jan03_PayPage_m5k8": {
-			"congratulations": "Congratulation 🎉",
-			"your_booking": "Your booking",
-			"date": "Date",
-			"guests": "Guests",
-			"guests_count": "{adults} Adults, {children} children",
-			"manage_booking": "Manage booking"
+		"header": {
+			"header_AddGuests": "Add travelers",
+			"header_CheckIn": "Check In",
+			"header_Location": "Location"
 		}
 	},
 	"es-ES": {
-		"Jan03_PayPage_m5k8": {
-			"congratulations": "¡Felicitaciones! 🎉",
-			"your_booking": "Tu reserva",
-			"date": "Fecha",
-			"guests": "Huéspedes",
-			"guests_count": "{adults} Adultos, {children} niños",
-			"manage_booking": "Gestionar reserva"
+		"header": {
+			"header_AddGuests": "Agregar viajeros",
+			"header_CheckIn": "Entrada",
+			"header_Location": "Ubicación"
 		}
 	},
 	"de-DE": {
-		"Jan03_PayPage_m5k8": {
-			"congratulations": "Herzlichen Glückwunsch! 🎉",
-			"your_booking": "Ihre Buchung",
-			"date": "Datum",
-			"guests": "Gäste",
-			"guests_count": "{adults} Erwachsene, {children} Kinder",
-			"manage_booking": "Buchung verwalten"
-		}
-	},
-	"ja-JP": {
-		"Jan03_PayPage_m5k8": {
-			"congratulations": "おめでとうございます！🎉",
-			"your_booking": "あなたの予約",
-			"date": "日付",
-			"guests": "ゲスト",
-			"guests_count": "大人{adults}名、子供{children}名",
-			"manage_booking": "予約を管理"
-		}
-	},
-	"pt-PT": {
-		"Jan03_PayPage_m5k8": {
-			"congratulations": "Parabéns! 🎉",
-			"your_booking": "A sua reserva",
-			"date": "Data",
-			"guests": "Hóspedes",
-			"guests_count": "{adults} Adultos, {children} crianças",
-			"manage_booking": "Gerir reserva"
-		}
-	},
-	"it-IT": {
-		"Jan03_PayPage_m5k8": {
-			"congratulations": "Congratulazioni! 🎉",
-			"your_booking": "La tua prenotazione",
-			"date": "Data",
-			"guests": "Ospiti",
-			"guests_count": "{adults} Adulti, {children} bambini",
-			"manage_booking": "Gestisci prenotazione"
+		"header": {
+			"header_AddGuests": "Reisende hinzufügen",
+			"header_CheckIn": "Anreise",
+			"header_Location": "Standort"
 		}
 	},
 	"fr-FR": {
-		"Jan03_PayPage_m5k8": {
-			"congratulations": "Félicitations ! 🎉",
-			"your_booking": "Votre réservation",
-			"date": "Date",
-			"guests": "Invités",
-			"guests_count": "{adults} Adultes, {children} enfants",
-			"manage_booking": "Gérer la réservation"
+		"header": {
+			"header_AddGuests": "Ajouter des voyageurs",
+			"header_CheckIn": "Arrivée",
+			"header_Location": "Emplacement"
+		}
+	},
+	"ja-JP": {
+		"header": {
+			"header_AddGuests": "旅行者を追加",
+			"header_CheckIn": "チェックイン",
+			"header_Location": "場所"
+		}
+	},
+	"pt-PT": {
+		"header": {
+			"header_AddGuests": "Adicionar viajantes",
+			"header_CheckIn": "Check-in",
+			"header_Location": "Localização"
+		}
+	},
+	"it-IT": {
+		"header": {
+			"header_AddGuests": "Aggiungi viaggiatori",
+			"header_CheckIn": "Check-in",
+			"header_Location": "Posizione"
 		}
 	},
 	"ru-RU": {
-		"Jan03_PayPage_m5k8": {
-			"congratulations": "Поздравляем! 🎉",
-			"your_booking": "Ваше бронирование",
-			"date": "Дата",
-			"guests": "Гости",
-			"guests_count": "{adults} взрослых, {children} детей",
-			"manage_booking": "Управлять бронированием"
+		"header": {
+			"header_AddGuests": "Добавить путешественников",
+			"header_CheckIn": "Заезд",
+			"header_Location": "Местоположение"
 		}
 	},
 	"zh-CN": {
-		"Jan03_PayPage_m5k8": {
-			"congratulations": "恭喜！🎉",
-			"your_booking": "您的预订",
-			"date": "日期",
-			"guests": "客人",
-			"guests_count": "{adults}位成人，{children}位儿童",
-			"manage_booking": "管理预订"
+		"header": {
+			"header_AddGuests": "添加旅客",
+			"header_CheckIn": "入住",
+			"header_Location": "位置"
 		}
 	},
 	"ko-KR": {
-		"Jan03_PayPage_m5k8": {
-			"congratulations": "축하합니다! 🎉",
-			"your_booking": "귀하의 예약",
-			"date": "날짜",
-			"guests": "게스트",
-			"guests_count": "성인 {adults}명, 어린이 {children}명",
-			"manage_booking": "예약 관리"
+		"header": {
+			"header_AddGuests": "여행자 추가",
+			"header_CheckIn": "체크인",
+			"header_Location": "위치"
 		}
 	}
 }

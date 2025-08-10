@@ -116,7 +116,7 @@ const RenderSidebar: FC<RenderSidebarProps> = ({}) => {
 				}),
 			)
 		}
-	}, [booking])
+	}, [booking, tour])
 
 	// const handleAddToWishList = useAuthAction(async () => {
 	// 		dispatch(updateServiceState({ path: 'service.liked', value: !liked }))
