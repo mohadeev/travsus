@@ -69,6 +69,7 @@ async function updateTourCreator() {
 	}
 }
 
+//
 // updateTourCreator()
 
 // console.log('heereerer')
@@ -84,4 +85,3 @@ async function updateTourCreator() {
 // 	})
 // 	console.log('bookingInitiated:', bookingInitiated.paymentMethod)
 // })()
-

@@ -8,11 +8,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import getFetchDataFromApi from '@/utils/getFetchDataFromApi'
 import { updateBookingState } from '@/app/GlobalRedux/Features/bookingSlice/bookingSlice'
 import { useSearchParams } from 'next/navigation'
-// import { BookingCard } from '@/app/checkout/checkout/BookingBreakDownCard'
 import { Button } from '@/components/ui'
 import converSelectedDateToString from '@/utils/converSelectedDateToString'
 import { useTranslations } from 'next-intl'
 import LineItemsBreakdown from '../../[continent]/[country]/[region]/[city]/[category]/[name]/(service-detail)/[listing-experiences-detail]/LineItemsBreakdown'
+import { BookingCard } from '../../checkout/checkout/BookingBreakDownCard'
 
 export interface PayPageProps {}
 

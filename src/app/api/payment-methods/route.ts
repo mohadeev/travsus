@@ -4,6 +4,19 @@ import prisma from '@/lib/prisma'
 import getUserData from '../user/getUserData'
 
 export async function GET(request: NextRequest) {
+	//async function removeAllPaymentMethods() {
+	//   try {
+	//     const deleted = await prisma.paymentMethod.deleteMany({});
+	//     console.log(`Deleted ${deleted.count} payment methods.`);
+	//   } catch (error) {
+	//     console.error('Error deleting payment methods:', error);
+	//   } finally {
+	//     await prisma.$disconnect();
+	//   }
+	// }
+
+	// removeAllPaymentMethods();
+
 	console.log('GET /api/payment-methods - Fetching payment methods')
 	const userData = await getUserData({})
 	if (!userData) {
