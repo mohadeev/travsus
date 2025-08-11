@@ -221,6 +221,11 @@ const ItemsCardList: FC<ItemsCardListProps> = ({
 	return (
 		<div className="my-10 px-4 md:px-0">
 			{/* Heading section */}
+			<ContainerExperiencesCardSkeleton
+				count={10}
+				size="default"
+				layout={'row'}
+			/>
 			{loading ? (
 				<div className="mb-5">
 					<div className="h-8 w-64 animate-pulse rounded bg-gray-200"></div>
@@ -235,7 +240,11 @@ const ItemsCardList: FC<ItemsCardListProps> = ({
 				<div
 					className={`grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 ${className}`}
 				>
-					<ContainerExperiencesCardSkeleton />
+					<ContainerExperiencesCardSkeleton
+						count={10}
+						size="default"
+						layout={layout}
+					/>
 				</div>
 			) : locationType === 'tour' ? (
 				// Tours content
@@ -291,7 +300,13 @@ const ItemsCardList: FC<ItemsCardListProps> = ({
 												<ExperiencesCard data={stay} size="small" />
 											</div>
 										))}
-									{loading && <ContainerExperiencesCardSkeleton />}
+									{loading && (
+										<ContainerExperiencesCardSkeleton
+											count={10}
+											size="default"
+											layout={layout}
+										/>
+									)}
 								</div>
 
 								{/* Right navigation arrow */}
