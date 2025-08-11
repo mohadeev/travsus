@@ -32,25 +32,35 @@ const TourHeader = () => {
 	if (loading || !title || !city) {
 		return <TourHeaderSkeleton />
 	}
+	const links = [{ value: t('Brand_Name') }, { vale: city }, { value: title }]
 
 	return (
 		<div className={`nc-ListingExperiencesDetailPage`}>
 			<div>
 				<div className="mt-2 flex flex-col px-0 py-2 text-xs md:mt-4 md:flex-row md:items-center md:justify-between md:px-0">
 					<div className="mb-1 flex items-center md:mb-0">
-						<Link href="/" className="text-black hover:underline">
-							{t('Brand_Name')}
-						</Link>
-						<ChevronRight className="mx-1 h-2.5 w-2.5 text-black" />
-						<Link
-							href="#"
-							className="flex items-center text-black hover:underline"
-						>
-							{city}
-							<ChevronRight className="mx-1 h-2.5 w-2.5 text-black" />
-							{title}
-							<ChevronDown className="ml-1 h-2.5 w-2.5" />
-						</Link>
+						{links.map(({ value }: any, i) => {
+							return (
+								<>
+									{value ? (
+										<>
+											<Link
+												href="#"
+												className="font-semibold text-black hover:underline"
+											>
+												{value}
+											</Link>
+
+											{i <= links.length ? (
+												<ChevronRight className="mx-1 h-2.5 w-2.5 text-black" />
+											) : (
+												<ChevronDown className="ml-1 h-2.5 w-2.5" />
+											)}
+										</>
+									) : null}
+								</>
+							)
+						})}
 					</div>
 					<div className="text-black">
 						<span>{t('Plan_Trip_Guide', { city })}</span>
@@ -59,7 +69,7 @@ const TourHeader = () => {
 			</div>
 
 			{/* Changed from flex-row to flex-col on mobile, md:flex-row on tablet and up */}
-			<div className="mb-4 flex flex-col items-start gap-3 md:mb-6 md:flex-row md:items-center md:justify-between">
+			<div className="mb-4 flex flex-col flex-wrap items-start gap-3 md:mb-6 md:flex-row md:items-center md:justify-between">
 				<h1 className="text-3xl font-extrabold text-black md:text-4xl">
 					{title}
 				</h1>

@@ -1,20 +1,20 @@
 
 === FILE: C:\Users\Usuario\s\travsus\src\app\[locale]\[continent]\[country]\[region]\[city]\[category]\[name]\(service-detail)\[listing-experiences-detail]\page.tsx ===
-=== NAMESPACE: app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page ===
+=== NAMESPACE: servicedetail_listingexperiencesdetail_page ===
 === PROMPT ===
 # ULTRA-STRICT INTERNATIONALIZATION INSTRUCTIONS
 
 Transform this TSX file to use internationalization.
 
 ## CRITICAL NAMESPACE AND KEY REQUIREMENTS:
-- You MUST use the exact namespace: "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page"
-- The useTranslations call MUST be: useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page")
+- You MUST use the exact namespace: "servicedetail_listingexperiencesdetail_page"
+- The useTranslations call MUST be: useTranslations("servicedetail_listingexperiencesdetail_page")
 - Keys should be simple descriptive names WITHOUT the namespace prefix
-- Example: t('Welcome_Message') NOT t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page_Welcome_Message')
+- Example: t('Welcome_Message') NOT t('servicedetail_listingexperiencesdetail_page_Welcome_Message')
 
 ## EXACT REQUIREMENTS:
 1. Add this import: import { useTranslations } from '@/lib/i18n'
-2. Add this hook call: const t = useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page");
+2. Add this hook call: const t = useTranslations("servicedetail_listingexperiencesdetail_page");
 3. Replace static text with: t('Simple_Key_Name')
 4. Generate simple keys like: Welcome_Message, Button_Text, Error_Message
 
@@ -29,7 +29,7 @@ Transform this TSX file to use internationalization.
 <COMPLETE TSX FILE WITH EXACT NAMESPACE>
 ---MESSAGES:
 {
-  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page": {
+  "servicedetail_listingexperiencesdetail_page": {
 	"Welcome_Message": "Welcome to our site",
 	"Button_Text": "Click here",
 	"Error_Message": "Something went wrong"
@@ -49,7 +49,7 @@ AFTER:
 import { useTranslations } from '@/lib/i18n';
 
 export default function Component() {
-  const t = useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page");
+  const t = useTranslations("servicedetail_listingexperiencesdetail_page");
   
   return (
 	<div>
@@ -62,7 +62,7 @@ export default function Component() {
 
 ---MESSAGES:
 {
-  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page": {
+  "servicedetail_listingexperiencesdetail_page": {
 	"Welcome_Message": "Welcome to our site",
 	"Button_Text": "Click here", 
 	"Error_Message": "Something went wrong"
@@ -547,9 +547,9 @@ const travelChecklist = [
 
 
 REMEMBER: 
-- Use EXACTLY "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page" in useTranslations()
+- Use EXACTLY "servicedetail_listingexperiencesdetail_page" in useTranslations()
 - Keys should be simple names WITHOUT namespace prefix
-- JSON structure: { "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page": { "Simple_Key": "value" } }
+- JSON structure: { "servicedetail_listingexperiencesdetail_page": { "Simple_Key": "value" } }
 
 === RESPONSE ===
 <Thinking>
@@ -582,7 +582,7 @@ And in the travelChecklist array, there are category names and items that need t
 
 I need to:
 1. Add the import: `import { useTranslations } from '@/lib/i18n'`
-2. Add the hook call with the exact namespace: `const t = useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page");`
+2. Add the hook call with the exact namespace: `const t = useTranslations("servicedetail_listingexperiencesdetail_page");`
 3. Replace all static text with t('Simple_Key_Name') calls
 4. Generate the messages JSON with the exact namespace
 
@@ -685,7 +685,7 @@ interface Address {
 const ListingExperiencesDetailPage: FC<
 	ListingExperiencesDetailPageProps
 > = ({}) => {
-	const t = useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page");
+	const t = useTranslations("servicedetail_listingexperiencesdetail_page");
 	
 	const thisPathname = usePathname()
 	const dispatch = useDispatch()
@@ -1074,7 +1074,7 @@ const travelChecklist = [
 ---MESSAGES:
 ```json
 {
-  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page": {
+  "servicedetail_listingexperiencesdetail_page": {
     "Overview_Title": "Overview",
     "Read_More_Button": "Read more",
     "Host_Information_Title": "Host Information",

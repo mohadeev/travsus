@@ -49,6 +49,7 @@ import TourHeader from './TourHeader'
 import ReadMore from '@/app/(client-components)/ReadeMore'
 import { useTranslations } from '@/lib/i18n'
 import SectionGridFilterCard from '@/app/[locale]/(experience-listings)/SectionGridFilterCard'
+import ItemsCardList from '@/components/ItemsCardList'
 // import ReadMore from '@/app/destinations/[code]/[city]/ReadeMore'
 //
 const MapComponent = dynamic(() => import('./tour-map'), {
@@ -333,10 +334,17 @@ const ListingExperiencesDetailPage: FC<
 
 				<TourFAQ faqs={faq} />
 				<ReviewSystem serviceId={id} serviceName={title} />
-				<SectionGridFilterCard
+				<ItemsCardList
+					locationType="tour"
+					heading={t('app_locale_ClientHomePage_Popular_Tours')}
+					subHeading={t('app_locale_ClientHomePage_Discover_Exciting_Tours')}
+					currentPage={1}
+					layout="row"
+				/>
+				{/* <SectionGridFilterCard
 					layout="row"
 					className={'mb-10 mt-10 pb-24 lg:pb-28'}
-				/>
+				/> */}
 			</div>
 		</>
 	)

@@ -125,7 +125,7 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 				<div className="space-y-2">
 					<div className="flex items-center text-sm leading-none text-neutral-500 dark:text-neutral-400">
 						{size === 'default' && <MapPinIcon className="mr-1 h-4 w-4" />}
-						<button className="rounded-md border border-black px-2 py-1 text-xs font-bold text-black">
+						<button className="rounded-md border border-black px-2 py-1 text-xs font-semibold text-black">
 							{data?.startAddress?.country} - {data?.startAddress?.city}
 						</button>
 					</div>
@@ -148,11 +148,9 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 				<div className="mt-2 flex items-center justify-between">
 					<span className="text-base font-semibold">
 						{formatCurrency(priceStart)}
-						{size === 'default' && (
-							<span className="ml-1 text-sm font-normal text-neutral-500 dark:text-neutral-400">
-								{t('components_ExperiencesCard_Per_Person')}
-							</span>
-						)}
+						<span className="ml-1 text-sm font-normal text-neutral-500 dark:text-neutral-400">
+							{t('components_ExperiencesCard_Per_Person')}
+						</span>
 					</span>
 					{/* <StartRating reviewCount={reviewCount} point={reviewStart} /> */}
 				</div>

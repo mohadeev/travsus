@@ -156,14 +156,6 @@ function ClientHomePage() {
 					<TravelBanner />
 				</div>
 				<div className="container p-0 px-0">
-					<ItemsCardList
-						locationType="tour"
-						heading={t('app_locale_ClientHomePage_Popular_Tours')}
-						subHeading={t('app_locale_ClientHomePage_Discover_Exciting_Tours')}
-						currentPage={1}
-						layout="row"
-					/>
-
 					{/* <SectionGridFeaturePlaces /> */}
 					{/* <SectionGridFilterCard layout="row" /> */}
 					<ItemsCardList locationType="country" layout="row" />

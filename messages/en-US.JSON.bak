@@ -279,12 +279,12 @@
 	"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ListingExperiencesDetailsImages": {
 		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ListingExperiencesDetailsImages_Show_All_Photos": "Show all photos"
 	},
-	"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page": {
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page_Host_Information": "Host Information",
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page_Overview": "Overview",
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page_Reviews": "Reviews",
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page_reviews": "reviews",
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page_Things_to_know": "Things to know",
+	"servicedetail_listingexperiencesdetail_page": {
+		"servicedetail_listingexperiencesdetail_page_Host_Information": "Host Information",
+		"servicedetail_listingexperiencesdetail_page_Overview": "Overview",
+		"servicedetail_listingexperiencesdetail_page_Reviews": "Reviews",
+		"servicedetail_listingexperiencesdetail_page_reviews": "reviews",
+		"servicedetail_listingexperiencesdetail_page_Things_to_know": "Things to know",
 		"Cancellation_Policy_Text": "Each service provided by TRAVSUS on the present Website (activities, day trips, guided tours and transfers) has its own specific cancellation policy. The User can check each specific cancellation policy in the description part of each activity (in the Website) or on the confirmation email that TRAVSUS will send the User once the reservation has been made. Hence, the specific cancellation conditions will be applicable to each service, which establish the cancellation time and possible penalisation. TRAVSUS will manage cancellations and will confirm the cancellation policies of each activity, excursion, guided tour and/or transfer. If the PROVIDER does not have availability on the reserved date, TRAVSUS will offer the customer an alternate date or schedule, which must be accepted or declined by the customer. If no reply about the alternative option is received within 72 hours, the booking will be cancelled and refunded immediately. In either case, TRAVSUS will send the relevant documentation. IN ACCORDANCE WITH THE ABOVE, AND BY ACCEPTING THESE GENERAL TERMS OF USE, THE USERS DECLARE TO HAVE EXPRESSLY READ AND ACCEPTED THE PRESENT CANCELLATION POLICY AND HEREBY AGREE TO THE CANCELLATION POLICIES OF EACH ACTIVITY, DAY TRIP, GUIDED TOUR AND / OR TRANSFER THAT ARE RESERVED ON THE PRESENT WEBSITE.",
 		"Cancellation_Policy_Title": "Cancellation policy",
 		"Guest_Requirements_Text": "Up to 100 guests ages 4 and up can attend. Parents may also bring children under 2 years of age.",

@@ -7,7 +7,7 @@
 			"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Add_Guests": "Add travelers",
 			"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Guests": "Travelers"
 		},
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page": {
+		"servicedetail_listingexperiencesdetail_page": {
 			"Guest_Requirements_Text": "Up to 100 travelers ages 4 and up can attend. Parents may also bring children under 2 years of age.",
 			"Guest_Requirements_Title": "Traveler requirements"
 		},
@@ -53,7 +53,7 @@
 			"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Add_Guests": "Agregar viajeros",
 			"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Guests": "Viajeros"
 		},
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page": {
+		"servicedetail_listingexperiencesdetail_page": {
 			"Guest_Requirements_Text": "Hasta 100 viajeros de 4 años en adelante pueden asistir. Los padres también pueden traer niños menores de 2 años.",
 			"Guest_Requirements_Title": "Requisitos del viajero"
 		},
@@ -99,7 +99,7 @@
 			"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Add_Guests": "Reisende hinzufügen",
 			"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Guests": "Reisende"
 		},
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page": {
+		"servicedetail_listingexperiencesdetail_page": {
 			"Guest_Requirements_Text": "Bis zu 100 Reisende ab 4 Jahren können teilnehmen. Eltern können auch Kinder unter 2 Jahren mitbringen.",
 			"Guest_Requirements_Title": "Reisende-Anforderungen"
 		},
@@ -145,7 +145,7 @@
 			"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Add_Guests": "Ajouter des voyageurs",
 			"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Guests": "Voyageurs"
 		},
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page": {
+		"servicedetail_listingexperiencesdetail_page": {
 			"Guest_Requirements_Text": "Jusqu'à 100 voyageurs âgés de 4 ans et plus peuvent participer. Les parents peuvent également amener des enfants de moins de 2 ans.",
 			"Guest_Requirements_Title": "Exigences pour les voyageurs"
 		},
@@ -191,7 +191,7 @@
 			"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Add_Guests": "旅行者を追加",
 			"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Guests": "旅行者"
 		},
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page": {
+		"servicedetail_listingexperiencesdetail_page": {
 			"Guest_Requirements_Text": "4歳以上の旅行者が最大100名まで参加できます。保護者は2歳未満のお子様も同伴できます。",
 			"Guest_Requirements_Title": "旅行者の要件"
 		},
@@ -237,7 +237,7 @@
 			"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Add_Guests": "Adicionar viajantes",
 			"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Guests": "Viajantes"
 		},
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page": {
+		"servicedetail_listingexperiencesdetail_page": {
 			"Guest_Requirements_Text": "Até 100 viajantes com 4 anos ou mais podem participar. Os pais também podem trazer crianças com menos de 2 anos.",
 			"Guest_Requirements_Title": "Requisitos do viajante"
 		},
@@ -283,7 +283,7 @@
 			"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Add_Guests": "Aggiungi viaggiatori",
 			"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Guests": "Viaggiatori"
 		},
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page": {
+		"servicedetail_listingexperiencesdetail_page": {
 			"Guest_Requirements_Text": "Fino a 100 viaggiatori di 4 anni e oltre possono partecipare. I genitori possono anche portare bambini sotto i 2 anni.",
 			"Guest_Requirements_Title": "Requisiti del viaggiatore"
 		},
@@ -329,7 +329,7 @@
 			"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Add_Guests": "Добавить путешественников",
 			"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Guests": "Путешественники"
 		},
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page": {
+		"servicedetail_listingexperiencesdetail_page": {
 			"Guest_Requirements_Text": "До 100 путешественников в возрасте от 4 лет могут принять участие. Родители также могут привести детей младше 2 лет.",
 			"Guest_Requirements_Title": "Требования к путешественникам"
 		},
@@ -375,7 +375,7 @@
 			"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Add_Guests": "添加旅行者",
 			"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Guests": "旅行者"
 		},
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page": {
+		"servicedetail_listingexperiencesdetail_page": {
 			"Guest_Requirements_Text": "最多100名4岁及以上的旅行者可以参加。父母也可以带2岁以下的儿童。",
 			"Guest_Requirements_Title": "旅行者要求"
 		},
@@ -421,7 +421,7 @@
 			"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Add_Guests": "여행자 추가",
 			"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Guests": "여행자"
 		},
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page": {
+		"servicedetail_listingexperiencesdetail_page": {
 			"Guest_Requirements_Text": "4세 이상의 여행자 최대 100명이 참석할 수 있습니다. 부모는 2세 미만의 어린이도 동반할 수 있습니다.",
 			"Guest_Requirements_Title": "여행자 요구사항"
 		},
