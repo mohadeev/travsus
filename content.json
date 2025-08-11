@@ -1,72 +1,462 @@
 {
 	"en-US": {
-		"header": {
-			"header_AddGuests": "Add travelers",
-			"header_CheckIn": "Check In",
-			"header_Location": "Location"
+		"accountsettings_loginandsecurity_page": {
+			"accountsettings_loginandsecurity_page_Guests": "travelers"
+		},
+		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput": {
+			"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Add_Guests": "Add travelers",
+			"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Guests": "Travelers"
+		},
+		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page": {
+			"Guest_Requirements_Text": "Up to 100 travelers ages 4 and up can attend. Parents may also bring children under 2 years of age.",
+			"Guest_Requirements_Title": "Traveler requirements"
+		},
+		"GuestsInput": {
+			"add_guests": "Add travelers",
+			"guests": "Travelers",
+			"total_guests": "{count} Travelers"
+		},
+		"Jan03_CheckoutPage_q8m3": {
+			"Guests": "Travelers"
+		},
+		"Jan03_PayPage_m5k8": {
+			"guests": "Travelers"
+		},
+		"Jan03_PersonalInfo_d6k9": {
+			"What_Info_Shared_Description": "travsus only releases contact information for Hosts and travelers after a reservation is confirmed."
+		},
+		"Jan03_StaySearchForm_m8p4": {
+			"Add_Guests": "Add travelers",
+			"Guest_Singular": "{count} traveler",
+			"Guests_Plural": "{count} travelers"
+		},
+		"LoginSecurityPage": {
+			"guests": "travelers"
+		},
+		"page": {
+			"page_Guest_Requirements_Heading": "Traveler requirements",
+			"page_Guest_Requirements_Text": "Up to 100 travelers ages 4 and up can attend. Parents may also bring children under 2 years of age."
+		},
+		"paydone_payment_page": {
+			"paydone_payment_page_Adults_Children": "{guests?.guestAdults || 0} Adults, {guests?.guestChildren || 0} children",
+			"paydone_payment_page_Guests": "Travelers"
+		},
+		"PersonalInfoPage": {
+			"shared_info_description": "travsus only releases contact information for Hosts and travelers after a reservation is confirmed."
 		}
 	},
 	"es-ES": {
-		"header": {
-			"header_AddGuests": "Agregar viajeros",
-			"header_CheckIn": "Entrada",
-			"header_Location": "Ubicación"
+		"accountsettings_loginandsecurity_page": {
+			"accountsettings_loginandsecurity_page_Guests": "viajeros"
+		},
+		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput": {
+			"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Add_Guests": "Agregar viajeros",
+			"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Guests": "Viajeros"
+		},
+		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page": {
+			"Guest_Requirements_Text": "Hasta 100 viajeros de 4 años en adelante pueden asistir. Los padres también pueden traer niños menores de 2 años.",
+			"Guest_Requirements_Title": "Requisitos del viajero"
+		},
+		"GuestsInput": {
+			"add_guests": "Agregar viajeros",
+			"guests": "Viajeros",
+			"total_guests": "{count} Viajeros"
+		},
+		"Jan03_CheckoutPage_q8m3": {
+			"Guests": "Viajeros"
+		},
+		"Jan03_PayPage_m5k8": {
+			"guests": "Viajeros"
+		},
+		"Jan03_PersonalInfo_d6k9": {
+			"What_Info_Shared_Description": "travsus solo comparte información de contacto de Anfitriones y viajeros después de que se confirme una reserva."
+		},
+		"Jan03_StaySearchForm_m8p4": {
+			"Add_Guests": "Agregar viajeros",
+			"Guest_Singular": "{count} viajero",
+			"Guests_Plural": "{count} viajeros"
+		},
+		"LoginSecurityPage": {
+			"guests": "viajeros"
+		},
+		"page": {
+			"page_Guest_Requirements_Heading": "Requisitos del viajero",
+			"page_Guest_Requirements_Text": "Hasta 100 viajeros de 4 años en adelante pueden asistir. Los padres también pueden traer niños menores de 2 años."
+		},
+		"paydone_payment_page": {
+			"paydone_payment_page_Adults_Children": "{guests?.guestAdults || 0} Adultos, {guests?.guestChildren || 0} niños",
+			"paydone_payment_page_Guests": "Viajeros"
+		},
+		"PersonalInfoPage": {
+			"shared_info_description": "travsus solo comparte información de contacto de Anfitriones y viajeros después de que se confirme una reserva."
 		}
 	},
 	"de-DE": {
-		"header": {
-			"header_AddGuests": "Reisende hinzufügen",
-			"header_CheckIn": "Anreise",
-			"header_Location": "Standort"
+		"accountsettings_loginandsecurity_page": {
+			"accountsettings_loginandsecurity_page_Guests": "reisende"
+		},
+		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput": {
+			"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Add_Guests": "Reisende hinzufügen",
+			"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Guests": "Reisende"
+		},
+		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page": {
+			"Guest_Requirements_Text": "Bis zu 100 Reisende ab 4 Jahren können teilnehmen. Eltern können auch Kinder unter 2 Jahren mitbringen.",
+			"Guest_Requirements_Title": "Reisende-Anforderungen"
+		},
+		"GuestsInput": {
+			"add_guests": "Reisende hinzufügen",
+			"guests": "Reisende",
+			"total_guests": "{count} Reisende"
+		},
+		"Jan03_CheckoutPage_q8m3": {
+			"Guests": "Reisende"
+		},
+		"Jan03_PayPage_m5k8": {
+			"guests": "Reisende"
+		},
+		"Jan03_PersonalInfo_d6k9": {
+			"What_Info_Shared_Description": "travsus gibt Kontaktinformationen von Gastgebern und Reisenden erst nach einer bestätigten Reservierung frei."
+		},
+		"Jan03_StaySearchForm_m8p4": {
+			"Add_Guests": "Reisende hinzufügen",
+			"Guest_Singular": "{count} Reisender",
+			"Guests_Plural": "{count} Reisende"
+		},
+		"LoginSecurityPage": {
+			"guests": "reisende"
+		},
+		"page": {
+			"page_Guest_Requirements_Heading": "Reisende-Anforderungen",
+			"page_Guest_Requirements_Text": "Bis zu 100 Reisende ab 4 Jahren können teilnehmen. Eltern können auch Kinder unter 2 Jahren mitbringen."
+		},
+		"paydone_payment_page": {
+			"paydone_payment_page_Adults_Children": "{guests?.guestAdults || 0} Erwachsene, {guests?.guestChildren || 0} Kinder",
+			"paydone_payment_page_Guests": "Reisende"
+		},
+		"PersonalInfoPage": {
+			"shared_info_description": "travsus gibt Kontaktinformationen von Gastgebern und Reisenden erst nach einer bestätigten Reservierung frei."
 		}
 	},
 	"fr-FR": {
-		"header": {
-			"header_AddGuests": "Ajouter des voyageurs",
-			"header_CheckIn": "Arrivée",
-			"header_Location": "Emplacement"
+		"accountsettings_loginandsecurity_page": {
+			"accountsettings_loginandsecurity_page_Guests": "voyageurs"
+		},
+		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput": {
+			"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Add_Guests": "Ajouter des voyageurs",
+			"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Guests": "Voyageurs"
+		},
+		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page": {
+			"Guest_Requirements_Text": "Jusqu'à 100 voyageurs âgés de 4 ans et plus peuvent participer. Les parents peuvent également amener des enfants de moins de 2 ans.",
+			"Guest_Requirements_Title": "Exigences pour les voyageurs"
+		},
+		"GuestsInput": {
+			"add_guests": "Ajouter des voyageurs",
+			"guests": "Voyageurs",
+			"total_guests": "{count} Voyageurs"
+		},
+		"Jan03_CheckoutPage_q8m3": {
+			"Guests": "Voyageurs"
+		},
+		"Jan03_PayPage_m5k8": {
+			"guests": "Voyageurs"
+		},
+		"Jan03_PersonalInfo_d6k9": {
+			"What_Info_Shared_Description": "travsus ne communique les informations de contact des Hôtes et des voyageurs qu'après confirmation d'une réservation."
+		},
+		"Jan03_StaySearchForm_m8p4": {
+			"Add_Guests": "Ajouter des voyageurs",
+			"Guest_Singular": "{count} voyageur",
+			"Guests_Plural": "{count} voyageurs"
+		},
+		"LoginSecurityPage": {
+			"guests": "voyageurs"
+		},
+		"page": {
+			"page_Guest_Requirements_Heading": "Exigences pour les voyageurs",
+			"page_Guest_Requirements_Text": "Jusqu'à 100 voyageurs âgés de 4 ans et plus peuvent participer. Les parents peuvent également amener des enfants de moins de 2 ans."
+		},
+		"paydone_payment_page": {
+			"paydone_payment_page_Adults_Children": "{guests?.guestAdults || 0} Adultes, {guests?.guestChildren || 0} enfants",
+			"paydone_payment_page_Guests": "Voyageurs"
+		},
+		"PersonalInfoPage": {
+			"shared_info_description": "travsus ne communique les informations de contact des Hôtes et des voyageurs qu'après confirmation d'une réservation."
 		}
 	},
 	"ja-JP": {
-		"header": {
-			"header_AddGuests": "旅行者を追加",
-			"header_CheckIn": "チェックイン",
-			"header_Location": "場所"
+		"accountsettings_loginandsecurity_page": {
+			"accountsettings_loginandsecurity_page_Guests": "旅行者"
+		},
+		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput": {
+			"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Add_Guests": "旅行者を追加",
+			"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Guests": "旅行者"
+		},
+		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page": {
+			"Guest_Requirements_Text": "4歳以上の旅行者が最大100名まで参加できます。保護者は2歳未満のお子様も同伴できます。",
+			"Guest_Requirements_Title": "旅行者の要件"
+		},
+		"GuestsInput": {
+			"add_guests": "旅行者を追加",
+			"guests": "旅行者",
+			"total_guests": "{count}名の旅行者"
+		},
+		"Jan03_CheckoutPage_q8m3": {
+			"Guests": "旅行者"
+		},
+		"Jan03_PayPage_m5k8": {
+			"guests": "旅行者"
+		},
+		"Jan03_PersonalInfo_d6k9": {
+			"What_Info_Shared_Description": "travsusは予約が確定した後にのみ、ホストと旅行者の連絡先情報を公開します。"
+		},
+		"Jan03_StaySearchForm_m8p4": {
+			"Add_Guests": "旅行者を追加",
+			"Guest_Singular": "{count}名の旅行者",
+			"Guests_Plural": "{count}名の旅行者"
+		},
+		"LoginSecurityPage": {
+			"guests": "旅行者"
+		},
+		"page": {
+			"page_Guest_Requirements_Heading": "旅行者の要件",
+			"page_Guest_Requirements_Text": "4歳以上の旅行者が最大100名まで参加できます。保護者は2歳未満のお子様も同伴できます。"
+		},
+		"paydone_payment_page": {
+			"paydone_payment_page_Adults_Children": "{guests?.guestAdults || 0}名の大人、{guests?.guestChildren || 0}名の子供",
+			"paydone_payment_page_Guests": "旅行者"
+		},
+		"PersonalInfoPage": {
+			"shared_info_description": "travsusは予約が確定した後にのみ、ホストと旅行者の連絡先情報を公開します。"
 		}
 	},
 	"pt-PT": {
-		"header": {
-			"header_AddGuests": "Adicionar viajantes",
-			"header_CheckIn": "Check-in",
-			"header_Location": "Localização"
+		"accountsettings_loginandsecurity_page": {
+			"accountsettings_loginandsecurity_page_Guests": "viajantes"
+		},
+		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput": {
+			"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Add_Guests": "Adicionar viajantes",
+			"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Guests": "Viajantes"
+		},
+		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page": {
+			"Guest_Requirements_Text": "Até 100 viajantes com 4 anos ou mais podem participar. Os pais também podem trazer crianças com menos de 2 anos.",
+			"Guest_Requirements_Title": "Requisitos do viajante"
+		},
+		"GuestsInput": {
+			"add_guests": "Adicionar viajantes",
+			"guests": "Viajantes",
+			"total_guests": "{count} Viajantes"
+		},
+		"Jan03_CheckoutPage_q8m3": {
+			"Guests": "Viajantes"
+		},
+		"Jan03_PayPage_m5k8": {
+			"guests": "Viajantes"
+		},
+		"Jan03_PersonalInfo_d6k9": {
+			"What_Info_Shared_Description": "A travsus só divulga informações de contacto de Anfitriões e viajantes após uma reserva ser confirmada."
+		},
+		"Jan03_StaySearchForm_m8p4": {
+			"Add_Guests": "Adicionar viajantes",
+			"Guest_Singular": "{count} viajante",
+			"Guests_Plural": "{count} viajantes"
+		},
+		"LoginSecurityPage": {
+			"guests": "viajantes"
+		},
+		"page": {
+			"page_Guest_Requirements_Heading": "Requisitos do viajante",
+			"page_Guest_Requirements_Text": "Até 100 viajantes com 4 anos ou mais podem participar. Os pais também podem trazer crianças com menos de 2 anos."
+		},
+		"paydone_payment_page": {
+			"paydone_payment_page_Adults_Children": "{guests?.guestAdults || 0} Adultos, {guests?.guestChildren || 0} crianças",
+			"paydone_payment_page_Guests": "Viajantes"
+		},
+		"PersonalInfoPage": {
+			"shared_info_description": "A travsus só divulga informações de contacto de Anfitriões e viajantes após uma reserva ser confirmada."
 		}
 	},
 	"it-IT": {
-		"header": {
-			"header_AddGuests": "Aggiungi viaggiatori",
-			"header_CheckIn": "Check-in",
-			"header_Location": "Posizione"
+		"accountsettings_loginandsecurity_page": {
+			"accountsettings_loginandsecurity_page_Guests": "viaggiatori"
+		},
+		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput": {
+			"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Add_Guests": "Aggiungi viaggiatori",
+			"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Guests": "Viaggiatori"
+		},
+		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page": {
+			"Guest_Requirements_Text": "Fino a 100 viaggiatori di 4 anni e oltre possono partecipare. I genitori possono anche portare bambini sotto i 2 anni.",
+			"Guest_Requirements_Title": "Requisiti del viaggiatore"
+		},
+		"GuestsInput": {
+			"add_guests": "Aggiungi viaggiatori",
+			"guests": "Viaggiatori",
+			"total_guests": "{count} Viaggiatori"
+		},
+		"Jan03_CheckoutPage_q8m3": {
+			"Guests": "Viaggiatori"
+		},
+		"Jan03_PayPage_m5k8": {
+			"guests": "Viaggiatori"
+		},
+		"Jan03_PersonalInfo_d6k9": {
+			"What_Info_Shared_Description": "travsus rilascia le informazioni di contatto di Host e viaggiatori solo dopo che una prenotazione è confermata."
+		},
+		"Jan03_StaySearchForm_m8p4": {
+			"Add_Guests": "Aggiungi viaggiatori",
+			"Guest_Singular": "{count} viaggiatore",
+			"Guests_Plural": "{count} viaggiatori"
+		},
+		"LoginSecurityPage": {
+			"guests": "viaggiatori"
+		},
+		"page": {
+			"page_Guest_Requirements_Heading": "Requisiti del viaggiatore",
+			"page_Guest_Requirements_Text": "Fino a 100 viaggiatori di 4 anni e oltre possono partecipare. I genitori possono anche portare bambini sotto i 2 anni."
+		},
+		"paydone_payment_page": {
+			"paydone_payment_page_Adults_Children": "{guests?.guestAdults || 0} Adulti, {guests?.guestChildren || 0} bambini",
+			"paydone_payment_page_Guests": "Viaggiatori"
+		},
+		"PersonalInfoPage": {
+			"shared_info_description": "travsus rilascia le informazioni di contatto di Host e viaggiatori solo dopo che una prenotazione è confermata."
 		}
 	},
 	"ru-RU": {
-		"header": {
-			"header_AddGuests": "Добавить путешественников",
-			"header_CheckIn": "Заезд",
-			"header_Location": "Местоположение"
+		"accountsettings_loginandsecurity_page": {
+			"accountsettings_loginandsecurity_page_Guests": "путешественники"
+		},
+		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput": {
+			"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Add_Guests": "Добавить путешественников",
+			"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Guests": "Путешественники"
+		},
+		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page": {
+			"Guest_Requirements_Text": "До 100 путешественников в возрасте от 4 лет могут принять участие. Родители также могут привести детей младше 2 лет.",
+			"Guest_Requirements_Title": "Требования к путешественникам"
+		},
+		"GuestsInput": {
+			"add_guests": "Добавить путешественников",
+			"guests": "Путешественники",
+			"total_guests": "{count} Путешественников"
+		},
+		"Jan03_CheckoutPage_q8m3": {
+			"Guests": "Путешественники"
+		},
+		"Jan03_PayPage_m5k8": {
+			"guests": "Путешественники"
+		},
+		"Jan03_PersonalInfo_d6k9": {
+			"What_Info_Shared_Description": "travsus предоставляет контактную информацию Хозяев и путешественников только после подтверждения бронирования."
+		},
+		"Jan03_StaySearchForm_m8p4": {
+			"Add_Guests": "Добавить путешественников",
+			"Guest_Singular": "{count} путешественник",
+			"Guests_Plural": "{count} путешественников"
+		},
+		"LoginSecurityPage": {
+			"guests": "путешественники"
+		},
+		"page": {
+			"page_Guest_Requirements_Heading": "Требования к путешественникам",
+			"page_Guest_Requirements_Text": "До 100 путешественников в возрасте от 4 лет могут принять участие. Родители также могут привести детей младше 2 лет."
+		},
+		"paydone_payment_page": {
+			"paydone_payment_page_Adults_Children": "{guests?.guestAdults || 0} Взрослых, {guests?.guestChildren || 0} детей",
+			"paydone_payment_page_Guests": "Путешественники"
+		},
+		"PersonalInfoPage": {
+			"shared_info_description": "travsus предоставляет контактную информацию Хозяев и путешественников только после подтверждения бронирования."
 		}
 	},
 	"zh-CN": {
-		"header": {
-			"header_AddGuests": "添加旅客",
-			"header_CheckIn": "入住",
-			"header_Location": "位置"
+		"accountsettings_loginandsecurity_page": {
+			"accountsettings_loginandsecurity_page_Guests": "旅行者"
+		},
+		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput": {
+			"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Add_Guests": "添加旅行者",
+			"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Guests": "旅行者"
+		},
+		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page": {
+			"Guest_Requirements_Text": "最多100名4岁及以上的旅行者可以参加。父母也可以带2岁以下的儿童。",
+			"Guest_Requirements_Title": "旅行者要求"
+		},
+		"GuestsInput": {
+			"add_guests": "添加旅行者",
+			"guests": "旅行者",
+			"total_guests": "{count}名旅行者"
+		},
+		"Jan03_CheckoutPage_q8m3": {
+			"Guests": "旅行者"
+		},
+		"Jan03_PayPage_m5k8": {
+			"guests": "旅行者"
+		},
+		"Jan03_PersonalInfo_d6k9": {
+			"What_Info_Shared_Description": "travsus只在预订确认后才会公开房东和旅行者的联系信息。"
+		},
+		"Jan03_StaySearchForm_m8p4": {
+			"Add_Guests": "添加旅行者",
+			"Guest_Singular": "{count}名旅行者",
+			"Guests_Plural": "{count}名旅行者"
+		},
+		"LoginSecurityPage": {
+			"guests": "旅行者"
+		},
+		"page": {
+			"page_Guest_Requirements_Heading": "旅行者要求",
+			"page_Guest_Requirements_Text": "最多100名4岁及以上的旅行者可以参加。父母也可以带2岁以下的儿童。"
+		},
+		"paydone_payment_page": {
+			"paydone_payment_page_Adults_Children": "{guests?.guestAdults || 0}名成人，{guests?.guestChildren || 0}名儿童",
+			"paydone_payment_page_Guests": "旅行者"
+		},
+		"PersonalInfoPage": {
+			"shared_info_description": "travsus只在预订确认后才会公开房东和旅行者的联系信息。"
 		}
 	},
 	"ko-KR": {
-		"header": {
-			"header_AddGuests": "여행자 추가",
-			"header_CheckIn": "체크인",
-			"header_Location": "위치"
+		"accountsettings_loginandsecurity_page": {
+			"accountsettings_loginandsecurity_page_Guests": "여행자"
+		},
+		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput": {
+			"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Add_Guests": "여행자 추가",
+			"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Guests": "여행자"
+		},
+		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page": {
+			"Guest_Requirements_Text": "4세 이상의 여행자 최대 100명이 참석할 수 있습니다. 부모는 2세 미만의 어린이도 동반할 수 있습니다.",
+			"Guest_Requirements_Title": "여행자 요구사항"
+		},
+		"GuestsInput": {
+			"add_guests": "여행자 추가",
+			"guests": "여행자",
+			"total_guests": "{count}명의 여행자"
+		},
+		"Jan03_CheckoutPage_q8m3": {
+			"Guests": "여행자"
+		},
+		"Jan03_PayPage_m5k8": {
+			"guests": "여행자"
+		},
+		"Jan03_PersonalInfo_d6k9": {
+			"What_Info_Shared_Description": "travsus는 예약이 확정된 후에만 호스트와 여행자의 연락처 정보를 공개합니다."
+		},
+		"Jan03_StaySearchForm_m8p4": {
+			"Add_Guests": "여행자 추가",
+			"Guest_Singular": "{count}명의 여행자",
+			"Guests_Plural": "{count}명의 여행자"
+		},
+		"LoginSecurityPage": {
+			"guests": "여행자"
+		},
+		"page": {
+			"page_Guest_Requirements_Heading": "여행자 요구사항",
+			"page_Guest_Requirements_Text": "4세 이상의 여행자 최대 100명이 참석할 수 있습니다. 부모는 2세 미만의 어린이도 동반할 수 있습니다."
+		},
+		"paydone_payment_page": {
+			"paydone_payment_page_Adults_Children": "{guests?.guestAdults || 0}명의 성인, {guests?.guestChildren || 0}명의 어린이",
+			"paydone_payment_page_Guests": "여행자"
+		},
+		"PersonalInfoPage": {
+			"shared_info_description": "travsus는 예약이 확정된 후에만 호스트와 여행자의 연락처 정보를 공개합니다."
 		}
 	}
 }

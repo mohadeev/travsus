@@ -43,6 +43,9 @@
     "work_travel_description": "添加工作邮箱获取商务旅行福利",
     "work_travel_title": "商务旅行"
   },
+  "accountsettings_loginandsecurity_page": {
+    "accountsettings_loginandsecurity_page_Guests": "旅行者"
+  },
   "app_clientcomponents_Header_CurrencyDropdown": {
     "app_clientcomponents_Header_CurrencyDropdown_Banknotes_Icon_Classes": "w-5 h-5 opacity-80",
     "app_clientcomponents_Header_CurrencyDropdown_Currency_Icon_Classes": "w-[18px] h-[18px]",
@@ -136,12 +139,12 @@
     "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_FAQProps_Frequently_Asked_Questions": "常见问题"
   },
   "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput": {
-    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Add_Guests": "添加客人",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Add_Guests": "添加旅行者",
     "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Adults": "成人",
     "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Ages_1_13": "1-13岁",
     "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Ages_13_Or_Above": "13岁或以上",
     "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Children": "儿童",
-    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Guests": "客人"
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Guests": "旅行者"
   },
   "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_Included": {
     "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_Included_Everything_Included_In_Your_Package": "您的套餐中包含的所有内容",
@@ -161,8 +164,8 @@
     "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page_Things_to_know": "须知",
     "Cancellation_Policy_Text": "TRAVSUS在本网站提供的每项服务（活动、一日游、导览游和接送服务）都有其特定的取消政策。用户可以在每项活动的描述部分（在网站上）或在TRAVSUS在预订完成后发送给用户的确认邮件中查看每项特定的取消政策。因此，特定的取消条件将适用于每项服务，其中规定了取消时间和可能的处罚。TRAVSUS将管理取消事宜，并确认每项活动、游览、导览游和/或接送服务的取消政策。如果服务提供商在预订日期没有可用性，TRAVSUS将为客户提供替代日期或时间安排，客户必须接受或拒绝。如果在72小时内未收到关于替代选项的回复，预订将被取消并立即退款。无论哪种情况，TRAVSUS都将发送相关文件。根据上述规定，并通过接受这些一般使用条款，用户声明已明确阅读并接受本取消政策，并同意在本网站预订的每项活动、一日游、导览游和/或接送服务的取消政策。",
     "Cancellation_Policy_Title": "取消政策",
-    "Guest_Requirements_Text": "最多100名4岁及以上的客人可以参加。父母也可以带2岁以下的儿童。",
-    "Guest_Requirements_Title": "客人要求",
+    "Guest_Requirements_Text": "最多100名4岁及以上的旅行者可以参加。父母也可以带2岁以下的儿童。",
+    "Guest_Requirements_Title": "旅行者要求",
     "Host_Description": "The Symphony 9 Tam Coc酒店享有湖景，位于宁平，提供住宿、室外游泳池、酒吧、共用休息室、花园和烧烤设施...",
     "Host_Information_Title": "房东信息",
     "Host_Joined_Date": "2016年3月加入",
@@ -798,16 +801,16 @@
     "3": "岁"
   },
   "GuestsInput": {
-    "add_guests": "添加客人",
+    "add_guests": "添加旅行者",
     "adults": "成人",
     "adults_desc": "13岁及以上",
     "children": "儿童",
     "children_desc": "2–12岁",
-    "guests": "客人",
+    "guests": "旅行者",
     "infants": "婴儿",
     "infants_desc": "0–2岁",
     "submit": "提交",
-    "total_guests": "{count} 位客人"
+    "total_guests": "{count}名旅行者"
   },
   "guests_Submit": {
     "0": "提",
@@ -843,7 +846,7 @@
     "Booking_Details": "预订详情",
     "Confirm_And_Payment": "确认并付款",
     "Date": "日期",
-    "Guests": "客人",
+    "Guests": "旅行者",
     "Guests_Count": "{adults}位成人，{children}位儿童",
     "Pay_With": "支付方式",
     "View_Booking_Details": "查看预订详情",
@@ -1196,7 +1199,7 @@
   "Jan03_PayPage_m5k8": {
     "congratulations": "恭喜！🎉",
     "date": "日期",
-    "guests": "客人",
+    "guests": "旅行者",
     "guests_count": "{adults}位成人，{children}位儿童",
     "manage_booking": "管理预订",
     "your_booking": "您的预订"
@@ -1230,7 +1233,7 @@
     "Saving": "保存中...",
     "Start": "开始",
     "Username": "用户名",
-    "What_Info_Shared_Description": "travsus只在预订确认后才会发布房东和客人的联系信息。",
+    "What_Info_Shared_Description": "travsus只在预订确认后才会公开房东和旅行者的联系信息。",
     "What_Info_Shared_Title": "哪些信息与他人共享？",
     "Which_Details_Editable_Description": "联系信息和个人详细信息可以编辑。如果这些信息用于验证您的身份，您需要在下次预订时重新验证 —或继续作为房东。",
     "Which_Details_Editable_Title": "哪些详细信息可以编辑？",
@@ -1297,9 +1300,9 @@
   },
   "Jan03_StaySearchForm_m8p4": {
     "Add_Date": "添加日期",
-    "Add_Guests": "添加客人",
-    "Guest_Singular": "{count}位客人",
-    "Guests_Plural": "{count}位客人",
+    "Add_Guests": "添加旅行者",
+    "Guest_Singular": "{count}名旅行者",
+    "Guests_Plural": "{count}名旅行者",
     "Infant_Singular": "{count}名婴儿",
     "Infants_Plural": "{count}名婴儿",
     "Location": "位置",
@@ -1363,7 +1366,7 @@
     "cancel": "取消",
     "deactivate": "停用",
     "deactivate_account": "停用您的账户",
-    "guests": "房客",
+    "guests": "旅行者",
     "hosts": "房东",
     "last_updated": "2年前更新",
     "login": "登录",
@@ -1377,8 +1380,8 @@
   "page": {
     "page_Cancellation_Policy_Heading": "取消政策",
     "page_Cancellation_Policy_Text": "TRAVSUS在本网站提供的每项服务（活动、一日游、导览游和接送服务）都有其特定的取消政策。用户可以在每项活动的描述部分（在网站上）或在TRAVSUS在预订完成后发送给用户的确认邮件中查看每项特定的取消政策。因此，特定的取消条件将适用于每项服务，其中规定了取消时间和可能的处罚。TRAVSUS将管理取消事宜，并确认每项活动、游览、导览游和/或接送服务的取消政策。如果服务提供商在预订日期没有空位，TRAVSUS将为客户提供替代日期或时间安排，客户必须接受或拒绝。如果在72小时内未收到关于替代选项的回复，预订将被取消并立即退款。无论哪种情况，TRAVSUS都将发送相关文件。根据上述规定，通过接受这些一般使用条款，用户声明已明确阅读并接受本取消政策，并同意在本网站预订的每项活动、一日游、导览游和/或接送服务的取消政策。",
-    "page_Guest_Requirements_Heading": "客人要求",
-    "page_Guest_Requirements_Text": "最多100名4岁及以上的客人可以参加。父母也可以带2岁以下的儿童。",
+    "page_Guest_Requirements_Heading": "旅行者要求",
+    "page_Guest_Requirements_Text": "最多100名4岁及以上的旅行者可以参加。父母也可以带2岁以下的儿童。",
     "page_Host_Description": "The Symphony 9 Tam Coc位于宁平，享有湖景，提供住宿、室外游泳池、酒吧、共用休息室、花园和烧烤设施...",
     "page_Host_Fast_Response": "快速回复 - 几小时内",
     "page_Host_Information_Heading": "房东信息",
@@ -1430,10 +1433,10 @@
     "page_What_To_Bring_Heading": "携带物品"
   },
   "paydone_payment_page": {
-    "paydone_payment_page_Adults_Children": "{guests?.guestAdults || 0}位成人，{guests?.guestChildren || 0}位儿童",
+    "paydone_payment_page_Adults_Children": "{guests?.guestAdults || 0}名成人，{guests?.guestChildren || 0}名儿童",
     "paydone_payment_page_Congratulation": "恭喜 🎉",
     "paydone_payment_page_Date": "日期",
-    "paydone_payment_page_Guests": "客人",
+    "paydone_payment_page_Guests": "旅行者",
     "paydone_payment_page_Manage_Booking": "管理预订",
     "paydone_payment_page_Your_Booking": "您的预订"
   },
@@ -1509,7 +1512,7 @@
     "phone_title": "电话号码",
     "save": "保存",
     "saving": "保存中...",
-    "shared_info_description": "travsus仅在预订确认后才会向房东和房客提供联系信息。",
+    "shared_info_description": "travsus只在预订确认后才会公开房东和旅行者的联系信息。",
     "shared_info_title": "哪些信息会与他人共享？",
     "start": "开始",
     "username_label": "用户名",

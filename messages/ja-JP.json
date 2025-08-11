@@ -43,6 +43,9 @@
     "work_travel_description": "ビジネストラベルの特典を受けるため仕事用メールを追加",
     "work_travel_title": "仕事の旅行"
   },
+  "accountsettings_loginandsecurity_page": {
+    "accountsettings_loginandsecurity_page_Guests": "旅行者"
+  },
   "app_clientcomponents_Header_CurrencyDropdown": {
     "app_clientcomponents_Header_CurrencyDropdown_Banknotes_Icon_Classes": "w-5 h-5 opacity-80",
     "app_clientcomponents_Header_CurrencyDropdown_Currency_Icon_Classes": "w-[18px] h-[18px]",
@@ -136,12 +139,12 @@
     "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_FAQProps_Frequently_Asked_Questions": "よくある質問"
   },
   "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput": {
-    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Add_Guests": "ゲストを追加",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Add_Guests": "旅行者を追加",
     "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Adults": "大人",
     "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Ages_1_13": "1歳～13歳",
     "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Ages_13_Or_Above": "13歳以上",
     "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Children": "子供",
-    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Guests": "ゲスト"
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Guests": "旅行者"
   },
   "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_Included": {
     "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_Included_Everything_Included_In_Your_Package": "パッケージに含まれるすべて",
@@ -161,8 +164,8 @@
     "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page_Things_to_know": "知っておくべきこと",
     "Cancellation_Policy_Text": "本ウェブサイトでTRAVSUSが提供する各サービス（アクティビティ、日帰り旅行、ガイド付きツアー、送迎）には、それぞれ固有のキャンセルポリシーがあります。ユーザーは各アクティビティの説明部分（ウェブサイト内）または予約完了後にTRAVSUSが送信する確認メールで、各固有のキャンセルポリシーを確認できます。したがって、キャンセル時期と可能な違約金を定める特定のキャンセル条件が各サービスに適用されます。TRAVSUSはキャンセルを管理し、各アクティビティ、エクスカーション、ガイド付きツアー、送迎のキャンセルポリシーを確認します。プロバイダーが予約日に空きがない場合、TRAVSUSは顧客に代替日またはスケジュールを提案し、顧客はこれを受諾または拒否する必要があります。代替オプションについて72時間以内に返答がない場合、予約はキャンセルされ、即座に返金されます。いずれの場合も、TRAVSUSは関連書類を送付します。上記に従い、本利用規約を受諾することにより、ユーザーは本キャンセルポリシーを明示的に読み、受諾したことを宣言し、本ウェブサイトで予約される各アクティビティ、日帰り旅行、ガイド付きツアー、送迎のキャンセルポリシーに同意するものとします。",
     "Cancellation_Policy_Title": "キャンセルポリシー",
-    "Guest_Requirements_Text": "4歳以上の最大100名のゲストが参加できます。保護者は2歳未満のお子様も同伴できます。",
-    "Guest_Requirements_Title": "ゲスト要件",
+    "Guest_Requirements_Text": "4歳以上の旅行者が最大100名まで参加できます。保護者は2歳未満のお子様も同伴できます。",
+    "Guest_Requirements_Title": "旅行者の要件",
     "Host_Description": "湖の景色を提供するニンビンのThe Symphony 9 Tam Cocは、宿泊施設、屋外プール、バー、共用ラウンジ、庭園、バーベキュー設備を提供しています...",
     "Host_Information_Title": "ホスト情報",
     "Host_Joined_Date": "2016年3月に参加",
@@ -817,16 +820,16 @@
     "3": "歳"
   },
   "GuestsInput": {
-    "add_guests": "ゲストを追加",
+    "add_guests": "旅行者を追加",
     "adults": "大人",
     "adults_desc": "13歳以上",
     "children": "子供",
     "children_desc": "2～12歳",
-    "guests": "ゲスト",
+    "guests": "旅行者",
     "infants": "乳児",
     "infants_desc": "0～2歳",
     "submit": "送信",
-    "total_guests": "{count} 名のゲスト"
+    "total_guests": "{count}名の旅行者"
   },
   "guests_Submit": {
     "0": "送",
@@ -864,7 +867,7 @@
     "Booking_Details": "予約詳細",
     "Confirm_And_Payment": "確認と支払い",
     "Date": "日付",
-    "Guests": "ゲスト",
+    "Guests": "旅行者",
     "Guests_Count": "大人{adults}名、子供{children}名",
     "Pay_With": "支払い方法",
     "View_Booking_Details": "予約詳細を表示",
@@ -1217,7 +1220,7 @@
   "Jan03_PayPage_m5k8": {
     "congratulations": "おめでとうございます！🎉",
     "date": "日付",
-    "guests": "ゲスト",
+    "guests": "旅行者",
     "guests_count": "大人{adults}名、子供{children}名",
     "manage_booking": "予約を管理",
     "your_booking": "あなたの予約"
@@ -1251,7 +1254,7 @@
     "Saving": "保存中...",
     "Start": "開始",
     "Username": "ユーザー名",
-    "What_Info_Shared_Description": "travsusは予約が確認された後にのみ、ホストとゲストの連絡先情報を公開します。",
+    "What_Info_Shared_Description": "travsusは予約が確定した後にのみ、ホストと旅行者の連絡先情報を公開します。",
     "What_Info_Shared_Title": "どの情報が他の人と共有されますか？",
     "Which_Details_Editable_Description": "連絡先情報と個人詳細は編集できます。この情報があなたの身元確認に使用された場合、次回の予約時に再度確認が必要になります —またはホスティングを続けるために。",
     "Which_Details_Editable_Title": "どの詳細を編集できますか？",
@@ -1318,9 +1321,9 @@
   },
   "Jan03_StaySearchForm_m8p4": {
     "Add_Date": "日付を追加",
-    "Add_Guests": "ゲストを追加",
-    "Guest_Singular": "{count}名のゲスト",
-    "Guests_Plural": "{count}名のゲスト",
+    "Add_Guests": "旅行者を追加",
+    "Guest_Singular": "{count}名の旅行者",
+    "Guests_Plural": "{count}名の旅行者",
     "Infant_Singular": "{count}名の乳児",
     "Infants_Plural": "{count}名の乳児",
     "Location": "場所",
@@ -1384,7 +1387,7 @@
     "cancel": "キャンセル",
     "deactivate": "無効化",
     "deactivate_account": "アカウントを無効化",
-    "guests": "ゲスト",
+    "guests": "旅行者",
     "hosts": "ホスト",
     "last_updated": "2年前に更新",
     "login": "ログイン",
@@ -1398,8 +1401,8 @@
   "page": {
     "page_Cancellation_Policy_Heading": "キャンセルポリシー",
     "page_Cancellation_Policy_Text": "本ウェブサイトでTRAVSUSが提供する各サービス（アクティビティ、日帰り旅行、ガイド付きツアー、送迎）には、それぞれ固有のキャンセルポリシーがあります。ユーザーは、各アクティビティの説明部分（ウェブサイト内）または予約完了後にTRAVSUSがユーザーに送信する確認メールで、各固有のキャンセルポリシーを確認できます。したがって、キャンセル時期と可能な違約金を定める特定のキャンセル条件が各サービスに適用されます。TRAVSUSはキャンセルを管理し、各アクティビティ、エクスカーション、ガイド付きツアー、送迎のキャンセルポリシーを確認します。プロバイダーが予約日に空きがない場合、TRAVSUSは顧客に代替日またはスケジュールを提案し、顧客はこれを受諾または拒否する必要があります。代替オプションについて72時間以内に返答がない場合、予約はキャンセルされ、即座に返金されます。いずれの場合も、TRAVSUSは関連書類を送付します。上記に従い、これらの一般利用規約を受諾することにより、ユーザーは本キャンセルポリシーを明示的に読み、受諾したことを宣言し、本ウェブサイトで予約される各アクティビティ、日帰り旅行、ガイド付きツアー、送迎のキャンセルポリシーに同意するものとします。",
-    "page_Guest_Requirements_Heading": "ゲスト要件",
-    "page_Guest_Requirements_Text": "4歳以上の最大100名のゲストが参加できます。保護者は2歳未満のお子様も同伴できます。",
+    "page_Guest_Requirements_Heading": "旅行者の要件",
+    "page_Guest_Requirements_Text": "4歳以上の旅行者が最大100名まで参加できます。保護者は2歳未満のお子様も同伴できます。",
     "page_Host_Description": "湖の景色を提供するニンビンのThe Symphony 9 Tam Cocは、宿泊施設、屋外プール、バー、共用ラウンジ、庭園、バーベキュー設備を提供しています...",
     "page_Host_Fast_Response": "迅速な返答 - 数時間以内",
     "page_Host_Information_Heading": "ホスト情報",
@@ -1454,7 +1457,7 @@
     "paydone_payment_page_Adults_Children": "{guests?.guestAdults || 0}名の大人、{guests?.guestChildren || 0}名の子供",
     "paydone_payment_page_Congratulation": "おめでとうございます 🎉",
     "paydone_payment_page_Date": "日付",
-    "paydone_payment_page_Guests": "ゲスト",
+    "paydone_payment_page_Guests": "旅行者",
     "paydone_payment_page_Manage_Booking": "予約を管理",
     "paydone_payment_page_Your_Booking": "あなたの予約"
   },
@@ -1530,7 +1533,7 @@
     "phone_title": "電話番号",
     "save": "保存",
     "saving": "保存中...",
-    "shared_info_description": "travsusは予約確認後にのみ、ホストとゲストの連絡先情報を公開します。",
+    "shared_info_description": "travsusは予約が確定した後にのみ、ホストと旅行者の連絡先情報を公開します。",
     "shared_info_title": "どの情報が他の人と共有されますか？",
     "start": "開始",
     "username_label": "ユーザー名",

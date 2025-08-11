@@ -43,6 +43,9 @@
     "work_travel_description": "Aggiungi email lavorativa per vantaggi sui viaggi business",
     "work_travel_title": "Viaggi di lavoro"
   },
+  "accountsettings_loginandsecurity_page": {
+    "accountsettings_loginandsecurity_page_Guests": "viaggiatori"
+  },
   "app_clientcomponents_Header_CurrencyDropdown": {
     "app_clientcomponents_Header_CurrencyDropdown_Banknotes_Icon_Classes": "w-5 h-5 opacity-80",
     "app_clientcomponents_Header_CurrencyDropdown_Currency_Icon_Classes": "w-[18px] h-[18px]",
@@ -136,12 +139,12 @@
     "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_FAQProps_Frequently_Asked_Questions": "Domande Frequenti"
   },
   "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput": {
-    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Add_Guests": "Aggiungi ospiti",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Add_Guests": "Aggiungi viaggiatori",
     "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Adults": "Adulti",
     "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Ages_1_13": "Età 1–13",
     "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Ages_13_Or_Above": "Età 13 o superiore",
     "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Children": "Bambini",
-    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Guests": "Ospiti"
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Guests": "Viaggiatori"
   },
   "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_Included": {
     "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_Included_Everything_Included_In_Your_Package": "Tutto incluso nel tuo pacchetto",
@@ -161,8 +164,8 @@
     "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page_Things_to_know": "Cose da sapere",
     "Cancellation_Policy_Text": "Ogni servizio fornito da TRAVSUS sul presente Sito Web (attività, gite di un giorno, tour guidati e trasferimenti) ha la propria politica di cancellazione specifica. L'Utente può verificare ogni politica di cancellazione specifica nella parte descrittiva di ogni attività (nel Sito Web) o nell'email di conferma che TRAVSUS invierà all'Utente una volta effettuata la prenotazione. Pertanto, le condizioni specifiche di cancellazione saranno applicabili a ogni servizio, che stabiliscono il tempo di cancellazione e le possibili penalizzazioni. TRAVSUS gestirà le cancellazioni e confermerà le politiche di cancellazione di ogni attività, escursione, tour guidato e/o trasferimento. Se il FORNITORE non ha disponibilità nella data prenotata, TRAVSUS offrirà al cliente una data o un orario alternativo, che deve essere accettato o rifiutato dal cliente. Se non viene ricevuta alcuna risposta sull'opzione alternativa entro 72 ore, la prenotazione verrà cancellata e rimborsata immediatamente. In entrambi i casi, TRAVSUS invierà la documentazione pertinente. IN CONFORMITÀ CON QUANTO SOPRA, E ACCETTANDO QUESTI TERMINI GENERALI DI UTILIZZO, GLI UTENTI DICHIARANO DI AVER ESPRESSAMENTE LETTO E ACCETTATO LA PRESENTE POLITICA DI CANCELLAZIONE E CON LA PRESENTE ACCETTANO LE POLITICHE DI CANCELLAZIONE DI OGNI ATTIVITÀ, GITA DI UN GIORNO, TOUR GUIDATO E/O TRASFERIMENTO CHE VENGONO PRENOTATI SUL PRESENTE SITO WEB.",
     "Cancellation_Policy_Title": "Politica di cancellazione",
-    "Guest_Requirements_Text": "Fino a 100 ospiti di età pari o superiore a 4 anni possono partecipare. I genitori possono anche portare bambini di età inferiore a 2 anni.",
-    "Guest_Requirements_Title": "Requisiti per gli ospiti",
+    "Guest_Requirements_Text": "Fino a 100 viaggiatori di 4 anni e oltre possono partecipare. I genitori possono anche portare bambini sotto i 2 anni.",
+    "Guest_Requirements_Title": "Requisiti del viaggiatore",
     "Host_Description": "Con vista sul lago, The Symphony 9 Tam Coc a Ninh Binh offre sistemazioni, una piscina all'aperto, un bar, un salotto comune, un giardino e attrezzature per barbecue...",
     "Host_Information_Title": "Informazioni sull'Host",
     "Host_Joined_Date": "Iscritto a marzo 2016",
@@ -856,16 +859,16 @@
     "6": "2"
   },
   "GuestsInput": {
-    "add_guests": "Aggiungi ospiti",
+    "add_guests": "Aggiungi viaggiatori",
     "adults": "Adulti",
     "adults_desc": "Età 13 o più",
     "children": "Bambini",
     "children_desc": "Età 2–12",
-    "guests": "Ospiti",
+    "guests": "Viaggiatori",
     "infants": "Neonati",
     "infants_desc": "Età 0–2",
     "submit": "Invia",
-    "total_guests": "{count} Ospiti"
+    "total_guests": "{count} Viaggiatori"
   },
   "guests_Submit": {
     "0": "I",
@@ -907,7 +910,7 @@
     "Booking_Details": "Dettagli prenotazione",
     "Confirm_And_Payment": "Conferma e pagamento",
     "Date": "Data",
-    "Guests": "Ospiti",
+    "Guests": "Viaggiatori",
     "Guests_Count": "{adults} Adulti, {children} bambini",
     "Pay_With": "Paga con",
     "View_Booking_Details": "Visualizza dettagli prenotazione",
@@ -1260,7 +1263,7 @@
   "Jan03_PayPage_m5k8": {
     "congratulations": "Congratulazioni! 🎉",
     "date": "Data",
-    "guests": "Ospiti",
+    "guests": "Viaggiatori",
     "guests_count": "{adults} Adulti, {children} bambini",
     "manage_booking": "Gestisci prenotazione",
     "your_booking": "La tua prenotazione"
@@ -1294,7 +1297,7 @@
     "Saving": "Salvataggio...",
     "Start": "Inizia",
     "Username": "Nome utente",
-    "What_Info_Shared_Description": "travsus rilascia le informazioni di contatto per host e ospiti solo dopo che una prenotazione è confermata.",
+    "What_Info_Shared_Description": "travsus rilascia le informazioni di contatto di Host e viaggiatori solo dopo che una prenotazione è confermata.",
     "What_Info_Shared_Title": "Quali informazioni sono condivise con altri?",
     "Which_Details_Editable_Description": "Le informazioni di contatto e i dettagli personali possono essere modificati. Se queste informazioni sono state utilizzate per verificare la tua identità, dovrai essere verificato di nuovo la prossima volta che prenoti —o per continuare a fare l'host.",
     "Which_Details_Editable_Title": "Quali dettagli possono essere modificati?",
@@ -1361,9 +1364,9 @@
   },
   "Jan03_StaySearchForm_m8p4": {
     "Add_Date": "Aggiungi data",
-    "Add_Guests": "Aggiungi ospiti",
-    "Guest_Singular": "{count} ospite",
-    "Guests_Plural": "{count} ospiti",
+    "Add_Guests": "Aggiungi viaggiatori",
+    "Guest_Singular": "{count} viaggiatore",
+    "Guests_Plural": "{count} viaggiatori",
     "Infant_Singular": "{count} neonato",
     "Infants_Plural": "{count} neonati",
     "Location": "Posizione",
@@ -1427,7 +1430,7 @@
     "cancel": "Annulla",
     "deactivate": "Disattiva",
     "deactivate_account": "Disattiva il tuo account",
-    "guests": "ospiti",
+    "guests": "viaggiatori",
     "hosts": "host",
     "last_updated": "Ultimo aggiornamento 2 anni fa",
     "login": "Accesso",
@@ -1441,8 +1444,8 @@
   "page": {
     "page_Cancellation_Policy_Heading": "Politica di cancellazione",
     "page_Cancellation_Policy_Text": "Ogni servizio fornito da TRAVSUS sul presente Sito Web (attività, gite di un giorno, tour guidati e trasferimenti) ha la propria politica di cancellazione specifica. L'Utente può verificare ogni politica di cancellazione specifica nella parte descrittiva di ogni attività (nel Sito Web) o nell'email di conferma che TRAVSUS invierà all'Utente una volta effettuata la prenotazione. Pertanto, le condizioni specifiche di cancellazione saranno applicabili a ogni servizio, che stabiliscono il tempo di cancellazione e la possibile penalizzazione. TRAVSUS gestirà le cancellazioni e confermerà le politiche di cancellazione di ogni attività, escursione, tour guidato e/o trasferimento. Se il FORNITORE non ha disponibilità nella data prenotata, TRAVSUS offrirà al cliente una data o un orario alternativo, che deve essere accettato o rifiutato dal cliente. Se non viene ricevuta alcuna risposta sull'opzione alternativa entro 72 ore, la prenotazione verrà cancellata e rimborsata immediatamente. In entrambi i casi, TRAVSUS invierà la documentazione pertinente. IN CONFORMITÀ CON QUANTO SOPRA, E ACCETTANDO QUESTI TERMINI GENERALI DI UTILIZZO, GLI UTENTI DICHIARANO DI AVER ESPRESSAMENTE LETTO E ACCETTATO LA PRESENTE POLITICA DI CANCELLAZIONE E CON LA PRESENTE ACCETTANO LE POLITICHE DI CANCELLAZIONE DI OGNI ATTIVITÀ, GITA DI UN GIORNO, TOUR GUIDATO E/O TRASFERIMENTO CHE VENGONO PRENOTATI SUL PRESENTE SITO WEB.",
-    "page_Guest_Requirements_Heading": "Requisiti per gli ospiti",
-    "page_Guest_Requirements_Text": "Fino a 100 ospiti di età pari o superiore a 4 anni possono partecipare. I genitori possono anche portare bambini di età inferiore ai 2 anni.",
+    "page_Guest_Requirements_Heading": "Requisiti del viaggiatore",
+    "page_Guest_Requirements_Text": "Fino a 100 viaggiatori di 4 anni e oltre possono partecipare. I genitori possono anche portare bambini sotto i 2 anni.",
     "page_Host_Description": "Con vista sul lago, The Symphony 9 Tam Coc a Ninh Binh offre sistemazioni, una piscina all'aperto, un bar, un salotto comune, un giardino e attrezzature per barbecue...",
     "page_Host_Fast_Response": "Risposta rapida - entro poche ore",
     "page_Host_Information_Heading": "Informazioni sull'Host",
@@ -1497,7 +1500,7 @@
     "paydone_payment_page_Adults_Children": "{guests?.guestAdults || 0} Adulti, {guests?.guestChildren || 0} bambini",
     "paydone_payment_page_Congratulation": "Congratulazioni 🎉",
     "paydone_payment_page_Date": "Data",
-    "paydone_payment_page_Guests": "Ospiti",
+    "paydone_payment_page_Guests": "Viaggiatori",
     "paydone_payment_page_Manage_Booking": "Gestisci prenotazione",
     "paydone_payment_page_Your_Booking": "La tua prenotazione"
   },
@@ -1573,7 +1576,7 @@
     "phone_title": "Numero di telefono",
     "save": "Salva",
     "saving": "Salvataggio...",
-    "shared_info_description": "travsus rilascia le informazioni di contatto di host e ospiti solo dopo la conferma di una prenotazione.",
+    "shared_info_description": "travsus rilascia le informazioni di contatto di Host e viaggiatori solo dopo che una prenotazione è confermata.",
     "shared_info_title": "Quali informazioni vengono condivise con gli altri?",
     "start": "Inizia",
     "username_label": "Nome utente",

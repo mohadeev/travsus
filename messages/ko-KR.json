@@ -43,6 +43,9 @@
     "work_travel_description": "출장 혜택을 위해 직장 이메일을 추가하세요",
     "work_travel_title": "출장"
   },
+  "accountsettings_loginandsecurity_page": {
+    "accountsettings_loginandsecurity_page_Guests": "여행자"
+  },
   "app_clientcomponents_Header_CurrencyDropdown": {
     "app_clientcomponents_Header_CurrencyDropdown_Banknotes_Icon_Classes": "w-5 h-5 opacity-80",
     "app_clientcomponents_Header_CurrencyDropdown_Currency_Icon_Classes": "w-[18px] h-[18px]",
@@ -136,12 +139,12 @@
     "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_FAQProps_Frequently_Asked_Questions": "자주 묻는 질문"
   },
   "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput": {
-    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Add_Guests": "손님 추가",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Add_Guests": "여행자 추가",
     "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Adults": "성인",
     "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Ages_1_13": "1세–13세",
     "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Ages_13_Or_Above": "13세 이상",
     "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Children": "어린이",
-    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Guests": "손님"
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Guests": "여행자"
   },
   "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_Included": {
     "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_Included_Everything_Included_In_Your_Package": "패키지에 포함된 모든 것",
@@ -161,8 +164,8 @@
     "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page_Things_to_know": "알아두어야 할 사항",
     "Cancellation_Policy_Text": "현재 웹사이트에서 TRAVSUS가 제공하는 각 서비스(액티비티, 당일 여행, 가이드 투어 및 교통편)는 고유한 취소 정책을 가지고 있습니다. 사용자는 각 액티비티의 설명 부분(웹사이트 내) 또는 예약이 완료된 후 TRAVSUS가 사용자에게 보내는 확인 이메일에서 각각의 구체적인 취소 정책을 확인할 수 있습니다. 따라서 취소 시간과 가능한 위약금을 규정하는 각 서비스에 대한 구체적인 취소 조건이 적용됩니다. TRAVSUS는 취소를 관리하고 각 액티비티, 여행, 가이드 투어 및/또는 교통편의 취소 정책을 확인합니다. 공급업체가 예약된 날짜에 이용 가능하지 않은 경우, TRAVSUS는 고객에게 대체 날짜나 일정을 제안하며, 이는 고객이 수락하거나 거절해야 합니다. 72시간 이내에 대안 옵션에 대한 답변을 받지 못하면 예약이 취소되고 즉시 환불됩니다. 어느 경우든 TRAVSUS는 관련 문서를 발송합니다. 위의 내용에 따라, 그리고 이 일반 이용 약관을 수락함으로써, 사용자는 현재 취소 정책을 명시적으로 읽고 수락했음을 선언하며, 현재 웹사이트에서 예약되는 각 액티비티, 당일 여행, 가이드 투어 및/또는 교통편의 취소 정책에 동의합니다.",
     "Cancellation_Policy_Title": "취소 정책",
-    "Guest_Requirements_Text": "4세 이상 최대 100명의 게스트가 참석할 수 있습니다. 부모는 2세 미만의 어린이도 동반할 수 있습니다.",
-    "Guest_Requirements_Title": "게스트 요구사항",
+    "Guest_Requirements_Text": "4세 이상의 여행자 최대 100명이 참석할 수 있습니다. 부모는 2세 미만의 어린이도 동반할 수 있습니다.",
+    "Guest_Requirements_Title": "여행자 요구사항",
     "Host_Description": "호수 전망을 제공하는 닌빈의 The Symphony 9 Tam Coc은 숙박 시설, 야외 수영장, 바, 공용 라운지, 정원 및 바베큐 시설을 제공합니다...",
     "Host_Information_Title": "호스트 정보",
     "Host_Joined_Date": "2016년 3월 가입",
@@ -819,16 +822,16 @@
     "3": "세"
   },
   "GuestsInput": {
-    "add_guests": "게스트 추가",
+    "add_guests": "여행자 추가",
     "adults": "성인",
     "adults_desc": "13세 이상",
     "children": "어린이",
     "children_desc": "2-12세",
-    "guests": "게스트",
+    "guests": "여행자",
     "infants": "유아",
     "infants_desc": "0-2세",
     "submit": "제출",
-    "total_guests": "{count}명의 게스트"
+    "total_guests": "{count}명의 여행자"
   },
   "guests_Submit": {
     "0": "제",
@@ -867,7 +870,7 @@
     "Booking_Details": "예약 세부사항",
     "Confirm_And_Payment": "확인 및 결제",
     "Date": "날짜",
-    "Guests": "게스트",
+    "Guests": "여행자",
     "Guests_Count": "성인 {adults}명, 어린이 {children}명",
     "Pay_With": "결제 수단",
     "View_Booking_Details": "예약 세부사항 보기",
@@ -1220,7 +1223,7 @@
   "Jan03_PayPage_m5k8": {
     "congratulations": "축하합니다! 🎉",
     "date": "날짜",
-    "guests": "게스트",
+    "guests": "여행자",
     "guests_count": "성인 {adults}명, 어린이 {children}명",
     "manage_booking": "예약 관리",
     "your_booking": "귀하의 예약"
@@ -1254,7 +1257,7 @@
     "Saving": "저장 중...",
     "Start": "시작",
     "Username": "사용자명",
-    "What_Info_Shared_Description": "travsus는 예약이 확인된 후에만 호스트와 게스트의 연락처 정보를 공개합니다.",
+    "What_Info_Shared_Description": "travsus는 예약이 확정된 후에만 호스트와 여행자의 연락처 정보를 공개합니다.",
     "What_Info_Shared_Title": "어떤 정보가 다른 사람과 공유되나요?",
     "Which_Details_Editable_Description": "연락처 정보와 개인 세부 정보는 편집할 수 있습니다. 이 정보가 신원 확인에 사용된 경우, 다음 예약 시 다시 확인을 받아야 합니다 —또는 호스팅을 계속하려면.",
     "Which_Details_Editable_Title": "어떤 세부 정보를 편집할 수 있나요?",
@@ -1321,9 +1324,9 @@
   },
   "Jan03_StaySearchForm_m8p4": {
     "Add_Date": "날짜 추가",
-    "Add_Guests": "게스트 추가",
-    "Guest_Singular": "{count}명의 게스트",
-    "Guests_Plural": "{count}명의 게스트",
+    "Add_Guests": "여행자 추가",
+    "Guest_Singular": "{count}명의 여행자",
+    "Guests_Plural": "{count}명의 여행자",
     "Infant_Singular": "{count}명의 유아",
     "Infants_Plural": "{count}명의 유아",
     "Location": "위치",
@@ -1387,7 +1390,7 @@
     "cancel": "취소",
     "deactivate": "비활성화",
     "deactivate_account": "계정 비활성화",
-    "guests": "게스트",
+    "guests": "여행자",
     "hosts": "호스트",
     "last_updated": "2년 전 업데이트됨",
     "login": "로그인",
@@ -1401,8 +1404,8 @@
   "page": {
     "page_Cancellation_Policy_Heading": "취소 정책",
     "page_Cancellation_Policy_Text": "현재 웹사이트에서 TRAVSUS가 제공하는 각 서비스(액티비티, 당일 여행, 가이드 투어 및 교통편)는 고유한 취소 정책을 가지고 있습니다. 사용자는 각 액티비티의 설명 부분(웹사이트 내) 또는 예약이 완료된 후 TRAVSUS가 사용자에게 발송하는 확인 이메일에서 각각의 구체적인 취소 정책을 확인할 수 있습니다. 따라서 취소 시간과 가능한 위약금을 규정하는 각 서비스에 대한 구체적인 취소 조건이 적용됩니다. TRAVSUS는 취소를 관리하고 각 액티비티, 여행, 가이드 투어 및/또는 교통편의 취소 정책을 확인합니다. 공급업체가 예약된 날짜에 이용 가능하지 않은 경우, TRAVSUS는 고객에게 대체 날짜나 일정을 제안하며, 이는 고객이 수락하거나 거절해야 합니다. 72시간 이내에 대안 옵션에 대한 답변을 받지 못하면 예약이 취소되고 즉시 환불됩니다. 어느 경우든 TRAVSUS는 관련 문서를 발송합니다. 위의 내용에 따라, 그리고 이 일반 이용 약관을 수락함으로써, 사용자는 현재 취소 정책을 명시적으로 읽고 수락했음을 선언하며, 현재 웹사이트에서 예약되는 각 액티비티, 당일 여행, 가이드 투어 및/또는 교통편의 취소 정책에 동의합니다.",
-    "page_Guest_Requirements_Heading": "게스트 요구사항",
-    "page_Guest_Requirements_Text": "4세 이상 최대 100명의 게스트가 참석할 수 있습니다. 부모는 2세 미만의 어린이도 동반할 수 있습니다.",
+    "page_Guest_Requirements_Heading": "여행자 요구사항",
+    "page_Guest_Requirements_Text": "4세 이상의 여행자 최대 100명이 참석할 수 있습니다. 부모는 2세 미만의 어린이도 동반할 수 있습니다.",
     "page_Host_Description": "호수 전망을 제공하는 닌빈의 The Symphony 9 Tam Coc은 숙박시설, 야외 수영장, 바, 공용 라운지, 정원 및 바비큐 시설을 제공합니다...",
     "page_Host_Fast_Response": "빠른 응답 - 몇 시간 이내",
     "page_Host_Information_Heading": "호스트 정보",
@@ -1454,10 +1457,10 @@
     "page_What_To_Bring_Heading": "준비물"
   },
   "paydone_payment_page": {
-    "paydone_payment_page_Adults_Children": "성인 {guests?.guestAdults || 0}명, 어린이 {guests?.guestChildren || 0}명",
+    "paydone_payment_page_Adults_Children": "{guests?.guestAdults || 0}명의 성인, {guests?.guestChildren || 0}명의 어린이",
     "paydone_payment_page_Congratulation": "축하합니다 🎉",
     "paydone_payment_page_Date": "날짜",
-    "paydone_payment_page_Guests": "게스트",
+    "paydone_payment_page_Guests": "여행자",
     "paydone_payment_page_Manage_Booking": "예약 관리",
     "paydone_payment_page_Your_Booking": "귀하의 예약"
   },
@@ -1533,7 +1536,7 @@
     "phone_title": "전화번호",
     "save": "저장",
     "saving": "저장 중...",
-    "shared_info_description": "travsus는 예약이 확정된 후에만 호스트와 게스트의 연락처 정보를 공개합니다.",
+    "shared_info_description": "travsus는 예약이 확정된 후에만 호스트와 여행자의 연락처 정보를 공개합니다.",
     "shared_info_title": "어떤 정보가 타인과 공유되나요?",
     "start": "시작",
     "username_label": "사용자 이름",

@@ -43,6 +43,9 @@
     "work_travel_description": "Добавьте рабочий email для льгот в командировках",
     "work_travel_title": "Рабочие поездки"
   },
+  "accountsettings_loginandsecurity_page": {
+    "accountsettings_loginandsecurity_page_Guests": "путешественники"
+  },
   "app_clientcomponents_Header_CurrencyDropdown": {
     "app_clientcomponents_Header_CurrencyDropdown_Banknotes_Icon_Classes": "w-5 h-5 opacity-80",
     "app_clientcomponents_Header_CurrencyDropdown_Currency_Icon_Classes": "w-[18px] h-[18px]",
@@ -136,12 +139,12 @@
     "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_FAQProps_Frequently_Asked_Questions": "Часто Задаваемые Вопросы"
   },
   "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput": {
-    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Add_Guests": "Добавить гостей",
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Add_Guests": "Добавить путешественников",
     "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Adults": "Взрослые",
     "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Ages_1_13": "Возраст 1–13",
     "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Ages_13_Or_Above": "Возраст 13 или старше",
     "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Children": "Дети",
-    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Guests": "Гости"
+    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Guests": "Путешественники"
   },
   "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_Included": {
     "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_Included_Everything_Included_In_Your_Package": "Все включено в ваш пакет",
@@ -161,8 +164,8 @@
     "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page_Things_to_know": "Важно знать",
     "Cancellation_Policy_Text": "Каждая услуга, предоставляемая TRAVSUS на данном веб-сайте (мероприятия, однодневные поездки, экскурсии с гидом и трансферы), имеет свою собственную политику отмены. Пользователь может ознакомиться с каждой конкретной политикой отмены в описательной части каждого мероприятия (на веб-сайте) или в электронном письме с подтверждением, которое TRAVSUS отправит пользователю после оформления бронирования. Таким образом, к каждой услуге будут применяться конкретные условия отмены, которые устанавливают время отмены и возможные штрафы. TRAVSUS будет управлять отменами и подтверждать политику отмены каждого мероприятия, экскурсии, экскурсии с гидом и/или трансфера. Если ПОСТАВЩИК не имеет доступности на забронированную дату, TRAVSUS предложит клиенту альтернативную дату или расписание, которое должно быть принято или отклонено клиентом. Если в течение 72 часов не будет получен ответ об альтернативном варианте, бронирование будет отменено и немедленно возвращены деньги. В любом случае TRAVSUS отправит соответствующую документацию. В СООТВЕТСТВИИ С ВЫШЕИЗЛОЖЕННЫМ И ПРИНИМАЯ ДАННЫЕ ОБЩИЕ УСЛОВИЯ ИСПОЛЬЗОВАНИЯ, ПОЛЬЗОВАТЕЛИ ЗАЯВЛЯЮТ, ЧТО ПРЯМО ПРОЧИТАЛИ И ПРИНЯЛИ НАСТОЯЩУЮ ПОЛИТИКУ ОТМЕНЫ И НАСТОЯЩИМ СОГЛАШАЮТСЯ С ПОЛИТИКОЙ ОТМЕНЫ КАЖДОГО МЕРОПРИЯТИЯ, ОДНОДНЕВНОЙ ПОЕЗДКИ, ЭКСКУРСИИ С ГИДОМ И/ИЛИ ТРАНСФЕРА, КОТОРЫЕ БРОНИРУЮТСЯ НА ДАННОМ ВЕБ-САЙТЕ.",
     "Cancellation_Policy_Title": "Политика отмены",
-    "Guest_Requirements_Text": "До 100 гостей в возрасте от 4 лет и старше могут присутствовать. Родители также могут привести детей младше 2 лет.",
-    "Guest_Requirements_Title": "Требования к гостям",
+    "Guest_Requirements_Text": "До 100 путешественников в возрасте от 4 лет могут принять участие. Родители также могут привести детей младше 2 лет.",
+    "Guest_Requirements_Title": "Требования к путешественникам",
     "Host_Description": "С видом на озеро, The Symphony 9 Tam Coc в Нинь Бинь предлагает размещение, открытый бассейн, бар, общую гостиную, сад и принадлежности для барбекю...",
     "Host_Information_Title": "Информация о хозяине",
     "Host_Joined_Date": "Присоединился в марте 2016",
@@ -853,16 +856,16 @@
     "10": "2"
   },
   "GuestsInput": {
-    "add_guests": "Добавить гостей",
+    "add_guests": "Добавить путешественников",
     "adults": "Взрослые",
     "adults_desc": "Возраст 13 и старше",
     "children": "Дети",
     "children_desc": "Возраст 2–12",
-    "guests": "Гости",
+    "guests": "Путешественники",
     "infants": "Младенцы",
     "infants_desc": "Возраст 0–2",
     "submit": "Отправить",
-    "total_guests": "{count} Гостей"
+    "total_guests": "{count} Путешественников"
   },
   "guests_Submit": {
     "0": "О",
@@ -908,7 +911,7 @@
     "Booking_Details": "Детали бронирования",
     "Confirm_And_Payment": "Подтвердить и оплатить",
     "Date": "Дата",
-    "Guests": "Гости",
+    "Guests": "Путешественники",
     "Guests_Count": "{adults} Взрослых, {children} детей",
     "Pay_With": "Оплатить с помощью",
     "View_Booking_Details": "Посмотреть детали бронирования",
@@ -1261,7 +1264,7 @@
   "Jan03_PayPage_m5k8": {
     "congratulations": "Поздравляем! 🎉",
     "date": "Дата",
-    "guests": "Гости",
+    "guests": "Путешественники",
     "guests_count": "{adults} взрослых, {children} детей",
     "manage_booking": "Управлять бронированием",
     "your_booking": "Ваше бронирование"
@@ -1295,7 +1298,7 @@
     "Saving": "Сохранение...",
     "Start": "Начать",
     "Username": "Имя пользователя",
-    "What_Info_Shared_Description": "travsus раскрывает контактную информацию хозяев и гостей только после подтверждения бронирования.",
+    "What_Info_Shared_Description": "travsus предоставляет контактную информацию Хозяев и путешественников только после подтверждения бронирования.",
     "What_Info_Shared_Title": "Какая информация передается другим?",
     "Which_Details_Editable_Description": "Контактную информацию и личные данные можно редактировать. Если эта информация использовалась для подтверждения вашей личности, вам потребуется пройти верификацию снова при следующем бронировании —или для продолжения размещения.",
     "Which_Details_Editable_Title": "Какие детали можно редактировать?",
@@ -1362,9 +1365,9 @@
   },
   "Jan03_StaySearchForm_m8p4": {
     "Add_Date": "Добавить дату",
-    "Add_Guests": "Добавить гостей",
-    "Guest_Singular": "{count} гость",
-    "Guests_Plural": "{count} гостей",
+    "Add_Guests": "Добавить путешественников",
+    "Guest_Singular": "{count} путешественник",
+    "Guests_Plural": "{count} путешественников",
     "Infant_Singular": "{count} младенец",
     "Infants_Plural": "{count} младенцев",
     "Location": "Местоположение",
@@ -1428,7 +1431,7 @@
     "cancel": "Отмена",
     "deactivate": "Деактивировать",
     "deactivate_account": "Деактивировать ваш аккаунт",
-    "guests": "гостей",
+    "guests": "путешественники",
     "hosts": "хостов",
     "last_updated": "Последнее обновление 2 года назад",
     "login": "Вход",
@@ -1442,8 +1445,8 @@
   "page": {
     "page_Cancellation_Policy_Heading": "Политика отмены",
     "page_Cancellation_Policy_Text": "Каждая услуга, предоставляемая TRAVSUS на данном веб-сайте (мероприятия, однодневные поездки, экскурсии с гидом и трансферы), имеет свою собственную политику отмены. Пользователь может ознакомиться с каждой конкретной политикой отмены в описательной части каждого мероприятия (на веб-сайте) или в подтверждающем электронном письме, которое TRAVSUS отправит пользователю после совершения бронирования. Таким образом, к каждой услуге будут применяться конкретные условия отмены, которые устанавливают время отмены и возможные штрафы. TRAVSUS будет управлять отменами и подтверждать политику отмены каждого мероприятия, экскурсии, экскурсии с гидом и/или трансфера. Если ПОСТАВЩИК не имеет доступности на зарезервированную дату, TRAVSUS предложит клиенту альтернативную дату или расписание, которое должно быть принято или отклонено клиентом. Если в течение 72 часов не будет получен ответ об альтернативном варианте, бронирование будет отменено и немедленно возвращены деньги. В любом случае TRAVSUS отправит соответствующую документацию. В СООТВЕТСТВИИ С ВЫШЕИЗЛОЖЕННЫМ И ПРИНИМАЯ ДАННЫЕ ОБЩИЕ УСЛОВИЯ ИСПОЛЬЗОВАНИЯ, ПОЛЬЗОВАТЕЛИ ЗАЯВЛЯЮТ, ЧТО ПРЯМО ПРОЧИТАЛИ И ПРИНЯЛИ НАСТОЯЩУЮ ПОЛИТИКУ ОТМЕНЫ И НАСТОЯЩИМ СОГЛАШАЮТСЯ С ПОЛИТИКОЙ ОТМЕНЫ КАЖДОГО МЕРОПРИЯТИЯ, ОДНОДНЕВНОЙ ПОЕЗДКИ, ЭКСКУРСИИ С ГИДОМ И/ИЛИ ТРАНСФЕРА, КОТОРЫЕ БРОНИРУЮТСЯ НА ДАННОМ ВЕБ-САЙТЕ.",
-    "page_Guest_Requirements_Heading": "Требования к гостям",
-    "page_Guest_Requirements_Text": "До 100 гостей в возрасте от 4 лет и старше могут присутствовать. Родители также могут привести детей младше 2 лет.",
+    "page_Guest_Requirements_Heading": "Требования к путешественникам",
+    "page_Guest_Requirements_Text": "До 100 путешественников в возрасте от 4 лет могут принять участие. Родители также могут привести детей младше 2 лет.",
     "page_Host_Description": "С видом на озеро, The Symphony 9 Tam Coc в Нинь Бинь предоставляет размещение, открытый бассейн, бар, общий лаунж, сад и принадлежности для барбекю...",
     "page_Host_Fast_Response": "Быстрый ответ - в течение нескольких часов",
     "page_Host_Information_Heading": "Информация о хозяине",
@@ -1495,10 +1498,10 @@
     "page_What_To_Bring_Heading": "Что взять с собой"
   },
   "paydone_payment_page": {
-    "paydone_payment_page_Adults_Children": "{guests?.guestAdults || 0} взрослых, {guests?.guestChildren || 0} детей",
+    "paydone_payment_page_Adults_Children": "{guests?.guestAdults || 0} Взрослых, {guests?.guestChildren || 0} детей",
     "paydone_payment_page_Congratulation": "Поздравляем 🎉",
     "paydone_payment_page_Date": "Дата",
-    "paydone_payment_page_Guests": "Гости",
+    "paydone_payment_page_Guests": "Путешественники",
     "paydone_payment_page_Manage_Booking": "Управление бронированием",
     "paydone_payment_page_Your_Booking": "Ваше бронирование"
   },
@@ -1574,7 +1577,7 @@
     "phone_title": "Номер телефона",
     "save": "Сохранить",
     "saving": "Сохранение...",
-    "shared_info_description": "travsus раскрывает контактную информацию хозяев и гостей только после подтверждения бронирования.",
+    "shared_info_description": "travsus предоставляет контактную информацию Хозяев и путешественников только после подтверждения бронирования.",
     "shared_info_title": "Какая информация доступна другим?",
     "start": "Начать",
     "username_label": "Имя пользователя",

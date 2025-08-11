@@ -128,7 +128,7 @@
 		"accountsettings_loginandsecurity_page_Cancel": "Cancel",
 		"accountsettings_loginandsecurity_page_Deactivate": "Deactivate",
 		"accountsettings_loginandsecurity_page_Deactivate_Your_Account": "Deactivate your account",
-		"accountsettings_loginandsecurity_page_Guests": "travelers",
+		"accountsettings_loginandsecurity_page_Guests": "guests",
 		"accountsettings_loginandsecurity_page_Hosts": "hosts",
 		"accountsettings_loginandsecurity_page_Keeping_Your_Account_Secure": "Keeping your account secure",
 		"accountsettings_loginandsecurity_page_Last_Updated_2_Years_Ago": "Last updated 2 years ago",
@@ -221,6 +221,7 @@
 		"app_locale_CardImage_Age": "age",
 		"app_locale_CardImage_Hello": "Hello"
 	},
+	"app_locale_ClientCommons": {},
 	"app_locale_ClientHomePage": {
 		"app_locale_ClientHomePage_5_Star_Service_Quality": "5-Star Service Quality",
 		"app_locale_ClientHomePage_Best_Price_Guarantee": "Best Price Guarantee",
@@ -261,12 +262,12 @@
 		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_FAQProps_Frequently_Asked_Questions": "Frequently Asked Questions"
 	},
 	"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput": {
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Add_Guests": "Add travelers",
+		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Add_Guests": "Add guests",
 		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Adults": "Adults",
 		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Ages_1_13": "Ages 1–13",
 		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Ages_13_Or_Above": "Ages 13 or above",
 		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Children": "Children",
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Guests": "Travelers"
+		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Guests": "Guests"
 	},
 	"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_Included": {
 		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_Included_Everything_Included_In_Your_Package": "Everything included in your package",
@@ -286,8 +287,8 @@
 		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page_Things_to_know": "Things to know",
 		"Cancellation_Policy_Text": "Each service provided by TRAVSUS on the present Website (activities, day trips, guided tours and transfers) has its own specific cancellation policy. The User can check each specific cancellation policy in the description part of each activity (in the Website) or on the confirmation email that TRAVSUS will send the User once the reservation has been made. Hence, the specific cancellation conditions will be applicable to each service, which establish the cancellation time and possible penalisation. TRAVSUS will manage cancellations and will confirm the cancellation policies of each activity, excursion, guided tour and/or transfer. If the PROVIDER does not have availability on the reserved date, TRAVSUS will offer the customer an alternate date or schedule, which must be accepted or declined by the customer. If no reply about the alternative option is received within 72 hours, the booking will be cancelled and refunded immediately. In either case, TRAVSUS will send the relevant documentation. IN ACCORDANCE WITH THE ABOVE, AND BY ACCEPTING THESE GENERAL TERMS OF USE, THE USERS DECLARE TO HAVE EXPRESSLY READ AND ACCEPTED THE PRESENT CANCELLATION POLICY AND HEREBY AGREE TO THE CANCELLATION POLICIES OF EACH ACTIVITY, DAY TRIP, GUIDED TOUR AND / OR TRANSFER THAT ARE RESERVED ON THE PRESENT WEBSITE.",
 		"Cancellation_Policy_Title": "Cancellation policy",
-		"Guest_Requirements_Text": "Up to 100 travelers ages 4 and up can attend. Parents may also bring children under 2 years of age.",
-		"Guest_Requirements_Title": "Traveler requirements",
+		"Guest_Requirements_Text": "Up to 100 guests ages 4 and up can attend. Parents may also bring children under 2 years of age.",
+		"Guest_Requirements_Title": "Guest requirements",
 		"Host_Description": "Providing lake views, The Symphony 9 Tam Coc in Ninh Binh provides accommodation, an outdoor swimming pool, a bar, a shared lounge, a garden and barbecue facilities...",
 		"Host_Information_Title": "Host Information",
 		"Host_Joined_Date": "Joined in March 2016",
@@ -351,6 +352,7 @@
 	"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewImageGallery": {
 		"Review_Photo_Alt": "Review photo"
 	},
+	"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewSkeleton": {},
 	"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewSystem": {
 		"Add_Photos": "Add some photos",
 		"Business": "Business",
@@ -407,6 +409,7 @@
 		"Single_Bed": "Single Bed",
 		"Twin_Beds": "Twin Beds"
 	},
+	"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SidebarSkeletonLoader": {},
 	"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader": {
 		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Aspect_Ratio_Classes": "aspect-h-3 aspect-w-4 bg-gray-200",
 		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Grid_Container_Classes": "relative grid grid-cols-4 gap-1 sm:gap-2",
@@ -633,6 +636,7 @@
 		"components_AnimatedFeatures_Smart_Booking_Description": "Say goodbye to complicated booking processes. Our smart booking system leverages cutting-edge technology to find you the best deals and options.",
 		"components_AnimatedFeatures_Smart_Booking_System": "Smart booking system"
 	},
+	"components_BgGlassmorphism": {},
 	"components_BtnLikeIcon": {
 		"components_BtnLikeIcon_Save": "Save"
 	},
@@ -711,6 +715,7 @@
 		"components_ExperiencesCardH_Per_Person": "/person",
 		"components_ExperiencesCardH_Up_To_6_People": "Up to 6 people"
 	},
+	"components_ExperiencesCardSkeleton": {},
 	"components_FlightCard": {
 		"components_FlightCard_1_Stop": "1 stop",
 		"components_FlightCard_ANA_Business_Class_Boeing_787_NH_847": "ANA · Business class · Boeing 787 · NH 847",
@@ -893,6 +898,7 @@
 		"components_SectionGridFeaturePlaces_Popular_Places": "Popular places to stay that Travsus recommends for you",
 		"components_SectionGridFeaturePlaces_Show_Me_More": "Show me more"
 	},
+	"components_SectionSubscribe2": {},
 	"components_StayCard": {
 		"components_StayCard_ADS": "ADS",
 		"components_StayCard_Beds": "beds",
@@ -903,11 +909,13 @@
 		"components_StayCard2_Beds": "beds",
 		"components_StayCard2_Per_Night": "/night"
 	},
+	"components_ui_button": {},
 	"components_ui_errormessage": {
 		"components_ui_errormessage_Oops": "Oops!",
 		"components_ui_errormessage_Retry": "Retry",
 		"components_ui_errormessage_Something_Went_Wrong": "Something went wrong. Please try again later."
 	},
+	"components_ui_Spinner": {},
 	"contact_page": {
 		"Address": "contact@travsus.com",
 		"Address_Label": "Email address",
@@ -1018,6 +1026,7 @@
 		"destinations_page_Loading_Destinations": "Loading destinations...",
 		"destinations_page_Travelers_Choice_Awards": "2025's Travelers' Choice Awards"
 	},
+	"EachDay": {},
 	"email_subscription_page": {
 		"email_subscription_page_An_Error_Occurred_Fetching_Subscription_Data": "An error occurred while fetching your subscription data",
 		"email_subscription_page_Choose_Types_Of_Newsletters": "Choose the types of newsletters you want to receive",
@@ -1197,16 +1206,16 @@
 		"7": "2"
 	},
 	"GuestsInput": {
-		"add_guests": "Add travelers",
+		"add_guests": "Add guests",
 		"adults": "Adults",
 		"adults_desc": "Ages 13 or above",
 		"children": "Children",
 		"children_desc": "Ages 2–12",
-		"guests": "Travelers",
+		"guests": "Guests",
 		"infants": "Infants",
 		"infants_desc": "Ages 0–2",
 		"submit": "Submit",
-		"total_guests": "{count} Travelers"
+		"total_guests": "{count} Guests"
 	},
 	"guests_Submit": {
 		"0": "S",
@@ -1253,7 +1262,7 @@
 		"Booking_Details": "Booking details",
 		"Confirm_And_Payment": "Confirm and payment",
 		"Date": "Date",
-		"Guests": "Travelers",
+		"Guests": "Guests",
 		"Guests_Count": "{adults} Adults, {children} children",
 		"Pay_With": "Pay with",
 		"View_Booking_Details": "View booking details",
@@ -1606,7 +1615,7 @@
 	"Jan03_PayPage_m5k8": {
 		"congratulations": "Congratulation 🎉",
 		"date": "Date",
-		"guests": "Travelers",
+		"guests": "Guests",
 		"guests_count": "{adults} Adults, {children} children",
 		"manage_booking": "Manage booking",
 		"your_booking": "Your booking"
@@ -1640,7 +1649,7 @@
 		"Saving": "Saving...",
 		"Start": "Start",
 		"Username": "Username",
-		"What_Info_Shared_Description": "travsus only releases contact information for Hosts and travelers after a reservation is confirmed.",
+		"What_Info_Shared_Description": "travsus only releases contact information for Hosts and guests after a reservation is confirmed.",
 		"What_Info_Shared_Title": "What info is shared with others?",
 		"Which_Details_Editable_Description": "Contact info and personal details can be edited. If this info was used to verify your identity, you'll need to get verified again the next time you book —or to continue hosting.",
 		"Which_Details_Editable_Title": "Which details can be edited?",
@@ -1707,9 +1716,9 @@
 	},
 	"Jan03_StaySearchForm_m8p4": {
 		"Add_Date": "Add date",
-		"Add_Guests": "Add travelers",
-		"Guest_Singular": "{count} traveler",
-		"Guests_Plural": "{count} travelers",
+		"Add_Guests": "Add guests",
+		"Guest_Singular": "{count} guest",
+		"Guests_Plural": "{count} guests",
 		"Infant_Singular": "{count} infant",
 		"Infants_Plural": "{count} infants",
 		"Location": "Location",
@@ -1779,7 +1788,7 @@
 		"cancel": "Cancel",
 		"deactivate": "Deactivate",
 		"deactivate_account": "Deactivate your account",
-		"guests": "travelers",
+		"guests": "guests",
 		"hosts": "hosts",
 		"last_updated": "Last updated 2 years ago",
 		"login": "Login",
@@ -1793,8 +1802,8 @@
 	"page": {
 		"page_Cancellation_Policy_Heading": "Cancellation policy",
 		"page_Cancellation_Policy_Text": "Each service provided by TRAVSUS on the present Website (activities, day trips, guided tours and transfers) has its own specific cancellation policy. The User can check each specific cancellation policy in the description part of each activity (in the Website) or on the confirmation email that TRAVSUS will send the User once the reservation has been made. Hence, the specific cancellation conditions will be applicable to each service, which establish the cancellation time and possible penalisation. TRAVSUS will manage cancellations and will confirm the cancellation policies of each activity, excursion, guided tour and/or transfer. If the PROVIDER does not have availability on the reserved date, TRAVSUS will offer the customer an alternate date or schedule, which must be accepted or declined by the customer. If no reply about the alternative option is received within 72 hours, the booking will be cancelled and refunded immediately. In either case, TRAVSUS will send the relevant documentation. IN ACCORDANCE WITH THE ABOVE, AND BY ACCEPTING THESE GENERAL TERMS OF USE, THE USERS DECLARE TO HAVE EXPRESSLY READ AND ACCEPTED THE PRESENT CANCELLATION POLICY AND HEREBY AGREE TO THE CANCELLATION POLICIES OF EACH ACTIVITY, DAY TRIP, GUIDED TOUR AND / OR TRANSFER THAT ARE RESERVED ON THE PRESENT WEBSITE.",
-		"page_Guest_Requirements_Heading": "Traveler requirements",
-		"page_Guest_Requirements_Text": "Up to 100 travelers ages 4 and up can attend. Parents may also bring children under 2 years of age.",
+		"page_Guest_Requirements_Heading": "Guest requirements",
+		"page_Guest_Requirements_Text": "Up to 100 guests ages 4 and up can attend. Parents may also bring children under 2 years of age.",
 		"page_Host_Description": "Providing lake views, The Symphony 9 Tam Coc in Ninh Binh provides accommodation, an outdoor swimming pool, a bar, a shared lounge, a garden and barbecue facilities...",
 		"page_Host_Fast_Response": "Fast response - within a few hours",
 		"page_Host_Information_Heading": "Host Information",
@@ -1849,7 +1858,7 @@
 		"paydone_payment_page_Adults_Children": "{guests?.guestAdults || 0} Adults, {guests?.guestChildren || 0} children",
 		"paydone_payment_page_Congratulation": "Congratulation 🎉",
 		"paydone_payment_page_Date": "Date",
-		"paydone_payment_page_Guests": "Travelers",
+		"paydone_payment_page_Guests": "Guests",
 		"paydone_payment_page_Manage_Booking": "Manage booking",
 		"paydone_payment_page_Your_Booking": "Your booking"
 	},
@@ -1925,7 +1934,7 @@
 		"phone_title": "Phone number",
 		"save": "Save",
 		"saving": "Saving...",
-		"shared_info_description": "travsus only releases contact information for Hosts and travelers after a reservation is confirmed.",
+		"shared_info_description": "travsus only releases contact information for Hosts and guests after a reservation is confirmed.",
 		"shared_info_title": "What info is shared with others?",
 		"start": "Start",
 		"username_label": "Username",
@@ -1953,10 +1962,14 @@
 	"shared_ButtonClose": {
 		"shared_ButtonClose_Close": "Close"
 	},
+	"shared_ButtonSecondary": {},
+	"shared_ButtonThird": {},
+	"shared_Checkbox": {},
 	"shared_Heading": {
 		"shared_Heading_Default_Description": "Discover the most outstanding articles in all topics of life. ",
 		"shared_Heading_Section_Heading": "Section Heading"
 	},
+	"shared_Heading2": {},
 	"shared_Input": {
 		"shared_Input_Icon_Classes": "h-5 w-5",
 		"shared_Input_Toggle_Button_Classes": "absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 focus:outline-none"
@@ -1969,6 +1982,7 @@
 	"shared_LogoSvg": {
 		"shared_LogoSvg_Svg_ClassName": "w-full block dark:hidden"
 	},
+	"shared_LogoSvgLight": {},
 	"shared_MenuBar": {
 		"shared_MenuBar_Backdrop_Classes": "fixed inset-0 bg-black/60 dark:bg-black/70",
 		"shared_MenuBar_Button_Classes_Template": "flex items-center justify-center focus:outline-none",
@@ -1978,9 +1992,13 @@
 		"shared_MenuBar_Fixed_Container_Classes": "fixed inset-0",
 		"shared_MenuBar_Flex_Container_Classes": "flex min-h-full justify-end"
 	},
+	"shared_Nav": {},
 	"shared_Navigation_Navigation": {
 		"shared_Navigation_Navigation_Navigation_Classes": "nc-Navigation relative hidden lg:flex lg:flex-wrap lg:space-x-1"
 	},
+	"shared_Navigation_NavigationItem": {},
+	"shared_NavItem": {},
+	"shared_Pagination": {},
 	"shared_SwitchDarkMode": {
 		"shared_SwitchDarkMode_Enable_Dark_Mode": "Enable dark mode"
 	},
