@@ -71,7 +71,7 @@ const ListingExperiencesDetailPage: FC<
 	ListingExperiencesDetailPageProps
 > = ({}) => {
 	const t = useTranslations(
-		'app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_page',
+		'servicedetail_listingexperiencesdetail_page',
 	)
 
 	const thisPathname = usePathname()

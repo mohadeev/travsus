@@ -158,6 +158,7 @@ function ClientHomePage() {
 				<div className="container p-0 px-0">
 					{/* <SectionGridFeaturePlaces /> */}
 					{/* <SectionGridFilterCard layout="row" /> */}
+					<ItemsCardList locationType="tour" layout={'row'} />
 					<ItemsCardList locationType="country" layout="row" />
 					<ItemsCardList
 						locationType="city"

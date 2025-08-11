@@ -221,11 +221,7 @@ const ItemsCardList: FC<ItemsCardListProps> = ({
 	return (
 		<div className="my-10 px-4 md:px-0">
 			{/* Heading section */}
-			<ContainerExperiencesCardSkeleton
-				count={10}
-				size="default"
-				layout={'row'}
-			/>
+
 			{loading ? (
 				<div className="mb-5">
 					<div className="h-8 w-64 animate-pulse rounded bg-gray-200"></div>
@@ -233,6 +229,13 @@ const ItemsCardList: FC<ItemsCardListProps> = ({
 				</div>
 			) : (
 				<Heading desc={displaySubheading}>{displayHeading}</Heading>
+			)}
+			{loading && (
+				<ContainerExperiencesCardSkeleton
+					count={10}
+					// size="default"
+					layout={'row'}
+				/>
 			)}
 
 			{/* Content section */}
