@@ -1,67 +1,60 @@
 'use client'
 
-import React, { FC, useEffect, useState } from 'react'
-import Badge from '@/shared/Badge'
-import ButtonPrimary from '@/shared/ButtonPrimary'
-import { usePathname, useRouter } from 'next/navigation'
+import { type FC, useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation'
 import StartRating from '@/components/StartRating'
 import StayDatesRangeInput from './StayDatesRangeInput'
 import GuestsInput from './GuestsInput'
-import { Route } from 'next'
+import type { Route } from 'next'
 import { useDispatch, useSelector } from 'react-redux'
-import handleCreateBooking from '@/utils/api-utils/handleCreateBooking'
-import { SkeletonLoader } from './SkeletonLoader'
 import {
 	bookOwnHotelsReducers,
 	localUpdateLineItemsLogicAsync,
-	resetBooking,
-	setAccommodation,
-	setGustes,
 	setPricePerSeat,
-	setSeats,
 	setSelectedDate,
-	updateBookingState,
-	updateLineItemsAsync,
 	updateProvidedService,
 } from '@/app/GlobalRedux/Features/bookingSlice/bookingSlice'
 import LineItemsBreakdown from './LineItemsBreakdown'
-import { calculateGustes } from './lineItemsHandler'
 import TransportTypes from './TransportTypes'
 import RowBedAccommodationSelector from './RowBedAccommodationSelector'
 import AcommodationAndTransport from './listing-components/AcommodationAndTransport'
 import SidebarSkeletonLoader from './SidebarSkeletonLoader'
 import { Button } from '@/components/ui'
-import { updateLineItemsLogic } from '@/app/api/updateLineItems/updateLineItemsLogic'
 import { formatCurrency } from '@/utils/formatCurrency'
 import { useAuthAction } from '@/app/hooks/useAuthAction'
+import { useTranslations } from 'next-intl'
 
-export interface RenderSidebarProps {}
+export type RenderSidebarProps = {}
 
 const RenderSidebar: FC<RenderSidebarProps> = ({}) => {
-	const thisPathname = usePathname()
+	const t = useTranslations('Jan03_RenderSidebar_k7m9')
 	const router = useRouter()
 	const dispatch = useDispatch()
 	const { booking, status } = useSelector((state: any) => state.bookingSlice)
 	const user = useSelector((state: any) => state.userReducer.userData)
 	const { guests, lineItems, accommodation, transport, bookOwnHotels } = booking
-
 	const totalGuests: number = guests?.guestAdults + guests?.guestChildren || 2
+
 	const {
 		name: title,
 		price,
 		days,
 		pricingTiers,
 	}: any = useSelector((state: any) => state.creatingServiceSlice.service)
+
 	const filteredLineItems = lineItems?.filter(
 		({ includeInTotal }: any) => includeInTotal === true,
 	)
+
 	const totalAmount = filteredLineItems.reduce((total: any, item: any) => {
 		return total + item.totalPrice
 	}, 0)
+
 	const [currentStatus, setCurrentStatus] = useState('')
 	const [isDateSelected, setIsDateSelected] = useState(false)
 	const [isShaking, setIsShaking] = useState(false)
 	const [showError, setShowError] = useState(false)
+
 	useEffect(() => {
 		if (price >= 1) {
 			dispatch(setPricePerSeat(price))
@@ -80,6 +73,7 @@ const RenderSidebar: FC<RenderSidebarProps> = ({}) => {
 			localUpdateLineItemsLogicAsync({ value: { guests: newGuests }, tour }),
 		)
 	}
+
 	const handleAccomodationChange = async (data: any) => {
 		const newAccommodation = data
 		dispatch(
@@ -89,9 +83,11 @@ const RenderSidebar: FC<RenderSidebarProps> = ({}) => {
 			}),
 		)
 	}
+
 	const transportLineItem = booking?.lineItems.find(
 		({ description }: any) => description === 'transport',
 	)
+
 	const handleBookOwnHotels = () => {
 		dispatch(
 			bookOwnHotelsReducers({
@@ -100,13 +96,16 @@ const RenderSidebar: FC<RenderSidebarProps> = ({}) => {
 			}),
 		)
 	}
+
 	const tour: any = useSelector(
 		(state: any) => state.creatingServiceSlice.service,
 	)
 	const isNotInitiated = true
+
 	useEffect(() => {
 		dispatch(updateProvidedService({ path: 'booking.tour', value: tour }))
-	}, [booking])
+	}, [booking, dispatch, tour])
+
 	useEffect(() => {
 		if (tour && booking.lineItems >= 0) {
 			dispatch(
@@ -116,23 +115,7 @@ const RenderSidebar: FC<RenderSidebarProps> = ({}) => {
 				}),
 			)
 		}
-	}, [booking, tour])
-
-	// const handleAddToWishList = useAuthAction(async () => {
-	// 		dispatch(updateServiceState({ path: 'service.liked', value: !liked }))
-	// 		await addAndRemoveToWishList({ serviceId })
-	// 			.then((res: any) => {
-	// 				if (res?.added === false || res?.added === true) {
-	// 					dispatch(
-	// 						updateServiceState({ path: 'service.liked', value: res?.added }),
-	// 					)
-
-	// 				}
-	// 			})
-	// 			.catch(() => {
-	// 				dispatch(updateServiceState({ path: 'service.liked', value: !liked }))
-	// 			})
-	// 	})
+	}, [booking, tour, dispatch])
 
 	const handleReserveClick = useAuthAction(async () => {
 		if (!isDateSelected) {
@@ -146,11 +129,9 @@ const RenderSidebar: FC<RenderSidebarProps> = ({}) => {
 					method: 'POST',
 					body: JSON.stringify(booking),
 				})
-
 				if (!response.ok) {
 					console.error('Failed to create booking')
 				}
-
 				return response.json()
 			}
 			createBooking()
@@ -160,7 +141,7 @@ const RenderSidebar: FC<RenderSidebarProps> = ({}) => {
 							`/checkout/checkout?bookingId=${result.id}&serviceId=${tour.id}` as Route,
 						)
 					} else {
-						alert('no booking created')
+						alert(t('no_booking_created'))
 					}
 					setCurrentStatus('')
 				})
@@ -170,6 +151,7 @@ const RenderSidebar: FC<RenderSidebarProps> = ({}) => {
 				})
 		}
 	})
+
 	const priceStart = totalAmount / totalGuests
 
 	return (
@@ -182,7 +164,7 @@ const RenderSidebar: FC<RenderSidebarProps> = ({}) => {
 						<span className="text-3xl font-semibold">
 							{formatCurrency(priceStart)}
 							<span className="ml-1 text-base font-normal text-neutral-500 dark:text-neutral-400">
-								/per person
+								{t('per_person')}
 							</span>
 						</span>
 						<StartRating />
@@ -202,6 +184,7 @@ const RenderSidebar: FC<RenderSidebarProps> = ({}) => {
 							duration={days?.length}
 						/>
 						<div className="w-full border-b border-neutral-200 dark:border-neutral-700"></div>
+
 						{isNotInitiated && (
 							<AcommodationAndTransport
 								GuestsInput={
@@ -231,27 +214,26 @@ const RenderSidebar: FC<RenderSidebarProps> = ({}) => {
 					/>
 
 					<LineItemsBreakdown lineItems={booking?.lineItems} />
+
 					<Button
 						loading={currentStatus === 'loading'}
 						className="mt-4 w-full"
-						disabled={
-							currentStatus === 'loading'
-							// (process.env.NODE_ENV === 'development' &&
-							// 	user?.email !== 'skendoulmohamed@gmail.com')
-						}
+						disabled={currentStatus === 'loading'}
 						onClick={handleReserveClick}
 					>
-						{status === 'loading' ? 'Processing...' : 'Reserve'}
+						{status === 'loading' ? t('processing') : t('reserve')}
 					</Button>
+
 					{showError && (
 						<p className="mt-2 text-sm text-red-500">
-							You need to select a date
+							{t('select_date_error')}
 						</p>
 					)}
 				</>
 			) : (
 				<SidebarSkeletonLoader />
 			)}
+
 			<style jsx>{`
 				@keyframes shake {
 					0%,

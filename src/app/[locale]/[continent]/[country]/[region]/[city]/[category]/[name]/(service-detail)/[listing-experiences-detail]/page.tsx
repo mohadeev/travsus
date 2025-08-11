@@ -1,62 +1,33 @@
 'use client'
 
-import React, { FC, useEffect, useRef, useState } from 'react'
-import { ArrowRightIcon, Squares2X2Icon } from '@heroicons/react/24/outline'
-import CommentListing from '@/components/CommentListing'
-import FiveStartIconForRate from '@/components/FiveStartIconForRate'
+import { type FC, useEffect } from 'react'
 import Avatar from '@/shared/Avatar'
-import Badge from '@/shared/Badge'
-import TransportBreakdown from './TransportBreakdown'
-import ButtonCircle from '@/shared/ButtonCircle'
-import ButtonPrimary from '@/shared/ButtonPrimary'
 import ButtonSecondary from '@/shared/ButtonSecondary'
-import Input from '@/shared/Input'
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
-import LikeSaveBtns from '@/components/LikeSaveBtns'
+import { usePathname } from 'next/navigation'
 import StartRating from '@/components/StartRating'
-import { includes_demo } from './constant'
-import Image from 'next/image'
-import StayDatesRangeInput from './StayDatesRangeInput'
-import GuestsInput from './GuestsInput'
-import SectionDateRange from '../SectionDateRange'
-import { Route } from 'next'
 import { useDispatch, useSelector } from 'react-redux'
-import handleCreateBooking from '@/utils/api-utils/handleCreateBooking'
-import { SkeletonLoader } from './SkeletonLoader'
 import {
-	resetBooking,
 	setPricePerSeat,
-	setSeats,
 	setSelectedDate,
 } from '@/app/GlobalRedux/Features/bookingSlice/bookingSlice'
 import RenderSidebar from './RenderSidebar'
-import TourItinerary from './TourItinerary'
 import ListingExperiencesDetailsImages from './ListingExperiencesDetailsImages'
-import TourListingHeader from './listing-components/TourListingHeader'
 import ExperiencesDescriptionSkeleton from './ExperiencesDescriptionSkeleton'
-// import SectionGridFilterCard from '@/app/(experience-listings)/SectionGridFilterCard'
-import L from 'leaflet'
-import 'leaflet/dist/leaflet.css'
-// import MapComponent from './MapComponent'
 import dynamic from 'next/dynamic'
 import TourFAQ from './FAQProps'
 import ReviewSystem from './ReviewSystem'
 import Included from './Included'
-import { ChevronDown, ChevronRight, Heart } from 'lucide-react'
-import Link from 'next/link'
 import TourItineraryWithMap from './tour-itinerary-with-map'
 import TourHeader from './TourHeader'
 import ReadMore from '@/app/(client-components)/ReadeMore'
 import { useTranslations } from '@/lib/i18n'
-import SectionGridFilterCard from '@/app/[locale]/(experience-listings)/SectionGridFilterCard'
 import ItemsCardList from '@/components/ItemsCardList'
-// import ReadMore from '@/app/destinations/[code]/[city]/ReadeMore'
-//
+
 const MapComponent = dynamic(() => import('./tour-map'), {
 	ssr: false,
 })
 
-export interface ListingExperiencesDetailPageProps {}
+export type ListingExperiencesDetailPageProps = {}
 
 interface Address {
 	streetAddress?: string
@@ -70,15 +41,10 @@ interface Address {
 const ListingExperiencesDetailPage: FC<
 	ListingExperiencesDetailPageProps
 > = ({}) => {
-	const t = useTranslations(
-		'servicedetail_listingexperiencesdetail_page',
-	)
+	const t = useTranslations('servicedetail_listingexperiencesdetail_page')
 
 	const thisPathname = usePathname()
 	const dispatch = useDispatch()
-	const router = useRouter()
-	const searchParams = useSearchParams()
-	const pathname = usePathname()
 
 	const { booking } = useSelector((state: any) => state.bookingSlice)
 
@@ -87,31 +53,17 @@ const ListingExperiencesDetailPage: FC<
 		// Update the price when the component mounts or when initialPrice changes
 		dispatch(setPricePerSeat(initialPrice))
 	}, [dispatch, initialPrice])
+
 	const handleDateChange = (date: string) => {
 		dispatch(setSelectedDate(date))
 	}
 
-	const handleSeatsChange = (seats: any) => {
-		// console.log('seats: ', seats)
-		// dispatch(setSeats(seats))
-	}
-
-	const handleResetBooking = () => {
-		dispatch(resetBooking())
-	}
-
 	const {
 		name: title,
-		region,
-		start,
 		id,
-		images,
 		overview,
-		reviews,
 		days,
-		liked,
 		startAddress,
-		endAddress,
 		faq,
 		inclusions,
 	}: any = useSelector((state: any) => state.creatingServiceSlice.service)
@@ -130,14 +82,6 @@ const ListingExperiencesDetailPage: FC<
 							<div className="mb-0.5 rounded-lg bg-gray-50 p-4 text-sm leading-relaxed text-black md:text-base">
 								<ReadMore description={overview} />
 							</div>
-
-							{/* <p className="mb-0.5 rounded-lg bg-gray-50 p-4 text-sm leading-relaxed text-black md:text-base">
-								{overview}
-								<button className="flex items-center text-sm font-medium text-black md:text-base">
-									{t('Read_More_Button')}{' '}
-									<ChevronDown className="ml-1 h-4 w-4 md:h-5 md:w-5" />
-								</button>
-							</p> */}
 						</div>
 					</div>
 				) : (
@@ -276,23 +220,6 @@ const ListingExperiencesDetailPage: FC<
 					</span>
 				</div>
 				<div className="w-14 border-b border-neutral-200 dark:border-neutral-700" />
-
-				{/* CONTENT */}
-				{/* <div>
-					<h4 className="text-lg font-semibold">{t('What_To_Bring_Title')}</h4>
-					<div className="prose sm:prose">
-						{travelChecklist.map((category, index) => (
-							<div key={index}>
-								<h5 className="text-lg font-semibold">{t(`Travel_Category_${index + 1}`)}</h5>
-								<ul>
-									{category.items.map((item, idx) => (
-										<li key={idx}>{t(`Travel_Item_${index + 1}_${idx + 1}`)}</li>
-									))}
-								</ul>
-							</div>
-						))}
-					</div>
-				</div> */}
 			</div>
 		)
 	}
@@ -321,14 +248,7 @@ const ListingExperiencesDetailPage: FC<
 							{t('Itinerary_Title')}
 						</h4>
 
-						{days && (
-							<TourItineraryWithMap
-								days={days}
-								// startAddress={startAddress}
-								// endAddress={endAddress}
-								// addresses={addresses}
-							/>
-						)}
+						{days && <TourItineraryWithMap days={days} />}
 					</div>
 				)}
 
@@ -341,10 +261,6 @@ const ListingExperiencesDetailPage: FC<
 					currentPage={1}
 					layout="row"
 				/>
-				{/* <SectionGridFilterCard
-					layout="row"
-					className={'mb-10 mt-10 pb-24 lg:pb-28'}
-				/> */}
 			</div>
 		</>
 	)
