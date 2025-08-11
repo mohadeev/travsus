@@ -4,8 +4,7 @@ import { useEffect, useState } from 'react'
 import { Camera, Heart, ChevronDown, ChevronRight } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
-import CountryCardList from '@/components/ItemsCardList'
-import FeatureNotificationForm from '@/app/feature-notification-form'
+import ItemsCardList from '@/components/ItemsCardList'
 import ReadeMore from '../../../(client-components)/ReadeMore'
 import CollectionsGrid from '@/components/CollectionsGrid'
 import { useTranslations } from '@/lib/i18n'
@@ -210,10 +209,11 @@ export default function DestinationPage({
 					layout="row"
 					countryId={countryData?.id}
 				/>
-				<CountryCardList
+				<ItemsCardList
 					locationType="city"
 					countryId={countryData?.id}
 					layout="row"
+					locationName={countryData?.name}
 				/>
 
 				<style jsx global>{`

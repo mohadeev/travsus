@@ -21,6 +21,7 @@ export interface ItemsCardListProps {
 	heading?: string
 	subHeading?: string
 	limit?: number
+	locationName?: string
 	showArrowsIconsInPhone?: boolean // New parameter - opposite of hideArrowsIconsInPhone
 	currentPage?: number // For tour pagination
 }
@@ -36,6 +37,7 @@ const ItemsCardList: FC<ItemsCardListProps> = ({
 	heading,
 	subHeading,
 	limit = 16,
+	locationName = '',
 	showArrowsIconsInPhone = false, // Default to false - arrows hidden on mobile by default
 	currentPage = 1, // Default to first page for tours
 }) => {
@@ -193,7 +195,7 @@ const ItemsCardList: FC<ItemsCardListProps> = ({
 		if (locationType === 'country') return t('Popular_Countries')
 		if (locationType === 'city')
 			return countryId
-				? t('Cities_In_Country', { country: countryId })
+				? t('Cities_In_Country', { country: locationName })
 				: t('Popular_Cities')
 		if (locationType === 'place')
 			return cityId
