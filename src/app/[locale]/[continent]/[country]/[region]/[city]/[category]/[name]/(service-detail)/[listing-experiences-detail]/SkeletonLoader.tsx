@@ -8,44 +8,33 @@ export const SkeletonLoader = () => {
 	)
 
 	return (
-		<header className="rounded-md sm:rounded-xl">
-			{/* Mobile: Single Image Skeleton */}
+		<header className="animate-pulse">
+			{/* Mobile Skeleton */}
 			<div className="block sm:hidden">
-				<div className="aspect-h-3 aspect-w-4 relative overflow-hidden">
-					<div className="h-full w-full animate-pulse bg-gray-200 dark:bg-neutral-800"></div>
-				</div>
+				<div className="aspect-[4/3] overflow-hidden bg-gray-200 dark:bg-neutral-800"></div>
 			</div>
 
-			{/* Desktop: Grid Layout Skeleton */}
-			<div className="relative hidden grid-cols-4 gap-1 sm:grid sm:gap-2">
-				{/* Large Image Placeholder */}
-				<div className="relative col-span-2 row-span-2 overflow-hidden rounded-md sm:rounded-xl">
-					<div className="h-full w-full animate-pulse rounded-md bg-gray-200 dark:bg-neutral-800 sm:rounded-xl"></div>
+			{/* Desktop Skeleton */}
+			<div className="hidden sm:block">
+				<div className="grid grid-cols-4 gap-2 overflow-hidden rounded-2xl">
+					{/* Main large skeleton */}
+					<div className="aspect-square col-span-2 row-span-2 bg-gray-200 dark:bg-neutral-800"></div>
+
+					{/* Second skeleton */}
+					<div className="aspect-square col-span-1 row-span-2 bg-gray-200 dark:bg-neutral-800"></div>
+
+					{/* Third skeleton */}
+					<div className="aspect-[4/3] bg-gray-200 dark:bg-neutral-800"></div>
+
+					{/* Fourth skeleton */}
+					<div className="aspect-[4/3] bg-gray-200 dark:bg-neutral-800"></div>
 				</div>
 
-				{/* Small Image Placeholder 1 */}
-				<div className="relative col-span-1 row-span-2 overflow-hidden rounded-md sm:rounded-xl">
-					<div className="h-full w-full animate-pulse rounded-md bg-gray-200 dark:bg-neutral-800 sm:rounded-xl"></div>
-				</div>
+				{/* Button skeleton */}
+				<div className="absolute bottom-4 left-4 z-10 h-10 w-32 rounded-xl bg-gray-200 dark:bg-neutral-700"></div>
 
-				{/* Small Image Placeholders 2 & 3 */}
-				<div className="relative overflow-hidden rounded-md sm:rounded-xl">
-					<div className="aspect-h-3 aspect-w-4">
-						<div className="h-full w-full animate-pulse rounded-md bg-gray-200 dark:bg-neutral-800 sm:rounded-xl"></div>
-					</div>
-				</div>
-
-				<div className="relative overflow-hidden rounded-md sm:rounded-xl">
-					<div className="aspect-h-3 aspect-w-4">
-						<div className="h-full w-full animate-pulse rounded-md bg-gray-200 dark:bg-neutral-800 sm:rounded-xl"></div>
-					</div>
-				</div>
-
-				{/* "Show all photos" button Placeholder */}
-				<div className="absolute bottom-3 left-3 z-10 hidden animate-pulse cursor-pointer rounded-xl bg-gray-200 px-4 py-2 dark:bg-neutral-700 md:flex md:items-center md:justify-center">
-					<div className="h-5 w-5 animate-pulse rounded bg-gray-300 dark:bg-neutral-600"></div>
-					<div className="ml-2 h-4 w-20 animate-pulse rounded bg-gray-300 dark:bg-neutral-600"></div>
-				</div>
+				{/* Counter skeleton */}
+				<div className="absolute right-4 top-4 z-10 h-7 w-16 rounded-full bg-gray-200 dark:bg-neutral-700"></div>
 			</div>
 		</header>
 	)
