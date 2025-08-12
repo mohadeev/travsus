@@ -3,7 +3,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { useTranslations } from '@/lib/i18n'
 import TourMap from './tour-map'
-import { Button } from '@/components/ui/button'
 import Image from 'next/image'
 import { MapPin } from 'lucide-react'
 
@@ -33,8 +32,10 @@ export default function TourItineraryWithMap({
 	days,
 	title,
 }: TourItineraryWithMapProps) {
-	const t = useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_touritinerarywithmap");
-	
+	const t = useTranslations(
+		'app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_touritinerarywithmap',
+	)
+
 	const [selectedDayIndex, setSelectedDayIndex] = useState<number>(0)
 	const [selectedStopIndex, setSelectedStopIndex] = useState<number>(0)
 	const [expandedDays, setExpandedDays] = useState<boolean[]>(
@@ -49,7 +50,6 @@ export default function TourItineraryWithMap({
 	const handleDaySelect = (dayIndex: number) => {
 		setSelectedDayIndex(dayIndex)
 		setSelectedStopIndex(0) // Reset stop index when changing days
-
 		// If we have a reference to the map component, call its zoomToDay method
 		if (mapRef.current && typeof mapRef.current.zoomToDay === 'function') {
 			mapRef.current.zoomToDay(dayIndex)
@@ -89,17 +89,14 @@ export default function TourItineraryWithMap({
 		// Create dots for day detail timelines
 		timelineRefs.current.forEach((ref, index) => {
 			if (!ref) return
-
 			// Clear existing dots
 			while (ref.firstChild) {
 				ref.removeChild(ref.firstChild)
 			}
-
 			const height = ref.clientHeight
 			const dotSize = 4 // Exact dot size in pixels
 			const spacing = dotDensity - dotSize // Actual spacing between dots
 			const totalPerDot = dotSize + spacing
-
 			// Calculate how many dots can fit in the container
 			const dotsCount = Math.floor((height - spacing) / totalPerDot) + 1
 
@@ -121,17 +118,14 @@ export default function TourItineraryWithMap({
 		// Create dots for overview timelines
 		overviewTimelineRefs.current.forEach((ref, index) => {
 			if (!ref) return
-
 			// Clear existing dots
 			while (ref.firstChild) {
 				ref.removeChild(ref.firstChild)
 			}
-
 			const height = ref.clientHeight
 			const dotSize = 4 // Exact dot size in pixels
 			const spacing = dotDensity - dotSize // Actual spacing between dots
 			const totalPerDot = dotSize + spacing
-
 			// Calculate how many dots can fit in the container
 			const dotsCount = Math.floor((height - spacing) / totalPerDot) + 1
 
@@ -186,7 +180,6 @@ export default function TourItineraryWithMap({
 					>
 						{t('Overview')}
 					</button>
-
 					{days.map((day, index) => (
 						<button
 							key={index}
@@ -209,7 +202,9 @@ export default function TourItineraryWithMap({
 					<div className="flex gap-2">
 						<span>{t('Full_Map')}</span>
 						<span>•</span>
-						<span>{days.length} {t('Days_Label')}</span>
+						<span>
+							{days.length} {t('Days_Label')}
+						</span>
 					</div>
 				) : (
 					<div>{selectedDay.name}</div>
@@ -223,15 +218,16 @@ export default function TourItineraryWithMap({
 					{selectedDayIndex === -1 ? (
 						// Overview content
 						<div>
-							<h2 className="mb-4 text-xl font-bold">{title || t('Desert_Tour')}</h2>
+							<h2 className="mb-4 text-xl font-bold">
+								{title || t('Desert_Tour')}
+							</h2>
 							<p className="mb-6 text-black">
-								{days.length} {t('Journey_Through')} {' '}
+								{days.length} {t('Journey_Through')}{' '}
 								{days
 									.map((d) => d.cityName)
 									.filter(Boolean)
 									.join(', ')}
 							</p>
-
 							<div className="relative space-y-6">
 								{days.map((day, index) => (
 									<div key={index} className="flex items-start gap-4">
@@ -247,7 +243,6 @@ export default function TourItineraryWithMap({
 												}}
 											></div>
 										)}
-
 										<div className="z-10 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-black text-white">
 											{index + 1}
 										</div>
@@ -263,7 +258,6 @@ export default function TourItineraryWithMap({
 						// Day detail content with stops
 						<div>
 							<h2 className="mb-4 text-xl font-bold">{selectedDay.name}</h2>
-
 							<div className="relative">
 								{stops.map((stop, index) => (
 									<div key={index} className="mb-8">
@@ -273,14 +267,12 @@ export default function TourItineraryWithMap({
 											className="absolute bottom-0 left-4 top-0 flex w-0.5 flex-col items-center"
 											style={{ transform: 'translateX(-50%)' }}
 										></div>
-
 										<div className="flex">
 											<div className="relative">
 												<div className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full bg-black text-white">
 													<MapPin className="h-4 w-4 text-white" />
 												</div>
 											</div>
-
 											<div className="ml-4 flex-1">
 												<h3 className="font-medium">{stop.name}</h3>
 												{stop.duration && (
@@ -288,7 +280,6 @@ export default function TourItineraryWithMap({
 														{t('Stop_Label')} {stop.duration}
 													</p>
 												)}
-
 												{stop.image && (
 													<div className="mb-3 mt-3 overflow-hidden rounded-lg">
 														<Image
@@ -300,27 +291,12 @@ export default function TourItineraryWithMap({
 														/>
 													</div>
 												)}
-
 												<p className="mt-2 text-black">{stop.description}</p>
-
-												{/* <Button
-                          variant="outline"
-                          size="sm"
-                          className="mt-3 bg-black text-white hover:bg-gray-800 border-black"
-                          onClick={() => setSelectedStopIndex(index)}
-                        >
-                          More about {stop.name}
-                        </Button> */}
 											</div>
 										</div>
 									</div>
 								))}
 							</div>
-
-							{/* <div className="mt-4 border-t pt-4">
-								<h3 className="mb-2 font-medium">Meals included:</h3>
-								<p className="text-black">Breakfast, Dinner</p>
-							</div> */}
 						</div>
 					)}
 				</div>
@@ -340,7 +316,9 @@ export default function TourItineraryWithMap({
 
 			{/* SEO-friendly hidden content - visible to search engines but not to users */}
 			<div className="sr-only">
-				<h2>{title || t('Desert_Tour')} - {t('Complete_Itinerary')}</h2>
+				<h2>
+					{title || t('Desert_Tour')} - {t('Complete_Itinerary')}
+				</h2>
 				{days.map((day, index) => (
 					<div key={`seo-day-${index}`}>
 						<h3>
@@ -352,7 +330,11 @@ export default function TourItineraryWithMap({
 								<div key={`seo-stop-${index}-${stopIndex}`}>
 									<h4>{stop.name}</h4>
 									<p>{stop.description}</p>
-									{stop.duration && <p>{t('Duration_Label')} {stop.duration}</p>}
+									{stop.duration && (
+										<p>
+											{t('Duration_Label')} {stop.duration}
+										</p>
+									)}
 								</div>
 							))}
 					</div>
