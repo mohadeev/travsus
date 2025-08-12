@@ -1,5 +1,4 @@
 'use client'
-
 import { forwardRef } from 'react'
 import dynamic from 'next/dynamic'
 import { MapIcon, Navigation } from 'lucide-react'
@@ -28,6 +27,7 @@ interface TourMapProps {
 // Create a loading component
 const MapLoading = ({ height = 500 }: { height?: number }) => {
 	const t = useTranslations('Jan03_TourMap_n9w5')
+
 	return (
 		<div className="overflow-hidden rounded-lg shadow-sm">
 			<div className="flex justify-end gap-2 border-b bg-white p-2">
@@ -86,14 +86,13 @@ const InnerTourMap = forwardRef<
 		ref,
 	) => {
 		const t = useTranslations('Jan03_TourMap_n9w5')
+
 		// Keep all your original TourMap code here, unchanged
 		// This component will only be loaded on the client side
-
 		// Import required modules
 		const { useEffect, useRef, useImperativeHandle } = require('react')
 		const L = require('leaflet')
 		require('leaflet/dist/leaflet.css')
-
 		const mapRef = useRef<HTMLDivElement>(null)
 		const leafletMapRef = useRef<L.Map | null>(null)
 		const routeLayerRef = useRef<L.Polyline | null>(null)
