@@ -1,10 +1,8 @@
 'use client'
 
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef } from 'react'
 import { useTranslations } from '@/lib/i18n'
 import TourMap from './tour-map'
-import Image from 'next/image'
-import { MapPin } from 'lucide-react'
 
 interface Day {
 	name: string
@@ -37,284 +35,99 @@ export default function TourItineraryWithMap({
 	)
 
 	const [selectedDayIndex, setSelectedDayIndex] = useState<number>(0)
-	const [selectedStopIndex, setSelectedStopIndex] = useState<number>(0)
-	const [expandedDays, setExpandedDays] = useState<boolean[]>(
-		Array(days.length).fill(false),
-	)
 	const mapRef = useRef(null)
-	const [dotDensity, setDotDensity] = useState(8) // 8px spacing between dots
-	const timelineRefs = useRef<(HTMLDivElement | null)[]>([])
-	const overviewTimelineRefs = useRef<(HTMLDivElement | null)[]>([])
 
 	// Function to handle day selection
 	const handleDaySelect = (dayIndex: number) => {
 		setSelectedDayIndex(dayIndex)
-		setSelectedStopIndex(0) // Reset stop index when changing days
-		// If we have a reference to the map component, call its zoomToDay method
 		if (mapRef.current && typeof mapRef.current.zoomToDay === 'function') {
 			mapRef.current.zoomToDay(dayIndex)
 		}
 	}
 
-	// Toggle expansion for a specific day
-	const toggleExpand = (dayIndex: number) => {
-		const newExpandedDays = [...expandedDays]
-		newExpandedDays[dayIndex] = !newExpandedDays[dayIndex]
-		setExpandedDays(newExpandedDays)
-	}
-
-	// Ensure we have a valid day selected
-	useEffect(() => {
-		if (selectedDayIndex >= days.length) {
-			setSelectedDayIndex(0)
-		}
-	}, [days, selectedDayIndex])
-
-	// Get the currently selected day
-	const selectedDay = days[selectedDayIndex] || days[0]
-
-	// Get stops for the selected day, or create a default one if none exist
-	const stops = selectedDay.stops || [
-		{
-			name: selectedDay.cityName || t('Tour_Stop'),
-			description: selectedDay.description || t('No_Description_Available'),
-		},
-	]
-
-	// Get the currently selected stop
-	const selectedStop = stops[selectedStopIndex] || stops[0]
-
-	// Create dots for timeline
-	useEffect(() => {
-		// Create dots for day detail timelines
-		timelineRefs.current.forEach((ref, index) => {
-			if (!ref) return
-			// Clear existing dots
-			while (ref.firstChild) {
-				ref.removeChild(ref.firstChild)
-			}
-			const height = ref.clientHeight
-			const dotSize = 4 // Exact dot size in pixels
-			const spacing = dotDensity - dotSize // Actual spacing between dots
-			const totalPerDot = dotSize + spacing
-			// Calculate how many dots can fit in the container
-			const dotsCount = Math.floor((height - spacing) / totalPerDot) + 1
-
-			// Create dots
-			for (let i = 0; i < dotsCount; i++) {
-				const dot = document.createElement('div')
-				dot.style.position = 'absolute'
-				dot.style.top = `${i * dotDensity}px`
-				dot.style.left = '50%'
-				dot.style.transform = 'translateX(-50%)'
-				dot.style.width = '4px'
-				dot.style.height = '4px'
-				dot.style.backgroundColor = '#000000'
-				dot.style.borderRadius = '50%'
-				ref.appendChild(dot)
-			}
-		})
-
-		// Create dots for overview timelines
-		overviewTimelineRefs.current.forEach((ref, index) => {
-			if (!ref) return
-			// Clear existing dots
-			while (ref.firstChild) {
-				ref.removeChild(ref.firstChild)
-			}
-			const height = ref.clientHeight
-			const dotSize = 4 // Exact dot size in pixels
-			const spacing = dotDensity - dotSize // Actual spacing between dots
-			const totalPerDot = dotSize + spacing
-			// Calculate how many dots can fit in the container
-			const dotsCount = Math.floor((height - spacing) / totalPerDot) + 1
-
-			// Create dots
-			for (let i = 0; i < dotsCount; i++) {
-				const dot = document.createElement('div')
-				dot.style.position = 'absolute'
-				dot.style.top = `${i * dotDensity}px`
-				dot.style.left = '50%'
-				dot.style.transform = 'translateX(-50%)'
-				dot.style.width = '4px'
-				dot.style.height = '4px'
-				dot.style.backgroundColor = '#000000'
-				dot.style.borderRadius = '50%'
-				ref.appendChild(dot)
-			}
-		})
-	}, [stops, dotDensity, selectedDayIndex])
-
-	// Set timeline ref
-	const setTimelineRef = (el: HTMLDivElement | null, index: number) => {
-		if (timelineRefs.current.length <= index) {
-			timelineRefs.current = [
-				...timelineRefs.current,
-				...Array(index - timelineRefs.current.length + 1).fill(null),
-			]
-		}
-		timelineRefs.current[index] = el
-	}
-
-	// Set overview timeline ref
-	const setOverviewTimelineRef = (el: HTMLDivElement | null, index: number) => {
-		if (overviewTimelineRefs.current.length <= index) {
-			overviewTimelineRefs.current = [
-				...overviewTimelineRefs.current,
-				...Array(index - overviewTimelineRefs.current.length + 1).fill(null),
-			]
-		}
-		overviewTimelineRefs.current[index] = el
-	}
-
 	return (
-		<div className="overflow-hidden rounded-lg bg-white shadow-sm">
-			{/* Top navigation tabs */}
-			<div className="border-b">
-				<div className="flex overflow-x-auto">
-					<button
-						className={`whitespace-nowrap px-6 py-4 font-medium text-black ${
-							selectedDayIndex === -1 ? 'border-b-2 border-black font-bold' : ''
-						}`}
-						onClick={() => handleDaySelect(-1)}
-					>
-						{t('Overview')}
-					</button>
-					{days.map((day, index) => (
-						<button
-							key={index}
-							className={`whitespace-nowrap px-6 py-4 font-medium text-black ${
-								selectedDayIndex === index
-									? 'border-b-2 border-black font-bold'
-									: ''
-							}`}
-							onClick={() => handleDaySelect(index)}
-						>
-							{t('Day_Label')} {index + 1}
-						</button>
-					))}
-				</div>
+		<div className="bg-white">
+			{/* Header */}
+			<div className="mb-6">
+				<h2 className="mb-6 text-2xl font-bold text-gray-900">Itinerario</h2>
 			</div>
 
-			{/* Day subtitle */}
-			<div className="border-b bg-gray-50 px-6 py-2 text-sm text-black">
-				{selectedDayIndex === -1 ? (
-					<div className="flex gap-2">
-						<span>{t('Full_Map')}</span>
-						<span>•</span>
-						<span>
-							{days.length} {t('Days_Label')}
-						</span>
-					</div>
-				) : (
-					<div>{selectedDay.name}</div>
-				)}
-			</div>
-
-			{/* Main content area */}
-			<div className="flex flex-col lg:flex-row">
-				{/* Left side: Itinerary details */}
-				<div className="w-full border-r p-6 lg:w-2/5">
-					{selectedDayIndex === -1 ? (
-						// Overview content
-						<div>
-							<h2 className="mb-4 text-xl font-bold">
-								{title || t('Desert_Tour')}
-							</h2>
-							<p className="mb-6 text-black">
-								{days.length} {t('Journey_Through')}{' '}
-								{days
-									.map((d) => d.cityName)
-									.filter(Boolean)
-									.join(', ')}
+			{/* Main Content - Side by side layout */}
+			<div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+				{/* Left Side - Timeline */}
+				<div className="space-y-0">
+					{/* Start Point */}
+					<div className="relative mb-8 flex items-start gap-4">
+						<div className="relative flex-shrink-0">
+							<div className="relative rounded-full bg-yellow-400 px-4 py-2 text-sm font-bold text-black">
+								Inicio
+								{/* Speech bubble tail */}
+								<div className="absolute left-4 top-full h-0 w-0 border-l-8 border-r-8 border-t-8 border-l-transparent border-r-transparent border-t-yellow-400"></div>
+							</div>
+							{/* Dotted line */}
+							<div className="absolute left-1/2 top-12 h-12 w-0.5 -translate-x-0.5 transform border-l-2 border-dotted border-gray-400"></div>
+						</div>
+						<div className="flex-1 pt-2">
+							<h3 className="mb-1 font-medium text-gray-900">Empezará en</h3>
+							<p className="mb-2 font-medium text-gray-700">
+								Pl. de San Miguel, 7
 							</p>
-							<div className="relative space-y-6">
-								{days.map((day, index) => (
-									<div key={index} className="flex items-start gap-4">
-										{/* Dotted line connecting days */}
-										{index < days.length - 1 && (
-											<div
-												ref={(el) => setOverviewTimelineRef(el, index)}
-												className="absolute bottom-0 left-4 top-0 flex w-0.5 flex-col items-center"
-												style={{
-													transform: 'translateX(-50%)',
-													top: `${index * 6 + 2.5}rem`,
-													height: '4rem',
-												}}
-											></div>
-										)}
-										<div className="z-10 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-black text-white">
-											{index + 1}
-										</div>
-										<div>
-											<h3 className="font-medium">{day.name}</h3>
-											<p className="mt-1 text-sm text-black">{day.cityName}</p>
-										</div>
-									</div>
-								))}
-							</div>
+							<button className="text-sm text-blue-600 hover:underline">
+								Ver dirección y detalles
+							</button>
 						</div>
-					) : (
-						// Day detail content with stops
-						<div>
-							<h2 className="mb-4 text-xl font-bold">{selectedDay.name}</h2>
-							<div className="relative">
-								{stops.map((stop, index) => (
-									<div key={index} className="mb-8">
-										{/* Timeline dotted line */}
-										<div
-											ref={(el) => setTimelineRef(el, index)}
-											className="absolute bottom-0 left-4 top-0 flex w-0.5 flex-col items-center"
-											style={{ transform: 'translateX(-50%)' }}
-										></div>
-										<div className="flex">
-											<div className="relative">
-												<div className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full bg-black text-white">
-													<MapPin className="h-4 w-4 text-white" />
-												</div>
-											</div>
-											<div className="ml-4 flex-1">
-												<h3 className="font-medium">{stop.name}</h3>
-												{stop.duration && (
-													<p className="mt-1 text-sm text-black">
-														{t('Stop_Label')} {stop.duration}
-													</p>
-												)}
-												{stop.image && (
-													<div className="mb-3 mt-3 overflow-hidden rounded-lg">
-														<Image
-															src={stop.image || '/placeholder.svg'}
-															alt={stop.name}
-															width={400}
-															height={250}
-															className="h-auto w-full object-cover"
-														/>
-													</div>
-												)}
-												<p className="mt-2 text-black">{stop.description}</p>
-											</div>
-										</div>
+					</div>
+
+					{/* Days Loop */}
+					<div className="space-y-0">
+						{days.map((day, index) => (
+							<div key={index} className="relative mb-8 flex items-start gap-4">
+								<div className="relative flex-shrink-0">
+									<div className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-800 text-sm font-bold text-white">
+										{index + 1}
 									</div>
-								))}
+									{/* Dotted line - only show if not last item */}
+									{index < days.length - 1 && (
+										<div className="absolute left-1/2 top-10 h-12 w-0.5 -translate-x-0.5 transform border-l-2 border-dotted border-gray-400"></div>
+									)}
+								</div>
+								<div className="flex-1 pt-2">
+									<h3 className="mb-1 font-medium text-gray-900">
+										{day.cityName || day.name}
+									</h3>
+									<p className="mb-2 text-sm text-gray-600">
+										Parada: 60 minutos
+										{day.description && ` - ${day.description}`}
+									</p>
+									<button className="text-sm text-blue-600 hover:underline">
+										{day.stops && day.stops.length > 0
+											? 'Ver detalles y foto'
+											: 'Ver detalles'}
+									</button>
+								</div>
 							</div>
-						</div>
-					)}
+						))}
+					</div>
 				</div>
 
-				{/* Right side: Map */}
-				<div className="w-full lg:w-3/5">
-					<TourMap
-						days={days}
-						ref={mapRef}
-						selectedDayIndex={selectedDayIndex === -1 ? null : selectedDayIndex}
-						onDaySelect={handleDaySelect}
-						height={600}
-						monochrome={true}
-					/>
+				{/* Right Side - Map */}
+				<div className="relative">
+					<div className="sticky top-4">
+						<div className="relative h-96 overflow-hidden rounded-lg bg-gray-100">
+							<TourMap
+								days={days}
+								ref={mapRef}
+								selectedDayIndex={selectedDayIndex}
+								onDaySelect={handleDaySelect}
+								height={384}
+								monochrome={false}
+							/>
+						</div>
+					</div>
 				</div>
 			</div>
 
-			{/* SEO-friendly hidden content - visible to search engines but not to users */}
+			{/* SEO-friendly hidden content */}
 			<div className="sr-only">
 				<h2>
 					{title || t('Desert_Tour')} - {t('Complete_Itinerary')}
