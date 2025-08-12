@@ -1,4 +1,5 @@
 'use client'
+
 import { useTranslations } from '@/lib/i18n'
 import { updateServiceState } from '@/app/GlobalRedux/Features/creatingServiceSlice/creatingServiceSlice'
 import { useAuthAction } from '@/app/hooks/useAuthAction'
@@ -142,7 +143,7 @@ const TourHeader = () => {
 		{ value: 'Tours', href: `/destinations/${city?.toLowerCase()}/tours` },
 	]
 
-	// Mock data for demo - replace with actual data from your Redux store
+	// Tour data with fallbacks
 	const tourRating = rating || 4.9
 	const totalReviews = reviewCount || 5985
 	const recommendedBy = recommendationPercentage || 97
@@ -153,11 +154,26 @@ const TourHeader = () => {
 		for (let i = 0; i < 5; i++) {
 			if (i < fullStars) {
 				stars.push(
-					<div key={i} className="h-4 w-4 rounded-full bg-green-600"></div>,
+					<div key={i} className="h-4 w-4 rounded-full bg-green-600" />,
+				)
+			} else {
+				stars.push(<div key={i} className="h-4 w-4 rounded-full bg-gray-300" />)
+			}
+		}
+		return stars
+	}
+
+	const renderMobileStars = (rating: number) => {
+		const stars = []
+		const fullStars = Math.floor(rating)
+		for (let i = 0; i < 5; i++) {
+			if (i < fullStars) {
+				stars.push(
+					<Star key={i} className="h-4 w-4 fill-green-600 text-green-600" />,
 				)
 			} else {
 				stars.push(
-					<div key={i} className="h-4 w-4 rounded-full bg-gray-300"></div>,
+					<Star key={i} className="h-4 w-4 fill-gray-300 text-gray-300" />,
 				)
 			}
 		}
@@ -177,6 +193,7 @@ const TourHeader = () => {
 					>
 						<ArrowLeft className="h-6 w-6 text-black" strokeWidth={2} />
 					</Link>
+
 					{/* Action Icons */}
 					<div className="flex items-center gap-4">
 						{/* Share Button */}
@@ -189,6 +206,7 @@ const TourHeader = () => {
 							>
 								<Share className="h-6 w-6 text-black" strokeWidth={2} />
 							</button>
+
 							{/* Share Dropdown */}
 							<Motion
 								style={{
@@ -230,6 +248,7 @@ const TourHeader = () => {
 									)
 								}
 							</Motion>
+
 							{/* Copy Success Message */}
 							{copySuccess && (
 								<div className="absolute right-0 z-20 mt-2 rounded-lg bg-black px-3 py-2 text-sm font-medium text-white shadow-lg">
@@ -237,10 +256,12 @@ const TourHeader = () => {
 								</div>
 							)}
 						</div>
+
 						{/* Review Button */}
 						<button className="p-2">
 							<Edit className="h-6 w-6 text-black" strokeWidth={2} />
 						</button>
+
 						{/* Save Button */}
 						<button onClick={handleAddToWishList} className="p-2">
 							{liked ? (
@@ -254,19 +275,21 @@ const TourHeader = () => {
 						</button>
 					</div>
 				</div>
+
 				{/* Mobile Content */}
 				<div className="space-y-4 p-4">
 					{/* Title */}
 					<h1 className="text-2xl font-bold leading-tight text-black">
 						{String(title)}
 					</h1>
+
 					{/* Rating Section */}
 					<div className="space-y-3">
-						{/* Star Rating */}
+						{/* Star Rating - Mobile uses star icons */}
 						<div className="flex items-center gap-2">
 							<span className="text-lg font-bold text-black">{tourRating}</span>
-							<div className="flex items-center gap-1">
-								{renderStars(tourRating)}
+							<div className="flex items-center gap-0.5">
+								{renderMobileStars(tourRating)}
 							</div>
 							<Link
 								href="#reviews"
@@ -275,6 +298,7 @@ const TourHeader = () => {
 								({totalReviews.toLocaleString()} {t('Reviews')})
 							</Link>
 						</div>
+
 						{/* Recommendation Badge */}
 						<div className="flex items-center gap-2">
 							<Shield
@@ -288,6 +312,7 @@ const TourHeader = () => {
 					</div>
 				</div>
 			</div>
+
 			{/* Desktop Header - Hidden on mobile */}
 			<div className="hidden md:block">
 				{/* Breadcrumb Navigation */}
@@ -308,6 +333,7 @@ const TourHeader = () => {
 						))}
 					</div>
 				</nav>
+
 				{/* Back Button */}
 				<div className="mb-4">
 					<Link
@@ -320,6 +346,7 @@ const TourHeader = () => {
 						</span>
 					</Link>
 				</div>
+
 				{/* Main Header Content */}
 				<div className="space-y-4">
 					{/* Title and Action Buttons */}
@@ -330,6 +357,7 @@ const TourHeader = () => {
 								{String(title)}
 							</h1>
 						</div>
+
 						{/* Action Buttons */}
 						<div className="flex flex-shrink-0 items-center gap-3">
 							{/* Share Button with Dropdown */}
@@ -343,6 +371,7 @@ const TourHeader = () => {
 									<Share className="h-4 w-4" strokeWidth={2} />
 									<span className="hidden sm:inline">{t('Share')}</span>
 								</button>
+
 								{/* Share Dropdown */}
 								<Motion
 									style={{
@@ -384,6 +413,7 @@ const TourHeader = () => {
 										)
 									}
 								</Motion>
+
 								{/* Copy Success Message */}
 								{copySuccess && (
 									<div className="absolute right-0 z-20 mt-2 rounded-lg bg-black px-3 py-2 text-sm font-medium text-white shadow-lg">
@@ -391,11 +421,13 @@ const TourHeader = () => {
 									</div>
 								)}
 							</div>
+
 							{/* Review Button */}
 							<button className="inline-flex items-center gap-2 rounded-full border-2 border-black bg-white px-4 py-2 text-sm font-semibold text-black transition-all duration-200 hover:bg-black hover:text-white">
 								<Edit className="h-4 w-4" strokeWidth={2} />
 								<span className="hidden sm:inline">{t('Review')}</span>
 							</button>
+
 							{/* Save Button */}
 							<button
 								onClick={handleAddToWishList}
@@ -415,18 +447,14 @@ const TourHeader = () => {
 							</button>
 						</div>
 					</div>
-					{/* Rating and Reviews Section */}
+
+					{/* Rating and Reviews Section - Desktop uses yellow stars */}
 					<div className="flex flex-wrap items-center gap-4 text-sm">
 						{/* Star Rating */}
 						<div className="flex items-center gap-2">
 							<span className="text-lg font-bold text-black">{tourRating}</span>
 							<div className="flex items-center gap-0.5">
-								{Array.from({ length: 5 }, (_, i) => (
-									<Star
-										key={i}
-										className={`h-4 w-4 ${i < Math.floor(tourRating) ? 'fill-yellow-500 text-yellow-500' : 'fill-gray-300 text-gray-300'}`}
-									/>
-								))}
+								{renderMobileStars(tourRating)}
 							</div>
 							<Link
 								href="#reviews"
@@ -435,6 +463,7 @@ const TourHeader = () => {
 								({totalReviews.toLocaleString()} {t('Reviews')})
 							</Link>
 						</div>
+
 						{/* Recommendation Badge */}
 						<div className="flex items-center gap-2 text-black/70">
 							<Shield className="h-4 w-4 text-green-600" strokeWidth={2} />

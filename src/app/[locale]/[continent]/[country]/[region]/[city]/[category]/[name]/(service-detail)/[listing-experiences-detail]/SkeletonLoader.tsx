@@ -15,7 +15,7 @@ export const SkeletonLoader = () => {
 			</div>
 
 			{/* Desktop Skeleton */}
-			<div className="hidden sm:block">
+			<div className="container hidden sm:block">
 				<div className="grid grid-cols-4 gap-2 overflow-hidden rounded-2xl">
 					{/* Main large skeleton */}
 					<div className="aspect-square col-span-2 row-span-2 bg-gray-200 dark:bg-neutral-800"></div>
