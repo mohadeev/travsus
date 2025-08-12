@@ -454,7 +454,7 @@ const TourHeader = () => {
 						<div className="flex items-center gap-2">
 							<span className="text-lg font-bold text-black">{tourRating}</span>
 							<div className="flex items-center gap-0.5">
-								{renderMobileStars(tourRating)}
+								{renderStars(tourRating)}
 							</div>
 							<Link
 								href="#reviews"
