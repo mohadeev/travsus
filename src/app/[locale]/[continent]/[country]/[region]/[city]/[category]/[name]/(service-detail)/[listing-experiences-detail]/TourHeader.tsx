@@ -185,7 +185,7 @@ const TourHeader = () => {
 			{/* Mobile Header - Only visible on mobile */}
 			<div className="block md:hidden">
 				{/* Mobile Top Navigation */}
-				<div className="flex items-center justify-between border-b border-gray-200 p-4">
+				<div className="flex items-center justify-between border-b border-gray-200 py-4">
 					{/* Back Button */}
 					<Link
 						href={`/destinations/${city?.toLowerCase()}/attractions`}
@@ -277,7 +277,7 @@ const TourHeader = () => {
 				</div>
 
 				{/* Mobile Content */}
-				<div className="space-y-4 p-4">
+				<div className="space-y-4 py-4">
 					{/* Title */}
 					<h1 className="text-2xl font-bold leading-tight text-black">
 						{String(title)}
