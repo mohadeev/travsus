@@ -226,10 +226,13 @@ const ListingExperiencesDetailPage: FC<
 
 	return (
 		<>
-			<TourHeader />
-			<div>sdkvslkdv</div>
+			<div className={'container'}>
+				<TourHeader />
+			</div>
+
 			<ListingExperiencesDetailsImages />
-			<div className={`nc-ListingExperiencesDetailPage`}>
+
+			<div className={`nc-ListingExperiencesDetailPage container`}>
 				<main className="relative z-10 mt-11 flex flex-col lg:flex-row">
 					<div className="w-full space-y-8 lg:w-3/5 lg:space-y-10 lg:pr-10 xl:w-2/3">
 						{renderSection2()}
