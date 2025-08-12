@@ -1,92 +1,52 @@
 {
 	"en-US": {
-		"Jan03_RenderSidebar_k7m9": {
-			"per_person": "/per person",
-			"processing": "Processing...",
-			"reserve": "Reserve",
-			"select_date_error": "You need to select a date",
-			"no_booking_created": "No booking created"
+		"servicedetail_listingexperiencesdetail_page": {
+			"Similar_Experiences": "Similar experiences"
 		}
 	},
 	"es-ES": {
-		"Jan03_RenderSidebar_k7m9": {
-			"per_person": "/por persona",
-			"processing": "Procesando...",
-			"reserve": "Reservar",
-			"select_date_error": "Necesitas seleccionar una fecha",
-			"no_booking_created": "No se creó la reserva"
+		"servicedetail_listingexperiencesdetail_page": {
+			"Similar_Experiences": "Experiencias similares"
 		}
 	},
 	"de-DE": {
-		"Jan03_RenderSidebar_k7m9": {
-			"per_person": "/pro Person",
-			"processing": "Verarbeitung...",
-			"reserve": "Reservieren",
-			"select_date_error": "Sie müssen ein Datum auswählen",
-			"no_booking_created": "Keine Buchung erstellt"
+		"servicedetail_listingexperiencesdetail_page": {
+			"Similar_Experiences": "Ähnliche Erlebnisse"
 		}
 	},
 	"fr-FR": {
-		"Jan03_RenderSidebar_k7m9": {
-			"per_person": "/par personne",
-			"processing": "Traitement...",
-			"reserve": "Réserver",
-			"select_date_error": "Vous devez sélectionner une date",
-			"no_booking_created": "Aucune réservation créée"
+		"servicedetail_listingexperiencesdetail_page": {
+			"Similar_Experiences": "Expériences similaires"
 		}
 	},
 	"ja-JP": {
-		"Jan03_RenderSidebar_k7m9": {
-			"per_person": "/1人あたり",
-			"processing": "処理中...",
-			"reserve": "予約する",
-			"select_date_error": "日付を選択する必要があります",
-			"no_booking_created": "予約が作成されませんでした"
+		"servicedetail_listingexperiencesdetail_page": {
+			"Similar_Experiences": "類似の体験"
 		}
 	},
 	"pt-PT": {
-		"Jan03_RenderSidebar_k7m9": {
-			"per_person": "/por pessoa",
-			"processing": "Processando...",
-			"reserve": "Reservar",
-			"select_date_error": "Precisa selecionar uma data",
-			"no_booking_created": "Nenhuma reserva criada"
+		"servicedetail_listingexperiencesdetail_page": {
+			"Similar_Experiences": "Experiências similares"
 		}
 	},
 	"it-IT": {
-		"Jan03_RenderSidebar_k7m9": {
-			"per_person": "/a persona",
-			"processing": "Elaborazione...",
-			"reserve": "Prenota",
-			"select_date_error": "Devi selezionare una data",
-			"no_booking_created": "Nessuna prenotazione creata"
+		"servicedetail_listingexperiencesdetail_page": {
+			"Similar_Experiences": "Esperienze simili"
 		}
 	},
 	"ru-RU": {
-		"Jan03_RenderSidebar_k7m9": {
-			"per_person": "/за человека",
-			"processing": "Обработка...",
-			"reserve": "Забронировать",
-			"select_date_error": "Необходимо выбрать дату",
-			"no_booking_created": "Бронирование не создано"
+		"servicedetail_listingexperiencesdetail_page": {
+			"Similar_Experiences": "Похожие впечатления"
 		}
 	},
 	"zh-CN": {
-		"Jan03_RenderSidebar_k7m9": {
-			"per_person": "/每人",
-			"processing": "处理中...",
-			"reserve": "预订",
-			"select_date_error": "您需要选择一个日期",
-			"no_booking_created": "未创建预订"
+		"servicedetail_listingexperiencesdetail_page": {
+			"Similar_Experiences": "相似体验"
 		}
 	},
 	"ko-KR": {
-		"Jan03_RenderSidebar_k7m9": {
-			"per_person": "/1인당",
-			"processing": "처리 중...",
-			"reserve": "예약하기",
-			"select_date_error": "날짜를 선택해야 합니다",
-			"no_booking_created": "예약이 생성되지 않았습니다"
+		"servicedetail_listingexperiencesdetail_page": {
+			"Similar_Experiences": "유사한 경험"
 		}
 	}
 }

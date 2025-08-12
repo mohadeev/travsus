@@ -227,6 +227,7 @@ const ListingExperiencesDetailPage: FC<
 	return (
 		<>
 			<TourHeader />
+			<div>sdkvslkdv</div>
 			<ListingExperiencesDetailsImages />
 			<div className={`nc-ListingExperiencesDetailPage`}>
 				<main className="relative z-10 mt-11 flex flex-col lg:flex-row">
@@ -256,8 +257,7 @@ const ListingExperiencesDetailPage: FC<
 				<ReviewSystem serviceId={id} serviceName={title} />
 				<ItemsCardList
 					locationType="tour"
-					heading={t('app_locale_ClientHomePage_Popular_Tours')}
-					subHeading={t('app_locale_ClientHomePage_Discover_Exciting_Tours')}
+					heading={t('Similar_Experiences')}
 					currentPage={1}
 					layout="row"
 				/>

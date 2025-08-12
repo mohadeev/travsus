@@ -20,7 +20,7 @@ import { toggleOverlay } from '@/app/[locale]/GlobalRedux/Features/overlaySlice/
 import { updateServiceState } from '@/app/GlobalRedux/Features/creatingServiceSlice/creatingServiceSlice'
 
 const DetailtLayout = ({ children }: { children: ReactNode }) => {
-	const t = useTranslations("layout");
+	const t = useTranslations('layout')
 	const dispatch = useDispatch()
 	const thisPathname = usePathname()
 	const searchParams = useSearchParams()
@@ -126,8 +126,10 @@ const DetailtLayout = ({ children }: { children: ReactNode }) => {
 					: undefined, // ✅ Prevents error when reviewCount is missing
 				address: {
 					'@type': 'PostalAddress',
-					addressLocality: tourData.startAddress?.city || t('layout_Unknown_City'),
-					addressCountry: tourData.startAddress?.country || t('layout_Unknown_Country'),
+					addressLocality:
+						tourData.startAddress?.city || t('layout_Unknown_City'),
+					addressCountry:
+						tourData.startAddress?.country || t('layout_Unknown_Country'),
 				},
 				geo: tourData.geo
 					? {
@@ -164,7 +166,7 @@ const DetailtLayout = ({ children }: { children: ReactNode }) => {
 				<ListingImageGallery images={listingExperienceImageGallery} />
 			</Suspense>
 
-			<div className="ListingDetailPage__content container">{children}</div>
+			<div className="ListingDetailPage__content">{children}</div>
 
 			{/* ✅ SEO Structured Data for Tour (Ensured valid JSON-LD) */}
 			{tourSchema && (
