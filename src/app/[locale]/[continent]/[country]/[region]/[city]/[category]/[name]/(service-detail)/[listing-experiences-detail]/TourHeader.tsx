@@ -359,7 +359,7 @@ const TourHeader = () => {
 						</div>
 
 						{/* Action Buttons */}
-						<div className="flex flex-shrink-0 items-center gap-3">
+						<div className="flex flex-shrink-0 items-center gap-3 px-4">
 							{/* Share Button with Dropdown */}
 							<div className="relative" ref={dropdownRef}>
 								<button
