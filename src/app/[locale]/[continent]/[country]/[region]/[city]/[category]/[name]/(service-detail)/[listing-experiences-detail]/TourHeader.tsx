@@ -7,7 +7,6 @@ import addAndRemoveToWishList from '@/utils/api-utils/addAndRemoveToWishList'
 import {
 	ChevronRight,
 	ChevronLeft,
-	Star,
 	Shield,
 	Heart,
 	ArrowLeft,
@@ -163,25 +162,8 @@ const TourHeader = () => {
 		return stars
 	}
 
-	const renderMobileStars = (rating: number) => {
-		const stars = []
-		const fullStars = Math.floor(rating)
-		for (let i = 0; i < 5; i++) {
-			if (i < fullStars) {
-				stars.push(
-					<Star key={i} className="h-4 w-4 fill-green-600 text-green-600" />,
-				)
-			} else {
-				stars.push(
-					<Star key={i} className="h-4 w-4 fill-gray-300 text-gray-300" />,
-				)
-			}
-		}
-		return stars
-	}
-
 	return (
-		<div className="nc-ListingExperiencesDetailPage">
+		<div className="nc-ListingExperiencesDetailPage mb-6">
 			{/* Mobile Header - Only visible on mobile */}
 			<div className="block md:hidden">
 				{/* Mobile Top Navigation */}
@@ -289,7 +271,7 @@ const TourHeader = () => {
 						<div className="flex items-center gap-2">
 							<span className="text-lg font-bold text-black">{tourRating}</span>
 							<div className="flex items-center gap-0.5">
-								{renderMobileStars(tourRating)}
+								{renderStars(tourRating)}
 							</div>
 							<Link
 								href="#reviews"
