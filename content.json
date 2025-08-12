@@ -1,52 +1,172 @@
 {
 	"en-US": {
-		"servicedetail_listingexperiencesdetail_page": {
-			"Similar_Experiences": "Similar experiences"
+		"Jan03_TourHeader_x9k2": {
+			"Email_Subject": "Check out this amazing tour!",
+			"Email_Body": "I found this great tour: {url}",
+			"Tour_Link_Copied": "Tour link copied!",
+			"Copy_Failed": "Copy failed",
+			"Copy_Tour_Link": "Copy tour link",
+			"Email_Tour": "Email tour",
+			"Reviews": "reviews",
+			"Recommended_By_Percentage": "Recommended by {percentage}% of travelers",
+			"Discover_All_Things": "Discover all things to do in {city}",
+			"Share": "Share",
+			"Review": "Review",
+			"Save": "Save",
+			"Saved": "Saved"
 		}
 	},
 	"es-ES": {
-		"servicedetail_listingexperiencesdetail_page": {
-			"Similar_Experiences": "Experiencias similares"
+		"Jan03_TourHeader_x9k2": {
+			"Email_Subject": "¡Echa un vistazo a este increíble tour!",
+			"Email_Body": "Encontré este gran tour: {url}",
+			"Tour_Link_Copied": "¡Enlace del tour copiado!",
+			"Copy_Failed": "Error al copiar",
+			"Copy_Tour_Link": "Copiar enlace del tour",
+			"Email_Tour": "Enviar tour por email",
+			"Reviews": "reseñas",
+			"Recommended_By_Percentage": "Recomendado por el {percentage}% de los viajeros",
+			"Discover_All_Things": "Descubre todas las cosas que hacer en {city}",
+			"Share": "Compartir",
+			"Review": "Reseñar",
+			"Save": "Guardar",
+			"Saved": "Guardado"
 		}
 	},
 	"de-DE": {
-		"servicedetail_listingexperiencesdetail_page": {
-			"Similar_Experiences": "Ähnliche Erlebnisse"
+		"Jan03_TourHeader_x9k2": {
+			"Email_Subject": "Schau dir diese fantastische Tour an!",
+			"Email_Body": "Ich habe diese großartige Tour gefunden: {url}",
+			"Tour_Link_Copied": "Tour-Link kopiert!",
+			"Copy_Failed": "Kopieren fehlgeschlagen",
+			"Copy_Tour_Link": "Tour-Link kopieren",
+			"Email_Tour": "Tour per E-Mail senden",
+			"Reviews": "Bewertungen",
+			"Recommended_By_Percentage": "Von {percentage}% der Reisenden empfohlen",
+			"Discover_All_Things": "Entdecke alle Aktivitäten in {city}",
+			"Share": "Teilen",
+			"Review": "Bewerten",
+			"Save": "Speichern",
+			"Saved": "Gespeichert"
 		}
 	},
 	"fr-FR": {
-		"servicedetail_listingexperiencesdetail_page": {
-			"Similar_Experiences": "Expériences similaires"
+		"Jan03_TourHeader_x9k2": {
+			"Email_Subject": "Découvrez cette incroyable visite !",
+			"Email_Body": "J'ai trouvé cette superbe visite : {url}",
+			"Tour_Link_Copied": "Lien de la visite copié !",
+			"Copy_Failed": "Échec de la copie",
+			"Copy_Tour_Link": "Copier le lien de la visite",
+			"Email_Tour": "Envoyer la visite par email",
+			"Reviews": "avis",
+			"Recommended_By_Percentage": "Recommandé par {percentage}% des voyageurs",
+			"Discover_All_Things": "Découvrez toutes les activités à {city}",
+			"Share": "Partager",
+			"Review": "Évaluer",
+			"Save": "Sauvegarder",
+			"Saved": "Sauvegardé"
 		}
 	},
 	"ja-JP": {
-		"servicedetail_listingexperiencesdetail_page": {
-			"Similar_Experiences": "類似の体験"
+		"Jan03_TourHeader_x9k2": {
+			"Email_Subject": "この素晴らしいツアーをチェックしてください！",
+			"Email_Body": "この素晴らしいツアーを見つけました：{url}",
+			"Tour_Link_Copied": "ツアーリンクをコピーしました！",
+			"Copy_Failed": "コピーに失敗しました",
+			"Copy_Tour_Link": "ツアーリンクをコピー",
+			"Email_Tour": "ツアーをメールで送信",
+			"Reviews": "レビュー",
+			"Recommended_By_Percentage": "旅行者の{percentage}%が推奨",
+			"Discover_All_Things": "{city}でできることをすべて発見",
+			"Share": "共有",
+			"Review": "レビュー",
+			"Save": "保存",
+			"Saved": "保存済み"
 		}
 	},
 	"pt-PT": {
-		"servicedetail_listingexperiencesdetail_page": {
-			"Similar_Experiences": "Experiências similares"
+		"Jan03_TourHeader_x9k2": {
+			"Email_Subject": "Confira este tour incrível!",
+			"Email_Body": "Encontrei este ótimo tour: {url}",
+			"Tour_Link_Copied": "Link do tour copiado!",
+			"Copy_Failed": "Falha ao copiar",
+			"Copy_Tour_Link": "Copiar link do tour",
+			"Email_Tour": "Enviar tour por email",
+			"Reviews": "avaliações",
+			"Recommended_By_Percentage": "Recomendado por {percentage}% dos viajantes",
+			"Discover_All_Things": "Descubra todas as coisas para fazer em {city}",
+			"Share": "Partilhar",
+			"Review": "Avaliar",
+			"Save": "Guardar",
+			"Saved": "Guardado"
 		}
 	},
 	"it-IT": {
-		"servicedetail_listingexperiencesdetail_page": {
-			"Similar_Experiences": "Esperienze simili"
+		"Jan03_TourHeader_x9k2": {
+			"Email_Subject": "Dai un'occhiata a questo tour fantastico!",
+			"Email_Body": "Ho trovato questo fantastico tour: {url}",
+			"Tour_Link_Copied": "Link del tour copiato!",
+			"Copy_Failed": "Copia fallita",
+			"Copy_Tour_Link": "Copia link del tour",
+			"Email_Tour": "Invia tour via email",
+			"Reviews": "recensioni",
+			"Recommended_By_Percentage": "Raccomandato dal {percentage}% dei viaggiatori",
+			"Discover_All_Things": "Scopri tutte le cose da fare a {city}",
+			"Share": "Condividi",
+			"Review": "Recensisci",
+			"Save": "Salva",
+			"Saved": "Salvato"
 		}
 	},
 	"ru-RU": {
-		"servicedetail_listingexperiencesdetail_page": {
-			"Similar_Experiences": "Похожие впечатления"
+		"Jan03_TourHeader_x9k2": {
+			"Email_Subject": "Посмотрите на этот удивительный тур!",
+			"Email_Body": "Я нашел этот отличный тур: {url}",
+			"Tour_Link_Copied": "Ссылка на тур скопирована!",
+			"Copy_Failed": "Ошибка копирования",
+			"Copy_Tour_Link": "Копировать ссылку на тур",
+			"Email_Tour": "Отправить тур по электронной почте",
+			"Reviews": "отзывы",
+			"Recommended_By_Percentage": "Рекомендовано {percentage}% путешественников",
+			"Discover_All_Things": "Откройте для себя все развлечения в {city}",
+			"Share": "Поделиться",
+			"Review": "Отзыв",
+			"Save": "Сохранить",
+			"Saved": "Сохранено"
 		}
 	},
 	"zh-CN": {
-		"servicedetail_listingexperiencesdetail_page": {
-			"Similar_Experiences": "相似体验"
+		"Jan03_TourHeader_x9k2": {
+			"Email_Subject": "看看这个精彩的旅游！",
+			"Email_Body": "我发现了这个很棒的旅游：{url}",
+			"Tour_Link_Copied": "旅游链接已复制！",
+			"Copy_Failed": "复制失败",
+			"Copy_Tour_Link": "复制旅游链接",
+			"Email_Tour": "通过邮件发送旅游",
+			"Reviews": "评论",
+			"Recommended_By_Percentage": "{percentage}%的旅行者推荐",
+			"Discover_All_Things": "发现{city}的所有活动",
+			"Share": "分享",
+			"Review": "评论",
+			"Save": "保存",
+			"Saved": "已保存"
 		}
 	},
 	"ko-KR": {
-		"servicedetail_listingexperiencesdetail_page": {
-			"Similar_Experiences": "유사한 경험"
+		"Jan03_TourHeader_x9k2": {
+			"Email_Subject": "이 놀라운 투어를 확인해보세요!",
+			"Email_Body": "이 멋진 투어를 발견했습니다: {url}",
+			"Tour_Link_Copied": "투어 링크가 복사되었습니다!",
+			"Copy_Failed": "복사 실패",
+			"Copy_Tour_Link": "투어 링크 복사",
+			"Email_Tour": "투어 이메일로 보내기",
+			"Reviews": "리뷰",
+			"Recommended_By_Percentage": "여행자의 {percentage}%가 추천",
+			"Discover_All_Things": "{city}에서 할 수 있는 모든 것을 발견하세요",
+			"Share": "공유",
+			"Review": "리뷰",
+			"Save": "저장",
+			"Saved": "저장됨"
 		}
 	}
 }

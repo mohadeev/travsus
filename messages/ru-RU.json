@@ -1322,7 +1322,20 @@
   },
   "Jan03_TourHeader_x9k2": {
     "Brand_Name": "TRAVSUS",
-    "Plan_Trip_Guide": "Спланируйте поездку в {city}: Лучший путеводитель по {city}"
+    "Copy_Failed": "Ошибка копирования",
+    "Copy_Tour_Link": "Копировать ссылку на тур",
+    "Discover_All_Things": "Откройте для себя все развлечения в {city}",
+    "Email_Body": "Я нашел этот отличный тур: {url}",
+    "Email_Subject": "Посмотрите на этот удивительный тур!",
+    "Email_Tour": "Отправить тур по электронной почте",
+    "Plan_Trip_Guide": "Спланируйте поездку в {city}: Лучший путеводитель по {city}",
+    "Recommended_By_Percentage": "Рекомендовано {percentage}% путешественников",
+    "Review": "Отзыв",
+    "Reviews": "отзывы",
+    "Save": "Сохранить",
+    "Saved": "Сохранено",
+    "Share": "Поделиться",
+    "Tour_Link_Copied": "Ссылка на тур скопирована!"
   },
   "Jan03_TourMap_n9w5": {
     "Day": "День",

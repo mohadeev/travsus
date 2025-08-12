@@ -1281,7 +1281,20 @@
   },
   "Jan03_TourHeader_x9k2": {
     "Brand_Name": "TRAVSUS",
-    "Plan_Trip_Guide": "{city} 여행 계획하기: 최고의 {city} 여행 가이드"
+    "Copy_Failed": "복사 실패",
+    "Copy_Tour_Link": "투어 링크 복사",
+    "Discover_All_Things": "{city}에서 할 수 있는 모든 것을 발견하세요",
+    "Email_Body": "이 멋진 투어를 발견했습니다: {url}",
+    "Email_Subject": "이 놀라운 투어를 확인해보세요!",
+    "Email_Tour": "투어 이메일로 보내기",
+    "Plan_Trip_Guide": "{city} 여행 계획하기: 최고의 {city} 여행 가이드",
+    "Recommended_By_Percentage": "여행자의 {percentage}%가 추천",
+    "Review": "리뷰",
+    "Reviews": "리뷰",
+    "Save": "저장",
+    "Saved": "저장됨",
+    "Share": "공유",
+    "Tour_Link_Copied": "투어 링크가 복사되었습니다!"
   },
   "Jan03_TourMap_n9w5": {
     "Day": "일",

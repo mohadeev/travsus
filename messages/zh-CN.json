@@ -1257,7 +1257,20 @@
   },
   "Jan03_TourHeader_x9k2": {
     "Brand_Name": "TRAVSUS",
-    "Plan_Trip_Guide": "规划您的{city}之旅：最佳{city}旅行指南"
+    "Copy_Failed": "复制失败",
+    "Copy_Tour_Link": "复制旅游链接",
+    "Discover_All_Things": "发现{city}的所有活动",
+    "Email_Body": "我发现了这个很棒的旅游：{url}",
+    "Email_Subject": "看看这个精彩的旅游！",
+    "Email_Tour": "通过邮件发送旅游",
+    "Plan_Trip_Guide": "规划您的{city}之旅：最佳{city}旅行指南",
+    "Recommended_By_Percentage": "{percentage}%的旅行者推荐",
+    "Review": "评论",
+    "Reviews": "评论",
+    "Save": "保存",
+    "Saved": "已保存",
+    "Share": "分享",
+    "Tour_Link_Copied": "旅游链接已复制！"
   },
   "Jan03_TourMap_n9w5": {
     "Day": "天",

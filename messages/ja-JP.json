@@ -1278,7 +1278,20 @@
   },
   "Jan03_TourHeader_x9k2": {
     "Brand_Name": "TRAVSUS",
-    "Plan_Trip_Guide": "{city}への旅行を計画する：最高の{city}旅行ガイド"
+    "Copy_Failed": "コピーに失敗しました",
+    "Copy_Tour_Link": "ツアーリンクをコピー",
+    "Discover_All_Things": "{city}でできることをすべて発見",
+    "Email_Body": "この素晴らしいツアーを見つけました：{url}",
+    "Email_Subject": "この素晴らしいツアーをチェックしてください！",
+    "Email_Tour": "ツアーをメールで送信",
+    "Plan_Trip_Guide": "{city}への旅行を計画する：最高の{city}旅行ガイド",
+    "Recommended_By_Percentage": "旅行者の{percentage}%が推奨",
+    "Review": "レビュー",
+    "Reviews": "レビュー",
+    "Save": "保存",
+    "Saved": "保存済み",
+    "Share": "共有",
+    "Tour_Link_Copied": "ツアーリンクをコピーしました！"
   },
   "Jan03_TourMap_n9w5": {
     "Day": "日",

@@ -1321,7 +1321,20 @@
   },
   "Jan03_TourHeader_x9k2": {
     "Brand_Name": "TRAVSUS",
-    "Plan_Trip_Guide": "Pianifica il tuo viaggio a {city}: La migliore guida di viaggio di {city}"
+    "Copy_Failed": "Copia fallita",
+    "Copy_Tour_Link": "Copia link del tour",
+    "Discover_All_Things": "Scopri tutte le cose da fare a {city}",
+    "Email_Body": "Ho trovato questo fantastico tour: {url}",
+    "Email_Subject": "Dai un'occhiata a questo tour fantastico!",
+    "Email_Tour": "Invia tour via email",
+    "Plan_Trip_Guide": "Pianifica il tuo viaggio a {city}: La migliore guida di viaggio di {city}",
+    "Recommended_By_Percentage": "Raccomandato dal {percentage}% dei viaggiatori",
+    "Review": "Recensisci",
+    "Reviews": "recensioni",
+    "Save": "Salva",
+    "Saved": "Salvato",
+    "Share": "Condividi",
+    "Tour_Link_Copied": "Link del tour copiato!"
   },
   "Jan03_TourMap_n9w5": {
     "Day": "Giorno",
