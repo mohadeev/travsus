@@ -1,15 +1,17 @@
-import React, { useState } from 'react'
-import ModalSelectDate from '@/components/ModalSelectDate'
+'use client'
+import { useState } from 'react'
 import ButtonPrimary from '@/shared/ButtonPrimary'
 import converSelectedDateToString from '@/utils/converSelectedDateToString'
 import ModalReserveMobile from './ModalReserveMobile'
 import { useSelector } from 'react-redux'
 import { formatCurrency } from '@/utils/formatCurrency'
+import { useTranslations } from '@/lib/i18n'
 
 const MobileFooterSticky = () => {
+	const t = useTranslations('Jan03_MobileFooterSticky_m4k7')
+
 	const { booking, status } = useSelector((state: any) => state.bookingSlice)
 	const { guests, lineItems, accommodation, transport, bookOwnHotels } = booking
-
 	const totalGuests: number = guests?.guestAdults + guests?.guestChildren
 	const { name: title, price }: any = useSelector(
 		(state: any) => state.creatingServiceSlice.service,
@@ -21,7 +23,6 @@ const MobileFooterSticky = () => {
 		return total + item.totalPrice
 	}, 0)
 	const priceStart = totalAmount / totalGuests
-
 	const [startDate, setStartDate] = useState<Date | null>(
 		new Date('2023/02/06'),
 	)
@@ -37,9 +38,8 @@ const MobileFooterSticky = () => {
 								<div className="">
 									<span className="block text-xl font-semibold">
 										{formatCurrency(priceStart)}
-
 										<span className="ml-1 text-sm font-normal text-neutral-500 dark:text-neutral-400">
-											/ per person
+											{t('Per_Person')}
 										</span>
 									</span>
 									<span
@@ -53,7 +53,7 @@ const MobileFooterSticky = () => {
 									sizeClass="px-5 sm:px-7 py-3 !rounded-2xl"
 									onClick={openModal}
 								>
-									Reserve
+									{t('Reserve')}
 								</ButtonPrimary>
 							</div>
 						)}
