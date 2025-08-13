@@ -6,6 +6,10 @@ import ModalReserveMobile from './ModalReserveMobile'
 import { useSelector } from 'react-redux'
 import { formatCurrency } from '@/utils/formatCurrency'
 import { useTranslations } from '@/lib/i18n'
+import { useLocale } from 'next-intl'
+import locales from '@/lib/dateFnsLocales'
+import { registerLocale } from 'react-datepicker'
+import moment from 'moment'
 
 const MobileFooterSticky = () => {
 	const t = useTranslations('Jan03_MobileFooterSticky_m4k7')
@@ -13,9 +17,11 @@ const MobileFooterSticky = () => {
 	const { booking, status } = useSelector((state: any) => state.bookingSlice)
 	const { guests, lineItems, accommodation, transport, bookOwnHotels } = booking
 	const totalGuests: number = guests?.guestAdults + guests?.guestChildren
-	const { name: title, price }: any = useSelector(
-		(state: any) => state.creatingServiceSlice.service,
-	)
+	const {
+		name: title,
+		price,
+		days,
+	}: any = useSelector((state: any) => state.creatingServiceSlice.service)
 	const filteredLineItems = lineItems?.filter(
 		({ includeInTotal }: any) => includeInTotal === true,
 	)
@@ -23,10 +29,22 @@ const MobileFooterSticky = () => {
 		return total + item.totalPrice
 	}, 0)
 	const priceStart = totalAmount / totalGuests
+	const locale = useLocale()
+	// console.log('locale:')
+	moment.locale(locale) // ar-ma
+	registerLocale(locale, locales[locale])
+
+	const daysLength = days.length // make sure `days` is defined
+
 	const [startDate, setStartDate] = useState<Date | null>(
-		new Date('2023/02/06'),
+		moment().add(10, 'days').toDate(),
 	)
-	const [endDate, setEndDate] = useState<Date | null>(new Date('2023/02/23'))
+
+	const [endDate, setEndDate] = useState<Date | null>(
+		moment()
+			.add(10 + daysLength, 'days')
+			.toDate(),
+	)
 	//
 	return (
 		<>
@@ -46,7 +64,7 @@ const MobileFooterSticky = () => {
 										onClick={openModal}
 										className="block text-sm font-medium underline"
 									>
-										{converSelectedDateToString([startDate, endDate])}
+										{converSelectedDateToString([startDate, endDate], locale)}
 									</span>
 								</div>
 								<ButtonPrimary
