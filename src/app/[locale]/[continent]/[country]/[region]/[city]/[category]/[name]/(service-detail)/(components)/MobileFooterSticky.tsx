@@ -34,7 +34,7 @@ const MobileFooterSticky = () => {
 	moment.locale(locale) // ar-ma
 	registerLocale(locale, locales[locale])
 
-	const daysLength = days.length // make sure `days` is defined
+	const daysLength = days?.length || 3 // make sure `days` is defined
 
 	const [startDate, setStartDate] = useState<Date | null>(
 		moment().add(10, 'days').toDate(),
