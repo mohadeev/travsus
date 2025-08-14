@@ -9,6 +9,50 @@ const openai = new OpenAI({
 		'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',
 })
 
+function extractLanguageFromRequest(request: NextRequest): string {
+	// Try to get language from referer URL first
+	const referer = request.headers.get('referer')
+	if (referer) {
+		const match = referer.match(/\/([a-z]{2}-[A-Z]{2})\//)
+		if (match) {
+			return match[1]
+		}
+	}
+
+	// Try to get from origin header
+	const origin = request.headers.get('origin')
+	if (origin) {
+		const match = origin.match(/\/([a-z]{2}-[A-Z]{2})\//)
+		if (match) {
+			return match[1]
+		}
+	}
+
+	// Default to en-US
+	return 'en-US'
+}
+
+async function getTranslatedText(
+	contentId: string | null,
+	languageCode: string,
+): Promise<string | null> {
+	if (!contentId) return null
+
+	try {
+		const translatedText = await prisma.translatedText.findFirst({
+			where: {
+				contentId: contentId,
+				languageCode: languageCode,
+			},
+		})
+
+		return translatedText?.text || null
+	} catch (error) {
+		console.error('Error fetching translated text:', error)
+		return null
+	}
+}
+
 // Function to get geo coordinates from OpenAI for a city
 async function getGeoCoordinatesFromOpenAI(
 	cityName: string,
@@ -90,6 +134,9 @@ export async function GET(request: NextRequest) {
 		const { searchParams } = new URL(request.url)
 		const id = searchParams.get('id')
 
+		const languageCode = extractLanguageFromRequest(request)
+		console.log('Detected language:', languageCode)
+
 		// Strict validation for id
 		if (!id || id === 'undefined') {
 			console.log('Invalid tour ID provided:', id)
@@ -101,7 +148,6 @@ export async function GET(request: NextRequest) {
 
 		console.log('Fetching tour data for ID:', id)
 
-		// Fetch the tour data
 		const tour = await prisma.tour.findUnique({
 			where: {
 				id: id,
@@ -117,11 +163,42 @@ export async function GET(request: NextRequest) {
 			return NextResponse.json({ message: 'Tour not found' }, { status: 404 })
 		}
 
+		const translatedName =
+			(await getTranslatedText(tour.nameContentId, languageCode)) || tour.name
+		const translatedSubtitle =
+			(await getTranslatedText(tour.subtitleContentId, languageCode)) ||
+			tour.subtitle
+		const translatedOverview =
+			(await getTranslatedText(tour.overviewContentId, languageCode)) ||
+			tour.overview
+		const translatedConclusion =
+			(await getTranslatedText(tour.conclusionContentId, languageCode)) ||
+			tour.conclusion
+
 		// Process days to ensure each has city information
 		let processedDays = tour.days || []
 
-		// If days exist, process each day to ensure it has city information
 		if (Array.isArray(processedDays) && processedDays.length > 0) {
+			// Get translated content for each day
+			const daysWithTranslations = await Promise.all(
+				processedDays.map(async (day) => {
+					const translatedDayName =
+						(await getTranslatedText(day.nameContentId, languageCode)) ||
+						day.name
+					const translatedDayDescription =
+						(await getTranslatedText(day.descriptionContentId, languageCode)) ||
+						day.description
+
+					return {
+						...day,
+						name: translatedDayName,
+						description: translatedDayDescription,
+					}
+				}),
+			)
+
+			processedDays = daysWithTranslations
+
 			// Get all unique cityIds from the days
 			const cityIds = processedDays
 				.filter((day) => day.cityId && day.cityId !== 'undefined')
@@ -216,9 +293,12 @@ export async function GET(request: NextRequest) {
 			}
 		}
 
-		// Create the final tour object with processed days
 		const tourData = {
 			...tour,
+			name: translatedName,
+			subtitle: translatedSubtitle,
+			overview: translatedOverview,
+			conclusion: translatedConclusion,
 			days: processedDays,
 		}
 

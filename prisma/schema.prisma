@@ -254,7 +254,6 @@ type Faq {
   question String
   answer   String
 }
-
 model Tour {
   id             String    @id @default(auto()) @map("_id") @db.ObjectId
   creatorId      String    @db.ObjectId
@@ -299,9 +298,66 @@ model Tour {
   inclusions     Inclusions?  // ✅ Added inclusions just like FAQ  
   durationType String?
   duration Int?
-	includesOvernight Boolean?
+  includesOvernight Boolean?
+  
+  nameContentId       String?             @db.ObjectId
+  nameContent         TranslatableContent? @relation("TourNameContent", fields: [nameContentId], references: [id])
+  subtitleContentId   String?             @db.ObjectId
+  subtitleContent     TranslatableContent? @relation("TourSubtitleContent", fields: [subtitleContentId], references: [id])
+  overviewContentId   String?             @db.ObjectId
+  overviewContent     TranslatableContent? @relation("TourOverviewContent", fields: [overviewContentId], references: [id])
+  conclusionContentId String?             @db.ObjectId
+  conclusionContent   TranslatableContent? @relation("TourConclusionContent", fields: [conclusionContentId], references: [id])
+
   @@map("tours")
 }
+
+model TranslatableContent {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  contentType String   // e.g., 'tour_name', 'tour_subtitle', 'tour_overview', 'day_name', etc.
+  entityId    String   // ID of the entity (tour ID, day index, etc.) this content belongs to
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  // Relations to translated text
+  translations TranslatedText[]
+  
+  // Relations to tours
+  tourNames       Tour[] @relation("TourNameContent")
+  tourSubtitles   Tour[] @relation("TourSubtitleContent")
+  tourOverviews   Tour[] @relation("TourOverviewContent")
+  tourConclusions Tour[] @relation("TourConclusionContent")
+  
+  @@map("translatable_contents")
+}
+
+model TranslatedText {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  contentId String   @db.ObjectId
+  content   TranslatableContent @relation(fields: [contentId], references: [id], onDelete: Cascade)
+  
+  languageCode String // e.g., 'en-US', 'de-DE', 'es-ES', etc.
+  text         String
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  @@unique([contentId, languageCode])
+  @@map("translated_texts")
+}
+
+type Day {
+  hidden      Boolean   @default(false)
+  name        String
+  description String?
+  cityId      String?
+  cityName    String?
+  // Add translation content IDs for day name and description
+  nameContentId        String? @db.ObjectId
+  descriptionContentId String? @db.ObjectId
+}
+
+
 
 type PricingTier {
   minSeats    Int?
@@ -563,13 +619,13 @@ model PayoutMethod {
 
 
 // Add this type definition for Day
-type Day {
-  hidden      Boolean   @default(false)
-  name        String
-  description String?
-  cityId      String?   // Make cityId optional (nullable)
-  cityName    String?   // Make cityName optional (nullable)
-} 
+//type Day {
+//  hidden      Boolean   @default(false)
+//  name        String
+//  description String?
+//  cityId      String?   // Make cityId optional (nullable)
+//  cityName    String?   // Make cityName optional (nullable)
+//} 
 
 enum CommissionType {
   PERCENTAGE // Example: 5% commission
