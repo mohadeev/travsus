@@ -179,7 +179,6 @@ export async function GET(request: NextRequest) {
 		let processedDays = tour.days || []
 
 		if (Array.isArray(processedDays) && processedDays.length > 0) {
-			// Get translated content for each day
 			const daysWithTranslations = await Promise.all(
 				processedDays.map(async (day) => {
 					const translatedDayName =
@@ -209,7 +208,6 @@ export async function GET(request: NextRequest) {
 				console.log('Fetching city data for cityIds:', cityIds)
 
 				try {
-					// Use placesClient to fetch cities
 					const cities = await placesClient.city.findMany({
 						where: {
 							id: {
@@ -310,7 +308,6 @@ export async function GET(request: NextRequest) {
 			{ status: 500 },
 		)
 	} finally {
-		// Ensure Prisma clients are disconnected
 		await prisma.$disconnect()
 		await placesClient.$disconnect()
 	}
