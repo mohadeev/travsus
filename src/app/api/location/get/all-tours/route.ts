@@ -15,6 +15,7 @@ function extractLanguageFromRequest(request: NextRequest): string {
 
 	// Try to get from accept-language header
 	const acceptLanguage = request.headers.get('accept-language')
+	console.log(acceptLanguage)
 	if (acceptLanguage) {
 		const match = acceptLanguage.match(/([a-z]{2}-[A-Z]{2})/)
 		if (match) return match[1]
