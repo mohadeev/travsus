@@ -1,21 +1,20 @@
 import { type NextRequest, NextResponse } from 'next/server'
-import getUserData from '@/app/api/user/getUserData'
 import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
+import getUserData from '@/app/api/user/getUserData'
+
 export const dynamic = 'force-dynamic'
 
 function extractLanguageFromRequest(request: NextRequest): string {
-	// Try to get language from referer URL (domain.com/en-US/something)
-	const referer = request.headers.get('referer')
-	if (referer) {
-		const match = referer.match(/\/([a-z]{2}-[A-Z]{2})\//)
-		if (match) return match[1]
-	}
+	const url = new URL(request.url)
+	const referer: any = request.headers.get('referer')
+	const match = referer.match(/\/([a-z]{2}-[A-Z]{2})(?:\/|$)/)
+	console.log('referer: ', request)
+	if (match) return match[1]
 
-	// Try to get from accept-language header
+	// Try to get from accept-language header as fallback
 	const acceptLanguage = request.headers.get('accept-language')
-	console.log(acceptLanguage)
 	if (acceptLanguage) {
 		const match = acceptLanguage.match(/([a-z]{2}-[A-Z]{2})/)
 		if (match) return match[1]
