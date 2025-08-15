@@ -162,126 +162,139 @@ export async function PUT(
 		const body = await request.json()
 		const { translations } = body
 
-		await prisma.$transaction(
-			async (tx) => {
-				const tour = await tx.tour.findUnique({
-					where: { id: params.id },
-				})
+		const tour = await prisma.tour.findUnique({
+			where: { id: params.id },
+		})
 
-				if (!tour) throw new Error('Tour not found')
+		if (!tour) {
+			return NextResponse.json({ error: 'Tour not found' }, { status: 404 })
+		}
 
-				// Process updates in smaller batches to avoid timeout
-				const BATCH_SIZE = 10
-				const updatePromises: Promise<any>[] = []
+		const results = []
+		const errors = []
 
-				for (const [language, translation] of Object.entries(translations)) {
-					// Process tour-level fields
-					for (const [field, text] of Object.entries(translation)) {
-						if (field !== 'days' && text) {
-							const contentIdField = `${field}ContentId` as keyof typeof tour
-							const contentId = tour[contentIdField] as string
+		// Process each language's translations
+		for (const [language, translation] of Object.entries(translations)) {
+			try {
+				// Process tour-level fields
+				for (const [field, text] of Object.entries(translation)) {
+					if (field !== 'days' && text) {
+						const contentIdField = `${field}ContentId` as keyof typeof tour
+						const contentId = tour[contentIdField] as string
 
-							if (contentId) {
-								updatePromises.push(
-									tx.translatedText.upsert({
-										where: {
-											contentId_languageCode: {
-												contentId,
-												languageCode: language,
-											},
-										},
-										update: {
-											text: text as string,
-											updatedAt: new Date(),
-										},
-										create: {
+						if (contentId) {
+							try {
+								await prisma.translatedText.upsert({
+									where: {
+										contentId_languageCode: {
 											contentId,
 											languageCode: language,
-											text: text as string,
 										},
-									}),
+									},
+									update: {
+										text: text as string,
+										updatedAt: new Date(),
+									},
+									create: {
+										contentId,
+										languageCode: language,
+										text: text as string,
+									},
+								})
+								results.push(`Updated ${field} for ${language}`)
+							} catch (error) {
+								errors.push(
+									`Failed to update ${field} for ${language}: ${error}`,
 								)
 							}
 						}
 					}
+				}
 
-					// Process day translations
-					if (
-						translation.days &&
-						Array.isArray(translation.days) &&
-						tour.days
+				// Process day translations
+				if (translation.days && Array.isArray(translation.days) && tour.days) {
+					for (
+						let dayIndex = 0;
+						dayIndex < translation.days.length;
+						dayIndex++
 					) {
-						for (
-							let dayIndex = 0;
-							dayIndex < translation.days.length;
-							dayIndex++
-						) {
-							const dayTranslation = translation.days[dayIndex]
-							const day = tour.days[dayIndex]
+						const dayTranslation = translation.days[dayIndex]
+						const day = tour.days[dayIndex]
 
-							if (dayTranslation && day) {
-								// Update day name translation
-								if (dayTranslation.name && day.nameContentId) {
-									updatePromises.push(
-										tx.translatedText.upsert({
-											where: {
-												contentId_languageCode: {
-													contentId: day.nameContentId,
-													languageCode: language,
-												},
-											},
-											update: {
-												text: dayTranslation.name,
-												updatedAt: new Date(),
-											},
-											create: {
+						if (dayTranslation && day) {
+							// Update day name translation
+							if (dayTranslation.name && day.nameContentId) {
+								try {
+									await prisma.translatedText.upsert({
+										where: {
+											contentId_languageCode: {
 												contentId: day.nameContentId,
 												languageCode: language,
-												text: dayTranslation.name,
 											},
-										}),
+										},
+										update: {
+											text: dayTranslation.name,
+											updatedAt: new Date(),
+										},
+										create: {
+											contentId: day.nameContentId,
+											languageCode: language,
+											text: dayTranslation.name,
+										},
+									})
+									results.push(
+										`Updated day ${dayIndex + 1} name for ${language}`,
+									)
+								} catch (error) {
+									errors.push(
+										`Failed to update day ${dayIndex + 1} name for ${language}: ${error}`,
 									)
 								}
+							}
 
-								// Update day description translation
-								if (dayTranslation.description && day.descriptionContentId) {
-									updatePromises.push(
-										tx.translatedText.upsert({
-											where: {
-												contentId_languageCode: {
-													contentId: day.descriptionContentId,
-													languageCode: language,
-												},
-											},
-											update: {
-												text: dayTranslation.description,
-												updatedAt: new Date(),
-											},
-											create: {
+							// Update day description translation
+							if (dayTranslation.description && day.descriptionContentId) {
+								try {
+									await prisma.translatedText.upsert({
+										where: {
+											contentId_languageCode: {
 												contentId: day.descriptionContentId,
 												languageCode: language,
-												text: dayTranslation.description,
 											},
-										}),
+										},
+										update: {
+											text: dayTranslation.description,
+											updatedAt: new Date(),
+										},
+										create: {
+											contentId: day.descriptionContentId,
+											languageCode: language,
+											text: dayTranslation.description,
+										},
+									})
+									results.push(
+										`Updated day ${dayIndex + 1} description for ${language}`,
+									)
+								} catch (error) {
+									errors.push(
+										`Failed to update day ${dayIndex + 1} description for ${language}: ${error}`,
 									)
 								}
 							}
 						}
 					}
 				}
+			} catch (error) {
+				errors.push(`Failed to process translations for ${language}: ${error}`)
+			}
+		}
 
-				// Process updates in batches to avoid timeout
-				for (let i = 0; i < updatePromises.length; i += BATCH_SIZE) {
-					const batch = updatePromises.slice(i, i + BATCH_SIZE)
-					await Promise.all(batch)
-				}
-			},
-			{
-				timeout: 30000, // Increase timeout to 30 seconds
-			},
-		)
-
-		return NextResponse.json({ success: true })
+		return NextResponse.json({
+			success: true,
+			results: results.length,
+			errors: errors.length,
+			details: { results, errors },
+		})
 	} catch (error) {
 		console.error('Error updating tour translations:', error)
 		return NextResponse.json(
