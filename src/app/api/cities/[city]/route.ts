@@ -66,7 +66,7 @@ export async function GET(
 					include: {
 						translations: {
 							where: {
-								language: 'en',
+								language: 'en-US',
 							},
 						},
 					},
@@ -79,7 +79,7 @@ export async function GET(
 							include: {
 								translations: {
 									where: {
-										language: 'en',
+										language: 'en-US',
 										type: 'country',
 									},
 								},
@@ -141,7 +141,7 @@ export async function GET(
 					await placesClient.translatedText.create({
 						data: {
 							contentId: city.content.id,
-							language: 'en',
+							language: 'en-US',
 							text: description,
 							type: 'description',
 							code3: city.country?.code3 || null,

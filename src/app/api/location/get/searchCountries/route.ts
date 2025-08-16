@@ -27,7 +27,7 @@ export async function GET(request: NextRequest) {
 				content: {
 					select: {
 						translations: {
-							where: { language: 'en' },
+							where: { language: 'en-US' },
 							select: { text: true },
 						},
 					},

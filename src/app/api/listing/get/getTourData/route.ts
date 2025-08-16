@@ -219,7 +219,7 @@ export async function GET(request: NextRequest) {
 								include: {
 									translations: {
 										where: {
-											language: 'en',
+											language: 'en-US',
 										},
 									},
 								},

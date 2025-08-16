@@ -28,7 +28,7 @@ export async function GET(
 					include: {
 						translations: {
 							where: {
-								language: 'en',
+								language: 'en-US',
 								type: 'country',
 							},
 						},
@@ -56,7 +56,7 @@ export async function GET(
 					include: {
 						translations: {
 							where: {
-								language: 'en',
+								language: 'en-US',
 								type: 'city',
 							},
 						},
@@ -81,7 +81,7 @@ export async function GET(
 							include: {
 								translations: {
 									where: {
-										language: 'en',
+										language: 'en-US',
 										type: 'city',
 									},
 								},
@@ -93,7 +93,7 @@ export async function GET(
 					include: {
 						translations: {
 							where: {
-								language: 'en',
+								language: 'en-US',
 							},
 						},
 					},

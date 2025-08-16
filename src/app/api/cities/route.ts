@@ -32,7 +32,7 @@ export async function GET(request: Request) {
 					include: {
 						translations: {
 							where: {
-								language: 'en', // Default to English translations
+								language: 'en-US', // Default to English translations
 							},
 						},
 					},

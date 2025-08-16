@@ -138,7 +138,7 @@ export async function POST(request: Request) {
 				await prisma.translatedText.create({
 					data: {
 						contentId: country.content.id,
-						language: 'en',
+						language: 'en-US',
 						text: description,
 						type: 'description',
 						code3: country.code3,
@@ -166,7 +166,7 @@ export async function POST(request: Request) {
 								include: {
 									translations: {
 										where: {
-											language: 'en',
+											language: 'en-US',
 											type: 'country',
 										},
 									},
@@ -232,7 +232,7 @@ export async function POST(request: Request) {
 				await prisma.translatedText.create({
 					data: {
 						contentId: city.content.id,
-						language: 'en',
+						language: 'en-US',
 						text: description,
 						type: 'description',
 						code3: city.country?.code3 || null,

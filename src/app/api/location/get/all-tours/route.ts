@@ -1,5 +1,6 @@
 import { type NextRequest, NextResponse } from 'next/server'
 import { PrismaClient } from '@prisma/client'
+import { placesClient } from '@/lib/prisma'
 
 const prisma = new PrismaClient()
 import getUserData from '@/app/api/user/getUserData'
@@ -136,8 +137,16 @@ export async function GET(request: NextRequest) {
 			take: limit,
 		})
 
-		console.log('allToursData', allToursData[0])
+		console.log('allToursData', allToursData[0].startAddress)
 
+		const city = await prisma.tour.findMany({
+			where: {
+				images: {
+					isEmpty: false,
+				},
+			},
+		})
+		console.log('city: ', city)
 		const translatedTours = await applyTranslationsToTours(
 			allToursData,
 			language,

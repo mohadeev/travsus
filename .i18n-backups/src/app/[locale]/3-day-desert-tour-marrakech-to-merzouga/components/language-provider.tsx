@@ -236,7 +236,7 @@ const translations = {
 }
 
 const LanguageContext = createContext<LanguageContextType>({
-	language: 'en',
+	language: 'en-US',
 	setLanguage: () => {},
 	t: (key: string) => key,
 	getLocalizedHref: (path: string) => path,

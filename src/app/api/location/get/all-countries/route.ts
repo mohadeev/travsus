@@ -13,7 +13,7 @@ export async function GET(request: NextRequest) {
 					select: {
 						translations: {
 							where: {
-								language: 'en', // Fetch only English translation
+								language: 'en-US', // Fetch only English translation
 							},
 							select: {
 								text: true, // Get only the translated name

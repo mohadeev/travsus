@@ -29,12 +29,12 @@ export async function POST(request: Request) {
 				translations: {
 					create: [
 						{
-							language: 'en',
+							language: 'en-US',
 							text: name,
 							type: 'name',
 						},
 						{
-							language: 'en',
+							language: 'en-US',
 							text: description,
 							type: 'description',
 						},

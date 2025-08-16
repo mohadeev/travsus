@@ -115,7 +115,7 @@ export async function GET(
 					await placesClient.translatedText.create({
 						data: {
 							contentId: country.content.id,
-							language: 'en',
+							language: 'en-US',
 							text: description,
 							type: 'description',
 							code3: country.code3 || null,
