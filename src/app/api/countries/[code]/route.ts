@@ -67,7 +67,7 @@ export async function GET(
 					include: {
 						translations: {
 							where: {
-								language: 'en',
+								language: 'en-US',
 							},
 						},
 					},

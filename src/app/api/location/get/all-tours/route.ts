@@ -136,6 +136,8 @@ export async function GET(request: NextRequest) {
 			take: limit,
 		})
 
+		console.log('allToursData', allToursData[0])
+
 		const translatedTours = await applyTranslationsToTours(
 			allToursData,
 			language,

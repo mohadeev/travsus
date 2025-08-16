@@ -23,10 +23,23 @@ const DEFAULT_COUNTRY_CODES = [
 	'IDN',
 ]
 
+function extractLanguageFromRequest(request: Request): string {
+	const referer = request.headers.get('referer') || ''
+	const origin = request.headers.get('origin') || ''
+
+	// Try to extract language from referer first, then origin
+	const urlToCheck = referer || origin
+	const languageMatch = urlToCheck.match(/\/([a-z]{2}-[A-Z]{2})(?:\/|$)/)
+
+	return languageMatch ? languageMatch[1] : 'en-US'
+}
+
 export async function GET(request: Request) {
 	try {
 		const { searchParams } = new URL(request.url)
 		const codes = searchParams.get('codes')
+
+		const language = extractLanguageFromRequest(request)
 
 		// Use the codes from the query params if provided, otherwise use the default list
 		// Remove duplicates using Set
@@ -52,7 +65,7 @@ export async function GET(request: Request) {
 					include: {
 						translations: {
 							where: {
-								language: 'en', // Default to English translations
+								language: language, // Use detected language instead of hardcoded 'en'
 							},
 						},
 					},
