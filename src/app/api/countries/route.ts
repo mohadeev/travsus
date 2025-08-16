@@ -49,7 +49,6 @@ export async function GET(request: Request) {
 
 		const prisma = placesClient
 
-		// Fetch countries with their translations
 		const countries = await prisma.country.findMany({
 			where: {
 				code3: {
@@ -65,7 +64,7 @@ export async function GET(request: Request) {
 					include: {
 						translations: {
 							where: {
-								language: language, // Use detected language instead of hardcoded 'en'
+								language: language,
 							},
 						},
 					},
@@ -73,8 +72,48 @@ export async function GET(request: Request) {
 			},
 		})
 
+		const countriesWithoutTranslations = countries.filter(
+			(country) =>
+				!country.content?.translations ||
+				country.content.translations.length === 0,
+		)
+
+		let fallbackTranslations = []
+		if (countriesWithoutTranslations.length > 0 && language !== 'en-US') {
+			const fallbackCountries = await prisma.country.findMany({
+				where: {
+					id: {
+						in: countriesWithoutTranslations.map((c) => c.id),
+					},
+				},
+				include: {
+					content: {
+						include: {
+							translations: {
+								where: {
+									language: 'en-US',
+								},
+							},
+						},
+					},
+				},
+			})
+			fallbackTranslations = fallbackCountries
+		}
+
+		const finalCountries = countries.map((country) => {
+			if (
+				!country.content?.translations ||
+				country.content.translations.length === 0
+			) {
+				const fallback = fallbackTranslations.find((f) => f.id === country.id)
+				return fallback || country
+			}
+			return country
+		})
+
 		// Further filter to only include countries with an image URL
-		const countriesWithImages = countries.filter(
+		const countriesWithImages = finalCountries.filter(
 			(country) =>
 				country.image && (country.image.url || country.image.uploadFrom),
 		)
