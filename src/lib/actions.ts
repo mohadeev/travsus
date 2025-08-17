@@ -2,6 +2,7 @@
 
 import { PrismaClient } from '@prisma/client'
 import { revalidatePath } from 'next/cache'
+import { placesClient } from './prisma'
 
 const prisma = new PrismaClient()
 
@@ -527,5 +528,41 @@ export async function getMonthlyRevenueData() {
 	} catch (error) {
 		console.error('Error fetching monthly revenue data:', error)
 		throw new Error('Failed to fetch monthly revenue data')
+	}
+}
+
+// ---------------------------------------------------------
+
+export async function getAllTours() {
+	try {
+		const tours = await prisma.tour.findMany({
+			include: {
+				startAddress: true,
+				endAddress: true,
+			},
+		})
+		return tours
+	} catch (error) {
+		console.error('Error fetching tours:', error)
+		return []
+	}
+}
+
+export async function getAllCities() {
+	try {
+		const cities = await placesClient.city.findMany({
+			include: {
+				translations: true,
+				country: {
+					include: {
+						translations: true,
+					},
+				},
+			},
+		})
+		return cities
+	} catch (error) {
+		console.error('Error fetching cities:', error)
+		return []
 	}
 }
