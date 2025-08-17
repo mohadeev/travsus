@@ -8,11 +8,41 @@ const openai = new OpenAI({
 		'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',
 })
 
+function extractLanguageFromRequest(request: Request): string {
+	const referer = request.headers.get('referer') || ''
+	const origin = request.headers.get('origin') || ''
+
+	// Try to extract language from referer first, then origin
+	const urlToCheck = referer || origin
+	const languageMatch = urlToCheck.match(/\/([a-z]{2}-[A-Z]{2})(?:\/|$)/)
+
+	return languageMatch ? languageMatch[1] : 'en-US'
+}
+
 /**
  * Generate a concise description for a country using OpenAI
  */
-async function generateCountryDescription(countryName: string) {
-	const prompt = `Write a concise, engaging description of ${countryName} in about 150-180 words.
+async function generateCountryDescription(
+	countryName: string,
+	language = 'en-US',
+) {
+	const languageNames = {
+		'en-US': 'English',
+		'es-ES': 'Spanish',
+		'fr-FR': 'French',
+		'de-DE': 'German',
+		'it-IT': 'Italian',
+		'pt-PT': 'Portuguese',
+		'ru-RU': 'Russian',
+		'zh-CN': 'Chinese',
+		'ja-JP': 'Japanese',
+		'ko-KR': 'Korean',
+	}
+
+	const targetLanguage =
+		languageNames[language as keyof typeof languageNames] || 'English'
+
+	const prompt = `Write a concise, engaging description of ${countryName} in about 150-180 words in ${targetLanguage}.
     
   Focus on:
   - Key attractions, geography, and characteristics
@@ -20,10 +50,7 @@ async function generateCountryDescription(countryName: string) {
   - Practical information for visitors
   - Notable cities or regions
   
-  Use a lively, descriptive style similar to this example about France:
-  "France seduces travelers with its unfalteringly familiar culture, woven around café terraces, village-square markets and lace-curtained bistros. Iconic landmarks, glorious food, and fine wines provide just a few reasons to visit this diverse country. From the gothic grandeur of Notre-Dame Cathedral to the Eiffel Tower and the Palace of Versailles, France's cultural treasures are extraordinary. The country's natural scenery is equally diverse, with glittering coastlines, dramatic mountain ranges, and lush valleys. Paris, the cosmopolitan capital, is home to countless museums, galleries, and architectural marvels. Beyond the capital, regions like Provence offer lavender fields and olive groves, while the French Riviera boasts glamorous beaches and coastal towns. The Alps attract skiers and hikers, and wine regions like Bordeaux and Burgundy welcome oenophiles. French cuisine is legendary, with each region offering its own specialties and traditions."
-  
-  Make it informative but concise, with vivid details that capture the essence of ${countryName}.`
+  Use a lively, descriptive style. Make it informative but concise, with vivid details that capture the essence of ${countryName}.`
 
 	try {
 		const completion = await openai.chat.completions.create({
@@ -47,6 +74,9 @@ export async function GET(
 	{ params }: { params: { code: string } },
 ) {
 	try {
+		const detectedLanguage = extractLanguageFromRequest(request)
+		console.log('Detected language:', detectedLanguage)
+
 		const countryId = params.code
 		console.log('Searching for country with ID:', countryId)
 
@@ -57,8 +87,7 @@ export async function GET(
 			)
 		}
 
-		// Get the country by ID with its content and translations
-		const country = await placesClient.country.findUnique({
+		let country = await placesClient.country.findUnique({
 			where: {
 				id: countryId,
 			},
@@ -67,13 +96,37 @@ export async function GET(
 					include: {
 						translations: {
 							where: {
-								language: 'en-US',
+								language: detectedLanguage,
 							},
 						},
 					},
 				},
 			},
 		})
+
+		let languageAvailable = true
+		if (
+			!country?.content?.translations ||
+			country.content.translations.length === 0
+		) {
+			languageAvailable = false
+			country = await placesClient.country.findUnique({
+				where: {
+					id: countryId,
+				},
+				include: {
+					content: {
+						include: {
+							translations: {
+								where: {
+									language: 'en-US',
+								},
+							},
+						},
+					},
+				},
+			})
+		}
 
 		if (!country) {
 			return NextResponse.json({ error: 'Country not found' }, { status: 404 })
@@ -107,15 +160,15 @@ export async function GET(
 				// No description found, generate one
 				console.log(`No description found for ${name}, generating one...`)
 
-				// Generate description
-				description = await generateCountryDescription(name)
+				const languageToUse = languageAvailable ? detectedLanguage : 'en-US'
+				description = await generateCountryDescription(name, languageToUse)
 
 				// Save the generated description to the database
 				try {
 					await placesClient.translatedText.create({
 						data: {
 							contentId: country.content.id,
-							language: 'en-US',
+							language: languageToUse,
 							text: description,
 							type: 'description',
 							code3: country.code3 || null,
@@ -138,6 +191,11 @@ export async function GET(
 			description: description,
 			image: country.image?.url,
 			geo: country.geo,
+			languageAvailable: languageAvailable,
+			detectedLanguage: detectedLanguage,
+			message: languageAvailable
+				? `Content available in ${detectedLanguage}`
+				: `Language ${detectedLanguage} not available, showing English content`,
 		}
 
 		// Return the data without cache control headers
