@@ -24,7 +24,7 @@ export default async function RootLayout({
 	const isLocalhost = process.env.NODE_ENV === 'development'
 	console.log('logoImg', logoImg)
 	return (
-		<html lang="en">
+		<html lang={locale}>
 			<head>
 				<meta name="google-adsense-account" content="ca-pub-9261275339248060" />
 				<link rel="preconnect" href="https://fonts.googleapis.com" />
