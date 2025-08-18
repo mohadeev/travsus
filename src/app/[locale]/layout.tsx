@@ -4,6 +4,7 @@ import '../globals.css'
 import '@/fonts/line-awesome-1.3.0/css/line-awesome.css'
 import '@/styles/index.scss'
 import 'rc-slider/assets/index.css'
+import logoImg from '@/images/logos/dark/travsus_black_and_white.png'
 
 import { Inter_Tight } from 'next/font/google'
 import Script from 'next/script'
@@ -21,7 +22,7 @@ export default async function RootLayout({
 	const messages = await getMessages()
 
 	const isLocalhost = process.env.NODE_ENV === 'development'
-
+	console.log('logoImg', logoImg)
 	return (
 		<html lang="en">
 			<head>
@@ -32,7 +33,7 @@ export default async function RootLayout({
 					href="https://fonts.gstatic.com"
 					// crossOrigin="true"
 				/>
-				<link rel="icon" type="image/png" href="images/logos/dark/travsus_black_and_white.png" />
+				<link rel="icon" type="image/png" href={logoImg.src} />
 				<link
 					href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap"
 					rel="stylesheet"
@@ -91,11 +92,9 @@ export default async function RootLayout({
 					></iframe>
 				</noscript>
 			</head>
-			<body>
-				<NextIntlClientProvider messages={messages}>
-					<LocaleLayoutClient> {children}</LocaleLayoutClient>
-				</NextIntlClientProvider>
-			</body>
+			<NextIntlClientProvider messages={messages}>
+				<LocaleLayoutClient> {children}</LocaleLayoutClient>
+			</NextIntlClientProvider>
 		</html>
 	)
 }
