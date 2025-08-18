@@ -1,5 +1,7 @@
 import { Metadata } from 'next'
 import ClientHomePage from './ClientHomePage'
+import {getTranslations} from 'next-intl/server';
+
 
 export const metadata: Metadata = {
 	title: 'Travsus - Your Ultimate Tour Provider',
