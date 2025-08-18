@@ -5,8 +5,7 @@ import { OpenAI } from 'openai'
 
 // Initialize OpenAI client
 const openai = new OpenAI({
-	apiKey:
-		'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',
+	apiKey: process.env.OPENAI_API_KEY,
 })
 
 function extractLanguageFromRequest(request: NextRequest): string {
@@ -53,7 +52,6 @@ async function getTranslatedText(
 	}
 }
 
-// Function to get geo coordinates from OpenAI for a city
 async function getGeoCoordinatesFromOpenAI(
 	cityName: string,
 	countryName?: string,
@@ -82,7 +80,7 @@ async function getGeoCoordinatesFromOpenAI(
 			temperature: 0.3,
 		})
 
-		const responseText = completion.choices[0].message.content.trim()
+		const responseText = completion.choices[0].message.content?.trim() || ''
 
 		// Extract JSON from the response
 		const jsonMatch = responseText.match(/\{[\s\S]*\}/)
@@ -106,7 +104,6 @@ async function getGeoCoordinatesFromOpenAI(
 	}
 }
 
-// Function to update city geo coordinates in the database
 async function updateCityGeoCoordinates(
 	cityId: string,
 	geoCoordinates: { lat: number; log: number },
@@ -133,11 +130,9 @@ export async function GET(request: NextRequest) {
 	try {
 		const { searchParams } = new URL(request.url)
 		const id = searchParams.get('id')
-
 		const languageCode = extractLanguageFromRequest(request)
 		console.log('Detected language:', languageCode)
 
-		// Strict validation for id
 		if (!id || id === 'undefined') {
 			console.log('Invalid tour ID provided:', id)
 			return NextResponse.json(
@@ -149,12 +144,46 @@ export async function GET(request: NextRequest) {
 		console.log('Fetching tour data for ID:', id)
 
 		const tour = await prisma.tour.findUnique({
-			where: {
-				id: id,
-			},
+			where: { id },
 			include: {
 				startAddress: true,
 				endAddress: true,
+				nameContent: {
+					include: {
+						translations: {
+							where: {
+								languageCode: languageCode,
+							},
+						},
+					},
+				},
+				subtitleContent: {
+					include: {
+						translations: {
+							where: {
+								languageCode: languageCode,
+							},
+						},
+					},
+				},
+				overviewContent: {
+					include: {
+						translations: {
+							where: {
+								languageCode: languageCode,
+							},
+						},
+					},
+				},
+				conclusionContent: {
+					include: {
+						translations: {
+							where: {
+								languageCode: languageCode,
+							},
+						},
+					},
+				},
 			},
 		})
 
@@ -163,30 +192,49 @@ export async function GET(request: NextRequest) {
 			return NextResponse.json({ message: 'Tour not found' }, { status: 404 })
 		}
 
-		const translatedName =
-			(await getTranslatedText(tour.nameContentId, languageCode)) || tour.name
+		// Get translated tour content
+		const translatedName = tour.nameContent?.translations[0]?.text || tour.name
 		const translatedSubtitle =
-			(await getTranslatedText(tour.subtitleContentId, languageCode)) ||
-			tour.subtitle
+			tour.subtitleContent?.translations[0]?.text || tour.subtitle
 		const translatedOverview =
-			(await getTranslatedText(tour.overviewContentId, languageCode)) ||
-			tour.overview
+			tour.overviewContent?.translations[0]?.text || tour.overview
 		const translatedConclusion =
-			(await getTranslatedText(tour.conclusionContentId, languageCode)) ||
-			tour.conclusion
+			tour.conclusionContent?.translations[0]?.text || tour.conclusion
 
-		// Process days to ensure each has city information
+		// Process days with city translations
 		let processedDays = tour.days || []
 
 		if (Array.isArray(processedDays) && processedDays.length > 0) {
+			// First get all day translations
 			const daysWithTranslations = await Promise.all(
 				processedDays.map(async (day) => {
-					const translatedDayName =
-						(await getTranslatedText(day.nameContentId, languageCode)) ||
-						day.name
-					const translatedDayDescription =
-						(await getTranslatedText(day.descriptionContentId, languageCode)) ||
-						day.description
+					let translatedDayName = day.name
+					let translatedDayDescription = day.description
+
+					if (day.nameContentId) {
+						const nameContent = await prisma.translatableContent.findUnique({
+							where: { id: day.nameContentId },
+							include: {
+								translations: {
+									where: { languageCode },
+								},
+							},
+						})
+						translatedDayName = nameContent?.translations[0]?.text || day.name
+					}
+
+					if (day.descriptionContentId) {
+						const descContent = await prisma.translatableContent.findUnique({
+							where: { id: day.descriptionContentId },
+							include: {
+								translations: {
+									where: { languageCode },
+								},
+							},
+						})
+						translatedDayDescription =
+							descContent?.translations[0]?.text || day.description
+					}
 
 					return {
 						...day,
@@ -203,90 +251,96 @@ export async function GET(request: NextRequest) {
 				.filter((day) => day.cityId && day.cityId !== 'undefined')
 				.map((day) => day.cityId)
 
-			// If there are cityIds, fetch the corresponding cities
 			if (cityIds.length > 0) {
 				console.log('Fetching city data for cityIds:', cityIds)
 
 				try {
 					const cities = await placesClient.city.findMany({
-						where: {
-							id: {
-								in: cityIds,
-							},
-						},
+						where: { id: { in: cityIds } },
 						include: {
 							content: {
 								include: {
-									translations: {
-										where: {
-											language: 'en-US',
+									translations: true, // Get ALL translations
+								},
+							},
+							country: {
+								include: {
+									content: {
+										include: {
+											translations: true,
 										},
 									},
 								},
 							},
-							country: true,
 						},
 					})
 
 					console.log(`Found ${cities.length} cities`)
 
-					// Create a map of cityId to city data for quick lookup
-					const cityMap = {}
-
-					// Process each city - check for missing geo coordinates and fetch if needed
+					// Process each city to get the correct translation
+					const cityMap: Record<string, any> = {}
 					for (const city of cities) {
+						// Get city name in requested language
+						const cityTranslation = city.content?.translations?.find(
+							(t) => t.language === languageCode,
+						)
 						const cityName =
-							city.content?.translations?.find((t) => t.language === 'en')
+							cityTranslation?.text ||
+							city.content?.translations?.find((t) => t.language === 'en-US')
 								?.text ||
-							city.content?.translations[0]?.text ||
 							'Unknown City'
 
-						const countryName =
-							city.country?.content?.translations?.find(
-								(t) => t.language === 'en',
-							)?.text || null
+						// Get country name in requested language
+						let countryName = null
+						if (city.country?.content?.translations) {
+							const countryTranslation = city.country.content.translations.find(
+								(t) => t.language === languageCode,
+							)
+							countryName =
+								countryTranslation?.text ||
+								city.country.content.translations.find(
+									(t) => t.language === 'en-US',
+								)?.text
+						}
 
-						// Check if geo coordinates are missing or incomplete
+						// Check for missing geo coordinates
 						if (!city.geo || !city.geo.lat || !city.geo.log) {
-							console.log(`Missing geo coordinates for city: ${cityName}`)
-
-							// Get geo coordinates from OpenAI
 							const geoCoordinates = await getGeoCoordinatesFromOpenAI(
 								cityName,
 								countryName,
 							)
-
-							// If we got coordinates, update the city in the database
-							if (geoCoordinates && geoCoordinates.lat && geoCoordinates.log) {
+							if (geoCoordinates?.lat && geoCoordinates?.log) {
 								await updateCityGeoCoordinates(city.id, geoCoordinates)
-
-								// Update the city object with the new coordinates
 								city.geo = geoCoordinates
 							}
 						}
 
-						// Add city to the map
 						cityMap[city.id] = {
 							id: city.id,
 							name: cityName,
+							countryName: countryName,
 							geoCoordinates: city.geo || null,
+							originalName: city.content?.translations?.find(
+								(t) => t.language === 'en-US',
+							)?.text,
 						}
 					}
 
-					// Update each day with city information
+					// Update each day with translated city information
 					processedDays = processedDays.map((day) => {
 						if (day.cityId && cityMap[day.cityId]) {
 							return {
 								...day,
 								cityName: cityMap[day.cityId].name,
+								countryName: cityMap[day.cityId].countryName,
 								geoCoordinates: cityMap[day.cityId].geoCoordinates,
+								originalCityName: cityMap[day.cityId].originalName,
 							}
 						}
 						return day
 					})
 				} catch (cityError) {
 					console.error('Error fetching city data:', cityError)
-					// Continue with original days if city fetching fails
 				}
 			}
 		}
@@ -298,13 +352,17 @@ export async function GET(request: NextRequest) {
 			overview: translatedOverview,
 			conclusion: translatedConclusion,
 			days: processedDays,
+			language: languageCode,
 		}
 
 		return NextResponse.json(tourData)
 	} catch (error) {
 		console.error('Error fetching tour data:', error)
 		return NextResponse.json(
-			{ message: 'Error fetching tour data', error },
+			{
+				message: 'Error fetching tour data',
+				error: error instanceof Error ? error.message : 'Unknown error',
+			},
 			{ status: 500 },
 		)
 	} finally {
