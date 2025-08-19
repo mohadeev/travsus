@@ -30,6 +30,7 @@ async function applyTranslationsToTours(tours: any[], language: string) {
 
 	// Collect all content IDs from all tours
 	const contentIds = new Set<string>()
+	const cityIds = new Set<string>()
 
 	tours.forEach((tour) => {
 		if (tour.nameContentId) contentIds.add(tour.nameContentId)
@@ -37,10 +38,13 @@ async function applyTranslationsToTours(tours: any[], language: string) {
 		if (tour.overviewContentId) contentIds.add(tour.overviewContentId)
 		if (tour.conclusionContentId) contentIds.add(tour.conclusionContentId)
 
-		// Add day content IDs
+		// Add day content IDs and collect city IDs
 		tour.days?.forEach((day: any) => {
 			if (day.nameContentId) contentIds.add(day.nameContentId)
 			if (day.descriptionContentId) contentIds.add(day.descriptionContentId)
+			if (day.cityId && day.cityId !== 'undefined') {
+				cityIds.add(day.cityId)
+			}
 		})
 	})
 
@@ -57,6 +61,66 @@ async function applyTranslationsToTours(tours: any[], language: string) {
 	translations.forEach((t) => {
 		translationMap.set(t.contentId, t.text)
 	})
+
+	// Fetch city translations if there are cities
+	let cityTranslationsMap = new Map()
+	if (cityIds.size > 0) {
+		try {
+			const cities = await placesClient.city.findMany({
+				where: {
+					id: { in: Array.from(cityIds) },
+				},
+				include: {
+					content: {
+						include: {
+							translations: true,
+						},
+					},
+					country: {
+						include: {
+							content: {
+								include: {
+									translations: true,
+								},
+							},
+						},
+					},
+				},
+			})
+
+			// Create map of city translations
+			cities.forEach((city) => {
+				const cityTranslation = city.content?.translations?.find(
+					(t) => t.language === language,
+				)
+				const cityName =
+					cityTranslation?.text ||
+					city.content?.translations?.find((t) => t.language === 'en-US')
+						?.text ||
+					'Unknown City'
+
+				let countryName = null
+				if (city.country?.content?.translations) {
+					const countryTranslation = city.country.content.translations.find(
+						(t) => t.language === language,
+					)
+					countryName =
+						countryTranslation?.text ||
+						city.country.content.translations.find(
+							(t) => t.language === 'en-US',
+						)?.text
+				}
+
+				cityTranslationsMap.set(city.id, {
+					name: cityName,
+					countryName: countryName,
+					geoCoordinates: city.geo || null,
+				})
+			})
+		} catch (cityError) {
+			console.error('Error fetching city translations:', cityError)
+		}
+	}
 
 	// Apply translations to each tour
 	return tours.map((tour) => {
@@ -79,7 +143,7 @@ async function applyTranslationsToTours(tours: any[], language: string) {
 			translatedTour.conclusion = translationMap.get(tour.conclusionContentId)
 		}
 
-		// Apply day translations
+		// Apply day translations and city translations
 		if (tour.days && tour.days.length > 0) {
 			translatedTour.days = tour.days.map((day: any) => {
 				const translatedDay = { ...day }
@@ -94,6 +158,14 @@ async function applyTranslationsToTours(tours: any[], language: string) {
 					translatedDay.description = translationMap.get(
 						day.descriptionContentId,
 					)
+				}
+
+				// Apply city translation if available
+				if (day.cityId && cityTranslationsMap.has(day.cityId)) {
+					const cityData = cityTranslationsMap.get(day.cityId)
+					translatedDay.cityName = cityData.name
+					translatedDay.countryName = cityData.countryName
+					translatedDay.geoCoordinates = cityData.geoCoordinates
 				}
 
 				return translatedDay
@@ -111,6 +183,7 @@ export async function GET(request: NextRequest) {
 		const limit = Number.parseInt(searchParams.get('limit') || '8')
 
 		const language = extractLanguageFromRequest(request)
+		console.log('Detected language for tours:', language)
 
 		const userData: any = await getUserData()
 		const { savedList } = userData || {}
@@ -132,21 +205,48 @@ export async function GET(request: NextRequest) {
 			include: {
 				startAddress: true,
 				endAddress: true,
+				nameContent: {
+					include: {
+						translations: {
+							where: {
+								languageCode: language,
+							},
+						},
+					},
+				},
+				subtitleContent: {
+					include: {
+						translations: {
+							where: {
+								languageCode: language,
+							},
+						},
+					},
+				},
+				overviewContent: {
+					include: {
+						translations: {
+							where: {
+								languageCode: language,
+							},
+						},
+					},
+				},
+				conclusionContent: {
+					include: {
+						translations: {
+							where: {
+								languageCode: language,
+							},
+						},
+					},
+				},
 			},
 			skip: (page - 1) * limit,
 			take: limit,
 		})
 
-		console.log('allToursData', allToursData[0].startAddress)
-
-		const city = await prisma.tour.findMany({
-			where: {
-				images: {
-					isEmpty: false,
-				},
-			},
-		})
-		console.log('city: ', city)
+		// Apply translations including city translations for days
 		const translatedTours = await applyTranslationsToTours(
 			allToursData,
 			language,
@@ -155,6 +255,12 @@ export async function GET(request: NextRequest) {
 		const modifiedToursData = translatedTours.map((tour) => ({
 			...tour,
 			liked: savedList?.includes(tour.id),
+			// Ensure we use the translated values
+			name: tour.nameContent?.translations[0]?.text || tour.name,
+			subtitle: tour.subtitleContent?.translations[0]?.text || tour.subtitle,
+			overview: tour.overviewContent?.translations[0]?.text || tour.overview,
+			conclusion:
+				tour.conclusionContent?.translations[0]?.text || tour.conclusion,
 		}))
 
 		return NextResponse.json({
@@ -162,11 +268,15 @@ export async function GET(request: NextRequest) {
 			totalTours,
 			page,
 			totalPages: Math.ceil(totalTours / limit),
+			language, // Include detected language in response
 		})
 	} catch (error) {
 		console.error('Error fetching tours:', error)
 		return NextResponse.json(
-			{ message: 'Error fetching tour data' },
+			{
+				message: 'Error fetching tour data',
+				error: error instanceof Error ? error.message : 'Unknown error',
+			},
 			{ status: 500 },
 		)
 	} finally {

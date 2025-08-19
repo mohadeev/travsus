@@ -48,6 +48,8 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 		liked,
 	}: any = data
 	const [priceData, setPriceData] = useState({})
+	console.log('data::::::', data)
+	const day = days[0]
 
 	useEffect(() => {
 		const pricesData = async () => {
@@ -81,7 +83,7 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 	}
 
 	const href =
-		`/africa/morocco/errachidia/merzouga/tours/${slugify(title)}/q=tour?serviceId=${serviceId}` as Route
+		`/africa/${day.countryName}/errachidia/${day.cityName}/tours/${slugify(title)}/q=tour?serviceId=${serviceId}` as Route
 
 	const renderSliderGallery = () => {
 		return (
@@ -126,7 +128,7 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 					<div className="flex items-center text-sm leading-none text-neutral-500 dark:text-neutral-400">
 						{size === 'default' && <MapPinIcon className="mr-1 h-4 w-4" />}
 						<button className="rounded-md border border-black px-2 py-1 text-xs font-semibold text-black">
-							{data?.startAddress?.country} - {data?.startAddress?.city}
+							{data?.days[0]?.countryName} - {data?.days[0]?.cityName}
 						</button>
 					</div>
 
