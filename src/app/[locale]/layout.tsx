@@ -82,6 +82,18 @@ export default async function RootLayout({
 						}}
 					/>
 				)}
+				<Script
+					src="https://www.googletagmanager.com/gtag/js?id=AW-17494341245"
+					strategy="afterInteractive"
+				/>
+				<Script id="ads-gtag-init" strategy="afterInteractive">
+					{`
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-17494341245');
+  `}
+				</Script>
 				{/* Google Tag Manager (noscript) */}
 				<noscript>
 					<iframe
