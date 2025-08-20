@@ -1941,6 +1941,10 @@
     "username_label": "Nom d'utilisateur",
     "username_title": "Nom d'utilisateur"
   },
+  "ReadMore": {
+    "read_less": "Lire moins",
+    "read_more": "Lire plus"
+  },
   "report_confidential_page": {
     "report_confidential_page_Description": "Soumettez un rapport confidentiel via notre canal sécurisé pour lanceurs d'alerte.",
     "report_confidential_page_Title": "Canal de signalement confidentiel"

@@ -159,6 +159,7 @@
     "stripe": "^17.3.0",
     "styled-components": "^6.1.13",
     "tailwind-merge": "^2.5.5",
+    "transliteration": "^2.3.5",
     "ts-node": "^10.9.2",
     "typescript": "^5.2.2",
     "uuid": "^11.0.3",

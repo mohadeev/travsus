@@ -13,8 +13,9 @@ import { MapPinIcon } from '@heroicons/react/24/outline'
 import type { Route } from '@/routers/types'
 import { updateLineItemsLogic } from '@/app/api/updateLineItems/updateLineItemsLogic'
 import { formatCurrency } from '@/utils/formatCurrency'
-import slugify from '@/utils/slugify'
+// import slugify from '@/utils/slugify'
 import { useTranslations } from '@/lib/i18n'
+import { transliterate as tr, slugify } from 'transliteration'
 
 export interface ExperiencesCardProps {
 	className?: string
@@ -49,6 +50,7 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 		days,
 	}: any = data
 	const [priceData, setPriceData] = useState({})
+	console.log('data: ', data)
 	const day = days[0]
 
 	useEffect(() => {
@@ -83,7 +85,7 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 	}
 
 	const href =
-		`/africa/${day.countryName}/errachidia/${day.cityName}/tours/${slugify(title)}/q=tour?serviceId=${serviceId}` as Route
+		`/${slugify(day.continent.name)}/${slugify(day.country.name)}/${slugify(day.province.name)}/${slugify(day.city.name)}/tours/${slugify(title)}/q=tour?serviceId=${serviceId}` as Route
 
 	const renderSliderGallery = () => {
 		return (
@@ -128,7 +130,7 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 					<div className="flex items-center text-sm leading-none text-neutral-500 dark:text-neutral-400">
 						{size === 'default' && <MapPinIcon className="mr-1 h-4 w-4" />}
 						<button className="rounded-md border border-black px-2 py-1 text-xs font-semibold text-black">
-							{data?.days[0]?.countryName} - {data?.days[0]?.cityName}
+							{data?.days[0]?.country?.name} - {data?.days[0]?.city?.name}
 						</button>
 					</div>
 

@@ -1552,6 +1552,10 @@
     "username_label": "Nome utente",
     "username_title": "Nome utente"
   },
+  "ReadMore": {
+    "read_less": "Leggi meno",
+    "read_more": "Leggi di più"
+  },
   "servicedetail_listingexperiencesdetail_page": {
     "Cancellation_Policy_Text": "Ogni servizio fornito da TRAVSUS sul presente Sito Web (attività, gite di un giorno, tour guidati e trasferimenti) ha la propria politica di cancellazione specifica. L'Utente può verificare ogni politica di cancellazione specifica nella parte descrittiva di ogni attività (nel Sito Web) o nell'email di conferma che TRAVSUS invierà all'Utente una volta effettuata la prenotazione. Pertanto, le condizioni specifiche di cancellazione saranno applicabili a ogni servizio, che stabiliscono il tempo di cancellazione e le possibili penalizzazioni. TRAVSUS gestirà le cancellazioni e confermerà le politiche di cancellazione di ogni attività, escursione, tour guidato e/o trasferimento. Se il FORNITORE non ha disponibilità nella data prenotata, TRAVSUS offrirà al cliente una data o un orario alternativo, che deve essere accettato o rifiutato dal cliente. Se non viene ricevuta alcuna risposta sull'opzione alternativa entro 72 ore, la prenotazione verrà cancellata e rimborsata immediatamente. In entrambi i casi, TRAVSUS invierà la documentazione pertinente. IN CONFORMITÀ CON QUANTO SOPRA, E ACCETTANDO QUESTI TERMINI GENERALI DI UTILIZZO, GLI UTENTI DICHIARANO DI AVER ESPRESSAMENTE LETTO E ACCETTATO LA PRESENTE POLITICA DI CANCELLAZIONE E CON LA PRESENTE ACCETTANO LE POLITICHE DI CANCELLAZIONE DI OGNI ATTIVITÀ, GITA DI UN GIORNO, TOUR GUIDATO E/O TRASFERIMENTO CHE VENGONO PRENOTATI SUL PRESENTE SITO WEB.",
     "Cancellation_Policy_Title": "Politica di cancellazione",

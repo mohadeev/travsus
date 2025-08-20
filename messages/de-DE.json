@@ -1943,6 +1943,10 @@
     "username_label": "Benutzername",
     "username_title": "Benutzername"
   },
+  "ReadMore": {
+    "read_less": "Weniger lesen",
+    "read_more": "Mehr lesen"
+  },
   "report_confidential_page": {
     "report_confidential_page_Description": "Übermitteln Sie einen vertraulichen Bericht über unseren sicheren Whistleblower-Kanal.",
     "report_confidential_page_Title": "Vertraulicher Meldungskanal"

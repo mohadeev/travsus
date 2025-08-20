@@ -1,82 +1,62 @@
 {
 	"en-US": {
-		"Jan03_TourHeader_x9k2": {
-			"things_to_do": "Things to do",
-			"things_to_do_slug": "things-to-do",
-			"tours": "Tours",
-			"tours_slug": "tours"
+		"ReadMore": {
+			"read_more": "Read more",
+			"read_less": "Read less"
 		}
 	},
 	"es-ES": {
-		"Jan03_TourHeader_x9k2": {
-			"things_to_do": "Cosas que hacer",
-			"things_to_do_slug": "things-to-do",
-			"tours": "Tours",
-			"tours_slug": "tours"
+		"ReadMore": {
+			"read_more": "Leer más",
+			"read_less": "Leer menos"
 		}
 	},
 	"de-DE": {
-		"Jan03_TourHeader_x9k2": {
-			"things_to_do": "Aktivitäten",
-			"things_to_do_slug": "things-to-do",
-			"tours": "Touren",
-			"tours_slug": "tours"
+		"ReadMore": {
+			"read_more": "Mehr lesen",
+			"read_less": "Weniger lesen"
 		}
 	},
 	"fr-FR": {
-		"Jan03_TourHeader_x9k2": {
-			"things_to_do": "Choses à faire",
-			"things_to_do_slug": "things-to-do",
-			"tours": "Visites",
-			"tours_slug": "tours"
+		"ReadMore": {
+			"read_more": "Lire plus",
+			"read_less": "Lire moins"
 		}
 	},
 	"ja-JP": {
-		"Jan03_TourHeader_x9k2": {
-			"things_to_do": "アクティビティ",
-			"things_to_do_slug": "akuteibitei",
-			"tours": "ツアー",
-			"tours_slug": "tsua"
+		"ReadMore": {
+			"read_more": "続きを読む",
+			"read_less": "折りたたむ"
 		}
 	},
 	"pt-PT": {
-		"Jan03_TourHeader_x9k2": {
-			"things_to_do": "Coisas para fazer",
-			"things_to_do_slug": "things-to-do",
-			"tours": "Passeios",
-			"tours_slug": "tours"
+		"ReadMore": {
+			"read_more": "Ler mais",
+			"read_less": "Ler menos"
 		}
 	},
 	"it-IT": {
-		"Jan03_TourHeader_x9k2": {
-			"things_to_do": "Cose da fare",
-			"things_to_do_slug": "things-to-do",
-			"tours": "Tour",
-			"tours_slug": "tours"
+		"ReadMore": {
+			"read_more": "Leggi di più",
+			"read_less": "Leggi meno"
 		}
 	},
 	"ru-RU": {
-		"Jan03_TourHeader_x9k2": {
-			"things_to_do": "Чем заняться",
-			"things_to_do_slug": "chem-zanyatsya",
-			"tours": "Экскурсии",
-			"tours_slug": "ekskursii"
+		"ReadMore": {
+			"read_more": "Читать далее",
+			"read_less": "Свернуть"
 		}
 	},
 	"zh-CN": {
-		"Jan03_TourHeader_x9k2": {
-			"things_to_do": "活动项目",
-			"things_to_do_slug": "huo-dong-xiang-mu",
-			"tours": "旅游团",
-			"tours_slug": "lv-you-tuan"
+		"ReadMore": {
+			"read_more": "阅读更多",
+			"read_less": "收起"
 		}
 	},
 	"ko-KR": {
-		"Jan03_TourHeader_x9k2": {
-			"things_to_do": "할일",
-			"things_to_do_slug": "hal-il",
-			"tours": "투어",
-			"tours_slug": "tueo"
+		"ReadMore": {
+			"read_more": "더보기",
+			"read_less": "접기"
 		}
 	}
 }

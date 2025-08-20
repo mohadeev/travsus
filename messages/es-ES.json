@@ -1873,6 +1873,10 @@
     "username_label": "Nombre de usuario",
     "username_title": "Nombre de usuario"
   },
+  "ReadMore": {
+    "read_less": "Leer menos",
+    "read_more": "Leer más"
+  },
   "report_confidential_page": {
     "report_confidential_page_Description": "Envíe un informe confidencial a través de nuestro canal seguro para denunciantes.",
     "report_confidential_page_Title": "Canal de Denuncia Confidencial"

@@ -2,9 +2,11 @@
 
 import { ChevronDown, ChevronUp } from 'lucide-react'
 import { useState } from 'react'
+import { useTranslations } from '@/lib/i18n'
 
 const ReadMore = ({ description }: any) => {
 	const [isExpanded, setIsExpanded] = useState(false)
+	const t = useTranslations('ReadMore')
 
 	// Function to truncate text to first 200 characters
 	const truncateText = (text: string, charLimit: number) => {
@@ -31,7 +33,8 @@ const ReadMore = ({ description }: any) => {
 							onClick={toggleReadMore}
 							className="ml-1 inline-flex cursor-pointer items-center text-sm font-medium text-black md:text-base"
 						>
-							Read less <ChevronUp className="ml-1 h-4 w-4 md:h-5 md:w-5" />
+							{t('read_less')}{' '}
+							<ChevronUp className="ml-1 h-4 w-4 md:h-5 md:w-5" />
 						</span>
 					</>
 				) : (
@@ -42,7 +45,8 @@ const ReadMore = ({ description }: any) => {
 							onClick={toggleReadMore}
 							className="ml-1 inline-flex cursor-pointer items-center rounded-sm bg-white/50 px-2 py-0.5 text-sm font-medium text-black shadow-[0_0_10px_5px_rgba(255,255,255,0.9)] backdrop-blur-sm md:text-base"
 						>
-							Read more <ChevronDown className="ml-1 h-4 w-4 md:h-5 md:w-5" />
+							{t('read_more')}{' '}
+							<ChevronDown className="ml-1 h-4 w-4 md:h-5 md:w-5" />
 						</span>
 					</>
 				)}

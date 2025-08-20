@@ -1901,6 +1901,10 @@
     "username_label": "Username",
     "username_title": "Username"
   },
+  "ReadMore": {
+    "read_less": "Read less",
+    "read_more": "Read more"
+  },
   "report_confidential_page": {
     "report_confidential_page_Description": "Submit a confidential report through our secure whistleblower channel.",
     "report_confidential_page_Title": "Confidential Reporting Channel"
