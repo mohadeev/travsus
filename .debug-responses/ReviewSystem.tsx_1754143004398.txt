@@ -1,20 +1,20 @@
 
 === FILE: C:\Users\Usuario\s\travsus\src\app\[locale]\[continent]\[country]\[region]\[city]\[category]\[name]\(service-detail)\[listing-experiences-detail]\ReviewSystem.tsx ===
-=== NAMESPACE: app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewSystem ===
+=== NAMESPACE: experience_reviews ===
 === PROMPT ===
 # ULTRA-STRICT INTERNATIONALIZATION INSTRUCTIONS
 
 Transform this TSX file to use internationalization.
 
 ## CRITICAL NAMESPACE AND KEY REQUIREMENTS:
-- You MUST use the exact namespace: "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewSystem"
-- The useTranslations call MUST be: useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewSystem")
+- You MUST use the exact namespace: "experience_reviews"
+- The useTranslations call MUST be: useTranslations("experience_reviews")
 - Keys should be simple descriptive names WITHOUT the namespace prefix
-- Example: t('Welcome_Message') NOT t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewSystem_Welcome_Message')
+- Example: t('Welcome_Message') NOT t('experience_reviews_Welcome_Message')
 
 ## EXACT REQUIREMENTS:
 1. Add this import: import { useTranslations } from '@/lib/i18n'
-2. Add this hook call: const t = useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewSystem");
+2. Add this hook call: const t = useTranslations("experience_reviews");
 3. Replace static text with: t('Simple_Key_Name')
 4. Generate simple keys like: Welcome_Message, Button_Text, Error_Message
 
@@ -29,7 +29,7 @@ Transform this TSX file to use internationalization.
 <COMPLETE TSX FILE WITH EXACT NAMESPACE>
 ---MESSAGES:
 {
-  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewSystem": {
+  "experience_reviews": {
 	"Welcome_Message": "Welcome to our site",
 	"Button_Text": "Click here",
 	"Error_Message": "Something went wrong"
@@ -49,7 +49,7 @@ AFTER:
 import { useTranslations } from '@/lib/i18n';
 
 export default function Component() {
-  const t = useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewSystem");
+  const t = useTranslations("experience_reviews");
   
   return (
 	<div>
@@ -62,7 +62,7 @@ export default function Component() {
 
 ---MESSAGES:
 {
-  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewSystem": {
+  "experience_reviews": {
 	"Welcome_Message": "Welcome to our site",
 	"Button_Text": "Click here", 
 	"Error_Message": "Something went wrong"
@@ -678,16 +678,16 @@ export default ReviewSystem;
 
 
 REMEMBER: 
-- Use EXACTLY "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewSystem" in useTranslations()
+- Use EXACTLY "experience_reviews" in useTranslations()
 - Keys should be simple names WITHOUT namespace prefix
-- JSON structure: { "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewSystem": { "Simple_Key": "value" } }
+- JSON structure: { "experience_reviews": { "Simple_Key": "value" } }
 
 === RESPONSE ===
 <Thinking>
 I need to transform this TSX file to use internationalization following the exact requirements:
 
 1. Add the import: `import { useTranslations } from '@/lib/i18n'`
-2. Add the hook call with the exact namespace: `const t = useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewSystem");`
+2. Add the hook call with the exact namespace: `const t = useTranslations("experience_reviews");`
 3. Replace all static text with t('Simple_Key_Name') calls
 4. Generate simple keys without namespace prefix
 5. Use Title_Case_With_Underscores format
@@ -819,7 +819,7 @@ interface ReviewType {
 }
 
 const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
-  const t = useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewSystem");
+  const t = useTranslations("experience_reviews");
   const router = useRouter();
   const [showReviewForm, setShowReviewForm] = useState(false);
   const [rating, setRating] = useState(0);
@@ -1387,7 +1387,7 @@ export default ReviewSystem;
 ---MESSAGES:
 ```json
 {
-  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewSystem": {
+  "experience_reviews": {
     "Tell_Us_Visit": "Tell us, how was your visit?",
     "Tour_Title": "Tour Title",
     "Days": "Days",

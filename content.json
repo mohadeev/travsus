@@ -1,62 +1,62 @@
 {
 	"en-US": {
-		"ListingExperiencesDetailsImages": {
-			"more_photos": "more photos",
-			"show_all_photos": "Show all {count} photos"
+		"Jan03_TourHeader_x9k2": {
+			"things_to_do": "Things to do",
+			"things_to_do_slug": "things-to-do"
 		}
 	},
 	"es-ES": {
-		"ListingExperiencesDetailsImages": {
-			"more_photos": "más fotos",
-			"show_all_photos": "Mostrar todas las {count} fotos"
+		"Jan03_TourHeader_x9k2": {
+			"things_to_do": "Cosas que hacer",
+			"things_to_do_slug": "cosas-que-hacer"
 		}
 	},
 	"de-DE": {
-		"ListingExperiencesDetailsImages": {
-			"more_photos": "weitere Fotos",
-			"show_all_photos": "Alle {count} Fotos anzeigen"
+		"Jan03_TourHeader_x9k2": {
+			"things_to_do": "Aktivitäten",
+			"things_to_do_slug": "aktivitaeten"
 		}
 	},
 	"fr-FR": {
-		"ListingExperiencesDetailsImages": {
-			"more_photos": "plus de photos",
-			"show_all_photos": "Afficher toutes les {count} photos"
+		"Jan03_TourHeader_x9k2": {
+			"things_to_do": "Choses à faire",
+			"things_to_do_slug": "choses-a-faire"
 		}
 	},
 	"ja-JP": {
-		"ListingExperiencesDetailsImages": {
-			"more_photos": "さらに写真",
-			"show_all_photos": "すべての{count}枚の写真を表示"
+		"Jan03_TourHeader_x9k2": {
+			"things_to_do": "アクティビティ",
+			"things_to_do_slug": "akuteibitei"
 		}
 	},
 	"pt-PT": {
-		"ListingExperiencesDetailsImages": {
-			"more_photos": "mais fotos",
-			"show_all_photos": "Mostrar todas as {count} fotos"
+		"Jan03_TourHeader_x9k2": {
+			"things_to_do": "Coisas para fazer",
+			"things_to_do_slug": "coisas-para-fazer"
 		}
 	},
 	"it-IT": {
-		"ListingExperiencesDetailsImages": {
-			"more_photos": "altre foto",
-			"show_all_photos": "Mostra tutte le {count} foto"
+		"Jan03_TourHeader_x9k2": {
+			"things_to_do": "Cose da fare",
+			"things_to_do_slug": "cose-da-fare"
 		}
 	},
 	"ru-RU": {
-		"ListingExperiencesDetailsImages": {
-			"more_photos": "еще фото",
-			"show_all_photos": "Показать все {count} фото"
+		"Jan03_TourHeader_x9k2": {
+			"things_to_do": "Чем заняться",
+			"things_to_do_slug": "chem-zanyatsya"
 		}
 	},
 	"zh-CN": {
-		"ListingExperiencesDetailsImages": {
-			"more_photos": "更多照片",
-			"show_all_photos": "显示所有 {count} 张照片"
+		"Jan03_TourHeader_x9k2": {
+			"things_to_do": "活动项目",
+			"things_to_do_slug": "huo-dong-xiang-mu"
 		}
 	},
 	"ko-KR": {
-		"ListingExperiencesDetailsImages": {
-			"more_photos": "더 많은 사진",
-			"show_all_photos": "모든 {count}장의 사진 보기"
+		"Jan03_TourHeader_x9k2": {
+			"things_to_do": "할일",
+			"things_to_do_slug": "hal-il"
 		}
 	}
 }

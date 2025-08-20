@@ -346,7 +346,7 @@
 	"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewImageGallery": {
 		"Review_Photo_Alt": "Review photo"
 	},
-	"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewSystem": {
+	"experience_reviews": {
 		"Add_Photos": "Add some photos",
 		"Business": "Business",
 		"Cancel": "Cancel",

@@ -138,9 +138,9 @@ const TourHeader = () => {
 	]
 
 	// Tour data with fallbacks
-	const tourRating = rating || 4.9
-	const totalReviews = reviewCount || 5985
-	const recommendedBy = recommendationPercentage || 97
+	const tourRating = rating || 5.0
+	const totalReviews = reviewCount || 0
+	const recommendedBy = recommendationPercentage || 100
 
 	const renderStars = (rating: number) => {
 		const stars = []
