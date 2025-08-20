@@ -1297,7 +1297,9 @@
     "Share": "共有",
     "things_to_do": "アクティビティ",
     "things_to_do_slug": "akuteibitei",
-    "Tour_Link_Copied": "ツアーリンクをコピーしました！"
+    "Tour_Link_Copied": "ツアーリンクをコピーしました！",
+    "tours": "ツアー",
+    "tours_slug": "tsua"
   },
   "Jan03_TourMap_n9w5": {
     "Day": "日",

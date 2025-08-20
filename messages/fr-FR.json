@@ -1722,8 +1722,10 @@
     "Saved": "Sauvegardé",
     "Share": "Partager",
     "things_to_do": "Choses à faire",
-    "things_to_do_slug": "choses-a-faire",
-    "Tour_Link_Copied": "Lien de la visite copié !"
+    "things_to_do_slug": "things-to-do",
+    "Tour_Link_Copied": "Lien de la visite copié !",
+    "tours": "Visites",
+    "tours_slug": "tours"
   },
   "Jan03_TourMap_n9w5": {
     "Day": "Jour",

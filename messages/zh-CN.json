@@ -1276,7 +1276,9 @@
     "Share": "分享",
     "things_to_do": "活动项目",
     "things_to_do_slug": "huo-dong-xiang-mu",
-    "Tour_Link_Copied": "旅游链接已复制！"
+    "Tour_Link_Copied": "旅游链接已复制！",
+    "tours": "旅游团",
+    "tours_slug": "lv-you-tuan"
   },
   "Jan03_TourMap_n9w5": {
     "Day": "天",

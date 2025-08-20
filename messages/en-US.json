@@ -1683,7 +1683,9 @@
     "Share": "Share",
     "things_to_do": "Things to do",
     "things_to_do_slug": "things-to-do",
-    "Tour_Link_Copied": "Tour link copied!"
+    "Tour_Link_Copied": "Tour link copied!",
+    "tours": "Tours",
+    "tours_slug": "tours"
   },
   "Jan03_TourMap_n9w5": {
     "Day": "Day",

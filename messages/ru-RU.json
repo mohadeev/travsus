@@ -1341,7 +1341,9 @@
     "Share": "Поделиться",
     "things_to_do": "Чем заняться",
     "things_to_do_slug": "chem-zanyatsya",
-    "Tour_Link_Copied": "Ссылка на тур скопирована!"
+    "Tour_Link_Copied": "Ссылка на тур скопирована!",
+    "tours": "Экскурсии",
+    "tours_slug": "ekskursii"
   },
   "Jan03_TourMap_n9w5": {
     "Day": "День",

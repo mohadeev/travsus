@@ -1300,7 +1300,9 @@
     "Share": "공유",
     "things_to_do": "할일",
     "things_to_do_slug": "hal-il",
-    "Tour_Link_Copied": "투어 링크가 복사되었습니다!"
+    "Tour_Link_Copied": "투어 링크가 복사되었습니다!",
+    "tours": "투어",
+    "tours_slug": "tueo"
   },
   "Jan03_TourMap_n9w5": {
     "Day": "일",

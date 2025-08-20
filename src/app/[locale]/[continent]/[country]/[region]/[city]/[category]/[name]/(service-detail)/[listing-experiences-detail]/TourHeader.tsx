@@ -123,18 +123,18 @@ const TourHeader = () => {
 	}
 
 	const links = [
-		{ value: continentInfo?.name, href: '/destinations/europe' },
-		{ value: countryName, href: '/destinations/spain' },
+		{ value: continentInfo?.name, href: '#' },
+		{ value: countryName, href: '#' },
 		{
-			value: regionName || 'Madrid Region',
-			href: `/destinations/${regionName?.toLowerCase()}`,
+			value: regionName,
+			href: `#`,
 		},
-		{ value: city, href: `/destinations/${city?.toLowerCase()}` },
+		{ value: city, href: '#' },
 		{
-			value: 'Things to do',
-			href: `/destinations/${city?.toLowerCase()}/attractions`,
+			value: t('things_to_do'),
+			href: `#`,
 		},
-		{ value: 'Tours', href: `/destinations/${city?.toLowerCase()}/tours` },
+		{ value: t('tours'), href: `#` },
 	]
 
 	// Tour data with fallbacks
@@ -156,6 +156,12 @@ const TourHeader = () => {
 		}
 		return stars
 	}
+	const handleScroll = () => {
+		const el = document.getElementById('experience_reviews')
+		if (el) {
+			el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+		}
+	}
 
 	return (
 		<div className="nc-ListingExperiencesDetailPage mb-6">
@@ -164,10 +170,7 @@ const TourHeader = () => {
 				{/* Mobile Top Navigation */}
 				<div className="flex items-center justify-between border-b border-gray-200 py-4">
 					{/* Back Button */}
-					<Link
-						href={`/destinations/${city?.toLowerCase()}/attractions`}
-						className="-ml-2 p-2"
-					>
+					<Link href={`/`} className="-ml-2 p-2">
 						<ArrowLeft className="h-6 w-6 text-black" strokeWidth={2} />
 					</Link>
 
@@ -235,7 +238,7 @@ const TourHeader = () => {
 						</div>
 
 						{/* Review Button */}
-						<button className="p-2">
+						<button onClick={handleScroll} className="p-2">
 							<Edit className="h-6 w-6 text-black" strokeWidth={2} />
 						</button>
 
