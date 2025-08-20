@@ -45,6 +45,7 @@ const DetailtLayout = ({ children }: { children: ReactNode }) => {
 					'/api/listing/get/getTourData?',
 					{ id: serviceId },
 				)
+				console.log('serviceData: ', serviceData)
 				setTourData(serviceData)
 
 				// Fetch dynamic pricing

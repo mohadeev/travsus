@@ -49,20 +49,15 @@ const TourHeader = () => {
 		loading,
 		rating,
 		reviewCount,
+		continentInfo,
 		recommendationPercentage,
 	}: any = useSelector((state: any) => state.creatingServiceSlice.service)
-
+	const day = days?.[0]
 	// Safely extract city name - handle both string and object cases
-	const city =
-		typeof startAddress?.city === 'string'
-			? startAddress.city
-			: startAddress?.city?.name ||
-				startAddress?.city?.cityName ||
-				startAddress?.cityName
-
+	const city = day?.cityName
 	// Safely extract region name - handle both string and object cases
-	const regionName =
-		typeof region === 'string' ? region : region?.name || region?.regionName
+	const regionName = day?.stateName
+	const countryName = day?.countryName
 
 	// Share functionality
 	const toggleDropdown = () => {
@@ -128,8 +123,8 @@ const TourHeader = () => {
 	}
 
 	const links = [
-		{ value: 'Europe', href: '/destinations/europe' },
-		{ value: 'Spain', href: '/destinations/spain' },
+		{ value: continentInfo?.name, href: '/destinations/europe' },
+		{ value: countryName, href: '/destinations/spain' },
 		{
 			value: regionName || 'Madrid Region',
 			href: `/destinations/${regionName?.toLowerCase()}`,

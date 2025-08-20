@@ -67,6 +67,10 @@ const ListingExperiencesDetailPage: FC<
 		faq,
 		inclusions,
 	}: any = useSelector((state: any) => state.creatingServiceSlice.service)
+	const service: any = useSelector(
+		(state: any) => state.creatingServiceSlice.service,
+	)
+	console.log('service: ', service)
 
 	const city = startAddress?.city
 

@@ -203,6 +203,7 @@ export async function GET(request: NextRequest) {
 
 		// Process days with city translations
 		let processedDays = tour.days || []
+		let continentInfo = null
 
 		if (Array.isArray(processedDays) && processedDays.length > 0) {
 			// First get all day translations
@@ -270,6 +271,24 @@ export async function GET(request: NextRequest) {
 											translations: true,
 										},
 									},
+									continent: {
+										include: {
+											content: {
+												include: {
+													translations: true,
+												},
+											},
+										},
+									},
+								},
+							},
+							state: {
+								include: {
+									content: {
+										include: {
+											translations: true,
+										},
+									},
 								},
 							},
 						},
@@ -303,6 +322,37 @@ export async function GET(request: NextRequest) {
 								)?.text
 						}
 
+						// Get state/province name in requested language
+						let stateName = null
+						if (city.state?.content?.translations) {
+							const stateTranslation = city.state.content.translations.find(
+								(t) => t.language === languageCode,
+							)
+							stateName =
+								stateTranslation?.text ||
+								city.state.content.translations.find(
+									(t) => t.language === 'en-US',
+								)?.text
+						}
+
+						// Get continent information (only for the first day's city)
+						if (!continentInfo && city.country?.continent) {
+							const continentTranslation =
+								city.country.continent.content?.translations?.find(
+									(t) => t.language === languageCode,
+								)
+							continentInfo = {
+								name:
+									continentTranslation?.text ||
+									city.country.continent.content?.translations?.find(
+										(t) => t.language === 'en-US',
+									)?.text ||
+									'Unknown Continent',
+								code: city.country.continent.code,
+								id: city.country.continent.id,
+							}
+						}
+
 						// Check for missing geo coordinates
 						if (!city.geo || !city.geo.lat || !city.geo.log) {
 							const geoCoordinates = await getGeoCoordinatesFromOpenAI(
@@ -319,6 +369,7 @@ export async function GET(request: NextRequest) {
 							id: city.id,
 							name: cityName,
 							countryName: countryName,
+							stateName: stateName,
 							geoCoordinates: city.geo || null,
 							originalName: city.content?.translations?.find(
 								(t) => t.language === 'en-US',
@@ -333,6 +384,7 @@ export async function GET(request: NextRequest) {
 								...day,
 								cityName: cityMap[day.cityId].name,
 								countryName: cityMap[day.cityId].countryName,
+								stateName: cityMap[day.cityId].stateName,
 								geoCoordinates: cityMap[day.cityId].geoCoordinates,
 								originalCityName: cityMap[day.cityId].originalName,
 							}
@@ -353,6 +405,7 @@ export async function GET(request: NextRequest) {
 			conclusion: translatedConclusion,
 			days: processedDays,
 			language: languageCode,
+			continentInfo, // Add the new continent information object
 		}
 
 		return NextResponse.json(tourData)

@@ -49,7 +49,6 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 		days,
 	}: any = data
 	const [priceData, setPriceData] = useState({})
-	console.log('data::::::', data)
 	const day = days[0]
 
 	useEffect(() => {
