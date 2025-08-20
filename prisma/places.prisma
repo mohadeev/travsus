@@ -9,13 +9,67 @@ generator client {
   output   = "../prisma/generated/places"
 }
 
-// City Model - Add the places relation
+// Continent Model
+model Continent {
+  id         String               @id @default(auto()) @map("_id") @db.ObjectId
+  code       String               @unique
+  contentId  String               @db.ObjectId
+  content    TranslatableContent  @relation("ContinentContent", fields: [contentId], references: [id])
+  geo        GeoCoordinates?
+  image      Image?
+  createdAt  DateTime             @default(now())
+  updatedAt  DateTime             @updatedAt
+  countries  Country[]            @relation("ContinentCountries")
+}
+
+// Country Model
+model Country {
+  id         String               @id @default(auto()) @map("_id") @db.ObjectId
+  code       String               @unique
+  code3      String               @unique
+  contentId  String               @db.ObjectId
+  content    TranslatableContent  @relation("CountryContent", fields: [contentId], references: [id])
+  continentId String?             @db.ObjectId
+  continent   Continent?          @relation("ContinentCountries", fields: [continentId], references: [id])
+  cities     City[]               @relation("CountryCities")
+  states     State[]              @relation("CountryStates")
+  geo        GeoCoordinates
+  image      Image?
+  createdAt  DateTime             @default(now())
+  updatedAt  DateTime             @updatedAt
+  type       String?
+  places     Place[]
+}
+
+// State/Province Model
+model State {
+  id         String               @id @default(auto()) @map("_id") @db.ObjectId
+  countryId  String               @db.ObjectId
+  country    Country              @relation("CountryStates", fields: [countryId], references: [id])
+  contentId  String               @db.ObjectId
+  content    TranslatableContent  @relation("StateContent", fields: [contentId], references: [id])
+  code       String?
+  geo        GeoCoordinates?
+  image      Image?
+  createdAt  DateTime             @default(now())
+  updatedAt  DateTime             @updatedAt
+  type       String?
+  cities     City[]
+  places     Place[]
+
+  @@unique([countryId, code])
+  @@index([countryId])
+}
+
+// City Model
 model City {
   id         String               @id @default(auto()) @map("_id") @db.ObjectId
   countryId  String               @db.ObjectId
   country    Country              @relation("CountryCities", fields: [countryId], references: [id])
+  stateId    String?              @db.ObjectId
+  state      State?               @relation(fields: [stateId], references: [id])
   contentId  String               @db.ObjectId
-  content    TranslatableContent  @relation(fields: [contentId], references: [id])
+  content    TranslatableContent  @relation("CityContent", fields: [contentId], references: [id])
   geo        GeoCoordinates
   image      Image?
   population Int?
@@ -24,34 +78,23 @@ model City {
   updatedAt  DateTime             @updatedAt
   code3      String?
   type       String?
-  places     Place[]              // Add this line to create the opposite relation
+  places     Place[]
+
+  @@index([countryId])
+  @@index([stateId])
 }
 
-// Country Model - Add the places relation
-model Country {
-  id         String               @id @default(auto()) @map("_id") @db.ObjectId
-  code       String               @unique
-  code3      String               @unique
-  contentId  String               @db.ObjectId
-  content    TranslatableContent  @relation(fields: [contentId], references: [id])
-  cities     City[]               @relation("CountryCities")
-  geo        GeoCoordinates
-  image      Image?
-  createdAt  DateTime             @default(now())
-  updatedAt  DateTime             @updatedAt
-  type       String?
-  places     Place[]              // Add this line to create the opposite relation
-}
-
-// Place Model - Add relation names to match
+// Place Model
 model Place {
   id           String               @id @default(auto()) @map("_id") @db.ObjectId
   cityId       String?              @db.ObjectId
   city         City?                @relation(fields: [cityId], references: [id])
+  stateId      String?              @db.ObjectId
+  state        State?               @relation(fields: [stateId], references: [id])
   countryId    String?              @db.ObjectId
   country      Country?             @relation(fields: [countryId], references: [id])
   contentId    String               @db.ObjectId
-  content      TranslatableContent  @relation(fields: [contentId], references: [id])
+  content      TranslatableContent  @relation("PlaceContent", fields: [contentId], references: [id])
   geo          GeoCoordinates
   image        Image?
   type         String
@@ -64,27 +107,26 @@ model Place {
   phone        String?
   createdAt    DateTime             @default(now())
   updatedAt    DateTime             @updatedAt
+
+  @@index([cityId])
+  @@index([stateId])
+  @@index([countryId])
 }
 
-// AlternativeName Embedded Type - ADD THIS NEW TYPE
-type AlternativeName {
-  text      String
-  source    String   // "user_search", "ai_correction", etc.
-  createdAt DateTime @default(now())
-}
-
-// Translatable Content Model - UPDATE THIS MODEL
+// Translatable Content Model
 model TranslatableContent {
   id               String               @id @default(auto()) @map("_id") @db.ObjectId
   entity           String
   translations     TranslatedText[]
-  alternativeNames AlternativeName[]    // ADD THIS NEW FIELD
+  alternativeNames AlternativeName[]
   // Opposite Relations
-  countries        Country[]
-  cities           City[]
-  places           Place[]
-  code3            String?              // Stores the country name
-  type             String?              // Stores "country" or "city"
+  continents       Continent[]          @relation("ContinentContent")
+  countries        Country[]            @relation("CountryContent")
+  states           State[]              @relation("StateContent")
+  cities           City[]               @relation("CityContent")
+  places           Place[]              @relation("PlaceContent")
+  code3            String?
+  type             String?
 }
 
 // Translated Text Model
@@ -92,10 +134,19 @@ model TranslatedText {
   id        String               @id @default(auto()) @map("_id") @db.ObjectId
   contentId String               @db.ObjectId
   content   TranslatableContent  @relation(fields: [contentId], references: [id])
-  code3     String?              // Stores the country name
+  code3     String?
   language  String
   text      String
-  type      String?              // Stores "name" or "description"
+  type      String?
+
+  @@index([contentId])
+}
+
+// AlternativeName Embedded Type
+type AlternativeName {
+  text      String
+  source    String
+  createdAt DateTime @default(now())
 }
 
 // GeoCoordinates Embedded Type
@@ -107,6 +158,6 @@ type GeoCoordinates {
 // Image Embedded Type
 type Image {
   url         String?
-  public_id   String?   // ID to identify the image in cloud storage
-  uploadFrom  String?   // Source of the image (e.g., "internet", "local")
+  public_id   String?
+  uploadFrom  String?
 }

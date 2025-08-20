@@ -187,6 +187,9 @@
     "accountsettings_paymentmethods_page_Your_Coupons": "Ihre Gutscheine",
     "accountsettings_paymentmethods_page_Your_Payments": "Ihre Zahlungen"
   },
+  "alc_crccn_sdl_lexdImgs": {
+    "alc_crccn_sdl_lexdImgs_Show_All_Photos": "Zeigen Sie alle Fotos"
+  },
   "app_clientcomponents_Header_CurrencyDropdown": {
     "app_clientcomponents_Header_CurrencyDropdown_Banknotes_Icon_Classes": "w-5 h-5 opacity-80",
     "app_clientcomponents_Header_CurrencyDropdown_Currency_Icon_Classes": "w-[18px] h-[18px]",
@@ -293,9 +296,6 @@
   },
   "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_LineItemsBreakdown": {
     "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_LineItemsBreakdown_Grand_Total": "Gesamtsumme"
-  },
-  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ListingExperiencesDetailsImages": {
-    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ListingExperiencesDetailsImages_Show_All_Photos": "Zeigen Sie alle Fotos"
   },
   "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_RenderSidebar": {
     "Booking_Failed_Error": "Buchung konnte nicht erstellt werden",
@@ -1762,6 +1762,10 @@
     "layout_Experienced_Guide": "Erfahrener Reiseführer",
     "layout_Unknown_City": "Unbekannte Stadt",
     "layout_Unknown_Country": "Unbekanntes Land"
+  },
+  "ListingExperiencesDetailsImages": {
+    "more_photos": "weitere Fotos",
+    "show_all_photos": "Alle {count} Fotos anzeigen"
   },
   "location_input": {
     "location_Description": "Wohin gehst du?",

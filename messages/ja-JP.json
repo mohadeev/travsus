@@ -46,6 +46,9 @@
   "accountsettings_loginandsecurity_page": {
     "accountsettings_loginandsecurity_page_Guests": "旅行者"
   },
+  "alc_crccn_sdl_lexdImgs": {
+    "alc_crccn_sdl_lexdImgs_Show_All_Photos": "すべての写真を表示"
+  },
   "app_clientcomponents_Header_CurrencyDropdown": {
     "app_clientcomponents_Header_CurrencyDropdown_Banknotes_Icon_Classes": "w-5 h-5 opacity-80",
     "app_clientcomponents_Header_CurrencyDropdown_Currency_Icon_Classes": "w-[18px] h-[18px]",
@@ -152,9 +155,6 @@
   },
   "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_LineItemsBreakdown": {
     "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_LineItemsBreakdown_Grand_Total": "総計"
-  },
-  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ListingExperiencesDetailsImages": {
-    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ListingExperiencesDetailsImages_Show_All_Photos": "すべての写真を表示"
   },
   "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_RenderSidebar": {
     "Booking_Failed_Error": "予約の作成に失敗しました",
@@ -1334,6 +1334,10 @@
     "layout_Experienced_Guide": "経験豊富なガイド",
     "layout_Unknown_City": "不明な都市",
     "layout_Unknown_Country": "不明な国"
+  },
+  "ListingExperiencesDetailsImages": {
+    "more_photos": "さらに写真",
+    "show_all_photos": "すべての{count}枚の写真を表示"
   },
   "location_input": {
     "location_Description": "どこに行きますか？",

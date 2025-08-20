@@ -115,9 +115,39 @@ Prisma.NullTypes = {
  * Enums
  */
 
+exports.Prisma.ContinentScalarFieldEnum = {
+  id: 'id',
+  code: 'code',
+  contentId: 'contentId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.CountryScalarFieldEnum = {
+  id: 'id',
+  code: 'code',
+  code3: 'code3',
+  contentId: 'contentId',
+  continentId: 'continentId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  type: 'type'
+};
+
+exports.Prisma.StateScalarFieldEnum = {
+  id: 'id',
+  countryId: 'countryId',
+  contentId: 'contentId',
+  code: 'code',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  type: 'type'
+};
+
 exports.Prisma.CityScalarFieldEnum = {
   id: 'id',
   countryId: 'countryId',
+  stateId: 'stateId',
   contentId: 'contentId',
   population: 'population',
   timezone: 'timezone',
@@ -127,19 +157,10 @@ exports.Prisma.CityScalarFieldEnum = {
   type: 'type'
 };
 
-exports.Prisma.CountryScalarFieldEnum = {
-  id: 'id',
-  code: 'code',
-  code3: 'code3',
-  contentId: 'contentId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  type: 'type'
-};
-
 exports.Prisma.PlaceScalarFieldEnum = {
   id: 'id',
   cityId: 'cityId',
+  stateId: 'stateId',
   countryId: 'countryId',
   contentId: 'contentId',
   type: 'type',
@@ -182,8 +203,10 @@ exports.Prisma.QueryMode = {
 
 
 exports.Prisma.ModelName = {
-  City: 'City',
+  Continent: 'Continent',
   Country: 'Country',
+  State: 'State',
+  City: 'City',
   Place: 'Place',
   TranslatableContent: 'TranslatableContent',
   TranslatedText: 'TranslatedText'

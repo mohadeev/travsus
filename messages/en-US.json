@@ -169,6 +169,9 @@
     "accountsettings_paymentmethods_page_Your_Coupons": "Your coupons",
     "accountsettings_paymentmethods_page_Your_Payments": "Your payments"
   },
+  "alc_crccn_sdl_lexdImgs": {
+    "alc_crccn_sdl_lexdImgs_Show_All_Photos": "Show all photos"
+  },
   "app_clientcomponents_Header_CurrencyDropdown": {
     "app_clientcomponents_Header_CurrencyDropdown_Banknotes_Icon_Classes": "w-5 h-5 opacity-80",
     "app_clientcomponents_Header_CurrencyDropdown_Currency_Icon_Classes": "w-[18px] h-[18px]",
@@ -274,9 +277,6 @@
   },
   "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_LineItemsBreakdown": {
     "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_LineItemsBreakdown_Grand_Total": "Grand Total"
-  },
-  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ListingExperiencesDetailsImages": {
-    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ListingExperiencesDetailsImages_Show_All_Photos": "Show all photos"
   },
   "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_RenderSidebar": {
     "Booking_Failed_Error": "Failed to create booking",
@@ -1720,6 +1720,10 @@
     "layout_Experienced_Guide": "Experienced Guide",
     "layout_Unknown_City": "Unknown City",
     "layout_Unknown_Country": "Unknown Country"
+  },
+  "ListingExperiencesDetailsImages": {
+    "more_photos": "more photos",
+    "show_all_photos": "Show all {count} photos"
   },
   "location_input": {
     "location_Description": "Where are you going?",

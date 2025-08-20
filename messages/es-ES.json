@@ -143,6 +143,9 @@
     "accountsettings_paymentmethods_page_Your_Coupons": "Sus cupones",
     "accountsettings_paymentmethods_page_Your_Payments": "Sus pagos"
   },
+  "alc_crccn_sdl_lexdImgs": {
+    "alc_crccn_sdl_lexdImgs_Show_All_Photos": "Mostrar todas las fotos"
+  },
   "app_clientcomponents_Header_CurrencyDropdown": {
     "app_clientcomponents_Header_CurrencyDropdown_Banknotes_Icon_Classes": "w-5 h-5 opacity-80",
     "app_clientcomponents_Header_CurrencyDropdown_Currency_Icon_Classes": "w-[18px] h-[18px]",
@@ -249,9 +252,6 @@
   },
   "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_LineItemsBreakdown": {
     "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_LineItemsBreakdown_Grand_Total": "Total General"
-  },
-  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ListingExperiencesDetailsImages": {
-    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ListingExperiencesDetailsImages_Show_All_Photos": "Mostrar todas las fotos"
   },
   "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_RenderSidebar": {
     "Booking_Failed_Error": "Error al crear la reserva",
@@ -1692,6 +1692,10 @@
     "layout_Experienced_Guide": "Guía Experimentado",
     "layout_Unknown_City": "Ciudad Desconocida",
     "layout_Unknown_Country": "País Desconocido"
+  },
+  "ListingExperiencesDetailsImages": {
+    "more_photos": "más fotos",
+    "show_all_photos": "Mostrar todas las {count} fotos"
   },
   "location_input": {
     "location_Description": "¿A dónde vas?",

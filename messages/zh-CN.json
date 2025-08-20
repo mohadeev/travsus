@@ -46,6 +46,9 @@
   "accountsettings_loginandsecurity_page": {
     "accountsettings_loginandsecurity_page_Guests": "旅行者"
   },
+  "alc_crccn_sdl_lexdImgs": {
+    "alc_crccn_sdl_lexdImgs_Show_All_Photos": "显示所有照片"
+  },
   "app_clientcomponents_Header_CurrencyDropdown": {
     "app_clientcomponents_Header_CurrencyDropdown_Banknotes_Icon_Classes": "w-5 h-5 opacity-80",
     "app_clientcomponents_Header_CurrencyDropdown_Currency_Icon_Classes": "w-[18px] h-[18px]",
@@ -152,9 +155,6 @@
   },
   "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_LineItemsBreakdown": {
     "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_LineItemsBreakdown_Grand_Total": "总计"
-  },
-  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ListingExperiencesDetailsImages": {
-    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ListingExperiencesDetailsImages_Show_All_Photos": "显示所有照片"
   },
   "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_RenderSidebar": {
     "Booking_Failed_Error": "创建预订失败",
@@ -1313,6 +1313,10 @@
     "layout_Experienced_Guide": "资深导游",
     "layout_Unknown_City": "未知城市",
     "layout_Unknown_Country": "未知国家"
+  },
+  "ListingExperiencesDetailsImages": {
+    "more_photos": "更多照片",
+    "show_all_photos": "显示所有 {count} 张照片"
   },
   "location_input": {
     "location_Description": "你要去哪里？",

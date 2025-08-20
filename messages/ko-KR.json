@@ -46,6 +46,9 @@
   "accountsettings_loginandsecurity_page": {
     "accountsettings_loginandsecurity_page_Guests": "여행자"
   },
+  "alc_crccn_sdl_lexdImgs": {
+    "alc_crccn_sdl_lexdImgs_Show_All_Photos": "모든 사진 보기"
+  },
   "app_clientcomponents_Header_CurrencyDropdown": {
     "app_clientcomponents_Header_CurrencyDropdown_Banknotes_Icon_Classes": "w-5 h-5 opacity-80",
     "app_clientcomponents_Header_CurrencyDropdown_Currency_Icon_Classes": "w-[18px] h-[18px]",
@@ -152,9 +155,6 @@
   },
   "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_LineItemsBreakdown": {
     "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_LineItemsBreakdown_Grand_Total": "총 합계"
-  },
-  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ListingExperiencesDetailsImages": {
-    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ListingExperiencesDetailsImages_Show_All_Photos": "모든 사진 보기"
   },
   "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_RenderSidebar": {
     "Booking_Failed_Error": "예약 생성에 실패했습니다",
@@ -1337,6 +1337,10 @@
     "layout_Experienced_Guide": "경험이 풍부한 가이드",
     "layout_Unknown_City": "알 수 없는 도시",
     "layout_Unknown_Country": "알 수 없는 국가"
+  },
+  "ListingExperiencesDetailsImages": {
+    "more_photos": "더 많은 사진",
+    "show_all_photos": "모든 {count}장의 사진 보기"
   },
   "location_input": {
     "location_Description": "어디로 가시나요?",

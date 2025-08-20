@@ -46,6 +46,9 @@
   "accountsettings_loginandsecurity_page": {
     "accountsettings_loginandsecurity_page_Guests": "viaggiatori"
   },
+  "alc_crccn_sdl_lexdImgs": {
+    "alc_crccn_sdl_lexdImgs_Show_All_Photos": "Mostra tutte le foto"
+  },
   "app_clientcomponents_Header_CurrencyDropdown": {
     "app_clientcomponents_Header_CurrencyDropdown_Banknotes_Icon_Classes": "w-5 h-5 opacity-80",
     "app_clientcomponents_Header_CurrencyDropdown_Currency_Icon_Classes": "w-[18px] h-[18px]",
@@ -152,9 +155,6 @@
   },
   "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_LineItemsBreakdown": {
     "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_LineItemsBreakdown_Grand_Total": "Totale Generale"
-  },
-  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ListingExperiencesDetailsImages": {
-    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ListingExperiencesDetailsImages_Show_All_Photos": "Mostra tutte le foto"
   },
   "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_RenderSidebar": {
     "Booking_Failed_Error": "Impossibile creare la prenotazione",
@@ -1377,6 +1377,10 @@
     "layout_Experienced_Guide": "Guida Esperta",
     "layout_Unknown_City": "Città Sconosciuta",
     "layout_Unknown_Country": "Paese Sconosciuto"
+  },
+  "ListingExperiencesDetailsImages": {
+    "more_photos": "altre foto",
+    "show_all_photos": "Mostra tutte le {count} foto"
   },
   "location_input": {
     "location_Description": "Dove stai andando?",

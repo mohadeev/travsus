@@ -1,62 +1,62 @@
 {
 	"en-US": {
-		"Jan03_MobileFooterSticky_m4k7": {
-			"Per_Person": "/ per person",
-			"Reserve": "Reserve"
+		"ListingExperiencesDetailsImages": {
+			"more_photos": "more photos",
+			"show_all_photos": "Show all {count} photos"
 		}
 	},
 	"es-ES": {
-		"Jan03_MobileFooterSticky_m4k7": {
-			"Per_Person": "/ por persona",
-			"Reserve": "Reservar"
+		"ListingExperiencesDetailsImages": {
+			"more_photos": "más fotos",
+			"show_all_photos": "Mostrar todas las {count} fotos"
 		}
 	},
 	"de-DE": {
-		"Jan03_MobileFooterSticky_m4k7": {
-			"Per_Person": "/ pro Person",
-			"Reserve": "Reservieren"
+		"ListingExperiencesDetailsImages": {
+			"more_photos": "weitere Fotos",
+			"show_all_photos": "Alle {count} Fotos anzeigen"
 		}
 	},
 	"fr-FR": {
-		"Jan03_MobileFooterSticky_m4k7": {
-			"Per_Person": "/ par personne",
-			"Reserve": "Réserver"
+		"ListingExperiencesDetailsImages": {
+			"more_photos": "plus de photos",
+			"show_all_photos": "Afficher toutes les {count} photos"
 		}
 	},
 	"ja-JP": {
-		"Jan03_MobileFooterSticky_m4k7": {
-			"Per_Person": "/ 1人あたり",
-			"Reserve": "予約する"
+		"ListingExperiencesDetailsImages": {
+			"more_photos": "さらに写真",
+			"show_all_photos": "すべての{count}枚の写真を表示"
 		}
 	},
 	"pt-PT": {
-		"Jan03_MobileFooterSticky_m4k7": {
-			"Per_Person": "/ por pessoa",
-			"Reserve": "Reservar"
+		"ListingExperiencesDetailsImages": {
+			"more_photos": "mais fotos",
+			"show_all_photos": "Mostrar todas as {count} fotos"
 		}
 	},
 	"it-IT": {
-		"Jan03_MobileFooterSticky_m4k7": {
-			"Per_Person": "/ a persona",
-			"Reserve": "Prenota"
+		"ListingExperiencesDetailsImages": {
+			"more_photos": "altre foto",
+			"show_all_photos": "Mostra tutte le {count} foto"
 		}
 	},
 	"ru-RU": {
-		"Jan03_MobileFooterSticky_m4k7": {
-			"Per_Person": "/ за человека",
-			"Reserve": "Забронировать"
+		"ListingExperiencesDetailsImages": {
+			"more_photos": "еще фото",
+			"show_all_photos": "Показать все {count} фото"
 		}
 	},
 	"zh-CN": {
-		"Jan03_MobileFooterSticky_m4k7": {
-			"Per_Person": "/ 每人",
-			"Reserve": "预订"
+		"ListingExperiencesDetailsImages": {
+			"more_photos": "更多照片",
+			"show_all_photos": "显示所有 {count} 张照片"
 		}
 	},
 	"ko-KR": {
-		"Jan03_MobileFooterSticky_m4k7": {
-			"Per_Person": "/ 1인당",
-			"Reserve": "예약하기"
+		"ListingExperiencesDetailsImages": {
+			"more_photos": "더 많은 사진",
+			"show_all_photos": "모든 {count}장의 사진 보기"
 		}
 	}
 }

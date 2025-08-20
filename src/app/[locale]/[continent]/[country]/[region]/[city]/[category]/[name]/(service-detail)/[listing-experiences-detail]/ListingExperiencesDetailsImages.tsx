@@ -20,9 +20,7 @@ const ListingExperiencesDetailsImages: FC<
 	const pathname = usePathname()
 	const [imageLoadErrors, setImageLoadErrors] = useState<Set<number>>(new Set())
 
-	const t = useTranslations(
-		'app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ListingExperiencesDetailsImages',
-	)
+	const t = useTranslations('ListingExperiencesDetailsImages')
 
 	const handleOpenModalImageGallery = (photoId: number) => {
 		const current = new URLSearchParams(Array.from(searchParams.entries()))
@@ -173,7 +171,9 @@ const ListingExperiencesDetailsImages: FC<
 														<span className="text-lg font-semibold">
 															+{totalPhotos - 4}
 														</span>
-														<p className="text-sm opacity-90">more photos</p>
+														<p className="text-sm opacity-90">
+															{t('more_photos')}
+														</p>
 													</div>
 												</div>
 											)}
@@ -190,7 +190,7 @@ const ListingExperiencesDetailsImages: FC<
 						>
 							<Squares2X2Icon className="h-5 w-5" />
 							<span className="text-sm font-semibold">
-								Show all {totalPhotos} photos
+								{t('show_all_photos', { count: totalPhotos })}
 							</span>
 						</button>
 
