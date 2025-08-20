@@ -1217,6 +1217,26 @@
     "header_CheckIn": "Einchecken",
     "header_Location": "Ort"
   },
+  "HomePageMetadata": {
+    "adventure_tours": "Abenteuertouren",
+    "best_travel_experiences": "beste Reiseerlebnisse",
+    "cultural_tours": "Kulturtouren",
+    "custom_travel_packages": "maßgeschneiderte Reiseangebote",
+    "description": "Buchen Sie exklusive geführte Touren mit Travsus. Entdecken Sie Top-Reiseziele mit erfahrenen Guides, nahtloser Planung und unvergesslichen Erlebnissen.",
+    "group_tours": "Gruppentouren",
+    "guided_tours": "geführte Touren",
+    "historical_tours": "historische Touren",
+    "nature_excursions": "Naturausflüge",
+    "openGraph_description": "Nehmen Sie an expertengeführten Touren für ein nahtloses und unvergessliches Reiseerlebnis teil. Entdecken Sie Kultur-, Abenteuer- und Sightseeing-Touren mit Travsus.",
+    "openGraph_image1_alt": "Travsus - Expertengeführte Touren",
+    "openGraph_image2_alt": "Travsus - Personalisierte Reiseerlebnisse",
+    "openGraph_title": "Travsus - Buchen Sie exklusive geführte Touren",
+    "private_tours": "private Touren",
+    "sightseeing_trips": "Stadtrundfahrten",
+    "structuredData_description": "Buchen Sie expertengeführte Touren und personalisierte Reiseerlebnisse mit Travsus. Erkunden Sie Top-Reiseziele mit Vertrauen.",
+    "title": "Travsus - Ihr ultimativer Reiseanbieter",
+    "vip_travel_experiences": "VIP-Reiseerlebnisse"
+  },
   "itsonthemove_page": {
     "itsonthemove_page_Holiday_Tours_Listings": "Urlaubsreisen-Listings",
     "itsonthemove_page_Our_Website_Has_Been_Reviewed": "Unsere Website wurde von itsonthemove.com geprüft und genehmigt -"

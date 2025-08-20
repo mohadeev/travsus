@@ -1147,6 +1147,26 @@
     "header_CheckIn": "Entrada",
     "header_Location": "Ubicación"
   },
+  "HomePageMetadata": {
+    "adventure_tours": "tours de aventura",
+    "best_travel_experiences": "mejores experiencias de viaje",
+    "cultural_tours": "tours culturales",
+    "custom_travel_packages": "paquetes de viaje personalizados",
+    "description": "Reserva tours guiados exclusivos con Travsus. Explora los mejores destinos con guías expertos, planificación perfecta y experiencias inolvidables.",
+    "group_tours": "tours grupales",
+    "guided_tours": "tours guiados",
+    "historical_tours": "tours históricos",
+    "nature_excursions": "excursiones naturales",
+    "openGraph_description": "Únete a tours dirigidos por expertos para una experiencia de viaje perfecta e inolvidable. Descubre tours culturales, de aventura y turísticos con Travsus.",
+    "openGraph_image1_alt": "Travsus - Tours Guiados por Expertos",
+    "openGraph_image2_alt": "Travsus - Experiencias de Viaje Personalizadas",
+    "openGraph_title": "Travsus - Reserva Tours Guiados Exclusivos",
+    "private_tours": "tours privados",
+    "sightseeing_trips": "recorridos turísticos",
+    "structuredData_description": "Reserva tours guiados por expertos y experiencias de viaje personalizadas con Travsus. Explora los mejores destinos con confianza.",
+    "title": "Travsus - Tu Proveedor de Tours Definitivo",
+    "vip_travel_experiences": "experiencias de viaje VIP"
+  },
   "itsonthemove_page": {
     "itsonthemove_page_Holiday_Tours_Listings": "Listado de Viajes de Vacaciones",
     "itsonthemove_page_Our_Website_Has_Been_Reviewed": "Nuestro sitio web ha sido revisado y aprobado por itsonthemove.com -"

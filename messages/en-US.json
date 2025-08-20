@@ -1175,6 +1175,26 @@
     "header_CheckIn": "Check In",
     "header_Location": "Location"
   },
+  "HomePageMetadata": {
+    "adventure_tours": "adventure tours",
+    "best_travel_experiences": "best travel experiences",
+    "cultural_tours": "cultural tours",
+    "custom_travel_packages": "custom travel packages",
+    "description": "Book exclusive guided tours with Travsus. Explore top destinations with expert guides, seamless planning, and unforgettable experiences.",
+    "group_tours": "group tours",
+    "guided_tours": "guided tours",
+    "historical_tours": "historical tours",
+    "nature_excursions": "nature excursions",
+    "openGraph_description": "Join expert-led tours for a seamless and unforgettable travel experience. Discover cultural, adventure, and sightseeing tours with Travsus.",
+    "openGraph_image1_alt": "Travsus - Expert Guided Tours",
+    "openGraph_image2_alt": "Travsus - Personalized Travel Experiences",
+    "openGraph_title": "Travsus - Book Exclusive Guided Tours",
+    "private_tours": "private tours",
+    "sightseeing_trips": "sightseeing trips",
+    "structuredData_description": "Book expertly guided tours and personalized travel experiences with Travsus. Explore top destinations with confidence.",
+    "title": "Travsus - Your Ultimate Tour Provider",
+    "vip_travel_experiences": "VIP travel experiences"
+  },
   "itsonthemove_page": {
     "itsonthemove_page_Holiday_Tours_Listings": "Holiday Tours Listings",
     "itsonthemove_page_Our_Website_Has_Been_Reviewed": "Our website has been reviewed and approved by itsonthemove.com -"

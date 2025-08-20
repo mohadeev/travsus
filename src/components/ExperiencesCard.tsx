@@ -33,6 +33,8 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 	ratioClass = 'aspect-w-3 aspect-h-3',
 }) => {
 	const t = useTranslations('components_ExperiencesCard')
+	const secondT = useTranslations('Jan03_TourHeader_x9k2')
+
 	const {
 		images: galleryImgs,
 		address,
@@ -85,7 +87,7 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 	}
 
 	const href =
-		`/${slugify(day.continent.name)}/${slugify(day.country.name)}/${slugify(day.province.name)}/${slugify(day.city.name)}/tours/${slugify(title)}/q=tour?serviceId=${serviceId}` as Route
+		`/${slugify(day.continent.name)}/${slugify(day.country.name)}/${slugify(day.province.name)}/${slugify(day.city.name)}/${slugify(secondT('things_to_do_slug'))}/${slugify(secondT('tours'))}/${slugify(title)}/q=tour?serviceId=${serviceId}` as Route
 
 	const renderSliderGallery = () => {
 		return (

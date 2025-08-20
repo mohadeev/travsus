@@ -772,6 +772,26 @@
     "header_CheckIn": "入住",
     "header_Location": "位置"
   },
+  "HomePageMetadata": {
+    "adventure_tours": "冒险之旅",
+    "best_travel_experiences": "最佳旅行体验",
+    "cultural_tours": "文化之旅",
+    "custom_travel_packages": "定制旅游套餐",
+    "description": "通过Travsus预订独家导游之旅。在专业导游的带领下探索顶级目的地，享受无缝规划和难忘体验。",
+    "group_tours": "团体旅游",
+    "guided_tours": "导游之旅",
+    "historical_tours": "历史之旅",
+    "nature_excursions": "自然远足",
+    "openGraph_description": "加入专家带领的旅游，享受无缝且难忘的旅行体验。通过Travsus发现文化、冒险和观光之旅。",
+    "openGraph_image1_alt": "Travsus - 专家导游之旅",
+    "openGraph_image2_alt": "Travsus - 个性化旅行体验",
+    "openGraph_title": "Travsus - 预订独家导游之旅",
+    "private_tours": "私人旅游",
+    "sightseeing_trips": "观光旅行",
+    "structuredData_description": "通过Travsus预订专家导游之旅和个性化旅行体验。自信地探索顶级目的地。",
+    "title": "Travsus - 您的终极旅游提供商",
+    "vip_travel_experiences": "VIP旅行体验"
+  },
   "Jan03_AccommodationTransport_p2k7": {
     "Hotel_Already_Booked": "我已经预订了酒店。"
   },

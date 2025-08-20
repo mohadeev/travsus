@@ -793,6 +793,26 @@
     "header_CheckIn": "チェックイン",
     "header_Location": "場所"
   },
+  "HomePageMetadata": {
+    "adventure_tours": "アドベンチャーツアー",
+    "best_travel_experiences": "最高の旅行体験",
+    "cultural_tours": "文化ツアー",
+    "custom_travel_packages": "カスタム旅行パッケージ",
+    "description": "Travsusで独占的なガイド付きツアーを予約。専門ガイドによる最高の目的地探索、シームレスな計画、忘れられない体験を提供します。",
+    "group_tours": "グループツアー",
+    "guided_tours": "ガイド付きツアー",
+    "historical_tours": "歴史ツアー",
+    "nature_excursions": "自然探検",
+    "openGraph_description": "専門家によるツアーに参加して、シームレスで忘れられない旅行体験を。Travsusで文化、アドベンチャー、観光ツアーを発見しましょう。",
+    "openGraph_image1_alt": "Travsus - 専門家によるガイド付きツアー",
+    "openGraph_image2_alt": "Travsus - パーソナライズされた旅行体験",
+    "openGraph_title": "Travsus - 独占的なガイド付きツアーを予約",
+    "private_tours": "プライベートツアー",
+    "sightseeing_trips": "観光旅行",
+    "structuredData_description": "Travsusで専門家によるガイド付きツアーとパーソナライズされた旅行体験を予約。自信を持って最高の目的地を探索できます。",
+    "title": "Travsus - 最高のツアープロバイダー",
+    "vip_travel_experiences": "VIP旅行体験"
+  },
   "Jan03_AccommodationTransport_p2k7": {
     "Hotel_Already_Booked": "ホテルは既に予約済みです。"
   },

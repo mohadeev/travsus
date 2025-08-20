@@ -836,6 +836,26 @@
     "header_CheckIn": "Check-in",
     "header_Location": "Posizione"
   },
+  "HomePageMetadata": {
+    "adventure_tours": "tour avventura",
+    "best_travel_experiences": "migliori esperienze di viaggio",
+    "cultural_tours": "tour culturali",
+    "custom_travel_packages": "pacchetti viaggio personalizzati",
+    "description": "Prenota tour guidati esclusivi con Travsus. Esplora le migliori destinazioni con guide esperte, pianificazione senza interruzioni e esperienze indimenticabili.",
+    "group_tours": "tour di gruppo",
+    "guided_tours": "tour guidati",
+    "historical_tours": "tour storici",
+    "nature_excursions": "escursioni naturalistiche",
+    "openGraph_description": "Unisciti a tour guidati da esperti per un'esperienza di viaggio senza interruzioni e indimenticabile. Scopri tour culturali, di avventura e turistici con Travsus.",
+    "openGraph_image1_alt": "Travsus - Tour Guidati da Esperti",
+    "openGraph_image2_alt": "Travsus - Esperienze di Viaggio Personalizzate",
+    "openGraph_title": "Travsus - Prenota Tour Guidati Esclusivi",
+    "private_tours": "tour privati",
+    "sightseeing_trips": "gite turistiche",
+    "structuredData_description": "Prenota tour guidati da esperti e esperienze di viaggio personalizzate con Travsus. Esplora le migliori destinazioni con fiducia.",
+    "title": "Travsus - Il tuo fornitore di tour definitivo",
+    "vip_travel_experiences": "esperienze di viaggio VIP"
+  },
   "Jan03_AccommodationTransport_p2k7": {
     "Hotel_Already_Booked": "Ho già prenotato il mio hotel."
   },

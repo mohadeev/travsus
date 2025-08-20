@@ -1,62 +1,222 @@
 {
 	"en-US": {
-		"ReadMore": {
-			"read_more": "Read more",
-			"read_less": "Read less"
+		"HomePageMetadata": {
+			"title": "Travsus - Your Ultimate Tour Provider",
+			"description": "Book exclusive guided tours with Travsus. Explore top destinations with expert guides, seamless planning, and unforgettable experiences.",
+			"guided_tours": "guided tours",
+			"best_travel_experiences": "best travel experiences",
+			"private_tours": "private tours",
+			"group_tours": "group tours",
+			"adventure_tours": "adventure tours",
+			"cultural_tours": "cultural tours",
+			"sightseeing_trips": "sightseeing trips",
+			"historical_tours": "historical tours",
+			"nature_excursions": "nature excursions",
+			"vip_travel_experiences": "VIP travel experiences",
+			"custom_travel_packages": "custom travel packages",
+			"openGraph_title": "Travsus - Book Exclusive Guided Tours",
+			"openGraph_description": "Join expert-led tours for a seamless and unforgettable travel experience. Discover cultural, adventure, and sightseeing tours with Travsus.",
+			"openGraph_image1_alt": "Travsus - Expert Guided Tours",
+			"openGraph_image2_alt": "Travsus - Personalized Travel Experiences",
+			"structuredData_description": "Book expertly guided tours and personalized travel experiences with Travsus. Explore top destinations with confidence."
 		}
 	},
 	"es-ES": {
-		"ReadMore": {
-			"read_more": "Leer más",
-			"read_less": "Leer menos"
+		"HomePageMetadata": {
+			"title": "Travsus - Tu Proveedor de Tours Definitivo",
+			"description": "Reserva tours guiados exclusivos con Travsus. Explora los mejores destinos con guías expertos, planificación perfecta y experiencias inolvidables.",
+			"guided_tours": "tours guiados",
+			"best_travel_experiences": "mejores experiencias de viaje",
+			"private_tours": "tours privados",
+			"group_tours": "tours grupales",
+			"adventure_tours": "tours de aventura",
+			"cultural_tours": "tours culturales",
+			"sightseeing_trips": "recorridos turísticos",
+			"historical_tours": "tours históricos",
+			"nature_excursions": "excursiones naturales",
+			"vip_travel_experiences": "experiencias de viaje VIP",
+			"custom_travel_packages": "paquetes de viaje personalizados",
+			"openGraph_title": "Travsus - Reserva Tours Guiados Exclusivos",
+			"openGraph_description": "Únete a tours dirigidos por expertos para una experiencia de viaje perfecta e inolvidable. Descubre tours culturales, de aventura y turísticos con Travsus.",
+			"openGraph_image1_alt": "Travsus - Tours Guiados por Expertos",
+			"openGraph_image2_alt": "Travsus - Experiencias de Viaje Personalizadas",
+			"structuredData_description": "Reserva tours guiados por expertos y experiencias de viaje personalizadas con Travsus. Explora los mejores destinos con confianza."
 		}
 	},
 	"de-DE": {
-		"ReadMore": {
-			"read_more": "Mehr lesen",
-			"read_less": "Weniger lesen"
+		"HomePageMetadata": {
+			"title": "Travsus - Ihr ultimativer Reiseanbieter",
+			"description": "Buchen Sie exklusive geführte Touren mit Travsus. Entdecken Sie Top-Reiseziele mit erfahrenen Guides, nahtloser Planung und unvergesslichen Erlebnissen.",
+			"guided_tours": "geführte Touren",
+			"best_travel_experiences": "beste Reiseerlebnisse",
+			"private_tours": "private Touren",
+			"group_tours": "Gruppentouren",
+			"adventure_tours": "Abenteuertouren",
+			"cultural_tours": "Kulturtouren",
+			"sightseeing_trips": "Stadtrundfahrten",
+			"historical_tours": "historische Touren",
+			"nature_excursions": "Naturausflüge",
+			"vip_travel_experiences": "VIP-Reiseerlebnisse",
+			"custom_travel_packages": "maßgeschneiderte Reiseangebote",
+			"openGraph_title": "Travsus - Buchen Sie exklusive geführte Touren",
+			"openGraph_description": "Nehmen Sie an expertengeführten Touren für ein nahtloses und unvergessliches Reiseerlebnis teil. Entdecken Sie Kultur-, Abenteuer- und Sightseeing-Touren mit Travsus.",
+			"openGraph_image1_alt": "Travsus - Expertengeführte Touren",
+			"openGraph_image2_alt": "Travsus - Personalisierte Reiseerlebnisse",
+			"structuredData_description": "Buchen Sie expertengeführte Touren und personalisierte Reiseerlebnisse mit Travsus. Erkunden Sie Top-Reiseziele mit Vertrauen."
 		}
 	},
 	"fr-FR": {
-		"ReadMore": {
-			"read_more": "Lire plus",
-			"read_less": "Lire moins"
+		"HomePageMetadata": {
+			"title": "Travsus - Votre prestataire de tours ultime",
+			"description": "Réservez des visites guidées exclusives avec Travsus. Explorez les meilleures destinations avec des guides experts, une planification fluide et des expériences inoubliables.",
+			"guided_tours": "visites guidées",
+			"best_travel_experiences": "meilleures expériences de voyage",
+			"private_tours": "visites privées",
+			"group_tours": "visites en groupe",
+			"adventure_tours": "tours d'aventure",
+			"cultural_tours": "visites culturelles",
+			"sightseeing_trips": "excursions touristiques",
+			"historical_tours": "visites historiques",
+			"nature_excursions": "excursions nature",
+			"vip_travel_experiences": "expériences de voyage VIP",
+			"custom_travel_packages": "forfaits voyage sur mesure",
+			"openGraph_title": "Travsus - Réservez des visites guidées exclusives",
+			"openGraph_description": "Rejoignez des visites dirigées par des experts pour une expérience de voyage fluide et inoubliable. Découvrez des visites culturelles, d'aventure et touristiques avec Travsus.",
+			"openGraph_image1_alt": "Travsus - Visites guidées par des experts",
+			"openGraph_image2_alt": "Travsus - Expériences de voyage personnalisées",
+			"structuredData_description": "Réservez des visites guidées par des experts et des expériences de voyage personnalisées avec Travsus. Explorez les meilleures destinations en toute confiance."
 		}
 	},
 	"ja-JP": {
-		"ReadMore": {
-			"read_more": "続きを読む",
-			"read_less": "折りたたむ"
+		"HomePageMetadata": {
+			"title": "Travsus - 最高のツアープロバイダー",
+			"description": "Travsusで独占的なガイド付きツアーを予約。専門ガイドによる最高の目的地探索、シームレスな計画、忘れられない体験を提供します。",
+			"guided_tours": "ガイド付きツアー",
+			"best_travel_experiences": "最高の旅行体験",
+			"private_tours": "プライベートツアー",
+			"group_tours": "グループツアー",
+			"adventure_tours": "アドベンチャーツアー",
+			"cultural_tours": "文化ツアー",
+			"sightseeing_trips": "観光旅行",
+			"historical_tours": "歴史ツアー",
+			"nature_excursions": "自然探検",
+			"vip_travel_experiences": "VIP旅行体験",
+			"custom_travel_packages": "カスタム旅行パッケージ",
+			"openGraph_title": "Travsus - 独占的なガイド付きツアーを予約",
+			"openGraph_description": "専門家によるツアーに参加して、シームレスで忘れられない旅行体験を。Travsusで文化、アドベンチャー、観光ツアーを発見しましょう。",
+			"openGraph_image1_alt": "Travsus - 専門家によるガイド付きツアー",
+			"openGraph_image2_alt": "Travsus - パーソナライズされた旅行体験",
+			"structuredData_description": "Travsusで専門家によるガイド付きツアーとパーソナライズされた旅行体験を予約。自信を持って最高の目的地を探索できます。"
 		}
 	},
 	"pt-PT": {
-		"ReadMore": {
-			"read_more": "Ler mais",
-			"read_less": "Ler menos"
+		"HomePageMetadata": {
+			"title": "Travsus - Seu Provedor de Tours Definitivo",
+			"description": "Reserve tours guiados exclusivos com Travsus. Explore os melhores destinos com guias especializados, planejamento perfeito e experiências inesquecíveis.",
+			"guided_tours": "tours guiados",
+			"best_travel_experiences": "melhores experiências de viagem",
+			"private_tours": "tours privados",
+			"group_tours": "tours em grupo",
+			"adventure_tours": "tours de aventura",
+			"cultural_tours": "tours culturais",
+			"sightseeing_trips": "passeios turísticos",
+			"historical_tours": "tours históricos",
+			"nature_excursions": "excursões naturais",
+			"vip_travel_experiences": "experiências de viagem VIP",
+			"custom_travel_packages": "pacotes de viagem personalizados",
+			"openGraph_title": "Travsus - Reserve Tours Guiados Exclusivos",
+			"openGraph_description": "Junte-se a tours liderados por especialistas para uma experiência de viagem perfeita e inesquecível. Descubra tours culturais, de aventura e turísticos com Travsus.",
+			"openGraph_image1_alt": "Travsus - Tours Guiados por Especialistas",
+			"openGraph_image2_alt": "Travsus - Experiências de Viagem Personalizadas",
+			"structuredData_description": "Reserve tours guiados por especialistas e experiências de viagem personalizadas com Travsus. Explore os melhores destinos com confiança."
 		}
 	},
 	"it-IT": {
-		"ReadMore": {
-			"read_more": "Leggi di più",
-			"read_less": "Leggi meno"
+		"HomePageMetadata": {
+			"title": "Travsus - Il tuo fornitore di tour definitivo",
+			"description": "Prenota tour guidati esclusivi con Travsus. Esplora le migliori destinazioni con guide esperte, pianificazione senza interruzioni e esperienze indimenticabili.",
+			"guided_tours": "tour guidati",
+			"best_travel_experiences": "migliori esperienze di viaggio",
+			"private_tours": "tour privati",
+			"group_tours": "tour di gruppo",
+			"adventure_tours": "tour avventura",
+			"cultural_tours": "tour culturali",
+			"sightseeing_trips": "gite turistiche",
+			"historical_tours": "tour storici",
+			"nature_excursions": "escursioni naturalistiche",
+			"vip_travel_experiences": "esperienze di viaggio VIP",
+			"custom_travel_packages": "pacchetti viaggio personalizzati",
+			"openGraph_title": "Travsus - Prenota Tour Guidati Esclusivi",
+			"openGraph_description": "Unisciti a tour guidati da esperti per un'esperienza di viaggio senza interruzioni e indimenticabile. Scopri tour culturali, di avventura e turistici con Travsus.",
+			"openGraph_image1_alt": "Travsus - Tour Guidati da Esperti",
+			"openGraph_image2_alt": "Travsus - Esperienze di Viaggio Personalizzate",
+			"structuredData_description": "Prenota tour guidati da esperti e esperienze di viaggio personalizzate con Travsus. Esplora le migliori destinazioni con fiducia."
 		}
 	},
 	"ru-RU": {
-		"ReadMore": {
-			"read_more": "Читать далее",
-			"read_less": "Свернуть"
+		"HomePageMetadata": {
+			"title": "Travsus - Ваш лучший туроператор",
+			"description": "Бронируйте эксклюзивные экскурсии с Travsus. Исследуйте лучшие направления с опытными гидами, бесшовным планированием и незабываемыми впечатлениями.",
+			"guided_tours": "экскурсии с гидом",
+			"best_travel_experiences": "лучшие туристические впечатления",
+			"private_tours": "частные туры",
+			"group_tours": "групповые туры",
+			"adventure_tours": "приключенческие туры",
+			"cultural_tours": "культурные туры",
+			"sightseeing_trips": "обзорные экскурсии",
+			"historical_tours": "исторические туры",
+			"nature_excursions": "природные экскурсии",
+			"vip_travel_experiences": "VIP туристические впечатления",
+			"custom_travel_packages": "индивидуальные туристические пакеты",
+			"openGraph_title": "Travsus - Бронируйте эксклюзивные экскурсии",
+			"openGraph_description": "Присоединяйтесь к турам под руководством экспертов для бесшовного и незабываемого путешествия. Откройте для себя культурные, приключенческие и обзорные туры с Travsus.",
+			"openGraph_image1_alt": "Travsus - Экскурсии с экспертами",
+			"openGraph_image2_alt": "Travsus - Персонализированные туристические впечатления",
+			"structuredData_description": "Бронируйте экскурсии под руководством экспертов и персонализированные туристические впечатления с Travsus. Исследуйте лучшие направления с уверенностью."
 		}
 	},
 	"zh-CN": {
-		"ReadMore": {
-			"read_more": "阅读更多",
-			"read_less": "收起"
+		"HomePageMetadata": {
+			"title": "Travsus - 您的终极旅游提供商",
+			"description": "通过Travsus预订独家导游之旅。在专业导游的带领下探索顶级目的地，享受无缝规划和难忘体验。",
+			"guided_tours": "导游之旅",
+			"best_travel_experiences": "最佳旅行体验",
+			"private_tours": "私人旅游",
+			"group_tours": "团体旅游",
+			"adventure_tours": "冒险之旅",
+			"cultural_tours": "文化之旅",
+			"sightseeing_trips": "观光旅行",
+			"historical_tours": "历史之旅",
+			"nature_excursions": "自然远足",
+			"vip_travel_experiences": "VIP旅行体验",
+			"custom_travel_packages": "定制旅游套餐",
+			"openGraph_title": "Travsus - 预订独家导游之旅",
+			"openGraph_description": "加入专家带领的旅游，享受无缝且难忘的旅行体验。通过Travsus发现文化、冒险和观光之旅。",
+			"openGraph_image1_alt": "Travsus - 专家导游之旅",
+			"openGraph_image2_alt": "Travsus - 个性化旅行体验",
+			"structuredData_description": "通过Travsus预订专家导游之旅和个性化旅行体验。自信地探索顶级目的地。"
 		}
 	},
 	"ko-KR": {
-		"ReadMore": {
-			"read_more": "더보기",
-			"read_less": "접기"
+		"HomePageMetadata": {
+			"title": "Travsus - 최고의 투어 제공자",
+			"description": "Travsus로 독점 가이드 투어를 예약하세요. 전문 가이드와 함께 최고의 목적지를 탐험하고, 원활한 계획과 잊을 수 없는 경험을 즐기세요.",
+			"guided_tours": "가이드 투어",
+			"best_travel_experiences": "최고의 여행 경험",
+			"private_tours": "프라이빗 투어",
+			"group_tours": "그룹 투어",
+			"adventure_tours": "어드벤처 투어",
+			"cultural_tours": "문화 투어",
+			"sightseeing_trips": "관광 여행",
+			"historical_tours": "역사 투어",
+			"nature_excursions": "자연 탐험",
+			"vip_travel_experiences": "VIP 여행 경험",
+			"custom_travel_packages": "맞춤형 여행 패키지",
+			"openGraph_title": "Travsus - 독점 가이드 투어 예약",
+			"openGraph_description": "전문가 주도 투어에 참여하여 원활하고 잊을 수 없는 여행 경험을 즐기세요. Travsus로 문화, 어드벤처, 관광 투어를 발견하세요.",
+			"openGraph_image1_alt": "Travsus - 전문가 가이드 투어",
+			"openGraph_image2_alt": "Travsus - 맞춤형 여행 경험",
+			"structuredData_description": "Travsus로 전문가 가이드 투어와 맞춤형 여행 경험을 예약하세요. 자신 있게 최고의 목적지를 탐험할 수 있습니다."
 		}
 	}
 }

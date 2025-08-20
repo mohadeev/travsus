@@ -796,6 +796,26 @@
     "header_CheckIn": "체크인",
     "header_Location": "위치"
   },
+  "HomePageMetadata": {
+    "adventure_tours": "어드벤처 투어",
+    "best_travel_experiences": "최고의 여행 경험",
+    "cultural_tours": "문화 투어",
+    "custom_travel_packages": "맞춤형 여행 패키지",
+    "description": "Travsus로 독점 가이드 투어를 예약하세요. 전문 가이드와 함께 최고의 목적지를 탐험하고, 원활한 계획과 잊을 수 없는 경험을 즐기세요.",
+    "group_tours": "그룹 투어",
+    "guided_tours": "가이드 투어",
+    "historical_tours": "역사 투어",
+    "nature_excursions": "자연 탐험",
+    "openGraph_description": "전문가 주도 투어에 참여하여 원활하고 잊을 수 없는 여행 경험을 즐기세요. Travsus로 문화, 어드벤처, 관광 투어를 발견하세요.",
+    "openGraph_image1_alt": "Travsus - 전문가 가이드 투어",
+    "openGraph_image2_alt": "Travsus - 맞춤형 여행 경험",
+    "openGraph_title": "Travsus - 독점 가이드 투어 예약",
+    "private_tours": "프라이빗 투어",
+    "sightseeing_trips": "관광 여행",
+    "structuredData_description": "Travsus로 전문가 가이드 투어와 맞춤형 여행 경험을 예약하세요. 자신 있게 최고의 목적지를 탐험할 수 있습니다.",
+    "title": "Travsus - 최고의 투어 제공자",
+    "vip_travel_experiences": "VIP 여행 경험"
+  },
   "Jan03_AccommodationTransport_p2k7": {
     "Hotel_Already_Booked": "이미 호텔을 예약했습니다."
   },

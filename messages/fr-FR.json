@@ -1215,6 +1215,26 @@
     "header_CheckIn": "Arrivée",
     "header_Location": "Emplacement"
   },
+  "HomePageMetadata": {
+    "adventure_tours": "tours d'aventure",
+    "best_travel_experiences": "meilleures expériences de voyage",
+    "cultural_tours": "visites culturelles",
+    "custom_travel_packages": "forfaits voyage sur mesure",
+    "description": "Réservez des visites guidées exclusives avec Travsus. Explorez les meilleures destinations avec des guides experts, une planification fluide et des expériences inoubliables.",
+    "group_tours": "visites en groupe",
+    "guided_tours": "visites guidées",
+    "historical_tours": "visites historiques",
+    "nature_excursions": "excursions nature",
+    "openGraph_description": "Rejoignez des visites dirigées par des experts pour une expérience de voyage fluide et inoubliable. Découvrez des visites culturelles, d'aventure et touristiques avec Travsus.",
+    "openGraph_image1_alt": "Travsus - Visites guidées par des experts",
+    "openGraph_image2_alt": "Travsus - Expériences de voyage personnalisées",
+    "openGraph_title": "Travsus - Réservez des visites guidées exclusives",
+    "private_tours": "visites privées",
+    "sightseeing_trips": "excursions touristiques",
+    "structuredData_description": "Réservez des visites guidées par des experts et des expériences de voyage personnalisées avec Travsus. Explorez les meilleures destinations en toute confiance.",
+    "title": "Travsus - Votre prestataire de tours ultime",
+    "vip_travel_experiences": "expériences de voyage VIP"
+  },
   "itsonthemove_page": {
     "itsonthemove_page_Holiday_Tours_Listings": "Listes de circuits touristiques",
     "itsonthemove_page_Our_Website_Has_Been_Reviewed": "Notre site web a été examiné et approuvé par itsonthemove.com -"
