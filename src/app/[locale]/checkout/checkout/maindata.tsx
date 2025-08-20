@@ -26,11 +26,11 @@ import {
 	updateBookingState,
 	updateLineItemsAsync,
 } from '@/app/GlobalRedux/Features/bookingSlice/bookingSlice'
-// import RowBedAccommodationSelector from '../../[continent]/[country]/[region]/[city]/[category]/[name]/(service-detail)/[listing-experiences-detail]/RowBedAccommodationSelector/RowBedAccommodationSelector'
-import GuestsInput from '../../[continent]/[country]/[region]/[city]/[category]/[name]/(service-detail)/[listing-experiences-detail]/RowBedAccommodationSelector/GuestsInput'
-import AcommodationAndTransport from '../../[continent]/[country]/[region]/[city]/[category]/[name]/(service-detail)/[listing-experiences-detail]/RowBedAccommodationSelector/listing-components/AcommodationAndTransport'
-import LineItemsBreakdown from '../../[continent]/[country]/[region]/[city]/[category]/[name]/(service-detail)/[listing-experiences-detail]/RowBedAccommodationSelector/LineItemsBreakdown'
-import RowBedAccommodationSelector from '../../[continent]/[country]/[region]/[city]/[category]/[name]/(service-detail)/[listing-experiences-detail]/RowBedAccommodationSelector'
+// import RowBedAccommodationSelector from '../../[continent]/[country]/[region]/[city]/[things-to-do]/[category]/[name]/(service-detail)/[listing-experiences-detail]/RowBedAccommodationSelector/RowBedAccommodationSelector'
+import GuestsInput from '../../[continent]/[country]/[region]/[city]/[things-to-do]/[category]/[name]/(service-detail)/[listing-experiences-detail]/RowBedAccommodationSelector/GuestsInput'
+import AcommodationAndTransport from '../../[continent]/[country]/[region]/[city]/[things-to-do]/[category]/[name]/(service-detail)/[listing-experiences-detail]/RowBedAccommodationSelector/listing-components/AcommodationAndTransport'
+import LineItemsBreakdown from '../../[continent]/[country]/[region]/[city]/[things-to-do]/[category]/[name]/(service-detail)/[listing-experiences-detail]/RowBedAccommodationSelector/LineItemsBreakdown'
+import RowBedAccommodationSelector from '../../[continent]/[country]/[region]/[city]/[things-to-do]/[category]/[name]/(service-detail)/[listing-experiences-detail]/RowBedAccommodationSelector'
 
 export interface CheckOutPagePageMainProps {
 	className?: string
