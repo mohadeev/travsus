@@ -219,6 +219,8 @@ model User {
   active          Boolean   @default(true)
   deactivatedAt   DateTime?
   deactivationReason String?
+    reviews          Review[]        // Add this line to the Tour model
+
   @@map("users")
 
 }
@@ -276,7 +278,7 @@ model Tour {
   discount       String?
   start          Json?
   end            Json?
-  reviews        Json[]
+  reviews        Review[]        // Add this line to the Tour model
   lang           String?
   tourfor        String?
   updated        Boolean   @default(false)
@@ -311,10 +313,44 @@ model Tour {
   @@map("tours")
 }
 
+model Review {
+  id                String              @id @default(auto()) @map("_id") @db.ObjectId
+  tourId            String              @db.ObjectId
+  userId            String              @db.ObjectId // Reference to User
+  user              User                @relation(fields: [userId], references: [id])
+  
+  // Rating information
+  rating            Int                 // 1-5 stars
+  title             String?
+  content           String?
+  
+  // Translation support
+  titleContentId    String?             @db.ObjectId
+  titleContent      TranslatableContent? @relation("ReviewTitleContent", fields: [titleContentId], references: [id])
+  contentContentId  String?             @db.ObjectId
+  contentContent    TranslatableContent? @relation("ReviewContentContent", fields: [contentContentId], references: [id])
+  
+  // Travel details
+  travelDate        String?             // e.g., "January 2024"
+  travelType        String?             // e.g., "Business", "Family", etc.
+  
+  // Images
+  images            String[]            // Array of image URLs
+  
+  // Metadata
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+  isVerified        Boolean             @default(false)
+  tour              Tour                @relation(fields: [tourId], references: [id], onDelete: Cascade)
+  @@map("reviews")
+  @@index([userId])
+}
+
+
 model TranslatableContent {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
-  contentType String   // e.g., 'tour_name', 'tour_subtitle', 'tour_overview', 'day_name', etc.
-  entityId    String   // ID of the entity (tour ID, day index, etc.) this content belongs to
+  contentType String   // e.g., 'tour_name', 'tour_subtitle', 'tour_overview', 'review_title', 'review_content'
+  entityId    String   // ID of the entity (tour ID, review ID, etc.) this content belongs to
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   
@@ -326,6 +362,10 @@ model TranslatableContent {
   tourSubtitles   Tour[] @relation("TourSubtitleContent")
   tourOverviews   Tour[] @relation("TourOverviewContent")
   tourConclusions Tour[] @relation("TourConclusionContent")
+  
+  // Add relations to reviews
+  reviewTitles   Review[] @relation("ReviewTitleContent")
+  reviewContents Review[] @relation("ReviewContentContent")
   
   @@map("translatable_contents")
 }

@@ -2,7 +2,6 @@ import { type NextRequest, NextResponse } from 'next/server'
 import { PrismaClient } from '@prisma/client'
 import { getServerSession } from 'next-auth/next'
 import authOptions from '../auth/[...nextauth]/authOptions'
-// import { authOptions } from '@/app/api/auth/[...nextauth]/route'
 
 const prisma = new PrismaClient()
 
@@ -25,7 +24,7 @@ export async function POST(req: NextRequest) {
 
 		// Parse form data
 		const formData = await req.formData()
-		const serviceId = formData.get('serviceId') as string
+		const tourId = formData.get('serviceId') as string
 		const rating = Number.parseInt(formData.get('rating') as string)
 		const travelDate = formData.get('travelDate') as string
 		const travelType = formData.get('travelType') as string
@@ -35,7 +34,7 @@ export async function POST(req: NextRequest) {
 
 		// Validate required fields
 		if (
-			!serviceId ||
+			!tourId ||
 			!rating ||
 			!travelDate ||
 			!travelType ||
@@ -51,7 +50,7 @@ export async function POST(req: NextRequest) {
 
 		// Find the tour
 		const tour = await prisma.tour.findUnique({
-			where: { id: serviceId },
+			where: { id: tourId },
 		})
 
 		if (!tour) {
@@ -94,33 +93,80 @@ export async function POST(req: NextRequest) {
 			}
 		}
 
-		// Create the review
-		const newReview = {
-			id: Math.random().toString(36).substring(2, 15),
-			userId: user.id,
-			userName: user.name || user.username || user.email,
-			userImage: user.profileImage ? (user.profileImage as any).url : null,
-			rating,
-			title: reviewTitle,
-			content: reviewText,
-			travelDate,
-			travelType,
-			images: imageUrls,
-			createdAt: new Date().toISOString(),
-		}
-
-		// Update the tour with the new review
-		// Note: This assumes your Tour model has a reviews field that is a JSON array
-		const updatedTour = await prisma.tour.update({
-			where: { id: serviceId },
+		// Create translatable content for title and content
+		const titleContent = await prisma.translatableContent.create({
 			data: {
-				reviews: {
-					push: newReview,
+				contentType: 'review_title',
+				entityId: tourId,
+				translations: {
+					create: {
+						languageCode: 'en-US', // Default language
+						text: reviewTitle,
+					},
 				},
 			},
 		})
 
-		return NextResponse.json({ success: true, review: newReview })
+		const contentContent = await prisma.translatableContent.create({
+			data: {
+				contentType: 'review_content',
+				entityId: tourId,
+				translations: {
+					create: {
+						languageCode: 'en-US', // Default language
+						text: reviewText,
+					},
+				},
+			},
+		})
+
+		// Create the review using the new Review model
+		const review = await prisma.review.create({
+			data: {
+				tourId,
+				userId: user.id,
+				rating,
+				travelDate,
+				travelType,
+				title: reviewTitle, // Keep original for fallback
+				content: reviewText, // Keep original for fallback
+				titleContentId: titleContent.id,
+				contentContentId: contentContent.id,
+				images: imageUrls,
+				isVerified: isAgreed,
+			},
+			include: {
+				user: {
+					select: {
+						id: true,
+						name: true,
+						username: true,
+						email: true,
+						profileImage: true,
+					},
+				},
+			},
+		})
+
+		// Format the response to match your frontend expectations
+		const formattedReview = {
+			id: review.id,
+			userId: review.userId,
+			userName: review.user.name || review.user.username || review.user.email,
+			userImage: review.user.profileImage
+				? (review.user.profileImage as any).url
+				: null,
+			rating: review.rating,
+			title: review.title,
+			content: review.content,
+			travelDate: review.travelDate,
+			travelType: review.travelType,
+			images: review.images,
+			createdAt: review.createdAt.toISOString(),
+			updatedAt: review.updatedAt.toISOString(),
+		}
+
+		return NextResponse.json({ success: true, review: formattedReview })
 	} catch (error) {
 		console.error('Error creating review:', error)
 		return NextResponse.json(
@@ -135,26 +181,108 @@ export async function POST(req: NextRequest) {
 export async function GET(req: NextRequest) {
 	try {
 		const url = new URL(req.url)
-		const serviceId = url.searchParams.get('serviceId')
+		const tourId = url.searchParams.get('serviceId')
+		const includeUser = true
+		const languageCode = url.searchParams.get('language') || 'en-US'
 
-		if (!serviceId) {
+		if (!tourId) {
 			return NextResponse.json(
-				{ error: 'Service ID is required' },
+				{ error: 'Tour ID is required' },
 				{ status: 400 },
 			)
 		}
 
-		const tour = await prisma.tour.findUnique({
-			where: { id: serviceId },
-			select: { reviews: true },
+		// Check if tour exists
+		const tourExists = await prisma.tour.findUnique({
+			where: { id: tourId },
+			select: { id: true },
 		})
 
-		if (!tour) {
+		if (!tourExists) {
 			return NextResponse.json({ error: 'Tour not found' }, { status: 404 })
 		}
-		
 
-		return NextResponse.json({ reviews: tour.reviews })
+		// Fetch reviews with optional user data and translations
+		const reviews = await prisma.review.findMany({
+			where: { tourId },
+			include: {
+				user: includeUser
+					? {
+							select: {
+								accountData: true,
+								id: true,
+								name: true,
+								username: true,
+								email: true,
+								profileImage: true,
+							},
+						}
+					: false,
+				titleContent: includeUser
+					? {
+							include: {
+								translations: {
+									where: {
+										languageCode: languageCode,
+									},
+								},
+							},
+						}
+					: false,
+				contentContent: includeUser
+					? {
+							include: {
+								translations: {
+									where: {
+										languageCode: languageCode,
+									},
+								},
+							},
+						}
+					: false,
+			},
+			orderBy: { createdAt: 'desc' },
+		})
+
+		// Format reviews to match your frontend expectations
+		const formattedReviews = reviews.map((review) => {
+			// Use translated content if available, otherwise fall back to original
+			const title = review.titleContent?.translations[0]?.text || review.title
+			const content =
+				review.contentContent?.translations[0]?.text || review.content
+
+			return {
+				id: review.id,
+				userId: review.userId,
+				userName: review.user?.accountData?.firstname
+					? review.user.name || review.user.username || review.user.email
+					: 'Anonymous',
+				userImage:
+					review.user && review.user.profileImage
+						? (review.user.profileImage as any).url
+						: null,
+				rating: review.rating,
+				title,
+				content,
+				travelDate: review.travelDate,
+				travelType: review.travelType,
+				images: review.images,
+				createdAt: review.createdAt.toISOString(),
+				updatedAt: review.updatedAt.toISOString(),
+				author: review.user
+					? {
+							name: review.user?.accountData?.firstname,
+							image: review.user.profileImage
+								? (review.user.profileImage as any).url
+								: null,
+							location: '', // You might want to add location to your User model
+							contributions: 0, // You might want to calculate this
+						}
+					: undefined,
+			}
+		})
+
+		return NextResponse.json({ reviews: formattedReviews })
 	} catch (error) {
 		console.error('Error fetching reviews:', error)
 		return NextResponse.json(
