@@ -1,11 +1,12 @@
 'use client'
 
-import { type FC, useEffect } from 'react'
+import { type FC, Suspense, useEffect } from 'react'
 import Avatar from '@/shared/Avatar'
 import ButtonSecondary from '@/shared/ButtonSecondary'
 import { usePathname } from 'next/navigation'
 import StartRating from '@/components/StartRating'
 import { useDispatch, useSelector } from 'react-redux'
+
 import {
 	setPricePerSeat,
 	setSelectedDate,
@@ -22,12 +23,16 @@ import TourHeader from './TourHeader'
 import ReadMore from '@/app/(client-components)/ReadeMore'
 import { useTranslations } from '@/lib/i18n'
 import ItemsCardList from '@/components/ItemsCardList'
+import ListingImageGallery from '@/components/listing-image-gallery/ListingImageGallery'
+import MobileFooterSticky from '../(components)/MobileFooterSticky'
+import { imageGallery } from './constant'
+import { updateServiceState } from '@/app/GlobalRedux/Features/creatingServiceSlice/creatingServiceSlice'
 
 const MapComponent = dynamic(() => import('./tour-map'), {
 	ssr: false,
 })
 
-export type ListingExperiencesDetailPageProps = {}
+export type ListingExperiencesDetailPageProps = { serviceData: any }
 
 interface Address {
 	streetAddress?: string
@@ -38,11 +43,19 @@ interface Address {
 	country?: string
 }
 
-const ListingExperiencesDetailPage: FC<
-	ListingExperiencesDetailPageProps
-> = ({}) => {
+const ListingExperiencesDetailPage: FC<ListingExperiencesDetailPageProps> = ({
+	serviceData,
+}) => {
 	const t = useTranslations('servicedetail_listingexperiencesdetail_page')
-
+	console.log('serviceData', serviceData)
+	useEffect(() => {
+		;(async () => {
+			try {
+				// Update global state
+				dispatch(updateServiceState({ path: 'service', value: serviceData }))
+			} catch (error: any) {}
+		})()
+	}, [serviceData?.id])
 	const thisPathname = usePathname()
 	const dispatch = useDispatch()
 
@@ -230,6 +243,9 @@ const ListingExperiencesDetailPage: FC<
 
 	return (
 		<>
+			{/* <Suspense>
+				<ListingImageGallery images={imageGallery} />
+			</Suspense> */}
 			<div className={'container'}>
 				<TourHeader />
 			</div>
@@ -269,6 +285,7 @@ const ListingExperiencesDetailPage: FC<
 					layout="row"
 				/>
 			</div>
+			<MobileFooterSticky />
 		</>
 	)
 }

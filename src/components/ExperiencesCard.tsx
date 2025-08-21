@@ -52,7 +52,6 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 		days,
 	}: any = data
 	const [priceData, setPriceData] = useState({})
-	console.log('data: ', data)
 	const day = days[0]
 
 	useEffect(() => {
@@ -87,7 +86,7 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 	}
 
 	const href =
-		`/${slugify(day.continent.name)}/${slugify(day.country.name)}/${slugify(day.province.name)}/${slugify(day.city.name)}/${slugify(secondT('things_to_do_slug'))}/${slugify(secondT('tours'))}/${slugify(title)}/q=tour?serviceId=${serviceId}` as Route
+		`/${slugify(day.continent.name)}/${slugify(day.country.name)}/${slugify(day.province.name)}/${slugify(day.city.name)}/${slugify(secondT('things_to_do_slug'))}/${slugify(secondT('tours'))}/${slugify(title)}/${serviceId}/q=tour` as Route
 
 	const renderSliderGallery = () => {
 		return (

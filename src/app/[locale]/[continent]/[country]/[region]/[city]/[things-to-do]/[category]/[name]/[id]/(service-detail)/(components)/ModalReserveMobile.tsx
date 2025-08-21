@@ -35,7 +35,7 @@ const ModalReserveMobile: FC<ModalReserveMobileProps> = ({
 			<Transition appear show={showModal} as={Fragment}>
 				<Dialog
 					as="div"
-					className="HeroSearchFormMobile__Dialog relative z-50"
+					className="HeroSearchFormMobile__Dialog z-999992 relative"
 					onClose={closeModal}
 				>
 					<div className="fixed inset-0 bg-neutral-100 dark:bg-neutral-900">

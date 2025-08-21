@@ -227,7 +227,7 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
 					return firstImage.url
 				}
 			}
-			return '/placeholder.svg?height=300&width=300'
+			return ''
 		}
 
 		return (
@@ -282,18 +282,20 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
 		<div id="experience_reviews" className="mb-10 mt-10 w-full">
 			{/* Reviews Section */}
 			<div className="">
-				<div className="mb-4 flex items-center justify-between">
-					<h2 className="text-2xl font-semibold">
-						{t('Reviews')} ({reviews.length})
-					</h2>
-					{reviews.length >= 1 ? (
-						<ButtonPrimary onClick={() => setShowReviewForm(!showReviewForm)}>
-							{t('Write_Review')}
-						</ButtonPrimary>
-					) : (
-						''
-					)}
-				</div>
+				{!isLoading && (
+					<div className="mb-4 flex items-center justify-between">
+						<h2 className="text-2xl font-semibold">
+							{t('Reviews')} ({reviews.length})
+						</h2>
+						{reviews.length >= 1 ? (
+							<ButtonPrimary onClick={() => setShowReviewForm(!showReviewForm)}>
+								{t('Write_Review')}
+							</ButtonPrimary>
+						) : (
+							''
+						)}
+					</div>
+				)}
 
 				{/* Review Form */}
 				{showReviewForm && (

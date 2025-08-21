@@ -29,7 +29,6 @@ export default function DefaultLayout({
 			}
 
 			const data = await response.json()
-			console.log('data: ', data)
 			dispatch(businessSliceState({ path: 'company', value: data }))
 
 			// setCompanyData(data) // Save the company data in state

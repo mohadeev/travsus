@@ -49,7 +49,7 @@ const MobileFooterSticky = () => {
 	return (
 		<>
 			{totalAmount ? (
-				<div className="dark:border-neutral-6000 fixed inset-x-0 bottom-0 z-40 block border-t border-neutral-200 bg-white py-2 dark:bg-neutral-800 sm:py-3 lg:hidden">
+				<div className="dark:border-neutral-6000 fixed inset-x-0 bottom-0 z-999991 block border-t border-neutral-200 bg-white py-2 dark:bg-neutral-800 sm:py-3 lg:hidden">
 					<ModalReserveMobile
 						renderChildren={({ openModal }) => (
 							<div className="container flex items-center justify-between">

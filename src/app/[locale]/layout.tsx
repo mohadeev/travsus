@@ -22,7 +22,6 @@ export default async function RootLayout({
 	const messages = await getMessages()
 
 	const isLocalhost = process.env.NODE_ENV === 'development'
-	console.log('logoImg', logoImg)
 	return (
 		<html lang={locale}>
 			<head>
