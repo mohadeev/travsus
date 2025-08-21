@@ -322,12 +322,12 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
 													onClick={() => handleRatingChange(circle)}
 													className={`flex h-13 w-13 items-center justify-center rounded-full transition-colors ${
 														rating >= circle
-															? 'text-black'
+															? 'text-green-600'
 															: 'text-gray-300 hover:text-gray-400'
 													}`}
 												>
 													<Circle
-														className={`h-9 w-9 ${rating >= circle ? 'fill-black' : ''}`}
+														className={`h-9 w-9 ${rating >= circle ? 'fill-green-600' : ''}`}
 													/>
 												</button>
 											))}
@@ -560,7 +560,7 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
 											{[1, 2, 3, 4, 5].map((circle) => (
 												<Circle
 													key={circle}
-													className={`h-4.5 w-4.5 ${circle <= review.rating ? 'fill-black text-black' : 'text-gray-300'}`}
+													className={`h-4.5 w-4.5 ${circle <= review.rating ? 'fill-green-600 text-green-600' : 'text-gray-300'}`}
 												/>
 											))}
 										</div>
@@ -581,7 +581,7 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
 										</span>
 										<span className="mx-2">•</span>
 										<span>
-											{t('Trip_Type')} {review.travelType}
+											{t('Trip_Type')} {t(review.travelType)}
 										</span>
 									</div>
 

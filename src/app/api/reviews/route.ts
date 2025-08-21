@@ -152,6 +152,7 @@ export async function GET(req: NextRequest) {
 		if (!tour) {
 			return NextResponse.json({ error: 'Tour not found' }, { status: 404 })
 		}
+		
 
 		return NextResponse.json({ reviews: tour.reviews })
 	} catch (error) {
