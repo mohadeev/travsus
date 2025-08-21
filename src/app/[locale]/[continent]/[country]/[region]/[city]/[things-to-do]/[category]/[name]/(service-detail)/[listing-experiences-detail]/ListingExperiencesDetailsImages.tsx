@@ -183,10 +183,10 @@ const ListingExperiencesDetailsImages: FC<
 							</div>
 						</div>
 
-						{/* Enhanced Show All Photos Button */}
+						{/* Enhanced Show All Photos Button - Increased spacing from edges */}
 						<button
 							onClick={() => handleOpenModalImageGallery(0)}
-							className="absolute bottom-4 left-4 z-10 flex items-center gap-2 rounded-xl bg-white/95 px-4 py-2.5 text-black shadow-lg backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:bg-white hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
+							className="absolute bottom-6 left-6 z-10 flex items-center gap-2 rounded-xl bg-white/95 px-4 py-2.5 text-black shadow-lg backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:bg-white hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
 						>
 							<Squares2X2Icon className="h-5 w-5" />
 							<span className="text-sm font-semibold">
@@ -194,8 +194,8 @@ const ListingExperiencesDetailsImages: FC<
 							</span>
 						</button>
 
-						{/* Photo counter badge */}
-						<div className="absolute right-4 top-4 z-10 rounded-full bg-black/70 px-3 py-1.5 text-white backdrop-blur-sm">
+						{/* Photo counter badge - Increased spacing from edges */}
+						<div className="absolute right-6 top-6 z-10 rounded-full bg-black/70 px-3 py-1.5 text-white backdrop-blur-sm">
 							<span className="text-sm font-medium">1 / {totalPhotos}</span>
 						</div>
 					</div>

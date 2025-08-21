@@ -11,6 +11,7 @@ import SectionGridFeaturePlaces from '@/components/SectionGridFeaturePlaces'
 import { useTranslations } from '@/lib/i18n'
 import ExperiencesCard from '@/components/ExperiencesCard'
 import TravelBanner from './TravelBanner'
+import BannerHome from './BannerHome'
 
 function ClientHomePage() {
 	const DUMMY_EXPERIENCE = {
@@ -171,6 +172,7 @@ function ClientHomePage() {
 						cityId="67e5a961636b9ead6fb9b280"
 						layout="row"
 					/> */}
+					{/* <BannerHome /> */}
 				</div>
 
 				<SectionSubscribe2 />
@@ -180,21 +182,3 @@ function ClientHomePage() {
 }
 
 export default ClientHomePage
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

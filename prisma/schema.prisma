@@ -299,7 +299,6 @@ model Tour {
   durationType String?
   duration Int?
   includesOvernight Boolean?
-  
   nameContentId       String?             @db.ObjectId
   nameContent         TranslatableContent? @relation("TourNameContent", fields: [nameContentId], references: [id])
   subtitleContentId   String?             @db.ObjectId

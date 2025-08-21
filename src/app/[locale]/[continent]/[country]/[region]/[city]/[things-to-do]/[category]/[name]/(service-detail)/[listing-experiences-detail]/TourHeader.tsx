@@ -403,7 +403,10 @@ const TourHeader = () => {
 							</div>
 
 							{/* Review Button */}
-							<button className="inline-flex items-center gap-2 rounded-full border-2 border-black bg-white px-4 py-2 text-sm font-semibold text-black transition-all duration-200 hover:bg-black hover:text-white">
+							<button
+								onClick={handleScroll}
+								className="inline-flex items-center gap-2 rounded-full border-2 border-black bg-white px-4 py-2 text-sm font-semibold text-black transition-all duration-200 hover:bg-black hover:text-white"
+							>
 								<Edit className="h-4 w-4" strokeWidth={2} />
 								<span className="hidden sm:inline">{t('Review')}</span>
 							</button>

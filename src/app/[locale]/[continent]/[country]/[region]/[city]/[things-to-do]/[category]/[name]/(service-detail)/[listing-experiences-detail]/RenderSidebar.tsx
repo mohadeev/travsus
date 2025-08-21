@@ -155,9 +155,7 @@ const RenderSidebar: FC<RenderSidebarProps> = ({}) => {
 	const priceStart = totalAmount / totalGuests
 
 	return (
-		<div
-			className={`listingSectionSidebar__wrap shadow-xl ${isShaking ? 'shake' : ''}`}
-		>
+		<div className={`listingSectionSidebar__wrap ${isShaking ? 'shake' : ''}`}>
 			{tour.days ? (
 				<>
 					<div className="flex justify-between">
@@ -167,9 +165,7 @@ const RenderSidebar: FC<RenderSidebarProps> = ({}) => {
 								{t('per_person')}
 							</span>
 						</span>
-						<StartRating />
 					</div>
-
 					<form
 						onSubmit={(e) => {
 							e.preventDefault()

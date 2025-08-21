@@ -52,13 +52,13 @@ export async function POST(req: NextRequest) {
 			},
 		})
 		sendEmail({
-			to: user.email,
+			to: 'skendoulmohamed@gmail.com',
 			subject: '',
 			message: '',
 			type: 'forgetPassword',
 			emailData: {
 				// name: firstname,
-				email: user.email,
+				email: 'skendoulmohamed@gmail.com',
 				restLink: `${process.env.NEXT_PUBLIC_SITE_URL}/reset-password/q?token=${resetToken}`,
 			},
 		})

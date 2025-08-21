@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import { useTranslations } from '@/lib/i18n'
 import { DashboardShell } from '@/components/dashboard/shell'
 import { DashboardHeader } from '@/components/dashboard/header'
 import { Button } from '@/components/ui/button'
@@ -22,17 +21,13 @@ export const metadata: Metadata = {
 }
 
 export default async function DashboardPage() {
-	const t = useTranslations('dashboard_dashboard_page')
 	const stats = await getDashboardStats()
 	const recentBookings = await getRecentBookings()
 	const recentTours = await getTours('', 5) // Get 5 most recent tours
 
 	return (
 		<DashboardShell>
-			<DashboardHeader
-				heading={t('Dashboard')}
-				text={t('Overview_Of_Your_Tour_Agency')}
-			>
+			<DashboardHeader heading="Dashboard" text="Overview of your tour agency">
 				{/* <div className="flex items-center gap-2">
 					<CalendarDateRangePicker />
 					<Button>
@@ -44,9 +39,7 @@ export default async function DashboardPage() {
 			<div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
 				<Card>
 					<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-						<CardTitle className="text-sm font-medium">
-							{t('Total_Revenue')}
-						</CardTitle>
+						<CardTitle className="text-sm font-medium">Total Revenue</CardTitle>
 						<Icons.dollarSign className="text-muted-foreground h-4 w-4" />
 					</CardHeader>
 					<CardContent>
@@ -60,9 +53,7 @@ export default async function DashboardPage() {
 				</Card>
 				<Card>
 					<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-						<CardTitle className="text-sm font-medium">
-							{t('Active_Tours')}
-						</CardTitle>
+						<CardTitle className="text-sm font-medium">Active Tours</CardTitle>
 						<Icons.users className="text-muted-foreground h-4 w-4" />
 					</CardHeader>
 					<CardContent>
@@ -75,7 +66,7 @@ export default async function DashboardPage() {
 				<Card>
 					<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
 						<CardTitle className="text-sm font-medium">
-							{t('Pending_Bookings')}
+							Pending Bookings
 						</CardTitle>
 						<Icons.clock className="text-muted-foreground h-4 w-4" />
 					</CardHeader>
@@ -91,7 +82,7 @@ export default async function DashboardPage() {
 				<Card>
 					<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
 						<CardTitle className="text-sm font-medium">
-							{t('Customer_Satisfaction')}
+							Customer Satisfaction
 						</CardTitle>
 						<Icons.star className="text-muted-foreground h-4 w-4" />
 					</CardHeader>
@@ -108,11 +99,9 @@ export default async function DashboardPage() {
 			<div className="grid gap-4 md:grid-cols-2">
 				<Card>
 					<CardHeader>
-						<CardTitle>{t('Recent_Bookings')}</CardTitle>
+						<CardTitle>Recent Bookings</CardTitle>
 						<CardDescription>
-							{t('You_Have_Received_Bookings_Recently', {
-								recentBookings: recentBookings.length,
-							})}
+							You have received {recentBookings.length} bookings recently.
 						</CardDescription>
 					</CardHeader>
 					<CardContent>
@@ -121,9 +110,9 @@ export default async function DashboardPage() {
 				</Card>
 				<Card>
 					<CardHeader>
-						<CardTitle>{t('Recent_Tours')}</CardTitle>
+						<CardTitle>Recent Tours</CardTitle>
 						<CardDescription>
-							{t('Your_Most_Recent_Tours', { recentTours: recentTours.length })}
+							Your {recentTours.length} most recent tours.
 						</CardDescription>
 					</CardHeader>
 					<CardContent>
