@@ -255,7 +255,7 @@ export async function GET(req: NextRequest) {
 				id: review.id,
 				userId: review.userId,
 				userName: review.user?.accountData?.firstname
-					? review.user.name || review.user.username || review.user.email
+					? review.user?.accountData?.firstname
 					: 'Anonymous',
 				userImage:
 					review.user && review.user.profileImage
