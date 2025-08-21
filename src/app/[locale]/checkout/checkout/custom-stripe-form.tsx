@@ -21,7 +21,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { CreditCard } from 'lucide-react'
 import { Checkbox } from '@/components/ui/checkbox'
 import PromoCodeForm from './PromoCode'
-import totalAmount from '../../[continent]/[country]/[region]/[city]/[things-to-do]/[category]/[name]/(service-detail)/[listing-experiences-detail]/totalAmount'
+import totalAmount from '../../[continent]/[country]/[region]/[city]/[things-to-do]/[category]/[name]/[id]/(service-detail)/[listing-experiences-detail]/totalAmount'
 import { useTranslations } from '@/lib/i18n'
 
 const stripePromise = loadStripe(
