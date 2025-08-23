@@ -121,6 +121,9 @@ export async function GET(request: NextRequest) {
 		const id = searchParams.get('id')
 		const languageCode = extractLanguageFromRequest(request)
 		console.log('Detected language:', languageCode)
+		const reviewsCount = await prisma.review.count({
+			where: { tourId: id },
+		})
 
 		const includeUser = true
 		const reviews = await prisma.review.findMany({
@@ -322,7 +325,6 @@ export async function GET(request: NextRequest) {
 				.map((day) => day.cityId)
 
 			if (cityIds.length > 0) {
-
 				try {
 					const cities = await placesClient.city.findMany({
 						where: { id: { in: cityIds } },
@@ -361,7 +363,6 @@ export async function GET(request: NextRequest) {
 							},
 						},
 					})
-
 
 					// Process each city to get the correct translation
 					const cityMap: Record<string, any> = {}
@@ -473,6 +474,7 @@ export async function GET(request: NextRequest) {
 			conclusion: translatedConclusion,
 			days: processedDays,
 			language: languageCode,
+			reviewsCount,
 			continentInfo, // Add the new continent information object
 		}
 
