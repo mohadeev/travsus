@@ -15,7 +15,9 @@ interface FAQProps {
 }
 
 export default function TourFAQ({ faqs }: FAQProps) {
-	const t = useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_FAQProps");
+	const t = useTranslations(
+		'app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_FAQProps',
+	)
 	if (!faqs) {
 		return null
 	}
@@ -46,7 +48,9 @@ export default function TourFAQ({ faqs }: FAQProps) {
 			{faqs.length >= 1 ? (
 				<section className="listingSection__wrap_no_border_color">
 					<h2 className="mb-8 text-2xl font-semibold">
-						{t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_FAQProps_Frequently_Asked_Questions')}
+						{t(
+							'app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_FAQProps_Frequently_Asked_Questions',
+						)}
 					</h2>
 					<div className="space-y-4">
 						{faqs?.map((faq, index) => (
@@ -81,10 +85,10 @@ export default function TourFAQ({ faqs }: FAQProps) {
 					</div>
 
 					{/* SEO Structured Data for FAQ */}
-					<script
+					{/* <script
 						type="application/ld+json"
 						dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-					/>
+					/> */}
 				</section>
 			) : null}
 		</>
