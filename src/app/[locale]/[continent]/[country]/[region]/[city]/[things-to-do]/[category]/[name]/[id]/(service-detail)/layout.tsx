@@ -260,10 +260,11 @@ export async function generateMetadata({
 		namespace: 'TourPageMetadata',
 	})
 
+	const locale = params.locale
 	try {
 		// Fetch tour details
 		const serviceDataResponse = await fetch(
-			`${process.env.NEXTAUTH_URL}/api/listing/get/getTourData?id=${serviceId}`,
+			`${process.env.NEXTAUTH_URL}/api/listing/get/getTourData?id=${serviceId}&locale=${locale}`,
 			{
 				method: 'GET',
 				headers: {
@@ -297,9 +298,13 @@ export async function generateMetadata({
 
 		// Generate canonical URL
 		const canonicalUrl = generateTourUrl(serviceData, t)
+		const day = serviceData?.days?.[0]
+
+		console.log('serviceData', serviceData.name)
+		const countryName = day.country?.name || day.countryName || ''
 
 		return {
-			title: `${serviceData.name} | ${t('TourPage_default_title' , {tourName})}`,
+			title: `${t('TourPage_title', { tourName: serviceData.name, country: countryName })}`, // `${t('TourPage_default_title', { tourName: serviceData.name, country: countryName })}`,
 			description: serviceData.overview.substring(0, 160),
 			keywords:
 				serviceData.tags?.join(', ') ||
@@ -393,7 +398,7 @@ const DetailLayout = async ({ children, params }: DetailLayoutProps) => {
 	try {
 		// Fetch tour details
 		const serviceDataResponse = await fetch(
-			`${process.env.NEXTAUTH_URL}/api/listing/get/getTourData?id=${serviceId}`,
+			`${process.env.NEXTAUTH_URL}/api/listing/get/getTourData?id=${serviceId}&locale=${locale}`,
 			{
 				method: 'GET',
 				headers: {

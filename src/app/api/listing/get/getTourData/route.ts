@@ -10,25 +10,14 @@ const openai = new OpenAI({
 
 function extractLanguageFromRequest(request: NextRequest): string {
 	// Try to get language from referer URL first
-	const referer = request.headers.get('referer')
-	if (referer) {
-		const match = referer.match(/\/([a-z]{2}-[A-Z]{2})\//)
-		if (match) {
-			return match[1]
-		}
-	}
-
-	// Try to get from origin header
-	const origin = request.headers.get('origin')
-	if (origin) {
-		const match = origin.match(/\/([a-z]{2}-[A-Z]{2})\//)
-		if (match) {
-			return match[1]
-		}
+	const { searchParams } = new URL(request.url)
+	const locale = searchParams.get('locale')
+	if (locale) {
+		return locale
 	}
 
 	// Default to en-US
-	return 'en-US'
+	return 'es-ES'
 }
 
 async function getTranslatedText(
@@ -174,16 +163,6 @@ export async function GET(request: NextRequest) {
 			},
 			orderBy: { createdAt: 'desc' },
 		})
-		console.log('reviews', reviews)
-		console.log('----------------------------------.')
-		console.log('----------------------------------.')
-		console.log('----------------------------------.')
-		console.log(
-			`------------hahah------${reviews.length}-----------hahaha-----.`,
-		)
-		console.log('----------------------------------.')
-		console.log('----------------------------------.')
-		console.log('----------------------------------.')
 
 		// Format reviews to match your frontend expectations
 		const formattedReviews = reviews.map((review) => {
@@ -343,7 +322,6 @@ export async function GET(request: NextRequest) {
 				.map((day) => day.cityId)
 
 			if (cityIds.length > 0) {
-				console.log('Fetching city data for cityIds:', cityIds)
 
 				try {
 					const cities = await placesClient.city.findMany({
@@ -384,7 +362,6 @@ export async function GET(request: NextRequest) {
 						},
 					})
 
-					console.log(`Found ${cities.length} cities`)
 
 					// Process each city to get the correct translation
 					const cityMap: Record<string, any> = {}
