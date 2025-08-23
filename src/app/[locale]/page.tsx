@@ -3,7 +3,7 @@ import ClientHomePage from './ClientHomePage'
 import { getTranslations } from 'next-intl/server'
 
 export async function generateMetadata(): Promise<Metadata> {
-	const t = await getTranslations('HomePageMetadata')
+	const t = await getTranslations('TourPageMetadata')
 
 	return {
 		title: t('title'),

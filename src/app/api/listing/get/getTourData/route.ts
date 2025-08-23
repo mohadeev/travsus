@@ -133,6 +133,96 @@ export async function GET(request: NextRequest) {
 		const languageCode = extractLanguageFromRequest(request)
 		console.log('Detected language:', languageCode)
 
+		const includeUser = true
+		const reviews = await prisma.review.findMany({
+			where: { tourId: id },
+			include: {
+				user: includeUser
+					? {
+							select: {
+								accountData: true,
+								id: true,
+								name: true,
+								username: true,
+								email: true,
+								profileImage: true,
+							},
+						}
+					: false,
+				titleContent: includeUser
+					? {
+							include: {
+								translations: {
+									where: {
+										languageCode: languageCode,
+									},
+								},
+							},
+						}
+					: false,
+				contentContent: includeUser
+					? {
+							include: {
+								translations: {
+									where: {
+										languageCode: languageCode,
+									},
+								},
+							},
+						}
+					: false,
+			},
+			orderBy: { createdAt: 'desc' },
+		})
+		console.log('reviews', reviews)
+		console.log('----------------------------------.')
+		console.log('----------------------------------.')
+		console.log('----------------------------------.')
+		console.log(
+			`------------hahah------${reviews.length}-----------hahaha-----.`,
+		)
+		console.log('----------------------------------.')
+		console.log('----------------------------------.')
+		console.log('----------------------------------.')
+
+		// Format reviews to match your frontend expectations
+		const formattedReviews = reviews.map((review) => {
+			// Use translated content if available, otherwise fall back to original
+			const title = review.titleContent?.translations[0]?.text || review.title
+			const content =
+				review.contentContent?.translations[0]?.text || review.content
+
+			return {
+				id: review.id,
+				userId: review.userId,
+				userName: review.user?.accountData?.firstname
+					? review.user?.accountData?.firstname
+					: 'Anonymous',
+				userImage:
+					review.user && review.user.profileImage
+						? (review.user.profileImage as any).url
+						: null,
+				rating: review.rating,
+				title,
+				content,
+				travelDate: review.travelDate,
+				travelType: review.travelType,
+				images: review.images,
+				createdAt: review.createdAt.toISOString(),
+				updatedAt: review.updatedAt.toISOString(),
+				author: review.user
+					? {
+							name: review.user?.accountData?.firstname,
+							image: review.user.profileImage
+								? (review.user.profileImage as any).url
+								: null,
+							location: '', // You might want to add location to your User model
+							contributions: 0, // You might want to calculate this
+						}
+					: undefined,
+			}
+		})
+
 		if (!id || id === 'undefined') {
 			console.log('Invalid tour ID provided:', id)
 			return NextResponse.json(
@@ -396,12 +486,10 @@ export async function GET(request: NextRequest) {
 				}
 			}
 		}
-		const reviewsCount = await prisma.review.count({
-			where: { tourId: id },
-		})
+
 		const tourData = {
 			...tour,
-			reviewsCount,
+			formattedReviews,
 			name: translatedName,
 			subtitle: translatedSubtitle,
 			overview: translatedOverview,
