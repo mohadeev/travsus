@@ -7,6 +7,7 @@ import type { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 import { slugify } from 'transliteration'
 
+// ... (your existing interfaces remain the same)
 interface Review {
 	rating?: number
 	userName?: string
@@ -304,7 +305,7 @@ export async function generateMetadata({
 		const countryName = day.country?.name || day.countryName || ''
 
 		return {
-			title: `${t('TourPage_title', { tourName: serviceData.name, country: countryName })}`, // `${t('TourPage_default_title', { tourName: serviceData.name, country: countryName })}`,
+			title: `${t('TourPage_title', { tourName: serviceData.name, country: countryName })}`,
 			description: serviceData.overview.substring(0, 160),
 			keywords:
 				serviceData.tags?.join(', ') ||
@@ -365,7 +366,6 @@ export async function generateMetadata({
 		}
 	}
 }
-
 // Function to generate tour URL like in the client component
 function generateTourUrl(serviceData: ServiceData, t: any): string {
 	const day = serviceData.days?.[0]
@@ -440,29 +440,7 @@ const DetailLayout = async ({ children, params }: DetailLayoutProps) => {
 		// Extract image URLs
 		const imageUrls = serviceData?.images?.map((img) => img.url) || []
 
-		// Extract reviews
-		const reviews = serviceData?.formattedReviews?.length
-			? serviceData.formattedReviews.map((review) => ({
-					'@type': 'Review',
-					reviewRating: {
-						'@type': 'Rating',
-						ratingValue: review.rating || 5,
-						bestRating: 5,
-					},
-					author: {
-						'@type': 'Person',
-						name:
-							review.userName || review.author || t('layout_Anonymous_User'),
-					},
-					reviewBody:
-						review.content ||
-						review.reviewBody ||
-						t('layout_Default_Review_Text'),
-					datePublished: review.createdAt || new Date().toISOString(),
-				}))
-			: []
-
-		// Generate Structured Data for Google
+		// Generate Structured Data for Google - FIXED VERSION
 		const tourSchema = serviceData
 			? {
 					'@context': 'https://schema.org',
@@ -470,11 +448,14 @@ const DetailLayout = async ({ children, params }: DetailLayoutProps) => {
 					name: serviceData.name,
 					description: serviceData.overview,
 					image: imageUrls,
+					// CORRECTED: AggregateRating is the proper way to include reviews for TouristTrip
 					aggregateRating: serviceData.reviewsCount
 						? {
 								'@type': 'AggregateRating',
 								ratingValue: serviceData.averageRating || 4.5,
 								reviewCount: serviceData.reviewsCount,
+								bestRating: '5',
+								worstRating: '1',
 							}
 						: undefined,
 					address: {
@@ -541,10 +522,10 @@ const DetailLayout = async ({ children, params }: DetailLayoutProps) => {
 							addressCountry: 'MA',
 						},
 					},
-					review: reviews,
+					// REMOVED: The invalid 'review' property that was causing the error
 				}
 			: null
-		console.log('generateTourUrl', generateTourUrl(serviceData, t))
+
 		// Generate FAQ structured data
 		const faqSchema = serviceData.faq?.length
 			? {
