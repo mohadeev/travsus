@@ -216,7 +216,8 @@ button.gm-control-active.gm-fullscreen-control {
 }
 // LISTING PAGE DETAIL
 .listingSectionSidebar__wrap {
-	box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+	box-shadow: 0 2px 55px rgba(0, 0, 0, 0.1);
+	border: 1px solid #eaeaea;
 	@apply flex w-full flex-col space-y-6 rounded-xl p-2 pb-10 sm:p-4 xl:space-y-7 xl:px-8 xl:py-6;
 }
 
