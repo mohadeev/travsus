@@ -2088,6 +2088,14 @@
     "username_label": "Benutzername",
     "username_title": "Benutzername"
   },
+  "PremiumTourBenefits": {
+    "free_cancellation": "Kostenlose Stornierung",
+    "free_cancellation_description": "Vollständige Rückerstattung bei Stornierung bis zu 24 Stunden vor Beginn des Erlebnisses (Ortszeit)",
+    "lowest_price_guaranteed": "Garantierter niedrigster Preis",
+    "lowest_price_guaranteed_description": "Einen niedrigeren Preis online gefunden? Wir erstatten die Differenz.",
+    "reserve_now_pay_later": "Jetzt reservieren und später bezahlen",
+    "reserve_now_pay_later_description": "Sichern Sie Ihren Platz und bleiben Sie flexibel."
+  },
   "ReadMore": {
     "read_less": "Weniger lesen",
     "read_more": "Mehr lesen"

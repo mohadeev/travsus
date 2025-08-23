@@ -27,6 +27,7 @@ import ListingImageGallery from '@/components/listing-image-gallery/ListingImage
 import MobileFooterSticky from '../(components)/MobileFooterSticky'
 import { imageGallery } from './constant'
 import { updateServiceState } from '@/app/GlobalRedux/Features/creatingServiceSlice/creatingServiceSlice'
+import BookingGuarantees from './BookingGuarantees'
 
 const MapComponent = dynamic(() => import('./tour-map'), {
 	ssr: false,
@@ -257,6 +258,7 @@ const ListingExperiencesDetailPage: FC<ListingExperiencesDetailPageProps> = ({
 					<div className="w-full space-y-8 lg:w-3/5 lg:space-y-10 lg:pr-10 xl:w-2/3">
 						{renderSection2()}
 						<Included />
+						<BookingGuarantees />
 					</div>
 
 					{/* SIDEBAR */}

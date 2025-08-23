@@ -1589,6 +1589,14 @@
     "username_label": "ユーザー名",
     "username_title": "ユーザー名"
   },
+  "PremiumTourBenefits": {
+    "free_cancellation": "無料キャンセル",
+    "free_cancellation_description": "体験開始の24時間前まで（現地時間）にキャンセルした場合、全額返金",
+    "lowest_price_guaranteed": "最低価格保証",
+    "lowest_price_guaranteed_description": "オンラインでより安い価格を見つけましたか？差額を返金します。",
+    "reserve_now_pay_later": "今すぐ予約、後払い",
+    "reserve_now_pay_later_description": "柔軟性を保ちながら場所を確保。"
+  },
   "ReadMore": {
     "read_less": "折りたたむ",
     "read_more": "続きを読む"

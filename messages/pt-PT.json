@@ -1595,6 +1595,14 @@
     "username_label": "Nome de usuário",
     "username_title": "Nome de usuário"
   },
+  "PremiumTourBenefits": {
+    "free_cancellation": "Cancelamento gratuito",
+    "free_cancellation_description": "Reembolso total se cancelado até 24 horas antes do início da experiência (hora local)",
+    "lowest_price_guaranteed": "Preço mais baixo garantido",
+    "lowest_price_guaranteed_description": "Encontrou um preço mais baixo online? Reembolsamos a diferença.",
+    "reserve_now_pay_later": "Reserve agora e pague depois",
+    "reserve_now_pay_later_description": "Reserve seu lugar mantendo a flexibilidade."
+  },
   "ReadMore": {
     "read_less": "Ler menos",
     "read_more": "Ler mais"

@@ -1692,6 +1692,14 @@
     "username_label": "Имя пользователя",
     "username_title": "Имя пользователя"
   },
+  "PremiumTourBenefits": {
+    "free_cancellation": "Бесплатная отмена",
+    "free_cancellation_description": "Полный возврат средств при отмене до 24 часов до начала мероприятия (местное время)",
+    "lowest_price_guaranteed": "Гарантия самой низкой цены",
+    "lowest_price_guaranteed_description": "Нашли более низкую цену в интернете? Мы вернем разницу.",
+    "reserve_now_pay_later": "Забронируйте сейчас и оплатите позже",
+    "reserve_now_pay_later_description": "Забронируйте место, сохраняя гибкость."
+  },
   "ReadMore": {
     "read_less": "Свернуть",
     "read_more": "Читать далее"
