@@ -48,7 +48,7 @@ const TourHeader = () => {
 		inclusions,
 		loading,
 		rating,
-		reviewCount,
+		reviewsCount,
 		continentInfo,
 		recommendationPercentage,
 	}: any = useSelector((state: any) => state.creatingServiceSlice.service)
@@ -139,7 +139,7 @@ const TourHeader = () => {
 
 	// Tour data with fallbacks
 	const tourRating = rating || 5.0
-	const totalReviews = reviewCount || 0
+	const totalReviews = reviewsCount || 0
 	const recommendedBy = recommendationPercentage || 100
 
 	const renderStars = (rating: number) => {

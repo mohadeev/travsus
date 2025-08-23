@@ -396,9 +396,12 @@ export async function GET(request: NextRequest) {
 				}
 			}
 		}
-
+		const reviewsCount = await prisma.review.count({
+			where: { tourId: id },
+		})
 		const tourData = {
 			...tour,
+			reviewsCount,
 			name: translatedName,
 			subtitle: translatedSubtitle,
 			overview: translatedOverview,
