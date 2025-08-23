@@ -507,6 +507,12 @@
     "bookings_pending_page_Pending_Bookings": "Ausstehende Buchungen",
     "bookings_pending_page_Review_And_Confirm_Pending_Tour_Bookings": "Ausstehende Reisebuchungen prüfen und bestätigen"
   },
+  "BookNowPayLater": {
+    "experience_starts": "Erlebnis beginnt (Ortszeit)",
+    "free_cancellation": "Kostenlose Stornierung bis zu 24 Stunden vorher",
+    "reserve_now_pay_later": "Jetzt reservieren & später bezahlen",
+    "secure_spot_flexible": "Sichern Sie Ihren Platz und bleiben Sie flexibel"
+  },
   "cmsadmin_countryId_page": {
     "cmsadmin_countryId_page_Add_Image": "Bild hinzufügen",
     "cmsadmin_countryId_page_CMS_Admin_Image_Management": "CMS-Admin - Bildverwaltung",

@@ -69,7 +69,7 @@ const ListingExperiencesDetailsImages: FC<
 
 							{/* Mobile photo count indicator */}
 							{totalPhotos > 1 && (
-								<div className="absolute bottom-4 right-4 flex items-center gap-2 rounded-full bg-black/70 px-3 py-1.5 text-white backdrop-blur-sm">
+								<div className="absolute bottom-4 right-4 flex items-center gap-2 rounded-full bg-black px-3 py-1.5 text-white backdrop-blur-sm">
 									<Squares2X2Icon className="h-4 w-4" />
 									<span className="text-sm font-medium">{totalPhotos}</span>
 								</div>
@@ -165,7 +165,7 @@ const ListingExperiencesDetailsImages: FC<
 
 											{/* Show remaining photos overlay */}
 											{totalPhotos > 4 && (
-												<div className="absolute inset-0 flex items-center justify-center bg-black/60 backdrop-blur-sm transition-all duration-300 group-hover/image:bg-black/70">
+												<div className="absolute inset-0 flex items-center justify-center bg-black/60 backdrop-blur-sm transition-all duration-300 group-hover/image:bg-black">
 													<div className="text-center text-white">
 														<Squares2X2Icon className="mx-auto mb-2 h-8 w-8" />
 														<span className="text-lg font-semibold">
@@ -195,7 +195,7 @@ const ListingExperiencesDetailsImages: FC<
 						</button>
 
 						{/* Photo counter badge - Increased spacing from edges */}
-						<div className="absolute right-6 top-6 z-10 rounded-full bg-black/70 px-3 py-1.5 text-white backdrop-blur-sm">
+						<div className="absolute right-6 top-6 z-10 rounded-full bg-black px-3 py-1.5 text-white backdrop-blur-sm">
 							<span className="text-sm font-medium">1 / {totalPhotos}</span>
 						</div>
 					</div>

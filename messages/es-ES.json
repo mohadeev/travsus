@@ -452,6 +452,12 @@
     "bookings_pending_page_Pending_Bookings": "Reservas Pendientes",
     "bookings_pending_page_Review_And_Confirm_Pending_Tour_Bookings": "Revise y confirme las reservas de tours pendientes"
   },
+  "BookNowPayLater": {
+    "experience_starts": "La experiencia comienza (hora local)",
+    "free_cancellation": "Cancelación gratuita hasta 24 horas antes",
+    "reserve_now_pay_later": "Reserva Ahora y Paga Después",
+    "secure_spot_flexible": "Asegura tu lugar manteniendo flexibilidad"
+  },
   "cmsadmin_countryId_page": {
     "cmsadmin_countryId_page_Add_Image": "Añadir Imagen",
     "cmsadmin_countryId_page_CMS_Admin_Image_Management": "CMS Admin - Gestión de Imágenes",

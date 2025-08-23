@@ -23,6 +23,7 @@ import { Button } from '@/components/ui'
 import { formatCurrency } from '@/utils/formatCurrency'
 import { useAuthAction } from '@/app/hooks/useAuthAction'
 import { useTranslations } from 'next-intl'
+import BookNowPayLatter from './BookNowPayLatter'
 
 export type RenderSidebarProps = {}
 
@@ -210,7 +211,7 @@ const RenderSidebar: FC<RenderSidebarProps> = ({}) => {
 					/>
 
 					<LineItemsBreakdown lineItems={booking?.lineItems} />
-
+					<BookNowPayLatter />
 					<Button
 						loading={currentStatus === 'loading'}
 						className="mt-4 w-full"

@@ -1,262 +1,82 @@
 {
 	"en-US": {
-		"TourPageMetadata": {
-			"layout_Anonymous_User": "Anonymous User",
-			"layout_Default_Review_Text": "Great experience!",
-			"layout_Unknown_City": "Unknown City",
-			"layout_Unknown_Country": "Unknown Country",
-			"layout_Experienced_Guide": "Experienced Guide",
-			"components_ExperiencesCard_Ads": "ADS",
-			"components_ExperiencesCard_Per_Person": "per person",
-			"Jan03_TourHeader_x9k2_things_to_do_slug": "things-to-do",
-			"Jan03_TourHeader_x9k2_tours": "tours",
-			"TourPage_title": "{tourName} | TRAVSUS {country} Tours",
-			"TourPage_description": "{tourOverview}",
-			"TourPage_keywords": "{tourTags}, {country} tour, travel, vacation",
-			"TourPage_price_range": "From {minPrice} {currency}",
-			"TourPage_duration": "{duration} days",
-			"TourPage_rating": "{rating} out of 5 stars",
-			"TourPage_reviews_count": "{count} reviews",
-			"TourPage_not_found_title": "Tour Not Found | TRAVSUS",
-			"TourPage_not_found_description": "The requested tour could not be found.",
-			"TourPage_default_title": "{country} Tours | TRAVSUS",
-			"TourPage_default_description": "Discover amazing tours and experiences in {country} with TRAVSUS.",
-			"TourPage_error_title": "Something went wrong",
-			"TourPage_error_message": "Please try again later."
+		"BookNowPayLater": {
+			"free_cancellation": "Free cancellation up to 24 hours before",
+			"experience_starts": "Experience starts (local time)",
+			"reserve_now_pay_later": "Reserve Now & Pay Later",
+			"secure_spot_flexible": "Secure your spot while staying flexible"
 		}
 	},
 	"es-ES": {
-		"TourPageMetadata": {
-			"layout_Anonymous_User": "Usuario Anónimo",
-			"layout_Default_Review_Text": "¡Excelente experiencia!",
-			"layout_Unknown_City": "Ciudad Desconocida",
-			"layout_Unknown_Country": "País Desconocido",
-			"layout_Experienced_Guide": "Guía Experimentado",
-			"components_ExperiencesCard_Ads": "ANUNCIOS",
-			"components_ExperiencesCard_Per_Person": "por persona",
-			"Jan03_TourHeader_x9k2_things_to_do_slug": "things-to-do",
-			"Jan03_TourHeader_x9k2_tours": "tours",
-			"TourPage_title": "{tourName} | TRAVSUS Tours {country}",
-			"TourPage_description": "{tourOverview}",
-			"TourPage_keywords": "{tourTags}, tour {country}, viajes, vacaciones",
-			"TourPage_price_range": "Desde {minPrice} {currency}",
-			"TourPage_duration": "{duration} días",
-			"TourPage_rating": "{rating} de 5 estrellas",
-			"TourPage_reviews_count": "{count} reseñas",
-			"TourPage_not_found_title": "Tour No Encontrado | TRAVSUS",
-			"TourPage_not_found_description": "No se pudo encontrar el tour solicitado.",
-			"TourPage_default_title": "Tours {country} | TRAVSUS",
-			"TourPage_default_description": "Descubre tours y experiencias increíbles en {country} con TRAVSUS.",
-			"TourPage_error_title": "Algo salió mal",
-			"TourPage_error_message": "Por favor, inténtalo de nuevo más tarde."
+		"BookNowPayLater": {
+			"free_cancellation": "Cancelación gratuita hasta 24 horas antes",
+			"experience_starts": "La experiencia comienza (hora local)",
+			"reserve_now_pay_later": "Reserva Ahora y Paga Después",
+			"secure_spot_flexible": "Asegura tu lugar manteniendo flexibilidad"
 		}
 	},
 	"de-DE": {
-		"TourPageMetadata": {
-			"layout_Anonymous_User": "Anonymer Benutzer",
-			"layout_Default_Review_Text": "Großartige Erfahrung!",
-			"layout_Unknown_City": "Unbekannte Stadt",
-			"layout_Unknown_Country": "Unbekanntes Land",
-			"layout_Experienced_Guide": "Erfahrener Guide",
-			"components_ExperiencesCard_Ads": "WERBUNG",
-			"components_ExperiencesCard_Per_Person": "pro Person",
-			"Jan03_TourHeader_x9k2_things_to_do_slug": "things-to-do",
-			"Jan03_TourHeader_x9k2_tours": "touren",
-			"TourPage_title": "{tourName} | TRAVSUS {country} Touren",
-			"TourPage_description": "{tourOverview}",
-			"TourPage_keywords": "{tourTags}, {country} Tour, Reisen, Urlaub",
-			"TourPage_price_range": "Ab {minPrice} {currency}",
-			"TourPage_duration": "{duration} Tage",
-			"TourPage_rating": "{rating} von 5 Sternen",
-			"TourPage_reviews_count": "{count} Bewertungen",
-			"TourPage_not_found_title": "Tour nicht gefunden | TRAVSUS",
-			"TourPage_not_found_description": "Die angeforderte Tour konnte nicht gefunden werden.",
-			"TourPage_default_title": "{country} Touren | TRAVSUS",
-			"TourPage_default_description": "Entdecken Sie amazing Touren und Erlebnisse in {country} mit TRAVSUS.",
-			"TourPage_error_title": "Etwas ist schiefgelaufen",
-			"TourPage_error_message": "Bitte versuchen Sie es später erneut."
+		"BookNowPayLater": {
+			"free_cancellation": "Kostenlose Stornierung bis zu 24 Stunden vorher",
+			"experience_starts": "Erlebnis beginnt (Ortszeit)",
+			"reserve_now_pay_later": "Jetzt reservieren & später bezahlen",
+			"secure_spot_flexible": "Sichern Sie Ihren Platz und bleiben Sie flexibel"
 		}
 	},
 	"fr-FR": {
-		"TourPageMetadata": {
-			"layout_Anonymous_User": "Utilisateur Anonyme",
-			"layout_Default_Review_Text": "Excellente expérience !",
-			"layout_Unknown_City": "Ville Inconnue",
-			"layout_Unknown_Country": "Pays Inconnu",
-			"layout_Experienced_Guide": "Guide Expérimenté",
-			"components_ExperiencesCard_Ads": "PUBLICITÉ",
-			"components_ExperiencesCard_Per_Person": "par personne",
-			"Jan03_TourHeader_x9k2_things_to_do_slug": "things-to-do",
-			"Jan03_TourHeader_x9k2_tours": "visites",
-			"TourPage_title": "{tourName} | TRAVSUS Visites {country}",
-			"TourPage_description": "{tourOverview}",
-			"TourPage_keywords": "{tourTags}, visite {country}, voyage, vacances",
-			"TourPage_price_range": "À partir de {minPrice} {currency}",
-			"TourPage_duration": "{duration} jours",
-			"TourPage_rating": "{rating} sur 5 étoiles",
-			"TourPage_reviews_count": "{count} avis",
-			"TourPage_not_found_title": "Visite Non Trouvée | TRAVSUS",
-			"TourPage_not_found_description": "La visite demandée n'a pas pu être trouvée.",
-			"TourPage_default_title": "Visites {country} | TRAVSUS",
-			"TourPage_default_description": "Découvrez des visites et expériences incroyables en {country} avec TRAVSUS.",
-			"TourPage_error_title": "Quelque chose s'est mal passé",
-			"TourPage_error_message": "Veuillez réessayer plus tard."
+		"BookNowPayLater": {
+			"free_cancellation": "Annulation gratuite jusqu'à 24 heures avant",
+			"experience_starts": "L'expérience commence (heure locale)",
+			"reserve_now_pay_later": "Réservez Maintenant & Payez Plus Tard",
+			"secure_spot_flexible": "Sécurisez votre place en restant flexible"
 		}
 	},
 	"ja-JP": {
-		"TourPageMetadata": {
-			"layout_Anonymous_User": "匿名ユーザー",
-			"layout_Default_Review_Text": "素晴らしい体験でした！",
-			"layout_Unknown_City": "不明な都市",
-			"layout_Unknown_Country": "不明な国",
-			"layout_Experienced_Guide": "経験豊富なガイド",
-			"components_ExperiencesCard_Ads": "広告",
-			"components_ExperiencesCard_Per_Person": "一人あたり",
-			"Jan03_TourHeader_x9k2_things_to_do_slug": "things-to-do",
-			"Jan03_TourHeader_x9k2_tours": "ツアー",
-			"TourPage_title": "{tourName} | TRAVSUS {country} ツアー",
-			"TourPage_description": "{tourOverview}",
-			"TourPage_keywords": "{tourTags}, {country} ツアー, 旅行, 休暇",
-			"TourPage_price_range": "{minPrice} {currency} から",
-			"TourPage_duration": "{duration} 日間",
-			"TourPage_rating": "5点中 {rating} 点",
-			"TourPage_reviews_count": "{count} 件のレビュー",
-			"TourPage_not_found_title": "ツアーが見つかりません | TRAVSUS",
-			"TourPage_not_found_description": "リクエストされたツアーが見つかりませんでした。",
-			"TourPage_default_title": "{country} ツアー | TRAVSUS",
-			"TourPage_default_description": "TRAVSUSで{country}の素晴らしいツアーと体験を発見しましょう。",
-			"TourPage_error_title": "エラーが発生しました",
-			"TourPage_error_message": "後でもう一度お試しください。"
+		"BookNowPayLater": {
+			"free_cancellation": "24時間前まで無料キャンセル",
+			"experience_starts": "体験開始（現地時間）",
+			"reserve_now_pay_later": "今すぐ予約＆後払い",
+			"secure_spot_flexible": "柔軟性を保ちながら場所を確保"
 		}
 	},
 	"pt-PT": {
-		"TourPageMetadata": {
-			"layout_Anonymous_User": "Utilizador Anónimo",
-			"layout_Default_Review_Text": "Excelente experiência!",
-			"layout_Unknown_City": "Cidade Desconhecida",
-			"layout_Unknown_Country": "País Desconhecido",
-			"layout_Experienced_Guide": "Guia Experiente",
-			"components_ExperiencesCard_Ads": "ANÚNCIOS",
-			"components_ExperiencesCard_Per_Person": "por pessoa",
-			"Jan03_TourHeader_x9k2_things_to_do_slug": "things-to-do",
-			"Jan03_TourHeader_x9k2_tours": "passeios",
-			"TourPage_title": "{tourName} | TRAVSUS Passeios {country}",
-			"TourPage_description": "{tourOverview}",
-			"TourPage_keywords": "{tourTags}, passeio {country}, viagem, férias",
-			"TourPage_price_range": "A partir de {minPrice} {currency}",
-			"TourPage_duration": "{duration} dias",
-			"TourPage_rating": "{rating} de 5 estrelas",
-			"TourPage_reviews_count": "{count} avaliações",
-			"TourPage_not_found_title": "Passeio Não Encontrado | TRAVSUS",
-			"TourPage_not_found_description": "O passeio solicitado não pôde ser encontrado.",
-			"TourPage_default_title": "Passeios {country} | TRAVSUS",
-			"TourPage_default_description": "Descubra passeios e experiências incríveis em {country} com TRAVSUS.",
-			"TourPage_error_title": "Algo correu mal",
-			"TourPage_error_message": "Por favor, tente novamente mais tarde."
+		"BookNowPayLater": {
+			"free_cancellation": "Cancelamento gratuito até 24 horas antes",
+			"experience_starts": "A experiência começa (hora local)",
+			"reserve_now_pay_later": "Reserve Agora & Pague Depois",
+			"secure_spot_flexible": "Garanta seu lugar mantendo flexibilidade"
 		}
 	},
 	"it-IT": {
-		"TourPageMetadata": {
-			"layout_Anonymous_User": "Utente Anonimo",
-			"layout_Default_Review_Text": "Esperienza fantastica!",
-			"layout_Unknown_City": "Città Sconosciuta",
-			"layout_Unknown_Country": "Paese Sconosciuto",
-			"layout_Experienced_Guide": "Guida Esperta",
-			"components_ExperiencesCard_Ads": "PUBBLICITÀ",
-			"components_ExperiencesCard_Per_Person": "a persona",
-			"Jan03_TourHeader_x9k2_things_to_do_slug": "things-to-do",
-			"Jan03_TourHeader_x9k2_tours": "tour",
-			"TourPage_title": "{tourName} | TRAVSUS Tour {country}",
-			"TourPage_description": "{tourOverview}",
-			"TourPage_keywords": "{tourTags}, tour {country}, viaggio, vacanza",
-			"TourPage_price_range": "A partire da {minPrice} {currency}",
-			"TourPage_duration": "{duration} giorni",
-			"TourPage_rating": "{rating} su 5 stelle",
-			"TourPage_reviews_count": "{count} recensioni",
-			"TourPage_not_found_title": "Tour Non Trovato | TRAVSUS",
-			"TourPage_not_found_description": "Il tour richiesto non è stato trovato.",
-			"TourPage_default_title": "Tour {country} | TRAVSUS",
-			"TourPage_default_description": "Scopri tour ed esperienze incredibili in {country} con TRAVSUS.",
-			"TourPage_error_title": "Qualcosa è andato storto",
-			"TourPage_error_message": "Riprova più tardi."
+		"BookNowPayLater": {
+			"free_cancellation": "Cancellazione gratuita fino a 24 ore prima",
+			"experience_starts": "L'esperienza inizia (ora locale)",
+			"reserve_now_pay_later": "Prenota Ora & Paga Dopo",
+			"secure_spot_flexible": "Assicura il tuo posto restando flessibile"
 		}
 	},
 	"ru-RU": {
-		"TourPageMetadata": {
-			"layout_Anonymous_User": "Анонимный пользователь",
-			"layout_Default_Review_Text": "Отличный опыт!",
-			"layout_Unknown_City": "Неизвестный город",
-			"layout_Unknown_Country": "Неизвестная страна",
-			"layout_Experienced_Guide": "Опытный гид",
-			"components_ExperiencesCard_Ads": "РЕКЛАМА",
-			"components_ExperiencesCard_Per_Person": "с человека",
-			"Jan03_TourHeader_x9k2_things_to_do_slug": "things-to-do",
-			"Jan03_TourHeader_x9k2_tours": "туры",
-			"TourPage_title": "{tourName} | TRAVSUS Туры {country}",
-			"TourPage_description": "{tourOverview}",
-			"TourPage_keywords": "{tourTags}, тур {country}, путешествие, отпуск",
-			"TourPage_price_range": "От {minPrice} {currency}",
-			"TourPage_duration": "{duration} дней",
-			"TourPage_rating": "{rating} из 5 звезд",
-			"TourPage_reviews_count": "{count} отзывов",
-			"TourPage_not_found_title": "Тур не найден | TRAVSUS",
-			"TourPage_not_found_description": "Запрошенный тур не найден.",
-			"TourPage_default_title": "Туры {country} | TRAVSUS",
-			"TourPage_default_description": "Откройте для себя удивительные туры и впечатления в {country} с TRAVSUS.",
-			"TourPage_error_title": "Что-то пошло не так",
-			"TourPage_error_message": "Пожалуйста, попробуйте позже."
+		"BookNowPayLater": {
+			"free_cancellation": "Бесплатная отмена до 24 часов заранее",
+			"experience_starts": "Мероприятие начинается (местное время)",
+			"reserve_now_pay_later": "Забронируйте Сейчас & Оплатите Позже",
+			"secure_spot_flexible": "Закрепите место, сохраняя гибкость"
 		}
 	},
 	"zh-CN": {
-		"TourPageMetadata": {
-			"layout_Anonymous_User": "匿名用户",
-			"layout_Default_Review_Text": "很棒的体验！",
-			"layout_Unknown_City": "未知城市",
-			"layout_Unknown_Country": "未知国家",
-			"layout_Experienced_Guide": "经验丰富的导游",
-			"components_ExperiencesCard_Ads": "广告",
-			"components_ExperiencesCard_Per_Person": "每人",
-			"Jan03_TourHeader_x9k2_things_to_do_slug": "things-to-do",
-			"Jan03_TourHeader_x9k2_tours": "旅游团",
-			"TourPage_title": "{tourName} | TRAVSUS {country} 旅游团",
-			"TourPage_description": "{tourOverview}",
-			"TourPage_keywords": "{tourTags}, {country} 旅游, 旅行, 假期",
-			"TourPage_price_range": "起价 {minPrice} {currency}",
-			"TourPage_duration": "{duration} 天",
-			"TourPage_rating": "{rating} 分（满分 5 分）",
-			"TourPage_reviews_count": "{count} 条评价",
-			"TourPage_not_found_title": "未找到旅游团 | TRAVSUS",
-			"TourPage_not_found_description": "找不到请求的旅游团。",
-			"TourPage_default_title": "{country} 旅游团 | TRAVSUS",
-			"TourPage_default_description": "通过 TRAVSUS 发现 {country} 的精彩旅游团和体验。",
-			"TourPage_error_title": "出错了",
-			"TourPage_error_message": "请稍后再试。"
+		"BookNowPayLater": {
+			"free_cancellation": "24小时前免费取消",
+			"experience_starts": "体验开始（当地时间）",
+			"reserve_now_pay_later": "立即预订＆稍后付款",
+			"secure_spot_flexible": "在保持灵活性的同时确保您的位置"
 		}
 	},
 	"ko-KR": {
-		"TourPageMetadata": {
-			"layout_Anonymous_User": "익명 사용자",
-			"layout_Default_Review_Text": "훌륭한 경험이었습니다!",
-			"layout_Unknown_City": "알 수 없는 도시",
-			"layout_Unknown_Country": "알 수 없는 국가",
-			"layout_Experienced_Guide": "경험丰富的 가이드",
-			"components_ExperiencesCard_Ads": "광고",
-			"components_ExperiencesCard_Per_Person": "1인당",
-			"Jan03_TourHeader_x9k2_things_to_do_slug": "things-to-do",
-			"Jan03_TourHeader_x9k2_tours": "투어",
-			"TourPage_title": "{tourName} | TRAVSUS {country} 투어",
-			"TourPage_description": "{tourOverview}",
-			"TourPage_keywords": "{tourTags}, {country} 투어, 여행, 휴가",
-			"TourPage_price_range": "{minPrice} {currency}부터",
-			"TourPage_duration": "{duration}일",
-			"TourPage_rating": "5점 중 {rating}점",
-			"TourPage_reviews_count": "{count}개 리뷰",
-			"TourPage_not_found_title": "투어를 찾을 수 없음 | TRAVSUS",
-			"TourPage_not_found_description": "요청한 투어를 찾을 수 없습니다.",
-			"TourPage_default_title": "{country} 투어 | TRAVSUS",
-			"TourPage_default_description": "TRAVSUS로 {country}의 놀라운 투어와 경험을 발견하세요.",
-			"TourPage_error_title": "문제가 발생했습니다",
-			"TourPage_error_message": "나중에 다시 시도해 주세요."
+		"BookNowPayLater": {
+			"free_cancellation": "24시간 전까지 무료 취소",
+			"experience_starts": "체험 시작 (현지 시간)",
+			"reserve_now_pay_later": "지금 예약하고 나중에 결제",
+			"secure_spot_flexible": "유연성을 유지하면서 자리 확보"
 		}
 	}
 }

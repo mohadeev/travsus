@@ -309,6 +309,12 @@
     "sign_up": "Зарегистрироваться",
     "wishlist": "Список Желаний"
   },
+  "BookNowPayLater": {
+    "experience_starts": "Мероприятие начинается (местное время)",
+    "free_cancellation": "Бесплатная отмена до 24 часов заранее",
+    "reserve_now_pay_later": "Забронируйте Сейчас & Оплатите Позже",
+    "secure_spot_flexible": "Закрепите место, сохраняя гибкость"
+  },
   "components_AccountPass": {
     "components_AccountPass_Confirm_Password": "Подтвердите пароль",
     "components_AccountPass_Current_Password": "Текущий пароль",

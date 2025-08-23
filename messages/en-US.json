@@ -486,6 +486,12 @@
     "bookings_pending_page_Pending_Bookings": "Pending Bookings",
     "bookings_pending_page_Review_And_Confirm_Pending_Tour_Bookings": "Review and confirm pending tour bookings"
   },
+  "BookNowPayLater": {
+    "experience_starts": "Experience starts (local time)",
+    "free_cancellation": "Free cancellation up to 24 hours before",
+    "reserve_now_pay_later": "Reserve Now & Pay Later",
+    "secure_spot_flexible": "Secure your spot while staying flexible"
+  },
   "cmsadmin_countryId_page": {
     "cmsadmin_countryId_page_Add_Image": "Add Image",
     "cmsadmin_countryId_page_CMS_Admin_Image_Management": "CMS Admin - Image Management",

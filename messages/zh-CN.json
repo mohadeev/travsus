@@ -309,6 +309,12 @@
     "sign_up": "注册",
     "wishlist": "心愿单"
   },
+  "BookNowPayLater": {
+    "experience_starts": "体验开始（当地时间）",
+    "free_cancellation": "24小时前免费取消",
+    "reserve_now_pay_later": "立即预订＆稍后付款",
+    "secure_spot_flexible": "在保持灵活性的同时确保您的位置"
+  },
   "components_AccountPass": {
     "components_AccountPass_Confirm_Password": "确认密码",
     "components_AccountPass_Current_Password": "当前密码",

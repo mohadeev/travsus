@@ -326,6 +326,12 @@
     "sign_up": "Registrati",
     "wishlist": "Lista Desideri"
   },
+  "BookNowPayLater": {
+    "experience_starts": "L'esperienza inizia (ora locale)",
+    "free_cancellation": "Cancellazione gratuita fino a 24 ore prima",
+    "reserve_now_pay_later": "Prenota Ora & Paga Dopo",
+    "secure_spot_flexible": "Assicura il tuo posto restando flessibile"
+  },
   "components_AccountPass": {
     "components_AccountPass_Confirm_Password": "Conferma Password",
     "components_AccountPass_Current_Password": "Password attuale",

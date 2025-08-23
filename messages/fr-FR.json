@@ -507,6 +507,12 @@
     "bookings_pending_page_Pending_Bookings": "Réservations en attente",
     "bookings_pending_page_Review_And_Confirm_Pending_Tour_Bookings": "Examinez et confirmez les réservations de circuit en attente"
   },
+  "BookNowPayLater": {
+    "experience_starts": "L'expérience commence (heure locale)",
+    "free_cancellation": "Annulation gratuite jusqu'à 24 heures avant",
+    "reserve_now_pay_later": "Réservez Maintenant & Payez Plus Tard",
+    "secure_spot_flexible": "Sécurisez votre place en restant flexible"
+  },
   "cmsadmin_countryId_page": {
     "cmsadmin_countryId_page_Add_Image": "Ajouter une image",
     "cmsadmin_countryId_page_CMS_Admin_Image_Management": "Admin CMS - Gestion d'images",

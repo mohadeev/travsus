@@ -326,6 +326,12 @@
     "sign_up": "新規登録",
     "wishlist": "ウィッシュリスト"
   },
+  "BookNowPayLater": {
+    "experience_starts": "体験開始（現地時間）",
+    "free_cancellation": "24時間前まで無料キャンセル",
+    "reserve_now_pay_later": "今すぐ予約＆後払い",
+    "secure_spot_flexible": "柔軟性を保ちながら場所を確保"
+  },
   "components_AccountPass": {
     "components_AccountPass_Confirm_Password": "パスワードを確認する",
     "components_AccountPass_Current_Password": "現在のパスワード",

@@ -326,6 +326,12 @@
     "sign_up": "회원가입",
     "wishlist": "위시리스트"
   },
+  "BookNowPayLater": {
+    "experience_starts": "체험 시작 (현지 시간)",
+    "free_cancellation": "24시간 전까지 무료 취소",
+    "reserve_now_pay_later": "지금 예약하고 나중에 결제",
+    "secure_spot_flexible": "유연성을 유지하면서 자리 확보"
+  },
   "components_AccountPass": {
     "components_AccountPass_Confirm_Password": "비밀번호 확인",
     "components_AccountPass_Current_Password": "현재 비밀번호",
