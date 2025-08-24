@@ -644,16 +644,17 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
 														{review.userName}
 													</h4>
 													{review.author && (
-														<div className="flex items-center text-sm text-gray-500">
+														<div className="flex items-center text-sm font-medium text-black">
 															<span>{review.author.location}</span>
 															<span className="mx-2">•</span>
 															<span>
-																{review.author.contributions} Contributions
+																{review.author.contributions}{' '}
+																{t('Contributions')}
 															</span>
 														</div>
 													)}
 												</div>
-												<div className="text-sm text-gray-500">
+												<div className="text-sm font-medium text-black">
 													{new Date(review.createdAt).toLocaleDateString(
 														'en-US',
 														{
@@ -687,9 +688,13 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
 													{review.content}
 												</p>
 
-												<div className="mb-3 flex flex-wrap gap-4 text-sm text-gray-500">
-													<span>Date of experience: {review.travelDate}</span>
-													<span>Trip type: {review.travelType}</span>
+												<div className="mb-3 flex flex-wrap gap-4 text-sm/6 font-semibold text-black">
+													<span>
+														{t('Date_Experience')} {review.travelDate}
+													</span>
+													<span>
+														{t('Trip_Type')} {review.travelType}
+													</span>
 												</div>
 
 												{review.images && review.images.length > 0 && (
