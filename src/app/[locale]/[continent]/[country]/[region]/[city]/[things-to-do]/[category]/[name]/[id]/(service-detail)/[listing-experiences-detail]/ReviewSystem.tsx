@@ -2,10 +2,11 @@
 
 import type React from 'react'
 import { useState, useEffect } from 'react'
-import { Star, Camera, ChevronDown, X } from 'lucide-react'
+import { Star, Circle, Camera, ChevronDown, X } from 'lucide-react'
 import Image from 'next/image'
 // import Avatar from '@/shared/Avatar'
 import ButtonPrimary from '@/shared/ButtonPrimary'
+
 import ButtonSecondary from '@/shared/ButtonSecondary'
 import Textarea from '@/shared/Textarea'
 import Input from '@/shared/Input'
@@ -345,19 +346,19 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
 											{t('Rate_Experience')}
 										</h4>
 										<div className="flex gap-1">
-											{[1, 2, 3, 4, 5].map((star) => (
+											{[1, 2, 3, 4, 5].map((circle) => (
 												<button
-													key={star}
+													key={circle}
 													type="button"
-													onClick={() => handleRatingChange(star)}
-													className={`transition-colors ${
-														rating >= star
-															? 'text-yellow-400'
+													onClick={() => handleRatingChange(circle)}
+													className={`flex h-13 w-13 items-center justify-center rounded-full transition-colors ${
+														rating >= circle
+															? 'text-green-600'
 															: 'text-gray-300 hover:text-gray-400'
 													}`}
 												>
-													<Star
-														className={`h-8 w-8 ${rating >= star ? 'fill-yellow-400' : ''}`}
+													<Circle
+														className={`h-9 w-9 ${rating >= circle ? 'fill-green-600' : ''}`}
 													/>
 												</button>
 											))}
@@ -558,9 +559,9 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
 						))}
 					</div>
 				) : reviews.length > 0 ? (
-					<div className="bg-white">
+					<div className="flex flex-col bg-white md:flex-row">
 						{/* Rating Summary Section */}
-						<div className="border-b border-gray-200 p-6">
+						<div className="flex w-full flex-col gap-8 border-b border-gray-200 p-6 md:w-1/3">
 							<div className="flex flex-col gap-8 md:flex-row md:items-start">
 								{/* Overall Rating */}
 								<div className="flex flex-col items-center md:items-start">
@@ -571,14 +572,21 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
 										<div className="text-lg text-gray-600">/ 5</div>
 									</div>
 									<div className="mb-2 flex gap-1">
-										{[1, 2, 3, 4, 5].map((star) => (
+										{/* {[1, 2, 3, 4, 5].map((star) => (
 											<Star
 												key={star}
 												className={`h-5 w-5 ${
 													star <= Math.round(Number.parseFloat(averageRating))
-														? 'fill-yellow-400 text-yellow-400'
+														? 'fill-green-600 text-green-600'
 														: 'fill-gray-300 text-gray-300'
 												}`}
+											/>
+										))} */}
+
+										{[1, 2, 3, 4, 5].map((circle) => (
+											<Circle
+												key={circle}
+												className={`h-4.5 w-4.5 ${circle <= Math.round(Number.parseFloat(averageRating)) ? 'fill-green-600 text-green-600' : 'text-gray-300'}`}
 											/>
 										))}
 									</div>
@@ -592,13 +600,15 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
 								<div className="flex-1 space-y-2">
 									{[5, 4, 3, 2, 1].map((rating) => (
 										<div key={rating} className="flex items-center gap-3">
-											<div className="flex w-20 items-center gap-1 text-sm font-medium text-gray-700">
+											{/* <div className="flex w-20 items-center gap-1 text-sm font-medium text-gray-700">
 												<span>{rating}</span>
-												<Star className="h-3 w-3 fill-gray-400 text-gray-400" />
-											</div>
-											<div className="h-2 flex-1 overflow-hidden rounded-full bg-gray-200">
+												<Circle
+													className={`h-4.5 w-4.5 fill-green-600 text-green-600`}
+												/>
+											</div> */}
+											<div className="h-4 w-full overflow-hidden rounded-full bg-gray-200">
 												<div
-													className="h-full rounded-full bg-yellow-400 transition-all duration-300"
+													className="h-full rounded-full bg-green-600 transition-all duration-300"
 													style={{
 														width:
 															totalReviews > 0
@@ -621,7 +631,7 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
 						</div>
 
 						{/* Individual Reviews */}
-						<div className="divide-y divide-gray-200">
+						<div className="w-full space-y-6 divide-y divide-gray-200 px-6 pb-6 md:w-2/3">
 							{reviews.map((review) => (
 								<div key={review.id} className="p-6">
 									<div className="flex items-start gap-4">
@@ -669,14 +679,10 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
 											<div className="mt-3">
 												<div className="mb-2 flex items-center gap-2">
 													<div className="flex gap-0.5">
-														{[1, 2, 3, 4, 5].map((star) => (
-															<Star
-																key={star}
-																className={`h-4 w-4 ${
-																	star <= review.rating
-																		? 'fill-yellow-400 text-yellow-400'
-																		: 'fill-gray-300 text-gray-300'
-																}`}
+														{[1, 2, 3, 4, 5].map((circle) => (
+															<Circle
+																key={circle}
+																className={`h-4.5 w-4.5 ${circle <= review.rating ? 'fill-green-600 text-green-600' : 'text-gray-300'}`}
 															/>
 														))}
 													</div>
