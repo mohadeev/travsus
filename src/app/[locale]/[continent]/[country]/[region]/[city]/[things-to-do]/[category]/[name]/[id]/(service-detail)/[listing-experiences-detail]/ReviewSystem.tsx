@@ -562,7 +562,7 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
 					<div className="flex flex-col bg-white md:flex-row">
 						{/* Rating Summary Section */}
 						<div className="flex w-full flex-col gap-8 border-b border-gray-200 p-6 md:w-1/3">
-							<div className="flex flex-col gap-8 md:flex-row md:items-start">
+							<div className="flex flex-col gap-8 md:items-start">
 								{/* Overall Rating */}
 								<div className="flex flex-col items-center md:items-start">
 									<div className="mb-2 flex items-baseline gap-2">
@@ -572,17 +572,6 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
 										<div className="text-lg text-gray-600">/ 5</div>
 									</div>
 									<div className="mb-2 flex gap-1">
-										{/* {[1, 2, 3, 4, 5].map((star) => (
-											<Star
-												key={star}
-												className={`h-5 w-5 ${
-													star <= Math.round(Number.parseFloat(averageRating))
-														? 'fill-green-600 text-green-600'
-														: 'fill-gray-300 text-gray-300'
-												}`}
-											/>
-										))} */}
-
 										{[1, 2, 3, 4, 5].map((circle) => (
 											<Circle
 												key={circle}
