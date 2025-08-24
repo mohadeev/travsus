@@ -12,9 +12,15 @@ function generateVerificationCode(): string {
 export async function POST(req: Request) {
 	console.log('POST request received for signup')
 	try {
-		const { email, password, firstName, lastName } = await req.json()
-		console.log('Received email and password')
-		if (!email || !password || !firstName || !lastName) {
+		const { email, password, fullName, firstName, lastName } = await req.json()
+		console.log(
+			'Received email and password',
+			email,
+			password,
+			firstName,
+			lastName,
+		)
+		if (!email || !password || !fullName) {
 			console.log('Email, password, firstName, or lastName missing')
 			return NextResponse.json(
 				{ error: 'Email, password, first name, and last name are required' },
@@ -50,7 +56,7 @@ export async function POST(req: Request) {
 			data: {
 				email,
 				password: hashedPassword,
-				accountData: { firstname: firstName, lastname: lastName },
+				accountData: { firstname: fullName, lastname: '' },
 				emailVerified: false,
 				verificationLinkToken,
 				verificationCodeToken,

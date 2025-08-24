@@ -2,6 +2,9 @@ import { type NextRequest, NextResponse } from 'next/server'
 import prisma from '@/prisma'
 import { placesClient } from '@/lib/prisma'
 import { OpenAI } from 'openai'
+import getUserData from '@/app/api/user/getUserData'
+import { getServerSession } from 'next-auth'
+import { authOptions } from '@/app/api/auth/[...nextauth]/authOptions'
 
 // Initialize OpenAI client
 const openai = new OpenAI({
@@ -53,15 +56,15 @@ async function getGeoCoordinatesFromOpenAI(
 		const locationText = countryName ? `${cityName}, ${countryName}` : cityName
 
 		const prompt = `
-      I need the precise latitude and longitude coordinates for ${locationText}.
-      Please provide ONLY a valid JSON object with these fields:
-      {
-        "lat": [latitude as a number],
-        "log": [longitude as a number]
-      }
-      
-      Only return the JSON object, nothing else. Ensure the values are numbers, not strings.
-    `
+		I need the precise latitude and longitude coordinates for ${locationText}.
+		Please provide ONLY a valid JSON object with these fields:
+		{
+			"lat": [latitude as a number],
+			"log": [longitude as a number]
+		}
+		
+		Only return the JSON object, nothing else. Ensure the values are numbers, not strings.
+		`
 
 		const completion = await openai.chat.completions.create({
 			model: 'gpt-4-turbo',
@@ -120,10 +123,10 @@ export async function GET(request: NextRequest) {
 		const { searchParams } = new URL(request.url)
 		const id = searchParams.get('id')
 		const languageCode = extractLanguageFromRequest(request)
-		console.log('Detected language:', languageCode)
 		const reviewsCount = await prisma.review.count({
 			where: { tourId: id },
 		})
+		const currentUser: any = await getServerSession(authOptions)
 
 		const includeUser = true
 		const reviews = await prisma.review.findMany({
@@ -465,6 +468,13 @@ export async function GET(request: NextRequest) {
 			}
 		}
 
+		console.log('--------------------------------------------------------	')
+		console.log('--------------------------------------------------------	')
+		console.log('--------------------------------------------------------	')
+		console.log('-----------------------------')
+		console.log('-----------------------------')
+
+		console.log('-----------------------------')
 		const tourData = {
 			...tour,
 			formattedReviews,

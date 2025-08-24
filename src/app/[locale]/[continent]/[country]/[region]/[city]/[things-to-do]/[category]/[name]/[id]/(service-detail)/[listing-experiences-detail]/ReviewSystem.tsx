@@ -278,6 +278,10 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
 		)
 	}
 
+	const handleWriteReview = useAuthAction(async () => {
+		setShowReviewForm(!showReviewForm)
+	})
+
 	return (
 		<div id="experience_reviews" className="mb-10 mt-10 w-full">
 			{/* Reviews Section */}
@@ -288,7 +292,7 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
 							{t('Reviews')} ({reviews.length})
 						</h2>
 						{reviews.length >= 1 ? (
-							<ButtonPrimary onClick={() => setShowReviewForm(!showReviewForm)}>
+							<ButtonPrimary onClick={() => handleWriteReview()}>
 								{t('Write_Review')}
 							</ButtonPrimary>
 						) : (

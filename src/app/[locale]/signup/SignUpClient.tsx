@@ -83,7 +83,7 @@ export default function SignUpClient({
 			const response = await fetch('/api/auth/signup', {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ name, email, password }),
+				body: JSON.stringify({ fullName: name, email, password }),
 			})
 
 			if (response.ok) {

@@ -73,6 +73,27 @@ export const authOptions: NextAuthOptions = {
 		signIn: '/login',
 	},
 	callbacks: {
+		async jwt({ token, user }) {
+			// Runs at login
+			if (user) {
+				token.id = user.id
+				token.email = user.email
+				token.name = user.name
+			}
+			return token
+		},
+		async session({ session, token }) {
+			console.log()
+			// Expose token fields into session.user
+			if (token) {
+				session.user = {
+					id: token.id as string,
+					email: token.email as string,
+					name: token.name as string,
+				}
+			}
+			return session
+		},
 		async signIn({ user, account, profile }) {
 			// Only proceed for Google provider
 			if (account?.provider === 'google' && user.email) {

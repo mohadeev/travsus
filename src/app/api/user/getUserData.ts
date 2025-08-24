@@ -11,15 +11,13 @@ const getUserData = async (data?: any) => {
 	// 	provider: true,
 	// },
 
-	const session: any = await getServerSession(authOptions)
-
 	const currentUser: any = await getServerSession(authOptions)
+	console.log('currentUser: ', currentUser)
 	if (currentUser) {
 		const user = await prisma.user.findUnique({
 			where: {
 				email: currentUser?.user?.email, // Assuming `currentUser` has the user ID
 			},
-			include,
 		})
 		return user
 	} else {

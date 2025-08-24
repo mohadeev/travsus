@@ -6,8 +6,8 @@ import ListingExperiencesDetailPage from './[listing-experiences-detail]/page'
 import type { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 import { slugify } from 'transliteration'
+import getUserData from '@/app/api/user/getUserData'
 
-// ... (your existing interfaces remain the same)
 interface Review {
 	rating?: number
 	userName?: string
@@ -89,6 +89,7 @@ interface Inclusions {
 }
 
 interface ServiceData {
+	liked: boolean
 	id: string
 	creatorId: string
 	businessId: string
@@ -266,13 +267,14 @@ export async function generateMetadata({
 		// Fetch tour details
 		const serviceDataResponse = await fetch(
 			`${process.env.NEXTAUTH_URL}/api/listing/get/getTourData?id=${serviceId}&locale=${locale}`,
-			{
-				method: 'GET',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				next: { revalidate: 3600 }, // Cache for 1 hour
-			},
+			// {
+			// 	method: 'GET',
+			// 	headers: {
+			// 		'Content-Type': 'application/json',
+			// 	},
+			// 	credentials: 'include', // 🔑 this forwards cookies
+			// 	// next: { revalidate: 3600 }, // Cache for 1 hour
+			// },
 		)
 
 		if (!serviceDataResponse.ok) {
@@ -413,9 +415,12 @@ const DetailLayout = async ({ children, params }: DetailLayoutProps) => {
 			}
 			throw new Error(`HTTP error! status: ${serviceDataResponse.status}`)
 		}
+		{
+		}
 
 		const serviceData: ServiceData = await serviceDataResponse.json()
-
+		const user = await getUserData()
+		serviceData.liked = user?.savedList?.includes(serviceData.id)
 		// Fetch dynamic pricing
 		const prices = await updateLineItemsLogic({
 			tour: serviceData,
