@@ -1,4 +1,5 @@
 import { NextIntlClientProvider, hasLocale } from 'next-intl'
+import { fontVariables } from '@/lib/fonts'
 
 import '../globals.css'
 import '@/fonts/line-awesome-1.3.0/css/line-awesome.css'
@@ -23,8 +24,13 @@ export default async function RootLayout({
 
 	const isLocalhost = process.env.NODE_ENV === 'development'
 	return (
-		<html lang={locale}>
+		<html className={fontVariables} lang={locale}>
 			<head>
+				<link
+					href="https://fonts.cdnfonts.com/css/helvetica-neue-55"
+					rel="stylesheet"
+				/>
+
 				<meta name="google-adsense-account" content="ca-pub-9261275339248060" />
 				<link rel="preconnect" href="https://fonts.googleapis.com" />
 				<link

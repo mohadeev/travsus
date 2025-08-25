@@ -1,6 +1,7 @@
 // import type { Config } from "tailwindcss";
 import defaultTheme from "tailwindcss/defaultTheme";
 const colors = require("tailwindcss/colors");
+const { fontFamily } = require('tailwindcss/defaultTheme')
 
 // Custom color with css variable color
 function customColors(cssVar: string) {
@@ -32,7 +33,11 @@ const config: Config = {
       },
     },
     fontFamily: {
-      satoshi: ["Satoshi", "sans-serif"],
+       body: ['var(--font-body)', 'sans-serif'],
+      display: ['var(--font-display)', 'sans-serif'],
+      sans: ['var(--font-metropolis)', ...fontFamily.sans],
+
+      // satoshi: ["Satoshi"],
     },
     screens: {
       "2xsm": "375px",

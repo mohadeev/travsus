@@ -260,7 +260,7 @@ const TourHeader = () => {
 				{/* Mobile Content */}
 				<div className="space-y-4 py-4">
 					{/* Title */}
-					<h1 className="text-2xl font-bold leading-tight text-black">
+					<h1 className="text-2xl font-extrabold leading-tight text-black">
 						{String(title)}
 					</h1>
 
@@ -334,7 +334,7 @@ const TourHeader = () => {
 					<div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
 						{/* Title */}
 						<div className="min-w-0 flex-1">
-							<h1 className="text-2xl font-bold leading-tight text-black sm:text-3xl lg:text-4xl lg:leading-tight">
+							<h1 className="text-2xl font-extrabold leading-tight text-black sm:text-3xl lg:text-4xl lg:leading-tight">
 								{String(title)}
 							</h1>
 						</div>
