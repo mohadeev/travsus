@@ -5,14 +5,29 @@ import { updateBooking } from '../api-utils/actions/booking/updateBooking'
 import { createOrderNumber } from '@/app/actions/generateOrderNumber'
 
 const prisma = new PrismaClient()
+function extractTourId(url: any) {
+	// Split the URL by slashes
+	const parts = url.split('/')
+
+	// The ID is always the second to last part (before the query parameters)
+	const idWithParams = parts[parts.length - 2]
+
+	// If there are query parameters after the ID, split them off
+	const id = idWithParams.split('?')[0]
+
+	return id
+}
 
 export async function POST(request: NextRequest) {
+	const { id }: any = await getUserData({})
+	const referer = request.headers.get('referer') || ''
+	console.log('referer: ', referer)
+	const url = new URL(referer)
+	const searchParams = url.searchParams
+	// const serviceId: string = searchParams.get('serviceId') || ''
+	const serviceId = extractTourId(referer)
+	
 	try {
-		const { id }: any = await getUserData({})
-		const referer = request.headers.get('referer') || ''
-		const url = new URL(referer)
-		const searchParams = url.searchParams
-		const serviceId: string = searchParams.get('serviceId') || ''
 		const tour = await prisma.tour.findFirst({
 			where: { id: serviceId },
 		})
@@ -77,6 +92,7 @@ export async function POST(request: NextRequest) {
 		console.error('Error creating booking:', error)
 		return NextResponse.json(
 			{
+				serviceId: serviceId,
 				error: 'Failed to create dummy booking',
 				details: (error as Error).message,
 			},
