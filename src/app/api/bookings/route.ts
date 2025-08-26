@@ -24,9 +24,9 @@ export async function POST(request: NextRequest) {
 	console.log('referer: ', referer)
 	const url = new URL(referer)
 	const searchParams = url.searchParams
-	// const serviceId: string = searchParams.get('serviceId') || ''
-	const serviceId = extractTourId(referer)
-	
+	const serviceIdParam: string = searchParams.get('serviceId') || ''
+	const serviceId = serviceIdParam || extractTourId(referer) || ''
+
 	try {
 		const tour = await prisma.tour.findFirst({
 			where: { id: serviceId },

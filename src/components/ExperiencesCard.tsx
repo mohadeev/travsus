@@ -34,6 +34,7 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 }) => {
 	const t = useTranslations('components_ExperiencesCard')
 	const secondT = useTranslations('Jan03_TourHeader_x9k2')
+	const [clickedCard, setClickedCard] = useState(false)
 
 	const {
 		images: galleryImgs,
@@ -88,6 +89,13 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 	const href =
 		`/${slugify(day.continent.name)}/${slugify(day.country.name)}/${slugify(day.province.name)}/${slugify(day.city.name)}/${slugify(secondT('things_to_do_slug'))}/${slugify(secondT('tours'))}/${slugify(title)}/${serviceId}/q=tour` as Route
 
+	const handleCardClick = () => {
+		setClickedCard(true)
+		setTimeout(() => {
+			setClickedCard(false)
+		}, 1000) // Total animation time 1000ms
+	}
+
 	const renderSliderGallery = () => {
 		return (
 			<div
@@ -103,7 +111,7 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 					galleryImgs={galleryImgs}
 					href={href}
 					navigation={false}
-					galleryClass="rounded-xl" // Changed from rounded-xl to rounded-xl to match CountryCard
+					galleryClass="rounded-xl"
 				/>
 				<BtnLikeIcon
 					onClick={() => {
@@ -157,18 +165,38 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 							{t('components_ExperiencesCard_Per_Person')}
 						</span>
 					</span>
-					{/* <StartRating reviewCount={reviewCount} point={reviewStart} /> */}
 				</div>
 			</div>
 		)
 	}
 
 	return (
-		<div className={`nc-ExperiencesCard group relative ${className}`}>
-			<Link href={href} className="block overflow-hidden rounded-xl">
-				{renderSliderGallery()}
-			</Link>
-			<div>{renderContent()}</div>
+		<div
+			className={`nc-ExperiencesCard group relative ${className}`}
+			onClick={handleCardClick}
+		>
+			{/* Background animation - fast (300ms) */}
+			<div
+				className={`absolute inset-0 rounded-xl bg-gray-200 ${
+					clickedCard ? 'opacity-100' : 'opacity-0'
+				} z-0 transition-opacity duration-300`}
+			></div>
+
+			{/* Very thin border animation - slower (700ms) with delay */}
+			<div
+				className={`absolute inset-0 rounded-xl border ${
+					clickedCard
+						? 'border-gray-400 opacity-100'
+						: 'border-transparent opacity-0'
+				} pointer-events-none z-10 transition-all delay-300 duration-700`}
+			></div>
+
+			<div className="relative z-1 cursor-pointer">
+				<Link href={href} className="block overflow-hidden rounded-xl">
+					{renderSliderGallery()}
+				</Link>
+				<div>{renderContent()}</div>
+			</div>
 		</div>
 	)
 }

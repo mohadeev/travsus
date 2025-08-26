@@ -116,7 +116,7 @@ const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
 		}
 
 		fetchPaymentMethods()
-	}, [userId])
+	}, [])
 
 	const handlePayment = async (formData: any) => {
 		setLoading(true)

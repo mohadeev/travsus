@@ -12,6 +12,7 @@ import { useTranslations } from '@/lib/i18n'
 import ExperiencesCard from '@/components/ExperiencesCard'
 import TravelBanner from './TravelBanner'
 import BannerHome from './BannerHome'
+import TourCards from './TourCards'
 
 function ClientHomePage() {
 	const DUMMY_EXPERIENCE = {
@@ -154,6 +155,7 @@ function ClientHomePage() {
 			<main className="nc-PageHome3 relative">
 				<div className="mb-24 px-0 sm:px-0">
 					{/* <Home /> */}
+					{/* <TourCards /> */}
 					<TravelBanner />
 				</div>
 				<div className="container p-0 px-0">
