@@ -28,6 +28,7 @@ import { wakeUpServer } from '@/utils/wakeUpServer'
 // import createMailRelayUser from '@/utils/crm/createMailRelayUser'
 import NewsletterModal from './newsletter-modal'
 import { PlanTripModal } from './plan-trip-modal'
+import TawkToWidget from '@/components/TawkToWidget'
 
 export default function LocaleLayoutClient({
 	children,
@@ -65,6 +66,8 @@ export default function LocaleLayoutClient({
 						<div className="overflow-auto">
 							<CombinedCookieConsent />
 							<AuthModal />
+							<TawkToWidget />
+
 							{/* <PlanTripModal isOpen={true} onClose={()=>{}}/> */}
 							{!isDashboardPath && (
 								<ConditionalComponent show={true} component={SiteHeader} />

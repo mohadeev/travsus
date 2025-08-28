@@ -28,6 +28,7 @@ import MobileFooterSticky from '../(components)/MobileFooterSticky'
 import { imageGallery } from './constant'
 import { updateServiceState } from '@/app/GlobalRedux/Features/creatingServiceSlice/creatingServiceSlice'
 import BookingGuarantees from './BookingGuarantees'
+import TourPreBookingInfo from './TourPreBookingInfo'
 
 const MapComponent = dynamic(() => import('./tour-map'), {
 	ssr: false,
@@ -48,7 +49,6 @@ const ListingExperiencesDetailPage: FC<ListingExperiencesDetailPageProps> = ({
 	serviceData,
 }) => {
 	const t = useTranslations('servicedetail_listingexperiencesdetail_page')
-	console.log('serviceData', serviceData)
 	useEffect(() => {
 		;(async () => {
 			try {
@@ -84,10 +84,11 @@ const ListingExperiencesDetailPage: FC<ListingExperiencesDetailPageProps> = ({
 	const service: any = useSelector(
 		(state: any) => state.creatingServiceSlice.service,
 	)
-	console.log('service: ', service)
 
 	const city = startAddress?.city
-
+	useEffect(() => {
+		window.scrollTo(0, 0)
+	}, [service?.id])
 	const renderSection2 = () => {
 		return (
 			<>
@@ -252,13 +253,13 @@ const ListingExperiencesDetailPage: FC<ListingExperiencesDetailPageProps> = ({
 			</div>
 
 			<ListingExperiencesDetailsImages />
-
 			<div className={`nc-ListingExperiencesDetailPage container`}>
 				<main className="relative z-10 mt-11 flex flex-col lg:flex-row">
 					<div className="w-full space-y-8 lg:w-3/5 lg:space-y-10 lg:pr-10 xl:w-2/3">
 						{renderSection2()}
 						<Included />
 						<BookingGuarantees />
+						<TourFAQ faqs={faq} />
 					</div>
 
 					{/* SIDEBAR */}
@@ -268,6 +269,7 @@ const ListingExperiencesDetailPage: FC<ListingExperiencesDetailPageProps> = ({
 						</div>
 					</div>
 				</main>
+				<TourPreBookingInfo />
 				{days && (
 					<div>
 						<h4 className="my-4 text-2xl font-semibold">
@@ -278,7 +280,6 @@ const ListingExperiencesDetailPage: FC<ListingExperiencesDetailPageProps> = ({
 					</div>
 				)}
 
-				<TourFAQ faqs={faq} />
 				<ReviewSystem serviceId={id} serviceName={title} />
 				<ItemsCardList
 					locationType="tour"

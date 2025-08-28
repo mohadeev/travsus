@@ -127,6 +127,7 @@ const StayDatesRangeInput: FC<StayDatesRangeInputProps> = ({
 
 	return (
 		<Popover
+			id="StayDatesRangeInput_TOUR"
 			className={
 				t(
 					'app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_StayDatesRangeInput_Container_Classes',

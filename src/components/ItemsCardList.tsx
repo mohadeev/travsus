@@ -300,7 +300,15 @@ const ItemsCardList: FC<ItemsCardListProps> = ({
 									{!loading &&
 										toursData.map((stay: any) => (
 											<div key={stay?.id} className="flex-none">
-												<ExperiencesCard data={stay} size="small" />
+												<ExperiencesCard
+													data={{
+														...stay,
+														...{
+															guests: { guestAdults: 17 },
+														},
+													}}
+													size="small"
+												/>
 											</div>
 										))}
 									{loading && (

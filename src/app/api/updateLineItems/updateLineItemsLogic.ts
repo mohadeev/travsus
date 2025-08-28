@@ -30,9 +30,11 @@ export async function updateLineItemsLogic(data: TourData) {
 	const lineItems: LineItem[] = []
 	let { guests, accommodation, booking } = body
 	const accommodations: any = tour?.accommodations
+	// console.log('accommodation:', data)
 
 	let accommodationLineItem: any = {}
 	if (accommodation) {
+		console.log('price by accommodation')
 		accommodationLineItem = calculateAccommodationPrice(
 			accommodation,
 			accommodations,
@@ -61,6 +63,8 @@ export async function updateLineItemsLogic(data: TourData) {
 		}
 		lineItems.push(transportLineItem)
 	} else if (guests) {
+		console.log('price by guests')
+
 		const totalGuests = guests.guestAdults + guests.guestChildren
 		const getPriceTier = await travsusSdk({
 			subAction: 'findSpisificPricingTiers',

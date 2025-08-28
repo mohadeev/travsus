@@ -1,102 +1,31 @@
 {
 	"en-US": {
-		"PremiumTourBenefits": {
-			"free_cancellation": "Free cancellation",
-			"free_cancellation_description": "Full refund if canceled up to 24 hours before the start of the experience (local time)",
-			"reserve_now_pay_later": "Reserve now and pay later",
-			"reserve_now_pay_later_description": "Reserve your spot while maintaining flexibility.",
-			"lowest_price_guaranteed": "Lowest price guaranteed",
-			"lowest_price_guaranteed_description": "Found a lower price online? We'll refund the difference."
-		}
+		
 	},
 	"es-ES": {
-		"PremiumTourBenefits": {
-			"free_cancellation": "Cancelación gratuita",
-			"free_cancellation_description": "Reembolso completo si se cancela hasta 24 horas antes del inicio de la experiencia (hora local)",
-			"reserve_now_pay_later": "Reserva ahora y paga después",
-			"reserve_now_pay_later_description": "Reserva plaza manteniendo la flexibilidad.",
-			"lowest_price_guaranteed": "Precio más bajo garantizado",
-			"lowest_price_guaranteed_description": "¿Has encontrado un precio más bajo en Internet? Te reembolsamos la diferencia."
-		}
+		
 	},
 	"de-DE": {
-		"PremiumTourBenefits": {
-			"free_cancellation": "Kostenlose Stornierung",
-			"free_cancellation_description": "Vollständige Rückerstattung bei Stornierung bis zu 24 Stunden vor Beginn des Erlebnisses (Ortszeit)",
-			"reserve_now_pay_later": "Jetzt reservieren und später bezahlen",
-			"reserve_now_pay_later_description": "Sichern Sie Ihren Platz und bleiben Sie flexibel.",
-			"lowest_price_guaranteed": "Garantierter niedrigster Preis",
-			"lowest_price_guaranteed_description": "Einen niedrigeren Preis online gefunden? Wir erstatten die Differenz."
-		}
+		
 	},
 	"fr-FR": {
-		"PremiumTourBenefits": {
-			"free_cancellation": "Annulation gratuite",
-			"free_cancellation_description": "Remboursement complet si annulé jusqu'à 24 heures avant le début de l'expérience (heure locale)",
-			"reserve_now_pay_later": "Réservez maintenant et payez plus tard",
-			"reserve_now_pay_later_description": "Réservez votre place en gardant votre flexibilité.",
-			"lowest_price_guaranteed": "Prix le plus bas garanti",
-			"lowest_price_guaranteed_description": "Vous avez trouvé un prix inférieur en ligne ? Nous vous remboursons la différence."
-		}
+		
 	},
 	"ja-JP": {
-		"PremiumTourBenefits": {
-			"free_cancellation": "無料キャンセル",
-			"free_cancellation_description": "体験開始の24時間前まで（現地時間）にキャンセルした場合、全額返金",
-			"reserve_now_pay_later": "今すぐ予約、後払い",
-			"reserve_now_pay_later_description": "柔軟性を保ちながら場所を確保。",
-			"lowest_price_guaranteed": "最低価格保証",
-			"lowest_price_guaranteed_description": "オンラインでより安い価格を見つけましたか？差額を返金します。"
-		}
-	},
+		
 	"pt-PT": {
-		"PremiumTourBenefits": {
-			"free_cancellation": "Cancelamento gratuito",
-			"free_cancellation_description": "Reembolso total se cancelado até 24 horas antes do início da experiência (hora local)",
-			"reserve_now_pay_later": "Reserve agora e pague depois",
-			"reserve_now_pay_later_description": "Reserve seu lugar mantendo a flexibilidade.",
-			"lowest_price_guaranteed": "Preço mais baixo garantido",
-			"lowest_price_guaranteed_description": "Encontrou um preço mais baixo online? Reembolsamos a diferença."
-		}
+		
 	},
 	"it-IT": {
-		"PremiumTourBenefits": {
-			"free_cancellation": "Cancellazione gratuita",
-			"free_cancellation_description": "Rimborso completo se cancellato fino a 24 ore prima dell'inizio dell'esperienza (ora locale)",
-			"reserve_now_pay_later": "Prenota ora e paga dopo",
-			"reserve_now_pay_later_description": "Prenota il tuo posto mantenendo la flessibilità.",
-			"lowest_price_guaranteed": "Prezzo più basso garantito",
-			"lowest_price_guaranteed_description": "Hai trovato un prezzo più basso online? Rimborsiamo la differenza."
-		}
+		
 	},
 	"ru-RU": {
-		"PremiumTourBenefits": {
-			"free_cancellation": "Бесплатная отмена",
-			"free_cancellation_description": "Полный возврат средств при отмене до 24 часов до начала мероприятия (местное время)",
-			"reserve_now_pay_later": "Забронируйте сейчас и оплатите позже",
-			"reserve_now_pay_later_description": "Забронируйте место, сохраняя гибкость.",
-			"lowest_price_guaranteed": "Гарантия самой низкой цены",
-			"lowest_price_guaranteed_description": "Нашли более низкую цену в интернете? Мы вернем разницу."
-		}
+		
 	},
 	"zh-CN": {
-		"PremiumTourBenefits": {
-			"free_cancellation": "免费取消",
-			"free_cancellation_description": "在体验开始前24小时（当地时间）取消可获全额退款",
-			"reserve_now_pay_later": "立即预订，稍后付款",
-			"reserve_now_pay_later_description": "在保持灵活性的同时确保您的位置。",
-			"lowest_price_guaranteed": "最低价格保证",
-			"lowest_price_guaranteed_description": "在网上找到更低的价格？我们将退还差价。"
-		}
+		
 	},
 	"ko-KR": {
-		"PremiumTourBenefits": {
-			"free_cancellation": "무료 취소",
-			"free_cancellation_description": "체험 시작 24시간 전(현지 시간)까지 취소 시 전액 환불",
-			"reserve_now_pay_later": "지금 예약하고 나중에 결제",
-			"reserve_now_pay_later_description": "유연성을 유지하면서 자리를 예약하세요.",
-			"lowest_price_guaranteed": "최저가 보장",
-			"lowest_price_guaranteed_description": "온라인에서 더 낮은 가격을 찾으셨나요? 차액을 환불해 드립니다."
-		}
+		
 	}
 }

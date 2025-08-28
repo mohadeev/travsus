@@ -120,9 +120,14 @@ const RenderSidebar: FC<RenderSidebarProps> = ({}) => {
 
 	const handleReserveClick = useAuthAction(async () => {
 		if (!isDateSelected) {
+			const section = document.getElementById('StayDatesRangeInput_TOUR')
+			if (section) {
+				section.scrollIntoView({ behavior: 'smooth' })
+			}
 			setIsShaking(true)
 			setShowError(true)
-			setTimeout(() => setIsShaking(false), 1500) // 3 flashes in 1.5 seconds
+
+			setTimeout(() => setIsShaking(false), 5000) // 3 flashes in 1.5 seconds
 		} else {
 			const createBooking = async () => {
 				setCurrentStatus('loading')
@@ -180,6 +185,11 @@ const RenderSidebar: FC<RenderSidebarProps> = ({}) => {
 							isFlashing={isShaking}
 							duration={days?.length}
 						/>
+						{showError && (
+							<p className="mt-2 text-sm text-red-500">
+								{t('select_date_error')}
+							</p>
+						)}
 						<div className="w-full border-b border-neutral-200 dark:border-neutral-700"></div>
 
 						{isNotInitiated && (
@@ -220,12 +230,6 @@ const RenderSidebar: FC<RenderSidebarProps> = ({}) => {
 					>
 						{status === 'loading' ? t('processing') : t('reserve')}
 					</Button>
-
-					{showError && (
-						<p className="mt-2 text-sm text-red-500">
-							{t('select_date_error')}
-						</p>
-					)}
 				</>
 			) : (
 				<SidebarSkeletonLoader />

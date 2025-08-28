@@ -203,7 +203,7 @@ button.gm-control-active.gm-fullscreen-control {
 	@apply flex w-full flex-col space-y-6 border-b border-neutral-200 px-0 pb-10 dark:border-neutral-700 sm:space-y-8 sm:rounded-2xl sm:border-l sm:border-r sm:border-t sm:p-4 xl:p-8;
 }
 .listingSection__wrap_no_border_color {
-	@apply flex w-full flex-col space-y-6 sm:space-y-8 sm:rounded-2xl sm:p-4 xl:p-8;
+	@apply flex w-full flex-col items-start justify-start space-y-6 bg-slate-200 sm:space-y-8 sm:rounded-2xl;
 }
 // LISTING PAGE DETAIL
 .smallTextGray {

@@ -9,4 +9,4 @@ const prisma = new UsersPrismaClient()
 export default prisma
 
 // Named export for `placesClient`
-export { placesClient }
+export { placesClient, prisma }

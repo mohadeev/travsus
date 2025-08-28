@@ -3,16 +3,16 @@ import { defineRouting } from 'next-intl/routing'
 export const routing = defineRouting({
 	// A list of all locales that are supported
 	locales: [
-		'en-US',
-		'de-DE',
-		'es-ES',
-		'fr-FR',
-		'it-IT',
-		'ja-JP',
-		'ko-KR',
-		'pt-PT',
-		'ru-RU',
-		'zh-CN',
+		'en-us',
+		'de-de',
+		'es-es',
+		'fr-fr',
+		'it-it',
+		'ja-jp',
+		'ko-kr',
+		'pt-pt',
+		'ru-ru',
+		'zh-cn',
 	],
 
 	//  [
@@ -71,5 +71,5 @@ export const routing = defineRouting({
 	// 	'zh-TW',
 	// ],
 	// Used when no locale matches
-	defaultLocale: 'en-US',
+	defaultLocale: 'en-us',
 })

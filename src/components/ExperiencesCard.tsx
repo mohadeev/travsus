@@ -13,9 +13,10 @@ import { MapPinIcon } from '@heroicons/react/24/outline'
 import type { Route } from '@/routers/types'
 import { updateLineItemsLogic } from '@/app/api/updateLineItems/updateLineItemsLogic'
 import { formatCurrency } from '@/utils/formatCurrency'
-// import slugify from '@/utils/slugify'
+import slugifySecond from '@/utils/slugify'
 import { useTranslations } from '@/lib/i18n'
 import { transliterate as tr, slugify } from 'transliteration'
+import { useLocale } from 'next-intl'
 
 export interface ExperiencesCardProps {
 	className?: string
@@ -34,6 +35,9 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 }) => {
 	const t = useTranslations('components_ExperiencesCard')
 	const secondT = useTranslations('Jan03_TourHeader_x9k2')
+	const T3 = useTranslations('TourPageMetadata')
+	const locale = useLocale()
+
 	const [clickedCard, setClickedCard] = useState(false)
 
 	const {
@@ -51,13 +55,21 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 		start,
 		liked,
 		days,
+		accommodations,
 	}: any = data
 	const [priceData, setPriceData] = useState({})
 	const day = days[0]
 
+	console.log('accommodations: ', accommodations)
 	useEffect(() => {
 		const pricesData = async () => {
-			const prices: any = await updateLineItemsLogic({ tour: data, body: {} })
+			const prices: any = await updateLineItemsLogic({
+				tour: data,
+				body: {
+					guests: { guestAdults: 18, guestChildren: 0 },
+					source: 'ExperiencesCard',
+				},
+			})
 			setPriceData(prices)
 		}
 		pricesData()
@@ -66,6 +78,7 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 	// const { booking, status } = useSelector((state: any) => state.bookingSlice)
 	const { guests, lineItems, accommodation, transport, bookOwnHotels }: any =
 		priceData || {}
+	console.log('guests: ', guests, priceData)
 
 	const totalGuests: number = guests?.guestAdults + guests?.guestChildren
 
@@ -86,8 +99,9 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 		return input?.toLowerCase()?.replace(/\s+/g, '-')
 	}
 
-	const href =
-		`/${slugify(day.continent.name)}/${slugify(day.country.name)}/${slugify(day.province.name)}/${slugify(day.city.name)}/${slugify(secondT('things_to_do_slug'))}/${slugify(secondT('tours'))}/${slugify(title)}/${serviceId}/q=tour` as Route
+	const href = slugifySecond(
+		`${locale}/${slugify(day.continent.name)}/${slugify(day.country.name)}/${slugify(day.province.name)}/${slugify(day.city.name)}/${slugify(secondT('things_to_do_slug'))}/${slugify(secondT('tours'))}/${slugify(title)}/${serviceId}/q=tour`,
+	) as Route
 
 	const handleCardClick = () => {
 		setClickedCard(true)
@@ -160,7 +174,10 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 				</div>
 				<div className="mt-2 flex items-center justify-between">
 					<span className="text-base font-semibold">
-						{formatCurrency(priceStart)}
+						{T3('TourPage_price_range', {
+							minPrice: priceStart?.toFixed(2),
+							currency: '€',
+						})}
 						<span className="ml-1 text-sm font-normal text-neutral-500 dark:text-neutral-400">
 							{t('components_ExperiencesCard_Per_Person')}
 						</span>
