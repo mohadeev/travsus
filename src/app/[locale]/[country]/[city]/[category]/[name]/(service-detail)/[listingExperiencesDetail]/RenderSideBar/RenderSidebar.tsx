@@ -3,8 +3,8 @@
 import { type FC, useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import StartRating from '@/components/StartRating'
-import StayDatesRangeInput from './StayDatesRangeInput'
-import GuestsInput from './GuestsInput'
+import StayDatesRangeInput from '../StayDatesRangeInput'
+import GuestsInput from '../GuestsInput'
 import type { Route } from 'next'
 import { useDispatch, useSelector } from 'react-redux'
 import {
@@ -14,16 +14,16 @@ import {
 	setSelectedDate,
 	updateProvidedService,
 } from '@/app/GlobalRedux/Features/bookingSlice/bookingSlice'
-import LineItemsBreakdown from './LineItemsBreakdown'
-import TransportTypes from './TransportTypes'
-import RowBedAccommodationSelector from './RowBedAccommodationSelector'
-import AcommodationAndTransport from './listing-components/AcommodationAndTransport'
-import SidebarSkeletonLoader from './SidebarSkeletonLoader'
+import LineItemsBreakdown from '../LineItems/LineItemsBreakdown'
+import TransportTypes from '../TransportTypes'
+import RowBedAccommodationSelector from '../RowBedAccommodationSelector'
+import AcommodationAndTransport from '../listing-components/AcommodationAndTransport'
+import SidebarSkeletonLoader from '../SidebarSkeletonLoader'
 import { Button } from '@/components/ui'
 import { formatCurrency } from '@/utils/formatCurrency'
 import { useAuthAction } from '@/app/hooks/useAuthAction'
 import { useTranslations } from 'next-intl'
-import BookNowPayLatter from './BookNowPayLatter'
+import BookNowPayLatter from '../BookNowPayLatter'
 
 export type RenderSidebarProps = {}
 

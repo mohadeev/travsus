@@ -12,7 +12,6 @@ import ptPT from '../../messages/pt-PT.json'
 import ruRU from '../../messages/ru-RU.json'
 import zhCN from '../../messages/zh-CN.json'
 
-console.log('enUS:', enUS)
 
 export const messages = {
 	'en-US': enUS,

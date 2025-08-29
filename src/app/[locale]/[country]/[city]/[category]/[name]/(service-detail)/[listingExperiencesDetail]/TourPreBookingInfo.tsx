@@ -19,7 +19,7 @@ export default function BookingInfo() {
 	const textclassName = 'text-xs font-medium text-black underline'
 
 	return (
-		<div className="grid grid-cols-1 gap-10 rounded-2xl bg-white p-8 text-gray-800 shadow-sm md:grid-cols-2">
+		<div className="my-10 grid grid-cols-1 gap-10 rounded-2xl bg-red p-0 text-gray-800 md:grid-cols-2">
 			{/* Accessibility */}
 			<div className="flex items-start space-x-3">
 				<span className="rounded-full border-2 border-black p-2">
@@ -67,25 +67,25 @@ export default function BookingInfo() {
 				</span>
 				<div>
 					<h2 className="mb-2 text-lg font-semibold text-black">{t('help')}</h2>
-					<p className="text-xs font-medium text-black">
+					<p className="text-base text-black">
 						{t('help_description')}{' '}
 						<span className="font-semibold">110964P11</span>
 					</p>
-					<div className="mt-3 space-y-2">
-						<p className="flex items-center space-x-2 text-xs font-medium text-black">
-							<Phone className="h-5 w-5 text-black" />
+					<div className="mt-3 flex flex-col space-y-4 sm:flex-row sm:gap-6 sm:space-y-0">
+						<p className="flex items-center gap-3">
+							<Phone className="h-4 w-4 text-black" />
 							<a
 								href="tel:+34911776743"
-								className="font-semibold text-black hover:underline"
+								className="text-xs font-semibold text-black hover:underline"
 							>
 								+34 643 63 5962
 							</a>
 						</p>
-						<p className="flex items-center space-x-2 text-xs font-medium text-black">
-							<MessageCircle className="h-5 w-5 text-black" />
+						<p className="flex items-center gap-3">
+							<MessageCircle className="h-4 w-4 text-black" />
 							<button
 								onClick={hanelToggle}
-								className="font-semibold text-black hover:underline"
+								className="text-xs font-semibold text-black hover:underline"
 							>
 								{t('chat_now')}
 							</button>

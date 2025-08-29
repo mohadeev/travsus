@@ -11,7 +11,7 @@ import {
 	setPricePerSeat,
 	setSelectedDate,
 } from '@/app/GlobalRedux/Features/bookingSlice/bookingSlice'
-import RenderSidebar from './RenderSidebar'
+import RenderSidebar from './RenderSideBar/RenderSidebar'
 import ListingExperiencesDetailsImages from './ListingExperiencesDetailsImages'
 import ExperiencesDescriptionSkeleton from './ExperiencesDescriptionSkeleton'
 import dynamic from 'next/dynamic'

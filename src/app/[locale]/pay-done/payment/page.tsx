@@ -11,7 +11,7 @@ import { useSearchParams } from 'next/navigation'
 import { Button } from '@/components/ui'
 import converSelectedDateToString from '@/utils/converSelectedDateToString'
 import { useTranslations } from 'next-intl'
-import LineItemsBreakdown from '../../[country]/[city]/[category]/[name]/(service-detail)/[listingExperiencesDetail]/LineItemsBreakdown'
+import LineItemsBreakdown from '../../[country]/[city]/[category]/[name]/(service-detail)/[listingExperiencesDetail]/LineItems/LineItemsBreakdown'
 import { BookingCard } from '../../checkout/checkout/BookingBreakDownCard'
 
 export interface PayPageProps {}

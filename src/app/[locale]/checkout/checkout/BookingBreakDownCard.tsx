@@ -1,7 +1,7 @@
 // import LineItemsBreakdown from '@/app/(service-detail)/[listingExperiencesDetail]/LineItemsBreakdown'
 import Image from 'next/image'
 import React from 'react'
-import LineItemsBreakdown from '../../[country]/[city]/[category]/[name]/(service-detail)/[listingExperiencesDetail]/LineItemsBreakdown'
+import LineItemsBreakdown from '../../[country]/[city]/[category]/[name]/(service-detail)/[listingExperiencesDetail]/LineItems/LineItemsBreakdown'
 // import LineItemsBreakdown from '../../[country]/[city]/[category]/[name]/(service-detail)/[listingExperiencesDetail]/LineItemsBreakdown'
 
 const BookingBreakDownCard = ({ booking }: any) => {

@@ -15,6 +15,7 @@ import { useSelector } from 'react-redux'
 import { useAuthAction } from '@/app/hooks/useAuthAction'
 import { useTranslations } from '@/lib/i18n'
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
+import { useLocale } from 'next-intl'
 
 interface ReviewProps {
 	serviceId: string
@@ -57,6 +58,7 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
 	const [reviews, setReviews] = useState<ReviewType[]>([])
 	const [isLoading, setIsLoading] = useState(true)
 	const [isSubmitting, setIsSubmitting] = useState(false)
+	const locale = useLocale()
 
 	// Get tour data from Redux store
 	const tourData =
@@ -657,7 +659,7 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
 												</div>
 												<div className="text-sm font-medium text-black">
 													{new Date(review.createdAt).toLocaleDateString(
-														'en-US',
+														locale,
 														{
 															year: 'numeric',
 															month: 'long',
@@ -694,7 +696,7 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
 														{t('Date_Experience')} {review.travelDate}
 													</span>
 													<span>
-														{t('Trip_Type')} {review.travelType}
+														{t('Trip_Type')} {t(review.travelType)}
 													</span>
 												</div>
 
