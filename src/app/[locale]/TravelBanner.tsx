@@ -6,13 +6,13 @@ import { useTranslations } from '@/lib/i18n'
 export default function TravelBanner() {
 	const t = useTranslations('Jan03_TravelBanner_q5w7')
 	return (
-		<div className="w-full py-4">
+		<div className="my-10 w-full py-4">
 			{/* Travel Services Banner */}
 			<div className="mx-auto w-full max-w-6xl">
-				<div className="flex min-h-[400px] flex-col items-start gap-8 lg:flex-row-reverse lg:gap-12">
+				<div className="flex min-h-[400px] flex-col items-start justify-start gap-8 lg:flex-row-reverse lg:gap-12">
 					{/* Content Section - 50% */}
 					<div className="order-1 w-full p-4 text-center lg:order-none lg:w-1/2 lg:text-left">
-						<h1 className="mb-6 text-5xl font-black leading-tight tracking-tight text-black md:text-6xl lg:text-7xl xl:text-[100px]">
+						<h1 className="mb-6 text-xl font-black leading-tight tracking-tight text-black md:text-6xl lg:text-xl xl:text-[40px]">
 							{t('Ready_To_Go')}
 						</h1>
 						<p className="mb-8 text-lg font-light leading-relaxed text-gray-600 md:text-xl">
@@ -31,13 +31,13 @@ export default function TravelBanner() {
 					</div>
 
 					{/* Image Section - 50% */}
-					<div className="order-2 w-full p-4 lg:order-none lg:w-1/2">
-						<Image
+					<div className="order-2 flex w-full items-start justify-start p-0 lg:order-none lg:w-1/2">
+						<img
 							src="/images/travel-illustration.png"
 							alt={t('Travel_Services_Alt')}
-							width={400}
-							height={400}
-							className="aspect-square mx-auto w-full rounded-2xl object-cover lg:max-w-[450px]"
+							// width={400}
+							// height={400}
+							className="aspect-square w-full rounded-2xl object-cover"
 						/>
 					</div>
 

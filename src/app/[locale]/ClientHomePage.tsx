@@ -154,9 +154,8 @@ function ClientHomePage() {
 			/>
 			<main className="nc-PageHome3 relative">
 				<div className="mb-24 px-0 sm:px-0">
-					{/* <Home /> */}
+					<Home />
 					{/* <TourCards /> */}
-					<TravelBanner />
 				</div>
 				<div className="container p-0 px-0">
 					{/* <SectionGridFeaturePlaces /> */}
@@ -174,6 +173,8 @@ function ClientHomePage() {
 						cityId="67e5a961636b9ead6fb9b280"
 						layout="row"
 					/> */}
+					<TravelBanner />
+
 					{/* <BannerHome /> */}
 				</div>
 
