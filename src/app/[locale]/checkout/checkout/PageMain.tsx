@@ -17,10 +17,10 @@ import {
 	updateBookingState,
 } from '@/app/GlobalRedux/Features/bookingSlice/bookingSlice'
 import { checkBooking } from '@/lib/checkBooking'
-import RowBedAccommodationSelector from '../../[continent]/[country]/[region]/[city]/[things-to-do]/[category]/[name]/[id]/(service-detail)/[listingExperiencesDetail]/RowBedAccommodationSelector'
-import GuestsInput from '../../[continent]/[country]/[region]/[city]/[things-to-do]/[category]/[name]/[id]/(service-detail)/[listingExperiencesDetail]/GuestsInput'
-import LineItemsBreakdown from '../../[continent]/[country]/[region]/[city]/[things-to-do]/[category]/[name]/[id]/(service-detail)/[listingExperiencesDetail]/LineItemsBreakdown'
-import AcommodationAndTransport from '../../[continent]/[country]/[region]/[city]/[things-to-do]/[category]/[name]/[id]/(service-detail)/[listingExperiencesDetail]/listing-components/AcommodationAndTransport'
+import RowBedAccommodationSelector from '../../[country]/[city]/[category]/[name]/(service-detail)/[listingExperiencesDetail]/RowBedAccommodationSelector'
+import GuestsInput from '../../[country]/[city]/[category]/[name]/(service-detail)/[listingExperiencesDetail]/GuestsInput'
+import LineItemsBreakdown from '../../[country]/[city]/[category]/[name]/(service-detail)/[listingExperiencesDetail]/LineItemsBreakdown'
+import AcommodationAndTransport from '../../[country]/[city]/[category]/[name]/(service-detail)/[listingExperiencesDetail]/listing-components/AcommodationAndTransport'
 import { useTranslations } from '@/lib/i18n'
 
 export interface CheckOutPagePageMainProps {

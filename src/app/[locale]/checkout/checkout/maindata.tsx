@@ -26,11 +26,11 @@ import {
 	updateBookingState,
 	updateLineItemsAsync,
 } from '@/app/GlobalRedux/Features/bookingSlice/bookingSlice'
-// import RowBedAccommodationSelector from '../../[continent]/[country]/[region]/[city]/[things-to-do]/[category]/[name]/[id]/(service-detail)/[listingExperiencesDetail]/RowBedAccommodationSelector/RowBedAccommodationSelector'
-import GuestsInput from '../../[continent]/[country]/[region]/[city]/[things-to-do]/[category]/[name]/[id]/(service-detail)/[listingExperiencesDetail]/RowBedAccommodationSelector/GuestsInput'
-import AcommodationAndTransport from '../../[continent]/[country]/[region]/[city]/[things-to-do]/[category]/[name]/[id]/(service-detail)/[listingExperiencesDetail]/RowBedAccommodationSelector/listing-components/AcommodationAndTransport'
-import LineItemsBreakdown from '../../[continent]/[country]/[region]/[city]/[things-to-do]/[category]/[name]/[id]/(service-detail)/[listingExperiencesDetail]/RowBedAccommodationSelector/LineItemsBreakdown'
-import RowBedAccommodationSelector from '../../[continent]/[country]/[region]/[city]/[things-to-do]/[category]/[name]/[id]/(service-detail)/[listingExperiencesDetail]/RowBedAccommodationSelector'
+// import RowBedAccommodationSelector from '../../[country]/[city]/[category]/[name]/(service-detail)/[listingExperiencesDetail]/RowBedAccommodationSelector/RowBedAccommodationSelector'
+import GuestsInput from '../../[country]/[city]/[category]/[name]/(service-detail)/[listingExperiencesDetail]/RowBedAccommodationSelector/GuestsInput'
+import AcommodationAndTransport from '../../[country]/[city]/[category]/[name]/(service-detail)/[listingExperiencesDetail]/RowBedAccommodationSelector/listing-components/AcommodationAndTransport'
+import LineItemsBreakdown from '../../[country]/[city]/[category]/[name]/(service-detail)/[listingExperiencesDetail]/RowBedAccommodationSelector/LineItemsBreakdown'
+import RowBedAccommodationSelector from '../../[country]/[city]/[category]/[name]/(service-detail)/[listingExperiencesDetail]/RowBedAccommodationSelector'
 
 export interface CheckOutPagePageMainProps {
 	className?: string
