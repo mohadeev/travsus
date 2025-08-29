@@ -55,7 +55,7 @@ const NAV: NavItem[] = [
 ]
 
 const FooterNav = () => {
-	const t = useTranslations("components_FooterNav");
+	const t = useTranslations('components_FooterNav')
 	const containerRef = useRef<HTMLDivElement>(null)
 	const pathname = usePathname()
 	const Router = useRouter()
@@ -148,7 +148,9 @@ const FooterNav = () => {
 				>
 					<item.icon className={`h-6 w-6`} />
 					<span className="mt-1 text-[11px] leading-none">
-						{item.name === 'Log in' ? t('components_FooterNav_Sign_In') : t(`components_FooterNav_${item.name.replace(' ', '_')}`)}
+						{item.name === 'Log in'
+							? t('components_FooterNav_Sign_In')
+							: t(`components_FooterNav_${item.name.replace(' ', '_')}`)}
 					</span>
 				</button>
 			)
@@ -179,7 +181,9 @@ const FooterNav = () => {
 				}`}
 			>
 				<item.icon iconClassName="w-6 h-6" className={``} />
-				<span className="mt-1 text-[11px] leading-none">{t(`components_FooterNav_${item.name.replace(' ', '_')}`)}</span>
+				<span className="mt-1 text-[11px] leading-none">
+					{t(`components_FooterNav_${item.name.replace(' ', '_')}`)}
+				</span>
 			</div>
 		)
 	}
@@ -187,7 +191,7 @@ const FooterNav = () => {
 	return (
 		<div
 			ref={containerRef}
-			className="FooterNav fixed inset-x-0 bottom-0 top-auto z-30 block border-t border-neutral-300 bg-white p-2 transition-transform duration-300 ease-in-out dark:border-neutral-700 dark:bg-neutral-800 md:!hidden"
+			className="FooterNav fixed inset-x-0 bottom-0 top-auto z-1 block border-t border-neutral-300 bg-white p-2 transition-transform duration-300 ease-in-out dark:border-neutral-700 dark:bg-neutral-800 md:!hidden"
 		>
 			<div className="mx-auto flex w-full max-w-lg justify-around text-center text-sm">
 				{/* MENU */}

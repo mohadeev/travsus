@@ -298,7 +298,7 @@ export default function TourItineraryWithMap({
 					)}
 				</div>
 				{/* Right side: Map */}
-				<div className="w-full lg:w-3/5">
+				<div className="relative z-1 lg:w-3/5">
 					<TourMap
 						days={days}
 						ref={mapRef}
