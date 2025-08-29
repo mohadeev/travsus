@@ -1,9 +1,9 @@
 import {
-	Baby,
+	Accessibility,
 	Phone,
 	MessageCircle,
 	Info,
-	HelpCircle,
+	CircleQuestionMark,
 	RotateCcw,
 } from 'lucide-react'
 import { useTranslations } from '@/lib/i18n'
@@ -23,7 +23,7 @@ export default function BookingInfo() {
 			{/* Accessibility */}
 			<div className="flex items-start space-x-3">
 				<span className="rounded-full border-2 border-black p-2">
-					<Baby className="h-6 w-6 shrink-0 text-black" />
+					<Accessibility className="h-6 w-6 shrink-0 text-black" />
 				</span>
 				<div>
 					<h2 className="mb-2 text-lg font-semibold text-black">
@@ -63,7 +63,7 @@ export default function BookingInfo() {
 			{/* Help */}
 			<div className="flex items-start space-x-3">
 				<span className="rounded-full border-2 border-black p-2">
-					<HelpCircle className="h-6 w-6 shrink-0 text-black" />
+					<CircleQuestionMark className="h-6 w-6 shrink-0 text-black" />
 				</span>
 				<div>
 					<h2 className="mb-2 text-lg font-semibold text-black">{t('help')}</h2>
