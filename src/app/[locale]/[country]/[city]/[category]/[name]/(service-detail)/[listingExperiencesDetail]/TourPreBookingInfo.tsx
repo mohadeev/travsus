@@ -19,7 +19,7 @@ export default function BookingInfo() {
 	const textclassName = 'text-xs font-medium text-black underline'
 
 	return (
-		<div className="my-10 grid grid-cols-1 gap-10 rounded-2xl bg-red p-0 text-gray-800 md:grid-cols-2">
+		<div className="my-10 grid grid-cols-1 gap-15 p-0 text-gray-800 md:grid-cols-2">
 			{/* Accessibility */}
 			<div className="flex items-start space-x-3">
 				<span className="rounded-full border-2 border-black p-2">
