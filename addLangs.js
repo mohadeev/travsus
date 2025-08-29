@@ -95,108 +95,72 @@
 const fs = require('fs')
 const path = require('path')
 
-// Sorting function
-function sortObjectKeys(obj) {
-	if (typeof obj !== 'object' || obj === null) return obj
-	if (Array.isArray(obj)) {
-		return obj.map((item) => sortObjectKeys(item))
+const messagesDir = path.join(__dirname, 'messages')
+
+// Mapping of lowercase → original names
+const originalNames = [
+	'cs-CZ.json',
+	'da-DK.json',
+	'de-AT.json',
+	'de-CH.json',
+	'de-DE.json',
+	'el-GR.json',
+	'en-AU.json',
+	'en-CA.json',
+	'en-GB.json',
+	'en-HK.json',
+	'en-IE.json',
+	'en-IN.json',
+	'en-MY.json',
+	'en-NZ.json',
+	'en-PH.json',
+	'en-SG.json',
+	'en-US.json',
+	'en-ZA.json',
+	'es-AR.json',
+	'es-CL.json',
+	'es-CO.json',
+	'es-ES.json',
+	'es-MX.json',
+	'es-PE.json',
+	'es-VE.json',
+	'eu-ES.json',
+	'fi-FI.json',
+	'fr-BE.json',
+	'fr-CA.json',
+	'fr-CH.json',
+	'fr-FR.json',
+	'hu-HU.json',
+	'id-ID.json',
+	'it-CH.json',
+	'it-IT.json',
+	'ja-JP.json',
+	'ko-KR.json',
+	'nb-NO.json',
+	'nl-BE.json',
+	'nl-NL.json',
+	'nl_NL.json',
+	'pl-PL.json',
+	'pt-BR.json',
+	'pt-PT.json',
+	'ru-RU.json',
+	'sk-SK.json',
+	'sr-Latn-RS.json',
+	'sv-SE.json',
+	'th-TH.json',
+	'tr-TR.json',
+	'vi-VN.json',
+	'zh-CN.json',
+	'zh-Hant-HK.json',
+	'zh-TW.json',
+]
+
+originalNames.forEach((name) => {
+	const lower = name.toLowerCase()
+	const oldPath = path.join(messagesDir, lower)
+	const newPath = path.join(messagesDir, name)
+	if (fs.existsSync(oldPath)) {
+		fs.renameSync(oldPath, newPath)
+		console.log(`Restored ${lower} → ${name}`)
 	}
-	const sorted = {}
-	Object.keys(obj)
-		.sort((a, b) => {
-			return a.localeCompare(b, undefined, {
-				sensitivity: 'base',
-				numeric: true,
-				ignorePunctuation: true,
-			})
-		})
-		.forEach((key) => {
-			sorted[key] = sortObjectKeys(obj[key])
-		})
-	return sorted
-}
-
-// Function to rename all files in a directory to lowercase
-function lowercaseFilenames(dir) {
-	const files = fs.readdirSync(dir)
-	files.forEach((file) => {
-		const lower = file.toLowerCase()
-		if (file !== lower) {
-			fs.renameSync(path.join(dir, file), path.join(dir, lower))
-			console.log(`Renamed ${file} → ${lower}`)
-		}
-	})
-}
-
-// Merge translations and REPLACE existing values with new ones
-function mergeTranslations(existing, newContent) {
-	const merged = { ...existing }
-
-	for (const [section, sectionContent] of Object.entries(newContent)) {
-		if (!merged[section]) {
-			merged[section] = {}
-		}
-
-		for (const [key, value] of Object.entries(sectionContent)) {
-			// Always replace with new value
-			merged[section][key] = value
-		}
-	}
-
-	return merged
-}
-
-// Main function to update translation files
-function updateTranslations() {
-	const messagesDir = path.join(__dirname, 'messages')
-	const contentFile = path.join(__dirname, 'content.json')
-
-	// Ensure all filenames in messages/ are lowercase
-	lowercaseFilenames(messagesDir)
-
-	// Read content.json
-	let contentData
-	try {
-		const contentJson = fs.readFileSync(contentFile, 'utf8')
-		contentData = JSON.parse(contentJson)
-	} catch (error) {
-		console.error(`Error reading content.json: ${error.message}`)
-		return
-	}
-
-	// Process each language in content.json
-	for (const [langCode, langContent] of Object.entries(contentData)) {
-		const langFile = path.join(messagesDir, `${langCode}.json`)
-		let existingData = {}
-
-		// Read existing translations if file exists
-		if (fs.existsSync(langFile)) {
-			try {
-				const fileContent = fs.readFileSync(langFile, 'utf8')
-				existingData = JSON.parse(fileContent)
-			} catch (error) {
-				console.error(`Error reading ${langFile}: ${error.message}`)
-				continue
-			}
-		}
-
-		// Merge content and replace existing values with new ones
-		const mergedData = mergeTranslations(existingData, langContent)
-
-		// Sort the merged content
-		const sortedData = sortObjectKeys(mergedData)
-
-		// Write back to file
-		try {
-			fs.writeFileSync(langFile, JSON.stringify(sortedData, null, 2) + '\n')
-			console.log(`Updated ${langFile}`)
-		} catch (error) {
-			console.error(`Error writing ${langFile}: ${error.message}`)
-		}
-	}
-
-	console.log('All translations updated successfully!')
-}
-
-// Run the update
-updateTranslations()
+})
