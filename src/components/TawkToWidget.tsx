@@ -1,14 +1,18 @@
 'use client'
 
 import Script from 'next/script'
-import { useLocale } from 'next-intl'
+import { useLocale, useMessages } from 'next-intl'
 import tawkWidgets from '@/constants/tawkWidgets.json'
+import { useSelector } from 'react-redux'
 
 export default function TawkToWidget() {
+	const overlayState = useSelector((state: any) => state.overlaySlice)
+	const messages = useMessages() as Record<string, Record<string, string>>
+
+	const isModalVisible = overlayState?.toggleTawdWidget
 	const locale = useLocale()
-	const tawkLocale = locale || 'en-us'
-	console.log(tawkWidgets['es-es'])
-	return (
+	const tawkLocale = locale || 'en-US'
+	return isModalVisible ? (
 		<Script
 			id="tawk-to-widget"
 			strategy="afterInteractive"
@@ -26,5 +30,5 @@ export default function TawkToWidget() {
         `,
 			}}
 		/>
-	)
+	) : null
 }

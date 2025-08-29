@@ -29,6 +29,7 @@ import { imageGallery } from './constant'
 import { updateServiceState } from '@/app/GlobalRedux/Features/creatingServiceSlice/creatingServiceSlice'
 import BookingGuarantees from './BookingGuarantees'
 import TourPreBookingInfo from './TourPreBookingInfo'
+import ContactReservations from './ContactReservations'
 
 const MapComponent = dynamic(() => import('./tour-map'), {
 	ssr: false,
@@ -266,6 +267,7 @@ const ListingExperiencesDetailPage: FC<ListingExperiencesDetailPageProps> = ({
 					<div className="mt-14 hidden flex-grow lg:mt-0 lg:block">
 						<div className="top-28">
 							<RenderSidebar />
+							<ContactReservations />
 						</div>
 					</div>
 				</main>
@@ -280,7 +282,7 @@ const ListingExperiencesDetailPage: FC<ListingExperiencesDetailPageProps> = ({
 					</div>
 				)}
 
-				<ReviewSystem serviceId={id} serviceName={title} />
+				{id && <ReviewSystem serviceId={id} serviceName={title} />}
 				<ItemsCardList
 					locationType="tour"
 					heading={t('Similar_Experiences')}

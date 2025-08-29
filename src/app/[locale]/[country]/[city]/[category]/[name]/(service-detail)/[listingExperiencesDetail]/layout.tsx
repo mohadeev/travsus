@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react'
 import { notFound } from 'next/navigation'
 import { headers } from 'next/headers'
 import { updateLineItemsLogic } from '@/app/api/updateLineItems/updateLineItemsLogic'
-import ListingExperiencesDetailPage from './[listing-experiences-detail]/page'
+import ListingExperiencesDetailPage from './page'
 import type { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 import { slugify } from 'transliteration'
@@ -256,7 +256,8 @@ export async function generateMetadata({
 }: {
 	params: { id: string; locale: string }
 }): Promise<Metadata> {
-	const serviceId = params?.id
+	console.log('params: ', params)
+	const serviceId = params?.listingExperiencesDetail
 	const t = await getTranslations({
 		locale: params.locale,
 		namespace: 'TourPageMetadata',
@@ -390,7 +391,7 @@ const DetailLayout = async ({ children, params }: DetailLayoutProps) => {
 	const headersList = await headers()
 	const fullUrl = headersList.get('referer') || ''
 	const url = new URL(fullUrl || 'http://localhost')
-	const serviceId = params?.id
+	const serviceId = params?.listingExperiencesDetail
 	const { locale } = await params
 	const t = await getTranslations({
 		locale,

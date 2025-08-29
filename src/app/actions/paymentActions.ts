@@ -8,7 +8,7 @@ import { bookingConfirmationEmail } from '@/utils/bookingConfirmationEmail'
 import { createOrderNumber } from './generateOrderNumber'
 import { checkBookingRole } from '../api/api-utils/actions/booking/checkBookingRole'
 import { updateBooking } from '../api/api-utils/actions/booking/updateBooking'
-import totalAmount from '../(service-detail)/[listing-experiences-detail]/totalAmount'
+import totalAmount from '../(service-detail)/[listingExperiencesDetail]/totalAmount'
 
 export async function processPayment(
 	paymentMethodId: string,

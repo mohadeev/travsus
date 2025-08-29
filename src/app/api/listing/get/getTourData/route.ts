@@ -5,23 +5,12 @@ import { OpenAI } from 'openai'
 import getUserData from '@/app/api/user/getUserData'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/app/api/auth/[...nextauth]/authOptions'
+import extractLanguageFromRequest from './extractLanguageFromRequest'
 
 // Initialize OpenAI client
 const openai = new OpenAI({
 	apiKey: process.env.OPENAI_API_KEY,
 })
-
-function extractLanguageFromRequest(request: NextRequest): string {
-	// Try to get language from referer URL first
-	const { searchParams } = new URL(request.url)
-	const locale = searchParams.get('locale')
-	if (locale) {
-		return locale
-	}
-
-	// Default to en-US
-	return 'es-ES'
-}
 
 async function getTranslatedText(
 	contentId: string | null,

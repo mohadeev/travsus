@@ -4,25 +4,26 @@ import { placesClient } from '@/lib/prisma'
 
 const prisma = new PrismaClient()
 import getUserData from '@/app/api/user/getUserData'
+import extractLanguageFromRequest from '@/app/api/listing/get/getTourData/extractLanguageFromRequest'
 
 export const dynamic = 'force-dynamic'
 
-function extractLanguageFromRequest(request: NextRequest): string {
-	const url = new URL(request.url)
-	const referer: any = request.headers.get('referer')
-	const match = referer.match(/\/([a-z]{2}-[A-Z]{2})(?:\/|$)/)
-	if (match) return match[1]
+// function extractLanguageFromRequest(request: NextRequest): string {
+// 	const url = new URL(request.url)
+// 	const referer: any = request.headers.get('referer')
+// 	const match = referer.match(/\/([a-z]{2}-[A-Z]{2})(?:\/|$)/)
+// 	if (match) return match[1]
 
-	// Try to get from accept-language header as fallback
-	const acceptLanguage = request.headers.get('accept-language')
-	if (acceptLanguage) {
-		const match = acceptLanguage.match(/([a-z]{2}-[A-Z]{2})/)
-		if (match) return match[1]
-	}
+// 	// Try to get from accept-language header as fallback
+// 	const acceptLanguage = request.headers.get('accept-language')
+// 	if (acceptLanguage) {
+// 		const match = acceptLanguage.match(/([a-z]{2}-[A-Z]{2})/)
+// 		if (match) return match[1]
+// 	}
 
-	// Default to English
-	return 'en-US'
-}
+// 	// Default to English
+// 	return 'en-US'
+// }
 
 async function getAllToursWithTranslations(language: string) {
 	// First, get ALL tours (not just paginated) to collect all city IDs

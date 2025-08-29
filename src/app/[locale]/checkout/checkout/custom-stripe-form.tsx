@@ -11,7 +11,7 @@ import {
 import { Alert } from '@/components/ui/alert'
 import { Label } from '@/components/ui/label'
 import NewCardForm from './new-card-form'
-// import totalAmount from '@/app/(service-detail)/[listing-experiences-detail]/totalAmount'
+// import totalAmount from '@/app/(service-detail)/[listingExperiencesDetail]/totalAmount'
 import { useSelector } from 'react-redux'
 import Spinner from '@/components/ui/Spinner'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
@@ -21,7 +21,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { CreditCard } from 'lucide-react'
 import { Checkbox } from '@/components/ui/checkbox'
 import PromoCodeForm from './PromoCode'
-import totalAmount from '../../[continent]/[country]/[region]/[city]/[things-to-do]/[category]/[name]/[id]/(service-detail)/[listing-experiences-detail]/totalAmount'
+import totalAmount from '../../[continent]/[country]/[region]/[city]/[things-to-do]/[category]/[name]/[id]/(service-detail)/[listingExperiencesDetail]/totalAmount'
 import { useTranslations } from '@/lib/i18n'
 
 const stripePromise = loadStripe(

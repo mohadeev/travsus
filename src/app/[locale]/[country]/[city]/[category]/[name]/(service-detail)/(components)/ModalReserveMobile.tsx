@@ -1,7 +1,7 @@
 import React, { FC, Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/solid'
-import RenderSidebar from '../[listing-experiences-detail]/RenderSidebar'
+import RenderSidebar from '../[listingExperiencesDetail]/RenderSidebar'
 
 interface ModalReserveMobileProps {
 	renderChildren?: (p: { openModal: () => void }) => React.ReactNode

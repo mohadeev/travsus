@@ -126,14 +126,42 @@
 //   matcher: "/((?!api|static|.*\\..*|_next).*)",
 // };
 
+import { NextResponse } from 'next/server'
+import type { NextRequest } from 'next/server'
 import createMiddleware from 'next-intl/middleware'
 import { routing } from './i18n/routing'
+import { useTranslations } from '@/lib/i18n'
 
-export default createMiddleware(routing)
+export default async function middleware(request: NextRequest) {
+	const url = request.nextUrl.clone()
+	const pathname = url.pathname
+	const locale = url.pathname.split('/')[1] || 'es-ES' // extract locale from URL
+
+	// --- 1️⃣ Load translations dynamically ---
+	const t = await useTranslations('Jan03_TourHeader_x9k2' , locale)
+	const thingsToDoSlug = t('things_to_do_slug') // e.g., "cosas-que-hacer"
+	const toursSlug = t('tours') // e.g., "rutas"
+
+	// --- 2️⃣ Check URL for good/bad slugs ---
+	if (!pathname.includes(`/${thingsToDoSlug}`)) {
+		if (pathname.includes(`/${toursSlug}`)) {
+			// Optionally handle "bad" URLs here (e.g., redirect, block, or log)
+			console.log(`Bad URL detected: ${pathname}`)
+			// Example: you could redirect bad URLs to a generic page
+			// return NextResponse.redirect(new URL(`/${locale}/404`, request.url))
+		}
+	}
+
+	// --- 3️⃣ Optional: existing double-dash redirect ---
+	if (pathname.includes('--')) {
+		url.pathname = pathname.replace(/--+/g, '-')
+		return NextResponse.redirect(url, 308)
+	}
+
+	// --- 4️⃣ Continue with i18n middleware ---
+	return createMiddleware(routing)(request)
+}
 
 export const config = {
-	// Match all pathnames except for
-	// - … if they start with `/api`, `/trpc`, `/_next` or `/_vercel`
-	// - … the ones containing a dot (e.g. `favicon.ico`)
 	matcher: '/((?!api|trpc|_next|_vercel|.*\\..*).*)',
 }
