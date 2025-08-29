@@ -456,7 +456,7 @@ const TourHeader = () => {
 
 						{/* Recommendation Badge */}
 						<div className="flex items-center gap-2 text-black/70">
-							<BadgeCheck fill className="h-4 w-4 fill-blue-500 text-white" />
+							<BadgeCheck fill className="h-6 w-6 fill-blue-500 text-white" />
 							<span className="font-medium">
 								{t('Recommended_By_Percentage', { percentage: recommendedBy })}
 							</span>

@@ -6,10 +6,10 @@ import { useTranslations } from '@/lib/i18n'
 export default function TravelBanner() {
 	const t = useTranslations('Jan03_TravelBanner_q5w7')
 	return (
-		<div className="p-4">
+		<div className="w-full py-4">
 			{/* Travel Services Banner */}
 			<div className="mx-auto w-full max-w-6xl">
-				<div className="flex min-h-[400px] flex-col items-center gap-8 lg:flex-row-reverse lg:gap-12">
+				<div className="flex min-h-[400px] flex-col items-start gap-8 lg:flex-row-reverse lg:gap-12">
 					{/* Content Section - 50% */}
 					<div className="order-1 w-full p-4 text-center lg:order-none lg:w-1/2 lg:text-left">
 						<h1 className="mb-6 text-5xl font-black leading-tight tracking-tight text-black md:text-6xl lg:text-7xl xl:text-[100px]">
