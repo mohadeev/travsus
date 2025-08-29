@@ -2,7 +2,7 @@
 import { useLocale, useMessages } from 'next-intl'
 
 import enUS from '../../messages/en-US.json'
-import deDE from '../../messages/de-DE.json'
+import deDE from '../../messages/de-DEE.json'
 import esES from '../../messages/es-ES.json'
 import frFR from '../../messages/fr-FR.json'
 import itIT from '../../messages/it-IT.json'
