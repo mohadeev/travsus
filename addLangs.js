@@ -97,70 +97,15 @@ const path = require('path')
 
 const messagesDir = path.join(__dirname, 'messages')
 
-// Mapping of lowercase → original names
-const originalNames = [
-	'cs-CZ.json',
-	'da-DK.json',
-	'de-AT.json',
-	'de-CH.json',
-	'de-DE.json',
-	'el-GR.json',
-	'en-AU.json',
-	'en-CA.json',
-	'en-GB.json',
-	'en-HK.json',
-	'en-IE.json',
-	'en-IN.json',
-	'en-MY.json',
-	'en-NZ.json',
-	'en-PH.json',
-	'en-SG.json',
-	'en-US.json',
-	'en-ZA.json',
-	'es-AR.json',
-	'es-CL.json',
-	'es-CO.json',
-	'es-ES.json',
-	'es-MX.json',
-	'es-PE.json',
-	'es-VE.json',
-	'eu-ES.json',
-	'fi-FI.json',
-	'fr-BE.json',
-	'fr-CA.json',
-	'fr-CH.json',
-	'fr-FR.json',
-	'hu-HU.json',
-	'id-ID.json',
-	'it-CH.json',
-	'it-IT.json',
-	'ja-JP.json',
-	'ko-KR.json',
-	'nb-NO.json',
-	'nl-BE.json',
-	'nl-NL.json',
-	'nl_NL.json',
-	'pl-PL.json',
-	'pt-BR.json',
-	'pt-PT.json',
-	'ru-RU.json',
-	'sk-SK.json',
-	'sr-Latn-RS.json',
-	'sv-SE.json',
-	'th-TH.json',
-	'tr-TR.json',
-	'vi-VN.json',
-	'zh-CN.json',
-	'zh-Hant-HK.json',
-	'zh-TW.json',
-]
+function breakFilenames(dir) {
+	const files = fs.readdirSync(dir)
+	files.forEach((file) => {
+		if (file.endsWith('.json')) {
+			const broken = file.replace(/\.json$/, '.jsonn')
+			fs.renameSync(path.join(dir, file), path.join(dir, broken))
+			console.log(`Renamed ${file} → ${broken}`)
+		}
+	})
+}
 
-originalNames.forEach((name) => {
-	const lower = name.toLowerCase()
-	const oldPath = path.join(messagesDir, lower)
-	const newPath = path.join(messagesDir, name)
-	if (fs.existsSync(oldPath)) {
-		fs.renameSync(oldPath, newPath)
-		console.log(`Restored ${lower} → ${name}`)
-	}
-})
+breakFilenames(messagesDir)
