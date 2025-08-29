@@ -1,16 +1,16 @@
 // lib/i18n.ts
 import { useLocale, useMessages } from 'next-intl'
 
-import enUS from '../../messages/en-USS.json'
-import deDE from '../../messages/de-DEE.json'
-import esES from '../../messages/es-ESS.json'
-import frFR from '../../messages/fr-FRR.json'
-import itIT from '../../messages/it-ITT.json'
-import jaJP from '../../messages/ja-JPP.json'
-import koKR from '../../messages/ko-KRR.json'
-import ptPT from '../../messages/pt-PTT.json'
-import ruRU from '../../messages/ru-RUU.json'
-import zhCN from '../../messages/zh-CNV.json'
+import enUS from '../../messages/en-US.json'
+import deDE from '../../messages/de-DE.json'
+import esES from '../../messages/es-ES.json'
+import frFR from '../../messages/fr-FR.json'
+import itIT from '../../messages/it-IT.json'
+import jaJP from '../../messages/ja-JP.json'
+import koKR from '../../messages/ko-KR.json'
+import ptPT from '../../messages/pt-PT.json'
+import ruRU from '../../messages/ru-RU.json'
+import zhCN from '../../messages/zh-CN.json'
 
 console.log('enUS:', enUS)
 
