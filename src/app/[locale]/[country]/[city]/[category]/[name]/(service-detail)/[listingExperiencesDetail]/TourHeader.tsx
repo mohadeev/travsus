@@ -12,6 +12,7 @@ import {
 	ArrowLeft,
 	Share,
 	Edit,
+	BadgeCheck,
 } from 'lucide-react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
@@ -282,10 +283,15 @@ const TourHeader = () => {
 
 						{/* Recommendation Badge */}
 						<div className="flex items-center gap-2">
-							<Shield
+							{/* <Shield
+								className="h-4 w-4 fill-current text-red-500"
+								strokeWidth={2}
+							/> */}
+							<BadgeCheck
 								className="h-4 w-4 fill-current text-red-500"
 								strokeWidth={2}
 							/>
+
 							<span className="text-sm font-medium text-black/80">
 								{t('Recommended_By_Percentage', { percentage: recommendedBy })}
 							</span>
@@ -450,7 +456,7 @@ const TourHeader = () => {
 
 						{/* Recommendation Badge */}
 						<div className="flex items-center gap-2 text-black/70">
-							<Shield className="h-4 w-4 text-green-600" strokeWidth={2} />
+							<BadgeCheck className="h-4 w-4 text-green-600" strokeWidth={2} />
 							<span className="font-medium">
 								{t('Recommended_By_Percentage', { percentage: recommendedBy })}
 							</span>
