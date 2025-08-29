@@ -97,15 +97,15 @@ const path = require('path')
 
 const messagesDir = path.join(__dirname, 'messages')
 
-function breakFilenames(dir) {
+function fixFilenames(dir) {
 	const files = fs.readdirSync(dir)
 	files.forEach((file) => {
-		if (file.endsWith('.json')) {
-			const broken = file.replace(/\.json$/, '.jsonn')
-			fs.renameSync(path.join(dir, file), path.join(dir, broken))
-			console.log(`Renamed ${file} → ${broken}`)
+		if (file.endsWith('.jsonn')) {
+			const fixed = file.replace(/\.jsonn$/, '.json')
+			fs.renameSync(path.join(dir, file), path.join(dir, fixed))
+			console.log(`Restored ${file} → ${fixed}`)
 		}
 	})
 }
 
-breakFilenames(messagesDir)
+fixFilenames(messagesDir)
