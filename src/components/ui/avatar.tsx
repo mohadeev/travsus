@@ -33,6 +33,11 @@ const AvatarImage = React.forwardRef<
 		ref={ref}
 		className={cn('aspect-square h-full w-full', className)}
 		{...props}
+		src={
+			props.src
+				? props.src
+				: 'https://static.vecteezy.com/system/resources/thumbnails/025/337/669/small_2x/default-male-avatar-profile-icon-social-media-chatting-online-user-free-vector.jpg'
+		}
 	/>
 ))
 AvatarImage.displayName = 'AvatarImage'

@@ -624,9 +624,10 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
 							{reviews.map((review) => (
 								<div key={review.id} className="p-6">
 									<div className="flex items-start gap-4">
+										{review.userImage}
 										<Avatar className="h-12 w-12">
 											<AvatarImage
-												src={review.userImage || '/placeholder.svg'}
+												src={review.userImage}
 												alt={review.userName}
 											/>
 											<AvatarFallback>
