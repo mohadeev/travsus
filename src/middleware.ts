@@ -136,20 +136,10 @@ import { useTourLink } from './useTourLink'
 export default async function middleware(request: NextRequest) {
 	const url = request.nextUrl.clone()
 	const pathname = url.pathname
-	const locale: string = url.pathname.split('/')[1] || 'es-ES' // extract locale from URL
-	console.log('locale:', locale)
-	// --- 1️⃣ Load translations dynamically ---
-	const t = await useTranslations('Jan03_TourHeader_x9k2', locale)
-	const thingsToDoSlug = t('things_to_do_slug', locale) // e.g., "cosas-que-hacer"
-	const toursSlug = t('tours_slug', locale) // e.g., "rutas"
-	console.log('pathname:', pathname)
+	const locale: string = url.pathname.split('/')[1] || 'en-US' // extract locale from URL
 	const parts = pathname.split('/') // split into array by "/"
-	console.log(parts)
-	console.log('Length:', parts.length)
 	const last = parts[parts.length - 1] // last element
 	const serviceId = parts[parts.length - 2]
-	console.log(serviceId)
-	// --- 2️⃣ Check URL for good/bad slugs ---
 	if (last === 'q=tour' && parts.length === 11) {
 		const serviceDataResponse = await fetch(
 			`${process.env.NEXTAUTH_URL}/api/listing/get/getTourData?id=${serviceId}&locale=${locale}`,
@@ -161,33 +151,11 @@ export default async function middleware(request: NextRequest) {
 			},
 		)
 		const serviceData: any = await serviceDataResponse.json()
-		console.log('serviceData: ', serviceData)
 		const link = useTourLink(serviceData, locale)
-		console.log('link', request.url)
 		return NextResponse.redirect(new URL(url.origin + '/' + link), 301)
-
-		// if (pathname.includes(`/${toursSlug}`)) {
-		// 	// Optionally handle "bad" URLs here (e.g., redirect, block, or log)
-		// 	console.log(`Bad URL detected: ${pathname}`)
-		// 	// Example: you could redirect bad URLs to a generic page
-		// 	// return NextResponse.redirect(new URL(`/${locale}/404`, request.url))
-		// }
-	}
-	console.log('------------------------------------------', toursSlug)
-	console.log('------------------------------------------', thingsToDoSlug)
-	console.log('------------------------------------------')
-	console.log('----------------------her--------------------')
-	console.log('-----------------------her-------------------')
-	console.log('------------------------------------------')
-	console.log('-----------------------her-------------------')
-	// console.log('url:', url)
-	// --- 3️⃣ Optional: existing double-dash redirect ---
-	if (pathname.includes('--')) {
-		url.pathname = pathname.replace(/--+/g, '-')
-		// return NextResponse.redirect(url, 308)
 	}
 
-	// --- 4️⃣ Continue with i18n middleware ---
+	// --- Continue with i18n middleware ---
 	return createMiddleware(routing)(request)
 }
 
