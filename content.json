@@ -1,122 +1,72 @@
 {
 	"en-US": {
-		"BookingInfo": {
-			"cancellation_policy_modal_title": "Cancellation Policy",
-			"cancellation_policy_modal_description": "To receive a full refund for the experience, you must cancel at least 24 hours before it starts.",
-			"cancellation_policy_modal_point1": "If you cancel the experience less than 24 hours before it starts, the amount paid will not be refunded.",
-			"cancellation_policy_modal_point2": "No changes will be accepted if made less than 24 hours before the experience starts.",
-			"cancellation_policy_modal_point3": "The deadline is based on the local time of the experience location.",
-			"cancellation_policy_modal_point4": "This experience requires good weather. If canceled due to bad weather, you will be offered a different date or a full refund.",
-			"cancellation_policy_modal_point5": "This experience requires a minimum number of travelers. If canceled because the minimum isn't met, you will be offered a different date/experience or a full refund.",
-			"cancellation_policy_modal_link": "Learn more about cancellations"
+		"RenderLineItemsBreakdown": {
+			"accommodation": "Accommodation",
+			"transport": "Transport",
+			"tax": "Tax"
 		}
 	},
 	"es-ES": {
-		"BookingInfo": {
-			"cancellation_policy_modal_title": "Política de cancelación",
-			"cancellation_policy_modal_description": "Para recibir el reembolso íntegro de la experiencia debes cancelarla al menos 24 horas antes de que empiece.",
-			"cancellation_policy_modal_point1": "Si cancelas la experiencia menos de 24 horas antes de que empiece, no se te devolverá el importe abonado.",
-			"cancellation_policy_modal_point2": "No se aceptará ningún cambio que se realice cuando falten menos de 24 horas para empezar la experiencia.",
-			"cancellation_policy_modal_point3": "La hora límite se basa en la hora local del lugar donde se realiza la experiencia.",
-			"cancellation_policy_modal_point4": "Tiene que hacer buen tiempo para que se pueda realizar esta experiencia. Si se cancela por malas condiciones meteorológicas, se te ofrecerá otra fecha o el reembolso total del importe abonado.",
-			"cancellation_policy_modal_point5": "En esta experiencia debe haber un número mínimo de viajeros. Si se cancela porque no se llega a dicho mínimo, se te ofrecerá otra fecha o experiencia o el reembolso total del importe abonado.",
-			"cancellation_policy_modal_link": "Obtén más información sobre las cancelaciones"
+		"RenderLineItemsBreakdown": {
+			"accommodation": "Alojamiento",
+			"transport": "Transporte",
+			"tax": "Impuesto"
 		}
 	},
 	"de-DE": {
-		"BookingInfo": {
-			"cancellation_policy_modal_title": "Stornierungsbedingungen",
-			"cancellation_policy_modal_description": "Um eine vollständige Rückerstattung für das Erlebnis zu erhalten, müssen Sie mindestens 24 Stunden vor Beginn stornieren.",
-			"cancellation_policy_modal_point1": "Wenn Sie das Erlebnis weniger als 24 Stunden vor Beginn stornieren, wird der gezahlte Betrag nicht erstattet.",
-			"cancellation_policy_modal_point2": "Änderungen, die weniger als 24 Stunden vor Beginn des Erlebnisses vorgenommen werden, werden nicht akzeptiert.",
-			"cancellation_policy_modal_point3": "Die Frist basiert auf der Ortszeit des Erlebnisortes.",
-			"cancellation_policy_modal_point4": "Dieses Erlebnis erfordert gutes Wetter. Wenn es aufgrund schlechten Wetters abgesagt wird, wird Ihnen ein anderer Termin oder eine vollständige Rückerstattung angeboten.",
-			"cancellation_policy_modal_point5": "Dieses Erlebnis erfordert eine Mindestanzahl von Reisenden. Wenn es abgesagt wird, weil das Minimum nicht erreicht wird, wird Ihnen ein anderer Termin/Erlebnis oder eine vollständige Rückerstattung angeboten.",
-			"cancellation_policy_modal_link": "Erfahren Sie mehr über Stornierungen"
+		"RenderLineItemsBreakdown": {
+			"accommodation": "Unterkunft",
+			"transport": "Transport",
+			"tax": "Steuer"
 		}
 	},
 	"fr-FR": {
-		"BookingInfo": {
-			"cancellation_policy_modal_title": "Politique d'annulation",
-			"cancellation_policy_modal_description": "Pour recevoir un remboursement complet de l'expérience, vous devez l'annuler au moins 24 heures avant son commencement.",
-			"cancellation_policy_modal_point1": "Si vous annulez l'expérience moins de 24 heures avant son commencement, le montant payé ne sera pas remboursé.",
-			"cancellation_policy_modal_point2": "Aucun changement ne sera accepté s'il est effectué moins de 24 heures avant le début de l'expérience.",
-			"cancellation_policy_modal_point3": "Le délai est basé sur l'heure locale du lieu de l'expérience.",
-			"cancellation_policy_modal_point4": "Cette expérience nécessite un bon temps. Si elle est annulée en raison du mauvais temps, une autre date ou un remboursement complet vous sera proposé.",
-			"cancellation_policy_modal_point5": "Cette expérience nécessite un nombre minimum de voyageurs. Si elle est annulée parce que le minimum n'est pas atteint, une autre date/expérience ou un remboursement complet vous sera proposé.",
-			"cancellation_policy_modal_link": "En savoir plus sur les annulations"
+		"RenderLineItemsBreakdown": {
+			"accommodation": "Hébergement",
+			"transport": "Transport",
+			"tax": "Taxe"
 		}
 	},
 	"ja-JP": {
-		"BookingInfo": {
-			"cancellation_policy_modal_title": "キャンセルポリシー",
-			"cancellation_policy_modal_description": "体験の全額返金を受けるには、開始時刻の少なくとも24時間前までにキャンセルする必要があります。",
-			"cancellation_policy_modal_point1": "体験開始の24時間未満前にキャンセルした場合、支払い金額は返金されません。",
-			"cancellation_policy_modal_point2": "体験開始の24時間未満前に変更を加えることはできません。",
-			"cancellation_policy_modal_point3": "締め切り時間は体験場所の現地時間に基づきます。",
-			"cancellation_policy_modal_point4": "この体験には良い天候が必要です。悪天候によりキャンセルされた場合、別の日付または全額返金が提供されます。",
-			"cancellation_policy_modal_point5": "この体験には最低人数の旅行者が必要です。最低人数に達しないためにキャンセルされた場合、別の日付/体験または全額返金が提供されます。",
-			"cancellation_policy_modal_link": "キャンセルについて詳しく知る"
+		"RenderLineItemsBreakdown": {
+			"accommodation": "宿泊施設",
+			"transport": "交通機関",
+			"tax": "税金"
 		}
 	},
 	"pt-PT": {
-		"BookingInfo": {
-			"cancellation_policy_modal_title": "Política de cancelamento",
-			"cancellation_policy_modal_description": "Para receber um reembolso total pela experiência, deve cancelar pelo menos 24 horas antes do início.",
-			"cancellation_policy_modal_point1": "Se cancelar a experiência a menos de 24 horas do início, o valor pago não será reembolsado.",
-			"cancellation_policy_modal_point2": "Não serão aceites alterações realizadas a menos de 24 horas do início da experiência.",
-			"cancellation_policy_modal_point3": "O prazo é baseado no horário local do local da experiência.",
-			"cancellation_policy_modal_point4": "Esta experiência requer bom tempo. Se for cancelada devido ao mau tempo, será oferecida uma data diferente ou o reembolso total.",
-			"cancellation_policy_modal_point5": "Esta experiência requer um número mínimo de viajantes. Se for cancelada porque não foi atingido o mínimo, será oferecida uma data diferente/experiência ou o reembolso total.",
-			"cancellation_policy_modal_link": "Saiba mais sobre cancelamentos"
+		"RenderLineItemsBreakdown": {
+			"accommodation": "Alojamento",
+			"transport": "Transporte",
+			"tax": "Imposto"
 		}
 	},
 	"it-IT": {
-		"BookingInfo": {
-			"cancellation_policy_modal_title": "Politica di cancellazione",
-			"cancellation_policy_modal_description": "Per ricevere un rimborso completo per l'esperienza, devi cancellare almeno 24 ore prima dell'inizio.",
-			"cancellation_policy_modal_point1": "Se cancelli l'esperienza meno di 24 ore prima dell'inizio, l'importo pagato non verrà rimborsato.",
-			"cancellation_policy_modal_point2": "Non saranno accettate modifiche effettuate meno di 24 ore prima dell'inizio dell'esperienza.",
-			"cancellation_policy_modal_point3": "La scadenza è basata sull'ora locale del luogo dell'esperienza.",
-			"cancellation_policy_modal_point4": "Questa esperienza richiede bel tempo. Se cancellata a causa del maltempo, ti verrà offerta una data diversa o un rimborso completo.",
-			"cancellation_policy_modal_point5": "Questa esperienza richiede un numero minimo di viaggiatori. Se cancellata perché il minimo non viene raggiunto, ti verrà offerta una data/esperienza diversa o un rimborso completo.",
-			"cancellation_policy_modal_link": "Scopri di più sulle cancellazioni"
+		"RenderLineItemsBreakdown": {
+			"accommodation": "Alloggio",
+			"transport": "Trasporto",
+			"tax": "Tassa"
 		}
 	},
 	"ru-RU": {
-		"BookingInfo": {
-			"cancellation_policy_modal_title": "Политика отмены",
-			"cancellation_policy_modal_description": "Чтобы получить полный возврат средств за мероприятие, вы должны отменить его как минимум за 24 часа до начала.",
-			"cancellation_policy_modal_point1": "Если вы отменяете мероприятие менее чем за 24 часа до начала, уплаченная сумма не возвращается.",
-			"cancellation_policy_modal_point2": "Изменения, внесенные менее чем за 24 часа до начала мероприятия, не принимаются.",
-			"cancellation_policy_modal_point3": "Срок основан на местном времени места проведения мероприятия.",
-			"cancellation_policy_modal_point4": "Это мероприятие требует хорошей погоды. В случае отмены из-за плохой погоды вам будет предложена другая дата или полный возврат средств.",
-			"cancellation_policy_modal_point5": "Это мероприятие требует минимального количества путешественников. Если оно отменено из-за того, что минимум не достигнут, вам будет предложена другая дата/мероприятие или полный возврат средств.",
-			"cancellation_policy_modal_link": "Узнайте больше об отменах"
+		"RenderLineItemsBreakdown": {
+			"accommodation": "Размещение",
+			"transport": "Транспорт",
+			"tax": "Налог"
 		}
 	},
 	"zh-CN": {
-		"BookingInfo": {
-			"cancellation_policy_modal_title": "取消政策",
-			"cancellation_policy_modal_description": "要获得体验的全额退款，您必须在开始前至少24小时取消。",
-			"cancellation_policy_modal_point1": "如果您在体验开始前不到24小时取消，已付金额将不予退还。",
-			"cancellation_policy_modal_point2": "在体验开始前不到24小时进行的更改将不被接受。",
-			"cancellation_policy_modal_point3": "截止时间基于体验地点的当地时间。",
-			"cancellation_policy_modal_point4": "此体验需要良好的天气。如果因天气恶劣而取消，将为您提供其他日期或全额退款。",
-			"cancellation_policy_modal_point5": "此体验需要最少旅行者人数。如果因未达到最低人数而取消，将为您提供其他日期/体验或全额退款。",
-			"cancellation_policy_modal_link": "了解更多关于取消的信息"
+		"RenderLineItemsBreakdown": {
+			"accommodation": "住宿",
+			"transport": "交通",
+			"tax": "税"
 		}
 	},
 	"ko-KR": {
-		"BookingInfo": {
-			"cancellation_policy_modal_title": "취소 정책",
-			"cancellation_policy_modal_description": "체험에 대한 전액 환불을 받으려면 시작 시간 최소 24시간 전에 취소해야 합니다.",
-			"cancellation_policy_modal_point1": "체험 시작 24시간 미만으로 취소하는 경우 지불한 금액은 환불되지 않습니다.",
-			"cancellation_policy_modal_point2": "체험 시작 24시간 미만으로 변경 사항을 요청할 수 없습니다.",
-			"cancellation_policy_modal_point3": "마감 시간은 체험 장소의 현지 시간을 기준으로 합니다.",
-			"cancellation_policy_modal_point4": "이 체험에는 좋은 날씨가 필요합니다. 악천후로 인해 취소될 경우 다른 날짜 또는 전액 환불이 제공됩니다.",
-			"cancellation_policy_modal_point5": "이 체험에는 최소 인원의 여행자가 필요합니다. 최소 인원에 도달하지 않아 취소될 경우 다른 날짜/체험 또는 전액 환불이 제공됩니다.",
-			"cancellation_policy_modal_link": "취소에 대해 자세히 알아보기"
+		"RenderLineItemsBreakdown": {
+			"accommodation": "숙박",
+			"transport": "교통",
+			"tax": "세금"
 		}
 	}
 }

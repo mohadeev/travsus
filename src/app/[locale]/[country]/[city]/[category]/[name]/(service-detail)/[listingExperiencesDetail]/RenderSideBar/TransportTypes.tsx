@@ -11,7 +11,7 @@ export default function pricingTiers({
 	transportLineItem,
 	pricingTiers,
 }: any) {
-	const t = useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes");
+	const t = useTranslations('listingExperiencesDetailTransportTypes')
 
 	// const peopleCount
 
@@ -51,8 +51,14 @@ export default function pricingTiers({
 	}
 
 	return (
-		<div className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Container_Classes')}>
-			<div className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Carousel_Container_Classes')}>
+		<div
+			className={t('listingExperiencesDetailTransportTypes_Container_Classes')}
+		>
+			<div
+				className={t(
+					'listingExperiencesDetailTransportTypes_Carousel_Container_Classes',
+				)}
+			>
 				<AnimatePresence initial={false} custom={currentIndex}>
 					<motion.div
 						key={currentIndex}
@@ -72,7 +78,9 @@ export default function pricingTiers({
 						animate="center"
 						exit="exit"
 						transition={{ type: 'tween', ease: 'easeInOut', duration: 0.3 }}
-						className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Motion_Container_Classes')}
+						className={t(
+							'listingExperiencesDetailTransportTypes_Motion_Container_Classes',
+						)}
 					>
 						{(() => {
 							const type = pricingTiers[currentIndex]
@@ -83,7 +91,9 @@ export default function pricingTiers({
 								<div
 									className={`flex w-full flex-col items-center justify-between rounded-lg p-4 transition-colors ${
 										isSelected
-											? t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Selected_Border_Classes')
+											? t(
+													'listingExperiencesDetailTransportTypes_Selected_Border_Classes',
+												)
 											: isRecommended
 												? 'border-2 border-green-500 bg-green-100'
 												: 'bg-muted hover:bg-muted/80 border-2 border-transparent'
@@ -94,18 +104,34 @@ export default function pricingTiers({
 										alt={type.transportType}
 										width={80}
 										height={80}
-										className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Image_Classes')}
+										className={t(
+											'listingExperiencesDetailTransportTypes_Image_Classes',
+										)}
 									/>
-									<span className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Title_Classes')}>
+									<span
+										className={t(
+											'listingExperiencesDetailTransportTypes_Title_Classes',
+										)}
+									>
 										{type.transportType}
 									</span>
-									<span className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Capacity_Classes')}>
+									<span
+										className={t(
+											'listingExperiencesDetailTransportTypes_Capacity_Classes',
+										)}
+									>
 										{type.minSeats} - {type.maxSeats}
 										{/* {peopleCount} */}
 									</span>
 									{isRecommended && (
-										<span className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Recommended_Classes')}>
-											{t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Recommended_Text')}
+										<span
+											className={t(
+												'listingExperiencesDetailTransportTypes_Recommended_Classes',
+											)}
+										>
+											{t(
+												'listingExperiencesDetailTransportTypes_Recommended_Text',
+											)}
 										</span>
 									)}
 								</div>
@@ -115,21 +141,37 @@ export default function pricingTiers({
 				</AnimatePresence>
 				<button
 					onClick={handlePrev}
-					className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Prev_Button_Classes')}
-					aria-label={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Previous_Transport_Type')}
+					className={t(
+						'listingExperiencesDetailTransportTypes_Prev_Button_Classes',
+					)}
+					aria-label={t(
+						'listingExperiencesDetailTransportTypes_Previous_Transport_Type',
+					)}
 				>
-					<ChevronLeft className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Icon_Classes')} />
+					<ChevronLeft
+						className={t('listingExperiencesDetailTransportTypes_Icon_Classes')}
+					/>
 				</button>
 				<button
 					onClick={handleNext}
-					className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Next_Button_Classes')}
-					aria-label={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Next_Transport_Type')}
+					className={t(
+						'listingExperiencesDetailTransportTypes_Next_Button_Classes',
+					)}
+					aria-label={t(
+						'listingExperiencesDetailTransportTypes_Next_Transport_Type',
+					)}
 				>
-					<ChevronRight className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Icon_Classes')} />
+					<ChevronRight
+						className={t('listingExperiencesDetailTransportTypes_Icon_Classes')}
+					/>
 				</button>
 			</div>
 
-			<div className={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_TransportTypes_Dots_Container_Classes')}>
+			<div
+				className={t(
+					'listingExperiencesDetailTransportTypes_Dots_Container_Classes',
+				)}
+			>
 				{pricingTiers.map((_, index) => (
 					<button
 						key={index}

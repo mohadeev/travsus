@@ -150,9 +150,6 @@
     "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_Included_Everything_Included_In_Your_Package": "您的套餐中包含的所有内容",
     "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_Included_Included": "包含"
   },
-  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_LineItemsBreakdown": {
-    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_LineItemsBreakdown_Grand_Total": "总计"
-  },
   "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_RenderSidebar": {
     "Booking_Failed_Error": "创建预订失败",
     "Date_Selection_Error": "您需要选择日期",
@@ -1597,6 +1594,12 @@
   "ReadMore": {
     "read_less": "收起",
     "read_more": "阅读更多"
+  },
+  "RenderLineItemsBreakdown": {
+    "accommodation": "住宿",
+    "RenderLineItemsBreakdown_Grand_Total": "总计",
+    "tax": "税",
+    "transport": "交通"
   },
   "servicedetail_listingexperiencesdetail_page": {
     "Cancellation_Policy_Text": "TRAVSUS在本网站提供的每项服务（活动、一日游、导览游和接送服务）都有其特定的取消政策。用户可以在每项活动的描述部分（在网站上）或在TRAVSUS在预订完成后发送给用户的确认邮件中查看每项特定的取消政策。因此，特定的取消条件将适用于每项服务，其中规定了取消时间和可能的处罚。TRAVSUS将管理取消事宜，并确认每项活动、游览、导览游和/或接送服务的取消政策。如果服务提供商在预订日期没有可用性，TRAVSUS将为客户提供替代日期或时间安排，客户必须接受或拒绝。如果在72小时内未收到关于替代选项的回复，预订将被取消并立即退款。无论哪种情况，TRAVSUS都将发送相关文件。根据上述规定，并通过接受这些一般使用条款，用户声明已明确阅读并接受本取消政策，并同意在本网站预订的每项活动、一日游、导览游和/或接送服务的取消政策。",

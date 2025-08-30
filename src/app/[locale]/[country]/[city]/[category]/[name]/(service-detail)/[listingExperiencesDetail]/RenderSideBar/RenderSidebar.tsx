@@ -15,9 +15,9 @@ import {
 	updateProvidedService,
 } from '@/app/GlobalRedux/Features/bookingSlice/bookingSlice'
 import LineItemsBreakdown from '../LineItems/LineItemsBreakdown'
-import TransportTypes from '../TransportTypes'
+import TransportTypes from './TransportTypes'
 import RowBedAccommodationSelector from '../RowBedAccommodationSelector'
-import AcommodationAndTransport from '../listing-components/AcommodationAndTransport'
+import AcommodationAndTransport from './AcommodationAndTransport'
 import SidebarSkeletonLoader from '../SidebarSkeletonLoader'
 import { Button } from '@/components/ui'
 import { formatCurrency } from '@/utils/formatCurrency'

@@ -20,7 +20,7 @@ import { checkBooking } from '@/lib/checkBooking'
 import RowBedAccommodationSelector from '../../[country]/[city]/[category]/[name]/(service-detail)/[listingExperiencesDetail]/RowBedAccommodationSelector'
 import GuestsInput from '../../[country]/[city]/[category]/[name]/(service-detail)/[listingExperiencesDetail]/GuestsInput'
 import LineItemsBreakdown from '../../[country]/[city]/[category]/[name]/(service-detail)/[listingExperiencesDetail]/LineItems/LineItemsBreakdown'
-import AcommodationAndTransport from '../../[country]/[city]/[category]/[name]/(service-detail)/[listingExperiencesDetail]/listing-components/AcommodationAndTransport'
+import AcommodationAndTransport from '../../[country]/[city]/[category]/[name]/(service-detail)/[listingExperiencesDetail]/RenderSideBar/AcommodationAndTransport'
 import { useTranslations } from '@/lib/i18n'
 
 export interface CheckOutPagePageMainProps {

@@ -21,7 +21,7 @@ interface LineItemsBreakdownProps {
 const LineItemsBreakdown: React.FC<LineItemsBreakdownProps> = ({
 	lineItems,
 }) => {
-	const t = useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_LineItemsBreakdown");
+	const t = useTranslations('RenderLineItemsBreakdown')
 
 	// Calculate the total amount for all line items
 	const filteredLineItems = lineItems?.filter(
@@ -37,7 +37,7 @@ const LineItemsBreakdown: React.FC<LineItemsBreakdownProps> = ({
 			<div className="space-y-2">
 				{filteredLineItems.map((item, index) => (
 					<div key={index} className="flex justify-between py-1">
-						<div className="capitalize">{item.description}</div>
+						<div className="capitalize">{t(item.description)}</div>
 						<div>{formatCurrency(item.totalPrice)}</div>
 					</div>
 				))}
@@ -48,7 +48,7 @@ const LineItemsBreakdown: React.FC<LineItemsBreakdownProps> = ({
 
 			{/* Grand Total */}
 			<div className="flex justify-between py-1 font-bold">
-				<div>{t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_LineItemsBreakdown_Grand_Total')}</div>
+				<div>{t('RenderLineItemsBreakdown_Grand_Total')}</div>
 				<div>{formatCurrency(totalAmount)}</div>
 			</div>
 		</div>

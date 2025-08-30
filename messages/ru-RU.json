@@ -150,9 +150,6 @@
     "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_Included_Everything_Included_In_Your_Package": "Все включено в ваш пакет",
     "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_Included_Included": "Включено"
   },
-  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_LineItemsBreakdown": {
-    "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_LineItemsBreakdown_Grand_Total": "Общий Итог"
-  },
   "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_RenderSidebar": {
     "Booking_Failed_Error": "Не удалось создать бронирование",
     "Date_Selection_Error": "Необходимо выбрать дату",
@@ -1733,6 +1730,12 @@
   "ReadMore": {
     "read_less": "Свернуть",
     "read_more": "Читать далее"
+  },
+  "RenderLineItemsBreakdown": {
+    "accommodation": "Размещение",
+    "RenderLineItemsBreakdown_Grand_Total": "Общий Итог",
+    "tax": "Налог",
+    "transport": "Транспорт"
   },
   "servicedetail_listingexperiencesdetail_page": {
     "Cancellation_Policy_Text": "Каждая услуга, предоставляемая TRAVSUS на данном веб-сайте (мероприятия, однодневные поездки, экскурсии с гидом и трансферы), имеет свою собственную политику отмены. Пользователь может ознакомиться с каждой конкретной политикой отмены в описательной части каждого мероприятия (на веб-сайте) или в электронном письме с подтверждением, которое TRAVSUS отправит пользователю после оформления бронирования. Таким образом, к каждой услуге будут применяться конкретные условия отмены, которые устанавливают время отмены и возможные штрафы. TRAVSUS будет управлять отменами и подтверждать политику отмены каждого мероприятия, экскурсии, экскурсии с гидом и/или трансфера. Если ПОСТАВЩИК не имеет доступности на забронированную дату, TRAVSUS предложит клиенту альтернативную дату или расписание, которое должно быть принято или отклонено клиентом. Если в течение 72 часов не будет получен ответ об альтернативном варианте, бронирование будет отменено и немедленно возвращены деньги. В любом случае TRAVSUS отправит соответствующую документацию. В СООТВЕТСТВИИ С ВЫШЕИЗЛОЖЕННЫМ И ПРИНИМАЯ ДАННЫЕ ОБЩИЕ УСЛОВИЯ ИСПОЛЬЗОВАНИЯ, ПОЛЬЗОВАТЕЛИ ЗАЯВЛЯЮТ, ЧТО ПРЯМО ПРОЧИТАЛИ И ПРИНЯЛИ НАСТОЯЩУЮ ПОЛИТИКУ ОТМЕНЫ И НАСТОЯЩИМ СОГЛАШАЮТСЯ С ПОЛИТИКОЙ ОТМЕНЫ КАЖДОГО МЕРОПРИЯТИЯ, ОДНОДНЕВНОЙ ПОЕЗДКИ, ЭКСКУРСИИ С ГИДОМ И/ИЛИ ТРАНСФЕРА, КОТОРЫЕ БРОНИРУЮТСЯ НА ДАННОМ ВЕБ-САЙТЕ.",
