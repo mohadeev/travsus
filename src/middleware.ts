@@ -128,9 +128,25 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 import createMiddleware from 'next-intl/middleware'
+import { slugify } from 'transliteration'
+import slugifySecond from '@/utils/slugify'
+import { useTranslations } from '@/lib/i18n'
 import { routing } from './i18n/routing'
-import { generateTourLink } from './useTourLink'
+
+// import { generateTourLink } from './useTourLink'
 export default async function middleware(request: NextRequest) {
+	function generateTourLink(data?: any, locale?: any): any {
+		const t = useTranslations('Jan03_TourHeader_x9k2', locale)
+
+		if (!data?.days?.[0] || !locale) return '/' as Route
+
+		const day = data.days[0]
+		const toursLabel = t('tours_slug')
+
+		return slugifySecond(
+			`${locale}/${slugify(day.countryName || '')}/${slugify(day.cityName || '')}/${slugify(toursLabel)}/${slugify(data.name || '')}/${data.id}`,
+		) as any
+	}
 	const url = request.nextUrl.clone()
 	const pathname = url.pathname
 	const locale: string = url.pathname.split('/')[1] || 'en-US'

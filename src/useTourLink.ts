@@ -1,9 +1,5 @@
-'use client'
-
 import { slugify } from 'transliteration'
 import slugifySecond from '@/utils/slugify'
-import type { ExperiencesDataType } from '@/data/types'
-import type { Route } from '@/routers/types'
 import { useTranslations } from '@/lib/i18n'
 
 export function generateTourLink(
