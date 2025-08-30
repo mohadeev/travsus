@@ -10,7 +10,6 @@ generator client {
   binaryTargets = ["native", "windows", "rhel-openssl-3.0.x"]
 }
 
-
 model Business {
   id                  String   @id @default(auto()) @map("_id") @db.ObjectId
   creatorId           String   @db.ObjectId  // Foreign key for User
@@ -44,9 +43,6 @@ model Business {
   @@map("businesses")
 }
 
-
-
-
 model Subscription {
   id                String    @id @default(auto()) @map("_id") @db.ObjectId
   userId            String    @db.ObjectId // Reference to User
@@ -62,9 +58,7 @@ model Subscription {
   @@map("subscriptions")
 }
 
-
 model Booking {
-  
   id            String   @id @default(auto()) @map("_id") @db.ObjectId
   customer       User     @relation("CustomerBookings", fields: [customerId], references: [id])
   customerId     String   @db.ObjectId
@@ -98,8 +92,6 @@ model Booking {
 
   @@map("bookings")
 } 
-
-
 
 enum RoomType {
   SINGLE
@@ -139,7 +131,6 @@ type BookingStates {
   updatedAt DateTime
 }
 
-
 type SelectedDate {
   startDate Int
   endDate   Int
@@ -163,10 +154,6 @@ model Place {
   
   @@map("places")
 }
-
-
-
-
 
 model User {
   id                     String    @id @default(auto()) @map("_id") @db.ObjectId
@@ -219,13 +206,10 @@ model User {
   active          Boolean   @default(true)
   deactivatedAt   DateTime?
   deactivationReason String?
-    reviews          Review[]        // Add this line to the Tour model
+  reviews          Review[]        // Add this line to the Tour model
 
   @@map("users")
-
 }
-
-
 
 model PaymentMethod {
   id                     String    @id @default(auto()) @map("_id") @db.ObjectId
@@ -256,6 +240,7 @@ type Faq {
   question String
   answer   String
 }
+
 model Tour {
   id             String    @id @default(auto()) @map("_id") @db.ObjectId
   creatorId      String    @db.ObjectId
@@ -266,7 +251,7 @@ model Tour {
   subtitle       String?
   overview       String?
   productCategory String?
-  slug           String?
+  slugs          String[]  // Changed slug from String? to String[] to store multiple language slugs
   images         Json[]
   people         Json[]
   services       Json[]
@@ -288,8 +273,6 @@ model Tour {
   createdAt      DateTime  @default(now())
   updatedAt      DateTime  @updatedAt
   bookings       Booking[] @relation("TourBookings")
-//addressId      String?   @db.ObjectId
-//address        Address?  @relation("TourAddresses", fields: [addressId], references: [id])
   pricingTiers   PricingTier[]
   accommodations Accommodations[]
   startAddressId String?   @db.ObjectId
@@ -346,7 +329,6 @@ model Review {
   @@index([userId])
 }
 
-
 model TranslatableContent {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
   contentType String   // e.g., 'tour_name', 'tour_subtitle', 'tour_overview', 'review_title', 'review_content'
@@ -395,8 +377,6 @@ type Day {
   nameContentId        String? @db.ObjectId
   descriptionContentId String? @db.ObjectId
 }
-
-
 
 type PricingTier {
   minSeats    Int?
@@ -477,7 +457,6 @@ model Address {
   geoCoordinates GeoCoordinates
   createdAt      DateTime       @default(now())
   updatedAt      DateTime       @updatedAt
-  //tours          Tour[]         @relation("TourAddresses")
   toursAsStart   Tour[]         @relation("TourStartAddress")
   toursAsEnd     Tour[]         @relation("TourEndAddress")
   users          User[]         @relation("UserAddresses")  // Add this line
@@ -488,7 +467,6 @@ model Counter {
   name  String @unique
   value Int
 }
-
 
 model NewsletterSubscription {
   id         String   @id @default(auto()) @map("_id") @db.ObjectId
@@ -505,7 +483,6 @@ type token {
   token      String
   expired Boolean
 }
- 
 
 model Post {
   id            String   @id @default(auto()) @map("_id") @db.ObjectId
@@ -526,8 +503,6 @@ type Image {
   publicId String
 }
 
-
-
 model TravelSpot {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
   title       String
@@ -537,9 +512,6 @@ model TravelSpot {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
-
-
-
 
 model WhistleblowerReport {
   id            String   @id @default(auto()) @map("_id") @db.ObjectId
@@ -568,7 +540,6 @@ model Winner {
   spin    Spin   @relation(fields: [spinId], references: [id])
   code    String @unique
 }
-
 
 model ForumPost {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
@@ -604,13 +575,6 @@ model ForumComment {
   dislikedBy    User[]   @relation("DislikedComments", fields: [dislikedByIds], references: [id])
 }
 
-
-
-
-
-
-
-
 model ReferralLink {
   id               String    @id @default(auto()) @map("_id") @db.ObjectId
   userId           String    @db.ObjectId
@@ -628,7 +592,6 @@ model ReferralLink {
   createdAt        DateTime  @default(now())
   updatedAt        DateTime?  @updatedAt
 }
-
 
 model PayoutMethod {
   id                String    @id @default(auto()) @map("_id") @db.ObjectId
@@ -655,16 +618,6 @@ model PayoutMethod {
   
   @@map("payout_methods")
 }
-
-
-// Add this type definition for Day
-//type Day {
-//  hidden      Boolean   @default(false)
-//  name        String
-//  description String?
-//  cityId      String?   // Make cityId optional (nullable)
-//  cityName    String?   // Make cityName optional (nullable)
-//} 
 
 enum CommissionType {
   PERCENTAGE // Example: 5% commission
