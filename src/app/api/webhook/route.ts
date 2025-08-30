@@ -34,9 +34,7 @@ export async function POST(req: NextRequest) {
 			if (paymentIntent.status === 'succeeded') {
 				bookingConfirmationEmailHook(paymentIntent)
 				paymentConfirmationEmailHook(paymentIntent)
-				console.log(
-					'yes-----------------------------------------------------------------------------send message here',
-				)
+				
 			} else {
 				console.log('no')
 			}

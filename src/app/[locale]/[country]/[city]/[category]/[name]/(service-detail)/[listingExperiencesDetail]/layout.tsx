@@ -256,7 +256,6 @@ export async function generateMetadata({
 }: {
 	params: { id: string; locale: string }
 }): Promise<Metadata> {
-	console.log('params: ', params)
 	const serviceId = params?.listingExperiencesDetail
 	const t = await getTranslations({
 		locale: params.locale,

@@ -12,7 +12,6 @@ import ptPT from '../../messages/pt-PT.json'
 import ruRU from '../../messages/ru-RU.json'
 import zhCN from '../../messages/zh-CN.json'
 
-
 export const messages = {
 	'en-US': enUS,
 	'de-DE': deDE,
@@ -30,7 +29,7 @@ export function useTranslations(namespace: string, localeParam: any) {
 	let locale = ''
 
 	if (localeParam) {
-		let locale = localeParam
+		locale = localeParam
 	} else {
 		locale = useLocale() // e.g., "ja" or "ja-JP"
 	}
