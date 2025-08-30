@@ -1,4 +1,3 @@
-// hooks/useTourLink.ts
 'use client'
 
 import { slugify } from 'transliteration'
@@ -7,7 +6,7 @@ import type { ExperiencesDataType } from '@/data/types'
 import type { Route } from '@/routers/types'
 import { useTranslations } from '@/lib/i18n'
 
-export function useTourLink(
+export function generateTourLink(
 	data?: ExperiencesDataType,
 	locale?: string,
 ): Route {

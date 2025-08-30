@@ -125,37 +125,40 @@
 // export const config = {
 //   matcher: "/((?!api|static|.*\\..*|_next).*)",
 // };
-
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 import createMiddleware from 'next-intl/middleware'
 import { routing } from './i18n/routing'
-import { useTranslations } from '@/lib/i18n'
-import { useTourLink } from './useTourLink'
-
+import { generateTourLink } from './useTourLink'
 export default async function middleware(request: NextRequest) {
 	const url = request.nextUrl.clone()
 	const pathname = url.pathname
-	const locale: string = url.pathname.split('/')[1] || 'en-US' // extract locale from URL
-	const parts = pathname.split('/') // split into array by "/"
-	const last = parts[parts.length - 1] // last element
+	const locale: string = url.pathname.split('/')[1] || 'en-US'
+	const parts = pathname.split('/')
+	const last = parts[parts.length - 1]
 	const serviceId = parts[parts.length - 2]
+
 	if (last === 'q=tour' && parts.length === 11) {
-		const serviceDataResponse = await fetch(
-			`${process.env.NEXTAUTH_URL}/api/listing/get/getTourData?id=${serviceId}&locale=${locale}`,
-			{
-				method: 'GET',
-				headers: {
-					'Content-Type': 'application/json',
+		try {
+			const serviceDataResponse = await fetch(
+				`${process.env.NEXTAUTH_URL}/api/listing/get/getTourData?id=${serviceId}&locale=${locale}`,
+				{
+					method: 'GET',
+					headers: {
+						'Content-Type': 'application/json',
+					},
 				},
-			},
-		)
-		const serviceData: any = await serviceDataResponse.json()
-		const link = useTourLink(serviceData, locale)
-		return NextResponse.redirect(new URL(url.origin + '/' + link), 301)
+			)
+			const serviceData: any = await serviceDataResponse.json()
+			const link = generateTourLink(serviceData, locale)
+			return NextResponse.redirect(new URL(url.origin + '/' + link), 301)
+		} catch (error) {
+			console.error('Error in tour redirect:', error)
+			// Fallback to continue with normal middleware
+		}
 	}
 
-	// --- Continue with i18n middleware ---
+	// Continue with i18n middleware
 	return createMiddleware(routing)(request)
 }
 
