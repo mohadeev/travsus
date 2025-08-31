@@ -10,7 +10,7 @@ function extractTourId(url: any) {
 	const parts = url.split('/')
 
 	// The ID is always the second to last part (before the query parameters)
-	const idWithParams = parts[parts.length - 2]
+	const idWithParams = parts[parts.length - 1]
 
 	// If there are query parameters after the ID, split them off
 	const id = idWithParams.split('?')[0]
