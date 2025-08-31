@@ -13,7 +13,7 @@ export default function TravelBanner() {
 					}}
 				></div>
 				<div
-					className="absolute bottom-0 left-1/4 h-96 w-96 -translate-x-16 translate-y-32 transform rounded-full"
+					className="absolute right-1/4 top-0 h-96 w-96 -translate-y-48 translate-x-16 transform rounded-full"
 					style={{ backgroundColor: '#f573a1' }}
 				></div>
 			</div>
@@ -30,7 +30,7 @@ export default function TravelBanner() {
 						Don't Wait. Book Now, Pay Later.
 					</h1>
 
-					<p className="mb-8 text-xl leading-relaxed text-white/90 md:text-2xl">
+					<p className="mb-8 text-xl font-bold leading-relaxed text-white/90 md:text-2xl">
 						Limited availability on top destinations. Secure your spot today.
 					</p>
 
