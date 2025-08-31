@@ -100,7 +100,7 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 	}
 
 	const href = slugifySecond(
-		`${locale}/${slugify(day.country.name)}/${slugify(day.city.name)}/${slugify(secondT('tours'))}/${slugify(title)}/${serviceId}`,
+		`/${locale}/${slugify(day.country.name)}/${slugify(day.city.name)}/${slugify(secondT('tours'))}/${slugify(title)}/${serviceId}`,
 	) as Route
 
 	const handleCardClick = () => {
