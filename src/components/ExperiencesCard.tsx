@@ -66,7 +66,7 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 			const prices: any = await updateLineItemsLogic({
 				tour: data,
 				body: {
-					guests: { guestAdults: 18, guestChildren: 0 },
+					// guests: { guestAdults: 18, guestChildren: 0 },
 					source: 'ExperiencesCard',
 				},
 			})
@@ -143,7 +143,7 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 	const renderContent = () => {
 		return (
 			<div
-				className={`pt-3 ${
+				className={`p-1 pt-3 ${
 					size === 'small'
 						? 'w-[220px] sm:w-[250px] md:w-[280px]'
 						: 'mx-auto w-full max-w-[300px] sm:max-w-none'
@@ -212,7 +212,7 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 				<Link href={href} className="block overflow-hidden rounded-xl">
 					{renderSliderGallery()}
 				</Link>
-				<div>{renderContent()}</div>
+				<div className="">{renderContent()}</div>
 			</div>
 		</div>
 	)
