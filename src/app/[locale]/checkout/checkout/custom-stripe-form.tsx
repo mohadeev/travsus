@@ -421,7 +421,7 @@ const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
 										</div>
 									))}
 									<div className="flex cursor-pointer items-center space-x-2 rounded-lg border p-4 transition-colors hover:bg-slate-100">
-										<RadioGroupItem value="new_card" id="new_card" />
+										<RadioGroupItem value="new_card_" id="new_card_" />
 										<Label
 											htmlFor="new_card"
 											className="flex flex-1 cursor-pointer items-center"
