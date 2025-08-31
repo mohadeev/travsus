@@ -167,7 +167,7 @@ function ClientHomePage() {
 				<div className="lg:container">
 					<BookNowAndPayLaterBanner />
 				</div>
-				<div>
+				<div className="container">
 					<ItemsCardList
 						locationType="city"
 						countryId="67e120b734623c9e568da348"
