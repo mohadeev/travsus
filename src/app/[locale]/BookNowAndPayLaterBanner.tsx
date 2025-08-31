@@ -12,7 +12,7 @@ export default function BookNowAndPayLaterBanner() {
 				backgroundImage: 'url("/images/freepik_assistant_1753873160366.png")',
 			}}
 		>
-			<div className="relative z-10 px-8 py-8 pt-0 md:py-8">
+			<div className="relative z-10 px-8 py-8 md:py-8">
 				<div className="max-w-2xl">
 					<div className="mb-6 inline-block rounded-lg bg-white px-6 py-3">
 						<span className="text-lg font-bold italic text-black">
