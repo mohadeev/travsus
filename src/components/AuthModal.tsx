@@ -72,7 +72,7 @@ const AuthModal: React.FC = () => {
 	return (
 		<Dialog
 			as="div"
-			className="relative z-[100]"
+			className="z-max relative"
 			open={isModalVisible}
 			onClose={closeOverlay}
 		>

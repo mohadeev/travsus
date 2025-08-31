@@ -13,6 +13,7 @@ import ExperiencesCard from '@/components/ExperiencesCard'
 import TravelBanner from './TravelBanner'
 import BannerHome from './BannerHome'
 import TourCards from './TourCards'
+import BookNowAndPayLaterBanner from './BookNowAndPayLaterBanner'
 
 function ClientHomePage() {
 	const DUMMY_EXPERIENCE = {
@@ -162,6 +163,7 @@ function ClientHomePage() {
 					{/* <SectionGridFilterCard layout="row" /> */}
 					<ItemsCardList locationType="tour" layout={'row'} />
 					{/* <ItemsCardList locationType="country" layout="row" /> */}
+					<BookNowAndPayLaterBanner />
 					<ItemsCardList
 						locationType="city"
 						countryId="67e120b734623c9e568da348"
@@ -173,7 +175,7 @@ function ClientHomePage() {
 						cityId="67e5a961636b9ead6fb9b280"
 						layout="row"
 					/> */}
-					<TravelBanner />
+					{/* <TravelBanner /> */}
 
 					{/* <BannerHome /> */}
 				</div>
