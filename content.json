@@ -1,72 +1,92 @@
 {
 	"en-US": {
-		"RenderLineItemsBreakdown": {
-			"accommodation": "Accommodation",
-			"transport": "Transport",
-			"tax": "Tax"
+		"BookNowAndPayLaterBanner": {
+			"travel": "Travel",
+			"main_heading": "Don't Wait. Book Now, Pay Later.",
+			"sub_heading": "Limited availability on top destinations. Secure your spot today.",
+			"reserve_button": "RESERVE NOW",
+			"disclaimer": "Offer subject to terms and conditions. No deposit required. Limited time availability. Book now to secure your preferred travel dates and destinations."
 		}
 	},
 	"es-ES": {
-		"RenderLineItemsBreakdown": {
-			"accommodation": "Alojamiento",
-			"transport": "Transporte",
-			"tax": "Impuesto"
+		"BookNowAndPayLaterBanner": {
+			"travel": "Viajes",
+			"main_heading": "No esperes. Reserva ahora, paga después.",
+			"sub_heading": "Disponibilidad limitada en los mejores destinos. Asegura tu lugar hoy.",
+			"reserve_button": "RESERVAR AHORA",
+			"disclaimer": "Oferta sujeta a términos y condiciones. No se requiere depósito. Disponibilidad por tiempo limitado. Reserva ahora para asegurar tus fechas y destinos de viaje preferidos."
 		}
 	},
 	"de-DE": {
-		"RenderLineItemsBreakdown": {
-			"accommodation": "Unterkunft",
-			"transport": "Transport",
-			"tax": "Steuer"
+		"BookNowAndPayLaterBanner": {
+			"travel": "Reisen",
+			"main_heading": "Warten Sie nicht. Jetzt buchen, später bezahlen.",
+			"sub_heading": "Begrenzte Verfügbarkeit in Top-Zielen. Sichern Sie sich noch heute Ihren Platz.",
+			"reserve_button": "JETZT BUCHEN",
+			"disclaimer": "Angebot unterliegt den Allgemeinen Geschäftsbedingungen. Keine Anzahlung erforderlich. Begrenzte Verfügbarkeit. Buchen Sie jetzt, um Ihre bevorzugten Reisedaten und -ziele zu sichern."
 		}
 	},
 	"fr-FR": {
-		"RenderLineItemsBreakdown": {
-			"accommodation": "Hébergement",
-			"transport": "Transport",
-			"tax": "Taxe"
+		"BookNowAndPayLaterBanner": {
+			"travel": "Voyage",
+			"main_heading": "N'attendez pas. Réservez maintenant, payez plus tard.",
+			"sub_heading": "Disponibilité limitée sur les meilleures destinations. Sécurisez votre place aujourd'hui.",
+			"reserve_button": "RÉSERVER MAINTENANT",
+			"disclaimer": "Offre soumise à conditions. Aucun acompte requis. Disponibilité limitée dans le temps. Réservez maintenant pour sécuriser vos dates et destinations de voyage préférées."
 		}
 	},
 	"ja-JP": {
-		"RenderLineItemsBreakdown": {
-			"accommodation": "宿泊施設",
-			"transport": "交通機関",
-			"tax": "税金"
+		"BookNowAndPayLaterBanner": {
+			"travel": "旅行",
+			"main_heading": "待たないで。今すぐ予約、後払い。",
+			"sub_heading": "人気目的地は数に限りがございます。今すぐお席を確保ください。",
+			"reserve_button": "今すぐ予約",
+			"disclaimer": "オファーは利用規約の対象となります。頭金不要。期間限定のご提供です。希望の旅行日と目的地を確保するために今すぐご予約ください。"
 		}
 	},
 	"pt-PT": {
-		"RenderLineItemsBreakdown": {
-			"accommodation": "Alojamento",
-			"transport": "Transporte",
-			"tax": "Imposto"
+		"BookNowAndPayLaterBanner": {
+			"travel": "Viagem",
+			"main_heading": "Não espere. Reserve agora, pague depois.",
+			"sub_heading": "Disponibilidade limitada nos melhores destinos. Garanta o seu lugar hoje.",
+			"reserve_button": "RESERVAR AGORA",
+			"disclaimer": "Oferta sujeita a termos e condições. Não é necessário depósito. Disponibilidade por tempo limitado. Reserve agora para garantir as suas datas e destinos de viagem preferidos."
 		}
 	},
 	"it-IT": {
-		"RenderLineItemsBreakdown": {
-			"accommodation": "Alloggio",
-			"transport": "Trasporto",
-			"tax": "Tassa"
+		"BookNowAndPayLaterBanner": {
+			"travel": "Viaggio",
+			"main_heading": "Non aspettare. Prenota ora, paga dopo.",
+			"sub_heading": "Disponibilità limitata nelle migliori destinazioni. Assicura il tuo posto oggi.",
+			"reserve_button": "PRENOTA ORA",
+			"disclaimer": "Offerta soggetta a termini e condizioni. Nessun acconto richiesto. Disponibilità a tempo limitato. Prenota ora per assicurarti le date e le destinazioni di viaggio preferite."
 		}
 	},
 	"ru-RU": {
-		"RenderLineItemsBreakdown": {
-			"accommodation": "Размещение",
-			"transport": "Транспорт",
-			"tax": "Налог"
+		"BookNowAndPayLaterBanner": {
+			"travel": "Путешествия",
+			"main_heading": "Не ждите. Бронируйте сейчас, платите позже.",
+			"sub_heading": "Ограниченная доступность в лучших направлениях. Забронируйте место сегодня.",
+			"reserve_button": "ЗАБРОНИРОВАТЬ СЕЙЧАС",
+			"disclaimer": "Предложение действует на определенных условиях. Без залога. Ограниченное время действия. Забронируйте сейчас, чтобы закрепить предпочтительные даты и направления поездки."
 		}
 	},
 	"zh-CN": {
-		"RenderLineItemsBreakdown": {
-			"accommodation": "住宿",
-			"transport": "交通",
-			"tax": "税"
+		"BookNowAndPayLaterBanner": {
+			"travel": "旅行",
+			"main_heading": "不要等待。立即预订，稍后付款。",
+			"sub_heading": "热门目的地名额有限。立即确保您的位置。",
+			"reserve_button": "立即预订",
+			"disclaimer": "优惠受条款和条件约束。无需押金。限时供应。立即预订以确保您首选的旅行日期和目的地。"
 		}
 	},
 	"ko-KR": {
-		"RenderLineItemsBreakdown": {
-			"accommodation": "숙박",
-			"transport": "교통",
-			"tax": "세금"
+		"BookNowAndPayLaterBanner": {
+			"travel": "여행",
+			"main_heading": "기다리지 마세요. 지금 예약하고 나중에 결제하세요.",
+			"sub_heading": "인기 목적지는 좌석이 한정되어 있습니다. 지금 자리를 확보하세요.",
+			"reserve_button": "지금 예약",
+			"disclaimer": "제안은 이용 약관의 적용을 받습니다. 보증금 불필요. 기간 한정 제공입니다. 선호하는 여행 날짜와 목적지를 확보하려면 지금 예약하세요."
 		}
 	}
 }

@@ -329,6 +329,13 @@
     "not_wheelchair_accessible": "轮椅无法通行",
     "read_more": "阅读更多"
   },
+  "BookNowAndPayLaterBanner": {
+    "disclaimer": "优惠受条款和条件约束。无需押金。限时供应。立即预订以确保您首选的旅行日期和目的地。",
+    "main_heading": "不要等待。立即预订，稍后付款。",
+    "reserve_button": "立即预订",
+    "sub_heading": "热门目的地名额有限。立即确保您的位置。",
+    "travel": "旅行"
+  },
   "BookNowPayLater": {
     "experience_starts": "体验开始（当地时间）",
     "free_cancellation": "24小时前免费取消",

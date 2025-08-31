@@ -163,7 +163,11 @@ function ClientHomePage() {
 					{/* <SectionGridFilterCard layout="row" /> */}
 					<ItemsCardList locationType="tour" layout={'row'} />
 					{/* <ItemsCardList locationType="country" layout="row" /> */}
+				</div>
+				<div className="lg:container">
 					<BookNowAndPayLaterBanner />
+				</div>
+				<div>
 					<ItemsCardList
 						locationType="city"
 						countryId="67e120b734623c9e568da348"
