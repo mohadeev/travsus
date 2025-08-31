@@ -243,53 +243,56 @@ const ListingExperiencesDetailPage: FC<ListingExperiencesDetailPageProps> = ({
 			</div>
 		)
 	}
-
+	const { mobileFooterStickyToggle } = useSelector(
+		(state: any) => state.overlaySlice,
+	)
+	console.log('mobileFooterStickyToggle: ', mobileFooterStickyToggle)
 	return (
 		<>
-			{/* <Suspense>
-				<ListingImageGallery images={imageGallery} />
-			</Suspense> */}
-			<div className={'container'}>
-				<TourHeader />
-			</div>
-
-			<ListingExperiencesDetailsImages />
-			<div className={`nc-ListingExperiencesDetailPage container z-9`}>
-				<main className="relative z-10 mt-11 flex flex-col lg:flex-row">
-					<div className="w-full space-y-8 lg:w-3/5 lg:space-y-10 lg:pr-10 xl:w-2/3">
-						{renderSection2()}
-						<Included />
-						<BookingGuarantees />
-						<TourFAQ faqs={faq} />
+			{mobileFooterStickyToggle === false && (
+				<>
+					<div className={'container'}>
+						<TourHeader />
 					</div>
+					<ListingExperiencesDetailsImages />
+					<div className={`nc-ListingExperiencesDetailPage container`}>
+						<main className="mt-11 flex flex-col lg:flex-row">
+							<div className="w-full space-y-8 lg:w-3/5 lg:space-y-10 lg:pr-10 xl:w-2/3">
+								{renderSection2()}
+								<Included />
+								<BookingGuarantees />
+								<TourFAQ faqs={faq} />
+							</div>
 
-					{/* SIDEBAR */}
-					<div className="mt-14 hidden flex-grow lg:mt-0 lg:block">
-						<div className="top-28">
-							<RenderSidebar />
-							<ContactReservations />
-						</div>
+							{/* SIDEBAR */}
+							<div className="mt-14 hidden flex-grow lg:mt-0 lg:block">
+								<div className="top-28">
+									<RenderSidebar />
+									<ContactReservations />
+								</div>
+							</div>
+						</main>
+						<TourPreBookingInfo />
+						{days && (
+							<div>
+								<h4 className="my-4 text-2xl font-semibold">
+									{t('Itinerary_Title')}
+								</h4>
+
+								{days && <TourItineraryWithMap days={days} />}
+							</div>
+						)}
+
+						{id && <ReviewSystem serviceId={id} serviceName={title} />}
+						<ItemsCardList
+							locationType="tour"
+							heading={t('Similar_Experiences')}
+							currentPage={1}
+							layout="row"
+						/>
 					</div>
-				</main>
-				<TourPreBookingInfo />
-				{days && (
-					<div>
-						<h4 className="my-4 text-2xl font-semibold">
-							{t('Itinerary_Title')}
-						</h4>
-
-						{days && <TourItineraryWithMap days={days} />}
-					</div>
-				)}
-
-				{id && <ReviewSystem serviceId={id} serviceName={title} />}
-				<ItemsCardList
-					locationType="tour"
-					heading={t('Similar_Experiences')}
-					currentPage={1}
-					layout="row"
-				/>
-			</div>
+				</>
+			)}
 			<MobileFooterSticky />
 		</>
 	)

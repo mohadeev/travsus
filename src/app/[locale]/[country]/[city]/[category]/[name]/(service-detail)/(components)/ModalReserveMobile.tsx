@@ -2,6 +2,8 @@ import React, { FC, Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/solid'
 import RenderSidebar from '../[listingExperiencesDetail]/RenderSideBar/RenderSidebar'
+import { mobileFooterStickyToggleHanlder } from '@/app/[locale]/GlobalRedux/Features/overlaySlice/overlaySlice'
+import { useDispatch } from 'react-redux'
 
 interface ModalReserveMobileProps {
 	renderChildren?: (p: { openModal: () => void }) => React.ReactNode
@@ -28,15 +30,19 @@ const ModalReserveMobile: FC<ModalReserveMobileProps> = ({
 			<button onClick={openModal}>Select Date</button>
 		)
 	}
-
+	const dispatch = useDispatch()
+	const haneleClose = (closeModal: any) => {
+		closeModal()
+		dispatch(mobileFooterStickyToggleHanlder({ value: false }))
+	}
 	return (
 		<>
 			{renderButtonOpenModal()}
 			<Transition appear show={showModal} as={Fragment}>
 				<Dialog
 					as="div"
-					className="HeroSearchFormMobile__Dialog z-100 bg-red"
-					onClose={closeModal}
+					className="HeroSearchFormMobile__Dialog z-max fixed bg-black p-10"
+					onClose={() => haneleClose(closeModal)}
 				>
 					<div className="fixed inset-0 bg-neutral-100 dark:bg-neutral-900">
 						<div className="flex h-full">
@@ -54,7 +60,7 @@ const ModalReserveMobile: FC<ModalReserveMobileProps> = ({
 										<div className="absolute left-4 top-4">
 											<button
 												className="focus:outline-none focus:ring-0"
-												onClick={closeModal}
+												onClick={() => haneleClose(closeModal)}
 											>
 												<XMarkIcon className="h-5 w-5 text-black dark:text-white" />
 											</button>

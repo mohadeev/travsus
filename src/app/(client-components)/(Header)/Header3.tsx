@@ -160,7 +160,7 @@ const Header3: FC<Header3Props> = ({ className = '' }) => {
 				<div className="relative flex h-[88px] px-4 lg:container">
 					<div className="flex flex-1 justify-between">
 						<div className="relative z-10 hidden flex-1 items-center md:flex">
-							<Logo />
+							<Logo /> 
 						</div>
 
 						<div className="mx-auto flex flex-[2] lg:flex-none">

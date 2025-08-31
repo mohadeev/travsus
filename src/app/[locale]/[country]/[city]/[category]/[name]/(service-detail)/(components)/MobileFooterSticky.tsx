@@ -3,13 +3,14 @@ import { useState } from 'react'
 import ButtonPrimary from '@/shared/ButtonPrimary'
 import converSelectedDateToString from '@/utils/converSelectedDateToString'
 import ModalReserveMobile from './ModalReserveMobile'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { formatCurrency } from '@/utils/formatCurrency'
 import { useTranslations } from '@/lib/i18n'
 import { useLocale } from 'next-intl'
 import locales from '@/lib/dateFnsLocales'
 import { registerLocale } from 'react-datepicker'
 import moment from 'moment'
+import { mobileFooterStickyToggleHanlder } from '@/app/[locale]/GlobalRedux/Features/overlaySlice/overlaySlice'
 
 const MobileFooterSticky = () => {
 	const t = useTranslations('Jan03_MobileFooterSticky_m4k7')
@@ -46,6 +47,11 @@ const MobileFooterSticky = () => {
 			.toDate(),
 	)
 	//
+	const dispatch = useDispatch()
+	const haneleOpen = (openModal: any) => {
+		openModal()
+		dispatch(mobileFooterStickyToggleHanlder({ value: true }))
+	}
 	return (
 		<>
 			{totalAmount ? (
@@ -61,7 +67,7 @@ const MobileFooterSticky = () => {
 										</span>
 									</span>
 									<span
-										onClick={openModal}
+										onClick={() => haneleOpen(openModal)}
 										className="block text-sm font-medium underline"
 									>
 										{converSelectedDateToString([startDate, endDate], locale)}
@@ -69,7 +75,7 @@ const MobileFooterSticky = () => {
 								</div>
 								<ButtonPrimary
 									sizeClass="px-5 sm:px-7 py-3 !rounded-2xl"
-									onClick={openModal}
+									onClick={() => haneleOpen(openModal)}
 								>
 									{t('Reserve')}
 								</ButtonPrimary>

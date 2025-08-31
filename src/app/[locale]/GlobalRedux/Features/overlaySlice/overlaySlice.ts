@@ -5,6 +5,7 @@ interface OverlayState {
 	data: any // Data to pass to the overlay component, can be any type
 	isVisible: boolean // Boolean to track visibility
 	toggleTawdWidget: boolean // Boolean to track visibility
+	mobileFooterStickyToggle: boolean
 }
 
 const initialState: OverlayState = {
@@ -12,6 +13,7 @@ const initialState: OverlayState = {
 	data: null,
 	isVisible: false,
 	toggleTawdWidget: false,
+	mobileFooterStickyToggle: false,
 }
 
 const overlaySlice = createSlice({
@@ -38,9 +40,22 @@ const overlaySlice = createSlice({
 			// If widget is already active, hide it
 			state.toggleTawdWidget = action.payload.value
 		},
+		mobileFooterStickyToggleHanlder: (
+			state,
+			action: PayloadAction<{
+				value: boolean
+			}>,
+		) => {
+			const { value } = action.payload
+			state.mobileFooterStickyToggle = value
+		},
 	},
 })
 
-export const { toggleOverlay, toggleTawdWidget } = overlaySlice.actions
+export const {
+	toggleOverlay,
+	toggleTawdWidget,
+	mobileFooterStickyToggleHanlder,
+} = overlaySlice.actions
 
 export default overlaySlice.reducer
