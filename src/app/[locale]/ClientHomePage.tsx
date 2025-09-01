@@ -14,6 +14,7 @@ import TravelBanner from './TravelBanner'
 import BannerHome from './BannerHome'
 import TourCards from './TourCards'
 import BookNowAndPayLaterBanner from './BookNowAndPayLaterBanner'
+import Testimonials from '@/components/Testimonials'
 
 function ClientHomePage() {
 	const DUMMY_EXPERIENCE = {
@@ -183,7 +184,7 @@ function ClientHomePage() {
 
 					{/* <BannerHome /> */}
 				</div>
-
+				<Testimonials />
 				<SectionSubscribe2 />
 			</main>
 		</>
