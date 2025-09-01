@@ -184,8 +184,6 @@ export async function GET(request: NextRequest) {
 		const { searchParams } = request.nextUrl
 		const page = Number.parseInt(searchParams.get('page') || '1')
 		const limit = Number.parseInt(searchParams.get('limit') || '8')
-		console.log(request)
-
 		const language = extractLanguageFromRequest(request)
 
 		const userData: any = await getUserData()

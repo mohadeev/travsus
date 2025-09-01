@@ -88,7 +88,7 @@ const BedTypeSelector: React.FC<BedTypeSelectorProps> = ({
 	onChange,
 	defaultValue,
 }) => {
-	const t = useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_RowBedAccommodationSelector");
+	const t = useTranslations('detailRowBedAccommodationSelector')
 
 	const bedTypes: Record<BedType, BedTypeInfo> = {
 		single: {
@@ -97,7 +97,12 @@ const BedTypeSelector: React.FC<BedTypeSelectorProps> = ({
 			minPeople: 1,
 			maxPeople: 1,
 		},
-		twin: { name: t('Twin_Beds'), icon: BedSingleIcon, minPeople: 1, maxPeople: 2 },
+		twin: {
+			name: t('Twin_Beds'),
+			icon: BedSingleIcon,
+			minPeople: 1,
+			maxPeople: 2,
+		},
 		couple: {
 			name: t('Couple_Bed'),
 			icon: BedDoubleIcon,
@@ -192,7 +197,7 @@ const BedTypeSelector: React.FC<BedTypeSelectorProps> = ({
 			<AnimatePresence>
 				{isModalOpen && (
 					<ModalPortal>
-						<div className="fixed inset-0 z-[9999]">
+						<div className="z-max fixed inset-0">
 							<div className="flex h-full">
 								<motion.div
 									initial={{ opacity: 0, translateY: '100%' }}
@@ -258,7 +263,8 @@ const BedTypeSelector: React.FC<BedTypeSelectorProps> = ({
 																	</span>
 																	<span className="mt-1 text-xs">
 																		{bedTypes[selectedBedType].minPeople} -{' '}
-																		{bedTypes[selectedBedType].maxPeople} {t('People')}
+																		{bedTypes[selectedBedType].maxPeople}{' '}
+																		{t('People')}
 																	</span>
 																</div>
 															</motion.div>
@@ -414,7 +420,7 @@ const RowBedAccommodationSelector: React.FC<
 	RowBedAccommodationSelectorProps
 > = ({ onChange, defaultValue }) => {
 	const accommodationTypes: AccommodationType[] = ['Standard', 'Luxury']
-	
+
 	const [selection, setSelection] = useState<
 		Record<AccommodationType, BedTypeSelection>
 	>(

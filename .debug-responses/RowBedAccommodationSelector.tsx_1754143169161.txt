@@ -1,20 +1,20 @@
 
 === FILE: C:\Users\Usuario\s\travsus\src\app\[locale]\[continent]\[country]\[region]\[city]\[category]\[name]\(service-detail)\[listing-experiences-detail]\RowBedAccommodationSelector.tsx ===
-=== NAMESPACE: app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_RowBedAccommodationSelector ===
+=== NAMESPACE: detailRowBedAccommodationSelector ===
 === PROMPT ===
 # ULTRA-STRICT INTERNATIONALIZATION INSTRUCTIONS
 
 Transform this TSX file to use internationalization.
 
 ## CRITICAL NAMESPACE AND KEY REQUIREMENTS:
-- You MUST use the exact namespace: "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_RowBedAccommodationSelector"
-- The useTranslations call MUST be: useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_RowBedAccommodationSelector")
+- You MUST use the exact namespace: "detailRowBedAccommodationSelector"
+- The useTranslations call MUST be: useTranslations("detailRowBedAccommodationSelector")
 - Keys should be simple descriptive names WITHOUT the namespace prefix
-- Example: t('Welcome_Message') NOT t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_RowBedAccommodationSelector_Welcome_Message')
+- Example: t('Welcome_Message') NOT t('detailRowBedAccommodationSelector_Welcome_Message')
 
 ## EXACT REQUIREMENTS:
 1. Add this import: import { useTranslations } from '@/lib/i18n'
-2. Add this hook call: const t = useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_RowBedAccommodationSelector");
+2. Add this hook call: const t = useTranslations("detailRowBedAccommodationSelector");
 3. Replace static text with: t('Simple_Key_Name')
 4. Generate simple keys like: Welcome_Message, Button_Text, Error_Message
 
@@ -29,7 +29,7 @@ Transform this TSX file to use internationalization.
 <COMPLETE TSX FILE WITH EXACT NAMESPACE>
 ---MESSAGES:
 {
-  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_RowBedAccommodationSelector": {
+  "detailRowBedAccommodationSelector": {
 	"Welcome_Message": "Welcome to our site",
 	"Button_Text": "Click here",
 	"Error_Message": "Something went wrong"
@@ -49,7 +49,7 @@ AFTER:
 import { useTranslations } from '@/lib/i18n';
 
 export default function Component() {
-  const t = useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_RowBedAccommodationSelector");
+  const t = useTranslations("detailRowBedAccommodationSelector");
   
   return (
 	<div>
@@ -62,7 +62,7 @@ export default function Component() {
 
 ---MESSAGES:
 {
-  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_RowBedAccommodationSelector": {
+  "detailRowBedAccommodationSelector": {
 	"Welcome_Message": "Welcome to our site",
 	"Button_Text": "Click here", 
 	"Error_Message": "Something went wrong"
@@ -546,16 +546,16 @@ export default RowBedAccommodationSelector
 
 
 REMEMBER: 
-- Use EXACTLY "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_RowBedAccommodationSelector" in useTranslations()
+- Use EXACTLY "detailRowBedAccommodationSelector" in useTranslations()
 - Keys should be simple names WITHOUT namespace prefix
-- JSON structure: { "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_RowBedAccommodationSelector": { "Simple_Key": "value" } }
+- JSON structure: { "detailRowBedAccommodationSelector": { "Simple_Key": "value" } }
 
 === RESPONSE ===
 <Thinking>
 I need to transform this TSX file to use internationalization following the exact requirements:
 
 1. Add the import: `import { useTranslations } from '@/lib/i18n'`
-2. Add the hook call with the exact namespace: `const t = useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_RowBedAccommodationSelector");`
+2. Add the hook call with the exact namespace: `const t = useTranslations("detailRowBedAccommodationSelector");`
 3. Replace all static text with t('Simple_Key_Name') calls
 4. Generate simple keys using Title_Case_With_Underscores format
 
@@ -670,7 +670,7 @@ const BedTypeSelector: React.FC<BedTypeSelectorProps> = ({
 	onChange,
 	defaultValue,
 }) => {
-	const t = useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_RowBedAccommodationSelector");
+	const t = useTranslations("detailRowBedAccommodationSelector");
 
 	const bedTypes: Record<BedType, BedTypeInfo> = {
 		single: {
@@ -1059,7 +1059,7 @@ export default RowBedAccommodationSelector
 
 ---MESSAGES:
 {
-  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_RowBedAccommodationSelector": {
+  "detailRowBedAccommodationSelector": {
     "Single_Bed": "Single Bed",
     "Twin_Beds": "Twin Beds",
     "Couple_Bed": "Couple Bed",
