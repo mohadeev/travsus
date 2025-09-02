@@ -175,7 +175,7 @@ async function translateReviewField(
 export async function GET(request: NextRequest) {
 	try {
 		console.log('🚀 Starting review translation process...')
-
+		console.log('CONFIG.V0_API_KEY', CONFIG.V0_API_KEY)
 		// Check if V0 API key is configured
 		if (!CONFIG.V0_API_KEY) {
 			return NextResponse.json(
