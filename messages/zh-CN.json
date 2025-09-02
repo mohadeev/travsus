@@ -161,23 +161,7 @@
 	"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewImageGallery": {
 		"Review_Photo_Alt": "评价照片"
 	},
-	"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewSkeleton": {},
-	"detailRowBedAccommodationSelector": {
-		"Adults": "成人",
-		"Beds": "床位",
-		"Cancel": "取消",
-		"Children": "儿童",
-		"Couple_Bed": "双人床",
-		"Go_To_Bed_Type": "前往床型",
-		"Next_Bed_Type": "下一个床型",
-		"OK": "确定",
-		"People": "人数",
-		"Previous_Bed_Type": "上一个床型",
-		"Select_Beds": "选择床位",
-		"Select_Beds_Title": "选择床位",
-		"Single_Bed": "单人床",
-		"Twin_Beds": "双床"
-	},
+	"ExperiencesDetailReviewSkeleton": {},
 	"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SidebarSkeletonLoader": {},
 	"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader": {
 		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Aspect_Ratio_Classes": "aspect-h-3 aspect-w-4 bg-gray-200",
@@ -684,6 +668,22 @@
 		"Sponsored_By": "赞助商",
 		"Things_To_Do": "景点活动",
 		"Vacation_Rentals": "度假租赁"
+	},
+	"detailRowBedAccommodationSelector": {
+		"Adults": "成人",
+		"Beds": "床位",
+		"Cancel": "取消",
+		"Children": "儿童",
+		"Couple_Bed": "双人床",
+		"Go_To_Bed_Type": "前往床型",
+		"Next_Bed_Type": "下一个床型",
+		"OK": "确定",
+		"People": "人数",
+		"Previous_Bed_Type": "上一个床型",
+		"Select_Beds": "选择床位",
+		"Select_Beds_Title": "选择床位",
+		"Single_Bed": "单人床",
+		"Twin_Beds": "双床"
 	},
 	"EachDay": {},
 	"experience_reviews": {
@@ -1769,6 +1769,13 @@
 		"vat_id_number": "增值税识别号码",
 		"vat_info_updated": "增值税信息更新成功",
 		"vat_title": "增值税 (VAT)"
+	},
+	"Testimonials": {
+		"description": "不要只听我们怎么说。看看我们满意的客户对他们使用我们五星级服务的体验有何评价。",
+		"loading": "正在加载客户评价...",
+		"no_reviews": "目前没有可用的五星评价。",
+		"title": "客户评价",
+		"travel_date": "旅行日期"
 	},
 	"test_page": {
 		"test_page_Book_Cancel_Refund_Anytime_Anywhere": "预订、取消、退款 — 随时随地，尽在 TRAVSUS。",

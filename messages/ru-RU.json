@@ -161,23 +161,7 @@
 	"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewImageGallery": {
 		"Review_Photo_Alt": "Фотография отзыва"
 	},
-	"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewSkeleton": {},
-	"detailRowBedAccommodationSelector": {
-		"Adults": "Взрослые",
-		"Beds": "Кровати",
-		"Cancel": "Отмена",
-		"Children": "Дети",
-		"Couple_Bed": "Двуспальная кровать",
-		"Go_To_Bed_Type": "Перейти к типу кровати",
-		"Next_Bed_Type": "Следующий тип кровати",
-		"OK": "ОК",
-		"People": "Человек",
-		"Previous_Bed_Type": "Предыдущий тип кровати",
-		"Select_Beds": "Выберите кровати",
-		"Select_Beds_Title": "Выберите кровати",
-		"Single_Bed": "Односпальная кровать",
-		"Twin_Beds": "Две односпальные кровати"
-	},
+	"ExperiencesDetailReviewSkeleton": {},
 	"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SidebarSkeletonLoader": {},
 	"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader": {
 		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Aspect_Ratio_Classes": "aspect-h-3 aspect-w-4 bg-gray-200",
@@ -697,6 +681,22 @@
 		"Sponsored_By": "При поддержке",
 		"Things_To_Do": "Чем Заняться",
 		"Vacation_Rentals": "Аренда Жилья для Отдыха"
+	},
+	"detailRowBedAccommodationSelector": {
+		"Adults": "Взрослые",
+		"Beds": "Кровати",
+		"Cancel": "Отмена",
+		"Children": "Дети",
+		"Couple_Bed": "Двуспальная кровать",
+		"Go_To_Bed_Type": "Перейти к типу кровати",
+		"Next_Bed_Type": "Следующий тип кровати",
+		"OK": "ОК",
+		"People": "Человек",
+		"Previous_Bed_Type": "Предыдущий тип кровати",
+		"Select_Beds": "Выберите кровати",
+		"Select_Beds_Title": "Выберите кровати",
+		"Single_Bed": "Односпальная кровать",
+		"Twin_Beds": "Две односпальные кровати"
 	},
 	"EachDay": {},
 	"experience_reviews": {
@@ -1906,6 +1906,13 @@
 		"vat_id_number": "Идентификационный номер НДС",
 		"vat_info_updated": "Информация о НДС успешно обновлена",
 		"vat_title": "Налог на добавленную стоимость (НДС)"
+	},
+	"Testimonials": {
+		"description": "Не верьте нам на слово. Вот что наши довольные клиенты говорят о своем опыте использования наших услуг с 5-звездочным рейтингом.",
+		"loading": "Загрузка отзывов клиентов...",
+		"no_reviews": "На данный момент нет доступных 5-звездочных отзывов.",
+		"title": "Что говорят наши клиенты",
+		"travel_date": "Дата путешествия"
 	},
 	"test_page": {
 		"test_page_Book_Cancel_Refund_Anytime_Anywhere": "Бронирование, отмена, возврат — в любое время и в любом месте, только с TRAVSUS.",

@@ -161,23 +161,7 @@
 	"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewImageGallery": {
 		"Review_Photo_Alt": "리뷰 사진"
 	},
-	"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewSkeleton": {},
-	"detailRowBedAccommodationSelector": {
-		"Adults": "성인",
-		"Beds": "베드",
-		"Cancel": "취소",
-		"Children": "어린이",
-		"Couple_Bed": "더블 베드",
-		"Go_To_Bed_Type": "베드 유형으로 이동",
-		"Next_Bed_Type": "다음 베드 유형",
-		"OK": "확인",
-		"People": "인원",
-		"Previous_Bed_Type": "이전 베드 유형",
-		"Select_Beds": "베드 선택",
-		"Select_Beds_Title": "베드 선택",
-		"Single_Bed": "싱글 베드",
-		"Twin_Beds": "트윈 베드"
-	},
+	"ExperiencesDetailReviewSkeleton": {},
 	"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SidebarSkeletonLoader": {},
 	"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader": {
 		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Aspect_Ratio_Classes": "aspect-h-3 aspect-w-4 bg-gray-200",
@@ -685,6 +669,22 @@
 		"Sponsored_By": "후원",
 		"Things_To_Do": "할 일",
 		"Vacation_Rentals": "휴가용 임대"
+	},
+	"detailRowBedAccommodationSelector": {
+		"Adults": "성인",
+		"Beds": "베드",
+		"Cancel": "취소",
+		"Children": "어린이",
+		"Couple_Bed": "더블 베드",
+		"Go_To_Bed_Type": "베드 유형으로 이동",
+		"Next_Bed_Type": "다음 베드 유형",
+		"OK": "확인",
+		"People": "인원",
+		"Previous_Bed_Type": "이전 베드 유형",
+		"Select_Beds": "베드 선택",
+		"Select_Beds_Title": "베드 선택",
+		"Single_Bed": "싱글 베드",
+		"Twin_Beds": "트윈 베드"
 	},
 	"EachDay": {},
 	"experience_reviews": {
@@ -1814,6 +1814,13 @@
 		"vat_id_number": "부가가치세 식별 번호",
 		"vat_info_updated": "부가가치세 정보가 성공적으로 업데이트되었습니다",
 		"vat_title": "부가가치세 (VAT)"
+	},
+	"Testimonials": {
+		"description": "저희의 말만 믿지 마세요. 5성급 서비스를 경험한 만족한 고객님들의 생생한 후기를 확인해보세요.",
+		"loading": "고객 리뷰를 불러오는 중...",
+		"no_reviews": "현재 5성 리뷰가 없습니다.",
+		"title": "고객님들의 의견",
+		"travel_date": "여행 날짜"
 	},
 	"test_page": {
 		"test_page_Book_Cancel_Refund_Anytime_Anywhere": "예약, 취소, 환불 – 언제 어디서나 TRAVSUS에서.",

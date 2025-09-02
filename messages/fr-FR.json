@@ -302,23 +302,7 @@
 	"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewImageGallery": {
 		"Review_Photo_Alt": "Photo d'avis"
 	},
-	"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewSkeleton": {},
-	"detailRowBedAccommodationSelector": {
-		"Adults": "Adultes",
-		"Beds": "Lits",
-		"Cancel": "Annuler",
-		"Children": "Enfants",
-		"Couple_Bed": "Lit Double",
-		"Go_To_Bed_Type": "Aller au type de lit",
-		"Next_Bed_Type": "Type de lit suivant",
-		"OK": "OK",
-		"People": "Personnes",
-		"Previous_Bed_Type": "Type de lit précédent",
-		"Select_Beds": "Sélectionner les lits",
-		"Select_Beds_Title": "Sélectionner les Lits",
-		"Single_Bed": "Lit Simple",
-		"Twin_Beds": "Lits Jumeaux"
-	},
+	"ExperiencesDetailReviewSkeleton": {},
 	"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SidebarSkeletonLoader": {},
 	"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader": {
 		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Aspect_Ratio_Classes": "aspect-h-3 aspect-w-4 bg-gray-200",
@@ -981,6 +965,22 @@
 		"destinations_page_Failed_To_Load_Destinations": "Échec du chargement des destinations. Veuillez réessayer plus tard.",
 		"destinations_page_Loading_Destinations": "Chargement des destinations...",
 		"destinations_page_Travelers_Choice_Awards": "Prix du choix des voyageurs 2025"
+	},
+	"detailRowBedAccommodationSelector": {
+		"Adults": "Adultes",
+		"Beds": "Lits",
+		"Cancel": "Annuler",
+		"Children": "Enfants",
+		"Couple_Bed": "Lit Double",
+		"Go_To_Bed_Type": "Aller au type de lit",
+		"Next_Bed_Type": "Type de lit suivant",
+		"OK": "OK",
+		"People": "Personnes",
+		"Previous_Bed_Type": "Type de lit précédent",
+		"Select_Beds": "Sélectionner les lits",
+		"Select_Beds_Title": "Sélectionner les Lits",
+		"Single_Bed": "Lit Simple",
+		"Twin_Beds": "Lits Jumeaux"
 	},
 	"EachDay": {},
 	"email_subscription_page": {
@@ -2366,6 +2366,13 @@
 		"vat_id_number": "Numéro de TVA",
 		"vat_info_updated": "Informations TVA mises à jour avec succès",
 		"vat_title": "Taxe sur la Valeur Ajoutée (TVA)"
+	},
+	"Testimonials": {
+		"description": "Ne nous croyez pas sur parole. Voici ce que nos clients satisfaits ont à dire sur leur expérience avec nos services 5 étoiles.",
+		"loading": "Chargement des avis clients...",
+		"no_reviews": "Aucun avis 5 étoiles disponible pour le moment.",
+		"title": "Ce que disent nos clients",
+		"travel_date": "Date de voyage"
 	},
 	"test_page": {
 		"test_page_Book_Cancel_Refund_Anytime_Anywhere": "Réservez, Annulez, Remboursez - À tout moment, n'importe où uniquement sur TRAVSUS.",

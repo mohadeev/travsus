@@ -161,23 +161,7 @@
 	"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewImageGallery": {
 		"Review_Photo_Alt": "Fotografia da avaliação"
 	},
-	"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewSkeleton": {},
-	"detailRowBedAccommodationSelector": {
-		"Adults": "Adultos",
-		"Beds": "Camas",
-		"Cancel": "Cancelar",
-		"Children": "Crianças",
-		"Couple_Bed": "Cama de Casal",
-		"Go_To_Bed_Type": "Ir para tipo de cama",
-		"Next_Bed_Type": "Próximo tipo de cama",
-		"OK": "OK",
-		"People": "Pessoas",
-		"Previous_Bed_Type": "Tipo de cama anterior",
-		"Select_Beds": "Seleccionar camas",
-		"Select_Beds_Title": "Seleccionar Camas",
-		"Single_Bed": "Cama Individual",
-		"Twin_Beds": "Camas Separadas"
-	},
+	"ExperiencesDetailReviewSkeleton": {},
 	"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SidebarSkeletonLoader": {},
 	"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader": {
 		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Aspect_Ratio_Classes": "aspect-h-3 aspect-w-4 bg-gray-200",
@@ -698,6 +682,22 @@
 		"Sponsored_By": "Patrocinado por",
 		"Things_To_Do": "O Que Fazer",
 		"Vacation_Rentals": "Alojamentos de Férias"
+	},
+	"detailRowBedAccommodationSelector": {
+		"Adults": "Adultos",
+		"Beds": "Camas",
+		"Cancel": "Cancelar",
+		"Children": "Crianças",
+		"Couple_Bed": "Cama de Casal",
+		"Go_To_Bed_Type": "Ir para tipo de cama",
+		"Next_Bed_Type": "Próximo tipo de cama",
+		"OK": "OK",
+		"People": "Pessoas",
+		"Previous_Bed_Type": "Tipo de cama anterior",
+		"Select_Beds": "Seleccionar camas",
+		"Select_Beds_Title": "Seleccionar Camas",
+		"Single_Bed": "Cama Individual",
+		"Twin_Beds": "Camas Separadas"
 	},
 	"EachDay": {},
 	"experience_reviews": {
@@ -1812,6 +1812,13 @@
 		"vat_id_number": "Número de identificação de IVA",
 		"vat_info_updated": "Informação de IVA atualizada com sucesso",
 		"vat_title": "Imposto sobre o Valor Acrescentado (IVA)"
+	},
+	"Testimonials": {
+		"description": "Não acredite apenas na nossa palavra. Eis o que os nossos clientes satisfeitos têm a dizer sobre a sua experiência com os nossos serviços de 5 estrelas.",
+		"loading": "A carregar avaliações de clientes...",
+		"no_reviews": "Nenhuma avaliação de 5 estrelas disponível no momento.",
+		"title": "O que os nossos clientes dizem",
+		"travel_date": "Data de viagem"
 	},
 	"test_page": {
 		"test_page_Book_Cancel_Refund_Anytime_Anywhere": "Reserve, cancele, reembolse – a qualquer momento, em qualquer lugar, só na TRAVSUS.",

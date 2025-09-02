@@ -1,20 +1,20 @@
 
 === FILE: C:\Users\Usuario\s\travsus\src\app\[locale]\[continent]\[country]\[region]\[city]\[category]\[name]\(service-detail)\[listing-experiences-detail]\ReviewSkeleton.tsx ===
-=== NAMESPACE: app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewSkeleton ===
+=== NAMESPACE: ExperiencesDetailReviewSkeleton ===
 === PROMPT ===
 # ULTRA-STRICT INTERNATIONALIZATION INSTRUCTIONS
 
 Transform this TSX file to use internationalization.
 
 ## CRITICAL NAMESPACE AND KEY REQUIREMENTS:
-- You MUST use the exact namespace: "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewSkeleton"
-- The useTranslations call MUST be: useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewSkeleton")
+- You MUST use the exact namespace: "ExperiencesDetailReviewSkeleton"
+- The useTranslations call MUST be: useTranslations("ExperiencesDetailReviewSkeleton")
 - Keys should be simple descriptive names WITHOUT the namespace prefix
-- Example: t('Welcome_Message') NOT t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewSkeleton_Welcome_Message')
+- Example: t('Welcome_Message') NOT t('ExperiencesDetailReviewSkeleton_Welcome_Message')
 
 ## EXACT REQUIREMENTS:
 1. Add this import: import { useTranslations } from '@/lib/i18n'
-2. Add this hook call: const t = useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewSkeleton");
+2. Add this hook call: const t = useTranslations("ExperiencesDetailReviewSkeleton");
 3. Replace static text with: t('Simple_Key_Name')
 4. Generate simple keys like: Welcome_Message, Button_Text, Error_Message
 
@@ -29,7 +29,7 @@ Transform this TSX file to use internationalization.
 <COMPLETE TSX FILE WITH EXACT NAMESPACE>
 ---MESSAGES:
 {
-  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewSkeleton": {
+  "ExperiencesDetailReviewSkeleton": {
 	"Welcome_Message": "Welcome to our site",
 	"Button_Text": "Click here",
 	"Error_Message": "Something went wrong"
@@ -49,7 +49,7 @@ AFTER:
 import { useTranslations } from '@/lib/i18n';
 
 export default function Component() {
-  const t = useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewSkeleton");
+  const t = useTranslations("ExperiencesDetailReviewSkeleton");
   
   return (
 	<div>
@@ -62,7 +62,7 @@ export default function Component() {
 
 ---MESSAGES:
 {
-  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewSkeleton": {
+  "ExperiencesDetailReviewSkeleton": {
 	"Welcome_Message": "Welcome to our site",
 	"Button_Text": "Click here", 
 	"Error_Message": "Something went wrong"
@@ -96,9 +96,9 @@ export default ReviewSkeleton
 
 
 REMEMBER: 
-- Use EXACTLY "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewSkeleton" in useTranslations()
+- Use EXACTLY "ExperiencesDetailReviewSkeleton" in useTranslations()
 - Keys should be simple names WITHOUT namespace prefix
-- JSON structure: { "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewSkeleton": { "Simple_Key": "value" } }
+- JSON structure: { "ExperiencesDetailReviewSkeleton": { "Simple_Key": "value" } }
 
 === RESPONSE ===
 <Thinking>
@@ -124,7 +124,7 @@ Let me follow the exact format they specified.
 import { useTranslations } from '@/lib/i18n'
 
 const ReviewSkeleton = () => {
-	const t = useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewSkeleton");
+	const t = useTranslations("ExperiencesDetailReviewSkeleton");
 
 	return (
 		<div className="animate-pulse border-b border-neutral-200 pb-6">
@@ -153,7 +153,7 @@ export default ReviewSkeleton
 ---MESSAGES:
 ```json
 {
-  "app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewSkeleton": {
+  "ExperiencesDetailReviewSkeleton": {
   }
 }
 ```

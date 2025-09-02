@@ -1,7 +1,7 @@
 import { useTranslations } from '@/lib/i18n'
 
 const ReviewSkeleton = () => {
-	const t = useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewSkeleton");
+	const t = useTranslations('ExperiencesDetailReviewSkeleton')
 
 	return (
 		<div className="animate-pulse border-b border-neutral-200 pb-6">

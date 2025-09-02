@@ -185,6 +185,19 @@ function ClientHomePage() {
 					{/* <BannerHome /> */}
 				</div>
 				<Testimonials />
+				<div className="container">
+					<ItemsCardList
+						locationType="place"
+						cityId="67e5a961636b9ead6fb9b280"
+						layout="row"
+					/>
+					{/* <ItemsCardList
+						locationType="city"
+						// countryId={}
+						layout="row"
+						locationName={}
+					/> */}
+				</div>
 				<SectionSubscribe2 />
 			</main>
 		</>

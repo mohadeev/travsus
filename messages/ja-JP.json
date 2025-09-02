@@ -161,23 +161,7 @@
 	"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewImageGallery": {
 		"Review_Photo_Alt": "レビュー写真"
 	},
-	"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewSkeleton": {},
-	"detailRowBedAccommodationSelector": {
-		"Adults": "大人",
-		"Beds": "ベッド",
-		"Cancel": "キャンセル",
-		"Children": "子供",
-		"Couple_Bed": "ダブルベッド",
-		"Go_To_Bed_Type": "ベッドタイプへ移動",
-		"Next_Bed_Type": "次のベッドタイプ",
-		"OK": "OK",
-		"People": "名",
-		"Previous_Bed_Type": "前のベッドタイプ",
-		"Select_Beds": "ベッドを選択",
-		"Select_Beds_Title": "ベッドを選択",
-		"Single_Bed": "シングルベッド",
-		"Twin_Beds": "ツインベッド"
-	},
+	"ExperiencesDetailReviewSkeleton": {},
 	"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SidebarSkeletonLoader": {},
 	"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader": {
 		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Aspect_Ratio_Classes": "aspect-h-3 aspect-w-4 bg-gray-200",
@@ -687,6 +671,22 @@
 		"Sponsored_By": "提供",
 		"Things_To_Do": "やること",
 		"Vacation_Rentals": "バケーションレンタル"
+	},
+	"detailRowBedAccommodationSelector": {
+		"Adults": "大人",
+		"Beds": "ベッド",
+		"Cancel": "キャンセル",
+		"Children": "子供",
+		"Couple_Bed": "ダブルベッド",
+		"Go_To_Bed_Type": "ベッドタイプへ移動",
+		"Next_Bed_Type": "次のベッドタイプ",
+		"OK": "OK",
+		"People": "名",
+		"Previous_Bed_Type": "前のベッドタイプ",
+		"Select_Beds": "ベッドを選択",
+		"Select_Beds_Title": "ベッドを選択",
+		"Single_Bed": "シングルベッド",
+		"Twin_Beds": "ツインベッド"
 	},
 	"EachDay": {},
 	"experience_reviews": {
@@ -1803,6 +1803,13 @@
 		"vat_id_number": "消費税識別番号",
 		"vat_info_updated": "消費税情報が正常に更新されました",
 		"vat_title": "消費税 (VAT)"
+	},
+	"Testimonials": {
+		"description": "私たちの言葉だけを信じるのではなく、5つ星のサービスを体験した満足したお客様の声をご覧ください。",
+		"loading": "お客様のレビューを読み込み中...",
+		"no_reviews": "現在、5つ星のレビューはありません。",
+		"title": "お客様の声",
+		"travel_date": "旅行日"
 	},
 	"test_page": {
 		"test_page_Book_Cancel_Refund_Anytime_Anywhere": "いつでもどこでも予約・キャンセル・返金 - TRAVSUSだけ。",

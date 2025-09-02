@@ -258,23 +258,7 @@
 	"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewImageGallery": {
 		"Review_Photo_Alt": "Foto de reseña"
 	},
-	"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewSkeleton": {},
-	"detailRowBedAccommodationSelector": {
-		"Adults": "Adultos",
-		"Beds": "Camas",
-		"Cancel": "Cancelar",
-		"Children": "Niños",
-		"Couple_Bed": "Cama de Matrimonio",
-		"Go_To_Bed_Type": "Ir al tipo de cama",
-		"Next_Bed_Type": "Siguiente tipo de cama",
-		"OK": "Aceptar",
-		"People": "Personas",
-		"Previous_Bed_Type": "Tipo de cama anterior",
-		"Select_Beds": "Seleccionar camas",
-		"Select_Beds_Title": "Seleccionar Camas",
-		"Single_Bed": "Cama Individual",
-		"Twin_Beds": "Camas Gemelas"
-	},
+	"ExperiencesDetailReviewSkeleton": {},
 	"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SidebarSkeletonLoader": {},
 	"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader": {
 		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Aspect_Ratio_Classes": "aspect-h-3 aspect-w-4 bg-gray-200",
@@ -915,6 +899,22 @@
 		"destinations_page_Failed_To_Load_Destinations": "Error al cargar los destinos. Por favor, inténtelo de nuevo más tarde.",
 		"destinations_page_Loading_Destinations": "Cargando destinos...",
 		"destinations_page_Travelers_Choice_Awards": "Premios Elección de los Viajeros 2025"
+	},
+	"detailRowBedAccommodationSelector": {
+		"Adults": "Adultos",
+		"Beds": "Camas",
+		"Cancel": "Cancelar",
+		"Children": "Niños",
+		"Couple_Bed": "Cama de Matrimonio",
+		"Go_To_Bed_Type": "Ir al tipo de cama",
+		"Next_Bed_Type": "Siguiente tipo de cama",
+		"OK": "Aceptar",
+		"People": "Personas",
+		"Previous_Bed_Type": "Tipo de cama anterior",
+		"Select_Beds": "Seleccionar camas",
+		"Select_Beds_Title": "Seleccionar Camas",
+		"Single_Bed": "Cama Individual",
+		"Twin_Beds": "Camas Gemelas"
 	},
 	"EachDay": {},
 	"email_subscription_page": {
@@ -2299,6 +2299,13 @@
 		"vat_id_number": "Número de IVA",
 		"vat_info_updated": "Información de IVA actualizada correctamente",
 		"vat_title": "Impuesto al Valor Añadido (IVA)"
+	},
+	"Testimonials": {
+		"description": "No se fíe solo de nuestra palabra. Esto es lo que nuestros clientes satisfechos tienen que decir sobre su experiencia con nuestros servicios de 5 estrellas.",
+		"loading": "Cargando reseñas de clientes...",
+		"no_reviews": "No hay reseñas de 5 estrellas disponibles en este momento.",
+		"title": "Lo que dicen nuestros clientes",
+		"travel_date": "Fecha de viaje"
 	},
 	"test_page": {
 		"test_page_Book_Cancel_Refund_Anytime_Anywhere": "Reserve, Cancele, Reembolso - En cualquier momento, en cualquier lugar solo en TRAVSUS.",

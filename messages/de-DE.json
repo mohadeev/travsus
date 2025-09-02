@@ -302,23 +302,7 @@
 	"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewImageGallery": {
 		"Review_Photo_Alt": "Bewertungsfoto"
 	},
-	"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewSkeleton": {},
-	"detailRowBedAccommodationSelector": {
-		"Adults": "Erwachsene",
-		"Beds": "Betten",
-		"Cancel": "Abbrechen",
-		"Children": "Kinder",
-		"Couple_Bed": "Doppelbett",
-		"Go_To_Bed_Type": "Zu Bettentyp gehen",
-		"Next_Bed_Type": "Nächster Bettentyp",
-		"OK": "OK",
-		"People": "Personen",
-		"Previous_Bed_Type": "Vorheriger Bettentyp",
-		"Select_Beds": "Betten auswählen",
-		"Select_Beds_Title": "Betten auswählen",
-		"Single_Bed": "Einzelbett",
-		"Twin_Beds": "Zwei Einzelbetten"
-	},
+	"ExperiencesDetailReviewSkeleton": {},
 	"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SidebarSkeletonLoader": {},
 	"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader": {
 		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Aspect_Ratio_Classes": "aspect-h-3 aspect-w-4 bg-gray-200",
@@ -982,6 +966,22 @@
 		"destinations_page_Failed_To_Load_Destinations": "Laden der Reiseziele fehlgeschlagen. Bitte später erneut versuchen.",
 		"destinations_page_Loading_Destinations": "Reiseziele werden geladen...",
 		"destinations_page_Travelers_Choice_Awards": "Travelers' Choice Awards 2025"
+	},
+	"detailRowBedAccommodationSelector": {
+		"Adults": "Erwachsene",
+		"Beds": "Betten",
+		"Cancel": "Abbrechen",
+		"Children": "Kinder",
+		"Couple_Bed": "Doppelbett",
+		"Go_To_Bed_Type": "Zu Bettentyp gehen",
+		"Next_Bed_Type": "Nächster Bettentyp",
+		"OK": "OK",
+		"People": "Personen",
+		"Previous_Bed_Type": "Vorheriger Bettentyp",
+		"Select_Beds": "Betten auswählen",
+		"Select_Beds_Title": "Betten auswählen",
+		"Single_Bed": "Einzelbett",
+		"Twin_Beds": "Zwei Einzelbetten"
 	},
 	"EachDay": {},
 	"email_subscription_page": {
@@ -2364,6 +2364,13 @@
 		"vat_id_number": "MwSt-Identifikationsnummer",
 		"vat_info_updated": "MwSt-Informationen erfolgreich aktualisiert",
 		"vat_title": "Mehrwertsteuer (MwSt)"
+	},
+	"Testimonials": {
+		"description": "Glauben Sie nicht nur unserem Wort. Hier ist, was unsere zufriedenen Kunden über ihre Erfahrung mit unseren 5-Sterne-Dienstleistungen zu sagen haben.",
+		"loading": "Lade Kundenbewertungen...",
+		"no_reviews": "Derzeit sind keine 5-Sterne-Bewertungen verfügbar.",
+		"title": "Was unsere Kunden sagen",
+		"travel_date": "Reisedatum"
 	},
 	"test_page": {
 		"test_page_Book_Cancel_Refund_Anytime_Anywhere": "Buchen, Stornieren, Rückerstatten - Jederzeit, Überall nur bei TRAVSUS.",
