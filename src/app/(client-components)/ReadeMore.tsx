@@ -8,11 +8,21 @@ const ReadMore = ({ description }: any) => {
 	const [isExpanded, setIsExpanded] = useState(false)
 	const t = useTranslations('ReadMore')
 
-	// Function to truncate text to first 200 characters
 	const truncateText = (text: string, charLimit: number) => {
 		if (!text) return ''
 		if (text.length <= charLimit) return text
-		return text.substring(0, charLimit)
+
+		// Find the last space within the character limit
+		const truncated = text.substring(0, charLimit)
+		const lastSpaceIndex = truncated.lastIndexOf(' ')
+
+		// If we found a space, cut there; otherwise use the original limit
+		if (lastSpaceIndex > charLimit * 0.8) {
+			// Only use word boundary if it's not too short
+			return text.substring(0, lastSpaceIndex)
+		}
+
+		return truncated
 	}
 
 	// Toggle expanded/collapsed state

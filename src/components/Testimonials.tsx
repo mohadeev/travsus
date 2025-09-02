@@ -47,7 +47,7 @@ const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => {
 	const locale = useLocale()
 
 	return (
-		<Card className="min-w-100 bg-white">
+		<Card className="min-h-90 min-w-100 bg-white">
 			<CardContent className="p-6">
 				<div className="flex items-start gap-4">
 					<div className="flex-1">
