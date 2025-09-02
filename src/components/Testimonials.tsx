@@ -2,8 +2,12 @@
 
 import { Card, CardContent } from '@/components/ui/card'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { Circle } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { Circle, ChevronLeft, ChevronRight } from 'lucide-react'
+import { useEffect, useState, useRef } from 'react'
+import defualt_user from '@/images/defualt_user.jpg'
+import ReadMore from '@/app/(client-components)/ReadeMore'
+import { useTranslations } from '@/lib/i18n'
+import { useLocale } from 'next-intl'
 
 interface Testimonial {
 	id: string
@@ -15,6 +19,11 @@ interface Testimonial {
 	travelDate: string
 	travelType: string
 	createdAt: string
+	user?: {
+		accountData?: {
+			firstname: string
+		}
+	}
 }
 
 const StarRating = ({ rating }: { rating: number }) => {
@@ -34,6 +43,9 @@ const StarRating = ({ rating }: { rating: number }) => {
 }
 
 const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => {
+	const t = useTranslations('Testimonials')
+	const locale = useLocale()
+
 	return (
 		<Card className="min-w-100 bg-white">
 			<CardContent className="p-6">
@@ -46,21 +58,21 @@ const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => {
 										src={
 											testimonial.userImage
 												? testimonial.userImage
-												: '/placeholder.svg?height=48&width=48&query=default user avatar'
+												: defualt_user.src
 										}
-										alt={testimonial?.user?.accountData?.firstName}
+										alt={testimonial?.user?.accountData?.firstname || ''}
 									/>
 									<AvatarFallback>
-										{/* {testimonial?.user?.accountData?.firstName
-											.split(' ')
+										{testimonial?.user?.accountData?.firstname
+											?.split(' ')
 											.map((n) => n[0])
 											.join('')
-											.toUpperCase()} */}
+											.toUpperCase()}
 									</AvatarFallback>
 								</Avatar>
 								<div>
 									<h4 className="font-semibold text-gray-900">
-										{testimonial?.user?.accountData?.firstName}
+										{testimonial?.user?.accountData?.firstname}
 									</h4>
 									<div className="flex items-center text-sm font-medium text-black">
 										<span>{testimonial.travelType}</span>
@@ -68,7 +80,7 @@ const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => {
 								</div>
 							</div>
 							<div className="text-sm font-medium text-black">
-								{new Date(testimonial.createdAt).toLocaleDateString('en-US', {
+								{new Date(testimonial.createdAt).toLocaleDateString(locale, {
 									year: 'numeric',
 									month: 'long',
 									day: 'numeric',
@@ -85,11 +97,13 @@ const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => {
 								{testimonial.title}
 							</h3>
 							<p className="mb-3 leading-relaxed text-gray-700">
-								{testimonial.content}
+								<ReadMore description={testimonial.content} />
 							</p>
 
 							<div className="flex flex-wrap gap-4 text-sm/6 font-semibold text-black">
-								<span>Travel Date: {testimonial.travelDate}</span>
+								<span>
+									{t('travel_date')}: {testimonial.travelDate}
+								</span>
 							</div>
 						</div>
 					</div>
@@ -100,9 +114,23 @@ const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => {
 }
 
 export default function Testimonials() {
+	const t = useTranslations('Testimonials')
 	const [testimonials, setTestimonials] = useState<Testimonial[]>([])
 	const [loading, setLoading] = useState(true)
 	const [error, setError] = useState<string | null>(null)
+	const scrollContainerRef = useRef<HTMLDivElement>(null)
+
+	const scrollLeft = () => {
+		if (scrollContainerRef.current) {
+			scrollContainerRef.current.scrollBy({ left: -300, behavior: 'smooth' })
+		}
+	}
+
+	const scrollRight = () => {
+		if (scrollContainerRef.current) {
+			scrollContainerRef.current.scrollBy({ left: 300, behavior: 'smooth' })
+		}
+	}
 
 	useEffect(() => {
 		const fetchReviews = async () => {
@@ -136,10 +164,10 @@ export default function Testimonials() {
 				<div className="container">
 					<div className="mb-12 text-start">
 						<h2 className="mb-4 text-balance text-3xl font-bold text-gray-900">
-							What Our Customers Say
+							{t('title')}
 						</h2>
 						<p className="max-w-2xl text-pretty text-xs text-black">
-							Loading customer reviews...
+							{t('loading')}
 						</p>
 					</div>
 				</div>
@@ -156,7 +184,7 @@ export default function Testimonials() {
 				<div className="container">
 					<div className="mb-12 text-start">
 						<h2 className="mb-4 text-balance text-3xl font-bold text-gray-900">
-							What Our Customers Say
+							{t('title')}
 						</h2>
 						<p className="max-w-2xl text-pretty text-xs text-red-600">
 							{error}
@@ -175,25 +203,48 @@ export default function Testimonials() {
 			<div className="container">
 				<div className="mb-12 text-start">
 					<h2 className="mb-4 text-balance text-3xl font-bold text-gray-900">
-						What Our Customers Say
+						{t('title')}
 					</h2>
 					<p className="max-w-2xl text-pretty text-xs text-black">
-						Don't just take our word for it. Here's what our satisfied customers
-						have to say about their experience with our 5-star rated services.
+						{t('description')}
 					</p>
 				</div>
 
 				{testimonials.length > 0 ? (
-					<div className="flex flex-row items-start gap-6 overflow-auto">
-						{testimonials.map((testimonial) => (
-							<TestimonialCard key={testimonial.id} testimonial={testimonial} />
-						))}
+					<div className="relative">
+						<div className="mb-6 flex justify-start gap-2">
+							<button
+								onClick={scrollLeft}
+								className="flex h-10 w-10 items-center justify-center rounded-full bg-black text-white transition-colors hover:bg-gray-800"
+								aria-label="Previous testimonials"
+							>
+								<ChevronLeft className="h-5 w-5" />
+							</button>
+							<button
+								onClick={scrollRight}
+								className="flex h-10 w-10 items-center justify-center rounded-full bg-black text-white transition-colors hover:bg-gray-800"
+								aria-label="Next testimonials"
+							>
+								<ChevronRight className="h-5 w-5" />
+							</button>
+						</div>
+
+						<div
+							ref={scrollContainerRef}
+							className="scrollbar-hide flex flex-row items-start gap-6 overflow-auto"
+							style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+						>
+							{testimonials.map((testimonial) => (
+								<TestimonialCard
+									key={testimonial.id}
+									testimonial={testimonial}
+								/>
+							))}
+						</div>
 					</div>
 				) : (
 					<div className="py-8 text-center">
-						<p className="text-gray-600">
-							No 5-star reviews available at the moment.
-						</p>
+						<p className="text-gray-600">{t('no_reviews')}</p>
 					</div>
 				)}
 			</div>

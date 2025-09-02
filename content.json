@@ -1,92 +1,92 @@
 {
 	"en-US": {
-		"BookNowAndPayLaterBanner": {
-			"travel": "Travel",
-			"main_heading": "Don't Wait. Book Now, Pay Later.",
-			"sub_heading": "Limited availability on top destinations. Secure your spot today.",
-			"reserve_button": "RESERVE NOW",
-			"disclaimer": "Offer subject to terms and conditions. No deposit required. Limited time availability. Book now to secure your preferred travel dates and destinations."
+		"Testimonials": {
+			"title": "What Our Customers Say",
+			"description": "Don't just take our word for it. Here's what our satisfied customers have to say about their experience with our 5-star rated services.",
+			"loading": "Loading customer reviews...",
+			"no_reviews": "No 5-star reviews available at the moment.",
+			"travel_date": "Travel Date"
 		}
 	},
 	"es-ES": {
-		"BookNowAndPayLaterBanner": {
-			"travel": "Viajes",
-			"main_heading": "No esperes. Reserva ahora, paga después.",
-			"sub_heading": "Disponibilidad limitada en los mejores destinos. Asegura tu lugar hoy.",
-			"reserve_button": "RESERVAR AHORA",
-			"disclaimer": "Oferta sujeta a términos y condiciones. No se requiere depósito. Disponibilidad por tiempo limitado. Reserva ahora para asegurar tus fechas y destinos de viaje preferidos."
+		"Testimonials": {
+			"title": "Lo que dicen nuestros clientes",
+			"description": "No se fíe solo de nuestra palabra. Esto es lo que nuestros clientes satisfechos tienen que decir sobre su experiencia con nuestros servicios de 5 estrellas.",
+			"loading": "Cargando reseñas de clientes...",
+			"no_reviews": "No hay reseñas de 5 estrellas disponibles en este momento.",
+			"travel_date": "Fecha de viaje"
 		}
 	},
 	"de-DE": {
-		"BookNowAndPayLaterBanner": {
-			"travel": "Reisen",
-			"main_heading": "Warten Sie nicht. Jetzt buchen, später bezahlen.",
-			"sub_heading": "Begrenzte Verfügbarkeit in Top-Zielen. Sichern Sie sich noch heute Ihren Platz.",
-			"reserve_button": "JETZT BUCHEN",
-			"disclaimer": "Angebot unterliegt den Allgemeinen Geschäftsbedingungen. Keine Anzahlung erforderlich. Begrenzte Verfügbarkeit. Buchen Sie jetzt, um Ihre bevorzugten Reisedaten und -ziele zu sichern."
+		"Testimonials": {
+			"title": "Was unsere Kunden sagen",
+			"description": "Glauben Sie nicht nur unserem Wort. Hier ist, was unsere zufriedenen Kunden über ihre Erfahrung mit unseren 5-Sterne-Dienstleistungen zu sagen haben.",
+			"loading": "Lade Kundenbewertungen...",
+			"no_reviews": "Derzeit sind keine 5-Sterne-Bewertungen verfügbar.",
+			"travel_date": "Reisedatum"
 		}
 	},
 	"fr-FR": {
-		"BookNowAndPayLaterBanner": {
-			"travel": "Voyage",
-			"main_heading": "N'attendez pas. Réservez maintenant, payez plus tard.",
-			"sub_heading": "Disponibilité limitée sur les meilleures destinations. Sécurisez votre place aujourd'hui.",
-			"reserve_button": "RÉSERVER MAINTENANT",
-			"disclaimer": "Offre soumise à conditions. Aucun acompte requis. Disponibilité limitée dans le temps. Réservez maintenant pour sécuriser vos dates et destinations de voyage préférées."
+		"Testimonials": {
+			"title": "Ce que disent nos clients",
+			"description": "Ne nous croyez pas sur parole. Voici ce que nos clients satisfaits ont à dire sur leur expérience avec nos services 5 étoiles.",
+			"loading": "Chargement des avis clients...",
+			"no_reviews": "Aucun avis 5 étoiles disponible pour le moment.",
+			"travel_date": "Date de voyage"
 		}
 	},
 	"ja-JP": {
-		"BookNowAndPayLaterBanner": {
-			"travel": "旅行",
-			"main_heading": "待たないで。今すぐ予約、後払い。",
-			"sub_heading": "人気目的地は数に限りがございます。今すぐお席を確保ください。",
-			"reserve_button": "今すぐ予約",
-			"disclaimer": "オファーは利用規約の対象となります。頭金不要。期間限定のご提供です。希望の旅行日と目的地を確保するために今すぐご予約ください。"
+		"Testimonials": {
+			"title": "お客様の声",
+			"description": "私たちの言葉だけを信じるのではなく、5つ星のサービスを体験した満足したお客様の声をご覧ください。",
+			"loading": "お客様のレビューを読み込み中...",
+			"no_reviews": "現在、5つ星のレビューはありません。",
+			"travel_date": "旅行日"
 		}
 	},
 	"pt-PT": {
-		"BookNowAndPayLaterBanner": {
-			"travel": "Viagem",
-			"main_heading": "Não espere. Reserve agora, pague depois.",
-			"sub_heading": "Disponibilidade limitada nos melhores destinos. Garanta o seu lugar hoje.",
-			"reserve_button": "RESERVAR AGORA",
-			"disclaimer": "Oferta sujeita a termos e condições. Não é necessário depósito. Disponibilidade por tempo limitado. Reserve agora para garantir as suas datas e destinos de viagem preferidos."
+		"Testimonials": {
+			"title": "O que os nossos clientes dizem",
+			"description": "Não acredite apenas na nossa palavra. Eis o que os nossos clientes satisfeitos têm a dizer sobre a sua experiência com os nossos serviços de 5 estrelas.",
+			"loading": "A carregar avaliações de clientes...",
+			"no_reviews": "Nenhuma avaliação de 5 estrelas disponível no momento.",
+			"travel_date": "Data de viagem"
 		}
 	},
 	"it-IT": {
-		"BookNowAndPayLaterBanner": {
-			"travel": "Viaggio",
-			"main_heading": "Non aspettare. Prenota ora, paga dopo.",
-			"sub_heading": "Disponibilità limitata nelle migliori destinazioni. Assicura il tuo posto oggi.",
-			"reserve_button": "PRENOTA ORA",
-			"disclaimer": "Offerta soggetta a termini e condizioni. Nessun acconto richiesto. Disponibilità a tempo limitato. Prenota ora per assicurarti le date e le destinazioni di viaggio preferite."
+		"Testimonials": {
+			"title": "Cosa dicono i nostri clienti",
+			"description": "Non credete solo alla nostra parola. Ecco cosa hanno da dire i nostri clienti soddisfatti sulla loro esperienza con i nostri servizi a 5 stelle.",
+			"loading": "Caricamento recensioni clienti...",
+			"no_reviews": "Nessuna recensione a 5 stelle disponibile al momento.",
+			"travel_date": "Data del viaggio"
 		}
 	},
 	"ru-RU": {
-		"BookNowAndPayLaterBanner": {
-			"travel": "Путешествия",
-			"main_heading": "Не ждите. Бронируйте сейчас, платите позже.",
-			"sub_heading": "Ограниченная доступность в лучших направлениях. Забронируйте место сегодня.",
-			"reserve_button": "ЗАБРОНИРОВАТЬ СЕЙЧАС",
-			"disclaimer": "Предложение действует на определенных условиях. Без залога. Ограниченное время действия. Забронируйте сейчас, чтобы закрепить предпочтительные даты и направления поездки."
+		"Testimonials": {
+			"title": "Что говорят наши клиенты",
+			"description": "Не верьте нам на слово. Вот что наши довольные клиенты говорят о своем опыте использования наших услуг с 5-звездочным рейтингом.",
+			"loading": "Загрузка отзывов клиентов...",
+			"no_reviews": "На данный момент нет доступных 5-звездочных отзывов.",
+			"travel_date": "Дата путешествия"
 		}
 	},
 	"zh-CN": {
-		"BookNowAndPayLaterBanner": {
-			"travel": "旅行",
-			"main_heading": "不要等待。立即预订，稍后付款。",
-			"sub_heading": "热门目的地名额有限。立即确保您的位置。",
-			"reserve_button": "立即预订",
-			"disclaimer": "优惠受条款和条件约束。无需押金。限时供应。立即预订以确保您首选的旅行日期和目的地。"
+		"Testimonials": {
+			"title": "客户评价",
+			"description": "不要只听我们怎么说。看看我们满意的客户对他们使用我们五星级服务的体验有何评价。",
+			"loading": "正在加载客户评价...",
+			"no_reviews": "目前没有可用的五星评价。",
+			"travel_date": "旅行日期"
 		}
 	},
 	"ko-KR": {
-		"BookNowAndPayLaterBanner": {
-			"travel": "여행",
-			"main_heading": "기다리지 마세요. 지금 예약하고 나중에 결제하세요.",
-			"sub_heading": "인기 목적지는 좌석이 한정되어 있습니다. 지금 자리를 확보하세요.",
-			"reserve_button": "지금 예약",
-			"disclaimer": "제안은 이용 약관의 적용을 받습니다. 보증금 불필요. 기간 한정 제공입니다. 선호하는 여행 날짜와 목적지를 확보하려면 지금 예약하세요."
+		"Testimonials": {
+			"title": "고객님들의 의견",
+			"description": "저희의 말만 믿지 마세요. 5성급 서비스를 경험한 만족한 고객님들의 생생한 후기를 확인해보세요.",
+			"loading": "고객 리뷰를 불러오는 중...",
+			"no_reviews": "현재 5성 리뷰가 없습니다.",
+			"travel_date": "여행 날짜"
 		}
 	}
 }
