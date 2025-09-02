@@ -98,7 +98,12 @@ const ItemsCardList: FC<ItemsCardListProps> = ({
 					url = `/api/countries?codes=${[]}&limit=${limit}`
 				} else if (locationType === 'city' && countryId) {
 					url = `/api/cities?countryId=${countryId}&limit=${limit}`
-				} else if (locationType === 'place' && cityId) {
+				} else if (locationType === 'place') {
+					if (countryId) {
+						url = `/api/placesByCityId?cityId=${cityId}&limit=${limit}`
+					} else if (cityId) {
+						url = `/api/placesByCityId?cityId=${cityId}&limit=${limit}`
+					}
 					url = `/api/placesByCityId?cityId=${cityId}&limit=${limit}`
 				} else {
 					url = `/api/cities/popular?limit=${limit}`

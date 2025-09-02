@@ -204,11 +204,11 @@ export default function DestinationPage({
 
 					<ReadeMore description={countryData?.description} />
 				</div>
-				<CollectionsGrid
+				{/* <CollectionsGrid
 					cityName={countryData?.name}
 					layout="row"
 					countryId={countryData?.id}
-				/>
+				/> */}
 				<ItemsCardList
 					locationType="city"
 					countryId={countryData?.id}
