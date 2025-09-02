@@ -44,6 +44,8 @@ const StarRating = ({ rating }: { rating: number }) => {
 
 const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => {
 	const t = useTranslations('Testimonials')
+	const experienceReviews = useTranslations('experience_reviews')
+
 	const locale = useLocale()
 
 	return (
@@ -75,7 +77,7 @@ const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => {
 										{testimonial?.user?.accountData?.firstname}
 									</h4>
 									<div className="flex items-center text-sm font-medium text-black">
-										<span>{testimonial.travelType}</span>
+										<span>{experienceReviews(testimonial.travelType)}</span>
 									</div>
 								</div>
 							</div>
@@ -212,7 +214,19 @@ export default function Testimonials() {
 
 				{testimonials.length > 0 ? (
 					<div className="relative">
-						<div className="mb-6 flex justify-start gap-2">
+						<div
+							ref={scrollContainerRef}
+							className="scrollbar-hide flex flex-row items-start gap-6 overflow-auto"
+							style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+						>
+							{testimonials.map((testimonial) => (
+								<TestimonialCard
+									key={testimonial.id}
+									testimonial={testimonial}
+								/>
+							))}
+						</div>
+						<div className="mt-6 flex justify-start gap-2">
 							<button
 								onClick={scrollLeft}
 								className="flex h-10 w-10 items-center justify-center rounded-full bg-black text-white transition-colors hover:bg-gray-800"
@@ -227,19 +241,6 @@ export default function Testimonials() {
 							>
 								<ChevronRight className="h-5 w-5" />
 							</button>
-						</div>
-
-						<div
-							ref={scrollContainerRef}
-							className="scrollbar-hide flex flex-row items-start gap-6 overflow-auto"
-							style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-						>
-							{testimonials.map((testimonial) => (
-								<TestimonialCard
-									key={testimonial.id}
-									testimonial={testimonial}
-								/>
-							))}
 						</div>
 					</div>
 				) : (
