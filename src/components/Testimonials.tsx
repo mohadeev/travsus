@@ -48,11 +48,11 @@ const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => {
 												? testimonial.userImage
 												: '/placeholder.svg?height=48&width=48&query=default user avatar'
 										}
-										alt={testimonial?.user?.accountData?.firstName}
+										alt={testimonial?.user?.accountData?.firstname}
 									/>
 									<AvatarFallback>
 										{/* {testimonial?.user?.accountData?.firstName
-											.split(' ')
+								n		.split(' ')
 											.map((n) => n[0])
 											.join('')
 											.toUpperCase()} */}
@@ -60,7 +60,7 @@ const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => {
 								</Avatar>
 								<div>
 									<h4 className="font-semibold text-gray-900">
-										{testimonial?.user?.accountData?.firstName}
+										{testimonial?.user?.accountData?.firstname}
 									</h4>
 									<div className="flex items-center text-sm font-medium text-black">
 										<span>{testimonial.travelType}</span>
@@ -115,7 +115,7 @@ export default function Testimonials() {
 				}
 
 				const data = await response.json()
-
+				console.log('data: ', data)
 				setTestimonials(data)
 			} catch (err) {
 				setError(err instanceof Error ? err.message : 'Failed to load reviews')
