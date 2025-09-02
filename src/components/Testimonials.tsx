@@ -26,6 +26,33 @@ interface Testimonial {
 	}
 }
 
+const TestimonialSkeleton = () => {
+	return (
+		<Card className="min-h-90 min-w-100 bg-white">
+			<CardContent className="p-6">
+				<div className="animate-pulse">
+					<div className="flex items-start gap-4">
+						<div className="h-12 w-12 rounded-full bg-neutral-200"></div>
+						<div className="flex-1">
+							<div className="mb-2 h-4 w-32 rounded bg-neutral-200"></div>
+							<div className="h-3 w-48 rounded bg-neutral-200"></div>
+						</div>
+						<div className="h-3 w-24 rounded bg-neutral-200"></div>
+					</div>
+					<div className="mt-3">
+						<div className="mb-2 h-4 w-24 rounded bg-neutral-200"></div>
+						<div className="mb-2 h-5 w-64 rounded bg-neutral-200"></div>
+						<div className="mb-1 h-4 w-full rounded bg-neutral-200"></div>
+						<div className="mb-1 h-4 w-full rounded bg-neutral-200"></div>
+						<div className="mb-3 h-4 w-3/4 rounded bg-neutral-200"></div>
+						<div className="h-3 w-48 rounded bg-neutral-200"></div>
+					</div>
+				</div>
+			</CardContent>
+		</Card>
+	)
+}
+
 const StarRating = ({ rating }: { rating: number }) => {
 	return (
 		<div className="flex items-center gap-2">
@@ -44,8 +71,6 @@ const StarRating = ({ rating }: { rating: number }) => {
 
 const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => {
 	const t = useTranslations('Testimonials')
-	const experienceReviews = useTranslations('experience_reviews')
-
 	const locale = useLocale()
 
 	return (
@@ -77,7 +102,7 @@ const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => {
 										{testimonial?.user?.accountData?.firstname}
 									</h4>
 									<div className="flex items-center text-sm font-medium text-black">
-										<span>{experienceReviews(testimonial.travelType)}</span>
+										<span>{testimonial.travelType}</span>
 									</div>
 								</div>
 							</div>
@@ -169,8 +194,19 @@ export default function Testimonials() {
 							{t('title')}
 						</h2>
 						<p className="max-w-2xl text-pretty text-xs text-black">
-							{t('loading')}
+							{t('description')}
 						</p>
+					</div>
+
+					<div className="relative">
+						<div
+							className="scrollbar-hide flex flex-row items-start gap-6 overflow-auto"
+							style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+						>
+							{[1, 2, 3, 4].map((index) => (
+								<TestimonialSkeleton key={index} />
+							))}
+						</div>
 					</div>
 				</div>
 			</section>
@@ -226,6 +262,7 @@ export default function Testimonials() {
 								/>
 							))}
 						</div>
+
 						<div className="mt-6 flex justify-start gap-2">
 							<button
 								onClick={scrollLeft}
