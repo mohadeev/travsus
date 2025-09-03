@@ -210,9 +210,11 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 
 			<div className="relative z-1 cursor-pointer">
 				<Link href={href} className="block overflow-hidden rounded-xl">
-					{renderSliderGallery()}
+					<>
+						{renderSliderGallery()}
+						<div className="">{renderContent()}</div>
+					</>
 				</Link>
-				<div className="">{renderContent()}</div>
 			</div>
 		</div>
 	)

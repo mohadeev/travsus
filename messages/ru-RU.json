@@ -203,9 +203,9 @@
 		"Stop_Label": "Остановка:",
 		"Tour_Stop": "Остановка тура"
 	},
-	"app_locale_continent_country_region_city_category_name_servicedetail_SectionDateRange": {
-		"app_locale_continent_country_region_city_category_name_servicedetail_SectionDateRange_Availability": "Доступность",
-		"app_locale_continent_country_region_city_category_name_servicedetail_SectionDateRange_Prices_May_Increase": "Цены могут повышаться в выходные или праздничные дни"
+	"servicedetailSectionDateRange": {
+		"servicedetailSectionDateRange_Availability": "Доступность",
+		"servicedetailSectionDateRange_Prices_May_Increase": "Цены могут повышаться в выходные или праздничные дни"
 	},
 	"app_locale_experiencelistings_SectionGridFilterCard": {
 		"app_locale_experiencelistings_SectionGridFilterCard_Discover_New_Experiences": "Откройте новые впечатления",

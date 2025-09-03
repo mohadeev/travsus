@@ -344,9 +344,9 @@
 		"Stop_Label": "Stopp:",
 		"Tour_Stop": "Tour-Stopp"
 	},
-	"app_locale_continent_country_region_city_category_name_servicedetail_SectionDateRange": {
-		"app_locale_continent_country_region_city_category_name_servicedetail_SectionDateRange_Availability": "Verfügbarkeit",
-		"app_locale_continent_country_region_city_category_name_servicedetail_SectionDateRange_Prices_May_Increase": "Die Preise können an Wochenenden oder Feiertagen steigen"
+	"servicedetailSectionDateRange": {
+		"servicedetailSectionDateRange_Availability": "Verfügbarkeit",
+		"servicedetailSectionDateRange_Prices_May_Increase": "Die Preise können an Wochenenden oder Feiertagen steigen"
 	},
 	"app_locale_experiencelistings_SectionGridFilterCard": {
 		"app_locale_experiencelistings_SectionGridFilterCard_Discover_New_Experiences": "Neue Erfahrungen entdecken",

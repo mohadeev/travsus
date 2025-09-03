@@ -300,9 +300,9 @@
 		"Stop_Label": "Parada:",
 		"Tour_Stop": "Parada del Tour"
 	},
-	"app_locale_continent_country_region_city_category_name_servicedetail_SectionDateRange": {
-		"app_locale_continent_country_region_city_category_name_servicedetail_SectionDateRange_Availability": "Disponibilidad",
-		"app_locale_continent_country_region_city_category_name_servicedetail_SectionDateRange_Prices_May_Increase": "Los precios pueden aumentar los fines de semana o días festivos"
+	"servicedetailSectionDateRange": {
+		"servicedetailSectionDateRange_Availability": "Disponibilidad",
+		"servicedetailSectionDateRange_Prices_May_Increase": "Los precios pueden aumentar los fines de semana o días festivos"
 	},
 	"app_locale_experiencelistings_SectionGridFilterCard": {
 		"app_locale_experiencelistings_SectionGridFilterCard_Discover_New_Experiences": "Descubrir Nuevas Experiencias",

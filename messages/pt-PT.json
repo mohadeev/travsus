@@ -203,9 +203,9 @@
 		"Stop_Label": "Paragem:",
 		"Tour_Stop": "Paragem da Excursão"
 	},
-	"app_locale_continent_country_region_city_category_name_servicedetail_SectionDateRange": {
-		"app_locale_continent_country_region_city_category_name_servicedetail_SectionDateRange_Availability": "Disponibilidade",
-		"app_locale_continent_country_region_city_category_name_servicedetail_SectionDateRange_Prices_May_Increase": "Os preços podem aumentar aos fins de semana ou feriados"
+	"servicedetailSectionDateRange": {
+		"servicedetailSectionDateRange_Availability": "Disponibilidade",
+		"servicedetailSectionDateRange_Prices_May_Increase": "Os preços podem aumentar aos fins de semana ou feriados"
 	},
 	"app_locale_experiencelistings_SectionGridFilterCard": {
 		"app_locale_experiencelistings_SectionGridFilterCard_Discover_New_Experiences": "Descubra Novas Experiências",

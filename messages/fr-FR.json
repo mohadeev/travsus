@@ -344,9 +344,9 @@
 		"Stop_Label": "Arrêt :",
 		"Tour_Stop": "Arrêt du Circuit"
 	},
-	"app_locale_continent_country_region_city_category_name_servicedetail_SectionDateRange": {
-		"app_locale_continent_country_region_city_category_name_servicedetail_SectionDateRange_Availability": "Disponibilité",
-		"app_locale_continent_country_region_city_category_name_servicedetail_SectionDateRange_Prices_May_Increase": "Les prix peuvent augmenter les week-ends ou les jours fériés"
+	"servicedetailSectionDateRange": {
+		"servicedetailSectionDateRange_Availability": "Disponibilité",
+		"servicedetailSectionDateRange_Prices_May_Increase": "Les prix peuvent augmenter les week-ends ou les jours fériés"
 	},
 	"app_locale_experiencelistings_SectionGridFilterCard": {
 		"app_locale_experiencelistings_SectionGridFilterCard_Discover_New_Experiences": "Découvrir de Nouvelles Expériences",

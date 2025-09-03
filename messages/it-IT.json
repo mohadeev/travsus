@@ -203,9 +203,9 @@
 		"Stop_Label": "Tappa:",
 		"Tour_Stop": "Tappa del Tour"
 	},
-	"app_locale_continent_country_region_city_category_name_servicedetail_SectionDateRange": {
-		"app_locale_continent_country_region_city_category_name_servicedetail_SectionDateRange_Availability": "Disponibilità",
-		"app_locale_continent_country_region_city_category_name_servicedetail_SectionDateRange_Prices_May_Increase": "I prezzi possono aumentare nei fine settimana o nei giorni festivi"
+	"servicedetailSectionDateRange": {
+		"servicedetailSectionDateRange_Availability": "Disponibilità",
+		"servicedetailSectionDateRange_Prices_May_Increase": "I prezzi possono aumentare nei fine settimana o nei giorni festivi"
 	},
 	"app_locale_experiencelistings_SectionGridFilterCard": {
 		"app_locale_experiencelistings_SectionGridFilterCard_Discover_New_Experiences": "Scopri Nuove Esperienze",

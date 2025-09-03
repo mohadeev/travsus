@@ -203,9 +203,9 @@
 		"Stop_Label": "立ち寄り地:",
 		"Tour_Stop": "ツアー立ち寄り地"
 	},
-	"app_locale_continent_country_region_city_category_name_servicedetail_SectionDateRange": {
-		"app_locale_continent_country_region_city_category_name_servicedetail_SectionDateRange_Availability": "利用可能性",
-		"app_locale_continent_country_region_city_category_name_servicedetail_SectionDateRange_Prices_May_Increase": "週末や祝日には価格が上がる可能性があります"
+	"servicedetailSectionDateRange": {
+		"servicedetailSectionDateRange_Availability": "利用可能性",
+		"servicedetailSectionDateRange_Prices_May_Increase": "週末や祝日には価格が上がる可能性があります"
 	},
 	"app_locale_experiencelistings_SectionGridFilterCard": {
 		"app_locale_experiencelistings_SectionGridFilterCard_Discover_New_Experiences": "新しい体験を発見する",

@@ -203,9 +203,9 @@
 		"Stop_Label": "站点：",
 		"Tour_Stop": "旅游站点"
 	},
-	"app_locale_continent_country_region_city_category_name_servicedetail_SectionDateRange": {
-		"app_locale_continent_country_region_city_category_name_servicedetail_SectionDateRange_Availability": "可用性",
-		"app_locale_continent_country_region_city_category_name_servicedetail_SectionDateRange_Prices_May_Increase": "周末或假日价格可能会上涨"
+	"servicedetailSectionDateRange": {
+		"servicedetailSectionDateRange_Availability": "可用性",
+		"servicedetailSectionDateRange_Prices_May_Increase": "周末或假日价格可能会上涨"
 	},
 	"app_locale_experiencelistings_SectionGridFilterCard": {
 		"app_locale_experiencelistings_SectionGridFilterCard_Discover_New_Experiences": "探索新体验",
