@@ -15,6 +15,7 @@ import BannerHome from './BannerHome'
 import TourCards from './TourCards'
 import BookNowAndPayLaterBanner from './BookNowAndPayLaterBanner'
 import Testimonials from '@/components/Testimonials'
+import CollectionsGrid from './destinations/[code]/Collection'
 
 function ClientHomePage() {
 	const DUMMY_EXPERIENCE = {
@@ -186,11 +187,19 @@ function ClientHomePage() {
 				</div>
 				<Testimonials />
 				<div className="container">
-					<ItemsCardList
+					{/* <CollectionsGrid
+						cityId={'67e5a961636b9ead6fb9b280'}
+						layout="row"
+						// countryCode="MAR"
+						// placeType="restaurant"
+						// heading="Restaurants in Marrakech"
+						// subHeading="Taste the flavors of"
+					/> */}
+					{/* <ItemsCardList
 						locationType="place"
 						cityId="67e5a961636b9ead6fb9b280"
 						layout="row"
-					/>
+					/> */}
 					{/* <ItemsCardList
 						locationType="city"
 						// countryId={}
