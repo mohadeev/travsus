@@ -214,7 +214,7 @@ interface ServiceData {
 		rating: number
 		title: string
 		content: string
-		travelDate: string
+		travelDate1: string
 		travelType: string
 		images: any[]
 		createdAt: string

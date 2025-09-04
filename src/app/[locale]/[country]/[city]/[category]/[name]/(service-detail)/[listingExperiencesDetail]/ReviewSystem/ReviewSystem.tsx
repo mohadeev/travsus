@@ -30,7 +30,7 @@ interface ReviewType {
 	rating: number
 	title: string
 	content: string
-	travelDate: string
+	travelDate1: string
 	travelType: string
 	images: string[]
 	createdAt: string
@@ -48,7 +48,7 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
 	const router = useRouter()
 	const [showReviewForm, setShowReviewForm] = useState(false)
 	const [rating, setRating] = useState(0)
-	const [travelDate, setTravelDate] = useState('')
+	const [travelDate1, setTravelDate1] = useState('')
 	const [travelType, setTravelType] = useState('')
 	const [reviewText, setReviewText] = useState('')
 	const [reviewTitle, setReviewTitle] = useState('')
@@ -146,7 +146,7 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
 			const formData = new FormData()
 			formData.append('serviceId', serviceId)
 			formData.append('rating', rating.toString())
-			formData.append('travelDate', travelDate)
+			formData.append('travelDate1', travelDate1)
 			formData.append('travelType', travelType)
 			formData.append('reviewText', reviewText)
 			formData.append('reviewTitle', reviewTitle)
@@ -169,7 +169,7 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
 				// Reset form and hide it
 				setShowReviewForm(false)
 				setRating(0)
-				setTravelDate('')
+				setTravelDate1('')
 				setTravelType('')
 				setReviewText('')
 				setReviewTitle('')
@@ -372,8 +372,8 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
 										<h4 className="mb-2 text-lg font-medium">{t('When_Go')}</h4>
 										<div className="relative">
 											<select
-												value={travelDate}
-												onChange={(e) => setTravelDate(e.target.value)}
+												value={travelDate1}
+												onChange={(e) => setTravelDate1(e.target.value)}
 												className="w-full appearance-none rounded-md border border-neutral-300 bg-white px-4 py-2 md:w-64"
 												required
 											>

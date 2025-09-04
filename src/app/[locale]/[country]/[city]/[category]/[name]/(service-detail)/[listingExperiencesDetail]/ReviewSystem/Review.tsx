@@ -15,7 +15,7 @@ interface ReviewType {
 	rating: number
 	title: string
 	content: string
-	travelDate: string
+	travelDate1: string
 	travelType: string
 	images: string[]
 	createdAt: string
@@ -103,7 +103,7 @@ const Review: React.FC<ReviewProps> = ({ review }) => {
 
 						<div className="mb-3 flex flex-wrap gap-4 text-sm/6 font-semibold text-black">
 							<span>
-								{t('Date_Experience')} {review.travelDate}
+								{t('Date_Experience')} {review.travelDate1}
 							</span>
 							<span>
 								{t('Trip_Type')} {t(review.travelType)}

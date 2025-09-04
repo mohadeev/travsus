@@ -16,7 +16,7 @@ interface Testimonial {
 	rating: number
 	title: string
 	content: string
-	travelDate: string
+	travelDate1: string
 	travelType: string
 	createdAt: string
 	user?: {
@@ -129,7 +129,7 @@ const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => {
 
 							<div className="flex flex-wrap gap-4 text-sm/6 font-semibold text-black">
 								<span>
-									{t('travel_date')}: {testimonial.travelDate}
+									{t('travel_date')}: {testimonial.travelDate1}
 								</span>
 							</div>
 						</div>

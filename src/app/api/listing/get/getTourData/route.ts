@@ -179,7 +179,7 @@ export async function GET(request: NextRequest) {
 				rating: review.rating,
 				title,
 				content,
-				travelDate: review.travelDate,
+				travelDate1: review.travelDate1,
 				travelType: review.travelType,
 				images: review.images,
 				createdAt: review.createdAt.toISOString(),
