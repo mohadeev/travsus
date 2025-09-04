@@ -48,7 +48,7 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
 	const router = useRouter()
 	const [showReviewForm, setShowReviewForm] = useState(false)
 	const [rating, setRating] = useState(0)
-	const [travelDate1, setTravelDate1] = useState('')
+	// const [travelDate1, setTravelDate1] = useState('')
 	const [travelType, setTravelType] = useState('')
 	const [reviewText, setReviewText] = useState('')
 	const [reviewTitle, setReviewTitle] = useState('')
@@ -59,7 +59,16 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
 	const [isLoading, setIsLoading] = useState(true)
 	const [isSubmitting, setIsSubmitting] = useState(false)
 	const locale = useLocale()
+	const dates = Array.from({ length: 24 }, (_, i) => {
+		const d = new Date()
+		d.setMonth(d.getMonth() - i)
+		return d
+	})
 
+	const [travelDate1, setTravelDate1] = useState('')
+
+	const formatMonthYear = (date) =>
+		date.toLocaleDateString(locale, { month: 'long', year: 'numeric' })
 	// Get tour data from Redux store
 	const tourData =
 		useSelector((state: any) => state.creatingServiceSlice.service) || {}
@@ -192,27 +201,6 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
 	})
 
 	// Generate months for the dropdown
-	const generateMonthOptions = () => {
-		const options = []
-		const currentDate = new Date()
-
-		for (let i = 0; i < 12; i++) {
-			const date = new Date(currentDate)
-			date.setMonth(currentDate.getMonth() - i)
-
-			const monthName = date.toLocaleString('default', { month: 'long' })
-			const year = date.getFullYear()
-			const value = `${monthName} ${year}`
-
-			options.push(
-				<option key={value} value={value}>
-					{value}
-				</option>,
-			)
-		}
-
-		return options
-	}
 
 	// Tour Card Component
 	const TourCard = () => {
@@ -310,6 +298,7 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
 	}
 
 	const ratingBreakdown = ratingCounts
+	const [value, setValue] = useState('0')
 
 	return (
 		<div id="experience_reviews" className="mb-10 mt-10 w-full">
@@ -372,13 +361,19 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
 										<h4 className="mb-2 text-lg font-medium">{t('When_Go')}</h4>
 										<div className="relative">
 											<select
-												value={travelDate1}
-												onChange={(e) => setTravelDate1(e.target.value)}
-												className="w-full appearance-none rounded-md border border-neutral-300 bg-white px-4 py-2 md:w-64"
-												required
+												value={value}
+												onChange={(e) => {
+													setValue(e.target.value)
+													setTravelDate1(dates[new Number(e.target.value)])
+												}}
+												className="rounded border p-2"
 											>
 												<option value="">{t('Select_One')}</option>
-												{generateMonthOptions()}
+												{dates.map((date, index) => (
+													<option key={index} value={index}>
+														{formatMonthYear(date)}
+													</option>
+												))}
 											</select>
 											<ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-5 w-5 -translate-y-1/2 transform text-neutral-500" />
 										</div>
@@ -649,3 +644,49 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
 }
 
 export default ReviewSystem
+function DateSelect() {
+	// Generate last 24 months including current month
+	const dates = Array.from({ length: 24 }, (_, i) => {
+		const d = new Date()
+		d.setMonth(d.getMonth() - i)
+		return d
+	})
+	const [value, setVale] = useState('0')
+
+	const [travelDate1, setTravelDate1] = useState(null) // store actual Date object
+
+	const formatMonthYear = (date) =>
+		date.toLocaleDateString(locale, { month: 'long', year: 'numeric' })
+
+	const handleChange = (e) => {
+		setVale(e.target.value)
+		const value = e.target.value
+		if (value) {
+			setTravelDate1(new Date(value))
+			e.target.value = '' // reset dropdown back to "Select..."
+		}
+	}
+
+	return (
+		<div className="p-4">
+			<select
+				value={value}
+				onChange={handleChange}
+				className="rounded border p-2"
+			>
+				<option value="">Select a month & year</option>
+				{dates.map((date, index) => (
+					<option key={index} value={index}>
+						{formatMonthYear(date)}
+					</option>
+				))}
+			</select>
+
+			{travelDate1 && (
+				<p className="mt-2 text-gray-700">
+					Selected: {formatMonthYear(travelDate1)}
+				</p>
+			)}
+		</div>
+	)
+}

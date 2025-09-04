@@ -103,7 +103,12 @@ const Review: React.FC<ReviewProps> = ({ review }) => {
 
 						<div className="mb-3 flex flex-wrap gap-4 text-sm/6 font-semibold text-black">
 							<span>
-								{t('Date_Experience')} {review.travelDate1}
+								{t('Date_Experience')}{' '}
+								{new Date(review.createdAt).toLocaleDateString(locale, {
+									year: 'numeric',
+									month: 'long',
+								})}
+								{/* {review.travelDate1} */}
 							</span>
 							<span>
 								{t('Trip_Type')} {t(review.travelType)}
