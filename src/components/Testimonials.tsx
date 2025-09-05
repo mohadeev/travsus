@@ -129,7 +129,15 @@ const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => {
 
 							<div className="flex flex-wrap gap-4 text-sm/6 font-semibold text-black">
 								<span>
-									{t('travel_date')}: {testimonial.travelDate1}
+									{t('travel_date')}:{' '}
+									{new Date(testimonial.travelDate1).toLocaleDateString(
+										locale,
+										{
+											year: 'numeric',
+											month: 'long',
+											day: 'numeric',
+										},
+									)}
 								</span>
 							</div>
 						</div>
