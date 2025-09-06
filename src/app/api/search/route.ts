@@ -9,70 +9,57 @@ export async function GET(request: Request) {
 	try {
 		// Parse the URL
 		const { searchParams } = new URL(request.url)
+		console.log('request.url', request.url)
 
 		// Extract query params
 		const query = searchParams.get('query')
 
 		const start = searchParams.get('start')
 		const end = searchParams.get('end')
-
+		console.log(start, end)
+		const searchQuery = query // your text query
+		const days = daysBetween(start, end)
+		const daysNumber = days
 		const minPrice = searchParams.get('minPrice')
 		const maxPrice = searchParams.get('maxPrice')
 		const sortBy = searchParams.get('sortBy')
-		console.log('sortBy', sortBy)
 		if (!query || query.trim().length === 0) {
 			return NextResponse.json({ error: 'Query is required' }, { status: 400 })
 		}
 
 		// case-insensitive regex search
 		const regexQuery = { contains: query, mode: 'insensitive' as const }
+		const isNumber = !isNaN(Number(days))
+		const daysFilter = isNumber ? { days: { length: Number(days) } } : null
 
-		const tours = await prisma.tour.findMany({
-			where: {
-				OR: [
-					{ name: regexQuery },
-					{ subtitle: regexQuery },
-					{ overview: regexQuery },
-					{ conclusion: regexQuery },
+		const toursQuery = await prisma.$runCommandRaw({
+			find: 'tours',
+			filter: {
+				$and: [
 					{
-						tags: {
-							hasSome: [query],
-						},
+						$or: [
+							{ name: { $regex: searchQuery, $options: 'i' } },
+							{ subtitle: { $regex: searchQuery, $options: 'i' } },
+							{ overview: { $regex: searchQuery, $options: 'i' } },
+							{ conclusion: { $regex: searchQuery, $options: 'i' } },
+							{ tags: searchQuery },
+							{ keyphrase: searchQuery },
+						],
 					},
-					{
-						keyphrase: {
-							hasSome: [query],
-						},
-					},
+					{ $expr: { $eq: [{ $size: '$days' }, daysNumber] } }, // array length filter
 				],
 			},
-			include: {
-				business: {
-					select: {
-						id: true,
-						name: true,
-						email: true,
-						profileImage: true,
-					},
-				},
-				reviews: {
-					select: {
-						rating: true,
-						content: true,
-						createdAt: true,
-						user: { select: { name: true, profileImage: true } },
-					},
-				},
-			},
-			orderBy: { createdAt: 'desc' },
-			take: 20, // limit results
+			limit: 20,
 		})
-
+		const tours = toursQuery.cursor.firstBatch
+		console.log('tours', tours)
+		console.log('daysNumber:', daysNumber)
+		console.log('daysNumber:', daysNumber.length)
 		const newTours = await Promise.all(
 			tours.map(async (tour) => {
 				const updated = await updateLineItemsLogic({
 					tour,
-					body: {},
+					body: { guests: { guestAdults: 18, guestChildren: 0 } },
 				})
 
 				return {
@@ -83,8 +70,8 @@ export async function GET(request: Request) {
 		)
 		const sortedByTours = sortByPrice(newTours, sortBy)
 		const filteredByPrice = filterByPrice(sortedByTours, minPrice, maxPrice)
-
-		return NextResponse.json({ tours: filteredByPrice })
+		const filteredValidPrices = filterValidPrices(filteredByPrice)
+		return NextResponse.json({ tours: filteredValidPrices })
 	} catch (error: any) {
 		console.error('Search error:', error)
 		return NextResponse.json(
@@ -108,4 +95,26 @@ function filterByPrice(products: any[], minPrice: number, maxPrice: number) {
 		(product) =>
 			product.startPrice >= minPrice && product.startPrice <= maxPrice,
 	)
+}
+
+function filterValidPrices(products: any[]) {
+	return products.filter(
+		(product) =>
+			typeof product.startPrice === 'number' && product.startPrice > 0,
+	)
+}
+
+function daysBetween(startDate: string, endDate: string): number {
+	const start = new Date(startDate)
+	const end = new Date(endDate)
+
+	// Check for invalid dates
+	if (isNaN(start.getTime()) || isNaN(end.getTime())) {
+		throw new Error('Invalid date format')
+	}
+
+	const diffTime = Math.abs(end.getTime() - start.getTime())
+	const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
+
+	return diffDays
 }

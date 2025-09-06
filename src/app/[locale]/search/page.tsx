@@ -49,7 +49,7 @@ export default function TravsusTravelPage() {
 				// Build query parameters based on filters
 
 				params.append('query', query)
-				params.append('start', query)
+				params.append('start', start)
 				params.append('end', end)
 
 				if (selectedDate !== 'all') {
