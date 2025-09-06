@@ -7,8 +7,9 @@ import { MapPinIcon } from '@heroicons/react/24/outline'
 import { searchCountries } from '@/utils/searchCountries'
 import cities from 'cities.json'
 import { useTranslations } from '@/lib/i18n'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
-export interface LocationInputProps {
+export interface LocationInputDesktopProps {
 	onInputDone?: (value: string) => void
 	placeHolder?: string
 	desc?: string
@@ -17,7 +18,7 @@ export interface LocationInputProps {
 	autoFocus?: boolean
 }
 
-const LocationInput: FC<LocationInputProps> = ({
+const LocationInputDesktop: FC<LocationInputDesktopProps> = ({
 	autoFocus = false,
 	onInputDone,
 	placeHolder,
@@ -66,7 +67,7 @@ const LocationInput: FC<LocationInputProps> = ({
 				<div className="mt-2">
 					{[
 						'Hamptons, Suffolk County, NY',
-						'Las Vegas, NV, United States',
+						'Las Vegas, NV, United States lksklvs',
 						'Ueno, Taito, Tokyo',
 						'Ikebukuro, Toshima, Tokyo',
 					].map((item) => (
@@ -108,9 +109,22 @@ const LocationInput: FC<LocationInputProps> = ({
 			</>
 		)
 	}
+	const searchParams = useSearchParams()
+	const pathname = usePathname()
+	const { replace } = useRouter()
+
+	function handleSearch(term: string) {
+		const params = new URLSearchParams(searchParams)
+		if (term) {
+			params.set('query', term)
+		}
+		replace(`${pathname}?${params.toString()}`)
+	}
 
 	const handleChangeInput = async (e: any) => {
 		const value = e.target.value
+		console.log('here', e.target.value)
+		handleSearch(e.target.value)
 		setValue(e.currentTarget.value)
 		const newSearchCountries: any = await searchCountries({ placeName: value })
 		setSearchResulte(newSearchCountries)
@@ -132,6 +146,7 @@ const LocationInput: FC<LocationInputProps> = ({
 						autoFocus={showPopover}
 						onChange={handleChangeInput}
 						ref={inputRef}
+						// name="location"
 					/>
 					<span className="mt-0.5 block text-sm font-light text-neutral-400">
 						<span className="line-clamp-1">
@@ -161,4 +176,4 @@ const LocationInput: FC<LocationInputProps> = ({
 	)
 }
 
-export default LocationInput
+export default LocationInputDesktop

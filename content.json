@@ -1,92 +1,52 @@
 {
 	"en-US": {
-		"Testimonials": {
-			"title": "What Our Customers Say",
-			"description": "Don't just take our word for it. Here's what our satisfied customers have to say about their experience with our 5-star rated services.",
-			"loading": "Loading customer reviews...",
-			"no_reviews": "No 5-star reviews available at the moment.",
-			"travel_date": "Travel Date"
+		"TravsusTravelPage": {
+			"TravsusTravelPage_categories": "Categories"
 		}
 	},
 	"es-ES": {
-		"Testimonials": {
-			"title": "Lo que dicen nuestros clientes",
-			"description": "No se fíe solo de nuestra palabra. Esto es lo que nuestros clientes satisfechos tienen que decir sobre su experiencia con nuestros servicios de 5 estrellas.",
-			"loading": "Cargando reseñas de clientes...",
-			"no_reviews": "No hay reseñas de 5 estrellas disponibles en este momento.",
-			"travel_date": "Fecha de viaje"
+		"TravsusTravelPage": {
+			"TravsusTravelPage_categories": "Categorías"
 		}
 	},
 	"de-DE": {
-		"Testimonials": {
-			"title": "Was unsere Kunden sagen",
-			"description": "Glauben Sie nicht nur unserem Wort. Hier ist, was unsere zufriedenen Kunden über ihre Erfahrung mit unseren 5-Sterne-Dienstleistungen zu sagen haben.",
-			"loading": "Lade Kundenbewertungen...",
-			"no_reviews": "Derzeit sind keine 5-Sterne-Bewertungen verfügbar.",
-			"travel_date": "Reisedatum"
+		"TravsusTravelPage": {
+			"TravsusTravelPage_categories": "Kategorien"
 		}
 	},
 	"fr-FR": {
-		"Testimonials": {
-			"title": "Ce que disent nos clients",
-			"description": "Ne nous croyez pas sur parole. Voici ce que nos clients satisfaits ont à dire sur leur expérience avec nos services 5 étoiles.",
-			"loading": "Chargement des avis clients...",
-			"no_reviews": "Aucun avis 5 étoiles disponible pour le moment.",
-			"travel_date": "Date de voyage"
+		"TravsusTravelPage": {
+			"TravsusTravelPage_categories": "Catégories"
 		}
 	},
 	"ja-JP": {
-		"Testimonials": {
-			"title": "お客様の声",
-			"description": "私たちの言葉だけを信じるのではなく、5つ星のサービスを体験した満足したお客様の声をご覧ください。",
-			"loading": "お客様のレビューを読み込み中...",
-			"no_reviews": "現在、5つ星のレビューはありません。",
-			"travel_date": "旅行日"
+		"TravsusTravelPage": {
+			"TravsusTravelPage_categories": "カテゴリー"
 		}
 	},
 	"pt-PT": {
-		"Testimonials": {
-			"title": "O que os nossos clientes dizem",
-			"description": "Não acredite apenas na nossa palavra. Eis o que os nossos clientes satisfeitos têm a dizer sobre a sua experiência com os nossos serviços de 5 estrelas.",
-			"loading": "A carregar avaliações de clientes...",
-			"no_reviews": "Nenhuma avaliação de 5 estrelas disponível no momento.",
-			"travel_date": "Data de viagem"
+		"TravsusTravelPage": {
+			"TravsusTravelPage_categories": "Categorias"
 		}
 	},
 	"it-IT": {
-		"Testimonials": {
-			"title": "Cosa dicono i nostri clienti",
-			"description": "Non credete solo alla nostra parola. Ecco cosa hanno da dire i nostri clienti soddisfatti sulla loro esperienza con i nostri servizi a 5 stelle.",
-			"loading": "Caricamento recensioni clienti...",
-			"no_reviews": "Nessuna recensione a 5 stelle disponibile al momento.",
-			"travel_date": "Data del viaggio"
+		"TravsusTravelPage": {
+			"TravsusTravelPage_categories": "Categorie"
 		}
 	},
 	"ru-RU": {
-		"Testimonials": {
-			"title": "Что говорят наши клиенты",
-			"description": "Не верьте нам на слово. Вот что наши довольные клиенты говорят о своем опыте использования наших услуг с 5-звездочным рейтингом.",
-			"loading": "Загрузка отзывов клиентов...",
-			"no_reviews": "На данный момент нет доступных 5-звездочных отзывов.",
-			"travel_date": "Дата путешествия"
+		"TravsusTravelPage": {
+			"TravsusTravelPage_categories": "Категории"
 		}
 	},
 	"zh-CN": {
-		"Testimonials": {
-			"title": "客户评价",
-			"description": "不要只听我们怎么说。看看我们满意的客户对他们使用我们五星级服务的体验有何评价。",
-			"loading": "正在加载客户评价...",
-			"no_reviews": "目前没有可用的五星评价。",
-			"travel_date": "旅行日期"
+		"TravsusTravelPage": {
+			"TravsusTravelPage_categories": "类别"
 		}
 	},
 	"ko-KR": {
-		"Testimonials": {
-			"title": "고객님들의 의견",
-			"description": "저희의 말만 믿지 마세요. 5성급 서비스를 경험한 만족한 고객님들의 생생한 후기를 확인해보세요.",
-			"loading": "고객 리뷰를 불러오는 중...",
-			"no_reviews": "현재 5성 리뷰가 없습니다.",
-			"travel_date": "여행 날짜"
+		"TravsusTravelPage": {
+			"TravsusTravelPage_categories": "카테고리"
 		}
 	}
 }
