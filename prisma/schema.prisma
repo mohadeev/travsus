@@ -316,8 +316,7 @@ model Review {
   // Travel details
   travelDate        String?
   travelType        String?             // e.g., "Business", "Family", etc.
-    travelDate1        DateTime?            @default(now()) // Changed from String? to DateTime with default
-ac
+  travelDate1       DateTime            @default(now()) 
   // Images
   images            String[]            // Array of image URLs
   
