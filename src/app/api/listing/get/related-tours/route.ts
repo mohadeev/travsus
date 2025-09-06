@@ -31,7 +31,10 @@ export async function GET(request: Request) {
 		const tours = toursQuery.cursor.firstBatch
 		const cleanedTours = tours.map(cleanTourIds)
 
-		return NextResponse.json({ allToursData: cleanedTours, days: daysNumber })
+		// Filter out the current tour in JavaScript
+		const filteredTours = cleanedTours.filter((t) => t.id !== id)
+
+		return NextResponse.json({ allToursData: filteredTours, days: daysNumber })
 	} catch (error: any) {
 		console.error('Search error:', error)
 		return NextResponse.json(

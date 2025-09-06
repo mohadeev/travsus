@@ -284,13 +284,15 @@ const ListingExperiencesDetailPage: FC<ListingExperiencesDetailPageProps> = ({
 						)}
 
 						{id && <ReviewSystem serviceId={id} serviceName={title} />}
-						<ItemsCardList
-							locationType="relatedTours"
-							heading={t('Similar_Experiences')}
-							currentPage={1}
-							id={id}
-							layout="row"
-						/>
+						{id && (
+							<ItemsCardList
+								locationType="relatedTours"
+								heading={t('Similar_Experiences')}
+								currentPage={1}
+								id={id}
+								layout="row"
+							/>
+						)}
 					</div>
 				</>
 			)}
