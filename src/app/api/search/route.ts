@@ -108,13 +108,24 @@ function daysBetween(startDate: string, endDate: string): number {
 	const start = new Date(startDate)
 	const end = new Date(endDate)
 
-	// Check for invalid dates
 	if (isNaN(start.getTime()) || isNaN(end.getTime())) {
 		throw new Error('Invalid date format')
 	}
 
-	const diffTime = Math.abs(end.getTime() - start.getTime())
-	const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
+	// Get UTC dates only (ignore time)
+	const startUTC = Date.UTC(
+		start.getUTCFullYear(),
+		start.getUTCMonth(),
+		start.getUTCDate(),
+	)
+	const endUTC = Date.UTC(
+		end.getUTCFullYear(),
+		end.getUTCMonth(),
+		end.getUTCDate(),
+	)
 
-	return diffDays
+	const diffTime = endUTC - startUTC
+	const diffDays = diffTime / (1000 * 60 * 60 * 24)
+
+	return diffDays + 1 // inclusive of start and end date
 }
