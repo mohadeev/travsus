@@ -124,7 +124,7 @@ const LocationInputDesktop: FC<LocationInputDesktopProps> = ({
 	const handleChangeInput = async (e: any) => {
 		const value = e.target.value
 		console.log('here', e.target.value)
-		// handleSearch(e.target.value)
+		handleSearch(e.target.value)
 		setValue(e.currentTarget.value)
 		const newSearchCountries: any = await searchCountries({ placeName: value })
 		setSearchResulte(newSearchCountries)

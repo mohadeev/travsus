@@ -10,6 +10,7 @@ import moment from 'moment'
 import { useTranslations } from '@/lib/i18n'
 import { useLocale } from 'next-intl'
 import locales from '@/lib/dateFnsLocales'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
 export interface StayDatesRangeInputProps {
 	className?: string
@@ -31,8 +32,21 @@ const StayDatesRangeInput: FC<StayDatesRangeInputProps> = ({
 		new Date(moment().add(7, 'days').format('L')),
 	)
 
+	const router = useRouter()
+	const searchParams = useSearchParams()
+	const pathname = usePathname()
+
+	function setDate(name: 'start' | 'end', value: Date) {
+		const params = new URLSearchParams(searchParams) // clone current params
+		params.set(name, value?.toISOString()) // ISO format for safe parsing
+		router.replace(`${pathname}?${params.toString()}`)
+	}
+
 	const onChangeDate = (dates: [Date | null, Date | null]) => {
 		const [start, end] = dates
+		if (start) setDate('start', start)
+		if (end) setDate('end', end)
+
 		setStartDate(start)
 		setEndDate(end)
 	}
