@@ -7,6 +7,8 @@ import { updateLineItemsLogic } from '@/app/api/updateLineItems/updateLineItemsL
 export default function TravsusTravelPage() {
 	const searchParams = useSearchParams()
 	const query = searchParams.get('query') // ?query=Marrakech
+	const start = searchParams.get('start') // ?query=Marrakech
+	const end = searchParams.get('end') // ?query=Marrakech
 
 	const t = useTranslations('TravsusTravelPage')
 	const [isFilterOpen, setIsFilterOpen] = useState(false)
@@ -47,6 +49,8 @@ export default function TravsusTravelPage() {
 				// Build query parameters based on filters
 
 				params.append('query', query)
+				params.append('start', query)
+				params.append('end', end)
 
 				if (selectedDate !== 'all') {
 					params.append('date', selectedDate)
@@ -78,7 +82,15 @@ export default function TravsusTravelPage() {
 		}
 
 		fetchTours()
-	}, [selectedDate, priceRange, immediateConfirmation, sortBy, query])
+	}, [
+		selectedDate,
+		priceRange,
+		immediateConfirmation,
+		sortBy,
+		query,
+		start,
+		end,
+	])
 
 	// Handle sort change
 	const handleSortChange = (e) => {

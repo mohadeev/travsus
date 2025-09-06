@@ -12,11 +12,14 @@ export async function GET(request: Request) {
 
 		// Extract query params
 		const query = searchParams.get('query')
+
+		const start = searchParams.get('start')
+		const end = searchParams.get('end')
+
 		const minPrice = searchParams.get('minPrice')
 		const maxPrice = searchParams.get('maxPrice')
 		const sortBy = searchParams.get('sortBy')
-		console.log('params: ', query)
-
+		console.log('sortBy', sortBy)
 		if (!query || query.trim().length === 0) {
 			return NextResponse.json({ error: 'Query is required' }, { status: 400 })
 		}
@@ -78,8 +81,10 @@ export async function GET(request: Request) {
 				}
 			}),
 		)
+		const sortedByTours = sortByPrice(newTours, sortBy)
+		const filteredByPrice = filterByPrice(sortedByTours, minPrice, maxPrice)
 
-		return NextResponse.json({ tours: newTours })
+		return NextResponse.json({ tours: filteredByPrice })
 	} catch (error: any) {
 		console.error('Search error:', error)
 		return NextResponse.json(
@@ -87,4 +92,20 @@ export async function GET(request: Request) {
 			{ status: 500 },
 		)
 	}
+}
+
+function sortByPrice(products: any[], sortBy: string) {
+	if (sortBy === 'price_low') {
+		return products.sort((a, b) => a.startPrice - b.startPrice) // low → high
+	} else if (sortBy === 'price_high') {
+		return products.sort((a, b) => b.startPrice - a.startPrice) // high → low
+	}
+	return products // no sorting if sortBy is something else
+}
+
+function filterByPrice(products: any[], minPrice: number, maxPrice: number) {
+	return products.filter(
+		(product) =>
+			product.startPrice >= minPrice && product.startPrice <= maxPrice,
+	)
 }
