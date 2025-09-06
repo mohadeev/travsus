@@ -133,38 +133,72 @@ export async function GET(request: NextRequest) {
 							},
 						}
 					: false,
-				titleContent: includeUser
-					? {
-							include: {
-								translations: {
-									where: {
-										languageCode: languageCode,
-									},
-								},
+				titleContent: {
+					include: {
+						translations: {
+							where: {
+								languageCode: languageCode,
 							},
-						}
-					: false,
-				contentContent: includeUser
-					? {
-							include: {
-								translations: {
-									where: {
-										languageCode: languageCode,
-									},
-								},
+						},
+					},
+				},
+				contentContent: {
+					include: {
+						translations: {
+							where: {
+								languageCode: languageCode,
 							},
-						}
-					: false,
+						},
+					},
+				},
 			},
 			orderBy: { createdAt: 'desc' },
 		})
 
-		// Format reviews to match your frontend expectations
+		console.log('[Tour Reviews] Found reviews:', reviews.length)
+		console.log(
+			'[Tour Reviews] First review titleContent:',
+			reviews[0]?.titleContent,
+		)
+		console.log(
+			'[Tour Reviews] First review contentContent:',
+			reviews[0]?.contentContent,
+		)
+
+		// Format reviews to match your frontend expectations with translations
 		const formattedReviews = reviews.map((review) => {
-			// Use translated content if available, otherwise fall back to original
-			const title = review.titleContent?.translations[0]?.text || review.title
-			const content =
-				review.contentContent?.translations[0]?.text || review.content
+			let translatedTitle = review.title
+			let translatedContent = review.content
+
+			// Check if titleContent exists and has translations
+			if (review.titleContent?.translations?.length > 0) {
+				translatedTitle = review.titleContent.translations[0].text
+				console.log(
+					'[Tour Reviews] Using translated title for review',
+					review.id,
+				)
+			} else {
+				console.log(
+					'[Tour Reviews] Using original title for review',
+					review.id,
+					'- no translations found',
+				)
+			}
+
+			// Check if contentContent exists and has translations
+			if (review.contentContent?.translations?.length > 0) {
+				translatedContent = review.contentContent.translations[0].text
+				console.log(
+					'[Tour Reviews] Using translated content for review',
+					review.id,
+				)
+			} else {
+				console.log(
+					'[Tour Reviews] Using original content for review',
+					review.id,
+					'- no translations found',
+				)
+			}
 
 			return {
 				id: review.id,
@@ -177,8 +211,8 @@ export async function GET(request: NextRequest) {
 						? (review.user.profileImage as any).url
 						: null,
 				rating: review.rating,
-				title,
-				content,
+				title: translatedTitle,
+				content: translatedContent,
 				travelDate1: review.travelDate1,
 				travelType: review.travelType,
 				images: review.images,
