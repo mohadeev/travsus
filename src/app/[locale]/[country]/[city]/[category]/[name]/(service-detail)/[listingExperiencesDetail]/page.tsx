@@ -285,9 +285,10 @@ const ListingExperiencesDetailPage: FC<ListingExperiencesDetailPageProps> = ({
 
 						{id && <ReviewSystem serviceId={id} serviceName={title} />}
 						<ItemsCardList
-							locationType="tour"
+							locationType="relatedTours"
 							heading={t('Similar_Experiences')}
 							currentPage={1}
+							id={id}
 							layout="row"
 						/>
 					</div>

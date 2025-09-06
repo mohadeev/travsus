@@ -68,7 +68,7 @@ export async function GET(request: NextRequest) {
 		// Build slugified URL like ExperiencesCard
 		const locale = languageCode
 		const href = slugify(
-			`${locale}/${slugify(day.city.country.continent.name)}/${slugify(day.city.country.name)}/${slugify(day.city.province.name)}/${slugify(day.city.name)}/${slugify(t('things_to_do_slug'))}/${slugify(t('tours'))}/${slugify(translatedTitle)}/${id}/q=tour}`,
+			`${locale}/${slugify(day.city.country.continent.name)}/${slugify(day.city.country.name)}/${slugify(day.city.province.name)}/${slugify(day?.city?.name)}/${slugify(t('things_to_do_slug'))}/${slugify(t('tours'))}/${slugify(translatedTitle)}/${id}/q=tour}`,
 		)
 
 		return NextResponse.json({ link: href })

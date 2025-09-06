@@ -8,15 +8,17 @@ import ExperiencesCard from '@/components/ExperiencesCard'
 import allToursFetch from '@/utils/allToursFetch'
 import Heading from '@/shared/Heading'
 import { useTranslations } from '@/lib/i18n'
+import fetchRelatedTours from '@/utils/fetchRelatedTours'
 
 // Default country codes to fetch
 export interface ItemsCardListProps {
 	className?: string
 	itemClassName?: string
 	cardSize?: 'default' | 'small'
-	locationType: 'country' | 'city' | 'place' | 'tour'
+	locationType: 'country' | 'city' | 'place' | 'tour' | 'relatedTours'
 	countryId?: string // For cities within a country
 	cityId?: string // For places within a city by name
+	id?: string
 	layout?: 'row' | 'column'
 	heading?: string
 	subHeading?: string
@@ -33,6 +35,7 @@ const ItemsCardList: FC<ItemsCardListProps> = ({
 	locationType = 'country',
 	countryId,
 	cityId,
+	id,
 	layout = 'column',
 	heading,
 	subHeading,
@@ -74,6 +77,27 @@ const ItemsCardList: FC<ItemsCardListProps> = ({
 				if (locationType === 'tour') {
 					try {
 						const data = await allToursFetch(currentPage)
+						if (data?.allToursData && data.allToursData.length > 0) {
+							setToursData(data.allToursData)
+							setTotalPages(data.totalPages || 1)
+							setError(null)
+						} else {
+							setError(t('No_Tours_Found'))
+							setToursData([])
+							setTotalPages(1)
+						}
+					} catch (err) {
+						console.error('Error fetching tours:', err)
+						setError(t('Failed_Load_Tours'))
+						setToursData([])
+						setTotalPages(1)
+					}
+					return // Exit early for tours
+				}
+				if (locationType === 'relatedTours') {
+					try {
+						const data = await fetchRelatedTours(id)
+						console.log('data:::', data)
 						if (data?.allToursData && data.allToursData.length > 0) {
 							setToursData(data.allToursData)
 							setTotalPages(data.totalPages || 1)
@@ -254,7 +278,7 @@ const ItemsCardList: FC<ItemsCardListProps> = ({
 						layout={layout}
 					/>
 				</div>
-			) : locationType === 'tour' ? (
+			) : locationType === 'tour' || locationType === 'relatedTours' ? (
 				// Tours content
 				toursData.length === 0 && error ? (
 					<div className="rounded-lg bg-amber-50 p-4 text-center text-amber-700 dark:bg-amber-900/20 dark:text-amber-400">
