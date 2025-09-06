@@ -67,7 +67,7 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 				tour: data,
 				body: {
 					// guests: { guestAdults: 18, guestChildren: 0 },
-					source: 'ExperiencesCard',
+					// source: 'ExperiencesCard',
 				},
 			})
 			setPriceData(prices)

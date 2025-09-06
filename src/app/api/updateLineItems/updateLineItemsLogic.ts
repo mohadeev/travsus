@@ -30,11 +30,9 @@ export async function updateLineItemsLogic(data: TourData) {
 	const lineItems: LineItem[] = []
 	let { guests, accommodation, booking } = body
 	const accommodations: any = tour?.accommodations
-	// console.log('accommodation:', data)
-
+	let totalGuests = 0
 	let accommodationLineItem: any = {}
 	if (accommodation) {
-		console.log('price by accommodation')
 		accommodationLineItem = calculateAccommodationPrice(
 			accommodation,
 			accommodations,
@@ -42,7 +40,7 @@ export async function updateLineItemsLogic(data: TourData) {
 		)
 		lineItems.push(accommodationLineItem)
 		guests = generateGuestsObject(accommodation)
-		const totalGuests = guests.guestAdults + guests.guestChildren
+		totalGuests = guests.guestAdults + guests.guestChildren
 		const getPriceTier = await travsusSdk({
 			subAction: 'findSpisificPricingTiers',
 			totalGuests,
@@ -65,7 +63,7 @@ export async function updateLineItemsLogic(data: TourData) {
 	} else if (guests) {
 		console.log('price by guests')
 
-		const totalGuests = guests.guestAdults + guests.guestChildren
+		totalGuests = guests.guestAdults + guests.guestChildren
 		const getPriceTier = await travsusSdk({
 			subAction: 'findSpisificPricingTiers',
 			totalGuests,
@@ -98,7 +96,7 @@ export async function updateLineItemsLogic(data: TourData) {
 	} else {
 		accommodation = {}
 		guests = { guestAdults: 2, guestChildren: 0 }
-		const totalGuests = guests.guestAdults + guests.guestChildren
+		totalGuests = guests.guestAdults + guests.guestChildren
 		const getPriceTier = await travsusSdk({
 			subAction: 'findSpisificPricingTiers',
 			totalGuests,
@@ -138,7 +136,15 @@ export async function updateLineItemsLogic(data: TourData) {
 		guests,
 		accommodation,
 	}
-	return { ...newbooking, status: 200 }
+	const filteredLineItems = lineItems?.filter(
+		({ includeInTotal }: any) => includeInTotal === true,
+	)
+	const totalAmount = filteredLineItems?.reduce((total: any, item: any) => {
+		return total + item.totalPrice
+	}, 0)
+	const startPrice = totalAmount / totalGuests
+	console.log('totalGuests:::', totalGuests)
+	return { ...newbooking, ...tour, ...{ totalGuests, startPrice }, status: 200 }
 }
 
 const handleCalcultePriceForGuests = (totalGuests: number, price: number) => {

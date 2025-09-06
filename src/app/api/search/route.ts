@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { PrismaClient } from '@prisma/client'
+import { updateLineItemsLogic } from '../updateLineItems/updateLineItemsLogic'
 
 const prisma = new PrismaClient()
 
@@ -63,8 +64,22 @@ export async function GET(request: Request) {
 			orderBy: { createdAt: 'desc' },
 			take: 20, // limit results
 		})
-		console.log('tours', tours)
-		return NextResponse.json({ tours })
+
+		const newTours = await Promise.all(
+			tours.map(async (tour) => {
+				const updated = await updateLineItemsLogic({
+					tour,
+					body: {},
+				})
+
+				return {
+					...tour,
+					...updated,
+				}
+			}),
+		)
+
+		return NextResponse.json({ tours: newTours })
 	} catch (error: any) {
 		console.error('Search error:', error)
 		return NextResponse.json(

@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react'
 import { useTranslations } from '@/lib/i18n'
 import { useSearchParams } from 'next/navigation'
+import { updateLineItemsLogic } from '@/app/api/updateLineItems/updateLineItemsLogic'
 
 export default function TravsusTravelPage() {
 	const searchParams = useSearchParams()
@@ -36,14 +37,14 @@ export default function TravsusTravelPage() {
 		{ value: 'price_high', label: t('TravsusTravelPage_sort_price_high') },
 		{ value: 'best_rated', label: t('TravsusTravelPage_sort_best_rated') },
 	]
-
+	const params = new URLSearchParams()
+	console.log('params-params-params-params:::', params)
 	// Fetch tours from API
 	useEffect(() => {
 		const fetchTours = async () => {
 			try {
 				setLoading(true)
 				// Build query parameters based on filters
-				const params = new URLSearchParams()
 
 				params.append('query', query)
 
@@ -93,6 +94,15 @@ export default function TravsusTravelPage() {
 	const calculateDiscount = (originalPrice, discountedPrice) => {
 		const discount = ((originalPrice - discountedPrice) / originalPrice) * 100
 		return Math.round(discount)
+	}
+
+	const totlaPrice = (priceData: any) => {
+		console.log('priceData:', priceData)
+		let price = 0
+		const { guests, lineItems, accommodation, transport, bookOwnHotels }: any =
+			priceData || {}
+
+		return price
 	}
 
 	return (
@@ -558,9 +568,10 @@ export default function TravsusTravelPage() {
 
 															<div className="text-right">
 																<div className="text-2xl font-bold text-gray-900">
-																	{formatPrice(
+																	{/* {formatPrice(
 																		tour.discountedPrice || tour.price,
-																	)}
+																	)} */}
+																	{tour?.startPrice}
 																</div>
 																{tour.discountedPrice && tour.price && (
 																	<>

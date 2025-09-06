@@ -9,6 +9,7 @@ import { PathName } from '@/routers/types'
 import NcInputNumber from '@/components/NcInputNumber'
 import { GuestsObject } from '../type'
 import { useTranslations } from '@/lib/i18n'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
 export interface GuestsInputProps {
 	className?: string
@@ -31,10 +32,21 @@ const GuestsInput: FC<GuestsInputProps> = ({
 	const [guestAdultsInputValue, setGuestAdultsInputValue] = useState(2)
 	const [guestChildrenInputValue, setGuestChildrenInputValue] = useState(1)
 	const [guestInfantsInputValue, setGuestInfantsInputValue] = useState(1)
-
+	const router = useRouter()
+	const searchParams = useSearchParams()
+	const pathname = usePathname()
 	useEffect(() => {
 		setIsOpen(autoFocus)
 	}, [autoFocus])
+
+	function travlers(
+		name: 'guestAdults' | 'guestChildren' | 'guestInfants',
+		value: Number,
+	) {
+		const params = new URLSearchParams(searchParams) // clone current params
+		params.set(name, value.toString()) // ISO format for safe parsing
+		router.replace(`${pathname}?${params.toString()}`)
+	}
 
 	const handleChangeData = (value: number, type: keyof GuestsObject) => {
 		if (type === 'guestAdults') {
@@ -46,6 +58,7 @@ const GuestsInput: FC<GuestsInputProps> = ({
 		if (type === 'guestInfants') {
 			setGuestInfantsInputValue(value)
 		}
+		travlers(type, value)
 	}
 
 	const totalGuests =
