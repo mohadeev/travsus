@@ -138,9 +138,10 @@ export default async function middleware(request: NextRequest) {
 	const locale: string = url.pathname.split('/')[1] || 'en-US'
 	const parts = pathname.split('/')
 	const last = parts[parts.length - 1]
-	const serviceId = parts[parts.length - 2]
+	const serviceId =
+		parts.length === 11 ? parts[parts.length - 2] : parts[parts.length - 1]
 
-	if (last === 'q=tour' && parts.length === 11) {
+	if ((last === 'q=tour' && parts.length === 11) || parts.length === 7) {
 		try {
 			const serviceDataResponse = await fetch(
 				`${process.env.NEXTAUTH_URL}/api/update-slug?serviceId=${serviceId}&locale=${locale}`,
@@ -153,7 +154,14 @@ export default async function middleware(request: NextRequest) {
 			)
 			const serviceData: any = await serviceDataResponse.json()
 			const link = serviceData.data.link
-			return NextResponse.redirect(new URL(url.origin + '/' + link), 301)
+			console.log('link-link-link-link-link-link-link', link)
+			console.log(
+				'pathname-pathname-pathname-pathname-pathname-pathname-pathname',
+				pathname,
+			)
+			if ('/' + link !== pathname) {
+				return NextResponse.redirect(new URL(url.origin + '/' + link), 301)
+			}
 		} catch (error) {
 			console.error('Error in tour redirect:', error)
 			// Fallback to continue with normal middleware

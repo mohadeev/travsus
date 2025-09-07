@@ -217,7 +217,7 @@ const ItemsCardList: FC<ItemsCardListProps> = ({
 		}
 
 		fetchLocations()
-	}, [locationType, countryId, cityId, limit, currentPage])
+	}, [locationType, countryId, cityId, limit, currentPage, id])
 
 	// Customize heading based on location type
 	const getDefaultHeading = () => {
