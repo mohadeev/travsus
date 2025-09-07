@@ -292,10 +292,26 @@ model Tour {
   overviewContent     TranslatableContent? @relation("TourOverviewContent", fields: [overviewContentId], references: [id])
   conclusionContentId String?             @db.ObjectId
   conclusionContent   TranslatableContent? @relation("TourConclusionContent", fields: [conclusionContentId], references: [id])
+  translations   TourTranslation[]
 
   @@map("tours")
 }
 
+type TourTranslation {
+  language  String  // e.g., "en-US", "es-ES", "de-DE", etc.
+  name      String
+  subtitle  String?
+  overview  String?
+  conclusion String?
+  
+  // For day translations
+  days      DayTranslation[]
+}
+type DayTranslation {
+  dayIndex   Int
+  name       String
+  description String?
+}
 model Review {
   id                String              @id @default(auto()) @map("_id") @db.ObjectId
   tourId            String              @db.ObjectId

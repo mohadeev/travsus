@@ -243,8 +243,6 @@ export async function GET(req: NextRequest) {
 		})
 
 		console.log('[v0] Found reviews:', reviews.length)
-		console.log('[v0] First review titleContent:', reviews[0]?.titleContent)
-		console.log('[v0] First review contentContent:', reviews[0]?.contentContent)
 
 		const translatedReviews = reviews.map((review) => {
 			let translatedTitle = review.title

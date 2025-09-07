@@ -78,7 +78,7 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 	// const { booking, status } = useSelector((state: any) => state.bookingSlice)
 	const { guests, lineItems, accommodation, transport, bookOwnHotels }: any =
 		priceData || {}
-	console.log('guests: ', guests, priceData)
+	console.log('guests: ', priceData)
 
 	const totalGuests: number = guests?.guestAdults + guests?.guestChildren
 

@@ -154,11 +154,7 @@ export default async function middleware(request: NextRequest) {
 			)
 			const serviceData: any = await serviceDataResponse.json()
 			const link = serviceData.data.link
-			console.log('link-link-link-link-link-link-link', link)
-			console.log(
-				'pathname-pathname-pathname-pathname-pathname-pathname-pathname',
-				pathname,
-			)
+
 			if ('/' + link !== pathname) {
 				return NextResponse.redirect(new URL(url.origin + '/' + link), 301)
 			}
