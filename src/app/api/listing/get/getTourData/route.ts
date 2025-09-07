@@ -117,8 +117,6 @@ export async function GET(request: NextRequest) {
 		})
 		const currentUser: any = await getServerSession(authOptions)
 
-		const includeUser = true
-
 		const reviews = await prisma.review.findMany({
 			where: { tourId: id },
 
@@ -153,52 +151,6 @@ export async function GET(request: NextRequest) {
 				createdAt: 'desc',
 			},
 		})
-		// const reviews = await prisma.review.findMany({
-		// 	where: { tourId: id },
-		// 	include: {
-		// 		user: includeUser
-		// 			? {
-		// 					select: {
-		// 						accountData: true,
-		// 						id: true,
-		// 						name: true,
-		// 						username: true,
-		// 						email: true,
-		// 						profileImage: true,
-		// 					},
-		// 				}
-		// 			: false,
-		// 		titleContent: {
-		// 			include: {
-		// 				translations: {
-		// 					where: {
-		// 						languageCode: languageCode,
-		// 					},
-		// 				},
-		// 			},
-		// 		},
-		// 		contentContent: {
-		// 			include: {
-		// 				translations: {
-		// 					where: {
-		// 						languageCode: languageCode,
-		// 					},
-		// 				},
-		// 			},
-		// 		},
-		// 	},
-		// 	orderBy: { createdAt: 'desc' },
-		// })
-
-		console.log('[Tour Reviews] Found reviews:', reviews.length)
-		console.log(
-			'[Tour Reviews] First review titleContent:',
-			reviews[0]?.titleContent,
-		)
-		console.log(
-			'[Tour Reviews] First review contentContent:',
-			reviews[0]?.contentContent,
-		)
 
 		// Format reviews to match your frontend expectations with translations
 		const formattedReviews = reviews.map((review) => {
@@ -274,8 +226,6 @@ export async function GET(request: NextRequest) {
 			)
 		}
 
-		console.log('Fetching tour data for ID:', id)
-
 		const tour = await prisma.tour.findUnique({
 			where: {
 				id,
@@ -288,33 +238,6 @@ export async function GET(request: NextRequest) {
 			include: {
 				startAddress: true,
 				endAddress: true,
-				nameContent: {
-					include: {
-						translations: {
-							where: {
-								languageCode: languageCode,
-							},
-						},
-					},
-				},
-				subtitleContent: {
-					include: {
-						translations: {
-							where: {
-								languageCode: languageCode,
-							},
-						},
-					},
-				},
-				overviewContent: {
-					include: {
-						translations: {
-							where: {
-								languageCode: languageCode,
-							},
-						},
-					},
-				},
 				conclusionContent: {
 					include: {
 						translations: {
@@ -326,7 +249,6 @@ export async function GET(request: NextRequest) {
 				},
 			},
 		})
-		console.log('tour', tour.translations)
 		const currentLang = tour.translations.find(
 			({ language }) => language === languageCode,
 		)
@@ -335,12 +257,6 @@ export async function GET(request: NextRequest) {
 			return NextResponse.json({ message: 'Tour not found' }, { status: 404 })
 		}
 
-		// Get translated tour content
-		const translatedName = tour.nameContent?.translations[0]?.text || tour.name
-		const translatedSubtitle =
-			tour.subtitleContent?.translations[0]?.text || tour.subtitle
-		const translatedOverview =
-			tour.overviewContent?.translations[0]?.text || tour.overview
 		const translatedConclusion =
 			tour.conclusionContent?.translations[0]?.text || tour.conclusion
 
@@ -350,45 +266,7 @@ export async function GET(request: NextRequest) {
 
 		if (Array.isArray(processedDays) && processedDays.length > 0) {
 			// First get all day translations
-			const daysWithTranslations = await Promise.all(
-				processedDays.map(async (day) => {
-					let translatedDayName = day.name
-					let translatedDayDescription = day.description
-
-					if (day.nameContentId) {
-						const nameContent = await prisma.translatableContent.findUnique({
-							where: { id: day.nameContentId },
-							include: {
-								translations: {
-									where: { languageCode },
-								},
-							},
-						})
-						translatedDayName = nameContent?.translations[0]?.text || day.name
-					}
-
-					if (day.descriptionContentId) {
-						const descContent = await prisma.translatableContent.findUnique({
-							where: { id: day.descriptionContentId },
-							include: {
-								translations: {
-									where: { languageCode },
-								},
-							},
-						})
-						translatedDayDescription =
-							descContent?.translations[0]?.text || day.description
-					}
-
-					return {
-						...day,
-						name: translatedDayName,
-						description: translatedDayDescription,
-					}
-				}),
-			)
-
-			processedDays = daysWithTranslations
+			// processedDays = daysWithTranslations
 
 			// Get all unique cityIds from the days
 			const cityIds = processedDays
@@ -578,9 +456,6 @@ export async function GET(request: NextRequest) {
 			...tour,
 			translatedReviews: translatedReviews,
 			formattedReviews,
-			name: translatedName,
-			subtitle: translatedSubtitle,
-			overview: translatedOverview,
 			conclusion: translatedConclusion,
 			language: languageCode,
 			reviewsCount,

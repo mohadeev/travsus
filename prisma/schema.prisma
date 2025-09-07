@@ -308,9 +308,14 @@ type TourTranslation {
   days      DayTranslation[]
 }
 type DayTranslation {
-  dayIndex   Int
-  name       String
+  hidden      Boolean   @default(false)
+  name        String
   description String?
+  cityId      String?
+  cityName    String?
+  // Add translation content IDs for day name and description
+  nameContentId        String? @db.ObjectId
+  descriptionContentId String? @db.ObjectId
 }
 model Review {
   id                String              @id @default(auto()) @map("_id") @db.ObjectId
