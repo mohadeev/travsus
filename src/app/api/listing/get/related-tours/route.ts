@@ -12,7 +12,7 @@ export async function GET(request: Request) {
 				id,
 			},
 		})
-		console.log('tour:', tour)
+
 		// Default to 3 if no days parameter is provided
 		const daysNumber = tour ? parseInt(tour.days.length) : 3
 

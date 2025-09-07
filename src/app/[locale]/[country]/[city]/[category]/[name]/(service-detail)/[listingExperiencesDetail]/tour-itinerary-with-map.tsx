@@ -74,7 +74,7 @@ export default function TourItineraryWithMap({
 	const selectedDay = days[selectedDayIndex] || days[0]
 
 	// Get stops for the selected day, or create a default one if none exist
-	const stops = selectedDay.stops || [
+	const stops = selectedDay?.stops || [
 		{
 			name: selectedDay.cityName || t('Tour_Stop'),
 			description: selectedDay.description || t('No_Description_Available'),

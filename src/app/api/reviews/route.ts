@@ -89,7 +89,6 @@ export async function POST(req: NextRequest) {
 					imageUrls.push(data.secure_url)
 				}
 			} catch (error) {
-				console.error('Error uploading images:', error)
 				// Continue with the review creation even if image upload fails
 			}
 		}
@@ -169,7 +168,6 @@ export async function POST(req: NextRequest) {
 
 		return NextResponse.json({ success: true, review: formattedReview })
 	} catch (error) {
-		console.error('Error creating review:', error)
 		return NextResponse.json(
 			{ error: 'Failed to create review' },
 			{ status: 500 },
@@ -206,8 +204,6 @@ export async function GET(req: NextRequest) {
 		// Fetch reviews with optional user data and translations
 		const language = extractLanguageFromRequest(req)
 
-		console.log('[v0] Requested language:', language)
-
 		const reviews = await prisma.review.findMany({
 			where: { tourId: '680bc6a5aa6f43072c7700f6' },
 			take: 10,
@@ -242,8 +238,6 @@ export async function GET(req: NextRequest) {
 			},
 		})
 
-		console.log('[v0] Found reviews:', reviews.length)
-
 		const translatedReviews = reviews.map((review) => {
 			let translatedTitle = review.title
 			let translatedContent = review.content
@@ -251,25 +245,11 @@ export async function GET(req: NextRequest) {
 			// Check if titleContent exists and has translations
 			if (review.titleContent?.translations?.length > 0) {
 				translatedTitle = review.titleContent.translations[0].text
-				console.log('[v0] Using translated title for review', review.id)
-			} else {
-				console.log(
-					'[v0] Using original title for review',
-					review.id,
-					'- no translations found',
-				)
 			}
 
 			// Check if contentContent exists and has translations
 			if (review.contentContent?.translations?.length > 0) {
 				translatedContent = review.contentContent.translations[0].text
-				console.log('[v0] Using translated content for review', review.id)
-			} else {
-				console.log(
-					'[v0] Using original content for review',
-					review.id,
-					'- no translations found',
-				)
 			}
 
 			return {
@@ -282,10 +262,9 @@ export async function GET(req: NextRequest) {
 				contentContent: undefined,
 			}
 		})
-		// console.log(translatedReviews[0])
+
 		return NextResponse.json({ reviews: translatedReviews })
 	} catch (error) {
-		console.error('Error fetching reviews:', error)
 		return NextResponse.json(
 			{ error: 'Failed to fetch reviews' },
 			{ status: 500 },

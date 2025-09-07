@@ -12,16 +12,25 @@ const openai = new OpenAI({
 	apiKey: process.env.OPENAI_API_KEY,
 })
 
-// Helper function to get translation from the new structure
-function getTranslationFromArray(
-	translations: any[],
+async function getTranslatedText(
+	contentId: string | null,
 	languageCode: string,
-	field: string,
-): string | null {
-	if (!translations || !Array.isArray(translations)) return null
+): Promise<string | null> {
+	if (!contentId) return null
 
-	const translation = translations.find((t) => t.language === languageCode)
-	return translation?.[field] || null
+	try {
+		const translatedText = await prisma.translatedText.findFirst({
+			where: {
+				contentId: contentId,
+				languageCode: languageCode,
+			},
+		})
+
+		return translatedText?.text || null
+	} catch (error) {
+		console.error('Error fetching translated text:', error)
+		return null
+	}
 }
 
 async function getGeoCoordinatesFromOpenAI(
@@ -103,7 +112,6 @@ export async function GET(request: NextRequest) {
 		const { searchParams } = new URL(request.url)
 		const id = searchParams.get('id')
 		const languageCode = extractLanguageFromRequest(request)
-		console.log('languageCode', languageCode)
 		const reviewsCount = await prisma.review.count({
 			where: { tourId: id },
 		})
@@ -111,9 +119,9 @@ export async function GET(request: NextRequest) {
 
 		const includeUser = true
 
-		// First get reviews
 		const reviews = await prisma.review.findMany({
 			where: { tourId: id },
+
 			take: 10,
 			include: {
 				user: {
@@ -122,16 +130,111 @@ export async function GET(request: NextRequest) {
 						profileImage: true,
 					},
 				},
+				titleContent: {
+					include: {
+						translations: {
+							where: {
+								languageCode,
+							},
+						},
+					},
+				},
+				contentContent: {
+					include: {
+						translations: {
+							where: {
+								languageCode,
+							},
+						},
+					},
+				},
 			},
 			orderBy: {
 				createdAt: 'desc',
 			},
 		})
+		// const reviews = await prisma.review.findMany({
+		// 	where: { tourId: id },
+		// 	include: {
+		// 		user: includeUser
+		// 			? {
+		// 					select: {
+		// 						accountData: true,
+		// 						id: true,
+		// 						name: true,
+		// 						username: true,
+		// 						email: true,
+		// 						profileImage: true,
+		// 					},
+		// 				}
+		// 			: false,
+		// 		titleContent: {
+		// 			include: {
+		// 				translations: {
+		// 					where: {
+		// 						languageCode: languageCode,
+		// 					},
+		// 				},
+		// 			},
+		// 		},
+		// 		contentContent: {
+		// 			include: {
+		// 				translations: {
+		// 					where: {
+		// 						languageCode: languageCode,
+		// 					},
+		// 				},
+		// 			},
+		// 		},
+		// 	},
+		// 	orderBy: { createdAt: 'desc' },
+		// })
 
 		console.log('[Tour Reviews] Found reviews:', reviews.length)
+		console.log(
+			'[Tour Reviews] First review titleContent:',
+			reviews[0]?.titleContent,
+		)
+		console.log(
+			'[Tour Reviews] First review contentContent:',
+			reviews[0]?.contentContent,
+		)
 
-		// Format reviews
+		// Format reviews to match your frontend expectations with translations
 		const formattedReviews = reviews.map((review) => {
+			let translatedTitle = review.title
+			let translatedContent = review.content
+
+			// Check if titleContent exists and has translations
+			if (review.titleContent?.translations?.length > 0) {
+				translatedTitle = review.titleContent.translations[0].text
+				console.log(
+					'[Tour Reviews] Using translated title for review',
+					review.id,
+				)
+			} else {
+				console.log(
+					'[Tour Reviews] Using original title for review',
+					review.id,
+					'- no translations found',
+				)
+			}
+
+			// Check if contentContent exists and has translations
+			if (review.contentContent?.translations?.length > 0) {
+				translatedContent = review.contentContent.translations[0].text
+				console.log(
+					'[Tour Reviews] Using translated content for review',
+					review.id,
+				)
+			} else {
+				console.log(
+					'[Tour Reviews] Using original content for review',
+					review.id,
+					'- no translations found',
+				)
+			}
+
 			return {
 				id: review.id,
 				userId: review.userId,
@@ -143,8 +246,8 @@ export async function GET(request: NextRequest) {
 						? (review.user.profileImage as any).url
 						: null,
 				rating: review.rating,
-				title: review.title,
-				content: review.content,
+				title: translatedTitle,
+				content: translatedContent,
 				travelDate1: review.travelDate1,
 				travelType: review.travelType,
 				images: review.images,
@@ -156,8 +259,8 @@ export async function GET(request: NextRequest) {
 							image: review.user.profileImage
 								? (review.user.profileImage as any).url
 								: null,
-							location: '',
-							contributions: 0,
+							location: '', // You might want to add location to your User model
+							contributions: 0, // You might want to calculate this
 						}
 					: undefined,
 			}
@@ -173,68 +276,119 @@ export async function GET(request: NextRequest) {
 
 		console.log('Fetching tour data for ID:', id)
 
-		// Get tour with new translations structure
 		const tour = await prisma.tour.findUnique({
-			where: { id },
+			where: {
+				id,
+				translations: {
+					some: {
+						language: languageCode,
+					},
+				},
+			},
 			include: {
 				startAddress: true,
 				endAddress: true,
-				// Remove old content relations since we're using the new translations array
+				nameContent: {
+					include: {
+						translations: {
+							where: {
+								languageCode: languageCode,
+							},
+						},
+					},
+				},
+				subtitleContent: {
+					include: {
+						translations: {
+							where: {
+								languageCode: languageCode,
+							},
+						},
+					},
+				},
+				overviewContent: {
+					include: {
+						translations: {
+							where: {
+								languageCode: languageCode,
+							},
+						},
+					},
+				},
+				conclusionContent: {
+					include: {
+						translations: {
+							where: {
+								languageCode: languageCode,
+							},
+						},
+					},
+				},
 			},
 		})
-
+		console.log('tour', tour.translations)
+		const currentLang = tour.translations.find(
+			({ language }) => language === languageCode,
+		)
 		if (!tour) {
 			console.log('Tour not found for ID:', id)
 			return NextResponse.json({ message: 'Tour not found' }, { status: 404 })
 		}
 
-		// Get translated tour content from new translations array
-		const translatedName =
-			getTranslationFromArray(tour.translations, languageCode, 'name') ||
-			tour.name
+		// Get translated tour content
+		const translatedName = tour.nameContent?.translations[0]?.text || tour.name
 		const translatedSubtitle =
-			getTranslationFromArray(tour.translations, languageCode, 'subtitle') ||
-			tour.subtitle
+			tour.subtitleContent?.translations[0]?.text || tour.subtitle
 		const translatedOverview =
-			getTranslationFromArray(tour.translations, languageCode, 'overview') ||
-			tour.overview
+			tour.overviewContent?.translations[0]?.text || tour.overview
 		const translatedConclusion =
-			getTranslationFromArray(tour.translations, languageCode, 'conclusion') ||
-			tour.conclusion
+			tour.conclusionContent?.translations[0]?.text || tour.conclusion
 
-		// Process days with translations from the new structure
+		// Process days with city translations
 		let processedDays = tour.days || []
 		let continentInfo = null
 
 		if (Array.isArray(processedDays) && processedDays.length > 0) {
-			// Get the tour translation for the requested language to access day translations
-			const tourTranslation = tour.translations?.find(
-				(t) => t.language === languageCode,
+			// First get all day translations
+			const daysWithTranslations = await Promise.all(
+				processedDays.map(async (day) => {
+					let translatedDayName = day.name
+					let translatedDayDescription = day.description
+
+					if (day.nameContentId) {
+						const nameContent = await prisma.translatableContent.findUnique({
+							where: { id: day.nameContentId },
+							include: {
+								translations: {
+									where: { languageCode },
+								},
+							},
+						})
+						translatedDayName = nameContent?.translations[0]?.text || day.name
+					}
+
+					if (day.descriptionContentId) {
+						const descContent = await prisma.translatableContent.findUnique({
+							where: { id: day.descriptionContentId },
+							include: {
+								translations: {
+									where: { languageCode },
+								},
+							},
+						})
+						translatedDayDescription =
+							descContent?.translations[0]?.text || day.description
+					}
+
+					return {
+						...day,
+						name: translatedDayName,
+						description: translatedDayDescription,
+					}
+				}),
 			)
 
-			// Process each day with translations
-			processedDays = processedDays.map((day, index) => {
-				let translatedDayName = day.name
-				let translatedDayDescription = day.description
-
-				// Get day translations from the tour translation
-				if (tourTranslation?.days) {
-					const dayTranslation = tourTranslation.days.find(
-						(d) => d.dayIndex === index,
-					)
-					if (dayTranslation) {
-						translatedDayName = dayTranslation.name || translatedDayName
-						translatedDayDescription =
-							dayTranslation.description || translatedDayDescription
-					}
-				}
-
-				return {
-					...day,
-					name: translatedDayName,
-					description: translatedDayDescription,
-				}
-			})
+			processedDays = daysWithTranslations
 
 			// Get all unique cityIds from the days
 			const cityIds = processedDays
@@ -248,7 +402,7 @@ export async function GET(request: NextRequest) {
 						include: {
 							content: {
 								include: {
-									translations: true,
+									translations: true, // Get ALL translations
 								},
 							},
 							country: {
@@ -382,20 +536,59 @@ export async function GET(request: NextRequest) {
 			}
 		}
 
+		const translatedReviews = reviews.map((review) => {
+			let translatedTitle = review.title
+			let translatedContent = review.content
+
+			// Check if titleContent exists and has translations
+			if (review.titleContent?.translations?.length > 0) {
+				translatedTitle = review.titleContent.translations[0].text
+				console.log('[v0] Using translated title for review', review.id)
+			} else {
+				console.log(
+					'[v0] Using original title for review',
+					review.id,
+					'- no translations found',
+				)
+			}
+
+			// Check if contentContent exists and has translations
+			if (review.contentContent?.translations?.length > 0) {
+				translatedContent = review.contentContent.translations[0].text
+				console.log('[v0] Using translated content for review', review.id)
+			} else {
+				console.log(
+					'[v0] Using original content for review',
+					review.id,
+					'- no translations found',
+				)
+			}
+
+			return {
+				...review,
+				title: translatedTitle,
+				content: translatedContent,
+				language: languageCode,
+				// Remove the translation objects from response to keep it clean
+				titleContent: undefined,
+				contentContent: undefined,
+			}
+		})
 		const tourData = {
 			...tour,
+			translatedReviews: translatedReviews,
 			formattedReviews,
 			name: translatedName,
 			subtitle: translatedSubtitle,
 			overview: translatedOverview,
 			conclusion: translatedConclusion,
-			days: processedDays,
 			language: languageCode,
 			reviewsCount,
-			continentInfo,
+			continentInfo, // Add the new continent information object
+			...currentLang,
+			days: processedDays,
 		}
 
-		// console.log(tourData)
 		return NextResponse.json(tourData)
 	} catch (error) {
 		console.error('Error fetching tour data:', error)
