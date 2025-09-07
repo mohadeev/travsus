@@ -90,7 +90,6 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 	}, 0)
 	const priceStart = totalAmount / totalGuests
 
-	const newLocation = region
 	if (region?.length >= 1) {
 		region[0].city = start?.name || ''
 	}
@@ -99,9 +98,9 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 		return input?.toLowerCase()?.replace(/\s+/g, '-')
 	}
 
-	const href = slugifySecond(
-		`/${locale}/${slugify(day?.country?.name)}/${slugify(day?.city?.name)}/${slugify(secondT('tours'))}/${slugify(title)}/${serviceId}`,
-	) as Route
+	const href = `/${locale}/${slugifySecond(
+		`${slugify(day?.country?.name)}/${slugify(day?.city?.name)}/${slugify(secondT('tours'))}/${slugify(title)}/${serviceId}`,
+	)}` as Route
 
 	const handleCardClick = () => {
 		setClickedCard(true)
