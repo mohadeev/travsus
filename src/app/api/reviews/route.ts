@@ -2,6 +2,7 @@ import { type NextRequest, NextResponse } from 'next/server'
 import { PrismaClient } from '@prisma/client'
 import { getServerSession } from 'next-auth/next'
 import authOptions from '../auth/[...nextauth]/authOptions'
+import extractLanguageFromRequest from '../listing/get/getTourData/extractLanguageFromRequest'
 
 const prisma = new PrismaClient()
 
@@ -203,86 +204,88 @@ export async function GET(req: NextRequest) {
 		}
 
 		// Fetch reviews with optional user data and translations
+		const language = extractLanguageFromRequest(req)
+
+		console.log('[v0] Requested language:', language)
+
 		const reviews = await prisma.review.findMany({
-			where: { tourId },
+			where: { tourId: '680bc6a5aa6f43072c7700f6' },
+			take: 10,
 			include: {
-				user: includeUser
-					? {
-							select: {
-								accountData: true,
-								id: true,
-								name: true,
-								username: true,
-								email: true,
-								profileImage: true,
+				user: {
+					select: {
+						accountData: true,
+						profileImage: true,
+					},
+				},
+				titleContent: {
+					include: {
+						translations: {
+							where: {
+								languageCode: language,
 							},
-						}
-					: false,
-				titleContent: includeUser
-					? {
-							include: {
-								translations: {
-									where: {
-										languageCode: languageCode,
-									},
-								},
+						},
+					},
+				},
+				contentContent: {
+					include: {
+						translations: {
+							where: {
+								languageCode: language,
 							},
-						}
-					: false,
-				contentContent: includeUser
-					? {
-							include: {
-								translations: {
-									where: {
-										languageCode: languageCode,
-									},
-								},
-							},
-						}
-					: false,
+						},
+					},
+				},
 			},
-			orderBy: { createdAt: 'desc' },
+			orderBy: {
+				createdAt: 'desc',
+			},
 		})
 
-		// Format reviews to match your frontend expectations
-		const formattedReviews = reviews.map((review) => {
-			// Use translated content if available, otherwise fall back to original
-			const title = review.titleContent?.translations[0]?.text || review.title
-			const content =
-				review.contentContent?.translations[0]?.text || review.content
+		console.log('[v0] Found reviews:', reviews.length)
+		console.log('[v0] First review titleContent:', reviews[0]?.titleContent)
+		console.log('[v0] First review contentContent:', reviews[0]?.contentContent)
+
+		const translatedReviews = reviews.map((review) => {
+			let translatedTitle = review.title
+			let translatedContent = review.content
+
+			// Check if titleContent exists and has translations
+			if (review.titleContent?.translations?.length > 0) {
+				translatedTitle = review.titleContent.translations[0].text
+				console.log('[v0] Using translated title for review', review.id)
+			} else {
+				console.log(
+					'[v0] Using original title for review',
+					review.id,
+					'- no translations found',
+				)
+			}
+
+			// Check if contentContent exists and has translations
+			if (review.contentContent?.translations?.length > 0) {
+				translatedContent = review.contentContent.translations[0].text
+				console.log('[v0] Using translated content for review', review.id)
+			} else {
+				console.log(
+					'[v0] Using original content for review',
+					review.id,
+					'- no translations found',
+				)
+			}
 
 			return {
-				id: review.id,
-				userId: review.userId,
-				userName: review.user?.accountData?.firstname
-					? review.user?.accountData?.firstname
-					: 'Anonymous',
-				userImage:
-					review.user && review.user.profileImage
-						? (review.user.profileImage as any).url
-						: null,
-				rating: review.rating,
-				title,
-				content,
-				travelDate1: review.travelDate1,
-				travelType: review.travelType,
-				images: review.images,
-				createdAt: review.createdAt.toISOString(),
-				updatedAt: review.updatedAt.toISOString(),
-				author: review.user
-					? {
-							name: review.user?.accountData?.firstname,
-							image: review.user.profileImage
-								? (review.user.profileImage as any).url
-								: null,
-							location: '', // You might want to add location to your User model
-							contributions: 0, // You might want to calculate this
-						}
-					: undefined,
+				...review,
+				title: translatedTitle,
+				content: translatedContent,
+				language: language,
+				// Remove the translation objects from response to keep it clean
+				titleContent: undefined,
+				contentContent: undefined,
 			}
 		})
-
-		return NextResponse.json({ reviews: formattedReviews })
+		// console.log(translatedReviews[0])
+		return NextResponse.json({ reviews: translatedReviews })
 	} catch (error) {
 		console.error('Error fetching reviews:', error)
 		return NextResponse.json(

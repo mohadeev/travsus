@@ -45,19 +45,19 @@ const Review: React.FC<ReviewProps> = ({ review }) => {
 							<Avatar className="h-12 w-12">
 								<AvatarImage
 									src={review.userImage ? review.userImage : defualt_user.src}
-									alt={review.userName}
+									alt={review?.user?.accountData?.firstname}
 								/>
 								<AvatarFallback>
-									{review.userName
+									{/* {review.userName
 										.split(' ')
 										.map((n) => n[0])
 										.join('')
-										.toUpperCase()}
+										.toUpperCase()} */}
 								</AvatarFallback>
 							</Avatar>
 							<div className="">
 								<h4 className="font-semibold text-gray-900">
-									{review.userName}
+									{review?.user?.accountData?.firstname}
 								</h4>
 								{review.author && (
 									<div className="flex items-center text-sm font-medium text-black">

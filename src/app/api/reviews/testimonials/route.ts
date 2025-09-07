@@ -12,6 +12,7 @@ export async function GET(request: NextRequest) {
 		console.log('[v0] Requested language:', language)
 
 		const reviews = await prisma.review.findMany({
+			where: { tourId: '680bc6a5aa6f43072c7700f6' },
 			take: 10,
 			include: {
 				user: {

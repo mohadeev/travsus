@@ -118,26 +118,23 @@ export async function GET(request: NextRequest) {
 		const currentUser: any = await getServerSession(authOptions)
 
 		const includeUser = true
+
 		const reviews = await prisma.review.findMany({
 			where: { tourId: id },
+
+			take: 10,
 			include: {
-				user: includeUser
-					? {
-							select: {
-								accountData: true,
-								id: true,
-								name: true,
-								username: true,
-								email: true,
-								profileImage: true,
-							},
-						}
-					: false,
+				user: {
+					select: {
+						accountData: true,
+						profileImage: true,
+					},
+				},
 				titleContent: {
 					include: {
 						translations: {
 							where: {
-								languageCode: languageCode,
+								languageCode,
 							},
 						},
 					},
@@ -146,14 +143,52 @@ export async function GET(request: NextRequest) {
 					include: {
 						translations: {
 							where: {
-								languageCode: languageCode,
+								languageCode,
 							},
 						},
 					},
 				},
 			},
-			orderBy: { createdAt: 'desc' },
+			orderBy: {
+				createdAt: 'desc',
+			},
 		})
+		// const reviews = await prisma.review.findMany({
+		// 	where: { tourId: id },
+		// 	include: {
+		// 		user: includeUser
+		// 			? {
+		// 					select: {
+		// 						accountData: true,
+		// 						id: true,
+		// 						name: true,
+		// 						username: true,
+		// 						email: true,
+		// 						profileImage: true,
+		// 					},
+		// 				}
+		// 			: false,
+		// 		titleContent: {
+		// 			include: {
+		// 				translations: {
+		// 					where: {
+		// 						languageCode: languageCode,
+		// 					},
+		// 				},
+		// 			},
+		// 		},
+		// 		contentContent: {
+		// 			include: {
+		// 				translations: {
+		// 					where: {
+		// 						languageCode: languageCode,
+		// 					},
+		// 				},
+		// 			},
+		// 		},
+		// 	},
+		// 	orderBy: { createdAt: 'desc' },
+		// })
 
 		console.log('[Tour Reviews] Found reviews:', reviews.length)
 		console.log(
@@ -491,8 +526,47 @@ export async function GET(request: NextRequest) {
 			}
 		}
 
+		const translatedReviews = reviews.map((review) => {
+			let translatedTitle = review.title
+			let translatedContent = review.content
+
+			// Check if titleContent exists and has translations
+			if (review.titleContent?.translations?.length > 0) {
+				translatedTitle = review.titleContent.translations[0].text
+				console.log('[v0] Using translated title for review', review.id)
+			} else {
+				console.log(
+					'[v0] Using original title for review',
+					review.id,
+					'- no translations found',
+				)
+			}
+
+			// Check if contentContent exists and has translations
+			if (review.contentContent?.translations?.length > 0) {
+				translatedContent = review.contentContent.translations[0].text
+				console.log('[v0] Using translated content for review', review.id)
+			} else {
+				console.log(
+					'[v0] Using original content for review',
+					review.id,
+					'- no translations found',
+				)
+			}
+
+			return {
+				...review,
+				title: translatedTitle,
+				content: translatedContent,
+				language: languageCode,
+				// Remove the translation objects from response to keep it clean
+				titleContent: undefined,
+				contentContent: undefined,
+			}
+		})
 		const tourData = {
 			...tour,
+			translatedReviews: translatedReviews,
 			formattedReviews,
 			name: translatedName,
 			subtitle: translatedSubtitle,
