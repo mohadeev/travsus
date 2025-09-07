@@ -126,7 +126,7 @@ const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => {
 							<p className="mb-3 leading-relaxed text-gray-700">
 								<ReadMore description={testimonial.content} />
 							</p>
-fz
+
 							<div className="flex flex-wrap gap-4 text-sm/6 font-semibold text-black">
 								<span>
 									{t('travel_date')}:{' '}
