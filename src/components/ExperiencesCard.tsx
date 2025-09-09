@@ -60,7 +60,6 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 	const [priceData, setPriceData] = useState({})
 	const day = days[0]
 
-	console.log('accommodations: ', accommodations)
 	useEffect(() => {
 		const pricesData = async () => {
 			const prices: any = await updateLineItemsLogic({
@@ -78,10 +77,10 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 	// const { booking, status } = useSelector((state: any) => state.bookingSlice)
 	const { guests, lineItems, accommodation, transport, bookOwnHotels }: any =
 		priceData || {}
-	console.log('guests: ', priceData)
-
-	const totalGuests: number = guests?.guestAdults + guests?.guestChildren
-
+	const guestChildren = guests?.guestChildren || 0
+	const guestAdults = guests?.guestAdults || 0
+	const totalGuests: number = guestChildren + guestAdults
+	console.log('totalGueststotalGueststotalGueststotalGuests: ', totalGuests)
 	const filteredLineItems = lineItems?.filter(
 		({ includeInTotal }: any) => includeInTotal === true,
 	)
