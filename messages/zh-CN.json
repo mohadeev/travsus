@@ -1611,17 +1611,22 @@
     "read_more": "阅读更多"
   },
   "ReferralProgramBanner": {
+    "badge_text": "市场上最高的佣金",
+    "button_text": "立即领取",
     "disclaimer": "适用条款和条件。最高奖励可能有所不同。",
-    "feature1_desc": "每次成功推荐",
-    "feature1_title": "最高€1000奖励",
-    "feature2_desc": "通过链接或社交媒体",
-    "feature2_title": "轻松分享",
-    "feature3_desc": "一旦您的朋友转化",
-    "feature3_title": "快速支付",
+    "feature1_desc": "每次推荐最高支付",
+    "feature1_title": "市场领先的€1000",
+    "feature2_desc": "比其他地方赚得更多",
+    "feature2_title": "高级佣金",
+    "feature3_desc": "转化后立即获得付款",
+    "feature3_title": "即时支付",
+    "footer_text": "加入数千名赚取我们行业领先佣金的合作伙伴。",
     "learn_more_button": "了解更多关于我们的推荐计划",
     "limited_time": "限时优惠",
     "main_heading": "每次推荐\n最高可获得€1000。",
-    "sub_heading": "将您的人脉转化为您的净资产。"
+    "main_heading_line1": "每次成功推荐",
+    "main_heading_line2": "最高可获得€1000",
+    "sub_heading": "立即加入行业领先佣金计划。"
   },
   "RenderLineItemsBreakdown": {
     "accommodation": "住宿",

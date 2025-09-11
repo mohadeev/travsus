@@ -2085,17 +2085,22 @@
     "read_more": "Read more"
   },
   "ReferralProgramBanner": {
+    "badge_text": "HIGHEST COMMISSION IN THE MARKET",
+    "button_text": "CLAIM NOW",
     "disclaimer": "Terms and conditions apply. Maximum reward may vary.",
-    "feature1_desc": "per successful referral",
-    "feature1_title": "€1000 top reward",
-    "feature2_desc": "via link or social media",
-    "feature2_title": "Easy sharing",
-    "feature3_desc": "once your friend converts",
-    "feature3_title": "Fast payout",
+    "feature1_desc": "highest payout per referral",
+    "feature1_title": "Market-leading €1000",
+    "feature2_desc": "earn more than anywhere else",
+    "feature2_title": "Premium Commission",
+    "feature3_desc": "get paid immediately after conversion",
+    "feature3_title": "Instant Payout",
+    "footer_text": "Join thousands of partners earning our industry-high commissions.",
     "learn_more_button": "Learn more about our Referral Program",
     "limited_time": "Limited Time Offer",
     "main_heading": "Get up to €1000\nwith every referral.",
-    "sub_heading": "Turn your network into your net worth."
+    "main_heading_line1": "Earn Up To €1000",
+    "main_heading_line2": "Per Successful Referral",
+    "sub_heading": "Join the program with industry-leading commissions today."
   },
   "RenderLineItemsBreakdown": {
     "accommodation": "Accommodation",

@@ -2145,17 +2145,22 @@
     "read_more": "Lire plus"
   },
   "ReferralProgramBanner": {
+    "badge_text": "COMMISSION LA PLUS ÉLEVÉE DU MARCHÉ",
+    "button_text": "RÉCLAMER MAINTENANT",
     "disclaimer": "Conditions générales applicables. La récompense maximale peut varier.",
-    "feature1_desc": "par recommandation réussie",
-    "feature1_title": "Récompense maximale de €1000",
-    "feature2_desc": "via lien ou réseaux sociaux",
-    "feature2_title": "Partage facile",
-    "feature3_desc": "une fois que votre ami se convertit",
-    "feature3_title": "Paiement rapide",
+    "feature1_desc": "paiement le plus élevé par recommandation",
+    "feature1_title": "€1000 leader du marché",
+    "feature2_desc": "gagnez plus qu'ailleurs",
+    "feature2_title": "Commission Premium",
+    "feature3_desc": "soyez payé immédiatement après la conversion",
+    "feature3_title": "Paiement Instantané",
+    "footer_text": "Rejoignez des milliers de partenaires gagnant nos commissions leader de l'industrie.",
     "learn_more_button": "En savoir plus sur notre Programme de Recommandation",
     "limited_time": "Offre à Durée Limitée",
     "main_heading": "Obtenez jusqu'à €1000\navec chaque recommandation.",
-    "sub_heading": "Transformez votre réseau en valeur nette."
+    "main_heading_line1": "Gagnez Jusqu'à €1000",
+    "main_heading_line2": "Par Recommandation Réussie",
+    "sub_heading": "Rejoignez le programme avec des commissions leader de l'industrie aujourd'hui."
   },
   "RenderLineItemsBreakdown": {
     "accommodation": "Hébergement",

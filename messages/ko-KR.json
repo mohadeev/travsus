@@ -1655,17 +1655,22 @@
     "read_more": "더보기"
   },
   "ReferralProgramBanner": {
+    "badge_text": "시장 최고 수수료",
+    "button_text": "지금 요청하기",
     "disclaimer": "이용 약관이 적용됩니다. 최대 보상은 변동될 수 있습니다.",
-    "feature1_desc": "성공적인 추천 시",
-    "feature1_title": "최대 €1000 보상",
-    "feature2_desc": "링크 또는 소셜 미디어 통해",
-    "feature2_title": "쉬운 공유",
-    "feature3_desc": "친구가 전환되면",
-    "feature3_title": "빠른 지급",
+    "feature1_desc": "추천당 최고 지급액",
+    "feature1_title": "시장을 선도하는 €1000",
+    "feature2_desc": "어디에서보다 더 많이 벌 수 있습니다",
+    "feature2_title": "프리미엄 수수료",
+    "feature3_desc": "전환 후 즉시 지급받습니다",
+    "feature3_title": "즉시 지급",
+    "footer_text": "업계 최고 수수료를 적립하는 수천 명의 파트너에 합류하세요.",
     "learn_more_button": "추천 프로그램에 대해 자세히 알아보기",
     "limited_time": "기간 한정 제공",
     "main_heading": "추천할 때마다\n최대 €1000를 받으세요.",
-    "sub_heading": "네트워크를 순자산으로 전환하세요."
+    "main_heading_line1": "성공적인 추천 시",
+    "main_heading_line2": "최대 €1000 적립",
+    "sub_heading": "업계를 선도하는 수수료 프로그램에 지금 참여하세요."
   },
   "RenderLineItemsBreakdown": {
     "accommodation": "숙박",

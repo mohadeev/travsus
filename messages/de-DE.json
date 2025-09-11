@@ -2143,17 +2143,22 @@
     "read_more": "Mehr lesen"
   },
   "ReferralProgramBanner": {
+    "badge_text": "HÖCHSTE PROVISION AUF DEM MARKT",
+    "button_text": "JETZT ANFORDERN",
     "disclaimer": "Es gelten die Allgemeinen Geschäftsbedingungen. Die maximale Belohnung kann variieren.",
-    "feature1_desc": "pro erfolgreicher Empfehlung",
-    "feature1_title": "Bis zu €1000 Belohnung",
-    "feature2_desc": "per Link oder soziale Medien",
-    "feature2_title": "Einfaches Teilen",
-    "feature3_desc": "sobald Ihr Freund konvertiert",
-    "feature3_title": "Schnelle Auszahlung",
+    "feature1_desc": "höchste Auszahlung pro Empfehlung",
+    "feature1_title": "Marktführende €1000",
+    "feature2_desc": "mehr verdienen als anderswo",
+    "feature2_title": "Premium-Provision",
+    "feature3_desc": "werden Sie sofort nach der Konvertierung bezahlt",
+    "feature3_title": "Sofortige Auszahlung",
+    "footer_text": "Schließen Sie sich Tausenden von Partnern an, die unsere branchenführenden Provisionen verdienen.",
     "learn_more_button": "Erfahren Sie mehr über unser Empfehlungsprogramm",
     "limited_time": "Angebot für begrenzte Zeit",
     "main_heading": "Erhalten Sie bis zu €1000\nmit jeder Empfehlung.",
-    "sub_heading": "Verwandeln Sie Ihr Netzwerk in Ihr Nettovermögen."
+    "main_heading_line1": "Verdienen Sie Bis Zu €1000",
+    "main_heading_line2": "Pro Erfolgreicher Empfehlung",
+    "sub_heading": "Treten Sie noch heute dem Programm mit branchenführenden Provisionen bei."
   },
   "RenderLineItemsBreakdown": {
     "accommodation": "Unterkunft",

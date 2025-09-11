@@ -1653,17 +1653,22 @@
     "read_more": "Ler mais"
   },
   "ReferralProgramBanner": {
+    "badge_text": "MAIOR COMISSÃO DO MERCADO",
+    "button_text": "RECLAMAR AGORA",
     "disclaimer": "Aplicam-se termos e condições. A recompensa máxima pode variar.",
-    "feature1_desc": "por indicação bem-sucedida",
-    "feature1_title": "Recompensa máxima de €1000",
-    "feature2_desc": "via link ou redes sociais",
-    "feature2_title": "Partilha fácil",
-    "feature3_desc": "assim que seu amigo se converter",
-    "feature3_title": "Pagamento rápido",
+    "feature1_desc": "maior pagamento por indicação",
+    "feature1_title": "€1000 líderes de mercado",
+    "feature2_desc": "ganhe mais do que em qualquer outro lugar",
+    "feature2_title": "Comissão Premium",
+    "feature3_desc": "receba imediatamente após a conversão",
+    "feature3_title": "Pagamento Instantâneo",
+    "footer_text": "Junte-se a milhares de parceiros que ganham nossas comissões líderes do setor.",
     "learn_more_button": "Saiba mais sobre o nosso Programa de Indicações",
     "limited_time": "Oferta por Tempo Limitado",
     "main_heading": "Ganhe até €1000\ncom cada indicação.",
-    "sub_heading": "Transforme sua rede em seu patrimônio líquido."
+    "main_heading_line1": "Ganhe Até €1000",
+    "main_heading_line2": "Por Indicação Bem-Sucedida",
+    "sub_heading": "Junte-se ao programa com comissões líderes do setor hoje."
   },
   "RenderLineItemsBreakdown": {
     "accommodation": "Alojamento",

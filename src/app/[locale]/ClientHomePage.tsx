@@ -170,6 +170,7 @@ function ClientHomePage() {
 				<div className="lg:container">
 					<BookNowAndPayLaterBanner />
 				</div>
+
 				<div className="container">
 					<ItemsCardList
 						locationType="city"
@@ -187,9 +188,10 @@ function ClientHomePage() {
 					{/* <BannerHome /> */}
 				</div>
 				<Testimonials />
-				<div className="container">
+				<div className="mb-40 lg:container">
 					<ReferralBanner />
-
+				</div>
+				<div className="container">
 					{/* <CollectionsGrid
 
 						cityId={'67e5a961636b9ead6fb9b280'}

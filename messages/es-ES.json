@@ -2078,17 +2078,22 @@
     "read_more": "Leer más"
   },
   "ReferralProgramBanner": {
+    "badge_text": "LA COMISIÓN MÁS ALTA DEL MERCADO",
+    "button_text": "RECLAMAR AHORA",
     "disclaimer": "Aplican términos y condiciones. La recompensa máxima puede variar.",
-    "feature1_desc": "por referido exitoso",
-    "feature1_title": "Recompensa máxima de €1000",
-    "feature2_desc": "mediante enlace o redes sociales",
-    "feature2_title": "Compartir fácil",
-    "feature3_desc": "una vez que tu amigo se convierta",
-    "feature3_title": "Pago rápido",
+    "feature1_desc": "pago más alto por referido",
+    "feature1_title": "€1000 líderes del mercado",
+    "feature2_desc": "gana más que en cualquier otro lugar",
+    "feature2_title": "Comisión Premium",
+    "feature3_desc": "cobra inmediatamente después de la conversión",
+    "feature3_title": "Pago Instantáneo",
+    "footer_text": "Únete a miles de socios que ganan nuestras comisiones líderes de la industria.",
     "learn_more_button": "Más información sobre nuestro Programa de Referidos",
     "limited_time": "Oferta por Tiempo Limitado",
     "main_heading": "Obtén hasta €1000\ncon cada referido.",
-    "sub_heading": "Convierte tu red en tu valor neto."
+    "main_heading_line1": "Gana Hasta €1000",
+    "main_heading_line2": "Por Referido Exitoso",
+    "sub_heading": "Únete al programa con las comisiones líderes de la industria hoy."
   },
   "RenderLineItemsBreakdown": {
     "accommodation": "Alojamiento",

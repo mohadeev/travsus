@@ -1,152 +1,162 @@
 {
 	"en-US": {
 		"ReferralProgramBanner": {
-			"limited_time": "Limited Time Offer",
-			"main_heading": "Get up to €1000\nwith every referral.",
-			"sub_heading": "Turn your network into your net worth.",
-			"feature1_title": "€1000 top reward",
-			"feature1_desc": "per successful referral",
-			"feature2_title": "Easy sharing",
-			"feature2_desc": "via link or social media",
-			"feature3_title": "Fast payout",
-			"feature3_desc": "once your friend converts",
-			"learn_more_button": "Learn more about our Referral Program",
-			"disclaimer": "Terms and conditions apply. Maximum reward may vary."
+			"badge_text": "HIGHEST COMMISSION IN THE MARKET",
+			"main_heading_line1": "Earn Up To €1000",
+			"main_heading_line2": "Per Successful Referral",
+			"sub_heading": "Join the program with industry-leading commissions today.",
+			"feature1_title": "Market-leading €1000",
+			"feature1_desc": "highest payout per referral",
+			"feature2_title": "Premium Commission",
+			"feature2_desc": "earn more than anywhere else",
+			"feature3_title": "Instant Payout",
+			"feature3_desc": "get paid immediately after conversion",
+			"button_text": "CLAIM NOW",
+			"footer_text": "Join thousands of partners earning our industry-high commissions."
 		}
 	},
 	"es-ES": {
 		"ReferralProgramBanner": {
-			"limited_time": "Oferta por Tiempo Limitado",
-			"main_heading": "Obtén hasta €1000\ncon cada referido.",
-			"sub_heading": "Convierte tu red en tu valor neto.",
-			"feature1_title": "Recompensa máxima de €1000",
-			"feature1_desc": "por referido exitoso",
-			"feature2_title": "Compartir fácil",
-			"feature2_desc": "mediante enlace o redes sociales",
-			"feature3_title": "Pago rápido",
-			"feature3_desc": "una vez que tu amigo se convierta",
-			"learn_more_button": "Más información sobre nuestro Programa de Referidos",
-			"disclaimer": "Aplican términos y condiciones. La recompensa máxima puede variar."
+			"badge_text": "LA COMISIÓN MÁS ALTA DEL MERCADO",
+			"main_heading_line1": "Gana Hasta €1000",
+			"main_heading_line2": "Por Referido Exitoso",
+			"sub_heading": "Únete al programa con las comisiones líderes de la industria hoy.",
+			"feature1_title": "€1000 líderes del mercado",
+			"feature1_desc": "pago más alto por referido",
+			"feature2_title": "Comisión Premium",
+			"feature2_desc": "gana más que en cualquier otro lugar",
+			"feature3_title": "Pago Instantáneo",
+			"feature3_desc": "cobra inmediatamente después de la conversión",
+			"button_text": "RECLAMAR AHORA",
+			"footer_text": "Únete a miles de socios que ganan nuestras comisiones líderes de la industria."
 		}
 	},
 	"de-DE": {
 		"ReferralProgramBanner": {
-			"limited_time": "Angebot für begrenzte Zeit",
-			"main_heading": "Erhalten Sie bis zu €1000\nmit jeder Empfehlung.",
-			"sub_heading": "Verwandeln Sie Ihr Netzwerk in Ihr Nettovermögen.",
-			"feature1_title": "Bis zu €1000 Belohnung",
-			"feature1_desc": "pro erfolgreicher Empfehlung",
-			"feature2_title": "Einfaches Teilen",
-			"feature2_desc": "per Link oder soziale Medien",
-			"feature3_title": "Schnelle Auszahlung",
-			"feature3_desc": "sobald Ihr Freund konvertiert",
-			"learn_more_button": "Erfahren Sie mehr über unser Empfehlungsprogramm",
-			"disclaimer": "Es gelten die Allgemeinen Geschäftsbedingungen. Die maximale Belohnung kann variieren."
+			"badge_text": "HÖCHSTE PROVISION AUF DEM MARKT",
+			"main_heading_line1": "Verdienen Sie Bis Zu €1000",
+			"main_heading_line2": "Pro Erfolgreicher Empfehlung",
+			"sub_heading": "Treten Sie noch heute dem Programm mit branchenführenden Provisionen bei.",
+			"feature1_title": "Marktführende €1000",
+			"feature1_desc": "höchste Auszahlung pro Empfehlung",
+			"feature2_title": "Premium-Provision",
+			"feature2_desc": "mehr verdienen als anderswo",
+			"feature3_title": "Sofortige Auszahlung",
+			"feature3_desc": "werden Sie sofort nach der Konvertierung bezahlt",
+			"button_text": "JETZT ANFORDERN",
+			"footer_text": "Schließen Sie sich Tausenden von Partnern an, die unsere branchenführenden Provisionen verdienen."
 		}
 	},
 	"fr-FR": {
 		"ReferralProgramBanner": {
-			"limited_time": "Offre à Durée Limitée",
-			"main_heading": "Obtenez jusqu'à €1000\navec chaque recommandation.",
-			"sub_heading": "Transformez votre réseau en valeur nette.",
-			"feature1_title": "Récompense maximale de €1000",
-			"feature1_desc": "par recommandation réussie",
-			"feature2_title": "Partage facile",
-			"feature2_desc": "via lien ou réseaux sociaux",
-			"feature3_title": "Paiement rapide",
-			"feature3_desc": "une fois que votre ami se convertit",
-			"learn_more_button": "En savoir plus sur notre Programme de Recommandation",
-			"disclaimer": "Conditions générales applicables. La récompense maximale peut varier."
+			"badge_text": "COMMISSION LA PLUS ÉLEVÉE DU MARCHÉ",
+			"main_heading_line1": "Gagnez Jusqu'à €1000",
+			"main_heading_line2": "Par Recommandation Réussie",
+			"sub_heading": "Rejoignez le programme avec des commissions leader de l'industrie aujourd'hui.",
+			"feature1_title": "€1000 leader du marché",
+			"feature1_desc": "paiement le plus élevé par recommandation",
+			"feature2_title": "Commission Premium",
+			"feature2_desc": "gagnez plus qu'ailleurs",
+			"feature3_title": "Paiement Instantané",
+			"feature3_desc": "soyez payé immédiatement après la conversion",
+			"button_text": "RÉCLAMER MAINTENANT",
+			"footer_text": "Rejoignez des milliers de partenaires gagnant nos commissions leader de l'industrie."
 		}
 	},
 	"ja-JP": {
 		"ReferralProgramBanner": {
-			"limited_time": "期間限定オファー",
-			"main_heading": "紹介ごとに\n最大€1000を獲得。",
-			"sub_heading": "ネットワークを純資産に変えましょう。",
-			"feature1_title": "最大€1000の報酬",
-			"feature1_desc": "成功した紹介ごと",
-			"feature2_title": "簡単な共有",
-			"feature2_desc": "リンクまたはソーシャルメディア経由",
-			"feature3_title": "迅速な支払い",
-			"feature3_desc": "友達が登録したら",
-			"learn_more_button": "紹介プログラムの詳細を見る",
-			"disclaimer": "利用規約が適用されます。最大報酬は変動する可能性があります。"
+			"badge_text": "市場最高のコミッション",
+			"main_heading_line1": "成功した紹介ごとに",
+			"main_heading_line2": "最大€1000を獲得",
+			"sub_heading": "業界をリードするコミッションのプログラムに今すぐ参加しましょう。",
+			"feature1_title": "市場をリードする€1000",
+			"feature1_desc": "紹介ごとの最高支払額",
+			"feature2_title": "プレミアムコミッション",
+			"feature2_desc": "どこよりも多く稼げます",
+			"feature3_title": "即時支払い",
+			"feature3_desc": "コンバージョ後すぐに支払い",
+			"button_text": "今すぐ請求",
+			"footer_text": "業界最高のコミッションを稼ぐ何千人ものパートナーに参加しましょう。"
 		}
 	},
 	"pt-PT": {
 		"ReferralProgramBanner": {
-			"limited_time": "Oferta por Tempo Limitado",
-			"main_heading": "Ganhe até €1000\ncom cada indicação.",
-			"sub_heading": "Transforme sua rede em seu patrimônio líquido.",
-			"feature1_title": "Recompensa máxima de €1000",
-			"feature1_desc": "por indicação bem-sucedida",
-			"feature2_title": "Partilha fácil",
-			"feature2_desc": "via link ou redes sociais",
-			"feature3_title": "Pagamento rápido",
-			"feature3_desc": "assim que seu amigo se converter",
-			"learn_more_button": "Saiba mais sobre o nosso Programa de Indicações",
-			"disclaimer": "Aplicam-se termos e condições. A recompensa máxima pode variar."
+			"badge_text": "MAIOR COMISSÃO DO MERCADO",
+			"main_heading_line1": "Ganhe Até €1000",
+			"main_heading_line2": "Por Indicação Bem-Sucedida",
+			"sub_heading": "Junte-se ao programa com comissões líderes do setor hoje.",
+			"feature1_title": "€1000 líderes de mercado",
+			"feature1_desc": "maior pagamento por indicação",
+			"feature2_title": "Comissão Premium",
+			"feature2_desc": "ganhe mais do que em qualquer outro lugar",
+			"feature3_title": "Pagamento Instantâneo",
+			"feature3_desc": "receba imediatamente após a conversão",
+			"button_text": "RECLAMAR AGORA",
+			"footer_text": "Junte-se a milhares de parceiros que ganham nossas comissões líderes do setor."
 		}
 	},
 	"it-IT": {
 		"ReferralProgramBanner": {
-			"limited_time": "Offerta a Tempo Limitato",
-			"main_heading": "Ottieni fino a €1000\ncon ogni referenza.",
-			"sub_heading": "Trasforma la tua rete nel tuo patrimonio netto.",
-			"feature1_title": "Ricompensa massima di €1000",
-			"feature1_desc": "per referenza riuscita",
-			"feature2_title": "Condivisione facile",
-			"feature2_desc": "tramite link o social media",
-			"feature3_title": "Pagamento veloce",
-			"feature3_desc": "una volta che il tuo amico si converte",
-			"learn_more_button": "Scopri di più sul nostro Programma di Referenza",
-			"disclaimer": "Si applicano termini e condizioni. La ricompensa massima può variare."
+			"badge_text": "COMMISSIONE PIÙ ALTA DEL MERCATO",
+			"main_heading_line1": "Guadagna Fino a €1000",
+			"main_heading_line2": "Per Referenza Riuscita",
+			"sub_heading": "Unisciti al programma con commissioni leader del settore oggi.",
+			"feature1_title": "€1000 leader del mercato",
+			"feature1_desc": "pagamento più alto per referenza",
+			"feature2_title": "Commissione Premium",
+			"feature2_desc": "guadagna più che altrove",
+			"feature3_title": "Pagamento Istantaneo",
+			"feature3_desc": "vieni pagato immediatamente dopo la conversione",
+			"button_text": "RICHIEDI ORA",
+			"footer_text": "Unisciti a migliaia di partner che guadagnano le nostre commissioni leader del settore."
 		}
 	},
 	"ru-RU": {
 		"ReferralProgramBanner": {
-			"limited_time": "Предложение на ограниченное время",
-			"main_heading": "Получите до €1000\nза каждую рекомендацию.",
-			"sub_heading": "Превратите свою сеть в свою чистую стоимость.",
-			"feature1_title": "Максимальное вознаграждение €1000",
-			"feature1_desc": "за успешную рекомендацию",
-			"feature2_title": "Легкий обмен",
-			"feature2_desc": "через ссылку или социальные сети",
-			"feature3_title": "Быстрая выплата",
-			"feature3_desc": "как только ваш друг конвертируется",
-			"learn_more_button": "Узнайте больше о нашей Программе рекомендаций",
-			"disclaimer": "Применяются условия. Максимальное вознаграждение может варьироваться."
+			"badge_text": "САМАЯ ВЫСОКАЯ КОМИССИЯ НА РЫНКЕ",
+			"main_heading_line1": "Зарабатывайте До €1000",
+			"main_heading_line2": "За Успешную Рекомендацию",
+			"sub_heading": "Присоединяйтесь к программе с лидирующими в отрасли комиссиями уже сегодня.",
+			"feature1_title": "Лидирующие на рынке €1000",
+			"feature1_desc": "самый высокий платеж за рекомендацию",
+			"feature2_title": "Премиальная Комиссия",
+			"feature2_desc": "зарабатывайте больше, чем где-либо еще",
+			"feature3_title": "Мгновенная Выплата",
+			"feature3_desc": "получайте оплату сразу после конверсии",
+			"button_text": "ЗАЯВИТЬ СЕЙЧАС",
+			"footer_text": "Присоединяйтесь к тысячам партнеров, зарабатывающих наши лидирующие в отрасли комиссии."
 		}
 	},
 	"zh-CN": {
 		"ReferralProgramBanner": {
-			"limited_time": "限时优惠",
-			"main_heading": "每次推荐\n最高可获得€1000。",
-			"sub_heading": "将您的人脉转化为您的净资产。",
-			"feature1_title": "最高€1000奖励",
-			"feature1_desc": "每次成功推荐",
-			"feature2_title": "轻松分享",
-			"feature2_desc": "通过链接或社交媒体",
-			"feature3_title": "快速支付",
-			"feature3_desc": "一旦您的朋友转化",
-			"learn_more_button": "了解更多关于我们的推荐计划",
-			"disclaimer": "适用条款和条件。最高奖励可能有所不同。"
+			"badge_text": "市场上最高的佣金",
+			"main_heading_line1": "每次成功推荐",
+			"main_heading_line2": "最高可获得€1000",
+			"sub_heading": "立即加入行业领先佣金计划。",
+			"feature1_title": "市场领先的€1000",
+			"feature1_desc": "每次推荐最高支付",
+			"feature2_title": "高级佣金",
+			"feature2_desc": "比其他地方赚得更多",
+			"feature3_title": "即时支付",
+			"feature3_desc": "转化后立即获得付款",
+			"button_text": "立即领取",
+			"footer_text": "加入数千名赚取我们行业领先佣金的合作伙伴。"
 		}
 	},
 	"ko-KR": {
 		"ReferralProgramBanner": {
-			"limited_time": "기간 한정 제공",
-			"main_heading": "추천할 때마다\n최대 €1000를 받으세요.",
-			"sub_heading": "네트워크를 순자산으로 전환하세요.",
-			"feature1_title": "최대 €1000 보상",
-			"feature1_desc": "성공적인 추천 시",
-			"feature2_title": "쉬운 공유",
-			"feature2_desc": "링크 또는 소셜 미디어 통해",
-			"feature3_title": "빠른 지급",
-			"feature3_desc": "친구가 전환되면",
-			"learn_more_button": "추천 프로그램에 대해 자세히 알아보기",
-			"disclaimer": "이용 약관이 적용됩니다. 최대 보상은 변동될 수 있습니다."
+			"badge_text": "시장 최고 수수료",
+			"main_heading_line1": "성공적인 추천 시",
+			"main_heading_line2": "최대 €1000 적립",
+			"sub_heading": "업계를 선도하는 수수료 프로그램에 지금 참여하세요.",
+			"feature1_title": "시장을 선도하는 €1000",
+			"feature1_desc": "추천당 최고 지급액",
+			"feature2_title": "프리미엄 수수료",
+			"feature2_desc": "어디에서보다 더 많이 벌 수 있습니다",
+			"feature3_title": "즉시 지급",
+			"feature3_desc": "전환 후 즉시 지급받습니다",
+			"button_text": "지금 요청하기",
+			"footer_text": "업계 최고 수수료를 적립하는 수천 명의 파트너에 합류하세요."
 		}
 	}
 }
