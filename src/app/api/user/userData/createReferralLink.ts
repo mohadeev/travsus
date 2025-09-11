@@ -2,52 +2,55 @@ import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
+function generateRandomCode(length: number = 8) {
+	const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+	let result = ''
+	for (let i = 0; i < length; i++) {
+		result += chars.charAt(Math.floor(Math.random() * chars.length))
+	}
+	return result
+}
+
 /**
- * Create a referral link for a user with a code based on their name + last name
+ * Create a unique referral link with owner commission and client discount
  * @param userId - ID of the user
- * @returns ReferralLink object
  */
 export async function createReferralLink(userId: string) {
 	try {
-		// 1. Get user data
 		const user = await prisma.user.findUnique({
 			where: { id: userId },
-			select: { firstName: true, lastName: true },
 		})
 
-		if (!user) {
-			throw new Error('User not found')
+		if (!user) throw new Error('User not found')
+
+		const firstname = user.accountData?.firstname || ''
+		const lastname = user.accountData?.lastname || ''
+
+		let baseCode = ''
+
+		if (firstname || lastname) {
+			baseCode = `${firstname}${lastname}`.replace(/\s+/g, '').toLowerCase()
+		} else {
+			baseCode = generateRandomCode(8)
 		}
 
-		const baseCode =
-			(user.firstName || '').toLowerCase() + (user.lastName || '').toLowerCase()
+		const existingLinks = await prisma.referralLink.findMany({
+			where: { code: { startsWith: baseCode } },
+		})
 
-		if (!baseCode) {
-			throw new Error('User has no name/lastname to build referral code')
+		let finalCode = baseCode
+		if (existingLinks.length > 0) {
+			finalCode = `${baseCode}${existingLinks.length + 1}`
 		}
 
-		// 2. Ensure uniqueness
-		let uniqueCode = baseCode
-		let counter = 1
-
-		while (true) {
-			const existing = await prisma.referralLink.findUnique({
-				where: { code: uniqueCode },
-			})
-
-			if (!existing) break // code is free → stop
-
-			uniqueCode = `${baseCode}${counter}`
-			counter++
-		}
-
-		// 3. Create referral link with 10% commission
+		// Create the referral link with owner commission and client discount
 		const referralLink = await prisma.referralLink.create({
 			data: {
 				user: { connect: { id: userId } },
-				code: uniqueCode,
-				commissionType: 'PERCENTAGE',
-				commissionValue: 10, // 10% commission
+				code: finalCode,
+				commissionType: 'PERCENTAGE', // Owner commission
+				commissionValue: 10, // 10% for owner
+				clientDiscount: 5, // 5% discount for client
 				isLifetime: true,
 			},
 		})
