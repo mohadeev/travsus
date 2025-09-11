@@ -20,7 +20,7 @@ export default function BookNowAndPayLaterBanner() {
 						</span>
 					</div>
 
-					<h1 className="mb-6 text-5xl font-black leading-tight text-white md:text-6xl lg:text-7xl">
+					<h1 className="mb-6 text-[2.5rem] font-black leading-tight text-white md:text-5xl lg:text-6xl">
 						{t('main_heading')}
 					</h1>
 
