@@ -645,6 +645,18 @@
     "chat_now": "立即聊天",
     "questions_about_reservations": "对预订有疑问吗？"
   },
+  "CreditsAndCoupons": {
+    "Account": "账户",
+    "Copied": "已复制",
+    "Credits_Coupons": "积分和优惠券",
+    "Email_Share_Subject": "加入我",
+    "In_Credits": "积分",
+    "More_Info": "更多信息",
+    "Referral_Link": "推荐链接",
+    "Share": "分享",
+    "Twitter_Share_Text": "加入我使用这个平台！",
+    "You_Have": "您有"
+  },
   "destinations_code_page": {
     "Best_Travel_Guide": "最佳旅行指南",
     "Country_Not_Found": "未找到国家",

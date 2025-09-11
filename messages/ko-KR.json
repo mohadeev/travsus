@@ -646,6 +646,18 @@
     "chat_now": "지금 채팅",
     "questions_about_reservations": "예약에 대해 궁금한 점이 있으신가요?"
   },
+  "CreditsAndCoupons": {
+    "Account": "계정",
+    "Copied": "복사됨",
+    "Credits_Coupons": "크레딧 및 쿠폰",
+    "Email_Share_Subject": "저와 함께하기",
+    "In_Credits": "크레딧",
+    "More_Info": "더보기",
+    "Referral_Link": "추천 링크",
+    "Share": "공유",
+    "Twitter_Share_Text": "이 플랫폼에서 저와 함께하세요!",
+    "You_Have": "보유 중인"
+  },
   "destinations_code_page": {
     "Best_Travel_Guide": "최고의 여행 가이드",
     "Country_Not_Found": "국가를 찾을 수 없음",

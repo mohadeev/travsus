@@ -840,6 +840,18 @@
     "chat_now": "Chat now",
     "questions_about_reservations": "Do you have questions about reservations?"
   },
+  "CreditsAndCoupons": {
+    "Account": "Account",
+    "Copied": "Copied",
+    "Credits_Coupons": "Credits & Coupons",
+    "Email_Share_Subject": "Join me",
+    "In_Credits": "in credits",
+    "More_Info": "More info",
+    "Referral_Link": "Referral Link",
+    "Share": "Share",
+    "Twitter_Share_Text": "Join me on this platform!",
+    "You_Have": "You have"
+  },
   "dashboard_dashboard_analytics_page": {
     "dashboard_dashboard_analytics_page_0_From_Last_Month": "0 from last month",
     "dashboard_dashboard_analytics_page_Analytics": "Analytics",

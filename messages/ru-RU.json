@@ -658,6 +658,18 @@
     "chat_now": "Чат сейчас",
     "questions_about_reservations": "У вас есть вопросы о бронировании?"
   },
+  "CreditsAndCoupons": {
+    "Account": "Аккаунт",
+    "Copied": "Скопировано",
+    "Credits_Coupons": "Кредиты и Купоны",
+    "Email_Share_Subject": "Присоединяйтесь ко мне",
+    "In_Credits": "в кредитах",
+    "More_Info": "Подробнее",
+    "Referral_Link": "Реферальная ссылка",
+    "Share": "Поделиться",
+    "Twitter_Share_Text": "Присоединяйтесь ко мне на этой платформе!",
+    "You_Have": "У вас есть"
+  },
   "destinations_code_page": {
     "Best_Travel_Guide": "Лучший Путеводитель",
     "Country_Not_Found": "Страна Не Найдена",

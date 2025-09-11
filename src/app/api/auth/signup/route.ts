@@ -1,53 +1,94 @@
-import { PrismaClient } from '@prisma/client'
+import { NextResponse } from 'next/server'
+import prisma from '@/lib/prisma'
+import bcrypt from 'bcryptjs'
+import { v4 as uuidv4 } from 'uuid'
+import sendEmail from '@/utils/email/sendMail'
 
-const prisma = new PrismaClient()
+function generateVerificationCode(): string {
+	console.log('Generating verification code')
+	return Math.floor(100000 + Math.random() * 900000).toString()
+}
 
-/**
- * Create a unique referral link based on user's name and lastname
- * @param userId - ID of the user
- */
-export async function createReferralLink(userId: string) {
+export async function POST(req: Request) {
+	console.log('POST request received for signup')
 	try {
-		const user = await prisma.user.findUnique({
-			where: { id: userId },
-		})
-
-		if (!user) throw new Error('User not found')
-
-		const firstname = user.accountData?.firstname || 'user'
-		const lastname = user.accountData?.lastname || ''
-
-		// Build the base code
-		let baseCode = `${firstname}${lastname}`.replace(/\s+/g, '').toLowerCase()
-
-		// Check existing referral codes that start with the baseCode
-		const existingLinks = await prisma.referralLink.findMany({
-			where: { code: { startsWith: baseCode } },
-		})
-
-		let finalCode = baseCode
-		if (existingLinks.length > 0) {
-			// If there are duplicates, add a number at the end
-			finalCode = `${baseCode}${existingLinks.length + 1}`
+		const { email, password, fullName, firstName, lastName } = await req.json()
+		console.log(
+			'Received email and password',
+			email,
+			password,
+			firstName,
+			lastName,
+		)
+		if (!email || !password || !fullName) {
+			console.log('Email, password, firstName, or lastName missing')
+			return NextResponse.json(
+				{ error: 'Email, password, first name, and last name are required' },
+				{ status: 400 },
+			)
 		}
 
-		// Create the referral link
-		const referralLink = await prisma.referralLink.create({
+		console.log('Checking if user already exists')
+		const existingUser = await prisma.user.findUnique({
+			where: { email },
+		})
+
+		if (existingUser) {
+			console.log('User already exists')
+			return NextResponse.json(
+				{ error: 'User already exists' },
+				{ status: 400 },
+			)
+		}
+
+		console.log('Hashing password')
+		const hashedPassword = await bcrypt.hash(password, 10)
+		console.log('Generating verification tokens and code')
+		const verificationLinkToken = uuidv4()
+		const verificationCodeToken = uuidv4()
+		const verificationCode = generateVerificationCode()
+		const now = new Date()
+		const tokenExpiry = new Date(now.getTime() + 24 * 60 * 60 * 1000) // 24 hours from now
+		const codeExpiry = new Date(now.getTime() + 30 * 60 * 1000) // 30 minutes from now
+
+		console.log('Creating user in database')
+		const user = await prisma.user.create({
 			data: {
-				user: { connect: { id: userId } },
-				code: finalCode,
-				commissionType: 'PERCENTAGE',
-				commissionValue: 10, // 10% commission
-				isLifetime: true,
+				email,
+				password: hashedPassword,
+				accountData: { firstname: fullName, lastname: '' },
+				emailVerified: false,
+				verificationLinkToken,
+				verificationCodeToken,
+				verificationTokenExpiry: tokenExpiry,
+				verificationCode,
+				verificationCodeExpiry: codeExpiry,
 			},
 		})
 
-		console.log('✅ Referral link created:', referralLink)
-		return referralLink
+		console.log('User created successfully')
+		await sendEmail({
+			to: user.email,
+			type: 'verifyEmailAddress',
+			emailData: {
+				verificationLinkToken: verificationLinkToken,
+				verificationCodeToken: verificationCodeToken,
+				verificationCode: verificationCode,
+			},
+		})
+		console.log('Verification email sent')
+		console.log('Sending success response')
+		return NextResponse.json({
+			success: true,
+			message:
+				'User created successfully. Please check your email to verify your account.',
+			verificationCodeToken,
+		})
 	} catch (error) {
-		console.error('❌ Error creating referral link:', error)
-		throw error
-	} finally {
-		await prisma.$disconnect()
+		console.error('Signup error:', error)
+		return NextResponse.json(
+			{ error: 'An error occurred during sign up' },
+			{ status: 500 },
+		)
 	}
 }

@@ -14,7 +14,12 @@ export default function CreditsAndCouponsPage() {
 
 	// Example values — ideally fetched from backend
 	const creditBalance = userData?.credits || 0
-	const referralLink = `https://yourplatform.com/ref/${userData?.id || 'user123'}`
+
+	// Use dynamic origin
+	const origin = typeof window !== 'undefined' ? window.location.origin : ''
+	const referralLink = userData?.referralLinks?.[0]?.code
+		? `${origin}/${userData.referralLinks[0].code}`
+		: ''
 
 	const handleCopy = () => {
 		navigator.clipboard.writeText(referralLink)

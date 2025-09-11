@@ -3,7 +3,8 @@ import { NextRequest, NextResponse } from 'next/server'
 import { getServerSession } from 'next-auth/next'
 import { authOptions } from '../../auth/[...nextauth]/authOptions'
 import currentServerUser from '../currentServerUser'
-import { createReferralLink } from './createReferralLink' // import the function
+import { createReferralLink } from './createReferralLink'
+// import { createReferralLink } from './createReferralLink' // import the function
 
 export async function GET(request: NextRequest) {
 	try {
@@ -31,8 +32,8 @@ export async function GET(request: NextRequest) {
 		if (!referralLink) {
 			// Create a new referral link if none exists
 			referralLink = await createReferralLink(user.id)
+			user.referralLink = referralLink
 		}
-
 		return NextResponse.json({
 			user,
 			referralLink,

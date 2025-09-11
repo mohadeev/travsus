@@ -869,6 +869,18 @@
     "chat_now": "Jetzt chatten",
     "questions_about_reservations": "Haben Sie Fragen zu Reservierungen?"
   },
+  "CreditsAndCoupons": {
+    "Account": "Konto",
+    "Copied": "Kopiert",
+    "Credits_Coupons": "Guthaben & Gutscheine",
+    "Email_Share_Subject": "Begleiten Sie mich",
+    "In_Credits": "an Guthaben",
+    "More_Info": "Weitere Informationen",
+    "Referral_Link": "Empfehlungslink",
+    "Share": "Teilen",
+    "Twitter_Share_Text": "Begleiten Sie mich auf dieser Plattform!",
+    "You_Have": "Sie haben"
+  },
   "dashboard_dashboard_analytics_page": {
     "dashboard_dashboard_analytics_page_0_From_Last_Month": "0 gegenüber Vormonat",
     "dashboard_dashboard_analytics_page_Analytics": "Analysen",

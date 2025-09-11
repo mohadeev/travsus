@@ -1,52 +1,142 @@
 {
 	"en-US": {
-		"TravsusTravelPage": {
-			"TravsusTravelPage_categories": "Categories"
+		"CreditsAndCoupons": {
+			"Account": "Account",
+			"Credits_Coupons": "Credits & Coupons",
+			"You_Have": "You have",
+			"In_Credits": "in credits",
+			"More_Info": "More info",
+			"Referral_Link": "Referral Link",
+			"Copied": "Copied",
+			"Share": "Share",
+			"Twitter_Share_Text": "Join me on this platform!",
+			"Email_Share_Subject": "Join me"
 		}
 	},
 	"es-ES": {
-		"TravsusTravelPage": {
-			"TravsusTravelPage_categories": "Categorías"
+		"CreditsAndCoupons": {
+			"Account": "Cuenta",
+			"Credits_Coupons": "Créditos y Cupones",
+			"You_Have": "Tienes",
+			"In_Credits": "en créditos",
+			"More_Info": "Más información",
+			"Referral_Link": "Enlace de Referido",
+			"Copied": "Copiado",
+			"Share": "Compartir",
+			"Twitter_Share_Text": "¡Únete conmigo en esta plataforma!",
+			"Email_Share_Subject": "Únete conmigo"
 		}
 	},
 	"de-DE": {
-		"TravsusTravelPage": {
-			"TravsusTravelPage_categories": "Kategorien"
+		"CreditsAndCoupons": {
+			"Account": "Konto",
+			"Credits_Coupons": "Guthaben & Gutscheine",
+			"You_Have": "Sie haben",
+			"In_Credits": "an Guthaben",
+			"More_Info": "Weitere Informationen",
+			"Referral_Link": "Empfehlungslink",
+			"Copied": "Kopiert",
+			"Share": "Teilen",
+			"Twitter_Share_Text": "Begleiten Sie mich auf dieser Plattform!",
+			"Email_Share_Subject": "Begleiten Sie mich"
 		}
 	},
 	"fr-FR": {
-		"TravsusTravelPage": {
-			"TravsusTravelPage_categories": "Catégories"
+		"CreditsAndCoupons": {
+			"Account": "Compte",
+			"Credits_Coupons": "Crédits et Coupons",
+			"You_Have": "Vous avez",
+			"In_Credits": "en crédits",
+			"More_Info": "Plus d'informations",
+			"Referral_Link": "Lien de parrainage",
+			"Copied": "Copié",
+			"Share": "Partager",
+			"Twitter_Share_Text": "Rejoignez-moi sur cette plateforme !",
+			"Email_Share_Subject": "Rejoignez-moi"
 		}
 	},
 	"ja-JP": {
-		"TravsusTravelPage": {
-			"TravsusTravelPage_categories": "カテゴリー"
+		"CreditsAndCoupons": {
+			"Account": "アカウント",
+			"Credits_Coupons": "クレジットとクーポン",
+			"You_Have": "あなたは",
+			"In_Credits": "クレジットを持っています",
+			"More_Info": "詳細情報",
+			"Referral_Link": "紹介リンク",
+			"Copied": "コピーしました",
+			"Share": "共有",
+			"Twitter_Share_Text": "このプラットフォームで私に参加しましょう！",
+			"Email_Share_Subject": "私に参加"
 		}
 	},
 	"pt-PT": {
-		"TravsusTravelPage": {
-			"TravsusTravelPage_categories": "Categorias"
+		"CreditsAndCoupons": {
+			"Account": "Conta",
+			"Credits_Coupons": "Créditos e Cupões",
+			"You_Have": "Tem",
+			"In_Credits": "em créditos",
+			"More_Info": "Mais informações",
+			"Referral_Link": "Link de Indicação",
+			"Copied": "Copiado",
+			"Share": "Partilhar",
+			"Twitter_Share_Text": "Junte-se a mim nesta plataforma!",
+			"Email_Share_Subject": "Junte-se a mim"
 		}
 	},
 	"it-IT": {
-		"TravsusTravelPage": {
-			"TravsusTravelPage_categories": "Categorie"
+		"CreditsAndCoupons": {
+			"Account": "Account",
+			"Credits_Coupons": "Crediti e Coupon",
+			"You_Have": "Hai",
+			"In_Credits": "in crediti",
+			"More_Info": "Maggiori informazioni",
+			"Referral_Link": "Link di riferimento",
+			"Copied": "Copiato",
+			"Share": "Condividi",
+			"Twitter_Share_Text": "Unisciti a me su questa piattaforma!",
+			"Email_Share_Subject": "Unisciti a me"
 		}
 	},
 	"ru-RU": {
-		"TravsusTravelPage": {
-			"TravsusTravelPage_categories": "Категории"
+		"CreditsAndCoupons": {
+			"Account": "Аккаунт",
+			"Credits_Coupons": "Кредиты и Купоны",
+			"You_Have": "У вас есть",
+			"In_Credits": "в кредитах",
+			"More_Info": "Подробнее",
+			"Referral_Link": "Реферальная ссылка",
+			"Copied": "Скопировано",
+			"Share": "Поделиться",
+			"Twitter_Share_Text": "Присоединяйтесь ко мне на этой платформе!",
+			"Email_Share_Subject": "Присоединяйтесь ко мне"
 		}
 	},
 	"zh-CN": {
-		"TravsusTravelPage": {
-			"TravsusTravelPage_categories": "类别"
+		"CreditsAndCoupons": {
+			"Account": "账户",
+			"Credits_Coupons": "积分和优惠券",
+			"You_Have": "您有",
+			"In_Credits": "积分",
+			"More_Info": "更多信息",
+			"Referral_Link": "推荐链接",
+			"Copied": "已复制",
+			"Share": "分享",
+			"Twitter_Share_Text": "加入我使用这个平台！",
+			"Email_Share_Subject": "加入我"
 		}
 	},
 	"ko-KR": {
-		"TravsusTravelPage": {
-			"TravsusTravelPage_categories": "카테고리"
+		"CreditsAndCoupons": {
+			"Account": "계정",
+			"Credits_Coupons": "크레딧 및 쿠폰",
+			"You_Have": "보유 중인",
+			"In_Credits": "크레딧",
+			"More_Info": "더보기",
+			"Referral_Link": "추천 링크",
+			"Copied": "복사됨",
+			"Share": "공유",
+			"Twitter_Share_Text": "이 플랫폼에서 저와 함께하세요!",
+			"Email_Share_Subject": "저와 함께하기"
 		}
 	}
 }

@@ -660,6 +660,18 @@
     "chat_now": "Chatta ora",
     "questions_about_reservations": "Hai domande sulle prenotazioni?"
   },
+  "CreditsAndCoupons": {
+    "Account": "Account",
+    "Copied": "Copiato",
+    "Credits_Coupons": "Crediti e Coupon",
+    "Email_Share_Subject": "Unisciti a me",
+    "In_Credits": "in crediti",
+    "More_Info": "Maggiori informazioni",
+    "Referral_Link": "Link di riferimento",
+    "Share": "Condividi",
+    "Twitter_Share_Text": "Unisciti a me su questa piattaforma!",
+    "You_Have": "Hai"
+  },
   "destinations_code_page": {
     "Best_Travel_Guide": "Migliore Guida di Viaggio",
     "Country_Not_Found": "Paese Non Trovato",

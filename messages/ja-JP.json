@@ -648,6 +648,18 @@
     "chat_now": "今すぐチャット",
     "questions_about_reservations": "予約について質問がありますか？"
   },
+  "CreditsAndCoupons": {
+    "Account": "アカウント",
+    "Copied": "コピーしました",
+    "Credits_Coupons": "クレジットとクーポン",
+    "Email_Share_Subject": "私に参加",
+    "In_Credits": "クレジットを持っています",
+    "More_Info": "詳細情報",
+    "Referral_Link": "紹介リンク",
+    "Share": "共有",
+    "Twitter_Share_Text": "このプラットフォームで私に参加しましょう！",
+    "You_Have": "あなたは"
+  },
   "destinations_code_page": {
     "Best_Travel_Guide": "最高の旅行ガイド",
     "Country_Not_Found": "国が見つかりません",

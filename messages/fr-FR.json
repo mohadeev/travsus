@@ -868,6 +868,18 @@
     "chat_now": "Discuter maintenant",
     "questions_about_reservations": "Avez-vous des questions sur les réservations?"
   },
+  "CreditsAndCoupons": {
+    "Account": "Compte",
+    "Copied": "Copié",
+    "Credits_Coupons": "Crédits et Coupons",
+    "Email_Share_Subject": "Rejoignez-moi",
+    "In_Credits": "en crédits",
+    "More_Info": "Plus d'informations",
+    "Referral_Link": "Lien de parrainage",
+    "Share": "Partager",
+    "Twitter_Share_Text": "Rejoignez-moi sur cette plateforme !",
+    "You_Have": "Vous avez"
+  },
   "dashboard_dashboard_analytics_page": {
     "dashboard_dashboard_analytics_page_0_From_Last_Month": "0 par rapport au mois dernier",
     "dashboard_dashboard_analytics_page_Analytics": "Analyses",
