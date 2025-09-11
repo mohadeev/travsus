@@ -16,6 +16,7 @@ import TourCards from './TourCards'
 import BookNowAndPayLaterBanner from './BookNowAndPayLaterBanner'
 import Testimonials from '@/components/Testimonials'
 import CollectionsGrid from './destinations/[code]/Collection'
+import ReferralBanner from '@/components/ReferralBanner'
 
 function ClientHomePage() {
 	const DUMMY_EXPERIENCE = {
@@ -187,7 +188,10 @@ function ClientHomePage() {
 				</div>
 				<Testimonials />
 				<div className="container">
+					<ReferralBanner />
+
 					{/* <CollectionsGrid
+
 						cityId={'67e5a961636b9ead6fb9b280'}
 						layout="row"
 						// countryCode="MAR"
@@ -207,7 +211,7 @@ function ClientHomePage() {
 						locationName={}
 					/> */}
 				</div>
-				<SectionSubscribe2 />
+				{/* <SectionSubscribe2 /> */}
 			</main>
 		</>
 	)
