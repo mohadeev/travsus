@@ -1652,6 +1652,19 @@
     "read_less": "Ler menos",
     "read_more": "Ler mais"
   },
+  "ReferralProgramBanner": {
+    "disclaimer": "Aplicam-se termos e condições. A recompensa máxima pode variar.",
+    "feature1_desc": "por indicação bem-sucedida",
+    "feature1_title": "Recompensa máxima de €1000",
+    "feature2_desc": "via link ou redes sociais",
+    "feature2_title": "Partilha fácil",
+    "feature3_desc": "assim que seu amigo se converter",
+    "feature3_title": "Pagamento rápido",
+    "learn_more_button": "Saiba mais sobre o nosso Programa de Indicações",
+    "limited_time": "Oferta por Tempo Limitado",
+    "main_heading": "Ganhe até €1000\ncom cada indicação.",
+    "sub_heading": "Transforme sua rede em seu patrimônio líquido."
+  },
   "RenderLineItemsBreakdown": {
     "accommodation": "Alojamento",
     "RenderLineItemsBreakdown_Grand_Total": "Total Geral",

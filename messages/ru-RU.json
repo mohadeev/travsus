@@ -1746,6 +1746,19 @@
     "read_less": "Свернуть",
     "read_more": "Читать далее"
   },
+  "ReferralProgramBanner": {
+    "disclaimer": "Применяются условия. Максимальное вознаграждение может варьироваться.",
+    "feature1_desc": "за успешную рекомендацию",
+    "feature1_title": "Максимальное вознаграждение €1000",
+    "feature2_desc": "через ссылку или социальные сети",
+    "feature2_title": "Легкий обмен",
+    "feature3_desc": "как только ваш друг конвертируется",
+    "feature3_title": "Быстрая выплата",
+    "learn_more_button": "Узнайте больше о нашей Программе рекомендаций",
+    "limited_time": "Предложение на ограниченное время",
+    "main_heading": "Получите до €1000\nза каждую рекомендацию.",
+    "sub_heading": "Превратите свою сеть в свою чистую стоимость."
+  },
   "RenderLineItemsBreakdown": {
     "accommodation": "Размещение",
     "RenderLineItemsBreakdown_Grand_Total": "Общий Итог",

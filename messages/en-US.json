@@ -2084,6 +2084,19 @@
     "read_less": "Read less",
     "read_more": "Read more"
   },
+  "ReferralProgramBanner": {
+    "disclaimer": "Terms and conditions apply. Maximum reward may vary.",
+    "feature1_desc": "per successful referral",
+    "feature1_title": "€1000 top reward",
+    "feature2_desc": "via link or social media",
+    "feature2_title": "Easy sharing",
+    "feature3_desc": "once your friend converts",
+    "feature3_title": "Fast payout",
+    "learn_more_button": "Learn more about our Referral Program",
+    "limited_time": "Limited Time Offer",
+    "main_heading": "Get up to €1000\nwith every referral.",
+    "sub_heading": "Turn your network into your net worth."
+  },
   "RenderLineItemsBreakdown": {
     "accommodation": "Accommodation",
     "RenderLineItemsBreakdown_Grand_Total": "Grand Total",

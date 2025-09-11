@@ -2142,6 +2142,19 @@
     "read_less": "Weniger lesen",
     "read_more": "Mehr lesen"
   },
+  "ReferralProgramBanner": {
+    "disclaimer": "Es gelten die Allgemeinen Geschäftsbedingungen. Die maximale Belohnung kann variieren.",
+    "feature1_desc": "pro erfolgreicher Empfehlung",
+    "feature1_title": "Bis zu €1000 Belohnung",
+    "feature2_desc": "per Link oder soziale Medien",
+    "feature2_title": "Einfaches Teilen",
+    "feature3_desc": "sobald Ihr Freund konvertiert",
+    "feature3_title": "Schnelle Auszahlung",
+    "learn_more_button": "Erfahren Sie mehr über unser Empfehlungsprogramm",
+    "limited_time": "Angebot für begrenzte Zeit",
+    "main_heading": "Erhalten Sie bis zu €1000\nmit jeder Empfehlung.",
+    "sub_heading": "Verwandeln Sie Ihr Netzwerk in Ihr Nettovermögen."
+  },
   "RenderLineItemsBreakdown": {
     "accommodation": "Unterkunft",
     "RenderLineItemsBreakdown_Grand_Total": "Gesamtsumme",

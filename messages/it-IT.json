@@ -1748,6 +1748,19 @@
     "read_less": "Leggi meno",
     "read_more": "Leggi di più"
   },
+  "ReferralProgramBanner": {
+    "disclaimer": "Si applicano termini e condizioni. La ricompensa massima può variare.",
+    "feature1_desc": "per referenza riuscita",
+    "feature1_title": "Ricompensa massima di €1000",
+    "feature2_desc": "tramite link o social media",
+    "feature2_title": "Condivisione facile",
+    "feature3_desc": "una volta che il tuo amico si converte",
+    "feature3_title": "Pagamento veloce",
+    "learn_more_button": "Scopri di più sul nostro Programma di Referenza",
+    "limited_time": "Offerta a Tempo Limitato",
+    "main_heading": "Ottieni fino a €1000\ncon ogni referenza.",
+    "sub_heading": "Trasforma la tua rete nel tuo patrimonio netto."
+  },
   "RenderLineItemsBreakdown": {
     "accommodation": "Alloggio",
     "RenderLineItemsBreakdown_Grand_Total": "Totale Generale",

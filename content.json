@@ -1,142 +1,152 @@
 {
 	"en-US": {
-		"CreditsAndCoupons": {
-			"Account": "Account",
-			"Credits_Coupons": "Credits & Coupons",
-			"You_Have": "You have",
-			"In_Credits": "in credits",
-			"More_Info": "More info",
-			"Referral_Link": "Referral Link",
-			"Copied": "Copied",
-			"Share": "Share",
-			"Twitter_Share_Text": "Join me on this platform!",
-			"Email_Share_Subject": "Join me"
+		"ReferralProgramBanner": {
+			"limited_time": "Limited Time Offer",
+			"main_heading": "Get up to €1000\nwith every referral.",
+			"sub_heading": "Turn your network into your net worth.",
+			"feature1_title": "€1000 top reward",
+			"feature1_desc": "per successful referral",
+			"feature2_title": "Easy sharing",
+			"feature2_desc": "via link or social media",
+			"feature3_title": "Fast payout",
+			"feature3_desc": "once your friend converts",
+			"learn_more_button": "Learn more about our Referral Program",
+			"disclaimer": "Terms and conditions apply. Maximum reward may vary."
 		}
 	},
 	"es-ES": {
-		"CreditsAndCoupons": {
-			"Account": "Cuenta",
-			"Credits_Coupons": "Créditos y Cupones",
-			"You_Have": "Tienes",
-			"In_Credits": "en créditos",
-			"More_Info": "Más información",
-			"Referral_Link": "Enlace de Referido",
-			"Copied": "Copiado",
-			"Share": "Compartir",
-			"Twitter_Share_Text": "¡Únete conmigo en esta plataforma!",
-			"Email_Share_Subject": "Únete conmigo"
+		"ReferralProgramBanner": {
+			"limited_time": "Oferta por Tiempo Limitado",
+			"main_heading": "Obtén hasta €1000\ncon cada referido.",
+			"sub_heading": "Convierte tu red en tu valor neto.",
+			"feature1_title": "Recompensa máxima de €1000",
+			"feature1_desc": "por referido exitoso",
+			"feature2_title": "Compartir fácil",
+			"feature2_desc": "mediante enlace o redes sociales",
+			"feature3_title": "Pago rápido",
+			"feature3_desc": "una vez que tu amigo se convierta",
+			"learn_more_button": "Más información sobre nuestro Programa de Referidos",
+			"disclaimer": "Aplican términos y condiciones. La recompensa máxima puede variar."
 		}
 	},
 	"de-DE": {
-		"CreditsAndCoupons": {
-			"Account": "Konto",
-			"Credits_Coupons": "Guthaben & Gutscheine",
-			"You_Have": "Sie haben",
-			"In_Credits": "an Guthaben",
-			"More_Info": "Weitere Informationen",
-			"Referral_Link": "Empfehlungslink",
-			"Copied": "Kopiert",
-			"Share": "Teilen",
-			"Twitter_Share_Text": "Begleiten Sie mich auf dieser Plattform!",
-			"Email_Share_Subject": "Begleiten Sie mich"
+		"ReferralProgramBanner": {
+			"limited_time": "Angebot für begrenzte Zeit",
+			"main_heading": "Erhalten Sie bis zu €1000\nmit jeder Empfehlung.",
+			"sub_heading": "Verwandeln Sie Ihr Netzwerk in Ihr Nettovermögen.",
+			"feature1_title": "Bis zu €1000 Belohnung",
+			"feature1_desc": "pro erfolgreicher Empfehlung",
+			"feature2_title": "Einfaches Teilen",
+			"feature2_desc": "per Link oder soziale Medien",
+			"feature3_title": "Schnelle Auszahlung",
+			"feature3_desc": "sobald Ihr Freund konvertiert",
+			"learn_more_button": "Erfahren Sie mehr über unser Empfehlungsprogramm",
+			"disclaimer": "Es gelten die Allgemeinen Geschäftsbedingungen. Die maximale Belohnung kann variieren."
 		}
 	},
 	"fr-FR": {
-		"CreditsAndCoupons": {
-			"Account": "Compte",
-			"Credits_Coupons": "Crédits et Coupons",
-			"You_Have": "Vous avez",
-			"In_Credits": "en crédits",
-			"More_Info": "Plus d'informations",
-			"Referral_Link": "Lien de parrainage",
-			"Copied": "Copié",
-			"Share": "Partager",
-			"Twitter_Share_Text": "Rejoignez-moi sur cette plateforme !",
-			"Email_Share_Subject": "Rejoignez-moi"
+		"ReferralProgramBanner": {
+			"limited_time": "Offre à Durée Limitée",
+			"main_heading": "Obtenez jusqu'à €1000\navec chaque recommandation.",
+			"sub_heading": "Transformez votre réseau en valeur nette.",
+			"feature1_title": "Récompense maximale de €1000",
+			"feature1_desc": "par recommandation réussie",
+			"feature2_title": "Partage facile",
+			"feature2_desc": "via lien ou réseaux sociaux",
+			"feature3_title": "Paiement rapide",
+			"feature3_desc": "une fois que votre ami se convertit",
+			"learn_more_button": "En savoir plus sur notre Programme de Recommandation",
+			"disclaimer": "Conditions générales applicables. La récompense maximale peut varier."
 		}
 	},
 	"ja-JP": {
-		"CreditsAndCoupons": {
-			"Account": "アカウント",
-			"Credits_Coupons": "クレジットとクーポン",
-			"You_Have": "あなたは",
-			"In_Credits": "クレジットを持っています",
-			"More_Info": "詳細情報",
-			"Referral_Link": "紹介リンク",
-			"Copied": "コピーしました",
-			"Share": "共有",
-			"Twitter_Share_Text": "このプラットフォームで私に参加しましょう！",
-			"Email_Share_Subject": "私に参加"
+		"ReferralProgramBanner": {
+			"limited_time": "期間限定オファー",
+			"main_heading": "紹介ごとに\n最大€1000を獲得。",
+			"sub_heading": "ネットワークを純資産に変えましょう。",
+			"feature1_title": "最大€1000の報酬",
+			"feature1_desc": "成功した紹介ごと",
+			"feature2_title": "簡単な共有",
+			"feature2_desc": "リンクまたはソーシャルメディア経由",
+			"feature3_title": "迅速な支払い",
+			"feature3_desc": "友達が登録したら",
+			"learn_more_button": "紹介プログラムの詳細を見る",
+			"disclaimer": "利用規約が適用されます。最大報酬は変動する可能性があります。"
 		}
 	},
 	"pt-PT": {
-		"CreditsAndCoupons": {
-			"Account": "Conta",
-			"Credits_Coupons": "Créditos e Cupões",
-			"You_Have": "Tem",
-			"In_Credits": "em créditos",
-			"More_Info": "Mais informações",
-			"Referral_Link": "Link de Indicação",
-			"Copied": "Copiado",
-			"Share": "Partilhar",
-			"Twitter_Share_Text": "Junte-se a mim nesta plataforma!",
-			"Email_Share_Subject": "Junte-se a mim"
+		"ReferralProgramBanner": {
+			"limited_time": "Oferta por Tempo Limitado",
+			"main_heading": "Ganhe até €1000\ncom cada indicação.",
+			"sub_heading": "Transforme sua rede em seu patrimônio líquido.",
+			"feature1_title": "Recompensa máxima de €1000",
+			"feature1_desc": "por indicação bem-sucedida",
+			"feature2_title": "Partilha fácil",
+			"feature2_desc": "via link ou redes sociais",
+			"feature3_title": "Pagamento rápido",
+			"feature3_desc": "assim que seu amigo se converter",
+			"learn_more_button": "Saiba mais sobre o nosso Programa de Indicações",
+			"disclaimer": "Aplicam-se termos e condições. A recompensa máxima pode variar."
 		}
 	},
 	"it-IT": {
-		"CreditsAndCoupons": {
-			"Account": "Account",
-			"Credits_Coupons": "Crediti e Coupon",
-			"You_Have": "Hai",
-			"In_Credits": "in crediti",
-			"More_Info": "Maggiori informazioni",
-			"Referral_Link": "Link di riferimento",
-			"Copied": "Copiato",
-			"Share": "Condividi",
-			"Twitter_Share_Text": "Unisciti a me su questa piattaforma!",
-			"Email_Share_Subject": "Unisciti a me"
+		"ReferralProgramBanner": {
+			"limited_time": "Offerta a Tempo Limitato",
+			"main_heading": "Ottieni fino a €1000\ncon ogni referenza.",
+			"sub_heading": "Trasforma la tua rete nel tuo patrimonio netto.",
+			"feature1_title": "Ricompensa massima di €1000",
+			"feature1_desc": "per referenza riuscita",
+			"feature2_title": "Condivisione facile",
+			"feature2_desc": "tramite link o social media",
+			"feature3_title": "Pagamento veloce",
+			"feature3_desc": "una volta che il tuo amico si converte",
+			"learn_more_button": "Scopri di più sul nostro Programma di Referenza",
+			"disclaimer": "Si applicano termini e condizioni. La ricompensa massima può variare."
 		}
 	},
 	"ru-RU": {
-		"CreditsAndCoupons": {
-			"Account": "Аккаунт",
-			"Credits_Coupons": "Кредиты и Купоны",
-			"You_Have": "У вас есть",
-			"In_Credits": "в кредитах",
-			"More_Info": "Подробнее",
-			"Referral_Link": "Реферальная ссылка",
-			"Copied": "Скопировано",
-			"Share": "Поделиться",
-			"Twitter_Share_Text": "Присоединяйтесь ко мне на этой платформе!",
-			"Email_Share_Subject": "Присоединяйтесь ко мне"
+		"ReferralProgramBanner": {
+			"limited_time": "Предложение на ограниченное время",
+			"main_heading": "Получите до €1000\nза каждую рекомендацию.",
+			"sub_heading": "Превратите свою сеть в свою чистую стоимость.",
+			"feature1_title": "Максимальное вознаграждение €1000",
+			"feature1_desc": "за успешную рекомендацию",
+			"feature2_title": "Легкий обмен",
+			"feature2_desc": "через ссылку или социальные сети",
+			"feature3_title": "Быстрая выплата",
+			"feature3_desc": "как только ваш друг конвертируется",
+			"learn_more_button": "Узнайте больше о нашей Программе рекомендаций",
+			"disclaimer": "Применяются условия. Максимальное вознаграждение может варьироваться."
 		}
 	},
 	"zh-CN": {
-		"CreditsAndCoupons": {
-			"Account": "账户",
-			"Credits_Coupons": "积分和优惠券",
-			"You_Have": "您有",
-			"In_Credits": "积分",
-			"More_Info": "更多信息",
-			"Referral_Link": "推荐链接",
-			"Copied": "已复制",
-			"Share": "分享",
-			"Twitter_Share_Text": "加入我使用这个平台！",
-			"Email_Share_Subject": "加入我"
+		"ReferralProgramBanner": {
+			"limited_time": "限时优惠",
+			"main_heading": "每次推荐\n最高可获得€1000。",
+			"sub_heading": "将您的人脉转化为您的净资产。",
+			"feature1_title": "最高€1000奖励",
+			"feature1_desc": "每次成功推荐",
+			"feature2_title": "轻松分享",
+			"feature2_desc": "通过链接或社交媒体",
+			"feature3_title": "快速支付",
+			"feature3_desc": "一旦您的朋友转化",
+			"learn_more_button": "了解更多关于我们的推荐计划",
+			"disclaimer": "适用条款和条件。最高奖励可能有所不同。"
 		}
 	},
 	"ko-KR": {
-		"CreditsAndCoupons": {
-			"Account": "계정",
-			"Credits_Coupons": "크레딧 및 쿠폰",
-			"You_Have": "보유 중인",
-			"In_Credits": "크레딧",
-			"More_Info": "더보기",
-			"Referral_Link": "추천 링크",
-			"Copied": "복사됨",
-			"Share": "공유",
-			"Twitter_Share_Text": "이 플랫폼에서 저와 함께하세요!",
-			"Email_Share_Subject": "저와 함께하기"
+		"ReferralProgramBanner": {
+			"limited_time": "기간 한정 제공",
+			"main_heading": "추천할 때마다\n최대 €1000를 받으세요.",
+			"sub_heading": "네트워크를 순자산으로 전환하세요.",
+			"feature1_title": "최대 €1000 보상",
+			"feature1_desc": "성공적인 추천 시",
+			"feature2_title": "쉬운 공유",
+			"feature2_desc": "링크 또는 소셜 미디어 통해",
+			"feature3_title": "빠른 지급",
+			"feature3_desc": "친구가 전환되면",
+			"learn_more_button": "추천 프로그램에 대해 자세히 알아보기",
+			"disclaimer": "이용 약관이 적용됩니다. 최대 보상은 변동될 수 있습니다."
 		}
 	}
 }

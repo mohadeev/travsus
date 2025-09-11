@@ -2144,6 +2144,19 @@
     "read_less": "Lire moins",
     "read_more": "Lire plus"
   },
+  "ReferralProgramBanner": {
+    "disclaimer": "Conditions générales applicables. La récompense maximale peut varier.",
+    "feature1_desc": "par recommandation réussie",
+    "feature1_title": "Récompense maximale de €1000",
+    "feature2_desc": "via lien ou réseaux sociaux",
+    "feature2_title": "Partage facile",
+    "feature3_desc": "une fois que votre ami se convertit",
+    "feature3_title": "Paiement rapide",
+    "learn_more_button": "En savoir plus sur notre Programme de Recommandation",
+    "limited_time": "Offre à Durée Limitée",
+    "main_heading": "Obtenez jusqu'à €1000\navec chaque recommandation.",
+    "sub_heading": "Transformez votre réseau en valeur nette."
+  },
   "RenderLineItemsBreakdown": {
     "accommodation": "Hébergement",
     "RenderLineItemsBreakdown_Grand_Total": "Total Général",

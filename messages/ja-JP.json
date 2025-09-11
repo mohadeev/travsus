@@ -1643,6 +1643,19 @@
     "read_less": "折りたたむ",
     "read_more": "続きを読む"
   },
+  "ReferralProgramBanner": {
+    "disclaimer": "利用規約が適用されます。最大報酬は変動する可能性があります。",
+    "feature1_desc": "成功した紹介ごと",
+    "feature1_title": "最大€1000の報酬",
+    "feature2_desc": "リンクまたはソーシャルメディア経由",
+    "feature2_title": "簡単な共有",
+    "feature3_desc": "友達が登録したら",
+    "feature3_title": "迅速な支払い",
+    "learn_more_button": "紹介プログラムの詳細を見る",
+    "limited_time": "期間限定オファー",
+    "main_heading": "紹介ごとに\n最大€1000を獲得。",
+    "sub_heading": "ネットワークを純資産に変えましょう。"
+  },
   "RenderLineItemsBreakdown": {
     "accommodation": "宿泊施設",
     "RenderLineItemsBreakdown_Grand_Total": "総計",
