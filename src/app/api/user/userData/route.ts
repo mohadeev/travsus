@@ -2,19 +2,11 @@ import prisma from '@/prisma'
 import { NextRequest, NextResponse } from 'next/server'
 import { getServerSession } from 'next-auth/next'
 import { authOptions } from '../../auth/[...nextauth]/authOptions'
-import { parse } from 'cookie'
 import currentServerUser from '../currentServerUser'
-//coment
+import { createReferralLink } from './createReferralLink' // import the function
+
 export async function GET(request: NextRequest) {
-	const cookies = request.headers.get('cookie')
-	const parsedCookies = cookies ? parse(cookies) : {}
-	const geoCookie = parsedCookies.customGeo
-
-	// Parse geolocation data from the cookie
-	const customGeo = geoCookie ? JSON.parse(geoCookie) : {}
-
 	try {
-		const currentUser = await currentServerUser()
 		const session: any = await getServerSession(authOptions)
 
 		if (!session || !session?.user?.email) {
@@ -23,14 +15,29 @@ export async function GET(request: NextRequest) {
 				{ status: 401 },
 			)
 		}
+
 		const user: any = await prisma.user.findUnique({
 			where: { email: session.user.email },
+			include: { referralLinks: true }, // fetch existing referral links
 		})
+
 		if (!user) {
 			return NextResponse.json({ message: 'User not found' }, { status: 404 })
 		}
-		user.currentGeo = customGeo
-		return NextResponse.json({ user: user, message: 'user_found' })
+
+		// Check if user already has a referral link
+		let referralLink = user.referralLinks?.[0]
+
+		if (!referralLink) {
+			// Create a new referral link if none exists
+			referralLink = await createReferralLink(user.id)
+		}
+
+		return NextResponse.json({
+			user,
+			referralLink,
+			message: 'user_found',
+		})
 	} catch (error) {
 		console.error('Error fetching user data:', error)
 		return NextResponse.error()

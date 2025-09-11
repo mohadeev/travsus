@@ -8,8 +8,8 @@ import {
 	selectAllCompanies,
 	selectActiveCompany,
 	selectCompanyStatus,
-} from '@/app/GlobalRedux/Features/companySlice/companySlice'
-import type { AppDispatch } from '@/app/GlobalRedux/store'
+} from '@/app/[locale]/GlobalRedux/Features/companySlice/companySlice'
+import type { AppDispatch } from '@/app/[locale]/GlobalRedux/store'
 import { useRouter } from 'next/navigation'
 import { Button } from '@/components/ui/button'
 import {

@@ -15,8 +15,8 @@ import {
 	selectCompanyStatus,
 	selectIsChangingActive,
 	type Company,
-} from '@/app/GlobalRedux/Features/companySlice/companySlice'
-import type { AppDispatch } from '@/app/GlobalRedux/store'
+} from '@/app/[locale]/GlobalRedux/Features/companySlice/companySlice'
+import type { AppDispatch } from '@/app/[locale]/GlobalRedux/store'
 
 export function CompanySelector() {
 	const [searchQuery, setSearchQuery] = useState('')

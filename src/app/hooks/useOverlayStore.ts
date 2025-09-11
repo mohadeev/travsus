@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import { store } from '@/app/GlobalRedux/store'
-import { RootState } from '@/app/GlobalRedux/store'
+import { store } from '@/app/[locale]/GlobalRedux/store'
+import { RootState } from '@/app/[locale]/GlobalRedux/store'
 
 export const useOverlayStore = () => {
 	const [overlayState, setOverlayState] = useState(

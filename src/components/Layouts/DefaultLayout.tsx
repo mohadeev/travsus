@@ -2,7 +2,7 @@
 import React, { useState, ReactNode, useEffect } from 'react'
 import Sidebar from '@/components/Sidebar'
 import Header from '@/components/Header'
-import { businessSliceState } from '@/app/GlobalRedux/Features/businessSlice/businessSlice'
+import { businessSliceState } from '@/app/[locale]/GlobalRedux/Features/businessSlice/businessSlice'
 import { useDispatch, useSelector } from 'react-redux'
 
 export default function DefaultLayout({

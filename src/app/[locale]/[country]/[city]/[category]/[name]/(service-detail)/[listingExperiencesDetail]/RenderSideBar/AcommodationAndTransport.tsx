@@ -1,6 +1,6 @@
 'use client'
 import Checkbox from '@/components/ui/checkbox'
-import { removeLineItem } from '@/app/GlobalRedux/Features/bookingSlice/bookingSlice'
+import { removeLineItem } from '@/app/[locale]/GlobalRedux/Features/bookingSlice/bookingSlice'
 import { useDispatch } from 'react-redux'
 import { useTranslations } from '@/lib/i18n'
 

@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import {
 	setPricePerSeat,
 	setSelectedDate,
-} from '@/app/GlobalRedux/Features/bookingSlice/bookingSlice'
+} from '@/app/[locale]/GlobalRedux/Features/bookingSlice/bookingSlice'
 import RenderSidebar from './RenderSideBar/RenderSidebar'
 import ListingExperiencesDetailsImages from './ListingExperiencesDetailsImages'
 import ExperiencesDescriptionSkeleton from './ExperiencesDescriptionSkeleton'
@@ -26,7 +26,7 @@ import ItemsCardList from '@/components/ItemsCardList'
 import ListingImageGallery from '@/components/listing-image-gallery/ListingImageGallery'
 import MobileFooterSticky from '../(components)/MobileFooterSticky'
 import { imageGallery } from './constant'
-import { updateServiceState } from '@/app/GlobalRedux/Features/creatingServiceSlice/creatingServiceSlice'
+import { updateServiceState } from '@/app/[locale]/GlobalRedux/Features/creatingServiceSlice/creatingServiceSlice'
 import BookingGuarantees from './BookingGuarantees'
 import TourPreBookingInfo from './TourPreBookingInfo'
 import ContactReservations from './ContactReservations'

@@ -3,7 +3,7 @@ import Link from 'next/link'
 import type React from 'react'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { updateUser } from '@/app/GlobalRedux/Features/userReducer/userReducer'
+import { updateUser } from '@/app/[locale]/GlobalRedux/Features/userReducer/userReducer'
 import {
 	User,
 	Mail,

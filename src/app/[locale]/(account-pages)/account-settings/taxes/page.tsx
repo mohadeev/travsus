@@ -7,7 +7,7 @@ import { ChevronRight, FileText } from 'lucide-react'
 import ButtonPrimary from '@/shared/ButtonPrimary'
 import { useToast } from '@/hooks/useToast'
 import { useSelector, useDispatch } from 'react-redux'
-import { updateUser } from '@/app/GlobalRedux/Features/userReducer/userReducer'
+import { updateUser } from '@/app/[locale]/GlobalRedux/Features/userReducer/userReducer'
 import { useTranslations } from '@/lib/i18n'
 
 export default function TaxesPage() {

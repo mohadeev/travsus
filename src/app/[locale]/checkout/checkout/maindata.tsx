@@ -25,7 +25,7 @@ import {
 	setGustes,
 	updateBookingState,
 	updateLineItemsAsync,
-} from '@/app/GlobalRedux/Features/bookingSlice/bookingSlice'
+} from '@/app/[locale]/GlobalRedux/Features/bookingSlice/bookingSlice'
 // import RowBedAccommodationSelector from '../../[country]/[city]/[category]/[name]/(service-detail)/[listingExperiencesDetail]/RowBedAccommodationSelector/RowBedAccommodationSelector'
 import GuestsInput from '../../[country]/[city]/[category]/[name]/(service-detail)/[listingExperiencesDetail]/RowBedAccommodationSelector/GuestsInput'
 import AcommodationAndTransport from '../../[country]/[city]/[category]/[name]/(service-detail)/[listingExperiencesDetail]/RowBedAccommodationSelector/listing-components/AcommodationAndTransport'

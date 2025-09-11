@@ -15,7 +15,7 @@ import {
 	bookOwnHotelsReducers,
 	localUpdateLineItemsLogicAsync,
 	updateBookingState,
-} from '@/app/GlobalRedux/Features/bookingSlice/bookingSlice'
+} from '@/app/[locale]/GlobalRedux/Features/bookingSlice/bookingSlice'
 import { checkBooking } from '@/lib/checkBooking'
 import RowBedAccommodationSelector from '../../[country]/[city]/[category]/[name]/(service-detail)/[listingExperiencesDetail]/RowBedAccommodationSelector'
 import GuestsInput from '../../[country]/[city]/[category]/[name]/(service-detail)/[listingExperiencesDetail]/GuestsInput'

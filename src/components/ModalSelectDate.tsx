@@ -7,7 +7,7 @@ import React, { FC, Fragment, useEffect, useState } from 'react'
 import ButtonPrimary from '@/shared/ButtonPrimary'
 import DatePickerCustomHeaderTwoMonth from './DatePickerCustomHeaderTwoMonth'
 import DatePickerCustomDay from './DatePickerCustomDay'
-import { setSelectedDate } from '@/app/GlobalRedux/Features/bookingSlice/bookingSlice'
+import { setSelectedDate } from '@/app/[locale]/GlobalRedux/Features/bookingSlice/bookingSlice'
 import { useDispatch } from 'react-redux'
 import moment from 'moment'
 import { useTranslations } from '@/lib/i18n'
@@ -23,7 +23,7 @@ const ModalSelectDate: FC<ModalSelectDateProps> = ({
 	name,
 	duration = 3,
 }) => {
-	const t = useTranslations("components_ModalSelectDate");
+	const t = useTranslations('components_ModalSelectDate')
 	const [showModal, setShowModal] = useState(false)
 
 	const [startDate, setStartDate] = useState<Date | null>(
@@ -45,7 +45,9 @@ const ModalSelectDate: FC<ModalSelectDateProps> = ({
 		return renderChildren ? (
 			renderChildren({ openModal })
 		) : (
-			<button onClick={openModal}>{t('components_ModalSelectDate_Select_Date')}</button>
+			<button onClick={openModal}>
+				{t('components_ModalSelectDate_Select_Date')}
+			</button>
 		)
 	}
 	const dispatch = useDispatch()

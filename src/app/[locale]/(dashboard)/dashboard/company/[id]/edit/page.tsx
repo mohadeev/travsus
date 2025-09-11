@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectAllCompanies } from '@/app/GlobalRedux/Features/companySlice/companySlice'
+import { selectAllCompanies } from '@/app/[locale]/GlobalRedux/Features/companySlice/companySlice'
 import { EditCompanyForm } from '@/components/dashboard/edit-company-form'
 import {
 	Card,
@@ -15,7 +15,7 @@ import {
 import { Button } from '@/components/ui/button'
 import { ArrowLeft } from 'lucide-react'
 import { Skeleton } from '@/components/ui/skeleton'
-import type { AppDispatch } from '@/app/GlobalRedux/store'
+import type { AppDispatch } from '@/app/[locale]/GlobalRedux/store'
 
 export default function EditCompanyPage() {
 	const params = useParams()

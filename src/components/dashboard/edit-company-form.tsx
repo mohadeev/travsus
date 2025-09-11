@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
 import { useDispatch } from 'react-redux'
-import { fetchCompanies } from '@/app/GlobalRedux/Features/companySlice/companySlice'
+import { fetchCompanies } from '@/app/[locale]/GlobalRedux/Features/companySlice/companySlice'
 import { Button } from '@/components/ui/button'
 import {
 	Form,
@@ -22,7 +22,7 @@ import { Textarea } from '@/components/ui/textarea'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { toast } from '@/components/ui/use-toast'
 import { Building, Hotel } from 'lucide-react'
-import type { AppDispatch } from '@/app/GlobalRedux/store'
+import type { AppDispatch } from '@/app/[locale]/GlobalRedux/store'
 
 // Define the form schema
 const formSchema = z.object({

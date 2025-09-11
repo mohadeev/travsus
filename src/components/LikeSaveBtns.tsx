@@ -1,6 +1,6 @@
 'use client'
 
-import { updateServiceState } from '@/app/GlobalRedux/Features/creatingServiceSlice/creatingServiceSlice'
+import { updateServiceState } from '@/app/[locale]/GlobalRedux/Features/creatingServiceSlice/creatingServiceSlice'
 import { useAuthAction } from '@/app/hooks/useAuthAction'
 import addAndRemoveToWishList from '@/utils/api-utils/addAndRemoveToWishList'
 import { Heart } from 'lucide-react'
@@ -11,7 +11,7 @@ import { useDispatch } from 'react-redux'
 import { useTranslations } from '@/lib/i18n'
 
 const LikeSaveBtns = ({ liked }: any) => {
-	const t = useTranslations("components_LikeSaveBtns");
+	const t = useTranslations('components_LikeSaveBtns')
 	const [isDropdownOpen, setIsDropdownOpen] = useState(false)
 	const [copySuccess, setCopySuccess] = useState('')
 	const timeoutRef = useRef<NodeJS.Timeout | null>(null)
@@ -69,7 +69,6 @@ const LikeSaveBtns = ({ liked }: any) => {
 					dispatch(
 						updateServiceState({ path: 'service.liked', value: res?.added }),
 					)
-					
 				}
 			})
 			.catch(() => {
@@ -102,7 +101,9 @@ const LikeSaveBtns = ({ liked }: any) => {
 								d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"
 							/>
 						</svg>
-						<span className="ml-2.5 hidden sm:block">{t('components_LikeSaveBtns_Share_Tour')}</span>
+						<span className="ml-2.5 hidden sm:block">
+							{t('components_LikeSaveBtns_Share_Tour')}
+						</span>
 					</span>
 					<Motion
 						style={{
@@ -160,9 +161,7 @@ const LikeSaveBtns = ({ liked }: any) => {
 					) : (
 						<Heart className="h-5 w-5" strokeWidth={1.5} />
 					)}
-					<span
-						className="ml-2.5 hidden sm:block"
-					>
+					<span className="ml-2.5 hidden sm:block">
 						{t('components_LikeSaveBtns_Save_Tour')}
 					</span>
 				</span>

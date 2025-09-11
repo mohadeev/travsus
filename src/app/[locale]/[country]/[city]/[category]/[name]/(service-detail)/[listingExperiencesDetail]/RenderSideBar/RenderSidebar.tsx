@@ -13,7 +13,7 @@ import {
 	setPricePerSeat,
 	setSelectedDate,
 	updateProvidedService,
-} from '@/app/GlobalRedux/Features/bookingSlice/bookingSlice'
+} from '@/app/[locale]/GlobalRedux/Features/bookingSlice/bookingSlice'
 import LineItemsBreakdown from '../LineItems/LineItemsBreakdown'
 import TransportTypes from './TransportTypes'
 import RowBedAccommodationSelector from '../RowBedAccommodationSelector'
