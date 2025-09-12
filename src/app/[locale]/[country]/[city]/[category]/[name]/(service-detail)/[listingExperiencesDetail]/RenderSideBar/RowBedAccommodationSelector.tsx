@@ -197,7 +197,7 @@ const BedTypeSelector: React.FC<BedTypeSelectorProps> = ({
 			<AnimatePresence>
 				{isModalOpen && (
 					<ModalPortal>
-						<div className="z-max fixed inset-0">
+						<div className="fixed inset-0 z-[100000000000000000000]">
 							<div className="flex h-full">
 								<motion.div
 									initial={{ opacity: 0, translateY: '100%' }}

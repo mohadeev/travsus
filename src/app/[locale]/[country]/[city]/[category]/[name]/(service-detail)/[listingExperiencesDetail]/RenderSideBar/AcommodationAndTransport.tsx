@@ -14,7 +14,6 @@ export default function AcommodationAndTransport({
 	const dispatch = useDispatch()
 
 	const handleCheckboxChange = (checked: boolean) => {
-		console.log(checked)
 		handleBookOwnHotels(checked)
 		dispatch(removeLineItem({ description: 'accommodation', value: !checked }))
 	}
