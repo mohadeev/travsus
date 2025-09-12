@@ -53,7 +53,6 @@ const TourHeader = () => {
 		continentInfo,
 		recommendationPercentage,
 	}: any = useSelector((state: any) => state.creatingServiceSlice.service)
-	console.log('dat', liked)
 	const day = days?.[0]
 	// Safely extract city name - handle both string and object cases
 	const city = day?.cityName

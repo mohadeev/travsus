@@ -246,7 +246,6 @@ const ListingExperiencesDetailPage: FC<ListingExperiencesDetailPageProps> = ({
 	const { mobileFooterStickyToggle } = useSelector(
 		(state: any) => state.overlaySlice,
 	)
-	console.log('mobileFooterStickyToggle: ', mobileFooterStickyToggle)
 	return (
 		<>
 			{mobileFooterStickyToggle === false && (

@@ -71,7 +71,6 @@ const creatingServiceSlice = createSlice({
 		) => {
 			const { path, value } = action.payload
 			updateNestedStateWithMap(state, path, value)
-			console.log(state.service.liked)
 		},
 	},
 })

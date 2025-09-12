@@ -97,7 +97,6 @@ const ItemsCardList: FC<ItemsCardListProps> = ({
 				if (locationType === 'relatedTours') {
 					try {
 						const data = await fetchRelatedTours(id)
-						console.log('data:::', data)
 						if (data?.allToursData && data.allToursData.length > 0) {
 							setToursData(data.allToursData)
 							setTotalPages(data.totalPages || 1)

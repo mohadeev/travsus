@@ -143,7 +143,6 @@ export async function updateLineItemsLogic(data: TourData) {
 		return total + item.totalPrice
 	}, 0)
 	const startPrice = totalAmount / totalGuests
-	console.log('totalGuests:::', totalGuests)
 	return { ...newbooking, ...tour, ...{ totalGuests, startPrice }, status: 200 }
 }
 

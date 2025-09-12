@@ -80,7 +80,6 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 	const guestChildren = guests?.guestChildren || 0
 	const guestAdults = guests?.guestAdults || 0
 	const totalGuests: number = guestChildren + guestAdults
-	console.log('totalGueststotalGueststotalGueststotalGuests: ', totalGuests)
 	const filteredLineItems = lineItems?.filter(
 		({ includeInTotal }: any) => includeInTotal === true,
 	)
