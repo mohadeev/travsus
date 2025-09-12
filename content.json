@@ -1,52 +1,52 @@
 {
 	"en-US": {
 		"Jan03_CustomStripeForm_t9k6": {
-			"book_now_pay_later": "Book now pay later"
+			"Book_Now_Pay_Later": "Book now pay later"
 		}
 	},
 	"es-ES": {
 		"Jan03_CustomStripeForm_t9k6": {
-			"book_now_pay_later": "Reserva ahora paga después"
+			"Book_Now_Pay_Later": "Reserva ahora paga después"
 		}
 	},
 	"de-DE": {
 		"Jan03_CustomStripeForm_t9k6": {
-			"book_now_pay_later": "Jetzt buchen später bezahlen"
+			"Book_Now_Pay_Later": "Jetzt buchen später bezahlen"
 		}
 	},
 	"fr-FR": {
 		"Jan03_CustomStripeForm_t9k6": {
-			"book_now_pay_later": "Réserver maintenant payer plus tard"
+			"Book_Now_Pay_Later": "Réserver maintenant payer plus tard"
 		}
 	},
 	"ja-JP": {
 		"Jan03_CustomStripeForm_t9k6": {
-			"book_now_pay_later": "今すぐ予約後払い"
+			"Book_Now_Pay_Later": "今すぐ予約後払い"
 		}
 	},
 	"pt-PT": {
 		"Jan03_CustomStripeForm_t9k6": {
-			"book_now_pay_later": "Reserve agora pague depois"
+			"Book_Now_Pay_Later": "Reserve agora pague depois"
 		}
 	},
 	"it-IT": {
 		"Jan03_CustomStripeForm_t9k6": {
-			"book_now_pay_later": "Prenota ora paga dopo"
+			"Book_Now_Pay_Later": "Prenota ora paga dopo"
 		}
 	},
 	"ru-RU": {
 		"Jan03_CustomStripeForm_t9k6": {
-			"book_now_pay_later": "Забронируйте сейчас оплатите позже"
+			"Book_Now_Pay_Later": "Забронируйте сейчас оплатите позже"
 		}
 	},
 	"zh-CN": {
 		"Jan03_CustomStripeForm_t9k6": {
-			"book_now_pay_later": "立即预订稍后付款"
+			"Book_Now_Pay_Later": "立即预订稍后付款"
 		}
 	},
 	"ko-KR": {
 		"Jan03_CustomStripeForm_t9k6": {
-			"book_now_pay_later": "지금 예약하고 나중에 결제"
+			"Book_Now_Pay_Later": "지금 예약하고 나중에 결제"
 		}
 	}
 }
