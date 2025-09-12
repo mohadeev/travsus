@@ -41,7 +41,7 @@ const ModalReserveMobile: FC<ModalReserveMobileProps> = ({
 			<Transition appear show={showModal} as={Fragment}>
 				<Dialog
 					as="div"
-					className="HeroSearchFormMobile__Dialog z-max fixed bg-black p-10"
+					className="HeroSearchFormMobile__Dialog fixed z-[1000000000] bg-black p-10"
 					onClose={() => haneleClose(closeModal)}
 				>
 					<div className="fixed inset-0 bg-neutral-100 dark:bg-neutral-900">

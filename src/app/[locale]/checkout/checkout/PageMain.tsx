@@ -17,7 +17,7 @@ import {
 	updateBookingState,
 } from '@/app/[locale]/GlobalRedux/Features/bookingSlice/bookingSlice'
 import { checkBooking } from '@/lib/checkBooking'
-import RowBedAccommodationSelector from '../../[country]/[city]/[category]/[name]/(service-detail)/[listingExperiencesDetail]/RowBedAccommodationSelector'
+import RowBedAccommodationSelector from '../../[country]/[city]/[category]/[name]/(service-detail)/[listingExperiencesDetail]/RenderSideBar/RowBedAccommodationSelector'
 import GuestsInput from '../../[country]/[city]/[category]/[name]/(service-detail)/[listingExperiencesDetail]/GuestsInput'
 import LineItemsBreakdown from '../../[country]/[city]/[category]/[name]/(service-detail)/[listingExperiencesDetail]/LineItems/LineItemsBreakdown'
 import AcommodationAndTransport from '../../[country]/[city]/[category]/[name]/(service-detail)/[listingExperiencesDetail]/RenderSideBar/AcommodationAndTransport'

@@ -16,7 +16,7 @@ import {
 } from '@/app/[locale]/GlobalRedux/Features/bookingSlice/bookingSlice'
 import LineItemsBreakdown from '../LineItems/LineItemsBreakdown'
 import TransportTypes from './TransportTypes'
-import RowBedAccommodationSelector from '../RowBedAccommodationSelector'
+import RowBedAccommodationSelector from './RowBedAccommodationSelector'
 import AcommodationAndTransport from './AcommodationAndTransport'
 import SidebarSkeletonLoader from '../SidebarSkeletonLoader'
 import { Button } from '@/components/ui'

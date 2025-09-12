@@ -30,7 +30,7 @@ import {
 import GuestsInput from '../../[country]/[city]/[category]/[name]/(service-detail)/[listingExperiencesDetail]/RowBedAccommodationSelector/GuestsInput'
 import AcommodationAndTransport from '../../[country]/[city]/[category]/[name]/(service-detail)/[listingExperiencesDetail]/RowBedAccommodationSelector/listing-components/AcommodationAndTransport'
 import LineItemsBreakdown from '../../[country]/[city]/[category]/[name]/(service-detail)/[listingExperiencesDetail]/RowBedAccommodationSelector/LineItemsBreakdown'
-import RowBedAccommodationSelector from '../../[country]/[city]/[category]/[name]/(service-detail)/[listingExperiencesDetail]/RowBedAccommodationSelector'
+import RowBedAccommodationSelector from '../../[country]/[city]/[category]/[name]/(service-detail)/[listingExperiencesDetail]/RenderSideBar/RowBedAccommodationSelector'
 
 export interface CheckOutPagePageMainProps {
 	className?: string
