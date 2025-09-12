@@ -2311,6 +2311,19 @@
     "add_dates": "Daten hinzufügen",
     "check_in_out": "Einchecken - Auschecken"
   },
+  "StripeErrorsMessage": {
+    "card_declined": "Ihre Karte wurde abgelehnt",
+    "default": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
+    "expired_card": "Ihre Karte ist abgelaufen",
+    "incorrect_cvc": "Falscher CVC",
+    "incorrect_number": "Falsche Kartennummer",
+    "insufficient_funds": "Unzureichende Mittel",
+    "invalid_cvc": "Ungültiger CVC",
+    "invalid_expiry_month": "Ungültiger Ablaufmonat",
+    "invalid_expiry_year": "Ungültiges Ablaufjahr",
+    "processing_error": "Bei der Verarbeitung ist ein Fehler aufgetreten",
+    "rate_limit": "Zu viele Anfragen, versuchen Sie es später erneut"
+  },
   "subscription_page": {
     "subscription_page_Basic_Plan_Description": "Wahrscheinlich haben Sie noch nie von diesen Jeanshorts gehört.",
     "subscription_page_Basic_Plan_Features": [

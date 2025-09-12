@@ -1888,6 +1888,19 @@
     "add_dates": "Добавить даты",
     "check_in_out": "Заезд - Выезд"
   },
+  "StripeErrorsMessage": {
+    "card_declined": "Ваша карта была отклонена",
+    "default": "Произошла непредвиденная ошибка. Пожалуйста, попробуйте еще раз.",
+    "expired_card": "Срок действия вашей карты истек",
+    "incorrect_cvc": "Неверный CVC",
+    "incorrect_number": "Неверный номер карты",
+    "insufficient_funds": "Недостаточно средств",
+    "invalid_cvc": "Недействительный CVC",
+    "invalid_expiry_month": "Неверный месяц истечения срока",
+    "invalid_expiry_year": "Неверный год истечения срока",
+    "processing_error": "Произошла ошибка при обработке",
+    "rate_limit": "Слишком много запросов, попробуйте позже"
+  },
   "TaxesPage": {
     "account": "Аккаунт",
     "address": "Адрес",

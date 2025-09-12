@@ -1890,6 +1890,19 @@
     "add_dates": "Aggiungi date",
     "check_in_out": "Check-in - Check-out"
   },
+  "StripeErrorsMessage": {
+    "card_declined": "La tua carta è stata rifiutata",
+    "default": "Si è verificato un errore imprevisto. Per favore, riprova.",
+    "expired_card": "La tua carta è scaduta",
+    "incorrect_cvc": "CVC errato",
+    "incorrect_number": "Numero di carta errato",
+    "insufficient_funds": "Fondi insufficienti",
+    "invalid_cvc": "CVC non valido",
+    "invalid_expiry_month": "Mese di scadenza non valido",
+    "invalid_expiry_year": "Anno di scadenza non valido",
+    "processing_error": "Si è verificato un errore durante l'elaborazione",
+    "rate_limit": "Troppe richieste, riprova più tardi"
+  },
   "TaxesPage": {
     "account": "Account",
     "address": "Indirizzo",

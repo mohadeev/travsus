@@ -1,52 +1,152 @@
 {
 	"en-US": {
-		"Jan03_CustomStripeForm_t9k6": {
-			"Book_Now_Pay_Later": "Book now pay later"
+		"StripeErrorsMessage": {
+			"card_declined": "Your card was declined",
+			"expired_card": "Your card has expired",
+			"incorrect_cvc": "Incorrect CVC",
+			"incorrect_number": "Incorrect card number",
+			"insufficient_funds": "Insufficient funds",
+			"invalid_cvc": "Invalid CVC",
+			"invalid_expiry_month": "Invalid expiration month",
+			"invalid_expiry_year": "Invalid expiration year",
+			"processing_error": "An error occurred while processing",
+			"rate_limit": "Too many requests, try again later",
+			"default": "An unexpected error occurred. Please try again."
 		}
 	},
 	"es-ES": {
-		"Jan03_CustomStripeForm_t9k6": {
-			"Book_Now_Pay_Later": "Reserva ahora paga después"
+		"StripeErrorsMessage": {
+			"card_declined": "Su tarjeta fue rechazada",
+			"expired_card": "Su tarjeta ha caducado",
+			"incorrect_cvc": "CVC incorrecto",
+			"incorrect_number": "Número de tarjeta incorrecto",
+			"insufficient_funds": "Fondos insuficientes",
+			"invalid_cvc": "CVC no válido",
+			"invalid_expiry_month": "Mes de vencimiento no válido",
+			"invalid_expiry_year": "Año de vencimiento no válido",
+			"processing_error": "Ocurrió un error durante el procesamiento",
+			"rate_limit": "Demasiadas solicitudes, intente nuevamente más tarde",
+			"default": "Ocurrió un error inesperado. Por favor, intente nuevamente."
 		}
 	},
 	"de-DE": {
-		"Jan03_CustomStripeForm_t9k6": {
-			"Book_Now_Pay_Later": "Jetzt buchen später bezahlen"
+		"StripeErrorsMessage": {
+			"card_declined": "Ihre Karte wurde abgelehnt",
+			"expired_card": "Ihre Karte ist abgelaufen",
+			"incorrect_cvc": "Falscher CVC",
+			"incorrect_number": "Falsche Kartennummer",
+			"insufficient_funds": "Unzureichende Mittel",
+			"invalid_cvc": "Ungültiger CVC",
+			"invalid_expiry_month": "Ungültiger Ablaufmonat",
+			"invalid_expiry_year": "Ungültiges Ablaufjahr",
+			"processing_error": "Bei der Verarbeitung ist ein Fehler aufgetreten",
+			"rate_limit": "Zu viele Anfragen, versuchen Sie es später erneut",
+			"default": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es erneut."
 		}
 	},
 	"fr-FR": {
-		"Jan03_CustomStripeForm_t9k6": {
-			"Book_Now_Pay_Later": "Réserver maintenant payer plus tard"
+		"StripeErrorsMessage": {
+			"card_declined": "Votre carte a été refusée",
+			"expired_card": "Votre carte a expiré",
+			"incorrect_cvc": "CVC incorrect",
+			"incorrect_number": "Numéro de carte incorrect",
+			"insufficient_funds": "Fonds insuffisants",
+			"invalid_cvc": "CVC invalide",
+			"invalid_expiry_month": "Mois d'expiration invalide",
+			"invalid_expiry_year": "Année d'expiration invalide",
+			"processing_error": "Une erreur s'est produite lors du traitement",
+			"rate_limit": "Trop de demandes, réessayez plus tard",
+			"default": "Une erreur inattendue s'est produite. Veuillez réessayer."
 		}
 	},
 	"ja-JP": {
-		"Jan03_CustomStripeForm_t9k6": {
-			"Book_Now_Pay_Later": "今すぐ予約後払い"
+		"StripeErrorsMessage": {
+			"card_declined": "カードが拒否されました",
+			"expired_card": "カードの有効期限が切れています",
+			"incorrect_cvc": "CVCが間違っています",
+			"incorrect_number": "カード番号が間違っています",
+			"insufficient_funds": "残高不足",
+			"invalid_cvc": "無効なCVC",
+			"invalid_expiry_month": "無効な有効期限の月",
+			"invalid_expiry_year": "無効な有効期限の年",
+			"processing_error": "処理中にエラーが発生しました",
+			"rate_limit": "リクエストが多すぎます。後でもう一度お試しください",
+			"default": "予期しないエラーが発生しました。もう一度お試しください。"
 		}
 	},
 	"pt-PT": {
-		"Jan03_CustomStripeForm_t9k6": {
-			"Book_Now_Pay_Later": "Reserve agora pague depois"
+		"StripeErrorsMessage": {
+			"card_declined": "O seu cartão foi recusado",
+			"expired_card": "O seu cartão expirou",
+			"incorrect_cvc": "CVC incorreto",
+			"incorrect_number": "Número de cartão incorreto",
+			"insufficient_funds": "Fundos insuficientes",
+			"invalid_cvc": "CVC inválido",
+			"invalid_expiry_month": "Mês de validade inválido",
+			"invalid_expiry_year": "Ano de validade inválido",
+			"processing_error": "Ocorreu um erro durante o processamento",
+			"rate_limit": "Muitos pedidos, tente novamente mais tarde",
+			"default": "Ocorreu um erro inesperado. Por favor, tente novamente."
 		}
 	},
 	"it-IT": {
-		"Jan03_CustomStripeForm_t9k6": {
-			"Book_Now_Pay_Later": "Prenota ora paga dopo"
+		"StripeErrorsMessage": {
+			"card_declined": "La tua carta è stata rifiutata",
+			"expired_card": "La tua carta è scaduta",
+			"incorrect_cvc": "CVC errato",
+			"incorrect_number": "Numero di carta errato",
+			"insufficient_funds": "Fondi insufficienti",
+			"invalid_cvc": "CVC non valido",
+			"invalid_expiry_month": "Mese di scadenza non valido",
+			"invalid_expiry_year": "Anno di scadenza non valido",
+			"processing_error": "Si è verificato un errore durante l'elaborazione",
+			"rate_limit": "Troppe richieste, riprova più tardi",
+			"default": "Si è verificato un errore imprevisto. Per favore, riprova."
 		}
 	},
 	"ru-RU": {
-		"Jan03_CustomStripeForm_t9k6": {
-			"Book_Now_Pay_Later": "Забронируйте сейчас оплатите позже"
+		"StripeErrorsMessage": {
+			"card_declined": "Ваша карта была отклонена",
+			"expired_card": "Срок действия вашей карты истек",
+			"incorrect_cvc": "Неверный CVC",
+			"incorrect_number": "Неверный номер карты",
+			"insufficient_funds": "Недостаточно средств",
+			"invalid_cvc": "Недействительный CVC",
+			"invalid_expiry_month": "Неверный месяц истечения срока",
+			"invalid_expiry_year": "Неверный год истечения срока",
+			"processing_error": "Произошла ошибка при обработке",
+			"rate_limit": "Слишком много запросов, попробуйте позже",
+			"default": "Произошла непредвиденная ошибка. Пожалуйста, попробуйте еще раз."
 		}
 	},
 	"zh-CN": {
-		"Jan03_CustomStripeForm_t9k6": {
-			"Book_Now_Pay_Later": "立即预订稍后付款"
+		"StripeErrorsMessage": {
+			"card_declined": "您的卡被拒绝",
+			"expired_card": "您的卡已过期",
+			"incorrect_cvc": "CVC不正确",
+			"incorrect_number": "卡号不正确",
+			"insufficient_funds": "资金不足",
+			"invalid_cvc": "无效的CVC",
+			"invalid_expiry_month": "无效的有效期月份",
+			"invalid_expiry_year": "无效的有效期年份",
+			"processing_error": "处理过程中发生错误",
+			"rate_limit": "请求过多，请稍后再试",
+			"default": "发生意外错误。请再试一次。"
 		}
 	},
 	"ko-KR": {
-		"Jan03_CustomStripeForm_t9k6": {
-			"Book_Now_Pay_Later": "지금 예약하고 나중에 결제"
+		"StripeErrorsMessage": {
+			"card_declined": "카드가 거부되었습니다",
+			"expired_card": "카드 유효기간이 만료되었습니다",
+			"incorrect_cvc": "CVC가 올바르지 않습니다",
+			"incorrect_number": "카드 번호가 올바르지 않습니다",
+			"insufficient_funds": "잔액 부족",
+			"invalid_cvc": "유효하지 않은 CVC",
+			"invalid_expiry_month": "유효하지 않은 만료 월",
+			"invalid_expiry_year": "유효하지 않은 만료 연도",
+			"processing_error": "처리 중 오류가 발생했습니다",
+			"rate_limit": "요청이 너무 많습니다. 나중에 다시 시도해 주세요",
+			"default": "예기치 않은 오류가 발생했습니다. 다시 시도해 주세요."
 		}
 	}
 }

@@ -2244,6 +2244,19 @@
     "add_dates": "Add dates",
     "check_in_out": "Check in - Check out"
   },
+  "StripeErrorsMessage": {
+    "card_declined": "Your card was declined",
+    "default": "An unexpected error occurred. Please try again.",
+    "expired_card": "Your card has expired",
+    "incorrect_cvc": "Incorrect CVC",
+    "incorrect_number": "Incorrect card number",
+    "insufficient_funds": "Insufficient funds",
+    "invalid_cvc": "Invalid CVC",
+    "invalid_expiry_month": "Invalid expiration month",
+    "invalid_expiry_year": "Invalid expiration year",
+    "processing_error": "An error occurred while processing",
+    "rate_limit": "Too many requests, try again later"
+  },
   "subscription_page": {
     "subscription_page_Basic_Plan_Description": "Literally you probably haven't heard of them jean shorts.",
     "subscription_page_Basic_Plan_Features": [

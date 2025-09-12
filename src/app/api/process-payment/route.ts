@@ -153,11 +153,20 @@ export async function POST(request: NextRequest) {
 			paymentIntentId: paymentIntent.id,
 			requiresCapture: paymentIntent.status === 'requires_capture',
 		})
-	} catch (error) {
+	} catch (error: any) {
 		console.error(
 			'POST /api/process-payment - Payment processing error:',
 			error,
 		)
+		if (error.type === 'StripeCardError') {
+			return NextResponse.json(
+				{
+					message: 'Payment processing failed',
+					stripeCardError: error.raw.code,
+				},
+				{ status: 500 },
+			)
+		}
 		return NextResponse.json(
 			{ message: 'Payment processing failed' },
 			{ status: 500 },

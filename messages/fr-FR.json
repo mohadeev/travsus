@@ -2313,6 +2313,19 @@
     "add_dates": "Ajouter des dates",
     "check_in_out": "Arrivée - Départ"
   },
+  "StripeErrorsMessage": {
+    "card_declined": "Votre carte a été refusée",
+    "default": "Une erreur inattendue s'est produite. Veuillez réessayer.",
+    "expired_card": "Votre carte a expiré",
+    "incorrect_cvc": "CVC incorrect",
+    "incorrect_number": "Numéro de carte incorrect",
+    "insufficient_funds": "Fonds insuffisants",
+    "invalid_cvc": "CVC invalide",
+    "invalid_expiry_month": "Mois d'expiration invalide",
+    "invalid_expiry_year": "Année d'expiration invalide",
+    "processing_error": "Une erreur s'est produite lors du traitement",
+    "rate_limit": "Trop de demandes, réessayez plus tard"
+  },
   "subscription_page": {
     "subscription_page_Basic_Plan_Description": "Vous n'avez probablement jamais entendu parler de ces shorts en jean.",
     "subscription_page_Basic_Plan_Features": [

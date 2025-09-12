@@ -1796,6 +1796,19 @@
     "add_dates": "날짜 추가",
     "check_in_out": "체크인 - 체크아웃"
   },
+  "StripeErrorsMessage": {
+    "card_declined": "카드가 거부되었습니다",
+    "default": "예기치 않은 오류가 발생했습니다. 다시 시도해 주세요.",
+    "expired_card": "카드 유효기간이 만료되었습니다",
+    "incorrect_cvc": "CVC가 올바르지 않습니다",
+    "incorrect_number": "카드 번호가 올바르지 않습니다",
+    "insufficient_funds": "잔액 부족",
+    "invalid_cvc": "유효하지 않은 CVC",
+    "invalid_expiry_month": "유효하지 않은 만료 월",
+    "invalid_expiry_year": "유효하지 않은 만료 연도",
+    "processing_error": "처리 중 오류가 발생했습니다",
+    "rate_limit": "요청이 너무 많습니다. 나중에 다시 시도해 주세요"
+  },
   "TaxesPage": {
     "account": "계정",
     "address": "주소",

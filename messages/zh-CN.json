@@ -1751,6 +1751,19 @@
     "add_dates": "添加日期",
     "check_in_out": "入住 - 退房"
   },
+  "StripeErrorsMessage": {
+    "card_declined": "您的卡被拒绝",
+    "default": "发生意外错误。请再试一次。",
+    "expired_card": "您的卡已过期",
+    "incorrect_cvc": "CVC不正确",
+    "incorrect_number": "卡号不正确",
+    "insufficient_funds": "资金不足",
+    "invalid_cvc": "无效的CVC",
+    "invalid_expiry_month": "无效的有效期月份",
+    "invalid_expiry_year": "无效的有效期年份",
+    "processing_error": "处理过程中发生错误",
+    "rate_limit": "请求过多，请稍后再试"
+  },
   "TaxesPage": {
     "account": "账户",
     "address": "地址",

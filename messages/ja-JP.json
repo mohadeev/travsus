@@ -1785,6 +1785,19 @@
     "add_dates": "日付を追加",
     "check_in_out": "チェックイン - チェックアウト"
   },
+  "StripeErrorsMessage": {
+    "card_declined": "カードが拒否されました",
+    "default": "予期しないエラーが発生しました。もう一度お試しください。",
+    "expired_card": "カードの有効期限が切れています",
+    "incorrect_cvc": "CVCが間違っています",
+    "incorrect_number": "カード番号が間違っています",
+    "insufficient_funds": "残高不足",
+    "invalid_cvc": "無効なCVC",
+    "invalid_expiry_month": "無効な有効期限の月",
+    "invalid_expiry_year": "無効な有効期限の年",
+    "processing_error": "処理中にエラーが発生しました",
+    "rate_limit": "リクエストが多すぎます。後でもう一度お試しください"
+  },
   "TaxesPage": {
     "account": "アカウント",
     "address": "住所",

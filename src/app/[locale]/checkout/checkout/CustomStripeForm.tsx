@@ -24,6 +24,8 @@ const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
 	booking,
 }) => {
 	const t = useTranslations('Jan03_CustomStripeForm_t9k6')
+	const stripeErrorsMessage = useTranslations('StripeErrorsMessage')
+
 	const router = useRouter()
 	const stripe: any = useStripe()
 	const elements: any = useElements()
@@ -232,9 +234,10 @@ const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
 			})
 			const result = await response.json()
 			console.log('response: ', result, response)
-
 			if (!response.ok)
-				throw new Error(result.err || t('Payment_Processing_Failed'))
+				throw new Error(
+					result.err || stripeErrorsMessage(result.stripeCardError),
+				)
 			// let result
 			// try {
 			// 	result = JSON.parse(responseData)

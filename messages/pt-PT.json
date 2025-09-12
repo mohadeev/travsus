@@ -1794,6 +1794,19 @@
     "add_dates": "Adicionar datas",
     "check_in_out": "Check-in - Check-out"
   },
+  "StripeErrorsMessage": {
+    "card_declined": "O seu cartão foi recusado",
+    "default": "Ocorreu um erro inesperado. Por favor, tente novamente.",
+    "expired_card": "O seu cartão expirou",
+    "incorrect_cvc": "CVC incorreto",
+    "incorrect_number": "Número de cartão incorreto",
+    "insufficient_funds": "Fundos insuficientes",
+    "invalid_cvc": "CVC inválido",
+    "invalid_expiry_month": "Mês de validade inválido",
+    "invalid_expiry_year": "Ano de validade inválido",
+    "processing_error": "Ocorreu um erro durante o processamento",
+    "rate_limit": "Muitos pedidos, tente novamente mais tarde"
+  },
   "TaxesPage": {
     "account": "Conta",
     "address": "Morada",

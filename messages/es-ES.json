@@ -2246,6 +2246,19 @@
     "add_dates": "Agregar fechas",
     "check_in_out": "Entrada - Salida"
   },
+  "StripeErrorsMessage": {
+    "card_declined": "Su tarjeta fue rechazada",
+    "default": "Ocurrió un error inesperado. Por favor, intente nuevamente.",
+    "expired_card": "Su tarjeta ha caducado",
+    "incorrect_cvc": "CVC incorrecto",
+    "incorrect_number": "Número de tarjeta incorrecto",
+    "insufficient_funds": "Fondos insuficientes",
+    "invalid_cvc": "CVC no válido",
+    "invalid_expiry_month": "Mes de vencimiento no válido",
+    "invalid_expiry_year": "Año de vencimiento no válido",
+    "processing_error": "Ocurrió un error durante el procesamiento",
+    "rate_limit": "Demasiadas solicitudes, intente nuevamente más tarde"
+  },
   "subscription_page": {
     "subscription_page_Basic_Plan_Description": "Literalmente, probablemente no hayas oído hablar de ellos pantalones cortos de jean.",
     "subscription_page_Basic_Plan_Features": [
