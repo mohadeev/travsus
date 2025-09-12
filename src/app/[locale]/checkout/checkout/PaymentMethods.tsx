@@ -4,7 +4,7 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { Label } from '@/components/ui/label'
 import { Checkbox } from '@/components/ui/checkbox'
 import { CreditCard } from 'lucide-react'
-import NewCardForm from './NewCardForm'
+import NewCardForm from './new-card-form'
 
 interface PaymentMethodsProps {
 	paymentMethods: any[]
@@ -19,10 +19,7 @@ interface PaymentMethodsProps {
 	t: any
 }
 
-const PaymentMethods: React.FC<PaymentMethodsProps> & {
-	initiatePayment?: any
-	processExistingPaymentMethod?: any
-} = ({
+const PaymentMethods: React.FC<PaymentMethodsProps> = ({
 	paymentMethods,
 	selectedPaymentMethod,
 	setSelectedPaymentMethod,
@@ -80,6 +77,7 @@ const PaymentMethods: React.FC<PaymentMethodsProps> & {
 									</Label>
 								</div>
 							))}
+
 							<div className="flex cursor-pointer items-center space-x-2 rounded-lg border p-4 transition-colors hover:bg-slate-100">
 								<RadioGroupItem value="new_card" id="new_card" />
 								<Label
@@ -90,6 +88,7 @@ const PaymentMethods: React.FC<PaymentMethodsProps> & {
 									<span>{t('Use_Another_Card')}</span>
 								</Label>
 							</div>
+
 							<div className="flex cursor-pointer items-center space-x-2 rounded-lg border p-4 transition-colors hover:bg-slate-100">
 								<RadioGroupItem
 									value="book_now_pay_later"
