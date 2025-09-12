@@ -20,6 +20,8 @@ model Continent {
   createdAt  DateTime             @default(now())
   updatedAt  DateTime             @updatedAt
   countries  Country[]            @relation("ContinentCountries")
+  translations GeneralTranslation[]
+
 }
 
 // Country Model
@@ -39,6 +41,8 @@ model Country {
   updatedAt  DateTime             @updatedAt
   type       String?
   places     Place[]
+  translations GeneralTranslation[]
+
 }
 
 // State/Province Model
@@ -59,6 +63,8 @@ model State {
 
   @@unique([countryId, code])
   @@index([countryId])
+  translations GeneralTranslation[]
+
 }
 
 // City Model
@@ -82,6 +88,7 @@ model City {
 
   @@index([countryId])
   @@index([stateId])
+  translations GeneralTranslation[]
 }
 
 // Place Model
@@ -111,6 +118,8 @@ model Place {
   @@index([cityId])
   @@index([stateId])
   @@index([countryId])
+    translations GeneralTranslation[]
+
 }
 
 // Translatable Content Model
@@ -160,4 +169,12 @@ type Image {
   url         String?
   public_id   String?
   uploadFrom  String?
+}
+
+
+type GeneralTranslation {
+  language  String  
+  name      String
+  description  String?
+  code3 String?
 }

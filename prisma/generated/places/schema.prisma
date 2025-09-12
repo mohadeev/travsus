@@ -11,51 +11,54 @@ generator client {
 
 // Continent Model
 model Continent {
-  id        String              @id @default(auto()) @map("_id") @db.ObjectId
-  code      String              @unique
-  contentId String              @db.ObjectId
-  content   TranslatableContent @relation("ContinentContent", fields: [contentId], references: [id])
-  geo       GeoCoordinates?
-  image     Image?
-  createdAt DateTime            @default(now())
-  updatedAt DateTime            @updatedAt
-  countries Country[]           @relation("ContinentCountries")
+  id           String               @id @default(auto()) @map("_id") @db.ObjectId
+  code         String               @unique
+  contentId    String               @db.ObjectId
+  content      TranslatableContent  @relation("ContinentContent", fields: [contentId], references: [id])
+  geo          GeoCoordinates?
+  image        Image?
+  createdAt    DateTime             @default(now())
+  updatedAt    DateTime             @updatedAt
+  countries    Country[]            @relation("ContinentCountries")
+  translations GeneralTranslation[]
 }
 
 // Country Model
 model Country {
-  id          String              @id @default(auto()) @map("_id") @db.ObjectId
-  code        String              @unique
-  code3       String              @unique
-  contentId   String              @db.ObjectId
-  content     TranslatableContent @relation("CountryContent", fields: [contentId], references: [id])
-  continentId String?             @db.ObjectId
-  continent   Continent?          @relation("ContinentCountries", fields: [continentId], references: [id])
-  cities      City[]              @relation("CountryCities")
-  states      State[]             @relation("CountryStates")
-  geo         GeoCoordinates
-  image       Image?
-  createdAt   DateTime            @default(now())
-  updatedAt   DateTime            @updatedAt
-  type        String?
-  places      Place[]
+  id           String               @id @default(auto()) @map("_id") @db.ObjectId
+  code         String               @unique
+  code3        String               @unique
+  contentId    String               @db.ObjectId
+  content      TranslatableContent  @relation("CountryContent", fields: [contentId], references: [id])
+  continentId  String?              @db.ObjectId
+  continent    Continent?           @relation("ContinentCountries", fields: [continentId], references: [id])
+  cities       City[]               @relation("CountryCities")
+  states       State[]              @relation("CountryStates")
+  geo          GeoCoordinates
+  image        Image?
+  createdAt    DateTime             @default(now())
+  updatedAt    DateTime             @updatedAt
+  type         String?
+  places       Place[]
+  translations GeneralTranslation[]
 }
 
 // State/Province Model
 model State {
-  id        String              @id @default(auto()) @map("_id") @db.ObjectId
-  countryId String              @db.ObjectId
-  country   Country             @relation("CountryStates", fields: [countryId], references: [id])
-  contentId String              @db.ObjectId
-  content   TranslatableContent @relation("StateContent", fields: [contentId], references: [id])
-  code      String?
-  geo       GeoCoordinates?
-  image     Image?
-  createdAt DateTime            @default(now())
-  updatedAt DateTime            @updatedAt
-  type      String?
-  cities    City[]
-  places    Place[]
+  id           String               @id @default(auto()) @map("_id") @db.ObjectId
+  countryId    String               @db.ObjectId
+  country      Country              @relation("CountryStates", fields: [countryId], references: [id])
+  contentId    String               @db.ObjectId
+  content      TranslatableContent  @relation("StateContent", fields: [contentId], references: [id])
+  code         String?
+  geo          GeoCoordinates?
+  image        Image?
+  createdAt    DateTime             @default(now())
+  updatedAt    DateTime             @updatedAt
+  type         String?
+  cities       City[]
+  places       Place[]
+  translations GeneralTranslation[]
 
   @@unique([countryId, code])
   @@index([countryId])
@@ -63,22 +66,23 @@ model State {
 
 // City Model
 model City {
-  id         String              @id @default(auto()) @map("_id") @db.ObjectId
-  countryId  String              @db.ObjectId
-  country    Country             @relation("CountryCities", fields: [countryId], references: [id])
-  stateId    String?             @db.ObjectId
-  state      State?              @relation(fields: [stateId], references: [id])
-  contentId  String              @db.ObjectId
-  content    TranslatableContent @relation("CityContent", fields: [contentId], references: [id])
-  geo        GeoCoordinates
-  image      Image?
-  population Int?
-  timezone   String?
-  createdAt  DateTime            @default(now())
-  updatedAt  DateTime            @updatedAt
-  code3      String?
-  type       String?
-  places     Place[]
+  id           String               @id @default(auto()) @map("_id") @db.ObjectId
+  countryId    String               @db.ObjectId
+  country      Country              @relation("CountryCities", fields: [countryId], references: [id])
+  stateId      String?              @db.ObjectId
+  state        State?               @relation(fields: [stateId], references: [id])
+  contentId    String               @db.ObjectId
+  content      TranslatableContent  @relation("CityContent", fields: [contentId], references: [id])
+  geo          GeoCoordinates
+  image        Image?
+  population   Int?
+  timezone     String?
+  createdAt    DateTime             @default(now())
+  updatedAt    DateTime             @updatedAt
+  code3        String?
+  type         String?
+  places       Place[]
+  translations GeneralTranslation[]
 
   @@index([countryId])
   @@index([stateId])
@@ -86,27 +90,28 @@ model City {
 
 // Place Model
 model Place {
-  id          String              @id @default(auto()) @map("_id") @db.ObjectId
-  cityId      String?             @db.ObjectId
-  city        City?               @relation(fields: [cityId], references: [id])
-  stateId     String?             @db.ObjectId
-  state       State?              @relation(fields: [stateId], references: [id])
-  countryId   String?             @db.ObjectId
-  country     Country?            @relation(fields: [countryId], references: [id])
-  contentId   String              @db.ObjectId
-  content     TranslatableContent @relation("PlaceContent", fields: [contentId], references: [id])
-  geo         GeoCoordinates
-  image       Image?
-  type        String
-  category    String
-  subcategory String?
-  tags        String[]
-  rating      Float?
-  address     String?
-  website     String?
-  phone       String?
-  createdAt   DateTime            @default(now())
-  updatedAt   DateTime            @updatedAt
+  id           String               @id @default(auto()) @map("_id") @db.ObjectId
+  cityId       String?              @db.ObjectId
+  city         City?                @relation(fields: [cityId], references: [id])
+  stateId      String?              @db.ObjectId
+  state        State?               @relation(fields: [stateId], references: [id])
+  countryId    String?              @db.ObjectId
+  country      Country?             @relation(fields: [countryId], references: [id])
+  contentId    String               @db.ObjectId
+  content      TranslatableContent  @relation("PlaceContent", fields: [contentId], references: [id])
+  geo          GeoCoordinates
+  image        Image?
+  type         String
+  category     String
+  subcategory  String?
+  tags         String[]
+  rating       Float?
+  address      String?
+  website      String?
+  phone        String?
+  createdAt    DateTime             @default(now())
+  updatedAt    DateTime             @updatedAt
+  translations GeneralTranslation[]
 
   @@index([cityId])
   @@index([stateId])
@@ -160,4 +165,11 @@ type Image {
   url        String?
   public_id  String?
   uploadFrom String?
+}
+
+type GeneralTranslation {
+  language    String
+  name        String
+  description String?
+  code3       String?
 }

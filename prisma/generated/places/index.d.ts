@@ -29,6 +29,11 @@ export type GeoCoordinates = $Result.DefaultSelection<Prisma.$GeoCoordinatesPayl
  */
 export type Image = $Result.DefaultSelection<Prisma.$ImagePayload>
 /**
+ * Model GeneralTranslation
+ * 
+ */
+export type GeneralTranslation = $Result.DefaultSelection<Prisma.$GeneralTranslationPayload>
+/**
  * Model Continent
  * 
  */
@@ -1762,6 +1767,71 @@ export namespace Prisma {
 
 
   /**
+   * Model GeneralTranslation
+   */
+
+
+
+
+
+  export type GeneralTranslationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    language?: boolean
+    name?: boolean
+    description?: boolean
+    code3?: boolean
+  }, ExtArgs["result"]["generalTranslation"]>
+
+
+  export type GeneralTranslationSelectScalar = {
+    language?: boolean
+    name?: boolean
+    description?: boolean
+    code3?: boolean
+  }
+
+
+  export type $GeneralTranslationPayload = {
+    name: "GeneralTranslation"
+    objects: {}
+    scalars: {
+      language: string
+      name: string
+      description: string | null
+      code3: string | null
+    }
+    composites: {}
+  }
+
+  type GeneralTranslationGetPayload<S extends boolean | null | undefined | GeneralTranslationDefaultArgs> = $Result.GetResult<Prisma.$GeneralTranslationPayload, S>
+
+
+
+
+
+  /**
+   * Fields of the GeneralTranslation model
+   */ 
+  interface GeneralTranslationFieldRefs {
+    readonly language: FieldRef<"GeneralTranslation", 'String'>
+    readonly name: FieldRef<"GeneralTranslation", 'String'>
+    readonly description: FieldRef<"GeneralTranslation", 'String'>
+    readonly code3: FieldRef<"GeneralTranslation", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * GeneralTranslation without action
+   */
+  export type GeneralTranslationDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GeneralTranslation
+     */
+    select?: GeneralTranslationSelect<ExtArgs> | null
+  }
+
+
+  /**
    * Model Continent
    */
 
@@ -1927,6 +1997,7 @@ export namespace Prisma {
     image?: boolean | ImageDefaultArgs<ExtArgs>
     createdAt?: boolean
     updatedAt?: boolean
+    translations?: boolean | GeneralTranslationDefaultArgs<ExtArgs>
     content?: boolean | TranslatableContentDefaultArgs<ExtArgs>
     countries?: boolean | Continent$countriesArgs<ExtArgs>
     _count?: boolean | ContinentCountOutputTypeDefaultArgs<ExtArgs>
@@ -1963,6 +2034,7 @@ export namespace Prisma {
     composites: {
       geo: Prisma.$GeoCoordinatesPayload | null
       image: Prisma.$ImagePayload | null
+      translations: Prisma.$GeneralTranslationPayload[]
     }
   }
 
@@ -2911,6 +2983,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     type?: boolean
+    translations?: boolean | GeneralTranslationDefaultArgs<ExtArgs>
     content?: boolean | TranslatableContentDefaultArgs<ExtArgs>
     continent?: boolean | Country$continentArgs<ExtArgs>
     cities?: boolean | Country$citiesArgs<ExtArgs>
@@ -2962,6 +3035,7 @@ export namespace Prisma {
     composites: {
       geo: Prisma.$GeoCoordinatesPayload
       image: Prisma.$ImagePayload | null
+      translations: Prisma.$GeneralTranslationPayload[]
     }
   }
 
@@ -3963,6 +4037,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     type?: boolean
+    translations?: boolean | GeneralTranslationDefaultArgs<ExtArgs>
     country?: boolean | CountryDefaultArgs<ExtArgs>
     content?: boolean | TranslatableContentDefaultArgs<ExtArgs>
     cities?: boolean | State$citiesArgs<ExtArgs>
@@ -4009,6 +4084,7 @@ export namespace Prisma {
     composites: {
       geo: Prisma.$GeoCoordinatesPayload | null
       image: Prisma.$ImagePayload | null
+      translations: Prisma.$GeneralTranslationPayload[]
     }
   }
 
@@ -5031,6 +5107,7 @@ export namespace Prisma {
     updatedAt?: boolean
     code3?: boolean
     type?: boolean
+    translations?: boolean | GeneralTranslationDefaultArgs<ExtArgs>
     country?: boolean | CountryDefaultArgs<ExtArgs>
     state?: boolean | City$stateArgs<ExtArgs>
     content?: boolean | TranslatableContentDefaultArgs<ExtArgs>
@@ -5083,6 +5160,7 @@ export namespace Prisma {
     composites: {
       geo: Prisma.$GeoCoordinatesPayload
       image: Prisma.$ImagePayload | null
+      translations: Prisma.$GeneralTranslationPayload[]
     }
   }
 
@@ -6139,6 +6217,7 @@ export namespace Prisma {
     phone?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    translations?: boolean | GeneralTranslationDefaultArgs<ExtArgs>
     city?: boolean | Place$cityArgs<ExtArgs>
     state?: boolean | Place$stateArgs<ExtArgs>
     country?: boolean | Place$countryArgs<ExtArgs>
@@ -6199,6 +6278,7 @@ export namespace Prisma {
     composites: {
       geo: Prisma.$GeoCoordinatesPayload
       image: Prisma.$ImagePayload | null
+      translations: Prisma.$GeneralTranslationPayload[]
     }
   }
 
@@ -9189,6 +9269,7 @@ export namespace Prisma {
     image?: XOR<ImageNullableCompositeFilter, ImageObjectEqualityInput> | null
     createdAt?: DateTimeFilter<"Continent"> | Date | string
     updatedAt?: DateTimeFilter<"Continent"> | Date | string
+    translations?: GeneralTranslationCompositeListFilter | GeneralTranslationObjectEqualityInput[]
     content?: XOR<TranslatableContentRelationFilter, TranslatableContentWhereInput>
     countries?: CountryListRelationFilter
   }
@@ -9201,6 +9282,7 @@ export namespace Prisma {
     image?: ImageOrderByInput
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    translations?: GeneralTranslationOrderByCompositeAggregateInput
     content?: TranslatableContentOrderByWithRelationInput
     countries?: CountryOrderByRelationAggregateInput
   }
@@ -9216,6 +9298,7 @@ export namespace Prisma {
     image?: XOR<ImageNullableCompositeFilter, ImageObjectEqualityInput> | null
     createdAt?: DateTimeFilter<"Continent"> | Date | string
     updatedAt?: DateTimeFilter<"Continent"> | Date | string
+    translations?: GeneralTranslationCompositeListFilter | GeneralTranslationObjectEqualityInput[]
     content?: XOR<TranslatableContentRelationFilter, TranslatableContentWhereInput>
     countries?: CountryListRelationFilter
   }, "id" | "code">
@@ -9256,6 +9339,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Country"> | Date | string
     updatedAt?: DateTimeFilter<"Country"> | Date | string
     type?: StringNullableFilter<"Country"> | string | null
+    translations?: GeneralTranslationCompositeListFilter | GeneralTranslationObjectEqualityInput[]
     content?: XOR<TranslatableContentRelationFilter, TranslatableContentWhereInput>
     continent?: XOR<ContinentNullableRelationFilter, ContinentWhereInput> | null
     cities?: CityListRelationFilter
@@ -9274,6 +9358,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     type?: SortOrder
+    translations?: GeneralTranslationOrderByCompositeAggregateInput
     content?: TranslatableContentOrderByWithRelationInput
     continent?: ContinentOrderByWithRelationInput
     cities?: CityOrderByRelationAggregateInput
@@ -9295,6 +9380,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Country"> | Date | string
     updatedAt?: DateTimeFilter<"Country"> | Date | string
     type?: StringNullableFilter<"Country"> | string | null
+    translations?: GeneralTranslationCompositeListFilter | GeneralTranslationObjectEqualityInput[]
     content?: XOR<TranslatableContentRelationFilter, TranslatableContentWhereInput>
     continent?: XOR<ContinentNullableRelationFilter, ContinentWhereInput> | null
     cities?: CityListRelationFilter
@@ -9343,6 +9429,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"State"> | Date | string
     updatedAt?: DateTimeFilter<"State"> | Date | string
     type?: StringNullableFilter<"State"> | string | null
+    translations?: GeneralTranslationCompositeListFilter | GeneralTranslationObjectEqualityInput[]
     country?: XOR<CountryRelationFilter, CountryWhereInput>
     content?: XOR<TranslatableContentRelationFilter, TranslatableContentWhereInput>
     cities?: CityListRelationFilter
@@ -9359,6 +9446,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     type?: SortOrder
+    translations?: GeneralTranslationOrderByCompositeAggregateInput
     country?: CountryOrderByWithRelationInput
     content?: TranslatableContentOrderByWithRelationInput
     cities?: CityOrderByRelationAggregateInput
@@ -9379,6 +9467,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"State"> | Date | string
     updatedAt?: DateTimeFilter<"State"> | Date | string
     type?: StringNullableFilter<"State"> | string | null
+    translations?: GeneralTranslationCompositeListFilter | GeneralTranslationObjectEqualityInput[]
     country?: XOR<CountryRelationFilter, CountryWhereInput>
     content?: XOR<TranslatableContentRelationFilter, TranslatableContentWhereInput>
     cities?: CityListRelationFilter
@@ -9427,6 +9516,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"City"> | Date | string
     code3?: StringNullableFilter<"City"> | string | null
     type?: StringNullableFilter<"City"> | string | null
+    translations?: GeneralTranslationCompositeListFilter | GeneralTranslationObjectEqualityInput[]
     country?: XOR<CountryRelationFilter, CountryWhereInput>
     state?: XOR<StateNullableRelationFilter, StateWhereInput> | null
     content?: XOR<TranslatableContentRelationFilter, TranslatableContentWhereInput>
@@ -9446,6 +9536,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     code3?: SortOrder
     type?: SortOrder
+    translations?: GeneralTranslationOrderByCompositeAggregateInput
     country?: CountryOrderByWithRelationInput
     state?: StateOrderByWithRelationInput
     content?: TranslatableContentOrderByWithRelationInput
@@ -9468,6 +9559,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"City"> | Date | string
     code3?: StringNullableFilter<"City"> | string | null
     type?: StringNullableFilter<"City"> | string | null
+    translations?: GeneralTranslationCompositeListFilter | GeneralTranslationObjectEqualityInput[]
     country?: XOR<CountryRelationFilter, CountryWhereInput>
     state?: XOR<StateNullableRelationFilter, StateWhereInput> | null
     content?: XOR<TranslatableContentRelationFilter, TranslatableContentWhereInput>
@@ -9529,6 +9621,7 @@ export namespace Prisma {
     phone?: StringNullableFilter<"Place"> | string | null
     createdAt?: DateTimeFilter<"Place"> | Date | string
     updatedAt?: DateTimeFilter<"Place"> | Date | string
+    translations?: GeneralTranslationCompositeListFilter | GeneralTranslationObjectEqualityInput[]
     city?: XOR<CityNullableRelationFilter, CityWhereInput> | null
     state?: XOR<StateNullableRelationFilter, StateWhereInput> | null
     country?: XOR<CountryNullableRelationFilter, CountryWhereInput> | null
@@ -9553,6 +9646,7 @@ export namespace Prisma {
     phone?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    translations?: GeneralTranslationOrderByCompositeAggregateInput
     city?: CityOrderByWithRelationInput
     state?: StateOrderByWithRelationInput
     country?: CountryOrderByWithRelationInput
@@ -9580,6 +9674,7 @@ export namespace Prisma {
     phone?: StringNullableFilter<"Place"> | string | null
     createdAt?: DateTimeFilter<"Place"> | Date | string
     updatedAt?: DateTimeFilter<"Place"> | Date | string
+    translations?: GeneralTranslationCompositeListFilter | GeneralTranslationObjectEqualityInput[]
     city?: XOR<CityNullableRelationFilter, CityWhereInput> | null
     state?: XOR<StateNullableRelationFilter, StateWhereInput> | null
     country?: XOR<CountryNullableRelationFilter, CountryWhereInput> | null
@@ -9765,6 +9860,7 @@ export namespace Prisma {
     image?: XOR<ImageNullableCreateEnvelopeInput, ImageCreateInput> | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     content: TranslatableContentCreateNestedOneWithoutContinentsInput
     countries?: CountryCreateNestedManyWithoutContinentInput
   }
@@ -9777,6 +9873,7 @@ export namespace Prisma {
     image?: XOR<ImageNullableCreateEnvelopeInput, ImageCreateInput> | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     countries?: CountryUncheckedCreateNestedManyWithoutContinentInput
   }
 
@@ -9786,6 +9883,7 @@ export namespace Prisma {
     image?: XOR<ImageNullableUpdateEnvelopeInput, ImageCreateInput> | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     content?: TranslatableContentUpdateOneRequiredWithoutContinentsNestedInput
     countries?: CountryUpdateManyWithoutContinentNestedInput
   }
@@ -9797,6 +9895,7 @@ export namespace Prisma {
     image?: XOR<ImageNullableUpdateEnvelopeInput, ImageCreateInput> | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     countries?: CountryUncheckedUpdateManyWithoutContinentNestedInput
   }
 
@@ -9808,6 +9907,7 @@ export namespace Prisma {
     image?: XOR<ImageNullableCreateEnvelopeInput, ImageCreateInput> | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
   }
 
   export type ContinentUpdateManyMutationInput = {
@@ -9816,6 +9916,7 @@ export namespace Prisma {
     image?: XOR<ImageNullableUpdateEnvelopeInput, ImageCreateInput> | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
   }
 
   export type ContinentUncheckedUpdateManyInput = {
@@ -9825,6 +9926,7 @@ export namespace Prisma {
     image?: XOR<ImageNullableUpdateEnvelopeInput, ImageCreateInput> | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
   }
 
   export type CountryCreateInput = {
@@ -9836,6 +9938,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     type?: string | null
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     content: TranslatableContentCreateNestedOneWithoutCountriesInput
     continent?: ContinentCreateNestedOneWithoutCountriesInput
     cities?: CityCreateNestedManyWithoutCountryInput
@@ -9854,6 +9957,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     type?: string | null
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     cities?: CityUncheckedCreateNestedManyWithoutCountryInput
     states?: StateUncheckedCreateNestedManyWithoutCountryInput
     places?: PlaceUncheckedCreateNestedManyWithoutCountryInput
@@ -9867,6 +9971,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     content?: TranslatableContentUpdateOneRequiredWithoutCountriesNestedInput
     continent?: ContinentUpdateOneWithoutCountriesNestedInput
     cities?: CityUpdateManyWithoutCountryNestedInput
@@ -9884,6 +9989,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     cities?: CityUncheckedUpdateManyWithoutCountryNestedInput
     states?: StateUncheckedUpdateManyWithoutCountryNestedInput
     places?: PlaceUncheckedUpdateManyWithoutCountryNestedInput
@@ -9900,6 +10006,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     type?: string | null
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
   }
 
   export type CountryUpdateManyMutationInput = {
@@ -9910,6 +10017,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
   }
 
   export type CountryUncheckedUpdateManyInput = {
@@ -9922,6 +10030,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
   }
 
   export type StateCreateInput = {
@@ -9932,6 +10041,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     type?: string | null
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     country: CountryCreateNestedOneWithoutStatesInput
     content: TranslatableContentCreateNestedOneWithoutStatesInput
     cities?: CityCreateNestedManyWithoutStateInput
@@ -9948,6 +10058,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     type?: string | null
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     cities?: CityUncheckedCreateNestedManyWithoutStateInput
     places?: PlaceUncheckedCreateNestedManyWithoutStateInput
   }
@@ -9959,6 +10070,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     country?: CountryUpdateOneRequiredWithoutStatesNestedInput
     content?: TranslatableContentUpdateOneRequiredWithoutStatesNestedInput
     cities?: CityUpdateManyWithoutStateNestedInput
@@ -9974,6 +10086,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     cities?: CityUncheckedUpdateManyWithoutStateNestedInput
     places?: PlaceUncheckedUpdateManyWithoutStateNestedInput
   }
@@ -9988,6 +10101,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     type?: string | null
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
   }
 
   export type StateUpdateManyMutationInput = {
@@ -9997,6 +10111,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
   }
 
   export type StateUncheckedUpdateManyInput = {
@@ -10008,6 +10123,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
   }
 
   export type CityCreateInput = {
@@ -10020,6 +10136,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     code3?: string | null
     type?: string | null
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     country: CountryCreateNestedOneWithoutCitiesInput
     state?: StateCreateNestedOneWithoutCitiesInput
     content: TranslatableContentCreateNestedOneWithoutCitiesInput
@@ -10039,6 +10156,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     code3?: string | null
     type?: string | null
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     places?: PlaceUncheckedCreateNestedManyWithoutCityInput
   }
 
@@ -10051,6 +10169,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     code3?: NullableStringFieldUpdateOperationsInput | string | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     country?: CountryUpdateOneRequiredWithoutCitiesNestedInput
     state?: StateUpdateOneWithoutCitiesNestedInput
     content?: TranslatableContentUpdateOneRequiredWithoutCitiesNestedInput
@@ -10069,6 +10188,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     code3?: NullableStringFieldUpdateOperationsInput | string | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     places?: PlaceUncheckedUpdateManyWithoutCityNestedInput
   }
 
@@ -10085,6 +10205,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     code3?: string | null
     type?: string | null
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
   }
 
   export type CityUpdateManyMutationInput = {
@@ -10096,6 +10217,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     code3?: NullableStringFieldUpdateOperationsInput | string | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
   }
 
   export type CityUncheckedUpdateManyInput = {
@@ -10110,6 +10232,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     code3?: NullableStringFieldUpdateOperationsInput | string | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
   }
 
   export type PlaceCreateInput = {
@@ -10126,6 +10249,7 @@ export namespace Prisma {
     phone?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     city?: CityCreateNestedOneWithoutPlacesInput
     state?: StateCreateNestedOneWithoutPlacesInput
     country?: CountryCreateNestedOneWithoutPlacesInput
@@ -10150,6 +10274,7 @@ export namespace Prisma {
     phone?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
   }
 
   export type PlaceUpdateInput = {
@@ -10165,6 +10290,7 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     city?: CityUpdateOneWithoutPlacesNestedInput
     state?: StateUpdateOneWithoutPlacesNestedInput
     country?: CountryUpdateOneWithoutPlacesNestedInput
@@ -10188,6 +10314,7 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
   }
 
   export type PlaceCreateManyInput = {
@@ -10208,6 +10335,7 @@ export namespace Prisma {
     phone?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
   }
 
   export type PlaceUpdateManyMutationInput = {
@@ -10223,6 +10351,7 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
   }
 
   export type PlaceUncheckedUpdateManyInput = {
@@ -10242,6 +10371,7 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
   }
 
   export type TranslatableContentCreateInput = {
@@ -10429,6 +10559,22 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
+  export type GeneralTranslationCompositeListFilter = {
+    equals?: GeneralTranslationObjectEqualityInput[]
+    every?: GeneralTranslationWhereInput
+    some?: GeneralTranslationWhereInput
+    none?: GeneralTranslationWhereInput
+    isEmpty?: boolean
+    isSet?: boolean
+  }
+
+  export type GeneralTranslationObjectEqualityInput = {
+    language: string
+    name: string
+    description?: string | null
+    code3?: string | null
+  }
+
   export type TranslatableContentRelationFilter = {
     is?: TranslatableContentWhereInput
     isNot?: TranslatableContentWhereInput
@@ -10449,6 +10595,10 @@ export namespace Prisma {
     url?: SortOrder
     public_id?: SortOrder
     uploadFrom?: SortOrder
+  }
+
+  export type GeneralTranslationOrderByCompositeAggregateInput = {
+    _count?: SortOrder
   }
 
   export type CountryOrderByRelationAggregateInput = {
@@ -10954,6 +11104,17 @@ export namespace Prisma {
     uploadFrom?: string | null
   }
 
+  export type GeneralTranslationListCreateEnvelopeInput = {
+    set?: GeneralTranslationCreateInput | GeneralTranslationCreateInput[]
+  }
+
+  export type GeneralTranslationCreateInput = {
+    language: string
+    name: string
+    description?: string | null
+    code3?: string | null
+  }
+
   export type TranslatableContentCreateNestedOneWithoutContinentsInput = {
     create?: XOR<TranslatableContentCreateWithoutContinentsInput, TranslatableContentUncheckedCreateWithoutContinentsInput>
     connectOrCreate?: TranslatableContentCreateOrConnectWithoutContinentsInput
@@ -10992,6 +11153,13 @@ export namespace Prisma {
 
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
+  }
+
+  export type GeneralTranslationListUpdateEnvelopeInput = {
+    set?: GeneralTranslationCreateInput | GeneralTranslationCreateInput[]
+    push?: GeneralTranslationCreateInput | GeneralTranslationCreateInput[]
+    updateMany?: GeneralTranslationUpdateManyInput
+    deleteMany?: GeneralTranslationDeleteManyInput
   }
 
   export type TranslatableContentUpdateOneRequiredWithoutContinentsNestedInput = {
@@ -11812,6 +11980,16 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
+  export type GeneralTranslationWhereInput = {
+    AND?: GeneralTranslationWhereInput | GeneralTranslationWhereInput[]
+    OR?: GeneralTranslationWhereInput[]
+    NOT?: GeneralTranslationWhereInput | GeneralTranslationWhereInput[]
+    language?: StringFilter<"GeneralTranslation"> | string
+    name?: StringFilter<"GeneralTranslation"> | string
+    description?: StringNullableFilter<"GeneralTranslation"> | string | null
+    code3?: StringNullableFilter<"GeneralTranslation"> | string | null
+  }
+
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -11994,6 +12172,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     type?: string | null
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     content: TranslatableContentCreateNestedOneWithoutCountriesInput
     cities?: CityCreateNestedManyWithoutCountryInput
     states?: StateCreateNestedManyWithoutCountryInput
@@ -12010,6 +12189,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     type?: string | null
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     cities?: CityUncheckedCreateNestedManyWithoutCountryInput
     states?: StateUncheckedCreateNestedManyWithoutCountryInput
     places?: PlaceUncheckedCreateNestedManyWithoutCountryInput
@@ -12032,6 +12212,15 @@ export namespace Prisma {
   export type ImageUpsertInput = {
     set: ImageCreateInput | null
     update: ImageUpdateInput
+  }
+
+  export type GeneralTranslationUpdateManyInput = {
+    where: GeneralTranslationWhereInput
+    data: GeneralTranslationUpdateInput
+  }
+
+  export type GeneralTranslationDeleteManyInput = {
+    where: GeneralTranslationWhereInput
   }
 
   export type TranslatableContentUpsertWithoutContinentsInput = {
@@ -12137,6 +12326,7 @@ export namespace Prisma {
     image?: XOR<ImageNullableCreateEnvelopeInput, ImageCreateInput> | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     content: TranslatableContentCreateNestedOneWithoutContinentsInput
   }
 
@@ -12148,6 +12338,7 @@ export namespace Prisma {
     image?: XOR<ImageNullableCreateEnvelopeInput, ImageCreateInput> | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
   }
 
   export type ContinentCreateOrConnectWithoutCountriesInput = {
@@ -12165,6 +12356,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     code3?: string | null
     type?: string | null
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     state?: StateCreateNestedOneWithoutCitiesInput
     content: TranslatableContentCreateNestedOneWithoutCitiesInput
     places?: PlaceCreateNestedManyWithoutCityInput
@@ -12182,6 +12374,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     code3?: string | null
     type?: string | null
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     places?: PlaceUncheckedCreateNestedManyWithoutCityInput
   }
 
@@ -12202,6 +12395,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     type?: string | null
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     content: TranslatableContentCreateNestedOneWithoutStatesInput
     cities?: CityCreateNestedManyWithoutStateInput
     places?: PlaceCreateNestedManyWithoutStateInput
@@ -12216,6 +12410,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     type?: string | null
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     cities?: CityUncheckedCreateNestedManyWithoutStateInput
     places?: PlaceUncheckedCreateNestedManyWithoutStateInput
   }
@@ -12243,6 +12438,7 @@ export namespace Prisma {
     phone?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     city?: CityCreateNestedOneWithoutPlacesInput
     state?: StateCreateNestedOneWithoutPlacesInput
     content: TranslatableContentCreateNestedOneWithoutPlacesInput
@@ -12265,6 +12461,7 @@ export namespace Prisma {
     phone?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
   }
 
   export type PlaceCreateOrConnectWithoutCountryInput = {
@@ -12333,6 +12530,7 @@ export namespace Prisma {
     image?: XOR<ImageNullableUpdateEnvelopeInput, ImageCreateInput> | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     content?: TranslatableContentUpdateOneRequiredWithoutContinentsNestedInput
   }
 
@@ -12343,6 +12541,7 @@ export namespace Prisma {
     image?: XOR<ImageNullableUpdateEnvelopeInput, ImageCreateInput> | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
   }
 
   export type CityUpsertWithWhereUniqueWithoutCountryInput = {
@@ -12452,6 +12651,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     type?: string | null
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     content: TranslatableContentCreateNestedOneWithoutCountriesInput
     continent?: ContinentCreateNestedOneWithoutCountriesInput
     cities?: CityCreateNestedManyWithoutCountryInput
@@ -12469,6 +12669,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     type?: string | null
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     cities?: CityUncheckedCreateNestedManyWithoutCountryInput
     places?: PlaceUncheckedCreateNestedManyWithoutCountryInput
   }
@@ -12519,6 +12720,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     code3?: string | null
     type?: string | null
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     country: CountryCreateNestedOneWithoutCitiesInput
     content: TranslatableContentCreateNestedOneWithoutCitiesInput
     places?: PlaceCreateNestedManyWithoutCityInput
@@ -12536,6 +12738,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     code3?: string | null
     type?: string | null
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     places?: PlaceUncheckedCreateNestedManyWithoutCityInput
   }
 
@@ -12562,6 +12765,7 @@ export namespace Prisma {
     phone?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     city?: CityCreateNestedOneWithoutPlacesInput
     country?: CountryCreateNestedOneWithoutPlacesInput
     content: TranslatableContentCreateNestedOneWithoutPlacesInput
@@ -12584,6 +12788,7 @@ export namespace Prisma {
     phone?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
   }
 
   export type PlaceCreateOrConnectWithoutStateInput = {
@@ -12614,6 +12819,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     content?: TranslatableContentUpdateOneRequiredWithoutCountriesNestedInput
     continent?: ContinentUpdateOneWithoutCountriesNestedInput
     cities?: CityUpdateManyWithoutCountryNestedInput
@@ -12630,6 +12836,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     cities?: CityUncheckedUpdateManyWithoutCountryNestedInput
     places?: PlaceUncheckedUpdateManyWithoutCountryNestedInput
   }
@@ -12710,6 +12917,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     type?: string | null
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     content: TranslatableContentCreateNestedOneWithoutCountriesInput
     continent?: ContinentCreateNestedOneWithoutCountriesInput
     states?: StateCreateNestedManyWithoutCountryInput
@@ -12727,6 +12935,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     type?: string | null
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     states?: StateUncheckedCreateNestedManyWithoutCountryInput
     places?: PlaceUncheckedCreateNestedManyWithoutCountryInput
   }
@@ -12744,6 +12953,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     type?: string | null
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     country: CountryCreateNestedOneWithoutStatesInput
     content: TranslatableContentCreateNestedOneWithoutStatesInput
     places?: PlaceCreateNestedManyWithoutStateInput
@@ -12759,6 +12969,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     type?: string | null
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     places?: PlaceUncheckedCreateNestedManyWithoutStateInput
   }
 
@@ -12812,6 +13023,7 @@ export namespace Prisma {
     phone?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     state?: StateCreateNestedOneWithoutPlacesInput
     country?: CountryCreateNestedOneWithoutPlacesInput
     content: TranslatableContentCreateNestedOneWithoutPlacesInput
@@ -12834,6 +13046,7 @@ export namespace Prisma {
     phone?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
   }
 
   export type PlaceCreateOrConnectWithoutCityInput = {
@@ -12864,6 +13077,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     content?: TranslatableContentUpdateOneRequiredWithoutCountriesNestedInput
     continent?: ContinentUpdateOneWithoutCountriesNestedInput
     states?: StateUpdateManyWithoutCountryNestedInput
@@ -12880,6 +13094,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     states?: StateUncheckedUpdateManyWithoutCountryNestedInput
     places?: PlaceUncheckedUpdateManyWithoutCountryNestedInput
   }
@@ -12902,6 +13117,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     country?: CountryUpdateOneRequiredWithoutStatesNestedInput
     content?: TranslatableContentUpdateOneRequiredWithoutStatesNestedInput
     places?: PlaceUpdateManyWithoutStateNestedInput
@@ -12916,6 +13132,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     places?: PlaceUncheckedUpdateManyWithoutStateNestedInput
   }
 
@@ -12980,6 +13197,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     code3?: string | null
     type?: string | null
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     country: CountryCreateNestedOneWithoutCitiesInput
     state?: StateCreateNestedOneWithoutCitiesInput
     content: TranslatableContentCreateNestedOneWithoutCitiesInput
@@ -12998,6 +13216,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     code3?: string | null
     type?: string | null
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
   }
 
   export type CityCreateOrConnectWithoutPlacesInput = {
@@ -13013,6 +13232,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     type?: string | null
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     country: CountryCreateNestedOneWithoutStatesInput
     content: TranslatableContentCreateNestedOneWithoutStatesInput
     cities?: CityCreateNestedManyWithoutStateInput
@@ -13028,6 +13248,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     type?: string | null
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     cities?: CityUncheckedCreateNestedManyWithoutStateInput
   }
 
@@ -13045,6 +13266,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     type?: string | null
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     content: TranslatableContentCreateNestedOneWithoutCountriesInput
     continent?: ContinentCreateNestedOneWithoutCountriesInput
     cities?: CityCreateNestedManyWithoutCountryInput
@@ -13062,6 +13284,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     type?: string | null
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     cities?: CityUncheckedCreateNestedManyWithoutCountryInput
     states?: StateUncheckedCreateNestedManyWithoutCountryInput
   }
@@ -13122,6 +13345,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     code3?: NullableStringFieldUpdateOperationsInput | string | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     country?: CountryUpdateOneRequiredWithoutCitiesNestedInput
     state?: StateUpdateOneWithoutCitiesNestedInput
     content?: TranslatableContentUpdateOneRequiredWithoutCitiesNestedInput
@@ -13139,6 +13363,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     code3?: NullableStringFieldUpdateOperationsInput | string | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
   }
 
   export type StateUpsertWithoutPlacesInput = {
@@ -13159,6 +13384,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     country?: CountryUpdateOneRequiredWithoutStatesNestedInput
     content?: TranslatableContentUpdateOneRequiredWithoutStatesNestedInput
     cities?: CityUpdateManyWithoutStateNestedInput
@@ -13173,6 +13399,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     cities?: CityUncheckedUpdateManyWithoutStateNestedInput
   }
 
@@ -13195,6 +13422,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     content?: TranslatableContentUpdateOneRequiredWithoutCountriesNestedInput
     continent?: ContinentUpdateOneWithoutCountriesNestedInput
     cities?: CityUpdateManyWithoutCountryNestedInput
@@ -13211,6 +13439,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     cities?: CityUncheckedUpdateManyWithoutCountryNestedInput
     states?: StateUncheckedUpdateManyWithoutCountryNestedInput
   }
@@ -13282,6 +13511,7 @@ export namespace Prisma {
     image?: XOR<ImageNullableCreateEnvelopeInput, ImageCreateInput> | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     countries?: CountryCreateNestedManyWithoutContinentInput
   }
 
@@ -13292,6 +13522,7 @@ export namespace Prisma {
     image?: XOR<ImageNullableCreateEnvelopeInput, ImageCreateInput> | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     countries?: CountryUncheckedCreateNestedManyWithoutContinentInput
   }
 
@@ -13313,6 +13544,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     type?: string | null
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     continent?: ContinentCreateNestedOneWithoutCountriesInput
     cities?: CityCreateNestedManyWithoutCountryInput
     states?: StateCreateNestedManyWithoutCountryInput
@@ -13329,6 +13561,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     type?: string | null
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     cities?: CityUncheckedCreateNestedManyWithoutCountryInput
     states?: StateUncheckedCreateNestedManyWithoutCountryInput
     places?: PlaceUncheckedCreateNestedManyWithoutCountryInput
@@ -13351,6 +13584,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     type?: string | null
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     country: CountryCreateNestedOneWithoutStatesInput
     cities?: CityCreateNestedManyWithoutStateInput
     places?: PlaceCreateNestedManyWithoutStateInput
@@ -13365,6 +13599,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     type?: string | null
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     cities?: CityUncheckedCreateNestedManyWithoutStateInput
     places?: PlaceUncheckedCreateNestedManyWithoutStateInput
   }
@@ -13388,6 +13623,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     code3?: string | null
     type?: string | null
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     country: CountryCreateNestedOneWithoutCitiesInput
     state?: StateCreateNestedOneWithoutCitiesInput
     places?: PlaceCreateNestedManyWithoutCityInput
@@ -13405,6 +13641,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     code3?: string | null
     type?: string | null
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     places?: PlaceUncheckedCreateNestedManyWithoutCityInput
   }
 
@@ -13431,6 +13668,7 @@ export namespace Prisma {
     phone?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     city?: CityCreateNestedOneWithoutPlacesInput
     state?: StateCreateNestedOneWithoutPlacesInput
     country?: CountryCreateNestedOneWithoutPlacesInput
@@ -13453,6 +13691,7 @@ export namespace Prisma {
     phone?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
   }
 
   export type PlaceCreateOrConnectWithoutContentInput = {
@@ -13679,12 +13918,20 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     type?: string | null
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
   }
 
   export type ImageUpdateInput = {
     url?: NullableStringFieldUpdateOperationsInput | string | null
     public_id?: NullableStringFieldUpdateOperationsInput | string | null
     uploadFrom?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type GeneralTranslationUpdateInput = {
+    language?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    code3?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CountryUpdateWithoutContinentInput = {
@@ -13695,6 +13942,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     content?: TranslatableContentUpdateOneRequiredWithoutCountriesNestedInput
     cities?: CityUpdateManyWithoutCountryNestedInput
     states?: StateUpdateManyWithoutCountryNestedInput
@@ -13710,6 +13958,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     cities?: CityUncheckedUpdateManyWithoutCountryNestedInput
     states?: StateUncheckedUpdateManyWithoutCountryNestedInput
     places?: PlaceUncheckedUpdateManyWithoutCountryNestedInput
@@ -13724,6 +13973,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
   }
 
   export type CityCreateManyCountryInput = {
@@ -13738,6 +13988,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     code3?: string | null
     type?: string | null
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
   }
 
   export type StateCreateManyCountryInput = {
@@ -13749,6 +14000,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     type?: string | null
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
   }
 
   export type PlaceCreateManyCountryInput = {
@@ -13768,6 +14020,7 @@ export namespace Prisma {
     phone?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
   }
 
   export type FloatFieldUpdateOperationsInput = {
@@ -13787,6 +14040,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     code3?: NullableStringFieldUpdateOperationsInput | string | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     state?: StateUpdateOneWithoutCitiesNestedInput
     content?: TranslatableContentUpdateOneRequiredWithoutCitiesNestedInput
     places?: PlaceUpdateManyWithoutCityNestedInput
@@ -13803,6 +14057,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     code3?: NullableStringFieldUpdateOperationsInput | string | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     places?: PlaceUncheckedUpdateManyWithoutCityNestedInput
   }
 
@@ -13817,6 +14072,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     code3?: NullableStringFieldUpdateOperationsInput | string | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
   }
 
   export type StateUpdateWithoutCountryInput = {
@@ -13826,6 +14082,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     content?: TranslatableContentUpdateOneRequiredWithoutStatesNestedInput
     cities?: CityUpdateManyWithoutStateNestedInput
     places?: PlaceUpdateManyWithoutStateNestedInput
@@ -13839,6 +14096,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     cities?: CityUncheckedUpdateManyWithoutStateNestedInput
     places?: PlaceUncheckedUpdateManyWithoutStateNestedInput
   }
@@ -13851,6 +14109,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
   }
 
   export type PlaceUpdateWithoutCountryInput = {
@@ -13866,6 +14125,7 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     city?: CityUpdateOneWithoutPlacesNestedInput
     state?: StateUpdateOneWithoutPlacesNestedInput
     content?: TranslatableContentUpdateOneRequiredWithoutPlacesNestedInput
@@ -13887,6 +14147,7 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
   }
 
   export type PlaceUncheckedUpdateManyWithoutCountryInput = {
@@ -13905,6 +14166,7 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
   }
 
   export type CityCreateManyStateInput = {
@@ -13919,6 +14181,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     code3?: string | null
     type?: string | null
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
   }
 
   export type PlaceCreateManyStateInput = {
@@ -13938,6 +14201,7 @@ export namespace Prisma {
     phone?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
   }
 
   export type CityUpdateWithoutStateInput = {
@@ -13949,6 +14213,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     code3?: NullableStringFieldUpdateOperationsInput | string | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     country?: CountryUpdateOneRequiredWithoutCitiesNestedInput
     content?: TranslatableContentUpdateOneRequiredWithoutCitiesNestedInput
     places?: PlaceUpdateManyWithoutCityNestedInput
@@ -13965,6 +14230,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     code3?: NullableStringFieldUpdateOperationsInput | string | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     places?: PlaceUncheckedUpdateManyWithoutCityNestedInput
   }
 
@@ -13979,6 +14245,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     code3?: NullableStringFieldUpdateOperationsInput | string | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
   }
 
   export type PlaceUpdateWithoutStateInput = {
@@ -13994,6 +14261,7 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     city?: CityUpdateOneWithoutPlacesNestedInput
     country?: CountryUpdateOneWithoutPlacesNestedInput
     content?: TranslatableContentUpdateOneRequiredWithoutPlacesNestedInput
@@ -14015,6 +14283,7 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
   }
 
   export type PlaceUncheckedUpdateManyWithoutStateInput = {
@@ -14033,6 +14302,7 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
   }
 
   export type PlaceCreateManyCityInput = {
@@ -14052,6 +14322,7 @@ export namespace Prisma {
     phone?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
   }
 
   export type PlaceUpdateWithoutCityInput = {
@@ -14067,6 +14338,7 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     state?: StateUpdateOneWithoutPlacesNestedInput
     country?: CountryUpdateOneWithoutPlacesNestedInput
     content?: TranslatableContentUpdateOneRequiredWithoutPlacesNestedInput
@@ -14088,6 +14360,7 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
   }
 
   export type PlaceUncheckedUpdateManyWithoutCityInput = {
@@ -14106,6 +14379,7 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
   }
 
   export type TranslatedTextCreateManyContentInput = {
@@ -14123,6 +14397,7 @@ export namespace Prisma {
     image?: XOR<ImageNullableCreateEnvelopeInput, ImageCreateInput> | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
   }
 
   export type CountryCreateManyContentInput = {
@@ -14135,6 +14410,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     type?: string | null
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
   }
 
   export type StateCreateManyContentInput = {
@@ -14146,6 +14422,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     type?: string | null
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
   }
 
   export type CityCreateManyContentInput = {
@@ -14160,6 +14437,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     code3?: string | null
     type?: string | null
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
   }
 
   export type PlaceCreateManyContentInput = {
@@ -14179,6 +14457,7 @@ export namespace Prisma {
     phone?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    translations?: XOR<GeneralTranslationListCreateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
   }
 
   export type AlternativeNameUpdateInput = {
@@ -14214,6 +14493,7 @@ export namespace Prisma {
     image?: XOR<ImageNullableUpdateEnvelopeInput, ImageCreateInput> | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     countries?: CountryUpdateManyWithoutContinentNestedInput
   }
 
@@ -14223,6 +14503,7 @@ export namespace Prisma {
     image?: XOR<ImageNullableUpdateEnvelopeInput, ImageCreateInput> | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     countries?: CountryUncheckedUpdateManyWithoutContinentNestedInput
   }
 
@@ -14232,6 +14513,7 @@ export namespace Prisma {
     image?: XOR<ImageNullableUpdateEnvelopeInput, ImageCreateInput> | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
   }
 
   export type CountryUpdateWithoutContentInput = {
@@ -14242,6 +14524,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     continent?: ContinentUpdateOneWithoutCountriesNestedInput
     cities?: CityUpdateManyWithoutCountryNestedInput
     states?: StateUpdateManyWithoutCountryNestedInput
@@ -14257,6 +14540,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     cities?: CityUncheckedUpdateManyWithoutCountryNestedInput
     states?: StateUncheckedUpdateManyWithoutCountryNestedInput
     places?: PlaceUncheckedUpdateManyWithoutCountryNestedInput
@@ -14271,6 +14555,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
   }
 
   export type StateUpdateWithoutContentInput = {
@@ -14280,6 +14565,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     country?: CountryUpdateOneRequiredWithoutStatesNestedInput
     cities?: CityUpdateManyWithoutStateNestedInput
     places?: PlaceUpdateManyWithoutStateNestedInput
@@ -14293,6 +14579,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     cities?: CityUncheckedUpdateManyWithoutStateNestedInput
     places?: PlaceUncheckedUpdateManyWithoutStateNestedInput
   }
@@ -14305,6 +14592,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
   }
 
   export type CityUpdateWithoutContentInput = {
@@ -14316,6 +14604,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     code3?: NullableStringFieldUpdateOperationsInput | string | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     country?: CountryUpdateOneRequiredWithoutCitiesNestedInput
     state?: StateUpdateOneWithoutCitiesNestedInput
     places?: PlaceUpdateManyWithoutCityNestedInput
@@ -14332,6 +14621,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     code3?: NullableStringFieldUpdateOperationsInput | string | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     places?: PlaceUncheckedUpdateManyWithoutCityNestedInput
   }
 
@@ -14346,6 +14636,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     code3?: NullableStringFieldUpdateOperationsInput | string | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
   }
 
   export type PlaceUpdateWithoutContentInput = {
@@ -14361,6 +14652,7 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
     city?: CityUpdateOneWithoutPlacesNestedInput
     state?: StateUpdateOneWithoutPlacesNestedInput
     country?: CountryUpdateOneWithoutPlacesNestedInput
@@ -14382,6 +14674,7 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
   }
 
   export type PlaceUncheckedUpdateManyWithoutContentInput = {
@@ -14400,6 +14693,7 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    translations?: XOR<GeneralTranslationListUpdateEnvelopeInput, GeneralTranslationCreateInput> | GeneralTranslationCreateInput[]
   }
 
   export type NestedFloatFilter<$PrismaModel = never> = {
@@ -14450,6 +14744,10 @@ export namespace Prisma {
      * @deprecated Use ImageDefaultArgs instead
      */
     export type ImageArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ImageDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use GeneralTranslationDefaultArgs instead
+     */
+    export type GeneralTranslationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = GeneralTranslationDefaultArgs<ExtArgs>
     /**
      * @deprecated Use ContinentDefaultArgs instead
      */
