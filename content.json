@@ -1,162 +1,52 @@
 {
 	"en-US": {
-		"ReferralProgramBanner": {
-			"badge_text": "HIGHEST COMMISSION IN THE MARKET",
-			"main_heading_line1": "Earn Up To €1000",
-			"main_heading_line2": "Per Successful Referral",
-			"sub_heading": "Join the program with industry-leading commissions today.",
-			"feature1_title": "Market-leading €1000",
-			"feature1_desc": "highest payout per referral",
-			"feature2_title": "Premium Commission",
-			"feature2_desc": "earn more than anywhere else",
-			"feature3_title": "Instant Payout",
-			"feature3_desc": "get paid immediately after conversion",
-			"button_text": "CLAIM NOW",
-			"footer_text": "Join thousands of partners earning our industry-high commissions."
+		"Jan03_CustomStripeForm_t9k6": {
+			"book_now_pay_later": "Book now pay later"
 		}
 	},
 	"es-ES": {
-		"ReferralProgramBanner": {
-			"badge_text": "LA COMISIÓN MÁS ALTA DEL MERCADO",
-			"main_heading_line1": "Gana Hasta €1000",
-			"main_heading_line2": "Por Referido Exitoso",
-			"sub_heading": "Únete al programa con las comisiones líderes de la industria hoy.",
-			"feature1_title": "€1000 líderes del mercado",
-			"feature1_desc": "pago más alto por referido",
-			"feature2_title": "Comisión Premium",
-			"feature2_desc": "gana más que en cualquier otro lugar",
-			"feature3_title": "Pago Instantáneo",
-			"feature3_desc": "cobra inmediatamente después de la conversión",
-			"button_text": "RECLAMAR AHORA",
-			"footer_text": "Únete a miles de socios que ganan nuestras comisiones líderes de la industria."
+		"Jan03_CustomStripeForm_t9k6": {
+			"book_now_pay_later": "Reserva ahora paga después"
 		}
 	},
 	"de-DE": {
-		"ReferralProgramBanner": {
-			"badge_text": "HÖCHSTE PROVISION AUF DEM MARKT",
-			"main_heading_line1": "Verdienen Sie Bis Zu €1000",
-			"main_heading_line2": "Pro Erfolgreicher Empfehlung",
-			"sub_heading": "Treten Sie noch heute dem Programm mit branchenführenden Provisionen bei.",
-			"feature1_title": "Marktführende €1000",
-			"feature1_desc": "höchste Auszahlung pro Empfehlung",
-			"feature2_title": "Premium-Provision",
-			"feature2_desc": "mehr verdienen als anderswo",
-			"feature3_title": "Sofortige Auszahlung",
-			"feature3_desc": "werden Sie sofort nach der Konvertierung bezahlt",
-			"button_text": "JETZT ANFORDERN",
-			"footer_text": "Schließen Sie sich Tausenden von Partnern an, die unsere branchenführenden Provisionen verdienen."
+		"Jan03_CustomStripeForm_t9k6": {
+			"book_now_pay_later": "Jetzt buchen später bezahlen"
 		}
 	},
 	"fr-FR": {
-		"ReferralProgramBanner": {
-			"badge_text": "COMMISSION LA PLUS ÉLEVÉE DU MARCHÉ",
-			"main_heading_line1": "Gagnez Jusqu'à €1000",
-			"main_heading_line2": "Par Recommandation Réussie",
-			"sub_heading": "Rejoignez le programme avec des commissions leader de l'industrie aujourd'hui.",
-			"feature1_title": "€1000 leader du marché",
-			"feature1_desc": "paiement le plus élevé par recommandation",
-			"feature2_title": "Commission Premium",
-			"feature2_desc": "gagnez plus qu'ailleurs",
-			"feature3_title": "Paiement Instantané",
-			"feature3_desc": "soyez payé immédiatement après la conversion",
-			"button_text": "RÉCLAMER MAINTENANT",
-			"footer_text": "Rejoignez des milliers de partenaires gagnant nos commissions leader de l'industrie."
+		"Jan03_CustomStripeForm_t9k6": {
+			"book_now_pay_later": "Réserver maintenant payer plus tard"
 		}
 	},
 	"ja-JP": {
-		"ReferralProgramBanner": {
-			"badge_text": "市場最高のコミッション",
-			"main_heading_line1": "成功した紹介ごとに",
-			"main_heading_line2": "最大€1000を獲得",
-			"sub_heading": "業界をリードするコミッションのプログラムに今すぐ参加しましょう。",
-			"feature1_title": "市場をリードする€1000",
-			"feature1_desc": "紹介ごとの最高支払額",
-			"feature2_title": "プレミアムコミッション",
-			"feature2_desc": "どこよりも多く稼げます",
-			"feature3_title": "即時支払い",
-			"feature3_desc": "コンバージョ後すぐに支払い",
-			"button_text": "今すぐ請求",
-			"footer_text": "業界最高のコミッションを稼ぐ何千人ものパートナーに参加しましょう。"
+		"Jan03_CustomStripeForm_t9k6": {
+			"book_now_pay_later": "今すぐ予約後払い"
 		}
 	},
 	"pt-PT": {
-		"ReferralProgramBanner": {
-			"badge_text": "MAIOR COMISSÃO DO MERCADO",
-			"main_heading_line1": "Ganhe Até €1000",
-			"main_heading_line2": "Por Indicação Bem-Sucedida",
-			"sub_heading": "Junte-se ao programa com comissões líderes do setor hoje.",
-			"feature1_title": "€1000 líderes de mercado",
-			"feature1_desc": "maior pagamento por indicação",
-			"feature2_title": "Comissão Premium",
-			"feature2_desc": "ganhe mais do que em qualquer outro lugar",
-			"feature3_title": "Pagamento Instantâneo",
-			"feature3_desc": "receba imediatamente após a conversão",
-			"button_text": "RECLAMAR AGORA",
-			"footer_text": "Junte-se a milhares de parceiros que ganham nossas comissões líderes do setor."
+		"Jan03_CustomStripeForm_t9k6": {
+			"book_now_pay_later": "Reserve agora pague depois"
 		}
 	},
 	"it-IT": {
-		"ReferralProgramBanner": {
-			"badge_text": "COMMISSIONE PIÙ ALTA DEL MERCATO",
-			"main_heading_line1": "Guadagna Fino a €1000",
-			"main_heading_line2": "Per Referenza Riuscita",
-			"sub_heading": "Unisciti al programma con commissioni leader del settore oggi.",
-			"feature1_title": "€1000 leader del mercato",
-			"feature1_desc": "pagamento più alto per referenza",
-			"feature2_title": "Commissione Premium",
-			"feature2_desc": "guadagna più che altrove",
-			"feature3_title": "Pagamento Istantaneo",
-			"feature3_desc": "vieni pagato immediatamente dopo la conversione",
-			"button_text": "RICHIEDI ORA",
-			"footer_text": "Unisciti a migliaia di partner che guadagnano le nostre commissioni leader del settore."
+		"Jan03_CustomStripeForm_t9k6": {
+			"book_now_pay_later": "Prenota ora paga dopo"
 		}
 	},
 	"ru-RU": {
-		"ReferralProgramBanner": {
-			"badge_text": "САМАЯ ВЫСОКАЯ КОМИССИЯ НА РЫНКЕ",
-			"main_heading_line1": "Зарабатывайте До €1000",
-			"main_heading_line2": "За Успешную Рекомендацию",
-			"sub_heading": "Присоединяйтесь к программе с лидирующими в отрасли комиссиями уже сегодня.",
-			"feature1_title": "Лидирующие на рынке €1000",
-			"feature1_desc": "самый высокий платеж за рекомендацию",
-			"feature2_title": "Премиальная Комиссия",
-			"feature2_desc": "зарабатывайте больше, чем где-либо еще",
-			"feature3_title": "Мгновенная Выплата",
-			"feature3_desc": "получайте оплату сразу после конверсии",
-			"button_text": "ЗАЯВИТЬ СЕЙЧАС",
-			"footer_text": "Присоединяйтесь к тысячам партнеров, зарабатывающих наши лидирующие в отрасли комиссии."
+		"Jan03_CustomStripeForm_t9k6": {
+			"book_now_pay_later": "Забронируйте сейчас оплатите позже"
 		}
 	},
 	"zh-CN": {
-		"ReferralProgramBanner": {
-			"badge_text": "市场上最高的佣金",
-			"main_heading_line1": "每次成功推荐",
-			"main_heading_line2": "最高可获得€1000",
-			"sub_heading": "立即加入行业领先佣金计划。",
-			"feature1_title": "市场领先的€1000",
-			"feature1_desc": "每次推荐最高支付",
-			"feature2_title": "高级佣金",
-			"feature2_desc": "比其他地方赚得更多",
-			"feature3_title": "即时支付",
-			"feature3_desc": "转化后立即获得付款",
-			"button_text": "立即领取",
-			"footer_text": "加入数千名赚取我们行业领先佣金的合作伙伴。"
+		"Jan03_CustomStripeForm_t9k6": {
+			"book_now_pay_later": "立即预订稍后付款"
 		}
 	},
 	"ko-KR": {
-		"ReferralProgramBanner": {
-			"badge_text": "시장 최고 수수료",
-			"main_heading_line1": "성공적인 추천 시",
-			"main_heading_line2": "최대 €1000 적립",
-			"sub_heading": "업계를 선도하는 수수료 프로그램에 지금 참여하세요.",
-			"feature1_title": "시장을 선도하는 €1000",
-			"feature1_desc": "추천당 최고 지급액",
-			"feature2_title": "프리미엄 수수료",
-			"feature2_desc": "어디에서보다 더 많이 벌 수 있습니다",
-			"feature3_title": "즉시 지급",
-			"feature3_desc": "전환 후 즉시 지급받습니다",
-			"button_text": "지금 요청하기",
-			"footer_text": "업계 최고 수수료를 적립하는 수천 명의 파트너에 합류하세요."
+		"Jan03_CustomStripeForm_t9k6": {
+			"book_now_pay_later": "지금 예약하고 나중에 결제"
 		}
 	}
 }

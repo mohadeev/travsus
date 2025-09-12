@@ -8,7 +8,9 @@ import { checkBookingRole } from '../api-utils/actions/booking/checkBookingRole'
 
 export async function POST(request: NextRequest) {
 	console.log('POST /api/process-payment - Processing payment')
-	const { paymentMethodId, amount, currency } = await request.json()
+	const body = await request.json()
+	console.log('body:', body)
+	const { paymentMethodId, amount, currency } = body
 	const referer = request.headers.get('referer') || ''
 	const url = new URL(referer)
 	const searchParams = url.searchParams

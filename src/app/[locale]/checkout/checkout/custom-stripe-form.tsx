@@ -113,7 +113,7 @@ const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
 			}
 		}
 		fetchPaymentMethods()
-	}, [userId, t])
+	}, [userId])
 
 	const handlePayment = async (formData: any) => {
 		setLoading(true)
@@ -421,13 +421,26 @@ const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
 										</div>
 									))}
 									<div className="flex cursor-pointer items-center space-x-2 rounded-lg border p-4 transition-colors hover:bg-slate-100">
-										<RadioGroupItem value="new_card_" id="new_card_" />
+										<RadioGroupItem value="new_card" id="new_card" />
 										<Label
 											htmlFor="new_card"
 											className="flex flex-1 cursor-pointer items-center"
 										>
 											<CreditCard className="mr-2 h-5 w-5 text-blue-500" />
 											<span>{t('Use_Another_Card')}</span>
+										</Label>
+									</div>
+									<div className="flex cursor-pointer items-center space-x-2 rounded-lg border p-4 transition-colors hover:bg-slate-100">
+										<RadioGroupItem
+											value="book_now_pay_later"
+											id="book_now_pay_later"
+										/>
+										<Label
+											htmlFor="book_now_pay_later"
+											className="flex flex-1 cursor-pointer items-center"
+										>
+											<span className="mr-2 h-5 w-5 text-green-500">💸</span>
+											<span>{t('Book_Now_Pay_Later')}</span>
 										</Label>
 									</div>
 								</RadioGroup>
