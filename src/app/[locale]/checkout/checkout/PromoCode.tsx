@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react'
 import { updateBookingLineItems } from '@/app/[locale]/GlobalRedux/Features/bookingSlice/bookingSlice'
 import { useDispatch } from 'react-redux'
 import confetti from 'canvas-confetti'
-import DiscountSuccessModal from './discount-success-modal'
+import DiscountSuccessModal from './DiscountSuccessModal'
 import { useTranslations } from '@/lib/i18n'
 
 export default function PromoCodeForm() {

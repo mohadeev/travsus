@@ -4,7 +4,7 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { Label } from '@/components/ui/label'
 import { Checkbox } from '@/components/ui/checkbox'
 import { CreditCard } from 'lucide-react'
-import NewCardForm from './new-card-form'
+import NewCardForm from './NewCardForm'
 
 interface PaymentMethodsProps {
 	paymentMethods: any[]
