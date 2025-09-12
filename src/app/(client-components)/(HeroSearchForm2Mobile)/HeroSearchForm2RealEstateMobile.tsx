@@ -37,7 +37,7 @@ const HeroSearchForm2RealEstateMobile = () => {
 		return (
 			<button
 				onClick={openModal}
-				className="relative flex w-full items-center rounded-full border border-neutral-200 px-4 py-2 pr-11 shadow-lg dark:border-neutral-6000"
+				className="dark:border-neutral-6000 relative flex w-full items-center rounded-full border border-neutral-200 px-4 py-2 pr-11 shadow-lg"
 			>
 				<MagnifyingGlassIcon className="h-5 w-5 flex-shrink-0" />
 
@@ -50,7 +50,7 @@ const HeroSearchForm2RealEstateMobile = () => {
 					</span>
 				</div>
 
-				<span className="absolute right-2 top-1/2 flex h-9 w-9 -translate-y-1/2 transform items-center justify-center rounded-full border border-neutral-200 dark:border-neutral-6000 dark:text-neutral-300">
+				<span className="dark:border-neutral-6000 absolute right-2 top-1/2 flex h-9 w-9 -translate-y-1/2 transform items-center justify-center rounded-full border border-neutral-200 dark:text-neutral-300">
 					<svg
 						viewBox="0 0 16 16"
 						aria-hidden="true"
@@ -72,7 +72,7 @@ const HeroSearchForm2RealEstateMobile = () => {
 			<Transition appear show={showModal} as={Fragment}>
 				<Dialog
 					as="div"
-					className="HeroSearchFormMobile__Dialog z-max relative"
+					className="HeroSearchFormMobile__Dialog relative z-[1000000000]"
 					onClose={closeModal}
 				>
 					<div className="fixed inset-0 bg-neutral-100 dark:bg-neutral-900">
