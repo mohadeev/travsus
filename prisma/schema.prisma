@@ -307,6 +307,8 @@ type TourTranslation {
   // For day translations
   days      DayTranslation[]
 }
+
+
 type DayTranslation {
   hidden      Boolean   @default(false)
   name        String
@@ -511,13 +513,25 @@ model Post {
   title         String
   content       String
   excerpt       String
+  tags          String[]
   featuredImage String?
   author        User     @relation(fields: [authorId], references: [id])
   authorId      String   @db.ObjectId
   createdAt     DateTime @default(now())
-  tags          String[]
   imageIds      String[] @db.ObjectId
+  translations BlogTranslation[]
 }
+
+type BlogTranslation {
+  language      String  // e.g., "en-US", "es-ES", "de-DE", etc.
+  title         String
+  content       String
+  excerpt       String
+  tags          String[]
+}
+
+
+
 
 type Image {
   id       String @db.ObjectId

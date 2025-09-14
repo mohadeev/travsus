@@ -18,7 +18,7 @@ export interface GuestsInputProps {
 	submitLink: PathName
 }
 
-const GuestsInput: FC<GuestsInputProps> = ({
+const GuestsInputDesktop: FC<GuestsInputProps> = ({
 	fieldClassName = '[ nc-hero-field-padding--small ]',
 	className = '',
 	autoFocus = false,
@@ -140,4 +140,4 @@ const GuestsInput: FC<GuestsInputProps> = ({
 	)
 }
 
-export default GuestsInput
+export default GuestsInputDesktop

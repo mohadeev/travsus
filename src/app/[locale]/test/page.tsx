@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 
 export default function HomeBanner() {
-	const t = useTranslations("app_locale_test_page")
+	const t = useTranslations('app_locale_test_page')
 	const [isVisible, setIsVisible] = useState(true)
 
 	useEffect(() => {
@@ -39,7 +39,7 @@ export default function HomeBanner() {
 							: 'translate-y-10 opacity-0',
 					)}
 				>
-					<h1 className="font-serif mb-6 text-7xl font-extrabold tracking-tight text-black sm:text-5xl md:text-6xl lg:text-[100px] lg:font-extrabold">
+					<h1 className="font-serif mb-6 text-4xl font-extrabold tracking-tight text-black sm:text-5xl md:text-6xl lg:text-[100px] lg:font-extrabold">
 						{t('app_locale_test_page_Travel_With_Ultimate_Flexibility')}
 					</h1>
 					<p className="mx-auto mb-10 max-w-2xl text-lg font-medium text-black sm:text-xl md:text-2xl">
@@ -79,7 +79,7 @@ function FeatureItem({
 	description: string
 	onClick: () => void
 }) {
-	const t = useTranslations("app_locale_test_page")
+	const t = useTranslations('app_locale_test_page')
 
 	return (
 		<div
@@ -96,20 +96,3 @@ function FeatureItem({
 		</div>
 	)
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
