@@ -124,6 +124,7 @@ export async function PUT(
 			const { id, ...dataNewObject }: any = body
 			newObject = dataNewObject
 		}
+		console.log('newObject:', newObject)
 
 		const updatedTour = await prisma.tour.update({
 			where: {

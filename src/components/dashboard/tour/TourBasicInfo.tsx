@@ -21,7 +21,7 @@ import {
 	FormControl,
 	FormMessage,
 } from '@/components/ui/form'
-import type { TourFormValues } from '../tour-builder'
+import type { TourFormValues } from './tour-builder'
 
 export default function TourBasicInfo() {
 	const [newTag, setNewTag] = useState('')
