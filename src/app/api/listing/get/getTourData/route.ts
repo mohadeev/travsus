@@ -59,9 +59,10 @@ export async function GET(request: NextRequest) {
 				},
 			},
 		})
-		const currentLang = tour.translations.find(
+		const currentLang = tour?.translations?.find(
 			({ language }) => language === languageCode,
 		)
+		console.log('currentLang:', currentLang)
 		if (!tour) {
 			console.log('Tour not found for ID:', id)
 			return NextResponse.json({ message: 'Tour not found' }, { status: 404 })
@@ -92,6 +93,7 @@ export async function GET(request: NextRequest) {
 							state: true,
 						},
 					})
+					console.log('cities', JSON.stringify(cities))
 
 					// Process each city to get the correct translation
 
@@ -109,7 +111,7 @@ export async function GET(request: NextRequest) {
 
 		const translatedReviews = reviews.map((review) => {
 			return {
-				...review.translations.find(({ language }) => languageCode),
+				...review?.translations?.find(({ language }) => languageCode),
 				language: languageCode,
 			}
 		})
@@ -119,7 +121,7 @@ export async function GET(request: NextRequest) {
 			formattedReviews,
 			language: languageCode,
 			reviewsCount,
-			continentInfo, // Add the new continent information object
+			continentInfo,
 			...currentLang,
 			days: processedDays,
 		}

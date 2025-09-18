@@ -13,7 +13,7 @@ export function generateTourLink(
 	const day = data.days[0]
 	const toursLabel = t('tours_slug')
 	const like = slugifySecond(
-		`/${slugify(day.countryName || '')}/${slugify(day.cityName || '')}/${slugify(toursLabel)}/${slugify(data.name || '')}/${data.id}`,
+		`/${slugify(day.countryName || 'morocco')}/${slugify(day.cityName || 'marrakech')}/${slugify(toursLabel)}/${slugify(data.name || '')}/${data.id}`,
 	)
 	return `${locale}${like}`
 }

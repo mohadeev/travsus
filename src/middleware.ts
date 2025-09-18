@@ -141,28 +141,28 @@ export default async function middleware(request: NextRequest) {
 	const serviceId =
 		parts.length === 11 ? parts[parts.length - 2] : parts[parts.length - 1]
 
-	if ((last === 'q=tour' && parts.length === 11) || parts.length === 7) {
-		try {
-			const serviceDataResponse = await fetch(
-				`${process.env.NEXTAUTH_URL}/api/update-slug?serviceId=${serviceId}&locale=${locale}`,
-				{
-					method: 'GET',
-					headers: {
-						'Content-Type': 'application/json',
-					},
-				},
-			)
-			const serviceData: any = await serviceDataResponse.json()
-			const link = serviceData.data.link
+	// if ((last === 'q=tour' && parts.length === 11) || parts.length === 7) {
+	// 	try {
+	// 		const serviceDataResponse = await fetch(
+	// 			`${process.env.NEXTAUTH_URL}/api/update-slug?serviceId=${serviceId}&locale=${locale}`,
+	// 			{
+	// 				method: 'GET',
+	// 				headers: {
+	// 					'Content-Type': 'application/json',
+	// 				},
+	// 			},
+	// 		)
+	// 		const serviceData: any = await serviceDataResponse.json()
+	// 		const link = serviceData.data.link
 
-			if ('/' + link !== pathname) {
-				return NextResponse.redirect(new URL(url.origin + '/' + link), 301)
-			}
-		} catch (error) {
-			console.error('Error in tour redirect:', error)
-			// Fallback to continue with normal middleware
-		}
-	}
+	// 		if ('/' + link !== pathname) {
+	// 			return NextResponse.redirect(new URL(url.origin + '/' + link), 301)
+	// 		}
+	// 	} catch (error) {
+	// 		console.error('Error in tour redirect:', error)
+	// 		// Fallback to continue with normal middleware
+	// 	}
+	// }
 
 	// Continue with i18n middleware
 	return createMiddleware(routing)(request)
