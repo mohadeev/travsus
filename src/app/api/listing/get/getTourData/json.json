@@ -1,0 +1,120 @@
+{
+	"id": "67e5a961636b9ead6fb9b280",
+	"geo": { "lat": 31.63, "log": -8 },
+	"image": {
+		"url": "https://res.cloudinary.com/travsus/image/upload/v1744298641/cities/city_67e5a961636b9ead6fb9b280.jpg",
+		"public_id": "cities/city_67e5a961636b9ead6fb9b280",
+		"uploadFrom": "https://cdn.pixabay.com/photo/2017/06/19/16/25/marrakech-2420033_1280.jpg"
+	},
+	"code3": "MAR",
+	"type": "city",
+	"translations": [
+		{
+			"language": "ko-KR",
+			"name": "마라케시",
+			"description": "마라케시는 활기찬 수크, 생동감 넘치는 제마 엘 프나 광장, 바히아  궁전과 엘 바디 궁전 같은 역사적인 궁전들로 유명합니다. 이 도시는 또한 마조렐 정원과 같은 아름다운 정원들과 전통적인 모로코 건축으로도 잘 알려져 있습니다.",
+			"code3": "MAR"
+		}
+	],
+	"country": {
+		"id": "67e120b734623c9e568da348",
+		"code": "MA",
+		"code3": "MAR",
+		"geo": { "lat": 32, "log": -5 },
+		"translations": [
+			{
+				"language": "ko-KR",
+				"name": "모로코",
+				"description": "대서양과 지중해를 따라 해안선을 가진 북아프리카에 위치한 모로코는 베르베르, 아랍, 유럽 문화의 영향으로 구별됩니다. 수도 라바트와 최대 도시 카사블랑카는 그 활기찬 유산을 보여줍니다. 마라케시의 제마 엘 프나 광장과 페즈의 중세 메디나 같은 랜드마크로 유명한 모로코는 역사가 풍부하고 이 지역 고유의 향신료와 맛을 특징으로 하는 요리로 유명합니다. 주요 산업에는 관광업, 농업, 인산염이 포함됩니다. 아프리카와 유럽 사이의 교차로로서 모로코의 중요한 위치는 다양한 문화적, 경제적 경관에 기여합니다.",
+				"code3": "MAR"
+			}
+		],
+		"continent": {
+			"id": "68a50362adce98fe3b0881be",
+			"translations": [
+				{
+					"language": "en-US",
+					"name": "Africa",
+					"description": "",
+					"code3": "AF"
+				},
+				{
+					"language": "es-ES",
+					"name": "África",
+					"description": "",
+					"code3": "AF"
+				},
+				{
+					"language": "de-DE",
+					"name": "Afrika",
+					"description": "",
+					"code3": "AF"
+				},
+				{
+					"language": "fr-FR",
+					"name": "Afrique",
+					"description": "",
+					"code3": "AF"
+				},
+				{
+					"language": "ja-JP",
+					"name": "アフリカ",
+					"description": "",
+					"code3": "AF"
+				},
+				{
+					"language": "pt-PT",
+					"name": "África",
+					"description": "",
+					"code3": "AF"
+				},
+				{
+					"language": "it-IT",
+					"name": "Africa",
+					"description": "",
+					"code3": "AF"
+				},
+				{
+					"language": "ru-RU",
+					"name": "Африка",
+					"description": "",
+					"code3": "AF"
+				},
+				{
+					"language": "zh-CN",
+					"name": "非洲",
+					"description": "",
+					"code3": "AF"
+				},
+				{
+					"language": "ko-KR",
+					"name": "아프리카",
+					"description": "",
+					"code3": "AF"
+				}
+			]
+		}
+	},
+	"state": {
+		"id": "68a50ea16f738a3f7ff363c4",
+		"translations": [
+			{
+				"language": "ko-KR",
+				"name": "마라케시-사피",
+				"description": "",
+				"code3": "07"
+			}
+		]
+	},
+	"continent": {
+		"id": "68a50362adce98fe3b0881be",
+		"translations": [
+			{
+				"language": "ko-KR",
+				"name": "아프리카",
+				"description": "",
+				"code3": "AF"
+			}
+		]
+	}
+}

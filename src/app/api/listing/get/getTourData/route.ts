@@ -62,45 +62,105 @@ export async function GET(request: NextRequest) {
 		const currentLang = tour?.translations?.find(
 			({ language }) => language === languageCode,
 		)
-		console.log('currentLang:', currentLang)
 		if (!tour) {
 			console.log('Tour not found for ID:', id)
 			return NextResponse.json({ message: 'Tour not found' }, { status: 404 })
 		}
 
-		let processedDays = tour.days || []
+		let processedDays = currentLang?.days || []
 		let continentInfo = null
 
 		if (Array.isArray(processedDays) && processedDays.length > 0) {
 			const cityIds = processedDays
 				.filter((day) => day.cityId && day.cityId !== 'undefined')
 				.map((day) => day.cityId)
+
 			if (cityIds.length > 0) {
 				try {
+					// Only select the bare minimum fields
 					const cities = await placesClient.city.findMany({
 						where: { id: { in: cityIds } },
-						include: {
-							content: {
-								include: {
-									translations: true, // Get ALL translations
-								},
-							},
+						select: {
+							id: true,
+							geo: true,
+							image: true,
+							code3: true,
+							type: true,
+							translations: true, // Get all translations but we'll filter later
 							country: {
-								include: {
-									continent: true,
+								select: {
+									id: true,
+									code: true,
+									code3: true,
+									geo: true,
+									translations: true, // Get all country translations
+									continent: {
+										select: {
+											id: true,
+											translations: true, // Get all continent translations
+										},
+									},
 								},
 							},
-							state: true,
+							state: {
+								select: {
+									id: true,
+									translations: true, // Get all state translations
+								},
+							},
 						},
 					})
-					console.log('cities', JSON.stringify(cities))
 
-					// Process each city to get the correct translation
+					// Filter translations in JavaScript to only keep en-US
+					const citiesWithEnUs = cities.map((city) => ({
+						...city,
+						translations:
+							city.translations?.filter((t) => t.language === languageCode) ||
+							[],
+						country: city.country
+							? {
+									...city.country,
+									translations:
+										city.country.translations?.filter(
+											(t) => t.language === languageCode,
+										) || [],
+								}
+							: null,
+						state: city.state
+							? {
+									...city.state,
+									translations:
+										city.state.translations?.filter(
+											(t) => t.language === languageCode,
+										) || [],
+								}
+							: null,
+						continent: city.country?.continent
+							? {
+									...city.country.continent,
+									translations:
+										city.country.continent.translations?.filter(
+											(t) => t.language === languageCode,
+										) || [],
+								}
+							: null,
+					}))
 
 					// Update each day with translated city information
 					processedDays = processedDays.map((day) => {
+						const cityData = citiesWithEnUs.find(({ id }) => id === day.cityId)
+						const locationObject = createEnUsLocationObject(
+							cityData,
+							languageCode,
+						)
+
+						console.log('-------------------------------------')
+						console.log('cityData', JSON.stringify(cityData))
+						console.log('-------------------------------------')
+
 						return {
 							...day,
+							...locationObject,
 						}
 					})
 				} catch (cityError) {
@@ -115,6 +175,7 @@ export async function GET(request: NextRequest) {
 				language: languageCode,
 			}
 		})
+		// console.log('processedDays:', processedDays[0])
 		const tourData = {
 			...tour,
 			translatedReviews: translatedReviews,
@@ -141,3 +202,27 @@ export async function GET(request: NextRequest) {
 		await placesClient.$disconnect()
 	}
 }
+
+function createEnUsLocationObject(city, language) {
+	// Extract en-US translations
+	const cityEnUs = city.translations?.find((t) => t.language === language)
+	const countryEnUs = city.country?.translations?.find(
+		(t) => t.language === language,
+	)
+	const continentEnUs = city.continent?.translations?.find(
+		(t) => t.language === language,
+	)
+	const stateEnUs = city.state?.translations?.find(
+		(t) => t.language === language,
+	)
+
+	// Create the simplified object
+	return {
+		state: stateEnUs?.name || '', // "Marrakech-Asafi"
+		city: cityEnUs?.name || '', // "Marrakech"
+		country: countryEnUs?.name || '', // "Morocco"
+		continent: continentEnUs?.name || '', // "Africa"
+	}
+}
+
+// Usage

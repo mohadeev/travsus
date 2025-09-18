@@ -50,6 +50,7 @@ const ListingExperiencesDetailPage: FC<ListingExperiencesDetailPageProps> = ({
 	serviceData,
 }) => {
 	const t = useTranslations('servicedetail_listingexperiencesdetail_page')
+	console.log('serviceData:', serviceData)
 	useEffect(() => {
 		;(async () => {
 			try {

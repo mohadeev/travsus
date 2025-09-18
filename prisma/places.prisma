@@ -42,7 +42,6 @@ model Country {
   type       String?
   places     Place[]
   translations GeneralTranslation[]
-
 }
 
 // State/Province Model

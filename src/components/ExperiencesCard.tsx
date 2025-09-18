@@ -17,6 +17,7 @@ import slugifySecond from '@/utils/slugify'
 import { useTranslations } from '@/lib/i18n'
 import { transliterate as tr, slugify } from 'transliteration'
 import { useLocale } from 'next-intl'
+import { useRouter } from 'next/navigation'
 
 export interface ExperiencesCardProps {
 	className?: string
@@ -96,11 +97,14 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 		return input?.toLowerCase()?.replace(/\s+/g, '-')
 	}
 
+	const router = useRouter()
+
 	const href = `/${locale}/${slugifySecond(
 		`${slugify(day?.country?.name)}/${slugify(day?.city?.name)}/${slugify(secondT('tours'))}/${slugify(title)}/${serviceId}`,
 	)}` as Route
 
 	const handleCardClick = () => {
+		router.push(href)
 		setClickedCard(true)
 		setTimeout(() => {
 			setClickedCard(false)
