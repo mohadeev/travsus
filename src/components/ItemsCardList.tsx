@@ -252,8 +252,8 @@ const ItemsCardList: FC<ItemsCardListProps> = ({
 
 			{loading ? (
 				<div className="mb-5">
-					<div className="h-8 w-64 animate-pulse rounded bg-gray-200"></div>
-					<div className="mt-2 h-4 w-96 animate-pulse rounded bg-gray-200"></div>
+					<div className="h-8 w-3/4 animate-pulse rounded bg-gray-200 sm:w-64"></div>
+					<div className="mt-2 h-4 w-5/6 animate-pulse rounded bg-gray-200 sm:w-96"></div>
 				</div>
 			) : (
 				<Heading desc={displaySubheading}>{displayHeading}</Heading>

@@ -40,7 +40,7 @@ const ListingBeforLoading: FC<ListingBeforLoadingProps> = ({
 			<Transition appear show={isOpen} as={Fragment}>
 				<Dialog
 					as="div"
-					className="HeroSearchFormMobile__Dialog z-max fixed bg-black p-10"
+					className="HeroSearchFormMobile__Dialog z-max fixed bg-black"
 					onClose={() => haneleClose(closeModal)}
 				>
 					<div className="fixed inset-0 bg-white dark:bg-neutral-900">
@@ -56,7 +56,7 @@ const ListingBeforLoading: FC<ListingBeforLoadingProps> = ({
 							>
 								<Dialog.Panel className="relative flex h-full flex-1 flex-col justify-between overflow-auto">
 									<>
-										<div className="flex w-full items-center justify-center bg-white py-1 pt-12">
+										<div className="flex w-full items-center justify-center bg-white">
 											<div className="w-full bg-white dark:bg-neutral-900">
 												<SiteHeader />
 												<ListingExperiencesDetailPage serviceData={service} />
