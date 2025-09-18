@@ -50,7 +50,6 @@ const ListingExperiencesDetailPage: FC<ListingExperiencesDetailPageProps> = ({
 	serviceData,
 }) => {
 	const t = useTranslations('servicedetail_listingexperiencesdetail_page')
-	console.log('serviceData:', serviceData)
 	useEffect(() => {
 		;(async () => {
 			try {
@@ -84,7 +83,6 @@ const ListingExperiencesDetailPage: FC<ListingExperiencesDetailPageProps> = ({
 		days,
 		startAddress,
 		faq,
-		inclusions,
 	}: any = useSelector((state: any) => state.creatingServiceSlice.service)
 	const service: any = useSelector(
 		(state: any) => state.creatingServiceSlice.service,

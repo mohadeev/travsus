@@ -1,9 +1,10 @@
 import React, { FC, Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/solid'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import TourHeader from '@/app/[locale]/[country]/[city]/[category]/[name]/(service-detail)/[listingExperiencesDetail]/TourHeader'
 import ListingExperiencesDetailsImages from '@/app/[locale]/[country]/[city]/[category]/[name]/(service-detail)/[listingExperiencesDetail]/ListingExperiencesDetailsImages'
+import ListingExperiencesDetailPage from '@/app/[locale]/[country]/[city]/[category]/[name]/(service-detail)/[listingExperiencesDetail]/page'
 
 interface ListingBeforLoadingProps {
 	renderChildren?: (p: { openModal: () => void }) => React.ReactNode
@@ -30,6 +31,9 @@ const ListingBeforLoading: FC<ListingBeforLoadingProps> = ({
 		closeModal()
 		// dispatch(mobileFooterStickyToggleHanlder({ value: false }))
 	}
+	const service: any = useSelector(
+		(state: any) => state.creatingServiceSlice.service,
+	)
 	return (
 		<>
 			<Transition appear show={isOpen} as={Fragment}>
@@ -53,10 +57,7 @@ const ListingBeforLoading: FC<ListingBeforLoadingProps> = ({
 									<>
 										<div className="flex w-full items-center justify-center bg-white py-1 pt-12">
 											<div className="w-full bg-white dark:bg-neutral-900">
-												<div className={'container'}>
-													<TourHeader />
-												</div>
-												<ListingExperiencesDetailsImages />
+												<ListingExperiencesDetailPage serviceData={service} />
 											</div>
 										</div>
 									</>
