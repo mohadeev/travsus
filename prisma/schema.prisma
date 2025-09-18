@@ -251,7 +251,7 @@ model Tour {
   subtitle       String?
   overview       String?
   productCategory String?
-  slugs          String[]  // Changed slug from String? to String[] to store multiple language slugs
+  slugs          Slugs[]  // Changed slug from String? to String[] to store multiple language slugs
   images         Json[]
   people         Json[]
   services       Json[]
@@ -293,7 +293,6 @@ model Tour {
   conclusionContentId String?             @db.ObjectId
   conclusionContent   TranslatableContent? @relation("TourConclusionContent", fields: [conclusionContentId], references: [id])
   translations   TourTranslation[]
-
   @@map("tours")
 }
 
@@ -303,11 +302,14 @@ type TourTranslation {
   subtitle  String?
   overview  String?
   conclusion String?
-  
   // For day translations
   days      DayTranslation[]
 }
 
+type Slugs {
+  language  String
+  slug String
+}
 
 type DayTranslation {
   hidden      Boolean   @default(false)

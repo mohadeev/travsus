@@ -35,30 +35,21 @@ const TourHeader = () => {
 
 	const {
 		name: title,
-		region,
-		start,
-		id,
-		images,
-		overview,
-		reviews,
 		days,
 		liked,
-		startAddress,
-		endAddress,
-		faq,
-		inclusions,
-		loading,
 		rating,
 		reviewsCount,
 		continentInfo,
 		recommendationPercentage,
+		loading,
 	}: any = useSelector((state: any) => state.creatingServiceSlice.service)
 	const day = days?.[0]
 	// Safely extract city name - handle both string and object cases
-	const city = day?.cityName
+	const city = day?.city
+	const continent = day?.continent
 	// Safely extract region name - handle both string and object cases
-	const regionName = day?.stateName
-	const countryName = day?.countryName
+	const regionName = day?.state
+	const countryName = day?.country
 
 	// Share functionality
 	const toggleDropdown = () => {
@@ -124,7 +115,7 @@ const TourHeader = () => {
 	}
 
 	const links = [
-		{ value: continentInfo?.name, href: '#' },
+		{ value: continent, href: '#' },
 		{ value: countryName, href: '#' },
 		{
 			value: regionName,

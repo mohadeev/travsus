@@ -59,10 +59,12 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 		start,
 		liked,
 		days,
+		slugs,
 		accommodations,
 	}: any = data
 	const [priceData, setPriceData] = useState({})
 	const day = days[0]
+	console.log(slugs)
 
 	useEffect(() => {
 		const pricesData = async () => {
@@ -101,12 +103,12 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 	}
 
 	const router = useRouter()
-
+	console.log('data:', data)
 	const href = `/${locale}/${slugifySecond(
 		`${slugify(day?.country?.name)}/${slugify(day?.city?.name)}/${slugify(secondT('tours'))}/${slugify(title)}/${serviceId}`,
 	)}` as Route
 	const [isLoading, setIsLoading] = useState(false)
-const dispatch = useDispatch()
+	const dispatch = useDispatch()
 	const handleCardClick = () => {
 		setIsLoading(true)
 		dispatch(updateServiceState({ path: 'service', value: data }))
@@ -160,9 +162,11 @@ const dispatch = useDispatch()
 				<div className="space-y-2">
 					<div className="flex items-center text-sm leading-none text-neutral-500 dark:text-neutral-400">
 						{size === 'default' && <MapPinIcon className="mr-1 h-4 w-4" />}
-						<button className="rounded-md border border-black px-2 py-1 text-xs font-semibold text-black">
-							{data?.days[0]?.country?.name} - {data?.days[0]?.city?.name}
-						</button>
+						{data?.days[0]?.country && data?.days[0]?.city && (
+							<button className="rounded-md border border-black px-2 py-1 text-xs font-semibold text-black">
+								{data?.days[0]?.country} - {data?.days[0]?.city}
+							</button>
+						)}
 					</div>
 
 					<div className="flex items-center">

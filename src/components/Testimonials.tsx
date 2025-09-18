@@ -135,10 +135,7 @@ const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => {
 										{
 											year: 'numeric',
 											month: 'long',
-<<<<<<< HEAD
-=======
 											day: 'numeric',
->>>>>>> 121f03fcbc037ccedcd1bd50093388bedc4c70ba
 										},
 									)}
 								</span>

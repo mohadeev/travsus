@@ -23,6 +23,7 @@ async function getOptimizedToursWithTranslations(
 		skip: (page - 1) * limit,
 		take: limit,
 		select: {
+			slugs: true,
 			translations: true,
 			id: true,
 			images: true,
