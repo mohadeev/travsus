@@ -1,22 +1,13 @@
 'use client'
 import React from 'react'
-import SectionSubscribe2 from '@/components/SectionSubscribe2'
-import BgGlassmorphism from '@/components/BgGlassmorphism'
-import SectionGridFilterCard from './(experience-listings)/SectionGridFilterCard'
 import { JsonLd } from 'react-schemaorg'
 import Home from './test/page'
-import Roulette from '@/components/Roulette/Roulette'
 import ItemsCardList from '@/components/ItemsCardList'
-import SectionGridFeaturePlaces from '@/components/SectionGridFeaturePlaces'
 import { useTranslations } from '@/lib/i18n'
-import ExperiencesCard from '@/components/ExperiencesCard'
-import TravelBanner from './TravelBanner'
-import BannerHome from './BannerHome'
-import TourCards from './TourCards'
 import BookNowAndPayLaterBanner from './BookNowAndPayLaterBanner'
 import Testimonials from '@/components/Testimonials'
-import CollectionsGrid from './destinations/[code]/Collection'
 import ReferralBanner from '@/components/ReferralBanner'
+import TrustedBrand from './TrustedBrand'
 
 function ClientHomePage() {
 	const DUMMY_EXPERIENCE = {
@@ -161,6 +152,10 @@ function ClientHomePage() {
 					<Home />
 					{/* <TourCards /> */}
 				</div>
+				{/* <div className="container">
+					<TrustedBrand />
+				</div> */}
+
 				<div className="container p-0 px-0">
 					{/* <SectionGridFeaturePlaces /> */}
 					{/* <SectionGridFilterCard layout="row" /> */}

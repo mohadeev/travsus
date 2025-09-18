@@ -19,6 +19,8 @@ import { transliterate as tr, slugify } from 'transliteration'
 import { useLocale } from 'next-intl'
 import { useRouter } from 'next/navigation'
 import ListingBeforLoading from './ListingBeforLoading'
+import { updateServiceState } from '@/app/[locale]/GlobalRedux/Features/creatingServiceSlice/creatingServiceSlice'
+import { useDispatch } from 'react-redux'
 
 export interface ExperiencesCardProps {
 	className?: string
@@ -104,9 +106,11 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 		`${slugify(day?.country?.name)}/${slugify(day?.city?.name)}/${slugify(secondT('tours'))}/${slugify(title)}/${serviceId}`,
 	)}` as Route
 	const [isLoading, setIsLoading] = useState(false)
-
+const dispatch = useDispatch()
 	const handleCardClick = () => {
 		setIsLoading(true)
+		dispatch(updateServiceState({ path: 'service', value: data }))
+
 		router.push(href)
 		setClickedCard(true)
 		setTimeout(() => {
