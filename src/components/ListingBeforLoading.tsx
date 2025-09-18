@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import TourHeader from '@/app/[locale]/[country]/[city]/[category]/[name]/(service-detail)/[listingExperiencesDetail]/TourHeader'
 import ListingExperiencesDetailsImages from '@/app/[locale]/[country]/[city]/[category]/[name]/(service-detail)/[listingExperiencesDetail]/ListingExperiencesDetailsImages'
 import ListingExperiencesDetailPage from '@/app/[locale]/[country]/[city]/[category]/[name]/(service-detail)/[listingExperiencesDetail]/page'
+import SiteHeader from '@/app/(client-components)/(Header)/SiteHeader'
 
 interface ListingBeforLoadingProps {
 	renderChildren?: (p: { openModal: () => void }) => React.ReactNode
@@ -57,6 +58,7 @@ const ListingBeforLoading: FC<ListingBeforLoadingProps> = ({
 									<>
 										<div className="flex w-full items-center justify-center bg-white py-1 pt-12">
 											<div className="w-full bg-white dark:bg-neutral-900">
+												<SiteHeader />
 												<ListingExperiencesDetailPage serviceData={service} />
 											</div>
 										</div>
