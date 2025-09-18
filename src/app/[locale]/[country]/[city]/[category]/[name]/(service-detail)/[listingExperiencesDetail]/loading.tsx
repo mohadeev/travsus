@@ -1,4 +1,7 @@
-// app/target-page/loading.tsx
 export default function Loading() {
-	return <p>Loading...</p>
+	return (
+		<div style={{ padding: '2rem', fontSize: '1.2rem' }}>
+			⏳ Loading dashboard...
+		</div>
+	)
 }

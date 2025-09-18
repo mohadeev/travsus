@@ -18,6 +18,7 @@ import { useTranslations } from '@/lib/i18n'
 import { transliterate as tr, slugify } from 'transliteration'
 import { useLocale } from 'next-intl'
 import { useRouter } from 'next/navigation'
+import ListingBeforLoading from './ListingBeforLoading'
 
 export interface ExperiencesCardProps {
 	className?: string
@@ -102,8 +103,10 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 	const href = `/${locale}/${slugifySecond(
 		`${slugify(day?.country?.name)}/${slugify(day?.city?.name)}/${slugify(secondT('tours'))}/${slugify(title)}/${serviceId}`,
 	)}` as Route
+	const [isLoading, setIsLoading] = useState(false)
 
 	const handleCardClick = () => {
+		setIsLoading(true)
 		router.push(href)
 		setClickedCard(true)
 		setTimeout(() => {
@@ -193,6 +196,7 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 			className={`nc-ExperiencesCard group relative ${className}`}
 			onClick={handleCardClick}
 		>
+			<ListingBeforLoading isOpen={isLoading} />
 			{/* Background animation - fast (300ms) */}
 			<div
 				className={`absolute inset-0 rounded-xl bg-gray-200 ${
@@ -210,12 +214,16 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 			></div>
 
 			<div className="relative z-1 cursor-pointer">
-				<Link href={href} className="block overflow-hidden rounded-xl">
+				<div
+					// href={href}
+					// prefetch={false}
+					className="block overflow-hidden rounded-xl"
+				>
 					<>
 						{renderSliderGallery()}
 						<div className="">{renderContent()}</div>
 					</>
-				</Link>
+				</div>
 			</div>
 		</div>
 	)
