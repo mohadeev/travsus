@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { PrismaClient } from '@prisma/client'
+import extractLanguageFromRequest from '../getTourData/extractLanguageFromRequest'
 
 const prisma = new PrismaClient()
 
@@ -7,6 +8,8 @@ export async function GET(request: Request) {
 	try {
 		const { searchParams } = new URL(request.url)
 		const id = searchParams.get('id')
+		const language = extractLanguageFromRequest(request)
+
 		const tour = await prisma.tour.findUnique({
 			where: {
 				id,
@@ -28,7 +31,12 @@ export async function GET(request: Request) {
 			limit: 20,
 		})
 
-		const tours = toursQuery.cursor.firstBatch
+		const tours = toursQuery.cursor.firstBatch.map((tour: any) => {
+			return {
+				...tour,
+				...tour.translations.find((trns) => trns.language === language),
+			}
+		})
 		const cleanedTours = tours.map(cleanTourIds)
 
 		// Filter out the current tour in JavaScript
