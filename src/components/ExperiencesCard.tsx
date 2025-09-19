@@ -65,6 +65,7 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 	const [priceData, setPriceData] = useState({})
 	const day = days[0]
 	console.log(slugs)
+	const { slug } = slugs?.find((lang) => locale === lang.language) || []
 
 	useEffect(() => {
 		const pricesData = async () => {
@@ -98,15 +99,12 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 		region[0].city = start?.name || ''
 	}
 
-	function convertString(input: string) {
-		return input?.toLowerCase()?.replace(/\s+/g, '-')
-	}
-
 	const router = useRouter()
-	console.log('data:', data)
-	const href = `/${locale}/${slugifySecond(
-		`${slugify(day?.country?.name)}/${slugify(day?.city?.name)}/${slugify(secondT('tours'))}/${slugify(title)}/${serviceId}`,
-	)}` as Route
+	const href =
+		slug ||
+		(`/${locale}/${slugifySecond(
+			`${slugify(day?.country?.name)}/${slugify(day?.city?.name)}/${slugify(secondT('tours'))}/${slugify(title)}/${serviceId}`,
+		)}` as Route)
 	const [isLoading, setIsLoading] = useState(false)
 	const dispatch = useDispatch()
 	const handleCardClick = () => {
@@ -117,7 +115,7 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 		setClickedCard(true)
 		setTimeout(() => {
 			setClickedCard(false)
-		}, 1000) // Total animation time 1000ms
+		}, 1000)
 	}
 
 	const renderSliderGallery = () => {
