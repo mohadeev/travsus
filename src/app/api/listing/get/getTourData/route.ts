@@ -155,7 +155,7 @@ export async function GET(request: NextRequest) {
 						)
 
 						console.log('-------------------------------------')
-						console.log('cityData', JSON.stringify(cityData))
+						// console.log('cityData', JSON.stringify(cityData))
 						console.log('-------------------------------------')
 
 						return {

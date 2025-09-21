@@ -102,6 +102,7 @@
     "js-cookies": "^1.0.4",
     "jsbarcode": "^3.11.6",
     "jsdom": "^25.0.1",
+    "json-edit-react": "^1.28.2",
     "jsonwebtoken": "^9.0.2",
     "jspdf": "^2.5.2",
     "jsvectormap": "^1.6.0",

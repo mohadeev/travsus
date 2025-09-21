@@ -6,6 +6,11 @@ import { slugify } from 'transliteration'
 import slugifySecond from '@/utils/slugify'
 import { useTranslations } from '@/lib/i18n'
 
+type Slug = {
+	language: string
+	slug: string
+}
+
 // ✅ simplified translation extractor
 function createLocationObject(city: any, language: string) {
 	const cityTr = city.translations?.find((t: any) => t.language === language)
@@ -31,10 +36,10 @@ export async function GET() {
 
 		console.log(`📊 Processing ${tours.length} tours...`)
 
-		const results: { id: string; slugs: string[] }[] = []
+		const results: { id: string; slugs: Slug[] }[] = []
 
 		for (const tour of tours) {
-			const slugs: string[] = []
+			const slugs: Slug[] = []
 
 			for (const translation of tour.translations) {
 				const languageCode = translation.language
@@ -45,8 +50,8 @@ export async function GET() {
 				const toursLabel = t('tours_slug')
 
 				// default fallback location
-				let countryName = 'morocco'
-				let cityName = 'marrakech'
+				let countryName = ''
+				let cityName = ''
 
 				// try to resolve first city from days
 				const firstDayWithCity = tour.days.find(
@@ -80,10 +85,11 @@ export async function GET() {
 				)}/${slugify(translatedName)}/${tour.id}`
 
 				const fullSlug = `/${languageCode}${slugifySecond(rawPath)}`
-				slugs.push(fullSlug)
+				slugs.push({ language: languageCode, slug: fullSlug })
 				console.log(`  ✅ ${languageCode}: ${fullSlug}`)
 			}
 
+			// fallback if no translations
 			if (slugs.length === 0) {
 				const fallbackName = tour.name || `tour-${tour.id}`
 				const t = useTranslations('Jan03_TourHeader_x9k2', 'en-US')
@@ -94,17 +100,18 @@ export async function GET() {
 				)}/${slugify(toursLabel)}/${slugify(fallbackName)}/${tour.id}`
 
 				const fallbackSlug = `/en-US${slugifySecond(fallbackPath)}`
-				slugs.push(fallbackSlug)
+				slugs.push({ language: 'en-US', slug: fallbackSlug })
 				console.log(`  ⚠️  Fallback: ${fallbackSlug}`)
 			}
 
+			// Save to results
 			results.push({ id: tour.id, slugs })
 
-			// Uncomment to persist into DB:
-			// await prisma.tour.update({
-			//   where: { id: tour.id },
-			//   data: { slugs },
-			// })
+			// ✅ persist into DB
+			await prisma.tour.update({
+				where: { id: tour.id },
+				data: { slugs }, // slugs must be JSON in Prisma
+			})
 		}
 
 		console.log('🎉 Tour slugs regeneration completed!')

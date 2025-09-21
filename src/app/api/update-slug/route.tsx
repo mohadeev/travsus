@@ -19,14 +19,17 @@ export async function GET(request: NextRequest) {
 		)
 		const serviceData: any = await serviceDataResponse.json()
 		const link = generateTourLink(serviceData, locale)
-		console.log('link: ', link)
+		console.log('link: ', serviceData.slugs)
+		const currentLink = serviceData.slugs.find(
+			({ language }: any) => language === locale,
+		)
 		return NextResponse.json(
 			{
 				success: true,
 				data: {
 					locale,
 					serviceId,
-					link,
+					link: currentLink.slug,
 				},
 				message: 'Parameters retrieved successfully',
 			},

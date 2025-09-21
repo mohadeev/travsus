@@ -6,6 +6,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import type { Route } from 'next'
 import slugify from '@/utils/slugify'
+import { useLocale } from 'next-intl'
 
 /**
  * Converts a string to a URL-friendly slug
@@ -15,7 +16,6 @@ import slugify from '@/utils/slugify'
  * - Removes emojis and replaces with hyphens
  * - Ensures no double hyphens
  */
-
 
 export interface Card3Props {
 	className?: string
@@ -36,9 +36,10 @@ const Card3: FC<Card3Props> = ({ className = 'h-full', post }) => {
 
 	// Generate the slug from the title
 	const titleSlug = slugify(title)
+	const locale = useLocale()
 
 	// Create the URL with both ID and slug
-	const link = `/blog/${id}?name=${titleSlug}`
+	const link = `/${locale}/blog/${titleSlug}/${id}`
 
 	return (
 		<div

@@ -19,9 +19,32 @@ export async function POST(request: NextRequest) {
 		const title = formData.get('title') as string
 		const content = formData.get('content') as string
 		const excerpt = formData.get('excerpt') as string
+		const byJson = formData.get('byJson') as string
+		const translations = formData.get('translations') as any
+		console.log('----------------------------------------------------')
+		console.log('----------------------------------------------------')
+		console.log('----------------------------------------------------')
+		console.log('----------------------------------------------------')
+		console.log('postId:', postId)
+		console.log('----------------------------------------------------')
+		console.log('----------------------------------------------------')
+		console.log('----------------------------------------------------')
+		console.log('----------------------------------------------------')
+		let post
+
+		if (byJson === 'true') {
+			// Update existing post
+			post = await prisma.post.update({
+				where: { id: postId },
+				data: {
+					translations: JSON.parse(translations),
+				},
+			})
+			return NextResponse.json({ success: true, post })
+		}
 		const tags = (formData.get('tags') as string)
-			.split(',')
-			.map((tag) => tag.trim())
+			?.split(',')
+			?.map((tag) => tag.trim())
 		const newImages = formData.getAll('newImages') as File[]
 		const imageIds =
 			(formData.get('imageIds') as string)?.split(',').filter(Boolean) || []
@@ -80,7 +103,6 @@ export async function POST(request: NextRequest) {
 			postData.featuredImage = uploadedImages[0].url
 		}
 
-		let post
 		if (postId) {
 			// Update existing post
 			post = await prisma.post.update({

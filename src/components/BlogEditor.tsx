@@ -26,6 +26,8 @@ import {
 } from 'lucide-react'
 import { uploadImage } from '@/app/actions/uploadImage'
 import { Button } from '@/components/ui/button'
+import BlogJsonEditorPage from './BlogJsonEditorPage'
+import BlogJsonViewer from './BlogJsonViewer'
 
 const MenuBar = ({
 	editor,
@@ -216,6 +218,8 @@ export default function BlogEditor({
 	const [isHtmlMode, setIsHtmlMode] = useState(false)
 	const [htmlContent, setHtmlContent] = useState('')
 	const [visualContent, setVisualContent] = useState('')
+	const [blogPost, setBlogPost] = useState({})
+
 	const router = useRouter()
 
 	// Create editor only when in visual mode
@@ -252,6 +256,7 @@ export default function BlogEditor({
 				.then((response) => response.json())
 				.then((post) => {
 					if (post) {
+						setBlogPost(post)
 						setTitle(post.title)
 						setExcerpt(post.excerpt)
 
@@ -442,6 +447,8 @@ export default function BlogEditor({
 						required
 					/>
 				</div>
+				<BlogJsonEditorPage blogPost={blogPost} />
+				<BlogJsonViewer post={blogPost} />
 				<div className="flex items-center gap-4">
 					<Button
 						type="submit"

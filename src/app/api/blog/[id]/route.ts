@@ -1,5 +1,6 @@
 import { type NextRequest, NextResponse } from 'next/server'
 import { PrismaClient } from '@prisma/client'
+import extractLanguageFromRequest from '../../listing/get/getTourData/extractLanguageFromRequest'
 
 const prisma = new PrismaClient()
 
@@ -8,6 +9,8 @@ export async function GET(
 	{ params }: { params: { id: string } },
 ) {
 	try {
+		const lang = extractLanguageFromRequest(request)
+
 		const id = params.id
 
 		if (!id) {
@@ -20,6 +23,7 @@ export async function GET(
 		const post = await prisma.post.findUnique({
 			where: { id },
 			include: {
+				translations: true,
 				author: {
 					select: {
 						id: true,
@@ -35,8 +39,8 @@ export async function GET(
 		if (!post) {
 			return NextResponse.json({ error: 'Post not found' }, { status: 404 })
 		}
-
-		return NextResponse.json(post)
+		const langPost = post.translations.find(({ language }) => lang === language)
+		return NextResponse.json({ ...post, ...langPost })
 	} catch (error) {
 		console.error('Error fetching blog post:', error)
 		return NextResponse.json(

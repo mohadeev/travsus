@@ -58,7 +58,7 @@ export const SkeletonLoader = () => {
 export default function BlogPostPage() {
 	const t = useTranslations('BlogPostPage')
 	const params = useParams()
-	const postId = params?.slug as string
+	const postId = params?.id as string
 	const [post, setPost] = useState<any>(null)
 	const [currentUserId, setCurrentUserId] = useState<string | null>(null)
 	const [isLoading, setIsLoading] = useState(true)
