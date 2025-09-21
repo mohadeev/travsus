@@ -1,142 +1,52 @@
 {
 	"en-US": {
-		"StripeErrorsMessage": {
-			"authentication_required": "This payment requires authentication",
-			"invalid_request_error": "Invalid request parameters",
-			"api_connection_error": "Network communication with Stripe failed",
-			"api_error": "Internal Stripe API error occurred",
-			"idempotency_error": "Idempotency key conflict detected",
-			"card_not_supported": "This card does not support the transaction",
-			"currency_not_supported": "Currency not supported by the card",
-			"do_not_honor": "The bank declined this card",
-			"fraudulent": "This card was flagged as fraudulent",
-			"lost_card": "This card has been reported lost"
+		"blog_slug_page": {
+			"blog_slug_page_Tags": "Tags"
 		}
 	},
 	"es-ES": {
-		"StripeErrorsMessage": {
-			"authentication_required": "Este pago requiere autenticación",
-			"invalid_request_error": "Parámetros de solicitud no válidos",
-			"api_connection_error": "Fallo en la comunicación de red con Stripe",
-			"api_error": "Ocurrió un error interno de la API de Stripe",
-			"idempotency_error": "Se detectó un conflicto de clave de idempotencia",
-			"card_not_supported": "Esta tarjeta no admite la transacción",
-			"currency_not_supported": "Moneda no admitida por la tarjeta",
-			"do_not_honor": "El banco rechazó esta tarjeta",
-			"fraudulent": "Esta tarjeta fue marcada como fraudulenta",
-			"lost_card": "Esta tarjeta ha sido reportada como perdida"
+		"blog_slug_page": {
+			"blog_slug_page_Tags": "Etiquetas"
 		}
 	},
 	"de-DE": {
-		"StripeErrorsMessage": {
-			"authentication_required": "Diese Zahlung erfordert eine Authentifizierung",
-			"invalid_request_error": "Ungültige Anforderungsparameter",
-			"api_connection_error": "Netzwerkkommunikation mit Stripe fehlgeschlagen",
-			"api_error": "Interner Stripe-API-Fehler ist aufgetreten",
-			"idempotency_error": "Idempotenzschlüsselkonflikt erkannt",
-			"card_not_supported": "Diese Karte unterstützt die Transaktion nicht",
-			"currency_not_supported": "Währung wird von der Karte nicht unterstützt",
-			"do_not_honor": "Die Bank hat diese Karte abgelehnt",
-			"fraudulent": "Diese Karte wurde als betrügerisch gekennzeichnet",
-			"lost_card": "Diese Karte wurde als verloren gemeldet"
+		"blog_slug_page": {
+			"blog_slug_page_Tags": "Tags"
 		}
 	},
 	"fr-FR": {
-		"StripeErrorsMessage": {
-			"authentication_required": "Ce paiement nécessite une authentification",
-			"invalid_request_error": "Paramètres de requête invalides",
-			"api_connection_error": "Échec de la communication réseau avec Stripe",
-			"api_error": "Une erreur interne de l'API Stripe s'est produite",
-			"idempotency_error": "Conflit de clé d'idempotence détecté",
-			"card_not_supported": "Cette carte ne prend pas en charge la transaction",
-			"currency_not_supported": "Devise non prise en charge par la carte",
-			"do_not_honor": "La banque a refusé cette carte",
-			"fraudulent": "Cette carte a été signalée comme frauduleuse",
-			"lost_card": "Cette carte a été signalée comme perdue"
+		"blog_slug_page": {
+			"blog_slug_page_Tags": "Mots-clés"
 		}
 	},
 	"ja-JP": {
-		"StripeErrorsMessage": {
-			"authentication_required": "この支払いには認証が必要です",
-			"invalid_request_error": "無効なリクエストパラメータ",
-			"api_connection_error": "Stripeとのネットワーク通信に失敗しました",
-			"api_error": "Stripe API内部エラーが発生しました",
-			"idempotency_error": "べき等キーの競合が検出されました",
-			"card_not_supported": "このカードは取引をサポートしていません",
-			"currency_not_supported": "カードがサポートしていない通貨",
-			"do_not_honor": "銀行がこのカードを拒否しました",
-			"fraudulent": "このカードは不正としてフラグが立てられました",
-			"lost_card": "このカードは紛失として報告されています"
+		"blog_slug_page": {
+			"blog_slug_page_Tags": "タグ"
 		}
 	},
 	"pt-PT": {
-		"StripeErrorsMessage": {
-			"authentication_required": "Este pagamento requer autenticação",
-			"invalid_request_error": "Parâmetros de solicitação inválidos",
-			"api_connection_error": "Falha na comunicação de rede com o Stripe",
-			"api_error": "Ocorreu um erro interno da API do Stripe",
-			"idempotency_error": "Conflito de chave de idempotência detectado",
-			"card_not_supported": "Este cartão não suporta a transação",
-			"currency_not_supported": "Moeda não suportada pelo cartão",
-			"do_not_honor": "O banco recusou este cartão",
-			"fraudulent": "Este cartão foi sinalizado como fraudulento",
-			"lost_card": "Este cartão foi reportado como perdido"
+		"blog_slug_page": {
+			"blog_slug_page_Tags": "Tags"
 		}
 	},
 	"it-IT": {
-		"StripeErrorsMessage": {
-			"authentication_required": "Questo pagamento richiede autenticazione",
-			"invalid_request_error": "Parametri della richiesta non validi",
-			"api_connection_error": "Comunicazione di rete con Stripe fallita",
-			"api_error": "Si è verificato un errore interno dell'API di Stripe",
-			"idempotency_error": "Rilevato conflitto della chiave di idempotenza",
-			"card_not_supported": "Questa carta non supporta la transazione",
-			"currency_not_supported": "Valuta non supportata dalla carta",
-			"do_not_honor": "La banca ha rifiutato questa carta",
-			"fraudulent": "Questa carta è stata contrassegnata come fraudolenta",
-			"lost_card": "Questa carta è stata segnalata come persa"
+		"blog_slug_page": {
+			"blog_slug_page_Tags": "Tag"
 		}
 	},
 	"ru-RU": {
-		"StripeErrorsMessage": {
-			"authentication_required": "Этот платеж требует аутентификации",
-			"invalid_request_error": "Неверные параметры запроса",
-			"api_connection_error": "Сетевое соединение с Stripe не удалось",
-			"api_error": "Произошла внутренняя ошибка API Stripe",
-			"idempotency_error": "Обнаружен конфликт ключа идемпотентности",
-			"card_not_supported": "Эта карта не поддерживает транзакцию",
-			"currency_not_supported": "Валюта не поддерживается картой",
-			"do_not_honor": "Банк отклонил эту карту",
-			"fraudulent": "Эта карта была помечена как мошенническая",
-			"lost_card": "Эта карта была заявлена как утерянная"
+		"blog_slug_page": {
+			"blog_slug_page_Tags": "Теги"
 		}
 	},
 	"zh-CN": {
-		"StripeErrorsMessage": {
-			"authentication_required": "此付款需要身份验证",
-			"invalid_request_error": "请求参数无效",
-			"api_connection_error": "与Stripe的网络通信失败",
-			"api_error": "发生内部Stripe API错误",
-			"idempotency_error": "检测到幂等键冲突",
-			"card_not_supported": "此卡不支持该交易",
-			"currency_not_supported": "卡不支持该货币",
-			"do_not_honor": "银行拒绝了此卡",
-			"fraudulent": "此卡被标记为欺诈",
-			"lost_card": "此卡已被报失"
+		"blog_slug_page": {
+			"blog_slug_page_Tags": "标签"
 		}
 	},
 	"ko-KR": {
-		"StripeErrorsMessage": {
-			"authentication_required": "이 결제에는 인증이 필요합니다",
-			"invalid_request_error": "잘못된 요청 매개변수",
-			"api_connection_error": "Stripe와의 네트워크 통신 실패",
-			"api_error": "Stripe API 내부 오류가 발생했습니다",
-			"idempotency_error": "멱등키 충돌이 감지되었습니다",
-			"card_not_supported": "이 카드는 거래를 지원하지 않습니다",
-			"currency_not_supported": "카드에서 지원하지 않는 통화",
-			"do_not_honor": "은행에서 이 카드를 거부했습니다",
-			"fraudulent": "이 카드는 사기로 플래그 지정되었습니다",
-			"lost_card": "이 카드는 분실로 신고되었습니다"
+		"blog_slug_page": {
+			"blog_slug_page_Tags": "태그"
 		}
 	}
 }
