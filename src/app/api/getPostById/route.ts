@@ -18,7 +18,6 @@ export async function GET(request: NextRequest) {
 				author: true,
 			},
 		})
-		console.log('post:', post)
 		if (!post) {
 			return NextResponse.json({ error: 'Post not found' }, { status: 404 })
 		}
