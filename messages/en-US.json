@@ -411,6 +411,9 @@
     "sign_up": "Sign Up",
     "wishlist": "Wishlist"
   },
+  "BlogPostPage": {
+    "blog_slug_page_Tags": "Tags"
+  },
   "blog_slug_page": {
     "blog_slug_page_Edit_Post": "Edit Post",
     "blog_slug_page_Error_Loading_Post": "Error Loading Post",

@@ -279,6 +279,9 @@
     "sign_up": "注册",
     "wishlist": "心愿单"
   },
+  "BlogPostPage": {
+    "blog_slug_page_Tags": "标签"
+  },
   "blog_slug_page": {
     "blog_slug_page_Tags": "标签"
   },

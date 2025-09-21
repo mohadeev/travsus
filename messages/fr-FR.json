@@ -431,6 +431,9 @@
     "sign_up": "S'inscrire",
     "wishlist": "Liste de Souhaits"
   },
+  "BlogPostPage": {
+    "blog_slug_page_Tags": "Mots-clés"
+  },
   "blog_slug_page": {
     "blog_slug_page_Edit_Post": "Modifier l'article",
     "blog_slug_page_Error_Loading_Post": "Erreur de chargement de l'article",

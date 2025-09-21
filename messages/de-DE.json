@@ -431,6 +431,9 @@
     "sign_up": "Registrieren",
     "wishlist": "Wunschliste"
   },
+  "BlogPostPage": {
+    "blog_slug_page_Tags": "Tags"
+  },
   "blog_slug_page": {
     "blog_slug_page_Edit_Post": "Beitrag bearbeiten",
     "blog_slug_page_Error_Loading_Post": "Fehler beim Laden",

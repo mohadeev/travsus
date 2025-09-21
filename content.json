@@ -1,51 +1,51 @@
 {
 	"en-US": {
-		"blog_slug_page": {
+		"BlogPostPage": {
 			"blog_slug_page_Tags": "Tags"
 		}
 	},
 	"es-ES": {
-		"blog_slug_page": {
+		"BlogPostPage": {
 			"blog_slug_page_Tags": "Etiquetas"
 		}
 	},
 	"de-DE": {
-		"blog_slug_page": {
+		"BlogPostPage": {
 			"blog_slug_page_Tags": "Tags"
 		}
 	},
 	"fr-FR": {
-		"blog_slug_page": {
+		"BlogPostPage": {
 			"blog_slug_page_Tags": "Mots-clés"
 		}
 	},
 	"ja-JP": {
-		"blog_slug_page": {
+		"BlogPostPage": {
 			"blog_slug_page_Tags": "タグ"
 		}
 	},
 	"pt-PT": {
-		"blog_slug_page": {
+		"BlogPostPage": {
 			"blog_slug_page_Tags": "Tags"
 		}
 	},
 	"it-IT": {
-		"blog_slug_page": {
+		"BlogPostPage": {
 			"blog_slug_page_Tags": "Tag"
 		}
 	},
 	"ru-RU": {
-		"blog_slug_page": {
+		"BlogPostPage": {
 			"blog_slug_page_Tags": "Теги"
 		}
 	},
 	"zh-CN": {
-		"blog_slug_page": {
+		"BlogPostPage": {
 			"blog_slug_page_Tags": "标签"
 		}
 	},
 	"ko-KR": {
-		"blog_slug_page": {
+		"BlogPostPage": {
 			"blog_slug_page_Tags": "태그"
 		}
 	}

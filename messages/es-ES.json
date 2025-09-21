@@ -376,6 +376,9 @@
     "sign_up": "Registrarse",
     "wishlist": "Lista de Deseos"
   },
+  "BlogPostPage": {
+    "blog_slug_page_Tags": "Etiquetas"
+  },
   "blog_slug_page": {
     "blog_slug_page_Edit_Post": "Editar Publicación",
     "blog_slug_page_Error_Loading_Post": "Error al Cargar la Publicación",
