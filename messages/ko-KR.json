@@ -2234,6 +2234,7 @@
     "TravsusTravelPage_category_transport": "교통",
     "TravsusTravelPage_clear": "지우기",
     "TravsusTravelPage_date_all_dates": "모든 날짜",
+    "TravsusTravelPage_dates": "날짜",
     "TravsusTravelPage_date_today": "오늘",
     "TravsusTravelPage_date_tomorrow": "내일",
     "TravsusTravelPage_error_loading": "투어 로딩 오류",
@@ -2317,6 +2318,10 @@
     "2": " ",
     "3": "날",
     "4": "짜"
+  },
+  "TravsusTravelPage_dates": {
+    "0": "날",
+    "1": "짜"
   },
   "TravsusTravelPage_date_today": {
     "0": "오",

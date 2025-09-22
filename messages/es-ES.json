@@ -2854,6 +2854,7 @@
     "TravsusTravelPage_category_transport": "Transporte",
     "TravsusTravelPage_clear": "Limpiar",
     "TravsusTravelPage_date_all_dates": "Todas las fechas",
+    "TravsusTravelPage_dates": "Fechas",
     "TravsusTravelPage_date_today": "Hoy",
     "TravsusTravelPage_date_tomorrow": "Mañana",
     "TravsusTravelPage_error_loading": "Error al cargar tours",
@@ -3021,6 +3022,14 @@
     "13": "h",
     "14": "a",
     "15": "s"
+  },
+  "TravsusTravelPage_dates": {
+    "0": "F",
+    "1": "e",
+    "2": "c",
+    "3": "h",
+    "4": "a",
+    "5": "s"
   },
   "TravsusTravelPage_date_today": {
     "0": "H",

@@ -2425,6 +2425,7 @@
     "TravsusTravelPage_category_transport": "Транспорт",
     "TravsusTravelPage_clear": "Очистить",
     "TravsusTravelPage_date_all_dates": "Все даты",
+    "TravsusTravelPage_dates": "Даты",
     "TravsusTravelPage_date_today": "Сегодня",
     "TravsusTravelPage_date_tomorrow": "Завтра",
     "TravsusTravelPage_error_loading": "Ошибка загрузки туров",
@@ -2601,6 +2602,12 @@
     "5": "а",
     "6": "т",
     "7": "ы"
+  },
+  "TravsusTravelPage_dates": {
+    "0": "Д",
+    "1": "а",
+    "2": "т",
+    "3": "ы"
   },
   "TravsusTravelPage_date_today": {
     "0": "С",

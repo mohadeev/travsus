@@ -2939,6 +2939,7 @@
     "TravsusTravelPage_category_transport": "Transport",
     "TravsusTravelPage_clear": "Löschen",
     "TravsusTravelPage_date_all_dates": "Alle Daten",
+    "TravsusTravelPage_dates": "Daten",
     "TravsusTravelPage_date_today": "Heute",
     "TravsusTravelPage_date_tomorrow": "Morgen",
     "TravsusTravelPage_error_loading": "Fehler beim Laden der Touren",
@@ -3092,6 +3093,13 @@
     "7": "t",
     "8": "e",
     "9": "n"
+  },
+  "TravsusTravelPage_dates": {
+    "0": "D",
+    "1": "a",
+    "2": "t",
+    "3": "e",
+    "4": "n"
   },
   "TravsusTravelPage_date_today": {
     "0": "H",

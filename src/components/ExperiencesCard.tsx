@@ -65,7 +65,6 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 	}: any = data
 	const [priceData, setPriceData] = useState({})
 	const day = days[0]
-	console.log(slugs)
 	const { slug } = slugs?.find((lang) => locale === lang.language) || []
 
 	useEffect(() => {

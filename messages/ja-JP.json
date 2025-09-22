@@ -2236,6 +2236,7 @@
     "TravsusTravelPage_category_transport": "交通機関",
     "TravsusTravelPage_clear": "クリア",
     "TravsusTravelPage_date_all_dates": "すべての日付",
+    "TravsusTravelPage_dates": "日付",
     "TravsusTravelPage_date_today": "今日",
     "TravsusTravelPage_date_tomorrow": "明日",
     "TravsusTravelPage_error_loading": "ツアーの読み込みエラー",
@@ -2330,6 +2331,10 @@
     "3": "の",
     "4": "日",
     "5": "付"
+  },
+  "TravsusTravelPage_dates": {
+    "0": "日",
+    "1": "付"
   },
   "TravsusTravelPage_date_today": {
     "0": "今",

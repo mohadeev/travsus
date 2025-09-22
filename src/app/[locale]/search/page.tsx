@@ -180,7 +180,7 @@ export default function TravsusTravelPage() {
 							{/* Filter Content */}
 							<div className="flex-1 overflow-y-auto p-4">
 								{/* Categories */}
-								<div className="mb-6">
+								{/* <div className="mb-6">
 									<h3 className="mb-3 text-lg font-semibold text-gray-900">
 										{t('TravsusTravelPage_categories')}
 									</h3>
@@ -201,7 +201,7 @@ export default function TravsusTravelPage() {
 											</div>
 										))}
 									</div>
-								</div>
+								</div> */}
 
 								{/* Dates */}
 								<div className="mb-6">
@@ -583,9 +583,9 @@ export default function TravsusTravelPage() {
 																	{/* {formatPrice(
 																		tour.discountedPrice || tour.price,
 																	)} */}
-																	{tour?.startPrice}
+																	{formatPrice(tour.startPrice)}
 																</div>
-																{tour.discountedPrice && tour.price && (
+																{/* {tour.discountedPrice && tour.price && (
 																	<>
 																		<div className="text-sm text-gray-500 line-through">
 																			{formatPrice(tour.price)}
@@ -599,7 +599,7 @@ export default function TravsusTravelPage() {
 																			})}
 																		</div>
 																	</>
-																)}
+																)} */}
 															</div>
 														</div>
 
