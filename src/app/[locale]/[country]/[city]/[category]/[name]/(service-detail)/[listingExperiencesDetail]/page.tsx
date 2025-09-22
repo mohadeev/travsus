@@ -23,9 +23,7 @@ import TourHeader from './TourHeader'
 import ReadMore from '@/app/(client-components)/ReadeMore'
 import { useTranslations } from '@/lib/i18n'
 import ItemsCardList from '@/components/ItemsCardList'
-import ListingImageGallery from '@/components/listing-image-gallery/ListingImageGallery'
 import MobileFooterSticky from '../(components)/MobileFooterSticky'
-import { imageGallery } from './constant'
 import { updateServiceState } from '@/app/[locale]/GlobalRedux/Features/creatingServiceSlice/creatingServiceSlice'
 import BookingGuarantees from './BookingGuarantees'
 import TourPreBookingInfo from './TourPreBookingInfo'
@@ -61,7 +59,6 @@ const ListingExperiencesDetailPage: FC<ListingExperiencesDetailPageProps> = ({
 			dispatch(updateServiceState({ path: 'service', value: null }))
 		}
 	}, [serviceData?.id])
-	const thisPathname = usePathname()
 	const dispatch = useDispatch()
 
 	const { booking } = useSelector((state: any) => state.bookingSlice)
@@ -76,17 +73,12 @@ const ListingExperiencesDetailPage: FC<ListingExperiencesDetailPageProps> = ({
 		dispatch(setSelectedDate(date))
 	}
 
-	const {
-		name: title,
-		id,
-		overview,
-		days,
-		startAddress,
-		faq,
-	}: any = useSelector((state: any) => state.creatingServiceSlice.service)
+	const { id, overview, days, startAddress, faq }: any =
+		useSelector((state: any) => state.creatingServiceSlice.service) || {}
 	const service: any = useSelector(
 		(state: any) => state.creatingServiceSlice.service,
 	)
+	const title = service?.name
 
 	const city = startAddress?.city
 	useEffect(() => {

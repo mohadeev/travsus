@@ -21,6 +21,7 @@ import { useRouter } from 'next/navigation'
 import ListingBeforLoading from './ListingBeforLoading'
 import { updateServiceState } from '@/app/[locale]/GlobalRedux/Features/creatingServiceSlice/creatingServiceSlice'
 import { useDispatch } from 'react-redux'
+import { User } from 'lucide-react'
 
 export interface ExperiencesCardProps {
 	className?: string
@@ -192,6 +193,14 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 							{t('components_ExperiencesCard_Per_Person')}
 						</span>
 					</span>
+					<div>
+						<div className="ml-1 flex flex-row items-center justify-between text-sm font-normal text-neutral-500 dark:text-neutral-400">
+							<span className="text-xs">
+								<User />
+							</span>
+							x {totalGuests}
+						</div>
+					</div>
 				</div>
 			</div>
 		)

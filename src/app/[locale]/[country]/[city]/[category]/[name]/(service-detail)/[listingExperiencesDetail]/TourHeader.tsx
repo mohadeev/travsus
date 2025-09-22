@@ -33,16 +33,18 @@ const TourHeader = () => {
 	const timeoutRef = useRef<NodeJS.Timeout | null>(null)
 	const dropdownRef = useRef<HTMLDivElement>(null)
 
+	const service: any = useSelector(
+		(state: any) => state.creatingServiceSlice.service,
+	)
 	const {
-		name: title,
 		days,
 		liked,
 		rating,
 		reviewsCount,
-		continentInfo,
 		recommendationPercentage,
 		loading,
-	}: any = useSelector((state: any) => state.creatingServiceSlice.service)
+	} = service
+	const title = service.title
 	const day = days?.[0]
 	// Safely extract city name - handle both string and object cases
 	const city = day?.city
