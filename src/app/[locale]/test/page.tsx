@@ -7,17 +7,18 @@ import { useState, useEffect } from 'react'
 import { Plane, Calendar, RefreshCcw, ChevronDown } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
+import { useRouter } from 'next/navigation'
 
 export default function HomeBanner() {
 	const t = useTranslations('app_locale_test_page')
 	const [isVisible, setIsVisible] = useState(true)
-
+	const router = useRouter()
 	useEffect(() => {
 		setIsVisible(true)
 	}, [])
 
 	const handlePageChange = () => {
-		alert('here please')
+		router.push('/search?query=')
 		const experiencesContainer = document.getElementById(
 			'experiences_container',
 		)
