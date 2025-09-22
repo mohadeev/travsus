@@ -4,6 +4,7 @@ import { useTranslations } from '@/lib/i18n'
 import { useSearchParams } from 'next/navigation'
 import { updateLineItemsLogic } from '@/app/api/updateLineItems/updateLineItemsLogic'
 import { useLocale } from 'next-intl'
+import Link from 'next/link'
 
 export default function TravsusTravelPage() {
 	const searchParams = useSearchParams()
