@@ -125,6 +125,7 @@
 // export const config = {
 //   matcher: "/((?!api|static|.*\\..*|_next).*)",
 // };
+
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 import createMiddleware from 'next-intl/middleware'
@@ -135,10 +136,17 @@ function convertOldBlogPath(pathname: string, nameParam: string | null) {
 	const pathnameParts = pathname.split('/').filter(Boolean)
 	const blogId = pathnameParts[pathnameParts.length - 1]
 
-	// Use nameParam if available, otherwise fallback to "post"
-	const nameSegment = nameParam || 'post'
+	// Case: /<locale>/blog/<id>  → needs "post" added
+	if (
+		pathnameParts.length >= 3 &&
+		pathnameParts[pathnameParts.length - 2] === 'blog'
+	) {
+		const nameSegment = nameParam || 'post'
+		return `/${pathnameParts.slice(0, -1).join('/')}/${nameSegment}/${blogId}`
+	}
 
-	return `/${pathnameParts.slice(0, -1).join('/')}/${nameSegment}/${blogId}`
+	// Case: already has a slug (no redirect needed)
+	return pathname
 }
 
 export default async function middleware(request: NextRequest) {
