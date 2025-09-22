@@ -131,16 +131,24 @@ import type { NextRequest } from 'next/server'
 import createMiddleware from 'next-intl/middleware'
 import { routing } from './i18n/routing'
 
-// import { generateTourLink } from './useTourLink'
+// Function to convert old blog path to new blog path
+function convertOldBlogPath(pathname: string, nameParam: string | null) {
+	const pathnameParts = pathname.split('/').filter(Boolean)
+	const blogId = pathnameParts[pathnameParts.length - 1]
+	if (!nameParam) return null
+	return `/${pathnameParts.slice(0, -1).join('/')}/${nameParam}/${blogId}`
+}
+
 export default async function middleware(request: NextRequest) {
 	const url = request.nextUrl.clone()
 	const pathname = url.pathname
-	const locale: string = url.pathname.split('/')[1] || 'en-US'
+	const locale: string = pathname.split('/')[1] || 'en-US'
 	const parts = pathname.split('/')
 	const last = parts[parts.length - 1]
 	const serviceId =
 		parts.length === 11 ? parts[parts.length - 2] : parts[parts.length - 1]
 
+	// === Tour redirect logic ===
 	if ((last === 'q=tour' && parts.length === 11) || parts.length === 7) {
 		try {
 			const serviceDataResponse = await fetch(
@@ -154,24 +162,22 @@ export default async function middleware(request: NextRequest) {
 			)
 			const serviceData: any = await serviceDataResponse.json()
 			const link = serviceData.data.link
-			console.log('----------------------------------------------------------')
-			console.log('----------------------------------------------------------')
-			console.log('----------------------------------------------------------')
-			console.log('----------------------------------------------------------')
-			// console.log(link, pathname)
-			console.log('url.origin', url.origin)
-
-			console.log('----------------------------------------------------------')
-			console.log('----------------------------------------------------------')
-			console.log('----------------------------------------------------------')
-			console.log('----------------------------------------------------------')
-			console.log('----------------------------------------------------------')
 			if (link !== pathname) {
 				return NextResponse.redirect(new URL(url.origin + link), 301)
 			}
 		} catch (error) {
 			console.error('Error in tour redirect:', error)
-			// Fallback to continue with normal middleware
+		}
+	}
+
+	// === Blog old-link redirect logic ===
+	if (pathname.startsWith(`/${locale}/blog/`)) {
+		const nameParam = url.searchParams.get('name')
+		if (nameParam) {
+			const newBlogPath = convertOldBlogPath(pathname, nameParam)
+			if (newBlogPath && newBlogPath !== pathname) {
+				return NextResponse.redirect(new URL(url.origin + newBlogPath), 301)
+			}
 		}
 	}
 

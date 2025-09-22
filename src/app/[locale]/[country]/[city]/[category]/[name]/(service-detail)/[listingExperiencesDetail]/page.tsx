@@ -18,7 +18,7 @@ import dynamic from 'next/dynamic'
 import TourFAQ from './FAQProps'
 import ReviewSystem from './ReviewSystem/ReviewSystem'
 import Included from './Included'
-import TourItineraryWithMap from './tour-itinerary-with-map'
+import TourItineraryWithMap from './itinerary/tour-itinerary-with-map'
 import TourHeader from './TourHeader'
 import ReadMore from '@/app/(client-components)/ReadeMore'
 import { useTranslations } from '@/lib/i18n'
@@ -29,7 +29,7 @@ import BookingGuarantees from './BookingGuarantees'
 import TourPreBookingInfo from './TourPreBookingInfo'
 import ContactReservations from './ContactReservations'
 
-const MapComponent = dynamic(() => import('./tour-map'), {
+const MapComponent = dynamic(() => import('./itinerary/tour-map'), {
 	ssr: false,
 })
 

@@ -3,13 +3,17 @@ import { useState, useEffect } from 'react'
 import { useTranslations } from '@/lib/i18n'
 import { useSearchParams } from 'next/navigation'
 import { updateLineItemsLogic } from '@/app/api/updateLineItems/updateLineItemsLogic'
+import { useLocale } from 'next-intl'
 
 export default function TravsusTravelPage() {
 	const searchParams = useSearchParams()
 	const query = searchParams.get('query') // ?query=Marrakech
 	const start = searchParams.get('start') // ?query=Marrakech
 	const end = searchParams.get('end') // ?query=Marrakech
-
+	const locale = useLocale()
+	const cardLink = (slugs: any[]) => {
+		slugs.find(()=>)
+	}
 	const t = useTranslations('TravsusTravelPage')
 	const [isFilterOpen, setIsFilterOpen] = useState(false)
 	const [selectedDate, setSelectedDate] = useState('all')
@@ -28,9 +32,9 @@ export default function TravsusTravelPage() {
 
 	const categories = [
 		t('TravsusTravelPage_category_tours'),
-		t('TravsusTravelPage_category_tickets'),
+		// t('TravsusTravelPage_category_tickets'),
 		t('TravsusTravelPage_category_transport'),
-		t('TravsusTravelPage_category_hotels'),
+		// t('TravsusTravelPage_category_hotels'),
 	]
 
 	const sortOptions = [

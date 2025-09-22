@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { JsonEditor } from 'json-edit-react'
 
 type BlogPost = {
@@ -12,37 +12,42 @@ type Props = {
 
 export default function BlogJsonEditorPage({ blogPost }: Props) {
 	const [post, setPost] = useState<BlogPost>(blogPost)
+	const [parsedJson, setParsedJson] = useState<Record<string, unknown>>({})
+	const [error, setError] = useState<string | null>(null)
+	const [isSaving, setIsSaving] = useState<boolean>(false)
+
+	// Re-parse when blogPost changes
 	useEffect(() => {
 		setPost(blogPost)
-	}, [blogPost])
-	const [parsedJson, setParsedJson] = useState<any>(() => {
 		try {
-			return JSON.parse(blogPost.translations)
-		} catch {
-			return {}
-		}
-	})
-	const [error, setError] = useState<string | null>(null)
-
-	const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-		const value = e.target.value
-		setPost((prev) => ({ ...prev, translations: value }))
-
-		try {
-			const parsed = JSON.parse(value)
-			setParsedJson(parsed)
+			setParsedJson(JSON.parse(blogPost.translations))
 			setError(null)
 		} catch {
-			setError('Invalid JSON')
+			setParsedJson({})
+			setError('Invalid initial JSON')
 		}
-	}
+	}, [blogPost])
 
-	const handleSubmit = async (e: React.FormEvent) => {
+	// Handle JsonEditor change
+	const handleJsonChange = useCallback((newData: unknown) => {
+		try {
+			const stringified = JSON.stringify(newData, null, 2)
+			setPost((prev) => ({ ...prev, translations: stringified }))
+			setParsedJson(newData as Record<string, unknown>)
+			setError(null)
+		} catch (err) {
+			console.error('Error serializing JSON:', err)
+			setError('Failed to update JSON')
+		}
+	}, [])
+
+	const handleSubmit = async () => {
 		if (!post.id) {
-			console.log('data here please')
-			return null
+			alert('Invalid post: missing ID')
+			return
 		}
 
+		setIsSaving(true)
 		const formData = new FormData()
 		formData.append('translations', post.translations)
 		formData.append('byJson', 'true')
@@ -53,6 +58,11 @@ export default function BlogJsonEditorPage({ blogPost }: Props) {
 				method: 'POST',
 				body: formData,
 			})
+
+			if (!response.ok) {
+				throw new Error(`HTTP error ${response.status}`)
+			}
+
 			const result = await response.json()
 			if (result.success) {
 				console.log('Post saved:', result.post)
@@ -63,62 +73,51 @@ export default function BlogJsonEditorPage({ blogPost }: Props) {
 			}
 		} catch (err) {
 			console.error('Error saving post:', err)
-			alert('Error saving post')
+			alert('Unexpected error while saving post')
+		} finally {
+			setIsSaving(false)
 		}
 	}
 
 	return (
 		<div style={{ padding: '20px', fontFamily: 'Arial' }}>
 			<h1>Blog JSON Editor</h1>
-			<div>
-				{/* <textarea
-					value={JSON.stringify(post.translations)}
-					onChange={handleChange}
-					rows={15}
-					cols={60}
-					style={{
-						fontFamily: 'monospace',
-						fontSize: '14px',
-						width: '100%',
-						marginBottom: '10px',
-					}}
-				/> */}
-				<JsonEditor
-					data={post.translations}
-					setData={handleChange} // optional
-					// {...otherProps}
-				/>
-				);
-				{error && <p style={{ color: 'red' }}>{error}</p>}
-				{!error && (
-					<div style={{ marginTop: '20px' }}>
-						<h3>Parsed JSON Preview:</h3>
-						<pre
-							style={{
-								background: '#f5f5f5',
-								padding: '10px',
-								borderRadius: '5px',
-							}}
-						>
-							{JSON.stringify(parsedJson, null, 2)}
-						</pre>
-					</div>
-				)}
-				<button
-					onClick={handleSubmit}
-					style={{
-						marginTop: '20px',
-						padding: '10px 20px',
-						background: '#0070f3',
-						color: '#fff',
-						border: 'none',
-						borderRadius: '5px',
-						cursor: 'pointer',
-					}}
-				>
-					Save
-				</button>
-			</div>
+
+			<JsonEditor data={parsedJson} setData={handleJsonChange} />
+
+			{error && <p style={{ color: 'red' }}>{error}</p>}
+
+			{!error && (
+				<div style={{ marginTop: '20px' }}>
+					<h3>Parsed JSON Preview:</h3>
+					<pre
+						style={{
+							background: '#f5f5f5',
+							padding: '10px',
+							borderRadius: '5px',
+							overflowX: 'auto',
+						}}
+					>
+						{JSON.stringify(parsedJson, null, 2)}
+					</pre>
+				</div>
+			)}
+
+			<button
+				onClick={handleSubmit}
+				disabled={isSaving || !!error}
+				style={{
+					marginTop: '20px',
+					padding: '10px 20px',
+					background: isSaving ? '#888' : '#0070f3',
+					color: '#fff',
+					border: 'none',
+					borderRadius: '5px',
+					cursor: isSaving ? 'not-allowed' : 'pointer',
+				}}
+			>
+				{isSaving ? 'Saving...' : 'Save'}
+			</button>
 		</div>
 	)
 }
