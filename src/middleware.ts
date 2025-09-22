@@ -125,7 +125,6 @@
 // export const config = {
 //   matcher: "/((?!api|static|.*\\..*|_next).*)",
 // };
-
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 import createMiddleware from 'next-intl/middleware'
@@ -135,8 +134,11 @@ import { routing } from './i18n/routing'
 function convertOldBlogPath(pathname: string, nameParam: string | null) {
 	const pathnameParts = pathname.split('/').filter(Boolean)
 	const blogId = pathnameParts[pathnameParts.length - 1]
-	if (!nameParam) return null
-	return `/${pathnameParts.slice(0, -1).join('/')}/${nameParam}/${blogId}`
+
+	// Use nameParam if available, otherwise fallback to "post"
+	const nameSegment = nameParam || 'post'
+
+	return `/${pathnameParts.slice(0, -1).join('/')}/${nameSegment}/${blogId}`
 }
 
 export default async function middleware(request: NextRequest) {
@@ -173,11 +175,9 @@ export default async function middleware(request: NextRequest) {
 	// === Blog old-link redirect logic ===
 	if (pathname.startsWith(`/${locale}/blog/`)) {
 		const nameParam = url.searchParams.get('name')
-		if (nameParam) {
-			const newBlogPath = convertOldBlogPath(pathname, nameParam)
-			if (newBlogPath && newBlogPath !== pathname) {
-				return NextResponse.redirect(new URL(url.origin + newBlogPath), 301)
-			}
+		const newBlogPath = convertOldBlogPath(pathname, nameParam)
+		if (newBlogPath && newBlogPath !== pathname) {
+			return NextResponse.redirect(new URL(url.origin + newBlogPath), 301)
 		}
 	}
 
