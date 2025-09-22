@@ -12,66 +12,102 @@ export async function GET(request: Request) {
 		console.log('request.url', request.url)
 
 		// Extract query params
-		const query = searchParams.get('query')
-
+		const query = searchParams.get('query') || ''
 		const start = searchParams.get('start')
 		const end = searchParams.get('end')
 		console.log(start, end)
-		const searchQuery = query // your text query
-		const days = daysBetween(start, end)
-		const daysNumber = days
-		const minPrice = searchParams.get('minPrice')
-		const maxPrice = searchParams.get('maxPrice')
-		const sortBy = searchParams.get('sortBy')
-		if (!query || query.trim().length === 0) {
-			return NextResponse.json({ error: 'Query is required' }, { status: 400 })
+
+		const minPrice = searchParams.get('minPrice') || '0'
+		const maxPrice = searchParams.get('maxPrice') || '10000' // Set a high default max price
+		const sortBy = searchParams.get('sortBy') || 'recommended'
+
+		// Validate and calculate days - if dates are invalid, set daysNumber to null
+		let daysNumber = null
+		try {
+			if (start && end && start !== 'null' && end !== 'null') {
+				const days = daysBetween(start, end)
+				if (!isNaN(Number(days)) && days > 0) {
+					daysNumber = days
+				}
+			}
+		} catch (error) {
+			console.log('Invalid dates, ignoring date filter')
+			daysNumber = null
 		}
 
-		// case-insensitive regex search
-		const regexQuery = { contains: query, mode: 'insensitive' as const }
-		const isNumber = !isNaN(Number(days))
-		const daysFilter = isNumber ? { days: { length: Number(days) } } : null
+		// Build filter conditions dynamically
+		const filterConditions: any[] = []
+
+		// Text search condition - only apply if query is valid
+		if (query && query.trim().length > 0) {
+			filterConditions.push({
+				$or: [
+					{ name: { $regex: query, $options: 'i' } },
+					{ subtitle: { $regex: query, $options: 'i' } },
+					{ overview: { $regex: query, $options: 'i' } },
+					{ conclusion: { $regex: query, $options: 'i' } },
+					{ tags: query },
+					{ keyphrase: query },
+				],
+			})
+		}
+
+		// Days filter condition - only apply if daysNumber is valid
+		if (daysNumber !== null) {
+			filterConditions.push({
+				$expr: { $eq: [{ $size: '$days' }, daysNumber] },
+			})
+		}
+
+		// If no filter conditions, get all tours
+		const filter = filterConditions.length > 0 ? { $and: filterConditions } : {}
 
 		const toursQuery = await prisma.$runCommandRaw({
 			find: 'tours',
-			filter: {
-				$and: [
-					{
-						$or: [
-							{ name: { $regex: searchQuery, $options: 'i' } },
-							{ subtitle: { $regex: searchQuery, $options: 'i' } },
-							{ overview: { $regex: searchQuery, $options: 'i' } },
-							{ conclusion: { $regex: searchQuery, $options: 'i' } },
-							{ tags: searchQuery },
-							{ keyphrase: searchQuery },
-						],
-					},
-					{ $expr: { $eq: [{ $size: '$days' }, daysNumber] } }, // array length filter
-				],
-			},
-			limit: 20,
+			filter: filter,
+			limit: 50, // Increased limit since we might get more results
 		})
+
 		const tours = toursQuery.cursor.firstBatch
-		console.log('tours', tours)
+		console.log('tours found:', tours.length)
 		console.log('daysNumber:', daysNumber)
-		console.log('daysNumber:', daysNumber.length)
+
+		// Process tours with pricing
 		const newTours = await Promise.all(
 			tours.map(async (tour) => {
-				const updated = await updateLineItemsLogic({
-					tour,
-					body: { guests: { guestAdults: 18, guestChildren: 0 } },
-				})
-
-				return {
-					...tour,
-					...updated,
+				try {
+					const updated = await updateLineItemsLogic({
+						tour,
+						body: { guests: { guestAdults: 18, guestChildren: 0 } },
+					})
+					return {
+						...tour,
+						...updated,
+					}
+				} catch (error) {
+					console.error('Error updating tour pricing:', error)
+					return tour // Return original tour if pricing update fails
 				}
 			}),
 		)
-		const sortedByTours = sortByPrice(newTours, sortBy)
-		const filteredByPrice = filterByPrice(sortedByTours, minPrice, maxPrice)
-		const filteredValidPrices = filterValidPrices(filteredByPrice)
-		return NextResponse.json({ tours: filteredValidPrices })
+
+		// Filter and sort
+		const filteredValidPrices = filterValidPrices(newTours)
+		const filteredByPrice = filterByPrice(
+			filteredValidPrices,
+			parseInt(minPrice),
+			parseInt(maxPrice),
+		)
+		const sortedTours = sortByPrice(filteredByPrice, sortBy)
+
+		return NextResponse.json({
+			tours: sortedTours,
+			filtersApplied: {
+				query: query && query.trim().length > 0,
+				days: daysNumber !== null,
+				price: true,
+			},
+		})
 	} catch (error: any) {
 		console.error('Search error:', error)
 		return NextResponse.json(
@@ -82,10 +118,16 @@ export async function GET(request: Request) {
 }
 
 function sortByPrice(products: any[], sortBy: string) {
+	if (!products.length) return products
+
 	if (sortBy === 'price_low') {
-		return products.sort((a, b) => a.startPrice - b.startPrice) // low → high
+		return [...products].sort(
+			(a, b) => (a.startPrice || 0) - (b.startPrice || 0),
+		)
 	} else if (sortBy === 'price_high') {
-		return products.sort((a, b) => b.startPrice - a.startPrice) // high → low
+		return [...products].sort(
+			(a, b) => (b.startPrice || 0) - (a.startPrice || 0),
+		)
 	}
 	return products // no sorting if sortBy is something else
 }
@@ -93,7 +135,8 @@ function sortByPrice(products: any[], sortBy: string) {
 function filterByPrice(products: any[], minPrice: number, maxPrice: number) {
 	return products.filter(
 		(product) =>
-			product.startPrice >= minPrice && product.startPrice <= maxPrice,
+			(product.startPrice || 0) >= minPrice &&
+			(product.startPrice || 0) <= maxPrice,
 	)
 }
 
