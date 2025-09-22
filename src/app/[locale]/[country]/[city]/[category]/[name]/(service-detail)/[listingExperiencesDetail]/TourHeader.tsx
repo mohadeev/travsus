@@ -44,7 +44,7 @@ const TourHeader = () => {
 		recommendationPercentage,
 		loading,
 	} = service
-	const title = service.title
+	const title = service.name
 	const day = days?.[0]
 	// Safely extract city name - handle both string and object cases
 	const city = day?.city
@@ -112,7 +112,7 @@ const TourHeader = () => {
 	}, [])
 
 	// Show skeleton while loading or if essential data is missing
-	if (loading || !title || !city) {
+	if (loading) {
 		return <TourHeaderSkeleton />
 	}
 
