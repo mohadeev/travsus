@@ -12,7 +12,7 @@ export default function TravsusTravelPage() {
 	const end = searchParams.get('end') // ?query=Marrakech
 	const locale = useLocale()
 	const cardLink = (slugs: any[]) => {
-		slugs.find(()=>)
+		return slugs.find(({ language }) => language === locale)
 	}
 	const t = useTranslations('TravsusTravelPage')
 	const [isFilterOpen, setIsFilterOpen] = useState(false)
@@ -613,9 +613,11 @@ export default function TravsusTravelPage() {
 																	? `${tour.duration} days`
 																	: t('TravsusTravelPage_flexible_duration')}
 															</span>
-															<button className="rounded-lg bg-gray-900 px-4 py-2 text-sm text-white transition-colors hover:bg-gray-800">
-																{t('TravsusTravelPage_book_now')}
-															</button>
+															<Link href={cardLink(tour.slugs)}>
+																<button className="rounded-lg bg-gray-900 px-4 py-2 text-sm text-white transition-colors hover:bg-gray-800">
+																	{t('TravsusTravelPage_book_now')}
+																</button>
+															</Link>
 														</div>
 													</div>
 												</div>

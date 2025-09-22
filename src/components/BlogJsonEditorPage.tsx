@@ -20,10 +20,10 @@ export default function BlogJsonEditorPage({ blogPost }: Props) {
 	useEffect(() => {
 		setPost(blogPost)
 		try {
-			setParsedJson(JSON.parse(blogPost.translations))
+			setParsedJson(blogPost.translations)
 			setError(null)
 		} catch {
-			setParsedJson({})
+			setParsedJson([])
 			setError('Invalid initial JSON')
 		}
 	}, [blogPost])
