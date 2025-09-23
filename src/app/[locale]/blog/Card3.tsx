@@ -5,8 +5,9 @@ import PostTypeFeaturedIcon from '@/components/PostTypeFeaturedIcon'
 import Link from 'next/link'
 import Image from 'next/image'
 import type { Route } from 'next'
-import slugify from '@/utils/slugify'
+// import slugify from '@/utils/slugify'
 import { useLocale } from 'next-intl'
+import { slugify } from 'transliteration'
 
 /**
  * Converts a string to a URL-friendly slug

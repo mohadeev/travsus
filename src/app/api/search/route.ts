@@ -10,6 +10,7 @@ export async function GET(request: Request) {
 		// Parse the URL
 		const { searchParams } = new URL(request.url)
 		console.log('request.url', request.url)
+		const language = extractLanguageFromRequest(request)
 
 		// Extract query params
 		const query = searchParams.get('query') || ''
@@ -82,6 +83,8 @@ export async function GET(request: Request) {
 					})
 					return {
 						...tour,
+						...tour.translations.find((trns) => trns.language === language),
+
 						...updated,
 					}
 				} catch (error) {
