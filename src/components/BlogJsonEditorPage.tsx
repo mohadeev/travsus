@@ -1,5 +1,6 @@
 import { useEffect, useState, useCallback } from 'react'
 import { JsonEditor } from 'json-edit-react'
+import { slugify } from 'transliteration'
 
 type BlogPost = {
 	id: string
@@ -15,6 +16,10 @@ export default function BlogJsonEditorPage({ blogPost }: Props) {
 	const [parsedJson, setParsedJson] = useState<Record<string, unknown>>({})
 	const [error, setError] = useState<string | null>(null)
 	const [isSaving, setIsSaving] = useState<boolean>(false)
+	const slug = (translation: any) => {
+		const slugified = slugify(translation.title)
+		return `/${translation.language}/blog/${slugified}/${post.id}`
+	}
 
 	// Re-parse when blogPost changes
 	useEffect(() => {
@@ -81,6 +86,16 @@ export default function BlogJsonEditorPage({ blogPost }: Props) {
 
 	return (
 		<div style={{ padding: '20px', fontFamily: 'Arial' }}>
+			<div>
+				{post?.translations?.map((translation: any) => (
+					<div>
+						<a href={'https://travsus.com' + slug(translation)} target="_blank">
+							{translation?.language}{' '}
+						</a>
+					</div>
+				))}
+			</div>
+
 			<h1>Blog JSON Editor</h1>
 
 			<JsonEditor data={parsedJson} setData={handleJsonChange} />

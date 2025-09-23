@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { PrismaClient } from '@prisma/client'
 import { updateLineItemsLogic } from '../updateLineItems/updateLineItemsLogic'
+import extractLanguageFromRequest from '../listing/get/getTourData/extractLanguageFromRequest'
 
 const prisma = new PrismaClient()
 
@@ -83,9 +84,8 @@ export async function GET(request: Request) {
 					})
 					return {
 						...tour,
-						...tour.translations.find((trns) => trns.language === language),
-
 						...updated,
+						...tour.translations.find((trns) => trns.language === language),
 					}
 				} catch (error) {
 					console.error('Error updating tour pricing:', error)
