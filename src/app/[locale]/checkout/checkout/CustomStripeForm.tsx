@@ -253,9 +253,9 @@ const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
 			else {
 				setSuccess(t('Payment_Processed_Successfully'))
 				setPaymentConfirmed(true)
-				// router.push(
-				// 	`/pay-done/payment?bookingId=${booking.id}&serviceId=${tour?.id}`,
-				// )
+				router.push(
+					`/pay-done/payment?bookingId=${booking.id}&serviceId=${tour?.id}`,
+				)
 			}
 		} catch (error: any) {
 			console.log('here eror')
@@ -362,14 +362,16 @@ const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
 
 					<PromoCodeForm />
 
-					{!clientSecret && !paymentConfirmed && (
+					{!clientSecret && (
 						<ButtonPrimary
 							className="mt-4 w-full"
 							onClick={() => handlePayment({})}
 							loading={
 								loading || status === 'loading' || currentStatus === 'loading'
 							}
-							disabled={loading || currentStatus === 'loading'}
+							disabled={
+								loading || currentStatus === 'loading' || paymentConfirmed
+							}
 						>
 							{loading || currentStatus === 'loading'
 								? t('Processing')
