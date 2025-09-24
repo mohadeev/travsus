@@ -110,7 +110,6 @@ export async function GET(request: NextRequest) {
 							},
 						},
 					})
-
 					// Filter translations in JavaScript to only keep en-US
 					const citiesWithEnUs = cities.map((city) => ({
 						...city,
@@ -186,6 +185,7 @@ export async function GET(request: NextRequest) {
 			...currentLang,
 			days: processedDays,
 		}
+		console.log('cities::::::::::::::::::::::::', tourData.days)
 
 		return NextResponse.json(tourData)
 	} catch (error) {
@@ -218,6 +218,7 @@ function createEnUsLocationObject(city, language) {
 
 	// Create the simplified object
 	return {
+		...city,
 		state: stateEnUs?.name || '', // "Marrakech-Asafi"
 		city: cityEnUs?.name || '', // "Marrakech"
 		country: countryEnUs?.name || '', // "Morocco"

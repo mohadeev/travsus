@@ -20,7 +20,6 @@ function AuthWatcher() {
 				basedGetUrlRequestLogedIn('/api/user/userData').then((res) => {
 					const message = res?.message
 					const user = res?.user
-					console.log('res: ', res)
 					if (user?.id && message) {
 						dispatch(setUser(user))
 					} else {
