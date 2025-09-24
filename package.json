@@ -3,7 +3,7 @@
   "version": "0.2.4",
   "private": true,
   "scripts": {
-    "dev": "prisma generate && prisma generate --schema=prisma/places.prisma && next dev",
+    "dev": "prisma generate && prisma generate --schema=prisma/places.prisma && next dev -p 3001",
     "build": "prisma generate && prisma generate --schema=prisma/places.prisma && next build",
     "start": "prisma generate && prisma generate --schema=prisma/places.prisma && next start",
     "lint": "next lint"
