@@ -107,19 +107,19 @@ const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
 			return
 		}
 
-		// try {
-		// 	await createBooking()
-		// 	if (showNewPaymentForm) {
-		// 		await initiatePayment(formData)
-		// 	} else {
-		// 		await processExistingPaymentMethod()
-		// 	}
-		// } catch (error: any) {
-		// 	console.error('Error in payment handling:', error)
-		// 	setError(error.message || t('Unexpected_Error'))
-		// } finally {
-		// 	setLoading(false)
-		// }
+		try {
+			await createBooking()
+			if (showNewPaymentForm) {
+				await initiatePayment(formData)
+			} else {
+				await processExistingPaymentMethod()
+			}
+		} catch (error: any) {
+			console.error('Error in payment handling:', error)
+			setError(error.message || t('Unexpected_Error'))
+		} finally {
+			setLoading(false)
+		}
 	}
 
 	const initiatePayment = async (formData: any) => {
