@@ -117,37 +117,37 @@
 		"app_locale_ClientHomePage_Worldwide": "전세계",
 		"app_locale_ClientHomePage_Your_Journey_You_Deserve": "당신의 여행, 당신은 최고를 받을 자격이 있습니다"
 	},
-	"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer": {
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Arrival_At_Marrakech": "마라케시 도착",
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Beach_Day_Seafood_Dinner": "해변에서의 하루 & 해산물 저녁 식사",
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Camel_Trek_At_Sunset": "일몰 시 카멜 트레킹",
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Cross_The_Atlas_Mountains": "아틀라스 산맥 횡단",
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Day_Trip_To_Ouzoud_Falls": "우주드 폭포 일일 여행",
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Departure_From_Fes": "페스 출발",
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Explore_Bahia_Palace": "바히아 궁전 탐험",
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Explore_Fes_Tanneries": "페스 가죽공장 탐험",
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Explore_Merzouga_Desert": "메르주가 사막 탐험",
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_See_More": "더 보기",
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Shopping_In_Fes_Souks": "페스 수크에서 쇼핑",
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Show_Less": "간략히 보기",
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Travel_To_Essaouira": "에사우이라 여행",
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Visit_Ait_Ben_Haddou": "아이트 벤 하두 방문",
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Visit_Fes_Medina": "페스 메디나 방문",
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_dotscontainer_Visit_Jemaa_El_Fnaa": "제마 엘프나 방문"
+	"newServicedetailListingExperiencesDetaildotscontainer": {
+		"newServicedetailListingExperiencesDetaildotscontainer_Arrival_At_Marrakech": "마라케시 도착",
+		"newServicedetailListingExperiencesDetaildotscontainer_Beach_Day_Seafood_Dinner": "해변에서의 하루 & 해산물 저녁 식사",
+		"newServicedetailListingExperiencesDetaildotscontainer_Camel_Trek_At_Sunset": "일몰 시 카멜 트레킹",
+		"newServicedetailListingExperiencesDetaildotscontainer_Cross_The_Atlas_Mountains": "아틀라스 산맥 횡단",
+		"newServicedetailListingExperiencesDetaildotscontainer_Day_Trip_To_Ouzoud_Falls": "우주드 폭포 일일 여행",
+		"newServicedetailListingExperiencesDetaildotscontainer_Departure_From_Fes": "페스 출발",
+		"newServicedetailListingExperiencesDetaildotscontainer_Explore_Bahia_Palace": "바히아 궁전 탐험",
+		"newServicedetailListingExperiencesDetaildotscontainer_Explore_Fes_Tanneries": "페스 가죽공장 탐험",
+		"newServicedetailListingExperiencesDetaildotscontainer_Explore_Merzouga_Desert": "메르주가 사막 탐험",
+		"newServicedetailListingExperiencesDetaildotscontainer_See_More": "더 보기",
+		"newServicedetailListingExperiencesDetaildotscontainer_Shopping_In_Fes_Souks": "페스 수크에서 쇼핑",
+		"newServicedetailListingExperiencesDetaildotscontainer_Show_Less": "간략히 보기",
+		"newServicedetailListingExperiencesDetaildotscontainer_Travel_To_Essaouira": "에사우이라 여행",
+		"newServicedetailListingExperiencesDetaildotscontainer_Visit_Ait_Ben_Haddou": "아이트 벤 하두 방문",
+		"newServicedetailListingExperiencesDetaildotscontainer_Visit_Fes_Medina": "페스 메디나 방문",
+		"newServicedetailListingExperiencesDetaildotscontainer_Visit_Jemaa_El_Fnaa": "제마 엘프나 방문"
 	},
-	"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput": {
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Add_Guests": "여행자 추가",
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Adults": "성인",
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Ages_1_13": "1세–13세",
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Ages_13_Or_Above": "13세 이상",
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Children": "어린이",
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Guests": "여행자"
+	"newServicedetailListingExperiencesDetailGuestsInput": {
+		"newServicedetailListingExperiencesDetailGuestsInput_Add_Guests": "여행자 추가",
+		"newServicedetailListingExperiencesDetailGuestsInput_Adults": "성인",
+		"newServicedetailListingExperiencesDetailGuestsInput_Ages_1_13": "1세–13세",
+		"newServicedetailListingExperiencesDetailGuestsInput_Ages_13_Or_Above": "13세 이상",
+		"newServicedetailListingExperiencesDetailGuestsInput_Children": "어린이",
+		"newServicedetailListingExperiencesDetailGuestsInput_Guests": "여행자"
 	},
-	"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_Included": {
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_Included_Everything_Included_In_Your_Package": "패키지에 포함된 모든 것",
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_Included_Included": "포함됨"
+	"newServicedetailListingExperiencesDetailIncluded": {
+		"newServicedetailListingExperiencesDetailIncluded_Everything_Included_In_Your_Package": "패키지에 포함된 모든 것",
+		"newServicedetailListingExperiencesDetailIncluded_Included": "포함됨"
 	},
-	"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_RenderSidebar": {
+	"newServicedetailListingExperiencesDetailRenderSidebar": {
 		"Booking_Failed_Error": "예약 생성에 실패했습니다",
 		"Date_Selection_Error": "날짜를 선택해야 합니다",
 		"No_Booking_Error": "생성된 예약이 없습니다",
@@ -155,35 +155,35 @@
 		"Processing_Text": "처리 중...",
 		"Reserve_Button": "예약하기"
 	},
-	"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_ReviewImageGallery": {
+	"newServicedetailListingExperiencesDetailReviewImageGallery": {
 		"Review_Photo_Alt": "리뷰 사진"
 	},
-	"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SidebarSkeletonLoader": {},
-	"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader": {
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Aspect_Ratio_Classes": "aspect-h-3 aspect-w-4 bg-gray-200",
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Grid_Container_Classes": "relative grid grid-cols-4 gap-1 sm:gap-2",
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Header_Container_Classes": "rounded-md sm:rounded-xl",
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Icon_Placeholder_Classes": "h-5 w-5 rounded bg-gray-300",
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Large_Image_Placeholder_Classes": "relative col-span-2 row-span-2 animate-pulse rounded-md bg-gray-200 sm:rounded-xl",
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Overlay_Classes": "absolute inset-0 bg-gray-300 bg-opacity-20",
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Show_Photos_Button_Classes": "absolute bottom-3 left-3 z-10 hidden animate-pulse cursor-pointer items-center justify-center rounded-xl bg-gray-200 px-4 py-2 text-gray-500 md:flex",
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Small_Image_Container_Classes": "relative animate-pulse overflow-hidden rounded-md bg-gray-200 sm:rounded-xl",
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Small_Image_Placeholder_Classes": "relative col-span-1 row-span-2 animate-pulse rounded-md bg-gray-200 sm:rounded-xl",
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader_Text_Placeholder_Classes": "ml-2 h-5 w-16 rounded bg-gray-300 text-sm"
+	"newServicedetailListingExperiencesDetailSidebarSkeletonLoader": {},
+	"newServicedetailListingExperiencesDetailSkeletonLoader": {
+		"newServicedetailListingExperiencesDetailSkeletonLoader_Aspect_Ratio_Classes": "aspect-h-3 aspect-w-4 bg-gray-200",
+		"newServicedetailListingExperiencesDetailSkeletonLoader_Grid_Container_Classes": "relative grid grid-cols-4 gap-1 sm:gap-2",
+		"newServicedetailListingExperiencesDetailSkeletonLoader_Header_Container_Classes": "rounded-md sm:rounded-xl",
+		"newServicedetailListingExperiencesDetailSkeletonLoader_Icon_Placeholder_Classes": "h-5 w-5 rounded bg-gray-300",
+		"newServicedetailListingExperiencesDetailSkeletonLoader_Large_Image_Placeholder_Classes": "relative col-span-2 row-span-2 animate-pulse rounded-md bg-gray-200 sm:rounded-xl",
+		"newServicedetailListingExperiencesDetailSkeletonLoader_Overlay_Classes": "absolute inset-0 bg-gray-300 bg-opacity-20",
+		"newServicedetailListingExperiencesDetailSkeletonLoader_Show_Photos_Button_Classes": "absolute bottom-3 left-3 z-10 hidden animate-pulse cursor-pointer items-center justify-center rounded-xl bg-gray-200 px-4 py-2 text-gray-500 md:flex",
+		"newServicedetailListingExperiencesDetailSkeletonLoader_Small_Image_Container_Classes": "relative animate-pulse overflow-hidden rounded-md bg-gray-200 sm:rounded-xl",
+		"newServicedetailListingExperiencesDetailSkeletonLoader_Small_Image_Placeholder_Classes": "relative col-span-1 row-span-2 animate-pulse rounded-md bg-gray-200 sm:rounded-xl",
+		"newServicedetailListingExperiencesDetailSkeletonLoader_Text_Placeholder_Classes": "ml-2 h-5 w-16 rounded bg-gray-300 text-sm"
 	},
-	"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_StayDatesRangeInput": {
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_StayDatesRangeInput_Add_Dates": "날짜 추가",
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_StayDatesRangeInput_Check_In_Out": "체크인 4 - 체크아웃",
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_StayDatesRangeInput_Container_Classes": "StayDatesRangeInput relative z-10 flex",
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_StayDatesRangeInput_Content_Layout_Classes": "flex-grow text-left",
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_StayDatesRangeInput_Date_Display_Classes": "block font-semibold xl:text-lg",
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_StayDatesRangeInput_Flex_One": "flex-1",
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_StayDatesRangeInput_Icon_Size_Classes": "h-5 w-5 lg:h-7 lg:w-7",
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_StayDatesRangeInput_Icon_Text_Classes": "text-neutral-300 dark:text-neutral-400",
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_StayDatesRangeInput_Input_Wrapper_Classes": "relative flex w-full flex-1 items-center gap-1 focus:outline-none ",
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_StayDatesRangeInput_Panel_Position_Classes": "absolute left-auto right-0 top-full z-10 mt-3 w-screen max-w-sm px-4 sm:px-0 lg:max-w-3xl xl:-right-10",
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_StayDatesRangeInput_Panel_Style_Classes": "overflow-hidden rounded-3xl bg-white p-8 shadow-lg ring-1 ring-black ring-opacity-5 dark:bg-neutral-800",
-		"app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_StayDatesRangeInput_Subtitle_Classes": "mt-1 block text-sm font-light leading-none text-neutral-400"
+	"newServicedetailListingExperiencesDetailStayDatesRangeInput": {
+		"newServicedetailListingExperiencesDetailStayDatesRangeInput_Add_Dates": "날짜 추가",
+		"newServicedetailListingExperiencesDetailStayDatesRangeInput_Check_In_Out": "체크인 4 - 체크아웃",
+		"newServicedetailListingExperiencesDetailStayDatesRangeInput_Container_Classes": "StayDatesRangeInput relative z-10 flex",
+		"newServicedetailListingExperiencesDetailStayDatesRangeInput_Content_Layout_Classes": "flex-grow text-left",
+		"newServicedetailListingExperiencesDetailStayDatesRangeInput_Date_Display_Classes": "block font-semibold xl:text-lg",
+		"newServicedetailListingExperiencesDetailStayDatesRangeInput_Flex_One": "flex-1",
+		"newServicedetailListingExperiencesDetailStayDatesRangeInput_Icon_Size_Classes": "h-5 w-5 lg:h-7 lg:w-7",
+		"newServicedetailListingExperiencesDetailStayDatesRangeInput_Icon_Text_Classes": "text-neutral-300 dark:text-neutral-400",
+		"newServicedetailListingExperiencesDetailStayDatesRangeInput_Input_Wrapper_Classes": "relative flex w-full flex-1 items-center gap-1 focus:outline-none ",
+		"newServicedetailListingExperiencesDetailStayDatesRangeInput_Panel_Position_Classes": "absolute left-auto right-0 top-full z-10 mt-3 w-screen max-w-sm px-4 sm:px-0 lg:max-w-3xl xl:-right-10",
+		"newServicedetailListingExperiencesDetailStayDatesRangeInput_Panel_Style_Classes": "overflow-hidden rounded-3xl bg-white p-8 shadow-lg ring-1 ring-black ring-opacity-5 dark:bg-neutral-800",
+		"newServicedetailListingExperiencesDetailStayDatesRangeInput_Subtitle_Classes": "mt-1 block text-sm font-light leading-none text-neutral-400"
 	},
 	"ervicedetailListingexperiencesdetailTouritineraryWithMap": {
 		"Complete_Itinerary": "전체 일정",

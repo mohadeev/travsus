@@ -19,7 +19,7 @@ interface props {
 }
 
 const Itinerary = ({ isFirst, isLast, dayData, Index, tourData }: any) => {
-	const t = useTranslations("EachDay");
+	const t = useTranslations('EachDay')
 	const [active, setActive] = useState(false)
 	const containerDiv = React.useRef<HTMLDivElement | null>(null)
 

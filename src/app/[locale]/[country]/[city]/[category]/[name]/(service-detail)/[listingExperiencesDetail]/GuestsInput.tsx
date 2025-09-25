@@ -23,7 +23,9 @@ const GuestsInput: FC<GuestsInputProps> = ({
 	onChange,
 	defaultValue,
 }) => {
-	const t = useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput");
+	const t = useTranslations(
+		'newServicedetailListingExperiencesDetailGuestsInput',
+	)
 	const totalGuests = defaultValue.guestAdults + defaultValue.guestChildren
 
 	const handleChangeData = (value: number, type: keyof GuestsObject) => {
@@ -55,10 +57,19 @@ const GuestsInput: FC<GuestsInputProps> = ({
 							</div>
 							<div className="flex-grow">
 								<span className="block font-semibold xl:text-lg">
-									{totalGuests || ''} {t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Guests')}
+									{totalGuests || ''}{' '}
+									{t(
+										'newServicedetailListingExperiencesDetailGuestsInput_Guests',
+									)}
 								</span>
 								<span className="mt-1 block text-sm font-light leading-none text-neutral-400">
-									{totalGuests ? t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Guests') : t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Add_Guests')}
+									{totalGuests
+										? t(
+												'newServicedetailListingExperiencesDetailGuestsInput_Guests',
+											)
+										: t(
+												'newServicedetailListingExperiencesDetailGuestsInput_Add_Guests',
+											)}
 								</span>
 							</div>
 
@@ -84,8 +95,12 @@ const GuestsInput: FC<GuestsInputProps> = ({
 								onChange={(value) =>
 									onChange(handleChangeData(value, 'guestAdults'))
 								}
-								label={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Adults')}
-								desc={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Ages_13_Or_Above')}
+								label={t(
+									'newServicedetailListingExperiencesDetailGuestsInput_Adults',
+								)}
+								desc={t(
+									'newServicedetailListingExperiencesDetailGuestsInput_Ages_13_Or_Above',
+								)}
 							/>
 							<NcInputNumber
 								className="mt-6 w-full"
@@ -93,8 +108,12 @@ const GuestsInput: FC<GuestsInputProps> = ({
 								onChange={(value) =>
 									onChange(handleChangeData(value, 'guestChildren'))
 								}
-								label={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Children')}
-								desc={t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_GuestsInput_Ages_1_13')}
+								label={t(
+									'newServicedetailListingExperiencesDetailGuestsInput_Children',
+								)}
+								desc={t(
+									'newServicedetailListingExperiencesDetailGuestsInput_Ages_1_13',
+								)}
 							/>
 						</Popover.Panel>
 					</Transition>

@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react'
 import { useTranslations } from '@/lib/i18n'
-import TourMap from './tour-map'
+import TourMap from './TourMap'
 import Image from 'next/image'
 import { MapPin } from 'lucide-react'
 

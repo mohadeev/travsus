@@ -10,7 +10,7 @@ const Included = () => {
 		(state: any) => state.creatingServiceSlice.service,
 	)
 	const [isOpen, setIsOpen] = useState(false)
-	const t = useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_Included");
+	const t = useTranslations('newServicedetailListingExperiencesDetailIncluded')
 
 	if (!inclusions) return null
 
@@ -38,9 +38,13 @@ const Included = () => {
 					onClick={toggleAccordion}
 				>
 					<div>
-						<h2 className="text-xl font-semibold">{t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_Included_Included')}</h2>
+						<h2 className="text-xl font-semibold">
+							{t('newServicedetailListingExperiencesDetailIncluded_Included')}
+						</h2>
 						<span className="text-sm text-neutral-500 dark:text-neutral-400">
-							{t('app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_Included_Everything_Included_In_Your_Package')}
+							{t(
+								'newServicedetailListingExperiencesDetailIncluded_Everything_Included_In_Your_Package',
+							)}
 						</span>
 					</div>
 					{isOpen ? (
