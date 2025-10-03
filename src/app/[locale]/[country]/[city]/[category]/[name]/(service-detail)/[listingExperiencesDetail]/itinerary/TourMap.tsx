@@ -10,7 +10,7 @@ interface Day {
 	description?: string
 	cityId?: string
 	cityName?: string
-	geoCoordinates?: {
+	geo?: {
 		lat: number
 		log: number
 	}
@@ -104,11 +104,8 @@ const InnerTourMap = forwardRef<
 			zoomToDay: (dayIndex: number) => {
 				if (dayIndex >= 0 && dayIndex < days.length) {
 					const day = days[dayIndex]
-					if (day.geoCoordinates?.lat && day.geoCoordinates?.log) {
-						leafletMapRef.current?.setView(
-							[day.geoCoordinates.lat, day.geoCoordinates.log],
-							13,
-						)
+					if (day.geo?.lat && day.geo?.log) {
+						leafletMapRef.current?.setView([day.geo.lat, day.geo.log], 13)
 						// Highlight the marker
 						if (markersRef.current[dayIndex]) {
 							markersRef.current[dayIndex].openPopup()
@@ -131,8 +128,8 @@ const InnerTourMap = forwardRef<
 
 				// Try to find the first day with coordinates
 				for (const day of days) {
-					if (day.geoCoordinates?.lat && day.geoCoordinates?.log) {
-						initialCoords = [day.geoCoordinates.lat, day.geoCoordinates.log]
+					if (day.geo?.lat && day.geo?.log) {
+						initialCoords = [day.geo.lat, day.geo.log]
 						hasInitialCoords = true
 						break
 					}
@@ -181,7 +178,7 @@ const InnerTourMap = forwardRef<
 				}
 			}
 		}, [days, monochrome])
-
+		console.log('days:', days)
 		// Update map when selectedDayIndex changes
 		useEffect(() => {
 			if (
@@ -190,15 +187,8 @@ const InnerTourMap = forwardRef<
 				selectedDayIndex < days.length
 			) {
 				const day = days[selectedDayIndex]
-				if (
-					day.geoCoordinates?.lat &&
-					day.geoCoordinates?.log &&
-					leafletMapRef.current
-				) {
-					leafletMapRef.current.setView(
-						[day.geoCoordinates.lat, day.geoCoordinates.log],
-						13,
-					)
+				if (day.geo?.lat && day.geo?.log && leafletMapRef.current) {
+					leafletMapRef.current.setView([day.geo.lat, day.geo.log], 13)
 					// Open the popup for the selected day
 					if (markersRef.current[selectedDayIndex]) {
 						markersRef.current[selectedDayIndex].openPopup()
@@ -232,12 +222,9 @@ const InnerTourMap = forwardRef<
 
 			// Add markers for each day with coordinates
 			days.forEach((day, index) => {
-				if (!day.geoCoordinates?.lat || !day.geoCoordinates?.log) return
+				if (!day.geo?.lat || !day.geo?.log) return
 
-				const coords: [number, number] = [
-					day.geoCoordinates.lat,
-					day.geoCoordinates.log,
-				]
+				const coords: [number, number] = [day.geo.lat, day.geo.log]
 				routePoints.push(coords)
 				bounds.extend(coords)
 				hasValidCoordinates = true
@@ -326,8 +313,8 @@ const InnerTourMap = forwardRef<
 			const points: [number, number][] = []
 			// Add coordinates for each day
 			days.forEach((day) => {
-				if (day.geoCoordinates?.lat && day.geoCoordinates?.log) {
-					points.push([day.geoCoordinates.lat, day.geoCoordinates.log])
+				if (day.geo?.lat && day.geo?.log) {
+					points.push([day.geo.lat, day.geo.log])
 				}
 			})
 
@@ -353,8 +340,8 @@ const InnerTourMap = forwardRef<
 			let hasValidCoordinates = false
 
 			days.forEach((day) => {
-				if (day.geoCoordinates?.lat && day.geoCoordinates?.log) {
-					bounds.extend([day.geoCoordinates.lat, day.geoCoordinates.log])
+				if (day.geo?.lat && day.geo?.log) {
+					bounds.extend([day.geo.lat, day.geo.log])
 					hasValidCoordinates = true
 				}
 			})

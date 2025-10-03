@@ -1,10 +1,17 @@
-import sgMail from '@sendgrid/mail'
+import {
+	TransactionalEmailsApi,
+	TransactionalEmailsApiApiKeys,
+	SendSmtpEmail,
+} from '@getbrevo/brevo'
 import emailTypes from './emailTypes'
-import handlebars from 'handlebars'
 import { compileTemplate } from './compileTemplate'
 
-// Set SendGrid API Key
-sgMail.setApiKey(process.env.SENDGRID_API_KEY as string)
+// Instantiate Brevo API
+const transactionalEmailsApi = new TransactionalEmailsApi()
+transactionalEmailsApi.setApiKey(
+	TransactionalEmailsApiApiKeys.apiKey,
+	process.env.BREVO_API_KEY as string,
+)
 
 const sendEmail = async ({ to, subject, message, type, emailData }: any) => {
 	const emailTyp = emailTypes({ type })
@@ -32,31 +39,47 @@ const sendEmail = async ({ to, subject, message, type, emailData }: any) => {
       `
 		}
 		console.log('emailSender', emailSender)
+<<<<<<< HEAD
 		const msg = {
 			to: to || 'skendoulmohamed@gmail.com',
 			from: 'admin@travsus.com',
+=======
+
+		const msg: SendSmtpEmail = {
+			sender: { email: emailSender, name: 'TRAVSUS' }, // Brevo requires object
+			to: [{ email: to || 'skendoulmohamed@gmail.com' }],
+>>>>>>> 4104937fc9d9edfcc5487e4af003be04d8e7a747
 			subject: emailSubject,
-			html: emailContent,
-			attachments: emailData.attachments,
+			htmlContent: emailContent,
 		}
 
-		const response = await sgMail.send(msg)
-		console.log(
-			`Email sent to ${to} successfully! Response:`,
-			response[0].statusCode,
-		)
+		// Handle attachments if provided
+		if (emailData?.attachments) {
+			msg.attachment = emailData.attachments.map((att: any) => ({
+				name: att.filename,
+				content: att.content.toString('base64'),
+			}))
+		}
 
+		const response = await transactionalEmailsApi.sendTransacEmail(msg)
+
+		console.log(
+			`Email sent to ${to} successfully! Message ID:`,
+			response.body.messageId,
+		)
 		return response
+<<<<<<< HEAD
 	} catch (error) {
 		console.error('Error sending email:', JSON.stringify(error))
+=======
+	} catch (error: any) {
+		console.error(
+			'Error sending email:',
+			error.response?.body || error.message || error,
+		)
+>>>>>>> 4104937fc9d9edfcc5487e4af003be04d8e7a747
 		console.error('Failed to send email')
 	}
 }
 
 export default sendEmail
-
-// function compileTemplate(template: any, data: any) {
-// 	const compileTemplate = handlebars.compile(template(data))
-// 	const htmlBody = compileTemplate(data)
-// 	return htmlBody
-// }

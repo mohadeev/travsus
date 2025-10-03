@@ -1,7 +1,9 @@
-import { useTranslations } from '@/lib/i18n';
+import { useTranslations } from '@/lib/i18n'
 
 export default function SkeletonLoader() {
-	const t = useTranslations("app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SidebarSkeletonLoader");
+	const t = useTranslations(
+		'newServicedetailListingExperiencesDetailSidebarSkeletonLoader',
+	)
 
 	return (
 		<div className="top-28">

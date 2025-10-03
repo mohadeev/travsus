@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react'
 import { useTranslations } from '@/lib/i18n'
-import TourMap from './tour-map'
+import TourMap from './TourMap'
 import Image from 'next/image'
 import { MapPin } from 'lucide-react'
 
@@ -33,7 +33,7 @@ export default function TourItineraryWithMap({
 	title,
 }: TourItineraryWithMapProps) {
 	const t = useTranslations(
-		'app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_touritinerarywithmap',
+		'ervicedetailListingexperiencesdetailTouritineraryWithMap',
 	)
 
 	const [selectedDayIndex, setSelectedDayIndex] = useState<number>(0)

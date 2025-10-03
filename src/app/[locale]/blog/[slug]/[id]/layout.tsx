@@ -2,11 +2,14 @@ import type React from 'react'
 import getUserData from '@/app/api/user/getUserData'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
+import { getLocale } from 'next-intl/server'
 
 // Helper function to fetch post data from API
 async function getPostFromApi(id: string) {
+	const locale = await getLocale()
+	console.log('locale:::::::::::::::::::::::::::', locale)
 	const response = await fetch(
-		`${process.env.NEXT_PUBLIC_SITE_URL || ''}/api/blog/${id}`,
+		`${process.env.NEXT_PUBLIC_SITE_URL || ''}/api/blog/${id}?locale=${locale}`,
 		{
 			cache: 'no-store',
 		},
@@ -27,9 +30,10 @@ export async function generateMetadata({
 }: {
 	params: { id: string }
 }): Promise<Metadata> {
-	console.log('id:', params.id)
+	// console.log('id:', params.id)
 	const post = await getPostFromApi(params.id)
-
+	post.translations = null
+	// console.log('post:', post)
 	if (!post) {
 		return {
 			title: 'Post Not Found',
@@ -69,7 +73,7 @@ export async function generateMetadata({
 			],
 		},
 		alternates: {
-			canonical: `https://yourblog.com/blog/${params.slug}`,
+			canonical: `https://travsus.com/blog/${params.slug}`,
 		},
 	}
 }

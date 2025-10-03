@@ -27,7 +27,6 @@ import {
 import { uploadImage } from '@/app/actions/uploadImage'
 import { Button } from '@/components/ui/button'
 import BlogJsonEditorPage from './BlogJsonEditorPage'
-import BlogJsonViewer from './BlogJsonViewer'
 
 const MenuBar = ({
 	editor,
@@ -448,7 +447,6 @@ export default function BlogEditor({
 					/>
 				</div>
 				<BlogJsonEditorPage blogPost={blogPost} />
-				<BlogJsonViewer post={blogPost} />
 				<div className="flex items-center gap-4">
 					<Button
 						type="submit"

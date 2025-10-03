@@ -26,7 +26,7 @@ export interface StayDatesRangeInputProps {
 
 const StayDatesRangeInput: FC<StayDatesRangeInputProps> = ({
 	className = t(
-		'app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_StayDatesRangeInput_Flex_One',
+		'newServicedetailListingExperiencesDetailStayDatesRangeInput_Flex_One',
 	),
 	onChange,
 	duration = 3,
@@ -34,7 +34,7 @@ const StayDatesRangeInput: FC<StayDatesRangeInputProps> = ({
 	isFlashing = false,
 }) => {
 	const t = useTranslations(
-		'app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_StayDatesRangeInput',
+		'newServicedetailListingExperiencesDetailStayDatesRangeInput',
 	)
 	const locale = useLocale()
 	// console.log('locale:')
@@ -71,29 +71,29 @@ const StayDatesRangeInput: FC<StayDatesRangeInputProps> = ({
 			<div
 				className={
 					t(
-						'app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_StayDatesRangeInput_Input_Wrapper_Classes',
+						'newServicedetailListingExperiencesDetailStayDatesRangeInput_Input_Wrapper_Classes',
 					) + `${styles.inputWrapper} ${isFlashing ? styles.flashing : ''}`
 				}
 			>
 				<div
 					className={t(
-						'app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_StayDatesRangeInput_Icon_Text_Classes',
+						'newServicedetailListingExperiencesDetailStayDatesRangeInput_Icon_Text_Classes',
 					)}
 				>
 					<CalendarIcon
 						className={t(
-							'app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_StayDatesRangeInput_Icon_Size_Classes',
+							'newServicedetailListingExperiencesDetailStayDatesRangeInput_Icon_Size_Classes',
 						)}
 					/>
 				</div>
 				<div
 					className={t(
-						'app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_StayDatesRangeInput_Content_Layout_Classes',
+						'newServicedetailListingExperiencesDetailStayDatesRangeInput_Content_Layout_Classes',
 					)}
 				>
 					<span
 						className={t(
-							'app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_StayDatesRangeInput_Date_Display_Classes',
+							'newServicedetailListingExperiencesDetailStayDatesRangeInput_Date_Display_Classes',
 						)}
 					>
 						{startDate?.toLocaleDateString(locale, {
@@ -101,7 +101,7 @@ const StayDatesRangeInput: FC<StayDatesRangeInputProps> = ({
 							day: '2-digit',
 						}) ||
 							t(
-								'app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_StayDatesRangeInput_Add_Dates',
+								'newServicedetailListingExperiencesDetailStayDatesRangeInput_Add_Dates',
 							)}
 						{endDate
 							? ' - ' +
@@ -113,11 +113,11 @@ const StayDatesRangeInput: FC<StayDatesRangeInputProps> = ({
 					</span>
 					<span
 						className={t(
-							'app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_StayDatesRangeInput_Subtitle_Classes',
+							'newServicedetailListingExperiencesDetailStayDatesRangeInput_Subtitle_Classes',
 						)}
 					>
 						{t(
-							'app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_StayDatesRangeInput_Check_In_Out',
+							'newServicedetailListingExperiencesDetailStayDatesRangeInput_Check_In_Out',
 						)}
 					</span>
 				</div>
@@ -130,7 +130,7 @@ const StayDatesRangeInput: FC<StayDatesRangeInputProps> = ({
 			id="StayDatesRangeInput_TOUR"
 			className={
 				t(
-					'app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_StayDatesRangeInput_Container_Classes',
+					'newServicedetailListingExperiencesDetailStayDatesRangeInput_Container_Classes',
 				) + ` ${className}`
 			}
 		>
@@ -158,12 +158,12 @@ const StayDatesRangeInput: FC<StayDatesRangeInputProps> = ({
 					>
 						<Popover.Panel
 							className={t(
-								'app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_StayDatesRangeInput_Panel_Position_Classes',
+								'newServicedetailListingExperiencesDetailStayDatesRangeInput_Panel_Position_Classes',
 							)}
 						>
 							<div
 								className={t(
-									'app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_StayDatesRangeInput_Panel_Style_Classes',
+									'newServicedetailListingExperiencesDetailStayDatesRangeInput_Panel_Style_Classes',
 								)}
 							>
 								<DatePicker

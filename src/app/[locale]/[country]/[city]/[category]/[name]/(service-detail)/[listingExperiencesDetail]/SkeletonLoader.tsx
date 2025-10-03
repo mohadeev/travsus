@@ -4,7 +4,7 @@ import { useTranslations } from '@/lib/i18n'
 
 export const SkeletonLoader = () => {
 	const t = useTranslations(
-		'app_locale_continent_country_region_city_category_name_servicedetail_listingexperiencesdetail_SkeletonLoader',
+		'newServicedetailListingExperiencesDetailSkeletonLoader',
 	)
 
 	return (
