@@ -5,7 +5,7 @@ import PostTypeFeaturedIcon from '@/components/PostTypeFeaturedIcon'
 import Link from 'next/link'
 import Image from 'next/image'
 import type { Route } from 'next'
-import slugify from '@/utils/slugify'
+import { slugify } from 'transliteration'
 import { useLocale } from 'next-intl'
 
 /**

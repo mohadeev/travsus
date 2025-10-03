@@ -31,10 +31,10 @@ const sendEmail = async ({ to, subject, message, type, emailData }: any) => {
         <a href="https://www.travsus.com/unsubscribe">Unsubscribe from test emails</a>
       `
 		}
-
+		console.log('emailSender', emailSender)
 		const msg = {
 			to: to || 'skendoulmohamed@gmail.com',
-			from: emailSender,
+			from: 'admin@travsus.com',
 			subject: emailSubject,
 			html: emailContent,
 			attachments: emailData.attachments,
@@ -48,7 +48,7 @@ const sendEmail = async ({ to, subject, message, type, emailData }: any) => {
 
 		return response
 	} catch (error) {
-		console.error('Error sending email:', error)
+		console.error('Error sending email:', JSON.stringify(error))
 		console.error('Failed to send email')
 	}
 }
