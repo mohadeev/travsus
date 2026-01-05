@@ -1,4 +1,4 @@
-import { NextIntlClientProvider, hasLocale } from 'next-intl'
+import { NextIntlClientProvider } from 'next-intl'
 import { fontVariables } from '@/lib/fonts'
 
 import '../globals.css'
@@ -7,7 +7,6 @@ import '@/styles/index.scss'
 import 'rc-slider/assets/index.css'
 import logoImg from '@/images/logos/dark/travsus_black_and_white.png'
 
-import { Inter_Tight } from 'next/font/google'
 import Script from 'next/script'
 import { getMessages } from 'next-intl/server'
 
@@ -21,56 +20,68 @@ export default async function RootLayout({
 	params: { locale: string }
 }>) {
 	const messages = await getMessages()
-
 	const isLocalhost = process.env.NODE_ENV === 'development'
+
 	return (
 		<html className={fontVariables} lang={locale}>
 			<head>
+				{/* Fonts */}
 				<link
 					href="https://fonts.cdnfonts.com/css/helvetica-neue-55"
 					rel="stylesheet"
 				/>
-
-				<meta name="google-adsense-account" content="ca-pub-9261275339248060" />
 				<link rel="preconnect" href="https://fonts.googleapis.com" />
-				<link
-					rel="preconnect"
-					href="https://fonts.gstatic.com"
-					// crossOrigin="true"
-				/>
-				<link rel="icon" type="image/png" href={logoImg.src} />
+				<link rel="preconnect" href="https://fonts.gstatic.com" />
 				<link
 					href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap"
 					rel="stylesheet"
-				></link>
+				/>
 				<link rel="preconnect" href="//fdn.fontcdn.ir" />
 				<link rel="preconnect" href="//v1.fontapi.ir" />
-				<link
-					href="https://v1.fontapi.ir/css/SFProDisplay"
-					rel="stylesheet"
-				></link>
+				<link href="https://v1.fontapi.ir/css/SFProDisplay" rel="stylesheet" />
+
+				{/* Favicon */}
+				<link rel="icon" type="image/png" href={logoImg.src} />
+
+				{/* Google Adsense */}
+				<meta name="google-adsense-account" content="ca-pub-9261275339248060" />
+			</head>
+
+			<body>
 				{/* Google Tag Manager */}
 				<Script
 					id="gtm-init"
 					strategy="afterInteractive"
 					dangerouslySetInnerHTML={{
-						__html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-WHQK9Z5M');`,
+						__html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+						new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+						j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;
+						j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+						f.parentNode.insertBefore(j,f);
+						})(window,document,'script','dataLayer','GTM-WHQK9Z5M');`,
 					}}
 				/>
+
+				{/* Global gtag (GA + Google Ads) */}
 				<Script
 					src="https://www.googletagmanager.com/gtag/js?id=G-C7S8V9MJWG"
 					strategy="afterInteractive"
 				/>
-				<Script id="ga-init" strategy="afterInteractive">
-					{`window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-C7S8V9MJWG');`}
-				</Script>
-				{/* Google Tag Manager - GTM */}
-				<script
-					dangerouslySetInnerHTML={{
-						__html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-WHQK9Z5M');`,
-					}}
-				/>
+				<Script id="gtag-init" strategy="afterInteractive">
+					{`
+						window.dataLayer = window.dataLayer || [];
+						function gtag(){dataLayer.push(arguments);}
+						gtag('js', new Date());
 
+						// Google Analytics
+						gtag('config', 'G-C7S8V9MJWG');
+
+						// Google Ads
+						gtag('config', 'AW-17494341245');
+					`}
+				</Script>
+
+				{/* Hotjar (production only) */}
 				{!isLocalhost && (
 					<Script
 						id="hotjar-init"
@@ -87,18 +98,7 @@ export default async function RootLayout({
 						}}
 					/>
 				)}
-				<Script
-					src="https://www.googletagmanager.com/gtag/js?id=AW-17494341245"
-					strategy="afterInteractive"
-				/>
-				<Script id="ads-gtag-init" strategy="afterInteractive">
-					{`
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'AW-17494341245');
-  `}
-				</Script>
+
 				{/* Google Tag Manager (noscript) */}
 				<noscript>
 					<iframe
@@ -106,12 +106,13 @@ export default async function RootLayout({
 						height="0"
 						width="0"
 						style={{ display: 'none', visibility: 'hidden' }}
-					></iframe>
+					/>
 				</noscript>
-			</head>
-			<NextIntlClientProvider messages={messages}>
-				<LocaleLayoutClient> {children}</LocaleLayoutClient>
-			</NextIntlClientProvider>
+
+				<NextIntlClientProvider messages={messages}>
+					<LocaleLayoutClient>{children}</LocaleLayoutClient>
+				</NextIntlClientProvider>
+			</body>
 		</html>
 	)
 }

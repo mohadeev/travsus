@@ -39,16 +39,10 @@ const sendEmail = async ({ to, subject, message, type, emailData }: any) => {
       `
 		}
 		console.log('emailSender', emailSender)
-<<<<<<< HEAD
-		const msg = {
-			to: to || 'skendoulmohamed@gmail.com',
-			from: 'admin@travsus.com',
-=======
 
 		const msg: SendSmtpEmail = {
 			sender: { email: emailSender, name: 'TRAVSUS' }, // Brevo requires object
 			to: [{ email: to || 'skendoulmohamed@gmail.com' }],
->>>>>>> 4104937fc9d9edfcc5487e4af003be04d8e7a747
 			subject: emailSubject,
 			htmlContent: emailContent,
 		}
@@ -68,16 +62,11 @@ const sendEmail = async ({ to, subject, message, type, emailData }: any) => {
 			response.body.messageId,
 		)
 		return response
-<<<<<<< HEAD
-	} catch (error) {
-		console.error('Error sending email:', JSON.stringify(error))
-=======
 	} catch (error: any) {
 		console.error(
 			'Error sending email:',
 			error.response?.body || error.message || error,
 		)
->>>>>>> 4104937fc9d9edfcc5487e4af003be04d8e7a747
 		console.error('Failed to send email')
 	}
 }
