@@ -32,7 +32,7 @@ export default function HomeBanner() {
 
 	return (
 		<div className="relative w-full py-12">
-			<div className="relative z-20 flex min-h-[auto] flex-col items-center justify-center px-4 text-center sm:px-6 lg:px-8">
+			<div className="relative flex min-h-[auto] flex-col items-center justify-center px-4 text-center sm:px-6 lg:px-8">
 				<div
 					className={cn(
 						'max-w-5xl transition-all duration-1000',

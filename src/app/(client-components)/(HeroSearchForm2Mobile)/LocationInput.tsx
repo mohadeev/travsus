@@ -75,10 +75,10 @@ const LocationInput: FC<Props> = ({
 	}
 
 	return (
-		<div className={`${className}`} ref={containerRef}>
+		<div className={`${className} z-99999`} ref={containerRef}>
 			<div className="p-5">
 				<span className="block text-xl font-semibold sm:text-2xl">
-					{headingText || t('Where_To')}
+					{headingText || t('Where_To') + 'dflkdlkv'}
 				</span>
 				<div className="relative mt-5">
 					<input

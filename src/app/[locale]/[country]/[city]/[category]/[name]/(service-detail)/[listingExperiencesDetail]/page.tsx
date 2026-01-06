@@ -18,7 +18,6 @@ import dynamic from 'next/dynamic'
 import TourFAQ from './FAQProps'
 import ReviewSystem from './ReviewSystem/ReviewSystem'
 import Included from './Included'
-import TourItineraryWithMap from './Itinerary/TourItineraryWithMap'
 import TourHeader from './TourHeader'
 import ReadMore from '@/app/(client-components)/ReadeMore'
 import { useTranslations } from '@/lib/i18n'
@@ -28,8 +27,9 @@ import { updateServiceState } from '@/app/[locale]/GlobalRedux/Features/creating
 import BookingGuarantees from './BookingGuarantees'
 import TourPreBookingInfo from './TourPreBookingInfo'
 import ContactReservations from './ContactReservations'
+import TourItineraryWithMap from './itinerary/TourItineraryWithMap'
 
-const MapComponent = dynamic(() => import('./Itinerary/TourMap'), {
+const MapComponent = dynamic(() => import('./itinerary/TourMap'), {
 	ssr: false,
 })
 
