@@ -1,8 +1,7 @@
 'use client'
 import React, { FC, useEffect, useState } from 'react'
 import { useTranslations } from '@/lib/i18n'
-import { StaySearchFormFields } from '../type'
-import StaySearchForm from './(stay-search-form)/StaySearchForm'
+import { ExperiencesSearchFormFields } from '../type'
 import ExperiencesSearchForm from './(experiences-search-form)/ExperiencesSearchForm'
 
 export type SearchTab = 'Experiences' | 'Stays' | 'Cars' | 'Flights'
@@ -11,7 +10,7 @@ export interface HeroSearchFormSmallProps {
 	className?: string
 	defaultTab?: SearchTab
 	onTabChange?: (tab: SearchTab) => void
-	defaultFieldFocus?: StaySearchFormFields
+	defaultFieldFocus?: ExperiencesSearchFormFields
 }
 
 const HeroSearchFormSmall: FC<HeroSearchFormSmallProps> = ({

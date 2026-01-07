@@ -1,17 +1,17 @@
 export interface GuestsObject {
-  guestAdults?: number;
-  guestChildren?: number;
-  guestInfants?: number;
+	guestAdults?: number
+	guestChildren?: number
+	guestInfants?: number
 }
 
-export type StaySearchFormFields = "location" | "guests" | "dates";
+export type ExperiencesSearchFormFields = 'location' | 'guests' | 'dates'
 
 export interface PropertyType {
-  name: string;
-  description: string;
-  checked: boolean;
+	name: string
+	description: string
+	checked: boolean
 }
 
 export interface ClassOfProperties extends PropertyType {}
 
-export type DateRage = [Date | null, Date | null];
+export type DateRage = [Date | null, Date | null]

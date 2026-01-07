@@ -12,7 +12,7 @@ import { useTranslations } from '@/lib/i18n'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import HeroSearchFormSmall from '../(HeroSearchFormSmall)/HeroSearchFormSmall'
-import { StaySearchFormFields } from '../type'
+import { ExperiencesSearchFormFields } from '../type'
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
 import LanguagePreferencesModal from './LanguagePreferencesModal'
 
@@ -29,7 +29,7 @@ const Header3: FC<Header3Props> = ({ className = '' }) => {
 	const headerT = useTranslations('header')
 	const headerInnerRef = useRef<HTMLDivElement>(null)
 	const [showHeroSearch, setShowHeroSearch] =
-		useState<StaySearchFormFields | null>()
+		useState<ExperiencesSearchFormFields | null>()
 	const [currentTab, setCurrentTab] = useState<SearchTab>('Experiences')
 
 	useOutsideAlerter(headerInnerRef, () => {
@@ -160,7 +160,7 @@ const Header3: FC<Header3Props> = ({ className = '' }) => {
 				<div className="relative flex h-[88px] px-4 lg:container">
 					<div className="flex flex-1 justify-between">
 						<div className="relative z-10 hidden flex-1 items-center md:flex">
-							<Logo /> 
+							<Logo />
 						</div>
 
 						<div className="mx-auto flex flex-[2] lg:flex-none">

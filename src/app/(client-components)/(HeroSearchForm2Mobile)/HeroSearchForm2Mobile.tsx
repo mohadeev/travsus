@@ -15,9 +15,10 @@ import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
 import { XMarkIcon } from '@heroicons/react/24/solid'
 import ButtonSubmit from './ButtonSubmit'
 import { useTimeoutFn } from 'react-use'
-import StaySearchForm from './(stay-search-form)/StaySearchForm'
+import ExperiencesSearchForm from './(experiences-search-form)/ExperiencesSearchForm'
 import Logo from '@/shared/Logo'
 import { useTranslations } from '@/lib/i18n'
+import { Button } from '@/components/ui'
 
 const HeroSearchForm2Mobile = () => {
 	const t = useTranslations('Jan03_HeroSearchMobile_x7k9')
@@ -100,12 +101,20 @@ const HeroSearchForm2Mobile = () => {
 												<TabPanels className="flex-1 overflow-y-auto py-4">
 													<TabPanel>
 														<div className="animate-[myblur_0.4s_ease-in-out] transition-opacity">
-															<StaySearchForm />
+															<ExperiencesSearchForm />
 														</div>
 													</TabPanel>
 												</TabPanels>
 											</div>
-											<div className="flex justify-between border-t border-neutral-200 bg-white px-4 py-3 dark:border-neutral-700 dark:bg-neutral-900">
+											<div className="flex flex-col justify-between border-t border-neutral-200 bg-white px-4 py-3 dark:border-neutral-700 dark:bg-neutral-900">
+												<Button
+													onClick={() => {
+														setShowDialog(false)
+														resetIsShowingDialog()
+													}}
+												>
+													{t('Clear_All')}
+												</Button>
 												<button
 													type="button"
 													className="flex-shrink-0 font-semibold underline"
@@ -116,6 +125,7 @@ const HeroSearchForm2Mobile = () => {
 												>
 													{t('Clear_All')}
 												</button>
+
 												<ButtonSubmit
 													onClick={() => {
 														closeModal()

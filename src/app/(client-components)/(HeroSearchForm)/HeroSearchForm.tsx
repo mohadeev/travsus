@@ -1,17 +1,14 @@
 'use client'
 
 import React, { FC, useState } from 'react'
-import StaySearchForm from './(stay-search-form)/StaySearchForm'
 import ExperiencesSearchForm from './(experiences-search-form)/ExperiencesSearchForm'
-import RentalCarSearchForm from './(car-search-form)/RentalCarSearchForm'
-import FlightSearchForm from './(flight-search-form)/FlightSearchForm'
 
-export type SearchTab = 'Experiences' | 'Stays'| 'Cars' | 'Flights'
+export type SearchTab = 'Experiences' | 'Stays' | 'Cars' | 'Flights'
 
 export interface HeroSearchFormProps {
 	className?: string
 	currentTab?: SearchTab
-	currentPage?: 'Experiences' | 'Stays'| 'Cars' | 'Flights'
+	currentPage?: 'Experiences' | 'Stays' | 'Cars' | 'Flights'
 }
 
 const HeroSearchForm: FC<HeroSearchFormProps> = ({
@@ -19,7 +16,7 @@ const HeroSearchForm: FC<HeroSearchFormProps> = ({
 	currentTab = 'Experiences',
 	currentPage,
 }) => {
-	const tabs: SearchTab[] = ['Experiences','Stays', 'Cars', 'Flights']
+	const tabs: SearchTab[] = ['Experiences', 'Stays', 'Cars', 'Flights']
 	const [tabActive, setTabActive] = useState<SearchTab>(currentTab)
 
 	const renderTab = () => {
@@ -29,7 +26,10 @@ const HeroSearchForm: FC<HeroSearchFormProps> = ({
 					const active = tab !== tabActive
 					return (
 						<li
-							onClick={() => {alert("here");setTabActive(tab)}}
+							onClick={() => {
+								alert('here')
+								setTabActive(tab)
+							}}
 							className={`flex flex-shrink-0 cursor-pointer items-center text-sm font-medium lg:text-base ${
 								active
 									? ''
@@ -53,7 +53,7 @@ const HeroSearchForm: FC<HeroSearchFormProps> = ({
 
 		// switch (tabActive) {
 		// 	case 'Stays':
-		// 		return <StaySearchForm />
+		// 		return <ExperiencesSearchForm />
 		// 	case 'Experiences':
 		// 		return <ExperiencesSearchForm />
 		// 	case 'Cars':

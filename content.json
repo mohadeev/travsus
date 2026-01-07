@@ -1,102 +1,52 @@
 {
 	"en-US": {
-		"TravsusTravelPage": {
-			"TravsusTravelPage_loading": "Loading...",
-			"TravsusTravelPage_error_loading": "Error loading tours",
-			"TravsusTravelPage_no_tours_found": "No tours found",
-			"TravsusTravelPage_try_adjusting_filters": "Try adjusting your filters or search terms",
-			"TravsusTravelPage_flexible_duration": "Flexible duration",
-			"TravsusTravelPage_dates": "Dates"
+		"TourPageMetadata": {
+			"title": "Book Tours, Trips & Group Tours in Morocco 2026 – Private, Luxury & Standard Options"
 		}
 	},
 	"es-ES": {
-		"TravsusTravelPage": {
-			"TravsusTravelPage_loading": "Cargando...",
-			"TravsusTravelPage_error_loading": "Error al cargar tours",
-			"TravsusTravelPage_no_tours_found": "No se encontraron tours",
-			"TravsusTravelPage_try_adjusting_filters": "Intente ajustar sus filtros o términos de búsqueda",
-			"TravsusTravelPage_flexible_duration": "Duración flexible",
-			"TravsusTravelPage_dates": "Fechas"
+		"TourPageMetadata": {
+			"title": "Reserva Tours, Excursiones y Tours en Grupo en Marruecos 2026 – Opciones Privadas, de Lujo y Estándar"
 		}
 	},
 	"de-DE": {
-		"TravsusTravelPage": {
-			"TravsusTravelPage_loading": "Laden...",
-			"TravsusTravelPage_error_loading": "Fehler beim Laden der Touren",
-			"TravsusTravelPage_no_tours_found": "Keine Touren gefunden",
-			"TravsusTravelPage_try_adjusting_filters": "Versuchen Sie, Ihre Filter oder Suchbegriffe anzupassen",
-			"TravsusTravelPage_flexible_duration": "Flexible Dauer",
-			"TravsusTravelPage_dates": "Daten"
+		"TourPageMetadata": {
+			"title": "Buchen Sie Touren, Ausflüge & Gruppentouren in Marokko 2026 – Private, Luxus- & Standardoptionen"
 		}
 	},
 	"fr-FR": {
-		"TravsusTravelPage": {
-			"TravsusTravelPage_loading": "Chargement...",
-			"TravsusTravelPage_error_loading": "Erreur lors du chargement des visites",
-			"TravsusTravelPage_no_tours_found": "Aucune visite trouvée",
-			"TravsusTravelPage_try_adjusting_filters": "Essayez d'ajuster vos filtres ou termes de recherche",
-			"TravsusTravelPage_flexible_duration": "Durée flexible",
-			"TravsusTravelPage_dates": "Dates"
+		"TourPageMetadata": {
+			"title": "Réservez des Tours, Excursions et Tours en Groupe au Maroc 2026 – Options Privées, de Luxe et Standard"
 		}
 	},
 	"ja-JP": {
-		"TravsusTravelPage": {
-			"TravsusTravelPage_loading": "読み込み中...",
-			"TravsusTravelPage_error_loading": "ツアーの読み込みエラー",
-			"TravsusTravelPage_no_tours_found": "ツアーが見つかりません",
-			"TravsusTravelPage_try_adjusting_filters": "フィルターまたは検索語を調整してみてください",
-			"TravsusTravelPage_flexible_duration": "フレキシブルな期間",
-			"TravsusTravelPage_dates": "日付"
+		"TourPageMetadata": {
+			"title": "モロッコのツアー、旅行＆グループツアーを予約 2026 – プライベート、ラグジュアリー、標準オプション"
 		}
 	},
 	"pt-PT": {
-		"TravsusTravelPage": {
-			"TravsusTravelPage_loading": "A carregar...",
-			"TravsusTravelPage_error_loading": "Erro ao carregar passeios",
-			"TravsusTravelPage_no_tours_found": "Nenhum passeio encontrado",
-			"TravsusTravelPage_try_adjusting_filters": "Tente ajustar os seus filtros ou termos de pesquisa",
-			"TravsusTravelPage_flexible_duration": "Duração flexível",
-			"TravsusTravelPage_dates": "Datas"
+		"TourPageMetadata": {
+			"title": "Reserve Tours, Viagens e Tours em Grupo em Marrocos 2026 – Opções Privadas, de Luxo e Standard"
 		}
 	},
 	"it-IT": {
-		"TravsusTravelPage": {
-			"TravsusTravelPage_loading": "Caricamento...",
-			"TravsusTravelPage_error_loading": "Errore nel caricamento dei tour",
-			"TravsusTravelPage_no_tours_found": "Nessun tour trovato",
-			"TravsusTravelPage_try_adjusting_filters": "Prova ad aggiustare i tuoi filtri o termini di ricerca",
-			"TravsusTravelPage_flexible_duration": "Durata flessibile",
-			"TravsusTravelPage_dates": "Date"
+		"TourPageMetadata": {
+			"title": "Prenota Tour, Viaggi e Tour di Gruppo in Marocco 2026 – Opzioni Private, di Lusso e Standard"
 		}
 	},
 	"ru-RU": {
-		"TravsusTravelPage": {
-			"TravsusTravelPage_loading": "Загрузка...",
-			"TravsusTravelPage_error_loading": "Ошибка загрузки туров",
-			"TravsusTravelPage_no_tours_found": "Туры не найдены",
-			"TravsusTravelPage_try_adjusting_filters": "Попробуйте изменить фильтры или условия поиска",
-			"TravsusTravelPage_flexible_duration": "Гибкая продолжительность",
-			"TravsusTravelPage_dates": "Даты"
+		"TourPageMetadata": {
+			"title": "Бронируйте туры, поездки и групповые туры в Марокко 2026 – Частные, роскошные и стандартные варианты"
 		}
 	},
 	"zh-CN": {
-		"TravsusTravelPage": {
-			"TravsusTravelPage_loading": "加载中...",
-			"TravsusTravelPage_error_loading": "加载旅游项目时出错",
-			"TravsusTravelPage_no_tours_found": "未找到旅游项目",
-			"TravsusTravelPage_try_adjusting_filters": "尝试调整您的筛选条件或搜索词",
-			"TravsusTravelPage_flexible_duration": "灵活时长",
-			"TravsusTravelPage_dates": "日期"
+		"TourPageMetadata": {
+			"title": "预订摩洛哥旅游、行程及团体游 2026 – 私人、豪华及标准选项"
 		}
 	},
 	"ko-KR": {
-		"TravsusTravelPage": {
-			"TravsusTravelPage_loading": "로딩 중...",
-			"TravsusTravelPage_error_loading": "투어 로딩 오류",
-			"TravsusTravelPage_no_tours_found": "투어를 찾을 수 없습니다",
-			"TravsusTravelPage_try_adjusting_filters": "필터 또는 검색어를 조정해 보세요",
-			"TravsusTravelPage_flexible_duration": "유연한 기간",
-			"TravsusTravelPage_dates": "날짜"
+		"TourPageMetadata": {
+			"title": "모로코 투어, 여행 및 그룹 투어 예약 2026 – 프라이빗, 럭셔리 및 일반 옵션"
 		}
 	}
 }

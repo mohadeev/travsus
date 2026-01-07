@@ -7,8 +7,8 @@ import LocationInput from '../LocationInput'
 import DatesRangeInput from '../DatesRangeInput'
 import { useTranslations } from '@/lib/i18n'
 //comment
-const StaySearchForm = () => {
-	const t = useTranslations('Jan03_StaySearchForm_m8p4')
+const ExperiencesSearchForm = () => {
+	const t = useTranslations('Jan03_ExperiencesSearchForm_m8p4')
 	//
 	const [fieldNameShow, setFieldNameShow] = useState<
 		'location' | 'dates' | 'guests'
@@ -147,4 +147,4 @@ const StaySearchForm = () => {
 	)
 }
 
-export default StaySearchForm
+export default ExperiencesSearchForm
