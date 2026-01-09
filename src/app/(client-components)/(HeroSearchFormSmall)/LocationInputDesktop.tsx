@@ -65,7 +65,7 @@ const LocationInputDesktop: FC<LocationInputDesktopProps> = ({
 					{locationT('location_Recent_Searches')}
 				</h3>
 				<div className="mt-2">
-					{[
+					{/* {[
 						'Hamptons, Suffolk County, NY',
 						'Las Vegas, NV, United States lksklvs',
 						'Ueno, Taito, Tokyo',
@@ -83,7 +83,7 @@ const LocationInputDesktop: FC<LocationInputDesktopProps> = ({
 								{item}
 							</span>
 						</span>
-					))}
+					))} */}
 				</div>
 			</>
 		)

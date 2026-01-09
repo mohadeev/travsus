@@ -78,7 +78,7 @@ const LocationInput: FC<Props> = ({
 		<div className={`${className} z-99999`} ref={containerRef}>
 			<div className="p-5">
 				<span className="block text-xl font-semibold sm:text-2xl">
-					{headingText || t('Where_To') + 'dflkdlkv'}
+					{headingText || t('Where_To')}
 				</span>
 				<div className="relative mt-5">
 					<input
@@ -93,22 +93,25 @@ const LocationInput: FC<Props> = ({
 					</span>
 				</div>
 				<div className="mt-7">
-					{value
-						? renderSearchValues({
-								heading: t('Locations'),
-								items: searchResulte,
-							})
-						: renderSearchValues({
-								heading: t('Popular_Destinations'),
-								items: [
-									{ name: t('Morocco') },
-									{ name: t('Australia') },
-									{ name: t('Canada') },
-									{ name: t('Germany') },
-									{ name: t('United_Kingdom') },
-									{ name: t('United_Arab_Emirates') },
-								],
-							})}
+					{
+						value
+							? renderSearchValues({
+									heading: t('Locations'),
+									items: searchResulte,
+								})
+							: ''
+						// renderSearchValues({
+						// 		heading: t('Popular_Destinations'),
+						// 		items: [
+						// 			{ name: t('Morocco') },
+						// 			{ name: t('Australia') },
+						// 			{ name: t('Canada') },
+						// 			{ name: t('Germany') },
+						// 			{ name: t('United_Kingdom') },
+						// 			{ name: t('United_Arab_Emirates') },
+						// 		],
+						// 	})
+					}
 				</div>
 			</div>
 		</div>
