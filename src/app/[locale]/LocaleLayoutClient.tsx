@@ -64,7 +64,7 @@ export default function LocaleLayoutClient({
 						<NewsletterModal />
 						<AuthModal />
 						<div className="overflow-auto">
-							<CombinedCookieConsent />
+							{/* <CombinedCookieConsent /> */}
 							<AuthModal />
 							<TawkToWidget />
 
