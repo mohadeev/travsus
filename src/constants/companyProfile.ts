@@ -3,6 +3,7 @@
 export function getCompanyProfile() {
 	const profileString = process.env.NEXT_PUBLIC_COMPANY_PROFILE
 	if (!profileString) {
+		console.log("profileString:", profileString)
 		throw new Error(
 			'NEXT_PUBLIC_COMPANY_PROFILE environment variable is not set',
 		)
