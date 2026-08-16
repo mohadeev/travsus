@@ -3,7 +3,7 @@ import prisma from '@/lib/prisma'
 
 export async function POST(request: NextRequest) {
 	const bookingInitiated = await prisma.booking.findFirst({
-		where: { id: '6760ad2aef5c1bf3f7c55243' },
+		// where: { id: '6760ad2aef5c1bf3f7c55243' },
 		include: {
 			// customer: true,
 			// provider: { include: { businesses: true } },
