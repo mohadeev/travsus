@@ -11,15 +11,17 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Build Docker image
-        run: docker build -t app .
+        run: |
+          docker build -t app .
 
       - name: Save Docker image
-        run: docker save app:latest | gzip > app.tar.gz
+        run: |
+          docker save app:latest | gzip > app.tar.gz
 
-      - name: Copy image to EC2
+      - name: Copy Docker image to EC2
         uses: appleboy/scp-action@v1
         with:
           host: ${{ secrets.EC2_HOST }}
@@ -43,7 +45,7 @@ jobs:
               -p 5000:5000 \
               --name app \
               --restart unless-stopped \
-              app
+              app:latest
 
             rm -f /home/ubuntu/app.tar.gz
 
