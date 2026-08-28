@@ -47,7 +47,7 @@ export default async function RootLayout({
 				<meta name="google-adsense-account" content="ca-pub-9261275339248060" />
 			</head>
 
-			<body>
+			<>
 				{/* Google Tag Manager */}
 				<Script
 					id="gtm-init"
@@ -112,7 +112,7 @@ export default async function RootLayout({
 				<NextIntlClientProvider messages={messages}>
 					<LocaleLayoutClient>{children}</LocaleLayoutClient>
 				</NextIntlClientProvider>
-			</body>
+			</>
 		</html>
 	)
 }
