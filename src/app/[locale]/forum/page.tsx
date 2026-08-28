@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+export const dynamic = "force-dynamic";
 'use client'
 import { useTranslations } from '@/lib/i18n'
 import type React from 'react'

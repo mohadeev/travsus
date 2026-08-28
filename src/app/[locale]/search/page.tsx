@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+export const dynamic = "force-dynamic";
 'use client'
 import { useState, useEffect } from 'react'
 import { useTranslations } from '@/lib/i18n'

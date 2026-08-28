@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+export const dynamic = "force-dynamic";
 import dynamic from 'next/dynamic'
 
 const GDPRDataSubjectRightsForm = dynamic(

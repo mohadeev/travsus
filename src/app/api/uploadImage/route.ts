@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+export const dynamic = "force-dynamic";
 // /pages/api/upload.ts
 import { NextRequest, NextResponse } from 'next/server'
 import { Readable } from 'stream'

@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+export const dynamic = "force-dynamic";
 import React, { ReactNode } from 'react'
 import { notFound } from 'next/navigation'
 import { headers } from 'next/headers'

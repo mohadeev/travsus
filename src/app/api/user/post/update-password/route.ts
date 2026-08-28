@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+export const dynamic = "force-dynamic";
 // // File: /app/api/user/post/update-password/route.ts
 
 // import { NextRequest, NextResponse } from 'next/server';

@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+export const dynamic = "force-dynamic";
 import { NextResponse } from 'next/server'
 import sgMail from '@sendgrid/mail'
 import { jsPDF } from 'jspdf'

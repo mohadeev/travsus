@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+export const dynamic = "force-dynamic";
 import { useTranslations } from '@/lib/i18n'
 import { WhistleblowerChannel } from '@/components/WhistleblowerChannel/WhistleblowerChannel'
 

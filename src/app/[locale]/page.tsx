@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+export const dynamic = "force-dynamic";
 import { Metadata } from 'next'
 import ClientHomePage from './ClientHomePage'
 import { getTranslations } from 'next-intl/server'

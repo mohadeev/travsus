@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+export const dynamic = "force-dynamic";
 import React from "react";
 import { FC } from "react";
 import ButtonPrimary from "@/shared/ButtonPrimary";

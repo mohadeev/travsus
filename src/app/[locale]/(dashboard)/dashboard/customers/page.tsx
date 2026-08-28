@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+export const dynamic = "force-dynamic";
 import type { Metadata } from "next"
 import { DashboardShell } from "@/components/dashboard/shell"
 import { DashboardHeader } from "@/components/dashboard/header"

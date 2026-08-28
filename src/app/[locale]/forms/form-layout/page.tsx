@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+export const dynamic = "force-dynamic";
 import Breadcrumb from '@/components/Breadcrumbs/Breadcrumb'
 import { useTranslations } from '@/lib/i18n'
 import { Metadata } from 'next'

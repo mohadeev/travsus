@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+export const dynamic = "force-dynamic";
 import React from "react";
 import PageAddListing1 from "./PageAddListing1";
 import PageAddListing10 from "./PageAddListing10";

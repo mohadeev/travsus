@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+export const dynamic = "force-dynamic";
 import { useSession } from 'next-auth/react'
 import { PrismaClient } from '@prisma/client'
 import { NextResponse, NextRequest } from 'next/server'

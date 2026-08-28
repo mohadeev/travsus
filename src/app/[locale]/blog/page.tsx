@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+export const dynamic = "force-dynamic";
 import React from 'react'
 // import SectionLatestPosts from '@/components/SectionLatestPosts'
 import BgGlassmorphism from '@/components/BgGlassmorphism'
