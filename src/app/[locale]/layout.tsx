@@ -109,7 +109,7 @@ export default async function RootLayout({
 					/>
 				</noscript>
 
-				<NextIntlClientProvider messages= {messages}>
+				<NextIntlClientProvider messages={messages}>
 					<LocaleLayoutClient>{children}</LocaleLayoutClient>
 				</NextIntlClientProvider>
 			</>
