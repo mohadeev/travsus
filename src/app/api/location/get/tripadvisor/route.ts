@@ -1,5 +1,4 @@
 export const dynamic = "force-dynamic";
-export const dynamic = "force-dynamic";
 import prisma from '@/prisma'
 import { tripadvisorApi } from './../../../api-utils/tripadvisorApi'
 import axios from 'axios'

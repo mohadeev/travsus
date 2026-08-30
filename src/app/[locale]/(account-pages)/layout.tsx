@@ -1,5 +1,3 @@
-export const dynamic = "force-dynamic";
-export const dynamic = "force-dynamic";
 import React, { FC } from 'react'
 import { Nav } from './(components)/Nav'
 

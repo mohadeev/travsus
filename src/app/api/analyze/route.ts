@@ -1,5 +1,4 @@
 export const dynamic = "force-dynamic";
-export const dynamic = "force-dynamic";
 import { type NextRequest, NextResponse } from 'next/server'
 import * as cheerio from 'cheerio'
 import { chromium } from 'playwright'

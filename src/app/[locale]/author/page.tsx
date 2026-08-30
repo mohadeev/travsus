@@ -1,6 +1,5 @@
-export const dynamic = "force-dynamic";
-export const dynamic = "force-dynamic";
 "use client" 
+export const dynamic = "force-dynamic";
 import { Tab } from '@headlessui/react'
 import CarCard from '@/components/CarCard'
 import CommentListing from '@/components/CommentListing'

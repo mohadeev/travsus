@@ -1,5 +1,3 @@
-export const dynamic = "force-dynamic";
-export const dynamic = "force-dynamic";
 import type { Metadata } from "next"
 import { Suspense } from "react"
 import { DashboardShell } from "@/components/dashboard/shell"

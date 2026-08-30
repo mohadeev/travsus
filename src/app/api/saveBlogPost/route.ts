@@ -1,5 +1,4 @@
 export const dynamic = "force-dynamic";
-export const dynamic = "force-dynamic";
 import { NextRequest, NextResponse } from 'next/server'
 import { PrismaClient } from '@prisma/client'
 import { v2 as cloudinary } from 'cloudinary'

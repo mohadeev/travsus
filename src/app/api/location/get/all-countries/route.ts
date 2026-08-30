@@ -1,5 +1,4 @@
 export const dynamic = "force-dynamic";
-export const dynamic = "force-dynamic";
 import { placesClient } from '@/lib/prisma'
 import { NextRequest, NextResponse } from 'next/server'
 

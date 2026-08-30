@@ -1,5 +1,4 @@
 export const dynamic = "force-dynamic";
-export const dynamic = "force-dynamic";
 import { NextRequest, NextResponse } from 'next/server'
 import { bookingConfirmationEmail } from '@/utils/bookingConfirmationEmail'
 import { emailTemplatesFooter } from '@/components/email-templates/EmailTemplatesFooter'

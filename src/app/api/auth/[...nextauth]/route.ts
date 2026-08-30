@@ -1,5 +1,4 @@
 export const dynamic = "force-dynamic";
-export const dynamic = "force-dynamic";
 import NextAuth from 'next-auth'
 import { authOptions } from './authOptions'
 import { sendVerificationEmail } from '@/utils/email'

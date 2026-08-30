@@ -1,5 +1,4 @@
 export const dynamic = "force-dynamic";
-export const dynamic = "force-dynamic";
 import { type NextRequest, NextResponse } from 'next/server'
 import { PrismaClient } from '@prisma/client'
 import extractLanguageFromRequest from '../../listing/get/getTourData/extractLanguageFromRequest'

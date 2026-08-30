@@ -1,5 +1,3 @@
-export const dynamic = "force-dynamic";
-export const dynamic = "force-dynamic";
 import { CreateCompanyForm } from '@/components/dashboard/create-company-form'
 
 export default function CreateCompanyPage() {

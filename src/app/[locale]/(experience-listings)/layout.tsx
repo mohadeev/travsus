@@ -1,5 +1,3 @@
-export const dynamic = "force-dynamic";
-export const dynamic = "force-dynamic";
 import BackgroundSection from '@/components/BackgroundSection'
 import BgGlassmorphism from '@/components/BgGlassmorphism'
 import SectionGridAuthorBox from '@/components/SectionGridAuthorBox'

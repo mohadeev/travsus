@@ -1,5 +1,4 @@
 export const dynamic = "force-dynamic";
-export const dynamic = "force-dynamic";
 import { NextRequest, NextResponse } from 'next/server'
 import { generatePDF } from '@/lib/generatePDF'
 import sendEmail from '@/utils/email/sendMail'

@@ -1,5 +1,4 @@
 export const dynamic = "force-dynamic";
-export const dynamic = "force-dynamic";
 import { bookingConfirmation } from '@/components/email-templates/bookingConfirmation/bookingConfirmation'
 import { emailTemplatesFooter } from '@/components/email-templates/EmailTemplatesFooter'
 import { newsletterWelcomeTemplate } from '@/components/email-templates/newsletterWelcomeTemplate/newsletterWelcomeTemplate'

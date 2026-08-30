@@ -1,5 +1,4 @@
 export const dynamic = "force-dynamic";
-export const dynamic = "force-dynamic";
 //-----------------------------------------------------
 import { type NextRequest, NextResponse } from 'next/server'
 import { PrismaClient } from '@prisma/client'
@@ -9,7 +8,6 @@ const prisma = new PrismaClient()
 import getUserData from '@/app/api/user/getUserData'
 import extractLanguageFromRequest from '@/app/api/listing/get/getTourData/extractLanguageFromRequest'
 
-export const dynamic = 'force-dynamic'
 
 async function getOptimizedToursWithTranslations(
 	language: string,

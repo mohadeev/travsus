@@ -1,5 +1,4 @@
 export const dynamic = "force-dynamic";
-export const dynamic = "force-dynamic";
 // app/api/regenerate-tour-slugs/route.ts
 import { NextResponse } from 'next/server'
 import prisma from '@/prisma'

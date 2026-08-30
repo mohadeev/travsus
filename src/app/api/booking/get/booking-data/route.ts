@@ -1,5 +1,4 @@
 export const dynamic = "force-dynamic";
-export const dynamic = "force-dynamic";
 import { NextRequest, NextResponse } from 'next/server'
 import prisma from '@/prisma'
 import { checkBookingRole } from '@/app/api/api-utils/actions/booking/checkBookingRole'

@@ -1,6 +1,5 @@
-export const dynamic = "force-dynamic";
-export const dynamic = "force-dynamic";
 'use client'
+export const dynamic = "force-dynamic";
 import StartRating from '@/components/StartRating'
 import React, { FC, useEffect, useState } from 'react'
 import ButtonPrimary from '@/shared/ButtonPrimary'

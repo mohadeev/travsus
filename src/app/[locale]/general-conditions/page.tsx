@@ -1,5 +1,3 @@
-export const dynamic = "force-dynamic";
-export const dynamic = "force-dynamic";
 import { companyProfile } from '@/constants/companyProfile'
 import { Metadata } from 'next'
 import { MDXRemote } from 'next-mdx-remote/rsc'

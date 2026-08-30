@@ -1,5 +1,3 @@
-export const dynamic = "force-dynamic";
-export const dynamic = "force-dynamic";
 import type React from 'react'
 import getUserData from '@/app/api/user/getUserData'
 import type { Metadata } from 'next'

@@ -1,5 +1,4 @@
 export const dynamic = "force-dynamic";
-export const dynamic = "force-dynamic";
 import { headers } from 'next/headers'
 import { NextRequest } from 'next/server'
 import Stripe from 'stripe'

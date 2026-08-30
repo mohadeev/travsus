@@ -1,6 +1,3 @@
-export const dynamic = "force-dynamic";
-export const dynamic = "force-dynamic";
-export const dynamic = 'force-dynamic'; // <-- Add this line
 
 import { NextIntlClientProvider } from 'next-intl'
 import { fontVariables } from '@/lib/fonts'

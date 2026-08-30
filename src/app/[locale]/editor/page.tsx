@@ -1,5 +1,3 @@
-export const dynamic = "force-dynamic";
-export const dynamic = "force-dynamic";
 import { notFound } from 'next/navigation'
 import BlogEditor from '@/components/BlogEditor'
 import getUserData from '@/app/api/user/getUserData'

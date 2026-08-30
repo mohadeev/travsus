@@ -1,6 +1,6 @@
-export const dynamic = "force-dynamic";
-export const dynamic = "force-dynamic";
 'use client'
+export const dynamic = "force-dynamic";
+
 
 import { type FC, Suspense, useEffect } from 'react'
 import Avatar from '@/shared/Avatar'
@@ -16,7 +16,6 @@ import {
 import RenderSidebar from './RenderSideBar/RenderSidebar'
 import ListingExperiencesDetailsImages from './ListingExperiencesDetailsImages'
 import ExperiencesDescriptionSkeleton from './ExperiencesDescriptionSkeleton'
-import dynamic from 'next/dynamic'
 import TourFAQ from './FAQProps'
 import ReviewSystem from './ReviewSystem/ReviewSystem'
 import Included from './Included'
@@ -31,9 +30,9 @@ import TourPreBookingInfo from './TourPreBookingInfo'
 import ContactReservations from './ContactReservations'
 import TourItineraryWithMap from './itinerary/TourItineraryWithMap'
 
-const MapComponent = dynamic(() => import('./itinerary/TourMap'), {
-	ssr: false,
-})
+	// const MapComponent = dynamic(() => import('./itinerary/TourMap'), {
+	// 	ssr: false,
+	// })
 
 export type ListingExperiencesDetailPageProps = { serviceData: any }
 
