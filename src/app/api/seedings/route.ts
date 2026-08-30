@@ -7,7 +7,6 @@ const prisma = new PrismaClient()
 import getUserData from '@/app/api/user/getUserData'
 import extractLanguageFromRequest from '@/app/api/listing/get/getTourData/extractLanguageFromRequest'
 
-export const dynamic = 'force-dynamic'
 
 // function extractLanguageFromRequest(request: NextRequest): string {
 // 	const url = new URL(request.url)

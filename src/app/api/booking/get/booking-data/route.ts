@@ -3,7 +3,6 @@ import { NextRequest, NextResponse } from 'next/server'
 import prisma from '@/prisma'
 import { checkBookingRole } from '@/app/api/api-utils/actions/booking/checkBookingRole'
 
-export const dynamic = 'force-dynamic' // This ensures the route is always dynamic
 
 export async function GET(request: NextRequest) {
 	console.log('GET request received for booking API')

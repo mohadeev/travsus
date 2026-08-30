@@ -2,7 +2,6 @@ export const dynamic = "force-dynamic";
 import { placesClient } from '@/lib/prisma'
 import { NextRequest, NextResponse } from 'next/server'
 
-export const dynamic = 'force-dynamic' // Ensure it's dynamic
 
 export async function GET(request: NextRequest) {
 	try {
