@@ -2,6 +2,9 @@
   "name": "Travsus",
   "version": "0.2.4",
   "private": true,
+  "engines": {
+    "node": "24.15.0"
+  },
   "scripts": {
     "dev": "prisma generate && prisma generate --schema=prisma/places.prisma && next dev -p 3001",
     "build": "prisma generate && prisma generate --schema=prisma/places.prisma && next build",
@@ -54,10 +57,9 @@
     "axios": "^1.7.4",
     "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
-    "canvas": "^2.11.2",
+    "canvas": "^3.2.3",
     "canvas-confetti": "^1.9.3",
     "cheerio": "^1.1.2",
-    "cities.json": "^1.1.39",
     "class-variance-authority": "^0.7.0",
     "client-only": "^0.0.1",
     "cloudinary": "^1.35.0",

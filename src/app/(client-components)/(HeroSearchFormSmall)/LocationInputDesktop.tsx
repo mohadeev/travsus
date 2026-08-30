@@ -5,7 +5,6 @@ import ClearDataButton from './ClearDataButton'
 import useOutsideAlerter from '@/hooks/useOutsideAlerter'
 import { MapPinIcon } from '@heroicons/react/24/outline'
 import { searchCountries } from '@/utils/searchCountries'
-import cities from 'cities.json'
 import { useTranslations } from '@/lib/i18n'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
