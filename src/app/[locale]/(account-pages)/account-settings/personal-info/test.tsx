@@ -9,7 +9,6 @@ import Textarea from '@/shared/Textarea'
 import { useDispatch, useSelector } from 'react-redux'
 import { ChangeEvent } from 'react'
 import { updateUser } from '@/app/[locale]/GlobalRedux/Features/userReducer/userReducer'
-import PhoneInput from 'react-phone-number-input'
 // import AccountImage from './account-settingsImage'
 import { LogOut } from 'lucide-react'
 

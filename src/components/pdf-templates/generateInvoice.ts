@@ -1,6 +1,4 @@
 import QRCode from 'qrcode'
-import { JSDOM } from 'jsdom'
-import { createCanvas } from 'canvas'
 import { formatCurrency } from '@/utils/formatCurrency'
 import { filteredLineItems } from '@/utils/lineItemsUtils'
 import { companyProfile } from '@/constants/companyProfile'

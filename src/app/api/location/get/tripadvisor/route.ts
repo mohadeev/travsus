@@ -3,7 +3,6 @@ import prisma from '@/prisma'
 import { tripadvisorApi } from './../../../api-utils/tripadvisorApi'
 import axios from 'axios'
 import { NextRequest, NextResponse } from 'next/server'
-import fetch from 'node-fetch'
 import interstingPlaces from './interstingPlaces.json'
 // This function handles the GET request for city and country data
 
