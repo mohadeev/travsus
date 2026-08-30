@@ -18,7 +18,7 @@ RUN apt-get update && apt-get install -y \
 
 COPY package.json package-lock.json ./
 
-RUN npm ci
+RUN npm i --force
 
 
 # =========================
