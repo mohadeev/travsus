@@ -1,0 +1,11 @@
+services:
+  travsus:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: travsus
+    restart: unless-stopped
+    ports:
+      - "80:3000"
+    env_file:
+      - .env.production
