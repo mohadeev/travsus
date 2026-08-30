@@ -18,8 +18,7 @@ RUN apt-get update && apt-get install -y \
 
 COPY package.json package-lock.json ./
 
-RUN npm i --force
-
+RUN npm ci --legacy-peer-deps
 
 # =========================
 # Build
