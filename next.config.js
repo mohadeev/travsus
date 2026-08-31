@@ -10,6 +10,7 @@ const withNextIntl = createNextIntlPlugin()
 
 const nextConfig = {
 	reactStrictMode: false,
+	output: "standalone",
 	experimental: {
 		typedRoutes: true,
 		serverActions: {
