@@ -1,8 +1,3 @@
-// import basedGetUrlRequest from '@/app/utils/basedGetUrlRequest'
-
-// const fetchRelatedTours = async () => {
-// 	return await basedGetUrlRequest('/api/location/get/all-tours')
-// }
 
 const fetchRelatedTours = async (id) => {
 	try {

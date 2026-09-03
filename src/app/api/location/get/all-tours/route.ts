@@ -46,7 +46,8 @@ export async function GET(request: NextRequest) {
 		const language = extractLanguageFromRequest(request)
 
 		const userData: any = await getUserData()
-		const { savedList } = userData || {}
+		// const { savedList } = userData || {}
+		const savedList: string[] = []
 
 		const totalTours = await prisma.tour.count({
 			where: {
