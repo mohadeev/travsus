@@ -51,6 +51,8 @@ RUN NODE_OPTIONS="--max-old-space-size=12288" npm run build
 # =========================
 FROM node:24.15.0-bookworm-slim AS runner
 
+RUN apt-get update && apt-get install -y openssl && rm -rf /var/lib/apt/lists/*
+
 WORKDIR /app
 
 ENV NODE_ENV=production
