@@ -40,14 +40,21 @@ async function getOptimizedToursWithTranslations(
 
 export async function GET(request: NextRequest) {
 	try {
+		console.log("=== ALL TOURS: START ===")
+
 		const { searchParams } = request.nextUrl
 		const page = Number.parseInt(searchParams.get('page') || '1')
 		const limit = Number.parseInt(searchParams.get('limit') || '8')
+
+		console.log("=== ALL TOURS: PAGE/LIMIT ===", page, limit)
+
 		const language = extractLanguageFromRequest(request)
 
-		const userData: any = await getUserData()
-		// const { savedList } = userData || {}
+		console.log("=== ALL TOURS: LANGUAGE ===", language)
+
 		const savedList: string[] = []
+
+		console.log("=== ALL TOURS: BEFORE COUNT ===")
 
 		const totalTours = await prisma.tour.count({
 			where: {
@@ -57,16 +64,29 @@ export async function GET(request: NextRequest) {
 			},
 		})
 
-		const paginatedToursWithContent = await getOptimizedToursWithTranslations(
-			language,
-			page,
-			limit,
+		console.log("=== ALL TOURS: COUNT ===", totalTours)
+
+		const paginatedToursWithContent =
+			await getOptimizedToursWithTranslations(
+				language,
+				page,
+				limit,
+			)
+
+		console.log(
+			"=== ALL TOURS: FIND MANY ===",
+			paginatedToursWithContent.length,
 		)
+
 		const modifiedToursData = paginatedToursWithContent.map((tour) => ({
 			...tour,
-			...tour.translations.find((trns) => trns.language === language),
-			liked: savedList?.includes(tour.id),
+			...tour.translations.find(
+				(trns) => trns.language === language,
+			),
+			liked: savedList.includes(tour.id),
 		}))
+
+		console.log("=== ALL TOURS: MAPPING OK ===")
 
 		return NextResponse.json({
 			allToursData: modifiedToursData,
@@ -76,7 +96,8 @@ export async function GET(request: NextRequest) {
 			language,
 		})
 	} catch (error) {
-		console.error('Error fetching tours:', error)
+		console.error("=== ALL TOURS REAL ERROR ===", error)
+
 		return NextResponse.json(
 			{
 				message: 'Error fetching tour data',
