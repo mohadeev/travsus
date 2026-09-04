@@ -20,6 +20,7 @@ COPY package.json package-lock.json ./
 
 RUN npm ci --legacy-peer-deps --no-audit --no-fund
 
+
 # =========================
 # Build
 # =========================
@@ -44,7 +45,12 @@ COPY . .
 
 ENV NEXT_TELEMETRY_DISABLED=1
 
+# Make NEXT_PUBLIC_COMPANY_PROFILE available during Next.js build
+ARG NEXT_PUBLIC_COMPANY_PROFILE
+ENV NEXT_PUBLIC_COMPANY_PROFILE=$NEXT_PUBLIC_COMPANY_PROFILE
+
 RUN NODE_OPTIONS="--max-old-space-size=12288" npm run build
+
 
 # =========================
 # Production

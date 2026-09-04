@@ -3,6 +3,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_COMPANY_PROFILE: ${NEXT_PUBLIC_COMPANY_PROFILE}
     container_name: travsus
     restart: unless-stopped
     ports:
