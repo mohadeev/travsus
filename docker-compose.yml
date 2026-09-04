@@ -5,6 +5,7 @@ services:
       dockerfile: Dockerfile
       args:
         NEXT_PUBLIC_COMPANY_PROFILE: ${NEXT_PUBLIC_COMPANY_PROFILE}
+        STRIPE_SECRET_KEY: ${STRIPE_SECRET_KEY}
     container_name: travsus
     restart: unless-stopped
     ports:
