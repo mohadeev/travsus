@@ -10,7 +10,7 @@ import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
-async function removeUserByEmail(email) {
+async function removeUserByEmail(email:string) {
 	try {
 		const deletedUser = await prisma.user.delete({
 			where: {
