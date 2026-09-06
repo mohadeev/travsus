@@ -1,0 +1,491 @@
+// prisma-supabase/schema.prisma
+
+generator client {
+  provider      = "prisma-client-js"
+  output        = "../prisma-supabase/client"
+  binaryTargets = ["native"]
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("SUPABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+enum RoomType {
+  SINGLE
+  TWIN
+  COUPLE
+}
+
+enum AccommodationClass {
+  STANDARD
+  LUXURY
+}
+
+enum BedType {
+  SINGLE
+  TWIN
+  COUPLE
+}
+
+enum CommissionType {
+  PERCENTAGE
+  FIXED_AMOUNT
+}
+
+model Business {
+  id                 String    @id
+  creatorId          String
+  name               String?
+  adminName          String?
+  email              String    @unique
+  phoneNumber        String
+  address            String?
+  country            String?
+  registrationNumber String?
+  bankName           String?
+  accountNumber      String?
+  registrationDate   DateTime?
+
+  profileImage Json?
+  coverImage   Json?
+
+  toursCreated Tour[] @relation("BusinessTours")
+  creator      User   @relation("UserBusinesses", fields: [creatorId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  type      String   @default("TRAVEL_AGENCY")
+  isActive  Boolean  @default(false)
+
+  @@map("businesses")
+}
+
+model Subscription {
+  id               String    @id
+  userId           String
+  subscriptionType String
+  startDate        DateTime
+  endDate          DateTime?
+  isActive         Boolean   @default(true)
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+
+  user User @relation("UserSubscriptions", fields: [userId], references: [id])
+
+  @@map("subscriptions")
+}
+
+model Booking {
+  id               String   @id
+  customerId       String
+  providerId       String
+  tourId           String
+  duration         Int
+  services         Json[]
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  accommodation    Json?
+  bookOwnHotels    Boolean? @default(true)
+  includeInTotal   Boolean?
+  bookingState     String
+  guests           Json?
+  bookingStates    Json[]
+  pricePerSeat     Int?
+  serviceCharge    Int?
+  subtotal         Int?
+  totalPrice       Float?
+  lineItems        Json[]
+  selectedDate     Json?
+  paymentIntentId  String?
+  orderNumber      String   @unique
+  receiptNumber    String   @unique
+  invoiceNumber    String   @unique
+  bookingReference String   @unique
+  paymentMethodId  String?
+
+  customer      User           @relation("CustomerBookings", fields: [customerId], references: [id])
+  provider      User           @relation("ProviderBookings", fields: [providerId], references: [id])
+  tour          Tour           @relation("TourBookings", fields: [tourId], references: [id])
+  paymentMethod PaymentMethod? @relation(fields: [paymentMethodId], references: [id])
+
+  @@map("bookings")
+}
+
+model Place {
+  id              String   @id
+  tripadvisorData Json
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@map("places")
+}
+
+model User {
+  id                       String         @id
+  email                    String         @unique
+  username                 String?
+  name                     String?
+  phone                    String?
+  password                 String
+  senders                  Json?
+  date                     DateTime       @default(now())
+  library                  Json?
+  accountData              Json?
+  createdAt                DateTime       @default(now())
+  updatedAt                DateTime       @updatedAt
+  savedList                Json?
+  passwordResetToken       String?
+  passwordResetTokens      String[]
+  passwordHistory          String[]
+  passwordResetTokenExpiry DateTime?
+  businesses               Business[]     @relation("UserBusinesses")
+  customerBookings         Booking[]      @relation("CustomerBookings")
+  providerBookings         Booking[]      @relation("ProviderBookings")
+  subscriptions            Subscription[] @relation("UserSubscriptions")
+  toursCreated             Tour[]         @relation("UserTours")
+  addressId                String?
+  profileImage             Json?
+  stripeCustomerId         String?
+  emailVerified            Boolean        @default(false)
+  verificationLinkToken    String?        @unique
+  verificationCodeToken    String?        @unique
+  verificationTokenExpiry  DateTime?
+  verificationCode         String?
+  verificationCodeExpiry   DateTime?
+  isAdmin                  Boolean        @default(false)
+  likedCommentIds          String[]
+  dislikedCommentIds       String[]
+  referredById             String?
+  active                   Boolean        @default(true)
+  deactivatedAt            DateTime?
+  deactivationReason       String?
+
+  address        Address?        @relation("UserAddresses", fields: [addressId], references: [id])
+  referredBy     User?           @relation("UserReferrals", fields: [referredById], references: [id])
+  referredUsers  User[]          @relation("UserReferrals")
+  referralLinks  ReferralLink[]  @relation("UserReferralLinks")
+  reviews        Review[]
+  posts          Post[]
+  forumPosts     ForumPost[]
+  forumComments  ForumComment[]  @relation("CommentAuthor")
+  paymentMethods PaymentMethod[]
+  payoutMethods  PayoutMethod[]  @relation("UserPayoutMethods")
+
+  @@map("users")
+}
+
+model PaymentMethod {
+  id                    String   @id
+  userId                String
+  stripePaymentMethodId String
+  type                  String?
+  last4                 String?
+  brand                 String?
+  exp_month             Int?
+  exp_year              Int?
+  cardHolder            String?
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+  billingAddressLine1   String?
+  billingAddressLine2   String?
+  billingCity           String?
+  billingState          String?
+  billingPostalCode     String?
+  billingCountry        String?
+  isDefault             Boolean? @default(false)
+  isTemporary           Boolean? @default(false)
+
+  user     User      @relation(fields: [userId], references: [id])
+  bookings Booking[]
+
+  @@map("payment_methods")
+}
+
+model Tour {
+  id                  String   @id
+  creatorId           String
+  businessId          String?
+  name                String?
+  subtitle            String?
+  overview            String?
+  productCategory     String?
+  slugs               Json
+  images              Json
+  people              Json
+  services            Json
+  places              Json
+  highlights          Json
+  days                Json
+  paths               Json
+  price               String?
+  discount            String?
+  start               Json?
+  end                 Json?
+  lang                String?
+  tourfor             String?
+  updated             Boolean  @default(false)
+  conclusion          String?
+  tags                Json
+  keyphrase           Json
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+  faq                 Json
+  inclusions          Json?
+  durationType        String?
+  duration            Int?
+  includesOvernight   Boolean?
+  nameContentId       String?
+  subtitleContentId   String?
+  overviewContentId   String?
+  conclusionContentId String?
+  startAddressId      String?
+  endAddressId        String?
+  pricingTiers        Json
+  accommodations      Json
+  translations        Json
+
+  creator           User                 @relation("UserTours", fields: [creatorId], references: [id])
+  business          Business?            @relation("BusinessTours", fields: [businessId], references: [id])
+  startAddress      Address?             @relation("TourStartAddress", fields: [startAddressId], references: [id])
+  endAddress        Address?             @relation("TourEndAddress", fields: [endAddressId], references: [id])
+  nameContent       TranslatableContent? @relation("TourNameContent", fields: [nameContentId], references: [id])
+  subtitleContent   TranslatableContent? @relation("TourSubtitleContent", fields: [subtitleContentId], references: [id])
+  overviewContent   TranslatableContent? @relation("TourOverviewContent", fields: [overviewContentId], references: [id])
+  conclusionContent TranslatableContent? @relation("TourConclusionContent", fields: [conclusionContentId], references: [id])
+
+  bookings Booking[] @relation("TourBookings")
+  reviews  Review[]
+
+  @@map("tours")
+}
+
+model Review {
+  id               String   @id
+  tourId           String
+  userId           String
+  rating           Int
+  title            String?
+  content          String?
+  titleContentId   String?
+  contentContentId String?
+  travelDate       String?
+  travelType       String?
+  travelDate1      DateTime @default(now())
+  images           String[]
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  isVerified       Boolean  @default(false)
+
+  user           User                 @relation(fields: [userId], references: [id])
+  tour           Tour                 @relation(fields: [tourId], references: [id])
+  titleContent   TranslatableContent? @relation("ReviewTitleContent", fields: [titleContentId], references: [id])
+  contentContent TranslatableContent? @relation("ReviewContentContent", fields: [contentContentId], references: [id])
+
+  @@index([userId])
+  @@map("reviews")
+}
+
+model TranslatableContent {
+  id          String   @id
+  contentType String
+  entityId    String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  translations    TranslatedText[]
+  tourNames       Tour[]           @relation("TourNameContent")
+  tourSubtitles   Tour[]           @relation("TourSubtitleContent")
+  tourOverviews   Tour[]           @relation("TourOverviewContent")
+  tourConclusions Tour[]           @relation("TourConclusionContent")
+  reviewTitles    Review[]         @relation("ReviewTitleContent")
+  reviewContents  Review[]         @relation("ReviewContentContent")
+
+  @@map("translatable_contents")
+}
+
+model TranslatedText {
+  id           String   @id
+  contentId    String
+  languageCode String
+  text         String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  content TranslatableContent @relation(fields: [contentId], references: [id])
+
+  @@unique([contentId, languageCode])
+  @@map("translated_texts")
+}
+
+model Address {
+  id             String   @id
+  streetAddress  String?
+  buildingNumber String?
+  suiteNumber    String?
+  postOfficeBox  String?
+  city           String?
+  state          String?
+  postalCode     String?
+  country        String?
+  landmark       String?
+  subdivision    String?
+  timeZone       String?
+  isPrimary      Boolean?
+  notes          String?
+  geoCoordinates Json
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  toursAsStart Tour[] @relation("TourStartAddress")
+  toursAsEnd   Tour[] @relation("TourEndAddress")
+  users        User[] @relation("UserAddresses")
+}
+
+model Counter {
+  id    String @id
+  name  String @unique
+  value Int
+}
+
+model NewsletterSubscription {
+  id         String   @id
+  email      String   @unique
+  subscribed Boolean  @default(true)
+  types      String[] @default([])
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  tokens     Json
+
+  @@map("newsletter")
+}
+
+model Post {
+  id            String   @id
+  title         String
+  content       String
+  excerpt       String
+  tags          String[]
+  featuredImage String?
+  authorId      String
+  createdAt     DateTime @default(now())
+  imageIds      String[]
+  translations  Json
+
+  author User @relation(fields: [authorId], references: [id])
+}
+
+model TravelSpot {
+  id        String   @id
+  title     String
+  subtitle  String
+  content   String
+  imageUrl  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model WhistleblowerReport {
+  id              String    @id
+  title           String
+  description     String
+  category        String
+  urgencyLevel    String
+  involvedParties String?
+  dateOfIncident  DateTime?
+  additionalInfo  String?
+  status          String    @default("pending")
+  submittedAt     DateTime  @default(now())
+  lastUpdated     DateTime  @updatedAt
+}
+
+model Spin {
+  id          String   @id
+  prizeNumber Int
+  timestamp   DateTime
+  winner      Winner?
+}
+
+model Winner {
+  id     String @id
+  spinId String @unique
+  code   String @unique
+  spin   Spin   @relation(fields: [spinId], references: [id])
+}
+
+model ForumPost {
+  id        String   @id
+  title     String
+  content   String
+  excerpt   String
+  authorId  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  tags      String[]
+  category  String
+  likes     Int      @default(0)
+  views     Int      @default(0)
+
+  author   User           @relation(fields: [authorId], references: [id])
+  comments ForumComment[]
+}
+
+model ForumComment {
+  id            String   @id
+  content       String
+  authorId      String
+  postId        String
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  parentId      String?
+  likedByIds    String[]
+  dislikedByIds String[]
+
+  author  User           @relation("CommentAuthor", fields: [authorId], references: [id])
+  post    ForumPost      @relation(fields: [postId], references: [id])
+  parent  ForumComment?  @relation("CommentReplies", fields: [parentId], references: [id])
+  replies ForumComment[] @relation("CommentReplies")
+}
+
+model ReferralLink {
+  id              String         @id
+  userId          String
+  code            String         @unique
+  commissionType  CommissionType
+  commissionValue Float
+  isLifetime      Boolean        @default(false)
+  maxUses         Int?
+  usedCount       Int            @default(0)
+  startDate       DateTime?
+  endDate         DateTime?
+  clientDiscount  Float
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime?      @updatedAt
+
+  user User @relation("UserReferralLinks", fields: [userId], references: [id])
+
+  @@map("referral_links")
+}
+
+model PayoutMethod {
+  id                String   @id
+  userId            String
+  type              String
+  email             String?
+  accountHolderName String?
+  accountNumber     String?
+  bankName          String?
+  swiftCode         String?
+  iban              String?
+  routingNumber     String?
+  country           String
+  currency          String
+  isDefault         Boolean  @default(false)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  user User @relation("UserPayoutMethods", fields: [userId], references: [id])
+
+  @@map("payout_methods")
+}
