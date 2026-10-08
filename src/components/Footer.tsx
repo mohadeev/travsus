@@ -17,9 +17,9 @@ export default function Footer() {
 		<footer className="bg-[#f5f5f7] text-black">
 			<div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
 				<div className="mb-8 flex flex-col items-center justify-center">
-					<Link href="/" className="inline-block">
-						<Logo />
-					</Link>
+					{/* Logo already links to "/" */}
+					<Logo />
+
 					<br />
 					<LanguagePreferencesModal variant={'footer'} />
 				</div>

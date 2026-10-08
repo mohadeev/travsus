@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import ClientHomePage from './ClientHomePage'
+import HomePage from './(home)/HomePage'
 import { getTranslations } from 'next-intl/server'
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -81,5 +81,5 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default function Home() {
-	return <ClientHomePage />
+	return <HomePage />
 }

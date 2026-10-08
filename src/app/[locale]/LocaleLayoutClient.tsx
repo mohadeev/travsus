@@ -61,6 +61,15 @@ export default function LocaleLayoutClient({
 				<ReduxProvider>
 					<AuthWatcher />
 					<body className=".theme-animals theme-animals overflow-auto bg-white text-base text-neutral-900 dark:bg-neutral-900 dark:text-neutral-200">
+						{/* Google Tag Manager (noscript) — must be inside <body> */}
+						<noscript>
+							<iframe
+								src="https://www.googletagmanager.com/ns.html?id=GTM-WHQK9Z5M"
+								height="0"
+								width="0"
+								style={{ display: 'none', visibility: 'hidden' }}
+							/>
+						</noscript>
 						<NewsletterModal />
 						<AuthModal />
 						<div className="overflow-auto">

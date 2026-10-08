@@ -100,16 +100,6 @@ export default async function RootLayout({
 					/>
 				)}
 
-				{/* Google Tag Manager (noscript) */}
-				<noscript>
-					<iframe
-						src="https://www.googletagmanager.com/ns.html?id=GTM-WHQK9Z5M"
-						height="0"
-						width="0"
-						style={{ display: 'none', visibility: 'hidden' }}
-					/>
-				</noscript>
-
 				<NextIntlClientProvider messages={messages}>
 					<LocaleLayoutClient>{children}</LocaleLayoutClient>
 				</NextIntlClientProvider>

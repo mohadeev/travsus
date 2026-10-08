@@ -25,7 +25,7 @@ export const messages = {
 	'zh-CN': zhCN,
 }
 
-export function useTranslations(namespace: string, localeParam: any) {
+export function useTranslations(namespace: string, localeParam?: string) {
 	let locale = ''
 
 	if (localeParam) {
