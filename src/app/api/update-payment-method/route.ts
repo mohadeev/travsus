@@ -2,7 +2,7 @@ export const dynamic = "force-dynamic";
 import { NextRequest, NextResponse } from 'next/server'
 import Stripe from 'stripe'
 import stripe from '@/lib/stripe'
-import prisma from '@/lib/prisma'
+import { db, T, must, touch } from '@/lib/db'
 import { getUserData } from '@/lib/auth'
 
 export async function PUT(request: NextRequest) {
@@ -45,9 +45,14 @@ export async function PUT(request: NextRequest) {
 		console.log(
 			`PUT /api/update-payment-method - Fetching payment method ${id} for user ${userData.id}`,
 		)
-		const existingPaymentMethod = await prisma.paymentMethod.findFirst({
-			where: { id, userId: userData.id },
-		})
+		const existingPaymentMethod = must(
+			await db
+				.from(T.paymentMethods)
+				.select('id, stripePaymentMethodId')
+				.eq('id', id)
+				.eq('userId', userData.id)
+				.maybeSingle(),
+		)
 
 		if (!existingPaymentMethod) {
 			console.error(
@@ -68,7 +73,7 @@ export async function PUT(request: NextRequest) {
 				existingPaymentMethod.stripePaymentMethodId,
 				{
 					billing_details: {
-						name: 'mohamed skendoul',
+						name: cardHolder,
 						address: {
 							line1: billingAddressLine1,
 							line2: billingAddressLine2,
@@ -77,14 +82,6 @@ export async function PUT(request: NextRequest) {
 							postal_code: billingPostalCode,
 							country: billingCountry,
 						},
-						// {
-						// 	line1: billingAddressLine1,
-						// 	line2: billingAddressLine2,
-						// 	city: billingCity,
-						// 	state: billingState,
-						// 	postal_code: billingPostalCode,
-						// 	country: billingCountry,
-						// },
 					},
 				},
 			)
@@ -103,30 +100,24 @@ export async function PUT(request: NextRequest) {
 		console.log(
 			`PUT /api/update-payment-method - Updating payment method ${id} in database`,
 		)
-		const updatedPaymentMethod = await prisma.paymentMethod.update({
-			where: { id },
-			data: {
-				// id: 'paymentMethodId',
-				cardHolder,
-				billingAddressLine1: billingAddressLine1,
-				billingAddressLine2: billingAddressLine2,
-				billingCity: billingCity,
-				billingState: billingState,
-				billingPostalCode: billingPostalCode,
-				billingCountry: billingCountry,
-				updatedAt: new Date(),
-			},
-			//  {
-			// 	cardHolder,
-			// 	billingAddressLine1,
-			// 	billingAddressLine2,
-			// 	billingCity,
-			// 	billingState,
-			// 	billingPostalCode,
-			// 	billingCountry,
-			// 	updatedAt: new Date(),
-			// },
-		})
+		const updatedPaymentMethod = must(
+			await db
+				.from(T.paymentMethods)
+				.update(
+					touch({
+						cardHolder,
+						billingAddressLine1,
+						billingAddressLine2,
+						billingCity,
+						billingState,
+						billingPostalCode,
+						billingCountry,
+					}),
+				)
+				.eq('id', id)
+				.select('*')
+				.single(),
+		)
 
 		console.log(
 			`PUT /api/update-payment-method - Successfully updated payment method ${id}`,

@@ -1,15 +1,11 @@
-export const dynamic = "force-dynamic";
+export const dynamic = 'force-dynamic'
 import { NextResponse } from 'next/server'
-import prisma from '@/prisma'
 import getUserData from '@/app/api/user/getUserData'
+import { db, T, must } from '@/lib/db'
 
 export async function GET() {
 	try {
-		// Retrieve user data to get the creatorId
 		const userData = await getUserData()
-		// console.log('User data for companies:', userData)
-
-		// Ensure userData contains creatorId
 		if (!userData || !userData.id) {
 			return NextResponse.json(
 				{ message: 'User not found or not authenticated' },
@@ -17,18 +13,15 @@ export async function GET() {
 			)
 		}
 
-		const creatorId = userData.id
-
-		// Fetch all companies (businesses) for the current user
-		const companies = await prisma.business.findMany({
-			where: { creatorId: creatorId },
-			orderBy: [
-				{ isActive: 'desc' }, // Active companies first
-				{ name: 'asc' }, // Then alphabetically by name
-			],
-		})
-
-		// console.log('Found companies:', companies)
+		// Active companies first, then alphabetically
+		const companies = must(
+			await db
+				.from(T.businesses)
+				.select('*')
+				.eq('creatorId', userData.id)
+				.order('isActive', { ascending: false })
+				.order('name', { ascending: true }),
+		)
 
 		return NextResponse.json(companies)
 	} catch (error) {
@@ -37,7 +30,5 @@ export async function GET() {
 			{ message: 'Error fetching companies' },
 			{ status: 500 },
 		)
-	} finally {
-		await prisma.$disconnect()
 	}
 }

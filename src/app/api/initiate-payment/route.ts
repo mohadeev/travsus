@@ -1,7 +1,7 @@
 export const dynamic = "force-dynamic";
 import { NextRequest, NextResponse } from 'next/server'
 import stripe from '@/lib/stripe'
-import prisma from '@/lib/prisma'
+import { db, T, must, touch } from '@/lib/db'
 import getUserData from '../user/getUserData'
 import totalAmount from '../api-utils/actions/booking/totalAmount'
 import { updateBooking } from '../api-utils/actions/booking/updateBooking'
@@ -12,12 +12,13 @@ export async function POST(request: NextRequest) {
 		await request.json()
 	const userData = await getUserData({})
 	if (!userData) {
-		return 0
+		return NextResponse.json({ message: 'Not authenticated' }, { status: 401 })
 	}
-	console.log('userData')
-	const isMoha =
-		userData?.email?.includes('@travsus.com') ||
-		userData?.email?.includes('skendoul')
+	// Internal test accounts are charged a symbolic amount (exact matches only)
+	const TEST_PAYMENT_EMAILS = ['skendoulmohamed@gmail.com']
+	const email = (userData.email || '').toLowerCase()
+	const isTestAccount =
+		TEST_PAYMENT_EMAILS.includes(email) || email.endsWith('@travsus.com')
 	const referer = request.headers.get('referer') || ''
 	const url = new URL(referer)
 	const searchParams = url.searchParams
@@ -50,18 +51,16 @@ export async function POST(request: NextRequest) {
 	const id = userId
 
 	try {
-		const bookingInitiated = await prisma.booking.findFirst({
-			where: {
-				id: bookingId,
-				customerId: id,
-				tourId: serviceId,
-			},
-			include: {
-				customer: true,
-				provider: true,
-				tour: true,
-			},
-		})
+		const bookingInitiated = must(
+			await db
+				.from(T.bookings)
+				.select('id, lineItems, paymentIntentId')
+				.match({ id: bookingId, customerId: id, tourId: serviceId })
+				.maybeSingle(),
+		)
+		if (!bookingInitiated) {
+			return NextResponse.json({ message: 'Booking not found' }, { status: 404 })
+		}
 
 		// Check if the booking already has a paymentIntentId
 		// if (bookingInitiated?.paymentIntentId) {
@@ -72,10 +71,9 @@ export async function POST(request: NextRequest) {
 		// 	)
 		// }
 
-		let user = await prisma.user.findUnique({
-			where: { id: userId },
-			select: { stripeCustomerId: true },
-		})
+		let user = must(
+			await db.from(T.users).select('stripeCustomerId').eq('id', userId).maybeSingle(),
+		)
 
 		if (!user?.stripeCustomerId) {
 			console.log(
@@ -85,16 +83,20 @@ export async function POST(request: NextRequest) {
 				email: userEmail,
 				metadata: { userId },
 			})
-			user = await prisma.user.update({
-				where: { id: userId },
-				data: { stripeCustomerId: customer.id },
-			})
+			user = must(
+				await db
+					.from(T.users)
+					.update(touch({ stripeCustomerId: customer.id }))
+					.eq('id', userId)
+					.select('stripeCustomerId')
+					.single(),
+			)
 		}
 
 		console.log(
 			`POST /api/initiate-payment - Creating PaymentIntent for user ${userId}`,
 		)
-		if (!user.stripeCustomerId) {
+		if (!user?.stripeCustomerId) {
 			console.error(
 				'POST /api/initiate-payment - user.stripeCustomerId Missing required fields',
 			)
@@ -108,7 +110,7 @@ export async function POST(request: NextRequest) {
 		console.log('newTotalAmount: ', newTotalAmount)
 		const amountInCents = Math.round(newTotalAmount * 100) // 362879
 		const paymentIntent = await stripe.paymentIntents.create({
-			amount: isMoha ? 55 : amountInCents,
+			amount: isTestAccount ? 55 : amountInCents,
 			currency,
 			customer: user.stripeCustomerId,
 			payment_method: stripePaymentMethodId,

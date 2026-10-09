@@ -1,5 +1,6 @@
 export const dynamic = "force-dynamic";
-import { placesClient } from '@/lib/prisma'
+import { db, T, must } from '@/lib/db'
+import { GEO_CONTENT, inLanguage, keepTranslations } from '@/lib/geo'
 import { NextResponse } from 'next/server'
 
 function extractLanguageFromRequest(request: Request): string {
@@ -17,8 +18,6 @@ export async function GET(request: Request) {
 	try {
 		const { searchParams } = new URL(request.url)
 		const cityId = searchParams.get('cityId')
-		const limit = 16
-		// searchParams.get("limit") ? Number.parseInt(searchParams.get("limit")!) : 16
 
 		if (!cityId) {
 			return NextResponse.json(
@@ -28,45 +27,12 @@ export async function GET(request: Request) {
 		}
 
 		const detectedLanguage = extractLanguageFromRequest(request)
-		console.log('🌐 Detected language:', detectedLanguage)
 
-		console.log('🔎 Searching for city by ID:', cityId)
+		const cityRow: any = must(
+			await db.from(T.cities).select(`*, ${GEO_CONTENT}`).eq('id', cityId).maybeSingle(),
+		)
 
-		const prisma = placesClient
-
-		let city = await prisma.city.findUnique({
-			where: {
-				id: cityId,
-			},
-			include: {
-				content: {
-					include: {
-						translations: {
-							where: { language: detectedLanguage },
-						},
-					},
-				},
-			},
-		})
-
-		if (!city || city.content.translations.length === 0) {
-			city = await prisma.city.findUnique({
-				where: {
-					id: cityId,
-				},
-				include: {
-					content: {
-						include: {
-							translations: {
-								where: { language: 'en-US' },
-							},
-						},
-					},
-				},
-			})
-		}
-
-		if (!city) {
+		if (!cityRow) {
 			return NextResponse.json({
 				message: 'No city found with that ID',
 				found: false,
@@ -74,54 +40,29 @@ export async function GET(request: Request) {
 			})
 		}
 
-		const foundCityName = city.content.translations[0]?.text || 'Unknown City'
-		console.log(`🏙️ Found city: ${foundCityName} (ID: ${city.id})`)
+		const city: any = inLanguage(cityRow, detectedLanguage)
+		const foundCityName = city.content?.translations[0]?.text || 'Unknown City'
 
-		let places = await prisma.place.findMany({
-			where: {
-				cityId: city.id,
-			},
-			include: {
-				content: {
-					include: {
-						translations: {
-							where: { language: detectedLanguage },
-						},
-					},
-				},
-			},
-		})
+		const placeRows: any[] =
+			must(await db.from(T.places).select(`*, ${GEO_CONTENT}`).eq('cityId', city.id)) ?? []
 
-		if (
-			places.length === 0 ||
-			places.every((p) => p.content.translations.length === 0)
-		) {
-			places = await prisma.place.findMany({
-				where: {
-					cityId: city.id,
-				},
-				include: {
-					content: {
-						include: {
-							translations: {
-								where: { language: 'en-US' },
-							},
-						},
-					},
-				},
-			})
-		}
-
-		console.log('places:', places.length)
+		// Visitor's language when any place has it, otherwise English for all
+		const hasLanguage = placeRows.some((p) =>
+			p.content?.translations?.some((t: any) => t.language === detectedLanguage),
+		)
+		const placesLanguage = hasLanguage ? detectedLanguage : 'en-US'
+		const places = placeRows.map((p) =>
+			keepTranslations(p, (t) => t.language === placesLanguage),
+		)
 
 		// Transform the places data for the frontend
 		const placesData = places.map((place) => {
 			// Find name and description from translations
-			const nameTranslation = place.content.translations.find(
-				(t) => t.type === 'name',
+			const nameTranslation = place.content?.translations.find(
+				(t: any) => t.type === 'name',
 			)
-			const descriptionTranslation = place.content.translations.find(
-				(t) => t.type === 'description',
+			const descriptionTranslation = place.content?.translations.find(
+				(t: any) => t.type === 'description',
 			)
 
 			return {
@@ -157,9 +98,6 @@ export async function GET(request: Request) {
 			placesByCategory[category].push(place)
 		})
 
-		// console.log("🚀 Places by City ID Response prepared")
-		// console.log("placesData", placesData)
-
 		return NextResponse.json({
 			message: `Places in ${foundCityName} found successfully`,
 			found: true,
@@ -174,8 +112,8 @@ export async function GET(request: Request) {
 			totalCount: places.length,
 			language: detectedLanguage,
 			languageAvailable:
-				city.content.translations.length > 0 &&
-				places.some((p) => p.content.translations.length > 0),
+				(city.content?.translations?.length ?? 0) > 0 &&
+				places.some((p) => p.content?.translations?.length > 0),
 		})
 	} catch (error: any) {
 		console.error(

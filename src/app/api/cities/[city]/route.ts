@@ -1,13 +1,9 @@
 export const dynamic = "force-dynamic";
-import { placesClient } from '@/lib/prisma'
+import { db, T, must, newId } from '@/lib/db'
+import { GEO_CONTENT, keepTranslations } from '@/lib/geo'
 import { NextResponse } from 'next/server'
-import OpenAI from 'openai'
+import { openai } from '@/lib/openai'
 
-// Initialize OpenAI
-const openai = new OpenAI({
-	apiKey:
-		'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',
-})
 
 /**
  * Generate a concise description for a city using OpenAI
@@ -48,7 +44,6 @@ export async function GET(
 ) {
 	try {
 		const cityId = params.city
-		console.log('Searching for city with ID:', cityId)
 
 		if (!cityId) {
 			return NextResponse.json(
@@ -58,41 +53,25 @@ export async function GET(
 		}
 
 		// Find the city directly by ID
-		const city = await placesClient.city.findUnique({
-			where: {
-				id: cityId,
-			},
-			include: {
-				content: {
-					include: {
-						translations: {
-							where: {
-								language: 'en-US',
-							},
-						},
-					},
-				},
-				country: {
-					select: {
-						code: true,
-						code3: true,
-						content: {
-							include: {
-								translations: {
-									where: {
-										language: 'en-US',
-										type: 'country',
-									},
-								},
-							},
-						},
-					},
-				},
-			},
-		})
+		const row: any = must(
+			await db
+				.from(T.cities)
+				.select(`*, ${GEO_CONTENT}, country:${T.countries}(code, code3, ${GEO_CONTENT})`)
+				.eq('id', cityId)
+				.maybeSingle(),
+		)
 
-		if (!city) {
+		if (!row) {
 			return NextResponse.json({ error: 'City not found' }, { status: 404 })
+		}
+
+		// English city texts; English country name
+		const city: any = keepTranslations(row, (t) => t.language === 'en-US')
+		if (city.country) {
+			city.country = keepTranslations(
+				city.country,
+				(t) => t.language === 'en-US' && t.type === 'country',
+			)
 		}
 
 		// Extract the name and description from translations
@@ -113,12 +92,12 @@ export async function GET(
 		if (city.content && city.content.translations) {
 			// Find name translation (type = "city")
 			const nameTranslation = city.content.translations.find(
-				(t) => t.type === 'city',
+				(t: any) => t.type === 'city',
 			)
 
 			// Find description translation
 			const descriptionTranslation = city.content.translations.find(
-				(t) => t.type === 'description',
+				(t: any) => t.type === 'description',
 			)
 
 			if (nameTranslation) {
@@ -139,15 +118,16 @@ export async function GET(
 
 				// Save the generated description to the database
 				try {
-					await placesClient.translatedText.create({
-						data: {
+					must(
+						await db.from(T.geoTexts).insert({
+							id: newId(),
 							contentId: city.content.id,
 							language: 'en-US',
 							text: description,
 							type: 'description',
 							code3: city.country?.code3 || null,
-						},
-					})
+						}),
+					)
 					console.log(`Saved generated description for ${name}`)
 				} catch (error) {
 					console.error(`Error saving description for ${name}:`, error)

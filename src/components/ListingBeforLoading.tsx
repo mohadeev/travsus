@@ -1,7 +1,8 @@
 import React, { FC, Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/solid'
-import { useDispatch, useSelector } from 'react-redux'
+import { useAppSelector } from '@/store/hooks'
+import { selectTourPreview } from '@/store/slices/tourPage'
 import TourHeader from '@/app/[locale]/[country]/[city]/[category]/[name]/(service-detail)/[listingExperiencesDetail]/TourHeader'
 import ListingExperiencesDetailsImages from '@/app/[locale]/[country]/[city]/[category]/[name]/(service-detail)/[listingExperiencesDetail]/ListingExperiencesDetailsImages'
 import ListingExperiencesDetailPage from '@/app/[locale]/[country]/[city]/[category]/[name]/(service-detail)/[listingExperiencesDetail]/page'
@@ -27,14 +28,11 @@ const ListingBeforLoading: FC<ListingBeforLoadingProps> = ({
 		setShowModal(true)
 	}
 
-	const dispatch = useDispatch()
 	const haneleClose = (closeModal: any) => {
 		closeModal()
 		// dispatch(mobileFooterStickyToggleHanlder({ value: false }))
 	}
-	const service: any = useSelector(
-		(state: any) => state.creatingServiceSlice.service,
-	)
+	const service: any = useAppSelector(selectTourPreview)
 	return (
 		<>
 			<Transition appear show={isOpen} as={Fragment}>

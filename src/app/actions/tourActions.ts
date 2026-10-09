@@ -1,10 +1,9 @@
 'use server'
 
-import { PrismaClient } from '@prisma/client'
 import { revalidatePath } from 'next/cache'
 import { getUserData } from '@/app/api/user/getUserData'
-
-const prisma = new PrismaClient()
+import { getBusinessId } from '@/app/api/dashboard/tours/ownTour'
+import { db, T, must, withMeta, asDate, EMPTY_TOUR_LISTS } from '@/lib/db'
 
 export async function updateTour(tourId: string, newTourData: any) {
 	try {
@@ -121,11 +120,7 @@ export async function createTour(tourData: any) {
 
 export async function getTour(tourId: string) {
 	try {
-		const tour = await prisma.tour.findUnique({
-			where: { id: tourId },
-			// Address include removed
-		})
-		// console.log('accommodationTypes', JSON.stringify(tour?.accommodations))
+		const tour = must(await db.from(T.tours).select('*').eq('id', tourId).maybeSingle())
 
 		if (!tour) {
 			return { success: false, error: 'Tour not found' }
@@ -140,50 +135,34 @@ export async function getTour(tourId: string) {
 
 export async function initializeBlankTour() {
 	try {
-		// Get the current user
 		const userData = await getUserData()
-
-		// Check if user is authenticated
 		if (!userData || !userData.id) {
 			return { success: false, error: 'User not found or not authenticated' }
 		}
 
-		// Get the business associated with this user
-		const business = await prisma.business.findFirst({
-			where: {
-				creatorId: userData.id,
-			},
-		})
-
-		// If no business found, return error
-		if (!business) {
+		const businessId = await getBusinessId(userData.id)
+		if (!businessId) {
 			return { success: false, error: 'No business found for this user' }
 		}
 
-		const blankTour = await prisma.tour.create({
-			data: {
-				name: 'Untitled Tour',
-				slug: `untitled-tour-${Date.now()}`,
-				updated: false,
-				lang: 'EN',
-				// Connect to the creator (user)
-				creator: {
-					connect: {
-						id: userData.id,
-					},
-				},
-				// Connect to the business
-				business: {
-					connect: {
-						id: business.id,
-					},
-				},
-			},
-		})
+		const blankTour = must(
+			await db
+				.from(T.tours)
+				.insert(
+					withMeta({
+						...EMPTY_TOUR_LISTS,
+						name: 'Untitled Tour',
+						updated: false,
+						lang: 'EN',
+						creatorId: userData.id,
+						businessId,
+					}),
+				)
+				.select('*')
+				.single(),
+		)
 
-		console.log('Blank tour initialized successfully:', blankTour.id)
 		revalidatePath('/dashboard/tours')
-
 		return { success: true, tour: blankTour }
 	} catch (error) {
 		console.error('Error initializing blank tour:', error)
@@ -191,13 +170,10 @@ export async function initializeBlankTour() {
 	}
 }
 
-// Add the getTours function to the existing file
+/** The signed-in user's business tours, optionally filtered by name. */
 export async function getTours(searchQuery = '') {
 	try {
-		// Get the current user
 		const userData = await getUserData()
-
-		// Check if user is authenticated
 		if (!userData || !userData.id) {
 			return {
 				success: false,
@@ -206,52 +182,28 @@ export async function getTours(searchQuery = '') {
 			}
 		}
 
-		// Get the business associated with this user
-		const business = await prisma.business.findFirst({
-			where: {
-				creatorId: userData.id,
-			},
-		})
-
-		// If no business found, return empty array
-		if (!business) {
+		const businessId = await getBusinessId(userData.id)
+		if (!businessId) {
 			return { success: true, tours: [] }
 		}
 
-		// Get all tours associated with this business
-		const tours = await prisma.tour.findMany({
-			where: {
-				businessId: business.id,
-				...(searchQuery
-					? {
-							name: {
-								contains: searchQuery,
-								mode: 'insensitive',
-							},
-						}
-					: {}),
-			},
-			include: {
-				bookings: {
-					select: {
-						id: true,
-					},
-				},
-			},
-			orderBy: {
-				createdAt: 'desc',
-			},
-		})
+		let query = db
+			.from(T.tours)
+			.select(`id, name, price, updated, createdAt, bookings:${T.bookings}(count)`)
+			.eq('businessId', businessId)
+			.order('createdAt', { ascending: false })
+		if (searchQuery) query = query.ilike('name', `%${searchQuery.replace(/[%_]/g, '\\$&')}%`)
 
-		// Format the tours data for the frontend
+		const tours: any[] = must(await query) ?? []
+
 		const formattedTours = tours.map((tour) => ({
 			id: tour.id,
 			name: tour.name || 'Untitled Tour',
 			price: tour.price || '$0',
 			status: tour.updated ? 'active' : 'draft',
 			updated: tour.updated,
-			createdAt: tour.createdAt.toISOString().split('T')[0],
-			bookings: tour.bookings.length,
+			createdAt: asDate(tour.createdAt)?.toISOString().split('T')[0],
+			bookings: tour.bookings?.[0]?.count ?? 0,
 		}))
 
 		return { success: true, tours: formattedTours }

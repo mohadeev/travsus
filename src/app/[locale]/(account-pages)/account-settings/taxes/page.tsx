@@ -7,16 +7,17 @@ import Link from 'next/link'
 import { ChevronRight, FileText } from 'lucide-react'
 import ButtonPrimary from '@/shared/ButtonPrimary'
 import { useToast } from '@/hooks/useToast'
-import { useSelector, useDispatch } from 'react-redux'
-import { updateUser } from '@/app/[locale]/GlobalRedux/Features/userReducer/userReducer'
+import { useAppDispatch, useAppSelector } from '@/store/hooks'
+import { selectUser, selectUserSaving, updateUser } from '@/store/slices/user'
 import { useTranslations } from '@/lib/i18n'
 
 export default function TaxesPage() {
 	const t = useTranslations('TaxesPage')
 	const [activeTab, setActiveTab] = useState('taxpayers')
 	const { toast } = useToast()
-	const dispatch = useDispatch()
-	const { userData, loading } = useSelector((state: any) => state.userReducer)
+	const dispatch = useAppDispatch()
+	const userData = useAppSelector(selectUser)
+	const loading = useAppSelector(selectUserSaving)
 
 	const [showTaxInfoForm, setShowTaxInfoForm] = useState(false)
 	const [showVatForm, setShowVatForm] = useState(false)
@@ -58,7 +59,7 @@ export default function TaxesPage() {
 					...userData?.taxInfo,
 					...taxInfo,
 				},
-			}) as any,
+			}),
 		)
 
 		toast({
@@ -78,7 +79,7 @@ export default function TaxesPage() {
 					...userData?.taxInfo,
 					...vatInfo,
 				},
-			}) as any,
+			}),
 		)
 
 		toast({

@@ -1,6 +1,13 @@
-export const dynamic = "force-dynamic";
-import { placesClient } from '@/lib/prisma'
+export const dynamic = 'force-dynamic'
 import { NextResponse } from 'next/server'
+import { db, T, must } from '@/lib/db'
+import { GEO_CONTENT, keepTranslations } from '@/lib/geo'
+
+/** English text of a given translation type on a geo row. */
+const englishText = (row: any, type?: string) =>
+	row?.content?.translations?.find(
+		(t: any) => t.language === 'en-US' && (!type || t.type === type),
+	)?.text
 
 export async function GET(
 	request: Request,
@@ -8,7 +15,6 @@ export async function GET(
 ) {
 	try {
 		const { countryId } = params
-		console.log('countryId', countryId)
 
 		if (!countryId) {
 			return NextResponse.json(
@@ -17,119 +23,52 @@ export async function GET(
 			)
 		}
 
-		const prisma = placesClient
-
-		// Get the country with its translations
-		const country = await prisma.country.findUnique({
-			where: {
-				id: countryId,
-			},
-			include: {
-				content: {
-					include: {
-						translations: {
-							where: {
-								language: 'en-US',
-								type: 'country',
-							},
-						},
-					},
-				},
-			},
-		})
+		const country: any = must(
+			await db
+				.from(T.countries)
+				.select(`*, ${GEO_CONTENT}`)
+				.eq('id', countryId)
+				.maybeSingle(),
+		)
 
 		if (!country) {
 			return NextResponse.json({ error: 'Country not found' }, { status: 404 })
 		}
 
-		// Get the country name from translations
-		const countryName =
-			country.content?.translations[0]?.text || 'Unknown Country'
+		// Cities in this country that have an image, and their places
+		const citiesWithImages: any[] =
+			must(
+				await db
+					.from(T.cities)
+					.select(`id, image, ${GEO_CONTENT}`)
+					.eq('countryId', countryId)
+					.not('image', 'is', null),
+			) ?? []
 
-		// First, find cities in this country that have images
-		const citiesWithImages = await prisma.city.findMany({
-			where: {
-				countryId,
-				image: { isNot: null },
-			},
-			include: {
-				content: {
-					include: {
-						translations: {
-							where: {
-								language: 'en-US',
-								type: 'city',
-							},
-						},
-					},
-				},
-			},
-		})
-
-		// Get city IDs to use in the places query
 		const cityIds = citiesWithImages.map((city) => city.id)
+		const places: any[] = cityIds.length
+			? must(
+					await db
+						.from(T.places)
+						.select(`*, ${GEO_CONTENT}, city:${T.cities}(id, ${GEO_CONTENT})`)
+						.in('cityId', cityIds),
+				)
+			: []
 
-		// Get all places for these cities
-		const places = await prisma.place.findMany({
-			where: {
-				cityId: { in: cityIds.length > 0 ? cityIds : undefined },
-			},
-			include: {
-				city: {
-					select: {
-						id: true,
-						content: {
-							include: {
-								translations: {
-									where: {
-										language: 'en-US',
-										type: 'city',
-									},
-								},
-							},
-						},
-					},
-				},
-				content: {
-					include: {
-						translations: {
-							where: {
-								language: 'en-US',
-							},
-						},
-					},
-				},
-			},
-		})
+		const formattedCities = citiesWithImages.map((city) => ({
+			id: city.id,
+			name: englishText(city, 'city') || 'Unknown City',
+			image: city.image,
+		}))
 
-		// Format cities data
-		const formattedCities = citiesWithImages.map((city) => {
-			const cityName = city.content?.translations[0]?.text || 'Unknown City'
-			return {
-				id: city.id,
-				name: cityName,
-				image: city.image,
-			}
-		})
-
-		// Transform the places data to a more usable format
-		const formattedPlaces = places.map((place) => {
-			// Find name and description translations
-			const nameTranslation = place.content?.translations.find(
-				(t) => t.type === 'name',
-			)
-			const descriptionTranslation = place.content?.translations.find(
-				(t) => t.type === 'description',
-			)
-
-			// Get city name
-			const cityName =
-				place.city?.content?.translations[0]?.text || 'Unknown City'
-
+		const formattedPlaces = places.map((row) => {
+			const place = keepTranslations(row, (t) => t.language === 'en-US')
+			const find = (type: string) =>
+				place.content?.translations.find((t: any) => t.type === type)?.text
 			return {
 				id: place.id,
-				name: nameTranslation?.text || 'Unnamed Place',
-				description: descriptionTranslation?.text || '',
+				name: find('name') || 'Unnamed Place',
+				description: find('description') || '',
 				category: place.category,
 				type: place.type,
 				image: place.image,
@@ -137,15 +76,14 @@ export async function GET(
 				rating: place.rating,
 				address: place.address,
 				cityId: place.cityId,
-				cityName: cityName,
+				cityName: englishText(place.city, 'city') || 'Unknown City',
 			}
 		})
 
-		// Return country data, cities with images, and places in one response
 		return NextResponse.json({
 			country: {
 				id: country.id,
-				name: countryName,
+				name: englishText(country, 'country') || 'Unknown Country',
 				code: country.code,
 				code3: country.code3,
 				image: country.image,

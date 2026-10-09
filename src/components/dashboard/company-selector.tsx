@@ -7,7 +7,7 @@ import Image from 'next/image'
 import { Input } from '@/components/ui/input'
 import { toast } from '@/components/ui/use-toast'
 import { cn } from '@/lib/utils'
-import { useDispatch, useSelector } from 'react-redux'
+import { useAppDispatch, useAppSelector } from '@/store/hooks'
 import {
 	setActiveCompany,
 	selectAllCompanies,
@@ -15,21 +15,20 @@ import {
 	selectCompanyStatus,
 	selectIsChangingActive,
 	type Company,
-} from '@/app/[locale]/GlobalRedux/Features/companySlice/companySlice'
-import type { AppDispatch } from '@/app/[locale]/GlobalRedux/store'
+} from '@/store/slices/company'
 
 export function CompanySelector() {
 	const [searchQuery, setSearchQuery] = useState('')
 	const [isOpen, setIsOpen] = useState(false)
 	const dropdownRef = useRef<HTMLDivElement>(null)
 	const router = useRouter()
-	const dispatch = useDispatch<AppDispatch>()
+	const dispatch = useAppDispatch()
 
 	// Get company data from Redux
-	const companies = useSelector(selectAllCompanies)
-	const activeCompany = useSelector(selectActiveCompany)
-	const status = useSelector(selectCompanyStatus)
-	const isChangingActive = useSelector(selectIsChangingActive)
+	const companies = useAppSelector(selectAllCompanies)
+	const activeCompany = useAppSelector(selectActiveCompany)
+	const status = useAppSelector(selectCompanyStatus)
+	const isChangingActive = useAppSelector(selectIsChangingActive)
 
 	// Only show loading for initial fetch, not when changing active company
 	const isLoading = status === 'loading' && companies.length === 0

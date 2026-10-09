@@ -3,13 +3,13 @@
 import Script from 'next/script'
 import { useLocale, useMessages } from 'next-intl'
 import tawkWidgets from '@/constants/tawkWidgets.json'
-import { useSelector } from 'react-redux'
+import { useAppSelector } from '@/store/hooks'
+import { selectChatOpen } from '@/store/slices/ui'
 
 export default function TawkToWidget() {
-	const overlayState = useSelector((state: any) => state.overlaySlice)
+	const isModalVisible = useAppSelector(selectChatOpen)
 	const messages = useMessages() as Record<string, Record<string, string>>
 
-	const isModalVisible = overlayState?.toggleTawdWidget
 	const locale = useLocale()
 	const tawkLocale = locale || 'en-US'
 	return isModalVisible ? (

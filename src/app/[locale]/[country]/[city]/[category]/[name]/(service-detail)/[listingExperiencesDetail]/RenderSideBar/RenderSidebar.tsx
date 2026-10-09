@@ -6,14 +6,16 @@ import StartRating from '@/components/StartRating'
 import StayDatesRangeInput from '../StayDatesRangeInput'
 import GuestsInput from '../GuestsInput'
 import type { Route } from 'next'
-import { useDispatch, useSelector } from 'react-redux'
+import { useAppDispatch, useAppSelector } from '@/store/hooks'
 import {
-	bookOwnHotelsReducers,
-	localUpdateLineItemsLogicAsync,
-	setPricePerSeat,
+	openTourBooking,
+	recalculatePrice,
+	selectBooking,
+	selectBookingStatus,
+	setBookOwnHotels,
 	setSelectedDate,
-	updateProvidedService,
-} from '@/app/[locale]/GlobalRedux/Features/bookingSlice/bookingSlice'
+	totalOf,
+} from '@/store/slices/booking'
 import LineItemsBreakdown from '../LineItems/LineItemsBreakdown'
 import TransportTypes from './TransportTypes'
 import RowBedAccommodationSelector from './RowBedAccommodationSelector'
@@ -24,43 +26,31 @@ import { formatCurrency } from '@/utils/formatCurrency'
 import { useAuthAction } from '@/app/hooks/useAuthAction'
 import { useTranslations } from 'next-intl'
 import BookNowPayLatter from '../BookNowPayLatter'
+import { useTourService } from '../../TourServiceContext'
 
 export type RenderSidebarProps = {}
 
 const RenderSidebar: FC<RenderSidebarProps> = ({}) => {
 	const t = useTranslations('Jan03_RenderSidebar_k7m9')
 	const router = useRouter()
-	const dispatch = useDispatch()
-	const { booking, status } = useSelector((state: any) => state.bookingSlice)
-	const user = useSelector((state: any) => state.userReducer.userData)
-	const { guests, lineItems, accommodation, transport, bookOwnHotels } = booking
+	const dispatch = useAppDispatch()
+	const booking = useAppSelector(selectBooking)
+	const status = useAppSelector(selectBookingStatus)
+	const { guests, lineItems, accommodation, bookOwnHotels } = booking
 	const totalGuests: number = guests?.guestAdults + guests?.guestChildren || 2
 
-	const {
-		name: title,
-		price,
-		days,
-		pricingTiers,
-	}: any = useSelector((state: any) => state.creatingServiceSlice.service)
-
-	const filteredLineItems = lineItems?.filter(
-		({ includeInTotal }: any) => includeInTotal === true,
-	)
-
-	const totalAmount = filteredLineItems.reduce((total: any, item: any) => {
-		return total + item.totalPrice
-	}, 0)
+	const tour: any = useTourService()
+	const { days, pricingTiers } = tour
 
 	const [currentStatus, setCurrentStatus] = useState('')
 	const [isDateSelected, setIsDateSelected] = useState(false)
 	const [isShaking, setIsShaking] = useState(false)
 	const [showError, setShowError] = useState(false)
 
+	// Once per tour (depending on `booking` here caused an endless loop)
 	useEffect(() => {
-		if (price >= 1) {
-			dispatch(setPricePerSeat(price))
-		}
-	}, [dispatch, price])
+		dispatch(openTourBooking(tour))
+	}, [tour?.id, dispatch]) // eslint-disable-line react-hooks/exhaustive-deps
 
 	const handleDateChange = (date: any) => {
 		dispatch(setSelectedDate(date))
@@ -68,55 +58,18 @@ const RenderSidebar: FC<RenderSidebarProps> = ({}) => {
 		setShowError(false)
 	}
 
-	const handleGuestsChange = async (data: any) => {
-		const newGuests = data?.guests
-		dispatch(
-			localUpdateLineItemsLogicAsync({ value: { guests: newGuests }, tour }),
-		)
-	}
+	const handleGuestsChange = (data: any) =>
+		dispatch(recalculatePrice({ tour, changes: { guests: data?.guests } }))
 
-	const handleAccomodationChange = async (data: any) => {
-		const newAccommodation = data
-		dispatch(
-			localUpdateLineItemsLogicAsync({
-				value: { accommodation: newAccommodation },
-				tour,
-			}),
-		)
-	}
+	const handleAccomodationChange = (accommodation: any) =>
+		dispatch(recalculatePrice({ tour, changes: { accommodation } }))
 
-	const transportLineItem = booking?.lineItems.find(
+	const handleBookOwnHotels = () => dispatch(setBookOwnHotels(!bookOwnHotels))
+
+	const transportLineItem = lineItems.find(
 		({ description }: any) => description === 'transport',
 	)
-
-	const handleBookOwnHotels = () => {
-		dispatch(
-			bookOwnHotelsReducers({
-				path: 'booking.bookOwnHotels',
-				value: !bookOwnHotels,
-			}),
-		)
-	}
-
-	const tour: any = useSelector(
-		(state: any) => state.creatingServiceSlice.service,
-	)
 	const isNotInitiated = true
-
-	useEffect(() => {
-		dispatch(updateProvidedService({ path: 'booking.tour', value: tour }))
-	}, [booking, dispatch, tour])
-
-	useEffect(() => {
-		if (tour && booking.lineItems >= 0) {
-			dispatch(
-				localUpdateLineItemsLogicAsync({
-					value: { guestAdults: 2, guestChildren: 0 },
-					tour,
-				}),
-			)
-		}
-	}, [booking, tour, dispatch])
 
 	const handleReserveClick = useAuthAction(async () => {
 		if (!isDateSelected) {
@@ -158,7 +111,7 @@ const RenderSidebar: FC<RenderSidebarProps> = ({}) => {
 		}
 	})
 
-	const priceStart = totalAmount / totalGuests
+	const priceStart = totalOf(lineItems) / totalGuests
 
 	return (
 		<div className={`listingSectionSidebar__wrap ${isShaking ? 'shake' : ''}`}>

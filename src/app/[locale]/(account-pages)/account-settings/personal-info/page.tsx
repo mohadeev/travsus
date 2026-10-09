@@ -3,8 +3,8 @@ export const dynamic = "force-dynamic";
 import Link from 'next/link'
 import type React from 'react'
 import { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { updateUser } from '@/app/[locale]/GlobalRedux/Features/userReducer/userReducer'
+import { useAppDispatch, useAppSelector } from '@/store/hooks'
+import { selectUser, selectUserError, selectUserSaving, updateUser } from '@/store/slices/user'
 import {
 	User,
 	Mail,
@@ -30,10 +30,10 @@ type InfoItem = {
 
 export default function PersonalInfoPage() {
 	const t = useTranslations('Jan03_PersonalInfo_d6k9')
-	const dispatch = useDispatch()
-	const { userData, loading, error } = useSelector(
-		(state: any) => state.userReducer,
-	)
+	const dispatch = useAppDispatch()
+	const userData = useAppSelector(selectUser)
+	const loading = useAppSelector(selectUserSaving)
+	const error = useAppSelector(selectUserError)
 	// State for tracking which field is being edited
 	const [editingField, setEditingField] = useState<string | null>(null)
 
@@ -102,7 +102,7 @@ export default function PersonalInfoPage() {
 		}
 
 		try {
-			await dispatch(updateUser(updatedData) as any)
+			await dispatch(updateUser(updatedData))
 			setEditingField(null)
 		} catch (err) {
 			console.error('Update failed:', err)

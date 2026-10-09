@@ -10,7 +10,7 @@ import SocialsList from '@/shared/SocialsList'
 import { ChevronDownIcon } from '@heroicons/react/24/solid'
 import Link from 'next/link'
 import LangDropdown from '@/app/(client-components)/(Header)/LangDropdown'
-import { useSession } from 'next-auth/react'
+import { SignUpButton, useAuth } from '@clerk/nextjs'
 import { footerLinks } from '@/constants/footerLinks'
 import { useTranslations } from '@/lib/i18n'
 
@@ -23,7 +23,7 @@ const NavMobile: React.FC<NavMobileProps> = ({
 	data = NAVIGATION_DEMO,
 	onClickClose,
 }) => {
-	const { data: session } = useSession()
+	const { isSignedIn } = useAuth()
 	const t = useTranslations('Jan03_NavMobile_x5y7')
 
 	const _renderMenuChild = (item: NavItemType) => {
@@ -130,16 +130,12 @@ const NavMobile: React.FC<NavMobileProps> = ({
 				{footerLinks.map(_renderItem)}
 			</ul>
 			<div
-				className={`"flex py-6" items-center justify-between px-5 ${!session && 'justify-end'}`}
+				className={`"flex py-6" items-center justify-between px-5 ${!isSignedIn && 'justify-end'}`}
 			>
-				{!session && (
-					<Link
-						className="inline-block"
-						href="/signup"
-						rel="noopener noreferrer"
-					>
+				{!isSignedIn && (
+					<SignUpButton mode="modal">
 						<ButtonPrimary>{t('Sign_Up')}</ButtonPrimary>
-					</Link>
+					</SignUpButton>
 				)}
 				{/* <LangDropdown
                     className="flex"

@@ -1,69 +1,55 @@
-export const dynamic = "force-dynamic";
+export const dynamic = 'force-dynamic'
 import { NextResponse } from 'next/server'
-import prisma from '@/lib/prisma'
 import getUserData from '@/app/api/user/getUserData'
+import { db, T, must, touch } from '@/lib/db'
+import { setActiveCompany } from '../activeCompany'
+
+const unauthenticated = () =>
+	NextResponse.json(
+		{ message: 'User not found or not authenticated' },
+		{ status: 401 },
+	)
 
 export async function GET() {
 	try {
-		// Get the current user
 		const userData = await getUserData()
+		if (!userData || !userData.id) return unauthenticated()
 
-		if (!userData || !userData.id) {
-			return NextResponse.json(
-				{ message: 'User not found or not authenticated' },
-				{ status: 401 },
+		const companies = must(
+			await db
+				.from(T.businesses)
+				.select('*')
+				.eq('creatorId', userData.id)
+				.order('isActive', { ascending: false })
+				.limit(1),
+		)
+		const company = companies?.[0]
+
+		if (!company) {
+			return NextResponse.json({ message: 'No companies found' }, { status: 404 })
+		}
+
+		// No active company yet: make the first one active
+		if (!company.isActive) {
+			must(
+				await db
+					.from(T.businesses)
+					.update(touch({ isActive: true }))
+					.eq('id', company.id),
 			)
 		}
 
-		// Find the active company for this user
-		const activeCompany = await prisma.business.findFirst({
-			where: {
-				creatorId: userData.id,
-				isActive: true,
-			},
-		})
-
-		// If no active company is found, get the first company
-		if (!activeCompany) {
-			const firstCompany = await prisma.business.findFirst({
-				where: {
-					creatorId: userData.id,
-				},
-			})
-
-			// If there's at least one company, set it as active
-			if (firstCompany) {
-				await prisma.business.update({
-					where: {
-						id: firstCompany.id,
-					},
-					data: {
-						isActive: true,
-					},
-				})
-
-				return NextResponse.json(firstCompany)
-			}
-
-			return NextResponse.json(
-				{ message: 'No companies found' },
-				{ status: 404 },
-			)
-		}
-
-		return NextResponse.json(activeCompany)
+		return NextResponse.json(company)
 	} catch (error) {
 		console.error('Error fetching active company:', error)
 		return NextResponse.json(
 			{ message: 'Error fetching active company' },
 			{ status: 500 },
 		)
-	} finally {
-		await prisma.$disconnect()
 	}
 }
 
-// Add a POST method to set a company as active
+// Set a company as active
 export async function POST(request: Request) {
 	try {
 		const { companyId } = await request.json()
@@ -75,37 +61,13 @@ export async function POST(request: Request) {
 			)
 		}
 
-		// Get the current user
 		const userData = await getUserData()
+		if (!userData || !userData.id) return unauthenticated()
 
-		if (!userData || !userData.id) {
-			return NextResponse.json(
-				{ message: 'User not found or not authenticated' },
-				{ status: 401 },
-			)
+		const updatedCompany = await setActiveCompany(userData.id, companyId)
+		if (!updatedCompany) {
+			return NextResponse.json({ message: 'Company not found' }, { status: 404 })
 		}
-
-		// First, set all companies for this user as inactive
-		await prisma.business.updateMany({
-			where: {
-				creatorId: userData.id,
-			},
-			data: {
-				isActive: false,
-			},
-		})
-
-		// Then, set the selected company as active
-		const updatedCompany = await prisma.business.update({
-			where: {
-				id: companyId,
-				creatorId: userData.id, // Ensure the company belongs to the user
-			},
-			data: {
-				isActive: true,
-			},
-		})
-
 		return NextResponse.json(updatedCompany)
 	} catch (error) {
 		console.error('Error setting active company:', error)
@@ -113,33 +75,21 @@ export async function POST(request: Request) {
 			{ message: 'Error setting active company' },
 			{ status: 500 },
 		)
-	} finally {
-		await prisma.$disconnect()
 	}
 }
 
-// Add a DELETE method to clear the active company
+// Clear the active company
 export async function DELETE() {
 	try {
-		// Get the current user
 		const userData = await getUserData()
+		if (!userData || !userData.id) return unauthenticated()
 
-		if (!userData || !userData.id) {
-			return NextResponse.json(
-				{ message: 'User not found or not authenticated' },
-				{ status: 401 },
-			)
-		}
-
-		// Set all companies for this user as inactive
-		await prisma.business.updateMany({
-			where: {
-				creatorId: userData.id,
-			},
-			data: {
-				isActive: false,
-			},
-		})
+		must(
+			await db
+				.from(T.businesses)
+				.update(touch({ isActive: false }))
+				.eq('creatorId', userData.id),
+		)
 
 		return NextResponse.json({ message: 'Active company cleared successfully' })
 	} catch (error) {
@@ -148,7 +98,5 @@ export async function DELETE() {
 			{ message: 'Error clearing active company' },
 			{ status: 500 },
 		)
-	} finally {
-		await prisma.$disconnect()
 	}
 }

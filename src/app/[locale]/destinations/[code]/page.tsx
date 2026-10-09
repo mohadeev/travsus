@@ -31,7 +31,7 @@ export default function DestinationPage({
 
 		const fetchCountryData = async () => {
 			try {
-				const apiUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/api/countries/${searchParams?.lcId}`
+				const apiUrl = `/api/countries/${searchParams?.lcId}`
 				console.log('Fetching from:', apiUrl)
 
 				const res = await fetch(apiUrl, {

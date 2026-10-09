@@ -13,17 +13,16 @@ import 'rc-slider/assets/index.css'
 import Footer from '@/components/Footer'
 import FooterNav from '@/components/FooterNav'
 import ThemeProvider from '../theme-provider'
-import { ReduxProvider } from './GlobalRedux/provider'
+import { ReduxProvider } from '@/store/ReduxProvider'
 import AuthProvider from './context/AuthProvider'
 import AuthWatcher from './context/AuthWatcher'
 import { usePathname } from 'next/navigation'
-import AuthModal from '@/components/AuthModal'
 
 import { Inter_Tight } from 'next/font/google'
 import Script from 'next/script'
 import { CombinedCookieConsent } from './privacy-policy/CombinedCookieConsent'
 import ConditionalComponent from '@/components/ConditionalComponent'
-import { useEffect } from 'react'
+import { Suspense, useEffect } from 'react'
 import { wakeUpServer } from '@/utils/wakeUpServer'
 // import createMailRelayUser from '@/utils/crm/createMailRelayUser'
 import NewsletterModal from './newsletter-modal'
@@ -56,11 +55,11 @@ export default function LocaleLayoutClient({
 	}, [])
 
 	return (
-		<ThemeProvider>
+		<body className=".theme-animals theme-animals overflow-auto bg-white text-base text-neutral-900 dark:bg-neutral-900 dark:text-neutral-200">
 			<AuthProvider>
-				<ReduxProvider>
-					<AuthWatcher />
-					<body className=".theme-animals theme-animals overflow-auto bg-white text-base text-neutral-900 dark:bg-neutral-900 dark:text-neutral-200">
+				<ThemeProvider>
+					<ReduxProvider>
+						<AuthWatcher />
 						{/* Google Tag Manager (noscript) — must be inside <body> */}
 						<noscript>
 							<iframe
@@ -71,10 +70,7 @@ export default function LocaleLayoutClient({
 							/>
 						</noscript>
 						<NewsletterModal />
-						<AuthModal />
 						<div className="overflow-auto">
-							{/* <CombinedCookieConsent /> */}
-							<AuthModal />
 							<TawkToWidget />
 
 							{/* <PlanTripModal isOpen={true} onClose={()=>{}}/> */}
@@ -92,10 +88,10 @@ export default function LocaleLayoutClient({
 							)}
 						</div>
 						<ClientCommons />
-					</body>
-				</ReduxProvider>
+					</ReduxProvider>
+				</ThemeProvider>
 			</AuthProvider>
-		</ThemeProvider>
+		</body>
 	)
 }
 

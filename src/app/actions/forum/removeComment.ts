@@ -1,21 +1,18 @@
 'use server'
 
-import { PrismaClient } from '@prisma/client'
 import getUserData from '@/app/api/user/getUserData'
-
-const prisma = new PrismaClient()
+import { db, T, must } from '@/lib/db'
 
 export async function removeComment(commentId: string) {
 	try {
-		const { id: userId }: any = await getUserData()
+		const { id: userId }: any = (await getUserData()) ?? {}
 		if (!userId) {
 			throw new Error('User not authenticated')
 		}
 
-		const comment = await prisma.forumComment.findUnique({
-			where: { id: commentId },
-			select: { authorId: true },
-		})
+		const comment = must(
+			await db.from(T.forumComments).select('authorId').eq('id', commentId).maybeSingle(),
+		)
 
 		if (!comment) {
 			throw new Error('Comment not found')
@@ -25,9 +22,9 @@ export async function removeComment(commentId: string) {
 			throw new Error('Not authorized to remove this comment')
 		}
 
-		await prisma.forumComment.delete({
-			where: { id: commentId },
-		})
+		// Replies stay, detached from the removed comment
+		must(await db.from(T.forumComments).update({ parentId: null }).eq('parentId', commentId))
+		must(await db.from(T.forumComments).delete().eq('id', commentId))
 
 		return { success: true }
 	} catch (error) {

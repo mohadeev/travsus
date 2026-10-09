@@ -1,50 +1,30 @@
-export const dynamic = "force-dynamic";
-import { placesClient } from '@/lib/prisma'
+export const dynamic = 'force-dynamic'
 import { NextRequest, NextResponse } from 'next/server'
+import { db, T, must } from '@/lib/db'
+import { GEO_CONTENT } from '@/lib/geo'
 
+const MAX_RESULTS = 10
 
 export async function GET(request: NextRequest) {
 	try {
-		const prisma = placesClient
-		const { searchParams } = new URL(request.url)
-		const query = searchParams.get('q')?.trim().toLowerCase() || ''
+		const query = new URL(request.url).searchParams.get('q')?.trim().toLowerCase() || ''
+		if (!query) return NextResponse.json([], { status: 200 })
 
-		if (!query) return NextResponse.json([], { status: 200 }) // Return empty if no query
+		// ~250 countries: load once and match any translation in code
+		const countries: any[] =
+			must(await db.from(T.countries).select(`code, ${GEO_CONTENT}`)) ?? []
 
-		// Optimized Query: Search directly inside translations
-		const countries = await prisma.country.findMany({
-			where: {
-				content: {
-					translations: {
-						some: {
-							text: { contains: query, mode: 'insensitive' },
-						},
-					},
-				},
-			},
-			select: {
-				code: true,
-				content: {
-					select: {
-						translations: {
-							where: { language: 'en-US' },
-							select: { text: true },
-						},
-					},
-				},
-			},
-			take: 10, // Limit results to 10 for performance
-		})
+		const locationData = countries
+			.filter((c) =>
+				c.content?.translations?.some((t: any) => t.text?.toLowerCase().includes(query)),
+			)
+			.slice(0, MAX_RESULTS)
+			.map((c) => {
+				const name =
+					c.content.translations.find((t: any) => t.language === 'en-US')?.text || 'N/A'
+				return { name, place_name: name, type: 'country', coordinates: null }
+			})
 
-		// Transform to frontend format
-		const locationData = countries.map(({ code, content }) => ({
-			name: content.translations[0]?.text || 'N/A',
-			place_name: content.translations[0]?.text || 'N/A',
-			type: 'country',
-			coordinates: null, // No coordinates needed
-		}))
-
-		console.log('Optimized locationData:', locationData)
 		return NextResponse.json(locationData, { status: 200 })
 	} catch (error) {
 		console.error('❌ Error fetching countries:', error)

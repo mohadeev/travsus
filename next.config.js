@@ -16,7 +16,6 @@ const nextConfig = {
 		serverActions: {
 			bodySizeLimit: '10mb',
 		},
-		missingSuspenseWithCSRBailout: false,
 		// Load handlebars from node_modules instead of bundling it (avoids require.extensions warning)
 		serverComponentsExternalPackages: ['handlebars'],
 	},

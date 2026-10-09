@@ -1,7 +1,6 @@
 'use client'
 
 import { useTranslations } from '@/lib/i18n'
-import { updateServiceState } from '@/app/[locale]/GlobalRedux/Features/creatingServiceSlice/creatingServiceSlice'
 import { useAuthAction } from '@/app/hooks/useAuthAction'
 import addAndRemoveToWishList from '@/utils/api-utils/addAndRemoveToWishList'
 import {
@@ -14,18 +13,18 @@ import {
 	Edit,
 	BadgeCheck,
 } from 'lucide-react'
-import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
-import { useSelector, useDispatch } from 'react-redux'
+import { useAppDispatch, useAppSelector } from '@/store/hooks'
+import { selectUser } from '@/store/slices/user'
+import { selectTourLiked, setTourLiked } from '@/store/slices/tourPage'
 import { useState, useRef, useEffect } from 'react'
 import { Motion, spring } from 'react-motion'
 import TourHeaderSkeleton from './TourHeaderSkeleton'
+import { useTourService } from '../TourServiceContext'
 
 const TourHeader = () => {
 	const t = useTranslations('Jan03_TourHeader_x9k2')
-	const dispatch = useDispatch()
-	const searchParams = useSearchParams()
-	const serviceId = searchParams.get('serviceId')
+	const dispatch = useAppDispatch()
 
 	// Share dropdown state
 	const [isDropdownOpen, setIsDropdownOpen] = useState(false)
@@ -33,12 +32,13 @@ const TourHeader = () => {
 	const timeoutRef = useRef<NodeJS.Timeout | null>(null)
 	const dropdownRef = useRef<HTMLDivElement>(null)
 
-	const service: any = useSelector(
-		(state: any) => state.creatingServiceSlice.service,
-	)
+	const service: any = useTourService()
+	// Saved state: a toggle made on this visit wins, otherwise the user's list
+	const savedList: string[] | undefined = useAppSelector(selectUser).savedList
+	const likedNow = useAppSelector(selectTourLiked(service.id))
+	const liked = likedNow ?? !!savedList?.includes(service.id)
 	const {
 		days,
-		liked,
 		rating,
 		reviewsCount,
 		recommendationPercentage,
@@ -81,18 +81,14 @@ const TourHeader = () => {
 
 	// Wishlist functionality
 	const handleAddToWishList = useAuthAction(async () => {
-		dispatch(updateServiceState({ path: 'service.liked', value: !liked }))
-		await addAndRemoveToWishList({ serviceId })
+		const setLiked = (value: boolean) =>
+			dispatch(setTourLiked({ id: service.id, liked: value }))
+		setLiked(!liked) // show it right away
+		await addAndRemoveToWishList({ serviceId: service.id })
 			.then((res: any) => {
-				if (res?.added === false || res?.added === true) {
-					dispatch(
-						updateServiceState({ path: 'service.liked', value: res?.added }),
-					)
-				}
+				if (typeof res?.added === 'boolean') setLiked(res.added)
 			})
-			.catch(() => {
-				dispatch(updateServiceState({ path: 'service.liked', value: !liked }))
-			})
+			.catch(() => setLiked(liked)) // undo
 	})
 
 	// Click outside handler for dropdown
@@ -254,7 +250,7 @@ const TourHeader = () => {
 				<div className="space-y-4 py-4">
 					{/* Title */}
 					<h1 className="text-2xl font-extrabold leading-tight text-black">
-						{String(title)}
+						{title}
 					</h1>
 
 					{/* Rating Section */}
@@ -296,35 +292,46 @@ const TourHeader = () => {
 			<div className="hidden md:block">
 				{/* Breadcrumb Navigation */}
 				<nav className="mb-3" aria-label="Breadcrumb">
-					<div className="flex items-center space-x-1 text-sm text-black/70">
-						{links.map(({ value, href }, index) => (
-							<div key={index} className="flex items-center">
-								{index > 0 && (
-									<ChevronRight className="mx-1 h-3 w-3 flex-shrink-0 text-black/50" />
-								)}
-								<Link
-									href={href}
-									className="font-medium transition-colors duration-200 hover:text-black hover:underline"
-								>
-									{String(value)}
-								</Link>
-							</div>
-						))}
-					</div>
+					<ol className="flex flex-wrap items-center text-sm text-black/70">
+						{links
+							.filter(({ value }) => value && value !== 'undefined')
+							.map(({ value, href }, index) => (
+								<li key={index} className="flex items-center">
+									{index > 0 && (
+										<ChevronRight
+											aria-hidden="true"
+											className="mx-1 h-3 w-3 flex-shrink-0 text-black/50"
+										/>
+									)}
+									{href && href !== '#' ? (
+										<Link
+											href={href}
+											className="font-medium transition-colors duration-200 hover:text-black hover:underline"
+										>
+											{value}
+										</Link>
+									) : (
+										<span className="font-medium">{value}</span>
+									)}
+								</li>
+							))}
+					</ol>
 				</nav>
 
 				{/* Back Button */}
-				<div className="mb-4">
-					<Link
-						href={`/destinations/${city?.toLowerCase()}/attractions`}
-						className="inline-flex items-center text-black/70 transition-colors duration-200 hover:text-black"
-					>
-						<ChevronLeft className="mr-1 h-4 w-4 text-black" />
-						<span className="text-sm font-medium underline">
-							{t('Discover_All_Things', { city: String(city) })}
-						</span>
-					</Link>
-				</div>
+				{city && (
+					<div className="mb-4">
+						<Link
+							href={`/destinations/${city.toLowerCase()}/attractions`}
+							className="inline-flex items-center text-black/70 transition-colors duration-200 hover:text-black"
+						>
+							<ChevronLeft className="mr-1 h-4 w-4 text-black" />
+							<span className="text-sm font-medium underline">
+								{t('Discover_All_Things', { city })}
+							</span>
+						</Link>
+					</div>
+				)}
 
 				{/* Main Header Content */}
 				<div className="space-y-4">
@@ -332,9 +339,13 @@ const TourHeader = () => {
 					<div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
 						{/* Title */}
 						<div className="min-w-0 flex-1">
-							<h1 className="text-2xl font-extrabold leading-tight text-black sm:text-3xl lg:text-4xl lg:leading-tight">
-								{String(title)}
-							</h1>
+							<p
+								role="heading"
+								aria-level={1}
+								className="text-2xl font-extrabold leading-tight text-black sm:text-3xl lg:text-4xl lg:leading-tight"
+							>
+								{title}
+							</p>
 						</div>
 
 						{/* Action Buttons */}

@@ -1,14 +1,12 @@
-export const dynamic = "force-dynamic";
+export const dynamic = 'force-dynamic'
 import { type NextRequest, NextResponse } from 'next/server'
-import prisma from '@/prisma'
 import getUserData from '@/app/api/user/getUserData'
+import { db, T, must, asDate } from '@/lib/db'
+import { getBusinessId } from './ownTour'
 
 export async function GET(request: NextRequest) {
 	try {
-		// Get the current user
 		const userData = await getUserData()
-
-		// Check if user is authenticated
 		if (!userData || !userData.id) {
 			return NextResponse.json(
 				{ message: 'User not found or not authenticated' },
@@ -16,54 +14,29 @@ export async function GET(request: NextRequest) {
 			)
 		}
 
-		// Get the business associated with this user
-		const business = await prisma.business.findFirst({
-			where: {
-				creatorId: userData.id,
-			},
-		})
-
-		// If no business found, return empty array
-		if (!business) {
+		const businessId = await getBusinessId(userData.id)
+		if (!businessId) {
 			return NextResponse.json({ tours: [] })
 		}
 
-		// Get search query from URL if present
 		const searchQuery = request.nextUrl.searchParams.get('search') || ''
 
-		// Get all tours associated with this business
-		const tours = await prisma.tour.findMany({
-			where: {
-				businessId: business.id,
-				...(searchQuery
-					? {
-							name: {
-								contains: searchQuery,
-								mode: 'insensitive',
-							},
-						}
-					: {}),
-			},
-			include: {
-				bookings: {
-					select: {
-						id: true,
-					},
-				},
-			},
-			orderBy: {
-				createdAt: 'desc',
-			},
-		})
+		let query = db
+			.from(T.tours)
+			.select(`id, name, price, updated, createdAt, bookings:${T.bookings}(count)`)
+			.eq('businessId', businessId)
+			.order('createdAt', { ascending: false })
+		if (searchQuery) query = query.ilike('name', `%${searchQuery.replace(/[%_]/g, '\\$&')}%`)
 
-		// Format the tours data for the frontend
+		const tours: any[] = must(await query) ?? []
+
 		const formattedTours = tours.map((tour) => ({
 			id: tour.id,
 			name: tour.name || 'Untitled Tour',
 			price: tour.price || '$0',
 			status: tour.updated ? 'active' : 'draft',
-			createdAt: tour.createdAt.toISOString().split('T')[0],
-			bookings: tour.bookings.length,
+			createdAt: asDate(tour.createdAt)?.toISOString().split('T')[0],
+			bookings: tour.bookings?.[0]?.count ?? 0,
 		}))
 
 		return NextResponse.json({ tours: formattedTours })
@@ -73,7 +46,5 @@ export async function GET(request: NextRequest) {
 			{ message: 'Error fetching tours' },
 			{ status: 500 },
 		)
-	} finally {
-		await prisma.$disconnect()
 	}
 }

@@ -1,23 +1,10 @@
 export const dynamic = "force-dynamic";
 import { type NextRequest, NextResponse } from 'next/server'
 import stripe from '@/lib/stripe'
-import prisma from '@/lib/prisma'
+import { db, T, must, touch, withMeta } from '@/lib/db'
 import getUserData from '../user/getUserData'
 
 export async function GET(request: NextRequest) {
-	//async function removeAllPaymentMethods() {
-	//   try {
-	//     const deleted = await prisma.paymentMethod.deleteMany({});
-	//     console.log(`Deleted ${deleted.count} payment methods.`);
-	//   } catch (error) {
-	//     console.error('Error deleting payment methods:', error);
-	//   } finally {
-	//     await prisma.$disconnect();
-	//   }
-	// }
-
-	// removeAllPaymentMethods();
-
 	console.log('GET /api/payment-methods - Fetching payment methods')
 	const userData = await getUserData({})
 	if (!userData) {
@@ -36,18 +23,12 @@ export async function GET(request: NextRequest) {
 	}
 
 	try {
-		const paymentMethods = await prisma.paymentMethod.findMany({
-			where: { userId },
-			select: {
-				id: true,
-				stripePaymentMethodId: true,
-				last4: true,
-				exp_month: true,
-				exp_year: true,
-				brand: true,
-				isDefault: true,
-			},
-		})
+		const paymentMethods = must(
+			await db
+				.from(T.paymentMethods)
+				.select('id, stripePaymentMethodId, last4, exp_month, exp_year, brand, isDefault')
+				.eq('userId', userId),
+		)
 
 		console.log(
 			`GET /api/payment-methods - Successfully fetched ${paymentMethods.length} payment methods for user ${userId}`,
@@ -86,10 +67,13 @@ export async function POST(request: NextRequest) {
 
 	try {
 		// Step 1: Get user data
-		const user = await prisma.user.findUnique({
-			where: { id: userId },
-			select: { id: true, stripeCustomerId: true },
-		})
+		const user = must(
+			await db
+				.from(T.users)
+				.select('id, stripeCustomerId')
+				.eq('id', userId)
+				.maybeSingle(),
+		)
 
 		let stripeCustomerId = user?.stripeCustomerId
 
@@ -110,10 +94,12 @@ export async function POST(request: NextRequest) {
 				)
 
 				// Clear invalid customer ID from database
-				await prisma.user.update({
-					where: { id: userId },
-					data: { stripeCustomerId: null },
-				})
+				must(
+					await db
+						.from(T.users)
+						.update(touch({ stripeCustomerId: null }))
+						.eq('id', userId),
+				)
 
 				stripeCustomerId = null
 			}
@@ -132,10 +118,12 @@ export async function POST(request: NextRequest) {
 
 				stripeCustomerId = customer.id
 
-				await prisma.user.update({
-					where: { id: userId },
-					data: { stripeCustomerId: stripeCustomerId },
-				})
+				must(
+					await db
+						.from(T.users)
+						.update(touch({ stripeCustomerId }))
+						.eq('id', userId),
+				)
 				console.log(
 					`POST /api/payment-methods - Created new Stripe customer ${stripeCustomerId}`,
 				)
@@ -244,10 +232,12 @@ export async function POST(request: NextRequest) {
 				})
 
 				// Update database with new customer ID
-				await prisma.user.update({
-					where: { id: userId },
-					data: { stripeCustomerId: newCustomer.id },
-				})
+				must(
+					await db
+						.from(T.users)
+						.update(touch({ stripeCustomerId: newCustomer.id }))
+						.eq('id', userId),
+				)
 
 				// Try attaching to new customer
 				await stripe.paymentMethods.attach(paymentMethodId, {
@@ -290,15 +280,14 @@ export async function POST(request: NextRequest) {
 		const { last4, brand, exp_month, exp_year } = paymentMethod.card
 
 		// Step 8: Check for existing payment method in database
-		const existingPaymentMethod = await prisma.paymentMethod.findFirst({
-			where: {
-				userId,
-				last4,
-				brand,
-				exp_month,
-				exp_year,
-			},
-		})
+		const existingPaymentMethod = must(
+			await db
+				.from(T.paymentMethods)
+				.select('id, stripePaymentMethodId, last4, brand, isDefault')
+				.match({ userId, last4, brand, exp_month, exp_year })
+				.limit(1)
+				.maybeSingle(),
+		)
 
 		if (existingPaymentMethod) {
 			console.log(
@@ -318,16 +307,22 @@ export async function POST(request: NextRequest) {
 		}
 
 		// Step 9: Save payment method to database
-		const savedPaymentMethod = await prisma.paymentMethod.create({
-			data: {
-				stripePaymentMethodId: paymentMethodId,
-				last4,
-				brand,
-				exp_month,
-				exp_year,
-				userId,
-			},
-		})
+		const savedPaymentMethod = must(
+			await db
+				.from(T.paymentMethods)
+				.insert(
+					withMeta({
+						stripePaymentMethodId: paymentMethodId,
+						last4,
+						brand,
+						exp_month,
+						exp_year,
+						userId,
+					}),
+				)
+				.select('id, stripePaymentMethodId, last4, brand, isDefault')
+				.single(),
+		)
 
 		console.log(
 			`POST /api/payment-methods - Successfully saved new payment method for user ${userId}`,

@@ -4,12 +4,13 @@ export const dynamic = "force-dynamic";
 import { useState } from 'react'
 import Link from 'next/link'
 import { Copy, Gift, ChevronRight } from 'lucide-react'
-import { useSelector } from 'react-redux'
+import { useAppSelector } from '@/store/hooks'
+import { selectUser } from '@/store/slices/user'
 import { useTranslations } from '@/lib/i18n'
 
 export default function CreditsAndCouponsPage() {
 	const t = useTranslations('CreditsAndCoupons')
-	const { userData } = useSelector((state: any) => state.userReducer)
+	const userData = useAppSelector(selectUser)
 
 	const [copied, setCopied] = useState(false)
 

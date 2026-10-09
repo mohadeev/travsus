@@ -1,37 +1,27 @@
 'use client'
-import { SessionProvider, signOut, useSession } from 'next-auth/react'
-import { Provider as ReduxProvider, useDispatch } from 'react-redux'
-import { AppProps } from 'next/app'
+// Keeps the Redux user in sync with the Clerk session.
+import { useAuth } from '@clerk/nextjs'
 import { useEffect } from 'react'
-import {
-	clearUser,
-	setUser,
-} from '../GlobalRedux/Features/userReducer/userReducer'
+import { useAppDispatch } from '@/store/hooks'
+import { clearUser, setUser } from '@/store/slices/user'
 import basedGetUrlRequestLogedIn from '@/app/utils/basedGetUrlRequestLogedIn'
-// import basedGetUrlRequestLogedIn from "../utils/basedGetUrlRequestLogedIn";
 
 function AuthWatcher() {
-	const { data: session, status } = useSession()
-	const dispatch = useDispatch()
+	const { isLoaded, isSignedIn, userId } = useAuth()
+	const dispatch = useAppDispatch()
 
 	useEffect(() => {
-		if (status === 'authenticated' && session?.user) {
-			;(async () => {
-				basedGetUrlRequestLogedIn('/api/user/userData').then((res) => {
-					const message = res?.message
-					const user = res?.user
-					if (user?.id && message) {
-						dispatch(setUser(user))
-					} else {
-						signOut()
-						dispatch(clearUser())
-					}
-				})
-			})()
-		} else if (status === 'unauthenticated') {
+		if (!isLoaded) return
+		if (!isSignedIn) {
 			dispatch(clearUser())
+			return
 		}
-	}, [session, status, dispatch])
+		// Loads (or on first sign-in creates) the TRAVSUS account
+		basedGetUrlRequestLogedIn('/api/user/userData').then((res) => {
+			if (res?.user?.id) dispatch(setUser(res.user))
+			else dispatch(clearUser())
+		})
+	}, [isLoaded, isSignedIn, userId, dispatch])
 
 	return null
 }

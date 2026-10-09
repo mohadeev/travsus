@@ -1,26 +1,21 @@
-export const dynamic = "force-dynamic";
-import { useSession } from 'next-auth/react'
-import { PrismaClient } from '@prisma/client'
-import { NextResponse, NextRequest } from 'next/server'
-import { authOptions } from '../auth/[...nextauth]/authOptions'
-import { getServerSession } from 'next-auth'
+export const dynamic = 'force-dynamic'
+import { NextResponse } from 'next/server'
+import { getSession } from '@/lib/session'
+import { db, T, must, touch } from '@/lib/db'
+import { safeUser } from '@/lib/users'
 
-const prisma = new PrismaClient()
-
-// Función PUT para actualizar datos de usuario
+// Update the signed-in user's profile
 export async function POST(req: Request) {
 	try {
-		const session: any = await getServerSession(authOptions)
+		const session: any = await getSession()
 		const emailSession = session?.user?.email
-		if (!session || !session?.user?.email) {
+		if (!emailSession) {
 			return NextResponse.json(
 				{ message: 'Not authenticated' },
 				{ status: 401 },
 			)
 		}
-		const body = await req.json()
 		const {
-			email,
 			gender,
 			username,
 			dateOfBirth,
@@ -29,26 +24,31 @@ export async function POST(req: Request) {
 			about,
 			lastname,
 			firstname,
-		} = body
+		} = await req.json()
 
-		// Actualiza el usuario en la base de datos
-		const updatedUser = await prisma.user.update({
-			where: { email: emailSession },
-			data: {
-				username,
-				phone,
-				accountData: {
-					lastname,
-					firstname,
-					gender,
-					dateOfBirth,
-					address,
-					about,
-				},
-			},
-		})
+		const updatedUser = must(
+			await db
+				.from(T.users)
+				.update(
+					touch({
+						username,
+						phone,
+						accountData: {
+							lastname,
+							firstname,
+							gender,
+							dateOfBirth,
+							address,
+							about,
+						},
+					}),
+				)
+				.eq('email', emailSession)
+				.select('*')
+				.single(),
+		)
 
-		return NextResponse.json(updatedUser, { status: 200 })
+		return NextResponse.json(safeUser(updatedUser), { status: 200 })
 	} catch (error) {
 		console.error('Error updating user data:', error)
 		return NextResponse.json(
@@ -57,5 +57,3 @@ export async function POST(req: Request) {
 		)
 	}
 }
-
-// Manejo de otros métodos HTTP no permitidos

@@ -309,32 +309,49 @@ export default function TourItineraryWithMap({
 					/>
 				</div>
 			</div>
-			{/* SEO-friendly hidden content - visible to search engines but not to users */}
-			<div className="sr-only">
-				<h2>
-					{title || t('Desert_Tour')} - {t('Complete_Itinerary')}
-				</h2>
-				{days.map((day, index) => (
-					<div key={`seo-day-${index}`}>
-						<h3>
-							{t('Day_Heading')} {index + 1}: {day.name}
-						</h3>
-						<p>{day.description}</p>
-						{day.stops &&
-							day.stops.map((stop, stopIndex) => (
-								<div key={`seo-stop-${index}-${stopIndex}`}>
-									<h4>{stop.name}</h4>
-									<p>{stop.description}</p>
-									{stop.duration && (
-										<p>
-											{t('Duration_Label')} {stop.duration}
-										</p>
-									)}
-								</div>
-							))}
-					</div>
-				))}
-			</div>
+			{/* Day-by-day text: visible, collapsible, and fully in the HTML */}
+			<ol className="divide-y border-t">
+				{days.map((day, index) => {
+					const label = /^(day|día|jour|tag|giorno|dia)\s*\d/i.test(
+						day.name || '',
+					)
+						? day.name
+						: `${t('Day_Heading')} ${index + 1}: ${day.name}`
+					return (
+						<li key={`day-${index}`}>
+							<details className="group px-6 py-4" open={index === 0}>
+								<summary className="flex cursor-pointer list-none items-center justify-between gap-4 [&::-webkit-details-marker]:hidden">
+									<h3 className="font-semibold">{label}</h3>
+									<span className="text-sm text-black/60 group-open:hidden">
+										+
+									</span>
+									<span className="hidden text-sm text-black/60 group-open:inline">
+										−
+									</span>
+								</summary>
+								{day.description && (
+									<p className="mt-3 whitespace-pre-line text-black">
+										{day.description}
+									</p>
+								)}
+								{day.stops?.map((stop, stopIndex) => (
+									<div key={`stop-${index}-${stopIndex}`} className="mt-3">
+										<h4 className="font-medium">{stop.name}</h4>
+										{stop.description && (
+											<p className="text-black">{stop.description}</p>
+										)}
+										{stop.duration && (
+											<p className="text-sm text-black/70">
+												{t('Duration_Label')} {stop.duration}
+											</p>
+										)}
+									</div>
+								))}
+							</details>
+						</li>
+					)
+				})}
+			</ol>
 		</div>
 	)
 }

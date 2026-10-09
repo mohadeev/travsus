@@ -1,10 +1,8 @@
 export const dynamic = "force-dynamic";
 import { NextRequest, NextResponse } from 'next/server'
-import { PrismaClient } from '@prisma/client'
 import { v2 as cloudinary } from 'cloudinary'
 import getUserData from '@/app/api/user/getUserData'
-
-const prisma = new PrismaClient()
+import { db, T, must, newId } from '@/lib/db'
 
 cloudinary.config({
 	cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -15,6 +13,12 @@ cloudinary.config({
 export async function POST(request: NextRequest) {
 	try {
 		const { id: userId }: any = (await getUserData()) || {}
+		if (!userId) {
+			return NextResponse.json(
+				{ success: false, error: 'Not authenticated' },
+				{ status: 401 },
+			)
+		}
 		const formData = await request.formData()
 		const postId = formData.get('id') as string | null
 		const title = formData.get('title') as string
@@ -22,39 +26,13 @@ export async function POST(request: NextRequest) {
 		const excerpt = formData.get('excerpt') as string
 		const byJson = formData.get('byJson') as string
 		const translations = formData.get('translations') as any
-		console.log('----------------------------------------------------')
-		console.log('----------------------------------------------------')
-		console.log('----------------------------------------------------')
-		console.log('----------------------------------------------------')
-		console.log('postId:', postId)
-		console.log('----------------------------------------------------')
-		console.log('----------------------------------------------------')
-		console.log('----------------------------------------------------')
-		console.log('----------------------------------------------------')
 		let post
 
-		if (byJson === 'true') {
-			// Update existing post
-			post = await prisma.post.update({
-				where: { id: postId },
-				data: {
-					translations: JSON.parse(translations),
-				},
-			})
-			return NextResponse.json({ success: true, post })
-		}
-		const tags = (formData.get('tags') as string)
-			?.split(',')
-			?.map((tag) => tag.trim())
-		const newImages = formData.getAll('newImages') as File[]
-		const imageIds =
-			(formData.get('imageIds') as string)?.split(',').filter(Boolean) || []
-
+		// Only the author can edit an existing post
 		if (postId) {
-			const existingPost = await prisma.post.findUnique({
-				where: { id: postId },
-				select: { authorId: true },
-			})
+			const existingPost = must(
+				await db.from(T.posts).select('authorId').eq('id', postId).maybeSingle(),
+			)
 
 			if (!existingPost || existingPost.authorId !== userId) {
 				return NextResponse.json(
@@ -64,12 +42,36 @@ export async function POST(request: NextRequest) {
 			}
 		}
 
+		if (byJson === 'true') {
+			if (!postId) {
+				return NextResponse.json(
+					{ success: false, error: 'Post ID is required' },
+					{ status: 400 },
+				)
+			}
+			post = must(
+				await db
+					.from(T.posts)
+					.update({ translations: JSON.parse(translations) })
+					.eq('id', postId)
+					.select('*')
+					.single(),
+			)
+			return NextResponse.json({ success: true, post })
+		}
+		const tags = (formData.get('tags') as string)
+			?.split(',')
+			?.map((tag) => tag.trim())
+		const newImages = formData.getAll('newImages') as File[]
+		const imageIds =
+			(formData.get('imageIds') as string)?.split(',').filter(Boolean) || []
+
 		const postData: any = {
 			title,
 			content,
 			excerpt,
 			tags,
-			author: { connect: { id: userId } },
+			authorId: userId,
 		}
 
 		// Handle new image uploads
@@ -106,21 +108,29 @@ export async function POST(request: NextRequest) {
 
 		if (postId) {
 			// Update existing post
-			post = await prisma.post.update({
-				where: { id: postId },
-				data: {
-					...postData,
-					imageIds: updatedImageIds,
-				},
-			})
+			post = must(
+				await db
+					.from(T.posts)
+					.update({ ...postData, imageIds: updatedImageIds })
+					.eq('id', postId)
+					.select('*')
+					.single(),
+			)
 		} else {
-			// Create new post
-			post = await prisma.post.create({
-				data: {
-					...postData,
-					imageIds: updatedImageIds,
-				},
-			})
+			// Create new post (Post has createdAt but no updatedAt column)
+			post = must(
+				await db
+					.from(T.posts)
+					.insert({
+						id: newId(),
+						createdAt: new Date().toISOString(),
+						translations: [],
+						...postData,
+						imageIds: updatedImageIds,
+					})
+					.select('*')
+					.single(),
+			)
 		}
 
 		return NextResponse.json({ success: true, post })

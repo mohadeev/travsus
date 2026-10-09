@@ -1,62 +1,64 @@
 'use server'
 
-import { PrismaClient } from '@prisma/client'
 import getUserData from '@/app/api/user/getUserData'
+import { db, T, must, touch } from '@/lib/db'
 
-const prisma = new PrismaClient()
+const add = (ids: string[], id: string) => (ids.includes(id) ? ids : [...ids, id])
+const remove = (ids: string[], id: string) => ids.filter((x) => x !== id)
 
 export async function updateCommentVotes(
 	commentId: string,
 	action: 'like' | 'dislike' | 'unlike' | 'undislike',
 ) {
 	try {
-		const { id: userId }: any = await getUserData()
+		const { id: userId }: any = (await getUserData()) ?? {}
 		if (!userId) {
 			throw new Error('User not authenticated')
 		}
 
-		const comment = await prisma.forumComment.findUnique({
-			where: { id: commentId },
-			include: { likedBy: true, dislikedBy: true },
-		})
+		const comment = must(
+			await db
+				.from(T.forumComments)
+				.select('likedByIds, dislikedByIds')
+				.eq('id', commentId)
+				.maybeSingle(),
+		)
 
 		if (!comment) {
 			throw new Error('Comment not found')
 		}
 
-		let updateData: any = {}
+		let likedByIds: string[] = comment.likedByIds ?? []
+		let dislikedByIds: string[] = comment.dislikedByIds ?? []
 
 		switch (action) {
 			case 'like':
-				updateData = {
-					likedBy: { connect: { id: userId } },
-					dislikedBy: { disconnect: { id: userId } },
-				}
+				likedByIds = add(likedByIds, userId)
+				dislikedByIds = remove(dislikedByIds, userId)
 				break
 			case 'dislike':
-				updateData = {
-					dislikedBy: { connect: { id: userId } },
-					likedBy: { disconnect: { id: userId } },
-				}
+				dislikedByIds = add(dislikedByIds, userId)
+				likedByIds = remove(likedByIds, userId)
 				break
 			case 'unlike':
-				updateData = { likedBy: { disconnect: { id: userId } } }
+				likedByIds = remove(likedByIds, userId)
 				break
 			case 'undislike':
-				updateData = { dislikedBy: { disconnect: { id: userId } } }
+				dislikedByIds = remove(dislikedByIds, userId)
 				break
 		}
 
-		const updatedComment = await prisma.forumComment.update({
-			where: { id: commentId },
-			data: updateData,
-			include: { likedBy: true, dislikedBy: true },
-		})
+		must(
+			await db
+				.from(T.forumComments)
+				.update(touch({ likedByIds, dislikedByIds }))
+				.eq('id', commentId),
+		)
 
 		return {
 			success: true,
-			likes: updatedComment.likedBy.length,
-			dislikes: updatedComment.dislikedBy.length,
+			likes: likedByIds.length,
+			dislikes: dislikedByIds.length,
 		}
 	} catch (error) {
 		console.error('Error updating comment votes:', error)

@@ -4,8 +4,8 @@ import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
 import { useState, useEffect } from 'react'
-import { updateBookingLineItems } from '@/app/[locale]/GlobalRedux/Features/bookingSlice/bookingSlice'
-import { useDispatch } from 'react-redux'
+import { useAppDispatch } from '@/store/hooks'
+import { setLineItems } from '@/store/slices/booking'
 import confetti from 'canvas-confetti'
 import DiscountSuccessModal from './DiscountSuccessModal'
 import { useTranslations } from '@/lib/i18n'
@@ -20,7 +20,7 @@ export default function PromoCodeForm() {
 	const [showConfetti, setShowConfetti] = useState(false)
 	const [showModal, setShowModal] = useState(false)
 	const [discountAmount, setDiscountAmount] = useState(0)
-	const dispatch = useDispatch()
+	const dispatch = useAppDispatch()
 
 	// Define custom shapes
 	const getCustomShapes = () => {
@@ -117,11 +117,7 @@ export default function PromoCodeForm() {
 			}
 
 			if (data) {
-				dispatch(
-					updateBookingLineItems({
-						value: data.lineItems,
-					}),
-				)
+				dispatch(setLineItems(data.lineItems))
 
 				// Get the discount amount from the last line item
 				if (data.lineItems && data.lineItems.length > 0) {

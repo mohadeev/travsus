@@ -2,7 +2,8 @@
 import type React from 'react'
 import { useState, useEffect } from 'react'
 import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js'
-import { useSelector } from 'react-redux'
+import { useAppSelector } from '@/store/hooks'
+import { selectBookingStatus } from '@/store/slices/booking'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { Alert } from '@/components/ui/alert'
 import Spinner from '@/components/ui/Spinner'
@@ -45,7 +46,7 @@ const CustomStripeForm: React.FC<CustomStripeFormProps> = ({
 	const [clientSecret, setClientSecret] = useState<string | null>(null)
 	const [paymentConfirmed, setPaymentConfirmed] = useState<boolean>(false)
 	const newTotalAmount = totalAmount(booking?.lineItems)
-	const { status } = useSelector((state: any) => state.bookingSlice)
+	const status = useAppSelector(selectBookingStatus)
 	const { tour }: any = booking
 	const [currentStatus, setCurrentStatus] = useState('')
 

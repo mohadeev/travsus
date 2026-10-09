@@ -3,32 +3,28 @@ import { useState } from 'react'
 import ButtonPrimary from '@/shared/ButtonPrimary'
 import converSelectedDateToString from '@/utils/converSelectedDateToString'
 import ModalReserveMobile from './ModalReserveMobile'
-import { useDispatch, useSelector } from 'react-redux'
+import { useAppDispatch, useAppSelector } from '@/store/hooks'
+import { selectBooking, totalOf } from '@/store/slices/booking'
 import { formatCurrency } from '@/utils/formatCurrency'
 import { useTranslations } from '@/lib/i18n'
 import { useLocale } from 'next-intl'
 import locales from '@/lib/dateFnsLocales'
 import { registerLocale } from 'react-datepicker'
 import moment from 'moment'
-import { mobileFooterStickyToggleHanlder } from '@/app/[locale]/GlobalRedux/Features/overlaySlice/overlaySlice'
+import { setMobileReserveOpen } from '@/store/slices/ui'
+import { useTourService } from '../TourServiceContext'
 
 const MobileFooterSticky = () => {
 	const t = useTranslations('Jan03_MobileFooterSticky_m4k7')
 
-	const { booking, status } = useSelector((state: any) => state.bookingSlice)
-	const { guests, lineItems, accommodation, transport, bookOwnHotels } = booking
+	const { guests, lineItems } = useAppSelector(selectBooking)
 	const totalGuests: number = guests?.guestAdults + guests?.guestChildren
 	const {
 		name: title,
 		price,
 		days,
-	}: any = useSelector((state: any) => state.creatingServiceSlice.service)
-	const filteredLineItems = lineItems?.filter(
-		({ includeInTotal }: any) => includeInTotal === true,
-	)
-	const totalAmount = filteredLineItems.reduce((total: any, item: any) => {
-		return total + item.totalPrice
-	}, 0)
+	}: any = useTourService()
+	const totalAmount = totalOf(lineItems)
 	const priceStart = totalAmount / totalGuests
 	const locale = useLocale()
 	// console.log('locale:')
@@ -47,10 +43,10 @@ const MobileFooterSticky = () => {
 			.toDate(),
 	)
 	//
-	const dispatch = useDispatch()
+	const dispatch = useAppDispatch()
 	const haneleOpen = (openModal: any) => {
 		openModal()
-		dispatch(mobileFooterStickyToggleHanlder({ value: true }))
+		dispatch(setMobileReserveOpen(true))
 	}
 	return (
 		<>

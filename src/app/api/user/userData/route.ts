@@ -1,42 +1,41 @@
-export const dynamic = "force-dynamic";
-import prisma from '@/prisma'
+export const dynamic = 'force-dynamic'
 import { NextRequest, NextResponse } from 'next/server'
-import { getServerSession } from 'next-auth/next'
-import { authOptions } from '../../auth/[...nextauth]/authOptions'
-import currentServerUser from '../currentServerUser'
+import { getSessionUser } from '@/lib/session'
+import { db, T, must } from '@/lib/db'
+import { safeUser } from '@/lib/users'
 import { createReferralLink } from './createReferralLink'
-// import { createReferralLink } from './createReferralLink' // import the function
 
 export async function GET(request: NextRequest) {
 	try {
-		const session: any = await getServerSession(authOptions)
-
-		if (!session || !session?.user?.email) {
+		// Creates the account on the first Clerk sign-in
+		const sessionUser = await getSessionUser()
+		if (!sessionUser) {
 			return NextResponse.json(
 				{ message: 'Not authenticated' },
 				{ status: 401 },
 			)
 		}
 
-		const user: any = await prisma.user.findUnique({
-			where: { email: session.user.email },
-			include: { referralLinks: true }, // fetch existing referral links
-		})
+		const user: any = must(
+			await db
+				.from(T.users)
+				.select(`*, referralLinks:${T.referralLinks}(*)`)
+				.eq('id', sessionUser.id)
+				.maybeSingle(),
+		)
 
 		if (!user) {
 			return NextResponse.json({ message: 'User not found' }, { status: 404 })
 		}
 
-		// Check if user already has a referral link
+		// Create a referral link the first time
 		let referralLink = user.referralLinks?.[0]
-
 		if (!referralLink) {
-			// Create a new referral link if none exists
 			referralLink = await createReferralLink(user.id)
 			user.referralLink = referralLink
 		}
 		return NextResponse.json({
-			user,
+			user: safeUser(user),
 			referralLink,
 			message: 'user_found',
 		})

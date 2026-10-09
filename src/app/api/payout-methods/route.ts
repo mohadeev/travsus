@@ -1,6 +1,6 @@
 export const dynamic = "force-dynamic";
 import { type NextRequest, NextResponse } from "next/server"
-import prisma from "@/lib/prisma"
+import { db, T, must, touch, withMeta } from "@/lib/db"
 import getUserData from "../user/getUserData"
 
 export async function GET(request: NextRequest) {
@@ -17,21 +17,12 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    const payoutMethods = await prisma.payoutMethod.findMany({
-      where: { userId },
-      select: {
-        id: true,
-        type: true,
-        email: true,
-        accountHolderName: true,
-        accountNumber: true,
-        bankName: true,
-        country: true,
-        currency: true,
-        isDefault: true,
-        createdAt: true,
-      },
-    })
+    const payoutMethods = must(
+      await db
+        .from(T.payoutMethods)
+        .select("id, type, email, accountHolderName, accountNumber, bankName, country, currency, isDefault, createdAt")
+        .eq("userId", userId),
+    )
 
     console.log(
       `GET /api/payout-methods - Successfully fetched ${payoutMethods.length} payout methods for user ${userId}`,
@@ -76,37 +67,48 @@ export async function POST(request: NextRequest) {
 
   try {
     // Check if this is the first payout method (should be default)
-    const existingMethodsCount = await prisma.payoutMethod.count({
-      where: { userId },
-    })
+    const { count, error: countError } = await db
+      .from(T.payoutMethods)
+      .select("id", { count: "exact", head: true })
+      .eq("userId", userId)
+    if (countError) throw new Error(countError.message)
+    const existingMethodsCount = count ?? 0
 
     const isDefault = existingMethodsCount === 0 || payoutData.isDefault === true
 
     // If setting as default, unset any existing default
     if (isDefault && existingMethodsCount > 0) {
-      await prisma.payoutMethod.updateMany({
-        where: { userId, isDefault: true },
-        data: { isDefault: false },
-      })
+      must(
+        await db
+          .from(T.payoutMethods)
+          .update(touch({ isDefault: false }))
+          .match({ userId, isDefault: true }),
+      )
     }
 
     // Create the payout method
-    const payoutMethod = await prisma.payoutMethod.create({
-      data: {
-        userId,
-        type: payoutData.type,
-        email: payoutData.email,
-        accountHolderName: payoutData.accountHolderName,
-        accountNumber: payoutData.accountNumber,
-        bankName: payoutData.bankName,
-        swiftCode: payoutData.swiftCode,
-        iban: payoutData.iban,
-        routingNumber: payoutData.routingNumber,
-        country: payoutData.country,
-        currency: payoutData.currency,
-        isDefault,
-      },
-    })
+    const payoutMethod = must(
+      await db
+        .from(T.payoutMethods)
+        .insert(
+          withMeta({
+            userId,
+            type: payoutData.type,
+            email: payoutData.email,
+            accountHolderName: payoutData.accountHolderName,
+            accountNumber: payoutData.accountNumber,
+            bankName: payoutData.bankName,
+            swiftCode: payoutData.swiftCode,
+            iban: payoutData.iban,
+            routingNumber: payoutData.routingNumber,
+            country: payoutData.country,
+            currency: payoutData.currency,
+            isDefault,
+          }),
+        )
+        .select("*")
+        .single(),
+    )
 
     console.log(`POST /api/payout-methods - Successfully saved new payout method for user ${userId}`)
     return NextResponse.json({
@@ -138,9 +140,9 @@ export async function DELETE(request: NextRequest) {
 
   try {
     // Find the payout method to check if it belongs to the user
-    const payoutMethod = await prisma.payoutMethod.findUnique({
-      where: { id },
-    })
+    const payoutMethod = must(
+      await db.from(T.payoutMethods).select("id, userId, isDefault").eq("id", id).maybeSingle(),
+    )
 
     if (!payoutMethod) {
       return NextResponse.json({ message: "Payout method not found" }, { status: 404 })
@@ -152,32 +154,29 @@ export async function DELETE(request: NextRequest) {
 
     // If this is the default method, we need to check if there are other methods
     if (payoutMethod.isDefault) {
-      const count = await prisma.payoutMethod.count({
-        where: { userId },
-      })
+      // Make another method the default, if there is one
+      const anotherMethod = must(
+        await db
+          .from(T.payoutMethods)
+          .select("id")
+          .eq("userId", userId)
+          .neq("id", id)
+          .limit(1)
+          .maybeSingle(),
+      )
 
-      if (count > 1) {
-        // Find another method to set as default
-        const anotherMethod = await prisma.payoutMethod.findFirst({
-          where: {
-            userId,
-            id: { not: id },
-          },
-        })
-
-        if (anotherMethod) {
-          await prisma.payoutMethod.update({
-            where: { id: anotherMethod.id },
-            data: { isDefault: true },
-          })
-        }
+      if (anotherMethod) {
+        must(
+          await db
+            .from(T.payoutMethods)
+            .update(touch({ isDefault: true }))
+            .eq("id", anotherMethod.id),
+        )
       }
     }
 
     // Delete the payout method
-    await prisma.payoutMethod.delete({
-      where: { id },
-    })
+    must(await db.from(T.payoutMethods).delete().eq("id", id))
 
     console.log(`DELETE /api/payout-methods - Successfully deleted payout method ${id} for user ${userId}`)
     return NextResponse.json({
@@ -209,9 +208,9 @@ export async function PATCH(request: NextRequest) {
   try {
     if (action === "setDefault") {
       // Find the payout method to check if it belongs to the user
-      const payoutMethod = await prisma.payoutMethod.findUnique({
-        where: { id },
-      })
+      const payoutMethod = must(
+        await db.from(T.payoutMethods).select("id, userId").eq("id", id).maybeSingle(),
+      )
 
       if (!payoutMethod) {
         return NextResponse.json({ message: "Payout method not found" }, { status: 404 })
@@ -222,16 +221,10 @@ export async function PATCH(request: NextRequest) {
       }
 
       // Update all user's payout methods to not be default
-      await prisma.payoutMethod.updateMany({
-        where: { userId },
-        data: { isDefault: false },
-      })
+      must(await db.from(T.payoutMethods).update(touch({ isDefault: false })).eq("userId", userId))
 
       // Set the selected method as default
-      await prisma.payoutMethod.update({
-        where: { id },
-        data: { isDefault: true },
-      })
+      must(await db.from(T.payoutMethods).update(touch({ isDefault: true })).eq("id", id))
 
       console.log(`PATCH /api/payout-methods - Successfully set payout method ${id} as default for user ${userId}`)
       return NextResponse.json({

@@ -1,92 +1,46 @@
-export const dynamic = "force-dynamic";
+export const dynamic = 'force-dynamic'
 import { NextResponse } from 'next/server'
-import prisma from '@/prisma'
 import getUserData from '@/app/api/user/getUserData'
+import { db, T, must, asDate } from '@/lib/db'
+import { getBusinessTours } from '../businessTours'
 
 export async function GET(request: Request) {
 	try {
-		// Get the current user
 		const userData = await getUserData()
-
-		// Check if user is authenticated
 		if (!userData || !userData.id) {
 			return NextResponse.json({ bookings: [] }, { status: 401 })
 		}
 
-		// Get the business associated with this user
-		const business = await prisma.business.findFirst({
-			where: {
-				creatorId: userData.id,
-			},
-		})
-
-		// If no business found, return empty array
-		if (!business) {
+		const businessTours = await getBusinessTours(userData.id)
+		if (!businessTours) {
 			return NextResponse.json({ bookings: [] })
 		}
 
-		// Get search query and status filter from URL if present
 		const url = new URL(request.url)
-		const searchQuery = url.searchParams.get('search') || ''
+		const searchQuery = (url.searchParams.get('search') || '').toLowerCase()
 		const statusFilter = url.searchParams.get('status') || ''
 
-		// Get all bookings associated with this business's tours
-		const bookings = await prisma.booking.findMany({
-			where: {
-				tour: {
-					businessId: business.id,
-				},
-				...(statusFilter ? { bookingState: statusFilter } : {}),
-				...(searchQuery
-					? {
-							OR: [
-								{
-									customer: {
-										name: {
-											contains: searchQuery,
-											mode: 'insensitive',
-										},
-									},
-								},
-								{
-									tour: {
-										name: {
-											contains: searchQuery,
-											mode: 'insensitive',
-										},
-									},
-								},
-								{
-									orderNumber: {
-										contains: searchQuery,
-										mode: 'insensitive',
-									},
-								},
-							],
-						}
-					: {}),
-			},
-			include: {
-				customer: {
-					select: {
-						id: true,
-						name: true,
-						email: true,
-					},
-				},
-				tour: {
-					select: {
-						id: true,
-						name: true,
-					},
-				},
-			},
-			orderBy: {
-				createdAt: 'desc',
-			},
-		})
+		let query = db
+			.from(T.bookings)
+			.select(
+				`id, selectedDate, bookingState, totalPrice, guests, orderNumber, createdAt,
+				customer:${T.users}!customerId(id, name, email), tour:${T.tours}(id, name)`,
+			)
+			.in('tourId', businessTours.tourIds)
+			.order('createdAt', { ascending: false })
+		if (statusFilter) query = query.eq('bookingState', statusFilter)
 
-		// Format the bookings data for the frontend
+		let bookings: any[] = must(await query) ?? []
+
+		// Search across customer name, tour name and order number
+		if (searchQuery) {
+			bookings = bookings.filter((b) =>
+				[b.customer?.name, b.tour?.name, b.orderNumber].some((v) =>
+					v?.toLowerCase().includes(searchQuery),
+				),
+			)
+		}
+
 		const formattedBookings = bookings.map((booking) => ({
 			id: booking.id,
 			customer: booking.customer?.name || 'Unknown Customer',
@@ -99,10 +53,9 @@ export async function GET(request: Request) {
 			status: booking.bookingState,
 			amount: booking.totalPrice ? `$${booking.totalPrice.toFixed(2)}` : 'N/A',
 			guests:
-				(booking.guests?.guestAdults || 0) +
-				(booking.guests?.guestChildren || 0),
+				(booking.guests?.guestAdults || 0) + (booking.guests?.guestChildren || 0),
 			orderNumber: booking.orderNumber || '',
-			createdAt: booking.createdAt.toISOString(),
+			createdAt: asDate(booking.createdAt)?.toISOString(),
 		}))
 
 		return NextResponse.json({ bookings: formattedBookings })
@@ -112,7 +65,5 @@ export async function GET(request: Request) {
 			{ message: 'Error fetching bookings', bookings: [] },
 			{ status: 500 },
 		)
-	} finally {
-		await prisma.$disconnect()
 	}
 }

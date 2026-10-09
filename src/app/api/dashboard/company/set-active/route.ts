@@ -1,13 +1,11 @@
-export const dynamic = "force-dynamic";
+export const dynamic = 'force-dynamic'
 import { NextResponse } from 'next/server'
-import prisma from '@/prisma'
 import getUserData from '@/app/api/user/getUserData'
+import { setActiveCompany } from '../activeCompany'
 
 export async function POST(request: Request) {
 	try {
-		// Get the current user
 		const userData = await getUserData()
-
 		if (!userData || !userData.id) {
 			return NextResponse.json(
 				{ message: 'User not found or not authenticated' },
@@ -15,10 +13,7 @@ export async function POST(request: Request) {
 			)
 		}
 
-		// Get request body
 		const body = await request.json()
-
-		// Validate required fields
 		if (!body.companyId) {
 			return NextResponse.json(
 				{ message: 'Company ID is required' },
@@ -26,14 +21,7 @@ export async function POST(request: Request) {
 			)
 		}
 
-		// Check if the company exists and belongs to the user
-		const company = await prisma.business.findFirst({
-			where: {
-				id: body.companyId,
-				creatorId: userData.id,
-			},
-		})
-
+		const company = await setActiveCompany(userData.id, body.companyId)
 		if (!company) {
 			return NextResponse.json(
 				{ message: 'Company not found or not authorized' },
@@ -41,34 +29,12 @@ export async function POST(request: Request) {
 			)
 		}
 
-		// First, deactivate all companies for this user
-		await prisma.business.updateMany({
-			where: {
-				creatorId: userData.id,
-			},
-			data: {
-				isActive: false,
-			},
-		})
-
-		// Then, activate the selected company
-		const updatedCompany = await prisma.business.update({
-			where: {
-				id: body.companyId,
-			},
-			data: {
-				isActive: true,
-			},
-		})
-
-		return NextResponse.json({ success: true, company: updatedCompany })
+		return NextResponse.json({ success: true, company })
 	} catch (error) {
 		console.error('Error setting active company:', error)
 		return NextResponse.json(
 			{ message: 'Error setting active company' },
 			{ status: 500 },
 		)
-	} finally {
-		await prisma.$disconnect()
 	}
 }

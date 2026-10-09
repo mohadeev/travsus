@@ -1,6 +1,6 @@
 export const dynamic = "force-dynamic";
 import { NextResponse } from 'next/server'
-import prisma from '@/prisma'
+import { db, T, must, touch } from '@/lib/db'
 import getUserData from '@/app/api/user/getUserData'
 
 export async function POST(request: Request) {
@@ -17,11 +17,14 @@ export async function POST(request: Request) {
 		}
 
 		// Get the business associated with this user
-		const business = await prisma.business.findFirst({
-			where: {
-				creatorId: userData.id,
-			},
-		})
+		const business = must(
+			await db
+				.from(T.businesses)
+				.select('id')
+				.eq('creatorId', userData.id)
+				.limit(1)
+				.maybeSingle(),
+		)
 
 		// If no business found, return error
 		if (!business) {
@@ -43,16 +46,13 @@ export async function POST(request: Request) {
 		}
 
 		// Verify the booking belongs to this business
-		const booking = await prisma.booking.findUnique({
-			where: { id: bookingId },
-			include: {
-				tour: {
-					select: {
-						businessId: true,
-					},
-				},
-			},
-		})
+		const booking: any = must(
+			await db
+				.from(T.bookings)
+				.select(`id, bookingStates, tour:${T.tours}(businessId)`)
+				.eq('id', bookingId)
+				.maybeSingle(),
+		)
 
 		if (!booking) {
 			return NextResponse.json(
@@ -72,20 +72,21 @@ export async function POST(request: Request) {
 		}
 
 		// Update the booking status
-		await prisma.booking.update({
-			where: { id: bookingId },
-			data: {
-				bookingState: newStatus,
-				bookingStates: {
-					push: {
-						state: newStatus,
-						by: userData.id,
-						createdAt: new Date(),
-						updatedAt: new Date(),
-					},
-				},
-			},
-		})
+		const now = new Date().toISOString()
+		must(
+			await db
+				.from(T.bookings)
+				.update(
+					touch({
+						bookingState: newStatus,
+						bookingStates: [
+							...(booking.bookingStates ?? []),
+							{ state: newStatus, by: userData.id, createdAt: now, updatedAt: now },
+						],
+					}),
+				)
+				.eq('id', bookingId),
+		)
 
 		return NextResponse.json({
 			success: true,
@@ -97,7 +98,5 @@ export async function POST(request: Request) {
 			{ success: false, message: 'Error updating booking status' },
 			{ status: 500 },
 		)
-	} finally {
-		await prisma.$disconnect()
 	}
 }

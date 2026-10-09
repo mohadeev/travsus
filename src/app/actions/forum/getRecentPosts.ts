@@ -1,45 +1,25 @@
 'use server'
 
-import { PrismaClient } from '@prisma/client'
-
-const prisma = new PrismaClient()
+import { db, T, must } from '@/lib/db'
+import { AUTHOR } from './forumSelect'
 
 export async function getRecentPosts(limit: number = 5) {
 	try {
-		const recentPosts = await prisma.forumPost.findMany({
-			take: limit,
-			orderBy: {
-				createdAt: 'desc',
-			},
-			include: {
-				author: {
-					select: {
-						id: true,
-						accountData: true,
-						username: true,
-						profileImage: true,
-					},
-				},
-				comments: {
-					include: {
-						author: {
-							select: {
-								id: true,
-								accountData: true,
-								username: true,
-								profileImage: true,
-							},
-						},
-					},
-					orderBy: {
-						createdAt: 'asc',
-					},
-				},
-				_count: {
-					select: { comments: true },
-				},
-			},
-		})
+		const posts: any[] =
+			must(
+				await db
+					.from(T.forumPosts)
+					.select(`*, ${AUTHOR}, comments:${T.forumComments}(*, ${AUTHOR})`)
+					.order('createdAt', { ascending: false })
+					.order('createdAt', { referencedTable: 'comments', ascending: true })
+					.limit(limit),
+			) ?? []
+
+		// Same shape as before: _count.comments
+		const recentPosts = posts.map((post) => ({
+			...post,
+			_count: { comments: post.comments?.length ?? 0 },
+		}))
 
 		return { success: true, posts: recentPosts }
 	} catch (error) {

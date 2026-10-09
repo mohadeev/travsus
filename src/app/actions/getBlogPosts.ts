@@ -1,39 +1,27 @@
 'use server'
 
-import { PrismaClient } from '@prisma/client'
 import { getLocale } from 'next-intl/server'
-const prisma = new PrismaClient()
+import { db, T, must } from '@/lib/db'
+import { POST_WITH_AUTHOR } from './blogSelect'
 
 export async function getBlogPosts() {
 	const lang = await getLocale()
-	console.log('---------------||||||||---------------')
-	console.log('---------------||||||||---------------')
-	console.log('---------------||||||||---------------')
-	console.log('---------------||||||||---------------')
-	console.log('---------------||||||||---------------')
-	console.log('---------------||||||||---------------')
-	console.log('lang:', lang)
 
 	try {
-		const posts = await prisma.post.findMany({
-			orderBy: {
-				createdAt: 'desc',
-			},
-			include: {
-				translations: true,
-				author: true, // Include the entire author object
-			},
-		})
+		const posts: any[] =
+			must(
+				await db
+					.from(T.posts)
+					.select(POST_WITH_AUTHOR)
+					.order('createdAt', { ascending: false }),
+			) ?? []
 
-		const thePosts = posts.map((post) => {
-			return {
-				...post,
-				...post.translations.find(({ language }) => lang === language),
-			}
-		})
-		return thePosts
+		// Overlay the translation for the current locale
+		return posts.map((post) => ({
+			...post,
+			...(post.translations ?? []).find(({ language }: any) => lang === language),
+		}))
 	} catch (error) {
 		console.error('Error fetching blog posts:', error)
-		console.error('Failed to fetch blog posts')
 	}
 }

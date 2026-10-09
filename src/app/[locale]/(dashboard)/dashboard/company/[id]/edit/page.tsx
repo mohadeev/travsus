@@ -3,8 +3,8 @@ export const dynamic = "force-dynamic";
 
 import { useEffect, useState } from 'react'
 import { useParams, useRouter } from 'next/navigation'
-import { useDispatch, useSelector } from 'react-redux'
-import { selectAllCompanies } from '@/app/[locale]/GlobalRedux/Features/companySlice/companySlice'
+import { useAppDispatch, useAppSelector } from '@/store/hooks'
+import { selectAllCompanies } from '@/store/slices/company'
 import { EditCompanyForm } from '@/components/dashboard/edit-company-form'
 import {
 	Card,
@@ -16,13 +16,12 @@ import {
 import { Button } from '@/components/ui/button'
 import { ArrowLeft } from 'lucide-react'
 import { Skeleton } from '@/components/ui/skeleton'
-import type { AppDispatch } from '@/app/[locale]/GlobalRedux/store'
 
 export default function EditCompanyPage() {
 	const params = useParams()
 	const router = useRouter()
-	const dispatch = useDispatch<AppDispatch>()
-	const companies = useSelector(selectAllCompanies)
+	const dispatch = useAppDispatch()
+	const companies = useAppSelector(selectAllCompanies)
 	const [company, setCompany] = useState<any>(null)
 	const [isLoading, setIsLoading] = useState(true)
 

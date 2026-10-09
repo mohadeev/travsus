@@ -16,7 +16,8 @@ import Avatar from '@/shared/Avatar'
 import ButtonSecondary from '@/shared/ButtonSecondary'
 import SocialsList from '@/shared/SocialsList'
 import handelFetchAllBookings from '@/utils/api-utils/handelFetchAllBookings'
-import { useSelector } from 'react-redux'
+import { useAppSelector } from '@/store/hooks'
+import { selectUser } from '@/store/slices/user'
 import moment from 'moment'
 import { useTranslations } from '@/lib/i18n'
 
@@ -24,7 +25,7 @@ export interface AuthorPageProps {}
 
 const AuthorPage: FC<AuthorPageProps> = ({}) => {
 	const t = useTranslations('author_page')
-	const user = useSelector((state: any) => state.userReducer.userData)
+	const user = useAppSelector(selectUser)
 
 	let [categories] = useState([
 		t('author_page_Bookings'), //'Experiences'
@@ -39,9 +40,7 @@ const AuthorPage: FC<AuthorPageProps> = ({}) => {
 		})()
 	}, [])
 	const joinedDate = moment(user?.createdAt).format('MMMM YYYY') // e.g. 'March 2016'
-	const { id, profileImage } = useSelector(
-		(state: any) => state.userReducer.userData,
-	)
+	const { id, profileImage } = useAppSelector(selectUser)
 	const renderSidebar = () => {
 		return (
 			<div className="flex w-full flex-col items-center space-y-6 border-neutral-200 px-0 text-center dark:border-neutral-700 sm:space-y-7 sm:rounded-2xl sm:border sm:p-6 xl:p-8">

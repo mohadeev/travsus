@@ -1,9 +1,15 @@
-export const dynamic = "force-dynamic";
+export const dynamic = 'force-dynamic'
 import { NextRequest, NextResponse } from 'next/server'
 import stripe from '@/lib/stripe'
-import prisma from '@/lib/prisma'
+import { db, T, must } from '@/lib/db'
+import getUserData from '../user/getUserData'
 
 export async function DELETE(request: NextRequest) {
+	const userData: any = await getUserData()
+	if (!userData?.id) {
+		return NextResponse.json({ error: 'User not authenticated' }, { status: 401 })
+	}
+
 	const { id } = await request.json()
 
 	if (!id) {
@@ -14,11 +20,15 @@ export async function DELETE(request: NextRequest) {
 	}
 
 	try {
-		// Retrieve the payment method from the database
-		const paymentMethod = await prisma.paymentMethod.findUnique({
-			where: { id },
-			include: { user: true },
-		})
+		// Only the owner can remove their payment method
+		const paymentMethod = must(
+			await db
+				.from(T.paymentMethods)
+				.select('id, stripePaymentMethodId')
+				.eq('id', id)
+				.eq('userId', userData.id)
+				.maybeSingle(),
+		)
 
 		if (!paymentMethod) {
 			return NextResponse.json(
@@ -27,13 +37,11 @@ export async function DELETE(request: NextRequest) {
 			)
 		}
 
-		// Remove the payment method from Stripe
 		await stripe.paymentMethods.detach(paymentMethod.stripePaymentMethodId)
 
-		// Remove the payment method from the database
-		await prisma.paymentMethod.delete({
-			where: { id },
-		})
+		// Past bookings keep their history but no longer point at the card
+		must(await db.from(T.bookings).update({ paymentMethodId: null }).eq('paymentMethodId', id))
+		must(await db.from(T.paymentMethods).delete().eq('id', id))
 
 		return NextResponse.json({
 			success: true,

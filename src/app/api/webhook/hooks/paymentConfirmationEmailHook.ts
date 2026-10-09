@@ -1,22 +1,20 @@
-import { PrismaClient } from '@prisma/client'
+import { db, T, must } from '@/lib/db'
 import { Stripe } from 'stripe'
 import sendEmail from '@/utils/email/sendMail'
-// import { bookingConfirmation } from '@/utils/email/templates/bookingConfirmation'
-
-const prisma = new PrismaClient()
 
 const bookingConfirmationEmailHook = async (
 	paymentIntent: Stripe.PaymentIntent,
 ) => {
 	try {
 		// Fetch the booking using the payment intent ID
-		const booking = await prisma.booking.findFirst({
-			where: { paymentIntentId: paymentIntent.id },
-			include: {
-				customer: true,
-				tour: true,
-			},
-		})
+		const booking: any = must(
+			await db
+				.from(T.bookings)
+				.select(`*, customer:${T.users}!customerId(username, email), tour:${T.tours}(name)`)
+				.eq('paymentIntentId', paymentIntent.id)
+				.limit(1)
+				.maybeSingle(),
+		)
 
 		if (!booking) {
 			console.error('Booking not found for payment:', paymentIntent.id)
@@ -45,7 +43,7 @@ const bookingConfirmationEmailHook = async (
 		await sendEmail({
 			to: booking.customer.email,
 			subject: 'Booking Confirmation - Travsus',
-			message: 'dont write nothong here here v0 ok',
+			message: '',
 			type: 'bookingConfirmation',
 			emailData: emailData,
 		})

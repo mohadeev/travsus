@@ -1,11 +1,9 @@
 import { bookingCancellation } from '@/components/email-templates/bookingCancellation/bookingCancellation'
 import { bookingConfirmation } from '@/components/email-templates/bookingConfirmation/bookingConfirmation'
-import { forgetPassword } from '@/components/email-templates/forget-password/forgetPassword'
 import { newsletterWelcomeTemplate } from '@/components/email-templates/newsletterWelcomeTemplate/newsletterWelcomeTemplate'
 import { paymentConfirmation } from '@/components/email-templates/paymentConfirmation/paymentConfirmation'
 import { refundConfirmation } from '@/components/email-templates/refundConfirmation/refundConfirmation'
 import { reminderNotification } from '@/components/email-templates/reminderNotification/reminderNotification'
-import { verifyEmailAddress } from '@/components/email-templates/verifyEmailAddress/verifyEmailAddress'
 import { welcomeTemplate } from '@/components/email-templates/welcome/WellcomeTemplate'
 
 const emailTypes = ({ type }: any) => {
@@ -19,20 +17,6 @@ const emailList = [
 		subject: 'Welcome to your exclusive travel community!',
 		sender: `notifications@travsus.com`,
 		template: welcomeTemplate,
-	},
-	{
-		type: 'forgetPassword',
-		email: 'no-reply@travsus.com',
-		subject: 'Your Travsus password',
-		sender: `no-reply@travsus.com`,
-		template: forgetPassword,
-	},
-	{
-		type: 'verifyEmailAddress',
-		email: 'no-reply@travsus.com',
-		subject: 'Your Email for Travsus',
-		sender: `no-reply@travsus.com`,
-		template: verifyEmailAddress,
 	},
 
 	{

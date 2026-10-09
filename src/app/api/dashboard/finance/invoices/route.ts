@@ -1,14 +1,12 @@
-export const dynamic = "force-dynamic";
+export const dynamic = 'force-dynamic'
 import { type NextRequest, NextResponse } from 'next/server'
-import prisma from '@/prisma'
 import getUserData from '@/app/api/user/getUserData'
+import { db, T, must, asDate } from '@/lib/db'
+import { getBusinessTours } from '../../businessTours'
 
 export async function GET(request: NextRequest) {
 	try {
-		// Get the current user
 		const userData = await getUserData()
-
-		// Check if user is authenticated
 		if (!userData || !userData.id) {
 			return NextResponse.json(
 				{ message: 'User not found or not authenticated' },
@@ -16,63 +14,34 @@ export async function GET(request: NextRequest) {
 			)
 		}
 
-		// Get the business associated with this user
-		const business = await prisma.business.findFirst({
-			where: {
-				creatorId: userData.id,
-			},
-		})
-
-		// If no business found, return empty array
-		if (!business) {
+		const businessTours = await getBusinessTours(userData.id)
+		if (!businessTours) {
 			return NextResponse.json({ invoices: [] })
 		}
 
-		// Get search query from URL if present
-		const searchQuery = request.nextUrl.searchParams.get('search') || ''
+		const searchQuery = (request.nextUrl.searchParams.get('search') || '').toLowerCase()
 
-		// Get all invoices (bookings with invoice numbers) for this business
-		const bookings = await prisma.booking.findMany({
-			where: {
-				invoiceNumber: {
-					not: null,
-				},
-				tour: {
-					businessId: business.id,
-				},
-				...(searchQuery
-					? {
-							customer: {
-								name: {
-									contains: searchQuery,
-									mode: 'insensitive',
-								},
-							},
-						}
-					: {}),
-			},
-			select: {
-				id: true,
-				invoiceNumber: true,
-				bookingState: true,
-				totalPrice: true,
-				createdAt: true,
-				customer: {
-					select: {
-						id: true,
-						name: true,
-					},
-				},
-			},
-			orderBy: {
-				createdAt: 'desc',
-			},
-		})
+		let bookings: any[] =
+			must(
+				await db
+					.from(T.bookings)
+					.select(
+						`id, invoiceNumber, bookingState, totalPrice, createdAt, customer:${T.users}!customerId(id, name)`,
+					)
+					.in('tourId', businessTours.tourIds)
+					.not('invoiceNumber', 'is', null)
+					.order('createdAt', { ascending: false }),
+			) ?? []
 
-		// Format the invoices data for the frontend
+		if (searchQuery) {
+			bookings = bookings.filter((b) =>
+				b.customer?.name?.toLowerCase().includes(searchQuery),
+			)
+		}
+
 		const invoices = bookings.map((booking) => ({
 			id: booking.invoiceNumber || booking.id,
-			customer: booking.customer.name || 'Unknown Customer',
+			customer: booking.customer?.name || 'Unknown Customer',
 			amount: booking.totalPrice ? `$${booking.totalPrice.toFixed(2)}` : 'N/A',
 			status:
 				booking.bookingState === 'confirmed'
@@ -80,7 +49,7 @@ export async function GET(request: NextRequest) {
 					: booking.bookingState === 'pending'
 						? 'pending'
 						: 'overdue',
-			date: booking.createdAt.toISOString().split('T')[0],
+			date: asDate(booking.createdAt)?.toISOString().split('T')[0],
 		}))
 
 		return NextResponse.json({ invoices })
@@ -90,7 +59,5 @@ export async function GET(request: NextRequest) {
 			{ message: 'Error fetching invoices' },
 			{ status: 500 },
 		)
-	} finally {
-		await prisma.$disconnect()
 	}
 }

@@ -1,8 +1,9 @@
 export const dynamic = "force-dynamic";
 import { NextRequest, NextResponse } from 'next/server'
-import { PrismaClient } from '@prisma/client'
+import { db, T, must, touch } from '@/lib/db'
+import getUserData from '../../user/getUserData'
 
-const prisma = new PrismaClient()
+const PROMO_PREFIX = 'Promo Code Applied'
 
 export async function POST(request: NextRequest) {
 	try {
@@ -12,7 +13,6 @@ export async function POST(request: NextRequest) {
 		const referer = request.headers.get('referer') || ''
 		const url = new URL(referer)
 		const bookingId = url.searchParams.get('bookingId')
-		console.log('referer')
 
 		if (!bookingId) {
 			return NextResponse.json(
@@ -32,26 +32,46 @@ export async function POST(request: NextRequest) {
 		}
 
 		// 3️⃣ Find the promo code
-		const promo = await prisma.referralLink.findUnique({
-			where: { code },
-		})
+		const userData: any = await getUserData()
+		if (!userData?.id) {
+			return NextResponse.json({ error: 'Not authenticated' }, { status: 401 })
+		}
+
+		const promo = must(
+			await db
+				.from(T.referralLinks)
+				.select('commissionType, commissionValue')
+				.eq('code', code)
+				.maybeSingle(),
+		)
 
 		if (!promo) {
 			return NextResponse.json({ error: 'Invalid promo code' }, { status: 400 })
 		}
 
 		// 4️⃣ Get the booking
-		const booking = await prisma.booking.findUnique({
-			where: { id: bookingId },
-			select: { lineItems: true },
-		})
+		const booking = must(
+			await db
+				.from(T.bookings)
+				.select('lineItems')
+				.match({ id: bookingId, customerId: userData.id })
+				.maybeSingle(),
+		)
 
 		if (!booking) {
 			return NextResponse.json({ error: 'Booking not found' }, { status: 404 })
 		}
 
+		const lineItems: any[] = booking.lineItems ?? []
+		if (lineItems.some((item) => item.description?.startsWith(PROMO_PREFIX))) {
+			return NextResponse.json(
+				{ error: 'A promo code is already applied to this booking' },
+				{ status: 400 },
+			)
+		}
+
 		// 5️⃣ Calculate total applicable price
-		const totalApplicablePrice = booking.lineItems
+		const totalApplicablePrice = lineItems
 			.filter((item) => item.includeInTotal)
 			.reduce((sum, item) => sum + item.totalPrice, 0)
 
@@ -73,23 +93,29 @@ export async function POST(request: NextRequest) {
 		if (isNaN(refundAmount)) refundAmount = 0
 
 		// 7️⃣ Update booking with promo code applied
-		const updatedBooking = await prisma.booking.update({
-			where: { id: bookingId },
-			data: {
-				lineItems: {
-					push: {
-						description: `Promo Code Applied (${code})`,
-						unitPrice: refundAmount, // ✅ Correct calculation
-						totalPrice: refundAmount, // ✅ Correct refund
-						totalGuests: 0,
-						serviceQuantity: 1,
-						includeInTotal: true,
-						currency: 'EUR',
-					},
-				},
-			},
-		})
-		console.log('Promo code applied successfully', updatedBooking.lineItems)
+		const updatedBooking = must(
+			await db
+				.from(T.bookings)
+				.update(
+					touch({
+						lineItems: [
+							...lineItems,
+							{
+								description: `${PROMO_PREFIX} (${code})`,
+								unitPrice: refundAmount,
+								totalPrice: refundAmount,
+								totalGuests: 0,
+								serviceQuantity: 1,
+								includeInTotal: true,
+								currency: 'EUR',
+							},
+						],
+					}),
+				)
+				.eq('id', bookingId)
+				.select('lineItems')
+				.single(),
+		)
 		return NextResponse.json(
 			{ lineItems: updatedBooking.lineItems, discountApplied: true },
 			{ status: 200 },

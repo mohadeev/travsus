@@ -12,10 +12,11 @@ import isInViewport from '@/utils/isInViewport'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { House } from '@phosphor-icons/react'
-import { useSession } from 'next-auth/react'
+import { useAuth } from '@clerk/nextjs'
 import { useAuthAction } from '@/app/hooks/useAuthAction'
 import Avatar from '@/shared/Avatar'
-import { useSelector } from 'react-redux'
+import { useAppSelector } from '@/store/hooks'
+import { selectUser } from '@/store/slices/user'
 import { useTranslations } from '@/lib/i18n'
 
 let WIN_PREV_POSITION = 0
@@ -59,15 +60,13 @@ const FooterNav = () => {
 	const containerRef = useRef<HTMLDivElement>(null)
 	const pathname = usePathname()
 	const Router = useRouter()
-	const { data: session } = useSession()
-	const user = useSelector((state: any) => state.userReducer.userData)
+	const { isSignedIn } = useAuth()
+	const user = useAppSelector(selectUser)
 	const profileImageUrl = user?.profileImage?.url
 	const isUserLoggedIn = !!user
 
-	const handleSignIn = useAuthAction(async () => {
-		// Add your sign-in logic here
-		console.log('Sign in action')
-	})
+	// Signed out: opens the Clerk sign-in window
+	const handleSignIn = useAuthAction(() => {})
 
 	useEffect(() => {
 		if (typeof window !== 'undefined') {
@@ -116,7 +115,7 @@ const FooterNav = () => {
 
 	const renderItem = (item: NavItem, index: number) => {
 		const isActive = pathname === item.link
-		const isAuthenticated = !!session
+		const isAuthenticated = !!isSignedIn
 
 		if (item.name === 'Log in' && isAuthenticated) {
 			return (

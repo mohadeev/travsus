@@ -1,13 +1,9 @@
 export const dynamic = "force-dynamic";
-import { placesClient } from '@/lib/prisma'
+import { db, T, must, newId } from '@/lib/db'
+import { GEO_CONTENT, keepTranslations } from '@/lib/geo'
 import { NextResponse } from 'next/server'
-import OpenAI from 'openai'
+import { openai } from '@/lib/openai'
 
-// Initialize OpenAI
-const openai = new OpenAI({
-	apiKey:
-		'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',
-})
 
 function extractLanguageFromRequest(request: Request): string {
 	const referer = request.headers.get('referer') || ''
@@ -76,10 +72,8 @@ export async function GET(
 ) {
 	try {
 		const detectedLanguage = extractLanguageFromRequest(request)
-		console.log('Detected language:', detectedLanguage)
 
 		const countryId = params.code
-		console.log('Searching for country with ID:', countryId)
 
 		if (!countryId) {
 			return NextResponse.json(
@@ -88,45 +82,20 @@ export async function GET(
 			)
 		}
 
-		let country = await placesClient.country.findUnique({
-			where: {
-				id: countryId,
-			},
-			include: {
-				content: {
-					include: {
-						translations: {
-							where: {
-								language: detectedLanguage,
-							},
-						},
-					},
-				},
-			},
-		})
+		const row: any = must(
+			await db
+				.from(T.countries)
+				.select(`*, ${GEO_CONTENT}`)
+				.eq('id', countryId)
+				.maybeSingle(),
+		)
 
+		// Texts in the visitor's language, otherwise English
+		let country: any = row && keepTranslations(row, (t) => t.language === detectedLanguage)
 		let languageAvailable = true
-		if (
-			!country?.content?.translations ||
-			country.content.translations.length === 0
-		) {
+		if (row && !country.content?.translations?.length) {
 			languageAvailable = false
-			country = await placesClient.country.findUnique({
-				where: {
-					id: countryId,
-				},
-				include: {
-					content: {
-						include: {
-							translations: {
-								where: {
-									language: 'en-US',
-								},
-							},
-						},
-					},
-				},
-			})
+			country = keepTranslations(row, (t) => t.language === 'en-US')
 		}
 
 		if (!country) {
@@ -140,12 +109,12 @@ export async function GET(
 		if (country.content && country.content.translations) {
 			// Find name translation (type = "country")
 			const nameTranslation = country.content.translations.find(
-				(t) => t.type === 'country',
+				(t: any) => t.type === 'country',
 			)
 
 			// Find description translation
 			const descriptionTranslation = country.content.translations.find(
-				(t) => t.type === 'description',
+				(t: any) => t.type === 'description',
 			)
 
 			if (nameTranslation) {
@@ -166,15 +135,16 @@ export async function GET(
 
 				// Save the generated description to the database
 				try {
-					await placesClient.translatedText.create({
-						data: {
+					must(
+						await db.from(T.geoTexts).insert({
+							id: newId(),
 							contentId: country.content.id,
 							language: languageToUse,
 							text: description,
 							type: 'description',
 							code3: country.code3 || null,
-						},
-					})
+						}),
+					)
 					console.log(`Saved generated description for ${name}`)
 				} catch (error) {
 					console.error(`Error saving description for ${name}:`, error)

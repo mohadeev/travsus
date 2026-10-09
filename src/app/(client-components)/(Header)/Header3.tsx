@@ -1,6 +1,6 @@
 'use client'
 
-import React, { FC, useEffect, useRef, useState } from 'react'
+import React, { FC, Suspense, useEffect, useRef, useState } from 'react'
 import Logo from '@/shared/Logo'
 import useOutsideAlerter from '@/hooks/useOutsideAlerter'
 import NotifyDropdown from './NotifyDropdown'
@@ -75,11 +75,14 @@ const Header3: FC<Header3Props> = ({ className = '' }) => {
 			}`}
 		>
 			<div className="mx-auto w-full max-w-4xl pb-6">
-				<HeroSearchFormSmall
+				{/* Reads URL params: rendered in the browser only, rest of page stays in HTML */}
+				<Suspense fallback={null}>
+					<HeroSearchFormSmall
 					defaultFieldFocus={showHeroSearch || undefined}
 					onTabChange={setCurrentTab}
 					defaultTab={currentTab}
 				/>
+				</Suspense>
 			</div>
 		</div>
 	)

@@ -11,11 +11,11 @@ import ButtonSecondary from '@/shared/ButtonSecondary'
 import Textarea from '@/shared/Textarea'
 import Input from '@/shared/Input'
 import { useRouter } from 'next/navigation'
-import { useSelector } from 'react-redux'
 import { useAuthAction } from '@/app/hooks/useAuthAction'
 import { useTranslations } from '@/lib/i18n'
 import { useLocale } from 'next-intl'
 import Review from './Review'
+import { useTourService } from '../../TourServiceContext'
 
 interface ReviewProps {
 	serviceId: string
@@ -71,7 +71,7 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
 		date.toLocaleDateString(locale, { month: 'long', year: 'numeric' })
 	// Get tour data from Redux store
 	const tourData =
-		useSelector((state: any) => state.creatingServiceSlice.service) || {}
+		useTourService() || {}
 	const { name: title, region, images } = tourData
 
 	// Safely get the number of days

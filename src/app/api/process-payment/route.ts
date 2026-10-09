@@ -1,7 +1,7 @@
 export const dynamic = "force-dynamic";
 import { NextRequest, NextResponse } from 'next/server'
 import stripe from '@/lib/stripe'
-import prisma from '@/lib/prisma'
+import { db, T, must, touch } from '@/lib/db'
 import getUserData from '../user/getUserData'
 import totalAmount from '../api-utils/actions/booking/totalAmount'
 import { updateBooking } from '../api-utils/actions/booking/updateBooking'
@@ -10,18 +10,16 @@ import { checkBookingRole } from '../api-utils/actions/booking/checkBookingRole'
 export async function POST(request: NextRequest) {
 	console.log('POST /api/process-payment - Processing payment')
 	const body = await request.json()
-	console.log('body:', body)
 	const { paymentMethodId, amount, currency } = body
 	const referer = request.headers.get('referer') || ''
 	const url = new URL(referer)
 	const searchParams = url.searchParams
 	const serviceId = searchParams.get('serviceId')
 	const bookingId = searchParams.get('bookingId')
-	const bookingRole: any = checkBookingRole(request)
-	const allowed = bookingRole
-	if (!allowed) {
+	const bookingRole: any = await checkBookingRole(request)
+	if (!bookingRole.allowed) {
 		return NextResponse.json(
-			{ error: bookingRole },
+			{ error: bookingRole.error },
 			{ status: bookingRole.status },
 		)
 	}
@@ -33,11 +31,8 @@ export async function POST(request: NextRequest) {
 		)
 	}
 
-	const tour = await prisma.tour.findUnique({
-		where: { id: serviceId },
-	})
 	const userData: any = await getUserData({})
-	const { email: userEmail, id: userId } = userData
+	const { email: userEmail, id: userId } = userData ?? {}
 	if (!userId || !userEmail || !currency) {
 		console.error('POST /api/process-payment - Missing required fields')
 		return NextResponse.json(
@@ -48,23 +43,20 @@ export async function POST(request: NextRequest) {
 	const id = userId
 
 	try {
-		const bookingInitiated = await prisma.booking.findFirst({
-			where: {
-				id: bookingId,
-				customerId: id,
-				tourId: serviceId,
-			},
-			include: {
-				customer: true,
-				provider: true,
-				tour: true,
-			},
-		})
+		const bookingInitiated = must(
+			await db
+				.from(T.bookings)
+				.select('id, lineItems')
+				.match({ id: bookingId, customerId: id, tourId: serviceId })
+				.maybeSingle(),
+		)
+		if (!bookingInitiated) {
+			return NextResponse.json({ message: 'Booking not found' }, { status: 404 })
+		}
 
-		let user = await prisma.user.findUnique({
-			where: { id: userId },
-			select: { stripeCustomerId: true },
-		})
+		let user = must(
+			await db.from(T.users).select('stripeCustomerId').eq('id', userId).maybeSingle(),
+		)
 
 		if (!user?.stripeCustomerId) {
 			console.log(
@@ -74,20 +66,30 @@ export async function POST(request: NextRequest) {
 				email: userEmail,
 				metadata: { userId },
 			})
-			user = await prisma.user.update({
-				where: { id: userId },
-				data: { stripeCustomerId: customer.id },
-			})
+			user = must(
+				await db
+					.from(T.users)
+					.update(touch({ stripeCustomerId: customer.id }))
+					.eq('id', userId)
+					.select('stripeCustomerId')
+					.single(),
+			)
 		}
-		if (!user.stripeCustomerId) {
-			return null
+		if (!user?.stripeCustomerId) {
+			return NextResponse.json(
+				{ message: 'Missing Stripe customer' },
+				{ status: 400 },
+			)
 		}
 
 		// Fetch the user's payment methods
-		const userPaymentMethods = await prisma.paymentMethod.findMany({
-			where: { userId: userId },
-			orderBy: { isDefault: 'desc' },
-		})
+		const userPaymentMethods = must(
+			await db
+				.from(T.paymentMethods)
+				.select('id, stripePaymentMethodId, isDefault')
+				.eq('userId', userId)
+				.order('isDefault', { ascending: false, nullsFirst: false }),
+		)
 
 		// Use the provided paymentMethodId or fall back to the default
 		let selectedPaymentMethodId = paymentMethodId
@@ -113,11 +115,12 @@ export async function POST(request: NextRequest) {
 		)
 		const newTotalAmount = totalAmount(bookingInitiated?.lineItems)
 		const amountInCents = Math.round(newTotalAmount * 100) // 362879
-		const isMoha =
-			userData?.email?.includes('@travsus.com') ||
-			userData?.email?.includes('skendoul')
+		// Internal test accounts are charged a symbolic amount (exact matches only)
+		const email = (userEmail || '').toLowerCase()
+		const isTestAccount =
+			email === 'skendoulmohamed@gmail.com' || email.endsWith('@travsus.com')
 		const paymentIntent = await stripe.paymentIntents.create({
-			amount: isMoha ? 55 : amountInCents,
+			amount: isTestAccount ? 55 : amountInCents,
 			currency,
 			customer: user.stripeCustomerId,
 			payment_method: selectedPaymentMethodId,
@@ -131,20 +134,12 @@ export async function POST(request: NextRequest) {
 			},
 		})
 
-		const paymentMethod: any = await prisma.paymentMethod.findFirst({
-			where: {
-				userId: userId,
-				stripePaymentMethodId: selectedPaymentMethodId,
-			},
-		})
-		console.log('Payment method used:', paymentMethod)
+		const paymentMethod = userPaymentMethods.find(
+			(m) => m.stripePaymentMethodId === selectedPaymentMethodId,
+		)
 		await updateBooking(bookingId, {
 			paymentIntentId: paymentIntent.id,
-			paymentMethodId: paymentMethod?.id,
-		})
-		await connectPaymentMethodToBooking({
-			bookingId,
-			paymentMethodId: paymentMethod?.id,
+			paymentMethodId: paymentMethod?.id ?? null,
 		})
 		console.log(
 			`POST /api/process-payment - Successfully created PaymentIntent ${paymentIntent.id}`,
@@ -173,21 +168,4 @@ export async function POST(request: NextRequest) {
 			{ status: 500 },
 		)
 	}
-}
-
-const connectPaymentMethodToBooking = async ({
-	paymentMethodId,
-	bookingId,
-}: any) => {
-	const booking = await prisma.booking.update({
-		where: {
-			id: bookingId,
-		},
-		data: {
-			paymentMethod: { connect: { id: paymentMethodId } },
-		},
-		include: { paymentMethod: true },
-	})
-	console.log('booking:', booking)
-	return booking
 }

@@ -1,6 +1,6 @@
 export const dynamic = "force-dynamic";
 import { NextRequest, NextResponse } from 'next/server'
-import prisma from '@/lib/prisma'
+import { db, T, must } from '@/lib/db'
 import travsusSdk from '../api-utils/travsusSdk'
 import calculateAccommodationPrice from './calculateAccommodationPrice'
 import { countGuests } from '../api-utils/actions/countGuestsFromAccomodation'
@@ -17,12 +17,10 @@ export async function POST(request: NextRequest) {
 	const serviceId = searchParams.get('serviceId')
 
 	if (!serviceId) {
-		return null
+		return NextResponse.json({ error: 'Missing serviceId' }, { status: 400 })
 	}
 
-	const tour = await prisma.tour.findUnique({
-		where: { id: serviceId },
-	})
+	const tour = must(await db.from(T.tours).select('*').eq('id', serviceId).maybeSingle())
 	const lineItems: any = []
 	const body = await request.json()
 	let { guests, accommodation, booking, bookOwnHotels, selectedDate } = body
@@ -148,7 +146,6 @@ export async function POST(request: NextRequest) {
 	}
 	// console.log('accommodation', accommodation)
 	const newData = await updateLineItemsLogic({ tour, body })
-	console.log('newData: ', newData)
 	await saveLastBookingUpdates({ request, booking: newbooking })
 	return NextResponse.json({ ...newData, ...{ status: 200 } })
 }

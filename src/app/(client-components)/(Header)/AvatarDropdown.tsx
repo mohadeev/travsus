@@ -2,9 +2,9 @@ import { Popover, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
 import Avatar from '@/shared/Avatar'
 import Link from 'next/link'
-import { signOut } from 'next-auth/react'
-import { useSelector } from 'react-redux'
-import { useAuthAction } from '@/app/hooks/useAuthAction'
+import { useClerk } from '@clerk/nextjs'
+import { useAppSelector } from '@/store/hooks'
+import { selectIsLoggedIn, selectUser } from '@/store/slices/user'
 import { useTranslations } from '@/lib/i18n'
 
 interface Props {
@@ -13,25 +13,16 @@ interface Props {
 
 export default function AvatarDropdown({ className = '' }: Props) {
 	const t = useTranslations('AvatarDropdown')
-	const isUserLoggedIn = useSelector(
-		(state: any) => state.userReducer.isUserLoggedIn,
-	)
-	const user = useSelector((state: any) => state.userReducer.userData)
+	const isUserLoggedIn = useAppSelector(selectIsLoggedIn)
+	const user = useAppSelector(selectUser)
 	const profileImageUrl = user?.profileImage?.url
 
-	const handleSignIn = useAuthAction(
-		async () => {
-			console.log('Sign in action')
-		},
-		{ auth: 'login', authMode: '' },
-	)
-
-	const handleSignUp = useAuthAction(
-		async () => {
-			console.log('Sign up action')
-		},
-		{ auth: 'signup', authMode: '' },
-	)
+	// Clerk sign-in / sign-up windows; after signing in, stay on this page
+	const { openSignIn, openSignUp, signOut } = useClerk()
+	const returnHere = () => ({ forceRedirectUrl: window.location.href })
+	const handleSignIn = () => openSignIn(returnHere())
+	const handleSignUp = () => openSignUp(returnHere())
+	const handleSignOut = () => signOut({ redirectUrl: '/' })
 
 	return (
 		<Popover className={`AvatarDropdown relative flex ${className}`}>
@@ -299,7 +290,7 @@ export default function AvatarDropdown({ className = '' }: Props) {
 													</svg>
 												</div>
 												<div
-													onClick={() => signOut({ callbackUrl: '/' })}
+													onClick={handleSignOut}
 													className="ml-4"
 												>
 													<p className="text-sm font-medium">{t('log_out')}</p>
@@ -477,12 +468,6 @@ export default function AvatarDropdown({ className = '' }: Props) {
 													<p className="text-sm font-medium">{t('wishlist')}</p>
 												</div>
 											</Link>
-											<div
-												onClick={() => signOut({ callbackUrl: '/' })}
-												className="ml-4"
-											>
-												<p className="text-sm font-medium">{t('log_out')}</p>
-											</div>
 										</>
 									)}
 								</div>

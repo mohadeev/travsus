@@ -1,6 +1,6 @@
 export const dynamic = "force-dynamic";
 import { NextRequest, NextResponse } from 'next/server'
-import prisma from '@/prisma' // Adjust this path according to your project structure
+import { db, T, must } from '@/lib/db'
 import getUserData from '@/app/api/user/getUserData' // Assuming this is the utility function to fetch user data
 
 export async function GET(request: NextRequest) {
@@ -19,21 +19,15 @@ export async function GET(request: NextRequest) {
 		const userId = userData.id // Get the userId from userData
 
 		// Fetch all bookings for the authenticated user
-		const bookings = await prisma.booking.findMany({
-			where: {
-				customerId: userId, // Replace with the actual customer ID
-			},
-			include: {
-				tour: true, // Optionally include tour details
-			},
-		})
+		const bookings = must(
+			await db.from(T.bookings).select(`*, tour:${T.tours}(*)`).eq('customerId', userId),
+		)
 
 		// If no bookings are found, return a message indicating this
 		if (bookings.length === 0) {
 			return NextResponse.json([], { status: 404 })
 		}
 
-		console.log('bookings:', bookings)
 		// Return the bookings data
 		return NextResponse.json(bookings, { status: 200 })
 	} catch (error) {
@@ -42,8 +36,5 @@ export async function GET(request: NextRequest) {
 			{ message: 'Error fetching bookings' },
 			{ status: 500 },
 		)
-	} finally {
-		// Close the Prisma client connection
-		await prisma.$disconnect()
 	}
 }

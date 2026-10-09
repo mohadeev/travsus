@@ -1,14 +1,12 @@
 'use client'
 
 import { useState } from 'react'
-import { useSelector } from 'react-redux'
 import { ChevronDown, ChevronUp, Check } from 'lucide-react'
 import { useTranslations } from '@/lib/i18n'
+import { useTourService } from '../TourServiceContext'
 
 const Included = () => {
-	const { inclusions }: any = useSelector(
-		(state: any) => state.creatingServiceSlice.service,
-	)
+	const { inclusions }: any = useTourService()
 	const [isOpen, setIsOpen] = useState(false)
 	const t = useTranslations('newServicedetailListingExperiencesDetailIncluded')
 

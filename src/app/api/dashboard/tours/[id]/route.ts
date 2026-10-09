@@ -1,55 +1,52 @@
-export const dynamic = "force-dynamic";
+export const dynamic = 'force-dynamic'
 import { type NextRequest, NextResponse } from 'next/server'
-import prisma from '@/prisma'
 import getUserData from '@/app/api/user/getUserData'
+import { db, T, must, touch } from '@/lib/db'
+import { getBusinessId, PROTECTED_TOUR_FIELDS } from '../ownTour'
 
-export async function GET(
-	request: NextRequest,
-	{ params }: { params: { id: string } },
-) {
-	try {
-		const id = params.id
+type Params = { params: { id: string } }
 
-		// Get the current user
-		const userData = await getUserData()
-
-		// Check if user is authenticated
-		if (!userData || !userData.id) {
-			return NextResponse.json(
+/** Resolves the signed-in user's business, or an error response. */
+async function requireBusiness() {
+	const userData = await getUserData()
+	if (!userData || !userData.id) {
+		return {
+			error: NextResponse.json(
 				{ message: 'User not found or not authenticated' },
 				{ status: 401 },
-			)
+			),
 		}
-
-		// Get the business associated with this user
-		const business = await prisma.business.findFirst({
-			where: {
-				creatorId: userData.id,
-			},
-		})
-
-		// If no business found, return error
-		if (!business) {
-			return NextResponse.json(
+	}
+	const businessId = await getBusinessId(userData.id)
+	if (!businessId) {
+		return {
+			error: NextResponse.json(
 				{ message: 'No business found for this user' },
 				{ status: 404 },
-			)
+			),
 		}
+	}
+	return { businessId }
+}
 
-		// Get the tour
-		const tour = await prisma.tour.findFirst({
-			where: {
-				id,
-				businessId: business.id,
-			},
-			include: {
-				bookings: {
-					select: {
-						id: true,
-					},
-				},
-			},
-		})
+const notFound = () =>
+	NextResponse.json(
+		{ message: 'Tour not found or does not belong to your business' },
+		{ status: 404 },
+	)
+
+export async function GET(request: NextRequest, { params }: Params) {
+	try {
+		const { businessId, error } = await requireBusiness()
+		if (error) return error
+
+		const tour = must(
+			await db
+				.from(T.tours)
+				.select(`*, bookings:${T.bookings}(id)`)
+				.match({ id: params.id, businessId })
+				.maybeSingle(),
+		)
 
 		if (!tour) {
 			return NextResponse.json({ message: 'Tour not found' }, { status: 404 })
@@ -62,150 +59,63 @@ export async function GET(
 			{ message: 'Error fetching tour' },
 			{ status: 500 },
 		)
-	} finally {
-		await prisma.$disconnect()
 	}
 }
 
-export async function PUT(
-	request: NextRequest,
-	{ params }: { params: { id: string } },
-) {
+export async function PUT(request: NextRequest, { params }: Params) {
 	try {
-		const id = params.id
+		const { businessId, error } = await requireBusiness()
+		if (error) return error
 
-		// Get the current user
-		const userData = await getUserData({})
-		console.log('userData: ', userData)
+		const body: Record<string, any> = (await request.json()) ?? {}
+		const changes = { ...body }
+		for (const field of PROTECTED_TOUR_FIELDS) delete changes[field]
 
-		// Check if user is authenticated
-		if (!userData || !userData.id) {
-			return NextResponse.json(
-				{ message: 'User not found or not authenticated' },
-				{ status: 401 },
-			)
-		}
+		const updatedTour = must(
+			await db
+				.from(T.tours)
+				.update(touch({ ...changes, updated: true }))
+				.match({ id: params.id, businessId })
+				.select('*')
+				.maybeSingle(),
+		)
 
-		// Get the business associated with this user
-		const business = await prisma.business.findFirst({
-			where: {
-				creatorId: userData.id,
-			},
-		})
+		if (!updatedTour) return notFound()
 
-		// If no business found, return error
-		if (!business) {
-			return NextResponse.json(
-				{ message: 'No business found for this user' },
-				{ status: 404 },
-			)
-		}
-
-		// Parse the request body
-		const body: any = await request.json()
-
-		// Get the tour to ensure it belongs to this business
-		const existingTour = await prisma.tour.findFirst({
-			where: {
-				id,
-				businessId: business.id,
-			},
-		})
-
-		if (!existingTour) {
-			return NextResponse.json(
-				{ message: 'Tour not found or does not belong to your business' },
-				{ status: 404 },
-			)
-		}
-
-		// Update the tour
-		let newObject
-		if (body) {
-			const { id, ...dataNewObject }: any = body
-			newObject = dataNewObject
-		}
-		console.log('newObject:', newObject)
-
-		const updatedTour = await prisma.tour.update({
-			where: {
-				id,
-			},
-			data: {
-				...newObject,
-				updated: true,
-			},
-		})
-
-		return NextResponse.json({
-			success: true,
-			tour: updatedTour,
-		})
+		return NextResponse.json({ success: true, tour: updatedTour })
 	} catch (error) {
 		console.error('Error updating tour:', error)
 		return NextResponse.json(
 			{ message: 'Error updating tour', success: false },
 			{ status: 500 },
 		)
-	} finally {
-		await prisma.$disconnect()
 	}
 }
 
-export async function DELETE(
-	request: NextRequest,
-	{ params }: { params: { id: string } },
-) {
+export async function DELETE(request: NextRequest, { params }: Params) {
 	try {
-		const id = params.id
+		const { businessId, error } = await requireBusiness()
+		if (error) return error
 
-		// Get the current user
-		const userData = await getUserData()
+		const tour = must(
+			await db
+				.from(T.tours)
+				.select(`id, bookings:${T.bookings}(count)`)
+				.match({ id: params.id, businessId })
+				.maybeSingle(),
+		)
+		if (!tour) return notFound()
 
-		// Check if user is authenticated
-		if (!userData || !userData.id) {
+		// Tours with bookings can't be deleted (keeps booking history intact)
+		if ((tour as any).bookings?.[0]?.count > 0) {
 			return NextResponse.json(
-				{ message: 'User not found or not authenticated' },
-				{ status: 401 },
+				{ message: 'This tour has bookings and cannot be deleted', success: false },
+				{ status: 409 },
 			)
 		}
 
-		// Get the business associated with this user
-		const business = await prisma.business.findFirst({
-			where: {
-				creatorId: userData.id,
-			},
-		})
-
-		// If no business found, return error
-		if (!business) {
-			return NextResponse.json(
-				{ message: 'No business found for this user' },
-				{ status: 404 },
-			)
-		}
-
-		// Get the tour to ensure it belongs to this business
-		const existingTour = await prisma.tour.findFirst({
-			where: {
-				id,
-				businessId: business.id,
-			},
-		})
-
-		if (!existingTour) {
-			return NextResponse.json(
-				{ message: 'Tour not found or does not belong to your business' },
-				{ status: 404 },
-			)
-		}
-
-		// Delete the tour
-		await prisma.tour.delete({
-			where: {
-				id,
-			},
-		})
+		must(await db.from(T.reviews).delete().eq('tourId', params.id))
+		must(await db.from(T.tours).delete().eq('id', params.id))
 
 		return NextResponse.json({
 			success: true,
@@ -217,7 +127,5 @@ export async function DELETE(
 			{ message: 'Error deleting tour', success: false },
 			{ status: 500 },
 		)
-	} finally {
-		await prisma.$disconnect()
 	}
 }

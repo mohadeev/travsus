@@ -1,6 +1,4 @@
-import { PrismaClient } from '@prisma/client'
-
-const prisma = new PrismaClient()
+import { db, T, must, withMeta } from '@/lib/db'
 
 function generateRandomCode(length: number = 8) {
 	const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
@@ -17,50 +15,49 @@ function generateRandomCode(length: number = 8) {
  */
 export async function createReferralLink(userId: string) {
 	try {
-		const user = await prisma.user.findUnique({
-			where: { id: userId },
-		})
+		const user: any = must(
+			await db.from(T.users).select('accountData').eq('id', userId).maybeSingle(),
+		)
 
 		if (!user) throw new Error('User not found')
 
 		const firstname = user.accountData?.firstname || ''
 		const lastname = user.accountData?.lastname || ''
 
-		let baseCode = ''
+		const baseCode =
+			firstname || lastname
+				? `${firstname}${lastname}`.replace(/\s+/g, '').toLowerCase()
+				: generateRandomCode(8)
 
-		if (firstname || lastname) {
-			baseCode = `${firstname}${lastname}`.replace(/\s+/g, '').toLowerCase()
-		} else {
-			baseCode = generateRandomCode(8)
-		}
+		const { count } = await db
+			.from(T.referralLinks)
+			.select('id', { count: 'exact', head: true })
+			.like('code', `${baseCode.replace(/[%_]/g, '\\$&')}%`)
 
-		const existingLinks = await prisma.referralLink.findMany({
-			where: { code: { startsWith: baseCode } },
-		})
+		const finalCode = count ? `${baseCode}${count + 1}` : baseCode
 
-		let finalCode = baseCode
-		if (existingLinks.length > 0) {
-			finalCode = `${baseCode}${existingLinks.length + 1}`
-		}
-
-		// Create the referral link with owner commission and client discount
-		const referralLink = await prisma.referralLink.create({
-			data: {
-				user: { connect: { id: userId } },
-				code: finalCode,
-				commissionType: 'PERCENTAGE', // Owner commission
-				commissionValue: 10, // 10% for owner
-				clientDiscount: 5, // 5% discount for client
-				isLifetime: true,
-			},
-		})
+		// Owner gets 10% commission, client gets 5% discount
+		const referralLink = must(
+			await db
+				.from(T.referralLinks)
+				.insert(
+					withMeta({
+						userId,
+						code: finalCode,
+						commissionType: 'PERCENTAGE',
+						commissionValue: 10,
+						clientDiscount: 5,
+						isLifetime: true,
+					}),
+				)
+				.select('*')
+				.single(),
+		)
 
 		console.log('✅ Referral link created:', referralLink)
 		return referralLink
 	} catch (error) {
 		console.error('❌ Error creating referral link:', error)
 		throw error
-	} finally {
-		await prisma.$disconnect()
 	}
 }

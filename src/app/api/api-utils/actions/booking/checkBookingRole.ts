@@ -1,12 +1,10 @@
 import { NextRequest } from 'next/server'
-import { PrismaClient } from '@prisma/client'
 import getUserData from '@/app/api/user/getUserData'
-
-const prisma = new PrismaClient()
+import { db, T, must } from '@/lib/db'
 
 export async function checkBookingRole(request: NextRequest) {
 	try {
-		const { id: currentUserId }: any = await getUserData({})
+		const { id: currentUserId }: any = (await getUserData({})) ?? {}
 		const referer = request.headers.get('referer') || ''
 		const url = new URL(referer)
 		const searchParams = url.searchParams
@@ -29,7 +27,7 @@ export async function checkBookingRole(request: NextRequest) {
 			}
 		}
 
-		// Validate bookingId format (assuming it's a MongoDB ObjectId)
+		// Ids are 24-char hex strings
 		const objectIdRegex = /^[0-9a-fA-F]{24}$/
 		if (!objectIdRegex.test(bookingId)) {
 			return {
@@ -40,13 +38,13 @@ export async function checkBookingRole(request: NextRequest) {
 		}
 
 		// Fetch the booking
-		const booking = await prisma.booking.findUnique({
-			where: { id: bookingId },
-			include: {
-				customer: true,
-				provider: true,
-			},
-		})
+		const booking = must(
+			await db
+				.from(T.bookings)
+				.select('id, bookingState, customerId, providerId')
+				.eq('id', bookingId)
+				.maybeSingle(),
+		)
 
 		if (!booking) {
 			return { error: 'Booking not found', allowed: false, status: 404 }
@@ -77,7 +75,5 @@ export async function checkBookingRole(request: NextRequest) {
 			return { error: error.message, allowed: false, status: 500 }
 		}
 		return { error: 'Internal server error', allowed: false, status: 500 }
-	} finally {
-		await prisma.$disconnect()
 	}
 }

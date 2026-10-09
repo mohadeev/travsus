@@ -5,9 +5,9 @@ import React, { FC, useEffect, useState } from 'react'
 import ButtonPrimary from '@/shared/ButtonPrimary'
 import Image from 'next/image'
 // import LineItemsBreakdown from '../../(service-detail)/[listingExperiencesDetail]/LineItemsBreakdown'
-import { useDispatch, useSelector } from 'react-redux'
+import { useAppDispatch, useAppSelector } from '@/store/hooks'
 import getFetchDataFromApi from '@/utils/getFetchDataFromApi'
-import { updateBookingState } from '@/app/[locale]/GlobalRedux/Features/bookingSlice/bookingSlice'
+import { selectBooking, setBooking } from '@/store/slices/booking'
 import { useSearchParams } from 'next/navigation'
 import { Button } from '@/components/ui'
 import converSelectedDateToString from '@/utils/converSelectedDateToString'
@@ -19,10 +19,10 @@ export interface PayPageProps {}
 
 const PayPage: FC<PayPageProps> = () => {
 	const t = useTranslations('Jan03_PayPage_m5k8')
-	const { booking, status } = useSelector((state: any) => state.bookingSlice)
-	const { guests, lineItems, accommodation, transport, bookOwnHotels } = booking
+	const booking = useAppSelector(selectBooking)
+	const { guests, lineItems } = booking
 	const searchParams = useSearchParams()
-	const dispatch = useDispatch()
+	const dispatch = useAppDispatch()
 	const step = searchParams.get('step')
 	const bookingId = searchParams.get('bookingId')
 
@@ -35,9 +35,7 @@ const PayPage: FC<PayPageProps> = () => {
 						bookingId: bookingId,
 					},
 				)
-				if (bookingData) {
-					dispatch(updateBookingState({ path: 'booking', value: bookingData }))
-				}
+				if (bookingData) dispatch(setBooking(bookingData))
 			} catch (error) {
 				console.error(error)
 			}

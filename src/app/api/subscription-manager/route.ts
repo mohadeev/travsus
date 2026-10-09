@@ -1,27 +1,25 @@
 export const dynamic = "force-dynamic";
 import { NextRequest, NextResponse } from 'next/server'
-import { PrismaClient } from '@prisma/client'
 import getUserData from '../user/getUserData'
-// import getUserData from '../../lib/getUserData'
+import { db, T, must, touch } from '@/lib/db'
 
-let prisma: PrismaClient = new PrismaClient()
-
-// try {
-// 	prisma = new PrismaClient()
-// } catch (error) {
-// 	console.error('Failed to initialize Prisma client:', error)
-// 	prisma = null
-// }
+/** Subscriptions are looked up by email, by unsubscribe token, or both. */
+async function findSubscription(
+	{ email, token }: { email?: string | null; token?: string | null },
+	columns = '*',
+) {
+	let query = db.from(T.newsletter).select(columns)
+	if (email) query = query.eq('email', email)
+	if (token) query = query.contains('tokens', [{ token }])
+	return must(await query.limit(1).maybeSingle()) as any
+}
 
 const VALID_TYPES = ['deals', 'tips', 'reviews', 'inspiration']
 
 export async function GET(request: NextRequest) {
-	console.log('GET request received')
 	const userData = await getUserData({})
 	const email = userData?.email
 	const token = request.nextUrl.searchParams.get('token')
-	console.log('Token:', token)
-	console.log('User email:', email)
 
 	if (!email && !token) {
 		console.log('Invalid request: No email or token provided')
@@ -34,35 +32,12 @@ export async function GET(request: NextRequest) {
 		)
 	}
 
-	if (!prisma) {
-		console.error('Prisma client is not initialized')
-		return NextResponse.json(
-			{ success: false, message: 'Internal server error' },
-			{ status: 500 },
-		)
-	}
-
 	try {
 		let subscription
 
 		if (email && token) {
 			// Both email and token provided, check for mismatch
-			subscription = await prisma.newsletterSubscription.findFirst({
-				where: {
-					email: email,
-					tokens: {
-						some: {
-							token: token,
-						},
-					},
-				},
-				select: {
-					id: true,
-					email: true,
-					types: true,
-					subscribed: true,
-				},
-			})
+			subscription = await findSubscription({ email, token }, 'id, email, types, subscribed')
 
 			if (!subscription) {
 				console.log('Email mismatch or invalid token')
@@ -78,33 +53,11 @@ export async function GET(request: NextRequest) {
 			}
 		} else if (email) {
 			// Only email provided
-			subscription = await prisma.newsletterSubscription.findUnique({
-				where: { email },
-				select: {
-					types: true,
-					subscribed: true,
-					email: true,
-				},
-			})
+			subscription = await findSubscription({ email }, 'types, subscribed, email')
 		} else if (token) {
 			// Only token provided (user is not logged in)
-			subscription = await prisma.newsletterSubscription.findFirst({
-				where: {
-					tokens: {
-						some: {
-							token: token,
-						},
-					},
-				},
-				select: {
-					types: true,
-					subscribed: true,
-					email: true,
-				},
-			})
+			subscription = await findSubscription({ token }, 'types, subscribed, email')
 		}
-
-		console.log('Fetched subscription:', subscription)
 
 		if (!subscription) {
 			console.log('Subscription not found')
@@ -113,8 +66,6 @@ export async function GET(request: NextRequest) {
 				{ status: 404 },
 			)
 		}
-
-		console.log('Returning subscription data')
 		return NextResponse.json({
 			success: true,
 			types: subscription.types,
@@ -134,13 +85,9 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: Request) {
-	console.log('POST request received')
 	const userData = await getUserData({})
 	const email = userData?.email
 	const { token, types } = await request.json()
-	console.log('Received token:', token)
-	console.log('Received types to keep:', types)
-	console.log('User email:', email)
 
 	if (!email && !token) {
 		console.log('Invalid request: No email or token provided')
@@ -153,18 +100,10 @@ export async function POST(request: Request) {
 		)
 	}
 
-	if (!prisma) {
-		console.error('Prisma client is not initialized')
-		return NextResponse.json(
-			{ success: false, message: 'Internal server error' },
-			{ status: 500 },
-		)
-	}
-
 	// Validate types
 	if (
 		!Array.isArray(types) ||
-		!types.every((type) => VALID_TYPES.includes(type))
+		!types.every((type: string) => VALID_TYPES.includes(type))
 	) {
 		return NextResponse.json(
 			{ success: false, message: 'Invalid types provided' },
@@ -173,28 +112,15 @@ export async function POST(request: Request) {
 	}
 
 	try {
-		console.log('Fetching subscription data')
 		let subscription
 
 		if (token) {
 			// Token provided (user might not be logged in)
-			subscription = await prisma.newsletterSubscription.findFirst({
-				where: {
-					tokens: {
-						some: {
-							token: token,
-						},
-					},
-				},
-			})
+			subscription = await findSubscription({ token })
 		} else if (email) {
 			// Only email provided (user is logged in)
-			subscription = await prisma.newsletterSubscription.findUnique({
-				where: { email },
-			})
+			subscription = await findSubscription({ email })
 		}
-
-		console.log('Fetched subscription:', subscription)
 
 		if (!subscription) {
 			console.log('Subscription not found')
@@ -204,23 +130,19 @@ export async function POST(request: Request) {
 			)
 		}
 
-		const removedTypes = subscription.types.filter(
-			(type) => !types.includes(type),
+		const removedTypes = (subscription.types ?? []).filter(
+			(type: string) => !types.includes(type),
 		)
-		console.log('Types removed:', removedTypes)
-
-		console.log('Updating subscription')
-		const updatedSubscription = await prisma.newsletterSubscription.update({
-			where: { id: subscription.id },
-			data: {
-				subscribed: types.length > 0,
-				types: types,
-			},
-		})
-		console.log('Updated subscription:', updatedSubscription)
+		const updatedSubscription = must(
+			await db
+				.from(T.newsletter)
+				.update(touch({ subscribed: types.length > 0, types }))
+				.eq('id', subscription.id)
+				.select('types')
+				.single(),
+		)
 
 		if (types.length === 0) {
-			console.log('User unsubscribed from all newsletters')
 			return NextResponse.json({
 				success: true,
 				message:
@@ -228,7 +150,6 @@ export async function POST(request: Request) {
 				types: [],
 			})
 		} else {
-			console.log('User updated newsletter preferences')
 			return NextResponse.json({
 				success: true,
 				message:

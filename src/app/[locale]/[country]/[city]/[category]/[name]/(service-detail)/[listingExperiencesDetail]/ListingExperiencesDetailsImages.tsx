@@ -2,13 +2,13 @@
 
 import type { FC } from 'react'
 import { Squares2X2Icon, PlayIcon } from '@heroicons/react/24/outline'
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
-import { useSelector } from 'react-redux'
+import { usePathname, useRouter } from 'next/navigation'
 import { SkeletonLoader } from './SkeletonLoader'
 import Image from 'next/image'
 import type { Route } from 'next'
 import { useTranslations } from '@/lib/i18n'
 import { useState } from 'react'
+import { useTourService } from '../TourServiceContext'
 
 export type ListingExperiencesDetailsImagesProps = {}
 
@@ -16,14 +16,14 @@ const ListingExperiencesDetailsImages: FC<
 	ListingExperiencesDetailsImagesProps
 > = ({}) => {
 	const router = useRouter()
-	const searchParams = useSearchParams()
 	const pathname = usePathname()
 	const [imageLoadErrors, setImageLoadErrors] = useState<Set<number>>(new Set())
 
 	const t = useTranslations('ListingExperiencesDetailsImages')
 
 	const handleOpenModalImageGallery = (photoId: number) => {
-		const current = new URLSearchParams(Array.from(searchParams.entries()))
+		// Read the query string at click time (keeps the page cacheable)
+		const current = new URLSearchParams(window.location.search)
 		current.set('modal', 'PHOTO_TOUR_SCROLLABLE')
 		current.set('photoId', photoId.toString())
 		const search = current.toString()
@@ -35,9 +35,7 @@ const ListingExperiencesDetailsImages: FC<
 		setImageLoadErrors((prev) => new Set(prev).add(index))
 	}
 
-	const { images }: any = useSelector(
-		(state: any) => state.creatingServiceSlice.service,
-	)
+	const { images }: any = useTourService()
 
 	const PHOTOS: any = images?.map(({ url }: any) => url) || []
 	const totalPhotos = PHOTOS.length

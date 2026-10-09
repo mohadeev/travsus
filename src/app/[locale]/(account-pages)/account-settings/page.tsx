@@ -14,7 +14,8 @@ import {
 	MapPin,
 } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
-import { useSelector } from 'react-redux'
+import { useAppSelector } from '@/store/hooks'
+import { selectUser } from '@/store/slices/user'
 import { useTranslations } from '@/lib/i18n'
 
 export default function AccountPage() {
@@ -84,7 +85,7 @@ export default function AccountPage() {
 		},
 	]
 
-	const { userData } = useSelector((state: any) => state.userReducer)
+	const userData = useAppSelector(selectUser)
 	const userEmail = userData?.email || 'user@example.com'
 	const userName =
 		userData?.name || userData?.accountData?.firstname || t('default_username')

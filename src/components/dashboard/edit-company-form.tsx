@@ -5,8 +5,8 @@ import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
-import { useDispatch } from 'react-redux'
-import { fetchCompanies } from '@/app/[locale]/GlobalRedux/Features/companySlice/companySlice'
+import { useAppDispatch } from '@/store/hooks'
+import { fetchCompanies } from '@/store/slices/company'
 import { Button } from '@/components/ui/button'
 import {
 	Form,
@@ -22,7 +22,6 @@ import { Textarea } from '@/components/ui/textarea'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { toast } from '@/components/ui/use-toast'
 import { Building, Hotel } from 'lucide-react'
-import type { AppDispatch } from '@/app/[locale]/GlobalRedux/store'
 
 // Define the form schema
 const formSchema = z.object({
@@ -43,7 +42,7 @@ interface EditCompanyFormProps {
 
 export function EditCompanyForm({ company }: EditCompanyFormProps) {
 	const router = useRouter()
-	const dispatch = useDispatch<AppDispatch>()
+	const dispatch = useAppDispatch()
 	const [isSubmitting, setIsSubmitting] = useState(false)
 
 	// Initialize the form with company data

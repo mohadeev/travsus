@@ -1,27 +1,17 @@
-export const dynamic = "force-dynamic";
+export const dynamic = 'force-dynamic'
 import { type NextRequest, NextResponse } from 'next/server'
-import { PrismaClient } from '@prisma/client'
-
-const prisma = new PrismaClient()
+import { db, T, must, touch } from '@/lib/db'
+import { canEdit, currentUser } from '@/lib/guards'
+import { REVIEW_SELECT, localizeReview } from '@/lib/reviews'
 
 function extractLanguageFromRequest(request: NextRequest): string {
-	// Try to get language from query parameter first
-	const url = new URL(request.url)
-	const langQuery = url.searchParams.get('lang')
+	// ?lang= first, then the first Accept-Language entry, then en-US
+	const langQuery = new URL(request.url).searchParams.get('lang')
+	if (langQuery) return langQuery
 
-	if (langQuery) {
-		return langQuery
-	}
-
-	// Try to get language from Accept-Language header
 	const acceptLanguage = request.headers.get('accept-language')
-	if (acceptLanguage) {
-		// Get the first language from the header (e.g., "en-US,en;q=0.9" -> "en-US")
-		const firstLanguage = acceptLanguage.split(',')[0].trim()
-		return firstLanguage
-	}
+	if (acceptLanguage) return acceptLanguage.split(',')[0].trim()
 
-	// Default fallback
 	return 'en-US'
 }
 
@@ -30,103 +20,37 @@ export async function PATCH(
 	{ params }: { params: { id: string } },
 ) {
 	try {
+		const existing = must(
+			await db.from(T.reviews).select('userId').eq('id', params.id).maybeSingle(),
+		)
+		if (!existing) {
+			return NextResponse.json({ error: 'Review not found' }, { status: 404 })
+		}
+		if (!canEdit(await currentUser(), existing.userId)) {
+			return NextResponse.json({ error: 'Not allowed' }, { status: 403 })
+		}
+
 		const { travelDate } = await request.json()
 		const language = extractLanguageFromRequest(request)
 
-		console.log('[Review Update] Requested language:', language)
+		const updatedReview = must(
+			await db
+				.from(T.reviews)
+				.update(touch({ travelDate1: new Date(travelDate).toISOString() }))
+				.eq('id', params.id)
+				.select(REVIEW_SELECT)
+				.single(),
+		)
 
-		const updatedReview = await prisma.review.update({
-			where: { id: params.id },
-			data: { travelDate1: new Date(travelDate) },
-			include: {
-				user: {
-					select: {
-						accountData: true,
-						profileImage: true,
-					},
-				},
-				titleContent: {
-					include: {
-						translations: {
-							where: {
-								languageCode: language,
-							},
-						},
-					},
-				},
-				contentContent: {
-					include: {
-						translations: {
-							where: {
-								languageCode: language,
-							},
-						},
-					},
-				},
-			},
+		return NextResponse.json({
+			success: true,
+			review: localizeReview(updatedReview, language),
 		})
-
-		console.log('[Review Update] Updated review:', updatedReview.id)
-		console.log(
-			'[Review Update] Review titleContent:',
-			updatedReview.titleContent,
-		)
-		console.log(
-			'[Review Update] Review contentContent:',
-			updatedReview.contentContent,
-		)
-
-		let translatedTitle = updatedReview.title
-		let translatedContent = updatedReview.content
-
-		// Check if titleContent exists and has translations
-		if (updatedReview.titleContent?.translations?.length > 0) {
-			translatedTitle = updatedReview.titleContent.translations[0].text
-			console.log(
-				'[Review Update] Using translated title for review',
-				updatedReview.id,
-			)
-		} else {
-			console.log(
-				'[Review Update] Using original title for review',
-				updatedReview.id,
-				'- no translations found',
-			)
-		}
-
-		// Check if contentContent exists and has translations
-		if (updatedReview.contentContent?.translations?.length > 0) {
-			translatedContent = updatedReview.contentContent.translations[0].text
-			console.log(
-				'[Review Update] Using translated content for review',
-				updatedReview.id,
-			)
-		} else {
-			console.log(
-				'[Review Update] Using original content for review',
-				updatedReview.id,
-				'- no translations found',
-			)
-		}
-
-		const translatedReview = {
-			...updatedReview,
-			title: translatedTitle,
-			content: translatedContent,
-			language: language,
-			// Remove the translation objects from response to keep it clean
-			titleContent: undefined,
-			contentContent: undefined,
-		}
-
-		return NextResponse.json({ success: true, review: translatedReview })
 	} catch (error) {
 		console.error('Error updating review:', error)
 		return NextResponse.json(
 			{ error: 'Failed to update review' },
 			{ status: 500 },
 		)
-	} finally {
-		await prisma.$disconnect()
 	}
 }

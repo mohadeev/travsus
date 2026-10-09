@@ -1,24 +1,19 @@
-export const dynamic = "force-dynamic";
+export const dynamic = 'force-dynamic'
 import { NextRequest, NextResponse } from 'next/server'
-import { PrismaClient } from '@prisma/client'
-
-const prisma = new PrismaClient()
+import { db, T, must } from '@/lib/db'
+import { POST_WITH_AUTHOR } from '@/app/actions/blogSelect'
 
 export async function GET(request: NextRequest) {
-	const searchParams = request.nextUrl.searchParams
-	const id = searchParams.get('id')
+	const id = request.nextUrl.searchParams.get('id')
 
 	if (!id) {
 		return NextResponse.json({ error: 'Post ID is required' }, { status: 400 })
 	}
 
 	try {
-		const post = await prisma.post.findUnique({
-			where: { id },
-			include: {
-				author: true,
-			},
-		})
+		const post = must(
+			await db.from(T.posts).select(POST_WITH_AUTHOR).eq('id', id).maybeSingle(),
+		)
 		if (!post) {
 			return NextResponse.json({ error: 'Post not found' }, { status: 404 })
 		}

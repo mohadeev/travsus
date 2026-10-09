@@ -1,9 +1,8 @@
 'use server'
 
-import { PrismaClient } from '@prisma/client'
 import sgMail from '@sendgrid/mail'
+import { db, T, must, newId } from '@/lib/db'
 
-const prisma = new PrismaClient()
 sgMail.setApiKey(process.env.SENDGRID_API_KEY as string)
 
 export async function submitReport(formData: FormData) {
@@ -22,17 +21,25 @@ export async function submitReport(formData: FormData) {
 	}
 
 	try {
-		const report = await prisma.whistleblowerReport.create({
-			data: {
-				title,
-				description,
-				category,
-				urgencyLevel,
-				involvedParties: involvedParties || null,
-				dateOfIncident: dateOfIncident ? new Date(dateOfIncident) : null,
-				additionalInfo: additionalInfo || null,
-			},
-		})
+		const now = new Date().toISOString()
+		const report = must(
+			await db
+				.from(T.reports)
+				.insert({
+					id: newId(),
+					title,
+					description,
+					category,
+					urgencyLevel,
+					involvedParties: involvedParties || null,
+					dateOfIncident: dateOfIncident ? new Date(dateOfIncident).toISOString() : null,
+					additionalInfo: additionalInfo || null,
+					submittedAt: now,
+					lastUpdated: now,
+				})
+				.select('id')
+				.single(),
+		)
 
 		// Prepare email content
 		const emailContent = `

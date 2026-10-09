@@ -1,13 +1,10 @@
 export const dynamic = "force-dynamic";
-import { placesClient } from '@/lib/prisma'
+import { db, T, must, newId, touch } from '@/lib/db'
+import { GEO_CONTENT, keepTranslations } from '@/lib/geo'
+import { adminOnly } from '@/lib/guards'
 import { NextResponse } from 'next/server'
-import OpenAI from 'openai'
+import { openai } from '@/lib/openai'
 
-// Initialize OpenAI
-const openai = new OpenAI({
-	apiKey:
-		'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',
-})
 
 /**
  * Generate a concise description for a location using OpenAI
@@ -57,6 +54,9 @@ async function generateDescription(
 
 export async function POST(request: Request) {
 	try {
+		const denied = await adminOnly()
+		if (denied) return denied
+
 		const { id, type, imageUrl } = await request.json()
 
 		if (!id || !type || !imageUrl) {
@@ -74,20 +74,11 @@ export async function POST(request: Request) {
 			)
 		}
 
-		const prisma = placesClient
-
 		if (type === 'country') {
 			// Get the current country data with content and translations
-			const country = await prisma.country.findUnique({
-				where: { id },
-				include: {
-					content: {
-						include: {
-							translations: true,
-						},
-					},
-				},
-			})
+			const country: any = must(
+				await db.from(T.countries).select(`*, ${GEO_CONTENT}`).eq('id', id).maybeSingle(),
+			)
 
 			if (!country) {
 				return NextResponse.json(
@@ -96,25 +87,17 @@ export async function POST(request: Request) {
 				)
 			}
 
-			// Update the country with the new image
-			// For MongoDB embedded documents, we need to use the `set` operation
-			await prisma.country.update({
-				where: { id },
-				data: {
-					image: {
-						set: {
-							url: '',
-							public_id: '',
-							uploadFrom: imageUrl,
-							// url and public_id will be added later by the background process
-						},
-					},
-				},
-			})
+			// url / public_id are filled in later by the image upload process
+			must(
+				await db
+					.from(T.countries)
+					.update(touch({ image: { url: '', public_id: '', uploadFrom: imageUrl } }))
+					.eq('id', id),
+			)
 
 			// Check if the country has a description
 			const hasDescription = country.content?.translations?.some(
-				(t) => t.type === 'description',
+				(t: any) => t.type === 'description',
 			)
 
 			// If no description, generate one
@@ -127,7 +110,7 @@ export async function POST(request: Request) {
 				) {
 					// Find name translation or use first available
 					const nameTranslation =
-						country.content.translations.find((t) => t.type === 'country') ||
+						country.content.translations.find((t: any) => t.type === 'country') ||
 						country.content.translations[0]
 					countryName = nameTranslation.text
 				}
@@ -136,15 +119,16 @@ export async function POST(request: Request) {
 				const description = await generateDescription(countryName, 'country')
 
 				// Save the description
-				await prisma.translatedText.create({
-					data: {
+				must(
+					await db.from(T.geoTexts).insert({
+						id: newId(),
 						contentId: country.content.id,
 						language: 'en-US',
 						text: description,
 						type: 'description',
 						code3: country.code3,
-					},
-				})
+					}),
+				)
 
 				console.log(
 					`Generated and saved description for country: ${countryName}`,
@@ -152,53 +136,35 @@ export async function POST(request: Request) {
 			}
 		} else if (type === 'city') {
 			// Get the current city data with content, translations, and country info
-			const city = await prisma.city.findUnique({
-				where: { id },
-				include: {
-					content: {
-						include: {
-							translations: true,
-						},
-					},
-					country: {
-						select: {
-							code3: true,
-							content: {
-								include: {
-									translations: {
-										where: {
-											language: 'en-US',
-											type: 'country',
-										},
-									},
-								},
-							},
-						},
-					},
-				},
-			})
+			const city: any = must(
+				await db
+					.from(T.cities)
+					.select(`*, ${GEO_CONTENT}, country:${T.countries}(code3, ${GEO_CONTENT})`)
+					.eq('id', id)
+					.maybeSingle(),
+			)
+			if (city?.country) {
+				city.country = keepTranslations(
+					city.country,
+					(t) => t.language === 'en-US' && t.type === 'country',
+				)
+			}
 
 			if (!city) {
 				return NextResponse.json({ error: 'City not found' }, { status: 404 })
 			}
 
-			// Update the city with the new image
-			// For MongoDB embedded documents, we need to use the `set` operation
-			await prisma.city.update({
-				where: { id },
-				data: {
-					image: {
-						set: {
-							uploadFrom: imageUrl,
-							// url and public_id will be added later by the background process
-						},
-					},
-				},
-			})
+			// url / public_id are filled in later by the image upload process
+			must(
+				await db
+					.from(T.cities)
+					.update(touch({ image: { uploadFrom: imageUrl } }))
+					.eq('id', id),
+			)
 
 			// Check if the city has a description
 			const hasDescription = city.content?.translations?.some(
-				(t) => t.type === 'description',
+				(t: any) => t.type === 'description',
 			)
 
 			// If no description, generate one
@@ -208,7 +174,7 @@ export async function POST(request: Request) {
 				if (city.content.translations && city.content.translations.length > 0) {
 					// Find name translation or use first available
 					const nameTranslation =
-						city.content.translations.find((t) => t.type === 'city') ||
+						city.content.translations.find((t: any) => t.type === 'city') ||
 						city.content.translations[0]
 					cityName = nameTranslation.text
 				}
@@ -230,15 +196,16 @@ export async function POST(request: Request) {
 				)
 
 				// Save the description
-				await prisma.translatedText.create({
-					data: {
+				must(
+					await db.from(T.geoTexts).insert({
+						id: newId(),
 						contentId: city.content.id,
 						language: 'en-US',
 						text: description,
 						type: 'description',
 						code3: city.country?.code3 || null,
-					},
-				})
+					}),
+				)
 
 				console.log(`Generated and saved description for city: ${cityName}`)
 			}

@@ -1,7 +1,7 @@
 'use client'
 
 import { type FC, useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useAppDispatch } from '@/store/hooks'
 import { useLocale } from 'next-intl'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { MapPinIcon } from '@heroicons/react/24/outline'
@@ -21,7 +21,7 @@ import slugifySecond from '@/utils/slugify'
 import { useTranslations } from '@/lib/i18n'
 import { slugify } from 'transliteration'
 import ListingBeforLoading from './ListingBeforLoading'
-import { updateServiceState } from '@/app/[locale]/GlobalRedux/Features/creatingServiceSlice/creatingServiceSlice'
+import { setTourPreview } from '@/store/slices/tourPage'
 
 export interface ExperiencesCardProps {
 	className?: string
@@ -45,7 +45,7 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 	const locale = useLocale()
 	const router = useRouter()
 	const searchParams = useSearchParams()
-	const dispatch = useDispatch()
+	const dispatch = useAppDispatch()
 
 	const [clickedCard, setClickedCard] = useState(false)
 	const [isLoading, setIsLoading] = useState(false)
@@ -103,7 +103,7 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 
 	const handleCardClick = () => {
 		setIsLoading(true)
-		dispatch(updateServiceState({ path: 'service', value: data }))
+		dispatch(setTourPreview(data))
 		router.push(href)
 		setClickedCard(true)
 		setTimeout(() => setClickedCard(false), 1000)

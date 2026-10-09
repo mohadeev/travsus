@@ -9,9 +9,15 @@ import 'rc-slider/assets/index.css'
 import logoImg from '@/images/logos/dark/travsus_black_and_white.png'
 
 import Script from 'next/script'
-import { getMessages } from 'next-intl/server'
+import { getMessages, setRequestLocale } from 'next-intl/server'
+import { routing } from '@/i18n/routing'
 
 import LocaleLayoutClient from './LocaleLayoutClient'
+
+// Lets pages be cached per language instead of rendered on every request
+export function generateStaticParams() {
+	return routing.locales.map((locale) => ({ locale }))
+}
 
 export default async function RootLayout({
 	children,
@@ -20,7 +26,8 @@ export default async function RootLayout({
 	children: React.ReactNode
 	params: { locale: string }
 }>) {
-	const messages = await getMessages()
+	setRequestLocale(locale)
+	const messages = await getMessages({ locale })
 	const isLocalhost = process.env.NODE_ENV === 'development'
 
 	return (

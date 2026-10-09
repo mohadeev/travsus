@@ -1,21 +1,16 @@
 'use server'
 
-import { PrismaClient } from '@prisma/client'
-
-const prisma = new PrismaClient()
+import { db, T, fetchAll } from '@/lib/db'
 
 export async function getCategoryCounts() {
 	try {
-		const categoryCounts = await prisma.forumPost.groupBy({
-			by: ['category'],
-			_count: {
-				_all: true,
-			},
-		})
+		const posts = await fetchAll<{ category: string }>(() =>
+			db.from(T.forumPosts).select('category').order('id'),
+		)
 
-		const counts = categoryCounts.reduce(
-			(acc, { category, _count }) => {
-				acc[category] = _count._all
+		const counts = posts.reduce(
+			(acc, { category }) => {
+				acc[category] = (acc[category] ?? 0) + 1
 				return acc
 			},
 			{} as Record<string, number>,

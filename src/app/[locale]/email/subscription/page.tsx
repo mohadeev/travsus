@@ -14,7 +14,6 @@ import {
 } from '@/components/ui/card'
 import { Checkbox } from '@/components/ui/checkbox'
 import { AlertCircle, CheckCircle } from 'lucide-react'
-import { useSession } from 'next-auth/react'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { Skeleton } from '@/components/ui/skeleton'
 import { useTranslations } from '@/lib/i18n'
@@ -63,7 +62,6 @@ export default function SubscriptionPage() {
 	const [tokenExpired, setTokenExpired] = useState(false)
 	const [greeting, setGreeting] = useState('')
 	const [isInitialLoad, setIsInitialLoad] = useState(true)
-	const { data: session } = useSession()
 
 	const token = searchParams.get('token')
 

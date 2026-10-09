@@ -1,7 +1,7 @@
 export const dynamic = "force-dynamic";
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
-import prisma from '@/lib/prisma'
+import { db, T, must, withMeta } from '@/lib/db'
 import { rateLimit } from '@/lib/rateLimit'
 import sendEmail from '@/utils/email/sendMail'
 
@@ -66,10 +66,9 @@ export async function POST(req: NextRequest) {
 					return
 				}
 
-				const existingSubscription =
-					await prisma.newsletterSubscription.findUnique({
-						where: { email },
-					})
+				const existingSubscription = must(
+					await db.from(T.newsletter).select('id').eq('email', email).maybeSingle(),
+				)
 
 				if (existingSubscription) {
 					resolve(
@@ -78,13 +77,11 @@ export async function POST(req: NextRequest) {
 					return
 				}
 
-				const subscription = await prisma.newsletterSubscription.create({
-					data: {
-						email,
-						types,
-						subscribed: true,
-					},
-				})
+				must(
+					await db
+						.from(T.newsletter)
+						.insert(withMeta({ email, types, subscribed: true, tokens: [] })),
+				)
 
 				await sendEmail({
 					to: email,

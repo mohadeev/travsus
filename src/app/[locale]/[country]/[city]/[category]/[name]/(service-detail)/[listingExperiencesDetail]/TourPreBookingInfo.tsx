@@ -10,17 +10,17 @@ import {
 	X,
 } from 'lucide-react'
 import { useTranslations } from '@/lib/i18n'
-import { toggleTawdWidget } from '@/app/[locale]/GlobalRedux/Features/overlaySlice/overlaySlice'
-import { useDispatch } from 'react-redux'
+import { openChat } from '@/store/slices/ui'
+import { useAppDispatch } from '@/store/hooks'
 import { useState } from 'react' // Added useState for modal state
 
 export default function BookingInfo() {
 	const t = useTranslations('BookingInfo')
-	const dispatch = useDispatch()
+	const dispatch = useAppDispatch()
 	const [isModalOpen, setIsModalOpen] = useState(false) // Added modal state
 
 	const hanelToggle = () => {
-		dispatch(toggleTawdWidget({ value: true }))
+		dispatch(openChat())
 	}
 	const textclassName = 'text-xs font-medium text-black underline'
 

@@ -2,8 +2,8 @@ import React, { FC, Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/solid'
 import RenderSidebar from '../[listingExperiencesDetail]/RenderSideBar/RenderSidebar'
-import { mobileFooterStickyToggleHanlder } from '@/app/[locale]/GlobalRedux/Features/overlaySlice/overlaySlice'
-import { useDispatch } from 'react-redux'
+import { useAppDispatch } from '@/store/hooks'
+import { setMobileReserveOpen } from '@/store/slices/ui'
 
 interface ModalReserveMobileProps {
 	renderChildren?: (p: { openModal: () => void }) => React.ReactNode
@@ -30,10 +30,10 @@ const ModalReserveMobile: FC<ModalReserveMobileProps> = ({
 			<button onClick={openModal}>Select Date</button>
 		)
 	}
-	const dispatch = useDispatch()
+	const dispatch = useAppDispatch()
 	const haneleClose = (closeModal: any) => {
 		closeModal()
-		dispatch(mobileFooterStickyToggleHanlder({ value: false }))
+		dispatch(setMobileReserveOpen(false))
 	}
 	return (
 		<>

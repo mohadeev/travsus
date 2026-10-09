@@ -1,24 +1,27 @@
 export const dynamic = "force-dynamic";
 import { type NextRequest, NextResponse } from 'next/server'
-import { PrismaClient } from '@prisma/client'
-import { getServerSession } from 'next-auth/next'
-import authOptions from '../auth/[...nextauth]/authOptions'
+import { getSession } from '@/lib/session'
 import extractLanguageFromRequest from '../listing/get/getTourData/extractLanguageFromRequest'
-
-const prisma = new PrismaClient()
+import { db, T, must, withMeta, asDate } from '@/lib/db'
+import { createTranslatableContent } from '@/lib/translations'
+import { REVIEW_SELECT, localizeReview } from '@/lib/reviews'
 
 export async function POST(req: NextRequest) {
 	try {
 		// Check authentication
-		const session = await getServerSession(authOptions)
+		const session = await getSession()
 		if (!session || !session.user) {
 			return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 		}
 
 		// Get user from session
-		const user = await prisma.user.findUnique({
-			where: { email: session.user.email as string },
-		})
+		const user = must(
+			await db
+				.from(T.users)
+				.select('id')
+				.eq('email', session.user.email as string)
+				.maybeSingle(),
+		)
 
 		if (!user) {
 			return NextResponse.json({ error: 'User not found' }, { status: 404 })
@@ -51,9 +54,7 @@ export async function POST(req: NextRequest) {
 		}
 
 		// Find the tour
-		const tour = await prisma.tour.findUnique({
-			where: { id: tourId },
-		})
+		const tour = must(await db.from(T.tours).select('id').eq('id', tourId).maybeSingle())
 
 		if (!tour) {
 			return NextResponse.json({ error: 'Tour not found' }, { status: 404 })
@@ -95,59 +96,37 @@ export async function POST(req: NextRequest) {
 		}
 
 		// Create translatable content for title and content
-		const titleContent = await prisma.translatableContent.create({
-			data: {
-				contentType: 'review_title',
-				entityId: tourId,
-				translations: {
-					create: {
-						languageCode: 'en-US', // Default language
-						text: reviewTitle,
-					},
-				},
-			},
-		})
+		// Title and text are stored as translatable content (en-US first)
+		const titleContentId = await createTranslatableContent('review_title', tourId, [
+			{ languageCode: 'en-US', text: reviewTitle },
+		])
+		const contentContentId = await createTranslatableContent(
+			'review_content',
+			tourId,
+			[{ languageCode: 'en-US', text: reviewText }],
+		)
 
-		const contentContent = await prisma.translatableContent.create({
-			data: {
-				contentType: 'review_content',
-				entityId: tourId,
-				translations: {
-					create: {
-						languageCode: 'en-US', // Default language
-						text: reviewText,
-					},
-				},
-			},
-		})
-
-		// Create the review using the new Review model
-		const review = await prisma.review.create({
-			data: {
-				tourId,
-				userId: user.id,
-				rating,
-				travelDate1: new Date(travelDate1),
-				travelType,
-				title: reviewTitle, // Keep original for fallback
-				content: reviewText, // Keep original for fallback
-				titleContentId: titleContent.id,
-				contentContentId: contentContent.id,
-				images: imageUrls,
-				isVerified: isAgreed,
-			},
-			include: {
-				user: {
-					select: {
-						id: true,
-						name: true,
-						username: true,
-						email: true,
-						profileImage: true,
-					},
-				},
-			},
-		})
+		const review: any = must(
+			await db
+				.from(T.reviews)
+				.insert(
+					withMeta({
+						tourId,
+						userId: user.id,
+						rating,
+						travelDate1: new Date(travelDate1).toISOString(),
+						travelType,
+						title: reviewTitle, // Kept as fallback
+						content: reviewText, // Kept as fallback
+						titleContentId,
+						contentContentId,
+						images: imageUrls,
+						isVerified: isAgreed,
+					}),
+				)
+				.select(`*, user:${T.users}(id, name, username, email, profileImage)`)
+				.single(),
+		)
 
 		// Format the response to match your frontend expectations
 		const formattedReview = {
@@ -163,27 +142,23 @@ export async function POST(req: NextRequest) {
 			travelDate1: review.travelDate1,
 			travelType: review.travelType,
 			images: review.images,
-			createdAt: review.createdAt.toISOString(),
-			updatedAt: review.updatedAt.toISOString(),
+			createdAt: asDate(review.createdAt)?.toISOString(),
+			updatedAt: asDate(review.updatedAt)?.toISOString(),
 		}
 
 		return NextResponse.json({ success: true, review: formattedReview })
 	} catch (error) {
+		console.error('Error creating review:', error)
 		return NextResponse.json(
 			{ error: 'Failed to create review' },
 			{ status: 500 },
 		)
-	} finally {
-		await prisma.$disconnect()
 	}
 }
 
 export async function GET(req: NextRequest) {
 	try {
-		const url = new URL(req.url)
-		const tourId = url.searchParams.get('serviceId')
-		const includeUser = true
-		const languageCode = url.searchParams.get('language') || 'en-US'
+		const tourId = new URL(req.url).searchParams.get('serviceId')
 
 		if (!tourId) {
 			return NextResponse.json(
@@ -192,85 +167,30 @@ export async function GET(req: NextRequest) {
 			)
 		}
 
-		// Check if tour exists
-		const tourExists = await prisma.tour.findUnique({
-			where: { id: tourId },
-			select: { id: true },
-		})
-
+		const tourExists = must(
+			await db.from(T.tours).select('id').eq('id', tourId).maybeSingle(),
+		)
 		if (!tourExists) {
 			return NextResponse.json({ error: 'Tour not found' }, { status: 404 })
 		}
 
-		// Fetch reviews with optional user data and translations
 		const language = extractLanguageFromRequest(req)
+		const reviews = must(
+			await db
+				.from(T.reviews)
+				.select(REVIEW_SELECT)
+				.eq('tourId', tourId)
+				.order('createdAt', { ascending: false })
+				.limit(10),
+		)
 
-		const reviews = await prisma.review.findMany({
-			where: { tourId: '680bc6a5aa6f43072c7700f6' },
-			take: 10,
-			include: {
-				user: {
-					select: {
-						accountData: true,
-						profileImage: true,
-					},
-				},
-				titleContent: {
-					include: {
-						translations: {
-							where: {
-								languageCode: language,
-							},
-						},
-					},
-				},
-				contentContent: {
-					include: {
-						translations: {
-							where: {
-								languageCode: language,
-							},
-						},
-					},
-				},
-			},
-			orderBy: {
-				createdAt: 'desc',
-			},
+		return NextResponse.json({
+			reviews: (reviews ?? []).map((r) => localizeReview(r, language)),
 		})
-
-		const translatedReviews = reviews.map((review) => {
-			let translatedTitle = review.title
-			let translatedContent = review.content
-
-			// Check if titleContent exists and has translations
-			if (review.titleContent?.translations?.length > 0) {
-				translatedTitle = review.titleContent.translations[0].text
-			}
-
-			// Check if contentContent exists and has translations
-			if (review.contentContent?.translations?.length > 0) {
-				translatedContent = review.contentContent.translations[0].text
-			}
-
-			return {
-				...review,
-				title: translatedTitle,
-				content: translatedContent,
-				language: language,
-				// Remove the translation objects from response to keep it clean
-				titleContent: undefined,
-				contentContent: undefined,
-			}
-		})
-
-		return NextResponse.json({ reviews: translatedReviews })
 	} catch (error) {
 		return NextResponse.json(
 			{ error: 'Failed to fetch reviews' },
 			{ status: 500 },
 		)
-	} finally {
-		await prisma.$disconnect()
 	}
 }

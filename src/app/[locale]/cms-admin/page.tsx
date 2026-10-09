@@ -3,7 +3,6 @@ export const dynamic = "force-dynamic";
 
 import { useState, useEffect, useRef } from 'react'
 import { searchCountries } from '@/utils/searchCountries'
-import { placesClient } from '@/libs/prisma'
 import Image from 'next/image'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'

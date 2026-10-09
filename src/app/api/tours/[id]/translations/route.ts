@@ -1,8 +1,8 @@
 export const dynamic = "force-dynamic";
 import { type NextRequest, NextResponse } from 'next/server'
-import { PrismaClient } from '@prisma/client'
-
-const prisma = new PrismaClient()
+import { db, T, must } from '@/lib/db'
+import { canEdit, currentUser } from '@/lib/guards'
+import { contentWithTexts, upsertTranslatedText } from '@/lib/translations'
 
 // GET /api/tours/[id]/translations - Get tour translations
 export async function GET(
@@ -13,31 +13,19 @@ export async function GET(
 		const { searchParams } = new URL(request.url)
 		const language = searchParams.get('language')
 
-		const tour = await prisma.tour.findUnique({
-			where: { id: params.id },
-			include: {
-				nameContent: {
-					include: {
-						translations: true,
-					},
-				},
-				subtitleContent: {
-					include: {
-						translations: true,
-					},
-				},
-				overviewContent: {
-					include: {
-						translations: true,
-					},
-				},
-				conclusionContent: {
-					include: {
-						translations: true,
-					},
-				},
-			},
-		})
+		const tour: any = must(
+			await db
+				.from(T.tours)
+				.select(
+					`*,
+					nameContent:${contentWithTexts('nameContentId')},
+					subtitleContent:${contentWithTexts('subtitleContentId')},
+					overviewContent:${contentWithTexts('overviewContentId')},
+					conclusionContent:${contentWithTexts('conclusionContentId')}`,
+				)
+				.eq('id', params.id)
+				.maybeSingle(),
+		)
 
 		if (!tour) {
 			return NextResponse.json({ error: 'Tour not found' }, { status: 404 })
@@ -56,7 +44,7 @@ export async function GET(
 
 		contentFields.forEach(({ content, field }) => {
 			if (content?.translations) {
-				content.translations.forEach((translation) => {
+				content.translations.forEach((translation: any) => {
 					availableLanguages.add(translation.languageCode)
 
 					if (!allTranslations[translation.languageCode]) {
@@ -78,14 +66,14 @@ export async function GET(
 			})
 
 			// Fetch all day translations at once
-			const dayContents = await prisma.translatableContent.findMany({
-				where: {
-					id: { in: dayContentIds },
-				},
-				include: {
-					translations: true,
-				},
-			})
+			const dayContents: any[] = dayContentIds.length
+				? must(
+						await db
+							.from(T.translatableContents)
+							.select(`*, translations:${T.translatedTexts}(*)`)
+							.in('id', dayContentIds),
+					)
+				: []
 
 			// Create a map for quick lookup
 			const contentMap = new Map()
@@ -163,45 +151,31 @@ export async function PUT(
 		const body = await request.json()
 		const { translations } = body
 
-		const tour = await prisma.tour.findUnique({
-			where: { id: params.id },
-		})
+		const tour: any = must(
+			await db.from(T.tours).select('*').eq('id', params.id).maybeSingle(),
+		)
 
 		if (!tour) {
 			return NextResponse.json({ error: 'Tour not found' }, { status: 404 })
+		}
+		if (!canEdit(await currentUser(), tour.creatorId)) {
+			return NextResponse.json({ error: 'Not allowed' }, { status: 403 })
 		}
 
 		const results = []
 		const errors = []
 
 		// Process each language's translations
-		for (const [language, translation] of Object.entries(translations)) {
+		for (const [language, translation] of Object.entries<any>(translations)) {
 			try {
 				// Process tour-level fields
 				for (const [field, text] of Object.entries(translation)) {
 					if (field !== 'days' && text) {
-						const contentIdField = `${field}ContentId` as keyof typeof tour
-						const contentId = tour[contentIdField] as string
+						const contentId = tour[`${field}ContentId`] as string
 
 						if (contentId) {
 							try {
-								await prisma.translatedText.upsert({
-									where: {
-										contentId_languageCode: {
-											contentId,
-											languageCode: language,
-										},
-									},
-									update: {
-										text: text as string,
-										updatedAt: new Date(),
-									},
-									create: {
-										contentId,
-										languageCode: language,
-										text: text as string,
-									},
-								})
+								await upsertTranslatedText(contentId, language, text as string)
 								results.push(`Updated ${field} for ${language}`)
 							} catch (error) {
 								errors.push(
@@ -226,23 +200,11 @@ export async function PUT(
 							// Update day name translation
 							if (dayTranslation.name && day.nameContentId) {
 								try {
-									await prisma.translatedText.upsert({
-										where: {
-											contentId_languageCode: {
-												contentId: day.nameContentId,
-												languageCode: language,
-											},
-										},
-										update: {
-											text: dayTranslation.name,
-											updatedAt: new Date(),
-										},
-										create: {
-											contentId: day.nameContentId,
-											languageCode: language,
-											text: dayTranslation.name,
-										},
-									})
+									await upsertTranslatedText(
+										day.nameContentId,
+										language,
+										dayTranslation.name,
+									)
 									results.push(
 										`Updated day ${dayIndex + 1} name for ${language}`,
 									)
@@ -256,23 +218,11 @@ export async function PUT(
 							// Update day description translation
 							if (dayTranslation.description && day.descriptionContentId) {
 								try {
-									await prisma.translatedText.upsert({
-										where: {
-											contentId_languageCode: {
-												contentId: day.descriptionContentId,
-												languageCode: language,
-											},
-										},
-										update: {
-											text: dayTranslation.description,
-											updatedAt: new Date(),
-										},
-										create: {
-											contentId: day.descriptionContentId,
-											languageCode: language,
-											text: dayTranslation.description,
-										},
-									})
+									await upsertTranslatedText(
+										day.descriptionContentId,
+										language,
+										dayTranslation.description,
+									)
 									results.push(
 										`Updated day ${dayIndex + 1} description for ${language}`,
 									)

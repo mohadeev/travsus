@@ -1,20 +1,26 @@
-export const dynamic = "force-dynamic";
+export const dynamic = 'force-dynamic'
 import { type NextRequest, NextResponse } from 'next/server'
-import prisma from '@/prisma'
+import getUserData from '@/app/api/user/getUserData'
+import { db, T, must, touch } from '@/lib/db'
 
+// Only the company's creator can read or edit it (it holds bank details)
 export async function GET(
 	request: NextRequest,
 	{ params }: { params: { id: string } },
 ) {
 	try {
-		const companyId = params.id
+		const userData = await getUserData()
+		if (!userData?.id) {
+			return NextResponse.json({ error: 'Not authenticated' }, { status: 401 })
+		}
 
-		// Fetch the company from the database
-		const company = await prisma.business.findUnique({
-			where: {
-				id: companyId,
-			},
-		})
+		const company = must(
+			await db
+				.from(T.businesses)
+				.select('*')
+				.match({ id: params.id, creatorId: userData.id })
+				.maybeSingle(),
+		)
 
 		if (!company) {
 			return NextResponse.json({ error: 'Company not found' }, { status: 404 })
@@ -35,21 +41,24 @@ export async function PUT(
 	{ params }: { params: { id: string } },
 ) {
 	try {
-		const companyId = params.id
+		const userData = await getUserData()
+		if (!userData?.id) {
+			return NextResponse.json({ error: 'Not authenticated' }, { status: 401 })
+		}
 		const data = await request.json()
 
-		// Update the company in the database
-		const updatedCompany = await prisma.business.update({
-			where: {
-				id: companyId,
-			},
-			data: {
-				name: data.name,
-				description: data.description,
-				type: data.type,
-				// Add other fields as needed
-			},
-		})
+		const updatedCompany = must(
+			await db
+				.from(T.businesses)
+				.update(touch({ name: data.name, type: data.type }))
+				.match({ id: params.id, creatorId: userData.id })
+				.select('*')
+				.maybeSingle(),
+		)
+
+		if (!updatedCompany) {
+			return NextResponse.json({ error: 'Company not found' }, { status: 404 })
+		}
 
 		return NextResponse.json(updatedCompany)
 	} catch (error) {

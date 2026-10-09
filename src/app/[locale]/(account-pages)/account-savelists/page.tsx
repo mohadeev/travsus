@@ -12,19 +12,18 @@ import {
 } from '@/data/listings'
 import React, { Fragment, useEffect, useState } from 'react'
 import ButtonSecondary from '@/shared/ButtonSecondary'
-import { useSession } from 'next-auth/react'
+import { useAuth } from '@clerk/nextjs'
 import basedGetUrlRequestLogedIn from '@/app/utils/basedGetUrlRequestLogedIn'
 import ContainerExperiencesCardSkeleton from '@/components/ContainerExperiencesCardSkeleton'
 
 const AccountSavelists = () => {
 	let [categories] = useState(['Stays', 'Experiences', 'Cars'])
 	const [savedList, setSavedList] = useState([])
-	const { data: session, status } = useSession()
-	// const dispatch = useDispatch()
+	const { isLoaded, isSignedIn } = useAuth()
 	const [loading, setLoading] = useState(true)
 
 	useEffect(() => {
-		if (status === 'authenticated' && session?.user) {
+		if (isLoaded && isSignedIn) {
 			;(async () => {
 				basedGetUrlRequestLogedIn(
 					'/api/user/get/account-settings-savelists',
@@ -33,13 +32,12 @@ const AccountSavelists = () => {
 						setSavedList(res?.list)
 						setLoading(false)
 					}
-					console.log('res', res)
 				})
 			})()
-		} else if (status === 'unauthenticated') {
-			dispatch(clearUser())
+		} else if (isLoaded) {
+			setLoading(false) // signed out: nothing to load
 		}
-	}, [session, status])
+	}, [isLoaded, isSignedIn])
 
 	const renderSection1 = () => {
 		return (

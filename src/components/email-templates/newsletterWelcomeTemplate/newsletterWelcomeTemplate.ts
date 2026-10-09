@@ -2,10 +2,8 @@ import { emailTemplatesFooter } from '../EmailTemplatesFooter'
 import { emailTemplatesHeader } from '../EmailTemplatesHeader'
 import { EmailText } from '../EmailText'
 import { EmailBlackButton } from '../EmailBlackButton'
-import { PrismaClient } from '@prisma/client'
 import { slugify } from '@/utils/slugify'
-
-const prisma = new PrismaClient()
+import { db, T, must } from '@/lib/db'
 
 // Newsletter Header Media Component using table
 const newsletterHeaderMedia = `
@@ -87,19 +85,18 @@ const featuredArticleCard = `
 export const newsletterWelcomeTemplate = async (data: any) => {
 	// Fetch posts from database
 	let firstPost = null
-	let additionalPosts = []
+	let additionalPosts: any[] = []
 
 	try {
 		// Fetch 3 most recent posts
-		const posts = await prisma.post.findMany({
-			take: 3,
-			orderBy: {
-				createdAt: 'desc',
-			},
-			include: {
-				author: true,
-			},
-		})
+		const posts: any[] =
+			must(
+				await db
+					.from(T.posts)
+					.select('id, title, excerpt, featuredImage')
+					.order('createdAt', { ascending: false })
+					.limit(3),
+			) ?? []
 
 		if (posts.length > 0) {
 			firstPost = posts[0]

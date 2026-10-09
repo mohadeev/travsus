@@ -1,51 +1,22 @@
-import { PrismaClient } from '@prisma/client'
+'use server'
 
-const prisma = new PrismaClient()
+import { db, T, must } from '@/lib/db'
+import { AUTHOR } from './forumSelect'
 
 export async function getPostById(postId: string) {
 	try {
-		const post = await prisma.forumPost.findUnique({
-			where: { id: postId },
-			include: {
-				author: {
-					select: {
-						id: true,
-						username: true,
-						profileImage: true,
-						accountData: {
-							select: {
-								firstname: true,
-							},
-						},
-					},
-				},
-				comments: {
-					include: {
-						author: {
-							select: {
-								id: true,
-								username: true,
-								profileImage: true,
-								accountData: {
-									select: {
-										firstname: true,
-									},
-								},
-							},
-						},
-					},
-					orderBy: {
-						createdAt: 'asc',
-					},
-				},
-			},
-		})
+		const post: any = must(
+			await db
+				.from(T.forumPosts)
+				.select(`*, ${AUTHOR}, comments:${T.forumComments}(*, ${AUTHOR})`)
+				.eq('id', postId)
+				.order('createdAt', { referencedTable: 'comments', ascending: true })
+				.maybeSingle(),
+		)
 
 		if (!post) {
 			throw new Error('Post not found')
 		}
-
-		console.log('Fetched post with comments:', post)
 
 		return { success: true, post }
 	} catch (error) {

@@ -1,7 +1,7 @@
 'use client'
 import Checkbox from '@/components/ui/checkbox'
-import { removeLineItem } from '@/app/[locale]/GlobalRedux/Features/bookingSlice/bookingSlice'
-import { useDispatch } from 'react-redux'
+import { useAppDispatch } from '@/store/hooks'
+import { includeLineItem } from '@/store/slices/booking'
 import { useTranslations } from '@/lib/i18n'
 
 export default function AcommodationAndTransport({
@@ -11,11 +11,11 @@ export default function AcommodationAndTransport({
 	handleBookOwnHotels,
 }: any) {
 	const t = useTranslations('Jan03_AccommodationTransport_p2k7')
-	const dispatch = useDispatch()
+	const dispatch = useAppDispatch()
 
 	const handleCheckboxChange = (checked: boolean) => {
 		handleBookOwnHotels(checked)
-		dispatch(removeLineItem({ description: 'accommodation', value: !checked }))
+		dispatch(includeLineItem({ description: 'accommodation', include: !checked }))
 	}
 
 	return (

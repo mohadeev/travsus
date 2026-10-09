@@ -1,99 +1,83 @@
-export const dynamic = "force-dynamic";
+export const dynamic = 'force-dynamic'
 import { type NextRequest, NextResponse } from 'next/server'
-import { PrismaClient } from '@prisma/client'
+import { db, T, must, touch, withMeta, EMPTY_TOUR_LISTS } from '@/lib/db'
+import { currentUser } from '@/lib/guards'
+import { createTranslatableContent } from '@/lib/translations'
 
-const prisma = new PrismaClient()
-
-// Helper function to validate or generate ObjectID
-function validateOrGenerateObjectId(id: string): string {
-	// Check if it's a valid 24-character hex string (MongoDB ObjectID format)
-	if (id && /^[0-9a-fA-F]{24}$/.test(id)) {
-		return id
-	}
-	// Generate a new ObjectID-like string (24 hex characters)
-	return Array.from({ length: 24 }, () =>
-		Math.floor(Math.random() * 16).toString(16),
-	).join('')
-}
+const FIELDS = ['name', 'subtitle', 'overview', 'conclusion'] as const
 
 // POST /api/tours/create-multilingual - Create tour with translations
 export async function POST(request: NextRequest) {
 	try {
-		const body = await request.json()
-		const {
-			translations,
-			defaultLanguage = 'en-US',
-			creatorId,
-			businessId,
-		} = body
+		const user = await currentUser()
+		if (!user) {
+			return NextResponse.json({ error: 'Not authenticated' }, { status: 401 })
+		}
 
-		const validCreatorId = validateOrGenerateObjectId(
-			creatorId || 'default-creator',
+		const { translations, defaultLanguage = 'en-US', businessId } =
+			await request.json()
+
+		// A business can only be attached if the user owns it
+		let ownBusinessId: string | null = null
+		if (businessId) {
+			const business = must(
+				await db
+					.from(T.businesses)
+					.select('id')
+					.match({ id: businessId, creatorId: user.id })
+					.maybeSingle(),
+			)
+			ownBusinessId = business?.id ?? null
+		}
+
+		const defaultTranslation: any =
+			translations[defaultLanguage] || Object.values(translations)[0]
+
+		const tour = must(
+			await db
+				.from(T.tours)
+				.insert(
+					withMeta({
+						...EMPTY_TOUR_LISTS,
+						creatorId: user.id,
+						businessId: ownBusinessId,
+						lang: defaultLanguage,
+						name: defaultTranslation.name,
+						subtitle: defaultTranslation.subtitle,
+						overview: defaultTranslation.overview,
+						conclusion: defaultTranslation.conclusion,
+					}),
+				)
+				.select('id')
+				.single(),
 		)
-		const validBusinessId = businessId
-			? validateOrGenerateObjectId(businessId)
-			: undefined
 
-		const result = await prisma.$transaction(async (tx) => {
-			// Create the tour first with default language values
-			const defaultTranslation =
-				translations[defaultLanguage] || Object.values(translations)[0]
+		// One translatable content per field, with a text per language
+		const contentIds: Record<string, string> = {}
+		for (const field of FIELDS) {
+			const texts = Object.entries<any>(translations)
+				.filter(([, t]) => t[field])
+				.map(([languageCode, t]) => ({ languageCode, text: t[field] }))
 
-			const tour = await tx.tour.create({
-				data: {
-					creatorId: validCreatorId,
-					businessId: validBusinessId,
-					lang: defaultLanguage,
-					name: defaultTranslation.name,
-					subtitle: defaultTranslation.subtitle,
-					overview: defaultTranslation.overview,
-					conclusion: defaultTranslation.conclusion,
-				},
-			})
-
-			// Create translatable content for each field
-			const contentIds: Record<string, string> = {}
-			const fields = ['name', 'subtitle', 'overview', 'conclusion'] as const
-
-			for (const field of fields) {
-				const fieldTranslations: Array<{
-					languageCode: string
-					text: string
-				}> = []
-
-				for (const [lang, translation] of Object.entries(translations)) {
-					if (translation[field]) {
-						fieldTranslations.push({
-							languageCode: lang,
-							text: translation[field],
-						})
-					}
-				}
-
-				if (fieldTranslations.length > 0) {
-					const translatableContent = await tx.translatableContent.create({
-						data: {
-							contentType: `tour_${field}`,
-							entityId: tour.id,
-							translations: {
-								create: fieldTranslations,
-							},
-						},
-					})
-					contentIds[`${field}ContentId`] = translatableContent.id
-				}
+			if (texts.length > 0) {
+				contentIds[`${field}ContentId`] = await createTranslatableContent(
+					`tour_${field}`,
+					tour.id,
+					texts,
+				)
 			}
+		}
 
-			// Update tour with content IDs
-			const updatedTour = await tx.tour.update({
-				where: { id: tour.id },
-				data: contentIds,
-			})
+		const updatedTour = must(
+			await db
+				.from(T.tours)
+				.update(touch(contentIds))
+				.eq('id', tour.id)
+				.select('*')
+				.single(),
+		)
 
-			return updatedTour
-		})
-
-		return NextResponse.json({ tour: result })
+		return NextResponse.json({ tour: updatedTour })
 	} catch (error) {
 		console.error('Error creating multilingual tour:', error)
 		return NextResponse.json(

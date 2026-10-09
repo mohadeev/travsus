@@ -1,8 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
-import { Card } from '@/components/ui/card'
-import { ChevronDown, ChevronUp } from 'lucide-react'
+import { ChevronDown } from 'lucide-react'
 import { useTranslations } from '@/lib/i18n'
 
 interface FAQ {
@@ -14,61 +12,35 @@ interface FAQProps {
 	faqs: FAQ[]
 }
 
+/**
+ * Tour FAQ. Uses native <details> so every question and answer is in the
+ * HTML (and matches the FAQPage structured data) while staying collapsible.
+ */
 export default function TourFAQ({ faqs }: FAQProps) {
 	const t = useTranslations('listingFaqProps')
-	const [isOpen, setIsOpen] = useState(false)
-	const [openIndex, setOpenIndex] = useState<number | null>(null)
 
 	if (!faqs || faqs.length === 0) return null
 
-	const toggleAccordion = () => setIsOpen(!isOpen)
-	const toggleFAQ = (index: number) =>
-		setOpenIndex(openIndex === index ? null : index)
-
 	return (
-		<div className="overflow-hidden rounded-lg border border-gray-200 shadow-sm dark:border-gray-700">
-			<div
-				className="flex cursor-pointer items-center justify-between p-4 transition-colors hover:bg-gray-50 dark:hover:bg-gray-800"
-				onClick={toggleAccordion}
-			>
-				<h2 className="text-xl font-semibold">{t('TourlistingFAQ')}</h2>
-				{isOpen ? (
-					<ChevronUp className="h-5 w-5" />
-				) : (
-					<ChevronDown className="h-5 w-5" />
-				)}
+		<section
+			id="faq"
+			aria-labelledby="faq-heading"
+			className="overflow-hidden rounded-lg border border-gray-200 shadow-sm dark:border-gray-700"
+		>
+			<h2 id="faq-heading" className="p-4 text-xl font-semibold">
+				{t('TourlistingFAQ')}
+			</h2>
+			<div className="divide-y divide-gray-200 border-t border-gray-200 dark:divide-gray-700 dark:border-gray-700">
+				{faqs.map((faq, index) => (
+					<details key={index} className="group px-4 py-3">
+						<summary className="flex cursor-pointer list-none items-start justify-between gap-4 [&::-webkit-details-marker]:hidden">
+							<h3 className="font-medium">{faq.question}</h3>
+							<ChevronDown className="h-5 w-5 flex-shrink-0 transition-transform group-open:rotate-180" />
+						</summary>
+						<p className="mt-2 text-sm text-gray-700 dark:text-gray-300">{faq.answer}</p>
+					</details>
+				))}
 			</div>
-
-			{isOpen && (
-				<div className="space-y-4 border-t border-gray-200 p-4 dark:border-gray-700">
-					{faqs.map((faq, index) => (
-						<Card key={index} className="p-4">
-							<div
-								className="flex cursor-pointer items-start justify-between"
-								onClick={() => toggleFAQ(index)}
-								role="button"
-								aria-expanded={openIndex === index}
-								aria-controls={`faq-${index}`}
-							>
-								<h3 className="font-medium">{faq.question}</h3>
-								{openIndex === index ? (
-									<ChevronUp className="h-5 w-5 text-primary" />
-								) : (
-									<ChevronDown className="h-5 w-5 text-primary" />
-								)}
-							</div>
-							{openIndex === index && (
-								<div
-									id={`faq-${index}`}
-									className="mt-2 text-sm text-gray-700 dark:text-gray-300"
-								>
-									<p>{faq.answer}</p>
-								</div>
-							)}
-						</Card>
-					))}
-				</div>
-			)}
-		</div>
+		</section>
 	)
 }

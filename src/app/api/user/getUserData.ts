@@ -1,28 +1,7 @@
-import currentServerUser from '@/app/api/user/currentServerUser'
-import { getServerSession } from 'next-auth'
-import { authOptions } from '../auth/[...nextauth]/authOptions'
-import prisma from '@/prisma'
+// The signed-in user's full `users` row, or null (see lib/session.ts).
+import { getSessionUser } from '@/lib/session'
 
-const getUserData = async (data?: any) => {
-	const { include } = data || {}
-	// include: {
-	// 	customer: true,
-	// 	tour: true,
-	// 	provider: true,
-	// },
-
-	const currentUser: any = await getServerSession(authOptions)
-	if (currentUser) {
-		const user = await prisma.user.findUnique({
-			where: {
-				email: currentUser?.user?.email, // Assuming `currentUser` has the user ID
-			},
-		})
-		return user
-	} else {
-		return null
-	}
-}
+const getUserData = async (_options?: any) => getSessionUser()
 
 export default getUserData
 export { getUserData }

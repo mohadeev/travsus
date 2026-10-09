@@ -1,14 +1,14 @@
-import { toggleTawdWidget } from '@/app/[locale]/GlobalRedux/Features/overlaySlice/overlaySlice'
+import { openChat } from '@/store/slices/ui'
 import { Phone, MessageCircle } from 'lucide-react'
-import { useDispatch } from 'react-redux'
+import { useAppDispatch } from '@/store/hooks'
 import { useTranslations } from '@/lib/i18n'
 
 export default function ContactReservations() {
-	const dispatch = useDispatch()
+	const dispatch = useAppDispatch()
 	const t = useTranslations('ContactReservations')
 
 	const hanelToggle = () => {
-		dispatch(toggleTawdWidget({ value: true }))
+		dispatch(openChat())
 	}
 
 	return (

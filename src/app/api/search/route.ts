@@ -1,24 +1,20 @@
 export const dynamic = "force-dynamic";
 import { NextResponse } from 'next/server'
-import { PrismaClient } from '@prisma/client'
+import { db, T, must } from '@/lib/db'
 import { updateLineItemsLogic } from '../updateLineItems/updateLineItemsLogic'
 import extractLanguageFromRequest from '../listing/get/getTourData/extractLanguageFromRequest'
-
-const prisma = new PrismaClient()
 
 // GET /api/tours/search/:query
 export async function GET(request: Request) {
 	try {
 		// Parse the URL
 		const { searchParams } = new URL(request.url)
-		console.log('request.url', request.url)
 		const language = extractLanguageFromRequest(request)
 
 		// Extract query params
 		const query = searchParams.get('query') || ''
 		const start = searchParams.get('start')
 		const end = searchParams.get('end')
-		console.log(start, end)
 
 		const minPrice = searchParams.get('minPrice') || '0'
 		const maxPrice = searchParams.get('maxPrice') || '10000' // Set a high default max price
@@ -38,42 +34,20 @@ export async function GET(request: Request) {
 			daysNumber = null
 		}
 
-		// Build filter conditions dynamically
-		const filterConditions: any[] = []
+		// Text and day-count filters (tours table is small, so filter in code)
+		const text = query.trim().toLowerCase()
+		const matchesText = (tour: any) =>
+			!text ||
+			[tour.name, tour.subtitle, tour.overview, tour.conclusion].some((v) =>
+				v?.toLowerCase().includes(text),
+			) ||
+			(Array.isArray(tour.tags) && tour.tags.includes(query)) ||
+			(Array.isArray(tour.keyphrase) && tour.keyphrase.includes(query))
+		const matchesDays = (tour: any) =>
+			daysNumber === null || (Array.isArray(tour.days) && tour.days.length === daysNumber)
 
-		// Text search condition - only apply if query is valid
-		if (query && query.trim().length > 0) {
-			filterConditions.push({
-				$or: [
-					{ name: { $regex: query, $options: 'i' } },
-					{ subtitle: { $regex: query, $options: 'i' } },
-					{ overview: { $regex: query, $options: 'i' } },
-					{ conclusion: { $regex: query, $options: 'i' } },
-					{ tags: query },
-					{ keyphrase: query },
-				],
-			})
-		}
-
-		// Days filter condition - only apply if daysNumber is valid
-		if (daysNumber !== null) {
-			filterConditions.push({
-				$expr: { $eq: [{ $size: '$days' }, daysNumber] },
-			})
-		}
-
-		// If no filter conditions, get all tours
-		const filter = filterConditions.length > 0 ? { $and: filterConditions } : {}
-
-		const toursQuery = await prisma.$runCommandRaw({
-			find: 'tours',
-			filter: filter,
-			limit: 50, // Increased limit since we might get more results
-		})
-
-		const tours = toursQuery.cursor.firstBatch
-		console.log('tours found:', tours.length)
-		console.log('daysNumber:', daysNumber)
+		const allTours: any[] = must(await db.from(T.tours).select('*')) ?? []
+		const tours = allTours.filter((t) => matchesText(t) && matchesDays(t)).slice(0, 50)
 
 		// Process tours with pricing
 		const newTours = await Promise.all(
@@ -86,7 +60,7 @@ export async function GET(request: Request) {
 					return {
 						...tour,
 						...updated,
-						...tour.translations.find((trns) => trns.language === language),
+						...(tour.translations ?? []).find((trns: any) => trns.language === language),
 					}
 				} catch (error) {
 					console.error('Error updating tour pricing:', error)

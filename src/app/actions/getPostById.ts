@@ -1,13 +1,8 @@
-import { PrismaClient } from '@prisma/client'
-
-const prisma = new PrismaClient()
+import { db, T, must } from '@/lib/db'
 
 export async function getPostById(id: string) {
 	try {
-		const post = await prisma.post.findUnique({
-			where: { id },
-		})
-		return post
+		return must(await db.from(T.posts).select('*').eq('id', id).maybeSingle())
 	} catch (error) {
 		console.error('Error fetching blog post:', error)
 		throw error

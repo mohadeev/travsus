@@ -1,15 +1,14 @@
 export const dynamic = "force-dynamic";
 import { NextRequest, NextResponse } from 'next/server'
-import prisma from '@/prisma'
-import updateListing from '@/app/api/api-utils/updateListing'
-import currentServerUser from '@/app/api/user/currentServerUser'
+import { db, T, must, touch } from '@/lib/db'
 import getUserData from '../../getUserData'
-import { Prisma } from '@prisma/client'
 
 export async function POST(request: NextRequest) {
 	try {
 		const userData: any = await getUserData()
-
+		if (!userData) {
+			return NextResponse.json({ message: 'Not authenticated' }, { status: 401 })
+		}
 
 		// Parse the request body to JSON
 		const body = await request.json()
@@ -49,12 +48,7 @@ export async function POST(request: NextRequest) {
 		}
 
 		// Update the user's savedList in the database
-		await prisma.user.update({
-			where: {
-				id: userData?.id, // No need to fetch the user, use userData.id directly
-			},
-			data: updateData,
-		})
+		must(await db.from(T.users).update(touch(updateData)).eq('id', userData.id))
 
 		// Send the appropriate response based on whether the serviceId was added or removed
 		return NextResponse.json({
@@ -67,8 +61,5 @@ export async function POST(request: NextRequest) {
 			{ message: 'Error updating saved list' },
 			{ status: 500 },
 		)
-	} finally {
-		// Close the Prisma client connection
-		await prisma.$disconnect()
 	}
 }

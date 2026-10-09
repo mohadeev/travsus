@@ -7,8 +7,8 @@ import React, { FC, Fragment, useEffect, useState } from 'react'
 import ButtonPrimary from '@/shared/ButtonPrimary'
 import DatePickerCustomHeaderTwoMonth from './DatePickerCustomHeaderTwoMonth'
 import DatePickerCustomDay from './DatePickerCustomDay'
-import { setSelectedDate } from '@/app/[locale]/GlobalRedux/Features/bookingSlice/bookingSlice'
-import { useDispatch } from 'react-redux'
+import { useAppDispatch } from '@/store/hooks'
+import { setSelectedDate } from '@/store/slices/booking'
 import moment from 'moment'
 import { useTranslations } from '@/lib/i18n'
 
@@ -50,7 +50,7 @@ const ModalSelectDate: FC<ModalSelectDateProps> = ({
 			</button>
 		)
 	}
-	const dispatch = useDispatch()
+	const dispatch = useAppDispatch()
 	const onChange = (date: string) => {
 		dispatch(setSelectedDate(date))
 	}

@@ -2,12 +2,13 @@ import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import ClickOutside from '@/components/ClickOutside'
-import { useSelector } from 'react-redux'
+import { useAppSelector } from '@/store/hooks'
+import { selectBusinessCompany } from '@/store/slices/business'
 import Avatar from '@/shared/Avatar'
 
 const DropdownUser = () => {
 	const [dropdownOpen, setDropdownOpen] = useState(false)
-	const company = useSelector((state: any) => state?.businessSlice?.company)
+	const company = useAppSelector(selectBusinessCompany)
 
 	return (
 		<ClickOutside onClick={() => setDropdownOpen(false)} className="relative">

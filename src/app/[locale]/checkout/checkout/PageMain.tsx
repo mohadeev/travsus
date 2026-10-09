@@ -10,12 +10,13 @@ import CustomStripeForm from './StripeContainer'
 import getFetchDataFromApi from '@/utils/getFetchDataFromApi'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { Suspense } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useAppDispatch, useAppSelector } from '@/store/hooks'
 import {
-	bookOwnHotelsReducers,
-	localUpdateLineItemsLogicAsync,
-	updateBookingState,
-} from '@/app/[locale]/GlobalRedux/Features/bookingSlice/bookingSlice'
+	recalculatePrice,
+	selectBooking,
+	setBooking,
+	setBookOwnHotels,
+} from '@/store/slices/booking'
 import { checkBooking } from '@/lib/checkBooking'
 import RowBedAccommodationSelector from '../../[country]/[city]/[category]/[name]/(service-detail)/[listingExperiencesDetail]/RenderSideBar/RowBedAccommodationSelector'
 import GuestsInput from '../../[country]/[city]/[category]/[name]/(service-detail)/[listingExperiencesDetail]/GuestsInput'
@@ -32,7 +33,7 @@ const CheckOutPagePageMain: FC<CheckOutPagePageMainProps> = ({
 }) => {
 	const t = useTranslations('Jan03_CheckoutPage_q8m3')
 	const searchParams = useSearchParams()
-	const dispatch = useDispatch()
+	const dispatch = useAppDispatch()
 	const Router = useRouter()
 	const step = searchParams.get('step')
 	const bookingId = searchParams.get('bookingId')
@@ -40,7 +41,7 @@ const CheckOutPagePageMain: FC<CheckOutPagePageMainProps> = ({
 		new Date('2023/02/06'),
 	)
 	const [endDate, setEndDate] = useState<Date | null>(new Date('2023/02/23'))
-	const { booking } = useSelector((state: any) => state.bookingSlice)
+	const booking = useAppSelector(selectBooking)
 	const { guests, lineItems, accommodation, transport, bookOwnHotels, tour } =
 		booking
 
@@ -63,33 +64,18 @@ const CheckOutPagePageMain: FC<CheckOutPagePageMainProps> = ({
 						bookingId: bookingId,
 					},
 				)
-				if (bookingData) {
-					console.log("it's updating booking from server here")
-					dispatch(updateBookingState({ path: 'booking', value: bookingData }))
-				}
+				if (bookingData) dispatch(setBooking(bookingData))
 			} catch (error) {
 				console.error(error)
 			}
 		})()
 	}, [bookingId])
 
-	const handleGuestsChange = async (data: any) => {
-		const newGuests = data?.guests
-		dispatch(
-			localUpdateLineItemsLogicAsync({ value: { guests: newGuests }, tour }),
-		)
-	}
+	const handleGuestsChange = (data: any) =>
+		dispatch(recalculatePrice({ tour, changes: { guests: data?.guests } }))
 
-	const handleAccomodationChange = async (data: any) => {
-		const newAccommodation = data
-		console.log('newAccommodation:', newAccommodation)
-		dispatch(
-			localUpdateLineItemsLogicAsync({
-				value: { accommodation: newAccommodation },
-				tour,
-			}),
-		)
-	}
+	const handleAccomodationChange = (accommodation: any) =>
+		dispatch(recalculatePrice({ tour, changes: { accommodation } }))
 
 	const renderSidebar = () => {
 		return (
@@ -122,16 +108,9 @@ const CheckOutPagePageMain: FC<CheckOutPagePageMainProps> = ({
 		)
 	}
 
-	const handleBookOwnHotels = () => {
-		dispatch(
-			bookOwnHotelsReducers({
-				path: 'booking.bookOwnHotels',
-				value: !bookOwnHotels,
-			}),
-		)
-	}
+	const handleBookOwnHotels = () => dispatch(setBookOwnHotels(!bookOwnHotels))
 
-	const isNotInitiated = Object.keys(accommodation).length > 0
+	const isNotInitiated = Object.keys(accommodation ?? {}).length > 0
 
 	const renderMain = () => {
 		return (

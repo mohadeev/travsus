@@ -1,85 +1,105 @@
-import { NextResponse } from 'next/server';
-import type { NextRequest } from 'next/server';
-import createMiddleware from 'next-intl/middleware';
-import { routing } from './i18n/routing';
-import { createClient } from '@/utils/supabase/middleware';
+import { clerkMiddleware } from '@clerk/nextjs/server'
 
-// Function to convert old blog path to new blog path
-function convertOldBlogPath(pathname: string, nameParam: string | null) {
-  const pathnameParts = pathname.split('/').filter(Boolean);
-  const blogId = pathnameParts[pathnameParts.length - 1];
+import { NextResponse } from 'next/server'
+import type { NextRequest } from 'next/server'
+import createMiddleware from 'next-intl/middleware'
+import { createClient } from '@supabase/supabase-js'
+import { routing } from './i18n/routing'
 
-  if (
-    pathnameParts.length >= 3 &&
-    pathnameParts[pathnameParts.length - 2] === 'blog'
-  ) {
-    const nameSegment = nameParam || 'post';
-    return `/${pathnameParts.slice(0, -1).join('/')}/${nameSegment}/${blogId}`;
-  }
-  return pathname;
+const intlMiddleware = createMiddleware(routing)
+
+// Public key is enough: tours are readable by everyone (RLS "public read")
+const supabase = createClient(
+	process.env.NEXT_PUBLIC_SUPABASE_URL!,
+	process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!,
+	{ auth: { persistSession: false } },
+)
+
+const TOUR_ID = /^[0-9a-f]{24}$/
+
+/** Only same-site relative paths are allowed as redirect targets. */
+const isSafePath = (path: unknown): path is string =>
+	typeof path === 'string' && path.startsWith('/') && !path.startsWith('//')
+
+/**
+ * Tour pages: /{locale}/{country}/{city}/{category}/{name}/{tourId}
+ * (or legacy .../{tourId}/q=tour). Redirects to the tour's canonical slug
+ * for the locale, falling back to its first slug.
+ */
+async function tourRedirect(
+	request: NextRequest,
+	parts: string[],
+	locale: string,
+) {
+	const last = parts[parts.length - 1]
+	const isLegacy = last === 'q=tour' && parts.length === 11
+	if (parts.length !== 7 && !isLegacy) return null
+
+	const tourId = isLegacy ? parts[parts.length - 2] : last
+	if (!TOUR_ID.test(tourId)) return null
+
+	const { data: tour, error } = await supabase
+		.from('tours')
+		.select('slugs')
+		.eq('id', tourId)
+		.maybeSingle()
+	if (error) console.error('Tour redirect lookup failed:', error.message)
+	if (!tour) return null
+
+	const slugs: { language: string; slug: string }[] = tour.slugs ?? []
+	const target = (slugs.find((s) => s.language === locale) ?? slugs[0])?.slug
+	if (!isSafePath(target)) return null
+
+	const current = decodeURIComponent(request.nextUrl.pathname)
+	if (decodeURIComponent(target) === current) return null
+
+	const url = request.nextUrl.clone()
+	url.pathname = target
+	return NextResponse.redirect(url, 301) // keeps the query string
 }
 
-export default async function middleware(request: NextRequest) {
-  const url = request.nextUrl.clone();
-  const pathname = url.pathname;
-  const locale: string = pathname.split('/')[1] || 'en-US';
-  const parts = pathname.split('/');
-  const last = parts[parts.length - 1];
-  const serviceId =
-    parts.length === 11 ? parts[parts.length - 2] : parts[parts.length - 1];
+/** Old blog links /{locale}/blog/{id}?name=x -> /{locale}/blog/x/{id} */
+function blogRedirect(request: NextRequest, parts: string[], locale: string) {
+	if (parts.length !== 3 || parts[1] !== 'blog') return null
 
-  // === Tour redirect logic (now using Supabase) ===
-  if ((last === 'q=tour' && parts.length === 11) || parts.length === 7) {
-    try {
-      // 1. Get Supabase client for middleware
-      const { supabaseResponse, supabase } = createClient(request);
-
-      // 2. Query the tour by ID, fetch only slugs
-      const { data: tour, error } = await supabase
-        .from('tours')
-        .select('slugs')
-        .eq('id', serviceId)
-        .single();
-
-      if (error || !tour) {
-        console.error('Tour not found or error:', error);
-        // If not found, do not redirect (maybe 404 later)
-        // Continue with i18n middleware
-        return createMiddleware(routing)(request);
-      }
-
-      // 3. Find the slug for the requested locale
-      const slugs = tour.slugs || [];
-      let foundSlug = slugs.find((s) => s.language === locale);
-      // Fallback to first available slug if no match
-      if (!foundSlug && slugs.length > 0) {
-        foundSlug = slugs[0];
-      }
-
-      if (foundSlug) {
-        const link = foundSlug.slug; // e.g., "/en-US/morocco/marrakech/tours/..."
-        if (link !== pathname) {
-          return NextResponse.redirect(new URL(url.origin + link), 301);
-        }
-      }
-    } catch (error) {
-      console.error('Error in tour redirect (Supabase):', error);
-    }
-  }
-
-  // === Blog old-link redirect logic ===
-  if (pathname.startsWith(`/${locale}/blog/`)) {
-    const nameParam = url.searchParams.get('name');
-    const newBlogPath = convertOldBlogPath(pathname, nameParam);
-    if (newBlogPath && newBlogPath !== pathname) {
-      return NextResponse.redirect(new URL(url.origin + newBlogPath), 301);
-    }
-  }
-
-  // Continue with i18n middleware
-  return createMiddleware(routing)(request);
+	const url = request.nextUrl.clone()
+	const name = url.searchParams.get('name') || 'post'
+	url.searchParams.delete('name')
+	url.pathname = `/${locale}/blog/${encodeURIComponent(name)}/${parts[2]}`
+	return NextResponse.redirect(url, 301)
 }
+
+async function middleware(request: NextRequest) {
+	const parts = request.nextUrl.pathname.split('/').filter(Boolean)
+	const locale = parts[0] || routing.defaultLocale
+
+	try {
+		const redirect =
+			(await tourRedirect(request, ['', ...parts], locale)) ??
+			blogRedirect(request, parts, locale)
+		if (redirect) return redirect
+	} catch (error) {
+		// Never block the page because of a redirect lookup
+		console.error('Middleware redirect error:', error)
+	}
+
+	return intlMiddleware(request)
+}
+// Clerk reads the session on every request; pages also get language
+// routing and redirects; files, API calls and Clerk's paths pass straight through.
+export default clerkMiddleware(async (_auth, request) => {
+	const { pathname } = request.nextUrl
+	const isFile = /\.[a-z0-9]+$/i.test(pathname) // sitemap.xml, robots.txt, llms.txt
+	if (isFile || /^\/(api|trpc|__clerk)(\/|$)/.test(pathname)) {
+		return NextResponse.next()
+	}
+	return middleware(request)
+})
 
 export const config = {
-  matcher: '/((?!api|trpc|_next|_vercel|.*\\..*).*)',
-};
+	matcher: [
+		'/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
+		'/(api|trpc)(.*)',
+		'/__clerk/:path*',
+	],
+}

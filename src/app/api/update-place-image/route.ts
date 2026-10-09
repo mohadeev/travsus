@@ -1,11 +1,14 @@
-export const dynamic = "force-dynamic";
-import { placesClient } from '@/lib/prisma'
+export const dynamic = 'force-dynamic'
 import { NextResponse } from 'next/server'
+import { db, T, must, touch } from '@/lib/db'
+import { adminOnly } from '@/lib/guards'
 
 export async function POST(request: Request) {
 	try {
-		const { id, imageUrl } = await request.json()
+		const denied = await adminOnly()
+		if (denied) return denied
 
+		const { id, imageUrl } = await request.json()
 		if (!id || !imageUrl) {
 			return NextResponse.json(
 				{ error: 'Missing required fields' },
@@ -13,32 +16,17 @@ export async function POST(request: Request) {
 			)
 		}
 
-		const prisma = placesClient
-
-		// Get the current place data
-		const place = await prisma.place.findUnique({
-			where: { id },
-		})
-
-		if (!place) {
+		// url / public_id are filled in later by the image upload process
+		const updated = must(
+			await db
+				.from(T.places)
+				.update(touch({ image: { url: '', public_id: '', uploadFrom: imageUrl } }))
+				.eq('id', id)
+				.select('id'),
+		)
+		if (!updated?.length) {
 			return NextResponse.json({ error: 'Place not found' }, { status: 404 })
 		}
-
-		// Update the place with the new image
-		// For MongoDB embedded documents, we need to use the `set` operation
-		await prisma.place.update({
-			where: { id },
-			data: {
-				image: {
-					set: {
-						url: '',
-						public_id: '',
-						uploadFrom: imageUrl,
-						// url and public_id will be added later by the background process
-					},
-				},
-			},
-		})
 
 		return NextResponse.json({ success: true })
 	} catch (error) {

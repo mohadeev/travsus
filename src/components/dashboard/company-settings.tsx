@@ -1,15 +1,14 @@
 'use client'
 
 import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useAppDispatch, useAppSelector } from '@/store/hooks'
 import {
 	fetchCompanies,
 	setActiveCompany,
 	selectAllCompanies,
 	selectActiveCompany,
 	selectCompanyStatus,
-} from '@/app/[locale]/GlobalRedux/Features/companySlice/companySlice'
-import type { AppDispatch } from '@/app/[locale]/GlobalRedux/store'
+} from '@/store/slices/company'
 import { useRouter } from 'next/navigation'
 import { Button } from '@/components/ui/button'
 import {
@@ -34,11 +33,11 @@ import { Skeleton } from '@/components/ui/skeleton'
 
 export function CompanySettings() {
 	const router = useRouter()
-	const dispatch = useDispatch<AppDispatch>()
+	const dispatch = useAppDispatch()
 
-	const companies = useSelector(selectAllCompanies)
-	const activeCompany = useSelector(selectActiveCompany)
-	const status = useSelector(selectCompanyStatus)
+	const companies = useAppSelector(selectAllCompanies)
+	const activeCompany = useAppSelector(selectActiveCompany)
+	const status = useAppSelector(selectCompanyStatus)
 
 	useEffect(() => {
 		dispatch(fetchCompanies())

@@ -1,16 +1,17 @@
-export const dynamic = "force-dynamic";
+export const dynamic = 'force-dynamic'
 import { NextRequest, NextResponse } from 'next/server'
 import stripe from '@/lib/stripe'
-import prisma from '@/lib/prisma'
+import { db, T, REL, must, touch } from '@/lib/db'
+import { safeBooking } from '@/lib/users'
+import getUserData from '../user/getUserData'
 import { bookingConfirmationEmail } from '@/utils/bookingConfirmationEmail'
 
 export async function POST(request: NextRequest) {
 	const { paymentIntentId } = await request.json()
 	const referer = request.headers.get('referer') || ''
 	const url = new URL(referer)
-	const searchParams = url.searchParams
-	const serviceId = searchParams.get('serviceId')
-	const bookingId = searchParams.get('bookingId')
+	const serviceId = url.searchParams.get('serviceId')
+	const bookingId = url.searchParams.get('bookingId')
 
 	if (!serviceId || !bookingId || !paymentIntentId) {
 		console.error('POST /api/capture-payment - Missing required fields')
@@ -20,30 +21,32 @@ export async function POST(request: NextRequest) {
 		)
 	}
 
-	try {
-		const paymentIntent = await stripe.paymentIntents.capture(paymentIntentId)
+	const userData: any = await getUserData()
+	if (!userData?.id) {
+		return NextResponse.json({ message: 'Not authenticated' }, { status: 401 })
+	}
 
-		const bookingInitiated = await prisma.booking.findFirst({
-			where: { id: bookingId },
-			include: {
-				paymentMethod: true,
-				customer: true,
-				provider: true,
-				tour: true,
-			},
-		})
-		console.log(
-			'bookingInitiated.paymentMethod:',
-			bookingInitiated?.paymentMethod,
+	try {
+		const booking: any = must(
+			await db.from(T.bookings).select(REL.bookingFull).eq('id', bookingId).maybeSingle(),
 		)
-		if (bookingInitiated && bookingInitiated.paymentMethod) {
-			await updateDefaultPaymentMethod(
-				bookingInitiated.customer.id,
-				bookingInitiated.paymentMethod.id,
-			)
+
+		// Only the customer can capture, and only this booking's payment
+		if (
+			!booking ||
+			booking.customerId !== userData.id ||
+			booking.paymentIntentId !== paymentIntentId
+		) {
+			return NextResponse.json({ message: 'Booking not found' }, { status: 404 })
 		}
 
-		await bookingConfirmationEmail(bookingInitiated)
+		const paymentIntent = await stripe.paymentIntents.capture(paymentIntentId)
+
+		if (booking.paymentMethod) {
+			await updateDefaultPaymentMethod(booking.customerId, booking.paymentMethod.id)
+		}
+
+		await bookingConfirmationEmail(safeBooking(booking))
 		return NextResponse.json({
 			success: true,
 			paymentIntentId: paymentIntent.id,
@@ -58,24 +61,17 @@ export async function POST(request: NextRequest) {
 	}
 }
 
-async function updateDefaultPaymentMethod(
-	userId: string,
-	paymentMethodId: string,
-) {
-	try {
-		await prisma.$transaction([
-			prisma.paymentMethod.updateMany({
-				where: { userId, isDefault: true },
-				data: { isDefault: false },
-			}),
-			prisma.paymentMethod.update({
-				where: { id: paymentMethodId },
-				data: { isDefault: true },
-			}),
-		])
-	} catch (error) {
-		console.error('Error updating default payment method:', error)
-		// Rethrow the error to be caught by the main try-catch block
-		throw error
-	}
+async function updateDefaultPaymentMethod(userId: string, paymentMethodId: string) {
+	must(
+		await db
+			.from(T.paymentMethods)
+			.update(touch({ isDefault: false }))
+			.match({ userId, isDefault: true }),
+	)
+	must(
+		await db
+			.from(T.paymentMethods)
+			.update(touch({ isDefault: true }))
+			.eq('id', paymentMethodId),
+	)
 }

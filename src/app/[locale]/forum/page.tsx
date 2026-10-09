@@ -30,7 +30,8 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from '@/components/ui/select'
-import { useSelector } from 'react-redux'
+import { useAppSelector } from '@/store/hooks'
+import { selectUser } from '@/store/slices/user'
 import { createForumPost } from '@/app/actions/forum/createPost'
 import { addComment } from '@/app/actions/forum/addComment'
 import { getRecentPosts } from '@/app/actions/forum/getRecentPosts'
@@ -101,7 +102,7 @@ export default function ForumPage() {
 			color: 'text-orange-500',
 		},
 	])
-	const user = useSelector((state: any) => state.userReducer.userData)
+	const user = useAppSelector(selectUser)
 	const isLoggedIn = !!user
 	const router = useRouter()
 	const searchParams = useSearchParams()

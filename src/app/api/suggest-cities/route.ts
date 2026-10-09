@@ -1,12 +1,7 @@
 export const dynamic = "force-dynamic";
 import { NextResponse } from 'next/server'
-import OpenAI from 'openai'
+import { openai } from '@/lib/openai'
 
-// Initialize OpenAI client
-const openai = new OpenAI({
-	apiKey:
-		'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',
-})
 
 // Cache to store previously suggested cities and their coordinates
 const citiesCache: Record<string, { lat: number; lng: number }> = {}

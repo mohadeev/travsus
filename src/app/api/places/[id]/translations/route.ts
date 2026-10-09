@@ -1,5 +1,7 @@
 export const dynamic = "force-dynamic";
-import { placesClient } from '@/lib/prisma'
+import { db, T, must, newId } from '@/lib/db'
+import { GEO_CONTENT } from '@/lib/geo'
+import { adminOnly } from '@/lib/guards'
 import { type NextRequest, NextResponse } from 'next/server'
 
 
@@ -8,34 +10,15 @@ export async function GET(
 	{ params }: { params: { id: string } },
 ) {
 	try {
-		const prisma = placesClient
-		const locationId = params.id
-		const { searchParams } = new URL(request.url)
-		const type = searchParams.get('type') || 'country'
+		const type = new URL(request.url).searchParams.get('type') || 'country'
 
-		let location
-		if (type === 'country') {
-			location = await prisma.country.findUnique({
-				where: { id: locationId },
-				include: {
-					content: { include: { translations: true } },
-				},
-			})
-		} else if (type === 'city') {
-			location = await prisma.city.findUnique({
-				where: { id: locationId },
-				include: {
-					content: { include: { translations: true } },
-				},
-			})
-		} else {
-			location = await prisma.place.findUnique({
-				where: { id: locationId },
-				include: {
-					content: { include: { translations: true } },
-				},
-			})
-		}
+		const location: any = must(
+			await db
+				.from(geoTable(type))
+				.select(`id, ${GEO_CONTENT}`)
+				.eq('id', params.id)
+				.maybeSingle(),
+		)
 
 		if (!location) {
 			return NextResponse.json(
@@ -47,7 +30,7 @@ export async function GET(
 		const translationsByLanguage: any = {}
 		const availableLanguages: string[] = []
 
-		location.content?.translations.forEach((translation) => {
+		location.content?.translations.forEach((translation: any) => {
 			if (!translationsByLanguage[translation.language]) {
 				translationsByLanguage[translation.language] = {
 					name: '',
@@ -76,8 +59,6 @@ export async function GET(
 			{ success: false, message: 'Failed to fetch translations' },
 			{ status: 500 },
 		)
-	} finally {
-		await placesClient.$disconnect()
 	}
 }
 
@@ -86,29 +67,15 @@ export async function PUT(
 	{ params }: { params: { id: string } },
 ) {
 	try {
-		const prisma = placesClient
-		const locationId = params.id
-		const { translations } = await request.json()
-		const { searchParams } = new URL(request.url)
-		const type = searchParams.get('type') || 'country'
+		const denied = await adminOnly()
+		if (denied) return denied
 
-		let location
-		if (type === 'country') {
-			location = await prisma.country.findUnique({
-				where: { id: locationId },
-				select: { contentId: true },
-			})
-		} else if (type === 'city') {
-			location = await prisma.city.findUnique({
-				where: { id: locationId },
-				select: { contentId: true },
-			})
-		} else {
-			location = await prisma.place.findUnique({
-				where: { id: locationId },
-				select: { contentId: true },
-			})
-		}
+		const { translations } = await request.json()
+		const type = new URL(request.url).searchParams.get('type') || 'country'
+
+		const location = must(
+			await db.from(geoTable(type)).select('contentId').eq('id', params.id).maybeSingle(),
+		)
 
 		if (!location || !location.contentId) {
 			return NextResponse.json(
@@ -117,10 +84,10 @@ export async function PUT(
 			)
 		}
 
-		const results = []
-		const errors = []
+		const results: string[] = []
+		const errors: string[] = []
 
-		for (const [language, translationData] of Object.entries(translations)) {
+		for (const [language, translationData] of Object.entries<any>(translations)) {
 			if (!translationData || typeof translationData !== 'object') continue
 
 			const { name, description } = translationData as {
@@ -131,72 +98,24 @@ export async function PUT(
 			// Handle name translation
 			if (name && name.trim()) {
 				try {
-					const existingNameTranslation = await prisma.translatedText.findFirst(
-						{
-							where: {
-								contentId: location.contentId,
-								language: language,
-								type: type,
-							},
-						},
-					)
-
-					if (existingNameTranslation) {
-						await prisma.translatedText.update({
-							where: { id: existingNameTranslation.id },
-							data: { text: name.trim() },
-						})
-					} else {
-						await prisma.translatedText.create({
-							data: {
-								contentId: location.contentId,
-								language: language,
-								text: name.trim(),
-								type: type,
-							},
-						})
-					}
+					await setGeoText(location.contentId, language, type, name.trim())
 
 					results.push(`${language} name: Updated successfully`)
 				} catch (error) {
 					console.error(`Error updating ${language} name:`, error)
-					errors.push(`${language} name: ${error.message}`)
+					errors.push(`${language} name: ${(error as Error).message}`)
 				}
 			}
 
 			// Handle description translation
 			if (description && description.trim()) {
 				try {
-					const existingDescTranslation = await prisma.translatedText.findFirst(
-						{
-							where: {
-								contentId: location.contentId,
-								language: language,
-								type: 'description',
-							},
-						},
-					)
-
-					if (existingDescTranslation) {
-						await prisma.translatedText.update({
-							where: { id: existingDescTranslation.id },
-							data: { text: description.trim() },
-						})
-					} else {
-						await prisma.translatedText.create({
-							data: {
-								contentId: location.contentId,
-								language: language,
-								text: description.trim(),
-								type: 'description',
-							},
-						})
-					}
+					await setGeoText(location.contentId, language, 'description', description.trim())
 
 					results.push(`${language} description: Updated successfully`)
 				} catch (error) {
 					console.error(`Error updating ${language} description:`, error)
-					errors.push(`${language} description: ${error.message}`)
+					errors.push(`${language} description: ${(error as Error).message}`)
 				}
 			}
 		}
@@ -213,7 +132,27 @@ export async function PUT(
 			{ success: false, message: 'Failed to update translations' },
 			{ status: 500 },
 		)
-	} finally {
-		await placesClient.$disconnect()
+	}
+}
+
+/** country | city | anything else (place) -> table name */
+function geoTable(type: string) {
+	return type === 'country' ? T.countries : type === 'city' ? T.cities : T.places
+}
+
+/** Creates or updates one translated text (by content, language and type). */
+async function setGeoText(contentId: string, language: string, type: string, text: string) {
+	const existing = must(
+		await db
+			.from(T.geoTexts)
+			.select('id')
+			.match({ contentId, language, type })
+			.limit(1)
+			.maybeSingle(),
+	)
+	if (existing) {
+		must(await db.from(T.geoTexts).update({ text }).eq('id', existing.id))
+	} else {
+		must(await db.from(T.geoTexts).insert({ id: newId(), contentId, language, text, type }))
 	}
 }

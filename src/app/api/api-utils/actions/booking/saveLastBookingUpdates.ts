@@ -1,39 +1,28 @@
-import { NextRequest, NextResponse } from 'next/server'
-import { PrismaClient } from '@prisma/client'
 import getUserData from '@/app/api/user/getUserData'
+import { db, T, must } from '@/lib/db'
 import { updateBooking } from './updateBooking'
 
-const prisma = new PrismaClient()
-
+/** Saves the latest checkout choices onto the user's in-progress booking for this tour. */
 export async function saveLastBookingUpdates({ request, booking }: any) {
 	try {
-		const { id }: any = await getUserData({})
+		const { id }: any = (await getUserData({})) ?? {}
 		const referer = request.headers.get('referer') || ''
 		const url = new URL(referer)
-		const searchParams = url.searchParams
-		const serviceId: string = searchParams.get('serviceId') || ''
-		const tour = await prisma.tour.findFirst({
-			where: { id: serviceId },
-		})
-		// const body = await request.json()
+		const serviceId: string = url.searchParams.get('serviceId') || ''
 		const { accommodation, lineItems, guests, bookOwnHotels, selectedDate } =
 			booking
 
-		if (!serviceId) {
+		if (!serviceId || !id) {
 			return null
 		}
-		const bookingInitiated = await prisma.booking.findFirst({
-			where: {
-				customerId: id, // Replace with the actual customer ID
-				bookingState: 'initiated', // The specific booking state
-				tourId: serviceId, // Replace with the actual tour ID
-			},
-			include: {
-				customer: true, // Include customer details (optional)
-				provider: true, // Include provider details (optional)
-				tour: true, // Include tour details (optional)
-			},
-		})
+		const bookingInitiated = must(
+			await db
+				.from(T.bookings)
+				.select('id')
+				.match({ customerId: id, bookingState: 'initiated', tourId: serviceId })
+				.limit(1)
+				.maybeSingle(),
+		)
 		if (bookingInitiated) {
 			await updateBooking(bookingInitiated.id, {
 				accommodation,

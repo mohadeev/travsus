@@ -4,7 +4,8 @@ import type React from 'react'
 import { useTranslations } from '@/lib/i18n'
 
 import { useState, useEffect, useRef } from 'react'
-import { useSelector } from 'react-redux'
+import { useAppSelector } from '@/store/hooks'
+import { selectIsLoggedIn } from '@/store/slices/user'
 import { X } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -35,7 +36,7 @@ const messageMap = {
 }
 
 export default function NewsletterModal() {
-	const { isUserLoggedIn } = useSelector((state: any) => state.userReducer)
+	const isUserLoggedIn = useAppSelector(selectIsLoggedIn)
 	const [isOpen, setIsOpen] = useState(false)
 	const [email, setEmail] = useState('')
 	const [isDropdownOpen, setIsDropdownOpen] = useState(false)

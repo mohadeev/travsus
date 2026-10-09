@@ -11,7 +11,8 @@ import Link from 'next/link'
 import Header from './Header'
 import Header3 from './Header3'
 import { useThemeMode } from '@/utils/useThemeMode'
-import { useSelector } from 'react-redux'
+import { useAppSelector } from '@/store/hooks'
+import { selectIsLoggedIn } from '@/store/slices/user'
 import HeaderSkeleton from './HeaderSkeleton'
 import { usePathname } from 'next/navigation'
 
@@ -36,9 +37,7 @@ const PAGES_HIDE_HEADER_BORDER: PathName[] = [
 ]
 
 const SiteHeader = () => {
-	const isUserLoggedIn = useSelector(
-		(state: any) => state.userReducer.isUserLoggedIn,
-	)
+	const isUserLoggedIn = useAppSelector(selectIsLoggedIn)
 
 	const anchorRef = useRef<HTMLDivElement>(null)
 

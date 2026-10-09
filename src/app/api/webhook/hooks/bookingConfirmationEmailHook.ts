@@ -10,7 +10,7 @@ const bookingConfirmationEmailHook = (data: any) => {
 		emailData: {
 			name: fullname,
 			email,
-			restLink: `${process.env.NEXT_PUBLIC_SITE_URL}/reset-password/q?token=${'resetToken'}`,
+			restLink: `${process.env.NEXT_PUBLIC_SITE_URL}/sign-in`,
 		},
 	}) 
 	

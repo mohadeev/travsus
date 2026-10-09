@@ -7,7 +7,8 @@ import { ChevronRight, CreditCard, Wallet } from 'lucide-react'
 import { useToast } from '@/hooks/useToast'
 import PayoutMethodsList from '@/components/payout/payout-methods-list'
 import AddPayoutMethodForm from '@/components/payout/add-payout-method-form'
-import { useSelector } from 'react-redux'
+import { useAppSelector } from '@/store/hooks'
+import { selectUser } from '@/store/slices/user'
 import { useTranslations } from '@/lib/i18n'
 
 interface PaymentMethod {
@@ -39,7 +40,7 @@ export default function PaymentMethodsPage() {
 	const [loading, setLoading] = useState(true)
 	const [showAddPayoutForm, setShowAddPayoutForm] = useState(false)
 	const { toast } = useToast()
-	const { userData } = useSelector((state: any) => state.userReducer)
+	const userData = useAppSelector(selectUser)
 
 	useEffect(() => {
 		const fetchData = async () => {

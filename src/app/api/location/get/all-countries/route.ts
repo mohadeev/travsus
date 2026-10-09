@@ -1,35 +1,20 @@
-export const dynamic = "force-dynamic";
-import { placesClient } from '@/lib/prisma'
+export const dynamic = 'force-dynamic'
 import { NextRequest, NextResponse } from 'next/server'
+import { db, T, must } from '@/lib/db'
+import { GEO_CONTENT } from '@/lib/geo'
 
+/** English name from a geo row's content. */
+const englishName = (row: any) =>
+	row.content?.translations?.find((t: any) => t.language === 'en-US')?.text || 'N/A'
 
 export async function GET(request: NextRequest) {
 	try {
-		const prisma = placesClient
-		const counties = await prisma.country.findMany({
-			select: {
-				code: true,
-				content: {
-					select: {
-						translations: {
-							where: {
-								language: 'en-US', // Fetch only English translation
-							},
-							select: {
-								text: true, // Get only the translated name
-							},
-						},
-					},
-				},
-			},
-		})
+		const countries: any[] =
+			must(await db.from(T.countries).select(`code, ${GEO_CONTENT}`)) ?? []
 
-		const formattedCounties = counties
-			.map((country) => ({
-				code: country.code,
-				name: country.content.translations[0]?.text || 'N/A', // Fallback if no translation found
-			}))
-			.sort((a, b) => a.code.localeCompare(b.code)) // Sort by code (A-Z)
+		const formattedCounties = countries
+			.map((country) => ({ code: country.code, name: englishName(country) }))
+			.sort((a, b) => a.code.localeCompare(b.code))
 
 		return NextResponse.json({ counties: formattedCounties }, { status: 200 })
 	} catch (error) {

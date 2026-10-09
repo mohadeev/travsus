@@ -1,6 +1,6 @@
 export const dynamic = "force-dynamic";
 import { NextResponse } from 'next/server'
-import prisma from '@/prisma'
+import { db, T, must, withMeta } from '@/lib/db'
 import getUserData from '@/app/api/user/getUserData'
 
 export async function POST(request: Request) {
@@ -36,29 +36,35 @@ export async function POST(request: Request) {
 		}
 
 		// Check if this is the first company for the user
-		const existingCompaniesCount = await prisma.business.count({
-			where: {
-				creatorId: userData.id,
-			},
-		})
+		const { count: existingCompaniesCount, error: countError } = await db
+			.from(T.businesses)
+			.select('id', { count: 'exact', head: true })
+			.eq('creatorId', userData.id)
+		if (countError) throw new Error(countError.message)
 
 		// If this is the first company, set it as active
 		const isActive = existingCompaniesCount === 0
 
 		// Create new company
-		const newCompany = await prisma.business.create({
-			data: {
-				name: body.name,
-				email: body.email,
-				phoneNumber: body.phoneNumber || null,
-				address: body.address || null,
-				country: body.country || null,
-				registrationNumber: body.registrationNumber || null,
-				type: body.type,
-				isActive: isActive,
-				creatorId: userData.id,
-			},
-		})
+		const newCompany = must(
+			await db
+				.from(T.businesses)
+				.insert(
+					withMeta({
+						name: body.name,
+						email: body.email,
+						phoneNumber: body.phoneNumber || '',
+						address: body.address || null,
+						country: body.country || null,
+						registrationNumber: body.registrationNumber || null,
+						type: body.type,
+						isActive,
+						creatorId: userData.id,
+					}),
+				)
+				.select('*')
+				.single(),
+		)
 
 		return NextResponse.json(
 			{ success: true, company: newCompany },
@@ -70,7 +76,5 @@ export async function POST(request: Request) {
 			{ message: 'Error creating company' },
 			{ status: 500 },
 		)
-	} finally {
-		await prisma.$disconnect()
 	}
 }

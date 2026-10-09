@@ -2,8 +2,8 @@
 import React, { useState, ReactNode, useEffect } from 'react'
 import Sidebar from '@/components/Sidebar'
 import Header from '@/components/Header'
-import { businessSliceState } from '@/app/[locale]/GlobalRedux/Features/businessSlice/businessSlice'
-import { useDispatch, useSelector } from 'react-redux'
+import { useAppDispatch } from '@/store/hooks'
+import { setBusinessCompany } from '@/store/slices/business'
 
 export default function DefaultLayout({
 	children,
@@ -11,7 +11,7 @@ export default function DefaultLayout({
 	children: React.ReactNode
 }) {
 	const [sidebarOpen, setSidebarOpen] = useState(false)
-	const dispatch = useDispatch()
+	const dispatch = useAppDispatch()
 
 	// Fetch company data from the API
 	const fetchCompanyData = async () => {
@@ -29,7 +29,7 @@ export default function DefaultLayout({
 			}
 
 			const data = await response.json()
-			dispatch(businessSliceState({ path: 'company', value: data }))
+			dispatch(setBusinessCompany(data))
 
 			// setCompanyData(data) // Save the company data in state
 		} catch (err: any) {
@@ -43,11 +43,6 @@ export default function DefaultLayout({
 	useEffect(() => {
 		fetchCompanyData()
 	}, [])
-	// const service = useSelector(
-	// 	(state: any) => state.creatingServiceSlice.service,
-	// )
-
-	const company = useSelector((state: any) => state?.businessSlice?.company)
 	return (
 		<>
 			{/* <!-- ===== Page Wrapper Start ===== --> */}

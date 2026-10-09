@@ -1,11 +1,9 @@
 export const dynamic = "force-dynamic";
 import { NextRequest, NextResponse } from 'next/server'
-import { PrismaClient } from '@prisma/client'
 import getUserData from '../user/getUserData'
-import { updateBooking } from '../api-utils/actions/booking/updateBooking'
 import { createOrderNumber } from '@/app/actions/generateOrderNumber'
+import { db, T, must, withMeta } from '@/lib/db'
 
-const prisma = new PrismaClient()
 function extractTourId(url: any) {
 	// Split the URL by slashes
 	const parts = url.split('/')
@@ -20,7 +18,10 @@ function extractTourId(url: any) {
 }
 
 export async function POST(request: NextRequest) {
-	const { id }: any = await getUserData({})
+	const { id }: any = (await getUserData({})) ?? {}
+	if (!id) {
+		return NextResponse.json({ error: 'Not authenticated' }, { status: 401 })
+	}
 	const referer = request.headers.get('referer') || ''
 	console.log('referer: ', referer)
 	const url = new URL(referer)
@@ -29,64 +30,43 @@ export async function POST(request: NextRequest) {
 	const serviceId = serviceIdParam || extractTourId(referer) || ''
 
 	try {
-		const tour = await prisma.tour.findFirst({
-			where: { id: serviceId },
-		})
+		const tour = must(
+			await db.from(T.tours).select('creatorId').eq('id', serviceId).maybeSingle(),
+		)
+		if (!tour) {
+			return NextResponse.json({ error: 'Tour not found' }, { status: 404 })
+		}
 		const body = await request.json()
 		const { accommodation, lineItems, guests, bookOwnHotels, selectedDate } =
 			body
 
-		const bookingInitiated: any = null
-		// await prisma.booking.findFirst({
-		// 	where: {
-		// 		customerId: id, // Replace with the actual customer ID
-		// 		bookingState: 'initiated', // The specific booking state
-		// 		tourId: serviceId, // Replace with the actual tour ID
-		// 	},
-		// 	include: {
-		// 		customer: true, // Include customer details (optional)
-		// 		provider: true, // Include provider details (optional)
-		// 		tour: true, // Include tour details (optional)
-		// 	},
-		// })
-		if (bookingInitiated) {
-			await updateBooking(bookingInitiated.id, {
-				accommodation,
-				lineItems,
-				guests,
-				bookOwnHotels,
-				selectedDate,
-			})
-			return NextResponse.json(bookingInitiated, { status: 200 })
-		}
 		const numberRef = await createOrderNumber()
-		const newBooking = await prisma.booking.create({
-			data: {
-				customer: { connect: { id: id } },
-				provider: { connect: { id: tour?.creatorId } },
-				tour: { connect: { id: serviceId } },
-				bookingStates: [
-					{
-						state: 'initiated',
-						createdAt: new Date(),
-						by: 'customer',
-						updatedAt: new Date(),
-					},
-				],
-				bookingState: 'initiated',
-				duration: 10,
-				selectedDate: selectedDate,
-				lineItems: lineItems,
-				accommodation,
-				bookOwnHotels,
-				...numberRef,
-			},
-			include: {
-				customer: true,
-				tour: true,
-				provider: true,
-			},
-		})
+		if (!numberRef) throw new Error('Could not generate order number')
+		const now = new Date().toISOString()
+		const newBooking = must(
+			await db
+				.from(T.bookings)
+				.insert(
+					withMeta({
+						customerId: id,
+						providerId: tour.creatorId,
+						tourId: serviceId,
+						bookingStates: [
+							{ state: 'initiated', createdAt: now, by: 'customer', updatedAt: now },
+						],
+						bookingState: 'initiated',
+						duration: 10,
+						selectedDate,
+						lineItems: lineItems ?? [],
+						accommodation,
+						bookOwnHotels,
+						guests,
+						...numberRef,
+					}),
+				)
+				.select('*')
+				.single(),
+		)
 
 		return NextResponse.json(newBooking, { status: 201 })
 	} catch (error) {

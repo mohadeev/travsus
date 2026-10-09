@@ -13,8 +13,9 @@ import {
 	UserX,
 } from 'lucide-react'
 import { useToast } from '@/hooks/useToast'
-import { useSelector } from 'react-redux'
-import { signOut } from 'next-auth/react'
+import { useAppSelector } from '@/store/hooks'
+import { selectUser } from '@/store/slices/user'
+import { useClerk } from '@clerk/nextjs'
 
 // Steps in the deletion process
 enum DeletionStep {
@@ -34,8 +35,9 @@ export default function DeleteAccountPage() {
 	const [errorMessage, setErrorMessage] = useState<string>('')
 	const [isDeleting, setIsDeleting] = useState<boolean>(false)
 	const router = useRouter()
+	const { signOut } = useClerk()
 	const { toast } = useToast()
-	const { userData } = useSelector((state: any) => state.userReducer)
+	const userData = useAppSelector(selectUser)
 
 	// Get user email from Redux state
 	const userEmail = userData?.email || 'user@example.com'
@@ -121,8 +123,7 @@ export default function DeleteAccountPage() {
 	}
 
 	const handleClose = async () => {
-		// Sign out the user using NextAuth
-		await signOut({ redirect: false })
+		await signOut()
 		// Redirect to home page
 		router.push('/')
 		// Show a toast message

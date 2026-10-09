@@ -1,8 +1,7 @@
 export const dynamic = "force-dynamic";
 
 import { type NextRequest, NextResponse } from 'next/server';
-import { cookies } from 'next/headers';
-import { createClient } from '@/utils/supabase/server';
+import { db as supabase, T } from '@/lib/db';
 import extractLanguageFromRequest from '@/app/api/listing/get/getTourData/extractLanguageFromRequest';
 
 export async function GET(request: NextRequest) {
@@ -17,10 +16,6 @@ export async function GET(request: NextRequest) {
 
     const language = extractLanguageFromRequest(request);
     console.log("=== ALL TOURS: LANGUAGE ===", language);
-
-    // ----- 1. Get Supabase client (SSR) -----
-    const cookieStore = await cookies();
-    const supabase = createClient(cookieStore);
 
     // ----- 2. Get total count -----
     const { count: totalTours, error: countError } = await supabase

@@ -1,66 +1,16 @@
-export const dynamic = "force-dynamic";
-import { NextRequest, NextResponse } from 'next/server'
-import { prisma } from '@/lib/prisma'
+export const dynamic = 'force-dynamic'
+import { NextResponse } from 'next/server'
 
-export async function POST(request: NextRequest) {
-	try {
-		const body = await request.json()
-		const { tourId, features } = body
-
-		if (!tourId) {
-			return NextResponse.json(
-				{ success: false, message: 'Tour ID is required' },
-				{ status: 400 },
-			)
-		}
-
-		// Update the tour with all language features
-		const tour = await prisma.tour.update({
-			where: { id: tourId },
-			data: {
-				// Update highlights for each language
-				...Object.entries(features).reduce(
-					(acc, [lang, data]: [string, any]) => ({
-						...acc,
-						[`highlights_${lang}`]: data.highlights.filter(
-							(h: string) => h.trim() !== '',
-						),
-					}),
-					{},
-				),
-
-				// Update FAQs for each language
-				...Object.entries(features).reduce(
-					(acc, [lang, data]: [string, any]) => ({
-						...acc,
-						[`faqs_${lang}`]: data.faqs.filter(
-							(f: any) => f.question.trim() !== '' && f.answer.trim() !== '',
-						),
-					}),
-					{},
-				),
-
-				// Update inclusions for each language
-				...Object.entries(features).reduce(
-					(acc, [lang, data]: [string, any]) => ({
-						...acc,
-						[`inclusions_${lang}`]: data.inclusions,
-					}),
-					{},
-				),
-			},
-		})
-
-		return NextResponse.json({
-			success: true,
-			data: tour,
-			message: 'Tour features updated successfully for all languages',
-		})
-	} catch (error) {
-		console.error('Error saving tour features:', error)
-		return NextResponse.json(
-			{ success: false, message: 'Failed to save tour features' },
-			{ status: 500 },
-		)
-	}
+// The edite-tours page posts per-language highlights / FAQs / inclusions here,
+// but the tours table has no per-language columns for them yet, so this has
+// never saved anything. Returns an explicit error until storage is designed.
+export async function POST() {
+	return NextResponse.json(
+		{
+			success: false,
+			message:
+				'Saving per-language tour features is not implemented yet (no storage for it in the database).',
+		},
+		{ status: 501 },
+	)
 }

@@ -1,8 +1,9 @@
 'use server'
 
-import { PrismaClient } from '@prisma/client'
+import { db, T, must, newId } from '@/lib/db'
 
-const prisma = new PrismaClient()
+const COUNTER_NAME = 'orderCounter'
+const COUNTER_START = 1000000000
 
 function generateNumbers(counter: number) {
 	// This will generate a 10-digit number
@@ -17,22 +18,43 @@ function generateNumbers(counter: number) {
 	}
 }
 
+/**
+ * Atomically takes the next order counter value.
+ * Uses compare-and-swap: the update only succeeds if nobody changed the value
+ * in between, otherwise it retries — so two checkouts never share a number.
+ */
+async function nextCounterValue(): Promise<number> {
+	for (let attempt = 0; attempt < 10; attempt++) {
+		const counter = must(
+			await db.from(T.counters).select('value').eq('name', COUNTER_NAME).maybeSingle(),
+		)
+
+		if (!counter) {
+			const { error } = await db
+				.from(T.counters)
+				.insert({ id: newId(), name: COUNTER_NAME, value: COUNTER_START })
+			if (!error) return COUNTER_START
+			continue // someone else created it first — retry
+		}
+
+		const next = counter.value + 1
+		const updated = must(
+			await db
+				.from(T.counters)
+				.update({ value: next })
+				.eq('name', COUNTER_NAME)
+				.eq('value', counter.value)
+				.select('value'),
+		)
+		if (updated?.length) return next
+	}
+	throw new Error('Could not reserve an order number, please retry')
+}
+
 export async function createOrderNumber() {
 	try {
-		// Use a transaction to ensure atomicity
-		return await prisma.$transaction(async (tx) => {
-			// Get and increment the counter
-			const counter = await tx.counter.upsert({
-				where: { name: 'orderCounter' },
-				update: { value: { increment: 1 } },
-				create: { name: 'orderCounter', value: 1000000000 }, // Start from 1 billion
-			})
-
-			const numbers = generateNumbers(counter.value)
-			return numbers
-		})
+		return generateNumbers(await nextCounterValue())
 	} catch (error) {
 		console.error('Failed to create order numbers:', error)
-		console.error('Failed to create order numbers')
 	}
 }

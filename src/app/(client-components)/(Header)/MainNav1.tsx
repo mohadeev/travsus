@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import { SignUpButton } from "@clerk/nextjs";
 import Logo from "@/shared/Logo";
 import Navigation from "@/shared/Navigation/Navigation";
 import SearchDropdown from "./SearchDropdown";
@@ -32,9 +33,9 @@ const MainNav1: FC<MainNav1Props> = ({ className = "" }) => {
             <SwitchDarkMode />
             <SearchDropdown className="flex items-center" />
             <div className="px-1" />
-            <ButtonPrimary className="self-center" href="/login">
-              Sign up
-            </ButtonPrimary>
+            <SignUpButton mode="modal">
+              <ButtonPrimary className="self-center">Sign up</ButtonPrimary>
+            </SignUpButton>
           </div>
 
           <div className="flex xl:hidden items-center">

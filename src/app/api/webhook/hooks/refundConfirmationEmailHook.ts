@@ -1,20 +1,18 @@
 import sendEmail from '@/utils/email/sendMail'
-import { PrismaClient } from '@prisma/client'
+import { db, T, must, touch } from '@/lib/db'
 import { Stripe } from 'stripe'
-// import { sendEmail } from '@/utils/email/sendMail'
-
-const prisma = new PrismaClient()
 
 export async function refundConfirmationEmailHook(charge: Stripe.Charge) {
 	try {
 		// Fetch the booking using the payment intent ID
-		const booking = await prisma.booking.findFirst({
-			where: { paymentIntentId: charge.payment_intent as string },
-			include: {
-				customer: true,
-				tour: true,
-			},
-		})
+		const booking: any = must(
+			await db
+				.from(T.bookings)
+				.select(`*, customer:${T.users}!customerId(username, email), tour:${T.tours}(name)`)
+				.eq('paymentIntentId', charge.payment_intent as string)
+				.limit(1)
+				.maybeSingle(),
+		)
 
 		if (!booking) {
 			console.error('Booking not found for refund:', charge.payment_intent)
@@ -45,20 +43,21 @@ export async function refundConfirmationEmailHook(charge: Stripe.Charge) {
 		})
 
 		// Update booking state
-		await prisma.booking.update({
-			where: { id: booking.id },
-			data: {
-				bookingState: 'REFUNDED',
-				bookingStates: {
-					push: {
-						state: 'REFUNDED',
-						by: 'SYSTEM',
-						createdAt: new Date(),
-						updatedAt: new Date(),
-					},
-				},
-			},
-		})
+		const now = new Date().toISOString()
+		must(
+			await db
+				.from(T.bookings)
+				.update(
+					touch({
+						bookingState: 'REFUNDED',
+						bookingStates: [
+							...(booking.bookingStates ?? []),
+							{ state: 'REFUNDED', by: 'SYSTEM', createdAt: now, updatedAt: now },
+						],
+					}),
+				)
+				.eq('id', booking.id),
+		)
 
 		console.log(
 			'Refund confirmation email sent and booking updated:',
