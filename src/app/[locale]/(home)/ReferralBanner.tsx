@@ -1,3 +1,4 @@
+import { Check } from 'lucide-react'
 import { useTranslations } from '@/lib/i18n'
 import { PHOTOS } from '@/lib/photos'
 import PhotoBanner from './PhotoBanner'
@@ -29,11 +30,16 @@ export default function ReferralBanner() {
 			ctaHref="/affiliates"
 			footnote={t('footer_text')}
 		>
-			<ul className="mt-6 space-y-2 sm:ml-auto sm:max-w-sm">
+			{/* Phones: a short checklist. Larger screens: glass cards with details. */}
+			<ul className="mt-4 space-y-1.5 sm:ml-auto sm:mt-6 sm:max-w-sm sm:space-y-2">
 				{FEATURES.map(([title, desc]) => (
-					<li key={title} className="rounded-2xl bg-white/10 px-4 py-3 text-left ring-1 ring-white/20 backdrop-blur-md">
+					<li
+						key={title}
+						className="flex items-center gap-2 text-left sm:block sm:rounded-2xl sm:bg-white/10 sm:px-4 sm:py-3 sm:ring-1 sm:ring-white/20 sm:backdrop-blur-md"
+					>
+						<Check className="h-4 w-4 shrink-0 sm:hidden" strokeWidth={3} />
 						<p className="text-sm font-semibold">{t(title)}</p>
-						<p className="text-xs text-white/70">{t(desc)}</p>
+						<p className="hidden text-xs text-white/70 sm:block">{t(desc)}</p>
 					</li>
 				))}
 			</ul>

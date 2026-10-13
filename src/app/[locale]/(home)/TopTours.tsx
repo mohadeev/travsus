@@ -12,23 +12,23 @@ export default function TopTours({ tours }: { tours: HomeTour[] }) {
 
 	return (
 		<section className={styles.reveal}>
-			<div className="mb-8 flex items-end justify-between gap-4">
+			<div className="mb-5 flex items-end justify-between gap-4 sm:mb-8">
 				<div>
-					<h2 className="text-3xl font-bold tracking-tight sm:text-4xl">{t('top_tours')}</h2>
-					<p className="mt-2 text-neutral-500">{t('top_tours_sub')}</p>
+					<h2 className="text-2xl font-bold tracking-tight sm:text-4xl">{t('top_tours')}</h2>
+					<p className="mt-1 text-sm text-neutral-500 sm:mt-2 sm:text-base">{t('top_tours_sub')}</p>
 				</div>
 				<Link
 					href={'/search?query=' as any}
-					className="group hidden shrink-0 items-center gap-1.5 rounded-full border border-neutral-300 px-4 py-2 text-sm font-semibold transition hover:border-neutral-950 sm:inline-flex"
+					className="group inline-flex shrink-0 items-center gap-1 text-sm font-semibold underline underline-offset-4 transition sm:gap-1.5 sm:rounded-full sm:border sm:border-neutral-300 sm:px-4 sm:py-2 sm:no-underline sm:hover:border-neutral-950"
 				>
 					{t('see_all')}
 					<ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
 				</Link>
 			</div>
 
-			<ul className={`${styles.noScrollbar} flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 sm:grid sm:grid-cols-2 sm:gap-x-5 sm:gap-y-10 sm:overflow-visible lg:grid-cols-4`}>
+			<ul className={`${styles.noScrollbar} -mx-5 flex snap-x snap-mandatory scroll-px-5 gap-3 overflow-x-auto px-5 pb-2 sm:mx-0 sm:grid sm:px-0 sm:grid-cols-2 sm:gap-x-5 sm:gap-y-10 sm:overflow-visible lg:grid-cols-4`}>
 				{tours.map((tour) => (
-					<li key={tour.id} className="w-[78%] shrink-0 snap-start sm:w-auto">
+					<li key={tour.id} className="w-[72%] max-w-[300px] shrink-0 snap-start sm:w-auto sm:max-w-none">
 						<TourCard tour={tour} />
 					</li>
 				))}

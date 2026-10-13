@@ -39,19 +39,20 @@ export default function HomePage({ tours, destinations, reviews, rating }: Props
 		<>
 			<HomeStructuredData />
 
-			<main className="pb-24 text-neutral-950 dark:text-white">
+			<main className="pb-12 text-neutral-950 sm:pb-24 dark:text-white">
 				<HomeHero destinations={destinations} />
 
-				<ul className="mx-auto flex max-w-7xl flex-wrap justify-center gap-x-10 gap-y-3 px-5 py-8 text-sm font-medium text-neutral-600 dark:text-neutral-400">
+				{/* Phones: three small columns, icon above text. Larger screens: one row. */}
+				<ul className="mx-auto grid max-w-7xl grid-cols-3 gap-2 px-5 py-6 text-center text-xs font-medium leading-snug text-neutral-600 sm:flex sm:flex-wrap sm:justify-center sm:gap-x-10 sm:gap-y-3 sm:py-8 sm:text-sm dark:text-neutral-400">
 					{PROMISES.map(([Icon, key]) => (
-						<li key={key} className="flex items-center gap-2">
-							<Icon className="h-5 w-5 text-neutral-950 dark:text-white" />
+						<li key={key} className="flex flex-col items-center gap-1.5 sm:flex-row sm:gap-2">
+							<Icon className="h-5 w-5 shrink-0 text-neutral-950 dark:text-white" />
 							{t(key)}
 						</li>
 					))}
 				</ul>
 
-				<div className="mx-auto max-w-7xl space-y-20 px-5 pt-8 sm:space-y-28">
+				<div className="mx-auto max-w-7xl space-y-14 px-5 pt-4 sm:space-y-28 sm:pt-8">
 					<TopTours tours={tours.slice(0, 8)} />
 
 					<div className={styles.reveal}>

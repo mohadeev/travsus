@@ -18,14 +18,17 @@ export default function HomeReviews({ reviews }: { reviews: HomeReview[] }) {
 
 	return (
 		<section className={styles.reveal}>
-			<h2 className="text-3xl font-bold tracking-tight sm:text-4xl">{t('reviews_title')}</h2>
-			<p className="mt-2 text-neutral-500">{t('reviews_sub')}</p>
+			<h2 className="text-2xl font-bold tracking-tight sm:text-4xl">{t('reviews_title')}</h2>
+			<p className="mt-1 text-sm text-neutral-500 sm:mt-2 sm:text-base">{t('reviews_sub')}</p>
 
-			<div className="mt-8 gap-4 [column-fill:_balance] sm:columns-2 lg:columns-3">
+			{/* Phones: swipe through the cards. Larger screens: a masonry wall. */}
+			<div
+				className={`${styles.noScrollbar} -mx-5 mt-5 flex snap-x snap-mandatory scroll-px-5 gap-3 overflow-x-auto px-5 pb-2 sm:mx-0 sm:mt-8 sm:block sm:gap-4 sm:overflow-visible sm:px-0 sm:pb-0 sm:[column-fill:_balance] sm:columns-2 lg:columns-3`}
+			>
 				{reviews.map((review) => (
 					<article
 						key={review.id}
-						className="mb-4 break-inside-avoid rounded-2xl border border-neutral-200 bg-white p-6 transition hover:border-neutral-400 dark:border-neutral-800 dark:bg-neutral-950"
+						className="flex w-[85%] max-w-[340px] shrink-0 snap-start flex-col rounded-2xl border border-neutral-200 bg-white p-5 transition sm:mb-4 sm:block sm:w-auto sm:max-w-none sm:break-inside-avoid sm:p-6 hover:border-neutral-400 dark:border-neutral-800 dark:bg-neutral-950"
 					>
 						<header className="flex items-center gap-3">
 							<span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-neutral-950 text-sm font-bold text-white dark:bg-white dark:text-neutral-950">
@@ -50,14 +53,14 @@ export default function HomeReviews({ reviews }: { reviews: HomeReview[] }) {
 						</div>
 
 						{review.title && <h3 className="mt-3 font-bold leading-snug">{review.title}</h3>}
-						<p className="mt-2 line-clamp-6 text-[15px] leading-relaxed text-neutral-700 dark:text-neutral-300">
+						<p className="mb-4 mt-2 line-clamp-5 text-[15px] sm:mb-0 sm:line-clamp-6 leading-relaxed text-neutral-700 dark:text-neutral-300">
 							{review.content}
 						</p>
 
 						{review.tour && (
 							<Link
 								href={review.tour.href as any}
-								className="mt-4 block truncate border-t border-neutral-100 pt-4 text-sm font-medium text-neutral-500 hover:text-neutral-950 dark:border-neutral-800"
+								className="mt-auto block truncate border-t border-neutral-100 pt-4 sm:mt-4 text-sm font-medium text-neutral-500 hover:text-neutral-950 dark:border-neutral-800"
 							>
 								{t('see_tour')}: {review.tour.name}
 							</Link>

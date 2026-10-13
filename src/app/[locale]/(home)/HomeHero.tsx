@@ -23,8 +23,8 @@ export default function HomeHero({ destinations }: { destinations: HomeDestinati
 	const locale = useLocale()
 
 	return (
-		<section className="mx-auto max-w-7xl px-5 pt-5">
-			<div className="relative isolate overflow-hidden rounded-3xl bg-neutral-900">
+		<section className="mx-auto max-w-7xl px-5 pt-3 sm:pt-5">
+			<div className="relative isolate overflow-hidden rounded-[28px] bg-neutral-900 sm:rounded-3xl">
 				<Image
 					src={PHOTOS.hero}
 					alt=""
@@ -35,40 +35,23 @@ export default function HomeHero({ destinations }: { destinations: HomeDestinati
 				/>
 				<div className="absolute inset-0 -z-10 bg-gradient-to-b from-black/55 via-black/25 to-black/60" />
 
-				<div className="mx-auto flex min-h-[520px] max-w-3xl flex-col items-center justify-center px-4 py-16 text-center text-white sm:min-h-[580px]">
-					<h1 className="text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl">
+				<div className="mx-auto flex min-h-[440px] max-w-3xl flex-col items-center justify-center px-4 py-10 text-center text-white sm:min-h-[580px] sm:py-16">
+					<h1 className="text-[32px] font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl">
 						{tHero('app_locale_test_page_Travel_With_Ultimate_Flexibility')}
 					</h1>
-					<p className="mt-4 max-w-xl text-lg text-white/85 sm:text-xl">
+					<p className="mt-3 max-w-xl text-base text-white/85 sm:mt-4 sm:text-xl">
 						{tHero('app_locale_test_page_Book_Cancel_Refund_Anytime_Anywhere')}
 					</p>
-
-					{/* Tabs: quick searches, TripAdvisor-style */}
-					<ul className={`${styles.noScrollbar} mt-10 flex max-w-full gap-1 overflow-x-auto rounded-full bg-black/30 p-1 backdrop-blur-md`}>
-						{TABS.map(([label, query, Icon], i) => (
-							<li key={label} className="shrink-0">
-								<Link
-									href={`/search?query=${encodeURIComponent(query)}` as any}
-									className={`flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition ${
-										i === 0 ? 'bg-white text-neutral-950' : 'text-white hover:bg-white/15'
-									}`}
-								>
-									<Icon className="h-4 w-4" />
-									{t(label)}
-								</Link>
-							</li>
-						))}
-					</ul>
 
 					{/* Plain form: works before JavaScript loads */}
 					<form
 						action={`/${locale}/search`}
 						method="get"
 						role="search"
-						className="mt-4 flex w-full max-w-2xl items-center gap-2 rounded-full bg-white p-2 pl-5 text-neutral-950 shadow-2xl"
+						className="mt-7 flex w-full max-w-2xl items-center gap-2 rounded-full bg-white p-1.5 pl-4 text-neutral-950 shadow-2xl sm:order-last sm:mt-4 sm:p-2 sm:pl-5"
 					>
 						<Search className="h-5 w-5 shrink-0" />
-						<label className="flex-1">
+						<label className="min-w-0 flex-1">
 							<span className="sr-only">{t('search_label')}</span>
 							<input
 								type="search"
@@ -79,14 +62,37 @@ export default function HomeHero({ destinations }: { destinations: HomeDestinati
 						</label>
 						<button
 							type="submit"
-							className="rounded-full bg-neutral-950 px-6 py-3 text-sm font-semibold text-white transition hover:bg-neutral-800"
+							aria-label={t('search_cta')}
+							className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-neutral-950 text-sm font-semibold text-white transition hover:bg-neutral-800 sm:h-auto sm:w-auto sm:px-6 sm:py-3"
 						>
-							{t('search_cta')}
+							<Search className="h-5 w-5 sm:hidden" />
+							<span className="hidden sm:inline">{t('search_cta')}</span>
 						</button>
 					</form>
 
+					{/* Tabs: quick searches, TripAdvisor-style. Swipe on phones. */}
+					<ul
+						className={`${styles.noScrollbar} -mx-4 mt-4 flex max-w-[calc(100%_+_2rem)] gap-2 overflow-x-auto px-4 sm:mx-0 sm:mt-10 sm:max-w-full sm:gap-1 sm:rounded-full sm:bg-black/30 sm:p-1 sm:backdrop-blur-md`}
+					>
+						{TABS.map(([label, query, Icon], i) => (
+							<li key={label} className="shrink-0">
+								<Link
+									href={`/search?query=${encodeURIComponent(query)}` as any}
+									className={`flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition ${
+										i === 0
+											? 'bg-white text-neutral-950'
+											: 'bg-black/30 text-white backdrop-blur-md hover:bg-white/15 sm:bg-transparent sm:backdrop-blur-none'
+									}`}
+								>
+									<Icon className="h-4 w-4" />
+									{t(label)}
+								</Link>
+							</li>
+						))}
+					</ul>
+
 					{destinations.length > 0 && (
-						<p className="mt-5 flex flex-wrap justify-center gap-2 text-sm">
+						<p className="order-last mt-5 hidden flex-wrap justify-center gap-2 text-sm sm:flex">
 							{destinations.slice(0, 5).map((d) => (
 								<Link
 									key={d.city}
