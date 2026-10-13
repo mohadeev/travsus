@@ -1,29 +1,21 @@
 'use client'
-import { useState } from 'react'
-import ButtonPrimary from '@/shared/ButtonPrimary'
-import converSelectedDateToString from '@/utils/converSelectedDateToString'
+import { useTranslations as useIntlTranslations } from 'next-intl'
+import { formatTripDates, readTripDates } from '@/lib/tripDates'
 import ModalReserveMobile from './ModalReserveMobile'
 import { useAppDispatch, useAppSelector } from '@/store/hooks'
 import { selectBooking, totalOf } from '@/store/slices/booking'
 import { formatCurrency } from '@/utils/formatCurrency'
 import { useTranslations } from '@/lib/i18n'
 import { useLocale } from 'next-intl'
-import locales from '@/lib/dateFnsLocales'
-import { registerLocale } from 'react-datepicker'
-import moment from 'moment'
 import { setMobileReserveOpen } from '@/store/slices/ui'
 import { useTourService } from '../TourServiceContext'
 
 const MobileFooterSticky = () => {
 	const t = useTranslations('Jan03_MobileFooterSticky_m4k7')
 
-	const { guests, lineItems } = useAppSelector(selectBooking)
+	const tBooking = useIntlTranslations('Booking')
+	const { guests, lineItems, selectedDate } = useAppSelector(selectBooking)
 	const totalGuests: number = guests?.guestAdults + guests?.guestChildren
-	const {
-		name: title,
-		price,
-		days,
-	}: any = useTourService()
 	const tourData: any = useTourService()
 	// Server "from" price until the booking is priced in the browser
 	const totalAmount = totalOf(lineItems) || (tourData?.fromPricePerPerson ?? 0) * 2
@@ -31,22 +23,8 @@ const MobileFooterSticky = () => {
 		? totalOf(lineItems) / totalGuests
 		: tourData?.fromPricePerPerson ?? 0
 	const locale = useLocale()
-	// console.log('locale:')
-	moment.locale(locale) // ar-ma
-	registerLocale(locale, locales[locale])
-
-	const daysLength = days?.length || 3 // make sure `days` is defined
-
-	const [startDate, setStartDate] = useState<Date | null>(
-		moment().add(10, 'days').toDate(),
-	)
-
-	const [endDate, setEndDate] = useState<Date | null>(
-		moment()
-			.add(10 + daysLength, 'days')
-			.toDate(),
-	)
-	//
+	// The dates the customer picked (nothing until they choose)
+	const dates = formatTripDates(...readTripDates(selectedDate), locale)
 	const dispatch = useAppDispatch()
 	const haneleOpen = (openModal: any) => {
 		openModal()
@@ -70,15 +48,16 @@ const MobileFooterSticky = () => {
 										onClick={() => haneleOpen(openModal)}
 										className="block text-sm font-medium underline"
 									>
-										{converSelectedDateToString([startDate, endDate], locale)}
+										{dates || tBooking('choose_dates')}
 									</span>
 								</div>
-								<ButtonPrimary
-									sizeClass="px-5 sm:px-7 py-3 !rounded-2xl"
+								<button
+									type="button"
 									onClick={() => haneleOpen(openModal)}
+									className="rounded-full bg-brand-500 px-6 py-3 text-base font-bold text-white shadow-lg shadow-brand-500/25 transition hover:bg-brand-600"
 								>
 									{t('Reserve')}
-								</ButtonPrimary>
+								</button>
 							</div>
 						)}
 					/>

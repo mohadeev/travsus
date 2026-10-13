@@ -78,3 +78,35 @@
     }
   }
 }
+
+/* Tour page date picker (booking card): one month, fits the card, orange trip */
+.tour-date-picker {
+  .react-datepicker {
+    @apply block;
+  }
+  .react-datepicker__day-names {
+    @apply mt-4 text-sm font-semibold text-neutral-600;
+  }
+  .react-datepicker__day_span {
+    @apply h-10 w-10 text-[15px] font-medium;
+  }
+  .react-datepicker__day--in-range,
+  .react-datepicker__day--in-selecting-range {
+    @apply bg-brand-50;
+  }
+  .react-datepicker__day--selected,
+  .react-datepicker__day--range-start,
+  .react-datepicker__day--range-end,
+  .react-datepicker__day--selecting-range-start,
+  .react-datepicker__day--selecting-range-end {
+    span {
+      @apply bg-brand-500 text-white hover:bg-brand-600;
+    }
+  }
+  .react-datepicker__day--disabled {
+    @apply cursor-not-allowed text-neutral-300 line-through dark:text-neutral-600;
+    span {
+      @apply hover:bg-transparent;
+    }
+  }
+}

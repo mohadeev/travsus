@@ -2575,6 +2575,21 @@
     "free_cancel": "出发前 24 小时可免费取消",
     "less": "减少一人",
     "more": "增加一人",
-    "updating": "正在更新价格…"
+    "updating": "正在更新价格…",
+    "choose_dates": "选择日期"
+  },
+  "TourRoute": {
+    "your_route": "您的路线",
+    "start": "出发",
+    "finish": "终点",
+    "day": "第 {n} 天",
+    "days": "第 {list} 天",
+    "see_all": "查看完整行程",
+    "directions": "在 Google 地图中打开",
+    "legend_start": "出发地",
+    "legend_night": "住宿地",
+    "legend_pass": "途经地点",
+    "tap_hint": "点按某一天即可在地图上查看",
+    "loading": "地图加载中…"
   }
 }

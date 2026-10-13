@@ -2413,6 +2413,21 @@
     "free_cancel": "Free cancellation up to 24 hours before",
     "less": "Remove one",
     "more": "Add one",
-    "updating": "Updating price…"
+    "updating": "Updating price…",
+    "choose_dates": "Choose your dates"
+  },
+  "TourRoute": {
+    "your_route": "Your route",
+    "start": "Start",
+    "finish": "Finish",
+    "day": "Day {n}",
+    "days": "Days {list}",
+    "see_all": "See the whole trip",
+    "directions": "Open in Google Maps",
+    "legend_start": "Start",
+    "legend_night": "Where you sleep",
+    "legend_pass": "Places you pass",
+    "tap_hint": "Tap a day to see it on the map",
+    "loading": "Loading map…"
   }
 }

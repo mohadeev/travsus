@@ -7,8 +7,8 @@ import { useAppDispatch, useAppSelector } from '@/store/hooks'
 import getFetchDataFromApi from '@/utils/getFetchDataFromApi'
 import { selectBooking, setBooking } from '@/store/slices/booking'
 import { useSearchParams } from 'next/navigation'
-import converSelectedDateToString from '@/utils/converSelectedDateToString'
-import { useTranslations } from 'next-intl'
+import { formatTripDates, readTripDates } from '@/lib/tripDates'
+import { useLocale, useTranslations } from 'next-intl'
 import LineItemsBreakdown from '../../[country]/[city]/[category]/[name]/(service-detail)/[listingExperiencesDetail]/LineItems/LineItemsBreakdown'
 import { BookingCard } from '../../checkout/checkout/BookingBreakDownCard'
 
@@ -17,6 +17,7 @@ export interface PayPageProps {}
 const PayPage: FC<PayPageProps> = () => {
 	const t = useTranslations('Jan03_PayPage_m5k8')
 	const tPay = useTranslations('Payment')
+	const locale = useLocale()
 	const booking = useAppSelector(selectBooking)
 	const { guests } = booking
 	const searchParams = useSearchParams()
@@ -135,10 +136,7 @@ const PayPage: FC<PayPageProps> = () => {
 							<div className="flex flex-col">
 								<span className="text-sm text-neutral-400">{t('date')}</span>
 								<span className="mt-1.5 text-lg font-semibold">
-									{converSelectedDateToString([
-										new Date(booking?.selectedDate?.startDate),
-										new Date(booking?.selectedDate?.endDate),
-									])}
+									{formatTripDates(...readTripDates(booking?.selectedDate), locale)}
 								</span>
 							</div>
 						</div>

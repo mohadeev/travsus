@@ -3697,6 +3697,21 @@
     "free_cancel": "Kostenlose Stornierung bis 24 Stunden vorher",
     "less": "Eine Person weniger",
     "more": "Eine Person mehr",
-    "updating": "Preis wird aktualisiert…"
+    "updating": "Preis wird aktualisiert…",
+    "choose_dates": "Daten wählen"
+  },
+  "TourRoute": {
+    "your_route": "Ihre Route",
+    "start": "Start",
+    "finish": "Ziel",
+    "day": "Tag {n}",
+    "days": "Tage {list}",
+    "see_all": "Ganze Reise anzeigen",
+    "directions": "In Google Maps öffnen",
+    "legend_start": "Start",
+    "legend_night": "Übernachtung",
+    "legend_pass": "Unterwegs",
+    "tap_hint": "Tippen Sie auf einen Tag, um ihn auf der Karte zu sehen",
+    "loading": "Karte wird geladen…"
   }
 }

@@ -13,7 +13,14 @@ const DatePickerCustomHeaderTwoMonth = ({
 	customHeaderCount,
 	decreaseMonth,
 	increaseMonth,
-}: ReactDatePickerCustomHeaderProps) => {
+	prevMonthButtonDisabled,
+	single = false,
+}: ReactDatePickerCustomHeaderProps & {
+	/** One month shown: both arrows on it (with two, each month shows one) */
+	single?: boolean
+}) => {
+	const hidePrev = prevMonthButtonDisabled || (!single && customHeaderCount === 1)
+	const hideNext = !single && customHeaderCount === 0
 	const t = useTranslations('components_DatePickerCustomHeaderTwoMonth')
 	const locale = useLocale()
 	return (
@@ -25,7 +32,7 @@ const DatePickerCustomHeaderTwoMonth = ({
 				className={
 					'react-datepicker__navigation react-datepicker__navigation--previous absolute -top-1 left-0 flex items-center justify-center rounded-full p-2 hover:bg-gray-100 dark:hover:bg-gray-700'
 				}
-				style={customHeaderCount === 1 ? { visibility: 'hidden' } : {}}
+				style={hidePrev ? { visibility: 'hidden' } : {}}
 				onClick={decreaseMonth}
 				type="button"
 			>
@@ -42,7 +49,7 @@ const DatePickerCustomHeaderTwoMonth = ({
 			<button
 				aria-label={t('components_DatePickerCustomHeaderTwoMonth_Next_Month')}
 				className="react-datepicker__navigation react-datepicker__navigation--next absolute -right-0 -top-1 flex items-center justify-center rounded-full p-2 hover:bg-gray-100 dark:hover:bg-gray-700"
-				style={customHeaderCount === 0 ? { visibility: 'hidden' } : {}}
+				style={hideNext ? { visibility: 'hidden' } : {}}
 				type="button"
 				onClick={increaseMonth}
 			>

@@ -2700,6 +2700,21 @@
     "free_cancel": "24시간 전까지 무료 취소",
     "less": "한 명 빼기",
     "more": "한 명 추가",
-    "updating": "가격 업데이트 중…"
+    "updating": "가격 업데이트 중…",
+    "choose_dates": "날짜 선택"
+  },
+  "TourRoute": {
+    "your_route": "여행 경로",
+    "start": "출발",
+    "finish": "도착",
+    "day": "{n}일차",
+    "days": "{list}일차",
+    "see_all": "전체 여행 보기",
+    "directions": "Google 지도에서 열기",
+    "legend_start": "출발",
+    "legend_night": "숙박 장소",
+    "legend_pass": "지나가는 곳",
+    "tap_hint": "날짜를 누르면 지도에 표시됩니다",
+    "loading": "지도 불러오는 중…"
   }
 }

@@ -3205,6 +3205,21 @@
     "free_cancel": "Cancellazione gratuita fino a 24 ore prima",
     "less": "Togli uno",
     "more": "Aggiungi uno",
-    "updating": "Aggiornamento prezzo…"
+    "updating": "Aggiornamento prezzo…",
+    "choose_dates": "Scegli le date"
+  },
+  "TourRoute": {
+    "your_route": "Il tuo percorso",
+    "start": "Partenza",
+    "finish": "Arrivo",
+    "day": "Giorno {n}",
+    "days": "Giorni {list}",
+    "see_all": "Vedi tutto il viaggio",
+    "directions": "Apri in Google Maps",
+    "legend_start": "Partenza",
+    "legend_night": "Dove dormi",
+    "legend_pass": "Luoghi di passaggio",
+    "tap_hint": "Tocca un giorno per vederlo sulla mappa",
+    "loading": "Caricamento mappa…"
   }
 }

@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import getUserData from '@/app/api/user/getUserData'
 import { db, T, must, touch } from '@/lib/db'
 import { OPEN_STATES, priceBooking } from '@/lib/payments'
+import { validTripDates } from '@/lib/tripDates'
 
 /**
  * Changes a booking before it is paid (checkout page): date, guests,
@@ -37,7 +38,13 @@ export async function PATCH(
 
 	const changes = await request.json().catch(() => ({}))
 	const update: Record<string, any> = {}
-	if (changes.selectedDate?.startDate) update.selectedDate = changes.selectedDate
+	if (changes.selectedDate) {
+		const dates = validTripDates(changes.selectedDate, booking.tour?.days?.length || 1)
+		if (!dates) {
+			return NextResponse.json({ error: 'Please choose a date from tomorrow onwards' }, { status: 400 })
+		}
+		update.selectedDate = dates
+	}
 
 	const repricing =
 		'guests' in changes || 'accommodation' in changes || 'bookOwnHotels' in changes

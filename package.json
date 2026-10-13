@@ -11,6 +11,7 @@
     "start": "next start",
     "db:sql": "node scripts/db/run-sql.mjs",
     "db:sync": "node scripts/db/sync-from-mongo.mjs",
+    "db:translate-tours": "node scripts/db/run-ts.cjs scripts/db/translate-tours.ts",
     "lint": "next lint"
   },
   "prettier": "@epic-web/config/prettier",

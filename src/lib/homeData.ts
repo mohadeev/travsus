@@ -56,7 +56,7 @@ async function startingPrice(tour: any) {
 		const total = (prices?.lineItems ?? [])
 			.filter((item: any) => item.includeInTotal)
 			.reduce((sum: number, item: any) => sum + (item.totalPrice || 0), 0)
-		return total > 0 ? Math.round(total / 2) : null
+		return total > 0 ? Math.round((total / 2) * 100) / 100 : null
 	} catch {
 		return null
 	}

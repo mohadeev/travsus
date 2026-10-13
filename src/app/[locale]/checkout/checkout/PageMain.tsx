@@ -3,7 +3,8 @@ import { PencilSquareIcon } from '@heroicons/react/24/outline'
 import { type FC, useEffect, useRef } from 'react'
 import NcModal from '@/shared/NcModal'
 import ModalSelectDate from '@/components/ModalSelectDate'
-import converSelectedDateToString from '@/utils/converSelectedDateToString'
+import { formatTripDates, readTripDates } from '@/lib/tripDates'
+import { useLocale } from 'next-intl'
 import ModalSelectGuests from '@/components/ModalSelectGuests'
 import Image from 'next/image'
 import CheckoutPayment from './CheckoutPayment'
@@ -35,6 +36,7 @@ const CheckOutPagePageMain: FC<CheckOutPagePageMainProps> = ({
 	const t = useTranslations('Jan03_CheckoutPage_q8m3')
 	const searchParams = useSearchParams()
 	const tPayment = useIntlTranslations('Payment')
+	const locale = useLocale()
 	const dispatch = useAppDispatch()
 	const router = useRouter()
 	const bookingId = searchParams.get('bookingId')
@@ -146,7 +148,7 @@ const CheckOutPagePageMain: FC<CheckOutPagePageMainProps> = ({
 						</div>
 						<div className="z-10 mt-6 flex flex-col divide-y divide-neutral-200 overflow-hidden rounded-3xl border border-neutral-200 dark:divide-neutral-700 dark:border-neutral-700 sm:flex-row sm:divide-x sm:divide-y-0">
 							<ModalSelectDate
-								name={'ghalo'}
+								duration={booking?.tour?.days?.length || 1}
 								renderChildren={({ openModal }) => (
 									<button
 										onClick={openModal}
@@ -158,10 +160,7 @@ const CheckOutPagePageMain: FC<CheckOutPagePageMainProps> = ({
 												{t('Date')}
 											</span>
 											<span className="mt-1.5 text-lg font-semibold">
-												{converSelectedDateToString([
-													new Date(booking?.selectedDate?.startDate),
-													new Date(booking?.selectedDate?.endDate),
-												])}
+												{formatTripDates(...readTripDates(booking?.selectedDate), locale)}
 											</span>
 										</div>
 										<PencilSquareIcon className="text-neutral-6000 h-6 w-6 dark:text-neutral-400" />

@@ -4,6 +4,7 @@ import getUserData from '../user/getUserData'
 import { createOrderNumber } from '@/app/actions/generateOrderNumber'
 import { db, T, must, withMeta } from '@/lib/db'
 import { priceBooking } from '@/lib/payments'
+import { validTripDates } from '@/lib/tripDates'
 
 /**
  * Creates a booking for a tour (the "Reserve" button).
@@ -22,9 +23,6 @@ export async function POST(request: NextRequest) {
 	if (!/^[0-9a-f]{24}$/.test(tourId)) {
 		return NextResponse.json({ error: 'Missing tour' }, { status: 400 })
 	}
-	if (!selectedDate?.startDate) {
-		return NextResponse.json({ error: 'Please choose a date' }, { status: 400 })
-	}
 
 	try {
 		const tour = must(
@@ -32,6 +30,12 @@ export async function POST(request: NextRequest) {
 		)
 		if (!tour) {
 			return NextResponse.json({ error: 'Tour not found' }, { status: 404 })
+		}
+
+		// A real start day that isn't in the past; the end follows the tour length
+		const dates = validTripDates(selectedDate, tour.days?.length || 1)
+		if (!dates) {
+			return NextResponse.json({ error: 'Please choose a date from tomorrow onwards' }, { status: 400 })
 		}
 
 		const priced = await priceBooking(tour, { guests, accommodation, bookOwnHotels })
@@ -52,7 +56,7 @@ export async function POST(request: NextRequest) {
 						],
 						bookingState: 'initiated',
 						duration: tour.days?.length || 1,
-						selectedDate,
+						selectedDate: dates,
 						lineItems: priced.lineItems,
 						accommodation: priced.accommodation,
 						guests: priced.guests,

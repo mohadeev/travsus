@@ -1,150 +1,60 @@
 'use client'
-
-import React, { Fragment, useState, FC } from 'react'
+// Trip date picker on the tour page. You pick the first day; the last day
+// follows from the tour length. Shows what is saved (nothing pre-filled),
+// never allows past days, and closes once a day is picked.
+import { Fragment, useEffect, type FC } from 'react'
 import { Popover, Transition } from '@headlessui/react'
-import { CalendarIcon } from '@heroicons/react/24/outline'
+import { CalendarDays } from 'lucide-react'
+import DatePicker, { registerLocale } from 'react-datepicker'
+import { useLocale, useTranslations } from 'next-intl'
 import DatePickerCustomHeaderTwoMonth from '@/components/DatePickerCustomHeaderTwoMonth'
 import DatePickerCustomDay from '@/components/DatePickerCustomDay'
-import DatePicker from 'react-datepicker'
-import ClearDataButton from '@/app/(client-components)/(HeroSearchForm)/ClearDataButton'
-import moment from 'moment'
-import styles from './StayDatesRangeInput.module.css'
-import { useTranslations } from '@/lib/i18n'
-import { useLocale } from 'next-intl'
-import { registerLocale, setDefaultLocale } from 'react-datepicker'
-
-import ja from 'date-fns/locale/ja'
 import locales from '@/lib/dateFnsLocales'
+import { firstBookableDay, formatTripDates, readTripDates, tripDates } from '@/lib/tripDates'
+import styles from './StayDatesRangeInput.module.css'
 
 export interface StayDatesRangeInputProps {
 	className?: string
+	/** Number of days of the tour */
 	duration?: number
-	onChange: (dates: any) => void
+	onChange: (dates: { startDate: number; endDate: number }) => void
 	value?: any
 	isFlashing?: boolean
 }
 
 const StayDatesRangeInput: FC<StayDatesRangeInputProps> = ({
-	className = t(
-		'newServicedetailListingExperiencesDetailStayDatesRangeInput_Flex_One',
-	),
+	className = 'flex-1',
 	onChange,
 	duration = 3,
 	value,
 	isFlashing = false,
 }) => {
-	const t = useTranslations(
-		'newServicedetailListingExperiencesDetailStayDatesRangeInput',
-	)
+	const t = useTranslations('Booking')
+	const tHome = useTranslations('Home')
 	const locale = useLocale()
-	// console.log('locale:')
-	moment.locale(locale) // ar-ma
-	registerLocale(locale, locales[locale])
-
-	const [startDate, setStartDate] = useState<Date | null>(
-		new Date(moment().format('L')),
-	)
-	const [endDate, setEndDate] = useState<Date | null>(
-		new Date(moment().add(3, 'days').format('L')),
-	)
-
-	const onChangeDate = (dates: [Date | null, Date | null]) => {
-		const [start, end] = dates
-		let newEnd = null
-		setStartDate(start)
-		if (start) {
-			newEnd = new Date(
-				moment(start)
-					.add(duration - 1, 'days')
-					.format('L'),
-			)
-			// Set end date to be (duration - 1) days after start date
-			setEndDate(newEnd)
-		} else {
-			// setEndDate(null)
-		}
-		return { startDate: start?.getTime(), endDate: newEnd?.getTime() }
-	}
-
-	const renderInput = () => {
-		return (
-			<div
-				className={
-					t(
-						'newServicedetailListingExperiencesDetailStayDatesRangeInput_Input_Wrapper_Classes',
-					) + `${styles.inputWrapper} ${isFlashing ? styles.flashing : ''}`
-				}
-			>
-				<div
-					className={t(
-						'newServicedetailListingExperiencesDetailStayDatesRangeInput_Icon_Text_Classes',
-					)}
-				>
-					<CalendarIcon
-						className={t(
-							'newServicedetailListingExperiencesDetailStayDatesRangeInput_Icon_Size_Classes',
-						)}
-					/>
-				</div>
-				<div
-					className={t(
-						'newServicedetailListingExperiencesDetailStayDatesRangeInput_Content_Layout_Classes',
-					)}
-				>
-					<span
-						className={t(
-							'newServicedetailListingExperiencesDetailStayDatesRangeInput_Date_Display_Classes',
-						)}
-					>
-						{startDate?.toLocaleDateString(locale, {
-							month: 'short',
-							day: '2-digit',
-						}) ||
-							t(
-								'newServicedetailListingExperiencesDetailStayDatesRangeInput_Add_Dates',
-							)}
-						{endDate
-							? ' - ' +
-								endDate?.toLocaleDateString(locale, {
-									month: 'short',
-									day: '2-digit',
-								})
-							: ''}
-					</span>
-					<span
-						className={t(
-							'newServicedetailListingExperiencesDetailStayDatesRangeInput_Subtitle_Classes',
-						)}
-					>
-						{t(
-							'newServicedetailListingExperiencesDetailStayDatesRangeInput_Check_In_Out',
-						)}
-					</span>
-				</div>
-			</div>
-		)
-	}
+	const [start, end] = readTripDates(value)
+	useEffect(() => {
+		if ((locales as any)[locale]) registerLocale(locale, (locales as any)[locale])
+	}, [locale])
 
 	return (
-		<Popover
-			id="StayDatesRangeInput_TOUR"
-			className={
-				t(
-					'newServicedetailListingExperiencesDetailStayDatesRangeInput_Container_Classes',
-				) + ` ${className}`
-			}
-		>
-			{({ open }) => (
+		<Popover id="StayDatesRangeInput_TOUR" className={`StayDatesRangeInput relative z-10 flex ${className}`}>
+			{({ open, close }) => (
 				<>
 					<Popover.Button
-						className={`relative flex flex-1 items-center focus:outline-none ${
-							open ? 'shadow-lg' : ''
-						}`}
+						className={`relative flex w-full flex-1 items-center gap-3 p-4 text-left focus:outline-none ${styles.inputWrapper} ${
+							isFlashing ? styles.flashing : ''
+						} ${open ? 'bg-neutral-50 dark:bg-neutral-900' : ''}`}
 					>
-						{renderInput()}
-						{startDate && open && (
-							<ClearDataButton onClick={() => onChangeDate([null, null])} />
-						)}
+						<CalendarDays className="h-6 w-6 shrink-0 text-brand-500" />
+						<span className="min-w-0 flex-1">
+							<span className={`block text-base font-semibold ${start ? '' : 'text-neutral-500'}`}>
+								{start ? formatTripDates(start, end, locale) : t('choose_dates')}
+							</span>
+							<span className="mt-0.5 block text-sm text-neutral-500">
+								{tHome('days_count', { count: Math.max(1, duration || 1) })}
+							</span>
+						</span>
 					</Popover.Button>
 
 					<Transition
@@ -156,35 +66,29 @@ const StayDatesRangeInput: FC<StayDatesRangeInputProps> = ({
 						leaveFrom="opacity-100 translate-y-0"
 						leaveTo="opacity-0 translate-y-1"
 					>
-						<Popover.Panel
-							className={t(
-								'newServicedetailListingExperiencesDetailStayDatesRangeInput_Panel_Position_Classes',
-							)}
-						>
-							<div
-								className={t(
-									'newServicedetailListingExperiencesDetailStayDatesRangeInput_Panel_Style_Classes',
-								)}
-							>
+						<Popover.Panel className="absolute inset-x-0 top-full z-30 mt-2 min-w-[300px]">
+							<div className="tour-date-picker overflow-hidden rounded-3xl bg-white p-4 shadow-[0_12px_40px_rgba(0,0,0,0.18)] ring-1 ring-black/5 dark:bg-neutral-800">
 								<DatePicker
 									locale={locale}
-									selected={startDate}
-									onChange={(dates) => {
-										console.log('dates-dates:', dates)
-										onChange(onChangeDate(dates))
-									}}
-									startDate={startDate}
-									endDate={endDate}
-									selectsRange
-									monthsShown={2}
-									showPopperArrow={false}
 									inline
-									renderCustomHeader={(p) => (
-										<DatePickerCustomHeaderTwoMonth {...p} />
-									)}
-									renderDayContents={(day, date) => (
-										<DatePickerCustomDay dayOfMonth={day} date={date} />
-									)}
+									selectsRange
+									monthsShown={1}
+									minDate={firstBookableDay()}
+									selected={start}
+									startDate={start}
+									endDate={end}
+									openToDate={start ?? firstBookableDay()}
+									showPopperArrow={false}
+									onChange={(dates: [Date | null, Date | null]) => {
+										// The day clicked is the first day of the trip (with no end
+										// saved, the calendar reports the click as the range end)
+										const picked = end ? dates[0] : dates[1] ?? dates[0]
+										if (!picked) return
+										onChange(tripDates(picked, duration))
+										close()
+									}}
+									renderCustomHeader={(p) => <DatePickerCustomHeaderTwoMonth {...p} single />}
+									renderDayContents={(day, date) => <DatePickerCustomDay dayOfMonth={day} date={date} />}
 								/>
 							</div>
 						</Popover.Panel>
