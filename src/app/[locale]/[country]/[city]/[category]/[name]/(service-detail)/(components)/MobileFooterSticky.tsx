@@ -24,8 +24,12 @@ const MobileFooterSticky = () => {
 		price,
 		days,
 	}: any = useTourService()
-	const totalAmount = totalOf(lineItems)
-	const priceStart = totalAmount / totalGuests
+	const tourData: any = useTourService()
+	// Server "from" price until the booking is priced in the browser
+	const totalAmount = totalOf(lineItems) || (tourData?.fromPricePerPerson ?? 0) * 2
+	const priceStart = totalOf(lineItems)
+		? totalOf(lineItems) / totalGuests
+		: tourData?.fromPricePerPerson ?? 0
 	const locale = useLocale()
 	// console.log('locale:')
 	moment.locale(locale) // ar-ma

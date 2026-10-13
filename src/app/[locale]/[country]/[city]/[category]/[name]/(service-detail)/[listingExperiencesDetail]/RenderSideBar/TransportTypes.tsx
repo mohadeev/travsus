@@ -95,7 +95,7 @@ export default function pricingTiers({
 													'listingExperiencesDetailTransportTypes_Selected_Border_Classes',
 												)
 											: isRecommended
-												? 'border-2 border-green-500 bg-green-100'
+												? 'border-2 border-neutral-950 bg-neutral-100'
 												: 'bg-muted hover:bg-muted/80 border-2 border-transparent'
 									}`}
 								>

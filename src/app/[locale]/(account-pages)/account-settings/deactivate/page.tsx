@@ -273,7 +273,7 @@ export default function DeleteAccountPage() {
 								{t('Anything_Help_Before_Decision')}
 							</p>
 							<div className="flex flex-col justify-center space-y-3 sm:flex-row sm:space-x-4 sm:space-y-0">
-								<Link href="/help" className="text-black underline">
+								<Link href={"/contact" as any} className="text-black underline">
 									{t('Get_Help_Account')}
 								</Link>
 								<Link href="/contact" className="text-black underline">

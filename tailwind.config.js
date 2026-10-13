@@ -47,6 +47,25 @@ const config: Config = {
     },
     extend: {
       colors: {
+        // TRAVSUS brand: Moroccan sunset terracotta (buttons, highlights)
+        brand: {
+          50: "#FFF4EE",
+          100: "#FFE6D9",
+          200: "#FFC9AE",
+          300: "#FFA47A",
+          400: "#FB7F4B",
+          500: "#F2612A",
+          600: "#DE4A16",
+          700: "#B83912",
+          800: "#922F15",
+          900: "#5C1D0D",
+        },
+        // Warm desert backgrounds
+        sand: {
+          50: "#FDFAF5",
+          100: "#FAF3E8",
+          200: "#F3E5CF",
+        },
         current: "currentColor",
         transparent: "transparent",
         white: "#FFFFFF",

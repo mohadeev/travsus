@@ -77,7 +77,7 @@ export default function LocaleLayoutClient({
 							{!isDashboardPath && (
 								<ConditionalComponent show={true} component={SiteHeader} />
 							)}
-							{children}
+							<div id="main">{children}</div>
 							{!isDashboardPath && (
 								<>
 									<ConditionalComponent show={true} component={FooterNav} />

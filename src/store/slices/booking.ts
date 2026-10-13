@@ -19,6 +19,7 @@ type BookingState = {
 	booking: Booking
 	status: 'idle' | 'loading' | 'succeeded' | 'failed'
 	error: string | null
+	promoRemoved: boolean // a change at checkout dropped the promo code
 }
 
 const emptyBooking: Booking = {
@@ -32,6 +33,7 @@ const initialState: BookingState = {
 	booking: emptyBooking,
 	status: 'idle',
 	error: null,
+	promoRemoved: false,
 }
 
 /**
@@ -58,6 +60,27 @@ export const recalculatePrice = createAsyncThunk(
 		} catch (error: any) {
 			return rejectWithValue(error?.message ?? 'Pricing failed')
 		}
+	},
+)
+
+/**
+ * Saves a change to a booking that already exists (checkout page):
+ * date, guests, accommodation or own hotels. The server re-prices it.
+ */
+export const saveBookingChanges = createAsyncThunk(
+	'booking/saveChanges',
+	async (
+		{ bookingId, changes }: { bookingId: string; changes: Record<string, any> },
+		{ rejectWithValue },
+	) => {
+		const response = await fetch(`/api/bookings/${bookingId}`, {
+			method: 'PATCH',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(changes),
+		})
+		const data = await response.json().catch(() => null)
+		if (!response.ok) return rejectWithValue(data?.error ?? 'Could not save')
+		return data as { booking: Booking; promoRemoved: boolean }
 	},
 )
 
@@ -111,6 +134,18 @@ const bookingSlice = createSlice({
 				state.status = 'failed'
 				state.error = String(action.payload ?? action.error.message)
 			})
+			.addCase(saveBookingChanges.pending, (state) => {
+				state.status = 'loading'
+			})
+			.addCase(saveBookingChanges.fulfilled, (state, action) => {
+				state.status = 'succeeded'
+				state.booking = action.payload.booking
+				state.promoRemoved = action.payload.promoRemoved
+			})
+			.addCase(saveBookingChanges.rejected, (state, action) => {
+				state.status = 'failed'
+				state.error = String(action.payload ?? action.error.message)
+			})
 	},
 })
 
@@ -140,6 +175,7 @@ export const openTourBooking =
 
 export const selectBooking =(state: RootState) => state.booking.booking
 export const selectBookingStatus = (state: RootState) => state.booking.status
+export const selectPromoRemoved = (state: RootState) => state.booking.promoRemoved
 
 /** Sum of the line items included in the total. */
 export const totalOf = (lineItems: any[] = []) =>

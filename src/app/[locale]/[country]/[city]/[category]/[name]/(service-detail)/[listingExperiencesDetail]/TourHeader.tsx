@@ -1,88 +1,65 @@
 'use client'
-
+// Tour title block: breadcrumb, title, real rating, and Share / Review / Save.
+import { useRef, useState } from 'react'
+import Link from 'next/link'
+import { ChevronRight, Heart, PenLine, Share } from 'lucide-react'
 import { useTranslations } from '@/lib/i18n'
 import { useAuthAction } from '@/app/hooks/useAuthAction'
 import addAndRemoveToWishList from '@/utils/api-utils/addAndRemoveToWishList'
-import {
-	ChevronRight,
-	ChevronLeft,
-	Shield,
-	Heart,
-	ArrowLeft,
-	Share,
-	Edit,
-	BadgeCheck,
-} from 'lucide-react'
-import Link from 'next/link'
 import { useAppDispatch, useAppSelector } from '@/store/hooks'
 import { selectUser } from '@/store/slices/user'
 import { selectTourLiked, setTourLiked } from '@/store/slices/tourPage'
-import { useState, useRef, useEffect } from 'react'
-import { Motion, spring } from 'react-motion'
-import TourHeaderSkeleton from './TourHeaderSkeleton'
+import RatingBubbles from '@/app/[locale]/(home)/RatingBubbles'
 import { useTourService } from '../TourServiceContext'
+
+const actionClass =
+	'inline-flex items-center gap-2 rounded-full border border-neutral-200 px-4 py-2 text-sm font-semibold transition hover:border-brand-500 hover:bg-brand-50 hover:text-brand-700 dark:border-neutral-800'
 
 const TourHeader = () => {
 	const t = useTranslations('Jan03_TourHeader_x9k2')
 	const dispatch = useAppDispatch()
-
-	// Share dropdown state
-	const [isDropdownOpen, setIsDropdownOpen] = useState(false)
-	const [copySuccess, setCopySuccess] = useState('')
-	const timeoutRef = useRef<NodeJS.Timeout | null>(null)
-	const dropdownRef = useRef<HTMLDivElement>(null)
-
 	const service: any = useTourService()
+	const [toast, setToast] = useState('')
+	const toastTimer = useRef<NodeJS.Timeout | null>(null)
+
 	// Saved state: a toggle made on this visit wins, otherwise the user's list
 	const savedList: string[] | undefined = useAppSelector(selectUser).savedList
 	const likedNow = useAppSelector(selectTourLiked(service.id))
 	const liked = likedNow ?? !!savedList?.includes(service.id)
-	const {
-		days,
-		rating,
-		reviewsCount,
-		recommendationPercentage,
-		loading,
-	} = service
+
 	const title = service.name
-	const day = days?.[0]
-	// Safely extract city name - handle both string and object cases
-	const city = day?.city
-	const continent = day?.continent
-	// Safely extract region name - handle both string and object cases
-	const regionName = day?.state
-	const countryName = day?.country
+	const country = service.days?.[0]?.country || service.startAddress?.country
+	const city = service.days?.[0]?.city || service.startAddress?.city
+	// Real numbers only: nothing is shown until the tour has reviews
+	const reviews = service.reviewsCount || 0
+	const rating = reviews > 0 ? Number(service.averageRating) : 0
 
-	// Share functionality
-	const toggleDropdown = () => {
-		setIsDropdownOpen(!isDropdownOpen)
+	const showToast = (text: string) => {
+		setToast(text)
+		if (toastTimer.current) clearTimeout(toastTimer.current)
+		toastTimer.current = setTimeout(() => setToast(''), 2000)
 	}
 
-	const handleCopyLink = async () => {
-		try {
-			await navigator.clipboard.writeText(window.location.href)
-			setCopySuccess(t('Tour_Link_Copied'))
-			if (timeoutRef.current) clearTimeout(timeoutRef.current)
-			timeoutRef.current = setTimeout(() => setCopySuccess(''), 2000)
-		} catch (err) {
-			setCopySuccess(t('Copy_Failed'))
+	// Phone share sheet when available, otherwise copy the link
+	const handleShare = async () => {
+		const url = window.location.href
+		if (navigator.share) {
+			await navigator.share({ title, url }).catch(() => {})
+			return
 		}
-		setIsDropdownOpen(false)
+		try {
+			await navigator.clipboard.writeText(url)
+			showToast(t('Tour_Link_Copied'))
+		} catch {
+			showToast(t('Copy_Failed'))
+		}
 	}
 
-	const handleEmail = () => {
-		const subject = encodeURIComponent(t('Email_Subject'))
-		const body = encodeURIComponent(
-			t('Email_Body', { url: window.location.href }),
-		)
-		window.location.href = `mailto:?subject=${subject}&body=${body}`
-		setIsDropdownOpen(false)
-	}
+	const scrollToReviews = () =>
+		document.getElementById('experience_reviews')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
 
-	// Wishlist functionality
-	const handleAddToWishList = useAuthAction(async () => {
-		const setLiked = (value: boolean) =>
-			dispatch(setTourLiked({ id: service.id, liked: value }))
+	const handleSave = useAuthAction(async () => {
+		const setLiked = (value: boolean) => dispatch(setTourLiked({ id: service.id, liked: value }))
 		setLiked(!liked) // show it right away
 		await addAndRemoveToWishList({ serviceId: service.id })
 			.then((res: any) => {
@@ -91,380 +68,63 @@ const TourHeader = () => {
 			.catch(() => setLiked(liked)) // undo
 	})
 
-	// Click outside handler for dropdown
-	useEffect(() => {
-		const handleClickOutside = (event: MouseEvent) => {
-			if (
-				dropdownRef.current &&
-				!dropdownRef.current.contains(event.target as Node)
-			) {
-				setIsDropdownOpen(false)
-			}
-		}
-		document.addEventListener('mousedown', handleClickOutside)
-		return () => {
-			document.removeEventListener('mousedown', handleClickOutside)
-		}
-	}, [])
-
-	// Show skeleton while loading or if essential data is missing
-	if (loading) {
-		return <TourHeaderSkeleton />
-	}
-
-	const links = [
-		{ value: continent, href: '#' },
-		{ value: countryName, href: '#' },
-		{
-			value: regionName,
-			href: `#`,
-		},
-		{ value: city, href: '#' },
-		{
-			value: t('things_to_do'),
-			href: `#`,
-		},
-		{ value: t('tours'), href: `#` },
-	]
-
-	// Tour data with fallbacks
-	const tourRating = rating || 5.0
-	const totalReviews = reviewsCount || 0
-	const recommendedBy = recommendationPercentage || 100
-
-	const renderStars = (rating: number) => {
-		const stars = []
-		const fullStars = Math.floor(rating)
-		for (let i = 0; i < 5; i++) {
-			if (i < fullStars) {
-				stars.push(
-					<div key={i} className="h-4 w-4 rounded-full bg-green-600" />,
-				)
-			} else {
-				stars.push(<div key={i} className="h-4 w-4 rounded-full bg-gray-300" />)
-			}
-		}
-		return stars
-	}
-	const handleScroll = () => {
-		const el = document.getElementById('experience_reviews')
-		if (el) {
-			el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-		}
-	}
+	const crumbs = [
+		{ label: 'TRAVSUS', href: '/' },
+		country && { label: country, href: `/search?query=${encodeURIComponent(country)}` },
+		city && { label: city, href: `/search?query=${encodeURIComponent(city)}` },
+	].filter(Boolean) as { label: string; href: string }[]
 
 	return (
-		<div className="nc-ListingExperiencesDetailPage mb-6">
-			{/* Mobile Header - Only visible on mobile */}
-			<div className="block md:hidden">
-				{/* Mobile Top Navigation */}
-				<div className="flex items-center justify-between border-b border-gray-200 py-4">
-					{/* Back Button */}
-					<Link href={`/`} className="-ml-2 p-2">
-						<ArrowLeft className="h-6 w-6 text-black" strokeWidth={2} />
-					</Link>
-
-					{/* Action Icons */}
-					<div className="flex items-center gap-4">
-						{/* Share Button */}
-						<div className="relative" ref={dropdownRef}>
-							<button
-								onClick={toggleDropdown}
-								className="p-2"
-								aria-haspopup="true"
-								aria-expanded={isDropdownOpen}
-							>
-								<Share className="h-6 w-6 text-black" strokeWidth={2} />
-							</button>
-
-							{/* Share Dropdown */}
-							<Motion
-								style={{
-									opacity: spring(isDropdownOpen ? 1 : 0),
-									scale: spring(isDropdownOpen ? 1 : 0.95),
-								}}
-							>
-								{(interpolatedStyle) =>
-									isDropdownOpen && (
-										<div
-											className="absolute right-0 z-10 mt-2 w-48 rounded-xl border-2 border-black bg-white p-2 shadow-2xl"
-											style={{
-												opacity: interpolatedStyle.opacity,
-												transform: `scale(${interpolatedStyle.scale})`,
-												transformOrigin: 'top right',
-											}}
-										>
-											<div
-												className="py-1"
-												role="menu"
-												aria-orientation="vertical"
-											>
-												<button
-													onClick={handleCopyLink}
-													className="block w-full rounded-lg px-4 py-2.5 text-left text-sm font-medium text-black transition-colors duration-200 hover:bg-black hover:text-white"
-													role="menuitem"
-												>
-													{t('Copy_Tour_Link')}
-												</button>
-												<button
-													onClick={handleEmail}
-													className="block w-full rounded-lg px-4 py-2.5 text-left text-sm font-medium text-black transition-colors duration-200 hover:bg-black hover:text-white"
-													role="menuitem"
-												>
-													{t('Email_Tour')}
-												</button>
-											</div>
-										</div>
-									)
-								}
-							</Motion>
-
-							{/* Copy Success Message */}
-							{copySuccess && (
-								<div className="absolute right-0 z-20 mt-2 rounded-lg bg-black px-3 py-2 text-sm font-medium text-white shadow-lg">
-									{copySuccess}
-								</div>
-							)}
-						</div>
-
-						{/* Review Button */}
-						<button onClick={handleScroll} className="p-2">
-							<Edit className="h-6 w-6 text-black" strokeWidth={2} />
-						</button>
-
-						{/* Save Button */}
-						<button onClick={handleAddToWishList} className="p-2">
-							{liked ? (
-								<Heart
-									className="h-6 w-6 fill-current text-red-500"
-									strokeWidth={2}
-								/>
-							) : (
-								<Heart className="h-6 w-6 text-black" strokeWidth={2} />
-							)}
-						</button>
-					</div>
-				</div>
-
-				{/* Mobile Content */}
-				<div className="space-y-4 py-4">
-					{/* Title */}
-					<h1 className="text-2xl font-extrabold leading-tight text-black">
-						{title}
-					</h1>
-
-					{/* Rating Section */}
-					<div className="space-y-3">
-						{/* Star Rating - Mobile uses star icons */}
-						<div className="flex items-center gap-2">
-							<span className="text-lg font-bold text-black">{tourRating}</span>
-							<div className="flex items-center gap-0.5">
-								{renderStars(tourRating)}
-							</div>
-							<Link
-								href="#reviews"
-								className="font-medium text-black underline"
-							>
-								({totalReviews.toLocaleString()} {t('Reviews')})
+		<div className="pt-6">
+			<nav aria-label="Breadcrumb">
+				<ol className="flex flex-wrap items-center gap-1 text-sm text-neutral-500">
+					{crumbs.map((crumb, index) => (
+						<li key={crumb.href} className="flex items-center gap-1">
+							{index > 0 && <ChevronRight aria-hidden className="h-3.5 w-3.5" />}
+							<Link href={crumb.href as any} className="hover:text-brand-600 hover:underline">
+								{crumb.label}
 							</Link>
-						</div>
+						</li>
+					))}
+				</ol>
+			</nav>
 
-						{/* Recommendation Badge */}
-						<div className="flex items-center gap-2">
-							{/* <Shield
-								className="h-4 w-4 fill-current text-red-500"
-								strokeWidth={2}
-							/> */}
-							<BadgeCheck
-								className="h-4 w-4 fill-current text-red-500"
-								strokeWidth={2}
-							/>
-
-							<span className="text-sm font-medium text-black/80">
-								{t('Recommended_By_Percentage', { percentage: recommendedBy })}
-							</span>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			{/* Desktop Header - Hidden on mobile */}
-			<div className="hidden md:block">
-				{/* Breadcrumb Navigation */}
-				<nav className="mb-3" aria-label="Breadcrumb">
-					<ol className="flex flex-wrap items-center text-sm text-black/70">
-						{links
-							.filter(({ value }) => value && value !== 'undefined')
-							.map(({ value, href }, index) => (
-								<li key={index} className="flex items-center">
-									{index > 0 && (
-										<ChevronRight
-											aria-hidden="true"
-											className="mx-1 h-3 w-3 flex-shrink-0 text-black/50"
-										/>
-									)}
-									{href && href !== '#' ? (
-										<Link
-											href={href}
-											className="font-medium transition-colors duration-200 hover:text-black hover:underline"
-										>
-											{value}
-										</Link>
-									) : (
-										<span className="font-medium">{value}</span>
-									)}
-								</li>
-							))}
-					</ol>
-				</nav>
-
-				{/* Back Button */}
-				{city && (
-					<div className="mb-4">
-						<Link
-							href={`/destinations/${city.toLowerCase()}/attractions`}
-							className="inline-flex items-center text-black/70 transition-colors duration-200 hover:text-black"
+			<div className="mt-3 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+				<div className="min-w-0">
+					<h1 className="text-3xl font-bold leading-tight tracking-tight sm:text-4xl">{title}</h1>
+					{reviews > 0 && (
+						<button
+							type="button"
+							onClick={scrollToReviews}
+							className="mt-3 inline-flex items-center gap-2 text-sm"
 						>
-							<ChevronLeft className="mr-1 h-4 w-4 text-black" />
-							<span className="text-sm font-medium underline">
-								{t('Discover_All_Things', { city })}
+							<span className="font-semibold">{rating.toFixed(1)}</span>
+							<RatingBubbles rating={rating} size={13} tone="green" />
+							<span className="text-neutral-500 underline underline-offset-4">
+								{reviews.toLocaleString()} {t('Reviews')}
 							</span>
-						</Link>
-					</div>
-				)}
+						</button>
+					)}
+				</div>
 
-				{/* Main Header Content */}
-				<div className="space-y-4">
-					{/* Title and Action Buttons */}
-					<div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
-						{/* Title */}
-						<div className="min-w-0 flex-1">
-							<p
-								role="heading"
-								aria-level={1}
-								className="text-2xl font-extrabold leading-tight text-black sm:text-3xl lg:text-4xl lg:leading-tight"
-							>
-								{title}
-							</p>
-						</div>
-
-						{/* Action Buttons */}
-						<div className="flex flex-shrink-0 items-center gap-3 px-4">
-							{/* Share Button with Dropdown */}
-							<div className="relative" ref={dropdownRef}>
-								<button
-									onClick={toggleDropdown}
-									className="inline-flex items-center gap-2 rounded-full border-2 border-black bg-white px-4 py-2 text-sm font-semibold text-black transition-all duration-200 hover:bg-black hover:text-white"
-									aria-haspopup="true"
-									aria-expanded={isDropdownOpen}
-								>
-									<Share className="h-4 w-4" strokeWidth={2} />
-									<span className="hidden sm:inline">{t('Share')}</span>
-								</button>
-
-								{/* Share Dropdown */}
-								<Motion
-									style={{
-										opacity: spring(isDropdownOpen ? 1 : 0),
-										scale: spring(isDropdownOpen ? 1 : 0.95),
-									}}
-								>
-									{(interpolatedStyle) =>
-										isDropdownOpen && (
-											<div
-												className="absolute right-0 z-10 mt-2 w-48 rounded-xl border-2 border-black bg-white p-2 shadow-2xl"
-												style={{
-													opacity: interpolatedStyle.opacity,
-													transform: `scale(${interpolatedStyle.scale})`,
-													transformOrigin: 'top right',
-												}}
-											>
-												<div
-													className="py-1"
-													role="menu"
-													aria-orientation="vertical"
-												>
-													<button
-														onClick={handleCopyLink}
-														className="block w-full rounded-lg px-4 py-2.5 text-left text-sm font-medium text-black transition-colors duration-200 hover:bg-black hover:text-white"
-														role="menuitem"
-													>
-														{t('Copy_Tour_Link')}
-													</button>
-													<button
-														onClick={handleEmail}
-														className="block w-full rounded-lg px-4 py-2.5 text-left text-sm font-medium text-black transition-colors duration-200 hover:bg-black hover:text-white"
-														role="menuitem"
-													>
-														{t('Email_Tour')}
-													</button>
-												</div>
-											</div>
-										)
-									}
-								</Motion>
-
-								{/* Copy Success Message */}
-								{copySuccess && (
-									<div className="absolute right-0 z-20 mt-2 rounded-lg bg-black px-3 py-2 text-sm font-medium text-white shadow-lg">
-										{copySuccess}
-									</div>
-								)}
-							</div>
-
-							{/* Review Button */}
-							<button
-								onClick={handleScroll}
-								className="inline-flex items-center gap-2 rounded-full border-2 border-black bg-white px-4 py-2 text-sm font-semibold text-black transition-all duration-200 hover:bg-black hover:text-white"
-							>
-								<Edit className="h-4 w-4" strokeWidth={2} />
-								<span className="hidden sm:inline">{t('Review')}</span>
-							</button>
-
-							{/* Save Button */}
-							<button
-								onClick={handleAddToWishList}
-								className="inline-flex items-center gap-2 rounded-full border-2 border-black bg-white px-4 py-2 text-sm font-semibold text-black transition-all duration-200 hover:bg-black hover:text-white"
-							>
-								{liked ? (
-									<Heart
-										className="h-4 w-4 fill-current text-red-500"
-										strokeWidth={2}
-									/>
-								) : (
-									<Heart className="h-4 w-4" strokeWidth={2} />
-								)}
-								<span className="hidden sm:inline">
-									{liked ? t('Saved') : t('Save')}
-								</span>
-							</button>
-						</div>
-					</div>
-
-					{/* Rating and Reviews Section - Desktop uses yellow stars */}
-					<div className="flex flex-wrap items-center gap-4 text-sm">
-						{/* Star Rating */}
-						<div className="flex items-center gap-2">
-							<span className="text-lg font-bold text-black">{tourRating}</span>
-							<div className="flex items-center gap-0.5">
-								{renderStars(tourRating)}
-							</div>
-							<Link
-								href="#reviews"
-								className="font-medium text-black/70 underline transition-colors duration-200 hover:text-black"
-							>
-								({totalReviews.toLocaleString()} {t('Reviews')})
-							</Link>
-						</div>
-
-						{/* Recommendation Badge */}
-						<div className="flex items-center gap-2 text-black/70">
-							<BadgeCheck fill className="h-6 w-6 fill-blue-500 text-white" />
-							<span className="font-medium">
-								{t('Recommended_By_Percentage', { percentage: recommendedBy })}
-							</span>
-						</div>
-					</div>
+				<div className="relative flex shrink-0 items-center gap-2">
+					<button type="button" onClick={handleShare} className={actionClass}>
+						<Share className="h-4 w-4" />
+						{t('Share')}
+					</button>
+					<button type="button" onClick={scrollToReviews} className={actionClass}>
+						<PenLine className="h-4 w-4" />
+						{t('Review')}
+					</button>
+					<button type="button" onClick={() => handleSave(undefined)} aria-pressed={liked} className={actionClass}>
+						<Heart className={`h-4 w-4 ${liked ? 'fill-red-500 text-red-500' : ''}`} />
+						{liked ? t('Saved') : t('Save')}
+					</button>
+					{toast && (
+						<p role="status" className="absolute right-0 top-full mt-2 rounded-full bg-neutral-950 px-3 py-1.5 text-xs font-medium text-white">
+							{toast}
+						</p>
+					)}
 				</div>
 			</div>
 		</div>

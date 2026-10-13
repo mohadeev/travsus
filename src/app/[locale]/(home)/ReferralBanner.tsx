@@ -1,19 +1,22 @@
 import { useTranslations } from '@/lib/i18n'
-import PromoCard from './PromoCard'
+import { PHOTOS } from '@/lib/photos'
+import PhotoBanner from './PhotoBanner'
 
-// [emoji, title key, description key] — edit to change the feature tiles
+// [title key, description key]: edit to change the perks list
 const FEATURES = [
-	['💰', 'feature1_title', 'feature1_desc'],
-	['📈', 'feature2_title', 'feature2_desc'],
-	['⚡', 'feature3_title', 'feature3_desc'],
+	['feature1_title', 'feature1_desc'],
+	['feature2_title', 'feature2_desc'],
+	['feature3_title', 'feature3_desc'],
 ] as const
 
 export default function ReferralBanner() {
 	const t = useTranslations('ReferralProgramBanner')
 
 	return (
-		<PromoCard
-			badge={t('badge_text')}
+		<PhotoBanner
+			photo={PHOTOS.referral}
+			align="right"
+			eyebrow={t('badge_text')}
 			title={
 				<>
 					{t('main_heading_line1')}
@@ -21,27 +24,19 @@ export default function ReferralBanner() {
 					{t('main_heading_line2')}
 				</>
 			}
-			subtitle={t('sub_heading')}
+			text={t('sub_heading')}
 			ctaLabel={t('button_text')}
 			ctaHref="/affiliates"
 			footnote={t('footer_text')}
 		>
-			<div className="mb-10 grid gap-3 sm:grid-cols-3">
-				{FEATURES.map(([icon, title, desc]) => (
-					<div
-						key={title}
-						className="flex items-start gap-3 rounded-2xl bg-white/10 p-4 ring-1 ring-white/20 backdrop-blur-sm"
-					>
-						<span className="text-xl">{icon}</span>
-						<div>
-							<h3 className="text-sm font-bold uppercase tracking-wide text-white">
-								{t(title)}
-							</h3>
-							<p className="text-xs text-white/70">{t(desc)}</p>
-						</div>
-					</div>
+			<ul className="mt-6 space-y-2 sm:ml-auto sm:max-w-sm">
+				{FEATURES.map(([title, desc]) => (
+					<li key={title} className="rounded-2xl bg-white/10 px-4 py-3 text-left ring-1 ring-white/20 backdrop-blur-md">
+						<p className="text-sm font-semibold">{t(title)}</p>
+						<p className="text-xs text-white/70">{t(desc)}</p>
+					</li>
 				))}
-			</div>
-		</PromoCard>
+			</ul>
+		</PhotoBanner>
 	)
 }

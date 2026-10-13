@@ -5,11 +5,11 @@ import { db, T, must } from '@/lib/db'
 export async function checkBookingRole(request: NextRequest) {
 	try {
 		const { id: currentUserId }: any = (await getUserData({})) ?? {}
-		const referer = request.headers.get('referer') || ''
-		const url = new URL(referer)
-		const searchParams = url.searchParams
-		const serviceId: string = searchParams.get('serviceId') || ''
-		const bookingId: string = searchParams.get('bookingId') || ''
+		// The request's own ?bookingId= first; older callers pass it via the page URL
+		const own = new URL(request.url).searchParams
+		const referer = request.headers.get('referer')
+		const page = referer ? new URL(referer).searchParams : new URLSearchParams()
+		const bookingId: string = own.get('bookingId') || page.get('bookingId') || ''
 
 		if (!currentUserId) {
 			return {

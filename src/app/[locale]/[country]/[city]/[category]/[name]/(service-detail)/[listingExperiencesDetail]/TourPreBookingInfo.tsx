@@ -22,21 +22,21 @@ export default function BookingInfo() {
 	const hanelToggle = () => {
 		dispatch(openChat())
 	}
-	const textclassName = 'text-xs font-medium text-black underline'
+	const textclassName = 'text-sm text-neutral-600 dark:text-neutral-400'
 
 	return (
 		<>
-			<div className="my-10 grid grid-cols-1 gap-15 p-0 text-gray-800 md:grid-cols-2">
+			<div className="grid grid-cols-1 gap-8 text-neutral-700 md:grid-cols-2 dark:text-neutral-300">
 				{/* Accessibility */}
-				<div className="flex items-start space-x-3">
-					<span className="rounded-full border-2 border-black p-2">
-						<Accessibility className="h-6 w-6 shrink-0 text-black" />
+				<div className="flex items-start gap-4">
+					<span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-brand-50 text-brand-600 dark:bg-neutral-900">
+						<Accessibility className="h-5 w-5 shrink-0" />
 					</span>
 					<div>
-						<h2 className="mb-2 text-lg font-semibold text-black">
+						<h3 className="mb-2 font-semibold">
 							{t('accessibility')}
-						</h2>
-						<ul className="list-disc space-y-1 pl-5 text-base text-black">
+						</h3>
+						<ul className="list-disc space-y-1 pl-5 text-[15px]">
 							<li>{t('not_wheelchair_accessible')}</li>
 							<li>{t('child_seats_available')}</li>
 						</ul>
@@ -44,18 +44,18 @@ export default function BookingInfo() {
 				</div>
 
 				{/* Cancellation Policy */}
-				<div className="flex items-start space-x-3">
-					<span className="rounded-full border-2 border-black p-2">
-						<RotateCcw className="h-6 w-6 shrink-0 text-black" />
+				<div className="flex items-start gap-4">
+					<span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-brand-50 text-brand-600 dark:bg-neutral-900">
+						<RotateCcw className="h-5 w-5 shrink-0" />
 					</span>
 					<div>
-						<h2 className="mb-2 text-lg font-semibold text-black">
+						<h3 className="mb-2 font-semibold">
 							{t('cancellation_policy')}
-						</h2>
+						</h3>
 						<p className={textclassName}>
 							{t('cancellation_policy_description')}
 						</p>
-						<ul className="mt-2 list-disc space-y-1 pl-5 text-base text-black">
+						<ul className="mt-2 list-disc space-y-1 pl-5 text-[15px]">
 							<li>{t('cancellation_less_than_24h')}</li>
 						</ul>
 						<button
@@ -68,15 +68,15 @@ export default function BookingInfo() {
 				</div>
 
 				{/* Help */}
-				<div className="flex items-start space-x-3">
-					<span className="rounded-full border-2 border-black p-2">
-						<CircleQuestionMark className="h-6 w-6 shrink-0 text-black" />
+				<div className="flex items-start gap-4">
+					<span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-brand-50 text-brand-600 dark:bg-neutral-900">
+						<CircleQuestionMark className="h-5 w-5 shrink-0" />
 					</span>
 					<div>
-						<h2 className="mb-2 text-lg font-semibold text-black">
+						<h3 className="mb-2 font-semibold">
 							{t('help')}
-						</h2>
-						<p className="text-base text-black">
+						</h3>
+						<p className="text-[15px]">
 							{t('help_description')}{' '}
 							<span className="font-semibold">110964P11</span>
 						</p>
@@ -84,7 +84,7 @@ export default function BookingInfo() {
 							<p className="flex items-center gap-3">
 								<Phone className="h-4 w-4 text-black" />
 								<a
-									href="tel:+34911776743"
+									href="tel:+34643635962"
 									className="text-xs font-semibold text-black hover:underline"
 								>
 									+34 643 63 5962
@@ -104,15 +104,15 @@ export default function BookingInfo() {
 				</div>
 
 				{/* Additional Information */}
-				<div className="flex items-start space-x-3">
-					<span className="rounded-full border-2 border-black p-2">
-						<Info className="h-6 w-6 shrink-0 text-black" />
+				<div className="flex items-start gap-4">
+					<span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-brand-50 text-brand-600 dark:bg-neutral-900">
+						<Info className="h-5 w-5 shrink-0" />
 					</span>
 					<div>
-						<h2 className="mb-2 text-lg font-semibold text-black">
+						<h3 className="mb-2 font-semibold">
 							{t('additional_information')}
-						</h2>
-						<ul className="list-disc space-y-1 pl-5 text-base text-black">
+						</h3>
+						<ul className="list-disc space-y-1 pl-5 text-[15px]">
 							<li>{t('confirmation_received')}</li>
 							<li>{t('most_travelers_can_participate')}</li>
 							<li>{t('max_travelers')}</li>
@@ -121,7 +121,7 @@ export default function BookingInfo() {
 				</div>
 
 				{/* Final Note */}
-				<div className="col-span-1 mt-6 text-sm text-black md:col-span-2">
+				<div className="col-span-1 text-xs text-neutral-500 md:col-span-2">
 					{t('earnings_disclaimer')}{' '}
 					<a href="#" className="font-semibold text-black hover:underline">
 						{t('learn_more')}

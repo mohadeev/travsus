@@ -215,9 +215,8 @@ button.gm-control-active.gm-fullscreen-control {
 }
 // LISTING PAGE DETAIL
 .listingSectionSidebar__wrap {
-	box-shadow: 0 2px 55px rgba(0, 0, 0, 0.1);
-	border: 1px solid #eaeaea;
-	@apply flex w-full flex-col space-y-6 rounded-xl p-2 pb-10 sm:p-4 xl:space-y-7 xl:px-8 xl:py-6;
+	box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+	@apply flex w-full flex-col space-y-6 rounded-3xl border border-neutral-200 bg-white p-5 sm:p-6 dark:border-neutral-800 dark:bg-neutral-950;
 }
 
 //

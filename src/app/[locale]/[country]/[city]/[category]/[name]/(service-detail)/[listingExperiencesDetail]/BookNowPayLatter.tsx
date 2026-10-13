@@ -14,7 +14,7 @@ const BookNowPayLater: FC = () => {
 				<div className="p-4">
 					{/* Free cancellation */}
 					<div className="mb-4 flex items-start">
-						<div className="mr-3 flex-shrink-0 rounded-full bg-[#28a745] p-2">
+						<div className="mr-3 flex-shrink-0 rounded-full bg-[#00AA6C] p-2">
 							<CalendarX className="text-white" size={16} />
 						</div>
 						<div>
@@ -30,7 +30,7 @@ const BookNowPayLater: FC = () => {
 
 					{/* Reserve now */}
 					<div className="flex items-start">
-						<div className="mr-3 flex-shrink-0 rounded-full bg-[#28a745] p-2">
+						<div className="mr-3 flex-shrink-0 rounded-full bg-[#00AA6C] p-2">
 							<CreditCard className="text-white" size={16} />
 						</div>
 						<div>

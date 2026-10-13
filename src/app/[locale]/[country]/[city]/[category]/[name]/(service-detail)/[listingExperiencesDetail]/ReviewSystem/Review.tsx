@@ -56,7 +56,7 @@ const Review: React.FC<ReviewProps> = ({ review }) => {
 								</AvatarFallback>
 							</Avatar>
 							<div className="">
-								<h4 className="font-semibold text-gray-900">
+								<h4 className="font-semibold text-neutral-950 dark:text-white">
 									{review?.user?.accountData?.firstname}
 								</h4>
 								{review.author && (
@@ -85,19 +85,19 @@ const Review: React.FC<ReviewProps> = ({ review }) => {
 								{[1, 2, 3, 4, 5].map((circle) => (
 									<Circle
 										key={circle}
-										className={`h-4.5 w-4.5 ${circle <= review.rating ? 'fill-green-600 text-green-600' : 'text-gray-300'}`}
+										className={`h-4.5 w-4.5 ${circle <= review.rating ? 'fill-[#00AA6C] text-[#00AA6C]' : 'text-neutral-300'}`}
 									/>
 								))}
 							</div>
-							<span className="text-sm font-medium text-gray-700">
+							<span className="text-sm font-medium text-neutral-600 dark:text-neutral-400">
 								{review.rating}/5
 							</span>
 						</div>
 
-						<h3 className="mb-2 text-lg font-semibold text-gray-900">
+						<h3 className="mb-2 text-lg font-semibold text-neutral-950 dark:text-white">
 							{review.title}
 						</h3>
-						<p className="mb-3 leading-relaxed text-gray-700">
+						<p className="mb-3 leading-relaxed text-neutral-600 dark:text-neutral-400">
 							{review.content}
 						</p>
 
@@ -122,7 +122,7 @@ const Review: React.FC<ReviewProps> = ({ review }) => {
 										key={index}
 										src={image || '/placeholder.svg'}
 										alt={`Review image ${index + 1}`}
-										className="h-20 w-20 rounded-lg border border-gray-200 object-cover"
+										className="h-20 w-20 rounded-lg border border-neutral-200 object-cover"
 									/>
 								))}
 							</div>

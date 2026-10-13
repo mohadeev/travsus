@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import HomePage from './(home)/HomePage'
-import { getTranslations } from 'next-intl/server'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
+import { getHomeData } from '@/lib/homeData'
 
 export async function generateMetadata(): Promise<Metadata> {
 	const t = await getTranslations('TourPageMetadata')
@@ -80,6 +81,15 @@ export async function generateMetadata(): Promise<Metadata> {
 	}
 }
 
-export default function Home() {
-	return <HomePage />
+// Built once, refreshed every 10 minutes: instant for visitors and crawlers
+export const revalidate = 600
+
+export default async function Home({
+	params: { locale },
+}: {
+	params: { locale: string }
+}) {
+	setRequestLocale(locale)
+	const data = await getHomeData(locale)
+	return <HomePage {...data} />
 }

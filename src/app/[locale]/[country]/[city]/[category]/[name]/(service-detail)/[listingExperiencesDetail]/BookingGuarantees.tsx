@@ -1,52 +1,26 @@
-import React from 'react'
-import { Calendar, CheckCircle, DollarSign } from 'lucide-react'
+// Booking promises shown under the overview.
+import { BadgeEuro, CalendarCheck, Clock3 } from 'lucide-react'
 import { useTranslations } from '@/lib/i18n'
 
-const PremiumTourBenefits: React.FC = () => {
+const BookingGuarantees = () => {
 	const t = useTranslations('PremiumTourBenefits')
+	const items = [
+		[CalendarCheck, 'free_cancellation', 'free_cancellation_description'],
+		[Clock3, 'reserve_now_pay_later', 'reserve_now_pay_later_description'],
+		[BadgeEuro, 'lowest_price_guaranteed', 'lowest_price_guaranteed_description'],
+	] as const
 
 	return (
-		<div className="bg-white">
-			{/* Free Cancellation */}
-			<div className="flex items-start pb-4">
-				<Calendar className="mr-3 mt-0.5 h-5 w-5 flex-shrink-0 text-gray-600" />
-				<div>
-					<h3 className="font-medium text-gray-900">
-						{t('free_cancellation')}
-					</h3>
-					<p className="mt-1 text-sm text-gray-600">
-						{t('free_cancellation_description')}
-					</p>
-				</div>
-			</div>
-
-			{/* Reserve Now, Pay Later */}
-			<div className="flex items-start pb-4 pt-4">
-				<CheckCircle className="mr-3 mt-0.5 h-5 w-5 flex-shrink-0 text-gray-600" />
-				<div>
-					<h3 className="font-medium text-gray-900">
-						{t('reserve_now_pay_later')}
-					</h3>
-					<p className="mt-1 text-sm text-gray-600">
-						{t('reserve_now_pay_later_description')}
-					</p>
-				</div>
-			</div>
-
-			{/* Lowest Price Guaranteed */}
-			<div className="flex items-start pt-4">
-				<DollarSign className="mr-3 mt-0.5 h-5 w-5 flex-shrink-0 text-gray-600" />
-				<div>
-					<h3 className="font-medium text-gray-900">
-						{t('lowest_price_guaranteed')}
-					</h3>
-					<p className="mt-1 text-sm text-gray-600">
-						{t('lowest_price_guaranteed_description')}
-					</p>
-				</div>
-			</div>
-		</div>
+		<ul className="grid gap-3 sm:grid-cols-3">
+			{items.map(([Icon, title, text]) => (
+				<li key={title} className="rounded-2xl bg-sand-100 p-5 dark:bg-neutral-900">
+					<Icon className="h-6 w-6 text-brand-500" strokeWidth={1.8} />
+					<h3 className="mt-3 font-semibold">{t(title)}</h3>
+					<p className="mt-1 text-sm text-neutral-600 dark:text-neutral-400">{t(text)}</p>
+				</li>
+			))}
+		</ul>
 	)
 }
 
-export default PremiumTourBenefits
+export default BookingGuarantees

@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from 'react'
 import { useTranslations } from '@/lib/i18n'
 import TourMap from './TourMap'
 import Image from 'next/image'
-import { MapPin } from 'lucide-react'
+import { ChevronDown, MapPin } from 'lucide-react'
 
 interface Day {
 	name: string
@@ -164,189 +164,87 @@ export default function TourItineraryWithMap({
 		overviewTimelineRefs.current[index] = el
 	}
 
+	const tabClass = (active: boolean) =>
+		`whitespace-nowrap rounded-full px-4 py-2 text-sm font-semibold transition ${
+			active
+				? 'bg-brand-500 text-white'
+				: 'text-neutral-600 hover:bg-neutral-100 dark:text-neutral-400 dark:hover:bg-neutral-800'
+		}`
+
 	return (
-		<div className="overflow-hidden rounded-lg bg-white shadow-sm">
-			{/* Top navigation tabs */}
-			<div className="border-b bg-gray-50 p-4">
-				<div className="flex flex-wrap gap-2">
-					<button
-						className={`whitespace-nowrap rounded-full px-4 py-2 text-sm font-medium transition-all duration-200 ${
-							selectedDayIndex === -1
-								? 'bg-black text-white shadow-sm'
-								: 'border border-gray-200 bg-white text-gray-700 hover:bg-gray-50'
-						}`}
-						onClick={() => handleDaySelect(-1)}
-					>
-						{t('Overview')}
+		<div className="overflow-hidden rounded-3xl border border-neutral-200 dark:border-neutral-800">
+			{/* Day tabs: pick a day to see it on the map */}
+			<div className="flex gap-1 overflow-x-auto border-b border-neutral-200 p-2 [scrollbar-width:none] dark:border-neutral-800 [&::-webkit-scrollbar]:hidden">
+				<button type="button" className={tabClass(selectedDayIndex === -1)} onClick={() => handleDaySelect(-1)}>
+					{t('Overview')}
+				</button>
+				{days.map((_, index) => (
+					<button key={index} type="button" className={tabClass(selectedDayIndex === index)} onClick={() => handleDaySelect(index)}>
+						{t('Day_Label')} {index + 1}
 					</button>
-					{days.map((day, index) => (
-						<button
-							key={index}
-							className={`whitespace-nowrap rounded-full px-4 py-2 text-sm font-medium transition-all duration-200 ${
-								selectedDayIndex === index
-									? 'bg-black text-white shadow-sm'
-									: 'border border-gray-200 bg-white text-gray-700 hover:bg-gray-50'
-							}`}
-							onClick={() => handleDaySelect(index)}
-						>
-							{t('Day_Label')} {index + 1}
-						</button>
-					))}
-				</div>
+				))}
 			</div>
-			{/* Day subtitle */}
-			<div className="border-b bg-gray-50 px-6 py-2 text-sm text-black">
-				{selectedDayIndex === -1 ? (
-					<div className="flex gap-2">
-						<span>{t('Full_Map')}</span>
-						<span>•</span>
-						<span>
-							{days.length} {t('Days_Label')}
-						</span>
-					</div>
-				) : (
-					<div>{selectedDay.name}</div>
-				)}
+
+			<div className="relative z-1">
+				<TourMap
+					days={days}
+					ref={mapRef}
+					selectedDayIndex={selectedDayIndex === -1 ? null : selectedDayIndex}
+					onDaySelect={handleDaySelect}
+					height={420}
+					monochrome={true}
+				/>
 			</div>
-			{/* Main content area */}
-			<div className="flex flex-col lg:flex-row">
-				{/* Left side: Itinerary details */}
-				<div className="w-full border-r p-6 lg:w-2/5">
-					{selectedDayIndex === -1 ? (
-						// Overview content
-						<div>
-							<h2 className="mb-4 text-xl font-bold">
-								{title || t('Desert_Tour')}
-							</h2>
-							<p className="mb-6 text-black">
-								{days.length} {t('Journey_Through')}{' '}
-								{days
-									.map((d) => d.cityName)
-									.filter(Boolean)
-									.join(', ')}
-							</p>
-							<div className="relative space-y-6">
-								{days.map((day, index) => (
-									<div key={index} className="flex items-start gap-4">
-										{/* Dotted line connecting days */}
-										{index < days.length - 1 && (
-											<div
-												ref={(el) => setOverviewTimelineRef(el, index)}
-												className="absolute bottom-0 left-4 top-0 flex w-0.5 flex-col items-center"
-												style={{
-													transform: 'translateX(-50%)',
-													top: `${index * 6 + 2.5}rem`,
-													height: '4rem',
-												}}
-											></div>
-										)}
-										<div className="z-10 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-black text-white">
-											{index + 1}
-										</div>
-										<div>
-											<h3 className="font-medium">{day.name}</h3>
-											<p className="mt-1 text-sm text-black">{day.cityName}</p>
-										</div>
-									</div>
-								))}
-							</div>
-						</div>
-					) : (
-						// Day detail content with stops
-						<div>
-							<h2 className="mb-4 text-xl font-bold">{selectedDay.name}</h2>
-							<div className="relative">
-								{stops.map((stop, index) => (
-									<div key={index} className="mb-8">
-										{/* Timeline dotted line */}
-										<div
-											ref={(el) => setTimelineRef(el, index)}
-											className="absolute bottom-0 left-4 top-0 flex w-0.5 flex-col items-center"
-											style={{ transform: 'translateX(-50%)' }}
-										></div>
-										<div className="flex">
-											<div className="relative">
-												<div className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full bg-black text-white">
-													<MapPin className="h-4 w-4 text-white" />
-												</div>
-											</div>
-											<div className="ml-4 flex-1">
-												<h3 className="font-medium">{stop.name}</h3>
-												{stop.duration && (
-													<p className="mt-1 text-sm text-black">
-														{t('Stop_Label')} {stop.duration}
-													</p>
-												)}
-												{stop.image && (
-													<div className="mb-3 mt-3 overflow-hidden rounded-lg">
-														<Image
-															src={stop.image || '/placeholder.svg'}
-															alt={stop.name}
-															width={400}
-															height={250}
-															className="h-auto w-full object-cover"
-														/>
-													</div>
-												)}
-												<p className="mt-2 text-black">{stop.description}</p>
-											</div>
-										</div>
-									</div>
-								))}
-							</div>
-						</div>
-					)}
-				</div>
-				{/* Right side: Map */}
-				<div className="relative z-1 lg:w-3/5">
-					<TourMap
-						days={days}
-						ref={mapRef}
-						selectedDayIndex={selectedDayIndex === -1 ? null : selectedDayIndex}
-						onDaySelect={handleDaySelect}
-						height={600}
-						monochrome={true}
-					/>
-				</div>
-			</div>
-			{/* Day-by-day text: visible, collapsible, and fully in the HTML */}
-			<ol className="divide-y border-t">
+
+			{/* Day-by-day text: visible, collapsible, and fully in the HTML.
+			    Opening a day also shows it on the map. */}
+			<ol className="divide-y divide-neutral-200 border-t border-neutral-200 dark:divide-neutral-800 dark:border-neutral-800">
 				{days.map((day, index) => {
-					const label = /^(day|día|jour|tag|giorno|dia)\s*\d/i.test(
-						day.name || '',
-					)
+					const label = /^(day|día|jour|tag|giorno|dia)\s*\d/i.test(day.name || '')
 						? day.name
 						: `${t('Day_Heading')} ${index + 1}: ${day.name}`
 					return (
 						<li key={`day-${index}`}>
-							<details className="group px-6 py-4" open={index === 0}>
-								<summary className="flex cursor-pointer list-none items-center justify-between gap-4 [&::-webkit-details-marker]:hidden">
-									<h3 className="font-semibold">{label}</h3>
-									<span className="text-sm text-black/60 group-open:hidden">
-										+
+							<details
+								className="group px-5 py-4 sm:px-6"
+								open={index === 0}
+								onToggle={(e) => (e.currentTarget as HTMLDetailsElement).open && handleDaySelect(index)}
+							>
+								<summary className="flex cursor-pointer list-none items-center gap-4 [&::-webkit-details-marker]:hidden">
+									<span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-brand-500 text-sm font-bold text-white">
+										{index + 1}
 									</span>
-									<span className="hidden text-sm text-black/60 group-open:inline">
-										−
-									</span>
+									<h3 className="flex-1 font-semibold">{label}</h3>
+									<ChevronDown className="h-5 w-5 shrink-0 text-neutral-500 transition-transform group-open:rotate-180" />
 								</summary>
-								{day.description && (
-									<p className="mt-3 whitespace-pre-line text-black">
-										{day.description}
-									</p>
-								)}
-								{day.stops?.map((stop, stopIndex) => (
-									<div key={`stop-${index}-${stopIndex}`} className="mt-3">
-										<h4 className="font-medium">{stop.name}</h4>
-										{stop.description && (
-											<p className="text-black">{stop.description}</p>
-										)}
-										{stop.duration && (
-											<p className="text-sm text-black/70">
-												{t('Duration_Label')} {stop.duration}
-											</p>
-										)}
-									</div>
-								))}
+								<div className="ml-12 mt-3 space-y-4">
+									{day.description && (
+										<p className="whitespace-pre-line text-[15px] leading-relaxed text-neutral-700 dark:text-neutral-300">
+											{day.description}
+										</p>
+									)}
+									{day.stops?.map((stop, stopIndex) => (
+										<div key={`stop-${index}-${stopIndex}`} className="flex gap-3">
+											<MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand-500" />
+											<div className="min-w-0">
+												<h4 className="font-semibold">{stop.name}</h4>
+												{stop.duration && (
+													<p className="text-sm text-neutral-500">
+														{t('Duration_Label')} {stop.duration}
+													</p>
+												)}
+												{stop.image && (
+													<div className="relative mt-2 aspect-[16/9] max-w-md overflow-hidden rounded-xl">
+														<Image src={stop.image} alt={stop.name} fill sizes="448px" className="object-cover" />
+													</div>
+												)}
+												{stop.description && (
+													<p className="mt-1 text-[15px] text-neutral-700 dark:text-neutral-300">{stop.description}</p>
+												)}
+											</div>
+										</div>
+									))}
+								</div>
 							</details>
 						</li>
 					)

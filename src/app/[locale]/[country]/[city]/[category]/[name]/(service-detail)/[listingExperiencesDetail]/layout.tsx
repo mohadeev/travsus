@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import { updateLineItemsLogic } from '@/app/api/updateLineItems/updateLineItemsLogic'
 import { getTourData } from '@/lib/tourData'
+import { getHomeData } from '@/lib/homeData'
 import ListingExperiencesDetailPage from './page'
 import {
 	tourAlternates,
@@ -120,6 +121,17 @@ const DetailLayout = async ({ params }: DetailLayoutProps) => {
 		if (!tour) notFound()
 
 
+		// Four other tours, the ones starting in the same city first
+		const { tours } = await getHomeData(locale)
+		const city = tour.startAddress?.city
+		const similar = tours
+			.filter((other) => other.id !== tour.id)
+			.sort((a, b) => Number(b.city === city) - Number(a.city === city))
+			.slice(0, 4)
+			.map(({ searchText, ...card }) => card) // not needed in the browser
+		// Shown in the booking card until the browser has priced the booking
+		const fromPricePerPerson = tours.find((t) => t.id === tour.id)?.pricePerPerson ?? null
+
 		const jsonLd = tourJsonLd(tour, locale, {
 			prices: await priceRange(tour),
 			currency: tour.pricingTiers?.[0]?.pricing?.currency || 'EUR',
@@ -128,7 +140,7 @@ const DetailLayout = async ({ params }: DetailLayoutProps) => {
 		return (
 			<div className="ListingDetailPage">
 				<div className="ListingDetailPage__content">
-					<ListingExperiencesDetailPage serviceData={tour} />
+					<ListingExperiencesDetailPage serviceData={{ ...tour, fromPricePerPerson }} similar={similar as any} />
 				</div>
 				<script
 					type="application/ld+json"

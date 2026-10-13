@@ -301,18 +301,22 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
 	const [value, setValue] = useState('0')
 
 	return (
-		<div id="experience_reviews" className="mb-10 mt-10 w-full">
+		<section id="experience_reviews" className="w-full scroll-mt-32">
 			{/* Reviews Section */}
 			<div className="">
 				{!isLoading && (
 					<div className="mb-4 flex items-center justify-between">
-						<h2 className="text-2xl font-semibold">
-							{t('Reviews')} ({reviews.length})
+						<h2 className="text-2xl font-bold tracking-tight">
+							{t('Reviews')} <span className="text-neutral-400">({reviews.length})</span>
 						</h2>
 						{reviews.length >= 1 ? (
-							<ButtonPrimary onClick={() => handleWriteReview()}>
-								{t('Write_Review')}
-							</ButtonPrimary>
+							<button
+								type="button"
+								onClick={() => handleWriteReview()}
+								className="rounded-full bg-brand-500 px-4 py-2 text-sm font-semibold text-white transition hover:bg-brand-600"
+							>
+								{showReviewForm ? '×' : t('Write_Review')}
+							</button>
 						) : (
 							''
 						)}
@@ -321,7 +325,7 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
 
 				{/* Review Form */}
 				{showReviewForm && (
-					<div className="mb-8 bg-white p-6">
+					<div className="mb-8 rounded-3xl border border-neutral-200 p-6 dark:border-neutral-800">
 						<div className="grid gap-8 md:grid-cols-12">
 							{/* Left Column - Tour Card (35%) */}
 							<div className="border-r border-neutral-200 pr-6 md:col-span-4">
@@ -344,12 +348,12 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
 													onClick={() => handleRatingChange(circle)}
 													className={`flex h-13 w-13 items-center justify-center rounded-full transition-colors ${
 														rating >= circle
-															? 'text-green-600'
+															? 'text-neutral-950'
 															: 'text-gray-300 hover:text-gray-400'
 													}`}
 												>
 													<Circle
-														className={`h-9 w-9 ${rating >= circle ? 'fill-green-600' : ''}`}
+														className={`h-9 w-9 ${rating >= circle ? 'fill-neutral-950' : ''}`}
 													/>
 												</button>
 											))}
@@ -556,27 +560,27 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
 						))}
 					</div>
 				) : reviews.length > 0 ? (
-					<div className="flex flex-col bg-white md:flex-row">
+					<div className="flex flex-col gap-8 md:flex-row">
 						{/* Rating Summary Section */}
-						<div className="flex w-full flex-col gap-8 border-b border-gray-200 p-6 md:w-1/3">
+						<div className="flex w-full flex-col gap-8 self-start rounded-2xl bg-sand-100 p-6 md:sticky md:top-32 md:w-1/3 dark:bg-neutral-900">
 							<div className="flex w-full flex-col gap-8 md:items-start">
 								{/* Overall Rating */}
 								<div className="flex flex-col items-center md:items-start">
 									<div className="mb-2 flex items-baseline gap-2">
-										<div className="text-5xl font-bold text-gray-900">
+										<div className="text-5xl font-bold tracking-tight">
 											{averageRating}
 										</div>
-										<div className="text-lg text-gray-600">/ 5</div>
+										<div className="text-lg text-neutral-500">/ 5</div>
 									</div>
 									<div className="mb-2 flex gap-1">
 										{[1, 2, 3, 4, 5].map((circle) => (
 											<Circle
 												key={circle}
-												className={`h-4.5 w-4.5 ${circle <= Math.round(Number.parseFloat(averageRating)) ? 'fill-green-600 text-green-600' : 'text-gray-300'}`}
+												className={`h-4.5 w-4.5 ${circle <= Math.round(Number.parseFloat(averageRating)) ? 'fill-[#00AA6C] text-[#00AA6C]' : 'text-neutral-300'}`}
 											/>
 										))}
 									</div>
-									<div className="text-sm text-gray-600">
+									<div className="text-sm text-neutral-500">
 										Based on {totalReviews.toLocaleString()} review
 										{totalReviews !== 1 ? 's' : ''}
 									</div>
@@ -589,12 +593,12 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
 											{/* <div className="flex w-20 items-center gap-1 text-sm font-medium text-gray-700">
 												<span>{rating}</span>
 												<Circle
-													className={`h-4.5 w-4.5 fill-green-600 text-green-600`}
+													className={`h-4.5 w-4.5 fill-neutral-950 text-neutral-950`}
 												/>
 											</div> */}
-											<div className="h-4 w-full overflow-hidden rounded-full bg-gray-200">
+											<div className="h-1.5 w-full overflow-hidden rounded-full bg-neutral-200 dark:bg-neutral-800">
 												<div
-													className="h-full rounded-full bg-green-600 transition-all duration-300"
+													className="h-full rounded-full bg-[#00AA6C] transition-all duration-300"
 													style={{
 														width:
 															totalReviews > 0
@@ -603,7 +607,7 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
 													}}
 												/>
 											</div>
-											<div className="w-12 text-right text-sm text-gray-600">
+											<div className="w-8 text-right text-sm text-neutral-500">
 												{
 													ratingBreakdown[
 														rating as keyof typeof ratingBreakdown
@@ -617,14 +621,14 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
 						</div>
 
 						{/* Individual Reviews */}
-						<div className="w-full space-y-6 divide-y divide-gray-200 px-6 pb-6 md:w-2/3">
+						<div className="w-full divide-y divide-neutral-200 md:w-2/3 dark:divide-neutral-800">
 							{reviews.map((review) => (
 								<Review key={review.id} review={review} />
 							))}
 						</div>
 					</div>
 				) : (
-					<div className="nc-custom-shadow-1 rounded-lg py-10 text-center">
+					<div className="rounded-3xl border border-dashed border-neutral-300 py-12 text-center dark:border-neutral-700">
 						<h3 className="mb-2 text-lg font-medium">{t('No_Reviews_Yet')}</h3>
 						<p className="mb-4 text-neutral-500">{t('First_Share')}</p>
 						<ButtonPrimary onClick={() => setShowReviewForm(true)}>
@@ -639,7 +643,7 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
 					</div>
 				)}
 			</div>
-		</div>
+		</section>
 	)
 }
 

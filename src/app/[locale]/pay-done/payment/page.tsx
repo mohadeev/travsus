@@ -1,15 +1,12 @@
 'use client'
-export const dynamic = "force-dynamic";
-import StartRating from '@/components/StartRating'
 import React, { FC, useEffect, useState } from 'react'
+import Link from 'next/link'
+import { CheckCircle2, Clock, XCircle } from 'lucide-react'
 import ButtonPrimary from '@/shared/ButtonPrimary'
-import Image from 'next/image'
-// import LineItemsBreakdown from '../../(service-detail)/[listingExperiencesDetail]/LineItemsBreakdown'
 import { useAppDispatch, useAppSelector } from '@/store/hooks'
 import getFetchDataFromApi from '@/utils/getFetchDataFromApi'
 import { selectBooking, setBooking } from '@/store/slices/booking'
 import { useSearchParams } from 'next/navigation'
-import { Button } from '@/components/ui'
 import converSelectedDateToString from '@/utils/converSelectedDateToString'
 import { useTranslations } from 'next-intl'
 import LineItemsBreakdown from '../../[country]/[city]/[category]/[name]/(service-detail)/[listingExperiencesDetail]/LineItems/LineItemsBreakdown'
@@ -19,12 +16,37 @@ export interface PayPageProps {}
 
 const PayPage: FC<PayPageProps> = () => {
 	const t = useTranslations('Jan03_PayPage_m5k8')
+	const tPay = useTranslations('Payment')
 	const booking = useAppSelector(selectBooking)
-	const { guests, lineItems } = booking
+	const { guests } = booking
 	const searchParams = useSearchParams()
 	const dispatch = useAppDispatch()
-	const step = searchParams.get('step')
 	const bookingId = searchParams.get('bookingId')
+	const [payment, setPayment] = useState<{ status: string } | null>(null)
+
+	// Ask the server for the result (it also records the payment if Stripe's
+	// webhook hasn't arrived yet). Bank transfers etc. can take a moment.
+	useEffect(() => {
+		if (!bookingId) return
+		let stopped = false
+		let tries = 0
+		const check = async () => {
+			const response = await fetch(`/api/bookings/${bookingId}/payment`)
+			const data = await response.json().catch(() => ({}))
+			if (stopped) return
+			setPayment({ status: response.ok ? data.status : 'error' })
+			if (data.status === 'processing' && tries++ < 20) setTimeout(check, 3000)
+		}
+		check()
+		return () => {
+			stopped = true
+		}
+	}, [bookingId])
+
+	const status = payment?.status
+	const succeeded = status === 'succeeded'
+	const failed =
+		!!status && !succeeded && status !== 'processing' && status !== 'error'
 
 	useEffect(() => {
 		;(async () => {
@@ -45,9 +67,48 @@ const PayPage: FC<PayPageProps> = () => {
 	const renderContent = () => {
 		return (
 			<div className="flex w-full flex-col space-y-10 px-0 sm:rounded-2xl sm:p-6 xl:p-8">
-				<h2 className="text-3xl font-semibold lg:text-4xl">
-					{t('congratulations')}
-				</h2>
+				{/* Payment result */}
+				{!payment ? (
+					<p className="text-lg text-neutral-500">{tPay('confirming')}</p>
+				) : succeeded ? (
+					<div className="flex items-start gap-4">
+						<CheckCircle2 className="h-10 w-10 shrink-0 text-emerald-600" />
+						<div>
+							<h2 className="text-3xl font-semibold lg:text-4xl">
+								{tPay('succeeded_title')}
+							</h2>
+							<p className="mt-2 text-neutral-600">{tPay('confirmation_email')}</p>
+						</div>
+					</div>
+				) : status === 'processing' ? (
+					<div className="flex items-start gap-4">
+						<Clock className="h-10 w-10 shrink-0 text-amber-500" />
+						<div>
+							<h2 className="text-3xl font-semibold">{tPay('processing_title')}</h2>
+							<p className="mt-2 text-neutral-600">{tPay('processing_text')}</p>
+						</div>
+					</div>
+				) : (
+					<div className="flex items-start gap-4">
+						<XCircle className="h-10 w-10 shrink-0 text-red-600" />
+						<div>
+							<h2 className="text-3xl font-semibold">
+								{status === 'error' ? tPay('missing_booking') : tPay('failed_title')}
+							</h2>
+							{failed && (
+								<>
+									<p className="mt-2 text-neutral-600">{tPay('failed_text')}</p>
+									<Link
+										href={`/checkout/checkout?bookingId=${bookingId}` as any}
+										className="mt-4 inline-flex rounded-full bg-black px-6 py-3 font-semibold text-white hover:bg-neutral-800"
+									>
+										{tPay('try_again')}
+									</Link>
+								</>
+							)}
+						</div>
+					</div>
+				)}
 				<div className="border-b border-neutral-200 dark:border-neutral-700"></div>
 				{/* ------------------------ */}
 				<div className="space-y-6">
@@ -114,9 +175,11 @@ const PayPage: FC<PayPageProps> = () => {
 						<LineItemsBreakdown lineItems={booking?.lineItems} />
 					</div>
 				</div>
-				<div>
-					<ButtonPrimary loading={false}>{t('manage_booking')}</ButtonPrimary>
-				</div>
+				{succeeded && (
+					<div>
+						<ButtonPrimary href={'/bookings' as any}>{t('manage_booking')}</ButtonPrimary>
+					</div>
+				)}
 			</div>
 		)
 	}

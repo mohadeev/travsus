@@ -1,148 +1,147 @@
 'use client'
+// Mobile menu panel: search, categories, cities, account and language.
 import React from 'react'
-import ButtonClose from '@/shared/ButtonClose'
-import Logo from '@/shared/Logo'
-import { Disclosure } from '@headlessui/react'
-import { NavItemType } from './NavigationItem'
-import { NAVIGATION_DEMO } from '@/data/navigation'
-import ButtonPrimary from '@/shared/ButtonPrimary'
-import SocialsList from '@/shared/SocialsList'
-import { ChevronDownIcon } from '@heroicons/react/24/solid'
 import Link from 'next/link'
-import LangDropdown from '@/app/(client-components)/(Header)/LangDropdown'
-import { SignUpButton, useAuth } from '@clerk/nextjs'
-import { footerLinks } from '@/constants/footerLinks'
-import { useTranslations } from '@/lib/i18n'
+import { useLocale, useTranslations } from 'next-intl'
+import { useAuth, useClerk } from '@clerk/nextjs'
+import { ArrowUpRight, Instagram, Search, X } from 'lucide-react'
+import Logo from '@/shared/Logo'
+import { ACCOUNT_LINKS, CATEGORY_LINKS, CITY_LINKS } from '@/constants/siteNav'
+import LanguagePreferencesModal from '@/app/(client-components)/(Header)/LanguagePreferencesModal'
 
 export interface NavMobileProps {
-	data?: NavItemType[]
 	onClickClose?: () => void
 }
 
-const NavMobile: React.FC<NavMobileProps> = ({
-	data = NAVIGATION_DEMO,
-	onClickClose,
-}) => {
+const rowClass =
+	'flex items-center justify-between rounded-xl px-3 py-3 text-[15px] font-medium transition hover:bg-neutral-100 dark:hover:bg-neutral-800'
+
+const NavMobile: React.FC<NavMobileProps> = ({ onClickClose }) => {
+	const t = useTranslations('Nav')
+	const tHome = useTranslations('Home')
+	const tAccount = useTranslations('AvatarDropdown')
+	const locale = useLocale()
 	const { isSignedIn } = useAuth()
-	const t = useTranslations('Jan03_NavMobile_x5y7')
-
-	const _renderMenuChild = (item: NavItemType) => {
-		return (
-			<ul className="nav-mobile-sub-menu pb-1 pl-6 text-base">
-				{item.children?.map((i, index) => (
-					<Disclosure key={i.href + index} as="li">
-						<Link
-							href={{
-								pathname: i.href || undefined,
-							}}
-							className="mt-0.5 flex rounded-lg px-4 text-sm font-medium text-neutral-900 hover:bg-neutral-100 dark:text-neutral-200 dark:hover:bg-neutral-800"
-						>
-							<span
-								className={`py-2.5 pr-3 ${!i.children ? 'block w-full' : ''}`}
-							>
-								{i.name}
-							</span>
-							{i.children && (
-								<span
-									className="flex flex-1"
-									onClick={(e) => e.preventDefault()}
-								>
-									<Disclosure.Button
-										as="span"
-										className="flex flex-1 justify-end py-2.5"
-									>
-										<ChevronDownIcon
-											className="ml-2 h-4 w-4 text-neutral-500"
-											aria-hidden="true"
-										/>
-									</Disclosure.Button>
-								</span>
-							)}
-						</Link>
-						{i.children && (
-							<Disclosure.Panel>{_renderMenuChild(i)}</Disclosure.Panel>
-						)}
-					</Disclosure>
-				))}
-			</ul>
-		)
-	}
-
-	const footerT = useTranslations('footer')
-
-	const _renderItem = (item: NavItemType, index: number) => {
-		return (
-			<Disclosure
-				key={item.id}
-				as="li"
-				className="text-neutral-900 dark:text-white"
-			>
-				<Link
-					className="flex w-full rounded-lg px-4 text-sm font-medium uppercase tracking-wide hover:bg-neutral-100 dark:hover:bg-neutral-800"
-					href={{
-						pathname: item.href || undefined,
-					}}
-				>
-					<span
-						className={`py-2.5 pr-3 ${!item.children ? 'block w-full' : ''}`}
-					>
-						{footerT(item.name)}
-					</span>
-					{item.children && (
-						<span className="flex flex-1" onClick={(e) => e.preventDefault()}>
-							<Disclosure.Button
-								as="span"
-								className="flex flex-1 items-center justify-end py-2.5"
-							>
-								<ChevronDownIcon
-									className="ml-2 h-4 w-4 text-neutral-500"
-									aria-hidden="true"
-								/>
-							</Disclosure.Button>
-						</span>
-					)}
-				</Link>
-				{item.children && (
-					<Disclosure.Panel>{_renderMenuChild(item)}</Disclosure.Panel>
-				)}
-			</Disclosure>
-		)
-	}
+	const { openSignIn, openSignUp } = useClerk()
 
 	return (
-		<div className="h-screen w-full transform divide-y-2 divide-neutral-100 overflow-y-auto bg-white py-2 shadow-lg ring-1 transition dark:divide-neutral-800 dark:bg-neutral-900 dark:ring-neutral-700">
-			<div className="px-5 py-6">
-				<Logo />
-				<div className="mt-5 flex flex-col text-sm text-neutral-700 dark:text-neutral-300">
-					{/* <span>
-                        Discover the most outstanding articles on all topics of life. Write
-                        your stories and share them
-                    </span> */}
-					<div className="mt-4 flex items-center justify-between">
-						<SocialsList itemClass="w-9 h-9 flex items-center justify-center rounded-full bg-neutral-100 text-xl dark:bg-neutral-800 dark:text-neutral-300" />
-					</div>
-				</div>
-				<span className="absolute right-2 top-2 p-1">
-					<ButtonClose onClick={onClickClose} />
-				</span>
+		<div className="flex h-screen w-full flex-col overflow-y-auto bg-white text-neutral-950 dark:bg-neutral-950 dark:text-white">
+			<div className="flex items-center justify-between border-b border-neutral-100 px-5 py-4 dark:border-neutral-900">
+				<Logo className="w-24" />
+				<button
+					type="button"
+					onClick={onClickClose}
+					aria-label={t('close')}
+					className="grid h-10 w-10 place-items-center rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800"
+				>
+					<X className="h-5 w-5" />
+				</button>
 			</div>
-			<ul className="flex flex-col space-y-1 px-2 py-6">
-				{footerLinks.map(_renderItem)}
-			</ul>
-			<div
-				className={`"flex py-6" items-center justify-between px-5 ${!isSignedIn && 'justify-end'}`}
-			>
-				{!isSignedIn && (
-					<SignUpButton mode="modal">
-						<ButtonPrimary>{t('Sign_Up')}</ButtonPrimary>
-					</SignUpButton>
-				)}
-				{/* <LangDropdown
-                    className="flex"
-                    panelClassName="z-10 w-screen max-w-[280px] px-4 mb-3 right-3 bottom-full sm:px-0"
-                /> */}
+
+			<div className="flex-1 space-y-8 px-3 py-5">
+				<form action={`/${locale}/search`} method="get" role="search" className="mx-2 flex items-center gap-3 rounded-full bg-neutral-100 px-4 dark:bg-neutral-900">
+					<Search className="h-[18px] w-[18px] text-neutral-500" />
+					<input
+						type="search"
+						name="query"
+						aria-label={tHome('search_label')}
+						placeholder={tHome('search_placeholder')}
+						className="w-full border-0 bg-transparent p-0 py-3 text-[15px] placeholder:text-neutral-500 focus:outline-none focus:ring-0"
+					/>
+				</form>
+
+				<Section title={t('explore')}>
+					<Row href="/search?query=" onClick={onClickClose}>{t('all_tours')}</Row>
+					{CATEGORY_LINKS.map((link) => (
+						<Row key={link.href} href={link.href} onClick={onClickClose}>
+							{tHome(link.label)}
+						</Row>
+					))}
+				</Section>
+
+				<Section title={t('destinations')}>
+					<div className="flex flex-wrap gap-2 px-3">
+						{CITY_LINKS.map((link) => (
+							<Link
+								key={link.href}
+								href={link.href as any}
+								onClick={onClickClose}
+								className="rounded-full border border-neutral-200 px-4 py-2 text-sm font-medium transition hover:border-neutral-950 dark:border-neutral-800"
+							>
+								{link.label}
+							</Link>
+						))}
+					</div>
+				</Section>
+
+				<Section title={t('account')}>
+					{isSignedIn ? (
+						<>
+							<Row href={ACCOUNT_LINKS.account} onClick={onClickClose}>{tAccount('my_account')}</Row>
+							<Row href={ACCOUNT_LINKS.bookings} onClick={onClickClose}>{tAccount('my_bookings')}</Row>
+							<Row href={ACCOUNT_LINKS.saved} onClick={onClickClose}>{t('saved')}</Row>
+						</>
+					) : (
+						<div className="grid grid-cols-2 gap-2 px-2">
+							<button
+								type="button"
+								onClick={() => {
+									onClickClose?.()
+									openSignIn({ forceRedirectUrl: window.location.href })
+								}}
+								className="rounded-full bg-neutral-950 py-3 text-sm font-semibold text-white dark:bg-white dark:text-neutral-950"
+							>
+								{tAccount('log_in')}
+							</button>
+							<button
+								type="button"
+								onClick={() => {
+									onClickClose?.()
+									openSignUp({ forceRedirectUrl: window.location.href })
+								}}
+								className="rounded-full border border-neutral-300 py-3 text-sm font-semibold dark:border-neutral-700"
+							>
+								{tAccount('sign_up')}
+							</button>
+						</div>
+					)}
+					<Row href={ACCOUNT_LINKS.blog} onClick={onClickClose}>{t('blog')}</Row>
+					<Row href={ACCOUNT_LINKS.partner} onClick={onClickClose}>{t('partner')}</Row>
+					<Row href={ACCOUNT_LINKS.help} onClick={onClickClose}>{t('help')}</Row>
+				</Section>
+			</div>
+
+			<div className="flex items-center justify-between border-t border-neutral-100 px-5 py-4 dark:border-neutral-900">
+				<LanguagePreferencesModal variant={'footer'} />
+				<a
+					href="https://www.instagram.com/travsusofficial"
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-label="Instagram"
+					className="grid h-10 w-10 place-items-center rounded-full bg-neutral-100 dark:bg-neutral-900"
+				>
+					<Instagram className="h-5 w-5" />
+				</a>
 			</div>
 		</div>
+	)
+}
+
+function Section({ title, children }: { title: string; children: React.ReactNode }) {
+	return (
+		<section>
+			<h2 className="px-3 pb-2 text-xs font-semibold uppercase tracking-wider text-neutral-500">{title}</h2>
+			<div className="space-y-0.5">{children}</div>
+		</section>
+	)
+}
+
+function Row({ href, onClick, children }: { href: string; onClick?: () => void; children: React.ReactNode }) {
+	return (
+		<Link href={href as any} onClick={onClick} className={rowClass}>
+			{children}
+			<ArrowUpRight className="h-4 w-4 text-neutral-400" />
+		</Link>
 	)
 }
 

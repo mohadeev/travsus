@@ -1,78 +1,55 @@
 'use client'
-
-import { useState } from 'react'
-import { ChevronDown, ChevronUp, Check } from 'lucide-react'
+// What's included, per package (Luxury / Standard, Private / Shared).
+// Always in the page (not hidden behind a click), so it's readable and indexable.
+import { Check } from 'lucide-react'
 import { useTranslations } from '@/lib/i18n'
 import { useTourService } from '../TourServiceContext'
 
 const Included = () => {
 	const { inclusions }: any = useTourService()
-	const [isOpen, setIsOpen] = useState(false)
 	const t = useTranslations('newServicedetailListingExperiencesDetailIncluded')
-
 	if (!inclusions) return null
 
-	const categories = [
-		{ title: 'Luxury - Private', items: inclusions.luxury.private },
-		{ title: 'Luxury - Shared', items: inclusions.luxury.shared },
-		{ title: 'Standard - Private', items: inclusions.standard.private },
-		{ title: 'Standard - Shared', items: inclusions.standard.shared },
-	]
-
-	// Filter out empty categories
-	const nonEmptyCategories = categories.filter(
-		(category) => category.items.length > 0,
-	)
-
-	const toggleAccordion = () => {
-		setIsOpen(!isOpen)
-	}
+	const packages = [
+		{ title: 'Luxury · Private', items: inclusions.luxury?.private ?? [] },
+		{ title: 'Luxury · Shared', items: inclusions.luxury?.shared ?? [] },
+		{ title: 'Standard · Private', items: inclusions.standard?.private ?? [] },
+		{ title: 'Standard · Shared', items: inclusions.standard?.shared ?? [] },
+	].filter((pack) => pack.items.length > 0)
+	if (!packages.length) return null
 
 	return (
-		<div className="">
-			<div className="overflow-hidden rounded-lg border border-gray-200 shadow-sm dark:border-gray-700">
-				<div
-					className="flex cursor-pointer items-center justify-between p-4 transition-colors hover:bg-gray-50 dark:hover:bg-gray-800"
-					onClick={toggleAccordion}
-				>
-					<div>
-						<h2 className="text-xl font-semibold">
-							{t('newServicedetailListingExperiencesDetailIncluded_Included')}
-						</h2>
-						<span className="text-sm text-neutral-500 dark:text-neutral-400">
-							{t(
-								'newServicedetailListingExperiencesDetailIncluded_Everything_Included_In_Your_Package',
-							)}
-						</span>
-					</div>
-					{isOpen ? (
-						<ChevronUp className="h-5 w-5" />
-					) : (
-						<ChevronDown className="h-5 w-5" />
-					)}
-				</div>
-
-				{isOpen && (
-					<div className="border-t border-gray-200 p-4 dark:border-gray-700">
-						{nonEmptyCategories.map(({ title, items }) => (
-							<div key={title} className="mb-6 last:mb-0">
-								<h3 className="mb-3 text-lg font-medium">{title}</h3>
-								<ul className="space-y-2">
-									{items.map((item: any, idx: number) => (
-										<li key={idx} className="flex items-start">
-											<Check className="mr-3 mt-0.5 h-5 w-5 flex-shrink-0 text-green-500" />
-											<span className="text-sm text-gray-700 dark:text-gray-300">
-												{item}
-											</span>
-										</li>
-									))}
-								</ul>
-							</div>
-						))}
-					</div>
-				)}
+		<section>
+			<span aria-hidden className="mb-3 block h-1 w-10 rounded-full bg-brand-500" />
+			<h2 className="text-2xl font-bold tracking-tight">
+				{t('newServicedetailListingExperiencesDetailIncluded_Included')}
+			</h2>
+			<p className="mt-1 text-neutral-500">
+				{t('newServicedetailListingExperiencesDetailIncluded_Everything_Included_In_Your_Package')}
+			</p>
+			<div className="mt-6 grid items-start gap-4 sm:grid-cols-2">
+				{packages.map(({ title, items }, index) => (
+					<details
+						key={title}
+						open={index === 0}
+						className="group rounded-2xl border border-neutral-200 p-5 open:pb-6 dark:border-neutral-800"
+					>
+						<summary className="flex cursor-pointer list-none items-center justify-between font-semibold [&::-webkit-details-marker]:hidden">
+							{title}
+							<span className="text-sm font-normal text-neutral-500 group-open:hidden">{items.length}</span>
+						</summary>
+						<ul className="mt-4 space-y-2.5">
+							{items.map((item: string, i: number) => (
+								<li key={i} className="flex gap-3 text-[15px] text-neutral-700 dark:text-neutral-300">
+									<Check className="mt-0.5 h-4 w-4 shrink-0 text-[#00AA6C]" strokeWidth={2.5} />
+									{item}
+								</li>
+							))}
+						</ul>
+					</details>
+				))}
 			</div>
-		</div>
+		</section>
 	)
 }
 

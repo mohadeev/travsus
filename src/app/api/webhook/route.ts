@@ -1,60 +1,50 @@
-export const dynamic = "force-dynamic";
+export const dynamic = 'force-dynamic'
 import { NextRequest, NextResponse } from 'next/server'
-import { headers } from 'next/headers'
-import Stripe from 'stripe'
-import bookingConfirmationEmailHook from './hooks/bookingConfirmationEmailHook'
-import paymentConfirmationEmailHook from './hooks/paymentConfirmationEmailHook'
+import type Stripe from 'stripe'
+import stripe from '@/lib/stripe'
+import { markBookingPaid, markPaymentFailed } from '@/lib/payments'
 import refundConfirmationEmailHook from './hooks/refundConfirmationEmailHook'
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!)
-
-const webhookSecret: string = process.env.STRIPE_WEBHOOK_SECRET!
-
-export async function POST(req: NextRequest) {
-	const body = await req.text()
-	const signature = headers().get('stripe-signature')!
-
-	let event: Stripe.Event
-
-	try {
-		event = stripe.webhooks.constructEvent(body, signature, webhookSecret)
-	} catch (err) {
-		const errorMessage = err instanceof Error ? err.message : 'Unknown error'
-		console.log(`❌ Error message: ${errorMessage}`)
-		return NextResponse.json(
-			{ error: `Webhook Error: ${errorMessage}` },
-			{ status: 400 },
-		)
+/**
+ * Stripe → TRAVSUS events. This is the source of truth for payments:
+ * a booking becomes "paid" here even if the customer closes the tab.
+ * Stripe dashboard → Developers → Webhooks: point it at /api/webhook with
+ * payment_intent.succeeded, payment_intent.payment_failed, charge.refunded.
+ */
+export async function POST(request: NextRequest) {
+	const signature = request.headers.get('stripe-signature')
+	const secret = process.env.STRIPE_WEBHOOK_SECRET
+	if (!signature || !secret) {
+		return NextResponse.json({ error: 'Missing signature' }, { status: 400 })
 	}
 
-	// Handle the event
-	switch (event.type) {
-		case 'payment_intent.succeeded':
-			const paymentIntent = event.data.object as Stripe.PaymentIntent
-			console.log('paymentIntent:', paymentIntent)
-			if (paymentIntent.status === 'succeeded') {
-				bookingConfirmationEmailHook(paymentIntent)
-				paymentConfirmationEmailHook(paymentIntent)
-				
-			} else {
-				console.log('no')
-			}
-			break
+	let event: Stripe.Event
+	try {
+		event = stripe.webhooks.constructEvent(await request.text(), signature, secret)
+	} catch (error) {
+		const message = error instanceof Error ? error.message : 'Unknown error'
+		console.error('Stripe webhook signature failed:', message)
+		return NextResponse.json({ error: `Webhook Error: ${message}` }, { status: 400 })
+	}
 
-		case 'charge.refunded':
-			const charge = event.data.object as Stripe.Charge
-			const { metadata } = event.data.object as Stripe.Charge
-			console.log('charge', JSON.stringify(charge))
-			if (charge.refunded) {
-				const refundDetails = charge.refunds?.data[0] // If there are multiple refunds, pick the first
-				refundConfirmationEmailHook(charge)
-			} else {
-				console.log('Refund event received but not refunded.')
+	try {
+		switch (event.type) {
+			case 'payment_intent.succeeded':
+				await markBookingPaid(event.data.object as Stripe.PaymentIntent)
+				break
+			case 'payment_intent.payment_failed':
+				await markPaymentFailed(event.data.object as Stripe.PaymentIntent)
+				break
+			case 'charge.refunded': {
+				const charge = event.data.object as Stripe.Charge
+				if (charge.refunded) await refundConfirmationEmailHook(charge)
+				break
 			}
-			break
-
-		default:
-			console.log(`Unhandled event type ${event.type}`)
+		}
+	} catch (error) {
+		// 500 makes Stripe retry the event later
+		console.error(`Stripe webhook ${event.type} failed:`, error)
+		return NextResponse.json({ error: 'Handler failed' }, { status: 500 })
 	}
 
 	return NextResponse.json({ received: true })

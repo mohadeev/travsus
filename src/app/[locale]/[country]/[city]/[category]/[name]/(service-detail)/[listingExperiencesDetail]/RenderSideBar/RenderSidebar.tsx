@@ -84,13 +84,18 @@ const RenderSidebar: FC<RenderSidebarProps> = ({}) => {
 		} else {
 			const createBooking = async () => {
 				setCurrentStatus('loading')
+				// Only the choices are sent: the server sets the price
 				const response = await fetch('/api/bookings', {
 					method: 'POST',
-					body: JSON.stringify(booking),
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify({
+						tourId: tour.id,
+						selectedDate: booking.selectedDate,
+						guests: booking.guests,
+						accommodation: booking.accommodation,
+						bookOwnHotels: booking.bookOwnHotels,
+					}),
 				})
-				if (!response.ok) {
-					console.error('Failed to create booking')
-				}
 				return response.json()
 			}
 			createBooking()
@@ -111,14 +116,17 @@ const RenderSidebar: FC<RenderSidebarProps> = ({}) => {
 		}
 	})
 
-	const priceStart = totalOf(lineItems) / totalGuests
+	// Before the booking is priced in the browser, show the server's "from" price
+	const priceStart = lineItems.length
+		? totalOf(lineItems) / totalGuests
+		: tour.fromPricePerPerson ?? 0
 
 	return (
 		<div className={`listingSectionSidebar__wrap ${isShaking ? 'shake' : ''}`}>
 			{tour.days ? (
 				<>
 					<div className="flex justify-between">
-						<span className="text-3xl font-semibold">
+						<span className="text-3xl font-bold tracking-tight">
 							{formatCurrency(priceStart)}
 							<span className="ml-1 text-base font-normal text-neutral-500 dark:text-neutral-400">
 								{t('per_person')}
@@ -177,7 +185,7 @@ const RenderSidebar: FC<RenderSidebarProps> = ({}) => {
 					<BookNowPayLatter />
 					<Button
 						loading={currentStatus === 'loading'}
-						className="mt-4 w-full"
+						className="mt-4 w-full !rounded-full !bg-brand-500 !py-3.5 !text-base !font-semibold !text-white hover:!bg-brand-600"
 						disabled={currentStatus === 'loading'}
 						onClick={handleReserveClick}
 					>

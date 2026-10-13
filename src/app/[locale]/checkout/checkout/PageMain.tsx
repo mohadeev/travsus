@@ -1,23 +1,24 @@
 'use client'
 import { PencilSquareIcon } from '@heroicons/react/24/outline'
-import { type FC, useEffect, useState } from 'react'
+import { type FC, useEffect, useRef } from 'react'
 import NcModal from '@/shared/NcModal'
 import ModalSelectDate from '@/components/ModalSelectDate'
 import converSelectedDateToString from '@/utils/converSelectedDateToString'
 import ModalSelectGuests from '@/components/ModalSelectGuests'
 import Image from 'next/image'
-import CustomStripeForm from './StripeContainer'
+import CheckoutPayment from './CheckoutPayment'
+import PromoCodeForm from './PromoCode'
 import getFetchDataFromApi from '@/utils/getFetchDataFromApi'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { Suspense } from 'react'
 import { useAppDispatch, useAppSelector } from '@/store/hooks'
 import {
-	recalculatePrice,
+	saveBookingChanges,
 	selectBooking,
+	selectPromoRemoved,
 	setBooking,
-	setBookOwnHotels,
 } from '@/store/slices/booking'
-import { checkBooking } from '@/lib/checkBooking'
+import { useTranslations as useIntlTranslations } from 'next-intl'
 import RowBedAccommodationSelector from '../../[country]/[city]/[category]/[name]/(service-detail)/[listingExperiencesDetail]/RenderSideBar/RowBedAccommodationSelector'
 import GuestsInput from '../../[country]/[city]/[category]/[name]/(service-detail)/[listingExperiencesDetail]/GuestsInput'
 import LineItemsBreakdown from '../../[country]/[city]/[category]/[name]/(service-detail)/[listingExperiencesDetail]/LineItems/LineItemsBreakdown'
@@ -33,24 +34,15 @@ const CheckOutPagePageMain: FC<CheckOutPagePageMainProps> = ({
 }) => {
 	const t = useTranslations('Jan03_CheckoutPage_q8m3')
 	const searchParams = useSearchParams()
+	const tPayment = useIntlTranslations('Payment')
 	const dispatch = useAppDispatch()
-	const Router = useRouter()
-	const step = searchParams.get('step')
+	const router = useRouter()
 	const bookingId = searchParams.get('bookingId')
-	const [startDate, setStartDate] = useState<Date | null>(
-		new Date('2023/02/06'),
-	)
-	const [endDate, setEndDate] = useState<Date | null>(new Date('2023/02/23'))
 	const booking = useAppSelector(selectBooking)
-	const { guests, lineItems, accommodation, transport, bookOwnHotels, tour } =
-		booking
-
-	useEffect(() => {
-		;(async () => {
-			const hanleCheckingBookning = await checkBooking()
-			console.log('hanleCheckingBookning', hanleCheckingBookning)
-		})()
-	}, [])
+	const promoRemoved = useAppSelector(selectPromoRemoved)
+	const { guests, lineItems, accommodation, bookOwnHotels } = booking
+	// Last date saved on the server, so only real changes are sent
+	const savedDate = useRef<string | null>(null)
 
 	const fistImage = booking?.tour?.images?.[0]?.url || ''
 	const service = booking?.tour
@@ -58,24 +50,42 @@ const CheckOutPagePageMain: FC<CheckOutPagePageMainProps> = ({
 	useEffect(() => {
 		;(async () => {
 			try {
-				const bookingData = await getFetchDataFromApi(
+				const bookingData: any = await getFetchDataFromApi(
 					'/api/booking/get/booking-data?',
 					{
 						bookingId: bookingId,
 					},
 				)
-				if (bookingData) dispatch(setBooking(bookingData))
+				if (!bookingData?.id) return
+				// Already paid: show the confirmation instead of a second payment
+				if (bookingData.bookingState === 'paid') {
+					router.replace(`/pay-done/payment?bookingId=${bookingData.id}` as any)
+					return
+				}
+				savedDate.current = JSON.stringify(bookingData.selectedDate ?? null)
+				dispatch(setBooking(bookingData))
 			} catch (error) {
 				console.error(error)
 			}
 		})()
-	}, [bookingId])
+	}, [bookingId, dispatch, router])
 
-	const handleGuestsChange = (data: any) =>
-		dispatch(recalculatePrice({ tour, changes: { guests: data?.guests } }))
+	// Every change is saved on the server, which re-prices the booking
+	// (the payment amount then follows automatically)
+	const save = (changes: Record<string, any>) =>
+		booking.id && dispatch(saveBookingChanges({ bookingId: booking.id, changes }))
 
-	const handleAccomodationChange = (accommodation: any) =>
-		dispatch(recalculatePrice({ tour, changes: { accommodation } }))
+	const handleGuestsChange = (data: any) => save({ guests: data?.guests })
+	const handleAccomodationChange = (accommodation: any) => save({ accommodation })
+	const handleBookOwnHotels = () => save({ bookOwnHotels: !bookOwnHotels })
+
+	// The date modal updates the store; save the new date
+	useEffect(() => {
+		const date = JSON.stringify(booking.selectedDate ?? null)
+		if (!booking.id || savedDate.current === null || date === savedDate.current) return
+		savedDate.current = date
+		save({ selectedDate: booking.selectedDate })
+	}, [booking.selectedDate]) // eslint-disable-line react-hooks/exhaustive-deps
 
 	const renderSidebar = () => {
 		return (
@@ -107,8 +117,6 @@ const CheckOutPagePageMain: FC<CheckOutPagePageMainProps> = ({
 			</div>
 		)
 	}
-
-	const handleBookOwnHotels = () => dispatch(setBookOwnHotels(!bookOwnHotels))
 
 	const isNotInitiated = Object.keys(accommodation ?? {}).length > 0
 
@@ -208,8 +216,14 @@ const CheckOutPagePageMain: FC<CheckOutPagePageMainProps> = ({
 					<div>
 						<h3 className="text-2xl font-semibold">{t('Pay_With')}</h3>
 						<div className="my-5 w-14 border-b border-neutral-200 dark:border-neutral-700"></div>
-						<div className="mt-6">
-							<CustomStripeForm booking={booking} />
+						<div className="mt-6 space-y-6">
+							{promoRemoved && (
+								<p className="rounded-xl bg-amber-50 p-3 text-sm text-amber-800">
+									{tPayment('promo_removed')}
+								</p>
+							)}
+							<PromoCodeForm />
+							<CheckoutPayment booking={booking} />
 						</div>
 					</div>
 				</div>
