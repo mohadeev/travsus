@@ -1,11 +1,5 @@
 {
 	"compilerOptions": {
-		"typeRoots": [
-			"./node_modules/@types",
-			"./types" // Adjust this based on where you placed the file
-			// or
-			// "./src/@types" // Use this if you created the @types directory under src
-		],
 		"target": "es5",
 		"lib": ["dom", "dom.iterable", "esnext"],
 		"allowJs": true,
@@ -30,6 +24,6 @@
 			"@/*": ["./src/*"]
 		}
 	},
-	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/utils/email/sendMail.ts", "src/utils/email/.template.ts", "src/app/CardImage.jsx"],
+	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
 	"exclude": ["node_modules"]
 }

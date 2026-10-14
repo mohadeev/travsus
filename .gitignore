@@ -25,9 +25,9 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# local env files
-#  .env.local
-# .env
+# env files: secrets live in .env.local (never committed); the example is kept
+.env*
+!.env.local.example
 
 # vercel
 .vercel
@@ -35,12 +35,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-
-.vercel
-.env*
-.env
-.env.local.env.local
-.env.local
 
 # Local database backups (may contain customer data)
 scripts/db/backups/

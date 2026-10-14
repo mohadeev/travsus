@@ -3,13 +3,13 @@
 //   ?view=report&days=7     → everything for the last N days (1, 7, 30, 90)
 //   ?view=visit&id=<id>     → one visit, step by step
 import { NextResponse, type NextRequest } from 'next/server'
-import { isAnalyticsOwner } from '@/lib/analytics/owner'
+import { isOwner } from '@/lib/admin/owner'
 import { liveVisitors, report, visitDetail } from '@/lib/analytics/report'
 
 export const dynamic = 'force-dynamic'
 
 export async function GET(req: NextRequest) {
-	if (!(await isAnalyticsOwner())) return new NextResponse(null, { status: 404 })
+	if (!(await isOwner())) return new NextResponse(null, { status: 404 })
 	const params = req.nextUrl.searchParams
 	const view = params.get('view')
 	const headers = { 'Cache-Control': 'no-store' }
