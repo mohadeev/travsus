@@ -23,7 +23,7 @@ export default async function SavedToursPage({ params }: { params: { locale: str
 
 	return (
 		<div>
-			<h1 className="text-3xl font-bold tracking-tight sm:text-5xl">{t('nav_saved')}</h1>
+			<h1 className="text-2xl font-bold tracking-tight sm:text-5xl">{t('nav_saved')}</h1>
 			<p className="mt-2 text-neutral-500">{t('saved_count', { count: saved.length })}</p>
 
 			{saved.length === 0 ? (

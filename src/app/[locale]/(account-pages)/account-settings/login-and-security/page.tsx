@@ -11,7 +11,7 @@ export default function LoginAndSecurityPage() {
 
 	return (
 		<div>
-			<h1 className="text-3xl font-bold tracking-tight sm:text-5xl">{t('nav_security')}</h1>
+			<h1 className="text-2xl font-bold tracking-tight sm:text-5xl">{t('nav_security')}</h1>
 			<p className="mt-2 max-w-2xl text-neutral-500">{t('security_text')}</p>
 
 			<div className="mt-8 overflow-hidden rounded-3xl ring-1 ring-neutral-200 sm:mt-10 dark:ring-neutral-800">

@@ -66,7 +66,7 @@ export default function PersonalInfoPage() {
 
 	return (
 		<div className="max-w-2xl">
-			<h1 className="text-3xl font-bold tracking-tight sm:text-5xl">{t('nav_personal')}</h1>
+			<h1 className="text-2xl font-bold tracking-tight sm:text-5xl">{t('nav_personal')}</h1>
 			<p className="mt-2 text-neutral-500">{t('personal_text')}</p>
 
 			<form onSubmit={save} className="mt-10 space-y-5">

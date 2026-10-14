@@ -91,7 +91,7 @@ export default function PaymentsPage() {
 
 	return (
 		<div className="max-w-3xl">
-			<h1 className="text-3xl font-bold tracking-tight sm:text-5xl">{t('nav_payments')}</h1>
+			<h1 className="text-2xl font-bold tracking-tight sm:text-5xl">{t('nav_payments')}</h1>
 			<p className="mt-2 text-neutral-500">{t('payments_text')}</p>
 
 			{/* Saved cards */}

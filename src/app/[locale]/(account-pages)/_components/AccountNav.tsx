@@ -12,7 +12,7 @@ export default function AccountNav() {
 	const current = pathname.replace(`/${locale}`, '') || '/'
 
 	return (
-		<nav aria-label={t('menu')} className="lg:sticky lg:top-24 lg:self-start">
+		<nav aria-label={t('menu')} className="min-w-0 lg:sticky lg:top-24 lg:self-start">
 			<ul className="-mx-5 flex gap-2 overflow-x-auto px-5 pb-1 [scrollbar-width:none] lg:mx-0 lg:flex-col lg:gap-1 lg:overflow-visible lg:px-0">
 				{ACCOUNT_NAV.map(([href, label, Icon]) => {
 					const active = current === href

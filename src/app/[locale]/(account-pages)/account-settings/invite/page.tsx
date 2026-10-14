@@ -26,7 +26,7 @@ export default async function InvitePage({ params }: { params: { locale: string 
 
 	return (
 		<div className="max-w-3xl">
-			<h1 className="text-3xl font-bold tracking-tight sm:text-5xl">{t('nav_invite')}</h1>
+			<h1 className="text-2xl font-bold tracking-tight sm:text-5xl">{t('nav_invite')}</h1>
 			<p className="mt-2 text-neutral-500">{t('invite_text')}</p>
 
 			{link ? (

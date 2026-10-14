@@ -79,7 +79,7 @@ export default async function BookingsPage({ params, searchParams }: PageProps) 
 
 	return (
 		<div>
-			<h1 className="text-3xl font-bold tracking-tight sm:text-5xl">{t('title')}</h1>
+			<h1 className="text-2xl font-bold tracking-tight sm:text-5xl">{t('title')}</h1>
 			<p className="mt-2 text-neutral-500">{t('subtitle')}</p>
 
 			<nav aria-label={t('title')} className="mt-8 flex gap-2 overflow-x-auto [scrollbar-width:none]">

@@ -44,7 +44,7 @@ export default function DeleteAccountPage() {
 
 	return (
 		<div className="max-w-2xl">
-			<h1 className="text-3xl font-bold tracking-tight sm:text-5xl">{t('delete_title')}</h1>
+			<h1 className="text-2xl font-bold tracking-tight sm:text-5xl">{t('delete_title')}</h1>
 			<p className="mt-2 text-neutral-500">{t('delete_page_text')}</p>
 
 			<div className="mt-10 rounded-3xl border border-red-200 bg-red-50 p-6 dark:border-red-900 dark:bg-red-950/40">
