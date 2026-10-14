@@ -1,9 +1,12 @@
 'use client'
 // Account menu in the header: avatar button, then account links or sign in/up.
+// Signed in or not comes from Clerk itself (the Redux user, loaded a moment
+// later, only adds the TRAVSUS profile photo and name).
 import { Fragment } from 'react'
 import Link from 'next/link'
 import { Popover, Transition } from '@headlessui/react'
-import { useClerk } from '@clerk/nextjs'
+import { useClerk, useUser } from '@clerk/nextjs'
+import { useLocale } from 'next-intl'
 import {
 	CalendarCheck,
 	Heart,
@@ -16,7 +19,7 @@ import {
 } from 'lucide-react'
 import Avatar from '@/shared/Avatar'
 import { useAppSelector } from '@/store/hooks'
-import { selectIsLoggedIn, selectUser } from '@/store/slices/user'
+import { selectUser } from '@/store/slices/user'
 import { useTranslations } from '@/lib/i18n'
 import { ACCOUNT_LINKS } from '@/constants/siteNav'
 
@@ -25,11 +28,15 @@ const itemClass =
 
 export default function AvatarDropdown({ className = '' }: { className?: string }) {
 	const t = useTranslations('AvatarDropdown')
-	const isLoggedIn = useAppSelector(selectIsLoggedIn)
+	const locale = useLocale()
+	const { isLoaded, isSignedIn, user: clerkUser } = useUser()
 	const user = useAppSelector(selectUser)
 	const { openSignIn, openSignUp, signOut } = useClerk()
-	const imageUrl = user?.profileImage?.url
-	const name = [user?.accountData?.firstname, user?.accountData?.lastname].filter(Boolean).join(' ')
+	const isLoggedIn = isLoaded && !!isSignedIn
+	const email = clerkUser?.primaryEmailAddress?.emailAddress ?? user?.email
+	const imageUrl = user?.profileImage?.url || clerkUser?.imageUrl
+	const name =
+		[user?.accountData?.firstname, user?.accountData?.lastname].filter(Boolean).join(' ') || clerkUser?.fullName || ''
 
 	// After signing in, stay on this page
 	const returnHere = () => ({ forceRedirectUrl: window.location.href })
@@ -69,10 +76,10 @@ export default function AvatarDropdown({ className = '' }: { className?: string 
 							{isLoggedIn ? (
 								<>
 									<div className="flex items-center gap-3 px-3 py-3">
-										<Avatar imgUrl={imageUrl} sizeClass="h-10 w-10" userName={name || 'T'} />
+										<Avatar imgUrl={imageUrl} sizeClass="h-10 w-10" userName={name || email || 'T'} />
 										<div className="min-w-0">
-											<p className="truncate text-sm font-semibold">{name || user?.email}</p>
-											<p className="truncate text-xs text-neutral-500">{user?.email}</p>
+											<p className="truncate text-sm font-semibold">{name || email}</p>
+											{name && <p className="truncate text-xs text-neutral-500">{email}</p>}
 										</div>
 									</div>
 									<div className="my-1 h-px bg-neutral-100 dark:bg-neutral-800" />
@@ -83,7 +90,14 @@ export default function AvatarDropdown({ className = '' }: { className?: string 
 										</Link>
 									))}
 									<div className="my-1 h-px bg-neutral-100 dark:bg-neutral-800" />
-									<button type="button" onClick={() => signOut({ redirectUrl: '/' })} className={itemClass}>
+									<button
+										type="button"
+										onClick={() => {
+											close()
+											signOut({ redirectUrl: `/${locale}` })
+										}}
+										className={itemClass}
+									>
 										<LogOut className="h-[18px] w-[18px] text-neutral-500" />
 										{t('log_out')}
 									</button>

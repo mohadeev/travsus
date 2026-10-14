@@ -22,7 +22,7 @@ const NavMobile: React.FC<NavMobileProps> = ({ onClickClose }) => {
 	const tAccount = useTranslations('AvatarDropdown')
 	const locale = useLocale()
 	const { isSignedIn } = useAuth()
-	const { openSignIn, openSignUp } = useClerk()
+	const { openSignIn, openSignUp, signOut } = useClerk()
 
 	return (
 		<div className="flex h-screen w-full flex-col overflow-y-auto bg-white text-neutral-950 dark:bg-neutral-950 dark:text-white">
@@ -80,6 +80,16 @@ const NavMobile: React.FC<NavMobileProps> = ({ onClickClose }) => {
 							<Row href={ACCOUNT_LINKS.account} onClick={onClickClose}>{tAccount('my_account')}</Row>
 							<Row href={ACCOUNT_LINKS.bookings} onClick={onClickClose}>{tAccount('my_bookings')}</Row>
 							<Row href={ACCOUNT_LINKS.saved} onClick={onClickClose}>{t('saved')}</Row>
+							<button
+								type="button"
+								onClick={() => {
+									onClickClose?.()
+									signOut({ redirectUrl: `/${locale}` })
+								}}
+								className={`${rowClass} w-full text-left`}
+							>
+								{tAccount('log_out')}
+							</button>
 						</>
 					) : (
 						<div className="grid grid-cols-2 gap-2 px-2">

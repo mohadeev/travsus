@@ -61,6 +61,13 @@ const nextConfig = {
 				port: '',
 				pathname: '/**',
 			},
+			// Profile photos from Clerk (Google sign-in etc.)
+			{
+				protocol: 'https',
+				hostname: 'img.clerk.com',
+				port: '',
+				pathname: '/**',
+			},
 			{
 				protocol: 'https',
 				hostname: 'res.cloudinary.com',
