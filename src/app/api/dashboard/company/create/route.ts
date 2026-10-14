@@ -15,24 +15,18 @@ export async function POST(request: Request) {
 			)
 		}
 
-		// Get request body
-		const body = await request.json()
-
-		// Validate required fields
-		if (!body.name || !body.email) {
-			return NextResponse.json(
-				{ message: 'Company name and email are required' },
-				{ status: 400 },
-			)
+		const body = await request.json().catch(() => ({}))
+		const text = (v: unknown, max: number) => (typeof v === 'string' ? v.trim().slice(0, max) : '')
+		const name = text(body.name, 120)
+		const email = text(body.email, 160).toLowerCase()
+		if (name.length < 2) {
+			return NextResponse.json({ message: 'Please enter the company name.' }, { status: 400 })
 		}
-
-		// Validate company type
-		const validTypes = ['TRAVEL_AGENCY', 'STAY']
-		if (!validTypes.includes(body.type)) {
-			return NextResponse.json(
-				{ message: 'Invalid company type' },
-				{ status: 400 },
-			)
+		if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+			return NextResponse.json({ message: 'Please enter a valid business email.' }, { status: 400 })
+		}
+		if (!['TRAVEL_AGENCY', 'STAY'].includes(body.type)) {
+			return NextResponse.json({ message: 'Please choose what kind of business it is.' }, { status: 400 })
 		}
 
 		// Check if this is the first company for the user
@@ -51,12 +45,13 @@ export async function POST(request: Request) {
 				.from(T.businesses)
 				.insert(
 					withMeta({
-						name: body.name,
-						email: body.email,
-						phoneNumber: body.phoneNumber || '',
-						address: body.address || null,
-						country: body.country || null,
-						registrationNumber: body.registrationNumber || null,
+						name,
+						email,
+						adminName: text(body.adminName, 120) || null,
+						phoneNumber: text(body.phoneNumber, 40),
+						address: text(body.address, 300) || null,
+						country: text(body.country, 80) || null,
+						registrationNumber: text(body.registrationNumber, 60) || null,
 						type: body.type,
 						isActive,
 						creatorId: userData.id,

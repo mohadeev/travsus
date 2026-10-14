@@ -1,303 +1,173 @@
 'use client'
-
-import type React from 'react'
-
-import { useState } from 'react'
+// Create a company: what kind of business, then its details. On success the
+// dashboard opens with the new company.
+import { useMemo, useState, type FormEvent, type ReactNode } from 'react'
 import { useRouter } from 'next/navigation'
-import {
-	Building2,
-	Mail,
-	Phone,
-	MapPin,
-	Globe,
-	FileText,
-	Home,
-	Plane,
-} from 'lucide-react'
+import { useLocale } from 'next-intl'
+import { Building2, Check, FileText, Globe, Hotel, Loader2, Mail, MapPin, Phone, Plane, User } from 'lucide-react'
 
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import { toast } from '@/components/ui/use-toast'
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
-import {
-	Card,
-	CardContent,
-	CardDescription,
-	CardHeader,
-	CardTitle,
-} from '@/components/ui/card'
+const TYPES = [
+	['TRAVEL_AGENCY', Plane, 'Tour operator / travel agency', 'You run tours, day trips or multi-day itineraries.'],
+	['STAY', Hotel, 'Hotel / stay', 'You offer rooms, riads, camps or other places to stay.'],
+] as const
+
+/** Every country name in English, A–Z (from the browser's own list). */
+function useCountries() {
+	return useMemo(() => {
+		const names = new Intl.DisplayNames(['en'], { type: 'region' })
+		const list: string[] = []
+		for (let a = 65; a <= 90; a++)
+			for (let b = 65; b <= 90; b++) {
+				const code = String.fromCharCode(a, b)
+				const name = names.of(code)
+				if (name && name !== code && !/Unknown|Pseudo|Outlying|European Union|Eurozone|United Nations/.test(name)) list.push(name)
+			}
+		return Array.from(new Set(list)).sort((x, y) => x.localeCompare(y))
+	}, [])
+}
+
+const input =
+	'h-12 w-full rounded-2xl border-0 bg-neutral-100 pl-11 pr-4 text-base ring-1 ring-transparent transition placeholder:text-neutral-400 focus:bg-white focus:outline-none focus:ring-neutral-950 dark:bg-neutral-900 dark:focus:bg-neutral-950 dark:focus:ring-white'
+
+function Field({ label, icon: Icon, hint, children }: { label: string; icon: typeof Mail; hint?: string; children: ReactNode }) {
+	return (
+		<label className="block">
+			<span className="mb-1.5 block text-sm font-medium">{label}</span>
+			<span className="relative block">
+				<Icon className="pointer-events-none absolute left-4 top-[15px] h-[18px] w-[18px] text-neutral-400" />
+				{children}
+			</span>
+			{hint && <span className="mt-1.5 block text-xs text-neutral-500">{hint}</span>}
+		</label>
+	)
+}
 
 export function CreateCompanyForm() {
-	const [isLoading, setIsLoading] = useState(false)
-	const [formData, setFormData] = useState({
-		name: '',
-		email: '',
-		phoneNumber: '',
-		address: '',
-		country: '',
-		registrationNumber: '',
-		type: 'TRAVEL_AGENCY', // Default to travel agency
-	})
 	const router = useRouter()
+	const locale = useLocale()
+	const countries = useCountries()
+	const [type, setType] = useState<string>('TRAVEL_AGENCY')
+	const [busy, setBusy] = useState(false)
+	const [error, setError] = useState('')
 
-	const handleChange = (
-		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-	) => {
-		const { name, value } = e.target
-		setFormData((prev) => ({ ...prev, [name]: value }))
-	}
-
-	const handleTypeChange = (value: string) => {
-		setFormData((prev) => ({ ...prev, type: value }))
-	}
-
-	const handleSubmit = async (e: React.FormEvent) => {
+	async function submit(e: FormEvent<HTMLFormElement>) {
 		e.preventDefault()
-
-		if (!formData.name || !formData.email) {
-			toast({
-				title: 'Error',
-				description: 'Company name and email are required',
-				variant: 'destructive',
-			})
+		const form = Object.fromEntries(new FormData(e.currentTarget)) as Record<string, string>
+		setBusy(true)
+		setError('')
+		const res = await fetch('/api/dashboard/company/create', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({ ...form, type }),
+		}).catch(() => null)
+		const data = await res?.json().catch(() => null)
+		if (res?.ok) {
+			router.push(`/${locale}/dashboard` as any)
+			router.refresh()
 			return
 		}
-
-		try {
-			setIsLoading(true)
-
-			const response = await fetch('/api/dashboard/company/create', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify(formData),
-			})
-
-			if (!response.ok) {
-				throw new Error('Failed to create company')
-			}
-
-			const data = await response.json()
-
-			toast({
-				title: 'Success',
-				description: 'Company created successfully',
-			})
-
-			// Redirect to dashboard with the new company
-			router.push(`/dashboard?company=${data.company.id}`)
-		} catch (error) {
-			console.error('Error creating company:', error)
-			toast({
-				title: 'Error',
-				description: 'Failed to create company. Please try again.',
-				variant: 'destructive',
-			})
-		} finally {
-			setIsLoading(false)
-		}
+		setError(data?.message || 'Something went wrong. Please try again.')
+		setBusy(false)
 	}
 
 	return (
-		<form onSubmit={handleSubmit} className="mx-auto w-full max-w-md space-y-6">
-			<Card>
-				<CardHeader className="pb-4">
-					<div className="flex items-center space-x-2">
-						<Building2 className="h-5 w-5 text-slate-500" />
-						<CardTitle className="text-xl">Company Information</CardTitle>
-					</div>
-					<CardDescription>
-						Basic information about your company that will appear on invoices
-						and your profile.
-					</CardDescription>
-				</CardHeader>
-				<CardContent className="space-y-6">
-					{/* Company Type Selection */}
-					<div className="space-y-3">
-						<Label className="text-base">Company Type</Label>
-						<RadioGroup
-							defaultValue={formData.type}
-							value={formData.type}
-							onValueChange={handleTypeChange}
-							className="grid grid-cols-1 gap-4 md:grid-cols-2"
-						>
-							<div className="flex items-center space-x-2">
-								<RadioGroupItem
-									value="TRAVEL_AGENCY"
-									id="travel_agency"
-									className="peer sr-only"
-								/>
-								<Label
-									htmlFor="travel_agency"
-									className="border-muted bg-popover hover:bg-accent hover:text-accent-foreground flex cursor-pointer flex-col items-center justify-between rounded-md border-2 p-4 peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
-								>
-									<Plane className="mb-3 h-6 w-6" />
-									<div className="text-center">
-										<p className="font-medium">Travel Agency</p>
-										<p className="text-muted-foreground text-sm">
-											For tour operators and travel agencies
-										</p>
-									</div>
-								</Label>
-							</div>
-							<div className="flex items-center space-x-2">
-								<RadioGroupItem
-									value="STAY"
-									id="stay"
-									className="peer sr-only"
-								/>
-								<Label
-									htmlFor="stay"
-									className="border-muted bg-popover hover:bg-accent hover:text-accent-foreground flex cursor-pointer flex-col items-center justify-between rounded-md border-2 p-4 peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
-								>
-									<Home className="mb-3 h-6 w-6" />
-									<div className="text-center">
-										<p className="font-medium">Hotel / Stay</p>
-										<p className="text-muted-foreground text-sm">
-											For hotels, houses and other accommodations
-										</p>
-									</div>
-								</Label>
-							</div>
-						</RadioGroup>
-					</div>
+		<form onSubmit={submit} className="space-y-10">
+			{/* Kind of business */}
+			<section>
+				<h2 className="text-lg font-bold tracking-tight">What kind of business is it?</h2>
+				<div className="mt-4 grid gap-3 sm:grid-cols-2" role="radiogroup" aria-label="Company type">
+					{TYPES.map(([value, Icon, title, text]) => {
+						const selected = type === value
+						return (
+							<button
+								key={value}
+								type="button"
+								role="radio"
+								aria-checked={selected}
+								onClick={() => setType(value)}
+								className={`relative flex items-start gap-4 rounded-3xl p-5 text-left transition ${selected ? 'bg-neutral-950 text-white dark:bg-white dark:text-neutral-950' : 'bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-900 dark:hover:bg-neutral-800'}`}
+							>
+								<span className={`grid h-12 w-12 shrink-0 place-items-center rounded-2xl ${selected ? 'bg-white/15 dark:bg-neutral-950/10' : 'bg-white dark:bg-neutral-950'}`}>
+									<Icon className="h-6 w-6" />
+								</span>
+								<span className="min-w-0 pr-6">
+									<span className="block font-semibold">{title}</span>
+									<span className={`mt-1 block text-sm ${selected ? 'opacity-70' : 'text-neutral-500'}`}>{text}</span>
+								</span>
+								{selected && (
+									<span className="absolute right-4 top-4 grid h-6 w-6 place-items-center rounded-full bg-white text-neutral-950 dark:bg-neutral-950 dark:text-white">
+										<Check className="h-4 w-4" strokeWidth={3} />
+									</span>
+								)}
+							</button>
+						)
+					})}
+				</div>
+			</section>
 
-					<div>
-						<Label htmlFor="name" className="text-base">
-							Company Name *
-						</Label>
-						<div className="relative mt-1">
-							<Building2 className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 transform text-gray-400" />
-							<Input
-								id="name"
-								name="name"
-								value={formData.name}
-								onChange={handleChange}
-								required
-								className="h-12 pl-10"
-								placeholder="Enter company name"
-							/>
-						</div>
-					</div>
+			{/* Company */}
+			<section className="space-y-5">
+				<h2 className="text-lg font-bold tracking-tight">Company</h2>
+				<Field label="Company name" icon={Building2}>
+					<input name="name" required minLength={2} maxLength={120} autoComplete="organization" placeholder="e.g. Sahara Trails" className={input} />
+				</Field>
+				<div className="grid gap-5 sm:grid-cols-2">
+					<Field label="Country" icon={Globe}>
+						<input name="country" list="company-countries" maxLength={80} autoComplete="country-name" placeholder="Start typing…" className={input} />
+						<datalist id="company-countries">
+							{countries.map((c) => (
+								<option key={c} value={c} />
+							))}
+						</datalist>
+					</Field>
+					<Field label="Registration number" icon={FileText} hint="Optional. Shown on invoices.">
+						<input name="registrationNumber" maxLength={60} placeholder="Company registration no." className={input} />
+					</Field>
+				</div>
+				<Field label="Address" icon={MapPin}>
+					<input name="address" maxLength={300} autoComplete="street-address" placeholder="Street, city, postcode" className={input} />
+				</Field>
+			</section>
 
-					<div>
-						<Label htmlFor="email" className="text-base">
-							Email Address *
-						</Label>
-						<div className="relative mt-1">
-							<Mail className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 transform text-gray-400" />
-							<Input
-								id="email"
-								name="email"
-								type="email"
-								value={formData.email}
-								onChange={handleChange}
-								required
-								className="h-12 pl-10"
-								placeholder="Enter email address"
-							/>
-						</div>
-					</div>
+			{/* Contact */}
+			<section className="space-y-5">
+				<h2 className="text-lg font-bold tracking-tight">Contact</h2>
+				<Field label="Contact person" icon={User}>
+					<input name="adminName" maxLength={120} autoComplete="name" placeholder="Who we talk to" className={input} />
+				</Field>
+				<div className="grid gap-5 sm:grid-cols-2">
+					<Field label="Business email" icon={Mail} hint="For booking notifications.">
+						<input name="email" type="email" required maxLength={160} autoComplete="email" placeholder="bookings@company.com" className={input} />
+					</Field>
+					<Field label="Phone" icon={Phone}>
+						<input name="phoneNumber" type="tel" maxLength={40} autoComplete="tel" placeholder="+212 600 000 000" className={input} />
+					</Field>
+				</div>
+			</section>
 
-					<div>
-						<Label htmlFor="phoneNumber" className="text-base">
-							Phone Number
-						</Label>
-						<div className="relative mt-1">
-							<Phone className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 transform text-gray-400" />
-							<Input
-								id="phoneNumber"
-								name="phoneNumber"
-								value={formData.phoneNumber}
-								onChange={handleChange}
-								className="h-12 pl-10"
-								placeholder="Enter phone number"
-							/>
-						</div>
-					</div>
+			{error && (
+				<p role="alert" className="rounded-2xl bg-red-50 px-4 py-3 text-sm text-red-700 dark:bg-red-950/50 dark:text-red-300">
+					{error}
+				</p>
+			)}
 
-					<div>
-						<Label htmlFor="address" className="text-base">
-							Address
-						</Label>
-						<div className="relative mt-1">
-							<MapPin className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
-							<textarea
-								id="address"
-								name="address"
-								value={formData.address}
-								onChange={handleChange}
-								className="border-input bg-background ring-offset-background placeholder:text-muted-foreground focus-visible:ring-ring min-h-[80px] w-full rounded-md border px-3 py-2 pl-10 pt-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-								placeholder="Enter company address"
-							/>
-						</div>
-					</div>
-
-					<div>
-						<Label htmlFor="country" className="text-base">
-							Country
-						</Label>
-						<div className="relative mt-1">
-							<Globe className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 transform text-gray-400" />
-							<Input
-								id="country"
-								name="country"
-								value={formData.country}
-								onChange={handleChange}
-								className="h-12 pl-10"
-								placeholder="Enter country"
-							/>
-						</div>
-					</div>
-
-					<div>
-						<Label htmlFor="registrationNumber" className="text-base">
-							Registration Number
-						</Label>
-						<div className="relative mt-1">
-							<FileText className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 transform text-gray-400" />
-							<Input
-								id="registrationNumber"
-								name="registrationNumber"
-								value={formData.registrationNumber}
-								onChange={handleChange}
-								className="h-12 pl-10"
-								placeholder="Enter registration number (optional)"
-							/>
-						</div>
-						<p className="text-muted-foreground mt-1 text-sm">
-							Your company's registration number (optional).
-						</p>
-					</div>
-				</CardContent>
-			</Card>
-
-			<div className="flex flex-col items-center gap-4 pt-2 sm:flex-row">
-				<Button
-					type="submit"
-					disabled={isLoading}
-					className="h-12 w-full text-base sm:w-auto"
-				>
-					{isLoading ? (
-						<>
-							<div className="mr-2 h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent"></div>
-							Creating...
-						</>
-					) : (
-						'Create Company'
-					)}
-				</Button>
-				<Button
+			<div className="flex flex-col-reverse gap-3 border-t border-neutral-200 pt-6 sm:flex-row sm:justify-end dark:border-neutral-800">
+				<button
 					type="button"
-					variant="outline"
 					onClick={() => router.back()}
-					disabled={isLoading}
-					className="h-12 w-full text-base sm:w-auto"
+					disabled={busy}
+					className="h-12 rounded-full border border-neutral-300 px-7 text-sm font-semibold transition hover:border-neutral-950 disabled:opacity-50 dark:border-neutral-700 dark:hover:border-white"
 				>
 					Cancel
-				</Button>
+				</button>
+				<button
+					type="submit"
+					disabled={busy}
+					className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-neutral-950 px-8 text-sm font-semibold text-white transition hover:bg-neutral-800 disabled:opacity-60 dark:bg-white dark:text-neutral-950"
+				>
+					{busy && <Loader2 className="h-4 w-4 animate-spin" />}
+					Create company
+				</button>
 			</div>
 		</form>
 	)
