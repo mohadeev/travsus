@@ -2625,7 +2625,14 @@
     "failed_title": "お支払いが完了しませんでした",
     "failed_text": "料金は請求されていません。別のお支払い方法でもう一度お試しください。",
     "try_again": "もう一度試す",
-    "missing_booking": "この予約が見つかりませんでした。"
+    "missing_booking": "この予約が見つかりませんでした。",
+    "edit": "変更",
+    "pay_secure": "{amount}を安全に支払う",
+    "redirecting": "安全な支払いページを開いています…",
+    "stripe_note": "Stripeの安全なページでお支払い後、こちらに戻ります。",
+    "methods": "カード、Apple Pay、Google Payがご利用いただけます。",
+    "error_unavailable": "現在オンライン決済をご利用いただけません。しばらくしてからお試しいただくか、お問い合わせください。",
+    "error_signin": "予約のお支払いにはログインしてください。"
   },
   "SiteFooter": {
     "tagline": "ツアーと旅行を数分で予約。",

@@ -2487,7 +2487,14 @@
     "failed_title": "付款未成功",
     "failed_text": "未扣除任何费用。您可以换一种付款方式重试。",
     "try_again": "重试",
-    "missing_booking": "找不到此预订。"
+    "missing_booking": "找不到此预订。",
+    "edit": "修改",
+    "pay_secure": "安全支付 {amount}",
+    "redirecting": "正在打开安全支付…",
+    "stripe_note": "你将在 Stripe 的安全页面完成支付，然后返回这里。",
+    "methods": "支持银行卡、Apple Pay 和 Google Pay。",
+    "error_unavailable": "在线支付暂时不可用，请稍后再试或联系我们。",
+    "error_signin": "请登录后支付你的预订。"
   },
   "SiteFooter": {
     "tagline": "旅游与行程，几分钟即可预订。",

@@ -66,7 +66,12 @@ export async function stripeCustomerFor(user: { id: string; email: string }) {
 	const row = must(
 		await db.from(T.users).select('stripeCustomerId').eq('id', user.id).maybeSingle(),
 	)
-	if (row?.stripeCustomerId) return row.stripeCustomerId as string
+	// Reuse the saved customer while it still exists in this Stripe account
+	// (a key from another account or mode, or a deleted customer, starts fresh)
+	if (row?.stripeCustomerId) {
+		const existing = await stripe.customers.retrieve(row.stripeCustomerId).catch(() => null)
+		if (existing && !(existing as any).deleted) return row.stripeCustomerId as string
+	}
 
 	const customer = await stripe.customers.create({
 		email: user.email,

@@ -3117,7 +3117,14 @@
     "failed_title": "Il pagamento non è andato a buon fine",
     "failed_text": "Non è stato addebitato nulla. Puoi riprovare con un altro metodo di pagamento.",
     "try_again": "Riprova",
-    "missing_booking": "Non abbiamo trovato questa prenotazione."
+    "missing_booking": "Non abbiamo trovato questa prenotazione.",
+    "edit": "Modifica",
+    "pay_secure": "Paga {amount} in sicurezza",
+    "redirecting": "Apertura del pagamento sicuro…",
+    "stripe_note": "Pagherai sulla pagina sicura di Stripe e poi tornerai qui.",
+    "methods": "Accettiamo carte, Apple Pay e Google Pay.",
+    "error_unavailable": "Il pagamento online non è al momento disponibile. Riprova più tardi o contattaci.",
+    "error_signin": "Accedi per pagare la tua prenotazione."
   },
   "SiteFooter": {
     "tagline": "Tour e viaggi, prenotati in pochi minuti.",

@@ -3609,7 +3609,14 @@
     "failed_title": "Ihre Zahlung ist fehlgeschlagen",
     "failed_text": "Es wurde kein Geld abgebucht. Sie können es mit einer anderen Zahlungsmethode erneut versuchen.",
     "try_again": "Erneut versuchen",
-    "missing_booking": "Wir konnten diese Buchung nicht finden."
+    "missing_booking": "Wir konnten diese Buchung nicht finden.",
+    "edit": "Ändern",
+    "pay_secure": "{amount} sicher bezahlen",
+    "redirecting": "Sichere Zahlung wird geöffnet …",
+    "stripe_note": "Sie bezahlen auf der sicheren Seite von Stripe und kehren danach hierher zurück.",
+    "methods": "Karten, Apple Pay und Google Pay werden akzeptiert.",
+    "error_unavailable": "Online-Zahlung ist vorübergehend nicht verfügbar. Bitte später erneut versuchen oder uns kontaktieren.",
+    "error_signin": "Bitte melden Sie sich an, um Ihre Buchung zu bezahlen."
   },
   "SiteFooter": {
     "tagline": "Touren und Reisen, in Minuten gebucht.",

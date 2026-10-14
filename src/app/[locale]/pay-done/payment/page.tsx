@@ -35,8 +35,10 @@ const PayPage: FC<PayPageProps> = () => {
 			const response = await fetch(`/api/bookings/${bookingId}/payment`)
 			const data = await response.json().catch(() => ({}))
 			if (stopped) return
-			setPayment({ status: response.ok ? data.status : 'error' })
-			if (data.status === 'processing' && tries++ < 20) setTimeout(check, 3000)
+			// Just back from Stripe the payment can take a few seconds to show up
+			const pending = ['processing', 'unpaid', 'unknown'].includes(data.status)
+			setPayment({ status: response.ok ? (pending ? 'processing' : data.status) : 'error' })
+			if (pending && tries++ < 20) setTimeout(check, 3000)
 		}
 		check()
 		return () => {

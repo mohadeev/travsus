@@ -3625,7 +3625,14 @@
     "failed_title": "Votre paiement n'a pas abouti",
     "failed_text": "Aucun montant n'a été débité. Vous pouvez réessayer avec un autre moyen de paiement.",
     "try_again": "Réessayer",
-    "missing_booking": "Nous n'avons pas trouvé cette réservation."
+    "missing_booking": "Nous n'avons pas trouvé cette réservation.",
+    "edit": "Modifier",
+    "pay_secure": "Payer {amount} en toute sécurité",
+    "redirecting": "Ouverture du paiement sécurisé…",
+    "stripe_note": "Vous payez sur la page sécurisée de Stripe, puis revenez ici.",
+    "methods": "Cartes, Apple Pay et Google Pay acceptés.",
+    "error_unavailable": "Le paiement en ligne est temporairement indisponible. Réessayez plus tard ou contactez-nous.",
+    "error_signin": "Connectez-vous pour payer votre réservation."
   },
   "SiteFooter": {
     "tagline": "Circuits et voyages, réservés en quelques minutes.",

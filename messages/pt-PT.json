@@ -3059,7 +3059,14 @@
     "failed_title": "O seu pagamento não foi concluído",
     "failed_text": "Não foi cobrado nenhum valor. Pode tentar novamente com outro método de pagamento.",
     "try_again": "Tentar novamente",
-    "missing_booking": "Não encontrámos esta reserva."
+    "missing_booking": "Não encontrámos esta reserva.",
+    "edit": "Editar",
+    "pay_secure": "Pagar {amount} em segurança",
+    "redirecting": "A abrir o pagamento seguro…",
+    "stripe_note": "Vai pagar na página segura da Stripe e depois volta aqui.",
+    "methods": "Aceitamos cartões, Apple Pay e Google Pay.",
+    "error_unavailable": "O pagamento online está temporariamente indisponível. Tente mais tarde ou contacte-nos.",
+    "error_signin": "Inicie sessão para pagar a sua reserva."
   },
   "SiteFooter": {
     "tagline": "Tours e viagens, reservados em minutos.",

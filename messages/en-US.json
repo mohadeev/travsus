@@ -2325,7 +2325,14 @@
     "failed_title": "Your payment didn't go through",
     "failed_text": "No money was taken. You can try again with another payment method.",
     "try_again": "Try again",
-    "missing_booking": "We couldn't find this booking."
+    "missing_booking": "We couldn't find this booking.",
+    "edit": "Edit",
+    "pay_secure": "Pay {amount} securely",
+    "redirecting": "Opening secure payment…",
+    "stripe_note": "You'll pay on Stripe's secure page, then come back here.",
+    "methods": "Cards, Apple Pay and Google Pay accepted.",
+    "error_unavailable": "Online payment is temporarily unavailable. Please try again later or contact us.",
+    "error_signin": "Please sign in to pay for your booking."
   },
   "SiteFooter": {
     "tagline": "Tours and trips, booked in minutes.",

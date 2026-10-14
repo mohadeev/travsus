@@ -1,7 +1,6 @@
 'use client'
 import { PencilSquareIcon } from '@heroicons/react/24/outline'
 import { type FC, useEffect, useRef } from 'react'
-import NcModal from '@/shared/NcModal'
 import ModalSelectDate from '@/components/ModalSelectDate'
 import { formatTripDates, readTripDates } from '@/lib/tripDates'
 import { useLocale } from 'next-intl'
@@ -11,7 +10,6 @@ import CheckoutPayment from './CheckoutPayment'
 import PromoCodeForm from './PromoCode'
 import getFetchDataFromApi from '@/utils/getFetchDataFromApi'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { Suspense } from 'react'
 import { useAppDispatch, useAppSelector } from '@/store/hooks'
 import {
 	saveBookingChanges,
@@ -89,156 +87,99 @@ const CheckOutPagePageMain: FC<CheckOutPagePageMainProps> = ({
 		save({ selectedDate: booking.selectedDate })
 	}, [booking.selectedDate]) // eslint-disable-line react-hooks/exhaustive-deps
 
-	const renderSidebar = () => {
-		return (
-			<div className="flex w-full flex-col space-y-6 border-neutral-200 px-0 dark:border-neutral-700 sm:space-y-8 sm:rounded-2xl sm:p-6 lg:border xl:p-8">
-				<div className="flex flex-col sm:flex-row sm:items-center">
-					<div className="w-full flex-shrink-0 sm:w-40">
-						<div className="aspect-h-3 aspect-w-4 overflow-hidden rounded-2xl sm:aspect-h-4">
-							<Image
-								alt=""
-								fill
-								sizes="200px"
-								src={fistImage || '/placeholder.svg'}
-							/>
-						</div>
-					</div>
-					<div className="space-y-3 py-5 sm:px-5">
-						<div>
-							<span className="mt-1 block text-base font-medium">
-								{service?.name}
-							</span>
-						</div>
-						<span className="block text-sm text-neutral-500 dark:text-neutral-400"></span>
-						<div className="w-10 border-b border-neutral-200 dark:border-neutral-700"></div>
-					</div>
+	// Tour photo, name, price details and total
+	const summary = (
+		<div className="overflow-hidden rounded-3xl ring-1 ring-neutral-200 dark:ring-neutral-800">
+			<div className="flex items-center gap-4 p-4 sm:p-5 lg:block lg:p-0">
+				<div className="relative h-20 w-24 shrink-0 overflow-hidden rounded-2xl bg-neutral-100 lg:h-auto lg:w-full lg:rounded-none lg:aspect-[16/10] dark:bg-neutral-900">
+					{fistImage && <Image alt="" fill sizes="(max-width: 1024px) 96px, 400px" src={fistImage} className="object-cover" />}
 				</div>
-				<div className="flex flex-col space-y-4">
-					<LineItemsBreakdown lineItems={lineItems} />
-				</div>
+				<p className="line-clamp-3 font-semibold leading-snug lg:px-6 lg:pt-5 lg:text-lg">{service?.name}</p>
 			</div>
-		)
-	}
+			<div className="border-t border-neutral-200 p-4 sm:p-5 lg:mx-6 lg:mt-5 lg:px-0 lg:pb-6 dark:border-neutral-800">
+				<p className="mb-3 text-sm font-semibold uppercase tracking-wider text-neutral-500">{t('Booking_Details')}</p>
+				<LineItemsBreakdown lineItems={lineItems} />
+			</div>
+		</div>
+	)
 
-	const isNotInitiated = Object.keys(accommodation ?? {}).length > 0
-
-	const renderMain = () => {
-		return (
-			<Suspense>
-				<div className="flex w-full flex-col space-y-8 border-neutral-200 px-0 dark:border-neutral-700 sm:rounded-2xl sm:border sm:p-6 xl:p-8">
-					<h2 className="text-3xl font-semibold lg:text-4xl">
-						{t('Confirm_And_Payment')}
-					</h2>
-					<div className="border-b border-neutral-200 dark:border-neutral-700"></div>
-					<div>
-						<div>
-							<h3 className="text-2xl font-semibold">{t('Your_Trip')}</h3>
-							<NcModal
-								renderTrigger={(openModal) => (
-									<span
-										onClick={() => openModal()}
-										className="mt-1 block cursor-pointer underline lg:hidden"
-									>
-										{t('View_Booking_Details')}
-									</span>
-								)}
-								renderContent={renderSidebar}
-								modalTitle={t('Booking_Details')}
-							/>
-						</div>
-						<div className="z-10 mt-6 flex flex-col divide-y divide-neutral-200 overflow-hidden rounded-3xl border border-neutral-200 dark:divide-neutral-700 dark:border-neutral-700 sm:flex-row sm:divide-x sm:divide-y-0">
-							<ModalSelectDate
-								duration={booking?.tour?.days?.length || 1}
-								renderChildren={({ openModal }) => (
-									<button
-										onClick={openModal}
-										className="flex flex-1 justify-between space-x-5 p-5 text-left hover:bg-neutral-50 dark:hover:bg-neutral-800"
-										type="button"
-									>
-										<div className="flex flex-col">
-											<span className="text-sm text-neutral-400">
-												{t('Date')}
-											</span>
-											<span className="mt-1.5 text-lg font-semibold">
-												{formatTripDates(...readTripDates(booking?.selectedDate), locale)}
-											</span>
-										</div>
-										<PencilSquareIcon className="text-neutral-6000 h-6 w-6 dark:text-neutral-400" />
-									</button>
-								)}
-							/>
-							<ModalSelectGuests
-								AcommodationAndTransport={
-									<AcommodationAndTransport
-										GuestsInput={
-											<GuestsInput
-												className="flex-1"
-												onChange={handleGuestsChange}
-												defaultValue={guests}
-											/>
-										}
-										RowBedAccommodationSelector={
-											<RowBedAccommodationSelector
-												defaultValue={accommodation}
-												onChange={handleAccomodationChange}
-											/>
-										}
-										bookOwnHotels={bookOwnHotels}
-										handleBookOwnHotels={handleBookOwnHotels}
-									/>
-								}
-								renderChildren={({ openModal }) => (
-									<button
-										type="button"
-										onClick={openModal}
-										className="flex flex-1 justify-between space-x-5 p-5 text-left hover:bg-neutral-50 dark:hover:bg-neutral-800"
-									>
-										<div className="flex flex-col">
-											<span className="text-sm text-neutral-400">
-												{t('Guests')}
-											</span>
-											<span className="mt-1.5 text-lg font-semibold">
-												<span className="line-clamp-1">
-													{t('Guests_Count', {
-														adults: guests?.guestAdults || 0,
-														children: guests?.guestChildren || 0,
-													})}
-												</span>
-											</span>
-										</div>
-										<PencilSquareIcon className="text-neutral-6000 h-6 w-6 dark:text-neutral-400" />
-									</button>
-								)}
-							/>
-						</div>
-					</div>
-					<div>
-						<h3 className="text-2xl font-semibold">{t('Pay_With')}</h3>
-						<div className="my-5 w-14 border-b border-neutral-200 dark:border-neutral-700"></div>
-						<div className="mt-6 space-y-6">
-							{promoRemoved && (
-								<p className="rounded-xl bg-amber-50 p-3 text-sm text-amber-800">
-									{tPayment('promo_removed')}
-								</p>
-							)}
-							<PromoCodeForm />
-							<CheckoutPayment booking={booking} />
-						</div>
-					</div>
-				</div>
-			</Suspense>
-		)
-	}
+	// One editable row of the trip (date, travellers)
+	const tripRow = (label: string, value: string, onClick: () => void) => (
+		<button
+			type="button"
+			onClick={onClick}
+			className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left transition hover:bg-neutral-50 dark:hover:bg-neutral-900"
+		>
+			<span className="min-w-0">
+				<span className="block text-sm text-neutral-500">{label}</span>
+				<span className="mt-0.5 block truncate font-semibold">{value}</span>
+			</span>
+			<span className="inline-flex shrink-0 items-center gap-1.5 text-sm font-semibold underline underline-offset-4">
+				<PencilSquareIcon className="h-4 w-4" />
+				{tPayment('edit')}
+			</span>
+		</button>
+	)
 
 	return (
 		<div className={`nc-CheckOutPagePageMain ${className}`}>
 			{booking?.id ? (
-				<main className="container mb-24 mt-11 flex flex-col-reverse lg:mb-32 lg:flex-row">
-					<div className="w-full lg:w-3/5 lg:pr-10 xl:w-2/3">
-						{renderMain()}
-					</div>
-					<div className="hidden lg:block lg:w-[35%] lg:max-w-[35%]">
-						{renderSidebar()}
+				<main className="mx-auto max-w-6xl px-5 pb-24 pt-8 text-neutral-950 sm:pt-12 lg:pb-32 dark:text-white">
+					<h1 className="text-3xl font-bold tracking-tight sm:text-5xl">{t('Confirm_And_Payment')}</h1>
+
+					<div className="mt-8 grid grid-cols-[minmax(0,1fr)] gap-10 sm:mt-12 lg:grid-cols-[minmax(0,1fr)_400px] lg:gap-14">
+						<div className="space-y-10">
+							{/* Your trip */}
+							<section>
+								<h2 className="text-xl font-bold tracking-tight sm:text-2xl">{t('Your_Trip')}</h2>
+								<div className="mt-4 divide-y divide-neutral-200 overflow-hidden rounded-3xl ring-1 ring-neutral-200 dark:divide-neutral-800 dark:ring-neutral-800">
+									<ModalSelectDate
+										duration={booking?.tour?.days?.length || 1}
+										renderChildren={({ openModal }) =>
+											tripRow(t('Date'), formatTripDates(...readTripDates(booking?.selectedDate), locale), openModal)
+										}
+									/>
+									<ModalSelectGuests
+										AcommodationAndTransport={
+											<AcommodationAndTransport
+												GuestsInput={<GuestsInput className="flex-1" onChange={handleGuestsChange} defaultValue={guests} />}
+												RowBedAccommodationSelector={
+													<RowBedAccommodationSelector defaultValue={accommodation} onChange={handleAccomodationChange} />
+												}
+												bookOwnHotels={bookOwnHotels}
+												handleBookOwnHotels={handleBookOwnHotels}
+											/>
+										}
+										renderChildren={({ openModal }) =>
+											tripRow(
+												t('Guests'),
+												t('Guests_Count', { adults: guests?.guestAdults || 0, children: guests?.guestChildren || 0 }),
+												openModal,
+											)
+										}
+									/>
+								</div>
+							</section>
+
+							{/* Phones: the summary sits here, before paying */}
+							<div className="lg:hidden">{summary}</div>
+
+							{/* Payment */}
+							<section>
+								<h2 className="text-xl font-bold tracking-tight sm:text-2xl">{t('Pay_With')}</h2>
+								<div className="mt-4 space-y-5">
+									{promoRemoved && (
+										<p className="rounded-2xl bg-amber-50 px-4 py-3 text-sm text-amber-800 dark:bg-amber-950/50 dark:text-amber-300">
+											{tPayment('promo_removed')}
+										</p>
+									)}
+									<PromoCodeForm />
+									<CheckoutPayment booking={booking} />
+								</div>
+							</section>
+						</div>
+
+						<aside className="hidden lg:sticky lg:top-24 lg:block lg:self-start">{summary}</aside>
 					</div>
 				</main>
 			) : (
@@ -252,89 +193,14 @@ export default CheckOutPagePageMain
 
 export function CheckoutPageSkeleton() {
 	return (
-		<div className="container mb-24 mt-11 flex flex-col-reverse lg:mb-32 lg:flex-row">
-			{/* Main Content */}
-			<div className="w-full lg:w-3/5 lg:pr-10 xl:w-2/3">
-				<div className="flex w-full flex-col space-y-8 px-0 sm:rounded-2xl sm:p-6 xl:p-8">
-					{/* Title */}
-					<div className="h-10 w-64 animate-pulse rounded-lg bg-gray-200"></div>
-					<div className="border-b border-neutral-200"></div>
-					{/* Trip Section */}
-					<div className="space-y-4">
-						<div className="h-8 w-32 animate-pulse rounded-lg bg-gray-200"></div>
-						{/* Date and Guests Selector */}
-						<div className="mt-6 flex flex-col divide-y divide-neutral-200 overflow-hidden rounded-3xl border border-neutral-200 sm:flex-row sm:divide-x sm:divide-y-0">
-							<div className="flex flex-1 space-x-5 p-5">
-								<div className="flex flex-1 flex-col space-y-2">
-									<div className="h-4 w-16 animate-pulse rounded bg-gray-200"></div>
-									<div className="h-6 w-32 animate-pulse rounded bg-gray-200"></div>
-								</div>
-								<div className="h-6 w-6 animate-pulse rounded bg-gray-200"></div>
-							</div>
-							<div className="flex flex-1 space-x-5 p-5">
-								<div className="flex flex-1 flex-col space-y-2">
-									<div className="h-4 w-16 animate-pulse rounded bg-gray-200"></div>
-									<div className="h-6 w-40 animate-pulse rounded bg-gray-200"></div>
-								</div>
-								<div className="h-6 w-6 animate-pulse rounded bg-gray-200"></div>
-							</div>
-						</div>
-					</div>
-					{/* Payment Section */}
-					<div className="space-y-4">
-						<div className="h-8 w-32 animate-pulse rounded-lg bg-gray-200"></div>
-						<div className="my-5 w-14 border-b border-neutral-200"></div>
-						{/* Payment Form Skeleton */}
-						<div className="space-y-4">
-							<div className="h-12 w-full animate-pulse rounded-lg bg-gray-200"></div>
-							<div className="grid grid-cols-2 gap-4">
-								<div className="h-12 animate-pulse rounded-lg bg-gray-200"></div>
-								<div className="h-12 animate-pulse rounded-lg bg-gray-200"></div>
-							</div>
-							<div className="h-12 w-full animate-pulse rounded-lg bg-gray-200"></div>
-						</div>
-					</div>
+		<div className="mx-auto max-w-6xl animate-pulse px-5 pb-24 pt-8 sm:pt-12">
+			<div className="h-10 w-64 rounded-xl bg-neutral-100 dark:bg-neutral-900" />
+			<div className="mt-8 grid gap-10 sm:mt-12 lg:grid-cols-[minmax(0,1fr)_400px] lg:gap-14">
+				<div className="space-y-6">
+					<div className="h-36 rounded-3xl bg-neutral-100 dark:bg-neutral-900" />
+					<div className="h-14 rounded-full bg-neutral-100 dark:bg-neutral-900" />
 				</div>
-			</div>
-			{/* Sidebar */}
-			<div className="hidden lg:block lg:w-[35%] lg:max-w-[35%]">
-				<div className="flex w-full flex-col space-y-6 px-0 sm:space-y-8 sm:rounded-2xl sm:p-6 xl:p-8">
-					{/* Tour Image and Info */}
-					<div className="flex flex-col sm:flex-row sm:items-center">
-						<div className="w-full flex-shrink-0 sm:w-40">
-							<div className="aspect-h-3 aspect-w-4 animate-pulse overflow-hidden rounded-2xl bg-gray-200"></div>
-						</div>
-						<div className="space-y-3 py-5 sm:px-5">
-							<div className="space-y-2">
-								<div className="h-4 w-32 animate-pulse rounded bg-gray-200"></div>
-								<div className="h-6 w-48 animate-pulse rounded bg-gray-200"></div>
-							</div>
-							<div className="h-4 w-24 animate-pulse rounded bg-gray-200"></div>
-						</div>
-					</div>
-					{/* Price Breakdown */}
-					<div className="space-y-4">
-						{/* Headers */}
-						<div className="grid grid-cols-4 gap-4">
-							<div className="col-span-2 h-4 animate-pulse rounded bg-gray-200"></div>
-							<div className="h-4 animate-pulse rounded bg-gray-200"></div>
-							<div className="h-4 animate-pulse rounded bg-gray-200"></div>
-						</div>
-						{/* Price Items */}
-						{[...Array(3)].map((_, i) => (
-							<div key={i} className="grid grid-cols-4 gap-4">
-								<div className="col-span-2 h-4 animate-pulse rounded bg-gray-200"></div>
-								<div className="h-4 animate-pulse rounded bg-gray-200"></div>
-								<div className="h-4 animate-pulse rounded bg-gray-200"></div>
-							</div>
-						))}
-						{/* Total */}
-						<div className="mt-6 grid grid-cols-2 gap-4">
-							<div className="h-6 animate-pulse rounded bg-gray-200"></div>
-							<div className="h-6 animate-pulse rounded bg-gray-200"></div>
-						</div>
-					</div>
-				</div>
+				<div className="hidden h-96 rounded-3xl bg-neutral-100 lg:block dark:bg-neutral-900" />
 			</div>
 		</div>
 	)
