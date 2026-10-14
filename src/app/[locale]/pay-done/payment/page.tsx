@@ -1,29 +1,29 @@
 'use client'
-import React, { FC, useEffect, useState } from 'react'
+// After paying on Stripe: the result (confirmed / processing / failed), the
+// booking with its reference, what was paid, and what happens next.
+import { FC, useEffect, useState } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
-import { CheckCircle2, Clock, XCircle } from 'lucide-react'
-import ButtonPrimary from '@/shared/ButtonPrimary'
+import { ArrowRight, CalendarDays, Check, Clock, Copy, Mail, MessageCircle, Ticket, Users, X, type LucideIcon } from 'lucide-react'
 import { useAppDispatch, useAppSelector } from '@/store/hooks'
 import getFetchDataFromApi from '@/utils/getFetchDataFromApi'
 import { selectBooking, setBooking } from '@/store/slices/booking'
 import { useSearchParams } from 'next/navigation'
 import { formatTripDates, readTripDates } from '@/lib/tripDates'
+import { PHOTOS } from '@/lib/photos'
 import { useLocale, useTranslations } from 'next-intl'
 import LineItemsBreakdown from '../../[country]/[city]/[category]/[name]/(service-detail)/[listingExperiencesDetail]/LineItems/LineItemsBreakdown'
-import { BookingCard } from '../../checkout/checkout/BookingBreakDownCard'
 
-export interface PayPageProps {}
-
-const PayPage: FC<PayPageProps> = () => {
+const PayPage: FC = () => {
 	const t = useTranslations('Jan03_PayPage_m5k8')
 	const tPay = useTranslations('Payment')
 	const locale = useLocale()
-	const booking = useAppSelector(selectBooking)
-	const { guests } = booking
+	const booking: any = useAppSelector(selectBooking)
 	const searchParams = useSearchParams()
 	const dispatch = useAppDispatch()
 	const bookingId = searchParams.get('bookingId')
 	const [payment, setPayment] = useState<{ status: string } | null>(null)
+	const [copied, setCopied] = useState(false)
 
 	// Ask the server for the result (it also records the payment if Stripe's
 	// webhook hasn't arrived yet). Bank transfers etc. can take a moment.
@@ -46,20 +46,10 @@ const PayPage: FC<PayPageProps> = () => {
 		}
 	}, [bookingId])
 
-	const status = payment?.status
-	const succeeded = status === 'succeeded'
-	const failed =
-		!!status && !succeeded && status !== 'processing' && status !== 'error'
-
 	useEffect(() => {
 		;(async () => {
 			try {
-				const bookingData = await getFetchDataFromApi(
-					'/api/booking/get/booking-data?',
-					{
-						bookingId: bookingId,
-					},
-				)
+				const bookingData = await getFetchDataFromApi('/api/booking/get/booking-data?', { bookingId })
 				if (bookingData) dispatch(setBooking(bookingData))
 			} catch (error) {
 				console.error(error)
@@ -67,129 +57,181 @@ const PayPage: FC<PayPageProps> = () => {
 		})()
 	}, [bookingId, dispatch])
 
-	const renderContent = () => {
-		return (
-			<div className="flex w-full flex-col space-y-10 px-0 sm:rounded-2xl sm:p-6 xl:p-8">
-				{/* Payment result */}
-				{!payment ? (
-					<p className="text-lg text-neutral-500">{tPay('confirming')}</p>
-				) : succeeded ? (
-					<div className="flex items-start gap-4">
-						<CheckCircle2 className="h-10 w-10 shrink-0 text-emerald-600" />
-						<div>
-							<h2 className="text-3xl font-semibold lg:text-4xl">
-								{tPay('succeeded_title')}
-							</h2>
-							<p className="mt-2 text-neutral-600">{tPay('confirmation_email')}</p>
-						</div>
-					</div>
-				) : status === 'processing' ? (
-					<div className="flex items-start gap-4">
-						<Clock className="h-10 w-10 shrink-0 text-amber-500" />
-						<div>
-							<h2 className="text-3xl font-semibold">{tPay('processing_title')}</h2>
-							<p className="mt-2 text-neutral-600">{tPay('processing_text')}</p>
-						</div>
-					</div>
-				) : (
-					<div className="flex items-start gap-4">
-						<XCircle className="h-10 w-10 shrink-0 text-red-600" />
-						<div>
-							<h2 className="text-3xl font-semibold">
-								{status === 'error' ? tPay('missing_booking') : tPay('failed_title')}
-							</h2>
-							{failed && (
-								<>
-									<p className="mt-2 text-neutral-600">{tPay('failed_text')}</p>
-									<Link
-										href={`/checkout/checkout?bookingId=${bookingId}` as any}
-										className="mt-4 inline-flex rounded-full bg-black px-6 py-3 font-semibold text-white hover:bg-neutral-800"
-									>
-										{tPay('try_again')}
-									</Link>
-								</>
-							)}
-						</div>
-					</div>
-				)}
-				<div className="border-b border-neutral-200 dark:border-neutral-700"></div>
-				{/* ------------------------ */}
-				<div className="space-y-6">
-					<h3 className="text-2xl font-semibold">{t('your_booking')}</h3>
-					<div className="flex flex-col sm:flex-row sm:items-center">
-						<BookingCard booking={booking} />
-					</div>
-					<div className="mt-6 flex flex-col divide-y divide-neutral-200 rounded-3xl border border-neutral-200 dark:divide-neutral-700 dark:border-neutral-700 sm:flex-row sm:divide-x sm:divide-y-0">
-						<div className="flex flex-1 space-x-4 p-5">
-							<svg
-								className="dark:text-neutral-6000 h-8 w-8 text-neutral-300"
-								viewBox="0 0 28 28"
-								fill="none"
-								xmlns="http://www.w3.org/2000/svg"
-							>
-								<path
-									d="M9.33333 8.16667V3.5M18.6667 8.16667V3.5M8.16667 12.8333H19.8333M5.83333 24.5H22.1667C23.4553 24.5 24.5 23.4553 24.5 22.1667V8.16667C24.5 6.878 23.4553 5.83333 22.1667 5.83333H5.83333C4.54467 5.83333 3.5 6.878 3.5 8.16667V22.1667C3.5 23.4553 4.54467 24.5 5.83333 24.5Z"
-									stroke="#D1D5DB"
-									strokeWidth="1.5"
-									strokeLinecap="round"
-									strokeLinejoin="round"
-								/>
-							</svg>
-							<div className="flex flex-col">
-								<span className="text-sm text-neutral-400">{t('date')}</span>
-								<span className="mt-1.5 text-lg font-semibold">
-									{formatTripDates(...readTripDates(booking?.selectedDate), locale)}
-								</span>
-							</div>
-						</div>
-						<div className="flex flex-1 space-x-4 p-5">
-							<svg
-								className="dark:text-neutral-6000 h-8 w-8 text-neutral-300"
-								viewBox="0 0 28 28"
-								fill="none"
-								xmlns="http://www.w3.org/2000/svg"
-							>
-								<path
-									d="M14 5.07987C14.8551 4.11105 16.1062 3.5 17.5 3.5C20.0773 3.5 22.1667 5.58934 22.1667 8.16667C22.1667 10.744 20.0773 12.8333 17.5 12.8333C16.1062 12.8333 14.8551 12.2223 14 11.2535M17.5 24.5H3.5V23.3333C3.5 19.4673 6.63401 16.3333 10.5 16.3333C14.366 16.3333 17.5 19.4673 17.5 23.3333V24.5ZM17.5 24.5H24.5V23.3333C24.5 19.4673 21.366 16.3333 17.5 16.3333C16.225 16.3333 15.0296 16.6742 14 17.2698M15.1667 8.16667C15.1667 10.744 13.0773 12.8333 10.5 12.8333C7.92267 12.8333 5.83333 10.744 5.83333 8.16667C5.83333 5.58934 7.92267 3.5 10.5 3.5C13.0773 3.5 15.1667 5.58934 15.1667 8.16667Z"
-									stroke="#D1D5DB"
-									strokeWidth="1.5"
-									strokeLinecap="round"
-									strokeLinejoin="round"
-								/>
-							</svg>
-							<div className="flex flex-col">
-								<span className="text-sm text-neutral-400">{t('guests')}</span>
-								<span className="mt-1.5 text-lg font-semibold">
-									{t('guests_count', {
-										adults: guests?.guestAdults || 0,
-										children: guests?.guestChildren || 0,
-									})}
-								</span>
-							</div>
-						</div>
-					</div>
-				</div>
-				{/* ------------------------ */}
-				<div className="flex w-full justify-start">
-					<div className="p-x-6 w-full max-w-xl">
-						<LineItemsBreakdown lineItems={booking?.lineItems} />
-					</div>
-				</div>
-				{succeeded && (
-					<div>
-						<ButtonPrimary href={'/bookings' as any}>{t('manage_booking')}</ButtonPrimary>
-					</div>
-				)}
-			</div>
-		)
+	const status = payment?.status
+	const state: 'loading' | 'paid' | 'processing' | 'failed' | 'missing' = !payment
+		? 'loading'
+		: status === 'succeeded'
+			? 'paid'
+			: status === 'processing'
+				? 'processing'
+				: status === 'error'
+					? 'missing'
+					: 'failed'
+
+	const tour = booking?.tour
+	const tourName = (tour?.translations ?? []).find((x: any) => x.language === locale)?.name || tour?.name
+	const tourHref = (tour?.slugs ?? []).find((s: any) => s.language === locale)?.slug ?? tour?.slugs?.[0]?.slug
+	const image = tour?.images?.[0]?.url || PHOTOS.sahara
+	const reference: string | undefined = booking?.bookingReference || booking?.orderNumber
+	const email: string | undefined = booking?.customer?.email
+	const guests = booking?.guests
+	const loaded = !!bookingId && booking?.id === bookingId
+
+	const copyRef = async () => {
+		if (!reference) return
+		await navigator.clipboard?.writeText(reference).catch(() => {})
+		setCopied(true)
+		setTimeout(() => setCopied(false), 2000)
 	}
 
+	// The big result at the top
+	const hero = {
+		loading: {
+			icon: <span className="h-10 w-10 animate-spin rounded-full border-4 border-neutral-200 border-t-neutral-950 dark:border-neutral-800 dark:border-t-white" />,
+			ring: 'bg-neutral-100 dark:bg-neutral-900',
+			title: tPay('confirming'),
+			text: '',
+		},
+		paid: {
+			icon: <Check className="h-12 w-12 text-white" strokeWidth={3} />,
+			ring: 'bg-emerald-500 shadow-[0_0_0_12px_rgba(16,185,129,0.15)] motion-safe:animate-[pop_0.5s_ease-out_both]',
+			title: tPay('succeeded_title'),
+			text: tPay('thanks'),
+		},
+		processing: {
+			icon: <Clock className="h-11 w-11 text-white" />,
+			ring: 'bg-amber-500 shadow-[0_0_0_12px_rgba(245,158,11,0.15)]',
+			title: tPay('processing_title'),
+			text: tPay('processing_text'),
+		},
+		failed: {
+			icon: <X className="h-12 w-12 text-white" strokeWidth={3} />,
+			ring: 'bg-red-500 shadow-[0_0_0_12px_rgba(239,68,68,0.15)]',
+			title: tPay('failed_title'),
+			text: tPay('failed_text'),
+		},
+		missing: { icon: <X className="h-12 w-12 text-white" strokeWidth={3} />, ring: 'bg-neutral-400', title: tPay('missing_booking'), text: '' },
+	}[state]
+
+	const steps: [LucideIcon, string][] = [
+		[Mail, email ? tPay('next_email', { email }) : tPay('confirmation_email')],
+		[Ticket, tPay('next_bookings')],
+		[MessageCircle, tPay('next_contact')],
+	]
+	const secondary =
+		'inline-flex h-12 sm:flex-1 items-center justify-center rounded-full border border-neutral-300 px-7 text-sm font-semibold transition hover:border-neutral-950 dark:border-neutral-700 dark:hover:border-white'
+	const primary =
+		'inline-flex h-12 sm:flex-1 items-center justify-center gap-2 rounded-full bg-neutral-950 px-7 text-sm font-semibold text-white transition hover:bg-neutral-800 dark:bg-white dark:text-neutral-950'
+
 	return (
-		<div className={`nc-PayPage`}>
-			<main className="container mb-24 mt-11 lg:mb-32">
-				<div className="mx-auto max-w-4xl">{renderContent()}</div>
-			</main>
-		</div>
+		<main className="mx-auto max-w-3xl px-5 pb-24 pt-10 text-neutral-950 sm:pt-16 dark:text-white">
+			<style>{'@keyframes pop { from { transform: scale(0.4); opacity: 0 } to { transform: scale(1); opacity: 1 } }'}</style>
+
+			{/* Result */}
+			<section className="text-center">
+				<div className={`mx-auto grid h-24 w-24 place-items-center rounded-full ${hero.ring}`}>{hero.icon}</div>
+				<h1 className="mx-auto mt-8 max-w-xl text-3xl font-bold tracking-tight [text-wrap:balance] sm:text-5xl">{hero.title}</h1>
+				{hero.text && <p className="mx-auto mt-3 max-w-md text-lg text-neutral-500">{hero.text}</p>}
+
+				{reference && (state === 'paid' || state === 'processing') && (
+					<button
+						type="button"
+						onClick={copyRef}
+						className="mx-auto mt-6 inline-flex max-w-full items-center gap-3 rounded-full bg-neutral-100 py-2 pl-5 pr-2 text-sm transition hover:bg-neutral-200 dark:bg-neutral-900 dark:hover:bg-neutral-800"
+					>
+						<span className="hidden text-neutral-500 sm:inline">{tPay('booking_ref')}</span>
+						<span className="truncate font-mono font-bold tracking-wide">{reference}</span>
+						<span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-white dark:bg-neutral-950">
+							{copied ? <Check className="h-4 w-4 text-emerald-600" /> : <Copy className="h-4 w-4" />}
+						</span>
+					</button>
+				)}
+
+				{(state === 'failed' || state === 'missing') && (
+					<div className="mx-auto mt-8 flex max-w-md flex-col gap-3 sm:flex-row">
+						{state === 'failed' && (
+							<Link href={`/${locale}/checkout/checkout?bookingId=${bookingId}${booking?.tourId ? `&serviceId=${booking.tourId}` : ''}` as any} className={primary}>
+								{tPay('try_again')}
+								<ArrowRight className="h-4 w-4" />
+							</Link>
+						)}
+						<Link href={`/${locale}/contact` as any} className={secondary}>
+							{tPay('contact')}
+						</Link>
+					</div>
+				)}
+			</section>
+
+			{/* The booking */}
+			{loaded && (
+				<section className="mt-12 overflow-hidden rounded-[28px] ring-1 ring-neutral-200 sm:mt-16 dark:ring-neutral-800">
+					<div className="relative aspect-[16/8] bg-neutral-100 sm:aspect-[16/7] dark:bg-neutral-900">
+						<Image src={image} alt="" fill sizes="(max-width: 768px) 100vw, 768px" className="object-cover" />
+						<div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
+						<div className="absolute inset-x-0 bottom-0 p-5 text-white sm:p-7">
+							<p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/70">{t('your_booking')}</p>
+							<h2 className="mt-1 line-clamp-2 text-xl font-bold leading-snug sm:text-2xl">{tourName}</h2>
+						</div>
+					</div>
+
+					<div className="grid divide-y divide-neutral-200 sm:grid-cols-2 sm:divide-x sm:divide-y-0 dark:divide-neutral-800">
+						{(
+							[
+								[CalendarDays, t('date'), formatTripDates(...readTripDates(booking?.selectedDate), locale)],
+								[Users, t('guests'), t('guests_count', { adults: guests?.guestAdults || 0, children: guests?.guestChildren || 0 })],
+							] as [LucideIcon, string, string][]
+						).map(([Icon, label, value]) => (
+							<div key={label} className="flex items-center gap-4 p-5 sm:p-6">
+								<span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-neutral-100 dark:bg-neutral-900">
+									<Icon className="h-5 w-5" />
+								</span>
+								<span className="min-w-0">
+									<span className="block text-sm text-neutral-500">{label}</span>
+									<span className="mt-0.5 block font-semibold">{value}</span>
+								</span>
+							</div>
+						))}
+					</div>
+
+					<div className="border-t border-neutral-200 bg-neutral-50 p-5 sm:p-7 dark:border-neutral-800 dark:bg-neutral-900/50">
+						<p className="mb-3 text-sm font-semibold uppercase tracking-wider text-neutral-500">{state === 'paid' ? tPay('total_paid') : tPay('total')}</p>
+						<LineItemsBreakdown lineItems={booking?.lineItems ?? []} />
+					</div>
+				</section>
+			)}
+
+			{/* What happens next */}
+			{state === 'paid' && (
+				<section className="mt-12 sm:mt-16">
+					<h2 className="text-2xl font-bold tracking-tight">{tPay('next_title')}</h2>
+					<ol className="mt-6 grid gap-3 sm:grid-cols-3">
+						{steps.map(([Icon, text], i) => (
+							<li key={i} className="rounded-3xl bg-neutral-100 p-5 dark:bg-neutral-900">
+								<span className="grid h-10 w-10 place-items-center rounded-full bg-white dark:bg-neutral-950">
+									<Icon className="h-5 w-5" />
+								</span>
+								<p className="mt-4 text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">{text}</p>
+							</li>
+						))}
+					</ol>
+
+					<div className="mt-10 flex flex-col gap-3 sm:flex-row">
+						<Link href={`/${locale}/bookings` as any} className={primary}>
+							{tPay('my_bookings')}
+							<ArrowRight className="h-4 w-4" />
+						</Link>
+						{tourHref && (
+							<Link href={tourHref as any} className={secondary}>
+								{tPay('view_tour')}
+							</Link>
+						)}
+						<Link href={`/${locale}/search?query=` as any} className={secondary}>
+							{tPay('explore')}
+						</Link>
+					</div>
+				</section>
+			)}
+		</main>
 	)
 }
 

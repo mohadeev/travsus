@@ -3616,7 +3616,19 @@
     "stripe_note": "Sie bezahlen auf der sicheren Seite von Stripe und kehren danach hierher zurück.",
     "methods": "Karten, Apple Pay und Google Pay werden akzeptiert.",
     "error_unavailable": "Online-Zahlung ist vorübergehend nicht verfügbar. Bitte später erneut versuchen oder uns kontaktieren.",
-    "error_signin": "Bitte melden Sie sich an, um Ihre Buchung zu bezahlen."
+    "error_signin": "Bitte melden Sie sich an, um Ihre Buchung zu bezahlen.",
+    "booking_ref": "Buchungsnummer",
+    "total_paid": "Bezahlt",
+    "total": "Gesamt",
+    "next_title": "Wie es weitergeht",
+    "next_email": "Wir haben Ihre Bestätigung und Quittung an {email} gesendet.",
+    "next_bookings": "Ihre Reise ist unter „Meine Buchungen“ gespeichert und jederzeit abrufbar.",
+    "next_contact": "Fragen oder Änderungen? Unser Team ist nur eine Nachricht entfernt.",
+    "my_bookings": "Meine Buchungen ansehen",
+    "view_tour": "Tour ansehen",
+    "explore": "Weitere Touren entdecken",
+    "contact": "Kontakt",
+    "thanks": "Danke, dass Sie mit TRAVSUS reisen."
   },
   "SiteFooter": {
     "tagline": "Touren und Reisen, in Minuten gebucht.",

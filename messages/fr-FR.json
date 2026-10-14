@@ -3632,7 +3632,19 @@
     "stripe_note": "Vous payez sur la page sécurisée de Stripe, puis revenez ici.",
     "methods": "Cartes, Apple Pay et Google Pay acceptés.",
     "error_unavailable": "Le paiement en ligne est temporairement indisponible. Réessayez plus tard ou contactez-nous.",
-    "error_signin": "Connectez-vous pour payer votre réservation."
+    "error_signin": "Connectez-vous pour payer votre réservation.",
+    "booking_ref": "Référence de réservation",
+    "total_paid": "Total payé",
+    "total": "Total",
+    "next_title": "Et ensuite ?",
+    "next_email": "Nous avons envoyé votre confirmation et votre reçu à {email}.",
+    "next_bookings": "Votre voyage est enregistré dans Mes réservations, accessible à tout moment.",
+    "next_contact": "Une question ou un changement ? Notre équipe est à un message de vous.",
+    "my_bookings": "Voir mes réservations",
+    "view_tour": "Voir le circuit",
+    "explore": "Découvrir d'autres circuits",
+    "contact": "Nous contacter",
+    "thanks": "Merci de voyager avec TRAVSUS."
   },
   "SiteFooter": {
     "tagline": "Circuits et voyages, réservés en quelques minutes.",

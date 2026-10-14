@@ -2332,7 +2332,19 @@
     "stripe_note": "You'll pay on Stripe's secure page, then come back here.",
     "methods": "Cards, Apple Pay and Google Pay accepted.",
     "error_unavailable": "Online payment is temporarily unavailable. Please try again later or contact us.",
-    "error_signin": "Please sign in to pay for your booking."
+    "error_signin": "Please sign in to pay for your booking.",
+    "booking_ref": "Booking reference",
+    "total_paid": "Total paid",
+    "total": "Total",
+    "next_title": "What happens next",
+    "next_email": "We've sent your confirmation and receipt to {email}.",
+    "next_bookings": "Your trip is saved in My bookings, where you can see it any time.",
+    "next_contact": "Questions or changes? Our team is one message away.",
+    "my_bookings": "View my bookings",
+    "view_tour": "View the tour",
+    "explore": "Explore more tours",
+    "contact": "Contact us",
+    "thanks": "Thank you for travelling with TRAVSUS."
   },
   "SiteFooter": {
     "tagline": "Tours and trips, booked in minutes.",

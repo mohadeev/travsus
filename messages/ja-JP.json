@@ -2632,7 +2632,19 @@
     "stripe_note": "Stripeの安全なページでお支払い後、こちらに戻ります。",
     "methods": "カード、Apple Pay、Google Payがご利用いただけます。",
     "error_unavailable": "現在オンライン決済をご利用いただけません。しばらくしてからお試しいただくか、お問い合わせください。",
-    "error_signin": "予約のお支払いにはログインしてください。"
+    "error_signin": "予約のお支払いにはログインしてください。",
+    "booking_ref": "予約番号",
+    "total_paid": "お支払い済み",
+    "total": "合計",
+    "next_title": "この後の流れ",
+    "next_email": "予約確認と領収書を {email} にお送りしました。",
+    "next_bookings": "旅行は「予約一覧」に保存され、いつでも確認できます。",
+    "next_contact": "ご質問や変更はお気軽にメッセージでどうぞ。",
+    "my_bookings": "予約一覧を見る",
+    "view_tour": "ツアーを見る",
+    "explore": "ほかのツアーを探す",
+    "contact": "お問い合わせ",
+    "thanks": "TRAVSUSをご利用いただきありがとうございます。"
   },
   "SiteFooter": {
     "tagline": "ツアーと旅行を数分で予約。",

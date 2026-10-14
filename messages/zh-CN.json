@@ -2494,7 +2494,19 @@
     "stripe_note": "你将在 Stripe 的安全页面完成支付，然后返回这里。",
     "methods": "支持银行卡、Apple Pay 和 Google Pay。",
     "error_unavailable": "在线支付暂时不可用，请稍后再试或联系我们。",
-    "error_signin": "请登录后支付你的预订。"
+    "error_signin": "请登录后支付你的预订。",
+    "booking_ref": "预订编号",
+    "total_paid": "已支付",
+    "total": "合计",
+    "next_title": "接下来",
+    "next_email": "我们已将确认信和收据发送至 {email}。",
+    "next_bookings": "行程已保存在「我的预订」中，随时可以查看。",
+    "next_contact": "有问题或需要更改？给我们发个消息即可。",
+    "my_bookings": "查看我的预订",
+    "view_tour": "查看行程",
+    "explore": "探索更多行程",
+    "contact": "联系我们",
+    "thanks": "感谢你选择 TRAVSUS 出行。"
   },
   "SiteFooter": {
     "tagline": "旅游与行程，几分钟即可预订。",

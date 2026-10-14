@@ -2619,7 +2619,19 @@
     "stripe_note": "Stripe의 안전한 페이지에서 결제한 뒤 이곳으로 돌아옵니다.",
     "methods": "카드, Apple Pay, Google Pay를 사용할 수 있습니다.",
     "error_unavailable": "현재 온라인 결제를 이용할 수 없습니다. 잠시 후 다시 시도하거나 문의해 주세요.",
-    "error_signin": "예약을 결제하려면 로그인해 주세요."
+    "error_signin": "예약을 결제하려면 로그인해 주세요.",
+    "booking_ref": "예약 번호",
+    "total_paid": "결제 금액",
+    "total": "합계",
+    "next_title": "다음 단계",
+    "next_email": "예약 확인서와 영수증을 {email}(으)로 보내드렸습니다.",
+    "next_bookings": "여행은 '내 예약'에 저장되어 언제든 확인할 수 있습니다.",
+    "next_contact": "문의나 변경이 필요하면 메시지 한 통이면 됩니다.",
+    "my_bookings": "내 예약 보기",
+    "view_tour": "투어 보기",
+    "explore": "다른 투어 둘러보기",
+    "contact": "문의하기",
+    "thanks": "TRAVSUS와 함께 여행해 주셔서 감사합니다."
   },
   "SiteFooter": {
     "tagline": "투어와 여행, 몇 분 만에 예약.",

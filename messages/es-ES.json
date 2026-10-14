@@ -3555,7 +3555,19 @@
     "stripe_note": "Pagarás en la página segura de Stripe y después volverás aquí.",
     "methods": "Aceptamos tarjetas, Apple Pay y Google Pay.",
     "error_unavailable": "El pago online no está disponible temporalmente. Inténtalo más tarde o contáctanos.",
-    "error_signin": "Inicia sesión para pagar tu reserva."
+    "error_signin": "Inicia sesión para pagar tu reserva.",
+    "booking_ref": "Referencia de la reserva",
+    "total_paid": "Total pagado",
+    "total": "Total",
+    "next_title": "Qué pasa ahora",
+    "next_email": "Hemos enviado tu confirmación y tu recibo a {email}.",
+    "next_bookings": "Tu viaje está guardado en Mis reservas, donde puedes verlo cuando quieras.",
+    "next_contact": "¿Dudas o cambios? Nuestro equipo está a un mensaje de distancia.",
+    "my_bookings": "Ver mis reservas",
+    "view_tour": "Ver el tour",
+    "explore": "Descubrir más tours",
+    "contact": "Contáctanos",
+    "thanks": "Gracias por viajar con TRAVSUS."
   },
   "SiteFooter": {
     "tagline": "Tours y viajes, reservados en minutos.",
