@@ -14,14 +14,17 @@ export default function LoginAndSecurityPage() {
 			<h1 className="text-3xl font-bold tracking-tight sm:text-5xl">{t('nav_security')}</h1>
 			<p className="mt-2 max-w-2xl text-neutral-500">{t('security_text')}</p>
 
-			<div className="mt-10 overflow-hidden rounded-3xl ring-1 ring-neutral-200 dark:ring-neutral-800">
+			<div className="mt-8 overflow-hidden rounded-3xl ring-1 ring-neutral-200 sm:mt-10 dark:ring-neutral-800">
 				<UserProfile
 					routing="hash"
 					appearance={{
 						variables: { colorPrimary: '#0a0a0a', borderRadius: '0.9rem', fontFamily: 'inherit' },
 						elements: {
 							rootBox: 'w-full',
-							cardBox: 'w-full max-w-none shadow-none rounded-none',
+							// Full width of the page, never wider than the screen (phones)
+							cardBox: 'w-full max-w-full shadow-none rounded-none',
+							scrollBox: 'rounded-none',
+							pageScrollBox: 'px-4 py-6 sm:px-8 sm:py-8',
 							navbar: 'hidden md:flex',
 							navbarMobileMenuRow: 'md:hidden',
 						},

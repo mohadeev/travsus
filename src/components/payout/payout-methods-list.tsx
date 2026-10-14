@@ -76,14 +76,14 @@ export default function PayoutMethodsList({
             <div className="p-4 border-t border-gray-200 bg-gray-50">
               <div className="grid gap-3">
                 {method.type === "paypal" ? (
-                  <div className="grid grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                     <div>
                       <p className="text-sm font-medium">Email</p>
                       <p className="text-sm">{method.email}</p>
                     </div>
                   </div>
                 ) : (
-                  <div className="grid grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                     <div>
                       <p className="text-sm font-medium">Account holder</p>
                       <p className="text-sm">{method.accountHolderName}</p>
