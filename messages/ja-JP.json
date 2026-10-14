@@ -3036,7 +3036,8 @@
     "keep_account": "アカウントを残す",
     "delete_button": "アカウントを削除する",
     "saved_removed": "「{name}」を保存したツアーから削除しました。",
-    "undo": "元に戻す"
+    "undo": "元に戻す",
+    "nav_affiliate": "アフィリエイト"
   },
   "Bookings": {
     "title": "予約一覧",
@@ -3078,5 +3079,47 @@
     "error_NOT_SIGNED_IN": "プロモコードを使うにはログインしてください。",
     "error_NOTHING_TO_DISCOUNT": "この予約には割引対象がありません。",
     "error_generic": "問題が発生しました。もう一度お試しください。"
+  },
+  "Affiliate": {
+    "title": "アフィリエイト",
+    "subtitle": "TRAVSUSのツアーをシェアして、予約ごとに報酬を獲得しましょう。",
+    "join_title": "ツアーをシェアして報酬を獲得",
+    "join_text": "アフィリエイトプログラムに参加すると、専用リンクが発行され、そこからの予約ごとに報酬を獲得できます。",
+    "join_cta": "プログラムを見る",
+    "pending_title": "申請を審査中です",
+    "pending_text": "承認され次第メールでお知らせします。その後、リンクと報酬がここに表示されます。",
+    "link_title": "あなたのアフィリエイトリンク",
+    "link_text": "リンクを開いてから{days}日以内に予約されると、報酬が発生します。",
+    "link_tip": "TRAVSUSのどのページでも使えます：リンクに ?ref={code} を追加してください。ツアーページでは、上部にコピー用のリンクが表示されます。",
+    "copy": "コピー",
+    "copied": "コピーしました",
+    "rate_custom": "あなた専用の料率",
+    "rate_next": "あと{count, plural, other {#件}}の予約で{rate}%",
+    "rate_top": "最高料率",
+    "stat_clicks": "クリック数（30日間）",
+    "stat_clicks_total": "合計 {count}",
+    "stat_bookings": "支払い済みの予約",
+    "stat_pending": "保留中",
+    "stat_pending_note": "旅行の実施後に確定",
+    "stat_balance": "残高",
+    "stat_balance_note": "{min}から毎月お支払い",
+    "bookings_title": "あなたの予約",
+    "bookings_empty": "まだ予約はありません。リンクをシェアして始めましょう。",
+    "booked_on": "予約日 {date}",
+    "trip_on": "旅行日 {date}",
+    "status_earned": "確定",
+    "status_pending": "保留中",
+    "status_unpaid": "未払い",
+    "status_cancelled": "キャンセル",
+    "payouts_title": "お支払い",
+    "payouts_text": "残高が{min}に達すると、毎月PayPalまたは銀行振込でお支払いします。",
+    "paid_out_total": "これまでのお支払い：{amount}"
+  },
+  "AffiliateShare": {
+    "label": "あなたのアフィリエイトリンク",
+    "earnings": "報酬を見る",
+    "copy": "リンクをコピー",
+    "copied": "コピーしました",
+    "share": "シェア"
   }
 }

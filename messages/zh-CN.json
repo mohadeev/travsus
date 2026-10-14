@@ -2898,7 +2898,8 @@
     "keep_account": "保留我的账户",
     "delete_button": "删除我的账户",
     "saved_removed": "已将“{name}”从收藏中移除。",
-    "undo": "撤销"
+    "undo": "撤销",
+    "nav_affiliate": "联盟推广"
   },
   "Bookings": {
     "title": "我的预订",
@@ -2940,5 +2941,47 @@
     "error_NOT_SIGNED_IN": "请登录后使用优惠码。",
     "error_NOTHING_TO_DISCOUNT": "此预订没有可优惠的金额。",
     "error_generic": "出了点问题，请重试。"
+  },
+  "Affiliate": {
+    "title": "联盟推广",
+    "subtitle": "分享 TRAVSUS 的行程，每笔预订都能赚取佣金。",
+    "join_title": "分享行程即可赚钱",
+    "join_text": "加入联盟计划，获取专属链接，通过它带来的每笔预订都能赚取佣金。",
+    "join_cta": "了解计划",
+    "pending_title": "您的申请正在审核中",
+    "pending_text": "申请通过后我们会发邮件通知您，届时您的链接和收益将显示在这里。",
+    "link_title": "您的推广链接",
+    "link_text": "任何人打开该链接后 {days} 天内预订，您都能获得佣金。",
+    "link_tip": "适用于所有 TRAVSUS 页面：在链接后加上 ?ref={code}。在行程页面顶部，可直接复制您的链接。",
+    "copy": "复制",
+    "copied": "已复制",
+    "rate_custom": "您的专属费率",
+    "rate_next": "再完成 {count, plural, other {# 笔}}预订即可达到 {rate}%",
+    "rate_top": "最高费率",
+    "stat_clicks": "点击量（30 天）",
+    "stat_clicks_total": "共 {count}",
+    "stat_bookings": "已付款预订",
+    "stat_pending": "待确认",
+    "stat_pending_note": "行程结束后计入收益",
+    "stat_balance": "余额",
+    "stat_balance_note": "满 {min} 每月支付",
+    "bookings_title": "您的预订",
+    "bookings_empty": "暂无预订。分享您的链接开始吧。",
+    "booked_on": "预订于 {date}",
+    "trip_on": "出行 {date}",
+    "status_earned": "已赚取",
+    "status_pending": "待确认",
+    "status_unpaid": "未付款",
+    "status_cancelled": "已取消",
+    "payouts_title": "付款记录",
+    "payouts_text": "余额达到 {min} 后，每月通过 PayPal 或银行转账支付。",
+    "paid_out_total": "累计已付：{amount}"
+  },
+  "AffiliateShare": {
+    "label": "您的推广链接",
+    "earnings": "查看收益",
+    "copy": "复制链接",
+    "copied": "已复制",
+    "share": "分享"
   }
 }

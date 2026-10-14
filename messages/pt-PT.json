@@ -3470,7 +3470,8 @@
     "keep_account": "Manter a conta",
     "delete_button": "Eliminar a minha conta",
     "saved_removed": "Removeu «{name}» dos tours guardados.",
-    "undo": "Anular"
+    "undo": "Anular",
+    "nav_affiliate": "Afiliados"
   },
   "Bookings": {
     "title": "As minhas reservas",
@@ -3512,5 +3513,47 @@
     "error_NOT_SIGNED_IN": "Inicie sessão para usar um código promocional.",
     "error_NOTHING_TO_DISCOUNT": "Não há nada a descontar nesta reserva.",
     "error_generic": "Algo correu mal. Tente novamente."
+  },
+  "Affiliate": {
+    "title": "Afiliados",
+    "subtitle": "Partilhe os tours da TRAVSUS e ganhe uma comissão em cada reserva.",
+    "join_title": "Ganhe a partilhar tours",
+    "join_text": "Junte-se ao programa de afiliados para ter o seu próprio link e ganhar em cada reserva que ele trouxer.",
+    "join_cta": "Conhecer o programa",
+    "pending_title": "O seu pedido está a ser analisado",
+    "pending_text": "Enviaremos um email assim que for aceite. O seu link e os seus ganhos aparecerão aqui.",
+    "link_title": "O seu link de afiliado",
+    "link_text": "Quem o abrir e reservar no prazo de {days} dias dá-lhe uma comissão.",
+    "link_tip": "Funciona em qualquer página da TRAVSUS: adicione ?ref={code} ao link. Nas páginas dos tours, o seu link está pronto a copiar no topo.",
+    "copy": "Copiar",
+    "copied": "Copiado",
+    "rate_custom": "A sua taxa pessoal",
+    "rate_next": "Mais {count, plural, one {# reserva} other {# reservas}} para chegar aos {rate}%",
+    "rate_top": "Taxa máxima",
+    "stat_clicks": "Cliques, 30 dias",
+    "stat_clicks_total": "{count} no total",
+    "stat_bookings": "Reservas pagas",
+    "stat_pending": "Pendente",
+    "stat_pending_note": "Ganho depois de a viagem se realizar",
+    "stat_balance": "Saldo",
+    "stat_balance_note": "Pago mensalmente a partir de {min}",
+    "bookings_title": "As suas reservas",
+    "bookings_empty": "Ainda sem reservas. Partilhe o seu link para começar.",
+    "booked_on": "Reservado a {date}",
+    "trip_on": "viagem a {date}",
+    "status_earned": "Ganho",
+    "status_pending": "Pendente",
+    "status_unpaid": "Não pago",
+    "status_cancelled": "Cancelado",
+    "payouts_title": "Pagamentos",
+    "payouts_text": "Pagos todos os meses por PayPal ou transferência bancária quando o saldo atinge {min}.",
+    "paid_out_total": "Pago até agora: {amount}"
+  },
+  "AffiliateShare": {
+    "label": "O seu link de afiliado",
+    "earnings": "Ver ganhos",
+    "copy": "Copiar link",
+    "copied": "Copiado",
+    "share": "Partilhar"
   }
 }

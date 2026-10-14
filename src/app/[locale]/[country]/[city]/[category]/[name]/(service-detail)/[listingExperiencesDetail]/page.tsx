@@ -10,6 +10,7 @@ import TourFAQ from './FAQProps'
 import ReviewSystem from './ReviewSystem/ReviewSystem'
 import Included from './Included'
 import TourHeader from './TourHeader'
+import AffiliateShareBar from '@/components/AffiliateShareBar'
 import ReadMore from '@/app/(client-components)/ReadeMore'
 import { useTranslations } from '@/lib/i18n'
 import { Clock3, Flag, MapPin } from 'lucide-react'
@@ -63,6 +64,7 @@ const TourDetail: FC<ListingExperiencesDetailPageProps> = ({ similar = [] }) => 
 		<>
 			{!mobileReserveOpen && (
 				<div className="mx-auto max-w-7xl px-5 pb-24 text-neutral-950 dark:text-white">
+					<AffiliateShareBar title={service?.name} />
 					<TourHeader />
 					<ListingExperiencesDetailsImages />
 

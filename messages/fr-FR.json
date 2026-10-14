@@ -4036,7 +4036,8 @@
     "keep_account": "Garder mon compte",
     "delete_button": "Supprimer mon compte",
     "saved_removed": "« {name} » a été retiré de vos circuits enregistrés.",
-    "undo": "Annuler"
+    "undo": "Annuler",
+    "nav_affiliate": "Affiliation"
   },
   "Bookings": {
     "title": "Mes réservations",
@@ -4078,5 +4079,47 @@
     "error_NOT_SIGNED_IN": "Connectez-vous pour utiliser un code promo.",
     "error_NOTHING_TO_DISCOUNT": "Il n'y a rien à réduire sur cette réservation.",
     "error_generic": "Un problème est survenu. Veuillez réessayer."
+  },
+  "Affiliate": {
+    "title": "Affiliation",
+    "subtitle": "Partagez les circuits TRAVSUS et gagnez une commission sur chaque réservation.",
+    "join_title": "Gagnez en partageant des circuits",
+    "join_text": "Rejoignez le programme d'affiliation pour obtenir votre propre lien et gagner sur chaque réservation qu'il apporte.",
+    "join_cta": "Découvrir le programme",
+    "pending_title": "Votre demande est en cours d'examen",
+    "pending_text": "Nous vous écrirons dès qu'elle sera acceptée. Votre lien et vos gains apparaîtront alors ici.",
+    "link_title": "Votre lien d'affilié",
+    "link_text": "Toute personne qui l'ouvre et réserve dans les {days} jours vous rapporte une commission.",
+    "link_tip": "Fonctionne sur toutes les pages TRAVSUS : ajoutez ?ref={code} au lien. Sur les pages des circuits, votre lien est prêt à copier en haut.",
+    "copy": "Copier",
+    "copied": "Copié",
+    "rate_custom": "Votre taux personnel",
+    "rate_next": "Encore {count, plural, one {# réservation} other {# réservations}} pour atteindre {rate} %",
+    "rate_top": "Taux maximum",
+    "stat_clicks": "Clics, 30 jours",
+    "stat_clicks_total": "{count} au total",
+    "stat_bookings": "Réservations payées",
+    "stat_pending": "En attente",
+    "stat_pending_note": "Acquis une fois le voyage effectué",
+    "stat_balance": "Solde",
+    "stat_balance_note": "Versé chaque mois à partir de {min}",
+    "bookings_title": "Vos réservations",
+    "bookings_empty": "Aucune réservation pour l'instant. Partagez votre lien pour commencer.",
+    "booked_on": "Réservé le {date}",
+    "trip_on": "voyage le {date}",
+    "status_earned": "Acquis",
+    "status_pending": "En attente",
+    "status_unpaid": "Non payé",
+    "status_cancelled": "Annulé",
+    "payouts_title": "Versements",
+    "payouts_text": "Versés chaque mois par PayPal ou virement bancaire dès que votre solde atteint {min}.",
+    "paid_out_total": "Versé jusqu'à présent : {amount}"
+  },
+  "AffiliateShare": {
+    "label": "Votre lien d'affilié",
+    "earnings": "Voir les gains",
+    "copy": "Copier le lien",
+    "copied": "Copié",
+    "share": "Partager"
   }
 }

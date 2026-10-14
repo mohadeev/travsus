@@ -2736,7 +2736,8 @@
     "keep_account": "Keep my account",
     "delete_button": "Delete my account",
     "saved_removed": "Removed “{name}” from your saved tours.",
-    "undo": "Undo"
+    "undo": "Undo",
+    "nav_affiliate": "Affiliate"
   },
   "Bookings": {
     "title": "My bookings",
@@ -2778,5 +2779,47 @@
     "error_NOT_SIGNED_IN": "Please sign in to use a promo code.",
     "error_NOTHING_TO_DISCOUNT": "There's nothing to discount on this booking.",
     "error_generic": "Something went wrong. Please try again."
+  },
+  "Affiliate": {
+    "title": "Affiliate",
+    "subtitle": "Share TRAVSUS tours and earn a commission on every booking.",
+    "join_title": "Earn by sharing tours",
+    "join_text": "Join the affiliate program to get your own link and earn on every booking it brings.",
+    "join_cta": "Discover the program",
+    "pending_title": "Your request is being reviewed",
+    "pending_text": "We'll email you as soon as it's accepted. Your link and earnings will then appear here.",
+    "link_title": "Your affiliate link",
+    "link_text": "Anyone who opens it and books within {days} days earns you a commission.",
+    "link_tip": "Works on any TRAVSUS page: add ?ref={code} to the link. On tour pages, your link is ready to copy at the top.",
+    "copy": "Copy",
+    "copied": "Copied",
+    "rate_custom": "Your personal rate",
+    "rate_next": "{count, plural, one {# more booking} other {# more bookings}} to reach {rate}%",
+    "rate_top": "Top rate",
+    "stat_clicks": "Clicks, 30 days",
+    "stat_clicks_total": "{count} in total",
+    "stat_bookings": "Paid bookings",
+    "stat_pending": "Pending",
+    "stat_pending_note": "Earned once the trip has taken place",
+    "stat_balance": "Balance",
+    "stat_balance_note": "Paid monthly from {min}",
+    "bookings_title": "Your bookings",
+    "bookings_empty": "No bookings yet. Share your link to get started.",
+    "booked_on": "Booked {date}",
+    "trip_on": "trip {date}",
+    "status_earned": "Earned",
+    "status_pending": "Pending",
+    "status_unpaid": "Not paid",
+    "status_cancelled": "Cancelled",
+    "payouts_title": "Payouts",
+    "payouts_text": "Paid every month by PayPal or bank transfer once your balance reaches {min}.",
+    "paid_out_total": "Paid out so far: {amount}"
+  },
+  "AffiliateShare": {
+    "label": "Your affiliate link",
+    "earnings": "See earnings",
+    "copy": "Copy link",
+    "copied": "Copied",
+    "share": "Share"
   }
 }

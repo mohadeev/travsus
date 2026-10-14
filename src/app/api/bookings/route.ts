@@ -5,6 +5,7 @@ import { createOrderNumber } from '@/app/actions/generateOrderNumber'
 import { db, T, must, withMeta } from '@/lib/db'
 import { priceBooking } from '@/lib/payments'
 import { validTripDates } from '@/lib/tripDates'
+import { creditBooking, REF_COOKIE } from '@/lib/affiliates'
 
 /**
  * Creates a booking for a tour (the "Reserve" button).
@@ -67,6 +68,9 @@ export async function POST(request: NextRequest) {
 				.select('*')
 				.single(),
 		)
+
+		// Came through an affiliate's link in the last 60 days: credit them
+		await creditBooking(booking.id, user.email, request.cookies.get(REF_COOKIE)?.value)
 
 		return NextResponse.json(booking, { status: 201 })
 	} catch (error) {

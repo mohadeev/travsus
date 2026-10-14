@@ -3,18 +3,19 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useLocale, useTranslations } from 'next-intl'
-import { ACCOUNT_NAV } from './navItems'
+import { ACCOUNT_NAV, AFFILIATE_NAV } from './navItems'
 
-export default function AccountNav() {
+export default function AccountNav({ affiliate = false }: { affiliate?: boolean }) {
 	const t = useTranslations('Account')
 	const locale = useLocale()
 	const pathname = usePathname()
 	const current = pathname.replace(`/${locale}`, '') || '/'
+	const items = affiliate ? ACCOUNT_NAV.flatMap((item) => (item[0] === '/account-savelists' ? [item, AFFILIATE_NAV] : [item])) : ACCOUNT_NAV
 
 	return (
 		<nav aria-label={t('menu')} className="min-w-0 lg:sticky lg:top-24 lg:self-start">
 			<ul className="-mx-5 flex gap-2 overflow-x-auto px-5 pb-1 [scrollbar-width:none] lg:mx-0 lg:flex-col lg:gap-1 lg:overflow-visible lg:px-0">
-				{ACCOUNT_NAV.map(([href, label, Icon]) => {
+				{items.map(([href, label, Icon]) => {
 					const active = current === href
 					return (
 						<li key={href} className="shrink-0">

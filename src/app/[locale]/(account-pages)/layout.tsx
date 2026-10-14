@@ -2,6 +2,7 @@
 import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
 import { getSessionUser } from '@/lib/session'
+import { affiliateByEmail } from '@/lib/affiliates'
 import AccountNav from './_components/AccountNav'
 import SignInPrompt from './_components/SignInPrompt'
 
@@ -12,12 +13,13 @@ export const metadata: Metadata = { robots: { index: false, follow: false } }
 // menu then scrolls inside its own row instead of widening the page).
 export default async function AccountLayout({ children }: { children: ReactNode }) {
 	const user = await getSessionUser().catch(() => null)
+	const affiliate = user ? await affiliateByEmail(user.email).catch(() => null) : null
 
 	return (
 		<main className="mx-auto max-w-7xl px-5 pb-20 pt-8 text-neutral-950 sm:pt-12 lg:pb-28 dark:text-white">
 			{user ? (
 				<div className="grid grid-cols-[minmax(0,1fr)] gap-8 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-14">
-					<AccountNav />
+					<AccountNav affiliate={!!affiliate} />
 					<div className="min-w-0">{children}</div>
 				</div>
 			) : (

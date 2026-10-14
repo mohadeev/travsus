@@ -29,6 +29,7 @@ import NewsletterModal from './newsletter-modal'
 import { PlanTripModal } from './plan-trip-modal'
 import TawkToWidget from '@/components/TawkToWidget'
 import AnalyticsTracker from '@/components/AnalyticsTracker'
+import AffiliateRefCapture from '@/components/AffiliateRefCapture'
 
 export default function LocaleLayoutClient({
 	children,
@@ -63,6 +64,7 @@ export default function LocaleLayoutClient({
 						<AuthWatcher />
 						<Suspense fallback={null}>
 							<AnalyticsTracker />
+							<AffiliateRefCapture />
 						</Suspense>
 						{/* Google Tag Manager (noscript) — must be inside <body> */}
 						<noscript>

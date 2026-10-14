@@ -3023,7 +3023,8 @@
     "keep_account": "계정 유지하기",
     "delete_button": "내 계정 삭제",
     "saved_removed": "‘{name}’을(를) 저장한 투어에서 삭제했습니다.",
-    "undo": "실행 취소"
+    "undo": "실행 취소",
+    "nav_affiliate": "제휴 프로그램"
   },
   "Bookings": {
     "title": "내 예약",
@@ -3065,5 +3066,47 @@
     "error_NOT_SIGNED_IN": "프로모 코드를 사용하려면 로그인해 주세요.",
     "error_NOTHING_TO_DISCOUNT": "이 예약에는 할인할 금액이 없습니다.",
     "error_generic": "문제가 발생했습니다. 다시 시도해 주세요."
+  },
+  "Affiliate": {
+    "title": "제휴 프로그램",
+    "subtitle": "TRAVSUS 투어를 공유하고 예약마다 수수료를 받으세요.",
+    "join_title": "투어를 공유하고 수익을 올리세요",
+    "join_text": "제휴 프로그램에 가입하면 전용 링크를 받고, 그 링크로 들어온 모든 예약에서 수익을 얻을 수 있습니다.",
+    "join_cta": "프로그램 알아보기",
+    "pending_title": "신청서를 검토 중입니다",
+    "pending_text": "승인되는 대로 이메일로 알려드리겠습니다. 그 후 링크와 수익이 여기에 표시됩니다.",
+    "link_title": "나의 제휴 링크",
+    "link_text": "링크를 연 사람이 {days}일 이내에 예약하면 수수료가 지급됩니다.",
+    "link_tip": "모든 TRAVSUS 페이지에서 사용할 수 있습니다: 링크에 ?ref={code}를 추가하세요. 투어 페이지 상단에서 바로 링크를 복사할 수 있습니다.",
+    "copy": "복사",
+    "copied": "복사됨",
+    "rate_custom": "나만의 수수료율",
+    "rate_next": "{rate}%까지 예약 {count, plural, other {#건}} 남음",
+    "rate_top": "최고 수수료율",
+    "stat_clicks": "클릭 수 (30일)",
+    "stat_clicks_total": "총 {count}",
+    "stat_bookings": "결제된 예약",
+    "stat_pending": "대기 중",
+    "stat_pending_note": "여행이 진행된 후 확정",
+    "stat_balance": "잔액",
+    "stat_balance_note": "{min}부터 매월 지급",
+    "bookings_title": "나의 예약",
+    "bookings_empty": "아직 예약이 없습니다. 링크를 공유해 시작하세요.",
+    "booked_on": "예약일 {date}",
+    "trip_on": "여행일 {date}",
+    "status_earned": "확정",
+    "status_pending": "대기 중",
+    "status_unpaid": "미결제",
+    "status_cancelled": "취소됨",
+    "payouts_title": "지급 내역",
+    "payouts_text": "잔액이 {min}에 도달하면 매월 PayPal 또는 계좌 이체로 지급됩니다.",
+    "paid_out_total": "지금까지 지급액: {amount}"
+  },
+  "AffiliateShare": {
+    "label": "나의 제휴 링크",
+    "earnings": "수익 보기",
+    "copy": "링크 복사",
+    "copied": "복사됨",
+    "share": "공유"
   }
 }

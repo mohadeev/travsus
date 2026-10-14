@@ -4020,7 +4020,8 @@
     "keep_account": "Konto behalten",
     "delete_button": "Mein Konto löschen",
     "saved_removed": "„{name}“ wurde aus Ihren gespeicherten Touren entfernt.",
-    "undo": "Rückgängig"
+    "undo": "Rückgängig",
+    "nav_affiliate": "Partnerprogramm"
   },
   "Bookings": {
     "title": "Meine Buchungen",
@@ -4062,5 +4063,47 @@
     "error_NOT_SIGNED_IN": "Bitte melden Sie sich an, um einen Promo-Code zu nutzen.",
     "error_NOTHING_TO_DISCOUNT": "Für diese Buchung gibt es nichts zu rabattieren.",
     "error_generic": "Etwas ist schiefgelaufen. Bitte erneut versuchen."
+  },
+  "Affiliate": {
+    "title": "Partnerprogramm",
+    "subtitle": "Teile TRAVSUS-Touren und verdiene an jeder Buchung eine Provision.",
+    "join_title": "Verdiene mit dem Teilen von Touren",
+    "join_text": "Tritt dem Partnerprogramm bei, um deinen eigenen Link zu erhalten und an jeder Buchung zu verdienen, die er bringt.",
+    "join_cta": "Programm entdecken",
+    "pending_title": "Deine Anfrage wird geprüft",
+    "pending_text": "Wir schreiben dir, sobald sie angenommen ist. Dein Link und deine Einnahmen erscheinen dann hier.",
+    "link_title": "Dein Partnerlink",
+    "link_text": "Wer ihn öffnet und innerhalb von {days} Tagen bucht, bringt dir eine Provision.",
+    "link_tip": "Funktioniert auf jeder TRAVSUS-Seite: Füge ?ref={code} zum Link hinzu. Auf Tourseiten steht dein Link oben zum Kopieren bereit.",
+    "copy": "Kopieren",
+    "copied": "Kopiert",
+    "rate_custom": "Dein persönlicher Satz",
+    "rate_next": "Noch {count, plural, one {# Buchung} other {# Buchungen}} bis {rate}%",
+    "rate_top": "Höchster Satz",
+    "stat_clicks": "Klicks, 30 Tage",
+    "stat_clicks_total": "{count} insgesamt",
+    "stat_bookings": "Bezahlte Buchungen",
+    "stat_pending": "Ausstehend",
+    "stat_pending_note": "Verdient, sobald die Reise stattgefunden hat",
+    "stat_balance": "Guthaben",
+    "stat_balance_note": "Monatliche Auszahlung ab {min}",
+    "bookings_title": "Deine Buchungen",
+    "bookings_empty": "Noch keine Buchungen. Teile deinen Link, um loszulegen.",
+    "booked_on": "Gebucht am {date}",
+    "trip_on": "Reise am {date}",
+    "status_earned": "Verdient",
+    "status_pending": "Ausstehend",
+    "status_unpaid": "Nicht bezahlt",
+    "status_cancelled": "Storniert",
+    "payouts_title": "Auszahlungen",
+    "payouts_text": "Monatlich per PayPal oder Banküberweisung, sobald dein Guthaben {min} erreicht.",
+    "paid_out_total": "Bisher ausgezahlt: {amount}"
+  },
+  "AffiliateShare": {
+    "label": "Dein Partnerlink",
+    "earnings": "Einnahmen ansehen",
+    "copy": "Link kopieren",
+    "copied": "Kopiert",
+    "share": "Teilen"
   }
 }

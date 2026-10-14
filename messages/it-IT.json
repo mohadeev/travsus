@@ -3528,7 +3528,8 @@
     "keep_account": "Mantieni l'account",
     "delete_button": "Elimina il mio account",
     "saved_removed": "Hai rimosso «{name}» dai tour salvati.",
-    "undo": "Annulla"
+    "undo": "Annulla",
+    "nav_affiliate": "Affiliazione"
   },
   "Bookings": {
     "title": "Le mie prenotazioni",
@@ -3570,5 +3571,47 @@
     "error_NOT_SIGNED_IN": "Accedi per usare un codice promozionale.",
     "error_NOTHING_TO_DISCOUNT": "Non c'è nulla da scontare in questa prenotazione.",
     "error_generic": "Qualcosa è andato storto. Riprova."
+  },
+  "Affiliate": {
+    "title": "Affiliazione",
+    "subtitle": "Condividi i tour TRAVSUS e guadagna una commissione su ogni prenotazione.",
+    "join_title": "Guadagna condividendo tour",
+    "join_text": "Unisciti al programma di affiliazione per avere il tuo link e guadagnare su ogni prenotazione che porta.",
+    "join_cta": "Scopri il programma",
+    "pending_title": "Stiamo esaminando la tua richiesta",
+    "pending_text": "Ti scriveremo appena sarà accettata. Il tuo link e i tuoi guadagni appariranno qui.",
+    "link_title": "Il tuo link di affiliazione",
+    "link_text": "Chi lo apre e prenota entro {days} giorni ti fa guadagnare una commissione.",
+    "link_tip": "Funziona su qualsiasi pagina TRAVSUS: aggiungi ?ref={code} al link. Nelle pagine dei tour, il tuo link è pronto da copiare in alto.",
+    "copy": "Copia",
+    "copied": "Copiato",
+    "rate_custom": "La tua tariffa personale",
+    "rate_next": "Ancora {count, plural, one {# prenotazione} other {# prenotazioni}} per arrivare al {rate}%",
+    "rate_top": "Tariffa massima",
+    "stat_clicks": "Clic, 30 giorni",
+    "stat_clicks_total": "{count} in totale",
+    "stat_bookings": "Prenotazioni pagate",
+    "stat_pending": "In attesa",
+    "stat_pending_note": "Guadagnato dopo lo svolgimento del viaggio",
+    "stat_balance": "Saldo",
+    "stat_balance_note": "Pagato ogni mese da {min}",
+    "bookings_title": "Le tue prenotazioni",
+    "bookings_empty": "Ancora nessuna prenotazione. Condividi il tuo link per iniziare.",
+    "booked_on": "Prenotato il {date}",
+    "trip_on": "viaggio il {date}",
+    "status_earned": "Guadagnato",
+    "status_pending": "In attesa",
+    "status_unpaid": "Non pagato",
+    "status_cancelled": "Annullato",
+    "payouts_title": "Pagamenti",
+    "payouts_text": "Pagati ogni mese tramite PayPal o bonifico quando il saldo raggiunge {min}.",
+    "paid_out_total": "Pagato finora: {amount}"
+  },
+  "AffiliateShare": {
+    "label": "Il tuo link di affiliazione",
+    "earnings": "Vedi guadagni",
+    "copy": "Copia link",
+    "copied": "Copiato",
+    "share": "Condividi"
   }
 }
