@@ -2,7 +2,7 @@
 // Account menu in the header: avatar button, then account links or sign in/up.
 // Signed in or not comes from Clerk itself (the Redux user, loaded a moment
 // later, only adds the TRAVSUS profile photo and name).
-import { Fragment } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import Link from 'next/link'
 import { Popover, Transition } from '@headlessui/react'
 import { useClerk, useUser } from '@clerk/nextjs'
@@ -10,6 +10,7 @@ import { useLocale } from 'next-intl'
 import {
 	CalendarCheck,
 	Heart,
+	LayoutGrid,
 	LifeBuoy,
 	LogIn,
 	LogOut,
@@ -33,6 +34,15 @@ export default function AvatarDropdown({ className = '' }: { className?: string 
 	const user = useAppSelector(selectUser)
 	const { openSignIn, openSignUp, signOut } = useClerk()
 	const isLoggedIn = isLoaded && !!isSignedIn
+	// The server says whether this is the owner (shows the Admin link)
+	const [isOwner, setIsOwner] = useState(false)
+	useEffect(() => {
+		if (!isLoggedIn) return setIsOwner(false)
+		fetch('/api/admin/me', { cache: 'no-store' })
+			.then((r) => r.json())
+			.then((d) => setIsOwner(d.owner === true))
+			.catch(() => {})
+	}, [isLoggedIn, clerkUser?.id])
 	const email = clerkUser?.primaryEmailAddress?.emailAddress ?? user?.email
 	const imageUrl = user?.profileImage?.url || clerkUser?.imageUrl
 	const name =
@@ -89,6 +99,12 @@ export default function AvatarDropdown({ className = '' }: { className?: string 
 											{t(label)}
 										</Link>
 									))}
+									{isOwner && (
+										<Link href={`/${locale}/admin` as any} onClick={() => close()} className={itemClass}>
+											<LayoutGrid className="h-[18px] w-[18px] text-neutral-500" />
+											Admin
+										</Link>
+									)}
 									<div className="my-1 h-px bg-neutral-100 dark:bg-neutral-800" />
 									<button
 										type="button"

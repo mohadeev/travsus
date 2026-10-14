@@ -219,7 +219,7 @@ export default function AddPlacePage({ params }: { params: { countryId: string }
 
       // Redirect after a short delay
       setTimeout(() => {
-        // router.push(`/cmd-admin/${countryId}/places`)
+        // router.push(`/cms-admin/${countryId}/places` as any)
       }, 2000)
     } catch (error) {
       console.error("Error adding place:", error)
@@ -232,7 +232,7 @@ export default function AddPlacePage({ params }: { params: { countryId: string }
   return (
     <div className="container mx-auto py-8">
       <div className="mb-6 flex items-center gap-2">
-        <Link href={`/cmd-admin/${countryId}/places`} className="hover:text-primary">
+        <Link href={`/cms-admin/${countryId}/places` as any} className="hover:text-primary">
           <ArrowLeft className="h-5 w-5" />
         </Link>
         <h1 className="text-3xl font-bold">Add New Place in {countryName || countryId}</h1>
@@ -389,7 +389,7 @@ export default function AddPlacePage({ params }: { params: { countryId: string }
             </form>
           </CardContent>
           <CardFooter className="flex justify-between">
-            <Button variant="outline" onClick={() => router.push(`/cmd-admin/${countryId}/places`)}>
+            <Button variant="outline" onClick={() => router.push(`/cms-admin/${countryId}/places` as any)}>
               Cancel
             </Button>
             <Button onClick={handleSubmit} disabled={saving} className="flex items-center gap-2">

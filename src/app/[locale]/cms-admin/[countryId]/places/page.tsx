@@ -353,7 +353,7 @@ export default function CountryPlacesAdmin({
 	return (
 		<div className="container mx-auto py-8">
 			<div className="mb-6 flex items-center gap-2">
-				<Link href="/cmd-admin" className="hover:text-primary">
+				<Link href="/cms-admin" className="hover:text-primary">
 					<ArrowLeft className="h-5 w-5" />
 				</Link>
 				<h1 className="text-3xl font-bold">
@@ -582,7 +582,7 @@ export default function CountryPlacesAdmin({
 										: 'No places found for the selected city.'
 									: 'No cities with images found in this country.'}
 							</p>
-							<Link href={`/cmd-admin/${countryId}/add-place`}>
+							<Link href={`/cms-admin/${countryId}/add-place` as any}>
 								<Button>Add New Place</Button>
 							</Link>
 						</div>
