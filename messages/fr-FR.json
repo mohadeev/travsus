@@ -297,17 +297,6 @@
     "app_locale_featurenotificationform_Submitting": "Envoi en cours...",
     "app_locale_featurenotificationform_Terms_And_Conditions": "Termes & Conditions"
   },
-  "app_locale_newslettermodal": {
-    "app_locale_newslettermodal_By_Signing_Up_I_Agree_To_The": "En m'inscrivant, je suis d'accord avec les",
-    "app_locale_newslettermodal_Email_Address": "Adresse Email",
-    "app_locale_newslettermodal_Enter_Your_Email_Address": "Entrez votre adresse email (max 60 caractères)",
-    "app_locale_newslettermodal_Its_Easy_And_Free": "C'EST FACILE ET GRATUIT",
-    "app_locale_newslettermodal_Select_Newsletter_Types": "Sélectionnez les types de newsletter ({selectedTypes.length} sélectionnés)",
-    "app_locale_newslettermodal_Sign_Up": "S'INSCRIRE",
-    "app_locale_newslettermodal_Sign_Up_Today": "INSCRIVEZ-VOUS AUJOURD'HUI",
-    "app_locale_newslettermodal_Subscribing": "Abonnement...",
-    "app_locale_newslettermodal_Terms_And_Conditions": "Termes & Conditions"
-  },
   "app_locale_referralprogrammodal": {
     "app_locale_referralprogrammodal_By_Signing_Up": "En vous inscrivant, vous acceptez nos",
     "app_locale_referralprogrammodal_Earn": "GAGNEZ",
@@ -4121,5 +4110,31 @@
     "copy": "Copier le lien",
     "copied": "Copié",
     "share": "Partager"
+  },
+  "Newsletter": {
+    "eyebrow": "Newsletter TRAVSUS",
+    "title": "Des idées de voyage, directement dans votre boîte mail.",
+    "text": "Des voyages triés sur le volet, des offres et des conseils locaux. Pas de spam, désinscription à tout moment.",
+    "topics": "Que souhaitez-vous recevoir ?",
+    "topic_deals": "Offres",
+    "topic_tips": "Conseils de voyage",
+    "topic_reviews": "Guides de destinations",
+    "topic_inspiration": "Inspiration",
+    "email": "Votre adresse e-mail",
+    "submit": "S'abonner",
+    "consent": "En vous abonnant, vous acceptez nos <terms>Conditions</terms> et notre <privacy>Politique de confidentialité</privacy>.",
+    "close": "Fermer",
+    "perk_1": "Soyez les premiers informés des nouveaux voyages",
+    "perk_2": "Offres réservées aux abonnés",
+    "perk_3": "Conseils locaux de nos guides",
+    "done_title": "C'est fait !",
+    "done_text": "Consultez votre boîte mail : vos premières idées de voyage arrivent.",
+    "already_title": "Vous êtes déjà abonné",
+    "already_text": "Bonne nouvelle : vous êtes déjà sur la liste. À bientôt dans votre boîte mail.",
+    "continue": "Continuer la visite",
+    "err_email": "Veuillez saisir une adresse e-mail valide.",
+    "err_topics": "Choisissez au moins un thème.",
+    "err_limit": "Trop de tentatives. Patientez une minute puis réessayez.",
+    "err_server": "Une erreur est survenue. Veuillez réessayer."
   }
 }

@@ -297,17 +297,6 @@
     "app_locale_featurenotificationform_Submitting": "Einreichen...",
     "app_locale_featurenotificationform_Terms_And_Conditions": "Geschäftsbedingungen zu"
   },
-  "app_locale_newslettermodal": {
-    "app_locale_newslettermodal_By_Signing_Up_I_Agree_To_The": "Mit meiner Anmeldung stimme ich den",
-    "app_locale_newslettermodal_Email_Address": "E-Mail-Adresse",
-    "app_locale_newslettermodal_Enter_Your_Email_Address": "Geben Sie Ihre E-Mail-Adresse ein (maximal 60 Zeichen)",
-    "app_locale_newslettermodal_Its_Easy_And_Free": "ES IST EINFACH UND KOSTENLOS",
-    "app_locale_newslettermodal_Select_Newsletter_Types": "Wählen Sie Newsletter-Typen aus ({selectedTypes.length} ausgewählt)",
-    "app_locale_newslettermodal_Sign_Up": "ANMELDEN",
-    "app_locale_newslettermodal_Sign_Up_Today": "MELDEN SIE SICH HEUTE AN",
-    "app_locale_newslettermodal_Subscribing": "Abonnement...",
-    "app_locale_newslettermodal_Terms_And_Conditions": "Geschäftsbedingungen zu"
-  },
   "app_locale_referralprogrammodal": {
     "app_locale_referralprogrammodal_By_Signing_Up": "Mit Ihrer Anmeldung stimmen Sie unseren",
     "app_locale_referralprogrammodal_Earn": "VERDIENEN",
@@ -4105,5 +4094,31 @@
     "copy": "Link kopieren",
     "copied": "Kopiert",
     "share": "Teilen"
+  },
+  "Newsletter": {
+    "eyebrow": "TRAVSUS-Newsletter",
+    "title": "Reiseideen direkt in dein Postfach.",
+    "text": "Handverlesene Reisen, Angebote und lokale Tipps. Kein Spam, jederzeit abbestellbar.",
+    "topics": "Was möchtest du erhalten?",
+    "topic_deals": "Angebote",
+    "topic_tips": "Reisetipps",
+    "topic_reviews": "Reiseziel-Guides",
+    "topic_inspiration": "Inspiration",
+    "email": "Deine E-Mail-Adresse",
+    "submit": "Abonnieren",
+    "consent": "Mit dem Abonnieren akzeptierst du unsere <terms>AGB</terms> und <privacy>Datenschutzerklärung</privacy>.",
+    "close": "Schließen",
+    "perk_1": "Als Erste von neuen Reisen erfahren",
+    "perk_2": "Angebote für Abonnenten",
+    "perk_3": "Lokale Tipps von unseren Guides",
+    "done_title": "Du bist dabei!",
+    "done_text": "Schau in dein Postfach: Deine ersten Reiseideen sind unterwegs.",
+    "already_title": "Du bist bereits angemeldet",
+    "already_text": "Gute Nachricht: Du stehst schon auf der Liste. Bis bald in deinem Postfach.",
+    "continue": "Weiter stöbern",
+    "err_email": "Bitte gib eine gültige E-Mail-Adresse ein.",
+    "err_topics": "Wähle mindestens ein Thema.",
+    "err_limit": "Zu viele Versuche. Bitte warte eine Minute und versuche es erneut.",
+    "err_server": "Etwas ist schiefgelaufen. Bitte versuche es erneut."
   }
 }

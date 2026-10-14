@@ -1,339 +1,269 @@
 'use client'
-
-import type React from 'react'
-import { useTranslations } from '@/lib/i18n'
-
-import { useState, useEffect, useRef } from 'react'
-import { useAppSelector } from '@/store/hooks'
-import { selectIsLoggedIn } from '@/store/slices/user'
-import { X } from 'lucide-react'
+// Newsletter pop-up: opens once after 30 seconds on content pages for
+// visitors who aren't signed in. Closing it hides it for 30 days; subscribing
+// hides it for good. A link to #newsletter opens it right away.
+import { Fragment, useEffect, useState, type FormEvent } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import Logo from '@/shared/Logo'
+import { usePathname } from 'next/navigation'
+import { Dialog, Transition } from '@headlessui/react'
+import { ArrowRight, Check, Lightbulb, Loader2, Mail, MapPinned, Sparkles, Tag, X, type LucideIcon } from 'lucide-react'
+import { useLocale, useTranslations } from 'next-intl'
+import { useAppSelector } from '@/store/hooks'
+import { selectIsLoggedIn } from '@/store/slices/user'
 
-const newsletterTypes = [
-	{ id: 'deals', label: '🏷️ Exclusive Deals' },
-	{ id: 'tips', label: '💡 Travel Tips' },
-	{ id: 'reviews', label: '⭐ Destination Reviews' },
-	{ id: 'inspiration', label: '✈️ Travel Inspiration' },
+const TOPICS: [string, LucideIcon][] = [
+	['deals', Tag],
+	['tips', Lightbulb],
+	['reviews', MapPinned],
+	['inspiration', Sparkles],
 ]
+const IMAGE = 'https://res.cloudinary.com/travsus/image/upload/v1744996477/ChatGPT_Image_Apr_16_2025_09_15_13_PM_redfxm.png'
+const DELAY_MS = 30_000
+const SNOOZE_DAYS = 30
+const KEY = 'travsus_newsletter' // "subscribed" or the time it was closed
+// No pop-up while booking, paying or working in the account / admin
+const QUIET = /^\/(checkout|pay-done|account|bookings|admin|cms-admin|dashboard|sign-in|sign-up)/
 
-const messageMap = {
-	EMAIL_REQUIRED:
-		"📭 Oops! It looks like you forgot to enter an email address. Let's try that again!",
-	INVALID_EMAIL:
-		"🤔 Hmm, that email doesn't look quite right. Remember, it should be no more than 60 characters long. Double-check and give it another go!",
-	TYPES_REQUIRED:
-		"🎯 Almost there! Don't forget to pick at least one exciting newsletter type!",
-	ALREADY_SUBSCRIBED:
-		"🌟 Great news! You're already part of our awesome newsletter family. Stay tuned for more amazing content!",
-	SUBSCRIPTION_SUCCESS:
-		"🎉 Woohoo! You're officially part of our travel-loving community. Get ready for some incredible adventures in your inbox!",
-	SERVER_ERROR:
-		'😱 Uh-oh! Something went wrong on our end. Our team of travel gnomes is working on it. Please try again later!',
-	RATE_LIMIT_EXCEEDED:
-		"🚫 Whoa there, eager traveler! You've reached the request limit. Take a breather and try again in a bit.",
+type Status = 'idle' | 'sending' | 'done' | 'already'
+const ERRORS: Record<string, string> = {
+	EMAIL_REQUIRED: 'err_email',
+	INVALID_EMAIL: 'err_email',
+	TYPES_REQUIRED: 'err_topics',
+	RATE_LIMIT_EXCEEDED: 'err_limit',
+}
+
+const read = () => {
+	try {
+		return localStorage.getItem(KEY) ?? (localStorage.getItem('hasClosedNewsletterModal') === 'true' ? String(Date.now()) : null)
+	} catch {
+		return null
+	}
+}
+const remember = (value: string) => {
+	try {
+		localStorage.setItem(KEY, value)
+	} catch {}
 }
 
 export default function NewsletterModal() {
-	const isUserLoggedIn = useAppSelector(selectIsLoggedIn)
-	const [isOpen, setIsOpen] = useState(false)
+	const t = useTranslations('Newsletter')
+	const locale = useLocale()
+	const pathname = usePathname()
+	const isLoggedIn = useAppSelector(selectIsLoggedIn)
+	const [open, setOpen] = useState(false)
 	const [email, setEmail] = useState('')
-	const [isDropdownOpen, setIsDropdownOpen] = useState(false)
-	const [selectedTypes, setSelectedTypes] = useState<string[]>(
-		newsletterTypes.map((type) => type.id),
-	)
-	const [isLoading, setIsLoading] = useState(false)
-	const [message, setMessage] = useState('')
-	const [isError, setIsError] = useState(false)
-	const dropdownRef = useRef<HTMLDivElement>(null)
+	const [topics, setTopics] = useState(TOPICS.map(([id]) => id))
+	const [status, setStatus] = useState<Status>('idle')
+	const [error, setError] = useState('')
 
-	const t = useTranslations("app_locale_newslettermodal")
+	const quiet = QUIET.test(pathname.replace(`/${locale}`, ''))
+
+	// Open after a while, unless closed lately or already subscribed
+	useEffect(() => {
+		if (isLoggedIn || quiet) return
+		if (window.location.hash === '#newsletter') return setOpen(true)
+		const seen = read()
+		if (seen === 'subscribed' || (seen && Date.now() - Number(seen) < SNOOZE_DAYS * 86400_000)) return
+		const timer = setTimeout(() => setOpen(true), DELAY_MS)
+		return () => clearTimeout(timer)
+	}, [isLoggedIn, quiet])
 
 	useEffect(() => {
-		if (isUserLoggedIn) {
-			setIsOpen(false)
-		}
-	}, [isUserLoggedIn])
+		if (isLoggedIn) setOpen(false)
+	}, [isLoggedIn])
 
-	useEffect(() => {
-		if (isUserLoggedIn) return
-
-		const hasClosedModal =
-			localStorage.getItem('hasClosedNewsletterModal') === 'true'
-
-		if (!hasClosedModal) {
-			const timer = setTimeout(() => {
-				setIsOpen(true)
-			}, 30000) // 30 seconds
-
-			return () => clearTimeout(timer)
-		}
-	}, [isUserLoggedIn])
-
-	const toggleDropdown = () => {
-		setIsDropdownOpen(!isDropdownOpen)
+	const close = () => {
+		setOpen(false)
+		if (status !== 'done' && status !== 'already') remember(String(Date.now()))
 	}
 
-	const handleTypeChange = (typeId: string) => {
-		setSelectedTypes((prev) =>
-			prev.includes(typeId)
-				? prev.filter((id) => id !== typeId)
-				: [...prev, typeId],
-		)
+	const toggle = (id: string) => {
+		setError('')
+		setTopics((current) => (current.includes(id) ? current.filter((x) => x !== id) : [...current, id]))
 	}
 
-	const handleSubmit = async (e: React.FormEvent) => {
+	async function submit(e: FormEvent) {
 		e.preventDefault()
-
-		if (!email) {
-			setMessage(messageMap.EMAIL_REQUIRED)
-			setIsError(true)
-			return
-		}
-
-		if (email.length > 60) {
-			setMessage(messageMap.INVALID_EMAIL)
-			setIsError(true)
-			return
-		}
-
-		if (selectedTypes.length === 0) {
-			setMessage(messageMap.TYPES_REQUIRED)
-			setIsError(true)
-			return
-		}
-
-		setIsLoading(true)
-		setMessage('')
-		setIsError(false)
-
+		if (!topics.length) return setError(t('err_topics'))
+		setStatus('sending')
+		setError('')
 		try {
-			const response = await fetch('/api/user/post/newsletter', {
+			const res = await fetch('/api/user/post/newsletter', {
 				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify({ email, types: selectedTypes }),
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ email: email.trim(), types: topics }),
 			})
-
-			const data = await response.json()
-
-			if (response.ok) {
-				setMessage(
-					messageMap[data.code as keyof typeof messageMap] ||
-						messageMap.SUBSCRIPTION_SUCCESS,
-				)
-				setIsError(false)
-				setEmail('')
-				setSelectedTypes(newsletterTypes.map((type) => type.id))
-			} else if (response.status === 429) {
-				setMessage(messageMap.RATE_LIMIT_EXCEEDED)
-				setIsError(true)
-			} else {
-				setMessage(
-					messageMap[data.code as keyof typeof messageMap] ||
-						messageMap.SERVER_ERROR,
-				)
-				setIsError(true)
+			const { code } = await res.json().catch(() => ({}))
+			if (res.ok) {
+				setStatus(code === 'ALREADY_SUBSCRIBED' ? 'already' : 'done')
+				remember('subscribed')
+				return
 			}
-		} catch (error) {
-			setMessage(messageMap.SERVER_ERROR)
-			setIsError(true)
+			setError(t(ERRORS[code] ?? 'err_server'))
+		} catch {
+			setError(t('err_server'))
 		}
-
-		setIsLoading(false)
-		setIsDropdownOpen(false)
+		setStatus('idle')
 	}
 
-	useEffect(() => {
-		const handleClickOutside = (event: MouseEvent) => {
-			if (
-				dropdownRef.current &&
-				!dropdownRef.current.contains(event.target as Node)
-			) {
-				setIsDropdownOpen(false)
-			}
-		}
-
-		document.addEventListener('mousedown', handleClickOutside)
-		return () => {
-			document.removeEventListener('mousedown', handleClickOutside)
-		}
-	}, [])
-
-	useEffect(() => {
-		if (isOpen) {
-			document.body.style.overflow = 'hidden'
-		}
-
-		return () => {
-			document.body.style.overflow = 'auto'
-		}
-	}, [isOpen])
-
-	if (!isOpen) return null
+	const finished = status === 'done' || status === 'already'
 
 	return (
-		<div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
-			<div className="relative flex h-auto max-h-[90vh] w-[90%] max-w-4xl overflow-hidden rounded-lg bg-white">
-				<button
-					onClick={() => {
-						setIsOpen(false)
-						localStorage.setItem('hasClosedNewsletterModal', 'true')
-					}}
-					className="absolute right-4 top-4 z-10 text-black"
-				>
-					<X className="h-6 w-6" />
-				</button>
+		<Transition show={open} as={Fragment}>
+			<Dialog className="relative z-[60]" onClose={close}>
+				<Transition.Child as={Fragment} enter="ease-out duration-300" enterFrom="opacity-0" enterTo="opacity-100" leave="ease-in duration-200" leaveFrom="opacity-100" leaveTo="opacity-0">
+					<div className="fixed inset-0 bg-neutral-950/50 backdrop-blur-sm" />
+				</Transition.Child>
 
-				<div className="relative hidden w-1/2 md:block">
-					<div className="absolute inset-0 bg-gradient-to-b from-gray-100/10 to-gray-800/30" />
-					<Image
-						src="https://res.cloudinary.com/travsus/image/upload/v1744996477/ChatGPT_Image_Apr_16_2025_09_15_13_PM_redfxm.png"
-						alt="Desert sand dunes under blue sky"
-						width={600}
-						height={800}
-						className="h-full w-full object-cover"
-					/>
-				</div>
-
-				<div className="flex w-full flex-col md:w-1/2">
-					<div className="px-8 pt-4">
-						<Logo className="h-[40px] w-[100px]" />
-					</div>
-
-					<div className="flex h-[500px] max-h-[calc(90vh-140px)] flex-col justify-between">
-						<div
-							className="custom-scrollbar flex-grow overflow-y-scroll px-8 py-6"
-							style={{
-								scrollbarWidth: 'thin',
-								scrollbarColor: '#888 #f1f1f1',
-							}}
-						>
-							<div className="min-h-[400px]">
-								<h1 className="text-4xl font-extrabold text-black sm:text-5xl">
-									{t('app_locale_newslettermodal_Sign_Up_Today')}
-								</h1>
-								<div className="mt-2 text-xl sm:text-2xl">
-									{t('app_locale_newslettermodal_Its_Easy_And_Free')}
-								</div>
-
-								<form
-									id="newsletter-form"
-									onSubmit={handleSubmit}
-									className="mt-8"
-								>
-									<label htmlFor="email" className="mb-2 block font-medium">
-										{t('app_locale_newslettermodal_Email_Address')}
-									</label>
-									<div className="relative">
-										<div className="absolute inset-y-0 left-3 flex items-center">
-											<svg
-												xmlns="http://www.w3.org/2000/svg"
-												className="h-5 w-5 text-gray-400"
-												viewBox="0 0 24 24"
-												fill="none"
-												stroke="currentColor"
-												strokeWidth="2"
-												strokeLinecap="round"
-												strokeLinejoin="round"
-											>
-												<rect x="2" y="4" width="20" height="16" rx="2"></rect>
-												<path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-											</svg>
-										</div>
-										<input
-											type="email"
-											id="email"
-											value={email}
-											onChange={(e) => setEmail(e.target.value)}
-											placeholder={t('app_locale_newslettermodal_Enter_Your_Email_Address')}
-											className="w-full rounded border border-gray-300 py-3 pl-10 pr-3 focus:border-gray-500 focus:outline-none"
-											maxLength={60}
-											disabled={isLoading}
-										/>
-									</div>
-
-									<div className="relative mt-4" ref={dropdownRef}>
-										<button
-											type="button"
-											onClick={toggleDropdown}
-											className="flex w-full items-center justify-between rounded border border-gray-300 bg-white px-4 py-3 text-left text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none"
-											disabled={isLoading}
-										>
-											<span>
-												{t('app_locale_newslettermodal_Select_Newsletter_Types')}
-											</span>
-											<svg
-												className="h-5 w-5 text-gray-400"
-												xmlns="http://www.w3.org/2000/svg"
-												viewBox="0 0 20 20"
-												fill="currentColor"
-												aria-hidden="true"
-											>
-												<path
-													fillRule="evenodd"
-													d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-													clipRule="evenodd"
-												/>
-											</svg>
-										</button>
-
-										{isDropdownOpen && (
-											<div className="absolute z-10 mt-1 w-full rounded-md border border-gray-200 bg-white shadow-lg">
-												<div className="py-1">
-													{newsletterTypes.map((type) => (
-														<label
-															key={type.id}
-															className="flex cursor-pointer items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-														>
-															<input
-																type="checkbox"
-																className="mr-2 h-4 w-4 rounded border-gray-300 text-black focus:ring-black"
-																checked={selectedTypes.includes(type.id)}
-																onChange={() => handleTypeChange(type.id)}
-															/>
-															<span>{type.label}</span>
-														</label>
-													))}
-												</div>
-											</div>
-										)}
-									</div>
-
-									{message && (
-										<div
-											className={`mt-4 rounded-md p-3 ${isError ? 'bg-red-50 text-red-700' : 'bg-green-50 text-green-700'}`}
-										>
-											<p className="text-sm">{message}</p>
-										</div>
-									)}
-								</form>
-							</div>
-						</div>
-
-						<div className="border-t border-gray-200 bg-white px-8 py-4">
+				<div className="fixed inset-0 flex items-end justify-center sm:items-center sm:p-6">
+					<Transition.Child
+						as={Fragment}
+						enter="ease-out duration-300"
+						enterFrom="translate-y-10 opacity-0 sm:translate-y-4 sm:scale-95"
+						enterTo="translate-y-0 opacity-100 sm:scale-100"
+						leave="ease-in duration-200"
+						leaveFrom="translate-y-0 opacity-100 sm:scale-100"
+						leaveTo="translate-y-10 opacity-0 sm:translate-y-4 sm:scale-95"
+					>
+						<Dialog.Panel className="relative grid max-h-[94dvh] w-full overflow-y-auto rounded-t-[32px] bg-white text-neutral-950 shadow-2xl sm:max-w-4xl sm:rounded-[32px] md:grid-cols-[0.9fr_1.1fr] md:overflow-hidden dark:bg-neutral-900 dark:text-white">
 							<button
-								type="submit"
-								form="newsletter-form"
-								className="w-full rounded bg-black py-3 font-medium text-white hover:bg-gray-800 disabled:cursor-not-allowed disabled:opacity-70"
-								disabled={isLoading}
-								onClick={handleSubmit}
+								type="button"
+								onClick={close}
+								aria-label={t('close')}
+								className="absolute right-4 top-4 z-10 grid h-10 w-10 place-items-center rounded-full bg-white/90 text-neutral-950 shadow-sm backdrop-blur transition hover:bg-white md:bg-neutral-100 md:hover:bg-neutral-200 dark:md:bg-neutral-800 dark:md:text-white"
 							>
-								{isLoading ? t('app_locale_newslettermodal_Subscribing') : t('app_locale_newslettermodal_Sign_Up')}
+								<X className="h-5 w-5" />
 							</button>
 
-							<p className="mt-4 text-xs text-gray-500">
-								{t('app_locale_newslettermodal_By_Signing_Up_I_Agree_To_The')}{' '}
-								<Link href="#" className="text-gray-700 hover:underline">
-									{t('app_locale_newslettermodal_Terms_And_Conditions')}
-								</Link>
-							</p>
-						</div>
-					</div>
+							{/* Photo with what subscribers get */}
+							<div className="relative h-44 overflow-hidden sm:h-56 md:h-auto md:min-h-[560px]">
+								<Image src={IMAGE} alt="" fill sizes="(min-width: 768px) 400px, 100vw" className="object-cover" priority />
+								<div className="absolute inset-0 bg-gradient-to-t from-neutral-950/85 via-neutral-950/20 to-transparent" />
+								<ul className="absolute inset-x-0 bottom-0 hidden space-y-2.5 p-8 text-white md:block">
+									{(['perk_1', 'perk_2', 'perk_3'] as const).map((key) => (
+										<li key={key} className="flex items-center gap-3 text-sm font-medium">
+											<span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-white/20 backdrop-blur">
+												<Check className="h-3.5 w-3.5" strokeWidth={3} />
+											</span>
+											{t(key)}
+										</li>
+									))}
+								</ul>
+							</div>
+
+							<div className="flex flex-col justify-center p-6 pb-8 sm:p-10">
+								{finished ? (
+									<div className="py-6 text-center md:text-left">
+										<span className="mx-auto grid h-16 w-16 place-items-center rounded-full bg-emerald-500 text-white shadow-lg shadow-emerald-500/30 md:mx-0">
+											<Check className="h-8 w-8" strokeWidth={3} />
+										</span>
+										<Dialog.Title className="mt-6 text-3xl font-bold tracking-tight sm:text-4xl">{t(status === 'done' ? 'done_title' : 'already_title')}</Dialog.Title>
+										<p className="mt-3 text-lg text-neutral-500">{t(status === 'done' ? 'done_text' : 'already_text')}</p>
+										<button
+											type="button"
+											onClick={close}
+											className="mt-8 inline-flex h-12 items-center gap-2 rounded-full bg-neutral-950 px-7 text-sm font-semibold text-white transition hover:bg-neutral-800 dark:bg-white dark:text-neutral-950"
+										>
+											{t('continue')}
+											<ArrowRight className="h-4 w-4" />
+										</button>
+									</div>
+								) : (
+									<>
+										<p className="inline-flex w-fit items-center gap-2 rounded-full bg-neutral-100 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.15em] text-neutral-600 dark:bg-neutral-800 dark:text-neutral-300">
+											<Mail className="h-3.5 w-3.5" />
+											{t('eyebrow')}
+										</p>
+										<Dialog.Title className="mt-5 text-3xl font-bold leading-[1.05] tracking-tight sm:text-[44px]">{t('title')}</Dialog.Title>
+										<p className="mt-3 text-neutral-500 sm:text-lg">{t('text')}</p>
+
+										<form onSubmit={submit} className="mt-7" noValidate>
+											<fieldset>
+												<legend className="text-sm font-semibold">{t('topics')}</legend>
+												<div className="mt-3 flex flex-wrap gap-2">
+													{TOPICS.map(([id, Icon]) => {
+														const on = topics.includes(id)
+														return (
+															<button
+																key={id}
+																type="button"
+																role="switch"
+																aria-checked={on}
+																onClick={() => toggle(id)}
+																className={`inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold ring-1 transition active:scale-95 ${
+																	on
+																		? 'bg-neutral-950 text-white ring-neutral-950 dark:bg-white dark:text-neutral-950 dark:ring-white'
+																		: 'text-neutral-600 ring-neutral-200 hover:ring-neutral-400 dark:text-neutral-300 dark:ring-neutral-700'
+																}`}
+															>
+																{on ? <Check className="h-4 w-4" strokeWidth={3} /> : <Icon className="h-4 w-4" />}
+																{t(`topic_${id}`)}
+															</button>
+														)
+													})}
+												</div>
+											</fieldset>
+
+											<label className="mt-6 block">
+												<span className="sr-only">{t('email')}</span>
+												<span className="relative block">
+													<Mail className="pointer-events-none absolute left-5 top-1/2 h-5 w-5 -translate-y-1/2 text-neutral-400" />
+													<input
+														type="email"
+														required
+														autoComplete="email"
+														maxLength={60}
+														value={email}
+														onChange={(e) => {
+															setEmail(e.target.value)
+															setError('')
+														}}
+														placeholder={t('email')}
+														disabled={status === 'sending'}
+														className="h-14 w-full rounded-full border-0 bg-neutral-100 pl-14 pr-5 text-base ring-1 ring-transparent transition placeholder:text-neutral-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-neutral-950 dark:bg-neutral-800 dark:focus:bg-neutral-900 dark:focus:ring-white"
+													/>
+												</span>
+											</label>
+
+											{error && (
+												<p role="alert" className="mt-3 rounded-2xl bg-red-50 px-4 py-3 text-sm text-red-700 dark:bg-red-950/50 dark:text-red-300">
+													{error}
+												</p>
+											)}
+
+											<button
+												type="submit"
+												disabled={status === 'sending'}
+												className="group mt-3 inline-flex h-14 w-full items-center justify-center gap-2 rounded-full bg-neutral-950 text-base font-semibold text-white transition hover:bg-neutral-800 disabled:opacity-70 dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-200"
+											>
+												{status === 'sending' ? <Loader2 className="h-5 w-5 animate-spin" /> : null}
+												{t('submit')}
+												{status !== 'sending' && <ArrowRight className="h-5 w-5 transition group-hover:translate-x-0.5" />}
+											</button>
+
+											<p className="mt-4 text-center text-xs leading-relaxed text-neutral-500">
+												{t.rich('consent', {
+													terms: (chunks) => (
+														<Link href={`/${locale}/general-conditions` as any} onClick={close} className="font-medium text-neutral-700 underline underline-offset-2 dark:text-neutral-300">
+															{chunks}
+														</Link>
+													),
+													privacy: (chunks) => (
+														<Link href={`/${locale}/privacy-policy` as any} onClick={close} className="font-medium text-neutral-700 underline underline-offset-2 dark:text-neutral-300">
+															{chunks}
+														</Link>
+													),
+												})}
+											</p>
+										</form>
+									</>
+								)}
+							</div>
+						</Dialog.Panel>
+					</Transition.Child>
 				</div>
-			</div>
-		</div>
+			</Dialog>
+		</Transition>
 	)
 }

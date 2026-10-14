@@ -156,17 +156,6 @@
     "app_locale_featurenotificationform_Submitting": "Inviando...",
     "app_locale_featurenotificationform_Terms_And_Conditions": "Termini & Condizioni"
   },
-  "app_locale_newslettermodal": {
-    "app_locale_newslettermodal_By_Signing_Up_I_Agree_To_The": "Iscrivendomi accetto i",
-    "app_locale_newslettermodal_Email_Address": "Indirizzo Email",
-    "app_locale_newslettermodal_Enter_Your_Email_Address": "Inserisci il tuo indirizzo email (max 60 caratteri)",
-    "app_locale_newslettermodal_Its_Easy_And_Free": "È FACILE E GRATUITO",
-    "app_locale_newslettermodal_Select_Newsletter_Types": "Seleziona i tipi di newsletter ({selectedTypes.length} selezionati)",
-    "app_locale_newslettermodal_Sign_Up": "ISCRIVITI",
-    "app_locale_newslettermodal_Sign_Up_Today": "ISCRIVITI OGGI",
-    "app_locale_newslettermodal_Subscribing": "Iscrizione in corso...",
-    "app_locale_newslettermodal_Terms_And_Conditions": "Termini & Condizioni"
-  },
   "app_locale_referralprogrammodal": {
     "app_locale_referralprogrammodal_By_Signing_Up": "Iscrivendoti, accetti i nostri",
     "app_locale_referralprogrammodal_Earn": "GUADAGNA",
@@ -3613,5 +3602,31 @@
     "copy": "Copia link",
     "copied": "Copiato",
     "share": "Condividi"
+  },
+  "Newsletter": {
+    "eyebrow": "Newsletter TRAVSUS",
+    "title": "Idee di viaggio, direttamente nella tua casella di posta.",
+    "text": "Viaggi selezionati, offerte e consigli locali. Niente spam, disiscriviti quando vuoi.",
+    "topics": "Cosa vorresti ricevere?",
+    "topic_deals": "Offerte",
+    "topic_tips": "Consigli di viaggio",
+    "topic_reviews": "Guide alle destinazioni",
+    "topic_inspiration": "Ispirazione",
+    "email": "Il tuo indirizzo email",
+    "submit": "Iscriviti",
+    "consent": "Iscrivendoti accetti i nostri <terms>Termini</terms> e la nostra <privacy>Informativa sulla privacy</privacy>.",
+    "close": "Chiudi",
+    "perk_1": "Scopri per primo i nuovi viaggi",
+    "perk_2": "Offerte per gli iscritti",
+    "perk_3": "Consigli locali dalle nostre guide",
+    "done_title": "Ci sei!",
+    "done_text": "Controlla la tua casella: le prime idee di viaggio sono in arrivo.",
+    "already_title": "Sei già iscritto",
+    "already_text": "Buone notizie: sei già nella lista. Ci vediamo nella tua casella di posta.",
+    "continue": "Continua a esplorare",
+    "err_email": "Inserisci un indirizzo email valido.",
+    "err_topics": "Scegli almeno un argomento.",
+    "err_limit": "Troppi tentativi. Attendi un minuto e riprova.",
+    "err_server": "Qualcosa è andato storto. Riprova."
   }
 }

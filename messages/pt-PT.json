@@ -156,17 +156,6 @@
     "app_locale_featurenotificationform_Submitting": "A submeter...",
     "app_locale_featurenotificationform_Terms_And_Conditions": "Termos & Condições"
   },
-  "app_locale_newslettermodal": {
-    "app_locale_newslettermodal_By_Signing_Up_I_Agree_To_The": "Ao inscrever-me, concordo com os",
-    "app_locale_newslettermodal_Email_Address": "Endereço de Email",
-    "app_locale_newslettermodal_Enter_Your_Email_Address": "Insira o seu endereço de email (máximo 60 caracteres)",
-    "app_locale_newslettermodal_Its_Easy_And_Free": "É FÁCIL E GRATUITO",
-    "app_locale_newslettermodal_Select_Newsletter_Types": "Selecione os tipos de newsletter ({selectedTypes.length} selecionados)",
-    "app_locale_newslettermodal_Sign_Up": "INSCREVA-SE",
-    "app_locale_newslettermodal_Sign_Up_Today": "INSCREVA-SE HOJE",
-    "app_locale_newslettermodal_Subscribing": "A subscrever...",
-    "app_locale_newslettermodal_Terms_And_Conditions": "Termos & Condições"
-  },
   "app_locale_referralprogrammodal": {
     "app_locale_referralprogrammodal_By_Signing_Up": "Ao inscrever-se, você concorda com os nossos",
     "app_locale_referralprogrammodal_Earn": "GANHE",
@@ -3555,5 +3544,31 @@
     "copy": "Copiar link",
     "copied": "Copiado",
     "share": "Partilhar"
+  },
+  "Newsletter": {
+    "eyebrow": "Newsletter TRAVSUS",
+    "title": "Ideias de viagem, diretamente na sua caixa de correio.",
+    "text": "Viagens escolhidas a dedo, promoções e dicas locais. Sem spam, cancele quando quiser.",
+    "topics": "O que gostaria de receber?",
+    "topic_deals": "Promoções",
+    "topic_tips": "Dicas de viagem",
+    "topic_reviews": "Guias de destinos",
+    "topic_inspiration": "Inspiração",
+    "email": "O seu endereço de email",
+    "submit": "Subscrever",
+    "consent": "Ao subscrever, aceita os nossos <terms>Termos</terms> e a <privacy>Política de Privacidade</privacy>.",
+    "close": "Fechar",
+    "perk_1": "Seja o primeiro a saber de novas viagens",
+    "perk_2": "Promoções para subscritores",
+    "perk_3": "Dicas locais dos nossos guias",
+    "done_title": "Já está!",
+    "done_text": "Veja a sua caixa de correio: as primeiras ideias de viagem estão a caminho.",
+    "already_title": "Já está subscrito",
+    "already_text": "Boas notícias: já está na lista. Até breve na sua caixa de correio.",
+    "continue": "Continuar a explorar",
+    "err_email": "Introduza um endereço de email válido.",
+    "err_topics": "Escolha pelo menos um tema.",
+    "err_limit": "Demasiadas tentativas. Aguarde um minuto e tente novamente.",
+    "err_server": "Algo correu mal. Tente novamente."
   }
 }

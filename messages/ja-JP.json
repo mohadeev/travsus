@@ -156,17 +156,6 @@
     "app_locale_featurenotificationform_Submitting": "送信中...",
     "app_locale_featurenotificationform_Terms_And_Conditions": "利用規約"
   },
-  "app_locale_newslettermodal": {
-    "app_locale_newslettermodal_By_Signing_Up_I_Agree_To_The": "登録することで、私は以下の",
-    "app_locale_newslettermodal_Email_Address": "メールアドレス",
-    "app_locale_newslettermodal_Enter_Your_Email_Address": "メールアドレスを入力してください（最大60文字）",
-    "app_locale_newslettermodal_Its_Easy_And_Free": "簡単で無料です",
-    "app_locale_newslettermodal_Select_Newsletter_Types": "ニュースレターの種類を選択してください（{selectedTypes.length} つ選択済み）",
-    "app_locale_newslettermodal_Sign_Up": "登録する",
-    "app_locale_newslettermodal_Sign_Up_Today": "今日登録する",
-    "app_locale_newslettermodal_Subscribing": "購読中...",
-    "app_locale_newslettermodal_Terms_And_Conditions": "利用規約に同意します"
-  },
   "app_locale_referralprogrammodal": {
     "app_locale_referralprogrammodal_By_Signing_Up": "サインアップすることで、あなたは私たちの",
     "app_locale_referralprogrammodal_Earn": "獲得",
@@ -3121,5 +3110,31 @@
     "copy": "リンクをコピー",
     "copied": "コピーしました",
     "share": "シェア"
+  },
+  "Newsletter": {
+    "eyebrow": "TRAVSUSニュースレター",
+    "title": "旅のアイデアを、あなたの受信箱へ。",
+    "text": "厳選ツアー、お得な情報、現地のヒントをお届けします。スパムなし、いつでも配信停止できます。",
+    "topics": "受け取りたい内容は？",
+    "topic_deals": "お得な情報",
+    "topic_tips": "旅のヒント",
+    "topic_reviews": "旅先ガイド",
+    "topic_inspiration": "インスピレーション",
+    "email": "メールアドレス",
+    "submit": "登録する",
+    "consent": "登録すると、<terms>利用規約</terms>と<privacy>プライバシーポリシー</privacy>に同意したことになります。",
+    "close": "閉じる",
+    "perk_1": "新しいツアーをいち早くお知らせ",
+    "perk_2": "登録者向けのお得な情報",
+    "perk_3": "ガイドによる現地のヒント",
+    "done_title": "登録が完了しました！",
+    "done_text": "受信箱をご確認ください。最初の旅のアイデアをお送りします。",
+    "already_title": "すでに登録済みです",
+    "already_text": "すでにリストに登録されています。受信箱でお会いしましょう。",
+    "continue": "サイトを見る",
+    "err_email": "有効なメールアドレスを入力してください。",
+    "err_topics": "トピックを1つ以上選んでください。",
+    "err_limit": "試行回数が多すぎます。1分ほど待ってから再度お試しください。",
+    "err_server": "問題が発生しました。もう一度お試しください。"
   }
 }

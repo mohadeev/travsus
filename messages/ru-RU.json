@@ -156,17 +156,6 @@
     "app_locale_featurenotificationform_Submitting": "Отправка...",
     "app_locale_featurenotificationform_Terms_And_Conditions": "Условиями & Положениями"
   },
-  "app_locale_newslettermodal": {
-    "app_locale_newslettermodal_By_Signing_Up_I_Agree_To_The": "Регистрируясь, я соглашаюсь с",
-    "app_locale_newslettermodal_Email_Address": "Адрес электронной почты",
-    "app_locale_newslettermodal_Enter_Your_Email_Address": "Введите ваш адрес электронной почты (максимум 60 символов)",
-    "app_locale_newslettermodal_Its_Easy_And_Free": "ЭТО ПРОСТО И БЕСПЛАТНО",
-    "app_locale_newslettermodal_Select_Newsletter_Types": "Выберите типы рассылки ({selectedTypes.length} выбрано)",
-    "app_locale_newslettermodal_Sign_Up": "ЗАРЕГИСТРИРОВАТЬСЯ",
-    "app_locale_newslettermodal_Sign_Up_Today": "ЗАРЕГИСТРИРУЙТЕСЬ СЕГОДНЯ",
-    "app_locale_newslettermodal_Subscribing": "Подписка...",
-    "app_locale_newslettermodal_Terms_And_Conditions": "Условиями & Положениями"
-  },
   "app_locale_referralprogrammodal": {
     "app_locale_referralprogrammodal_By_Signing_Up": "Регистрируясь, вы соглашаетесь с нашими",
     "app_locale_referralprogrammodal_Earn": "ЗАРАБАТЫВАЙТЕ",
@@ -3650,5 +3639,31 @@
     "copy": "Копировать ссылку",
     "copied": "Скопировано",
     "share": "Поделиться"
+  },
+  "Newsletter": {
+    "eyebrow": "Рассылка TRAVSUS",
+    "title": "Идеи для путешествий — прямо на вашу почту.",
+    "text": "Отобранные туры, скидки и советы от местных. Без спама, отписаться можно в любой момент.",
+    "topics": "Что вы хотите получать?",
+    "topic_deals": "Скидки",
+    "topic_tips": "Советы путешественникам",
+    "topic_reviews": "Гиды по направлениям",
+    "topic_inspiration": "Вдохновение",
+    "email": "Ваш адрес электронной почты",
+    "submit": "Подписаться",
+    "consent": "Подписываясь, вы соглашаетесь с нашими <terms>Условиями</terms> и <privacy>Политикой конфиденциальности</privacy>.",
+    "close": "Закрыть",
+    "perk_1": "Первыми узнавайте о новых турах",
+    "perk_2": "Скидки для подписчиков",
+    "perk_3": "Советы от наших местных гидов",
+    "done_title": "Готово!",
+    "done_text": "Проверьте почту: первые идеи для путешествий уже в пути.",
+    "already_title": "Вы уже подписаны",
+    "already_text": "Хорошая новость: вы уже в списке. До встречи в вашей почте.",
+    "continue": "Продолжить",
+    "err_email": "Введите корректный адрес электронной почты.",
+    "err_topics": "Выберите хотя бы одну тему.",
+    "err_limit": "Слишком много попыток. Подождите минуту и попробуйте снова.",
+    "err_server": "Что-то пошло не так. Попробуйте ещё раз."
   }
 }

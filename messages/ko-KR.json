@@ -156,17 +156,6 @@
     "app_locale_featurenotificationform_Submitting": "제출 중...",
     "app_locale_featurenotificationform_Terms_And_Conditions": "이용 약관에 동의합니다"
   },
-  "app_locale_newslettermodal": {
-    "app_locale_newslettermodal_By_Signing_Up_I_Agree_To_The": "가입함으로써 동의합니다",
-    "app_locale_newslettermodal_Email_Address": "이메일 주소",
-    "app_locale_newslettermodal_Enter_Your_Email_Address": "이메일 주소를 입력하세요 (최대 60자)",
-    "app_locale_newslettermodal_Its_Easy_And_Free": "간편하고 무료입니다",
-    "app_locale_newslettermodal_Select_Newsletter_Types": "뉴스레터 유형 선택 ({selectedTypes.length}개 선택됨)",
-    "app_locale_newslettermodal_Sign_Up": "가입하기",
-    "app_locale_newslettermodal_Sign_Up_Today": "오늘 가입하세요",
-    "app_locale_newslettermodal_Subscribing": "구독 중...",
-    "app_locale_newslettermodal_Terms_And_Conditions": "이용 약관"
-  },
   "app_locale_referralprogrammodal": {
     "app_locale_referralprogrammodal_By_Signing_Up": "가입함으로써, 당신은 우리의",
     "app_locale_referralprogrammodal_Earn": "벌다",
@@ -3108,5 +3097,31 @@
     "copy": "링크 복사",
     "copied": "복사됨",
     "share": "공유"
+  },
+  "Newsletter": {
+    "eyebrow": "TRAVSUS 뉴스레터",
+    "title": "여행 아이디어를 받은편지함으로 바로 보내드려요.",
+    "text": "엄선한 여행, 특가, 현지 팁을 보내드립니다. 스팸 없이, 언제든 구독 해지할 수 있어요.",
+    "topics": "어떤 소식을 받고 싶으세요?",
+    "topic_deals": "특가",
+    "topic_tips": "여행 팁",
+    "topic_reviews": "여행지 가이드",
+    "topic_inspiration": "영감",
+    "email": "이메일 주소",
+    "submit": "구독하기",
+    "consent": "구독하면 <terms>이용약관</terms> 및 <privacy>개인정보 처리방침</privacy>에 동의하게 됩니다.",
+    "close": "닫기",
+    "perk_1": "새로운 여행 소식을 가장 먼저",
+    "perk_2": "구독자 전용 특가",
+    "perk_3": "가이드가 전하는 현지 팁",
+    "done_title": "구독 완료!",
+    "done_text": "받은편지함을 확인하세요. 첫 여행 아이디어가 곧 도착합니다.",
+    "already_title": "이미 구독 중이에요",
+    "already_text": "이미 구독 목록에 있어요. 받은편지함에서 만나요.",
+    "continue": "계속 둘러보기",
+    "err_email": "올바른 이메일 주소를 입력하세요.",
+    "err_topics": "주제를 하나 이상 선택하세요.",
+    "err_limit": "시도 횟수가 너무 많습니다. 1분 후 다시 시도하세요.",
+    "err_server": "문제가 발생했습니다. 다시 시도하세요."
   }
 }

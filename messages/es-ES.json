@@ -253,17 +253,6 @@
     "app_locale_featurenotificationform_Submitting": "Enviando...",
     "app_locale_featurenotificationform_Terms_And_Conditions": "Términos y Condiciones"
   },
-  "app_locale_newslettermodal": {
-    "app_locale_newslettermodal_By_Signing_Up_I_Agree_To_The": "Al registrarme, acepto los",
-    "app_locale_newslettermodal_Email_Address": "Dirección de correo electrónico",
-    "app_locale_newslettermodal_Enter_Your_Email_Address": "Ingrese su dirección de correo electrónico (máximo 60 caracteres)",
-    "app_locale_newslettermodal_Its_Easy_And_Free": "ES FÁCIL Y GRATIS",
-    "app_locale_newslettermodal_Select_Newsletter_Types": "Seleccione los tipos de boletín ({selectedTypes.length} seleccionados)",
-    "app_locale_newslettermodal_Sign_Up": "REGÍSTRATE",
-    "app_locale_newslettermodal_Sign_Up_Today": "REGÍSTRESE HOY",
-    "app_locale_newslettermodal_Subscribing": "Suscrito...",
-    "app_locale_newslettermodal_Terms_And_Conditions": "Términos y Condiciones"
-  },
   "app_locale_referralprogrammodal": {
     "app_locale_referralprogrammodal_By_Signing_Up": "Al registrarse, usted acepta nuestros",
     "app_locale_referralprogrammodal_Earn": "GANAR",
@@ -4044,5 +4033,31 @@
     "copy": "Copiar enlace",
     "copied": "Copiado",
     "share": "Compartir"
+  },
+  "Newsletter": {
+    "eyebrow": "Newsletter de TRAVSUS",
+    "title": "Ideas de viaje, directas a tu bandeja de entrada.",
+    "text": "Viajes seleccionados, ofertas y consejos locales. Sin spam, date de baja cuando quieras.",
+    "topics": "¿Qué te gustaría recibir?",
+    "topic_deals": "Ofertas",
+    "topic_tips": "Consejos de viaje",
+    "topic_reviews": "Guías de destinos",
+    "topic_inspiration": "Inspiración",
+    "email": "Tu correo electrónico",
+    "submit": "Suscribirme",
+    "consent": "Al suscribirte aceptas nuestros <terms>Términos</terms> y nuestra <privacy>Política de privacidad</privacy>.",
+    "close": "Cerrar",
+    "perk_1": "Entérate antes que nadie de los nuevos viajes",
+    "perk_2": "Ofertas para suscriptores",
+    "perk_3": "Consejos locales de nuestros guías",
+    "done_title": "¡Ya estás dentro!",
+    "done_text": "Revisa tu bandeja de entrada: tus primeras ideas de viaje están en camino.",
+    "already_title": "Ya estás suscrito",
+    "already_text": "Buenas noticias: ya estás en la lista. Nos vemos en tu bandeja de entrada.",
+    "continue": "Seguir explorando",
+    "err_email": "Introduce un correo electrónico válido.",
+    "err_topics": "Elige al menos un tema.",
+    "err_limit": "Demasiados intentos. Espera un minuto y vuelve a intentarlo.",
+    "err_server": "Algo salió mal. Inténtalo de nuevo."
   }
 }

@@ -278,17 +278,6 @@
     "app_locale_featurenotificationform_Submitting": "Submitting...",
     "app_locale_featurenotificationform_Terms_And_Conditions": "Terms & Conditions"
   },
-  "app_locale_newslettermodal": {
-    "app_locale_newslettermodal_By_Signing_Up_I_Agree_To_The": "By signing up I agree to the",
-    "app_locale_newslettermodal_Email_Address": "Email Address",
-    "app_locale_newslettermodal_Enter_Your_Email_Address": "Enter your email address (max 60 characters)",
-    "app_locale_newslettermodal_Its_Easy_And_Free": "IT'S EASY AND FREE",
-    "app_locale_newslettermodal_Select_Newsletter_Types": "Select newsletter types ({selectedTypes.length} selected)",
-    "app_locale_newslettermodal_Sign_Up": "SIGN UP",
-    "app_locale_newslettermodal_Sign_Up_Today": "SIGN UP TODAY",
-    "app_locale_newslettermodal_Subscribing": "Subscribing...",
-    "app_locale_newslettermodal_Terms_And_Conditions": "Terms & Conditions"
-  },
   "app_locale_referralprogrammodal": {
     "app_locale_referralprogrammodal_By_Signing_Up": "By signing up, you agree to our",
     "app_locale_referralprogrammodal_Earn": "EARN",
@@ -2821,5 +2810,31 @@
     "copy": "Copy link",
     "copied": "Copied",
     "share": "Share"
+  },
+  "Newsletter": {
+    "eyebrow": "TRAVSUS newsletter",
+    "title": "Travel ideas, straight to your inbox.",
+    "text": "Hand-picked trips, deals and local tips. No spam, unsubscribe anytime.",
+    "topics": "What would you like to get?",
+    "topic_deals": "Deals",
+    "topic_tips": "Travel tips",
+    "topic_reviews": "Destination guides",
+    "topic_inspiration": "Inspiration",
+    "email": "Your email address",
+    "submit": "Subscribe",
+    "consent": "By subscribing you agree to our <terms>Terms</terms> and <privacy>Privacy Policy</privacy>.",
+    "close": "Close",
+    "perk_1": "First to hear about new trips",
+    "perk_2": "Deals for subscribers",
+    "perk_3": "Local tips from our guides",
+    "done_title": "You're in!",
+    "done_text": "Check your inbox: your first travel ideas are on their way.",
+    "already_title": "You're already subscribed",
+    "already_text": "Good news: you're already on the list. See you in your inbox.",
+    "continue": "Continue exploring",
+    "err_email": "Please enter a valid email address.",
+    "err_topics": "Pick at least one topic.",
+    "err_limit": "Too many attempts. Please wait a minute and try again.",
+    "err_server": "Something went wrong. Please try again."
   }
 }

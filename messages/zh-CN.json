@@ -156,17 +156,6 @@
     "app_locale_featurenotificationform_Submitting": "正在提交...",
     "app_locale_featurenotificationform_Terms_And_Conditions": "条款与条件"
   },
-  "app_locale_newslettermodal": {
-    "app_locale_newslettermodal_By_Signing_Up_I_Agree_To_The": "通过注册，我同意",
-    "app_locale_newslettermodal_Email_Address": "电子邮件地址",
-    "app_locale_newslettermodal_Enter_Your_Email_Address": "输入您的电子邮件地址（最多60个字符）",
-    "app_locale_newslettermodal_Its_Easy_And_Free": "简单且免费",
-    "app_locale_newslettermodal_Select_Newsletter_Types": "选择通讯类型（已选择{selectedTypes.length}种）",
-    "app_locale_newslettermodal_Sign_Up": "注册",
-    "app_locale_newslettermodal_Sign_Up_Today": "立即注册",
-    "app_locale_newslettermodal_Subscribing": "正在订阅...",
-    "app_locale_newslettermodal_Terms_And_Conditions": "条款和条件"
-  },
   "app_locale_referralprogrammodal": {
     "app_locale_referralprogrammodal_By_Signing_Up": "通过注册，您同意我们的",
     "app_locale_referralprogrammodal_Earn": "赚取",
@@ -2983,5 +2972,31 @@
     "copy": "复制链接",
     "copied": "已复制",
     "share": "分享"
+  },
+  "Newsletter": {
+    "eyebrow": "TRAVSUS 订阅通讯",
+    "title": "旅行灵感，直达您的收件箱。",
+    "text": "精选行程、优惠和当地小贴士。绝无垃圾邮件，可随时退订。",
+    "topics": "您想收到哪些内容？",
+    "topic_deals": "优惠",
+    "topic_tips": "旅行小贴士",
+    "topic_reviews": "目的地指南",
+    "topic_inspiration": "灵感",
+    "email": "您的邮箱地址",
+    "submit": "订阅",
+    "consent": "订阅即表示您同意我们的<terms>条款</terms>和<privacy>隐私政策</privacy>。",
+    "close": "关闭",
+    "perk_1": "第一时间获知新行程",
+    "perk_2": "订阅者专享优惠",
+    "perk_3": "导游分享的当地小贴士",
+    "done_title": "订阅成功！",
+    "done_text": "请查看您的收件箱：第一批旅行灵感正在路上。",
+    "already_title": "您已订阅",
+    "already_text": "好消息：您已在订阅名单中。收件箱见。",
+    "continue": "继续浏览",
+    "err_email": "请输入有效的邮箱地址。",
+    "err_topics": "请至少选择一个主题。",
+    "err_limit": "尝试次数过多，请稍等一分钟后再试。",
+    "err_server": "出了点问题，请重试。"
   }
 }
