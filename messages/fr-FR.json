@@ -4015,6 +4015,31 @@
     "delete_confirm": "Je comprends que mon compte et toutes ses données seront définitivement supprimés.",
     "delete_error": "Votre compte n'a pas pu être supprimé. Réessayez ou contactez-nous.",
     "keep_account": "Garder mon compte",
-    "delete_button": "Supprimer mon compte"
+    "delete_button": "Supprimer mon compte",
+    "saved_removed": "« {name} » a été retiré de vos circuits enregistrés.",
+    "undo": "Annuler"
+  },
+  "Bookings": {
+    "title": "Mes réservations",
+    "subtitle": "Vos voyages avec TRAVSUS, au même endroit.",
+    "tour": "Circuit",
+    "tab_upcoming": "À venir",
+    "tab_to_pay": "À payer",
+    "tab_past": "Passées",
+    "empty_upcoming": "Aucun voyage à venir",
+    "empty_to_pay": "Rien à payer",
+    "empty_past": "Aucun voyage passé pour l'instant",
+    "empty_text": "Trouvez votre prochaine aventure : petits groupes, guides locaux et réservation flexible.",
+    "explore": "Découvrir les circuits",
+    "status_paid": "Payée",
+    "status_cancelled": "Annulée",
+    "status_failed": "Paiement échoué",
+    "status_unpaid": "Pas encore payée",
+    "reference": "Réf. {ref}",
+    "travellers": "{adults, plural, one {# adulte} other {# adultes}}{children, plural, =0 {} one {, # enfant} other {, # enfants}}",
+    "complete_payment": "Finaliser le paiement",
+    "view_tour": "Voir le circuit",
+    "help": "Besoin de modifier ou d'annuler une réservation ?",
+    "contact": "Nous contacter"
   }
 }

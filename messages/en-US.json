@@ -2715,6 +2715,31 @@
     "delete_confirm": "I understand that my account and all its data will be permanently deleted.",
     "delete_error": "Your account couldn't be deleted. Please try again or contact us.",
     "keep_account": "Keep my account",
-    "delete_button": "Delete my account"
+    "delete_button": "Delete my account",
+    "saved_removed": "Removed “{name}” from your saved tours.",
+    "undo": "Undo"
+  },
+  "Bookings": {
+    "title": "My bookings",
+    "subtitle": "Your trips with TRAVSUS, all in one place.",
+    "tour": "Tour",
+    "tab_upcoming": "Upcoming",
+    "tab_to_pay": "To pay",
+    "tab_past": "Past",
+    "empty_upcoming": "No upcoming trips",
+    "empty_to_pay": "Nothing left to pay",
+    "empty_past": "No past trips yet",
+    "empty_text": "Find your next adventure: small groups, local guides and flexible booking.",
+    "explore": "Explore tours",
+    "status_paid": "Paid",
+    "status_cancelled": "Cancelled",
+    "status_failed": "Payment failed",
+    "status_unpaid": "Not paid yet",
+    "reference": "Ref. {ref}",
+    "travellers": "{adults, plural, one {# adult} other {# adults}}{children, plural, =0 {} one {, # child} other {, # children}}",
+    "complete_payment": "Complete payment",
+    "view_tour": "View tour",
+    "help": "Need to change or cancel a booking?",
+    "contact": "Contact us"
   }
 }

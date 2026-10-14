@@ -5,6 +5,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { getHomeData } from '@/lib/homeData'
 import { getSessionUser } from '@/lib/session'
 import TourCard from '../../(home)/TourCard'
+import SavedItem from './SavedItem'
 
 export const dynamic = 'force-dynamic'
 
@@ -41,7 +42,9 @@ export default async function SavedToursPage({ params }: { params: { locale: str
 				<ul className="mt-10 grid gap-x-5 gap-y-10 sm:grid-cols-2 xl:grid-cols-3">
 					{saved.map((tour) => (
 						<li key={tour.id}>
-							<TourCard tour={tour} />
+							<SavedItem id={tour.id} name={tour.name}>
+								<TourCard tour={tour} />
+							</SavedItem>
 						</li>
 					))}
 				</ul>

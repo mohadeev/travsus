@@ -3015,6 +3015,31 @@
     "delete_confirm": "アカウントとすべてのデータが完全に削除されることを理解しました。",
     "delete_error": "アカウントを削除できませんでした。もう一度お試しいただくか、お問い合わせください。",
     "keep_account": "アカウントを残す",
-    "delete_button": "アカウントを削除する"
+    "delete_button": "アカウントを削除する",
+    "saved_removed": "「{name}」を保存したツアーから削除しました。",
+    "undo": "元に戻す"
+  },
+  "Bookings": {
+    "title": "予約一覧",
+    "subtitle": "TRAVSUSでの旅行をまとめて確認できます。",
+    "tour": "ツアー",
+    "tab_upcoming": "今後の予定",
+    "tab_to_pay": "未払い",
+    "tab_past": "過去の旅行",
+    "empty_upcoming": "今後の予定はありません",
+    "empty_to_pay": "お支払いが必要な予約はありません",
+    "empty_past": "過去の旅行はまだありません",
+    "empty_text": "少人数グループ、地元ガイド、柔軟な予約で次の冒険を見つけましょう。",
+    "explore": "ツアーを見る",
+    "status_paid": "支払い済み",
+    "status_cancelled": "キャンセル済み",
+    "status_failed": "支払い失敗",
+    "status_unpaid": "未払い",
+    "reference": "予約番号 {ref}",
+    "travellers": "大人{adults}名{children, plural, =0 {} other {、子ども#名}}",
+    "complete_payment": "支払いを完了する",
+    "view_tour": "ツアーを見る",
+    "help": "予約の変更やキャンセルが必要ですか？",
+    "contact": "お問い合わせ"
   }
 }

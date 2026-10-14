@@ -3002,6 +3002,31 @@
     "delete_confirm": "내 계정과 모든 데이터가 영구 삭제된다는 것을 이해합니다.",
     "delete_error": "계정을 삭제하지 못했습니다. 다시 시도하거나 문의해 주세요.",
     "keep_account": "계정 유지하기",
-    "delete_button": "내 계정 삭제"
+    "delete_button": "내 계정 삭제",
+    "saved_removed": "‘{name}’을(를) 저장한 투어에서 삭제했습니다.",
+    "undo": "실행 취소"
+  },
+  "Bookings": {
+    "title": "내 예약",
+    "subtitle": "TRAVSUS 여행을 한곳에서 확인하세요.",
+    "tour": "투어",
+    "tab_upcoming": "예정된 여행",
+    "tab_to_pay": "결제 필요",
+    "tab_past": "지난 여행",
+    "empty_upcoming": "예정된 여행이 없습니다",
+    "empty_to_pay": "결제할 예약이 없습니다",
+    "empty_past": "아직 지난 여행이 없습니다",
+    "empty_text": "소규모 그룹, 현지 가이드, 유연한 예약으로 다음 모험을 찾아보세요.",
+    "explore": "투어 둘러보기",
+    "status_paid": "결제 완료",
+    "status_cancelled": "취소됨",
+    "status_failed": "결제 실패",
+    "status_unpaid": "미결제",
+    "reference": "예약 번호 {ref}",
+    "travellers": "성인 {adults}명{children, plural, =0 {} other {, 어린이 #명}}",
+    "complete_payment": "결제 완료하기",
+    "view_tour": "투어 보기",
+    "help": "예약을 변경하거나 취소해야 하나요?",
+    "contact": "문의하기"
   }
 }

@@ -2877,6 +2877,31 @@
     "delete_confirm": "我了解我的账户及所有数据将被永久删除。",
     "delete_error": "无法删除账户，请重试或联系我们。",
     "keep_account": "保留我的账户",
-    "delete_button": "删除我的账户"
+    "delete_button": "删除我的账户",
+    "saved_removed": "已将“{name}”从收藏中移除。",
+    "undo": "撤销"
+  },
+  "Bookings": {
+    "title": "我的预订",
+    "subtitle": "在一个地方查看你在 TRAVSUS 的所有行程。",
+    "tour": "行程",
+    "tab_upcoming": "即将出发",
+    "tab_to_pay": "待支付",
+    "tab_past": "已完成",
+    "empty_upcoming": "没有即将出发的行程",
+    "empty_to_pay": "没有待支付的预订",
+    "empty_past": "还没有已完成的行程",
+    "empty_text": "小团出行、本地向导、灵活预订，开启你的下一次冒险。",
+    "explore": "浏览行程",
+    "status_paid": "已支付",
+    "status_cancelled": "已取消",
+    "status_failed": "支付失败",
+    "status_unpaid": "未支付",
+    "reference": "编号 {ref}",
+    "travellers": "{adults} 位成人{children, plural, =0 {} other {，# 位儿童}}",
+    "complete_payment": "完成支付",
+    "view_tour": "查看行程",
+    "help": "需要修改或取消预订？",
+    "contact": "联系我们"
   }
 }

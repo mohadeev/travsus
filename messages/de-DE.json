@@ -3999,6 +3999,31 @@
     "delete_confirm": "Ich verstehe, dass mein Konto und alle Daten dauerhaft gelöscht werden.",
     "delete_error": "Ihr Konto konnte nicht gelöscht werden. Bitte erneut versuchen oder uns kontaktieren.",
     "keep_account": "Konto behalten",
-    "delete_button": "Mein Konto löschen"
+    "delete_button": "Mein Konto löschen",
+    "saved_removed": "„{name}“ wurde aus Ihren gespeicherten Touren entfernt.",
+    "undo": "Rückgängig"
+  },
+  "Bookings": {
+    "title": "Meine Buchungen",
+    "subtitle": "Ihre Reisen mit TRAVSUS an einem Ort.",
+    "tour": "Tour",
+    "tab_upcoming": "Bevorstehend",
+    "tab_to_pay": "Zu bezahlen",
+    "tab_past": "Vergangen",
+    "empty_upcoming": "Keine bevorstehenden Reisen",
+    "empty_to_pay": "Nichts mehr zu bezahlen",
+    "empty_past": "Noch keine vergangenen Reisen",
+    "empty_text": "Finden Sie Ihr nächstes Abenteuer: kleine Gruppen, lokale Guides und flexible Buchung.",
+    "explore": "Touren entdecken",
+    "status_paid": "Bezahlt",
+    "status_cancelled": "Storniert",
+    "status_failed": "Zahlung fehlgeschlagen",
+    "status_unpaid": "Noch nicht bezahlt",
+    "reference": "Ref. {ref}",
+    "travellers": "{adults, plural, one {# Erwachsener} other {# Erwachsene}}{children, plural, =0 {} one {, # Kind} other {, # Kinder}}",
+    "complete_payment": "Zahlung abschließen",
+    "view_tour": "Tour ansehen",
+    "help": "Möchten Sie eine Buchung ändern oder stornieren?",
+    "contact": "Kontakt"
   }
 }
