@@ -44,7 +44,7 @@ export default function AffiliateRequestForm({ dark = false, id }: { dark?: bool
 	}
 
 	const field = dark
-		? 'bg-white/10 text-white placeholder:text-white/50 ring-white/15 focus:ring-white'
+		? 'bg-neutral-950/60 text-white placeholder:text-white/60 ring-white/25 backdrop-blur-md focus:ring-white'
 		: 'bg-white text-neutral-950 placeholder:text-neutral-400 ring-neutral-200 focus:ring-neutral-950 dark:bg-neutral-900 dark:text-white dark:ring-neutral-700 dark:focus:ring-white'
 
 	return (

@@ -62,7 +62,7 @@ export default async function AffiliatesPage({ params }: PageProps) {
 	}
 
 	return (
-		<main className="pb-16 text-neutral-950 sm:pb-24 dark:text-white">
+		<main className="pb-16 text-neutral-950 [&_h1]:[text-wrap:balance] [&_h2]:[text-wrap:balance] [&_p]:[text-wrap:pretty] sm:pb-24 dark:text-white">
 			<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 
 			{/* Hero: one idea, one action */}
@@ -159,7 +159,7 @@ export default async function AffiliatesPage({ params }: PageProps) {
 
 			{/* What the traveller gets: the reason links convert */}
 			<section className="mx-auto mt-20 grid max-w-7xl items-center gap-10 px-5 sm:mt-36 lg:grid-cols-2 lg:gap-16">
-				<div className="relative aspect-square overflow-hidden rounded-[28px] bg-neutral-200 sm:rounded-[40px]">
+				<div className="relative aspect-[1/1] overflow-hidden rounded-[28px] bg-neutral-200 sm:rounded-[40px]">
 					<Image src={PHOTOS.sunsetHug} alt="" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
 				</div>
 				<div>
@@ -195,7 +195,7 @@ export default async function AffiliatesPage({ params }: PageProps) {
 			{/* Final call to action */}
 			<section className="mx-auto mt-20 max-w-7xl px-5 sm:mt-36">
 				<div className="relative isolate overflow-hidden rounded-[28px] bg-neutral-950 px-6 py-16 text-center text-white sm:rounded-[40px] sm:px-10 sm:py-28">
-					<Image src={PHOTOS.hiking} alt="" fill sizes="100vw" className="-z-10 object-cover opacity-35" />
+					<Image src={PHOTOS.hiking} alt="" fill sizes="100vw" className="-z-10 object-cover opacity-30" />
 					<h2 className="mx-auto max-w-3xl text-4xl font-bold tracking-tight sm:text-6xl">{t('cta_title')}</h2>
 					<p className="mx-auto mt-4 max-w-xl text-lg text-white/70 sm:text-xl">{t('cta_text')}</p>
 					<div className="mx-auto mt-10 max-w-xl">
