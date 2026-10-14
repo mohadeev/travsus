@@ -1,22 +1,8 @@
-import React from 'react'
+// Field label in the site style.
+import * as React from 'react'
+import { cn } from '@/lib/utils'
 
-interface LabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
-	htmlFor: string
-}
-
-export const Label: React.FC<LabelProps> = ({
-	htmlFor,
-	className,
-	children,
-	...props
-}) => {
-	return (
-		<label
-			htmlFor={htmlFor}
-			className={`block text-sm font-medium text-gray-700 ${className || ''}`}
-			{...props}
-		>
-			{children}
-		</label>
-	)
-}
+export const Label = React.forwardRef<HTMLLabelElement, React.LabelHTMLAttributes<HTMLLabelElement>>(({ className, ...props }, ref) => (
+	<label ref={ref} className={cn('mb-1.5 block text-sm font-medium text-neutral-950 dark:text-white', className)} {...props} />
+))
+Label.displayName = 'Label'

@@ -2,6 +2,7 @@ export const dynamic = 'force-dynamic'
 import { type NextRequest, NextResponse } from 'next/server'
 import getUserData from '@/app/api/user/getUserData'
 import { db, T, must, touch } from '@/lib/db'
+import { companyFields } from '../fields'
 
 // Only the company's creator can read or edit it (it holds bank details)
 export async function GET(
@@ -45,12 +46,12 @@ export async function PUT(
 		if (!userData?.id) {
 			return NextResponse.json({ error: 'Not authenticated' }, { status: 401 })
 		}
-		const data = await request.json()
-
+		const { fields, error } = companyFields(await request.json().catch(() => ({})))
+		if (!fields) return NextResponse.json({ message: error }, { status: 400 })
 		const updatedCompany = must(
 			await db
 				.from(T.businesses)
-				.update(touch({ name: data.name, type: data.type }))
+				.update(touch(fields))
 				.match({ id: params.id, creatorId: userData.id })
 				.select('*')
 				.maybeSingle(),

@@ -186,7 +186,7 @@ export default function TourItinerary({
 			<div className="flex items-center justify-between">
 				<div>
 					<h2 className="flex items-center text-xl font-bold">
-						Tour Itinerary <span className="ml-1 text-red-500">*</span>
+						Day by day <span className="ml-1 text-red-500">*</span>
 					</h2>
 					<p className="text-muted-foreground text-sm">
 						Create a day-by-day schedule for your tour.

@@ -1,127 +1,32 @@
-'use client'
-export const dynamic = "force-dynamic";
-
-import { useEffect, useState } from 'react'
-import { useParams, useRouter } from 'next/navigation'
-import { useAppDispatch, useAppSelector } from '@/store/hooks'
-import { selectAllCompanies } from '@/store/slices/company'
-import { EditCompanyForm } from '@/components/dashboard/edit-company-form'
-import {
-	Card,
-	CardContent,
-	CardDescription,
-	CardHeader,
-	CardTitle,
-} from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
+// Edit a company (only its creator can).
+import Link from 'next/link'
+import { notFound } from 'next/navigation'
 import { ArrowLeft } from 'lucide-react'
-import { Skeleton } from '@/components/ui/skeleton'
+import { CompanyForm } from '@/components/dashboard/company-form'
+import { db, T, must } from '@/lib/db'
+import { dashboardScope } from '@/lib/dashboard'
 
-export default function EditCompanyPage() {
-	const params = useParams()
-	const router = useRouter()
-	const dispatch = useAppDispatch()
-	const companies = useAppSelector(selectAllCompanies)
-	const [company, setCompany] = useState<any>(null)
-	const [isLoading, setIsLoading] = useState(true)
+export const metadata = { title: 'Edit company | TRAVSUS' }
 
-	const companyId = params.id as string
-
-	useEffect(() => {
-		// First try to find the company in the Redux store
-		const foundCompany = companies.find((c) => c.id === companyId)
-
-		if (foundCompany) {
-			setCompany(foundCompany)
-			setIsLoading(false)
-		} else {
-			// If not found in Redux, fetch from API
-			fetchCompanyData()
-		}
-	}, [companyId, companies])
-
-	const fetchCompanyData = async () => {
-		try {
-			setIsLoading(true)
-			const response = await fetch(`/api/dashboard/company/${companyId}`)
-
-			if (!response.ok) {
-				throw new Error('Failed to fetch company data')
-			}
-
-			const data = await response.json()
-			setCompany(data)
-		} catch (error) {
-			console.error('Error fetching company:', error)
-		} finally {
-			setIsLoading(false)
-		}
-	}
-
-	const handleBack = () => {
-		router.push('/dashboard/settings')
-	}
-
-	if (isLoading) {
-		return (
-			<div className="h-full overflow-auto pb-20">
-				<Card>
-					<CardHeader>
-						<CardTitle>
-							<Skeleton className="h-8 w-[200px]" />
-						</CardTitle>
-						<CardDescription>
-							<Skeleton className="h-4 w-[300px]" />
-						</CardDescription>
-					</CardHeader>
-					<CardContent>
-						<Skeleton className="h-[400px] w-full" />
-					</CardContent>
-				</Card>
-			</div>
-		)
-	}
-
-	if (!company) {
-		return (
-			<div className="h-full overflow-auto pb-20">
-				<Card>
-					<CardHeader>
-						<CardTitle>Company Not Found</CardTitle>
-						<CardDescription>
-							The company you are looking for does not exist or you don't have
-							permission to edit it.
-						</CardDescription>
-					</CardHeader>
-					<CardContent>
-						<Button onClick={handleBack} variant="outline" className="mt-4">
-							<ArrowLeft className="mr-2 h-4 w-4" />
-							Back to Settings
-						</Button>
-					</CardContent>
-				</Card>
-			</div>
-		)
-	}
+export default async function EditCompanyPage({ params }: { params: { locale: string; id: string } }) {
+	const scope = await dashboardScope()
+	if (!scope) return null
+	const company = must(
+		await db.from(T.businesses).select('id, name, type, email, phoneNumber, address, country, registrationNumber, adminName').match({ id: params.id, creatorId: scope.user.id }).maybeSingle(),
+	)
+	if (!company) notFound()
 
 	return (
-		<div className="h-full overflow-auto pb-20">
-			<div className="mb-6 flex items-center justify-between">
-				<Button onClick={handleBack} variant="outline" size="sm">
-					<ArrowLeft className="mr-2 h-4 w-4" />
-					Back
-				</Button>
+		<div className="max-w-3xl">
+			<Link href={`/${params.locale}/dashboard/settings` as any} className="inline-flex items-center gap-1.5 text-sm font-semibold text-neutral-500 transition hover:text-neutral-950 dark:hover:text-white">
+				<ArrowLeft className="h-4 w-4" />
+				Company
+			</Link>
+			<h1 className="mt-4 text-3xl font-bold tracking-tight sm:text-5xl">{company.name}</h1>
+			<p className="mt-2 text-lg text-neutral-500">Update your company details.</p>
+			<div className="mt-10">
+				<CompanyForm company={company} />
 			</div>
-
-			<Card>
-				<CardHeader>
-					<CardTitle>Edit Company</CardTitle>
-					<CardDescription>Update your company information.</CardDescription>
-				</CardHeader>
-				<CardContent>
-					<EditCompanyForm company={company} />
-				</CardContent>
-			</Card>
 		</div>
 	)
 }

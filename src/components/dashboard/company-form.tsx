@@ -1,6 +1,6 @@
 'use client'
-// Create a company: what kind of business, then its details. On success the
-// dashboard opens with the new company.
+// Company form (create and edit): what kind of business, then its details.
+// After creating, the dashboard opens; after editing, the Company page.
 import { useMemo, useState, type FormEvent, type ReactNode } from 'react'
 import { useRouter } from 'next/navigation'
 import { useLocale } from 'next-intl'
@@ -42,11 +42,11 @@ function Field({ label, icon: Icon, hint, children }: { label: string; icon: typ
 	)
 }
 
-export function CreateCompanyForm() {
+export function CompanyForm({ company }: { company?: Record<string, any> }) {
 	const router = useRouter()
 	const locale = useLocale()
 	const countries = useCountries()
-	const [type, setType] = useState<string>('TRAVEL_AGENCY')
+	const [type, setType] = useState<string>(company?.type ?? 'TRAVEL_AGENCY')
 	const [busy, setBusy] = useState(false)
 	const [error, setError] = useState('')
 
@@ -55,14 +55,14 @@ export function CreateCompanyForm() {
 		const form = Object.fromEntries(new FormData(e.currentTarget)) as Record<string, string>
 		setBusy(true)
 		setError('')
-		const res = await fetch('/api/dashboard/company/create', {
-			method: 'POST',
+		const res = await fetch(company ? `/api/dashboard/company/${company.id}` : '/api/dashboard/company/create', {
+			method: company ? 'PUT' : 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({ ...form, type }),
 		}).catch(() => null)
 		const data = await res?.json().catch(() => null)
 		if (res?.ok) {
-			router.push(`/${locale}/dashboard` as any)
+			router.push(`/${locale}/dashboard${company ? '/settings' : ''}` as any)
 			router.refresh()
 			return
 		}
@@ -109,11 +109,11 @@ export function CreateCompanyForm() {
 			<section className="space-y-5">
 				<h2 className="text-lg font-bold tracking-tight">Company</h2>
 				<Field label="Company name" icon={Building2}>
-					<input name="name" required minLength={2} maxLength={120} autoComplete="organization" placeholder="e.g. Sahara Trails" className={input} />
+					<input name="name" defaultValue={company?.name ?? ''} required minLength={2} maxLength={120} autoComplete="organization" placeholder="e.g. Sahara Trails" className={input} />
 				</Field>
 				<div className="grid gap-5 sm:grid-cols-2">
 					<Field label="Country" icon={Globe}>
-						<input name="country" list="company-countries" maxLength={80} autoComplete="country-name" placeholder="Start typing…" className={input} />
+						<input name="country" defaultValue={company?.country ?? ''} list="company-countries" maxLength={80} autoComplete="country-name" placeholder="Start typing…" className={input} />
 						<datalist id="company-countries">
 							{countries.map((c) => (
 								<option key={c} value={c} />
@@ -121,11 +121,11 @@ export function CreateCompanyForm() {
 						</datalist>
 					</Field>
 					<Field label="Registration number" icon={FileText} hint="Optional. Shown on invoices.">
-						<input name="registrationNumber" maxLength={60} placeholder="Company registration no." className={input} />
+						<input name="registrationNumber" defaultValue={company?.registrationNumber ?? ''} maxLength={60} placeholder="Company registration no." className={input} />
 					</Field>
 				</div>
 				<Field label="Address" icon={MapPin}>
-					<input name="address" maxLength={300} autoComplete="street-address" placeholder="Street, city, postcode" className={input} />
+					<input name="address" defaultValue={company?.address ?? ''} maxLength={300} autoComplete="street-address" placeholder="Street, city, postcode" className={input} />
 				</Field>
 			</section>
 
@@ -133,14 +133,14 @@ export function CreateCompanyForm() {
 			<section className="space-y-5">
 				<h2 className="text-lg font-bold tracking-tight">Contact</h2>
 				<Field label="Contact person" icon={User}>
-					<input name="adminName" maxLength={120} autoComplete="name" placeholder="Who we talk to" className={input} />
+					<input name="adminName" defaultValue={company?.adminName ?? ''} maxLength={120} autoComplete="name" placeholder="Who we talk to" className={input} />
 				</Field>
 				<div className="grid gap-5 sm:grid-cols-2">
 					<Field label="Business email" icon={Mail} hint="For booking notifications.">
-						<input name="email" type="email" required maxLength={160} autoComplete="email" placeholder="bookings@company.com" className={input} />
+						<input name="email" defaultValue={company?.email ?? ''} type="email" required maxLength={160} autoComplete="email" placeholder="bookings@company.com" className={input} />
 					</Field>
 					<Field label="Phone" icon={Phone}>
-						<input name="phoneNumber" type="tel" maxLength={40} autoComplete="tel" placeholder="+212 600 000 000" className={input} />
+						<input name="phoneNumber" defaultValue={company?.phoneNumber ?? ''} type="tel" maxLength={40} autoComplete="tel" placeholder="+212 600 000 000" className={input} />
 					</Field>
 				</div>
 			</section>
@@ -166,7 +166,7 @@ export function CreateCompanyForm() {
 					className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-neutral-950 px-8 text-sm font-semibold text-white transition hover:bg-neutral-800 disabled:opacity-60 dark:bg-white dark:text-neutral-950"
 				>
 					{busy && <Loader2 className="h-4 w-4 animate-spin" />}
-					Create company
+					{company ? 'Save changes' : 'Create company'}
 				</button>
 			</div>
 		</form>

@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { ArrowLeft, CalendarCheck, Map, Wallet } from 'lucide-react'
-import { CreateCompanyForm } from '@/components/dashboard/create-company-form'
+import { CompanyForm } from '@/components/dashboard/company-form'
 
 export const metadata = { title: 'Create your company | TRAVSUS' }
 
@@ -34,7 +34,7 @@ export default function CreateCompanyPage({ params }: { params: { locale: string
 			</ul>
 
 			<div className="mt-10">
-				<CreateCompanyForm />
+				<CompanyForm />
 			</div>
 		</div>
 	)

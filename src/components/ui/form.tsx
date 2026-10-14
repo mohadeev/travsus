@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-import type * as LabelPrimitive from "@radix-ui/react-label"
 import { Slot } from "@radix-ui/react-slot"
 import {
   Controller,
@@ -82,8 +81,8 @@ const FormItem = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivEl
 FormItem.displayName = "FormItem"
 
 const FormLabel = React.forwardRef<
-  React.ElementRef<typeof LabelPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root>
+  HTMLLabelElement,
+  React.LabelHTMLAttributes<HTMLLabelElement>
 >(({ className, ...props }, ref) => {
   const { error, formItemId } = useFormField()
 

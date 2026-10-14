@@ -4,6 +4,7 @@ import type { ReactNode } from 'react'
 import { dashboardScope } from '@/lib/dashboard'
 import SignInPrompt from '../(account-pages)/_components/SignInPrompt'
 import DashboardNav from './_components/DashboardNav'
+import Toaster from './_components/Toaster'
 
 // The dashboard shows each user their own data: always per request, never indexed
 export const dynamic = 'force-dynamic'
@@ -18,6 +19,7 @@ export default async function DashboardLayout({ children }: { children: ReactNod
 				<div className="grid grid-cols-[minmax(0,1fr)] gap-8 lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-12">
 					<DashboardNav scopeLabel={scope.label} />
 					<div className="min-w-0">{children}</div>
+					<Toaster />
 				</div>
 			) : (
 				<div className="py-10 sm:py-16">

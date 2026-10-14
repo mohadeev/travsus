@@ -15,8 +15,18 @@ import TourImages from './TourImages'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { toast } from '@/components/ui/use-toast'
-import { Save } from 'lucide-react'
+import { BedDouble, Euro, FileText, Images, ListOrdered, Save, Sparkles, type LucideIcon } from 'lucide-react'
 import { createTour } from '@/app/actions/tourActions'
+
+// The builder's sections: [tab id, label, icon]
+const SECTIONS: [string, string, LucideIcon][] = [
+	['basic-info', 'Basics', FileText],
+	['overview-highlights', 'Overview', Sparkles],
+	['itinerary', 'Itinerary', ListOrdered],
+	['pricing', 'Pricing', Euro],
+	['images', 'Photos', Images],
+	['accommodations', 'Stays', BedDouble],
+]
 
 // Define the form schema with Zod
 const tourSchema = z.object({
@@ -190,75 +200,27 @@ export function TourBuilder({ tour }: { tour?: any }) {
 					onSubmit={methods.handleSubmit(onSubmit)}
 					onChange={handleFormChange}
 				>
-					{/* Tabs for different sections */}
-					<div className="mb-6 flex space-x-2 overflow-x-auto border-b">
-						<button
-							type="button"
-							className={`border-b-2 px-4 py-2 ${
-								activeTab === 'basic-info'
-									? 'border-black font-medium'
-									: 'border-transparent'
-							}`}
-							onClick={() => handleTabChange('basic-info')}
-						>
-							Basic Info
-						</button>
-						<button
-							type="button"
-							className={`border-b-2 px-4 py-2 ${
-								activeTab === 'overview-highlights'
-									? 'border-black font-medium'
-									: 'border-transparent'
-							}`}
-							onClick={() => handleTabChange('overview-highlights')}
-						>
-							Overview & Highlights
-						</button>
-						<button
-							type="button"
-							className={`border-b-2 px-4 py-2 ${
-								activeTab === 'itinerary'
-									? 'border-black font-medium'
-									: 'border-transparent'
-							}`}
-							onClick={() => handleTabChange('itinerary')}
-						>
-							Itinerary
-						</button>
-						<button
-							type="button"
-							className={`border-b-2 px-4 py-2 ${
-								activeTab === 'pricing'
-									? 'border-black font-medium'
-									: 'border-transparent'
-							}`}
-							onClick={() => handleTabChange('pricing')}
-						>
-							Pricing
-						</button>
-						<button
-							type="button"
-							className={`border-b-2 px-4 py-2 ${
-								activeTab === 'images'
-									? 'border-black font-medium'
-									: 'border-transparent'
-							}`}
-							onClick={() => handleTabChange('images')}
-						>
-							Images
-						</button>
-						<button
-							type="button"
-							className={`border-b-2 px-4 py-2 ${
-								activeTab === 'accommodations'
-									? 'border-black font-medium'
-									: 'border-transparent'
-							}`}
-							onClick={() => handleTabChange('accommodations')}
-						>
-							Accommodations
-						</button>
-					</div>
+					{/* Sections: numbered pills, swipe on phones */}
+					<nav aria-label="Tour sections" className="-mx-5 mb-6 flex gap-2 overflow-x-auto px-5 pb-1 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:px-0">
+						{SECTIONS.map(([id, label, Icon], i) => {
+							const active = activeTab === id
+							return (
+								<button
+									key={id}
+									type="button"
+									onClick={() => handleTabChange(id)}
+									aria-current={active ? 'step' : undefined}
+									className={`inline-flex shrink-0 items-center gap-2 rounded-full py-2 pl-2 pr-4 text-sm font-semibold transition ${active ? 'bg-neutral-950 text-white dark:bg-white dark:text-neutral-950' : 'bg-neutral-100 text-neutral-700 hover:bg-neutral-200 dark:bg-neutral-900 dark:text-neutral-300 dark:hover:bg-neutral-800'}`}
+								>
+									<span className={`grid h-7 w-7 place-items-center rounded-full text-xs ${active ? 'bg-white/15 dark:bg-neutral-950/10' : 'bg-white dark:bg-neutral-950'}`}>
+										<Icon className="h-3.5 w-3.5" />
+									</span>
+									<span className="tabular-nums opacity-50">{i + 1}</span>
+									{label}
+								</button>
+							)
+						})}
+					</nav>
 
 					{/* Content based on active tab */}
 					{activeTab === 'basic-info' && (
@@ -289,7 +251,7 @@ export function TourBuilder({ tour }: { tour?: any }) {
 					{activeTab === 'itinerary' && (
 						<Card>
 							<CardHeader>
-								<CardTitle>Tour Itinerary</CardTitle>
+								<CardTitle>Itinerary &amp; duration</CardTitle>
 							</CardHeader>
 							<CardContent>
 								<TourItinerary
@@ -303,7 +265,7 @@ export function TourBuilder({ tour }: { tour?: any }) {
 					{activeTab === 'pricing' && (
 						<Card>
 							<CardHeader>
-								<CardTitle>Tour Pricing</CardTitle>
+								<CardTitle>Pricing</CardTitle>
 							</CardHeader>
 							<CardContent>
 								<TourPricing
@@ -342,54 +304,19 @@ export function TourBuilder({ tour }: { tour?: any }) {
 						</Card>
 					)}
 
-					{/* Submit buttons */}
-					<div className="mt-6 flex justify-between">
-						<div className="text-muted-foreground text-sm">
-							{hasUnsavedChanges && (
-								<span className="text-amber-600">You have unsaved changes</span>
-							)}
-						</div>
-						<div className="space-x-4">
-							<Button
-								type="button"
-								variant="outline"
-								onClick={() => router.push('/dashboard/tours')}
-							>
-								Cancel
-							</Button>
-							<Button type="submit" disabled={isSubmitting}>
-								{isSubmitting ? (
-									<>
-										<svg
-											className="mr-2 h-4 w-4 animate-spin"
-											xmlns="http://www.w3.org/2000/svg"
-											fill="none"
-											viewBox="0 0 24 24"
-										>
-											<circle
-												className="opacity-25"
-												cx="12"
-												cy="12"
-												r="10"
-												stroke="currentColor"
-												strokeWidth="4"
-											></circle>
-											<path
-												className="opacity-75"
-												fill="currentColor"
-												d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-											></path>
-										</svg>
-										Saving...
-									</>
-								) : (
-									<>
-										<Save className="mr-2 h-4 w-4" />
-										Save Tour
-									</>
-								)}
-							</Button>
-						</div>
+					{/* Save bar: always in reach */}
+					<div className="sticky bottom-20 z-30 mt-8 flex flex-wrap items-center gap-3 rounded-full bg-white/90 py-2 pl-5 pr-2 shadow-[0_8px_30px_rgba(0,0,0,0.12)] ring-1 ring-neutral-200 backdrop-blur-xl sm:bottom-6 dark:bg-neutral-950/90 dark:ring-neutral-800">
+						<span className="mr-auto flex items-center gap-2 text-sm">
+							<span className={`h-2 w-2 rounded-full ${hasUnsavedChanges ? 'bg-amber-500' : 'bg-emerald-500'}`} />
+							{hasUnsavedChanges ? 'Unsaved changes' : 'All changes saved'}
+						</span>
+						<Button type="button" variant="ghost" onClick={() => router.push('/dashboard/tours')}>
+							Cancel
+						</Button>
+						<Button type="submit" loading={isSubmitting}>
+							{!isSubmitting && <Save />}
+							{isSubmitting ? 'Saving…' : 'Save tour'}
+						</Button>
 					</div>
 				</form>
 			</FormProvider>

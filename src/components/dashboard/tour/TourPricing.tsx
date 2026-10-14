@@ -278,7 +278,7 @@ export default function TourPricing({
 		<div className="space-y-6">
 			<div>
 				<h2 className="flex items-center text-xl font-bold">
-					Tour Pricing <span className="ml-1 text-red-500">*</span>
+					Prices per vehicle <span className="ml-1 text-red-500">*</span>
 				</h2>
 				<p className="text-muted-foreground text-sm">
 					Set pricing for each transport option.
