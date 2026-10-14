@@ -42,6 +42,8 @@ export const T = {
 	// First-party analytics (scripts/db/sql/004_analytics.sql)
 	analyticsSessions: 'analytics_sessions',
 	analyticsEvents: 'analytics_events',
+	// Affiliate program requests (scripts/db/sql/005_affiliates.sql)
+	affiliates: 'affiliates',
 	// Geography (was the separate "places" MongoDB database)
 	continents: 'geo_continents',
 	countries: 'geo_countries',

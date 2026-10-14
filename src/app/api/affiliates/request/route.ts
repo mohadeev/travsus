@@ -1,6 +1,6 @@
-// Affiliate program: "request access" form. Saves the email in the newsletter
-// list with the 'affiliate' type (existing subscribers get the type added),
-// then tells the team by email.
+// Affiliate program: "request access" form. Saves the request in `affiliates`
+// (the owner accepts or declines it in /admin/affiliates), tags the email in
+// the newsletter list with the 'affiliate' type, then tells the team by email.
 import { NextResponse, type NextRequest } from 'next/server'
 import { db, T, must, withMeta } from '@/lib/db'
 import { rateLimit } from '@/lib/rateLimit'
@@ -27,21 +27,24 @@ export async function POST(req: NextRequest) {
 	if (!isEmail(email)) return NextResponse.json({ code: 'INVALID_EMAIL' }, { status: 400 })
 
 	try {
+		const requested = must(await db.from(T.affiliates).select('id').eq('email', email).maybeSingle())
+		if (requested) return NextResponse.json({ code: 'ALREADY_REQUESTED' })
+		must(
+			await db.from(T.affiliates).insert({ email, website: website || null, locale: String(body.locale ?? '').slice(0, 10) || null }),
+		)
+
 		const existing = must(
 			await db.from(T.newsletter).select('id, types').eq('email', email).maybeSingle(),
 		) as { id: string; types: string[] | null } | null
 
-		if (existing?.types?.includes(TYPE)) {
-			return NextResponse.json({ code: 'ALREADY_REQUESTED' })
-		}
-		if (existing) {
+		if (existing && !existing.types?.includes(TYPE)) {
 			must(
 				await db
 					.from(T.newsletter)
 					.update({ types: [...(existing.types ?? []), TYPE], updatedAt: new Date().toISOString() })
 					.eq('id', existing.id),
 			)
-		} else {
+		} else if (!existing) {
 			must(
 				await db
 					.from(T.newsletter)
@@ -54,7 +57,7 @@ export async function POST(req: NextRequest) {
 			subject: `Affiliate access request: ${email}`,
 			message: `<p>New affiliate program request.</p><p><b>Email:</b> ${escape(email)}${
 				website ? `<br><b>Website / channel:</b> ${escape(website)}` : ''
-			}<br><b>Language:</b> ${escape(String(body.locale ?? '').slice(0, 10))}</p>`,
+			}<br><b>Language:</b> ${escape(String(body.locale ?? '').slice(0, 10))}</p><p><a href="https://www.travsus.com/en-US/admin/affiliates">Accept or decline it in the admin</a></p>`,
 		})
 
 		return NextResponse.json({ code: 'REQUESTED' }, { status: 201 })
