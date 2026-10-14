@@ -1,8 +1,8 @@
 // /sitemap.xml — generated from the database (tours in every language + blog).
 import type { MetadataRoute } from 'next'
-import { slugify } from 'transliteration'
 import { routing } from '@/i18n/routing'
 import { db, T, fetchAll, asDate } from '@/lib/db'
+import { blogLanguages, shownBlogRows } from '@/lib/blog'
 
 export const revalidate = 3600 // rebuild at most once an hour
 
@@ -58,22 +58,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 		}
 	}
 
-	// Blog posts in the languages they are translated into
-	const posts = await fetchAll(() =>
-		db.from(T.posts).select('id, title, translations, createdAt').order('id'),
-	)
-	for (const post of posts) {
-		const titles: Record<string, string> = { [defaultLocale]: post.title }
-		for (const tr of post.translations ?? []) {
-			if (tr?.language && tr?.title) titles[tr.language] = tr.title
-		}
+	// Blog posts (test posts and copies left out) in the languages they are translated into
+	for (const post of await shownBlogRows()) {
 		const languages = Object.fromEntries(
-			Object.entries(titles)
-				.filter(([l]) => (locales as readonly string[]).includes(l))
-				.map(([l, title]) => [
-					l,
-					`${SITE_URL}/${l}/blog/${slugify(title)}/${post.id}`,
-				]),
+			Object.entries(blogLanguages(post)).map(([l, path]) => [l, `${SITE_URL}${path}`]),
 		)
 		for (const url of Object.values(languages)) {
 			entries.push({

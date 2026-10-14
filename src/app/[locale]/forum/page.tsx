@@ -1,741 +1,183 @@
-'use client'
-export const dynamic = "force-dynamic";
-import { useTranslations } from '@/lib/i18n'
-import type React from 'react'
+// Travel forum: search, categories and the latest discussions. Rendered on
+// the server so every discussion is a real, indexable link.
+import type { Metadata } from 'next'
+import Link from 'next/link'
+import { redirect } from 'next/navigation'
+import { ArrowRight, MessageCircle, Search } from 'lucide-react'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
+import { routing } from '@/i18n/routing'
+import { forumCategoryCounts, listForumPosts } from '@/lib/forum'
+import Avatar from './Avatar'
+import NewDiscussion from './NewDiscussion'
+import { FORUM_CATEGORIES, forumCategory } from './categories'
 
-import { useState, useEffect } from 'react'
-import { useRouter, useSearchParams } from 'next/navigation'
-import {
-	Search,
-	Compass,
-	Globe,
-	Map,
-	Mountain,
-	Plane,
-	Tent,
-	Umbrella,
-	ChevronLeft,
-} from 'lucide-react'
-import { formatDistanceToNow } from 'date-fns'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea'
-import { Card, CardContent } from '@/components/ui/card'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { Separator } from '@/components/ui/separator'
-import {
-	Select,
-	SelectContent,
-	SelectItem,
-	SelectTrigger,
-	SelectValue,
-} from '@/components/ui/select'
-import { useAppSelector } from '@/store/hooks'
-import { selectUser } from '@/store/slices/user'
-import { createForumPost } from '@/app/actions/forum/createPost'
-import { addComment } from '@/app/actions/forum/addComment'
-import { getRecentPosts } from '@/app/actions/forum/getRecentPosts'
-import { getPostById } from '@/app/actions/forum/getPostById'
-import { getCategoryCounts } from '@/app/actions/forum/getCategoryCounts'
-import { removeComment } from '@/app/actions/forum/removeComment'
-import { Comment } from '@/components/forum/comment'
-import { useToast } from '@/components/ui/use-toast'
+export const dynamic = 'force-dynamic'
 
-export default function ForumPage() {
-	const t = useTranslations('Jan03_Forum_x8k2')
-	const [activePage, setActivePage] = useState<'main' | 'category' | 'post'>(
-		'main',
-	)
-	const [activeCategory, setActiveCategory] = useState('')
-	const [activePost, setActivePost] = useState<any | null>(null)
-	const [isCreatingPost, setIsCreatingPost] = useState(false)
-	const [recentPosts, setRecentPosts] = useState<any[]>([])
-	const [isLoading, setIsLoading] = useState(true)
-	const [categories, setCategories] = useState([
-		{
-			icon: Globe,
-			name: t('General_Travel'),
-			description: t('General_Travel_Description'),
-			posts: 0,
-			color: 'text-blue-500',
+type PageProps = {
+	params: { locale: string }
+	searchParams: { q?: string; category?: string; postId?: string }
+}
+
+export async function generateMetadata({ params, searchParams }: PageProps): Promise<Metadata> {
+	const t = await getTranslations({ locale: params.locale, namespace: 'Forum' })
+	const filtered = !!(searchParams.q || searchParams.category)
+	return {
+		title: `${t('meta_title')} | TRAVSUS`,
+		description: t('meta_description'),
+		alternates: {
+			canonical: `/${params.locale}/forum`,
+			languages: Object.fromEntries(routing.locales.map((l) => [l, `/${l}/forum`])),
 		},
-		{
-			icon: Mountain,
-			name: t('Adventure_Travel'),
-			description: t('Adventure_Travel_Description'),
-			posts: 0,
-			color: 'text-green-500',
-		},
-		{
-			icon: Umbrella,
-			name: t('Beach_Destinations'),
-			description: t('Beach_Destinations_Description'),
-			posts: 0,
-			color: 'text-yellow-500',
-		},
-		{
-			icon: Plane,
-			name: t('Air_Travel'),
-			description: t('Air_Travel_Description'),
-			posts: 0,
-			color: 'text-purple-500',
-		},
-		{
-			icon: Tent,
-			name: t('Accommodation'),
-			description: t('Accommodation_Description'),
-			posts: 0,
-			color: 'text-red-500',
-		},
-		{
-			icon: Map,
-			name: t('Trip_Planning'),
-			description: t('Trip_Planning_Description'),
-			posts: 0,
-			color: 'text-indigo-500',
-		},
-		{
-			icon: Compass,
-			name: t('Travel_Guides'),
-			description: t('Travel_Guides_Description'),
-			posts: 0,
-			color: 'text-orange-500',
-		},
+		// Search results and category views point to the main list
+		robots: filtered ? { index: false, follow: true } : undefined,
+	}
+}
+
+export default async function ForumPage({ params, searchParams }: PageProps) {
+	const { locale } = params
+	// Old links: /forum?postId=…
+	if (searchParams.postId) redirect(`/${locale}/forum/${encodeURIComponent(searchParams.postId)}`)
+
+	setRequestLocale(locale)
+	const t = await getTranslations('Forum')
+	const tOld = await getTranslations('Jan03_Forum_x8k2')
+	const query = (searchParams.q ?? '').trim()
+	const active = forumCategory(searchParams.category)?.key ?? ''
+	const [posts, counts] = await Promise.all([
+		listForumPosts({ query, category: active }),
+		forumCategoryCounts(),
 	])
-	const user = useAppSelector(selectUser)
-	const isLoggedIn = !!user
-	const router = useRouter()
-	const searchParams = useSearchParams()
-	const { toast } = useToast()
-
-	useEffect(() => {
-		const fetchCategoryCounts = async () => {
-			const result = await getCategoryCounts()
-			if (result.success) {
-				setCategories((prevCategories) =>
-					prevCategories.map((category) => ({
-						...category,
-						posts: result.counts[category.name] || 0,
-					})),
-				)
-			} else {
-				console.error('Error fetching category counts:', result.error)
-			}
-		}
-		fetchCategoryCounts()
-	}, [])
-
-	const refreshPosts = async () => {
-		setIsLoading(true)
-		const result = await getRecentPosts(5)
-		if (result.success) {
-			setRecentPosts(result.posts)
-		} else {
-			console.error(result.error)
-		}
-		setIsLoading(false)
-	}
-
-	useEffect(() => {
-		const postId = searchParams.get('postId')
-		if (postId) {
-			fetchPost(postId)
-		} else {
-			refreshPosts()
-		}
-	}, [searchParams])
-
-	const fetchPost = async (postId: string) => {
-		setIsLoading(true)
-		const result = await getPostById(postId)
-		if (result.success) {
-			setActivePost(result.post)
-			setActivePage('post')
-		} else {
-			console.error(result.error)
-			router.push('/404')
-		}
-		setIsLoading(false)
-	}
-
-	const CreatePostForm = ({
-		onClose,
-		refreshPosts,
-	}: {
-		onClose: () => void
-		refreshPosts: () => Promise<void>
-	}) => {
-		const [title, setTitle] = useState('')
-		const [content, setContent] = useState('')
-		const [tags, setTags] = useState('')
-		const [category, setCategory] = useState('')
-
-		const handleSubmit = async (e: React.FormEvent) => {
-			e.preventDefault()
-			const formData = new FormData()
-			formData.append('title', title)
-			formData.append('content', content)
-			formData.append('tags', tags)
-			formData.append('category', category)
-
-			const result = await createForumPost(formData)
-			if (result.success) {
-				setTitle('')
-				setContent('')
-				setTags('')
-				setCategory('')
-				await refreshPosts()
-				onClose()
-			} else {
-				toast({
-					title: t('Error_Title'),
-					description: t('Failed_Create_Post'),
-					variant: 'destructive',
-				})
-			}
-		}
-
-		return (
-			<div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4">
-				<div className="w-full max-w-2xl rounded-lg bg-white p-6">
-					<h2 className="mb-4 text-2xl font-bold">
-						{t('Create_New_Discussion')}
-					</h2>
-					<form onSubmit={handleSubmit} className="space-y-4">
-						<div>
-							<label
-								htmlFor="title"
-								className="block text-sm font-medium text-gray-700"
-							>
-								{t('Title_Label')}
-							</label>
-							<Input
-								id="title"
-								value={title}
-								onChange={(e) => setTitle(e.target.value)}
-								required
-								className="mt-1"
-								placeholder={t('Title_Placeholder')}
-							/>
-						</div>
-						<div>
-							<label
-								htmlFor="content"
-								className="block text-sm font-medium text-gray-700"
-							>
-								{t('Content_Label')}
-							</label>
-							<Textarea
-								id="content"
-								value={content}
-								onChange={(e) => setContent(e.target.value)}
-								required
-								className="mt-1"
-								rows={5}
-								placeholder={t('Content_Placeholder')}
-							/>
-						</div>
-						<div>
-							<label
-								htmlFor="category"
-								className="block text-sm font-medium text-gray-700"
-							>
-								{t('Category_Label')}
-							</label>
-							<Select value={category} onValueChange={setCategory}>
-								<SelectTrigger className="w-full">
-									<SelectValue placeholder={t('Select_Category')} />
-								</SelectTrigger>
-								<SelectContent className="bg-white">
-									{categories.map((cat) => (
-										<SelectItem key={cat.name} value={cat.name}>
-											{cat.name}
-										</SelectItem>
-									))}
-								</SelectContent>
-							</Select>
-						</div>
-						<div>
-							<label
-								htmlFor="tags"
-								className="block text-sm font-medium text-gray-700"
-							>
-								{t('Tags_Label')}
-							</label>
-							<Input
-								id="tags"
-								value={tags}
-								onChange={(e) => setTags(e.target.value)}
-								className="mt-1"
-								placeholder={t('Tags_Placeholder')}
-							/>
-						</div>
-						<div className="flex justify-end space-x-2">
-							<Button type="button" variant="outline" onClick={onClose}>
-								{t('Cancel_Button')}
-							</Button>
-							<Button type="submit">{t('Create_Post_Button')}</Button>
-						</div>
-					</form>
-				</div>
-			</div>
-		)
-	}
-
-	const CommentForm = ({
-		postId,
-		parentId = null,
-		onCommentAdded,
-	}: {
-		postId: string
-		parentId?: string | null
-		onCommentAdded: (newComment: any) => void
-	}) => {
-		const [content, setContent] = useState('')
-		const [isSubmitting, setIsSubmitting] = useState(false)
-
-		const handleSubmit = async (e: React.FormEvent) => {
-			e.preventDefault()
-			if (!content.trim() || isSubmitting) return
-
-			setIsSubmitting(true)
-
-			const optimisticComment = {
-				id: 'temp-id-' + Date.now(),
-				content,
-				createdAt: new Date().toISOString(),
-				author: {
-					id: user.id,
-					username: user.username,
-					profileImage: user.profileImage,
-				},
-				likedByIds: [],
-				dislikedByIds: [],
-				parentId,
-			}
-
-			onCommentAdded(optimisticComment)
-
-			try {
-				const formData = new FormData()
-				formData.append('postId', postId)
-				formData.append('content', content)
-				if (parentId) {
-					formData.append('parentId', parentId)
-				}
-
-				const result = await addComment(formData)
-				if (result.success) {
-					onCommentAdded(result.comment)
-					setContent('')
-					toast({
-						title: t('Success_Title'),
-						description: t('Comment_Added_Success'),
-					})
-				} else {
-					throw new Error(result.error || 'Failed to add comment')
-				}
-			} catch (error) {
-				console.error('Error adding comment:', error)
-				toast({
-					title: t('Error_Title'),
-					description: t('Failed_Add_Comment'),
-					variant: 'destructive',
-				})
-				// Remove the optimistic comment
-				onCommentAdded(null)
-			} finally {
-				setIsSubmitting(false)
-			}
-		}
-
-		return (
-			<form onSubmit={handleSubmit} className="mt-4">
-				<Textarea
-					value={content}
-					onChange={(e) => setContent(e.target.value)}
-					placeholder={t('Add_Comment_Placeholder')}
-					className="mb-2 w-full"
-				/>
-				<Button type="submit" disabled={isSubmitting}>
-					{isSubmitting
-						? t('Adding_Comment_Progress')
-						: t('Add_Comment_Button')}
-				</Button>
-			</form>
-		)
-	}
-
-	const ForumHeader = () => (
-		<div className="sticky top-0 z-10 border-b bg-white">
-			<div className="mx-auto max-w-4xl px-4 py-2">
-				<div className="flex items-center gap-4">
-					<div className="flex-1">
-						<div className="relative">
-							<Search className="absolute left-2.5 top-2.5 h-4 w-4 text-gray-500" />
-							<Input
-								placeholder={t('Search_Discussions')}
-								className="h-9 w-full pl-9 text-sm"
-							/>
-						</div>
-					</div>
-					<div>
-						{isLoggedIn ? (
-							<Button
-								variant="outline"
-								className="h-9 bg-transparent px-3 text-sm"
-								onClick={() => setIsCreatingPost(true)}
-							>
-								{t('Start_New_Discussion')}
-							</Button>
-						) : (
-							<Button
-								variant="outline"
-								className="h-9 bg-transparent px-3 text-sm"
-								onClick={() => {
-									/* Add login logic here */
-								}}
-							>
-								{t('Login_Button')}
-							</Button>
-						)}
-					</div>
-				</div>
-			</div>
-		</div>
-	)
-
-	const ForumCategories = () => (
-		<div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-			{categories.map((category) => (
-				<Card
-					key={category.name}
-					className="w-full cursor-pointer transition-all hover:shadow-lg"
-					onClick={() => {
-						setActiveCategory(category.name)
-						setActivePage('category')
-					}}
-				>
-					<CardContent className="p-6">
-						<div className="flex items-start space-x-4">
-							<div
-								className={`rounded-full p-2 ${category.color} bg-opacity-10`}
-							>
-								<category.icon className={`h-6 w-6 ${category.color}`} />
-							</div>
-							<div className="space-y-1">
-								<h3 className="font-semibold">{category.name}</h3>
-								<p className="text-sm text-gray-500">{category.description}</p>
-								<p className="text-sm text-gray-400">
-									{category.posts}{' '}
-									{category.posts !== 1
-										? t('Posts_Plural')
-										: t('Post_Singular')}
-								</p>
-							</div>
-						</div>
-					</CardContent>
-				</Card>
-			))}
-		</div>
-	)
-
-	const RecentPosts = ({ categoryFilter = '' }) => (
-		<div className="space-y-4">
-			{isLoading ? (
-				<p>{t('Loading_Recent_Posts')}</p>
-			) : recentPosts.length === 0 ? (
-				<p>{t('No_Recent_Posts')}</p>
-			) : (
-				recentPosts
-					.filter((post) => !categoryFilter || post.category === categoryFilter)
-					.map((post) => (
-						<Card
-							key={post.id}
-							className="w-full cursor-pointer transition-all hover:shadow-md"
-							onClick={() => {
-								router.push(`/forum?postId=${post.id}`)
-							}}
-						>
-							<CardContent className="p-6">
-								<div className="flex items-start justify-between">
-									<div className="flex items-start space-x-4">
-										<Avatar>
-											{post.author.profileImage?.url ? (
-												<AvatarImage
-													src={
-														post.author.profileImage.url || '/placeholder.svg'
-													}
-													alt={post.author.username || 'User'}
-													className="object-cover"
-												/>
-											) : (
-												<AvatarFallback>
-													{post.author.username
-														? post.author.username[0].toUpperCase()
-														: 'U'}
-												</AvatarFallback>
-											)}
-										</Avatar>
-										<div>
-											<h3 className="font-semibold hover:text-blue-600">
-												{post.title}
-											</h3>
-											<p className="mt-1 text-sm text-gray-500">
-												{post.excerpt}
-											</p>
-											<div className="mt-2 flex flex-wrap gap-2">
-												{post.tags.map((tag: string) => (
-													<span
-														key={tag}
-														className="inline-flex items-center rounded-full bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700"
-													>
-														{tag}
-													</span>
-												))}
-											</div>
-											<p className="mt-2 text-sm text-gray-500">
-												{post._count.comments}{' '}
-												{post._count.comments !== 1
-													? t('Comments_Plural')
-													: t('Comment_Singular')}
-											</p>
-										</div>
-									</div>
-									<span className="text-xs text-gray-500">
-										{formatDistanceToNow(new Date(post.createdAt), {
-											addSuffix: true,
-										})}
-									</span>
-								</div>
-							</CardContent>
-						</Card>
-					))
-			)}
-		</div>
-	)
-
-	const MainPage = () => (
-		<div className="space-y-8">
-			<div>
-				<h1 className="text-3xl font-bold">{t('Travel_Forum_Title')}</h1>
-				<p className="mt-2 text-gray-600">{t('Travel_Forum_Description')}</p>
-			</div>
-			<div>
-				<h2 className="mb-4 text-2xl font-semibold">{t('Categories_Title')}</h2>
-				<ForumCategories />
-			</div>
-			<Separator />
-			<div>
-				<h2 className="mb-4 text-2xl font-semibold">
-					{t('Recent_Discussions_Title')}
-				</h2>
-				<RecentPosts />
-			</div>
-		</div>
-	)
-
-	const CategoryPage = () => (
-		<div className="space-y-6">
-			<div className="flex items-center gap-4">
-				<Button
-					variant="outline"
-					className="h-9 w-auto bg-transparent px-3 text-sm"
-					onClick={() => setActivePage('main')}
-				>
-					<ChevronLeft className="mr-1 h-4 w-4" />
-					{t('Back_To_Travel_Guides')}
-				</Button>
-			</div>
-			<div>
-				<h1 className="text-3xl font-bold">{activeCategory}</h1>
-				<p className="mt-2 text-gray-600">
-					{t('Category_Description', {
-						category: activeCategory.toLowerCase(),
-					})}
-				</p>
-			</div>
-			<RecentPosts categoryFilter={activeCategory} />
-		</div>
-	)
-
-	const PostPage = () => {
-		if (!activePost) return null
-
-		const handleCommentAdded = (newComment: any) => {
-			if (!newComment) return
-			setActivePost((prevPost: any) => {
-				const updatedComments = [...prevPost.comments]
-				if (newComment.parentId) {
-					const parentIndex = updatedComments.findIndex(
-						(c) => c.id === newComment.parentId,
-					)
-					if (parentIndex !== -1) {
-						newComment.rootParentId =
-							newComment.rootParentId || newComment.parentId
-						updatedComments.splice(parentIndex + 1, 0, newComment)
-					} else {
-						updatedComments.push(newComment)
-					}
-				} else {
-					updatedComments.push(newComment)
-				}
-				return {
-					...prevPost,
-					comments: updatedComments,
-				}
-			})
-		}
-
-		const handleCommentRemoved = async (commentId: string) => {
-			const result = await removeComment(commentId)
-			if (result.success) {
-				setActivePost((prevPost: any) => ({
-					...prevPost,
-					comments: prevPost.comments.filter((c: any) => c.id !== commentId),
-				}))
-				toast({
-					title: t('Comment_Removed_Title'),
-					description: t('Comment_Removed_Success'),
-				})
-			} else {
-				toast({
-					title: t('Error_Title'),
-					description: t('Failed_Remove_Comment'),
-					variant: 'destructive',
-				})
-			}
-		}
-
-		// Flatten the comments structure
-		const flattenedComments = activePost.comments.reduce(
-			(acc: any[], comment: any) => {
-				acc.push(comment)
-				return acc
-			},
-			[],
-		)
-
-		return (
-			<div className="space-y-6">
-				<div>
-					<Button
-						variant="outline"
-						className="h-9 w-auto bg-transparent px-3 text-sm"
-						onClick={() => {
-							setActivePage('main')
-							router.push('/forum')
-						}}
-					>
-						<ChevronLeft className="mr-1 h-4 w-4" />
-						{t('Back_To_Forum')}
-					</Button>
-				</div>
-				<div className="rounded-lg bg-white p-6 shadow-md">
-					<h1 className="mb-4 text-3xl font-bold">{activePost.title}</h1>
-					<div className="mb-4 flex items-center space-x-4">
-						<Avatar>
-							{activePost.author.profileImage?.url ? (
-								<AvatarImage
-									src={activePost.author.profileImage.url || '/placeholder.svg'}
-									alt={activePost.author.username || 'User'}
-									className="object-cover"
-								/>
-							) : (
-								<AvatarFallback>
-									{activePost.author.username
-										? activePost.author.username[0].toUpperCase()
-										: 'U'}
-								</AvatarFallback>
-							)}
-						</Avatar>
-						<div>
-							<p className="font-semibold">
-								{activePost.author.accountData?.firstname ||
-									activePost.author.username ||
-									t('Anonymous_User')}
-							</p>
-							<p className="text-sm text-gray-500">
-								{t('Posted_Time')}{' '}
-								{formatDistanceToNow(new Date(activePost.createdAt), {
-									addSuffix: true,
-								})}
-							</p>
-						</div>
-					</div>
-					<p className="mb-4 text-gray-700">{activePost.content}</p>
-					<div className="flex flex-wrap gap-2">
-						{activePost.tags.map((tag: string) => (
-							<span
-								key={tag}
-								className="inline-flex items-center rounded-full bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700"
-							>
-								{tag}
-							</span>
-						))}
-					</div>
-				</div>
-				<div className="rounded-lg bg-white p-6 shadow-md">
-					<h2 className="mb-4 text-xl font-semibold">
-						{t('Comments_Count', { count: activePost.comments.length })}
-					</h2>
-					{activePost.comments && activePost.comments.length > 0 ? (
-						<div className="space-y-4">
-							{activePost.comments
-								.filter((comment) => !comment.parentId)
-								.map((comment: any) => (
-									<Comment
-										key={comment.id}
-										comment={comment}
-										onCommentRemoved={handleCommentRemoved}
-										currentUserId={isLoggedIn ? user.id : null}
-										postId={activePost.id}
-										onReplyAdded={handleCommentAdded}
-										allReplies={activePost.comments.filter(
-											(reply) =>
-												reply.parentId === comment.id ||
-												reply.rootParentId === comment.id,
-										)}
-									/>
-								))}
-						</div>
-					) : (
-						<p className="text-gray-600">
-							{t('No_Comments_Yet')}{' '}
-							{isLoggedIn ? t('Be_First_Comment') : t('Login_To_Comment')}
-						</p>
-					)}
-					{isLoggedIn && (
-						<CommentForm
-							postId={activePost.id}
-							onCommentAdded={handleCommentAdded}
-						/>
-					)}
-				</div>
-			</div>
-		)
+	const total = Object.values(counts).reduce((a, b) => a + b, 0)
+	const date = new Intl.DateTimeFormat(locale, { dateStyle: 'medium' })
+	// Forum address with a category and search words
+	const href = (category: string, q = query) => {
+		const p = new URLSearchParams()
+		if (q) p.set('q', q)
+		if (category) p.set('category', category)
+		const s = p.toString()
+		return `/${locale}/forum${s ? `?${s}` : ''}`
 	}
 
 	return (
-		<div className="min-h-screen">
-			<ForumHeader />
-			<main className="mx-auto max-w-4xl px-4 py-8">
-				{isLoading ? (
-					<p>{t('Loading_Text')}</p>
+		<main className="pb-16 text-neutral-950 sm:pb-24 dark:text-white [&_h1]:[text-wrap:balance] [&_h2]:[text-wrap:balance]">
+			{/* Hero: one idea, search, one action */}
+			<section className="mx-auto max-w-7xl px-5 pt-12 text-center sm:pt-20">
+				<p className="text-sm font-semibold uppercase tracking-[0.2em] text-neutral-500">{t('eyebrow')}</p>
+				<h1 className="mx-auto mt-4 max-w-4xl text-[40px] font-bold leading-[1.04] tracking-tight sm:text-7xl">
+					{t('hero_title')}
+				</h1>
+				<p className="mx-auto mt-5 max-w-2xl text-lg text-neutral-500 sm:text-2xl">{t('hero_text')}</p>
+
+				<div className="mx-auto mt-8 flex max-w-2xl flex-col gap-2.5 sm:mt-10 sm:flex-row">
+					<form action={`/${locale}/forum`} method="get" role="search" className="relative flex-1">
+						{active && <input type="hidden" name="category" value={active} />}
+						<Search className="pointer-events-none absolute left-5 top-1/2 h-5 w-5 -translate-y-1/2 text-neutral-400" />
+						<label className="sr-only" htmlFor="forum-search">
+							{tOld('Search_Discussions')}
+						</label>
+						<input
+							id="forum-search"
+							type="search"
+							name="q"
+							defaultValue={query}
+							placeholder={tOld('Search_Discussions')}
+							className="h-12 w-full rounded-full border-0 bg-neutral-100 pl-12 pr-5 text-base ring-1 ring-transparent transition placeholder:text-neutral-500 focus:bg-white focus:outline-none focus:ring-neutral-950 dark:bg-neutral-900 dark:focus:ring-white"
+						/>
+					</form>
+					<NewDiscussion category={active} />
+				</div>
+			</section>
+
+			{/* Categories: swipe on phones */}
+			<nav aria-label={tOld('Categories_Title')} className="mx-auto mt-12 max-w-4xl px-5 sm:mt-16">
+				<ul className="-mx-5 flex gap-2 overflow-x-auto px-5 pb-1 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:justify-center sm:px-0">
+					{[{ key: '', name: null, icon: MessageCircle }, ...FORUM_CATEGORIES].map(({ key, name, icon: Icon }) => {
+						const selected = key === active
+						const count = key ? counts[key] ?? 0 : total
+						return (
+							<li key={key || 'all'} className="shrink-0">
+								<Link
+									href={href(key) as any}
+									aria-current={selected ? 'page' : undefined}
+									className={`inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold transition ${
+										selected
+											? 'bg-neutral-950 text-white dark:bg-white dark:text-neutral-950'
+											: 'bg-neutral-100 text-neutral-700 hover:bg-neutral-200 dark:bg-neutral-900 dark:text-neutral-300 dark:hover:bg-neutral-800'
+									}`}
+								>
+									<Icon className="h-4 w-4" />
+									{name ? tOld(name) : t('all')}
+									<span className={`tabular-nums ${selected ? 'opacity-60' : 'text-neutral-400'}`}>{count}</span>
+								</Link>
+							</li>
+						)
+					})}
+				</ul>
+			</nav>
+
+			{/* Discussions */}
+			<section className="mx-auto mt-10 max-w-4xl px-5 sm:mt-14">
+				<div className="flex items-baseline justify-between gap-4 border-b border-neutral-200 pb-4 dark:border-neutral-800">
+					<h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
+						{active ? tOld(forumCategory(active)!.name) : tOld('Recent_Discussions_Title')}
+					</h2>
+					<p className="shrink-0 text-sm text-neutral-500">
+						{t('results', { count: posts.length })}
+						{query && ` ${t('results_for', { query })}`}
+					</p>
+				</div>
+
+				{posts.length === 0 ? (
+					<div className="mt-8 rounded-[28px] bg-neutral-100 px-6 py-14 text-center sm:py-20 dark:bg-neutral-900">
+						<MessageCircle className="mx-auto h-10 w-10 text-neutral-400" strokeWidth={1.5} />
+						<p className="mt-5 text-2xl font-bold tracking-tight sm:text-3xl">{t(query ? 'empty_search_title' : 'empty_title')}</p>
+						<p className="mx-auto mt-2 max-w-md text-neutral-500">{t(query ? 'empty_search_text' : 'empty_text')}</p>
+						<div className="mt-7 flex flex-wrap justify-center gap-3">
+							{query ? (
+								<Link
+									href={href(active, '') as any}
+									className="inline-flex h-12 items-center rounded-full border border-neutral-300 px-6 text-sm font-semibold transition hover:border-neutral-950 dark:border-neutral-700 dark:hover:border-white"
+								>
+									{t('clear_search')}
+								</Link>
+							) : (
+								<NewDiscussion category={active} />
+							)}
+						</div>
+					</div>
 				) : (
-					<>
-						{activePage === 'main' && <MainPage />}
-						{activePage === 'category' && <CategoryPage />}
-						{activePage === 'post' && <PostPage />}
-					</>
+					<ul className="divide-y divide-neutral-200 dark:divide-neutral-800">
+						{posts.map((post) => {
+							const category = forumCategory(post.category)
+							return (
+								<li key={post.id}>
+									<Link href={`/${locale}/forum/${post.id}` as any} className="group flex gap-4 py-6">
+										<Avatar author={post.author} />
+										<div className="min-w-0 flex-1">
+											<h3 className="text-lg font-semibold leading-snug group-hover:underline">{post.title}</h3>
+											{post.excerpt && <p className="mt-1 line-clamp-2 text-neutral-500">{post.excerpt}</p>}
+											<p className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-neutral-500">
+												{category && (
+													<span className="rounded-full bg-neutral-100 px-2.5 py-0.5 font-medium text-neutral-700 dark:bg-neutral-900 dark:text-neutral-300">
+														{tOld(category.name)}
+													</span>
+												)}
+												<span>{post.author.name || t('anonymous')}</span>
+												<span>{date.format(new Date(post.createdAt))}</span>
+												<span className="inline-flex items-center gap-1">
+													<MessageCircle className="h-4 w-4" />
+													{post.comments}
+												</span>
+											</p>
+										</div>
+										<ArrowRight className="mt-1 hidden h-5 w-5 shrink-0 text-neutral-300 transition group-hover:translate-x-0.5 group-hover:text-neutral-950 sm:block dark:group-hover:text-white" />
+									</Link>
+								</li>
+							)
+						})}
+					</ul>
 				)}
-			</main>
-			{isLoggedIn && isCreatingPost && (
-				<CreatePostForm
-					onClose={() => setIsCreatingPost(false)}
-					refreshPosts={refreshPosts}
-				/>
-			)}
-		</div>
+			</section>
+		</main>
 	)
 }

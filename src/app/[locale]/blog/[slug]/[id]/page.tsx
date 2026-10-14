@@ -1,201 +1,173 @@
-'use client'
-export const dynamic = "force-dynamic";
-
-import { useParams } from 'next/navigation'
+// One article: title, author, photo, the text, tags, related articles and
+// a link to the tours. The address always uses the title in the page's
+// language; other addresses (old titles, copies of the article) redirect.
+import type { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
-import ButtonPrimary from '@/shared/ButtonPrimary'
-import SocialsList from '@/shared/SocialsList'
-import Avatar from '@/shared/Avatar'
-import { useState, useEffect } from 'react'
-import { useTranslations } from '@/lib/i18n'
+import { notFound, permanentRedirect } from 'next/navigation'
+import { cache } from 'react'
+import { ArrowLeft, ArrowRight, PenLine } from 'lucide-react'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
+import { routing } from '@/i18n/routing'
+import { blogPath, getBlogPost } from '@/lib/blog'
+import { PHOTOS } from '@/lib/photos'
+import { getSessionUser } from '@/lib/session'
+import PostCard from '../../PostCard'
+import ShareButtons from './ShareButtons'
 
-export const SkeletonLoader = () => {
-	return (
-		<div className="container mx-auto p-4">
-			<article className="mx-auto max-w-3xl">
-				<div className="mb-4 h-10 w-3/4 animate-pulse rounded-md bg-gray-200"></div>
-				<div className="mb-6 flex justify-end">
-					<div className="h-10 w-24 animate-pulse rounded-md bg-gray-200"></div>
-				</div>
-				<div className="mb-6 flex flex-col items-baseline sm:flex-row sm:justify-between">
-					<div className="flex animate-pulse items-center">
-						<div className="h-11 w-11 rounded-full bg-gray-200"></div>
-						<div className="ml-3">
-							<div className="h-4 w-24 rounded bg-gray-200"></div>
-							<div className="mt-2 h-3 w-32 rounded bg-gray-200"></div>
-						</div>
-					</div>
-					<div className="mt-3 flex animate-pulse space-x-2 sm:ml-3 sm:mt-0">
-						{[1, 2, 3].map((i) => (
-							<div key={i} className="h-8 w-8 rounded-full bg-gray-200"></div>
-						))}
-					</div>
-				</div>
-				<div className="space-y-4">
-					{[1, 2, 3, 4].map((i) => (
-						<div
-							key={i}
-							className="h-4 w-full animate-pulse rounded bg-gray-200"
-						></div>
-					))}
-					<div className="h-4 w-2/3 animate-pulse rounded bg-gray-200"></div>
-				</div>
-				<div className="mt-6">
-					<div className="mb-2 h-6 w-16 animate-pulse rounded bg-gray-200"></div>
-					<div className="flex flex-wrap gap-2">
-						{[1, 2, 3].map((i) => (
-							<div
-								key={i}
-								className="h-6 w-16 animate-pulse rounded-full bg-gray-200"
-							></div>
-						))}
-					</div>
-				</div>
-			</article>
-		</div>
-	)
+export const dynamic = 'force-dynamic'
+
+const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.travsus.com').replace(/\/$/, '')
+
+type PageProps = { params: { locale: string; slug: string; id: string } }
+
+// Metadata and page share one database read
+const load = cache((id: string, locale: string) => getBlogPost(id, locale))
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+	const found = await load(params.id, params.locale)
+	if (!found || 'redirectTo' in found) return {}
+	const { post, languages } = found
+	// Not translated into this language: the English page is the original
+	const canonical = languages[params.locale] ?? languages[routing.defaultLocale]
+	const description = post.excerpt.slice(0, 160)
+	const image = post.image || PHOTOS.sahara
+	return {
+		title: `${post.title} | TRAVSUS`,
+		description,
+		alternates: { canonical, languages: { ...languages, 'x-default': languages[routing.defaultLocale] } },
+		openGraph: {
+			type: 'article',
+			title: post.title,
+			description,
+			url: canonical,
+			publishedTime: post.createdAt,
+			authors: [post.author.name],
+			tags: post.tags,
+			images: [{ url: image, alt: post.title }],
+		},
+		twitter: { card: 'summary_large_image', title: post.title, description, images: [image] },
+	}
 }
 
-export default function BlogPostPage() {
-	const t = useTranslations('BlogPostPage')
-	const params = useParams()
-	const postId = params?.id as string
-	const [post, setPost] = useState<any>(null)
-	const [currentUserId, setCurrentUserId] = useState<string | null>(null)
-	const [isLoading, setIsLoading] = useState(true)
-	const [error, setError] = useState<string | null>(null)
+export default async function BlogPostPage({ params }: PageProps) {
+	const { locale } = params
+	setRequestLocale(locale)
+	const [found, viewer] = await Promise.all([load(params.id, locale), getSessionUser().catch(() => null)])
+	if (!found) notFound()
+	if ('redirectTo' in found) permanentRedirect(found.redirectTo)
 
-	// Fetch post data directly from API
-	useEffect(() => {
-		const fetchPostData = async () => {
-			setIsLoading(true)
-			try {
-				// Try to get data from window.__INITIAL_DATA__ first (for SSR)
-				const initialData = (window as any).__INITIAL_DATA__
-				if (initialData?.post?.id === postId) {
-					setPost(initialData.post)
-					setCurrentUserId(initialData.currentUserId)
-					setIsLoading(false)
-					return
-				}
+	const { post, related } = found
+	const path = blogPath(locale, post.title, post.id)
+	if (decodeURIComponent(params.slug) !== path.split('/')[3]) permanentRedirect(path)
 
-				// If no initial data or different post, fetch from API
-				const response = await fetch(`/api/blog/${postId}`)
-				if (!response.ok) {
-					throw new Error(`Failed to fetch post: ${response.statusText}`)
-				}
-				const postData = await response.json()
-				setPost(postData)
-
-				// Use the currentUserId from initialData if available
-				if (initialData?.currentUserId) {
-					setCurrentUserId(initialData.currentUserId)
-				}
-			} catch (err) {
-				console.error('Error fetching post:', err)
-				setError(
-					err instanceof Error
-						? err.message
-						: t('blog_slug_page_Post_Not_Found'),
-				)
-			} finally {
-				setIsLoading(false)
-			}
-		}
-
-		if (postId) {
-			fetchPostData()
-		}
-	}, [postId])
-
-	if (isLoading) {
-		return <SkeletonLoader />
+	const t = await getTranslations('Blog')
+	const date = new Intl.DateTimeFormat(locale, { dateStyle: 'long' }).format(new Date(post.createdAt))
+	const jsonLd = {
+		'@context': 'https://schema.org',
+		'@type': 'BlogPosting',
+		headline: post.title,
+		description: post.excerpt,
+		image: [post.image || PHOTOS.sahara],
+		datePublished: post.createdAt,
+		inLanguage: post.translated ? locale : routing.defaultLocale,
+		mainEntityOfPage: `${SITE_URL}${path}`,
+		keywords: post.tags.join(', '),
+		author: { '@type': 'Person', name: post.author.name },
+		publisher: { '@type': 'Organization', name: 'TRAVSUS', url: SITE_URL },
 	}
-
-	if (error || !post) {
-		return (
-			<div className="container mx-auto p-4 text-center">
-				<h1 className="text-2xl font-bold text-red-500">
-					{t('blog_slug_page_Error_Loading_Post')}
-				</h1>
-				<p className="mt-4">{error || t('blog_slug_page_Post_Not_Found')}</p>
-				<Link href="/blog" className="mt-6 inline-block">
-					<ButtonPrimary>{t('blog_slug_page_Return_To_Blog')}</ButtonPrimary>
-				</Link>
-			</div>
-		)
-	}
-
-	const { author } = post
-	const profileImageUrl: any = post?.author?.profileImage?.url
-	const isAuthor = currentUserId === post.authorId
 
 	return (
-		<div className="container mx-auto p-4">
-			<article className="mx-auto max-w-3xl">
-				<h1 className="mb-4 text-4xl font-bold">{post.title}</h1>
-				<div className="mb-6 flex items-center justify-between text-gray-500">
-					<div></div>
-					{isAuthor && (
-						<Link href={`/editor?id=${post.id}`}>
-							<ButtonPrimary>{t('blog_slug_page_Edit_Post')}</ButtonPrimary>
+		<main className="pb-16 text-neutral-950 sm:pb-24 dark:text-white [&_h1]:[text-wrap:balance] [&_h2]:[text-wrap:balance]">
+			<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }} />
+
+			<article>
+				<header className="mx-auto max-w-3xl px-5 pt-8 sm:pt-14">
+					<div className="flex items-center justify-between gap-4">
+						<Link href={`/${locale}/blog` as any} className="inline-flex items-center gap-1.5 text-sm font-semibold text-neutral-500 transition hover:text-neutral-950 dark:hover:text-white">
+							<ArrowLeft className="h-4 w-4" />
+							{t('back')}
 						</Link>
-					)}
-				</div>
-				<div className="flex flex-col items-baseline sm:flex-row sm:justify-between">
-					<div className="nc-PostMeta2 flex flex-shrink-0 flex-wrap items-center text-left text-sm leading-none text-neutral-700 dark:text-neutral-200">
-						<Avatar
-							imgUrl={profileImageUrl}
-							containerClassName="flex-shrink-0"
-							sizeClass="w-8 h-8 sm:h-11 sm:w-11 "
-						/>
-						<div className="ml-3">
-							<div className="flex items-center">
-								<p className="block font-semibold">
-									{author?.username ||
-										author?.accountData?.firstname +
-											author?.accountData?.lastname}
+						{viewer?.id && viewer.id === post.authorId && (
+							<Link href={`/${locale}/editor?id=${post.id}` as any} className="inline-flex items-center gap-1.5 rounded-full border border-neutral-300 px-4 py-2 text-sm font-semibold transition hover:border-neutral-950 dark:border-neutral-700">
+								<PenLine className="h-4 w-4" />
+								{t('edit')}
+							</Link>
+						)}
+					</div>
+
+					{post.tags[0] && <p className="mt-10 text-sm font-semibold uppercase tracking-[0.15em] text-neutral-500">{post.tags[0]}</p>}
+					<h1 className="mt-3 text-[34px] font-bold leading-[1.1] tracking-tight sm:text-6xl">{post.title}</h1>
+					{post.excerpt && <p className="mt-5 text-lg leading-relaxed text-neutral-500 sm:text-2xl">{post.excerpt}</p>}
+
+					<div className="mt-8 flex flex-col gap-5 border-y border-neutral-200 py-5 sm:flex-row sm:items-center sm:justify-between dark:border-neutral-800">
+						<div className="flex items-center gap-3">
+							{post.author.image ? (
+								// eslint-disable-next-line @next/next/no-img-element
+								<img src={post.author.image} alt="" className="h-11 w-11 rounded-full object-cover" />
+							) : (
+								<span className="grid h-11 w-11 place-items-center rounded-full bg-neutral-950 font-semibold text-white dark:bg-white dark:text-neutral-950">
+									{post.author.name.charAt(0).toUpperCase()}
+								</span>
+							)}
+							<div className="text-sm">
+								<p className="font-semibold">{post.author.name}</p>
+								<p className="text-neutral-500">
+									<time dateTime={post.createdAt}>{date}</time> · {t('read_time', { minutes: post.readMinutes })}
 								</p>
 							</div>
-							<div className="mt-[6px] text-xs">
-								<span className="text-neutral-700 dark:text-neutral-300">
-									{new Date(post.createdAt).toLocaleDateString('en-US', {
-										year: 'numeric',
-										month: 'long',
-										day: 'numeric',
-									})}
-								</span>
-								<span className="mx-2 font-semibold">·</span>
-								<span className="text-neutral-700 dark:text-neutral-300">
-									{/* {t('blog_slug_page_Min_Read')} */}
-								</span>
-							</div>
 						</div>
+						<ShareButtons title={post.title} />
 					</div>
-					<div className="mt-3 sm:ml-3 sm:mt-0">
-						<SocialsList />
-					</div>
+					{!post.translated && <p className="mt-5 rounded-2xl bg-neutral-100 px-4 py-3 text-sm text-neutral-600 dark:bg-neutral-900 dark:text-neutral-400">{t('not_translated')}</p>}
+				</header>
+
+				<div className="relative mx-auto mt-10 aspect-[16/9] max-w-5xl overflow-hidden bg-neutral-100 sm:mt-14 sm:rounded-[36px] dark:bg-neutral-900">
+					<Image src={post.image || PHOTOS.sahara} alt={post.title} fill priority sizes="(max-width: 1024px) 100vw, 1024px" className="object-cover" />
 				</div>
+
 				<div
-					className="prose max-w-none"
+					lang={post.translated ? locale : routing.defaultLocale}
+					className="prose prose-lg prose-neutral mx-auto mt-10 max-w-3xl px-5 sm:mt-14 dark:prose-invert prose-headings:font-bold prose-headings:tracking-tight prose-h2:mt-12 prose-h2:text-3xl prose-h3:text-2xl prose-a:font-semibold prose-a:text-neutral-950 prose-a:underline-offset-4 prose-img:rounded-3xl prose-li:my-1 dark:prose-a:text-white"
 					dangerouslySetInnerHTML={{ __html: post.content }}
 				/>
-				<div className="mt-6">
-					<h2 className="mb-2 text-xl font-semibold">
-						{t('blog_slug_page_Tags')}
-					</h2>
-					<div className="flex flex-wrap gap-2">
-						{post.tags.map((tag: any) => (
-							<span
-								key={tag}
-								className="rounded-full bg-gray-200 px-2 py-1 text-sm text-gray-700"
-							>
+
+				{post.tags.length > 0 && (
+					<ul className="mx-auto mt-12 flex max-w-3xl flex-wrap gap-2 px-5" aria-label={t('tags')}>
+						{post.tags.map((tag) => (
+							<li key={tag} className="rounded-full bg-neutral-100 px-3 py-1 text-sm font-medium text-neutral-700 dark:bg-neutral-900 dark:text-neutral-300">
 								{tag}
-							</span>
+							</li>
 						))}
-					</div>
-				</div>
+					</ul>
+				)}
 			</article>
-		</div>
+
+			{/* From reading to booking */}
+			<section className="mx-auto mt-20 max-w-7xl px-5 sm:mt-28">
+				<div className="relative isolate overflow-hidden rounded-[28px] bg-neutral-950 px-6 py-14 text-center text-white sm:rounded-[40px] sm:py-20">
+					<Image src={PHOTOS.sahara} alt="" fill sizes="100vw" className="-z-10 object-cover opacity-40" />
+					<h2 className="mx-auto max-w-2xl text-3xl font-bold tracking-tight sm:text-5xl">{t('tours_title')}</h2>
+					<p className="mx-auto mt-3 max-w-xl text-white/75 sm:text-lg">{t('tours_text')}</p>
+					<Link href={`/${locale}/search?query=` as any} className="mt-8 inline-flex h-12 items-center gap-2 rounded-full bg-white px-7 text-sm font-semibold text-neutral-950 transition hover:bg-neutral-200">
+						{t('tours_cta')}
+						<ArrowRight className="h-4 w-4" />
+					</Link>
+				</div>
+			</section>
+
+			{related.length > 0 && (
+				<section className="mx-auto mt-20 max-w-7xl px-5 sm:mt-28">
+					<h2 className="text-3xl font-bold tracking-tight sm:text-4xl">{t('related_title')}</h2>
+					<ul className="mt-8 grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+						{related.map((r) => (
+							<li key={r.id}>
+								<PostCard post={r} />
+							</li>
+						))}
+					</ul>
+				</section>
+			)}
+		</main>
 	)
 }
