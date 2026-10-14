@@ -3028,5 +3028,23 @@
     "view_tour": "투어 보기",
     "help": "예약을 변경하거나 취소해야 하나요?",
     "contact": "문의하기"
+  },
+  "Promo": {
+    "have_code": "프로모 코드가 있나요?",
+    "label": "프로모 코드",
+    "placeholder": "코드 입력",
+    "apply": "적용",
+    "remove": "삭제",
+    "percent_off": "{percent}% 할인",
+    "line": "프로모 코드 {code}",
+    "error_INVALID_CODE": "유효하지 않은 코드입니다. 철자를 확인해 주세요.",
+    "error_OWN_CODE": "본인 코드는 사용할 수 없어요. 친구에게 공유해 보세요!",
+    "error_ALREADY_APPLIED": "이 예약에는 이미 프로모 코드가 적용되어 있습니다.",
+    "error_EXPIRED": "만료된 코드입니다.",
+    "error_USED_UP": "이 코드는 사용 한도에 도달했습니다.",
+    "error_ALREADY_PAID": "이미 결제된 예약입니다.",
+    "error_NOT_SIGNED_IN": "프로모 코드를 사용하려면 로그인해 주세요.",
+    "error_NOTHING_TO_DISCOUNT": "이 예약에는 할인할 금액이 없습니다.",
+    "error_generic": "문제가 발생했습니다. 다시 시도해 주세요."
   }
 }

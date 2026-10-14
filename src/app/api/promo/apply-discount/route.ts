@@ -1,99 +1,66 @@
-export const dynamic = "force-dynamic";
-import { NextRequest, NextResponse } from 'next/server'
+// Promo codes at checkout. A code is a TRAVSUS referral code: the booking gets
+// the code's client discount (a % of the price) as a negative line item; the
+// Stripe payment then follows the new total (see CheckoutPayment).
+//   POST   { bookingId, code } → apply
+//   DELETE { bookingId }       → remove
+import { NextResponse, type NextRequest } from 'next/server'
 import { db, T, must, touch } from '@/lib/db'
+import { OPEN_STATES, PROMO_PREFIX, bookingTotal } from '@/lib/payments'
 import getUserData from '../../user/getUserData'
 
-const PROMO_PREFIX = 'Promo Code Applied'
+export const dynamic = 'force-dynamic'
 
-export async function POST(request: NextRequest) {
+const isPromo = (item: any) => !!item?.promoCode || String(item?.description ?? '').startsWith(PROMO_PREFIX)
+const fail = (code: string, status = 400) => NextResponse.json({ error: code }, { status })
+
+/** The signed-in user's open booking, or an error response. */
+async function openBooking(bookingId: unknown) {
+	const user: any = await getUserData()
+	if (!user?.id) return { error: fail('NOT_SIGNED_IN', 401) }
+	if (typeof bookingId !== 'string' || !bookingId) return { error: fail('NO_BOOKING') }
+	const booking = must(
+		await db.from(T.bookings).select('id, lineItems, bookingState').match({ id: bookingId, customerId: user.id }).maybeSingle(),
+	) as any
+	if (!booking) return { error: fail('NO_BOOKING', 404) }
+	if (!OPEN_STATES.includes(booking.bookingState)) return { error: fail('ALREADY_PAID', 409) }
+	return { user, booking }
+}
+
+export async function POST(req: NextRequest) {
 	try {
-		console.log('POST /api/apply-promo - Applying promo code')
+		const body = await req.json().catch(() => ({}))
+		// Older pages sent only the code: the booking is then in the page address
+		const bookingId = body.bookingId ?? new URL(req.headers.get('referer') || 'http://x').searchParams.get('bookingId')
+		const { user, booking, error } = await openBooking(bookingId)
+		if (error) return error
 
-		// 1️⃣ Extract bookingId from referer URL
-		const referer = request.headers.get('referer') || ''
-		const url = new URL(referer)
-		const bookingId = url.searchParams.get('bookingId')
+		const code = String(body.code ?? '').trim()
+		if (!code || code.length > 60) return fail('INVALID_CODE')
 
-		if (!bookingId) {
-			return NextResponse.json(
-				{ error: 'Booking ID is required' },
-				{ status: 400 },
-			)
-		}
+		const lineItems: any[] = booking.lineItems ?? []
+		if (lineItems.some(isPromo)) return fail('ALREADY_APPLIED')
 
-		// 2️⃣ Get promo code from request body
-		const { code } = await request.json()
-
-		if (!code) {
-			return NextResponse.json(
-				{ error: 'Promo Code is required' },
-				{ status: 400 },
-			)
-		}
-
-		// 3️⃣ Find the promo code
-		const userData: any = await getUserData()
-		if (!userData?.id) {
-			return NextResponse.json({ error: 'Not authenticated' }, { status: 401 })
-		}
-
+		// Codes are matched without regard to capitals (they're shown in lowercase)
 		const promo = must(
 			await db
 				.from(T.referralLinks)
-				.select('commissionType, commissionValue')
-				.eq('code', code)
+				.select('userId, code, clientDiscount, maxUses, usedCount, startDate, endDate')
+				.ilike('code', code.replace(/[\\%_]/g, '\\$&'))
 				.maybeSingle(),
-		)
+		) as any
+		if (!promo || !(promo.clientDiscount > 0)) return fail('INVALID_CODE')
+		if (promo.userId === user.id) return fail('OWN_CODE')
+		const now = Date.now()
+		if (promo.startDate && new Date(promo.startDate).getTime() > now) return fail('INVALID_CODE')
+		if (promo.endDate && new Date(promo.endDate).getTime() < now) return fail('EXPIRED')
+		if (promo.maxUses != null && (promo.usedCount ?? 0) >= promo.maxUses) return fail('USED_UP')
 
-		if (!promo) {
-			return NextResponse.json({ error: 'Invalid promo code' }, { status: 400 })
-		}
+		const total = bookingTotal(lineItems)
+		if (total <= 0) return fail('NOTHING_TO_DISCOUNT')
+		// clientDiscount is a percentage; never below zero, rounded to cents
+		const discount = Math.min(total, Math.round(total * promo.clientDiscount) / 100)
 
-		// 4️⃣ Get the booking
-		const booking = must(
-			await db
-				.from(T.bookings)
-				.select('lineItems')
-				.match({ id: bookingId, customerId: userData.id })
-				.maybeSingle(),
-		)
-
-		if (!booking) {
-			return NextResponse.json({ error: 'Booking not found' }, { status: 404 })
-		}
-
-		const lineItems: any[] = booking.lineItems ?? []
-		if (lineItems.some((item) => item.description?.startsWith(PROMO_PREFIX))) {
-			return NextResponse.json(
-				{ error: 'A promo code is already applied to this booking' },
-				{ status: 400 },
-			)
-		}
-
-		// 5️⃣ Calculate total applicable price
-		const totalApplicablePrice = lineItems
-			.filter((item) => item.includeInTotal)
-			.reduce((sum, item) => sum + item.totalPrice, 0)
-
-		if (totalApplicablePrice === 0) {
-			return NextResponse.json(
-				{ error: 'No applicable line items for discount' },
-				{ status: 400 },
-			)
-		}
-
-		// 6️⃣ Calculate refund amount
-		let refundAmount = 0
-		if (promo.commissionType === 'percentage') {
-			refundAmount = -(totalApplicablePrice * (promo.commissionValue / 100)) // Percentage discount
-		} else {
-			refundAmount = -Math.abs(promo.commissionValue) // Fixed amount discount
-		}
-
-		if (isNaN(refundAmount)) refundAmount = 0
-
-		// 7️⃣ Update booking with promo code applied
-		const updatedBooking = must(
+		const updated = must(
 			await db
 				.from(T.bookings)
 				.update(
@@ -101,9 +68,11 @@ export async function POST(request: NextRequest) {
 						lineItems: [
 							...lineItems,
 							{
-								description: `${PROMO_PREFIX} (${code})`,
-								unitPrice: refundAmount,
-								totalPrice: refundAmount,
+								description: `${PROMO_PREFIX} (${promo.code})`,
+								promoCode: promo.code,
+								promoPercent: promo.clientDiscount,
+								unitPrice: -discount,
+								totalPrice: -discount,
 								totalGuests: 0,
 								serviceQuantity: 1,
 								includeInTotal: true,
@@ -112,22 +81,34 @@ export async function POST(request: NextRequest) {
 						],
 					}),
 				)
-				.eq('id', bookingId)
+				.eq('id', booking.id)
 				.select('lineItems')
 				.single(),
-		)
-		return NextResponse.json(
-			{ lineItems: updatedBooking.lineItems, discountApplied: true },
-			{ status: 200 },
-		)
+		) as any
+
+		return NextResponse.json({ lineItems: updated.lineItems, code: promo.code, percent: promo.clientDiscount, discount })
 	} catch (error) {
-		console.error('Error applying promo code:', error)
-		return NextResponse.json(
-			{
-				error: 'Failed to apply promo code',
-				details: (error as Error).message,
-			},
-			{ status: 500 },
-		)
+		console.error('Applying promo code failed:', error)
+		return fail('SERVER_ERROR', 500)
+	}
+}
+
+export async function DELETE(req: NextRequest) {
+	try {
+		const body = await req.json().catch(() => ({}))
+		const { booking, error } = await openBooking(body.bookingId)
+		if (error) return error
+		const updated = must(
+			await db
+				.from(T.bookings)
+				.update(touch({ lineItems: (booking.lineItems ?? []).filter((item: any) => !isPromo(item)) }))
+				.eq('id', booking.id)
+				.select('lineItems')
+				.single(),
+		) as any
+		return NextResponse.json({ lineItems: updated.lineItems })
+	} catch (error) {
+		console.error('Removing promo code failed:', error)
+		return fail('SERVER_ERROR', 500)
 	}
 }

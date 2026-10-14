@@ -4041,5 +4041,23 @@
     "view_tour": "Voir le circuit",
     "help": "Besoin de modifier ou d'annuler une réservation ?",
     "contact": "Nous contacter"
+  },
+  "Promo": {
+    "have_code": "Vous avez un code promo ?",
+    "label": "Code promo",
+    "placeholder": "Saisissez votre code",
+    "apply": "Appliquer",
+    "remove": "Retirer",
+    "percent_off": "{percent} % de réduction",
+    "line": "Code promo {code}",
+    "error_INVALID_CODE": "Ce code n'est pas valide. Vérifiez l'orthographe.",
+    "error_OWN_CODE": "Vous ne pouvez pas utiliser votre propre code. Partagez-le avec vos amis !",
+    "error_ALREADY_APPLIED": "Un code promo est déjà appliqué à cette réservation.",
+    "error_EXPIRED": "Ce code a expiré.",
+    "error_USED_UP": "Ce code a atteint sa limite d'utilisation.",
+    "error_ALREADY_PAID": "Cette réservation est déjà payée.",
+    "error_NOT_SIGNED_IN": "Connectez-vous pour utiliser un code promo.",
+    "error_NOTHING_TO_DISCOUNT": "Il n'y a rien à réduire sur cette réservation.",
+    "error_generic": "Un problème est survenu. Veuillez réessayer."
   }
 }

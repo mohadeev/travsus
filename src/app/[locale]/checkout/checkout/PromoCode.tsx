@@ -1,193 +1,108 @@
 'use client'
-import { useSearchParams } from 'next/navigation'
-import { Input } from '@/components/ui/input'
-import { Button } from '@/components/ui/button'
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
-import { useState, useEffect } from 'react'
-import { useAppDispatch } from '@/store/hooks'
-import { setLineItems } from '@/store/slices/booking'
-import confetti from 'canvas-confetti'
-import DiscountSuccessModal from './DiscountSuccessModal'
-import { useTranslations } from '@/lib/i18n'
+// Promo code at checkout: "Have a promo code?" → field → applied code with
+// its discount (and Remove). The payment amount follows automatically.
+import { useState, type FormEvent } from 'react'
+import { Check, Loader2, Tag, X } from 'lucide-react'
+import { useTranslations } from 'next-intl'
+import { useAppDispatch, useAppSelector } from '@/store/hooks'
+import { selectBooking, setLineItems } from '@/store/slices/booking'
+
+const ERRORS = ['INVALID_CODE', 'OWN_CODE', 'ALREADY_APPLIED', 'EXPIRED', 'USED_UP', 'ALREADY_PAID', 'NOT_SIGNED_IN', 'NOTHING_TO_DISCOUNT'] as const
 
 export default function PromoCodeForm() {
-	const t = useTranslations('Jan03_PromoCode_r5n8')
-	const searchParams = useSearchParams()
-	const bookingId = searchParams.get('bookingId') // Get bookingId from URL
-	const [promoCode, setPromoCode] = useState('')
-	const [isSubmitting, setIsSubmitting] = useState(false)
-	const [message, setMessage] = useState('')
-	const [showConfetti, setShowConfetti] = useState(false)
-	const [showModal, setShowModal] = useState(false)
-	const [discountAmount, setDiscountAmount] = useState(0)
+	const t = useTranslations('Promo')
 	const dispatch = useAppDispatch()
+	const booking = useAppSelector(selectBooking) as any
+	const applied = (booking?.lineItems ?? []).find((item: any) => item?.promoCode || String(item?.description ?? '').startsWith('Promo Code Applied'))
+	const [open, setOpen] = useState(false)
+	const [code, setCode] = useState('')
+	const [busy, setBusy] = useState(false)
+	const [error, setError] = useState('')
 
-	// Define custom shapes
-	const getCustomShapes = () => {
-		// Pumpkin shape
-		const pumpkin = confetti.shapeFromPath({
-			path: 'M449.4 142c-5 0-10 .3-15 1a183 183 0 0 0-66.9-19.1V87.5a17.5 17.5 0 1 0-35 0v36.4a183 183 0 0 0-67 19c-4.9-.6-9.9-1-14.8-1C170.3 142 105 219.6 105 315s65.3 173 145.7 173c5 0 10-.3 14.8-1a184.7 184.7 0 0 0 169 0c4.9.7 9.9 1 14.9 1 80.3 0 145.6-77.6 145.6-173s-65.3-173-145.7-173zm-220 138 27.4-40.4a11.6 11.6 0 0 1 16.4-2.7l54.7 40.3a11.3 11.3 0 0 1-7 20.3H239a11.3 11.3 0 0 1-9.6-17.5zM444 383.8l-43.7 17.5a17.7 17.7 0 0 1-13 0l-37.3-15-37.2 15a17.8 17.8 0 0 1-13 0L256 383.8a17.5 17.5 0 0 1 13-32.6l37.3 15 37.2-15c4.2-1.6 8.8-1.6 13 0l37.3 15 37.2-15a17.5 17.5 0 0 1 13 32.6zm17-86.3h-82a11.3 11.3 0 0 1-6.9-20.4l54.7-40.3a11.6 11.6 0 0 1 16.4 2.8l27.4 40.4a11.3 11.3 0 0 1-9.6 17.5z',
-			matrix: [
-				0.020491803278688523, 0, 0, 0.020491803278688523, -7.172131147540983,
-				-5.9016393442622945,
-			],
-		})
-
-		// Tree shape
-		const tree = confetti.shapeFromPath({
-			path: 'M120 240c-41,14 -91,18 -120,1 29,-10 57,-22 81,-40 -18,2 -37,3 -55,-3 25,-14 48,-30 66,-51 -11,5 -26,8 -45,7 20,-14 40,-30 57,-49 -13,1 -26,2 -38,-1 18,-11 35,-25 51,-43 -13,3 -24,5 -35,6 21,-19 40,-41 53,-67 14,26 32,48 54,67 -11,-1 -23,-3 -35,-6 15,18 32,32 51,43 -13,3 -26,2 -38,1 17,19 36,35 56,49 -19,1 -33,-2 -45,-7 19,21 42,37 67,51 -19,6 -37,5 -56,3 25,18 53,30 82,40 -30,17 -79,13 -120,-1l0 41 -31 0 0 -41z',
-			matrix: [
-				0.03597122302158273, 0, 0, 0.03597122302158273, -4.856115107913669,
-				-5.071942446043165,
-			],
-		})
-
-		// Heart shape
-		const heart = confetti.shapeFromPath({
-			path: 'M167 72c19,-38 37,-56 75,-56 42,0 76,33 76,75 0,76 -76,151 -151,227 -76,-76 -151,-151 -151,-227 0,-42 33,-75 75,-75 38,0 57,18 76,56z',
-			matrix: [
-				0.03333333333333333, 0, 0, 0.03333333333333333, -5.566666666666666,
-				-5.533333333333333,
-			],
-		})
-
-		return { pumpkin, tree, heart }
+	async function send(method: 'POST' | 'DELETE', body: Record<string, string>) {
+		setBusy(true)
+		setError('')
+		const res = await fetch('/api/promo/apply-discount', {
+			method,
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({ bookingId: booking?.id, ...body }),
+		}).catch(() => null)
+		const data = await res?.json().catch(() => null)
+		if (res?.ok && data?.lineItems) {
+			dispatch(setLineItems(data.lineItems))
+			setCode('')
+		} else setError(ERRORS.includes(data?.error) ? t(`error_${data.error}`) : t('error_generic'))
+		setBusy(false)
 	}
 
-	// Function to trigger confetti celebration with custom shapes
-	useEffect(() => {
-		if (showConfetti) {
-			const { pumpkin, tree, heart } = getCustomShapes()
-			const defaults = {
-				scalar: 2,
-				spread: 180,
-				particleCount: 30,
-				origin: { y: 0 }, // Start from the top of the screen
-				startVelocity: 35,
-			}
+	const apply = (e: FormEvent) => {
+		e.preventDefault()
+		if (code.trim()) send('POST', { code: code.trim() })
+	}
 
-			// Launch pumpkin shapes
-			confetti({
-				...defaults,
-				shapes: [pumpkin],
-				colors: ['#ff9a00', '#ff7400', '#ff4d00'],
-			})
+	if (!booking?.id) return null
 
-			// Launch tree shapes
-			confetti({
-				...defaults,
-				shapes: [tree],
-				colors: ['#8d960f', '#be0f10', '#445404'],
-			})
+	if (applied) {
+		const name = applied.promoCode ?? String(applied.description).match(/\(([^)]+)\)/)?.[1] ?? ''
+		return (
+			<div className="flex items-center gap-3 rounded-2xl bg-emerald-50 px-4 py-3 text-emerald-900 dark:bg-emerald-950/50 dark:text-emerald-200">
+				<Check className="h-5 w-5 shrink-0" />
+				<p className="min-w-0 flex-1 text-sm">
+					<span className="font-semibold uppercase tracking-wide">{name}</span>
+					{applied.promoPercent ? ` · ${t('percent_off', { percent: applied.promoPercent })}` : ''}
+				</p>
+				<button type="button" onClick={() => send('DELETE', {})} disabled={busy} className="inline-flex items-center gap-1 text-sm font-semibold underline underline-offset-4 disabled:opacity-50">
+					{busy ? <Loader2 className="h-4 w-4 animate-spin" /> : <X className="h-4 w-4" />}
+					{t('remove')}
+				</button>
+			</div>
+		)
+	}
 
-			// Launch heart shapes
-			confetti({
-				...defaults,
-				shapes: [heart],
-				colors: ['#f93963', '#a10864', '#ee0b93'],
-			})
-
-			// Reset the state after animation
-			setTimeout(() => {
-				setShowConfetti(false)
-			}, 2000)
-		}
-	}, [showConfetti])
-
-	const handleApplyPromo = async () => {
-		if (!promoCode) {
-			setMessage(t('Please_Enter_Promo_Code'))
-			return
-		}
-
-		setIsSubmitting(true)
-		setMessage('')
-
-		try {
-			const response = await fetch('/api/promo/apply-discount', {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ code: promoCode }), // Only send promo code
-			})
-
-			const data = await response.json()
-
-			if (!response.ok) {
-				throw new Error(data.error || t('Failed_Apply_Promo_Code'))
-			}
-
-			if (data) {
-				dispatch(setLineItems(data.lineItems))
-
-				// Get the discount amount from the last line item
-				if (data.lineItems && data.lineItems.length > 0) {
-					const lastLineItem = data.lineItems[data.lineItems.length - 1]
-					setDiscountAmount(lastLineItem.totalPrice)
-				}
-			}
-
-			console.log('updatedBooking: ', data)
-			setMessage(t('Promo_Code_Applied_Successfully'))
-
-			// Check if discount was applied successfully
-			if (data.discountApplied) {
-				// Trigger celebration animation and show modal
-				setShowConfetti(true)
-				setShowModal(true)
-			}
-		} catch (error) {
-			setMessage(error.message)
-		} finally {
-			setIsSubmitting(false)
-		}
+	if (!open) {
+		return (
+			<button type="button" onClick={() => setOpen(true)} className="inline-flex items-center gap-2 text-sm font-semibold underline underline-offset-4">
+				<Tag className="h-4 w-4" />
+				{t('have_code')}
+			</button>
+		)
 	}
 
 	return (
-		<>
-			{/* Success Modal */}
-			<DiscountSuccessModal
-				isOpen={showModal}
-				onClose={() => setShowModal(false)}
-				discountAmount={discountAmount}
-				discountCode={promoCode}
-			/>
-			<Card className="mx-auto my-4 w-full max-w-md">
-				<CardHeader>
-					<CardTitle className="text-2xl font-bold">
-						{t('Promo_Code')}
-					</CardTitle>
-				</CardHeader>
-				<CardContent>
-					<div className="flex items-center space-x-2">
-						<Input
-							id="promoCode"
-							placeholder={t('Enter_Promo_Code_Placeholder')}
-							className="flex-grow"
-							value={promoCode}
-							onChange={(e) => setPromoCode(e.target.value)}
-							disabled={isSubmitting}
-						/>
-						<Button
-							variant="outline"
-							onClick={handleApplyPromo}
-							disabled={isSubmitting}
-						>
-							{isSubmitting ? t('Applying') : t('Apply')}
-						</Button>
-					</div>
-					{message && (
-						<p
-							className={`mt-2 text-sm ${
-								message.includes(t('Promo_Code_Applied_Successfully'))
-									? 'text-green-500'
-									: 'text-red-500'
-							}`}
-						>
-							{message}
-						</p>
-					)}
-				</CardContent>
-			</Card>
-		</>
+		<form onSubmit={apply}>
+			<label htmlFor="promo-code" className="mb-1.5 block text-sm font-medium">
+				{t('label')}
+			</label>
+			<div className="flex gap-2">
+				<input
+					id="promo-code"
+					value={code}
+					onChange={(e) => {
+						setCode(e.target.value)
+						setError('')
+					}}
+					autoFocus
+					autoCapitalize="none"
+					autoComplete="off"
+					spellCheck={false}
+					maxLength={60}
+					placeholder={t('placeholder')}
+					className="h-12 min-w-0 flex-1 rounded-full border-0 bg-neutral-100 px-5 text-base ring-1 ring-transparent placeholder:text-neutral-400 focus:bg-white focus:outline-none focus:ring-neutral-950 dark:bg-neutral-800 dark:focus:ring-white"
+				/>
+				<button
+					type="submit"
+					disabled={busy || !code.trim()}
+					className="inline-flex h-12 shrink-0 items-center gap-2 rounded-full bg-neutral-950 px-6 text-sm font-semibold text-white transition hover:bg-neutral-800 disabled:opacity-40 dark:bg-white dark:text-neutral-950"
+				>
+					{busy && <Loader2 className="h-4 w-4 animate-spin" />}
+					{t('apply')}
+				</button>
+			</div>
+			{error && (
+				<p role="alert" className="mt-2 text-sm text-red-600">
+					{error}
+				</p>
+			)}
+		</form>
 	)
 }

@@ -122,6 +122,18 @@ export async function markBookingPaid(paymentIntent: Stripe.PaymentIntent) {
 	)
 	if (!updated?.length) return 'already_paid'
 
+	// A promo code used for this booking counts as one use of the code
+	try {
+		const paid: any = must(await db.from(T.bookings).select('lineItems').eq('id', bookingId).maybeSingle())
+		const code = (paid?.lineItems ?? []).find((item: any) => item?.promoCode)?.promoCode
+		if (code) {
+			const link: any = must(await db.from(T.referralLinks).select('id, usedCount').eq('code', code).maybeSingle())
+			if (link) must(await db.from(T.referralLinks).update(touch({ usedCount: (link.usedCount ?? 0) + 1 })).eq('id', link.id))
+		}
+	} catch (error) {
+		console.error('Promo code use count failed:', error)
+	}
+
 	try {
 		const booking: any = must(
 			await db.from(T.bookings).select(REL.bookingFull).eq('id', bookingId).maybeSingle(),

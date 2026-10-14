@@ -22,6 +22,12 @@ const LineItemsBreakdown: React.FC<LineItemsBreakdownProps> = ({
 	lineItems,
 }) => {
 	const t = useTranslations('RenderLineItemsBreakdown')
+	const tPromo = useTranslations('Promo')
+	// A promo code line: "Promo code BRADI"
+	const label = (item: any) => {
+		const code = item.promoCode ?? String(item.description ?? '').match(/^Promo Code Applied \(([^)]+)\)/)?.[1]
+		return code ? tPromo('line', { code: code.toUpperCase() }) : t(item.description)
+	}
 
 	// Calculate the total amount for all line items
 	const filteredLineItems = lineItems?.filter(
@@ -37,7 +43,7 @@ const LineItemsBreakdown: React.FC<LineItemsBreakdownProps> = ({
 			<div className="space-y-2">
 				{filteredLineItems.map((item, index) => (
 					<div key={index} className="flex justify-between py-1">
-						<div className="capitalize">{t(item.description)}</div>
+						<div className="capitalize">{label(item)}</div>
 						<div>{formatCurrency(item.totalPrice)}</div>
 					</div>
 				))}

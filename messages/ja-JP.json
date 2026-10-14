@@ -3041,5 +3041,23 @@
     "view_tour": "ツアーを見る",
     "help": "予約の変更やキャンセルが必要ですか？",
     "contact": "お問い合わせ"
+  },
+  "Promo": {
+    "have_code": "プロモコードをお持ちですか？",
+    "label": "プロモコード",
+    "placeholder": "コードを入力",
+    "apply": "適用",
+    "remove": "削除",
+    "percent_off": "{percent}%オフ",
+    "line": "プロモコード {code}",
+    "error_INVALID_CODE": "このコードは無効です。綴りをご確認ください。",
+    "error_OWN_CODE": "ご自身のコードは使えません。お友達にシェアしてください！",
+    "error_ALREADY_APPLIED": "この予約にはすでにプロモコードが適用されています。",
+    "error_EXPIRED": "このコードは有効期限切れです。",
+    "error_USED_UP": "このコードは利用上限に達しています。",
+    "error_ALREADY_PAID": "この予約はすでに支払い済みです。",
+    "error_NOT_SIGNED_IN": "プロモコードを使うにはログインしてください。",
+    "error_NOTHING_TO_DISCOUNT": "この予約には割引対象がありません。",
+    "error_generic": "問題が発生しました。もう一度お試しください。"
   }
 }

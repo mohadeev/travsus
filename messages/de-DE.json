@@ -4025,5 +4025,23 @@
     "view_tour": "Tour ansehen",
     "help": "Möchten Sie eine Buchung ändern oder stornieren?",
     "contact": "Kontakt"
+  },
+  "Promo": {
+    "have_code": "Haben Sie einen Promo-Code?",
+    "label": "Promo-Code",
+    "placeholder": "Code eingeben",
+    "apply": "Anwenden",
+    "remove": "Entfernen",
+    "percent_off": "{percent} % Rabatt",
+    "line": "Promo-Code {code}",
+    "error_INVALID_CODE": "Dieser Code ist ungültig. Bitte prüfen Sie die Schreibweise.",
+    "error_OWN_CODE": "Ihren eigenen Code können Sie nicht nutzen – teilen Sie ihn mit Freunden!",
+    "error_ALREADY_APPLIED": "Für diese Buchung ist bereits ein Promo-Code aktiv.",
+    "error_EXPIRED": "Dieser Code ist abgelaufen.",
+    "error_USED_UP": "Dieser Code wurde bereits zu oft verwendet.",
+    "error_ALREADY_PAID": "Diese Buchung ist bereits bezahlt.",
+    "error_NOT_SIGNED_IN": "Bitte melden Sie sich an, um einen Promo-Code zu nutzen.",
+    "error_NOTHING_TO_DISCOUNT": "Für diese Buchung gibt es nichts zu rabattieren.",
+    "error_generic": "Etwas ist schiefgelaufen. Bitte erneut versuchen."
   }
 }

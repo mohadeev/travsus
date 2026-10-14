@@ -2903,5 +2903,23 @@
     "view_tour": "查看行程",
     "help": "需要修改或取消预订？",
     "contact": "联系我们"
+  },
+  "Promo": {
+    "have_code": "有优惠码吗？",
+    "label": "优惠码",
+    "placeholder": "输入优惠码",
+    "apply": "使用",
+    "remove": "移除",
+    "percent_off": "{percent}% 折扣",
+    "line": "优惠码 {code}",
+    "error_INVALID_CODE": "优惠码无效，请检查拼写。",
+    "error_OWN_CODE": "不能使用自己的优惠码，快分享给好友吧！",
+    "error_ALREADY_APPLIED": "此预订已使用优惠码。",
+    "error_EXPIRED": "此优惠码已过期。",
+    "error_USED_UP": "此优惠码已达到使用上限。",
+    "error_ALREADY_PAID": "此预订已支付。",
+    "error_NOT_SIGNED_IN": "请登录后使用优惠码。",
+    "error_NOTHING_TO_DISCOUNT": "此预订没有可优惠的金额。",
+    "error_generic": "出了点问题，请重试。"
   }
 }

@@ -2741,5 +2741,23 @@
     "view_tour": "View tour",
     "help": "Need to change or cancel a booking?",
     "contact": "Contact us"
+  },
+  "Promo": {
+    "have_code": "Have a promo code?",
+    "label": "Promo code",
+    "placeholder": "Enter your code",
+    "apply": "Apply",
+    "remove": "Remove",
+    "percent_off": "{percent}% off",
+    "line": "Promo code {code}",
+    "error_INVALID_CODE": "This code isn't valid. Check the spelling and try again.",
+    "error_OWN_CODE": "You can't use your own code. Share it with friends instead!",
+    "error_ALREADY_APPLIED": "A promo code is already applied to this booking.",
+    "error_EXPIRED": "This code has expired.",
+    "error_USED_UP": "This code has reached its limit.",
+    "error_ALREADY_PAID": "This booking is already paid.",
+    "error_NOT_SIGNED_IN": "Please sign in to use a promo code.",
+    "error_NOTHING_TO_DISCOUNT": "There's nothing to discount on this booking.",
+    "error_generic": "Something went wrong. Please try again."
   }
 }

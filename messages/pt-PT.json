@@ -3475,5 +3475,23 @@
     "view_tour": "Ver tour",
     "help": "Precisa de alterar ou cancelar uma reserva?",
     "contact": "Contacte-nos"
+  },
+  "Promo": {
+    "have_code": "Tem um código promocional?",
+    "label": "Código promocional",
+    "placeholder": "Introduza o código",
+    "apply": "Aplicar",
+    "remove": "Remover",
+    "percent_off": "{percent}% de desconto",
+    "line": "Código promocional {code}",
+    "error_INVALID_CODE": "Este código não é válido. Verifique a ortografia.",
+    "error_OWN_CODE": "Não pode usar o seu próprio código. Partilhe-o com amigos!",
+    "error_ALREADY_APPLIED": "Já existe um código aplicado a esta reserva.",
+    "error_EXPIRED": "Este código expirou.",
+    "error_USED_UP": "Este código atingiu o limite de utilizações.",
+    "error_ALREADY_PAID": "Esta reserva já está paga.",
+    "error_NOT_SIGNED_IN": "Inicie sessão para usar um código promocional.",
+    "error_NOTHING_TO_DISCOUNT": "Não há nada a descontar nesta reserva.",
+    "error_generic": "Algo correu mal. Tente novamente."
   }
 }
