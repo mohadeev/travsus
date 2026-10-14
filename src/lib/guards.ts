@@ -1,10 +1,16 @@
 // Permission helpers for API routes.
 import { NextResponse } from 'next/server'
 import getUserData from '@/app/api/user/getUserData'
+import { OWNER_EMAIL } from '@/lib/admin/owner'
 
-/** The signed-in user (full row) or null. */
+/**
+ * The signed-in user (full row) or null. The site owner's account (matched by
+ * its sign-in email) counts as an admin.
+ */
 export async function currentUser(): Promise<any | null> {
-	return (await getUserData()) ?? null
+	const user = (await getUserData()) ?? null
+	if (user && String(user.email ?? '').toLowerCase() === OWNER_EMAIL) user.isAdmin = true
+	return user
 }
 
 /** Admins can edit everything; others only what they created. */

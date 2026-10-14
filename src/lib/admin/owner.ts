@@ -3,7 +3,7 @@
 import 'server-only'
 import { currentUser } from '@clerk/nextjs/server'
 
-const OWNER_EMAIL = 'skendoulmohamed@gmail.com'
+export const OWNER_EMAIL = 'skendoulmohamed@gmail.com'
 
 /** True when the signed-in Clerk user is the owner (verified email). */
 export async function isOwner() {

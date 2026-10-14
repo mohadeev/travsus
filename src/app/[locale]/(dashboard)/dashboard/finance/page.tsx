@@ -1,191 +1,70 @@
-import type { Metadata } from 'next'
-import { DashboardShell } from '@/components/dashboard/shell'
+// Finance: revenue from paid bookings, month by month, and every payment.
+// Payouts and refunds themselves happen in Stripe.
+import { ExternalLink, Wallet } from 'lucide-react'
 import { DashboardHeader } from '@/components/dashboard/header'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { InvoicesList } from '@/components/dashboard/invoices-list'
-import { TransactionsList } from '@/components/dashboard/transactions-list'
-import { Suspense } from 'react'
-import { Skeleton } from '@/components/ui/skeleton'
+import { dashboardScope, finance } from '@/lib/dashboard'
+import RevenueChart from '../../_components/RevenueChart'
+import { Empty, NoCompany, Panel, Stat, day, euro } from '../../_components/ui'
 
-export const metadata: Metadata = {
-	title: 'Finance',
-	description: 'Manage your finances',
-}
+export default async function FinancePage({ params }: { params: { locale: string } }) {
+	const { locale } = params
+	const scope = await dashboardScope()
+	if (!scope) return null
+	if (!scope.all && !scope.businessId) return <NoCompany locale={locale} />
 
-function FinanceStatsSkeleton() {
+	const f = await finance(scope)
+
 	return (
-		<div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-			{Array(4)
-				.fill(null)
-				.map((_, i) => (
-					<Card key={i}>
-						<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-							<Skeleton className="h-5 w-[120px]" />
-						</CardHeader>
-						<CardContent>
-							<Skeleton className="mb-1 h-8 w-[100px]" />
-							<Skeleton className="h-4 w-[140px]" />
-						</CardContent>
-					</Card>
-				))}
-		</div>
-	)
-}
+		<div className="space-y-6">
+			<DashboardHeader heading="Finance" text="Revenue from paid bookings.">
+				{scope.all && (
+					<a href="https://dashboard.stripe.com/payments" target="_blank" rel="noopener noreferrer" className="inline-flex h-11 items-center gap-2 rounded-full border border-neutral-300 px-5 text-sm font-semibold transition hover:border-neutral-950 dark:border-neutral-700 dark:hover:border-white">
+						Open Stripe
+						<ExternalLink className="h-4 w-4" />
+					</a>
+				)}
+			</DashboardHeader>
 
-export default function FinancePage() {
-	return (
-		<DashboardShell>
-			<DashboardHeader
-				heading="Finance"
-				text="Manage your finances and invoices"
-			/>
-			<Suspense fallback={<FinanceStatsSkeleton />}>
-				<FinanceStats />
-			</Suspense>
-			<Tabs defaultValue="invoices" className="mt-6 w-full">
-				<TabsList className="grid w-full grid-cols-2 md:w-[400px]">
-					<TabsTrigger value="invoices">Invoices</TabsTrigger>
-					<TabsTrigger value="transactions">Transactions</TabsTrigger>
-				</TabsList>
-				<TabsContent value="invoices">
-					<InvoicesList />
-				</TabsContent>
-				<TabsContent value="transactions">
-					<TransactionsList />
-				</TabsContent>
-			</Tabs>
-		</DashboardShell>
-	)
-}
-
-async function FinanceStats() {
-	try {
-		// For server components in Next.js, we need to construct a full URL
-		const protocol = process.env.NODE_ENV === 'development' ? 'http' : 'https'
-		const host =
-			process.env.VERCEL_URL ||
-			process.env.NEXT_PUBLIC_VERCEL_URL ||
-			'localhost:3001'
-		const baseUrl = `${protocol}://${host}`
-
-		const response = await fetch(`${baseUrl}/api/dashboard/finance`, {
-			cache: 'no-store', // Disable caching to always get fresh data
-			headers: {
-				'Content-Type': 'application/json',
-			},
-		})
-
-		if (!response.ok) {
-			console.error('API response error:', response.status, response.statusText)
-			// Return default data if the API call fails
-			return <DefaultFinanceStats />
-		}
-
-		const stats = await response.json()
-
-		return (
-			<div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-				<Card>
-					<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-						<CardTitle className="text-sm font-medium">Total Revenue</CardTitle>
-					</CardHeader>
-					<CardContent>
-						<div className="text-2xl font-bold">
-							${stats.totalRevenue.value}
-						</div>
-						<p className="text-muted-foreground text-xs">
-							+{stats.totalRevenue.percentageChange}% from last month
-						</p>
-					</CardContent>
-				</Card>
-				<Card>
-					<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-						<CardTitle className="text-sm font-medium">
-							Pending Payments
-						</CardTitle>
-					</CardHeader>
-					<CardContent>
-						<div className="text-2xl font-bold">
-							${stats.pendingPayments.value}
-						</div>
-						<p className="text-muted-foreground text-xs">
-							+{stats.pendingPayments.percentageChange}% from last month
-						</p>
-					</CardContent>
-				</Card>
-				<Card>
-					<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-						<CardTitle className="text-sm font-medium">Invoices Sent</CardTitle>
-					</CardHeader>
-					<CardContent>
-						<div className="text-2xl font-bold">{stats.invoicesSent.value}</div>
-						<p className="text-muted-foreground text-xs">
-							+{stats.invoicesSent.percentageChange}% from last month
-						</p>
-					</CardContent>
-				</Card>
-				<Card>
-					<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-						<CardTitle className="text-sm font-medium">Paid Invoices</CardTitle>
-					</CardHeader>
-					<CardContent>
-						<div className="text-2xl font-bold">{stats.paidInvoices.value}</div>
-						<p className="text-muted-foreground text-xs">
-							+{stats.paidInvoices.percentageChange}% from last month
-						</p>
-					</CardContent>
-				</Card>
+			<div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+				<Stat label="Total revenue" value={euro(f.total)} hint="all paid bookings" />
+				<Stat label={`Revenue ${new Date().getFullYear()}`} value={euro(f.thisYear)} />
+				<Stat label="Paid bookings" value={f.count} />
+				<Stat label="Average booking" value={euro(f.average)} />
 			</div>
-		)
-	} catch (error) {
-		console.error('Error in FinanceStats component:', error)
-		return <DefaultFinanceStats />
-	}
-}
 
-// Fallback component with default data
-function DefaultFinanceStats() {
-	return (
-		<div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-			<Card>
-				<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-					<CardTitle className="text-sm font-medium">Total Revenue</CardTitle>
-				</CardHeader>
-				<CardContent>
-					<div className="text-2xl font-bold">$0.00</div>
-					<p className="text-muted-foreground text-xs">+0% from last month</p>
-				</CardContent>
-			</Card>
-			<Card>
-				<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-					<CardTitle className="text-sm font-medium">
-						Pending Payments
-					</CardTitle>
-				</CardHeader>
-				<CardContent>
-					<div className="text-2xl font-bold">$0.00</div>
-					<p className="text-muted-foreground text-xs">+0% from last month</p>
-				</CardContent>
-			</Card>
-			<Card>
-				<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-					<CardTitle className="text-sm font-medium">Invoices Sent</CardTitle>
-				</CardHeader>
-				<CardContent>
-					<div className="text-2xl font-bold">0</div>
-					<p className="text-muted-foreground text-xs">+0% from last month</p>
-				</CardContent>
-			</Card>
-			<Card>
-				<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-					<CardTitle className="text-sm font-medium">Paid Invoices</CardTitle>
-				</CardHeader>
-				<CardContent>
-					<div className="text-2xl font-bold">0</div>
-					<p className="text-muted-foreground text-xs">+0% from last month</p>
-				</CardContent>
-			</Card>
+			<Panel title="Last 12 months">{f.count ? <RevenueChart data={f.months} height={300} /> : <p className="py-10 text-center text-neutral-500">No paid bookings yet.</p>}</Panel>
+
+			<Panel title="Payments">
+				{f.payments.length === 0 ? (
+					<Empty icon={Wallet} title="No payments yet" />
+				) : (
+					<div className="-mx-5 overflow-x-auto sm:mx-0">
+						<table className="w-full min-w-[640px] text-left text-sm">
+							<thead className="text-neutral-500">
+								<tr>
+									<th className="px-5 pb-3 font-medium sm:pl-0">Paid on</th>
+									<th className="pb-3 pr-4 font-medium">Reference</th>
+									<th className="pb-3 pr-4 font-medium">Customer</th>
+									<th className="pb-3 pr-4 font-medium">Tour</th>
+									<th className="pb-3 pr-5 text-right font-medium sm:pr-0">Amount</th>
+								</tr>
+							</thead>
+							<tbody className="divide-y divide-neutral-100 dark:divide-neutral-800">
+								{f.payments.map((b) => (
+									<tr key={b.id}>
+										<td className="whitespace-nowrap px-5 py-3 sm:pl-0">{day(b.paidAt ?? b.createdAt)}</td>
+										<td className="whitespace-nowrap py-3 pr-4 font-mono text-xs">{b.reference}</td>
+										<td className="max-w-[180px] truncate py-3 pr-4">{b.customer.name}</td>
+										<td className="max-w-[260px] truncate py-3 pr-4 text-neutral-500">{b.tour.name}</td>
+										<td className="whitespace-nowrap py-3 pr-5 text-right font-semibold tabular-nums sm:pr-0">{euro(b.total, true)}</td>
+									</tr>
+								))}
+							</tbody>
+						</table>
+					</div>
+				)}
+			</Panel>
+			<p className="text-xs text-neutral-500">Amounts are booking totals. Stripe fees, refunds and payouts are shown in Stripe.</p>
 		</div>
 	)
 }

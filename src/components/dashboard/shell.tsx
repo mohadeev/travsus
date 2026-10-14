@@ -1,21 +1,10 @@
 import type React from 'react'
 import { cn } from '@/lib/utils'
 
-interface DashboardShellProps extends React.HTMLAttributes<HTMLDivElement> {}
-
-export function DashboardShell({
-	children,
-	className,
-	...props
-}: DashboardShellProps) {
+/** Vertical rhythm for a dashboard page (the layout adds the menu and padding). */
+export function DashboardShell({ children, className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
 	return (
-		<div
-			className={cn(
-				'grid h-full w-full items-start gap-8 overflow-auto',
-				className,
-			)}
-			{...props}
-		>
+		<div className={cn('grid w-full min-w-0 items-start gap-8', className)} {...props}>
 			{children}
 		</div>
 	)
