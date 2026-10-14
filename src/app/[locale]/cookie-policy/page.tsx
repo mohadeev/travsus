@@ -1,10 +1,19 @@
 import { companyProfile } from '@/constants/companyProfile'
-import { Metadata } from 'next'
-import { MDXRemote } from 'next-mdx-remote/rsc'
+import type { Metadata } from 'next'
+import { getTranslations } from 'next-intl/server'
+import { routing } from '@/i18n/routing'
+import LegalPage from '@/components/LegalPage'
 
-export const metadata: Metadata = {
-	title: 'Cookie Policy | TRAVSUS',
-	description: 'Cookie Policy for TRAVSUS travel services',
+export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
+	const t = await getTranslations({ locale: params.locale, namespace: 'Legal' })
+	return {
+		title: `${t('title_cookies')} | TRAVSUS`,
+		description: t('desc_cookies'),
+		alternates: {
+			canonical: `/${params.locale}/cookie-policy`,
+			languages: Object.fromEntries(routing.locales.map((l) => [l, `/${l}/cookie-policy`])),
+		},
+	}
 }
 
 const cookiePolicyContent = `
@@ -144,52 +153,6 @@ Phone: ${companyProfile.contactPhone}
 Last updated: 27 December 2024
 `
 
-const components = {
-	h1: (props: any) => (
-		<h1 className="mb-4 mt-8 text-3xl font-bold" {...props} />
-	),
-	h2: (props: any) => (
-		<h2 className="mb-3 mt-6 text-2xl font-semibold" {...props} />
-	),
-	h3: (props: any) => (
-		<h3 className="mb-2 mt-4 text-xl font-medium" {...props} />
-	),
-	h4: (props: any) => (
-		<h4 className="mb-2 mt-3 text-lg font-medium" {...props} />
-	),
-	p: (props: any) => <p className="mb-4" {...props} />,
-	ul: (props: any) => <ul className="mb-4 list-inside list-disc" {...props} />,
-	ol: (props: any) => (
-		<ol className="mb-4 list-inside list-decimal" {...props} />
-	),
-	li: (props: any) => <li className="mb-1" {...props} />,
-	a: (props: any) => <a className="text-blue-600 hover:underline" {...props} />,
-	table: (props: any) => (
-		<div className="mb-4 overflow-x-auto">
-			<table
-				className="min-w-full border border-gray-300 bg-white"
-				{...props}
-			/>
-		</div>
-	),
-	th: (props: any) => (
-		<th
-			className="border-b border-gray-300 px-4 py-2 text-left font-semibold"
-			{...props}
-		/>
-	),
-	td: (props: any) => (
-		<td className="border-b border-gray-300 px-4 py-2" {...props} />
-	),
-}
-
-export default function CookiePolicyPage() {
-	return (
-		<div className="mx-auto max-w-4xl px-4 py-8">
-			<h1 className="mb-6 text-center text-4xl font-bold">Cookie Policy</h1>
-			<div className="prose prose-sm max-w-none">
-				<MDXRemote source={cookiePolicyContent} components={components} />
-			</div>
-		</div>
-	)
+export default function Page() {
+	return <LegalPage titleKey="title_cookies" source={cookiePolicyContent} />
 }

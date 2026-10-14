@@ -1,10 +1,19 @@
 import { companyProfile } from '@/constants/companyProfile'
-import { Metadata } from 'next'
-import { MDXRemote } from 'next-mdx-remote/rsc'
+import type { Metadata } from 'next'
+import { getTranslations } from 'next-intl/server'
+import { routing } from '@/i18n/routing'
+import LegalPage from '@/components/LegalPage'
 
-export const metadata: Metadata = {
-	title: 'General Conditions | TRAVSUS',
-	description: 'General Conditions of Use for TRAVSUS travel services',
+export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
+	const t = await getTranslations({ locale: params.locale, namespace: 'Legal' })
+	return {
+		title: `${t('title_terms')} | TRAVSUS`,
+		description: t('desc_terms'),
+		alternates: {
+			canonical: `/${params.locale}/general-conditions`,
+			languages: Object.fromEntries(routing.locales.map((l) => [l, `/${l}/general-conditions`])),
+		},
+	}
 }
 
 const generalConditionsContent = `
@@ -284,15 +293,6 @@ If the User considers that their claims have not been met in the ways indicated 
 - Online Dispute Resolution Platform (ODR), developed by the European Commission
 `
 
-export default function GeneralConditionsPage() {
-	return (
-		<div className="mx-auto max-w-4xl px-4 py-8">
-			<h1 className="mb-6 text-center text-4xl font-bold">
-				General Conditions of Use
-			</h1>
-			<div className="prose prose-sm max-w-none">
-				<MDXRemote source={generalConditionsContent} />
-			</div>
-		</div>
-	)
+export default function Page() {
+	return <LegalPage titleKey="title_terms" source={generalConditionsContent} />
 }

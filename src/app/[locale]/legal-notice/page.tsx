@@ -1,10 +1,19 @@
 import { companyProfile } from '@/constants/companyProfile'
-import { Metadata } from 'next'
-import { MDXRemote } from 'next-mdx-remote/rsc'
+import type { Metadata } from 'next'
+import { getTranslations } from 'next-intl/server'
+import { routing } from '@/i18n/routing'
+import LegalPage from '@/components/LegalPage'
 
-export const metadata: Metadata = {
-	title: 'Legal Notice | TRAVSUS',
-	description: 'Legal Notice and Terms of Use for TRAVSUS travel services',
+export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
+	const t = await getTranslations({ locale: params.locale, namespace: 'Legal' })
+	return {
+		title: `${t('title_notice')} | TRAVSUS`,
+		description: t('desc_notice'),
+		alternates: {
+			canonical: `/${params.locale}/legal-notice`,
+			languages: Object.fromEntries(routing.locales.map((l) => [l, `/${l}/legal-notice`])),
+		},
+	}
 }
 
 const legalNoticeContent = `
@@ -146,14 +155,6 @@ Phone: ${companyProfile.contactPhone}
 Last updated: 27 December 2024
 `
 
-export default function LegalNoticePage() {
-	console.log('companyProfile', companyProfile)
-	return (
-		<div className="mx-auto max-w-4xl px-4 py-8">
-			<h1 className="mb-6 text-center text-2xl font-bold">Legal Notice</h1>
-			<div className="prose prose-sm max-w-none">
-				<MDXRemote source={legalNoticeContent} />
-			</div>
-		</div>
-	)
+export default function Page() {
+	return <LegalPage titleKey="title_notice" source={legalNoticeContent} />
 }
