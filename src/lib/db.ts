@@ -39,6 +39,9 @@ export const T = {
 	forumPosts: 'ForumPost',
 	forumComments: 'ForumComment',
 	reports: 'WhistleblowerReport',
+	// First-party analytics (scripts/db/sql/004_analytics.sql)
+	analyticsSessions: 'analytics_sessions',
+	analyticsEvents: 'analytics_events',
 	// Geography (was the separate "places" MongoDB database)
 	continents: 'geo_continents',
 	countries: 'geo_countries',

@@ -28,6 +28,7 @@ import { wakeUpServer } from '@/utils/wakeUpServer'
 import NewsletterModal from './newsletter-modal'
 import { PlanTripModal } from './plan-trip-modal'
 import TawkToWidget from '@/components/TawkToWidget'
+import AnalyticsTracker from '@/components/AnalyticsTracker'
 
 export default function LocaleLayoutClient({
 	children,
@@ -60,6 +61,9 @@ export default function LocaleLayoutClient({
 				<ThemeProvider>
 					<ReduxProvider>
 						<AuthWatcher />
+						<Suspense fallback={null}>
+							<AnalyticsTracker />
+						</Suspense>
 						{/* Google Tag Manager (noscript) — must be inside <body> */}
 						<noscript>
 							<iframe
