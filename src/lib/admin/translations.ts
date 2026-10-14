@@ -1,4 +1,5 @@
-// The site's texts: messages/<locale>.json, shaped { group: { key: "text" } }.
+// The site's texts: messages/<locale>.json, shaped { group: { key: "text" } }
+// (a few values are lists of texts, e.g. plan features).
 // The translations panel reads and edits them here. Files keep their order
 // and 2-space formatting so changes show up as small git diffs. Writing only
 // works where the files can be changed (local `npm run dev`); the texts are
@@ -9,7 +10,8 @@ import { promises as fs } from 'node:fs'
 import path from 'node:path'
 import { routing } from '@/i18n/routing'
 
-export type Messages = Record<string, Record<string, string>>
+export type Text = string | string[]
+export type Messages = Record<string, Record<string, Text>>
 
 const DIR = path.join(process.cwd(), 'messages')
 export const LOCALES = routing.locales as readonly string[]
@@ -35,17 +37,27 @@ async function write(locale: string, data: Messages) {
 
 export const validName = (v: unknown): v is string => typeof v === 'string' && NAME.test(v)
 
+/** A text, or a list of texts; cut to a safe size. null when it's neither. */
+const cleanText = (v: unknown): Text | null =>
+	typeof v === 'string'
+		? v.slice(0, MAX_TEXT)
+		: Array.isArray(v) && v.every((x) => typeof x === 'string')
+			? v.slice(0, 100).map((x) => x.slice(0, MAX_TEXT))
+			: null
+const isEmpty = (v: Text) => (Array.isArray(v) ? v.every((x) => !x.trim()) : !v.trim())
+
 /** Set one text in some languages. An empty string removes it from that language. */
 export async function setTexts(group: string, key: string, values: Record<string, unknown>) {
 	const all = await readAll()
 	for (const [locale, value] of Object.entries(values)) {
-		if (!LOCALES.includes(locale) || typeof value !== 'string') continue
+		const text = cleanText(value)
+		if (!LOCALES.includes(locale) || text === null) continue
 		const data = all[locale]
-		if (value.trim() === '') {
+		if (isEmpty(text)) {
 			if (data[group]) delete data[group][key]
 		} else {
 			data[group] = data[group] ?? {}
-			data[group][key] = value.slice(0, MAX_TEXT)
+			data[group][key] = text
 		}
 		await write(locale, data)
 	}
@@ -83,9 +95,10 @@ export async function importTexts(input: unknown) {
 			if (!keys || typeof keys !== 'object') throw new Error(`"${locale}.${group}" must contain keys`)
 			for (const [key, value] of Object.entries(keys as Record<string, any>)) {
 				if (!validName(key)) throw new Error(`Bad key name "${group}.${key}"`)
-				if (typeof value !== 'string') throw new Error(`"${locale}.${group}.${key}" must be text`)
+				const text = cleanText(value)
+				if (text === null) throw new Error(`"${locale}.${group}.${key}" must be text or a list of texts`)
 				data[group] = data[group] ?? {}
-				data[group][key] = value.slice(0, MAX_TEXT)
+				data[group][key] = text
 				n++
 			}
 		}

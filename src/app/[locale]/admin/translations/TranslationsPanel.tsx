@@ -6,10 +6,13 @@ import { Fragment, useEffect, useMemo, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { AlertTriangle, Check, ChevronDown, Loader2, Plus, Search, Trash2, Upload, X } from 'lucide-react'
 
-type Messages = Record<string, Record<string, string>>
+type Text = string | string[]
+type Messages = Record<string, Record<string, Text>>
 type Data = { locales: string[]; writable: boolean; messages: Record<string, Messages> }
 
 const BASE = 'en-US'
+/** Lists (e.g. plan features) are shown and edited one item per line */
+const asText = (v: unknown) => (Array.isArray(v) ? v.join('\n') : typeof v === 'string' ? v : '')
 const nativeName = (code: string) => {
 	try {
 		const n = new Intl.DisplayNames([code], { type: 'language' }).of(code.split('-')[0]) ?? code
@@ -65,7 +68,7 @@ export default function TranslationsPanel() {
 				groups.set(g, set)
 			}
 		const missingCount = (g: string, k: string) =>
-			data.locales.filter((l) => (missingIn ? l === missingIn : true) && !data.messages[l]?.[g]?.[k]?.trim()).length
+			data.locales.filter((l) => (missingIn ? l === missingIn : true) && !asText(data.messages[l]?.[g]?.[k]).trim()).length
 		const list = Array.from(groups, ([name, keys]) => {
 			const sorted = Array.from(keys)
 			return { name, keys: sorted, missing: sorted.reduce((n, k) => n + (missingCount(name, k) > 0 ? 1 : 0), 0) }
@@ -76,7 +79,7 @@ export default function TranslationsPanel() {
 	if (loadError) return <p className="mx-auto max-w-3xl px-5 py-16 text-red-600">{loadError}</p>
 	if (!data) return <p className="mx-auto max-w-3xl px-5 py-16 text-neutral-500">Loading texts…</p>
 
-	const text = (l: string, g: string, k: string) => data.messages[l]?.[g]?.[k] ?? ''
+	const text = (l: string, g: string, k: string) => asText(data.messages[l]?.[g]?.[k])
 	const isMissing = (g: string, k: string) => data.locales.some((l) => (missingIn ? l === missingIn : true) && !text(l, g, k).trim())
 
 	// Rows to show: search across everything, else the chosen group
@@ -225,7 +228,9 @@ export default function TranslationsPanel() {
 }
 
 function KeyRow({ group, name, showGroup, data, open, onToggle, onSaved }: { group: string; name: string; showGroup: boolean; data: Data; open: boolean; onToggle: () => void; onSaved: () => Promise<void> }) {
-	const current = (l: string) => data.messages[l]?.[group]?.[name] ?? ''
+	const current = (l: string) => asText(data.messages[l]?.[group]?.[name])
+	// A list in any language stays a list when saved
+	const isList = data.locales.some((l) => Array.isArray(data.messages[l]?.[group]?.[name]))
 	const [draft, setDraft] = useState<Record<string, string>>({})
 	const [state, setState] = useState<'idle' | 'saving' | 'saved' | string>('idle')
 	useEffect(() => {
@@ -239,7 +244,8 @@ function KeyRow({ group, name, showGroup, data, open, onToggle, onSaved }: { gro
 	async function save() {
 		setState('saving')
 		try {
-			await api('PUT', { group, key: name, values: Object.fromEntries(changed.map((l) => [l, draft[l]])) })
+			const toValue = (v: string) => (isList ? v.split('\n').map((x) => x.trim()).filter(Boolean) : v)
+			await api('PUT', { group, key: name, values: Object.fromEntries(changed.map((l) => [l, toValue(draft[l])])) })
 			await onSaved()
 			setState('saved')
 		} catch (e: any) {
@@ -283,6 +289,7 @@ function KeyRow({ group, name, showGroup, data, open, onToggle, onSaved }: { gro
 							<label key={l} className="block">
 								<span className="mb-1 flex items-center gap-2 text-xs font-semibold">
 									{nativeName(l)} <span className="font-normal text-neutral-400">{l}</span>
+									{isList && <span className="font-normal text-neutral-400">· list, one item per line</span>}
 									{!value.trim() && <span className="text-red-600">missing</span>}
 									{mismatch && (
 										<span className="inline-flex items-center gap-1 text-amber-600">
@@ -299,7 +306,7 @@ function KeyRow({ group, name, showGroup, data, open, onToggle, onSaved }: { gro
 										setDraft((d) => ({ ...d, [l]: e.target.value }))
 										setState('idle')
 									}}
-									rows={Math.min(6, Math.max(1, Math.ceil(value.length / 80)))}
+									rows={Math.min(8, Math.max(1, value.split('\n').length, Math.ceil(value.length / 80)))}
 									className="w-full resize-y rounded-xl border-0 bg-neutral-100 px-3 py-2 text-sm ring-1 ring-transparent focus:bg-white focus:outline-none focus:ring-neutral-950 dark:bg-neutral-900 dark:focus:ring-white"
 								/>
 							</label>
