@@ -144,9 +144,7 @@ export default function Footer() {
 				{/* Bottom bar */}
 				<div className="flex flex-col gap-4 border-t border-white/10 pt-8 text-xs sm:flex-row sm:items-center sm:justify-between">
 					<p>{tLinks('footer_Copyright', { year: new Date().getFullYear() })}</p>
-					<div className="text-white [&_*]:!text-white">
-						<LanguagePreferencesModal variant={'footer'} />
-					</div>
+					<LanguagePreferencesModal variant={'footer'} dark />
 				</div>
 				<p className="mt-6 whitespace-pre-line text-[11px] leading-relaxed text-neutral-500">
 					{tLinks('footer_Disclaimer')}
