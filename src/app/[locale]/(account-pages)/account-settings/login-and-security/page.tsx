@@ -1,35 +1,44 @@
 'use client'
-
+// Login & security: email, password, connected Google account and signed-in
+// devices are all managed by Clerk's profile panel.
 import Link from 'next/link'
-import { ChevronRight } from 'lucide-react'
 import { UserProfile } from '@clerk/nextjs'
-import { useTranslations } from '@/lib/i18n'
+import { useLocale, useTranslations } from 'next-intl'
 
-// Password, connected Google account, email and signed-in devices: all by Clerk
 export default function LoginAndSecurityPage() {
-	const t = useTranslations('LoginSecurityPage')
+	const t = useTranslations('Account')
+	const locale = useLocale()
 
 	return (
-		<div className="mx-auto max-w-4xl px-6 py-8">
-			<div className="mb-6 flex items-center text-sm">
-				<Link href="/account-settings" className="text-gray-600 hover:underline">
-					{t('account')}
-				</Link>
-				<ChevronRight className="mx-2 h-4 w-4 text-gray-500" />
-				<span className="text-gray-800">{t('login_security')}</span>
+		<div>
+			<h1 className="text-3xl font-bold tracking-tight sm:text-5xl">{t('nav_security')}</h1>
+			<p className="mt-2 max-w-2xl text-neutral-500">{t('security_text')}</p>
+
+			<div className="mt-10 overflow-hidden rounded-3xl ring-1 ring-neutral-200 dark:ring-neutral-800">
+				<UserProfile
+					routing="hash"
+					appearance={{
+						variables: { colorPrimary: '#0a0a0a', borderRadius: '0.9rem', fontFamily: 'inherit' },
+						elements: {
+							rootBox: 'w-full',
+							cardBox: 'w-full max-w-none shadow-none rounded-none',
+							navbar: 'hidden md:flex',
+							navbarMobileMenuRow: 'md:hidden',
+						},
+					}}
+				/>
 			</div>
 
-			<h1 className="mb-8 text-3xl font-semibold">{t('login_security')}</h1>
-
-			<UserProfile routing="hash" />
-
-			<div className="mt-10 flex items-center justify-between border-t border-gray-200 py-6">
-				<h2 className="font-medium">{t('deactivate_account')}</h2>
+			<div className="mt-10 flex flex-col gap-3 rounded-3xl bg-neutral-100 p-6 sm:flex-row sm:items-center sm:justify-between dark:bg-neutral-900">
+				<div>
+					<p className="font-semibold">{t('delete_title')}</p>
+					<p className="text-sm text-neutral-500">{t('delete_text')}</p>
+				</div>
 				<Link
-					href="/account-settings-delete/reasons"
-					className="font-medium text-red-500 underline"
+					href={`/${locale}/account-settings/deactivate` as any}
+					className="inline-flex h-11 shrink-0 items-center justify-center rounded-full border border-red-300 px-5 text-sm font-semibold text-red-600 transition hover:bg-red-50 dark:border-red-900 dark:hover:bg-red-950"
 				>
-					{t('deactivate')}
+					{t('delete_link')}
 				</Link>
 			</div>
 		</div>

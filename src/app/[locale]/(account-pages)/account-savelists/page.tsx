@@ -1,113 +1,51 @@
-'use client'
-export const dynamic = "force-dynamic";
+// Saved tours: the tours you saved with the heart, newest saved first.
+import Link from 'next/link'
+import { Heart } from 'lucide-react'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
+import { getHomeData } from '@/lib/homeData'
+import { getSessionUser } from '@/lib/session'
+import TourCard from '../../(home)/TourCard'
 
-import { Tab } from '@headlessui/react'
-import CarCard from '@/components/CarCard'
-import ExperiencesCard from '@/components/ExperiencesCard'
-import StayCard from '@/components/StayCard'
-import {
-	DEMO_CAR_LISTINGS,
-	DEMO_EXPERIENCES_LISTINGS,
-	DEMO_STAY_LISTINGS,
-} from '@/data/listings'
-import React, { Fragment, useEffect, useState } from 'react'
-import ButtonSecondary from '@/shared/ButtonSecondary'
-import { useAuth } from '@clerk/nextjs'
-import basedGetUrlRequestLogedIn from '@/app/utils/basedGetUrlRequestLogedIn'
-import ContainerExperiencesCardSkeleton from '@/components/ContainerExperiencesCardSkeleton'
+export const dynamic = 'force-dynamic'
 
-const AccountSavelists = () => {
-	let [categories] = useState(['Stays', 'Experiences', 'Cars'])
-	const [savedList, setSavedList] = useState([])
-	const { isLoaded, isSignedIn } = useAuth()
-	const [loading, setLoading] = useState(true)
+export default async function SavedToursPage({ params }: { params: { locale: string } }) {
+	const { locale } = params
+	setRequestLocale(locale)
+	const t = await getTranslations('Account')
+	const user = await getSessionUser()
+	if (!user) return null // the layout shows the sign-in prompt
 
-	useEffect(() => {
-		if (isLoaded && isSignedIn) {
-			;(async () => {
-				basedGetUrlRequestLogedIn(
-					'/api/user/get/account-settings-savelists',
-				).then((res) => {
-					if (res?.list) {
-						setSavedList(res?.list)
-						setLoading(false)
-					}
-				})
-			})()
-		} else if (isLoaded) {
-			setLoading(false) // signed out: nothing to load
-		}
-	}, [isLoaded, isSignedIn])
+	const savedIds: string[] = [...(user.savedList ?? [])].reverse()
+	const { tours } = await getHomeData(locale)
+	const byId = new Map(tours.map((tour) => [tour.id, tour]))
+	const saved = savedIds.map((id) => byId.get(id)).filter((tour): tour is NonNullable<typeof tour> => !!tour)
 
-	const renderSection1 = () => {
-		return (
-			<div className="space-y-6 sm:space-y-8">
-				<div>
-					<h2 className="text-3xl font-semibold">Save lists</h2>
+	return (
+		<div>
+			<h1 className="text-3xl font-bold tracking-tight sm:text-5xl">{t('nav_saved')}</h1>
+			<p className="mt-2 text-neutral-500">{t('saved_count', { count: saved.length })}</p>
+
+			{saved.length === 0 ? (
+				<div className="mt-10 rounded-[28px] bg-neutral-100 px-6 py-14 text-center dark:bg-neutral-900">
+					<Heart className="mx-auto h-10 w-10 text-neutral-400" strokeWidth={1.5} />
+					<p className="mt-5 text-2xl font-bold tracking-tight">{t('saved_empty_title')}</p>
+					<p className="mx-auto mt-2 max-w-sm text-neutral-500">{t('saved_empty_text')}</p>
+					<Link
+						href={`/${locale}/search?query=` as any}
+						className="mt-7 inline-flex h-12 items-center rounded-full bg-neutral-950 px-7 text-sm font-semibold text-white transition hover:bg-neutral-800 dark:bg-white dark:text-neutral-950"
+					>
+						{t('explore_tours')}
+					</Link>
 				</div>
-				<div className="w-14 border-b border-neutral-200 dark:border-neutral-700"></div>
-
-				<div>
-					<Tab.Group>
-						<Tab.List className="flex space-x-1 overflow-x-auto">
-							{categories?.slice(1, 2)?.map((item) => (
-								<Tab key={item} as={Fragment}>
-									{({ selected }) => (
-										<button
-											className={`block flex-shrink-0 rounded-full px-5 py-2.5 text-sm font-medium capitalize !leading-none focus:outline-none sm:px-6 sm:py-3 sm:text-base ${
-												selected
-													? 'bg-secondary-900 text-secondary-50'
-													: 'text-neutral-500 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-100'
-											} `}
-										>
-											{item}
-										</button>
-									)}
-								</Tab>
-							))}
-						</Tab.List>
-						<Tab.Panels>
-							{/* <Tab.Panel className="mt-8">
-								<div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 lg:grid-cols-3 xl:grid-cols-4">
-									{DEMO_STAY_LISTINGS.filter((_, i) => i < 8).map((stay) => (
-										<StayCard key={stay.id} data={stay} />
-									))}
-								</div>
-								<div className="mt-11 flex items-center justify-center">
-									<ButtonSecondary>Show me more</ButtonSecondary>
-								</div>
-							</Tab.Panel> */}
-							<Tab.Panel className="mt-8">
-								<div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 lg:grid-cols-3 xl:grid-cols-4">
-									{savedList
-										?.filter((_, i) => i < 8)
-										.map((stay: any) => (
-											<ExperiencesCard key={stay?.id} data={stay} />
-										))}
-									{loading && <ContainerExperiencesCardSkeleton />}
-								</div>
-								<div className="mt-11 flex items-center justify-center">
-									<ButtonSecondary>Show me more</ButtonSecondary>
-								</div>
-							</Tab.Panel>
-							{/* <Tab.Panel className="mt-8">
-								<div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 lg:grid-cols-3 xl:grid-cols-4">
-									{DEMO_CAR_LISTINGS.filter((_, i) => i < 8).map((stay) => (
-										<CarCard key={stay.id} data={stay} />
-									))}
-								</div>
-								<div className="mt-11 flex items-center justify-center">
-									<ButtonSecondary>Show me more</ButtonSecondary>
-								</div>
-							</Tab.Panel> */}
-						</Tab.Panels>
-					</Tab.Group>
-				</div>
-			</div>
-		)
-	}
-
-	return renderSection1()
+			) : (
+				<ul className="mt-10 grid gap-x-5 gap-y-10 sm:grid-cols-2 xl:grid-cols-3">
+					{saved.map((tour) => (
+						<li key={tour.id}>
+							<TourCard tour={tour} />
+						</li>
+					))}
+				</ul>
+			)}
+		</div>
+	)
 }
-
-export default AccountSavelists

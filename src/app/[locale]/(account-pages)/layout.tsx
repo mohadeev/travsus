@@ -1,19 +1,28 @@
-import React, { FC } from 'react'
-import { Nav } from './(components)/Nav'
+// Account area: sign-in check, then the section menu next to the page.
+import type { Metadata } from 'next'
+import type { ReactNode } from 'react'
+import { getSessionUser } from '@/lib/session'
+import AccountNav from './_components/AccountNav'
+import SignInPrompt from './_components/SignInPrompt'
 
-export interface CommonLayoutProps {
-	children?: React.ReactNode
-}
+// Personal pages: never in search results
+export const metadata: Metadata = { robots: { index: false, follow: false } }
 
-const CommonLayout: FC<CommonLayoutProps> = ({ children }) => {
+export default async function AccountLayout({ children }: { children: ReactNode }) {
+	const user = await getSessionUser().catch(() => null)
+
 	return (
-		<div className="nc-CommonLayoutAccount dark:bg-neutral-900">
-			<div className="bg-white pt-12 dark:border-neutral-700 dark:bg-neutral-800">
-				{/* <Nav /> */}
-			</div>
-			<div className="container pb-24 pt-14 sm:pt-20 lg:pb-32">{children}</div>
-		</div>
+		<main className="mx-auto max-w-7xl px-5 pb-20 pt-8 text-neutral-950 sm:pt-12 lg:pb-28 dark:text-white">
+			{user ? (
+				<div className="grid gap-8 lg:grid-cols-[240px_1fr] lg:gap-14">
+					<AccountNav />
+					<div className="min-w-0">{children}</div>
+				</div>
+			) : (
+				<div className="py-10 sm:py-16">
+					<SignInPrompt />
+				</div>
+			)}
+		</main>
 	)
 }
-
-export default CommonLayout

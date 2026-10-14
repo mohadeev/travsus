@@ -1,135 +1,62 @@
-'use client'
-export const dynamic = "force-dynamic";
-
-import { useState } from 'react'
+// Invite friends: your referral code. Friends enter it at checkout for a
+// discount; you earn a commission on their booking.
 import Link from 'next/link'
-import { Copy, Gift, ChevronRight } from 'lucide-react'
-import { useAppSelector } from '@/store/hooks'
-import { selectUser } from '@/store/slices/user'
-import { useTranslations } from '@/lib/i18n'
+import { Gift } from 'lucide-react'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
+import { createReferralLink } from '@/app/api/user/userData/createReferralLink'
+import { db, T, must } from '@/lib/db'
+import { getSessionUser } from '@/lib/session'
+import CopyCode from './CopyCode'
 
-export default function CreditsAndCouponsPage() {
-	const t = useTranslations('CreditsAndCoupons')
-	const userData = useAppSelector(selectUser)
+export const dynamic = 'force-dynamic'
 
-	const [copied, setCopied] = useState(false)
+export default async function InvitePage({ params }: { params: { locale: string } }) {
+	const { locale } = params
+	setRequestLocale(locale)
+	const t = await getTranslations('Account')
+	const user = await getSessionUser()
+	if (!user) return null // the layout shows the sign-in prompt
 
-	// Example values — ideally fetched from backend
-	const creditBalance = userData?.credits || 0
+	// Every account gets one code, created the first time it's needed
+	const existing = must(await db.from(T.referralLinks).select('*').eq('userId', user.id).limit(1).maybeSingle())
+	const link: any = existing ?? (await createReferralLink(user.id).catch(() => null))
 
-	// Use dynamic origin
-	const origin = typeof window !== 'undefined' ? window.location.origin : ''
-	const referralLink = userData?.referralLinks?.[0]?.code
-		? `${origin}/${userData.referralLinks[0].code}`
-		: ''
-
-	const handleCopy = () => {
-		navigator.clipboard.writeText(referralLink)
-		setCopied(true)
-		setTimeout(() => setCopied(false), 2000)
-	}
+	const discount = link?.clientDiscount ?? 0
+	const commission = link?.commissionValue ?? 0
 
 	return (
-		<div className="mx-auto max-w-4xl px-6 py-8">
-			{/* Breadcrumb */}
-			<div className="mb-6 flex items-center text-sm">
-				<Link
-					href="/account-settings"
-					className="text-gray-600 hover:underline"
-				>
-					{t('Account')}
+		<div className="max-w-3xl">
+			<h1 className="text-3xl font-bold tracking-tight sm:text-5xl">{t('nav_invite')}</h1>
+			<p className="mt-2 text-neutral-500">{t('invite_text')}</p>
+
+			{link ? (
+				<div className="mt-10 rounded-[28px] bg-neutral-100 p-6 sm:p-10 dark:bg-neutral-900">
+					<Gift className="h-8 w-8" strokeWidth={1.75} />
+					<p className="mt-5 text-2xl font-bold tracking-tight sm:text-3xl">{t('invite_offer', { discount, commission })}</p>
+					<p className="mt-2 text-neutral-500">{t('invite_how')}</p>
+					<div className="mt-8">
+						<CopyCode code={link.code} shareText={t('invite_share_text', { code: link.code, discount })} />
+					</div>
+				</div>
+			) : (
+				<p className="mt-10 rounded-3xl bg-neutral-100 px-6 py-8 text-neutral-500 dark:bg-neutral-900">{t('invite_error')}</p>
+			)}
+
+			<ol className="mt-10 grid gap-3 sm:grid-cols-3">
+				{(['invite_step1', 'invite_step2', 'invite_step3'] as const).map((key, i) => (
+					<li key={key} className="rounded-3xl border border-neutral-200 p-6 dark:border-neutral-800">
+						<span className="text-3xl font-bold text-neutral-300 dark:text-neutral-700">{i + 1}</span>
+						<p className="mt-3 text-sm text-neutral-600 dark:text-neutral-400">{t(key, { discount, commission })}</p>
+					</li>
+				))}
+			</ol>
+
+			<p className="mt-8 text-sm text-neutral-500">
+				{t('invite_more')}{' '}
+				<Link href={`/${locale}/affiliates` as any} className="font-semibold text-neutral-950 underline underline-offset-4 dark:text-white">
+					{t('invite_affiliates')}
 				</Link>
-				<ChevronRight className="mx-2 h-4 w-4 text-gray-500" />
-				<span className="text-gray-800">{t('Credits_Coupons')}</span>
-			</div>
-
-			{/* Page Title */}
-			<h1 className="mb-8 text-3xl font-semibold">{t('Credits_Coupons')}</h1>
-
-			{/* Balance Section */}
-			<div className="flex items-start space-x-4 rounded-xl border border-gray-200 p-6">
-				<div className="rounded-full bg-pink-100 p-3">
-					<Gift className="h-6 w-6 text-pink-500" />
-				</div>
-				<div>
-					<p className="text-gray-700">
-						{t('You_Have')} € {creditBalance} {t('In_Credits')}
-					</p>
-					<Link
-						href="/help/credits"
-						className="text-sm text-pink-600 hover:underline"
-					>
-						{t('More_Info')}
-					</Link>
-				</div>
-			</div>
-
-			{/* Referral Link Section */}
-			<div className="mt-8 space-y-2">
-				<h2 className="text-lg font-medium">{t('Referral_Link')}</h2>
-				<div className="flex items-center space-x-2">
-					<input
-						type="text"
-						value={referralLink}
-						readOnly
-						className="w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-sm"
-					/>
-					<button
-						onClick={handleCopy}
-						className="rounded-lg border border-gray-300 px-3 py-2 text-sm hover:bg-gray-100"
-					>
-						{copied ? t('Copied') : <Copy className="h-4 w-4" />}
-					</button>
-				</div>
-			</div>
-
-			{/* Share Section */}
-			<div className="mt-6 space-y-2">
-				<h2 className="text-lg font-medium">{t('Share')}</h2>
-				<div className="flex flex-wrap gap-2">
-					<button
-						onClick={() =>
-							window.open(
-								`https://api.whatsapp.com/send?text=${encodeURIComponent(referralLink)}`,
-								'_blank',
-							)
-						}
-						className="rounded-lg border border-gray-300 px-4 py-2 text-sm hover:bg-gray-100"
-					>
-						WhatsApp
-					</button>
-					<button
-						onClick={() =>
-							window.open(
-								`https://twitter.com/intent/tweet?url=${encodeURIComponent(referralLink)}&text=Únete%20conmigo%20en%20esta%20plataforma!`,
-								'_blank',
-							)
-						}
-						className="rounded-lg border border-gray-300 px-4 py-2 text-sm hover:bg-gray-100"
-					>
-						Twitter
-					</button>
-					<button
-						onClick={() =>
-							window.open(
-								`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(referralLink)}`,
-								'_blank',
-							)
-						}
-						className="rounded-lg border border-gray-300 px-4 py-2 text-sm hover:bg-gray-100"
-					>
-						Facebook
-					</button>
-					<button
-						onClick={() =>
-							(window.location.href = `mailto:?subject=Únete%20conmigo&body=${referralLink}`)
-						}
-						className="rounded-lg border border-gray-300 px-4 py-2 text-sm hover:bg-gray-100"
-					>
-						Email
-					</button>
-				</div>
-			</div>
+			</p>
 		</div>
 	)
 }

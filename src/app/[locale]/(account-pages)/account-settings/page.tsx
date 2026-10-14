@@ -1,143 +1,68 @@
-'use client'
-export const dynamic = "force-dynamic";
+// Account overview: who you are, then one tile per section.
 import Link from 'next/link'
-import {
-	Bell,
-	Building2,
-	CreditCard,
-	Eye,
-	FileText,
-	Gift,
-	Globe,
-	LayoutGrid,
-	Lock,
-	MapPin,
-} from 'lucide-react'
-import type { LucideIcon } from 'lucide-react'
-import { useAppSelector } from '@/store/hooks'
-import { selectUser } from '@/store/slices/user'
-import { useTranslations } from '@/lib/i18n'
+import { ArrowRight } from 'lucide-react'
+import { currentUser } from '@clerk/nextjs/server'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
+import { getSessionUser } from '@/lib/session'
+import { ACCOUNT_NAV } from '../_components/navItems'
 
-export default function AccountPage() {
-	const t = useTranslations('AccountPage')
+export const dynamic = 'force-dynamic'
 
-	// Array of settings items with translated text
-	const settingsItems = [
-		{
-			title: t('personal_info_title'),
-			description: t('personal_info_description'),
-			icon: LayoutGrid,
-			href: '/account-settings/personal-info',
-		},
-		{
-			title: t('login_security_title'),
-			description: t('login_security_description'),
-			icon: Lock,
-			href: '/account-settings/login-and-security',
-		},
-		{
-			title: t('payments_title'),
-			description: t('payments_description'),
-			icon: CreditCard,
-			href: '/account-settings/payment-methods',
-		},
-		{
-			title: t('taxes_title'),
-			description: t('taxes_description'),
-			icon: FileText,
-			href: '/account-settings/taxes',
-		},
-		{
-			title: t('notifications_title'),
-			description: t('notifications_description'),
-			icon: Bell,
-			href: '/account-settings/notifications',
-		},
-		{
-			title: t('privacy_title'),
-			description: t('privacy_description'),
-			icon: Eye,
-			href: '/account-settings/privacy-and-sharing',
-		},
-		{
-			title: t('preferences_title'),
-			description: t('preferences_description'),
-			icon: Globe,
-			href: '/account-settings/preferences',
-		},
-		{
-			title: t('work_travel_title'),
-			description: t('work_travel_description'),
-			icon: MapPin,
-			href: '/account-settings/travsus-for-work',
-		},
-		{
-			title: t('hosting_tools_title'),
-			description: t('hosting_tools_description'),
-			icon: Building2,
-			href: '/account-settings/professional-hosting',
-		},
-		{
-			title: t('referral_title'),
-			description: t('referral_description'),
-			icon: Gift,
-			href: '/account-settings/invite',
-		},
-	]
+export default async function AccountOverviewPage({ params }: { params: { locale: string } }) {
+	const { locale } = params
+	setRequestLocale(locale)
+	const t = await getTranslations('Account')
+	const [user, clerk] = await Promise.all([getSessionUser(), currentUser()])
+	if (!user) return null // the layout shows the sign-in prompt
 
-	const userData = useAppSelector(selectUser)
-	const userEmail = userData?.email || 'user@example.com'
-	const userName =
-		userData?.name || userData?.accountData?.firstname || t('default_username')
+	const name =
+		[user.accountData?.firstname, user.accountData?.lastname].filter(Boolean).join(' ') || clerk?.fullName || user.username || ''
+	const image = user.profileImage?.url || clerk?.imageUrl
+	const tiles = ACCOUNT_NAV.slice(1) // all sections but this one
 
 	return (
-		<div className="flex min-h-screen flex-col">
-			<main className="mx-auto max-w-6xl flex-1 px-6 py-8 md:px-20">
-				{/* Account Header */}
-				<div className="mb-8">
-					<h1 className="mb-1 text-3xl font-semibold">{t('account_title')}</h1>
-					<div className="flex items-center text-gray-700">
-						<span>
-							{userName}, {userEmail}
-						</span>
-					</div>
+		<div>
+			<header className="flex items-center gap-5">
+				{image ? (
+					// eslint-disable-next-line @next/next/no-img-element
+					<img src={image} alt="" className="h-16 w-16 rounded-full object-cover sm:h-20 sm:w-20" />
+				) : (
+					<span className="grid h-16 w-16 place-items-center rounded-full bg-neutral-950 text-2xl font-bold text-white sm:h-20 sm:w-20 dark:bg-white dark:text-neutral-950">
+						{(name || user.email).charAt(0).toUpperCase()}
+					</span>
+				)}
+				<div className="min-w-0">
+					<h1 className="truncate text-3xl font-bold tracking-tight sm:text-5xl">{name ? t('hello', { name: name.split(' ')[0] }) : t('title')}</h1>
+					<p className="mt-1 truncate text-neutral-500">{user.email}</p>
 				</div>
+			</header>
 
-				{/* Account Settings Grid */}
-				<div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-					{settingsItems.map((item, index) => {
-						const Icon = item.icon
-						return (
-							<Link
-								key={index}
-								href={item.href}
-								className="rounded-xl border border-gray-200 p-6 transition-shadow hover:shadow-md"
-							>
-								<div className="mb-4 flex items-start">
-									<Icon className="mr-4 h-8 w-8" />
-									<div>
-										<h2 className="mb-1 text-lg font-semibold">{item.title}</h2>
-										<p className="text-sm text-gray-600">{item.description}</p>
-									</div>
-								</div>
-							</Link>
-						)
-					})}
-				</div>
+			<ul className="mt-10 grid gap-3 sm:grid-cols-2 sm:gap-4 xl:grid-cols-3">
+				{tiles.map(([href, key, Icon]) => (
+					<li key={href}>
+						<Link
+							href={`/${locale}${href}` as any}
+							className="group flex h-full flex-col rounded-3xl bg-neutral-100 p-6 transition hover:bg-neutral-200 dark:bg-neutral-900 dark:hover:bg-neutral-800"
+						>
+							<span className="grid h-11 w-11 place-items-center rounded-full bg-white dark:bg-neutral-950">
+								<Icon className="h-5 w-5" />
+							</span>
+							<span className="mt-5 flex items-center justify-between gap-2 text-lg font-semibold">
+								{t(key)}
+								<ArrowRight className="h-4 w-4 opacity-0 transition group-hover:translate-x-0.5 group-hover:opacity-100" />
+							</span>
+							<span className="mt-1 text-sm text-neutral-500">{t(`${key}_text`)}</span>
+						</Link>
+					</li>
+				))}
+			</ul>
 
-				{/* Deactivate Account */}
-				<div className="mt-12 text-center">
-					<p className="mb-2 text-gray-700">
-						{t('deactivate_account_message')}
-					</p>
-					<Link
-						href="/account-settings/deactivate"
-						className="font-medium text-gray-700 underline"
-					>
-						{t('deactivate_account_link')}
-					</Link>
-				</div>
-			</main>
+			<p className="mt-12 text-sm text-neutral-500">
+				{t('delete_hint')}{' '}
+				<Link href={`/${locale}/account-settings/deactivate` as any} className="font-semibold text-neutral-950 underline underline-offset-4 dark:text-white">
+					{t('delete_link')}
+				</Link>
+			</p>
 		</div>
 	)
 }
