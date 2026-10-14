@@ -4,11 +4,14 @@
 // leaves a cookie for 60 days; a booking made with that cookie is credited to
 // the affiliate (never their own bookings).
 //
-// Earnings: commission on referred bookings that are paid. The rate is the
-// affiliate's custom rate, or the standard tiers of the affiliates page by
-// the booking's rank (10% for the 1st–10th paid booking, 12% from the 11th…).
-// A commission is "pending" until the trip has taken place, then "earned";
-// cancelled or refunded bookings earn nothing. Balance = earned − paid out.
+// A booking is credited when it's made, or when it's paid (booked first,
+// clicked the link later), whichever comes first with the cookie present.
+//
+// Earnings: commission on referred bookings as soon as they're paid (the trip
+// can still be ahead). The rate is the affiliate's custom rate, or the
+// standard tiers of the affiliates page by the booking's rank (10% for the
+// 1st–10th paid booking, 12% from the 11th…). Cancelled or refunded bookings
+// earn nothing. Balance = earned − paid out.
 import 'server-only'
 import { randomBytes } from 'node:crypto'
 import { db, T, must } from '@/lib/db'
@@ -55,12 +58,12 @@ export async function newCode() {
 	throw new Error('Could not create an affiliate code')
 }
 
-/** Credit a new booking to the affiliate of the visitor's cookie (if any). Never throws. */
+/** Credit a booking to the affiliate of the visitor's cookie (if any, and not already credited). Never throws. */
 export async function creditBooking(bookingId: string, customerEmail: string | undefined, refCookie: string | undefined) {
 	try {
 		const affiliate = await affiliateByCode(refCookie)
 		if (!affiliate || affiliate.email === customerEmail?.toLowerCase()) return
-		await db.from(T.affiliateReferrals).insert({ booking_id: bookingId, affiliate_id: affiliate.id })
+		await db.from(T.affiliateReferrals).upsert({ booking_id: bookingId, affiliate_id: affiliate.id }, { onConflict: 'booking_id', ignoreDuplicates: true })
 	} catch (error) {
 		console.error('Affiliate credit failed:', error)
 	}
@@ -69,7 +72,7 @@ export async function creditBooking(bookingId: string, customerEmail: string | u
 const tierRate = (rank: number) => [...TIERS].reverse().find((t) => rank >= t.from)?.rate ?? TIERS[0].rate
 const cents = (n: number) => Math.round(n * 100) / 100
 
-export type ReferralStatus = 'pending' | 'earned' | 'unpaid' | 'cancelled'
+export type ReferralStatus = 'earned' | 'unpaid' | 'cancelled'
 
 /** Everything the affiliate page (and the admin) shows for one affiliate. */
 export async function affiliateReport(affiliate: Affiliate) {
@@ -104,9 +107,9 @@ export function buildReport(affiliate: Pick<Affiliate, 'code' | 'rate'>, booking
 		const closed = CLOSED_STATES.includes(b.bookingState)
 		const [start, end] = readTripDates(b.selectedDate)
 		const paidAt: string | null = paid ? ((b.bookingStates ?? []).find((s: any) => PAID_STATES.includes(s?.state))?.createdAt ?? b.updatedAt) : null
-		const tripOver = !!(end ?? start) && (end ?? start)! < today
-		const status: ReferralStatus = closed ? 'cancelled' : !paid ? 'unpaid' : tripOver ? 'earned' : 'pending'
-		return { id: b.id as string, tour: (b.tour?.name?.trim() || 'Tour') as string, bookedAt: b.createdAt as string, paidAt, start: start?.toISOString() ?? null, value: bookingTotal(b.lineItems), status, rate: 0, commission: 0 }
+		const status: ReferralStatus = closed ? 'cancelled' : paid ? 'earned' : 'unpaid'
+		const upcoming = !!start && (end ?? start)! >= today
+		return { id: b.id as string, tour: (b.tour?.name?.trim() || 'Tour') as string, bookedAt: b.createdAt as string, paidAt, start: start?.toISOString() ?? null, upcoming, value: bookingTotal(b.lineItems), status, rate: 0, commission: 0 }
 	})
 
 	// Rank of each paid booking (by payment date) decides its tier
@@ -120,7 +123,7 @@ export function buildReport(affiliate: Pick<Affiliate, 'code' | 'rate'>, booking
 		})
 
 	const sum = (status: ReferralStatus) => cents(rows.filter((r) => r.status === status).reduce((s, r) => s + r.commission, 0))
-	const paidBookings = rows.filter((r) => r.status === 'earned' || r.status === 'pending').length
+	const paidBookings = rows.filter((r) => r.status === 'earned').length
 	const paidOut = cents(payoutRows.reduce((s, p) => s + p.amount, 0))
 	const earned = sum('earned')
 	// The next better tier, and how many more paid bookings until the rate reaches it
@@ -134,7 +137,8 @@ export function buildReport(affiliate: Pick<Affiliate, 'code' | 'rate'>, booking
 		clicks,
 		bookingsCount: paidBookings,
 		earned,
-		pending: sum('pending'),
+		// Of the earned amount, the part for trips still to come (shown for information)
+		upcoming: cents(rows.filter((r) => r.status === 'earned' && r.upcoming).reduce((s, r) => s + r.commission, 0)),
 		paidOut,
 		balance: cents(earned - paidOut),
 		referrals: rows.sort((a, b) => b.bookedAt.localeCompare(a.bookedAt)),
@@ -146,7 +150,7 @@ export function buildReport(affiliate: Pick<Affiliate, 'code' | 'rate'>, booking
 export const affiliateSummary = (r: AffiliateReport) => ({
 	clicks: r.clicks.total,
 	bookings: r.bookingsCount,
-	pending: r.pending,
+	upcoming: r.upcoming,
 	earned: r.earned,
 	paidOut: r.paidOut,
 	balance: r.balance,

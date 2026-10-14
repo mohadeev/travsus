@@ -12,6 +12,7 @@ import { db, T, must, touch } from '@/lib/db'
 import { CURRENCY, OPEN_STATES, amountToCharge, stripeCustomerFor } from '@/lib/payments'
 import { routing } from '@/i18n/routing'
 import { readTripDates } from '@/lib/tripDates'
+import { creditBooking, REF_COOKIE } from '@/lib/affiliates'
 
 // Stripe's checkout languages for our site languages
 const STRIPE_LOCALES: Record<string, string> = { 'en-US': 'en', 'de-DE': 'de', 'es-ES': 'es', 'fr-FR': 'fr', 'it-IT': 'it', 'ja-JP': 'ja', 'ko-KR': 'ko', 'pt-PT': 'pt', 'ru-RU': 'ru', 'zh-CN': 'zh' }
@@ -32,6 +33,9 @@ export async function POST(request: NextRequest, { params }: { params: { id: str
 	)
 	if (!booking) return NextResponse.json({ error: 'NOT_FOUND' }, { status: 404 })
 	if (!OPEN_STATES.includes(booking.bookingState)) return NextResponse.json({ error: 'ALREADY_PAID' }, { status: 409 })
+
+	// Booked before following an affiliate's link: credit it now (no-op if already credited)
+	await creditBooking(booking.id, user.email, request.cookies.get(REF_COOKIE)?.value)
 
 	const amount = amountToCharge(booking.lineItems, user.email)
 	if (amount < 50) return NextResponse.json({ error: 'NOTHING_TO_PAY' }, { status: 400 })

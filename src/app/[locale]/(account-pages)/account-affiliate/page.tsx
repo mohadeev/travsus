@@ -13,7 +13,6 @@ export const dynamic = 'force-dynamic'
 
 const BADGE: Record<ReferralStatus, string> = {
 	earned: 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300',
-	pending: 'bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300',
 	unpaid: 'bg-neutral-100 text-neutral-600 dark:bg-neutral-800 dark:text-neutral-400',
 	cancelled: 'bg-red-50 text-red-700 dark:bg-red-950/50 dark:text-red-300',
 }
@@ -66,7 +65,7 @@ export default async function AffiliateAccountPage({ params }: { params: { local
 	const stats: [string, string, string?][] = [
 		[t('stat_clicks'), String(r.clicks.last30), t('stat_clicks_total', { count: r.clicks.total })],
 		[t('stat_bookings'), String(r.bookingsCount)],
-		[t('stat_pending'), euros(r.pending), t('stat_pending_note')],
+		[t('stat_earned'), euros(r.earned), t('stat_earned_note')],
 		[t('stat_balance'), euros(r.balance), t('stat_balance_note', { min: euros(MIN_PAYOUT) })],
 	]
 

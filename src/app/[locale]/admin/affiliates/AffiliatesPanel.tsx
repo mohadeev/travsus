@@ -21,7 +21,7 @@ export type Affiliate = {
 }
 type Status = 'pending' | 'approved' | 'declined'
 type Tier = { rate: number; from: number; to: number | null }
-type Stats = { clicks: number; bookings: number; pending: number; earned: number; paidOut: number; balance: number }
+type Stats = { clicks: number; bookings: number; upcoming: number; earned: number; paidOut: number; balance: number }
 
 const FILTERS: [Status | 'all', string][] = [
 	['pending', 'To review'],
@@ -141,7 +141,7 @@ export default function AffiliatesPanel({ initial, stats: initialStats, tiers, l
 									{r.code}
 								</span>
 							)}
-							{stats[r.id] && (stats[r.id].earned > 0 || stats[r.id].pending > 0) && (
+							{stats[r.id] && stats[r.id].balance > 0 && (
 								<span className="rounded-full bg-emerald-100 px-2.5 py-1 text-xs font-semibold tabular-nums text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">
 									{euros(stats[r.id].balance)} due
 								</span>
@@ -414,8 +414,8 @@ function Earnings({ row, stats, onSaved }: { row: Affiliate; stats: Stats; onSav
 	const numbers: [string, string][] = [
 		['Clicks', String(stats.clicks)],
 		['Bookings', String(stats.bookings)],
-		['Pending', euros(stats.pending)],
 		['Earned', euros(stats.earned)],
+		['Trips ahead', euros(stats.upcoming)],
 		['Paid out', euros(stats.paidOut)],
 		['Balance', euros(stats.balance)],
 	]
@@ -430,7 +430,7 @@ function Earnings({ row, stats, onSaved }: { row: Affiliate; stats: Stats; onSav
 					</div>
 				))}
 			</dl>
-			<p className="mt-4 text-xs text-neutral-500">Pending: paid bookings whose trip hasn&apos;t happened yet. Earned once the trip is over.</p>
+			<p className="mt-4 text-xs text-neutral-500">Commissions count as soon as a booking is paid. &ldquo;Trips ahead&rdquo; is the part for trips not taken yet: if one is cancelled, its commission goes away.</p>
 			<div className="mt-4 flex gap-2">
 				<label className="relative w-32 shrink-0">
 					<span className="sr-only">Amount paid in euros</span>
