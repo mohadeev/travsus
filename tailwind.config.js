@@ -94,6 +94,7 @@ const config: Config = {
           800: customColors("--c-primary-800"),
           900: customColors("--c-primary-900"),   
           DEFAULT: "#000",
+          foreground: "#fff",
         },
         secondary: {
           50: customColors("--c-secondary-50"),
@@ -109,6 +110,18 @@ const config: Config = {
           DEFAULT: "#80CAEE",
         },
         stroke: "#E2E8F0",
+        // Names used by the shared UI components (src/components/ui), in the
+        // site's black / white / grey palette
+        background: "#ffffff",
+        foreground: "#0a0a0a",
+        border: "#e5e5e5",
+        input: "#e5e5e5",
+        ring: "#0a0a0a",
+        muted: { DEFAULT: "#f5f5f5", foreground: "#737373" },
+        accent: { DEFAULT: "#f5f5f5", foreground: "#0a0a0a" },
+        popover: { DEFAULT: "#ffffff", foreground: "#0a0a0a" },
+        card: { DEFAULT: "#ffffff", foreground: "#0a0a0a" },
+        destructive: { DEFAULT: "#dc2626", foreground: "#ffffff" },
         gray: {
           ...colors.gray,
           DEFAULT: "#EFF4FB",
