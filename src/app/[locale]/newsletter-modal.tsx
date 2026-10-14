@@ -18,7 +18,9 @@ const TOPICS: [string, LucideIcon][] = [
 	['reviews', MapPinned],
 	['inspiration', Sparkles],
 ]
-const IMAGE = 'https://res.cloudinary.com/travsus/image/upload/v1744996477/ChatGPT_Image_Apr_16_2025_09_15_13_PM_redfxm.png'
+// Camel caravan in the Erg Chebbi dunes, Merzouga (a TRAVSUS tour photo, 6000×4000)
+// (served by Cloudinary already resized, so it shows right away)
+const IMAGE = 'https://res.cloudinary.com/travsus/image/upload/c_limit,w_1800,q_auto/v1750840552/cd9mmcnidncyxahuwsor.jpg'
 const DELAY_MS = 30_000
 const SNOOZE_DAYS = 30
 const KEY = 'travsus_newsletter' // "subscribed" or the time it was closed
@@ -137,8 +139,8 @@ export default function NewsletterModal() {
 							</button>
 
 							{/* Photo with what subscribers get */}
-							<div className="relative h-44 overflow-hidden sm:h-56 md:h-auto md:min-h-[560px]">
-								<Image src={IMAGE} alt="" fill sizes="(min-width: 768px) 400px, 100vw" className="object-cover" priority />
+							<div className="relative h-44 overflow-hidden bg-[#e8c39a] sm:h-56 md:h-auto md:min-h-[560px]">
+								<Image src={IMAGE} alt="" fill sizes="(min-width: 768px) 400px, 100vw" className="object-cover object-[72%_50%]" priority />
 								<div className="absolute inset-0 bg-gradient-to-t from-neutral-950/85 via-neutral-950/20 to-transparent" />
 								<ul className="absolute inset-x-0 bottom-0 hidden space-y-2.5 p-8 text-white md:block">
 									{(['perk_1', 'perk_2', 'perk_3'] as const).map((key) => (
