@@ -1,0 +1,684 @@
+{
+ "67e5a961636b9ead6fb9b280": {
+  "en-US": {
+   "bestTime": "March to May and September to November: warm days, cooler nights.",
+   "stay": "3 to 4 days, plus day trips to the Atlas or the desert.",
+   "gettingThere": "Marrakech Menara Airport has direct flights from much of Europe; trains link it to Casablanca, Rabat and Tangier.",
+   "tip": "Go to Jemaa el-Fnaa at dusk, when the food stalls light up, and agree on prices before you buy or ride."
+  },
+  "fr-FR": {
+   "bestTime": "De mars à mai et de septembre à novembre : journées chaudes, nuits plus fraîches.",
+   "stay": "3 à 4 jours, plus des excursions dans l'Atlas ou le désert.",
+   "gettingThere": "L'aéroport de Marrakech-Ménara reçoit des vols directs d'une grande partie de l'Europe ; le train la relie à Casablanca, Rabat et Tanger.",
+   "tip": "Allez sur la place Jemaa el-Fna au crépuscule, quand les stands s'allument, et fixez le prix avant d'acheter."
+  },
+  "es-ES": {
+   "bestTime": "De marzo a mayo y de septiembre a noviembre: días cálidos y noches más frescas.",
+   "stay": "De 3 a 4 días, más excursiones al Atlas o al desierto.",
+   "gettingThere": "El aeropuerto de Marrakech-Menara tiene vuelos directos desde gran parte de Europa; el tren la une con Casablanca, Rabat y Tánger.",
+   "tip": "Ve a la plaza Jemaa el-Fna al atardecer, cuando se encienden los puestos, y acuerda el precio antes de comprar."
+  },
+  "de-DE": {
+   "bestTime": "März bis Mai und September bis November: warme Tage, kühlere Nächte.",
+   "stay": "3 bis 4 Tage, plus Ausflüge in den Atlas oder die Wüste.",
+   "gettingThere": "Der Flughafen Marrakesch-Menara hat Direktflüge aus vielen Teilen Europas; Züge fahren nach Casablanca, Rabat und Tanger.",
+   "tip": "Geh in der Abenddämmerung zum Platz Jemaa el-Fna, wenn die Garküchen leuchten, und vereinbare Preise vor dem Kauf."
+  },
+  "it-IT": {
+   "bestTime": "Da marzo a maggio e da settembre a novembre: giornate calde, notti più fresche.",
+   "stay": "Da 3 a 4 giorni, più escursioni sull'Atlante o nel deserto.",
+   "gettingThere": "L'aeroporto di Marrakech-Menara ha voli diretti da gran parte d'Europa; i treni la collegano a Casablanca, Rabat e Tangeri.",
+   "tip": "Vai in piazza Jemaa el-Fna al tramonto, quando si accendono le bancarelle, e concorda il prezzo prima di comprare."
+  },
+  "pt-PT": {
+   "bestTime": "De março a maio e de setembro a novembro: dias quentes, noites mais frescas.",
+   "stay": "3 a 4 dias, mais excursões ao Atlas ou ao deserto.",
+   "gettingThere": "O aeroporto de Marraquexe-Menara tem voos diretos de grande parte da Europa; o comboio liga-a a Casablanca, Rabat e Tânger.",
+   "tip": "Vá à praça Jemaa el-Fna ao anoitecer, quando as bancas se iluminam, e combine o preço antes de comprar."
+  },
+  "ru-RU": {
+   "bestTime": "С марта по май и с сентября по ноябрь: тёплые дни и прохладные ночи.",
+   "stay": "3–4 дня плюс поездки в Атлас или пустыню.",
+   "gettingThere": "В аэропорт Марракеш-Менара летают прямые рейсы из многих городов Европы; поезда идут в Касабланку, Рабат и Танжер.",
+   "tip": "Приходите на площадь Джемаа-эль-Фна в сумерках, когда зажигаются уличные кухни, и договаривайтесь о цене заранее."
+  },
+  "ja-JP": {
+   "bestTime": "3〜5月と9〜11月：日中は暖かく、夜は涼しい季節です。",
+   "stay": "3〜4日。アトラス山脈や砂漠への日帰りも加えて。",
+   "gettingThere": "マラケシュ・メナラ空港にはヨーロッパ各地から直行便があり、鉄道でカサブランカ、ラバト、タンジェへ行けます。",
+   "tip": "夕暮れのジャマ・エル・フナ広場は屋台が灯り最高の雰囲気。買い物や乗り物は先に値段を決めましょう。"
+  },
+  "ko-KR": {
+   "bestTime": "3~5월, 9~11월: 낮은 따뜻하고 밤은 선선합니다.",
+   "stay": "3~4일, 아틀라스산맥이나 사막 당일 여행을 더해 보세요.",
+   "gettingThere": "마라케시 메나라 공항에는 유럽 여러 도시에서 직항편이 있고, 기차로 카사블랑카·라바트·탕헤르와 연결됩니다.",
+   "tip": "해 질 녘 제마 엘프나 광장에 가 보세요. 노점이 불을 밝힙니다. 물건을 사기 전에 가격을 먼저 정하세요."
+  },
+  "zh-CN": {
+   "bestTime": "3月至5月、9月至11月：白天温暖，夜晚凉爽。",
+   "stay": "3至4天，再加上阿特拉斯山或沙漠一日游。",
+   "gettingThere": "马拉喀什迈纳拉机场有来自欧洲多地的直飞航班；火车连接卡萨布兰卡、拉巴特和丹吉尔。",
+   "tip": "黄昏时去德吉玛广场，夜市小吃摊亮起灯火；购物或乘车前先谈好价格。"
+  }
+ },
+ "67e564be636b9ead6fb9b06d": {
+  "en-US": {
+   "bestTime": "Spring (March to May) and autumn (September to November); summers are very hot.",
+   "stay": "2 to 3 days to get lost in the medina properly.",
+   "gettingThere": "Fès–Saïss Airport is 15 km away; trains run from Casablanca, Rabat, Meknes and Tangier.",
+   "tip": "Fes el-Bali is one of the largest car-free urban areas in the world: a licensed guide saves hours on the first day."
+  },
+  "fr-FR": {
+   "bestTime": "Au printemps (mars à mai) et en automne (septembre à novembre) ; l'été est très chaud.",
+   "stay": "2 à 3 jours pour bien se perdre dans la médina.",
+   "gettingThere": "L'aéroport de Fès-Saïss est à 15 km ; le train arrive de Casablanca, Rabat, Meknès et Tanger.",
+   "tip": "Fès el-Bali est l'une des plus grandes zones urbaines sans voitures au monde : un guide officiel fait gagner des heures le premier jour."
+  },
+  "es-ES": {
+   "bestTime": "Primavera (marzo a mayo) y otoño (septiembre a noviembre); el verano es muy caluroso.",
+   "stay": "De 2 a 3 días para perderse bien por la medina.",
+   "gettingThere": "El aeropuerto de Fez-Saïss está a 15 km; hay trenes desde Casablanca, Rabat, Mequinez y Tánger.",
+   "tip": "Fez el-Bali es una de las mayores zonas urbanas sin coches del mundo: un guía oficial ahorra horas el primer día."
+  },
+  "de-DE": {
+   "bestTime": "Frühling (März bis Mai) und Herbst (September bis November); der Sommer ist sehr heiß.",
+   "stay": "2 bis 3 Tage, um sich richtig in der Medina zu verlieren.",
+   "gettingThere": "Der Flughafen Fès-Saïss liegt 15 km entfernt; Züge kommen aus Casablanca, Rabat, Meknès und Tanger.",
+   "tip": "Fès el-Bali ist eines der größten autofreien Stadtgebiete der Welt: Ein lizenzierter Guide spart am ersten Tag Stunden."
+  },
+  "it-IT": {
+   "bestTime": "Primavera (marzo-maggio) e autunno (settembre-novembre); l'estate è molto calda.",
+   "stay": "Da 2 a 3 giorni per perdersi davvero nella medina.",
+   "gettingThere": "L'aeroporto di Fès-Saïss è a 15 km; i treni arrivano da Casablanca, Rabat, Meknès e Tangeri.",
+   "tip": "Fès el-Bali è una delle più grandi aree urbane senza auto al mondo: una guida autorizzata fa risparmiare ore il primo giorno."
+  },
+  "pt-PT": {
+   "bestTime": "Primavera (março a maio) e outono (setembro a novembro); o verão é muito quente.",
+   "stay": "2 a 3 dias para se perder a sério na medina.",
+   "gettingThere": "O aeroporto de Fez-Saïss fica a 15 km; há comboios de Casablanca, Rabat, Meknès e Tânger.",
+   "tip": "Fez el-Bali é uma das maiores zonas urbanas sem carros do mundo: um guia oficial poupa horas no primeiro dia."
+  },
+  "ru-RU": {
+   "bestTime": "Весна (март–май) и осень (сентябрь–ноябрь); летом очень жарко.",
+   "stay": "2–3 дня, чтобы как следует заблудиться в медине.",
+   "gettingThere": "Аэропорт Фес-Саис в 15 км от города; поезда идут из Касабланки, Рабата, Мекнеса и Танжера.",
+   "tip": "Фес-эль-Бали — одна из крупнейших в мире городских зон без машин: лицензированный гид сэкономит часы в первый день."
+  },
+  "ja-JP": {
+   "bestTime": "春（3〜5月）と秋（9〜11月）。夏はとても暑くなります。",
+   "stay": "メディナを存分に迷い歩くなら2〜3日。",
+   "gettingThere": "フェズ・サイス空港は市内から15km。カサブランカ、ラバト、メクネス、タンジェから鉄道があります。",
+   "tip": "フェズ・エル・バリは世界最大級の車の入れない市街地。初日は公認ガイドを頼むと何時間も節約できます。"
+  },
+  "ko-KR": {
+   "bestTime": "봄(3~5월)과 가을(9~11월). 여름은 매우 덥습니다.",
+   "stay": "메디나를 제대로 헤매 보려면 2~3일.",
+   "gettingThere": "페스-사이스 공항은 시내에서 15km 거리이며, 카사블랑카·라바트·메크네스·탕헤르에서 기차가 다닙니다.",
+   "tip": "페스 엘발리는 세계에서 가장 큰 차 없는 도시 구역 중 하나예요. 첫날은 공인 가이드와 함께하면 몇 시간을 아낄 수 있어요."
+  },
+  "zh-CN": {
+   "bestTime": "春季（3月至5月）和秋季（9月至11月）；夏季非常炎热。",
+   "stay": "2至3天，好好在老城里迷路一番。",
+   "gettingThere": "非斯-赛斯机场距市区15公里；从卡萨布兰卡、拉巴特、梅克内斯和丹吉尔都有火车。",
+   "tip": "非斯老城是世界上最大的无车城区之一：第一天请一位持证导游能省下好几个小时。"
+  }
+ },
+ "67e5621b35c3d006dfbb8a41": {
+  "en-US": {
+   "bestTime": "All year: about 300 days of sun; the sea is warmest from July to October.",
+   "stay": "3 to 5 days of beach, with day trips inland.",
+   "gettingThere": "Agadir Al Massira Airport has flights from across Europe; buses and roads link it to Marrakech and Essaouira.",
+   "tip": "Watch the sunset from the Kasbah hill above the bay, and spend a day at Paradise Valley in the Atlas foothills."
+  },
+  "fr-FR": {
+   "bestTime": "Toute l'année : environ 300 jours de soleil ; la mer est la plus chaude de juillet à octobre.",
+   "stay": "3 à 5 jours de plage, avec des excursions dans l'arrière-pays.",
+   "gettingThere": "L'aéroport d'Agadir-Al Massira reçoit des vols de toute l'Europe ; bus et routes la relient à Marrakech et Essaouira.",
+   "tip": "Admirez le coucher de soleil depuis la colline de la Kasbah et passez une journée à Paradise Valley, au pied de l'Atlas."
+  },
+  "es-ES": {
+   "bestTime": "Todo el año: unos 300 días de sol; el mar está más cálido de julio a octubre.",
+   "stay": "De 3 a 5 días de playa, con excursiones al interior.",
+   "gettingThere": "El aeropuerto de Agadir-Al Massira tiene vuelos de toda Europa; autobuses y carreteras la unen con Marrakech y Esauira.",
+   "tip": "Mira la puesta de sol desde la colina de la Kasbah y pasa un día en Paradise Valley, a los pies del Atlas."
+  },
+  "de-DE": {
+   "bestTime": "Ganzjährig: rund 300 Sonnentage; das Meer ist von Juli bis Oktober am wärmsten.",
+   "stay": "3 bis 5 Tage Strand, mit Ausflügen ins Hinterland.",
+   "gettingThere": "Der Flughafen Agadir-Al Massira hat Flüge aus ganz Europa; Busse und Straßen führen nach Marrakesch und Essaouira.",
+   "tip": "Sieh dir den Sonnenuntergang vom Kasbah-Hügel über der Bucht an und verbringe einen Tag im Paradise Valley am Fuß des Atlas."
+  },
+  "it-IT": {
+   "bestTime": "Tutto l'anno: circa 300 giorni di sole; il mare è più caldo da luglio a ottobre.",
+   "stay": "Da 3 a 5 giorni di spiaggia, con escursioni nell'entroterra.",
+   "gettingThere": "L'aeroporto di Agadir-Al Massira ha voli da tutta Europa; bus e strade la collegano a Marrakech ed Essaouira.",
+   "tip": "Guarda il tramonto dalla collina della Kasbah e trascorri una giornata a Paradise Valley, ai piedi dell'Atlante."
+  },
+  "pt-PT": {
+   "bestTime": "Todo o ano: cerca de 300 dias de sol; o mar está mais quente de julho a outubro.",
+   "stay": "3 a 5 dias de praia, com excursões ao interior.",
+   "gettingThere": "O aeroporto de Agadir-Al Massira tem voos de toda a Europa; autocarros e estradas ligam-na a Marraquexe e Essaouira.",
+   "tip": "Veja o pôr do sol da colina da Kasbah e passe um dia em Paradise Valley, no sopé do Atlas."
+  },
+  "ru-RU": {
+   "bestTime": "Круглый год: около 300 солнечных дней; море теплее всего с июля по октябрь.",
+   "stay": "3–5 дней на пляже с поездками вглубь страны.",
+   "gettingThere": "В аэропорт Агадир-Аль-Масира летают рейсы со всей Европы; автобусы и дороги ведут в Марракеш и Эс-Сувейру.",
+   "tip": "Смотрите закат с холма Касбы над заливом и проведите день в Райской долине у подножия Атласа."
+  },
+  "ja-JP": {
+   "bestTime": "一年中：晴れは年間約300日。海が最も温かいのは7〜10月です。",
+   "stay": "ビーチで3〜5日。内陸への日帰り旅も楽しめます。",
+   "gettingThere": "アガディール・アル・マシラ空港にはヨーロッパ各地から便があり、バスや道路でマラケシュ、エッサウィラへ行けます。",
+   "tip": "湾を見下ろすカスバの丘で夕日を眺め、アトラス山麓のパラダイス・バレーで一日過ごしましょう。"
+  },
+  "ko-KR": {
+   "bestTime": "연중 내내: 맑은 날이 약 300일. 바다는 7~10월에 가장 따뜻합니다.",
+   "stay": "해변에서 3~5일, 내륙 당일 여행과 함께.",
+   "gettingThere": "아가디르 알마시라 공항에는 유럽 전역에서 항공편이 있고, 버스와 도로로 마라케시·에사우이라와 연결됩니다.",
+   "tip": "만이 내려다보이는 카스바 언덕에서 노을을 보고, 아틀라스 기슭의 파라다이스 밸리에서 하루를 보내세요."
+  },
+  "zh-CN": {
+   "bestTime": "全年皆宜：每年约300天晴天；7月至10月海水最暖。",
+   "stay": "海滩度假3至5天，再去内陆一日游。",
+   "gettingThere": "阿加迪尔马西拉机场有来自欧洲各地的航班；巴士和公路连接马拉喀什和索维拉。",
+   "tip": "在海湾上方的卡斯巴山丘看日落，再到阿特拉斯山脚的天堂谷玩一天。"
+  }
+ },
+ "67e5ad1a636b9ead6fb9b2b6": {
+  "en-US": {
+   "bestTime": "April to June and September to October; winters in the Rif mountains are cold and wet.",
+   "stay": "1 to 2 days: one night lets you see the blue streets empty in the morning.",
+   "gettingThere": "No train or airport: buses and cars from Fes (about 4 hours) or Tangier (about 3 hours).",
+   "tip": "Walk the blue lanes early for photos without crowds, and hike to the Spanish Mosque for sunset over the town."
+  },
+  "fr-FR": {
+   "bestTime": "D'avril à juin et de septembre à octobre ; l'hiver dans le Rif est froid et humide.",
+   "stay": "1 à 2 jours : une nuit permet de voir les ruelles bleues désertes le matin.",
+   "gettingThere": "Ni train ni aéroport : bus ou voiture depuis Fès (environ 4 h) ou Tanger (environ 3 h).",
+   "tip": "Parcourez les ruelles bleues tôt pour des photos sans foule, et montez à la mosquée espagnole pour le coucher du soleil."
+  },
+  "es-ES": {
+   "bestTime": "De abril a junio y de septiembre a octubre; el invierno en el Rif es frío y húmedo.",
+   "stay": "1 o 2 días: una noche permite ver las calles azules vacías por la mañana.",
+   "gettingThere": "Sin tren ni aeropuerto: autobús o coche desde Fez (unas 4 h) o Tánger (unas 3 h).",
+   "tip": "Recorre las calles azules temprano para fotos sin gente y sube a la Mezquita Española al atardecer."
+  },
+  "de-DE": {
+   "bestTime": "April bis Juni und September bis Oktober; im Rif-Gebirge sind die Winter kalt und nass.",
+   "stay": "1 bis 2 Tage: Mit einer Übernachtung siehst du die blauen Gassen morgens menschenleer.",
+   "gettingThere": "Weder Bahn noch Flughafen: Bus oder Auto ab Fès (ca. 4 Std.) oder Tanger (ca. 3 Std.).",
+   "tip": "Geh früh durch die blauen Gassen für Fotos ohne Menschenmengen und wandere zur Spanischen Moschee zum Sonnenuntergang."
+  },
+  "it-IT": {
+   "bestTime": "Da aprile a giugno e da settembre a ottobre; l'inverno sul Rif è freddo e piovoso.",
+   "stay": "1 o 2 giorni: una notte permette di vedere i vicoli blu deserti al mattino.",
+   "gettingThere": "Niente treno né aeroporto: bus o auto da Fès (circa 4 ore) o Tangeri (circa 3 ore).",
+   "tip": "Percorri i vicoli blu presto per foto senza folla e sali alla Moschea Spagnola per il tramonto."
+  },
+  "pt-PT": {
+   "bestTime": "De abril a junho e de setembro a outubro; o inverno no Rif é frio e chuvoso.",
+   "stay": "1 a 2 dias: uma noite permite ver as ruas azuis vazias de manhã.",
+   "gettingThere": "Sem comboio nem aeroporto: autocarro ou carro desde Fez (cerca de 4 h) ou Tânger (cerca de 3 h).",
+   "tip": "Percorra as ruas azuis cedo para fotos sem multidões e suba à Mesquita Espanhola ao pôr do sol."
+  },
+  "ru-RU": {
+   "bestTime": "С апреля по июнь и с сентября по октябрь; зима в горах Риф холодная и дождливая.",
+   "stay": "1–2 дня: с ночёвкой можно увидеть пустые голубые улочки утром.",
+   "gettingThere": "Нет ни поезда, ни аэропорта: автобус или машина из Феса (около 4 ч) или Танжера (около 3 ч).",
+   "tip": "Гуляйте по голубым улочкам рано утром, пока нет толп, и поднимитесь к Испанской мечети на закат."
+  },
+  "ja-JP": {
+   "bestTime": "4〜6月と9〜10月。リフ山脈の冬は寒く雨が多いです。",
+   "stay": "1〜2日。1泊すれば朝の人のいない青い路地を歩けます。",
+   "gettingThere": "鉄道も空港もありません。フェズ（約4時間）またはタンジェ（約3時間）からバスか車で。",
+   "tip": "人の少ない早朝に青い路地を撮影し、夕暮れはスペインモスクまで歩いて町を一望しましょう。"
+  },
+  "ko-KR": {
+   "bestTime": "4~6월과 9~10월. 리프산맥의 겨울은 춥고 비가 많습니다.",
+   "stay": "1~2일. 하룻밤 묵으면 아침의 한적한 파란 골목을 볼 수 있어요.",
+   "gettingThere": "기차와 공항은 없어요. 페스(약 4시간)나 탕헤르(약 3시간)에서 버스나 차로 갑니다.",
+   "tip": "사람이 적은 이른 아침에 파란 골목을 걷고, 해 질 녘에는 스페인 모스크까지 올라가 보세요."
+  },
+  "zh-CN": {
+   "bestTime": "4月至6月、9月至10月；里夫山区的冬季寒冷多雨。",
+   "stay": "1至2天：住一晚可以在清晨看到空无一人的蓝色街巷。",
+   "gettingThere": "没有火车和机场：从非斯（约4小时）或丹吉尔（约3小时）乘巴士或开车前往。",
+   "tip": "清早去蓝色街巷拍照，人少景美；傍晚徒步到西班牙清真寺看全城日落。"
+  }
+ },
+ "67e56977636b9ead6fb9b0bb": {
+  "en-US": {
+   "bestTime": "April to June and September to October: mild, sunny and less windy.",
+   "stay": "2 days, or a night on the way to Chefchaouen.",
+   "gettingThere": "Tangier Ibn Battouta Airport; the Al Boraq high-speed train reaches Casablanca in about 2 hours; ferries cross from Tarifa and Algeciras in Spain.",
+   "tip": "Head west to Cap Spartel and the Caves of Hercules at sunset, where the Atlantic meets the Mediterranean."
+  },
+  "fr-FR": {
+   "bestTime": "D'avril à juin et de septembre à octobre : doux, ensoleillé et moins venteux.",
+   "stay": "2 jours, ou une nuit en route vers Chefchaouen.",
+   "gettingThere": "Aéroport de Tanger-Ibn Battouta ; le TGV Al Boraq rejoint Casablanca en 2 h environ ; des ferries arrivent de Tarifa et d'Algésiras (Espagne).",
+   "tip": "Partez vers le cap Spartel et les grottes d'Hercule au coucher du soleil, là où l'Atlantique rencontre la Méditerranée."
+  },
+  "es-ES": {
+   "bestTime": "De abril a junio y de septiembre a octubre: templado, soleado y con menos viento.",
+   "stay": "2 días, o una noche de camino a Chefchaouen.",
+   "gettingThere": "Aeropuerto de Tánger-Ibn Battuta; el tren de alta velocidad Al Boraq llega a Casablanca en unas 2 horas; hay ferris desde Tarifa y Algeciras.",
+   "tip": "Ve al cabo Espartel y las Cuevas de Hércules al atardecer, donde el Atlántico se une con el Mediterráneo."
+  },
+  "de-DE": {
+   "bestTime": "April bis Juni und September bis Oktober: mild, sonnig und weniger windig.",
+   "stay": "2 Tage oder eine Nacht auf dem Weg nach Chefchaouen.",
+   "gettingThere": "Flughafen Tanger-Ibn Battouta; der Hochgeschwindigkeitszug Al Boraq fährt in rund 2 Stunden nach Casablanca; Fähren kommen aus Tarifa und Algeciras (Spanien).",
+   "tip": "Fahr zum Sonnenuntergang zum Kap Spartel und zu den Herkules-Grotten, wo der Atlantik auf das Mittelmeer trifft."
+  },
+  "it-IT": {
+   "bestTime": "Da aprile a giugno e da settembre a ottobre: mite, soleggiato e meno ventoso.",
+   "stay": "2 giorni, o una notte sulla strada per Chefchaouen.",
+   "gettingThere": "Aeroporto di Tangeri-Ibn Battuta; il treno ad alta velocità Al Boraq raggiunge Casablanca in circa 2 ore; traghetti da Tarifa e Algeciras (Spagna).",
+   "tip": "Vai a Capo Spartel e alle Grotte di Ercole al tramonto, dove l'Atlantico incontra il Mediterraneo."
+  },
+  "pt-PT": {
+   "bestTime": "De abril a junho e de setembro a outubro: ameno, soalheiro e com menos vento.",
+   "stay": "2 dias, ou uma noite a caminho de Chefchaouen.",
+   "gettingThere": "Aeroporto de Tânger-Ibn Battuta; o comboio de alta velocidade Al Boraq chega a Casablanca em cerca de 2 horas; ferries de Tarifa e Algeciras (Espanha).",
+   "tip": "Vá ao Cabo Espartel e às Grutas de Hércules ao pôr do sol, onde o Atlântico encontra o Mediterrâneo."
+  },
+  "ru-RU": {
+   "bestTime": "С апреля по июнь и с сентября по октябрь: тепло, солнечно и меньше ветра.",
+   "stay": "2 дня или ночь по пути в Шефшауэн.",
+   "gettingThere": "Аэропорт Танжер-Ибн-Баттута; скоростной поезд Al Boraq доезжает до Касабланки примерно за 2 часа; паромы идут из Тарифы и Альхесираса (Испания).",
+   "tip": "Поезжайте на закат к мысу Спартель и пещерам Геркулеса, где Атлантика встречается со Средиземным морем."
+  },
+  "ja-JP": {
+   "bestTime": "4〜6月と9〜10月：温暖で晴れが多く、風も穏やかです。",
+   "stay": "2日、またはシャウエンへ向かう途中で1泊。",
+   "gettingThere": "タンジェ・イブン・バットゥータ空港。高速鉄道アル・ボラクでカサブランカまで約2時間。スペインのタリファやアルヘシラスからフェリーもあります。",
+   "tip": "夕暮れには西のスパルテル岬とヘラクレスの洞窟へ。大西洋と地中海が出会う場所です。"
+  },
+  "ko-KR": {
+   "bestTime": "4~6월과 9~10월: 온화하고 맑으며 바람도 덜 붑니다.",
+   "stay": "2일, 또는 셰프샤우엔 가는 길에 하룻밤.",
+   "gettingThere": "탕헤르 이븐바투타 공항. 고속열차 알부라크로 카사블랑카까지 약 2시간, 스페인 타리파·알헤시라스에서 페리가 옵니다.",
+   "tip": "해 질 녘에는 서쪽의 스파르텔곶과 헤라클레스 동굴로 가 보세요. 대서양과 지중해가 만나는 곳이에요."
+  },
+  "zh-CN": {
+   "bestTime": "4月至6月、9月至10月：温和晴朗，风也较小。",
+   "stay": "2天，或在前往舍夫沙万的路上住一晚。",
+   "gettingThere": "丹吉尔伊本·白图泰机场；Al Boraq高铁约2小时到达卡萨布兰卡；从西班牙塔里法和阿尔赫西拉斯有渡轮。",
+   "tip": "傍晚向西去斯帕特尔角和赫拉克勒斯洞穴看日落，那里是大西洋与地中海的交汇处。"
+  }
+ },
+ "67e563a9636b9ead6fb9b05b": {
+  "en-US": {
+   "bestTime": "All year: the ocean keeps it mild; spring and autumn are the most pleasant.",
+   "stay": "1 to 2 days, often at the start or end of a trip.",
+   "gettingThere": "Mohammed V Airport is Morocco's main hub; trains connect to Rabat, Tangier, Fes and Marrakech.",
+   "tip": "Visit the Hassan II Mosque, built over the ocean: guided tours let non-Muslim visitors see inside."
+  },
+  "fr-FR": {
+   "bestTime": "Toute l'année : l'océan adoucit le climat ; le printemps et l'automne sont les plus agréables.",
+   "stay": "1 à 2 jours, souvent au début ou à la fin du voyage.",
+   "gettingThere": "L'aéroport Mohammed-V est le principal du Maroc ; le train relie Rabat, Tanger, Fès et Marrakech.",
+   "tip": "Visitez la mosquée Hassan-II, bâtie sur l'océan : les visites guidées permettent aux non-musulmans de voir l'intérieur."
+  },
+  "es-ES": {
+   "bestTime": "Todo el año: el océano suaviza el clima; primavera y otoño son lo más agradable.",
+   "stay": "1 o 2 días, a menudo al principio o al final del viaje.",
+   "gettingThere": "El aeropuerto Mohammed V es el principal de Marruecos; hay trenes a Rabat, Tánger, Fez y Marrakech.",
+   "tip": "Visita la mezquita Hassan II, construida sobre el océano: las visitas guiadas permiten a los no musulmanes ver el interior."
+  },
+  "de-DE": {
+   "bestTime": "Ganzjährig: Der Ozean hält das Klima mild; Frühling und Herbst sind am angenehmsten.",
+   "stay": "1 bis 2 Tage, oft am Anfang oder Ende einer Reise.",
+   "gettingThere": "Der Flughafen Mohammed V ist Marokkos Drehkreuz; Züge fahren nach Rabat, Tanger, Fès und Marrakesch.",
+   "tip": "Besuche die Hassan-II.-Moschee über dem Ozean: Führungen ermöglichen auch Nicht-Muslimen einen Blick hinein."
+  },
+  "it-IT": {
+   "bestTime": "Tutto l'anno: l'oceano mantiene il clima mite; primavera e autunno sono i più piacevoli.",
+   "stay": "1 o 2 giorni, spesso all'inizio o alla fine del viaggio.",
+   "gettingThere": "L'aeroporto Mohammed V è il principale del Marocco; i treni collegano Rabat, Tangeri, Fès e Marrakech.",
+   "tip": "Visita la moschea Hassan II, costruita sull'oceano: le visite guidate permettono ai non musulmani di vederne l'interno."
+  },
+  "pt-PT": {
+   "bestTime": "Todo o ano: o oceano mantém o clima ameno; a primavera e o outono são os mais agradáveis.",
+   "stay": "1 a 2 dias, muitas vezes no início ou no fim da viagem.",
+   "gettingThere": "O aeroporto Mohammed V é o principal de Marrocos; comboios ligam a Rabat, Tânger, Fez e Marraquexe.",
+   "tip": "Visite a Mesquita Hassan II, construída sobre o oceano: as visitas guiadas permitem a não muçulmanos ver o interior."
+  },
+  "ru-RU": {
+   "bestTime": "Круглый год: океан смягчает климат; весной и осенью приятнее всего.",
+   "stay": "1–2 дня, часто в начале или в конце поездки.",
+   "gettingThere": "Аэропорт имени Мохаммеда V — главный в Марокко; поезда идут в Рабат, Танжер, Фес и Марракеш.",
+   "tip": "Посетите мечеть Хасана II над океаном: на экскурсиях внутрь пускают и немусульман."
+  },
+  "ja-JP": {
+   "bestTime": "一年中：海のおかげで穏やかな気候。春と秋が特に快適です。",
+   "stay": "1〜2日。旅の始まりや終わりに立ち寄る人が多いです。",
+   "gettingThere": "ムハンマド5世空港はモロッコの玄関口。鉄道でラバト、タンジェ、フェズ、マラケシュへ。",
+   "tip": "海の上に建つハッサン2世モスクへ。ガイドツアーなら非ムスリムも内部を見学できます。"
+  },
+  "ko-KR": {
+   "bestTime": "연중 내내: 바다 덕분에 온화하며 봄·가을이 가장 쾌적합니다.",
+   "stay": "1~2일, 여행의 시작이나 끝에 들르는 경우가 많아요.",
+   "gettingThere": "모하메드 5세 공항은 모로코의 관문이며, 기차로 라바트·탕헤르·페스·마라케시와 연결됩니다.",
+   "tip": "바다 위에 지어진 하산 2세 모스크를 방문하세요. 가이드 투어로 비무슬림도 내부를 볼 수 있어요."
+  },
+  "zh-CN": {
+   "bestTime": "全年皆宜：海洋使气候温和；春秋两季最舒适。",
+   "stay": "1至2天，常作为旅程的起点或终点。",
+   "gettingThere": "穆罕默德五世机场是摩洛哥的主要枢纽；火车连接拉巴特、丹吉尔、非斯和马拉喀什。",
+   "tip": "参观建在海上的哈桑二世清真寺：参加导览，非穆斯林游客也能进入内部。"
+  }
+ },
+ "67e5744e636b9ead6fb9b169": {
+  "en-US": {
+   "bestTime": "October to April; summers are scorching, winter nights near freezing.",
+   "stay": "1 to 2 days, usually on the way to the desert.",
+   "gettingThere": "Ouarzazate Airport has domestic flights; by road it's about 4 hours from Marrakech over the Tizi n'Tichka pass.",
+   "tip": "Tour the Atlas Film Studios, where many desert scenes of famous films were shot, then see Ait Benhaddou nearby."
+  },
+  "fr-FR": {
+   "bestTime": "D'octobre à avril ; l'été est brûlant, les nuits d'hiver proches de zéro.",
+   "stay": "1 à 2 jours, en général sur la route du désert.",
+   "gettingThere": "L'aéroport de Ouarzazate a des vols intérieurs ; par la route, environ 4 h depuis Marrakech par le col du Tizi n'Tichka.",
+   "tip": "Visitez les studios Atlas, où de nombreuses scènes de désert de films célèbres ont été tournées, puis Aït-Ben-Haddou tout près."
+  },
+  "es-ES": {
+   "bestTime": "De octubre a abril; el verano es abrasador y las noches de invierno rozan los 0 °C.",
+   "stay": "1 o 2 días, normalmente de camino al desierto.",
+   "gettingThere": "El aeropuerto de Uarzazat tiene vuelos nacionales; por carretera, unas 4 horas desde Marrakech por el puerto de Tizi n'Tichka.",
+   "tip": "Visita los estudios Atlas, donde se rodaron muchas escenas de desierto de películas famosas, y luego Ait Ben Haddou, muy cerca."
+  },
+  "de-DE": {
+   "bestTime": "Oktober bis April; der Sommer ist glühend heiß, Winternächte fast frostig.",
+   "stay": "1 bis 2 Tage, meist auf dem Weg in die Wüste.",
+   "gettingThere": "Der Flughafen Ouarzazate hat Inlandsflüge; auf der Straße sind es rund 4 Stunden ab Marrakesch über den Tizi-n'Tichka-Pass.",
+   "tip": "Besichtige die Atlas Film Studios, in denen viele Wüstenszenen berühmter Filme gedreht wurden, und danach das nahe Aït-Ben-Haddou."
+  },
+  "it-IT": {
+   "bestTime": "Da ottobre ad aprile; l'estate è torrida, le notti invernali vicine allo zero.",
+   "stay": "1 o 2 giorni, di solito sulla strada per il deserto.",
+   "gettingThere": "L'aeroporto di Ouarzazate ha voli nazionali; su strada sono circa 4 ore da Marrakech attraverso il passo Tizi n'Tichka.",
+   "tip": "Visita gli Atlas Film Studios, dove sono state girate molte scene nel deserto di film famosi, poi Ait Benhaddou lì vicino."
+  },
+  "pt-PT": {
+   "bestTime": "De outubro a abril; o verão é escaldante e as noites de inverno quase geladas.",
+   "stay": "1 a 2 dias, normalmente a caminho do deserto.",
+   "gettingThere": "O aeroporto de Ouarzazate tem voos domésticos; de carro são cerca de 4 horas desde Marraquexe pelo passo de Tizi n'Tichka.",
+   "tip": "Visite os Atlas Film Studios, onde foram filmadas muitas cenas de deserto de filmes famosos, e depois Ait Benhaddou, ali perto."
+  },
+  "ru-RU": {
+   "bestTime": "С октября по апрель; летом пекло, зимние ночи около нуля.",
+   "stay": "1–2 дня, обычно по дороге в пустыню.",
+   "gettingThere": "В аэропорт Уарзазата летают внутренние рейсы; по дороге около 4 часов из Марракеша через перевал Тизи-н-Тишка.",
+   "tip": "Загляните на киностудию Atlas, где снимали пустынные сцены многих известных фильмов, а затем в соседний Айт-Бен-Хадду."
+  },
+  "ja-JP": {
+   "bestTime": "10〜4月。夏は酷暑、冬の夜は氷点下近くまで冷えます。",
+   "stay": "1〜2日。砂漠へ向かう途中に立ち寄るのが一般的です。",
+   "gettingThere": "ワルザザート空港には国内線があります。陸路ならマラケシュからティズィ・ン・ティシュカ峠越えで約4時間。",
+   "tip": "有名映画の砂漠シーンが数多く撮影されたアトラス映画スタジオを見学し、近くのアイット・ベン・ハドゥへ。"
+  },
+  "ko-KR": {
+   "bestTime": "10~4월. 여름은 매우 뜨겁고 겨울밤은 영하에 가깝습니다.",
+   "stay": "1~2일, 보통 사막으로 가는 길에 들릅니다.",
+   "gettingThere": "와르자자트 공항에는 국내선이 있고, 마라케시에서 티지 은 티슈카 고개를 넘어 차로 약 4시간입니다.",
+   "tip": "유명 영화의 사막 장면이 많이 촬영된 아틀라스 영화 스튜디오를 둘러보고, 가까운 아이트 벤 하두도 가 보세요."
+  },
+  "zh-CN": {
+   "bestTime": "10月至次年4月；夏季酷热，冬夜接近零度。",
+   "stay": "1至2天，通常是去沙漠途中的一站。",
+   "gettingThere": "瓦尔扎扎特机场有国内航班；从马拉喀什经提兹恩提什卡山口开车约4小时。",
+   "tip": "参观阿特拉斯电影制片厂，许多名片的沙漠场景都在这里拍摄，然后去附近的阿伊特本哈杜。"
+  }
+ },
+ "67e5a8fc636b9ead6fb9b27a": {
+  "en-US": {
+   "bestTime": "All year: mild by the ocean; the trade winds blow hardest from April to September, perfect for kitesurfing.",
+   "stay": "2 to 3 days to slow down.",
+   "gettingThere": "About 3 hours by road from Marrakech; Essaouira-Mogador Airport has a few flights.",
+   "tip": "Eat freshly grilled fish at the stalls by the harbour, then walk the ramparts of the Skala at sunset."
+  },
+  "fr-FR": {
+   "bestTime": "Toute l'année : doux au bord de l'océan ; les alizés soufflent le plus d'avril à septembre, parfait pour le kitesurf.",
+   "stay": "2 à 3 jours pour ralentir.",
+   "gettingThere": "Environ 3 h de route depuis Marrakech ; l'aéroport d'Essaouira-Mogador a quelques vols.",
+   "tip": "Mangez du poisson grillé aux étals du port, puis promenez-vous sur les remparts de la Skala au coucher du soleil."
+  },
+  "es-ES": {
+   "bestTime": "Todo el año: templado junto al océano; los alisios soplan con más fuerza de abril a septiembre, ideal para el kitesurf.",
+   "stay": "De 2 a 3 días para bajar el ritmo.",
+   "gettingThere": "Unas 3 horas por carretera desde Marrakech; el aeropuerto de Esauira-Mogador tiene algunos vuelos.",
+   "tip": "Come pescado a la brasa en los puestos del puerto y pasea por las murallas de la Skala al atardecer."
+  },
+  "de-DE": {
+   "bestTime": "Ganzjährig: mild am Ozean; die Passatwinde wehen von April bis September am stärksten, perfekt zum Kitesurfen.",
+   "stay": "2 bis 3 Tage zum Entschleunigen.",
+   "gettingThere": "Rund 3 Stunden Fahrt ab Marrakesch; der Flughafen Essaouira-Mogador hat einige Flüge.",
+   "tip": "Iss frisch gegrillten Fisch an den Ständen am Hafen und spaziere zum Sonnenuntergang über die Stadtmauern der Skala."
+  },
+  "it-IT": {
+   "bestTime": "Tutto l'anno: mite sull'oceano; gli alisei soffiano più forte da aprile a settembre, perfetti per il kitesurf.",
+   "stay": "Da 2 a 3 giorni per rallentare.",
+   "gettingThere": "Circa 3 ore di strada da Marrakech; l'aeroporto di Essaouira-Mogador ha alcuni voli.",
+   "tip": "Mangia pesce alla griglia ai banchi del porto, poi passeggia sui bastioni della Skala al tramonto."
+  },
+  "pt-PT": {
+   "bestTime": "Todo o ano: ameno junto ao oceano; os alísios sopram mais de abril a setembro, perfeito para kitesurf.",
+   "stay": "2 a 3 dias para abrandar.",
+   "gettingThere": "Cerca de 3 horas de estrada desde Marraquexe; o aeroporto de Essaouira-Mogador tem alguns voos.",
+   "tip": "Coma peixe grelhado nas bancas do porto e passeie pelas muralhas da Skala ao pôr do sol."
+  },
+  "ru-RU": {
+   "bestTime": "Круглый год: у океана мягко; пассаты сильнее всего с апреля по сентябрь — идеально для кайтсёрфинга.",
+   "stay": "2–3 дня, чтобы замедлиться.",
+   "gettingThere": "Около 3 часов на машине из Марракеша; в аэропорт Эс-Сувейра-Могадор летает несколько рейсов.",
+   "tip": "Попробуйте рыбу на гриле у прилавков в порту, а на закате пройдитесь по крепостным стенам Скалы."
+  },
+  "ja-JP": {
+   "bestTime": "一年中：海辺で穏やか。4〜9月は貿易風が強く、カイトサーフィンに最適です。",
+   "stay": "のんびり過ごすなら2〜3日。",
+   "gettingThere": "マラケシュから車で約3時間。エッサウィラ・モガドール空港にも便が少しあります。",
+   "tip": "港の屋台で焼きたての魚を味わい、夕暮れにはスカラの城壁を散歩しましょう。"
+  },
+  "ko-KR": {
+   "bestTime": "연중 내내: 바닷가라 온화하며, 4~9월에는 무역풍이 강해 카이트서핑에 제격이에요.",
+   "stay": "느긋하게 2~3일.",
+   "gettingThere": "마라케시에서 차로 약 3시간. 에사우이라-모가도르 공항에도 항공편이 조금 있어요.",
+   "tip": "항구 노점에서 갓 구운 생선을 맛보고, 해 질 녘 스칼라 성벽을 걸어 보세요."
+  },
+  "zh-CN": {
+   "bestTime": "全年皆宜：海边气候温和；4月至9月信风最强，非常适合风筝冲浪。",
+   "stay": "2至3天，放慢节奏。",
+   "gettingThere": "从马拉喀什开车约3小时；索维拉-摩加多尔机场有少量航班。",
+   "tip": "在港口的小摊吃现烤海鲜，傍晚沿斯卡拉城墙散步看日落。"
+  }
+ },
+ "67f68e87bd9a1f73313f467c": {
+  "en-US": {
+   "bestTime": "October to April; days are pleasant, desert nights are cold, so bring warm layers.",
+   "stay": "1 to 2 nights in a desert camp at Erg Chebbi.",
+   "gettingThere": "By road from Marrakech (about 9 to 10 hours) or Fes (about 7 to 8 hours); Errachidia is the nearest airport.",
+   "tip": "Ride a camel into the dunes in the late afternoon, and get up before dawn to watch the sunrise from a dune top."
+  },
+  "fr-FR": {
+   "bestTime": "D'octobre à avril ; les journées sont agréables, les nuits froides : prévoyez des vêtements chauds.",
+   "stay": "1 à 2 nuits dans un camp du désert de l'Erg Chebbi.",
+   "gettingThere": "Par la route depuis Marrakech (9 à 10 h environ) ou Fès (7 à 8 h environ) ; l'aéroport le plus proche est Errachidia.",
+   "tip": "Partez à dos de chameau dans les dunes en fin d'après-midi et levez-vous avant l'aube pour voir le lever du soleil d'une dune."
+  },
+  "es-ES": {
+   "bestTime": "De octubre a abril; los días son agradables y las noches frías: lleva ropa de abrigo.",
+   "stay": "1 o 2 noches en un campamento del desierto de Erg Chebbi.",
+   "gettingThere": "Por carretera desde Marrakech (unas 9-10 h) o Fez (unas 7-8 h); el aeropuerto más cercano es Errachidia.",
+   "tip": "Monta en camello hacia las dunas a última hora de la tarde y levántate antes del alba para ver amanecer desde una duna."
+  },
+  "de-DE": {
+   "bestTime": "Oktober bis April; die Tage sind angenehm, die Wüstennächte kalt: warme Kleidung mitnehmen.",
+   "stay": "1 bis 2 Nächte in einem Wüstencamp im Erg Chebbi.",
+   "gettingThere": "Auf der Straße ab Marrakesch (ca. 9–10 Std.) oder Fès (ca. 7–8 Std.); der nächste Flughafen ist Errachidia.",
+   "tip": "Reite am späten Nachmittag auf dem Kamel in die Dünen und steh vor der Dämmerung auf, um den Sonnenaufgang von einer Düne zu sehen."
+  },
+  "it-IT": {
+   "bestTime": "Da ottobre ad aprile; le giornate sono piacevoli, le notti nel deserto fredde: porta vestiti caldi.",
+   "stay": "1 o 2 notti in un campo tendato dell'Erg Chebbi.",
+   "gettingThere": "Su strada da Marrakech (circa 9-10 ore) o Fès (circa 7-8 ore); l'aeroporto più vicino è Errachidia.",
+   "tip": "Parti in cammello verso le dune nel tardo pomeriggio e alzati prima dell'alba per vedere il sole sorgere da una duna."
+  },
+  "pt-PT": {
+   "bestTime": "De outubro a abril; os dias são agradáveis e as noites frias: leve roupa quente.",
+   "stay": "1 a 2 noites num acampamento no deserto de Erg Chebbi.",
+   "gettingThere": "De carro desde Marraquexe (cerca de 9 a 10 h) ou Fez (cerca de 7 a 8 h); o aeroporto mais próximo é Errachidia.",
+   "tip": "Monte num camelo rumo às dunas ao fim da tarde e levante-se antes da madrugada para ver o nascer do sol do alto de uma duna."
+  },
+  "ru-RU": {
+   "bestTime": "С октября по апрель; днём приятно, ночью в пустыне холодно — возьмите тёплую одежду.",
+   "stay": "1–2 ночи в пустынном лагере в Эрг-Шебби.",
+   "gettingThere": "По дороге из Марракеша (около 9–10 ч) или Феса (около 7–8 ч); ближайший аэропорт — Эр-Рашидия.",
+   "tip": "Отправляйтесь на верблюдах в дюны ближе к вечеру и встаньте до рассвета, чтобы встретить солнце на вершине дюны."
+  },
+  "ja-JP": {
+   "bestTime": "10〜4月。日中は快適ですが砂漠の夜は冷えるので、防寒着を持っていきましょう。",
+   "stay": "エルグ・シェビの砂漠キャンプで1〜2泊。",
+   "gettingThere": "マラケシュから陸路で約9〜10時間、フェズから約7〜8時間。最寄りの空港はエラシディア。",
+   "tip": "夕方にラクダで砂丘へ向かい、翌朝は夜明け前に起きて砂丘の上から日の出を眺めましょう。"
+  },
+  "ko-KR": {
+   "bestTime": "10~4월. 낮은 쾌적하지만 사막의 밤은 추우니 따뜻한 옷을 챙기세요.",
+   "stay": "에르그 셰비 사막 캠프에서 1~2박.",
+   "gettingThere": "마라케시에서 차로 약 9~10시간, 페스에서 약 7~8시간. 가장 가까운 공항은 에라시디아입니다.",
+   "tip": "늦은 오후 낙타를 타고 모래언덕으로 가고, 새벽 전에 일어나 언덕 위에서 일출을 보세요."
+  },
+  "zh-CN": {
+   "bestTime": "10月至次年4月；白天舒适，沙漠夜晚寒冷，请带保暖衣物。",
+   "stay": "在舍比沙丘的沙漠营地住1至2晚。",
+   "gettingThere": "从马拉喀什开车约9至10小时，从非斯约7至8小时；最近的机场是拉希迪耶。",
+   "tip": "傍晚骑骆驼进入沙丘，第二天黎明前起床，在沙丘顶上看日出。"
+  }
+ },
+ "67f82e3cc15a67565b48caca": {
+  "en-US": {
+   "bestTime": "Spring and autumn, when the valley is green or golden; winter nights are cold.",
+   "stay": "1 night, on the road between Ouarzazate and Merzouga.",
+   "gettingThere": "By road: about 2 hours from Ouarzazate, about 5 hours from Merzouga.",
+   "tip": "Drive up the Dades Gorges road with its famous hairpin bends, and stop at the rock formations known as the Monkey Fingers."
+  },
+  "fr-FR": {
+   "bestTime": "Au printemps et en automne, quand la vallée est verte ou dorée ; les nuits d'hiver sont froides.",
+   "stay": "1 nuit, sur la route entre Ouarzazate et Merzouga.",
+   "gettingThere": "Par la route : environ 2 h depuis Ouarzazate, 5 h depuis Merzouga.",
+   "tip": "Montez la route des gorges du Dadès et ses célèbres lacets, et arrêtez-vous aux rochers des « Doigts de singe »."
+  },
+  "es-ES": {
+   "bestTime": "Primavera y otoño, cuando el valle está verde o dorado; las noches de invierno son frías.",
+   "stay": "1 noche, en la ruta entre Uarzazat y Merzouga.",
+   "gettingThere": "Por carretera: unas 2 horas desde Uarzazat y unas 5 desde Merzouga.",
+   "tip": "Sube por la carretera de las gargantas del Dades con sus famosas curvas y para en las rocas llamadas «Dedos de mono»."
+  },
+  "de-DE": {
+   "bestTime": "Frühling und Herbst, wenn das Tal grün oder golden ist; Winternächte sind kalt.",
+   "stay": "1 Nacht auf der Strecke zwischen Ouarzazate und Merzouga.",
+   "gettingThere": "Auf der Straße: ca. 2 Std. ab Ouarzazate, ca. 5 Std. ab Merzouga.",
+   "tip": "Fahr die Straße durch die Dadès-Schlucht mit ihren berühmten Serpentinen und halte bei den Felsen der „Affenfinger“."
+  },
+  "it-IT": {
+   "bestTime": "Primavera e autunno, quando la valle è verde o dorata; le notti invernali sono fredde.",
+   "stay": "1 notte, sulla strada tra Ouarzazate e Merzouga.",
+   "gettingThere": "Su strada: circa 2 ore da Ouarzazate e circa 5 da Merzouga.",
+   "tip": "Sali lungo la strada delle gole del Dadès con i suoi famosi tornanti e fermati alle rocce delle “Dita di scimmia”."
+  },
+  "pt-PT": {
+   "bestTime": "Primavera e outono, quando o vale está verde ou dourado; as noites de inverno são frias.",
+   "stay": "1 noite, na estrada entre Ouarzazate e Merzouga.",
+   "gettingThere": "De carro: cerca de 2 horas desde Ouarzazate e 5 desde Merzouga.",
+   "tip": "Suba a estrada das gargantas do Dades com as suas famosas curvas e pare nas rochas conhecidas como “Dedos de Macaco”."
+  },
+  "ru-RU": {
+   "bestTime": "Весна и осень, когда долина зелёная или золотая; зимние ночи холодные.",
+   "stay": "1 ночь по пути между Уарзазатом и Мерзугой.",
+   "gettingThere": "По дороге: около 2 часов от Уарзазата и около 5 часов от Мерзуги.",
+   "tip": "Поднимитесь по серпантину ущелья Дадес и остановитесь у скал, которые называют «Пальцами обезьяны»."
+  },
+  "ja-JP": {
+   "bestTime": "谷が緑や金色に染まる春と秋。冬の夜は冷え込みます。",
+   "stay": "ワルザザートとメルズーガの間で1泊。",
+   "gettingThere": "陸路でワルザザートから約2時間、メルズーガから約5時間。",
+   "tip": "有名なつづら折りのダデス渓谷の道を上り、「猿の指」と呼ばれる奇岩に立ち寄りましょう。"
+  },
+  "ko-KR": {
+   "bestTime": "계곡이 초록이나 황금빛으로 물드는 봄과 가을. 겨울밤은 춥습니다.",
+   "stay": "와르자자트와 메르주가 사이에서 1박.",
+   "gettingThere": "차로 와르자자트에서 약 2시간, 메르주가에서 약 5시간.",
+   "tip": "유명한 굽잇길이 있는 다데스 협곡 도로를 오르고, '원숭이 손가락'이라 불리는 바위에 들러 보세요."
+  },
+  "zh-CN": {
+   "bestTime": "春秋两季，山谷或绿意盎然或金黄一片；冬夜寒冷。",
+   "stay": "在瓦尔扎扎特和梅尔祖卡之间住1晚。",
+   "gettingThere": "公路：从瓦尔扎扎特约2小时，从梅尔祖卡约5小时。",
+   "tip": "沿着著名的之字形公路驶入达德斯峡谷，在被称为“猴子手指”的奇岩处停留。"
+  }
+ },
+ "67f82f45c15a67565b48cad4": {
+  "en-US": {
+   "bestTime": "October to April; in summer go early in the morning to avoid the heat.",
+   "stay": "Half a day is enough, often combined with Ouarzazate.",
+   "gettingThere": "About 30 minutes by road from Ouarzazate, 3.5 to 4 hours from Marrakech.",
+   "tip": "Climb to the old granary at the top of the ksar for the view over the valley, ideally early before the tour groups arrive."
+  },
+  "fr-FR": {
+   "bestTime": "D'octobre à avril ; l'été, venez tôt le matin pour éviter la chaleur.",
+   "stay": "Une demi-journée suffit, souvent avec Ouarzazate.",
+   "gettingThere": "Environ 30 min de route depuis Ouarzazate, 3 h 30 à 4 h depuis Marrakech.",
+   "tip": "Montez jusqu'à l'ancien grenier au sommet du ksar pour la vue sur la vallée, de préférence tôt, avant les groupes."
+  },
+  "es-ES": {
+   "bestTime": "De octubre a abril; en verano ve temprano para evitar el calor.",
+   "stay": "Basta medio día, a menudo junto con Uarzazat.",
+   "gettingThere": "A unos 30 minutos por carretera de Uarzazat y a 3,5-4 horas de Marrakech.",
+   "tip": "Sube al antiguo granero en lo alto del ksar para ver el valle, mejor temprano, antes de que lleguen los grupos."
+  },
+  "de-DE": {
+   "bestTime": "Oktober bis April; im Sommer früh morgens kommen, um der Hitze zu entgehen.",
+   "stay": "Ein halber Tag reicht, oft kombiniert mit Ouarzazate.",
+   "gettingThere": "Rund 30 Minuten Fahrt ab Ouarzazate, 3,5 bis 4 Stunden ab Marrakesch.",
+   "tip": "Steig zum alten Speicher oben auf dem Ksar für den Blick über das Tal, am besten früh vor den Reisegruppen."
+  },
+  "it-IT": {
+   "bestTime": "Da ottobre ad aprile; d'estate vai presto la mattina per evitare il caldo.",
+   "stay": "Basta mezza giornata, spesso insieme a Ouarzazate.",
+   "gettingThere": "Circa 30 minuti di strada da Ouarzazate, 3,5-4 ore da Marrakech.",
+   "tip": "Sali all'antico granaio in cima allo ksar per la vista sulla valle, meglio presto, prima dei gruppi."
+  },
+  "pt-PT": {
+   "bestTime": "De outubro a abril; no verão vá cedo de manhã para evitar o calor.",
+   "stay": "Meio dia chega, muitas vezes com Ouarzazate.",
+   "gettingThere": "Cerca de 30 minutos de carro desde Ouarzazate, 3h30 a 4 horas desde Marraquexe.",
+   "tip": "Suba ao antigo celeiro no topo do ksar para ver o vale, de preferência cedo, antes dos grupos."
+  },
+  "ru-RU": {
+   "bestTime": "С октября по апрель; летом приезжайте рано утром, чтобы избежать жары.",
+   "stay": "Хватит полдня, часто вместе с Уарзазатом.",
+   "gettingThere": "Около 30 минут на машине от Уарзазата и 3,5–4 часа от Марракеша.",
+   "tip": "Поднимитесь к старому зернохранилищу на вершине ксара ради вида на долину — лучше рано, до прихода групп."
+  },
+  "ja-JP": {
+   "bestTime": "10〜4月。夏は暑さを避けて朝早くに訪れましょう。",
+   "stay": "半日で十分。ワルザザートと組み合わせるのが一般的です。",
+   "gettingThere": "ワルザザートから車で約30分、マラケシュから3.5〜4時間。",
+   "tip": "クサルの頂上にある古い穀物倉まで登れば谷を一望できます。団体客が来る前の早い時間がおすすめ。"
+  },
+  "ko-KR": {
+   "bestTime": "10~4월. 여름에는 더위를 피해 이른 아침에 가세요.",
+   "stay": "반나절이면 충분하며, 보통 와르자자트와 함께 둘러봅니다.",
+   "gettingThere": "와르자자트에서 차로 약 30분, 마라케시에서 3.5~4시간.",
+   "tip": "크사르 꼭대기의 옛 곡물 창고까지 올라가 계곡 풍경을 보세요. 단체 관광객이 오기 전 이른 시간이 좋아요."
+  },
+  "zh-CN": {
+   "bestTime": "10月至次年4月；夏季请清晨前往避开酷暑。",
+   "stay": "半天足够，通常与瓦尔扎扎特一起游览。",
+   "gettingThere": "从瓦尔扎扎特开车约30分钟，从马拉喀什约3.5至4小时。",
+   "tip": "爬到古堡顶端的旧粮仓俯瞰山谷，最好趁旅行团到来前早点去。"
+  }
+ }
+}

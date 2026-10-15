@@ -2,7 +2,6 @@ export const dynamic = "force-dynamic";
 import { db, T, must, newId } from '@/lib/db'
 import { GEO_CONTENT, keepTranslations } from '@/lib/geo'
 import { NextResponse } from 'next/server'
-import { openai } from '@/lib/openai'
 
 
 function extractLanguageFromRequest(request: Request): string {
@@ -16,55 +15,6 @@ function extractLanguageFromRequest(request: Request): string {
 	return languageMatch ? languageMatch[1] : 'en-US'
 }
 
-/**
- * Generate a concise description for a country using OpenAI
- */
-async function generateCountryDescription(
-	countryName: string,
-	language = 'en-US',
-) {
-	const languageNames = {
-		'en-US': 'English',
-		'es-ES': 'Spanish',
-		'fr-FR': 'French',
-		'de-DE': 'German',
-		'it-IT': 'Italian',
-		'pt-PT': 'Portuguese',
-		'ru-RU': 'Russian',
-		'zh-CN': 'Chinese',
-		'ja-JP': 'Japanese',
-		'ko-KR': 'Korean',
-	}
-
-	const targetLanguage =
-		languageNames[language as keyof typeof languageNames] || 'English'
-
-	const prompt = `Write a concise, engaging description of ${countryName} in about 150-180 words in ${targetLanguage}.
-    
-  Focus on:
-  - Key attractions, geography, and characteristics
-  - Cultural highlights and famous features
-  - Practical information for visitors
-  - Notable cities or regions
-  
-  Use a lively, descriptive style. Make it informative but concise, with vivid details that capture the essence of ${countryName}.`
-
-	try {
-		const completion = await openai.chat.completions.create({
-			model: 'gpt-4-turbo',
-			messages: [{ role: 'user', content: prompt }],
-			max_tokens: 300, // Slightly higher token limit for countries
-			temperature: 0.7, // Keep this for creative descriptions
-		})
-
-		return completion.choices[0].message.content.trim()
-	} catch (error) {
-		console.error(`Error generating description for ${countryName}:`, error)
-
-		// Fallback to a generic description if API fails
-		return `${countryName} offers visitors a rich tapestry of experiences, from its distinctive landscapes to its vibrant cultural heritage. The country features diverse geography, including mountains, coastlines, and picturesque countryside. Historic architecture and monuments stand as testaments to the nation's past, while modern cities showcase contemporary life and innovation. ${countryName} is known for its unique cuisine, traditional arts, and cultural festivals that celebrate local customs. Visitors can explore museums, historical sites, and natural wonders throughout the country. The people are known for their hospitality and pride in their cultural identity. Whether seeking adventure, relaxation, or cultural immersion, ${countryName} provides travelers with memorable experiences and insights into its unique character and traditions.`
-	}
-}
 
 export async function GET(
 	request: Request,
@@ -126,31 +76,8 @@ export async function GET(
 
 			if (descriptionTranslation) {
 				description = descriptionTranslation.text
-			} else {
-				// No description found, generate one
-				console.log(`No description found for ${name}, generating one...`)
-
-				const languageToUse = languageAvailable ? detectedLanguage : 'en-US'
-				description = await generateCountryDescription(name, languageToUse)
-
-				// Save the generated description to the database
-				try {
-					must(
-						await db.from(T.geoTexts).insert({
-							id: newId(),
-							contentId: country.content.id,
-							language: languageToUse,
-							text: description,
-							type: 'description',
-							code3: country.code3 || null,
-						}),
-					)
-					console.log(`Saved generated description for ${name}`)
-				} catch (error) {
-					console.error(`Error saving description for ${name}:`, error)
-					// Continue with the generated description even if saving fails
-				}
 			}
+			// No description: none is shown (descriptions are no longer generated on page views)
 		}
 
 		// Prepare the response data

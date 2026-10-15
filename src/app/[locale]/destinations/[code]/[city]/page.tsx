@@ -1,257 +1,254 @@
-'use client'
-export const dynamic = "force-dynamic";
-
-import { useEffect, useState } from 'react'
-import { Camera, Heart, ChevronDown, ChevronRight } from 'lucide-react'
+// A city: photo, live weather and local time, description, travel guide,
+// TRAVSUS tours that go there, things to do, map, and more of the country.
+// Works with /destinations/mar/tangier and the older ?lcId=<city id> links.
+import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-// import CollectionsGrid from './Collection'
-import CountryCardList from '@/components/ItemsCardList'
+import { notFound } from 'next/navigation'
+import { ChevronRight, Clock3, Compass, Lightbulb, MapPin, Plane, Sun, Wind } from 'lucide-react'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
+import TourCard from '../../../(home)/TourCard'
+import { countryHref, flag, getCitiesOf, getCity, getPlacesOfCity, getToursFor, getWeather, weatherKey } from '@/lib/destinations'
+import guides from '@/content/destination-guides.json'
+import LocalTime from '../../_components/LocalTime'
+import { bigImage, CityCard, MapEmbed, PlaceCard, Section } from '../../_components/ui'
 
-// import SectionGridFilterCard from '../(experience-listings)/SectionGridFilterCard'
-// import FeatureNotificationForm from '@/app/feature-notification-form'
-// import SectionGridFilterCard from '@/app/(experience-listings)/SectionGridFilterCard'
-import CollectionsGrid from '@/components/CollectionsGrid'
-import ReadeMore from '../../../../(client-components)/ReadeMore'
+type Props = { params: { locale: string; code: string; city: string }; searchParams: { lcId?: string } }
 
-export default function DestinationPage({
-	params,
-	searchParams,
-}: {
-	params: { city: string }
-	searchParams: any
-}) {
-	// Extract the country code from the URL parameters
-	const { city } = params
-	console.log('searchParams: ', searchParams)
+export const revalidate = 1800
 
-	// State for country data, loading state, and errors
-	const [countryData, setCountryData] = useState(null)
-	const [isLoading, setIsLoading] = useState(true)
-	const [error, setError] = useState(null)
-	const [showModal, setShowModal] = useState(false)
+const guideFor = (id: string, locale: string) => {
+	const g = (guides as Record<string, Record<string, { bestTime: string; stay: string; gettingThere: string; tip: string }>>)[id]
+	return g ? g[locale] ?? g['en-US'] : null
+}
 
-	useEffect(() => {
-		// Reset states when country code changes
-		setIsLoading(true)
-		setError(null)
-
-		const fetchCountryData = async () => {
-			try {
-				// Make sure the URL is correct
-				const apiUrl = `/api/cities/${searchParams.lcId}`
-				console.log('Fetching from:', apiUrl)
-
-				const res = await fetch(apiUrl, {
-					method: 'GET',
-					headers: {
-						'Content-Type': 'application/json',
-					},
-					cache: 'no-store', // Prevent caching
-				})
-
-				console.log('API response status:', res.status)
-
-				if (!res.ok) {
-					throw new Error(`Failed to fetch data for country code: ${city}`)
-				}
-
-				const data = await res.json()
-				console.log('Successfully fetched data:', data)
-				setCountryData(data)
-			} catch (err) {
-				console.error('Error fetching country data:', err)
-				setError(err.message)
-			} finally {
-				setIsLoading(false)
-			}
-		}
-
-		fetchCountryData()
-	}, [city]) // Re-run when country code changes
-
-	// Show loading state
-	if (isLoading) {
-		return (
-			<div className="destination-layout">
-				<main>
-					<div className="p-8 text-center">
-						<h1 className="mb-4 text-2xl font-bold">Loading...</h1>
-						<p>Fetching information for {city.toUpperCase()}</p>
-					</div>
-				</main>
-			</div>
-		)
+export async function generateMetadata({ params, searchParams }: Props): Promise<Metadata> {
+	const city = await getCity(params.code, params.city, params.locale, searchParams.lcId)
+	if (!city) return {}
+	const t = await getTranslations({ locale: params.locale, namespace: 'Destination' })
+	const title = `${city.name}, ${city.country.name}: ${t('travel_guide')} | TRAVSUS`
+	return {
+		title,
+		description: city.description.slice(0, 160),
+		alternates: { canonical: city.href },
+		openGraph: { title, description: city.description.slice(0, 200), images: city.image ? [bigImage(city.image)] : [] },
 	}
+}
 
-	// Show error state
-	if (error) {
-		return (
-			<div className="destination-layout">
-				<main>
-					<div className="p-8 text-center">
-						<h1 className="mb-4 text-2xl font-bold">Country Not Found</h1>
-						<p>
-							Sorry, we couldn't find information for the country city: {city}
-						</p>
-						<p className="mt-4 text-sm text-gray-500">
-							Please check that the country city is correct and try again.
-						</p>
-					</div>
-				</main>
-			</div>
-		)
+export default async function CityPage({ params, searchParams }: Props) {
+	const { locale } = params
+	setRequestLocale(locale)
+	const city = await getCity(params.code, params.city, locale, searchParams.lcId)
+	if (!city) notFound()
+
+	const t = await getTranslations('Destination')
+	const [weather, places, tours, others] = await Promise.all([
+		getWeather(city.point),
+		getPlacesOfCity(city.id, locale),
+		getToursFor([city.englishName, city.name], locale),
+		getCitiesOf(city.country, locale, 12),
+	])
+	const guide = guideFor(city.id, locale)
+	const more = others.filter((c) => c.id !== city.id).slice(0, 8)
+	const dayName = (date: string, i: number) => (i === 0 ? t('today') : new Date(`${date}T12:00:00Z`).toLocaleDateString(locale, { weekday: 'short', timeZone: 'UTC' }))
+
+	const facts = [
+		weather?.now && {
+			icon: Sun,
+			label: t('weather_now'),
+			value: `${weather.now.temp}°C`,
+			note: `${t(weatherKey(weather.now.code))} · ${t('wind', { speed: weather.now.wind })}`,
+		},
+		weather?.timezone && { icon: Clock3, label: t('local_time'), value: <LocalTime timezone={weather.timezone} locale={locale} />, note: weather.timezone.replace(/_/g, ' ') },
+		{ icon: MapPin, label: t('country'), value: `${flag(city.country.code)} ${city.country.name}`, note: city.region ?? city.country.continent ?? undefined, href: countryHref(locale, city.country.code3) },
+		city.point && { icon: Compass, label: t('on_the_map'), value: `${city.point.lat.toFixed(2)}°, ${city.point.lng.toFixed(2)}°`, note: city.country.continent ?? undefined, href: '#map' },
+	].filter(Boolean) as { icon: typeof Sun; label: string; value: React.ReactNode; note?: string; href?: string }[]
+
+	const jsonLd = {
+		'@context': 'https://schema.org',
+		'@type': 'TouristDestination',
+		name: city.name,
+		description: city.description,
+		...(city.image ? { image: city.image } : {}),
+		...(city.point ? { geo: { '@type': 'GeoCoordinates', latitude: city.point.lat, longitude: city.point.lng } } : {}),
+		containedInPlace: { '@type': 'Country', name: city.country.name },
+		...(places.length ? { includesAttraction: places.slice(0, 10).map((p) => ({ '@type': 'TouristAttraction', name: p.name })) } : {}),
 	}
-
-	// Main content - previously in MoroccoTravelPage
-	console.log('countryData: ', countryData)
 
 	return (
-		<>
-			<div className="mx-auto max-w-6xl">
-				{/* Navigation Bar with divider */}
-				<div className="px-4 md:px-0">
-					<nav className="relative flex items-center border-b border-black py-3">
-						{/* Scrollable navigation for all screen sizes */}
-						<div
-							onClick={() => setShowModal(true)}
-							className="hide-scrollbar flex items-center overflow-x-auto"
-						>
-							{[
-								countryData?.name,
-								'Hotels',
-								'Things to Do',
-								'Restaurants',
-								'Flights',
-								'Vacation Rentals',
-								'Cruises',
-								'Rental Cars',
-								'Forums',
-							].map((item, index) => (
-								<Link
-									key={item}
-									href="#"
-									className={`mr-4 flex flex-shrink-0 items-center whitespace-nowrap text-base font-semibold md:mr-6 ${
-										index === 0
-											? 'rounded-full bg-black px-3 py-1.5 text-white no-underline md:px-4 md:py-2'
-											: 'text-black hover:underline'
-									}`}
-								>
-									{item}
-								</Link>
-							))}
-						</div>
-					</nav>
+		<main className="mx-auto max-w-7xl px-5 pb-24 pt-6 text-neutral-950 dark:text-white">
+			<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }} />
+
+			<nav aria-label="Breadcrumb">
+				<ol className="flex flex-wrap items-center gap-1 text-sm text-neutral-500">
+					<li>
+						<Link href={`/${locale}/destinations` as any} className="hover:text-neutral-950 dark:hover:text-white">{t('destinations')}</Link>
+					</li>
+					<ChevronRight className="h-3.5 w-3.5" />
+					<li>
+						<Link href={countryHref(locale, city.country.code3) as any} className="hover:text-neutral-950 dark:hover:text-white">{city.country.name}</Link>
+					</li>
+					<ChevronRight className="h-3.5 w-3.5" />
+					<li className="font-medium text-neutral-950 dark:text-white" aria-current="page">{city.name}</li>
+				</ol>
+			</nav>
+
+			{/* Hero */}
+			<header className="relative mt-4 overflow-hidden rounded-[32px] bg-neutral-900">
+				<div className="relative h-[52vh] min-h-[340px] sm:h-[64vh]">
+					{city.image && <Image src={bigImage(city.image)} alt={city.name} fill priority sizes="(min-width: 1280px) 1240px, 100vw" className="object-cover" />}
+					<div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-black/0" />
 				</div>
-
-				{/* Breadcrumb Navigation - responsive */}
-				<div className="mt-2 flex flex-col px-4 py-2 text-xs md:mt-4 md:flex-row md:items-center md:justify-between md:px-0">
-					<div className="mb-1 flex items-center md:mb-0">
-						<Link href="#" className="text-black hover:underline">
-							Travsus
-						</Link>
-						<ChevronRight className="mx-1 h-2.5 w-2.5 text-black" />
-						<Link
-							href="#"
-							className="flex items-center text-black hover:underline"
-						>
-							{countryData?.name}
-							<ChevronDown className="ml-1 h-2.5 w-2.5" />
-						</Link>
-					</div>
-					<div className="text-black">
-						<span>
-							Plan Your Trip to {countryData?.name}: Best {countryData?.name}{' '}
-							Travel Guide
-						</span>
-					</div>
-				</div>
-
-				{/* Banner Image - full width on mobile */}
-				<div className="px-0 pb-3 pt-3 md:pb-4 md:pt-4">
-					<div className="relative h-[300px] w-full overflow-hidden md:h-[500px] md:rounded-[16px]">
-						<img
-							src={countryData?.image}
-							alt={countryData?.name}
-							className="h-full w-full object-cover"
-							priority
-						/>
-						<div className="absolute bottom-3 right-3 flex items-center gap-2 rounded-full border border-black bg-black px-3 py-1 md:bottom-4 md:right-4 md:px-4 md:py-1.5">
-							<Camera className="h-3 w-3 text-white md:h-4 md:w-4" />
-							<span className="text-xs text-white md:text-sm">1</span>
-						</div>
-						<div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 transform space-x-1.5 md:bottom-4 md:space-x-2">
-							{Array.from({ length: 5 }).map((_, index) => (
-								<button
-									key={index}
-									className={`h-1.5 w-1.5 rounded-full md:h-2 md:w-2 ${index === 0 ? 'bg-white' : 'bg-white/50'}`}
-									aria-label={`Go to slide ${index + 1}`}
-								/>
-							))}
-						</div>
-					</div>
-
-					{/* Sponsored text moved outside the image */}
-					<p className="mt-1 px-4 text-xs text-black md:mt-2 md:px-0 md:text-sm">
-						{countryData?.name === 'Morocco'
-							? 'Sponsored by ' + countryData?.name
-							: ''}
+				<div className="absolute inset-x-0 bottom-0 p-6 text-white sm:p-10">
+					<p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/75">
+						{flag(city.country.code)} {[city.region, city.country.name].filter(Boolean).join(' · ')}
 					</p>
+					<h1 className="mt-2 text-5xl font-bold tracking-tight sm:text-7xl">{city.name}</h1>
 				</div>
+			</header>
 
-				{/* Content Section - Morocco on left, Save on right */}
-				<div className="px-4 py-5 md:px-0 md:py-8">
-					<div className="mb-4 flex flex-row items-center justify-between md:mb-6">
-						{/* Morocco heading always on left */}
-						<h1 className="text-3xl font-extrabold text-black md:text-5xl">
-							{countryData?.name}
-						</h1>
+			{/* Quick facts */}
+			<dl className="mt-4 grid grid-cols-2 gap-3 lg:grid-cols-4">
+				{facts.map(({ icon: Icon, label, value, note, href }) => {
+					const inner = (
+						<>
+							<dt className="flex items-center gap-2 text-sm font-medium text-neutral-500">
+								<Icon className="h-4 w-4" />
+								{label}
+							</dt>
+							<dd className="mt-2 truncate text-2xl font-bold tabular-nums tracking-tight">{value}</dd>
+							{note && <dd className="mt-0.5 truncate text-xs text-neutral-500">{note}</dd>}
+						</>
+					)
+					return href ? (
+						<Link key={label} href={href as any} className="min-w-0 rounded-3xl bg-neutral-100 p-5 transition hover:bg-neutral-200 dark:bg-neutral-900 dark:hover:bg-neutral-800">
+							{inner}
+						</Link>
+					) : (
+						<div key={label} className="min-w-0 rounded-3xl bg-neutral-100 p-5 dark:bg-neutral-900">
+							{inner}
+						</div>
+					)
+				})}
+			</dl>
 
-						{/* Save button always on right */}
-						<button
-							className="flex h-10 w-10 items-center justify-center rounded-full border border-black hover:bg-gray-50 md:h-12 md:w-12"
-							aria-label="Save"
-						>
-							<Heart className="h-5 w-5 md:h-6 md:w-6" />
-						</button>
-					</div>
+			{/* About + guide */}
+			<div className="mt-16 grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] lg:gap-14">
+				<section>
+					<span aria-hidden className="mb-3 block h-1 w-10 rounded-full bg-brand-500" />
+					<h2 className="text-2xl font-bold tracking-tight sm:text-4xl">{t('about', { name: city.name })}</h2>
+					<p className="mt-5 whitespace-pre-line text-lg leading-relaxed text-neutral-700 dark:text-neutral-300">{city.description}</p>
 
-					<ReadeMore description={countryData?.description} />
-				</div>
-				<CollectionsGrid
-					cityId={countryData?.id}
-					layout="row"
-					// countryCode="MAR"
-					// placeType="restaurant"
-					// heading="Restaurants in Marrakech"
-					// subHeading="Taste the flavors of"
-				/>
-				{/* <CountryCardList
-					locationType="city"
-					// countryCode={code?.toUpperCase()}
-					// locationType="country"
-					layout="row"
-					// countryCodes={['MAR', 'FRA', 'ESP']}
-					// heading="Popular Countries"
-				/> */}
+					{weather && weather.days.length > 1 && (
+						<div className="mt-10">
+							<h3 className="text-sm font-semibold uppercase tracking-[0.15em] text-neutral-500">{t('forecast')}</h3>
+							<ul className="-mx-5 mt-4 flex gap-2 overflow-x-auto px-5 pb-1 [scrollbar-width:none] sm:mx-0 sm:grid sm:grid-cols-6 sm:px-0">
+								{weather.days.map((d, i) => (
+									<li key={d.date} className="w-24 shrink-0 rounded-3xl bg-neutral-100 px-3 py-4 text-center sm:w-auto dark:bg-neutral-900">
+										<p className="text-xs font-semibold capitalize text-neutral-500">{dayName(d.date, i)}</p>
+										<p className="mt-2 text-lg font-bold tabular-nums">{d.max}°</p>
+										<p className="text-sm tabular-nums text-neutral-500">{d.min}°</p>
+										<p className="mt-1 truncate text-[11px] text-neutral-500" title={t(weatherKey(d.code))}>
+											{d.rain >= 30 ? t('rain', { pct: d.rain }) : t(weatherKey(d.code))}
+										</p>
+									</li>
+								))}
+							</ul>
+						</div>
+					)}
+				</section>
 
-				{/* <SectionGridFilterCard layout={'row'} /> */}
-
-				{/* Custom CSS for hiding scrollbars */}
-				<style jsx global>{`
-					.hide-scrollbar::-webkit-scrollbar {
-						display: none;
-					}
-					.hide-scrollbar {
-						-ms-overflow-style: none;
-						scrollbar-width: none;
-					}
-				`}</style>
+				{guide && (
+					<aside className="h-fit rounded-[32px] bg-neutral-950 p-7 text-white sm:p-9 dark:bg-white dark:text-neutral-950">
+						<p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/60 dark:text-neutral-500">{t('travel_guide')}</p>
+						<dl className="mt-6 space-y-6">
+							{(
+								[
+									[Sun, t('best_time'), guide.bestTime],
+									[Clock3, t('how_long'), guide.stay],
+									[Plane, t('getting_there'), guide.gettingThere],
+									[Lightbulb, t('local_tip'), guide.tip],
+								] as const
+							).map(([Icon, label, text]) => (
+								<div key={label} className="flex gap-4">
+									<span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white/10 dark:bg-neutral-100">
+										<Icon className="h-5 w-5" />
+									</span>
+									<div>
+										<dt className="font-semibold">{label}</dt>
+										<dd className="mt-1 text-[15px] leading-relaxed text-white/75 dark:text-neutral-600">{text}</dd>
+									</div>
+								</div>
+							))}
+						</dl>
+					</aside>
+				)}
 			</div>
-			{/* <FeatureNotificationForm
-				isOpen={showModal}
-				onClose={() => setShowModal(false)}
-			/> */}
-		</>
+
+			{/* Tours */}
+			<Section
+				title={t('tours_title', { name: city.name })}
+				text={t('tours_text', { name: city.name })}
+				action={
+					<Link href={`/${locale}/search?query=${encodeURIComponent(city.englishName)}` as any} className="text-sm font-semibold underline underline-offset-4">
+						{t('all_tours')}
+					</Link>
+				}
+			>
+				{tours.length ? (
+					<ul className="grid grid-cols-1 gap-x-5 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+						{tours.slice(0, 6).map((tour) => (
+							<li key={tour.id}>
+								<TourCard tour={tour} />
+							</li>
+						))}
+					</ul>
+				) : (
+					<Link href={`/${locale}/search?query=` as any} className="block rounded-[28px] bg-neutral-100 px-6 py-10 text-center font-medium text-neutral-600 transition hover:bg-neutral-200 dark:bg-neutral-900 dark:text-neutral-300">
+						{t('tours_empty')}
+					</Link>
+				)}
+			</Section>
+
+			{/* Things to do */}
+			{places.length > 0 && (
+				<Section title={t('things_to_do', { name: city.name })}>
+					<ul className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+						{places.map((place) => (
+							<li key={place.id}>
+								<PlaceCard place={place} directions={t('directions')} website={t('website')} />
+							</li>
+						))}
+					</ul>
+				</Section>
+			)}
+
+			{/* Map */}
+			{city.point && (
+				<Section id="map" title={t('on_the_map')}>
+					<MapEmbed point={city.point} title={city.name} openLabel={t('open_map')} />
+				</Section>
+			)}
+
+			{/* More in the country */}
+			{more.length > 0 && (
+				<Section
+					title={t('more_in', { country: city.country.name })}
+					action={
+						<Link href={countryHref(locale, city.country.code3) as any} className="text-sm font-semibold underline underline-offset-4">
+							{t('explore')} {city.country.name}
+						</Link>
+					}
+				>
+					<ul className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+						{more.map((c) => (
+							<li key={c.id}>
+								<CityCard city={c} label={c.region ?? undefined} />
+							</li>
+						))}
+					</ul>
+				</Section>
+			)}
+		</main>
 	)
 }

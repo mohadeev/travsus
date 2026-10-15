@@ -53,14 +53,16 @@ const MAIN = [
 	{ from: 'ForumComment', to: 'ForumComment', later: ['parentId'] },
 ]
 
+// `requires`: column -> parent collection; rows pointing to a parent that
+// doesn't exist (orphans left in MongoDB) are skipped and counted.
 const GEO = [
 	{ from: 'TranslatableContent', to: 'geo_translatable_contents' },
-	{ from: 'TranslatedText', to: 'geo_translated_texts' },
-	{ from: 'Continent', to: 'geo_continents' },
-	{ from: 'Country', to: 'geo_countries' },
-	{ from: 'State', to: 'geo_states' },
-	{ from: 'City', to: 'geo_cities' },
-	{ from: 'Place', to: 'geo_places' },
+	{ from: 'TranslatedText', to: 'geo_translated_texts', requires: { contentId: 'TranslatableContent' } },
+	{ from: 'Continent', to: 'geo_continents', requires: { contentId: 'TranslatableContent' } },
+	{ from: 'Country', to: 'geo_countries', requires: { contentId: 'TranslatableContent', continentId: 'Continent' } },
+	{ from: 'State', to: 'geo_states', requires: { contentId: 'TranslatableContent', countryId: 'Country' } },
+	{ from: 'City', to: 'geo_cities', requires: { contentId: 'TranslatableContent', countryId: 'Country', stateId: 'State' } },
+	{ from: 'Place', to: 'geo_places', requires: { contentId: 'TranslatableContent', cityId: 'City', countryId: 'Country', stateId: 'State' } },
 ]
 
 /** ObjectId -> hex string, Date -> ISO string, recursively. */
@@ -117,16 +119,21 @@ async function syncDatabase(label, url, mappings, definitions) {
 	await client.connect()
 	const mongo = client.db()
 	console.log(`\n== ${label} (${mongo.databaseName})`)
+	const seen = {} // collection -> ids copied, for `requires`
 	try {
-		for (const { from, to, later = [] } of mappings) {
+		for (const { from, to, later = [], requires = {} } of mappings) {
 			const definition = definitions[to]
 			if (!definition) {
 				console.log(`  ! ${to}: table not found in Supabase, skipped`)
 				continue
 			}
 			const docs = await mongo.collection(from).find().toArray()
-			const rows = docs.map((d) => toRow(d, definition, later))
-			console.log(`  ${from} -> ${to}: ${rows.length} rows`)
+			const all = docs.map((d) => toRow(d, definition, later))
+			// Optional parents (null) are fine; a missing parent row is not
+			const rows = all.filter((r) => Object.entries(requires).every(([column, parent]) => r[column] == null || seen[parent]?.has(r[column])))
+			seen[from] = new Set(rows.map((r) => r.id))
+			const skipped = all.length - rows.length
+			console.log(`  ${from} -> ${to}: ${rows.length} rows${skipped ? ` (${skipped} skipped: parent missing)` : ''}`)
 			if (DRY_RUN || !rows.length) continue
 
 			await upsertAll(to, rows)

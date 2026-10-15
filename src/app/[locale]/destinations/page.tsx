@@ -1,86 +1,87 @@
-'use client'
-export const dynamic = "force-dynamic";
+// All destinations: countries with a photo, grouped by continent.
+import type { Metadata } from 'next'
+import Image from 'next/image'
+import Link from 'next/link'
+import { ArrowUpRight } from 'lucide-react'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
+import { countryHref, flag, getCountries, type Country } from '@/lib/destinations'
+import { bigImage } from './_components/ui'
 
-import { useEffect, useState } from 'react'
-import { useTranslations } from '@/lib/i18n'
-import CountryCardList from '@/components/ItemsCardList'
-import type { CountryDataType } from '@/components/CountryCard'
+export const revalidate = 3600
 
+export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
+	const t = await getTranslations({ locale: params.locale, namespace: 'Destination' })
+	return { title: `${t('destinations')} | TRAVSUS`, description: t('index_text'), alternates: { canonical: `/${params.locale}/destinations` } }
+}
 
-export default function DestinationsPage() {
-	const t = useTranslations('destinations_page')
-	const [countries, setCountries] = useState<CountryDataType[]>([])
-	const [loading, setLoading] = useState(true)
-	const [error, setError] = useState<string | null>(null)
-
-	useEffect(() => {
-		const fetchCountries = async () => {
-			try {
-				setLoading(true)
-				const response = await fetch('/api/countries')
-
-				if (!response.ok) {
-					throw new Error('Failed to fetch countries')
-				}
-
-				const data = await response.json()
-
-				// Transform API data to match CountryDataType
-				const formattedCountries = data.countries.map((country: any) => ({
-					id: country.id,
-					name: country.name,
-					image: country.image,
-					featured: country.featured,
-					year: '2025',
-					url: `/destinations/${country.code3.toLowerCase()}`,
-				}))
-
-				setCountries(formattedCountries)
-			} catch (err) {
-				console.error('Error fetching countries:', err)
-				setError(t('destinations_page_Failed_To_Load_Destinations'))
-			} finally {
-				setLoading(false)
-			}
-		}
-
-		fetchCountries()
-	}, [])
-
-	if (loading) {
-		return (
-			<div className="container mx-auto flex min-h-[50vh] items-center justify-center py-16">
-				<div className="text-center">
-					<div className="mb-4 h-12 w-12 animate-spin rounded-full border-4 border-primary border-t-transparent"></div>
-					<p>{t('destinations_page_Loading_Destinations')}</p>
+function CountryCard({ country, locale, big = false }: { country: Country; locale: string; big?: boolean }) {
+	return (
+		<Link href={countryHref(locale, country.code3) as any} className="group block">
+			<div className={`relative overflow-hidden rounded-[28px] bg-neutral-100 dark:bg-neutral-900 ${big ? 'aspect-[4/5] sm:aspect-[16/10]' : 'aspect-[4/5]'}`}>
+				{country.image && (
+					<Image
+						src={big ? bigImage(country.image) : country.image}
+						alt={country.name}
+						fill
+						sizes={big ? '(min-width: 640px) 66vw, 100vw' : '(min-width: 1024px) 25vw, 50vw'}
+						className="object-cover transition duration-700 group-hover:scale-105"
+					/>
+				)}
+				<div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/0 to-black/0" />
+				<div className="absolute inset-x-0 bottom-0 p-5 text-white sm:p-6">
+					<p className="text-2xl leading-none">{flag(country.code)}</p>
+					<p className={`mt-2 flex items-center justify-between gap-2 font-bold tracking-tight ${big ? 'text-3xl sm:text-5xl' : 'text-xl'}`}>
+						<span className="truncate">{country.name}</span>
+						<ArrowUpRight className="h-5 w-5 shrink-0 opacity-0 transition group-hover:opacity-100" />
+					</p>
 				</div>
 			</div>
-		)
-	}
+		</Link>
+	)
+}
 
-	if (error) {
-		return (
-			<div className="container mx-auto py-16 text-center">
-				<div className="rounded-lg bg-red-50 p-6 text-red-700 dark:bg-red-900/20 dark:text-red-400">
-					<h2 className="mb-2 text-xl font-semibold">Error</h2>
-					<p>{error}</p>
-				</div>
-			</div>
-		)
+export default async function DestinationsPage({ params }: { params: { locale: string } }) {
+	const { locale } = params
+	setRequestLocale(locale)
+	const t = await getTranslations('Destination')
+	const countries = await getCountries(locale)
+
+	// Morocco first (where most TRAVSUS trips are), then by continent
+	const featured = countries.find((c) => c.code3 === 'MAR') ?? countries[0]
+	const groups = new Map<string, Country[]>()
+	for (const c of countries) {
+		if (c.id === featured?.id) continue
+		const key = c.continent ?? '—'
+		groups.set(key, [...(groups.get(key) ?? []), c])
 	}
 
 	return (
-		<div className="container mx-auto py-16">
-			<div className="mb-10 text-center">
-				<h1 className="mb-2 text-3xl font-bold md:text-4xl">
-					{t('destinations_page_Travelers_Choice_Awards')}
-				</h1>
-				<h2 className="text-xl text-neutral-500 dark:text-neutral-400">
-					{t('destinations_page_Best_Of_The_Best_Destinations')}
-				</h2>
-			</div>
+		<main className="mx-auto max-w-7xl px-5 pb-24 pt-10 text-neutral-950 sm:pt-16 dark:text-white">
+			<p className="text-sm font-semibold uppercase tracking-[0.2em] text-neutral-500">{t('destinations')}</p>
+			<h1 className="mt-3 max-w-3xl text-5xl font-bold tracking-tight sm:text-7xl">{t('index_title')}</h1>
+			<p className="mt-4 max-w-xl text-lg text-neutral-500">{t('index_text')}</p>
 
-			<CountryCardList data={countries} className="mb-16" cardSize="large" />
-		</div>
+			{featured && (
+				<div className="mt-10">
+					<CountryCard country={featured} locale={locale} big />
+				</div>
+			)}
+
+			{Array.from(groups).map(([continent, list]) => (
+				<section key={continent} className="mt-16">
+					<div className="flex items-baseline justify-between gap-4">
+						<h2 className="text-2xl font-bold tracking-tight sm:text-3xl">{continent}</h2>
+						<p className="text-sm text-neutral-500">{t('countries_count', { count: list.length })}</p>
+					</div>
+					<ul className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+						{list.map((c) => (
+							<li key={c.id}>
+								<CountryCard country={c} locale={locale} />
+							</li>
+						))}
+					</ul>
+				</section>
+			))}
+		</main>
 	)
 }
