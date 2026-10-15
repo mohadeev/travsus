@@ -1,4 +1,4 @@
-import sendEmail from '@/utils/email/sendMail'
+import { sendTemplate } from '@/lib/email/send'
 import { db, T, must, touch } from '@/lib/db'
 import { Stripe } from 'stripe'
 
@@ -8,7 +8,7 @@ export async function refundConfirmationEmailHook(charge: Stripe.Charge) {
 		const booking: any = must(
 			await db
 				.from(T.bookings)
-				.select(`*, customer:${T.users}!customerId(username, email), tour:${T.tours}(name)`)
+				.select(`*, customer:${T.users}!customerId(username, email, accountData), tour:${T.tours}(name)`)
 				.eq('paymentIntentId', charge.payment_intent as string)
 				.limit(1)
 				.maybeSingle(),
@@ -21,25 +21,18 @@ export async function refundConfirmationEmailHook(charge: Stripe.Charge) {
 
 		const refund: any = charge?.refunds?.data[0] // Assuming we're dealing with the first refund
 
-		const emailData = {
-			name: booking.customer.username || booking.customer.email,
-			email: booking.customer.email,
-			transactionId: booking.id,
-			paymentDate: new Date(charge.created * 1000).toISOString().split('T')[0],
-			amount: `$${(refund.amount / 100).toFixed(2)}`,
-			paymentMethod: charge.payment_method_details?.card
-				? `${charge.payment_method_details.card.brand} ending in ${charge.payment_method_details.card.last4}`
-				: 'Unknown payment method',
-			description: `Refund for ${booking.tour.name || 'Tour'} (Booking Ref: ${booking.id})`,
-			receiptLink: `${process.env.NEXT_PUBLIC_SITE_URL}/bookings/${booking.id}`,
-		}
-
-		await sendEmail({
-			to: emailData.email,
-			subject: 'Refund Confirmation',
-			message: '', // The actual message will be handled by the email template
-			type: 'refundConfirmation',
-			emailData: emailData,
+		// Amounts in euros (Stripe gives cents)
+		const card = charge.payment_method_details?.card
+		await sendTemplate('refund-confirmed', {
+			to: booking.customer.email,
+			data: {
+				name: booking.customer.accountData?.firstname || booking.customer.username || 'there',
+				reference: booking.bookingReference || booking.orderNumber || booking.id,
+				tourName: booking.tour?.name || 'your tour',
+				amount: (refund?.amount ?? charge.amount_refunded ?? 0) / 100,
+				method: card?.brand ? `${card.brand.charAt(0).toUpperCase() + card.brand.slice(1)} ending in ${card.last4}` : 'your original payment method',
+				date: new Date((refund?.created ?? charge.created) * 1000).toISOString(),
+			},
 		})
 
 		// Update booking state

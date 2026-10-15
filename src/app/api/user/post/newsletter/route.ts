@@ -1,10 +1,12 @@
 // Newsletter sign-up (the pop-up and the footer). Saves the email with the
-// chosen topics and sends the welcome email. Answers with a code the forms
+// chosen topics, adds it to MailRelay (where newsletters are sent from) and
+// sends the welcome email. Answers with a code the forms
 // turn into a message in the visitor's language.
 import { NextResponse, type NextRequest } from 'next/server'
 import { db, T, must, withMeta } from '@/lib/db'
 import { rateLimit } from '@/lib/rateLimit'
-import sendEmail from '@/utils/email/sendMail'
+import { sendTemplate } from '@/lib/email/send'
+import { addToMailRelay } from '@/lib/email/mailrelay'
 
 export const dynamic = 'force-dynamic'
 
@@ -31,7 +33,7 @@ export async function POST(req: NextRequest) {
 
 		// Team addresses: only send the welcome email (to check it), nothing is saved
 		if (isTestEmail(email)) {
-			await sendEmail({ to: email, subject: 'Test Newsletter Welcome', message: '', type: 'newsletterWelcomeTemplate', emailData: {} })
+			await sendTemplate('newsletter-welcome', { to: email, data: {}, subjectPrefix: '[Test] ' })
 			return NextResponse.json({ code: 'TEST_EMAIL_SENT' })
 		}
 
@@ -42,7 +44,8 @@ export async function POST(req: NextRequest) {
 		if (existing) return NextResponse.json({ code: 'ALREADY_SUBSCRIBED' })
 
 		must(await db.from(T.newsletter).insert(withMeta({ email, types, subscribed: true, tokens: [] })))
-		await sendEmail({ to: email, subject: 'Welcome to Our Newsletter', message: '', type: 'newsletterWelcomeTemplate', emailData: {} })
+		// The newsletters themselves are sent from MailRelay
+		await Promise.all([sendTemplate('newsletter-welcome', { to: email, data: {} }), addToMailRelay(email)])
 
 		return NextResponse.json({ code: 'SUBSCRIPTION_SUCCESS' }, { status: 201 })
 	} catch (error) {

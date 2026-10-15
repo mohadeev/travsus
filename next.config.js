@@ -17,7 +17,7 @@ const nextConfig = {
 			bodySizeLimit: '10mb',
 		},
 		// Load handlebars from node_modules instead of bundling it (avoids require.extensions warning)
-		serverComponentsExternalPackages: ['handlebars'],
+		serverComponentsExternalPackages: ['@react-pdf/renderer'],
 	},
 	// reactStrictMode: true,
 	// experimental: {

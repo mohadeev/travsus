@@ -1,13 +1,9 @@
 'use server'
-// Contact form → email to the team (via Brevo). "Reply" in the inbox answers
-// the visitor directly.
+// Contact form → email to the team (template "contact-team"). "Reply" in the
+// inbox answers the visitor directly.
 import { headers } from 'next/headers'
-import { TransactionalEmailsApi, TransactionalEmailsApiApiKeys, type SendSmtpEmail } from '@getbrevo/brevo'
-
-const transactionalEmailsApi = new TransactionalEmailsApi()
-transactionalEmailsApi.setApiKey(TransactionalEmailsApiApiKeys.apiKey, process.env.BREVO_API_KEY as string)
-
-const TEAM_INBOX = { email: 'skendoulmohamed@gmail.com', name: 'TRAVSUS' }
+import { OWNER_EMAIL } from '@/lib/admin/owner'
+import { sendTemplate } from '@/lib/email/send'
 
 // At most 5 messages per visitor every 10 minutes
 const recent = new Map<string, number[]>()
@@ -18,7 +14,6 @@ const tooMany = (key: string) => {
 	return times.length >= 5
 }
 
-const escape = (text: string) => text.replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`)
 const field = (form: FormData, name: string, max: number) => String(form.get(name) ?? '').trim().slice(0, max)
 
 export async function sendEmail(formData: FormData) {
@@ -35,20 +30,6 @@ export async function sendEmail(formData: FormData) {
 	const ip = headers().get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown'
 	if (tooMany(ip)) return { success: false, error: 'TOO_MANY' }
 
-	const msg: SendSmtpEmail = {
-		sender: { email: 'form@travsus.com', name: 'TRAVSUS contact form' }, // verified sender in Brevo
-		to: [TEAM_INBOX],
-		replyTo: { email, name },
-		subject: `Contact form: ${name.replace(/[\r\n]+/g, ' ')}`,
-		htmlContent: `<p><strong>Name:</strong> ${escape(name)}</p><p><strong>Email:</strong> ${escape(email)}</p><p><strong>Message:</strong></p><p style="white-space:pre-line">${escape(message)}</p>`,
-		textContent: `Name: ${name}\nEmail: ${email}\n\n${message}`,
-	}
-
-	try {
-		await transactionalEmailsApi.sendTransacEmail(msg)
-		return { success: true }
-	} catch (error: any) {
-		console.error('Contact form email failed:', error.response?.body || error.message || error)
-		return { success: false, error: 'SEND_FAILED' }
-	}
+	const sent = await sendTemplate('contact-team', { to: { email: OWNER_EMAIL, name: 'TRAVSUS' }, data: { name, email, message } })
+	return sent.ok ? { success: true } : { success: false, error: 'SEND_FAILED' }
 }

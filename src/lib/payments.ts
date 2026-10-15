@@ -2,10 +2,9 @@
 // calculated here from the database, never taken from the browser.
 import type Stripe from 'stripe'
 import stripe from '@/lib/stripe'
-import { db, T, REL, must, touch } from '@/lib/db'
-import { safeBooking } from '@/lib/users'
+import { db, T, must, touch } from '@/lib/db'
 import { updateLineItemsLogic } from '@/app/api/updateLineItems/updateLineItemsLogic'
-import { bookingConfirmationEmail } from '@/utils/bookingConfirmationEmail'
+import { sendBookingConfirmed } from '@/lib/email/booking'
 
 export const CURRENCY = 'eur'
 export const PROMO_PREFIX = 'Promo Code Applied'
@@ -139,14 +138,8 @@ export async function markBookingPaid(paymentIntent: Stripe.PaymentIntent) {
 		console.error('Promo code use count failed:', error)
 	}
 
-	try {
-		const booking: any = must(
-			await db.from(T.bookings).select(REL.bookingFull).eq('id', bookingId).maybeSingle(),
-		)
-		if (booking) await bookingConfirmationEmail(safeBooking(booking))
-	} catch (error) {
-		console.error('Booking confirmation email failed:', error)
-	}
+	// Confirmation with the PDF to the customer, and a notice to the team
+	await sendBookingConfirmed(bookingId)
 	return 'paid'
 }
 

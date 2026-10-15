@@ -2,7 +2,7 @@
 // Clerk handles sign-in; our data (bookings, tours, reviews) is linked by email.
 import { currentUser as clerkUser } from '@clerk/nextjs/server'
 import { db, T, must, withMeta } from '@/lib/db'
-import sendEmail from '@/utils/email/sendMail'
+import { sendTemplate } from '@/lib/email/send'
 
 export type Session = {
 	user: { email: string; name: string | null; image: string | null }
@@ -54,8 +54,7 @@ export async function getSessionUser(): Promise<any | null> {
 		return must(await db.from(T.users).select('*').eq('email', email).maybeSingle())
 	}
 
-	sendEmail({ to: email, type: 'welcome', emailData: { email } }).catch(
-		(error: unknown) => console.error('Welcome email failed:', error),
-	)
+	// Not awaited: signing in never waits for the email
+	void sendTemplate('welcome', { to: email, data: { name: user.firstName ?? undefined } })
 	return created.data
 }

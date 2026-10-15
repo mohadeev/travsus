@@ -6,25 +6,14 @@ import { NextResponse, type NextRequest } from 'next/server'
 import { db, T, must } from '@/lib/db'
 import { isOwner } from '@/lib/admin/owner'
 import { CODE, newCode } from '@/lib/affiliates'
-import sendEmail from '@/utils/email/sendMail'
+import { sendTemplate } from '@/lib/email/send'
+import { SITE } from '@/lib/email/layout'
 import { TIERS } from '@/app/[locale]/affiliates/tiers'
 
 export const dynamic = 'force-dynamic'
 
 const STATUSES = ['pending', 'approved', 'declined'] as const
 type Status = (typeof STATUSES)[number]
-
-const SITE = 'https://www.travsus.com'
-const MESSAGES: Partial<Record<Status, (rate: string, code: string) => { subject: string; html: string }>> = {
-	approved: (rate, code) => ({
-		subject: 'Welcome to the TRAVSUS affiliate program',
-		html: `<p>Hello,</p><p>Good news: your request to join the TRAVSUS affiliate program has been accepted.</p><p><b>Your commission:</b> ${rate}<br><b>Your link:</b> <a href="${SITE}/en-US?ref=${code}">${SITE}/en-US?ref=${code}</a></p><p>Sign in to TRAVSUS with this email: on every tour page you'll see your personal link to share, and your clicks, bookings and earnings are in your account under <a href="${SITE}/en-US/account-affiliate">Affiliate</a>.</p><p>The TRAVSUS team</p>`,
-	}),
-	declined: () => ({
-		subject: 'Your TRAVSUS affiliate request',
-		html: `<p>Hello,</p><p>Thank you for your interest in the TRAVSUS affiliate program. We're not able to accept your request at the moment.</p><p>The TRAVSUS team</p>`,
-	}),
-}
 
 export async function PATCH(req: NextRequest) {
 	if (!(await isOwner())) return NextResponse.json({ error: 'Not found' }, { status: 404 })
@@ -62,13 +51,14 @@ export async function PATCH(req: NextRequest) {
 
 		const row = must(await db.from(T.affiliates).update(changes).eq('id', id).select('*').maybeSingle()) as any
 
+		// Tell them about the decision (templates in src/lib/email/templates.ts)
 		let emailed = false
-		const message = body.notify && 'status' in changes ? MESSAGES[row.status as Status] : undefined
-		if (message) {
+		if (body.notify && changes.status === 'approved') {
 			const tiers = `${TIERS[0].rate}% to ${TIERS[TIERS.length - 1].rate}%, growing with your bookings`
-			const { subject, html } = message(row.rate === null ? tiers : `${Number(row.rate)}% on every booking`, row.code ?? '')
-			// sendEmail returns nothing when it fails
-			emailed = !!(await sendEmail({ to: row.email, subject, message: html }).catch(() => null))
+			const rate = row.rate === null ? tiers : `${Number(row.rate)}% on every booking`
+			emailed = (await sendTemplate('affiliate-approved', { to: row.email, data: { rate, link: `${SITE}/en-US?ref=${row.code}` } })).ok
+		} else if (body.notify && changes.status === 'declined') {
+			emailed = (await sendTemplate('affiliate-declined', { to: row.email, data: {} })).ok
 		}
 		return NextResponse.json({ affiliate: row, emailed })
 	} catch (error) {

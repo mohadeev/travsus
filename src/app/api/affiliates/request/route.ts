@@ -4,7 +4,8 @@
 import { NextResponse, type NextRequest } from 'next/server'
 import { db, T, must, withMeta } from '@/lib/db'
 import { rateLimit } from '@/lib/rateLimit'
-import sendEmail from '@/utils/email/sendMail'
+import { sendTemplate } from '@/lib/email/send'
+import { OWNER_EMAIL } from '@/lib/admin/owner'
 
 export const dynamic = 'force-dynamic'
 
@@ -14,8 +15,6 @@ const limiter = rateLimit(5, 60_000) // 5 requests a minute per visitor
 const isEmail = (value: unknown): value is string =>
 	typeof value === 'string' && value.length <= 120 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
 
-const escape = (text: string) =>
-	text.replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`)
 
 export async function POST(req: NextRequest) {
 	const limited = limiter(req, NextResponse.next(), () => {})
@@ -52,12 +51,10 @@ export async function POST(req: NextRequest) {
 			)
 		}
 
-		// To the team inbox (sendEmail's default recipient); never fails the request
-		await sendEmail({
-			subject: `Affiliate access request: ${email}`,
-			message: `<p>New affiliate program request.</p><p><b>Email:</b> ${escape(email)}${
-				website ? `<br><b>Website / channel:</b> ${escape(website)}` : ''
-			}<br><b>Language:</b> ${escape(String(body.locale ?? '').slice(0, 10))}</p><p><a href="https://www.travsus.com/en-US/admin/affiliates">Accept or decline it in the admin</a></p>`,
+		// To the team inbox; never fails the request
+		await sendTemplate('affiliate-request-team', {
+			to: OWNER_EMAIL,
+			data: { email, website: website || undefined, locale: String(body.locale ?? '').slice(0, 10) || undefined },
 		})
 
 		return NextResponse.json({ code: 'REQUESTED' }, { status: 201 })
