@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
 
 function CountryCard({ country, locale, big = false }: { country: Country; locale: string; big?: boolean }) {
 	return (
-		<Link href={countryHref(locale, country.code3) as any} className="group block">
+		<Link href={countryHref(locale, country) as any} className="group block">
 			<div className={`relative overflow-hidden rounded-[28px] bg-neutral-100 dark:bg-neutral-900 ${big ? 'aspect-[4/5] sm:aspect-[16/10]' : 'aspect-[4/5]'}`}>
 				{country.image && (
 					<Image

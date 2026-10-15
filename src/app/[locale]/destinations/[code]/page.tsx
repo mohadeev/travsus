@@ -1,9 +1,10 @@
 // A country: photo, key numbers, description, its cities, top places,
-// TRAVSUS tours there, and the map. /destinations/mar (old ?lcId= links work).
+// TRAVSUS tours there, and the map. Address: /destinations/morocco (the old
+// /destinations/mar and ?lcId= links redirect there).
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import { notFound } from 'next/navigation'
+import { notFound, permanentRedirect } from 'next/navigation'
 import { Building2, ChevronRight, Globe2, Map as MapIcon, Route } from 'lucide-react'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import TourCard from '../../(home)/TourCard'
@@ -22,7 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	return {
 		title,
 		description: country.description.slice(0, 160),
-		alternates: { canonical: countryHref(params.locale, country.code3) },
+		alternates: { canonical: countryHref(params.locale, country) },
 		openGraph: { title, description: country.description.slice(0, 200), images: country.image ? [bigImage(country.image)] : [] },
 	}
 }
@@ -32,6 +33,7 @@ export default async function CountryPage({ params }: Props) {
 	setRequestLocale(locale)
 	const country = await getCountry(params.code, locale)
 	if (!country) notFound()
+	if (params.code !== country.slug) permanentRedirect(countryHref(locale, country))
 
 	const t = await getTranslations('Destination')
 	const [cities, places, tours, placesCount] = await Promise.all([

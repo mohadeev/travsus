@@ -1,10 +1,11 @@
 // A city: photo, live weather and local time, description, travel guide,
 // TRAVSUS tours that go there, things to do, map, and more of the country.
-// Works with /destinations/mar/tangier and the older ?lcId=<city id> links.
+// Address: /destinations/morocco/tangier. Older ones (/mar/tangier,
+// ?lcId=<city id>) redirect there for good.
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import { notFound } from 'next/navigation'
+import { notFound, permanentRedirect } from 'next/navigation'
 import { ChevronRight, Clock3, Compass, Lightbulb, MapPin, Plane, Sun, Wind } from 'lucide-react'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import TourCard from '../../../(home)/TourCard'
@@ -40,6 +41,7 @@ export default async function CityPage({ params, searchParams }: Props) {
 	setRequestLocale(locale)
 	const city = await getCity(params.code, params.city, locale, searchParams.lcId)
 	if (!city) notFound()
+	if (searchParams.lcId || decodeURIComponent(`/${locale}/destinations/${params.code}/${params.city}`) !== city.href) permanentRedirect(city.href)
 
 	const t = await getTranslations('Destination')
 	const [weather, places, tours, others] = await Promise.all([
@@ -60,7 +62,7 @@ export default async function CityPage({ params, searchParams }: Props) {
 			note: `${t(weatherKey(weather.now.code))} · ${t('wind', { speed: weather.now.wind })}`,
 		},
 		weather?.timezone && { icon: Clock3, label: t('local_time'), value: <LocalTime timezone={weather.timezone} locale={locale} />, note: weather.timezone.replace(/_/g, ' ') },
-		{ icon: MapPin, label: t('country'), value: `${flag(city.country.code)} ${city.country.name}`, note: city.region ?? city.country.continent ?? undefined, href: countryHref(locale, city.country.code3) },
+		{ icon: MapPin, label: t('country'), value: `${flag(city.country.code)} ${city.country.name}`, note: city.region ?? city.country.continent ?? undefined, href: countryHref(locale, city.country) },
 		city.point && { icon: Compass, label: t('on_the_map'), value: `${city.point.lat.toFixed(2)}°, ${city.point.lng.toFixed(2)}°`, note: city.country.continent ?? undefined, href: '#map' },
 	].filter(Boolean) as { icon: typeof Sun; label: string; value: React.ReactNode; note?: string; href?: string }[]
 
@@ -86,7 +88,7 @@ export default async function CityPage({ params, searchParams }: Props) {
 					</li>
 					<ChevronRight className="h-3.5 w-3.5" />
 					<li>
-						<Link href={countryHref(locale, city.country.code3) as any} className="hover:text-neutral-950 dark:hover:text-white">{city.country.name}</Link>
+						<Link href={countryHref(locale, city.country) as any} className="hover:text-neutral-950 dark:hover:text-white">{city.country.name}</Link>
 					</li>
 					<ChevronRight className="h-3.5 w-3.5" />
 					<li className="font-medium text-neutral-950 dark:text-white" aria-current="page">{city.name}</li>
@@ -235,7 +237,7 @@ export default async function CityPage({ params, searchParams }: Props) {
 				<Section
 					title={t('more_in', { country: city.country.name })}
 					action={
-						<Link href={countryHref(locale, city.country.code3) as any} className="text-sm font-semibold underline underline-offset-4">
+						<Link href={countryHref(locale, city.country) as any} className="text-sm font-semibold underline underline-offset-4">
 							{t('explore')} {city.country.name}
 						</Link>
 					}

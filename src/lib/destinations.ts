@@ -26,13 +26,15 @@ export const slugify = (name: string) =>
 		.replace(/[^a-z0-9]+/g, '-')
 		.replace(/^-|-$/g, '')
 
-export const cityHref = (locale: string, code3: string, englishName: string) => `/${locale}/destinations/${code3.toLowerCase()}/${slugify(englishName)}`
-export const countryHref = (locale: string, code3: string) => `/${locale}/destinations/${code3.toLowerCase()}`
+// Addresses use the English names, the same in every language:
+// /en-US/destinations/morocco/marrakech (old 3-letter codes like /mar redirect here)
+export const countryHref = (locale: string, country: { slug: string }) => `/${locale}/destinations/${country.slug}`
+export const cityHref = (locale: string, country: { slug: string }, englishName: string) => `${countryHref(locale, country)}/${slugify(englishName)}`
 /** 🇲🇦 from "MA" */
 export const flag = (code2?: string | null) =>
 	code2 && /^[A-Z]{2}$/i.test(code2) ? String.fromCodePoint(...Array.from(code2.toUpperCase()).map((c) => 0x1f1e6 + c.charCodeAt(0) - 65)) : '🌍'
 
-export type Country = { id: string; code: string; code3: string; name: string; englishName: string; description: string; image: string | null; point: { lat: number; lng: number } | null; continent: string | null }
+export type Country = { id: string; code: string; code3: string; slug: string; name: string; englishName: string; description: string; image: string | null; point: { lat: number; lng: number } | null; continent: string | null }
 export type City = { id: string; name: string; englishName: string; description: string; image: string | null; point: { lat: number; lng: number } | null; population: number | null; region: string | null; country: Country; href: string }
 export type Place = { id: string; name: string; description: string; image: string | null; point: { lat: number; lng: number } | null; rating: number | null; category: string; address: string | null; website: string | null }
 
@@ -44,6 +46,7 @@ function toCountry(row: any, locale: string): Country {
 		id: row.id,
 		code: row.code,
 		code3: row.code3,
+		slug: slugify(t.englishName) || row.code3.toLowerCase(),
 		name: t.name,
 		englishName: t.englishName,
 		description: t.description,
@@ -53,8 +56,26 @@ function toCountry(row: any, locale: string): Country {
 	}
 }
 
-export const getCountry = cache(async (code3: string, locale: string): Promise<Country | null> => {
-	const { data } = await db.from(T.countries).select(COUNTRY_SELECT).eq('code3', code3.toUpperCase()).maybeSingle()
+/** English name slug → 3-letter code, for all countries (kept for a day) */
+let slugs: { at: number; map: Promise<Map<string, string>> } | null = null
+function countrySlugs() {
+	if (!slugs || Date.now() - slugs.at > 86400_000) {
+		const map = (async () => {
+			const { data } = await db.from(T.countries).select('code3, translations')
+			return new Map(((data ?? []) as any[]).map((r) => [slugify(pick(r.translations, 'en-US').englishName), r.code3 as string]))
+		})()
+		slugs = { at: Date.now(), map }
+		map.catch(() => (slugs = null))
+	}
+	return slugs.map
+}
+
+/** A country by its name in the address ("morocco") or its old 3-letter code ("mar") */
+export const getCountry = cache(async (slugOrCode: string, locale: string): Promise<Country | null> => {
+	const key = slugOrCode.toLowerCase()
+	const code3 = /^[a-z]{3}$/.test(key) ? key.toUpperCase() : (await countrySlugs()).get(key)
+	if (!code3) return null
+	const { data } = await db.from(T.countries).select(COUNTRY_SELECT).eq('code3', code3).maybeSingle()
 	return data ? toCountry(data, locale) : null
 })
 
@@ -78,13 +99,13 @@ function toCity(row: any, country: Country, locale: string): City {
 		population: row.population ?? null,
 		region: row.state ? pick(row.state.translations, locale).name || null : null,
 		country,
-		href: cityHref(locale, country.code3, t.englishName),
+		href: cityHref(locale, country, t.englishName),
 	}
 }
 
 /** A city by its id (old links) or by country + name slug (/destinations/mar/tangier) */
-export const getCity = cache(async (code3: string, slug: string, locale: string, id?: string | null): Promise<City | null> => {
-	const country = await getCountry(code3, locale)
+export const getCity = cache(async (countrySlug: string, slug: string, locale: string, id?: string | null): Promise<City | null> => {
+	const country = await getCountry(countrySlug, locale)
 	if (!country) return null
 	if (id && /^[0-9a-f]{24}$/.test(id)) {
 		const { data } = await db.from(T.cities).select(CITY_SELECT).eq('id', id).eq('countryId', country.id).maybeSingle()
