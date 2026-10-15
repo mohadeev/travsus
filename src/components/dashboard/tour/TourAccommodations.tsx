@@ -296,7 +296,7 @@ export default function TourAccommodations({
 
 	return (
 		<div className="space-y-6">
-			<div className="flex items-center justify-between">
+			<div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
 				<div>
 					<h2 className="flex items-center text-xl font-bold">
 						Accommodations <span className="ml-1 text-red-500">*</span>
@@ -305,7 +305,7 @@ export default function TourAccommodations({
 						Add accommodation options and pricing for your tour.
 					</p>
 				</div>
-				<Button onClick={addAccommodation}>
+				<Button onClick={addAccommodation} className="w-full sm:w-auto">
 					<PlusCircle className="mr-2 h-4 w-4" />
 					Add Accommodation
 				</Button>
@@ -342,7 +342,7 @@ export default function TourAccommodations({
 						<Card key={accIndex} className="overflow-hidden">
 							<CardContent className="p-0">
 								{/* Accommodation Header */}
-								<div className="flex items-center justify-between border-b border-slate-100 bg-slate-50 p-4">
+								<div className="flex flex-col gap-2 border-b border-slate-100 bg-slate-50 p-4 sm:flex-row sm:items-center sm:justify-between">
 									<div className="flex items-center">
 										<Building className="mr-3 h-6 w-6 text-slate-700" />
 										<div>
@@ -380,7 +380,7 @@ export default function TourAccommodations({
 										</button>
 									</div>
 
-									<div className="mb-5 grid grid-cols-2 gap-5">
+									<div className="mb-5 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
 										<div>
 											<Label
 												htmlFor={`acc-name-${accIndex}`}
@@ -429,7 +429,7 @@ export default function TourAccommodations({
 												</h5>
 											</div>
 
-											<div className="mb-5 grid grid-cols-3 gap-5">
+											<div className="mb-5 grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-5">
 												<div>
 													<Label
 														htmlFor={`tier-name-${accIndex}-${tierIndex}`}
@@ -562,7 +562,7 @@ export default function TourAccommodations({
 															editingBedOption.accIndex === accIndex &&
 															editingBedOption.tierIndex === tierIndex &&
 															editingBedOption.optionIndex === optionIndex ? (
-																<div className="mt-2 grid grid-cols-3 gap-2">
+																<div className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-3">
 																	<div>
 																		<Label
 																			htmlFor={`bed-type-${accIndex}-${tierIndex}-${optionIndex}`}

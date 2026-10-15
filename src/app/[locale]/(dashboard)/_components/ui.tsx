@@ -24,7 +24,7 @@ export function Stat({ label, value, hint, icon: Icon }: { label: string; value:
 
 export function Panel({ title, action, children, className = '' }: { title: string; action?: ReactNode; children: ReactNode; className?: string }) {
 	return (
-		<section className={`rounded-[28px] p-5 ring-1 ring-neutral-200 sm:p-6 dark:ring-neutral-800 ${className}`}>
+		<section className={`min-w-0 rounded-[28px] p-5 ring-1 ring-neutral-200 sm:p-6 dark:ring-neutral-800 ${className}`}>
 			<div className="flex items-center justify-between gap-3">
 				<h2 className="text-lg font-bold tracking-tight">{title}</h2>
 				{action}

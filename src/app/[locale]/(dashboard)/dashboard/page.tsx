@@ -43,7 +43,7 @@ export default async function DashboardPage({ params }: { params: { locale: stri
 				{o.paidCount ? <RevenueChart data={o.months} /> : <p className="py-10 text-center text-neutral-500">No paid bookings yet. Revenue will show here.</p>}
 			</Panel>
 
-			<div className="grid gap-6 xl:grid-cols-2">
+			<div className="grid grid-cols-1 gap-6 xl:grid-cols-2">
 				<Panel title="Upcoming trips" action={<Link href={link('/dashboard/bookings?status=upcoming')} className="text-sm font-semibold underline underline-offset-4">All</Link>}>
 					{o.upcoming.length ? (
 						<ul className="divide-y divide-neutral-100 dark:divide-neutral-800">

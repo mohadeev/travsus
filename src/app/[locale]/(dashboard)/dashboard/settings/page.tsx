@@ -34,7 +34,7 @@ export default async function CompanyPage({ params }: { params: { locale: string
 			{companies.length === 0 ? (
 				<Empty icon={Building2} title="No company yet" text="Create your company to add tours and receive bookings." action={create} />
 			) : (
-				<ul className="grid gap-4 md:grid-cols-2">
+				<ul className="grid grid-cols-1 gap-4 md:grid-cols-2">
 					{companies.map((c) => (
 						<li key={c.id} className="rounded-[28px] p-6 ring-1 ring-neutral-200 dark:ring-neutral-800">
 							<div className="flex items-start justify-between gap-3">

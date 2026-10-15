@@ -30,7 +30,7 @@ export default async function ToursPage({ params }: { params: { locale: string }
 			{tours.length === 0 ? (
 				<Empty icon={Map} title="No tours yet" text="Create your first tour: photos, day-by-day itinerary and prices." action={create} />
 			) : (
-				<ul className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+				<ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
 					{tours.map((t) => (
 						<li key={t.id} className="flex flex-col overflow-hidden rounded-[24px] ring-1 ring-neutral-200 dark:ring-neutral-800">
 							<div className="relative aspect-[16/10] bg-neutral-100 dark:bg-neutral-900">

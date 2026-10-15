@@ -21,7 +21,7 @@ export default function CreateCompanyPage({ params }: { params: { locale: string
 			<h1 className="mt-4 text-3xl font-bold tracking-tight sm:text-5xl">Create your company</h1>
 			<p className="mt-2 max-w-xl text-lg text-neutral-500">It takes a minute. You can change everything later.</p>
 
-			<ul className="mt-8 grid gap-3 sm:grid-cols-3">
+			<ul className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-3">
 				{PERKS.map(([Icon, title, text]) => (
 					<li key={title} className="flex items-start gap-3 rounded-2xl p-4 ring-1 ring-neutral-200 dark:ring-neutral-800">
 						<Icon className="mt-0.5 h-5 w-5 shrink-0" />

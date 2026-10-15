@@ -45,7 +45,7 @@ export default function CreateTourPage() {
 			<h1 className="mt-4 text-3xl font-bold tracking-tight sm:text-5xl">New tour</h1>
 			<p className="mt-2 max-w-xl text-lg text-neutral-500">We&apos;ll create a draft and open the builder. Fill it in at your pace: it&apos;s saved as you go.</p>
 
-			<ol className="mt-10 grid gap-3 sm:grid-cols-2">
+			<ol className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2">
 				{STEPS.map(([Icon, title, text], i) => (
 					<li key={title} className="flex items-start gap-4 rounded-3xl bg-neutral-100 p-5 dark:bg-neutral-900">
 						<span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-white dark:bg-neutral-950">

@@ -75,7 +75,7 @@ export function CompanyForm({ company }: { company?: Record<string, any> }) {
 			{/* Kind of business */}
 			<section>
 				<h2 className="text-lg font-bold tracking-tight">What kind of business is it?</h2>
-				<div className="mt-4 grid gap-3 sm:grid-cols-2" role="radiogroup" aria-label="Company type">
+				<div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2" role="radiogroup" aria-label="Company type">
 					{TYPES.map(([value, Icon, title, text]) => {
 						const selected = type === value
 						return (
@@ -111,7 +111,7 @@ export function CompanyForm({ company }: { company?: Record<string, any> }) {
 				<Field label="Company name" icon={Building2}>
 					<input name="name" defaultValue={company?.name ?? ''} required minLength={2} maxLength={120} autoComplete="organization" placeholder="e.g. Sahara Trails" className={input} />
 				</Field>
-				<div className="grid gap-5 sm:grid-cols-2">
+				<div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
 					<Field label="Country" icon={Globe}>
 						<input name="country" defaultValue={company?.country ?? ''} list="company-countries" maxLength={80} autoComplete="country-name" placeholder="Start typing…" className={input} />
 						<datalist id="company-countries">
@@ -135,7 +135,7 @@ export function CompanyForm({ company }: { company?: Record<string, any> }) {
 				<Field label="Contact person" icon={User}>
 					<input name="adminName" defaultValue={company?.adminName ?? ''} maxLength={120} autoComplete="name" placeholder="Who we talk to" className={input} />
 				</Field>
-				<div className="grid gap-5 sm:grid-cols-2">
+				<div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
 					<Field label="Business email" icon={Mail} hint="For booking notifications.">
 						<input name="email" defaultValue={company?.email ?? ''} type="email" required maxLength={160} autoComplete="email" placeholder="bookings@company.com" className={input} />
 					</Field>
