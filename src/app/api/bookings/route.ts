@@ -6,6 +6,8 @@ import { db, T, must, withMeta } from '@/lib/db'
 import { priceBooking } from '@/lib/payments'
 import { validTripDates } from '@/lib/tripDates'
 import { creditBooking, REF_COOKIE } from '@/lib/affiliates'
+import stripe from '@/lib/stripe'
+import { OPEN_STATES } from '@/lib/payments'
 
 /**
  * Creates a booking for a tour (the "Reserve" button).
@@ -40,9 +42,46 @@ export async function POST(request: NextRequest) {
 		}
 
 		const priced = await priceBooking(tour, { guests, accommodation, bookOwnHotels })
+		const now = new Date().toISOString()
+		const details = {
+			duration: tour.days?.length || 1,
+			selectedDate: dates,
+			lineItems: priced.lineItems,
+			accommodation: priced.accommodation,
+			guests: priced.guests,
+			bookOwnHotels: !!bookOwnHotels,
+		}
+
+		// Already an unpaid booking for this tour (went back and changed the
+		// date or guests): update it instead of leaving a "not paid" one behind
+		const open: any = must(
+			await db
+				.from(T.bookings)
+				.select('id, paymentIntentId')
+				.match({ customerId: user.id, tourId })
+				.in('bookingState', OPEN_STATES)
+				.order('createdAt', { ascending: false })
+				.limit(1)
+				.maybeSingle(),
+		)
+		if (open && (await closeOpenCheckout(open.paymentIntentId))) {
+			const updated = must(
+				await db
+					.from(T.bookings)
+					.update({ ...details, paymentIntentId: null, updatedAt: now })
+					.eq('id', open.id)
+					.in('bookingState', OPEN_STATES)
+					.select('*')
+					.maybeSingle(),
+			)
+			if (updated) {
+				await creditBooking(updated.id, user.email, request.cookies.get(REF_COOKIE)?.value)
+				return NextResponse.json(updated, { status: 200 })
+			}
+		}
+
 		const numberRef = await createOrderNumber()
 		if (!numberRef) throw new Error('Could not generate order number')
-		const now = new Date().toISOString()
 
 		const booking = must(
 			await db
@@ -56,12 +95,7 @@ export async function POST(request: NextRequest) {
 							{ state: 'initiated', createdAt: now, by: 'customer', updatedAt: now },
 						],
 						bookingState: 'initiated',
-						duration: tour.days?.length || 1,
-						selectedDate: dates,
-						lineItems: priced.lineItems,
-						accommodation: priced.accommodation,
-						guests: priced.guests,
-						bookOwnHotels: !!bookOwnHotels,
+						...details,
 						...numberRef,
 					}),
 				)
@@ -79,5 +113,23 @@ export async function POST(request: NextRequest) {
 			{ error: 'Could not create the booking' },
 			{ status: 500 },
 		)
+	}
+}
+
+/**
+ * Before changing an unpaid booking: closes its Stripe payment page, so the
+ * old price can't be paid any more. False when that page was already paid
+ * (then a new booking is made instead).
+ */
+async function closeOpenCheckout(sessionId: unknown) {
+	if (typeof sessionId !== 'string' || !sessionId.startsWith('cs_')) return true
+	try {
+		const session = await stripe.checkout.sessions.retrieve(sessionId)
+		if (session.payment_status === 'paid') return false
+		if (session.status === 'open') await stripe.checkout.sessions.expire(sessionId)
+		return true
+	} catch {
+		// Unknown or already gone: nothing left to pay
+		return true
 	}
 }
