@@ -56,6 +56,8 @@ const RenderSidebar: FC = () => {
 	const people = adults + children || 2
 	const hotel = currentHotel(booking)
 	const hasLuxury = (tour.accommodations ?? []).some((a: any) => a?.name === 'Luxury')
+	// Day tours have no nights: no "where to sleep" step
+	const hasStays = (tour.accommodations ?? []).some((a: any) => a?.bedOptions?.length)
 
 	const [reserving, setReserving] = useState(false)
 	const [needsDate, setNeedsDate] = useState(false)
@@ -180,33 +182,35 @@ const RenderSidebar: FC = () => {
 			</Step>
 
 			{/* 3. Where to sleep */}
-			<Step number={3} title={t('step_hotel')}>
-				<div className="space-y-2" role="radiogroup" aria-label={t('step_hotel')}>
-					<Choice
-						selected={hotel === 'Standard'}
-						onSelect={() => update({ hotel: 'Standard' })}
-						icon={<Hotel className="h-6 w-6" />}
-						title={t('hotel_standard')}
-						hint={t('hotel_standard_hint')}
-					/>
-					{hasLuxury && (
+			{hasStays && (
+				<Step number={3} title={t('step_hotel')}>
+					<div className="space-y-2" role="radiogroup" aria-label={t('step_hotel')}>
 						<Choice
-							selected={hotel === 'Luxury'}
-							onSelect={() => update({ hotel: 'Luxury' })}
-							icon={<Crown className="h-6 w-6" />}
-							title={t('hotel_luxury')}
-							hint={t('hotel_luxury_hint')}
+							selected={hotel === 'Standard'}
+							onSelect={() => update({ hotel: 'Standard' })}
+							icon={<Hotel className="h-6 w-6" />}
+							title={t('hotel_standard')}
+							hint={t('hotel_standard_hint')}
 						/>
-					)}
-					<Choice
-						selected={hotel === 'own'}
-						onSelect={() => update({ hotel: 'own' })}
-						icon={<BedDouble className="h-6 w-6" />}
-						title={t('hotel_own')}
-						hint={t('hotel_own_hint')}
-					/>
-				</div>
-			</Step>
+						{hasLuxury && (
+							<Choice
+								selected={hotel === 'Luxury'}
+								onSelect={() => update({ hotel: 'Luxury' })}
+								icon={<Crown className="h-6 w-6" />}
+								title={t('hotel_luxury')}
+								hint={t('hotel_luxury_hint')}
+							/>
+						)}
+						<Choice
+							selected={hotel === 'own'}
+							onSelect={() => update({ hotel: 'own' })}
+							icon={<BedDouble className="h-6 w-6" />}
+							title={t('hotel_own')}
+							hint={t('hotel_own_hint')}
+						/>
+					</div>
+				</Step>
+			)}
 
 			{/* Total + Reserve */}
 			<div className="rounded-2xl bg-sand-100 p-5 dark:bg-neutral-900">
