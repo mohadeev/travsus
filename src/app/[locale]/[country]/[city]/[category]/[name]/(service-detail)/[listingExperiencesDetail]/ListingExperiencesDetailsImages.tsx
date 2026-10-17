@@ -1,5 +1,7 @@
 'use client'
 // Photo grid (one large + four small) and a full-screen gallery with every photo.
+// Photos from Wikimedia Commons carry a credit (author, license, source): it is
+// shown under the grid and under each photo in the gallery, as their licenses ask.
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { Grid2x2, X } from 'lucide-react'
@@ -9,7 +11,11 @@ import { useTourService } from '../TourServiceContext'
 export default function ListingExperiencesDetailsImages() {
 	const t = useTranslations('ListingExperiencesDetailsImages')
 	const { images, name }: any = useTourService()
-	const photos: string[] = (images ?? []).map((image: any) => image?.url).filter(Boolean)
+	type Credit = { author?: string; license?: string; source?: string }
+	const list: { url: string; credit?: Credit }[] = (images ?? []).filter((image: any) => image?.url)
+	const photos: string[] = list.map((image) => image.url)
+	const credits = list.map((image) => image.credit).filter((c): c is Credit => !!c?.license)
+	const creditText = (c: Credit) => [c.author, c.license].filter(Boolean).join(', ')
 	const [open, setOpen] = useState<number | null>(null)
 
 	// Gallery: Esc closes it, and the page behind doesn't scroll
@@ -71,6 +77,19 @@ export default function ListingExperiencesDetailsImages() {
 					</button>
 				)}
 			</div>
+			{credits.length > 0 && (
+				<p className="mt-2 text-[11px] leading-snug text-neutral-400">
+					Photos:{' '}
+					{credits.map((c, i) => (
+						<span key={i}>
+							{i > 0 && ' · '}
+							<a href={c.source} target="_blank" rel="noopener noreferrer nofollow" className="hover:underline">
+								{creditText(c)}
+							</a>
+						</span>
+					))}
+				</p>
+			)}
 
 			{open !== null && (
 				<div role="dialog" aria-modal="true" aria-label={name} className="fixed inset-0 z-50 overflow-y-auto bg-white dark:bg-neutral-950">
@@ -86,10 +105,19 @@ export default function ListingExperiencesDetailsImages() {
 						</button>
 					</div>
 					<div className="mx-auto max-w-4xl space-y-3 px-5 py-6">
-						{photos.map((photo, index) => (
-							<div key={photo} id={`photo-${index}`} className="relative aspect-[3/2] scroll-mt-20 overflow-hidden rounded-2xl bg-neutral-100">
-								<Image src={photo} alt={`${name} – ${index + 1}`} fill sizes="(max-width: 896px) 100vw, 896px" className="object-cover" />
-							</div>
+						{list.map((image, index) => (
+							<figure key={image.url} id={`photo-${index}`} className="scroll-mt-20">
+								<div className="relative aspect-[3/2] overflow-hidden rounded-2xl bg-neutral-100">
+									<Image src={image.url} alt={`${name} – ${index + 1}`} fill sizes="(max-width: 896px) 100vw, 896px" className="object-cover" />
+								</div>
+								{image.credit?.license && (
+									<figcaption className="mt-1 text-xs text-neutral-400">
+										<a href={image.credit.source} target="_blank" rel="noopener noreferrer nofollow" className="hover:underline">
+											{creditText(image.credit)}
+										</a>
+									</figcaption>
+								)}
+							</figure>
 						))}
 					</div>
 				</div>
