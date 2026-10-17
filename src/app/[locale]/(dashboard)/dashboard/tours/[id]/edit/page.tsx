@@ -4,11 +4,17 @@ import { notFound } from 'next/navigation'
 import { ArrowLeft } from 'lucide-react'
 import { DashboardShell } from '@/components/dashboard/shell'
 import { DashboardHeader } from '@/components/dashboard/header'
-import { TourBuilder } from '@/components/dashboard/tour/tour-builder'
+import EasyTourEditor from '@/components/dashboard/tour/easy/EasyTourEditor'
 import { db, T, must } from '@/lib/db'
 import { dashboardScope } from '@/lib/dashboard'
 
 export const metadata: Metadata = { title: 'Edit tour | TRAVSUS' }
+
+/** The tour's public page, in the editor's language when it has one */
+const previewOf = (tour: any, locale: string) => {
+	const slugs: { language: string; slug: string }[] = tour.slugs ?? []
+	return (slugs.find((s) => s.language === locale) ?? slugs.find((s) => s.language === 'en-US') ?? slugs[0])?.slug ?? null
+}
 
 export default async function EditTourPage({ params }: { params: { locale: string; id: string } }) {
 	const scope = await dashboardScope()
@@ -22,8 +28,8 @@ export default async function EditTourPage({ params }: { params: { locale: strin
 				<ArrowLeft className="h-4 w-4" />
 				All tours
 			</Link>
-			<DashboardHeader heading={tour.name || 'Untitled tour'} text={tour.updated ? 'Edit the tour details' : 'Finish setting up this tour'} />
-			<TourBuilder tour={tour} />
+			<DashboardHeader heading={tour.name || 'New trip'} text="Answer one question at a time. Everything saves by itself." />
+			<EasyTourEditor initial={tour} previewHref={previewOf(tour, params.locale)} backHref={`/${params.locale}/dashboard/tours`} />
 		</DashboardShell>
 	)
 }
