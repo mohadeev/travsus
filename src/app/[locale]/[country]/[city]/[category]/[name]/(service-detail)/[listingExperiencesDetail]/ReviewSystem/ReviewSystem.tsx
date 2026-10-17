@@ -1,20 +1,14 @@
 'use client'
-
+// Reviews of a tour: the rating summary, the list, and the "Write a review"
+// dialog (ReviewComposer), which needs the visitor to be signed in.
 import type React from 'react'
-import { useState, useEffect } from 'react'
-import { Circle, Camera, ChevronDown, X } from 'lucide-react'
-import Image from 'next/image'
-// import Avatar from '@/shared/Avatar'
-import ButtonPrimary from '@/shared/ButtonPrimary'
-
-import ButtonSecondary from '@/shared/ButtonSecondary'
-import Textarea from '@/shared/Textarea'
-import Input from '@/shared/Input'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { PenLine } from 'lucide-react'
 import { useAuthAction } from '@/app/hooks/useAuthAction'
 import { useTranslations } from '@/lib/i18n'
-import { useLocale } from 'next-intl'
 import Review from './Review'
+import ReviewComposer from './ReviewComposer'
 import { useTourService } from '../../TourServiceContext'
 
 interface ReviewProps {
@@ -22,675 +16,160 @@ interface ReviewProps {
 	serviceName: string
 }
 
-interface ReviewType {
-	id: string
-	userId: string
-	userName: string
-	userImage?: string
-	rating: number
-	title: string
-	content: string
-	travelDate1: string
-	travelType: string
-	images: string[]
-	createdAt: string
-	updatedAt?: string
-	author?: {
-		name: string
-		image: string
-		location: string
-		contributions: number
-	}
-}
-
 const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
 	const t = useTranslations('experience_reviews')
 	const router = useRouter()
-	const [showReviewForm, setShowReviewForm] = useState(false)
-	const [rating, setRating] = useState(0)
-	// const [travelDate1, setTravelDate1] = useState('')
-	const [travelType, setTravelType] = useState('')
-	const [reviewText, setReviewText] = useState('')
-	const [reviewTitle, setReviewTitle] = useState('')
-	const [selectedImages, setSelectedImages] = useState<File[]>([])
-	const [imagePreviewUrls, setImagePreviewUrls] = useState<string[]>([])
-	const [isAgreed, setIsAgreed] = useState(false)
-	const [reviews, setReviews] = useState<ReviewType[]>([])
+	const tour: any = useTourService() || {}
+	const [reviews, setReviews] = useState<any[]>([])
 	const [isLoading, setIsLoading] = useState(true)
-	const [isSubmitting, setIsSubmitting] = useState(false)
-	const locale = useLocale()
-	const dates = Array.from({ length: 24 }, (_, i) => {
-		const d = new Date()
-		d.setMonth(d.getMonth() - i)
-		return d
-	})
+	const [writing, setWriting] = useState(false)
+	const [visible, setVisible] = useState(5)
 
-	const [travelDate1, setTravelDate1] = useState('')
-
-	const formatMonthYear = (date) =>
-		date.toLocaleDateString(locale, { month: 'long', year: 'numeric' })
-	// Get tour data from Redux store
-	const tourData =
-		useTourService() || {}
-	const { name: title, region, images } = tourData
-
-	// Safely get the number of days
-	const getDaysCount = () => {
-		const { days } = tourData
-		if (!days) return null
-
-		// If days is an array, return its length
-		if (Array.isArray(days)) {
-			return days.length > 0 ? days.length : null
-		}
-
-		// If days is a number, return it directly
-		if (typeof days === 'number') {
-			return days
-		}
-
-		// Otherwise, return null
-		return null
-	}
-
-	const daysCount = getDaysCount()
-
-	const handleAddToWishList = useAuthAction(async (e: any) => {})
-
-	// Fetch reviews on component mount
 	useEffect(() => {
-		const fetchReviews = async () => {
-			try {
-				setIsLoading(true)
-				const response = await fetch(`/api/reviews?serviceId=${serviceId}`)
-				if (response.ok) {
-					const data = await response.json()
-					setReviews(data.reviews || [])
-				}
-			} catch (error) {
-				console.error('Error fetching reviews:', error)
-			} finally {
-				setIsLoading(false)
-			}
-		}
-
-		if (serviceId) {
-			fetchReviews()
+		if (!serviceId) return
+		let cancelled = false
+		setIsLoading(true)
+		fetch(`/api/reviews?serviceId=${serviceId}`)
+			.then((r) => (r.ok ? r.json() : { reviews: [] }))
+			.then((data) => !cancelled && setReviews(data.reviews || []))
+			.catch((error) => console.error('Error fetching reviews:', error))
+			.finally(() => !cancelled && setIsLoading(false))
+		return () => {
+			cancelled = true
 		}
 	}, [serviceId])
 
-	const handleRatingChange = (newRating: number) => {
-		setRating(newRating)
-	}
+	const openComposer = useAuthAction(async () => setWriting(true))
 
-	const handleTravelTypeSelect = (type: string) => {
-		setTravelType(type)
-	}
-
-	const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-		if (e.target.files) {
-			const filesArray = Array.from(e.target.files)
-			setSelectedImages([...selectedImages, ...filesArray])
-
-			// Create preview URLs
-			const newImageUrls = filesArray.map((file) => URL.createObjectURL(file))
-			setImagePreviewUrls([...imagePreviewUrls, ...newImageUrls])
-		}
-	}
-
-	const handleRemoveImage = (index: number) => {
-		const newImages = [...selectedImages]
-		const newUrls = [...imagePreviewUrls]
-		newImages.splice(index, 1)
-		newUrls.splice(index, 1)
-		setSelectedImages(newImages)
-		setImagePreviewUrls(newUrls)
-	}
-
-	const handleSubmitReview = useAuthAction(async (e: React.FormEvent) => {
-		e.preventDefault()
-		setIsSubmitting(true)
-
-		try {
-			const formData = new FormData()
-			formData.append('serviceId', serviceId)
-			formData.append('rating', rating.toString())
-			formData.append('travelDate1', travelDate1)
-			formData.append('travelType', travelType)
-			formData.append('reviewText', reviewText)
-			formData.append('reviewTitle', reviewTitle)
-			selectedImages.forEach((image) => {
-				formData.append('images', image)
-			})
-			formData.append('isAgreed', isAgreed.toString())
-
-			const response = await fetch('/api/reviews', {
-				method: 'POST',
-				body: formData,
-			})
-
-			if (response.ok) {
-				const data = await response.json()
-
-				// Add the new review to the list
-				setReviews((prevReviews) => [data.review, ...prevReviews])
-
-				// Reset form and hide it
-				setShowReviewForm(false)
-				setRating(0)
-				setTravelDate1('')
-				setTravelType('')
-				setReviewText('')
-				setReviewTitle('')
-				setSelectedImages([])
-				setImagePreviewUrls([])
-				setIsAgreed(false)
-
-				// Refresh the page to show the new review
-				router.refresh()
-			} else {
-				const error = await response.json()
-				alert(`${t('Error_Submit_Review')} ${error.error}`)
-			}
-		} catch (error) {
-			console.error('Error submitting review:', error)
-			alert(t('Failed_Submit'))
-		} finally {
-			setIsSubmitting(false)
-		}
-	})
-
-	// Generate months for the dropdown
-
-	// Tour Card Component
-	const TourCard = () => {
-		// Safely get the image URL
-		const getImageUrl = () => {
-			if (images && Array.isArray(images) && images.length > 0) {
-				const firstImage = images[0]
-				if (typeof firstImage === 'string') {
-					return firstImage
-				} else if (
-					firstImage &&
-					typeof firstImage === 'object' &&
-					'url' in firstImage
-				) {
-					return firstImage.url
-				}
-			}
-			return ''
-		}
-
-		return (
-			<div className="w-full">
-				<h3 className="mb-6 text-4xl font-extrabold">{t('Tell_Us_Visit')}</h3>
-				<div className="mx-auto max-w-xs overflow-hidden rounded-xl border border-neutral-200">
-					<div className="p-4">
-						<div
-							className="w-full"
-							style={{
-								height: '220px',
-								position: 'relative',
-								backgroundColor: '#F2F2F2',
-							}}
-						>
-							<Image
-								src={getImageUrl() || '/placeholder.svg'}
-								alt={title || t('Tour_Title')}
-								width={220}
-								height={220}
-								style={{ objectFit: 'cover', width: '100%', height: '100%' }}
-							/>
-						</div>
-					</div>
-					<div className="p-4">
-						<h4 className="mb-1 text-lg font-bold">
-							{title || t('Tour_Title')}
-						</h4>
-						{daysCount && (
-							<p className="text-sm text-neutral-600">
-								{daysCount} {t('Days')} {region && `${t('In')} ${region}`}
-							</p>
-						)}
-						{!daysCount && region && (
-							<p className="text-sm text-neutral-600">{region}</p>
-						)}
-					</div>
-				</div>
-				<div className="mt-4 text-center text-sm">
-					<p className="text-neutral-500">
-						{t('Not_Right_One')}{' '}
-						<button className="text-black underline">
-							{t('Change_Activity')}
-						</button>
-					</p>
-				</div>
-			</div>
-		)
-	}
-
-	const handleWriteReview = useAuthAction(async () => {
-		setShowReviewForm(!showReviewForm)
-	})
+	const firstImage = Array.isArray(tour.images) ? tour.images.find((i: any) => (typeof i === 'string' ? i : i?.url)) : null
+	const tourImage = typeof firstImage === 'string' ? firstImage : firstImage?.url
+	const daysCount = Array.isArray(tour.days) ? tour.days.length : 0
 
 	const totalReviews = reviews.length
-	const averageRating =
-		totalReviews > 0
-			? (
-					reviews.reduce((sum, review) => sum + review.rating, 0) / totalReviews
-				).toFixed(1)
-			: '0.0'
+	const average = totalReviews ? reviews.reduce((sum, r) => sum + r.rating, 0) / totalReviews : 0
+	const countOf = (n: number) => reviews.filter((r) => r.rating === n).length
 
-	const ratingCounts = {
-		5: reviews.filter((review) => review.rating === 5).length,
-		4: reviews.filter((review) => review.rating === 4).length,
-		3: reviews.filter((review) => review.rating === 3).length,
-		2: reviews.filter((review) => review.rating === 2).length,
-		1: reviews.filter((review) => review.rating === 1).length,
-	}
-
-	const ratingLabels = {
-		5: 'Excellent',
-		4: 'Very good',
-		3: 'Average',
-		2: 'Poor',
-		1: 'Terrible',
-	}
-
-	const ratingBreakdown = ratingCounts
-	const [value, setValue] = useState('0')
+	const writeButton = (
+		<button
+			type="button"
+			onClick={() => openComposer(undefined)}
+			className="inline-flex items-center gap-2 rounded-full bg-brand-500 px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-brand-500/20 transition hover:bg-brand-600"
+		>
+			<PenLine className="h-4 w-4" />
+			{t('Write_Review')}
+		</button>
+	)
 
 	return (
 		<section id="experience_reviews" className="w-full scroll-mt-32">
-			{/* Reviews Section */}
-			<div className="">
-				{!isLoading && (
-					<div className="mb-4 flex items-center justify-between">
-						<h2 className="text-2xl font-bold tracking-tight">
-							{t('Reviews')} <span className="text-neutral-400">({reviews.length})</span>
-						</h2>
-						{reviews.length >= 1 ? (
-							<button
-								type="button"
-								onClick={() => handleWriteReview()}
-								className="rounded-full bg-brand-500 px-4 py-2 text-sm font-semibold text-white transition hover:bg-brand-600"
-							>
-								{showReviewForm ? '×' : t('Write_Review')}
-							</button>
-						) : (
-							''
-						)}
-					</div>
-				)}
+			{!isLoading && (
+				<div className="mb-4 flex items-center justify-between gap-3">
+					<h2 className="text-2xl font-bold tracking-tight">
+						{t('Reviews')} <span className="text-neutral-400">({totalReviews})</span>
+					</h2>
+					{totalReviews > 0 && writeButton}
+				</div>
+			)}
 
-				{/* Review Form */}
-				{showReviewForm && (
-					<div className="mb-8 rounded-3xl border border-neutral-200 p-6 dark:border-neutral-800">
-						<div className="grid gap-8 md:grid-cols-12">
-							{/* Left Column - Tour Card (35%) */}
-							<div className="border-r border-neutral-200 pr-6 md:col-span-4">
-								<TourCard />
+			{writing && (
+				<ReviewComposer
+					serviceId={serviceId}
+					tourName={tour.name || serviceName}
+					tourImage={tourImage}
+					tourSubtitle={daysCount > 1 ? `${daysCount} ${t('Days')}${tour.region ? ` ${t('In')} ${tour.region}` : ''}` : tour.region}
+					onClose={() => setWriting(false)}
+					onCreated={(review) => {
+						if (review) setReviews((prev) => [review, ...prev])
+						router.refresh()
+					}}
+				/>
+			)}
+
+			{isLoading ? (
+				<div className="space-y-6">
+					{[1, 2, 3].map((i) => (
+						<div key={i} className="animate-pulse border-b border-neutral-200 pb-6">
+							<div className="flex items-start gap-4">
+								<div className="h-12 w-12 rounded-full bg-neutral-200" />
+								<div className="flex-1">
+									<div className="mb-2 h-4 w-32 rounded bg-neutral-200" />
+									<div className="h-3 w-48 rounded bg-neutral-200" />
+								</div>
 							</div>
-
-							{/* Right Column - Review Form (65%) */}
-							<div className="md:col-span-8">
-								<form onSubmit={handleSubmitReview}>
-									{/* Rating */}
-									<div className="mb-6">
-										<h4 className="mb-3 text-2xl font-semibold">
-											{t('Rate_Experience')}
-										</h4>
-										<div className="flex gap-1">
-											{[1, 2, 3, 4, 5].map((circle) => (
-												<button
-													key={circle}
-													type="button"
-													onClick={() => handleRatingChange(circle)}
-													className={`flex h-13 w-13 items-center justify-center rounded-full transition-colors ${
-														rating >= circle
-															? 'text-neutral-950'
-															: 'text-gray-300 hover:text-gray-400'
-													}`}
-												>
-													<Circle
-														className={`h-9 w-9 ${rating >= circle ? 'fill-neutral-950' : ''}`}
-													/>
-												</button>
-											))}
-										</div>
-									</div>
-
-									{/* When did you go */}
-									<div className="mb-6">
-										<h4 className="mb-2 text-lg font-medium">{t('When_Go')}</h4>
-										<div className="relative">
-											<select
-												value={value}
-												onChange={(e) => {
-													setValue(e.target.value)
-													setTravelDate1(dates[new Number(e.target.value)])
-												}}
-												className="rounded border p-2"
-											>
-												<option value="">{t('Select_One')}</option>
-												{dates.map((date, index) => (
-													<option key={index} value={index}>
-														{formatMonthYear(date)}
-													</option>
-												))}
-											</select>
-											<ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-5 w-5 -translate-y-1/2 transform text-neutral-500" />
-										</div>
-									</div>
-
-									{/* Who did you go with */}
-									<div className="mb-6">
-										<h4 className="mb-2 text-lg font-medium">
-											{t('Who_Go_With')}
-										</h4>
-										<div className="flex flex-wrap gap-2">
-											{[
-												{ key: 'Business', label: t('Business') },
-												{ key: 'Couples', label: t('Couples') },
-												{ key: 'Family', label: t('Family') },
-												{ key: 'Friends', label: t('Friends') },
-												{ key: 'Solo', label: t('Solo') },
-											].map((type) => (
-												<button
-													key={type.key}
-													type="button"
-													onClick={() => handleTravelTypeSelect(type.key)}
-													className={`rounded-full border px-4 py-1.5 ${
-														travelType === type.key
-															? 'border-black bg-black text-white'
-															: 'border-neutral-200 bg-white text-black hover:border-neutral-400'
-													}`}
-												>
-													{type.label}
-												</button>
-											))}
-										</div>
-									</div>
-
-									{/* Write your review */}
-									<div className="mb-6">
-										<h4 className="mb-2 text-lg font-medium">
-											{t('Write_Your_Review')}
-										</h4>
-										<Textarea
-											value={reviewText}
-											onChange={(e) => setReviewText(e.target.value)}
-											placeholder={t('Share_Experience')}
-											rows={5}
-											maxLength={1000}
-											required
-										/>
-										<div className="text-right text-sm text-neutral-500">
-											{reviewText.length}/1000 {t('Max_Characters')}
-										</div>
-									</div>
-
-									{/* Title your review */}
-									<div className="mb-6">
-										<h4 className="mb-2 text-lg font-medium">
-											{t('Title_Your_Review')}
-										</h4>
-										<Input
-											type="text"
-											value={reviewTitle}
-											onChange={(e) => setReviewTitle(e.target.value)}
-											placeholder={t('Summarize_Experience')}
-											maxLength={120}
-											required
-										/>
-										<div className="text-right text-sm text-neutral-500">
-											{reviewTitle.length}/120 {t('Max_Characters')}
-										</div>
-									</div>
-
-									{/* Add photos */}
-									<div className="mb-6">
-										<h4 className="mb-2 text-lg font-medium">
-											{t('Add_Photos')}
-										</h4>
-										<p className="mb-3 text-sm text-neutral-500">
-											{t('Optional')}
-										</p>
-
-										<div className="rounded-md bg-[#F2F2F2] p-6 text-center">
-											{imagePreviewUrls.length > 0 ? (
-												<div className="mb-4 grid grid-cols-3 gap-4 sm:grid-cols-4">
-													{imagePreviewUrls.map((url, index) => (
-														<div key={index} className="relative">
-															<Image
-																src={url || '/placeholder.svg'}
-																alt={`Preview ${index}`}
-																width={120}
-																height={120}
-																className="h-24 w-24 rounded-md object-cover"
-															/>
-															<button
-																type="button"
-																onClick={() => handleRemoveImage(index)}
-																className="absolute -right-2 -top-2 flex h-6 w-6 items-center justify-center rounded-full bg-black p-1 text-xs text-white"
-															>
-																<X size={12} />
-															</button>
-														</div>
-													))}
-												</div>
-											) : null}
-
-											<label className="flex cursor-pointer flex-col items-center justify-center">
-												<Camera className="mb-2 h-8 w-8 text-neutral-400" />
-												<span className="font-medium text-neutral-600">
-													{t('Click_Add_Photos')}
-												</span>
-												<span className="text-sm text-neutral-500">
-													{t('Drag_Drop')}
-												</span>
-												<input
-													type="file"
-													accept="image/*"
-													multiple
-													onChange={handleImageUpload}
-													className="hidden"
-												/>
-											</label>
-										</div>
-									</div>
-
-									{/* Terms agreement */}
-									<div className="mb-6">
-										<label className="flex cursor-pointer items-start gap-2">
-											<input
-												type="checkbox"
-												checked={isAgreed}
-												onChange={(e) => setIsAgreed(e.target.checked)}
-												className="mt-1 accent-black"
-												required
-											/>
-											<span className="text-sm text-neutral-600">
-												{t('Certify_Review')}
-											</span>
-										</label>
-									</div>
-
-									<div className="flex justify-end gap-4">
-										<ButtonSecondary
-											type="button"
-											onClick={() => setShowReviewForm(false)}
-										>
-											{t('Cancel')}
-										</ButtonSecondary>
-										<ButtonPrimary type="submit" disabled={isSubmitting}>
-											{isSubmitting ? t('Submitting') : t('Submit')}
-										</ButtonPrimary>
-									</div>
-								</form>
+							<div className="mt-3 space-y-2">
+								<div className="h-5 w-64 rounded bg-neutral-200" />
+								<div className="h-4 w-full rounded bg-neutral-200" />
+								<div className="h-4 w-3/4 rounded bg-neutral-200" />
 							</div>
 						</div>
-					</div>
-				)}
-
-				{/* Reviews List */}
-				{isLoading ? (
-					<div className="space-y-6">
-						{[1, 2, 3].map((i) => (
-							<div
-								key={i}
-								className="animate-pulse border-b border-neutral-200 pb-6"
-							>
-								<div className="flex items-start gap-4">
-									<div className="h-12 w-12 rounded-full bg-neutral-200"></div>
-									<div className="flex-1">
-										<div className="mb-2 h-4 w-32 rounded bg-neutral-200"></div>
-										<div className="h-3 w-48 rounded bg-neutral-200"></div>
-									</div>
-								</div>
-								<div className="mt-3">
-									<div className="mb-2 h-4 w-24 rounded bg-neutral-200"></div>
-									<div className="mb-2 h-5 w-64 rounded bg-neutral-200"></div>
-									<div className="mb-1 h-4 w-full rounded bg-neutral-200"></div>
-									<div className="mb-1 h-4 w-full rounded bg-neutral-200"></div>
-									<div className="mb-3 h-4 w-3/4 rounded bg-neutral-200"></div>
-									<div className="h-3 w-48 rounded bg-neutral-200"></div>
-								</div>
+					))}
+				</div>
+			) : totalReviews > 0 ? (
+				<div className="flex flex-col gap-8 md:flex-row">
+					{/* Rating summary */}
+					<div className="flex w-full flex-col gap-6 self-start rounded-2xl bg-sand-100 p-6 md:sticky md:top-32 md:w-1/3 dark:bg-neutral-900">
+						<div>
+							<div className="mb-2 flex items-baseline gap-2">
+								<span className="text-5xl font-bold tracking-tight">{average.toFixed(1)}</span>
+								<span className="text-lg text-neutral-500">/ 5</span>
 							</div>
-						))}
-					</div>
-				) : reviews.length > 0 ? (
-					<div className="flex flex-col gap-8 md:flex-row">
-						{/* Rating Summary Section */}
-						<div className="flex w-full flex-col gap-8 self-start rounded-2xl bg-sand-100 p-6 md:sticky md:top-32 md:w-1/3 dark:bg-neutral-900">
-							<div className="flex w-full flex-col gap-8 md:items-start">
-								{/* Overall Rating */}
-								<div className="flex flex-col items-center md:items-start">
-									<div className="mb-2 flex items-baseline gap-2">
-										<div className="text-5xl font-bold tracking-tight">
-											{averageRating}
-										</div>
-										<div className="text-lg text-neutral-500">/ 5</div>
-									</div>
-									<div className="mb-2 flex gap-1">
-										{[1, 2, 3, 4, 5].map((circle) => (
-											<Circle
-												key={circle}
-												className={`h-4.5 w-4.5 ${circle <= Math.round(Number.parseFloat(averageRating)) ? 'fill-[#00AA6C] text-[#00AA6C]' : 'text-neutral-300'}`}
-											/>
-										))}
-									</div>
-									<div className="text-sm text-neutral-500">
-										Based on {totalReviews.toLocaleString()} review
-										{totalReviews !== 1 ? 's' : ''}
-									</div>
-								</div>
-
-								{/* Rating Breakdown */}
-								<div className="w-full flex-1 space-y-2">
-									{[5, 4, 3, 2, 1].map((rating) => (
-										<div key={rating} className="flex items-center gap-3">
-											{/* <div className="flex w-20 items-center gap-1 text-sm font-medium text-gray-700">
-												<span>{rating}</span>
-												<Circle
-													className={`h-4.5 w-4.5 fill-neutral-950 text-neutral-950`}
-												/>
-											</div> */}
-											<div className="h-1.5 w-full overflow-hidden rounded-full bg-neutral-200 dark:bg-neutral-800">
-												<div
-													className="h-full rounded-full bg-[#00AA6C] transition-all duration-300"
-													style={{
-														width:
-															totalReviews > 0
-																? `${(ratingBreakdown[rating as keyof typeof ratingBreakdown] / totalReviews) * 100}%`
-																: '0%',
-													}}
-												/>
-											</div>
-											<div className="w-8 text-right text-sm text-neutral-500">
-												{
-													ratingBreakdown[
-														rating as keyof typeof ratingBreakdown
-													]
-												}
-											</div>
-										</div>
-									))}
-								</div>
+							<div className="mb-2 flex gap-1">
+								{[1, 2, 3, 4, 5].map((n) => (
+									<span
+										key={n}
+										className={`h-4 w-4 rounded-full border-2 ${n <= Math.round(average) ? 'border-[#00AA6C] bg-[#00AA6C]' : 'border-neutral-300'}`}
+									/>
+								))}
 							</div>
+							<p className="text-sm text-neutral-500">{t('Based_On', { count: totalReviews })}</p>
 						</div>
-
-						{/* Individual Reviews */}
-						<div className="w-full divide-y divide-neutral-200 md:w-2/3 dark:divide-neutral-800">
-							{reviews.map((review) => (
-								<Review key={review.id} review={review} />
+						<div className="space-y-2">
+							{[5, 4, 3, 2, 1].map((n) => (
+								<div key={n} className="flex items-center gap-3 text-sm">
+									<span className="w-24 shrink-0 text-neutral-600 dark:text-neutral-400">{t(`Rating_${n}`)}</span>
+									<div className="h-1.5 w-full overflow-hidden rounded-full bg-neutral-200 dark:bg-neutral-800">
+										<div className="h-full rounded-full bg-[#00AA6C] transition-all duration-300" style={{ width: `${(countOf(n) / totalReviews) * 100}%` }} />
+									</div>
+									<span className="w-6 text-right text-neutral-500">{countOf(n)}</span>
+								</div>
 							))}
 						</div>
 					</div>
-				) : (
-					<div className="rounded-3xl border border-dashed border-neutral-300 py-12 text-center dark:border-neutral-700">
-						<h3 className="mb-2 text-lg font-medium">{t('No_Reviews_Yet')}</h3>
-						<p className="mb-4 text-neutral-500">{t('First_Share')}</p>
-						<ButtonPrimary onClick={() => setShowReviewForm(true)}>
-							{t('Write_Review')}
-						</ButtonPrimary>
-					</div>
-				)}
 
-				{reviews.length > 5 && (
-					<div className="mt-6 text-center">
-						<ButtonPrimary>{t('Load_More_Reviews')}</ButtonPrimary>
+					{/* Reviews */}
+					<div className="w-full md:w-2/3">
+						<div className="divide-y divide-neutral-200 dark:divide-neutral-800">
+							{reviews.slice(0, visible).map((review) => (
+								<Review key={review.id} review={review} />
+							))}
+						</div>
+						{totalReviews > visible && (
+							<div className="mt-6 text-center">
+								<button
+									type="button"
+									onClick={() => setVisible((v) => v + 5)}
+									className="rounded-full border-2 border-neutral-200 px-6 py-2.5 font-semibold transition hover:border-neutral-400 dark:border-neutral-700"
+								>
+									{t('Load_More_Reviews')}
+								</button>
+							</div>
+						)}
 					</div>
-				)}
-			</div>
+				</div>
+			) : (
+				<div className="flex flex-col items-center rounded-3xl border-2 border-dashed border-neutral-200 px-6 py-12 text-center dark:border-neutral-800">
+					<div className="mb-4 flex gap-1.5">
+						{[1, 2, 3, 4, 5].map((n) => (
+							<span key={n} className="h-5 w-5 rounded-full border-2 border-[#00AA6C]" />
+						))}
+					</div>
+					<h3 className="mb-1 text-lg font-bold">{t('No_Reviews_Yet')}</h3>
+					<p className="mb-5 text-neutral-500">{t('First_Share')}</p>
+					{writeButton}
+				</div>
+			)}
 		</section>
 	)
 }
 
 export default ReviewSystem
-function DateSelect() {
-	// Generate last 24 months including current month
-	const dates = Array.from({ length: 24 }, (_, i) => {
-		const d = new Date()
-		d.setMonth(d.getMonth() - i)
-		return d
-	})
-	const [value, setVale] = useState('0')
-
-	const [travelDate1, setTravelDate1] = useState(null) // store actual Date object
-
-	const formatMonthYear = (date) =>
-		date.toLocaleDateString(locale, { month: 'long', year: 'numeric' })
-
-	const handleChange = (e) => {
-		setVale(e.target.value)
-		const value = e.target.value
-		if (value) {
-			setTravelDate1(new Date(value))
-			e.target.value = '' // reset dropdown back to "Select..."
-		}
-	}
-
-	return (
-		<div className="p-4">
-			<select
-				value={value}
-				onChange={handleChange}
-				className="rounded border p-2"
-			>
-				<option value="">Select a month & year</option>
-				{dates.map((date, index) => (
-					<option key={index} value={index}>
-						{formatMonthYear(date)}
-					</option>
-				))}
-			</select>
-
-			{travelDate1 && (
-				<p className="mt-2 text-gray-700">
-					Selected: {formatMonthYear(travelDate1)}
-				</p>
-			)}
-		</div>
-	)
-}
