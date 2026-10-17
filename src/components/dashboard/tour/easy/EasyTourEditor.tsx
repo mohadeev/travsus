@@ -11,6 +11,7 @@ import {
 	ImagePlus, Images, ListOrdered, Loader2, Minus, PartyPopper, Plus, RotateCcw, Sparkles, Star, Trash2, type LucideIcon,
 } from 'lucide-react'
 import TourAccommodations from '../TourAccommodations'
+import { stayOptions, transportTiers } from '@/lib/tourPricing'
 
 type Day = { name: string; description: string; hidden?: boolean; [k: string]: any }
 type Photo = { url: string; public_id?: string; [k: string]: any }
@@ -31,11 +32,9 @@ type SaveState = 'saved' | 'waiting' | 'saving' | 'error'
 
 // The vehicles a trip can be priced for (same list as before)
 const VEHICLES = [
-	{ name: 'Passat', image: 'https://res.cloudinary.com/travsus/image/upload/v1745698557/passat_vycrhv.png', min: 1, max: 4, text: 'Car for 1 to 4 people' },
 	{ name: 'SUV (prado)', image: 'https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png', min: 1, max: 5, text: '4x4 for 1 to 5 people' },
 	{ name: 'Mercedes Vito', image: 'https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png', min: 6, max: 8, text: 'Van for 6 to 8 people' },
 	{ name: 'Mini Bus', image: 'https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png', min: 9, max: 19, text: 'Minibus for 9 to 19 people' },
-	{ name: 'Bus', image: 'https://res.cloudinary.com/travsus/image/upload/v1745698557/bus_ziyi99.png', min: 20, max: 50, text: 'Coach for big groups' },
 ]
 
 const input =
@@ -460,6 +459,14 @@ function PricesStep({ tour, set }: StepProps) {
 	}
 	return (
 		<Question title="How much does the trip cost?" help="Turn on each vehicle you offer, then write the price for the whole trip, for the whole group in that vehicle.">
+			<button
+				type="button"
+				onClick={() => set('pricingTiers', transportTiers(days))}
+				className={`${bigButton} mb-5 w-full bg-neutral-950 text-white hover:bg-neutral-800 sm:w-auto dark:bg-white dark:text-neutral-950`}
+			>
+				<Euro className="h-5 w-5" />
+				Use Travsus prices ({days === 1 ? '150 € a day' : days <= 3 ? '170 € a day' : '120 € a day, minibus 150 €'})
+			</button>
 			<ul className="space-y-5">
 				{VEHICLES.map((v) => {
 					const tier = tierOf(v.name)
@@ -527,7 +534,14 @@ function StaysStep({ tour, set, onRemoved }: StepProps) {
 		<Question title="Where do travellers sleep?" help="Only for trips with nights. Skip this if the trip is one day, or if travellers book their own hotel.">
 			{!editing ? (
 				<div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-					<button type="button" onClick={() => setEditing(true)} className="rounded-[28px] p-6 text-left ring-2 ring-neutral-950 transition hover:bg-neutral-50 dark:ring-white dark:hover:bg-neutral-900">
+					<button
+						type="button"
+						onClick={() => {
+							// Standard 50 € and Luxury 90 € per person per night
+							if (!tour.accommodations.length) set('accommodations', stayOptions(Math.max(1, tour.days.length - 1)))
+							setEditing(true)
+						}}
+						className="rounded-[28px] p-6 text-left ring-2 ring-neutral-950 transition hover:bg-neutral-50 dark:ring-white dark:hover:bg-neutral-900">
 						<BedDouble className="h-8 w-8" />
 						<p className="mt-4 text-xl font-bold">Yes, it has nights</p>
 						<p className="mt-1 text-base text-neutral-500">Add the hotels or camps and their prices.</p>

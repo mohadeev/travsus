@@ -5,7 +5,7 @@ import { type FC, type ReactNode, useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import type { Route } from 'next'
 import { useTranslations } from 'next-intl'
-import { BedDouble, Check, ChevronDown, Crown, Hotel, Minus, Plus, ShieldCheck } from 'lucide-react'
+import { Check, ChevronDown, Crown, Hotel, Minus, Plus, ShieldCheck } from 'lucide-react'
 import StayDatesRangeInput from '../StayDatesRangeInput'
 import LineItemsBreakdown from '../LineItems/LineItemsBreakdown'
 import { useAppDispatch, useAppSelector } from '@/store/hooks'
@@ -22,8 +22,9 @@ import { formatCurrency } from '@/utils/formatCurrency'
 import { useAuthAction } from '@/app/hooks/useAuthAction'
 import predictAccommodation from '@/app/api/updateLineItems/predictAccommodation'
 import { useTourService } from '../../TourServiceContext'
+import { hasStays as tourHasStays } from '@/lib/tourPricing'
 
-type Hotel = 'Standard' | 'Luxury' | 'own'
+type Hotel = 'Standard' | 'Luxury'
 
 const MAX_PEOPLE = 19
 
@@ -36,7 +37,6 @@ function roomsFor(guests: { guestAdults: number; guestChildren: number }, tier: 
 
 /** Which hotel choice the current booking matches. */
 function currentHotel(booking: any): Hotel {
-	if (booking.bookOwnHotels) return 'own'
 	const luxury = booking.accommodation?.Luxury ?? {}
 	const hasLuxury = Object.values(luxury).some((room: any) => (room?.adult ?? 0) + (room?.child ?? 0) > 0)
 	return hasLuxury ? 'Luxury' : 'Standard'
@@ -57,7 +57,7 @@ const RenderSidebar: FC = () => {
 	const hotel = currentHotel(booking)
 	const hasLuxury = (tour.accommodations ?? []).some((a: any) => a?.name === 'Luxury')
 	// Day tours have no nights: no "where to sleep" step
-	const hasStays = (tour.accommodations ?? []).some((a: any) => a?.bedOptions?.length)
+	const hasStays = tourHasStays(tour.accommodations)
 
 	const [reserving, setReserving] = useState(false)
 	const [needsDate, setNeedsDate] = useState(false)
@@ -75,11 +75,11 @@ const RenderSidebar: FC = () => {
 			guestChildren: next.children ?? children,
 		}
 		const choice = next.hotel ?? hotel
-		dispatch(setBookOwnHotels(choice === 'own'))
+		dispatch(setBookOwnHotels(false))
 		dispatch(
 			recalculatePrice({
 				tour,
-				changes: choice === 'own' ? { guests } : { accommodation: roomsFor(guests, choice) },
+				changes: hasStays ? { accommodation: roomsFor(guests, choice) } : { guests },
 			}),
 		)
 	}
@@ -100,9 +100,9 @@ const RenderSidebar: FC = () => {
 					tourId: tour.id,
 					selectedDate: booking.selectedDate,
 					guests: booking.guests,
-					// Own hotel: priced by people only
-					accommodation: hotel === 'own' ? undefined : booking.accommodation,
-					bookOwnHotels: hotel === 'own',
+					// Day tours: priced by people only
+					accommodation: hasStays ? booking.accommodation : undefined,
+					bookOwnHotels: false,
 				}),
 			})
 			const result = await response.json()
@@ -201,13 +201,6 @@ const RenderSidebar: FC = () => {
 								hint={t('hotel_luxury_hint')}
 							/>
 						)}
-						<Choice
-							selected={hotel === 'own'}
-							onSelect={() => update({ hotel: 'own' })}
-							icon={<BedDouble className="h-6 w-6" />}
-							title={t('hotel_own')}
-							hint={t('hotel_own_hint')}
-						/>
 					</div>
 				</Step>
 			)}
