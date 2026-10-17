@@ -14,12 +14,12 @@ export default function TopDestinations({ destinations }: { destinations: HomeDe
 			<h2 className="text-2xl font-bold tracking-tight sm:text-4xl">{t('destinations_title')}</h2>
 			<p className="mt-1 text-sm text-neutral-500 sm:mt-2 sm:text-base">{t('destinations_sub')}</p>
 
-			<div className="mt-5 grid auto-rows-[150px] grid-cols-2 gap-2.5 sm:mt-8 sm:auto-rows-[240px] sm:gap-3 lg:grid-cols-4">
+			<div className={`${styles.stagger} mt-5 grid auto-rows-[150px] grid-cols-2 gap-2.5 sm:mt-8 sm:auto-rows-[240px] sm:gap-3 lg:grid-cols-4`}>
 				{destinations.slice(0, 5).map((d, i) => (
 					<Link
 						key={d.city}
 						href={`/search?query=${encodeURIComponent(d.city)}` as any}
-						className={`group relative overflow-hidden rounded-2xl bg-neutral-200 active:scale-[0.98] transition ${i === 0 ? 'col-span-2 row-span-2' : ''}`}
+						className={`group relative overflow-hidden rounded-2xl bg-neutral-200 shadow-sm transition duration-300 hover:shadow-2xl active:scale-[0.98] ${i === 0 ? 'col-span-2 row-span-2' : ''}`}
 					>
 						<Image
 							src={d.image}
@@ -29,7 +29,7 @@ export default function TopDestinations({ destinations }: { destinations: HomeDe
 							className="object-cover transition duration-700 group-hover:scale-105"
 						/>
 						<div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/0 to-black/0" />
-						<div className="absolute bottom-0 left-0 right-0 flex items-end justify-between gap-2 p-3.5 text-white sm:p-5">
+						<div className="absolute bottom-0 left-0 right-0 flex items-end justify-between gap-2 p-3.5 text-white transition duration-500 group-hover:-translate-y-1 sm:p-5">
 							<div>
 								<h3 className={`font-bold tracking-tight ${i === 0 ? 'text-2xl sm:text-4xl' : 'text-lg sm:text-xl'}`}>{d.city}</h3>
 								<p className="text-xs text-white/80 sm:text-sm">

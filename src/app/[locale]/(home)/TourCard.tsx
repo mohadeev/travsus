@@ -13,7 +13,7 @@ export default function TourCard({ tour }: { tour: HomeTour }) {
 
 	return (
 		<Link href={tour.href as any} className="group block">
-			<div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-neutral-100">
+			<div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-neutral-100 transition duration-300 group-hover:-translate-y-1 group-hover:shadow-xl">
 				<Image
 					src={tour.image}
 					alt={tour.name}

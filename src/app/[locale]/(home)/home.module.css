@@ -1,37 +1,100 @@
-/* Home page motion helpers. */
+/* Home page motion helpers. HomeMotion.tsx adds `ready` to <html> once it runs,
+   so without JavaScript (and for search engines) everything is simply visible. */
 
-/* Rise into view while scrolling (browsers without scroll timelines just show it) */
-@supports (animation-timeline: view()) {
-	.reveal {
-		animation: rise linear both;
-		animation-timeline: view();
-		animation-range: entry 0% cover 20%;
-	}
+/* Sections rise into view while scrolling */
+.ready .reveal {
+	opacity: 0;
+	transform: translateY(36px);
+	transition:
+		opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+		transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.ready .reveal.in {
+	opacity: 1;
+	transform: none;
 }
 
-@keyframes rise {
-	from {
-		opacity: 0;
-		transform: translateY(40px);
-	}
-	to {
-		opacity: 1;
-		transform: none;
-	}
+/* Lists: their items come in one after another */
+.ready .stagger > * {
+	opacity: 0;
+	transform: translateY(24px) scale(0.98);
+	transition:
+		opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+		transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
+.ready .stagger.in > * {
+	opacity: 1;
+	transform: none;
+}
+.stagger > :nth-child(2) { transition-delay: 70ms; }
+.stagger > :nth-child(3) { transition-delay: 140ms; }
+.stagger > :nth-child(4) { transition-delay: 210ms; }
+.stagger > :nth-child(5) { transition-delay: 280ms; }
+.stagger > :nth-child(6) { transition-delay: 350ms; }
+.stagger > :nth-child(7) { transition-delay: 420ms; }
+.stagger > :nth-child(n + 8) { transition-delay: 490ms; }
 
-/* Hero photo settles in on load */
+/* Hero photo settles in on load, then drifts very slowly */
 .heroImage {
-	animation: settle 1.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+	animation:
+		settle 1.6s cubic-bezier(0.2, 0.7, 0.2, 1) both,
+		drift 26s ease-in-out 1.6s infinite alternate;
 }
 
 @keyframes settle {
-	from {
-		transform: scale(1.08);
-	}
-	to {
-		transform: scale(1);
-	}
+	from { transform: scale(1.12); }
+	to { transform: scale(1.02); }
+}
+@keyframes drift {
+	from { transform: scale(1.02) translate3d(0, 0, 0); }
+	to { transform: scale(1.08) translate3d(-1.5%, -1%, 0); }
+}
+
+/* Hero text, search and tabs come in one after another on load */
+.heroIn > * {
+	animation: heroUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.heroIn > :nth-child(1) { animation-delay: 0.15s; }
+.heroIn > :nth-child(2) { animation-delay: 0.25s; }
+.heroIn > :nth-child(3) { animation-delay: 0.35s; }
+.heroIn > :nth-child(4) { animation-delay: 0.45s; }
+.heroIn > :nth-child(5) { animation-delay: 0.55s; }
+.heroIn > :nth-child(6) { animation-delay: 0.65s; }
+
+@keyframes heroUp {
+	from { opacity: 0; transform: translateY(22px); filter: blur(6px); }
+	to { opacity: 1; transform: none; filter: none; }
+}
+
+/* Search box: soft glow when typing */
+.search {
+	transition: box-shadow 0.3s, transform 0.3s;
+}
+.search:focus-within {
+	box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.25), 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+	transform: translateY(-2px);
+}
+
+/* Promise icons bob gently */
+.bob {
+	animation: bob 3.2s ease-in-out infinite;
+}
+li:nth-child(2) > .bob { animation-delay: 0.4s; }
+li:nth-child(3) > .bob { animation-delay: 0.8s; }
+@keyframes bob {
+	0%, 100% { transform: translateY(0); }
+	50% { transform: translateY(-3px); }
+}
+
+/* Photos in the "real trips" collage float a little */
+.float {
+	animation: float 7s ease-in-out infinite;
+}
+.float:nth-child(2) { animation-delay: -2.3s; }
+.float:nth-child(3) { animation-delay: -4.6s; }
+@keyframes float {
+	0%, 100% { transform: translateY(0); }
+	50% { transform: translateY(-8px); }
 }
 
 .noScrollbar {
@@ -42,8 +105,16 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-	.reveal,
-	.heroImage {
+	.heroImage,
+	.heroIn > *,
+	.bob,
+	.float {
 		animation: none;
+	}
+	.ready .reveal,
+	.ready .stagger > * {
+		opacity: 1;
+		transform: none;
+		transition: none;
 	}
 }

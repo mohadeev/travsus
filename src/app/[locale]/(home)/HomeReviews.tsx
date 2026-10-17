@@ -23,12 +23,12 @@ export default function HomeReviews({ reviews }: { reviews: HomeReview[] }) {
 
 			{/* Phones: swipe through the cards. Larger screens: a masonry wall. */}
 			<div
-				className={`${styles.noScrollbar} -mx-5 mt-5 flex snap-x snap-mandatory scroll-px-5 gap-3 overflow-x-auto px-5 pb-2 sm:mx-0 sm:mt-8 sm:block sm:gap-4 sm:overflow-visible sm:px-0 sm:pb-0 sm:[column-fill:_balance] sm:columns-2 lg:columns-3`}
+				className={`${styles.noScrollbar} ${styles.stagger} -mx-5 mt-5 flex snap-x snap-mandatory scroll-px-5 gap-3 overflow-x-auto px-5 pb-2 sm:mx-0 sm:mt-8 sm:block sm:gap-4 sm:overflow-visible sm:px-0 sm:pb-0 sm:[column-fill:_balance] sm:columns-2 lg:columns-3`}
 			>
 				{reviews.map((review) => (
 					<article
 						key={review.id}
-						className="flex w-[85%] max-w-[340px] shrink-0 snap-start flex-col rounded-2xl border border-neutral-200 bg-white p-5 transition sm:mb-4 sm:block sm:w-auto sm:max-w-none sm:break-inside-avoid sm:p-6 hover:border-neutral-400 dark:border-neutral-800 dark:bg-neutral-950"
+						className="flex w-[85%] max-w-[340px] shrink-0 snap-start flex-col rounded-2xl border border-neutral-200 bg-white p-5 transition sm:mb-4 sm:block sm:w-auto sm:max-w-none sm:break-inside-avoid sm:p-6 hover:-translate-y-1 hover:border-neutral-950 hover:shadow-xl dark:border-neutral-800 dark:bg-neutral-950 dark:hover:border-white"
 					>
 						<header className="flex items-center gap-3">
 							<span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-neutral-950 text-sm font-bold text-white dark:bg-white dark:text-neutral-950">

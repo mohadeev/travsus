@@ -5,6 +5,7 @@ import { ArrowRight } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { PHOTOS } from '@/lib/photos'
 import RatingBubbles from './RatingBubbles'
+import styles from './home.module.css'
 
 type Props = { rating: { average: number | null; count: number } }
 
@@ -26,7 +27,7 @@ export default function RealTrips({ rating }: Props) {
 				)}
 				<Link
 					href={'/search?query=' as any}
-					className="group mt-5 inline-flex sm:mt-8 items-center gap-2 rounded-full bg-neutral-950 px-6 py-3 text-sm font-semibold text-white transition hover:bg-neutral-800 dark:bg-white dark:text-neutral-950"
+					className="group mt-5 inline-flex sm:mt-8 items-center gap-2 rounded-full bg-neutral-950 px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-neutral-800 hover:shadow-xl active:scale-95 dark:bg-white dark:text-neutral-950"
 				>
 					{t('explore_tours')}
 					<ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -37,9 +38,9 @@ export default function RealTrips({ rating }: Props) {
 				{[PHOTOS.hiking, PHOTOS.sunsetHug, PHOTOS.laughing].map((photo, i) => (
 					<div
 						key={photo}
-						className={`relative overflow-hidden rounded-2xl ${i === 0 ? 'row-span-2' : ''}`}
+						className={`${styles.float} group relative overflow-hidden rounded-2xl ${i === 0 ? 'row-span-2' : ''}`}
 					>
-						<Image src={photo} alt="" fill sizes="(max-width: 1024px) 50vw, 25vw" className="object-cover" />
+						<Image src={photo} alt="" fill sizes="(max-width: 1024px) 50vw, 25vw" className="object-cover transition duration-700 group-hover:scale-110" />
 					</div>
 				))}
 			</div>

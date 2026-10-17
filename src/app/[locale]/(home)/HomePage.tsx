@@ -3,6 +3,7 @@ import { useTranslations } from 'next-intl'
 import type { HomeDestination, HomeReview, HomeTour } from '@/lib/homeData'
 import { PHOTOS } from '@/lib/photos'
 import BookNowBanner from './BookNowBanner'
+import HomeMotion from './HomeMotion'
 import HomeHero from './HomeHero'
 import HomeReviews from './HomeReviews'
 import PhotoBanner from './PhotoBanner'
@@ -36,15 +37,15 @@ export default function HomePage({ tours, destinations, reviews, rating }: Props
 
 	return (
 		<>
-
+			<HomeMotion />
 			<main className="pb-12 text-neutral-950 sm:pb-24 dark:text-white">
 				<HomeHero destinations={destinations} />
 
 				{/* Phones: three small columns, icon above text. Larger screens: one row. */}
-				<ul className="mx-auto grid max-w-7xl grid-cols-3 gap-2 px-5 py-6 text-center text-xs font-medium leading-snug text-neutral-600 sm:flex sm:flex-wrap sm:justify-center sm:gap-x-10 sm:gap-y-3 sm:py-8 sm:text-sm dark:text-neutral-400">
+				<ul className={`${styles.stagger} mx-auto grid max-w-7xl grid-cols-3 gap-2 px-5 py-6 text-center text-xs font-medium leading-snug text-neutral-600 sm:flex sm:flex-wrap sm:justify-center sm:gap-x-10 sm:gap-y-3 sm:py-8 sm:text-sm dark:text-neutral-400`}>
 					{PROMISES.map(([Icon, key]) => (
 						<li key={key} className="flex flex-col items-center gap-1.5 sm:flex-row sm:gap-2">
-							<Icon className="h-5 w-5 shrink-0 text-neutral-950 dark:text-white" />
+							<Icon className={`${styles.bob} h-5 w-5 shrink-0 text-neutral-950 dark:text-white`} />
 							{t(key)}
 						</li>
 					))}
