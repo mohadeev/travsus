@@ -53,9 +53,9 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
 		<button
 			type="button"
 			onClick={() => openComposer(undefined)}
-			className="inline-flex items-center gap-2 rounded-full bg-brand-500 px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-brand-500/20 transition hover:bg-brand-600"
+			className="group inline-flex items-center gap-2 rounded-full bg-neutral-950 px-5 py-2.5 text-sm font-semibold text-white shadow-md transition duration-200 hover:-translate-y-0.5 hover:shadow-xl active:scale-95 dark:bg-white dark:text-neutral-950"
 		>
-			<PenLine className="h-4 w-4" />
+			<PenLine className="h-4 w-4 transition duration-300 group-hover:-rotate-12" />
 			{t('Write_Review')}
 		</button>
 	)
