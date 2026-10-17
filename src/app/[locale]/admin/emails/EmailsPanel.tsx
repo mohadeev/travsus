@@ -38,7 +38,7 @@ export default function EmailsPanel({ emails, brevo, mailrelay, owner }: { email
 			{/* Providers */}
 			<div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2">
 				{[
-					['Brevo', 'Account, booking and team emails · free up to 300 a day', brevo, 'BREVO_API_KEY'],
+					['Brevo SMTP', 'Account, booking and team emails · free up to 300 a day', brevo, 'SMTP_HOST, SMTP_USER, SMTP_PASS'],
 					['MailRelay', 'Newsletter subscribers and campaigns · free up to 80,000 a month', mailrelay, 'MAILRELAY_ACCOUNT, MAILRELAY_API_KEY'],
 				].map(([name, text, ok, env]) => (
 					<div key={name as string} className="flex items-start gap-4 rounded-3xl bg-neutral-100 p-5 dark:bg-neutral-900">
@@ -145,7 +145,7 @@ export default function EmailsPanel({ emails, brevo, mailrelay, owner }: { email
 							</div>
 						</div>
 						{result && <p className={`mt-3 text-sm font-medium ${result.ok ? 'text-emerald-600' : 'text-red-600'}`}>{result.text}</p>}
-						{!brevo && <p className="mt-3 text-sm text-amber-700">Emails can&apos;t be sent until BREVO_API_KEY is set.</p>}
+						{!brevo && <p className="mt-3 text-sm text-amber-700">Emails can&apos;t be sent until the SMTP login (SMTP_HOST, SMTP_USER, SMTP_PASS) is set.</p>}
 					</div>
 
 					{/* Preview, like an inbox */}
