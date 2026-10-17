@@ -4183,5 +4183,11 @@
     "k_cities": "Villes",
     "k_places": "Lieux à voir",
     "k_tours": "Circuits"
+  },
+  "HomeSeo": {
+    "title": "Circuits au Maroc et désert du Sahara | TRAVSUS",
+    "description": "Réservez vos circuits au Maroc avec des guides locaux : désert du Sahara depuis Marrakech et Fès, balades à dos de chameau à Merzouga, excursions et circuits privés.",
+    "h1": "Circuits au Maroc et dans le désert avec des guides locaux",
+    "og_alt": "Caravane de chameaux dans le désert du Sahara, Maroc"
   }
 }

@@ -19,6 +19,7 @@ const TABS: [string, string, LucideIcon][] = [
 
 export default function HomeHero({ destinations }: { destinations: HomeDestination[] }) {
 	const t = useTranslations('Home')
+	const tSeo = useTranslations('HomeSeo')
 	const tHero = useTranslations('app_locale_test_page')
 	const locale = useLocale()
 
@@ -36,9 +37,11 @@ export default function HomeHero({ destinations }: { destinations: HomeDestinati
 				<div className="absolute inset-0 -z-10 bg-gradient-to-b from-black/55 via-black/25 to-black/60" />
 
 				<div className="mx-auto flex min-h-[440px] max-w-3xl flex-col items-center justify-center px-4 py-10 text-center text-white sm:min-h-[580px] sm:py-16">
-					<h1 className="text-[32px] font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl">
+					{/* The page's main heading says what we offer (for search engines and screen readers); the big line stays the slogan */}
+					<h1 className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-white/80 sm:mb-4 sm:text-sm">{tSeo('h1')}</h1>
+					<p className="text-[32px] font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl">
 						{tHero('app_locale_test_page_Travel_With_Ultimate_Flexibility')}
-					</h1>
+					</p>
 					<p className="mt-3 max-w-xl text-base text-white/85 sm:mt-4 sm:text-xl">
 						{tHero('app_locale_test_page_Book_Cancel_Refund_Anytime_Anywhere')}
 					</p>

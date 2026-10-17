@@ -5,7 +5,6 @@ import { PHOTOS } from '@/lib/photos'
 import BookNowBanner from './BookNowBanner'
 import HomeHero from './HomeHero'
 import HomeReviews from './HomeReviews'
-import HomeStructuredData from './HomeStructuredData'
 import PhotoBanner from './PhotoBanner'
 import RealTrips from './RealTrips'
 import ReferralBanner from './ReferralBanner'
@@ -37,7 +36,6 @@ export default function HomePage({ tours, destinations, reviews, rating }: Props
 
 	return (
 		<>
-			<HomeStructuredData />
 
 			<main className="pb-12 text-neutral-950 sm:pb-24 dark:text-white">
 				<HomeHero destinations={destinations} />

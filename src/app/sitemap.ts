@@ -1,8 +1,10 @@
-// /sitemap.xml — generated from the database (tours in every language + blog).
+// /sitemap.xml — generated from the database: main pages, tours, destinations
+// (countries and cities with a photo) and blog, each with its other languages.
 import type { MetadataRoute } from 'next'
 import { routing } from '@/i18n/routing'
 import { db, T, fetchAll, asDate } from '@/lib/db'
 import { blogLanguages, shownBlogRows } from '@/lib/blog'
+import { slugify } from '@/lib/destinations'
 
 export const revalidate = 3600 // rebuild at most once an hour
 
@@ -18,6 +20,7 @@ const STATIC_PAGES = [
 	'/about',
 	'/contact',
 	'/affiliates',
+	'/destinations',
 ]
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -56,6 +59,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 				alternates: { languages },
 			})
 		}
+	}
+
+	// Destinations: countries and cities that have a photo (the ones with full pages)
+	const enName = (row: any) => (row.translations ?? []).find((t: any) => t.language === 'en-US')?.name ?? row.translations?.[0]?.name ?? ''
+	const inAllLanguages = (path: string, priority: number) => {
+		const languages = Object.fromEntries(locales.map((l) => [l, `${SITE_URL}/${l}${path}`]))
+		for (const url of Object.values(languages)) entries.push({ url, changeFrequency: 'weekly', priority, alternates: { languages } })
+	}
+	const countries = (await db.from(T.countries).select('id, translations').not('image', 'is', null)).data ?? []
+	const countrySlug = new Map((countries as any[]).map((c) => [c.id, slugify(enName(c))]))
+	for (const slug of Array.from(countrySlug.values())) if (slug) inAllLanguages(`/destinations/${slug}`, 0.7)
+	const cities = (await db.from(T.cities).select('countryId, translations').not('image', 'is', null).in('countryId', Array.from(countrySlug.keys()))).data ?? []
+	for (const city of cities as any[]) {
+		const slug = slugify(enName(city))
+		if (slug) inAllLanguages(`/destinations/${countrySlug.get(city.countryId)}/${slug}`, 0.7)
 	}
 
 	// Blog posts (test posts and copies left out) in the languages they are translated into
