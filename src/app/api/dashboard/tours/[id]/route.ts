@@ -33,6 +33,9 @@ async function requireBusiness() {
 	return { match: { businessId } as Record<string, string> }
 }
 
+/** Fields shared by every tour of a price group. */
+const PRICE_FIELDS = ['pricingTiers', 'accommodations'] as const
+
 const notFound = () =>
 	NextResponse.json(
 		{ message: 'Tour not found or does not belong to your business' },
@@ -56,7 +59,18 @@ export async function GET(request: NextRequest, { params }: Params) {
 			return NextResponse.json({ message: 'Tour not found' }, { status: 404 })
 		}
 
-		return NextResponse.json({ tour })
+		// Other versions of this trip that share its prices
+		const linkedTours = tour.priceGroupId
+			? (must(
+					await db
+						.from(T.tours)
+						.select('id, name')
+						.eq('priceGroupId', tour.priceGroupId)
+						.neq('id', tour.id),
+				) ?? [])
+			: []
+
+		return NextResponse.json({ tour: { ...tour, linkedTours } })
 	} catch (error) {
 		console.error('Error fetching tour:', error)
 		return NextResponse.json(
@@ -74,6 +88,7 @@ export async function PUT(request: NextRequest, { params }: Params) {
 		const body: Record<string, any> = (await request.json()) ?? {}
 		const changes = { ...body }
 		for (const field of PROTECTED_TOUR_FIELDS) delete changes[field]
+		delete changes.linkedTours // shown in the editor, not a column
 
 		const updatedTour = must(
 			await db
@@ -85,6 +100,18 @@ export async function PUT(request: NextRequest, { params }: Params) {
 		)
 
 		if (!updatedTour) return notFound()
+
+		// Linked versions of the same trip get the same prices
+		const prices = Object.fromEntries(PRICE_FIELDS.filter((f) => f in changes).map((f) => [f, changes[f]]))
+		if (updatedTour.priceGroupId && Object.keys(prices).length) {
+			must(
+				await db
+					.from(T.tours)
+					.update(touch(prices))
+					.match({ priceGroupId: updatedTour.priceGroupId, ...match })
+					.neq('id', updatedTour.id),
+			)
+		}
 
 		return NextResponse.json({ success: true, tour: updatedTour })
 	} catch (error) {

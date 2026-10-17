@@ -21,6 +21,10 @@ export default async function EditTourPage({ params }: { params: { locale: strin
 	const tour: any = must(await db.from(T.tours).select('*').eq('id', params.id).maybeSingle())
 	// Only the site owner, or the business the tour belongs to
 	if (!scope || !tour || !(scope.all || (scope.businessId && tour.businessId === scope.businessId))) notFound()
+	// Other versions of this trip that share its prices
+	const linkedTours = tour.priceGroupId
+		? (must(await db.from(T.tours).select('id, name').eq('priceGroupId', tour.priceGroupId).neq('id', tour.id)) ?? [])
+		: []
 
 	return (
 		<DashboardShell>
@@ -29,7 +33,7 @@ export default async function EditTourPage({ params }: { params: { locale: strin
 				All tours
 			</Link>
 			<DashboardHeader heading={tour.name || 'New trip'} text="Answer one question at a time. Everything saves by itself." />
-			<EasyTourEditor initial={tour} previewHref={previewOf(tour, params.locale)} backHref={`/${params.locale}/dashboard/tours`} />
+			<EasyTourEditor initial={{ ...tour, linkedTours }} previewHref={previewOf(tour, params.locale)} backHref={`/${params.locale}/dashboard/tours`} />
 		</DashboardShell>
 	)
 }

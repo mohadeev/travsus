@@ -7,7 +7,7 @@
 import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react'
 import Link from 'next/link'
 import {
-	ArrowDown, ArrowLeft, ArrowRight, ArrowUp, BedDouble, Check, CheckCircle2, CircleDashed, CloudOff, Euro, ExternalLink, FileText,
+	ArrowDown, ArrowLeft, ArrowRight, ArrowUp, BedDouble, Check, Link2, CheckCircle2, CircleDashed, CloudOff, Euro, ExternalLink, FileText,
 	ImagePlus, Images, ListOrdered, Loader2, Minus, PartyPopper, Plus, RotateCcw, Sparkles, Star, Trash2, type LucideIcon,
 } from 'lucide-react'
 import TourAccommodations from '../TourAccommodations'
@@ -26,8 +26,10 @@ type Tour = {
 	images: Photo[]
 	pricingTiers: Tier[]
 	accommodations: any[]
+	/** Other versions of this trip: they share these prices (not saved from here) */
+	linkedTours: { id: string; name: string }[]
 }
-type Field = keyof Omit<Tour, 'id'>
+type Field = keyof Omit<Tour, 'id' | 'linkedTours'>
 type SaveState = 'saved' | 'waiting' | 'saving' | 'error'
 
 // The vehicles a trip can be priced for (same list as before)
@@ -445,6 +447,30 @@ function DaysStep({ tour, set, onRemoved }: StepProps) {
 	)
 }
 
+/** Tells the editor that prices here also change the linked versions of the trip. */
+function LinkedNote({ tours }: { tours: { id: string; name: string }[] }) {
+	return (
+		<div className="mb-5 flex gap-3 rounded-2xl bg-neutral-100 p-4 text-base dark:bg-neutral-900">
+			<Link2 className="mt-0.5 h-5 w-5 shrink-0" />
+			<div>
+				<p className="font-semibold">
+					These prices and hotels are shared with {tours.length} other version{tours.length > 1 ? 's' : ''} of this trip
+				</p>
+				<p className="mt-1 text-sm text-neutral-500">Change them here and they change there too:</p>
+				<ul className="mt-2 space-y-1 text-sm">
+					{tours.map((t) => (
+						<li key={t.id}>
+							<Link href={`../${t.id}/edit` as any} className="underline underline-offset-2 hover:text-neutral-500">
+								{t.name}
+							</Link>
+						</li>
+					))}
+				</ul>
+			</div>
+		</div>
+	)
+}
+
 function PricesStep({ tour, set }: StepProps) {
 	const tiers = tour.pricingTiers
 	const days = Math.max(1, tour.days.length)
@@ -459,6 +485,7 @@ function PricesStep({ tour, set }: StepProps) {
 	}
 	return (
 		<Question title="How much does the trip cost?" help="Turn on each vehicle you offer, then write the price for the whole trip, for the whole group in that vehicle.">
+			{tour.linkedTours.length > 0 && <LinkedNote tours={tour.linkedTours} />}
 			<button
 				type="button"
 				onClick={() => set('pricingTiers', transportTiers(days))}
@@ -610,6 +637,7 @@ export default function EasyTourEditor({ initial, previewHref, backHref }: { ini
 		images: Array.isArray(initial.images) ? initial.images.filter((p: any) => p?.url) : [],
 		pricingTiers: Array.isArray(initial.pricingTiers) ? initial.pricingTiers : [],
 		accommodations: Array.isArray(initial.accommodations) ? initial.accommodations : [],
+		linkedTours: Array.isArray(initial.linkedTours) ? initial.linkedTours : [],
 	}))
 	const [step, setStep] = useState(0)
 	const [undo, setUndo] = useState<{ label: string; run: () => void } | null>(null)
