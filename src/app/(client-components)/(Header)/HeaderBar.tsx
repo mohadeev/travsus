@@ -18,6 +18,8 @@ export default function HeaderBar() {
 	const locale = useLocale()
 	const pathname = usePathname()
 	const [scrolled, setScrolled] = useState(false)
+	const [searchOpen, setSearchOpen] = useState(false)
+	const [query, setQuery] = useState('')
 
 	useEffect(() => {
 		const onScroll = () => setScrolled(window.scrollY > 8)
@@ -45,22 +47,46 @@ export default function HeaderBar() {
 			<div className="mx-auto flex h-16 max-w-7xl items-center gap-4 px-5 lg:gap-8">
 				<Logo className="w-24 shrink-0" />
 
+				{/* Small until used: it grows when focused or typed in, and shrinks back when empty */}
 				<form
 					action={`/${locale}/search`}
 					method="get"
 					role="search"
-					className="hidden flex-1 items-center gap-3 rounded-full bg-neutral-100 px-4 ring-neutral-950 transition focus-within:bg-white focus-within:ring-2 md:flex lg:max-w-xl dark:bg-neutral-900"
+					onFocus={() => setSearchOpen(true)}
+					onBlur={(e) => !e.currentTarget.contains(e.relatedTarget as Node) && !query && setSearchOpen(false)}
+					className={`hidden min-w-0 items-center gap-3 rounded-full px-4 ring-neutral-950 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] md:flex dark:ring-white ${
+						searchOpen
+							? 'h-12 w-full max-w-xl bg-white shadow-xl ring-2 dark:bg-neutral-900'
+							: 'h-10 w-60 max-w-xl bg-neutral-100 hover:bg-neutral-200/70 lg:w-[19rem] dark:bg-neutral-900 dark:hover:bg-neutral-800'
+					}`}
 				>
-					<Search className="h-[18px] w-[18px] shrink-0 text-neutral-500" />
-					<label className="flex-1">
+					<Search
+						className={`shrink-0 transition-all duration-500 ${searchOpen ? 'h-5 w-5 text-neutral-950 dark:text-white' : 'h-[18px] w-[18px] text-neutral-500'}`}
+					/>
+					<label className="min-w-0 flex-1">
 						<span className="sr-only">{tHome('search_label')}</span>
 						<input
 							type="search"
 							name="query"
+							value={query}
+							onChange={(e) => {
+								setQuery(e.target.value)
+								setSearchOpen(true)
+							}}
+							onKeyDown={(e) => e.key === 'Escape' && (setQuery(''), e.currentTarget.blur(), setSearchOpen(false))}
 							placeholder={tHome('search_placeholder')}
-							className="w-full border-0 bg-transparent p-0 py-2.5 text-sm placeholder:text-neutral-500 focus:outline-none focus:ring-0"
+							className={`w-full truncate border-0 bg-transparent p-0 [&::-webkit-search-cancel-button]:hidden placeholder:text-neutral-500 focus:outline-none focus:ring-0 transition-all duration-500 ${searchOpen ? 'text-base' : 'text-sm'}`}
 						/>
 					</label>
+					<button
+						type="submit"
+						tabIndex={searchOpen ? 0 : -1}
+						className={`shrink-0 rounded-full bg-neutral-950 text-sm font-semibold text-white transition-all duration-500 hover:bg-neutral-800 dark:bg-white dark:text-neutral-950 ${
+							searchOpen ? 'ml-0 max-w-[8rem] px-4 py-2 opacity-100' : '-ml-3 max-w-0 overflow-hidden px-0 py-2 opacity-0'
+						}`}
+					>
+						{tHome('search_cta')}
+					</button>
 				</form>
 
 				<div className="ml-auto flex items-center gap-1 text-neutral-900 dark:text-white">
