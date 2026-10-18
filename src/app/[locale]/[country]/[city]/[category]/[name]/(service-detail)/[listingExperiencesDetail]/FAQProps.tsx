@@ -2,6 +2,7 @@
 
 import { ChevronDown } from 'lucide-react'
 import { useTranslations } from '@/lib/i18n'
+import LinkedText from '@/components/text/LinkedText'
 
 interface FAQ {
 	question: string
@@ -34,7 +35,9 @@ export default function TourFAQ({ faqs }: FAQProps) {
 							<h3 className="font-semibold">{faq.question}</h3>
 							<ChevronDown className="mt-0.5 h-5 w-5 flex-shrink-0 text-neutral-500 transition-transform group-open:rotate-180 group-open:text-brand-500" />
 						</summary>
-						<p className="mt-2 text-[15px] leading-relaxed text-neutral-600 dark:text-neutral-400">{faq.answer}</p>
+						<p className="mt-2 text-[15px] leading-relaxed text-neutral-600 dark:text-neutral-400">
+							<LinkedText text={faq.answer} />
+						</p>
 					</details>
 				))}
 			</div>

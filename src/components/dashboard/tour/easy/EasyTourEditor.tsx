@@ -21,6 +21,9 @@ type Tour = {
 	name: string
 	subtitle: string
 	overview: string
+	/** What Google shows: title (~60 letters) and description (~155 letters) */
+	seoTitle: string
+	metaDescription: string
 	highlights: { name: string }[]
 	days: Day[]
 	images: Photo[]
@@ -336,6 +339,14 @@ function NameStep({ tour, set }: StepProps) {
 				<Label hint="One sentence that makes people want to go.">Short sentence</Label>
 				<textarea className={`${input} py-4`} rows={2} value={tour.subtitle} onChange={(e) => set('subtitle', e.target.value)} placeholder="Example: Sleep under the stars in a desert camp and ride camels at sunset." maxLength={240} />
 			</label>
+			<label className="mt-8 block">
+				<Label hint={`${tour.seoTitle.length}/60 letters · empty = the trip name`}>Title on Google</Label>
+				<input className={`${input} h-14`} value={tour.seoTitle} onChange={(e) => set('seoTitle', e.target.value)} placeholder="Example: 3-Day Marrakech to Merzouga Desert Tour" maxLength={70} />
+			</label>
+			<label className="mt-8 block">
+				<Label hint={`${tour.metaDescription.length}/155 letters · empty = the short sentence`}>Description on Google</Label>
+				<textarea className={`${input} py-4`} rows={3} value={tour.metaDescription} onChange={(e) => set('metaDescription', e.target.value)} placeholder="What people see under the title in Google results." maxLength={170} />
+			</label>
 		</Question>
 	)
 }
@@ -632,6 +643,8 @@ export default function EasyTourEditor({ initial, previewHref, backHref }: { ini
 		name: initial.name ?? '',
 		subtitle: initial.subtitle ?? '',
 		overview: initial.overview ?? '',
+		seoTitle: initial.seoTitle ?? '',
+		metaDescription: initial.metaDescription ?? '',
 		highlights: Array.isArray(initial.highlights) ? initial.highlights.map((h: any) => ({ ...h, name: typeof h === 'string' ? h : h?.name ?? '' })) : [],
 		days: Array.isArray(initial.days) ? initial.days.map((d: any) => ({ ...d, name: d?.name ?? '', description: d?.description ?? '' })) : [],
 		images: Array.isArray(initial.images) ? initial.images.filter((p: any) => p?.url) : [],

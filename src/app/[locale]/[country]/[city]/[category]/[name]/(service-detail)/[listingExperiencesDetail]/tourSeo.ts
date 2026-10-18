@@ -1,5 +1,6 @@
 // SEO helpers for the tour detail page: URLs, text cleanup and JSON-LD.
 import { routing } from '@/i18n/routing'
+import { stripLinks } from '@/components/text/LinkedText'
 
 export const SITE_URL = (
 	process.env.NEXT_PUBLIC_SITE_URL || 'https://www.travsus.com'
@@ -31,7 +32,7 @@ export function tourAlternates(tour: any): Record<string, string> {
 
 /** Plain text: no HTML, single spaces, cut at a word boundary. */
 export function plainText(value: unknown, maxLength?: number): string {
-	const text = String(value ?? '')
+	const text = stripLinks(String(value ?? ''))
 		.replace(/<[^>]*>/g, ' ')
 		.replace(/\s+/g, ' ')
 		.trim()
@@ -40,12 +41,22 @@ export function plainText(value: unknown, maxLength?: number): string {
 	return `${cut.slice(0, Math.max(cut.lastIndexOf(' '), maxLength * 0.6))}…`
 }
 
-/** "{tour name} | TRAVSUS" */
-export const tourTitle = (tour: any) => `${plainText(tour.name)} | ${BRAND}`
+/** Google shows about 60 characters of a title; longer ones get cut. */
+const TITLE_MAX = 60
 
-/** Meta description: overview, ~155 chars. */
+/**
+ * Page title: the tour's SEO title if it has one, otherwise its name.
+ * "| TRAVSUS" is added only when it still fits in 60 characters.
+ */
+export function tourTitle(tour: any): string {
+	const base = plainText(tour.seoTitle || tour.name)
+	const branded = `${base} | ${BRAND}`
+	return branded.length <= TITLE_MAX ? branded : base
+}
+
+/** Meta description: the SEO description, else the subtitle or overview, ~155 chars. */
 export const tourDescription = (tour: any) =>
-	plainText(tour.subtitle || tour.overview, 155)
+	plainText(tour.metaDescription || tour.subtitle || tour.overview, 155)
 
 export const tourImages = (tour: any): string[] =>
 	(tour.images ?? []).map((img: any) => img?.url).filter(Boolean)

@@ -8,12 +8,21 @@ import { useTranslations } from '@/lib/i18n'
 import { useTranslations as useIntlTranslations } from 'next-intl'
 import TourMap from './TourMap'
 import { buildRoute } from './route'
+import LinkedText from '@/components/text/LinkedText'
 
 interface Day {
 	name: string
 	description: string
 	cityName?: string
-	stops?: { name: string; description?: string; duration?: string; image?: string }[]
+	stops?: {
+		name: string
+		description?: string
+		duration?: string
+		image?: string
+		imageAlt?: string
+		/** Who took the photo (free licences ask us to say so) */
+		imageCredit?: { author?: string; license?: string; source?: string }
+	}[]
 }
 
 export default function TourItineraryWithMap({ days }: { days: Day[]; title?: string }) {
@@ -98,7 +107,7 @@ export default function TourItineraryWithMap({ days }: { days: Day[]; title?: st
 								<div className="ml-12 mt-3 space-y-4">
 									{day.description && (
 										<p className="whitespace-pre-line text-[15px] leading-relaxed text-neutral-700 dark:text-neutral-300">
-											{day.description}
+											<LinkedText text={day.description} />
 										</p>
 									)}
 									{day.stops?.map((stop, stopIndex) => (
@@ -112,12 +121,29 @@ export default function TourItineraryWithMap({ days }: { days: Day[]; title?: st
 													</p>
 												)}
 												{stop.image && (
-													<div className="relative mt-2 aspect-[16/9] max-w-md overflow-hidden rounded-xl">
-														<Image src={stop.image} alt={stop.name} fill sizes="448px" className="object-cover" />
-													</div>
+													<figure className="mt-2 max-w-md">
+														<div className="relative aspect-[16/9] overflow-hidden rounded-xl">
+															<Image src={stop.image} alt={stop.imageAlt || stop.name} fill sizes="448px" className="object-cover" />
+														</div>
+														{stop.imageCredit?.license && (
+															<figcaption className="mt-1 text-xs text-neutral-500">
+																Photo:{' '}
+																{stop.imageCredit.source ? (
+																	<a href={stop.imageCredit.source} target="_blank" rel="noopener nofollow" className="underline">
+																		{stop.imageCredit.author || 'Wikimedia Commons'}
+																	</a>
+																) : (
+																	stop.imageCredit.author || 'Wikimedia Commons'
+																)}
+																, {stop.imageCredit.license}
+															</figcaption>
+														)}
+													</figure>
 												)}
 												{stop.description && (
-													<p className="mt-1 text-[15px] text-neutral-700 dark:text-neutral-300">{stop.description}</p>
+													<p className="mt-1 text-[15px] text-neutral-700 dark:text-neutral-300">
+														<LinkedText text={stop.description} />
+													</p>
 												)}
 											</div>
 										</div>

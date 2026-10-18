@@ -36,6 +36,9 @@ async function requireBusiness() {
 /** Fields shared by every tour of a price group. */
 const PRICE_FIELDS = ['pricingTiers', 'accommodations'] as const
 
+/** Text the English page reads from the en-US translation: keep both in step. */
+const ENGLISH_TEXT_FIELDS = ['name', 'subtitle', 'overview', 'highlights', 'days', 'faq', 'seoTitle', 'metaDescription'] as const
+
 const notFound = () =>
 	NextResponse.json(
 		{ message: 'Tour not found or does not belong to your business' },
@@ -100,6 +103,13 @@ export async function PUT(request: NextRequest, { params }: Params) {
 		)
 
 		if (!updatedTour) return notFound()
+
+		// The English page shows the en-US translation, so mirror text edits there
+		const text = Object.fromEntries(ENGLISH_TEXT_FIELDS.filter((f) => f in changes).map((f) => [f, changes[f]]))
+		if (Object.keys(text).length && Array.isArray(updatedTour.translations)) {
+			const translations = updatedTour.translations.map((t: any) => (t?.language === 'en-US' ? { ...t, ...text } : t))
+			must(await db.from(T.tours).update(touch({ translations })).match({ id: updatedTour.id, ...match }))
+		}
 
 		// Linked versions of the same trip get the same prices
 		const prices = Object.fromEntries(PRICE_FIELDS.filter((f) => f in changes).map((f) => [f, changes[f]]))

@@ -3,6 +3,7 @@
 import { ChevronDown, ChevronUp } from 'lucide-react'
 import { useState } from 'react'
 import { useTranslations } from '@/lib/i18n'
+import LinkedText from '@/components/text/LinkedText'
 
 // Texts shorter than this are shown in full without a toggle
 const COLLAPSE_AFTER_CHARS = 200
@@ -26,7 +27,7 @@ const ReadMore = ({ description }: { description?: string }) => {
 					collapsible && !isExpanded ? 'line-clamp-4' : ''
 				}`}
 			>
-				{description}
+				<LinkedText text={description} />
 			</p>
 			{collapsible && (
 				<button
