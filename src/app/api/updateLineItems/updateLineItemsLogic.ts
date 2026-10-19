@@ -3,6 +3,7 @@ import calculateAccommodationPrice from './calculateAccommodationPrice'
 import generateGuestsObject from './generateGuestsObject'
 import predictAccommodation from './predictAccommodation'
 import taxLineItem from './taxLineItem'
+import { DEFAULT_ADULTS } from '@/lib/tourPricing'
 
 interface TourData {
 	tour: any
@@ -95,7 +96,7 @@ export async function updateLineItemsLogic(data: TourData) {
 		}
 	} else {
 		accommodation = {}
-		guests = { guestAdults: 2, guestChildren: 0 }
+		guests = { guestAdults: DEFAULT_ADULTS, guestChildren: 0 }
 		totalGuests = guests.guestAdults + guests.guestChildren
 		const getPriceTier = await travsusSdk({
 			subAction: 'findSpisificPricingTiers',

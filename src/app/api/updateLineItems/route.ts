@@ -9,6 +9,7 @@ import predictAccommodation from './predictAccommodation'
 import taxLineItem from './taxLineItem'
 import { saveLastBookingUpdates } from '../api-utils/actions/booking/saveLastBookingUpdates'
 import { updateLineItemsLogic } from './updateLineItemsLogic'
+import { DEFAULT_ADULTS } from '@/lib/tourPricing'
 
 export async function POST(request: NextRequest) {
 	const referer = request.headers.get('referer') || ''
@@ -94,7 +95,7 @@ export async function POST(request: NextRequest) {
 		}
 	} else {
 		accommodation = {}
-		guests = { guestAdults: 2, guestChildren: 0 }
+		guests = { guestAdults: DEFAULT_ADULTS, guestChildren: 0 }
 
 		const totalGuests: number = guests.guestAdults + guests.guestChildren
 		const getPriceTier = await travsusSdk({

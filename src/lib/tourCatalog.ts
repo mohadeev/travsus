@@ -27,7 +27,7 @@ export type CatalogTour = {
 	startAddress: Address
 	endAddress: Address
 	createdAt: string | null
-	/** Per-person price for 2 adults, as shown first on the tour page */
+	/** Per-person price for the default group (DEFAULT_ADULTS), as shown first on the tour page */
 	pricePerPerson: number | null
 }
 
@@ -39,7 +39,8 @@ async function startingPrice(tour: any) {
 		const total = (prices?.lineItems ?? [])
 			.filter((item: any) => item.includeInTotal)
 			.reduce((sum: number, item: any) => sum + (item.totalPrice || 0), 0)
-		return total > 0 ? Math.round((total / 2) * 100) / 100 : null
+		const people = prices?.totalGuests || 1
+		return total > 0 ? Math.round((total / people) * 100) / 100 : null
 	} catch {
 		return null
 	}
@@ -79,7 +80,7 @@ async function loadCatalog(): Promise<CatalogTour[]> {
 }
 
 /** Every tour with photos, newest first (cached; one database read per 10 minutes). */
-export const getTourCatalog = unstable_cache(loadCatalog, ['tour-catalog-v1'], {
+export const getTourCatalog = unstable_cache(loadCatalog, ['tour-catalog-v2'], {
 	revalidate: TEN_MINUTES,
 	tags: [TOURS_TAG],
 })

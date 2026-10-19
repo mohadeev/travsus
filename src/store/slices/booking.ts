@@ -38,7 +38,7 @@ const initialState: BookingState = {
 
 /**
  * Re-prices the booking for `tour` after a change.
- * `changes` may hold `guests` or `accommodation`; empty = default 2 adults.
+ * `changes` may hold `guests` or `accommodation`; empty = default group (DEFAULT_ADULTS adults).
  */
 export const recalculatePrice = createAsyncThunk(
 	'booking/recalculatePrice',

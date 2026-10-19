@@ -11,6 +11,9 @@
 
 export const STAY_PRICE_PER_NIGHT = { Standard: 50, Luxury: 90 } as const
 
+/** Travellers assumed until the visitor picks a number: prices are shown per person for this group. */
+export const DEFAULT_ADULTS = 4
+
 export const VEHICLES = [
 	{ name: 'SUV (prado)', image: 'https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png', min: 1, max: 5 },
 	{ name: 'Mercedes Vito', image: 'https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png', min: 6, max: 8 },
