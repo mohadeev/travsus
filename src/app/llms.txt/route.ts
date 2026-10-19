@@ -32,7 +32,7 @@ export async function GET() {
 				(t: any) => t.language === 'en-US',
 			)
 			const name = en?.name || tour.name
-			if (!slug || !name) return null
+			if (!slug || slug.includes('//') || !name) return null // no start address: link would 404
 			const days = en?.days?.length ? ` (${en.days.length} days)` : ''
 			return `- [${oneLine(name, 120)}${days}](${SITE_URL}${slug}): ${oneLine(en?.overview || tour.overview)}`
 		})

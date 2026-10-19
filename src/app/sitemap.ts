@@ -47,7 +47,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 		const slugs: { language: string; slug: string }[] = tour.slugs ?? []
 		const languages = Object.fromEntries(
 			slugs
-				.filter((s) => s.slug)
+				// A tour without a start address has no country/city in its link ("///") and 404s
+				.filter((s) => s.slug && !s.slug.includes('//'))
 				.map((s) => [s.language, `${SITE_URL}${s.slug}`]),
 		)
 		for (const url of Object.values(languages)) {
