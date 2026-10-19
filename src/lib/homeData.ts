@@ -2,6 +2,7 @@
 import { cache } from 'react'
 import { routing } from '@/i18n/routing'
 import { getTourCatalog, getReviewData } from '@/lib/tourCatalog'
+import { getCityPhoto } from '@/lib/cityPhotos'
 import { REVIEW_SELECT, localizeReview } from '@/lib/reviews'
 
 export type HomeTour = {
@@ -159,12 +160,17 @@ export const getHomeData = cache(async (locale: string) => {
 			) / 10
 		: null
 
+	// Each destination shows its own city photo; a tour photo when the city has none
+	const destinationList = await Promise.all(
+		Array.from(destinations.values())
+			.sort((a, b) => b.toursCount - a.toursCount)
+			.map(async (d) => ({ ...d, image: (await getCityPhoto(d.city, d.country)) ?? d.image })),
+	)
+
 	return {
 		reviews: homeReviews,
 		rating: { average: averageRating, count: allRatings.length },
 		tours: homeTours,
-		destinations: Array.from(destinations.values()).sort(
-			(a, b) => b.toursCount - a.toursCount,
-		),
+		destinations: destinationList,
 	}
 })
