@@ -2321,7 +2321,10 @@
     "reviews_sub": "Real reviews from people who booked with TRAVSUS.",
     "verified": "Verified booking",
     "see_tour": "See this tour",
-    "avg_rating": "{rating} average · {count, plural, one {# review} other {# reviews}}"
+    "avg_rating": "{rating} average · {count, plural, one {# review} other {# reviews}}",
+    "recently_viewed": "Recently viewed",
+    "recently_viewed_sub": "Tours you looked at, to pick up where you left off",
+    "recently_viewed_clear": "Clear"
   },
   "Payment": {
     "preparing": "Preparing secure payment…",

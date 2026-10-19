@@ -5,6 +5,7 @@ import { updateLineItemsLogic } from '@/app/api/updateLineItems/updateLineItemsL
 import { getTourData } from '@/lib/tourData'
 import { getHomeData } from '@/lib/homeData'
 import ListingExperiencesDetailPage from './page'
+import RecentTourTracker from '@/components/RecentTourTracker'
 import {
 	tourAlternates,
 	tourDescription,
@@ -139,6 +140,7 @@ const DetailLayout = async ({ params }: DetailLayoutProps) => {
 
 		return (
 			<div className="ListingDetailPage">
+				<RecentTourTracker tourId={tour.id} />
 				<div className="ListingDetailPage__content">
 					<ListingExperiencesDetailPage serviceData={{ ...tour, fromPricePerPerson }} similar={similar as any} />
 				</div>

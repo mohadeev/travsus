@@ -2621,7 +2621,10 @@
     "reviews_sub": "TRAVSUSで予約した方の本物のレビュー。",
     "verified": "予約確認済み",
     "see_tour": "このツアーを見る",
-    "avg_rating": "平均 {rating} · {count}件のレビュー"
+    "avg_rating": "平均 {rating} · {count}件のレビュー",
+    "recently_viewed": "最近見たツアー",
+    "recently_viewed_sub": "閲覧したツアーから続きを探せます",
+    "recently_viewed_clear": "クリア"
   },
   "Payment": {
     "preparing": "安全なお支払いを準備中…",

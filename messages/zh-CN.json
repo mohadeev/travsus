@@ -2483,7 +2483,10 @@
     "reviews_sub": "来自 TRAVSUS 预订用户的真实评价。",
     "verified": "已验证预订",
     "see_tour": "查看此行程",
-    "avg_rating": "平均 {rating} · {count} 条评价"
+    "avg_rating": "平均 {rating} · {count} 条评价",
+    "recently_viewed": "最近浏览",
+    "recently_viewed_sub": "您看过的行程，方便继续挑选",
+    "recently_viewed_clear": "清除"
   },
   "Payment": {
     "preparing": "正在准备安全支付…",

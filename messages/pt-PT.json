@@ -3055,7 +3055,10 @@
     "reviews_sub": "Avaliações reais de quem reservou com a TRAVSUS.",
     "verified": "Reserva verificada",
     "see_tour": "Ver este tour",
-    "avg_rating": "{rating} de média · {count, plural, one {# avaliação} other {# avaliações}}"
+    "avg_rating": "{rating} de média · {count, plural, one {# avaliação} other {# avaliações}}",
+    "recently_viewed": "Vistos recentemente",
+    "recently_viewed_sub": "Os tours que viu, para continuar onde parou",
+    "recently_viewed_clear": "Limpar"
   },
   "Payment": {
     "preparing": "A preparar o pagamento seguro…",

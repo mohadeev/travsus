@@ -3605,7 +3605,10 @@
     "reviews_sub": "Echte Bewertungen von Menschen, die bei TRAVSUS gebucht haben.",
     "verified": "Verifizierte Buchung",
     "see_tour": "Diese Tour ansehen",
-    "avg_rating": "{rating} im Schnitt · {count, plural, one {# Bewertung} other {# Bewertungen}}"
+    "avg_rating": "{rating} im Schnitt · {count, plural, one {# Bewertung} other {# Bewertungen}}",
+    "recently_viewed": "Zuletzt angesehen",
+    "recently_viewed_sub": "Touren, die Sie sich angesehen haben – machen Sie dort weiter",
+    "recently_viewed_clear": "Löschen"
   },
   "Payment": {
     "preparing": "Sichere Zahlung wird vorbereitet…",

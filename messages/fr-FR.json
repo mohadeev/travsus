@@ -3621,7 +3621,10 @@
     "reviews_sub": "De vrais avis de personnes ayant réservé avec TRAVSUS.",
     "verified": "Réservation vérifiée",
     "see_tour": "Voir ce circuit",
-    "avg_rating": "{rating} en moyenne · {count, plural, one {# avis} other {# avis}}"
+    "avg_rating": "{rating} en moyenne · {count, plural, one {# avis} other {# avis}}",
+    "recently_viewed": "Vus récemment",
+    "recently_viewed_sub": "Les circuits que vous avez consultés, pour reprendre où vous en étiez",
+    "recently_viewed_clear": "Effacer"
   },
   "Payment": {
     "preparing": "Préparation du paiement sécurisé…",

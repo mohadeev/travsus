@@ -8,6 +8,7 @@ import HomeHero from './HomeHero'
 import HomeReviews from './HomeReviews'
 import PhotoBanner from './PhotoBanner'
 import RealTrips from './RealTrips'
+import RecentlyViewed from './RecentlyViewed'
 import ReferralBanner from './ReferralBanner'
 import TopDestinations from './TopDestinations'
 import TopTours from './TopTours'
@@ -52,6 +53,9 @@ export default function HomePage({ tours, destinations, reviews, rating }: Props
 				</ul>
 
 				<div className="mx-auto max-w-7xl space-y-14 px-5 pt-4 sm:space-y-28 sm:pt-8">
+					{/* Tours this visitor opened (from their browser); hidden for new visitors */}
+					<RecentlyViewed tours={tours.map(({ searchText, ...card }) => card)} />
+
 					<TopTours tours={tours.slice(0, 8)} />
 
 					<div className={styles.reveal}>

@@ -3150,7 +3150,10 @@
     "reviews_sub": "Настоящие отзывы тех, кто бронировал с TRAVSUS.",
     "verified": "Подтверждённое бронирование",
     "see_tour": "Смотреть тур",
-    "avg_rating": "В среднем {rating} · {count, plural, one {# отзыв} few {# отзыва} many {# отзывов} other {# отзыва}}"
+    "avg_rating": "В среднем {rating} · {count, plural, one {# отзыв} few {# отзыва} many {# отзывов} other {# отзыва}}",
+    "recently_viewed": "Недавно просмотренные",
+    "recently_viewed_sub": "Туры, которые вы смотрели, — продолжите с того же места",
+    "recently_viewed_clear": "Очистить"
   },
   "Payment": {
     "preparing": "Готовим безопасную оплату…",

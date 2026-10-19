@@ -3113,7 +3113,10 @@
     "reviews_sub": "Recensioni vere di chi ha prenotato con TRAVSUS.",
     "verified": "Prenotazione verificata",
     "see_tour": "Vedi questo tour",
-    "avg_rating": "{rating} di media · {count, plural, one {# recensione} other {# recensioni}}"
+    "avg_rating": "{rating} di media · {count, plural, one {# recensione} other {# recensioni}}",
+    "recently_viewed": "Visti di recente",
+    "recently_viewed_sub": "I tour che hai guardato, per riprendere da dove avevi lasciato",
+    "recently_viewed_clear": "Cancella"
   },
   "Payment": {
     "preparing": "Preparazione del pagamento sicuro…",

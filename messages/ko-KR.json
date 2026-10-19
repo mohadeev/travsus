@@ -2608,7 +2608,10 @@
     "reviews_sub": "TRAVSUS로 예약한 분들의 실제 리뷰.",
     "verified": "인증된 예약",
     "see_tour": "이 투어 보기",
-    "avg_rating": "평균 {rating} · 리뷰 {count}개"
+    "avg_rating": "평균 {rating} · 리뷰 {count}개",
+    "recently_viewed": "최근 본 투어",
+    "recently_viewed_sub": "살펴본 투어를 이어서 확인하세요",
+    "recently_viewed_clear": "지우기"
   },
   "Payment": {
     "preparing": "안전한 결제를 준비하는 중…",
