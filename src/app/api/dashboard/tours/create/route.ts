@@ -3,6 +3,7 @@ import { type NextRequest, NextResponse } from 'next/server'
 import getUserData from '@/app/api/user/getUserData'
 import { db, T, must, withMeta, EMPTY_TOUR_LISTS } from '@/lib/db'
 import { getBusinessId } from '../ownTour'
+import { refreshTourCache } from '@/lib/tourCatalog'
 
 export async function POST(request: NextRequest) {
 	try {
@@ -43,6 +44,7 @@ export async function POST(request: NextRequest) {
 				.single(),
 		)
 
+		refreshTourCache()
 		return NextResponse.json({ success: true, tour }, { status: 201 })
 	} catch (error) {
 		console.error('Error creating tour:', error)

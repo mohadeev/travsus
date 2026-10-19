@@ -5,6 +5,7 @@ import extractLanguageFromRequest from '../listing/get/getTourData/extractLangua
 import { db, T, must, withMeta, asDate } from '@/lib/db'
 import { createTranslatableContent } from '@/lib/translations'
 import { REVIEW_SELECT, localizeReview } from '@/lib/reviews'
+import { refreshTourCache } from '@/lib/tourCatalog'
 
 export async function POST(req: NextRequest) {
 	try {
@@ -146,6 +147,7 @@ export async function POST(req: NextRequest) {
 			updatedAt: asDate(review.updatedAt)?.toISOString(),
 		}
 
+		refreshTourCache()
 		return NextResponse.json({ success: true, review: formattedReview })
 	} catch (error) {
 		console.error('Error creating review:', error)

@@ -3,6 +3,7 @@ import { type NextRequest, NextResponse } from 'next/server'
 import { currentUser } from '@/lib/guards'
 import { db, T, must, touch } from '@/lib/db'
 import { getBusinessId, PROTECTED_TOUR_FIELDS } from '../ownTour'
+import { refreshTourCache } from '@/lib/tourCatalog'
 
 type Params = { params: { id: string } }
 
@@ -123,6 +124,7 @@ export async function PUT(request: NextRequest, { params }: Params) {
 			)
 		}
 
+		refreshTourCache()
 		return NextResponse.json({ success: true, tour: updatedTour })
 	} catch (error) {
 		console.error('Error updating tour:', error)
@@ -157,6 +159,7 @@ export async function DELETE(request: NextRequest, { params }: Params) {
 
 		must(await db.from(T.reviews).delete().eq('tourId', params.id))
 		must(await db.from(T.tours).delete().eq('id', params.id))
+		refreshTourCache()
 
 		return NextResponse.json({
 			success: true,

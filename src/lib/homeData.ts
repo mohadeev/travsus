@@ -1,8 +1,7 @@
 // Data for the home page, loaded on the server (fast, and in the HTML for SEO).
 import { cache } from 'react'
-import { db, T, REL } from '@/lib/db'
 import { routing } from '@/i18n/routing'
-import { updateLineItemsLogic } from '@/app/api/updateLineItems/updateLineItemsLogic'
+import { getTourCatalog, getReviewData } from '@/lib/tourCatalog'
 import { REVIEW_SELECT, localizeReview } from '@/lib/reviews'
 
 export type HomeTour = {
@@ -49,35 +48,11 @@ const slugFor = (tour: any, locale: string) => {
 	)
 }
 
-/** Per-person price for 2 adults: the price shown first on the tour page. */
-async function startingPrice(tour: any) {
-	try {
-		const prices = await updateLineItemsLogic({ tour, body: {} })
-		const total = (prices?.lineItems ?? [])
-			.filter((item: any) => item.includeInTotal)
-			.reduce((sum: number, item: any) => sum + (item.totalPrice || 0), 0)
-		return total > 0 ? Math.round((total / 2) * 100) / 100 : null
-	} catch {
-		return null
-	}
-}
-
 export const getHomeData = cache(async (locale: string) => {
-	const [{ data: tours }, { data: reviews }, { data: latestReviews }] = await Promise.all([
-		db
-			.from(T.tours)
-			.select(
-				`id, name, subtitle, overview, tags, slugs, translations, images, days, accommodations, pricingTiers, price, ${REL.tourAddresses}`,
-			)
-			.gt('images', '[]')
-			.order('createdAt', { ascending: false }),
-		db.from(T.reviews).select('tourId, rating'),
-		db
-			.from(T.reviews)
-			.select(REVIEW_SELECT)
-			.gte('rating', 4)
-			.order('createdAt', { ascending: false })
-			.limit(9),
+	// Shared caches: one database read per 10 minutes for every visitor and language
+	const [tours, { ratings: reviews, latest: latestReviews }] = await Promise.all([
+		getTourCatalog(),
+		getReviewData(REVIEW_SELECT),
 	])
 
 	// Real ratings per tour
@@ -93,31 +68,28 @@ export const getHomeData = cache(async (locale: string) => {
 	const homeTours: HomeTour[] = []
 	const destinations = new Map<string, HomeDestination>()
 
-	for (const tour of (tours ?? []) as any[]) {
+	for (const tour of tours) {
 		const href = slugFor(tour, locale)
 		const image = tour.images?.[0]?.url
 		if (!href || !image) continue
 
-		const translated =
-			tour.translations?.find((t: any) => t.language === locale) ?? {}
 		const rating = ratings.get(tour.id)
 		const city = tour.startAddress?.city ?? null
 
 		homeTours.push({
 			id: tour.id,
-			name: translated.name || tour.name,
+			name: tour.names[locale] || tour.name,
 			href,
 			image,
-			days: tour.days?.length ?? 0,
+			days: tour.dayCount,
 			city,
-			pricePerPerson: await startingPrice(tour),
+			pricePerPerson: tour.pricePerPerson,
 			rating: rating ? Math.round((rating.sum / rating.count) * 10) / 10 : null,
 			reviewsCount: rating?.count ?? 0,
 			searchText: [
 				tour.name,
-				translated.name,
+				tour.names[locale],
 				tour.subtitle,
-				translated.subtitle,
 				tour.overview,
 				...(Array.isArray(tour.tags) ? tour.tags : []),
 				tour.startAddress?.city,

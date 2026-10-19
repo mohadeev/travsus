@@ -1,37 +1,26 @@
 export const dynamic = 'force-dynamic'
-import { NextResponse } from 'next/server'
+import { type NextRequest, NextResponse } from 'next/server'
 import extractLanguageFromRequest from '../getTourData/extractLanguageFromRequest'
-import { db, T, must } from '@/lib/db'
+import { getTourCatalog, cardPricing, toCard } from '@/lib/tourCatalog'
 
 const MAX_RELATED = 20
 
-// Related tours = other tours with the same number of days
-export async function GET(request: Request) {
+// Related tours = other tours with the same number of days.
+// Reads the shared cached tour list; only the prices of the shown tours come from the database.
+export async function GET(request: NextRequest) {
 	try {
 		const id = new URL(request.url).searchParams.get('id')
 		const language = extractLanguageFromRequest(request)
 
-		const tour = id
-			? must(await db.from(T.tours).select('days').eq('id', id).maybeSingle())
-			: null
-		const daysNumber = Array.isArray(tour?.days) ? tour.days.length : 3
+		const catalog = await getTourCatalog()
+		const daysNumber = catalog.find((t) => t.id === id)?.dayCount || 3
 
-		const allTours: any[] = must(await db.from(T.tours).select('*')) ?? []
+		const related = catalog.filter((t) => t.id !== id && t.dayCount === daysNumber).slice(0, MAX_RELATED)
+		const pricing = await cardPricing(related.map((t) => t.id))
 
-		const relatedTours = allTours
-			.filter((t) => t.id !== id && Array.isArray(t.days) && t.days.length === daysNumber)
-			.slice(0, MAX_RELATED)
-			.map((t) => ({
-				...t,
-				...(t.translations ?? []).find((trns: any) => trns.language === language),
-			}))
-
-		return NextResponse.json({ allToursData: relatedTours, days: daysNumber })
+		return NextResponse.json({ allToursData: related.map((t) => toCard(t, language, pricing.get(t.id))), days: daysNumber })
 	} catch (error: any) {
-		console.error('Search error:', error)
-		return NextResponse.json(
-			{ error: 'Failed to search tours' },
-			{ status: 500 },
-		)
+		console.error('Related tours error:', error)
+		return NextResponse.json({ error: 'Failed to load related tours' }, { status: 500 })
 	}
 }

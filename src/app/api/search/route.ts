@@ -1,11 +1,11 @@
 export const dynamic = "force-dynamic";
-import { NextResponse } from 'next/server'
-import { db, T, must } from '@/lib/db'
+import { type NextRequest, NextResponse } from 'next/server'
+import { getTourCatalog, cardPricing, toCard, type CatalogTour } from '@/lib/tourCatalog'
 import { updateLineItemsLogic } from '../updateLineItems/updateLineItemsLogic'
 import extractLanguageFromRequest from '../listing/get/getTourData/extractLanguageFromRequest'
 
 // GET /api/tours/search/:query
-export async function GET(request: Request) {
+export async function GET(request: NextRequest) {
 	try {
 		// Parse the URL
 		const { searchParams } = new URL(request.url)
@@ -34,34 +34,28 @@ export async function GET(request: Request) {
 			daysNumber = null
 		}
 
-		// Text and day-count filters (tours table is small, so filter in code)
+		// Text and day-count filters, on the shared cached tour list
 		const text = query.trim().toLowerCase()
-		const matchesText = (tour: any) =>
+		const matchesText = (tour: CatalogTour) =>
 			!text ||
-			[tour.name, tour.subtitle, tour.overview, tour.conclusion].some((v) =>
-				v?.toLowerCase().includes(text),
-			) ||
-			(Array.isArray(tour.tags) && tour.tags.includes(query)) ||
-			(Array.isArray(tour.keyphrase) && tour.keyphrase.includes(query))
-		const matchesDays = (tour: any) =>
-			daysNumber === null || (Array.isArray(tour.days) && tour.days.length === daysNumber)
+			[tour.name, tour.names[language], tour.subtitle, tour.overview].some((v) => v?.toLowerCase().includes(text)) ||
+			tour.tags.includes(query)
+		const matchesDays = (tour: CatalogTour) => daysNumber === null || tour.dayCount === daysNumber
 
-		const allTours: any[] = must(await db.from(T.tours).select('*')) ?? []
-		const tours = allTours.filter((t) => matchesText(t) && matchesDays(t)).slice(0, 50)
+		const tours = (await getTourCatalog()).filter((t) => matchesText(t) && matchesDays(t)).slice(0, 50)
+		// Only the matching tours' prices come from the database
+		const pricing = await cardPricing(tours.map((t) => t.id))
 
 		// Process tours with pricing
 		const newTours = await Promise.all(
-			tours.map(async (tour) => {
+			tours.map(async (catalogTour) => {
+				const tour = toCard(catalogTour, language, pricing.get(catalogTour.id))
 				try {
 					const updated = await updateLineItemsLogic({
 						tour,
 						body: { guests: { guestAdults: 18, guestChildren: 0 } },
 					})
-					return {
-						...tour,
-						...updated,
-						...(tour.translations ?? []).find((trns: any) => trns.language === language),
-					}
+					return updated // includes the tour fields and its startPrice
 				} catch (error) {
 					console.error('Error updating tour pricing:', error)
 					return tour // Return original tour if pricing update fails
