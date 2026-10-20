@@ -1,14 +1,13 @@
 import { BadgeCheck, Headphones, ShieldCheck } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import type { HomeDestination, HomeReview, HomeTour } from '@/lib/homeData'
-import { PHOTOS } from '@/lib/photos'
 import BookNowBanner from './BookNowBanner'
 import HomeMotion from './HomeMotion'
 import HomeHero from './HomeHero'
 import HomeReviews from './HomeReviews'
-import PhotoBanner from './PhotoBanner'
 import RealTrips from './RealTrips'
 import RecentlyViewed from './RecentlyViewed'
+import SaharaBanner from './SaharaBanner'
 import ReferralBanner from './ReferralBanner'
 import TopDestinations from './TopDestinations'
 import TopTours from './TopTours'
@@ -34,7 +33,8 @@ type Props = {
  */
 export default function HomePage({ tours, destinations, reviews, rating }: Props) {
 	const t = useTranslations('app_locale_ClientHomePage')
-	const tHome = useTranslations('Home')
+	// Tour cards for the browser (the search words are not needed there)
+	const cards = tours.map(({ searchText, ...card }) => card)
 
 	return (
 		<>
@@ -54,7 +54,7 @@ export default function HomePage({ tours, destinations, reviews, rating }: Props
 
 				<div className="mx-auto max-w-7xl space-y-14 px-5 pt-4 sm:space-y-28 sm:pt-8">
 					{/* Tours this visitor opened (from their browser); hidden for new visitors */}
-					<RecentlyViewed tours={tours.map(({ searchText, ...card }) => card)} />
+					<RecentlyViewed tours={cards} />
 
 					<TopTours tours={tours.slice(0, 8)} />
 
@@ -69,14 +69,7 @@ export default function HomePage({ tours, destinations, reviews, rating }: Props
 					</div>
 
 					<div className={styles.reveal}>
-						<PhotoBanner
-							photo={PHOTOS.sahara}
-							align="right"
-							title={tHome('sahara_title')}
-							text={tHome('sahara_text')}
-							ctaLabel={tHome('explore')}
-							ctaHref="/search?query=desert"
-						/>
+						<SaharaBanner tours={cards} />
 					</div>
 
 					<HomeReviews reviews={reviews} />
