@@ -2631,7 +2631,11 @@
     "pay_deposit_hint": "剩余的{rest}将在行程第一天扣款",
     "pay_full": "现在全额支付",
     "pay_full_hint": "今天支付{amount}，之后无需再付",
-    "reserve_deposit": "支付{amount}预订"
+    "reserve_deposit": "支付{amount}预订",
+    "switch_deposit": "现在付{amount}",
+    "switch_full": "全额支付",
+    "today": "今天",
+    "on_tour_day": "行程当天"
   },
   "TourRoute": {
     "your_route": "您的路线",

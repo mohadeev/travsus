@@ -3203,7 +3203,11 @@
     "pay_deposit_hint": "Os restantes {rest} são cobrados no primeiro dia do tour",
     "pay_full": "Pagar tudo agora",
     "pay_full_hint": "{amount} hoje, nada mais a pagar",
-    "reserve_deposit": "Reservar por {amount}"
+    "reserve_deposit": "Reservar por {amount}",
+    "switch_deposit": "Pagar {amount} agora",
+    "switch_full": "Pagar tudo",
+    "today": "Hoje",
+    "on_tour_day": "No dia do tour"
   },
   "TourRoute": {
     "your_route": "O seu percurso",

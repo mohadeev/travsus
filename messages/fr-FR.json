@@ -3769,7 +3769,11 @@
     "pay_deposit_hint": "Le solde de {rest} est prélevé le premier jour du circuit",
     "pay_full": "Tout payer maintenant",
     "pay_full_hint": "{amount} aujourd’hui, plus rien à payer",
-    "reserve_deposit": "Réserver pour {amount}"
+    "reserve_deposit": "Réserver pour {amount}",
+    "switch_deposit": "Payer {amount} maintenant",
+    "switch_full": "Tout payer",
+    "today": "Aujourd’hui",
+    "on_tour_day": "Le jour du circuit"
   },
   "TourRoute": {
     "your_route": "Votre itinéraire",

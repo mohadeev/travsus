@@ -3753,7 +3753,11 @@
     "pay_deposit_hint": "Die restlichen {rest} werden am ersten Tourtag abgebucht",
     "pay_full": "Jetzt alles bezahlen",
     "pay_full_hint": "{amount} heute, danach nichts mehr zu zahlen",
-    "reserve_deposit": "Für {amount} reservieren"
+    "reserve_deposit": "Für {amount} reservieren",
+    "switch_deposit": "Jetzt {amount} zahlen",
+    "switch_full": "Alles zahlen",
+    "today": "Heute",
+    "on_tour_day": "Am Tourtag"
   },
   "TourRoute": {
     "your_route": "Ihre Route",

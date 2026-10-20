@@ -3298,7 +3298,11 @@
     "pay_deposit_hint": "Остаток {rest} списывается в первый день тура",
     "pay_full": "Оплатить всё сейчас",
     "pay_full_hint": "{amount} сегодня, больше ничего платить не нужно",
-    "reserve_deposit": "Забронировать за {amount}"
+    "reserve_deposit": "Забронировать за {amount}",
+    "switch_deposit": "Оплатить {amount}",
+    "switch_full": "Оплатить всё",
+    "today": "Сегодня",
+    "on_tour_day": "В день тура"
   },
   "TourRoute": {
     "your_route": "Ваш маршрут",

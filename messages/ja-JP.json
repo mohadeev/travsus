@@ -2769,7 +2769,11 @@
     "pay_deposit_hint": "残りの{rest}はツアー初日に請求されます",
     "pay_full": "今すぐ全額支払う",
     "pay_full_hint": "本日{amount}、追加のお支払いはありません",
-    "reserve_deposit": "{amount}で予約"
+    "reserve_deposit": "{amount}で予約",
+    "switch_deposit": "今{amount}を支払う",
+    "switch_full": "全額支払う",
+    "today": "本日",
+    "on_tour_day": "ツアー当日"
   },
   "TourRoute": {
     "your_route": "ルート",

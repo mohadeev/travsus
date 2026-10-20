@@ -2469,7 +2469,11 @@
     "pay_deposit_hint": "The remaining {rest} is charged on the first tour day",
     "pay_full": "Pay in full now",
     "pay_full_hint": "{amount} today, nothing more to pay",
-    "reserve_deposit": "Reserve for {amount}"
+    "reserve_deposit": "Reserve for {amount}",
+    "switch_deposit": "Pay {amount} now",
+    "switch_full": "Pay all now",
+    "today": "Today",
+    "on_tour_day": "On the tour day"
   },
   "TourRoute": {
     "your_route": "Your route",

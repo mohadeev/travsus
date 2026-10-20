@@ -2756,7 +2756,11 @@
     "pay_deposit_hint": "나머지 {rest}는 투어 첫날 결제됩니다",
     "pay_full": "지금 전액 결제",
     "pay_full_hint": "오늘 {amount}, 추가 결제 없음",
-    "reserve_deposit": "{amount}로 예약"
+    "reserve_deposit": "{amount}로 예약",
+    "switch_deposit": "지금 {amount} 결제",
+    "switch_full": "전액 결제",
+    "today": "오늘",
+    "on_tour_day": "투어 당일"
   },
   "TourRoute": {
     "your_route": "여행 경로",

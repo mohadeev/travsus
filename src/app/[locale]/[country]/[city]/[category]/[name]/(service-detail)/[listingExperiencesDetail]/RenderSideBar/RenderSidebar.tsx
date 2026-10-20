@@ -5,7 +5,7 @@ import { type FC, type ReactNode, useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import type { Route } from 'next'
 import { useTranslations } from 'next-intl'
-import { CalendarClock, Check, ChevronDown, CreditCard, Crown, Hotel, Minus, Plus, ShieldCheck } from 'lucide-react'
+import { CalendarClock, Check, ChevronDown, Crown, Hotel, Minus, Plus, ShieldCheck } from 'lucide-react'
 import StayDatesRangeInput from '../StayDatesRangeInput'
 import LineItemsBreakdown from '../LineItems/LineItemsBreakdown'
 import { useAppDispatch, useAppSelector } from '@/store/hooks'
@@ -198,8 +198,9 @@ const RenderSidebar: FC = () => {
 			{/* 3. Where to sleep */}
 			{hasStays && (
 				<Step number={3} title={t('step_hotel')}>
-					<div className="space-y-2" role="radiogroup" aria-label={t('step_hotel')}>
+					<div className="grid grid-cols-2 gap-2" role="radiogroup" aria-label={t('step_hotel')}>
 						<Choice
+							compact
 							selected={hotel === 'Standard'}
 							onSelect={() => update({ hotel: 'Standard' })}
 							icon={<Hotel className="h-6 w-6" />}
@@ -208,6 +209,7 @@ const RenderSidebar: FC = () => {
 						/>
 						{hasLuxury && (
 							<Choice
+								compact
 								selected={hotel === 'Luxury'}
 								onSelect={() => update({ hotel: 'Luxury' })}
 								icon={<Crown className="h-6 w-6" />}
@@ -215,28 +217,6 @@ const RenderSidebar: FC = () => {
 								hint={t('hotel_luxury_hint')}
 							/>
 						)}
-					</div>
-				</Step>
-			)}
-
-			{/* How to pay: everything now, or €20 now and the rest on the tour day */}
-			{canDeposit && (
-				<Step number={hasStays ? 4 : 3} title={t('pay_title')}>
-					<div className="space-y-2" role="radiogroup" aria-label={t('pay_title')}>
-						<Choice
-							selected={payPlan === 'deposit'}
-							onSelect={() => setPlan('deposit')}
-							icon={<CalendarClock className="h-6 w-6" />}
-							title={t('pay_deposit', { amount: deposit })}
-							hint={t('pay_deposit_hint', { rest: formatCurrency(balanceAfterDeposit(tripTotal)) })}
-						/>
-						<Choice
-							selected={payPlan === 'full'}
-							onSelect={() => setPlan('full')}
-							icon={<CreditCard className="h-6 w-6" />}
-							title={t('pay_full')}
-							hint={t('pay_full_hint', { amount: formatCurrency(tripTotal) })}
-						/>
 					</div>
 				</Step>
 			)}
@@ -252,6 +232,39 @@ const RenderSidebar: FC = () => {
 						{updating ? <span className="text-base font-medium text-neutral-500">{t('updating')}</span> : formatCurrency(total || perPerson * people)}
 					</p>
 				</div>
+				{/* Pay €20 now (rest on the tour day) or everything now */}
+				{canDeposit && (
+					<>
+						<div role="radiogroup" aria-label={t('pay_title')} className="mt-4 grid grid-cols-2 gap-1 rounded-full bg-white p-1 ring-1 ring-neutral-200 dark:bg-neutral-950 dark:ring-neutral-800">
+							{(['deposit', 'full'] as const).map((option) => (
+								<button
+									key={option}
+									type="button"
+									role="radio"
+									aria-checked={payPlan === option}
+									onClick={() => setPlan(option)}
+									className={`rounded-full px-3 py-2 text-sm font-semibold transition ${
+										payPlan === option ? 'bg-neutral-950 text-white dark:bg-white dark:text-neutral-950' : 'text-neutral-600 hover:text-neutral-950 dark:text-neutral-400'
+									}`}
+								>
+									{option === 'deposit' ? t('switch_deposit', { amount: deposit }) : t('switch_full')}
+								</button>
+							))}
+						</div>
+						{payPlan === 'deposit' && (
+							<div className="mt-3 grid grid-cols-2 gap-2 text-sm">
+								<p className="rounded-xl bg-white px-3 py-2 dark:bg-neutral-950">
+									<span className="block text-neutral-500">{t('today')}</span>
+									<span className="font-bold">{deposit}</span>
+								</p>
+								<p className="rounded-xl bg-white px-3 py-2 dark:bg-neutral-950">
+									<span className="block text-neutral-500">{t('on_tour_day')}</span>
+									<span className="font-bold">{formatCurrency(balanceAfterDeposit(tripTotal))}</span>
+								</p>
+							</div>
+						)}
+					</>
+				)}
 				{booking.lineItems.length > 0 && (
 					<details className="group mt-3">
 						<summary className="flex cursor-pointer list-none items-center gap-1 text-sm font-medium text-neutral-600 underline underline-offset-4 [&::-webkit-details-marker]:hidden">
@@ -274,16 +287,10 @@ const RenderSidebar: FC = () => {
 				{reserving ? tOld('processing') : payPlan === 'deposit' ? t('reserve_deposit', { amount: deposit }) : t('reserve')}
 			</button>
 
-			<ul className="!mt-4 space-y-2 text-sm text-neutral-600 dark:text-neutral-400">
-				<li className="flex items-center gap-2">
-					<Check className="h-4 w-4 shrink-0 text-[#00AA6C]" strokeWidth={3} />
-					{t('no_charge')}
-				</li>
-				<li className="flex items-center gap-2">
-					<ShieldCheck className="h-4 w-4 shrink-0 text-[#00AA6C]" />
-					{t('free_cancel')}
-				</li>
-			</ul>
+			<p className="!mt-3 flex items-center justify-center gap-2 text-sm text-neutral-600 dark:text-neutral-400">
+				<ShieldCheck className="h-4 w-4 shrink-0 text-[#00AA6C]" />
+				{t('free_cancel')}
+			</p>
 		</div>
 	)
 }
@@ -350,7 +357,9 @@ function Choice({
 	icon,
 	title,
 	hint,
+	compact = false,
 }: {
+	compact?: boolean
 	selected: boolean
 	onSelect: () => void
 	icon: ReactNode
@@ -363,7 +372,7 @@ function Choice({
 			role="radio"
 			aria-checked={selected}
 			onClick={onSelect}
-			className={`flex w-full items-center gap-4 rounded-2xl border-2 p-4 text-left transition ${
+			className={`flex w-full rounded-2xl border-2 text-left transition ${compact ? 'flex-col items-start gap-1.5 p-3' : 'items-center gap-4 p-4'} ${
 				selected
 					? 'border-brand-500 bg-brand-50 dark:bg-neutral-900'
 					: 'border-neutral-200 hover:border-neutral-400 dark:border-neutral-800'
@@ -371,11 +380,11 @@ function Choice({
 		>
 			<span className={selected ? 'text-brand-600' : 'text-neutral-500'}>{icon}</span>
 			<span className="min-w-0 flex-1">
-				<span className="block text-base font-semibold">{title}</span>
-				<span className="block text-sm text-neutral-500">{hint}</span>
+				<span className={`block font-semibold ${compact ? 'text-sm leading-snug' : 'text-base'}`}>{title}</span>
+				{!compact && <span className="block text-sm text-neutral-500">{hint}</span>}
 			</span>
 			<span
-				className={`grid h-6 w-6 shrink-0 place-items-center rounded-full border-2 ${
+				className={`${compact ? 'hidden' : 'grid'} h-6 w-6 shrink-0 place-items-center rounded-full border-2 ${
 					selected ? 'border-brand-500 bg-brand-500 text-white' : 'border-neutral-300'
 				}`}
 			>
