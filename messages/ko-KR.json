@@ -2683,7 +2683,9 @@
     "already": "이미 구독 중입니다.",
     "error": "문제가 발생했습니다. 다시 시도해 주세요.",
     "follow": "팔로우",
-    "all_tours": "모든 투어"
+    "all_tours": "모든 투어",
+    "payments_title": "안전한 결제",
+    "payments_text": "Stripe를 통한 암호화 결제. 카드 정보는 당사 서버에 전달되지 않습니다."
   },
   "Nav": {
     "all_tours": "모든 투어",

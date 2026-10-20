@@ -3130,7 +3130,9 @@
     "already": "Já está subscrito.",
     "error": "Algo correu mal. Tente novamente.",
     "follow": "Siga-nos",
-    "all_tours": "Todos os tours"
+    "all_tours": "Todos os tours",
+    "payments_title": "Pagamento seguro",
+    "payments_text": "Pagamento encriptado com Stripe. Os dados do seu cartão nunca chegam aos nossos servidores."
   },
   "Nav": {
     "all_tours": "Todos os tours",

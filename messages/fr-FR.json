@@ -3696,7 +3696,9 @@
     "already": "Vous êtes déjà abonné.",
     "error": "Une erreur s'est produite. Veuillez réessayer.",
     "follow": "Suivez-nous",
-    "all_tours": "Tous les circuits"
+    "all_tours": "Tous les circuits",
+    "payments_title": "Paiement sécurisé",
+    "payments_text": "Paiement chiffré via Stripe. Vos données bancaires ne passent jamais par nos serveurs."
   },
   "Nav": {
     "all_tours": "Tous les circuits",

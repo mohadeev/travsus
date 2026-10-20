@@ -1,5 +1,5 @@
 'use client'
-// Site footer: brand + newsletter, link columns, language and legal fine print.
+// Site footer: brand + newsletter, link columns, payment methods, language and legal fine print.
 import { useState, type FormEvent } from 'react'
 import Link from 'next/link'
 import { ArrowRight, Instagram } from 'lucide-react'
@@ -8,6 +8,7 @@ import type { Route } from 'next'
 import logoImg from '@/images/logo.png'
 import LanguagePreferencesModal from '@/app/(client-components)/(Header)/LanguagePreferencesModal'
 import { openCookieSettings } from '@/lib/consent'
+import PaymentMethods from './PaymentMethods'
 
 // [heading key (SiteFooter), links as [footer label key, href]]: edit to change the columns
 const COLUMNS: [string, [string, string][]][] = [
@@ -148,6 +149,11 @@ export default function Footer() {
 							<Instagram className="h-5 w-5" aria-hidden />
 						</a>
 					</div>
+				</div>
+
+				{/* Payment methods */}
+				<div className="pb-10">
+					<PaymentMethods />
 				</div>
 
 				{/* Bottom bar */}
