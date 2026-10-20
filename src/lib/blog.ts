@@ -51,7 +51,12 @@ const readable = (raw: any) => {
 /** Article HTML made safe to show under the page's own <h1>. */
 function cleanHtml(html: string) {
 	return html
-		.replace(/<(script|style|iframe)[\s\S]*?<\/\1>/gi, '')
+		.replace(/<(script|style)[\s\S]*?<\/\1>/gi, '')
+		// Iframes: only YouTube videos added in the editor (privacy-friendly domain)
+		.replace(/<iframe\b[^>]*>[\s\S]*?<\/iframe>/gi, (frame) =>
+			/\ssrc="https:\/\/www\.youtube-nocookie\.com\/embed\/[\w-]+[^"]*"/i.test(frame) ? frame : '',
+		)
+		.replace(/<iframe\b(?![^>]*youtube-nocookie\.com\/embed\/)[^>]*>/gi, '')
 		.replace(/\son\w+="[^"]*"/gi, '')
 		.replace(/\son\w+='[^']*'/gi, '')
 		.replace(/href="\s*javascript:[^"]*"/gi, 'href="#"')

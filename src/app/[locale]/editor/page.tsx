@@ -19,8 +19,6 @@ export default async function EditorPage({
 	}
 
 	return (
-		<div className="min-h-screen bg-gray-100">
-			<BlogEditor postId={postId} userId={userId} />
-		</div>
+		<BlogEditor postId={postId} userId={userId} />
 	)
 }

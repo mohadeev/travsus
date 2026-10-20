@@ -41,6 +41,9 @@ export default function LocaleLayoutClient({
 	const pathname = usePathname()
 	const hasSubdomain = pathname.includes('coming-soon')
 	const isDashboardPath = pathname?.startsWith('/dashboard') ?? false
+	// The blog editor is a full-screen writing studio: no site header or footer
+	const isEditorPath = /^(\/[a-z]{2}-[A-Z]{2})?\/editor(\/|$)/.test(pathname ?? '')
+	const bare = isDashboardPath || isEditorPath
 	// The mobile bottom menu would cover the Reserve / Pay buttons: hidden on tour pages
 	// (their address ends with the tour id), checkout and the payment result
 	const hideBottomMenu = /\/[0-9a-f]{24}\/?$/.test(pathname ?? '') || /\/(checkout|pay-done)(\/|$)/.test(pathname ?? '')
@@ -85,13 +88,13 @@ export default function LocaleLayoutClient({
 							<CookieConsent />
 
 							{/* <PlanTripModal isOpen={true} onClose={()=>{}}/> */}
-							{!isDashboardPath && (
+							{!bare && (
 								<ConditionalComponent show={true} component={SiteHeader} />
 							)}
 							<div id="main">
 								<TourPreviewOverlay>{children}</TourPreviewOverlay>
 							</div>
-							{!isDashboardPath && (
+							{!bare && (
 								<>
 									{!hideBottomMenu && <ConditionalComponent show={true} component={FooterNav} />}
 									<ConditionalComponent show={true} component={Footer} />

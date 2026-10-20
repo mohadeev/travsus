@@ -98,9 +98,12 @@ export async function POST(request: NextRequest) {
 			...uploadedImages.map((img) => img.id),
 		]
 
-		// Set the featured image to the first image in the content
+		// Featured image: the cover chosen in the editor, else the first image in the content
+		const cover = String(formData.get('featuredImage') ?? '').trim()
 		const firstImageMatch = content.match(/<img.*?src="(.*?)"/)
-		if (firstImageMatch && firstImageMatch[1]) {
+		if (/^https:\/\//.test(cover)) {
+			postData.featuredImage = cover
+		} else if (firstImageMatch && firstImageMatch[1]) {
 			postData.featuredImage = firstImageMatch[1]
 		} else if (uploadedImages.length > 0) {
 			postData.featuredImage = uploadedImages[0].url
