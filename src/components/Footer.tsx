@@ -1,14 +1,31 @@
 'use client'
-// Site footer: brand + newsletter, link columns, payment methods, language and legal fine print.
+// Site footer: why-book perks, brand + newsletter, destination / link / contact
+// columns, payment methods, language and legal fine print, and a large faded
+// wordmark to close the page.
 import { useState, type FormEvent } from 'react'
 import Link from 'next/link'
-import { ArrowRight, Instagram } from 'lucide-react'
+import { ArrowRight, ArrowUpRight, Headset, Instagram, MessageCircle, Phone, RotateCcw, Users, Wallet } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import type { Route } from 'next'
 import logoImg from '@/images/logo.png'
 import LanguagePreferencesModal from '@/app/(client-components)/(Header)/LanguagePreferencesModal'
 import { openCookieSettings } from '@/lib/consent'
+import { useAppDispatch } from '@/store/hooks'
+import { openChat } from '@/store/slices/ui'
 import PaymentMethods from './PaymentMethods'
+
+const PHONE = '+34 643 63 59 62'
+
+// Most booked starting points; each opens the search for that city
+const DESTINATIONS = ['Marrakech', 'Fes', 'Merzouga', 'Chefchaouen', 'Essaouira', 'Ouarzazate']
+
+// [SiteFooter key prefix, icon]: why book with TRAVSUS (true for every tour)
+const PERKS = [
+	['perk_private', Users],
+	['perk_cancel', RotateCcw],
+	['perk_deposit', Wallet],
+	['perk_help', Headset],
+] as const
 
 // [heading key (SiteFooter), links as [footer label key, href]]: edit to change the columns
 const COLUMNS: [string, [string, string][]][] = [
@@ -44,6 +61,8 @@ export default function Footer() {
 	const t = useTranslations('SiteFooter')
 	const tCookies = useTranslations('Cookies')
 	const tLinks = useTranslations('footer')
+	const tHome = useTranslations('Home')
+	const dispatch = useAppDispatch()
 	const [email, setEmail] = useState('')
 	const [signup, setSignup] = useState<SignupState>('idle')
 
@@ -68,10 +87,21 @@ export default function Footer() {
 	const label = (key: string) => (key === 'all_tours' ? t(key) : tLinks(key))
 
 	return (
-		<footer className="bg-neutral-950 text-neutral-400">
-			<div className="mx-auto max-w-7xl px-5 pb-10 pt-16 sm:pt-20">
+		<footer className="relative overflow-hidden bg-neutral-950 text-neutral-400">
+			<div className="mx-auto max-w-7xl px-5 pt-16 sm:pt-20">
+				{/* Why book with us */}
+				<ul className="grid gap-px overflow-hidden rounded-3xl bg-white/10 ring-1 ring-white/10 sm:grid-cols-2 lg:grid-cols-4">
+					{PERKS.map(([key, Icon]) => (
+						<li key={key} className="bg-neutral-950 p-6 transition-colors duration-300 hover:bg-neutral-900 sm:p-7">
+							<Icon className="h-6 w-6 text-white" strokeWidth={1.5} aria-hidden />
+							<h3 className="mt-5 font-semibold text-white">{t(`${key}_title`)}</h3>
+							<p className="mt-1.5 text-sm leading-relaxed">{t(`${key}_text`)}</p>
+						</li>
+					))}
+				</ul>
+
 				{/* Brand + newsletter */}
-				<div className="grid gap-12 border-b border-white/10 pb-14 lg:grid-cols-[1fr_1.1fr]">
+				<div className="grid gap-12 border-b border-white/10 py-16 lg:grid-cols-[1fr_1.1fr]">
 					<div>
 						<Link href={"/" as Route} aria-label="TRAVSUS">
 							{/* eslint-disable-next-line @next/next/no-img-element -- small static logo */}
@@ -115,7 +145,20 @@ export default function Footer() {
 				</div>
 
 				{/* Link columns */}
-				<div className="grid grid-cols-2 gap-10 py-14 sm:grid-cols-4">
+				<div className="grid grid-cols-2 gap-x-8 gap-y-12 py-16 sm:grid-cols-3 lg:grid-cols-[1.2fr_1fr_1fr_1fr_1.5fr]">
+					<nav aria-label={tHome('destinations_title')}>
+						<h3 className="text-sm font-semibold text-white">{tHome('destinations_title')}</h3>
+						<ul className="mt-4 space-y-3 text-sm">
+							{DESTINATIONS.map((city) => (
+								<li key={city}>
+									<Link href={`/search?query=${encodeURIComponent(city)}` as Route} className="group inline-flex items-center gap-1 transition hover:text-white">
+										{city}
+										<ArrowUpRight className="h-3.5 w-3.5 opacity-0 transition group-hover:opacity-100" aria-hidden />
+									</Link>
+								</li>
+							))}
+						</ul>
+					</nav>
 					{COLUMNS.map(([heading, links]) => (
 						<nav key={heading} aria-label={t(heading)}>
 							<h3 className="text-sm font-semibold text-white">{t(heading)}</h3>
@@ -137,8 +180,23 @@ export default function Footer() {
 							</ul>
 						</nav>
 					))}
-					<div>
-						<h3 className="text-sm font-semibold text-white">{t('follow')}</h3>
+					<div className="col-span-2 sm:col-span-1">
+						<h3 className="text-sm font-semibold text-white">{t('contact')}</h3>
+						<div className="mt-4 space-y-3">
+							<a href={`tel:${PHONE.replace(/\s/g, '')}`} className="flex items-center gap-3 rounded-2xl bg-white/[0.04] p-3 ring-1 ring-white/10 transition hover:bg-white/[0.08]">
+								<span className="grid h-9 w-9 place-items-center rounded-full bg-white text-neutral-950">
+									<Phone className="h-4 w-4" aria-hidden />
+								</span>
+								<span className="text-sm font-medium text-white">{PHONE}</span>
+							</a>
+							<button type="button" onClick={() => dispatch(openChat())} className="flex w-full items-center gap-3 rounded-2xl bg-white/[0.04] p-3 text-left ring-1 ring-white/10 transition hover:bg-white/[0.08]">
+								<span className="grid h-9 w-9 place-items-center rounded-full bg-white/10 text-white">
+									<MessageCircle className="h-4 w-4" aria-hidden />
+								</span>
+								<span className="text-sm font-medium text-white">{t('chat')}</span>
+							</button>
+						</div>
+						<h3 className="mt-8 text-sm font-semibold text-white">{t('follow')}</h3>
 						<a
 							href="https://www.instagram.com/travsusofficial"
 							target="_blank"
@@ -163,6 +221,14 @@ export default function Footer() {
 					{tLinks('footer_Disclaimer')}
 				</p>
 			</div>
+
+			{/* Closing wordmark */}
+			<p
+				aria-hidden
+				className="pointer-events-none mt-10 select-none bg-gradient-to-b from-white/[0.09] to-transparent bg-clip-text text-center text-[23vw] font-bold leading-[0.75] tracking-tighter text-transparent lg:text-[290px]"
+			>
+				TRAVSUS
+			</p>
 		</footer>
 	)
 }

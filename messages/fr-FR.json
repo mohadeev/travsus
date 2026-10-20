@@ -3697,7 +3697,17 @@
     "error": "Une erreur s'est produite. Veuillez réessayer.",
     "follow": "Suivez-nous",
     "all_tours": "Tous les circuits",
-    "payments_title": "Paiement sécurisé"
+    "payments_title": "Paiement sécurisé",
+    "perk_private_title": "Uniquement des circuits privés",
+    "perk_private_text": "Votre groupe seul, avec votre chauffeur et votre véhicule.",
+    "perk_cancel_title": "Annulation gratuite",
+    "perk_cancel_text": "Remboursement total jusqu'à 24 heures avant.",
+    "perk_deposit_title": "Réservez maintenant, payez plus tard",
+    "perk_deposit_text": "Réservez avec 20 €, payez le reste le jour du circuit.",
+    "perk_help_title": "Une vraie équipe à votre écoute",
+    "perk_help_text": "Appelez-nous ou écrivez-nous, avant et pendant votre voyage.",
+    "contact": "Contact",
+    "chat": "Discuter avec nous"
   },
   "Nav": {
     "all_tours": "Tous les circuits",

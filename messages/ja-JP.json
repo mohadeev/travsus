@@ -2697,7 +2697,17 @@
     "error": "問題が発生しました。もう一度お試しください。",
     "follow": "フォローする",
     "all_tours": "すべてのツアー",
-    "payments_title": "安全なお支払い"
+    "payments_title": "安全なお支払い",
+    "perk_private_title": "プライベートツアーのみ",
+    "perk_private_text": "お客様のグループだけ。専属ドライバーと車両付き。",
+    "perk_cancel_title": "無料キャンセル",
+    "perk_cancel_text": "24時間前まで全額返金。",
+    "perk_deposit_title": "今すぐ予約、後払い",
+    "perk_deposit_text": "20€で予約、残りはツアー当日に。",
+    "perk_help_title": "スタッフが直接サポート",
+    "perk_help_text": "旅の前も旅行中も、お電話またはチャットでどうぞ。",
+    "contact": "お問い合わせ",
+    "chat": "チャットで相談"
   },
   "Nav": {
     "all_tours": "すべてのツアー",

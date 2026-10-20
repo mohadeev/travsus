@@ -3189,7 +3189,17 @@
     "error": "Qualcosa è andato storto. Riprova.",
     "follow": "Seguici",
     "all_tours": "Tutti i tour",
-    "payments_title": "Pagamento sicuro"
+    "payments_title": "Pagamento sicuro",
+    "perk_private_title": "Solo tour privati",
+    "perk_private_text": "Solo il tuo gruppo, con autista e veicolo dedicati.",
+    "perk_cancel_title": "Cancellazione gratuita",
+    "perk_cancel_text": "Rimborso completo fino a 24 ore prima.",
+    "perk_deposit_title": "Prenota ora, paga dopo",
+    "perk_deposit_text": "Prenota con 20 €, paga il resto il giorno del tour.",
+    "perk_help_title": "Persone vere, aiuto vero",
+    "perk_help_text": "Chiamaci o scrivici in chat, prima e durante il viaggio.",
+    "contact": "Contatti",
+    "chat": "Chatta con noi"
   },
   "Nav": {
     "all_tours": "Tutti i tour",
