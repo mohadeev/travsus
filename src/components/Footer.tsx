@@ -152,9 +152,7 @@ export default function Footer() {
 				</div>
 
 				{/* Payment methods */}
-				<div className="pb-10">
-					<PaymentMethods />
-				</div>
+				<PaymentMethods />
 
 				{/* Bottom bar */}
 				<div className="flex flex-col gap-4 border-t border-white/10 pt-8 text-xs sm:flex-row sm:items-center sm:justify-between">

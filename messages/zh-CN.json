@@ -2559,8 +2559,7 @@
     "error": "出了点问题，请重试。",
     "follow": "关注我们",
     "all_tours": "全部行程",
-    "payments_title": "安全支付",
-    "payments_text": "由 Stripe 提供的加密支付。您的银行卡信息绝不会经过我们的服务器。"
+    "payments_title": "安全无忧支付"
   },
   "Nav": {
     "all_tours": "全部行程",

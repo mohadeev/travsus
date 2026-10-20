@@ -2397,8 +2397,7 @@
     "error": "Something went wrong. Please try again.",
     "follow": "Follow us",
     "all_tours": "All tours",
-    "payments_title": "Secure payment",
-    "payments_text": "Encrypted checkout powered by Stripe. Your card details never reach our servers."
+    "payments_title": "Safe & secure checkout"
   },
   "Nav": {
     "all_tours": "All tours",

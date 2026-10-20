@@ -3189,8 +3189,7 @@
     "error": "Qualcosa è andato storto. Riprova.",
     "follow": "Seguici",
     "all_tours": "Tutti i tour",
-    "payments_title": "Pagamento sicuro",
-    "payments_text": "Pagamento crittografato con Stripe. I dati della tua carta non arrivano mai ai nostri server."
+    "payments_title": "Pagamento sicuro al 100%"
   },
   "Nav": {
     "all_tours": "Tutti i tour",

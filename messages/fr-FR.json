@@ -3697,8 +3697,7 @@
     "error": "Une erreur s'est produite. Veuillez réessayer.",
     "follow": "Suivez-nous",
     "all_tours": "Tous les circuits",
-    "payments_title": "Paiement sécurisé",
-    "payments_text": "Paiement chiffré via Stripe. Vos données bancaires ne passent jamais par nos serveurs."
+    "payments_title": "Paiement 100 % sécurisé"
   },
   "Nav": {
     "all_tours": "Tous les circuits",

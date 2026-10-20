@@ -3681,8 +3681,7 @@
     "error": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.",
     "follow": "Folgen Sie uns",
     "all_tours": "Alle Touren",
-    "payments_title": "Sichere Zahlung",
-    "payments_text": "Verschlüsselte Zahlung über Stripe. Ihre Kartendaten erreichen nie unsere Server."
+    "payments_title": "Sicher bezahlen"
   },
   "Nav": {
     "all_tours": "Alle Touren",
