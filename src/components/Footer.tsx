@@ -1,15 +1,14 @@
 'use client'
-// Site footer: why-book perks, brand + newsletter, destination / link / contact
-// columns, payment methods, language and legal fine print, and a large faded
+// Site footer: newsletter, destination / link / contact columns, payment methods, language and legal fine print, and a large faded
 // wordmark to close the page.
 import { useState, type FormEvent } from 'react'
 import Link from 'next/link'
-import { ArrowRight, ArrowUpRight, Headset, Instagram, MessageCircle, Phone, RotateCcw, Users, Wallet } from 'lucide-react'
+import { ArrowRight, ArrowUpRight, Instagram, MessageCircle, Phone } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import type { Route } from 'next'
-import logoImg from '@/images/logo.png'
 import LanguagePreferencesModal from '@/app/(client-components)/(Header)/LanguagePreferencesModal'
 import { openCookieSettings } from '@/lib/consent'
+import { companyProfile } from '@/constants/companyProfile'
 import { useAppDispatch } from '@/store/hooks'
 import { openChat } from '@/store/slices/ui'
 import PaymentMethods from './PaymentMethods'
@@ -19,20 +18,13 @@ const PHONE = '+34 643 63 59 62'
 // Most booked starting points; each opens the search for that city
 const DESTINATIONS = ['Marrakech', 'Fes', 'Merzouga', 'Chefchaouen', 'Essaouira', 'Ouarzazate']
 
-// [SiteFooter key prefix, icon]: why book with TRAVSUS (true for every tour)
-const PERKS = [
-	['perk_private', Users],
-	['perk_cancel', RotateCcw],
-	['perk_deposit', Wallet],
-	['perk_help', Headset],
-] as const
-
 // [heading key (SiteFooter), links as [footer label key, href]]: edit to change the columns
 const COLUMNS: [string, [string, string][]][] = [
 	[
 		'explore',
 		[
 			['all_tours', '/search?query='],
+			['blog', '/blog'],
 			['Forum', '/forum'],
 			['Affiliate Program', '/affiliates'],
 		],
@@ -62,6 +54,7 @@ export default function Footer() {
 	const tCookies = useTranslations('Cookies')
 	const tLinks = useTranslations('footer')
 	const tHome = useTranslations('Home')
+	const tNav = useTranslations('Nav')
 	const dispatch = useAppDispatch()
 	const [email, setEmail] = useState('')
 	const [signup, setSignup] = useState<SignupState>('idle')
@@ -84,38 +77,19 @@ export default function Footer() {
 		}
 	}
 
-	const label = (key: string) => (key === 'all_tours' ? t(key) : tLinks(key))
+	const label = (key: string) => (key === 'all_tours' ? t(key) : key === 'blog' ? tNav(key) : tLinks(key))
 
 	return (
 		<footer className="relative overflow-hidden bg-neutral-950 text-neutral-400">
 			<div className="mx-auto max-w-7xl px-5 pt-16 sm:pt-20">
-				{/* Why book with us */}
-				<ul className="grid gap-px overflow-hidden rounded-3xl bg-white/10 ring-1 ring-white/10 sm:grid-cols-2 lg:grid-cols-4">
-					{PERKS.map(([key, Icon]) => (
-						<li key={key} className="bg-neutral-950 p-6 transition-colors duration-300 hover:bg-neutral-900 sm:p-7">
-							<Icon className="h-6 w-6 text-white" strokeWidth={1.5} aria-hidden />
-							<h3 className="mt-5 font-semibold text-white">{t(`${key}_title`)}</h3>
-							<p className="mt-1.5 text-sm leading-relaxed">{t(`${key}_text`)}</p>
-						</li>
-					))}
-				</ul>
-
-				{/* Brand + newsletter */}
-				<div className="grid gap-12 border-b border-white/10 py-16 lg:grid-cols-[1fr_1.1fr]">
+				{/* Newsletter */}
+				<div className="grid items-center gap-6 border-b border-white/10 pb-16 lg:grid-cols-2 lg:gap-12">
 					<div>
-						<Link href={"/" as Route} aria-label="TRAVSUS">
-							{/* eslint-disable-next-line @next/next/no-img-element -- small static logo */}
-							<img src={logoImg.src} alt="TRAVSUS" className="h-7 w-auto invert" />
-						</Link>
-						<p className="mt-5 max-w-sm text-2xl font-semibold leading-snug tracking-tight text-white">
-							{t('tagline')}
-						</p>
+						<h2 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">{t('newsletter_title')}</h2>
+						<p className="mt-2 text-sm">{t('newsletter_text')}</p>
 					</div>
-
-					<div>
-						<h2 className="text-lg font-semibold text-white">{t('newsletter_title')}</h2>
-						<p className="mt-1 text-sm">{t('newsletter_text')}</p>
-						<form onSubmit={subscribe} className="mt-5 flex max-w-md items-center gap-2 rounded-full bg-white/10 p-1.5 pl-5 ring-1 ring-white/10 focus-within:ring-white/40">
+					<div className="lg:justify-self-end lg:w-full lg:max-w-md">
+						<form onSubmit={subscribe} className="flex items-center gap-2 rounded-full bg-white/10 p-1.5 pl-5 ring-1 ring-white/10 focus-within:ring-white/40">
 							<label className="flex-1">
 								<span className="sr-only">{t('email_placeholder')}</span>
 								<input
@@ -220,6 +194,12 @@ export default function Footer() {
 				<p className="mt-6 whitespace-pre-line text-[11px] leading-relaxed text-neutral-500">
 					{tLinks('footer_Disclaimer')}
 				</p>
+				{/* Registered office: discreet, same as the legal notice */}
+				{companyProfile?.legalAddress && (
+					<p className="mt-3 text-[10px] text-neutral-600">
+						TRAVSUS LIMITED · {companyProfile.legalAddress}, Ireland
+					</p>
+				)}
 			</div>
 
 			{/* Closing wordmark */}
