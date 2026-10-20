@@ -72,7 +72,7 @@ const loadAll = cache(async () => {
 	const rows = await fetchAll<any>(() =>
 		db
 			.from(T.posts)
-			.select(`*, author:${T.users}(id, name, username, profileImage, accountData)`)
+			.select(`id, title, content, excerpt, tags, featuredImage, authorId, createdAt, translations, author:${T.users}(id, name, username, profileImage, accountData)`)
 			.order('createdAt', { ascending: false }),
 	)
 	// Copies of the same article share a title: keep the one with the most
