@@ -1,5 +1,6 @@
 'use client'
-// What's included, per package (Luxury / Standard, Private / Shared).
+// What's included, per package. All TRAVSUS tours are private: Standard and
+// Luxury (the old "shared" lists in the data are not shown).
 // Always in the page (not hidden behind a click), so it's readable and indexable.
 import { Check } from 'lucide-react'
 import { useTranslations } from '@/lib/i18n'
@@ -11,10 +12,8 @@ const Included = () => {
 	if (!inclusions) return null
 
 	const packages = [
-		{ title: 'Luxury · Private', items: inclusions.luxury?.private ?? [] },
-		{ title: 'Luxury · Shared', items: inclusions.luxury?.shared ?? [] },
 		{ title: 'Standard · Private', items: inclusions.standard?.private ?? [] },
-		{ title: 'Standard · Shared', items: inclusions.standard?.shared ?? [] },
+		{ title: 'Luxury · Private', items: inclusions.luxury?.private ?? [] },
 	].filter((pack) => pack.items.length > 0)
 	if (!packages.length) return null
 
@@ -28,10 +27,10 @@ const Included = () => {
 				{t('newServicedetailListingExperiencesDetailIncluded_Everything_Included_In_Your_Package')}
 			</p>
 			<div className="mt-6 grid items-start gap-4 sm:grid-cols-2">
-				{packages.map(({ title, items }, index) => (
+				{packages.map(({ title, items }) => (
 					<details
 						key={title}
-						open={index === 0}
+						open
 						className="group rounded-2xl border border-neutral-200 p-5 open:pb-6 dark:border-neutral-800"
 					>
 						<summary className="flex cursor-pointer list-none items-center justify-between font-semibold [&::-webkit-details-marker]:hidden">
