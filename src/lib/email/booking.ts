@@ -31,7 +31,7 @@ export async function bookingEmailData(bookingId: string): Promise<BookingEmail 
 	const b: any = must(
 		await db
 			.from(T.bookings)
-			.select(`id, bookingReference, orderNumber, bookingState, bookingStates, selectedDate, duration, guests, lineItems, updatedAt, customer:${T.users}!customerId(email, username, accountData), tour:${T.tours}(id, name, images, slugs)`)
+			.select(`id, tourId, bookingReference, orderNumber, bookingState, bookingStates, selectedDate, duration, guests, lineItems, updatedAt, paymentPlan, depositAmount, balanceAmount, balanceDueAt, customer:${T.users}!customerId(email, username, accountData), tour:${T.tours}(id, name, images, slugs)`)
 			.eq('id', bookingId)
 			.maybeSingle(),
 	)
@@ -56,8 +56,14 @@ export async function bookingEmailData(bookingId: string): Promise<BookingEmail 
 		children: b.guests?.guestChildren ?? 0,
 		items,
 		total: Math.round(items.reduce((s, [, n]) => s + n, 0) * 100) / 100,
-		paidAt: ((b.bookingStates ?? []) as any[]).find((s) => PAID_STATES.includes(s?.state))?.createdAt ?? b.updatedAt,
-	}
+		paidAt: ((b.bookingStates ?? []) as any[]).find((s) => PAID_STATES.includes(s?.state) || s?.state === 'deposit_paid')?.createdAt ?? b.updatedAt,
+		deposit:
+			b.paymentPlan === 'deposit' && b.bookingState !== 'paid'
+				? { paid: Number(b.depositAmount) || 0, balance: Number(b.balanceAmount) || 0, dueAt: b.balanceDueAt ?? null }
+				: null,
+		tourId: b.tourId,
+		bookingId: b.id,
+	} as BookingEmail & { tourId: string; bookingId: string }
 }
 
 /** After payment: confirmation + PDF to the customer, notice to the team. Never throws. */
@@ -77,5 +83,18 @@ export async function sendBookingConfirmed(bookingId: string) {
 		await sendTemplate('new-booking-team', { to: OWNER_EMAIL, data })
 	} catch (error) {
 		console.error('Booking confirmation emails failed:', error)
+	}
+}
+
+/** Book now, pay later: the tour-day charge failed. Asks the customer to pay. Never throws. */
+export async function sendBalanceFailed(bookingId: string, reason?: string) {
+	try {
+		const data: any = await bookingEmailData(bookingId)
+		if (!data?.customerEmail) return
+		const payUrl = `${SITE}/en-US/checkout/checkout?bookingId=${bookingId}&serviceId=${data.tourId}`
+		await sendTemplate('balance-failed', { to: { email: data.customerEmail, name: data.customerName }, data: { ...data, reason, payUrl } })
+		await sendTemplate('new-booking-team', { to: OWNER_EMAIL, data, subjectPrefix: 'BALANCE FAILED – ' })
+	} catch (error) {
+		console.error('Balance failed emails failed:', error)
 	}
 }

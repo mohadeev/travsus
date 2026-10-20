@@ -397,7 +397,7 @@
     "bookings_pending_page_Review_And_Confirm_Pending_Tour_Bookings": "Ausstehende Reisebuchungen prüfen und bestätigen"
   },
   "BookNowAndPayLaterBanner": {
-    "disclaimer": "Angebot unterliegt den Allgemeinen Geschäftsbedingungen. Keine Anzahlung erforderlich. Begrenzte Verfügbarkeit. Buchen Sie jetzt, um Ihre bevorzugten Reisedaten und -ziele zu sichern.",
+    "disclaimer": "Reservieren Sie heute mit nur 20 € und zahlen Sie den Rest am ersten Tag Ihrer Tour. Kostenlose Stornierung bis 24 Stunden vorher.",
     "main_heading": "Warten Sie nicht. Jetzt buchen, später bezahlen.",
     "reserve_button": "JETZT BUCHEN",
     "sub_heading": "Begrenzte Verfügbarkeit in Top-Zielen. Sichern Sie sich noch heute Ihren Platz.",
@@ -3645,7 +3645,19 @@
     "view_tour": "Tour ansehen",
     "explore": "Weitere Touren entdecken",
     "contact": "Kontakt",
-    "thanks": "Danke, dass Sie mit TRAVSUS reisen."
+    "thanks": "Danke, dass Sie mit TRAVSUS reisen.",
+    "plan_title": "Wie möchten Sie bezahlen?",
+    "plan_deposit": "Jetzt {amount} zahlen, den Rest später",
+    "plan_deposit_hint": "{rest} werden am {date} automatisch abgebucht",
+    "plan_full": "Jetzt alles bezahlen",
+    "plan_full_hint": "{amount} heute",
+    "pay_now": "Jetzt {amount} zahlen",
+    "deposit_note": "Ihre Karte wird sicher bei Stripe gespeichert. Die restlichen {rest} werden am {date}, dem ersten Tag Ihrer Tour, automatisch abgebucht. Kostenlose Stornierung bis 24 Stunden vorher.",
+    "deposit_unavailable": "Eine Reservierung mit Anzahlung ist für diese Buchung nicht möglich. Bitte zahlen Sie den vollen Betrag.",
+    "balance_title": "Restzahlung erforderlich",
+    "balance_text": "Wir konnten die restlichen {amount} nicht von Ihrer Karte abbuchen. Bitte zahlen Sie jetzt, um Ihre Reise zu behalten.",
+    "reserved_title": "Ihre Reise ist reserviert 🎉",
+    "reserved_text": "Sie haben heute {paid} bezahlt. Die restlichen {rest} werden am {date} automatisch abgebucht."
   },
   "SiteFooter": {
     "tagline": "Touren und Reisen, in Minuten gebucht.",
@@ -3734,7 +3746,14 @@
     "less": "Eine Person weniger",
     "more": "Eine Person mehr",
     "updating": "Preis wird aktualisiert…",
-    "choose_dates": "Daten wählen"
+    "choose_dates": "Daten wählen",
+    "pay_later_teaser": "Oder für {amount} reservieren, den Rest am Tourtag zahlen",
+    "pay_title": "Wie möchten Sie bezahlen?",
+    "pay_deposit": "Jetzt für {amount} reservieren",
+    "pay_deposit_hint": "Die restlichen {rest} werden am ersten Tourtag abgebucht",
+    "pay_full": "Jetzt alles bezahlen",
+    "pay_full_hint": "{amount} heute, danach nichts mehr zu zahlen",
+    "reserve_deposit": "Für {amount} reservieren"
   },
   "TourRoute": {
     "your_route": "Ihre Route",
@@ -4061,7 +4080,12 @@
     "complete_payment": "Zahlung abschließen",
     "view_tour": "Tour ansehen",
     "help": "Möchten Sie eine Buchung ändern oder stornieren?",
-    "contact": "Kontakt"
+    "contact": "Kontakt",
+    "status_reserved": "Reserviert",
+    "status_balance_failed": "Restzahlung offen",
+    "balance_due": "{amount} fällig am {date}",
+    "balance_now": "Jetzt {amount} zu zahlen",
+    "pay_balance": "Rest bezahlen"
   },
   "Promo": {
     "have_code": "Haben Sie einen Promo-Code?",

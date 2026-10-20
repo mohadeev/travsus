@@ -16,6 +16,8 @@ export const dynamic = 'force-dynamic'
 const TABS = ['upcoming', 'to_pay', 'past'] as const
 type Tab = (typeof TABS)[number]
 const PAID = ['paid', 'confirmed']
+// Book now, pay later: reserved with a deposit (the balance is due on the tour day)
+const RESERVED = ['deposit_paid', 'balance_failed']
 const CLOSED = ['cancelled', 'REFUNDED', 'refunded']
 
 /** Booking total in euros (the line items counted in the price). */
@@ -33,7 +35,7 @@ export default async function BookingsPage({ params, searchParams }: PageProps) 
 	const rows = (must(
 		await db
 			.from(T.bookings)
-			.select(`id, tourId, bookingState, selectedDate, guests, lineItems, bookingReference, orderNumber, createdAt, tour:${T.tours}(name, slugs, translations, images)`)
+			.select(`id, tourId, bookingState, selectedDate, guests, lineItems, bookingReference, orderNumber, createdAt, balanceAmount, balanceDueAt, tour:${T.tours}(name, slugs, translations, images)`)
 			.eq('customerId', user.id)
 			.order('createdAt', { ascending: false }),
 	) ?? []) as any[]
@@ -44,9 +46,10 @@ export default async function BookingsPage({ params, searchParams }: PageProps) 
 		const [start, end] = readTripDates(b.selectedDate)
 		const state: string = b.bookingState
 		const future = !!start && start >= today
-		const tab: Tab | null = CLOSED.includes(state) || (PAID.includes(state) && !future)
+		const booked = PAID.includes(state) || RESERVED.includes(state)
+		const tab: Tab | null = CLOSED.includes(state) || (booked && !future)
 			? 'past'
-			: PAID.includes(state)
+			: booked
 				? 'upcoming'
 				: OPEN_STATES.includes(state) && future
 					? 'to_pay'
@@ -112,8 +115,20 @@ export default async function BookingsPage({ params, searchParams }: PageProps) 
 			) : (
 				<ul className="mt-8 space-y-4">
 					{shown.map((b) => {
-						const toPay = b.tab === 'to_pay'
-						const status = CLOSED.includes(b.bookingState) ? 'status_cancelled' : PAID.includes(b.bookingState) ? 'status_paid' : b.bookingState === 'payment_failed' ? 'status_failed' : 'status_unpaid'
+						const balanceFailed = b.bookingState === 'balance_failed'
+						const toPay = b.tab === 'to_pay' || balanceFailed
+						const status = CLOSED.includes(b.bookingState)
+							? 'status_cancelled'
+							: PAID.includes(b.bookingState)
+								? 'status_paid'
+								: b.bookingState === 'deposit_paid'
+									? 'status_reserved'
+									: balanceFailed
+										? 'status_balance_failed'
+										: b.bookingState === 'payment_failed'
+											? 'status_failed'
+											: 'status_unpaid'
+						const dueDay = b.balanceDueAt ? dateFormat.format(new Date(b.balanceDueAt)) : ''
 						return (
 							<li key={b.id} className="overflow-hidden rounded-3xl ring-1 ring-neutral-200 dark:ring-neutral-800">
 								<div className="flex flex-col sm:flex-row">
@@ -124,7 +139,7 @@ export default async function BookingsPage({ params, searchParams }: PageProps) 
 										<div className="flex flex-wrap items-center gap-2 text-xs font-semibold">
 											<span
 												className={`rounded-full px-2.5 py-1 ${
-													status === 'status_paid'
+													status === 'status_paid' || status === 'status_reserved'
 														? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300'
 														: status === 'status_cancelled'
 															? 'bg-neutral-200 text-neutral-700 dark:bg-neutral-800 dark:text-neutral-300'
@@ -150,7 +165,14 @@ export default async function BookingsPage({ params, searchParams }: PageProps) 
 											</span>
 										</div>
 										<div className="mt-5 flex flex-col gap-3 sm:mt-auto sm:flex-row sm:items-end sm:justify-between sm:pt-5">
-											<p className="text-xl font-bold">{money.format(b.total)}</p>
+											<div>
+												<p className="text-xl font-bold">{money.format(b.total)}</p>
+												{(b.bookingState === 'deposit_paid' || balanceFailed) && Number(b.balanceAmount) > 0 && (
+													<p className={`text-sm ${balanceFailed ? 'font-semibold text-amber-700 dark:text-amber-300' : 'text-neutral-500'}`}>
+														{balanceFailed ? t('balance_now', { amount: money.format(Number(b.balanceAmount)) }) : t('balance_due', { amount: money.format(Number(b.balanceAmount)), date: dueDay })}
+													</p>
+												)}
+											</div>
 											<div className="flex flex-wrap gap-2">
 												{toPay ? (
 													<Link
@@ -158,7 +180,7 @@ export default async function BookingsPage({ params, searchParams }: PageProps) 
 														className="inline-flex h-11 items-center gap-2 rounded-full bg-neutral-950 px-5 text-sm font-semibold text-white transition hover:bg-neutral-800 dark:bg-white dark:text-neutral-950"
 													>
 														<CreditCard className="h-4 w-4" />
-														{t('complete_payment')}
+														{balanceFailed ? t('pay_balance') : t('complete_payment')}
 													</Link>
 												) : (
 													b.tourHref && (

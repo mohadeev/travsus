@@ -219,7 +219,7 @@
     "read_more": "続きを読む"
   },
   "BookNowAndPayLaterBanner": {
-    "disclaimer": "オファーは利用規約の対象となります。頭金不要。期間限定のご提供です。希望の旅行日と目的地を確保するために今すぐご予約ください。",
+    "disclaimer": "本日わずか20ユーロで予約し、残りはツアー初日にお支払いください。24時間前まで無料でキャンセルできます。",
     "main_heading": "待たないで。今すぐ予約、後払い。",
     "reserve_button": "今すぐ予約",
     "sub_heading": "人気目的地は数に限りがございます。今すぐお席を確保ください。",
@@ -2661,7 +2661,19 @@
     "view_tour": "ツアーを見る",
     "explore": "ほかのツアーを探す",
     "contact": "お問い合わせ",
-    "thanks": "TRAVSUSをご利用いただきありがとうございます。"
+    "thanks": "TRAVSUSをご利用いただきありがとうございます。",
+    "plan_title": "お支払い方法",
+    "plan_deposit": "今{amount}、残りは後で",
+    "plan_deposit_hint": "{rest}は{date}に自動で請求されます",
+    "plan_full": "今すぐ全額支払う",
+    "plan_full_hint": "本日{amount}",
+    "pay_now": "今すぐ{amount}を支払う",
+    "deposit_note": "カードはStripeで安全に保存されます。残りの{rest}はツアー初日の{date}に自動で請求されます。24時間前まで無料でキャンセルできます。",
+    "deposit_unavailable": "このご予約は頭金での予約に対応していません。全額をお支払いください。",
+    "balance_title": "残金のお支払いが必要です",
+    "balance_text": "残りの{amount}をカードに請求できませんでした。旅行を確保するため、今すぐお支払いください。",
+    "reserved_title": "ご旅行が予約されました 🎉",
+    "reserved_text": "本日{paid}をお支払いいただきました。残りの{rest}は{date}に自動で請求されます。"
   },
   "SiteFooter": {
     "tagline": "ツアーと旅行を数分で予約。",
@@ -2750,7 +2762,14 @@
     "less": "1人減らす",
     "more": "1人増やす",
     "updating": "料金を更新中…",
-    "choose_dates": "日程を選ぶ"
+    "choose_dates": "日程を選ぶ",
+    "pay_later_teaser": "{amount}で予約し、残りはツアー当日に支払うこともできます",
+    "pay_title": "お支払い方法",
+    "pay_deposit": "今すぐ{amount}で予約",
+    "pay_deposit_hint": "残りの{rest}はツアー初日に請求されます",
+    "pay_full": "今すぐ全額支払う",
+    "pay_full_hint": "本日{amount}、追加のお支払いはありません",
+    "reserve_deposit": "{amount}で予約"
   },
   "TourRoute": {
     "your_route": "ルート",
@@ -3077,7 +3096,12 @@
     "complete_payment": "支払いを完了する",
     "view_tour": "ツアーを見る",
     "help": "予約の変更やキャンセルが必要ですか？",
-    "contact": "お問い合わせ"
+    "contact": "お問い合わせ",
+    "status_reserved": "予約済み",
+    "status_balance_failed": "残金の支払いが必要",
+    "balance_due": "{date}に{amount}",
+    "balance_now": "今すぐ{amount}",
+    "pay_balance": "残金を支払う"
   },
   "Promo": {
     "have_code": "プロモコードをお持ちですか？",

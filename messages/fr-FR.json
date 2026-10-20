@@ -397,7 +397,7 @@
     "bookings_pending_page_Review_And_Confirm_Pending_Tour_Bookings": "Examinez et confirmez les réservations de circuit en attente"
   },
   "BookNowAndPayLaterBanner": {
-    "disclaimer": "Offre soumise à conditions. Aucun acompte requis. Disponibilité limitée dans le temps. Réservez maintenant pour sécuriser vos dates et destinations de voyage préférées.",
+    "disclaimer": "Réservez avec seulement 20 € aujourd’hui et payez le reste le premier jour de votre circuit. Annulation gratuite jusqu’à 24 heures avant.",
     "main_heading": "N'attendez pas. Réservez maintenant, payez plus tard.",
     "reserve_button": "RÉSERVER MAINTENANT",
     "sub_heading": "Disponibilité limitée sur les meilleures destinations. Sécurisez votre place aujourd'hui.",
@@ -3661,7 +3661,19 @@
     "view_tour": "Voir le circuit",
     "explore": "Découvrir d'autres circuits",
     "contact": "Nous contacter",
-    "thanks": "Merci de voyager avec TRAVSUS."
+    "thanks": "Merci de voyager avec TRAVSUS.",
+    "plan_title": "Comment voulez-vous payer ?",
+    "plan_deposit": "Payer {amount} maintenant, le reste plus tard",
+    "plan_deposit_hint": "{rest} prélevés automatiquement le {date}",
+    "plan_full": "Tout payer maintenant",
+    "plan_full_hint": "{amount} aujourd’hui",
+    "pay_now": "Payer {amount} maintenant",
+    "deposit_note": "Votre carte est enregistrée en toute sécurité par Stripe. Le solde de {rest} sera prélevé automatiquement le {date}, premier jour de votre circuit. Annulation gratuite jusqu’à 24 heures avant.",
+    "deposit_unavailable": "La réservation avec acompte n’est pas disponible pour cette réservation. Veuillez payer la totalité.",
+    "balance_title": "Paiement du solde nécessaire",
+    "balance_text": "Nous n’avons pas pu prélever le solde de {amount} sur votre carte. Merci de le payer maintenant pour conserver votre voyage.",
+    "reserved_title": "Votre voyage est réservé 🎉",
+    "reserved_text": "Vous avez payé {paid} aujourd’hui. Le solde de {rest} sera prélevé automatiquement le {date}."
   },
   "SiteFooter": {
     "tagline": "Circuits et voyages, réservés en quelques minutes.",
@@ -3750,7 +3762,14 @@
     "less": "Retirer une personne",
     "more": "Ajouter une personne",
     "updating": "Mise à jour du prix…",
-    "choose_dates": "Choisissez vos dates"
+    "choose_dates": "Choisissez vos dates",
+    "pay_later_teaser": "Ou réservez pour {amount}, payez le reste le jour du circuit",
+    "pay_title": "Comment voulez-vous payer ?",
+    "pay_deposit": "Réserver maintenant pour {amount}",
+    "pay_deposit_hint": "Le solde de {rest} est prélevé le premier jour du circuit",
+    "pay_full": "Tout payer maintenant",
+    "pay_full_hint": "{amount} aujourd’hui, plus rien à payer",
+    "reserve_deposit": "Réserver pour {amount}"
   },
   "TourRoute": {
     "your_route": "Votre itinéraire",
@@ -4077,7 +4096,12 @@
     "complete_payment": "Finaliser le paiement",
     "view_tour": "Voir le circuit",
     "help": "Besoin de modifier ou d'annuler une réservation ?",
-    "contact": "Nous contacter"
+    "contact": "Nous contacter",
+    "status_reserved": "Réservé",
+    "status_balance_failed": "Solde à payer",
+    "balance_due": "{amount} à régler le {date}",
+    "balance_now": "{amount} à payer maintenant",
+    "pay_balance": "Payer le solde"
   },
   "Promo": {
     "have_code": "Vous avez un code promo ?",

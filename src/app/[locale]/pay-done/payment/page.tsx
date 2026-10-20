@@ -22,7 +22,7 @@ const PayPage: FC = () => {
 	const searchParams = useSearchParams()
 	const dispatch = useAppDispatch()
 	const bookingId = searchParams.get('bookingId')
-	const [payment, setPayment] = useState<{ status: string } | null>(null)
+	const [payment, setPayment] = useState<{ status: string; plan?: string } | null>(null)
 	const [copied, setCopied] = useState(false)
 
 	// Ask the server for the result (it also records the payment if Stripe's
@@ -37,7 +37,7 @@ const PayPage: FC = () => {
 			if (stopped) return
 			// Just back from Stripe the payment can take a few seconds to show up
 			const pending = ['processing', 'unpaid', 'unknown'].includes(data.status)
-			setPayment({ status: response.ok ? (pending ? 'processing' : data.status) : 'error' })
+			setPayment({ status: response.ok ? (pending ? 'processing' : data.status) : 'error', plan: data?.plan })
 			if (pending && tries++ < 20) setTimeout(check, 3000)
 		}
 		check()
@@ -76,6 +76,10 @@ const PayPage: FC = () => {
 	const email: string | undefined = booking?.customer?.email
 	const guests = booking?.guests
 	const loaded = !!bookingId && booking?.id === bookingId
+	// Book now, pay later: reserved with the deposit, the rest is charged on the first tour day
+	const reserved = payment?.plan === 'deposit' || booking?.bookingState === 'deposit_paid'
+	const money = (n: number) => new Intl.NumberFormat(locale, { style: 'currency', currency: 'EUR' }).format(n)
+	const dueDay = booking?.balanceDueAt ? new Date(booking.balanceDueAt).toLocaleDateString(locale, { weekday: 'long', day: 'numeric', month: 'long', timeZone: 'UTC' }) : ''
 
 	const copyRef = async () => {
 		if (!reference) return
@@ -95,8 +99,10 @@ const PayPage: FC = () => {
 		paid: {
 			icon: <Check className="h-12 w-12 text-white" strokeWidth={3} />,
 			ring: 'bg-emerald-500 shadow-[0_0_0_12px_rgba(16,185,129,0.15)] motion-safe:animate-[pop_0.5s_ease-out_both]',
-			title: tPay('succeeded_title'),
-			text: tPay('thanks'),
+			title: reserved ? tPay('reserved_title') : tPay('succeeded_title'),
+			text: reserved
+				? tPay('reserved_text', { paid: money(Number(booking?.depositAmount) || 20), rest: money(Number(booking?.balanceAmount) || 0), date: dueDay })
+				: tPay('thanks'),
 		},
 		processing: {
 			icon: <Clock className="h-11 w-11 text-white" />,

@@ -4,13 +4,15 @@ import type Stripe from 'stripe'
 import stripe from '@/lib/stripe'
 import { db, T, must, touch } from '@/lib/db'
 import { updateLineItemsLogic } from '@/app/api/updateLineItems/updateLineItemsLogic'
-import { sendBookingConfirmed } from '@/lib/email/booking'
+import { sendBookingConfirmed, sendBalanceFailed } from '@/lib/email/booking'
 
 export const CURRENCY = 'eur'
 export const PROMO_PREFIX = 'Promo Code Applied'
 
 /** Bookings in these states can still be changed and paid. */
 export const OPEN_STATES = ['initiated', 'payment_failed']
+/** Deposit paid: only the balance is left to pay (automatically on the tour day, or by the customer after a failed charge). */
+export const BALANCE_STATES = ['deposit_paid', 'balance_failed']
 
 // Internal test accounts pay a symbolic €0.55 (kept from the previous checkout)
 const TEST_PAYMENT_EMAILS = ['skendoulmohamed@gmail.com']
@@ -100,7 +102,7 @@ const addState = (booking: any, state: string) => {
  * Records a successful payment: marks the booking paid and sends the
  * confirmation email. Safe to call many times (webhook + return page).
  */
-export async function markBookingPaid(paymentIntent: Stripe.PaymentIntent) {
+export async function markBookingPaid(paymentIntent: Stripe.PaymentIntent, { email = true } = {}) {
 	const bookingId = paymentIntent.metadata?.bookingId
 	if (!bookingId || paymentIntent.status !== 'succeeded') return null
 
@@ -139,7 +141,8 @@ export async function markBookingPaid(paymentIntent: Stripe.PaymentIntent) {
 	}
 
 	// Confirmation with the PDF to the customer, and a notice to the team
-	await sendBookingConfirmed(bookingId)
+	// (not again for a balance: the deposit already sent it)
+	if (email) await sendBookingConfirmed(bookingId)
 	return 'paid'
 }
 
@@ -161,4 +164,54 @@ export async function markPaymentFailed(paymentIntent: Stripe.PaymentIntent) {
 			.update(touch(addState(booking, 'payment_failed')))
 			.eq('id', bookingId),
 	)
+}
+
+/**
+ * Deposit paid ("book now, pay later"): the booking is reserved, the card is
+ * saved for the balance, and the confirmation email goes out. Safe to call many times.
+ */
+export async function markDepositPaid(paymentIntent: Stripe.PaymentIntent) {
+	const bookingId = paymentIntent.metadata?.bookingId
+	if (!bookingId || paymentIntent.status !== 'succeeded') return null
+	const current = must(await db.from(T.bookings).select('bookingState, bookingStates').eq('id', bookingId).maybeSingle())
+	if (!current) return null
+	if (current.bookingState !== 'initiated' && current.bookingState !== 'payment_failed') return 'already_recorded'
+	const paymentMethod = typeof paymentIntent.payment_method === 'string' ? paymentIntent.payment_method : paymentIntent.payment_method?.id
+	const updated = must(
+		await db
+			.from(T.bookings)
+			.update(touch({ ...addState(current, 'deposit_paid'), paymentIntentId: paymentIntent.id, stripePaymentMethodId: paymentMethod ?? null }))
+			.eq('id', bookingId)
+			.in('bookingState', ['initiated', 'payment_failed'])
+			.select('id'),
+	)
+	if (!updated?.length) return 'already_recorded'
+	await sendBookingConfirmed(bookingId)
+	return 'deposit_paid'
+}
+
+/** A balance charge was refused: the customer is asked to pay it from their bookings page. */
+export async function markBalanceFailed(bookingId: string, reason?: string) {
+	const booking = must(await db.from(T.bookings).select('bookingState, bookingStates').eq('id', bookingId).maybeSingle())
+	if (!booking || booking.bookingState !== 'deposit_paid') return
+	must(await db.from(T.bookings).update(touch(addState(booking, 'balance_failed'))).eq('id', bookingId).eq('bookingState', 'deposit_paid'))
+	await sendBalanceFailed(bookingId, reason)
+}
+
+/** Every successful Stripe payment, by plan: deposit, balance or full price. */
+export async function recordPaymentSucceeded(paymentIntent: Stripe.PaymentIntent) {
+	const plan = paymentIntent.metadata?.plan
+	if (plan === 'deposit') return markDepositPaid(paymentIntent)
+	if (plan === 'balance') return markBookingPaid(paymentIntent, { email: false })
+	return markBookingPaid(paymentIntent)
+}
+
+/** Every failed Stripe payment, by plan. */
+export async function recordPaymentFailed(paymentIntent: Stripe.PaymentIntent) {
+	if (paymentIntent.metadata?.plan === 'balance') {
+		const bookingId = paymentIntent.metadata?.bookingId
+		if (bookingId) await markBalanceFailed(bookingId, paymentIntent.last_payment_error?.message)
+		return
+	}
+	return markPaymentFailed(paymentIntent)
 }

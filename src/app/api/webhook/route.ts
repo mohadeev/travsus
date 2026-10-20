@@ -2,7 +2,7 @@ export const dynamic = 'force-dynamic'
 import { NextRequest, NextResponse } from 'next/server'
 import type Stripe from 'stripe'
 import stripe from '@/lib/stripe'
-import { markBookingPaid, markPaymentFailed } from '@/lib/payments'
+import { recordPaymentFailed, recordPaymentSucceeded } from '@/lib/payments'
 import refundConfirmationEmailHook from './hooks/refundConfirmationEmailHook'
 
 /**
@@ -30,10 +30,10 @@ export async function POST(request: NextRequest) {
 	try {
 		switch (event.type) {
 			case 'payment_intent.succeeded':
-				await markBookingPaid(event.data.object as Stripe.PaymentIntent)
+				await recordPaymentSucceeded(event.data.object as Stripe.PaymentIntent)
 				break
 			case 'payment_intent.payment_failed':
-				await markPaymentFailed(event.data.object as Stripe.PaymentIntent)
+				await recordPaymentFailed(event.data.object as Stripe.PaymentIntent)
 				break
 			case 'charge.refunded': {
 				const charge = event.data.object as Stripe.Charge

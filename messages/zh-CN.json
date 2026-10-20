@@ -219,7 +219,7 @@
     "read_more": "阅读更多"
   },
   "BookNowAndPayLaterBanner": {
-    "disclaimer": "优惠受条款和条件约束。无需押金。限时供应。立即预订以确保您首选的旅行日期和目的地。",
+    "disclaimer": "今天只需支付20欧元即可预订，余款在行程第一天支付。出发前24小时可免费取消。",
     "main_heading": "不要等待。立即预订，稍后付款。",
     "reserve_button": "立即预订",
     "sub_heading": "热门目的地名额有限。立即确保您的位置。",
@@ -2523,7 +2523,19 @@
     "view_tour": "查看行程",
     "explore": "探索更多行程",
     "contact": "联系我们",
-    "thanks": "感谢你选择 TRAVSUS 出行。"
+    "thanks": "感谢你选择 TRAVSUS 出行。",
+    "plan_title": "您想如何付款？",
+    "plan_deposit": "现在付{amount}，余款稍后支付",
+    "plan_deposit_hint": "{rest}将于{date}自动扣款",
+    "plan_full": "现在全额支付",
+    "plan_full_hint": "今天支付{amount}",
+    "pay_now": "现在支付{amount}",
+    "deposit_note": "您的银行卡由Stripe安全保存。剩余的{rest}将于行程第一天（{date}）自动扣款。出发前24小时可免费取消。",
+    "deposit_unavailable": "此预订不支持定金预订，请全额支付。",
+    "balance_title": "需要支付余款",
+    "balance_text": "我们无法从您的银行卡扣除剩余的{amount}。请立即支付以保留您的行程。",
+    "reserved_title": "您的行程已预订 🎉",
+    "reserved_text": "您今天支付了{paid}。剩余的{rest}将于{date}自动扣款。"
   },
   "SiteFooter": {
     "tagline": "旅游与行程，几分钟即可预订。",
@@ -2612,7 +2624,14 @@
     "less": "减少一人",
     "more": "增加一人",
     "updating": "正在更新价格…",
-    "choose_dates": "选择日期"
+    "choose_dates": "选择日期",
+    "pay_later_teaser": "或支付{amount}预订，余款在行程当天支付",
+    "pay_title": "您想如何付款？",
+    "pay_deposit": "现在支付{amount}预订",
+    "pay_deposit_hint": "剩余的{rest}将在行程第一天扣款",
+    "pay_full": "现在全额支付",
+    "pay_full_hint": "今天支付{amount}，之后无需再付",
+    "reserve_deposit": "支付{amount}预订"
   },
   "TourRoute": {
     "your_route": "您的路线",
@@ -2939,7 +2958,12 @@
     "complete_payment": "完成支付",
     "view_tour": "查看行程",
     "help": "需要修改或取消预订？",
-    "contact": "联系我们"
+    "contact": "联系我们",
+    "status_reserved": "已预订",
+    "status_balance_failed": "需支付余款",
+    "balance_due": "{date}应付{amount}",
+    "balance_now": "现在应付{amount}",
+    "pay_balance": "支付余款"
   },
   "Promo": {
     "have_code": "有优惠码吗？",

@@ -342,7 +342,7 @@
     "bookings_pending_page_Review_And_Confirm_Pending_Tour_Bookings": "Revise y confirme las reservas de tours pendientes"
   },
   "BookNowAndPayLaterBanner": {
-    "disclaimer": "Oferta sujeta a términos y condiciones. No se requiere depósito. Disponibilidad por tiempo limitado. Reserva ahora para asegurar tus fechas y destinos de viaje preferidos.",
+    "disclaimer": "Reserva hoy con solo 20 € y paga el resto el primer día de tu tour. Cancelación gratuita hasta 24 horas antes.",
     "main_heading": "No esperes. Reserva ahora, paga después.",
     "reserve_button": "RESERVAR AHORA",
     "sub_heading": "Disponibilidad limitada en los mejores destinos. Asegura tu lugar hoy.",
@@ -3584,7 +3584,19 @@
     "view_tour": "Ver el tour",
     "explore": "Descubrir más tours",
     "contact": "Contáctanos",
-    "thanks": "Gracias por viajar con TRAVSUS."
+    "thanks": "Gracias por viajar con TRAVSUS.",
+    "plan_title": "¿Cómo quieres pagar?",
+    "plan_deposit": "Paga {amount} ahora y el resto después",
+    "plan_deposit_hint": "{rest} se cobrarán automáticamente el {date}",
+    "plan_full": "Pagar todo ahora",
+    "plan_full_hint": "{amount} hoy",
+    "pay_now": "Pagar {amount} ahora",
+    "deposit_note": "Stripe guarda tu tarjeta de forma segura. Los {rest} restantes se cobrarán automáticamente el {date}, el primer día de tu tour. Cancelación gratuita hasta 24 horas antes.",
+    "deposit_unavailable": "La reserva con depósito no está disponible para esta reserva. Paga el importe completo.",
+    "balance_title": "Falta pagar el resto",
+    "balance_text": "No pudimos cobrar los {amount} restantes en tu tarjeta. Págalos ahora para mantener tu viaje.",
+    "reserved_title": "Tu viaje está reservado 🎉",
+    "reserved_text": "Hoy has pagado {paid}. Los {rest} restantes se cobrarán automáticamente el {date}."
   },
   "SiteFooter": {
     "tagline": "Tours y viajes, reservados en minutos.",
@@ -3673,7 +3685,14 @@
     "less": "Quitar uno",
     "more": "Añadir uno",
     "updating": "Actualizando precio…",
-    "choose_dates": "Elige tus fechas"
+    "choose_dates": "Elige tus fechas",
+    "pay_later_teaser": "O reserva por {amount} y paga el resto el día del tour",
+    "pay_title": "¿Cómo quieres pagar?",
+    "pay_deposit": "Reserva ahora por {amount}",
+    "pay_deposit_hint": "Los {rest} restantes se cobran el primer día del tour",
+    "pay_full": "Pagar todo ahora",
+    "pay_full_hint": "{amount} hoy, nada más que pagar",
+    "reserve_deposit": "Reservar por {amount}"
   },
   "TourRoute": {
     "your_route": "Tu ruta",
@@ -4000,7 +4019,12 @@
     "complete_payment": "Completar el pago",
     "view_tour": "Ver tour",
     "help": "¿Necesitas cambiar o cancelar una reserva?",
-    "contact": "Contáctanos"
+    "contact": "Contáctanos",
+    "status_reserved": "Reservado",
+    "status_balance_failed": "Falta pagar el resto",
+    "balance_due": "{amount} a pagar el {date}",
+    "balance_now": "{amount} a pagar ahora",
+    "pay_balance": "Pagar el resto"
   },
   "Promo": {
     "have_code": "¿Tienes un código promocional?",

@@ -5,7 +5,7 @@ import { type FC, type ReactNode, useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import type { Route } from 'next'
 import { useTranslations } from 'next-intl'
-import { Check, ChevronDown, Crown, Hotel, Minus, Plus, ShieldCheck } from 'lucide-react'
+import { CalendarClock, Check, ChevronDown, CreditCard, Crown, Hotel, Minus, Plus, ShieldCheck } from 'lucide-react'
 import StayDatesRangeInput from '../StayDatesRangeInput'
 import LineItemsBreakdown from '../LineItems/LineItemsBreakdown'
 import { useAppDispatch, useAppSelector } from '@/store/hooks'
@@ -23,6 +23,7 @@ import { useAuthAction } from '@/app/hooks/useAuthAction'
 import predictAccommodation from '@/app/api/updateLineItems/predictAccommodation'
 import { useTourService } from '../../TourServiceContext'
 import { hasStays as tourHasStays } from '@/lib/tourPricing'
+import { DEPOSIT_EUR, balanceAfterDeposit, depositAvailable, type PaymentPlan } from '@/lib/payLater'
 
 type Hotel = 'Standard' | 'Luxury'
 
@@ -60,6 +61,8 @@ const RenderSidebar: FC = () => {
 	const hasStays = tourHasStays(tour.accommodations)
 
 	const [reserving, setReserving] = useState(false)
+	// Book now, pay later: €20 now, the rest on the first tour day
+	const [plan, setPlan] = useState<PaymentPlan>('deposit')
 	const [needsDate, setNeedsDate] = useState(false)
 	const hasDate = !!booking.selectedDate?.startDate
 
@@ -107,7 +110,7 @@ const RenderSidebar: FC = () => {
 			})
 			const result = await response.json()
 			if (result.id) {
-				router.push(`/checkout/checkout?bookingId=${result.id}&serviceId=${tour.id}` as Route)
+				router.push(`/checkout/checkout?bookingId=${result.id}&serviceId=${tour.id}&plan=${payPlan}` as Route)
 				return
 			}
 			alert(result.error || tOld('no_booking_created'))
@@ -121,6 +124,11 @@ const RenderSidebar: FC = () => {
 	// Before the booking is priced in the browser, show the server's "from" price
 	const perPerson = booking.lineItems.length ? total / people : tour.fromPricePerPerson ?? 0
 	const updating = status === 'loading'
+	// The deposit needs a real balance; without a date yet it is still offered (the date is asked first)
+	const tripTotal = total || perPerson * people
+	const canDeposit = hasDate ? depositAvailable(tripTotal, booking.selectedDate) : tripTotal - DEPOSIT_EUR >= 20
+	const payPlan: PaymentPlan = canDeposit ? plan : 'full'
+	const deposit = formatCurrency(DEPOSIT_EUR)
 
 	return (
 		<div className="listingSectionSidebar__wrap">
@@ -129,6 +137,12 @@ const RenderSidebar: FC = () => {
 				<span className="text-3xl font-bold tracking-tight">{formatCurrency(perPerson)}</span>{' '}
 				<span className="text-neutral-500">{tOld('per_person')}</span>
 			</p>
+			{canDeposit && (
+				<p className="!mt-1 flex items-center gap-1.5 text-sm font-semibold text-[#00AA6C]">
+					<CalendarClock className="h-4 w-4 shrink-0" />
+					{t('pay_later_teaser', { amount: deposit })}
+				</p>
+			)}
 
 			{/* 1. Dates */}
 			<Step number={1} title={t('step_when')}>
@@ -205,6 +219,28 @@ const RenderSidebar: FC = () => {
 				</Step>
 			)}
 
+			{/* How to pay: everything now, or €20 now and the rest on the tour day */}
+			{canDeposit && (
+				<Step number={hasStays ? 4 : 3} title={t('pay_title')}>
+					<div className="space-y-2" role="radiogroup" aria-label={t('pay_title')}>
+						<Choice
+							selected={payPlan === 'deposit'}
+							onSelect={() => setPlan('deposit')}
+							icon={<CalendarClock className="h-6 w-6" />}
+							title={t('pay_deposit', { amount: deposit })}
+							hint={t('pay_deposit_hint', { rest: formatCurrency(balanceAfterDeposit(tripTotal)) })}
+						/>
+						<Choice
+							selected={payPlan === 'full'}
+							onSelect={() => setPlan('full')}
+							icon={<CreditCard className="h-6 w-6" />}
+							title={t('pay_full')}
+							hint={t('pay_full_hint', { amount: formatCurrency(tripTotal) })}
+						/>
+					</div>
+				</Step>
+			)}
+
 			{/* Total + Reserve */}
 			<div className="rounded-2xl bg-sand-100 p-5 dark:bg-neutral-900">
 				<div className="flex items-end justify-between gap-3">
@@ -235,7 +271,7 @@ const RenderSidebar: FC = () => {
 				disabled={reserving}
 				className="w-full rounded-full bg-brand-500 px-6 py-4 text-lg font-bold text-white shadow-lg shadow-brand-500/25 transition hover:bg-brand-600 disabled:opacity-60"
 			>
-				{reserving ? tOld('processing') : t('reserve')}
+				{reserving ? tOld('processing') : payPlan === 'deposit' ? t('reserve_deposit', { amount: deposit }) : t('reserve')}
 			</button>
 
 			<ul className="!mt-4 space-y-2 text-sm text-neutral-600 dark:text-neutral-400">

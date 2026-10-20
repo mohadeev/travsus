@@ -57,8 +57,9 @@ const CheckOutPagePageMain: FC<CheckOutPagePageMainProps> = ({
 					},
 				)
 				if (!bookingData?.id) return
-				// Already paid: show the confirmation instead of a second payment
-				if (bookingData.bookingState === 'paid') {
+				// Already paid (or reserved with a deposit): show the confirmation instead of a second payment.
+				// A failed tour-day balance stays here, so it can be paid.
+				if (bookingData.bookingState === 'paid' || bookingData.bookingState === 'deposit_paid') {
 					router.replace(`/pay-done/payment?bookingId=${bookingData.id}` as any)
 					return
 				}

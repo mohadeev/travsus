@@ -4,7 +4,7 @@ import type Stripe from 'stripe'
 import stripe from '@/lib/stripe'
 import getUserData from '@/app/api/user/getUserData'
 import { db, T, must } from '@/lib/db'
-import { markBookingPaid } from '@/lib/payments'
+import { recordPaymentSucceeded } from '@/lib/payments'
 
 /**
  * Payment result for the confirmation page (/pay-done/payment). Also records
@@ -24,6 +24,8 @@ export async function GET(_request: NextRequest, { params }: { params: { id: str
 	)
 	if (!booking) return NextResponse.json({ error: 'Booking not found' }, { status: 404 })
 	if (booking.bookingState === 'paid') return NextResponse.json({ status: 'succeeded' })
+	// Book now, pay later: the deposit is paid, the trip is reserved
+	if (booking.bookingState === 'deposit_paid') return NextResponse.json({ status: 'succeeded', plan: 'deposit' })
 	const ref: string | null = booking.paymentIntentId
 	if (!ref) return NextResponse.json({ status: 'unpaid' })
 
@@ -36,8 +38,8 @@ export async function GET(_request: NextRequest, { params }: { params: { id: str
 		} else {
 			intent = await stripe.paymentIntents.retrieve(ref)
 		}
-		if (intent.status === 'succeeded') await markBookingPaid(intent)
-		return NextResponse.json({ status: intent.status, error: intent.last_payment_error?.message ?? null })
+		if (intent.status === 'succeeded') await recordPaymentSucceeded(intent)
+		return NextResponse.json({ status: intent.status, plan: intent.metadata?.plan ?? 'full', error: intent.last_payment_error?.message ?? null })
 	} catch (error: any) {
 		console.error('Payment status failed:', error?.type, error?.message)
 		return NextResponse.json({ status: 'unknown' }, { status: 502 })

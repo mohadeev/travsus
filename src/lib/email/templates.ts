@@ -34,6 +34,8 @@ export type BookingEmail = {
 	items: [string, number][]
 	total: number
 	paidAt?: string | null
+	/** Book now, pay later: paid now, and what is charged on the tour day */
+	deposit?: { paid: number; balance: number; dueAt: string | null } | null
 }
 
 const guests = (b: BookingEmail) =>
@@ -140,12 +142,21 @@ export const TEMPLATES = {
 			check(),
 			eyebrow('Booking confirmed'),
 			title(`Get ready, ${b.customerName.split(' ')[0] || 'traveller'}!`),
-			text('Your trip is booked and paid. We’ve attached your ', strong('booking confirmation & invoice'), ' as a PDF. Keep it handy for the day.'),
+			b.deposit
+				? text('Your trip is reserved. We’ve attached your ', strong('booking confirmation'), ' as a PDF. Keep it handy for the day.')
+				: text('Your trip is booked and paid. We’ve attached your ', strong('booking confirmation & invoice'), ' as a PDF. Keep it handy for the day.'),
 			image(b.tourImage, b.tourName),
 			heading(b.tourName),
 			details(tripRows(b)),
 			heading('Payment'),
-			priceTable(b.items, 'Total paid', b.total),
+			priceTable(b.items, b.deposit ? 'Trip total' : 'Total paid', b.total),
+			b.deposit
+				? details([
+						['Paid today', euros(b.deposit.paid)],
+						['Charged on ' + (b.deposit.dueAt ? longDate(b.deposit.dueAt) : 'the first tour day'), euros(b.deposit.balance)],
+					])
+				: raw(''),
+			b.deposit ? small('The remaining amount is charged automatically to the card you used, on the morning of your first tour day. Free cancellation up to 24 hours before the trip.') : raw(''),
 			button('View my booking', bookingsLink),
 			divider(),
 			small('Questions about your trip? Just reply to this email or ', link('contact us', `${SITE}/en-US/contact`), '. Our local team is happy to help.'),
@@ -226,17 +237,39 @@ export const TEMPLATES = {
 		from: FROM.bookings,
 		when: 'To the TRAVSUS inbox each time a booking is paid.',
 		connected: true,
-		subject: (b) => `New booking: ${euros(b.total)} · ${b.tourName}`,
+		subject: (b) => `New booking: ${euros(b.total)}${b.deposit ? ` (deposit ${euros(b.deposit.paid)})` : ''} · ${b.tourName}`,
 		preheader: (b) => `${b.customerName} booked ${dates(b)}.`,
 		body: (b) => [
 			eyebrow('New paid booking'),
 			title(euros(b.total)),
 			text(strong(b.customerName), ` (${b.customerEmail}) booked `, strong(b.tourName), '.'),
-			details([...tripRows(b), ['Paid', longDate(b.paidAt)]]),
+			details([...tripRows(b), ['Paid', longDate(b.paidAt)], ...(b.deposit ? ([['Deposit paid', euros(b.deposit.paid)], ['Balance on tour day', euros(b.deposit.balance)]] as [string, string][]) : [])]),
 			button('Open in the dashboard', `${SITE}/en-US/dashboard/bookings`),
 		],
 		replyTo: (b) => ({ email: b.customerEmail, name: b.customerName }),
 		sample: SAMPLE_BOOKING,
+	}),
+
+	'balance-failed': template<BookingEmail & { reason?: string; payUrl: string }>({
+		name: 'Balance payment failed',
+		category: 'Payments',
+		to: 'Customer',
+		from: FROM.payments,
+		when: 'Book now, pay later: when the balance could not be charged to the saved card on the tour day.',
+		connected: true,
+		subject: (b) => `Action needed: pay the balance for ${b.tourName}`,
+		preheader: (b) => `We couldn’t charge ${euros(b.deposit?.balance ?? 0)} to your card. It takes one minute to fix.`,
+		body: (b) => [
+			eyebrow('Payment needed'),
+			title('We couldn’t charge your card.'),
+			text('Your trip is still reserved, but the remaining ', strong(euros(b.deposit?.balance ?? 0)), ' could not be charged to the card you used for the deposit', b.reason ? ` (${b.reason})` : '', '.'),
+			text('Please pay it now with any card, so your guide and driver can confirm everything for the day.'),
+			button('Pay the balance', b.payUrl),
+			details(tripRows(b)),
+			divider(),
+			small('Questions? Just reply to this email or ', link('contact us', `${SITE}/en-US/contact`), '.'),
+		],
+		sample: { ...SAMPLE_BOOKING, deposit: { paid: 20, balance: 657.6, dueAt: '2026-11-12T06:00:00.000Z' }, reason: 'Your card was declined.', payUrl: `${SITE}/en-US/bookings` },
 	}),
 
 	'contact-team': template<{ name: string; email: string; message: string }>({

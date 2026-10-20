@@ -219,7 +219,7 @@
     "read_more": "더 읽기"
   },
   "BookNowAndPayLaterBanner": {
-    "disclaimer": "제안은 이용 약관의 적용을 받습니다. 보증금 불필요. 기간 한정 제공입니다. 선호하는 여행 날짜와 목적지를 확보하려면 지금 예약하세요.",
+    "disclaimer": "오늘 단 20유로로 예약하고 나머지는 투어 첫날에 결제하세요. 24시간 전까지 무료 취소.",
     "main_heading": "기다리지 마세요. 지금 예약하고 나중에 결제하세요.",
     "reserve_button": "지금 예약",
     "sub_heading": "인기 목적지는 좌석이 한정되어 있습니다. 지금 자리를 확보하세요.",
@@ -2648,7 +2648,19 @@
     "view_tour": "투어 보기",
     "explore": "다른 투어 둘러보기",
     "contact": "문의하기",
-    "thanks": "TRAVSUS와 함께 여행해 주셔서 감사합니다."
+    "thanks": "TRAVSUS와 함께 여행해 주셔서 감사합니다.",
+    "plan_title": "어떻게 결제하시겠어요?",
+    "plan_deposit": "지금 {amount}, 나머지는 나중에",
+    "plan_deposit_hint": "{rest}는 {date}에 자동 결제됩니다",
+    "plan_full": "지금 전액 결제",
+    "plan_full_hint": "오늘 {amount}",
+    "pay_now": "지금 {amount} 결제",
+    "deposit_note": "카드는 Stripe에 안전하게 저장됩니다. 나머지 {rest}는 투어 첫날인 {date}에 자동으로 결제됩니다. 24시간 전까지 무료 취소.",
+    "deposit_unavailable": "이 예약은 예약금 결제를 사용할 수 없습니다. 전액을 결제해 주세요.",
+    "balance_title": "잔액 결제가 필요합니다",
+    "balance_text": "카드로 나머지 {amount}를 결제하지 못했습니다. 여행을 유지하려면 지금 결제해 주세요.",
+    "reserved_title": "여행이 예약되었습니다 🎉",
+    "reserved_text": "오늘 {paid}를 결제하셨습니다. 나머지 {rest}는 {date}에 자동으로 결제됩니다."
   },
   "SiteFooter": {
     "tagline": "투어와 여행, 몇 분 만에 예약.",
@@ -2737,7 +2749,14 @@
     "less": "한 명 빼기",
     "more": "한 명 추가",
     "updating": "가격 업데이트 중…",
-    "choose_dates": "날짜 선택"
+    "choose_dates": "날짜 선택",
+    "pay_later_teaser": "또는 {amount}로 예약하고 나머지는 투어 당일에 결제하세요",
+    "pay_title": "어떻게 결제하시겠어요?",
+    "pay_deposit": "지금 {amount}로 예약",
+    "pay_deposit_hint": "나머지 {rest}는 투어 첫날 결제됩니다",
+    "pay_full": "지금 전액 결제",
+    "pay_full_hint": "오늘 {amount}, 추가 결제 없음",
+    "reserve_deposit": "{amount}로 예약"
   },
   "TourRoute": {
     "your_route": "여행 경로",
@@ -3064,7 +3083,12 @@
     "complete_payment": "결제 완료하기",
     "view_tour": "투어 보기",
     "help": "예약을 변경하거나 취소해야 하나요?",
-    "contact": "문의하기"
+    "contact": "문의하기",
+    "status_reserved": "예약됨",
+    "status_balance_failed": "잔액 결제 필요",
+    "balance_due": "{date}에 {amount}",
+    "balance_now": "지금 {amount} 결제",
+    "pay_balance": "잔액 결제"
   },
   "Promo": {
     "have_code": "프로모 코드가 있나요?",
