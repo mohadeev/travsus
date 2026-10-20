@@ -40,6 +40,9 @@ export default function LocaleLayoutClient({
 	const pathname = usePathname()
 	const hasSubdomain = pathname.includes('coming-soon')
 	const isDashboardPath = pathname?.startsWith('/dashboard') ?? false
+	// The mobile bottom menu would cover the Reserve / Pay buttons: hidden on tour pages
+	// (their address ends with the tour id), checkout and the payment result
+	const hideBottomMenu = /\/[0-9a-f]{24}\/?$/.test(pathname ?? '') || /\/(checkout|pay-done)(\/|$)/.test(pathname ?? '')
 	useEffect(() => {
 		wakeUpServer()
 		// ;(async () => {
@@ -87,7 +90,7 @@ export default function LocaleLayoutClient({
 							<div id="main">{children}</div>
 							{!isDashboardPath && (
 								<>
-									<ConditionalComponent show={true} component={FooterNav} />
+									{!hideBottomMenu && <ConditionalComponent show={true} component={FooterNav} />}
 									<ConditionalComponent show={true} component={Footer} />
 									{/* <FooterNav />
 												<Footer /> */}
