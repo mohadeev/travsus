@@ -15,9 +15,9 @@ export default function ContactReservations() {
 		<div className="mt-4 rounded-3xl bg-sand-100 p-5 dark:bg-neutral-900">
 			<p className="text-sm font-semibold">{t('questions_about_reservations')}</p>
 			<div className="mt-3 flex gap-2">
-				<a href="tel:+34643635962" className={actionClass}>
+				<a href="tel:+34614520461" className={actionClass}>
 					<Phone className="h-4 w-4" />
-					+34 643 63 59 62
+					+34 614 52 04 61
 				</a>
 				<button type="button" onClick={() => dispatch(openChat())} className={actionClass}>
 					<MessageCircle className="h-4 w-4" />

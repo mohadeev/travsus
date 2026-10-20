@@ -7,7 +7,7 @@ import { useTranslations } from '@/lib/i18n'
 import { openChat } from '@/store/slices/ui'
 import { useAppDispatch } from '@/store/hooks'
 
-const PHONE = '+34 643 63 59 62'
+const PHONE = '+34 614 52 04 61'
 
 export default function BookingInfo() {
 	const t = useTranslations('BookingInfo')

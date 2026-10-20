@@ -13,7 +13,7 @@ import { useAppDispatch } from '@/store/hooks'
 import { openChat } from '@/store/slices/ui'
 import PaymentMethods from './PaymentMethods'
 
-const PHONE = '+34 643 63 59 62'
+const PHONE = '+34 614 52 04 61'
 
 // Most booked starting points; each opens the search for that city
 const DESTINATIONS = ['Marrakech', 'Fes', 'Merzouga', 'Chefchaouen', 'Essaouira', 'Ouarzazate']
