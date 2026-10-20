@@ -373,7 +373,15 @@
     "max_travelers": "Cette visite ou activité accueillera un maximum de 100 voyageurs",
     "most_travelers_can_participate": "La plupart des voyageurs peuvent participer à l'expérience",
     "not_wheelchair_accessible": "Non accessible aux fauteuils roulants",
-    "read_more": "Lire plus"
+    "read_more": "Lire plus",
+    "good_to_know": "Bon à savoir",
+    "free_cancel_title": "Annulation gratuite",
+    "free_cancel_text": "Remboursement intégral si vous annulez au moins 24 heures avant le départ. Les annulations moins de 24 heures avant ne sont pas remboursées.",
+    "weather_text": "Si la météo empêche le circuit, vous obtenez une nouvelle date ou un remboursement intégral.",
+    "private_title": "Circuit privé",
+    "private_text": "Uniquement votre groupe, avec votre propre chauffeur et véhicule. Votre réservation est confirmée immédiatement.",
+    "help_title": "Besoin d’aide ?",
+    "help_text": "Des questions sur ce circuit ou votre réservation ? Appelez-nous ou discutez avec notre équipe."
   },
   "bookings_cancelled_page": {
     "bookings_cancelled_page_Description": "Voir les réservations de circuit annulées",

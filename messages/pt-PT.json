@@ -216,7 +216,15 @@
     "max_travelers": "Este tour ou atividade terá no máximo 100 viajantes",
     "most_travelers_can_participate": "A maioria dos viajantes pode participar da experiência",
     "not_wheelchair_accessible": "Não acessível para cadeiras de rodas",
-    "read_more": "Ler mais"
+    "read_more": "Ler mais",
+    "good_to_know": "Bom saber",
+    "free_cancel_title": "Cancelamento gratuito",
+    "free_cancel_text": "Reembolso total se cancelar pelo menos 24 horas antes do início. Cancelamentos com menos de 24 horas não são reembolsados.",
+    "weather_text": "Se o mau tempo impedir o tour, recebe uma nova data ou o reembolso total.",
+    "private_title": "Tour privado",
+    "private_text": "Apenas o seu grupo, com motorista e veículo próprios. A sua reserva é confirmada de imediato.",
+    "help_title": "Precisa de ajuda?",
+    "help_text": "Dúvidas sobre este tour ou a sua reserva? Ligue-nos ou fale com a nossa equipa no chat."
   },
   "BookNowAndPayLaterBanner": {
     "disclaimer": "Reserve hoje com apenas 20 € e pague o resto no primeiro dia do seu tour. Cancelamento gratuito até 24 horas antes.",

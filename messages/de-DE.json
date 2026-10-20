@@ -373,7 +373,15 @@
     "max_travelers": "Diese Tour oder Aktivität hat maximal 100 Reisende",
     "most_travelers_can_participate": "Die meisten Reisenden können an dem Erlebnis teilnehmen",
     "not_wheelchair_accessible": "Nicht rollstuhlgerecht",
-    "read_more": "Mehr lesen"
+    "read_more": "Mehr lesen",
+    "good_to_know": "Gut zu wissen",
+    "free_cancel_title": "Kostenlose Stornierung",
+    "free_cancel_text": "Volle Rückerstattung bei Stornierung mindestens 24 Stunden vor Beginn. Stornierungen weniger als 24 Stunden vorher werden nicht erstattet.",
+    "weather_text": "Fällt die Tour wegen schlechten Wetters aus, erhalten Sie einen neuen Termin oder die volle Rückerstattung.",
+    "private_title": "Private Tour",
+    "private_text": "Nur Ihre Gruppe, mit eigenem Fahrer und Fahrzeug. Ihre Buchung wird sofort bestätigt.",
+    "help_title": "Brauchen Sie Hilfe?",
+    "help_text": "Fragen zu dieser Tour oder Ihrer Buchung? Rufen Sie uns an oder chatten Sie mit unserem Team."
   },
   "bookings_cancelled_page": {
     "bookings_cancelled_page_Description": "Stornierte Reisebuchungen anzeigen",

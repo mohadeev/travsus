@@ -216,7 +216,15 @@
     "max_travelers": "이 투어 또는 활동은 최대 100명의 여행자를 수용합니다",
     "most_travelers_can_participate": "대부분의 여행자가 체험에 참여할 수 있습니다",
     "not_wheelchair_accessible": "휠체어 접근 불가",
-    "read_more": "더 읽기"
+    "read_more": "더 읽기",
+    "good_to_know": "알아두세요",
+    "free_cancel_title": "무료 취소",
+    "free_cancel_text": "시작 24시간 전까지 취소하면 전액 환불됩니다. 24시간 이내 취소는 환불되지 않습니다.",
+    "weather_text": "악천후로 투어가 진행되지 못하면 새 날짜 또는 전액 환불을 제공합니다.",
+    "private_title": "프라이빗 투어",
+    "private_text": "전용 기사와 차량으로 여러분 일행만 함께합니다. 예약은 바로 확정됩니다.",
+    "help_title": "도움이 필요하세요?",
+    "help_text": "이 투어나 예약에 대해 궁금한 점이 있으면 전화하거나 채팅으로 문의하세요."
   },
   "BookNowAndPayLaterBanner": {
     "disclaimer": "오늘 단 20유로로 예약하고 나머지는 투어 첫날에 결제하세요. 24시간 전까지 무료 취소.",

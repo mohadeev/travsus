@@ -216,7 +216,15 @@
     "max_travelers": "此旅游或活动最多可容纳100名旅行者",
     "most_travelers_can_participate": "大多数旅行者可以参加此体验",
     "not_wheelchair_accessible": "轮椅无法通行",
-    "read_more": "阅读更多"
+    "read_more": "阅读更多",
+    "good_to_know": "须知",
+    "free_cancel_title": "免费取消",
+    "free_cancel_text": "在行程开始前至少24小时取消可获全额退款。开始前24小时内取消不予退款。",
+    "weather_text": "如因恶劣天气无法出行，我们将为您改期或全额退款。",
+    "private_title": "私人团",
+    "private_text": "仅限您的团队，配专属司机和车辆。预订立即确认。",
+    "help_title": "需要帮助？",
+    "help_text": "对此行程或预订有疑问？请致电或在线联系我们的团队。"
   },
   "BookNowAndPayLaterBanner": {
     "disclaimer": "今天只需支付20欧元即可预订，余款在行程第一天支付。出发前24小时可免费取消。",

@@ -354,7 +354,15 @@
     "max_travelers": "This tour or activity will have a maximum of 100 travelers",
     "most_travelers_can_participate": "Most travelers can participate in the experience",
     "not_wheelchair_accessible": "Not wheelchair accessible",
-    "read_more": "Read more"
+    "read_more": "Read more",
+    "good_to_know": "Good to know",
+    "free_cancel_title": "Free cancellation",
+    "free_cancel_text": "Full refund if you cancel at least 24 hours before the start. Cancellations less than 24 hours before are not refunded.",
+    "weather_text": "If bad weather stops the tour, you get a new date or a full refund.",
+    "private_title": "Private tour",
+    "private_text": "Only your group, with your own driver and vehicle. Your booking is confirmed straight away.",
+    "help_title": "Need help?",
+    "help_text": "Questions about this tour or your booking? Call us or chat with our team."
   },
   "bookings_cancelled_page": {
     "bookings_cancelled_page_Description": "View cancelled tour bookings",
