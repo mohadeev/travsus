@@ -8,6 +8,7 @@ import { useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { CalendarClock, CreditCard, Loader2, Lock } from 'lucide-react'
 import { useLocale, useTranslations } from 'next-intl'
+import { useClerk } from '@clerk/nextjs'
 import { totalOf } from '@/store/slices/booking'
 import { DEPOSIT_EUR, balanceAfterDeposit, balanceDueAt, depositAvailable, type PaymentPlan } from '@/lib/payLater'
 
@@ -22,6 +23,7 @@ export default function CheckoutPayment({ booking }: { booking: any }) {
 	const t = useTranslations('Payment')
 	const locale = useLocale()
 	const searchParams = useSearchParams()
+	const { openSignIn } = useClerk()
 	const [busy, setBusy] = useState(false)
 	const [error, setError] = useState('')
 	const [plan, setPlan] = useState<PaymentPlan>(searchParams.get('plan') === 'full' ? 'full' : 'deposit')
@@ -46,6 +48,12 @@ export default function CheckoutPayment({ booking }: { booking: any }) {
 			body: JSON.stringify({ locale, plan: chosen }),
 		}).catch(() => null)
 		const data = await res?.json().catch(() => null)
+		// Not signed in (or the session expired): open the sign-in, then come back to this page
+		if (res?.status === 401) {
+			setBusy(false)
+			openSignIn({ forceRedirectUrl: window.location.href })
+			return
+		}
 		if (res?.ok && data?.url) {
 			window.location.href = data.url // stays "busy" while Stripe opens
 			return

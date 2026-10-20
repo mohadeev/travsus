@@ -5,6 +5,7 @@ import { type FC, type ReactNode, useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import type { Route } from 'next'
 import { useTranslations } from 'next-intl'
+import { useClerk } from '@clerk/nextjs'
 import { CalendarClock, Check, ChevronDown, Crown, Hotel, Minus, Plus, ShieldCheck } from 'lucide-react'
 import StayDatesRangeInput from '../StayDatesRangeInput'
 import LineItemsBreakdown from '../LineItems/LineItemsBreakdown'
@@ -51,6 +52,7 @@ const RenderSidebar: FC = () => {
 	const booking = useAppSelector(selectBooking)
 	const status = useAppSelector(selectBookingStatus)
 	const tour: any = useTourService()
+	const { openSignIn } = useClerk()
 
 	const adults = booking.guests?.guestAdults ?? 2
 	const children = booking.guests?.guestChildren ?? 0
@@ -108,6 +110,12 @@ const RenderSidebar: FC = () => {
 					bookOwnHotels: false,
 				}),
 			})
+			// The server doesn't see a signed-in user (e.g. the session expired): sign in, then come back here
+			if (response.status === 401) {
+				setReserving(false)
+				openSignIn({ forceRedirectUrl: window.location.href })
+				return
+			}
 			const result = await response.json()
 			if (result.id) {
 				router.push(`/checkout/checkout?bookingId=${result.id}&serviceId=${tour.id}&plan=${payPlan}` as Route)
