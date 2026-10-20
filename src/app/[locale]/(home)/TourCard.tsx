@@ -1,6 +1,6 @@
 // TripAdvisor-style tour card: photo, save heart, title, rating bubbles, price.
 import Image from 'next/image'
-import Link from 'next/link'
+import TourLink from '@/components/TourLink'
 import { MapPin } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import type { HomeTour } from '@/lib/homeData'
@@ -12,7 +12,11 @@ export default function TourCard({ tour }: { tour: HomeTour }) {
 	const t = useTranslations('Home')
 
 	return (
-		<Link href={tour.href as any} className="group block">
+		<TourLink
+			href={tour.href}
+			preview={{ id: tour.id, name: tour.name, image: tour.image, days: tour.days, city: tour.city, price: tour.pricePerPerson, rating: tour.rating, reviewsCount: tour.reviewsCount }}
+			className="group block"
+		>
 			<div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-neutral-100 transition duration-300 group-hover:-translate-y-1 group-hover:shadow-xl">
 				<Image
 					src={tour.image}
@@ -66,6 +70,6 @@ export default function TourCard({ tour }: { tour: HomeTour }) {
 					</p>
 				)}
 			</div>
-		</Link>
+		</TourLink>
 	)
 }

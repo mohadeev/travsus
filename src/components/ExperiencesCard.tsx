@@ -20,8 +20,7 @@ import { formatCurrency } from '@/utils/formatCurrency'
 import slugifySecond from '@/utils/slugify'
 import { useTranslations } from '@/lib/i18n'
 import { slugify } from 'transliteration'
-import ListingBeforLoading from './ListingBeforLoading'
-import { setTourPreview } from '@/store/slices/tourPage'
+import { openTourPreview } from '@/store/slices/tourPage'
 
 export interface ExperiencesCardProps {
 	className?: string
@@ -48,7 +47,6 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 	const dispatch = useAppDispatch()
 
 	const [clickedCard, setClickedCard] = useState(false)
-	const [isLoading, setIsLoading] = useState(false)
 	const [priceData, setPriceData] = useState({})
 
 	const {
@@ -102,8 +100,17 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 		)}` as Route)
 
 	const handleCardClick = () => {
-		setIsLoading(true)
-		dispatch(setTourPreview(data))
+		// The tour page draws this instantly (TourPreviewShell) while it loads
+		dispatch(
+			openTourPreview({
+				id: serviceId,
+				name: title,
+				image: galleryImgs?.[0]?.url ?? null,
+				days: Array.isArray(days) ? days.length : undefined,
+				city: (data as any)?.startAddress?.city ?? null,
+				price: priceStart || (data as any)?.startPrice || null,
+			}),
+		)
 		router.push(href)
 		setClickedCard(true)
 		setTimeout(() => setClickedCard(false), 1000)
@@ -188,7 +195,6 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 			className={`nc-ExperiencesCard group relative ${className}`}
 			onClick={handleCardClick}
 		>
-			<ListingBeforLoading isOpen={isLoading} />
 
 			<div
 				className={`absolute inset-0 rounded-xl bg-gray-200 ${

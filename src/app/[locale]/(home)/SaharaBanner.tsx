@@ -7,6 +7,7 @@ import { useTranslations } from 'next-intl'
 import type { HomeTour } from '@/lib/homeData'
 import { PHOTOS } from '@/lib/photos'
 import { formatCurrency } from '@/utils/formatCurrency'
+import TourLink from '@/components/TourLink'
 
 // Best sellers first (3-day Marrakech, 3-day Fes, 2 nights in Merzouga)
 const FEATURED = ['680bc6a5aa6f43072c7700f6', '680bc6b6aa6f43072c7700f8', '685bd6cd0496dbd8c4f2ee92']
@@ -40,8 +41,9 @@ export default function SaharaBanner({ tours }: { tours: Omit<HomeTour, 'searchT
 					<ul className="space-y-2.5 sm:space-y-3">
 						{trips.map((trip) => (
 							<li key={trip.id}>
-								<Link
-									href={trip.href as any}
+								<TourLink
+									href={trip.href}
+									preview={{ id: trip.id, name: trip.name, image: trip.image, days: trip.days, city: trip.city, price: trip.pricePerPerson, rating: trip.rating, reviewsCount: trip.reviewsCount }}
 									className="group flex items-center gap-3 rounded-2xl bg-white/10 p-2.5 pr-4 ring-1 ring-white/15 backdrop-blur-md transition hover:bg-white/20 sm:gap-4 sm:p-3 sm:pr-5"
 								>
 									<span className="relative h-16 w-20 shrink-0 overflow-hidden rounded-xl sm:h-[72px] sm:w-24">
@@ -61,7 +63,7 @@ export default function SaharaBanner({ tours }: { tours: Omit<HomeTour, 'searchT
 										</span>
 									</span>
 									<ChevronRight className="h-5 w-5 shrink-0 text-white/60 transition group-hover:translate-x-0.5 group-hover:text-white" />
-								</Link>
+								</TourLink>
 							</li>
 						))}
 					</ul>

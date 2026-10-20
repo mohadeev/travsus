@@ -1,7 +1,6 @@
+// While a tour page loads (its data is fetched in the tour layout): the preview shell
+import TourPreviewShell from '@/components/TourPreviewShell'
+
 export default function Loading() {
-	return (
-		<div style={{ padding: '2rem', fontSize: '1.2rem' }}>
-			⏳ Loading dashboard...
-		</div>
-	)
+	return <TourPreviewShell />
 }

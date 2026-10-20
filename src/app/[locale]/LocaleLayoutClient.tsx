@@ -21,6 +21,7 @@ import { usePathname } from 'next/navigation'
 import { Inter_Tight } from 'next/font/google'
 import Script from 'next/script'
 import CookieConsent from '@/components/CookieConsent'
+import TourPreviewOverlay from '@/components/TourPreviewOverlay'
 import ConditionalComponent from '@/components/ConditionalComponent'
 import { Suspense, useEffect } from 'react'
 import { wakeUpServer } from '@/utils/wakeUpServer'
@@ -87,7 +88,9 @@ export default function LocaleLayoutClient({
 							{!isDashboardPath && (
 								<ConditionalComponent show={true} component={SiteHeader} />
 							)}
-							<div id="main">{children}</div>
+							<div id="main">
+								<TourPreviewOverlay>{children}</TourPreviewOverlay>
+							</div>
 							{!isDashboardPath && (
 								<>
 									{!hideBottomMenu && <ConditionalComponent show={true} component={FooterNav} />}
