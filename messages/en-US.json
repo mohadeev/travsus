@@ -2945,5 +2945,25 @@
     "description": "Book Morocco tours with local guides: Sahara desert trips from Marrakech and Fes, Merzouga camel treks, day trips and private tours. Secure online booking.",
     "h1": "Morocco tours and desert trips with local guides",
     "og_alt": "Camel caravan in the Sahara desert, Morocco"
+  },
+  "Cookies": {
+    "title": "We use cookies",
+    "text": "We use necessary cookies to make the site work. With your permission we also use analytics cookies to improve it and marketing cookies to measure our ads.",
+    "policy": "Cookie policy",
+    "accept": "Accept all",
+    "reject": "Reject all",
+    "choose": "Choose cookies",
+    "settings_title": "Cookie settings",
+    "settings_text": "Choose which cookies we can use. You can change this any time from the link at the bottom of the page.",
+    "close": "Close",
+    "necessary": "Strictly necessary",
+    "necessary_text": "Sign-in, booking and payment, language and security. The site can’t work without them.",
+    "always_on": "Always on",
+    "analytics": "Analytics",
+    "analytics_text": "Help us understand how the site is used (Google Analytics, Hotjar, our own visit statistics).",
+    "marketing": "Marketing",
+    "marketing_text": "Measure and improve our ads (Google Ads).",
+    "save": "Save my choice",
+    "footer_link": "Cookie settings"
   }
 }

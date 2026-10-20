@@ -3107,5 +3107,25 @@
     "description": "预订当地导游带领的摩洛哥行程：从马拉喀什和非斯出发的撒哈拉沙漠之旅、梅尔祖卡骑骆驼、一日游和私人定制游。安全在线预订。",
     "h1": "当地导游带你游摩洛哥与沙漠",
     "og_alt": "摩洛哥撒哈拉沙漠中的骆驼商队"
+  },
+  "Cookies": {
+    "title": "我们使用Cookie",
+    "text": "我们使用网站运行所必需的Cookie。在您同意后，我们还会使用分析Cookie来改进网站，并使用营销Cookie来衡量广告效果。",
+    "policy": "Cookie政策",
+    "accept": "全部接受",
+    "reject": "全部拒绝",
+    "choose": "选择Cookie",
+    "settings_title": "Cookie设置",
+    "settings_text": "选择我们可以使用的Cookie。您可以随时通过页面底部的链接更改。",
+    "close": "关闭",
+    "necessary": "必要Cookie",
+    "necessary_text": "登录、预订与支付、语言和安全。没有它们网站无法运行。",
+    "always_on": "始终启用",
+    "analytics": "分析",
+    "analytics_text": "帮助我们了解网站的使用情况（Google Analytics、Hotjar、我们自己的访问统计）。",
+    "marketing": "营销",
+    "marketing_text": "衡量和改进我们的广告（Google Ads）。",
+    "save": "保存我的选择",
+    "footer_link": "Cookie设置"
   }
 }

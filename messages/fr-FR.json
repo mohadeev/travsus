@@ -4245,5 +4245,25 @@
     "description": "Réservez vos circuits au Maroc avec des guides locaux : désert du Sahara depuis Marrakech et Fès, balades à dos de chameau à Merzouga, excursions et circuits privés.",
     "h1": "Circuits au Maroc et dans le désert avec des guides locaux",
     "og_alt": "Caravane de chameaux dans le désert du Sahara, Maroc"
+  },
+  "Cookies": {
+    "title": "Nous utilisons des cookies",
+    "text": "Nous utilisons des cookies nécessaires au fonctionnement du site. Avec votre accord, nous utilisons aussi des cookies d’analyse pour l’améliorer et des cookies marketing pour mesurer nos publicités.",
+    "policy": "Politique de cookies",
+    "accept": "Tout accepter",
+    "reject": "Tout refuser",
+    "choose": "Choisir les cookies",
+    "settings_title": "Paramètres des cookies",
+    "settings_text": "Choisissez les cookies que nous pouvons utiliser. Vous pouvez modifier ce choix à tout moment depuis le lien en bas de page.",
+    "close": "Fermer",
+    "necessary": "Strictement nécessaires",
+    "necessary_text": "Connexion, réservation et paiement, langue et sécurité. Le site ne peut pas fonctionner sans eux.",
+    "always_on": "Toujours actifs",
+    "analytics": "Analyse",
+    "analytics_text": "Nous aident à comprendre l’utilisation du site (Google Analytics, Hotjar, nos propres statistiques de visite).",
+    "marketing": "Marketing",
+    "marketing_text": "Mesurer et améliorer nos publicités (Google Ads).",
+    "save": "Enregistrer mon choix",
+    "footer_link": "Paramètres des cookies"
   }
 }

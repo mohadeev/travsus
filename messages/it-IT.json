@@ -3737,5 +3737,25 @@
     "description": "Prenota tour in Marocco con guide locali: deserto del Sahara da Marrakech e Fès, cammellate a Merzouga, escursioni giornaliere e tour privati. Prenotazione sicura.",
     "h1": "Tour in Marocco e nel deserto con guide locali",
     "og_alt": "Carovana di cammelli nel deserto del Sahara, Marocco"
+  },
+  "Cookies": {
+    "title": "Usiamo i cookie",
+    "text": "Usiamo cookie necessari al funzionamento del sito. Con il tuo consenso usiamo anche cookie di analisi per migliorarlo e cookie di marketing per misurare i nostri annunci.",
+    "policy": "Cookie policy",
+    "accept": "Accetta tutti",
+    "reject": "Rifiuta tutti",
+    "choose": "Scegli i cookie",
+    "settings_title": "Impostazioni cookie",
+    "settings_text": "Scegli quali cookie possiamo usare. Puoi cambiare idea in qualsiasi momento dal link in fondo alla pagina.",
+    "close": "Chiudi",
+    "necessary": "Strettamente necessari",
+    "necessary_text": "Accesso, prenotazione e pagamento, lingua e sicurezza. Il sito non funziona senza.",
+    "always_on": "Sempre attivi",
+    "analytics": "Analisi",
+    "analytics_text": "Ci aiutano a capire come viene usato il sito (Google Analytics, Hotjar, nostre statistiche di visita).",
+    "marketing": "Marketing",
+    "marketing_text": "Misurare e migliorare i nostri annunci (Google Ads).",
+    "save": "Salva la mia scelta",
+    "footer_link": "Impostazioni cookie"
   }
 }

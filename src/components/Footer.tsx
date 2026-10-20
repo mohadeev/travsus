@@ -7,6 +7,7 @@ import { useTranslations } from 'next-intl'
 import type { Route } from 'next'
 import logoImg from '@/images/logo.png'
 import LanguagePreferencesModal from '@/app/(client-components)/(Header)/LanguagePreferencesModal'
+import { openCookieSettings } from '@/lib/consent'
 
 // [heading key (SiteFooter), links as [footer label key, href]]: edit to change the columns
 const COLUMNS: [string, [string, string][]][] = [
@@ -40,6 +41,7 @@ type SignupState = 'idle' | 'sending' | 'done' | 'already' | 'error'
 
 export default function Footer() {
 	const t = useTranslations('SiteFooter')
+	const tCookies = useTranslations('Cookies')
 	const tLinks = useTranslations('footer')
 	const [email, setEmail] = useState('')
 	const [signup, setSignup] = useState<SignupState>('idle')
@@ -124,6 +126,13 @@ export default function Footer() {
 										</Link>
 									</li>
 								))}
+								{heading === 'legal' && (
+									<li>
+										<button type="button" onClick={openCookieSettings} className="transition hover:text-white">
+											{tCookies('footer_link')}
+										</button>
+									</li>
+								)}
 							</ul>
 						</nav>
 					))}

@@ -20,7 +20,7 @@ import { usePathname } from 'next/navigation'
 
 import { Inter_Tight } from 'next/font/google'
 import Script from 'next/script'
-import { CombinedCookieConsent } from './privacy-policy/CombinedCookieConsent'
+import CookieConsent from '@/components/CookieConsent'
 import ConditionalComponent from '@/components/ConditionalComponent'
 import { Suspense, useEffect } from 'react'
 import { wakeUpServer } from '@/utils/wakeUpServer'
@@ -78,6 +78,7 @@ export default function LocaleLayoutClient({
 						<NewsletterModal />
 						<div className="overflow-auto">
 							<TawkToWidget />
+							<CookieConsent />
 
 							{/* <PlanTripModal isOpen={true} onClose={()=>{}}/> */}
 							{!isDashboardPath && (

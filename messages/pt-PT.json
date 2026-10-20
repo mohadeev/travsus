@@ -3679,5 +3679,25 @@
     "description": "Reserve tours em Marrocos com guias locais: deserto do Saara desde Marraquexe e Fez, passeios de camelo em Merzouga, excursões e tours privados. Reserva segura.",
     "h1": "Tours em Marrocos e no deserto com guias locais",
     "og_alt": "Caravana de camelos no deserto do Saara, Marrocos"
+  },
+  "Cookies": {
+    "title": "Usamos cookies",
+    "text": "Usamos cookies necessários para o site funcionar. Com a sua permissão, usamos também cookies de análise para o melhorar e cookies de marketing para medir os nossos anúncios.",
+    "policy": "Política de cookies",
+    "accept": "Aceitar todos",
+    "reject": "Rejeitar todos",
+    "choose": "Escolher cookies",
+    "settings_title": "Definições de cookies",
+    "settings_text": "Escolha que cookies podemos usar. Pode alterar a qualquer momento no link no fundo da página.",
+    "close": "Fechar",
+    "necessary": "Estritamente necessários",
+    "necessary_text": "Início de sessão, reservas e pagamentos, idioma e segurança. O site não funciona sem eles.",
+    "always_on": "Sempre ativos",
+    "analytics": "Análise",
+    "analytics_text": "Ajudam-nos a perceber como o site é usado (Google Analytics, Hotjar, as nossas estatísticas de visitas).",
+    "marketing": "Marketing",
+    "marketing_text": "Medir e melhorar os nossos anúncios (Google Ads).",
+    "save": "Guardar a minha escolha",
+    "footer_link": "Definições de cookies"
   }
 }

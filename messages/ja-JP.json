@@ -3245,5 +3245,25 @@
     "description": "地元ガイドと巡るモロッコツアーを予約。マラケシュやフェズ発のサハラ砂漠ツアー、メルズーガのラクダ体験、日帰り・プライベートツアー。安心のオンライン予約。",
     "h1": "地元ガイドと行くモロッコ・砂漠ツアー",
     "og_alt": "モロッコ、サハラ砂漠のラクダのキャラバン"
+  },
+  "Cookies": {
+    "title": "Cookieを使用しています",
+    "text": "サイトの動作に必要なCookieを使用しています。同意いただいた場合は、サイト改善のための分析Cookieと、広告効果測定のためのマーケティングCookieも使用します。",
+    "policy": "Cookieポリシー",
+    "accept": "すべて許可",
+    "reject": "すべて拒否",
+    "choose": "Cookieを選択",
+    "settings_title": "Cookie設定",
+    "settings_text": "使用を許可するCookieを選択してください。ページ下部のリンクからいつでも変更できます。",
+    "close": "閉じる",
+    "necessary": "必須",
+    "necessary_text": "ログイン、予約と決済、言語、セキュリティ。これらがないとサイトは動作しません。",
+    "always_on": "常に有効",
+    "analytics": "分析",
+    "analytics_text": "サイトの利用状況の把握に役立ちます（Google Analytics、Hotjar、当社の訪問統計）。",
+    "marketing": "マーケティング",
+    "marketing_text": "広告の効果測定と改善（Google広告）。",
+    "save": "選択を保存",
+    "footer_link": "Cookie設定"
   }
 }

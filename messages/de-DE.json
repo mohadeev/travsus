@@ -4229,5 +4229,25 @@
     "description": "Buche Marokko-Touren mit lokalen Guides: Sahara-Wüstentouren ab Marrakesch und Fès, Kamelritte in Merzouga, Tagesausflüge und private Touren. Sicher online.",
     "h1": "Marokko-Touren und Wüstenreisen mit lokalen Guides",
     "og_alt": "Kamelkarawane in der Sahara, Marokko"
+  },
+  "Cookies": {
+    "title": "Wir verwenden Cookies",
+    "text": "Wir verwenden notwendige Cookies, damit die Website funktioniert. Mit Ihrer Zustimmung nutzen wir auch Analyse-Cookies zur Verbesserung und Marketing-Cookies zur Messung unserer Werbung.",
+    "policy": "Cookie-Richtlinie",
+    "accept": "Alle akzeptieren",
+    "reject": "Alle ablehnen",
+    "choose": "Cookies auswählen",
+    "settings_title": "Cookie-Einstellungen",
+    "settings_text": "Wählen Sie, welche Cookies wir verwenden dürfen. Sie können dies jederzeit über den Link unten auf der Seite ändern.",
+    "close": "Schließen",
+    "necessary": "Unbedingt erforderlich",
+    "necessary_text": "Anmeldung, Buchung und Zahlung, Sprache und Sicherheit. Ohne sie funktioniert die Website nicht.",
+    "always_on": "Immer aktiv",
+    "analytics": "Analyse",
+    "analytics_text": "Helfen uns zu verstehen, wie die Website genutzt wird (Google Analytics, Hotjar, eigene Besuchsstatistik).",
+    "marketing": "Marketing",
+    "marketing_text": "Unsere Werbung messen und verbessern (Google Ads).",
+    "save": "Auswahl speichern",
+    "footer_link": "Cookie-Einstellungen"
   }
 }
