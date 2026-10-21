@@ -5,8 +5,9 @@
 // hidden, and when the same article was saved several times only one copy is
 // shown: its other copies redirect to it.
 import { cache } from 'react'
+import { unstable_cache } from 'next/cache'
 import { slugify } from 'transliteration'
-import { db, T, fetchAll } from '@/lib/db'
+import { dbFresh, T, fetchAll } from '@/lib/db'
 import { routing } from '@/i18n/routing'
 
 const BASE_LOCALE = routing.defaultLocale // the language posts are written in
@@ -75,7 +76,7 @@ const authorOf = (user: any): BlogAuthor => {
 /** All posts, newest first, plus each post's main copy (read once per request). */
 const loadAll = cache(async () => {
 	const rows = await fetchAll<any>(() =>
-		db
+		dbFresh
 			.from(T.posts)
 			.select(`id, title, content, excerpt, tags, featuredImage, authorId, createdAt, translations, author:${T.users}(id, name, username, profileImage, accountData)`)
 			.order('createdAt', { ascending: false }),
@@ -135,17 +136,25 @@ function toPost(raw: any, locale: string): BlogPost {
 	}
 }
 
-/** Posts shown on the blog, newest first. */
-export async function listBlogPosts(locale: string): Promise<BlogPost[]> {
-	const { rows, main } = await loadAll()
-	return rows.filter((r) => main.has(r.id)).map((r) => toPost(r, locale))
-}
+/** Posts shown on the blog, newest first (without the article text). */
+export const listBlogPosts = unstable_cache(
+	async (locale: string): Promise<BlogPost[]> => {
+		const { rows, main } = await loadAll()
+		return rows.filter((r) => main.has(r.id)).map((r) => ({ ...toPost(r, locale), content: '' }))
+	},
+	['blog-list-v2'],
+	{ revalidate: 600, tags: ['blog'] },
+)
 
-/** Raw rows of the shown posts (for the sitemap). */
-export async function shownBlogRows() {
-	const { rows, main } = await loadAll()
-	return rows.filter((r) => main.has(r.id))
-}
+/** Shown posts with their address in every language (for the sitemap). */
+export const blogSitemapEntries = unstable_cache(
+	async (): Promise<{ id: string; createdAt: string; languages: Record<string, string> }[]> => {
+		const { rows, main } = await loadAll()
+		return rows.filter((r) => main.has(r.id)).map((r) => ({ id: r.id, createdAt: r.createdAt, languages: blogLanguages(r) }))
+	},
+	['blog-sitemap-v1'],
+	{ revalidate: 3600, tags: ['blog'] },
+)
 
 /**
  * One post. `redirectTo` is set when the post is a copy of another one;

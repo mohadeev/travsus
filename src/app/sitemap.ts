@@ -3,7 +3,7 @@
 import type { MetadataRoute } from 'next'
 import { routing } from '@/i18n/routing'
 import { db, T, fetchAll, asDate } from '@/lib/db'
-import { blogLanguages, shownBlogRows } from '@/lib/blog'
+import { blogSitemapEntries } from '@/lib/blog'
 import { slugify } from '@/lib/destinations'
 
 export const revalidate = 3600 // rebuild at most once an hour
@@ -78,9 +78,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 	}
 
 	// Blog posts (test posts and copies left out) in the languages they are translated into
-	for (const post of await shownBlogRows()) {
+	for (const post of await blogSitemapEntries()) {
 		const languages = Object.fromEntries(
-			Object.entries(blogLanguages(post)).map(([l, path]) => [l, `${SITE_URL}${path}`]),
+			Object.entries(post.languages).map(([l, path]) => [l, `${SITE_URL}${path}`]),
 		)
 		for (const url of Object.values(languages)) {
 			entries.push({

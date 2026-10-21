@@ -1,5 +1,6 @@
 export const dynamic = "force-dynamic";
 import { NextRequest, NextResponse } from 'next/server'
+import { revalidateTag } from 'next/cache'
 import { v2 as cloudinary } from 'cloudinary'
 import getUserData from '@/app/api/user/getUserData'
 import { db, T, must, newId } from '@/lib/db'
@@ -57,6 +58,7 @@ export async function POST(request: NextRequest) {
 					.select('*')
 					.single(),
 			)
+			revalidateTag('blog') // blog list and sitemap show the change right away
 			return NextResponse.json({ success: true, post })
 		}
 		const tags = (formData.get('tags') as string)
@@ -136,6 +138,7 @@ export async function POST(request: NextRequest) {
 			)
 		}
 
+		revalidateTag('blog') // blog list and sitemap show the change right away
 		return NextResponse.json({ success: true, post })
 	} catch (error) {
 		console.error('Error saving post:', error)

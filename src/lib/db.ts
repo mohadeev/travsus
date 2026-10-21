@@ -18,6 +18,15 @@ export const db = createClient(url, secretKey, {
 	auth: { persistSession: false, autoRefreshToken: false },
 })
 
+/**
+ * Same client, but its reads skip Next's fetch cache. For big reads (over the
+ * 2 MB cache limit) that are cached as a smaller result with unstable_cache.
+ */
+export const dbFresh = createClient(url, secretKey, {
+	auth: { persistSession: false, autoRefreshToken: false },
+	global: { fetch: (input, init) => fetch(input, { ...init, cache: 'no-store' }) },
+})
+
 /** Table names in Supabase — change them here if a table is renamed. */
 export const T = {
 	users: 'users',
