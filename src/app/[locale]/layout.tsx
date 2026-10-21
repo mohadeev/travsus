@@ -9,6 +9,7 @@ import 'rc-slider/assets/index.css'
 import logoImg from '@/images/logos/dark/travsus_black_and_white.png'
 
 import Script from 'next/script'
+import type { Viewport } from 'next'
 import { CONSENT_DEFAULT_SCRIPT } from '@/lib/consent'
 import { getMessages, setRequestLocale } from 'next-intl/server'
 import { routing } from '@/i18n/routing'
@@ -16,6 +17,9 @@ import { routing } from '@/i18n/routing'
 import LocaleLayoutClient from './LocaleLayoutClient'
 
 // Lets pages be cached per language instead of rendered on every request
+// viewportFit 'cover' lets fixed bars (mobile booking bar) keep clear of the iPhone home indicator
+export const viewport: Viewport = { width: 'device-width', initialScale: 1, viewportFit: 'cover' }
+
 export function generateStaticParams() {
 	return routing.locales.map((locale) => ({ locale }))
 }
