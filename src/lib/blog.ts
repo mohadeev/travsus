@@ -68,6 +68,20 @@ function cleanHtml(html: string) {
 		)
 }
 
+/** Cloudinary URL without size/format options, to compare two photo addresses */
+const photoKey = (url: string) => String(url || '').replace(/\/upload\/[^/]*\/(?=v\d)/, '/upload/').split('?')[0]
+
+/** The cover is shown above the article: leave out the same photo inside the text. */
+function withoutCover(html: string, cover: string | null) {
+	if (!cover) return html
+	const key = photoKey(cover)
+	let removed = false
+	return html
+		.replace(/<img\b[^>]*\ssrc="([^"]+)"[^>]*>/gi, (img, src) => (!removed && photoKey(src) === key ? ((removed = true), '') : img))
+		.replace(/<figure[^>]*>\s*(<figcaption[^>]*>[\s\S]*?<\/figcaption>)?\s*<\/figure>/gi, '')
+		.replace(/<p[^>]*>\s*(<br\s*\/?>)?\s*<\/p>/gi, '')
+}
+
 const authorOf = (user: any): BlogAuthor => {
 	const full = [user?.accountData?.firstname, user?.accountData?.lastname].filter(Boolean).join(' ')
 	return { name: user?.name || full || user?.username || 'TRAVSUS', image: user?.profileImage?.url || null }
@@ -125,7 +139,7 @@ function toPost(raw: any, locale: string): BlogPost {
 		id: raw.id,
 		title: text.title,
 		excerpt: plain(text.excerpt) || plain(text.content).slice(0, 180),
-		content: cleanHtml(text.content),
+		content: withoutCover(cleanHtml(text.content), raw.featuredImage || null),
 		tags: text.tags,
 		image: raw.featuredImage || null,
 		createdAt: raw.createdAt,
