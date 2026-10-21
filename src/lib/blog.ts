@@ -7,7 +7,7 @@
 import { cache } from 'react'
 import { unstable_cache } from 'next/cache'
 import { slugify } from 'transliteration'
-import { dbFresh, T, fetchAll } from '@/lib/db'
+import { db, T, fetchAll } from '@/lib/db'
 import { routing } from '@/i18n/routing'
 
 const BASE_LOCALE = routing.defaultLocale // the language posts are written in
@@ -87,12 +87,22 @@ const authorOf = (user: any): BlogAuthor => {
 	return { name: user?.name || full || user?.username || 'TRAVSUS', image: user?.profileImage?.url || null }
 }
 
+/**
+ * Posts dated up to the end of the current 10-minute window. The window changes
+ * the request address every 10 minutes, so a cached copy (the full answer is too
+ * big for the fetch cache) can never stay stale, and future-dated posts stay
+ * hidden until their date: scheduled publishing.
+ */
+const publishedBefore = () => new Date(Math.ceil(Date.now() / 600_000) * 600_000).toISOString()
+
 /** All posts, newest first, plus each post's main copy (read once per request). */
 const loadAll = cache(async () => {
+	const until = publishedBefore()
 	const rows = await fetchAll<any>(() =>
-		dbFresh
+		db
 			.from(T.posts)
 			.select(`id, title, content, excerpt, tags, featuredImage, authorId, createdAt, translations, author:${T.users}(id, name, username, profileImage, accountData)`)
+			.lte('createdAt', until)
 			.order('createdAt', { ascending: false }),
 	)
 	// Copies of the same article share a title: keep the one with the most
