@@ -9,7 +9,7 @@ import { listBlogPosts } from '@/lib/blog'
 import PostCard from './PostCard'
 
 const PER_PAGE = 12
-// Posts are read with fetch (Supabase): refresh them at most every 10 minutes
+// Refresh the list at most every 10 minutes
 export const revalidate = 600
 
 type PageProps = { params: { locale: string }; searchParams: { page?: string } }

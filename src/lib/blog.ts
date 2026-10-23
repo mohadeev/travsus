@@ -4,10 +4,13 @@
 // The posts table has no "published" flag, so test posts (almost no text) are
 // hidden, and when the same article was saved several times only one copy is
 // shown: its other copies redirect to it.
+//
+// The list of posts is read without the article text (only its length), so a
+// page never loads more than it shows; the article page reads its one post.
 import { cache } from 'react'
 import { unstable_cache } from 'next/cache'
 import { slugify } from 'transliteration'
-import { db, T, fetchAll } from '@/lib/db'
+import { db, T, must, mongoCollection } from '@/lib/db'
 import { routing } from '@/i18n/routing'
 
 const BASE_LOCALE = routing.defaultLocale // the language posts are written in
@@ -31,13 +34,18 @@ export type BlogPost = {
 
 const plain = (html: string) => html.replace(/<[^>]*>/g, ' ').replace(/&[a-z#0-9]+;/gi, ' ').replace(/\s+/g, ' ').trim()
 
+/** Length of a text, from the text itself or (list rows) its stored length. */
+const textLength = (x: any) => (typeof x?.content === 'string' ? plain(x.content).length : Number(x?.contentLength ?? 0))
+
 /** The post's text in `locale` (its translation when there is one). */
 function localize(raw: any, locale: string) {
-	const tr = (raw.translations ?? []).find((t: any) => t?.language === locale && plain(t?.content ?? '').length >= MIN_TEXT)
+	const tr = (raw.translations ?? []).find((t: any) => t?.language === locale && textLength(t) >= MIN_TEXT)
 	const pick = (key: string) => (tr?.[key] && String(tr[key]).trim()) || raw[key]
 	return {
 		title: String(pick('title') ?? '').trim(),
 		content: String(pick('content') ?? ''),
+		contentStart: String(pick('contentStart') ?? ''),
+		length: textLength(tr ?? raw),
 		excerpt: String(pick('excerpt') ?? ''),
 		tags: ((tr?.tags?.length ? tr.tags : raw.tags) ?? []).filter(Boolean) as string[],
 		translated: !!tr || locale === BASE_LOCALE,
@@ -45,8 +53,8 @@ function localize(raw: any, locale: string) {
 }
 
 const readable = (raw: any) => {
-	const { title, content } = localize(raw, BASE_LOCALE)
-	return title.length >= 10 && plain(content).length >= MIN_TEXT
+	const { title, length } = localize(raw, BASE_LOCALE)
+	return title.length >= 10 && length >= MIN_TEXT
 }
 
 /** Article HTML made safe to show under the page's own <h1>. */
@@ -88,31 +96,52 @@ const authorOf = (user: any): BlogAuthor => {
 }
 
 /**
- * Posts dated up to the end of the current 10-minute window. The window changes
- * the request address every 10 minutes, so a cached copy (the full answer is too
- * big for the fetch cache) can never stay stale, and future-dated posts stay
- * hidden until their date: scheduled publishing.
+ * Posts dated up to the end of the current 10-minute window, so future-dated
+ * posts stay hidden until their date: scheduled publishing.
  */
-const publishedBefore = () => new Date(Math.ceil(Date.now() / 600_000) * 600_000).toISOString()
+const publishedBefore = () => new Date(Math.ceil(Date.now() / 600_000) * 600_000)
 
-/** All posts, newest first, plus each post's main copy (read once per request). */
+const AUTHOR_FIELDS = `id, name, username, profileImage, accountData`
+
+/**
+ * All posts, newest first, plus each post's main copy (read once per request).
+ * Rows carry the length and start of each text instead of the text itself.
+ */
 const loadAll = cache(async () => {
-	const until = publishedBefore()
-	const rows = await fetchAll<any>(() =>
-		db
-			.from(T.posts)
-			.select(`id, title, content, excerpt, tags, featuredImage, authorId, createdAt, translations, author:${T.users}(id, name, username, profileImage, accountData)`)
-			.lte('createdAt', until)
-			.order('createdAt', { ascending: false }),
-	)
+	const posts = await mongoCollection(T.posts)
+	const length = (field: string) => ({ $strLenCP: { $ifNull: [field, ''] } })
+	const start = (field: string) => ({ $substrCP: [{ $ifNull: [field, ''] }, 0, 600] })
+	const docs = await posts
+		.aggregate([
+			{ $match: { createdAt: { $lte: publishedBefore() } } },
+			{ $sort: { createdAt: -1 } },
+			{ $lookup: { from: T.users, localField: 'authorId', foreignField: '_id', as: 'author', pipeline: [{ $project: { name: 1, username: 1, profileImage: 1, accountData: 1 } }] } },
+			{
+				$project: {
+					title: 1,
+					excerpt: 1,
+					tags: 1,
+					featuredImage: 1,
+					authorId: 1,
+					createdAt: 1,
+					author: { $first: '$author' },
+					contentLength: length('$content'),
+					contentStart: start('$content'),
+					translations: {
+						$map: {
+							input: { $ifNull: ['$translations', []] },
+							as: 't',
+							in: { language: '$$t.language', title: '$$t.title', excerpt: '$$t.excerpt', tags: '$$t.tags', contentLength: length('$$t.content'), contentStart: start('$$t.content') },
+						},
+					},
+				},
+			},
+		])
+		.toArray()
+	const rows = docs.map(({ _id, createdAt, ...rest }) => ({ id: String(_id), createdAt: new Date(createdAt).toISOString(), ...rest }))
 	// Copies of the same article share a title: keep the one with the most
 	// translations, then a photo, then the most text, then the oldest
-	const score = (p: any) => [
-		(p.translations ?? []).length,
-		p.featuredImage ? 1 : 0,
-		plain(localize(p, BASE_LOCALE).content).length,
-		-new Date(p.createdAt).getTime(),
-	]
+	const score = (p: any) => [(p.translations ?? []).length, p.featuredImage ? 1 : 0, localize(p, BASE_LOCALE).length, -new Date(p.createdAt).getTime()]
 	const better = (a: any, b: any) => {
 		const [sa, sb] = [score(a), score(b)]
 		for (let i = 0; i < sa.length; i++) if (sa[i] !== sb[i]) return sa[i] > sb[i] ? a : b
@@ -144,11 +173,11 @@ export function blogLanguages(raw: any): Record<string, string> {
 
 function toPost(raw: any, locale: string): BlogPost {
 	const text = localize(raw, locale)
-	const words = plain(text.content).split(' ').length
+	const words = text.content ? plain(text.content).split(' ').length : Math.round(text.length / 6)
 	return {
 		id: raw.id,
 		title: text.title,
-		excerpt: plain(text.excerpt) || plain(text.content).slice(0, 180),
+		excerpt: plain(text.excerpt) || plain(text.content || text.contentStart).slice(0, 180),
 		content: withoutCover(cleanHtml(text.content), raw.featuredImage || null),
 		tags: text.tags,
 		image: raw.featuredImage || null,
@@ -166,7 +195,7 @@ export const listBlogPosts = unstable_cache(
 		const { rows, main } = await loadAll()
 		return rows.filter((r) => main.has(r.id)).map((r) => ({ ...toPost(r, locale), content: '' }))
 	},
-	['blog-list-v2'],
+	['blog-list-v3'],
 	{ revalidate: 600, tags: ['blog'] },
 )
 
@@ -176,7 +205,7 @@ export const blogSitemapEntries = unstable_cache(
 		const { rows, main } = await loadAll()
 		return rows.filter((r) => main.has(r.id)).map((r) => ({ id: r.id, createdAt: r.createdAt, languages: blogLanguages(r) }))
 	},
-	['blog-sitemap-v1'],
+	['blog-sitemap-v2'],
 	{ revalidate: 3600, tags: ['blog'] },
 )
 
@@ -189,12 +218,14 @@ export async function getBlogPost(
 	locale: string,
 ): Promise<{ redirectTo: string } | { post: BlogPost; languages: Record<string, string>; related: BlogPost[] } | null> {
 	const { rows, main, mainIdOf } = await loadAll()
-	const raw = rows.find((r) => r.id === id)
-	if (!raw || !readable(raw)) return null
+	const listed = rows.find((r) => r.id === id)
+	if (!listed || !readable(listed)) return null
 	if (!main.has(id)) {
-		const target = rows.find((r) => r.id === mainIdOf(raw))
+		const target = rows.find((r) => r.id === mainIdOf(listed))
 		return target ? { redirectTo: blogPath(locale, localize(target, locale).title, target.id) } : null
 	}
+	const raw = must(await db.from(T.posts).select(`*, author:${T.users}(${AUTHOR_FIELDS})`).eq('id', id).maybeSingle())
+	if (!raw) return null
 	const post = toPost(raw, locale)
 	// Related: most shared tags first, then the newest
 	const tags = new Set(post.tags.map((t) => t.toLowerCase()))

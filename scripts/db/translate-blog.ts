@@ -1,9 +1,10 @@
-// Fills in missing blog post translations with OpenAI and saves them in Supabase.
+// Fills in missing blog post translations with OpenAI and saves them in the database.
 //
 //   npm run db:translate-blog            → dry run: lists what would change
 //   npm run db:translate-blog -- --apply → backs up the posts, then saves
 //   npm run db:translate-blog -- --preview=<language> → translates one post, prints it, saves nothing
 //   --from=<dir>: use ready translations from <dir>/<postId>.<language>.json
+//   --redo=<language>: with --from, also replace that language where a file exists
 //   ({ title, excerpt, tags, content }) instead of calling OpenAI
 //
 // Only the posts the blog shows (readable, one copy per title) are translated,
@@ -20,6 +21,10 @@ import { routing } from '@/i18n/routing'
 const APPLY = process.argv.includes('--apply')
 const FROM = process.argv.find((a) => a.startsWith('--from='))?.split('=')[1]
 const PREVIEW = process.argv.find((a) => a.startsWith('--preview='))?.split('=')[1]
+// --redo=<language> with --from: also replace that language where a ready file exists
+const REDO = process.argv.find((a) => a.startsWith('--redo='))?.split('=')[1]
+// …or a file with "<postId> <language>" lines: replace exactly those
+const REDO_PAIRS = new Set(REDO && fs.existsSync(REDO) ? fs.readFileSync(REDO, 'utf8').split('\n').map((l) => l.trim()).filter(Boolean) : [])
 const MODEL = process.env.TRANSLATE_MODEL || 'gpt-4.1-mini'
 const SOURCE = 'en-US'
 const MIN_TEXT = 300 // same as src/lib/blog.ts: shorter texts don't count
@@ -119,7 +124,7 @@ async function main() {
 	const posts = shownPosts(rows)
 	const jobs = posts.flatMap((post) =>
 		Object.keys(LANGUAGE_NAMES)
-			.filter((language) => !hasLanguage(post, language))
+			.filter((language) => !hasLanguage(post, language) || ((language === REDO || REDO_PAIRS.has(`${post.id} ${language}`)) && FROM && fs.existsSync(path.join(FROM, `${post.id}.${language}.json`))))
 			.map((language) => ({ post, language })),
 	)
 

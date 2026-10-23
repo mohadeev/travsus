@@ -1,6 +1,6 @@
 # TRAVSUS
 
-Tour booking site: Next.js 14 (App Router), Supabase, Clerk sign-in, Stripe payments, 10 languages (next-intl). Deployed on Vercel from `main`.
+Tour booking site: Next.js 14 (App Router), MongoDB Atlas, Clerk sign-in, Stripe payments, 10 languages (next-intl). Deployed on Vercel from `main`.
 
 ## Run it locally
 
@@ -17,7 +17,7 @@ Secrets go in `.env.local` (never committed); see `.env.local.example`.
 |---|---|
 | `npm run dev` | Development server on port 3001 |
 | `npm run build` / `npm start` | Production build / server |
-| `npm run db:sql <file.sql>` | Run a SQL file on the Supabase database (`scripts/db/sql/`) |
+| `npm run db:import <file.json>` | Load a database export (`{ table: rows[] }`) into MongoDB (dry run; add `--apply` to write) |
 | `npm run db:translate-tours` | Fill in missing tour translations (dry run; add `-- --apply` to save) |
 
 ## Admin panels (owner account only)

@@ -1,4 +1,4 @@
-// Fills in missing tour translations with OpenAI and saves them in Supabase.
+// Fills in missing tour translations with OpenAI and saves them in the database.
 //
 //   npm run db:translate-tours            → dry run: lists what would change
 //   npm run db:translate-tours -- --apply → backs up the tours, then saves

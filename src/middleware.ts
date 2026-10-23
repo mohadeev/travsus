@@ -3,19 +3,23 @@ import { clerkMiddleware } from '@clerk/nextjs/server'
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 import createMiddleware from 'next-intl/middleware'
-import { createClient } from '@supabase/supabase-js'
 import { routing } from './i18n/routing'
 
 const intlMiddleware = createMiddleware(routing)
 
-// Public key is enough: tours are readable by everyone (RLS "public read")
-const supabase = createClient(
-	process.env.NEXT_PUBLIC_SUPABASE_URL!,
-	process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!,
-	{ auth: { persistSession: false } },
-)
-
 const TOUR_ID = /^[0-9a-f]{24}$/
+
+/**
+ * The tour's addresses, from the site's own API (the middleware runs at the
+ * edge, where the database can't be reached). Empty when it can't be known.
+ */
+async function tourSlugs(request: NextRequest, tourId: string): Promise<{ language: string; slug: string }[]> {
+	const url = new URL(`/api/tours/${tourId}/slug`, request.nextUrl.origin)
+	const res = await fetch(url, { signal: AbortSignal.timeout(3000), next: { revalidate: 86400 } })
+	if (!res.ok) return []
+	const data = await res.json().catch(() => ({}))
+	return Array.isArray(data?.slugs) ? data.slugs : []
+}
 
 /** Only same-site relative paths are allowed as redirect targets. */
 const isSafePath = (path: unknown): path is string =>
@@ -38,15 +42,7 @@ async function tourRedirect(
 	const tourId = isLegacy ? parts[parts.length - 2] : last
 	if (!TOUR_ID.test(tourId)) return null
 
-	const { data: tour, error } = await supabase
-		.from('tours')
-		.select('slugs')
-		.eq('id', tourId)
-		.maybeSingle()
-	if (error) console.error('Tour redirect lookup failed:', error.message)
-	if (!tour) return null
-
-	const slugs: { language: string; slug: string }[] = tour.slugs ?? []
+	const slugs = await tourSlugs(request, tourId)
 	const target = (slugs.find((s) => s.language === locale) ?? slugs[0])?.slug
 	if (!isSafePath(target)) return null
 

@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useLocale } from 'next-intl'
-import { BarChart3, Building2, Handshake, Languages, LayoutGrid, Mail, MapPin, type LucideIcon } from 'lucide-react'
+import { BarChart3, Building2, Database, Handshake, Languages, LayoutGrid, Mail, MapPin, type LucideIcon } from 'lucide-react'
 
 export const ADMIN_LINKS: [string, string, LucideIcon][] = [
 	['Home', '/admin', LayoutGrid],
@@ -12,6 +12,7 @@ export const ADMIN_LINKS: [string, string, LucideIcon][] = [
 	['Places', '/cms-admin', MapPin],
 	['Affiliates', '/admin/affiliates', Handshake],
 	['Emails', '/admin/emails', Mail],
+	['Database export', '/admin/migrate-db', Database],
 	['Business dashboard', '/dashboard', Building2],
 ]
 
