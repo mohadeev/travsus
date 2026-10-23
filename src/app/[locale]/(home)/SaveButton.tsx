@@ -33,11 +33,11 @@ export default function SaveButton({ tourId, label }: { tourId: string; label: s
 				e.preventDefault() // the card itself is a link
 				toggle(undefined)
 			}}
-			className="grid h-9 w-9 place-items-center rounded-full bg-white text-neutral-900 shadow-md transition hover:scale-105"
+			className="grid h-10 w-10 place-items-center rounded-full bg-white text-[#004F32] shadow-md transition hover:scale-105"
 		>
 			<Heart
-				className={`h-[18px] w-[18px] ${liked ? 'fill-red-500 text-red-500' : ''}`}
-				strokeWidth={2.2}
+				className={`h-5 w-5 ${liked ? 'fill-red-500 text-red-500' : ''}`}
+				strokeWidth={2}
 			/>
 		</button>
 	)
