@@ -1,20 +1,20 @@
-// Accept an affiliate invitation as the signed-in account.
-// Body: { token }. Answers { ok: true } or { code: 'SIGN_IN' | 'INVALID' | 'ERROR' }.
+// Accept an affiliate invitation (no account needed: the link was sent to the
+// invited inbox). Body: { token, locale? }.
+// Answers { link, email } or { code: 'INVALID' | 'ERROR' }.
 import { NextResponse, type NextRequest } from 'next/server'
-import { getSession } from '@/lib/session'
-import { acceptInvite, inviteByToken } from '@/lib/affiliateInvites'
+import { acceptInvite, affiliateLink, inviteByToken } from '@/lib/affiliateInvites'
+import { routing } from '@/i18n/routing'
 
 export const dynamic = 'force-dynamic'
 
 export async function POST(req: NextRequest) {
-	const session = await getSession()
-	if (!session) return NextResponse.json({ code: 'SIGN_IN' }, { status: 401 })
-	const { token } = await req.json().catch(() => ({}))
+	const { token, locale } = await req.json().catch(() => ({}))
 	const invite = await inviteByToken(token)
 	if (!invite) return NextResponse.json({ code: 'INVALID' }, { status: 404 })
 	try {
-		await acceptInvite(invite, session.user.email)
-		return NextResponse.json({ ok: true })
+		const affiliate = await acceptInvite(invite)
+		const lang = (routing.locales as readonly string[]).includes(locale) ? locale : routing.defaultLocale
+		return NextResponse.json({ link: affiliateLink(affiliate.code!, lang), email: affiliate.email })
 	} catch (error) {
 		console.error('Accept affiliate invite failed:', error)
 		return NextResponse.json({ code: 'ERROR' }, { status: 500 })

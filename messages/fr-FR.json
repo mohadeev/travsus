@@ -4285,17 +4285,23 @@
     "perk_commission": "Jusqu’à 15 % de commission par réservation",
     "perk_cookie": "Cookie de 60 jours sur chaque clic",
     "perk_payouts": "Paiements mensuels dès 50 €",
-    "sign_in_first": "Créez votre compte ou connectez-vous pour accepter l’invitation.",
     "sign_up": "Créer un compte",
     "sign_in": "Se connecter",
     "accept": "Accepter l’invitation",
-    "signed_in_as": "Vous rejoindrez le programme avec {email}",
     "accepted_title": "C’est fait !",
-    "accepted_text": "Votre lien d’affilié est prêt. Nous vous avons envoyé un e-mail de bienvenue.",
+    "accepted_text": "Bienvenue dans le programme d’affiliation TRAVSUS.",
     "open_area": "Ouvrir mon espace affilié",
     "error": "Une erreur s’est produite. Veuillez réessayer.",
     "invalid_title": "Ce lien d’invitation n’est pas valide",
     "invalid_text": "Il est peut-être incomplet. Rouvrez le lien depuis votre e-mail d’invitation.",
-    "about_program": "Comment fonctionne le programme d’affiliation"
+    "about_program": "Comment fonctionne le programme d’affiliation",
+    "accept_note": "Un clic, sans créer de compte.",
+    "link_title": "Votre lien d’affilié",
+    "copy": "Copier",
+    "copied": "Copié",
+    "share": "Partager mon lien",
+    "link_tip": "Ajoutez-le à votre bio, vos posts ou vos vidéos : chaque réservation faite via ce lien vous rapporte une commission.",
+    "earnings_title": "Suivez vos gains",
+    "earnings_text": "Créez votre compte gratuit avec {email} pour suivre vos clics, réservations et commissions."
   }
 }

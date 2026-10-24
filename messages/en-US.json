@@ -2985,17 +2985,23 @@
     "perk_commission": "Up to 15% commission per booking",
     "perk_cookie": "60-day cookie on every click",
     "perk_payouts": "Monthly payouts from €50",
-    "sign_in_first": "Create your account or sign in to accept the invitation.",
     "sign_up": "Create account",
     "sign_in": "Sign in",
     "accept": "Accept invitation",
-    "signed_in_as": "You’ll join as {email}",
     "accepted_title": "You’re in!",
-    "accepted_text": "Your affiliate link is ready. We’ve sent you a welcome email.",
+    "accepted_text": "Welcome to the TRAVSUS affiliate program.",
     "open_area": "Open my affiliate area",
     "error": "Something went wrong. Please try again.",
     "invalid_title": "This invitation link isn’t valid",
     "invalid_text": "It may be incomplete. Open the link from your invitation email again.",
-    "about_program": "How the affiliate program works"
+    "about_program": "How the affiliate program works",
+    "accept_note": "One tap, no account needed.",
+    "link_title": "Your affiliate link",
+    "copy": "Copy",
+    "copied": "Copied",
+    "share": "Share my link",
+    "link_tip": "Add it to your bio, posts or videos: every booking made through it earns you a commission.",
+    "earnings_title": "See your earnings",
+    "earnings_text": "Create your free account with {email} to follow your clicks, bookings and commissions."
   }
 }

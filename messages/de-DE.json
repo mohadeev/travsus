@@ -4269,17 +4269,23 @@
     "perk_commission": "Bis zu 15 % Provision pro Buchung",
     "perk_cookie": "60-Tage-Cookie bei jedem Klick",
     "perk_payouts": "Monatliche Auszahlung ab 50 €",
-    "sign_in_first": "Erstelle ein Konto oder melde dich an, um die Einladung anzunehmen.",
     "sign_up": "Konto erstellen",
     "sign_in": "Anmelden",
     "accept": "Einladung annehmen",
-    "signed_in_as": "Du trittst bei als {email}",
     "accepted_title": "Du bist dabei!",
-    "accepted_text": "Dein Partnerlink ist bereit. Wir haben dir eine Willkommens-E-Mail geschickt.",
+    "accepted_text": "Willkommen im TRAVSUS-Partnerprogramm.",
     "open_area": "Meinen Partnerbereich öffnen",
     "error": "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
     "invalid_title": "Dieser Einladungslink ist ungültig",
     "invalid_text": "Er ist vielleicht unvollständig. Öffne den Link aus deiner Einladungs-E-Mail erneut.",
-    "about_program": "So funktioniert das Partnerprogramm"
+    "about_program": "So funktioniert das Partnerprogramm",
+    "accept_note": "Ein Klick, kein Konto nötig.",
+    "link_title": "Dein Partnerlink",
+    "copy": "Kopieren",
+    "copied": "Kopiert",
+    "share": "Link teilen",
+    "link_tip": "Füge ihn in deine Bio, Posts oder Videos ein: Jede Buchung darüber bringt dir Provision.",
+    "earnings_title": "Deine Einnahmen ansehen",
+    "earnings_text": "Erstelle dein kostenloses Konto mit {email}, um Klicks, Buchungen und Provisionen zu verfolgen."
   }
 }

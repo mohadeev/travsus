@@ -1,13 +1,12 @@
-// A personal affiliate invitation (the link in the invitation email).
-// Signed out: sign in or create an account first. Signed in: accept, and they
-// become an affiliate under their account's email.
+// A personal affiliate invitation (the link in the invitation email): one tap
+// on "Accept" and they're an affiliate with their link; creating an account
+// with the invited email then shows their earnings.
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Check, LinkIcon } from 'lucide-react'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { getSession } from '@/lib/session'
-import { inviteByToken } from '@/lib/affiliateInvites'
-import { affiliateByEmail } from '@/lib/affiliates'
+import { affiliateLink, inviteAffiliate, inviteByToken } from '@/lib/affiliateInvites'
 import AcceptInvite from './AcceptInvite'
 
 export const dynamic = 'force-dynamic'
@@ -35,8 +34,8 @@ export default async function AffiliateInvitePage({ params }: Props) {
 		)
 	}
 
-	// Already an affiliate with this account: nothing left to accept
-	const member = session ? await affiliateByEmail(session.user.email) : null
+	// Accepted before: show their link straight away
+	const affiliate = await inviteAffiliate(invite)
 	const firstName = invite.name?.split(' ')[0]
 	const perks = [t('perk_commission'), t('perk_cookie'), t('perk_payouts')]
 
@@ -66,7 +65,13 @@ export default async function AffiliateInvitePage({ params }: Props) {
 					</ul>
 
 					<div className="relative mt-9">
-						<AcceptInvite token={invite.token} signedInAs={session?.user.email ?? null} alreadyMember={!!member} areaHref={areaHref} />
+						<AcceptInvite
+							token={invite.token}
+							email={invite.email}
+							acceptedLink={affiliate?.code ? affiliateLink(affiliate.code, locale) : null}
+							signedIn={session?.user.email === invite.email}
+							areaHref={areaHref}
+						/>
 					</div>
 				</div>
 			</div>

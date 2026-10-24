@@ -4208,17 +4208,23 @@
     "perk_commission": "Hasta un 15 % de comisión por reserva",
     "perk_cookie": "Cookie de 60 días en cada clic",
     "perk_payouts": "Pagos mensuales desde 50 €",
-    "sign_in_first": "Crea tu cuenta o inicia sesión para aceptar la invitación.",
     "sign_up": "Crear cuenta",
     "sign_in": "Iniciar sesión",
     "accept": "Aceptar invitación",
-    "signed_in_as": "Te unirás como {email}",
     "accepted_title": "¡Ya estás dentro!",
-    "accepted_text": "Tu enlace de afiliado está listo. Te hemos enviado un correo de bienvenida.",
+    "accepted_text": "Bienvenido al programa de afiliados de TRAVSUS.",
     "open_area": "Abrir mi área de afiliado",
     "error": "Algo salió mal. Inténtalo de nuevo.",
     "invalid_title": "Este enlace de invitación no es válido",
     "invalid_text": "Puede estar incompleto. Vuelve a abrir el enlace desde el correo de invitación.",
-    "about_program": "Cómo funciona el programa de afiliados"
+    "about_program": "Cómo funciona el programa de afiliados",
+    "accept_note": "Un toque, sin necesidad de cuenta.",
+    "link_title": "Tu enlace de afiliado",
+    "copy": "Copiar",
+    "copied": "Copiado",
+    "share": "Compartir mi enlace",
+    "link_tip": "Añádelo a tu bio, publicaciones o vídeos: cada reserva hecha con él te da una comisión.",
+    "earnings_title": "Consulta tus ganancias",
+    "earnings_text": "Crea tu cuenta gratuita con {email} para seguir tus clics, reservas y comisiones."
   }
 }

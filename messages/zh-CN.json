@@ -3147,17 +3147,23 @@
     "perk_commission": "每笔预订最高 15% 佣金",
     "perk_cookie": "每次点击 60 天 Cookie",
     "perk_payouts": "满 50 € 每月结算",
-    "sign_in_first": "请先创建账户或登录，再接受邀请。",
     "sign_up": "创建账户",
     "sign_in": "登录",
     "accept": "接受邀请",
-    "signed_in_as": "您将以 {email} 加入",
     "accepted_title": "加入成功！",
-    "accepted_text": "您的推广链接已就绪，我们已向您发送欢迎邮件。",
+    "accepted_text": "欢迎加入 TRAVSUS 联盟计划。",
     "open_area": "打开我的联盟页面",
     "error": "出了点问题，请重试。",
     "invalid_title": "此邀请链接无效",
     "invalid_text": "链接可能不完整，请重新打开邀请邮件中的链接。",
-    "about_program": "了解联盟计划"
+    "about_program": "了解联盟计划",
+    "accept_note": "一键接受，无需账户。",
+    "link_title": "您的推广链接",
+    "copy": "复制",
+    "copied": "已复制",
+    "share": "分享我的链接",
+    "link_tip": "把它放进简介、帖子或视频中：每笔通过它完成的预订都会为您带来佣金。",
+    "earnings_title": "查看您的收益",
+    "earnings_text": "使用 {email} 创建免费账户，即可查看点击、预订和佣金。"
   }
 }

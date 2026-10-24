@@ -1,9 +1,10 @@
 // Affiliate invitations. Server only.
 //
 // The owner invites someone from Admin → Emails; the email links to
-// /{locale}/affiliates/invite/{token}. There the person signs in (or creates
-// an account) and accepts: they become an accepted affiliate under their
-// account's email, with a link code, and get the welcome email.
+// /{locale}/affiliates/invite/{token}. One click on "Accept" makes the invited
+// email an accepted affiliate (the link was sent to that inbox, so no account
+// is needed): they get their link right away and the welcome email. Creating
+// an account with that email then shows their earnings in the affiliate area.
 import 'server-only'
 import { randomBytes } from 'node:crypto'
 import { db, T, must } from '@/lib/db'
@@ -42,13 +43,22 @@ export async function inviteByToken(token: unknown) {
 	return must(await db.from(T.affiliateInvites).select('*').eq('token', value).maybeSingle()) as AffiliateInvite | null
 }
 
+/** Their personal link to share */
+export const affiliateLink = (code: string, locale = 'en-US') => `${SITE}/${locale}?ref=${code}`
+
+/** The affiliate an accepted invitation made, or null */
+export async function inviteAffiliate(invite: AffiliateInvite) {
+	if (!invite.accepted_at) return null
+	return must(await db.from(T.affiliates).select('*').eq('email', invite.accepted_email || invite.email).eq('status', 'approved').maybeSingle()) as Affiliate | null
+}
+
 /**
- * Accept an invitation as the signed-in account (`email`). Makes that email an
- * accepted affiliate (keeping an existing code and commission) and sends the
- * welcome email. Accepting twice is harmless.
+ * Accept an invitation: makes the invited email an accepted affiliate
+ * (keeping an existing code and commission) and sends the welcome email.
+ * Accepting twice is harmless.
  */
-export async function acceptInvite(invite: AffiliateInvite, email: string): Promise<Affiliate> {
-	const address = email.toLowerCase()
+export async function acceptInvite(invite: AffiliateInvite): Promise<Affiliate> {
+	const address = invite.email
 	const now = new Date().toISOString()
 	const existing = must(await db.from(T.affiliates).select('*').eq('email', address).maybeSingle()) as Affiliate | null
 	let affiliate: Affiliate
@@ -61,7 +71,7 @@ export async function acceptInvite(invite: AffiliateInvite, email: string): Prom
 		affiliate = must(
 			await db
 				.from(T.affiliates)
-				.insert({ email: address, status: 'approved', code: await newCode(), rate: null, decided_at: now, note: `Accepted an invitation sent to ${invite.email}` })
+				.insert({ email: address, status: 'approved', code: await newCode(), rate: null, decided_at: now, note: 'Accepted an invitation' })
 				.select('*')
 				.single(),
 		) as Affiliate
@@ -72,7 +82,7 @@ export async function acceptInvite(invite: AffiliateInvite, email: string): Prom
 	if (welcome) {
 		const tiers = `${TIERS[0].rate}% to ${TIERS[TIERS.length - 1].rate}%, growing with your bookings`
 		const rate = affiliate.rate === null ? tiers : `${Number(affiliate.rate)}% on every booking`
-		await sendTemplate('affiliate-approved', { to: address, data: { rate, link: `${SITE}/en-US?ref=${affiliate.code}` } })
+		await sendTemplate('affiliate-approved', { to: address, data: { rate, link: affiliateLink(affiliate.code!) } })
 	}
 	return affiliate
 }
