@@ -82,6 +82,10 @@ export const bullets = (items: string[]) =>
 		.map((item) => `<tr><td valign="top" style="padding:5px 12px 5px 0;font:700 14px/1.5 ${FONT};color:${C.green}">&#10003;</td><td style="padding:5px 0;font:400 15px/1.5 ${FONT};color:#404040">${esc(item)}</td></tr>`)
 		.join('')}</table>`)
 
+/** A personal note, in a soft grey box (line breaks kept) */
+export const quote = (value: string) =>
+	raw(`<p style="margin:0 0 18px;padding:16px 20px;background:${C.soft};border-radius:16px;font:400 15px/1.6 ${FONT};color:#262626;white-space:pre-line">${esc(value)}</p>`)
+
 export const divider = () => raw(`<hr style="border:0;border-top:1px solid ${C.line};margin:28px 0" />`)
 
 // ---- Page -------------------------------------------------------------------

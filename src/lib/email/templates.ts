@@ -6,7 +6,7 @@
 // sendTemplate('<id>', { to, data }) from ./send.
 import {
 	bullets, button, check, details, divider, emailPage, esc, euros, eyebrow, heading, image, link, longDate,
-	priceTable, raw, SITE, small, strong, text, title, type Html,
+	priceTable, quote, raw, SITE, small, strong, text, title, type Html,
 } from './layout'
 
 export type Sender = { email: string; name: string }
@@ -312,6 +312,33 @@ export const TEMPLATES = {
 			button('Accept or decline', `${SITE}/en-US/admin/affiliates`),
 		],
 		sample: { email: 'creator@example.com', website: 'instagram.com/wanderwithsofia', locale: 'fr-FR' },
+	}),
+
+	'affiliate-invite': template<{ name?: string; message?: string }>({
+		name: 'Affiliate invitation',
+		category: 'Affiliates',
+		to: 'Affiliate',
+		from: FROM.hello,
+		when: 'When you send an invitation from this page (Admin → Emails → Affiliate invitation).',
+		connected: true,
+		subject: (d) => (d.name ? `${d.name.split(' ')[0]}, you’re invited to the TRAVSUS affiliate program` : 'You’re invited to the TRAVSUS affiliate program'),
+		preheader: () => 'Earn up to 15% on every tour booked through your link.',
+		body: (d) => [
+			eyebrow('Affiliate program'),
+			title(d.name ? `${d.name.split(' ')[0]}, you’re invited.` : 'You’re invited.'),
+			text('We’d love to have you as a TRAVSUS partner. Share our tours in Morocco and beyond with your audience, and earn a commission on every booking made through your link.'),
+			...(d.message?.trim()
+				? [quote(d.message.trim())]
+				: []),
+			details([
+				['Commission', 'Up to 15% per booking'],
+				['Cookie', '60 days'],
+				['Payouts', 'Monthly, from €50'],
+			]),
+			bullets(['Your personal link on every tour page, ready to share', 'Clicks, bookings and earnings in your account', 'Free to join, no minimum audience']),
+			button('Join the affiliate program', `${SITE}/en-US/affiliates#request`),
+		],
+		sample: { name: 'Sofia Martin', message: 'I love your travel videos about Morocco, I think your audience would enjoy our desert tours.' },
 	}),
 
 	'affiliate-approved': template<{ rate: string; link: string }>({
