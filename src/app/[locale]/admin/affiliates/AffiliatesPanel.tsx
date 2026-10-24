@@ -3,9 +3,11 @@
 // decline it, give it a custom commission (or keep the standard tiers from
 // the affiliates page), add a private note, and optionally email the person.
 // Accepted affiliates: their link code, earnings, and recording payouts.
+// "Send invitation" opens the invitation form in a dialog, on this page.
 import { Fragment, useMemo, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-import { Check, ExternalLink, Handshake, Link2, Loader2, Percent, Search, Wallet, X } from 'lucide-react'
+import { Check, ExternalLink, Handshake, Link2, Loader2, Percent, Search, Send, Wallet, X } from 'lucide-react'
+import InviteForm from '../_components/InviteForm'
 
 export type Affiliate = {
 	id: string
@@ -40,13 +42,14 @@ const site = (url: string) => (/^https?:\/\//i.test(url) ? url : `https://${url}
 const tierRange = (tiers: Tier[]) => `${tiers[0].rate}–${tiers[tiers.length - 1].rate}%`
 const euros = (n: number) => new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'EUR' }).format(n)
 
-export default function AffiliatesPanel({ initial, stats: initialStats, tiers, loadError }: { initial: Affiliate[]; stats: Record<string, Stats>; tiers: Tier[]; loadError: string }) {
+export default function AffiliatesPanel({ initial, stats: initialStats, tiers, loadError, emailReady }: { initial: Affiliate[]; stats: Record<string, Stats>; tiers: Tier[]; loadError: string; emailReady: boolean }) {
 	const [rows, setRows] = useState(initial)
 	const [stats, setStats] = useState(initialStats)
 	const [filter, setFilter] = useState<Status | 'all'>(initial.some((r) => r.status === 'pending') ? 'pending' : 'all')
 	const [query, setQuery] = useState('')
 	const [open, setOpen] = useState<{ row: Affiliate; status: Status } | null>(null)
 	const [toast, setToast] = useState('')
+	const [inviting, setInviting] = useState(false)
 
 	const counts = useMemo(() => {
 		const c: Record<string, number> = { all: rows.length, pending: 0, approved: 0, declined: 0 }
@@ -58,21 +61,37 @@ export default function AffiliatesPanel({ initial, stats: initialStats, tiers, l
 		(r) => (filter === 'all' || r.status === filter) && (!query || `${r.email} ${r.website ?? ''} ${r.note ?? ''}`.toLowerCase().includes(query.toLowerCase())),
 	)
 
+	function notify(message: string) {
+		setToast(message)
+		setTimeout(() => setToast(''), 4000)
+	}
+
 	function saved(row: Affiliate, message: string, rowStats?: Stats) {
 		setRows((all) => all.map((r) => (r.id === row.id ? row : r)))
 		if (rowStats) setStats((all) => ({ ...all, [row.id]: rowStats }))
 		setOpen(null)
-		setToast(message)
-		setTimeout(() => setToast(''), 4000)
+		notify(message)
 	}
 
 	const commission = (r: Affiliate) => (r.rate === null ? `Standard ${tierRange(tiers)}` : `${Number(r.rate)}%`)
 
 	return (
 		<div className="mx-auto max-w-7xl px-5 pb-24 pt-8 text-neutral-950 sm:pt-12 dark:text-white">
-			<p className="text-sm font-semibold uppercase tracking-[0.2em] text-neutral-500">TRAVSUS</p>
-			<h1 className="mt-2 text-4xl font-bold tracking-tight sm:text-5xl">Affiliates</h1>
-			<p className="mt-2 text-lg text-neutral-500">Requests from the affiliates page. Accept or decline them and set each one&apos;s commission.</p>
+			<div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+				<div>
+					<p className="text-sm font-semibold uppercase tracking-[0.2em] text-neutral-500">TRAVSUS</p>
+					<h1 className="mt-2 text-4xl font-bold tracking-tight sm:text-5xl">Affiliates</h1>
+					<p className="mt-2 text-lg text-neutral-500">Requests from the affiliates page. Accept or decline them and set each one&apos;s commission.</p>
+				</div>
+				<button
+					type="button"
+					onClick={() => setInviting(true)}
+					className="inline-flex h-12 shrink-0 items-center justify-center gap-2 rounded-full bg-neutral-950 px-6 text-sm font-semibold text-white transition hover:bg-neutral-800 active:scale-[0.98] dark:bg-white dark:text-neutral-950"
+				>
+					<Send className="h-4 w-4" />
+					Send invitation
+				</button>
+			</div>
 
 			{/* The standard commission, as shown on the affiliates page */}
 			<section className="mt-8 rounded-[28px] bg-neutral-950 p-6 text-white sm:p-8 dark:bg-white dark:text-neutral-950">
@@ -172,6 +191,40 @@ export default function AffiliatesPanel({ initial, stats: initialStats, tiers, l
 			)}
 
 			<Editor current={open} stats={open ? stats[open.row.id] : undefined} tiers={tiers} onClose={() => setOpen(null)} onSaved={saved} />
+
+			<Transition show={inviting} as={Fragment}>
+				<Dialog className="relative z-50" onClose={() => setInviting(false)}>
+					<Transition.Child as={Fragment} enter="ease-out duration-200" enterFrom="opacity-0" enterTo="opacity-100" leave="ease-in duration-150" leaveFrom="opacity-100" leaveTo="opacity-0">
+						<div className="fixed inset-0 bg-black/40 backdrop-blur-sm" />
+					</Transition.Child>
+					<div className="fixed inset-0 flex items-end justify-center sm:items-center sm:p-6">
+						<Transition.Child as={Fragment} enter="ease-out duration-200" enterFrom="translate-y-8 opacity-0" enterTo="translate-y-0 opacity-100" leave="ease-in duration-150" leaveFrom="translate-y-0 opacity-100" leaveTo="translate-y-8 opacity-0">
+							<Dialog.Panel className="max-h-[92vh] w-full overflow-y-auto rounded-t-3xl bg-white p-6 text-neutral-950 shadow-2xl sm:max-w-lg sm:rounded-3xl sm:p-8 dark:bg-neutral-900 dark:text-white">
+								<div className="flex items-start justify-between gap-4">
+									<div>
+										<Dialog.Title className="text-2xl font-bold tracking-tight">Send invitation</Dialog.Title>
+										<p className="mt-1 text-sm text-neutral-500">They get a personal link: one tap to accept and they have their affiliate link.</p>
+									</div>
+									<button type="button" onClick={() => setInviting(false)} aria-label="Close" className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-neutral-100 transition hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700">
+										<X className="h-4 w-4" />
+									</button>
+								</div>
+								<div className="mt-6">
+									<InviteForm
+										heading={false}
+										disabled={!emailReady}
+										onSent={(count) => {
+											setInviting(false)
+											notify(`Invitation sent to ${count} ${count === 1 ? 'person' : 'people'}`)
+										}}
+									/>
+								</div>
+								{!emailReady && <p className="mt-3 text-sm text-amber-700">Emails can&apos;t be sent until the SMTP login (SMTP_HOST, SMTP_USER, SMTP_PASS) is set.</p>}
+							</Dialog.Panel>
+						</Transition.Child>
+					</div>
+				</Dialog>
+			</Transition>
 
 			{toast && (
 				<div role="status" className="fixed inset-x-0 bottom-24 z-[60] flex justify-center px-4 sm:bottom-8">

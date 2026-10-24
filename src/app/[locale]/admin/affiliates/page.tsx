@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation'
 import { db, T } from '@/lib/db'
 import { isOwner } from '@/lib/admin/owner'
 import { affiliateReport, affiliateSummary, type AffiliateSummary } from '@/lib/affiliates'
+import { emailConfigured } from '@/lib/email/send'
 import { TIERS } from '../../affiliates/tiers'
 import AffiliatesPanel, { type Affiliate } from './AffiliatesPanel'
 
@@ -21,5 +22,5 @@ export default async function AffiliatesPage() {
 			rows.filter((r) => r.code).map(async (r) => [r.id, affiliateSummary(await affiliateReport(r as any))] as const),
 		).catch(() => []),
 	)
-	return <AffiliatesPanel initial={rows} stats={stats} tiers={TIERS.map((t) => ({ ...t }))} loadError={error ? 'Could not load the requests.' : ''} />
+	return <AffiliatesPanel initial={rows} stats={stats} tiers={TIERS.map((t) => ({ ...t }))} loadError={error ? 'Could not load the requests.' : ''} emailReady={emailConfigured()} />
 }
