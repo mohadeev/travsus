@@ -34,7 +34,7 @@ export default function AffiliateRequestForm({ dark = false, id }: { dark?: bool
 				role="status"
 				className={`flex items-start gap-3 rounded-3xl p-5 text-left ${dark ? 'bg-white/10 text-white' : 'bg-neutral-100 dark:bg-neutral-900'}`}
 			>
-				<CheckCircle2 className="mt-0.5 h-6 w-6 shrink-0 text-emerald-500" />
+				<CheckCircle2 className="mt-0.5 h-6 w-6 shrink-0 text-current" />
 				<div>
 					<p className="font-semibold">{t(status === 'done' ? 'form_done_title' : 'form_already_title')}</p>
 					<p className={`mt-1 text-sm ${dark ? 'text-white/70' : 'text-neutral-500'}`}>{t('form_done_text')}</p>
@@ -44,7 +44,7 @@ export default function AffiliateRequestForm({ dark = false, id }: { dark?: bool
 	}
 
 	const field = dark
-		? 'bg-white/[0.07] text-white placeholder:text-white/50 ring-white/15 focus:bg-white/10 focus:ring-amber-300'
+		? 'bg-white/[0.07] text-white placeholder:text-white/50 ring-white/15 focus:bg-white/10 focus:ring-white'
 		: 'bg-white text-neutral-950 placeholder:text-neutral-400 ring-neutral-200 focus:ring-neutral-950 dark:bg-neutral-900 dark:text-white dark:ring-neutral-700 dark:focus:ring-white'
 
 	// Email, website, then the button: one column, so nothing is cut off on phones
@@ -81,7 +81,7 @@ export default function AffiliateRequestForm({ dark = false, id }: { dark?: bool
 				disabled={status === 'sending'}
 				className={`group mt-2.5 inline-flex h-14 w-full items-center justify-between gap-4 rounded-full pl-7 pr-2 text-base font-semibold transition active:scale-[0.99] disabled:opacity-70 ${
 					dark
-						? 'bg-gradient-to-r from-amber-300 to-amber-400 text-neutral-950 shadow-[0_10px_40px_-10px_rgba(251,191,36,0.6)] hover:from-amber-200 hover:to-amber-300'
+						? 'bg-white text-neutral-950 hover:bg-neutral-200'
 						: 'bg-neutral-950 text-white hover:bg-neutral-800 dark:bg-white dark:text-neutral-950'
 				}`}
 			>

@@ -1,5 +1,4 @@
-// Affiliate program page (black and white backgrounds, gold only on numbers,
-// icons and buttons): a dark hero with the request form and an edited
+// Affiliate program page, all in black and white: a dark hero with the request form and an edited
 // photo collage (floating "new booking" cards, a dotted travel route,
 // sparkles), then the numbers, the three steps, the benefits, the commission
 // tiers with the calculator, why travellers book, the FAQ and a final form.
@@ -107,8 +106,8 @@ export default async function AffiliatesPage({ params }: PageProps) {
 					<div className={`${s.heroIn} text-center lg:text-left`}>
 						<p className="inline-flex items-center gap-2 rounded-full bg-white/[0.08] px-3.5 py-1.5 text-[12px] font-semibold uppercase tracking-[0.16em] text-white/75 ring-1 ring-white/10">
 							<span className="relative flex h-2 w-2">
-								<span className={`absolute inline-flex h-full w-full rounded-full bg-amber-400 ${s.ping}`} />
-								<span className="relative inline-flex h-2 w-2 rounded-full bg-amber-400" />
+								<span className={`absolute inline-flex h-full w-full rounded-full bg-white ${s.ping}`} />
+								<span className="relative inline-flex h-2 w-2 rounded-full bg-white" />
 							</span>
 							{t('eyebrow')}
 						</p>
@@ -120,7 +119,7 @@ export default async function AffiliatesPage({ params }: PageProps) {
 						<ul className="mx-auto mt-8 grid max-w-xl grid-cols-3 gap-3 lg:mx-0">
 							{STATS.map((key) => (
 								<li key={key} className="min-w-0 rounded-2xl bg-white/[0.04] px-2.5 py-4 text-center ring-1 ring-white/10 sm:px-4 lg:text-left">
-									<p className={`whitespace-nowrap text-xl font-bold tracking-tight sm:text-3xl ${s.gold}`}>{t(`${key}_value`)}</p>
+									<p className={`whitespace-nowrap text-xl font-bold tracking-tight sm:text-3xl`}>{t(`${key}_value`)}</p>
 									<p className="mt-1 line-clamp-3 text-[11px] leading-snug text-white/50 sm:line-clamp-2 sm:text-xs">{t(`${key}_label`)}</p>
 								</li>
 							))}
@@ -129,9 +128,9 @@ export default async function AffiliatesPage({ params }: PageProps) {
 
 					{/* Photo collage */}
 					<div className="relative mx-auto w-full max-w-md lg:max-w-none">
-						<Sparkle className="absolute -left-2 top-6 z-20 h-6 w-6 text-amber-300 sm:-left-6" />
+						<Sparkle className="absolute -left-2 top-6 z-20 h-6 w-6 text-white sm:-left-6" />
 						<Sparkle className="absolute -right-1 top-1/2 z-20 h-4 w-4 text-white/80" />
-						<Sparkle className="absolute bottom-10 left-1/3 z-20 h-5 w-5 text-amber-200" />
+						<Sparkle className="absolute bottom-10 left-1/3 z-20 h-5 w-5 text-white/70" />
 
 						<div className="relative aspect-[4/5] overflow-hidden rounded-[36px] ring-1 ring-white/10 sm:rounded-[44px]">
 							<Image src={PHOTOS.referral} alt="" fill priority sizes="(max-width: 1024px) 90vw, 600px" className={`object-cover saturate-[1.15] ${s.photo}`} />
@@ -140,12 +139,12 @@ export default async function AffiliatesPage({ params }: PageProps) {
 
 						{/* Dotted travel route between the two cards */}
 						<svg aria-hidden viewBox="0 0 300 300" className="pointer-events-none absolute inset-0 z-10 h-full w-full">
-							<path className={s.route} d="M60 70 C 160 40, 250 120, 210 190 S 120 270, 240 255" fill="none" stroke="#fcd34d" strokeWidth="2.5" strokeLinecap="round" />
-							<circle cx="240" cy="255" r="5" fill="#fcd34d" />
+							<path className={s.route} d="M60 70 C 160 40, 250 120, 210 190 S 120 270, 240 255" fill="none" stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" />
+							<circle cx="240" cy="255" r="5" fill="#ffffff" />
 						</svg>
 
 						<div className={`absolute -left-3 top-10 z-20 flex items-center gap-3 rounded-2xl bg-white/90 p-3 pr-4 text-neutral-950 shadow-2xl ring-1 ring-black/5 backdrop-blur-xl sm:-left-10 ${s.float}`}>
-							<span className="grid h-10 w-10 place-items-center rounded-xl bg-emerald-500 text-white">
+							<span className="grid h-10 w-10 place-items-center rounded-xl bg-neutral-950 text-white">
 								<Check className="h-5 w-5" strokeWidth={3} />
 							</span>
 							<div>
@@ -156,10 +155,10 @@ export default async function AffiliatesPage({ params }: PageProps) {
 
 						<div className={`absolute -right-3 bottom-16 z-20 rounded-2xl bg-neutral-950/85 p-4 text-white shadow-2xl ring-1 ring-white/15 backdrop-blur-xl sm:-right-4 lg:right-5 ${s.floatSlow}`}>
 							<p className="text-[11px] font-medium uppercase tracking-[0.14em] text-white/55">{t('chip_commission')}</p>
-							<p className={`mt-1 text-3xl font-bold tracking-tight ${s.gold}`}>+{money(84)}</p>
+							<p className={`mt-1 text-3xl font-bold tracking-tight`}>+{money(84)}</p>
 							<div className="mt-2 flex h-6 items-end gap-1">
 								{[40, 65, 50, 80, 60, 95, 75].map((h, i) => (
-									<span key={i} className="w-2 rounded-sm bg-amber-300/80" style={{ height: `${h}%` }} />
+									<span key={i} className="w-2 rounded-sm bg-white/80" style={{ height: `${h}%` }} />
 								))}
 							</div>
 						</div>
@@ -173,12 +172,12 @@ export default async function AffiliatesPage({ params }: PageProps) {
 
 			{/* How it works */}
 			<section className={`mx-auto mt-24 max-w-7xl px-5 sm:mt-36 ${motion.reveal}`}>
-				<p className="text-center text-sm font-semibold uppercase tracking-[0.2em] text-amber-600">{t('eyebrow')}</p>
+				<p className="text-center text-sm font-semibold uppercase tracking-[0.2em] text-neutral-500">{t('eyebrow')}</p>
 				<h2 className="mt-3 text-center text-4xl font-bold tracking-tight sm:text-6xl">{t('steps_title')}</h2>
 				<div className="relative mt-12 sm:mt-16">
 					{/* Dotted line joining the steps (larger screens) */}
 					<svg aria-hidden className="absolute left-[16%] right-[16%] top-12 hidden h-2 w-[68%] sm:block" preserveAspectRatio="none" viewBox="0 0 100 2">
-						<line className={s.route} x1="0" y1="1" x2="100" y2="1" stroke="#f59e0b" strokeWidth="2" vectorEffect="non-scaling-stroke" strokeLinecap="round" />
+						<line className={s.route} x1="0" y1="1" x2="100" y2="1" stroke="#a3a3a3" strokeWidth="2" vectorEffect="non-scaling-stroke" strokeLinecap="round" />
 					</svg>
 					<ol className={`relative grid gap-4 sm:grid-cols-3 sm:gap-6 ${motion.stagger}`}>
 						{STEPS.map(([Icon, key], i) => (
@@ -187,7 +186,7 @@ export default async function AffiliatesPage({ params }: PageProps) {
 									<span className="relative grid h-14 w-14 place-items-center rounded-2xl bg-neutral-950 text-white shadow-lg dark:bg-white dark:text-neutral-950">
 										<Icon className="h-6 w-6" strokeWidth={2} />
 									</span>
-									<span className="text-6xl font-bold tracking-tighter text-neutral-200 transition group-hover:text-amber-300 dark:text-neutral-800">{i + 1}</span>
+									<span className="text-6xl font-bold tracking-tighter text-neutral-200 transition group-hover:text-neutral-400 dark:text-neutral-800">{i + 1}</span>
 								</div>
 								<h3 className="mt-8 text-2xl font-bold tracking-tight">{t(`${key}_title`)}</h3>
 								<p className="mt-2 leading-relaxed text-neutral-500">{t(`${key}_text`)}</p>
@@ -207,7 +206,7 @@ export default async function AffiliatesPage({ params }: PageProps) {
 					<ul className={`mt-12 grid gap-3 sm:mt-16 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 ${motion.stagger}`}>
 						{BENEFITS.map(([Icon, title, text]) => (
 							<li key={title} className="group rounded-[28px] bg-white/[0.04] p-7 ring-1 ring-white/10 transition duration-300 hover:-translate-y-1 hover:bg-white/[0.07] hover:ring-white/30 sm:p-8">
-								<span className="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-amber-300 to-amber-500 text-neutral-950 shadow-[0_8px_30px_-8px_rgba(251,191,36,0.6)] transition group-hover:scale-110">
+								<span className="grid h-12 w-12 place-items-center rounded-2xl bg-white text-neutral-950 transition group-hover:scale-110">
 									<Icon className="h-6 w-6" strokeWidth={2} />
 								</span>
 								<h3 className="mt-6 text-xl font-semibold">{t(title)}</h3>
@@ -230,13 +229,13 @@ export default async function AffiliatesPage({ params }: PageProps) {
 								key={tier.rate}
 								className={`relative overflow-hidden rounded-3xl px-3 text-center sm:rounded-[32px] sm:px-10 ${best ? 'bg-neutral-950 py-8 text-white shadow-2xl sm:py-14 dark:ring-1 dark:ring-white/15' : 'bg-neutral-100 py-6 sm:py-10 dark:bg-neutral-900'}`}
 							>
-								<p className={`relative text-4xl font-bold tracking-tight sm:text-7xl ${best ? s.gold : ''}`}>{tier.rate}%</p>
+								<p className={`relative text-4xl font-bold tracking-tight sm:text-7xl`}>{tier.rate}%</p>
 								<p className="relative mt-2 text-xs opacity-60 sm:text-base">
 									{tier.to ? t('tier_range', { from: tier.from, to: tier.to }) : t('tier_plus', { from: tier.from })}
 								</p>
 								{/* Grows with the tier */}
 								<div className="relative mx-auto mt-4 h-1.5 w-full max-w-[160px] overflow-hidden rounded-full bg-black/10 dark:bg-white/10">
-									<span className={`block h-full rounded-full ${best ? 'bg-amber-400' : 'bg-neutral-950 dark:bg-white'}`} style={{ width: `${((i + 1) / TIERS.length) * 100}%` }} />
+									<span className={`block h-full rounded-full ${best ? 'bg-white' : 'bg-neutral-950 dark:bg-white'}`} style={{ width: `${((i + 1) / TIERS.length) * 100}%` }} />
 								</div>
 							</li>
 						)
@@ -250,13 +249,13 @@ export default async function AffiliatesPage({ params }: PageProps) {
 			{/* What the traveller gets: the reason links convert */}
 			<section className={`mx-auto mt-24 grid max-w-7xl items-center gap-14 px-5 sm:mt-36 lg:grid-cols-2 lg:gap-20 ${motion.reveal}`}>
 				<div className="relative">
-					<Sparkle className="absolute -right-2 -top-4 z-20 h-7 w-7 text-amber-400" />
+					<Sparkle className="absolute -right-2 -top-4 z-20 h-7 w-7 text-neutral-950 dark:text-white" />
 					<div className="relative aspect-[1/1] overflow-hidden rounded-[36px] bg-neutral-200 sm:rounded-[44px] dark:bg-neutral-800">
 						<Image src={PHOTOS.sunsetHug} alt="" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover saturate-[1.1]" />
 						<div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
 					</div>
 					<div className={`absolute -bottom-5 left-5 z-20 rounded-2xl bg-white p-4 shadow-2xl ring-1 ring-black/5 sm:left-8 dark:bg-neutral-900 dark:ring-white/10 ${s.float}`}>
-						<div className="flex gap-0.5 text-amber-400">
+						<div className="flex gap-0.5 text-neutral-950 dark:text-white">
 							{[0, 1, 2, 3, 4].map((i) => (
 								<Star key={i} className="h-4 w-4 fill-current" />
 							))}
@@ -288,7 +287,7 @@ export default async function AffiliatesPage({ params }: PageProps) {
 						<details key={key} className="group rounded-3xl bg-neutral-100 px-6 transition open:bg-white open:shadow-lg open:ring-1 open:ring-neutral-200 dark:bg-neutral-900 dark:open:bg-neutral-900 dark:open:ring-neutral-700">
 							<summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-5 text-lg font-semibold [&::-webkit-details-marker]:hidden">
 								{t(`faq_${key}_q`)}
-								<span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-white transition group-open:rotate-45 group-open:bg-amber-300 dark:bg-neutral-800 dark:group-open:text-neutral-950">
+								<span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-white transition group-open:rotate-45 group-open:bg-neutral-950 group-open:text-white dark:bg-neutral-800 dark:group-open:bg-white dark:group-open:text-neutral-950">
 									<Plus className="h-4 w-4" />
 								</span>
 							</summary>
@@ -303,7 +302,7 @@ export default async function AffiliatesPage({ params }: PageProps) {
 				<div className="relative isolate overflow-hidden rounded-[36px] bg-black px-6 py-16 text-center text-white sm:rounded-[48px] sm:px-10 sm:py-28">
 					<Image src={PHOTOS.hiking} alt="" fill sizes="100vw" className="-z-20 object-cover opacity-40 saturate-[1.1]" />
 					<div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-t from-black via-black/70 to-black/30" />
-					<Sparkle className="absolute left-[12%] top-[18%] h-5 w-5 text-amber-300" />
+					<Sparkle className="absolute left-[12%] top-[18%] h-5 w-5 text-white" />
 					<Sparkle className="absolute right-[14%] top-[30%] h-4 w-4 text-white/70" />
 					<h2 className="mx-auto max-w-3xl text-4xl font-bold tracking-tight sm:text-6xl">{t('cta_title')}</h2>
 					<p className="mx-auto mt-4 max-w-xl text-lg text-white/70 sm:text-xl">{t('cta_text')}</p>

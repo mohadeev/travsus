@@ -37,7 +37,7 @@ export default function EarningsCalculator() {
 						max={80}
 						value={bookings}
 						onChange={(e) => setBookings(Number(e.target.value))}
-						className="mt-4 w-full accent-amber-500"
+						className="mt-4 w-full accent-neutral-950 dark:accent-white"
 					/>,
 				)}
 				{slider(
@@ -50,14 +50,14 @@ export default function EarningsCalculator() {
 						step={50}
 						value={value}
 						onChange={(e) => setValue(Number(e.target.value))}
-						className="mt-4 w-full accent-amber-500"
+						className="mt-4 w-full accent-neutral-950 dark:accent-white"
 					/>,
 				)}
 			</div>
 
 			<div className="relative isolate overflow-hidden rounded-3xl bg-neutral-950 p-6 text-center text-white sm:p-8">
 				<p className="text-sm font-medium text-white/60">{t('calc_monthly')}</p>
-				<p className="mt-1 bg-gradient-to-b from-amber-200 to-amber-500 bg-clip-text text-5xl font-bold tracking-tight tabular-nums text-transparent sm:text-6xl">{money(monthly)}</p>
+				<p className="mt-1 text-5xl font-bold tracking-tight tabular-nums sm:text-6xl">{money(monthly)}</p>
 				<p className="mt-3 text-sm text-white/60">
 					{t('calc_yearly', { amount: money(monthly * 12) })} · {t('calc_rate', { rate })}
 				</p>
