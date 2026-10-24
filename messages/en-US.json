@@ -2571,7 +2571,10 @@
     "faq_sites_q": "Can I promote TRAVSUS on several websites?",
     "faq_sites_a": "Yes, on any websites and channels you own or manage. Each affiliate account is for one person or company; if you run several businesses, contact us.",
     "cta_title": "Ready to turn travel stories into income?",
-    "cta_text": "Request access in seconds. It's free to join."
+    "cta_text": "Request access in seconds. It's free to join.",
+    "chip_booking": "New booking",
+    "chip_booking_trip": "3-day Sahara trip · just now",
+    "chip_commission": "Your commission"
   },
   "Forum": {
     "meta_title": "Travel Forum: Questions, Tips and Trip Reports",

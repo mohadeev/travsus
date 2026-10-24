@@ -44,51 +44,55 @@ export default function AffiliateRequestForm({ dark = false, id }: { dark?: bool
 	}
 
 	const field = dark
-		? 'bg-neutral-950/60 text-white placeholder:text-white/60 ring-white/25 backdrop-blur-md focus:ring-white'
+		? 'bg-white/[0.07] text-white placeholder:text-white/50 ring-white/15 focus:bg-white/10 focus:ring-amber-300'
 		: 'bg-white text-neutral-950 placeholder:text-neutral-400 ring-neutral-200 focus:ring-neutral-950 dark:bg-neutral-900 dark:text-white dark:ring-neutral-700 dark:focus:ring-white'
 
+	// Email, website, then the button: one column, so nothing is cut off on phones
 	return (
-		<form id={id} onSubmit={submit} className="w-full text-left">
-			<div className="flex flex-col gap-2.5 sm:flex-row">
-				<label className="flex-1">
+		<form id={id} onSubmit={submit} className="w-full scroll-mt-28 text-left">
+			<div className="grid gap-2.5">
+				<label>
 					<span className="sr-only">{t('form_email')}</span>
 					<input
 						type="email"
 						name="email"
 						required
 						autoComplete="email"
+						inputMode="email"
 						placeholder={t('form_email')}
 						onChange={() => status !== 'idle' && setStatus('idle')}
-						className={`h-14 w-full rounded-full border-0 px-6 text-base ring-1 transition focus:outline-none focus:ring-2 ${field}`}
+						className={`h-14 w-full rounded-2xl border-0 px-4 text-base ring-1 placeholder:text-[14px] sm:px-5 sm:placeholder:text-base transition focus:outline-none focus:ring-2 ${field}`}
 					/>
 				</label>
-				<button
-					type="submit"
-					disabled={status === 'sending'}
-					className={`inline-flex h-14 shrink-0 items-center justify-center gap-2 rounded-full px-7 text-base font-semibold transition disabled:opacity-70 ${
-						dark
-							? 'bg-white text-neutral-950 hover:bg-neutral-200'
-							: 'bg-neutral-950 text-white hover:bg-neutral-800 dark:bg-white dark:text-neutral-950'
-					}`}
-				>
-					{status === 'sending' ? <Loader2 className="h-5 w-5 animate-spin" /> : null}
-					{t('form_submit')}
-					{status !== 'sending' && <ArrowRight className="h-5 w-5" />}
-				</button>
+				<label>
+					<span className="sr-only">{t('form_website')}</span>
+					<input
+						type="text"
+						name="website"
+						maxLength={200}
+						autoComplete="url"
+						placeholder={t('form_website')}
+						className={`h-14 w-full rounded-2xl border-0 px-4 text-base ring-1 placeholder:text-[14px] sm:px-5 sm:placeholder:text-base transition focus:outline-none focus:ring-2 ${field}`}
+					/>
+				</label>
 			</div>
-			<label className="mt-2.5 block">
-				<span className="sr-only">{t('form_website')}</span>
-				<input
-					type="text"
-					name="website"
-					maxLength={200}
-					placeholder={t('form_website')}
-					className={`h-12 w-full rounded-full border-0 px-6 text-sm ring-1 transition focus:outline-none focus:ring-2 ${field}`}
-				/>
-			</label>
+			<button
+				type="submit"
+				disabled={status === 'sending'}
+				className={`group mt-2.5 inline-flex h-14 w-full items-center justify-between gap-4 rounded-full pl-7 pr-2 text-base font-semibold transition active:scale-[0.99] disabled:opacity-70 ${
+					dark
+						? 'bg-gradient-to-r from-amber-300 to-amber-400 text-neutral-950 shadow-[0_10px_40px_-10px_rgba(251,191,36,0.6)] hover:from-amber-200 hover:to-amber-300'
+						: 'bg-neutral-950 text-white hover:bg-neutral-800 dark:bg-white dark:text-neutral-950'
+				}`}
+			>
+				{t('form_submit')}
+				<span className={`grid h-10 w-10 place-items-center rounded-full transition-transform group-hover:translate-x-0.5 ${dark ? 'bg-neutral-950 text-white' : 'bg-white text-neutral-950 dark:bg-neutral-950 dark:text-white'}`}>
+					{status === 'sending' ? <Loader2 className="h-5 w-5 animate-spin" /> : <ArrowRight className="h-5 w-5" />}
+				</span>
+			</button>
 			<p
 				role={status === 'invalid' || status === 'error' ? 'alert' : undefined}
-				className={`mt-3 px-2 text-xs ${
+				className={`mt-3 px-1 text-center text-xs sm:text-left ${
 					status === 'invalid' || status === 'error' ? 'text-red-500' : dark ? 'text-white/55' : 'text-neutral-500'
 				}`}
 			>

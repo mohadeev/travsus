@@ -3871,7 +3871,10 @@
     "faq_sites_q": "Puis-je promouvoir TRAVSUS sur plusieurs sites ?",
     "faq_sites_a": "Oui, sur tous les sites et canaux que vous possédez ou gérez. Chaque compte affilié correspond à une personne ou une entreprise ; si vous avez plusieurs activités, contactez-nous.",
     "cta_title": "Prêt à transformer vos récits de voyage en revenus ?",
-    "cta_text": "Demandez l'accès en quelques secondes. L'inscription est gratuite."
+    "cta_text": "Demandez l'accès en quelques secondes. L'inscription est gratuite.",
+    "chip_booking": "Nouvelle réservation",
+    "chip_booking_trip": "Circuit de 3 jours au Sahara · à l’instant",
+    "chip_commission": "Votre commission"
   },
   "Forum": {
     "meta_title": "Forum voyage : questions, conseils et récits de voyage",
