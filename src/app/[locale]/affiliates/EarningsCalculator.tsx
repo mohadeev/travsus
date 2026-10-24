@@ -56,7 +56,6 @@ export default function EarningsCalculator() {
 			</div>
 
 			<div className="relative isolate overflow-hidden rounded-3xl bg-neutral-950 p-6 text-center text-white sm:p-8">
-				<div aria-hidden className="absolute -top-20 left-1/2 -z-10 h-40 w-40 -translate-x-1/2 rounded-full bg-amber-400/35 blur-3xl" />
 				<p className="text-sm font-medium text-white/60">{t('calc_monthly')}</p>
 				<p className="mt-1 bg-gradient-to-b from-amber-200 to-amber-500 bg-clip-text text-5xl font-bold tracking-tight tabular-nums text-transparent sm:text-6xl">{money(monthly)}</p>
 				<p className="mt-3 text-sm text-white/60">

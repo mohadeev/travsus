@@ -1,4 +1,5 @@
-// Affiliate program page: a dark hero with the request form and an edited
+// Affiliate program page (black and white backgrounds, gold only on numbers,
+// icons and buttons): a dark hero with the request form and an edited
 // photo collage (floating "new booking" cards, a dotted travel route,
 // sparkles), then the numbers, the three steps, the benefits, the commission
 // tiers with the calculator, why travellers book, the FAQ and a final form.
@@ -90,10 +91,8 @@ export default async function AffiliatesPage({ params }: PageProps) {
 			<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 			<HomeMotion />
 
-			{/* Hero: dark, gold glow, the form, and the photo collage */}
+			{/* Hero: black, the form, and the photo collage */}
 			<section className="relative isolate overflow-hidden bg-black text-white">
-				<div aria-hidden className="absolute -left-40 -top-40 -z-10 h-[520px] w-[520px] rounded-full bg-amber-500/25 blur-[120px]" />
-				<div aria-hidden className="absolute -bottom-48 right-0 -z-10 h-[420px] w-[420px] rounded-full bg-orange-600/20 blur-[120px]" />
 				{/* Dot grid */}
 				<svg aria-hidden className="absolute inset-0 -z-10 h-full w-full opacity-[0.18] [mask-image:radial-gradient(ellipse_at_top_left,black,transparent_70%)]">
 					<defs>
@@ -136,8 +135,7 @@ export default async function AffiliatesPage({ params }: PageProps) {
 
 						<div className="relative aspect-[4/5] overflow-hidden rounded-[36px] ring-1 ring-white/10 sm:rounded-[44px]">
 							<Image src={PHOTOS.referral} alt="" fill priority sizes="(max-width: 1024px) 90vw, 600px" className={`object-cover saturate-[1.15] ${s.photo}`} />
-							<div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/0 to-amber-500/10 mix-blend-normal" />
-							<div className="absolute inset-0 bg-gradient-to-br from-amber-400/15 to-transparent mix-blend-overlay" />
+							<div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/0 to-transparent" />
 						</div>
 
 						{/* Dotted travel route between the two cards */}
@@ -201,7 +199,6 @@ export default async function AffiliatesPage({ params }: PageProps) {
 
 			{/* Why partners choose us: dark band with tiles */}
 			<section className="relative isolate mt-24 overflow-hidden bg-neutral-950 py-20 text-white sm:mt-36 sm:py-32">
-				<div aria-hidden className="absolute right-[-10%] top-[-20%] -z-10 h-[480px] w-[480px] rounded-full bg-amber-500/15 blur-[120px]" />
 				<div className={`mx-auto max-w-7xl px-5 ${motion.reveal}`}>
 					<div className="grid gap-6 lg:grid-cols-2 lg:items-end">
 						<h2 className="max-w-3xl text-4xl font-bold tracking-tight sm:text-6xl">{t('benefits_title')}</h2>
@@ -209,7 +206,7 @@ export default async function AffiliatesPage({ params }: PageProps) {
 					</div>
 					<ul className={`mt-12 grid gap-3 sm:mt-16 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 ${motion.stagger}`}>
 						{BENEFITS.map(([Icon, title, text]) => (
-							<li key={title} className="group rounded-[28px] bg-white/[0.04] p-7 ring-1 ring-white/10 transition duration-300 hover:-translate-y-1 hover:bg-white/[0.07] hover:ring-amber-300/40 sm:p-8">
+							<li key={title} className="group rounded-[28px] bg-white/[0.04] p-7 ring-1 ring-white/10 transition duration-300 hover:-translate-y-1 hover:bg-white/[0.07] hover:ring-white/30 sm:p-8">
 								<span className="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-amber-300 to-amber-500 text-neutral-950 shadow-[0_8px_30px_-8px_rgba(251,191,36,0.6)] transition group-hover:scale-110">
 									<Icon className="h-6 w-6" strokeWidth={2} />
 								</span>
@@ -233,7 +230,6 @@ export default async function AffiliatesPage({ params }: PageProps) {
 								key={tier.rate}
 								className={`relative overflow-hidden rounded-3xl px-3 text-center sm:rounded-[32px] sm:px-10 ${best ? 'bg-neutral-950 py-8 text-white shadow-2xl sm:py-14 dark:ring-1 dark:ring-white/15' : 'bg-neutral-100 py-6 sm:py-10 dark:bg-neutral-900'}`}
 							>
-								{best && <div aria-hidden className="absolute -top-16 left-1/2 h-32 w-32 -translate-x-1/2 rounded-full bg-amber-400/40 blur-3xl" />}
 								<p className={`relative text-4xl font-bold tracking-tight sm:text-7xl ${best ? s.gold : ''}`}>{tier.rate}%</p>
 								<p className="relative mt-2 text-xs opacity-60 sm:text-base">
 									{tier.to ? t('tier_range', { from: tier.from, to: tier.to }) : t('tier_plus', { from: tier.from })}
@@ -307,7 +303,6 @@ export default async function AffiliatesPage({ params }: PageProps) {
 				<div className="relative isolate overflow-hidden rounded-[36px] bg-black px-6 py-16 text-center text-white sm:rounded-[48px] sm:px-10 sm:py-28">
 					<Image src={PHOTOS.hiking} alt="" fill sizes="100vw" className="-z-20 object-cover opacity-40 saturate-[1.1]" />
 					<div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-t from-black via-black/70 to-black/30" />
-					<div aria-hidden className="absolute left-1/2 top-0 -z-10 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-amber-400/30 blur-[100px]" />
 					<Sparkle className="absolute left-[12%] top-[18%] h-5 w-5 text-amber-300" />
 					<Sparkle className="absolute right-[14%] top-[30%] h-4 w-4 text-white/70" />
 					<h2 className="mx-auto max-w-3xl text-4xl font-bold tracking-tight sm:text-6xl">{t('cta_title')}</h2>
