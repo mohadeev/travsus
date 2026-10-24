@@ -1,5 +1,6 @@
 // Referral program banner: offer and button on the left, the three perks on the
-// right as icon cards, photo dimmed behind. Wide and compact so it uses the row.
+// right as icon cards, photo dimmed behind. On phones it stays short: a small
+// eyebrow line, a two-line headline, the perks as a compact row, one button.
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight, Gem, Trophy, Zap } from 'lucide-react'
@@ -18,47 +19,56 @@ export default function ReferralBanner() {
 
 	return (
 		<section className="relative isolate overflow-hidden rounded-3xl bg-neutral-950 text-white sm:rounded-[28px]">
-			{/* Phones: the photo is a strip on top. Larger screens: dimmed behind everything. */}
-			<div className="relative h-36 sm:absolute sm:inset-0 sm:-z-10 sm:h-auto">
-				<Image src={PHOTOS.referral} alt="" fill sizes="(max-width: 1280px) 100vw, 1280px" className="object-cover" />
-				<div className="absolute inset-0 bg-gradient-to-b from-transparent to-neutral-950 sm:bg-gradient-to-r sm:from-neutral-950 sm:via-neutral-950/85 sm:to-neutral-950/55" />
+			{/* Photo dimmed behind everything; darker on phones, where the text covers it */}
+			<div className="absolute inset-0 -z-10">
+				<Image src={PHOTOS.referral} alt="" fill sizes="(max-width: 1280px) 100vw, 1280px" className="object-cover object-[65%_center]" />
+				<div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/90 to-neutral-950/55 sm:bg-gradient-to-r sm:from-neutral-950 sm:via-neutral-950/85 sm:to-neutral-950/55" />
 			</div>
 
-			<div className="relative grid items-center gap-8 px-6 pb-8 pt-2 sm:px-10 sm:py-12 lg:grid-cols-[1.05fr_1fr] lg:gap-12 lg:px-14">
+			<div className="relative grid items-center gap-8 px-5 py-7 sm:px-10 sm:py-12 lg:grid-cols-[1.05fr_1fr] lg:gap-12 lg:px-14">
 				<div>
-					<span className="inline-block rounded-full bg-white px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-neutral-950 sm:text-xs">
+					<p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-amber-300 sm:hidden">{t('badge_text')}</p>
+					<span className="hidden rounded-full bg-white px-3 py-1 text-xs font-bold uppercase tracking-wider text-neutral-950 sm:inline-block">
 						{t('badge_text')}
 					</span>
-					<h2 className="mt-4 text-3xl font-bold leading-[1.1] tracking-tight sm:text-5xl">
+					<h2 className="mt-3 text-[28px] font-bold leading-[1.08] tracking-tight sm:mt-4 sm:text-5xl sm:leading-[1.1]">
 						{t('main_heading_line1')}
 						<span className="block text-amber-300">{t('main_heading_line2')}</span>
 					</h2>
-					<p className="mt-3 max-w-md text-base text-white/80 sm:mt-4 sm:text-lg">{t('sub_heading')}</p>
+					<p className="mt-2.5 max-w-md text-[15px] leading-snug text-white/75 sm:mt-4 sm:text-lg sm:leading-normal sm:text-white/80">{t('sub_heading')}</p>
 
-					<div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:items-center sm:gap-5">
+					{/* Phones: the perks as one compact row */}
+					<ul className="mt-5 grid grid-cols-3 gap-2 sm:hidden">
+						{FEATURES.map(([Icon, title]) => (
+							<li key={title} className="rounded-2xl bg-white/[0.08] px-2 py-3 text-center ring-1 ring-white/10">
+								<Icon className="mx-auto h-5 w-5 text-amber-300" strokeWidth={2.2} />
+								<p className="mt-1.5 text-[12px] font-semibold leading-tight">{t(title)}</p>
+							</li>
+						))}
+					</ul>
+
+					<div className="mt-5 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:items-center sm:gap-5">
 						<Link
 							href={'/affiliates' as any}
-							className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-neutral-950 transition hover:bg-amber-200 sm:w-auto"
+							className="group inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-white px-7 text-[15px] font-semibold text-neutral-950 transition hover:bg-amber-200 active:scale-[0.98] sm:h-auto sm:w-auto sm:py-3.5 sm:text-sm"
 						>
 							{t('button_text')}
 							<ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
 						</Link>
-						<p className="max-w-xs text-xs leading-snug text-white/60">{t('footer_text')}</p>
+						<p className="hidden max-w-xs text-xs leading-snug text-white/60 sm:block">{t('footer_text')}</p>
 					</div>
 				</div>
 
-				<ul className="grid gap-3 sm:grid-cols-3 lg:gap-4">
+				{/* Larger screens: the perks as cards */}
+				<ul className="hidden gap-3 sm:grid sm:grid-cols-3 lg:gap-4">
 					{FEATURES.map(([Icon, title, desc]) => (
-						<li
-							key={title}
-							className="flex items-center gap-3 rounded-2xl bg-white/10 p-4 ring-1 ring-white/15 backdrop-blur-md sm:flex-col sm:items-start sm:gap-4 sm:p-5"
-						>
+						<li key={title} className="flex flex-col items-start gap-4 rounded-2xl bg-white/10 p-5 ring-1 ring-white/15 backdrop-blur-md">
 							<span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-amber-300 text-neutral-950">
 								<Icon className="h-5 w-5" strokeWidth={2.2} />
 							</span>
 							<div>
-								<p className="text-sm font-semibold leading-snug sm:text-base">{t(title)}</p>
-								<p className="mt-0.5 text-xs leading-snug text-white/70 sm:mt-1 sm:text-sm">{t(desc)}</p>
+								<p className="text-base font-semibold leading-snug">{t(title)}</p>
+								<p className="mt-1 text-sm leading-snug text-white/70">{t(desc)}</p>
 							</div>
 						</li>
 					))}
