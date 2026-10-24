@@ -314,12 +314,12 @@ export const TEMPLATES = {
 		sample: { email: 'creator@example.com', website: 'instagram.com/wanderwithsofia', locale: 'fr-FR' },
 	}),
 
-	'affiliate-invite': template<{ name?: string; message?: string }>({
+	'affiliate-invite': template<{ name?: string; message?: string; link: string }>({
 		name: 'Affiliate invitation',
 		category: 'Affiliates',
 		to: 'Affiliate',
 		from: FROM.hello,
-		when: 'When you send an invitation from this page (Admin → Emails → Affiliate invitation).',
+		when: 'When you send an invitation from this page (Admin → Emails → Affiliate invitation). The button opens their personal invitation: they sign in, then accept.',
 		connected: true,
 		subject: (d) => (d.name ? `${d.name.split(' ')[0]}, you’re invited to the TRAVSUS affiliate program` : 'You’re invited to the TRAVSUS affiliate program'),
 		preheader: () => 'Earn up to 15% on every tour booked through your link.',
@@ -336,9 +336,10 @@ export const TEMPLATES = {
 				['Payouts', 'Monthly, from €50'],
 			]),
 			bullets(['Your personal link on every tour page, ready to share', 'Clicks, bookings and earnings in your account', 'Free to join, no minimum audience']),
-			button('Join the affiliate program', `${SITE}/en-US/affiliates#request`),
+			button('Accept invitation', d.link),
+			small('You’ll be asked to sign in or create your TRAVSUS account, then to confirm.'),
 		],
-		sample: { name: 'Sofia Martin', message: 'I love your travel videos about Morocco, I think your audience would enjoy our desert tours.' },
+		sample: { name: 'Sofia Martin', message: 'I love your travel videos about Morocco, I think your audience would enjoy our desert tours.', link: `${SITE}/en-US/affiliates/invite/sample` },
 	}),
 
 	'affiliate-approved': template<{ rate: string; link: string }>({

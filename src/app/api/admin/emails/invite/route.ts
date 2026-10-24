@@ -1,8 +1,10 @@
-// Sends the affiliate invitation to a list of people (owner only).
+// Sends the affiliate invitation to a list of people (owner only): each one
+// gets their own invitation link (see src/lib/affiliateInvites.ts).
 // Body: { recipients: "Sofia Martin <sofia@example.com>\nbob@example.com", message?: string }
 import { NextResponse, type NextRequest } from 'next/server'
 import { isOwner } from '@/lib/admin/owner'
 import { sendTemplate } from '@/lib/email/send'
+import { createInvite, inviteLink } from '@/lib/affiliateInvites'
 
 export const dynamic = 'force-dynamic'
 
@@ -38,8 +40,14 @@ export async function POST(req: NextRequest) {
 
 	const failed: { email: string; error: string }[] = []
 	for (const to of valid) {
-		const sent = await sendTemplate('affiliate-invite', { to, data: { name: to.name, message } })
-		if (!sent.ok) failed.push({ email: to.email, error: sent.error })
+		try {
+			const invite = await createInvite(to.email, to.name)
+			const sent = await sendTemplate('affiliate-invite', { to, data: { name: to.name, message, link: inviteLink(invite.token) } })
+			if (!sent.ok) failed.push({ email: to.email, error: sent.error })
+		} catch (error) {
+			console.error('Affiliate invite failed:', to.email, error)
+			failed.push({ email: to.email, error: 'Could not create the invitation' })
+		}
 	}
 	return NextResponse.json({ sent: valid.length - failed.length, failed }, { status: failed.length === valid.length ? 502 : 200 })
 }

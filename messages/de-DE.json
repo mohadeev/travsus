@@ -4260,5 +4260,26 @@
     "marketing_text": "Unsere Werbung messen und verbessern (Google Ads).",
     "save": "Auswahl speichern",
     "footer_link": "Cookie-Einstellungen"
+  },
+  "AffiliateInvite": {
+    "eyebrow": "Partnerprogramm",
+    "title": "Du bist eingeladen, TRAVSUS-Partner zu werden",
+    "title_named": "{name}, du bist eingeladen, TRAVSUS-Partner zu werden",
+    "text": "Teile unsere Touren mit deinem Publikum und verdiene eine Provision für jede Buchung über deinen Link.",
+    "perk_commission": "Bis zu 15 % Provision pro Buchung",
+    "perk_cookie": "60-Tage-Cookie bei jedem Klick",
+    "perk_payouts": "Monatliche Auszahlung ab 50 €",
+    "sign_in_first": "Erstelle ein Konto oder melde dich an, um die Einladung anzunehmen.",
+    "sign_up": "Konto erstellen",
+    "sign_in": "Anmelden",
+    "accept": "Einladung annehmen",
+    "signed_in_as": "Du trittst bei als {email}",
+    "accepted_title": "Du bist dabei!",
+    "accepted_text": "Dein Partnerlink ist bereit. Wir haben dir eine Willkommens-E-Mail geschickt.",
+    "open_area": "Meinen Partnerbereich öffnen",
+    "error": "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
+    "invalid_title": "Dieser Einladungslink ist ungültig",
+    "invalid_text": "Er ist vielleicht unvollständig. Öffne den Link aus deiner Einladungs-E-Mail erneut.",
+    "about_program": "So funktioniert das Partnerprogramm"
   }
 }

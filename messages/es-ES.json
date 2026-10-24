@@ -4199,5 +4199,26 @@
     "marketing_text": "Medir y mejorar nuestros anuncios (Google Ads).",
     "save": "Guardar mi elección",
     "footer_link": "Configuración de cookies"
+  },
+  "AffiliateInvite": {
+    "eyebrow": "Programa de afiliados",
+    "title": "Te invitamos a unirte a TRAVSUS",
+    "title_named": "{name}, te invitamos a unirte a TRAVSUS",
+    "text": "Comparte nuestros tours con tu audiencia y gana una comisión por cada reserva hecha con tu enlace.",
+    "perk_commission": "Hasta un 15 % de comisión por reserva",
+    "perk_cookie": "Cookie de 60 días en cada clic",
+    "perk_payouts": "Pagos mensuales desde 50 €",
+    "sign_in_first": "Crea tu cuenta o inicia sesión para aceptar la invitación.",
+    "sign_up": "Crear cuenta",
+    "sign_in": "Iniciar sesión",
+    "accept": "Aceptar invitación",
+    "signed_in_as": "Te unirás como {email}",
+    "accepted_title": "¡Ya estás dentro!",
+    "accepted_text": "Tu enlace de afiliado está listo. Te hemos enviado un correo de bienvenida.",
+    "open_area": "Abrir mi área de afiliado",
+    "error": "Algo salió mal. Inténtalo de nuevo.",
+    "invalid_title": "Este enlace de invitación no es válido",
+    "invalid_text": "Puede estar incompleto. Vuelve a abrir el enlace desde el correo de invitación.",
+    "about_program": "Cómo funciona el programa de afiliados"
   }
 }

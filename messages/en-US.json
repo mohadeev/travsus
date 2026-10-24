@@ -2976,5 +2976,26 @@
     "marketing_text": "Measure and improve our ads (Google Ads).",
     "save": "Save my choice",
     "footer_link": "Cookie settings"
+  },
+  "AffiliateInvite": {
+    "eyebrow": "Affiliate program",
+    "title": "You’re invited to join TRAVSUS",
+    "title_named": "{name}, you’re invited to join TRAVSUS",
+    "text": "Share our tours with your audience and earn a commission on every booking made through your link.",
+    "perk_commission": "Up to 15% commission per booking",
+    "perk_cookie": "60-day cookie on every click",
+    "perk_payouts": "Monthly payouts from €50",
+    "sign_in_first": "Create your account or sign in to accept the invitation.",
+    "sign_up": "Create account",
+    "sign_in": "Sign in",
+    "accept": "Accept invitation",
+    "signed_in_as": "You’ll join as {email}",
+    "accepted_title": "You’re in!",
+    "accepted_text": "Your affiliate link is ready. We’ve sent you a welcome email.",
+    "open_area": "Open my affiliate area",
+    "error": "Something went wrong. Please try again.",
+    "invalid_title": "This invitation link isn’t valid",
+    "invalid_text": "It may be incomplete. Open the link from your invitation email again.",
+    "about_program": "How the affiliate program works"
   }
 }

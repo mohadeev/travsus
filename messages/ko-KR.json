@@ -3263,5 +3263,26 @@
     "marketing_text": "광고 측정 및 개선 (Google Ads).",
     "save": "선택 저장",
     "footer_link": "쿠키 설정"
+  },
+  "AffiliateInvite": {
+    "eyebrow": "제휴 프로그램",
+    "title": "TRAVSUS 파트너로 초대합니다",
+    "title_named": "{name}님, TRAVSUS 파트너로 초대합니다",
+    "text": "팔로워에게 투어를 소개하고, 내 링크로 이루어진 예약마다 수수료를 받으세요.",
+    "perk_commission": "예약당 최대 15% 수수료",
+    "perk_cookie": "클릭마다 60일 쿠키",
+    "perk_payouts": "50€부터 매월 지급",
+    "sign_in_first": "초대를 수락하려면 계정을 만들거나 로그인하세요.",
+    "sign_up": "계정 만들기",
+    "sign_in": "로그인",
+    "accept": "초대 수락",
+    "signed_in_as": "{email} 계정으로 참여합니다",
+    "accepted_title": "참여 완료!",
+    "accepted_text": "제휴 링크가 준비되었습니다. 환영 이메일을 보내드렸어요.",
+    "open_area": "내 제휴 페이지 열기",
+    "error": "문제가 발생했습니다. 다시 시도해 주세요.",
+    "invalid_title": "유효하지 않은 초대 링크입니다",
+    "invalid_text": "링크가 잘렸을 수 있습니다. 초대 이메일의 링크를 다시 열어 주세요.",
+    "about_program": "제휴 프로그램 안내"
   }
 }
