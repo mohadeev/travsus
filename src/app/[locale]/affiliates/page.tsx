@@ -26,7 +26,6 @@ import HomeMotion from '../(home)/HomeMotion'
 import motion from '../(home)/home.module.css'
 import AffiliateRequestForm from './AffiliateRequestForm'
 import EarningsCalculator from './EarningsCalculator'
-import { TIERS } from './tiers'
 import s from './affiliates.module.css'
 
 type PageProps = { params: { locale: string } }
@@ -72,7 +71,6 @@ export default async function AffiliatesPage({ params }: PageProps) {
 	setRequestLocale(params.locale)
 	const t = await getTranslations('Affiliates')
 	const money = (n: number) => new Intl.NumberFormat(params.locale, { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(n)
-	const top = TIERS[TIERS.length - 1]
 
 	// FAQ rich results
 	const faqJsonLd = {
@@ -217,31 +215,11 @@ export default async function AffiliatesPage({ params }: PageProps) {
 				</div>
 			</section>
 
-			{/* Commission tiers + calculator */}
+			{/* Commission tiers + calculator (tap a tier to switch the estimate to it) */}
 			<section className={`mx-auto mt-24 max-w-7xl px-5 sm:mt-36 ${motion.reveal}`}>
 				<h2 className="text-center text-4xl font-bold tracking-tight sm:text-6xl">{t('tiers_title')}</h2>
 				<p className="mx-auto mt-4 max-w-2xl text-center text-lg text-neutral-500 sm:text-xl">{t('tiers_text')}</p>
-				<ul className={`mt-12 grid grid-cols-3 items-end gap-2.5 sm:mt-16 sm:gap-5 ${motion.stagger}`}>
-					{TIERS.map((tier, i) => {
-						const best = tier === top
-						return (
-							<li
-								key={tier.rate}
-								className={`relative overflow-hidden rounded-3xl px-3 text-center sm:rounded-[32px] sm:px-10 ${best ? 'bg-neutral-950 py-8 text-white shadow-2xl sm:py-14 dark:ring-1 dark:ring-white/15' : 'bg-neutral-100 py-6 sm:py-10 dark:bg-neutral-900'}`}
-							>
-								<p className={`relative text-4xl font-bold tracking-tight sm:text-7xl`}>{tier.rate}%</p>
-								<p className="relative mt-2 text-xs opacity-60 sm:text-base">
-									{tier.to ? t('tier_range', { from: tier.from, to: tier.to }) : t('tier_plus', { from: tier.from })}
-								</p>
-								{/* Grows with the tier */}
-								<div className="relative mx-auto mt-4 h-1.5 w-full max-w-[160px] overflow-hidden rounded-full bg-black/10 dark:bg-white/10">
-									<span className={`block h-full rounded-full ${best ? 'bg-white' : 'bg-neutral-950 dark:bg-white'}`} style={{ width: `${((i + 1) / TIERS.length) * 100}%` }} />
-								</div>
-							</li>
-						)
-					})}
-				</ul>
-				<div className="mt-5">
+				<div className="mt-12 sm:mt-16">
 					<EarningsCalculator />
 				</div>
 			</section>
