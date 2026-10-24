@@ -9,6 +9,10 @@ import { PRICE_STEPS, filtersHref, readFilters, searchTours, type SearchFilters 
 import { formatCurrency } from '@/utils/formatCurrency'
 import TourCard from '../(home)/TourCard'
 
+// Results depend on the URL (?query=…&maxPrice=…), so the page is built per
+// request, never at build time for every language.
+export const dynamic = 'force-dynamic'
+
 type PageProps = {
 	params: { locale: string }
 	searchParams: Record<string, string | string[] | undefined>
