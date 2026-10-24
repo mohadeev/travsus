@@ -1,5 +1,6 @@
 // TripAdvisor-style tour card: square photo with the save heart, city chip,
-// bold green title, rating bubbles with the number of reviews, price.
+// bold green title, rating bubbles with the number of reviews (nothing when
+// there are none yet), price.
 import Image from 'next/image'
 import TourLink from '@/components/TourLink'
 import { useLocale, useTranslations } from 'next-intl'
@@ -55,11 +56,7 @@ export default function TourCard({ tour }: { tour: HomeTour }) {
 						<RatingBubbles rating={tour.rating} size={14} tone="green" />
 						<span className="text-neutral-600 dark:text-neutral-400">({whole.format(tour.reviewsCount)})</span>
 					</div>
-				) : (
-					<span className="mt-1.5 inline-block rounded-md bg-[#00AA6C]/10 px-1.5 py-0.5 text-xs font-bold text-[#004F32] dark:bg-[#00AA6C]/20 dark:text-[#34E0A1]">
-						{t('new_tour')}
-					</span>
-				)}
+				) : null}
 
 				{tour.pricePerPerson && (
 					<p className="mt-2 text-[15px] font-bold text-neutral-900 dark:text-white">
