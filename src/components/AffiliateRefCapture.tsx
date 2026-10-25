@@ -4,6 +4,7 @@
 // booking made later is credited to the affiliate.
 import { useEffect } from 'react'
 import { usePathname, useSearchParams } from 'next/navigation'
+import { CODE } from '@/lib/affiliateCode'
 
 export default function AffiliateRefCapture() {
 	const pathname = usePathname()
@@ -11,7 +12,7 @@ export default function AffiliateRefCapture() {
 
 	useEffect(() => {
 		const code = ref?.trim().toLowerCase()
-		if (!code || !/^[a-z0-9-]{3,24}$/.test(code)) return
+		if (!code || !CODE.test(code)) return
 		// Once per code per browser tab
 		const key = `travsus_ref_sent:${code}`
 		try {

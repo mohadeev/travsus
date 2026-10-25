@@ -4,10 +4,12 @@
 // the affiliates page), add a private note, and optionally email the person.
 // Accepted affiliates: their link code, earnings, and recording payouts.
 // "Send invitation" opens the invitation form in a dialog, on this page.
+// An affiliate can also be removed (their link stops counting).
 import { Fragment, useMemo, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-import { Check, ExternalLink, Handshake, Link2, Loader2, Percent, Search, Send, Wallet, X } from 'lucide-react'
+import { Check, ExternalLink, Handshake, Link2, Loader2, Percent, Search, Send, Trash2, Wallet, X } from 'lucide-react'
 import InviteForm from '../_components/InviteForm'
+import { cleanCode, CODE_MAX } from '@/lib/affiliateCode'
 
 export type Affiliate = {
 	id: string
@@ -64,6 +66,12 @@ export default function AffiliatesPanel({ initial, stats: initialStats, tiers, l
 	function notify(message: string) {
 		setToast(message)
 		setTimeout(() => setToast(''), 4000)
+	}
+
+	function removed(row: Affiliate) {
+		setRows((all) => all.filter((r) => r.id !== row.id))
+		setOpen(null)
+		notify(`${row.email} removed`)
 	}
 
 	function saved(row: Affiliate, message: string, rowStats?: Stats) {
@@ -190,7 +198,7 @@ export default function AffiliatesPanel({ initial, stats: initialStats, tiers, l
 				</div>
 			)}
 
-			<Editor current={open} stats={open ? stats[open.row.id] : undefined} tiers={tiers} onClose={() => setOpen(null)} onSaved={saved} />
+			<Editor current={open} stats={open ? stats[open.row.id] : undefined} tiers={tiers} onClose={() => setOpen(null)} onSaved={saved} onRemoved={removed} />
 
 			<Transition show={inviting} as={Fragment}>
 				<Dialog className="relative z-50" onClose={() => setInviting(false)}>
@@ -239,6 +247,7 @@ export default function AffiliatesPanel({ initial, stats: initialStats, tiers, l
 }
 
 type OnSaved = (row: Affiliate, message: string, stats?: Stats) => void
+type OnRemoved = (row: Affiliate) => void
 
 function Editor({
 	current,
@@ -246,12 +255,14 @@ function Editor({
 	tiers,
 	onClose,
 	onSaved,
+	onRemoved,
 }: {
 	current: { row: Affiliate; status: Status } | null
 	stats?: Stats
 	tiers: Tier[]
 	onClose: () => void
 	onSaved: OnSaved
+	onRemoved: OnRemoved
 }) {
 	return (
 		<Transition show={!!current} as={Fragment}>
@@ -262,7 +273,7 @@ function Editor({
 				<div className="fixed inset-0 flex items-end justify-center sm:items-center sm:p-6">
 					<Transition.Child as={Fragment} enter="ease-out duration-200" enterFrom="translate-y-8 opacity-0" enterTo="translate-y-0 opacity-100" leave="ease-in duration-150" leaveFrom="translate-y-0 opacity-100" leaveTo="translate-y-8 opacity-0">
 						<Dialog.Panel className="max-h-[92vh] w-full overflow-y-auto rounded-t-3xl bg-white p-6 text-neutral-950 shadow-2xl sm:max-w-lg sm:rounded-3xl sm:p-8 dark:bg-neutral-900 dark:text-white">
-							{current && <EditorForm key={current.row.id + current.status} {...current} stats={stats} tiers={tiers} onClose={onClose} onSaved={onSaved} />}
+							{current && <EditorForm key={current.row.id + current.status} {...current} stats={stats} tiers={tiers} onClose={onClose} onSaved={onSaved} onRemoved={onRemoved} />}
 						</Dialog.Panel>
 					</Transition.Child>
 				</div>
@@ -278,6 +289,7 @@ function EditorForm({
 	tiers,
 	onClose,
 	onSaved,
+	onRemoved,
 }: {
 	row: Affiliate
 	status: Status
@@ -285,8 +297,10 @@ function EditorForm({
 	tiers: Tier[]
 	onClose: () => void
 	onSaved: OnSaved
+	onRemoved: OnRemoved
 }) {
 	const [code, setCode] = useState(row.code ?? '')
+	const [confirmRemove, setConfirmRemove] = useState(false)
 	const [status, setStatus] = useState<Status>(initialStatus)
 	const [custom, setCustom] = useState(row.rate !== null)
 	const [rate, setRate] = useState(row.rate === null ? String(tiers[0].rate) : String(Number(row.rate)))
@@ -313,6 +327,20 @@ function EditorForm({
 			if (!res.ok) throw new Error(data.error || 'Could not save. Please try again.')
 			const verb = data.affiliate.status === 'approved' ? 'accepted' : data.affiliate.status === 'declined' ? 'declined' : 'saved'
 			onSaved(data.affiliate, `${row.email} ${statusChanged ? verb : 'saved'}${data.emailed ? ', email sent' : ''}`)
+		} catch (e: any) {
+			setError(e.message)
+			setBusy(false)
+		}
+	}
+
+	async function remove() {
+		setBusy(true)
+		setError('')
+		try {
+			const res = await fetch('/api/admin/affiliates', { method: 'DELETE', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: row.id }) })
+			const data = await res.json().catch(() => ({}))
+			if (!res.ok) throw new Error(data.error || 'Could not remove. Please try again.')
+			onRemoved(row)
 		} catch (e: any) {
 			setError(e.message)
 			setBusy(false)
@@ -393,13 +421,13 @@ function EditorForm({
 						<span className="pointer-events-none absolute left-4 font-mono text-sm text-neutral-400">?ref=</span>
 						<input
 							value={code}
-							onChange={(e) => setCode(e.target.value.toLowerCase().replace(/[^a-z0-9-]/g, ''))}
-							maxLength={24}
+							onChange={(e) => setCode(cleanCode(e.target.value))}
+							maxLength={CODE_MAX}
 							placeholder={row.code ? '' : 'Made automatically'}
 							className="h-12 w-full rounded-2xl border-0 bg-neutral-100 pl-16 pr-4 font-mono text-sm focus:outline-none focus:ring-2 focus:ring-neutral-950 dark:bg-neutral-800 dark:focus:ring-white"
 						/>
 					</span>
-					<span className="mt-1.5 block text-xs text-neutral-500">Letters, digits and dashes. Changing it stops old links from counting.</span>
+					<span className="mt-1.5 block text-xs text-neutral-500">Anything you like, e.g. their Instagram name: letters, digits, dots, underscores and dashes (3 to 30). Changing it stops old links from counting.</span>
 				</label>
 			)}
 
@@ -434,6 +462,30 @@ function EditorForm({
 					{busy && <Loader2 className="h-4 w-4 animate-spin" />}
 					{statusChanged ? (status === 'approved' ? 'Accept' : status === 'declined' ? 'Decline' : 'Move back to review') : 'Save'}
 				</button>
+			</div>
+
+			{/* Remove: asks once more before deleting */}
+			<div className="mt-6 border-t border-neutral-200 pt-5 dark:border-neutral-800">
+				{confirmRemove ? (
+					<div className="rounded-2xl bg-red-50 p-4 dark:bg-red-950/40">
+						<p className="text-sm font-semibold text-red-800 dark:text-red-200">Remove {row.email}?</p>
+						<p className="mt-1 text-sm text-red-700/80 dark:text-red-300/80">Their link stops counting, and their clicks and booking credits are deleted. Payouts you recorded are kept. This can&apos;t be undone.</p>
+						<div className="mt-3 flex gap-2">
+							<button type="button" onClick={() => setConfirmRemove(false)} disabled={busy} className="h-10 flex-1 rounded-full bg-white text-sm font-semibold ring-1 ring-red-200 dark:bg-transparent dark:ring-red-800">
+								Keep
+							</button>
+							<button type="button" onClick={remove} disabled={busy} className="inline-flex h-10 flex-1 items-center justify-center gap-2 rounded-full bg-red-600 text-sm font-semibold text-white hover:bg-red-700 disabled:opacity-60">
+								{busy && <Loader2 className="h-4 w-4 animate-spin" />}
+								Remove
+							</button>
+						</div>
+					</div>
+				) : (
+					<button type="button" onClick={() => setConfirmRemove(true)} className="inline-flex items-center gap-2 text-sm font-semibold text-red-600 hover:text-red-700 dark:text-red-400">
+						<Trash2 className="h-4 w-4" />
+						Remove affiliate
+					</button>
+				)}
 			</div>
 		</>
 	)

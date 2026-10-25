@@ -1,7 +1,7 @@
 // Affiliate requests for the admin (owner only): accept / decline, custom
 // commission (null = the standard tiers), link code, private note. Accepting
 // gives the affiliate a code; on accept or decline the person can be told by
-// email.
+// email. DELETE removes an affiliate.
 import { NextResponse, type NextRequest } from 'next/server'
 import { db, T, must } from '@/lib/db'
 import { isOwner } from '@/lib/admin/owner'
@@ -34,8 +34,8 @@ export async function PATCH(req: NextRequest) {
 		changes.rate = rate === null ? null : Math.round(rate * 100) / 100
 	}
 	if ('code' in body && body.code) {
-		const code = String(body.code).trim().toLowerCase()
-		if (!CODE.test(code)) return NextResponse.json({ error: 'The code can use 3 to 24 letters, digits or dashes' }, { status: 400 })
+		const code = String(body.code).trim().toLowerCase().replace(/^@/, '')
+		if (!CODE.test(code)) return NextResponse.json({ error: 'The code can use 3 to 30 letters, digits, dots, underscores or dashes' }, { status: 400 })
 		const taken = must(await db.from(T.affiliates).select('id').eq('code', code).neq('id', id).maybeSingle())
 		if (taken) return NextResponse.json({ error: 'This code is already used by another affiliate' }, { status: 409 })
 		changes.code = code
@@ -64,5 +64,28 @@ export async function PATCH(req: NextRequest) {
 	} catch (error) {
 		console.error('Admin affiliates error:', error)
 		return NextResponse.json({ error: 'Could not save. Please try again.' }, { status: 500 })
+	}
+}
+
+/**
+ * Remove an affiliate: their request, link code, clicks and booking credits
+ * (and any invitation to their email) are deleted, so their link stops
+ * counting. Recorded payouts are kept as the history of money paid.
+ */
+export async function DELETE(req: NextRequest) {
+	if (!(await isOwner())) return NextResponse.json({ error: 'Not found' }, { status: 404 })
+	const { id } = await req.json().catch(() => ({}))
+	if (typeof id !== 'string' || !id) return NextResponse.json({ error: 'Missing id' }, { status: 400 })
+	try {
+		const row = must(await db.from(T.affiliates).select('id, email').eq('id', id).maybeSingle()) as { id: string; email: string } | null
+		if (!row) return NextResponse.json({ error: 'Affiliate not found' }, { status: 404 })
+		must(await db.from(T.affiliateClicks).delete().eq('affiliate_id', id))
+		must(await db.from(T.affiliateReferrals).delete().eq('affiliate_id', id))
+		must(await db.from(T.affiliateInvites).delete().eq('email', row.email))
+		must(await db.from(T.affiliates).delete().eq('id', id))
+		return NextResponse.json({ ok: true })
+	} catch (error) {
+		console.error('Remove affiliate failed:', error)
+		return NextResponse.json({ error: 'Could not remove. Please try again.' }, { status: 500 })
 	}
 }

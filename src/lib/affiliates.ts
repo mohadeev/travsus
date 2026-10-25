@@ -18,11 +18,12 @@ import { db, T, must } from '@/lib/db'
 import { bookingTotal, CLOSED_STATES, PAID_STATES } from '@/lib/dashboard'
 import { readTripDates } from '@/lib/tripDates'
 import { TIERS } from '@/app/[locale]/affiliates/tiers'
+import { CODE } from '@/lib/affiliateCode'
 
 export const REF_COOKIE = 'travsus_ref'
 export const REF_DAYS = 60
 export const MIN_PAYOUT = 50 // euros, as promised on the affiliates page
-export const CODE = /^[a-z0-9-]{3,24}$/
+export { CODE } from '@/lib/affiliateCode'
 
 export type Affiliate = {
 	id: string
