@@ -1,33 +1,18 @@
 'use client'
-// An iPhone showing where creators put their Travsus link: an Instagram bio,
-// a TikTok bio, a Linktree page and a blog post. The screens change every few
-// seconds (or with the tabs below), and a "new booking, +€84" notification
-// drops in. The profile is "your" page (no real account); photos are the
-// site's own.
+// The top half of a big iPhone (fading into a black background) showing where
+// creators put their Travsus link: an Instagram bio, a TikTok bio, a Linktree
+// page and a blog post. The screens change every few seconds (or with the
+// tabs below); a hand-drawn arrow follows the highlighted link, and a "new
+// booking, +€84" notification sits on the fade. The profile is "your" page
+// (no real account); photos are the site's own.
 import Image from 'next/image'
-import { useEffect, useState, type ReactNode } from 'react'
-import {
-	ArrowRight,
-	BadgeCheck,
-	ChevronDown,
-	ChevronLeft,
-	Clapperboard,
-	Grid3x3,
-	Home,
-	Link2,
-	Lock,
-	Menu,
-	Play,
-	Plus,
-	RotateCw,
-	Search,
-	SquarePlus,
-} from 'lucide-react'
+import { useCallback, useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react'
+import { ArrowRight, BadgeCheck, ChevronDown, ChevronLeft, Grid3x3, Link2, Lock, Menu, Play, Plus, RotateCw } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { PHOTOS } from '@/lib/photos'
 import styles from './CreatorPhone.module.css'
 
-const PHOTOS_GRID = [PHOTOS.sahara, PHOTOS.sunsetHug, PHOTOS.hiking, PHOTOS.bookNow, PHOTOS.hero, PHOTOS.laughing]
+const PHOTOS_GRID = [PHOTOS.sahara, PHOTOS.sunsetHug, PHOTOS.hiking]
 const LINK = 'travsus.com/?ref=you'
 const SCREENS = ['instagram', 'tiktok', 'linktree', 'blog'] as const
 type Screen = (typeof SCREENS)[number]
@@ -64,8 +49,9 @@ const Avatar = ({ size, ring }: { size: number; ring?: string }) => (
 	</span>
 )
 
-const BioLink = ({ className = '' }: { className?: string }) => (
-	<p className={`-mx-1 mt-1 inline-flex items-center gap-1 rounded-md px-1 py-0.5 font-semibold ${styles.link} ${className}`}>
+/** The Travsus link, highlighted like a marker pen; the arrow points at [data-link] */
+const BioLink = () => (
+	<p data-link className={`mt-1.5 inline-flex items-center gap-1 rounded-md bg-[#FDE047] px-1.5 py-0.5 font-bold text-black ${styles.mark}`}>
 		<Link2 className="h-3.5 w-3.5 -rotate-45" strokeWidth={2.5} />
 		{LINK}
 	</p>
@@ -105,7 +91,7 @@ function Instagram({ t }: { t: T }) {
 					<BadgeCheck className="h-3.5 w-3.5 fill-[#0095F6] text-white" />
 				</p>
 				<p className="mt-0.5 text-neutral-800">{t('ig_bio')}</p>
-				<BioLink className="text-[#00376B]" />
+				<BioLink />
 			</div>
 			<div className="mt-3 grid grid-cols-2 gap-1.5 px-4">
 				<span className="rounded-lg bg-[#0095F6] py-1.5 text-center text-[11.5px] font-semibold text-white">{t('ig_follow')}</span>
@@ -115,20 +101,11 @@ function Instagram({ t }: { t: T }) {
 				<Grid3x3 className="h-4 w-4" />
 			</div>
 			<div className="grid grid-cols-3 gap-[2px]">
-				{PHOTOS_GRID.map((src, i) => (
-					<span key={i} className="relative block" style={{ aspectRatio: '1 / 1' }}>
-						<Image src={src} alt="" fill sizes="90px" className="object-cover" />
+				{PHOTOS_GRID.map((src) => (
+					<span key={src} className="relative block" style={{ aspectRatio: '1 / 1' }}>
+						<Image src={src} alt="" fill sizes="120px" className="object-cover" />
 					</span>
 				))}
-			</div>
-			<div className="absolute inset-x-0 bottom-0 flex items-center justify-around border-t border-neutral-200 bg-white px-3 pb-6 pt-2.5">
-				<Home className="h-5 w-5" />
-				<Search className="h-5 w-5" />
-				<SquarePlus className="h-5 w-5" />
-				<Clapperboard className="h-5 w-5" />
-				<span className="relative h-6 w-6 overflow-hidden rounded-full ring-2 ring-black">
-					<Image src={PHOTOS.laughing} alt="" fill sizes="24px" className="object-cover" />
-				</span>
 			</div>
 		</div>
 	)
@@ -144,31 +121,29 @@ function TikTok({ t }: { t: T }) {
 	return (
 		<div className="h-full bg-[#121212] text-white">
 			<StatusBar dark />
-			<div className="mt-1 flex items-center justify-center gap-1 text-[14px] font-bold">
-				{t('ig_name')}
-				<ChevronDown className="h-3.5 w-3.5" strokeWidth={2.5} />
-			</div>
-			<div className="mt-4 flex flex-col items-center">
-				<span className="relative block h-[76px] w-[76px] overflow-hidden rounded-full">
-					<Image src={PHOTOS.laughing} alt="" fill sizes="80px" className="object-cover" />
+			<div className="flex flex-col items-center">
+				<span className="relative mt-1 block h-[58px] w-[58px] overflow-hidden rounded-full">
+					<Image src={PHOTOS.laughing} alt="" fill sizes="64px" className="object-cover" />
 				</span>
-				<p className="mt-2 text-[13px] font-semibold">@your.travels</p>
-				<div className="mt-3 flex gap-6">
+				<p className="mt-1.5 text-[13px] font-semibold">@your.travels</p>
+				<div className="mt-2 flex gap-6">
 					{stat('312', t('tt_following'))}
 					{stat('52.4K', t('tt_followers'))}
 					{stat('1.2M', t('tt_likes'))}
 				</div>
-				<span className="mt-3 rounded-md bg-[#FE2C55] px-10 py-2 text-[12px] font-semibold">{t('tt_follow')}</span>
-				<p className="mt-3 px-6 text-center text-[11px] leading-snug text-white/85">{t('ig_bio')}</p>
-				<BioLink className="text-white" />
+				<span className="mt-2.5 rounded-md bg-[#FE2C55] px-10 py-1.5 text-[12px] font-semibold">{t('tt_follow')}</span>
+				<p className="mt-2 line-clamp-1 px-6 text-center text-[11px] text-white/85">{t('ig_bio')}</p>
+				<div className="text-[11.5px]">
+					<BioLink />
+				</div>
 			</div>
 			<div className="mt-3 grid grid-cols-3 gap-[2px]">
 				{PHOTOS_GRID.map((src, i) => (
-					<span key={i} className="relative block" style={{ aspectRatio: '3 / 4' }}>
-						<Image src={src} alt="" fill sizes="90px" className="object-cover" />
+					<span key={src} className="relative block" style={{ aspectRatio: '3 / 4' }}>
+						<Image src={src} alt="" fill sizes="120px" className="object-cover" />
 						<span className="absolute bottom-1 left-1 flex items-center gap-0.5 text-[9px] font-semibold drop-shadow">
 							<Play className="h-2.5 w-2.5 fill-white" strokeWidth={0} />
-							{['48K', '120K', '9.4K', '31K', '210K', '15K'][i]}
+							{['48K', '120K', '9.4K'][i]}
 						</span>
 					</span>
 				))}
@@ -182,23 +157,23 @@ function Linktree({ t }: { t: T }) {
 	return (
 		<div className="h-full text-black" style={{ background: 'linear-gradient(180deg, #e8efd6 0%, #d5e3b8 100%)' }}>
 			<StatusBar />
-			<div className="mt-6 flex flex-col items-center px-5">
-				<Avatar size={72} />
-				<p className="mt-3 text-[14px] font-bold">@your.travels</p>
-				<p className="mt-1 text-center text-[11px] leading-snug text-black/70">{t('ig_bio')}</p>
-				<ul className="mt-5 w-full space-y-2.5">
-					{links.map((label, i) => (
-						<li
-							key={label}
-							className={`rounded-full px-4 py-3 text-center text-[11.5px] font-semibold ${
-								i === 0 ? `bg-black text-white ${styles.pulse}` : 'bg-white/90 text-black'
-							}`}
-						>
-							{i === 0 ? '🐪 ' : ''}
-							{label}
-							{i === 0 && <span className="mt-0.5 block text-[9.5px] font-medium text-white/60">{LINK}</span>}
-						</li>
-					))}
+			<div className="mt-3 flex flex-col items-center px-5">
+				<Avatar size={64} />
+				<p className="mt-2 text-[14px] font-bold">@your.travels</p>
+				<p className="mt-1 line-clamp-2 text-center text-[11px] leading-snug text-black/70">{t('ig_bio')}</p>
+				<ul className="mt-4 w-full space-y-2.5">
+					{links.map((label, i) =>
+						i === 0 ? (
+							<li key={label} data-link className={`rounded-full bg-black px-4 py-2.5 text-center text-[11.5px] font-semibold text-white ring-[3px] ring-[#FDE047] ${styles.mark}`}>
+								🐪 {label}
+								<span className="mt-0.5 block text-[9.5px] font-bold text-[#FDE047]">{LINK}</span>
+							</li>
+						) : (
+							<li key={label} className="rounded-full bg-white/90 px-4 py-3 text-center text-[11.5px] font-semibold">
+								{label}
+							</li>
+						),
+					)}
 				</ul>
 			</div>
 		</div>
@@ -216,29 +191,24 @@ function Blog({ t }: { t: T }) {
 				<span className="flex-1 truncate text-center font-medium">your-travel-blog.com</span>
 				<RotateCw className="h-3 w-3" />
 			</div>
-			<div className="relative mx-3 mt-3 overflow-hidden rounded-xl" style={{ aspectRatio: '16 / 10' }}>
-				<Image src={PHOTOS.sahara} alt="" fill sizes="260px" className="object-cover" />
+			<div className="relative mx-3 mt-3 overflow-hidden rounded-xl" style={{ aspectRatio: '16 / 7' }}>
+				<Image src={PHOTOS.sahara} alt="" fill sizes="300px" className="object-cover" />
 			</div>
 			<div className="px-4">
-				<p className="mt-3 text-[15px] font-black leading-tight tracking-tight">{t('blog_post_title')}</p>
-				<p className="mt-2 text-[11px] leading-relaxed text-neutral-600">{t('blog_post_text')}</p>
-				<div className={`mt-3 rounded-2xl bg-black p-3 text-white ${styles.pulse}`}>
+				<p className="mt-2.5 text-[14px] font-black leading-tight tracking-tight">{t('blog_post_title')}</p>
+				<div data-link className={`mt-2.5 rounded-2xl bg-black p-2.5 text-white ring-[3px] ring-[#FDE047] ${styles.mark}`}>
 					<div className="flex items-center gap-2.5">
-						<span className="relative h-10 w-10 shrink-0 overflow-hidden rounded-lg">
+						<span className="relative h-9 w-9 shrink-0 overflow-hidden rounded-lg">
 							<Image src={PHOTOS.sahara} alt="" fill sizes="40px" className="object-cover" />
 						</span>
 						<div className="min-w-0 flex-1">
 							<p className="truncate text-[11px] font-bold">{t('blog_post_cta')}</p>
-							<p className="truncate text-[9.5px] text-white/60">{LINK}</p>
+							<p className="truncate text-[9.5px] font-bold text-[#FDE047]">{LINK}</p>
 						</div>
 						<ArrowRight className="h-4 w-4 shrink-0" />
 					</div>
 				</div>
-				<div className="mt-3 space-y-1.5">
-					{[100, 92, 96, 70].map((w) => (
-						<span key={w} className="block h-1.5 rounded-full bg-neutral-200" style={{ width: `${w}%` }} />
-					))}
-				</div>
+				<p className="mt-2.5 text-[11px] leading-relaxed text-neutral-600">{t('blog_post_text')}</p>
 			</div>
 		</div>
 	)
@@ -255,6 +225,9 @@ export default function CreatorPhone({ className = '' }: { className?: string })
 	const t = useTranslations('Affiliates')
 	const [screen, setScreen] = useState(0)
 	const [paused, setPaused] = useState(false)
+	const [arrow, setArrow] = useState<{ x: number; y: number } | null>(null)
+	const box = useRef<HTMLDivElement>(null)
+	const screens = useRef<(HTMLDivElement | null)[]>([])
 
 	// Next screen every few seconds, unless the visitor picked one or prefers less motion
 	useEffect(() => {
@@ -262,6 +235,22 @@ export default function CreatorPhone({ className = '' }: { className?: string })
 		const timer = setInterval(() => setScreen((i) => (i + 1) % SCREENS.length), EVERY)
 		return () => clearInterval(timer)
 	}, [paused])
+
+	// The arrow points at the link of the screen on show (it sits in a different place on
+	// each): its tip touches the phone's left edge, at the link's height
+	const aim = useCallback(() => {
+		const link = screens.current[screen]?.querySelector('[data-link]')
+		if (!link || !box.current) return
+		const from = box.current.getBoundingClientRect()
+		const to = link.getBoundingClientRect()
+		setArrow({ x: 0, y: to.top - from.top + to.height / 2 })
+	}, [screen])
+
+	useLayoutEffect(() => {
+		aim()
+		window.addEventListener('resize', aim)
+		return () => window.removeEventListener('resize', aim)
+	}, [aim])
 
 	const views: Record<Screen, ReactNode> = {
 		instagram: <Instagram t={t} />,
@@ -271,50 +260,73 @@ export default function CreatorPhone({ className = '' }: { className?: string })
 	}
 
 	return (
-		<div className={`relative mx-auto w-[260px] sm:w-[280px] ${className}`}>
-			<div className={styles.float}>
-				{/* iPhone: titanium edge, side buttons, black bezel */}
-				<div className="relative rounded-[50px] p-[3px] shadow-[0_40px_80px_-30px_rgba(0,0,0,0.75)]" style={{ background: 'linear-gradient(145deg, #d7d4cf, #8d8a85 30%, #5e5b57 55%, #b9b6b0 80%, #75726d)' }}>
-					<span aria-hidden className="absolute -left-[3px] top-[19%] h-6 w-[3px] rounded-l-sm bg-[#8d8a85]" />
-					<span aria-hidden className="absolute -left-[3px] top-[27%] h-11 w-[3px] rounded-l-sm bg-[#8d8a85]" />
-					<span aria-hidden className="absolute -left-[3px] top-[37%] h-11 w-[3px] rounded-l-sm bg-[#8d8a85]" />
-					<span aria-hidden className="absolute -right-[3px] top-[30%] h-16 w-[3px] rounded-r-sm bg-[#8d8a85]" />
-					<div className="rounded-[47px] bg-black p-[7px]">
-						<div className="relative overflow-hidden rounded-[40px]" style={{ aspectRatio: '9 / 19.5' }}>
-							{SCREENS.map((name, i) => (
-								<div
-									key={name}
-									aria-hidden={i !== screen}
-									className={`absolute inset-0 transition-all duration-700 ease-out ${i === screen ? 'translate-x-0 opacity-100' : 'pointer-events-none translate-x-4 opacity-0'}`}
-								>
-									{views[name]}
+		<div className={`relative mx-auto w-fit ${className}`}>
+			<div ref={box} className="relative">
+				{/* Big phone, top half only: zoom scales the whole layout */}
+				<div className="[zoom:1.05] sm:[zoom:1.3] lg:[zoom:1.4]">
+					<div className="relative h-[390px] w-[286px] overflow-hidden px-[5px] pt-1">
+						{/* iPhone: titanium edge, side buttons, black bezel */}
+						<div className="relative rounded-[50px] p-[3px]" style={{ background: 'linear-gradient(145deg, #d7d4cf, #8d8a85 30%, #5e5b57 55%, #b9b6b0 80%, #75726d)' }}>
+							<span aria-hidden className="absolute -left-[3px] top-[19%] h-6 w-[3px] rounded-l-sm bg-[#8d8a85]" />
+							<span aria-hidden className="absolute -left-[3px] top-[27%] h-11 w-[3px] rounded-l-sm bg-[#8d8a85]" />
+							<span aria-hidden className="absolute -left-[3px] top-[37%] h-11 w-[3px] rounded-l-sm bg-[#8d8a85]" />
+							<span aria-hidden className="absolute -right-[3px] top-[30%] h-16 w-[3px] rounded-r-sm bg-[#8d8a85]" />
+							<div className="rounded-[47px] bg-black p-[7px]">
+								<div className="relative overflow-hidden rounded-[40px]" style={{ aspectRatio: '9 / 19.5' }}>
+									{SCREENS.map((name, i) => (
+										<div
+											key={name}
+											ref={(el) => {
+												screens.current[i] = el
+											}}
+											aria-hidden={i !== screen}
+											className={`absolute inset-0 transition-opacity duration-700 ease-out ${i === screen ? 'opacity-100' : 'pointer-events-none opacity-0'}`}
+										>
+											{views[name]}
+										</div>
+									))}
+									<span aria-hidden className="absolute left-1/2 top-[9px] z-10 h-[24px] w-[86px] -translate-x-1/2 rounded-full bg-black" />
 								</div>
-							))}
-							{/* Dynamic Island and home bar */}
-							<span aria-hidden className="absolute left-1/2 top-[9px] z-10 h-[24px] w-[86px] -translate-x-1/2 rounded-full bg-black" />
-							<span aria-hidden className={`absolute bottom-[7px] left-1/2 z-10 h-[4px] w-[96px] -translate-x-1/2 rounded-full transition-colors duration-700 ${SCREENS[screen] === 'tiktok' ? 'bg-white' : 'bg-black'}`} />
+							</div>
+						</div>
+						{/* The phone is cut in half: fade into the black page */}
+						<div aria-hidden className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black via-black/70 to-transparent" />
+					</div>
+				</div>
+
+				{/* Hand-drawn arrow to the link */}
+				{arrow && (
+					<div
+						aria-hidden
+						className="pointer-events-none absolute z-20 flex flex-col items-end text-white transition-all duration-500 ease-out"
+						style={{ left: arrow.x + 4, top: arrow.y, transform: 'translate(-100%, -78%)' }}
+					>
+						<span className="mb-1 hidden -rotate-6 whitespace-nowrap text-right font-serif text-[15px] italic leading-tight sm:block">{t('your_link')}</span>
+						<svg viewBox="0 0 80 50" className="h-7 w-10 sm:h-12 sm:w-20" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+							<path d="M4 6 C 20 40, 50 46, 74 38" />
+							<path d="M62 30 L 75 38 L 63 47" />
+						</svg>
+					</div>
+				)}
+
+				{/* Booking notification, on the fade */}
+				<div className={`absolute -bottom-10 -right-3 z-20 w-[220px] rounded-2xl bg-white/95 p-3 text-black shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)] ring-1 ring-black/5 backdrop-blur sm:-right-10 ${styles.notify}`}>
+					<div className="flex items-center gap-2.5">
+						<span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-black text-[13px] font-black text-white">T</span>
+						<div className="min-w-0">
+							<p className="truncate text-[12px] font-bold">{t('chip_booking')}</p>
+							<p className="whitespace-nowrap text-[11px] text-neutral-500">{t('chip_booking_trip')}</p>
 						</div>
 					</div>
-				</div>
-			</div>
-
-			{/* Booking notification */}
-			<div className={`absolute -right-4 top-[73%] w-[220px] rounded-2xl bg-white/95 p-3 text-black shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)] ring-1 ring-black/5 backdrop-blur sm:-right-16 ${styles.notify}`}>
-				<div className="flex items-center gap-2.5">
-					<span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-black text-[13px] font-black text-white">T</span>
-					<div className="min-w-0">
-						<p className="truncate text-[12px] font-bold">{t('chip_booking')}</p>
-						<p className="whitespace-nowrap text-[11px] text-neutral-500">{t('chip_booking_trip')}</p>
+					<div className="mt-2 flex items-baseline justify-between border-t border-neutral-100 pt-2">
+						<span className="text-[10px] font-semibold uppercase tracking-wide text-neutral-500">{t('chip_commission')}</span>
+						<span className="text-lg font-black tracking-tight">+€84</span>
 					</div>
-				</div>
-				<div className="mt-2 flex items-baseline justify-between border-t border-neutral-100 pt-2">
-					<span className="text-[10px] font-semibold uppercase tracking-wide text-neutral-500">{t('chip_commission')}</span>
-					<span className="text-lg font-black tracking-tight">+€84</span>
 				</div>
 			</div>
 
 			{/* Which app is on screen */}
-			<div role="tablist" className="-mx-10 mt-10 flex justify-center gap-1.5">
+			<div role="tablist" className="mt-16 flex justify-center gap-1.5">
 				{SCREENS.map((name, i) => (
 					<button
 						key={name}

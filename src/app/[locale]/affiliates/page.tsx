@@ -126,7 +126,7 @@ export default async function AffiliatesPage({ params }: PageProps) {
 					</div>
 
 					{/* Instagram phone: the Travsus link in the bio */}
-					<CreatorPhone className="lg:mr-24" />
+					<CreatorPhone className="lg:mr-6" />
 				</div>
 			</section>
 

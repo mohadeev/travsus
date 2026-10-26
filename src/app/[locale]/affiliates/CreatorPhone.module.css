@@ -1,25 +1,11 @@
-/* The phone floats gently; the booking notification drops in and repeats */
-.float {
-	animation: float 6s ease-in-out infinite;
-}
-
+/* The booking notification drops in and repeats */
 .notify {
 	animation: notify 5s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
 }
 
-/* The bio link glows once in a while */
-.link {
-	animation: glow 5s ease-in-out infinite;
-}
-
-@keyframes float {
-	0%,
-	100% {
-		transform: translateY(0) rotate(-2deg);
-	}
-	50% {
-		transform: translateY(-10px) rotate(-2deg);
-	}
+/* The highlighted Travsus link pulses like a marker */
+.mark {
+	animation: mark 2.2s ease-in-out infinite;
 }
 
 @keyframes notify {
@@ -40,43 +26,19 @@
 	}
 }
 
-@keyframes glow {
+@keyframes mark {
 	0%,
-	55%,
 	100% {
-		background-color: transparent;
+		box-shadow: 0 0 0 0 rgba(253, 224, 71, 0.75);
 	}
-	65%,
-	85% {
-		background-color: rgba(0, 149, 246, 0.12);
+	60% {
+		box-shadow: 0 0 0 9px rgba(253, 224, 71, 0);
 	}
 }
 
 @media (prefers-reduced-motion: reduce) {
-	.float,
 	.notify,
-	.link {
-		animation: none;
-	}
-}
-
-/* The Travsus button on the Linktree and blog screens */
-.pulse {
-	animation: pulse 2.4s ease-in-out infinite;
-}
-
-@keyframes pulse {
-	0%,
-	100% {
-		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.35);
-	}
-	50% {
-		box-shadow: 0 0 0 6px rgba(0, 0, 0, 0);
-	}
-}
-
-@media (prefers-reduced-motion: reduce) {
-	.pulse {
+	.mark {
 		animation: none;
 	}
 }
