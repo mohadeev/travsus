@@ -1,16 +1,20 @@
 'use client'
-// Site header (Zalando / Mobbin style): logo, search and account icons on top,
-// a category bar underneath. Rendered on the server too, so links are crawlable.
+// Site header, TripAdvisor-style and minimal: one row with the logo, a glowing
+// "Become a partner" pill, a couple of links and the account icons. The
+// categories live in the home page chips and the mobile menu. Rendered on the
+// server too, so links are crawlable.
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Heart, Search } from 'lucide-react'
+import { Heart, Search, Sparkles } from 'lucide-react'
 import { useLocale, useTranslations } from 'next-intl'
 import Logo from '@/shared/Logo'
 import MenuBar from '@/shared/MenuBar'
-import { ACCOUNT_LINKS, CATEGORY_LINKS, CITY_LINKS } from '@/constants/siteNav'
+import { ACCOUNT_LINKS } from '@/constants/siteNav'
 import AvatarDropdown from './AvatarDropdown'
 import LanguagePreferencesModal from './LanguagePreferencesModal'
+
+const icon = 'grid h-10 w-10 place-items-center rounded-full transition hover:bg-neutral-100 dark:hover:bg-neutral-800'
 
 export default function HeaderBar() {
 	const t = useTranslations('Nav')
@@ -18,8 +22,8 @@ export default function HeaderBar() {
 	const locale = useLocale()
 	const pathname = usePathname()
 	const [scrolled, setScrolled] = useState(false)
-	const [searchOpen, setSearchOpen] = useState(false)
-	const [query, setQuery] = useState('')
+	// The home page has its own big search right below
+	const home = pathname === `/${locale}` || pathname === '/'
 
 	useEffect(() => {
 		const onScroll = () => setScrolled(window.scrollY > 8)
@@ -28,12 +32,19 @@ export default function HeaderBar() {
 		return () => window.removeEventListener('scroll', onScroll)
 	}, [])
 
+	const link = (href: string, label: string, active: boolean) => (
+		<Link
+			href={href as any}
+			className={`rounded-full px-3 py-2 text-[15px] font-semibold transition hover:bg-neutral-100 dark:hover:bg-neutral-800 ${active ? 'text-neutral-950 dark:text-white' : 'text-neutral-800 dark:text-neutral-200'}`}
+		>
+			{label}
+		</Link>
+	)
+
 	return (
 		<header
-			className={`sticky top-0 z-40 border-b bg-white/90 backdrop-blur-xl transition-shadow dark:bg-neutral-950/90 ${
-				scrolled
-					? 'border-neutral-200 shadow-[0_1px_12px_rgba(0,0,0,0.06)] dark:border-neutral-800'
-					: 'border-neutral-100 dark:border-neutral-900'
+			className={`sticky top-0 z-40 bg-white/90 backdrop-blur-xl transition-shadow dark:bg-neutral-950/90 ${
+				scrolled ? 'shadow-[0_1px_12px_rgba(0,0,0,0.08)]' : ''
 			}`}
 		>
 			<a
@@ -43,135 +54,37 @@ export default function HeaderBar() {
 				{t('skip')}
 			</a>
 
-			{/* Top row */}
-			<div className="mx-auto flex h-16 max-w-7xl items-center gap-4 px-5 lg:gap-8">
-				<Logo className="w-24 shrink-0" />
+			<div className="mx-auto flex h-16 max-w-7xl items-center gap-2 px-5 sm:h-[72px]">
+				<Logo className="w-24 shrink-0 sm:w-28" />
 
-				{/* Small until used: it grows when focused or typed in, and shrinks back when empty */}
-				<form
-					action={`/${locale}/search`}
-					method="get"
-					role="search"
-					onFocus={() => setSearchOpen(true)}
-					onBlur={(e) => !e.currentTarget.contains(e.relatedTarget as Node) && !query && setSearchOpen(false)}
-					className={`hidden min-w-0 items-center gap-3 rounded-full px-4 ring-neutral-950 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] md:flex dark:ring-white ${
-						searchOpen
-							? 'h-12 w-full max-w-xl bg-white shadow-xl ring-2 dark:bg-neutral-900'
-							: 'h-10 w-60 max-w-xl bg-neutral-100 hover:bg-neutral-200/70 lg:w-[19rem] dark:bg-neutral-900 dark:hover:bg-neutral-800'
-					}`}
-				>
-					<Search
-						className={`shrink-0 transition-all duration-500 ${searchOpen ? 'h-5 w-5 text-neutral-950 dark:text-white' : 'h-[18px] w-[18px] text-neutral-500'}`}
-					/>
-					<label className="min-w-0 flex-1">
-						<span className="sr-only">{tHome('search_label')}</span>
-						<input
-							type="search"
-							name="query"
-							value={query}
-							onChange={(e) => {
-								setQuery(e.target.value)
-								setSearchOpen(true)
-							}}
-							onKeyDown={(e) => e.key === 'Escape' && (setQuery(''), e.currentTarget.blur(), setSearchOpen(false))}
-							placeholder={tHome('search_placeholder')}
-							className={`w-full truncate border-0 bg-transparent p-0 [&::-webkit-search-cancel-button]:hidden placeholder:text-neutral-500 focus:outline-none focus:ring-0 transition-all duration-500 ${searchOpen ? 'text-base' : 'text-sm'}`}
-						/>
-					</label>
-					<button
-						type="submit"
-						tabIndex={searchOpen ? 0 : -1}
-						className={`shrink-0 rounded-full bg-neutral-950 text-sm font-semibold text-white transition-all duration-500 hover:bg-neutral-800 dark:bg-white dark:text-neutral-950 ${
-							searchOpen ? 'ml-0 max-w-[8rem] px-4 py-2 opacity-100' : '-ml-3 max-w-0 overflow-hidden px-0 py-2 opacity-0'
-						}`}
-					>
-						{tHome('search_cta')}
-					</button>
-				</form>
-
-				<div className="ml-auto flex items-center gap-1 text-neutral-900 dark:text-white">
+				<nav aria-label={t('explore')} className="ml-auto hidden items-center gap-1 lg:flex">
 					<Link
-						href={`/search?query=` as any}
-						aria-label={tHome('search_cta')}
-						className="grid h-10 w-10 place-items-center rounded-full hover:bg-neutral-100 md:hidden dark:hover:bg-neutral-800"
+						href={ACCOUNT_LINKS.partner as any}
+						className="mr-3 inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-[15px] font-semibold text-neutral-950 shadow-[0_0_0_1px_rgba(0,0,0,0.06),0_0_22px_-2px_rgba(0,0,0,0.28)] transition hover:shadow-[0_0_0_1px_rgba(0,0,0,0.1),0_0_28px_0_rgba(0,0,0,0.35)] dark:bg-neutral-900 dark:text-white"
 					>
-						<Search className="h-5 w-5" />
+						<Sparkles className="h-[18px] w-[18px]" />
+						{t('partner')}
 					</Link>
+					{link('/search?query=', t('all_tours'), !!pathname?.includes('/search'))}
+					{link(ACCOUNT_LINKS.blog, t('blog'), !!pathname?.includes('/blog'))}
+				</nav>
+
+				<div className="ml-auto flex items-center gap-0.5 text-neutral-900 lg:ml-3 dark:text-white">
+					{!home && (
+						<Link href={`/search?query=` as any} aria-label={tHome('search_cta')} className={icon}>
+							<Search className="h-5 w-5" />
+						</Link>
+					)}
 					<div className="hidden sm:block">
 						<LanguagePreferencesModal variant={'nav'} />
 					</div>
-					<Link
-						href={ACCOUNT_LINKS.saved as any}
-						aria-label={t('saved')}
-						className="hidden h-10 w-10 place-items-center rounded-full hover:bg-neutral-100 sm:grid dark:hover:bg-neutral-800"
-					>
+					<Link href={ACCOUNT_LINKS.saved as any} aria-label={t('saved')} className={`hidden sm:grid ${icon}`}>
 						<Heart className="h-5 w-5" />
 					</Link>
 					<AvatarDropdown />
-					<MenuBar className="grid h-10 w-10 place-items-center rounded-full hover:bg-neutral-100 lg:hidden dark:hover:bg-neutral-800" iconClassName="h-5 w-5" />
+					<MenuBar className={`lg:hidden ${icon}`} iconClassName="h-5 w-5" />
 				</div>
 			</div>
-
-			{/* Category bar */}
-			<nav aria-label={t('explore')} className="mx-auto max-w-7xl px-5">
-				<ul className="-mb-px flex items-center gap-6 overflow-x-auto text-sm font-medium [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-					<NavItem href="/search?query=" active={pathname?.includes('/search')}>
-						{t('all_tours')}
-					</NavItem>
-					{CATEGORY_LINKS.map((link) => (
-						<NavItem key={link.href} href={link.href}>
-							{tHome(link.label)}
-						</NavItem>
-					))}
-					<li aria-hidden className="h-4 w-px shrink-0 bg-neutral-200 dark:bg-neutral-800" />
-					{CITY_LINKS.map((link) => (
-						<NavItem key={link.href} href={link.href}>
-							{link.label}
-						</NavItem>
-					))}
-					<li className="ml-auto hidden shrink-0 lg:block">
-						<Link
-							href={ACCOUNT_LINKS.blog as any}
-							className="py-3 text-neutral-500 transition hover:text-neutral-950 dark:hover:text-white"
-						>
-							{t('blog')}
-						</Link>
-					</li>
-					<li className="hidden shrink-0 lg:block">
-						<Link
-							href={ACCOUNT_LINKS.partner as any}
-							className="rounded-full bg-neutral-950 px-3.5 py-1.5 text-xs font-semibold text-white transition hover:bg-neutral-800 dark:bg-white dark:text-neutral-950"
-						>
-							{t('partner')}
-						</Link>
-					</li>
-				</ul>
-			</nav>
 		</header>
-	)
-}
-
-function NavItem({
-	href,
-	active = false,
-	children,
-}: {
-	href: string
-	active?: boolean
-	children: React.ReactNode
-}) {
-	return (
-		<li className="shrink-0">
-			<Link
-				href={href as any}
-				className={`block border-b-2 py-3 transition ${
-					active
-						? 'border-neutral-950 text-neutral-950 dark:border-white dark:text-white'
-						: 'border-transparent text-neutral-600 hover:border-neutral-300 hover:text-neutral-950 dark:text-neutral-400 dark:hover:text-white'
-				}`}
-			>
-				{children}
-			</Link>
-		</li>
 	)
 }
