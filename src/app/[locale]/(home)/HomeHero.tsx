@@ -1,23 +1,15 @@
 'use client'
-// TripAdvisor-style hero with a daydream: a big emoji and a short travel line
-// change every few seconds, the search bar suggests the matching place, and a
-// travel quote fades in below. "Where to?" types itself out once in languages
-// from all over the world and ends in the visitor's own language. Without
-// motion, the first line and quote stay.
+// TripAdvisor-style hero: a big "Where to?" that types itself out once in
+// languages from all over the world and ends in the visitor's own language,
+// one search bar that suggests a place, and a travel quote fading in below.
+// Without motion, the visitor's language and the first quote stay.
 import { useEffect, useState } from 'react'
 import { Search } from 'lucide-react'
 import { useLocale, useTranslations } from 'next-intl'
 import styles from './home.module.css'
 
-// [emoji, place the search bar suggests]: one per hero_line_N
-const LINES = [
-	['🐪', 'Merzouga'],
-	['🕌', 'Fes'],
-	['🌅', 'Erg Chebbi'],
-	['🍵', 'Nomad'],
-	['🌊', 'Essaouira'],
-	['🏔️', 'Atlas'],
-] as const
+// Places the search bar suggests, one after another
+const PLACES = ['Merzouga', 'Fes', 'Erg Chebbi', 'Essaouira', 'Atlas', 'Chefchaouen']
 // "Where to?" around the world, Darija and Tamazight included
 const WHERE_TO = [
 	'¿A dónde?', 'Où aller ?', 'فين غادي؟', 'ⵎⴰⵏⵉ?', 'Wohin?', 'Dove?', 'إلى أين؟', 'Para onde?', 'Куда?', 'どこへ？',
@@ -25,7 +17,7 @@ const WHERE_TO = [
 	'Dokąd?', 'Waarheen?', 'Hvorhen?', 'Mihin?', 'Hová?', 'Saan?', 'Where to?',
 ]
 const QUOTES = 4
-const EVERY = 3200 // ms per line; the quote changes every second line
+const EVERY = 3200 // ms per suggested place; the quote changes every second one
 
 export default function HomeHero() {
 	const t = useTranslations('Home')
@@ -71,35 +63,22 @@ export default function HomeHero() {
 		return () => clearInterval(timer)
 	}, [])
 
-	const line = step % LINES.length
+	const place = PLACES[step % PLACES.length]
 	const quote = Math.floor(step / 2) % QUOTES
-	const [emoji, place] = LINES[line]
 
 	return (
-		<section className={`${styles.heroIn} mx-auto max-w-4xl px-5 pb-4 pt-8 text-center sm:pb-10 sm:pt-16`}>
+		<section className={`${styles.heroIn} mx-auto max-w-4xl px-5 pb-4 pt-10 text-center sm:pb-10 sm:pt-20`}>
 			{/* The page's main heading says what we offer (for search engines and screen readers) */}
 			<h1 className="sr-only">{tSeo('h1')}</h1>
 
-			<p className="flex h-6 items-center justify-center text-sm font-semibold uppercase tracking-[0.2em] text-neutral-500 sm:text-base">
+			{/* Same height for every language, so nothing below jumps */}
+			<p className="flex min-h-[1.2em] items-center justify-center text-[44px] font-black leading-none tracking-tight text-neutral-950 sm:text-7xl dark:text-white">
 				<span className="sr-only">{t('where_to')}</span>
 				<span aria-hidden dir="auto">
 					{typed}
 				</span>
-				<span aria-hidden className={`${styles.caret} ml-1 inline-block h-[1.1em] w-[2px] bg-neutral-950 dark:bg-white`} />
+				<span aria-hidden className={`${styles.caret} ml-1.5 inline-block h-[0.9em] w-[4px] rounded-full bg-neutral-950 sm:w-[6px] dark:bg-white`} />
 			</p>
-
-			{/* The daydream: same height for every line, so nothing below jumps */}
-			<div aria-hidden className="mt-4 flex min-h-[150px] flex-col items-center justify-center sm:min-h-[190px]">
-				<span key={`e${line}`} className={`${styles.emoji} block text-5xl sm:text-6xl`}>
-					{emoji}
-				</span>
-				<p
-					key={`l${line}`}
-					className={`${styles.lineIn} mt-3 text-[34px] font-black leading-[1.05] tracking-tight text-neutral-950 sm:text-6xl dark:text-white`}
-				>
-					{t(`hero_line_${line + 1}`)}
-				</p>
-			</div>
 
 			{/* Plain form: works before JavaScript loads */}
 			<form

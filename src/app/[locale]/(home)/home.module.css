@@ -50,21 +50,7 @@
 	to { opacity: 1; transform: none; filter: none; }
 }
 
-/* Hero daydream: each new line rises in out of a blur, the emoji pops */
-.lineIn {
-	animation: lineIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-@keyframes lineIn {
-	from { opacity: 0; transform: translateY(14px); filter: blur(8px); }
-	to { opacity: 1; transform: none; filter: none; }
-}
-.emoji {
-	animation: emojiPop 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) both;
-}
-@keyframes emojiPop {
-	from { opacity: 0; transform: scale(0.4) rotate(-12deg); }
-	to { opacity: 1; transform: none; }
-}
+/* The travel quote fades in */
 .quoteIn {
 	animation: quoteIn 1.2s ease-out both;
 }
@@ -112,8 +98,6 @@ li:nth-child(3) > .bob { animation-delay: 0.8s; }
 
 @media (prefers-reduced-motion: reduce) {
 	.heroIn > *,
-	.lineIn,
-	.emoji,
 	.quoteIn,
 	.caret,
 	.bob,
