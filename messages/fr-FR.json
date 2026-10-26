@@ -3632,7 +3632,8 @@
     "avg_rating": "{rating} en moyenne · {count, plural, one {# avis} other {# avis}}",
     "recently_viewed": "Vus récemment",
     "recently_viewed_sub": "Les circuits que vous avez consultés, pour reprendre où vous en étiez",
-    "recently_viewed_clear": "Effacer"
+    "recently_viewed_clear": "Effacer",
+    "where_to": "Où allez-vous ?"
   },
   "Payment": {
     "preparing": "Préparation du paiement sécurisé…",

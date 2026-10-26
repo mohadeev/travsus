@@ -2494,7 +2494,8 @@
     "avg_rating": "平均 {rating} · {count} 条评价",
     "recently_viewed": "最近浏览",
     "recently_viewed_sub": "您看过的行程，方便继续挑选",
-    "recently_viewed_clear": "清除"
+    "recently_viewed_clear": "清除",
+    "where_to": "去哪儿？"
   },
   "Payment": {
     "preparing": "正在准备安全支付…",

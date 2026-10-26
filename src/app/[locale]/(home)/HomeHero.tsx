@@ -1,5 +1,6 @@
-// TripAdvisor-style hero: big photo of happy travellers, category tabs and
-// one search box on top of it.
+// TripAdvisor-style hero. Phones: a clean white "Where to?" with one search
+// bar and quick-search chips. Larger screens: big photo of happy travellers,
+// category tabs and one search box on top of it.
 import Image from 'next/image'
 import Link from 'next/link'
 import { CalendarDays, Compass, Mountain, Search, Sun, Timer, type LucideIcon } from 'lucide-react'
@@ -25,7 +26,63 @@ export default function HomeHero({ destinations }: { destinations: HomeDestinati
 
 	return (
 		<section className="mx-auto max-w-7xl px-5 pt-3 sm:pt-5">
-			<div className="relative isolate overflow-hidden rounded-[28px] bg-neutral-900 sm:rounded-3xl">
+			{/* Phones */}
+			<div className={`${styles.heroIn} pb-2 pt-7 text-center sm:hidden`}>
+				<p className="text-[44px] font-black leading-none tracking-tight text-neutral-950 dark:text-white">{t('where_to')}</p>
+				<h1 className="mx-auto mt-3 max-w-xs text-[13px] leading-snug text-neutral-500">{tSeo('h1')}</h1>
+
+				<form
+					action={`/${locale}/search`}
+					method="get"
+					role="search"
+					className="mt-6 flex items-center gap-2 rounded-full border border-neutral-300 bg-white p-1.5 pl-4 text-neutral-950 shadow-[0_6px_18px_-8px_rgba(0,0,0,0.3)] focus-within:border-neutral-950 dark:border-neutral-700 dark:bg-neutral-900 dark:text-white"
+				>
+					<Search className="h-5 w-5 shrink-0" />
+					<label className="min-w-0 flex-1">
+						<span className="sr-only">{t('search_label')}</span>
+						<input
+							type="search"
+							name="query"
+							placeholder={t('search_placeholder')}
+							className="w-full border-0 bg-transparent p-0 py-2.5 text-base placeholder:text-neutral-500 focus:outline-none focus:ring-0"
+						/>
+					</label>
+					<button
+						type="submit"
+						className="shrink-0 rounded-full bg-neutral-950 px-5 py-3 text-[15px] font-bold text-white transition active:scale-95 dark:bg-white dark:text-neutral-950"
+					>
+						{t('search_cta')}
+					</button>
+				</form>
+
+				{/* Quick searches: categories, then cities. Swipe sideways. */}
+				<ul className={`${styles.noScrollbar} -mx-5 mt-5 flex gap-2 overflow-x-auto px-5 pb-1`}>
+					{TABS.slice(1).map(([label, query, Icon]) => (
+						<li key={label} className="shrink-0">
+							<Link
+								href={`/search?query=${encodeURIComponent(query)}` as any}
+								className="flex items-center gap-2 rounded-full border border-neutral-300 px-4 py-2 text-sm font-semibold text-neutral-950 transition active:scale-95 dark:border-neutral-700 dark:text-white"
+							>
+								<Icon className="h-4 w-4" />
+								{t(label)}
+							</Link>
+						</li>
+					))}
+					{destinations.slice(0, 5).map((d) => (
+						<li key={d.city} className="shrink-0">
+							<Link
+								href={`/search?query=${encodeURIComponent(d.city)}` as any}
+								className="block rounded-full border border-neutral-300 px-4 py-2 text-sm font-semibold text-neutral-950 transition active:scale-95 dark:border-neutral-700 dark:text-white"
+							>
+								{d.city}
+							</Link>
+						</li>
+					))}
+				</ul>
+			</div>
+
+			{/* Larger screens */}
+			<div className="relative isolate hidden overflow-hidden rounded-3xl bg-neutral-900 sm:block">
 				<Image
 					src={PHOTOS.hero}
 					alt=""

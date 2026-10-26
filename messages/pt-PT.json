@@ -3066,7 +3066,8 @@
     "avg_rating": "{rating} de média · {count, plural, one {# avaliação} other {# avaliações}}",
     "recently_viewed": "Vistos recentemente",
     "recently_viewed_sub": "Os tours que viu, para continuar onde parou",
-    "recently_viewed_clear": "Limpar"
+    "recently_viewed_clear": "Limpar",
+    "where_to": "Para onde?"
   },
   "Payment": {
     "preparing": "A preparar o pagamento seguro…",

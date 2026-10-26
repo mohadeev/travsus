@@ -3161,7 +3161,8 @@
     "avg_rating": "В среднем {rating} · {count, plural, one {# отзыв} few {# отзыва} many {# отзывов} other {# отзыва}}",
     "recently_viewed": "Недавно просмотренные",
     "recently_viewed_sub": "Туры, которые вы смотрели, — продолжите с того же места",
-    "recently_viewed_clear": "Очистить"
+    "recently_viewed_clear": "Очистить",
+    "where_to": "Куда едем?"
   },
   "Payment": {
     "preparing": "Готовим безопасную оплату…",

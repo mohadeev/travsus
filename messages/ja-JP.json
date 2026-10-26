@@ -2632,7 +2632,8 @@
     "avg_rating": "平均 {rating} · {count}件のレビュー",
     "recently_viewed": "最近見たツアー",
     "recently_viewed_sub": "閲覧したツアーから続きを探せます",
-    "recently_viewed_clear": "クリア"
+    "recently_viewed_clear": "クリア",
+    "where_to": "どこへ行く？"
   },
   "Payment": {
     "preparing": "安全なお支払いを準備中…",

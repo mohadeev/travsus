@@ -3616,7 +3616,8 @@
     "avg_rating": "{rating} im Schnitt · {count, plural, one {# Bewertung} other {# Bewertungen}}",
     "recently_viewed": "Zuletzt angesehen",
     "recently_viewed_sub": "Touren, die Sie sich angesehen haben – machen Sie dort weiter",
-    "recently_viewed_clear": "Löschen"
+    "recently_viewed_clear": "Löschen",
+    "where_to": "Wohin?"
   },
   "Payment": {
     "preparing": "Sichere Zahlung wird vorbereitet…",
