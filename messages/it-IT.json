@@ -1793,7 +1793,15 @@
     "main_heading": "Ottieni fino a €1000\ncon ogni referenza.",
     "main_heading_line1": "Guadagna Fino a €1000",
     "main_heading_line2": "Per Referenza Riuscita",
-    "sub_heading": "Unisciti al programma con commissioni leader del settore oggi."
+    "sub_heading": "Unisciti al programma con commissioni leader del settore oggi.",
+    "pass_title": "Pass affiliato",
+    "pass_you": "Tu",
+    "pass_your_link": "Il tuo link",
+    "pass_class": "Classe",
+    "pass_class_value": "Partner",
+    "pass_commission": "Commissione",
+    "pass_boarding": "Imbarco",
+    "pass_boarding_value": "Aperto"
   },
   "RenderLineItemsBreakdown": {
     "accommodation": "Alloggio",

@@ -1688,7 +1688,15 @@
     "main_heading": "紹介ごとに\n最大€1000を獲得。",
     "main_heading_line1": "成功した紹介ごとに",
     "main_heading_line2": "最大€1000を獲得",
-    "sub_heading": "業界をリードするコミッションのプログラムに今すぐ参加しましょう。"
+    "sub_heading": "業界をリードするコミッションのプログラムに今すぐ参加しましょう。",
+    "pass_title": "アフィリエイトパス",
+    "pass_you": "あなた",
+    "pass_your_link": "あなたのリンク",
+    "pass_class": "クラス",
+    "pass_class_value": "パートナー",
+    "pass_commission": "コミッション",
+    "pass_boarding": "搭乗",
+    "pass_boarding_value": "受付中"
   },
   "RenderLineItemsBreakdown": {
     "accommodation": "宿泊施設",

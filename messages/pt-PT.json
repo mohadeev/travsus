@@ -1697,7 +1697,15 @@
     "main_heading": "Ganhe até €1000\ncom cada indicação.",
     "main_heading_line1": "Ganhe Até €1000",
     "main_heading_line2": "Por Indicação Bem-Sucedida",
-    "sub_heading": "Junte-se ao programa com comissões líderes do setor hoje."
+    "sub_heading": "Junte-se ao programa com comissões líderes do setor hoje.",
+    "pass_title": "Passe de afiliado",
+    "pass_you": "Tu",
+    "pass_your_link": "O teu link",
+    "pass_class": "Classe",
+    "pass_class_value": "Parceiro",
+    "pass_commission": "Comissão",
+    "pass_boarding": "Embarque",
+    "pass_boarding_value": "Aberto"
   },
   "RenderLineItemsBreakdown": {
     "accommodation": "Alojamento",

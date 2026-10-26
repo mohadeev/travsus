@@ -1910,7 +1910,15 @@
     "main_heading": "Get up to €1000\nwith every referral.",
     "main_heading_line1": "Earn Up To €1000",
     "main_heading_line2": "Per Successful Referral",
-    "sub_heading": "Join the program with industry-leading commissions today."
+    "sub_heading": "Join the program with industry-leading commissions today.",
+    "pass_title": "Affiliate pass",
+    "pass_you": "You",
+    "pass_your_link": "Your link",
+    "pass_class": "Class",
+    "pass_class_value": "Partner",
+    "pass_commission": "Commission",
+    "pass_boarding": "Boarding",
+    "pass_boarding_value": "Open now"
   },
   "RenderLineItemsBreakdown": {
     "accommodation": "Accommodation",

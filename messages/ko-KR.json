@@ -1699,7 +1699,15 @@
     "main_heading": "추천할 때마다\n최대 €1000를 받으세요.",
     "main_heading_line1": "성공적인 추천 시",
     "main_heading_line2": "최대 €1000 적립",
-    "sub_heading": "업계를 선도하는 수수료 프로그램에 지금 참여하세요."
+    "sub_heading": "업계를 선도하는 수수료 프로그램에 지금 참여하세요.",
+    "pass_title": "제휴 패스",
+    "pass_you": "나",
+    "pass_your_link": "나의 링크",
+    "pass_class": "클래스",
+    "pass_class_value": "파트너",
+    "pass_commission": "수수료",
+    "pass_boarding": "탑승",
+    "pass_boarding_value": "지금 오픈"
   },
   "RenderLineItemsBreakdown": {
     "accommodation": "숙박",

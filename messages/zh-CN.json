@@ -1655,7 +1655,15 @@
     "main_heading": "每次推荐\n最高可获得€1000。",
     "main_heading_line1": "每次成功推荐",
     "main_heading_line2": "最高可获得€1000",
-    "sub_heading": "立即加入行业领先佣金计划。"
+    "sub_heading": "立即加入行业领先佣金计划。",
+    "pass_title": "推广通行证",
+    "pass_you": "你",
+    "pass_your_link": "你的链接",
+    "pass_class": "舱位",
+    "pass_class_value": "合作伙伴",
+    "pass_commission": "佣金",
+    "pass_boarding": "登机",
+    "pass_boarding_value": "现已开放"
   },
   "RenderLineItemsBreakdown": {
     "accommodation": "住宿",

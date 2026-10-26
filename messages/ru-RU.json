@@ -1791,7 +1791,15 @@
     "main_heading": "Получите до €1000\nза каждую рекомендацию.",
     "main_heading_line1": "Зарабатывайте До €1000",
     "main_heading_line2": "За Успешную Рекомендацию",
-    "sub_heading": "Присоединяйтесь к программе с лидирующими в отрасли комиссиями уже сегодня."
+    "sub_heading": "Присоединяйтесь к программе с лидирующими в отрасли комиссиями уже сегодня.",
+    "pass_title": "Партнёрский пропуск",
+    "pass_you": "Ты",
+    "pass_your_link": "Твоя ссылка",
+    "pass_class": "Класс",
+    "pass_class_value": "Партнёр",
+    "pass_commission": "Комиссия",
+    "pass_boarding": "Посадка",
+    "pass_boarding_value": "Открыта"
   },
   "RenderLineItemsBreakdown": {
     "accommodation": "Размещение",

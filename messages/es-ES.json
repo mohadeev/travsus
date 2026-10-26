@@ -2119,7 +2119,15 @@
     "main_heading": "Obtén hasta €1000\ncon cada referido.",
     "main_heading_line1": "Gana Hasta €1000",
     "main_heading_line2": "Por Referido Exitoso",
-    "sub_heading": "Únete al programa con las comisiones líderes de la industria hoy."
+    "sub_heading": "Únete al programa con las comisiones líderes de la industria hoy.",
+    "pass_title": "Pase de afiliado",
+    "pass_you": "Tú",
+    "pass_your_link": "Tu enlace",
+    "pass_class": "Clase",
+    "pass_class_value": "Socio",
+    "pass_commission": "Comisión",
+    "pass_boarding": "Embarque",
+    "pass_boarding_value": "Abierto"
   },
   "RenderLineItemsBreakdown": {
     "accommodation": "Alojamiento",

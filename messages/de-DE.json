@@ -2184,7 +2184,15 @@
     "main_heading": "Erhalten Sie bis zu €1000\nmit jeder Empfehlung.",
     "main_heading_line1": "Verdienen Sie Bis Zu €1000",
     "main_heading_line2": "Pro Erfolgreicher Empfehlung",
-    "sub_heading": "Treten Sie noch heute dem Programm mit branchenführenden Provisionen bei."
+    "sub_heading": "Treten Sie noch heute dem Programm mit branchenführenden Provisionen bei.",
+    "pass_title": "Partner-Pass",
+    "pass_you": "Du",
+    "pass_your_link": "Dein Link",
+    "pass_class": "Klasse",
+    "pass_class_value": "Partner",
+    "pass_commission": "Provision",
+    "pass_boarding": "Boarding",
+    "pass_boarding_value": "Jetzt offen"
   },
   "RenderLineItemsBreakdown": {
     "accommodation": "Unterkunft",

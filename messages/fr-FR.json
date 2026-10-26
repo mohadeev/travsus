@@ -2186,7 +2186,15 @@
     "main_heading": "Obtenez jusqu'à €1000\navec chaque recommandation.",
     "main_heading_line1": "Gagnez Jusqu'à €1000",
     "main_heading_line2": "Par Recommandation Réussie",
-    "sub_heading": "Rejoignez le programme avec des commissions leader de l'industrie aujourd'hui."
+    "sub_heading": "Rejoignez le programme avec des commissions leader de l'industrie aujourd'hui.",
+    "pass_title": "Pass affilié",
+    "pass_you": "Vous",
+    "pass_your_link": "Votre lien",
+    "pass_class": "Classe",
+    "pass_class_value": "Partenaire",
+    "pass_commission": "Commission",
+    "pass_boarding": "Embarquement",
+    "pass_boarding_value": "Ouvert"
   },
   "RenderLineItemsBreakdown": {
     "accommodation": "Hébergement",
