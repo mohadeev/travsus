@@ -3886,7 +3886,19 @@
     "ig_bio": "Voyages lents, nuits dans le désert et riads cachés. Mes circuits préférés 👇",
     "creator_title": "Le lien de ta bio peut payer ton prochain voyage.",
     "creator_text": "Mets ton lien Travsus dans ta bio Instagram. Chaque réservation faite avec te rapporte jusqu’à 15 % de commission.",
-    "creator_cta": "Devenir affilié"
+    "creator_cta": "Devenir affilié",
+    "tt_following": "Abonnements",
+    "tt_followers": "Abonnés",
+    "tt_likes": "J’aime",
+    "tt_follow": "Suivre",
+    "lt_book": "Réserve mon voyage au Sahara",
+    "lt_videos": "Mes vidéos de voyage",
+    "lt_guide": "Liste de valise pour le Maroc",
+    "lt_contact": "Travailler avec moi",
+    "blog_post_title": "3 jours au Sahara : mon avis honnête",
+    "blog_post_text": "Deux nuits dans les dunes, le meilleur moment du voyage. Voici le circuit exact que nous avons réservé.",
+    "blog_post_cta": "Réserver ce voyage sur Travsus",
+    "tab_blog": "Blog"
   },
   "Forum": {
     "meta_title": "Forum voyage : questions, conseils et récits de voyage",

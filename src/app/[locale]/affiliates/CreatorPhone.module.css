@@ -59,3 +59,24 @@
 		animation: none;
 	}
 }
+
+/* The Travsus button on the Linktree and blog screens */
+.pulse {
+	animation: pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+	0%,
+	100% {
+		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.35);
+	}
+	50% {
+		box-shadow: 0 0 0 6px rgba(0, 0, 0, 0);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.pulse {
+		animation: none;
+	}
+}

@@ -2586,7 +2586,19 @@
     "ig_bio": "Slow trips, desert nights and hidden riads. My favourite tours 👇",
     "creator_title": "Your bio link can pay for your next trip.",
     "creator_text": "Put your Travsus link in your Instagram bio. Every booking made through it earns you up to 15% commission.",
-    "creator_cta": "Become an affiliate"
+    "creator_cta": "Become an affiliate",
+    "tt_following": "Following",
+    "tt_followers": "Followers",
+    "tt_likes": "Likes",
+    "tt_follow": "Follow",
+    "lt_book": "Book my Sahara trip",
+    "lt_videos": "My travel videos",
+    "lt_guide": "Free Morocco packing list",
+    "lt_contact": "Work with me",
+    "blog_post_title": "3 days in the Sahara: my honest review",
+    "blog_post_text": "We slept two nights in the dunes and it was the best part of our trip. Here is the exact tour we booked.",
+    "blog_post_cta": "Book this trip on Travsus",
+    "tab_blog": "Blog"
   },
   "Forum": {
     "meta_title": "Travel Forum: Questions, Tips and Trip Reports",

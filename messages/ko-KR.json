@@ -2873,7 +2873,19 @@
     "ig_bio": "느린 여행, 사막의 밤, 숨은 리야드. 내가 좋아하는 투어 👇",
     "creator_title": "프로필 링크가 다음 여행 경비가 됩니다.",
     "creator_text": "인스타그램 프로필에 Travsus 링크를 넣으세요. 그 링크로 예약될 때마다 최대 15% 수수료를 받습니다.",
-    "creator_cta": "제휴 파트너 되기"
+    "creator_cta": "제휴 파트너 되기",
+    "tt_following": "팔로잉",
+    "tt_followers": "팔로워",
+    "tt_likes": "좋아요",
+    "tt_follow": "팔로우",
+    "lt_book": "내 사하라 여행 예약",
+    "lt_videos": "여행 영상",
+    "lt_guide": "모로코 짐 싸기 리스트",
+    "lt_contact": "협업 문의",
+    "blog_post_title": "사하라 3일: 솔직 후기",
+    "blog_post_text": "사구에서 보낸 이틀 밤이 여행의 하이라이트였어요. 우리가 예약한 투어는 바로 이거예요.",
+    "blog_post_cta": "Travsus에서 이 여행 예약",
+    "tab_blog": "블로그"
   },
   "Forum": {
     "meta_title": "여행 포럼: 질문, 팁, 여행 후기",

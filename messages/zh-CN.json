@@ -2748,7 +2748,19 @@
     "ig_bio": "慢旅行、沙漠之夜和隐秘的庭院旅馆。我最爱的行程 👇",
     "creator_title": "主页链接也能为你的下一次旅行买单。",
     "creator_text": "把你的 Travsus 链接放进 Instagram 简介。每一笔通过它完成的预订，都能为你带来最高 15% 的佣金。",
-    "creator_cta": "成为推广伙伴"
+    "creator_cta": "成为推广伙伴",
+    "tt_following": "关注",
+    "tt_followers": "粉丝",
+    "tt_likes": "获赞",
+    "tt_follow": "关注",
+    "lt_book": "预订我的撒哈拉之旅",
+    "lt_videos": "我的旅行视频",
+    "lt_guide": "摩洛哥行李清单",
+    "lt_contact": "商务合作",
+    "blog_post_title": "撒哈拉3天：真实体验",
+    "blog_post_text": "在沙丘里住了两晚，是整趟旅行最棒的部分。这就是我们预订的那条线路。",
+    "blog_post_cta": "在 Travsus 预订这趟旅行",
+    "tab_blog": "博客"
   },
   "Forum": {
     "meta_title": "旅行论坛：问答、攻略与游记",
