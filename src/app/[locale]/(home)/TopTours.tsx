@@ -1,4 +1,5 @@
-// TripAdvisor-style tour shelf: swipe on phones, a grid on larger screens.
+// TripAdvisor-style tour shelf: one row that scrolls sideways (4 cards in view
+// on large screens).
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { useTranslations } from 'next-intl'
@@ -26,9 +27,9 @@ export default function TopTours({ tours }: { tours: HomeTour[] }) {
 				</Link>
 			</div>
 
-			<ul className={`${styles.noScrollbar} ${styles.stagger} -mx-5 flex snap-x snap-mandatory scroll-px-5 gap-3 overflow-x-auto px-5 pb-2 sm:mx-0 sm:grid sm:px-0 sm:grid-cols-2 sm:gap-x-5 sm:gap-y-10 sm:overflow-visible lg:grid-cols-4`}>
+			<ul className={`${styles.noScrollbar} ${styles.stagger} -mx-5 flex snap-x snap-mandatory scroll-px-5 gap-3 overflow-x-auto px-5 pb-2 sm:mx-0 sm:scroll-px-0 sm:gap-5 sm:px-0`}>
 				{tours.map((tour) => (
-					<li key={tour.id} className="w-[58%] max-w-[240px] shrink-0 snap-start sm:w-auto sm:max-w-none">
+					<li key={tour.id} className="w-[58%] max-w-[240px] shrink-0 snap-start sm:w-[calc((100%-20px)/2)] sm:max-w-none lg:w-[calc((100%-60px)/4)]">
 						<TourCard tour={tour} />
 					</li>
 				))}
