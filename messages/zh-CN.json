@@ -2495,7 +2495,22 @@
     "recently_viewed": "最近浏览",
     "recently_viewed_sub": "您看过的行程，方便继续挑选",
     "recently_viewed_clear": "清除",
-    "where_to": "去哪儿？"
+    "where_to": "去哪儿？",
+    "hero_line_1": "在十亿颗星星下入眠。",
+    "hero_line_2": "在千年古城的麦地那里迷路。",
+    "hero_line_3": "看沙丘被夕阳染成金色。",
+    "hero_line_4": "和游牧家庭一起喝薄荷茶。",
+    "hero_line_5": "让大西洋的风帮你慢下来。",
+    "hero_line_6": "在阿特拉斯山的云端漫步。",
+    "hero_try": "试试“{place}”",
+    "quote_1": "旅行先让你无言以对，然后把你变成讲故事的人。",
+    "quote_2": "并非所有流浪者都迷失了方向。",
+    "quote_3": "世界是一本书，不旅行的人只读了其中一页。",
+    "quote_4": "千里之行，始于足下。",
+    "quote_by_1": "伊本·白图泰，生于丹吉尔",
+    "quote_by_2": "J.R.R. 托尔金",
+    "quote_by_3": "据传出自奥古斯丁",
+    "quote_by_4": "据传出自老子"
   },
   "Payment": {
     "preparing": "正在准备安全支付…",

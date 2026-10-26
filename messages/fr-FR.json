@@ -3633,7 +3633,22 @@
     "recently_viewed": "Vus récemment",
     "recently_viewed_sub": "Les circuits que vous avez consultés, pour reprendre où vous en étiez",
     "recently_viewed_clear": "Effacer",
-    "where_to": "Où allez-vous ?"
+    "where_to": "Où allez-vous ?",
+    "hero_line_1": "Dormez sous un milliard d’étoiles.",
+    "hero_line_2": "Perdez-vous dans une médina millénaire.",
+    "hero_line_3": "Regardez les dunes devenir dorées.",
+    "hero_line_4": "Partagez un thé à la menthe avec des nomades.",
+    "hero_line_5": "Laissez le vent de l’Atlantique vous apaiser.",
+    "hero_line_6": "Marchez au-dessus des nuages dans l’Atlas.",
+    "hero_try": "Essayez « {place} »",
+    "quote_1": "Le voyage vous laisse sans voix, puis fait de vous un conteur.",
+    "quote_2": "Tous ceux qui errent ne sont pas perdus.",
+    "quote_3": "Le monde est un livre, et ceux qui ne voyagent pas n’en lisent qu’une page.",
+    "quote_4": "Un voyage de mille lieues commence par un pas.",
+    "quote_by_1": "Ibn Battuta, né à Tanger",
+    "quote_by_2": "J.R.R. Tolkien",
+    "quote_by_3": "Attribué à saint Augustin",
+    "quote_by_4": "Attribué à Lao Tseu"
   },
   "Payment": {
     "preparing": "Préparation du paiement sécurisé…",

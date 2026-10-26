@@ -3556,7 +3556,22 @@
     "recently_viewed": "Vistos recientemente",
     "recently_viewed_sub": "Los tours que has consultado, para seguir donde lo dejaste",
     "recently_viewed_clear": "Borrar",
-    "where_to": "¿A dónde?"
+    "where_to": "¿A dónde?",
+    "hero_line_1": "Duerme bajo mil millones de estrellas.",
+    "hero_line_2": "Piérdete en una medina de 1.000 años.",
+    "hero_line_3": "Mira cómo las dunas se vuelven doradas.",
+    "hero_line_4": "Comparte un té a la menta con una familia nómada.",
+    "hero_line_5": "Deja que el viento del Atlántico te calme.",
+    "hero_line_6": "Camina sobre las nubes en el Atlas.",
+    "hero_try": "Prueba «{place}»",
+    "quote_1": "Viajar te deja sin palabras y luego te convierte en narrador.",
+    "quote_2": "No todos los que vagan están perdidos.",
+    "quote_3": "El mundo es un libro, y quienes no viajan solo leen una página.",
+    "quote_4": "Un viaje de mil millas comienza con un solo paso.",
+    "quote_by_1": "Ibn Battuta, nacido en Tánger",
+    "quote_by_2": "J.R.R. Tolkien",
+    "quote_by_3": "Atribuido a San Agustín",
+    "quote_by_4": "Atribuido a Lao Tse"
   },
   "Payment": {
     "preparing": "Preparando el pago seguro…",

@@ -3125,7 +3125,22 @@
     "recently_viewed": "Visti di recente",
     "recently_viewed_sub": "I tour che hai guardato, per riprendere da dove avevi lasciato",
     "recently_viewed_clear": "Cancella",
-    "where_to": "Dove vuoi andare?"
+    "where_to": "Dove vuoi andare?",
+    "hero_line_1": "Dormi sotto un miliardo di stelle.",
+    "hero_line_2": "Perditi in una medina di 1.000 anni.",
+    "hero_line_3": "Guarda le dune diventare d’oro.",
+    "hero_line_4": "Bevi un tè alla menta con una famiglia nomade.",
+    "hero_line_5": "Lascia che il vento dell’Atlantico ti rallenti.",
+    "hero_line_6": "Cammina sopra le nuvole sull’Atlante.",
+    "hero_try": "Prova “{place}”",
+    "quote_1": "Viaggiare ti lascia senza parole, poi ti trasforma in un narratore.",
+    "quote_2": "Non tutti quelli che vagano sono perduti.",
+    "quote_3": "Il mondo è un libro e chi non viaggia ne legge solo una pagina.",
+    "quote_4": "Un viaggio di mille miglia comincia con un solo passo.",
+    "quote_by_1": "Ibn Battuta, nato a Tangeri",
+    "quote_by_2": "J.R.R. Tolkien",
+    "quote_by_3": "Attribuita a sant’Agostino",
+    "quote_by_4": "Attribuita a Lao Tzu"
   },
   "Payment": {
     "preparing": "Preparazione del pagamento sicuro…",
