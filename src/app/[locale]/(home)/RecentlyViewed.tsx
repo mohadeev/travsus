@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import type { HomeTour } from '@/lib/homeData'
 import { RECENT_TOURS_EVENT, clearRecentTours, readRecentTours } from '@/lib/recentTours'
+import Shelf from './Shelf'
 import TourCard from './TourCard'
 import styles from './home.module.css'
 
@@ -46,13 +47,13 @@ export default function RecentlyViewed({ tours }: { tours: RecentCard[] }) {
 				</button>
 			</div>
 
-			<ul className={`${styles.noScrollbar} -mx-5 flex snap-x snap-mandatory scroll-px-5 gap-3 overflow-x-auto px-5 pb-2 sm:mx-0 sm:grid sm:px-0 sm:grid-cols-2 sm:gap-x-5 sm:gap-y-10 sm:overflow-visible lg:grid-cols-4`}>
+			<Shelf label={t('recently_viewed')} className={`${styles.noScrollbar} -mx-5 flex snap-x snap-mandatory scroll-px-5 gap-3 overflow-x-auto px-5 pb-2 sm:mx-0 sm:scroll-px-0 sm:gap-5 sm:px-0`}>
 				{recent.map((tour) => (
-					<li key={tour.id} className="w-[58%] max-w-[240px] shrink-0 snap-start sm:w-auto sm:max-w-none">
+					<li key={tour.id} className="w-[58%] max-w-[240px] shrink-0 snap-start sm:w-[calc((100%-20px)/2)] sm:max-w-none lg:w-[calc((100%-60px)/4)]">
 						<TourCard tour={tour as HomeTour} />
 					</li>
 				))}
-			</ul>
+			</Shelf>
 		</section>
 	)
 }

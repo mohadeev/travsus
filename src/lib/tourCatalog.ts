@@ -90,7 +90,7 @@ export const getReviewData = unstable_cache(
 	async (reviewSelect: string) => {
 		const [{ data: ratings }, { data: latest }] = await Promise.all([
 			db.from(T.reviews).select('tourId, rating'),
-			db.from(T.reviews).select(reviewSelect).gte('rating', 4).order('createdAt', { ascending: false }).limit(9),
+			db.from(T.reviews).select(reviewSelect).gte('rating', 4).order('createdAt', { ascending: false }).limit(20),
 		])
 		return { ratings: (ratings ?? []) as { tourId: string; rating: number }[], latest: (latest ?? []) as any[] }
 	},

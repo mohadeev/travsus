@@ -56,7 +56,7 @@ export default function HomePage({ tours, destinations, reviews, rating }: Props
 					{/* Tours this visitor opened (from their browser); hidden for new visitors */}
 					<RecentlyViewed tours={cards} />
 
-					<TopTours tours={tours.slice(0, 8)} />
+					<TopTours tours={tours.slice(0, 16)} />
 
 					<div className={styles.reveal}>
 						<BookNowBanner />
