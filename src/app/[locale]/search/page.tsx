@@ -8,6 +8,7 @@ import { getHomeData } from '@/lib/homeData'
 import { PRICE_STEPS, filtersHref, readFilters, searchTours, type SearchFilters } from '@/lib/searchTours'
 import { formatCurrency } from '@/utils/formatCurrency'
 import TourCard from '../(home)/TourCard'
+import TourRow from '../(home)/TourRow'
 
 // Results depend on the URL (?query=…&maxPrice=…), so the page is built per
 // request, never at build time for every language.
@@ -170,13 +171,23 @@ export default async function SearchPage({ params, searchParams }: PageProps) {
 				{/* Results */}
 				<section aria-live="polite">
 					{tours.length ? (
-						<ul className="grid grid-cols-2 gap-x-3 gap-y-6 sm:gap-x-5 sm:gap-y-10 xl:grid-cols-3">
-							{tours.map((tour) => (
-								<li key={tour.id}>
-									<TourCard tour={tour} />
-								</li>
-							))}
-						</ul>
+						<>
+							{/* Phones: one row per tour, photo on the left */}
+							<ul className="divide-y divide-neutral-200 sm:hidden dark:divide-neutral-800">
+								{tours.map((tour) => (
+									<li key={tour.id}>
+										<TourRow tour={tour} />
+									</li>
+								))}
+							</ul>
+							<ul className="hidden gap-x-5 gap-y-10 sm:grid sm:grid-cols-2 xl:grid-cols-3">
+								{tours.map((tour) => (
+									<li key={tour.id}>
+										<TourCard tour={tour} />
+									</li>
+								))}
+							</ul>
+						</>
 					) : (
 						<div className="flex flex-col items-center rounded-3xl border border-dashed border-neutral-300 px-6 py-16 text-center dark:border-neutral-700">
 							<SearchX className="h-10 w-10 text-neutral-400" strokeWidth={1.5} />
