@@ -3,7 +3,7 @@
 // creators put their Travsus link: an Instagram bio, a TikTok bio, a Linktree
 // page and a blog post. The screens change every few seconds (or with the
 // tabs below); a hand-drawn arrow follows the highlighted link, and a "new
-// booking, +€84" notification sits on the fade. The profile is "your" page
+// booking, +€150" notification sits on the fade. The profile is "your" page
 // (no real account); photos are the site's own.
 import Image from 'next/image'
 import { useCallback, useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react'
@@ -320,7 +320,7 @@ export default function CreatorPhone({ className = '' }: { className?: string })
 					</div>
 					<div className="mt-2 flex items-baseline justify-between border-t border-neutral-100 pt-2">
 						<span className="text-[10px] font-semibold uppercase tracking-wide text-neutral-500">{t('chip_commission')}</span>
-						<span className="text-lg font-black tracking-tight">+€84</span>
+						<span className="text-lg font-black tracking-tight">+€150</span>
 					</div>
 				</div>
 			</div>
