@@ -48,7 +48,7 @@ export default function RecentlyViewed({ tours }: { tours: RecentCard[] }) {
 
 			<ul className={`${styles.noScrollbar} -mx-5 flex snap-x snap-mandatory scroll-px-5 gap-3 overflow-x-auto px-5 pb-2 sm:mx-0 sm:grid sm:px-0 sm:grid-cols-2 sm:gap-x-5 sm:gap-y-10 sm:overflow-visible lg:grid-cols-4`}>
 				{recent.map((tour) => (
-					<li key={tour.id} className="w-[72%] max-w-[300px] shrink-0 snap-start sm:w-auto sm:max-w-none">
+					<li key={tour.id} className="w-[58%] max-w-[240px] shrink-0 snap-start sm:w-auto sm:max-w-none">
 						<TourCard tour={tour as HomeTour} />
 					</li>
 				))}

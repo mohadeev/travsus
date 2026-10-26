@@ -125,7 +125,7 @@ const TourDetail: FC<ListingExperiencesDetailPageProps> = ({ similar = [] }) => 
 						<section className="mt-24">
 							<span aria-hidden className="mb-3 block h-1 w-10 rounded-full bg-brand-500" />
 							<h2 className="mb-8 text-2xl font-bold tracking-tight sm:text-3xl">{t('Similar_Experiences')}</h2>
-							<ul className="grid gap-x-5 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+							<ul className="grid grid-cols-2 gap-x-3 gap-y-6 sm:gap-x-5 sm:gap-y-10 lg:grid-cols-4">
 								{similar.map((tour) => (
 									<li key={tour.id}>
 										<TourCard tour={tour} />

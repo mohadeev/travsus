@@ -170,7 +170,7 @@ export default async function SearchPage({ params, searchParams }: PageProps) {
 				{/* Results */}
 				<section aria-live="polite">
 					{tours.length ? (
-						<ul className="grid gap-x-5 gap-y-10 sm:grid-cols-2 xl:grid-cols-3">
+						<ul className="grid grid-cols-2 gap-x-3 gap-y-6 sm:gap-x-5 sm:gap-y-10 xl:grid-cols-3">
 							{tours.map((tour) => (
 								<li key={tour.id}>
 									<TourCard tour={tour} />

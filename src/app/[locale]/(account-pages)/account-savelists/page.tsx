@@ -39,7 +39,7 @@ export default async function SavedToursPage({ params }: { params: { locale: str
 					</Link>
 				</div>
 			) : (
-				<ul className="mt-10 grid gap-x-5 gap-y-10 sm:grid-cols-2 xl:grid-cols-3">
+				<ul className="mt-10 grid grid-cols-2 gap-x-3 gap-y-6 sm:gap-x-5 sm:gap-y-10 xl:grid-cols-3">
 					{saved.map((tour) => (
 						<li key={tour.id}>
 							<SavedItem id={tour.id} name={tour.name}>

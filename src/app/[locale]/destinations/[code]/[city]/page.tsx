@@ -198,7 +198,7 @@ export default async function CityPage({ params, searchParams }: Props) {
 				}
 			>
 				{tours.length ? (
-					<ul className="grid grid-cols-1 gap-x-5 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+					<ul className="grid grid-cols-2 gap-x-3 gap-y-6 sm:gap-x-5 sm:gap-y-10 lg:grid-cols-3">
 						{tours.slice(0, 6).map((tour) => (
 							<li key={tour.id}>
 								<TourCard tour={tour} />
