@@ -1,7 +1,9 @@
 'use client'
 // TripAdvisor-style hero with a daydream: a big emoji and a short travel line
 // change every few seconds, the search bar suggests the matching place, and a
-// travel quote fades in below. Without motion, the first line and quote stay.
+// travel quote fades in below. "Where to?" types itself out once in languages
+// from all over the world and ends in the visitor's own language. Without
+// motion, the first line and quote stay.
 import { useEffect, useState } from 'react'
 import { Search } from 'lucide-react'
 import { useLocale, useTranslations } from 'next-intl'
@@ -16,6 +18,12 @@ const LINES = [
 	['🌊', 'Essaouira'],
 	['🏔️', 'Atlas'],
 ] as const
+// "Where to?" around the world, Darija and Tamazight included
+const WHERE_TO = [
+	'¿A dónde?', 'Où aller ?', 'فين غادي؟', 'ⵎⴰⵏⵉ?', 'Wohin?', 'Dove?', 'إلى أين؟', 'Para onde?', 'Куда?', 'どこへ？',
+	'去哪儿？', '어디로?', 'Nereye?', 'कहाँ?', 'Wapi?', 'Πού;', 'לאן?', 'Ke mana?', 'Đi đâu?', 'ไปไหน?',
+	'Dokąd?', 'Waarheen?', 'Hvorhen?', 'Mihin?', 'Hová?', 'Saan?', 'Where to?',
+]
 const QUOTES = 4
 const EVERY = 3200 // ms per line; the quote changes every second line
 
@@ -24,6 +32,38 @@ export default function HomeHero() {
 	const tSeo = useTranslations('HomeSeo')
 	const locale = useLocale()
 	const [step, setStep] = useState(0)
+	const [typed, setTyped] = useState(t('where_to'))
+
+	// Typewriter, once: delete, type a language, hold, next one... and stop on the
+	// visitor's own language
+	useEffect(() => {
+		if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+		const own = t('where_to')
+		const words = [own, ...WHERE_TO.filter((w) => w !== own), own]
+		// Split by visible letters, so Hindi, Thai or Tifinagh never show half a letter
+		const letters = (w: string) =>
+			typeof Intl.Segmenter === 'function' ? Array.from(new Intl.Segmenter().segment(w), (x) => x.segment) : Array.from(w)
+		let word = 0
+		let shown = letters(words[0]).length
+		let deleting = false
+		let timer: ReturnType<typeof setTimeout>
+		const tick = () => {
+			const chars = letters(words[word])
+			if (!deleting && shown < chars.length) shown++
+			else if (!deleting) deleting = true
+			else if (shown > 0) shown--
+			else {
+				deleting = false
+				word++
+			}
+			setTyped(letters(words[word]).slice(0, shown).join(''))
+			const done = !deleting && shown === letters(words[word]).length
+			if (done && word === words.length - 1) return
+			timer = setTimeout(tick, done ? 700 : deleting ? 30 : 60)
+		}
+		timer = setTimeout(tick, 1600)
+		return () => clearTimeout(timer)
+	}, [t])
 
 	useEffect(() => {
 		if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
@@ -40,7 +80,13 @@ export default function HomeHero() {
 			{/* The page's main heading says what we offer (for search engines and screen readers) */}
 			<h1 className="sr-only">{tSeo('h1')}</h1>
 
-			<p className="text-sm font-semibold uppercase tracking-[0.2em] text-neutral-500">{t('where_to')}</p>
+			<p className="flex h-6 items-center justify-center text-sm font-semibold uppercase tracking-[0.2em] text-neutral-500 sm:text-base">
+				<span className="sr-only">{t('where_to')}</span>
+				<span aria-hidden dir="auto">
+					{typed}
+				</span>
+				<span aria-hidden className={`${styles.caret} ml-1 inline-block h-[1.1em] w-[2px] bg-neutral-950 dark:bg-white`} />
+			</p>
 
 			{/* The daydream: same height for every line, so nothing below jumps */}
 			<div aria-hidden className="mt-4 flex min-h-[150px] flex-col items-center justify-center sm:min-h-[190px]">

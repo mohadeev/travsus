@@ -73,6 +73,14 @@
 	to { opacity: 1; }
 }
 
+/* Blinking typewriter caret */
+.caret {
+	animation: caret 1s steps(1) infinite;
+}
+@keyframes caret {
+	50% { opacity: 0; }
+}
+
 /* Promise icons bob gently */
 .bob {
 	animation: bob 3.2s ease-in-out infinite;
@@ -107,6 +115,7 @@ li:nth-child(3) > .bob { animation-delay: 0.8s; }
 	.lineIn,
 	.emoji,
 	.quoteIn,
+	.caret,
 	.bob,
 	.float {
 		animation: none;
