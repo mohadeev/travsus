@@ -2876,7 +2876,17 @@
     "chip_booking_trip": "サハラ3日間ツアー・たった今",
     "chip_commission": "あなたの報酬",
     "form_social_hint": "コンテンツを発信している場所を教えてください：Instagram、YouTubeチャンネル、TikTok、ブログなど何でも構いません。記入がない場合、お申し込みはお断りします。",
-    "form_social_missing": "Instagram、YouTube、TikTok、またはウェブサイトを入力してください。記入がないお申し込みはお断りしています。"
+    "form_social_missing": "Instagram、YouTube、TikTok、またはウェブサイトを入力してください。記入がないお申し込みはお断りしています。",
+    "ig_posts": "投稿",
+    "ig_followers": "フォロワー",
+    "ig_following": "フォロー中",
+    "ig_follow": "フォロー",
+    "ig_message": "メッセージ",
+    "ig_name": "あなたの旅アカウント",
+    "ig_bio": "のんびり旅、砂漠の夜、隠れ家リヤド。お気に入りのツアーはこちら 👇",
+    "creator_title": "プロフィールのリンクが次の旅の資金に。",
+    "creator_text": "InstagramのプロフィールにTravsusのリンクを載せましょう。そこからの予約ごとに最大15%のコミッションが入ります。",
+    "creator_cta": "アフィリエイトに参加"
   },
   "Forum": {
     "meta_title": "旅行フォーラム：質問・ヒント・旅行記",

@@ -2863,7 +2863,17 @@
     "chip_booking_trip": "사하라 3일 투어 · 방금",
     "chip_commission": "나의 수수료",
     "form_social_hint": "콘텐츠를 공유하는 곳을 알려주세요: Instagram, YouTube 채널, TikTok, 블로그 등 무엇이든 좋습니다. 입력하지 않으면 신청이 거절됩니다.",
-    "form_social_missing": "Instagram, YouTube, TikTok 또는 웹사이트를 입력해 주세요. 입력하지 않은 신청은 거절됩니다."
+    "form_social_missing": "Instagram, YouTube, TikTok 또는 웹사이트를 입력해 주세요. 입력하지 않은 신청은 거절됩니다.",
+    "ig_posts": "게시물",
+    "ig_followers": "팔로워",
+    "ig_following": "팔로잉",
+    "ig_follow": "팔로우",
+    "ig_message": "메시지",
+    "ig_name": "나의 여행 계정",
+    "ig_bio": "느린 여행, 사막의 밤, 숨은 리야드. 내가 좋아하는 투어 👇",
+    "creator_title": "프로필 링크가 다음 여행 경비가 됩니다.",
+    "creator_text": "인스타그램 프로필에 Travsus 링크를 넣으세요. 그 링크로 예약될 때마다 최대 15% 수수료를 받습니다.",
+    "creator_cta": "제휴 파트너 되기"
   },
   "Forum": {
     "meta_title": "여행 포럼: 질문, 팁, 여행 후기",

@@ -3368,7 +3368,17 @@
     "chip_booking_trip": "Tour di 3 giorni nel Sahara · proprio ora",
     "chip_commission": "La tua commissione",
     "form_social_hint": "Indicaci dove condividi contenuti: Instagram, canale YouTube, TikTok, un blog, qualsiasi cosa. Le richieste senza saranno rifiutate.",
-    "form_social_missing": "Aggiungi il tuo Instagram, YouTube, TikTok o sito. Le richieste senza vengono rifiutate."
+    "form_social_missing": "Aggiungi il tuo Instagram, YouTube, TikTok o sito. Le richieste senza vengono rifiutate.",
+    "ig_posts": "post",
+    "ig_followers": "follower",
+    "ig_following": "seguiti",
+    "ig_follow": "Segui",
+    "ig_message": "Messaggio",
+    "ig_name": "La tua pagina di viaggi",
+    "ig_bio": "Viaggi lenti, notti nel deserto e riad nascosti. I miei tour preferiti 👇",
+    "creator_title": "Il link nella tua bio può pagarti il prossimo viaggio.",
+    "creator_text": "Metti il tuo link Travsus nella bio di Instagram. Ogni prenotazione fatta da lì ti fa guadagnare fino al 15% di commissione.",
+    "creator_cta": "Diventa affiliato"
   },
   "Forum": {
     "meta_title": "Forum di viaggio: domande, consigli e racconti di viaggio",

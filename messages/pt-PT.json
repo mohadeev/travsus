@@ -3310,7 +3310,17 @@
     "chip_booking_trip": "Viagem de 3 dias ao Sara · agora mesmo",
     "chip_commission": "A sua comissão",
     "form_social_hint": "Indique onde partilha conteúdo: Instagram, canal de YouTube, TikTok, um blog, o que for. Pedidos sem esta informação serão recusados.",
-    "form_social_missing": "Adicione o seu Instagram, YouTube, TikTok ou site. Pedidos sem esta informação são recusados."
+    "form_social_missing": "Adicione o seu Instagram, YouTube, TikTok ou site. Pedidos sem esta informação são recusados.",
+    "ig_posts": "publicações",
+    "ig_followers": "seguidores",
+    "ig_following": "a seguir",
+    "ig_follow": "Seguir",
+    "ig_message": "Mensagem",
+    "ig_name": "A tua página de viagens",
+    "ig_bio": "Viagens sem pressa, noites no deserto e riads escondidos. Os meus tours favoritos 👇",
+    "creator_title": "O link da tua bio pode pagar a tua próxima viagem.",
+    "creator_text": "Põe o teu link Travsus na bio do Instagram. Cada reserva feita através dele dá-te até 15% de comissão.",
+    "creator_cta": "Torna-te afiliado"
   },
   "Forum": {
     "meta_title": "Fórum de viagens: perguntas, dicas e relatos de viagem",

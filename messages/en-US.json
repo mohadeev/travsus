@@ -2576,7 +2576,17 @@
     "chip_booking_trip": "3-day Sahara trip · just now",
     "chip_commission": "Your commission",
     "form_social_hint": "Please tell us where you share content: Instagram, YouTube channel, TikTok, a blog, anything. Requests without one will be declined.",
-    "form_social_missing": "Add your Instagram, YouTube, TikTok or website. Requests without one are declined."
+    "form_social_missing": "Add your Instagram, YouTube, TikTok or website. Requests without one are declined.",
+    "ig_posts": "posts",
+    "ig_followers": "followers",
+    "ig_following": "following",
+    "ig_follow": "Follow",
+    "ig_message": "Message",
+    "ig_name": "Your travel page",
+    "ig_bio": "Slow trips, desert nights and hidden riads. My favourite tours 👇",
+    "creator_title": "Your bio link can pay for your next trip.",
+    "creator_text": "Put your Travsus link in your Instagram bio. Every booking made through it earns you up to 15% commission.",
+    "creator_cta": "Become an affiliate"
   },
   "Forum": {
     "meta_title": "Travel Forum: Questions, Tips and Trip Reports",

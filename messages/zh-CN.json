@@ -2738,7 +2738,17 @@
     "chip_booking_trip": "撒哈拉 3 日游 · 刚刚",
     "chip_commission": "您的佣金",
     "form_social_hint": "请告诉我们您在哪里分享内容：Instagram、YouTube 频道、TikTok、博客等均可。未填写的申请将被拒绝。",
-    "form_social_missing": "请填写您的 Instagram、YouTube、TikTok 或网站。未填写的申请将被拒绝。"
+    "form_social_missing": "请填写您的 Instagram、YouTube、TikTok 或网站。未填写的申请将被拒绝。",
+    "ig_posts": "帖子",
+    "ig_followers": "粉丝",
+    "ig_following": "关注",
+    "ig_follow": "关注",
+    "ig_message": "发消息",
+    "ig_name": "你的旅行主页",
+    "ig_bio": "慢旅行、沙漠之夜和隐秘的庭院旅馆。我最爱的行程 👇",
+    "creator_title": "主页链接也能为你的下一次旅行买单。",
+    "creator_text": "把你的 Travsus 链接放进 Instagram 简介。每一笔通过它完成的预订，都能为你带来最高 15% 的佣金。",
+    "creator_cta": "成为推广伙伴"
   },
   "Forum": {
     "meta_title": "旅行论坛：问答、攻略与游记",

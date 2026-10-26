@@ -1,0 +1,61 @@
+/* The phone floats gently; the booking notification drops in and repeats */
+.float {
+	animation: float 6s ease-in-out infinite;
+}
+
+.notify {
+	animation: notify 5s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+}
+
+/* The bio link glows once in a while */
+.link {
+	animation: glow 5s ease-in-out infinite;
+}
+
+@keyframes float {
+	0%,
+	100% {
+		transform: translateY(0) rotate(-2deg);
+	}
+	50% {
+		transform: translateY(-10px) rotate(-2deg);
+	}
+}
+
+@keyframes notify {
+	0%,
+	8% {
+		opacity: 0;
+		transform: translateY(-14px) scale(0.96);
+	}
+	16%,
+	80% {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+	92%,
+	100% {
+		opacity: 0;
+		transform: translateY(-8px) scale(0.98);
+	}
+}
+
+@keyframes glow {
+	0%,
+	55%,
+	100% {
+		background-color: transparent;
+	}
+	65%,
+	85% {
+		background-color: rgba(0, 149, 246, 0.12);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.float,
+	.notify,
+	.link {
+		animation: none;
+	}
+}

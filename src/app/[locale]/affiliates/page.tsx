@@ -6,6 +6,7 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import {
+	ArrowRight,
 	BarChart3,
 	Check,
 	Clock3,
@@ -25,6 +26,7 @@ import { PHOTOS } from '@/lib/photos'
 import HomeMotion from '../(home)/HomeMotion'
 import motion from '../(home)/home.module.css'
 import AffiliateRequestForm from './AffiliateRequestForm'
+import CreatorPhone from './CreatorPhone'
 import EarningsCalculator from './EarningsCalculator'
 import s from './affiliates.module.css'
 
@@ -191,6 +193,32 @@ export default async function AffiliatesPage({ params }: PageProps) {
 							</li>
 						))}
 					</ol>
+				</div>
+			</section>
+
+			{/* Your link in your Instagram bio: the phone */}
+			<section className={`mx-auto mt-24 max-w-7xl px-5 sm:mt-36 ${motion.reveal}`}>
+				<div className="relative isolate grid items-center gap-12 overflow-hidden rounded-[32px] bg-neutral-100 px-6 py-14 sm:rounded-[40px] sm:px-14 sm:py-20 lg:grid-cols-2 dark:bg-neutral-900">
+					{/* Dot grid */}
+					<div
+						aria-hidden
+						className="absolute inset-0 -z-10 opacity-50 dark:opacity-20"
+						style={{ backgroundImage: 'radial-gradient(rgba(0,0,0,0.18) 1px, transparent 1px)', backgroundSize: '22px 22px' }}
+					/>
+					<div className="text-center lg:text-left">
+						<h2 className="text-4xl font-bold tracking-tight sm:text-6xl">{t('creator_title')}</h2>
+						<p className="mx-auto mt-5 max-w-lg text-lg text-neutral-600 sm:text-xl lg:mx-0 dark:text-neutral-400">{t('creator_text')}</p>
+						<a
+							href="#request"
+							className="group mt-8 inline-flex h-14 items-center gap-6 rounded-full bg-neutral-950 pl-7 pr-2 text-base font-semibold text-white transition hover:bg-neutral-800 active:scale-[0.98] dark:bg-white dark:text-neutral-950"
+						>
+							{t('creator_cta')}
+							<span className="grid h-10 w-10 place-items-center rounded-full bg-white text-neutral-950 transition-transform group-hover:translate-x-0.5 dark:bg-neutral-950 dark:text-white">
+								<ArrowRight className="h-5 w-5" />
+							</span>
+						</a>
+					</div>
+					<CreatorPhone />
 				</div>
 			</section>
 

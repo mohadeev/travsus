@@ -3799,7 +3799,17 @@
     "chip_booking_trip": "Viaje de 3 días al Sáhara · ahora mismo",
     "chip_commission": "Tu comisión",
     "form_social_hint": "Indícanos dónde compartes contenido: Instagram, canal de YouTube, TikTok, un blog, lo que sea. Las solicitudes sin ninguno serán rechazadas.",
-    "form_social_missing": "Añade tu Instagram, YouTube, TikTok o web. Las solicitudes sin ninguno se rechazan."
+    "form_social_missing": "Añade tu Instagram, YouTube, TikTok o web. Las solicitudes sin ninguno se rechazan.",
+    "ig_posts": "publicaciones",
+    "ig_followers": "seguidores",
+    "ig_following": "seguidos",
+    "ig_follow": "Seguir",
+    "ig_message": "Mensaje",
+    "ig_name": "Tu página de viajes",
+    "ig_bio": "Viajes sin prisa, noches en el desierto y riads escondidos. Mis tours favoritos 👇",
+    "creator_title": "El enlace de tu bio puede pagar tu próximo viaje.",
+    "creator_text": "Pon tu enlace de Travsus en tu bio de Instagram. Cada reserva hecha con él te da hasta un 15 % de comisión.",
+    "creator_cta": "Hazte afiliado"
   },
   "Forum": {
     "meta_title": "Foro de viajes: preguntas, consejos y relatos de viaje",

@@ -3876,7 +3876,17 @@
     "chip_booking_trip": "Circuit de 3 jours au Sahara · à l’instant",
     "chip_commission": "Votre commission",
     "form_social_hint": "Indiquez où vous partagez du contenu : Instagram, chaîne YouTube, TikTok, un blog, peu importe. Les demandes sans cette information seront refusées.",
-    "form_social_missing": "Ajoutez votre Instagram, YouTube, TikTok ou site. Les demandes sans cette information sont refusées."
+    "form_social_missing": "Ajoutez votre Instagram, YouTube, TikTok ou site. Les demandes sans cette information sont refusées.",
+    "ig_posts": "publications",
+    "ig_followers": "abonnés",
+    "ig_following": "abonnements",
+    "ig_follow": "Suivre",
+    "ig_message": "Message",
+    "ig_name": "Ta page voyage",
+    "ig_bio": "Voyages lents, nuits dans le désert et riads cachés. Mes circuits préférés 👇",
+    "creator_title": "Le lien de ta bio peut payer ton prochain voyage.",
+    "creator_text": "Mets ton lien Travsus dans ta bio Instagram. Chaque réservation faite avec te rapporte jusqu’à 15 % de commission.",
+    "creator_cta": "Devenir affilié"
   },
   "Forum": {
     "meta_title": "Forum voyage : questions, conseils et récits de voyage",
