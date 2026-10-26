@@ -40,7 +40,7 @@ export default function HomePage({ tours, destinations, reviews, rating }: Props
 		<>
 			<HomeMotion />
 			<main className="pb-12 text-neutral-950 sm:pb-24 dark:text-white">
-				<HomeHero destinations={destinations} />
+				<HomeHero />
 
 				{/* Phones: three small columns, icon above text. Larger screens: one row. */}
 				<ul className={`${styles.stagger} mx-auto grid max-w-7xl grid-cols-3 gap-2 px-5 py-6 text-center text-xs font-medium leading-snug text-neutral-600 sm:flex sm:flex-wrap sm:justify-center sm:gap-x-10 sm:gap-y-3 sm:py-8 sm:text-sm dark:text-neutral-400`}>
