@@ -6,7 +6,6 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import {
-	ArrowRight,
 	BarChart3,
 	Check,
 	Clock3,
@@ -90,7 +89,7 @@ export default async function AffiliatesPage({ params }: PageProps) {
 			<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 			<HomeMotion />
 
-			{/* Hero: black, the form, and the photo collage */}
+			{/* Hero: black, the form, and the Instagram phone */}
 			<section className="relative isolate overflow-hidden bg-black text-white">
 				{/* Dot grid */}
 				<svg aria-hidden className="absolute inset-0 -z-10 h-full w-full opacity-[0.18] [mask-image:radial-gradient(ellipse_at_top_left,black,transparent_70%)]">
@@ -126,47 +125,8 @@ export default async function AffiliatesPage({ params }: PageProps) {
 						</ul>
 					</div>
 
-					{/* Photo collage */}
-					<div className="relative mx-auto w-full max-w-md lg:max-w-none">
-						<Sparkle className="absolute -left-2 top-6 z-20 h-6 w-6 text-white sm:-left-6" />
-						<Sparkle className="absolute -right-1 top-1/2 z-20 h-4 w-4 text-white/80" />
-						<Sparkle className="absolute bottom-10 left-1/3 z-20 h-5 w-5 text-white/70" />
-
-						<div className="relative aspect-[4/5] overflow-hidden rounded-[36px] ring-1 ring-white/10 sm:rounded-[44px]">
-							<Image src={PHOTOS.referral} alt="" fill priority sizes="(max-width: 1024px) 90vw, 600px" className={`object-cover saturate-[1.15] ${s.photo}`} />
-							<div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/0 to-transparent" />
-						</div>
-
-						{/* Dotted travel route between the two cards */}
-						<svg aria-hidden viewBox="0 0 300 300" className="pointer-events-none absolute inset-0 z-10 h-full w-full">
-							<path className={s.route} d="M60 70 C 160 40, 250 120, 210 190 S 120 270, 240 255" fill="none" stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" />
-							<circle cx="240" cy="255" r="5" fill="#ffffff" />
-						</svg>
-
-						<div className={`absolute -left-3 top-10 z-20 flex items-center gap-3 rounded-2xl bg-white/90 p-3 pr-4 text-neutral-950 shadow-2xl ring-1 ring-black/5 backdrop-blur-xl sm:-left-10 ${s.float}`}>
-							<span className="grid h-10 w-10 place-items-center rounded-xl bg-neutral-950 text-white">
-								<Check className="h-5 w-5" strokeWidth={3} />
-							</span>
-							<div>
-								<p className="text-[13px] font-semibold leading-tight">{t('chip_booking')}</p>
-								<p className="text-xs text-neutral-500">{t('chip_booking_trip')}</p>
-							</div>
-						</div>
-
-						<div className={`absolute -right-3 bottom-16 z-20 rounded-2xl bg-neutral-950/85 p-4 text-white shadow-2xl ring-1 ring-white/15 backdrop-blur-xl sm:-right-4 lg:right-5 ${s.floatSlow}`}>
-							<p className="text-[11px] font-medium uppercase tracking-[0.14em] text-white/55">{t('chip_commission')}</p>
-							<p className={`mt-1 text-3xl font-bold tracking-tight`}>+{money(84)}</p>
-							<div className="mt-2 flex h-6 items-end gap-1">
-								{[40, 65, 50, 80, 60, 95, 75].map((h, i) => (
-									<span key={i} className="w-2 rounded-sm bg-white/80" style={{ height: `${h}%` }} />
-								))}
-							</div>
-						</div>
-
-						<div className="absolute -bottom-6 left-6 z-20 h-20 w-20 overflow-hidden rounded-full ring-4 ring-black sm:h-24 sm:w-24">
-							<Image src={PHOTOS.sunsetHug} alt="" fill sizes="96px" className="object-cover" />
-						</div>
-					</div>
+					{/* Instagram phone: the Travsus link in the bio */}
+					<CreatorPhone className="lg:mr-24" />
 				</div>
 			</section>
 
@@ -193,32 +153,6 @@ export default async function AffiliatesPage({ params }: PageProps) {
 							</li>
 						))}
 					</ol>
-				</div>
-			</section>
-
-			{/* Your link in your Instagram bio: the phone */}
-			<section className={`mx-auto mt-24 max-w-7xl px-5 sm:mt-36 ${motion.reveal}`}>
-				<div className="relative isolate grid items-center gap-12 overflow-hidden rounded-[32px] bg-neutral-100 px-6 py-14 sm:rounded-[40px] sm:px-14 sm:py-20 lg:grid-cols-2 dark:bg-neutral-900">
-					{/* Dot grid */}
-					<div
-						aria-hidden
-						className="absolute inset-0 -z-10 opacity-50 dark:opacity-20"
-						style={{ backgroundImage: 'radial-gradient(rgba(0,0,0,0.18) 1px, transparent 1px)', backgroundSize: '22px 22px' }}
-					/>
-					<div className="text-center lg:text-left">
-						<h2 className="text-4xl font-bold tracking-tight sm:text-6xl">{t('creator_title')}</h2>
-						<p className="mx-auto mt-5 max-w-lg text-lg text-neutral-600 sm:text-xl lg:mx-0 dark:text-neutral-400">{t('creator_text')}</p>
-						<a
-							href="#request"
-							className="group mt-8 inline-flex h-14 items-center gap-6 rounded-full bg-neutral-950 pl-7 pr-2 text-base font-semibold text-white transition hover:bg-neutral-800 active:scale-[0.98] dark:bg-white dark:text-neutral-950"
-						>
-							{t('creator_cta')}
-							<span className="grid h-10 w-10 place-items-center rounded-full bg-white text-neutral-950 transition-transform group-hover:translate-x-0.5 dark:bg-neutral-950 dark:text-white">
-								<ArrowRight className="h-5 w-5" />
-							</span>
-						</a>
-					</div>
-					<CreatorPhone />
 				</div>
 			</section>
 
@@ -305,15 +239,59 @@ export default async function AffiliatesPage({ params }: PageProps) {
 
 			{/* Final call to action */}
 			<section className={`mx-auto mt-24 max-w-7xl px-5 sm:mt-36 ${motion.reveal}`}>
-				<div className="relative isolate overflow-hidden rounded-[36px] bg-black px-6 py-16 text-center text-white sm:rounded-[48px] sm:px-10 sm:py-28">
-					<Image src={PHOTOS.hiking} alt="" fill sizes="100vw" className="-z-20 object-cover opacity-40 saturate-[1.1]" />
-					<div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-t from-black via-black/70 to-black/30" />
-					<Sparkle className="absolute left-[12%] top-[18%] h-5 w-5 text-white" />
-					<Sparkle className="absolute right-[14%] top-[30%] h-4 w-4 text-white/70" />
-					<h2 className="mx-auto max-w-3xl text-4xl font-bold tracking-tight sm:text-6xl">{t('cta_title')}</h2>
-					<p className="mx-auto mt-4 max-w-xl text-lg text-white/70 sm:text-xl">{t('cta_text')}</p>
-					<div className="mx-auto mt-10 max-w-xl rounded-[28px] bg-white/[0.05] p-3 text-left ring-1 ring-white/10 backdrop-blur-md sm:p-4">
-						<AffiliateRequestForm dark />
+				{/* Title and form, with the photo collage */}
+				<div className="relative isolate grid items-center gap-14 overflow-hidden rounded-[36px] bg-black px-6 py-16 text-white sm:rounded-[48px] sm:px-12 sm:py-24 lg:grid-cols-2 lg:gap-16 lg:px-16">
+					<Image src={PHOTOS.hiking} alt="" fill sizes="100vw" className="-z-20 object-cover opacity-30 saturate-[1.1]" />
+					<div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-t from-black via-black/75 to-black/40" />
+					<Sparkle className="absolute left-[8%] top-[10%] h-5 w-5 text-white" />
+					<Sparkle className="absolute right-[6%] top-[12%] h-4 w-4 text-white/70" />
+					<div className="text-center lg:text-left">
+						<h2 className="mx-auto max-w-2xl text-4xl font-bold tracking-tight sm:text-6xl lg:mx-0">{t('cta_title')}</h2>
+						<p className="mx-auto mt-4 max-w-xl text-lg text-white/70 sm:text-xl lg:mx-0">{t('creator_text')}</p>
+						<div className="mx-auto mt-10 max-w-xl rounded-[28px] bg-white/[0.05] p-3 text-left ring-1 ring-white/10 backdrop-blur-md sm:p-4 lg:mx-0">
+							<AffiliateRequestForm dark />
+						</div>
+					</div>
+					{/* Photo collage */}
+					<div className="relative mx-auto w-full max-w-md lg:max-w-none">
+						<Sparkle className="absolute -left-2 top-6 z-20 h-6 w-6 text-white sm:-left-6" />
+						<Sparkle className="absolute -right-1 top-1/2 z-20 h-4 w-4 text-white/80" />
+						<Sparkle className="absolute bottom-10 left-1/3 z-20 h-5 w-5 text-white/70" />
+
+						<div className="relative aspect-[4/5] overflow-hidden rounded-[36px] ring-1 ring-white/10 sm:rounded-[44px]">
+							<Image src={PHOTOS.referral} alt="" fill sizes="(max-width: 1024px) 90vw, 600px" className={`object-cover saturate-[1.15] ${s.photo}`} />
+							<div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/0 to-transparent" />
+						</div>
+
+						{/* Dotted travel route between the two cards */}
+						<svg aria-hidden viewBox="0 0 300 300" className="pointer-events-none absolute inset-0 z-10 h-full w-full">
+							<path className={s.route} d="M60 70 C 160 40, 250 120, 210 190 S 120 270, 240 255" fill="none" stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" />
+							<circle cx="240" cy="255" r="5" fill="#ffffff" />
+						</svg>
+
+						<div className={`absolute -left-3 top-10 z-20 flex items-center gap-3 rounded-2xl bg-white/90 p-3 pr-4 text-neutral-950 shadow-2xl ring-1 ring-black/5 backdrop-blur-xl sm:-left-10 ${s.float}`}>
+							<span className="grid h-10 w-10 place-items-center rounded-xl bg-neutral-950 text-white">
+								<Check className="h-5 w-5" strokeWidth={3} />
+							</span>
+							<div>
+								<p className="text-[13px] font-semibold leading-tight">{t('chip_booking')}</p>
+								<p className="text-xs text-neutral-500">{t('chip_booking_trip')}</p>
+							</div>
+						</div>
+
+						<div className={`absolute -right-3 bottom-16 z-20 rounded-2xl bg-neutral-950/85 p-4 text-white shadow-2xl ring-1 ring-white/15 backdrop-blur-xl sm:-right-4 lg:right-5 ${s.floatSlow}`}>
+							<p className="text-[11px] font-medium uppercase tracking-[0.14em] text-white/55">{t('chip_commission')}</p>
+							<p className={`mt-1 text-3xl font-bold tracking-tight`}>+{money(84)}</p>
+							<div className="mt-2 flex h-6 items-end gap-1">
+								{[40, 65, 50, 80, 60, 95, 75].map((h, i) => (
+									<span key={i} className="w-2 rounded-sm bg-white/80" style={{ height: `${h}%` }} />
+								))}
+							</div>
+						</div>
+
+						<div className="absolute -bottom-6 left-6 z-20 h-20 w-20 overflow-hidden rounded-full ring-4 ring-black sm:h-24 sm:w-24">
+							<Image src={PHOTOS.sunsetHug} alt="" fill sizes="96px" className="object-cover" />
+						</div>
 					</div>
 				</div>
 			</section>
