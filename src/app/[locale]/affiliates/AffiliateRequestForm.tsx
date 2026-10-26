@@ -1,10 +1,11 @@
 'use client'
-// "Request access" form: email (+ optional website), sent to /api/affiliates/request.
+// "Request access" form: email and social channel or website (required:
+// requests without one are declined), sent to /api/affiliates/request.
 import { useState, type FormEvent } from 'react'
 import { ArrowRight, CheckCircle2, Loader2 } from 'lucide-react'
 import { useLocale, useTranslations } from 'next-intl'
 
-type Status = 'idle' | 'sending' | 'done' | 'already' | 'invalid' | 'error'
+type Status = 'idle' | 'sending' | 'done' | 'already' | 'invalid' | 'social' | 'error'
 
 export default function AffiliateRequestForm({ dark = false, id }: { dark?: boolean; id?: string }) {
 	const t = useTranslations('Affiliates')
@@ -22,7 +23,7 @@ export default function AffiliateRequestForm({ dark = false, id }: { dark?: bool
 				body: JSON.stringify({ email: form.get('email'), website: form.get('website'), locale }),
 			})
 			const { code } = await res.json().catch(() => ({}))
-			setStatus(code === 'REQUESTED' ? 'done' : code === 'ALREADY_REQUESTED' ? 'already' : code === 'INVALID_EMAIL' ? 'invalid' : 'error')
+			setStatus(code === 'REQUESTED' ? 'done' : code === 'ALREADY_REQUESTED' ? 'already' : code === 'INVALID_EMAIL' ? 'invalid' : code === 'NO_SOCIAL' ? 'social' : 'error')
 		} catch {
 			setStatus('error')
 		}
@@ -69,12 +70,19 @@ export default function AffiliateRequestForm({ dark = false, id }: { dark?: bool
 					<input
 						type="text"
 						name="website"
+						required
+						minLength={3}
 						maxLength={200}
+						aria-describedby="affiliate-social-hint"
+						onChange={() => status !== 'idle' && setStatus('idle')}
 						autoComplete="url"
 						placeholder={t('form_website')}
 						className={`h-14 w-full rounded-2xl border-0 px-4 text-base ring-1 placeholder:text-[14px] sm:px-5 sm:placeholder:text-base transition focus:outline-none focus:ring-2 ${field}`}
 					/>
 				</label>
+				<p id="affiliate-social-hint" className={`px-1 text-xs leading-relaxed ${dark ? 'text-white/70' : 'text-neutral-600 dark:text-neutral-400'}`}>
+					{t('form_social_hint')}
+				</p>
 			</div>
 			<button
 				type="submit"
@@ -91,12 +99,12 @@ export default function AffiliateRequestForm({ dark = false, id }: { dark?: bool
 				</span>
 			</button>
 			<p
-				role={status === 'invalid' || status === 'error' ? 'alert' : undefined}
+				role={status === 'invalid' || status === 'social' || status === 'error' ? 'alert' : undefined}
 				className={`mt-3 px-1 text-center text-xs sm:text-left ${
-					status === 'invalid' || status === 'error' ? 'text-red-500' : dark ? 'text-white/55' : 'text-neutral-500'
+					status === 'invalid' || status === 'social' || status === 'error' ? 'text-red-500' : dark ? 'text-white/55' : 'text-neutral-500'
 				}`}
 			>
-				{status === 'invalid' ? t('form_invalid') : status === 'error' ? t('form_error') : t('form_note')}
+				{status === 'invalid' ? t('form_invalid') : status === 'social' ? t('form_social_missing') : status === 'error' ? t('form_error') : t('form_note')}
 			</p>
 		</form>
 	)

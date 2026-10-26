@@ -3807,7 +3807,7 @@
     "hero_title": "Partagez les voyages. Gagnez sur chaque réservation.",
     "hero_text": "Recommandez des circuits que votre audience va adorer et gagnez jusqu'à 15 % de commission sur chaque réservation faite via votre lien.",
     "form_email": "Votre adresse e-mail",
-    "form_website": "Votre site ou réseau social (facultatif)",
+    "form_website": "Votre Instagram, YouTube, TikTok ou site",
     "form_submit": "Demander l'accès",
     "form_note": "Inscription gratuite. Nous étudions chaque demande personnellement et répondons par e-mail.",
     "form_invalid": "Veuillez saisir une adresse e-mail valide.",
@@ -3874,7 +3874,9 @@
     "cta_text": "Demandez l'accès en quelques secondes. L'inscription est gratuite.",
     "chip_booking": "Nouvelle réservation",
     "chip_booking_trip": "Circuit de 3 jours au Sahara · à l’instant",
-    "chip_commission": "Votre commission"
+    "chip_commission": "Votre commission",
+    "form_social_hint": "Indiquez où vous partagez du contenu : Instagram, chaîne YouTube, TikTok, un blog, peu importe. Les demandes sans cette information seront refusées.",
+    "form_social_missing": "Ajoutez votre Instagram, YouTube, TikTok ou site. Les demandes sans cette information sont refusées."
   },
   "Forum": {
     "meta_title": "Forum voyage : questions, conseils et récits de voyage",

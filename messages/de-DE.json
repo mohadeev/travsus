@@ -3791,7 +3791,7 @@
     "hero_title": "Reisen teilen. An jeder Buchung verdienen.",
     "hero_text": "Empfehlen Sie Touren, die Ihr Publikum lieben wird, und verdienen Sie bis zu 15 % Provision auf jede Buchung über Ihren Link.",
     "form_email": "Ihre E-Mail-Adresse",
-    "form_website": "Ihre Website oder Ihr Social-Media-Kanal (optional)",
+    "form_website": "Ihr Instagram, YouTube, TikTok oder Ihre Website",
     "form_submit": "Zugang anfragen",
     "form_note": "Kostenlose Teilnahme. Wir prüfen jede Anfrage persönlich und antworten per E-Mail.",
     "form_invalid": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
@@ -3858,7 +3858,9 @@
     "cta_text": "Zugang in Sekunden anfragen. Die Teilnahme ist kostenlos.",
     "chip_booking": "Neue Buchung",
     "chip_booking_trip": "3-tägige Sahara-Tour · gerade eben",
-    "chip_commission": "Deine Provision"
+    "chip_commission": "Deine Provision",
+    "form_social_hint": "Bitte geben Sie an, wo Sie Inhalte teilen: Instagram, YouTube-Kanal, TikTok, ein Blog, egal was. Anfragen ohne Angabe werden abgelehnt.",
+    "form_social_missing": "Fügen Sie Ihr Instagram, YouTube, TikTok oder Ihre Website hinzu. Anfragen ohne Angabe werden abgelehnt."
   },
   "Forum": {
     "meta_title": "Reiseforum: Fragen, Tipps und Reiseberichte",

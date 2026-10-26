@@ -2669,7 +2669,7 @@
     "hero_title": "分享旅程，每笔预订都有收益。",
     "hero_text": "向您的粉丝推荐他们会喜爱的旅程，通过您的链接完成的每笔预订，最高可获 15% 佣金。",
     "form_email": "您的邮箱地址",
-    "form_website": "您的网站或社交媒体账号（选填）",
+    "form_website": "您的 Instagram、YouTube、TikTok 或网站",
     "form_submit": "申请加入",
     "form_note": "免费加入。我们会逐一审核每份申请，并通过邮件回复您。",
     "form_invalid": "请输入有效的邮箱地址。",
@@ -2736,7 +2736,9 @@
     "cta_text": "几秒钟即可申请，免费加入。",
     "chip_booking": "新预订",
     "chip_booking_trip": "撒哈拉 3 日游 · 刚刚",
-    "chip_commission": "您的佣金"
+    "chip_commission": "您的佣金",
+    "form_social_hint": "请告诉我们您在哪里分享内容：Instagram、YouTube 频道、TikTok、博客等均可。未填写的申请将被拒绝。",
+    "form_social_missing": "请填写您的 Instagram、YouTube、TikTok 或网站。未填写的申请将被拒绝。"
   },
   "Forum": {
     "meta_title": "旅行论坛：问答、攻略与游记",

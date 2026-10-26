@@ -2807,7 +2807,7 @@
     "hero_title": "旅をシェアして、予約ごとに報酬を。",
     "hero_text": "あなたのフォロワーが気に入るツアーを紹介し、あなたのリンクからの予約ごとに最大15%の報酬を受け取れます。",
     "form_email": "メールアドレス",
-    "form_website": "ウェブサイトまたはSNSアカウント（任意）",
+    "form_website": "Instagram、YouTube、TikTok、またはウェブサイト",
     "form_submit": "参加を申し込む",
     "form_note": "参加は無料です。すべてのお申し込みを担当者が確認し、メールでご連絡します。",
     "form_invalid": "有効なメールアドレスを入力してください。",
@@ -2874,7 +2874,9 @@
     "cta_text": "数秒でお申し込みいただけます。参加は無料です。",
     "chip_booking": "新しい予約",
     "chip_booking_trip": "サハラ3日間ツアー・たった今",
-    "chip_commission": "あなたの報酬"
+    "chip_commission": "あなたの報酬",
+    "form_social_hint": "コンテンツを発信している場所を教えてください：Instagram、YouTubeチャンネル、TikTok、ブログなど何でも構いません。記入がない場合、お申し込みはお断りします。",
+    "form_social_missing": "Instagram、YouTube、TikTok、またはウェブサイトを入力してください。記入がないお申し込みはお断りしています。"
   },
   "Forum": {
     "meta_title": "旅行フォーラム：質問・ヒント・旅行記",

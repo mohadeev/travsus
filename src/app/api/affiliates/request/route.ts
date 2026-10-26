@@ -24,6 +24,8 @@ export async function POST(req: NextRequest) {
 	const email = String(body.email ?? '').trim().toLowerCase()
 	const website = String(body.website ?? '').trim().slice(0, 200)
 	if (!isEmail(email)) return NextResponse.json({ code: 'INVALID_EMAIL' }, { status: 400 })
+	// Where they share content (Instagram, YouTube, a blog...): requests without one are declined
+	if (website.length < 3) return NextResponse.json({ code: 'NO_SOCIAL' }, { status: 400 })
 
 	try {
 		const requested = must(await db.from(T.affiliates).select('id').eq('email', email).maybeSingle())

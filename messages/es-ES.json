@@ -3730,7 +3730,7 @@
     "hero_title": "Comparte viajes. Gana con cada reserva.",
     "hero_text": "Recomienda tours que encantarán a tu audiencia y gana hasta un 15 % de comisión por cada reserva hecha a través de tu enlace.",
     "form_email": "Tu correo electrónico",
-    "form_website": "Tu web o canal en redes sociales (opcional)",
+    "form_website": "Tu Instagram, YouTube, TikTok o web",
     "form_submit": "Solicitar acceso",
     "form_note": "Unirse es gratis. Revisamos cada solicitud personalmente y respondemos por correo.",
     "form_invalid": "Introduce un correo electrónico válido.",
@@ -3797,7 +3797,9 @@
     "cta_text": "Solicita acceso en segundos. Unirse es gratis.",
     "chip_booking": "Nueva reserva",
     "chip_booking_trip": "Viaje de 3 días al Sáhara · ahora mismo",
-    "chip_commission": "Tu comisión"
+    "chip_commission": "Tu comisión",
+    "form_social_hint": "Indícanos dónde compartes contenido: Instagram, canal de YouTube, TikTok, un blog, lo que sea. Las solicitudes sin ninguno serán rechazadas.",
+    "form_social_missing": "Añade tu Instagram, YouTube, TikTok o web. Las solicitudes sin ninguno se rechazan."
   },
   "Forum": {
     "meta_title": "Foro de viajes: preguntas, consejos y relatos de viaje",

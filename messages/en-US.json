@@ -2507,7 +2507,7 @@
     "hero_title": "Share the trips. Earn on every booking.",
     "hero_text": "Recommend tours your audience will love and earn up to 15% commission on every booking made through your link.",
     "form_email": "Your email address",
-    "form_website": "Your website or social channel (optional)",
+    "form_website": "Your Instagram, YouTube, TikTok or website",
     "form_submit": "Request access",
     "form_note": "Free to join. We review every request personally and reply by email.",
     "form_invalid": "Please enter a valid email address.",
@@ -2574,7 +2574,9 @@
     "cta_text": "Request access in seconds. It's free to join.",
     "chip_booking": "New booking",
     "chip_booking_trip": "3-day Sahara trip · just now",
-    "chip_commission": "Your commission"
+    "chip_commission": "Your commission",
+    "form_social_hint": "Please tell us where you share content: Instagram, YouTube channel, TikTok, a blog, anything. Requests without one will be declined.",
+    "form_social_missing": "Add your Instagram, YouTube, TikTok or website. Requests without one are declined."
   },
   "Forum": {
     "meta_title": "Travel Forum: Questions, Tips and Trip Reports",

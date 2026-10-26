@@ -3241,7 +3241,7 @@
     "hero_title": "Partilhe viagens. Ganhe em cada reserva.",
     "hero_text": "Recomende tours que o seu público vai adorar e ganhe até 15% de comissão em cada reserva feita através do seu link.",
     "form_email": "O seu endereço de email",
-    "form_website": "O seu site ou canal nas redes sociais (opcional)",
+    "form_website": "O seu Instagram, YouTube, TikTok ou site",
     "form_submit": "Pedir acesso",
     "form_note": "A adesão é gratuita. Analisamos cada pedido pessoalmente e respondemos por email.",
     "form_invalid": "Introduza um endereço de email válido.",
@@ -3308,7 +3308,9 @@
     "cta_text": "Peça acesso em segundos. A adesão é gratuita.",
     "chip_booking": "Nova reserva",
     "chip_booking_trip": "Viagem de 3 dias ao Sara · agora mesmo",
-    "chip_commission": "A sua comissão"
+    "chip_commission": "A sua comissão",
+    "form_social_hint": "Indique onde partilha conteúdo: Instagram, canal de YouTube, TikTok, um blog, o que for. Pedidos sem esta informação serão recusados.",
+    "form_social_missing": "Adicione o seu Instagram, YouTube, TikTok ou site. Pedidos sem esta informação são recusados."
   },
   "Forum": {
     "meta_title": "Fórum de viagens: perguntas, dicas e relatos de viagem",

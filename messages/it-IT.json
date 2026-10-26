@@ -3299,7 +3299,7 @@
     "hero_title": "Condividi i viaggi. Guadagna su ogni prenotazione.",
     "hero_text": "Consiglia tour che il tuo pubblico adorerà e guadagna fino al 15% di commissione su ogni prenotazione fatta tramite il tuo link.",
     "form_email": "Il tuo indirizzo email",
-    "form_website": "Il tuo sito o canale social (facoltativo)",
+    "form_website": "Il tuo Instagram, YouTube, TikTok o sito",
     "form_submit": "Richiedi l'accesso",
     "form_note": "Partecipare è gratuito. Valutiamo ogni richiesta personalmente e rispondiamo via email.",
     "form_invalid": "Inserisci un indirizzo email valido.",
@@ -3366,7 +3366,9 @@
     "cta_text": "Richiedi l'accesso in pochi secondi. Partecipare è gratuito.",
     "chip_booking": "Nuova prenotazione",
     "chip_booking_trip": "Tour di 3 giorni nel Sahara · proprio ora",
-    "chip_commission": "La tua commissione"
+    "chip_commission": "La tua commissione",
+    "form_social_hint": "Indicaci dove condividi contenuti: Instagram, canale YouTube, TikTok, un blog, qualsiasi cosa. Le richieste senza saranno rifiutate.",
+    "form_social_missing": "Aggiungi il tuo Instagram, YouTube, TikTok o sito. Le richieste senza vengono rifiutate."
   },
   "Forum": {
     "meta_title": "Forum di viaggio: domande, consigli e racconti di viaggio",
