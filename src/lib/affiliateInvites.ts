@@ -3,7 +3,8 @@
 // The owner invites someone from Admin → Emails; the email links to
 // /{locale}/affiliates/invite/{token}. One click on "Accept" makes the invited
 // email an accepted affiliate (the link was sent to that inbox, so no account
-// is needed): they get their link right away and the welcome email. Creating
+// is needed): they get their link right away and the welcome email, and the
+// owner is told by email. Creating
 // an account with that email then shows their earnings in the affiliate area.
 import 'server-only'
 import { randomBytes } from 'node:crypto'
@@ -12,6 +13,7 @@ import { newCode, type Affiliate } from '@/lib/affiliates'
 import { sendTemplate } from '@/lib/email/send'
 import { SITE } from '@/lib/email/layout'
 import { TIERS } from '@/app/[locale]/affiliates/tiers'
+import { OWNER_EMAIL } from '@/lib/admin/owner'
 
 export type AffiliateInvite = {
 	id: string
@@ -21,6 +23,23 @@ export type AffiliateInvite = {
 	created_at: string
 	accepted_at: string | null
 	accepted_email: string | null
+	/** How many times the email went out, and when last (older invitations: unknown) */
+	sends?: number
+	last_sent_at?: string | null
+	message?: string | null
+}
+
+/** Records one more successful send of an invitation (for the history in Admin → Affiliates). */
+export async function inviteSent(invite: AffiliateInvite, message: string) {
+	await db
+		.from(T.affiliateInvites)
+		.update({ sends: (invite.sends ?? 0) + 1, last_sent_at: new Date().toISOString(), message: message || null })
+		.eq('id', invite.id)
+}
+
+/** Every invitation, newest first (Admin → Affiliates → Invitations). */
+export async function listInvites() {
+	return (must(await db.from(T.affiliateInvites).select('*').order('created_at', { ascending: false }).limit(1000)) ?? []) as AffiliateInvite[]
 }
 
 const TOKEN = /^[a-f0-9]{32}$/
@@ -83,6 +102,13 @@ export async function acceptInvite(invite: AffiliateInvite): Promise<Affiliate> 
 		const tiers = `${TIERS[0].rate}% to ${TIERS[TIERS.length - 1].rate}%, growing with your bookings`
 		const rate = affiliate.rate === null ? tiers : `${Number(affiliate.rate)}% on every booking`
 		await sendTemplate('affiliate-approved', { to: address, data: { rate, link: affiliateLink(affiliate.code!) } })
+	}
+	// Tell the owner, the first time this invitation is accepted
+	if (!invite.accepted_at) {
+		await sendTemplate('affiliate-invite-accepted-team', {
+			to: OWNER_EMAIL,
+			data: { email: address, name: invite.name ?? undefined, code: affiliate.code!, link: affiliateLink(affiliate.code!), invitedAt: invite.created_at },
+		})
 	}
 	return affiliate
 }

@@ -5,9 +5,12 @@
 // Accepted affiliates: their link code, earnings, and recording payouts.
 // "Send invitation" opens the invitation form in a dialog, on this page.
 // An affiliate can also be removed (their link stops counting).
+// Invitations: their history (pending or accepted, resend); people invited who
+// haven't accepted yet also show in "All".
 import { Fragment, useMemo, useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { Dialog, Transition } from '@headlessui/react'
-import { Check, ExternalLink, Handshake, Link2, Loader2, Percent, Search, Send, Trash2, Wallet, X } from 'lucide-react'
+import { Check, ExternalLink, Handshake, Link2, Loader2, Mail, Percent, RotateCw, Search, Send, Trash2, Wallet, X } from 'lucide-react'
 import InviteForm from '../_components/InviteForm'
 import { cleanCode, CODE_MAX } from '@/lib/affiliateCode'
 
@@ -24,13 +27,26 @@ export type Affiliate = {
 	decided_at: string | null
 }
 type Status = 'pending' | 'approved' | 'declined'
+export type Invite = {
+	id: string
+	email: string
+	name: string | null
+	created_at: string
+	accepted_at: string | null
+	accepted_email: string | null
+	sends: number | null
+	last_sent_at: string | null
+	message: string | null
+}
+type Filter = Status | 'invited' | 'all'
 type Tier = { rate: number; from: number; to: number | null }
 type Stats = { clicks: number; bookings: number; upcoming: number; earned: number; paidOut: number; balance: number }
 
-const FILTERS: [Status | 'all', string][] = [
+const FILTERS: [Filter, string][] = [
 	['pending', 'To review'],
 	['approved', 'Accepted'],
 	['declined', 'Declined'],
+	['invited', 'Invitations'],
 	['all', 'All'],
 ]
 const BADGE: Record<Status, [string, string]> = {
@@ -44,24 +60,28 @@ const site = (url: string) => (/^https?:\/\//i.test(url) ? url : `https://${url}
 const tierRange = (tiers: Tier[]) => `${tiers[0].rate}–${tiers[tiers.length - 1].rate}%`
 const euros = (n: number) => new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'EUR' }).format(n)
 
-export default function AffiliatesPanel({ initial, stats: initialStats, tiers, loadError, emailReady }: { initial: Affiliate[]; stats: Record<string, Stats>; tiers: Tier[]; loadError: string; emailReady: boolean }) {
+export default function AffiliatesPanel({ initial, stats: initialStats, tiers, loadError, emailReady, invites }: { initial: Affiliate[]; stats: Record<string, Stats>; tiers: Tier[]; loadError: string; emailReady: boolean; invites: Invite[] }) {
+	const router = useRouter()
 	const [rows, setRows] = useState(initial)
 	const [stats, setStats] = useState(initialStats)
-	const [filter, setFilter] = useState<Status | 'all'>(initial.some((r) => r.status === 'pending') ? 'pending' : 'all')
+	const [filter, setFilter] = useState<Filter>(initial.some((r) => r.status === 'pending') ? 'pending' : 'all')
 	const [query, setQuery] = useState('')
 	const [open, setOpen] = useState<{ row: Affiliate; status: Status } | null>(null)
 	const [toast, setToast] = useState('')
 	const [inviting, setInviting] = useState(false)
 
+	// Invited, not accepted, and not already in the list: shown in "All" as pending
+	const waiting = useMemo(() => invites.filter((i) => !i.accepted_at && !rows.some((r) => r.email === i.email)), [invites, rows])
+
 	const counts = useMemo(() => {
-		const c: Record<string, number> = { all: rows.length, pending: 0, approved: 0, declined: 0 }
+		const c: Record<string, number> = { all: rows.length + waiting.length, pending: 0, approved: 0, declined: 0, invited: invites.length }
 		for (const r of rows) c[r.status]++
 		return c
-	}, [rows])
+	}, [rows, invites, waiting])
 
-	const shown = rows.filter(
-		(r) => (filter === 'all' || r.status === filter) && (!query || `${r.email} ${r.website ?? ''} ${r.note ?? ''}`.toLowerCase().includes(query.toLowerCase())),
-	)
+	const matches = (text: string) => !query || text.toLowerCase().includes(query.toLowerCase())
+	const shown = filter === 'invited' ? [] : rows.filter((r) => (filter === 'all' || r.status === filter) && matches(`${r.email} ${r.website ?? ''} ${r.note ?? ''}`))
+	const shownInvites = (filter === 'invited' ? invites : filter === 'all' ? waiting : []).filter((i) => matches(`${i.email} ${i.name ?? ''}`))
 
 	function notify(message: string) {
 		setToast(message)
@@ -149,6 +169,17 @@ export default function AffiliatesPanel({ initial, stats: initialStats, tiers, l
 			{loadError && <p className="mt-6 rounded-2xl bg-red-50 px-4 py-3 text-sm text-red-700 dark:bg-red-950/50 dark:text-red-300">{loadError}</p>}
 
 			<ul className="mt-5 space-y-2.5">
+				{shownInvites.map((i) => (
+					<InviteRow
+						key={i.id}
+						invite={i}
+						emailReady={emailReady}
+						onResent={() => {
+							notify(`Invitation sent again to ${i.email}`)
+							router.refresh()
+						}}
+					/>
+				))}
 				{shown.map((r) => (
 					<li key={r.id} className="flex flex-col gap-4 rounded-3xl p-5 ring-1 ring-neutral-200 transition hover:ring-neutral-400 sm:flex-row sm:items-center dark:ring-neutral-800">
 						<button type="button" onClick={() => setOpen({ row: r, status: r.status })} className="flex min-w-0 flex-1 items-center gap-4 text-left">
@@ -190,11 +221,11 @@ export default function AffiliatesPanel({ initial, stats: initialStats, tiers, l
 				))}
 			</ul>
 
-			{!shown.length && !loadError && (
+			{!shown.length && !shownInvites.length && !loadError && (
 				<div className="mt-5 rounded-[28px] bg-neutral-100 px-6 py-16 text-center dark:bg-neutral-900">
 					<Handshake className="mx-auto h-8 w-8 text-neutral-400" />
-					<p className="mt-3 font-semibold">{query ? 'Nothing matches your search' : filter === 'pending' ? 'No requests to review' : 'No requests here yet'}</p>
-					<p className="mt-1 text-sm text-neutral-500">New requests from the affiliates page show up here.</p>
+					<p className="mt-3 font-semibold">{query ? 'Nothing matches your search' : filter === 'pending' ? 'No requests to review' : filter === 'invited' ? 'No invitations sent yet' : 'No requests here yet'}</p>
+					<p className="mt-1 text-sm text-neutral-500">{filter === 'invited' ? 'Use “Send invitation” above: everyone you invite shows up here.' : 'New requests from the affiliates page show up here.'}</p>
 				</div>
 			)}
 
@@ -224,6 +255,7 @@ export default function AffiliatesPanel({ initial, stats: initialStats, tiers, l
 										onSent={(count) => {
 											setInviting(false)
 											notify(`Invitation sent to ${count} ${count === 1 ? 'person' : 'people'}`)
+											router.refresh() // the new invitations show in the list
 										}}
 									/>
 								</div>
@@ -243,6 +275,69 @@ export default function AffiliatesPanel({ initial, stats: initialStats, tiers, l
 				</div>
 			)}
 		</div>
+	)
+}
+
+/** An invitation: who, when, how many times sent, pending or accepted; resend while pending */
+function InviteRow({ invite, emailReady, onResent }: { invite: Invite; emailReady: boolean; onResent: () => void }) {
+	const [busy, setBusy] = useState(false)
+	const [error, setError] = useState('')
+	const accepted = !!invite.accepted_at
+	const sends = invite.sends ?? 1
+	const details = [
+		invite.name,
+		`Invited ${date(invite.created_at)}`,
+		sends > 1 ? `sent ${sends} times, last ${date(invite.last_sent_at ?? invite.created_at)}` : null,
+		accepted && invite.accepted_email && invite.accepted_email !== invite.email ? `joined as ${invite.accepted_email}` : null,
+	].filter(Boolean)
+
+	async function resend() {
+		setBusy(true)
+		setError('')
+		try {
+			const recipient = invite.name ? `${invite.name} <${invite.email}>` : invite.email
+			const res = await fetch('/api/admin/emails/invite', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ recipients: recipient, message: invite.message ?? '' }) })
+			const data = await res.json().catch(() => ({}))
+			if (!res.ok || !data.sent) throw new Error(data.error || data.failed?.[0]?.error || 'Could not send')
+			onResent()
+		} catch (e: any) {
+			setError(e.message)
+		}
+		setBusy(false)
+	}
+
+	return (
+		<li className="flex flex-col gap-4 rounded-3xl border border-dashed border-neutral-300 p-5 sm:flex-row sm:items-center dark:border-neutral-700">
+			<div className="flex min-w-0 flex-1 items-center gap-4">
+				<span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-neutral-100 dark:bg-neutral-900">
+					<Mail className="h-5 w-5 text-neutral-500" />
+				</span>
+				<span className="min-w-0">
+					<span className="block truncate font-semibold">{invite.email}</span>
+					<span className="mt-0.5 block truncate text-sm text-neutral-500">{details.join(' · ')}</span>
+					{invite.message && <span className="mt-1 block truncate text-sm italic text-neutral-400">“{invite.message}”</span>}
+					{error && <span className="mt-1 block text-sm text-red-600">{error}</span>}
+				</span>
+			</div>
+			<div className="flex flex-wrap items-center gap-2 sm:justify-end">
+				{accepted ? (
+					<span className="rounded-full bg-emerald-100 px-2.5 py-1 text-xs font-semibold text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">Accepted {date(invite.accepted_at!)}</span>
+				) : (
+					<>
+						<span className="rounded-full bg-amber-100 px-2.5 py-1 text-xs font-semibold text-amber-800 dark:bg-amber-950 dark:text-amber-300">Invitation pending</span>
+						<button
+							type="button"
+							onClick={resend}
+							disabled={busy || !emailReady}
+							className="ml-auto inline-flex h-10 items-center gap-1.5 rounded-full px-4 text-sm font-semibold ring-1 ring-neutral-300 transition hover:ring-neutral-950 disabled:opacity-50 sm:ml-2 dark:ring-neutral-700 dark:hover:ring-white"
+						>
+							{busy ? <Loader2 className="h-4 w-4 animate-spin" /> : <RotateCw className="h-4 w-4" />}
+							Resend
+						</button>
+					</>
+				)}
+			</div>
+		</li>
 	)
 }
 

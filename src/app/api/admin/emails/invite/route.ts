@@ -4,7 +4,7 @@
 import { NextResponse, type NextRequest } from 'next/server'
 import { isOwner } from '@/lib/admin/owner'
 import { sendTemplate } from '@/lib/email/send'
-import { createInvite, inviteLink } from '@/lib/affiliateInvites'
+import { createInvite, inviteLink, inviteSent } from '@/lib/affiliateInvites'
 
 export const dynamic = 'force-dynamic'
 
@@ -43,7 +43,8 @@ export async function POST(req: NextRequest) {
 		try {
 			const invite = await createInvite(to.email, to.name)
 			const sent = await sendTemplate('affiliate-invite', { to, data: { name: to.name, message, link: inviteLink(invite.token) } })
-			if (!sent.ok) failed.push({ email: to.email, error: sent.error })
+			if (sent.ok) await inviteSent(invite, message)
+			else failed.push({ email: to.email, error: sent.error })
 		} catch (error) {
 			console.error('Affiliate invite failed:', to.email, error)
 			failed.push({ email: to.email, error: 'Could not create the invitation' })

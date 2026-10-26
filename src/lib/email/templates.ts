@@ -342,6 +342,32 @@ export const TEMPLATES = {
 		sample: { name: 'Sofia Martin', message: 'I love your travel videos about Morocco, I think your audience would enjoy our desert tours.', link: `${SITE}/en-US/affiliates/invite/sample` },
 	}),
 
+	'affiliate-invite-accepted-team': template<{ email: string; name?: string; code: string; link: string; invitedAt?: string }>({
+		name: 'Invitation accepted',
+		category: 'Team',
+		to: 'Team',
+		from: FROM.hello,
+		when: 'To the TRAVSUS inbox the first time someone accepts an affiliate invitation.',
+		connected: true,
+		subject: (d) => `${d.name || d.email} accepted your affiliate invitation`,
+		preheader: (d) => `${d.email} is now an affiliate, with the link code ${d.code}.`,
+		body: (d) => [
+			check(),
+			eyebrow('Affiliate program'),
+			title(`${d.name?.split(' ')[0] || 'Your invitation'} ${d.name ? 'accepted your invitation.' : 'was accepted.'}`),
+			text('They’re now an accepted affiliate and have their personal link.'),
+			details([
+				['Email', d.email],
+				...(d.name ? ([['Name', d.name]] as [string, string][]) : []),
+				['Link code', d.code],
+				['Their link', d.link],
+				...(d.invitedAt ? ([['Invited on', longDate(d.invitedAt)]] as [string, string][]) : []),
+			]),
+			button('Open affiliates', `${SITE}/en-US/admin/affiliates`),
+		],
+		sample: { email: 'sofia@example.com', name: 'Sofia Martin', code: 'k4x9qm', link: `${SITE}/en-US?ref=k4x9qm`, invitedAt: '2026-10-24T10:00:00.000Z' },
+	}),
+
 	'affiliate-approved': template<{ rate: string; link: string }>({
 		name: 'Affiliate accepted',
 		category: 'Affiliates',
