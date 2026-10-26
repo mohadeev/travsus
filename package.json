@@ -12,6 +12,7 @@
     "db:translate-tours": "node scripts/db/run-ts.cjs scripts/db/translate-tours.ts",
     "db:translate-blog": "node scripts/db/run-ts.cjs scripts/db/translate-blog.ts",
     "db:import": "node scripts/db/import-to-mongo.mjs",
+    "db:indexes": "node scripts/db/indexes.mjs",
     "lint": "next lint"
   },
   "prettier": "@epic-web/config/prettier",
