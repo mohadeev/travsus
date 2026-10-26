@@ -1,87 +1,82 @@
-// Referral program banner: black card with the reward as one huge number,
-// the perks as a short list and one button. On larger screens the photo
-// sits clear in its own panel on the right, with a floating "instant payout" chip.
-import Image from 'next/image'
+// Referral program banner shaped like a ticket: orange card with stars, a
+// huge two-tone heading and one button; the perks as numbered steps on a dark
+// panel. Two round notches (page colour) cut the card between the halves.
 import Link from 'next/link'
-import { ArrowUpRight, Check, Zap } from 'lucide-react'
+import { Star } from 'lucide-react'
 import { useTranslations } from '@/lib/i18n'
-import { PHOTOS } from '@/lib/photos'
 
-const PERKS = ['feature1_title', 'feature2_title', 'feature3_title'] as const
+const PERKS = [
+	['feature1_title', 'feature1_desc'],
+	['feature2_title', 'feature2_desc'],
+	['feature3_title', 'feature3_desc'],
+] as const
+
+const ORANGE = '#FA542F'
+const BROWN = '#3A0C05'
+
+/** Round cut-out in the page colour */
+const notch = 'absolute h-10 w-10 rounded-full bg-white sm:h-12 sm:w-12 dark:bg-neutral-900'
 
 export default function ReferralBanner() {
 	const t = useTranslations('ReferralProgramBanner')
-	// "Earn Up To €1000" → "Earn Up To" + "€1000" (the whole line when there's no amount)
-	const line1 = t('main_heading_line1')
-	const amount = /[€$£]\s?[\d.,]+|[\d.,]+\s?[€$£]/.exec(line1)?.[0]
-	const lead = amount ? line1.replace(amount, '').trim() : ''
 
 	return (
-		<section className="relative isolate overflow-hidden rounded-[28px] bg-black text-white">
-			{/* Soft gold glow behind the number */}
-			<div aria-hidden className="pointer-events-none absolute -left-24 -top-32 -z-10 h-80 w-80 rounded-full bg-amber-400/20 blur-3xl" />
+		<section className="relative grid gap-2.5 rounded-[28px] p-2.5 sm:rounded-[36px] sm:p-3 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.62fr)] lg:gap-3" style={{ backgroundColor: ORANGE }}>
+			<div className="px-5 pb-6 pt-8 sm:px-12 sm:pb-12 sm:pt-14 lg:py-16">
+				<p className="flex items-center gap-1" style={{ color: BROWN }} aria-label="5/5">
+					{[0, 1, 2, 3, 4].map((i) => (
+						<Star key={i} className="h-5 w-5 fill-current sm:h-6 sm:w-6" strokeWidth={0} />
+					))}
+				</p>
+				<p className="mt-4 text-[11px] font-bold uppercase tracking-[0.14em] sm:text-xs" style={{ color: BROWN }}>
+					{t('badge_text')}
+				</p>
 
-			<div className="grid lg:grid-cols-[1.1fr_1fr]">
-				<div className="px-6 py-8 sm:px-12 sm:py-14 lg:py-16">
-					<p className="inline-flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.1em] text-white/60 sm:text-[12px] sm:tracking-[0.16em]">
-						<span className="h-1.5 w-1.5 rounded-full bg-amber-400" />
-						{t('badge_text')}
-					</p>
+				<h2 className="mt-3 text-[40px] font-black leading-[0.95] tracking-[-0.04em] sm:text-[64px] lg:text-[76px]">
+					<span className="block text-white">{t('main_heading_line1')}</span>
+					<span className="block" style={{ color: BROWN }}>
+						{t('main_heading_line2')}
+					</span>
+				</h2>
 
-					{amount ? (
-						<h2 className="mt-5">
-							{lead && <span className="block text-lg font-medium text-white/70 sm:text-2xl">{lead}</span>}
-							<span className="block bg-gradient-to-b from-amber-200 to-amber-500 bg-clip-text text-[64px] font-bold leading-none tracking-tighter text-transparent sm:text-[96px]">
-								{amount}
+				<p className="mt-6 max-w-xl text-[15px] leading-relaxed text-white sm:mt-8 sm:text-lg">{t('sub_heading')}</p>
+
+				<Link
+					href={'/affiliates' as any}
+					className="mt-7 inline-flex h-12 items-center rounded-full bg-white px-6 text-[15px] font-bold shadow-[0_6px_20px_-6px_rgba(0,0,0,0.35)] transition hover:-translate-y-0.5 active:scale-[0.98] sm:mt-10 sm:h-14 sm:px-7 sm:text-base"
+					style={{ color: BROWN }}
+				>
+					{t('button_text')}
+				</Link>
+			</div>
+
+			<div className="relative">
+				{/* Notches: left and right on phones, top and bottom from lg */}
+				<span aria-hidden className={`${notch} -left-2.5 top-0 -translate-x-1/2 -translate-y-[calc(50%+5px)] sm:-left-3 lg:hidden`} />
+				<span aria-hidden className={`${notch} -right-2.5 top-0 -translate-y-[calc(50%+5px)] translate-x-1/2 sm:-right-3 lg:hidden`} />
+				<span aria-hidden className={`${notch} -top-3 left-0 hidden -translate-x-[calc(50%+6px)] -translate-y-1/2 lg:block`} />
+				<span aria-hidden className={`${notch} -bottom-3 left-0 hidden -translate-x-[calc(50%+6px)] translate-y-1/2 lg:block`} />
+
+				<ol className="flex h-full flex-col justify-center gap-0 rounded-[20px] px-6 py-8 sm:rounded-[26px] sm:px-12 sm:py-12" style={{ backgroundColor: BROWN }}>
+					{PERKS.map(([title, desc], i) => (
+						<li key={title} className="relative flex gap-4 pb-8 last:pb-0 sm:gap-5 sm:pb-14">
+							{/* Line to the next step */}
+							{i < PERKS.length - 1 && (
+								<span aria-hidden className="absolute left-[22px] top-11 h-full w-1.5 -translate-x-1/2 sm:left-[28px] sm:top-14" style={{ backgroundColor: ORANGE }} />
+							)}
+							<span
+								className="relative grid h-11 w-11 shrink-0 place-items-center rounded-full text-[15px] font-black text-white ring-[3px] ring-white sm:h-14 sm:w-14 sm:text-lg"
+								style={{ backgroundColor: ORANGE }}
+							>
+								0{i + 1}.
 							</span>
-							<span className="mt-2 block text-[22px] font-semibold leading-tight tracking-tight sm:text-3xl">{t('main_heading_line2')}</span>
-						</h2>
-					) : (
-						<h2 className="mt-5 text-3xl font-bold leading-tight tracking-tight sm:text-5xl">
-							{line1} <span className="text-amber-400">{t('main_heading_line2')}</span>
-						</h2>
-					)}
-
-					<p className="mt-3 max-w-md text-[15px] leading-relaxed text-white/60 sm:text-base">{t('sub_heading')}</p>
-
-					<ul className="mt-6 space-y-2.5 border-t border-white/10 pt-6">
-						{PERKS.map((key) => (
-							<li key={key} className="flex items-center gap-3 text-[15px] font-medium">
-								<span className="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-white text-black">
-									<Check className="h-3 w-3" strokeWidth={3} />
-								</span>
-								{t(key)}
-							</li>
-						))}
-					</ul>
-
-					<Link
-						href={'/affiliates' as any}
-						className="group mt-8 inline-flex h-12 w-full items-center justify-between gap-6 rounded-full bg-white pl-6 pr-1.5 text-[15px] font-semibold text-black transition hover:bg-amber-100 active:scale-[0.98] sm:w-auto"
-					>
-						{t('button_text')}
-						<span className="grid h-9 w-9 place-items-center rounded-full bg-black text-white transition-transform group-hover:rotate-45">
-							<ArrowUpRight className="h-4 w-4" />
-						</span>
-					</Link>
-				</div>
-
-				{/* Larger screens: the photo, clear, in its own panel */}
-				<div className="relative hidden p-3 lg:block">
-					<div className="relative h-full min-h-[420px] overflow-hidden rounded-[22px]">
-						<Image src={PHOTOS.referral} alt="" fill sizes="600px" className="object-cover" />
-						<div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-						<div className="absolute bottom-5 left-5 flex items-center gap-3 rounded-2xl bg-white/15 p-3 pr-5 ring-1 ring-white/25 backdrop-blur-xl">
-							<span className="grid h-10 w-10 place-items-center rounded-xl bg-amber-400 text-black">
-								<Zap className="h-5 w-5" strokeWidth={2.4} />
-							</span>
-							<div>
-								<p className="text-sm font-semibold">{t('feature3_title')}</p>
-								<p className="text-xs text-white/75">{t('feature3_desc')}</p>
+							<div className="min-w-0 pt-1.5 sm:pt-3">
+								<p className="text-[17px] font-bold leading-tight tracking-tight text-white sm:text-xl">{t(title)}</p>
+								<p className="mt-1 text-sm text-white/60">{t(desc)}</p>
 							</div>
-						</div>
-					</div>
-				</div>
+						</li>
+					))}
+				</ol>
 			</div>
 		</section>
 	)
