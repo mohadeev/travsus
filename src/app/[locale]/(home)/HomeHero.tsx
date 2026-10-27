@@ -17,15 +17,13 @@ const PLACES = [
 	'Atlas',
 	'Chefchaouen',
 ]
-// "Where to?" around the world, Darija and Tamazight included
+// "Where to?" around the world, Tamazight included
 const WHERE_TO = [
 	'¿A dónde?',
 	'Où aller ?',
-	'فين غادي؟',
 	'ⵎⴰⵏⵉ?',
 	'Wohin?',
 	'Dove?',
-	'إلى أين؟',
 	'Para onde?',
 	'Куда?',
 	'どこへ？',
@@ -35,7 +33,6 @@ const WHERE_TO = [
 	'कहाँ?',
 	'Wapi?',
 	'Πού;',
-	'לאן?',
 	'Ke mana?',
 	'Đi đâu?',
 	'ไปไหน?',
