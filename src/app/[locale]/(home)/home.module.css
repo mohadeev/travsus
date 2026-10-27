@@ -50,6 +50,23 @@
 	to { opacity: 1; transform: none; filter: none; }
 }
 
+/* Hero glow: soft purple, blue and cyan light, fading to nothing at the edges.
+   It reaches up behind the (see-through) header and down past the hero. */
+.glow {
+	margin-top: -60px;
+	background:
+		radial-gradient(closest-side at 50% 50%, rgba(103, 232, 249, 0.55), transparent 70%),
+		radial-gradient(closest-side at 32% 45%, rgba(167, 139, 250, 0.6), transparent 75%),
+		radial-gradient(closest-side at 68% 55%, rgba(129, 140, 248, 0.55), transparent 75%);
+	filter: blur(40px);
+	opacity: 0.85;
+	animation: glow 14s ease-in-out infinite alternate;
+}
+@keyframes glow {
+	from { transform: translate(-50%, -50%) scale(1); }
+	to { transform: translate(-50%, -50%) scale(1.08) rotate(6deg); }
+}
+
 /* The travel quote fades in */
 .quoteIn {
 	animation: quoteIn 1.2s ease-out both;
@@ -99,6 +116,7 @@ li:nth-child(3) > .bob { animation-delay: 0.8s; }
 @media (prefers-reduced-motion: reduce) {
 	.heroIn > *,
 	.quoteIn,
+	.glow,
 	.caret,
 	.bob,
 	.float {

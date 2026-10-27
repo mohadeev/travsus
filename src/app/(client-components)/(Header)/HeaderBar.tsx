@@ -43,8 +43,12 @@ export default function HeaderBar() {
 
 	return (
 		<header
-			className={`sticky top-0 z-40 bg-white/90 backdrop-blur-xl transition-shadow dark:bg-neutral-950/90 ${
-				scrolled ? 'shadow-[0_1px_12px_rgba(0,0,0,0.08)]' : ''
+			className={`sticky top-0 z-40 transition-[background-color,box-shadow] duration-300 ${
+				scrolled
+					? 'bg-white/90 shadow-[0_1px_12px_rgba(0,0,0,0.08)] backdrop-blur-xl dark:bg-neutral-950/90'
+					: home
+						? 'bg-transparent' // the home hero glow shows through
+						: 'bg-white/90 backdrop-blur-xl dark:bg-neutral-950/90'
 			}`}
 		>
 			<a
