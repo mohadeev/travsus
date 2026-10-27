@@ -28,6 +28,9 @@ const nextConfig = {
 	// 	return config
 	// },
 	images: {
+		// Cloudinary does the resizing (src/lib/imageLoader.ts), not Vercel's quota-limited optimiser
+		loader: 'custom',
+		loaderFile: './src/lib/imageLoader.ts',
 		remotePatterns: [
 			{
 				protocol: 'https',
