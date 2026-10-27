@@ -27,6 +27,6 @@ async function findCityPhoto(city: string, country: string | null): Promise<stri
 /** City photo URL, or null when the city has none (callers keep their fallback). */
 export const getCityPhoto = unstable_cache(
 	async (city: string, country: string | null) => findCityPhoto(city, country).catch(() => null),
-	['city-photo-v1'],
+	['city-photo-v2'],
 	{ revalidate: 86400 },
 )
