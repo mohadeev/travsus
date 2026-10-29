@@ -7,7 +7,7 @@ import { Check, FileText, Loader2, Mail, Monitor, Send, Smartphone, X } from 'lu
 import InviteForm from '../_components/InviteForm'
 
 type Email = { id: string; name: string; category: string; to: string; from: string; when: string; connected: boolean; pdf: boolean; subject: string; html: string }
-const ORDER = ['Account', 'Bookings', 'Payments', 'Newsletter', 'Affiliates', 'Team']
+const ORDER = ['Account', 'Bookings', 'Payments', 'Newsletter', 'Affiliates', 'Agencies', 'Team']
 
 export default function EmailsPanel({ emails, brevo, mailrelay, owner }: { emails: Email[]; brevo: boolean; mailrelay: boolean; owner: string }) {
 	const [selected, setSelected] = useState(emails[0]?.id)

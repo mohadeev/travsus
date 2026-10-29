@@ -27,6 +27,7 @@ const COLUMNS: [string, [string, string][]][] = [
 			['blog', '/blog'],
 			['Forum', '/forum'],
 			['Affiliate Program', '/affiliates'],
+			['agencies', '/agencies'],
 		],
 	],
 	[
@@ -77,7 +78,7 @@ export default function Footer() {
 		}
 	}
 
-	const label = (key: string) => (key === 'all_tours' ? t(key) : key === 'blog' ? tNav(key) : tLinks(key))
+	const label = (key: string) => (key === 'all_tours' ? t(key) : key === 'blog' || key === 'agencies' ? tNav(key) : tLinks(key))
 
 	return (
 		<footer className="relative overflow-hidden bg-neutral-950 text-neutral-400">

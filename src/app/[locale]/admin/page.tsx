@@ -1,6 +1,6 @@
 // Admin home: a few live numbers, then one card per tool.
 import Link from 'next/link'
-import { ArrowUpRight, BarChart3, Building2, Handshake, Languages, Mail, MapPin } from 'lucide-react'
+import { ArrowUpRight, BarChart3, Building2, Handshake, Store, Languages, Mail, MapPin } from 'lucide-react'
 import { db, T } from '@/lib/db'
 import { liveVisitors } from '@/lib/analytics/report'
 import { readAll } from '@/lib/admin/translations'
@@ -31,15 +31,16 @@ async function missingTexts() {
 
 async function stats() {
 	const scope = await dashboardScope()
-	const [live, visits, accounts, texts, business, affiliates] = await Promise.all([
+	const [live, visits, accounts, texts, business, affiliates, agencies] = await Promise.all([
 		safe(liveVisitors()),
 		safe(Promise.resolve(db.from(T.analyticsSessions).select('id', { count: 'exact', head: true }).gte('started_at', ago(1)))),
 		safe(Promise.resolve(db.from(T.users).select('id', { count: 'exact', head: true }).gte('createdAt', ago(7)))),
 		safe(missingTexts()),
 		scope ? safe(overview(scope)) : null,
 		safe(Promise.resolve(db.from(T.affiliates).select('id', { count: 'exact', head: true }).eq('status', 'pending'))),
+		safe(Promise.resolve(db.from(T.agencies).select('id', { count: 'exact', head: true }).eq('status', 'pending'))),
 	])
-	return { live, visits: visits?.count ?? null, accounts: accounts?.count ?? null, texts, business, pendingAffiliates: affiliates?.count ?? null }
+	return { live, visits: visits?.count ?? null, accounts: accounts?.count ?? null, texts, business, pendingAffiliates: affiliates?.count ?? null, pendingAgencies: agencies?.count ?? null }
 }
 
 export default async function AdminHome({ params }: { params: { locale: string } }) {
@@ -59,6 +60,7 @@ export default async function AdminHome({ params }: { params: { locale: string }
 		['Site texts', 'Every text of the site in all languages: edit, translate, add.', '/admin/translations', Languages, s.texts ? (s.texts.missing ? `${s.texts.missing} missing translations` : `All ${s.texts.languages} languages complete`) : undefined],
 		['Places', 'Countries, cities and places: photos, descriptions, new places.', '/cms-admin', MapPin],
 		['Affiliates', 'Access requests from the affiliates page: accept or decline, set commissions.', '/admin/affiliates', Handshake, s.pendingAffiliates ? `${s.pendingAffiliates} to review` : s.pendingAffiliates === 0 ? 'Nothing to review' : undefined],
+		['Agencies', 'Tour agencies and guides asking to list their tours: accept or decline.', '/admin/agencies', Store, s.pendingAgencies ? `${s.pendingAgencies} to review` : s.pendingAgencies === 0 ? 'Nothing to review' : undefined],
 		['Emails', 'Every email the site sends: preview, when it goes out, test sends, booking PDF.', '/admin/emails', Mail, emailConfigured() ? `${Object.keys(TEMPLATES).length} emails` : 'Brevo key missing'],
 		['Business dashboard', 'All of TRAVSUS: bookings, customers, revenue and tours.', '/dashboard', Building2, s.business ? `${s.business.unpaidCount} unpaid bookings` : undefined],
 	]

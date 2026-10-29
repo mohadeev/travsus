@@ -23,6 +23,7 @@ export const ACCOUNT_LINKS = {
 	saved: '/account-savelists',
 	help: '/contact',
 	partner: '/affiliates',
+	agencies: '/agencies',
 	listBusiness: '/list-my-business',
 	blog: '/blog',
 } as const

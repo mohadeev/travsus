@@ -72,8 +72,8 @@ const SAMPLE_BOOKING: BookingEmail = {
 
 type Template<D> = {
 	name: string
-	category: 'Account' | 'Bookings' | 'Payments' | 'Newsletter' | 'Affiliates' | 'Team'
-	to: 'Customer' | 'Team' | 'Affiliate' | 'Subscriber'
+	category: 'Account' | 'Bookings' | 'Payments' | 'Newsletter' | 'Affiliates' | 'Agencies' | 'Team'
+	to: 'Customer' | 'Team' | 'Affiliate' | 'Agency' | 'Subscriber'
 	from: Sender
 	/** When it's sent (shown in the admin) */
 	when: string
@@ -408,6 +408,73 @@ export const TEMPLATES = {
 			eyebrow('Affiliate program'),
 			title('Thank you for your interest.'),
 			text('We’ve reviewed your request to join the TRAVSUS affiliate program and we’re not able to accept it at the moment.'),
+			text('Thanks again for thinking of us. You’re welcome to apply again in the future.'),
+		],
+		sample: {},
+	}),
+
+	'agency-request-team': template<{ email: string; company: string; location: string; website?: string; locale?: string }>({
+		name: 'Agency request',
+		category: 'Team',
+		to: 'Team',
+		from: FROM.hello,
+		when: 'To the TRAVSUS inbox when a tour agency requests access on the agencies page.',
+		connected: true,
+		subject: (d) => `Agency access request: ${d.company}`,
+		preheader: (d) => `${d.company} (${d.location}) wants to list their tours.`,
+		body: (d) => [
+			eyebrow('Agencies'),
+			title('New agency request'),
+			details([
+				['Company', d.company],
+				['Email', d.email],
+				['Runs tours in', d.location],
+				['Website / page', d.website || '–'],
+				['Language', d.locale || '–'],
+			]),
+			button('Accept or decline', `${SITE}/en-US/admin/agencies`),
+		],
+		sample: { email: 'hello@atlasdunes.ma', company: 'Atlas Dunes Tours', location: 'Marrakech, Morocco', website: 'instagram.com/atlasdunes', locale: 'fr-FR' },
+	}),
+
+	'agency-approved': template<Record<string, never>>({
+		name: 'Agency accepted',
+		category: 'Agencies',
+		to: 'Agency',
+		from: FROM.hello,
+		when: 'When you accept a request in Admin → Agencies (with “Email them” ticked).',
+		connected: true,
+		subject: () => 'Welcome to TRAVSUS: list your tours',
+		preheader: () => 'You’re in. Here’s how to add your tours.',
+		body: () => [
+			check(),
+			eyebrow('TRAVSUS for agencies'),
+			title('You’re in. Welcome aboard!'),
+			text('Your request to list your tours on TRAVSUS has been accepted.'),
+			details([
+				['1', 'Create your TRAVSUS account with this email'],
+				['2', 'Add your company'],
+				['3', 'Add your tours: photos, itinerary and prices'],
+			]),
+			text('Before your tours go live, we’ll agree with you on the commission. Payouts are monthly, for the tours that took place. Just reply to this email if you need a hand.'),
+			button('Add my company', `${SITE}/en-US/list-my-business`),
+		],
+		sample: {},
+	}),
+
+	'agency-declined': template<Record<string, never>>({
+		name: 'Agency declined',
+		category: 'Agencies',
+		to: 'Agency',
+		from: FROM.hello,
+		when: 'Always, when you decline a request in Admin → Agencies.',
+		connected: true,
+		subject: () => 'Your TRAVSUS agency request',
+		preheader: () => 'An update on your request.',
+		body: () => [
+			eyebrow('TRAVSUS for agencies'),
+			title('Thank you for your interest.'),
+			text('We’ve reviewed your request to list your tours on TRAVSUS and we’re not able to accept it at the moment.'),
 			text('Thanks again for thinking of us. You’re welcome to apply again in the future.'),
 		],
 		sample: {},

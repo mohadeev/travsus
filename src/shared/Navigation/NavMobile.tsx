@@ -117,6 +117,7 @@ const NavMobile: React.FC<NavMobileProps> = ({ onClickClose }) => {
 					)}
 					<Row href={ACCOUNT_LINKS.blog} onClick={onClickClose}>{t('blog')}</Row>
 					<Row href={ACCOUNT_LINKS.partner} onClick={onClickClose}>{t('partner')}</Row>
+					<Row href={ACCOUNT_LINKS.agencies} onClick={onClickClose}>{t('agencies')}</Row>
 					<Row href={ACCOUNT_LINKS.help} onClick={onClickClose}>{t('help')}</Row>
 				</Section>
 			</div>

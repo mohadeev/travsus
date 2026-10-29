@@ -20,6 +20,7 @@ const STATIC_PAGES = [
 	'/about',
 	'/contact',
 	'/affiliates',
+	'/agencies',
 	'/destinations',
 ]
 
