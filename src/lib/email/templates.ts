@@ -400,7 +400,7 @@ export const TEMPLATES = {
 		category: 'Affiliates',
 		to: 'Affiliate',
 		from: FROM.hello,
-		when: 'When you decline a request in Admin → Affiliates (with “Email them” ticked).',
+		when: 'Always, when you decline a request in Admin → Affiliates.',
 		connected: true,
 		subject: () => 'Your TRAVSUS affiliate request',
 		preheader: () => 'An update on your request.',

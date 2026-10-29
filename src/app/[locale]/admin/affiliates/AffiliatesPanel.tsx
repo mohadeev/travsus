@@ -405,8 +405,10 @@ function EditorForm({
 	const [busy, setBusy] = useState(false)
 	const [error, setError] = useState('')
 
+	const declining = status === 'declined'
 	const rateNumber = Number(rate)
-	const rateValid = !custom || (rate.trim() !== '' && Number.isFinite(rateNumber) && rateNumber >= 0 && rateNumber <= 100)
+	// No commission to set on a decline, and the person always gets the standard "no for now" email
+	const rateValid = declining || !custom || (rate.trim() !== '' && Number.isFinite(rateNumber) && rateNumber >= 0 && rateNumber <= 100)
 
 	async function save() {
 		if (!rateValid) return setError('The commission must be between 0 and 100%.')
@@ -416,7 +418,14 @@ function EditorForm({
 			const res = await fetch('/api/admin/affiliates', {
 				method: 'PATCH',
 				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ id: row.id, status, rate: custom ? rateNumber : null, note, code: code.trim() || undefined, notify: statusChanged && status !== 'pending' && notify }),
+				body: JSON.stringify({
+					id: row.id,
+					status,
+					...(declining ? {} : { rate: custom ? rateNumber : null }),
+					note,
+					code: code.trim() || undefined,
+					notify: statusChanged && (declining || (status === 'approved' && notify)),
+				}),
 			})
 			const data = await res.json().catch(() => ({}))
 			if (!res.ok) throw new Error(data.error || 'Could not save. Please try again.')
@@ -478,35 +487,39 @@ function EditorForm({
 				<button type="button" onClick={() => setStatus('pending')} className={choice(status === 'pending')}>Later</button>
 			</div>
 
-			<p className="mt-7 text-sm font-semibold">Commission</p>
-			<div className="mt-2 flex gap-2">
-				<button type="button" onClick={() => setCustom(false)} className={choice(!custom)}>
-					Standard <span className="font-normal opacity-70">{tierRange(tiers)}</span>
-				</button>
-				<button type="button" onClick={() => setCustom(true)} className={choice(custom)}>
-					Custom
-				</button>
-			</div>
-			{custom ? (
-				<label className="relative mt-3 block">
-					<span className="sr-only">Commission in percent</span>
-					<input
-						type="number"
-						inputMode="decimal"
-						min={0}
-						max={100}
-						step={0.5}
-						value={rate}
-						onChange={(e) => setRate(e.target.value)}
-						autoFocus
-						className={`h-14 w-full rounded-2xl border-0 bg-neutral-100 px-4 pr-12 text-2xl font-bold tabular-nums focus:outline-none focus:ring-2 dark:bg-neutral-800 ${rateValid ? 'focus:ring-neutral-950 dark:focus:ring-white' : 'ring-2 ring-red-500'}`}
-					/>
-					<Percent className="pointer-events-none absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-neutral-400" />
-				</label>
-			) : (
-				<p className="mt-3 text-sm text-neutral-500">
-					{tiers.map((t) => `${t.rate}% from ${t.from} booking${t.from > 1 ? 's' : ''}`).join(' · ')}
-				</p>
+			{!declining && (
+				<>
+				<p className="mt-7 text-sm font-semibold">Commission</p>
+				<div className="mt-2 flex gap-2">
+					<button type="button" onClick={() => setCustom(false)} className={choice(!custom)}>
+						Standard <span className="font-normal opacity-70">{tierRange(tiers)}</span>
+					</button>
+					<button type="button" onClick={() => setCustom(true)} className={choice(custom)}>
+						Custom
+					</button>
+				</div>
+				{custom ? (
+					<label className="relative mt-3 block">
+						<span className="sr-only">Commission in percent</span>
+						<input
+							type="number"
+							inputMode="decimal"
+							min={0}
+							max={100}
+							step={0.5}
+							value={rate}
+							onChange={(e) => setRate(e.target.value)}
+							autoFocus
+							className={`h-14 w-full rounded-2xl border-0 bg-neutral-100 px-4 pr-12 text-2xl font-bold tabular-nums focus:outline-none focus:ring-2 dark:bg-neutral-800 ${rateValid ? 'focus:ring-neutral-950 dark:focus:ring-white' : 'ring-2 ring-red-500'}`}
+						/>
+						<Percent className="pointer-events-none absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-neutral-400" />
+					</label>
+				) : (
+					<p className="mt-3 text-sm text-neutral-500">
+						{tiers.map((t) => `${t.rate}% from ${t.from} booking${t.from > 1 ? 's' : ''}`).join(' · ')}
+					</p>
+				)}
+				</>
 			)}
 
 			{status === 'approved' && (
@@ -537,12 +550,22 @@ function EditorForm({
 				/>
 			</label>
 
-			{statusChanged && status !== 'pending' && (
+			{statusChanged && declining && (
+				<p className="mt-5 flex items-start gap-3 rounded-2xl bg-neutral-100 p-4 text-sm dark:bg-neutral-800">
+					<Mail className="mt-0.5 h-5 w-5 shrink-0" />
+					<span>
+						<span className="block font-semibold">{row.email} gets the standard email</span>
+						<span className="text-neutral-500">A polite “no for now”, no reason given.</span>
+					</span>
+				</p>
+			)}
+
+			{statusChanged && status === 'approved' && (
 				<label className="mt-5 flex cursor-pointer items-start gap-3 rounded-2xl bg-neutral-100 p-4 dark:bg-neutral-800">
 					<input type="checkbox" checked={notify} onChange={(e) => setNotify(e.target.checked)} className="mt-0.5 h-5 w-5 rounded" style={{ accentColor: '#0a0a0a' }} />
 					<span className="text-sm">
 						<span className="block font-semibold">Email {row.email}</span>
-						<span className="text-neutral-500">{status === 'approved' ? 'Tell them they’re in, with their commission.' : 'Tell them politely it’s a no for now.'}</span>
+						<span className="text-neutral-500">Tell them they’re in, with their commission.</span>
 					</span>
 				</label>
 			)}
