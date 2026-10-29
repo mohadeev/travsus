@@ -91,7 +91,7 @@ export default async function AgenciesPage({ params }: PageProps) {
 							</span>
 							{t('eyebrow')}
 						</p>
-						<h1 className="mx-auto mt-6 max-w-2xl text-[42px] font-bold leading-[1.02] tracking-tight sm:text-7xl lg:mx-0">{t('hero_title')}</h1>
+						<h1 className="headline mx-auto mt-6 max-w-2xl text-[42px] sm:text-7xl lg:mx-0">{t('hero_title')}</h1>
 						<p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-white/65 sm:text-xl lg:mx-0">{t('hero_text')}</p>
 						<div className="mx-auto mt-9 max-w-xl rounded-[28px] bg-white/[0.04] p-3 ring-1 ring-white/10 backdrop-blur-sm sm:p-4 lg:mx-0">
 							<AgencyRequestForm id="request" />
@@ -113,7 +113,7 @@ export default async function AgenciesPage({ params }: PageProps) {
 			{/* How it works */}
 			<section className={`mx-auto mt-24 max-w-7xl px-5 sm:mt-36 ${motion.reveal}`}>
 				<p className="text-center text-sm font-semibold uppercase tracking-[0.2em] text-neutral-500">{t('eyebrow')}</p>
-				<h2 className="mt-3 text-center text-4xl font-bold tracking-tight sm:text-6xl">{t('steps_title')}</h2>
+				<h2 className="headline mt-3 text-center text-4xl sm:text-6xl">{t('steps_title')}</h2>
 				<div className="relative mt-12 sm:mt-16">
 					{/* Dotted line joining the steps (larger screens) */}
 					<svg aria-hidden className="absolute left-[16%] right-[16%] top-12 hidden h-2 w-[68%] sm:block" preserveAspectRatio="none" viewBox="0 0 100 2">
@@ -140,7 +140,7 @@ export default async function AgenciesPage({ params }: PageProps) {
 			<section className="relative isolate mt-24 overflow-hidden bg-neutral-950 py-20 text-white sm:mt-36 sm:py-32">
 				<div className={`mx-auto max-w-7xl px-5 ${motion.reveal}`}>
 					<div className="grid gap-6 lg:grid-cols-2 lg:items-end">
-						<h2 className="max-w-3xl text-4xl font-bold tracking-tight sm:text-6xl">{t('benefits_title')}</h2>
+						<h2 className="headline max-w-3xl text-4xl sm:text-6xl">{t('benefits_title')}</h2>
 						<p className="max-w-xl text-lg text-white/60 sm:text-xl lg:justify-self-end">{t('benefits_text')}</p>
 					</div>
 					<ul className={`mt-12 grid gap-3 sm:mt-16 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 ${motion.stagger}`}>
@@ -179,7 +179,7 @@ export default async function AgenciesPage({ params }: PageProps) {
 					</div>
 				</div>
 				<div>
-					<h2 className="text-4xl font-bold tracking-tight sm:text-6xl">{t('audience_title')}</h2>
+					<h2 className="headline text-4xl sm:text-6xl">{t('audience_title')}</h2>
 					<p className="mt-4 text-lg text-neutral-500 sm:text-xl">{t('audience_text')}</p>
 					<ul className={`mt-8 space-y-3 ${motion.stagger}`}>
 						{(['audience_1', 'audience_2', 'audience_3'] as const).map((key) => (
@@ -196,7 +196,7 @@ export default async function AgenciesPage({ params }: PageProps) {
 
 			{/* FAQ: plain <details>, no JavaScript */}
 			<section className={`mx-auto mt-24 max-w-3xl px-5 sm:mt-36 ${motion.reveal}`}>
-				<h2 className="text-center text-4xl font-bold tracking-tight sm:text-6xl">{t('faq_title')}</h2>
+				<h2 className="headline text-center text-4xl sm:text-6xl">{t('faq_title')}</h2>
 				<div className="mt-10 space-y-3 sm:mt-14">
 					{FAQ.map((key) => (
 						<details key={key} className="group rounded-3xl bg-neutral-100 px-6 transition open:bg-white open:shadow-lg open:ring-1 open:ring-neutral-200 dark:bg-neutral-900 dark:open:bg-neutral-900 dark:open:ring-neutral-700">
@@ -219,7 +219,7 @@ export default async function AgenciesPage({ params }: PageProps) {
 					<div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-r from-black via-black/80 to-black/30" />
 					<div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
 						<div className="text-center lg:text-left">
-							<h2 className="mx-auto max-w-2xl text-4xl font-bold tracking-tight sm:text-6xl lg:mx-0">{t('cta_title')}</h2>
+							<h2 className="headline mx-auto max-w-2xl text-4xl sm:text-6xl lg:mx-0">{t('cta_title')}</h2>
 							<p className="mx-auto mt-4 max-w-xl text-lg text-white/70 sm:text-xl lg:mx-0">{t('cta_text')}</p>
 						</div>
 						<div className="rounded-[28px] bg-white/[0.05] p-3 ring-1 ring-white/10 backdrop-blur-md sm:p-4">

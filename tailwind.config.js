@@ -34,7 +34,8 @@ const config: Config = {
     fontFamily: {
        body: ['var(--font-body)', 'sans-serif'],
       display: ['var(--font-display)', 'sans-serif'],
-      sans: ['var(--font-metropolis)', ...fontFamily.sans],
+      sans: ['var(--font-inter-tight)', 'var(--font-metropolis)', ...fontFamily.sans],
+      nike: ['var(--font-anton)', 'var(--font-oswald)', 'var(--font-inter-tight)', ...fontFamily.sans],
 
       // satoshi: ["Satoshi"],
     },

@@ -35,7 +35,7 @@ export default function RecentlyViewed({ tours }: { tours: RecentCard[] }) {
 		<section>
 			<div className="mb-5 flex items-end justify-between gap-4 sm:mb-8">
 				<div>
-					<h2 className="text-2xl font-bold tracking-tight sm:text-4xl">{t('recently_viewed')}</h2>
+					<h2 className="headline text-[34px] sm:text-6xl">{t('recently_viewed')}</h2>
 					<p className="mt-1 text-sm text-neutral-500 sm:mt-2 sm:text-base">{t('recently_viewed_sub')}</p>
 				</div>
 				<button

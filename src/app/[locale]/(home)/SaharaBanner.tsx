@@ -24,7 +24,7 @@ export default function SaharaBanner({ tours }: { tours: Omit<HomeTour, 'searchT
 
 			<div className="grid items-center gap-8 px-6 pb-7 pt-40 sm:px-10 sm:py-12 lg:grid-cols-[1.1fr_1fr] lg:gap-12 lg:px-14 lg:py-14">
 				<div>
-					<h2 className="text-3xl font-bold leading-[1.1] tracking-tight [text-shadow:0_1px_16px_rgb(0_0_0/0.35)] sm:text-5xl">
+					<h2 className="headline text-3xl [text-shadow:0_1px_16px_rgb(0_0_0/0.35)] sm:text-5xl">
 						{t('sahara_title')}
 					</h2>
 					<p className="mt-3 max-w-md text-base text-white/85 sm:mt-4 sm:text-lg">{t('sahara_text')}</p>

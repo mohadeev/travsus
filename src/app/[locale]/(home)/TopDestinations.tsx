@@ -11,7 +11,7 @@ export default function TopDestinations({ destinations }: { destinations: HomeDe
 
 	return (
 		<section className={styles.reveal}>
-			<h2 className="text-2xl font-bold tracking-tight sm:text-4xl">{t('destinations_title')}</h2>
+			<h2 className="headline text-[34px] sm:text-6xl">{t('destinations_title')}</h2>
 			<p className="mt-1 text-sm text-neutral-500 sm:mt-2 sm:text-base">{t('destinations_sub')}</p>
 
 			<div className={`${styles.stagger} mt-5 grid auto-rows-[150px] grid-cols-2 gap-2.5 sm:mt-8 sm:auto-rows-[240px] sm:gap-3 lg:grid-cols-4`}>

@@ -52,7 +52,7 @@ export default function PhotoBanner({
 							{eyebrow}
 						</span>
 					)}
-					<h2 className="text-[26px] font-bold leading-tight tracking-tight [text-shadow:0_1px_16px_rgb(0_0_0/0.35)] sm:text-5xl">{title}</h2>
+					<h2 className="headline text-[26px] [text-shadow:0_1px_16px_rgb(0_0_0/0.35)] sm:text-5xl">{title}</h2>
 					{text && <p className="mt-2 text-base text-white/85 sm:mt-4 sm:text-lg">{text}</p>}
 					{children}
 					<Link

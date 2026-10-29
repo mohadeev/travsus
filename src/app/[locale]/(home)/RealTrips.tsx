@@ -15,7 +15,7 @@ export default function RealTrips({ rating }: Props) {
 	return (
 		<section className="grid items-center gap-7 overflow-hidden rounded-3xl bg-neutral-100 p-6 sm:gap-10 sm:rounded-[28px] sm:p-12 lg:grid-cols-2 dark:bg-neutral-900">
 			<div>
-				<h2 className="text-[26px] font-bold leading-tight tracking-tight sm:text-5xl">{t('travelers_title')}</h2>
+				<h2 className="headline text-[26px] sm:text-5xl">{t('travelers_title')}</h2>
 				<p className="mt-2 max-w-md text-base text-neutral-600 sm:mt-4 sm:text-lg dark:text-neutral-400">
 					{t('travelers_text')}
 				</p>

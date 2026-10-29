@@ -19,7 +19,7 @@ export default function HomeReviews({ reviews }: { reviews: HomeReview[] }) {
 
 	return (
 		<section className={styles.reveal}>
-			<h2 className="text-2xl font-bold tracking-tight sm:text-4xl">{t('reviews_title')}</h2>
+			<h2 className="headline text-[34px] sm:text-6xl">{t('reviews_title')}</h2>
 			<p className="mt-1 text-sm text-neutral-500 sm:mt-2 sm:text-base">{t('reviews_sub')}</p>
 
 			<div className="mt-5 sm:mt-8">

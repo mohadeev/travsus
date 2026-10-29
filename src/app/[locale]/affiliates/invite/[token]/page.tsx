@@ -25,7 +25,7 @@ export default async function AffiliateInvitePage({ params }: Props) {
 		return (
 			<main className="mx-auto max-w-lg px-5 py-24 text-center text-neutral-950 dark:text-white">
 				<LinkIcon className="mx-auto h-10 w-10 text-neutral-400" strokeWidth={1.5} />
-				<h1 className="mt-5 text-3xl font-bold tracking-tight">{t('invalid_title')}</h1>
+				<h1 className="headline mt-5 text-3xl">{t('invalid_title')}</h1>
 				<p className="mt-2 text-neutral-500">{t('invalid_text')}</p>
 				<Link href={`/${locale}/affiliates` as any} className="mt-8 inline-flex h-12 items-center rounded-full border border-neutral-300 px-7 text-sm font-semibold transition hover:border-neutral-950 dark:border-neutral-700 dark:hover:border-white">
 					{t('about_program')}
@@ -48,7 +48,7 @@ export default async function AffiliateInvitePage({ params }: Props) {
 						<span className="h-1.5 w-1.5 rounded-full bg-amber-400" />
 						{t('eyebrow')}
 					</p>
-					<h1 className="relative mt-4 text-[34px] font-bold leading-[1.08] tracking-tight sm:text-5xl">
+					<h1 className="headline relative mt-4 text-[34px] sm:text-5xl">
 						{firstName ? t('title_named', { name: firstName }) : t('title')}
 					</h1>
 					<p className="relative mt-3 text-[15px] leading-relaxed text-white/65 sm:text-base">{t('text')}</p>
