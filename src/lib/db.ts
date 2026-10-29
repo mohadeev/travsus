@@ -61,6 +61,8 @@ export const T = {
 	affiliateInvites: 'affiliate_invites',
 	// Tour agencies asking to list their tours (the agencies page)
 	agencies: 'agency_requests',
+	// Instagram (and other) conversations with possible affiliates, tracked by hand
+	outreach: 'affiliate_outreach',
 	// Geography (the big collections live in the places database)
 	continents: 'geo_continents',
 	countries: 'geo_countries',
@@ -153,6 +155,7 @@ const TIMESTAMPS: Record<string, { created: string[]; updated?: string }> = {
 	[T.affiliatePayouts]: { created: ['paid_at'] },
 	[T.affiliateInvites]: { created: ['created_at'] },
 	[T.agencies]: { created: ['created_at'] },
+	[T.outreach]: { created: ['created_at'] },
 	[T.analyticsEvents]: { created: ['created_at'] },
 	[T.analyticsSessions]: { created: ['started_at', 'last_seen_at'] },
 	[T.counters]: { created: [] },
