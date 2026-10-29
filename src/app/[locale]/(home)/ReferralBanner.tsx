@@ -1,105 +1,60 @@
-// Referral program banner as a slim boarding pass. The black main part has the
-// pass header, a "flight" from you to the reward and three pass fields; the
-// white stub, past a dashed perforation with round notches, has a barcode and
-// the button.
+// Affiliate program banner in the TRAVSUS colours: black with warm yellow and
+// amber glows, yellow accents, no photo. The invitation and button on the left; the program in three
+// glass cards on the right (top commission, cookie, payouts). Same texts as the
+// affiliates page.
 import Link from 'next/link'
-import { ArrowUpRight, Plane } from 'lucide-react'
-import { useLocale } from 'next-intl'
-import { useTranslations } from '@/lib/i18n'
-
-// Bar widths for the stub's barcode (decorative)
-const BARS = [2, 1, 3, 1, 1, 2, 1, 3, 2, 1, 1, 2, 3, 1, 2, 1, 1, 3, 1, 2, 2, 1, 3, 1, 1, 2, 1, 2, 3, 1, 1, 2]
-
-/** Round cut-out in the page colour */
-const notch = 'absolute h-6 w-6 rounded-full bg-white dark:bg-neutral-900'
+import { ArrowUpRight, CalendarClock, Percent, Wallet } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 
 export default function ReferralBanner() {
-	const t = useTranslations('ReferralProgramBanner')
-	const locale = useLocale()
-	// "CLAIM NOW" → "Claim now": calmer than capitals
-	const button = t('button_text').toLocaleLowerCase(locale)
-	const cta = button.charAt(0).toLocaleUpperCase(locale) + button.slice(1)
-	// "Earn Up To €1000" → "€1000" for the route (the whole line when there's no amount)
-	const line1 = t('main_heading_line1')
-	const amount = /[€$£]\s?[\d.,]+|[\d.,]+\s?[€$£]/.exec(line1)?.[0] ?? line1
+	const t = useTranslations('Affiliates')
 
-	const field = (label: string, value: string) => (
-		<div className="min-w-0">
-			<dt className="text-[10px] font-medium uppercase tracking-[0.16em] text-white/40">{label}</dt>
-			<dd className="mt-1 text-sm font-semibold leading-tight">{value}</dd>
+	const card = (Icon: typeof Percent, value: string, label: string, big = false) => (
+		<div className={`flex items-center gap-4 rounded-2xl bg-white/[0.06] ring-1 ring-white/10 backdrop-blur-md ${big ? 'p-5 sm:p-6' : 'p-4'}`}>
+			<span className={`grid shrink-0 place-items-center rounded-xl bg-[#FDE047] text-neutral-950 ${big ? 'h-14 w-14' : 'h-11 w-11'}`}>
+				<Icon className={big ? 'h-7 w-7' : 'h-5 w-5'} />
+			</span>
+			<span className="min-w-0">
+				<span className={`headline block ${big ? 'text-5xl text-[#FDE047] sm:text-6xl' : 'text-2xl sm:text-3xl'}`}>{value}</span>
+				<span className="mt-1 block text-xs leading-snug text-white/60 sm:text-sm">{label}</span>
+			</span>
 		</div>
 	)
 
 	return (
-		<section className="relative flex flex-col overflow-hidden rounded-3xl shadow-[0_24px_50px_-28px_rgba(0,0,0,0.55)] sm:flex-row">
-			{/* Main part */}
-			<div className="relative isolate flex-1 bg-neutral-950 px-6 py-6 text-white sm:px-9 sm:py-7">
-				<div aria-hidden className="absolute inset-0 -z-10 bg-[radial-gradient(480px_circle_at_0%_0%,rgba(255,255,255,0.09),transparent_60%)]" />
+		<section className="relative isolate overflow-hidden rounded-3xl bg-neutral-950 text-white shadow-[0_30px_60px_-30px_rgba(0,0,0,0.6)] sm:rounded-[28px]">
+			{/* Soft glows and a faint dot grid */}
+			<div aria-hidden className="absolute -right-16 -top-32 -z-10 h-96 w-96 rounded-full bg-[#FDE047]/30 blur-3xl" />
+			<div aria-hidden className="absolute -bottom-40 right-1/3 -z-10 h-80 w-80 rounded-full bg-amber-500/25 blur-3xl" />
+			<div aria-hidden className="absolute -left-24 -top-24 -z-10 h-64 w-64 rounded-full bg-orange-500/15 blur-3xl" />
+			<div aria-hidden className="absolute inset-0 -z-10 opacity-[0.12] [background-image:radial-gradient(rgba(255,255,255,0.7)_1px,transparent_1px)] [background-size:22px_22px] [mask-image:linear-gradient(to_right,transparent,black_60%)]" />
 
-				{/* Pass header */}
-				<div className="flex items-center justify-between gap-4 border-b border-dashed border-white/15 pb-4">
-					<p className="flex items-center gap-2.5 text-[11px] font-semibold uppercase tracking-[0.18em]">
-						<span className="font-black tracking-[0.08em]">TRAVSUS</span>
-						<span className="h-3 w-px bg-white/25" />
-						<span className="text-white/55">{t('pass_title')}</span>
-					</p>
-					<p className="font-mono text-[11px] text-white/40">TRV · 1000</p>
-				</div>
-
-				{/* The route: you → the reward */}
-				<div className="mt-5 flex items-center gap-3 sm:gap-6">
-					<div className="shrink-0">
-						<p className="text-2xl font-black uppercase leading-none tracking-tight sm:text-4xl">{t('pass_you')}</p>
-						<p className="mt-1.5 text-[11px] uppercase tracking-[0.14em] text-white/45">{t('pass_your_link')}</p>
-					</div>
-					<div aria-hidden className="relative flex min-w-[48px] flex-1 items-center">
-						<span className="h-1.5 w-1.5 shrink-0 rounded-full bg-white/50" />
-						<span className="mx-1 flex-1 border-t-2 border-dotted border-white/25" />
-						<Plane className="h-4 w-4 shrink-0 rotate-45 text-white" />
-						<span className="mx-1 flex-1 border-t-2 border-dotted border-white/25" />
-						<span className="h-1.5 w-1.5 shrink-0 rounded-full bg-white" />
-					</div>
-					<div className="min-w-0 max-w-[45%] text-right sm:max-w-none">
-						<p className="text-2xl font-black leading-none tracking-tight tabular-nums sm:text-4xl">{amount}</p>
-						<p className="mt-1.5 text-[10px] uppercase leading-snug tracking-[0.12em] text-white/45 sm:text-[11px] sm:tracking-[0.14em]">{t('main_heading_line2')}</p>
-					</div>
-				</div>
-				<h2 className="sr-only">
-					{line1} {t('main_heading_line2')}
-				</h2>
-
-				{/* Pass fields */}
-				<dl className="mt-5 grid grid-cols-3 gap-4 border-t border-dashed border-white/15 pt-4">
-					{field(t('pass_class'), t('pass_class_value'))}
-					{field(t('pass_commission'), t('feature2_title'))}
-					{field(t('pass_boarding'), t('pass_boarding_value'))}
-				</dl>
-			</div>
-
-			{/* Stub, past the perforation */}
-			<div className="relative flex flex-col items-start justify-between gap-4 border-t-2 border-dashed border-neutral-300 bg-white px-6 py-6 text-neutral-950 sm:w-64 sm:border-l-2 sm:border-t-0 sm:px-7 sm:py-7 dark:bg-neutral-100">
-				<span aria-hidden className={`${notch} -left-3 -top-3 sm:-top-3 sm:left-0 sm:-translate-x-1/2`} />
-				<span aria-hidden className={`${notch} -right-3 -top-3 sm:-bottom-3 sm:left-0 sm:right-auto sm:top-auto sm:-translate-x-1/2`} />
-
-				<div className="w-full">
-					<p className="text-[10px] font-semibold uppercase leading-snug tracking-[0.16em] text-neutral-500">{t('badge_text')}</p>
-					{/* Barcode */}
-					<div aria-hidden className="mt-3 flex h-10 items-stretch gap-[2px]">
-						{BARS.map((w, i) => (
-							<span key={i} className="bg-neutral-950" style={{ width: w + 0.5 }} />
-						))}
+			<div className="grid items-center gap-8 px-6 py-8 sm:px-10 sm:py-12 lg:grid-cols-[1.15fr_1fr] lg:gap-12 lg:px-14 lg:py-14">
+				<div>
+					<span className="inline-flex items-center gap-2 rounded-full bg-[#FDE047]/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[#FDE047] ring-1 ring-[#FDE047]/30">
+						<span className="h-1.5 w-1.5 rounded-full bg-[#FDE047]" />
+						{t('eyebrow')}
+					</span>
+					<h2 className="headline mt-4 text-[34px] sm:text-6xl">{t('hero_title')}</h2>
+					<p className="mt-3 max-w-md text-base text-white/75 sm:mt-4 sm:text-lg">{t('hero_text')}</p>
+					<div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:items-center sm:gap-5">
+						<Link
+							href={'/affiliates' as any}
+							className="group inline-flex items-center justify-center gap-2 rounded-full bg-[#FDE047] px-7 py-3.5 text-sm font-semibold text-neutral-950 shadow-lg shadow-[#FDE047]/20 transition hover:bg-white active:scale-[0.98]"
+						>
+							{t('form_submit')}
+							<ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+						</Link>
+						<p className="text-center text-sm text-white/55 sm:text-left">{t('cta_text')}</p>
 					</div>
 				</div>
 
-				<div className="w-full">
-					<Link
-						href={'/affiliates' as any}
-						className="group inline-flex h-11 w-full items-center justify-center gap-1.5 rounded-full bg-neutral-950 px-5 text-sm font-semibold text-white transition hover:bg-neutral-800 active:scale-[0.98]"
-					>
-						{cta}
-						<ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-					</Link>
-					<p className="mt-2.5 text-[11px] leading-snug text-neutral-500">{t('sub_heading')}</p>
+				<div className="space-y-3">
+					{card(Percent, t('stat_rate_value'), t('stat_rate_label'), true)}
+					<div className="grid grid-cols-2 gap-3">
+						{card(CalendarClock, t('stat_cookie_value'), t('stat_cookie_label'))}
+						{card(Wallet, t('stat_payout_value'), t('stat_payout_label'))}
+					</div>
 				</div>
 			</div>
 		</section>
