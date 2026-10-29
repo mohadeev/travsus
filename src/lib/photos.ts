@@ -18,4 +18,6 @@ export const PHOTOS = {
 	sunsetHug: cloudinary('v1793059311/site/sunsetHug.jpg'),
 	/** Friends laughing outdoors · source: images.unsplash.com/photo-1511988617509-a57c8a288659 */
 	laughing: cloudinary('v1793059313/site/laughing.jpg'),
+	/** Hands holding a young plant · source: images.unsplash.com/photo-1542601906990-b4d3fb778b09 */
+	impact: cloudinary('v1793307939/site/impact.jpg'),
 } as const

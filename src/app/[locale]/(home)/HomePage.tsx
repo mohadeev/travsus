@@ -7,7 +7,7 @@ import HomeHero from './HomeHero'
 import HomeReviews from './HomeReviews'
 import RealTrips from './RealTrips'
 import RecentlyViewed from './RecentlyViewed'
-import SaharaBanner from './SaharaBanner'
+import ImpactBanner from './ImpactBanner'
 import ReferralBanner from './ReferralBanner'
 import TopDestinations from './TopDestinations'
 import TopTours from './TopTours'
@@ -69,7 +69,7 @@ export default function HomePage({ tours, destinations, reviews, rating }: Props
 					</div>
 
 					<div className={styles.reveal}>
-						<SaharaBanner tours={cards} />
+						<ImpactBanner />
 					</div>
 
 					<HomeReviews reviews={reviews} />

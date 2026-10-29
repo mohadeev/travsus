@@ -35,6 +35,7 @@ const SITE_PHOTOS = {
 	hiking: 'photo-1539635278303-d4002c07eae3',
 	sunsetHug: 'photo-1511632765486-a01980e01a18',
 	laughing: 'photo-1511988617509-a57c8a288659',
+	impact: 'photo-1542601906990-b4d3fb778b09',
 }
 
 const upload = (from, publicId) => cloudinary.uploader.upload(from, { public_id: publicId, overwrite: true, resource_type: 'image' })
