@@ -25,28 +25,12 @@ html {
 	text-rendering: optimizeLegibility;
 }
 
-/* Nike-style headline: condensed, heavy, all caps, tight lines. Outside the
-   Tailwind layers on purpose so it wins over font-bold / tracking / leading. */
+/* Headline: Helvetica, bold and tight. Outside the Tailwind layers on purpose
+   so it wins over font-bold / tracking / leading. */
 .headline {
-	font-family: var(--font-anton), var(--font-oswald), var(--font-inter-tight), system-ui, sans-serif;
-	font-weight: 400;
-	text-transform: uppercase;
-	letter-spacing: 0;
-	line-height: 0.95;
-	text-wrap: balance;
-}
-/* Russian: Oswald (Anton has no Cyrillic) */
-:lang(ru) .headline {
-	font-family: var(--font-oswald), var(--font-inter-tight), system-ui, sans-serif;
+	font-family: 'Helvetica Neue', Helvetica, Arial, system-ui, sans-serif;
 	font-weight: 700;
-	line-height: 1.02;
-}
-/* Japanese, Korean, Chinese: no condensed font, heavy sans instead */
-:lang(ja) .headline,
-:lang(ko) .headline,
-:lang(zh) .headline {
-	font-family: var(--font-inter-tight), system-ui, sans-serif;
-	font-weight: 900;
-	letter-spacing: -0.02em;
-	line-height: 1.2;
+	letter-spacing: -0.025em;
+	line-height: 1.1;
+	text-wrap: balance;
 }

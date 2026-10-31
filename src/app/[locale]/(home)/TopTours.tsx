@@ -16,7 +16,7 @@ export default function TopTours({ tours }: { tours: HomeTour[] }) {
 		<section className={styles.reveal}>
 			<div className="mb-5 flex items-end justify-between gap-4 sm:mb-8">
 				<div>
-					<h2 className="headline text-[28px] sm:text-4xl">{t('top_tours')}</h2>
+					<h2 className="headline text-2xl sm:text-[32px]">{t('top_tours')}</h2>
 					<p className="mt-1 text-sm text-neutral-500 sm:mt-2 sm:text-base">{t('top_tours_sub')}</p>
 				</div>
 				<Link

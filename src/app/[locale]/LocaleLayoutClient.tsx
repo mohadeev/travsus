@@ -18,7 +18,6 @@ import AuthProvider from './context/AuthProvider'
 import AuthWatcher from './context/AuthWatcher'
 import { usePathname } from 'next/navigation'
 
-import { Inter_Tight } from 'next/font/google'
 import Script from 'next/script'
 import CookieConsent from '@/components/CookieConsent'
 import TourPreviewOverlay from '@/components/TourPreviewOverlay'

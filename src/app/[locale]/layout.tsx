@@ -37,21 +37,6 @@ export default async function RootLayout({
 	return (
 		<html className={fontVariables} lang={locale}>
 			<head>
-				{/* Fonts */}
-				<link
-					href="https://fonts.cdnfonts.com/css/helvetica-neue-55"
-					rel="stylesheet"
-				/>
-				<link rel="preconnect" href="https://fonts.googleapis.com" />
-				<link rel="preconnect" href="https://fonts.gstatic.com" />
-				<link
-					href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap"
-					rel="stylesheet"
-				/>
-				<link rel="preconnect" href="//fdn.fontcdn.ir" />
-				<link rel="preconnect" href="//v1.fontapi.ir" />
-				<link href="https://v1.fontapi.ir/css/SFProDisplay" rel="stylesheet" />
-
 				{/* Favicon */}
 				<link rel="icon" type="image/png" href={logoImg.src} />
 

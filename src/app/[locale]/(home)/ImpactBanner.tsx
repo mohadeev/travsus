@@ -27,7 +27,7 @@ export default function ImpactBanner() {
 						<Leaf className="h-3.5 w-3.5" />
 						{t('impact_badge')}
 					</span>
-					<h2 className="headline mt-4 text-[28px] [text-shadow:0_1px_16px_rgb(0_0_0/0.35)] sm:text-[42px]">{t('impact_title')}</h2>
+					<h2 className="headline mt-4 text-[26px] [text-shadow:0_1px_16px_rgb(0_0_0/0.35)] sm:text-[38px]">{t('impact_title')}</h2>
 					<p className="mt-3 max-w-md text-base text-white/85 sm:mt-4 sm:text-lg">{t('impact_text')}</p>
 					<Link
 						href={'/search' as any}
