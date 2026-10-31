@@ -6,7 +6,9 @@ import { db, T, fetchAll, asDate } from '@/lib/db'
 import { blogSitemapEntries } from '@/lib/blog'
 import { slugify } from '@/lib/destinations'
 
-export const revalidate = 3600 // rebuild at most once an hour
+// Render on request, not at build time (the full DB query can exceed Next's
+// 60s build limit). Cached at the CDN for an hour via next.config.js headers().
+export const dynamic = 'force-dynamic'
 
 const SITE_URL = (
 	process.env.NEXT_PUBLIC_SITE_URL || 'https://www.travsus.com'

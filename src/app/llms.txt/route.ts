@@ -1,7 +1,10 @@
 // /llms.txt — a plain-text guide to TRAVSUS for AI assistants (llmstxt.org).
 import { db, T, fetchAll } from '@/lib/db'
 
-export const revalidate = 3600
+// Render on request, not at build time: querying every tour at build time
+// exceeded Next's 60s static-generation limit and failed Vercel builds.
+// The CDN still caches it for an hour (Cache-Control below).
+export const dynamic = 'force-dynamic'
 
 const SITE_URL = (
 	process.env.NEXT_PUBLIC_SITE_URL || 'https://www.travsus.com'
@@ -63,6 +66,9 @@ ${tourLines.join('\n')}
 `
 
 	return new Response(body, {
-		headers: { 'Content-Type': 'text/plain; charset=utf-8' },
+		headers: {
+			'Content-Type': 'text/plain; charset=utf-8',
+			'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
+		},
 	})
 }
