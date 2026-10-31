@@ -27,14 +27,22 @@ if bake_ss02:
             if name in mapping:
                 table.cmap[cp] = mapping[name]
 
-# 2. A touch tighter: 8/1000 em less on every letter
+# 2. Fuller weights: Figtree's Regular reads a little thin on screens, so each
+#    named weight draws a bit heavier (Light and Black stay where they are)
+seg = f['avar'].segments['wght']
+FULLER = {400: 0.21, 500: 0.32, 600: 0.455, 700: 0.62}
+for weight, value in FULLER.items():
+    key = min(seg, key=lambda k: abs(k - (weight - 300) / 600))
+    seg[key] = value
+
+# 3. A touch tighter: 8/1000 em less on every letter
 TIGHTEN = 8
 hmtx = f['hmtx'].metrics
 for name, (adv, lsb) in hmtx.items():
     if adv > 100:
         hmtx[name] = (adv - TIGHTEN, lsb)
 
-# 3. Our name
+# 4. Our name
 FAMILY = 'Travsus Sans'
 name = f['name']
 for rec in list(name.names):

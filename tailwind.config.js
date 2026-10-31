@@ -156,6 +156,15 @@ const config: Config = {
         'auto': '70px',
       },
       fontSize: {
+        // Travsus Sans spacing by size: small text a little more open, big
+        // text a little tighter (a tracking-* class still wins)
+        xs: ["0.75rem", { lineHeight: "1rem", letterSpacing: "0.012em" }],
+        sm: ["0.875rem", { lineHeight: "1.25rem", letterSpacing: "0.005em" }],
+        "2xl": ["1.5rem", { lineHeight: "2rem", letterSpacing: "-0.01em" }],
+        "3xl": ["1.875rem", { lineHeight: "2.25rem", letterSpacing: "-0.015em" }],
+        "4xl": ["2.25rem", { lineHeight: "2.5rem", letterSpacing: "-0.02em" }],
+        "5xl": ["3rem", { lineHeight: "1", letterSpacing: "-0.025em" }],
+        "6xl": ["3.75rem", { lineHeight: "1", letterSpacing: "-0.03em" }],
         '8xl': "80px",
         "title-xxl": ["44px", "55px"],
         "title-xxl2": ["42px", "58px"],

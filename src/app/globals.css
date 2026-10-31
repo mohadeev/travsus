@@ -18,11 +18,16 @@ html {
 	}
 }
 
-/* Smoother text everywhere */
+/* Smoother text everywhere, with the font's kerning on */
 html {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	text-rendering: optimizeLegibility;
+	font-kerning: normal;
+}
+/* Paragraphs: no single word left alone on the last line */
+p {
+	text-wrap: pretty;
 }
 
 /* Headline: Travsus Sans, heavy and tight. Outside the Tailwind layers on
