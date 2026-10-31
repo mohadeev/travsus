@@ -35,7 +35,7 @@ export default function ReferralBanner() {
 						<span className="h-1.5 w-1.5 rounded-full bg-[#FDE047]" />
 						{t('eyebrow')}
 					</span>
-					<h2 className="headline mt-4 text-[34px] sm:text-6xl">{t('hero_title')}</h2>
+					<h2 className="headline mt-4 text-[30px] sm:text-5xl">{t('hero_title')}</h2>
 					<p className="mt-3 max-w-md text-base text-white/75 sm:mt-4 sm:text-lg">{t('hero_text')}</p>
 					<div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:items-center sm:gap-5">
 						<Link

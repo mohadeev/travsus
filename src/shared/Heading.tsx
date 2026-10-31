@@ -25,7 +25,7 @@ const Heading: React.FC<HeadingProps> = ({
 				}
 			>
 				<h2
-					className={`headline mb-4 text-4xl text-gray-900 sm:text-5xl`}
+					className={`headline mb-4 text-3xl text-gray-900 sm:text-4xl`}
 					{...args}
 				>
 					{children || t('shared_Heading_Section_Heading')}
