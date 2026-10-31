@@ -34,7 +34,7 @@ const config: Config = {
     fontFamily: {
        body: ['var(--font-body)', 'sans-serif'],
       display: ['var(--font-display)', 'sans-serif'],
-      sans: ['"Helvetica Neue"', 'Helvetica', 'Arial', ...fontFamily.sans],
+      sans: ['var(--font-travsus)', '"Helvetica Neue"', 'Helvetica', 'Arial', ...fontFamily.sans],
 
       // satoshi: ["Satoshi"],
     },

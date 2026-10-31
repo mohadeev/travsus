@@ -99,4 +99,16 @@ export const metropolis = localFont({
 	display: 'swap',
 })
 
-export const fontVariables = `${metropolis.variable}`
+// Travsus Sans: the TRAVSUS typeface (Figtree, SIL OFL 1.1, renamed and tuned:
+// tighter spacing, tailed l and serifed I). Built by scripts/fonts/build-travsus-sans.py.
+// No Cyrillic: Russian falls back to Helvetica / Arial.
+export const travsusSans = localFont({
+	src: '../fonts/travsus-sans/TravsusSans.woff2',
+	weight: '300 900',
+	variable: '--font-travsus',
+	display: 'swap',
+	// No Arial stand-in: it would catch the Russian letters before Helvetica
+	adjustFontFallback: false,
+})
+
+export const fontVariables = `${metropolis.variable} ${travsusSans.variable}`

@@ -10,7 +10,7 @@ export default function ReferralBanner() {
 	const t = useTranslations('Affiliates')
 
 	const card = (Icon: typeof Percent, value: string, label: string, big = false) => (
-		<div className={`flex items-center gap-4 rounded-2xl bg-white/[0.06] ring-1 ring-white/10 backdrop-blur-md ${big ? 'p-5 sm:p-6' : 'p-4'}`}>
+		<div className={`flex gap-3 rounded-2xl bg-white/[0.06] ring-1 ring-white/10 backdrop-blur-md sm:gap-4 ${big ? 'items-center p-5 sm:p-6' : 'flex-col items-start p-4 sm:flex-row sm:items-center'}`}>
 			<span className={`grid shrink-0 place-items-center rounded-xl bg-[#FDE047] text-neutral-950 ${big ? 'h-14 w-14' : 'h-11 w-11'}`}>
 				<Icon className={big ? 'h-7 w-7' : 'h-5 w-5'} />
 			</span>
