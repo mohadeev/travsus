@@ -1,16 +1,19 @@
 'use client'
 // "Request access" form: email and social channel or website (required:
 // requests without one are declined), sent to /api/affiliates/request.
-import { useState, type FormEvent } from 'react'
+import { useRef, useState, type FormEvent } from 'react'
 import { ArrowRight, CheckCircle2, Loader2 } from 'lucide-react'
 import { useLocale, useTranslations } from 'next-intl'
+import { HONEYPOT } from '@/lib/spamGuardFields'
 
-type Status = 'idle' | 'sending' | 'done' | 'already' | 'invalid' | 'social' | 'error'
+type Status = 'idle' | 'sending' | 'done' | 'already' | 'invalid' | 'social' | 'website' | 'many' | 'error'
 
 export default function AffiliateRequestForm({ dark = false, id }: { dark?: boolean; id?: string }) {
 	const t = useTranslations('Affiliates')
 	const locale = useLocale()
 	const [status, setStatus] = useState<Status>('idle')
+	// When the form was shown: a person takes a few seconds to fill it, a bot doesn't
+	const shownAt = useRef(Date.now())
 
 	async function submit(e: FormEvent<HTMLFormElement>) {
 		e.preventDefault()
@@ -20,10 +23,10 @@ export default function AffiliateRequestForm({ dark = false, id }: { dark?: bool
 			const res = await fetch('/api/affiliates/request', {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ email: form.get('email'), website: form.get('website'), locale }),
+				body: JSON.stringify({ email: form.get('email'), website: form.get('website'), locale, [HONEYPOT]: form.get(HONEYPOT), elapsed: Date.now() - shownAt.current }),
 			})
 			const { code } = await res.json().catch(() => ({}))
-			setStatus(code === 'REQUESTED' ? 'done' : code === 'ALREADY_REQUESTED' ? 'already' : code === 'INVALID_EMAIL' ? 'invalid' : code === 'NO_SOCIAL' ? 'social' : 'error')
+			setStatus(code === 'REQUESTED' ? 'done' : code === 'ALREADY_REQUESTED' ? 'already' : code === 'INVALID_EMAIL' ? 'invalid' : code === 'INVALID_WEBSITE' ? 'website' : code === 'TOO_MANY' ? 'many' : code === 'NO_SOCIAL' ? 'social' : 'error')
 		} catch {
 			setStatus('error')
 		}
@@ -48,9 +51,13 @@ export default function AffiliateRequestForm({ dark = false, id }: { dark?: bool
 		? 'bg-white/[0.07] text-white placeholder:text-white/50 ring-white/15 focus:bg-white/10 focus:ring-white'
 		: 'bg-white text-neutral-950 placeholder:text-neutral-400 ring-neutral-200 focus:ring-neutral-950 dark:bg-neutral-900 dark:text-white dark:ring-neutral-700 dark:focus:ring-white'
 
+	const failed = status === 'invalid' || status === 'social' || status === 'website' || status === 'many' || status === 'error'
+
 	// Email, website, then the button: one column, so nothing is cut off on phones
 	return (
-		<form id={id} onSubmit={submit} className="w-full scroll-mt-28 text-left">
+		<form id={id} onSubmit={submit} className="relative w-full scroll-mt-28 text-left">
+			{/* Hidden trap: people never see or fill it, bots do */}
+			<input type="text" name={HONEYPOT} tabIndex={-1} autoComplete="off" aria-hidden className="absolute -left-[9999px] h-px w-px opacity-0" />
 			<div className="grid gap-2.5">
 				<label>
 					<span className="sr-only">{t('form_email')}</span>
@@ -99,12 +106,12 @@ export default function AffiliateRequestForm({ dark = false, id }: { dark?: bool
 				</span>
 			</button>
 			<p
-				role={status === 'invalid' || status === 'social' || status === 'error' ? 'alert' : undefined}
+				role={failed ? 'alert' : undefined}
 				className={`mt-3 px-1 text-center text-xs sm:text-left ${
-					status === 'invalid' || status === 'social' || status === 'error' ? 'text-red-500' : dark ? 'text-white/55' : 'text-neutral-500'
+					failed ? 'text-red-500' : dark ? 'text-white/55' : 'text-neutral-500'
 				}`}
 			>
-				{status === 'invalid' ? t('form_invalid') : status === 'social' ? t('form_social_missing') : status === 'error' ? t('form_error') : t('form_note')}
+				{status === 'invalid' ? t('form_invalid') : status === 'social' ? t('form_social_missing') : status === 'website' ? t('form_website_invalid') : status === 'many' ? t('form_too_many') : status === 'error' ? t('form_error') : t('form_note')}
 			</p>
 		</form>
 	)

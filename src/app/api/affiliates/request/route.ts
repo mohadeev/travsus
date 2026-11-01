@@ -6,6 +6,7 @@ import { db, T, must, withMeta } from '@/lib/db'
 import { rateLimit } from '@/lib/rateLimit'
 import { sendTemplate } from '@/lib/email/send'
 import { OWNER_EMAIL } from '@/lib/admin/owner'
+import { checkRequest, clientIp } from '@/lib/spamGuard'
 
 export const dynamic = 'force-dynamic'
 
@@ -14,7 +15,6 @@ const limiter = rateLimit(5, 60_000) // 5 requests a minute per visitor
 
 const isEmail = (value: unknown): value is string =>
 	typeof value === 'string' && value.length <= 120 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
-
 
 export async function POST(req: NextRequest) {
 	const limited = limiter(req, NextResponse.next(), () => {})
@@ -27,11 +27,18 @@ export async function POST(req: NextRequest) {
 	// Where they share content (Instagram, YouTube, a blog...): requests without one are declined
 	if (website.length < 3) return NextResponse.json({ code: 'NO_SOCIAL' }, { status: 400 })
 
+	const verdict = await checkRequest(req, body, { table: T.affiliates, email, website })
+	// Bots get a fake "thanks": nothing saved, no email
+	if (verdict === 'bot') return NextResponse.json({ code: 'REQUESTED' }, { status: 201 })
+	if (verdict === 'too_many') return NextResponse.json({ code: 'TOO_MANY' }, { status: 429 })
+	if (verdict === 'fake_email') return NextResponse.json({ code: 'INVALID_EMAIL' }, { status: 400 })
+	if (verdict === 'fake_website') return NextResponse.json({ code: 'INVALID_WEBSITE' }, { status: 400 })
+
 	try {
 		const requested = must(await db.from(T.affiliates).select('id').eq('email', email).maybeSingle())
 		if (requested) return NextResponse.json({ code: 'ALREADY_REQUESTED' })
 		must(
-			await db.from(T.affiliates).insert({ email, website: website || null, locale: String(body.locale ?? '').slice(0, 10) || null }),
+			await db.from(T.affiliates).insert({ email, website: website || null, ip: clientIp(req), locale: String(body.locale ?? '').slice(0, 10) || null }),
 		)
 
 		const existing = must(

@@ -6,6 +6,7 @@ import { db, T, must } from '@/lib/db'
 import { rateLimit } from '@/lib/rateLimit'
 import { sendTemplate } from '@/lib/email/send'
 import { OWNER_EMAIL } from '@/lib/admin/owner'
+import { checkRequest, clientIp } from '@/lib/spamGuard'
 
 export const dynamic = 'force-dynamic'
 
@@ -28,11 +29,18 @@ export async function POST(req: NextRequest) {
 	if (!isEmail(email)) return NextResponse.json({ code: 'INVALID_EMAIL' }, { status: 400 })
 	if (company.length < 2 || location.length < 2) return NextResponse.json({ code: 'MISSING' }, { status: 400 })
 
+	const verdict = await checkRequest(req, body, { table: T.agencies, email, website })
+	// Bots get a fake "thanks": nothing saved, no email
+	if (verdict === 'bot') return NextResponse.json({ code: 'REQUESTED' }, { status: 201 })
+	if (verdict === 'too_many') return NextResponse.json({ code: 'TOO_MANY' }, { status: 429 })
+	if (verdict === 'fake_email') return NextResponse.json({ code: 'INVALID_EMAIL' }, { status: 400 })
+	if (verdict === 'fake_website') return NextResponse.json({ code: 'INVALID_WEBSITE' }, { status: 400 })
+
 	try {
 		const requested = must(await db.from(T.agencies).select('id').eq('email', email).maybeSingle())
 		if (requested) return NextResponse.json({ code: 'ALREADY_REQUESTED' })
 		must(
-			await db.from(T.agencies).insert({ email, company, location, website: website || null, locale: locale || null, status: 'pending', note: null, decided_at: null }),
+			await db.from(T.agencies).insert({ email, company, location, website: website || null, ip: clientIp(req), locale: locale || null, status: 'pending', note: null, decided_at: null }),
 		)
 
 		// To the team inbox; never fails the request

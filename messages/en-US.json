@@ -2626,7 +2626,9 @@
     "blog_post_text": "We slept two nights in the dunes and it was the best part of our trip. Here is the exact tour we booked.",
     "blog_post_cta": "Book this trip on Travsus",
     "tab_blog": "Blog",
-    "your_link": "Your Travsus link"
+    "your_link": "Your Travsus link",
+    "form_website_invalid": "We couldn't find that website. Check the address, or add your Instagram or TikTok handle.",
+    "form_too_many": "Too many requests from your connection today. Please try again tomorrow or email us."
   },
   "Forum": {
     "meta_title": "Travel Forum: Questions, Tips and Trip Reports",
@@ -3134,6 +3136,8 @@
     "faq_languages_q": "Do I need to write my tours in every language?",
     "faq_languages_a": "No. Write them in English and TRAVSUS shows them to travellers in 10 languages.",
     "cta_title": "Ready to welcome more travellers?",
-    "cta_text": "Request access in a minute. We'll get back to you by email."
+    "cta_text": "Request access in a minute. We'll get back to you by email.",
+    "form_website_invalid": "We couldn't find that website. Check the address, or add your Instagram or TikTok handle.",
+    "form_too_many": "Too many requests from your connection today. Please try again tomorrow or email us."
   }
 }

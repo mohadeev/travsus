@@ -2788,7 +2788,9 @@
     "blog_post_text": "在沙丘里住了两晚，是整趟旅行最棒的部分。这就是我们预订的那条线路。",
     "blog_post_cta": "在 Travsus 预订这趟旅行",
     "tab_blog": "博客",
-    "your_link": "你的 Travsus 链接"
+    "your_link": "你的 Travsus 链接",
+    "form_website_invalid": "找不到该网站。请检查网址，或填写您的 Instagram 或 TikTok 账号。",
+    "form_too_many": "今天来自您网络的申请过多。请明天再试，或通过电子邮件联系我们。"
   },
   "Forum": {
     "meta_title": "旅行论坛：问答、攻略与游记",
@@ -3296,6 +3298,8 @@
     "faq_languages_q": "我需要用每种语言撰写旅程吗？",
     "faq_languages_a": "不需要。用英语撰写即可，TRAVSUS 会以 10 种语言展示给旅行者。",
     "cta_title": "准备好迎接更多旅行者了吗？",
-    "cta_text": "一分钟即可申请，我们会通过邮件与您联系。"
+    "cta_text": "一分钟即可申请，我们会通过邮件与您联系。",
+    "form_website_invalid": "找不到该网站。请检查网址，或填写您的 Instagram 或 TikTok 账号。",
+    "form_too_many": "今天来自您网络的申请过多。请明天再试，或通过电子邮件联系我们。"
   }
 }

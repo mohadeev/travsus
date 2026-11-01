@@ -3849,7 +3849,9 @@
     "blog_post_text": "Dormimos dos noches en las dunas y fue lo mejor del viaje. Este es el tour exacto que reservamos.",
     "blog_post_cta": "Reserva este viaje en Travsus",
     "tab_blog": "Blog",
-    "your_link": "Tu enlace Travsus"
+    "your_link": "Tu enlace Travsus",
+    "form_website_invalid": "No encontramos ese sitio web. Revisa la dirección o añade tu usuario de Instagram o TikTok.",
+    "form_too_many": "Demasiadas solicitudes desde tu conexión hoy. Inténtalo mañana o escríbenos por email."
   },
   "Forum": {
     "meta_title": "Foro de viajes: preguntas, consejos y relatos de viaje",
@@ -4357,6 +4359,8 @@
     "faq_languages_q": "¿Tengo que escribir mis tours en todos los idiomas?",
     "faq_languages_a": "No. Escríbelos en inglés y TRAVSUS los muestra a los viajeros en 10 idiomas.",
     "cta_title": "¿Listo para recibir a más viajeros?",
-    "cta_text": "Solicita acceso en un minuto. Te responderemos por correo."
+    "cta_text": "Solicita acceso en un minuto. Te responderemos por correo.",
+    "form_website_invalid": "No encontramos ese sitio web. Revisa la dirección o añade tu usuario de Instagram o TikTok.",
+    "form_too_many": "Demasiadas solicitudes desde tu conexión hoy. Inténtalo mañana o escríbenos por email."
   }
 }

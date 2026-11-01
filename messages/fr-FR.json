@@ -3926,7 +3926,9 @@
     "blog_post_text": "Deux nuits dans les dunes, le meilleur moment du voyage. Voici le circuit exact que nous avons réservé.",
     "blog_post_cta": "Réserver ce voyage sur Travsus",
     "tab_blog": "Blog",
-    "your_link": "Ton lien Travsus"
+    "your_link": "Ton lien Travsus",
+    "form_website_invalid": "Nous ne trouvons pas ce site. Vérifiez l'adresse ou ajoutez votre compte Instagram ou TikTok.",
+    "form_too_many": "Trop de demandes depuis votre connexion aujourd'hui. Réessayez demain ou écrivez-nous par e-mail."
   },
   "Forum": {
     "meta_title": "Forum voyage : questions, conseils et récits de voyage",
@@ -4434,6 +4436,8 @@
     "faq_languages_q": "Dois-je rédiger mes circuits dans toutes les langues ?",
     "faq_languages_a": "Non. Rédigez-les en anglais et TRAVSUS les présente aux voyageurs dans 10 langues.",
     "cta_title": "Prêt à accueillir plus de voyageurs ?",
-    "cta_text": "Demandez votre accès en une minute. Nous vous répondrons par e-mail."
+    "cta_text": "Demandez votre accès en une minute. Nous vous répondrons par e-mail.",
+    "form_website_invalid": "Nous ne trouvons pas ce site. Vérifiez l'adresse ou ajoutez votre compte Instagram ou TikTok.",
+    "form_too_many": "Trop de demandes depuis votre connexion aujourd'hui. Réessayez demain ou écrivez-nous par e-mail."
   }
 }

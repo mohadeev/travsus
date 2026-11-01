@@ -3910,7 +3910,9 @@
     "blog_post_text": "Zwei Nächte in den Dünen waren das Beste an unserer Reise. Das ist genau die Tour, die wir gebucht haben.",
     "blog_post_cta": "Diese Reise auf Travsus buchen",
     "tab_blog": "Blog",
-    "your_link": "Dein Travsus-Link"
+    "your_link": "Dein Travsus-Link",
+    "form_website_invalid": "Diese Website konnten wir nicht finden. Prüfe die Adresse oder gib deinen Instagram- oder TikTok-Namen an.",
+    "form_too_many": "Heute zu viele Anfragen von deiner Verbindung. Bitte versuche es morgen erneut oder schreib uns eine E-Mail."
   },
   "Forum": {
     "meta_title": "Reiseforum: Fragen, Tipps und Reiseberichte",
@@ -4418,6 +4420,8 @@
     "faq_languages_q": "Muss ich meine Touren in jeder Sprache verfassen?",
     "faq_languages_a": "Nein. Verfassen Sie sie auf Englisch, und TRAVSUS zeigt sie Reisenden in 10 Sprachen.",
     "cta_title": "Bereit für mehr Reisende?",
-    "cta_text": "Fragen Sie in einer Minute Zugang an. Wir melden uns per E-Mail bei Ihnen."
+    "cta_text": "Fragen Sie in einer Minute Zugang an. Wir melden uns per E-Mail bei Ihnen.",
+    "form_website_invalid": "Diese Website konnten wir nicht finden. Prüfe die Adresse oder gib deinen Instagram- oder TikTok-Namen an.",
+    "form_too_many": "Heute zu viele Anfragen von deiner Verbindung. Bitte versuche es morgen erneut oder schreib uns eine E-Mail."
   }
 }

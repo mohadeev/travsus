@@ -1,16 +1,19 @@
 'use client'
 // "Request access" form for tour agencies: company, email, where they run
 // tours and an optional website, sent to /api/agencies/request.
-import { useState, type FormEvent } from 'react'
+import { useRef, useState, type FormEvent } from 'react'
 import { ArrowRight, CheckCircle2, Loader2 } from 'lucide-react'
 import { useLocale, useTranslations } from 'next-intl'
+import { HONEYPOT } from '@/lib/spamGuardFields'
 
-type Status = 'idle' | 'sending' | 'done' | 'already' | 'invalid' | 'missing' | 'error'
+type Status = 'idle' | 'sending' | 'done' | 'already' | 'invalid' | 'missing' | 'website' | 'many' | 'error'
 
 export default function AgencyRequestForm({ id }: { id?: string }) {
 	const t = useTranslations('Agencies')
 	const locale = useLocale()
 	const [status, setStatus] = useState<Status>('idle')
+	// When the form was shown: a person takes a few seconds to fill it, a bot doesn't
+	const shownAt = useRef(Date.now())
 
 	async function submit(e: FormEvent<HTMLFormElement>) {
 		e.preventDefault()
@@ -20,10 +23,10 @@ export default function AgencyRequestForm({ id }: { id?: string }) {
 			const res = await fetch('/api/agencies/request', {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ company: form.get('company'), email: form.get('email'), location: form.get('location'), website: form.get('website'), locale }),
+				body: JSON.stringify({ company: form.get('company'), email: form.get('email'), location: form.get('location'), website: form.get('website'), locale, [HONEYPOT]: form.get(HONEYPOT), elapsed: Date.now() - shownAt.current }),
 			})
 			const { code } = await res.json().catch(() => ({}))
-			setStatus(code === 'REQUESTED' ? 'done' : code === 'ALREADY_REQUESTED' ? 'already' : code === 'INVALID_EMAIL' ? 'invalid' : code === 'MISSING' ? 'missing' : 'error')
+			setStatus(code === 'REQUESTED' ? 'done' : code === 'ALREADY_REQUESTED' ? 'already' : code === 'INVALID_EMAIL' ? 'invalid' : code === 'INVALID_WEBSITE' ? 'website' : code === 'TOO_MANY' ? 'many' : code === 'MISSING' ? 'missing' : 'error')
 		} catch {
 			setStatus('error')
 		}
@@ -43,10 +46,12 @@ export default function AgencyRequestForm({ id }: { id?: string }) {
 
 	const reset = () => status !== 'idle' && setStatus('idle')
 	const input = 'h-14 w-full rounded-2xl border-0 bg-white/[0.07] px-4 text-base text-white ring-1 ring-white/15 transition placeholder:text-[14px] placeholder:text-white/50 focus:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white sm:px-5 sm:placeholder:text-base'
-	const failed = status === 'invalid' || status === 'missing' || status === 'error'
+	const failed = status === 'invalid' || status === 'missing' || status === 'website' || status === 'many' || status === 'error'
 
 	return (
-		<form id={id} onSubmit={submit} className="w-full scroll-mt-28 text-left">
+		<form id={id} onSubmit={submit} className="relative w-full scroll-mt-28 text-left">
+			{/* Hidden trap: people never see or fill it, bots do */}
+			<input type="text" name={HONEYPOT} tabIndex={-1} autoComplete="off" aria-hidden className="absolute -left-[9999px] h-px w-px opacity-0" />
 			<div className="grid gap-2.5 sm:grid-cols-2">
 				<label>
 					<span className="sr-only">{t('form_company')}</span>
@@ -76,7 +81,7 @@ export default function AgencyRequestForm({ id }: { id?: string }) {
 				</span>
 			</button>
 			<p role={failed ? 'alert' : undefined} className={`mt-3 px-1 text-center text-xs sm:text-left ${failed ? 'text-red-400' : 'text-white/55'}`}>
-				{status === 'invalid' ? t('form_invalid') : status === 'missing' ? t('form_missing') : status === 'error' ? t('form_error') : t('form_note')}
+				{status === 'invalid' ? t('form_invalid') : status === 'missing' ? t('form_missing') : status === 'website' ? t('form_website_invalid') : status === 'many' ? t('form_too_many') : status === 'error' ? t('form_error') : t('form_note')}
 			</p>
 		</form>
 	)
