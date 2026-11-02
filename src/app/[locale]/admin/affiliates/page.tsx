@@ -25,6 +25,6 @@ export default async function AffiliatesPage() {
 		).catch(() => []),
 	)
 	return <AffiliatesPanel initial={rows} stats={stats} tiers={TIERS.map((t) => ({ ...t }))} loadError={error ? 'Could not load the requests.' : ''} emailReady={emailConfigured()}
-			invites={invites.map(({ id, email, name, created_at, accepted_at, accepted_email, sends, last_sent_at, message }) => ({ id, email, name, created_at, accepted_at, accepted_email, sends: sends ?? null, last_sent_at: last_sent_at ?? null, message: message ?? null }))}
+			invites={invites.map(({ id, email, name, created_at, accepted_at, accepted_email, sends, last_sent_at, message, reminders }) => ({ id, email, name, created_at, accepted_at, accepted_email, sends: sends ?? null, last_sent_at: last_sent_at ?? null, message: message ?? null, reminders: reminders ?? null }))}
 		/>
 }

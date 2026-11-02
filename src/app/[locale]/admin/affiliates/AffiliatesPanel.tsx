@@ -37,6 +37,7 @@ export type Invite = {
 	sends: number | null
 	last_sent_at: string | null
 	message: string | null
+	reminders: number | null
 }
 type Filter = Status | 'invited' | 'all'
 type Tier = { rate: number; from: number; to: number | null }
@@ -288,6 +289,7 @@ function InviteRow({ invite, emailReady, onResent }: { invite: Invite; emailRead
 		invite.name,
 		`Invited ${date(invite.created_at)}`,
 		sends > 1 ? `sent ${sends} times, last ${date(invite.last_sent_at ?? invite.created_at)}` : null,
+		!accepted && invite.reminders ? `${invite.reminders} of 4 reminders sent` : null,
 		accepted && invite.accepted_email && invite.accepted_email !== invite.email ? `joined as ${invite.accepted_email}` : null,
 	].filter(Boolean)
 

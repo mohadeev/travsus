@@ -342,6 +342,30 @@ export const TEMPLATES = {
 		sample: { name: 'Sofia Martin', message: 'I love your travel videos about Morocco, I think your audience would enjoy our desert tours.', link: `${SITE}/en-US/affiliates/invite/sample` },
 	}),
 
+	'affiliate-invite-reminder': template<{ name?: string; link: string; last: boolean }>({
+		name: 'Affiliate invitation reminder',
+		category: 'Affiliates',
+		to: 'Affiliate',
+		from: FROM.hello,
+		when: 'Automatically, while an invitation is still waiting: 1, 7, 14 and 28 days after it was sent (4 reminders at most, never after the first month).',
+		connected: true,
+		subject: (d) => (d.last ? 'Last reminder: your TRAVSUS affiliate invitation' : `${d.name ? `${d.name.split(' ')[0]}, your` : 'Your'} TRAVSUS affiliate invitation is waiting`),
+		preheader: () => 'One click to accept and get your personal link. Earn up to 15% on every booking.',
+		body: (d) => [
+			eyebrow('Affiliate program'),
+			title(d.name ? `${d.name.split(' ')[0]}, your invitation is still waiting.` : 'Your invitation is still waiting.'),
+			text('You were invited to join the TRAVSUS affiliate program. Accept it in one click and get your personal link right away.'),
+			details([
+				['Commission', 'Up to 15% per booking'],
+				['Cookie', '60 days'],
+				['Payouts', 'Monthly, from €50'],
+			]),
+			button('Accept invitation', d.link),
+			small(d.last ? 'This is the last reminder we’ll send. Your invitation stays open if you change your mind.' : 'Not interested? No problem, just ignore this email: we’ll stop reminding you after a month.'),
+		],
+		sample: { name: 'Sofia Martin', link: `${SITE}/en-US/affiliates/invite/sample`, last: false },
+	}),
+
 	'affiliate-invite-accepted-team': template<{ email: string; name?: string; code: string; link: string; invitedAt?: string }>({
 		name: 'Invitation accepted',
 		category: 'Team',

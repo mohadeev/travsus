@@ -27,6 +27,9 @@ export type AffiliateInvite = {
 	sends?: number
 	last_sent_at?: string | null
 	message?: string | null
+	/** Automatic reminders sent while pending (see remindPendingInvites) */
+	reminders?: number
+	last_reminded_at?: string | null
 }
 
 /** Records one more successful send of an invitation (for the history in Admin → Affiliates). */
@@ -111,4 +114,46 @@ export async function acceptInvite(invite: AffiliateInvite): Promise<Affiliate> 
 		})
 	}
 	return affiliate
+}
+
+/** Days after the invitation when a reminder goes out: 4 at most, all in the first month. */
+const REMINDER_DAYS = [1, 7, 14, 28]
+const DAY = 24 * 3600_000
+
+/**
+ * Emails a reminder to every invitation still waiting whose next reminder is
+ * due (daily cron). Never more than one per run, never after the first month.
+ */
+export async function remindPendingInvites(max = 100) {
+	const now = Date.now()
+	const pending = (must(
+		await db
+			.from(T.affiliateInvites)
+			.select('*')
+			.is('accepted_at', null)
+			.gte('created_at', new Date(now - 31 * DAY).toISOString())
+			.order('created_at')
+			.limit(500),
+	) ?? []) as AffiliateInvite[]
+
+	const results: Record<string, string> = {}
+	for (const invite of pending) {
+		if (Object.keys(results).length >= max) break
+		const done = invite.reminders ?? 0
+		const age = now - new Date(invite.created_at).getTime()
+		// The invitation itself never went out, all reminders sent, or not due yet
+		if (!invite.sends || done >= REMINDER_DAYS.length || age < REMINDER_DAYS[done] * DAY) continue
+		// A run that repeats or catches up doesn't send two in a row
+		if (invite.last_reminded_at && now - new Date(invite.last_reminded_at).getTime() < 20 * 3600_000) continue
+
+		const sent = await sendTemplate('affiliate-invite-reminder', {
+			to: { email: invite.email, name: invite.name ?? undefined },
+			data: { name: invite.name ?? undefined, link: inviteLink(invite.token), last: done + 1 === REMINDER_DAYS.length },
+		})
+		if (sent.ok) {
+			await db.from(T.affiliateInvites).update({ reminders: done + 1, last_reminded_at: new Date().toISOString() }).eq('id', invite.id)
+			results[invite.email] = `reminder ${done + 1}`
+		} else results[invite.email] = `failed: ${sent.error}`
+	}
+	return results
 }
