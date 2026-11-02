@@ -28,7 +28,7 @@ const isSafePath = (path: unknown): path is string =>
 /**
  * Tour pages: /{locale}/{country}/{city}/{category}/{name}/{tourId}
  * (or legacy .../{tourId}/q=tour). Redirects to the tour's canonical slug
- * for the locale, falling back to its first slug.
+ * for the locale, falling back to its English one (then its first).
  */
 async function tourRedirect(
 	request: NextRequest,
@@ -43,7 +43,7 @@ async function tourRedirect(
 	if (!TOUR_ID.test(tourId)) return null
 
 	const slugs = await tourSlugs(request, tourId)
-	const target = (slugs.find((s) => s.language === locale) ?? slugs[0])?.slug
+	const target = (slugs.find((s) => s.language === locale) ?? slugs.find((s) => s.language === routing.defaultLocale) ?? slugs[0])?.slug
 	if (!isSafePath(target)) return null
 
 	const current = decodeURIComponent(request.nextUrl.pathname)

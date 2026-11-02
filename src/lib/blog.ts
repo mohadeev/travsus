@@ -209,6 +209,48 @@ export const blogSitemapEntries = unstable_cache(
 	{ revalidate: 3600, tags: ['blog'] },
 )
 
+const LOCALE_PREFIX = new RegExp(`^/(${routing.locales.join('|')})(?=/|$)`)
+const OWN_SITE = /^https?:\/\/(?:www\.)?(?:travsus\.com|localhost(?::\d+)?)(?=\/)/i
+const TOUR_LINK = /\/([0-9a-f]{24})\/?$/
+
+/**
+ * Links inside the article, pointed at the page's language: a tour gets its
+ * address in that language (English when it has none, like the tour pages),
+ * an article its title in that language, any other page the same path in
+ * that language. Copies saved from other languages linked to English pages,
+ * and one even to a local test server.
+ */
+async function localizeLinks(html: string, locale: string, rows: any[]) {
+	const paths = new Map<string, string>() // href as written → own-site path
+	for (const [, href] of Array.from(html.matchAll(/\shref="([^"]+)"/gi))) {
+		const path = href.replace(OWN_SITE, '')
+		if (LOCALE_PREFIX.test(path)) paths.set(href, path)
+	}
+	if (!paths.size) return html
+
+	// Tours linked from the article, with their address in every language
+	const tourIds = Array.from(paths.values()).filter((p) => !p.includes('/blog/')).map((p) => TOUR_LINK.exec(p.split(/[?#]/)[0])?.[1]).filter(Boolean) as string[]
+	const tours = tourIds.length ? ((must(await db.from(T.tours).select('id, slugs').in('id', Array.from(new Set(tourIds)))) ?? []) as { id: string; slugs?: { language: string; slug: string }[] }[]) : []
+	const tourPath = new Map(tours.map((t) => {
+		const slugs = t.slugs ?? []
+		return [t.id, (slugs.find((x) => x.language === locale) ?? slugs.find((x) => x.language === BASE_LOCALE))?.slug]
+	}))
+	const postById = new Map(rows.map((r) => [r.id, r]))
+
+	const target = (path: string) => {
+		const [, rest = '', tail = ''] = /^([^?#]*)(.*)$/.exec(path) ?? []
+		const blog = /^\/[^/]+\/blog\/[^/]+\/([0-9a-f]{24})\/?$/.exec(rest)
+		if (blog) {
+			const linked = postById.get(blog[1])
+			return linked ? blogPath(locale, localize(linked, locale).title, linked.id) + tail : rest.replace(LOCALE_PREFIX, `/${locale}`) + tail
+		}
+		const tourId = TOUR_LINK.exec(rest)?.[1]
+		const tour = tourId && tourPath.get(tourId)
+		return (tour || rest.replace(LOCALE_PREFIX, `/${locale}`)) + tail
+	}
+	return html.replace(/(\shref=")([^"]+)(")/gi, (all, open, href, close) => (paths.has(href) ? `${open}${target(paths.get(href)!)}${close}` : all))
+}
+
 /**
  * One post. `redirectTo` is set when the post is a copy of another one;
  * null when the post doesn't exist or is a test post.
@@ -227,6 +269,7 @@ export async function getBlogPost(
 	const raw = must(await db.from(T.posts).select(`*, author:${T.users}(${AUTHOR_FIELDS})`).eq('id', id).maybeSingle())
 	if (!raw) return null
 	const post = toPost(raw, locale)
+	post.content = await localizeLinks(post.content, locale, rows)
 	// Related: most shared tags first, then the newest
 	const tags = new Set(post.tags.map((t) => t.toLowerCase()))
 	const shared = (r: any) => (r.tags ?? []).filter((t: string) => tags.has(String(t).toLowerCase())).length
