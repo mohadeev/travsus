@@ -3084,15 +3084,7 @@
     "recently_viewed_sub": "Os tours que viu, para continuar onde parou",
     "recently_viewed_clear": "Limpar",
     "where_to": "Para onde?",
-    "hero_try": "Experimenta «{place}»",
-    "quote_1": "Viajar deixa-te sem palavras e depois transforma-te num contador de histórias.",
-    "quote_2": "Nem todos os que vagueiam estão perdidos.",
-    "quote_3": "O mundo é um livro e quem não viaja lê apenas uma página.",
-    "quote_4": "Uma viagem de mil milhas começa com um único passo.",
-    "quote_by_1": "Ibn Battuta, nascido em Tânger",
-    "quote_by_2": "J.R.R. Tolkien",
-    "quote_by_3": "Atribuído a Santo Agostinho",
-    "quote_by_4": "Atribuído a Lao Tsé"
+    "hero_try": "Experimenta «{place}»"
   },
   "Payment": {
     "preparing": "A preparar o pagamento seguro…",

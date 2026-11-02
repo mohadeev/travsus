@@ -2350,15 +2350,7 @@
     "recently_viewed_sub": "Tours you looked at, to pick up where you left off",
     "recently_viewed_clear": "Clear",
     "where_to": "Where to?",
-    "hero_try": "Try “{place}”",
-    "quote_1": "Traveling, it leaves you speechless, then turns you into a storyteller.",
-    "quote_2": "Not all those who wander are lost.",
-    "quote_3": "The world is a book, and those who do not travel read only one page.",
-    "quote_4": "A journey of a thousand miles begins with a single step.",
-    "quote_by_1": "Ibn Battuta, born in Tangier",
-    "quote_by_2": "J.R.R. Tolkien",
-    "quote_by_3": "Attributed to Saint Augustine",
-    "quote_by_4": "Attributed to Lao Tzu"
+    "hero_try": "Try “{place}”"
   },
   "Payment": {
     "preparing": "Preparing secure payment…",

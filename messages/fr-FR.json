@@ -3650,15 +3650,7 @@
     "recently_viewed_sub": "Les circuits que vous avez consultés, pour reprendre où vous en étiez",
     "recently_viewed_clear": "Effacer",
     "where_to": "Où allez-vous ?",
-    "hero_try": "Essayez « {place} »",
-    "quote_1": "Le voyage vous laisse sans voix, puis fait de vous un conteur.",
-    "quote_2": "Tous ceux qui errent ne sont pas perdus.",
-    "quote_3": "Le monde est un livre, et ceux qui ne voyagent pas n’en lisent qu’une page.",
-    "quote_4": "Un voyage de mille lieues commence par un pas.",
-    "quote_by_1": "Ibn Battuta, né à Tanger",
-    "quote_by_2": "J.R.R. Tolkien",
-    "quote_by_3": "Attribué à saint Augustin",
-    "quote_by_4": "Attribué à Lao Tseu"
+    "hero_try": "Essayez « {place} »"
   },
   "Payment": {
     "preparing": "Préparation du paiement sécurisé…",

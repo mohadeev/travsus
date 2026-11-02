@@ -1,8 +1,8 @@
 'use client'
 // TripAdvisor-style hero: a big "Where to?" that types itself out once in
 // languages from all over the world and ends in the visitor's own language,
-// one search bar that suggests a place, and a travel quote fading in below.
-// Without motion, the visitor's language and the first quote stay.
+// and one search bar that suggests a place.
+// Without motion, the visitor's language and the first place stay.
 import { useEffect, useState } from 'react'
 import { Search } from 'lucide-react'
 import { useLocale, useTranslations } from 'next-intl'
@@ -44,8 +44,7 @@ const WHERE_TO = [
 	'Saan?',
 	'Where to?',
 ]
-const QUOTES = 4
-const EVERY = 3200 // ms per suggested place; the quote changes every second one
+const EVERY = 3200 // ms per suggested place
 
 export default function HomeHero() {
 	const t = useTranslations('Home')
@@ -94,7 +93,6 @@ export default function HomeHero() {
 	}, [])
 
 	const place = PLACES[step % PLACES.length]
-	const quote = Math.floor(step / 2) % QUOTES
 
 	return (
 		// overflow-x-clip: the glow is wider than the screen but must not add sideways scroll
@@ -147,18 +145,6 @@ export default function HomeHero() {
 					</button>
 				</form>
 
-				{/* A travel quote */}
-				<figure
-					key={`q${quote}`}
-					className={`${styles.quoteIn} mx-auto mt-6 min-h-[64px] max-w-xl sm:mt-8`}
-				>
-					<blockquote className="font-serif text-base italic leading-snug text-neutral-700 dark:text-neutral-300 sm:text-lg">
-						“{t(`quote_${quote + 1}`)}”
-					</blockquote>
-					<figcaption className="mt-1.5 text-xs font-medium uppercase tracking-[0.14em] text-neutral-400">
-						{t(`quote_by_${quote + 1}`)}
-					</figcaption>
-				</figure>
 			</section>
 		</div>
 	)

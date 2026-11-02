@@ -67,15 +67,6 @@
 	to { transform: translate(-50%, -50%) scale(1.08) rotate(6deg); }
 }
 
-/* The travel quote fades in */
-.quoteIn {
-	animation: quoteIn 1.2s ease-out both;
-}
-@keyframes quoteIn {
-	from { opacity: 0; }
-	to { opacity: 1; }
-}
-
 /* Blinking typewriter caret */
 .caret {
 	animation: caret 1s steps(1) infinite;
@@ -115,7 +106,6 @@ li:nth-child(3) > .bob { animation-delay: 0.8s; }
 
 @media (prefers-reduced-motion: reduce) {
 	.heroIn > *,
-	.quoteIn,
 	.glow,
 	.caret,
 	.bob,

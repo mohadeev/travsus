@@ -3634,15 +3634,7 @@
     "recently_viewed_sub": "Touren, die Sie sich angesehen haben – machen Sie dort weiter",
     "recently_viewed_clear": "Löschen",
     "where_to": "Wohin?",
-    "hero_try": "Versuch „{place}“",
-    "quote_1": "Reisen macht dich erst sprachlos und dann zum Geschichtenerzähler.",
-    "quote_2": "Nicht alle, die wandern, sind verloren.",
-    "quote_3": "Die Welt ist ein Buch, und wer nicht reist, liest nur eine Seite davon.",
-    "quote_4": "Auch eine Reise von tausend Meilen beginnt mit dem ersten Schritt.",
-    "quote_by_1": "Ibn Battuta, geboren in Tanger",
-    "quote_by_2": "J.R.R. Tolkien",
-    "quote_by_3": "Augustinus zugeschrieben",
-    "quote_by_4": "Laozi zugeschrieben"
+    "hero_try": "Versuch „{place}“"
   },
   "Payment": {
     "preparing": "Sichere Zahlung wird vorbereitet…",
