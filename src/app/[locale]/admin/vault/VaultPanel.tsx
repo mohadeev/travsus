@@ -1,21 +1,30 @@
 'use client'
-// Password vault, encrypted in this browser. The unlock code never leaves the
-// page: a key is made from it (PBKDF2-SHA256, 600,000 rounds, random salt) and
-// the whole vault is encrypted with AES-GCM before it is saved. The server and
-// the database only see scrambled data. Lost code = lost vault: nobody,
-// including us, can open it without the code.
+// Password vault, encrypted in this browser. A random vault key encrypts the
+// whole vault (AES-GCM); that key is itself locked twice, with the unlock code
+// and with a recovery key (each through PBKDF2-SHA256, 600,000 rounds, random
+// salt). The server and the database only see scrambled data.
 //
-// Passwords are grouped by project (a website, an app...). The vault locks by
-// itself after 5 minutes without activity, and when the tab is closed. One
-// 40-character code opens everything, with every password shown.
+// The recovery key is made here and emailed to the owner (the server sends it
+// once and never stores it). Forgot the code → "Forgot code?", paste the key
+// from the email, choose a new code; a new recovery key is emailed and the old
+// one stops working. Lose both the code and that email = the vault is lost.
+//
+// One 40-character code opens everything, with every password shown. The
+// vault locks by itself after 5 minutes without activity, and when the tab is
+// closed.
 import { useCallback, useEffect, useMemo, useRef, useState, type FormEvent } from 'react'
-import { Check, Copy, Eye, EyeOff, ExternalLink, KeyRound, Loader2, Lock, Pencil, Plus, RefreshCw, Search, ShieldCheck, Trash2, X } from 'lucide-react'
+import { Check, Copy, Eye, EyeOff, ExternalLink, KeyRound, Loader2, Lock, Mail, Pencil, Plus, RefreshCw, Search, ShieldCheck, Trash2, X } from 'lucide-react'
 
 type Entry = { id: string; label: string; username: string; password: string; notes: string; updatedAt: string }
 type Project = { id: string; name: string; url: string; entries: Entry[] }
 type Vault = { projects: Project[] }
-type Sealed = { kdf: 'PBKDF2-SHA256'; iterations: number; salt: string; iv: string; data: string; version: number }
-type Phase = 'loading' | 'setup' | 'locked' | 'open' | 'error'
+/** The vault key, locked with a secret (the unlock code or the recovery key) */
+type Wrapped = { kdf: 'PBKDF2-SHA256'; iterations: number; salt: string; iv: string; key: string }
+/** The row as stored. format 2: vault key wrapped twice; older rows: encrypted straight with the code. */
+type Stored = { format?: number; iv: string; data: string; code?: Wrapped; recovery?: Wrapped; salt?: string; iterations?: number; version: number }
+type Reason = 'created' | 'changed' | 'reset' | 'new'
+type Phase = 'loading' | 'setup' | 'locked' | 'forgot' | 'open' | 'error'
+type Notice = { kind: 'emailed' } | { kind: 'show'; key: string } | null
 
 const ITERATIONS = 600_000
 const CODE_LENGTH = 40
@@ -25,23 +34,37 @@ const CLIPBOARD_MS = 30_000
 // ---- Crypto (Web Crypto, in the browser) ----
 const enc = new TextEncoder()
 const dec = new TextDecoder()
+type Bytes = Uint8Array<ArrayBuffer>
 const toB64 = (bytes: Uint8Array) => btoa(Array.from(bytes, (b) => String.fromCharCode(b)).join(''))
 const fromB64 = (text: string): Bytes => Uint8Array.from(atob(text), (c) => c.charCodeAt(0))
-type Bytes = Uint8Array<ArrayBuffer>
 const random = (n: number): Bytes => crypto.getRandomValues(new Uint8Array(n))
 
-async function deriveKey(code: string, salt: Bytes, iterations: number) {
-	const base = await crypto.subtle.importKey('raw', enc.encode(code), 'PBKDF2', false, ['deriveKey'])
+async function deriveKey(secret: string, salt: Bytes, iterations: number) {
+	const base = await crypto.subtle.importKey('raw', enc.encode(secret), 'PBKDF2', false, ['deriveKey'])
 	return crypto.subtle.deriveKey({ name: 'PBKDF2', hash: 'SHA-256', salt, iterations }, base, { name: 'AES-GCM', length: 256 }, false, ['encrypt', 'decrypt'])
 }
-async function seal(vault: Vault, key: CryptoKey, salt: Bytes, iterations: number, version: number): Promise<Sealed> {
+const newVaultKey = () => crypto.subtle.generateKey({ name: 'AES-GCM', length: 256 }, true, ['encrypt', 'decrypt'])
+async function wrap(vaultKey: CryptoKey, secret: string): Promise<Wrapped> {
+	const salt = random(16)
+	const iv = random(12)
+	const raw = await crypto.subtle.exportKey('raw', vaultKey)
+	const key = new Uint8Array(await crypto.subtle.encrypt({ name: 'AES-GCM', iv }, await deriveKey(secret, salt, ITERATIONS), raw))
+	return { kdf: 'PBKDF2-SHA256', iterations: ITERATIONS, salt: toB64(salt), iv: toB64(iv), key: toB64(key) }
+}
+/** Throws when the secret is wrong */
+async function unwrap(w: Wrapped, secret: string) {
+	const raw = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: fromB64(w.iv) }, await deriveKey(secret, fromB64(w.salt), w.iterations), fromB64(w.key))
+	return crypto.subtle.importKey('raw', raw, { name: 'AES-GCM' }, true, ['encrypt', 'decrypt'])
+}
+async function encryptVault(vault: Vault, key: CryptoKey) {
 	const iv = random(12)
 	const data = new Uint8Array(await crypto.subtle.encrypt({ name: 'AES-GCM', iv }, key, enc.encode(JSON.stringify(vault))))
-	return { kdf: 'PBKDF2-SHA256', iterations, salt: toB64(salt), iv: toB64(iv), data: toB64(data), version }
+	return { iv: toB64(iv), data: toB64(data) }
 }
-async function unseal(sealed: Sealed, key: CryptoKey): Promise<Vault> {
-	const plain = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: fromB64(sealed.iv) }, key, fromB64(sealed.data))
-	return JSON.parse(dec.decode(plain))
+async function decryptVault(row: { iv: string; data: string }, key: CryptoKey): Promise<Vault> {
+	const plain = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: fromB64(row.iv) }, key, fromB64(row.data))
+	const vault = JSON.parse(dec.decode(plain))
+	return { projects: vault.projects ?? [] }
 }
 
 // ---- Generators ----
@@ -53,10 +76,12 @@ const pick = (alphabet: string, n: number) => {
 	while (out.length < n) for (const b of Array.from(random(n * 2))) if (b < limit && out.length < n) out.push(alphabet[b % alphabet.length])
 	return out.join('')
 }
-/** 40 characters: about 200 bits, far beyond guessing */
+/** 40 characters: about 200 bits, far beyond guessing (codes and recovery keys) */
 const newCode = () => pick(CODE_ALPHABET, CODE_LENGTH)
 const newPassword = () => pick('ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789!@#$%&*?-_=+', 24)
 const uid = () => toB64(random(9)).replace(/[+/=]/g, '')
+/** Recovery keys are typed or pasted: spaces and dashes don't matter, nor lower case */
+const cleanKey = (text: string) => text.toUpperCase().replace(/[^A-Z0-9]/g, '')
 
 const card = 'rounded-3xl border border-neutral-200 bg-white p-5 sm:p-6 dark:border-neutral-800 dark:bg-neutral-950'
 const inputCls = 'h-11 w-full rounded-xl border-0 bg-white px-3.5 text-sm ring-1 ring-neutral-200 transition placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-neutral-950 dark:bg-neutral-900 dark:ring-neutral-700 dark:focus:ring-white'
@@ -65,15 +90,19 @@ const btnDark = `${btn} bg-neutral-950 text-white hover:bg-neutral-800 dark:bg-w
 const btnLight = `${btn} border border-neutral-300 hover:border-neutral-950 dark:border-neutral-700 dark:hover:border-white`
 const iconBtn = 'grid h-9 w-9 shrink-0 place-items-center rounded-full text-neutral-500 transition hover:bg-neutral-100 hover:text-neutral-950 dark:hover:bg-neutral-800 dark:hover:text-white'
 
+/** Each wrong try waits a little longer */
+const backoff = (fails: number) => new Promise((r) => setTimeout(r, Math.min(30_000, 1000 * 2 ** (fails - 1))))
+
 export default function VaultPanel() {
 	const [phase, setPhase] = useState<Phase>('loading')
 	const [error, setError] = useState('')
 	const [vault, setVault] = useState<Vault>({ projects: [] })
 	const [saving, setSaving] = useState<'idle' | 'saving' | 'saved' | 'failed'>('idle')
 	const [query, setQuery] = useState('')
-	// Unlocked session: key + salt + version stay in memory only
-	const session = useRef<{ key: CryptoKey; salt: Bytes; iterations: number; version: number } | null>(null)
-	const sealedRef = useRef<Sealed | null>(null)
+	const [notice, setNotice] = useState<Notice>(null)
+	// Unlocked session, in memory only: the vault key and its two locked copies
+	const session = useRef<{ key: CryptoKey; code: Wrapped; recovery: Wrapped; version: number } | null>(null)
+	const stored = useRef<Stored | null>(null)
 
 	const load = useCallback(async () => {
 		setPhase('loading')
@@ -81,7 +110,7 @@ export default function VaultPanel() {
 			const res = await fetch('/api/admin/vault', { cache: 'no-store' })
 			if (!res.ok) throw new Error()
 			const { vault: row } = await res.json()
-			sealedRef.current = row
+			stored.current = row
 			setPhase(row ? 'locked' : 'setup')
 		} catch {
 			setError('Could not reach the vault. Check that you are signed in, then reload.')
@@ -94,6 +123,7 @@ export default function VaultPanel() {
 		session.current = null
 		setVault({ projects: [] })
 		setQuery('')
+		setNotice(null)
 		void load()
 	}, [load])
 
@@ -113,29 +143,56 @@ export default function VaultPanel() {
 		}
 	}, [phase, lock])
 
-	/** Encrypts and saves the whole vault */
+	/**
+	 * Encrypts and saves the vault. With `recoveryKey`, that new key replaces the
+	 * old one and is emailed to the owner. Returns false when not saved.
+	 */
+	async function put(next: Vault, s: { key: CryptoKey; code: Wrapped; recovery: Wrapped; version: number }, recoveryKey?: string, reason?: Reason) {
+		const body = { format: 2, ...(await encryptVault(next, s.key)), code: s.code, recovery: s.recovery, version: s.version, emailRecoveryKey: recoveryKey, reason }
+		const res = await fetch('/api/admin/vault', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
+		const data = await res.json().catch(() => ({}))
+		if (res.status === 409) throw new Error('The vault was changed in another tab. Lock and unlock to get the latest version (your last change was not saved).')
+		if (!res.ok) throw new Error('Not saved. Check your connection and try again.')
+		s.version = data.version
+		session.current = s
+		stored.current = { format: 2, iv: body.iv, data: body.data, code: s.code, recovery: s.recovery, version: data.version }
+		// The email didn't go out: show the key once instead, so it isn't lost
+		if (recoveryKey) setNotice(data.emailed ? { kind: 'emailed' } : { kind: 'show', key: recoveryKey })
+	}
+
+	/** New recovery key for this session's vault key (emailed), optionally a new code too */
+	async function rekey(next: Vault, key: CryptoKey, version: number, reason: Reason, code?: string) {
+		const recoveryKey = newCode()
+		const current = session.current
+		const s = {
+			key,
+			code: code ? await wrap(key, code) : current!.code,
+			recovery: await wrap(key, recoveryKey),
+			version,
+		}
+		await put(next, s, recoveryKey, reason)
+	}
+
 	async function save(next: Vault) {
 		const s = session.current
 		if (!s) return lock()
 		setVault(next)
 		setSaving('saving')
 		try {
-			const sealed = await seal(next, s.key, s.salt, s.iterations, s.version)
-			const res = await fetch('/api/admin/vault', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(sealed) })
-			const data = await res.json().catch(() => ({}))
-			if (res.status === 409) {
-				setError('The vault was changed in another tab. Lock and unlock to get the latest version (your last change was not saved).')
-				return setSaving('failed')
-			}
-			if (!res.ok) throw new Error()
-			s.version = data.version
-			sealedRef.current = { ...sealed, version: data.version }
+			await put(next, s)
 			setError('')
 			setSaving('saved')
-		} catch {
-			setError('Not saved. Check your connection and try again.')
+		} catch (err: any) {
+			setError(err?.message || 'Not saved.')
 			setSaving('failed')
 		}
+	}
+
+	const opened = (next: Vault) => {
+		setVault(next)
+		setSaving('idle')
+		setError('')
+		setPhase('open')
 	}
 
 	if (phase === 'loading') return <Shell><p className="flex items-center gap-2 text-neutral-500"><Loader2 className="h-4 w-4 animate-spin" /> Loading…</p></Shell>
@@ -146,16 +203,13 @@ export default function VaultPanel() {
 			<Shell>
 				<Setup
 					onCreate={async (code) => {
-						const salt = random(16)
-						const key = await deriveKey(code, salt, ITERATIONS)
+						const key = await newVaultKey()
 						const empty: Vault = { projects: [] }
-						const sealed = await seal(empty, key, salt, ITERATIONS, 0)
-						const res = await fetch('/api/admin/vault', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(sealed) })
-						if (!res.ok) throw new Error('Could not create the vault.')
-						const { version } = await res.json()
-						session.current = { key, salt, iterations: ITERATIONS, version }
-						setVault(empty)
-						setPhase('open')
+						session.current = null
+						await rekey(empty, key, 0, 'created', code).catch((err) => {
+							throw new Error(err?.message || 'Could not create the vault.')
+						})
+						opened(empty)
 					}}
 				/>
 			</Shell>
@@ -165,16 +219,38 @@ export default function VaultPanel() {
 		return (
 			<Shell>
 				<Unlock
+					onForgot={stored.current?.recovery ? () => setPhase('forgot') : undefined}
 					onUnlock={async (code) => {
-						const sealed = sealedRef.current!
-						const salt = fromB64(sealed.salt)
-						const key = await deriveKey(code, salt, sealed.iterations)
-						const opened = await unseal(sealed, key) // throws on a wrong code
-						session.current = { key, salt, iterations: sealed.iterations, version: sealed.version }
-						setVault({ projects: opened.projects ?? [] })
-						setSaving('idle')
-						setError('')
-						setPhase('open')
+						const row = stored.current!
+						if (row.recovery && row.code) {
+							const key = await unwrap(row.code, code) // throws on a wrong code
+							const next = await decryptVault(row, key)
+							session.current = { key, code: row.code, recovery: row.recovery, version: row.version }
+							return opened(next)
+						}
+						// Older vault, encrypted straight with the code: move it to a vault
+						// key with a recovery key (emailed)
+						const next = await decryptVault(row, await deriveKey(code, fromB64(row.salt!), row.iterations!))
+						session.current = null
+						await rekey(next, await newVaultKey(), row.version, 'created', code)
+						opened(next)
+					}}
+				/>
+			</Shell>
+		)
+
+	if (phase === 'forgot')
+		return (
+			<Shell>
+				<Forgot
+					onCancel={() => setPhase('locked')}
+					onReset={async (recoveryKey, code) => {
+						const row = stored.current!
+						const key = await unwrap(row.recovery!, recoveryKey) // throws on a wrong key
+						const next = await decryptVault(row, key)
+						session.current = null
+						await rekey(next, key, row.version, 'reset', code)
+						opened(next)
 					}}
 				/>
 			</Shell>
@@ -182,6 +258,7 @@ export default function VaultPanel() {
 
 	return (
 		<Shell>
+			{notice && <RecoveryNotice notice={notice} onClose={() => setNotice(null)} />}
 			<Open
 				vault={vault}
 				query={query}
@@ -193,12 +270,85 @@ export default function VaultPanel() {
 				onChangeCode={async (code) => {
 					const s = session.current
 					if (!s) return lock()
-					const salt = random(16)
-					session.current = { ...s, key: await deriveKey(code, salt, ITERATIONS), salt, iterations: ITERATIONS }
-					await save(vault)
+					await rekey(vault, s.key, s.version, 'changed', code)
+				}}
+				onNewRecoveryKey={async () => {
+					const s = session.current
+					if (!s) return lock()
+					await rekey(vault, s.key, s.version, 'new')
 				}}
 			/>
 		</Shell>
+	)
+}
+
+/** After a new recovery key: emailed, or (email failed) shown once */
+function RecoveryNotice({ notice, onClose }: { notice: NonNullable<Notice>; onClose: () => void }) {
+	const [copied, setCopied] = useState(false)
+	return (
+		<div className={`mb-5 flex items-start gap-3 rounded-2xl px-4 py-3 text-sm ${notice.kind === 'emailed' ? 'bg-emerald-50 text-emerald-800 dark:bg-emerald-950/40 dark:text-emerald-300' : 'bg-amber-50 text-amber-900 dark:bg-amber-950/40 dark:text-amber-200'}`}>
+			<Mail className="mt-0.5 h-4 w-4 shrink-0" />
+			<div className="min-w-0 flex-1">
+				{notice.kind === 'emailed' ? (
+					<p>A new recovery key was emailed to skendoulmohamed@gmail.com. Keep that email: if you forget your code, it lets you set a new one. Older recovery keys no longer work.</p>
+				) : (
+					<>
+						<p className="font-semibold">The recovery key email could not be sent. Save this key now, it won’t be shown again:</p>
+						<p className="mt-2 break-all font-mono text-base font-bold tracking-wider">{notice.key}</p>
+						<button className="mt-2 inline-flex items-center gap-1.5 font-semibold underline" onClick={async () => { await copySecret(notice.key).catch(() => {}); setCopied(true) }}>
+							{copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />} Copy
+						</button>
+					</>
+				)}
+			</div>
+			<button className={iconBtn} aria-label="Close" onClick={onClose}><X className="h-4 w-4" /></button>
+		</div>
+	)
+}
+
+/** Forgot the code: the recovery key from the email, then a new code */
+function Forgot({ onReset, onCancel }: { onReset: (recoveryKey: string, code: string) => Promise<void>; onCancel: () => void }) {
+	const [key, setKey] = useState('')
+	const [code, setCode] = useState('')
+	const [busy, setBusy] = useState(false)
+	const [error, setError] = useState('')
+	const [fails, setFails] = useState(0)
+	const ready = cleanKey(key).length === CODE_LENGTH && code.trim().length === CODE_LENGTH
+
+	async function submit(e: FormEvent) {
+		e.preventDefault()
+		if (!ready) return
+		setBusy(true)
+		setError('')
+		try {
+			await onReset(cleanKey(key), code.trim())
+		} catch (err: any) {
+			const n = fails + 1
+			setFails(n)
+			await backoff(n)
+			setError(err instanceof DOMException || !err?.message ? 'Wrong recovery key. Use the one from the latest “recovery key” email.' : err.message)
+			setBusy(false)
+		}
+	}
+
+	return (
+		<form onSubmit={submit} className={`${card} space-y-4`}>
+			<h2 className="text-xl font-bold">Forgot your code?</h2>
+			<p className="text-sm text-neutral-500">
+				Open the latest email “Your TRAVSUS Passwords recovery key” in skendoulmohamed@gmail.com, paste the key here and choose a new unlock code. A new recovery key will be emailed.
+			</p>
+			<input value={key} onChange={(e) => setKey(e.target.value)} placeholder="Recovery key from the email" autoComplete="off" spellCheck={false} autoFocus className={`${inputCls} font-mono`} />
+			<div className="flex flex-col gap-2 sm:flex-row">
+				<input value={code} onChange={(e) => setCode(e.target.value)} maxLength={CODE_LENGTH} placeholder="New unlock code (40 characters)" autoComplete="off" spellCheck={false} className={`${inputCls} font-mono`} />
+				<button type="button" className={btnLight} onClick={() => setCode(newCode())}><RefreshCw className="h-4 w-4" /> Generate</button>
+			</div>
+			<p className="text-xs text-neutral-500">{code.trim().length} / {CODE_LENGTH} characters. Write the new code down before you continue.</p>
+			{error && <p className="text-sm text-red-500">{error}</p>}
+			<div className="flex gap-2">
+				<button disabled={busy || !ready} className={btnDark}>{busy ? <Loader2 className="h-4 w-4 animate-spin" /> : <KeyRound className="h-4 w-4" />} Set new code</button>
+				<button type="button" className={btnLight} onClick={onCancel}>Back</button>
+			</div>
+		</form>
 	)
 }
 
@@ -210,7 +360,7 @@ function Shell({ children }: { children: React.ReactNode }) {
 			</h1>
 			<p className="mt-2 flex items-start gap-2 text-sm text-neutral-500">
 				<ShieldCheck className="mt-0.5 h-4 w-4 shrink-0" />
-				Encrypted in your browser with your unlock code. The server only keeps scrambled data: without the code nobody can read it, not even us.
+				Encrypted in your browser. The server only keeps scrambled data: without your unlock code (or the recovery key we email you) nobody can read it, not even us.
 			</p>
 			<div className="mt-8">{children}</div>
 		</main>
@@ -246,7 +396,7 @@ function Setup({ onCreate }: { onCreate: (code: string) => Promise<void> }) {
 			<h2 className="text-xl font-bold">Create your unlock code</h2>
 			<p className="text-sm text-neutral-500">
 				You’ll need it every time you open this page. Use the generated one (strongest) or type your own: exactly {CODE_LENGTH} characters.{' '}
-				<strong className="text-neutral-950 dark:text-white">If you lose it, the passwords can’t be recovered.</strong> Write it on paper or keep it in a safe place, not in this vault.
+				Write it on paper or keep it in a safe place, not in this vault. A <strong className="text-neutral-950 dark:text-white">recovery key</strong> will be emailed to skendoulmohamed@gmail.com: keep that email, it lets you set a new code if you forget this one.
 			</p>
 			<div className="flex flex-col gap-2 sm:flex-row">
 				<input value={code} onChange={(e) => setCode(e.target.value)} maxLength={CODE_LENGTH} placeholder="Unlock code (40 characters)" autoComplete="off" spellCheck={false} className={`${inputCls} font-mono`} />
@@ -262,7 +412,7 @@ function Setup({ onCreate }: { onCreate: (code: string) => Promise<void> }) {
 			{mismatch && <p className="text-xs text-red-500">The two codes are different.</p>}
 			<label className="flex items-start gap-2 text-sm">
 				<input type="checkbox" checked={savedIt} onChange={(e) => setSavedIt(e.target.checked)} className="mt-0.5 rounded" />
-				I saved this code somewhere safe. I understand that without it the vault can’t be opened.
+				I saved this code somewhere safe.
 			</label>
 			{error && <p className="text-sm text-red-500">{error}</p>}
 			<button type="submit" disabled={busy || tooShort || !!mismatch || !confirm || !savedIt} className={btnDark}>
@@ -273,7 +423,7 @@ function Setup({ onCreate }: { onCreate: (code: string) => Promise<void> }) {
 }
 
 /** Enter the unlock code */
-function Unlock({ onUnlock }: { onUnlock: (code: string) => Promise<void> }) {
+function Unlock({ onUnlock, onForgot }: { onUnlock: (code: string) => Promise<void>; onForgot?: () => void }) {
 	const [code, setCode] = useState('')
 	const [busy, setBusy] = useState(false)
 	const [error, setError] = useState('')
@@ -286,12 +436,12 @@ function Unlock({ onUnlock }: { onUnlock: (code: string) => Promise<void> }) {
 		setError('')
 		try {
 			await onUnlock(code.trim())
-		} catch {
-			// Each wrong try waits a little longer
+		} catch (err: any) {
 			const n = fails + 1
 			setFails(n)
-			await new Promise((r) => setTimeout(r, Math.min(30_000, 1000 * 2 ** (n - 1))))
-			setError('Wrong code.')
+			await backoff(n)
+			// A wrong code fails to decrypt (DOMException); other errors are saving problems
+			setError(err instanceof DOMException || !err?.message ? 'Wrong code.' : err.message)
 			setBusy(false)
 		}
 	}
@@ -301,9 +451,16 @@ function Unlock({ onUnlock }: { onUnlock: (code: string) => Promise<void> }) {
 			<h2 className="text-xl font-bold">Locked</h2>
 			<input value={code} onChange={(e) => setCode(e.target.value)} type="password" placeholder="Your 40-character unlock code" autoComplete="off" autoFocus spellCheck={false} className={`${inputCls} h-12 font-mono`} />
 			{error && <p className="text-sm text-red-500">{error}</p>}
-			<button type="submit" disabled={busy || !code} className={btnDark}>
-				{busy ? <Loader2 className="h-4 w-4 animate-spin" /> : <KeyRound className="h-4 w-4" />} Unlock
-			</button>
+			<div className="flex flex-wrap items-center gap-4">
+				<button type="submit" disabled={busy || !code} className={btnDark}>
+					{busy ? <Loader2 className="h-4 w-4 animate-spin" /> : <KeyRound className="h-4 w-4" />} Unlock
+				</button>
+				{onForgot && (
+					<button type="button" className="text-sm font-semibold text-neutral-500 underline underline-offset-2 hover:text-neutral-950 dark:hover:text-white" onClick={onForgot}>
+						Forgot code?
+					</button>
+				)}
+			</div>
 		</form>
 	)
 }
@@ -321,7 +478,7 @@ async function copySecret(text: string) {
 }
 
 function Open({
-	vault, query, setQuery, saving, error, onSave, onLock, onChangeCode,
+	vault, query, setQuery, saving, error, onSave, onLock, onChangeCode, onNewRecoveryKey,
 }: {
 	vault: Vault
 	query: string
@@ -331,7 +488,9 @@ function Open({
 	onSave: (v: Vault) => Promise<void>
 	onLock: () => void
 	onChangeCode: (code: string) => Promise<void>
+	onNewRecoveryKey: () => Promise<void>
 }) {
+	const [mailing, setMailing] = useState(false)
 	const [adding, setAdding] = useState(false)
 	const [changing, setChanging] = useState(false)
 	// Every password is shown once the vault is open
@@ -356,13 +515,25 @@ function Open({
 					<Search className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-neutral-400" />
 					<input value={query} onChange={(e) => setQuery(e.target.value)} placeholder={`Search ${count} password${count === 1 ? '' : 's'}`} className={`${inputCls} pl-10`} />
 				</label>
-				<button className={btnDark} onClick={() => setAdding(true)}><Plus className="h-4 w-4" /> Add website</button>
+				<button className={btnDark} onClick={() => setAdding(true)}><Plus className="h-4 w-4" /> Add</button>
 				<button className={btnLight} onClick={() => setShowAll((v) => !v)}>{showAll ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />} {showAll ? 'Hide all' : 'Show all'}</button>
 				<button className={btnLight} onClick={onLock}><Lock className="h-4 w-4" /> Lock</button>
 			</div>
 			<p className="text-xs text-neutral-500" aria-live="polite">
 				{saving === 'saving' ? 'Saving…' : saving === 'saved' ? 'Saved, encrypted.' : ''} Locks by itself after 5 minutes without activity.{' '}
 				<button className="underline underline-offset-2" onClick={() => setChanging((v) => !v)}>Change unlock code</button>
+				{' · '}
+				<button
+					className="underline underline-offset-2 disabled:opacity-50"
+					disabled={mailing}
+					onClick={async () => {
+						setMailing(true)
+						await onNewRecoveryKey().catch(() => {})
+						setMailing(false)
+					}}
+				>
+					{mailing ? 'Sending…' : 'Email me a new recovery key'}
+				</button>
 			</p>
 			{error && <p className="rounded-2xl bg-red-50 px-4 py-3 text-sm text-red-600 dark:bg-red-950/40 dark:text-red-400">{error}</p>}
 			{changing && <ChangeCode onDone={() => setChanging(false)} onChange={onChangeCode} />}
@@ -384,7 +555,7 @@ function Open({
 			)}
 
 			{!projects.length && !adding && (
-				<div className={`${card} text-center text-sm text-neutral-500`}>{q ? 'Nothing matches your search.' : 'No websites yet. Press “Add website” to save your first password.'}</div>
+				<div className={`${card} text-center text-sm text-neutral-500`}>{q ? 'Nothing matches your search.' : 'No projects yet. Press “Add” to save your first email and password, for example under travsus.com.'}</div>
 			)}
 
 			{projects.map((project) => (
@@ -430,7 +601,7 @@ function QuickAdd({ onSubmit, onCancel }: { onSubmit: (v: { name: string; url: s
 			}}
 		>
 			<div className="grid gap-2 sm:grid-cols-3">
-				<input value={name} onChange={(e) => setName(e.target.value)} placeholder="Website name (e.g. Vercel)" autoFocus className={inputCls} />
+				<input value={name} onChange={(e) => setName(e.target.value)} placeholder="Project or website (e.g. travsus.com)" autoFocus className={inputCls} />
 				<input value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Email or username" autoComplete="off" className={inputCls} />
 				<div className="flex gap-2">
 					<input value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" autoComplete="new-password" spellCheck={false} className={`${inputCls} font-mono`} />
@@ -459,6 +630,7 @@ function ChangeCode({ onChange, onDone }: { onChange: (code: string) => Promise<
 	const [code, setCode] = useState('')
 	const [confirm, setConfirm] = useState('')
 	const [busy, setBusy] = useState(false)
+	const [error, setError] = useState('')
 	const ok = code.trim().length === CODE_LENGTH && confirm.trim() === code.trim()
 	return (
 		<form
@@ -467,16 +639,23 @@ function ChangeCode({ onChange, onDone }: { onChange: (code: string) => Promise<
 				e.preventDefault()
 				if (!ok) return
 				setBusy(true)
-				await onChange(code.trim())
-				onDone()
+				setError('')
+				try {
+					await onChange(code.trim())
+					onDone()
+				} catch (err: any) {
+					setError(err?.message || 'Not changed. Try again.')
+					setBusy(false)
+				}
 			}}
 		>
-			<p className="text-sm font-semibold">New unlock code (the old one stops working)</p>
+			<p className="text-sm font-semibold">New unlock code (the old one stops working; a new recovery key is emailed)</p>
 			<div className="flex flex-col gap-2 sm:flex-row">
 				<input value={code} onChange={(e) => setCode(e.target.value)} maxLength={CODE_LENGTH} placeholder={`Exactly ${CODE_LENGTH} characters`} autoComplete="off" spellCheck={false} className={`${inputCls} font-mono`} />
 				<button type="button" className={btnLight} onClick={() => setCode(newCode())}><RefreshCw className="h-4 w-4" /> Generate</button>
 			</div>
 			<input value={confirm} onChange={(e) => setConfirm(e.target.value)} type="password" placeholder="Type it again" autoComplete="off" className={`${inputCls} font-mono`} />
+			{error && <p className="text-sm text-red-500">{error}</p>}
 			<div className="flex gap-2">
 				<button disabled={!ok || busy} className={btnDark}>{busy ? <Loader2 className="h-4 w-4 animate-spin" /> : <Check className="h-4 w-4" />} Change code</button>
 				<button type="button" className={btnLight} onClick={onDone}>Cancel</button>
@@ -530,7 +709,7 @@ function ProjectCard({
 					)}
 				</div>
 				<div className="flex shrink-0 items-center">
-					<button className={iconBtn} title="Add a password" aria-label="Add a password" onClick={() => setAdding(true)}><Plus className="h-4 w-4" /></button>
+					<button className={iconBtn} title="Add an email and password" aria-label="Add an email and password" onClick={() => setAdding(true)}><Plus className="h-4 w-4" /></button>
 					<button className={iconBtn} title="Edit project" aria-label="Edit project" onClick={() => setEditing(true)}><Pencil className="h-4 w-4" /></button>
 					<button className={iconBtn} title="Delete project" aria-label="Delete project" onClick={onDelete}><Trash2 className="h-4 w-4" /></button>
 				</div>
@@ -541,7 +720,7 @@ function ProjectCard({
 					<EntryRow key={entry.id} entry={entry} showAll={showAll} onSave={onSaveEntry} onDelete={() => confirm(`Delete “${entry.label || entry.username}”?`) && onDeleteEntry(entry.id)} />
 				))}
 			</ul>
-			{!project.entries.length && !adding && <p className="mt-2 text-sm text-neutral-500">No passwords yet.</p>}
+			{!project.entries.length && !adding && <p className="mt-2 text-sm text-neutral-500">No emails yet.</p>}
 			{adding && <EntryForm onCancel={() => setAdding(false)} onSubmit={(entry) => { setAdding(false); onSaveEntry(entry) }} />}
 		</section>
 	)
@@ -564,11 +743,11 @@ function EntryRow({ entry, showAll, onSave, onDelete }: { entry: Entry; showAll:
 	return (
 		<li className="grid gap-2 py-3 sm:grid-cols-[1fr_1.2fr_auto] sm:items-center sm:gap-4">
 			<div className="min-w-0">
-				<p className="truncate text-sm font-semibold">{entry.label || 'Password'}</p>
-				<button className="flex max-w-full items-center gap-1.5 truncate text-sm text-neutral-500 hover:text-neutral-950 dark:hover:text-white" onClick={() => copy('user')} title="Copy username">
+				<button className="flex max-w-full items-center gap-1.5 truncate text-sm font-semibold hover:underline" onClick={() => copy('user')} title="Copy email or username">
 					<span className="truncate">{entry.username || '—'}</span>
-					{entry.username && (copied === 'user' ? <Check className="h-3.5 w-3.5 shrink-0" /> : <Copy className="h-3.5 w-3.5 shrink-0" />)}
+					{entry.username && (copied === 'user' ? <Check className="h-3.5 w-3.5 shrink-0" /> : <Copy className="h-3.5 w-3.5 shrink-0 text-neutral-400" />)}
 				</button>
+				{entry.label && <p className="truncate text-xs text-neutral-500">{entry.label}</p>}
 			</div>
 			<div className="flex min-w-0 items-center gap-1 rounded-xl bg-neutral-100 py-1 pl-3.5 pr-1 dark:bg-neutral-900">
 				<code className="min-w-0 flex-1 truncate font-mono text-sm">{show ? entry.password : '•'.repeat(Math.min(16, Math.max(8, entry.password.length)))}</code>

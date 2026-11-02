@@ -342,6 +342,33 @@ export const TEMPLATES = {
 		sample: { name: 'Sofia Martin', message: 'I love your travel videos about Morocco, I think your audience would enjoy our desert tours.', link: `${SITE}/en-US/affiliates/invite/sample` },
 	}),
 
+	'vault-recovery-key': template<{ key: string; reason: 'created' | 'changed' | 'reset' | 'new' }>({
+		name: 'Passwords recovery key',
+		category: 'Team',
+		to: 'Team',
+		from: FROM.hello,
+		when: 'To the owner when the password vault (Admin → Passwords) is created, its unlock code is changed or reset, or a new recovery key is asked for. The key is never stored by the site.',
+		connected: true,
+		subject: () => 'Your TRAVSUS Passwords recovery key',
+		preheader: () => 'Keep this email: it lets you set a new unlock code if you forget yours.',
+		body: (d) => [
+			eyebrow('Admin · Passwords'),
+			title('Your recovery key'),
+			text(
+				d.reason === 'created'
+					? 'Your password vault was created. If you ever forget your unlock code, this key lets you choose a new one.'
+					: d.reason === 'reset'
+						? 'Your unlock code was reset. Here is your new recovery key: the previous one no longer works.'
+						: 'Here is your new recovery key: the previous one no longer works.',
+			),
+			raw(`<p style="margin:8px 0 18px;padding:16px 18px;border-radius:14px;background:#f5f5f5;font:700 17px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.06em;word-break:break-all;color:#0a0a0a">${esc(d.key)}</p>`),
+			text('To use it: sign in, open Admin → Passwords, press “Forgot code?”, paste this key and choose a new unlock code.'),
+			button('Open Passwords', `${SITE}/en-US/admin/vault`),
+			small('Anyone with this key and your TRAVSUS sign-in can open your passwords. Keep 2-step verification on for this Gmail account. Didn’t ask for this? Open Passwords and change your unlock code.'),
+		],
+		sample: { key: 'SAMPLE0KEY0NOT0REAL0AAAAAAAAAAAAAAAAAAAA', reason: 'created' },
+	}),
+
 	'affiliate-invite-reminder': template<{ name?: string; link: string; last: boolean }>({
 		name: 'Affiliate invitation reminder',
 		category: 'Affiliates',
