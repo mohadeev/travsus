@@ -63,6 +63,8 @@ export const T = {
 	agencies: 'agency_requests',
 	// Instagram (and other) conversations with possible affiliates, tracked by hand
 	outreach: 'affiliate_outreach',
+	// The owner's password vault: one row, encrypted in the browser (the server never sees the passwords)
+	vault: 'admin_vault',
 	// Geography (the big collections live in the places database)
 	continents: 'geo_continents',
 	countries: 'geo_countries',
