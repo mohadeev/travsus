@@ -2781,7 +2781,7 @@
     "blog_post_cta": "在 Travsus 预订这趟旅行",
     "tab_blog": "博客",
     "your_link": "你的 Travsus 链接",
-    "form_website_invalid": "找不到该网站。请检查网址，或填写您的 Instagram 或 TikTok 账号。",
+    "form_website_invalid": "我们没有找到您的网站。请稍后再试。",
     "form_too_many": "今天来自您网络的申请过多。请明天再试，或通过电子邮件联系我们。"
   },
   "Forum": {
@@ -3291,7 +3291,7 @@
     "faq_languages_a": "不需要。用英语撰写即可，TRAVSUS 会以 10 种语言展示给旅行者。",
     "cta_title": "准备好迎接更多旅行者了吗？",
     "cta_text": "一分钟即可申请，我们会通过邮件与您联系。",
-    "form_website_invalid": "找不到该网站。请检查网址，或填写您的 Instagram 或 TikTok 账号。",
+    "form_website_invalid": "我们没有找到您的网站。请稍后再试。",
     "form_too_many": "今天来自您网络的申请过多。请明天再试，或通过电子邮件联系我们。"
   }
 }

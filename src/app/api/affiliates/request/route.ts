@@ -9,6 +9,8 @@ import { OWNER_EMAIL } from '@/lib/admin/owner'
 import { checkRequest, clientIp } from '@/lib/spamGuard'
 
 export const dynamic = 'force-dynamic'
+// Checking the website can take a few seconds
+export const maxDuration = 30
 
 const TYPE = 'affiliate'
 const limiter = rateLimit(5, 60_000) // 5 requests a minute per visitor
@@ -28,8 +30,8 @@ export async function POST(req: NextRequest) {
 	if (website.length < 3) return NextResponse.json({ code: 'NO_SOCIAL' }, { status: 400 })
 
 	const verdict = await checkRequest(req, body, { table: T.affiliates, email, website })
-	// Bots get a fake "thanks": nothing saved, no email
-	if (verdict === 'bot') return NextResponse.json({ code: 'REQUESTED' }, { status: 201 })
+	// Bots and blocked senders get a fake "thanks": nothing saved, no email
+	if (verdict === 'bot' || verdict === 'blocked') return NextResponse.json({ code: 'REQUESTED' }, { status: 201 })
 	if (verdict === 'too_many') return NextResponse.json({ code: 'TOO_MANY' }, { status: 429 })
 	if (verdict === 'fake_email') return NextResponse.json({ code: 'INVALID_EMAIL' }, { status: 400 })
 	if (verdict === 'fake_website') return NextResponse.json({ code: 'INVALID_WEBSITE' }, { status: 400 })

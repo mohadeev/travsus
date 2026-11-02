@@ -2906,7 +2906,7 @@
     "blog_post_cta": "Travsus에서 이 여행 예약",
     "tab_blog": "블로그",
     "your_link": "나의 Travsus 링크",
-    "form_website_invalid": "해당 웹사이트를 찾을 수 없습니다. 주소를 확인하거나 Instagram 또는 TikTok 계정을 입력해 주세요.",
+    "form_website_invalid": "웹사이트를 찾을 수 없습니다. 나중에 다시 시도해 주세요.",
     "form_too_many": "오늘 이 연결에서 요청이 너무 많습니다. 내일 다시 시도하시거나 이메일로 연락해 주세요."
   },
   "Forum": {
@@ -3416,7 +3416,7 @@
     "faq_languages_a": "아니요. 영어로 작성하시면 TRAVSUS가 10개 언어로 여행자에게 소개합니다.",
     "cta_title": "더 많은 여행자를 맞이할 준비가 되셨나요?",
     "cta_text": "1분이면 신청할 수 있습니다. 이메일로 연락드리겠습니다.",
-    "form_website_invalid": "해당 웹사이트를 찾을 수 없습니다. 주소를 확인하거나 Instagram 또는 TikTok 계정을 입력해 주세요.",
+    "form_website_invalid": "웹사이트를 찾을 수 없습니다. 나중에 다시 시도해 주세요.",
     "form_too_many": "오늘 이 연결에서 요청이 너무 많습니다. 내일 다시 시도하시거나 이메일로 연락해 주세요."
   }
 }

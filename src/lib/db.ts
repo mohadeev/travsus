@@ -63,6 +63,8 @@ export const T = {
 	agencies: 'agency_requests',
 	// Instagram (and other) conversations with possible affiliates, tracked by hand
 	outreach: 'affiliate_outreach',
+	// Spammers caught by the request forms: their IP and email are refused from then on
+	blocked: 'blocked_senders',
 	// The owner's password vault: one row, encrypted in the browser (the server never sees the passwords)
 	vault: 'admin_vault',
 	// Geography (the big collections live in the places database)
@@ -158,6 +160,7 @@ const TIMESTAMPS: Record<string, { created: string[]; updated?: string }> = {
 	[T.affiliateInvites]: { created: ['created_at'] },
 	[T.agencies]: { created: ['created_at'] },
 	[T.outreach]: { created: ['created_at'] },
+	[T.blocked]: { created: ['created_at'] },
 	[T.analyticsEvents]: { created: ['created_at'] },
 	[T.analyticsSessions]: { created: ['started_at', 'last_seen_at'] },
 	[T.counters]: { created: [] },
