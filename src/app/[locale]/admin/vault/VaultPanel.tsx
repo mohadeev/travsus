@@ -492,6 +492,8 @@ function Open({
 }) {
 	const [mailing, setMailing] = useState(false)
 	const [adding, setAdding] = useState(false)
+	// The project just created opens its "Add email" form
+	const [justCreated, setJustCreated] = useState<string | null>(null)
 	const [changing, setChanging] = useState(false)
 	// Every password is shown once the vault is open
 	const [showAll, setShowAll] = useState(true)
@@ -515,7 +517,7 @@ function Open({
 					<Search className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-neutral-400" />
 					<input value={query} onChange={(e) => setQuery(e.target.value)} placeholder={`Search ${count} password${count === 1 ? '' : 's'}`} className={`${inputCls} pl-10`} />
 				</label>
-				<button className={btnDark} onClick={() => setAdding(true)}><Plus className="h-4 w-4" /> Add</button>
+				<button className={btnDark} onClick={() => setAdding(true)}><Plus className="h-4 w-4" /> New project</button>
 				<button className={btnLight} onClick={() => setShowAll((v) => !v)}>{showAll ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />} {showAll ? 'Hide all' : 'Show all'}</button>
 				<button className={btnLight} onClick={onLock}><Lock className="h-4 w-4" /> Lock</button>
 			</div>
@@ -539,23 +541,21 @@ function Open({
 			{changing && <ChangeCode onDone={() => setChanging(false)} onChange={onChangeCode} />}
 
 			{adding && (
-				<QuickAdd
+				<ProjectForm
 					onCancel={() => setAdding(false)}
-					onSubmit={async ({ name, url, entry }) => {
+					onSubmit={async (name, url) => {
 						setAdding(false)
-						// Same website name: added to that card
 						const same = vault.projects.find((p) => p.name.toLowerCase() === name.toLowerCase())
-						await onSave({
-							projects: same
-								? vault.projects.map((p) => (p.id === same.id ? { ...p, url: p.url || url, entries: [...p.entries, entry] } : p))
-								: [...vault.projects, { id: uid(), name, url, entries: [entry] }],
-						})
+						if (same) return setJustCreated(same.id)
+						const id = uid()
+						setJustCreated(id)
+						await onSave({ projects: [...vault.projects, { id, name, url, entries: [] }] })
 					}}
 				/>
 			)}
 
 			{!projects.length && !adding && (
-				<div className={`${card} text-center text-sm text-neutral-500`}>{q ? 'Nothing matches your search.' : 'No projects yet. Press “Add” to save your first email and password, for example under travsus.com.'}</div>
+				<div className={`${card} text-center text-sm text-neutral-500`}>{q ? 'Nothing matches your search.' : 'No projects yet. Press “New project” to create one (for example travsus.com), then add its emails and passwords.'}</div>
 			)}
 
 			{projects.map((project) => (
@@ -563,6 +563,7 @@ function Open({
 					key={project.id}
 					project={project}
 					showAll={showAll}
+					startAdding={project.id === justCreated}
 					onRename={(name, url) => setProject(project.id, (p) => ({ ...p, name, url }))}
 					onDelete={() => confirm(`Delete “${project.name}” and its ${project.entries.length} password(s)?`) && setProject(project.id, () => null)}
 					onSaveEntry={(entry) =>
@@ -575,54 +576,6 @@ function Open({
 				/>
 			))}
 		</div>
-	)
-}
-
-/** Website name, email or username and password in one form (address and notes optional) */
-function QuickAdd({ onSubmit, onCancel }: { onSubmit: (v: { name: string; url: string; entry: Entry }) => void; onCancel: () => void }) {
-	const [name, setName] = useState('')
-	const [password, setPassword] = useState('')
-	const [username, setUsername] = useState('')
-	const [url, setUrl] = useState('')
-	const [notes, setNotes] = useState('')
-	const [more, setMore] = useState(false)
-	const ready = name.trim() && username.trim() && password
-	return (
-		<form
-			className={`${card} space-y-3`}
-			onSubmit={(e) => {
-				e.preventDefault()
-				if (!ready) return
-				onSubmit({
-					name: name.trim(),
-					url: url.trim(),
-					entry: { id: uid(), label: '', username: username.trim(), password, notes: notes.trim(), updatedAt: new Date().toISOString() },
-				})
-			}}
-		>
-			<div className="grid gap-2 sm:grid-cols-3">
-				<input value={name} onChange={(e) => setName(e.target.value)} placeholder="Project or website (e.g. travsus.com)" autoFocus className={inputCls} />
-				<input value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Email or username" autoComplete="off" className={inputCls} />
-				<div className="flex gap-2">
-					<input value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" autoComplete="new-password" spellCheck={false} className={`${inputCls} font-mono`} />
-					<button type="button" className={iconBtn} title="Generate a strong password" aria-label="Generate a strong password" onClick={() => setPassword(newPassword())}><RefreshCw className="h-4 w-4" /></button>
-				</div>
-			</div>
-			{more ? (
-				<div className="grid gap-2">
-					<input value={url} onChange={(e) => setUrl(e.target.value)} placeholder="Address (optional, e.g. vercel.com)" className={inputCls} />
-					<textarea value={notes} onChange={(e) => setNotes(e.target.value)} placeholder="Notes (optional)" rows={2} className={`${inputCls} h-auto py-2.5`} />
-				</div>
-			) : (
-				<button type="button" className="text-sm font-semibold text-neutral-500 underline underline-offset-2 hover:text-neutral-950 dark:hover:text-white" onClick={() => setMore(true)}>
-					+ Address or notes
-				</button>
-			)}
-			<div className="flex gap-2">
-				<button disabled={!ready} className={btnDark}><Check className="h-4 w-4" /> Save</button>
-				<button type="button" className={btnLight} onClick={onCancel}>Cancel</button>
-			</div>
-		</form>
 	)
 }
 
@@ -670,11 +623,11 @@ function ProjectForm({ initial, onSubmit, onCancel }: { initial?: { name: string
 	return (
 		<form className={`${card} space-y-3`} onSubmit={(e) => { e.preventDefault(); if (name.trim()) onSubmit(name.trim(), url.trim()) }}>
 			<div className="grid gap-2 sm:grid-cols-2">
-				<input value={name} onChange={(e) => setName(e.target.value)} placeholder="Project or website (e.g. TRAVSUS)" autoFocus className={inputCls} />
+				<input value={name} onChange={(e) => setName(e.target.value)} placeholder="Project name (e.g. travsus.com)" autoFocus className={inputCls} />
 				<input value={url} onChange={(e) => setUrl(e.target.value)} placeholder="Address (optional, e.g. travsus.com)" className={inputCls} />
 			</div>
 			<div className="flex gap-2">
-				<button disabled={!name.trim()} className={btnDark}><Check className="h-4 w-4" /> {initial ? 'Save' : 'Add project'}</button>
+				<button disabled={!name.trim()} className={btnDark}><Check className="h-4 w-4" /> {initial ? 'Save' : 'Create project'}</button>
 				<button type="button" className={btnLight} onClick={onCancel}>Cancel</button>
 			</div>
 		</form>
@@ -682,17 +635,21 @@ function ProjectForm({ initial, onSubmit, onCancel }: { initial?: { name: string
 }
 
 function ProjectCard({
-	project, showAll, onRename, onDelete, onSaveEntry, onDeleteEntry,
+	project, showAll, startAdding, onRename, onDelete, onSaveEntry, onDeleteEntry,
 }: {
 	project: Project
 	showAll: boolean
+	startAdding: boolean
 	onRename: (name: string, url: string) => void
 	onDelete: () => void
 	onSaveEntry: (entry: Entry) => void
 	onDeleteEntry: (id: string) => void
 }) {
 	const [editing, setEditing] = useState(false)
-	const [adding, setAdding] = useState(false)
+	const [adding, setAdding] = useState(startAdding)
+	useEffect(() => {
+		if (startAdding) setAdding(true)
+	}, [startAdding])
 	const href = project.url ? (/^https?:\/\//i.test(project.url) ? project.url : `https://${project.url}`) : ''
 
 	if (editing) return <ProjectForm initial={project} onCancel={() => setEditing(false)} onSubmit={(name, url) => { setEditing(false); onRename(name, url) }} />
@@ -721,7 +678,13 @@ function ProjectCard({
 				))}
 			</ul>
 			{!project.entries.length && !adding && <p className="mt-2 text-sm text-neutral-500">No emails yet.</p>}
-			{adding && <EntryForm onCancel={() => setAdding(false)} onSubmit={(entry) => { setAdding(false); onSaveEntry(entry) }} />}
+			{adding ? (
+				<EntryForm onCancel={() => setAdding(false)} onSubmit={(entry) => { setAdding(false); onSaveEntry(entry) }} />
+			) : (
+				<button className={`${btnLight} mt-3 h-10 px-4`} onClick={() => setAdding(true)}>
+					<Plus className="h-4 w-4" /> Add email
+				</button>
+			)}
 		</section>
 	)
 }
@@ -779,14 +742,14 @@ function EntryForm({ initial, onSubmit, onCancel }: { initial?: Entry; onSubmit:
 			}}
 		>
 			<div className="grid gap-2 sm:grid-cols-2">
-				<input value={label} onChange={(e) => setLabel(e.target.value)} placeholder="What is it? (e.g. Admin login, Database, Stripe)" className={inputCls} autoFocus />
-				<input value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Email or username" autoComplete="off" className={inputCls} />
+				<input value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Email or username" autoComplete="off" className={inputCls} autoFocus />
+				<div className="flex gap-2">
+					<input value={password} onChange={(e) => setPassword(e.target.value)} type={show ? 'text' : 'password'} placeholder="Password" autoComplete="new-password" spellCheck={false} className={`${inputCls} font-mono`} />
+					<button type="button" className={iconBtn} aria-label={show ? 'Hide' : 'Show'} onClick={() => setShow((v) => !v)}>{show ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}</button>
+					<button type="button" className={iconBtn} title="Generate a strong password" aria-label="Generate a strong password" onClick={() => { setPassword(newPassword()); setShow(true) }}><RefreshCw className="h-4 w-4" /></button>
+				</div>
 			</div>
-			<div className="flex gap-2">
-				<input value={password} onChange={(e) => setPassword(e.target.value)} type={show ? 'text' : 'password'} placeholder="Password" autoComplete="new-password" spellCheck={false} className={`${inputCls} font-mono`} />
-				<button type="button" className={iconBtn} aria-label={show ? 'Hide' : 'Show'} onClick={() => setShow((v) => !v)}>{show ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}</button>
-				<button type="button" className={`${btnLight} shrink-0 px-4`} onClick={() => { setPassword(newPassword()); setShow(true) }}><RefreshCw className="h-4 w-4" /> <span className="hidden sm:inline">Generate</span></button>
-			</div>
+			<input value={label} onChange={(e) => setLabel(e.target.value)} placeholder="What is it? (optional, e.g. Admin, Vercel, Gmail)" className={inputCls} />
 			<textarea value={notes} onChange={(e) => setNotes(e.target.value)} placeholder="Notes (optional: recovery codes, PIN, where it's used…)" rows={2} className={`${inputCls} h-auto py-2.5`} />
 			<div className="flex gap-2">
 				<button disabled={!password || !username.trim()} className={btnDark}><Check className="h-4 w-4" /> Save</button>
