@@ -407,7 +407,7 @@ function Open({
 	)
 }
 
-/** Website name + password in one form (email, address and notes optional) */
+/** Website name, email or username and password in one form (address and notes optional) */
 function QuickAdd({ onSubmit, onCancel }: { onSubmit: (v: { name: string; url: string; entry: Entry }) => void; onCancel: () => void }) {
 	const [name, setName] = useState('')
 	const [password, setPassword] = useState('')
@@ -415,7 +415,7 @@ function QuickAdd({ onSubmit, onCancel }: { onSubmit: (v: { name: string; url: s
 	const [url, setUrl] = useState('')
 	const [notes, setNotes] = useState('')
 	const [more, setMore] = useState(false)
-	const ready = name.trim() && password
+	const ready = name.trim() && username.trim() && password
 	return (
 		<form
 			className={`${card} space-y-3`}
@@ -429,22 +429,22 @@ function QuickAdd({ onSubmit, onCancel }: { onSubmit: (v: { name: string; url: s
 				})
 			}}
 		>
-			<div className="grid gap-2 sm:grid-cols-2">
-				<input value={name} onChange={(e) => setName(e.target.value)} placeholder="Website name (e.g. Vercel, Stripe, Gmail)" autoFocus className={inputCls} />
+			<div className="grid gap-2 sm:grid-cols-3">
+				<input value={name} onChange={(e) => setName(e.target.value)} placeholder="Website name (e.g. Vercel)" autoFocus className={inputCls} />
+				<input value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Email or username" autoComplete="off" className={inputCls} />
 				<div className="flex gap-2">
 					<input value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" autoComplete="new-password" spellCheck={false} className={`${inputCls} font-mono`} />
 					<button type="button" className={iconBtn} title="Generate a strong password" aria-label="Generate a strong password" onClick={() => setPassword(newPassword())}><RefreshCw className="h-4 w-4" /></button>
 				</div>
 			</div>
 			{more ? (
-				<div className="grid gap-2 sm:grid-cols-2">
-					<input value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Email or username (optional)" autoComplete="off" className={inputCls} />
+				<div className="grid gap-2">
 					<input value={url} onChange={(e) => setUrl(e.target.value)} placeholder="Address (optional, e.g. vercel.com)" className={inputCls} />
-					<textarea value={notes} onChange={(e) => setNotes(e.target.value)} placeholder="Notes (optional)" rows={2} className={`${inputCls} h-auto py-2.5 sm:col-span-2`} />
+					<textarea value={notes} onChange={(e) => setNotes(e.target.value)} placeholder="Notes (optional)" rows={2} className={`${inputCls} h-auto py-2.5`} />
 				</div>
 			) : (
 				<button type="button" className="text-sm font-semibold text-neutral-500 underline underline-offset-2 hover:text-neutral-950 dark:hover:text-white" onClick={() => setMore(true)}>
-					+ Email, address or notes
+					+ Address or notes
 				</button>
 			)}
 			<div className="flex gap-2">
@@ -595,7 +595,7 @@ function EntryForm({ initial, onSubmit, onCancel }: { initial?: Entry; onSubmit:
 			className="mt-3 space-y-2 rounded-2xl bg-neutral-50 p-3 sm:p-4 dark:bg-neutral-900/60"
 			onSubmit={(e) => {
 				e.preventDefault()
-				if (!password && !username) return
+				if (!password || !username.trim()) return
 				onSubmit({ id: initial?.id ?? uid(), label: label.trim(), username: username.trim(), password, notes: notes.trim(), updatedAt: new Date().toISOString() })
 			}}
 		>
@@ -610,7 +610,7 @@ function EntryForm({ initial, onSubmit, onCancel }: { initial?: Entry; onSubmit:
 			</div>
 			<textarea value={notes} onChange={(e) => setNotes(e.target.value)} placeholder="Notes (optional: recovery codes, PIN, where it's used…)" rows={2} className={`${inputCls} h-auto py-2.5`} />
 			<div className="flex gap-2">
-				<button disabled={!password && !username} className={btnDark}><Check className="h-4 w-4" /> Save</button>
+				<button disabled={!password || !username.trim()} className={btnDark}><Check className="h-4 w-4" /> Save</button>
 				<button type="button" className={btnLight} onClick={onCancel}><X className="h-4 w-4" /> Cancel</button>
 			</div>
 		</form>
