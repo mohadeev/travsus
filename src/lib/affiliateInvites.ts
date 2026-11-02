@@ -141,18 +141,20 @@ export async function remindPendingInvites(max = 100) {
 		if (Object.keys(results).length >= max) break
 		const done = invite.reminders ?? 0
 		const age = now - new Date(invite.created_at).getTime()
-		// The invitation itself never went out, all reminders sent, or not due yet
-		if (!invite.sends || done >= REMINDER_DAYS.length || age < REMINDER_DAYS[done] * DAY) continue
-		// A run that repeats or catches up doesn't send two in a row
+		// Reminders whose day has come; missed ones are skipped, not sent in a row
+		const due = REMINDER_DAYS.filter((days) => age >= days * DAY).length
+		// The invitation itself never went out, or nothing new is due
+		if (!invite.sends || due <= done) continue
+		// A run that repeats the same day doesn't send twice
 		if (invite.last_reminded_at && now - new Date(invite.last_reminded_at).getTime() < 20 * 3600_000) continue
 
 		const sent = await sendTemplate('affiliate-invite-reminder', {
 			to: { email: invite.email, name: invite.name ?? undefined },
-			data: { name: invite.name ?? undefined, link: inviteLink(invite.token), last: done + 1 === REMINDER_DAYS.length },
+			data: { name: invite.name ?? undefined, link: inviteLink(invite.token), last: due === REMINDER_DAYS.length },
 		})
 		if (sent.ok) {
-			await db.from(T.affiliateInvites).update({ reminders: done + 1, last_reminded_at: new Date().toISOString() }).eq('id', invite.id)
-			results[invite.email] = `reminder ${done + 1}`
+			await db.from(T.affiliateInvites).update({ reminders: due, last_reminded_at: new Date().toISOString() }).eq('id', invite.id)
+			results[invite.email] = `reminder ${due}`
 		} else results[invite.email] = `failed: ${sent.error}`
 	}
 	return results
