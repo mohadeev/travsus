@@ -6,7 +6,8 @@
 // including us, can open it without the code.
 //
 // Passwords are grouped by project (a website, an app...). The vault locks by
-// itself after 5 minutes without activity, and when the tab is closed.
+// itself after 5 minutes without activity, and when the tab is closed. One
+// 40-character code opens everything, with every password shown.
 import { useCallback, useEffect, useMemo, useRef, useState, type FormEvent } from 'react'
 import { Check, Copy, Eye, EyeOff, ExternalLink, KeyRound, Loader2, Lock, Pencil, Plus, RefreshCw, Search, ShieldCheck, Trash2, X } from 'lucide-react'
 
@@ -17,7 +18,7 @@ type Sealed = { kdf: 'PBKDF2-SHA256'; iterations: number; salt: string; iv: stri
 type Phase = 'loading' | 'setup' | 'locked' | 'open' | 'error'
 
 const ITERATIONS = 600_000
-const MIN_CODE = 20
+const CODE_LENGTH = 40
 const IDLE_MS = 5 * 60_000
 const CLIPBOARD_MS = 30_000
 
@@ -52,8 +53,8 @@ const pick = (alphabet: string, n: number) => {
 	while (out.length < n) for (const b of Array.from(random(n * 2))) if (b < limit && out.length < n) out.push(alphabet[b % alphabet.length])
 	return out.join('')
 }
-/** 40 characters in 8 groups: about 200 bits, far beyond guessing */
-const newCode = () => pick(CODE_ALPHABET, 40).match(/.{5}/g)!.join('-')
+/** 40 characters: about 200 bits, far beyond guessing */
+const newCode = () => pick(CODE_ALPHABET, CODE_LENGTH)
 const newPassword = () => pick('ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789!@#$%&*?-_=+', 24)
 const uid = () => toB64(random(9)).replace(/[+/=]/g, '')
 
@@ -224,7 +225,7 @@ function Setup({ onCreate }: { onCreate: (code: string) => Promise<void> }) {
 	const [busy, setBusy] = useState(false)
 	const [error, setError] = useState('')
 	const [copied, setCopied] = useState(false)
-	const tooShort = code.trim().length < MIN_CODE
+	const tooShort = code.trim().length !== CODE_LENGTH
 	const mismatch = confirm && confirm.trim() !== code.trim()
 
 	async function submit(e: FormEvent) {
@@ -244,11 +245,11 @@ function Setup({ onCreate }: { onCreate: (code: string) => Promise<void> }) {
 		<form onSubmit={submit} className={`${card} space-y-4`}>
 			<h2 className="text-xl font-bold">Create your unlock code</h2>
 			<p className="text-sm text-neutral-500">
-				You’ll need it every time you open this page. Use the generated one (strongest) or type your own of at least {MIN_CODE} characters.{' '}
+				You’ll need it every time you open this page. Use the generated one (strongest) or type your own: exactly {CODE_LENGTH} characters.{' '}
 				<strong className="text-neutral-950 dark:text-white">If you lose it, the passwords can’t be recovered.</strong> Write it on paper or keep it in a safe place, not in this vault.
 			</p>
 			<div className="flex flex-col gap-2 sm:flex-row">
-				<input value={code} onChange={(e) => setCode(e.target.value)} placeholder="Unlock code" autoComplete="off" spellCheck={false} className={`${inputCls} font-mono`} />
+				<input value={code} onChange={(e) => setCode(e.target.value)} maxLength={CODE_LENGTH} placeholder="Unlock code (40 characters)" autoComplete="off" spellCheck={false} className={`${inputCls} font-mono`} />
 				<button type="button" className={btnLight} onClick={() => { setCode(newCode()); setConfirm(''); setCopied(false) }}>
 					<RefreshCw className="h-4 w-4" /> Generate
 				</button>
@@ -256,7 +257,7 @@ function Setup({ onCreate }: { onCreate: (code: string) => Promise<void> }) {
 					{copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />} Copy
 				</button>
 			</div>
-			{code && tooShort && <p className="text-xs text-red-500">At least {MIN_CODE} characters ({code.trim().length} now).</p>}
+			<p className={`text-xs ${code && tooShort ? 'text-red-500' : 'text-neutral-500'}`}>{code.trim().length} / {CODE_LENGTH} characters</p>
 			<input value={confirm} onChange={(e) => setConfirm(e.target.value)} type="password" placeholder="Type the code again" autoComplete="off" className={`${inputCls} font-mono`} />
 			{mismatch && <p className="text-xs text-red-500">The two codes are different.</p>}
 			<label className="flex items-start gap-2 text-sm">
@@ -298,7 +299,7 @@ function Unlock({ onUnlock }: { onUnlock: (code: string) => Promise<void> }) {
 	return (
 		<form onSubmit={submit} className={`${card} space-y-4`}>
 			<h2 className="text-xl font-bold">Locked</h2>
-			<input value={code} onChange={(e) => setCode(e.target.value)} type="password" placeholder="Your unlock code" autoComplete="off" autoFocus spellCheck={false} className={`${inputCls} h-12 font-mono`} />
+			<input value={code} onChange={(e) => setCode(e.target.value)} type="password" placeholder="Your 40-character unlock code" autoComplete="off" autoFocus spellCheck={false} className={`${inputCls} h-12 font-mono`} />
 			{error && <p className="text-sm text-red-500">{error}</p>}
 			<button type="submit" disabled={busy || !code} className={btnDark}>
 				{busy ? <Loader2 className="h-4 w-4 animate-spin" /> : <KeyRound className="h-4 w-4" />} Unlock
@@ -333,6 +334,8 @@ function Open({
 }) {
 	const [adding, setAdding] = useState(false)
 	const [changing, setChanging] = useState(false)
+	// Every password is shown once the vault is open
+	const [showAll, setShowAll] = useState(true)
 	const q = query.trim().toLowerCase()
 	const projects = useMemo(() => {
 		const sorted = [...vault.projects].sort((a, b) => a.name.localeCompare(b.name))
@@ -354,6 +357,7 @@ function Open({
 					<input value={query} onChange={(e) => setQuery(e.target.value)} placeholder={`Search ${count} password${count === 1 ? '' : 's'}`} className={`${inputCls} pl-10`} />
 				</label>
 				<button className={btnDark} onClick={() => setAdding(true)}><Plus className="h-4 w-4" /> Add project</button>
+				<button className={btnLight} onClick={() => setShowAll((v) => !v)}>{showAll ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />} {showAll ? 'Hide all' : 'Show all'}</button>
 				<button className={btnLight} onClick={onLock}><Lock className="h-4 w-4" /> Lock</button>
 			</div>
 			<p className="text-xs text-neutral-500" aria-live="polite">
@@ -381,6 +385,7 @@ function Open({
 				<ProjectCard
 					key={project.id}
 					project={project}
+					showAll={showAll}
 					onRename={(name, url) => setProject(project.id, (p) => ({ ...p, name, url }))}
 					onDelete={() => confirm(`Delete “${project.name}” and its ${project.entries.length} password(s)?`) && setProject(project.id, () => null)}
 					onSaveEntry={(entry) =>
@@ -400,7 +405,7 @@ function ChangeCode({ onChange, onDone }: { onChange: (code: string) => Promise<
 	const [code, setCode] = useState('')
 	const [confirm, setConfirm] = useState('')
 	const [busy, setBusy] = useState(false)
-	const ok = code.trim().length >= MIN_CODE && confirm.trim() === code.trim()
+	const ok = code.trim().length === CODE_LENGTH && confirm.trim() === code.trim()
 	return (
 		<form
 			className={`${card} space-y-3`}
@@ -414,7 +419,7 @@ function ChangeCode({ onChange, onDone }: { onChange: (code: string) => Promise<
 		>
 			<p className="text-sm font-semibold">New unlock code (the old one stops working)</p>
 			<div className="flex flex-col gap-2 sm:flex-row">
-				<input value={code} onChange={(e) => setCode(e.target.value)} placeholder={`At least ${MIN_CODE} characters`} autoComplete="off" spellCheck={false} className={`${inputCls} font-mono`} />
+				<input value={code} onChange={(e) => setCode(e.target.value)} maxLength={CODE_LENGTH} placeholder={`Exactly ${CODE_LENGTH} characters`} autoComplete="off" spellCheck={false} className={`${inputCls} font-mono`} />
 				<button type="button" className={btnLight} onClick={() => setCode(newCode())}><RefreshCw className="h-4 w-4" /> Generate</button>
 			</div>
 			<input value={confirm} onChange={(e) => setConfirm(e.target.value)} type="password" placeholder="Type it again" autoComplete="off" className={`${inputCls} font-mono`} />
@@ -444,9 +449,10 @@ function ProjectForm({ initial, onSubmit, onCancel }: { initial?: { name: string
 }
 
 function ProjectCard({
-	project, onRename, onDelete, onSaveEntry, onDeleteEntry,
+	project, showAll, onRename, onDelete, onSaveEntry, onDeleteEntry,
 }: {
 	project: Project
+	showAll: boolean
 	onRename: (name: string, url: string) => void
 	onDelete: () => void
 	onSaveEntry: (entry: Entry) => void
@@ -478,7 +484,7 @@ function ProjectCard({
 
 			<ul className="mt-4 divide-y divide-neutral-100 dark:divide-neutral-800">
 				{project.entries.map((entry) => (
-					<EntryRow key={entry.id} entry={entry} onSave={onSaveEntry} onDelete={() => confirm(`Delete “${entry.label || entry.username}”?`) && onDeleteEntry(entry.id)} />
+					<EntryRow key={entry.id} entry={entry} showAll={showAll} onSave={onSaveEntry} onDelete={() => confirm(`Delete “${entry.label || entry.username}”?`) && onDeleteEntry(entry.id)} />
 				))}
 			</ul>
 			{!project.entries.length && !adding && <p className="mt-2 text-sm text-neutral-500">No passwords yet.</p>}
@@ -487,16 +493,11 @@ function ProjectCard({
 	)
 }
 
-function EntryRow({ entry, onSave, onDelete }: { entry: Entry; onSave: (e: Entry) => void; onDelete: () => void }) {
-	const [show, setShow] = useState(false)
+function EntryRow({ entry, showAll, onSave, onDelete }: { entry: Entry; showAll: boolean; onSave: (e: Entry) => void; onDelete: () => void }) {
+	const [show, setShow] = useState(showAll)
+	useEffect(() => setShow(showAll), [showAll])
 	const [editing, setEditing] = useState(false)
 	const [copied, setCopied] = useState<'user' | 'pass' | null>(null)
-	// Hide the password again after 20 s
-	useEffect(() => {
-		if (!show) return
-		const t = setTimeout(() => setShow(false), 20_000)
-		return () => clearTimeout(t)
-	}, [show])
 
 	const copy = async (what: 'user' | 'pass') => {
 		await (what === 'pass' ? copySecret(entry.password) : navigator.clipboard.writeText(entry.username)).catch(() => {})
