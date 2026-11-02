@@ -356,7 +356,7 @@ function Open({
 					<Search className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-neutral-400" />
 					<input value={query} onChange={(e) => setQuery(e.target.value)} placeholder={`Search ${count} password${count === 1 ? '' : 's'}`} className={`${inputCls} pl-10`} />
 				</label>
-				<button className={btnDark} onClick={() => setAdding(true)}><Plus className="h-4 w-4" /> Add project</button>
+				<button className={btnDark} onClick={() => setAdding(true)}><Plus className="h-4 w-4" /> Add website</button>
 				<button className={btnLight} onClick={() => setShowAll((v) => !v)}>{showAll ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />} {showAll ? 'Hide all' : 'Show all'}</button>
 				<button className={btnLight} onClick={onLock}><Lock className="h-4 w-4" /> Lock</button>
 			</div>
@@ -368,17 +368,23 @@ function Open({
 			{changing && <ChangeCode onDone={() => setChanging(false)} onChange={onChangeCode} />}
 
 			{adding && (
-				<ProjectForm
+				<QuickAdd
 					onCancel={() => setAdding(false)}
-					onSubmit={async (name, url) => {
+					onSubmit={async ({ name, url, entry }) => {
 						setAdding(false)
-						await onSave({ projects: [...vault.projects, { id: uid(), name, url, entries: [] }] })
+						// Same website name: added to that card
+						const same = vault.projects.find((p) => p.name.toLowerCase() === name.toLowerCase())
+						await onSave({
+							projects: same
+								? vault.projects.map((p) => (p.id === same.id ? { ...p, url: p.url || url, entries: [...p.entries, entry] } : p))
+								: [...vault.projects, { id: uid(), name, url, entries: [entry] }],
+						})
 					}}
 				/>
 			)}
 
 			{!projects.length && !adding && (
-				<div className={`${card} text-center text-sm text-neutral-500`}>{q ? 'Nothing matches your search.' : 'No projects yet. Add your first website or app.'}</div>
+				<div className={`${card} text-center text-sm text-neutral-500`}>{q ? 'Nothing matches your search.' : 'No websites yet. Press “Add website” to save your first password.'}</div>
 			)}
 
 			{projects.map((project) => (
@@ -398,6 +404,54 @@ function Open({
 				/>
 			))}
 		</div>
+	)
+}
+
+/** Website name + password in one form (email, address and notes optional) */
+function QuickAdd({ onSubmit, onCancel }: { onSubmit: (v: { name: string; url: string; entry: Entry }) => void; onCancel: () => void }) {
+	const [name, setName] = useState('')
+	const [password, setPassword] = useState('')
+	const [username, setUsername] = useState('')
+	const [url, setUrl] = useState('')
+	const [notes, setNotes] = useState('')
+	const [more, setMore] = useState(false)
+	const ready = name.trim() && password
+	return (
+		<form
+			className={`${card} space-y-3`}
+			onSubmit={(e) => {
+				e.preventDefault()
+				if (!ready) return
+				onSubmit({
+					name: name.trim(),
+					url: url.trim(),
+					entry: { id: uid(), label: '', username: username.trim(), password, notes: notes.trim(), updatedAt: new Date().toISOString() },
+				})
+			}}
+		>
+			<div className="grid gap-2 sm:grid-cols-2">
+				<input value={name} onChange={(e) => setName(e.target.value)} placeholder="Website name (e.g. Vercel, Stripe, Gmail)" autoFocus className={inputCls} />
+				<div className="flex gap-2">
+					<input value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" autoComplete="new-password" spellCheck={false} className={`${inputCls} font-mono`} />
+					<button type="button" className={iconBtn} title="Generate a strong password" aria-label="Generate a strong password" onClick={() => setPassword(newPassword())}><RefreshCw className="h-4 w-4" /></button>
+				</div>
+			</div>
+			{more ? (
+				<div className="grid gap-2 sm:grid-cols-2">
+					<input value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Email or username (optional)" autoComplete="off" className={inputCls} />
+					<input value={url} onChange={(e) => setUrl(e.target.value)} placeholder="Address (optional, e.g. vercel.com)" className={inputCls} />
+					<textarea value={notes} onChange={(e) => setNotes(e.target.value)} placeholder="Notes (optional)" rows={2} className={`${inputCls} h-auto py-2.5 sm:col-span-2`} />
+				</div>
+			) : (
+				<button type="button" className="text-sm font-semibold text-neutral-500 underline underline-offset-2 hover:text-neutral-950 dark:hover:text-white" onClick={() => setMore(true)}>
+					+ Email, address or notes
+				</button>
+			)}
+			<div className="flex gap-2">
+				<button disabled={!ready} className={btnDark}><Check className="h-4 w-4" /> Save</button>
+				<button type="button" className={btnLight} onClick={onCancel}>Cancel</button>
+			</div>
+		</form>
 	)
 }
 
@@ -510,7 +564,7 @@ function EntryRow({ entry, showAll, onSave, onDelete }: { entry: Entry; showAll:
 	return (
 		<li className="grid gap-2 py-3 sm:grid-cols-[1fr_1.2fr_auto] sm:items-center sm:gap-4">
 			<div className="min-w-0">
-				<p className="truncate text-sm font-semibold">{entry.label || 'Login'}</p>
+				<p className="truncate text-sm font-semibold">{entry.label || 'Password'}</p>
 				<button className="flex max-w-full items-center gap-1.5 truncate text-sm text-neutral-500 hover:text-neutral-950 dark:hover:text-white" onClick={() => copy('user')} title="Copy username">
 					<span className="truncate">{entry.username || '—'}</span>
 					{entry.username && (copied === 'user' ? <Check className="h-3.5 w-3.5 shrink-0" /> : <Copy className="h-3.5 w-3.5 shrink-0" />)}
