@@ -6,7 +6,6 @@ import { OWNER_EMAIL } from '@/lib/admin/owner'
 import { PAID_STATES } from '@/lib/dashboard'
 import { readTripDates } from '@/lib/tripDates'
 import { SITE } from './layout'
-import { bookingPdf, bookingPdfName } from './bookingPdf'
 import { sendTemplate } from './send'
 import type { BookingEmail } from './templates'
 
@@ -71,6 +70,9 @@ export async function sendBookingConfirmed(bookingId: string) {
 	try {
 		const data = await bookingEmailData(bookingId)
 		if (!data?.customerEmail) return
+		// The PDF library (@react-pdf + yoga WebAssembly) is loaded only here,
+		// when a confirmation is sent, never for the pages that import this file
+		const { bookingPdf, bookingPdfName } = await import('./bookingPdf')
 		const pdf = await bookingPdf(data).catch((error) => {
 			console.error('Booking PDF failed:', error)
 			return null

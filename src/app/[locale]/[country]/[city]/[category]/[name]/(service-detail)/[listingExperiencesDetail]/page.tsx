@@ -1,9 +1,8 @@
 import { notFound } from 'next/navigation'
 import { setRequestLocale } from 'next-intl/server'
 import type { Metadata } from 'next'
-import { updateLineItemsLogic } from '@/app/api/updateLineItems/updateLineItemsLogic'
 import { getTourData } from '@/lib/tourData'
-import { getHomeData } from '@/lib/homeData'
+import { getTourPageExtras } from '@/lib/tourPage'
 import ListingExperiencesDetailPage from './TourDetailClient'
 import { getTourCatalog } from '@/lib/tourCatalog'
 import RecentTourTracker from '@/components/RecentTourTracker'
@@ -101,33 +100,6 @@ export async function generateMetadata(
 	}
 }
 
-/** Per-person price for a group of `size` guests (same logic as the sidebar). */
-async function pricePerPerson(tour: any, size: number) {
-	const prices = await updateLineItemsLogic({
-		tour,
-		body: { guests: { guestAdults: size, guestChildren: 0 } },
-	})
-	const total = (prices?.lineItems ?? [])
-		.filter((item: any) => item.includeInTotal)
-		.reduce((sum: number, item: any) => sum + (item.totalPrice || 0), 0)
-	return total > 0 ? total / size : undefined
-}
-
-/** Real per-person price range over every group size the tour accepts. */
-async function priceRange(tour: any) {
-	const maxSeats = Math.max(
-		1,
-		...(tour.pricingTiers ?? []).map((tier: any) => tier.maxSeats || 0),
-	)
-	const prices: number[] = []
-	for (let size = 1; size <= Math.min(maxSeats, 50); size++) {
-		const price = await pricePerPerson(tour, size).catch(() => undefined)
-		if (price) prices.push(price)
-	}
-	if (!prices.length) return undefined
-	return { low: Math.min(...prices), high: Math.max(...prices) }
-}
-
 const DetailPage = async (props: DetailPageProps) => {
 	const params = await props.params;
 	const { listingExperiencesDetail: tourId, locale } = params
@@ -139,19 +111,13 @@ const DetailPage = async (props: DetailPageProps) => {
 		if (!tour) notFound()
 
 
-		// Four other tours, the ones starting in the same city first
-		const { tours } = await getHomeData(locale)
-		const city = tour.startAddress?.city
-		const similar = tours
-			.filter((other) => other.id !== tour.id)
-			.sort((a, b) => Number(b.city === city) - Number(a.city === city))
-			.slice(0, 4)
-			.map(({ searchText, ...card }) => card) // not needed in the browser
-		// Shown in the booking card until the browser has priced the booking
-		const fromPricePerPerson = tours.find((t) => t.id === tour.id)?.pricePerPerson ?? null
+		// Similar tours, "from" price and price range: one small cached result per tour
+		const extras = await getTourPageExtras(tourId, locale)
+		const similar = extras?.similar ?? []
+		const fromPricePerPerson = extras?.fromPricePerPerson ?? null
 
 		const jsonLd = tourJsonLd(tour, locale, {
-			prices: await priceRange(tour),
+			prices: extras?.prices ?? undefined,
 			currency: tour.pricingTiers?.[0]?.pricing?.currency || 'EUR',
 		})
 
