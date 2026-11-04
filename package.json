@@ -15,7 +15,7 @@
     "db:indexes": "node scripts/db/indexes.mjs",
     "lint": "next lint",
     "dev:vinext": "vite dev --port 3001",
-    "build:vinext": "vite build",
+    "build:vinext": "CLOUDFLARE_BUILD=1 vite build",
     "start:vinext": "vite preview",
     "deploy:vinext": "vinext-cloudflare deploy"
   },
@@ -107,6 +107,7 @@
     "react-hook-form": "^7.53.2",
     "react-hooks-global-state": "^2.1.0",
     "react-icons": "^5.3.0",
+    "react-markdown": "^10.1.0",
     "react-motion": "^0.5.2",
     "react-phone-number-input": "^3.4.5",
     "react-redux": "^9.2.0",

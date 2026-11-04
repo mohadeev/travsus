@@ -4,7 +4,7 @@
 import Link from 'next/link'
 import type { ReactNode } from 'react'
 import { ArrowRight, ChevronDown } from 'lucide-react'
-import { MDXRemote } from 'next-mdx-remote/rsc'
+import Markdown from 'react-markdown'
 import { getLocale, getTranslations } from 'next-intl/server'
 import remarkGfm from 'remark-gfm'
 
@@ -47,6 +47,12 @@ const components = {
 	a: ({ href = '', ...props }: any) =>
 		/^https?:/.test(href) ? <a href={href} target="_blank" rel="noopener noreferrer" {...props} /> : <a href={href} {...props} />,
 }
+
+// react-markdown also hands each component its syntax-tree `node`; keep it off the HTML.
+// (Plain Markdown rendering: no code is evaluated, which Cloudflare Workers don't allow.)
+const markdownComponents = Object.fromEntries(
+	Object.entries(components).map(([tag, Component]) => [tag, ({ node, ...props }: any) => Component(props)]),
+)
 
 export default async function LegalPage({ titleKey, source }: Props) {
 	const t = await getTranslations('Legal')
@@ -99,7 +105,7 @@ export default async function LegalPage({ titleKey, source }: Props) {
 
 				<div className="min-w-0">
 					<article lang="en" className="prose prose-neutral max-w-3xl dark:prose-invert prose-headings:font-bold prose-headings:tracking-tight prose-h2:mt-14 prose-h2:text-2xl sm:prose-h2:text-3xl prose-h3:text-xl prose-a:font-semibold prose-a:text-neutral-950 prose-a:underline-offset-4 prose-li:my-1 dark:prose-a:text-white">
-						<MDXRemote source={body} components={components} options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }} />
+						<Markdown components={markdownComponents} remarkPlugins={[remarkGfm]}>{body}</Markdown>
 					</article>
 
 					<div className="mt-16 flex max-w-3xl flex-col items-start gap-4 rounded-[28px] bg-neutral-100 p-7 sm:flex-row sm:items-center sm:justify-between sm:p-9 dark:bg-neutral-900">

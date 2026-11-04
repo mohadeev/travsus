@@ -10,7 +10,8 @@ const withNextIntl = createNextIntlPlugin()
 
 const nextConfig = {
 	reactStrictMode: false,
-	output: "standalone",
+	// Cloudflare Workers build (npm run build:vinext) has its own output; standalone is for the Node server only
+	output: process.env.CLOUDFLARE_BUILD ? undefined : "standalone",
 	typedRoutes: true,
 	// Load handlebars from node_modules instead of bundling it (avoids require.extensions warning)
 	serverExternalPackages: ['@react-pdf/renderer'],
