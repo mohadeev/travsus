@@ -44,6 +44,23 @@ to JS files a new deploy removed. Pages for one visitor (account, checkout, sear
 by the server so ad visitors get the cached page too; the browser keeps them
 in the address for analytics.
 
+Public pages (home, destinations, content pages, tour pages) also go into the
+edge cache on their **first** render, so they no longer depend on the KV save
+that vinext makes after the response. `/api/tours` is kept at the edge for a
+minute. Every page or `/api/tours` answer from the Worker carries
+`x-edge-cache: HIT` or `MISS`:
+
+```sh
+curl -sI https://www.travsus.com/en-US/destinations | grep -i -e x-edge-cache -e x-nextjs-cache
+```
+
+To check that KV and the edge cache work on the live Worker:
+
+```sh
+curl -s -H "Authorization: Bearer $CRON_SECRET" https://www.travsus.com/__cache-check
+# {"deploy":"…","kvBinding":true,"kvWriteRead":"ok","edgeWriteRead":"ok"}
+```
+
 Tour pages look up the tour's canonical address in the middleware (to redirect
 old or other-language addresses); that lookup is cached too
 ([src/lib/tourSlugs.ts](src/lib/tourSlugs.ts)), so a cached tour page doesn't
