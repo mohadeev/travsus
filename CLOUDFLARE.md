@@ -12,7 +12,7 @@ Dev server with hot reload: `npm run dev:vinext`.
 
 The Worker is `travsus`, set in [wrangler.jsonc](wrangler.jsonc) with `nodejs_compat`.
 Free plan limit: 3 MiB gzipped. Current size (`npx wrangler deploy --dry-run`):
-**Total Upload 10231 KiB / gzip 2740 KiB (2.68 MiB)**.
+**Total Upload 10258 KiB / gzip 2748 KiB (2.68 MiB)**.
 
 ## Page cache (Workers KV)
 
@@ -146,9 +146,17 @@ The Next.js build doesn't use any of it.
 
 ## Things to watch
 
-- **CPU time on the free plan** is 10 ms per request. Server-rendering large
-  pages (home, tour pages) can go over that, which shows up as error 1102. If
-  it does, the paid Workers plan ($5/month) raises the limit to 30 s.
+- **CPU time on the free plan** is 10 ms per request. Cached pages (a KV or
+  edge-cache hit) stay well under it. Rendering a page that isn't cached yet
+  (its first visit after a deploy, or its hourly refresh, which runs in the
+  background) can go over it, which shows up as error 1102 or a refresh that
+  doesn't finish. If that happens often, the paid Workers plan ($5/month)
+  raises the limit to 30 s.
+- **Clerk on public pages**: the home page, tours, destinations and the plain
+  content pages skip Clerk's middleware (it made every page uncacheable under
+  vinext). They never read the session on the server; signing in works in the
+  browser. If one of those pages ever needs `auth()`, remove it from
+  `isPublicPage` in [src/middleware.ts](src/middleware.ts).
 - **Middleware redirects** for old tour links call the site's own
   `/api/tours/{id}/slug`. They worked in the local Workers runtime. If they
   stop on the live domain, the old links simply aren't redirected (pages still load).
