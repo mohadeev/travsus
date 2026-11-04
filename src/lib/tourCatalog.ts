@@ -3,7 +3,7 @@
 // which used up the database's Disk IO budget. Editing a tour refreshes it.
 import 'server-only'
 import { revalidateTag, unstable_cache } from 'next/cache'
-import { db, T, REL, fetchAll } from '@/lib/db'
+import { db, T, REL, fetchAll, mongoCollection } from '@/lib/db'
 import { updateLineItemsLogic } from '@/app/api/updateLineItems/updateLineItemsLogic'
 
 export const TOURS_TAG = 'tours'
@@ -96,6 +96,36 @@ export const getReviewData = unstable_cache(
 	},
 	['review-data-v1'],
 	{ revalidate: TEN_MINUTES, tags: [REVIEWS_TAG] },
+)
+
+/**
+ * How many visits saw each tour page in the last 90 days (a visit that opens
+ * the page twice counts once), by tour id. Cached for an hour.
+ */
+export const getTourViews = unstable_cache(
+	async (): Promise<Record<string, number>> => {
+		try {
+			const events = await mongoCollection(T.analyticsEvents)
+			const since = new Date(Date.now() - 90 * 24 * 3600_000)
+			const rows = await events
+				.aggregate([
+					// Timestamps are stored as dates or as ISO text
+					{ $match: { type: 'pageview', $or: [{ created_at: { $gte: since } }, { created_at: { $gte: since.toISOString() } }] } },
+					// Tour pages end in the tour id: /en-US/morocco/fes/tours/<slug>/<id>
+					{ $project: { session_id: 1, match: { $regexFind: { input: '$path', regex: /\/([0-9a-f]{24})\/?$/ } } } },
+					{ $match: { match: { $ne: null } } },
+					{ $group: { _id: { tour: { $arrayElemAt: ['$match.captures', 0] }, visit: '$session_id' } } },
+					{ $group: { _id: '$_id.tour', views: { $sum: 1 } } },
+				])
+				.toArray()
+			return Object.fromEntries(rows.map((row) => [row._id as string, row.views as number]))
+		} catch (error) {
+			console.error('Tour views error:', error)
+			return {}
+		}
+	},
+	['tour-views-v1'],
+	{ revalidate: 3600 },
 )
 
 /** Prices and photos for a few tours (light columns only, for tour cards). */

@@ -1,7 +1,7 @@
 // Data for the home page, loaded on the server (fast, and in the HTML for SEO).
 import { cache } from 'react'
 import { routing } from '@/i18n/routing'
-import { getTourCatalog, getReviewData } from '@/lib/tourCatalog'
+import { getTourCatalog, getReviewData, getTourViews, type CatalogTour } from '@/lib/tourCatalog'
 import { getCityPhoto } from '@/lib/cityPhotos'
 import { REVIEW_SELECT, localizeReview } from '@/lib/reviews'
 
@@ -49,11 +49,29 @@ const slugFor = (tour: any, locale: string) => {
 	)
 }
 
+/**
+ * How well a tour page can rank on Google, 0 to 1: written in every language
+ * (its own name and URL), a real overview, a subtitle and enough photos.
+ */
+function seoScore(tour: CatalogTour) {
+	const languages = routing.locales.length
+	const part = (have: number, need: number) => Math.min(1, have / need)
+	return (
+		(part(tour.slugs.length, languages) +
+			part(Object.keys(tour.names).length, languages) +
+			part(tour.overview.length, 300) +
+			(tour.subtitle ? 1 : 0) +
+			part(tour.images.length, 3)) /
+		5
+	)
+}
+
 export const getHomeData = cache(async (locale: string) => {
 	// Shared caches: one database read per 10 minutes for every visitor and language
-	const [tours, { ratings: reviews, latest: latestReviews }] = await Promise.all([
+	const [tours, { ratings: reviews, latest: latestReviews }, views] = await Promise.all([
 		getTourCatalog(),
 		getReviewData(REVIEW_SELECT),
+		getTourViews(),
 	])
 
 	// Real ratings per tour
@@ -67,6 +85,8 @@ export const getHomeData = cache(async (locale: string) => {
 	}
 
 	const homeTours: HomeTour[] = []
+	// Order of the home page tours, by tour id (see the sort below)
+	const rank = new Map<string, number>()
 	const destinations = new Map<string, HomeDestination>()
 
 	for (const tour of tours) {
@@ -76,6 +96,13 @@ export const getHomeData = cache(async (locale: string) => {
 
 		const rating = ratings.get(tour.id)
 		const city = tour.startAddress?.city ?? null
+
+		// Most seen first, held back when the page is weak for SEO; good reviews
+		// add a little, and tours nobody has seen yet follow their SEO
+		const seen = Math.log(1 + (views[tour.id] ?? 0))
+		const reviewed = rating ? (rating.sum / rating.count / 5) * Math.log(1 + rating.count) : 0
+		const seo = seoScore(tour)
+		rank.set(tour.id, (seen + 0.5 * reviewed) * (0.4 + 0.6 * seo) + 0.2 * seo)
 
 		homeTours.push({
 			id: tour.id,
@@ -125,12 +152,7 @@ export const getHomeData = cache(async (locale: string) => {
 		}
 	}
 
-	// Best rated (most reviewed) first
-	homeTours.sort(
-		(a, b) =>
-			(b.rating ?? 0) * Math.log(1 + b.reviewsCount) -
-			(a.rating ?? 0) * Math.log(1 + a.reviewsCount),
-	)
+	homeTours.sort((a, b) => (rank.get(b.id) ?? 0) - (rank.get(a.id) ?? 0))
 
 	const tourById = new Map(homeTours.map((tour) => [tour.id, tour]))
 	const homeReviews: HomeReview[] = (latestReviews ?? []).map((raw: any) => {
