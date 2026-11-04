@@ -1,15 +1,9 @@
-import dynamic from 'next/dynamic'
-
-const GDPRDataSubjectRightsForm = dynamic(
-	() =>
-		import('@/components/GDPRDataSubjectRightsForm/GDPRDataSubjectRightsForm'),
-	{ ssr: false },
-)
+import RightsForm from './RightsForm'
 
 export default function RightsPage() {
 	return (
 		<div>
-			<GDPRDataSubjectRightsForm />
+			<RightsForm />
 		</div>
 	)
 }

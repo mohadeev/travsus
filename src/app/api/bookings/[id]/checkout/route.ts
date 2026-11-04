@@ -20,7 +20,8 @@ import { creditBooking, REF_COOKIE } from '@/lib/affiliates'
 // Stripe's checkout languages for our site languages
 const STRIPE_LOCALES: Record<string, string> = { 'en-US': 'en', 'de-DE': 'de', 'es-ES': 'es', 'fr-FR': 'fr', 'it-IT': 'it', 'ja-JP': 'ja', 'ko-KR': 'ko', 'pt-PT': 'pt', 'ru-RU': 'ru', 'zh-CN': 'zh' }
 
-export async function POST(request: NextRequest, { params }: { params: { id: string } }) {
+export async function POST(request: NextRequest, props: { params: Promise<{ id: string }> }) {
+	const params = await props.params;
 	const user: any = await getUserData()
 	if (!user?.id) return NextResponse.json({ error: 'NOT_SIGNED_IN' }, { status: 401 })
 

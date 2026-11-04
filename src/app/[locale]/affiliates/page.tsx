@@ -29,7 +29,7 @@ import CreatorPhone from './CreatorPhone'
 import EarningsCalculator from './EarningsCalculator'
 import s from './affiliates.module.css'
 
-type PageProps = { params: { locale: string } }
+type PageProps = { params: Promise<{ locale: string }> }
 
 // [icon, title key, text key]: the benefit tiles
 const BENEFITS: [LucideIcon, string, string][] = [
@@ -55,7 +55,8 @@ const Sparkle = ({ className }: { className?: string }) => (
 	</svg>
 )
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+	const params = await props.params;
 	const t = await getTranslations({ locale: params.locale, namespace: 'Affiliates' })
 	return {
 		title: `${t('meta_title')} | TRAVSUS`,
@@ -68,7 +69,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 	}
 }
 
-export default async function AffiliatesPage({ params }: PageProps) {
+export default async function AffiliatesPage(props: PageProps) {
+	const params = await props.params;
 	setRequestLocale(params.locale)
 	const t = await getTranslations('Affiliates')
 	const money = (n: number) => new Intl.NumberFormat(params.locale, { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(n)

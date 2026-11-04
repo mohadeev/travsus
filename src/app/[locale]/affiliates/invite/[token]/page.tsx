@@ -12,9 +12,10 @@ import AcceptInvite from './AcceptInvite'
 export const dynamic = 'force-dynamic'
 export const metadata: Metadata = { title: 'Affiliate invitation | TRAVSUS', robots: { index: false, follow: false } }
 
-type Props = { params: { locale: string; token: string } }
+type Props = { params: Promise<{ locale: string; token: string }> }
 
-export default async function AffiliateInvitePage({ params }: Props) {
+export default async function AffiliateInvitePage(props: Props) {
+	const params = await props.params;
 	const { locale, token } = params
 	setRequestLocale(locale)
 	const t = await getTranslations('AffiliateInvite')

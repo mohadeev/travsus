@@ -11,7 +11,7 @@ import { PHOTOS } from '@/lib/photos'
 
 export const revalidate = 3600
 
-type PageProps = { params: { locale: string } }
+type PageProps = { params: Promise<{ locale: string }> }
 
 // [icon, title key, text key]
 const VALUES = [
@@ -21,7 +21,8 @@ const VALUES = [
 	[Headphones, 'value_support_title', 'value_support_text'],
 ] as const
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+	const params = await props.params;
 	const t = await getTranslations({ locale: params.locale, namespace: 'About' })
 	return {
 		title: `${t('meta_title')} | TRAVSUS`,
@@ -34,7 +35,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 	}
 }
 
-export default async function AboutPage({ params }: PageProps) {
+export default async function AboutPage(props: PageProps) {
+	const params = await props.params;
 	const { locale } = params
 	setRequestLocale(locale)
 	const t = await getTranslations('About')

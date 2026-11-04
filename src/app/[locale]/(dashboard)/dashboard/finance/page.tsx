@@ -6,7 +6,8 @@ import { dashboardScope, finance } from '@/lib/dashboard'
 import RevenueChart from '../../_components/RevenueChart'
 import { Empty, NoCompany, Panel, Stat, day, euro } from '../../_components/ui'
 
-export default async function FinancePage({ params }: { params: { locale: string } }) {
+export default async function FinancePage(props: { params: Promise<{ locale: string }> }) {
+	const params = await props.params;
 	const { locale } = params
 	const scope = await dashboardScope()
 	if (!scope) return null

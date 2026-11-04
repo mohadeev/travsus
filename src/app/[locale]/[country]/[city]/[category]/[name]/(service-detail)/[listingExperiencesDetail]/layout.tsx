@@ -28,15 +28,16 @@ type TourParams = { listingExperiencesDetail: string; locale: string }
 
 interface DetailLayoutProps {
 	children: ReactNode
-	params: TourParams
+	params: Promise<TourParams>
 }
 
 // <head>: title, description, canonical, hreflang, social cards
-export async function generateMetadata({
-	params,
-}: {
-	params: TourParams
-}): Promise<Metadata> {
+export async function generateMetadata(
+	props: {
+		params: Promise<TourParams>
+	}
+): Promise<Metadata> {
+	const params = await props.params;
 	const { listingExperiencesDetail: tourId, locale } = params
 	const tour: any = await getTourData(tourId, locale).catch(() => null)
 
@@ -114,7 +115,8 @@ async function priceRange(tour: any) {
 	return { low: Math.min(...prices), high: Math.max(...prices) }
 }
 
-const DetailLayout = async ({ params }: DetailLayoutProps) => {
+const DetailLayout = async (props: DetailLayoutProps) => {
+	const params = await props.params;
 	const { listingExperiencesDetail: tourId, locale } = params
 
 	try {
@@ -152,7 +154,7 @@ const DetailLayout = async ({ params }: DetailLayoutProps) => {
 					}}
 				/>
 			</div>
-		)
+		);
 	} catch (error: any) {
 		// Let Next.js handle notFound() / redirect() instead of showing an error
 		if (typeof error?.digest === 'string' && error.digest.startsWith('NEXT_')) {

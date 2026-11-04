@@ -13,7 +13,13 @@ const LOGO = `${SITE}/images/logo/dark/travsus_text_dark_bg_transparent.png`
 // Open Graph wants "fr_FR", not "fr-FR"
 const ogLocale = (l: string) => l.replace('-', '_')
 
-export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
+export async function generateMetadata(props: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+	const params = await props.params;
+
+	const {
+		locale
+	} = params;
+
 	const t = await getTranslations({ locale, namespace: 'HomeSeo' })
 	const url = `${SITE}/${locale}`
 	return {
@@ -125,7 +131,13 @@ function structuredData(locale: string, description: string, tours: HomeTour[]) 
 // Built once, refreshed every 10 minutes: instant for visitors and crawlers
 export const revalidate = 600
 
-export default async function Home({ params: { locale } }: { params: { locale: string } }) {
+export default async function Home(props: { params: Promise<{ locale: string }> }) {
+	const params = await props.params;
+
+	const {
+		locale
+	} = params;
+
 	setRequestLocale(locale)
 	const [data, t] = await Promise.all([getHomeData(locale), getTranslations({ locale, namespace: 'HomeSeo' })])
 	const jsonLd = structuredData(locale, t('description'), data.tours)
@@ -134,5 +146,5 @@ export default async function Home({ params: { locale } }: { params: { locale: s
 			<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }} />
 			<HomePage {...data} />
 		</>
-	)
+	);
 }

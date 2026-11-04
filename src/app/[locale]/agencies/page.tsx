@@ -15,7 +15,7 @@ import s from '../affiliates/affiliates.module.css'
 import AgencyBoard from './AgencyBoard'
 import AgencyRequestForm from './AgencyRequestForm'
 
-type PageProps = { params: { locale: string } }
+type PageProps = { params: Promise<{ locale: string }> }
 
 // [icon, title key, text key]: the benefit tiles
 const BENEFITS: [LucideIcon, string, string][] = [
@@ -36,7 +36,8 @@ const FAQ = ['who', 'cost', 'paid', 'listing', 'prices', 'languages'] as const
 // A desert camp at night, from our tour photos
 const CTA_PHOTO = 'https://res.cloudinary.com/travsus/image/upload/v1750849730/ljj21rdgiuzarfl9sp6u.webp'
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+	const params = await props.params;
 	const t = await getTranslations({ locale: params.locale, namespace: 'Agencies' })
 	return {
 		title: `${t('meta_title')} | TRAVSUS`,
@@ -49,7 +50,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 	}
 }
 
-export default async function AgenciesPage({ params }: PageProps) {
+export default async function AgenciesPage(props: PageProps) {
+	const params = await props.params;
 	setRequestLocale(params.locale)
 	const t = await getTranslations('Agencies')
 	const money = (n: number) => new Intl.NumberFormat(params.locale, { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(n)

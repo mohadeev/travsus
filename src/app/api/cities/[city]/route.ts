@@ -5,10 +5,8 @@ import { NextResponse } from 'next/server'
 
 
 
-export async function GET(
-	request: Request,
-	{ params }: { params: { city: string } },
-) {
+export async function GET(request: Request, props: { params: Promise<{ city: string }> }) {
+	const params = await props.params;
 	try {
 		const cityId = params.city
 

@@ -1,7 +1,7 @@
 'use client'
 export const dynamic = "force-dynamic";
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, use } from 'react';
 import Image from 'next/image'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
@@ -56,11 +56,12 @@ const isValidImageUrl = (url: string) => {
 	)
 }
 
-export default function CountryPlacesAdmin({
-	params,
-}: {
-	params: { countryId: string }
-}) {
+export default function CountryPlacesAdmin(
+	props: {
+		params: Promise<{ countryId: string }>
+	}
+) {
+	const params = use(props.params);
 	const { countryId } = params
 	const [places, setPlaces] = useState<any[]>([])
 	const [cities, setCities] = useState<any[]>([])

@@ -10,13 +10,13 @@ import PageAddListing7 from "./PageAddListing7";
 import PageAddListing8 from "./PageAddListing8";
 import PageAddListing9 from "./PageAddListing9";
 
-const Page = ({
-  params,
-  searchParams,
-}: {
-  params: { stepIndex: string };
-  searchParams?: { [key: string]: string | string[] | undefined };
-}) => {
+const Page = async (
+  props: {
+    params: Promise<{ stepIndex: string }>;
+    searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
+  }
+) => {
+  const params = await props.params;
   let ContentComponent = PageAddListing1;
   switch (Number(params.stepIndex)) {
     case 1:

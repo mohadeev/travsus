@@ -157,8 +157,8 @@ export function toCard(tour: CatalogTour, language: string, pricing?: any) {
 /** Call after a tour or review changes so lists show it right away. */
 export function refreshTourCache() {
 	try {
-		revalidateTag(TOURS_TAG)
-		revalidateTag(REVIEWS_TAG)
+		revalidateTag(TOURS_TAG, { expire: 0 })
+		revalidateTag(REVIEWS_TAG, { expire: 0 })
 	} catch (error) {
 		console.error('Tour cache refresh failed:', error)
 	}

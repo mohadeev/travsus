@@ -11,13 +11,13 @@ const withNextIntl = createNextIntlPlugin()
 const nextConfig = {
 	reactStrictMode: false,
 	output: "standalone",
+	typedRoutes: true,
+	// Load handlebars from node_modules instead of bundling it (avoids require.extensions warning)
+	serverExternalPackages: ['@react-pdf/renderer'],
 	experimental: {
-		typedRoutes: true,
 		serverActions: {
 			bodySizeLimit: '10mb',
 		},
-		// Load handlebars from node_modules instead of bundling it (avoids require.extensions warning)
-		serverComponentsExternalPackages: ['@react-pdf/renderer'],
 	},
 	// reactStrictMode: true,
 	// experimental: {
@@ -118,9 +118,6 @@ const nextConfig = {
 	},
 	typescript: {
 		ignoreBuildErrors: true,
-	},
-	eslint: {
-		ignoreDuringBuilds: true,
 	},
 }
 

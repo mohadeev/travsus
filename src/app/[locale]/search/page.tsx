@@ -15,11 +15,13 @@ import TourRow from '../(home)/TourRow'
 export const dynamic = 'force-dynamic'
 
 type PageProps = {
-	params: { locale: string }
+	params: Promise<{ locale: string }>
 	searchParams: Record<string, string | string[] | undefined>
 }
 
-export async function generateMetadata({ params, searchParams }: PageProps): Promise<Metadata> {
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+	const searchParams = await props.searchParams;
+	const params = await props.params;
 	const t = await getTranslations({ locale: params.locale, namespace: 'Search' })
 	const filters = readFilters(searchParams)
 	const filtered = !!filters.query || filtersHref(filters, { query: '' }) !== '/search?query='
@@ -32,7 +34,9 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
 	}
 }
 
-export default async function SearchPage({ params, searchParams }: PageProps) {
+export default async function SearchPage(props: PageProps) {
+	const searchParams = await props.searchParams;
+	const params = await props.params;
 	setRequestLocale(params.locale)
 	const t = await getTranslations('Search')
 	const tHome = await getTranslations('Home')

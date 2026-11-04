@@ -10,10 +10,8 @@ import { validTripDates } from '@/lib/tripDates'
  * accommodation or "own hotels". The price is recalculated here.
  * A promo code is removed when the price changes; the page asks to re-apply it.
  */
-export async function PATCH(
-	request: NextRequest,
-	{ params }: { params: { id: string } },
-) {
+export async function PATCH(request: NextRequest, props: { params: Promise<{ id: string }> }) {
+	const params = await props.params;
 	const user = await getUserData()
 	if (!user?.id) {
 		return NextResponse.json({ error: 'Not authenticated' }, { status: 401 })

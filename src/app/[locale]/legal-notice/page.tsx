@@ -4,7 +4,8 @@ import { getTranslations } from 'next-intl/server'
 import { routing } from '@/i18n/routing'
 import LegalPage from '@/components/LegalPage'
 
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
+export async function generateMetadata(props: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+	const params = await props.params;
 	const t = await getTranslations({ locale: params.locale, namespace: 'Legal' })
 	return {
 		title: `${t('title_notice')} | TRAVSUS`,

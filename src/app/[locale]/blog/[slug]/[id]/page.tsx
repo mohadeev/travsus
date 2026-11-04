@@ -19,12 +19,13 @@ export const dynamic = 'force-dynamic'
 
 const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.travsus.com').replace(/\/$/, '')
 
-type PageProps = { params: { locale: string; slug: string; id: string } }
+type PageProps = { params: Promise<{ locale: string; slug: string; id: string }> }
 
 // Metadata and page share one database read
 const load = cache((id: string, locale: string) => getBlogPost(id, locale))
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+	const params = await props.params;
 	const found = await load(params.id, params.locale)
 	if (!found || 'redirectTo' in found) return {}
 	const { post, languages } = found
@@ -50,7 +51,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 	}
 }
 
-export default async function BlogPostPage({ params }: PageProps) {
+export default async function BlogPostPage(props: PageProps) {
+	const params = await props.params;
 	const { locale } = params
 	setRequestLocale(locale)
 	const [found, viewer] = await Promise.all([load(params.id, locale), getSessionUser().catch(() => null)])
@@ -169,5 +171,5 @@ export default async function BlogPostPage({ params }: PageProps) {
 				</section>
 			)}
 		</main>
-	)
+	);
 }

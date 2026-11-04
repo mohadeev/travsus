@@ -11,11 +11,12 @@ import TourCard from '../../(home)/TourCard'
 import { countPlacesOfCountry, countryHref, flag, getCitiesOf, getCountry, getPlacesOfCountry, getToursFor } from '@/lib/destinations'
 import { bigImage, CityCard, MapEmbed, PlaceCard, Section } from '../_components/ui'
 
-type Props = { params: { locale: string; code: string } }
+type Props = { params: Promise<{ locale: string; code: string }> }
 
 export const revalidate = 1800
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata(props: Props): Promise<Metadata> {
+	const params = await props.params;
 	const country = await getCountry(params.code, params.locale)
 	if (!country) return {}
 	const t = await getTranslations({ locale: params.locale, namespace: 'Destination' })
@@ -28,7 +29,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	}
 }
 
-export default async function CountryPage({ params }: Props) {
+export default async function CountryPage(props: Props) {
+	const params = await props.params;
 	const { locale } = params
 	setRequestLocale(locale)
 	const country = await getCountry(params.code, locale)

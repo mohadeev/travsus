@@ -14,11 +14,13 @@ import { FORUM_CATEGORIES, forumCategory } from './categories'
 export const dynamic = 'force-dynamic'
 
 type PageProps = {
-	params: { locale: string }
-	searchParams: { q?: string; category?: string; postId?: string }
+	params: Promise<{ locale: string }>
+	searchParams: Promise<{ q?: string; category?: string; postId?: string }>
 }
 
-export async function generateMetadata({ params, searchParams }: PageProps): Promise<Metadata> {
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+	const searchParams = await props.searchParams;
+	const params = await props.params;
 	const t = await getTranslations({ locale: params.locale, namespace: 'Forum' })
 	const filtered = !!(searchParams.q || searchParams.category)
 	return {
@@ -33,7 +35,9 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
 	}
 }
 
-export default async function ForumPage({ params, searchParams }: PageProps) {
+export default async function ForumPage(props: PageProps) {
+	const searchParams = await props.searchParams;
+	const params = await props.params;
 	const { locale } = params
 	// Old links: /forum?postId=…
 	if (searchParams.postId) redirect(`/${locale}/forum/${encodeURIComponent(searchParams.postId)}`)

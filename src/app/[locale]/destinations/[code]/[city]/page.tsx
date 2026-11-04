@@ -14,7 +14,7 @@ import guides from '@/content/destination-guides.json'
 import LocalTime from '../../_components/LocalTime'
 import { bigImage, CityCard, MapEmbed, PlaceCard, Section } from '../../_components/ui'
 
-type Props = { params: { locale: string; code: string; city: string }; searchParams: { lcId?: string } }
+type Props = { params: Promise<{ locale: string; code: string; city: string }>; searchParams: Promise<{ lcId?: string }> }
 
 export const revalidate = 1800
 
@@ -23,7 +23,9 @@ const guideFor = (id: string, locale: string) => {
 	return g ? g[locale] ?? g['en-US'] : null
 }
 
-export async function generateMetadata({ params, searchParams }: Props): Promise<Metadata> {
+export async function generateMetadata(props: Props): Promise<Metadata> {
+	const searchParams = await props.searchParams;
+	const params = await props.params;
 	const city = await getCity(params.code, params.city, params.locale, searchParams.lcId)
 	if (!city) return {}
 	const t = await getTranslations({ locale: params.locale, namespace: 'Destination' })
@@ -36,7 +38,9 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
 	}
 }
 
-export default async function CityPage({ params, searchParams }: Props) {
+export default async function CityPage(props: Props) {
+	const searchParams = await props.searchParams;
+	const params = await props.params;
 	const { locale } = params
 	setRequestLocale(locale)
 	const city = await getCity(params.code, params.city, locale, searchParams.lcId)
@@ -252,5 +256,5 @@ export default async function CityPage({ params, searchParams }: Props) {
 				</Section>
 			)}
 		</main>
-	)
+	);
 }
