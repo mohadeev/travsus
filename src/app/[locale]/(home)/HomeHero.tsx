@@ -12,13 +12,13 @@ export default function HomeHero() {
 	const tSeo = useTranslations('HomeSeo')
 	const locale = useLocale()
 
-	// TripAdvisor's tabs. TRAVSUS offers things to do only: that tab is the
-	// active one (black, underlined, opens all tours); the others are shown
-	// greyed out and can't be clicked.
+	// TripAdvisor's tabs. TRAVSUS offers things to do only: that tab comes first
+	// and is the active one (black, underlined, opens all tours); the others
+	// are shown greyed out and can't be clicked.
 	const tabs: [LucideIcon, string, boolean][] = [
+		[Ticket, t('tab_things'), true],
 		[House, t('tab_all'), false],
 		[BedDouble, t('tab_hotels'), false],
-		[Ticket, t('tab_things'), true],
 		[UtensilsCrossed, t('tab_restaurants'), false],
 		[Plane, t('tab_flights'), false],
 		[Building2, t('tab_rentals'), false],
