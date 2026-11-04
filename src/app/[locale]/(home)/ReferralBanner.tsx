@@ -1,61 +1,53 @@
-// Affiliate program banner in the TRAVSUS colours: black with warm yellow and
-// amber glows, yellow accents, no photo. The invitation and button on the left; the program in three
-// glass cards on the right (top commission, cookie, payouts). Same texts as the
-// affiliates page.
+// Affiliate program banner, calm and editorial: a warm sand card with the
+// invitation, the three facts of the program as a simple row of numbers, one
+// black button, and a real photo of friends on the right (on top on phones).
+// Same texts as the affiliates page.
+import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowUpRight, CalendarClock, Percent, Wallet } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { useTranslations } from 'next-intl'
+import { PHOTOS } from '@/lib/photos'
 
 export default function ReferralBanner() {
 	const t = useTranslations('Affiliates')
 
-	const card = (Icon: typeof Percent, value: string, label: string, big = false) => (
-		<div className={`flex gap-3 rounded-2xl bg-white/[0.06] ring-1 ring-white/10 backdrop-blur-md sm:gap-4 ${big ? 'items-center p-5 sm:p-6' : 'flex-col items-start p-4 sm:flex-row sm:items-center'}`}>
-			<span className={`grid shrink-0 place-items-center rounded-xl bg-[#FDE047] text-neutral-950 ${big ? 'h-14 w-14' : 'h-11 w-11'}`}>
-				<Icon className={big ? 'h-7 w-7' : 'h-5 w-5'} />
-			</span>
-			<span className="min-w-0">
-				<span className={`headline block ${big ? 'text-5xl text-[#FDE047] sm:text-6xl' : 'text-2xl sm:text-3xl'}`}>{value}</span>
-				<span className="mt-1 block text-xs leading-snug text-white/60 sm:text-sm">{label}</span>
-			</span>
-		</div>
-	)
+	const facts = [
+		[t('stat_rate_value'), t('stat_rate_label')],
+		[t('stat_cookie_value'), t('stat_cookie_label')],
+		[t('stat_payout_value'), t('stat_payout_label')],
+	]
 
 	return (
-		<section className="relative isolate overflow-hidden rounded-3xl bg-neutral-950 text-white shadow-[0_30px_60px_-30px_rgba(0,0,0,0.6)] sm:rounded-[28px]">
-			{/* Soft glows and a faint dot grid */}
-			<div aria-hidden className="absolute -right-16 -top-32 -z-10 h-96 w-96 rounded-full bg-[#FDE047]/30 blur-3xl" />
-			<div aria-hidden className="absolute -bottom-40 right-1/3 -z-10 h-80 w-80 rounded-full bg-amber-500/25 blur-3xl" />
-			<div aria-hidden className="absolute -left-24 -top-24 -z-10 h-64 w-64 rounded-full bg-orange-500/15 blur-3xl" />
-			<div aria-hidden className="absolute inset-0 -z-10 opacity-[0.12] [background-image:radial-gradient(rgba(255,255,255,0.7)_1px,transparent_1px)] [background-size:22px_22px] [mask-image:linear-gradient(to_right,transparent,black_60%)]" />
+		<section className="grid overflow-hidden rounded-3xl bg-sand-100 text-neutral-950 sm:rounded-[28px] lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] xl:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] dark:bg-neutral-900 dark:text-white">
+			<div className="flex flex-col justify-center px-6 py-8 sm:px-12 sm:py-12 lg:px-14 lg:py-14">
+				<p className="text-sm font-semibold text-neutral-500 dark:text-neutral-400">{t('eyebrow')}</p>
+				<h2 className="headline mt-2 text-[28px] sm:mt-3 sm:text-[40px]">{t('hero_title')}</h2>
+				<p className="mt-3 max-w-md text-base leading-relaxed text-neutral-600 sm:mt-4 sm:text-lg dark:text-neutral-300">{t('hero_text')}</p>
 
-			<div className="grid items-center gap-8 px-6 py-8 sm:px-10 sm:py-12 lg:grid-cols-[1.15fr_1fr] lg:gap-12 lg:px-14 lg:py-14">
-				<div>
-					<span className="inline-flex items-center gap-2 rounded-full bg-[#FDE047]/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[#FDE047] ring-1 ring-[#FDE047]/30">
-						<span className="h-1.5 w-1.5 rounded-full bg-[#FDE047]" />
-						{t('eyebrow')}
-					</span>
-					<h2 className="headline mt-4 text-[28px] sm:text-[40px]">{t('hero_title')}</h2>
-					<p className="mt-3 max-w-md text-base text-white/75 sm:mt-4 sm:text-lg">{t('hero_text')}</p>
-					<div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:items-center sm:gap-5">
-						<Link
-							href={'/affiliates' as any}
-							className="group inline-flex items-center justify-center gap-2 rounded-full bg-[#FDE047] px-7 py-3.5 text-sm font-semibold text-neutral-950 shadow-lg shadow-[#FDE047]/20 transition hover:bg-white active:scale-[0.98]"
-						>
-							{t('form_submit')}
-							<ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-						</Link>
-						<p className="text-center text-sm text-white/55 sm:text-left">{t('cta_text')}</p>
-					</div>
-				</div>
+				{/* The program in three numbers */}
+				<dl className="mt-7 divide-y divide-neutral-300/70 border-y border-neutral-300/70 sm:mt-9 sm:grid sm:grid-cols-3 sm:divide-x sm:divide-y-0 dark:divide-neutral-700 dark:border-neutral-700">
+					{facts.map(([value, label], i) => (
+						<div key={value} className={`flex items-baseline gap-3 py-3 sm:block sm:py-5 ${i > 0 ? 'sm:pl-5' : ''} ${i < 2 ? 'sm:pr-5' : ''}`}>
+							<dd className="w-24 shrink-0 whitespace-nowrap text-2xl font-bold tracking-tight sm:w-auto sm:text-[28px]">{value}</dd>
+							<dt className="text-sm leading-snug text-neutral-600 sm:mt-1 sm:text-[13px] dark:text-neutral-400">{label}</dt>
+						</div>
+					))}
+				</dl>
 
-				<div className="space-y-3">
-					{card(Percent, t('stat_rate_value'), t('stat_rate_label'), true)}
-					<div className="grid grid-cols-2 gap-3">
-						{card(CalendarClock, t('stat_cookie_value'), t('stat_cookie_label'))}
-						{card(Wallet, t('stat_payout_value'), t('stat_payout_label'))}
-					</div>
+				<div className="mt-7 flex flex-col gap-3 sm:mt-9 sm:flex-row sm:items-center sm:gap-5">
+					<Link
+						href={'/affiliates' as any}
+						className="group inline-flex shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-full bg-neutral-950 px-7 py-3.5 text-sm font-semibold text-white transition hover:bg-neutral-800 active:scale-[0.98] dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-200"
+					>
+						{t('form_submit')}
+						<ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+					</Link>
+					<p className="text-center text-sm text-neutral-500 sm:text-left dark:text-neutral-400">{t('cta_text')}</p>
 				</div>
+			</div>
+
+			<div className="relative order-first aspect-[16/10] lg:order-none lg:aspect-auto lg:min-h-full">
+				<Image src={PHOTOS.referral} alt="" fill sizes="(max-width: 1024px) 100vw, 45vw" className="object-cover object-[60%_40%]" />
 			</div>
 		</section>
 	)
