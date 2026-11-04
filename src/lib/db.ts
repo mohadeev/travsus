@@ -13,10 +13,16 @@ if (typeof window !== 'undefined') {
 	throw new Error('src/lib/db.ts must only be imported on the server')
 }
 
-const MAIN_URL = process.env.DATABASE_URL
-const PLACES_URL = process.env.DATABASE_URL_PLACES || MAIN_URL
-const MAIN_DB = process.env.MONGODB_DB || 'travsus'
-if (!MAIN_URL) throw new Error('Missing DATABASE_URL env var')
+// Read at call time, not at import. Cloudflare injects Worker secrets into
+// process.env on the first request, and `next build` imports this module
+// while collecting routes (there may be no database configured yet).
+const mainUrl = () => {
+	const url = process.env.DATABASE_URL
+	if (!url) throw new Error('Missing DATABASE_URL env var')
+	return url
+}
+const placesUrl = () => process.env.DATABASE_URL_PLACES || mainUrl()
+const mainDbName = () => process.env.MONGODB_DB || 'travsus'
 
 // One connection per process, reused between serverless invocations
 const shared = globalThis as unknown as { __travsusMongo?: Record<string, Promise<MongoClient>> }
@@ -25,9 +31,12 @@ const clients = (shared.__travsusMongo ??= {})
 // forever (a hung request froze whole build workers)
 const connect = (url: string) =>
 	(clients[url] ??= new MongoClient(url, { maxPoolSize: 10, serverSelectionTimeoutMS: 15000, connectTimeoutMS: 15000, socketTimeoutMS: 40000 }).connect())
-const mainDb = async (): Promise<Db> => (await connect(MAIN_URL)).db(MAIN_DB)
+const mainDb = async (): Promise<Db> => (await connect(mainUrl())).db(mainDbName())
 /** The geography database keeps its own name (set in its connection string). */
-const placesDb = async (): Promise<Db> => (PLACES_URL === MAIN_URL ? mainDb() : (await connect(PLACES_URL!)).db())
+const placesDb = async (): Promise<Db> => {
+	const places = placesUrl()
+	return places === mainUrl() ? mainDb() : (await connect(places)).db()
+}
 
 /** Table names — change them here if a collection is renamed. */
 export const T = {
@@ -506,6 +515,9 @@ class Query implements PromiseLike<DbResult<any>> {
 	}
 
 	private async run(): Promise<DbResult<any>> {
+		if (!process.env.DATABASE_URL) {
+			return { data: null, error: { message: 'Missing DATABASE_URL env var' }, count: null, status: 500 }
+		}
 		try {
 			const { data, count } = await this.execute()
 			let rows = data

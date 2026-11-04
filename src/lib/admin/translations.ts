@@ -8,6 +8,7 @@
 import 'server-only'
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
+import { messages as bundledMessages } from '@/i18n/request'
 import { routing } from '@/i18n/routing'
 
 export type Text = string | string[]
@@ -23,9 +24,22 @@ const file = (locale: string) => path.join(DIR, `${locale}.json`)
 /** Editing is allowed when running locally (the deployed site is read-only). */
 export const canWrite = () => process.env.NODE_ENV === 'development'
 
+/** Copies of messages/*.json bundled by Next. Used in production, where the Worker has no source tree. */
+function fromBundle(): Record<string, Messages> {
+	return structuredClone(bundledMessages) as Record<string, Messages>
+}
+
 export async function readAll(): Promise<Record<string, Messages>> {
-	const entries = await Promise.all(LOCALES.map(async (l) => [l, JSON.parse(await fs.readFile(file(l), 'utf8'))] as const))
-	return Object.fromEntries(entries)
+	// Local dev reads the files so an edit shows up without a rebuild.
+	// Deployed (Vercel or Workers) serves the copies bundled at build time.
+	if (!canWrite()) return fromBundle()
+	try {
+		const entries = await Promise.all(LOCALES.map(async (l) => [l, JSON.parse(await fs.readFile(file(l), 'utf8'))] as const))
+		return Object.fromEntries(entries)
+	} catch (error) {
+		console.error('Reading message files failed, using the bundled copies', error)
+		return fromBundle()
+	}
 }
 
 async function write(locale: string, data: Messages) {

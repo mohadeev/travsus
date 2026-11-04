@@ -213,4 +213,4 @@ export async function getTours(searchQuery = '') {
 	}
 }
 
-export const initiateTour = () => {}
+export async function initiateTour() {}

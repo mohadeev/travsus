@@ -11,6 +11,7 @@ import logoImg from '@/images/logos/dark/travsus_black_and_white.png'
 import Script from 'next/script'
 import type { Viewport } from 'next'
 import { CONSENT_DEFAULT_SCRIPT } from '@/lib/consent'
+import { connection } from 'next/server'
 import { getMessages, setRequestLocale } from 'next-intl/server'
 import { routing } from '@/i18n/routing'
 
@@ -31,6 +32,10 @@ export default async function RootLayout({
 	children: React.ReactNode
 	params: { locale: string }
 }>) {
+	// ISR prerender needs a database. Without DATABASE_URL, opt out of static
+	// generation so `next build` can finish (CI). Vercel and Workers Builds set
+	// the variable, so this does not run and pages keep their own caching.
+	if (!process.env.DATABASE_URL) await connection()
 	setRequestLocale(locale)
 	const messages = await getMessages({ locale })
 

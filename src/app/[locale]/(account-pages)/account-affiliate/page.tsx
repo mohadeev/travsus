@@ -56,7 +56,7 @@ export default async function AffiliateAccountPage({ params }: { params: { local
 	}
 
 	const r = await affiliateReport(affiliate)
-	const h = headers()
+	const h = await headers()
 	const origin = `${h.get('x-forwarded-proto') ?? 'https'}://${h.get('x-forwarded-host') ?? h.get('host') ?? 'www.travsus.com'}`
 	const link = `${origin}/${locale}?ref=${r.code}`
 	const euros = (n: number) => new Intl.NumberFormat(locale, { style: 'currency', currency: 'EUR' }).format(n)

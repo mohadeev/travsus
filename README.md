@@ -1,6 +1,6 @@
 # TRAVSUS
 
-Tour booking site: Next.js 14 (App Router), MongoDB Atlas, Clerk sign-in, Stripe payments, 10 languages (next-intl). Deployed on Vercel from `main`.
+Tour booking site: Next.js 15 (App Router), MongoDB Atlas, Clerk sign-in, Stripe payments, 10 languages (next-intl). Deployed on Vercel from `main`. The same build can run on Cloudflare Workers (OpenNext).
 
 ## Run it locally
 
@@ -9,14 +9,29 @@ npm install
 npm run dev          # http://localhost:3001
 ```
 
-Secrets go in `.env.local` (never committed); see `.env.local.example`.
+Secrets go in `.env.local` (never committed); see `.env.local.example`. For a local Workers preview, copy `.dev.vars.example` to `.dev.vars`.
+
+## Cloudflare Workers
+
+`npm run build` stays the Vercel command. Workers Builds (Workers → Import from Git) uses:
+
+| Setting | Value |
+|---|---|
+| Build command | `npm run build:cf` |
+| Deploy command | `npx wrangler deploy` |
+| Wrangler config | `wrangler.jsonc` (`main`: `.open-next/worker.js`, assets: `.open-next/assets`) |
+
+`NEXT_PUBLIC_*` variables are inlined at build time, so set them on the Workers build as well as the runtime. Other secrets (`DATABASE_URL`, `CLERK_SECRET_KEY`, `STRIPE_SECRET_KEY`, …) are Worker variables, listed in `.dev.vars.example`.
 
 ## Scripts
 
 | Command | What it does |
 |---|---|
 | `npm run dev` | Development server on port 3001 |
-| `npm run build` / `npm start` | Production build / server |
+| `npm run build` / `npm start` | Production build / server (Vercel uses `build`) |
+| `npm run build:cf` | OpenNext build for Cloudflare Workers |
+| `npm run preview` | Build and run the Worker locally |
+| `npm run deploy` | Build and deploy the Worker with Wrangler |
 | `npm run db:import <file.json>` | Load a database export (`{ table: rows[] }`) into MongoDB (dry run; add `--apply` to write) |
 | `npm run db:translate-tours` | Fill in missing tour translations (dry run; add `-- --apply` to save) |
 

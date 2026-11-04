@@ -1,11 +1,6 @@
 export const dynamic = "force-dynamic";
 import { NextResponse } from 'next/server'
-import OpenAI from 'openai'
-
-// Initialize OpenAI client
-const openai = new OpenAI({
-	apiKey: process.env.OPENAI_API_KEY, // Make sure to add this to your environment variables
-})
+import { openai } from '@/lib/openai'
 export async function POST(request: Request) {
 	try {
 		const data = await request.json()

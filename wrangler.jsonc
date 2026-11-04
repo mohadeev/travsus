@@ -1,0 +1,23 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "travsus",
+	"main": ".open-next/worker.js",
+	"compatibility_date": "2026-11-04",
+	"compatibility_flags": [
+		// Node.js APIs, including net/tls used by the MongoDB driver and SMTP
+		"nodejs_compat",
+		// See https://developers.cloudflare.com/workers/configuration/compatibility-flags/#global-fetch-strictly-public
+		"global_fetch_strictly_public"
+	],
+	"assets": {
+		"directory": ".open-next/assets",
+		"binding": "ASSETS"
+	},
+	// OpenNext calls this binding when revalidating a path from inside the Worker.
+	"services": [
+		{
+			"binding": "WORKER_SELF_REFERENCE",
+			"service": "travsus"
+		}
+	]
+}

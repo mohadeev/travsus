@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation'
-import BlogEditor from '@/components/BlogEditor'
+import BlogEditorLoader from './BlogEditorLoader'
 import getUserData from '@/app/api/user/getUserData'
 import { getPostById } from '@/app/actions/getPostById'
 
@@ -19,6 +19,6 @@ export default async function EditorPage({
 	}
 
 	return (
-		<BlogEditor postId={postId} userId={userId} />
+		<BlogEditorLoader postId={postId} userId={userId} />
 	)
 }

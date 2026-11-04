@@ -1,0 +1,47 @@
+# Copy to .dev.vars for `npm run preview` (Wrangler). Do not commit .dev.vars.
+# NEXT_PUBLIC_* values are inlined by `next build`, so they must also be
+# present at build time (Cloudflare Workers Builds variables, or .env.local).
+# Secrets below are read at request time from the Worker environment.
+
+NEXTJS_ENV=production
+
+# Clerk (required for sign-in)
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
+CLERK_SECRET_KEY=
+
+# Database (MongoDB Atlas). TCP from the Worker uses nodejs_compat.
+DATABASE_URL=
+DATABASE_URL_PLACES=
+# MONGODB_DB=travsus
+
+# Stripe
+STRIPE_SECRET_KEY=
+STRIPE_WEBHOOK_SECRET=
+
+# Cloudinary
+CLOUDINARY_CLOUD_NAME=
+CLOUDINARY_API_KEY=
+CLOUDINARY_API_SECRET=
+CLOUDINARY_UPLOAD_PRESET=
+
+# Email (Brevo SMTP) and MailRelay newsletters
+SMTP_HOST=
+SMTP_PORT=587
+SMTP_USER=
+SMTP_PASS=
+MAILRELAY_ACCOUNT=
+MAILRELAY_API_KEY=
+MAILRELAY_GROUP_ID=
+
+# Other server integrations
+OPENAI_API_KEY=
+SENDGRID_API_KEY=
+CRON_SECRET=
+
+# Public (build-time)
+NEXT_PUBLIC_SITE_URL=https://www.travsus.com
+NEXT_PUBLIC_GOOGLE_MAP_API_KEY=
+NEXT_PUBLIC_GOOGLE_MAP_ID=
+NEXT_PUBLIC_COMPANY_PROFILE=
+NEXT_PUBLIC_EXTERNAL_SERVER=
+NEXT_PUBLIC_BACK_END_URL=

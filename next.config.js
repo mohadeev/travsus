@@ -2,6 +2,7 @@
 //  * @type {import('next').NextConfig}
 //  */
 
+const { PHASE_DEVELOPMENT_SERVER } = require('next/constants')
 const createNextIntlPlugin = require('next-intl/plugin')
 
 const withNextIntl = createNextIntlPlugin()
@@ -11,13 +12,14 @@ const withNextIntl = createNextIntlPlugin()
 const nextConfig = {
 	reactStrictMode: false,
 	output: "standalone",
+	// Load these from node_modules instead of bundling them (avoids webpack warnings).
+	// OpenNext still traces and bundles them into the Worker.
+	serverExternalPackages: ['@react-pdf/renderer'],
+	typedRoutes: true,
 	experimental: {
-		typedRoutes: true,
 		serverActions: {
 			bodySizeLimit: '10mb',
 		},
-		// Load handlebars from node_modules instead of bundling it (avoids require.extensions warning)
-		serverComponentsExternalPackages: ['@react-pdf/renderer'],
 	},
 	// reactStrictMode: true,
 	// experimental: {
@@ -127,4 +129,12 @@ const nextConfig = {
 //change
 // module.exports = nextConfig
 
-module.exports = withNextIntl(nextConfig)
+module.exports = async (phase) => {
+	// Local `next dev` only. No-ops on `next build`, so Vercel is unaffected.
+	// The package is ESM-only, so it cannot be require()'d from this file.
+	if (phase === PHASE_DEVELOPMENT_SERVER) {
+		const { initOpenNextCloudflareForDev } = await import('@opennextjs/cloudflare')
+		await initOpenNextCloudflareForDev()
+	}
+	return withNextIntl(nextConfig)
+}

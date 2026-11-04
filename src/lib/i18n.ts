@@ -1,57 +1,26 @@
-// lib/i18n.ts
-import { useLocale, useMessages } from 'next-intl'
+'use client'
 
-import enUS from '../../messages/en-US.json'
-import deDE from '../../messages/de-DE.json'
-import esES from '../../messages/es-ES.json'
-import frFR from '../../messages/fr-FR.json'
-import itIT from '../../messages/it-IT.json'
-import jaJP from '../../messages/ja-JP.json'
-import koKR from '../../messages/ko-KR.json'
-import ptPT from '../../messages/pt-PT.json'
-import ruRU from '../../messages/ru-RU.json'
-import zhCN from '../../messages/zh-CN.json'
+// Client translations. The active language is provided by NextIntlClientProvider
+// (one locale per request). Importing every messages/*.json here used to ship
+// all 10 languages in the server Worker and the browser bundle.
+import { useMessages } from 'next-intl'
 
-export const messages = {
-	'en-US': enUS,
-	'de-DE': deDE,
-	'es-ES': esES,
-	'fr-FR': frFR,
-	'it-IT': itIT,
-	'ja-JP': jaJP,
-	'ko-KR': koKR,
-	'pt-PT': ptPT,
-	'ru-RU': ruRU,
-	'zh-CN': zhCN,
-}
+type Text = string | string[]
+type Catalog = Record<string, Record<string, Text>>
 
-export function useTranslations(namespace: string, localeParam?: string) {
-	let locale = ''
+export function useTranslations(namespace: string) {
+	const messages = useMessages() as Catalog
 
-	if (localeParam) {
-		locale = localeParam
-	} else {
-		locale = useLocale() // e.g., "ja" or "ja-JP"
-	}
-
-	return function t(
-		key: string,
-		values?: Record<string, string | number>,
-	): string {
+	return function t(key: string, values?: Record<string, string | number>): any {
 		try {
-			const message = messages?.[locale]?.[namespace]?.[key]
-
-			if (!message) return key
-
-			if (values) {
-				return Object.entries(values).reduce(
-					(msg, [k, v]) =>
-						msg.replace(new RegExp(`\\{${k}\\}`, 'g'), String(v)),
-					message,
-				)
-			}
-
-			return message
+			const message = messages?.[namespace]?.[key]
+			if (message == null || message === '') return key
+			if (typeof message !== 'string') return values ? key : message
+			if (!values) return message
+			return Object.entries(values).reduce(
+				(msg, [k, v]) => msg.replace(new RegExp(`\\{${k}\\}`, 'g'), String(v)),
+				message,
+			)
 		} catch {
 			return key
 		}
