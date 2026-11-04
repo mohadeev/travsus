@@ -1,0 +1,33 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "travsus",
+  "compatibility_date": "2026-11-04",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  // vinext's request handler plus the daily jobs (src/cloudflare/worker.ts)
+  "main": "./src/cloudflare/worker.ts",
+  "assets": {
+    "directory": "dist/client",
+    "html_handling": "none",
+    "not_found_handling": "none",
+    "binding": "ASSETS",
+    "run_worker_first": [
+      "/*",
+      "!/_next/static/*",
+      "!/*/_next/static/*"
+    ]
+  },
+  // Same schedules (UTC) as vercel.json: daily balance charges and invite reminders
+  "triggers": {
+    "crons": [
+      "0 6 * * *",
+      "0 9 * * *"
+    ]
+  },
+  "observability": {
+    "enabled": true
+  }
+  // Secrets and settings (see CLOUDFLARE.md) are set in the Cloudflare dashboard
+  // or with `npx wrangler secret put NAME`, never in this file.
+}

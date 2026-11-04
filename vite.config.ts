@@ -9,6 +9,8 @@ import path from "node:path";
 
 const src = (file: string) => path.resolve(import.meta.dirname, "src", file);
 const MESSAGES_LOADER = src("i18n/loadMessages.ts");
+const IMAGE_WRAPPER = src("lib/cloudflare/image.tsx");
+const VINEXT_IMAGE = path.resolve(import.meta.dirname, "node_modules/vinext/dist/shims/image.js");
 const YOGA_BASE64 = /"data:application\/octet-stream;base64,[A-Za-z0-9+/=]+"/;
 
 /**
@@ -35,6 +37,10 @@ function yogaWasmFile(): string {
  *   components, where it is never used (the GDPR form is ssr:false). Server
  *   PDFs (bookingPdf) and the browser keep the real library;
  * - yoga-layout's WebAssembly is loaded as a module (see yogaWasmFile);
+ * - next/image: vinext ignores images.loaderFile, so Cloudinary photos go through
+ *   src/lib/cloudflare/image.tsx to keep the same resized URLs and srcset;
+ * - the `cloudinary` Node SDK is replaced by a small REST version with the same
+ *   calls (src/lib/cloudflare/cloudinary.ts): smaller, and no Node http streams;
  * - on the server, fontkit's Brotli decoder (only for .woff2 fonts; the booking
  *   PDF uses the built-in Helvetica) is left out (size limit).
  */
@@ -44,6 +50,13 @@ function cloudflareWorker(): Plugin {
     name: "travsus:cloudflare-worker",
     enforce: "pre",
     async resolveId(id, importer, options) {
+      if (id === "travsus:vinext-image") return VINEXT_IMAGE;
+      if ((id === "next/image" || id === VINEXT_IMAGE) && importer !== IMAGE_WRAPPER) {
+        return IMAGE_WRAPPER;
+      }
+      if (id === "cloudinary" && this.environment?.name !== "client") {
+        return src("lib/cloudflare/cloudinary.ts");
+      }
       if (id === "brotli/decompress.js" && this.environment?.name !== "client") {
         return "\0travsus:no-brotli";
       }
