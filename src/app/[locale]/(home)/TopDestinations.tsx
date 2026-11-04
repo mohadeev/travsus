@@ -28,7 +28,7 @@ export default function TopDestinations({ destinations }: { destinations: HomeDe
 							<div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-black/0" />
 							<div className="absolute inset-x-0 bottom-0 p-5 text-white sm:p-6">
 								<h3 className="text-2xl font-bold leading-tight [text-shadow:0_1px_12px_rgb(0_0_0/0.35)] sm:text-[26px]">
-									{d.country ? `${d.city}, ${d.country}` : d.city}
+									{d.city}
 								</h3>
 								<p className="mt-1 text-sm text-white/80">{t('tours_count', { count: d.toursCount })}</p>
 							</div>
