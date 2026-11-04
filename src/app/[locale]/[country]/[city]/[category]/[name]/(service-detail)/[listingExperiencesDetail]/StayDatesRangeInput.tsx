@@ -42,16 +42,16 @@ const StayDatesRangeInput: FC<StayDatesRangeInputProps> = ({
 			{({ open, close }) => (
 				<>
 					<Popover.Button
-						className={`relative flex w-full flex-1 items-center gap-3 p-4 text-left focus:outline-none ${styles.inputWrapper} ${
+						className={`relative flex w-full flex-1 items-center gap-3 rounded-t-2xl px-4 py-3 text-left focus:outline-none ${styles.inputWrapper} ${
 							isFlashing ? styles.flashing : ''
 						} ${open ? 'bg-neutral-50 dark:bg-neutral-900' : ''}`}
 					>
-						<CalendarDays className="h-6 w-6 shrink-0 text-brand-500" />
+						<CalendarDays className="h-5 w-5 shrink-0 text-neutral-950 dark:text-white" />
 						<span className="min-w-0 flex-1">
-							<span className={`block text-base font-semibold ${start ? '' : 'text-neutral-500'}`}>
+							<span className={`block text-[15px] font-semibold ${start ? '' : 'text-neutral-500'}`}>
 								{start ? formatTripDates(start, end, locale) : t('choose_dates')}
 							</span>
-							<span className="mt-0.5 block text-sm text-neutral-500">
+							<span className="block text-xs text-neutral-500">
 								{tHome('days_count', { count: Math.max(1, duration || 1) })}
 							</span>
 						</span>
