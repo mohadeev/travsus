@@ -3185,7 +3185,13 @@
     "shelf_day": "Однодневные экскурсии",
     "shelf_day_sub": "Вечером вы снова в отеле",
     "shelf_multi": "Многодневные туры",
-    "shelf_multi_sub": "Больше Марокко за одну поездку"
+    "shelf_multi_sub": "Больше Марокко за одну поездку",
+    "tab_hotels": "Отели",
+    "tab_things": "Чем заняться",
+    "tab_restaurants": "Рестораны",
+    "tab_flights": "Авиабилеты",
+    "tab_rentals": "Аренда жилья",
+    "where_to_next": "Куда дальше?"
   },
   "Payment": {
     "preparing": "Готовим безопасную оплату…",

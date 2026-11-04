@@ -1,9 +1,10 @@
 
 import { NextIntlClientProvider } from 'next-intl'
-// Figtree for Latin text (the site's typeface); Inter only for what Figtree
-// lacks (Cyrillic for Russian). Self-hosted: each alphabet is its own file, so a
-// page downloads only the ones it uses.
-import '@fontsource-variable/figtree/index.css'
+// Bricolage Grotesque for headlines, Instrument Sans for text; Inter only for
+// what they lack (Cyrillic for Russian). Self-hosted: each alphabet is its own
+// file, so a page downloads only the ones it uses.
+import '@fontsource-variable/bricolage-grotesque/opsz.css'
+import '@fontsource-variable/instrument-sans/index.css'
 import '@fontsource-variable/inter/opsz.css'
 
 import '../globals.css'

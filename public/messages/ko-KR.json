@@ -2643,7 +2643,13 @@
     "shelf_day": "당일 투어",
     "shelf_day_sub": "저녁에는 호텔로 돌아옵니다",
     "shelf_multi": "다일 투어",
-    "shelf_multi_sub": "한 번의 여행으로 더 많은 모로코를"
+    "shelf_multi_sub": "한 번의 여행으로 더 많은 모로코를",
+    "tab_hotels": "호텔",
+    "tab_things": "즐길 거리",
+    "tab_restaurants": "레스토랑",
+    "tab_flights": "항공권",
+    "tab_rentals": "휴가용 렌탈",
+    "where_to_next": "다음 여행지는?"
   },
   "Payment": {
     "preparing": "안전한 결제를 준비하는 중…",

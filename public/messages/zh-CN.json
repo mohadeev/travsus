@@ -2518,7 +2518,13 @@
     "shelf_day": "一日游",
     "shelf_day_sub": "晚上即可返回酒店",
     "shelf_multi": "多日游",
-    "shelf_multi_sub": "一次旅行，看遍更多摩洛哥"
+    "shelf_multi_sub": "一次旅行，看遍更多摩洛哥",
+    "tab_hotels": "酒店",
+    "tab_things": "玩乐",
+    "tab_restaurants": "餐厅",
+    "tab_flights": "机票",
+    "tab_rentals": "度假租赁",
+    "where_to_next": "下一站去哪儿？"
   },
   "Payment": {
     "preparing": "正在准备安全支付…",

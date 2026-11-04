@@ -1,9 +1,10 @@
 // Home hero, TripAdvisor layout: a big centered "Where to?" in the visitor's
-// language, category tabs with icons (each opens that search; the first is
-// the plain search) and one large pill search bar. Server-rendered, no motion.
+// language, TripAdvisor's six tabs (only "Things to Do" is available) and one
+// large pill search bar. Server-rendered, no motion.
 import Link from 'next/link'
-import { CalendarDays, Clock3, House, Mountain, Search, Tent, Waves, type LucideIcon } from 'lucide-react'
+import { BedDouble, Building2, House, Plane, Search, Ticket, UtensilsCrossed, type LucideIcon } from 'lucide-react'
 import { useLocale, useTranslations } from 'next-intl'
+import TabsRow from './TabsRow'
 
 export default function HomeHero() {
 	const t = useTranslations('Home')
@@ -11,40 +12,52 @@ export default function HomeHero() {
 	const tSeo = useTranslations('HomeSeo')
 	const locale = useLocale()
 
-	const tabs: [LucideIcon, string, string][] = [
-		[House, tNav('all_tours'), '/search?query='],
-		[Tent, t('interest_desert'), '/search?query=desert'],
-		[Clock3, t('interest_day_trips'), '/search?query=&duration=1'],
-		[CalendarDays, t('interest_multi_day'), '/search?query=&duration=4%2B'],
-		[Mountain, t('interest_mountains'), '/search?query=atlas'],
-		[Waves, t('interest_coast'), '/search?query=coast'],
+	// TripAdvisor's tabs. TRAVSUS offers things to do only: that tab is the
+	// active one (black, underlined, opens all tours); the others are shown
+	// greyed out and can't be clicked.
+	const tabs: [LucideIcon, string, boolean][] = [
+		[House, t('tab_all'), false],
+		[BedDouble, t('tab_hotels'), false],
+		[Ticket, t('tab_things'), true],
+		[UtensilsCrossed, t('tab_restaurants'), false],
+		[Plane, t('tab_flights'), false],
+		[Building2, t('tab_rentals'), false],
 	]
 
 	return (
 		<section className="mx-auto max-w-7xl px-4 pb-6 pt-7 text-center sm:px-5 sm:pb-10 sm:pt-12">
 			{/* The page's main heading says what we offer (search engines, screen readers) */}
 			<h1 className="sr-only">{tSeo('h1')}</h1>
-			<p aria-hidden className="headline text-[40px] !font-black !leading-[1.1] !tracking-[-0.02em] sm:text-[56px]">
-				{t('where_to')}
+			<p aria-hidden className="headline text-[44px] !leading-[0.98] !tracking-[-0.045em] sm:text-[72px]">
+				{t('where_to_next')}
 			</p>
 
-			<nav aria-label={t('interests_title')} className="-mx-4 mt-6 overflow-x-auto px-4 [scrollbar-width:none] sm:mt-8 [&::-webkit-scrollbar]:hidden">
+			<TabsRow label={t('interests_title')}>
 				<ul className="mx-auto flex w-max gap-2">
-					{tabs.map(([Icon, label, href], i) => (
-						<li key={href}>
-							<Link
-								href={href as any}
-								className={`flex items-center gap-2 whitespace-nowrap border-b-2 px-2.5 pb-2.5 pt-1.5 text-base font-bold text-black transition dark:text-white ${
-									i === 0 ? 'border-black dark:border-white' : 'border-transparent hover:border-neutral-300'
-								}`}
-							>
-								<Icon className="h-6 w-6 shrink-0" strokeWidth={1.8} aria-hidden />
-								{label}
-							</Link>
+					{tabs.map(([Icon, label, available]) => (
+						<li key={label}>
+							{available ? (
+								<Link
+									href={'/search?query=' as any}
+									aria-current="page"
+									className="flex items-center gap-2 whitespace-nowrap border-b-2 border-black px-2.5 pb-2.5 pt-1.5 text-base font-bold text-black dark:border-white dark:text-white"
+								>
+									<Icon className="h-6 w-6 shrink-0" strokeWidth={1.8} aria-hidden />
+									{label}
+								</Link>
+							) : (
+								<span
+									aria-disabled="true"
+									className="flex cursor-not-allowed select-none items-center gap-2 whitespace-nowrap border-b-2 border-transparent px-2.5 pb-2.5 pt-1.5 text-base font-bold text-neutral-300 dark:text-neutral-600"
+								>
+									<Icon className="h-6 w-6 shrink-0" strokeWidth={1.8} aria-hidden />
+									{label}
+								</span>
+							)}
 						</li>
 					))}
 				</ul>
-			</nav>
+			</TabsRow>
 
 			{/* Plain form: works before JavaScript loads */}
 			<form

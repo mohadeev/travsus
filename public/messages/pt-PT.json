@@ -3090,7 +3090,13 @@
     "shelf_day": "Excursões de um dia",
     "shelf_day_sub": "De volta ao teu hotel à noite",
     "shelf_multi": "Tours de vários dias",
-    "shelf_multi_sub": "Vê mais de Marrocos numa só viagem"
+    "shelf_multi_sub": "Vê mais de Marrocos numa só viagem",
+    "tab_hotels": "Hotéis",
+    "tab_things": "O que fazer",
+    "tab_restaurants": "Restaurantes",
+    "tab_flights": "Voos",
+    "tab_rentals": "Alojamento local",
+    "where_to_next": "Próximo destino?"
   },
   "Payment": {
     "preparing": "A preparar o pagamento seguro…",

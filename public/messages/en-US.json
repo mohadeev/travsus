@@ -2327,7 +2327,7 @@
     "destinations_carousel": "Get to know our destinations.",
     "tours_shelf": "More trips to explore.",
     "search_cta": "Search",
-    "tab_all": "Search all",
+    "tab_all": "Search All",
     "travelers_title": "Real trips. Real people.",
     "travelers_text": "Small groups, local guides and moments you'll talk about for years.",
     "impact_badge": "Travel that gives back",
@@ -2356,7 +2356,13 @@
     "shelf_day": "Day trips",
     "shelf_day_sub": "Back at your hotel in the evening",
     "shelf_multi": "Multi-day tours",
-    "shelf_multi_sub": "See more of Morocco in one trip"
+    "shelf_multi_sub": "See more of Morocco in one trip",
+    "tab_hotels": "Hotels",
+    "tab_things": "Things to Do",
+    "tab_restaurants": "Restaurants",
+    "tab_flights": "Flights",
+    "tab_rentals": "Vacation Rentals",
+    "where_to_next": "Where to next?"
   },
   "Payment": {
     "preparing": "Preparing secure payment…",

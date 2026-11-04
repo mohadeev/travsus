@@ -2656,7 +2656,13 @@
     "shelf_day": "日帰りツアー",
     "shelf_day_sub": "夜にはホテルに戻れます",
     "shelf_multi": "数日間のツアー",
-    "shelf_multi_sub": "一度の旅でモロッコをもっと楽しむ"
+    "shelf_multi_sub": "一度の旅でモロッコをもっと楽しむ",
+    "tab_hotels": "ホテル",
+    "tab_things": "観光・体験",
+    "tab_restaurants": "レストラン",
+    "tab_flights": "航空券",
+    "tab_rentals": "バケーションレンタル",
+    "where_to_next": "次はどこへ？"
   },
   "Payment": {
     "preparing": "安全なお支払いを準備中…",

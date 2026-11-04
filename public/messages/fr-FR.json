@@ -3656,7 +3656,13 @@
     "shelf_day": "Excursions d'une journée",
     "shelf_day_sub": "De retour à votre hôtel le soir",
     "shelf_multi": "Circuits de plusieurs jours",
-    "shelf_multi_sub": "Découvrez plus du Maroc en un seul voyage"
+    "shelf_multi_sub": "Découvrez plus du Maroc en un seul voyage",
+    "tab_hotels": "Hôtels",
+    "tab_things": "Activités",
+    "tab_restaurants": "Restaurants",
+    "tab_flights": "Vols",
+    "tab_rentals": "Locations de vacances",
+    "where_to_next": "Prochaine destination ?"
   },
   "Payment": {
     "preparing": "Préparation du paiement sécurisé…",

@@ -3579,7 +3579,13 @@
     "shelf_day": "Excursiones de un día",
     "shelf_day_sub": "De vuelta en tu hotel por la noche",
     "shelf_multi": "Tours de varios días",
-    "shelf_multi_sub": "Descubre más de Marruecos en un solo viaje"
+    "shelf_multi_sub": "Descubre más de Marruecos en un solo viaje",
+    "tab_hotels": "Hoteles",
+    "tab_things": "Qué hacer",
+    "tab_restaurants": "Restaurantes",
+    "tab_flights": "Vuelos",
+    "tab_rentals": "Alquileres vacacionales",
+    "where_to_next": "¿A dónde ahora?"
   },
   "Payment": {
     "preparing": "Preparando el pago seguro…",
