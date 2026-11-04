@@ -12,7 +12,7 @@
 FROM --platform=linux/amd64 node:22-alpine AS deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
-COPY package.json package-lock.json ./
+COPY package.json package-lock.json .npmrc ./
 RUN npm ci --no-audit --no-fund
 
 # ---- Build ----
