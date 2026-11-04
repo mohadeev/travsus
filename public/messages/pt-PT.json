@@ -702,7 +702,8 @@
     "Thanks_Title": "Obrigado pela sua avaliação!",
     "Thanks_Text": "Já está publicada e vai ajudar outros viajantes a escolher.",
     "Done": "Concluído",
-    "Based_On": "Com base em {count} avaliações"
+    "Based_On": "Com base em {count} avaliações",
+    "All": "Todos"
   },
   "ExperiencesDetailReviewSkeleton": {},
   "footer": {

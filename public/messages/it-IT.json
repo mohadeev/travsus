@@ -703,7 +703,8 @@
     "Thanks_Title": "Grazie per la tua recensione!",
     "Thanks_Text": "Ora è online e aiuterà altri viaggiatori a scegliere.",
     "Done": "Fatto",
-    "Based_On": "Basato su {count} recensioni"
+    "Based_On": "Basato su {count} recensioni",
+    "All": "Tutti"
   },
   "ExperiencesDetailReviewSkeleton": {},
   "footer": {

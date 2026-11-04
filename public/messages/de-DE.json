@@ -1002,7 +1002,8 @@
     "Thanks_Title": "Danke für deine Bewertung!",
     "Thanks_Text": "Sie ist jetzt online und hilft anderen Reisenden bei der Wahl.",
     "Done": "Fertig",
-    "Based_On": "Basierend auf {count} Bewertungen"
+    "Based_On": "Basierend auf {count} Bewertungen",
+    "All": "Alle"
   },
   "ExperiencesDetailReviewSkeleton": {},
   "finance_invoices_page": {

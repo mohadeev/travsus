@@ -1001,7 +1001,8 @@
     "Thanks_Title": "Merci pour votre avis !",
     "Thanks_Text": "Il est maintenant en ligne et aidera d'autres voyageurs à choisir.",
     "Done": "Terminé",
-    "Based_On": "Sur la base de {count} avis"
+    "Based_On": "Sur la base de {count} avis",
+    "All": "Tous"
   },
   "ExperiencesDetailReviewSkeleton": {},
   "finance_invoices_page": {

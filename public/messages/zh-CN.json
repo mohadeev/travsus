@@ -688,7 +688,8 @@
     "Thanks_Title": "感谢你的评价！",
     "Thanks_Text": "评价已发布，将帮助其他旅行者做出选择。",
     "Done": "完成",
-    "Based_On": "基于 {count} 条评价"
+    "Based_On": "基于 {count} 条评价",
+    "All": "全部"
   },
   "ExperiencesDetailReviewSkeleton": {},
   "footer": {

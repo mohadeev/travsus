@@ -701,7 +701,8 @@
     "Thanks_Title": "Спасибо за отзыв!",
     "Thanks_Text": "Он уже на странице и поможет другим путешественникам сделать выбор.",
     "Done": "Готово",
-    "Based_On": "На основе отзывов: {count}"
+    "Based_On": "На основе отзывов: {count}",
+    "All": "Все"
   },
   "ExperiencesDetailReviewSkeleton": {},
   "footer": {

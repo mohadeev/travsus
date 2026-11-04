@@ -1,7 +1,7 @@
 'use client'
 
 import type React from 'react'
-import { Circle } from 'lucide-react'
+import Stars from './Stars'
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
 import { useTranslations } from '@/lib/i18n'
 import { useLocale } from 'next-intl'
@@ -37,12 +37,12 @@ const Review: React.FC<ReviewProps> = ({ review }) => {
 	const locale = useLocale()
 
 	return (
-		<div className="p-6">
+		<article className="py-[22px]">
 			<div className="flex items-start gap-4">
 				<div className="flex-1">
 					<div className="flex items-start justify-between">
 						<div className="flex gap-3">
-							<Avatar className="h-12 w-12">
+							<Avatar className="h-10 w-10">
 								<AvatarImage
 									src={review.userImage ? review.userImage : defualt_user.src}
 									alt={review?.user?.accountData?.firstname}
@@ -56,11 +56,11 @@ const Review: React.FC<ReviewProps> = ({ review }) => {
 								</AvatarFallback>
 							</Avatar>
 							<div className="">
-								<h4 className="font-semibold text-neutral-950 dark:text-white">
+								<h4 className="text-[15px] font-bold text-neutral-950 dark:text-white">
 									{review?.user?.accountData?.firstname}
 								</h4>
 								{review.author && (
-									<div className="flex items-center text-sm font-medium text-black">
+									<div className="flex items-center text-[13px] text-neutral-700 dark:text-neutral-300">
 										<span>{review.author.location}</span>
 										<span className="mx-2">•</span>
 										<span>
@@ -70,7 +70,7 @@ const Review: React.FC<ReviewProps> = ({ review }) => {
 								)}
 							</div>
 						</div>
-						<div className="text-sm font-medium text-black">
+						<div className="text-[13px] text-neutral-600 dark:text-neutral-400">
 							{new Date(review.createdAt).toLocaleDateString(locale, {
 								year: 'numeric',
 								month: 'long',
@@ -81,27 +81,18 @@ const Review: React.FC<ReviewProps> = ({ review }) => {
 
 					<div className="mt-3">
 						<div className="mb-2 flex items-center gap-2">
-							<div className="flex gap-0.5">
-								{[1, 2, 3, 4, 5].map((circle) => (
-									<Circle
-										key={circle}
-										className={`h-4.5 w-4.5 ${circle <= review.rating ? 'fill-[#00AA6C] text-[#00AA6C]' : 'text-neutral-300'}`}
-									/>
-								))}
-							</div>
-							<span className="text-sm font-medium text-neutral-600 dark:text-neutral-400">
-								{review.rating}/5
-							</span>
+							<Stars rating={review.rating} />
+							<span className="sr-only">{review.rating}/5</span>
 						</div>
 
-						<h3 className="mb-2 text-lg font-semibold text-neutral-950 dark:text-white">
+						<h3 className="mb-1.5 text-[17px] font-extrabold text-neutral-950 dark:text-white">
 							{review.title}
 						</h3>
-						<p className="mb-3 leading-relaxed text-neutral-600 dark:text-neutral-400">
+						<p className="mb-2.5 max-w-[72ch] text-[15px] leading-relaxed text-neutral-700 dark:text-neutral-300">
 							{review.content}
 						</p>
 
-						<div className="mb-3 flex flex-wrap gap-4 text-sm/6 font-semibold text-black">
+						<div className="flex flex-wrap gap-x-4 gap-y-1 text-[13px] text-neutral-600 dark:text-neutral-400">
 							<span>
 								{t('Date_Experience')} {''}
 								{new Date(review.travelDate1).toLocaleDateString(locale, {
@@ -130,7 +121,7 @@ const Review: React.FC<ReviewProps> = ({ review }) => {
 					</div>
 				</div>
 			</div>
-		</div>
+		</article>
 	)
 }
 

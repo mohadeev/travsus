@@ -1,5 +1,5 @@
 'use client'
-// Photo grid (one large + two stacked, as on TripAdvisor) and a full-screen gallery with every photo.
+// Photo mosaic (one large photo, two small ones and a wide one) and a full-screen gallery with every photo.
 // Photos from Wikimedia Commons carry a credit (author, license, source): it is
 // shown under the grid and under each photo in the gallery, as their licenses ask.
 import { useEffect, useState } from 'react'
@@ -56,21 +56,32 @@ export default function ListingExperiencesDetailsImages() {
 
 	return (
 		<>
-			<div className="relative mt-6">
-				{/* Phones: one photo */}
-				<div className="sm:hidden">{tile(0, 'block aspect-[4/3] w-full rounded-xl', '100vw')}</div>
+			<div className="relative mt-5">
+				{/* Phones: one large photo, two small ones under it */}
+				<div className="-mx-5 grid grid-cols-2 grid-rows-[220px_110px] gap-1.5 sm:hidden">
+					{tile(0, photos.length > 2 ? 'col-span-2' : 'col-span-2 row-span-2', '100vw')}
+					{[1, 2].map((i) => tile(i, '', '50vw'))}
+				</div>
 
-				{/* Larger screens, as on TripAdvisor: one large photo and two stacked beside it */}
-				<div className="hidden h-[450px] grid-cols-3 grid-rows-2 gap-2 overflow-hidden rounded-xl sm:grid">
-					{tile(0, photos.length > 1 ? 'col-span-2 row-span-2' : 'col-span-3 row-span-2', '(max-width: 1280px) 66vw, 840px')}
-					{[1, 2].map((i) => tile(i, photos.length > 2 ? '' : 'row-span-2', '(max-width: 1280px) 33vw, 420px'))}
+				{/* Larger screens: one large photo; two small ones and a wide one beside it */}
+				<div className="hidden h-[446px] grid-cols-[minmax(0,2fr)_minmax(0,1fr)_minmax(0,1fr)] grid-rows-2 gap-1.5 overflow-hidden rounded-xl sm:grid">
+					{tile(0, photos.length > 1 ? 'row-span-2' : 'col-span-3 row-span-2', '(max-width: 1280px) 50vw, 620px')}
+					{photos.length === 2 && tile(1, 'col-span-2 row-span-2', '(max-width: 1280px) 50vw, 620px')}
+					{photos.length === 3 && [1, 2].map((i) => tile(i, 'col-span-2', '(max-width: 1280px) 50vw, 620px'))}
+					{photos.length >= 4 && (
+						<>
+							{tile(1, '', '(max-width: 1280px) 25vw, 310px')}
+							{tile(2, '', '(max-width: 1280px) 25vw, 310px')}
+							{tile(3, 'col-span-2', '(max-width: 1280px) 50vw, 620px')}
+						</>
+					)}
 				</div>
 
 				{photos.length > 1 && (
 					<button
 						type="button"
 						onClick={() => setOpen(0)}
-						className="absolute bottom-4 right-4 inline-flex items-center gap-2 rounded-full bg-white px-4 py-2.5 text-sm font-bold text-black shadow-[0_1px_6px_rgba(0,0,0,0.25)] transition hover:bg-neutral-100"
+						className="absolute bottom-3.5 right-3.5 inline-flex items-center gap-2 rounded-full bg-white px-4 py-2.5 text-[15px] font-bold text-black shadow-[0_1px_6px_rgba(0,0,0,0.25)] transition hover:bg-neutral-100"
 					>
 						<Grid2x2 className="h-4 w-4" />
 						{t('show_all_photos', { count: photos.length })}

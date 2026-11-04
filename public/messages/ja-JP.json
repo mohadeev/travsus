@@ -691,7 +691,8 @@
     "Thanks_Title": "レビューありがとうございます！",
     "Thanks_Text": "ページに掲載され、ほかの旅行者の参考になります。",
     "Done": "閉じる",
-    "Based_On": "{count}件のレビューに基づく"
+    "Based_On": "{count}件のレビューに基づく",
+    "All": "すべて"
   },
   "ExperiencesDetailReviewSkeleton": {},
   "footer": {

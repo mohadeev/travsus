@@ -973,7 +973,8 @@
     "Thanks_Title": "Thank you for your review!",
     "Thanks_Text": "It's now on the page and will help other travellers choose.",
     "Done": "Done",
-    "Based_On": "Based on {count} reviews"
+    "Based_On": "Based on {count} reviews",
+    "All": "All"
   },
   "finance_invoices_page": {
     "finance_invoices_page_Create_And_Manage_Your_Tour_Invoices": "Create and manage your tour invoices",

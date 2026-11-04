@@ -689,7 +689,8 @@
     "Thanks_Title": "리뷰 감사합니다!",
     "Thanks_Text": "이제 페이지에 게시되어 다른 여행자의 선택을 돕습니다.",
     "Done": "완료",
-    "Based_On": "리뷰 {count}개 기준"
+    "Based_On": "리뷰 {count}개 기준",
+    "All": "전체"
   },
   "ExperiencesDetailReviewSkeleton": {},
   "footer": {

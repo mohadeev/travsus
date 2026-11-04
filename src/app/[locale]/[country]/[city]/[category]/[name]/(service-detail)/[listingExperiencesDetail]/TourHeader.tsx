@@ -1,22 +1,25 @@
 'use client'
-// Tour title block: breadcrumb, title, real rating, and Share / Review / Save.
+// Tour title block: breadcrumb, title with round Share / Save buttons, the real
+// rating, and the tour's length and starting city.
 import { useRef, useState } from 'react'
 import Link from 'next/link'
-import { ChevronRight, Heart, Share } from 'lucide-react'
+import { Heart, Share } from 'lucide-react'
 import { useTranslations } from '@/lib/i18n'
 import { useAuthAction } from '@/app/hooks/useAuthAction'
 import addAndRemoveToWishList from '@/utils/api-utils/addAndRemoveToWishList'
 import { useAppDispatch, useAppSelector } from '@/store/hooks'
 import { selectUser } from '@/store/slices/user'
 import { selectTourLiked, setTourLiked } from '@/store/slices/tourPage'
-import RatingBubbles from '@/app/[locale]/(home)/RatingBubbles'
+import { useTranslations as useIntlTranslations } from 'next-intl'
 import { useTourService } from '../TourServiceContext'
+import Stars from './ReviewSystem/Stars'
 
-const actionClass =
-	'inline-flex items-center gap-2 rounded-full px-3.5 py-2.5 text-[15px] font-bold transition hover:bg-neutral-100 dark:hover:bg-neutral-800'
+const iconClass =
+	'grid h-11 w-11 place-items-center rounded-full border border-neutral-200 bg-white text-black transition hover:bg-neutral-100 dark:border-neutral-700 dark:bg-neutral-900 dark:text-white dark:hover:bg-neutral-800'
 
 const TourHeader = () => {
 	const t = useTranslations('Jan03_TourHeader_x9k2')
+	const tHome = useIntlTranslations('Home')
 	const dispatch = useAppDispatch()
 	const service: any = useTourService()
 	const [toast, setToast] = useState('')
@@ -74,61 +77,79 @@ const TourHeader = () => {
 		country && { label: country, href: `/search?query=${encodeURIComponent(country)}` },
 		city && { label: city, href: `/search?query=${encodeURIComponent(city)}` },
 	].filter(Boolean) as { label: string; href: string }[]
+	const days = Array.isArray(service.days) ? service.days.length : 0
 
 	return (
-		<div className="pt-5">
+		<div className="pt-4">
+			{/* Breadcrumb: underlined links, › between, the tour's name last */}
 			<nav aria-label="Breadcrumb">
-				<ol className="flex flex-wrap items-center gap-1 text-sm text-neutral-600 dark:text-neutral-400">
-					{crumbs.map((crumb, index) => (
-						<li key={crumb.href} className="flex items-center gap-1">
-							{index > 0 && <ChevronRight aria-hidden className="h-3.5 w-3.5" />}
-							<Link href={crumb.href as any} className="hover:text-black hover:underline dark:hover:text-white">
+				<ol className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-neutral-700 dark:text-neutral-300">
+					{crumbs.map((crumb) => (
+						<li key={crumb.href} className="flex items-center gap-2">
+							<Link href={crumb.href as any} className="underline underline-offset-2 hover:text-black dark:hover:text-white">
 								{crumb.label}
 							</Link>
+							<span aria-hidden className="text-neutral-400">›</span>
 						</li>
 					))}
+					<li aria-current="page" className="min-w-0 truncate">{title}</li>
 				</ol>
 			</nav>
 
-			<div className="mt-3 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-				<div className="min-w-0">
-					<h1 className="headline text-[28px] !leading-[1.15] sm:text-[32px]">{title}</h1>
-					{reviews > 0 && (
-						<p className="mt-2.5 flex flex-wrap items-center gap-x-3 gap-y-1 text-[15px]">
-							<button type="button" onClick={scrollToReviews} className="inline-flex items-center gap-2">
-								<span className="font-bold">{rating.toFixed(1)}</span>
-								<RatingBubbles rating={rating} size={14} tone="green" />
-								<span className="underline underline-offset-4">
-									{reviews.toLocaleString()} {t('Reviews')}
-								</span>
-							</button>
-							{recommended !== null && recommended > 0 && (
-								<span className="text-neutral-700 dark:text-neutral-300">
-									{t('Recommended_By_Percentage', { percentage: recommended })}
-								</span>
-							)}
-						</p>
-					)}
-				</div>
-
+			{/* Title with round Share and Save buttons on the right */}
+			<div className="mt-3.5 flex items-start justify-between gap-4">
+				<h1 className="headline min-w-0 text-[28px] !leading-[1.12] sm:text-[36px] lg:text-[40px]">{title}</h1>
 				<div className="relative flex shrink-0 items-center gap-2">
-					<button type="button" onClick={handleShare} className={actionClass}>
-						<Share className="h-4 w-4" />
-						{t('Share')}
+					<button type="button" onClick={handleShare} aria-label={t('Share')} title={t('Share')} className={iconClass}>
+						<Share className="h-5 w-5" strokeWidth={2} />
 					</button>
-					<button type="button" onClick={() => handleSave(undefined)} aria-pressed={liked} className={actionClass}>
-						<Heart className={`h-4 w-4 ${liked ? 'fill-red-500 text-red-500' : ''}`} />
-						{liked ? t('Saved') : t('Save')}
+					<button
+						type="button"
+						onClick={() => handleSave(undefined)}
+						aria-pressed={liked}
+						aria-label={liked ? t('Saved') : t('Save')}
+						title={liked ? t('Saved') : t('Save')}
+						className={iconClass}
+					>
+						<Heart className={`h-5 w-5 ${liked ? 'fill-black dark:fill-white' : ''}`} strokeWidth={2} />
 					</button>
 					{toast && (
-						<p role="status" className="absolute right-0 top-full mt-2 rounded-full bg-neutral-950 px-3 py-1.5 text-xs font-medium text-white">
+						<p role="status" className="absolute right-0 top-full z-10 mt-2 whitespace-nowrap rounded-full bg-neutral-950 px-3 py-1.5 text-xs font-medium text-white">
 							{toast}
 						</p>
 					)}
 				</div>
 			</div>
+
+			{/* Rating · recommended, then length · starting city (real numbers only) */}
+			{reviews > 0 && (
+				<p className="mt-2.5 flex flex-wrap items-center gap-x-3.5 gap-y-1 text-[15px]">
+					<button type="button" onClick={scrollToReviews} className="inline-flex items-center gap-2 tabular-nums">
+						<b className="font-extrabold">{rating.toFixed(1)}</b>
+						<Stars rating={rating} />
+						<span className="underline underline-offset-4">
+							{reviews.toLocaleString()} {t('Reviews')}
+						</span>
+					</button>
+					{recommended !== null && recommended > 0 && (
+						<>
+							<Dot />
+							<span>{t('Recommended_By_Percentage', { percentage: recommended })}</span>
+						</>
+					)}
+				</p>
+			)}
+			{(days > 0 || city) && (
+				<p className="mt-1.5 flex flex-wrap items-center gap-x-3.5 gap-y-1 text-[15px] text-neutral-700 dark:text-neutral-300">
+					{days > 0 && <span>{tHome('days_count', { count: days })}</span>}
+					{days > 0 && city && <Dot />}
+					{city && <span>{city}</span>}
+				</p>
+			)}
 		</div>
 	)
 }
+
+const Dot = () => <span aria-hidden className="h-1 w-1 rounded-full bg-neutral-400" />
 
 export default TourHeader

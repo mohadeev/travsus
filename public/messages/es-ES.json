@@ -935,7 +935,8 @@
     "Thanks_Title": "¡Gracias por tu opinión!",
     "Thanks_Text": "Ya está publicada y ayudará a otros viajeros a elegir.",
     "Done": "Listo",
-    "Based_On": "Basado en {count} opiniones"
+    "Based_On": "Basado en {count} opiniones",
+    "All": "Todos"
   },
   "ExperiencesDetailReviewSkeleton": {},
   "finance_invoices_page": {

@@ -83,8 +83,8 @@ const TourDetail: FC<ListingExperiencesDetailPageProps> = ({ similar = [] }) => 
 									<ExperiencesDescriptionSkeleton className="listingSection__wrap_no_border" />
 								)}
 
-								{/* Key facts, as on TripAdvisor: an icon and a line each */}
-								<ul className="mt-6 grid gap-x-8 gap-y-4 sm:grid-cols-2">
+								{/* Key facts: an icon, a bold line and a short explanation each */}
+								<ul className="mt-6 grid gap-x-8 gap-y-[18px] border-t border-neutral-200 pt-[22px] sm:grid-cols-2 dark:border-neutral-800">
 									{facts.map(({ icon: Icon, label, value }) => (
 										<Fact key={label} icon={Icon} title={`${label}: ${value}`} />
 									))}
@@ -182,7 +182,7 @@ function StickyBookingCard({ children }: { children: ReactNode }) {
 function Fact({ icon: Icon, title, text }: { icon: typeof Clock3; title: string; text?: string }) {
 	return (
 		<li className="flex gap-3">
-			<Icon className="mt-0.5 h-5 w-5 shrink-0" strokeWidth={1.9} aria-hidden />
+			<Icon className="mt-px h-6 w-6 shrink-0" strokeWidth={1.8} aria-hidden />
 			<p className="min-w-0 text-[15px] leading-snug">
 				<span className="font-bold">{title}</span>
 				{text && <span className="mt-0.5 block text-neutral-600 dark:text-neutral-400">{text}</span>}
