@@ -34,7 +34,8 @@ const config: Config = {
     fontFamily: {
        body: ['var(--font-body)', 'sans-serif'],
       display: ['var(--font-display)', 'sans-serif'],
-      sans: ['var(--font-travsus)', '"Helvetica Neue"', 'Helvetica', 'Arial', ...fontFamily.sans],
+      // Inter for every language it covers; Chinese, Japanese and Korean use the system's font
+      sans: ['"Inter Variable"', 'Inter', ...fontFamily.sans],
 
       // satoshi: ["Satoshi"],
     },

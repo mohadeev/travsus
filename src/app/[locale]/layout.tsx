@@ -1,6 +1,9 @@
 
 import { NextIntlClientProvider } from 'next-intl'
-import { fontVariables } from '@/lib/fonts'
+// Inter (variable, with optical sizes), self-hosted: each alphabet is its own file,
+// so a page downloads only the ones it uses (Latin, Cyrillic for Russian…)
+import '@fontsource-variable/inter/opsz.css'
+import '@fontsource-variable/inter/opsz-italic.css'
 
 import '../globals.css'
 import '@/fonts/line-awesome-1.3.0/css/line-awesome.css'
@@ -44,7 +47,7 @@ export default async function RootLayout(
 	const messages = await getMessages({ locale })
 
 	return (
-		<html className={fontVariables} lang={locale}>
+		<html lang={locale}>
 			<head>
 				{/* Favicon */}
 				<link rel="icon" type="image/png" href={logoImg.src} />

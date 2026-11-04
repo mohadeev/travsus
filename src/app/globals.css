@@ -21,8 +21,12 @@ html {
 	}
 }
 
-/* Smoother text everywhere, with the font's kerning on */
+/* Smoother text everywhere, with the font's kerning on. Inter: optical sizes
+   (large text gets the tighter display cut by itself), a tailed l and a
+   serifed I so "Il1" never look alike, and contextual alternates. */
 html {
+	font-optical-sizing: auto;
+	font-feature-settings: 'cv05' 1, 'cv08' 1, 'calt' 1;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	text-rendering: optimizeLegibility;
@@ -33,12 +37,12 @@ p {
 	text-wrap: pretty;
 }
 
-/* Headline: Travsus Sans, heavy and tight. Outside the Tailwind layers on
-   purpose so it wins over font-bold / tracking / leading. */
+/* Headline: Inter, bold and tight. Outside the Tailwind layers on purpose so
+   it wins over font-bold / tracking / leading. */
 .headline {
-	font-family: var(--font-travsus), 'Helvetica Neue', Helvetica, Arial, system-ui, sans-serif;
-	font-weight: 800;
-	letter-spacing: -0.02em;
+	font-family: 'Inter Variable', Inter, system-ui, sans-serif;
+	font-weight: 700;
+	letter-spacing: -0.03em;
 	line-height: 1.1;
 	text-wrap: balance;
 }
