@@ -13,7 +13,11 @@
     "db:translate-blog": "node scripts/db/run-ts.cjs scripts/db/translate-blog.ts",
     "db:import": "node scripts/db/import-to-mongo.mjs",
     "db:indexes": "node scripts/db/indexes.mjs",
-    "lint": "next lint"
+    "lint": "next lint",
+    "dev:vinext": "vite dev --port 3001",
+    "build:vinext": "vite build",
+    "start:vinext": "vite preview",
+    "deploy:vinext": "vinext-cloudflare deploy"
   },
   "prettier": "@epic-web/config/prettier",
   "dependencies": {
@@ -62,6 +66,7 @@
     "@types/react": "18.2.37",
     "@types/react-datepicker": "^4.19.3",
     "@types/react-dom": "18.2.15",
+    "@vinext/cloudflare": "^1.3.3",
     "@vis.gl/react-google-maps": "^1.1.0",
     "ajv": "^8.17.1",
     "axios": "^1.7.4",
@@ -106,6 +111,7 @@
     "react-phone-number-input": "^3.4.5",
     "react-redux": "^9.2.0",
     "react-schemaorg": "^2.0.0",
+    "react-server-dom-webpack": "^19.3.1",
     "react-swipeable": "^7.0.1",
     "react-use": "^17.4.0",
     "recharts": "^2.15.2",
@@ -121,6 +127,7 @@
     "zod": "^3.24.2"
   },
   "devDependencies": {
+    "@cloudflare/vite-plugin": "^2.0.0-beta.v.11",
     "@types/bcrypt": "^5.0.2",
     "@types/bcryptjs": "^2.4.6",
     "@types/canvas-confetti": "^1.9.0",
@@ -129,12 +136,19 @@
     "@types/nodemailer": "^6.4.16",
     "@types/qrcode": "^1.5.5",
     "@types/react-motion": "^0.0.40",
+    "@vitejs/plugin-react": "^6.2.1",
+    "@vitejs/plugin-rsc": "^0.5.38",
     "autoprefixer": "^10.4.16",
+    "cf": "^1.0.0-beta.27",
     "knip": "^6.33.0",
     "mongodb": "^6.21.0",
     "pg": "^8.23.1",
     "postcss": "^8.4.31",
     "prettier": "^3.3.3",
-    "tailwindcss": "^3.3.5"
-  }
+    "tailwindcss": "^3.3.5",
+    "vinext": "^1.4.3",
+    "vite": "^8.3.0",
+    "vite-css-modules": "^1.16.1"
+  },
+  "type": "module"
 }

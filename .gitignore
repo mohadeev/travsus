@@ -38,3 +38,6 @@ next-env.d.ts
 
 # Local database backups (may contain customer data)
 scripts/db/backups/
+/dist/
+.vinext/
+.cloudflare/
