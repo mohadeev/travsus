@@ -24,30 +24,38 @@ Data caches (`unstable_cache`, cached `fetch`) use the same store.
 The cache lives in a **Workers KV namespace with the binding name
 `VINEXT_KV_CACHE`** (set in [wrangler.jsonc](wrangler.jsonc), used by
 `kvDataAdapter()` in [vite.config.ts](vite.config.ts)), so every Worker instance
-shares it. Create it once:
-
-```sh
-npx wrangler kv namespace create VINEXT_KV_CACHE
-```
-
-and put the `id` it prints in `wrangler.jsonc`:
+shares it. The namespace exists; its id is in `wrangler.jsonc`:
 
 ```jsonc
-"kv_namespaces": [{ "binding": "VINEXT_KV_CACHE", "id": "<the id>" }]
+"kv_namespaces": [{ "binding": "VINEXT_KV_CACHE", "id": "c5f457ece26845599c8f58266402b4a4" }]
 ```
 
-(Without an `id`, `wrangler deploy` creates a namespace by itself.)
+Cached pages belong to one deploy: after a deploy each page is rendered again
+on its first visit (its JS and CSS files have new names).
 
 Cached pages are sent with `Cache-Control: public, s-maxage=3600,
 stale-while-revalidate=86400`, and [src/cloudflare/worker.ts](src/cloudflare/worker.ts)
 also keeps a copy of each cached page in Cloudflare's edge cache (works on a
 custom domain, not on `*.workers.dev`), so most visits don't run the page at
-all. Pages for one visitor (account, checkout, search, dashboard) stay
+all. The edge copies are kept per deploy too (the `CF_VERSION_METADATA`
+binding in `wrangler.jsonc` gives the deploy id), so an old page never points
+to JS files a new deploy removed. Pages for one visitor (account, checkout, search, dashboard) stay
 `private, no-store`. Ad click ids (`gclid`, `utm_*`, `fbclid`…) are ignored
 by the server so ad visitors get the cached page too; the browser keeps them
 in the address for analytics.
 
-Free plan KV limits: 100,000 reads and **1,000 writes per day**. Each page
+Tour pages look up the tour's canonical address in the middleware (to redirect
+old or other-language addresses); that lookup is cached too
+([src/lib/tourSlugs.ts](src/lib/tourSlugs.ts)), so a cached tour page doesn't
+touch the database.
+
+CPU time per request is raised to 30 s (`"limits": { "cpu_ms": 30000 }`,
+paid Workers plan): a page rendered for the first time needs far more than the
+free plan's 10 ms.
+
+Free plan KV limits: 100,000 reads and **1,000 writes per day**. Once those
+writes are used up, nothing new gets cached and every visit renders the page
+again (slow); the paid plan allows 1 million writes a month. Each page
 written to the cache counts as a write (an hourly refresh of a visited page is
 one more), so don't warm every page at once on the free plan
 (`--warm-cache` renders every tour in every language: about 1,700 pages).

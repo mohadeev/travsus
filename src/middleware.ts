@@ -4,21 +4,15 @@ import { NextResponse } from 'next/server'
 import type { NextFetchEvent, NextRequest } from 'next/server'
 import createMiddleware from 'next-intl/middleware'
 import { routing } from './i18n/routing'
+import { getTourSlugs } from './lib/tourSlugs'
 
 const intlMiddleware = createMiddleware(routing)
 
 const TOUR_ID = /^[0-9a-f]{24}$/
 
-/**
- * The tour's addresses, from the site's own API (the middleware runs at the
- * edge, where the database can't be reached). Empty when it can't be known.
- */
-async function tourSlugs(request: NextRequest, tourId: string): Promise<{ language: string; slug: string }[]> {
-	const url = new URL(`/api/tours/${tourId}/slug`, request.nextUrl.origin)
-	const res = await fetch(url, { signal: AbortSignal.timeout(3000), next: { revalidate: 86400 } })
-	if (!res.ok) return []
-	const data = await res.json().catch(() => ({}))
-	return Array.isArray(data?.slugs) ? data.slugs : []
+/** The tour's addresses (cached). Empty when they can't be known. */
+async function tourSlugs(tourId: string): Promise<{ language: string; slug: string }[]> {
+	return getTourSlugs(tourId).catch(() => [])
 }
 
 /** Only same-site relative paths are allowed as redirect targets. */
@@ -42,7 +36,7 @@ async function tourRedirect(
 	const tourId = isLegacy ? parts[parts.length - 2] : last
 	if (!TOUR_ID.test(tourId)) return null
 
-	const slugs = await tourSlugs(request, tourId)
+	const slugs = await tourSlugs(tourId)
 	const target = (slugs.find((s) => s.language === locale) ?? slugs.find((s) => s.language === routing.defaultLocale) ?? slugs[0])?.slug
 	if (!isSafePath(target)) return null
 

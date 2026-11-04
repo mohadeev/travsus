@@ -18,14 +18,22 @@
       "!/*/_next/static/*"
     ]
   },
-  // Cache for pages and data (vite.config.ts → kvDataAdapter). Create it once
-  // with `npx wrangler kv namespace create VINEXT_KV_CACHE` and put its id
-  // here (without an id, `wrangler deploy` creates one itself). See CLOUDFLARE.md.
+  // Cache for pages and data (vite.config.ts → kvDataAdapter). See CLOUDFLARE.md.
   "kv_namespaces": [
     {
-      "binding": "VINEXT_KV_CACHE"
+      "binding": "VINEXT_KV_CACHE",
+      "id": "c5f457ece26845599c8f58266402b4a4"
     }
   ],
+  // This deploy's id, so the edge page cache starts fresh on every deploy
+  // (src/cloudflare/worker.ts)
+  "version_metadata": {
+    "binding": "CF_VERSION_METADATA"
+  },
+  // CPU time per request (paid plan); a tour page rendered for the first time needs more than 10 ms
+  "limits": {
+    "cpu_ms": 30000
+  },
   // Same schedules (UTC) as vercel.json: daily balance charges and invite reminders
   "triggers": {
     "crons": [

@@ -17,7 +17,12 @@ const JOBS: Record<string, string> = {
 	'0 9 * * *': '/api/cron/invite-reminders',
 }
 
-type Env = { CRON_SECRET?: string; NEXT_PUBLIC_SITE_URL?: string }
+type Env = {
+	CRON_SECRET?: string
+	NEXT_PUBLIC_SITE_URL?: string
+	/** This deploy's id (wrangler.jsonc "version_metadata") */
+	CF_VERSION_METADATA?: { id: string }
+}
 
 /** Public, cached pages: kept by Cloudflare's edge for an hour, served stale for a day while refreshed. */
 // (Cloudflare's cache keeps the edge copy for s-maxage; browsers don't keep it)
@@ -52,6 +57,13 @@ function isPageLoad(request: Request) {
 	)
 }
 
+/** The edge cache address of a page: its own address plus the deploy id. */
+function edgeCacheUrl(address: string, env: Env) {
+	const url = new URL(address)
+	url.searchParams.set('__deploy', env.CF_VERSION_METADATA?.id ?? 'dev')
+	return url.toString()
+}
+
 /**
  * Serves a page through vinext. Pages vinext caches (they come back with
  * `s-maxage`, i.e. the public pages with `revalidate`) get the public
@@ -63,7 +75,9 @@ function isPageLoad(request: Request) {
 async function servePage(request: Request, env: Env, ctx: ExecutionContext) {
 	request = withoutTrackingParams(request)
 	const edge = isPageLoad(request) ? (caches as unknown as { default: Cache }).default : null
-	const edgeKey = new Request(request.url, { method: 'GET' })
+	// Keyed by deploy too: a page from an earlier deploy links to JS and CSS
+	// files that no longer exist, so each deploy starts with its own copies
+	const edgeKey = new Request(edgeCacheUrl(request.url, env), { method: 'GET' })
 	if (edge) {
 		const hit = await edge.match(edgeKey)
 		if (hit) return hit
