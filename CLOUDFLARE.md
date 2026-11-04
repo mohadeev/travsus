@@ -38,6 +38,15 @@ and put the `id` it prints in `wrangler.jsonc`:
 
 (Without an `id`, `wrangler deploy` creates a namespace by itself.)
 
+Cached pages are sent with `Cache-Control: public, s-maxage=3600,
+stale-while-revalidate=86400`, and [src/cloudflare/worker.ts](src/cloudflare/worker.ts)
+also keeps a copy of each cached page in Cloudflare's edge cache (works on a
+custom domain, not on `*.workers.dev`), so most visits don't run the page at
+all. Pages for one visitor (account, checkout, search, dashboard) stay
+`private, no-store`. Ad click ids (`gclid`, `utm_*`, `fbclid`…) are ignored
+by the server so ad visitors get the cached page too; the browser keeps them
+in the address for analytics.
+
 Free plan KV limits: 100,000 reads and **1,000 writes per day**. Each page
 written to the cache counts as a write (an hourly refresh of a visited page is
 one more), so don't warm every page at once on the free plan
