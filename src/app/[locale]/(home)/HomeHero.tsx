@@ -49,6 +49,7 @@ const EVERY = 3200 // ms per suggested place
 export default function HomeHero() {
 	const t = useTranslations('Home')
 	const tSeo = useTranslations('HomeSeo')
+	const tLanding = useTranslations('Landing')
 	const locale = useLocale()
 	const [step, setStep] = useState(0)
 	const [typed, setTyped] = useState(t('where_to'))
@@ -119,6 +120,9 @@ export default function HomeHero() {
 						className={`${styles.caret} ml-1.5 inline-block h-[0.9em] w-[4px] rounded-full bg-neutral-950 dark:bg-white sm:w-[6px]`}
 					/>
 				</p>
+
+				{/* What we offer, in one line: the visitor knows right away they're in the right place */}
+				<p className="mx-auto mt-4 max-w-xl text-base text-neutral-600 sm:mt-5 sm:text-lg dark:text-neutral-400">{tLanding('hero_sub')}</p>
 
 				{/* Plain form: works before JavaScript loads */}
 				<form
