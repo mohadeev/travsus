@@ -1,6 +1,6 @@
 'use client'
 
-import { NextIntlClientProvider, hasLocale } from 'next-intl'
+import { NextIntlClientProvider, hasLocale, useLocale } from 'next-intl'
 import { notFound } from 'next/navigation'
 import { routing } from '@/i18n/routing'
 
@@ -46,6 +46,13 @@ export default function LocaleLayoutClient({
 	// The mobile bottom menu would cover the Reserve / Pay buttons: hidden on tour pages
 	// (their address ends with the tour id), checkout and the payment result
 	const hideBottomMenu = /\/[0-9a-f]{24}\/?$/.test(pathname ?? '') || /\/(checkout|pay-done)(\/|$)/.test(pathname ?? '')
+	const locale = useLocale()
+	// Remembers the language for the next visit to "/" (the middleware reads it).
+	// Set here, not by the middleware: a page response that sets a cookie
+	// can't be cached (see src/middleware.ts).
+	useEffect(() => {
+		if (!document.cookie.split('; ').includes(`NEXT_LOCALE=${locale}`)) document.cookie = `NEXT_LOCALE=${locale}; path=/; samesite=lax`
+	}, [locale])
 	useEffect(() => {
 		wakeUpServer()
 		// ;(async () => {

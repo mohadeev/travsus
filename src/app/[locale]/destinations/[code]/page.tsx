@@ -8,12 +8,19 @@ import { notFound, permanentRedirect } from 'next/navigation'
 import { Building2, ChevronRight, Globe2, Map as MapIcon, Route } from 'lucide-react'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import TourCard from '../../(home)/TourCard'
-import { countPlacesOfCountry, countryHref, flag, getCitiesOf, getCountry, getPlacesOfCountry, getToursFor } from '@/lib/destinations'
+import { countPlacesOfCountry, countryHref, flag, getCitiesOf, getCountries, getCountry, getPlacesOfCountry, getToursFor } from '@/lib/destinations'
 import { bigImage, CityCard, MapEmbed, PlaceCard, Section } from '../_components/ui'
 
 type Props = { params: Promise<{ locale: string; code: string }> }
 
-export const revalidate = 1800
+// Rendered once and served from the cache (Cloudflare KV on the Worker), refreshed at most every hour
+export const revalidate = 3600
+
+/** The Cloudflare build lists every country, for deploy-time cache warming (--warm-cache). */
+export async function generateStaticParams({ params }: { params: { locale: string } }) {
+	if (!process.env.CLOUDFLARE_BUILD) return []
+	return (await getCountries(params.locale)).map((country) => ({ code: country.slug }))
+}
 
 export async function generateMetadata(props: Props): Promise<Metadata> {
 	const params = await props.params;

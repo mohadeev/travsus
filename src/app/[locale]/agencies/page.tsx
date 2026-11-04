@@ -15,6 +15,9 @@ import s from '../affiliates/affiliates.module.css'
 import AgencyBoard from './AgencyBoard'
 import AgencyRequestForm from './AgencyRequestForm'
 
+// Same page for every visitor: rendered once, served from the cache, refreshed at most every hour
+export const revalidate = 3600
+
 type PageProps = { params: Promise<{ locale: string }> }
 
 // [icon, title key, text key]: the benefit tiles

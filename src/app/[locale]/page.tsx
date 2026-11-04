@@ -129,7 +129,7 @@ function structuredData(locale: string, description: string, tours: HomeTour[]) 
 }
 
 // Built once, refreshed every 10 minutes: instant for visitors and crawlers
-export const revalidate = 600
+export const revalidate = 3600
 
 export default async function Home(props: { params: Promise<{ locale: string }> }) {
 	const params = await props.params;

@@ -7,6 +7,9 @@ import { companyProfile } from '@/constants/companyProfile'
 import { routing } from '@/i18n/routing'
 import ContactForm from './ContactForm'
 
+// Same page for every visitor: rendered once, served from the cache, refreshed at most every hour
+export const revalidate = 3600
+
 type PageProps = { params: Promise<{ locale: string }> }
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {

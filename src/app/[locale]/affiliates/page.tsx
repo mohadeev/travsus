@@ -29,6 +29,9 @@ import CreatorPhone from './CreatorPhone'
 import EarningsCalculator from './EarningsCalculator'
 import s from './affiliates.module.css'
 
+// Same page for every visitor: rendered once, served from the cache, refreshed at most every hour
+export const revalidate = 3600
+
 type PageProps = { params: Promise<{ locale: string }> }
 
 // [icon, title key, text key]: the benefit tiles
