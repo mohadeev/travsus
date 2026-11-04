@@ -138,19 +138,22 @@ export default async function SearchPage(props: PageProps) {
 		<>
 			<HomeMotion />
 			<main className="mx-auto max-w-7xl px-5 pb-16 pt-6 text-neutral-950 sm:pb-24 sm:pt-10 dark:text-white">
-				{/* What this page offers, and why to trust it */}
-				<header className={styles.heroIn}>
-					<h1 className="headline text-[32px] leading-[1.1] sm:text-5xl">
-						{filters.query ? t('title_query', { query: filters.query }) : t('title_all')}
-					</h1>
-					{!filters.query && <p className="mt-2 max-w-2xl text-[15px] text-neutral-600 sm:mt-3 sm:text-lg dark:text-neutral-400">{tLanding('hero_sub')}</p>}
+				{/* Compact on purpose: the tours start on the first screen. Desktop: title
+				    on the left, search on the right. */}
+				<header className={`${styles.heroIn} grid gap-4 lg:grid-cols-[1fr_minmax(0,460px)] lg:items-end lg:gap-12`}>
+					<div>
+						<h1 className="headline text-[28px] leading-[1.1] sm:text-[40px]">
+							{filters.query ? t('title_query', { query: filters.query }) : t('title_all')}
+						</h1>
+						{!filters.query && <p className="mt-2 hidden max-w-2xl text-base text-neutral-600 sm:block dark:text-neutral-400">{tLanding('hero_sub')}</p>}
+					</div>
 
 					{/* Search box: a new search starts with no filters */}
 					<form
 						action={`/${params.locale}/search`}
 						method="get"
 						role="search"
-						className="mt-5 flex max-w-2xl items-center gap-2 rounded-full border border-neutral-200 bg-white p-1.5 pl-5 shadow-[0_6px_24px_rgba(0,0,0,0.07)] transition focus-within:border-neutral-950 focus-within:shadow-[0_8px_30px_rgba(0,0,0,0.12)] sm:mt-7 dark:border-neutral-800 dark:bg-neutral-950"
+						className="flex w-full items-center gap-2 rounded-full border border-neutral-200 bg-white p-1.5 pl-5 shadow-[0_6px_24px_rgba(0,0,0,0.07)] transition focus-within:border-neutral-950 focus-within:shadow-[0_8px_30px_rgba(0,0,0,0.12)] dark:border-neutral-800 dark:bg-neutral-950"
 					>
 						<Search className="h-5 w-5 shrink-0 text-neutral-500" />
 						<label className="min-w-0 flex-1">
@@ -167,16 +170,18 @@ export default async function SearchPage(props: PageProps) {
 							{tHome('search_cta')}
 						</button>
 					</form>
-
-					<ul className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-[13px] font-medium text-neutral-700 sm:mt-6 sm:gap-x-8 sm:text-sm dark:text-neutral-300">
-						{proof.map(([Icon, label]) => (
-							<li key={label} className="flex items-center gap-1.5">
-								<Icon className="h-4 w-4 shrink-0 text-neutral-950 sm:h-[18px] sm:w-[18px] dark:text-white" aria-hidden />
-								{label}
-							</li>
-						))}
-					</ul>
 				</header>
+
+				{/* Phones: why to trust us, one thin line that scrolls sideways
+				    (larger screens show it under the filters) */}
+				<ul className="-mx-5 mt-3 flex gap-4 overflow-x-auto whitespace-nowrap px-5 text-xs font-medium text-neutral-600 [scrollbar-width:none] lg:hidden dark:text-neutral-400 [&::-webkit-scrollbar]:hidden">
+					{proof.map(([Icon, label]) => (
+						<li key={label} className="flex shrink-0 items-center gap-1">
+							<Icon className="h-3.5 w-3.5 text-emerald-700 dark:text-emerald-400" aria-hidden />
+							{label}
+						</li>
+					))}
+				</ul>
 
 				{/* Quick ways in: the places with the most tours */}
 				{!filters.query && destinations.length > 1 && (
@@ -184,7 +189,7 @@ export default async function SearchPage(props: PageProps) {
 				)}
 
 				{/* Count, what's filtering the list, sort */}
-				<div className="mt-8 flex flex-wrap items-center justify-between gap-3 border-t border-neutral-200 pt-6 sm:mt-10 dark:border-neutral-800">
+				<div className="mt-5 flex items-center justify-between gap-3 border-t border-neutral-200 pt-5 lg:mt-8 lg:pt-6 dark:border-neutral-800">
 					<p className="text-base font-semibold sm:text-lg">{t('count', { count: tours.length })}</p>
 					<SortMenu filters={filters} t={t} />
 				</div>
@@ -214,7 +219,7 @@ export default async function SearchPage(props: PageProps) {
 				)}
 
 				{/* Phones: filters as swipeable chips */}
-				<div className="-mx-5 mt-4 flex gap-2 overflow-x-auto px-5 pb-1 [scrollbar-width:none] lg:hidden [&::-webkit-scrollbar]:hidden">
+				<div className="-mx-5 mt-3 flex gap-2 overflow-x-auto px-5 pb-1 [scrollbar-width:none] lg:hidden [&::-webkit-scrollbar]:hidden">
 					<span className="flex shrink-0 items-center gap-1.5 rounded-full bg-neutral-950 px-3.5 py-2 text-sm font-semibold text-white dark:bg-white dark:text-neutral-950">
 						<SlidersHorizontal className="h-4 w-4" />
 						{t('filters')}
@@ -276,6 +281,18 @@ export default async function SearchPage(props: PageProps) {
 									{t('clear')}
 								</Link>
 							)}
+
+							{/* Why to trust us, next to the tours */}
+							<ul className="space-y-3 rounded-2xl bg-neutral-50 p-4 text-[13px] font-medium leading-snug text-neutral-700 dark:bg-neutral-900 dark:text-neutral-300">
+								{proof.map(([Icon, label]) => (
+									<li key={label} className="flex items-center gap-2.5">
+										<span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-white shadow-sm dark:bg-neutral-950">
+											<Icon className="h-4 w-4 text-emerald-700 dark:text-emerald-400" aria-hidden />
+										</span>
+										{label}
+									</li>
+								))}
+							</ul>
 						</div>
 					</aside>
 
@@ -360,21 +377,21 @@ type FilterGroup = {
 /** Places with the most tours, as round photo chips that scroll sideways on phones. */
 function PopularPlaces({ title, destinations, countLabel }: { title: string; destinations: HomeDestination[]; countLabel: (count: number) => string }) {
 	return (
-		<nav aria-label={title} className="mt-8 sm:mt-10">
-			<h2 className="text-sm font-semibold text-neutral-500 dark:text-neutral-400">{title}</h2>
-			<ul className={`${styles.stagger} -mx-5 mt-3 flex gap-2.5 overflow-x-auto px-5 pb-1 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:px-0 [&::-webkit-scrollbar]:hidden`}>
+		<nav aria-label={title} className="mt-5 lg:mt-8">
+			<h2 className="sr-only text-sm font-semibold text-neutral-500 lg:not-sr-only dark:text-neutral-400">{title}</h2>
+			<ul className={`${styles.stagger} -mx-5 flex gap-2 overflow-x-auto px-5 pb-1 [scrollbar-width:none] lg:mx-0 lg:mt-3 lg:flex-wrap lg:gap-2.5 lg:px-0 [&::-webkit-scrollbar]:hidden`}>
 				{destinations.map((d) => (
 					<li key={d.city} className="shrink-0">
 						<Link
 							href={`/search?query=${encodeURIComponent(d.city)}` as any}
-							className="group flex items-center gap-2.5 rounded-full border border-neutral-200 bg-white py-1.5 pl-1.5 pr-4 transition hover:-translate-y-0.5 hover:border-neutral-950 hover:shadow-md dark:border-neutral-800 dark:bg-neutral-950 dark:hover:border-white"
+							className="group flex items-center gap-2 rounded-full border border-neutral-200 bg-white py-1 pl-1 pr-3.5 transition hover:-translate-y-0.5 hover:border-neutral-950 hover:shadow-md lg:gap-2.5 lg:py-1.5 lg:pl-1.5 lg:pr-4 dark:border-neutral-800 dark:bg-neutral-950 dark:hover:border-white"
 						>
-							<span className="relative h-9 w-9 shrink-0 overflow-hidden rounded-full bg-neutral-100 dark:bg-neutral-800">
+							<span className="relative h-8 w-8 shrink-0 overflow-hidden rounded-full bg-neutral-100 lg:h-9 lg:w-9 dark:bg-neutral-800">
 								<Image src={d.image} alt="" fill sizes="36px" className="object-cover transition duration-500 group-hover:scale-110" />
 							</span>
 							<span className="leading-tight">
 								<span className="block text-sm font-semibold">{d.city}</span>
-								<span className="block text-xs text-neutral-500">{countLabel(d.toursCount)}</span>
+								<span className="hidden text-xs text-neutral-500 lg:block">{countLabel(d.toursCount)}</span>
 							</span>
 						</Link>
 					</li>
