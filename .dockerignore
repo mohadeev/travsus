@@ -1,0 +1,24 @@
+# Not needed in the image (the image installs its own node_modules and builds .next)
+node_modules
+.next
+out
+build
+coverage
+.git
+.github
+.vercel
+.wrangler
+*.tsbuildinfo
+npm-debug.log*
+.DS_Store
+Dockerfile
+.dockerignore
+wrangler*.jsonc
+
+# Secrets never go into the image. Only .env.production (public NEXT_PUBLIC_*
+# values for the build) is allowed; the Dockerfile deletes it from the final image.
+.env*
+!.env.production
+
+# Local database backups (may contain customer data)
+scripts/db/backups/

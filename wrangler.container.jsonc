@@ -1,0 +1,48 @@
+{
+  // The Next.js app in a Docker container on Cloudflare Containers (Workers
+  // Paid plan). Deploy with `npm run deploy:container` (needs Docker running:
+  // wrangler builds ./Dockerfile and pushes the image). See CLOUDFLARE_CONTAINER.md.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "travsus-container",
+  "account_id": "481be2ac23bc202c7d955b725c3fae86",
+  "main": "src/container-worker.ts",
+  "compatibility_date": "2026-11-04",
+  "compatibility_flags": ["nodejs_compat"],
+
+  "containers": [
+    {
+      "class_name": "TravsusContainer",
+      "image": "./Dockerfile",
+      "max_instances": 3,
+      "instance_type": "standard-1"
+    }
+  ],
+
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "TRAVSUS_CONTAINER",
+        "class_name": "TravsusContainer"
+      }
+    ]
+  },
+
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": ["TravsusContainer"]
+    }
+  ],
+
+  // Same schedules (UTC) as vercel.json: daily balance charges and invite reminders
+  "triggers": {
+    "crons": ["0 6 * * *", "0 9 * * *"]
+  },
+
+  "observability": {
+    "enabled": true
+  }
+
+  // Secrets and settings are never in this file: set them with
+  // `npx wrangler secret put NAME -c wrangler.container.jsonc`.
+}

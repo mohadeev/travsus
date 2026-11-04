@@ -1,0 +1,15 @@
+{
+	// Type check for the Cloudflare Worker in front of the container
+	// (npx tsc -p tsconfig.container.json). The app uses tsconfig.json.
+	"compilerOptions": {
+		"target": "es2022",
+		"lib": ["es2022"],
+		"module": "esnext",
+		"moduleResolution": "bundler",
+		"strict": true,
+		"skipLibCheck": true,
+		"noEmit": true,
+		"types": ["@cloudflare/workers-types"]
+	},
+	"include": ["src/container-worker.ts"]
+}
