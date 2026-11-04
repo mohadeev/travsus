@@ -16,6 +16,19 @@ export async function generateMetadata({ params }: { params: { locale: string } 
 	}
 }
 
+// Only the details we really have: missing ones are left out, never shown as blanks
+function guaranteeDetails() {
+	const c = companyProfile
+	return [
+		c.guarantorEntity && `TRAVSUS has entered into an insolvency protection guarantee with ${c.guarantorEntity}${c.contractNumber ? `, contract number ${c.contractNumber}` : ''}.`,
+		c.vatNumber && `The company's tax identification number is ${c.vatNumber}.`,
+		`${c.fullLegalName || 'TRAVSUS LIMITED'} is registered in the Companies Registration Office of Ireland${c.registrationNumber ? ` under number ${c.registrationNumber}` : ''}, with its registered address at ${c.legalAddress}.`,
+		`Telephone number: ${c.contactPhone}.`,
+	]
+		.filter(Boolean)
+		.join(' ')
+}
+
 const generalConditionsContent = `
 
 ## Introductory provisions
@@ -234,7 +247,7 @@ Therefore, TRAVSUS will not be liable for the correct provision of such addition
 
 However, if the User books additional travel services during the same visit on the TRAVSUS Booking Website, these services will form part of linked travel services. In this case, as required by European Union law, TRAVSUS has signed a protection guarantee to refund the User for payments made to TRAVSUS for services that have not been provided due to the insolvency of TRAVSUS and, if necessary, for repatriation. Please note that no refund will be made in the event of insolvency of the relevant service provider.
 
-TRAVSUS has entered into an insolvency protection guarantee with  ${companyProfile.guarantorEntity}, contract number ${companyProfile.contractNumber}. The company's tax identification number is ${companyProfile.vatNumber} and its registered address is located at ${companyProfile.legalAddress}. ${companyProfile.legalName}  is registered in ${companyProfile.registryDetails}. Telephone number: ${companyProfile.contactPhone}.
+${guaranteeDetails()}
 
 If services are not provided due to the insolvency of TRAVSUS, Users may contact said entity or, where applicable, the competent authority.
 

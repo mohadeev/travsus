@@ -3,7 +3,7 @@
 // wordmark to close the page.
 import { useState, type FormEvent } from 'react'
 import Link from 'next/link'
-import { ArrowRight, ArrowUpRight, Instagram, MessageCircle, Phone } from 'lucide-react'
+import { ArrowRight, ArrowUpRight, Instagram, Mail, MessageCircle, Phone } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import type { Route } from 'next'
 import LanguagePreferencesModal from '@/app/(client-components)/(Header)/LanguagePreferencesModal'
@@ -11,9 +11,8 @@ import { openCookieSettings } from '@/lib/consent'
 import { companyProfile } from '@/constants/companyProfile'
 import { useAppDispatch } from '@/store/hooks'
 import { openChat } from '@/store/slices/ui'
+import { SUPPORT_EMAIL, SUPPORT_PHONE, SUPPORT_PHONE_TEL } from '@/constants/contact'
 import PaymentMethods from './PaymentMethods'
-
-const PHONE = '+34 614 52 04 61'
 
 // Most booked starting points; each opens the search for that city
 const DESTINATIONS = ['Marrakech', 'Fes', 'Merzouga', 'Chefchaouen', 'Essaouira', 'Ouarzazate']
@@ -56,6 +55,7 @@ export default function Footer() {
 	const tLinks = useTranslations('footer')
 	const tHome = useTranslations('Home')
 	const tNav = useTranslations('Nav')
+	const tTrust = useTranslations('Trust')
 	const dispatch = useAppDispatch()
 	const [email, setEmail] = useState('')
 	const [signup, setSignup] = useState<SignupState>('idle')
@@ -158,11 +158,17 @@ export default function Footer() {
 					<div className="col-span-2 sm:col-span-1">
 						<h3 className="text-sm font-semibold text-white">{t('contact')}</h3>
 						<div className="mt-4 space-y-3">
-							<a href={`tel:${PHONE.replace(/\s/g, '')}`} className="flex items-center gap-3 rounded-2xl bg-white/[0.04] p-3 ring-1 ring-white/10 transition hover:bg-white/[0.08]">
+							<a href={SUPPORT_PHONE_TEL} className="flex items-center gap-3 rounded-2xl bg-white/[0.04] p-3 ring-1 ring-white/10 transition hover:bg-white/[0.08]">
 								<span className="grid h-9 w-9 place-items-center rounded-full bg-white text-neutral-950">
 									<Phone className="h-4 w-4" aria-hidden />
 								</span>
-								<span className="text-sm font-medium text-white">{PHONE}</span>
+								<span className="text-sm font-medium text-white">{SUPPORT_PHONE}</span>
+							</a>
+							<a href={`mailto:${SUPPORT_EMAIL}`} className="flex items-center gap-3 rounded-2xl bg-white/[0.04] p-3 ring-1 ring-white/10 transition hover:bg-white/[0.08]">
+								<span className="grid h-9 w-9 place-items-center rounded-full bg-white/10 text-white">
+									<Mail className="h-4 w-4" aria-hidden />
+								</span>
+								<span className="text-sm font-medium text-white">{SUPPORT_EMAIL}</span>
 							</a>
 							<button type="button" onClick={() => dispatch(openChat())} className="flex w-full items-center gap-3 rounded-2xl bg-white/[0.04] p-3 text-left ring-1 ring-white/10 transition hover:bg-white/[0.08]">
 								<span className="grid h-9 w-9 place-items-center rounded-full bg-white/10 text-white">
@@ -171,6 +177,7 @@ export default function Footer() {
 								<span className="text-sm font-medium text-white">{t('chat')}</span>
 							</button>
 						</div>
+						<p className="mt-3 text-xs text-neutral-500">{tTrust('footer_hours')}</p>
 						<h3 className="mt-8 text-sm font-semibold text-white">{t('follow')}</h3>
 						<a
 							href="https://www.instagram.com/travsusofficial"
@@ -195,10 +202,10 @@ export default function Footer() {
 				<p className="mt-6 whitespace-pre-line text-[11px] leading-relaxed text-neutral-500">
 					{tLinks('footer_Disclaimer')}
 				</p>
-				{/* Registered office: discreet, same as the legal notice */}
+				{/* Who runs the site, as in the legal notice: name, company number, registered office */}
 				{companyProfile?.legalAddress && (
-					<p className="mt-3 text-[10px] text-neutral-600">
-						TRAVSUS LIMITED · {companyProfile.legalAddress}, Ireland
+					<p className="mt-4 text-xs leading-relaxed text-neutral-400">
+						{tTrust('footer_company', { number: companyProfile.registrationNumber ?? '' })} · {companyProfile.legalAddress}
 					</p>
 				)}
 			</div>

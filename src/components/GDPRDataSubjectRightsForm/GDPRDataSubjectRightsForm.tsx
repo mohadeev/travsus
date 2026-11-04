@@ -293,7 +293,7 @@ export const GDPRDataSubjectRightsForm: React.FC = () => {
 								{companyProfile.fullLegalName} | {companyProfile.legalAddress}
 							</p>
 							<p>
-								VAT: {companyProfile.vatNumber} | Reg. No:{' '}
+								{companyProfile.vatNumber && `VAT: ${companyProfile.vatNumber} | `}Reg. No:{' '}
 								{companyProfile.registrationNumber}
 							</p>
 							<p className="mt-1">

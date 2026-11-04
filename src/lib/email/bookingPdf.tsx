@@ -4,6 +4,7 @@
 import 'server-only'
 import { Document, Page, StyleSheet, Text, View, renderToBuffer } from '@react-pdf/renderer'
 import type { BookingEmail } from './templates'
+import { getCompanyProfile } from '@/constants/companyProfile'
 
 const INK = '#0a0a0a'
 const MUTED = '#737373'
@@ -34,9 +35,10 @@ const s = StyleSheet.create({
 const euros = (n: number) => `EUR ${(n || 0).toLocaleString('en-IE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
 const day = (d?: string | null) => (d ? new Date(d).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }) : '–')
 
+// Same company details as the site, placeholder values already dropped
 function company() {
 	try {
-		return JSON.parse(process.env.NEXT_PUBLIC_COMPANY_PROFILE || '{}')
+		return getCompanyProfile()
 	} catch {
 		return {}
 	}

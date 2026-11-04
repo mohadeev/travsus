@@ -3431,5 +3431,20 @@
     "cta_text": "お申し込みは1分で完了。メールでご連絡します。",
     "form_website_invalid": "ウェブサイトが見つかりませんでした。しばらくしてからもう一度お試しください。",
     "form_too_many": "本日はこの接続からのリクエストが多すぎます。明日もう一度お試しいただくか、メールでご連絡ください。"
+  },
+  "Trust": {
+    "title": "安心して予約",
+    "sub": "登録企業、安全な決済、そして相談できるスタッフ。",
+    "cancel_title": "無料キャンセル",
+    "cancel_text": "ツアーの24時間前までのキャンセルで全額返金します。",
+    "pay_title": "安全なお支払い",
+    "pay_text": "Stripeを通じてカード、Apple Pay、Google Payでお支払い。カード情報が当社に渡ることはありません。",
+    "help_title": "年中無休のサポート",
+    "help_text": "スタッフが電話、WhatsApp、メールでお答えします。",
+    "company_title": "登録企業",
+    "company_text": "TRAVSUS LIMITEDはアイルランドで登録された企業です（会社番号 {number}）。",
+    "company_link": "法的情報",
+    "footer_company": "TRAVSUS LIMITED · アイルランド登録企業、会社番号 {number}",
+    "footer_hours": "年中無休でサポート"
   }
 }

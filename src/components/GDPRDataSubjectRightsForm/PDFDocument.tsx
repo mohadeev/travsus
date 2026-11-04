@@ -114,7 +114,7 @@ const PDFDocument = ({ data }: { data: any }) => (
         <Text style={styles.sectionTitle}>1. Data Controller Details</Text>
         <Text style={styles.text}>Name: {companyProfile.fullLegalName}</Text>
         <Text style={styles.text}>Address: {companyProfile.legalAddress}</Text>
-        <Text style={styles.text}>VAT: {companyProfile.vatNumber}</Text>
+        {companyProfile.vatNumber ? <Text style={styles.text}>VAT: {companyProfile.vatNumber}</Text> : null}
         <Text style={styles.text}>Registration Number: {companyProfile.registrationNumber}</Text>
       </View>
 
@@ -161,7 +161,7 @@ const PDFDocument = ({ data }: { data: any }) => (
 
       <View style={styles.footer}>
         <Text>{companyProfile.fullLegalName} | {companyProfile.legalAddress}</Text>
-        <Text>VAT: {companyProfile.vatNumber} | Reg. No: {companyProfile.registrationNumber}</Text>
+        <Text>{companyProfile.vatNumber ? `VAT: ${companyProfile.vatNumber} | ` : ''}Reg. No: {companyProfile.registrationNumber}</Text>
         <Text>This form is a formal request to exercise your rights under the General Data Protection Regulation (GDPR).</Text>
       </View>
     </Page>

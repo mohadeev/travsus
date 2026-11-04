@@ -1,12 +1,13 @@
 'use client'
-// Site header, TripAdvisor-style and minimal: one row with the logo, a glowing
-// "Become a partner" pill, a couple of links and the account icons. The
+// Site header, GetYourGuide-style and minimal: one row with the logo, the
+// travelers' links (all tours, blog, help), a quiet "Become a partner" for
+// suppliers and the account icons. The
 // categories live in the home page chips and the mobile menu. Rendered on the
 // server too, so links are crawlable.
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Heart, Search, Sparkles } from 'lucide-react'
+import { Heart, Search } from 'lucide-react'
 import { useLocale, useTranslations } from 'next-intl'
 import Logo from '@/shared/Logo'
 import MenuBar from '@/shared/MenuBar'
@@ -62,15 +63,11 @@ export default function HeaderBar() {
 				<Logo className="w-24 shrink-0 sm:w-28" />
 
 				<nav aria-label={t('explore')} className="ml-auto hidden items-center gap-1 lg:flex">
-					<Link
-						href={ACCOUNT_LINKS.partner as any}
-						className="mr-3 inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-[15px] font-semibold text-neutral-950 shadow-[0_0_0_1px_rgba(0,0,0,0.06),0_0_22px_-2px_rgba(0,0,0,0.28)] transition hover:shadow-[0_0_0_1px_rgba(0,0,0,0.1),0_0_28px_0_rgba(0,0,0,0.35)] dark:bg-neutral-900 dark:text-white"
-					>
-						<Sparkles className="h-[18px] w-[18px]" />
-						{t('partner')}
-					</Link>
 					{link('/search?query=', t('all_tours'), !!pathname?.includes('/search'))}
 					{link(ACCOUNT_LINKS.blog, t('blog'), !!pathname?.includes('/blog'))}
+					{link(ACCOUNT_LINKS.help, t('help'), !!pathname?.includes('/contact'))}
+					<span aria-hidden className="mx-1 h-5 w-px bg-neutral-200 dark:bg-neutral-700" />
+					{link(ACCOUNT_LINKS.partner, t('partner'), !!pathname?.includes('/affiliates'))}
 				</nav>
 
 				<div className="ml-auto flex items-center gap-0.5 text-neutral-900 lg:ml-3 dark:text-white">

@@ -11,6 +11,7 @@ import ImpactBanner from './ImpactBanner'
 import ReferralBanner from './ReferralBanner'
 import TopDestinations from './TopDestinations'
 import TopTours from './TopTours'
+import TrustSection from './TrustSection'
 import styles from './home.module.css'
 
 // [icon, translation key]: the promises under the hero
@@ -73,6 +74,8 @@ export default function HomePage({ tours, destinations, reviews, rating }: Props
 					</div>
 
 					<HomeReviews reviews={reviews} />
+
+					<TrustSection />
 
 					<div className={styles.reveal}>
 						<ReferralBanner />

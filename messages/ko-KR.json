@@ -3418,5 +3418,20 @@
     "cta_text": "1분이면 신청할 수 있습니다. 이메일로 연락드리겠습니다.",
     "form_website_invalid": "웹사이트를 찾을 수 없습니다. 나중에 다시 시도해 주세요.",
     "form_too_many": "오늘 이 연결에서 요청이 너무 많습니다. 내일 다시 시도하시거나 이메일로 연락해 주세요."
+  },
+  "Trust": {
+    "title": "안심하고 예약하세요",
+    "sub": "등록된 회사, 안전한 결제, 그리고 직접 상담해 드리는 사람들.",
+    "cancel_title": "무료 취소",
+    "cancel_text": "투어 24시간 전까지 취소하면 전액 환불해 드립니다.",
+    "pay_title": "안전한 결제",
+    "pay_text": "Stripe를 통해 카드, Apple Pay, Google Pay로 결제하세요. 저희는 카드 정보를 절대 보지 않습니다.",
+    "help_title": "연중무휴 고객 지원",
+    "help_text": "전화, WhatsApp, 이메일로 직원이 직접 답변합니다.",
+    "company_title": "등록된 회사",
+    "company_text": "TRAVSUS LIMITED는 아일랜드에 등록된 회사입니다(회사 번호 {number}).",
+    "company_link": "법적 고지",
+    "footer_company": "TRAVSUS LIMITED · 아일랜드 등록, 회사 번호 {number}",
+    "footer_hours": "연중무휴 고객 지원"
   }
 }

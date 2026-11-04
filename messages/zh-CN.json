@@ -3293,5 +3293,20 @@
     "cta_text": "一分钟即可申请，我们会通过邮件与您联系。",
     "form_website_invalid": "我们没有找到您的网站。请稍后再试。",
     "form_too_many": "今天来自您网络的申请过多。请明天再试，或通过电子邮件联系我们。"
+  },
+  "Trust": {
+    "title": "放心预订",
+    "sub": "正规注册公司、安全支付，还有真人为您服务。",
+    "cancel_title": "免费取消",
+    "cancel_text": "在行程开始前 24 小时取消可获全额退款。",
+    "pay_title": "安全支付",
+    "pay_text": "通过 Stripe 使用银行卡、Apple Pay 或 Google Pay 付款。我们绝不会看到您的卡信息。",
+    "help_title": "全年无休的帮助",
+    "help_text": "真人通过电话、WhatsApp 或电子邮件为您解答。",
+    "company_title": "正规注册公司",
+    "company_text": "TRAVSUS LIMITED 在爱尔兰注册，公司编号 {number}。",
+    "company_link": "法律信息",
+    "footer_company": "TRAVSUS LIMITED · 爱尔兰注册，公司编号 {number}",
+    "footer_hours": "全年无休客服支持"
   }
 }

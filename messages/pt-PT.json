@@ -3865,5 +3865,20 @@
     "cta_text": "Peça acesso num minuto. Respondemos-lhe por email.",
     "form_website_invalid": "Não encontrámos o teu site. Por favor, tenta mais tarde.",
     "form_too_many": "Demasiados pedidos da tua ligação hoje. Tenta novamente amanhã ou envia-nos um email."
+  },
+  "Trust": {
+    "title": "Reserve com confiança",
+    "sub": "Uma empresa registada, pagamentos seguros e pessoas reais para falar contigo.",
+    "cancel_title": "Cancelamento gratuito",
+    "cancel_text": "Cancela até 24 horas antes do tour e recebe o reembolso total.",
+    "pay_title": "Pagamento seguro",
+    "pay_text": "Paga com cartão, Apple Pay ou Google Pay através da Stripe. Nunca vemos os dados do teu cartão.",
+    "help_title": "Ajuda 7 dias por semana",
+    "help_text": "Pessoas reais respondem por telefone, WhatsApp ou email.",
+    "company_title": "Empresa registada",
+    "company_text": "A TRAVSUS LIMITED está registada na Irlanda com o número de empresa {number}.",
+    "company_link": "Informação legal",
+    "footer_company": "TRAVSUS LIMITED · Registada na Irlanda, n.º de empresa {number}",
+    "footer_hours": "Apoio 7 dias por semana"
   }
 }
