@@ -3759,7 +3759,15 @@
     "none_title": "Aucun circuit ne correspond",
     "none_text": "Essayez un autre lieu ou une autre activité, ou retirez un filtre.",
     "meta_title": "Rechercher des circuits",
-    "meta_description": "Trouvez et réservez des circuits, excursions et aventures dans le désert avec TRAVSUS."
+    "meta_description": "Trouvez et réservez des circuits, excursions et aventures dans le désert avec TRAVSUS.",
+    "popular_places": "Lieux populaires",
+    "help_title": "Vous hésitez entre plusieurs circuits ?",
+    "help_text": "Donnez-nous vos dates et ce que vous aimeriez voir, nous vous proposerons le voyage qui vous convient. De vraies personnes vous répondent 7 jours sur 7.",
+    "help_whatsapp": "Écrivez-nous sur WhatsApp",
+    "help_call": "Appelez-nous",
+    "remove_filter": "Retirer {filter}",
+    "show_more": "Voir plus de circuits",
+    "showing": "{shown} sur {total} affichés"
   },
   "TourPage": {
     "duration": "Durée",

@@ -3743,7 +3743,15 @@
     "none_title": "Keine Touren gefunden",
     "none_text": "Versuchen Sie einen anderen Ort oder entfernen Sie einen Filter.",
     "meta_title": "Touren suchen",
-    "meta_description": "Finden und buchen Sie Touren, Tagesausflüge und Wüstenabenteuer mit TRAVSUS."
+    "meta_description": "Finden und buchen Sie Touren, Tagesausflüge und Wüstenabenteuer mit TRAVSUS.",
+    "popular_places": "Beliebte Orte",
+    "help_title": "Nicht sicher, welche Tour passt?",
+    "help_text": "Sag uns deine Reisedaten und was du sehen möchtest, und wir schlagen dir die passende Reise vor. Echte Menschen antworten 7 Tage die Woche.",
+    "help_whatsapp": "Per WhatsApp schreiben",
+    "help_call": "Anrufen",
+    "remove_filter": "{filter} entfernen",
+    "show_more": "Mehr Touren anzeigen",
+    "showing": "{shown} von {total} angezeigt"
   },
   "TourPage": {
     "duration": "Dauer",

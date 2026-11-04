@@ -3193,7 +3193,15 @@
     "none_title": "Nenhum tour corresponde à pesquisa",
     "none_text": "Experimente outro local ou atividade, ou remova um filtro.",
     "meta_title": "Pesquisar tours",
-    "meta_description": "Encontre e reserve tours, excursões e aventuras no deserto com a TRAVSUS."
+    "meta_description": "Encontre e reserve tours, excursões e aventuras no deserto com a TRAVSUS.",
+    "popular_places": "Locais populares",
+    "help_title": "Não sabes que tour escolher?",
+    "help_text": "Diz-nos as tuas datas e o que gostavas de ver, e sugerimos a viagem certa. Pessoas reais respondem 7 dias por semana.",
+    "help_whatsapp": "Fala connosco no WhatsApp",
+    "help_call": "Liga-nos",
+    "remove_filter": "Remover {filter}",
+    "show_more": "Ver mais tours",
+    "showing": "A mostrar {shown} de {total}"
   },
   "TourPage": {
     "duration": "Duração",

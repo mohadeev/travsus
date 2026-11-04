@@ -3682,7 +3682,15 @@
     "none_title": "Ningún tour coincide con tu búsqueda",
     "none_text": "Prueba otro lugar o actividad, o quita un filtro.",
     "meta_title": "Buscar tours",
-    "meta_description": "Encuentra y reserva tours, excursiones y aventuras en el desierto con TRAVSUS."
+    "meta_description": "Encuentra y reserva tours, excursiones y aventuras en el desierto con TRAVSUS.",
+    "popular_places": "Lugares populares",
+    "help_title": "¿No sabes qué tour elegir?",
+    "help_text": "Cuéntanos tus fechas y lo que te gustaría ver, y te sugerimos el viaje ideal. Personas reales te responden los 7 días de la semana.",
+    "help_whatsapp": "Escríbenos por WhatsApp",
+    "help_call": "Llámanos",
+    "remove_filter": "Quitar {filter}",
+    "show_more": "Ver más tours",
+    "showing": "Mostrando {shown} de {total}"
   },
   "TourPage": {
     "duration": "Duración",

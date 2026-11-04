@@ -2459,7 +2459,15 @@
     "none_title": "No tours match your search",
     "none_text": "Try another place or activity, or remove a filter.",
     "meta_title": "Search tours",
-    "meta_description": "Find and book tours, day trips and desert adventures with TRAVSUS."
+    "meta_description": "Find and book tours, day trips and desert adventures with TRAVSUS.",
+    "popular_places": "Popular places",
+    "help_title": "Not sure which tour to pick?",
+    "help_text": "Tell us your dates and what you'd love to see, and we'll suggest the right trip. Real people answer 7 days a week.",
+    "help_whatsapp": "WhatsApp us",
+    "help_call": "Call us",
+    "remove_filter": "Remove {filter}",
+    "show_more": "Show more tours",
+    "showing": "Showing {shown} of {total}"
   },
   "TourPage": {
     "duration": "Duration",

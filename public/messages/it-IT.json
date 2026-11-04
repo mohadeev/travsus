@@ -3251,7 +3251,15 @@
     "none_title": "Nessun tour corrisponde alla ricerca",
     "none_text": "Prova un altro luogo o attività, oppure rimuovi un filtro.",
     "meta_title": "Cerca tour",
-    "meta_description": "Trova e prenota tour, gite e avventure nel deserto con TRAVSUS."
+    "meta_description": "Trova e prenota tour, gite e avventure nel deserto con TRAVSUS.",
+    "popular_places": "Luoghi più amati",
+    "help_title": "Non sai quale tour scegliere?",
+    "help_text": "Dicci le tue date e cosa ti piacerebbe vedere, e ti suggeriamo il viaggio giusto. Persone vere rispondono 7 giorni su 7.",
+    "help_whatsapp": "Scrivici su WhatsApp",
+    "help_call": "Chiamaci",
+    "remove_filter": "Rimuovi {filter}",
+    "show_more": "Mostra altri tour",
+    "showing": "{shown} di {total} mostrati"
   },
   "TourPage": {
     "duration": "Durata",

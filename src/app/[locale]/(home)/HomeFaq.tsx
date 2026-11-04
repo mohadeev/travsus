@@ -9,7 +9,8 @@ import styles from './home.module.css'
 
 const QUESTIONS = ['1', '2', '3', '4', '5', '6']
 
-export default function HomeFaq() {
+/** `schema`: also send the FAQ data to Google (only the home page does, so it isn't duplicated). */
+export default function HomeFaq({ schema = true }: { schema?: boolean }) {
 	const t = useTranslations('Landing')
 	const values = { number: companyProfile.registrationNumber ?? '', phone: SUPPORT_PHONE, email: SUPPORT_EMAIL }
 	const faqs = QUESTIONS.map((n) => ({ q: t(`q${n}`), a: t(`a${n}`, values) }))
@@ -35,16 +36,18 @@ export default function HomeFaq() {
 				))}
 			</div>
 
-			<script
-				type="application/ld+json"
-				dangerouslySetInnerHTML={{
-					__html: JSON.stringify({
-						'@context': 'https://schema.org',
-						'@type': 'FAQPage',
-						mainEntity: faqs.map(({ q, a }) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
-					}).replace(/</g, '\\u003c'),
-				}}
-			/>
+			{schema && (
+				<script
+					type="application/ld+json"
+					dangerouslySetInnerHTML={{
+						__html: JSON.stringify({
+							'@context': 'https://schema.org',
+							'@type': 'FAQPage',
+							mainEntity: faqs.map(({ q, a }) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
+						}).replace(/</g, '\\u003c'),
+					}}
+				/>
+			)}
 		</section>
 	)
 }

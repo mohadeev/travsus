@@ -2621,7 +2621,15 @@
     "none_title": "没有符合条件的行程",
     "none_text": "换个地点或活动试试，或移除一个筛选条件。",
     "meta_title": "搜索行程",
-    "meta_description": "在 TRAVSUS 查找并预订旅游、一日游和沙漠探险。"
+    "meta_description": "在 TRAVSUS 查找并预订旅游、一日游和沙漠探险。",
+    "popular_places": "热门地点",
+    "help_title": "不知道选哪个行程？",
+    "help_text": "告诉我们您的出行日期和想看的景点，我们为您推荐合适的行程。真人客服每周 7 天为您解答。",
+    "help_whatsapp": "WhatsApp 咨询",
+    "help_call": "致电我们",
+    "remove_filter": "移除{filter}",
+    "show_more": "查看更多行程",
+    "showing": "已显示 {shown} / {total}"
   },
   "TourPage": {
     "duration": "时长",

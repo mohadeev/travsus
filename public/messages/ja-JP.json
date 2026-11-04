@@ -2759,7 +2759,15 @@
     "none_title": "該当するツアーがありません",
     "none_text": "別の場所やアクティビティを試すか、絞り込みを解除してください。",
     "meta_title": "ツアーを検索",
-    "meta_description": "TRAVSUSでツアー、日帰り旅行、砂漠のアドベンチャーを探して予約。"
+    "meta_description": "TRAVSUSでツアー、日帰り旅行、砂漠のアドベンチャーを探して予約。",
+    "popular_places": "人気の場所",
+    "help_title": "どのツアーにするか迷っていますか？",
+    "help_text": "日程と見たいものを教えてください。ぴったりの旅をご提案します。スタッフが毎日お答えします。",
+    "help_whatsapp": "WhatsAppで相談",
+    "help_call": "電話する",
+    "remove_filter": "{filter}を解除",
+    "show_more": "ツアーをもっと見る",
+    "showing": "{total}件中{shown}件を表示"
   },
   "TourPage": {
     "duration": "所要日数",
