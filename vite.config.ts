@@ -1,6 +1,7 @@
 import { defineConfig, type Plugin } from "vite";
 import vinext from "vinext";
 import { cloudflare } from "@cloudflare/vite-plugin";
+import { kvDataAdapter } from "@vinext/cloudflare/cache/kv-data-adapter";
 import { createHash } from "node:crypto";
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { createRequire } from "node:module";
@@ -98,10 +99,16 @@ function cloudflareWorker(): Plugin {
 }
 
 export default defineConfig({
+  // Read by generateStaticParams (tours, countries, cities): the Worker lists
+  // every page for deploy-time cache warming; the Next.js build doesn't.
+  define: { "process.env.CLOUDFLARE_BUILD": JSON.stringify("1") },
   plugins: [
     cloudflareWorker(),
     patchCssModules({ exportMode: "default" }),
-    vinext(),
+    // Cached pages and data (ISR, unstable_cache, fetch cache) live in Workers KV
+    // (binding VINEXT_KV_CACHE in wrangler.jsonc), shared by every Worker instance
+    // instead of each instance's memory.
+    vinext({ cache: { data: kvDataAdapter() } }),
     cloudflare({
       viteEnvironment: {
         name: "rsc",

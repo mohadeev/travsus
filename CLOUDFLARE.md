@@ -14,7 +14,36 @@ The Worker is `travsus`, set in [wrangler.jsonc](wrangler.jsonc) with `nodejs_co
 Free plan limit: 3 MiB gzipped. Current size (`npx wrangler deploy --dry-run`):
 **Total Upload 10231 KiB / gzip 2740 KiB (2.68 MiB)**.
 
-## Environment variables
+## Page cache (Workers KV)
+
+Public pages (home, tours, destinations, about, legal pages…) are rendered once
+and then served from a cache for an hour (`revalidate = 3600`); after that the
+cached page is still served while a fresh one is rendered in the background.
+Data caches (`unstable_cache`, cached `fetch`) use the same store.
+
+The cache lives in a **Workers KV namespace with the binding name
+`VINEXT_KV_CACHE`** (set in [wrangler.jsonc](wrangler.jsonc), used by
+`kvDataAdapter()` in [vite.config.ts](vite.config.ts)), so every Worker instance
+shares it. Create it once:
+
+```sh
+npx wrangler kv namespace create VINEXT_KV_CACHE
+```
+
+and put the `id` it prints in `wrangler.jsonc`:
+
+```jsonc
+"kv_namespaces": [{ "binding": "VINEXT_KV_CACHE", "id": "<the id>" }]
+```
+
+(Without an `id`, `wrangler deploy` creates a namespace by itself.)
+
+Free plan KV limits: 100,000 reads and **1,000 writes per day**. Each page
+written to the cache counts as a write (an hourly refresh of a visited page is
+one more), so don't warm every page at once on the free plan
+(`--warm-cache` renders every tour in every language: about 1,700 pages).
+
+
 
 Secrets never go in the repo. Set them in the Cloudflare dashboard
 (Workers → travsus → Settings → Variables and Secrets) or with
@@ -114,8 +143,8 @@ The Next.js build doesn't use any of it.
 - **Middleware redirects** for old tour links call the site's own
   `/api/tours/{id}/slug`. They worked in the local Workers runtime. If they
   stop on the live domain, the old links simply aren't redirected (pages still load).
-- **`unstable_cache`** (tour catalog, reviews) only lasts as long as one Worker
-  instance; no KV data cache is set up. Pages are correct, but the database
-  is queried more often than on Vercel.
+- **Edits show up within an hour** on cached pages (tours, destinations).
+  Saving a tour or review clears the tour catalog cache right away
+  (`revalidateTag`), as on Vercel.
 - The admin "Site texts" panel is read-only on the Worker, as on Vercel. Edit
   texts locally with `npm run dev`.

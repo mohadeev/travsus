@@ -18,6 +18,14 @@
       "!/*/_next/static/*"
     ]
   },
+  // Cache for pages and data (vite.config.ts → kvDataAdapter). Create it once
+  // with `npx wrangler kv namespace create VINEXT_KV_CACHE` and put its id
+  // here (without an id, `wrangler deploy` creates one itself). See CLOUDFLARE.md.
+  "kv_namespaces": [
+    {
+      "binding": "VINEXT_KV_CACHE"
+    }
+  ],
   // Same schedules (UTC) as vercel.json: daily balance charges and invite reminders
   "triggers": {
     "crons": [
