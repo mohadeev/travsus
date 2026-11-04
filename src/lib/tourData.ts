@@ -1,20 +1,16 @@
 // Loads everything the tour detail page needs. Used by the page directly and
 // by GET /api/listing/get/getTourData — no HTTP round-trip from the server.
 import { cache } from 'react'
+import { unstable_cache } from 'next/cache'
 import { db, T, REL, must } from '@/lib/db'
+import { REVIEWS_TAG, TOURS_TAG } from '@/lib/tourCatalog'
 
 /** Name of a geo row in `language` (geo rows store translations as { language, name }). */
 const nameIn = (row: any, language: string) =>
 	row?.translations?.find((t: any) => t.language === language)?.name || ''
 
-/**
- * Tour + translated fields + reviews + day locations, or null if the tour
- * doesn't exist. Cached per request, so metadata and page share one load.
- */
-export const getTourData = cache(async function getTourData(
-	id: string,
-	language: string,
-) {
+/** Tour + translated fields + reviews + day locations, or null if the tour doesn't exist. */
+async function loadTourData(id: string, language: string) {
 	const [tour, reviews, allRatings] = await Promise.all([
 		db
 			.from(T.tours)
@@ -109,4 +105,16 @@ export const getTourData = cache(async function getTourData(
 		...currentLang,
 		days,
 	}
+}
+
+/**
+ * The tour in one language, cached in KV (Cloudflare) for an hour and shared by
+ * every visitor; saving a tour or a review clears it (refreshTourCache).
+ * Also cached per request, so metadata and page share one load.
+ */
+const cachedTourData = unstable_cache(loadTourData, ['tour-data-v1'], {
+	revalidate: 3600,
+	tags: [TOURS_TAG, REVIEWS_TAG],
 })
+
+export const getTourData = cache((id: string, language: string) => cachedTourData(id, language))
