@@ -1,6 +1,6 @@
 'use client'
 
-import { type FC, useEffect } from 'react'
+import { type FC, type ReactNode, useEffect, useRef, useState } from 'react'
 import { useAppSelector } from '@/store/hooks'
 import { selectMobileReserveOpen } from '@/store/slices/ui'
 import RenderSidebar from './RenderSideBar/RenderSidebar'
@@ -113,9 +113,15 @@ const TourDetail: FC<ListingExperiencesDetailPageProps> = ({ similar = [] }) => 
 						</div>
 
 						{/* Booking card: stays in view while scrolling */}
-						<aside className="hidden lg:block">
-							<div className="sticky top-32">
-								<RenderSidebar />
+						<aside className="hidden lg:flex lg:flex-col">
+							{/* The booking card follows the visitor down the page; the contact
+							    box sits at the end of the column */}
+							<div className="flex-1">
+								<StickyBookingCard>
+									<RenderSidebar />
+								</StickyBookingCard>
+							</div>
+							<div className="mt-6">
 								<ContactReservations />
 							</div>
 						</aside>
@@ -142,3 +148,37 @@ const TourDetail: FC<ListingExperiencesDetailPageProps> = ({ similar = [] }) => 
 }
 
 export default ListingExperiencesDetailPage
+
+/** Space kept between the sticky site header and the booking card (px). */
+const CARD_TOP = 96
+
+/**
+ * Keeps the booking card in view while scrolling (CSS sticky). On short
+ * screens, where the whole card doesn't fit under the header, it sticks a bit
+ * higher so its bottom, with the Reserve button, always stays on screen.
+ */
+function StickyBookingCard({ children }: { children: ReactNode }) {
+	const ref = useRef<HTMLDivElement>(null)
+	const [top, setTop] = useState(CARD_TOP)
+
+	useEffect(() => {
+		const card = ref.current
+		if (!card) return
+		const place = () => setTop(Math.min(CARD_TOP, window.innerHeight - card.offsetHeight - 16))
+		place()
+		const observer = new ResizeObserver(place)
+		observer.observe(card)
+		window.addEventListener('resize', place)
+		return () => {
+			observer.disconnect()
+			window.removeEventListener('resize', place)
+		}
+	}, [])
+
+	return (
+		<div ref={ref} className="sticky z-10 transition-[top] duration-200" style={{ top }}>
+			{children}
+		</div>
+	)
+}
+

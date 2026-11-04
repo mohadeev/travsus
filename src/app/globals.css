@@ -7,9 +7,12 @@ body,
 html {
 	font-family: Inter Tight;
 } */
+/* No sideways scrolling. `clip`, not `auto`: auto turned body into its own
+   scroll box, so sticky elements (the site header, the tour page's booking
+   card) scrolled away instead of staying in place. */
 body,
 html {
-	overflow: auto;
+	overflow-x: clip;
 }
 
 @layer utilities {

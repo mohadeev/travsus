@@ -70,7 +70,7 @@ export default function LocaleLayoutClient({
 	}, [])
 
 	return (
-		<body className=".theme-animals theme-animals overflow-auto bg-white text-base text-neutral-900 dark:bg-neutral-900 dark:text-neutral-200">
+		<body className=".theme-animals theme-animals overflow-x-clip bg-white text-base text-neutral-900 dark:bg-neutral-900 dark:text-neutral-200">
 			<AuthProvider>
 				<ThemeProvider>
 					<ReduxProvider>
@@ -89,7 +89,10 @@ export default function LocaleLayoutClient({
 							/>
 						</noscript>
 						<NewsletterModal />
-						<div className="overflow-auto">
+						{/* overflow-x-clip (not overflow-auto): stops sideways scrolling without
+						    making this a scroll box, so sticky elements (the header, the tour
+						    page's booking card) stay in place while the page scrolls */}
+						<div className="overflow-x-clip">
 							<TawkToWidget />
 							<CookieConsent />
 
