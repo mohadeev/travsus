@@ -3634,7 +3634,13 @@
     "recently_viewed_sub": "Touren, die Sie sich angesehen haben – machen Sie dort weiter",
     "recently_viewed_clear": "Löschen",
     "where_to": "Wohin?",
-    "hero_try": "Versuch „{place}“"
+    "hero_try": "Versuch „{place}“",
+    "shelf_desert": "Abenteuer in der Sahara",
+    "shelf_desert_sub": "Kamelritte, Dünen und Nächte im Wüstencamp",
+    "shelf_day": "Tagesausflüge",
+    "shelf_day_sub": "Abends zurück im Hotel",
+    "shelf_multi": "Mehrtägige Touren",
+    "shelf_multi_sub": "Mehr von Marokko auf einer Reise"
   },
   "Payment": {
     "preparing": "Sichere Zahlung wird vorbereitet…",

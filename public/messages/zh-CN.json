@@ -2512,7 +2512,13 @@
     "recently_viewed_sub": "您看过的行程，方便继续挑选",
     "recently_viewed_clear": "清除",
     "where_to": "去哪儿？",
-    "hero_try": "试试“{place}”"
+    "hero_try": "试试“{place}”",
+    "shelf_desert": "撒哈拉沙漠探险",
+    "shelf_desert_sub": "骑骆驼、沙丘和沙漠营地之夜",
+    "shelf_day": "一日游",
+    "shelf_day_sub": "晚上即可返回酒店",
+    "shelf_multi": "多日游",
+    "shelf_multi_sub": "一次旅行，看遍更多摩洛哥"
   },
   "Payment": {
     "preparing": "正在准备安全支付…",

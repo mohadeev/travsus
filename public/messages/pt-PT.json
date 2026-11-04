@@ -3084,7 +3084,13 @@
     "recently_viewed_sub": "Os tours que viu, para continuar onde parou",
     "recently_viewed_clear": "Limpar",
     "where_to": "Para onde?",
-    "hero_try": "Experimenta «{place}»"
+    "hero_try": "Experimenta «{place}»",
+    "shelf_desert": "Aventuras no Saara",
+    "shelf_desert_sub": "Passeios de camelo, dunas e noites em acampamentos no deserto",
+    "shelf_day": "Excursões de um dia",
+    "shelf_day_sub": "De volta ao teu hotel à noite",
+    "shelf_multi": "Tours de vários dias",
+    "shelf_multi_sub": "Vê mais de Marrocos numa só viagem"
   },
   "Payment": {
     "preparing": "A preparar o pagamento seguro…",

@@ -2650,7 +2650,13 @@
     "recently_viewed_sub": "閲覧したツアーから続きを探せます",
     "recently_viewed_clear": "クリア",
     "where_to": "どこへ行く？",
-    "hero_try": "「{place}」で検索"
+    "hero_try": "「{place}」で検索",
+    "shelf_desert": "サハラ砂漠の冒険",
+    "shelf_desert_sub": "ラクダ乗り、砂丘、砂漠キャンプでの夜",
+    "shelf_day": "日帰りツアー",
+    "shelf_day_sub": "夜にはホテルに戻れます",
+    "shelf_multi": "数日間のツアー",
+    "shelf_multi_sub": "一度の旅でモロッコをもっと楽しむ"
   },
   "Payment": {
     "preparing": "安全なお支払いを準備中…",

@@ -13,7 +13,7 @@ export default function TopDestinations({ destinations }: { destinations: HomeDe
 
 	return (
 		<section className={styles.reveal}>
-			<h2 className="headline text-2xl sm:text-[32px]">{t('destinations_title')}</h2>
+			<h2 className="headline text-[22px] sm:text-[28px]">{t('destinations_title')}</h2>
 			<p className="mt-1 text-sm text-neutral-500 sm:mt-2 sm:text-base">{t('destinations_sub')}</p>
 
 			<Shelf label={t('destinations_title')} className={`${styles.noScrollbar} ${styles.stagger} -mx-5 mt-5 flex snap-x snap-mandatory scroll-px-5 gap-3 overflow-x-auto px-5 pb-2 sm:mx-0 sm:mt-8 sm:scroll-px-0 sm:gap-5 sm:px-0`}>

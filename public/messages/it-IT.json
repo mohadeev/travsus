@@ -3142,7 +3142,13 @@
     "recently_viewed_sub": "I tour che hai guardato, per riprendere da dove avevi lasciato",
     "recently_viewed_clear": "Cancella",
     "where_to": "Dove vuoi andare?",
-    "hero_try": "Prova “{place}”"
+    "hero_try": "Prova “{place}”",
+    "shelf_desert": "Avventure nel Sahara",
+    "shelf_desert_sub": "Giri in cammello, dune e notti nei campi tendati",
+    "shelf_day": "Gite di un giorno",
+    "shelf_day_sub": "La sera sei di nuovo in hotel",
+    "shelf_multi": "Tour di più giorni",
+    "shelf_multi_sub": "Scopri più Marocco in un solo viaggio"
   },
   "Payment": {
     "preparing": "Preparazione del pagamento sicuro…",

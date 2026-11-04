@@ -2637,7 +2637,13 @@
     "recently_viewed_sub": "살펴본 투어를 이어서 확인하세요",
     "recently_viewed_clear": "지우기",
     "where_to": "어디로 갈까요?",
-    "hero_try": "“{place}” 검색해 보기"
+    "hero_try": "“{place}” 검색해 보기",
+    "shelf_desert": "사하라 사막 어드벤처",
+    "shelf_desert_sub": "낙타 타기, 사구, 사막 캠프에서의 밤",
+    "shelf_day": "당일 투어",
+    "shelf_day_sub": "저녁에는 호텔로 돌아옵니다",
+    "shelf_multi": "다일 투어",
+    "shelf_multi_sub": "한 번의 여행으로 더 많은 모로코를"
   },
   "Payment": {
     "preparing": "안전한 결제를 준비하는 중…",

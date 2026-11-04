@@ -3650,7 +3650,13 @@
     "recently_viewed_sub": "Les circuits que vous avez consultés, pour reprendre où vous en étiez",
     "recently_viewed_clear": "Effacer",
     "where_to": "Où allez-vous ?",
-    "hero_try": "Essayez « {place} »"
+    "hero_try": "Essayez « {place} »",
+    "shelf_desert": "Aventures dans le Sahara",
+    "shelf_desert_sub": "Balades à dos de chameau, dunes et nuits en bivouac",
+    "shelf_day": "Excursions d'une journée",
+    "shelf_day_sub": "De retour à votre hôtel le soir",
+    "shelf_multi": "Circuits de plusieurs jours",
+    "shelf_multi_sub": "Découvrez plus du Maroc en un seul voyage"
   },
   "Payment": {
     "preparing": "Préparation du paiement sécurisé…",

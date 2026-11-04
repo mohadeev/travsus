@@ -18,7 +18,7 @@ export default function HomeFaq({ schema = true }: { schema?: boolean }) {
 	return (
 		<section className={`${styles.reveal} grid gap-6 lg:grid-cols-[1fr_1.6fr] lg:gap-16`} aria-labelledby="faq-title">
 			<div>
-				<h2 id="faq-title" className="headline text-2xl sm:text-[32px]">
+				<h2 id="faq-title" className="headline text-[22px] sm:text-[28px]">
 					{t('faq_title')}
 				</h2>
 				<p className="mt-1 text-sm text-neutral-500 sm:mt-2 sm:text-base">{t('faq_sub')}</p>

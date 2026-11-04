@@ -2350,7 +2350,13 @@
     "recently_viewed_sub": "Tours you looked at, to pick up where you left off",
     "recently_viewed_clear": "Clear",
     "where_to": "Where to?",
-    "hero_try": "Try “{place}”"
+    "hero_try": "Try “{place}”",
+    "shelf_desert": "Sahara desert adventures",
+    "shelf_desert_sub": "Camel rides, dunes and nights in desert camps",
+    "shelf_day": "Day trips",
+    "shelf_day_sub": "Back at your hotel in the evening",
+    "shelf_multi": "Multi-day tours",
+    "shelf_multi_sub": "See more of Morocco in one trip"
   },
   "Payment": {
     "preparing": "Preparing secure payment…",

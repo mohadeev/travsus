@@ -1,20 +1,15 @@
-import { BadgeCheck, CalendarCheck, Headphones, ShieldCheck } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import type { HomeDestination, HomeReview, HomeTour } from '@/lib/homeData'
-import BookNowBanner from './BookNowBanner'
+import { PHOTOS } from '@/lib/photos'
+import { SUPPORT_PHONE } from '@/constants/contact'
 import HomeFaq from './HomeFaq'
-import HomeMotion from './HomeMotion'
 import HomeHero from './HomeHero'
 import HomeReviews from './HomeReviews'
-import HowItWorks from './HowItWorks'
-import RealTrips from './RealTrips'
+import PhotoBanner from './PhotoBanner'
 import RecentlyViewed from './RecentlyViewed'
-import ImpactBanner from './ImpactBanner'
-import ReferralBanner from './ReferralBanner'
 import TopDestinations from './TopDestinations'
 import TopTours from './TopTours'
 import TrustSection from './TrustSection'
-import styles from './home.module.css'
 
 type Props = {
 	tours: HomeTour[]
@@ -23,79 +18,71 @@ type Props = {
 	rating: { average: number | null; count: number }
 }
 
+const DESERT = /\b(desert|sahara|merzouga|erg chebbi|zagora|dunes?)\b/
+
 /**
- * Home page layout, in the order a visitor makes up their mind: what we offer
- * and why to trust it (hero, proof row), what to book (tours, how it works,
- * destinations), what others say (reviews, real trips), what protects them
- * (trust, FAQ), then one last nudge. Each section is its own component in
- * this folder: reorder, add or remove sections below.
+ * Home page laid out like TripAdvisor's: a plain white page, "Where to?" with
+ * category tabs over one big search, one promo card, then rows of real
+ * content (tours by kind, destinations, reviews), and the reassurance and
+ * questions at the end. Each section is its own component in this folder.
  */
-export default function HomePage({ tours, destinations, reviews, rating }: Props) {
+export default function HomePage({ tours, destinations, reviews }: Props) {
+	const t = useTranslations('Home')
 	const tLanding = useTranslations('Landing')
-	const tTrust = useTranslations('Trust')
 	// Tour cards for the browser (the search words are not needed there)
 	const cards = tours.map(({ searchText, ...card }) => card)
 
-	// Facts right under the search: real rating (when there is one), then what protects the booking
-	const proof = [
-		rating.average && rating.count > 0
-			? ([BadgeCheck, tLanding('proof_rating', { rating: rating.average.toFixed(1), count: rating.count })] as const)
-			: null,
-		[ShieldCheck, tTrust('cancel_title')] as const,
-		[CalendarCheck, tLanding('proof_deposit')] as const,
-		[Headphones, tTrust('help_title')] as const,
-	].filter((item) => item !== null)
+	// Rows of tours by kind, most popular first. Each row starts with tours the
+	// rows above don't already show on screen (their first 4), so no two rows
+	// open with the same cards.
+	const seen = new Set<string>()
+	const row = (match: (tour: HomeTour) => boolean) => {
+		const all = tours.filter(match)
+		const fresh = all.filter((tour) => !seen.has(tour.id))
+		const picked = [...fresh, ...all.filter((tour) => seen.has(tour.id))].slice(0, 12)
+		picked.slice(0, 4).forEach((tour) => seen.add(tour.id))
+		return picked
+	}
+	const top = row(() => true)
+	const desert = row((tour) => DESERT.test(tour.searchText))
+	const dayTrips = row((tour) => tour.days === 1)
+	const multiDay = row((tour) => tour.days >= 4)
 
 	return (
-		<>
-			<HomeMotion />
-			<main className="pb-12 text-neutral-950 sm:pb-24 dark:text-white">
-				<HomeHero />
+		<main className="pb-16 text-neutral-950 sm:pb-24 dark:text-white">
+			<HomeHero />
 
-				{/* Phones: two columns, icon above text. Larger screens: one row. */}
-				<ul className={`${styles.stagger} mx-auto grid max-w-7xl grid-cols-2 gap-x-2 gap-y-4 px-5 py-6 text-center text-xs font-medium leading-snug text-neutral-700 sm:flex sm:flex-wrap sm:justify-center sm:gap-x-10 sm:gap-y-3 sm:py-8 sm:text-sm dark:text-neutral-300`}>
-					{proof.map(([Icon, label]) => (
-						<li key={label} className="flex flex-col items-center gap-1.5 sm:flex-row sm:gap-2">
-							<Icon className={`${styles.bob} h-5 w-5 shrink-0 text-neutral-950 dark:text-white`} />
-							{label}
-						</li>
-					))}
-				</ul>
+			<div className="mx-auto max-w-7xl space-y-12 px-5 sm:space-y-16">
+				{/* One promo card right under the search, as on TripAdvisor */}
+				<PhotoBanner
+					photo={PHOTOS.sahara}
+					eyebrow={tLanding('cta_eyebrow')}
+					title={tLanding('cta_title')}
+					text={tLanding('cta_text')}
+					ctaLabel={tLanding('cta_button')}
+					ctaHref="/search?query="
+					footnote={tLanding('cta_note', { phone: SUPPORT_PHONE })}
+				/>
 
-				<div className="mx-auto max-w-7xl space-y-14 px-5 pt-4 sm:space-y-28 sm:pt-8">
-					{/* Tours this visitor opened (from their browser); hidden for new visitors */}
-					<RecentlyViewed tours={cards} />
+				{/* Tours this visitor opened (from their browser); hidden for new visitors */}
+				<RecentlyViewed tours={cards} />
 
-					<TopTours tours={tours.slice(0, 16)} />
+				<TopTours tours={top} />
 
-					<HowItWorks />
+				<TopTours tours={desert} title={t('shelf_desert')} subtitle={t('shelf_desert_sub')} href="/search?query=desert" />
 
-					<TopDestinations destinations={destinations} />
+				<TopDestinations destinations={destinations} />
 
-					<HomeReviews reviews={reviews} />
+				<TopTours tours={dayTrips} title={t('shelf_day')} subtitle={t('shelf_day_sub')} href="/search?query=&duration=1" />
 
-					{/* Photos of our best tours: real trips, not stock photos */}
-					<div className={styles.reveal}>
-						<RealTrips rating={rating} photos={tours.slice(0, 3).map((tour) => ({ src: tour.image, alt: tour.name }))} />
-					</div>
+				<TopTours tours={multiDay} title={t('shelf_multi')} subtitle={t('shelf_multi_sub')} href="/search?query=&duration=4%2B" />
 
-					<TrustSection />
+				<HomeReviews reviews={reviews} />
 
-					<div className={styles.reveal}>
-						<ImpactBanner />
-					</div>
+				<TrustSection />
 
-					<HomeFaq />
-
-					<div className={styles.reveal}>
-						<BookNowBanner />
-					</div>
-
-					<div className={styles.reveal}>
-						<ReferralBanner />
-					</div>
-				</div>
-			</main>
-		</>
+				<HomeFaq />
+			</div>
+		</main>
 	)
 }

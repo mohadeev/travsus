@@ -3573,7 +3573,13 @@
     "recently_viewed_sub": "Los tours que has consultado, para seguir donde lo dejaste",
     "recently_viewed_clear": "Borrar",
     "where_to": "¿A dónde?",
-    "hero_try": "Prueba «{place}»"
+    "hero_try": "Prueba «{place}»",
+    "shelf_desert": "Aventuras en el Sáhara",
+    "shelf_desert_sub": "Paseos en camello, dunas y noches en campamentos del desierto",
+    "shelf_day": "Excursiones de un día",
+    "shelf_day_sub": "De vuelta en tu hotel por la noche",
+    "shelf_multi": "Tours de varios días",
+    "shelf_multi_sub": "Descubre más de Marruecos en un solo viaje"
   },
   "Payment": {
     "preparing": "Preparando el pago seguro…",

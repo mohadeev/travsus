@@ -30,7 +30,7 @@ export default function TrustSection() {
 
 	return (
 		<section className={styles.reveal} aria-labelledby="trust-title">
-			<h2 id="trust-title" className="headline text-2xl sm:text-[32px]">
+			<h2 id="trust-title" className="headline text-[22px] sm:text-[28px]">
 				{t('title')}
 			</h2>
 			<p className="mt-1 text-sm text-neutral-500 sm:mt-2 sm:text-base">{t('sub')}</p>
