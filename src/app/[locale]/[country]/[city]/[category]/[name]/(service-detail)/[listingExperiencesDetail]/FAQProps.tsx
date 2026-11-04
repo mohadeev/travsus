@@ -24,8 +24,7 @@ export default function TourFAQ({ faqs }: FAQProps) {
 
 	return (
 		<section id="faq" aria-labelledby="faq-heading" className="scroll-mt-32">
-			<span aria-hidden className="mb-3 block h-1 w-10 rounded-full bg-brand-500" />
-			<h2 id="faq-heading" className="text-2xl font-bold tracking-tight">
+			<h2 id="faq-heading" className="headline text-[24px] !leading-tight">
 				{t('TourlistingFAQ')}
 			</h2>
 			<div className="mt-4 divide-y divide-neutral-200 border-y border-neutral-200 dark:divide-neutral-800 dark:border-neutral-800">
@@ -33,7 +32,7 @@ export default function TourFAQ({ faqs }: FAQProps) {
 					<details key={index} className="group py-4">
 						<summary className="flex cursor-pointer list-none items-start justify-between gap-4 [&::-webkit-details-marker]:hidden">
 							<h3 className="font-semibold">{faq.question}</h3>
-							<ChevronDown className="mt-0.5 h-5 w-5 flex-shrink-0 text-neutral-500 transition-transform group-open:rotate-180 group-open:text-brand-500" />
+							<ChevronDown className="mt-0.5 h-5 w-5 flex-shrink-0 text-neutral-500 transition-transform group-open:rotate-180 group-open:text-black dark:group-open:text-white" />
 						</summary>
 						<p className="mt-2 text-[15px] leading-relaxed text-neutral-600 dark:text-neutral-400">
 							<LinkedText text={faq.answer} />

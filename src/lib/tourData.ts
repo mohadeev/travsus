@@ -101,6 +101,8 @@ async function loadTourData(id: string, language: string) {
 		language,
 		reviewsCount,
 		averageRating,
+		// Share of reviews rating it 4 or 5 ("Recommended by 96% of travelers")
+		recommendedPercent: ratings.length ? Math.round((ratings.filter((r: number) => r >= 4).length / ratings.length) * 100) : null,
 		continentInfo: null,
 		...currentLang,
 		days,
@@ -112,7 +114,7 @@ async function loadTourData(id: string, language: string) {
  * every visitor; saving a tour or a review clears it (refreshTourCache).
  * Also cached per request, so metadata and page share one load.
  */
-const cachedTourData = unstable_cache(loadTourData, ['tour-data-v1'], {
+const cachedTourData = unstable_cache(loadTourData, ['tour-data-v2'], {
 	revalidate: 3600,
 	tags: [TOURS_TAG, REVIEWS_TAG],
 })

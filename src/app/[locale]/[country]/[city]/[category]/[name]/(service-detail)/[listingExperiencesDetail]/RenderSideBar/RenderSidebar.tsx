@@ -47,6 +47,9 @@ function currentHotel(booking: any): Hotel {
 
 const RenderSidebar: FC = () => {
 	const t = useTranslations('Booking')
+	const tHome = useTranslations('Home')
+	// "from {price}" around the big price, in any word order (as on TripAdvisor: "from €276 per person")
+	const [fromBefore, fromAfter = ''] = tHome.raw('from_price').split('{price}')
 	const locale = useLocale()
 	const tOld = useTranslations('Jan03_RenderSidebar_k7m9')
 	const router = useRouter()
@@ -146,8 +149,9 @@ const RenderSidebar: FC = () => {
 			{/* Price at a glance: a whole number, rounded up, like on the tour cards */}
 			<div>
 				<p>
-					<span className="text-[28px] font-bold tracking-tight">{wholeMoney.format(Math.ceil(perPerson))}</span>{' '}
-					<span className="text-neutral-500">{tOld('per_person')}</span>
+					<span className="text-neutral-700 dark:text-neutral-300">{fromBefore}</span>
+					<span className="text-[28px] font-bold tracking-tight">{wholeMoney.format(Math.ceil(perPerson))}</span>
+					<span className="text-neutral-700 dark:text-neutral-300">{fromAfter} {tHome('per_person')}</span>
 				</p>
 				{canDeposit && <p className="mt-0.5 text-sm font-medium text-emerald-700 dark:text-emerald-400">{t('pay_later_teaser', { amount: deposit })}</p>}
 			</div>
@@ -276,7 +280,7 @@ const RenderSidebar: FC = () => {
 					type="button"
 					onClick={() => handleReserve(undefined)}
 					disabled={reserving}
-					className="w-full rounded-full bg-brand-500 px-6 py-3.5 text-base font-bold text-white transition hover:bg-brand-600 disabled:opacity-60"
+					className="w-full rounded-full bg-black px-6 py-3.5 text-base font-bold text-white transition hover:bg-neutral-800 disabled:opacity-60 dark:bg-white dark:text-black"
 				>
 					{reserving ? tOld('processing') : payPlan === 'deposit' ? t('reserve_deposit', { amount: deposit }) : t('reserve')}
 				</button>

@@ -13,12 +13,12 @@ import TourHeader from './TourHeader'
 import AffiliateShareBar from '@/components/AffiliateShareBar'
 import ReadMore from '@/app/(client-components)/ReadeMore'
 import { useTranslations } from '@/lib/i18n'
-import { Clock3, Flag, MapPin } from 'lucide-react'
+import { BadgeEuro, CalendarCheck, Clock3, Flag, MapPin, Users, Wallet } from 'lucide-react'
 import { useTranslations as useIntlTranslations } from 'next-intl'
 import type { HomeTour } from '@/lib/homeData'
-import TourCard from '@/app/[locale]/(home)/TourCard'
+import ShelfCard from '@/app/[locale]/(home)/ShelfCard'
+import HomeRow from '@/app/[locale]/(home)/HomeRow'
 import MobileFooterSticky from '../(components)/MobileFooterSticky'
-import BookingGuarantees from './BookingGuarantees'
 import TourPreBookingInfo from './TourPreBookingInfo'
 import ContactReservations from './ContactReservations'
 import TourItineraryWithMap from './itinerary/TourItineraryWithMap'
@@ -45,6 +45,8 @@ const TourDetail: FC<ListingExperiencesDetailPageProps> = ({ similar = [] }) => 
 	const t = useTranslations('servicedetail_listingexperiencesdetail_page')
 	const tPage = useIntlTranslations('TourPage')
 	const tHome = useIntlTranslations('Home')
+	const tPerks = useTranslations('PremiumTourBenefits')
+	const tInfo = useTranslations('BookingInfo')
 	const service: any = useTourService()
 	const { overview, days, faq }: any = service || {}
 	const mobileReserveOpen = useAppSelector(selectMobileReserveOpen)
@@ -68,41 +70,36 @@ const TourDetail: FC<ListingExperiencesDetailPageProps> = ({ similar = [] }) => 
 					<TourHeader />
 					<ListingExperiencesDetailsImages />
 
-					<div className="mt-10 grid gap-12 lg:grid-cols-[minmax(0,1fr)_380px]">
-						{/* Main content */}
-						<div className="min-w-0 space-y-14">
+					<div className="mt-8 grid gap-10 lg:grid-cols-[minmax(0,1fr)_380px] lg:gap-14">
+						{/* Main content, TripAdvisor layout: sections one under the other, divided by thin lines */}
+						<div className="min-w-0 divide-y divide-neutral-200 dark:divide-neutral-800 [&>*:first-child]:pt-0 [&>*]:py-8">
 							<section>
-								<span aria-hidden className="mb-3 block h-1 w-10 rounded-full bg-brand-500" />
-								<h2 className="text-2xl font-bold tracking-tight">{t('Overview_Title')}</h2>
-								{facts.length > 0 && (
-									<dl className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3">
-										{facts.map(({ icon: Icon, label, value }) => (
-											<div key={label} className="flex items-center gap-3 rounded-2xl border border-neutral-200 p-4 dark:border-neutral-800">
-												<Icon className="h-5 w-5 shrink-0 text-brand-500" strokeWidth={1.8} />
-												<div className="min-w-0">
-													<dt className="text-xs text-neutral-500">{label}</dt>
-													<dd className="truncate font-semibold">{value}</dd>
-												</div>
-											</div>
-										))}
-									</dl>
-								)}
+								<h2 className="headline text-[24px] !leading-tight">{t('Overview_Title')}</h2>
 								{overview ? (
-									<div className="mt-6 text-[17px] leading-relaxed text-neutral-700 dark:text-neutral-300">
+									<div className="mt-3 text-base leading-relaxed text-neutral-800 dark:text-neutral-200">
 										<ReadMore description={overview} />
 									</div>
 								) : (
 									<ExperiencesDescriptionSkeleton className="listingSection__wrap_no_border" />
 								)}
+
+								{/* Key facts, as on TripAdvisor: an icon and a line each */}
+								<ul className="mt-6 grid gap-x-8 gap-y-4 sm:grid-cols-2">
+									{facts.map(({ icon: Icon, label, value }) => (
+										<Fact key={label} icon={Icon} title={`${label}: ${value}`} />
+									))}
+									<Fact icon={Users} title={tInfo('private_title')} text={tInfo('private_text')} />
+									<Fact icon={CalendarCheck} title={tPerks('free_cancellation')} text={tPerks('free_cancellation_description')} />
+									<Fact icon={Wallet} title={tPerks('reserve_now_pay_later')} text={tPerks('reserve_now_pay_later_description')} />
+									<Fact icon={BadgeEuro} title={tPerks('lowest_price_guaranteed')} text={tPerks('lowest_price_guaranteed_description')} />
+								</ul>
 							</section>
 
-							<BookingGuarantees />
 							<Included />
 
 							{days && (
 								<section>
-									<span aria-hidden className="mb-3 block h-1 w-10 rounded-full bg-brand-500" />
-									<h2 className="mb-6 text-2xl font-bold tracking-tight">{t('Itinerary_Title')}</h2>
+									<h2 className="headline mb-5 text-[24px] !leading-tight">{t('Itinerary_Title')}</h2>
 									<TourItineraryWithMap days={days} />
 								</section>
 							)}
@@ -128,16 +125,15 @@ const TourDetail: FC<ListingExperiencesDetailPageProps> = ({ similar = [] }) => 
 					</div>
 
 					{similar.length > 0 && (
-						<section className="mt-24">
-							<span aria-hidden className="mb-3 block h-1 w-10 rounded-full bg-brand-500" />
-							<h2 className="mb-8 text-2xl font-bold tracking-tight sm:text-3xl">{t('Similar_Experiences')}</h2>
-							<ul className="grid grid-cols-2 gap-x-3 gap-y-6 sm:gap-x-5 sm:gap-y-10 lg:grid-cols-4">
+						<section className="mt-16 border-t border-neutral-200 pt-10 dark:border-neutral-800">
+							<h2 className="headline mb-4 text-[24px] !leading-tight">{t('Similar_Experiences')}</h2>
+							<HomeRow label={t('Similar_Experiences')}>
 								{similar.map((tour) => (
-									<li key={tour.id}>
-										<TourCard tour={tour} />
+									<li key={tour.id} className="min-w-0 snap-start">
+										<ShelfCard tour={tour} />
 									</li>
 								))}
-							</ul>
+							</HomeRow>
 						</section>
 					)}
 				</div>
@@ -179,6 +175,19 @@ function StickyBookingCard({ children }: { children: ReactNode }) {
 		<div ref={ref} className="sticky z-10 transition-[top] duration-200" style={{ top }}>
 			{children}
 		</div>
+	)
+}
+
+/** One key fact: an icon, a bold line and an optional short explanation. */
+function Fact({ icon: Icon, title, text }: { icon: typeof Clock3; title: string; text?: string }) {
+	return (
+		<li className="flex gap-3">
+			<Icon className="mt-0.5 h-5 w-5 shrink-0" strokeWidth={1.9} aria-hidden />
+			<p className="min-w-0 text-[15px] leading-snug">
+				<span className="font-bold">{title}</span>
+				{text && <span className="mt-0.5 block text-neutral-600 dark:text-neutral-400">{text}</span>}
+			</p>
+		</li>
 	)
 }
 

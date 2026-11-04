@@ -64,7 +64,7 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
 		<section id="experience_reviews" className="w-full scroll-mt-32">
 			{!isLoading && (
 				<div className="mb-4 flex items-center justify-between gap-3">
-					<h2 className="text-2xl font-bold tracking-tight">
+					<h2 className="headline text-[24px] !leading-tight">
 						{t('Reviews')} <span className="text-neutral-400">({totalReviews})</span>
 					</h2>
 					{totalReviews > 0 && writeButton}

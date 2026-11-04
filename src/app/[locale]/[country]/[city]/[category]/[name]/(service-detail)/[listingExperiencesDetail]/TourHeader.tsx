@@ -2,7 +2,7 @@
 // Tour title block: breadcrumb, title, real rating, and Share / Review / Save.
 import { useRef, useState } from 'react'
 import Link from 'next/link'
-import { ChevronRight, Heart, PenLine, Share } from 'lucide-react'
+import { ChevronRight, Heart, Share } from 'lucide-react'
 import { useTranslations } from '@/lib/i18n'
 import { useAuthAction } from '@/app/hooks/useAuthAction'
 import addAndRemoveToWishList from '@/utils/api-utils/addAndRemoveToWishList'
@@ -13,7 +13,7 @@ import RatingBubbles from '@/app/[locale]/(home)/RatingBubbles'
 import { useTourService } from '../TourServiceContext'
 
 const actionClass =
-	'inline-flex items-center gap-2 rounded-full border border-neutral-200 px-4 py-2 text-sm font-semibold transition hover:border-brand-500 hover:bg-brand-50 hover:text-brand-700 dark:border-neutral-800'
+	'inline-flex items-center gap-2 rounded-full px-3.5 py-2.5 text-[15px] font-bold transition hover:bg-neutral-100 dark:hover:bg-neutral-800'
 
 const TourHeader = () => {
 	const t = useTranslations('Jan03_TourHeader_x9k2')
@@ -33,6 +33,7 @@ const TourHeader = () => {
 	// Real numbers only: nothing is shown until the tour has reviews
 	const reviews = service.reviewsCount || 0
 	const rating = reviews > 0 ? Number(service.averageRating) : 0
+	const recommended: number | null = reviews > 0 ? service.recommendedPercent ?? null : null
 
 	const showToast = (text: string) => {
 		setToast(text)
@@ -75,13 +76,13 @@ const TourHeader = () => {
 	].filter(Boolean) as { label: string; href: string }[]
 
 	return (
-		<div className="pt-6">
+		<div className="pt-5">
 			<nav aria-label="Breadcrumb">
-				<ol className="flex flex-wrap items-center gap-1 text-sm text-neutral-500">
+				<ol className="flex flex-wrap items-center gap-1 text-sm text-neutral-600 dark:text-neutral-400">
 					{crumbs.map((crumb, index) => (
 						<li key={crumb.href} className="flex items-center gap-1">
 							{index > 0 && <ChevronRight aria-hidden className="h-3.5 w-3.5" />}
-							<Link href={crumb.href as any} className="hover:text-brand-600 hover:underline">
+							<Link href={crumb.href as any} className="hover:text-black hover:underline dark:hover:text-white">
 								{crumb.label}
 							</Link>
 						</li>
@@ -91,19 +92,22 @@ const TourHeader = () => {
 
 			<div className="mt-3 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
 				<div className="min-w-0">
-					<h1 className="text-3xl font-bold leading-tight tracking-tight sm:text-4xl">{title}</h1>
+					<h1 className="headline text-[28px] !leading-[1.15] sm:text-[32px]">{title}</h1>
 					{reviews > 0 && (
-						<button
-							type="button"
-							onClick={scrollToReviews}
-							className="mt-3 inline-flex items-center gap-2 text-sm"
-						>
-							<span className="font-semibold">{rating.toFixed(1)}</span>
-							<RatingBubbles rating={rating} size={13} tone="green" />
-							<span className="text-neutral-500 underline underline-offset-4">
-								{reviews.toLocaleString()} {t('Reviews')}
-							</span>
-						</button>
+						<p className="mt-2.5 flex flex-wrap items-center gap-x-3 gap-y-1 text-[15px]">
+							<button type="button" onClick={scrollToReviews} className="inline-flex items-center gap-2">
+								<span className="font-bold">{rating.toFixed(1)}</span>
+								<RatingBubbles rating={rating} size={14} tone="green" />
+								<span className="underline underline-offset-4">
+									{reviews.toLocaleString()} {t('Reviews')}
+								</span>
+							</button>
+							{recommended !== null && recommended > 0 && (
+								<span className="text-neutral-700 dark:text-neutral-300">
+									{t('Recommended_By_Percentage', { percentage: recommended })}
+								</span>
+							)}
+						</p>
 					)}
 				</div>
 
@@ -111,10 +115,6 @@ const TourHeader = () => {
 					<button type="button" onClick={handleShare} className={actionClass}>
 						<Share className="h-4 w-4" />
 						{t('Share')}
-					</button>
-					<button type="button" onClick={scrollToReviews} className={actionClass}>
-						<PenLine className="h-4 w-4" />
-						{t('Review')}
 					</button>
 					<button type="button" onClick={() => handleSave(undefined)} aria-pressed={liked} className={actionClass}>
 						<Heart className={`h-4 w-4 ${liked ? 'fill-red-500 text-red-500' : ''}`} />

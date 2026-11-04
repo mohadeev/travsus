@@ -1,6 +1,6 @@
 'use client'
 // "Good to know" before booking: cancellation, private tour, accessibility and
-// help, as four short cards. Only what is true for every TRAVSUS tour.
+// help, as plain rows with an icon (TripAdvisor layout). Only what is true for every TRAVSUS tour.
 import type { ReactNode } from 'react'
 import { Accessibility, MessageCircle, Phone, RotateCcw, Users } from 'lucide-react'
 import { useTranslations } from '@/lib/i18n'
@@ -15,10 +15,9 @@ export default function BookingInfo() {
 
 	return (
 		<section>
-			<span aria-hidden className="mb-3 block h-1 w-10 rounded-full bg-brand-500" />
-			<h2 className="text-2xl font-bold tracking-tight">{t('good_to_know')}</h2>
+			<h2 className="headline text-[24px] !leading-tight">{t('good_to_know')}</h2>
 
-			<div className="mt-6 grid gap-4 sm:grid-cols-2">
+			<div className="mt-5 grid gap-x-8 gap-y-6 sm:grid-cols-2">
 				<Card icon={<RotateCcw className="h-5 w-5" />} title={t('free_cancel_title')}>
 					<p>{t('free_cancel_text')}</p>
 					<p className="mt-1.5 text-neutral-500">{t('weather_text')}</p>
@@ -54,10 +53,10 @@ export default function BookingInfo() {
 
 function Card({ icon, title, children }: { icon: ReactNode; title: string; children: ReactNode }) {
 	return (
-		<div className="flex gap-4 rounded-2xl border border-neutral-200 p-5 dark:border-neutral-800">
-			<span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brand-50 text-brand-600 dark:bg-neutral-900">{icon}</span>
+		<div className="flex gap-3">
+			<span className="mt-0.5 shrink-0">{icon}</span>
 			<div className="min-w-0 text-[15px] leading-relaxed text-neutral-700 dark:text-neutral-300">
-				<h3 className="mb-1 font-semibold text-neutral-950 dark:text-white">{title}</h3>
+				<h3 className="mb-0.5 font-bold text-black dark:text-white">{title}</h3>
 				{children}
 			</div>
 		</div>

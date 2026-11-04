@@ -1,5 +1,5 @@
 'use client'
-// Photo grid (one large + four small) and a full-screen gallery with every photo.
+// Photo grid (one large + two stacked, as on TripAdvisor) and a full-screen gallery with every photo.
 // Photos from Wikimedia Commons carry a credit (author, license, source): it is
 // shown under the grid and under each photo in the gallery, as their licenses ask.
 import { useEffect, useState } from 'react'
@@ -58,19 +58,19 @@ export default function ListingExperiencesDetailsImages() {
 		<>
 			<div className="relative mt-6">
 				{/* Phones: one photo */}
-				<div className="sm:hidden">{tile(0, 'block aspect-[4/3] w-full rounded-2xl', '100vw')}</div>
+				<div className="sm:hidden">{tile(0, 'block aspect-[4/3] w-full rounded-xl', '100vw')}</div>
 
-				{/* Larger screens: one large photo and up to four small ones */}
-				<div className="hidden h-[460px] grid-cols-4 grid-rows-2 gap-2 overflow-hidden rounded-3xl sm:grid">
-					{tile(0, 'col-span-2 row-span-2', '(max-width: 1280px) 50vw, 640px')}
-					{[1, 2, 3, 4].map((i) => tile(i, photos.length > 2 ? '' : 'row-span-2', '(max-width: 1280px) 25vw, 320px'))}
+				{/* Larger screens, as on TripAdvisor: one large photo and two stacked beside it */}
+				<div className="hidden h-[450px] grid-cols-3 grid-rows-2 gap-2 overflow-hidden rounded-xl sm:grid">
+					{tile(0, photos.length > 1 ? 'col-span-2 row-span-2' : 'col-span-3 row-span-2', '(max-width: 1280px) 66vw, 840px')}
+					{[1, 2].map((i) => tile(i, photos.length > 2 ? '' : 'row-span-2', '(max-width: 1280px) 33vw, 420px'))}
 				</div>
 
 				{photos.length > 1 && (
 					<button
 						type="button"
 						onClick={() => setOpen(0)}
-						className="absolute bottom-4 right-4 inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-neutral-950 shadow-lg ring-1 ring-black/5 transition hover:bg-neutral-100"
+						className="absolute bottom-4 right-4 inline-flex items-center gap-2 rounded-full bg-white px-4 py-2.5 text-sm font-bold text-black shadow-[0_1px_6px_rgba(0,0,0,0.25)] transition hover:bg-neutral-100"
 					>
 						<Grid2x2 className="h-4 w-4" />
 						{t('show_all_photos', { count: photos.length })}

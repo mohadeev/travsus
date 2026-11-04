@@ -1,7 +1,7 @@
 'use client'
 // What's included, per package. All TRAVSUS tours are private: Standard and
-// Luxury (the old "shared" lists in the data are not shown). Side by side in
-// two plain cards; Luxury is outlined, and what it adds over Standard has a "+".
+// Luxury (the old "shared" lists in the data are not shown). Side by side as
+// plain lists, as on TripAdvisor; what Luxury adds over Standard has a "+".
 // Always in the page (not hidden behind a click), so it's readable and indexable.
 import type { ReactNode } from 'react'
 import { Check, Plus } from 'lucide-react'
@@ -20,15 +20,14 @@ const Included = () => {
 
 	return (
 		<section>
-			<span aria-hidden className="mb-3 block h-1 w-10 rounded-full bg-brand-500" />
-			<h2 className="text-2xl font-bold tracking-tight">
+			<h2 className="headline text-[24px] !leading-tight">
 				{t('newServicedetailListingExperiencesDetailIncluded_Included')}
 			</h2>
-			<p className="mt-1 text-neutral-500">
+			<p className="mt-1 text-neutral-600 dark:text-neutral-400">
 				{t('newServicedetailListingExperiencesDetailIncluded_Everything_Included_In_Your_Package')}
 			</p>
 
-			<div className="mt-6 grid items-start gap-4 md:grid-cols-2">
+			<div className="mt-5 grid items-start gap-8 md:grid-cols-2">
 				{standard.length > 0 && (
 					<Package name="Standard">
 						{standard.map((item, i) => (
@@ -55,24 +54,16 @@ const Included = () => {
 	)
 }
 
-/** One package: a plain white card; Luxury has a dark outline and an "Upgrade" tag. */
+/** One package, as on TripAdvisor: a bold name, "Private tour", and a plain list. */
 function Package({ name, featured = false, children }: { name: string; featured?: boolean; children: ReactNode }) {
 	return (
-		<div
-			className={`rounded-2xl bg-white p-5 sm:p-6 dark:bg-neutral-900 ${
-				featured ? 'border-[1.5px] border-neutral-950 dark:border-white' : 'border border-neutral-200 dark:border-neutral-800'
-			}`}
-		>
-			<div className="flex items-start justify-between gap-3">
-				<div>
-					<p className="text-lg font-semibold leading-tight">{name}</p>
-					<p className="mt-0.5 text-sm text-neutral-500">Private tour</p>
-				</div>
-				{featured && (
-					<span className="rounded-full bg-neutral-950 px-2.5 py-1 text-xs font-semibold text-white dark:bg-white dark:text-neutral-950">Upgrade</span>
-				)}
-			</div>
-			<ul className="mt-5 space-y-3 border-t border-neutral-100 pt-5 dark:border-neutral-800">{children}</ul>
+		<div>
+			<p className="flex items-center gap-2 text-base font-bold">
+				{name}
+				{featured && <span className="rounded bg-black px-1.5 py-0.5 text-[11px] font-bold uppercase tracking-wide text-white dark:bg-white dark:text-black">Upgrade</span>}
+			</p>
+			<p className="text-sm text-neutral-600 dark:text-neutral-400">Private tour</p>
+			<ul className="mt-3 space-y-2.5">{children}</ul>
 		</div>
 	)
 }
