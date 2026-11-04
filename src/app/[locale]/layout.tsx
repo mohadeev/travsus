@@ -1,9 +1,10 @@
 
 import { NextIntlClientProvider } from 'next-intl'
-// Inter (variable, with optical sizes), self-hosted: each alphabet is its own file,
-// so a page downloads only the ones it uses (Latin, Cyrillic for Russian…)
+// Figtree for Latin text (the site's typeface); Inter only for what Figtree
+// lacks (Cyrillic for Russian). Self-hosted: each alphabet is its own file, so a
+// page downloads only the ones it uses.
+import '@fontsource-variable/figtree/index.css'
 import '@fontsource-variable/inter/opsz.css'
-import '@fontsource-variable/inter/opsz-italic.css'
 
 import '../globals.css'
 import '@/fonts/line-awesome-1.3.0/css/line-awesome.css'

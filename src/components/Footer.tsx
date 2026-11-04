@@ -1,9 +1,9 @@
 'use client'
-// Site footer: newsletter, destination / link / contact columns, payment methods, language and legal fine print, and a large faded
-// wordmark to close the page.
-import { useState, type FormEvent } from 'react'
+// Site footer, TripAdvisor layout: light grey, five columns of links
+// (destinations, explore, company, legal, contact), then the logo, copyright,
+// legal links and language, and the legal fine print.
 import Link from 'next/link'
-import { ArrowRight, ArrowUpRight, Instagram, Mail, MessageCircle, Phone } from 'lucide-react'
+import { Instagram, Mail, MessageCircle, Phone } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import type { Route } from 'next'
 import LanguagePreferencesModal from '@/app/(client-components)/(Header)/LanguagePreferencesModal'
@@ -12,7 +12,7 @@ import { companyProfile } from '@/constants/companyProfile'
 import { useAppDispatch } from '@/store/hooks'
 import { openChat } from '@/store/slices/ui'
 import { SUPPORT_EMAIL, SUPPORT_PHONE, SUPPORT_PHONE_TEL } from '@/constants/contact'
-import PaymentMethods from './PaymentMethods'
+import Logo from '@/shared/Logo'
 
 // Most booked starting points; each opens the search for that city
 const DESTINATIONS = ['Marrakech', 'Fes', 'Merzouga', 'Chefchaouen', 'Essaouira', 'Ouarzazate']
@@ -47,8 +47,6 @@ const COLUMNS: [string, [string, string][]][] = [
 	],
 ]
 
-type SignupState = 'idle' | 'sending' | 'done' | 'already' | 'error'
-
 export default function Footer() {
 	const t = useTranslations('SiteFooter')
 	const tCookies = useTranslations('Cookies')
@@ -57,78 +55,20 @@ export default function Footer() {
 	const tNav = useTranslations('Nav')
 	const tTrust = useTranslations('Trust')
 	const dispatch = useAppDispatch()
-	const [email, setEmail] = useState('')
-	const [signup, setSignup] = useState<SignupState>('idle')
-
-	// Same newsletter as the pop-up, with every topic selected
-	const subscribe = async (event: FormEvent) => {
-		event.preventDefault()
-		setSignup('sending')
-		try {
-			const response = await fetch('/api/user/post/newsletter', {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ email, types: ['deals', 'tips', 'reviews', 'inspiration'] }),
-			})
-			const { code } = await response.json()
-			setSignup(code === 'ALREADY_SUBSCRIBED' ? 'already' : response.ok ? 'done' : 'error')
-			if (response.ok) setEmail('')
-		} catch {
-			setSignup('error')
-		}
-	}
-
 	const label = (key: string) => (key === 'all_tours' ? t(key) : key === 'blog' || key === 'agencies' ? tNav(key) : tLinks(key))
 
 	return (
-		<footer className="relative overflow-hidden bg-neutral-950 text-neutral-400">
-			<div className="mx-auto max-w-7xl px-5 pt-16 sm:pt-20">
-				{/* Newsletter */}
-				<div className="grid items-center gap-6 border-b border-white/10 pb-16 lg:grid-cols-2 lg:gap-12">
-					<div>
-						<h2 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">{t('newsletter_title')}</h2>
-						<p className="mt-2 text-sm">{t('newsletter_text')}</p>
-					</div>
-					<div className="lg:justify-self-end lg:w-full lg:max-w-md">
-						<form onSubmit={subscribe} className="flex items-center gap-2 rounded-full bg-white/10 p-1.5 pl-5 ring-1 ring-white/10 focus-within:ring-white/40">
-							<label className="flex-1">
-								<span className="sr-only">{t('email_placeholder')}</span>
-								<input
-									type="email"
-									required
-									value={email}
-									onChange={(e) => setEmail(e.target.value)}
-									placeholder={t('email_placeholder')}
-									className="w-full border-0 bg-transparent p-0 py-2 text-sm text-white placeholder:text-neutral-500 focus:outline-none focus:ring-0"
-								/>
-							</label>
-							<button
-								type="submit"
-								disabled={signup === 'sending'}
-								className="inline-flex items-center gap-1.5 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-neutral-950 transition hover:bg-neutral-200 disabled:opacity-60"
-							>
-								{t('subscribe')}
-								<ArrowRight className="h-4 w-4" />
-							</button>
-						</form>
-						{signup !== 'idle' && signup !== 'sending' && (
-							<p role="status" className="mt-3 text-sm text-white">
-								{signup === 'done' ? t('subscribed') : signup === 'already' ? t('already') : t('error')}
-							</p>
-						)}
-					</div>
-				</div>
-
+		<footer className="bg-[#f2f2f2] text-sm text-black dark:bg-neutral-900 dark:text-white">
+			<div className="mx-auto max-w-7xl px-4 pb-7 pt-10 sm:px-5">
 				{/* Link columns */}
-				<div className="grid grid-cols-2 gap-x-8 gap-y-12 py-16 sm:grid-cols-3 lg:grid-cols-[1.2fr_1fr_1fr_1fr_1.5fr]">
+				<div className="grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-3 lg:grid-cols-5">
 					<nav aria-label={tHome('destinations_title')}>
-						<h3 className="text-sm font-semibold text-white">{tHome('destinations_title')}</h3>
-						<ul className="mt-4 space-y-3 text-sm">
+						<h3 className="mb-2.5 text-sm font-extrabold">{tHome('destinations_title')}</h3>
+						<ul className="grid gap-2">
 							{DESTINATIONS.map((city) => (
 								<li key={city}>
-									<Link href={`/search?query=${encodeURIComponent(city)}` as Route} className="group inline-flex items-center gap-1 transition hover:text-white">
+									<Link href={`/search?query=${encodeURIComponent(city)}` as Route} className="hover:underline">
 										{city}
-										<ArrowUpRight className="h-3.5 w-3.5 opacity-0 transition group-hover:opacity-100" aria-hidden />
 									</Link>
 								</li>
 							))}
@@ -136,18 +76,18 @@ export default function Footer() {
 					</nav>
 					{COLUMNS.map(([heading, links]) => (
 						<nav key={heading} aria-label={t(heading)}>
-							<h3 className="text-sm font-semibold text-white">{t(heading)}</h3>
-							<ul className="mt-4 space-y-3 text-sm">
+							<h3 className="mb-2.5 text-sm font-extrabold">{t(heading)}</h3>
+							<ul className="grid gap-2">
 								{links.map(([key, href]) => (
 									<li key={key}>
-										<Link href={href as Route} className="transition hover:text-white">
+										<Link href={href as Route} className="hover:underline">
 											{label(key)}
 										</Link>
 									</li>
 								))}
 								{heading === 'legal' && (
 									<li>
-										<button type="button" onClick={openCookieSettings} className="transition hover:text-white">
+										<button type="button" onClick={openCookieSettings} className="text-left hover:underline">
 											{tCookies('footer_link')}
 										</button>
 									</li>
@@ -155,68 +95,58 @@ export default function Footer() {
 							</ul>
 						</nav>
 					))}
-					<div className="col-span-2 sm:col-span-1">
-						<h3 className="text-sm font-semibold text-white">{t('contact')}</h3>
-						<div className="mt-4 space-y-3">
-							<a href={SUPPORT_PHONE_TEL} className="flex items-center gap-3 rounded-2xl bg-white/[0.04] p-3 ring-1 ring-white/10 transition hover:bg-white/[0.08]">
-								<span className="grid h-9 w-9 place-items-center rounded-full bg-white text-neutral-950">
+					<nav aria-label={t('contact')}>
+						<h3 className="mb-2.5 text-sm font-extrabold">{t('contact')}</h3>
+						<ul className="grid gap-2">
+							<li>
+								<a href={SUPPORT_PHONE_TEL} className="inline-flex items-center gap-2 hover:underline">
 									<Phone className="h-4 w-4" aria-hidden />
-								</span>
-								<span className="text-sm font-medium text-white">{SUPPORT_PHONE}</span>
-							</a>
-							<a href={`mailto:${SUPPORT_EMAIL}`} className="flex items-center gap-3 rounded-2xl bg-white/[0.04] p-3 ring-1 ring-white/10 transition hover:bg-white/[0.08]">
-								<span className="grid h-9 w-9 place-items-center rounded-full bg-white/10 text-white">
+									{SUPPORT_PHONE}
+								</a>
+							</li>
+							<li>
+								<a href={`mailto:${SUPPORT_EMAIL}`} className="inline-flex items-center gap-2 hover:underline">
 									<Mail className="h-4 w-4" aria-hidden />
-								</span>
-								<span className="text-sm font-medium text-white">{SUPPORT_EMAIL}</span>
-							</a>
-							<button type="button" onClick={() => dispatch(openChat())} className="flex w-full items-center gap-3 rounded-2xl bg-white/[0.04] p-3 text-left ring-1 ring-white/10 transition hover:bg-white/[0.08]">
-								<span className="grid h-9 w-9 place-items-center rounded-full bg-white/10 text-white">
+									{SUPPORT_EMAIL}
+								</a>
+							</li>
+							<li>
+								<button type="button" onClick={() => dispatch(openChat())} className="inline-flex items-center gap-2 hover:underline">
 									<MessageCircle className="h-4 w-4" aria-hidden />
-								</span>
-								<span className="text-sm font-medium text-white">{t('chat')}</span>
-							</button>
-						</div>
-						<p className="mt-3 text-xs text-neutral-500">{tTrust('footer_hours')}</p>
-						<h3 className="mt-8 text-sm font-semibold text-white">{t('follow')}</h3>
-						<a
-							href="https://www.instagram.com/travsusofficial"
-							target="_blank"
-							rel="noopener noreferrer"
-							className="mt-4 inline-grid h-10 w-10 place-items-center rounded-full bg-white/10 text-white transition hover:bg-white hover:text-neutral-950"
-						>
-							<span className="sr-only">{tLinks('footer_Instagram')}</span>
-							<Instagram className="h-5 w-5" aria-hidden />
-						</a>
+									{t('chat')}
+								</button>
+							</li>
+							<li>
+								<a href="https://www.instagram.com/travsusofficial" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:underline">
+									<Instagram className="h-4 w-4" aria-hidden />
+									{tLinks('footer_Instagram')}
+								</a>
+							</li>
+						</ul>
+						<p className="mt-2.5 text-xs text-neutral-600 dark:text-neutral-400">{tTrust('footer_hours')}</p>
+					</nav>
+				</div>
+
+				{/* Bottom bar: logo, copyright and legal links; language on the right */}
+				<div className="mt-9 flex flex-wrap items-center justify-between gap-4 border-t border-neutral-300 pt-5 dark:border-neutral-700">
+					<div className="grid gap-2">
+						<Logo className="w-24" />
+						<p className="flex flex-wrap gap-x-4 gap-y-1 text-neutral-700 dark:text-neutral-300">
+							<span>{tLinks('footer_Copyright', { year: new Date().getFullYear() })}</span>
+							<Link href={'/general-conditions' as Route} className="hover:underline">{tLinks('Terms of Use')}</Link>
+							<Link href={'/privacy-policy' as Route} className="hover:underline">{tLinks('Privacy Policy')}</Link>
+						</p>
 					</div>
+					<LanguagePreferencesModal variant={'footer'} />
 				</div>
-
-				{/* Payment methods */}
-				<PaymentMethods />
-
-				{/* Bottom bar */}
-				<div className="flex flex-col gap-4 border-t border-white/10 pt-8 text-xs sm:flex-row sm:items-center sm:justify-between">
-					<p>{tLinks('footer_Copyright', { year: new Date().getFullYear() })}</p>
-					<LanguagePreferencesModal variant={'footer'} dark />
-				</div>
-				<p className="mt-6 whitespace-pre-line text-[11px] leading-relaxed text-neutral-500">
-					{tLinks('footer_Disclaimer')}
-				</p>
+				<p className="mt-4 whitespace-pre-line text-xs leading-relaxed text-neutral-600 dark:text-neutral-400">{tLinks('footer_Disclaimer')}</p>
 				{/* Who runs the site, as in the legal notice: name, company number, registered office */}
 				{companyProfile?.legalAddress && (
-					<p className="mt-4 text-xs leading-relaxed text-neutral-400">
+					<p className="mt-2 text-xs leading-relaxed text-neutral-600 dark:text-neutral-400">
 						{tTrust('footer_company', { number: companyProfile.registrationNumber ?? '' })} · {companyProfile.legalAddress}
 					</p>
 				)}
 			</div>
-
-			{/* Closing wordmark */}
-			<p
-				aria-hidden
-				className="pointer-events-none mt-10 select-none bg-gradient-to-b from-white/[0.09] to-transparent bg-clip-text text-center text-[23vw] font-bold leading-[0.75] tracking-tighter text-transparent lg:text-[290px]"
-			>
-				TRAVSUS
-			</p>
 		</footer>
 	)
 }

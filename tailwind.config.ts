@@ -34,8 +34,8 @@ const config: Config = {
     fontFamily: {
        body: ['var(--font-body)', 'sans-serif'],
       display: ['var(--font-display)', 'sans-serif'],
-      // Inter for every language it covers; Chinese, Japanese and Korean use the system's font
-      sans: ['"Inter Variable"', 'Inter', ...fontFamily.sans],
+      // Figtree; Inter for Cyrillic; Chinese, Japanese and Korean use the system's font
+      sans: ['"Figtree Variable"', '"Inter Variable"', ...fontFamily.sans],
 
       // satoshi: ["Satoshi"],
     },
