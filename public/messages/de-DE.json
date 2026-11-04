@@ -4314,6 +4314,7 @@
   "Cookies": {
     "title": "Wir verwenden Cookies",
     "text": "Wir verwenden notwendige Cookies, damit die Website funktioniert. Mit Ihrer Zustimmung nutzen wir auch Analyse-Cookies zur Verbesserung und Marketing-Cookies zur Messung unserer Werbung.",
+    "text_short": "Wir nutzen Cookies für den Betrieb der Seite und, wenn Sie zustimmen, für Statistik und Werbung.",
     "policy": "Cookie-Richtlinie",
     "accept": "Alle akzeptieren",
     "reject": "Alle ablehnen",

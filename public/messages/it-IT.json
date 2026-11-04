@@ -3822,6 +3822,7 @@
   "Cookies": {
     "title": "Usiamo i cookie",
     "text": "Usiamo cookie necessari al funzionamento del sito. Con il tuo consenso usiamo anche cookie di analisi per migliorarlo e cookie di marketing per misurare i nostri annunci.",
+    "text_short": "Usiamo i cookie per far funzionare il sito e, se accetti, per statistiche e pubblicità.",
     "policy": "Cookie policy",
     "accept": "Accetta tutti",
     "reject": "Rifiuta tutti",

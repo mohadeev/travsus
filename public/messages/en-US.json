@@ -3030,6 +3030,7 @@
   "Cookies": {
     "title": "We use cookies",
     "text": "We use necessary cookies to make the site work. With your permission we also use analytics cookies to improve it and marketing cookies to measure our ads.",
+    "text_short": "We use cookies to run the site and, if you agree, for analytics and ads.",
     "policy": "Cookie policy",
     "accept": "Accept all",
     "reject": "Reject all",

@@ -4330,6 +4330,7 @@
   "Cookies": {
     "title": "Nous utilisons des cookies",
     "text": "Nous utilisons des cookies nécessaires au fonctionnement du site. Avec votre accord, nous utilisons aussi des cookies d’analyse pour l’améliorer et des cookies marketing pour mesurer nos publicités.",
+    "text_short": "Nous utilisons des cookies pour faire fonctionner le site et, si vous acceptez, pour les statistiques et la publicité.",
     "policy": "Politique de cookies",
     "accept": "Tout accepter",
     "reject": "Tout refuser",

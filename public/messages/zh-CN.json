@@ -3192,6 +3192,7 @@
   "Cookies": {
     "title": "我们使用Cookie",
     "text": "我们使用网站运行所必需的Cookie。在您同意后，我们还会使用分析Cookie来改进网站，并使用营销Cookie来衡量广告效果。",
+    "text_short": "我们使用 Cookie 维持网站运行，经您同意后也用于分析和广告。",
     "policy": "Cookie政策",
     "accept": "全部接受",
     "reject": "全部拒绝",

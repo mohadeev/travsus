@@ -3330,6 +3330,7 @@
   "Cookies": {
     "title": "Cookieを使用しています",
     "text": "サイトの動作に必要なCookieを使用しています。同意いただいた場合は、サイト改善のための分析Cookieと、広告効果測定のためのマーケティングCookieも使用します。",
+    "text_short": "サイトの動作に必要なCookieと、同意いただいた場合は分析・広告用のCookieを使用します。",
     "policy": "Cookieポリシー",
     "accept": "すべて許可",
     "reject": "すべて拒否",

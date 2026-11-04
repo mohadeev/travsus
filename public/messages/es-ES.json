@@ -4253,6 +4253,7 @@
   "Cookies": {
     "title": "Usamos cookies",
     "text": "Usamos cookies necesarias para que la web funcione. Con tu permiso, también usamos cookies de análisis para mejorarla y cookies de marketing para medir nuestros anuncios.",
+    "text_short": "Usamos cookies para que el sitio funcione y, si aceptas, para analítica y anuncios.",
     "policy": "Política de cookies",
     "accept": "Aceptar todas",
     "reject": "Rechazar todas",

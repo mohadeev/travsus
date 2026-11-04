@@ -27,6 +27,7 @@ import motion from '../(home)/home.module.css'
 import AffiliateRequestForm from './AffiliateRequestForm'
 import CreatorPhone from './CreatorPhone'
 import EarningsCalculator from './EarningsCalculator'
+import { EXAMPLE_COMMISSION } from './tiers'
 import s from './affiliates.module.css'
 
 // Same page for every visitor: rendered once, served from the cache, refreshed at most every hour
@@ -286,7 +287,7 @@ export default async function AffiliatesPage(props: PageProps) {
 
 						<div className={`absolute -right-3 bottom-16 z-20 rounded-2xl bg-neutral-950/85 p-4 text-white shadow-2xl ring-1 ring-white/15 backdrop-blur-xl sm:-right-4 lg:right-5 ${s.floatSlow}`}>
 							<p className="text-[11px] font-medium uppercase tracking-[0.14em] text-white/55">{t('chip_commission')}</p>
-							<p className={`mt-1 text-3xl font-bold tracking-tight`}>+{money(150)}</p>
+							<p className={`mt-1 text-3xl font-bold tracking-tight`}>+{money(EXAMPLE_COMMISSION)}</p>
 							<div className="mt-2 flex h-6 items-end gap-1">
 								{[40, 65, 50, 80, 60, 95, 75].map((h, i) => (
 									<span key={i} className="w-2 rounded-sm bg-white/80" style={{ height: `${h}%` }} />

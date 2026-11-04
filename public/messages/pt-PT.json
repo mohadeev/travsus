@@ -3764,6 +3764,7 @@
   "Cookies": {
     "title": "Usamos cookies",
     "text": "Usamos cookies necessários para o site funcionar. Com a sua permissão, usamos também cookies de análise para o melhorar e cookies de marketing para medir os nossos anúncios.",
+    "text_short": "Usamos cookies para o site funcionar e, se aceitar, para estatísticas e anúncios.",
     "policy": "Política de cookies",
     "accept": "Aceitar todos",
     "reject": "Rejeitar todos",
