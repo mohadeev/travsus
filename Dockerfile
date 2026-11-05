@@ -9,14 +9,13 @@
 # used for the build and removed from the final image.
 
 # ---- Dependencies ----
-FROM --platform=linux/amd64 node:22-alpine AS deps
-RUN apk add --no-cache libc6-compat
+FROM --platform=linux/amd64 node:22-bookworm-slim AS deps
 WORKDIR /app
 COPY package.json package-lock.json .npmrc ./
 RUN npm ci --no-audit --no-fund
 
 # ---- Build ----
-FROM --platform=linux/amd64 node:22-alpine AS builder
+FROM --platform=linux/amd64 node:22-bookworm-slim AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
@@ -44,14 +43,15 @@ ENV NEXT_PUBLIC_SITE_URL=$NEXT_PUBLIC_SITE_URL \
 RUN npm run build
 
 # ---- Run ----
-FROM --platform=linux/amd64 node:22-alpine AS runner
+FROM --platform=linux/amd64 node:22-bookworm-slim AS runner
 WORKDIR /app
 ENV NODE_ENV=production \
     NEXT_TELEMETRY_DISABLED=1 \
     PORT=8080 \
     HOSTNAME=0.0.0.0
 
-RUN addgroup -S -g 1001 nodejs && adduser -S -u 1001 -G nodejs nextjs
+RUN groupadd --system --gid 1001 nodejs \
+ && useradd --system --uid 1001 --gid nodejs --no-create-home nextjs
 
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static

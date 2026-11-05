@@ -123,7 +123,8 @@ function structuredData(locale: string, description: string, tours: HomeTour[]) 
 }
 
 // Built once, refreshed every 10 minutes: instant for visitors and crawlers
-export const revalidate = 600
+// Rendered per request: the build has no database to read from
+export const dynamic = 'force-dynamic'
 
 export default async function Home({ params: { locale } }: { params: { locale: string } }) {
 	setRequestLocale(locale)

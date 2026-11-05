@@ -9,7 +9,8 @@ import { routing } from '@/i18n/routing'
 import { getHomeData } from '@/lib/homeData'
 import { PHOTOS } from '@/lib/photos'
 
-export const revalidate = 3600
+// Rendered per request: the build has no database to read from
+export const dynamic = 'force-dynamic'
 
 type PageProps = { params: { locale: string } }
 
