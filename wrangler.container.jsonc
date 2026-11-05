@@ -34,9 +34,10 @@
     }
   ],
 
-  // Same schedules (UTC) as vercel.json: daily balance charges and invite reminders
+  // No Cron Triggers: the live Worker already runs charge-balances and
+  // invite-reminders; running them here too would charge balances twice.
   "triggers": {
-    "crons": ["0 6 * * *", "0 9 * * *"]
+    "crons": []
   },
 
   "observability": {

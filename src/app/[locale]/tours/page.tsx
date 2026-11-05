@@ -135,11 +135,16 @@ export default function ToursPage() {
 
 	const loadExistingTours = async () => {
 		try {
-			const response = await fetch('/api/tours')
-			if (response.ok) {
+			// The API sends tours a page at a time: load them all
+			const tours: any[] = []
+			for (let page = 1; ; page++) {
+				const response = await fetch(`/api/tours?page=${page}&limit=100`)
+				if (!response.ok) break
 				const data = await response.json()
-				setExistingTours(data.tours || [])
+				tours.push(...(data.tours || []))
+				if (!data.hasMore) break
 			}
+			setExistingTours(tours)
 		} catch (error) {
 			console.error('Error loading tours:', error)
 		}

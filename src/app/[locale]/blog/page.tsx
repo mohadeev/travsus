@@ -10,7 +10,8 @@ import PostCard from './PostCard'
 
 const PER_PAGE = 12
 // Refresh the list at most every 10 minutes
-export const revalidate = 600
+// Rendered per request: the build has no database to read the posts from
+export const dynamic = 'force-dynamic'
 
 type PageProps = { params: { locale: string }; searchParams: { page?: string } }
 

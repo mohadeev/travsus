@@ -8,7 +8,7 @@ forwards it to one of up to 3 containers; it also runs the two daily jobs.
 | File | What it is |
 | --- | --- |
 | [Dockerfile](Dockerfile) | Builds the app and runs `node server.js` on port 8080 |
-| [wrangler.container.jsonc](wrangler.container.jsonc) | Worker, container, Durable Object binding, crons |
+| [wrangler.container.jsonc](wrangler.container.jsonc) | Worker, container, Durable Object binding (crons off) |
 | [src/container-worker.ts](src/container-worker.ts) | Forwards requests; passes settings to the container |
 
 ## Settings and secrets
@@ -34,7 +34,12 @@ Docker must be running (wrangler builds the image for linux/amd64 and pushes it)
 npm run deploy:container
 ```
 
-The daily jobs (06:00 and 09:00 UTC) call `/api/cron/charge-balances` and
-`/api/cron/invite-reminders` with `Authorization: Bearer <CRON_SECRET>`, as
-Vercel Cron did. A container stops after 30 minutes without requests and
-starts again on the next one (the first request after that waits a few seconds).
+Cron Triggers are off (`"crons": []`): the live Worker already runs
+`/api/cron/charge-balances` and `/api/cron/invite-reminders`, and running them
+here as well would charge balances twice. To move the jobs here, turn them off
+there first, then set `"crons": ["0 6 * * *", "0 9 * * *"]`.
+
+One container instance (`basic`, `max_instances: 1`; `INSTANCES` in
+src/container-worker.ts must match). It stops after 2 hours without requests
+and starts again on the next one; while it starts, visitors get a "starting
+up" page that refreshes itself every 5 seconds (API calls get a JSON 503).

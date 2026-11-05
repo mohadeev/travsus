@@ -7,7 +7,9 @@ import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { countryHref, flag, getCountries, type Country } from '@/lib/destinations'
 import { bigImage } from './_components/ui'
 
-export const revalidate = 3600
+// Rendered per request: the build has no database, so a prerendered page
+// would be stuck with an empty country list
+export const dynamic = 'force-dynamic'
 
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
 	const t = await getTranslations({ locale: params.locale, namespace: 'Destination' })

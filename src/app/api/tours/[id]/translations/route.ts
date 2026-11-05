@@ -1,5 +1,6 @@
 export const dynamic = "force-dynamic";
 import { type NextRequest, NextResponse } from 'next/server'
+import { refreshTourCache } from '@/lib/tourCatalog'
 import { db, T, must } from '@/lib/db'
 import { canEdit, currentUser } from '@/lib/guards'
 import { contentWithTexts, upsertTranslatedText } from '@/lib/translations'
@@ -240,6 +241,7 @@ export async function PUT(
 			}
 		}
 
+		refreshTourCache()
 		return NextResponse.json({
 			success: true,
 			results: results.length,

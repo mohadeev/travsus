@@ -1,5 +1,6 @@
 export const dynamic = 'force-dynamic'
 import { type NextRequest, NextResponse } from 'next/server'
+import { refreshTourCache } from '@/lib/tourCatalog'
 import { db, T, must, touch, withMeta, EMPTY_TOUR_LISTS } from '@/lib/db'
 import { currentUser } from '@/lib/guards'
 import { createTranslatableContent } from '@/lib/translations'
@@ -77,6 +78,7 @@ export async function POST(request: NextRequest) {
 				.single(),
 		)
 
+		refreshTourCache()
 		return NextResponse.json({ tour: updatedTour })
 	} catch (error) {
 		console.error('Error creating multilingual tour:', error)
