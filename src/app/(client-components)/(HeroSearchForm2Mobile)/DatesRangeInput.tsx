@@ -1,6 +1,6 @@
 'use client'
 
-import DatePicker from 'react-datepicker'
+import DatePicker from '@/components/ReactDatePicker'
 import React, { FC, Fragment, useEffect, useState } from 'react'
 import DatePickerCustomHeaderTwoMonth from '@/components/DatePickerCustomHeaderTwoMonth'
 import DatePickerCustomDay from '@/components/DatePickerCustomDay'

@@ -2,7 +2,7 @@
 // Full-screen date picker used at checkout. Picking a day saves the trip
 // dates (first day + tour length) and closes; past days can't be picked.
 import { Fragment, useEffect, useState, type FC, type ReactNode } from 'react'
-import DatePicker, { registerLocale } from 'react-datepicker'
+import DatePicker, { registerLocale } from '@/components/ReactDatePicker'
 import { Dialog, Transition } from '@headlessui/react'
 import { X } from 'lucide-react'
 import { useLocale } from 'next-intl'

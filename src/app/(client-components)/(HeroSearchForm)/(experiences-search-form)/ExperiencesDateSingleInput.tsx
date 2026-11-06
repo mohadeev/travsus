@@ -2,7 +2,7 @@
 
 import React, { Fragment, useState } from "react";
 import { FC } from "react";
-import DatePicker from "react-datepicker";
+import DatePicker from "@/components/ReactDatePicker";
 import { Popover, Transition } from "@headlessui/react";
 import { CalendarIcon } from "@heroicons/react/24/outline";
 import DatePickerCustomHeaderTwoMonth from "@/components/DatePickerCustomHeaderTwoMonth";

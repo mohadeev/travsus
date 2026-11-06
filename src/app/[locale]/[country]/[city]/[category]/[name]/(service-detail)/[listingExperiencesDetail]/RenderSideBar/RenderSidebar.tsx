@@ -159,7 +159,7 @@ const RenderSidebar: FC = () => {
 			: [{ value: hotel, title: tInfo('private_title'), hint: tInfo('private_text'), items: inclusions('standard') }]
 
 	return (
-		<div className="listingSectionSidebar__wrap !space-y-5 max-lg:rounded-none max-lg:border-0 max-lg:!px-6 max-lg:!pb-0 max-lg:shadow-none">
+		<div className="listingSectionSidebar__wrap !space-y-5 max-lg:!rounded-none max-lg:!border-0 max-lg:!px-6 max-lg:!pb-0 max-lg:!shadow-none">
 			{/* Phone sheet: the tour name on top. Desktop card: the "from" price */}
 			<h2 className="headline text-2xl !leading-7 lg:hidden">{tour.name}</h2>
 			<div className="hidden lg:block">

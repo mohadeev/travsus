@@ -5,7 +5,7 @@
 import { Fragment, useEffect, type FC } from 'react'
 import { Popover, Transition } from '@headlessui/react'
 import { CalendarDays } from 'lucide-react'
-import DatePicker, { registerLocale } from 'react-datepicker'
+import DatePicker, { registerLocale } from '@/components/ReactDatePicker'
 import { useLocale, useTranslations } from 'next-intl'
 import DatePickerCustomHeaderTwoMonth from '@/components/DatePickerCustomHeaderTwoMonth'
 import DatePickerCustomDay from '@/components/DatePickerCustomDay'
