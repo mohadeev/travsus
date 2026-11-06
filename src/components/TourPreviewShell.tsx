@@ -33,7 +33,7 @@ export default function TourPreviewShell() {
 				)}
 				{tour?.rating ? (
 					<p className="mt-3 inline-flex items-center gap-1.5 text-sm">
-						<Star className="h-4 w-4 fill-current text-[#00AA6C]" />
+						<Star className="h-4 w-4 fill-current text-[#00852F]" />
 						<span className="font-semibold">{tour.rating.toFixed(1)}</span>
 						{tour.reviewsCount ? <span className="text-neutral-500">({tour.reviewsCount})</span> : null}
 					</p>

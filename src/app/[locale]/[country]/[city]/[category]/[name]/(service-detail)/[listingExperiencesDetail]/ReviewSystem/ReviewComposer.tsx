@@ -171,7 +171,7 @@ export default function ReviewComposer({ serviceId, tourName, tourImage, tourSub
 				{done ? (
 					<div className="flex flex-1 flex-col items-center justify-center px-8 py-16 text-center">
 						<div className="rv-pop relative mb-6 grid h-24 w-24 place-items-center rounded-full bg-neutral-950 text-[#00D084] shadow-2xl dark:bg-white">
-							<span className="rv-ring absolute inset-0 rounded-full border-2 border-[#00AA6C]" />
+							<span className="rv-ring absolute inset-0 rounded-full border-2 border-[#00852F]" />
 							<Check className="rv-check h-11 w-11" strokeWidth={3} />
 						</div>
 						<h3 className="rv-up mb-2 text-3xl font-bold tracking-tight" style={{ animationDelay: '200ms' }}>{t('Thanks_Title')}</h3>
@@ -199,7 +199,7 @@ export default function ReviewComposer({ serviceId, tourName, tourImage, tourSub
 											onMouseEnter={() => setHover(n)}
 											className={`grid h-12 w-12 place-items-center rounded-full border-2 transition duration-150 sm:h-14 sm:w-14 ${
 												shown >= n
-													? `scale-105 border-[#00AA6C] bg-[#00AA6C] shadow-lg shadow-[#00AA6C]/30 ${rating >= n ? 'rv-pop' : ''}`
+													? `scale-105 border-[#00852F] bg-[#00852F] shadow-lg shadow-[#00852F]/30 ${rating >= n ? 'rv-pop' : ''}`
 													: 'border-neutral-300 hover:scale-110 hover:border-neutral-950 dark:border-neutral-700 dark:hover:border-white'
 											}`}
 										>
@@ -264,11 +264,11 @@ export default function ReviewComposer({ serviceId, tourName, tourImage, tourSub
 								<div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-sm">
 									<div className="h-1.5 w-full overflow-hidden rounded-full bg-neutral-100 sm:w-auto sm:flex-1 dark:bg-neutral-800">
 										<div
-											className={`h-full rounded-full transition-all ${text.length >= TEXT_GOOD ? 'bg-[#00AA6C]' : 'bg-neutral-950 dark:bg-white'}`}
+											className={`h-full rounded-full transition-all ${text.length >= TEXT_GOOD ? 'bg-[#00852F]' : 'bg-neutral-950 dark:bg-white'}`}
 											style={{ width: `${Math.min(100, (text.length / TEXT_GOOD) * 100)}%` }}
 										/>
 									</div>
-									<span className={text.length >= TEXT_GOOD ? 'font-medium text-[#00AA6C]' : 'text-neutral-500'}>
+									<span className={text.length >= TEXT_GOOD ? 'font-medium text-[#00852F]' : 'text-neutral-500'}>
 										{text.length >= TEXT_GOOD ? t('Great_Detail') : t('More_Chars', { count: TEXT_GOOD - text.length })}
 									</span>
 									<span className="ml-auto tabular-nums text-neutral-400">
@@ -351,7 +351,7 @@ export default function ReviewComposer({ serviceId, tourName, tourImage, tourSub
 										checked={agreed}
 										onChange={(e) => setAgreed(e.target.checked)}
 										className="mt-0.5 h-5 w-5 shrink-0 rounded border-neutral-300"
-										style={{ accentColor: '#00AA6C' }}
+										style={{ accentColor: '#00852F' }}
 									/>
 									<span className="text-sm text-neutral-700 dark:text-neutral-300">
 										<span className="font-semibold">{t('Certify_Short')}</span>{' '}
@@ -374,7 +374,7 @@ export default function ReviewComposer({ serviceId, tourName, tourImage, tourSub
 						{/* Footer: progress, what's missing, submit */}
 						<footer className="border-t border-neutral-100 bg-white px-5 py-4 sm:px-8 dark:border-neutral-900 dark:bg-neutral-950">
 							<div className="mb-3 h-1 overflow-hidden rounded-full bg-neutral-100 dark:bg-neutral-800">
-								<div className="h-full rounded-full bg-[#00AA6C] transition-all duration-300" style={{ width: `${progress}%` }} />
+								<div className="h-full rounded-full bg-[#00852F] transition-all duration-300" style={{ width: `${progress}%` }} />
 							</div>
 							{error && (
 								<p role="alert" className="mb-2 text-sm font-medium text-red-600">

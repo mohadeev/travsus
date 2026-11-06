@@ -54,7 +54,7 @@ export default function TourCard({ tour }: { tour: HomeTour }) {
 				{tour.reviewsCount > 0 && tour.rating ? (
 					<p className="flex items-center gap-1 text-sm leading-[18px] text-ink-soft dark:text-neutral-300">
 						<span className="tabular-nums">{oneDecimal.format(tour.rating)}</span>
-						<RatingBubbles rating={tour.rating} size={12} />
+						<RatingBubbles rating={tour.rating} size={12} tone="green" />
 						<span className="tabular-nums">({whole.format(tour.reviewsCount)})</span>
 					</p>
 				) : null}
