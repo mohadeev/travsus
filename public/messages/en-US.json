@@ -2486,7 +2486,17 @@
     "duration": "Duration",
     "starts_in": "Starts in",
     "ends_in": "Ends in",
-    "free_cancellation_short": "Free cancellation"
+    "free_cancellation_short": "Free cancellation",
+    "tab_overview": "Overview",
+    "tab_details": "Details",
+    "tab_itinerary": "Itinerary",
+    "tab_reviews": "Reviews",
+    "about": "About",
+    "select_title": "Select date and travelers",
+    "check_availability": "Check availability",
+    "adults_count": "{count, plural, one {# Adult} other {# Adults}}",
+    "sections_label": "Tour sections",
+    "choose_date": "Choose your date"
   },
   "Booking": {
     "step_when": "When do you want to go?",

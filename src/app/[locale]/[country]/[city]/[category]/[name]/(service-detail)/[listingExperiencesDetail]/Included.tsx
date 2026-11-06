@@ -19,7 +19,7 @@ const Included = () => {
 	const inStandard = new Set(standard.map((item) => item.trim().toLowerCase()))
 
 	return (
-		<section>
+		<section id="details">
 			<h2 className="headline text-[24px] !leading-tight">
 				{t('newServicedetailListingExperiencesDetailIncluded_Included')}
 			</h2>

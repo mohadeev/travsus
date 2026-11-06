@@ -3786,7 +3786,17 @@
     "duration": "Durée",
     "starts_in": "Départ de",
     "ends_in": "Arrivée à",
-    "free_cancellation_short": "Annulation gratuite"
+    "free_cancellation_short": "Annulation gratuite",
+    "tab_overview": "Aperçu",
+    "tab_details": "Détails",
+    "tab_itinerary": "Itinéraire",
+    "tab_reviews": "Avis",
+    "about": "À propos",
+    "select_title": "Choisissez la date et les voyageurs",
+    "check_availability": "Voir les disponibilités",
+    "adults_count": "{count, plural, one {# adulte} other {# adultes}}",
+    "sections_label": "Sections du circuit",
+    "choose_date": "Choisissez votre date"
   },
   "Booking": {
     "step_when": "Quand voulez-vous partir ?",

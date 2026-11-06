@@ -3220,7 +3220,17 @@
     "duration": "Duração",
     "starts_in": "Começa em",
     "ends_in": "Termina em",
-    "free_cancellation_short": "Cancelamento gratuito"
+    "free_cancellation_short": "Cancelamento gratuito",
+    "tab_overview": "Visão geral",
+    "tab_details": "Detalhes",
+    "tab_itinerary": "Itinerário",
+    "tab_reviews": "Avaliações",
+    "about": "Sobre",
+    "select_title": "Selecione a data e os viajantes",
+    "check_availability": "Ver disponibilidade",
+    "adults_count": "{count, plural, one {# adulto} other {# adultos}}",
+    "sections_label": "Secções do tour",
+    "choose_date": "Escolha a data"
   },
   "Booking": {
     "step_when": "Quando quer ir?",

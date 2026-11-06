@@ -24,7 +24,7 @@ export default function ListingExperiencesDetailsImages() {
 	const go = (step: number) => {
 		const el = strip.current
 		if (!el) return
-		const next = Math.min(photos.length - 1, Math.max(0, current + step))
+		const next = (current + step + photos.length) % photos.length // wraps around
 		el.scrollTo({ left: next * el.clientWidth, behavior: 'smooth' })
 	}
 	const arrow = 'absolute top-1/2 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-ink text-white shadow-md'
@@ -81,12 +81,12 @@ export default function ListingExperiencesDetailsImages() {
 							</div>
 						))}
 					</div>
-					{current > 0 && (
+					{photos.length > 1 && (
 						<button type="button" onClick={() => go(-1)} aria-label="Previous photo" className={`${arrow} left-4`}>
 							<ArrowLeft className="h-5 w-5" />
 						</button>
 					)}
-					{current < photos.length - 1 && (
+					{photos.length > 1 && (
 						<button type="button" onClick={() => go(1)} aria-label="Next photo" className={`${arrow} right-4`}>
 							<ArrowRight className="h-5 w-5" />
 						</button>
