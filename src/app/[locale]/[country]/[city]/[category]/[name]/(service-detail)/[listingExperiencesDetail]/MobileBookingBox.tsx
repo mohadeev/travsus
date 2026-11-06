@@ -25,32 +25,32 @@ export default function MobileBookingBox() {
 	const adults: number = guests?.guestAdults || 2
 	const open = () => window.dispatchEvent(new Event(OPEN_RESERVE_EVENT))
 	const pill =
-		'flex h-14 w-full items-center gap-3 rounded-full border border-ink/70 bg-white px-5 text-left text-base font-bold text-ink dark:border-neutral-500 dark:bg-neutral-900 dark:text-white'
+		'flex h-14 w-full items-center gap-3 rounded-full border border-sand-200 bg-white px-5 shadow-sm hover:border-brand-400 text-left text-base font-bold text-ink dark:border-neutral-500 dark:bg-neutral-900 dark:text-white'
 
 	return (
 		<div className="lg:hidden">
 			{price > 0 && (
 				<p className="mt-8 text-base leading-6">
 					{fromBefore}
-					<span className="text-2xl font-extrabold tabular-nums">{money.format(Math.ceil(price))}</span>
+					<span className="text-2xl font-extrabold tabular-nums text-brand-600">{money.format(Math.ceil(price))}</span>
 					{fromAfter} {tHome('per_person')}
 				</p>
 			)}
-			<div className="-mx-6 mt-6 bg-[#F2F2F2] px-6 py-8 dark:bg-neutral-900">
+			<div className="-mx-6 mt-6 bg-sand-100 px-6 py-8 dark:bg-neutral-900">
 				<h2 className="headline text-2xl !leading-7">{t('select_title')}</h2>
 				<div className="mt-6 grid gap-3">
 					<button type="button" onClick={open} className={pill}>
-						<CalendarDays className="h-5 w-5 shrink-0" strokeWidth={1.8} />
+						<CalendarDays className="h-5 w-5 shrink-0 text-brand-600" strokeWidth={1.8} />
 						<span className="truncate">{dates || t('choose_date')}</span>
 					</button>
 					<button type="button" onClick={open} className={pill}>
-						<Users className="h-5 w-5 shrink-0" strokeWidth={1.8} />
+						<Users className="h-5 w-5 shrink-0 text-brand-600" strokeWidth={1.8} />
 						<span>{t('adults_count', { count: adults })}</span>
 					</button>
 					<button
 						type="button"
 						onClick={open}
-						className="mt-1 h-14 w-full rounded-full border border-ink/70 bg-[#68E270] text-lg font-bold text-ink transition active:scale-[0.98] hover:bg-[#5BD463]"
+						className="mt-1 h-14 w-full rounded-full bg-brand-500 text-lg font-bold text-white shadow-[0_6px_18px_-6px_rgba(242,97,42,0.7)] transition hover:bg-brand-600 active:scale-[0.98]"
 					>
 						{t('check_availability')}
 					</button>

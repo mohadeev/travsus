@@ -51,7 +51,7 @@ export default function TourTabs() {
 							}}
 							aria-current={active === tab.id ? 'true' : undefined}
 							className={`block border-b-[3px] py-3 text-base font-bold leading-6 transition ${
-								active === tab.id ? 'border-ink text-ink dark:border-white dark:text-white' : 'border-transparent text-ink hover:border-neutral-300 dark:text-white'
+								active === tab.id ? 'border-brand-500 text-ink dark:text-white' : 'border-transparent text-ink hover:border-neutral-300 dark:text-white'
 							}`}
 						>
 							{t(tab.key)}

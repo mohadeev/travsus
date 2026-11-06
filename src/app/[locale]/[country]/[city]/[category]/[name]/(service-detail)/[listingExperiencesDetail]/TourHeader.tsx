@@ -154,7 +154,7 @@ const TourHeader = () => {
 			)}
 			{recommended !== null && recommended > 0 && (
 				<p className="mt-3 flex items-center gap-2 text-base leading-6">
-					<BadgeCheck aria-hidden className="h-6 w-6 shrink-0 fill-[#A3155C] text-white" strokeWidth={2} />
+					<BadgeCheck aria-hidden className="h-6 w-6 shrink-0 fill-brand-500 text-white" strokeWidth={2} />
 					<span>{t('Recommended_By_Percentage', { percentage: recommended })}</span>
 				</p>
 			)}

@@ -191,10 +191,10 @@ const RenderSidebar: FC = () => {
 						aria-expanded={whoOpen}
 						aria-label={t('step_who')}
 						className={`flex h-14 shrink-0 items-center gap-2 rounded-full border bg-white px-5 text-base font-bold tabular-nums text-ink transition dark:bg-neutral-900 dark:text-white ${
-							whoOpen ? 'border-ink ring-1 ring-ink dark:border-white' : 'border-ink/60 hover:border-ink dark:border-neutral-500'
+							whoOpen ? 'border-brand-500 ring-1 ring-brand-500' : 'border-neutral-300 hover:border-brand-400 dark:border-neutral-600'
 						}`}
 					>
-						<Users className="h-5 w-5" strokeWidth={1.8} />
+						<Users className="h-5 w-5 text-brand-600" strokeWidth={1.8} />
 						{people}
 					</button>
 				</div>
@@ -231,8 +231,8 @@ const RenderSidebar: FC = () => {
 
 			{/* Green band (full width in the phone sheet): book now, pay later */}
 			{canDeposit && (
-				<p className="-mx-6 bg-[#C2EDB6] px-6 py-4 text-base leading-6 text-ink lg:mx-0 lg:rounded-xl lg:px-4 lg:py-3 lg:text-sm">
-					<Zap className="-mt-0.5 mr-1.5 inline h-5 w-5" strokeWidth={1.8} aria-hidden />
+				<p className="-mx-6 bg-brand-50 px-6 py-4 text-base leading-6 text-brand-900 lg:mx-0 lg:rounded-xl lg:px-4 lg:py-3 lg:text-sm">
+					<Zap className="-mt-0.5 mr-1.5 inline h-5 w-5 fill-brand-500 text-brand-500" strokeWidth={1.8} aria-hidden />
 					<b>{t('pay_deposit', { amount: deposit })}</b> • {t('pay_deposit_hint', { rest: formatCurrency(balanceAfterDeposit(tripTotal)) })}
 				</p>
 			)}
@@ -250,7 +250,7 @@ const RenderSidebar: FC = () => {
 							onClick={() => !chosen && update({ hotel: option.value })}
 							onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && !chosen && update({ hotel: option.value })}
 							className={`cursor-pointer rounded-2xl border bg-white p-5 transition dark:bg-neutral-900 ${
-								chosen ? 'border-[3px] border-ink p-[18px] dark:border-white' : 'border-neutral-300 hover:border-ink/60 dark:border-neutral-700'
+								chosen ? 'border-2 border-brand-500 bg-brand-50/40 p-[19px] shadow-[0_8px_24px_-12px_rgba(242,97,42,0.45)] dark:bg-neutral-900' : 'border-neutral-300 hover:border-ink/60 dark:border-neutral-700'
 							}`}
 						>
 							<div className="flex items-start justify-between gap-4">
@@ -260,16 +260,16 @@ const RenderSidebar: FC = () => {
 								</div>
 								<span
 									aria-hidden
-									className={`grid h-7 w-7 shrink-0 place-items-center rounded-full border-[3px] ${chosen ? 'border-ink dark:border-white' : 'border-neutral-400'}`}
+									className={`grid h-7 w-7 shrink-0 place-items-center rounded-full border-2 ${chosen ? 'border-brand-500' : 'border-neutral-300'}`}
 								>
-									{chosen && <span className="h-3.5 w-3.5 rounded-full bg-ink dark:bg-white" />}
+									{chosen && <span className="h-3.5 w-3.5 rounded-full bg-brand-500" />}
 								</span>
 							</div>
 
 							{option.items.length > 0 && <Inclusions items={option.items} more={tInfo('read_more')} />}
 
-							<p className="mt-4 flex items-center gap-1.5 text-sm font-medium text-[#00852F]">
-								<Check className="h-4 w-4 rounded-full bg-[#00852F] p-0.5 text-white" strokeWidth={3.5} aria-hidden />
+							<p className="mt-4 flex items-center gap-1.5 text-sm font-medium text-emerald-700 dark:text-emerald-400">
+								<Check className="h-4 w-4 rounded-full bg-emerald-600 p-0.5 text-white" strokeWidth={3.5} aria-hidden />
 								{t('free_cancel')}
 							</p>
 
@@ -277,7 +277,7 @@ const RenderSidebar: FC = () => {
 								<div className="mt-4" aria-live="polite">
 									<p className="text-xl font-bold leading-7 tabular-nums">
 										{t('total')}{' '}
-										{updating ? <span className="text-sm font-medium text-neutral-500">{t('updating')}</span> : formatCurrency(tripTotal)}
+										{updating ? <span className="text-sm font-medium text-neutral-500">{t('updating')}</span> : <span className="text-brand-600">{formatCurrency(tripTotal)}</span>}
 									</p>
 									<p className="text-base leading-6 text-ink-soft tabular-nums dark:text-neutral-400">
 										{t('for_people', { count: people })} · {t('per_person', { price: formatCurrency(tripTotal / people) })}
@@ -307,10 +307,10 @@ const RenderSidebar: FC = () => {
 						>
 							<span
 								className={`mt-0.5 grid h-[22px] w-[22px] shrink-0 place-items-center rounded-full border-2 ${
-									payPlan === value ? 'border-ink dark:border-white' : 'border-neutral-400'
+									payPlan === value ? 'border-brand-500' : 'border-neutral-300'
 								}`}
 							>
-								{payPlan === value && <span className="h-2.5 w-2.5 rounded-full bg-ink dark:bg-white" />}
+								{payPlan === value && <span className="h-2.5 w-2.5 rounded-full bg-brand-500" />}
 							</span>
 							<span className="min-w-0">
 								<span className="block text-base font-semibold leading-6">{label}</span>
@@ -327,7 +327,7 @@ const RenderSidebar: FC = () => {
 					type="button"
 					onClick={() => handleReserve(undefined)}
 					disabled={reserving}
-					className="h-14 w-full rounded-full border border-ink/70 bg-[#68E270] px-6 text-lg font-bold text-ink transition hover:bg-[#5BD463] active:scale-[0.98] disabled:opacity-60"
+					className="h-14 w-full rounded-full bg-brand-500 px-6 text-lg font-bold text-white shadow-[0_6px_18px_-6px_rgba(242,97,42,0.7)] transition hover:bg-brand-600 active:scale-[0.98] disabled:opacity-60"
 				>
 					{reserving ? tOld('processing') : payPlan === 'deposit' ? t('reserve_deposit', { amount: deposit }) : t('reserve')}
 				</button>
