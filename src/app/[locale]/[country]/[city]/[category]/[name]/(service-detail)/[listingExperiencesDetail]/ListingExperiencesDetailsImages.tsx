@@ -1,10 +1,12 @@
 'use client'
-// Photo mosaic (one large photo, two small ones and a wide one) and a full-screen gallery with every photo.
+// Phones: one photo across the whole width that swipes, with round arrows and
+// the number of photos, as on TripAdvisor. Larger screens: a mosaic (one large
+// photo, two small ones and a wide one). Either opens a full-screen gallery.
 // Photos from Wikimedia Commons carry a credit (author, license, source): it is
 // shown under the grid and under each photo in the gallery, as their licenses ask.
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
-import { Grid2x2, X } from 'lucide-react'
+import { ArrowLeft, ArrowRight, Grid2x2, Image as ImageIcon, X } from 'lucide-react'
 import { useTranslations } from '@/lib/i18n'
 import { useTourService } from '../TourServiceContext'
 
@@ -17,6 +19,15 @@ export default function ListingExperiencesDetailsImages() {
 	const credits = list.map((image) => image.credit).filter((c): c is Credit => !!c?.license)
 	const creditText = (c: Credit) => [c.author, c.license].filter(Boolean).join(', ')
 	const [open, setOpen] = useState<number | null>(null)
+	const strip = useRef<HTMLDivElement>(null)
+	const [current, setCurrent] = useState(0)
+	const go = (step: number) => {
+		const el = strip.current
+		if (!el) return
+		const next = Math.min(photos.length - 1, Math.max(0, current + step))
+		el.scrollTo({ left: next * el.clientWidth, behavior: 'smooth' })
+	}
+	const arrow = 'absolute top-1/2 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-ink text-white shadow-md'
 
 	// Gallery: Esc closes it, and the page behind doesn't scroll
 	useEffect(() => {
@@ -57,10 +68,38 @@ export default function ListingExperiencesDetailsImages() {
 	return (
 		<>
 			<div className="relative mt-5">
-				{/* Phones: one large photo, two small ones under it */}
-				<div className="-mx-5 grid grid-cols-2 grid-rows-[220px_110px] gap-1.5 sm:hidden">
-					{tile(0, photos.length > 2 ? 'col-span-2' : 'col-span-2 row-span-2', '100vw')}
-					{[1, 2].map((i) => tile(i, '', '50vw'))}
+				{/* Phones: one photo across the whole width; swipe or use the arrows */}
+				<div className="relative -mx-6 sm:hidden">
+					<div
+						ref={strip}
+						onScroll={(e) => setCurrent(Math.round(e.currentTarget.scrollLeft / e.currentTarget.clientWidth))}
+						className="flex snap-x snap-mandatory overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+					>
+						{photos.map((_, i) => (
+							<div key={i} className="relative w-full shrink-0 snap-start" style={{ aspectRatio: '16 / 9' }}>
+								{tile(i, 'block h-full w-full', '100vw')}
+							</div>
+						))}
+					</div>
+					{current > 0 && (
+						<button type="button" onClick={() => go(-1)} aria-label="Previous photo" className={`${arrow} left-4`}>
+							<ArrowLeft className="h-5 w-5" />
+						</button>
+					)}
+					{current < photos.length - 1 && (
+						<button type="button" onClick={() => go(1)} aria-label="Next photo" className={`${arrow} right-4`}>
+							<ArrowRight className="h-5 w-5" />
+						</button>
+					)}
+					<button
+						type="button"
+						onClick={() => setOpen(current)}
+						aria-label={t('show_all_photos', { count: photos.length })}
+						className="absolute bottom-2 right-2 inline-flex items-center gap-2 rounded-full bg-ink px-4 py-2 text-base font-bold tabular-nums text-white"
+					>
+						<ImageIcon className="h-5 w-5" strokeWidth={1.8} />
+						{photos.length.toLocaleString()}
+					</button>
 				</div>
 
 				{/* Larger screens: one large photo; two small ones and a wide one beside it */}
@@ -81,7 +120,7 @@ export default function ListingExperiencesDetailsImages() {
 					<button
 						type="button"
 						onClick={() => setOpen(0)}
-						className="absolute bottom-3.5 right-3.5 inline-flex items-center gap-2 rounded-full bg-white px-4 py-2.5 text-[15px] font-bold text-black shadow-[0_1px_6px_rgba(0,0,0,0.25)] transition hover:bg-neutral-100"
+						className="absolute bottom-3.5 right-3.5 hidden sm:inline-flex items-center gap-2 rounded-full bg-white px-4 py-2.5 text-[15px] font-bold text-black shadow-[0_1px_6px_rgba(0,0,0,0.25)] transition hover:bg-neutral-100"
 					>
 						<Grid2x2 className="h-4 w-4" />
 						{t('show_all_photos', { count: photos.length })}
