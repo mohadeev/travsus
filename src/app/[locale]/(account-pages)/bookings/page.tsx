@@ -23,9 +23,11 @@ const CLOSED = ['cancelled', 'REFUNDED', 'refunded']
 /** Booking total in euros (the line items counted in the price). */
 const totalOf = (items: any[]) => items.filter((i) => i.includeInTotal).reduce((sum, i) => sum + (i.totalPrice ?? 0), 0)
 
-type PageProps = { params: { locale: string }; searchParams: { tab?: string } }
+type PageProps = { params: Promise<{ locale: string }>; searchParams: Promise<{ tab?: string }> }
 
-export default async function BookingsPage({ params, searchParams }: PageProps) {
+export default async function BookingsPage(props: PageProps) {
+	const searchParams = await props.searchParams;
+	const params = await props.params;
 	const { locale } = params
 	setRequestLocale(locale)
 	const t = await getTranslations('Bookings')

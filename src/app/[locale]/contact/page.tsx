@@ -7,9 +7,13 @@ import { companyProfile } from '@/constants/companyProfile'
 import { routing } from '@/i18n/routing'
 import ContactForm from './ContactForm'
 
-type PageProps = { params: { locale: string } }
+// Same page for every visitor: rendered once, served from the cache, refreshed at most every hour
+export const revalidate = 3600
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+type PageProps = { params: Promise<{ locale: string }> }
+
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+	const params = await props.params;
 	const t = await getTranslations({ locale: params.locale, namespace: 'Contact' })
 	return {
 		title: `${t('meta_title')} | TRAVSUS`,
@@ -21,7 +25,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 	}
 }
 
-export default async function ContactPage({ params }: PageProps) {
+export default async function ContactPage(props: PageProps) {
+	const params = await props.params;
 	const { locale } = params
 	setRequestLocale(locale)
 	const t = await getTranslations('Contact')

@@ -9,7 +9,8 @@ import { PHOTOS } from '@/lib/photos'
 import RevenueChart from '../_components/RevenueChart'
 import { Empty, NoCompany, Panel, Stat, StatusBadge, button, day, euro } from '../_components/ui'
 
-export default async function DashboardPage({ params }: { params: { locale: string } }) {
+export default async function DashboardPage(props: { params: Promise<{ locale: string }> }) {
+	const params = await props.params;
 	const { locale } = params
 	const scope = await dashboardScope()
 	if (!scope) return null

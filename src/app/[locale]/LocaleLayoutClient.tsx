@@ -1,6 +1,6 @@
 'use client'
 
-import { NextIntlClientProvider, hasLocale } from 'next-intl'
+import { NextIntlClientProvider, hasLocale, useLocale } from 'next-intl'
 import { notFound } from 'next/navigation'
 import { routing } from '@/i18n/routing'
 
@@ -46,6 +46,13 @@ export default function LocaleLayoutClient({
 	// The mobile bottom menu would cover the Reserve / Pay buttons: hidden on tour pages
 	// (their address ends with the tour id), checkout and the payment result
 	const hideBottomMenu = /\/[0-9a-f]{24}\/?$/.test(pathname ?? '') || /\/(checkout|pay-done)(\/|$)/.test(pathname ?? '')
+	const locale = useLocale()
+	// Remembers the language for the next visit to "/" (the middleware reads it).
+	// Set here, not by the middleware: a page response that sets a cookie
+	// can't be cached (see src/middleware.ts).
+	useEffect(() => {
+		if (!document.cookie.split('; ').includes(`NEXT_LOCALE=${locale}`)) document.cookie = `NEXT_LOCALE=${locale}; path=/; samesite=lax`
+	}, [locale])
 	useEffect(() => {
 		wakeUpServer()
 		// ;(async () => {
@@ -63,7 +70,7 @@ export default function LocaleLayoutClient({
 	}, [])
 
 	return (
-		<body className=".theme-animals theme-animals overflow-auto bg-white text-base text-neutral-900 dark:bg-neutral-900 dark:text-neutral-200">
+		<body className=".theme-animals theme-animals overflow-x-clip bg-white text-base text-neutral-900 dark:bg-neutral-900 dark:text-neutral-200">
 			<AuthProvider>
 				<ThemeProvider>
 					<ReduxProvider>
@@ -82,7 +89,10 @@ export default function LocaleLayoutClient({
 							/>
 						</noscript>
 						<NewsletterModal />
-						<div className="overflow-auto">
+						{/* overflow-x-clip (not overflow-auto): stops sideways scrolling without
+						    making this a scroll box, so sticky elements (the header, the tour
+						    page's booking card) stay in place while the page scrolls */}
+						<div className="overflow-x-clip">
 							<TawkToWidget />
 							<CookieConsent />
 

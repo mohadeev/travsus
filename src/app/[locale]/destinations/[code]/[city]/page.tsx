@@ -1,7 +1,8 @@
 // A city: photo, live weather and local time, description, travel guide,
 // TRAVSUS tours that go there, things to do, map, and more of the country.
-// Address: /destinations/morocco/tangier. Older ones (/mar/tangier,
-// ?lcId=<city id>) redirect there for good.
+// Address: /destinations/morocco/tangier. Older ones (/mar/tangier) redirect
+// there for good; ?lcId=<city id> links go through ./legacy/[lcId] (middleware),
+// so this page never reads the query string and can be cached.
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -9,22 +10,31 @@ import { notFound, permanentRedirect } from 'next/navigation'
 import { ChevronRight, Clock3, Compass, Lightbulb, MapPin, Plane, Sun, Wind } from 'lucide-react'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import TourCard from '../../../(home)/TourCard'
-import { countryHref, flag, getCitiesOf, getCity, getPlacesOfCity, getToursFor, getWeather, weatherKey } from '@/lib/destinations'
+import { countryHref, flag, getCitiesOf, getCity, getCountry, getPlacesOfCity, getToursFor, getWeather, slugify, weatherKey } from '@/lib/destinations'
 import guides from '@/content/destination-guides.json'
 import LocalTime from '../../_components/LocalTime'
 import { bigImage, CityCard, MapEmbed, PlaceCard, Section } from '../../_components/ui'
 
-type Props = { params: { locale: string; code: string; city: string }; searchParams: { lcId?: string } }
+type Props = { params: Promise<{ locale: string; code: string; city: string }> }
 
-export const revalidate = 1800
+// Rendered once and served from the cache (Cloudflare KV on the Worker), refreshed at most every hour
+export const revalidate = 3600
+
+/** The Cloudflare build lists the cities of each country, for deploy-time cache warming (--warm-cache). */
+export async function generateStaticParams({ params }: { params: { locale: string; code: string } }) {
+	if (!process.env.CLOUDFLARE_BUILD) return []
+	const country = await getCountry(params.code, params.locale)
+	return country ? (await getCitiesOf(country, params.locale)).map((city) => ({ city: slugify(city.englishName) })) : []
+}
 
 const guideFor = (id: string, locale: string) => {
 	const g = (guides as Record<string, Record<string, { bestTime: string; stay: string; gettingThere: string; tip: string }>>)[id]
 	return g ? g[locale] ?? g['en-US'] : null
 }
 
-export async function generateMetadata({ params, searchParams }: Props): Promise<Metadata> {
-	const city = await getCity(params.code, params.city, params.locale, searchParams.lcId)
+export async function generateMetadata(props: Props): Promise<Metadata> {
+	const params = await props.params;
+	const city = await getCity(params.code, params.city, params.locale)
 	if (!city) return {}
 	const t = await getTranslations({ locale: params.locale, namespace: 'Destination' })
 	const title = `${city.name}, ${city.country.name}: ${t('travel_guide')} | TRAVSUS`
@@ -36,12 +46,13 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
 	}
 }
 
-export default async function CityPage({ params, searchParams }: Props) {
+export default async function CityPage(props: Props) {
+	const params = await props.params;
 	const { locale } = params
 	setRequestLocale(locale)
-	const city = await getCity(params.code, params.city, locale, searchParams.lcId)
+	const city = await getCity(params.code, params.city, locale)
 	if (!city) notFound()
-	if (searchParams.lcId || decodeURIComponent(`/${locale}/destinations/${params.code}/${params.city}`) !== city.href) permanentRedirect(city.href)
+	if (decodeURIComponent(`/${locale}/destinations/${params.code}/${params.city}`) !== city.href) permanentRedirect(city.href)
 
 	const t = await getTranslations('Destination')
 	const [weather, places, tours, others] = await Promise.all([
@@ -252,5 +263,5 @@ export default async function CityPage({ params, searchParams }: Props) {
 				</Section>
 			)}
 		</main>
-	)
+	);
 }

@@ -1,10 +1,14 @@
 import { companyProfile } from '@/constants/companyProfile'
 import type { Metadata } from 'next'
-import { getTranslations } from 'next-intl/server'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { routing } from '@/i18n/routing'
 import LegalPage from '@/components/LegalPage'
 
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
+// Same page for every visitor: rendered once, served from the cache, refreshed at most every hour
+export const revalidate = 3600
+
+export async function generateMetadata(props: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+	const params = await props.params;
 	const t = await getTranslations({ locale: params.locale, namespace: 'Legal' })
 	return {
 		title: `${t('title_terms')} | TRAVSUS`,
@@ -306,6 +310,8 @@ If the User considers that their claims have not been met in the ways indicated 
 - Online Dispute Resolution Platform (ODR), developed by the European Commission
 `
 
-export default function Page() {
+export default async function Page(props: { params: Promise<{ locale: string }> }) {
+	// The page's language from the address, not the request headers, so the page can be cached
+	setRequestLocale((await props.params).locale)
 	return <LegalPage titleKey="title_terms" source={generalConditionsContent} />
 }

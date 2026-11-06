@@ -6,7 +6,8 @@ import { db, T, must } from '@/lib/db'
 import { dashboardScope } from '@/lib/dashboard'
 import { Empty, button, buttonOutline } from '../../_components/ui'
 
-export default async function CompanyPage({ params }: { params: { locale: string } }) {
+export default async function CompanyPage(props: { params: Promise<{ locale: string }> }) {
+	const params = await props.params;
 	const { locale } = params
 	const scope = await dashboardScope()
 	if (!scope) return null

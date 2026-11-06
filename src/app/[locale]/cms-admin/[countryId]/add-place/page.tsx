@@ -3,7 +3,7 @@ export const dynamic = "force-dynamic";
 
 import type React from "react"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, use } from "react";
 import { useRouter } from "next/navigation"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
@@ -46,7 +46,8 @@ const isValidImageUrl = (url: string) => {
   )
 }
 
-export default function AddPlacePage({ params }: { params: { countryId: string } }) {
+export default function AddPlacePage(props: { params: Promise<{ countryId: string }> }) {
+  const params = use(props.params);
   const { countryId } = params
   const router = useRouter()
   const [cities, setCities] = useState<any[]>([])

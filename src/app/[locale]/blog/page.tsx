@@ -9,15 +9,16 @@ import { listBlogPosts } from '@/lib/blog'
 import PostCard from './PostCard'
 
 const PER_PAGE = 12
-// Refresh the list at most every 10 minutes
 // Rendered per request: the build has no database to read the posts from
 export const dynamic = 'force-dynamic'
 
-type PageProps = { params: { locale: string }; searchParams: { page?: string } }
+type PageProps = { params: Promise<{ locale: string }>; searchParams: Promise<{ page?: string }> }
 
 const pageOf = (value?: string) => Math.max(1, Math.floor(Number(value)) || 1)
 
-export async function generateMetadata({ params, searchParams }: PageProps): Promise<Metadata> {
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+	const searchParams = await props.searchParams;
+	const params = await props.params;
 	const t = await getTranslations({ locale: params.locale, namespace: 'Blog' })
 	const page = pageOf(searchParams.page)
 	const path = `/blog${page > 1 ? `?page=${page}` : ''}`
@@ -31,7 +32,9 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
 	}
 }
 
-export default async function BlogPage({ params, searchParams }: PageProps) {
+export default async function BlogPage(props: PageProps) {
+	const searchParams = await props.searchParams;
+	const params = await props.params;
 	const { locale } = params
 	setRequestLocale(locale)
 	const t = await getTranslations('Blog')

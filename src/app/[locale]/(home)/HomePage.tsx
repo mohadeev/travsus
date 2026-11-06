@@ -1,20 +1,17 @@
-import { BadgeCheck, CalendarCheck, Headphones, ShieldCheck } from 'lucide-react'
+// Home page, TripAdvisor layout: "Where to?" with category tabs over one big
+// search; a green promo card; rows of TRAVSUS tours (square photos, 4 in view);
+// tall destination tiles; a yellow card; one more row of tours. The header and
+// footer come from the site layout.
+import Image from 'next/image'
+import Link from 'next/link'
+import { ShieldCheck } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import type { HomeDestination, HomeReview, HomeTour } from '@/lib/homeData'
-import BookNowBanner from './BookNowBanner'
-import HomeFaq from './HomeFaq'
-import HomeMotion from './HomeMotion'
+import { PHOTOS } from '@/lib/photos'
 import HomeHero from './HomeHero'
-import HomeReviews from './HomeReviews'
-import HowItWorks from './HowItWorks'
-import RealTrips from './RealTrips'
-import RecentlyViewed from './RecentlyViewed'
-import ImpactBanner from './ImpactBanner'
-import ReferralBanner from './ReferralBanner'
-import TopDestinations from './TopDestinations'
-import TopTours from './TopTours'
-import TrustSection from './TrustSection'
-import styles from './home.module.css'
+import HomeRow from './HomeRow'
+import PromoCard from './PromoCard'
+import ShelfCard from './ShelfCard'
 
 type Props = {
 	tours: HomeTour[]
@@ -23,79 +20,98 @@ type Props = {
 	rating: { average: number | null; count: number }
 }
 
-/**
- * Home page layout, in the order a visitor makes up their mind: what we offer
- * and why to trust it (hero, proof row), what to book (tours, how it works,
- * destinations), what others say (reviews, real trips), what protects them
- * (trust, FAQ), then one last nudge. Each section is its own component in
- * this folder: reorder, add or remove sections below.
- */
-export default function HomePage({ tours, destinations, reviews, rating }: Props) {
+const DESERT = /\b(desert|sahara|merzouga|erg chebbi|zagora|dunes?)\b/
+
+export default function HomePage({ tours, destinations }: Props) {
+	const t = useTranslations('Home')
 	const tLanding = useTranslations('Landing')
 	const tTrust = useTranslations('Trust')
-	// Tour cards for the browser (the search words are not needed there)
-	const cards = tours.map(({ searchText, ...card }) => card)
 
-	// Facts right under the search: real rating (when there is one), then what protects the booking
-	const proof = [
-		rating.average && rating.count > 0
-			? ([BadgeCheck, tLanding('proof_rating', { rating: rating.average.toFixed(1), count: rating.count })] as const)
-			: null,
-		[ShieldCheck, tTrust('cancel_title')] as const,
-		[CalendarCheck, tLanding('proof_deposit')] as const,
-		[Headphones, tTrust('help_title')] as const,
-	].filter((item) => item !== null)
+	// Rows of tours, most popular first. Each row opens with tours the rows above
+	// don't already show on screen (their first 4), so no two rows look the same.
+	const seen = new Set<string>()
+	const row = (match: (tour: HomeTour) => boolean) => {
+		const all = tours.filter(match)
+		const picked = [...all.filter((tour) => !seen.has(tour.id)), ...all.filter((tour) => seen.has(tour.id))].slice(0, 12)
+		picked.slice(0, 4).forEach((tour) => seen.add(tour.id))
+		return picked.map(({ searchText, ...card }) => card) // search words aren't needed in the browser
+	}
+	const top = row(() => true)
+	const desert = row((tour) => DESERT.test(tour.searchText))
+	const dayTrips = row((tour) => tour.days === 1)
 
-	return (
-		<>
-			<HomeMotion />
-			<main className="pb-12 text-neutral-950 sm:pb-24 dark:text-white">
-				<HomeHero />
-
-				{/* Phones: two columns, icon above text. Larger screens: one row. */}
-				<ul className={`${styles.stagger} mx-auto grid max-w-7xl grid-cols-2 gap-x-2 gap-y-4 px-5 py-6 text-center text-xs font-medium leading-snug text-neutral-700 sm:flex sm:flex-wrap sm:justify-center sm:gap-x-10 sm:gap-y-3 sm:py-8 sm:text-sm dark:text-neutral-300`}>
-					{proof.map(([Icon, label]) => (
-						<li key={label} className="flex flex-col items-center gap-1.5 sm:flex-row sm:gap-2">
-							<Icon className={`${styles.bob} h-5 w-5 shrink-0 text-neutral-950 dark:text-white`} />
-							{label}
+	const shelf = (title: string, subtitle: string, cards: ReturnType<typeof row>) =>
+		cards.length > 0 && (
+			<section className="py-5 sm:py-7">
+				<div className="mb-4">
+					<h2 className="headline text-[22px] !leading-[1.2] sm:text-[28px]">{title}</h2>
+					<p className="mt-1 text-base text-neutral-700 dark:text-neutral-300">{subtitle}</p>
+				</div>
+				<HomeRow label={title}>
+					{cards.map((tour) => (
+						<li key={tour.id} className="min-w-0 snap-start">
+							<ShelfCard tour={tour} />
 						</li>
 					))}
-				</ul>
+				</HomeRow>
+			</section>
+		)
 
-				<div className="mx-auto max-w-7xl space-y-14 px-5 pt-4 sm:space-y-28 sm:pt-8">
-					{/* Tours this visitor opened (from their browser); hidden for new visitors */}
-					<RecentlyViewed tours={cards} />
+	return (
+		<main className="pb-12 text-black dark:text-white">
+			<HomeHero />
 
-					<TopTours tours={tours.slice(0, 16)} />
-
-					<HowItWorks />
-
-					<TopDestinations destinations={destinations} />
-
-					<HomeReviews reviews={reviews} />
-
-					{/* Photos of our best tours: real trips, not stock photos */}
-					<div className={styles.reveal}>
-						<RealTrips rating={rating} photos={tours.slice(0, 3).map((tour) => ({ src: tour.image, alt: tour.name }))} />
-					</div>
-
-					<TrustSection />
-
-					<div className={styles.reveal}>
-						<ImpactBanner />
-					</div>
-
-					<HomeFaq />
-
-					<div className={styles.reveal}>
-						<BookNowBanner />
-					</div>
-
-					<div className={styles.reveal}>
-						<ReferralBanner />
-					</div>
+			<div className="mx-auto max-w-7xl px-4 sm:px-5">
+				<div className="py-5 sm:py-7">
+					<PromoCard
+						tone="dark"
+						photo={PHOTOS.hiking}
+						title={tLanding('cta_title')}
+						text={tLanding('cta_text')}
+						cta={tLanding('cta_button')}
+						href="/search?query="
+					/>
 				</div>
-			</main>
-		</>
+
+				{shelf(t('top_tours'), t('top_tours_sub'), top)}
+				{shelf(t('shelf_desert'), t('shelf_desert_sub'), desert)}
+
+				{destinations.length > 0 && (
+					<section className="py-5 sm:py-7">
+						<h2 className="headline mb-4 text-[22px] !leading-[1.2] sm:text-[28px]">{t('destinations_title')}</h2>
+						<HomeRow label={t('destinations_title')} wide>
+							{destinations.slice(0, 12).map((d) => (
+								<li key={d.city} className="min-w-0 snap-start">
+									<Link href={`/search?query=${encodeURIComponent(d.city)}` as any} className="group relative block overflow-hidden rounded-xl bg-neutral-100" style={{ aspectRatio: '4 / 5' }}>
+										<Image src={d.image} alt={d.city} fill sizes="(max-width: 680px) 62vw, (max-width: 1024px) 38vw, 300px" className="object-cover transition duration-500 group-hover:scale-105" />
+										<span aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+										<span className="absolute bottom-3.5 left-4 text-2xl font-extrabold tracking-[-0.01em] text-white">{d.city}</span>
+									</Link>
+								</li>
+							))}
+						</HomeRow>
+					</section>
+				)}
+
+				<div className="py-5 sm:py-7">
+					<PromoCard
+						tone="yellow"
+						photo={PHOTOS.sunsetHug}
+						eyebrow={
+							<>
+								<ShieldCheck className="h-[22px] w-[22px]" strokeWidth={2} aria-hidden />
+								TRAVSUS
+							</>
+						}
+						title={tTrust('title')}
+						text={tTrust('sub')}
+						cta={tLanding('cta_button')}
+						href="/search?query="
+					/>
+				</div>
+
+				{shelf(t('shelf_day'), t('shelf_day_sub'), dayTrips)}
+			</div>
+		</main>
 	)
 }

@@ -1,12 +1,13 @@
 'use client'
-// Booking card, made so anyone can book: three big, plain steps
-// (dates, people, where to sleep), one clear total and one button.
-import { type FC, type ReactNode, useEffect, useState } from 'react'
+// Booking card, kept minimal: the price, one box for dates and people, the
+// hotel choice (when the tour has nights and a luxury option), the total,
+// how to pay, and one button.
+import { type FC, useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import type { Route } from 'next'
-import { useTranslations } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import { useClerk } from '@clerk/nextjs'
-import { CalendarClock, Check, ChevronDown, Crown, Hotel, Minus, Plus, ShieldCheck } from 'lucide-react'
+import { ChevronDown, Crown, Hotel, Minus, Plus, ShieldCheck } from 'lucide-react'
 import StayDatesRangeInput from '../StayDatesRangeInput'
 import LineItemsBreakdown from '../LineItems/LineItemsBreakdown'
 import { useAppDispatch, useAppSelector } from '@/store/hooks'
@@ -46,6 +47,10 @@ function currentHotel(booking: any): Hotel {
 
 const RenderSidebar: FC = () => {
 	const t = useTranslations('Booking')
+	const tHome = useTranslations('Home')
+	// "from {price}" around the big price, in any word order (as on TripAdvisor: "from €276 per person")
+	const [fromBefore, fromAfter = ''] = tHome.raw('from_price').split('{price}')
+	const locale = useLocale()
 	const tOld = useTranslations('Jan03_RenderSidebar_k7m9')
 	const router = useRouter()
 	const dispatch = useAppDispatch()
@@ -137,49 +142,38 @@ const RenderSidebar: FC = () => {
 	const canDeposit = hasDate ? depositAvailable(tripTotal, booking.selectedDate) : tripTotal - DEPOSIT_EUR >= 20
 	const payPlan: PaymentPlan = canDeposit ? plan : 'full'
 	const deposit = formatCurrency(DEPOSIT_EUR)
+	const wholeMoney = new Intl.NumberFormat(locale, { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 })
 
 	return (
-		<div className="listingSectionSidebar__wrap">
-			{/* Price at a glance */}
-			<p className="text-lg">
-				<span className="text-3xl font-bold tracking-tight">{formatCurrency(perPerson)}</span>{' '}
-				<span className="text-neutral-500">{tOld('per_person')}</span>
-			</p>
-			{canDeposit && (
-				<p className="!mt-1 flex items-center gap-1.5 text-sm font-semibold text-[#00AA6C]">
-					<CalendarClock className="h-4 w-4 shrink-0" />
-					{t('pay_later_teaser', { amount: deposit })}
+		<div className="listingSectionSidebar__wrap !space-y-5">
+			{/* Price at a glance: a whole number, rounded up, like on the tour cards */}
+			<div>
+				<p>
+					<span className="text-neutral-700 dark:text-neutral-300">{fromBefore}</span>
+					<span className="text-[28px] font-bold tracking-tight">{wholeMoney.format(Math.ceil(perPerson))}</span>
+					<span className="text-neutral-700 dark:text-neutral-300">{fromAfter} {tHome('per_person')}</span>
 				</p>
-			)}
+				{canDeposit && <p className="mt-0.5 text-sm font-medium text-emerald-700 dark:text-emerald-400">{t('pay_later_teaser', { amount: deposit })}</p>}
+			</div>
 
-			{/* 1. Dates */}
-			<Step number={1} title={t('step_when')}>
+			{/* Dates and people in one box */}
+			<div>
 				<div
-					id="booking-dates"
-					className={`rounded-2xl border-2 transition [&_button]:rounded-2xl ${
-						needsDate && !hasDate ? 'border-brand-500 ring-4 ring-brand-100' : 'border-neutral-200 dark:border-neutral-800'
+					className={`divide-y divide-neutral-200 rounded-2xl border transition dark:divide-neutral-800 ${
+						needsDate && !hasDate ? 'border-brand-500 ring-2 ring-brand-500/30' : 'border-neutral-300 dark:border-neutral-700'
 					}`}
 				>
-					<StayDatesRangeInput
-						onChange={(date: any) => {
-							dispatch(setSelectedDate(date))
-							if (date?.startDate) setNeedsDate(false)
-						}}
-						value={booking.selectedDate}
-						duration={tour.days?.length}
-						isFlashing={needsDate && !hasDate}
-					/>
-				</div>
-				{needsDate && !hasDate && (
-					<p role="alert" className="mt-2 text-base font-semibold text-brand-600">
-						{t('pick_date')}
-					</p>
-				)}
-			</Step>
-
-			{/* 2. People */}
-			<Step number={2} title={t('step_who')}>
-				<div className="divide-y divide-neutral-200 rounded-2xl border-2 border-neutral-200 dark:divide-neutral-800 dark:border-neutral-800">
+					<div id="booking-dates">
+						<StayDatesRangeInput
+							onChange={(date: any) => {
+								dispatch(setSelectedDate(date))
+								if (date?.startDate) setNeedsDate(false)
+							}}
+							value={booking.selectedDate}
+							duration={tour.days?.length}
+							isFlashing={needsDate && !hasDate}
+						/>
+					</div>
 					<Counter
 						label={t('adults')}
 						hint={t('adults_hint')}
@@ -201,121 +195,116 @@ const RenderSidebar: FC = () => {
 						moreLabel={t('more')}
 					/>
 				</div>
-			</Step>
+				{needsDate && !hasDate && (
+					<p role="alert" className="mt-2 text-sm font-semibold text-brand-600">
+						{t('pick_date')}
+					</p>
+				)}
+			</div>
 
-			{/* 3. Where to sleep */}
-			{hasStays && (
-				<Step number={3} title={t('step_hotel')}>
-					<div className="grid grid-cols-2 gap-2" role="radiogroup" aria-label={t('step_hotel')}>
-						<Choice
-							compact
-							selected={hotel === 'Standard'}
-							onSelect={() => update({ hotel: 'Standard' })}
-							icon={<Hotel className="h-6 w-6" />}
-							title={t('hotel_standard')}
-							hint={t('hotel_standard_hint')}
-						/>
-						{hasLuxury && (
-							<Choice
-								compact
-								selected={hotel === 'Luxury'}
-								onSelect={() => update({ hotel: 'Luxury' })}
-								icon={<Crown className="h-6 w-6" />}
-								title={t('hotel_luxury')}
-								hint={t('hotel_luxury_hint')}
-							/>
-						)}
+			{/* Where to sleep: two options side by side */}
+			{hasStays && hasLuxury && (
+				<div>
+					<p className="mb-2 text-sm font-semibold">{t('step_hotel')}</p>
+					<div role="radiogroup" aria-label={t('step_hotel')} className="grid grid-cols-2 gap-1 rounded-full bg-neutral-100 p-1 dark:bg-neutral-900">
+						{([
+							['Standard', Hotel, t('hotel_standard')],
+							['Luxury', Crown, t('hotel_luxury')],
+						] as const).map(([value, Icon, label]) => (
+							<button
+								key={value}
+								type="button"
+								role="radio"
+								aria-checked={hotel === value}
+								onClick={() => update({ hotel: value })}
+								className={`flex items-center justify-center gap-1.5 rounded-full px-2 py-2 text-sm font-semibold transition ${
+									hotel === value
+										? 'bg-white text-neutral-950 shadow-sm dark:bg-neutral-800 dark:text-white'
+										: 'text-neutral-500 hover:text-neutral-950 dark:hover:text-white'
+								}`}
+							>
+								<Icon className="h-4 w-4 shrink-0" aria-hidden />
+								<span className="truncate">{label}</span>
+							</button>
+						))}
 					</div>
-				</Step>
+				</div>
 			)}
 
-			{/* Total + Reserve */}
-			<div className="rounded-2xl bg-sand-100 p-5 dark:bg-neutral-900">
-				<div className="flex items-end justify-between gap-3">
-					<div>
-						<p className="text-base font-semibold">{t('total')}</p>
-						<p className="text-sm text-neutral-500">{t('for_people', { count: people })}</p>
-					</div>
-					<p className="text-3xl font-bold tracking-tight" aria-live="polite">
-						{updating ? <span className="text-base font-medium text-neutral-500">{t('updating')}</span> : formatCurrency(total || perPerson * people)}
-					</p>
+			{/* Total */}
+			<div className="flex items-baseline justify-between gap-3 border-t border-neutral-200 pt-4 dark:border-neutral-800">
+				<p className="text-sm">
+					<span className="font-semibold">{t('total')}</span>{' '}
+					<span className="text-neutral-500">· {t('for_people', { count: people })}</span>
+				</p>
+				<p className="text-xl font-bold tracking-tight" aria-live="polite">
+					{updating ? <span className="text-sm font-medium text-neutral-500">{t('updating')}</span> : formatCurrency(tripTotal)}
+				</p>
+			</div>
+
+			{/* Pay €20 now (rest on the tour day) or everything now */}
+			{canDeposit && (
+				<div role="radiogroup" aria-label={t('pay_title')} className="!mt-3 space-y-2">
+					{([
+						['deposit', t('switch_deposit', { amount: deposit }), t('pay_deposit_hint', { rest: formatCurrency(balanceAfterDeposit(tripTotal)) })],
+						['full', t('pay_full'), t('pay_full_hint', { amount: formatCurrency(tripTotal) })],
+					] as const).map(([value, label, hint]) => (
+						<button
+							key={value}
+							type="button"
+							role="radio"
+							aria-checked={payPlan === value}
+							onClick={() => setPlan(value)}
+							className={`flex w-full items-start gap-3 rounded-xl border px-3.5 py-3 text-left transition ${
+								payPlan === value ? 'border-neutral-950 bg-neutral-50 dark:border-white dark:bg-neutral-900' : 'border-neutral-200 hover:border-neutral-400 dark:border-neutral-800'
+							}`}
+						>
+							<span
+								className={`mt-0.5 grid h-[18px] w-[18px] shrink-0 place-items-center rounded-full border-2 ${
+									payPlan === value ? 'border-neutral-950 dark:border-white' : 'border-neutral-300 dark:border-neutral-600'
+								}`}
+							>
+								{payPlan === value && <span className="h-2 w-2 rounded-full bg-neutral-950 dark:bg-white" />}
+							</span>
+							<span className="min-w-0">
+								<span className="block text-sm font-semibold">{label}</span>
+								<span className="block text-xs text-neutral-500">{hint}</span>
+							</span>
+						</button>
+					))}
 				</div>
-				{/* Pay €20 now (rest on the tour day) or everything now */}
-				{canDeposit && (
-					<>
-						<div role="radiogroup" aria-label={t('pay_title')} className="mt-4 grid grid-cols-2 gap-1 rounded-full bg-white p-1 ring-1 ring-neutral-200 dark:bg-neutral-950 dark:ring-neutral-800">
-							{(['deposit', 'full'] as const).map((option) => (
-								<button
-									key={option}
-									type="button"
-									role="radio"
-									aria-checked={payPlan === option}
-									onClick={() => setPlan(option)}
-									className={`rounded-full px-3 py-2 text-sm font-semibold transition ${
-										payPlan === option ? 'bg-neutral-950 text-white dark:bg-white dark:text-neutral-950' : 'text-neutral-600 hover:text-neutral-950 dark:text-neutral-400'
-									}`}
-								>
-									{option === 'deposit' ? t('switch_deposit', { amount: deposit }) : t('switch_full')}
-								</button>
-							))}
-						</div>
-						{payPlan === 'deposit' && (
-							<div className="mt-3 grid grid-cols-2 gap-2 text-sm">
-								<p className="rounded-xl bg-white px-3 py-2 dark:bg-neutral-950">
-									<span className="block text-neutral-500">{t('today')}</span>
-									<span className="font-bold">{deposit}</span>
-								</p>
-								<p className="rounded-xl bg-white px-3 py-2 dark:bg-neutral-950">
-									<span className="block text-neutral-500">{t('on_tour_day')}</span>
-									<span className="font-bold">{formatCurrency(balanceAfterDeposit(tripTotal))}</span>
-								</p>
-							</div>
-						)}
-					</>
-				)}
+			)}
+
+			<div className="!mt-4">
+				<button
+					type="button"
+					onClick={() => handleReserve(undefined)}
+					disabled={reserving}
+					className="w-full rounded-full bg-black px-6 py-3.5 text-base font-bold text-white transition hover:bg-neutral-800 disabled:opacity-60 dark:bg-white dark:text-black"
+				>
+					{reserving ? tOld('processing') : payPlan === 'deposit' ? t('reserve_deposit', { amount: deposit }) : t('reserve')}
+				</button>
+				<p className="mt-2.5 flex items-center justify-center gap-1.5 text-xs text-neutral-600 dark:text-neutral-400">
+					<ShieldCheck className="h-3.5 w-3.5 shrink-0 text-emerald-600" />
+					{t('free_cancel')}
+				</p>
 				{booking.lineItems.length > 0 && (
-					<details className="group mt-3">
-						<summary className="flex cursor-pointer list-none items-center gap-1 text-sm font-medium text-neutral-600 underline underline-offset-4 [&::-webkit-details-marker]:hidden">
+					<details className="group mt-3 text-center">
+						<summary className="inline-flex cursor-pointer list-none items-center gap-1 text-xs font-medium text-neutral-600 underline underline-offset-4 [&::-webkit-details-marker]:hidden">
 							{t('price_details')}
-							<ChevronDown className="h-4 w-4 transition group-open:rotate-180" />
+							<ChevronDown className="h-3.5 w-3.5 transition group-open:rotate-180" />
 						</summary>
-						<div className="mt-3">
+						<div className="mt-3 text-left">
 							<LineItemsBreakdown lineItems={booking.lineItems} />
 						</div>
 					</details>
 				)}
 			</div>
-
-			<button
-				type="button"
-				onClick={() => handleReserve(undefined)}
-				disabled={reserving}
-				className="w-full rounded-full bg-brand-500 px-6 py-4 text-lg font-bold text-white shadow-lg shadow-brand-500/25 transition hover:bg-brand-600 disabled:opacity-60"
-			>
-				{reserving ? tOld('processing') : payPlan === 'deposit' ? t('reserve_deposit', { amount: deposit }) : t('reserve')}
-			</button>
-
-			<p className="!mt-3 flex items-center justify-center gap-2 text-sm text-neutral-600 dark:text-neutral-400">
-				<ShieldCheck className="h-4 w-4 shrink-0 text-[#00AA6C]" />
-				{t('free_cancel')}
-			</p>
 		</div>
 	)
 }
 
-function Step({ number, title, children }: { number: number; title: string; children: ReactNode }) {
-	return (
-		<section>
-			<h3 className="mb-3 flex items-center gap-3 text-lg font-bold">
-				<span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-brand-500 text-base text-white">{number}</span>
-				{title}
-			</h3>
-			{children}
-		</section>
-	)
-}
-
-/** Big, finger-friendly − / + counter. */
+/** Small − / + counter, one row: label and age on the left. */
 function Counter({
 	label,
 	hint,
@@ -336,69 +325,25 @@ function Counter({
 	moreLabel: string
 }) {
 	const button =
-		'grid h-12 w-12 place-items-center rounded-full border-2 border-neutral-300 transition hover:border-brand-500 hover:text-brand-600 disabled:cursor-not-allowed disabled:opacity-30 dark:border-neutral-700'
+		'grid h-9 w-9 place-items-center rounded-full border border-neutral-300 text-neutral-700 transition hover:border-neutral-950 hover:text-neutral-950 disabled:cursor-not-allowed disabled:opacity-30 dark:border-neutral-700 dark:text-neutral-300 dark:hover:border-white'
 	return (
-		<div className="flex items-center justify-between gap-3 p-4">
-			<div>
-				<p className="text-base font-semibold">{label}</p>
-				<p className="text-sm text-neutral-500">{hint}</p>
+		<div className="flex items-center justify-between gap-3 px-4 py-3">
+			<div className="min-w-0">
+				<p className="text-[15px] font-semibold">{label}</p>
+				<p className="text-xs text-neutral-500">{hint}</p>
 			</div>
-			<div className="flex items-center gap-3">
+			<div className="flex items-center gap-2.5">
 				<button type="button" className={button} onClick={() => onChange(value - 1)} disabled={value <= min} aria-label={`${lessLabel}: ${label}`}>
-					<Minus className="h-5 w-5" strokeWidth={2.5} />
+					<Minus className="h-4 w-4" strokeWidth={2.25} />
 				</button>
-				<span className="w-7 text-center text-2xl font-bold tabular-nums" aria-live="polite">
+				<span className="w-5 text-center text-base font-semibold tabular-nums" aria-live="polite">
 					{value}
 				</span>
 				<button type="button" className={button} onClick={() => onChange(value + 1)} disabled={value >= max} aria-label={`${moreLabel}: ${label}`}>
-					<Plus className="h-5 w-5" strokeWidth={2.5} />
+					<Plus className="h-4 w-4" strokeWidth={2.25} />
 				</button>
 			</div>
 		</div>
-	)
-}
-
-/** Big tappable choice card with a clear selected state. */
-function Choice({
-	selected,
-	onSelect,
-	icon,
-	title,
-	hint,
-	compact = false,
-}: {
-	compact?: boolean
-	selected: boolean
-	onSelect: () => void
-	icon: ReactNode
-	title: string
-	hint: string
-}) {
-	return (
-		<button
-			type="button"
-			role="radio"
-			aria-checked={selected}
-			onClick={onSelect}
-			className={`flex w-full rounded-2xl border-2 text-left transition ${compact ? 'flex-col items-start gap-1.5 p-3' : 'items-center gap-4 p-4'} ${
-				selected
-					? 'border-brand-500 bg-brand-50 dark:bg-neutral-900'
-					: 'border-neutral-200 hover:border-neutral-400 dark:border-neutral-800'
-			}`}
-		>
-			<span className={selected ? 'text-brand-600' : 'text-neutral-500'}>{icon}</span>
-			<span className="min-w-0 flex-1">
-				<span className={`block font-semibold ${compact ? 'text-sm leading-snug' : 'text-base'}`}>{title}</span>
-				{!compact && <span className="block text-sm text-neutral-500">{hint}</span>}
-			</span>
-			<span
-				className={`${compact ? 'hidden' : 'grid'} h-6 w-6 shrink-0 place-items-center rounded-full border-2 ${
-					selected ? 'border-brand-500 bg-brand-500 text-white' : 'border-neutral-300'
-				}`}
-			>
-				{selected && <Check className="h-3.5 w-3.5" strokeWidth={3} />}
-			</span>
-		</button>
 	)
 }
 

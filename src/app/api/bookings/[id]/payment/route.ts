@@ -12,7 +12,8 @@ import { recordPaymentSucceeded } from '@/lib/payments'
  * The booking keeps the id of its Stripe checkout page (cs_…) or, for older
  * bookings, of its payment (pi_…).
  */
-export async function GET(_request: NextRequest, { params }: { params: { id: string } }) {
+export async function GET(_request: NextRequest, props: { params: Promise<{ id: string }> }) {
+	const params = await props.params;
 	const user = await getUserData()
 	if (!user?.id) return NextResponse.json({ error: 'Not authenticated' }, { status: 401 })
 	const booking = must(

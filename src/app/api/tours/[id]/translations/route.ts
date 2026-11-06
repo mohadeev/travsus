@@ -6,10 +6,8 @@ import { canEdit, currentUser } from '@/lib/guards'
 import { contentWithTexts, upsertTranslatedText } from '@/lib/translations'
 
 // GET /api/tours/[id]/translations - Get tour translations
-export async function GET(
-	request: NextRequest,
-	{ params }: { params: { id: string } },
-) {
+export async function GET(request: NextRequest, props: { params: Promise<{ id: string }> }) {
+	const params = await props.params;
 	try {
 		const { searchParams } = new URL(request.url)
 		const language = searchParams.get('language')
@@ -144,10 +142,8 @@ export async function GET(
 }
 
 // PUT /api/tours/[id]/translations - Update tour translations
-export async function PUT(
-	request: NextRequest,
-	{ params }: { params: { id: string } },
-) {
+export async function PUT(request: NextRequest, props: { params: Promise<{ id: string }> }) {
+	const params = await props.params;
 	try {
 		const body = await request.json()
 		const { translations } = body

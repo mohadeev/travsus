@@ -8,7 +8,8 @@ import { ACCOUNT_NAV } from '../_components/navItems'
 
 export const dynamic = 'force-dynamic'
 
-export default async function AccountOverviewPage({ params }: { params: { locale: string } }) {
+export default async function AccountOverviewPage(props: { params: Promise<{ locale: string }> }) {
+	const params = await props.params;
 	const { locale } = params
 	setRequestLocale(locale)
 	const t = await getTranslations('Account')

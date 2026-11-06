@@ -13,12 +13,13 @@ import { forumCategory } from '../categories'
 
 export const dynamic = 'force-dynamic'
 
-type PageProps = { params: { locale: string; postId: string } }
+type PageProps = { params: Promise<{ locale: string; postId: string }> }
 
 // Metadata and page share one database read
 const load = cache((id: string) => getForumPost(id))
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+	const params = await props.params;
 	const post = await load(params.postId)
 	if (!post) return {}
 	const description = post.content.replace(/\s+/g, ' ').slice(0, 155)
@@ -30,7 +31,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 	}
 }
 
-export default async function ForumPostPage({ params }: PageProps) {
+export default async function ForumPostPage(props: PageProps) {
+	const params = await props.params;
 	const { locale } = params
 	setRequestLocale(locale)
 	const [post, viewer] = await Promise.all([load(params.postId), getSessionUser().catch(() => null)])

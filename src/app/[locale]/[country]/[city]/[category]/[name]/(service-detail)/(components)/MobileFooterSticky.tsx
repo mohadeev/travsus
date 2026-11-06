@@ -13,6 +13,9 @@ import { ArrowRight, CalendarDays, Check, ChevronRight } from 'lucide-react'
 
 const MobileFooterSticky = () => {
 	const t = useTranslations('Jan03_MobileFooterSticky_m4k7')
+	const tHome = useIntlTranslations('Home')
+	// "from €276 per person": whole euros, rounded up, as on the cards and the booking box
+	const [fromBefore, fromAfter = ''] = tHome.raw('from_price').split('{price}')
 
 	const tBooking = useIntlTranslations('Booking')
 	const tInfo = useIntlTranslations('BookingInfo')
@@ -25,6 +28,7 @@ const MobileFooterSticky = () => {
 		? totalOf(lineItems) / totalGuests
 		: tourData?.fromPricePerPerson ?? 0
 	const locale = useLocale()
+	const wholeMoney = new Intl.NumberFormat(locale, { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 })
 	// The dates the customer picked (nothing until they choose)
 	const dates = formatTripDates(...readTripDates(selectedDate), locale)
 	const dispatch = useAppDispatch()
@@ -46,11 +50,12 @@ const MobileFooterSticky = () => {
 							{/* Price and dates: one big tap area */}
 							<button type="button" onClick={() => haneleOpen(openModal)} className="min-h-14 min-w-0 flex-1 text-left">
 								<span className="block truncate">
-									<span className="text-[22px] font-bold leading-none tracking-tight">{formatCurrency(priceStart)}</span>
-									<span className="ml-1 text-sm text-neutral-500 dark:text-neutral-400">{t('Per_Person')}</span>
+									<span className="mr-1 text-sm text-neutral-700 dark:text-neutral-300">{fromBefore}</span>
+									<span className="text-[22px] font-bold leading-none tracking-tight">{wholeMoney.format(Math.ceil(priceStart))}</span>
+									<span className="ml-1 text-sm text-neutral-700 dark:text-neutral-300">{fromAfter} {t('Per_Person')}</span>
 								</span>
 								<span className="mt-1.5 inline-flex max-w-full items-center gap-1.5 rounded-full bg-neutral-100 py-1 pl-2.5 pr-2 text-[13px] font-semibold dark:bg-neutral-800">
-									<CalendarDays className="h-4 w-4 shrink-0 text-brand-600" />
+									<CalendarDays className="h-4 w-4 shrink-0" />
 									<span className="truncate">{dates || tBooking('choose_dates')}</span>
 									<ChevronRight className="h-3.5 w-3.5 shrink-0 text-neutral-400" />
 								</span>
@@ -58,7 +63,7 @@ const MobileFooterSticky = () => {
 							<button
 								type="button"
 								onClick={() => haneleOpen(openModal)}
-								className="inline-flex h-14 min-w-[44%] shrink-0 items-center justify-center gap-2 rounded-2xl bg-brand-500 px-6 text-[17px] font-bold text-white shadow-lg shadow-brand-500/30 transition active:scale-[0.97] hover:bg-brand-600"
+								className="inline-flex h-14 min-w-[44%] shrink-0 items-center justify-center gap-2 rounded-full bg-black px-6 text-[17px] font-bold text-white transition active:scale-[0.97] hover:bg-neutral-800 dark:bg-white dark:text-black"
 							>
 								{t('Reserve')}
 								<ArrowRight className="h-5 w-5" />

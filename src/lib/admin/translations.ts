@@ -1,4 +1,4 @@
-// The site's texts: messages/<locale>.json, shaped { group: { key: "text" } }
+// The site's texts: public/messages/<locale>.json, shaped { group: { key: "text" } }
 // (a few values are lists of texts, e.g. plan features).
 // The translations panel reads and edits them here. Files keep their order
 // and 2-space formatting so changes show up as small git diffs. Writing only
@@ -9,11 +9,12 @@ import 'server-only'
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
 import { routing } from '@/i18n/routing'
+import { loadMessages } from '@/i18n/loadMessages'
 
 export type Text = string | string[]
 export type Messages = Record<string, Record<string, Text>>
 
-const DIR = path.join(process.cwd(), 'messages')
+const DIR = path.join(process.cwd(), 'public', 'messages')
 export const LOCALES = routing.locales as readonly string[]
 const NAME = /^[A-Za-z0-9_.-]{1,120}$/ // group and key names
 const MAX_TEXT = 10_000
@@ -24,7 +25,16 @@ const file = (locale: string) => path.join(DIR, `${locale}.json`)
 export const canWrite = () => process.env.NODE_ENV === 'development'
 
 export async function readAll(): Promise<Record<string, Messages>> {
-	const entries = await Promise.all(LOCALES.map(async (l) => [l, JSON.parse(await fs.readFile(file(l), 'utf8'))] as const))
+	// Files on disk when there are any (local dev, Node); on Cloudflare Workers there
+	// are none, so read the deployed texts instead (read-only there anyway)
+	const read = async (l: string) => {
+		try {
+			return JSON.parse(await fs.readFile(file(l), 'utf8'))
+		} catch {
+			return structuredClone(await loadMessages(l))
+		}
+	}
+	const entries = await Promise.all(LOCALES.map(async (l) => [l, await read(l)] as const))
 	return Object.fromEntries(entries)
 }
 

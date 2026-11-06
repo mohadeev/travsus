@@ -5,7 +5,8 @@ import { db, T } from '@/lib/db'
 
 export const dynamic = 'force-dynamic'
 
-export async function GET(_req: Request, { params }: { params: { id: string } }) {
+export async function GET(_req: Request, props: { params: Promise<{ id: string }> }) {
+	const params = await props.params;
 	if (!/^[0-9a-f]{24}$/.test(params.id)) return NextResponse.json({ slugs: [] }, { status: 400 })
 	const { data, error } = await db.from(T.tours).select('slugs').eq('id', params.id).maybeSingle()
 	if (error) return NextResponse.json({ slugs: [] }, { status: 500 })

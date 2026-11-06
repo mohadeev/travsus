@@ -8,7 +8,8 @@ import { dashboardScope } from '@/lib/dashboard'
 
 export const metadata = { title: 'Edit company | TRAVSUS' }
 
-export default async function EditCompanyPage({ params }: { params: { locale: string; id: string } }) {
+export default async function EditCompanyPage(props: { params: Promise<{ locale: string; id: string }> }) {
+	const params = await props.params;
 	const scope = await dashboardScope()
 	if (!scope) return null
 	const company = must(

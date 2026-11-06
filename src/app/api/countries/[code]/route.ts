@@ -16,10 +16,8 @@ function extractLanguageFromRequest(request: Request): string {
 }
 
 
-export async function GET(
-	request: Request,
-	{ params }: { params: { code: string } },
-) {
+export async function GET(request: Request, props: { params: Promise<{ code: string }> }) {
+	const params = await props.params;
 	try {
 		const detectedLanguage = extractLanguageFromRequest(request)
 

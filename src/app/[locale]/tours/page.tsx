@@ -133,12 +133,13 @@ export default function ToursPage() {
 		}
 	}
 
-	const loadExistingTours = async () => {
+	// fresh: skip the minute-long edge copy (right after saving)
+	const loadExistingTours = async (fresh = false) => {
 		try {
 			// The API sends tours a page at a time: load them all
 			const tours: any[] = []
 			for (let page = 1; ; page++) {
-				const response = await fetch(`/api/tours?page=${page}&limit=100`)
+				const response = await fetch(`/api/tours?page=${page}&limit=100${fresh ? `&t=${Date.now()}` : ''}`)
 				if (!response.ok) break
 				const data = await response.json()
 				tours.push(...(data.tours || []))
@@ -323,7 +324,7 @@ export default function ToursPage() {
 					const data = await response.json()
 					setSelectedTourId(data.tour.id)
 				}
-				loadExistingTours()
+				loadExistingTours(true)
 			} else {
 				throw new Error('Failed to save')
 			}

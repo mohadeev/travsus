@@ -9,10 +9,8 @@ const englishText = (row: any, type?: string) =>
 		(t: any) => t.language === 'en-US' && (!type || t.type === type),
 	)?.text
 
-export async function GET(
-	request: Request,
-	{ params }: { params: { countryId: string } },
-) {
+export async function GET(request: Request, props: { params: Promise<{ countryId: string }> }) {
+	const params = await props.params;
 	try {
 		const { countryId } = params
 

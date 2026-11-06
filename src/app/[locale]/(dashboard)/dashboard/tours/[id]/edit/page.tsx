@@ -16,7 +16,8 @@ const previewOf = (tour: any, locale: string) => {
 	return (slugs.find((s) => s.language === locale) ?? slugs.find((s) => s.language === 'en-US') ?? slugs[0])?.slug ?? null
 }
 
-export default async function EditTourPage({ params }: { params: { locale: string; id: string } }) {
+export default async function EditTourPage(props: { params: Promise<{ locale: string; id: string }> }) {
+	const params = await props.params;
 	const scope = await dashboardScope()
 	const tour: any = must(await db.from(T.tours).select('*').eq('id', params.id).maybeSingle())
 	// Only the site owner, or the business the tour belongs to
