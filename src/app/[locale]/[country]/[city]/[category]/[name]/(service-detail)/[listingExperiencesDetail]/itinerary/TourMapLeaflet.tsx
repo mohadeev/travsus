@@ -85,6 +85,7 @@ export default function TourMapLeaflet({ days, selectedDayIndex, onDaySelect, he
 		if (!containerRef.current || mapRef.current) return
 		const map = L.map(containerRef.current, {
 			scrollWheelZoom: false, // the page keeps scrolling normally
+			zoomSnap: 0.25, // the route fills the map
 			zoomControl: false,
 			attributionControl: true,
 		})
