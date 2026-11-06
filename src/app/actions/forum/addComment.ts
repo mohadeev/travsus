@@ -4,6 +4,7 @@ import getUserData from '@/app/api/user/getUserData'
 import { db, T, must, withMeta } from '@/lib/db'
 import { toAuthor } from '@/lib/forum'
 import { AUTHOR } from './forumSelect'
+import { isBlockedText } from '@/lib/forumModeration'
 
 export async function addComment(formData: FormData) {
 	try {
@@ -14,6 +15,8 @@ export async function addComment(formData: FormData) {
 		const postId = String(formData.get('postId') ?? '')
 		const parentId = String(formData.get('parentId') ?? '') || null
 		if (!content || !postId) return { success: false, error: 'INVALID' }
+		// Scams, illegal documents and known spam are refused
+		if (isBlockedText(content)) return { success: false, error: 'INVALID' }
 
 		// The post (and the comment replied to) must exist
 		const post = must(await db.from(T.forumPosts).select('id').eq('id', postId).maybeSingle())

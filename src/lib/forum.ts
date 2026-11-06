@@ -2,6 +2,7 @@
 // its comments, and post counts per category.
 import 'server-only'
 import { db, T, must, fetchAll } from '@/lib/db'
+import { isBlockedText, isHiddenPost, REMOVED_POST_IDS } from '@/lib/forumModeration'
 
 const AUTHOR = `author:${T.users}!authorId(id, username, profileImage, accountData)`
 
@@ -46,7 +47,8 @@ export async function listForumPosts({ query = '', category = '' } = {}): Promis
 	const term = searchTerm(query)
 	if (term) request = request.or(`title.ilike.%${term}%,content.ilike.%${term}%`)
 
-	const rows = (must(await request) ?? []) as any[]
+	// Taken-down and blocked posts are never shown
+	const rows = ((must(await request) ?? []) as any[]).filter((row) => !isHiddenPost(row))
 	return rows.map((row) => ({
 		id: row.id,
 		title: row.title,
@@ -68,8 +70,8 @@ export async function getForumPost(id: string): Promise<ForumPost | null> {
 			.order('createdAt', { referencedTable: 'comments', ascending: true })
 			.maybeSingle(),
 	)
-	if (!row) return null
-	const commentList: ForumComment[] = (row.comments ?? []).map((c: any) => ({
+	if (!row || isHiddenPost(row)) return null
+	const commentList: ForumComment[] = (row.comments ?? []).filter((c: any) => !isBlockedText(c.content)).map((c: any) => ({
 		id: c.id,
 		content: c.content,
 		parentId: c.parentId,
@@ -93,8 +95,8 @@ export async function getForumPost(id: string): Promise<ForumPost | null> {
 
 /** { [category key]: number of posts } */
 export async function forumCategoryCounts(): Promise<Record<string, number>> {
-	const rows = await fetchAll<{ category: string }>(() => db.from(T.forumPosts).select('category').order('id'))
+	const rows = await fetchAll<{ id: string; category: string }>(() => db.from(T.forumPosts).select('id, category').order('id'))
 	const counts: Record<string, number> = {}
-	for (const { category } of rows) counts[category] = (counts[category] ?? 0) + 1
+	for (const { id, category } of rows) if (!REMOVED_POST_IDS.has(id)) counts[category] = (counts[category] ?? 0) + 1
 	return counts
 }
