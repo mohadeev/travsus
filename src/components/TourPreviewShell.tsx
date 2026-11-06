@@ -19,7 +19,7 @@ export default function TourPreviewShell() {
 	const tour = stored && typeof stored === 'object' && 'image' in stored ? stored : null
 
 	return (
-		<div className="mx-auto max-w-7xl px-5 pb-24 text-neutral-950 dark:text-white" aria-busy="true">
+		<div className="mx-auto max-w-7xl px-6 pb-24 text-ink dark:text-white" aria-busy="true">
 			{/* Header: breadcrumb, title, rating */}
 			<div className="pt-6">
 				<Bar className="h-4 w-56" />

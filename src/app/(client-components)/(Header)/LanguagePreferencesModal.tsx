@@ -119,7 +119,7 @@ const LanguagePreferencesModal: FC<Props> = ({ className = '', variant = 'nav', 
 							leaveFrom="translate-y-0 sm:opacity-100"
 							leaveTo="translate-y-full sm:translate-y-4 sm:opacity-0"
 						>
-							<Dialog.Panel className="flex max-h-[85vh] w-full flex-col rounded-t-3xl bg-white pb-[env(safe-area-inset-bottom)] text-neutral-950 shadow-2xl sm:max-w-lg sm:rounded-3xl dark:bg-neutral-900 dark:text-white">
+							<Dialog.Panel className="flex max-h-[85vh] w-full flex-col rounded-t-3xl bg-white pb-[env(safe-area-inset-bottom)] text-ink shadow-2xl sm:max-w-lg sm:rounded-3xl dark:bg-neutral-900 dark:text-white">
 								{/* Grab handle: shows it's a sheet on phones */}
 								<div className="mx-auto mt-2.5 h-1 w-10 rounded-full bg-neutral-300 sm:hidden dark:bg-neutral-700" />
 
@@ -150,7 +150,7 @@ const LanguagePreferencesModal: FC<Props> = ({ className = '', variant = 'nav', 
 													aria-current={code === locale ? 'true' : undefined}
 													className={`flex w-full items-center gap-2 rounded-2xl px-3.5 py-3 text-left sm:gap-3 sm:px-4 transition disabled:cursor-wait ${
 														selected
-															? 'bg-neutral-950 text-white dark:bg-white dark:text-neutral-950'
+															? 'bg-neutral-950 text-white dark:bg-white dark:text-ink'
 															: 'hover:bg-neutral-100 dark:hover:bg-neutral-800'
 													}`}
 												>

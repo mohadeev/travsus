@@ -54,7 +54,7 @@ export default async function InvitePage(props: { params: Promise<{ locale: stri
 
 			<p className="mt-8 text-sm text-neutral-500">
 				{t('invite_more')}{' '}
-				<Link href={`/${locale}/affiliates` as any} className="font-semibold text-neutral-950 underline underline-offset-4 dark:text-white">
+				<Link href={`/${locale}/affiliates` as any} className="font-semibold text-ink underline underline-offset-4 dark:text-white">
 					{t('invite_affiliates')}
 				</Link>
 			</p>

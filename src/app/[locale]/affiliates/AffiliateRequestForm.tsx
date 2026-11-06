@@ -49,7 +49,7 @@ export default function AffiliateRequestForm({ dark = false, id }: { dark?: bool
 
 	const field = dark
 		? 'bg-white/[0.07] text-white placeholder:text-white/50 ring-white/15 focus:bg-white/10 focus:ring-white'
-		: 'bg-white text-neutral-950 placeholder:text-neutral-400 ring-neutral-200 focus:ring-neutral-950 dark:bg-neutral-900 dark:text-white dark:ring-neutral-700 dark:focus:ring-white'
+		: 'bg-white text-ink placeholder:text-neutral-400 ring-neutral-200 focus:ring-neutral-950 dark:bg-neutral-900 dark:text-white dark:ring-neutral-700 dark:focus:ring-white'
 
 	const failed = status === 'invalid' || status === 'social' || status === 'website' || status === 'many' || status === 'error'
 
@@ -96,12 +96,12 @@ export default function AffiliateRequestForm({ dark = false, id }: { dark?: bool
 				disabled={status === 'sending'}
 				className={`group mt-2.5 inline-flex h-14 w-full items-center justify-between gap-4 rounded-full pl-7 pr-2 text-base font-semibold transition active:scale-[0.99] disabled:opacity-70 ${
 					dark
-						? 'bg-white text-neutral-950 hover:bg-neutral-200'
-						: 'bg-neutral-950 text-white hover:bg-neutral-800 dark:bg-white dark:text-neutral-950'
+						? 'bg-white text-ink hover:bg-neutral-200'
+						: 'bg-neutral-950 text-white hover:bg-neutral-800 dark:bg-white dark:text-ink'
 				}`}
 			>
 				{t('form_submit')}
-				<span className={`grid h-10 w-10 place-items-center rounded-full transition-transform group-hover:translate-x-0.5 ${dark ? 'bg-neutral-950 text-white' : 'bg-white text-neutral-950 dark:bg-neutral-950 dark:text-white'}`}>
+				<span className={`grid h-10 w-10 place-items-center rounded-full transition-transform group-hover:translate-x-0.5 ${dark ? 'bg-neutral-950 text-white' : 'bg-white text-ink dark:bg-neutral-950 dark:text-white'}`}>
 					{status === 'sending' ? <Loader2 className="h-5 w-5 animate-spin" /> : <ArrowRight className="h-5 w-5" />}
 				</span>
 			</button>

@@ -14,7 +14,7 @@ export default async function DashboardLayout({ children }: { children: ReactNod
 	const scope = await dashboardScope()
 
 	return (
-		<main className="mx-auto max-w-7xl px-5 pb-24 pt-8 text-neutral-950 sm:pt-12 dark:text-white">
+		<main className="mx-auto max-w-7xl px-6 pb-24 pt-8 text-ink sm:pt-12 dark:text-white">
 			{scope ? (
 				<div className="grid grid-cols-[minmax(0,1fr)] gap-8 lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-12">
 					<DashboardNav scopeLabel={scope.label} />

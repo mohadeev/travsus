@@ -43,9 +43,10 @@ export default function HomePage({ tours, destinations }: Props) {
 	const shelf = (title: string, subtitle: string, cards: ReturnType<typeof row>) =>
 		cards.length > 0 && (
 			<section className="py-5 sm:py-7">
+				{/* As on TripAdvisor: 20/24px extra bold, 16/24px subtitle 4px below, 16px to the cards */}
 				<div className="mb-4">
-					<h2 className="headline text-[22px] !leading-[1.2] sm:text-[28px]">{title}</h2>
-					<p className="mt-1 text-base text-neutral-700 dark:text-neutral-300">{subtitle}</p>
+					<h2 className="headline text-xl !leading-6">{title}</h2>
+					<p className="mt-1 text-base leading-6 text-ink-soft dark:text-neutral-300">{subtitle}</p>
 				</div>
 				<HomeRow label={title}>
 					{cards.map((tour) => (
@@ -58,10 +59,10 @@ export default function HomePage({ tours, destinations }: Props) {
 		)
 
 	return (
-		<main className="pb-12 text-black dark:text-white">
+		<main className="pb-12 text-ink dark:text-white">
 			<HomeHero />
 
-			<div className="mx-auto max-w-7xl px-4 sm:px-5">
+			<div className="mx-auto max-w-7xl px-6">
 				<div className="py-5 sm:py-7">
 					<PromoCard
 						tone="dark"

@@ -46,7 +46,7 @@ const StayDatesRangeInput: FC<StayDatesRangeInputProps> = ({
 							isFlashing ? styles.flashing : ''
 						} ${open ? 'bg-neutral-50 dark:bg-neutral-900' : ''}`}
 					>
-						<CalendarDays className="h-5 w-5 shrink-0 text-neutral-950 dark:text-white" />
+						<CalendarDays className="h-5 w-5 shrink-0 text-ink dark:text-white" />
 						<span className="min-w-0 flex-1">
 							<span className={`block text-[15px] font-semibold ${start ? '' : 'text-neutral-500'}`}>
 								{start ? formatTripDates(start, end, locale) : t('choose_dates')}

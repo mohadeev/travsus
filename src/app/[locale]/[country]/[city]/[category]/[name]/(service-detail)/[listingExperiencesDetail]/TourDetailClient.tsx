@@ -65,7 +65,7 @@ const TourDetail: FC<ListingExperiencesDetailPageProps> = ({ similar = [] }) => 
 	return (
 		<>
 			{!mobileReserveOpen && (
-				<div className="mx-auto max-w-7xl px-5 pb-24 text-neutral-950 dark:text-white">
+				<div className="mx-auto max-w-7xl px-6 pb-24 text-ink dark:text-white">
 					<AffiliateShareBar title={service?.name} />
 					<TourHeader />
 					<ListingExperiencesDetailsImages />

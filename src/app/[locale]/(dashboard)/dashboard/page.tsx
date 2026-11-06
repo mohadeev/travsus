@@ -74,7 +74,7 @@ export default async function DashboardPage(props: { params: Promise<{ locale: s
 						<ul className="divide-y divide-neutral-100 dark:divide-neutral-800">
 							{o.recent.map((b) => (
 								<li key={b.id} className="flex items-center gap-3 py-3">
-									<span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-neutral-950 text-sm font-bold text-white dark:bg-white dark:text-neutral-950">
+									<span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-neutral-950 text-sm font-bold text-white dark:bg-white dark:text-ink">
 										{b.customer.name.charAt(0).toUpperCase()}
 									</span>
 									<span className="min-w-0 flex-1">
@@ -100,7 +100,7 @@ export default async function DashboardPage(props: { params: Promise<{ locale: s
 							<li key={t.id} className="overflow-hidden rounded-2xl bg-neutral-100 dark:bg-neutral-900">
 								<div className="relative aspect-[4/3]">
 									<Image src={t.image || PHOTOS.sahara} alt="" fill sizes="(max-width: 640px) 100vw, 20vw" className="object-cover" />
-									<span className="absolute left-2 top-2 grid h-7 w-7 place-items-center rounded-full bg-white text-xs font-bold text-neutral-950">{i + 1}</span>
+									<span className="absolute left-2 top-2 grid h-7 w-7 place-items-center rounded-full bg-white text-xs font-bold text-ink">{i + 1}</span>
 								</div>
 								<div className="p-3">
 									<p className="line-clamp-2 text-sm font-semibold leading-snug">{t.name}</p>
@@ -118,7 +118,7 @@ export default async function DashboardPage(props: { params: Promise<{ locale: s
 
 			<p className="flex items-center gap-2 text-sm text-neutral-500">
 				<Users className="h-4 w-4" />
-				<Link href={link('/dashboard/customers')} className="font-semibold text-neutral-950 underline underline-offset-4 dark:text-white">
+				<Link href={link('/dashboard/customers')} className="font-semibold text-ink underline underline-offset-4 dark:text-white">
 					See all customers
 				</Link>
 				<ArrowRight className="h-4 w-4" />

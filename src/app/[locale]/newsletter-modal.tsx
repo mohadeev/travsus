@@ -128,12 +128,12 @@ export default function NewsletterModal() {
 						leaveFrom="translate-y-0 opacity-100 sm:scale-100"
 						leaveTo="translate-y-10 opacity-0 sm:translate-y-4 sm:scale-95"
 					>
-						<Dialog.Panel className="relative grid max-h-[94dvh] w-full overflow-y-auto rounded-t-[32px] bg-white text-neutral-950 shadow-2xl sm:max-w-4xl sm:rounded-[32px] md:grid-cols-[0.9fr_1.1fr] md:overflow-hidden dark:bg-neutral-900 dark:text-white">
+						<Dialog.Panel className="relative grid max-h-[94dvh] w-full overflow-y-auto rounded-t-[32px] bg-white text-ink shadow-2xl sm:max-w-4xl sm:rounded-[32px] md:grid-cols-[0.9fr_1.1fr] md:overflow-hidden dark:bg-neutral-900 dark:text-white">
 							<button
 								type="button"
 								onClick={close}
 								aria-label={t('close')}
-								className="absolute right-4 top-4 z-10 grid h-10 w-10 place-items-center rounded-full bg-white/90 text-neutral-950 shadow-sm backdrop-blur transition hover:bg-white md:bg-neutral-100 md:hover:bg-neutral-200 dark:md:bg-neutral-800 dark:md:text-white"
+								className="absolute right-4 top-4 z-10 grid h-10 w-10 place-items-center rounded-full bg-white/90 text-ink shadow-sm backdrop-blur transition hover:bg-white md:bg-neutral-100 md:hover:bg-neutral-200 dark:md:bg-neutral-800 dark:md:text-white"
 							>
 								<X className="h-5 w-5" />
 							</button>
@@ -165,7 +165,7 @@ export default function NewsletterModal() {
 										<button
 											type="button"
 											onClick={close}
-											className="mt-8 inline-flex h-12 items-center gap-2 rounded-full bg-neutral-950 px-7 text-sm font-semibold text-white transition hover:bg-neutral-800 dark:bg-white dark:text-neutral-950"
+											className="mt-8 inline-flex h-12 items-center gap-2 rounded-full bg-neutral-950 px-7 text-sm font-semibold text-white transition hover:bg-neutral-800 dark:bg-white dark:text-ink"
 										>
 											{t('continue')}
 											<ArrowRight className="h-4 w-4" />
@@ -195,7 +195,7 @@ export default function NewsletterModal() {
 																onClick={() => toggle(id)}
 																className={`inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold ring-1 transition active:scale-95 ${
 																	on
-																		? 'bg-neutral-950 text-white ring-neutral-950 dark:bg-white dark:text-neutral-950 dark:ring-white'
+																		? 'bg-neutral-950 text-white ring-neutral-950 dark:bg-white dark:text-ink dark:ring-white'
 																		: 'text-neutral-600 ring-neutral-200 hover:ring-neutral-400 dark:text-neutral-300 dark:ring-neutral-700'
 																}`}
 															>
@@ -237,7 +237,7 @@ export default function NewsletterModal() {
 											<button
 												type="submit"
 												disabled={status === 'sending'}
-												className="group mt-3 inline-flex h-14 w-full items-center justify-center gap-2 rounded-full bg-neutral-950 text-base font-semibold text-white transition hover:bg-neutral-800 disabled:opacity-70 dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-200"
+												className="group mt-3 inline-flex h-14 w-full items-center justify-center gap-2 rounded-full bg-neutral-950 text-base font-semibold text-white transition hover:bg-neutral-800 disabled:opacity-70 dark:bg-white dark:text-ink dark:hover:bg-neutral-200"
 											>
 												{status === 'sending' ? <Loader2 className="h-5 w-5 animate-spin" /> : null}
 												{t('submit')}

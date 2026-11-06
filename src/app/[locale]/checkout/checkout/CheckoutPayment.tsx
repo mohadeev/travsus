@@ -95,7 +95,7 @@ export default function CheckoutPayment({ booking }: { booking: any }) {
 				type="button"
 				onClick={pay}
 				disabled={busy || total <= 0}
-				className="inline-flex h-14 w-full items-center justify-center gap-2 rounded-full bg-neutral-950 px-8 text-base font-semibold text-white transition hover:bg-neutral-800 disabled:opacity-60 dark:bg-white dark:text-neutral-950"
+				className="inline-flex h-14 w-full items-center justify-center gap-2 rounded-full bg-neutral-950 px-8 text-base font-semibold text-white transition hover:bg-neutral-800 disabled:opacity-60 dark:bg-white dark:text-ink"
 			>
 				{busy ? <Loader2 className="h-5 w-5 animate-spin" /> : <Lock className="h-4 w-4" />}
 				{busy ? t('redirecting') : t(chosen === 'full' ? 'pay_secure' : 'pay_now', { amount: money(nowAmount) })}
@@ -130,7 +130,7 @@ function PlanOption({ selected, onSelect, icon, title, hint }: { selected: boole
 				selected ? 'border-neutral-950 bg-neutral-50 dark:border-white dark:bg-neutral-900' : 'border-neutral-200 hover:border-neutral-400 dark:border-neutral-800'
 			}`}
 		>
-			<span className={selected ? 'text-neutral-950 dark:text-white' : 'text-neutral-400'}>{icon}</span>
+			<span className={selected ? 'text-ink dark:text-white' : 'text-neutral-400'}>{icon}</span>
 			<span className="min-w-0 flex-1">
 				<span className="block text-sm font-semibold sm:text-base">{title}</span>
 				<span className="block text-xs text-neutral-500 sm:text-sm">{hint}</span>

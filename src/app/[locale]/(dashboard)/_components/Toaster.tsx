@@ -24,7 +24,7 @@ export default function Toaster() {
 					<div
 						key={t.id}
 						role={error ? 'alert' : 'status'}
-						className={`pointer-events-auto flex w-full max-w-md items-start gap-3 rounded-2xl px-4 py-3 shadow-2xl ${error ? 'bg-red-600 text-white' : 'bg-neutral-950 text-white dark:bg-white dark:text-neutral-950'}`}
+						className={`pointer-events-auto flex w-full max-w-md items-start gap-3 rounded-2xl px-4 py-3 shadow-2xl ${error ? 'bg-red-600 text-white' : 'bg-neutral-950 text-white dark:bg-white dark:text-ink'}`}
 					>
 						{error ? <AlertCircle className="mt-0.5 h-5 w-5 shrink-0" /> : <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-emerald-400" />}
 						<div className="min-w-0 flex-1 text-sm">

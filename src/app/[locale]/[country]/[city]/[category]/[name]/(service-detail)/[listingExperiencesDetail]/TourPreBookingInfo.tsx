@@ -40,7 +40,7 @@ export default function BookingInfo() {
 							<Phone className="h-4 w-4" />
 							{PHONE}
 						</a>
-						<button type="button" onClick={() => dispatch(openChat())} className="inline-flex h-9 items-center gap-1.5 rounded-full bg-neutral-950 px-3.5 text-sm font-semibold text-white transition hover:bg-neutral-800 dark:bg-white dark:text-neutral-950">
+						<button type="button" onClick={() => dispatch(openChat())} className="inline-flex h-9 items-center gap-1.5 rounded-full bg-neutral-950 px-3.5 text-sm font-semibold text-white transition hover:bg-neutral-800 dark:bg-white dark:text-ink">
 							<MessageCircle className="h-4 w-4" />
 							{t('chat_now')}
 						</button>

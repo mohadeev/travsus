@@ -85,7 +85,7 @@ export function CompanyForm({ company }: { company?: Record<string, any> }) {
 								role="radio"
 								aria-checked={selected}
 								onClick={() => setType(value)}
-								className={`relative flex items-start gap-4 rounded-3xl p-5 text-left transition ${selected ? 'bg-neutral-950 text-white dark:bg-white dark:text-neutral-950' : 'bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-900 dark:hover:bg-neutral-800'}`}
+								className={`relative flex items-start gap-4 rounded-3xl p-5 text-left transition ${selected ? 'bg-neutral-950 text-white dark:bg-white dark:text-ink' : 'bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-900 dark:hover:bg-neutral-800'}`}
 							>
 								<span className={`grid h-12 w-12 shrink-0 place-items-center rounded-2xl ${selected ? 'bg-white/15 dark:bg-neutral-950/10' : 'bg-white dark:bg-neutral-950'}`}>
 									<Icon className="h-6 w-6" />
@@ -95,7 +95,7 @@ export function CompanyForm({ company }: { company?: Record<string, any> }) {
 									<span className={`mt-1 block text-sm ${selected ? 'opacity-70' : 'text-neutral-500'}`}>{text}</span>
 								</span>
 								{selected && (
-									<span className="absolute right-4 top-4 grid h-6 w-6 place-items-center rounded-full bg-white text-neutral-950 dark:bg-neutral-950 dark:text-white">
+									<span className="absolute right-4 top-4 grid h-6 w-6 place-items-center rounded-full bg-white text-ink dark:bg-neutral-950 dark:text-white">
 										<Check className="h-4 w-4" strokeWidth={3} />
 									</span>
 								)}
@@ -163,7 +163,7 @@ export function CompanyForm({ company }: { company?: Record<string, any> }) {
 				<button
 					type="submit"
 					disabled={busy}
-					className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-neutral-950 px-8 text-sm font-semibold text-white transition hover:bg-neutral-800 disabled:opacity-60 dark:bg-white dark:text-neutral-950"
+					className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-neutral-950 px-8 text-sm font-semibold text-white transition hover:bg-neutral-800 disabled:opacity-60 dark:bg-white dark:text-ink"
 				>
 					{busy && <Loader2 className="h-4 w-4 animate-spin" />}
 					{company ? 'Save changes' : 'Create company'}

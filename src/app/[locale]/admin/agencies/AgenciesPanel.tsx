@@ -71,7 +71,7 @@ export default function AgenciesPanel({ initial, loadError, emailReady }: { init
 	}
 
 	return (
-		<div className="mx-auto max-w-7xl px-5 pb-24 pt-8 text-neutral-950 sm:pt-12 dark:text-white">
+		<div className="mx-auto max-w-7xl px-6 pb-24 pt-8 text-ink sm:pt-12 dark:text-white">
 			<div>
 				<p className="text-sm font-semibold uppercase tracking-[0.2em] text-neutral-500">TRAVSUS</p>
 				<h1 className="mt-2 text-4xl font-bold tracking-tight sm:text-5xl">Agencies</h1>
@@ -88,7 +88,7 @@ export default function AgenciesPanel({ initial, loadError, emailReady }: { init
 							type="button"
 							onClick={() => setFilter(key)}
 							className={`flex shrink-0 items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition ${
-								filter === key ? 'bg-neutral-950 text-white dark:bg-white dark:text-neutral-950' : 'bg-neutral-100 text-neutral-600 hover:text-neutral-950 dark:bg-neutral-900 dark:text-neutral-400'
+								filter === key ? 'bg-neutral-950 text-white dark:bg-white dark:text-ink' : 'bg-neutral-100 text-neutral-600 hover:text-ink dark:bg-neutral-900 dark:text-neutral-400'
 							}`}
 						>
 							{label}
@@ -126,7 +126,7 @@ export default function AgenciesPanel({ initial, loadError, emailReady }: { init
 									<button type="button" onClick={() => setOpen({ row: r, status: 'declined' })} className="h-10 rounded-full px-4 text-sm font-semibold ring-1 ring-neutral-300 transition hover:ring-neutral-950 dark:ring-neutral-700 dark:hover:ring-white">
 										Decline
 									</button>
-									<button type="button" onClick={() => setOpen({ row: r, status: 'approved' })} className="inline-flex h-10 items-center gap-1.5 rounded-full bg-neutral-950 px-4 text-sm font-semibold text-white transition hover:bg-neutral-800 dark:bg-white dark:text-neutral-950">
+									<button type="button" onClick={() => setOpen({ row: r, status: 'approved' })} className="inline-flex h-10 items-center gap-1.5 rounded-full bg-neutral-950 px-4 text-sm font-semibold text-white transition hover:bg-neutral-800 dark:bg-white dark:text-ink">
 										<Check className="h-4 w-4" />
 										Accept
 									</button>
@@ -152,7 +152,7 @@ export default function AgenciesPanel({ initial, loadError, emailReady }: { init
 					</Transition.Child>
 					<div className="fixed inset-0 flex items-end justify-center sm:items-center sm:p-6">
 						<Transition.Child as={Fragment} enter="ease-out duration-200" enterFrom="translate-y-8 opacity-0" enterTo="translate-y-0 opacity-100" leave="ease-in duration-150" leaveFrom="translate-y-0 opacity-100" leaveTo="translate-y-8 opacity-0">
-							<Dialog.Panel className="max-h-[92vh] w-full overflow-y-auto rounded-t-3xl bg-white p-6 text-neutral-950 shadow-2xl sm:max-w-lg sm:rounded-3xl sm:p-8 dark:bg-neutral-900 dark:text-white">
+							<Dialog.Panel className="max-h-[92vh] w-full overflow-y-auto rounded-t-3xl bg-white p-6 text-ink shadow-2xl sm:max-w-lg sm:rounded-3xl sm:p-8 dark:bg-neutral-900 dark:text-white">
 								{open && <EditorForm key={open.row.id + open.status} {...open} onClose={() => setOpen(null)} onSaved={saved} onRemoved={removed} />}
 							</Dialog.Panel>
 						</Transition.Child>
@@ -162,7 +162,7 @@ export default function AgenciesPanel({ initial, loadError, emailReady }: { init
 
 			{toast && (
 				<div role="status" className="fixed inset-x-0 bottom-24 z-[60] flex justify-center px-4 sm:bottom-8">
-					<p className="flex items-center gap-2 rounded-2xl bg-neutral-950 px-4 py-3 text-sm font-medium text-white shadow-2xl dark:bg-white dark:text-neutral-950">
+					<p className="flex items-center gap-2 rounded-2xl bg-neutral-950 px-4 py-3 text-sm font-medium text-white shadow-2xl dark:bg-white dark:text-ink">
 						<Check className="h-4 w-4 text-emerald-400" />
 						{toast}
 					</p>
@@ -228,7 +228,7 @@ function EditorForm({
 
 	const choice = (active: boolean) =>
 		`flex-1 rounded-2xl px-4 py-3 text-sm font-semibold ring-1 transition ${
-			active ? 'bg-neutral-950 text-white ring-neutral-950 dark:bg-white dark:text-neutral-950 dark:ring-white' : 'ring-neutral-200 hover:ring-neutral-400 dark:ring-neutral-700'
+			active ? 'bg-neutral-950 text-white ring-neutral-950 dark:bg-white dark:text-ink dark:ring-white' : 'ring-neutral-200 hover:ring-neutral-400 dark:ring-neutral-700'
 		}`
 
 	return (
@@ -307,7 +307,7 @@ function EditorForm({
 				<button type="button" onClick={onClose} className="h-12 flex-1 rounded-full text-sm font-semibold ring-1 ring-neutral-300 dark:ring-neutral-700">
 					Cancel
 				</button>
-				<button type="button" onClick={save} disabled={busy} className="inline-flex h-12 flex-[2] items-center justify-center gap-2 rounded-full bg-neutral-950 text-sm font-semibold text-white disabled:opacity-60 dark:bg-white dark:text-neutral-950">
+				<button type="button" onClick={save} disabled={busy} className="inline-flex h-12 flex-[2] items-center justify-center gap-2 rounded-full bg-neutral-950 text-sm font-semibold text-white disabled:opacity-60 dark:bg-white dark:text-ink">
 					{busy && <Loader2 className="h-4 w-4 animate-spin" />}
 					{statusChanged ? (status === 'approved' ? 'Accept' : status === 'declined' ? 'Decline' : 'Move back to review') : 'Save'}
 				</button>

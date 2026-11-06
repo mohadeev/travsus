@@ -68,7 +68,7 @@ export default async function LegalPage({ titleKey, source }: Props) {
 		<ol className="space-y-1 text-sm">
 			{sections.map((title) => (
 				<li key={title}>
-					<a href={`#${slug(title)}`} className="block rounded-lg px-3 py-1.5 text-neutral-500 transition hover:bg-neutral-100 hover:text-neutral-950 dark:hover:bg-neutral-900 dark:hover:text-white">
+					<a href={`#${slug(title)}`} className="block rounded-lg px-3 py-1.5 text-neutral-500 transition hover:bg-neutral-100 hover:text-ink dark:hover:bg-neutral-900 dark:hover:text-white">
 						{title}
 					</a>
 				</li>
@@ -77,8 +77,8 @@ export default async function LegalPage({ titleKey, source }: Props) {
 	)
 
 	return (
-		<main className="pb-16 text-neutral-950 sm:pb-24 dark:text-white">
-			<header className="mx-auto max-w-7xl px-5 pt-12 text-center sm:pt-20">
+		<main className="pb-16 text-ink sm:pb-24 dark:text-white">
+			<header className="mx-auto max-w-7xl px-6 pt-12 text-center sm:pt-20">
 				<p className="text-sm font-semibold uppercase tracking-[0.2em] text-neutral-500">{t('eyebrow')}</p>
 				<h1 className="mx-auto mt-4 max-w-3xl text-[40px] font-bold leading-[1.05] tracking-tight [text-wrap:balance] sm:text-7xl">{t(titleKey)}</h1>
 				{updated && <p className="mt-5 text-neutral-500">{t('updated', { date: updated })}</p>}
@@ -104,7 +104,7 @@ export default async function LegalPage({ titleKey, source }: Props) {
 				)}
 
 				<div className="min-w-0">
-					<article lang="en" className="prose prose-neutral max-w-3xl dark:prose-invert prose-headings:font-bold prose-headings:tracking-tight prose-h2:mt-14 prose-h2:text-2xl sm:prose-h2:text-3xl prose-h3:text-xl prose-a:font-semibold prose-a:text-neutral-950 prose-a:underline-offset-4 prose-li:my-1 dark:prose-a:text-white">
+					<article lang="en" className="prose prose-neutral max-w-3xl dark:prose-invert prose-headings:font-bold prose-headings:tracking-tight prose-h2:mt-14 prose-h2:text-2xl sm:prose-h2:text-3xl prose-h3:text-xl prose-a:font-semibold prose-a:text-ink prose-a:underline-offset-4 prose-li:my-1 dark:prose-a:text-white">
 						<Markdown components={markdownComponents} remarkPlugins={[remarkGfm]}>{body}</Markdown>
 					</article>
 
@@ -115,7 +115,7 @@ export default async function LegalPage({ titleKey, source }: Props) {
 						</div>
 						<Link
 							href={`/${locale}/contact` as any}
-							className="inline-flex h-12 shrink-0 items-center gap-2 rounded-full bg-neutral-950 px-6 text-sm font-semibold text-white transition hover:bg-neutral-800 dark:bg-white dark:text-neutral-950"
+							className="inline-flex h-12 shrink-0 items-center gap-2 rounded-full bg-neutral-950 px-6 text-sm font-semibold text-white transition hover:bg-neutral-800 dark:bg-white dark:text-ink"
 						>
 							{t('contact_cta')}
 							<ArrowRight className="h-4 w-4" />

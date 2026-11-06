@@ -68,7 +68,7 @@ export default function ContactForm({ email }: { email: string }) {
 			<button
 				type="submit"
 				disabled={status === 'sending'}
-				className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-neutral-950 px-7 text-sm font-semibold text-white transition hover:bg-neutral-800 disabled:opacity-70 sm:w-auto dark:bg-white dark:text-neutral-950"
+				className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-neutral-950 px-7 text-sm font-semibold text-white transition hover:bg-neutral-800 disabled:opacity-70 sm:w-auto dark:bg-white dark:text-ink"
 			>
 				{status === 'sending' ? <Loader2 className="h-4 w-4 animate-spin" /> : null}
 				{tOld('Send_Message_Button')}

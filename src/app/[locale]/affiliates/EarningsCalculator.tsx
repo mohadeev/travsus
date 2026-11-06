@@ -25,7 +25,7 @@ export default function EarningsCalculator() {
 		<label className="block">
 			<span className="flex items-baseline justify-between gap-4 text-sm font-medium text-neutral-500">
 				{label}
-				<span className="text-lg font-semibold tabular-nums text-neutral-950 dark:text-white">{shown}</span>
+				<span className="text-lg font-semibold tabular-nums text-ink dark:text-white">{shown}</span>
 			</span>
 			{input}
 		</label>
@@ -45,8 +45,8 @@ export default function EarningsCalculator() {
 							onClick={() => setBookings(START[i])}
 							className={`relative overflow-hidden rounded-3xl px-3 text-center transition-all duration-300 active:scale-[0.97] sm:rounded-[32px] sm:px-10 ${
 								on
-									? 'bg-neutral-950 py-8 text-white shadow-2xl sm:py-14 dark:bg-white dark:text-neutral-950'
-									: 'bg-neutral-100 py-6 text-neutral-950 hover:bg-neutral-200 sm:py-10 dark:bg-neutral-900 dark:text-white dark:hover:bg-neutral-800'
+									? 'bg-neutral-950 py-8 text-white shadow-2xl sm:py-14 dark:bg-white dark:text-ink'
+									: 'bg-neutral-100 py-6 text-ink hover:bg-neutral-200 sm:py-10 dark:bg-neutral-900 dark:text-white dark:hover:bg-neutral-800'
 							}`}
 						>
 							<span className="block text-4xl font-bold tracking-tight sm:text-7xl">{tier.rate}%</span>

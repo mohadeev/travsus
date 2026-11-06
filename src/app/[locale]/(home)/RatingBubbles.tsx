@@ -9,8 +9,8 @@ export default function RatingBubbles({
 	/** 'green' = TripAdvisor colour (tour page) */
 	tone?: 'mono' | 'green'
 }) {
-	const border = tone === 'green' ? 'border-[#00AA6C]' : 'border-neutral-900 dark:border-white'
-	const fillColor = tone === 'green' ? 'bg-[#00AA6C]' : 'bg-neutral-900 dark:bg-white'
+	const border = tone === 'green' ? 'border-[#00AA6C]' : 'border-ink dark:border-white'
+	const fillColor = tone === 'green' ? 'bg-[#00AA6C]' : 'bg-ink dark:bg-white'
 	return (
 		<span
 			className="inline-flex items-center gap-0.5"

@@ -56,7 +56,7 @@ const Review: React.FC<ReviewProps> = ({ review }) => {
 								</AvatarFallback>
 							</Avatar>
 							<div className="">
-								<h4 className="text-[15px] font-bold text-neutral-950 dark:text-white">
+								<h4 className="text-[15px] font-bold text-ink dark:text-white">
 									{review?.user?.accountData?.firstname}
 								</h4>
 								{review.author && (
@@ -85,7 +85,7 @@ const Review: React.FC<ReviewProps> = ({ review }) => {
 							<span className="sr-only">{review.rating}/5</span>
 						</div>
 
-						<h3 className="mb-1.5 text-[17px] font-extrabold text-neutral-950 dark:text-white">
+						<h3 className="mb-1.5 text-[17px] font-extrabold text-ink dark:text-white">
 							{review.title}
 						</h3>
 						<p className="mb-2.5 max-w-[72ch] text-[15px] leading-relaxed text-neutral-700 dark:text-neutral-300">

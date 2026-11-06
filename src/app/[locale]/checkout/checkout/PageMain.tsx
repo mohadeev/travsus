@@ -125,7 +125,7 @@ const CheckOutPagePageMain: FC<CheckOutPagePageMainProps> = ({
 	return (
 		<div className={`nc-CheckOutPagePageMain ${className}`}>
 			{booking?.id ? (
-				<main className="mx-auto max-w-6xl px-5 pb-24 pt-8 text-neutral-950 sm:pt-12 lg:pb-32 dark:text-white">
+				<main className="mx-auto max-w-6xl px-5 pb-24 pt-8 text-ink sm:pt-12 lg:pb-32 dark:text-white">
 					<h1 className="text-3xl font-bold tracking-tight sm:text-5xl">{t('Confirm_And_Payment')}</h1>
 
 					<div className="mt-8 grid grid-cols-[minmax(0,1fr)] gap-10 sm:mt-12 lg:grid-cols-[minmax(0,1fr)_400px] lg:gap-14">

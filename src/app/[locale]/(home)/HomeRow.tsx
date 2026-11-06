@@ -44,8 +44,10 @@ export default function HomeRow({ label, wide = false, children }: { label: stri
 			<ul
 				ref={track}
 				aria-label={label}
-				className={`grid snap-x snap-mandatory grid-flow-col gap-4 overflow-x-auto [scrollbar-width:none] sm:auto-cols-[calc((100%-32px)/2.6)] lg:auto-cols-[calc((100%-48px)/4)] [&::-webkit-scrollbar]:hidden ${
-					wide ? 'auto-cols-[62%]' : 'auto-cols-[72%]'
+				// As on TripAdvisor: 1.5 cards in view on phones and 3 on tablets
+				// with 8px gaps; 4 with 16px gaps from 1024px
+				className={`grid snap-x snap-mandatory grid-flow-col gap-2 overflow-x-auto [scrollbar-width:none] sm:auto-cols-[calc((100%-16px)/3)] lg:auto-cols-[calc((100%-48px)/4)] lg:gap-4 [&::-webkit-scrollbar]:hidden ${
+					wide ? 'auto-cols-[62%]' : 'auto-cols-[calc((100%-8px)/1.5)]'
 				}`}
 			>
 				{children}

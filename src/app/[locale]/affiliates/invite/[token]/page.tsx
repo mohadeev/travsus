@@ -24,7 +24,7 @@ export default async function AffiliateInvitePage(props: Props) {
 
 	if (!invite) {
 		return (
-			<main className="mx-auto max-w-lg px-5 py-24 text-center text-neutral-950 dark:text-white">
+			<main className="mx-auto max-w-lg px-5 py-24 text-center text-ink dark:text-white">
 				<LinkIcon className="mx-auto h-10 w-10 text-neutral-400" strokeWidth={1.5} />
 				<h1 className="headline mt-5 text-3xl">{t('invalid_title')}</h1>
 				<p className="mt-2 text-neutral-500">{t('invalid_text')}</p>
@@ -41,7 +41,7 @@ export default async function AffiliateInvitePage(props: Props) {
 	const perks = [t('perk_commission'), t('perk_cookie'), t('perk_payouts')]
 
 	return (
-		<main className="px-5 py-12 text-neutral-950 sm:py-20 dark:text-white">
+		<main className="px-5 py-12 text-ink sm:py-20 dark:text-white">
 			<div className="mx-auto max-w-xl overflow-hidden rounded-[32px] bg-black text-white">
 				<div className="relative px-7 py-10 sm:px-12 sm:py-14">
 					<div aria-hidden className="pointer-events-none absolute -left-24 -top-32 h-80 w-80 rounded-full bg-amber-400/20 blur-3xl" />
@@ -77,7 +77,7 @@ export default async function AffiliateInvitePage(props: Props) {
 				</div>
 			</div>
 			<p className="mt-6 text-center text-sm text-neutral-500">
-				<Link href={`/${locale}/affiliates` as any} className="underline underline-offset-4 hover:text-neutral-950 dark:hover:text-white">
+				<Link href={`/${locale}/affiliates` as any} className="underline underline-offset-4 hover:text-ink dark:hover:text-white">
 					{t('about_program')}
 				</Link>
 			</p>

@@ -40,7 +40,7 @@ export default async function AffiliateAccountPage(props: { params: Promise<{ lo
 					{!pending && (
 						<Link
 							href={`/${locale}/affiliates` as any}
-							className="mt-7 inline-flex h-12 items-center rounded-full bg-neutral-950 px-7 text-sm font-semibold text-white transition hover:bg-neutral-800 dark:bg-white dark:text-neutral-950"
+							className="mt-7 inline-flex h-12 items-center rounded-full bg-neutral-950 px-7 text-sm font-semibold text-white transition hover:bg-neutral-800 dark:bg-white dark:text-ink"
 						>
 							{t('join_cta')}
 						</Link>
@@ -75,7 +75,7 @@ export default async function AffiliateAccountPage(props: { params: Promise<{ lo
 			<h1 className="text-2xl font-bold tracking-tight sm:text-5xl">{t('title')}</h1>
 			<p className="mt-2 text-neutral-500">{t('subtitle')}</p>
 
-			<section className="mt-8 rounded-[28px] bg-neutral-950 p-6 text-white sm:p-8 dark:bg-white dark:text-neutral-950">
+			<section className="mt-8 rounded-[28px] bg-neutral-950 p-6 text-white sm:p-8 dark:bg-white dark:text-ink">
 				<div className="flex flex-wrap items-start justify-between gap-4">
 					<div>
 						<p className="text-sm font-semibold text-white/60 dark:text-neutral-500">{t('link_title')}</p>

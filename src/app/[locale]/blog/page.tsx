@@ -50,14 +50,14 @@ export default async function BlogPage(props: PageProps) {
 	const pageHref = (n: number) => `/${locale}/blog${n > 1 ? `?page=${n}` : ''}`
 
 	return (
-		<main className="pb-16 text-neutral-950 sm:pb-24 dark:text-white [&_h1]:[text-wrap:balance] [&_h2]:[text-wrap:balance]">
-			<section className="mx-auto max-w-7xl px-5 pt-12 text-center sm:pt-20">
+		<main className="pb-16 text-ink sm:pb-24 dark:text-white [&_h1]:[text-wrap:balance] [&_h2]:[text-wrap:balance]">
+			<section className="mx-auto max-w-7xl px-6 pt-12 text-center sm:pt-20">
 				<p className="text-sm font-semibold uppercase tracking-[0.2em] text-neutral-500">{t('eyebrow')}</p>
 				<h1 className="mx-auto mt-4 max-w-4xl text-[40px] font-bold leading-[1.04] tracking-tight sm:text-7xl">{t('hero_title')}</h1>
 				<p className="mx-auto mt-5 max-w-2xl text-lg text-neutral-500 sm:text-2xl">{t('hero_text')}</p>
 			</section>
 
-			<div className="mx-auto mt-12 max-w-7xl px-5 sm:mt-20">
+			<div className="mx-auto mt-12 max-w-7xl px-6 sm:mt-20">
 				{featured && <PostCard post={featured} featured />}
 
 				{rest.length > 0 && (
@@ -80,7 +80,7 @@ export default async function BlogPage(props: PageProps) {
 						)}
 						<span className="px-2 text-sm text-neutral-500">{t('page_of', { page, pages })}</span>
 						{page < pages && (
-							<Link href={pageHref(page + 1) as any} rel="next" className="inline-flex h-12 items-center gap-2 rounded-full bg-neutral-950 px-5 text-sm font-semibold text-white transition hover:bg-neutral-800 dark:bg-white dark:text-neutral-950">
+							<Link href={pageHref(page + 1) as any} rel="next" className="inline-flex h-12 items-center gap-2 rounded-full bg-neutral-950 px-5 text-sm font-semibold text-white transition hover:bg-neutral-800 dark:bg-white dark:text-ink">
 								{t('older')}
 								<ArrowRight className="h-4 w-4" />
 							</Link>

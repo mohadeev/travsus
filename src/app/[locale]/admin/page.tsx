@@ -69,7 +69,7 @@ export default async function AdminHome(props: { params: Promise<{ locale: strin
 	]
 
 	return (
-		<div className="mx-auto max-w-7xl px-5 pb-24 pt-8 text-neutral-950 sm:pt-12 dark:text-white">
+		<div className="mx-auto max-w-7xl px-6 pb-24 pt-8 text-ink sm:pt-12 dark:text-white">
 			<p className="text-sm font-semibold uppercase tracking-[0.2em] text-neutral-500">TRAVSUS</p>
 			<h1 className="mt-2 text-4xl font-bold tracking-tight sm:text-5xl">Admin</h1>
 			<p className="mt-2 text-lg text-neutral-500">Everything you run the site with, in one place.</p>
@@ -99,10 +99,10 @@ export default async function AdminHome(props: { params: Promise<{ locale: strin
 						href={href(path)}
 						className="group relative flex flex-col rounded-[28px] p-6 ring-1 ring-neutral-200 transition hover:-translate-y-0.5 hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)] hover:ring-neutral-950 sm:p-8 dark:ring-neutral-800 dark:hover:ring-white"
 					>
-						<span className="grid h-12 w-12 place-items-center rounded-2xl bg-neutral-950 text-white dark:bg-white dark:text-neutral-950">
+						<span className="grid h-12 w-12 place-items-center rounded-2xl bg-neutral-950 text-white dark:bg-white dark:text-ink">
 							<Icon className="h-6 w-6" />
 						</span>
-						<ArrowUpRight className="absolute right-6 top-6 h-5 w-5 text-neutral-400 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-neutral-950 sm:right-8 sm:top-8 dark:group-hover:text-white" />
+						<ArrowUpRight className="absolute right-6 top-6 h-5 w-5 text-neutral-400 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-ink sm:right-8 sm:top-8 dark:group-hover:text-white" />
 						<h2 className="mt-6 text-2xl font-bold tracking-tight">{title}</h2>
 						<p className="mt-1.5 text-neutral-500">{text}</p>
 						{badge && <span className="mt-5 inline-flex w-fit rounded-full bg-neutral-100 px-3 py-1 text-xs font-semibold text-neutral-700 dark:bg-neutral-900 dark:text-neutral-300">{badge}</span>}

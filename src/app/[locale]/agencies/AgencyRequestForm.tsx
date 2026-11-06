@@ -73,7 +73,7 @@ export default function AgencyRequestForm({ id }: { id?: string }) {
 			<button
 				type="submit"
 				disabled={status === 'sending'}
-				className="group mt-2.5 inline-flex h-14 w-full items-center justify-between gap-4 rounded-full bg-white pl-7 pr-2 text-base font-semibold text-neutral-950 transition hover:bg-neutral-200 active:scale-[0.99] disabled:opacity-70"
+				className="group mt-2.5 inline-flex h-14 w-full items-center justify-between gap-4 rounded-full bg-white pl-7 pr-2 text-base font-semibold text-ink transition hover:bg-neutral-200 active:scale-[0.99] disabled:opacity-70"
 			>
 				{t('form_submit')}
 				<span className="grid h-10 w-10 place-items-center rounded-full bg-neutral-950 text-white transition-transform group-hover:translate-x-0.5">

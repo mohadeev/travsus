@@ -25,7 +25,7 @@ const NavMobile: React.FC<NavMobileProps> = ({ onClickClose }) => {
 	const { openSignIn, openSignUp, signOut } = useClerk()
 
 	return (
-		<div className="flex h-screen w-full flex-col overflow-y-auto bg-white text-neutral-950 dark:bg-neutral-950 dark:text-white">
+		<div className="flex h-screen w-full flex-col overflow-y-auto bg-white text-ink dark:bg-neutral-950 dark:text-white">
 			<div className="flex items-center justify-between border-b border-neutral-100 px-5 py-4 dark:border-neutral-900">
 				<Logo className="w-24" />
 				<button
@@ -99,7 +99,7 @@ const NavMobile: React.FC<NavMobileProps> = ({ onClickClose }) => {
 									onClickClose?.()
 									openSignIn({ forceRedirectUrl: window.location.href })
 								}}
-								className="rounded-full bg-neutral-950 py-3 text-sm font-semibold text-white dark:bg-white dark:text-neutral-950"
+								className="rounded-full bg-neutral-950 py-3 text-sm font-semibold text-white dark:bg-white dark:text-ink"
 							>
 								{tAccount('log_in')}
 							</button>

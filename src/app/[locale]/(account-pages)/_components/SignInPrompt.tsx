@@ -15,7 +15,7 @@ export default function SignInPrompt() {
 			<h1 className="mt-5 text-3xl font-bold tracking-tight">{t('signed_out_title')}</h1>
 			<p className="mt-2 text-neutral-500">{t('signed_out_text')}</p>
 			<div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
-				<button type="button" onClick={() => openSignIn(back())} className="h-12 rounded-full bg-neutral-950 px-7 text-sm font-semibold text-white transition hover:bg-neutral-800 dark:bg-white dark:text-neutral-950">
+				<button type="button" onClick={() => openSignIn(back())} className="h-12 rounded-full bg-neutral-950 px-7 text-sm font-semibold text-white transition hover:bg-neutral-800 dark:bg-white dark:text-ink">
 					{t('sign_in')}
 				</button>
 				<button type="button" onClick={() => openSignUp(back())} className="h-12 rounded-full border border-neutral-300 px-7 text-sm font-semibold transition hover:border-neutral-950 dark:border-neutral-700 dark:hover:border-white">

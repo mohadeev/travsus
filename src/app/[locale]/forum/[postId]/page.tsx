@@ -61,12 +61,12 @@ export default async function ForumPostPage(props: PageProps) {
 	}
 
 	return (
-		<main className="mx-auto max-w-3xl px-5 pb-16 pt-8 text-neutral-950 sm:pb-24 sm:pt-12 dark:text-white [&_h1]:[text-wrap:balance]">
+		<main className="mx-auto max-w-3xl px-5 pb-16 pt-8 text-ink sm:pb-24 sm:pt-12 dark:text-white [&_h1]:[text-wrap:balance]">
 			<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
 			<Link
 				href={`/${locale}/forum${category ? `?category=${category.key}` : ''}` as any}
-				className="inline-flex items-center gap-1.5 text-sm font-semibold text-neutral-500 transition hover:text-neutral-950 dark:hover:text-white"
+				className="inline-flex items-center gap-1.5 text-sm font-semibold text-neutral-500 transition hover:text-ink dark:hover:text-white"
 			>
 				<ArrowLeft className="h-4 w-4" />
 				{category ? tOld(category.name) : t('back')}

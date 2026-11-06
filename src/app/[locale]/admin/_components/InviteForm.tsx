@@ -54,7 +54,7 @@ export default function InviteForm({ disabled = false, heading = true, onSent }:
 					type="button"
 					onClick={send}
 					disabled={disabled || sending || !count}
-					className="inline-flex h-11 items-center gap-2 rounded-full bg-neutral-950 px-5 text-sm font-semibold text-white transition hover:bg-neutral-800 disabled:opacity-40 dark:bg-white dark:text-neutral-950"
+					className="inline-flex h-11 items-center gap-2 rounded-full bg-neutral-950 px-5 text-sm font-semibold text-white transition hover:bg-neutral-800 disabled:opacity-40 dark:bg-white dark:text-ink"
 				>
 					{sending ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}
 					{count > 1 ? `Send ${count} invitations` : 'Send invitation'}

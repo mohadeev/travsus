@@ -65,7 +65,7 @@ export function NoCompany({ locale }: { locale: string }) {
 			title="Create your company to start"
 			text="Your company holds your tours, bookings and payouts. It only takes a minute."
 			action={
-				<Link href={`/${locale}/dashboard/company/create` as any} className="inline-flex h-12 items-center rounded-full bg-neutral-950 px-7 text-sm font-semibold text-white transition hover:bg-neutral-800 dark:bg-white dark:text-neutral-950">
+				<Link href={`/${locale}/dashboard/company/create` as any} className="inline-flex h-12 items-center rounded-full bg-neutral-950 px-7 text-sm font-semibold text-white transition hover:bg-neutral-800 dark:bg-white dark:text-ink">
 					Create company
 				</Link>
 			}
@@ -74,6 +74,6 @@ export function NoCompany({ locale }: { locale: string }) {
 }
 
 export const button =
-	'inline-flex h-11 items-center justify-center gap-2 rounded-full bg-neutral-950 px-5 text-sm font-semibold text-white transition hover:bg-neutral-800 dark:bg-white dark:text-neutral-950'
+	'inline-flex h-11 items-center justify-center gap-2 rounded-full bg-neutral-950 px-5 text-sm font-semibold text-white transition hover:bg-neutral-800 dark:bg-white dark:text-ink'
 export const buttonOutline =
 	'inline-flex h-11 items-center justify-center gap-2 rounded-full border border-neutral-300 px-5 text-sm font-semibold transition hover:border-neutral-950 dark:border-neutral-700 dark:hover:border-white'

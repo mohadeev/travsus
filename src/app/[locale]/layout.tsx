@@ -1,10 +1,9 @@
 
 import { NextIntlClientProvider } from 'next-intl'
-// Bricolage Grotesque for headlines, Instrument Sans for text; Inter only for
-// what they lack (Cyrillic for Russian). Self-hosted: each alphabet is its own
-// file, so a page downloads only the ones it uses.
-import '@fontsource-variable/bricolage-grotesque/opsz.css'
-import '@fontsource-variable/instrument-sans/index.css'
+// Figtree for all text (the closest free match to TripAdvisor's Trip Sans);
+// Inter only for what it lacks (Cyrillic for Russian). Self-hosted: each
+// alphabet is its own file, so a page downloads only the ones it uses.
+import '@fontsource-variable/figtree/index.css'
 import '@fontsource-variable/inter/opsz.css'
 
 import '../globals.css'

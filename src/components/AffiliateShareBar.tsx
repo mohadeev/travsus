@@ -47,7 +47,7 @@ export default function AffiliateShareBar({ title }: { title?: string }) {
 	const share = () => navigator.share?.({ title, url: link }).catch(() => {})
 
 	return (
-		<div className="mt-4 flex flex-col gap-3 rounded-3xl bg-neutral-950 p-4 text-white sm:flex-row sm:items-center sm:p-3 sm:pl-5 dark:bg-white dark:text-neutral-950">
+		<div className="mt-4 flex flex-col gap-3 rounded-3xl bg-neutral-950 p-4 text-white sm:flex-row sm:items-center sm:p-3 sm:pl-5 dark:bg-white dark:text-ink">
 			<div className="flex min-w-0 flex-1 items-center gap-3">
 				<span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-white/10 dark:bg-neutral-100">
 					<Handshake className="h-[18px] w-[18px]" />
@@ -68,7 +68,7 @@ export default function AffiliateShareBar({ title }: { title?: string }) {
 				<button
 					type="button"
 					onClick={copy}
-					className="inline-flex h-10 flex-1 items-center justify-center gap-2 rounded-full bg-white px-4 text-sm font-semibold text-neutral-950 transition hover:bg-neutral-200 sm:flex-none dark:bg-neutral-950 dark:text-white"
+					className="inline-flex h-10 flex-1 items-center justify-center gap-2 rounded-full bg-white px-4 text-sm font-semibold text-ink transition hover:bg-neutral-200 sm:flex-none dark:bg-neutral-950 dark:text-white"
 				>
 					{copied ? <Check className="h-4 w-4 text-emerald-600" /> : <Copy className="h-4 w-4" />}
 					{copied ? t('copied') : t('copy')}

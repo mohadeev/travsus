@@ -58,7 +58,7 @@ export default async function DestinationsPage(props: { params: Promise<{ locale
 	}
 
 	return (
-		<main className="mx-auto max-w-7xl px-5 pb-24 pt-10 text-neutral-950 sm:pt-16 dark:text-white">
+		<main className="mx-auto max-w-7xl px-6 pb-24 pt-10 text-ink sm:pt-16 dark:text-white">
 			<p className="text-sm font-semibold uppercase tracking-[0.2em] text-neutral-500">{t('destinations')}</p>
 			<h1 className="mt-3 max-w-3xl text-5xl font-bold tracking-tight sm:text-7xl">{t('index_title')}</h1>
 			<p className="mt-4 max-w-xl text-lg text-neutral-500">{t('index_text')}</p>

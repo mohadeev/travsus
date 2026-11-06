@@ -60,14 +60,14 @@ export default async function CountryPage(props: Props) {
 	].filter(Boolean) as { icon: typeof Globe2; label: string; value: string }[]
 
 	return (
-		<main className="mx-auto max-w-7xl px-5 pb-24 pt-6 text-neutral-950 dark:text-white">
+		<main className="mx-auto max-w-7xl px-6 pb-24 pt-6 text-ink dark:text-white">
 			<nav aria-label="Breadcrumb">
 				<ol className="flex flex-wrap items-center gap-1 text-sm text-neutral-500">
 					<li>
-						<Link href={`/${locale}/destinations` as any} className="hover:text-neutral-950 dark:hover:text-white">{t('destinations')}</Link>
+						<Link href={`/${locale}/destinations` as any} className="hover:text-ink dark:hover:text-white">{t('destinations')}</Link>
 					</li>
 					<ChevronRight className="h-3.5 w-3.5" />
-					<li className="font-medium text-neutral-950 dark:text-white" aria-current="page">{country.name}</li>
+					<li className="font-medium text-ink dark:text-white" aria-current="page">{country.name}</li>
 				</ol>
 			</nav>
 
@@ -124,7 +124,7 @@ export default async function CountryPage(props: Props) {
 				}
 			>
 				{tours.length ? (
-					<ul className="grid grid-cols-2 gap-x-3 gap-y-6 sm:gap-x-5 sm:gap-y-10 lg:grid-cols-3">
+					<ul className="grid grid-cols-2 gap-x-2 gap-y-6 sm:gap-x-4 sm:gap-y-8 lg:grid-cols-3">
 						{tours.slice(0, 6).map((tour) => (
 							<li key={tour.id}>
 								<TourCard tour={tour} />

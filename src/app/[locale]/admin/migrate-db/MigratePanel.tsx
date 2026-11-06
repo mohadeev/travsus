@@ -128,14 +128,14 @@ export default function MigratePanel() {
 	const reset = () => (setTables({}), setFiles([]), setSelected(null))
 
 	return (
-		<main className="mx-auto max-w-7xl px-5 py-10 text-neutral-950 dark:text-white">
+		<main className="mx-auto max-w-7xl px-6 py-10 text-ink dark:text-white">
 			<h1 className="text-3xl font-bold tracking-tight">Database export</h1>
 			<p className="mt-2 max-w-2xl text-neutral-500">
 				Add the files exported from the Supabase SQL editor (CSV or JSON). They are read in this browser only: nothing is uploaded or saved. Then download everything as one JSON file.
 			</p>
 
 			<div className="mt-6 flex flex-wrap items-center gap-3">
-				<label className="inline-flex h-11 cursor-pointer items-center gap-2 rounded-full bg-neutral-950 px-5 text-sm font-semibold text-white hover:bg-neutral-800 dark:bg-white dark:text-neutral-950">
+				<label className="inline-flex h-11 cursor-pointer items-center gap-2 rounded-full bg-neutral-950 px-5 text-sm font-semibold text-white hover:bg-neutral-800 dark:bg-white dark:text-ink">
 					{busy ? <Loader2 className="h-4 w-4 animate-spin" /> : <FileUp className="h-4 w-4" />}
 					Add files
 					<input type="file" accept=".csv,.json,text/csv,application/json" multiple className="sr-only" disabled={busy} onChange={(e) => (add(e.target.files), (e.target.value = ''))} />
@@ -145,7 +145,7 @@ export default function MigratePanel() {
 						<button onClick={download} className="inline-flex h-11 items-center gap-2 rounded-full border border-neutral-300 px-5 text-sm font-semibold hover:border-neutral-950 dark:border-neutral-700 dark:hover:border-white">
 							<Download className="h-4 w-4" /> Download one JSON file
 						</button>
-						<button onClick={reset} className="inline-flex h-11 items-center gap-2 rounded-full px-4 text-sm text-neutral-500 hover:text-neutral-950 dark:hover:text-white">
+						<button onClick={reset} className="inline-flex h-11 items-center gap-2 rounded-full px-4 text-sm text-neutral-500 hover:text-ink dark:hover:text-white">
 							<X className="h-4 w-4" /> Clear
 						</button>
 						<span className="text-sm text-neutral-500">

@@ -95,7 +95,7 @@ export default async function BookingsPage(props: PageProps) {
 						aria-current={tab === active ? 'page' : undefined}
 						className={`inline-flex shrink-0 items-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold transition ${
 							tab === active
-								? 'bg-neutral-950 text-white dark:bg-white dark:text-neutral-950'
+								? 'bg-neutral-950 text-white dark:bg-white dark:text-ink'
 								: 'bg-neutral-100 text-neutral-700 hover:bg-neutral-200 dark:bg-neutral-900 dark:text-neutral-300 dark:hover:bg-neutral-800'
 						}`}
 					>
@@ -110,7 +110,7 @@ export default async function BookingsPage(props: PageProps) {
 					<CalendarDays className="mx-auto h-10 w-10 text-neutral-400" strokeWidth={1.5} />
 					<p className="mt-5 text-2xl font-bold tracking-tight">{t(`empty_${active}`)}</p>
 					<p className="mx-auto mt-2 max-w-sm text-neutral-500">{t('empty_text')}</p>
-					<Link href={`/${locale}/search?query=` as any} className="mt-7 inline-flex h-12 items-center rounded-full bg-neutral-950 px-7 text-sm font-semibold text-white transition hover:bg-neutral-800 dark:bg-white dark:text-neutral-950">
+					<Link href={`/${locale}/search?query=` as any} className="mt-7 inline-flex h-12 items-center rounded-full bg-neutral-950 px-7 text-sm font-semibold text-white transition hover:bg-neutral-800 dark:bg-white dark:text-ink">
 						{t('explore')}
 					</Link>
 				</div>
@@ -179,7 +179,7 @@ export default async function BookingsPage(props: PageProps) {
 												{toPay ? (
 													<Link
 														href={`/${locale}/checkout/checkout?bookingId=${b.id}&serviceId=${b.tourId}` as any}
-														className="inline-flex h-11 items-center gap-2 rounded-full bg-neutral-950 px-5 text-sm font-semibold text-white transition hover:bg-neutral-800 dark:bg-white dark:text-neutral-950"
+														className="inline-flex h-11 items-center gap-2 rounded-full bg-neutral-950 px-5 text-sm font-semibold text-white transition hover:bg-neutral-800 dark:bg-white dark:text-ink"
 													>
 														<CreditCard className="h-4 w-4" />
 														{balanceFailed ? t('pay_balance') : t('complete_payment')}
@@ -204,7 +204,7 @@ export default async function BookingsPage(props: PageProps) {
 
 			<p className="mt-10 text-sm text-neutral-500">
 				{t('help')}{' '}
-				<Link href={`/${locale}/contact` as any} className="font-semibold text-neutral-950 underline underline-offset-4 dark:text-white">
+				<Link href={`/${locale}/contact` as any} className="font-semibold text-ink underline underline-offset-4 dark:text-white">
 					{t('contact')}
 				</Link>
 			</p>

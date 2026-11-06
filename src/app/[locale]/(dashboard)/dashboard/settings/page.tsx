@@ -40,7 +40,7 @@ export default async function CompanyPage(props: { params: Promise<{ locale: str
 						<li key={c.id} className="rounded-[28px] p-6 ring-1 ring-neutral-200 dark:ring-neutral-800">
 							<div className="flex items-start justify-between gap-3">
 								<div className="flex min-w-0 items-center gap-3">
-									<span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-neutral-950 text-lg font-bold text-white dark:bg-white dark:text-neutral-950">
+									<span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-neutral-950 text-lg font-bold text-white dark:bg-white dark:text-ink">
 										{String(c.name || '?').charAt(0).toUpperCase()}
 									</span>
 									<div className="min-w-0">

@@ -40,8 +40,8 @@ export default async function ContactPage(props: PageProps) {
 	].filter(Boolean) as { icon: typeof Mail; label: string; value: string; href: string }[]
 
 	return (
-		<main className="pb-16 text-neutral-950 sm:pb-24 dark:text-white [&_h1]:[text-wrap:balance]">
-			<section className="mx-auto max-w-7xl px-5 pt-12 text-center sm:pt-20">
+		<main className="pb-16 text-ink sm:pb-24 dark:text-white [&_h1]:[text-wrap:balance]">
+			<section className="mx-auto max-w-7xl px-6 pt-12 text-center sm:pt-20">
 				<p className="text-sm font-semibold uppercase tracking-[0.2em] text-neutral-500">{t('eyebrow')}</p>
 				<h1 className="mx-auto mt-4 max-w-4xl text-[40px] font-bold leading-[1.04] tracking-tight sm:text-7xl">{t('hero_title')}</h1>
 				<p className="mx-auto mt-5 max-w-2xl text-lg text-neutral-500 sm:text-2xl">{t('hero_text')}</p>

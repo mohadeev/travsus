@@ -28,7 +28,7 @@ export default async function AccountOverviewPage(props: { params: Promise<{ loc
 					// eslint-disable-next-line @next/next/no-img-element
 					<img src={image} alt="" className="h-14 w-14 shrink-0 rounded-full object-cover sm:h-20 sm:w-20" />
 				) : (
-					<span className="grid h-14 w-14 shrink-0 place-items-center rounded-full bg-neutral-950 text-xl font-bold text-white sm:h-20 sm:w-20 dark:bg-white dark:text-neutral-950">
+					<span className="grid h-14 w-14 shrink-0 place-items-center rounded-full bg-neutral-950 text-xl font-bold text-white sm:h-20 sm:w-20 dark:bg-white dark:text-ink">
 						{(name || user.email).charAt(0).toUpperCase()}
 					</span>
 				)}
@@ -62,7 +62,7 @@ export default async function AccountOverviewPage(props: { params: Promise<{ loc
 
 			<p className="mt-12 text-sm text-neutral-500">
 				{t('delete_hint')}{' '}
-				<Link href={`/${locale}/account-settings/deactivate` as any} className="font-semibold text-neutral-950 underline underline-offset-4 dark:text-white">
+				<Link href={`/${locale}/account-settings/deactivate` as any} className="font-semibold text-ink underline underline-offset-4 dark:text-white">
 					{t('delete_link')}
 				</Link>
 			</p>

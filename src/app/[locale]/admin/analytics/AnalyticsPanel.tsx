@@ -76,7 +76,7 @@ export default function AnalyticsPanel() {
 	const k = data?.kpis
 
 	return (
-		<div className="mx-auto max-w-7xl px-5 pb-24 pt-8 text-neutral-950 sm:pt-12 dark:text-white">
+		<div className="mx-auto max-w-7xl px-6 pb-24 pt-8 text-ink sm:pt-12 dark:text-white">
 			<header className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
 				<div>
 					<p className="text-sm font-semibold uppercase tracking-[0.2em] text-neutral-500">TRAVSUS</p>
@@ -89,7 +89,7 @@ export default function AnalyticsPanel() {
 								key={value}
 								type="button"
 								onClick={() => setDays(value)}
-								className={`rounded-full px-4 py-2 text-sm font-semibold transition ${days === value ? 'bg-neutral-950 text-white dark:bg-white dark:text-neutral-950' : 'text-neutral-600 hover:text-neutral-950 dark:text-neutral-400'}`}
+								className={`rounded-full px-4 py-2 text-sm font-semibold transition ${days === value ? 'bg-neutral-950 text-white dark:bg-white dark:text-ink' : 'text-neutral-600 hover:text-ink dark:text-neutral-400'}`}
 							>
 								{label}
 							</button>
@@ -405,7 +405,7 @@ function VisitDrawer({ id, onClose }: { id: string | null; onClose: () => void }
 				</Transition.Child>
 				<div className="fixed inset-0 flex justify-end">
 					<Transition.Child as={Fragment} enter="ease-out duration-200" enterFrom="translate-x-full" enterTo="translate-x-0" leave="ease-in duration-150" leaveFrom="translate-x-0" leaveTo="translate-x-full">
-						<Dialog.Panel className="h-full w-full max-w-xl overflow-y-auto bg-white p-6 text-neutral-950 shadow-2xl sm:p-8 dark:bg-neutral-950 dark:text-white">
+						<Dialog.Panel className="h-full w-full max-w-xl overflow-y-auto bg-white p-6 text-ink shadow-2xl sm:p-8 dark:bg-neutral-950 dark:text-white">
 							<div className="flex items-center justify-between">
 								<Dialog.Title className="text-2xl font-bold tracking-tight">Visit</Dialog.Title>
 								<button type="button" onClick={onClose} aria-label="Close" className="grid h-9 w-9 place-items-center rounded-full bg-neutral-100 dark:bg-neutral-900">

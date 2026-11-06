@@ -30,7 +30,7 @@ export default function PostCard({ post, featured = false }: { post: BlogPost; f
 			</div>
 			<div className={featured ? '' : 'mt-4'}>
 				<p className="text-sm text-neutral-500">
-					{featured && <span className="mr-2 font-semibold uppercase tracking-wider text-neutral-950 dark:text-white">{t('latest')}</span>}
+					{featured && <span className="mr-2 font-semibold uppercase tracking-wider text-ink dark:text-white">{t('latest')}</span>}
 					{date} · {t('read_time', { minutes: post.readMinutes })}
 				</p>
 				<h2

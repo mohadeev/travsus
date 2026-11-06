@@ -29,7 +29,7 @@ export default async function EditTourPage(props: { params: Promise<{ locale: st
 
 	return (
 		<DashboardShell>
-			<Link href={`/${params.locale}/dashboard/tours` as any} className="inline-flex items-center gap-1.5 text-sm font-semibold text-neutral-500 transition hover:text-neutral-950 dark:hover:text-white">
+			<Link href={`/${params.locale}/dashboard/tours` as any} className="inline-flex items-center gap-1.5 text-sm font-semibold text-neutral-500 transition hover:text-ink dark:hover:text-white">
 				<ArrowLeft className="h-4 w-4" />
 				All tours
 			</Link>

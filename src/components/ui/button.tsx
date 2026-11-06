@@ -10,10 +10,10 @@ export const buttonVariants = cva(
 	{
 		variants: {
 			variant: {
-				default: 'bg-neutral-950 text-white hover:bg-neutral-800 dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-200',
+				default: 'bg-neutral-950 text-white hover:bg-neutral-800 dark:bg-white dark:text-ink dark:hover:bg-neutral-200',
 				destructive: 'bg-red-600 text-white hover:bg-red-700',
 				outline: 'border border-neutral-300 bg-transparent hover:border-neutral-950 dark:border-neutral-700 dark:hover:border-white',
-				secondary: 'bg-neutral-100 text-neutral-950 hover:bg-neutral-200 dark:bg-neutral-900 dark:text-white dark:hover:bg-neutral-800',
+				secondary: 'bg-neutral-100 text-ink hover:bg-neutral-200 dark:bg-neutral-900 dark:text-white dark:hover:bg-neutral-800',
 				ghost: 'hover:bg-neutral-100 dark:hover:bg-neutral-900',
 				link: 'h-auto px-0 underline underline-offset-4 hover:no-underline',
 			},

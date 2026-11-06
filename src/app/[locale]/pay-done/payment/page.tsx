@@ -127,10 +127,10 @@ const PayPage: FC = () => {
 	const secondary =
 		'inline-flex h-12 sm:flex-1 items-center justify-center rounded-full border border-neutral-300 px-7 text-sm font-semibold transition hover:border-neutral-950 dark:border-neutral-700 dark:hover:border-white'
 	const primary =
-		'inline-flex h-12 sm:flex-1 items-center justify-center gap-2 rounded-full bg-neutral-950 px-7 text-sm font-semibold text-white transition hover:bg-neutral-800 dark:bg-white dark:text-neutral-950'
+		'inline-flex h-12 sm:flex-1 items-center justify-center gap-2 rounded-full bg-neutral-950 px-7 text-sm font-semibold text-white transition hover:bg-neutral-800 dark:bg-white dark:text-ink'
 
 	return (
-		<main className="mx-auto max-w-3xl px-5 pb-24 pt-10 text-neutral-950 sm:pt-16 dark:text-white">
+		<main className="mx-auto max-w-3xl px-5 pb-24 pt-10 text-ink sm:pt-16 dark:text-white">
 			<style>{'@keyframes pop { from { transform: scale(0.4); opacity: 0 } to { transform: scale(1); opacity: 1 } }'}</style>
 
 			{/* Result */}

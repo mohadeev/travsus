@@ -10,7 +10,7 @@ import { useAuthAction } from '@/app/hooks/useAuthAction'
 import { FORUM_CATEGORIES } from './categories'
 
 const field =
-	'w-full rounded-2xl border-0 bg-neutral-100 px-4 py-3 text-base text-neutral-950 ring-1 ring-transparent transition placeholder:text-neutral-400 focus:bg-white focus:outline-none focus:ring-neutral-950 dark:bg-neutral-800 dark:text-white dark:focus:bg-neutral-900 dark:focus:ring-white'
+	'w-full rounded-2xl border-0 bg-neutral-100 px-4 py-3 text-base text-ink ring-1 ring-transparent transition placeholder:text-neutral-400 focus:bg-white focus:outline-none focus:ring-neutral-950 dark:bg-neutral-800 dark:text-white dark:focus:bg-neutral-900 dark:focus:ring-white'
 
 export default function NewDiscussion({ category = '', dark = false }: { category?: string; dark?: boolean }) {
 	const t = useTranslations('Forum')
@@ -43,8 +43,8 @@ export default function NewDiscussion({ category = '', dark = false }: { categor
 				onClick={() => start(undefined)}
 				className={`inline-flex h-12 shrink-0 items-center justify-center gap-2 rounded-full px-6 text-sm font-semibold transition ${
 					dark
-						? 'bg-white text-neutral-950 hover:bg-neutral-200'
-						: 'bg-neutral-950 text-white hover:bg-neutral-800 dark:bg-white dark:text-neutral-950'
+						? 'bg-white text-ink hover:bg-neutral-200'
+						: 'bg-neutral-950 text-white hover:bg-neutral-800 dark:bg-white dark:text-ink'
 				}`}
 			>
 				<PenLine className="h-4 w-4" />
@@ -74,7 +74,7 @@ export default function NewDiscussion({ category = '', dark = false }: { categor
 							leaveFrom="translate-y-0 sm:opacity-100"
 							leaveTo="translate-y-full sm:translate-y-4 sm:opacity-0"
 						>
-							<Dialog.Panel className="max-h-[92vh] w-full overflow-y-auto rounded-t-3xl bg-white p-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] text-neutral-950 shadow-2xl sm:max-w-2xl sm:rounded-3xl sm:p-8 dark:bg-neutral-900 dark:text-white">
+							<Dialog.Panel className="max-h-[92vh] w-full overflow-y-auto rounded-t-3xl bg-white p-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] text-ink shadow-2xl sm:max-w-2xl sm:rounded-3xl sm:p-8 dark:bg-neutral-900 dark:text-white">
 								<div className="flex items-center justify-between gap-4">
 									<Dialog.Title className="text-xl font-bold tracking-tight sm:text-2xl">{t('start')}</Dialog.Title>
 									<button
@@ -132,7 +132,7 @@ export default function NewDiscussion({ category = '', dark = false }: { categor
 										<button
 											type="submit"
 											disabled={sending}
-											className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-neutral-950 px-7 text-sm font-semibold text-white transition hover:bg-neutral-800 disabled:opacity-70 dark:bg-white dark:text-neutral-950"
+											className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-neutral-950 px-7 text-sm font-semibold text-white transition hover:bg-neutral-800 disabled:opacity-70 dark:bg-white dark:text-ink"
 										>
 											{sending && <Loader2 className="h-4 w-4 animate-spin" />}
 											{t('publish')}

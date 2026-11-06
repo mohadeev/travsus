@@ -26,8 +26,8 @@ export default function AdminNav() {
 
 	return (
 		<nav aria-label="Admin" className="sticky top-0 z-30 border-b border-neutral-200 bg-white/85 backdrop-blur-xl dark:border-neutral-800 dark:bg-neutral-950/85">
-			<div className="mx-auto flex max-w-7xl items-center gap-2 overflow-x-auto px-5 py-3 [scrollbar-width:none]">
-				<span className="mr-2 shrink-0 rounded-full bg-neutral-950 px-2.5 py-1 text-[11px] font-bold uppercase tracking-[0.15em] text-white dark:bg-white dark:text-neutral-950">
+			<div className="mx-auto flex max-w-7xl items-center gap-2 overflow-x-auto px-6 py-3 [scrollbar-width:none]">
+				<span className="mr-2 shrink-0 rounded-full bg-neutral-950 px-2.5 py-1 text-[11px] font-bold uppercase tracking-[0.15em] text-white dark:bg-white dark:text-ink">
 					Admin
 				</span>
 				{ADMIN_LINKS.map(([label, href, Icon]) => {
@@ -39,8 +39,8 @@ export default function AdminNav() {
 							aria-current={active ? 'page' : undefined}
 							className={`flex shrink-0 items-center gap-2 rounded-full px-3.5 py-2 text-sm font-semibold transition ${
 								active
-									? 'bg-neutral-100 text-neutral-950 dark:bg-neutral-800 dark:text-white'
-									: 'text-neutral-500 hover:bg-neutral-100 hover:text-neutral-950 dark:hover:bg-neutral-900 dark:hover:text-white'
+									? 'bg-neutral-100 text-ink dark:bg-neutral-800 dark:text-white'
+									: 'text-neutral-500 hover:bg-neutral-100 hover:text-ink dark:hover:bg-neutral-900 dark:hover:text-white'
 							}`}
 						>
 							<Icon className="h-4 w-4" />

@@ -127,7 +127,7 @@ export default function AvatarDropdown({ className = '' }: { className?: string 
 												close()
 												openSignIn(returnHere())
 											}}
-											className="flex w-full items-center justify-center gap-2 rounded-full bg-neutral-950 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-neutral-800 dark:bg-white dark:text-neutral-950"
+											className="flex w-full items-center justify-center gap-2 rounded-full bg-neutral-950 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-neutral-800 dark:bg-white dark:text-ink"
 										>
 											<LogIn className="h-4 w-4" />
 											{t('log_in')}

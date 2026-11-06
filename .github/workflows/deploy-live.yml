@@ -1,0 +1,46 @@
+# Deploys the live site (www.travsus.com) to the Cloudflare Worker "travsus".
+# Runs on every push to the `cloudflare` branch (the live site's code), and can
+# be re-run by hand from GitHub > Actions > "Deploy live site".
+#
+# Needs one repository secret: CLOUDFLARE_API_TOKEN (Settings > Secrets and
+# variables > Actions), a Cloudflare API token from the "Edit Cloudflare
+# Workers" template.
+#
+# The NEXT_PUBLIC_* values are written into the browser code at build time, so
+# they are set here; they are public (visible in the site's pages and scripts).
+# Everything secret stays in the Worker's own secrets on Cloudflare.
+name: Deploy live site
+
+on:
+  push:
+    branches: [cloudflare]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-live-site
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - name: Build and deploy (vinext, as `npm run deploy:vinext` in CLOUDFLARE.md)
+        run: npm run deploy:vinext
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          NEXT_TELEMETRY_DISABLED: "1"
+          NEXT_PUBLIC_SITE_URL: https://www.travsus.com
+          NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: pk_live_Y2xlcmsudHJhdnN1cy5jb20k
+          NEXT_PUBLIC_CLERK_SIGN_IN_URL: /sign-in
+          NEXT_PUBLIC_CLERK_SIGN_UP_URL: /sign-up
+          NEXT_PUBLIC_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL: /
+          NEXT_PUBLIC_CLERK_SIGN_UP_FALLBACK_REDIRECT_URL: /
+          NEXT_PUBLIC_EXTERNAL_SERVER: https://travsus-485b32f5a643.herokuapp.com
+          NEXT_PUBLIC_COMPANY_PROFILE: "{ \"fullLegalName\": \"TRAVSUS LIMITED\", \"legalName\": \"TRAVSUS LTD\", \"marketName\": \"TRAVSUS\", \"name\": \"Travsus\", \"legalAddress\": \"Unit 1A Heatherview Business Park Athlone Road #8144 Longford, Co Longford N39KD82 Ireland\", \"TaxId\": \"IE1234567A\", \"taxValue\": \"21\", \"registrationNumber\": \"780669\", \"vatNumber\": \"IE1234567A\", \"registeredOffice\": \"Unit 1A Heatherview Business Park Athlone Road #8144 Longford, Co Longford N39KD82 Ireland\", \"privacyEmail\": \"contact@travsus.com\", \"supportEmail\": \"contact@travsus.com\", \"contactEmail\": \"contact@travsus.com\", \"dpoEmail\": \"contact@travsus.com\", \"contactPhone\": \"+34 643 635 962\", \"guarantorEntity\": \"Dummy Guarantor Name\", \"contractNumber\": \"CN-123456789\", \"registryDetails\": \"Dummy Registry Details\" }"
