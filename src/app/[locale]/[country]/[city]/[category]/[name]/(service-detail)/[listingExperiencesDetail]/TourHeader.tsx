@@ -1,6 +1,8 @@
 'use client'
-// Tour title block: breadcrumb, title with round Share / Save buttons, the real
-// rating, and the tour's length and starting city.
+// Tour title block, laid out as on TripAdvisor's tour pages: a top row with the
+// breadcrumb (one line) and plain Share / Save icons, then the title over the
+// full width (24/28px on phones), the real rating with green bubbles, and the
+// tour's length and starting city.
 import { useRef, useState } from 'react'
 import Link from 'next/link'
 import { Heart, Share } from 'lucide-react'
@@ -12,10 +14,11 @@ import { selectUser } from '@/store/slices/user'
 import { selectTourLiked, setTourLiked } from '@/store/slices/tourPage'
 import { useTranslations as useIntlTranslations } from 'next-intl'
 import { useTourService } from '../TourServiceContext'
-import Stars from './ReviewSystem/Stars'
+import RatingBubbles from '@/app/[locale]/(home)/RatingBubbles'
 
+// Plain icons (no circle), as on TripAdvisor; the round hover keeps a 40px tap target
 const iconClass =
-	'grid h-11 w-11 place-items-center rounded-full border border-neutral-200 bg-white text-black transition hover:bg-neutral-100 dark:border-neutral-700 dark:bg-neutral-900 dark:text-white dark:hover:bg-neutral-800'
+	'grid h-10 w-10 place-items-center rounded-full text-ink transition hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-800'
 
 const TourHeader = () => {
 	const t = useTranslations('Jan03_TourHeader_x9k2')
@@ -80,28 +83,26 @@ const TourHeader = () => {
 	const days = Array.isArray(service.days) ? service.days.length : 0
 
 	return (
-		<div className="pt-4">
-			{/* Breadcrumb: underlined links, › between, the tour's name last */}
-			<nav aria-label="Breadcrumb">
-				<ol className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-neutral-700 dark:text-neutral-300">
-					{crumbs.map((crumb) => (
-						<li key={crumb.href} className="flex items-center gap-2">
-							<Link href={crumb.href as any} className="underline underline-offset-2 hover:text-black dark:hover:text-white">
-								{crumb.label}
-							</Link>
-							<span aria-hidden className="text-neutral-400">›</span>
-						</li>
-					))}
-					<li aria-current="page" className="min-w-0 truncate">{title}</li>
-				</ol>
-			</nav>
-
-			{/* Title with round Share and Save buttons on the right */}
-			<div className="mt-3.5 flex items-start justify-between gap-4">
-				<h1 className="headline min-w-0 text-[28px] !leading-[1.12] sm:text-[36px] lg:text-[40px]">{title}</h1>
-				<div className="relative flex shrink-0 items-center gap-2">
+		<div className="pt-3">
+			{/* Top row: breadcrumb on one line, Share and Save on the right */}
+			<div className="flex items-center justify-between gap-3">
+				<nav aria-label="Breadcrumb" className="min-w-0">
+					<ol className="flex items-center gap-x-2 overflow-hidden whitespace-nowrap text-sm text-ink-soft dark:text-neutral-300">
+						{crumbs.map((crumb) => (
+							<li key={crumb.href} className="flex shrink-0 items-center gap-2">
+								<Link href={crumb.href as any} className="underline underline-offset-2 hover:text-ink dark:hover:text-white">
+									{crumb.label}
+								</Link>
+								<span aria-hidden className="text-neutral-400">›</span>
+							</li>
+						))}
+						{/* The tour's name is the title just below: shown here from tablets only */}
+						<li aria-current="page" className="hidden min-w-0 truncate sm:block">{title}</li>
+					</ol>
+				</nav>
+				<div className="relative -mr-2 flex shrink-0 items-center">
 					<button type="button" onClick={handleShare} aria-label={t('Share')} title={t('Share')} className={iconClass}>
-						<Share className="h-5 w-5" strokeWidth={2} />
+						<Share className="h-[22px] w-[22px]" strokeWidth={1.8} />
 					</button>
 					<button
 						type="button"
@@ -111,22 +112,25 @@ const TourHeader = () => {
 						title={liked ? t('Saved') : t('Save')}
 						className={iconClass}
 					>
-						<Heart className={`h-5 w-5 ${liked ? 'fill-black dark:fill-white' : ''}`} strokeWidth={2} />
+						<Heart className={`h-[22px] w-[22px] ${liked ? 'fill-ink dark:fill-white' : ''}`} strokeWidth={1.8} />
 					</button>
 					{toast && (
-						<p role="status" className="absolute right-0 top-full z-10 mt-2 whitespace-nowrap rounded-full bg-neutral-950 px-3 py-1.5 text-xs font-medium text-white">
+						<p role="status" className="absolute right-0 top-full z-10 mt-2 whitespace-nowrap rounded-full bg-ink px-3 py-1.5 text-xs font-medium text-white">
 							{toast}
 						</p>
 					)}
 				</div>
 			</div>
 
+			{/* Title over the full width: 24/28px on phones, as on TripAdvisor */}
+			<h1 className="headline mt-3 text-2xl !leading-7 sm:text-[32px] sm:!leading-[38px] lg:text-[36px] lg:!leading-[42px]">{title}</h1>
+
 			{/* Rating · recommended, then length · starting city (real numbers only) */}
 			{reviews > 0 && (
-				<p className="mt-2.5 flex flex-wrap items-center gap-x-3.5 gap-y-1 text-[15px]">
-					<button type="button" onClick={scrollToReviews} className="inline-flex items-center gap-2 tabular-nums">
-						<b className="font-extrabold">{rating.toFixed(1)}</b>
-						<Stars rating={rating} />
+				<p className="mt-2 flex flex-wrap items-center gap-x-3.5 gap-y-1 text-base leading-6">
+					<button type="button" onClick={scrollToReviews} className="inline-flex items-center gap-1.5 tabular-nums">
+						<span>{rating.toFixed(1)}</span>
+						<RatingBubbles rating={rating} size={16} tone="green" />
 						<span className="underline underline-offset-4">
 							{reviews.toLocaleString()} {t('Reviews')}
 						</span>
@@ -140,7 +144,7 @@ const TourHeader = () => {
 				</p>
 			)}
 			{(days > 0 || city) && (
-				<p className="mt-1.5 flex flex-wrap items-center gap-x-3.5 gap-y-1 text-[15px] text-neutral-700 dark:text-neutral-300">
+				<p className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-base leading-6 text-ink-soft dark:text-neutral-300">
 					{days > 0 && <span>{tHome('days_count', { count: days })}</span>}
 					{days > 0 && city && <Dot />}
 					{city && <span>{city}</span>}
