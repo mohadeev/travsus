@@ -44,3 +44,6 @@ scripts/db/backups/
 .wrangler/
 # Cloudflare local secrets (wrangler dev)
 .dev.vars*
+
+# The tours' JSON copy (src/lib/tourStore.ts), rebuilt from MongoDB at start
+/data/

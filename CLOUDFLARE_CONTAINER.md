@@ -41,6 +41,43 @@ so run the warm-up after deploying. It renders every page once in the
 container and fills the edge cache of the data centre nearest to you; the
 others fill on their first visit, which no longer has to render the page.
 
+### Tours from a JSON file (not MongoDB)
+
+Every read of the tours (tour pages, lists, search, sitemap, bookings that show
+their tour...) is answered from a JSON file on the container's disk,
+`/app/data/tours.json`: an exact copy of MongoDB's `tours` collection. Every
+other collection is read from MongoDB as before. See src/lib/tourStore.ts.
+
+- MongoDB stays the source of truth: every write still goes to MongoDB.
+- Always in step with MongoDB: a write made by the site updates the copy before
+  it returns; a MongoDB change stream applies every other change (scripts in
+  scripts/db, edits in Atlas) within a fraction of a second, deletes included;
+  every tour is read again at start and every 30 minutes as a safety net.
+- The file is MongoDB Extended JSON (dates as `{"$date": "..."}`), so filters,
+  sorting and joins give exactly what MongoDB gives (mingo runs MongoDB's query
+  language on the copy). It is held in memory while the server runs.
+- The container's disk is emptied on restart: the copy is read from MongoDB at
+  start (the server answers at once; the first tour reads wait for it, up to
+  15 s, then fall back to MongoDB). If MongoDB is down but the file from the
+  last run is there, tours are served from it.
+- Change streams need a replica set (every MongoDB Atlas cluster is one).
+  Without one, every tour is read again every 2 minutes instead.
+- Pages still have their own caches on top (tour pages up to an hour): a tour
+  edited in the dashboard shows at once (the dashboard clears them); one
+  edited straight in MongoDB shows when those expire.
+
+Check it (and force a full re-read with POST):
+
+```sh
+curl -s -H "Authorization: Bearer $CRON_SECRET" https://www.travsus.com/api/tours/store-status
+curl -s -X POST -H "Authorization: Bearer $CRON_SECRET" https://www.travsus.com/api/tours/store-status
+```
+
+`tours` is the number of tours in the copy, `loadedFrom` `mongodb`,
+`changeStream` `open`. `TOURS_JSON=off` (a Worker variable) reads tours from
+MongoDB again; `TOURS_JSON_PATH` moves the file. The Cloudflare Worker build
+(vinext, no disk) always reads tours from MongoDB.
+
 ### Edge cache (fast pages for visitors and crawlers)
 
 Public pages (home, tours, destinations, the blog list, search without

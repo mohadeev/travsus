@@ -8,6 +8,7 @@
 // dates as ISO strings, like the API this replaces.
 import { randomBytes } from 'node:crypto'
 import { MongoClient, ObjectId, type Collection, type Db, type Document } from 'mongodb'
+import { afterTourWrite, startTourStore, tourReadCollection, type ReadCollection } from './tourStore'
 
 if (typeof window !== 'undefined') {
 	throw new Error('src/lib/db.ts must only be imported on the server')
@@ -101,6 +102,24 @@ const IN_PLACES_DB: Record<string, string> = {
 /** Raw collection access, for the few reads that need their own projection or pipeline. */
 export async function mongoCollection(table: string): Promise<Collection<Document>> {
 	return IN_PLACES_DB[table] ? (await placesDb()).collection(IN_PLACES_DB[table]) : (await mainDb()).collection(table)
+}
+
+/**
+ * The collection a read uses. Tours are read from their JSON copy on disk
+ * (src/lib/tourStore.ts), kept in step with MongoDB; everything else, and
+ * every write, uses MongoDB.
+ */
+async function readCollection(table: string): Promise<ReadCollection> {
+	if (table === T.tours) {
+		const json = await tourReadCollection(() => mongoCollection(T.tours))
+		if (json) return json
+	}
+	return mongoCollection(table)
+}
+
+/** Loads the tours' JSON copy at server start (src/instrumentation.ts), so the first visit doesn't wait. */
+export function startTourJsonStore() {
+	startTourStore(() => mongoCollection(T.tours))
 }
 
 /**
@@ -539,18 +558,23 @@ class Query implements PromiseLike<DbResult<any>> {
 	}
 
 	private async execute(): Promise<{ data: any[] | null; count: number | null }> {
+		if (this.action.kind === 'select') return this.find(await readCollection(this.table), this.where_)
 		const col = await mongoCollection(this.table)
+		// Tours: the JSON copy takes the written tours before the write returns
+		const synced = async (ids: unknown[], deleted = false) => {
+			if (this.table === T.tours) await afterTourWrite(ids, deleted)
+		}
 		switch (this.action.kind) {
-			case 'select':
-				return this.find(col, this.where_)
 			case 'insert': {
 				const docs = this.action.rows.map((r) => this.newDoc(r))
 				if (docs.length) await col.insertMany(docs)
+				await synced(docs.map((d) => d._id))
 				return this.returning(col, docs.map((d) => d._id))
 			}
 			case 'update': {
 				const ids = (await col.find(this.where_, { projection: { _id: 1 } }).toArray()).map((d) => d._id)
 				if (ids.length) await col.updateMany({ _id: { $in: ids } }, { $set: this.changes(this.action.values) })
+				await synced(ids)
 				return this.returning(col, ids)
 			}
 			case 'upsert': {
@@ -569,6 +593,7 @@ class Query implements PromiseLike<DbResult<any>> {
 						ids.push(doc._id)
 					}
 				}
+				await synced(ids)
 				return this.returning(col, ids)
 			}
 			case 'delete': {
@@ -576,13 +601,14 @@ class Query implements PromiseLike<DbResult<any>> {
 				const ids = (await col.find(this.where_, { projection: { _id: 1 } }).toArray()).map((d) => d._id)
 				const out = await this.returning(col, ids)
 				if (ids.length) await col.deleteMany({ _id: { $in: ids } })
+				await synced(ids, true)
 				return out
 			}
 		}
 	}
 
 	/** The rows a write touched, when `.select()` was asked for. */
-	private returning(col: Collection<Document>, ids: unknown[]) {
+	private returning(col: ReadCollection, ids: unknown[]) {
 		if (!this.spec) return Promise.resolve({ data: null, count: null })
 		return this.find(col, { _id: { $in: ids } }, true)
 	}
@@ -608,7 +634,7 @@ class Query implements PromiseLike<DbResult<any>> {
 		return set
 	}
 
-	private async find(col: Collection<Document>, filter: Document, ignoreWindow = false): Promise<{ data: any[] | null; count: number | null }> {
+	private async find(col: ReadCollection, filter: Document, ignoreWindow = false): Promise<{ data: any[] | null; count: number | null }> {
 		const spec = this.spec ?? parseSelect('*')
 		const count = this.wantCount ? await col.countDocuments(filter) : null
 		if (this.headOnly) return { data: null, count }
@@ -671,7 +697,7 @@ function projectionFor(spec: Spec): Document | null {
 async function embed(parent: string, docs: Document[], spec: Spec, orders: Order[]) {
 	if (!docs.length) return
 	for (const e of spec.embeds) {
-		const col = await mongoCollection(e.table)
+		const col = await readCollection(e.table)
 		const childKey = ONE_TO_MANY[`${parent}>${e.table}`]
 		if (childKey) {
 			const key = e.fk ?? childKey

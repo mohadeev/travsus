@@ -42,6 +42,8 @@ function yogaWasmFile(): string {
  *   src/lib/cloudflare/image.tsx to keep the same resized URLs and srcset;
  * - the `cloudinary` Node SDK is replaced by a small REST version with the same
  *   calls (src/lib/cloudflare/cloudinary.ts): smaller, and no Node http streams;
+ * - the tours' JSON copy on disk (src/lib/tourStore.ts) is replaced by an
+ *   "off" version: a Worker has no disk, so tours are read from MongoDB;
  * - on the server, fontkit's Brotli decoder (only for .woff2 fonts; the booking
  *   PDF uses the built-in Helvetica) is left out (size limit).
  */
@@ -63,6 +65,11 @@ function cloudflareWorker(): Plugin {
       }
       if (id === "@react-pdf/renderer" && this.environment?.name === "ssr") {
         return src("lib/cloudflare/react-pdf-ssr-stub.tsx");
+      }
+      if (id.endsWith("tourStore") && this.environment?.name !== "client") {
+        // No disk on a Worker: tours are read from MongoDB (src/lib/tourStore.ts)
+        const resolved = await this.resolve(id, importer, { ...options, skipSelf: true });
+        if (resolved?.id === src("lib/tourStore.ts")) return src("lib/cloudflare/tourStore-off.ts");
       }
       if (id.endsWith("loadMessages")) {
         const resolved = await this.resolve(id, importer, { ...options, skipSelf: true });

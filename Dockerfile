@@ -58,6 +58,10 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 COPY --from=builder --chown=nextjs:nodejs /app/public ./public
 # No .env file in the image: settings come from the Worker at start
 RUN rm -f .env .env.*
+# The tours' JSON copy (src/lib/tourStore.ts) is written here. The container's
+# disk is emptied on each restart: the copy is read again from MongoDB at start.
+RUN mkdir -p /app/data && chown nextjs:nodejs /app/data
+ENV TOURS_JSON_PATH=/app/data/tours.json
 
 USER nextjs
 EXPOSE 8080
