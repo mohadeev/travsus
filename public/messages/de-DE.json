@@ -3966,7 +3966,8 @@
     "publish": "Veröffentlichen",
     "guidelines": "Bitte freundlich und hilfreich bleiben. Keine Werbung, keine persönlichen Daten.",
     "error_invalid": "Bitte geben Sie einen Titel (mind. 5 Zeichen), eine Kategorie und eine Nachricht (mind. 10 Zeichen) ein.",
-    "error_generic": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut."
+    "error_generic": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.",
+    "error_no_links": "Links zu anderen Websites sind im Forum nicht erlaubt (keine Werbung)."
   },
   "Blog": {
     "meta_title": "Reiseblog: Marokko-Guides, Routen und Tipps",

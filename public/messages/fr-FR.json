@@ -3982,7 +3982,8 @@
     "publish": "Publier",
     "guidelines": "Restez bienveillant et utile. Pas de publicité ni de données personnelles.",
     "error_invalid": "Ajoutez un titre (5 caractères min.), une catégorie et un message (10 caractères min.).",
-    "error_generic": "Un problème est survenu. Veuillez réessayer."
+    "error_generic": "Un problème est survenu. Veuillez réessayer.",
+    "error_no_links": "Les liens vers d'autres sites ne sont pas autorisés sur le forum (pas de publicité)."
   },
   "Blog": {
     "meta_title": "Blog voyage : guides, itinéraires et conseils pour le Maroc",

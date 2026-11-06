@@ -3,7 +3,7 @@
 import getUserData from '@/app/api/user/getUserData'
 import { db, T, must, withMeta } from '@/lib/db'
 import { isForumCategory } from '@/app/[locale]/forum/categories'
-import { isBlockedText } from '@/lib/forumModeration'
+import { hasOutsideLink, isBlockedText } from '@/lib/forumModeration'
 
 const clean = (value: FormDataEntryValue | null, max: number) =>
 	String(value ?? '').trim().slice(0, max)
@@ -28,6 +28,8 @@ export async function createForumPost(formData: FormData) {
 
 		// Scams, illegal documents and known spam are refused
 		if (isBlockedText(title, content, tags.join(' '))) return { success: false, error: 'INVALID' }
+		// No self-advertising: links to other sites are refused
+		if (hasOutsideLink(title, content)) return { success: false, error: 'NO_LINKS' }
 
 		const excerpt = content.length > 180 ? `${content.slice(0, 180).replace(/\s+\S*$/, '')}…` : content
 

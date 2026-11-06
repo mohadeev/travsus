@@ -4,7 +4,7 @@ import getUserData from '@/app/api/user/getUserData'
 import { db, T, must, withMeta } from '@/lib/db'
 import { toAuthor } from '@/lib/forum'
 import { AUTHOR } from './forumSelect'
-import { isBlockedText } from '@/lib/forumModeration'
+import { hasOutsideLink, isBlockedText } from '@/lib/forumModeration'
 
 export async function addComment(formData: FormData) {
 	try {
@@ -17,6 +17,8 @@ export async function addComment(formData: FormData) {
 		if (!content || !postId) return { success: false, error: 'INVALID' }
 		// Scams, illegal documents and known spam are refused
 		if (isBlockedText(content)) return { success: false, error: 'INVALID' }
+		// No self-advertising: links to other sites are refused
+		if (hasOutsideLink(content)) return { success: false, error: 'NO_LINKS' }
 
 		// The post (and the comment replied to) must exist
 		const post = must(await db.from(T.forumPosts).select('id').eq('id', postId).maybeSingle())

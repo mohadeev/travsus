@@ -2682,7 +2682,8 @@
     "publish": "Publish",
     "guidelines": "Be kind and helpful. No ads or personal details.",
     "error_invalid": "Please add a title (5+ characters), a category and a message (10+ characters).",
-    "error_generic": "Something went wrong. Please try again."
+    "error_generic": "Something went wrong. Please try again.",
+    "error_no_links": "Links to other websites aren't allowed in the forum (no advertising)."
   },
   "Blog": {
     "meta_title": "Travel Blog: Morocco Guides, Routes and Tips",

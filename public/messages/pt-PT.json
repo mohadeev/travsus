@@ -3416,7 +3416,8 @@
     "publish": "Publicar",
     "guidelines": "Seja simpático e útil. Sem anúncios nem dados pessoais.",
     "error_invalid": "Adicione um título (5+ caracteres), uma categoria e uma mensagem (10+ caracteres).",
-    "error_generic": "Algo correu mal. Tente novamente."
+    "error_generic": "Algo correu mal. Tente novamente.",
+    "error_no_links": "Não são permitidos links para outros sites no fórum (sem publicidade)."
   },
   "Blog": {
     "meta_title": "Blog de viagens: guias, rotas e dicas de Marrocos",
