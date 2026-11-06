@@ -11,7 +11,7 @@
 'use client'
 
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import type { Persistor } from 'redux-persist'
+import type { Persistor, Storage } from 'redux-persist'
 import {
 	FLUSH,
 	PAUSE,
@@ -22,17 +22,6 @@ import {
 	persistReducer,
 	persistStore,
 } from 'redux-persist'
-import createWebStorage from 'redux-persist/lib/storage/createWebStorage'
-
-// localStorage in the browser; no-op on the server (no window there)
-const storage =
-	typeof window === 'undefined'
-		? {
-				getItem: async () => null,
-				setItem: async (_key: string, value: string) => value,
-				removeItem: async () => {},
-			}
-		: createWebStorage('local')
 
 import user from './slices/user'
 import booking from './slices/booking'
@@ -40,6 +29,24 @@ import tourPage from './slices/tourPage'
 import ui from './slices/ui'
 import company from './slices/company'
 import business from './slices/business'
+
+// localStorage in the browser; no-op on the server (no window there).
+// Inline on purpose: redux-persist's createWebStorage is CJS, and the vinext
+// client bundle treats its default export as a function when it is not.
+const storage: Storage = {
+	getItem: (key) =>
+		Promise.resolve(
+			typeof window === 'undefined' ? null : window.localStorage.getItem(key),
+		),
+	setItem: (key, value) => {
+		if (typeof window !== 'undefined') window.localStorage.setItem(key, value)
+		return Promise.resolve(value)
+	},
+	removeItem: (key) => {
+		if (typeof window !== 'undefined') window.localStorage.removeItem(key)
+		return Promise.resolve()
+	},
+}
 
 const rootReducer = combineReducers({
 	user,
@@ -78,7 +85,8 @@ const serverPersistor: Persistor = {
 	getState: () => ({ registry: [], bootstrapped: false }),
 	subscribe: () => () => {},
 }
-export const persistor: Persistor = typeof window === 'undefined' ? serverPersistor : persistStore(store)
+export const persistor: Persistor =
+	typeof window === 'undefined' ? serverPersistor : persistStore(store)
 
 export type RootState = ReturnType<typeof rootReducer>
 export type AppDispatch = typeof store.dispatch
