@@ -20,6 +20,8 @@ export interface StayDatesRangeInputProps {
 	onChange: (dates: { startDate: number; endDate: number }) => void
 	value?: any
 	isFlashing?: boolean
+	/** One-line rounded pill (the booking form), instead of the two-line box row */
+	pill?: boolean
 }
 
 const StayDatesRangeInput: FC<StayDatesRangeInputProps> = ({
@@ -28,6 +30,7 @@ const StayDatesRangeInput: FC<StayDatesRangeInputProps> = ({
 	duration = 3,
 	value,
 	isFlashing = false,
+	pill = false,
 }) => {
 	const t = useTranslations('Booking')
 	const tHome = useTranslations('Home')
@@ -41,21 +44,32 @@ const StayDatesRangeInput: FC<StayDatesRangeInputProps> = ({
 		<Popover id="StayDatesRangeInput_TOUR" className={`StayDatesRangeInput relative z-10 flex ${className}`}>
 			{({ open, close }) => (
 				<>
+					{pill ? (
+						<Popover.Button
+							className={`flex h-14 w-full items-center gap-3 rounded-full border bg-white px-5 text-left text-base font-bold text-ink transition focus:outline-none dark:bg-neutral-900 dark:text-white ${
+								isFlashing ? 'border-red-500 ring-2 ring-red-500/30' : open ? 'border-ink ring-1 ring-ink dark:border-white' : 'border-ink/60 hover:border-ink dark:border-neutral-500'
+							}`}
+						>
+							<CalendarDays className="h-5 w-5 shrink-0" strokeWidth={1.8} />
+							<span className="truncate">{start ? formatTripDates(start, end, locale) : t('choose_dates')}</span>
+						</Popover.Button>
+					) : (
 					<Popover.Button
-						className={`relative flex w-full flex-1 items-center gap-3 rounded-t-2xl px-4 py-3 text-left focus:outline-none ${styles.inputWrapper} ${
-							isFlashing ? styles.flashing : ''
-						} ${open ? 'bg-neutral-50 dark:bg-neutral-900' : ''}`}
-					>
-						<CalendarDays className="h-5 w-5 shrink-0 text-ink dark:text-white" />
-						<span className="min-w-0 flex-1">
-							<span className={`block text-[15px] font-semibold ${start ? '' : 'text-neutral-500'}`}>
-								{start ? formatTripDates(start, end, locale) : t('choose_dates')}
+							className={`relative flex w-full flex-1 items-center gap-3 rounded-t-2xl px-4 py-3 text-left focus:outline-none ${styles.inputWrapper} ${
+								isFlashing ? styles.flashing : ''
+							} ${open ? 'bg-neutral-50 dark:bg-neutral-900' : ''}`}
+						>
+							<CalendarDays className="h-5 w-5 shrink-0 text-ink dark:text-white" />
+							<span className="min-w-0 flex-1">
+								<span className={`block text-[15px] font-semibold ${start ? '' : 'text-neutral-500'}`}>
+									{start ? formatTripDates(start, end, locale) : t('choose_dates')}
+								</span>
+								<span className="block text-xs text-neutral-500">
+									{tHome('days_count', { count: Math.max(1, duration || 1) })}
+								</span>
 							</span>
-							<span className="block text-xs text-neutral-500">
-								{tHome('days_count', { count: Math.max(1, duration || 1) })}
-							</span>
-						</span>
-					</Popover.Button>
+						</Popover.Button>
+					)}
 
 					<Transition
 						as={Fragment}
