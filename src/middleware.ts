@@ -9,24 +9,46 @@ const intlMiddleware = createMiddleware(routing)
 
 const TOUR_ID = /^[0-9a-f]{24}$/
 
+type TourSlug = { language: string; slug: string }
+
+/** Lookups kept in memory: a day when found, 5 minutes when not. */
+const SLUGS_FOUND_MS = 24 * 60 * 60 * 1000
+const SLUGS_MISSING_MS = 5 * 60 * 1000
+const SLUGS_MAX_ENTRIES = 5000
+const slugCache = new Map<string, { slugs: TourSlug[]; until: number }>()
+
 /**
- * The tour's addresses. Empty when they can't be known.
+ * The tour's addresses. Empty when they can't be known. Runs on every tour visit.
  * - Cloudflare build: a cached database lookup (src/lib/tourSlugs.ts). Fetching
  *   the site's own address from the Worker is slow or fails, and cost every
  *   tour visit.
- * - `next dev` / `next build`: the middleware runs in the Edge runtime, where the
- *   database code can't load, so it asks the site's own API as before.
+ * - `next dev` / `next build` (the container): the middleware runs in the Edge
+ *   runtime, where the database code can't load, so it asks the site's own
+ *   API. The answer is kept in memory (the Next.js fetch cache does not work in
+ *   middleware, so `next: { revalidate }` cached nothing), and in the container
+ *   INTERNAL_ORIGIN (http://127.0.0.1:8080, set by src/container-worker.ts)
+ *   calls the server directly: the public address went out through Cloudflare
+ *   and back into the same container.
  */
-async function tourSlugs(request: NextRequest, tourId: string): Promise<{ language: string; slug: string }[]> {
+async function tourSlugs(request: NextRequest, tourId: string): Promise<TourSlug[]> {
 	if (process.env.CLOUDFLARE_BUILD) {
 		const { getTourSlugs } = await import('./lib/tourSlugs')
 		return getTourSlugs(tourId).catch(() => [])
 	}
-	const url = new URL(`/api/tours/${tourId}/slug`, request.nextUrl.origin)
-	const res = await fetch(url, { signal: AbortSignal.timeout(3000), next: { revalidate: 86400 } })
-	if (!res.ok) return []
+	const now = Date.now()
+	const cached = slugCache.get(tourId)
+	if (cached && cached.until > now) return cached.slugs
+
+	const origin = process.env.INTERNAL_ORIGIN || request.nextUrl.origin
+	const res = await fetch(new URL(`/api/tours/${tourId}/slug`, origin), { signal: AbortSignal.timeout(3000) })
+	// A server error is not remembered: tried again on the next visit
+	if (!res.ok && res.status !== 404) return []
 	const data = await res.json().catch(() => ({}))
-	return Array.isArray(data?.slugs) ? data.slugs : []
+	const slugs: TourSlug[] = Array.isArray(data?.slugs) ? data.slugs : []
+
+	if (slugCache.size >= SLUGS_MAX_ENTRIES) slugCache.delete(slugCache.keys().next().value as string)
+	slugCache.set(tourId, { slugs, until: now + (slugs.length ? SLUGS_FOUND_MS : SLUGS_MISSING_MS) })
+	return slugs
 }
 
 /** Only same-site relative paths are allowed as redirect targets. */
