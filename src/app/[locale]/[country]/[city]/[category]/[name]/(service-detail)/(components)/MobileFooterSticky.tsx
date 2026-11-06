@@ -1,15 +1,11 @@
 'use client'
 import { useTranslations as useIntlTranslations } from 'next-intl'
-import { formatTripDates, readTripDates } from '@/lib/tripDates'
 import ModalReserveMobile from './ModalReserveMobile'
 import { useAppDispatch, useAppSelector } from '@/store/hooks'
 import { selectBooking, totalOf } from '@/store/slices/booking'
-import { formatCurrency } from '@/utils/formatCurrency'
-import { useTranslations } from '@/lib/i18n'
 import { useLocale } from 'next-intl'
 import { setMobileReserveOpen } from '@/store/slices/ui'
 import { useTourService } from '../TourServiceContext'
-import { ArrowRight, CalendarDays, Check, ChevronRight } from 'lucide-react'
 import { useEffect } from 'react'
 import { OPEN_RESERVE_EVENT } from '../[listingExperiencesDetail]/MobileBookingBox'
 
@@ -23,14 +19,12 @@ function OpenOnRequest({ open }: { open: () => void }) {
 }
 
 const MobileFooterSticky = () => {
-	const t = useTranslations('Jan03_MobileFooterSticky_m4k7')
 	const tHome = useIntlTranslations('Home')
 	// "from €276 per person": whole euros, rounded up, as on the cards and the booking box
 	const [fromBefore, fromAfter = ''] = tHome.raw('from_price').split('{price}')
 
-	const tBooking = useIntlTranslations('Booking')
-	const tInfo = useIntlTranslations('BookingInfo')
-	const { guests, lineItems, selectedDate } = useAppSelector(selectBooking)
+	const tPage = useIntlTranslations('TourPage')
+	const { guests, lineItems } = useAppSelector(selectBooking)
 	const totalGuests: number = guests?.guestAdults + guests?.guestChildren
 	const tourData: any = useTourService()
 	// Server "from" price until the booking is priced in the browser
@@ -40,8 +34,6 @@ const MobileFooterSticky = () => {
 		: tourData?.fromPricePerPerson ?? 0
 	const locale = useLocale()
 	const wholeMoney = new Intl.NumberFormat(locale, { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 })
-	// The dates the customer picked (nothing until they choose)
-	const dates = formatTripDates(...readTripDates(selectedDate), locale)
 	const dispatch = useAppDispatch()
 	const haneleOpen = (openModal: any) => {
 		openModal()
@@ -50,41 +42,32 @@ const MobileFooterSticky = () => {
 	return totalAmount ? (
 		<div
 			id="mobile-book-bar"
-			className="fixed inset-x-0 bottom-0 z-40 border-t border-neutral-200 bg-white/95 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-3 shadow-[0_-10px_30px_-15px_rgb(0_0_0/0.3)] backdrop-blur lg:hidden dark:border-neutral-800 dark:bg-neutral-900/95"
+			className="fixed inset-x-0 bottom-0 z-40 border-t border-neutral-200 bg-white/95 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-3 shadow-[0_-6px_20px_-12px_rgb(0_0_0/0.25)] backdrop-blur lg:hidden dark:border-neutral-800 dark:bg-neutral-900/95"
 		>
 			{/* Keep the page's last lines above the bar */}
-			<style>{'@media (max-width:1023px){body:has(#mobile-book-bar){padding-bottom:calc(7.5rem + env(safe-area-inset-bottom))}}'}</style>
+			<style>{'@media (max-width:1023px){body:has(#mobile-book-bar){padding-bottom:calc(5.5rem + env(safe-area-inset-bottom))}}'}</style>
 			<ModalReserveMobile
 				renderChildren={({ openModal }) => (
 					<div className="px-4">
 						<OpenOnRequest open={() => haneleOpen(openModal)} />
-						<div className="flex items-center gap-3">
-							{/* Price and dates: one big tap area */}
-							<button type="button" onClick={() => haneleOpen(openModal)} className="min-h-14 min-w-0 flex-1 text-left">
-								<span className="block truncate">
-									<span className="mr-1 text-sm text-neutral-700 dark:text-neutral-300">{fromBefore}</span>
-									<span className="text-[22px] font-bold leading-none tracking-tight">{wholeMoney.format(Math.ceil(priceStart))}</span>
-									<span className="ml-1 text-sm text-neutral-700 dark:text-neutral-300">{fromAfter} {t('Per_Person')}</span>
+						{/* Simple: the price on the left, one button on the right */}
+						<div className="flex items-center justify-between gap-4">
+							<button type="button" onClick={() => haneleOpen(openModal)} className="min-w-0 text-left leading-tight">
+								<span className="block text-xs text-ink-soft dark:text-neutral-400">{fromBefore.trim() || ' '}</span>
+								<span className="block text-xl font-extrabold tabular-nums text-ink dark:text-white">
+									{wholeMoney.format(Math.ceil(priceStart))}
+									{fromAfter.trim() && <span className="ml-1 text-xs font-normal">{fromAfter.trim()}</span>}
 								</span>
-								<span className="mt-1.5 inline-flex max-w-full items-center gap-1.5 rounded-full bg-neutral-100 py-1 pl-2.5 pr-2 text-[13px] font-semibold dark:bg-neutral-800">
-									<CalendarDays className="h-4 w-4 shrink-0" />
-									<span className="truncate">{dates || tBooking('choose_dates')}</span>
-									<ChevronRight className="h-3.5 w-3.5 shrink-0 text-neutral-400" />
-								</span>
+								<span className="block text-xs text-ink-soft dark:text-neutral-400">{tHome('per_person')}</span>
 							</button>
 							<button
 								type="button"
 								onClick={() => haneleOpen(openModal)}
-								className="inline-flex h-14 min-w-[44%] shrink-0 items-center justify-center gap-2 rounded-full bg-black px-6 text-[17px] font-bold text-white transition active:scale-[0.97] hover:bg-neutral-800 dark:bg-white dark:text-black"
+								className="h-12 shrink-0 rounded-full bg-brand-500 px-7 text-base font-bold text-white shadow-[0_6px_18px_-6px_rgba(242,97,42,0.7)] transition hover:bg-brand-600 active:scale-[0.97]"
 							>
-								{t('Reserve')}
-								<ArrowRight className="h-5 w-5" />
+								{tPage('check_availability')}
 							</button>
 						</div>
-						<p className="mt-2 flex items-center gap-1.5 text-xs font-medium text-emerald-700 dark:text-emerald-400">
-							<Check className="h-3.5 w-3.5" strokeWidth={3} />
-							{tInfo('free_cancel_title')}
-						</p>
 					</div>
 				)}
 			/>
@@ -107,7 +90,7 @@ function MobileFooterStickySkeleton() {
 					</div>
 					<div className="h-4 w-32 animate-pulse rounded-lg bg-neutral-200 dark:bg-neutral-700"></div>
 				</div>
-				<div className="h-14 w-[44%] animate-pulse rounded-2xl bg-neutral-200 dark:bg-neutral-700"></div>
+				<div className="h-12 w-40 animate-pulse rounded-full bg-neutral-200 dark:bg-neutral-700"></div>
 			</div>
 		</div>
 	)
