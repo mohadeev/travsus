@@ -27,7 +27,7 @@ export default function ListingExperiencesDetailsImages() {
 		const next = (current + step + photos.length) % photos.length // wraps around
 		el.scrollTo({ left: next * el.clientWidth, behavior: 'smooth' })
 	}
-	const arrow = 'absolute top-1/2 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-ink text-white shadow-md'
+	const arrow = 'absolute top-1/2 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-white/95 text-ink shadow-[0_2px_10px_rgba(0,0,0,0.25)] backdrop-blur active:scale-95'
 
 	// Gallery: Esc closes it, and the page behind doesn't scroll
 	useEffect(() => {
@@ -95,7 +95,7 @@ export default function ListingExperiencesDetailsImages() {
 						type="button"
 						onClick={() => setOpen(current)}
 						aria-label={t('show_all_photos', { count: photos.length })}
-						className="absolute bottom-2 right-2 inline-flex items-center gap-2 rounded-full bg-ink px-4 py-2 text-base font-bold tabular-nums text-white"
+						className="absolute bottom-3 right-3 inline-flex items-center gap-2 rounded-full bg-black/60 px-3.5 py-1.5 text-sm font-bold backdrop-blur tabular-nums text-white"
 					>
 						<ImageIcon className="h-5 w-5" strokeWidth={1.8} />
 						{photos.length.toLocaleString()}

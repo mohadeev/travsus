@@ -47,10 +47,10 @@ const StayDatesRangeInput: FC<StayDatesRangeInputProps> = ({
 					{pill ? (
 						<Popover.Button
 							className={`flex h-14 w-full items-center gap-3 rounded-full border bg-white px-5 text-left text-base font-bold text-ink transition focus:outline-none dark:bg-neutral-900 dark:text-white ${
-								isFlashing ? 'border-red-500 ring-2 ring-red-500/30' : open ? 'border-ink ring-1 ring-ink dark:border-white' : 'border-ink/60 hover:border-ink dark:border-neutral-500'
+								isFlashing ? 'border-red-500 ring-2 ring-red-500/30' : open ? 'border-brand-500 ring-1 ring-brand-500' : 'border-neutral-300 hover:border-brand-400 dark:border-neutral-600'
 							}`}
 						>
-							<CalendarDays className="h-5 w-5 shrink-0" strokeWidth={1.8} />
+							<CalendarDays className="h-5 w-5 shrink-0 text-brand-600" strokeWidth={1.8} />
 							<span className="truncate">{start ? formatTripDates(start, end, locale) : t('choose_dates')}</span>
 						</Popover.Button>
 					) : (
