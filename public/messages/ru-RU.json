@@ -3315,7 +3315,17 @@
     "duration": "Длительность",
     "starts_in": "Начало",
     "ends_in": "Окончание",
-    "free_cancellation_short": "Бесплатная отмена"
+    "free_cancellation_short": "Бесплатная отмена",
+    "tab_overview": "Обзор",
+    "tab_details": "Подробности",
+    "tab_itinerary": "Маршрут",
+    "tab_reviews": "Отзывы",
+    "about": "О туре",
+    "select_title": "Выберите дату и путешественников",
+    "check_availability": "Проверить наличие мест",
+    "adults_count": "{count, plural, one {# взрослый} few {# взрослых} many {# взрослых} other {# взрослого}}",
+    "sections_label": "Разделы тура",
+    "choose_date": "Выберите дату"
   },
   "Booking": {
     "step_when": "Когда вы хотите поехать?",

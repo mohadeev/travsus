@@ -2773,7 +2773,17 @@
     "duration": "기간",
     "starts_in": "출발지",
     "ends_in": "도착지",
-    "free_cancellation_short": "무료 취소"
+    "free_cancellation_short": "무료 취소",
+    "tab_overview": "개요",
+    "tab_details": "상세 정보",
+    "tab_itinerary": "일정",
+    "tab_reviews": "리뷰",
+    "about": "투어 소개",
+    "select_title": "날짜 및 인원 선택",
+    "check_availability": "예약 가능 여부 확인",
+    "adults_count": "성인 {count}명",
+    "sections_label": "투어 섹션",
+    "choose_date": "날짜 선택"
   },
   "Booking": {
     "step_when": "언제 가시나요?",

@@ -10,6 +10,17 @@ import { useLocale } from 'next-intl'
 import { setMobileReserveOpen } from '@/store/slices/ui'
 import { useTourService } from '../TourServiceContext'
 import { ArrowRight, CalendarDays, Check, ChevronRight } from 'lucide-react'
+import { useEffect } from 'react'
+import { OPEN_RESERVE_EVENT } from '../[listingExperiencesDetail]/MobileBookingBox'
+
+/** Opens the booking sheet when the page's "Check availability" box asks for it. */
+function OpenOnRequest({ open }: { open: () => void }) {
+	useEffect(() => {
+		window.addEventListener(OPEN_RESERVE_EVENT, open)
+		return () => window.removeEventListener(OPEN_RESERVE_EVENT, open)
+	}, [open])
+	return null
+}
 
 const MobileFooterSticky = () => {
 	const t = useTranslations('Jan03_MobileFooterSticky_m4k7')
@@ -46,6 +57,7 @@ const MobileFooterSticky = () => {
 			<ModalReserveMobile
 				renderChildren={({ openModal }) => (
 					<div className="px-4">
+						<OpenOnRequest open={() => haneleOpen(openModal)} />
 						<div className="flex items-center gap-3">
 							{/* Price and dates: one big tap area */}
 							<button type="button" onClick={() => haneleOpen(openModal)} className="min-h-14 min-w-0 flex-1 text-left">

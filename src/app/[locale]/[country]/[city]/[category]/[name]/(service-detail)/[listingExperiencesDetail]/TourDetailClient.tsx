@@ -10,6 +10,8 @@ import TourFAQ from './FAQProps'
 import ReviewSystem from './ReviewSystem/ReviewSystem'
 import Included from './Included'
 import TourHeader from './TourHeader'
+import TourTabs from './TourTabs'
+import MobileBookingBox from './MobileBookingBox'
 import AffiliateShareBar from '@/components/AffiliateShareBar'
 import ReadMore from '@/app/(client-components)/ReadeMore'
 import { useTranslations } from '@/lib/i18n'
@@ -69,19 +71,21 @@ const TourDetail: FC<ListingExperiencesDetailPageProps> = ({ similar = [] }) => 
 					<AffiliateShareBar title={service?.name} />
 					<TourHeader />
 					<ListingExperiencesDetailsImages />
+					<TourTabs />
 
-					<div className="mt-8 grid gap-10 lg:grid-cols-[minmax(0,1fr)_380px] lg:gap-14">
+					<div className="mt-6 grid gap-10 lg:grid-cols-[minmax(0,1fr)_380px] lg:gap-14">
 						{/* Main content, TripAdvisor layout: sections one under the other, divided by thin lines */}
 						<div className="min-w-0 divide-y divide-neutral-200 dark:divide-neutral-800 [&>*:first-child]:pt-0 [&>*]:py-8">
-							<section>
-								<h2 className="headline text-[24px] !leading-tight">{t('Overview_Title')}</h2>
+							<section id="overview">
+								<h2 className="headline text-[24px] !leading-tight">{tPage('about')}</h2>
 								{overview ? (
-									<div className="mt-3 text-base leading-relaxed text-neutral-800 dark:text-neutral-200">
-										<ReadMore description={overview} />
+									<div className="mt-4">
+										<ReadMore description={overview} inline />
 									</div>
 								) : (
 									<ExperiencesDescriptionSkeleton className="listingSection__wrap_no_border" />
 								)}
+								<MobileBookingBox />
 
 								{/* Key facts: an icon, a bold line and a short explanation each */}
 								<ul className="mt-6 grid gap-x-8 gap-y-[18px] border-t border-neutral-200 pt-[22px] sm:grid-cols-2 dark:border-neutral-800">
@@ -98,7 +102,7 @@ const TourDetail: FC<ListingExperiencesDetailPageProps> = ({ similar = [] }) => 
 							<Included />
 
 							{days && (
-								<section>
+								<section id="itinerary">
 									<h2 className="headline mb-5 text-[24px] !leading-tight">{t('Itinerary_Title')}</h2>
 									<TourItineraryWithMap days={days} />
 								</section>

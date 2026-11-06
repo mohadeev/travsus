@@ -2786,7 +2786,17 @@
     "duration": "所要日数",
     "starts_in": "出発地",
     "ends_in": "到着地",
-    "free_cancellation_short": "無料キャンセル"
+    "free_cancellation_short": "無料キャンセル",
+    "tab_overview": "概要",
+    "tab_details": "詳細",
+    "tab_itinerary": "旅程",
+    "tab_reviews": "クチコミ",
+    "about": "ツアーについて",
+    "select_title": "日付と人数を選択",
+    "check_availability": "空き状況を確認",
+    "adults_count": "大人{count}名",
+    "sections_label": "ツアーのセクション",
+    "choose_date": "日付を選択"
   },
   "Booking": {
     "step_when": "いつ行きますか？",

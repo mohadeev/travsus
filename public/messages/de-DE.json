@@ -3770,7 +3770,17 @@
     "duration": "Dauer",
     "starts_in": "Start in",
     "ends_in": "Ende in",
-    "free_cancellation_short": "Kostenlose Stornierung"
+    "free_cancellation_short": "Kostenlose Stornierung",
+    "tab_overview": "Überblick",
+    "tab_details": "Details",
+    "tab_itinerary": "Reiseverlauf",
+    "tab_reviews": "Bewertungen",
+    "about": "Über die Tour",
+    "select_title": "Datum und Reisende wählen",
+    "check_availability": "Verfügbarkeit prüfen",
+    "adults_count": "{count, plural, one {# Erwachsener} other {# Erwachsene}}",
+    "sections_label": "Abschnitte der Tour",
+    "choose_date": "Datum wählen"
   },
   "Booking": {
     "step_when": "Wann möchten Sie reisen?",

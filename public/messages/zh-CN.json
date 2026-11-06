@@ -2648,7 +2648,17 @@
     "duration": "时长",
     "starts_in": "出发地",
     "ends_in": "结束地",
-    "free_cancellation_short": "免费取消"
+    "free_cancellation_short": "免费取消",
+    "tab_overview": "概览",
+    "tab_details": "详情",
+    "tab_itinerary": "行程",
+    "tab_reviews": "点评",
+    "about": "关于",
+    "select_title": "选择日期和人数",
+    "check_availability": "查看空位",
+    "adults_count": "{count} 位成人",
+    "sections_label": "行程栏目",
+    "choose_date": "选择日期"
   },
   "Booking": {
     "step_when": "您想什么时候出发？",
