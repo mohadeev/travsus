@@ -7,7 +7,8 @@ import { dashboardScope, toursList } from '@/lib/dashboard'
 import { PHOTOS } from '@/lib/photos'
 import { Empty, NoCompany, button, day, euro } from '../../_components/ui'
 
-export default async function ToursPage({ params }: { params: { locale: string } }) {
+export default async function ToursPage(props: { params: Promise<{ locale: string }> }) {
+	const params = await props.params;
 	const { locale } = params
 	const scope = await dashboardScope()
 	if (!scope) return null

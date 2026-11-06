@@ -5,10 +5,8 @@ import { db, T, must, touch } from '@/lib/db'
 import { companyFields } from '../fields'
 
 // Only the company's creator can read or edit it (it holds bank details)
-export async function GET(
-	request: NextRequest,
-	{ params }: { params: { id: string } },
-) {
+export async function GET(request: NextRequest, props: { params: Promise<{ id: string }> }) {
+	const params = await props.params;
 	try {
 		const userData = await getUserData()
 		if (!userData?.id) {
@@ -37,10 +35,8 @@ export async function GET(
 	}
 }
 
-export async function PUT(
-	request: NextRequest,
-	{ params }: { params: { id: string } },
-) {
+export async function PUT(request: NextRequest, props: { params: Promise<{ id: string }> }) {
+	const params = await props.params;
 	try {
 		const userData = await getUserData()
 		if (!userData?.id) {

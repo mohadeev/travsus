@@ -38,3 +38,9 @@ next-env.d.ts
 
 # Local database backups (may contain customer data)
 scripts/db/backups/
+/dist/
+.vinext/
+.cloudflare/
+.wrangler/
+# Cloudflare local secrets (wrangler dev)
+.dev.vars*

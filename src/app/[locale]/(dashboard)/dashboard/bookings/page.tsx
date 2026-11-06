@@ -16,9 +16,11 @@ const LABELS: Record<BookingFilter, string> = {
 	abandoned: 'Abandoned',
 }
 
-type PageProps = { params: { locale: string }; searchParams: { status?: string; q?: string } }
+type PageProps = { params: Promise<{ locale: string }>; searchParams: Promise<{ status?: string; q?: string }> }
 
-export default async function BookingsPage({ params, searchParams }: PageProps) {
+export default async function BookingsPage(props: PageProps) {
+	const searchParams = await props.searchParams;
+	const params = await props.params;
 	const { locale } = params
 	const scope = await dashboardScope()
 	if (!scope) return null

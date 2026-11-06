@@ -4,7 +4,7 @@
 // the highlighted tier.
 import { useState } from 'react'
 import { useLocale, useTranslations } from 'next-intl'
-import { rateFor, TIERS } from './tiers'
+import { EXAMPLE_BOOKING_VALUE, rateFor, TIERS } from './tiers'
 
 /** A bookings count inside each tier, used when it's tapped */
 const START = TIERS.map((tier) => (tier.to ? Math.round((tier.from + tier.to) / 2) : tier.from + 9))
@@ -13,7 +13,7 @@ export default function EarningsCalculator() {
 	const t = useTranslations('Affiliates')
 	const locale = useLocale()
 	const [bookings, setBookings] = useState(10)
-	const [value, setValue] = useState(500)
+	const [value, setValue] = useState<number>(EXAMPLE_BOOKING_VALUE)
 
 	const rate = rateFor(bookings)
 	const active = TIERS.findIndex((tier) => tier.rate === rate)

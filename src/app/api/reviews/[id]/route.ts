@@ -15,10 +15,8 @@ function extractLanguageFromRequest(request: NextRequest): string {
 	return 'en-US'
 }
 
-export async function PATCH(
-	request: NextRequest,
-	{ params }: { params: { id: string } },
-) {
+export async function PATCH(request: NextRequest, props: { params: Promise<{ id: string }> }) {
+	const params = await props.params;
 	try {
 		const existing = must(
 			await db.from(T.reviews).select('userId').eq('id', params.id).maybeSingle(),

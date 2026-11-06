@@ -4,9 +4,11 @@ import { DashboardHeader } from '@/components/dashboard/header'
 import { customersList, dashboardScope } from '@/lib/dashboard'
 import { Empty, NoCompany, Stat, day, euro } from '../../_components/ui'
 
-type PageProps = { params: { locale: string }; searchParams: { q?: string } }
+type PageProps = { params: Promise<{ locale: string }>; searchParams: Promise<{ q?: string }> }
 
-export default async function CustomersPage({ params, searchParams }: PageProps) {
+export default async function CustomersPage(props: PageProps) {
+	const searchParams = await props.searchParams;
+	const params = await props.params;
 	const { locale } = params
 	const scope = await dashboardScope()
 	if (!scope) return null

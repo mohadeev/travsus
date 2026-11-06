@@ -17,7 +17,8 @@ const BADGE: Record<ReferralStatus, string> = {
 	cancelled: 'bg-red-50 text-red-700 dark:bg-red-950/50 dark:text-red-300',
 }
 
-export default async function AffiliateAccountPage({ params }: { params: { locale: string } }) {
+export default async function AffiliateAccountPage(props: { params: Promise<{ locale: string }> }) {
+	const params = await props.params;
 	const { locale } = params
 	setRequestLocale(locale)
 	const t = await getTranslations('Affiliate')
@@ -56,7 +57,7 @@ export default async function AffiliateAccountPage({ params }: { params: { local
 	}
 
 	const r = await affiliateReport(affiliate)
-	const h = headers()
+	const h = await headers()
 	const origin = `${h.get('x-forwarded-proto') ?? 'https'}://${h.get('x-forwarded-host') ?? h.get('host') ?? 'www.travsus.com'}`
 	const link = `${origin}/${locale}?ref=${r.code}`
 	const euros = (n: number) => new Intl.NumberFormat(locale, { style: 'currency', currency: 'EUR' }).format(n)

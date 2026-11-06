@@ -44,7 +44,8 @@ async function stats() {
 	return { live, visits: visits?.count ?? null, accounts: accounts?.count ?? null, texts, business, pendingAffiliates: affiliates?.count ?? null, pendingAgencies: agencies?.count ?? null, outreach: outreach?.count ?? null }
 }
 
-export default async function AdminHome({ params }: { params: { locale: string } }) {
+export default async function AdminHome(props: { params: Promise<{ locale: string }> }) {
+	const params = await props.params;
 	const s = await stats()
 	const href = (path: string) => `/${params.locale}${path}` as any
 	const dash = (v: unknown) => (v === null || v === undefined ? '–' : String(v))

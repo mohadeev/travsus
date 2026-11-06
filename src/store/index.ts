@@ -11,6 +11,7 @@
 'use client'
 
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
+import type { Persistor } from 'redux-persist'
 import {
 	FLUSH,
 	PAUSE,
@@ -64,7 +65,20 @@ export const store = configureStore({
 		}),
 })
 
-export const persistor = persistStore(store)
+// Saving/restoring only happens in the browser. On the server there's nothing to
+// restore (storage is a no-op above), and persistStore() starts a timer when the
+// module loads, which Cloudflare Workers don't allow; <PersistGate> only reads the
+// persistor after mounting, which never happens in a server render.
+const serverPersistor: Persistor = {
+	pause: () => {},
+	persist: () => {},
+	purge: async () => {},
+	flush: async () => {},
+	dispatch: (action: any) => action,
+	getState: () => ({ registry: [], bootstrapped: false }),
+	subscribe: () => () => {},
+}
+export const persistor: Persistor = typeof window === 'undefined' ? serverPersistor : persistStore(store)
 
 export type RootState = ReturnType<typeof rootReducer>
 export type AppDispatch = typeof store.dispatch

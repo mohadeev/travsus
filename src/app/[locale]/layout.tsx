@@ -1,6 +1,11 @@
 
 import { NextIntlClientProvider } from 'next-intl'
-import { fontVariables } from '@/lib/fonts'
+// Bricolage Grotesque for headlines, Instrument Sans for text; Inter only for
+// what they lack (Cyrillic for Russian). Self-hosted: each alphabet is its own
+// file, so a page downloads only the ones it uses.
+import '@fontsource-variable/bricolage-grotesque/opsz.css'
+import '@fontsource-variable/instrument-sans/index.css'
+import '@fontsource-variable/inter/opsz.css'
 
 import '../globals.css'
 import '@/fonts/line-awesome-1.3.0/css/line-awesome.css'
@@ -24,18 +29,27 @@ export function generateStaticParams() {
 	return routing.locales.map((locale) => ({ locale }))
 }
 
-export default async function RootLayout({
-	children,
-	params: { locale },
-}: Readonly<{
-	children: React.ReactNode
-	params: { locale: string }
-}>) {
+export default async function RootLayout(
+	props: Readonly<{
+		children: React.ReactNode
+		params: Promise<{ locale: string }>
+	}>
+) {
+	const params = await props.params;
+
+	const {
+		locale
+	} = params;
+
+	const {
+		children
+	} = props;
+
 	setRequestLocale(locale)
 	const messages = await getMessages({ locale })
 
 	return (
-		<html className={fontVariables} lang={locale}>
+		<html lang={locale}>
 			<head>
 				{/* Favicon */}
 				<link rel="icon" type="image/png" href={logoImg.src} />

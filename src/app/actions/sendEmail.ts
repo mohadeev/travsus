@@ -27,7 +27,7 @@ export async function sendEmail(formData: FormData) {
 		return { success: false, error: 'INVALID' }
 	}
 
-	const ip = headers().get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown'
+	const ip = (await headers()).get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown'
 	if (tooMany(ip)) return { success: false, error: 'TOO_MANY' }
 
 	const sent = await sendTemplate('contact-team', { to: { email: OWNER_EMAIL, name: 'TRAVSUS' }, data: { name, email, message } })

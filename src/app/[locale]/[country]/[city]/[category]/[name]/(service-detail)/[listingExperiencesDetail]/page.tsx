@@ -1,144 +1,159 @@
-'use client'
+import { notFound } from 'next/navigation'
+import { setRequestLocale } from 'next-intl/server'
+import type { Metadata } from 'next'
+import { getTourData } from '@/lib/tourData'
+import { getTourPageExtras } from '@/lib/tourPage'
+import ListingExperiencesDetailPage from './TourDetailClient'
+import { getTourCatalog } from '@/lib/tourCatalog'
+import RecentTourTracker from '@/components/RecentTourTracker'
+import {
+	tourAlternates,
+	tourDescription,
+	tourImages,
+	tourJsonLd,
+	tourTitle,
+	tourUrl,
+} from './tourSeo'
 
-import { type FC, useEffect } from 'react'
-import { useAppSelector } from '@/store/hooks'
-import { selectMobileReserveOpen } from '@/store/slices/ui'
-import RenderSidebar from './RenderSideBar/RenderSidebar'
-import ListingExperiencesDetailsImages from './ListingExperiencesDetailsImages'
-import ExperiencesDescriptionSkeleton from './ExperiencesDescriptionSkeleton'
-import TourFAQ from './FAQProps'
-import ReviewSystem from './ReviewSystem/ReviewSystem'
-import Included from './Included'
-import TourHeader from './TourHeader'
-import AffiliateShareBar from '@/components/AffiliateShareBar'
-import ReadMore from '@/app/(client-components)/ReadeMore'
-import { useTranslations } from '@/lib/i18n'
-import { Clock3, Flag, MapPin } from 'lucide-react'
-import { useTranslations as useIntlTranslations } from 'next-intl'
-import type { HomeTour } from '@/lib/homeData'
-import TourCard from '@/app/[locale]/(home)/TourCard'
-import MobileFooterSticky from '../(components)/MobileFooterSticky'
-import BookingGuarantees from './BookingGuarantees'
-import TourPreBookingInfo from './TourPreBookingInfo'
-import ContactReservations from './ContactReservations'
-import TourItineraryWithMap from './itinerary/TourItineraryWithMap'
-import { TourServiceProvider, useTourService } from '../TourServiceContext'
+// Same HTML for every visitor (the "saved" heart is set in the browser), so
+// each tour is rendered once and served from the cache (Cloudflare KV on the
+// Worker), refreshed at most every hour. This is the page file, not a layout,
+// because vinext reads `revalidate` from the page.
+export const revalidate = 3600
 
-export type ListingExperiencesDetailPageProps = {
-	serviceData: any
-	/** Other tours to suggest at the bottom (from the server) */
-	similar?: HomeTour[]
+type TourParams = { locale: string; country: string; city: string; category: string; name: string; listingExperiencesDetail: string }
+
+/**
+ * Every tour in this language. The Cloudflare build lists them so a deploy
+ * with --warm-cache renders each one into the cache; the Next.js build keeps
+ * rendering each tour on its first visit (no database load at build time).
+ */
+export async function generateStaticParams({ params }: { params: { locale: string } }) {
+	if (!process.env.CLOUDFLARE_BUILD) return []
+	const tours = await getTourCatalog()
+	return tours.flatMap((tour) => {
+		const slug = tour.slugs.find((s: any) => s.language === params.locale)?.slug
+		// /{locale}/{country}/{city}/{category}/{name}/{id}
+		const [, locale, country, city, category, name, id] = (slug ?? '').split('/')
+		return locale === params.locale && id ? [{ country, city, category, name, listingExperiencesDetail: id }] : []
+	})
 }
 
-// The tour arrives from the server as a prop and is shared through context,
-// so the full content is in the server HTML (search engines, AI crawlers).
-const ListingExperiencesDetailPage: FC<ListingExperiencesDetailPageProps> = ({
-	serviceData,
-	similar = [],
-}) => (
-	<TourServiceProvider value={serviceData}>
-		<TourDetail serviceData={serviceData} similar={similar} />
-	</TourServiceProvider>
-)
+interface DetailPageProps {
+	params: Promise<TourParams>
+}
 
-const TourDetail: FC<ListingExperiencesDetailPageProps> = ({ similar = [] }) => {
-	const t = useTranslations('servicedetail_listingexperiencesdetail_page')
-	const tPage = useIntlTranslations('TourPage')
-	const tHome = useIntlTranslations('Home')
-	const service: any = useTourService()
-	const { overview, days, faq }: any = service || {}
-	const mobileReserveOpen = useAppSelector(selectMobileReserveOpen)
+// <head>: title, description, canonical, hreflang, social cards
+export async function generateMetadata(
+	props: {
+		params: Promise<TourParams>
+	}
+): Promise<Metadata> {
+	const params = await props.params;
+	const { listingExperiencesDetail: tourId, locale } = params
+	const tour: any = await getTourData(tourId, locale).catch(() => null)
 
-	useEffect(() => {
-		window.scrollTo(0, 0)
-	}, [service?.id])
+	if (!tour) {
+		return {
+			title: 'Tour Not Found | TRAVSUS',
+			description: 'The requested tour could not be found.',
+			robots: { index: false, follow: true },
+		}
+	}
 
-	// Quick facts under the overview (only the ones this tour has)
-	const facts = [
-		days?.length && { icon: Clock3, label: tPage('duration'), value: tHome('days_count', { count: days.length }) },
-		service?.startAddress?.city && { icon: MapPin, label: tPage('starts_in'), value: service.startAddress.city },
-		service?.endAddress?.city && { icon: Flag, label: tPage('ends_in'), value: service.endAddress.city },
-	].filter(Boolean) as { icon: typeof Clock3; label: string; value: string }[]
+	const url = tourUrl(tour, locale)
+	const title = tourTitle(tour)
+	const description = tourDescription(tour)
+	const images = tourImages(tour).slice(0, 4)
 
-	return (
-		<>
-			{!mobileReserveOpen && (
-				<div className="mx-auto max-w-7xl px-5 pb-24 text-neutral-950 dark:text-white">
-					<AffiliateShareBar title={service?.name} />
-					<TourHeader />
-					<ListingExperiencesDetailsImages />
+	return {
+		title,
+		description,
+		keywords: tour.tags?.length ? tour.tags.join(', ') : undefined,
+		alternates: { canonical: url, languages: tourAlternates(tour) },
+		openGraph: {
+			type: 'website',
+			url,
+			title,
+			description,
+			siteName: 'TRAVSUS',
+			locale: locale.replace('-', '_'),
+			images: images.map((image) => ({ url: image, alt: tour.name })),
+		},
+		twitter: {
+			card: 'summary_large_image',
+			title,
+			description,
+			images: images.slice(0, 1),
+		},
+		robots: {
+			index: true,
+			follow: true,
+			googleBot: {
+				index: true,
+				follow: true,
+				'max-image-preview': 'large',
+				'max-snippet': -1,
+				'max-video-preview': -1,
+			},
+		},
+	}
+}
 
-					<div className="mt-10 grid gap-12 lg:grid-cols-[minmax(0,1fr)_380px]">
-						{/* Main content */}
-						<div className="min-w-0 space-y-14">
-							<section>
-								<span aria-hidden className="mb-3 block h-1 w-10 rounded-full bg-brand-500" />
-								<h2 className="text-2xl font-bold tracking-tight">{t('Overview_Title')}</h2>
-								{facts.length > 0 && (
-									<dl className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3">
-										{facts.map(({ icon: Icon, label, value }) => (
-											<div key={label} className="flex items-center gap-3 rounded-2xl border border-neutral-200 p-4 dark:border-neutral-800">
-												<Icon className="h-5 w-5 shrink-0 text-brand-500" strokeWidth={1.8} />
-												<div className="min-w-0">
-													<dt className="text-xs text-neutral-500">{label}</dt>
-													<dd className="truncate font-semibold">{value}</dd>
-												</div>
-											</div>
-										))}
-									</dl>
-								)}
-								{overview ? (
-									<div className="mt-6 text-[17px] leading-relaxed text-neutral-700 dark:text-neutral-300">
-										<ReadMore description={overview} />
-									</div>
-								) : (
-									<ExperiencesDescriptionSkeleton className="listingSection__wrap_no_border" />
-								)}
-							</section>
+const DetailPage = async (props: DetailPageProps) => {
+	const params = await props.params;
+	const { listingExperiencesDetail: tourId, locale } = params
+	// The page's language from the address, not the request headers, so the page can be cached
+	setRequestLocale(locale)
 
-							<BookingGuarantees />
-							<Included />
+	try {
+		const tour: any = await getTourData(tourId, locale)
+		if (!tour) notFound()
 
-							{days && (
-								<section>
-									<span aria-hidden className="mb-3 block h-1 w-10 rounded-full bg-brand-500" />
-									<h2 className="mb-6 text-2xl font-bold tracking-tight">{t('Itinerary_Title')}</h2>
-									<TourItineraryWithMap days={days} />
-								</section>
-							)}
 
-							<TourPreBookingInfo />
-							<TourFAQ faqs={faq} />
-							{service?.id && <ReviewSystem serviceId={service.id} serviceName={service.name} />}
-						</div>
+		// Similar tours, "from" price and price range: one small cached result per tour
+		const extras = await getTourPageExtras(tourId, locale)
+		const similar = extras?.similar ?? []
+		const fromPricePerPerson = extras?.fromPricePerPerson ?? null
 
-						{/* Booking card: stays in view while scrolling */}
-						<aside className="hidden lg:block">
-							<div className="sticky top-32">
-								<RenderSidebar />
-								<ContactReservations />
-							</div>
-						</aside>
-					</div>
+		const jsonLd = tourJsonLd(tour, locale, {
+			prices: extras?.prices ?? undefined,
+			currency: tour.pricingTiers?.[0]?.pricing?.currency || 'EUR',
+		})
 
-					{similar.length > 0 && (
-						<section className="mt-24">
-							<span aria-hidden className="mb-3 block h-1 w-10 rounded-full bg-brand-500" />
-							<h2 className="mb-8 text-2xl font-bold tracking-tight sm:text-3xl">{t('Similar_Experiences')}</h2>
-							<ul className="grid grid-cols-2 gap-x-3 gap-y-6 sm:gap-x-5 sm:gap-y-10 lg:grid-cols-4">
-								{similar.map((tour) => (
-									<li key={tour.id}>
-										<TourCard tour={tour} />
-									</li>
-								))}
-							</ul>
-						</section>
-					)}
+		return (
+			<div className="ListingDetailPage">
+				<RecentTourTracker tourId={tour.id} />
+				<div className="ListingDetailPage__content">
+					<ListingExperiencesDetailPage serviceData={{ ...tour, fromPricePerPerson }} similar={similar as any} />
 				</div>
-			)}
-			<MobileFooterSticky />
-		</>
-	)
+				<script
+					type="application/ld+json"
+					// "<" is escaped so tour text can never close the script tag
+					dangerouslySetInnerHTML={{
+						__html: JSON.stringify(jsonLd).replace(/</g, '\\u003c'),
+					}}
+				/>
+			</div>
+		);
+	} catch (error: any) {
+		// Let Next.js handle notFound() / redirect() instead of showing an error
+		if (typeof error?.digest === 'string' && error.digest.startsWith('NEXT_')) {
+			throw error
+		}
+		console.error('Error in DetailLayout:', error)
+
+		return (
+			<div className="ListingDetailPage">
+				<div className="ListingDetailPage__content">
+					<div className="error-message">
+						<h2>Something went wrong</h2>
+						<p>Please try again later.</p>
+					</div>
+				</div>
+			</div>
+		)
+	}
 }
 
-export default ListingExperiencesDetailPage
+export default DetailPage

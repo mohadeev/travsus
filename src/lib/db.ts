@@ -23,13 +23,22 @@ const mainUrl = (): string => {
 const placesUrl = (): string => process.env.DATABASE_URL_PLACES || mainUrl()
 const mainDbName = (): string => process.env.MONGODB_DB || 'travsus'
 
-// One connection per process, reused between serverless invocations
-const shared = globalThis as unknown as { __travsusMongo?: Record<string, Promise<MongoClient>> }
-const clients = (shared.__travsusMongo ??= {})
+// One connection per process, reused between serverless invocations.
+// On Cloudflare Workers a connection can't outlive the request that opened it,
+// so there each request gets its own (src/cloudflare/worker.ts sets that scope).
+const shared = globalThis as unknown as {
+	__travsusMongo?: Record<string, Promise<MongoClient>>
+	__travsusRequestScope?: { getStore(): Record<string, any> | undefined }
+}
+const processClients = (shared.__travsusMongo ??= {})
+const clientsForNow = (): Record<string, Promise<MongoClient>> => {
+	const request = shared.__travsusRequestScope?.getStore()
+	return request ? (request.mongo ??= {}) : processClients
+}
 // Timeouts: a stalled connection fails and is retried instead of waiting
 // forever (a hung request froze whole build workers)
 const connect = (url: string) =>
-	(clients[url] ??= new MongoClient(url, { maxPoolSize: 10, serverSelectionTimeoutMS: 15000, connectTimeoutMS: 15000, socketTimeoutMS: 40000 }).connect())
+	(clientsForNow()[url] ??= new MongoClient(url, { maxPoolSize: 10, serverSelectionTimeoutMS: 15000, connectTimeoutMS: 15000, socketTimeoutMS: 40000 }).connect())
 const mainDb = async (): Promise<Db> => (await connect(mainUrl())).db(mainDbName())
 /** The geography database keeps its own name (set in its connection string). */
 const placesDb = async (): Promise<Db> => (placesUrl() === mainUrl() ? mainDb() : (await connect(placesUrl())).db())

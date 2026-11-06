@@ -46,31 +46,34 @@ export default function CookieConsent() {
 			)}
 
 			{banner && !panel && (
-				<div role="dialog" aria-live="polite" aria-label={t('title')} className="fixed inset-x-3 bottom-3 z-[60] sm:inset-x-auto sm:bottom-5 sm:left-5 sm:max-w-md">
-					<div className="rounded-3xl bg-white p-5 shadow-2xl ring-1 ring-neutral-200 sm:p-6 dark:bg-neutral-900 dark:ring-neutral-800">
+				<div role="dialog" aria-live="polite" aria-label={t('title')} className="fixed inset-x-2 bottom-2 z-[60] sm:inset-x-auto sm:bottom-5 sm:left-5 sm:max-w-md">
+					<div className="rounded-2xl bg-white p-3 shadow-2xl ring-1 ring-neutral-200 sm:rounded-3xl sm:p-6 dark:bg-neutral-900 dark:ring-neutral-800">
 						<div className="flex items-start gap-3">
-							<span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-amber-100 text-amber-700 dark:bg-amber-950 dark:text-amber-300">
+							<span className="hidden h-10 w-10 shrink-0 place-items-center rounded-full bg-amber-100 sm:grid text-amber-700 dark:bg-amber-950 dark:text-amber-300">
 								<Cookie className="h-5 w-5" />
 							</span>
 							<div>
-								<p className="text-base font-bold">{t('title')}</p>
-								<p className="mt-1 text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">
-									{t('text')}{' '}
+								<p className="hidden text-base font-bold sm:block">{t('title')}</p>
+								<p className="text-[13px] leading-snug text-neutral-600 sm:mt-1 sm:text-sm sm:leading-relaxed dark:text-neutral-400">
+									{/* Phones: one short line, so the banner doesn't cover the page */}
+									<span className="sm:hidden">{t('text_short')}</span>
+									<span className="hidden sm:inline">{t('text')}</span>{' '}
 									<Link href={`/${locale}/cookie-policy` as any} className="font-semibold text-neutral-950 underline underline-offset-2 dark:text-white">
 										{t('policy')}
 									</Link>
 								</p>
 							</div>
 						</div>
-						<div className="mt-4 grid grid-cols-2 gap-2">
-							<button type="button" onClick={() => decide({ analytics: false, marketing: false })} className="h-11 rounded-full border border-neutral-300 text-sm font-semibold transition hover:border-neutral-950 dark:border-neutral-700 dark:hover:border-white">
+						{/* Reject and Accept side by side, styled the same (equally easy to choose) */}
+						<div className="mt-2.5 grid grid-cols-2 gap-2 sm:mt-4">
+							<button type="button" onClick={() => decide({ analytics: false, marketing: false })} className="h-10 rounded-full bg-neutral-950 text-sm font-semibold text-white transition hover:bg-neutral-800 sm:h-11 dark:bg-white dark:text-neutral-950">
 								{t('reject')}
 							</button>
-							<button type="button" onClick={() => decide({ analytics: true, marketing: true })} className="h-11 rounded-full bg-neutral-950 text-sm font-semibold text-white transition hover:bg-neutral-800 dark:bg-white dark:text-neutral-950">
+							<button type="button" onClick={() => decide({ analytics: true, marketing: true })} className="h-10 rounded-full bg-neutral-950 text-sm font-semibold text-white transition hover:bg-neutral-800 sm:h-11 dark:bg-white dark:text-neutral-950">
 								{t('accept')}
 							</button>
 						</div>
-						<button type="button" onClick={() => { setDraft({ analytics: false, marketing: false }); setPanel(true) }} className="mt-3 w-full text-center text-sm font-semibold text-neutral-600 underline underline-offset-4 hover:text-neutral-950 dark:text-neutral-400 dark:hover:text-white">
+						<button type="button" onClick={() => { setDraft({ analytics: false, marketing: false }); setPanel(true) }} className="mt-2 w-full text-center text-xs font-semibold text-neutral-600 underline underline-offset-4 sm:mt-3 sm:text-sm hover:text-neutral-950 dark:text-neutral-400 dark:hover:text-white">
 							{t('choose')}
 						</button>
 					</div>

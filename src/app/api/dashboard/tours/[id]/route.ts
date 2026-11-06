@@ -5,7 +5,7 @@ import { db, T, must, touch } from '@/lib/db'
 import { getBusinessId, PROTECTED_TOUR_FIELDS } from '../ownTour'
 import { refreshTourCache } from '@/lib/tourCatalog'
 
-type Params = { params: { id: string } }
+type Params = { params: Promise<{ id: string }> }
 
 /**
  * Which tours the signed-in user may manage, or an error response.
@@ -46,7 +46,8 @@ const notFound = () =>
 		{ status: 404 },
 	)
 
-export async function GET(request: NextRequest, { params }: Params) {
+export async function GET(request: NextRequest, props: Params) {
+	const params = await props.params;
 	try {
 		const { match, error } = await requireBusiness()
 		if (error) return error
@@ -84,7 +85,8 @@ export async function GET(request: NextRequest, { params }: Params) {
 	}
 }
 
-export async function PUT(request: NextRequest, { params }: Params) {
+export async function PUT(request: NextRequest, props: Params) {
+	const params = await props.params;
 	try {
 		const { match, error } = await requireBusiness()
 		if (error) return error
@@ -135,7 +137,8 @@ export async function PUT(request: NextRequest, { params }: Params) {
 	}
 }
 
-export async function DELETE(request: NextRequest, { params }: Params) {
+export async function DELETE(request: NextRequest, props: Params) {
+	const params = await props.params;
 	try {
 		const { match, error } = await requireBusiness()
 		if (error) return error

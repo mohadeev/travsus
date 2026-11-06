@@ -11,7 +11,8 @@ import { bigImage } from './_components/ui'
 // would be stuck with an empty country list
 export const dynamic = 'force-dynamic'
 
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
+export async function generateMetadata(props: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+	const params = await props.params;
 	const t = await getTranslations({ locale: params.locale, namespace: 'Destination' })
 	return { title: `${t('destinations')} | TRAVSUS`, description: t('index_text'), alternates: { canonical: `/${params.locale}/destinations` } }
 }
@@ -42,7 +43,8 @@ function CountryCard({ country, locale, big = false }: { country: Country; local
 	)
 }
 
-export default async function DestinationsPage({ params }: { params: { locale: string } }) {
+export default async function DestinationsPage(props: { params: Promise<{ locale: string }> }) {
+	const params = await props.params;
 	const { locale } = params
 	setRequestLocale(locale)
 	const t = await getTranslations('Destination')

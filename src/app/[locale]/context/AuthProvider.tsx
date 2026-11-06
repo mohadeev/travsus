@@ -1,18 +1,17 @@
 'use client'
 // Clerk sign-in for the whole site, in the visitor's language.
 import { ClerkProvider } from '@clerk/nextjs'
-import {
-	deDE,
-	enUS,
-	esES,
-	frFR,
-	itIT,
-	jaJP,
-	koKR,
-	ptPT,
-	ruRU,
-	zhCN,
-} from '@clerk/localizations'
+// One file per language (the package index holds ~50 languages)
+import { deDE } from '@clerk/localizations/de-DE'
+import { enUS } from '@clerk/localizations/en-US'
+import { esES } from '@clerk/localizations/es-ES'
+import { frFR } from '@clerk/localizations/fr-FR'
+import { itIT } from '@clerk/localizations/it-IT'
+import { jaJP } from '@clerk/localizations/ja-JP'
+import { koKR } from '@clerk/localizations/ko-KR'
+import { ptPT } from '@clerk/localizations/pt-PT'
+import { ruRU } from '@clerk/localizations/ru-RU'
+import { zhCN } from '@clerk/localizations/zh-CN'
 import { useLocale } from 'next-intl'
 
 const clerkLanguages: Record<string, typeof enUS> = {

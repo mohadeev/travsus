@@ -1,5 +1,5 @@
 // Links in the mobile menu (categories and cities): edit here to change them.
-// `label` is a key in messages/<locale>.json → "Home" (categories) or a plain city name.
+// `label` is a key in public/messages/<locale>.json → "Home" (categories) or a plain city name.
 
 export type SiteNavLink = { label: string; href: string; translate: boolean }
 

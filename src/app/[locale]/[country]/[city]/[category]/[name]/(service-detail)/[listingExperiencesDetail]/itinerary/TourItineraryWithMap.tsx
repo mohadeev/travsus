@@ -39,8 +39,8 @@ export default function TourItineraryWithMap({ days }: { days: Day[]; title?: st
 	const chip = (active: boolean) =>
 		`inline-flex items-center gap-2 rounded-full border-2 px-3 py-1.5 text-sm font-semibold transition ${
 			active
-				? 'border-brand-500 bg-brand-500 text-white'
-				: 'border-neutral-200 bg-white hover:border-brand-300 dark:border-neutral-800 dark:bg-neutral-950'
+				? 'border-black bg-black text-white dark:border-white dark:bg-white dark:text-black'
+				: 'border-neutral-200 bg-white hover:border-neutral-400 dark:border-neutral-800 dark:bg-neutral-950'
 		}`
 
 	return (
@@ -98,7 +98,7 @@ export default function TourItineraryWithMap({ days }: { days: Day[]; title?: st
 								}}
 							>
 								<summary className="flex cursor-pointer list-none items-center gap-4 [&::-webkit-details-marker]:hidden">
-									<span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-brand-500 text-sm font-bold text-white">
+									<span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-black text-sm font-bold text-white dark:bg-white dark:text-black">
 										{index + 1}
 									</span>
 									<h3 className="flex-1 font-semibold">{label}</h3>
@@ -112,7 +112,7 @@ export default function TourItineraryWithMap({ days }: { days: Day[]; title?: st
 									)}
 									{day.stops?.map((stop, stopIndex) => (
 										<div key={`stop-${index}-${stopIndex}`} className="flex gap-3">
-											<MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand-500" />
+											<MapPin className="mt-0.5 h-4 w-4 shrink-0" />
 											<div className="min-w-0">
 												<h4 className="font-semibold">{stop.name}</h4>
 												{stop.duration && (

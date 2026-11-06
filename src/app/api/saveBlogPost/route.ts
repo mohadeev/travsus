@@ -58,7 +58,7 @@ export async function POST(request: NextRequest) {
 					.select('*')
 					.single(),
 			)
-			revalidateTag('blog') // blog list and sitemap show the change right away
+			revalidateTag('blog', { expire: 0 }) // blog list and sitemap show the change right away
 			return NextResponse.json({ success: true, post })
 		}
 		const tags = (formData.get('tags') as string)
@@ -138,7 +138,7 @@ export async function POST(request: NextRequest) {
 			)
 		}
 
-		revalidateTag('blog') // blog list and sitemap show the change right away
+		revalidateTag('blog', { expire: 0 }) // blog list and sitemap show the change right away
 		return NextResponse.json({ success: true, post })
 	} catch (error) {
 		console.error('Error saving post:', error)

@@ -1,33 +1,30 @@
 'use client'
-// Site header, GetYourGuide-style and minimal: one row with the logo, the
-// travelers' links (all tours, blog, help), a quiet "Become a partner" for
-// suppliers and the account icons. The
-// categories live in the home page chips and the mobile menu. Rendered on the
-// server too, so links are crawlable.
+// Site header, TripAdvisor layout: the logo on the left, the travelers' links
+// in the middle (bold pills), language and a black "Log In" pill on the right
+// (the account menu once signed in). White, with a soft shadow once the page
+// scrolls. Rendered on the server too, so links are crawlable.
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Heart, Search } from 'lucide-react'
-import { useLocale, useTranslations } from 'next-intl'
+import { useClerk, useUser } from '@clerk/nextjs'
+import { useTranslations } from 'next-intl'
 import Logo from '@/shared/Logo'
 import MenuBar from '@/shared/MenuBar'
 import { ACCOUNT_LINKS } from '@/constants/siteNav'
+import { useTranslations as useOldTranslations } from '@/lib/i18n'
 import AvatarDropdown from './AvatarDropdown'
 import LanguagePreferencesModal from './LanguagePreferencesModal'
 
-const icon = 'grid h-10 w-10 place-items-center rounded-full transition hover:bg-neutral-100 dark:hover:bg-neutral-800'
-
 export default function HeaderBar() {
 	const t = useTranslations('Nav')
-	const tHome = useTranslations('Home')
-	const locale = useLocale()
+	const tAccount = useOldTranslations('AvatarDropdown')
 	const pathname = usePathname()
+	const { isLoaded, isSignedIn } = useUser()
+	const { openSignIn } = useClerk()
 	const [scrolled, setScrolled] = useState(false)
-	// The home page has its own big search right below
-	const home = pathname === `/${locale}` || pathname === '/'
 
 	useEffect(() => {
-		const onScroll = () => setScrolled(window.scrollY > 8)
+		const onScroll = () => setScrolled(window.scrollY > 4)
 		onScroll()
 		window.addEventListener('scroll', onScroll, { passive: true })
 		return () => window.removeEventListener('scroll', onScroll)
@@ -36,7 +33,8 @@ export default function HeaderBar() {
 	const link = (href: string, label: string, active: boolean) => (
 		<Link
 			href={href as any}
-			className={`rounded-full px-3 py-2 text-[15px] font-semibold transition hover:bg-neutral-100 dark:hover:bg-neutral-800 ${active ? 'text-neutral-950 dark:text-white' : 'text-neutral-800 dark:text-neutral-200'}`}
+			aria-current={active ? 'page' : undefined}
+			className="rounded-full px-3.5 py-2.5 text-base font-bold text-black transition hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-800"
 		>
 			{label}
 		</Link>
@@ -44,12 +42,8 @@ export default function HeaderBar() {
 
 	return (
 		<header
-			className={`sticky top-0 z-40 transition-[background-color,box-shadow] duration-300 ${
-				scrolled
-					? 'bg-white/90 shadow-[0_1px_12px_rgba(0,0,0,0.08)] backdrop-blur-xl dark:bg-neutral-950/90'
-					: home
-						? 'bg-transparent' // the home hero glow shows through
-						: 'bg-white/90 backdrop-blur-xl dark:bg-neutral-950/90'
+			className={`sticky top-0 z-40 bg-white transition-shadow duration-200 dark:bg-neutral-950 ${
+				scrolled ? 'shadow-[0_2px_8px_rgba(0,0,0,0.08)]' : ''
 			}`}
 		>
 			<a
@@ -59,31 +53,33 @@ export default function HeaderBar() {
 				{t('skip')}
 			</a>
 
-			<div className="mx-auto flex h-16 max-w-7xl items-center gap-2 px-5 sm:h-[72px]">
-				<Logo className="w-24 shrink-0 sm:w-28" />
+			<div className="mx-auto grid h-[60px] max-w-7xl grid-cols-[1fr_auto] items-center px-4 sm:h-[72px] sm:px-5 lg:grid-cols-[1fr_auto_1fr]">
+				<Logo className="w-24 shrink-0 justify-self-start sm:w-28" />
 
-				<nav aria-label={t('explore')} className="ml-auto hidden items-center gap-1 lg:flex">
+				<nav aria-label={t('explore')} className="hidden items-center gap-1 lg:flex">
 					{link('/search?query=', t('all_tours'), !!pathname?.includes('/search'))}
 					{link(ACCOUNT_LINKS.blog, t('blog'), !!pathname?.includes('/blog'))}
 					{link(ACCOUNT_LINKS.help, t('help'), !!pathname?.includes('/contact'))}
-					<span aria-hidden className="mx-1 h-5 w-px bg-neutral-200 dark:bg-neutral-700" />
 					{link(ACCOUNT_LINKS.partner, t('partner'), !!pathname?.includes('/affiliates'))}
 				</nav>
 
-				<div className="ml-auto flex items-center gap-0.5 text-neutral-900 lg:ml-3 dark:text-white">
-					{!home && (
-						<Link href={`/search?query=` as any} aria-label={tHome('search_cta')} className={icon}>
-							<Search className="h-5 w-5" />
-						</Link>
-					)}
+				<div className="flex items-center gap-1 justify-self-end text-black dark:text-white">
 					<div className="hidden sm:block">
 						<LanguagePreferencesModal variant={'nav'} />
 					</div>
-					<Link href={ACCOUNT_LINKS.saved as any} aria-label={t('saved')} className={`hidden sm:grid ${icon}`}>
-						<Heart className="h-5 w-5" />
-					</Link>
-					<AvatarDropdown />
-					<MenuBar className={`lg:hidden ${icon}`} iconClassName="h-5 w-5" />
+					{/* Most visitors aren't signed in: the pill shows from the first paint */}
+					{!(isLoaded && isSignedIn) ? (
+						<button
+							type="button"
+							onClick={() => openSignIn({ forceRedirectUrl: window.location.href })}
+							className="ml-1 rounded-full bg-black px-[18px] py-3 text-base font-bold leading-none text-white transition hover:bg-neutral-800 dark:bg-white dark:text-black"
+						>
+							{tAccount('log_in')}
+						</button>
+					) : (
+						<AvatarDropdown />
+					)}
+					<MenuBar className="grid h-10 w-10 place-items-center rounded-full transition hover:bg-neutral-100 lg:hidden dark:hover:bg-neutral-800" iconClassName="h-5 w-5" />
 				</div>
 			</div>
 		</header>
