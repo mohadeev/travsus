@@ -1,16 +1,17 @@
 'use client'
-// The tour map (browser only). Orange route with direction arrows, a big label
-// for every place you sleep ("Start · Day 3 · Marrakech") and small dots for
-// places you only pass. Choosing a day highlights it and zooms to it.
+// The tour map (browser only), laid out like TripAdvisor's: orange route with
+// direction arrows, "Start" / "Finish" labels, a numbered circle where each
+// day ends and small dots for places you only pass. Choosing a day highlights
+// it and zooms to it.
 import { useEffect, useMemo, useRef } from 'react'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import { useTranslations } from 'next-intl'
-import { Maximize2, Navigation } from 'lucide-react'
 import { buildRoute, type Place, type RouteStop } from './route'
 
 const ORANGE = '#F2612A'
 const DARK_ORANGE = '#B83912'
+const INK = '#002B11'
 
 export type TourMapLeafletProps = {
 	days: any[]
@@ -76,7 +77,7 @@ export default function TourMapLeaflet({ days, selectedDayIndex, onDaySelect, he
 		const map = mapRef.current
 		if (!map || !places.length) return
 		if (places.length === 1) map.setView([places[0].lat, places[0].lng], 10, { animate: true })
-		else map.fitBounds(L.latLngBounds(places.map((p) => [p.lat, p.lng])), { padding: [80, 80], animate: true })
+		else map.fitBounds(L.latLngBounds(places.map((p) => [p.lat, p.lng])), { padding: [44, 44], animate: true })
 	}
 
 	// Create the map once
@@ -152,7 +153,7 @@ export default function TourMapLeaflet({ days, selectedDayIndex, onDaySelect, he
 					radius: 6,
 					color: '#ffffff',
 					weight: 2,
-					fillColor: dim ? '#c8c8c8' : ORANGE,
+					fillColor: dim ? '#c8c8c8' : INK,
 					fillOpacity: 1,
 				})
 					.bindTooltip(escapeHtml(stop.name), { direction: 'top', offset: [0, -6] })
@@ -160,16 +161,16 @@ export default function TourMapLeaflet({ days, selectedDayIndex, onDaySelect, he
 				continue
 			}
 
-			const badge = escapeHtml(label(stop))
-			const color = isDayEnd ? DARK_ORANGE : ORANGE
-			const html = `
-				<div style="position:absolute;left:0;bottom:12px;transform:translateX(-50%);white-space:nowrap;opacity:${dim ? 0.55 : 1};font-family:inherit">
-					<div style="display:flex;align-items:center;gap:8px;background:#fff;border-radius:9999px;padding:4px 12px 4px 4px;box-shadow:0 4px 14px rgba(0,0,0,.18);border:2px solid ${isDayEnd ? DARK_ORANGE : '#fff'}">
-						<span style="background:${color};color:#fff;border-radius:9999px;padding:4px 10px;font-weight:700;font-size:12px">${badge}</span>
-						<span style="font-weight:700;font-size:14px;color:#111">${escapeHtml(stop.name)}</span>
-					</div>
-				</div>
-				<div style="position:absolute;left:0;top:0;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:9999px;background:${color};border:3px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.3)"></div>`
+			// As on TripAdvisor: "Start" / "Finish" labels, a numbered circle for the
+			// days that end here, a small dot otherwise
+			const pills = [stop.isStart && t('start'), stop.isEnd && !stop.isStart && t('finish')].filter(Boolean) as string[]
+			const pill = pills.length
+				? `<div style="position:absolute;left:0;bottom:${stop.days.length ? 20 : 10}px;transform:translateX(-50%);white-space:nowrap;background:#fff;color:${DARK_ORANGE};border:2px solid ${ORANGE};border-radius:9999px;padding:3px 12px;font-weight:800;font-size:14px;box-shadow:0 4px 12px rgba(0,0,0,.18);font-family:inherit">${escapeHtml(pills.join(' · '))}</div>`
+				: ''
+			const center = stop.days.length
+				? `<div style="position:absolute;left:0;top:0;transform:translate(-50%,-50%);min-width:34px;height:34px;padding:0 8px;border-radius:9999px;background:${isDayEnd ? ORANGE : INK};color:#fff;display:grid;place-items:center;font-weight:800;font-size:15px;border:2px solid #fff;box-shadow:0 3px 10px rgba(0,0,0,.3);font-family:inherit">${escapeHtml(dayList(stop.days))}</div>`
+				: `<div style="position:absolute;left:0;top:0;width:16px;height:16px;margin:-8px 0 0 -8px;border-radius:9999px;background:${INK};border:3px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.3)"></div>`
+			const html = `<div style="opacity:${dim ? 0.5 : 1}">${pill}${center}</div>`
 
 			L.marker([stop.lat, stop.lng], {
 				zIndexOffset: isDayEnd ? 1000 : stop.isStart ? 500 : 0,
@@ -187,12 +188,6 @@ export default function TourMapLeaflet({ days, selectedDayIndex, onDaySelect, he
 		fitTo(focused && route.dayPlaces[selected]?.length ? route.dayPlaces[selected] : route.path)
 	}, [route, selected]) // eslint-disable-line react-hooks/exhaustive-deps
 
-	const openDirections = () => {
-		if (route.path.length < 2) return
-		const url = `https://www.google.com/maps/dir/${route.path.map((p) => `${p.lat},${p.lng}`).join('/')}`
-		window.open(url, '_blank', 'noopener')
-	}
-
 	if (!route.path.length) return null
 
 	return (
@@ -200,41 +195,6 @@ export default function TourMapLeaflet({ days, selectedDayIndex, onDaySelect, he
 			<style>{`.tour-map-tiles { filter: saturate(0.55) brightness(1.04) contrast(0.95); }`}</style>
 			<div ref={containerRef} style={{ height }} className="w-full bg-neutral-100" />
 
-			{/* Map buttons */}
-			<div className="absolute right-3 top-3 z-[500] flex gap-2">
-				<button
-					type="button"
-					onClick={() => (onDaySelect ? onDaySelect(-1) : fitTo(route.path))}
-					className="inline-flex items-center gap-1.5 rounded-full bg-white px-3.5 py-2 text-sm font-semibold shadow-md ring-1 ring-black/5 hover:bg-neutral-50"
-				>
-					<Maximize2 className="h-4 w-4" />
-					{t('see_all')}
-				</button>
-				{route.path.length > 1 && (
-					<button
-						type="button"
-						onClick={openDirections}
-						className="hidden items-center gap-1.5 rounded-full bg-neutral-950 px-3.5 py-2 text-sm font-semibold text-white shadow-md hover:bg-neutral-800 sm:inline-flex"
-					>
-						<Navigation className="h-4 w-4" />
-						{t('directions')}
-					</button>
-				)}
-			</div>
-
-			{/* What the symbols mean, in plain words */}
-			<ul className="absolute bottom-3 left-3 z-[500] flex flex-wrap gap-x-4 gap-y-1 rounded-2xl bg-white/95 px-3.5 py-2 text-xs font-medium shadow-md ring-1 ring-black/5">
-				<li className="flex items-center gap-1.5">
-					<span className="rounded-full px-1.5 text-[10px] font-bold text-white" style={{ background: ORANGE }}>
-						1
-					</span>
-					{t('legend_night')}
-				</li>
-				<li className="flex items-center gap-1.5">
-					<span className="h-2.5 w-2.5 rounded-full border-2 border-white shadow" style={{ background: ORANGE }} />
-					{t('legend_pass')}
-				</li>
-			</ul>
 		</div>
 	)
 }

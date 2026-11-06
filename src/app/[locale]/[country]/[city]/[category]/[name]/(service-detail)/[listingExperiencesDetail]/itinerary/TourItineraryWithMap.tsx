@@ -1,9 +1,10 @@
-'use client'
-// Itinerary: a plain "Your route" line, the map, and the day-by-day list.
-// Picking a day anywhere (route line, map, list) shows it on the map.
-import { Fragment, useMemo, useState } from 'react'
+// Itinerary, laid out like TripAdvisor's: the map (Start / Finish labels and a
+// numbered circle where each day ends), then tabs: "Overview" lists the route
+// day by day, "Day 1", "Day 2"… show that day and zoom the map to it. Every
+// day's text stays in the HTML (hidden tabs), so search engines read it all.
+import { useMemo, useState } from 'react'
 import Image from 'next/image'
-import { ArrowRight, ChevronDown, Flag, MapPin } from 'lucide-react'
+import { MapPin } from 'lucide-react'
 import { useTranslations } from '@/lib/i18n'
 import { useTranslations as useIntlTranslations } from 'next-intl'
 import TourMap from './TourMap'
@@ -28,132 +29,111 @@ interface Day {
 export default function TourItineraryWithMap({ days }: { days: Day[]; title?: string }) {
 	const t = useTranslations('ervicedetailListingexperiencesdetailTouritineraryWithMap')
 	const tRoute = useIntlTranslations('TourRoute')
+	const tPage = useIntlTranslations('TourPage')
 	const route = useMemo(() => buildRoute(days), [days])
-	// -1 = the whole trip
+	// -1 = the overview (whole trip)
 	const [selected, setSelected] = useState(-1)
 
-	// Start, then where each day ends
-	const start = route.path[0]
-	const dayEnds = route.dayPlaces.map((places) => places[places.length - 1])
+	/** "Day 3: Merzouga" without repeating "Day 3" when the name already has it */
+	const dayTitle = (day: Day, index: number) =>
+		/^(day|día|jour|tag|giorno|dia)\s*\d/i.test(day.name || '') ? day.name : `${t('Day_Heading')} ${index + 1}: ${day.name}`
+	/** The places of a day as "Fes - Azrou - Midelt" (the day's name if no places) */
+	const dayRoute = (day: Day, index: number) => {
+		const names = (route.dayPlaces[index] ?? []).map((p) => p.name)
+		return names.length > 1 ? names.join(' - ') : day.name || names[0] || ''
+	}
 
-	const chip = (active: boolean) =>
-		`inline-flex items-center gap-2 rounded-full border-2 px-3 py-1.5 text-sm font-semibold transition ${
-			active
-				? 'border-black bg-black text-white dark:border-white dark:bg-white dark:text-black'
-				: 'border-neutral-200 bg-white hover:border-neutral-400 dark:border-neutral-800 dark:bg-neutral-950'
-		}`
+	const tabs = [{ index: -1, label: tPage('tab_overview') }, ...days.map((_, index) => ({ index, label: tRoute('day', { n: index + 1 }) }))]
 
 	return (
-		<div className="overflow-hidden rounded-3xl border border-neutral-200 dark:border-neutral-800">
-			{/* Your route, in words anyone can follow */}
-			{start && (
-				<div className="border-b border-neutral-200 p-4 sm:p-5 dark:border-neutral-800">
-					<p className="mb-3 text-sm font-semibold uppercase tracking-wide text-neutral-500">{tRoute('your_route')}</p>
-					<ol className="flex flex-wrap items-center gap-2">
-						<li>
-							<button type="button" onClick={() => setSelected(-1)} className={chip(selected === -1)}>
-								<Flag className="h-4 w-4" />
-								<span>
-									{tRoute('start')}: {start.name}
-								</span>
-							</button>
-						</li>
-						{dayEnds.map((place, index) => (
-							<Fragment key={index}>
-								<li aria-hidden className="text-neutral-400">
-									<ArrowRight className="h-4 w-4" />
-								</li>
-								<li>
-									<button type="button" onClick={() => setSelected(index)} className={chip(selected === index)}>
-										<span className="font-bold">{tRoute('day', { n: index + 1 })}</span>
-										{place && <span className={selected === index ? 'text-white/90' : 'text-neutral-600 dark:text-neutral-400'}>{place.name}</span>}
-									</button>
-								</li>
-							</Fragment>
-						))}
-					</ol>
-					<p className="mt-3 text-xs text-neutral-500">{tRoute('tap_hint')}</p>
+		<div>
+			{route.path.length > 0 && (
+				<div className="relative z-1 overflow-hidden rounded-lg">
+					<TourMap days={days} selectedDayIndex={selected} onDaySelect={setSelected} height={260} />
 				</div>
 			)}
 
-			<div className="relative z-1">
-				<TourMap days={days} selectedDayIndex={selected} onDaySelect={setSelected} height={420} />
+			<div role="tablist" aria-label={tPage('tab_itinerary')} className="mt-2 flex gap-2 overflow-x-auto border-b border-neutral-200 [scrollbar-width:none] dark:border-neutral-800 [&::-webkit-scrollbar]:hidden">
+				{tabs.map((tab) => (
+					<button
+						key={tab.index}
+						type="button"
+						role="tab"
+						aria-selected={selected === tab.index}
+						onClick={() => setSelected(tab.index)}
+						className={`-mb-px shrink-0 border-b-[3px] px-4 py-3 text-base font-bold leading-6 transition ${
+							selected === tab.index ? 'border-brand-500 text-ink dark:text-white' : 'border-transparent text-ink-soft hover:text-ink dark:text-neutral-400 dark:hover:text-white'
+						}`}
+					>
+						{tab.label}
+					</button>
+				))}
 			</div>
 
-			{/* Day-by-day text: visible, collapsible, and fully in the HTML.
-			    Opening a day also shows it on the map. */}
-			<ol className="divide-y divide-neutral-200 border-t border-neutral-200 dark:divide-neutral-800 dark:border-neutral-800">
-				{days.map((day, index) => {
-					const label = /^(day|día|jour|tag|giorno|dia)\s*\d/i.test(day.name || '')
-						? day.name
-						: `${t('Day_Heading')} ${index + 1}: ${day.name}`
-					return (
-						<li key={`day-${index}`}>
-							<details
-								className="group px-5 py-4 sm:px-6"
-								open={selected === index}
-								onToggle={(e) => {
-									const open = (e.currentTarget as HTMLDetailsElement).open
-									if (open && selected !== index) setSelected(index)
-								}}
-							>
-								<summary className="flex cursor-pointer list-none items-center gap-4 [&::-webkit-details-marker]:hidden">
-									<span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-black text-sm font-bold text-white dark:bg-white dark:text-black">
-										{index + 1}
-									</span>
-									<h3 className="flex-1 font-semibold">{label}</h3>
-									<ChevronDown className="h-5 w-5 shrink-0 text-neutral-500 transition-transform group-open:rotate-180" />
-								</summary>
-								<div className="ml-12 mt-3 space-y-4">
-									{day.description && (
-										<p className="whitespace-pre-line text-[15px] leading-relaxed text-neutral-700 dark:text-neutral-300">
-											<LinkedText text={day.description} />
-										</p>
-									)}
-									{day.stops?.map((stop, stopIndex) => (
-										<div key={`stop-${index}-${stopIndex}`} className="flex gap-3">
-											<MapPin className="mt-0.5 h-4 w-4 shrink-0" />
-											<div className="min-w-0">
-												<h4 className="font-semibold">{stop.name}</h4>
-												{stop.duration && (
-													<p className="text-sm text-neutral-500">
-														{t('Duration_Label')} {stop.duration}
-													</p>
-												)}
-												{stop.image && (
-													<figure className="mt-2 max-w-md">
-														<div className="relative aspect-[16/9] overflow-hidden rounded-xl">
-															<Image src={stop.image} alt={stop.imageAlt || stop.name} fill sizes="448px" className="object-cover" />
-														</div>
-														{stop.imageCredit?.license && (
-															<figcaption className="mt-1 text-xs text-neutral-500">
-																Photo:{' '}
-																{stop.imageCredit.source ? (
-																	<a href={stop.imageCredit.source} target="_blank" rel="noopener nofollow" className="underline">
-																		{stop.imageCredit.author || 'Wikimedia Commons'}
-																	</a>
-																) : (
-																	stop.imageCredit.author || 'Wikimedia Commons'
-																)}
-																, {stop.imageCredit.license}
-															</figcaption>
-														)}
-													</figure>
-												)}
-												{stop.description && (
-													<p className="mt-1 text-[15px] text-neutral-700 dark:text-neutral-300">
-														<LinkedText text={stop.description} />
-													</p>
-												)}
-											</div>
-										</div>
-									))}
-								</div>
-							</details>
-						</li>
-					)
-				})}
+			{/* Overview: the route, one line per day */}
+			<ol role="tabpanel" hidden={selected !== -1} className="space-y-3 px-1 pt-5">
+				{days.map((day, index) => (
+					<li key={index}>
+						<button type="button" onClick={() => setSelected(index)} className="flex gap-2 text-left text-base leading-6 text-ink hover:underline dark:text-neutral-200">
+							<span className="font-bold tabular-nums text-brand-600">{index + 1}</span>
+							<span aria-hidden>•</span>
+							<span>{dayRoute(day, index)}</span>
+						</button>
+					</li>
+				))}
 			</ol>
+
+			{/* One panel per day */}
+			{days.map((day, index) => (
+				<section key={`day-${index}`} role="tabpanel" hidden={selected !== index} className="pt-5">
+					<h3 className="mb-3 text-lg font-bold leading-6">{dayTitle(day, index)}</h3>
+				<div className="space-y-4">
+					{day.description && (
+						<p className="whitespace-pre-line text-[15px] leading-relaxed text-neutral-700 dark:text-neutral-300">
+							<LinkedText text={day.description} />
+						</p>
+					)}
+					{day.stops?.map((stop, stopIndex) => (
+						<div key={`stop-${index}-${stopIndex}`} className="flex gap-3">
+							<MapPin className="mt-0.5 h-4 w-4 shrink-0" />
+							<div className="min-w-0">
+								<h4 className="font-semibold">{stop.name}</h4>
+								{stop.duration && (
+									<p className="text-sm text-neutral-500">
+										{t('Duration_Label')} {stop.duration}
+									</p>
+								)}
+								{stop.image && (
+									<figure className="mt-2 max-w-md">
+										<div className="relative aspect-[16/9] overflow-hidden rounded-xl">
+											<Image src={stop.image} alt={stop.imageAlt || stop.name} fill sizes="448px" className="object-cover" />
+										</div>
+										{stop.imageCredit?.license && (
+											<figcaption className="mt-1 text-xs text-neutral-500">
+												Photo:{' '}
+												{stop.imageCredit.source ? (
+													<a href={stop.imageCredit.source} target="_blank" rel="noopener nofollow" className="underline">
+														{stop.imageCredit.author || 'Wikimedia Commons'}
+													</a>
+												) : (
+													stop.imageCredit.author || 'Wikimedia Commons'
+												)}
+												, {stop.imageCredit.license}
+											</figcaption>
+										)}
+									</figure>
+								)}
+								{stop.description && (
+									<p className="mt-1 text-[15px] text-neutral-700 dark:text-neutral-300">
+										<LinkedText text={stop.description} />
+									</p>
+								)}
+							</div>
+						</div>
+					))}
+				</div>
+				</section>
+			))}
 		</div>
 	)
 }

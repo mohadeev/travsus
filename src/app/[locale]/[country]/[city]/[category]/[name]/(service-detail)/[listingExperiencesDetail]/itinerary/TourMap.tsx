@@ -4,7 +4,7 @@ import { forwardRef } from 'react'
 import dynamic from 'next/dynamic'
 import type { TourMapLeafletProps } from './TourMapLeaflet'
 
-const MapLoading = () => <div className="h-[420px] w-full animate-pulse bg-neutral-100" />
+const MapLoading = () => <div className="h-[260px] w-full animate-pulse bg-neutral-100" />
 
 const TourMapLeaflet = dynamic(() => import('./TourMapLeaflet'), {
 	ssr: false,
