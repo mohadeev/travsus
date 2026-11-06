@@ -1,6 +1,7 @@
 // Big two-part promo card, TripAdvisor layout: a photo on one side and a solid
 // colour panel with a heavy headline, one line of text and a pill button on the
 // other. "dark" = deep green panel, white text; "yellow" = yellow panel on the left.
+// On phones it runs edge to edge (no side margins, square corners).
 import Image from 'next/image'
 import Link from 'next/link'
 import type { ReactNode } from 'react'
@@ -18,7 +19,9 @@ type Props = {
 export default function PromoCard({ tone, photo, eyebrow, title, text, cta, href }: Props) {
 	const dark = tone === 'dark'
 	return (
-		<section className={`grid overflow-hidden rounded-xl md:min-h-[340px] ${dark ? 'md:grid-cols-2' : 'md:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]'}`}>
+		// Phones: edge to edge (out of the page's 24px padding, square corners);
+		// from 768px a rounded card inside the page width
+		<section className={`-mx-6 grid overflow-hidden md:mx-0 md:min-h-[340px] md:rounded-xl ${dark ? 'md:grid-cols-2' : 'md:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]'}`}>
 			<div className={`relative aspect-[16/10] md:aspect-auto ${dark ? '' : 'md:order-last'}`}>
 				<Image src={photo} alt="" fill sizes="(max-width: 768px) 100vw, 620px" className="object-cover" />
 			</div>
