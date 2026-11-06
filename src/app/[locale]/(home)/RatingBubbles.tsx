@@ -6,11 +6,11 @@ export default function RatingBubbles({
 }: {
 	rating: number
 	size?: number
-	/** 'green' = TripAdvisor colour (tour page) */
+	/** 'green' = TripAdvisor's bubble green #00852F (cards, tour page); 'mono' = text colour */
 	tone?: 'mono' | 'green'
 }) {
-	const border = tone === 'green' ? 'border-[#00AA6C]' : 'border-ink dark:border-white'
-	const fillColor = tone === 'green' ? 'bg-[#00AA6C]' : 'bg-ink dark:bg-white'
+	const border = tone === 'green' ? 'border-[#00852F]' : 'border-ink dark:border-white'
+	const fillColor = tone === 'green' ? 'bg-[#00852F]' : 'bg-ink dark:bg-white'
 	return (
 		<span
 			className="inline-flex items-center gap-0.5"
