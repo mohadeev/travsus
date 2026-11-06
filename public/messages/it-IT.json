@@ -3474,7 +3474,8 @@
     "publish": "Pubblica",
     "guidelines": "Sii gentile e utile. Niente pubblicità né dati personali.",
     "error_invalid": "Aggiungi un titolo (almeno 5 caratteri), una categoria e un messaggio (almeno 10 caratteri).",
-    "error_generic": "Qualcosa è andato storto. Riprova."
+    "error_generic": "Qualcosa è andato storto. Riprova.",
+    "error_no_links": "Nel forum non sono ammessi link ad altri siti (niente pubblicità)."
   },
   "Blog": {
     "meta_title": "Blog di viaggio: guide, itinerari e consigli sul Marocco",

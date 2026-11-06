@@ -28,9 +28,26 @@ const BLOCKED: RegExp[] = [
 	/how-to-buy-[a-z-]*passport/i,
 ]
 
+/**
+ * Links to other sites: self-advertising is not allowed, so posts and comments
+ * with a web address (other than travsus.com) are refused and hidden.
+ */
+const LINK = /(https?:\/\/|www\.)[^\s)]+|\b[a-z0-9-]{2,}\.(com|net|org|io|co|app|shop|store|xyz|info|biz|me|ly|link|site|online)\b(\/\S*)?/gi
+export const hasOutsideLink = (...texts: (string | null | undefined)[]) =>
+	texts.some((text) => (text?.match(LINK) ?? []).some((link) => !/travsus\.com/i.test(link)))
+
 export const isBlockedText = (...texts: (string | null | undefined)[]) =>
 	texts.some((text) => !!text && BLOCKED.some((pattern) => pattern.test(text)))
 
 /** Hidden from readers: taken down, or containing blocked text. */
 export const isHiddenPost = (post: { id: string; title?: string; content?: string; excerpt?: string }) =>
-	REMOVED_POST_IDS.has(post.id) || isBlockedText(post.title, post.content, post.excerpt)
+	REMOVED_POST_IDS.has(post.id) || isBlockedText(post.title, post.content, post.excerpt) || hasOutsideLink(post.title, post.content, post.excerpt)
+
+/** Why a post or comment is hidden, for the admin forum page ([] = shown). */
+export function flagReasons(item: { id?: string; title?: string; content?: string }) {
+	const reasons: string[] = []
+	if (item.id && REMOVED_POST_IDS.has(item.id)) reasons.push('Taken down')
+	if (isBlockedText(item.title, item.content)) reasons.push('Scam / illegal')
+	if (hasOutsideLink(item.title, item.content)) reasons.push('Advertising link')
+	return reasons
+}

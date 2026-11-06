@@ -31,7 +31,7 @@ export default function NewDiscussion({ category = '', dark = false }: { categor
 			router.push(`/${locale}/forum/${result.id}` as any)
 			setOpen(false)
 		} else {
-			setError(result.error === 'INVALID' ? t('error_invalid') : t('error_generic'))
+			setError(result.error === 'NO_LINKS' ? t('error_no_links') : result.error === 'INVALID' ? t('error_invalid') : t('error_generic'))
 		}
 		setSending(false)
 	}

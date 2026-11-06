@@ -162,7 +162,7 @@ function Composer({
 	const t = useTranslations('Forum')
 	const [text, setText] = useState('')
 	const [sending, setSending] = useState(false)
-	const [error, setError] = useState(false)
+	const [error, setError] = useState<false | 'NO_LINKS' | 'OTHER'>(false)
 	const signIn = useAuthAction(() => {})
 
 	if (!viewerId) {
@@ -190,7 +190,7 @@ function Composer({
 		if (result.success && result.comment) {
 			onAdded(result.comment as ForumComment)
 			setText('')
-		} else setError(true)
+		} else setError(result.error === 'NO_LINKS' ? 'NO_LINKS' : 'OTHER')
 		setSending(false)
 	}
 
@@ -206,7 +206,7 @@ function Composer({
 				className="w-full resize-none border-0 bg-transparent px-3 py-2 text-base placeholder:text-neutral-500 focus:outline-none focus:ring-0"
 			/>
 			<div className="flex items-center justify-end gap-2 px-1 pb-1">
-				{error && <p className="mr-auto px-2 text-sm text-red-500">{t('error_generic')}</p>}
+				{error && <p className="mr-auto px-2 text-sm text-red-500">{t(error === 'NO_LINKS' ? 'error_no_links' : 'error_generic')}</p>}
 				{onCancel && (
 					<button type="button" onClick={onCancel} className="rounded-full px-4 py-2 text-sm font-semibold text-neutral-500 hover:text-ink dark:hover:text-white">
 						{t('cancel')}

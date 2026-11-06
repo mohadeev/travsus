@@ -2,7 +2,7 @@
 // its comments, and post counts per category.
 import 'server-only'
 import { db, T, must, fetchAll } from '@/lib/db'
-import { isBlockedText, isHiddenPost, REMOVED_POST_IDS } from '@/lib/forumModeration'
+import { hasOutsideLink, isBlockedText, isHiddenPost, REMOVED_POST_IDS } from '@/lib/forumModeration'
 
 const AUTHOR = `author:${T.users}!authorId(id, username, profileImage, accountData)`
 
@@ -71,7 +71,7 @@ export async function getForumPost(id: string): Promise<ForumPost | null> {
 			.maybeSingle(),
 	)
 	if (!row || isHiddenPost(row)) return null
-	const commentList: ForumComment[] = (row.comments ?? []).filter((c: any) => !isBlockedText(c.content)).map((c: any) => ({
+	const commentList: ForumComment[] = (row.comments ?? []).filter((c: any) => !isBlockedText(c.content) && !hasOutsideLink(c.content)).map((c: any) => ({
 		id: c.id,
 		content: c.content,
 		parentId: c.parentId,
