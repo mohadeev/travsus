@@ -51,11 +51,11 @@ export default async function CustomersPage(props: PageProps) {
 										// eslint-disable-next-line @next/next/no-img-element
 										<img src={c.image} alt="" className="h-10 w-10 shrink-0 rounded-full object-cover" />
 									) : (
-										<span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-neutral-950 text-sm font-bold text-white dark:bg-white dark:text-neutral-950">{c.name.charAt(0).toUpperCase()}</span>
+										<span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-neutral-950 text-sm font-bold text-white dark:bg-white dark:text-ink">{c.name.charAt(0).toUpperCase()}</span>
 									)}
 									<div className="min-w-0">
 										<p className="truncate font-semibold">{c.name !== c.email ? c.name : c.email.split('@')[0]}</p>
-										<a href={`mailto:${c.email}`} className="inline-flex max-w-full items-center gap-1 text-sm text-neutral-500 hover:text-neutral-950 dark:hover:text-white">
+										<a href={`mailto:${c.email}`} className="inline-flex max-w-full items-center gap-1 text-sm text-neutral-500 hover:text-ink dark:hover:text-white">
 											<Mail className="h-3.5 w-3.5 shrink-0" />
 											<span className="truncate">{c.email}</span>
 										</a>

@@ -131,7 +131,7 @@ export default function ReviewComposer({ serviceId, tourName, tourImage, tourSub
 	const chip = (selected: boolean) =>
 		`inline-flex shrink-0 items-center gap-2 rounded-full border-2 px-4 py-2.5 text-sm font-semibold transition duration-200 active:scale-95 ${
 			selected
-				? 'border-neutral-950 bg-neutral-950 text-white shadow-md dark:border-white dark:bg-white dark:text-neutral-950'
+				? 'border-neutral-950 bg-neutral-950 text-white shadow-md dark:border-white dark:bg-white dark:text-ink'
 				: 'border-neutral-200 bg-white text-neutral-800 hover:-translate-y-0.5 hover:border-neutral-950 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-100 dark:hover:border-white'
 		}`
 	const flag = (bad: boolean) => (tried && bad ? 'ring-2 ring-red-400 ring-offset-4 rounded-2xl dark:ring-offset-neutral-950' : '')
@@ -176,7 +176,7 @@ export default function ReviewComposer({ serviceId, tourName, tourImage, tourSub
 						</div>
 						<h3 className="rv-up mb-2 text-3xl font-bold tracking-tight" style={{ animationDelay: '200ms' }}>{t('Thanks_Title')}</h3>
 						<p className="rv-up mb-8 max-w-sm text-neutral-500" style={{ animationDelay: '300ms' }}>{t('Thanks_Text')}</p>
-						<button type="button" onClick={onClose} className="rv-up rounded-full bg-neutral-950 px-10 py-3.5 font-semibold text-white transition hover:-translate-y-0.5 hover:shadow-xl active:scale-95 dark:bg-white dark:text-neutral-950" style={{ animationDelay: '400ms' }}>
+						<button type="button" onClick={onClose} className="rv-up rounded-full bg-neutral-950 px-10 py-3.5 font-semibold text-white transition hover:-translate-y-0.5 hover:shadow-xl active:scale-95 dark:bg-white dark:text-ink" style={{ animationDelay: '400ms' }}>
 							{t('Done')}
 						</button>
 					</div>
@@ -248,7 +248,7 @@ export default function ReviewComposer({ serviceId, tourName, tourImage, tourSub
 							<section className={flag(!text.trim())}>
 								<h4 className="mb-3 text-lg font-bold">{t('Write_Your_Review')}</h4>
 								<div className="mb-3 flex gap-3 rounded-2xl bg-neutral-100 p-4 text-sm text-neutral-700 dark:bg-neutral-900 dark:text-neutral-300">
-									<Lightbulb className="mt-0.5 h-5 w-5 shrink-0 text-neutral-950 dark:text-white" />
+									<Lightbulb className="mt-0.5 h-5 w-5 shrink-0 text-ink dark:text-white" />
 									<div>
 										<p className="mb-1 font-semibold">{t('Tips_Title')}</p>
 										<p>{t('Tips_Text')}</p>
@@ -361,7 +361,7 @@ export default function ReviewComposer({ serviceId, tourName, tourImage, tourSub
 												e.preventDefault()
 												setShowTerms((v) => !v)
 											}}
-											className="font-semibold text-neutral-950 underline underline-offset-2 dark:text-white"
+											className="font-semibold text-ink underline underline-offset-2 dark:text-white"
 										>
 											{t('Read_More')}
 										</button>
@@ -395,7 +395,7 @@ export default function ReviewComposer({ serviceId, tourName, tourImage, tourSub
 									onClick={submit}
 									disabled={submitting}
 									className={`rounded-full px-8 py-3 font-bold text-white shadow-lg transition ${
-										missing.length ? 'bg-neutral-300 shadow-none dark:bg-neutral-700' : 'rv-ready bg-neutral-950 shadow-neutral-950/30 hover:-translate-y-0.5 active:scale-95 dark:bg-white dark:text-neutral-950'
+										missing.length ? 'bg-neutral-300 shadow-none dark:bg-neutral-700' : 'rv-ready bg-neutral-950 shadow-neutral-950/30 hover:-translate-y-0.5 active:scale-95 dark:bg-white dark:text-ink'
 									} disabled:opacity-60`}
 								>
 									{submitting ? t('Submitting') : t('Submit')}

@@ -54,9 +54,9 @@ export default async function AboutPage(props: PageProps) {
 	].filter(Boolean) as { value: string; label: string }[]
 
 	return (
-		<main className="pb-16 text-neutral-950 sm:pb-24 dark:text-white [&_h1]:[text-wrap:balance] [&_h2]:[text-wrap:balance]">
+		<main className="pb-16 text-ink sm:pb-24 dark:text-white [&_h1]:[text-wrap:balance] [&_h2]:[text-wrap:balance]">
 			{/* Hero */}
-			<section className="mx-auto max-w-7xl px-5 pt-12 text-center sm:pt-20">
+			<section className="mx-auto max-w-7xl px-6 pt-12 text-center sm:pt-20">
 				<p className="text-sm font-semibold uppercase tracking-[0.2em] text-neutral-500">{t('eyebrow')}</p>
 				<h1 className="mx-auto mt-4 max-w-4xl text-[40px] font-bold leading-[1.04] tracking-tight sm:text-7xl lg:text-8xl">{t('hero_title')}</h1>
 				<p className="mx-auto mt-5 max-w-2xl text-lg text-neutral-500 sm:mt-7 sm:text-2xl">{t('hero_text')}</p>
@@ -66,7 +66,7 @@ export default async function AboutPage(props: PageProps) {
 			</section>
 
 			{/* Real numbers */}
-			<section className="mx-auto mt-16 grid max-w-7xl grid-cols-2 gap-y-10 px-5 text-center sm:mt-24 lg:grid-cols-4">
+			<section className="mx-auto mt-16 grid max-w-7xl grid-cols-2 gap-y-10 px-6 text-center sm:mt-24 lg:grid-cols-4">
 				{stats.map((s) => (
 					<div key={s.label}>
 						<p className="text-5xl font-bold tracking-tight sm:text-7xl">{s.value}</p>
@@ -76,7 +76,7 @@ export default async function AboutPage(props: PageProps) {
 			</section>
 
 			{/* Story */}
-			<section className="mx-auto mt-20 grid max-w-7xl items-center gap-10 px-5 sm:mt-36 lg:grid-cols-2 lg:gap-16">
+			<section className="mx-auto mt-20 grid max-w-7xl items-center gap-10 px-6 sm:mt-36 lg:grid-cols-2 lg:gap-16">
 				<div>
 					<h2 className="text-4xl font-bold tracking-tight sm:text-6xl">{t('story_title')}</h2>
 					<p className="mt-5 text-lg leading-relaxed text-neutral-500 sm:text-xl">{t('story_text_1')}</p>
@@ -89,7 +89,7 @@ export default async function AboutPage(props: PageProps) {
 
 			{/* What we stand for */}
 			<section className="mt-20 bg-neutral-950 py-20 text-white sm:mt-36 sm:py-32">
-				<div className="mx-auto max-w-7xl px-5">
+				<div className="mx-auto max-w-7xl px-6">
 					<h2 className="max-w-3xl text-4xl font-bold tracking-tight sm:text-6xl">{t('values_title')}</h2>
 					<ul className="mt-12 grid gap-px overflow-hidden rounded-[28px] bg-white/10 sm:mt-16 sm:grid-cols-2">
 						{VALUES.map(([Icon, title, text]) => (
@@ -105,7 +105,7 @@ export default async function AboutPage(props: PageProps) {
 
 			{/* Where we travel */}
 			{destinations.length > 0 && (
-				<section className="mx-auto mt-20 max-w-7xl px-5 text-center sm:mt-36">
+				<section className="mx-auto mt-20 max-w-7xl px-6 text-center sm:mt-36">
 					<h2 className="text-4xl font-bold tracking-tight sm:text-6xl">{t('places_title')}</h2>
 					<p className="mx-auto mt-4 max-w-2xl text-lg text-neutral-500 sm:text-xl">{t('places_text')}</p>
 					<ul className="mx-auto mt-10 flex max-w-4xl flex-wrap justify-center gap-2.5">
@@ -125,13 +125,13 @@ export default async function AboutPage(props: PageProps) {
 			)}
 
 			{/* Call to action */}
-			<section className="mx-auto mt-20 max-w-7xl px-5 sm:mt-36">
+			<section className="mx-auto mt-20 max-w-7xl px-6 sm:mt-36">
 				<div className="relative isolate overflow-hidden rounded-[28px] bg-neutral-950 px-6 py-16 text-center text-white sm:rounded-[40px] sm:py-28">
 					<Image src={PHOTOS.sunsetHug} alt="" fill sizes="100vw" className="-z-10 object-cover opacity-40" />
 					<h2 className="mx-auto max-w-3xl text-4xl font-bold tracking-tight sm:text-6xl">{t('cta_title')}</h2>
 					<p className="mx-auto mt-4 max-w-xl text-lg text-white/75 sm:text-xl">{t('cta_text')}</p>
 					<div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
-						<Link href={`/${locale}/search?query=` as any} className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-white px-7 text-sm font-semibold text-neutral-950 transition hover:bg-neutral-200">
+						<Link href={`/${locale}/search?query=` as any} className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-white px-7 text-sm font-semibold text-ink transition hover:bg-neutral-200">
 							{t('cta_tours')}
 							<ArrowRight className="h-4 w-4" />
 						</Link>

@@ -24,7 +24,7 @@ export default function HowItWorks() {
 				{STEPS.map(([Icon, key], i) => (
 					<li key={key} className="relative rounded-2xl bg-neutral-100 p-5 sm:p-7 dark:bg-neutral-900">
 						<div className="flex items-center justify-between">
-							<span className="grid h-12 w-12 place-items-center rounded-full bg-white text-neutral-950 shadow-sm dark:bg-neutral-950 dark:text-white">
+							<span className="grid h-12 w-12 place-items-center rounded-full bg-white text-ink shadow-sm dark:bg-neutral-950 dark:text-white">
 								<Icon className="h-6 w-6" aria-hidden />
 							</span>
 							<span aria-hidden className="text-5xl font-black leading-none text-neutral-200 dark:text-neutral-800">

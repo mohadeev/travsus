@@ -86,7 +86,7 @@ function ToolButton({ onClick, active, disabled, title, children }: { onClick: (
 			onMouseDown={(e) => e.preventDefault()}
 			onClick={onClick}
 			className={`grid h-8 min-w-8 place-items-center rounded-lg px-1.5 text-sm transition disabled:opacity-30 ${
-				active ? 'bg-neutral-950 text-white dark:bg-white dark:text-neutral-950' : 'text-neutral-600 hover:bg-neutral-100 hover:text-neutral-950 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:hover:text-white'
+				active ? 'bg-neutral-950 text-white dark:bg-white dark:text-ink' : 'text-neutral-600 hover:bg-neutral-100 hover:text-ink dark:text-neutral-300 dark:hover:bg-neutral-800 dark:hover:text-white'
 			}`}
 		>
 			{children}
@@ -113,7 +113,7 @@ function InputPopover({ icon, title, placeholder, initial = '', onApply, onRemov
 				>
 					<input autoFocus value={value} onChange={(e) => setValue(e.target.value)} placeholder={placeholder} onKeyDown={(e) => e.key === 'Escape' && setOpen(false)}
 						className="min-w-0 flex-1 rounded-lg border-0 bg-neutral-100 px-2.5 py-1.5 text-sm focus:ring-2 focus:ring-neutral-950 dark:bg-neutral-800" />
-					<button type="submit" className="grid h-8 w-8 place-items-center rounded-lg bg-neutral-950 text-white dark:bg-white dark:text-neutral-950" title="Apply"><Check className="h-4 w-4" /></button>
+					<button type="submit" className="grid h-8 w-8 place-items-center rounded-lg bg-neutral-950 text-white dark:bg-white dark:text-ink" title="Apply"><Check className="h-4 w-4" /></button>
 					{onRemove && <button type="button" onClick={() => { onRemove(); setOpen(false) }} className="grid h-8 w-8 place-items-center rounded-lg text-red-500 hover:bg-red-50 dark:hover:bg-red-950" title="Remove"><X className="h-4 w-4" /></button>}
 				</form>
 			)}
@@ -475,7 +475,7 @@ export default function BlogEditor({ postId, userId }: { postId?: string; userId
 	}
 
 	return (
-		<div className="min-h-screen bg-white text-neutral-950 dark:bg-neutral-950 dark:text-white">
+		<div className="min-h-screen bg-white text-ink dark:bg-neutral-950 dark:text-white">
 			{/* Top bar */}
 			<header className="sticky top-0 z-30 border-b border-neutral-200 bg-white/90 backdrop-blur dark:border-neutral-800 dark:bg-neutral-950/90">
 				<div className="mx-auto flex h-14 max-w-[1400px] items-center gap-3 px-4">
@@ -496,7 +496,7 @@ export default function BlogEditor({ postId, userId }: { postId?: string; userId
 						</a>
 					)}
 					<button type="button" onClick={() => void save()} disabled={saving || loading}
-						className="inline-flex h-9 items-center gap-1.5 rounded-full bg-neutral-950 px-5 text-sm font-semibold text-white transition hover:bg-neutral-800 disabled:opacity-60 dark:bg-white dark:text-neutral-950"
+						className="inline-flex h-9 items-center gap-1.5 rounded-full bg-neutral-950 px-5 text-sm font-semibold text-white transition hover:bg-neutral-800 disabled:opacity-60 dark:bg-white dark:text-ink"
 						title="Save (⌘S / Ctrl+S)">
 						{saving ? <Loader2 className="h-4 w-4 animate-spin" /> : <Save className="h-4 w-4" />}
 						{postId ? 'Save' : 'Publish'}
@@ -505,7 +505,7 @@ export default function BlogEditor({ postId, userId }: { postId?: string; userId
 			</header>
 
 			{notice && (
-				<div role="status" className={`fixed bottom-6 left-1/2 z-50 -translate-x-1/2 rounded-full px-5 py-2.5 text-sm font-semibold shadow-xl ${notice.kind === 'ok' ? 'bg-neutral-950 text-white dark:bg-white dark:text-neutral-950' : 'bg-red-600 text-white'}`}>
+				<div role="status" className={`fixed bottom-6 left-1/2 z-50 -translate-x-1/2 rounded-full px-5 py-2.5 text-sm font-semibold shadow-xl ${notice.kind === 'ok' ? 'bg-neutral-950 text-white dark:bg-white dark:text-ink' : 'bg-red-600 text-white'}`}>
 					{notice.text}
 				</div>
 			)}
@@ -569,13 +569,13 @@ export default function BlogEditor({ postId, userId }: { postId?: string; userId
 								<img src={cover} alt="" className="aspect-[16/9] w-full object-cover" />
 								<div className="absolute right-3 top-3 flex gap-2 opacity-0 transition group-hover:opacity-100">
 									<button type="button" onClick={async () => { const f = await pickFile(); const url = f && (await upload(f)); if (url) { setCover(url); setCoverDirty(true); setDirty(true) } }}
-										className="rounded-full bg-white/90 px-3 py-1.5 text-sm font-semibold text-neutral-950 shadow">Change</button>
+										className="rounded-full bg-white/90 px-3 py-1.5 text-sm font-semibold text-ink shadow">Change</button>
 									<button type="button" onClick={() => { setCover(''); setCoverDirty(true); setDirty(true) }} className="rounded-full bg-white/90 px-3 py-1.5 text-sm font-semibold text-red-600 shadow">Remove</button>
 								</div>
 							</figure>
 						) : (
 							<button type="button" onClick={async () => { const f = await pickFile(); const url = f && (await upload(f)); if (url) { setCover(url); setCoverDirty(true); setDirty(true) } }}
-								className="mb-4 inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-sm font-medium text-neutral-500 transition hover:bg-neutral-100 hover:text-neutral-950 dark:hover:bg-neutral-900 dark:hover:text-white">
+								className="mb-4 inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-sm font-medium text-neutral-500 transition hover:bg-neutral-100 hover:text-ink dark:hover:bg-neutral-900 dark:hover:text-white">
 								<ImagePlus className="h-4 w-4" />Add cover photo
 							</button>
 						)}
@@ -584,7 +584,7 @@ export default function BlogEditor({ postId, userId }: { postId?: string; userId
 							<div className="mb-6 flex flex-wrap items-center gap-3 rounded-2xl bg-neutral-100 px-4 py-3 text-sm dark:bg-neutral-900">
 								<Globe className="h-4 w-4 text-neutral-500" />
 								<span className="flex-1">No {LANGUAGES.find(([c]) => c === lang)?.[1]} version yet.</span>
-								<button type="button" onClick={copyEnglish} className="rounded-full bg-neutral-950 px-3 py-1.5 font-semibold text-white dark:bg-white dark:text-neutral-950">Start from English</button>
+								<button type="button" onClick={copyEnglish} className="rounded-full bg-neutral-950 px-3 py-1.5 font-semibold text-white dark:bg-white dark:text-ink">Start from English</button>
 							</div>
 						)}
 
@@ -669,7 +669,7 @@ export default function BlogEditor({ postId, userId }: { postId?: string; userId
 						<div className="grid grid-cols-2 gap-1.5">
 							{LANGUAGES.map(([code, name]) => (
 								<button key={code} type="button" disabled={!postId && code !== SOURCE} onClick={() => switchLang(code)}
-									className={`flex items-center gap-2 rounded-xl px-2.5 py-2 text-left text-sm transition disabled:opacity-40 ${code === lang ? 'bg-neutral-950 text-white dark:bg-white dark:text-neutral-950' : 'hover:bg-neutral-100 dark:hover:bg-neutral-900'}`}>
+									className={`flex items-center gap-2 rounded-xl px-2.5 py-2 text-left text-sm transition disabled:opacity-40 ${code === lang ? 'bg-neutral-950 text-white dark:bg-white dark:text-ink' : 'hover:bg-neutral-100 dark:hover:bg-neutral-900'}`}>
 									<span className={`h-2 w-2 shrink-0 rounded-full ${translated(code) ? 'bg-emerald-500' : 'bg-neutral-300 dark:bg-neutral-700'}`} />
 									<span className="truncate">{name}</span>
 								</button>

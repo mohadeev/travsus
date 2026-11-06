@@ -63,9 +63,9 @@ export default async function ForumPage(props: PageProps) {
 	}
 
 	return (
-		<main className="pb-16 text-neutral-950 sm:pb-24 dark:text-white [&_h1]:[text-wrap:balance] [&_h2]:[text-wrap:balance]">
+		<main className="pb-16 text-ink sm:pb-24 dark:text-white [&_h1]:[text-wrap:balance] [&_h2]:[text-wrap:balance]">
 			{/* Hero: one idea, search, one action */}
-			<section className="mx-auto max-w-7xl px-5 pt-12 text-center sm:pt-20">
+			<section className="mx-auto max-w-7xl px-6 pt-12 text-center sm:pt-20">
 				<p className="text-sm font-semibold uppercase tracking-[0.2em] text-neutral-500">{t('eyebrow')}</p>
 				<h1 className="mx-auto mt-4 max-w-4xl text-[40px] font-bold leading-[1.04] tracking-tight sm:text-7xl">
 					{t('hero_title')}
@@ -105,7 +105,7 @@ export default async function ForumPage(props: PageProps) {
 									aria-current={selected ? 'page' : undefined}
 									className={`inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold transition ${
 										selected
-											? 'bg-neutral-950 text-white dark:bg-white dark:text-neutral-950'
+											? 'bg-neutral-950 text-white dark:bg-white dark:text-ink'
 											: 'bg-neutral-100 text-neutral-700 hover:bg-neutral-200 dark:bg-neutral-900 dark:text-neutral-300 dark:hover:bg-neutral-800'
 									}`}
 								>
@@ -174,7 +174,7 @@ export default async function ForumPage(props: PageProps) {
 												</span>
 											</p>
 										</div>
-										<ArrowRight className="mt-1 hidden h-5 w-5 shrink-0 text-neutral-300 transition group-hover:translate-x-0.5 group-hover:text-neutral-950 sm:block dark:group-hover:text-white" />
+										<ArrowRight className="mt-1 hidden h-5 w-5 shrink-0 text-neutral-300 transition group-hover:translate-x-0.5 group-hover:text-ink sm:block dark:group-hover:text-white" />
 									</Link>
 								</li>
 							)

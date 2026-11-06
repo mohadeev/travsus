@@ -86,9 +86,9 @@ const cleanKey = (text: string) => text.toUpperCase().replace(/[^A-Z0-9]/g, '')
 const card = 'rounded-3xl border border-neutral-200 bg-white p-5 sm:p-6 dark:border-neutral-800 dark:bg-neutral-950'
 const inputCls = 'h-11 w-full rounded-xl border-0 bg-white px-3.5 text-sm ring-1 ring-neutral-200 transition placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-neutral-950 dark:bg-neutral-900 dark:ring-neutral-700 dark:focus:ring-white'
 const btn = 'inline-flex h-11 items-center justify-center gap-2 rounded-full px-5 text-sm font-semibold transition disabled:opacity-50'
-const btnDark = `${btn} bg-neutral-950 text-white hover:bg-neutral-800 dark:bg-white dark:text-neutral-950`
+const btnDark = `${btn} bg-neutral-950 text-white hover:bg-neutral-800 dark:bg-white dark:text-ink`
 const btnLight = `${btn} border border-neutral-300 hover:border-neutral-950 dark:border-neutral-700 dark:hover:border-white`
-const iconBtn = 'grid h-9 w-9 shrink-0 place-items-center rounded-full text-neutral-500 transition hover:bg-neutral-100 hover:text-neutral-950 dark:hover:bg-neutral-800 dark:hover:text-white'
+const iconBtn = 'grid h-9 w-9 shrink-0 place-items-center rounded-full text-neutral-500 transition hover:bg-neutral-100 hover:text-ink dark:hover:bg-neutral-800 dark:hover:text-white'
 
 /** Each wrong try waits a little longer */
 const backoff = (fails: number) => new Promise((r) => setTimeout(r, Math.min(30_000, 1000 * 2 ** (fails - 1))))
@@ -354,7 +354,7 @@ function Forgot({ onReset, onCancel }: { onReset: (recoveryKey: string, code: st
 
 function Shell({ children }: { children: React.ReactNode }) {
 	return (
-		<main className="mx-auto max-w-4xl px-4 pb-24 pt-8 text-neutral-950 sm:px-5 sm:pt-12 dark:text-white">
+		<main className="mx-auto max-w-4xl px-4 pb-24 pt-8 text-ink sm:px-5 sm:pt-12 dark:text-white">
 			<h1 className="headline flex items-center gap-3 text-3xl sm:text-4xl">
 				<KeyRound className="h-7 w-7" /> Passwords
 			</h1>
@@ -396,7 +396,7 @@ function Setup({ onCreate }: { onCreate: (code: string) => Promise<void> }) {
 			<h2 className="text-xl font-bold">Create your unlock code</h2>
 			<p className="text-sm text-neutral-500">
 				You’ll need it every time you open this page. Use the generated one (strongest) or type your own: exactly {CODE_LENGTH} characters.{' '}
-				Write it on paper or keep it in a safe place, not in this vault. A <strong className="text-neutral-950 dark:text-white">recovery key</strong> will be emailed to skendoulmohamed@gmail.com: keep that email, it lets you set a new code if you forget this one.
+				Write it on paper or keep it in a safe place, not in this vault. A <strong className="text-ink dark:text-white">recovery key</strong> will be emailed to skendoulmohamed@gmail.com: keep that email, it lets you set a new code if you forget this one.
 			</p>
 			<div className="flex flex-col gap-2 sm:flex-row">
 				<input value={code} onChange={(e) => setCode(e.target.value)} maxLength={CODE_LENGTH} placeholder="Unlock code (40 characters)" autoComplete="off" spellCheck={false} className={`${inputCls} font-mono`} />
@@ -456,7 +456,7 @@ function Unlock({ onUnlock, onForgot }: { onUnlock: (code: string) => Promise<vo
 					{busy ? <Loader2 className="h-4 w-4 animate-spin" /> : <KeyRound className="h-4 w-4" />} Unlock
 				</button>
 				{onForgot && (
-					<button type="button" className="text-sm font-semibold text-neutral-500 underline underline-offset-2 hover:text-neutral-950 dark:hover:text-white" onClick={onForgot}>
+					<button type="button" className="text-sm font-semibold text-neutral-500 underline underline-offset-2 hover:text-ink dark:hover:text-white" onClick={onForgot}>
 						Forgot code?
 					</button>
 				)}

@@ -25,7 +25,7 @@ export default function HomeHero() {
 	]
 
 	return (
-		<section className="mx-auto max-w-7xl px-4 pb-6 pt-7 text-center sm:px-5 sm:pb-10 sm:pt-12">
+		<section className="mx-auto max-w-7xl px-6 pb-6 pt-7 text-center sm:pb-10 sm:pt-12">
 			{/* The page's main heading says what we offer (search engines, screen readers) */}
 			<h1 className="sr-only">{tSeo('h1')}</h1>
 			<p aria-hidden className="headline text-[44px] !leading-[0.98] !tracking-[-0.045em] sm:text-[72px]">

@@ -79,7 +79,7 @@ export default function PersonalInfoPage() {
 					<span className="mb-1.5 block text-sm font-medium">{t('email')}</span>
 					<div className="flex items-center justify-between gap-3 rounded-2xl bg-neutral-100 px-4 py-3.5 text-neutral-500 dark:bg-neutral-900">
 						<span className="truncate">{user.email}</span>
-						<Link href={`/${locale}/account-settings/login-and-security` as any} className="inline-flex shrink-0 items-center gap-1.5 text-sm font-semibold text-neutral-950 underline underline-offset-4 dark:text-white">
+						<Link href={`/${locale}/account-settings/login-and-security` as any} className="inline-flex shrink-0 items-center gap-1.5 text-sm font-semibold text-ink underline underline-offset-4 dark:text-white">
 							<Lock className="h-3.5 w-3.5" />
 							{t('change')}
 						</Link>
@@ -113,7 +113,7 @@ export default function PersonalInfoPage() {
 					<button
 						type="submit"
 						disabled={saving}
-						className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-neutral-950 px-8 text-sm font-semibold text-white transition hover:bg-neutral-800 disabled:opacity-70 dark:bg-white dark:text-neutral-950"
+						className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-neutral-950 px-8 text-sm font-semibold text-white transition hover:bg-neutral-800 disabled:opacity-70 dark:bg-white dark:text-ink"
 					>
 						{saving && <Loader2 className="h-4 w-4 animate-spin" />}
 						{t('save')}

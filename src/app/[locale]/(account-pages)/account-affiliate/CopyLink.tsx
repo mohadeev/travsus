@@ -18,7 +18,7 @@ export default function CopyLink({ link, copyLabel, copiedLabel }: { link: strin
 			<button
 				type="button"
 				onClick={copy}
-				className="inline-flex h-12 shrink-0 items-center justify-center gap-2 rounded-full bg-white px-6 text-sm font-semibold text-neutral-950 transition hover:bg-neutral-200 dark:bg-neutral-950 dark:text-white"
+				className="inline-flex h-12 shrink-0 items-center justify-center gap-2 rounded-full bg-white px-6 text-sm font-semibold text-ink transition hover:bg-neutral-200 dark:bg-neutral-950 dark:text-white"
 			>
 				{copied ? <Check className="h-4 w-4 text-emerald-600" /> : <Copy className="h-4 w-4" />}
 				{copied ? copiedLabel : copyLabel}

@@ -137,7 +137,7 @@ export default async function SearchPage(props: PageProps) {
 	return (
 		<>
 			<HomeMotion />
-			<main className="mx-auto max-w-7xl px-5 pb-16 pt-6 text-neutral-950 sm:pb-24 sm:pt-10 dark:text-white">
+			<main className="mx-auto max-w-7xl px-6 pb-16 pt-6 text-ink sm:pb-24 sm:pt-10 dark:text-white">
 				{/* Compact on purpose: the tours start on the first screen. Desktop: title
 				    on the left, search on the right. */}
 				<header className={`${styles.heroIn} grid gap-4 lg:grid-cols-[1fr_minmax(0,460px)] lg:items-end lg:gap-12`}>
@@ -166,7 +166,7 @@ export default async function SearchPage(props: PageProps) {
 								className="w-full border-0 bg-transparent p-0 py-2 text-base placeholder:text-neutral-500 focus:outline-none focus:ring-0"
 							/>
 						</label>
-						<button type="submit" className="shrink-0 rounded-full bg-neutral-950 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-neutral-800 dark:bg-white dark:text-neutral-950">
+						<button type="submit" className="shrink-0 rounded-full bg-neutral-950 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-neutral-800 dark:bg-white dark:text-ink">
 							{tHome('search_cta')}
 						</button>
 					</form>
@@ -220,7 +220,7 @@ export default async function SearchPage(props: PageProps) {
 
 				{/* Phones: filters as swipeable chips */}
 				<div className="-mx-5 mt-3 flex gap-2 overflow-x-auto px-5 pb-1 [scrollbar-width:none] lg:hidden [&::-webkit-scrollbar]:hidden">
-					<span className="flex shrink-0 items-center gap-1.5 rounded-full bg-neutral-950 px-3.5 py-2 text-sm font-semibold text-white dark:bg-white dark:text-neutral-950">
+					<span className="flex shrink-0 items-center gap-1.5 rounded-full bg-neutral-950 px-3.5 py-2 text-sm font-semibold text-white dark:bg-white dark:text-ink">
 						<SlidersHorizontal className="h-4 w-4" />
 						{t('filters')}
 					</span>
@@ -232,7 +232,7 @@ export default async function SearchPage(props: PageProps) {
 								aria-current={option.active ? 'true' : undefined}
 								className={`flex shrink-0 items-center gap-1 rounded-full border px-3.5 py-2 text-sm font-medium transition ${
 									option.active
-										? 'border-neutral-950 bg-neutral-950 text-white dark:border-white dark:bg-white dark:text-neutral-950'
+										? 'border-neutral-950 bg-neutral-950 text-white dark:border-white dark:bg-white dark:text-ink'
 										: 'border-neutral-200 hover:border-neutral-950 dark:border-neutral-800'
 								}`}
 							>
@@ -263,7 +263,7 @@ export default async function SearchPage(props: PageProps) {
 													<span
 														className={`grid h-[18px] w-[18px] shrink-0 place-items-center rounded-full border ${
 															option.active
-																? 'border-neutral-950 bg-neutral-950 text-white dark:border-white dark:bg-white dark:text-neutral-950'
+																? 'border-neutral-950 bg-neutral-950 text-white dark:border-white dark:bg-white dark:text-ink'
 																: 'border-neutral-300 dark:border-neutral-700'
 														}`}
 													>
@@ -309,7 +309,7 @@ export default async function SearchPage(props: PageProps) {
 										i === HELP_AFTER - 1 && tours.length > HELP_AFTER ? <li key="help" className="py-3">{help}</li> : null,
 									])}
 								</ul>
-								<ul className="hidden gap-x-5 gap-y-8 sm:grid sm:grid-cols-2 xl:grid-cols-3">
+								<ul className="hidden gap-x-4 gap-y-8 sm:grid sm:grid-cols-2 xl:grid-cols-3">
 									{shown.flatMap((tour, i) => [
 										<li key={tour.id}>
 											<TourCard tour={tour} />
@@ -327,7 +327,7 @@ export default async function SearchPage(props: PageProps) {
 										<div aria-hidden className="h-1 w-48 overflow-hidden rounded-full bg-neutral-200 dark:bg-neutral-800">
 											<div className="h-full rounded-full bg-neutral-950 dark:bg-white" style={{ width: `${(shown.length / tours.length) * 100}%` }} />
 										</div>
-										<Link href={moreHref as any} scroll={false} className="mt-2 rounded-full border border-neutral-950 px-6 py-3 text-sm font-semibold transition hover:bg-neutral-950 hover:text-white dark:border-white dark:hover:bg-white dark:hover:text-neutral-950">
+										<Link href={moreHref as any} scroll={false} className="mt-2 rounded-full border border-neutral-950 px-6 py-3 text-sm font-semibold transition hover:bg-neutral-950 hover:text-white dark:border-white dark:hover:bg-white dark:hover:text-ink">
 											{t('show_more')}
 										</Link>
 									</div>
@@ -348,7 +348,7 @@ export default async function SearchPage(props: PageProps) {
 									))}
 								</div>
 								{hasFilters && (
-									<Link href={clearHref as any} className="mt-6 rounded-full bg-neutral-950 px-5 py-2.5 text-sm font-semibold text-white dark:bg-white dark:text-neutral-950">
+									<Link href={clearHref as any} className="mt-6 rounded-full bg-neutral-950 px-5 py-2.5 text-sm font-semibold text-white dark:bg-white dark:text-ink">
 										{t('clear')}
 									</Link>
 								)}
@@ -419,7 +419,7 @@ function HelpCard({ title, text, whatsapp, call }: { title: string; text: string
 					href={`https://wa.me/${SUPPORT_PHONE.replace(/\D/g, '')}`}
 					target="_blank"
 					rel="noopener noreferrer"
-					className="flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-neutral-950 transition hover:bg-neutral-200"
+					className="flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-ink transition hover:bg-neutral-200"
 				>
 					<MessageCircle className="h-4 w-4" aria-hidden />
 					{whatsapp}

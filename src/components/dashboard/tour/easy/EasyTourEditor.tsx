@@ -43,7 +43,7 @@ const VEHICLES = [
 ]
 
 const input =
-	'w-full rounded-2xl border-0 bg-neutral-100 px-5 text-lg text-neutral-950 ring-2 ring-transparent transition placeholder:text-neutral-400 focus:bg-white focus:outline-none focus:ring-neutral-950 dark:bg-neutral-900 dark:text-white dark:focus:bg-neutral-950 dark:focus:ring-white'
+	'w-full rounded-2xl border-0 bg-neutral-100 px-5 text-lg text-ink ring-2 ring-transparent transition placeholder:text-neutral-400 focus:bg-white focus:outline-none focus:ring-neutral-950 dark:bg-neutral-900 dark:text-white dark:focus:bg-neutral-950 dark:focus:ring-white'
 const bigButton = 'inline-flex h-14 items-center justify-center gap-2 rounded-full px-7 text-lg font-semibold transition active:scale-[0.98] disabled:opacity-40'
 
 // ---- Saving ----------------------------------------------------------------
@@ -138,7 +138,7 @@ function Label({ children, hint }: { children: ReactNode; hint?: string }) {
 
 /** − 4 + : changes a number without typing */
 function Stepper({ value, onChange, min = 0, max = 99, label }: { value: number; onChange: (n: number) => void; min?: number; max?: number; label: string }) {
-	const btn = 'grid h-14 w-14 place-items-center rounded-full bg-neutral-100 text-neutral-950 transition hover:bg-neutral-200 active:scale-95 disabled:opacity-30 dark:bg-neutral-800 dark:text-white'
+	const btn = 'grid h-14 w-14 place-items-center rounded-full bg-neutral-100 text-ink transition hover:bg-neutral-200 active:scale-95 disabled:opacity-30 dark:bg-neutral-800 dark:text-white'
 	return (
 		<div className="flex items-center gap-3" role="group" aria-label={label}>
 			<button type="button" className={btn} onClick={() => onChange(Math.max(min, value - 1))} disabled={value <= min} aria-label={`${label}: one less`}>
@@ -255,7 +255,7 @@ function PhotosStep({ tour, set, onRemoved }: { tour: Tour; set: (f: Field, v: a
 					dragging ? 'border-neutral-950 bg-neutral-100 dark:border-white dark:bg-neutral-900' : 'border-neutral-300 hover:border-neutral-950 hover:bg-neutral-50 dark:border-neutral-700 dark:hover:border-white dark:hover:bg-neutral-900'
 				}`}
 			>
-				<span className="grid h-16 w-16 place-items-center rounded-full bg-neutral-950 text-white dark:bg-white dark:text-neutral-950">
+				<span className="grid h-16 w-16 place-items-center rounded-full bg-neutral-950 text-white dark:bg-white dark:text-ink">
 					<ImagePlus className="h-8 w-8" />
 				</span>
 				<span className="text-xl font-bold">Choose photos</span>
@@ -288,7 +288,7 @@ function PhotosStep({ tour, set, onRemoved }: { tour: Tour; set: (f: Field, v: a
 							<div className="relative aspect-[4/3]">
 								{/* eslint-disable-next-line @next/next/no-img-element -- any uploaded host */}
 								<img src={photo.url.replace('/upload/', '/upload/c_fill,w_600,h_450,q_auto/')} alt={`Photo ${i + 1}`} className="h-full w-full object-cover" />
-								<span className={`absolute left-3 top-3 rounded-full px-3 py-1 text-sm font-bold ${i === 0 ? 'bg-amber-400 text-neutral-950' : 'bg-white/90 text-neutral-900'}`}>
+								<span className={`absolute left-3 top-3 rounded-full px-3 py-1 text-sm font-bold ${i === 0 ? 'bg-amber-400 text-ink' : 'bg-white/90 text-neutral-900'}`}>
 									{i === 0 ? '★ Cover photo' : `Photo ${i + 1}`}
 								</span>
 							</div>
@@ -414,7 +414,7 @@ function DaysStep({ tour, set, onRemoved }: StepProps) {
 				{days.map((day, i) => (
 					<li key={i} className="rounded-[28px] p-5 ring-2 ring-neutral-200 sm:p-7 dark:ring-neutral-800">
 						<div className="flex flex-wrap items-center justify-between gap-3">
-							<span className="rounded-full bg-neutral-950 px-4 py-2 text-lg font-bold text-white dark:bg-white dark:text-neutral-950">Day {i + 1}</span>
+							<span className="rounded-full bg-neutral-950 px-4 py-2 text-lg font-bold text-white dark:bg-white dark:text-ink">Day {i + 1}</span>
 							<div className="flex flex-wrap gap-2">
 								<IconButton label="Up" onClick={() => set('days', move(days, i, i - 1))} disabled={i === 0}>
 									<ArrowUp className="h-5 w-5" />
@@ -449,7 +449,7 @@ function DaysStep({ tour, set, onRemoved }: StepProps) {
 			<button
 				type="button"
 				onClick={() => set('days', [...days, { name: `Day ${days.length + 1}`, description: '', hidden: false }])}
-				className={`${bigButton} mt-6 w-full bg-neutral-950 text-white hover:bg-neutral-800 sm:w-auto dark:bg-white dark:text-neutral-950`}
+				className={`${bigButton} mt-6 w-full bg-neutral-950 text-white hover:bg-neutral-800 sm:w-auto dark:bg-white dark:text-ink`}
 			>
 				<Plus className="h-6 w-6" />
 				Add a day
@@ -500,7 +500,7 @@ function PricesStep({ tour, set }: StepProps) {
 			<button
 				type="button"
 				onClick={() => set('pricingTiers', transportTiers(days))}
-				className={`${bigButton} mb-5 w-full bg-neutral-950 text-white hover:bg-neutral-800 sm:w-auto dark:bg-white dark:text-neutral-950`}
+				className={`${bigButton} mb-5 w-full bg-neutral-950 text-white hover:bg-neutral-800 sm:w-auto dark:bg-white dark:text-ink`}
 			>
 				<Euro className="h-5 w-5" />
 				Use Travsus prices ({days === 1 ? '150 € a day' : days <= 3 ? '170 € a day' : '120 € a day, minibus 150 €'})
@@ -681,7 +681,7 @@ export default function EasyTourEditor({ initial, previewHref, backHref }: { ini
 	const required = STEPS.filter((s) => !s.optional).length
 
 	return (
-		<div ref={top} className="scroll-mt-24 text-neutral-950 dark:text-white">
+		<div ref={top} className="scroll-mt-24 text-ink dark:text-white">
 			{/* Progress + steps */}
 			<div className="flex flex-wrap items-center justify-between gap-3">
 				<p className="text-lg font-semibold text-neutral-500">{finished ? 'All steps' : `Step ${step + 1} of ${STEPS.length}`}</p>
@@ -702,7 +702,7 @@ export default function EasyTourEditor({ initial, previewHref, backHref }: { ini
 							onClick={() => go(i)}
 							aria-current={active ? 'step' : undefined}
 							className={`inline-flex h-12 shrink-0 items-center gap-2 rounded-full pl-2 pr-5 text-base font-semibold transition ${
-								active ? 'bg-neutral-950 text-white dark:bg-white dark:text-neutral-950' : 'bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-900 dark:hover:bg-neutral-800'
+								active ? 'bg-neutral-950 text-white dark:bg-white dark:text-ink' : 'bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-900 dark:hover:bg-neutral-800'
 							}`}
 						>
 							<span className={`grid h-8 w-8 place-items-center rounded-full ${done ? 'bg-emerald-500 text-white' : active ? 'bg-white/15' : 'bg-white dark:bg-neutral-950'}`}>
@@ -739,7 +739,7 @@ export default function EasyTourEditor({ initial, previewHref, backHref }: { ini
 						</ul>
 						<div className="mt-8 flex flex-col gap-3 sm:flex-row">
 							{previewHref && (
-								<a href={previewHref} target="_blank" rel="noreferrer" className={`${bigButton} bg-neutral-950 text-white hover:bg-neutral-800 dark:bg-white dark:text-neutral-950`}>
+								<a href={previewHref} target="_blank" rel="noreferrer" className={`${bigButton} bg-neutral-950 text-white hover:bg-neutral-800 dark:bg-white dark:text-ink`}>
 									<ExternalLink className="h-5 w-5" />
 									See my trip
 								</a>
@@ -767,7 +767,7 @@ export default function EasyTourEditor({ initial, previewHref, backHref }: { ini
 					</a>
 				)}
 				{!finished && (
-					<button type="button" onClick={() => go(step + 1)} className={`${bigButton} ml-auto bg-neutral-950 text-white hover:bg-neutral-800 dark:bg-white dark:text-neutral-950`}>
+					<button type="button" onClick={() => go(step + 1)} className={`${bigButton} ml-auto bg-neutral-950 text-white hover:bg-neutral-800 dark:bg-white dark:text-ink`}>
 						{step === STEPS.length - 1 ? 'Finish' : STEPS[step].optional && !STEPS[step].done(tour) ? 'Skip' : 'Next'}
 						<ArrowRight className="h-6 w-6" />
 					</button>
@@ -777,7 +777,7 @@ export default function EasyTourEditor({ initial, previewHref, backHref }: { ini
 			{/* Undo after a delete */}
 			{undo && (
 				<div role="status" className="fixed inset-x-0 bottom-40 z-[70] flex justify-center px-4 sm:bottom-28">
-					<div className="flex items-center gap-4 rounded-full bg-neutral-950 py-2 pl-6 pr-2 text-lg text-white shadow-2xl dark:bg-white dark:text-neutral-950">
+					<div className="flex items-center gap-4 rounded-full bg-neutral-950 py-2 pl-6 pr-2 text-lg text-white shadow-2xl dark:bg-white dark:text-ink">
 						<span>{undo.label}</span>
 						<button
 							type="button"
@@ -785,7 +785,7 @@ export default function EasyTourEditor({ initial, previewHref, backHref }: { ini
 								undo.run()
 								setUndo(null)
 							}}
-							className="inline-flex h-12 items-center gap-2 rounded-full bg-white px-5 font-semibold text-neutral-950 dark:bg-neutral-950 dark:text-white"
+							className="inline-flex h-12 items-center gap-2 rounded-full bg-white px-5 font-semibold text-ink dark:bg-neutral-950 dark:text-white"
 						>
 							<RotateCcw className="h-5 w-5" />
 							Undo

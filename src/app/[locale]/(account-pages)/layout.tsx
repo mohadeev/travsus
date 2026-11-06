@@ -16,7 +16,7 @@ export default async function AccountLayout({ children }: { children: ReactNode 
 	const affiliate = user ? await affiliateByEmail(user.email).catch(() => null) : null
 
 	return (
-		<main className="mx-auto max-w-7xl px-5 pb-20 pt-8 text-neutral-950 sm:pt-12 lg:pb-28 dark:text-white">
+		<main className="mx-auto max-w-7xl px-6 pb-20 pt-8 text-ink sm:pt-12 lg:pb-28 dark:text-white">
 			{user ? (
 				<div className="grid grid-cols-[minmax(0,1fr)] gap-8 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-14">
 					<AccountNav affiliate={!!affiliate} />

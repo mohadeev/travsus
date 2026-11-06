@@ -151,7 +151,7 @@ export default function TranslationsPanel({ initialData }: { initialData?: Data 
 	}
 
 	return (
-		<div className="mx-auto max-w-7xl px-5 pb-24 pt-8 text-neutral-950 sm:pt-12 dark:text-white">
+		<div className="mx-auto max-w-7xl px-6 pb-24 pt-8 text-ink sm:pt-12 dark:text-white">
 			{/* Title */}
 			<header className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
 				<div>
@@ -168,7 +168,7 @@ export default function TranslationsPanel({ initialData }: { initialData?: Data 
 					type="button"
 					onClick={() => setImporting(true)}
 					disabled={!data.writable}
-					className="inline-flex h-12 items-center gap-2 self-start rounded-full bg-neutral-950 px-6 text-sm font-semibold text-white transition hover:bg-neutral-800 disabled:opacity-40 sm:self-auto dark:bg-white dark:text-neutral-950"
+					className="inline-flex h-12 items-center gap-2 self-start rounded-full bg-neutral-950 px-6 text-sm font-semibold text-white transition hover:bg-neutral-800 disabled:opacity-40 sm:self-auto dark:bg-white dark:text-ink"
 				>
 					<Upload className="h-4 w-4" />
 					Import JSON
@@ -191,7 +191,7 @@ export default function TranslationsPanel({ initialData }: { initialData?: Data 
 								type="button"
 								onClick={() => chooseLang(c.locale)}
 								title={c.missing ? `Show the ${c.missing} texts missing in ${nativeName(c.locale)}` : 'Complete'}
-								className={`w-full rounded-2xl p-4 text-left transition ${active ? 'bg-neutral-950 text-white dark:bg-white dark:text-neutral-950' : 'bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-900 dark:hover:bg-neutral-800'}`}
+								className={`w-full rounded-2xl p-4 text-left transition ${active ? 'bg-neutral-950 text-white dark:bg-white dark:text-ink' : 'bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-900 dark:hover:bg-neutral-800'}`}
 							>
 								<span className="flex items-center justify-between gap-2">
 									<span className="truncate text-sm font-semibold">
@@ -240,7 +240,7 @@ export default function TranslationsPanel({ initialData }: { initialData?: Data 
 									setFilter(value)
 									if (value !== 'missing') setLang('')
 								}}
-								className={`shrink-0 rounded-full px-4 py-2 text-sm font-semibold transition ${filter === value ? 'bg-white shadow-sm dark:bg-neutral-800' : 'text-neutral-500 hover:text-neutral-950 dark:hover:text-white'}`}
+								className={`shrink-0 rounded-full px-4 py-2 text-sm font-semibold transition ${filter === value ? 'bg-white shadow-sm dark:bg-neutral-800' : 'text-neutral-500 hover:text-ink dark:hover:text-white'}`}
 							>
 								{label}
 							</button>
@@ -284,7 +284,7 @@ export default function TranslationsPanel({ initialData }: { initialData?: Data 
 												setGroup(g.name)
 												setQuery('')
 											}}
-											className={`w-full rounded-xl px-3 py-2 text-left transition ${active ? 'bg-neutral-950 text-white dark:bg-white dark:text-neutral-950' : 'hover:bg-neutral-100 dark:hover:bg-neutral-900'}`}
+											className={`w-full rounded-xl px-3 py-2 text-left transition ${active ? 'bg-neutral-950 text-white dark:bg-white dark:text-ink' : 'hover:bg-neutral-100 dark:hover:bg-neutral-900'}`}
 										>
 											<span className="flex items-center justify-between gap-2 text-sm">
 												<span className="truncate">{g.name}</span>
@@ -364,7 +364,7 @@ export default function TranslationsPanel({ initialData }: { initialData?: Data 
 			{/* Toast */}
 			<div
 				role="status"
-				className={`pointer-events-none fixed bottom-24 left-1/2 z-50 -translate-x-1/2 rounded-full bg-neutral-950 px-5 py-3 text-sm font-semibold text-white shadow-xl transition sm:bottom-8 dark:bg-white dark:text-neutral-950 ${toast ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}
+				className={`pointer-events-none fixed bottom-24 left-1/2 z-50 -translate-x-1/2 rounded-full bg-neutral-950 px-5 py-3 text-sm font-semibold text-white shadow-xl transition sm:bottom-8 dark:bg-white dark:text-ink ${toast ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}
 			>
 				<Check className="mr-2 inline h-4 w-4" />
 				{toast}
@@ -514,7 +514,7 @@ function KeyRow({
 								<button
 									type="button"
 									onClick={() => setDraft(Object.fromEntries(data.locales.map((l) => [l, current(l)])))}
-									className="h-10 rounded-full px-4 text-sm font-semibold text-neutral-500 hover:text-neutral-950 dark:hover:text-white"
+									className="h-10 rounded-full px-4 text-sm font-semibold text-neutral-500 hover:text-ink dark:hover:text-white"
 								>
 									Discard
 								</button>
@@ -523,7 +523,7 @@ function KeyRow({
 								type="button"
 								onClick={save}
 								disabled={!changed.length || state === 'saving'}
-								className="inline-flex h-10 items-center gap-2 rounded-full bg-neutral-950 px-5 text-sm font-semibold text-white transition hover:bg-neutral-800 disabled:opacity-30 dark:bg-white dark:text-neutral-950"
+								className="inline-flex h-10 items-center gap-2 rounded-full bg-neutral-950 px-5 text-sm font-semibold text-white transition hover:bg-neutral-800 disabled:opacity-30 dark:bg-white dark:text-ink"
 							>
 								{state === 'saving' ? <Loader2 className="h-4 w-4 animate-spin" /> : <Check className="h-4 w-4" />}
 								Save
@@ -567,7 +567,7 @@ function AddKey({ group, onAdded }: { group: string; onAdded: (key: string) => v
 		>
 			<input autoFocus value={key} onChange={(e) => setKey(e.target.value)} placeholder="key_name" required className="h-9 w-36 rounded-full border-0 bg-neutral-100 px-3 font-mono text-xs focus:ring-2 focus:ring-neutral-950 dark:bg-neutral-900" />
 			<input value={english} onChange={(e) => setEnglish(e.target.value)} placeholder="English text" required className="h-9 w-48 rounded-full border-0 bg-neutral-100 px-3 text-sm focus:ring-2 focus:ring-neutral-950 dark:bg-neutral-900" />
-			<button type="submit" className="h-9 rounded-full bg-neutral-950 px-4 text-sm font-semibold text-white dark:bg-white dark:text-neutral-950">
+			<button type="submit" className="h-9 rounded-full bg-neutral-950 px-4 text-sm font-semibold text-white dark:bg-white dark:text-ink">
 				Add
 			</button>
 			<button type="button" onClick={() => setOpen(false)} aria-label="Cancel" className="grid h-9 w-9 place-items-center rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-900">
@@ -609,7 +609,7 @@ function ImportDialog({ open, onClose, onDone }: { open: boolean; onClose: () =>
 				</Transition.Child>
 				<div className="fixed inset-0 flex items-end justify-center sm:items-center sm:p-6">
 					<Transition.Child as={Fragment} enter="ease-out duration-200" enterFrom="translate-y-8 opacity-0" enterTo="translate-y-0 opacity-100" leave="ease-in duration-150" leaveFrom="translate-y-0 opacity-100" leaveTo="translate-y-8 opacity-0">
-						<Dialog.Panel className="max-h-[92vh] w-full overflow-y-auto rounded-t-3xl bg-white p-6 text-neutral-950 shadow-2xl sm:max-w-2xl sm:rounded-3xl sm:p-8 dark:bg-neutral-900 dark:text-white">
+						<Dialog.Panel className="max-h-[92vh] w-full overflow-y-auto rounded-t-3xl bg-white p-6 text-ink shadow-2xl sm:max-w-2xl sm:rounded-3xl sm:p-8 dark:bg-neutral-900 dark:text-white">
 							<div className="flex items-center justify-between">
 								<Dialog.Title className="text-2xl font-bold tracking-tight">Import JSON</Dialog.Title>
 								<button type="button" onClick={onClose} aria-label="Close" className="grid h-9 w-9 place-items-center rounded-full bg-neutral-100 dark:bg-neutral-800">
@@ -637,7 +637,7 @@ function ImportDialog({ open, onClose, onDone }: { open: boolean; onClose: () =>
 							)}
 							{!['idle', 'busy'].includes(state) && <p className="mt-3 rounded-2xl bg-red-50 px-4 py-3 text-sm text-red-700 dark:bg-red-950/50 dark:text-red-300">{state}</p>}
 							<div className="mt-5 flex justify-end">
-								<button type="button" onClick={run} disabled={!json.trim() || state === 'busy'} className="inline-flex h-12 items-center gap-2 rounded-full bg-neutral-950 px-7 text-sm font-semibold text-white disabled:opacity-40 dark:bg-white dark:text-neutral-950">
+								<button type="button" onClick={run} disabled={!json.trim() || state === 'busy'} className="inline-flex h-12 items-center gap-2 rounded-full bg-neutral-950 px-7 text-sm font-semibold text-white disabled:opacity-40 dark:bg-white dark:text-ink">
 									{state === 'busy' ? <Loader2 className="h-4 w-4 animate-spin" /> : <Upload className="h-4 w-4" />}
 									Import
 								</button>

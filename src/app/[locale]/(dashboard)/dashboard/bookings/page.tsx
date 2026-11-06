@@ -54,7 +54,7 @@ export default async function BookingsPage(props: PageProps) {
 						key={f}
 						href={href(f) as any}
 						aria-current={f === filter ? 'page' : undefined}
-						className={`inline-flex shrink-0 items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition ${f === filter ? 'bg-neutral-950 text-white dark:bg-white dark:text-neutral-950' : 'bg-neutral-100 text-neutral-700 hover:bg-neutral-200 dark:bg-neutral-900 dark:text-neutral-300'}`}
+						className={`inline-flex shrink-0 items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition ${f === filter ? 'bg-neutral-950 text-white dark:bg-white dark:text-ink' : 'bg-neutral-100 text-neutral-700 hover:bg-neutral-200 dark:bg-neutral-900 dark:text-neutral-300'}`}
 					>
 						{LABELS[f]}
 						<span className="tabular-nums opacity-60">{counts[f]}</span>
@@ -89,7 +89,7 @@ export default async function BookingsPage(props: PageProps) {
 								<div className="flex items-center justify-between gap-4 border-t border-neutral-100 pt-3 sm:border-0 sm:pt-0 dark:border-neutral-800">
 									<div className="min-w-0 text-sm sm:w-56">
 										{b.customer.name !== b.customer.email && <p className="truncate font-semibold">{b.customer.name}</p>}
-										<a href={`mailto:${b.customer.email}`} className="inline-flex max-w-full items-center gap-1 truncate text-neutral-500 hover:text-neutral-950 dark:hover:text-white">
+										<a href={`mailto:${b.customer.email}`} className="inline-flex max-w-full items-center gap-1 truncate text-neutral-500 hover:text-ink dark:hover:text-white">
 											<Mail className="h-3.5 w-3.5 shrink-0" />
 											<span className="truncate">{b.customer.email}</span>
 										</a>

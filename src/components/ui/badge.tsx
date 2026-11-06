@@ -3,8 +3,8 @@ import * as React from 'react'
 import { cn } from '@/lib/utils'
 
 const VARIANTS: Record<string, string> = {
-	default: 'bg-neutral-950 text-white dark:bg-white dark:text-neutral-950',
-	primary: 'bg-neutral-950 text-white dark:bg-white dark:text-neutral-950',
+	default: 'bg-neutral-950 text-white dark:bg-white dark:text-ink',
+	primary: 'bg-neutral-950 text-white dark:bg-white dark:text-ink',
 	secondary: 'bg-neutral-100 text-neutral-700 dark:bg-neutral-900 dark:text-neutral-300',
 	outline: 'ring-1 ring-inset ring-neutral-300 text-neutral-700 dark:ring-neutral-700 dark:text-neutral-300',
 	success: 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300',

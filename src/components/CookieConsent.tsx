@@ -58,7 +58,7 @@ export default function CookieConsent() {
 									{/* Phones: one short line, so the banner doesn't cover the page */}
 									<span className="sm:hidden">{t('text_short')}</span>
 									<span className="hidden sm:inline">{t('text')}</span>{' '}
-									<Link href={`/${locale}/cookie-policy` as any} className="font-semibold text-neutral-950 underline underline-offset-2 dark:text-white">
+									<Link href={`/${locale}/cookie-policy` as any} className="font-semibold text-ink underline underline-offset-2 dark:text-white">
 										{t('policy')}
 									</Link>
 								</p>
@@ -66,14 +66,14 @@ export default function CookieConsent() {
 						</div>
 						{/* Reject and Accept side by side, styled the same (equally easy to choose) */}
 						<div className="mt-2.5 grid grid-cols-2 gap-2 sm:mt-4">
-							<button type="button" onClick={() => decide({ analytics: false, marketing: false })} className="h-10 rounded-full bg-neutral-950 text-sm font-semibold text-white transition hover:bg-neutral-800 sm:h-11 dark:bg-white dark:text-neutral-950">
+							<button type="button" onClick={() => decide({ analytics: false, marketing: false })} className="h-10 rounded-full bg-neutral-950 text-sm font-semibold text-white transition hover:bg-neutral-800 sm:h-11 dark:bg-white dark:text-ink">
 								{t('reject')}
 							</button>
-							<button type="button" onClick={() => decide({ analytics: true, marketing: true })} className="h-10 rounded-full bg-neutral-950 text-sm font-semibold text-white transition hover:bg-neutral-800 sm:h-11 dark:bg-white dark:text-neutral-950">
+							<button type="button" onClick={() => decide({ analytics: true, marketing: true })} className="h-10 rounded-full bg-neutral-950 text-sm font-semibold text-white transition hover:bg-neutral-800 sm:h-11 dark:bg-white dark:text-ink">
 								{t('accept')}
 							</button>
 						</div>
-						<button type="button" onClick={() => { setDraft({ analytics: false, marketing: false }); setPanel(true) }} className="mt-2 w-full text-center text-xs font-semibold text-neutral-600 underline underline-offset-4 sm:mt-3 sm:text-sm hover:text-neutral-950 dark:text-neutral-400 dark:hover:text-white">
+						<button type="button" onClick={() => { setDraft({ analytics: false, marketing: false }); setPanel(true) }} className="mt-2 w-full text-center text-xs font-semibold text-neutral-600 underline underline-offset-4 sm:mt-3 sm:text-sm hover:text-ink dark:text-neutral-400 dark:hover:text-white">
 							{t('choose')}
 						</button>
 					</div>
@@ -105,7 +105,7 @@ export default function CookieConsent() {
 							<button type="button" onClick={() => decide(draft)} className="h-11 rounded-full border border-neutral-300 text-sm font-semibold transition hover:border-neutral-950 dark:border-neutral-700 dark:hover:border-white">
 								{t('save')}
 							</button>
-							<button type="button" onClick={() => decide({ analytics: true, marketing: true })} className="h-11 rounded-full bg-neutral-950 text-sm font-semibold text-white transition hover:bg-neutral-800 dark:bg-white dark:text-neutral-950">
+							<button type="button" onClick={() => decide({ analytics: true, marketing: true })} className="h-11 rounded-full bg-neutral-950 text-sm font-semibold text-white transition hover:bg-neutral-800 dark:bg-white dark:text-ink">
 								{t('accept')}
 							</button>
 						</div>

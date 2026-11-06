@@ -15,7 +15,7 @@ export default async function CreateCompanyPage(props: { params: Promise<{ local
 	const params = await props.params;
 	return (
 		<div className="max-w-3xl">
-			<Link href={`/${params.locale}/dashboard/settings` as any} className="inline-flex items-center gap-1.5 text-sm font-semibold text-neutral-500 transition hover:text-neutral-950 dark:hover:text-white">
+			<Link href={`/${params.locale}/dashboard/settings` as any} className="inline-flex items-center gap-1.5 text-sm font-semibold text-neutral-500 transition hover:text-ink dark:hover:text-white">
 				<ArrowLeft className="h-4 w-4" />
 				Company
 			</Link>

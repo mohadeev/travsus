@@ -24,7 +24,7 @@ export default function AccountNav({ affiliate = false }: { affiliate?: boolean 
 								aria-current={active ? 'page' : undefined}
 								className={`flex items-center gap-2.5 rounded-full px-4 py-2.5 text-sm font-semibold transition lg:rounded-xl lg:py-3 ${
 									active
-										? 'bg-neutral-950 text-white dark:bg-white dark:text-neutral-950'
+										? 'bg-neutral-950 text-white dark:bg-white dark:text-ink'
 										: 'bg-neutral-100 text-neutral-700 hover:bg-neutral-200 lg:bg-transparent lg:hover:bg-neutral-100 dark:bg-neutral-900 dark:text-neutral-300 lg:dark:bg-transparent dark:hover:bg-neutral-800'
 								}`}
 							>

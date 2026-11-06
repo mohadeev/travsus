@@ -6,7 +6,7 @@
 export default function TourError({ reset }: { error: Error & { digest?: string }; reset: () => void }) {
 	return (
 		<div className="ListingDetailPage">
-			<div className="ListingDetailPage__content mx-auto max-w-7xl px-5 py-24 text-center">
+			<div className="ListingDetailPage__content mx-auto max-w-7xl px-6 py-24 text-center">
 				<h2 className="text-2xl font-bold">Something went wrong</h2>
 				<p className="mt-2 text-neutral-500">Please try again later.</p>
 				<button

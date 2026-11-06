@@ -36,7 +36,7 @@ export default async function ToursPage(props: { params: Promise<{ locale: strin
 						<li key={t.id} className="flex flex-col overflow-hidden rounded-[24px] ring-1 ring-neutral-200 dark:ring-neutral-800">
 							<div className="relative aspect-[16/10] bg-neutral-100 dark:bg-neutral-900">
 								<Image src={t.image || PHOTOS.sahara} alt="" fill sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw" className="object-cover" />
-								{t.days > 0 && <span className="absolute left-3 top-3 rounded-full bg-white px-2.5 py-1 text-xs font-semibold text-neutral-950">{t.days} {t.days === 1 ? 'day' : 'days'}</span>}
+								{t.days > 0 && <span className="absolute left-3 top-3 rounded-full bg-white px-2.5 py-1 text-xs font-semibold text-ink">{t.days} {t.days === 1 ? 'day' : 'days'}</span>}
 							</div>
 							<div className="flex flex-1 flex-col p-4">
 								<h2 className="line-clamp-2 font-semibold leading-snug">{t.name}</h2>
@@ -55,7 +55,7 @@ export default async function ToursPage(props: { params: Promise<{ locale: strin
 									</div>
 								</div>
 								<div className="mt-4 flex gap-2 pt-1">
-									<Link href={`/${locale}/dashboard/tours/${t.id}/edit` as any} className="inline-flex h-10 flex-1 items-center justify-center gap-2 rounded-full bg-neutral-950 text-sm font-semibold text-white transition hover:bg-neutral-800 dark:bg-white dark:text-neutral-950">
+									<Link href={`/${locale}/dashboard/tours/${t.id}/edit` as any} className="inline-flex h-10 flex-1 items-center justify-center gap-2 rounded-full bg-neutral-950 text-sm font-semibold text-white transition hover:bg-neutral-800 dark:bg-white dark:text-ink">
 										<PenLine className="h-4 w-4" />
 										Edit
 									</Link>

@@ -53,7 +53,7 @@ export default function HeaderBar() {
 				{t('skip')}
 			</a>
 
-			<div className="mx-auto grid h-[60px] max-w-7xl grid-cols-[1fr_auto] items-center px-4 sm:h-[72px] sm:px-5 lg:grid-cols-[1fr_auto_1fr]">
+			<div className="mx-auto grid h-[60px] max-w-7xl grid-cols-[1fr_auto] items-center px-6 sm:h-[72px] lg:grid-cols-[1fr_auto_1fr]">
 				<Logo className="w-24 shrink-0 justify-self-start sm:w-28" />
 
 				<nav aria-label={t('explore')} className="hidden items-center gap-1 lg:flex">

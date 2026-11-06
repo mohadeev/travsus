@@ -15,7 +15,7 @@ export default function Avatar({ author, size = 40 }: { author: ForumAuthor; siz
 	) : (
 		<span
 			aria-hidden
-			className="grid shrink-0 place-items-center rounded-full bg-neutral-950 font-semibold text-white dark:bg-white dark:text-neutral-950"
+			className="grid shrink-0 place-items-center rounded-full bg-neutral-950 font-semibold text-white dark:bg-white dark:text-ink"
 			style={{ width: size, height: size, fontSize: size * 0.4 }}
 		>
 			{(author.name || '?').charAt(0).toUpperCase()}

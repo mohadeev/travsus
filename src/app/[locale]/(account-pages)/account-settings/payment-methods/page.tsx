@@ -112,7 +112,7 @@ export default function PaymentsPage() {
 								<div className="min-w-0 flex-1">
 									<p className="font-semibold capitalize">
 										{card.brand} •••• {card.last4}
-										{card.isDefault && <span className="ml-2 rounded-full bg-neutral-950 px-2 py-0.5 text-xs font-semibold normal-case text-white dark:bg-white dark:text-neutral-950">{t('default')}</span>}
+										{card.isDefault && <span className="ml-2 rounded-full bg-neutral-950 px-2 py-0.5 text-xs font-semibold normal-case text-white dark:bg-white dark:text-ink">{t('default')}</span>}
 									</p>
 									<p className="text-sm text-neutral-500">{t('card_expires', { date: `${String(card.exp_month).padStart(2, '0')}/${card.exp_year}` })}</p>
 								</div>

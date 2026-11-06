@@ -80,13 +80,13 @@ export default async function BlogPostPage(props: PageProps) {
 	}
 
 	return (
-		<main className="pb-16 text-neutral-950 sm:pb-24 dark:text-white [&_h1]:[text-wrap:balance] [&_h2]:[text-wrap:balance]">
+		<main className="pb-16 text-ink sm:pb-24 dark:text-white [&_h1]:[text-wrap:balance] [&_h2]:[text-wrap:balance]">
 			<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }} />
 
 			<article>
 				<header className="mx-auto max-w-3xl px-5 pt-8 sm:pt-14">
 					<div className="flex items-center justify-between gap-4">
-						<Link href={`/${locale}/blog` as any} className="inline-flex items-center gap-1.5 text-sm font-semibold text-neutral-500 transition hover:text-neutral-950 dark:hover:text-white">
+						<Link href={`/${locale}/blog` as any} className="inline-flex items-center gap-1.5 text-sm font-semibold text-neutral-500 transition hover:text-ink dark:hover:text-white">
 							<ArrowLeft className="h-4 w-4" />
 							{t('back')}
 						</Link>
@@ -108,7 +108,7 @@ export default async function BlogPostPage(props: PageProps) {
 								// eslint-disable-next-line @next/next/no-img-element
 								<img src={post.author.image} alt="" className="h-11 w-11 rounded-full object-cover" />
 							) : (
-								<span className="grid h-11 w-11 place-items-center rounded-full bg-neutral-950 font-semibold text-white dark:bg-white dark:text-neutral-950">
+								<span className="grid h-11 w-11 place-items-center rounded-full bg-neutral-950 font-semibold text-white dark:bg-white dark:text-ink">
 									{post.author.name.charAt(0).toUpperCase()}
 								</span>
 							)}
@@ -130,7 +130,7 @@ export default async function BlogPostPage(props: PageProps) {
 
 				<div
 					lang={post.translated ? locale : routing.defaultLocale}
-					className="prose prose-lg prose-neutral mx-auto mt-10 max-w-3xl px-5 sm:mt-14 dark:prose-invert prose-headings:font-bold prose-headings:tracking-tight prose-h2:mt-12 prose-h2:text-3xl prose-h3:text-2xl prose-a:font-semibold prose-a:text-neutral-950 prose-a:underline-offset-4 prose-img:rounded-3xl prose-li:my-1 dark:prose-a:text-white"
+					className="prose prose-lg prose-neutral mx-auto mt-10 max-w-3xl px-5 sm:mt-14 dark:prose-invert prose-headings:font-bold prose-headings:tracking-tight prose-h2:mt-12 prose-h2:text-3xl prose-h3:text-2xl prose-a:font-semibold prose-a:text-ink prose-a:underline-offset-4 prose-img:rounded-3xl prose-li:my-1 dark:prose-a:text-white"
 					dangerouslySetInnerHTML={{ __html: post.content }}
 				/>
 
@@ -146,12 +146,12 @@ export default async function BlogPostPage(props: PageProps) {
 			</article>
 
 			{/* From reading to booking */}
-			<section className="mx-auto mt-20 max-w-7xl px-5 sm:mt-28">
+			<section className="mx-auto mt-20 max-w-7xl px-6 sm:mt-28">
 				<div className="relative isolate overflow-hidden rounded-[28px] bg-neutral-950 px-6 py-14 text-center text-white sm:rounded-[40px] sm:py-20">
 					<Image src={PHOTOS.sahara} alt="" fill sizes="100vw" className="-z-10 object-cover opacity-40" />
 					<h2 className="mx-auto max-w-2xl text-3xl font-bold tracking-tight sm:text-5xl">{t('tours_title')}</h2>
 					<p className="mx-auto mt-3 max-w-xl text-white/75 sm:text-lg">{t('tours_text')}</p>
-					<Link href={`/${locale}/search?query=` as any} className="mt-8 inline-flex h-12 items-center gap-2 rounded-full bg-white px-7 text-sm font-semibold text-neutral-950 transition hover:bg-neutral-200">
+					<Link href={`/${locale}/search?query=` as any} className="mt-8 inline-flex h-12 items-center gap-2 rounded-full bg-white px-7 text-sm font-semibold text-ink transition hover:bg-neutral-200">
 						{t('tours_cta')}
 						<ArrowRight className="h-4 w-4" />
 					</Link>
@@ -159,7 +159,7 @@ export default async function BlogPostPage(props: PageProps) {
 			</section>
 
 			{related.length > 0 && (
-				<section className="mx-auto mt-20 max-w-7xl px-5 sm:mt-28">
+				<section className="mx-auto mt-20 max-w-7xl px-6 sm:mt-28">
 					<h2 className="text-3xl font-bold tracking-tight sm:text-4xl">{t('related_title')}</h2>
 					<ul className="mt-8 grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
 						{related.map((r) => (

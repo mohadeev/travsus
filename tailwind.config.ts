@@ -33,10 +33,11 @@ const config: Config = {
     },
     fontFamily: {
        body: ['var(--font-body)', 'sans-serif'],
-      // Instrument Sans; Inter for Cyrillic; Chinese, Japanese and Korean use the system's font
-      sans: ['"Instrument Sans Variable"', '"Inter Variable"', ...fontFamily.sans],
-      // Headlines (also the .headline class in globals.css)
-      display: ['"Bricolage Grotesque Variable"', '"Inter Variable"', ...fontFamily.sans],
+      // Figtree (closest free match to TripAdvisor's Trip Sans); Inter for
+      // Cyrillic; Chinese, Japanese and Korean use the system's font
+      sans: ['"Figtree Variable"', '"Inter Variable"', ...fontFamily.sans],
+      // Headlines (also the .headline class in globals.css): same family, heavier
+      display: ['"Figtree Variable"', '"Inter Variable"', ...fontFamily.sans],
 
       // satoshi: ["Satoshi"],
     },
@@ -48,6 +49,12 @@ const config: Config = {
     },
     extend: {
       colors: {
+        // Text colours as on TripAdvisor: a near-black green, and a grey green
+        // for secondary text (ratings, subtitles, details)
+        ink: {
+          DEFAULT: "#002B11",
+          soft: "#38443A",
+        },
         // TRAVSUS brand: Moroccan sunset terracotta (buttons, highlights)
         brand: {
           50: "#FFF4EE",
@@ -270,6 +277,9 @@ const config: Config = {
         242.5: "60.625rem",
       },
       maxWidth: {
+        // Page width as on TripAdvisor: 1184px at most, 24px padding on each side
+        // (px-6), so the content is 1136px wide (four 272px cards + 16px gaps)
+        "7xl": "1184px",
         2.5: "0.625rem",
         3: "0.75rem",
         4: "1rem",

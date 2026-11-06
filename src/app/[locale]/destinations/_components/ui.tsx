@@ -59,7 +59,7 @@ export function PlaceCard({ place, directions, website, cityLabel }: { place: Pl
 				<div className="flex items-start justify-between gap-3">
 					<h3 className="text-lg font-bold leading-snug tracking-tight">{place.name}</h3>
 					{place.rating ? (
-						<span className="inline-flex shrink-0 items-center gap-1 rounded-full bg-neutral-950 px-2.5 py-1 text-xs font-bold text-white dark:bg-white dark:text-neutral-950">
+						<span className="inline-flex shrink-0 items-center gap-1 rounded-full bg-neutral-950 px-2.5 py-1 text-xs font-bold text-white dark:bg-white dark:text-ink">
 							<Star className="h-3 w-3 fill-current" />
 							{place.rating.toFixed(1)}
 						</span>

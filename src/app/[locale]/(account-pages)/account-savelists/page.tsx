@@ -34,13 +34,13 @@ export default async function SavedToursPage(props: { params: Promise<{ locale: 
 					<p className="mx-auto mt-2 max-w-sm text-neutral-500">{t('saved_empty_text')}</p>
 					<Link
 						href={`/${locale}/search?query=` as any}
-						className="mt-7 inline-flex h-12 items-center rounded-full bg-neutral-950 px-7 text-sm font-semibold text-white transition hover:bg-neutral-800 dark:bg-white dark:text-neutral-950"
+						className="mt-7 inline-flex h-12 items-center rounded-full bg-neutral-950 px-7 text-sm font-semibold text-white transition hover:bg-neutral-800 dark:bg-white dark:text-ink"
 					>
 						{t('explore_tours')}
 					</Link>
 				</div>
 			) : (
-				<ul className="mt-10 grid grid-cols-2 gap-x-3 gap-y-6 sm:gap-x-5 sm:gap-y-10 xl:grid-cols-3">
+				<ul className="mt-10 grid grid-cols-2 gap-x-2 gap-y-6 sm:gap-x-4 sm:gap-y-8 xl:grid-cols-3">
 					{saved.map((tour) => (
 						<li key={tour.id}>
 							<SavedItem id={tour.id} name={tour.name}>

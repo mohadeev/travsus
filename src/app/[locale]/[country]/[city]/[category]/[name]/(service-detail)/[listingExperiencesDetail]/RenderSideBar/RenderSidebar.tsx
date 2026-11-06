@@ -219,8 +219,8 @@ const RenderSidebar: FC = () => {
 								onClick={() => update({ hotel: value })}
 								className={`flex items-center justify-center gap-1.5 rounded-full px-2 py-2 text-sm font-semibold transition ${
 									hotel === value
-										? 'bg-white text-neutral-950 shadow-sm dark:bg-neutral-800 dark:text-white'
-										: 'text-neutral-500 hover:text-neutral-950 dark:hover:text-white'
+										? 'bg-white text-ink shadow-sm dark:bg-neutral-800 dark:text-white'
+										: 'text-neutral-500 hover:text-ink dark:hover:text-white'
 								}`}
 							>
 								<Icon className="h-4 w-4 shrink-0" aria-hidden />
@@ -325,7 +325,7 @@ function Counter({
 	moreLabel: string
 }) {
 	const button =
-		'grid h-9 w-9 place-items-center rounded-full border border-neutral-300 text-neutral-700 transition hover:border-neutral-950 hover:text-neutral-950 disabled:cursor-not-allowed disabled:opacity-30 dark:border-neutral-700 dark:text-neutral-300 dark:hover:border-white'
+		'grid h-9 w-9 place-items-center rounded-full border border-neutral-300 text-neutral-700 transition hover:border-neutral-950 hover:text-ink disabled:cursor-not-allowed disabled:opacity-30 dark:border-neutral-700 dark:text-neutral-300 dark:hover:border-white'
 	return (
 		<div className="flex items-center justify-between gap-3 px-4 py-3">
 			<div className="min-w-0">

@@ -50,7 +50,7 @@ export default function AgencyBoard({ className = '' }: { className?: string }) 
 	return (
 		<div className={`relative mx-auto w-full max-w-[460px] ${className}`}>
 			{/* Notification: the booking that just came in */}
-			<div key={tick} className={`absolute -right-2 -top-14 z-20 flex items-center gap-2.5 rounded-2xl bg-white py-2.5 pl-2.5 pr-4 text-neutral-950 shadow-2xl sm:-right-8 ${s.notify}`}>
+			<div key={tick} className={`absolute -right-2 -top-14 z-20 flex items-center gap-2.5 rounded-2xl bg-white py-2.5 pl-2.5 pr-4 text-ink shadow-2xl sm:-right-8 ${s.notify}`}>
 				<span className="grid h-9 w-9 place-items-center rounded-xl bg-[#FDE047] text-lg">{flag(newest[2])}</span>
 				<span>
 					<span className="block text-[13px] font-bold leading-tight">{t('board_new')} · +{money(newest[4])}</span>
@@ -94,7 +94,7 @@ export default function AgencyBoard({ className = '' }: { className?: string }) 
 				</ul>
 
 				{/* This month */}
-				<div className="mt-4 flex items-end justify-between gap-4 rounded-2xl bg-white p-4 text-neutral-950">
+				<div className="mt-4 flex items-end justify-between gap-4 rounded-2xl bg-white p-4 text-ink">
 					<div>
 						<p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-neutral-500">{t('board_month')}</p>
 						<p className="mt-1 text-3xl font-black tabular-nums tracking-tight">

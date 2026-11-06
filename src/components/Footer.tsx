@@ -59,7 +59,7 @@ export default function Footer() {
 
 	return (
 		<footer className="bg-[#f2f2f2] text-sm text-black dark:bg-neutral-900 dark:text-white">
-			<div className="mx-auto max-w-7xl px-4 pb-7 pt-10 sm:px-5">
+			<div className="mx-auto max-w-7xl px-6 pb-7 pt-10 ">
 				{/* Link columns */}
 				<div className="grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-3 lg:grid-cols-5">
 					<nav aria-label={tHome('destinations_title')}>

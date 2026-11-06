@@ -28,7 +28,7 @@ export default function CopyCode({ code, shareText }: { code: string; shareText:
 					{copied ? t('copied') : t('copy')}
 				</button>
 			</div>
-			<button type="button" onClick={share} className="inline-flex h-14 items-center justify-center gap-2 rounded-full bg-neutral-950 px-7 text-sm font-semibold text-white transition hover:bg-neutral-800 dark:bg-white dark:text-neutral-950">
+			<button type="button" onClick={share} className="inline-flex h-14 items-center justify-center gap-2 rounded-full bg-neutral-950 px-7 text-sm font-semibold text-white transition hover:bg-neutral-800 dark:bg-white dark:text-ink">
 				<Share2 className="h-4 w-4" />
 				{t('share')}
 			</button>

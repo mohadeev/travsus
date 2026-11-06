@@ -71,8 +71,8 @@ function Package({ name, featured = false, children }: { name: string; featured?
 function Item({ extra = false, children }: { extra?: boolean; children: ReactNode }) {
 	const Icon = extra ? Plus : Check
 	return (
-		<li className={`flex gap-3 text-[15px] leading-snug ${extra ? 'font-medium text-neutral-950 dark:text-white' : 'text-neutral-700 dark:text-neutral-300'}`}>
-			<Icon className="mt-0.5 h-4 w-4 shrink-0 text-neutral-950 dark:text-white" strokeWidth={2.5} aria-hidden />
+		<li className={`flex gap-3 text-[15px] leading-snug ${extra ? 'font-medium text-ink dark:text-white' : 'text-neutral-700 dark:text-neutral-300'}`}>
+			<Icon className="mt-0.5 h-4 w-4 shrink-0 text-ink dark:text-white" strokeWidth={2.5} aria-hidden />
 			{children}
 		</li>
 	)

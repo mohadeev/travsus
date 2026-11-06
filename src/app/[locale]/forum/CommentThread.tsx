@@ -108,7 +108,7 @@ function CommentItem({
 	})
 	const reply = useAuthAction(onReply)
 
-	const action = 'inline-flex items-center gap-1.5 rounded-full px-2.5 py-1.5 text-sm font-medium text-neutral-500 transition hover:bg-neutral-100 hover:text-neutral-950 dark:hover:bg-neutral-800 dark:hover:text-white'
+	const action = 'inline-flex items-center gap-1.5 rounded-full px-2.5 py-1.5 text-sm font-medium text-neutral-500 transition hover:bg-neutral-100 hover:text-ink dark:hover:bg-neutral-800 dark:hover:text-white'
 
 	return (
 		<article className="flex gap-3 sm:gap-4">
@@ -125,7 +125,7 @@ function CommentItem({
 					{comment.content}
 				</p>
 				<div className="-ml-2.5 mt-1.5 flex items-center gap-1">
-					<button type="button" onClick={() => toggleLike(undefined)} aria-pressed={liked} className={`${action} ${liked ? '!text-neutral-950 dark:!text-white' : ''}`}>
+					<button type="button" onClick={() => toggleLike(undefined)} aria-pressed={liked} className={`${action} ${liked ? '!text-ink dark:!text-white' : ''}`}>
 						<ThumbsUp className={`h-4 w-4 ${liked ? 'fill-current' : ''}`} />
 						{t('helpful')}
 						{likes.length > 0 && <span className="tabular-nums">{likes.length}</span>}
@@ -208,14 +208,14 @@ function Composer({
 			<div className="flex items-center justify-end gap-2 px-1 pb-1">
 				{error && <p className="mr-auto px-2 text-sm text-red-500">{t('error_generic')}</p>}
 				{onCancel && (
-					<button type="button" onClick={onCancel} className="rounded-full px-4 py-2 text-sm font-semibold text-neutral-500 hover:text-neutral-950 dark:hover:text-white">
+					<button type="button" onClick={onCancel} className="rounded-full px-4 py-2 text-sm font-semibold text-neutral-500 hover:text-ink dark:hover:text-white">
 						{t('cancel')}
 					</button>
 				)}
 				<button
 					type="submit"
 					disabled={!text.trim() || sending}
-					className="inline-flex items-center gap-2 rounded-full bg-neutral-950 px-5 py-2 text-sm font-semibold text-white transition disabled:opacity-40 dark:bg-white dark:text-neutral-950"
+					className="inline-flex items-center gap-2 rounded-full bg-neutral-950 px-5 py-2 text-sm font-semibold text-white transition disabled:opacity-40 dark:bg-white dark:text-ink"
 				>
 					{sending && <Loader2 className="h-4 w-4 animate-spin" />}
 					{t(parentId ? 'reply' : 'comment_cta')}

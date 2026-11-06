@@ -33,13 +33,21 @@ p {
 	text-wrap: pretty;
 }
 
-/* Headline: Bricolage Grotesque, heavy and tight. Outside the Tailwind layers
-   on purpose so it wins over font-bold / tracking / leading. */
+/* Headline: Figtree extra bold, as TripAdvisor's headings (Trip Sans 800).
+   Outside the Tailwind layers on purpose so it wins over font-bold / tracking
+   / leading. */
 .headline {
-	font-family: 'Bricolage Grotesque Variable', 'Inter Variable', system-ui, sans-serif;
-	font-optical-sizing: auto;
+	font-family: 'Figtree Variable', 'Inter Variable', system-ui, sans-serif;
 	font-weight: 800;
-	letter-spacing: -0.02em;
-	line-height: 1.1;
+	letter-spacing: normal;
+	line-height: 1.2;
 	text-wrap: balance;
+}
+
+/* Text colour as on TripAdvisor (near-black green); dark mode keeps white */
+body {
+	color: #002b11;
+}
+.dark body {
+	color: #fff;
 }

@@ -40,7 +40,7 @@ export default function FooterNav() {
 	const isHome = /^\/[a-z]{2}-[A-Z]{2}\/?$/.test(pathname) || pathname === '/'
 	const active = (path: string) => pathname.includes(path)
 	const color = (on: boolean) =>
-		on ? 'text-neutral-950 dark:text-white' : 'text-neutral-500 dark:text-neutral-400'
+		on ? 'text-ink dark:text-white' : 'text-neutral-500 dark:text-neutral-400'
 
 	// Saved and Account need an account: signed out, they open sign-in
 	const needsAccount = (href: string, label: string, icon: React.ReactNode, on: boolean) =>

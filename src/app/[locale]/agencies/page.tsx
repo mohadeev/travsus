@@ -71,7 +71,7 @@ export default async function AgenciesPage(props: PageProps) {
 	}
 
 	return (
-		<main className="overflow-x-clip pb-16 text-neutral-950 [&_h1]:[text-wrap:balance] [&_h2]:[text-wrap:balance] [&_p]:[text-wrap:pretty] sm:pb-24 dark:text-white">
+		<main className="overflow-x-clip pb-16 text-ink [&_h1]:[text-wrap:balance] [&_h2]:[text-wrap:balance] [&_p]:[text-wrap:pretty] sm:pb-24 dark:text-white">
 			<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 			<HomeMotion />
 
@@ -87,7 +87,7 @@ export default async function AgenciesPage(props: PageProps) {
 					<rect width="100%" height="100%" fill="url(#agency-dots)" />
 				</svg>
 
-				<div className="mx-auto grid max-w-7xl items-center gap-16 px-5 pb-16 pt-12 sm:pb-24 sm:pt-20 lg:grid-cols-[1.05fr_1fr] lg:gap-16 lg:pb-28">
+				<div className="mx-auto grid max-w-7xl items-center gap-16 px-6 pb-16 pt-12 sm:pb-24 sm:pt-20 lg:grid-cols-[1.05fr_1fr] lg:gap-16 lg:pb-28">
 					<div className={`${s.heroIn} text-center lg:text-left`}>
 						<p className="inline-flex items-center gap-2 rounded-full bg-white/[0.08] px-3.5 py-1.5 text-[12px] font-semibold uppercase tracking-[0.16em] text-white/75 ring-1 ring-white/10">
 							<span className="relative flex h-2 w-2">
@@ -116,7 +116,7 @@ export default async function AgenciesPage(props: PageProps) {
 			</section>
 
 			{/* How it works */}
-			<section className={`mx-auto mt-24 max-w-7xl px-5 sm:mt-36 ${motion.reveal}`}>
+			<section className={`mx-auto mt-24 max-w-7xl px-6 sm:mt-36 ${motion.reveal}`}>
 				<p className="text-center text-sm font-semibold uppercase tracking-[0.2em] text-neutral-500">{t('eyebrow')}</p>
 				<h2 className="headline mt-3 text-center text-4xl sm:text-6xl">{t('steps_title')}</h2>
 				<div className="relative mt-12 sm:mt-16">
@@ -128,7 +128,7 @@ export default async function AgenciesPage(props: PageProps) {
 						{STEPS.map(([Icon, key], i) => (
 							<li key={key} className="group rounded-[32px] bg-neutral-100 p-7 transition duration-300 hover:-translate-y-1 hover:bg-white hover:shadow-xl sm:p-9 dark:bg-neutral-900 dark:hover:bg-neutral-800">
 								<div className="flex items-center justify-between">
-									<span className="relative grid h-14 w-14 place-items-center rounded-2xl bg-neutral-950 text-white shadow-lg dark:bg-white dark:text-neutral-950">
+									<span className="relative grid h-14 w-14 place-items-center rounded-2xl bg-neutral-950 text-white shadow-lg dark:bg-white dark:text-ink">
 										<Icon className="h-6 w-6" strokeWidth={2} />
 									</span>
 									<span className="text-6xl font-bold tracking-tighter text-neutral-200 transition group-hover:text-neutral-400 dark:text-neutral-800">{i + 1}</span>
@@ -143,7 +143,7 @@ export default async function AgenciesPage(props: PageProps) {
 
 			{/* Why agencies list with us: dark band with tiles */}
 			<section className="relative isolate mt-24 overflow-hidden bg-neutral-950 py-20 text-white sm:mt-36 sm:py-32">
-				<div className={`mx-auto max-w-7xl px-5 ${motion.reveal}`}>
+				<div className={`mx-auto max-w-7xl px-6 ${motion.reveal}`}>
 					<div className="grid gap-6 lg:grid-cols-2 lg:items-end">
 						<h2 className="headline max-w-3xl text-4xl sm:text-6xl">{t('benefits_title')}</h2>
 						<p className="max-w-xl text-lg text-white/60 sm:text-xl lg:justify-self-end">{t('benefits_text')}</p>
@@ -151,7 +151,7 @@ export default async function AgenciesPage(props: PageProps) {
 					<ul className={`mt-12 grid gap-3 sm:mt-16 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 ${motion.stagger}`}>
 						{BENEFITS.map(([Icon, title, text]) => (
 							<li key={title} className="group rounded-[28px] bg-white/[0.04] p-7 ring-1 ring-white/10 transition duration-300 hover:-translate-y-1 hover:bg-white/[0.07] hover:ring-white/30 sm:p-8">
-								<span className="grid h-12 w-12 place-items-center rounded-2xl bg-white text-neutral-950 transition group-hover:scale-110">
+								<span className="grid h-12 w-12 place-items-center rounded-2xl bg-white text-ink transition group-hover:scale-110">
 									<Icon className="h-6 w-6" strokeWidth={2} />
 								</span>
 								<h3 className="mt-6 text-xl font-semibold">{t(title)}</h3>
@@ -163,14 +163,14 @@ export default async function AgenciesPage(props: PageProps) {
 			</section>
 
 			{/* Who it's for */}
-			<section className={`mx-auto mt-24 grid max-w-7xl items-center gap-14 px-5 sm:mt-36 lg:grid-cols-2 lg:gap-20 ${motion.reveal}`}>
+			<section className={`mx-auto mt-24 grid max-w-7xl items-center gap-14 px-6 sm:mt-36 lg:grid-cols-2 lg:gap-20 ${motion.reveal}`}>
 				<div className="relative">
 					<div className="relative aspect-[1/1] overflow-hidden rounded-[36px] bg-neutral-200 sm:rounded-[44px] dark:bg-neutral-800">
 						<Image src={PHOTOS.sahara} alt="" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover saturate-[1.1]" />
 						<div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
 					</div>
 					<div className={`absolute -bottom-5 left-5 z-20 flex items-center gap-3 rounded-2xl bg-white p-3 pr-4 shadow-2xl ring-1 ring-black/5 sm:left-8 dark:bg-neutral-900 dark:ring-white/10 ${s.float}`}>
-						<span className="grid h-10 w-10 place-items-center rounded-xl bg-neutral-950 text-white dark:bg-white dark:text-neutral-950">
+						<span className="grid h-10 w-10 place-items-center rounded-xl bg-neutral-950 text-white dark:bg-white dark:text-ink">
 							<Check className="h-5 w-5" strokeWidth={3} />
 						</span>
 						<div>
@@ -189,7 +189,7 @@ export default async function AgenciesPage(props: PageProps) {
 					<ul className={`mt-8 space-y-3 ${motion.stagger}`}>
 						{(['audience_1', 'audience_2', 'audience_3'] as const).map((key) => (
 							<li key={key} className="flex items-center gap-4 rounded-2xl bg-neutral-100 p-4 text-lg font-medium dark:bg-neutral-900">
-								<span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-neutral-950 text-white dark:bg-white dark:text-neutral-950">
+								<span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-neutral-950 text-white dark:bg-white dark:text-ink">
 									<Check className="h-4 w-4" strokeWidth={3} />
 								</span>
 								{t(key)}
@@ -207,7 +207,7 @@ export default async function AgenciesPage(props: PageProps) {
 						<details key={key} className="group rounded-3xl bg-neutral-100 px-6 transition open:bg-white open:shadow-lg open:ring-1 open:ring-neutral-200 dark:bg-neutral-900 dark:open:bg-neutral-900 dark:open:ring-neutral-700">
 							<summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-5 text-lg font-semibold [&::-webkit-details-marker]:hidden">
 								{t(`faq_${key}_q`)}
-								<span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-white transition group-open:rotate-45 group-open:bg-neutral-950 group-open:text-white dark:bg-neutral-800 dark:group-open:bg-white dark:group-open:text-neutral-950">
+								<span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-white transition group-open:rotate-45 group-open:bg-neutral-950 group-open:text-white dark:bg-neutral-800 dark:group-open:bg-white dark:group-open:text-ink">
 									<Plus className="h-4 w-4" />
 								</span>
 							</summary>
@@ -218,7 +218,7 @@ export default async function AgenciesPage(props: PageProps) {
 			</section>
 
 			{/* Final call to action */}
-			<section className={`mx-auto mt-24 max-w-7xl px-5 sm:mt-36 ${motion.reveal}`}>
+			<section className={`mx-auto mt-24 max-w-7xl px-6 sm:mt-36 ${motion.reveal}`}>
 				<div className="relative isolate overflow-hidden rounded-[36px] bg-black px-6 py-16 text-white sm:rounded-[48px] sm:px-12 sm:py-24 lg:px-16">
 					<Image src={CTA_PHOTO} alt="" fill sizes="100vw" className="-z-20 object-cover opacity-35 saturate-[1.1]" />
 					<div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-r from-black via-black/80 to-black/30" />

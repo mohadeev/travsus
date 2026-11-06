@@ -105,7 +105,7 @@ export default function AffiliatesPanel({ initial, stats: initialStats, tiers, l
 	const commission = (r: Affiliate) => (r.rate === null ? `Standard ${tierRange(tiers)}` : `${Number(r.rate)}%`)
 
 	return (
-		<div className="mx-auto max-w-7xl px-5 pb-24 pt-8 text-neutral-950 sm:pt-12 dark:text-white">
+		<div className="mx-auto max-w-7xl px-6 pb-24 pt-8 text-ink sm:pt-12 dark:text-white">
 			<div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
 				<div>
 					<p className="text-sm font-semibold uppercase tracking-[0.2em] text-neutral-500">TRAVSUS</p>
@@ -115,7 +115,7 @@ export default function AffiliatesPanel({ initial, stats: initialStats, tiers, l
 				<button
 					type="button"
 					onClick={() => setInviting(true)}
-					className="inline-flex h-12 shrink-0 items-center justify-center gap-2 rounded-full bg-neutral-950 px-6 text-sm font-semibold text-white transition hover:bg-neutral-800 active:scale-[0.98] dark:bg-white dark:text-neutral-950"
+					className="inline-flex h-12 shrink-0 items-center justify-center gap-2 rounded-full bg-neutral-950 px-6 text-sm font-semibold text-white transition hover:bg-neutral-800 active:scale-[0.98] dark:bg-white dark:text-ink"
 				>
 					<Send className="h-4 w-4" />
 					Send invitation
@@ -123,7 +123,7 @@ export default function AffiliatesPanel({ initial, stats: initialStats, tiers, l
 			</div>
 
 			{/* The standard commission, as shown on the affiliates page */}
-			<section className="mt-8 rounded-[28px] bg-neutral-950 p-6 text-white sm:p-8 dark:bg-white dark:text-neutral-950">
+			<section className="mt-8 rounded-[28px] bg-neutral-950 p-6 text-white sm:p-8 dark:bg-white dark:text-ink">
 				<div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
 					<div>
 						<p className="text-sm font-semibold text-white/60 dark:text-neutral-500">Standard commission</p>
@@ -148,7 +148,7 @@ export default function AffiliatesPanel({ initial, stats: initialStats, tiers, l
 							type="button"
 							onClick={() => setFilter(key)}
 							className={`flex shrink-0 items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition ${
-								filter === key ? 'bg-neutral-950 text-white dark:bg-white dark:text-neutral-950' : 'bg-neutral-100 text-neutral-600 hover:text-neutral-950 dark:bg-neutral-900 dark:text-neutral-400'
+								filter === key ? 'bg-neutral-950 text-white dark:bg-white dark:text-ink' : 'bg-neutral-100 text-neutral-600 hover:text-ink dark:bg-neutral-900 dark:text-neutral-400'
 							}`}
 						>
 							{label}
@@ -211,7 +211,7 @@ export default function AffiliatesPanel({ initial, stats: initialStats, tiers, l
 									<button type="button" onClick={() => setOpen({ row: r, status: 'declined' })} className="h-10 rounded-full px-4 text-sm font-semibold ring-1 ring-neutral-300 transition hover:ring-neutral-950 dark:ring-neutral-700 dark:hover:ring-white">
 										Decline
 									</button>
-									<button type="button" onClick={() => setOpen({ row: r, status: 'approved' })} className="inline-flex h-10 items-center gap-1.5 rounded-full bg-neutral-950 px-4 text-sm font-semibold text-white transition hover:bg-neutral-800 dark:bg-white dark:text-neutral-950">
+									<button type="button" onClick={() => setOpen({ row: r, status: 'approved' })} className="inline-flex h-10 items-center gap-1.5 rounded-full bg-neutral-950 px-4 text-sm font-semibold text-white transition hover:bg-neutral-800 dark:bg-white dark:text-ink">
 										<Check className="h-4 w-4" />
 										Accept
 									</button>
@@ -239,7 +239,7 @@ export default function AffiliatesPanel({ initial, stats: initialStats, tiers, l
 					</Transition.Child>
 					<div className="fixed inset-0 flex items-end justify-center sm:items-center sm:p-6">
 						<Transition.Child as={Fragment} enter="ease-out duration-200" enterFrom="translate-y-8 opacity-0" enterTo="translate-y-0 opacity-100" leave="ease-in duration-150" leaveFrom="translate-y-0 opacity-100" leaveTo="translate-y-8 opacity-0">
-							<Dialog.Panel className="max-h-[92vh] w-full overflow-y-auto rounded-t-3xl bg-white p-6 text-neutral-950 shadow-2xl sm:max-w-lg sm:rounded-3xl sm:p-8 dark:bg-neutral-900 dark:text-white">
+							<Dialog.Panel className="max-h-[92vh] w-full overflow-y-auto rounded-t-3xl bg-white p-6 text-ink shadow-2xl sm:max-w-lg sm:rounded-3xl sm:p-8 dark:bg-neutral-900 dark:text-white">
 								<div className="flex items-start justify-between gap-4">
 									<div>
 										<Dialog.Title className="text-2xl font-bold tracking-tight">Send invitation</Dialog.Title>
@@ -269,7 +269,7 @@ export default function AffiliatesPanel({ initial, stats: initialStats, tiers, l
 
 			{toast && (
 				<div role="status" className="fixed inset-x-0 bottom-24 z-[60] flex justify-center px-4 sm:bottom-8">
-					<p className="flex items-center gap-2 rounded-2xl bg-neutral-950 px-4 py-3 text-sm font-medium text-white shadow-2xl dark:bg-white dark:text-neutral-950">
+					<p className="flex items-center gap-2 rounded-2xl bg-neutral-950 px-4 py-3 text-sm font-medium text-white shadow-2xl dark:bg-white dark:text-ink">
 						<Check className="h-4 w-4 text-emerald-400" />
 						{toast}
 					</p>
@@ -369,7 +369,7 @@ function Editor({
 				</Transition.Child>
 				<div className="fixed inset-0 flex items-end justify-center sm:items-center sm:p-6">
 					<Transition.Child as={Fragment} enter="ease-out duration-200" enterFrom="translate-y-8 opacity-0" enterTo="translate-y-0 opacity-100" leave="ease-in duration-150" leaveFrom="translate-y-0 opacity-100" leaveTo="translate-y-8 opacity-0">
-						<Dialog.Panel className="max-h-[92vh] w-full overflow-y-auto rounded-t-3xl bg-white p-6 text-neutral-950 shadow-2xl sm:max-w-lg sm:rounded-3xl sm:p-8 dark:bg-neutral-900 dark:text-white">
+						<Dialog.Panel className="max-h-[92vh] w-full overflow-y-auto rounded-t-3xl bg-white p-6 text-ink shadow-2xl sm:max-w-lg sm:rounded-3xl sm:p-8 dark:bg-neutral-900 dark:text-white">
 							{current && <EditorForm key={current.row.id + current.status} {...current} stats={stats} tiers={tiers} onClose={onClose} onSaved={onSaved} onRemoved={onRemoved} />}
 						</Dialog.Panel>
 					</Transition.Child>
@@ -455,7 +455,7 @@ function EditorForm({
 
 	const choice = (active: boolean) =>
 		`flex-1 rounded-2xl px-4 py-3 text-sm font-semibold ring-1 transition ${
-			active ? 'bg-neutral-950 text-white ring-neutral-950 dark:bg-white dark:text-neutral-950 dark:ring-white' : 'ring-neutral-200 hover:ring-neutral-400 dark:ring-neutral-700'
+			active ? 'bg-neutral-950 text-white ring-neutral-950 dark:bg-white dark:text-ink dark:ring-white' : 'ring-neutral-200 hover:ring-neutral-400 dark:ring-neutral-700'
 		}`
 
 	return (
@@ -578,7 +578,7 @@ function EditorForm({
 				<button type="button" onClick={onClose} className="h-12 flex-1 rounded-full text-sm font-semibold ring-1 ring-neutral-300 dark:ring-neutral-700">
 					Cancel
 				</button>
-				<button type="button" onClick={save} disabled={busy} className="inline-flex h-12 flex-[2] items-center justify-center gap-2 rounded-full bg-neutral-950 text-sm font-semibold text-white disabled:opacity-60 dark:bg-white dark:text-neutral-950">
+				<button type="button" onClick={save} disabled={busy} className="inline-flex h-12 flex-[2] items-center justify-center gap-2 rounded-full bg-neutral-950 text-sm font-semibold text-white disabled:opacity-60 dark:bg-white dark:text-ink">
 					{busy && <Loader2 className="h-4 w-4 animate-spin" />}
 					{statusChanged ? (status === 'approved' ? 'Accept' : status === 'declined' ? 'Decline' : 'Move back to review') : 'Save'}
 				</button>

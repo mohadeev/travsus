@@ -103,7 +103,7 @@ export default function OutreachPanel({ initial, loadError }: { initial: Outreac
 			type="button"
 			onClick={() => setFilter(key)}
 			className={`flex shrink-0 items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition ${
-				filter === key ? 'bg-neutral-950 text-white dark:bg-white dark:text-neutral-950' : 'bg-neutral-100 text-neutral-600 hover:text-neutral-950 dark:bg-neutral-900 dark:text-neutral-400'
+				filter === key ? 'bg-neutral-950 text-white dark:bg-white dark:text-ink' : 'bg-neutral-100 text-neutral-600 hover:text-ink dark:bg-neutral-900 dark:text-neutral-400'
 			}`}
 		>
 			{dot && <span className={`h-2 w-2 rounded-full ${dot}`} />}
@@ -118,7 +118,7 @@ export default function OutreachPanel({ initial, loadError }: { initial: Outreac
 	const answered = rows.filter((r) => r.log.some((e) => e.status && ['replied', 'talking', 'joined', 'declined'].includes(e.status))).length
 
 	return (
-		<div className="mx-auto max-w-7xl px-5 pb-24 pt-8 text-neutral-950 sm:pt-12 dark:text-white">
+		<div className="mx-auto max-w-7xl px-6 pb-24 pt-8 text-ink sm:pt-12 dark:text-white">
 			<div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
 				<div>
 					<p className="text-sm font-semibold uppercase tracking-[0.2em] text-neutral-500">TRAVSUS</p>
@@ -128,7 +128,7 @@ export default function OutreachPanel({ initial, loadError }: { initial: Outreac
 				<button
 					type="button"
 					onClick={() => setAdding(true)}
-					className="inline-flex h-12 shrink-0 items-center justify-center gap-2 rounded-full bg-neutral-950 px-6 text-sm font-semibold text-white transition hover:bg-neutral-800 active:scale-[0.98] dark:bg-white dark:text-neutral-950"
+					className="inline-flex h-12 shrink-0 items-center justify-center gap-2 rounded-full bg-neutral-950 px-6 text-sm font-semibold text-white transition hover:bg-neutral-800 active:scale-[0.98] dark:bg-white dark:text-ink"
 				>
 					<Plus className="h-4 w-4" />
 					Add people
@@ -145,7 +145,7 @@ export default function OutreachPanel({ initial, loadError }: { initial: Outreac
 						['Joined', counts.joined, `${counts.declined} declined · ${counts.no_reply} no reply`],
 					] as const
 				).map(([label, value, sub], i) => (
-					<div key={label} className={`rounded-[24px] p-5 ${i === 3 ? 'bg-neutral-950 text-white dark:bg-white dark:text-neutral-950' : 'bg-neutral-100 dark:bg-neutral-900'}`}>
+					<div key={label} className={`rounded-[24px] p-5 ${i === 3 ? 'bg-neutral-950 text-white dark:bg-white dark:text-ink' : 'bg-neutral-100 dark:bg-neutral-900'}`}>
 						<p className={`text-sm font-semibold ${i === 3 ? 'text-white/60 dark:text-neutral-500' : 'text-neutral-500'}`}>{label}</p>
 						<p className="mt-1 text-3xl font-bold tabular-nums tracking-tight sm:text-4xl">{value}</p>
 						<p className={`mt-1 text-xs ${i === 3 ? 'text-white/60 dark:text-neutral-500' : 'text-neutral-500'}`}>{sub}</p>
@@ -264,7 +264,7 @@ export default function OutreachPanel({ initial, loadError }: { initial: Outreac
 
 			{toast && (
 				<div role="status" className="fixed inset-x-0 bottom-24 z-[60] flex justify-center px-4 sm:bottom-8">
-					<p className="flex items-center gap-2 rounded-2xl bg-neutral-950 px-4 py-3 text-sm font-medium text-white shadow-2xl dark:bg-white dark:text-neutral-950">
+					<p className="flex items-center gap-2 rounded-2xl bg-neutral-950 px-4 py-3 text-sm font-medium text-white shadow-2xl dark:bg-white dark:text-ink">
 						<Check className="h-4 w-4 text-emerald-400" />
 						{toast}
 					</p>
@@ -284,7 +284,7 @@ function Sheet({ show, onClose, wide = false, children }: { show: boolean; onClo
 				</Transition.Child>
 				<div className="fixed inset-0 flex items-end justify-center sm:items-center sm:p-6">
 					<Transition.Child as={Fragment} enter="ease-out duration-200" enterFrom="translate-y-8 opacity-0" enterTo="translate-y-0 opacity-100" leave="ease-in duration-150" leaveFrom="translate-y-0 opacity-100" leaveTo="translate-y-8 opacity-0">
-						<Dialog.Panel className={`max-h-[92vh] w-full overflow-y-auto rounded-t-3xl bg-white p-6 text-neutral-950 shadow-2xl sm:rounded-3xl sm:p-8 dark:bg-neutral-900 dark:text-white ${wide ? 'sm:max-w-2xl' : 'sm:max-w-lg'}`}>
+						<Dialog.Panel className={`max-h-[92vh] w-full overflow-y-auto rounded-t-3xl bg-white p-6 text-ink shadow-2xl sm:rounded-3xl sm:p-8 dark:bg-neutral-900 dark:text-white ${wide ? 'sm:max-w-2xl' : 'sm:max-w-lg'}`}>
 							{children}
 						</Dialog.Panel>
 					</Transition.Child>
@@ -336,7 +336,7 @@ function AddPeople({ onClose, onAdded }: { onClose: () => void; onAdded: (create
 			<p className="mt-4 text-sm font-semibold">Where are they at?</p>
 			<div className="mt-2 flex flex-wrap gap-1.5">
 				{OUTREACH_STATUSES.map((s) => (
-					<button key={s} type="button" onClick={() => setStatus(s)} className={`rounded-full px-3.5 py-2 text-sm font-semibold transition ${status === s ? 'bg-neutral-950 text-white dark:bg-white dark:text-neutral-950' : 'bg-neutral-100 text-neutral-600 dark:bg-neutral-800 dark:text-neutral-300'}`}>
+					<button key={s} type="button" onClick={() => setStatus(s)} className={`rounded-full px-3.5 py-2 text-sm font-semibold transition ${status === s ? 'bg-neutral-950 text-white dark:bg-white dark:text-ink' : 'bg-neutral-100 text-neutral-600 dark:bg-neutral-800 dark:text-neutral-300'}`}>
 						{STATUS[s][0]}
 					</button>
 				))}
@@ -346,7 +346,7 @@ function AddPeople({ onClose, onAdded }: { onClose: () => void; onAdded: (create
 				<input value={note} onChange={(e) => setNote(e.target.value)} placeholder="e.g. Sent the €150 commission message" className={`mt-2 ${field}`} />
 			</label>
 			{error && <p className="mt-4 rounded-2xl bg-red-50 px-4 py-3 text-sm text-red-700 dark:bg-red-950/50 dark:text-red-300">{error}</p>}
-			<button type="button" onClick={add} disabled={busy || !handles.length} className="mt-6 inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-neutral-950 text-sm font-semibold text-white disabled:opacity-40 dark:bg-white dark:text-neutral-950">
+			<button type="button" onClick={add} disabled={busy || !handles.length} className="mt-6 inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-neutral-950 text-sm font-semibold text-white disabled:opacity-40 dark:bg-white dark:text-ink">
 				{busy && <Loader2 className="h-4 w-4 animate-spin" />}
 				{handles.length ? `Add ${handles.length} ${handles.length === 1 ? 'person' : 'people'}` : 'Add people'}
 			</button>
@@ -394,7 +394,7 @@ function Person({ row, onClose, onSaved, onRemoved }: { row: OutreachContact; on
 		<button
 			type="button"
 			onClick={() => save({ follow_up: day }, day ? `Follow up ${date(day)}` : 'Follow-up cleared')}
-			className={`rounded-full px-3.5 py-2 text-sm font-semibold transition ${row.follow_up === day ? 'bg-neutral-950 text-white dark:bg-white dark:text-neutral-950' : 'bg-neutral-100 text-neutral-600 hover:text-neutral-950 dark:bg-neutral-800 dark:text-neutral-300'}`}
+			className={`rounded-full px-3.5 py-2 text-sm font-semibold transition ${row.follow_up === day ? 'bg-neutral-950 text-white dark:bg-white dark:text-ink' : 'bg-neutral-100 text-neutral-600 hover:text-ink dark:bg-neutral-800 dark:text-neutral-300'}`}
 		>
 			{label}
 		</button>
@@ -431,7 +431,7 @@ function Person({ row, onClose, onSaved, onRemoved }: { row: OutreachContact; on
 						type="button"
 						disabled={busy}
 						onClick={() => s !== row.status && save({ status: s }, `@${row.handle}: ${STATUS[s][0]}`)}
-						className={`inline-flex items-center gap-2 rounded-full px-3.5 py-2 text-sm font-semibold transition ${row.status === s ? 'bg-neutral-950 text-white dark:bg-white dark:text-neutral-950' : 'bg-neutral-100 text-neutral-600 hover:text-neutral-950 dark:bg-neutral-800 dark:text-neutral-300'}`}
+						className={`inline-flex items-center gap-2 rounded-full px-3.5 py-2 text-sm font-semibold transition ${row.status === s ? 'bg-neutral-950 text-white dark:bg-white dark:text-ink' : 'bg-neutral-100 text-neutral-600 hover:text-ink dark:bg-neutral-800 dark:text-neutral-300'}`}
 					>
 						<span className={`h-2 w-2 rounded-full ${STATUS[s][2]}`} />
 						{STATUS[s][0]}
@@ -464,7 +464,7 @@ function Person({ row, onClose, onSaved, onRemoved }: { row: OutreachContact; on
 					placeholder="What happened? e.g. Asked for the media kit"
 					className={field}
 				/>
-				<button type="button" disabled={busy || !note.trim()} onClick={async () => (await save({ note })) && setNote('')} className="h-11 shrink-0 rounded-full bg-neutral-950 px-5 text-sm font-semibold text-white disabled:opacity-40 dark:bg-white dark:text-neutral-950">
+				<button type="button" disabled={busy || !note.trim()} onClick={async () => (await save({ note })) && setNote('')} className="h-11 shrink-0 rounded-full bg-neutral-950 px-5 text-sm font-semibold text-white disabled:opacity-40 dark:bg-white dark:text-ink">
 					Add
 				</button>
 			</div>
@@ -480,7 +480,7 @@ function Person({ row, onClose, onSaved, onRemoved }: { row: OutreachContact; on
 							{e.status && <p className="text-sm font-semibold">→ {STATUS[e.status][0]}</p>}
 							{e.text && <p className="whitespace-pre-line text-sm">{e.text}</p>}
 						</div>
-						<button type="button" onClick={() => save({ removeEventAt: e.at })} aria-label="Remove this line" className="h-7 w-7 shrink-0 place-items-center rounded-full text-neutral-400 opacity-0 transition hover:bg-neutral-100 hover:text-neutral-950 group-hover:opacity-100 sm:grid dark:hover:bg-neutral-800">
+						<button type="button" onClick={() => save({ removeEventAt: e.at })} aria-label="Remove this line" className="h-7 w-7 shrink-0 place-items-center rounded-full text-neutral-400 opacity-0 transition hover:bg-neutral-100 hover:text-ink group-hover:opacity-100 sm:grid dark:hover:bg-neutral-800">
 							<X className="h-3.5 w-3.5" />
 						</button>
 					</li>
@@ -517,7 +517,7 @@ function Person({ row, onClose, onSaved, onRemoved }: { row: OutreachContact; on
 						<input type="email" value={info.email} onChange={(e) => setInfo({ ...info, email: e.target.value })} placeholder="If they gave you one" className={`mt-1 ${field}`} />
 					</label>
 				</div>
-				<button type="button" disabled={busy || !infoChanged} onClick={() => save(info, 'Details saved')} className="mt-3 h-10 rounded-full bg-neutral-950 px-5 text-sm font-semibold text-white disabled:opacity-40 dark:bg-white dark:text-neutral-950">
+				<button type="button" disabled={busy || !infoChanged} onClick={() => save(info, 'Details saved')} className="mt-3 h-10 rounded-full bg-neutral-950 px-5 text-sm font-semibold text-white disabled:opacity-40 dark:bg-white dark:text-ink">
 					Save details
 				</button>
 			</details>

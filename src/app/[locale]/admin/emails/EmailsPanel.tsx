@@ -32,7 +32,7 @@ export default function EmailsPanel({ emails, brevo, mailrelay, owner }: { email
 	}
 
 	return (
-		<div className="mx-auto max-w-7xl px-5 pb-24 pt-8 text-neutral-950 sm:pt-12 dark:text-white">
+		<div className="mx-auto max-w-7xl px-6 pb-24 pt-8 text-ink sm:pt-12 dark:text-white">
 			<p className="text-sm font-semibold uppercase tracking-[0.2em] text-neutral-500">TRAVSUS</p>
 			<h1 className="mt-2 text-4xl font-bold tracking-tight sm:text-5xl">Emails</h1>
 			<p className="mt-2 text-lg text-neutral-500">Every email the site sends, how it looks and when it goes out.</p>
@@ -44,7 +44,7 @@ export default function EmailsPanel({ emails, brevo, mailrelay, owner }: { email
 					['MailRelay', 'Newsletter subscribers and campaigns · free up to 80,000 a month', mailrelay, 'MAILRELAY_ACCOUNT, MAILRELAY_API_KEY'],
 				].map(([name, text, ok, env]) => (
 					<div key={name as string} className="flex items-start gap-4 rounded-3xl bg-neutral-100 p-5 dark:bg-neutral-900">
-						<span className={`grid h-10 w-10 shrink-0 place-items-center rounded-full ${ok ? 'bg-emerald-500 text-white' : 'bg-amber-400 text-neutral-950'}`}>{ok ? <Check className="h-5 w-5" /> : <X className="h-5 w-5" />}</span>
+						<span className={`grid h-10 w-10 shrink-0 place-items-center rounded-full ${ok ? 'bg-emerald-500 text-white' : 'bg-amber-400 text-ink'}`}>{ok ? <Check className="h-5 w-5" /> : <X className="h-5 w-5" />}</span>
 						<div className="min-w-0">
 							<p className="font-semibold">
 								{name} <span className={`ml-1 text-xs font-semibold ${ok ? 'text-emerald-600' : 'text-amber-600'}`}>{ok ? 'Connected' : 'Not set up'}</span>
@@ -72,7 +72,7 @@ export default function EmailsPanel({ emails, brevo, mailrelay, owner }: { email
 											setResult(null)
 										}}
 										className={`flex shrink-0 items-center gap-3 rounded-full px-4 py-2.5 text-left text-sm font-semibold transition lg:w-full lg:rounded-2xl lg:py-3 ${
-											e.id === email.id ? 'bg-neutral-950 text-white dark:bg-white dark:text-neutral-950' : 'bg-neutral-100 hover:bg-neutral-200 lg:bg-transparent lg:hover:bg-neutral-100 dark:bg-neutral-900 lg:dark:bg-transparent dark:hover:bg-neutral-800'
+											e.id === email.id ? 'bg-neutral-950 text-white dark:bg-white dark:text-ink' : 'bg-neutral-100 hover:bg-neutral-200 lg:bg-transparent lg:hover:bg-neutral-100 dark:bg-neutral-900 lg:dark:bg-transparent dark:hover:bg-neutral-800'
 										}`}
 									>
 										<span className={`h-2 w-2 shrink-0 rounded-full ${e.connected ? 'bg-emerald-500' : 'bg-neutral-300'}`} title={e.connected ? 'Sent automatically' : 'Not sent yet'} />
@@ -122,7 +122,7 @@ export default function EmailsPanel({ emails, brevo, mailrelay, owner }: { email
 								type="button"
 								onClick={sendTest}
 								disabled={sending || !brevo}
-								className="inline-flex h-11 items-center gap-2 rounded-full bg-neutral-950 px-5 text-sm font-semibold text-white transition hover:bg-neutral-800 disabled:opacity-40 dark:bg-white dark:text-neutral-950"
+								className="inline-flex h-11 items-center gap-2 rounded-full bg-neutral-950 px-5 text-sm font-semibold text-white transition hover:bg-neutral-800 disabled:opacity-40 dark:bg-white dark:text-ink"
 							>
 								{sending ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}
 								Send me a test
@@ -154,7 +154,7 @@ export default function EmailsPanel({ emails, brevo, mailrelay, owner }: { email
 					{/* Preview, like an inbox */}
 					<div className="mt-4 overflow-hidden rounded-[28px] bg-neutral-100 ring-1 ring-neutral-200 dark:bg-neutral-900 dark:ring-neutral-800">
 						<div className="flex items-center gap-3 border-b border-neutral-200 bg-white px-5 py-3 dark:border-neutral-800 dark:bg-neutral-950">
-							<span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-neutral-950 text-white dark:bg-white dark:text-neutral-950">
+							<span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-neutral-950 text-white dark:bg-white dark:text-ink">
 								<Mail className="h-4 w-4" />
 							</span>
 							<div className="min-w-0">
