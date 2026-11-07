@@ -39,7 +39,7 @@ const clientsForNow = (): Record<string, Promise<MongoClient>> => {
 // Timeouts: a stalled connection fails and is retried instead of waiting
 // forever (a hung request froze whole build workers)
 const connect = (url: string) =>
-	(clientsForNow()[url] ??= new MongoClient(url, { maxPoolSize: 10, serverSelectionTimeoutMS: 15000, connectTimeoutMS: 15000, socketTimeoutMS: 40000 }).connect())
+	(clientsForNow()[url] ??= new MongoClient(url, { maxPoolSize: 10, serverSelectionTimeoutMS: 5000, connectTimeoutMS: 5000, socketTimeoutMS: 20000 }).connect())
 const mainDb = async (): Promise<Db> => (await connect(mainUrl())).db(mainDbName())
 /** The geography database keeps its own name (set in its connection string). */
 const placesDb = async (): Promise<Db> => (placesUrl() === mainUrl() ? mainDb() : (await connect(placesUrl())).db())

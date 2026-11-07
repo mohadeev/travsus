@@ -119,7 +119,11 @@ const DetailPage = async (props: DetailPageProps) => {
 
 		// Similar tours, "from" price and price range: one small cached result per tour
 		// Optional extras: without them the tour still shows (not cached then)
-		const extras = await getTourPageExtras(tourId, locale).catch((error) => {
+		// …and never wait more than 6 seconds for them
+		const extras = await Promise.race([
+			getTourPageExtras(tourId, locale),
+			new Promise<never>((_, reject) => setTimeout(() => reject(new Error('Tour page extras timed out')), 6000)),
+		]).catch((error) => {
 			console.error('Tour page extras failed:', error)
 			noStore()
 			return null
