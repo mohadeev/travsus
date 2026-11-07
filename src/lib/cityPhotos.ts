@@ -1,7 +1,7 @@
 // The photo of a destination city (geo_cities.image), found by English city and
 // country name like the destination pages do. Cached for a day: city photos rarely change.
 import 'server-only'
-import { unstable_cache } from 'next/cache'
+import { unstable_cache } from '@/lib/stableCache'
 import { db, T } from '@/lib/db'
 
 const contentIds = async (type: 'city' | 'country', name: string) => {

@@ -2,7 +2,8 @@
 // Pages and APIs read this instead of loading every tour with all its texts,
 // which used up the database's Disk IO budget. Editing a tour refreshes it.
 import 'server-only'
-import { revalidateTag, unstable_cache } from 'next/cache'
+import { revalidateTag } from 'next/cache'
+import { unstable_cache } from '@/lib/stableCache'
 import { db, T, REL, fetchAll, mongoCollection } from '@/lib/db'
 import { updateLineItemsLogic } from '@/app/api/updateLineItems/updateLineItemsLogic'
 

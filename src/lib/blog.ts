@@ -8,7 +8,7 @@
 // The list of posts is read without the article text (only its length), so a
 // page never loads more than it shows; the article page reads its one post.
 import { cache } from 'react'
-import { unstable_cache } from 'next/cache'
+import { unstable_cache } from '@/lib/stableCache'
 import { slugify } from 'transliteration'
 import { db, T, must, mongoCollection } from '@/lib/db'
 import { routing } from '@/i18n/routing'

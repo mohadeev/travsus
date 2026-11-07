@@ -1,7 +1,7 @@
 // Loads everything the tour detail page needs. Used by the page directly and
 // by GET /api/listing/get/getTourData — no HTTP round-trip from the server.
 import { cache } from 'react'
-import { unstable_cache } from 'next/cache'
+import { unstable_cache } from '@/lib/stableCache'
 import { db, T, REL, must } from '@/lib/db'
 import { REVIEWS_TAG, TOURS_TAG } from '@/lib/tourCatalog'
 

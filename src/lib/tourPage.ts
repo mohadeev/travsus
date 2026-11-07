@@ -3,7 +3,7 @@
 // once per tour and language and cached (KV on Cloudflare), so a tour page
 // doesn't load the whole catalogue or price 50 group sizes on every render.
 import 'server-only'
-import { unstable_cache } from 'next/cache'
+import { unstable_cache } from '@/lib/stableCache'
 import { updateLineItemsLogic } from '@/app/api/updateLineItems/updateLineItemsLogic'
 import { getHomeData, type HomeTour } from '@/lib/homeData'
 import { getTourData } from '@/lib/tourData'

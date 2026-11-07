@@ -1,6 +1,6 @@
 export const dynamic = 'force-dynamic'
 import { NextResponse } from 'next/server'
-import { unstable_cache } from 'next/cache'
+import { unstable_cache } from '@/lib/stableCache'
 import { db, T, must } from '@/lib/db'
 import { TOURS_TAG } from '@/lib/tourCatalog'
 
