@@ -64,9 +64,8 @@ export default function HeaderBar() {
 				</nav>
 
 				<div className="flex items-center gap-1 justify-self-end text-black dark:text-white">
-					<div className="hidden sm:block">
-						<LanguagePreferencesModal variant={'nav'} />
-					</div>
+					{/* Language, beside the account: on phones too */}
+					<LanguagePreferencesModal variant={'nav'} />
 					{/* Most visitors aren't signed in: the pill shows from the first paint */}
 					{!(isLoaded && isSignedIn) ? (
 						<button
