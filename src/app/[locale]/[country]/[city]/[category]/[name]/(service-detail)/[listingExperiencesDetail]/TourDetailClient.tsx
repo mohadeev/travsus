@@ -87,11 +87,21 @@ const TourDetail: FC<ListingExperiencesDetailPageProps> = ({ similar = [] }) => 
 								)}
 								<MobileBookingBox />
 
-								{/* Key facts: an icon, a bold line and a short explanation each */}
-								<ul className="mt-6 grid gap-x-8 gap-y-[18px] border-t border-neutral-200 pt-[22px] sm:grid-cols-2 dark:border-neutral-800">
-									{facts.map(({ icon: Icon, label, value }) => (
-										<Fact key={label} icon={Icon} title={`${label}: ${value}`} />
-									))}
+								{/* At a glance: length and where it starts / ends, as three small tiles */}
+								{facts.length > 0 && (
+									<ul className={`mt-8 grid gap-2 ${facts.length === 3 ? 'grid-cols-3' : facts.length === 2 ? 'grid-cols-2' : 'grid-cols-1'}`}>
+										{facts.map(({ icon: Icon, label, value }) => (
+											<li key={label} className="min-w-0 rounded-2xl bg-sand-100 px-3 py-3.5 dark:bg-neutral-900">
+												<Icon className="h-5 w-5 text-brand-600" strokeWidth={2} aria-hidden />
+												<p className="mt-2 text-xs leading-4 text-ink-soft dark:text-neutral-400">{label}</p>
+												<p className="truncate text-sm font-bold leading-5">{value}</p>
+											</li>
+										))}
+									</ul>
+								)}
+
+								{/* Why book with us: four short promises, icon in a soft circle */}
+								<ul className="mt-6 grid gap-x-6 gap-y-5 sm:grid-cols-2">
 									<Fact icon={Users} title={tInfo('private_title')} text={tInfo('private_text')} />
 									<Fact icon={CalendarCheck} title={tPerks('free_cancellation')} text={tPerks('free_cancellation_description')} />
 									<Fact icon={Wallet} title={tPerks('reserve_now_pay_later')} text={tPerks('reserve_now_pay_later_description')} />
@@ -185,11 +195,13 @@ function StickyBookingCard({ children }: { children: ReactNode }) {
 /** One key fact: an icon, a bold line and an optional short explanation. */
 function Fact({ icon: Icon, title, text }: { icon: typeof Clock3; title: string; text?: string }) {
 	return (
-		<li className="flex gap-3">
-			<Icon className="mt-px h-6 w-6 shrink-0" strokeWidth={1.8} aria-hidden />
-			<p className="min-w-0 text-[15px] leading-snug">
-				<span className="font-bold">{title}</span>
-				{text && <span className="mt-0.5 block text-neutral-600 dark:text-neutral-400">{text}</span>}
+		<li className="flex gap-3.5">
+			<span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-brand-50 text-brand-600 dark:bg-neutral-900">
+				<Icon className="h-5 w-5" strokeWidth={2} aria-hidden />
+			</span>
+			<p className="min-w-0 pt-0.5">
+				<span className="block text-base font-bold leading-6">{title}</span>
+				{text && <span className="mt-0.5 block text-sm leading-5 text-ink-soft dark:text-neutral-400">{text}</span>}
 			</p>
 		</li>
 	)
