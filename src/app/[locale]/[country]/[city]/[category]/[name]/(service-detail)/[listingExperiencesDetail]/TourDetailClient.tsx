@@ -162,7 +162,7 @@ const TourDetail: FC<ListingExperiencesDetailPageProps> = ({ similar = [] }) => 
 export default ListingExperiencesDetailPage
 
 /** Space kept between the sticky site header and the booking card (px). */
-const CARD_TOP = 96
+const CARD_TOP = 72
 
 /**
  * Keeps the booking card in view while scrolling (CSS sticky). On short

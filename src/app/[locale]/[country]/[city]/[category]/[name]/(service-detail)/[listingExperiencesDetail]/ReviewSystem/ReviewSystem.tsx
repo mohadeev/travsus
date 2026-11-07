@@ -109,7 +109,7 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
 				<div className="grid gap-6 md:grid-cols-[260px_minmax(0,1fr)] md:gap-10">
 					{/* Summary, as on TripAdvisor: a grey card with the average, its word and
 					    the bubbles, then one green bar per level (click a bar to filter) */}
-					<div className="self-start md:sticky md:top-32">
+					<div className="self-start md:sticky md:top-20">
 						<div className="rounded-2xl bg-neutral-100 px-6 py-7 text-center dark:bg-neutral-900">
 							<p className="text-[44px] font-extrabold leading-none tabular-nums">{average.toFixed(1)}</p>
 							<p className="mt-2 text-lg font-bold">{t(`Rating_${Math.min(5, Math.max(1, Math.round(average)))}`)}</p>

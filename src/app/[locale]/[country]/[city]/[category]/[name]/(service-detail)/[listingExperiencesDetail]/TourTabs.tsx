@@ -1,6 +1,7 @@
 'use client'
 // Section tabs under the photos, as on TripAdvisor: Overview, Details,
-// Itinerary, Reviews. They stay under the site header while scrolling, jump
+// Itinerary, Reviews. They stay at the top of the screen while scrolling (the
+// site header scrolls away on tour pages), jump
 // to their section, and underline the section in view.
 import { useEffect, useState } from 'react'
 import { useTranslations } from 'next-intl'
@@ -25,7 +26,7 @@ export default function TourTabs() {
 			let current = present[0]?.id
 			for (const tab of present) {
 				const el = document.getElementById(tab.id)
-				if (el && el.getBoundingClientRect().top <= 140) current = tab.id
+				if (el && el.getBoundingClientRect().top <= 80) current = tab.id
 			}
 			if (current) setActive(current)
 		}
@@ -37,7 +38,7 @@ export default function TourTabs() {
 	return (
 		<nav
 			aria-label={t('sections_label')}
-			className="sticky top-[60px] z-30 -mx-6 mt-4 bg-white px-6 sm:top-[72px] dark:bg-neutral-950"
+			className="sticky top-0 z-30 -mx-6 mt-4 bg-white px-6 dark:bg-neutral-950"
 		>
 			<ul className="flex gap-7 overflow-x-auto whitespace-nowrap [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
 				{tabs.map((tab) => (
@@ -47,7 +48,7 @@ export default function TourTabs() {
 							onClick={(e) => {
 								e.preventDefault()
 								const el = document.getElementById(tab.id)
-								if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 130, behavior: 'smooth' })
+								if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 64, behavior: 'smooth' })
 							}}
 							aria-current={active === tab.id ? 'true' : undefined}
 							className={`block border-b-[3px] py-3 text-base font-bold leading-6 transition ${
