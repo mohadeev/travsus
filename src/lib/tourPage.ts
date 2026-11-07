@@ -46,7 +46,23 @@ export type TourPageExtras = {
 	prices: { low: number; high: number } | null
 }
 
-async function loadTourPageExtras(tourId: string, locale: string): Promise<TourPageExtras | null> {
+/**
+ * The price range, saved per tour (it prices up to 50 group sizes). Cached on
+ * its own: data cached *inside* another cached function is not looked up
+ * (the framework skips nested caches), so the extras below are a plain
+ * function built on the saved tour list and the saved tour.
+ */
+const cachedPriceRange = unstable_cache(priceRange, ['tour-price-range-v1'], {
+	revalidate: 3600,
+	tags: [TOURS_TAG],
+})
+
+/**
+ * Similar tours, "from" price, popular flag (all from the saved tour list)
+ * and the price range. Throws only when the tour list itself can't be read;
+ * a missing price range just leaves it out.
+ */
+export async function getTourPageExtras(tourId: string, locale: string): Promise<TourPageExtras | null> {
 	const [tour, { tours }] = await Promise.all([getTourData(tourId, locale), getHomeData(locale)])
 	if (!tour) return null
 	const city = (tour as any).startAddress?.city
@@ -55,15 +71,14 @@ async function loadTourPageExtras(tourId: string, locale: string): Promise<TourP
 		.sort((a, b) => Number(b.city === city) - Number(a.city === city))
 		.slice(0, 4)
 		.map(({ searchText, ...card }) => card) // not needed in the browser
+	const prices = await Promise.race([
+		cachedPriceRange(tour),
+		new Promise<null>((resolve) => setTimeout(() => resolve(null), 3000)),
+	]).catch(() => null)
 	return {
 		similar,
 		fromPricePerPerson: tours.find((t) => t.id === tourId)?.pricePerPerson ?? null,
 		popular: !!tours.find((t) => t.id === tourId)?.popular,
-		prices: await priceRange(tour),
+		prices,
 	}
 }
-
-export const getTourPageExtras = unstable_cache(loadTourPageExtras, ['tour-page-extras-v1'], {
-	revalidate: 3600,
-	tags: [TOURS_TAG, REVIEWS_TAG],
-})
