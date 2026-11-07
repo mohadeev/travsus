@@ -141,7 +141,7 @@ const TourHeader = () => {
 			</div>
 
 			{/* Title over the full width: 24/28px on phones, as on TripAdvisor */}
-			<h1 className="headline mt-4 text-2xl !leading-7 sm:text-[32px] sm:!leading-[38px] lg:text-[36px] lg:!leading-[42px]">{title}</h1>
+			<h1 className="headline mt-4 text-2xl [text-wrap:wrap] !leading-7 sm:text-[32px] sm:!leading-[38px] lg:text-[36px] lg:!leading-[42px]">{title}</h1>
 
 			{/* "5.0 ●●●●● (2 reviews)", then "Recommended by …" (real numbers only) */}
 			{reviews > 0 && (
