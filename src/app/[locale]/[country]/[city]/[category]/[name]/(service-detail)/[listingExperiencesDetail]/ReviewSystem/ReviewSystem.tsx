@@ -8,7 +8,7 @@ import { PenLine } from 'lucide-react'
 import { useAuthAction } from '@/app/hooks/useAuthAction'
 import { useTranslations } from '@/lib/i18n'
 import Review from './Review'
-import Stars from './Stars'
+import RatingBubbles from '@/app/[locale]/(home)/RatingBubbles'
 import ReviewComposer from './ReviewComposer'
 import { useTourService } from '../../TourServiceContext'
 
@@ -59,7 +59,7 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
 		<button
 			type="button"
 			onClick={() => openComposer(undefined)}
-			className="inline-flex items-center gap-2 rounded-full bg-black px-[18px] py-3 text-base font-bold leading-none text-white transition hover:bg-neutral-800 dark:bg-white dark:text-black"
+			className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-ink px-5 py-3 text-base font-bold leading-none text-ink transition hover:bg-neutral-100 sm:w-auto dark:border-white dark:text-white dark:hover:bg-neutral-800"
 		>
 			<PenLine className="h-4 w-4" />
 			{t('Write_Review')}
@@ -107,32 +107,42 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
 				</div>
 			) : totalReviews > 0 ? (
 				<div className="grid gap-6 md:grid-cols-[260px_minmax(0,1fr)] md:gap-10">
-					{/* Summary: the average, five stars, one bar per star level (click to filter) */}
+					{/* Summary, as on TripAdvisor: a grey card with the average, its word and
+					    the bubbles, then one green bar per level (click a bar to filter) */}
 					<div className="self-start md:sticky md:top-32">
-						<p className="text-5xl font-black leading-none tabular-nums">{average.toFixed(1)}</p>
-						<p className="mt-2 flex items-center gap-2 text-sm text-neutral-700 dark:text-neutral-300">
-							<Stars rating={average} />
-							<span className="tabular-nums">{t('Based_On', { count: totalReviews })}</span>
-						</p>
-						<div className="mt-[18px] grid gap-2">
-							{[5, 4, 3, 2, 1].map((n) => (
-								<button
-									key={n}
-									type="button"
-									aria-pressed={stars === n}
-									onClick={() => setStars(stars === n ? 0 : n)}
-									disabled={!countOf(n)}
-									className="grid grid-cols-[84px_minmax(0,1fr)_32px] items-center gap-2.5 text-left text-sm disabled:cursor-default"
-								>
-									<span className={stars === n ? 'font-extrabold underline' : ''}>{t(`Rating_${n}`)}</span>
-									<span className="h-2 overflow-hidden rounded-full bg-neutral-200 dark:bg-neutral-800">
-										<span className="block h-full rounded-full bg-black dark:bg-white" style={{ width: `${(countOf(n) / totalReviews) * 100}%` }} />
-									</span>
-									<span className="text-right tabular-nums text-neutral-600 dark:text-neutral-400">{countOf(n)}</span>
-								</button>
-							))}
+						<div className="rounded-2xl bg-neutral-100 px-6 py-7 text-center dark:bg-neutral-900">
+							<p className="text-[44px] font-extrabold leading-none tabular-nums">{average.toFixed(1)}</p>
+							<p className="mt-2 text-lg font-bold">{t(`Rating_${Math.min(5, Math.max(1, Math.round(average)))}`)}</p>
+							<p className="mt-2 flex items-center justify-center gap-1.5 text-base text-ink-soft dark:text-neutral-300">
+								<RatingBubbles rating={average} size={18} tone="green" />
+								<span className="tabular-nums">({totalReviews.toLocaleString()})</span>
+								<span className="sr-only">{t('Based_On', { count: totalReviews })}</span>
+							</p>
 						</div>
-						<div className="mt-[22px]">{writeButton}</div>
+						<div className="mt-6 grid gap-3">
+							{[5, 4, 3, 2, 1].map((n) => {
+								const count = countOf(n)
+								return (
+									<button
+										key={n}
+										type="button"
+										aria-pressed={stars === n}
+										onClick={() => setStars(stars === n ? 0 : n)}
+										disabled={!count}
+										className="grid grid-cols-[80px_minmax(0,1fr)_36px] items-center gap-3 text-left text-base disabled:cursor-default"
+									>
+										<span className={stars === n ? 'font-bold underline underline-offset-2' : ''}>{t(`Rating_${n}`)}</span>
+										<span className="h-3 overflow-hidden rounded-full bg-neutral-200 dark:bg-neutral-800">
+											{count > 0 && (
+												<span className="block h-full min-w-3 rounded-full bg-[#00852F]" style={{ width: `${(count / totalReviews) * 100}%` }} />
+											)}
+										</span>
+										<span className="text-right text-sm tabular-nums text-ink-soft dark:text-neutral-400">{count.toLocaleString()}</span>
+									</button>
+								)
+							})}
+						</div>
+						<div className="mt-6 border-t border-neutral-200 pt-6 dark:border-neutral-800">{writeButton}</div>
 					</div>
 
 					{/* Reviews, with chips for the type of trip */}
@@ -145,10 +155,10 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
 										type="button"
 										aria-pressed={trip === type}
 										onClick={() => setTrip(type)}
-										className={`rounded-full border px-3.5 py-2 text-sm font-bold transition ${
+										className={`rounded-full border px-4 py-2 text-sm font-semibold transition ${
 											trip === type
-												? 'border-black bg-black text-white dark:border-white dark:bg-white dark:text-black'
-												: 'border-neutral-400 hover:border-black dark:border-neutral-600 dark:hover:border-white'
+												? 'border-ink bg-ink text-white dark:border-white dark:bg-white dark:text-ink'
+												: 'border-neutral-300 text-ink hover:border-ink dark:border-neutral-600 dark:text-white dark:hover:border-white'
 										}`}
 									>
 										{type ? t(type) : t('All')}
@@ -156,7 +166,7 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
 								))}
 							</div>
 						)}
-						<div className="divide-y divide-neutral-200 border-b border-neutral-200 dark:divide-neutral-800 dark:border-neutral-800">
+						<div className="mt-2 divide-y divide-neutral-200 border-b border-neutral-200 dark:divide-neutral-800 dark:border-neutral-800">
 							{shown.slice(0, visible).map((review) => (
 								<Review key={review.id} review={review} />
 							))}
@@ -166,7 +176,7 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
 								<button
 									type="button"
 									onClick={() => setVisible((v) => v + 5)}
-									className="rounded-full border border-black px-5 py-3 text-base font-bold leading-none transition hover:bg-neutral-100 dark:border-white dark:hover:bg-neutral-800"
+									className="w-full rounded-full border border-ink px-5 py-3 text-base font-bold leading-none text-ink transition hover:bg-neutral-100 sm:w-auto dark:border-white dark:text-white dark:hover:bg-neutral-800"
 								>
 									{t('Load_More_Reviews')}
 								</button>
@@ -175,9 +185,9 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
 					</div>
 				</div>
 			) : (
-				<div className="flex flex-col items-center rounded-xl border border-neutral-200 px-6 py-12 text-center dark:border-neutral-800">
-					<div className="mb-4 flex gap-1.5">
-						<Stars rating={0} size="h-5 w-5" />
+				<div className="flex flex-col items-center rounded-2xl bg-neutral-100 px-6 py-12 text-center dark:bg-neutral-900">
+					<div className="mb-4">
+						<RatingBubbles rating={0} size={18} tone="green" />
 					</div>
 					<h3 className="mb-1 text-lg font-bold">{t('No_Reviews_Yet')}</h3>
 					<p className="mb-5 text-neutral-500">{t('First_Share')}</p>

@@ -1,7 +1,7 @@
 'use client'
 
 import type React from 'react'
-import Stars from './Stars'
+import RatingBubbles from '@/app/[locale]/(home)/RatingBubbles'
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
 import { useTranslations } from '@/lib/i18n'
 import { useLocale } from 'next-intl'
@@ -56,7 +56,7 @@ const Review: React.FC<ReviewProps> = ({ review }) => {
 								</AvatarFallback>
 							</Avatar>
 							<div className="">
-								<h4 className="text-[15px] font-bold text-ink dark:text-white">
+								<h4 className="text-base font-bold leading-5 text-ink dark:text-white">
 									{review?.user?.accountData?.firstname}
 								</h4>
 								{review.author && (
@@ -70,7 +70,7 @@ const Review: React.FC<ReviewProps> = ({ review }) => {
 								)}
 							</div>
 						</div>
-						<div className="text-[13px] text-neutral-600 dark:text-neutral-400">
+						<div className="shrink-0 text-sm text-ink-soft dark:text-neutral-400">
 							{new Date(review.createdAt).toLocaleDateString(locale, {
 								year: 'numeric',
 								month: 'long',
@@ -81,18 +81,18 @@ const Review: React.FC<ReviewProps> = ({ review }) => {
 
 					<div className="mt-3">
 						<div className="mb-2 flex items-center gap-2">
-							<Stars rating={review.rating} />
+							<RatingBubbles rating={review.rating} size={14} tone="green" />
 							<span className="sr-only">{review.rating}/5</span>
 						</div>
 
-						<h3 className="mb-1.5 text-[17px] font-extrabold text-ink dark:text-white">
+						<h3 className="mb-1.5 text-lg font-bold leading-6 text-ink dark:text-white">
 							{review.title}
 						</h3>
-						<p className="mb-2.5 max-w-[72ch] text-[15px] leading-relaxed text-neutral-700 dark:text-neutral-300">
+						<p className="mb-3 max-w-[72ch] text-base leading-7 text-ink-soft dark:text-neutral-300">
 							{review.content}
 						</p>
 
-						<div className="flex flex-wrap gap-x-4 gap-y-1 text-[13px] text-neutral-600 dark:text-neutral-400">
+						<div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-ink-soft dark:text-neutral-400">
 							<span>
 								{t('Date_Experience')} {''}
 								{new Date(review.travelDate1).toLocaleDateString(locale, {
