@@ -16,6 +16,7 @@ import { selectTourLiked, setTourLiked } from '@/store/slices/tourPage'
 import { useTranslations as useIntlTranslations } from 'next-intl'
 import { useTourService } from '../TourServiceContext'
 import RatingBubbles from '@/app/[locale]/(home)/RatingBubbles'
+import PopularBadge from '@/app/[locale]/(home)/PopularBadge'
 
 // Plain icons (no circle), as on TripAdvisor; the round hover keeps a 40px tap target
 const iconClass =
@@ -152,6 +153,8 @@ const TourHeader = () => {
 					</span>
 				</button>
 			)}
+			{/* One of the most visited tours */}
+			{service.popular && <PopularBadge className="mt-3 bg-brand-50 !px-3 !py-1.5 !text-sm shadow-none" />}
 			{recommended !== null && recommended > 0 && (
 				<p className="mt-3 flex items-center gap-2 text-base leading-6">
 					<BadgeCheck aria-hidden className="h-6 w-6 shrink-0 fill-brand-500 text-white" strokeWidth={2} />

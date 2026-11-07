@@ -12,6 +12,7 @@ import { useLocale, useTranslations } from 'next-intl'
 import type { HomeTour } from '@/lib/homeData'
 import RatingBubbles from './RatingBubbles'
 import SaveButton from './SaveButton'
+import PopularBadge from './PopularBadge'
 
 export default function TourCard({ tour }: { tour: HomeTour }) {
 	const t = useTranslations('Home')
@@ -37,6 +38,7 @@ export default function TourCard({ tour }: { tour: HomeTour }) {
 					sizes="(max-width: 640px) 50vw, (max-width: 1280px) 33vw, 370px"
 					className="object-cover transition duration-500 group-hover:scale-105"
 				/>
+				{tour.popular && <PopularBadge className="absolute left-2 top-2" />}
 				<div className="absolute right-2 top-2">
 					<SaveButton tourId={tour.id} label={t('save')} />
 				</div>
