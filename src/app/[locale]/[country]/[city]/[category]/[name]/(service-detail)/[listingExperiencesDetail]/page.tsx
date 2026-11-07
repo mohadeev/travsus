@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation'
+import { unstable_noStore as noStore } from 'next/cache'
 import { setRequestLocale } from 'next-intl/server'
 import type { Metadata } from 'next'
 import { getTourData } from '@/lib/tourData'
@@ -53,7 +54,10 @@ export async function generateMetadata(
 	const { listingExperiencesDetail: tourId, locale } = params
 	// A database error is thrown (500), not shown as "not found": a cached
 	// "Tour Not Found" with noindex would drop the tour from search engines
-	const tour: any = await getTourData(tourId, locale)
+	const tour: any = await getTourData(tourId, locale).catch((error) => {
+		noStore() // never cache a failed render
+		throw error
+	})
 
 	if (!tour) {
 		return {
@@ -145,6 +149,9 @@ const DetailPage = async (props: DetailPageProps) => {
 		// and search engines in place of the tour. With a 500, the last good
 		// copy stays in the page cache and the edge cache.
 		if (!(typeof error?.digest === 'string' && error.digest.startsWith('NEXT_'))) {
+			// Mark the render dynamic so neither cache keeps this failure (vinext
+			// otherwise stores the errored page and serves it for an hour)
+			noStore()
 			console.error('Error in DetailPage:', error)
 		}
 		throw error
