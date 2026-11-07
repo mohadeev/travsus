@@ -217,12 +217,13 @@ export default function TourMapLeaflet({ days, selectedDayIndex, onDaySelect, he
 	return (
 		<div className="relative isolate">
 			<style>{`.tour-map-tiles { filter: saturate(0.55) brightness(1.04) contrast(0.95); }`}</style>
-			<div ref={containerRef} style={{ height }} className={`w-full bg-neutral-100 ${touch && !unlocked ? '!touch-auto' : ''}`} />
+			{/* Static className: React must never rewrite it, Leaflet adds its own classes */}
+			<div ref={containerRef} style={{ height }} className="w-full bg-neutral-100" />
 			{touch && (
 				<button
 					type="button"
 					onClick={() => setUnlocked(!unlocked)}
-					className={`absolute bottom-3 left-3 z-[500] inline-flex items-center gap-1.5 rounded-full px-3.5 py-2 text-sm font-semibold shadow-md ring-1 ring-black/5 ${
+					className={`absolute left-3 top-3 z-[500] inline-flex items-center gap-1.5 rounded-full px-3.5 py-2 text-sm font-semibold shadow-md ring-1 ring-black/5 ${
 						unlocked ? 'bg-ink text-white' : 'bg-white text-ink'
 					}`}
 				>
