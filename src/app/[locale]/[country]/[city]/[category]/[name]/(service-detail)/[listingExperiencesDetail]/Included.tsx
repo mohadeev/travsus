@@ -1,7 +1,8 @@
 'use client'
 // What's included, per package. All TRAVSUS tours are private: Standard and
 // Luxury (the old "shared" lists in the data are not shown). Side by side as
-// plain lists, as on TripAdvisor; what Luxury adds over Standard has a "+".
+// cards like the booking form's hotel options (black, not orange); what
+// Luxury adds over Standard has a "+".
 // Always in the page (not hidden behind a click), so it's readable and indexable.
 import type { ReactNode } from 'react'
 import { Check, Plus } from 'lucide-react'
@@ -27,7 +28,7 @@ const Included = () => {
 				{t('newServicedetailListingExperiencesDetailIncluded_Everything_Included_In_Your_Package')}
 			</p>
 
-			<div className="mt-5 grid items-start gap-8 md:grid-cols-2">
+			<div className="mt-5 grid items-stretch gap-4 md:grid-cols-2">
 				{standard.length > 0 && (
 					<Package name="Standard">
 						{standard.map((item, i) => (
@@ -54,16 +55,23 @@ const Included = () => {
 	)
 }
 
-/** One package, as on TripAdvisor: a bold name, "Private tour", and a plain list. */
+/** One package, as a card like the hotel options in the booking form,
+ *  in black instead of orange: Luxury gets the thick black border. */
 function Package({ name, featured = false, children }: { name: string; featured?: boolean; children: ReactNode }) {
 	return (
-		<div>
-			<p className="flex items-center gap-2 text-base font-bold">
+		<div
+			className={`h-full rounded-2xl border bg-white dark:bg-neutral-900 ${
+				featured
+					? 'border-2 border-black p-[19px] shadow-[0_8px_24px_-12px_rgba(0,0,0,0.45)] dark:border-white'
+					: 'border-neutral-300 p-5 dark:border-neutral-700'
+			}`}
+		>
+			<h3 className="flex items-center gap-2 text-xl font-bold leading-6">
 				{name}
 				{featured && <span className="rounded bg-black px-1.5 py-0.5 text-[11px] font-bold uppercase tracking-wide text-white dark:bg-white dark:text-black">Upgrade</span>}
-			</p>
-			<p className="text-sm text-neutral-600 dark:text-neutral-400">Private tour</p>
-			<ul className="mt-3 space-y-2.5">{children}</ul>
+			</h3>
+			<p className="mt-1 text-sm leading-5 text-ink-soft dark:text-neutral-400">Private tour</p>
+			<ul className="mt-4 space-y-2.5">{children}</ul>
 		</div>
 	)
 }
