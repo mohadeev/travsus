@@ -15,6 +15,8 @@ export type HomeTour = {
 	pricePerPerson: number | null
 	rating: number | null
 	reviewsCount: number
+	/** Among the most visited tours (real visits to its page, last 90 days) */
+	popular?: boolean
 	/** Lower-case words the search matches against (names, overview, cities) */
 	searchText: string
 }
@@ -65,6 +67,9 @@ function seoScore(tour: CatalogTour) {
 		5
 	)
 }
+
+const POPULAR_MIN_VISITS = 5
+const POPULAR_MAX = 6
 
 export const getHomeData = cache(async (locale: string) => {
 	// Shared caches: one database read per 10 minutes for every visitor and language
@@ -153,6 +158,14 @@ export const getHomeData = cache(async (locale: string) => {
 	}
 
 	homeTours.sort((a, b) => (rank.get(b.id) ?? 0) - (rank.get(a.id) ?? 0))
+
+	// "Popular": the most visited tours (a quarter of them, 6 at most), and only
+	// with real interest behind it (at least 5 visits in 90 days)
+	const byVisits = homeTours
+		.filter((tour) => (views[tour.id] ?? 0) >= POPULAR_MIN_VISITS)
+		.sort((a, b) => (views[b.id] ?? 0) - (views[a.id] ?? 0))
+		.slice(0, Math.min(POPULAR_MAX, Math.max(1, Math.ceil(homeTours.length / 4))))
+	for (const tour of byVisits) tour.popular = true
 
 	const tourById = new Map(homeTours.map((tour) => [tour.id, tour]))
 	const homeReviews: HomeReview[] = (latestReviews ?? []).map((raw: any) => {

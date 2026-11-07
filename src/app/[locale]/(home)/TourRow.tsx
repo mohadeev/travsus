@@ -12,6 +12,7 @@ import { useLocale, useTranslations } from 'next-intl'
 import type { HomeTour } from '@/lib/homeData'
 import RatingBubbles from './RatingBubbles'
 import SaveButton from './SaveButton'
+import PopularBadge from './PopularBadge'
 
 export default function TourRow({ tour }: { tour: HomeTour }) {
 	const t = useTranslations('Home')
@@ -30,6 +31,7 @@ export default function TourRow({ tour }: { tour: HomeTour }) {
 		>
 			<div className="relative w-[38%] shrink-0 self-start overflow-hidden rounded-lg bg-neutral-100 dark:bg-neutral-800" style={{ aspectRatio: '1 / 1' }}>
 				<Image src={tour.image} alt={tour.name} fill sizes="40vw" className="object-cover" />
+				{tour.popular && <PopularBadge className="absolute bottom-2 left-2" />}
 				<div className="absolute right-2 top-2">
 					<SaveButton tourId={tour.id} label={t('save')} />
 				</div>

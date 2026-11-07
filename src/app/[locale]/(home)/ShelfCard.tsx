@@ -13,6 +13,7 @@ import { useLocale, useTranslations } from 'next-intl'
 import type { HomeTour } from '@/lib/homeData'
 import RatingBubbles from './RatingBubbles'
 import SaveButton from './SaveButton'
+import PopularBadge from './PopularBadge'
 
 type Card = Omit<HomeTour, 'searchText'>
 
@@ -38,6 +39,7 @@ export default function ShelfCard({ tour }: { tour: Card }) {
 					sizes="(max-width: 640px) 66vw, (max-width: 1024px) 33vw, 272px"
 					className="object-cover transition duration-500 group-hover:scale-105"
 				/>
+				{tour.popular && <PopularBadge className="absolute left-2 top-2" />}
 				<div className="absolute right-2 top-2">
 					<SaveButton tourId={tour.id} label={t('save')} />
 				</div>

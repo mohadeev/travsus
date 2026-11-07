@@ -41,6 +41,8 @@ export type TourPageExtras = {
 	similar: Omit<HomeTour, 'searchText'>[]
 	/** Shown in the booking card until the browser has priced the booking */
 	fromPricePerPerson: number | null
+	/** Among the most visited tours */
+	popular: boolean
 	prices: { low: number; high: number } | null
 }
 
@@ -56,6 +58,7 @@ async function loadTourPageExtras(tourId: string, locale: string): Promise<TourP
 	return {
 		similar,
 		fromPricePerPerson: tours.find((t) => t.id === tourId)?.pricePerPerson ?? null,
+		popular: !!tours.find((t) => t.id === tourId)?.popular,
 		prices: await priceRange(tour),
 	}
 }
