@@ -51,7 +51,9 @@ export async function generateMetadata(
 ): Promise<Metadata> {
 	const params = await props.params;
 	const { listingExperiencesDetail: tourId, locale } = params
-	const tour: any = await getTourData(tourId, locale).catch(() => null)
+	// A database error is thrown (500), not shown as "not found": a cached
+	// "Tour Not Found" with noindex would drop the tour from search engines
+	const tour: any = await getTourData(tourId, locale)
 
 	if (!tour) {
 		return {
@@ -137,22 +139,15 @@ const DetailPage = async (props: DetailPageProps) => {
 			</div>
 		);
 	} catch (error: any) {
-		// Let Next.js handle notFound() / redirect() instead of showing an error
-		if (typeof error?.digest === 'string' && error.digest.startsWith('NEXT_')) {
-			throw error
+		// notFound() / redirect() are handled by Next.js. Any other error is
+		// thrown too, so the answer is a 500 (shown by ../error.tsx): a 200
+		// "Something went wrong" page used to be cached and served to visitors
+		// and search engines in place of the tour. With a 500, the last good
+		// copy stays in the page cache and the edge cache.
+		if (!(typeof error?.digest === 'string' && error.digest.startsWith('NEXT_'))) {
+			console.error('Error in DetailPage:', error)
 		}
-		console.error('Error in DetailLayout:', error)
-
-		return (
-			<div className="ListingDetailPage">
-				<div className="ListingDetailPage__content">
-					<div className="error-message">
-						<h2>Something went wrong</h2>
-						<p>Please try again later.</p>
-					</div>
-				</div>
-			</div>
-		)
+		throw error
 	}
 }
 
