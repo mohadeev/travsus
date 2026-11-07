@@ -2710,7 +2710,9 @@
     "legend_night": "住宿地",
     "legend_pass": "途经地点",
     "tap_hint": "点按某一天即可在地图上查看",
-    "loading": "地图加载中…"
+    "loading": "地图加载中…",
+    "map_unlock": "移动地图",
+    "map_lock": "完成"
   },
   "Affiliates": {
     "meta_title": "联盟计划：每笔旅游预订最高赚取 15% 佣金",

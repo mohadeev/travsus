@@ -3,7 +3,8 @@
 // direction arrows, "Start" / "Finish" labels, a numbered circle where each
 // day ends and small dots for places you only pass. Choosing a day highlights
 // it and zooms to it.
-import { useEffect, useMemo, useRef } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
+import { Hand, Lock } from 'lucide-react'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import { useTranslations } from 'next-intl'
@@ -63,6 +64,10 @@ export default function TourMapLeaflet({ days, selectedDayIndex, onDaySelect, he
 	const mapRef = useRef<L.Map | null>(null)
 	const layerRef = useRef<L.LayerGroup | null>(null)
 	const selected = selectedDayIndex ?? -1
+	// Phones: the map stays still so the page scrolls over it; a button lets
+	// you move it, and it locks again once it leaves the screen
+	const [touch, setTouch] = useState(false)
+	const [unlocked, setUnlocked] = useState(false)
 
 	const label = (stop: RouteStop) => {
 		const parts: string[] = []
@@ -97,6 +102,7 @@ export default function TourMapLeaflet({ days, selectedDayIndex, onDaySelect, he
 		}).addTo(map)
 		layerRef.current = L.layerGroup().addTo(map)
 		mapRef.current = map
+		if (window.matchMedia('(pointer: coarse)').matches) setTouch(true)
 		map.setView([31.79, -7.09], 5)
 		return () => {
 			map.remove()
@@ -189,12 +195,41 @@ export default function TourMapLeaflet({ days, selectedDayIndex, onDaySelect, he
 		fitTo(focused && route.dayPlaces[selected]?.length ? route.dayPlaces[selected] : route.path)
 	}, [route, selected]) // eslint-disable-line react-hooks/exhaustive-deps
 
+	// Locked: no dragging or pinching, so a finger on the map scrolls the page
+	useEffect(() => {
+		const map = mapRef.current
+		if (!map || !touch) return
+		const handlers = [map.dragging, map.touchZoom, map.doubleClickZoom, (map as any).tap].filter(Boolean)
+		handlers.forEach((handler: any) => (unlocked ? handler.enable() : handler.disable()))
+	}, [touch, unlocked])
+
+	// Lock again when the map scrolls out of view
+	useEffect(() => {
+		const el = containerRef.current
+		if (!el || !unlocked) return
+		const observer = new IntersectionObserver(([entry]) => !entry.isIntersecting && setUnlocked(false))
+		observer.observe(el)
+		return () => observer.disconnect()
+	}, [unlocked])
+
 	if (!route.path.length) return null
 
 	return (
 		<div className="relative isolate">
 			<style>{`.tour-map-tiles { filter: saturate(0.55) brightness(1.04) contrast(0.95); }`}</style>
-			<div ref={containerRef} style={{ height }} className="w-full bg-neutral-100" />
+			<div ref={containerRef} style={{ height }} className={`w-full bg-neutral-100 ${touch && !unlocked ? '!touch-auto' : ''}`} />
+			{touch && (
+				<button
+					type="button"
+					onClick={() => setUnlocked(!unlocked)}
+					className={`absolute bottom-3 left-3 z-[500] inline-flex items-center gap-1.5 rounded-full px-3.5 py-2 text-sm font-semibold shadow-md ring-1 ring-black/5 ${
+						unlocked ? 'bg-ink text-white' : 'bg-white text-ink'
+					}`}
+				>
+					{unlocked ? <Lock className="h-4 w-4" /> : <Hand className="h-4 w-4" />}
+					{unlocked ? t('map_lock') : t('map_unlock')}
+				</button>
+			)}
 
 		</div>
 	)

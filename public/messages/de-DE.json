@@ -3832,7 +3832,9 @@
     "legend_night": "Übernachtung",
     "legend_pass": "Unterwegs",
     "tap_hint": "Tippen Sie auf einen Tag, um ihn auf der Karte zu sehen",
-    "loading": "Karte wird geladen…"
+    "loading": "Karte wird geladen…",
+    "map_unlock": "Karte bewegen",
+    "map_lock": "Fertig"
   },
   "Affiliates": {
     "meta_title": "Partnerprogramm: Bis zu 15 % Provision auf jede Tourbuchung",

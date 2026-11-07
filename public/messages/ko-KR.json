@@ -2835,7 +2835,9 @@
     "legend_night": "숙박 장소",
     "legend_pass": "지나가는 곳",
     "tap_hint": "날짜를 누르면 지도에 표시됩니다",
-    "loading": "지도 불러오는 중…"
+    "loading": "지도 불러오는 중…",
+    "map_unlock": "지도 움직이기",
+    "map_lock": "완료"
   },
   "Affiliates": {
     "meta_title": "제휴 프로그램: 투어 예약마다 최대 15% 수익",

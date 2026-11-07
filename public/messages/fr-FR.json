@@ -3848,7 +3848,9 @@
     "legend_night": "Où vous dormez",
     "legend_pass": "Lieux traversés",
     "tap_hint": "Touchez un jour pour le voir sur la carte",
-    "loading": "Chargement de la carte…"
+    "loading": "Chargement de la carte…",
+    "map_unlock": "Déplacer la carte",
+    "map_lock": "Terminé"
   },
   "Affiliates": {
     "meta_title": "Programme d'affiliation : jusqu'à 15 % sur chaque réservation",

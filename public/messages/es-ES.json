@@ -3771,7 +3771,9 @@
     "legend_night": "Dónde duermes",
     "legend_pass": "Lugares de paso",
     "tap_hint": "Toca un día para verlo en el mapa",
-    "loading": "Cargando mapa…"
+    "loading": "Cargando mapa…",
+    "map_unlock": "Mover el mapa",
+    "map_lock": "Listo"
   },
   "Affiliates": {
     "meta_title": "Programa de afiliados: gana hasta un 15 % en cada reserva",
