@@ -2848,7 +2848,9 @@
     "legend_night": "宿泊地",
     "legend_pass": "通過する場所",
     "tap_hint": "日をタップすると地図に表示されます",
-    "loading": "地図を読み込み中…"
+    "loading": "地図を読み込み中…",
+    "map_unlock": "地図を動かす",
+    "map_lock": "完了"
   },
   "Affiliates": {
     "meta_title": "アフィリエイトプログラム：ツアー予約ごとに最大15%の報酬",

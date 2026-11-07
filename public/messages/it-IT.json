@@ -3340,7 +3340,9 @@
     "legend_night": "Dove dormi",
     "legend_pass": "Luoghi di passaggio",
     "tap_hint": "Tocca un giorno per vederlo sulla mappa",
-    "loading": "Caricamento mappa…"
+    "loading": "Caricamento mappa…",
+    "map_unlock": "Sposta la mappa",
+    "map_lock": "Fatto"
   },
   "Affiliates": {
     "meta_title": "Programma di affiliazione: guadagna fino al 15% su ogni prenotazione",
