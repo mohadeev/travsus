@@ -118,7 +118,12 @@ const DetailPage = async (props: DetailPageProps) => {
 
 
 		// Similar tours, "from" price and price range: one small cached result per tour
-		const extras = await getTourPageExtras(tourId, locale)
+		// Optional extras: without them the tour still shows (not cached then)
+		const extras = await getTourPageExtras(tourId, locale).catch((error) => {
+			console.error('Tour page extras failed:', error)
+			noStore()
+			return null
+		})
 		const similar = extras?.similar ?? []
 		const fromPricePerPerson = extras?.fromPricePerPerson ?? null
 

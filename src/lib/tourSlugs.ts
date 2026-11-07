@@ -3,7 +3,7 @@
 // for a day; saving a tour clears it. The middleware used to fetch the site's
 // own /api/tours/{id}/slug for this: on Cloudflare a Worker calling its own
 // address is slow or fails, and that cost every tour visit, even cached ones.
-import { unstable_cache } from 'next/cache'
+import { unstable_cache } from '@/lib/stableCache'
 import { db, T } from '@/lib/db'
 
 const TOURS_TAG = 'tours' // same tag as src/lib/tourCatalog.ts
