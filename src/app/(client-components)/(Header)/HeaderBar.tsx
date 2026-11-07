@@ -22,6 +22,9 @@ export default function HeaderBar() {
 	const { isLoaded, isSignedIn } = useUser()
 	const { openSignIn } = useClerk()
 	const [scrolled, setScrolled] = useState(false)
+	// Tour pages (address ends in the tour id): the header scrolls away with the
+	// page, so the tour's own tabs can stay at the top of the screen
+	const onTourPage = /\/[0-9a-f]{24}\/?$/.test(pathname ?? '')
 
 	useEffect(() => {
 		const onScroll = () => setScrolled(window.scrollY > 4)
@@ -42,8 +45,8 @@ export default function HeaderBar() {
 
 	return (
 		<header
-			className={`sticky top-0 z-40 bg-white transition-shadow duration-200 dark:bg-neutral-950 ${
-				scrolled ? 'shadow-[0_2px_8px_rgba(0,0,0,0.08)]' : ''
+			className={`${onTourPage ? 'relative' : 'sticky top-0'} z-40 bg-white transition-shadow duration-200 dark:bg-neutral-950 ${
+				scrolled && !onTourPage ? 'shadow-[0_2px_8px_rgba(0,0,0,0.08)]' : ''
 			}`}
 		>
 			<a
