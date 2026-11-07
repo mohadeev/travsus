@@ -91,8 +91,10 @@ const TourDetail: FC<ListingExperiencesDetailPageProps> = ({ similar = [] }) => 
 								{facts.length > 0 && (
 									<ul className={`mt-8 grid gap-2 ${facts.length === 3 ? 'grid-cols-3' : facts.length === 2 ? 'grid-cols-2' : 'grid-cols-1'}`}>
 										{facts.map(({ icon: Icon, label, value }) => (
-											<li key={label} className="min-w-0 rounded-2xl bg-sand-100 px-3 py-3.5 dark:bg-neutral-900">
-												<Icon className="h-5 w-5 text-brand-600" strokeWidth={2} aria-hidden />
+											<li key={label} className="min-w-0 rounded-3xl bg-neutral-100 px-4 py-4 dark:bg-neutral-900">
+												<span className="grid h-8 w-8 place-items-center rounded-full bg-white text-ink dark:bg-neutral-800 dark:text-white">
+													<Icon className="h-4 w-4" strokeWidth={2} aria-hidden />
+												</span>
 												<p className="mt-2 text-xs leading-4 text-ink-soft dark:text-neutral-400">{label}</p>
 												<p className="truncate text-sm font-bold leading-5">{value}</p>
 											</li>
@@ -196,7 +198,7 @@ function StickyBookingCard({ children }: { children: ReactNode }) {
 function Fact({ icon: Icon, title, text }: { icon: typeof Clock3; title: string; text?: string }) {
 	return (
 		<li className="flex gap-3.5">
-			<span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-brand-50 text-brand-600 dark:bg-neutral-900">
+			<span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-neutral-100 text-ink dark:bg-neutral-900 dark:text-white">
 				<Icon className="h-5 w-5" strokeWidth={2} aria-hidden />
 			</span>
 			<p className="min-w-0 pt-0.5">
