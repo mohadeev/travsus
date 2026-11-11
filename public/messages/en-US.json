@@ -2496,7 +2496,11 @@
     "check_availability": "Check availability",
     "adults_count": "{count, plural, one {# Adult} other {# Adults}}",
     "sections_label": "Tour sections",
-    "choose_date": "Choose your date"
+    "choose_date": "Choose your date",
+    "seo_title_suffix": "Private Tour",
+    "seo_intro_price": "Private {days, plural, one {day trip} other {#-day tour}} from {city}, from {price} per person.",
+    "seo_intro": "Private {days, plural, one {day trip} other {#-day tour}} from {city}.",
+    "seo_outro": "Free cancellation, reserve now and pay later."
   },
   "Booking": {
     "step_when": "When do you want to go?",

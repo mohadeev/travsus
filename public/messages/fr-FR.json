@@ -3796,7 +3796,11 @@
     "check_availability": "Voir les disponibilités",
     "adults_count": "{count, plural, one {# adulte} other {# adultes}}",
     "sections_label": "Sections du circuit",
-    "choose_date": "Choisissez votre date"
+    "choose_date": "Choisissez votre date",
+    "seo_title_suffix": "Circuit privé",
+    "seo_intro_price": "{days, plural, one {Excursion privée d'une journée} other {Circuit privé de # jours}} au départ de {city}, à partir de {price} par personne.",
+    "seo_intro": "{days, plural, one {Excursion privée d'une journée} other {Circuit privé de # jours}} au départ de {city}.",
+    "seo_outro": "Annulation gratuite, réservez maintenant et payez plus tard."
   },
   "Booking": {
     "step_when": "Quand voulez-vous partir ?",

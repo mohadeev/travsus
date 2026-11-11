@@ -161,7 +161,8 @@ const RenderSidebar: FC = () => {
 	return (
 		<div className="listingSectionSidebar__wrap !space-y-5 max-lg:!rounded-none max-lg:!border-0 max-lg:!px-6 max-lg:!pb-0 max-lg:!shadow-none">
 			{/* Phone sheet: the tour name on top. Desktop card: the "from" price */}
-			<h2 className="headline text-2xl !leading-7 lg:hidden">{tour.name}</h2>
+			{/* Not a heading: the page already has the tour name as its title */}
+			<p className="headline text-2xl !leading-7 lg:hidden">{tour.name}</p>
 			<div className="hidden lg:block">
 				<p>
 					<span className="text-neutral-700 dark:text-neutral-300">{fromBefore}</span>

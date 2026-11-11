@@ -3780,7 +3780,11 @@
     "check_availability": "Verfügbarkeit prüfen",
     "adults_count": "{count, plural, one {# Erwachsener} other {# Erwachsene}}",
     "sections_label": "Abschnitte der Tour",
-    "choose_date": "Datum wählen"
+    "choose_date": "Datum wählen",
+    "seo_title_suffix": "Private Tour",
+    "seo_intro_price": "Private {days, plural, one {Tagestour} other {#-Tage-Tour}} ab {city}, ab {price} pro Person.",
+    "seo_intro": "Private {days, plural, one {Tagestour} other {#-Tage-Tour}} ab {city}.",
+    "seo_outro": "Kostenlose Stornierung, jetzt reservieren und später bezahlen."
   },
   "Booking": {
     "step_when": "Wann möchten Sie reisen?",

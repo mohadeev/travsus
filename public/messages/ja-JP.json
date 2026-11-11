@@ -2796,7 +2796,11 @@
     "check_availability": "空き状況を確認",
     "adults_count": "大人{count}名",
     "sections_label": "ツアーのセクション",
-    "choose_date": "日付を選択"
+    "choose_date": "日付を選択",
+    "seo_title_suffix": "プライベートツアー",
+    "seo_intro_price": "{city}発{days, plural, one {日帰り} other {#日間}}プライベートツアー、1名{price}から。",
+    "seo_intro": "{city}発{days, plural, one {日帰り} other {#日間}}プライベートツアー。",
+    "seo_outro": "無料キャンセル、今予約して後払い。"
   },
   "Booking": {
     "step_when": "いつ行きますか？",
