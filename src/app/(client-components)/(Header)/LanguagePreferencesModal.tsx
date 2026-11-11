@@ -3,6 +3,7 @@
 // a list of the site's languages. Phones get a bottom sheet, larger screens a
 // small dialog. Picking a language opens the same page in that language.
 import { Fragment, useEffect, useMemo, useState, useTransition, type FC } from 'react'
+import { rememberLanguage } from '@/components/LanguageRedirect'
 import { Dialog, Transition } from '@headlessui/react'
 import { Check, ChevronDown, Globe, Loader2, X } from 'lucide-react'
 import { useLocale } from 'next-intl'
@@ -63,6 +64,7 @@ const LanguagePreferencesModal: FC<Props> = ({ className = '', variant = 'nav', 
 	const current = languages.find((l) => l.code === locale) ?? languages[0]
 
 	const choose = (code: string) => {
+		rememberLanguage(code) // kept for later visits (LanguageRedirect)
 		if (code === locale) return setOpen(false)
 		setPicked(code)
 		startTransition(() => router.push(pathIn(code, pathname) as any))
