@@ -23,7 +23,7 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -44,3 +44,6 @@ jobs:
           NEXT_PUBLIC_CLERK_SIGN_UP_FALLBACK_REDIRECT_URL: /
           NEXT_PUBLIC_EXTERNAL_SERVER: https://travsus-485b32f5a643.herokuapp.com
           NEXT_PUBLIC_COMPANY_PROFILE: "{ \"fullLegalName\": \"TRAVSUS LIMITED\", \"legalName\": \"TRAVSUS LTD\", \"marketName\": \"TRAVSUS\", \"name\": \"Travsus\", \"legalAddress\": \"Unit 1A Heatherview Business Park Athlone Road #8144 Longford, Co Longford N39KD82 Ireland\", \"TaxId\": \"IE1234567A\", \"taxValue\": \"21\", \"registrationNumber\": \"780669\", \"vatNumber\": \"IE1234567A\", \"registeredOffice\": \"Unit 1A Heatherview Business Park Athlone Road #8144 Longford, Co Longford N39KD82 Ireland\", \"privacyEmail\": \"contact@travsus.com\", \"supportEmail\": \"contact@travsus.com\", \"contactEmail\": \"contact@travsus.com\", \"dpoEmail\": \"contact@travsus.com\", \"contactPhone\": \"+34 643 635 962\", \"guarantorEntity\": \"Dummy Guarantor Name\", \"contractNumber\": \"CN-123456789\", \"registryDetails\": \"Dummy Registry Details\" }"
+      - name: Warm the page cache (home and tour pages in every language)
+        run: bash scripts/warm-cache.sh https://www.travsus.com
+        continue-on-error: true
