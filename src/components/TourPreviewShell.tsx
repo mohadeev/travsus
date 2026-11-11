@@ -1,116 +1,98 @@
 'use client'
-// Shown the instant a tour is opened, while the real page loads: the tour page's
-// layout filled with what the clicked card already knew (photo, name, days,
-// city, rating, price) from Redux, and soft placeholders for the rest.
-// Opened directly (no card clicked): the same layout with placeholders only.
+// Shown the instant a tour is opened, while the real page loads. It is laid
+// out exactly like the tour page (TourHeader, the photo, the section tabs), so
+// nothing jumps when the page arrives: what the clicked card already knew
+// (name, rating, photo) is shown in place, the rest as quiet grey shapes.
+// Opened directly (no card clicked): the same layout with shapes only.
 import Image from 'next/image'
-import { Clock3, MapPin, Star } from 'lucide-react'
+import { ChevronLeft, Heart, Share } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { useAppSelector } from '@/store/hooks'
 import { selectTourPreview, type TourPreview } from '@/store/slices/tourPage'
-import { formatCurrency } from '@/utils/formatCurrency'
+import RatingBubbles from '@/app/[locale]/(home)/RatingBubbles'
 
-const Bar = ({ className = '' }: { className?: string }) => <span className={`block animate-pulse rounded-full bg-neutral-200/80 dark:bg-neutral-800 ${className}`} />
+const Shape = ({ className = '' }: { className?: string }) => <span className={`block rounded-full bg-neutral-100 dark:bg-neutral-800 ${className}`} />
+const icon = 'grid h-10 w-10 place-items-center text-ink dark:text-white'
 
 export default function TourPreviewShell() {
-	const t = useTranslations('Home')
+	const tPage = useTranslations('TourPage')
+	const tHeader = useTranslations('Jan03_TourHeader_x9k2')
 	const stored = useAppSelector(selectTourPreview) as TourPreview | null
 	// Only previews made by a card click (the shape below), never an old full tour object
 	const tour = stored && typeof stored === 'object' && 'image' in stored ? stored : null
 
 	return (
 		<div className="mx-auto max-w-7xl px-6 pb-24 text-ink dark:text-white" aria-busy="true">
-			{/* Header: breadcrumb, title, rating */}
-			<div className="pt-6">
-				<Bar className="h-4 w-56" />
+			{/* Same as TourHeader: back arrow (phones) / breadcrumb, Save and Share */}
+			<div className="pt-3">
+				<div className="flex items-center justify-between gap-3">
+					<span className={`-ml-2 sm:hidden ${icon}`}>
+						<ChevronLeft className="h-6 w-6" strokeWidth={1.8} />
+					</span>
+					<Shape className="hidden h-4 w-64 sm:block" />
+					<div className="-mr-2 flex items-center">
+						<span className={icon}>
+							<Heart className="h-[22px] w-[22px]" strokeWidth={1.8} />
+						</span>
+						<span className={icon}>
+							<Share className="h-[22px] w-[22px]" strokeWidth={1.8} />
+						</span>
+					</div>
+				</div>
+
 				{tour?.name ? (
-					<h1 className="mt-4 text-3xl font-bold leading-tight tracking-tight sm:text-4xl">{tour.name}</h1>
+					<h1 className="headline mt-4 text-2xl ![text-wrap:wrap] !leading-7 sm:text-[32px] sm:!leading-[38px] lg:text-[36px] lg:!leading-[42px]">{tour.name}</h1>
 				) : (
-					<div className="mt-4 space-y-3">
-						<Bar className="h-9 w-4/5" />
-						<Bar className="h-9 w-1/2" />
+					<div className="mt-4 space-y-2">
+						<Shape className="h-6 w-11/12 sm:h-8" />
+						<Shape className="h-6 w-2/3 sm:h-8" />
 					</div>
 				)}
-				{tour?.rating ? (
-					<p className="mt-3 inline-flex items-center gap-1.5 text-sm">
-						<Star className="h-4 w-4 fill-current text-[#00852F]" />
-						<span className="font-semibold">{tour.rating.toFixed(1)}</span>
-						{tour.reviewsCount ? <span className="text-neutral-500">({tour.reviewsCount})</span> : null}
+
+				{tour?.rating && tour.reviewsCount ? (
+					<p className="mt-2 flex items-center gap-1.5 text-base leading-6 tabular-nums">
+						<span>{tour.rating.toFixed(1)}</span>
+						<RatingBubbles rating={tour.rating} size={16} tone="green" />
+						<span className="underline underline-offset-4">
+							({tour.reviewsCount.toLocaleString()} {tHeader('Reviews')})
+						</span>
 					</p>
 				) : (
-					<Bar className="mt-4 h-4 w-32" />
+					<Shape className="mt-3 h-4 w-40" />
 				)}
 			</div>
 
-			{/* Gallery: the card photo large, the other tiles as placeholders */}
-			<div className="mt-6 sm:hidden">
-				<div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-neutral-100 dark:bg-neutral-900">
-					{tour?.image && <Image src={tour.image} alt={tour.name ?? ''} fill priority sizes="100vw" className="object-cover" />}
-				</div>
+			{/* Same as the gallery: one photo across the width on phones, a large one on bigger screens */}
+			<div className="relative -mx-6 mt-5 bg-neutral-100 sm:hidden dark:bg-neutral-900" style={{ aspectRatio: '16 / 9' }}>
+				{tour?.image && <Image src={tour.image} alt={tour.name ?? ''} fill priority sizes="100vw" className="object-cover" />}
 			</div>
-			<div className="mt-6 hidden h-[460px] grid-cols-4 grid-rows-2 gap-2 overflow-hidden rounded-3xl sm:grid">
-				<div className="relative col-span-2 row-span-2 bg-neutral-100 dark:bg-neutral-900">
-					{tour?.image && <Image src={tour.image} alt={tour.name ?? ''} fill priority sizes="50vw" className="object-cover" />}
+			<div className="mt-5 hidden h-[446px] grid-cols-[minmax(0,2fr)_minmax(0,1fr)_minmax(0,1fr)] grid-rows-2 gap-1.5 overflow-hidden rounded-xl sm:grid">
+				<div className="relative row-span-2 bg-neutral-100 dark:bg-neutral-900">
+					{tour?.image && <Image src={tour.image} alt={tour.name ?? ''} fill priority sizes="(max-width: 1280px) 50vw, 620px" className="object-cover" />}
 				</div>
-				{[0, 1, 2, 3].map((i) => (
-					<div key={i} className="animate-pulse bg-neutral-100 dark:bg-neutral-900" />
+				<div className="bg-neutral-100 dark:bg-neutral-900" />
+				<div className="bg-neutral-100 dark:bg-neutral-900" />
+				<div className="col-span-2 bg-neutral-100 dark:bg-neutral-900" />
+			</div>
+
+			{/* Same as the section tabs */}
+			<div className="-mx-6 mt-4 flex gap-7 overflow-hidden whitespace-nowrap px-6 text-base font-bold leading-6">
+				{(['tab_overview', 'tab_details', 'tab_itinerary', 'tab_reviews'] as const).map((key, i) => (
+					<span key={key} className={`border-b-[3px] py-3 ${i === 0 ? 'border-brand-500' : 'border-transparent'}`}>
+						{tPage(key)}
+					</span>
 				))}
 			</div>
 
-			<div className="mt-10 grid gap-12 lg:grid-cols-[minmax(0,1fr)_380px]">
-				{/* Overview: quick facts from the card, text placeholders */}
-				<div className="min-w-0">
-					<span aria-hidden className="mb-3 block h-1 w-10 rounded-full bg-brand-500" />
-					<Bar className="h-7 w-40" />
-					<div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3">
-						{tour?.days ? (
-							<Fact icon={<Clock3 className="h-5 w-5 text-brand-500" strokeWidth={1.8} />} value={t('days_count', { count: tour.days })} />
-						) : (
-							<div className="h-[66px] animate-pulse rounded-2xl bg-neutral-100 dark:bg-neutral-900" />
-						)}
-						{tour?.city ? (
-							<Fact icon={<MapPin className="h-5 w-5 text-brand-500" strokeWidth={1.8} />} value={tour.city} />
-						) : (
-							<div className="h-[66px] animate-pulse rounded-2xl bg-neutral-100 dark:bg-neutral-900" />
-						)}
-					</div>
-					<div className="mt-7 space-y-3">
-						<Bar className="h-4 w-full" />
-						<Bar className="h-4 w-11/12" />
-						<Bar className="h-4 w-full" />
-						<Bar className="h-4 w-3/4" />
-					</div>
+			{/* About: the heading and a few quiet lines of text */}
+			<div className="mt-6 max-w-3xl">
+				<h2 className="headline text-[24px] !leading-tight">{tPage('about')}</h2>
+				<div className="mt-4 space-y-3">
+					<Shape className="h-4 w-full" />
+					<Shape className="h-4 w-11/12" />
+					<Shape className="h-4 w-4/5" />
 				</div>
-
-				{/* Booking card: the price is already known */}
-				<aside className="hidden lg:block">
-					<div className="rounded-3xl border border-neutral-200 p-6 shadow-xl dark:border-neutral-800">
-						{tour?.price ? (
-							<p className="text-lg">
-								<span className="text-3xl font-bold tracking-tight">{formatCurrency(tour.price)}</span>{' '}
-								<span className="text-neutral-500">{t('per_person')}</span>
-							</p>
-						) : (
-							<Bar className="h-9 w-40" />
-						)}
-						<div className="mt-6 space-y-4">
-							<div className="h-14 animate-pulse rounded-2xl bg-neutral-100 dark:bg-neutral-900" />
-							<div className="h-28 animate-pulse rounded-2xl bg-neutral-100 dark:bg-neutral-900" />
-							<div className="h-24 animate-pulse rounded-2xl bg-neutral-100 dark:bg-neutral-900" />
-							<div className="h-14 animate-pulse rounded-full bg-brand-500/30" />
-						</div>
-					</div>
-				</aside>
 			</div>
-		</div>
-	)
-}
-
-function Fact({ icon, value }: { icon: React.ReactNode; value: string }) {
-	return (
-		<div className="flex items-center gap-3 rounded-2xl border border-neutral-200 p-4 dark:border-neutral-800">
-			{icon}
-			<span className="truncate font-semibold">{value}</span>
 		</div>
 	)
 }
