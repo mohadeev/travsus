@@ -48,8 +48,19 @@ const TITLE_MAX = 60
  * Page title: the tour's SEO title if it has one, otherwise its name.
  * "| TRAVSUS" is added only when it still fits in 60 characters.
  */
+/**
+ * The SEO title / description written for the page's language: the
+ * translation's own, else (English pages only) the tour's. On other languages
+ * the English SEO text would replace the translated name and summary.
+ */
+function seoText(tour: any, key: 'seoTitle' | 'metaDescription'): string {
+	const language = tour.language || DEFAULT_LOCALE
+	const own = (tour.translations ?? []).find((t: any) => t?.language === language)?.[key]
+	return own || (language === DEFAULT_LOCALE ? tour[key] || '' : '')
+}
+
 export function tourTitle(tour: any, suffix?: string): string {
-	const base = plainText(tour.seoTitle || tour.name)
+	const base = plainText(seoText(tour, 'seoTitle') || tour.name)
 	// "… | Private Tour" (in the page's language) tells searchers what they get;
 	// else the brand; else the name alone, so the title is never cut by Google
 	for (const end of [suffix, BRAND]) {
@@ -66,7 +77,7 @@ const DESCRIPTION_MAX = 158
  * then the tour's own summary, then the booking promises when there is room.
  */
 export function tourDescription(tour: any, intro = '', outro = ''): string {
-	const summary = plainText(tour.metaDescription || tour.subtitle || tour.overview)
+	const summary = plainText(seoText(tour, 'metaDescription') || tour.subtitle || tour.overview)
 	const start = intro ? `${intro} ${summary}` : summary
 	const full = outro ? `${start} ${outro}` : start
 	return full.length <= DESCRIPTION_MAX ? full : plainText(start, DESCRIPTION_MAX)
