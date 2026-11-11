@@ -30,6 +30,7 @@ import { PlanTripModal } from './plan-trip-modal'
 import TawkToWidget from '@/components/TawkToWidget'
 import AnalyticsTracker from '@/components/AnalyticsTracker'
 import AffiliateRefCapture from '@/components/AffiliateRefCapture'
+import LanguageRedirect from '@/components/LanguageRedirect'
 
 export default function LocaleLayoutClient({
 	children,
@@ -78,6 +79,7 @@ export default function LocaleLayoutClient({
 						<Suspense fallback={null}>
 							<AnalyticsTracker />
 							<AffiliateRefCapture />
+							<LanguageRedirect />
 						</Suspense>
 						{/* Google Tag Manager (noscript) — must be inside <body> */}
 						<noscript>
