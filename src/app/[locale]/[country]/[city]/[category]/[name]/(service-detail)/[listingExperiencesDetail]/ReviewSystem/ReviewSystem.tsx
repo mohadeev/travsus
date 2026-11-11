@@ -21,8 +21,12 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
 	const t = useTranslations('experience_reviews')
 	const router = useRouter()
 	const tour: any = useTourService() || {}
-	const [reviews, setReviews] = useState<any[]>([])
-	const [isLoading, setIsLoading] = useState(true)
+	// The latest reviews come with the tour from the server, so they are in the
+	// page's HTML (search engines read them, visitors see them at once); the
+	// list is refreshed in the browser below
+	const initial: any[] = Array.isArray(tour.translatedReviews) ? tour.translatedReviews : []
+	const [reviews, setReviews] = useState<any[]>(initial)
+	const [isLoading, setIsLoading] = useState(initial.length === 0)
 	const [writing, setWriting] = useState(false)
 	const [visible, setVisible] = useState(5)
 	// Filters: a star level (click a bar) and a type of trip (chips)
@@ -32,10 +36,10 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
 	useEffect(() => {
 		if (!serviceId) return
 		let cancelled = false
-		setIsLoading(true)
 		fetch(`/api/reviews?serviceId=${serviceId}`)
 			.then((r) => (r.ok ? r.json() : { reviews: [] }))
-			.then((data) => !cancelled && setReviews(data.reviews || []))
+			// Keep the server's list if the refresh brings nothing (e.g. the database is slow)
+			.then((data) => !cancelled && data.reviews?.length && setReviews(data.reviews))
 			.catch((error) => console.error('Error fetching reviews:', error))
 			.finally(() => !cancelled && setIsLoading(false))
 		return () => {
