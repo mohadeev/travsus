@@ -73,7 +73,8 @@ export async function generateMetadata(
 	const [t, home] = await Promise.all([getTranslations({ locale, namespace: 'TourPage' }), getHomeData(locale).catch(() => null)])
 	const card = home?.tours.find((x) => x.id === tour.id)
 	const days = Array.isArray(tour.days) ? tour.days.length : card?.days ?? 0
-	const city = tour.startAddress?.city || card?.city || ''
+	// The city in the page's language (the first day's), else the start address
+	const city = tour.days?.[0]?.city || tour.startAddress?.city || card?.city || ''
 	const price = card?.pricePerPerson
 		? new Intl.NumberFormat(locale, { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(Math.ceil(card.pricePerPerson))
 		: ''
