@@ -2710,7 +2710,11 @@
     "tours_title": "Ready to see it for yourself?",
     "tours_text": "Small groups, local guides and flexible booking.",
     "tours_cta": "Explore tours",
-    "related_title": "Keep reading"
+    "related_title": "Keep reading",
+    "article_tours_label": "Recommended",
+    "article_tours_title": "Tours for this trip",
+    "article_tours_end_title": "Tours for this trip",
+    "article_tours_end_text": "Private tours with a local driver, free cancellation and pay later."
   },
   "About": {
     "meta_title": "About Us: Tours with Local Guides",

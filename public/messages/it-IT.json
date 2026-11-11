@@ -3502,7 +3502,11 @@
     "tours_title": "Pronto a viverlo di persona?",
     "tours_text": "Piccoli gruppi, guide locali e prenotazione flessibile.",
     "tours_cta": "Scopri i tour",
-    "related_title": "Continua a leggere"
+    "related_title": "Continua a leggere",
+    "article_tours_label": "Consigliato",
+    "article_tours_title": "Tour per questo viaggio",
+    "article_tours_end_title": "Tour per questo viaggio",
+    "article_tours_end_text": "Tour privati con autista locale, cancellazione gratuita e pagamento dopo."
   },
   "About": {
     "meta_title": "Chi siamo: tour con guide locali",

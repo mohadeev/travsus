@@ -2997,7 +2997,11 @@
     "tours_title": "직접 경험해 보시겠어요?",
     "tours_text": "소규모 그룹, 현지 가이드, 유연한 예약.",
     "tours_cta": "투어 둘러보기",
-    "related_title": "더 읽어보기"
+    "related_title": "더 읽어보기",
+    "article_tours_label": "추천",
+    "article_tours_title": "이 여행을 위한 투어",
+    "article_tours_end_title": "이 여행을 위한 투어",
+    "article_tours_end_text": "현지 기사와 함께하는 프라이빗 투어, 무료 취소 및 나중에 결제."
   },
   "About": {
     "meta_title": "회사 소개: 현지 가이드와 함께하는 투어",
