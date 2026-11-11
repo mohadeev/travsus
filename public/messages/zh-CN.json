@@ -2658,7 +2658,11 @@
     "check_availability": "查看空位",
     "adults_count": "{count} 位成人",
     "sections_label": "行程栏目",
-    "choose_date": "选择日期"
+    "choose_date": "选择日期",
+    "seo_title_suffix": "私人包团游",
+    "seo_intro_price": "从{city}出发的{days, plural, one {一日} other {#天}}私人包团游，每人{price}起。",
+    "seo_intro": "从{city}出发的{days, plural, one {一日} other {#天}}私人包团游。",
+    "seo_outro": "免费取消，现在预订，稍后付款。"
   },
   "Booking": {
     "step_when": "您想什么时候出发？",

@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation'
 import { unstable_noStore as noStore } from 'next/cache'
-import { setRequestLocale } from 'next-intl/server'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
+import { getHomeData } from '@/lib/homeData'
 import type { Metadata } from 'next'
 import { getTourData } from '@/lib/tourData'
 import { getTourPageExtras } from '@/lib/tourPage'
@@ -68,8 +69,17 @@ export async function generateMetadata(
 	}
 
 	const url = tourUrl(tour, locale)
-	const title = tourTitle(tour)
-	const description = tourDescription(tour)
+	// Searchers see what it is and the price before clicking
+	const [t, home] = await Promise.all([getTranslations({ locale, namespace: 'TourPage' }), getHomeData(locale).catch(() => null)])
+	const card = home?.tours.find((x) => x.id === tour.id)
+	const days = Array.isArray(tour.days) ? tour.days.length : card?.days ?? 0
+	const city = tour.startAddress?.city || card?.city || ''
+	const price = card?.pricePerPerson
+		? new Intl.NumberFormat(locale, { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(Math.ceil(card.pricePerPerson))
+		: ''
+	const intro = days && city ? (price ? t('seo_intro_price', { days, city, price }) : t('seo_intro', { days, city })) : ''
+	const title = tourTitle(tour, t('seo_title_suffix'))
+	const description = tourDescription(tour, intro, t('seo_outro'))
 	const images = tourImages(tour).slice(0, 4)
 
 	return {

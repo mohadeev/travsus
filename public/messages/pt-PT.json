@@ -3230,7 +3230,11 @@
     "check_availability": "Ver disponibilidade",
     "adults_count": "{count, plural, one {# adulto} other {# adultos}}",
     "sections_label": "Secções do tour",
-    "choose_date": "Escolha a data"
+    "choose_date": "Escolha a data",
+    "seo_title_suffix": "Tour privado",
+    "seo_intro_price": "{days, plural, one {Excursão privada de um dia} other {Tour privado de # dias}} a partir de {city}, desde {price} por pessoa.",
+    "seo_intro": "{days, plural, one {Excursão privada de um dia} other {Tour privado de # dias}} a partir de {city}.",
+    "seo_outro": "Cancelamento grátis, reserve agora e pague depois."
   },
   "Booking": {
     "step_when": "Quando quer ir?",

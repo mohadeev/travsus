@@ -2783,7 +2783,11 @@
     "check_availability": "예약 가능 여부 확인",
     "adults_count": "성인 {count}명",
     "sections_label": "투어 섹션",
-    "choose_date": "날짜 선택"
+    "choose_date": "날짜 선택",
+    "seo_title_suffix": "프라이빗 투어",
+    "seo_intro_price": "{city} 출발 {days, plural, one {당일} other {#일}} 프라이빗 투어, 1인 {price}부터.",
+    "seo_intro": "{city} 출발 {days, plural, one {당일} other {#일}} 프라이빗 투어.",
+    "seo_outro": "무료 취소, 지금 예약하고 나중에 결제."
   },
   "Booking": {
     "step_when": "언제 가시나요?",

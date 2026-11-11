@@ -3325,7 +3325,11 @@
     "check_availability": "Проверить наличие мест",
     "adults_count": "{count, plural, one {# взрослый} few {# взрослых} many {# взрослых} other {# взрослого}}",
     "sections_label": "Разделы тура",
-    "choose_date": "Выберите дату"
+    "choose_date": "Выберите дату",
+    "seo_title_suffix": "Частный тур",
+    "seo_intro_price": "{days, plural, one {Частный тур на # день} few {Частный тур на # дня} many {Частный тур на # дней} other {Частный тур на # дня}} из {city}, от {price} с человека.",
+    "seo_intro": "{days, plural, one {Частный тур на # день} few {Частный тур на # дня} many {Частный тур на # дней} other {Частный тур на # дня}} из {city}.",
+    "seo_outro": "Бесплатная отмена, бронируйте сейчас — платите потом."
   },
   "Booking": {
     "step_when": "Когда вы хотите поехать?",

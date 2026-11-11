@@ -48,15 +48,29 @@ const TITLE_MAX = 60
  * Page title: the tour's SEO title if it has one, otherwise its name.
  * "| TRAVSUS" is added only when it still fits in 60 characters.
  */
-export function tourTitle(tour: any): string {
+export function tourTitle(tour: any, suffix?: string): string {
 	const base = plainText(tour.seoTitle || tour.name)
-	const branded = `${base} | ${BRAND}`
-	return branded.length <= TITLE_MAX ? branded : base
+	// "… | Private Tour" (in the page's language) tells searchers what they get;
+	// else the brand; else the name alone, so the title is never cut by Google
+	for (const end of [suffix, BRAND]) {
+		if (end && `${base} | ${end}`.length <= TITLE_MAX) return `${base} | ${end}`
+	}
+	return base
 }
 
-/** Meta description: the SEO description, else the subtitle or overview, ~155 chars. */
-export const tourDescription = (tour: any) =>
-	plainText(tour.metaDescription || tour.subtitle || tour.overview, 155)
+const DESCRIPTION_MAX = 158
+
+/**
+ * Meta description, written to be clicked in Google's results: what it is and
+ * the price first ("Private 10-day tour from Marrakech, from €276 per person."),
+ * then the tour's own summary, then the booking promises when there is room.
+ */
+export function tourDescription(tour: any, intro = '', outro = ''): string {
+	const summary = plainText(tour.metaDescription || tour.subtitle || tour.overview)
+	const start = intro ? `${intro} ${summary}` : summary
+	const full = outro ? `${start} ${outro}` : start
+	return full.length <= DESCRIPTION_MAX ? full : plainText(start, DESCRIPTION_MAX)
+}
 
 export const tourImages = (tour: any): string[] =>
 	(tour.images ?? []).map((img: any) => img?.url).filter(Boolean)
