@@ -9,7 +9,11 @@ import { cache } from 'react'
 import { ArrowLeft, ArrowRight, PenLine } from 'lucide-react'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { routing } from '@/i18n/routing'
-import { blogPath, getBlogPost } from '@/lib/blog'
+import { blogPath, getBlogPost, listBlogPosts } from '@/lib/blog'
+import { getHomeData } from '@/lib/homeData'
+import { toursForArticle } from '@/lib/blogTours'
+import { splitArticle } from '@/lib/splitArticle'
+import ArticleTours from './ArticleTours'
 import { PHOTOS } from '@/lib/photos'
 import { getSessionUser } from '@/lib/session'
 import PostCard from '../../PostCard'
@@ -64,6 +68,19 @@ export default async function BlogPostPage(props: PageProps) {
 	if (decodeURIComponent(params.slug) !== path.split('/')[3]) permanentRedirect(path)
 
 	const t = await getTranslations('Blog')
+
+	// Tours that match this article (none when nothing fits); the matching
+	// uses the English title, the same in every language
+	const tours = await Promise.all([getHomeData(locale), listBlogPosts(routing.defaultLocale)])
+		.then(([{ tours: all }, posts]) => {
+			const english = posts.find((p) => p.id === post.id)?.title ?? post.title
+			return toursForArticle(post.id, english, all).map(({ searchText, ...card }) => card)
+		})
+		.catch(() => [])
+	const [firstHalf, secondHalf] = splitArticle(post.content)
+	const proseClass =
+		'prose prose-lg prose-neutral mx-auto max-w-3xl px-5 dark:prose-invert prose-headings:font-bold prose-headings:tracking-tight prose-h2:mt-12 prose-h2:text-3xl prose-h3:text-2xl prose-a:font-semibold prose-a:text-ink prose-a:underline-offset-4 prose-img:rounded-3xl prose-li:my-1 dark:prose-a:text-white'
+	const lang = post.translated ? locale : routing.defaultLocale
 	const date = new Intl.DateTimeFormat(locale, { dateStyle: 'long' }).format(new Date(post.createdAt))
 	const jsonLd = {
 		'@context': 'https://schema.org',
@@ -128,11 +145,14 @@ export default async function BlogPostPage(props: PageProps) {
 					<Image src={post.image || PHOTOS.sahara} alt={post.title} fill priority sizes="(max-width: 1024px) 100vw, 1024px" className="object-cover" />
 				</div>
 
-				<div
-					lang={post.translated ? locale : routing.defaultLocale}
-					className="prose prose-lg prose-neutral mx-auto mt-10 max-w-3xl px-5 sm:mt-14 dark:prose-invert prose-headings:font-bold prose-headings:tracking-tight prose-h2:mt-12 prose-h2:text-3xl prose-h3:text-2xl prose-a:font-semibold prose-a:text-ink prose-a:underline-offset-4 prose-img:rounded-3xl prose-li:my-1 dark:prose-a:text-white"
-					dangerouslySetInnerHTML={{ __html: post.content }}
-				/>
+				{/* The text, with matching tours in the middle (like an ad block) */}
+				<div lang={lang} className={`${proseClass} mt-10 sm:mt-14`} dangerouslySetInnerHTML={{ __html: firstHalf }} />
+				{secondHalf && (
+					<>
+						<ArticleTours tours={tours} variant="inline" />
+						<div lang={lang} className={proseClass} dangerouslySetInnerHTML={{ __html: secondHalf }} />
+					</>
+				)}
 
 				{post.tags.length > 0 && (
 					<ul className="mx-auto mt-12 flex max-w-3xl flex-wrap gap-2 px-5" aria-label={t('tags')}>
@@ -144,6 +164,9 @@ export default async function BlogPostPage(props: PageProps) {
 					</ul>
 				)}
 			</article>
+
+			{/* The matching tours again, all of them, after the article */}
+			<ArticleTours tours={tours} variant="end" />
 
 			{/* From reading to booking */}
 			<section className="mx-auto mt-20 max-w-7xl px-6 sm:mt-28">

@@ -3444,7 +3444,11 @@
     "tours_title": "Pronto para viver isto pessoalmente?",
     "tours_text": "Grupos pequenos, guias locais e reserva flexível.",
     "tours_cta": "Ver tours",
-    "related_title": "Continue a ler"
+    "related_title": "Continue a ler",
+    "article_tours_label": "Recomendado",
+    "article_tours_title": "Tours para esta viagem",
+    "article_tours_end_title": "Tours para esta viagem",
+    "article_tours_end_text": "Tours privados com motorista local, cancelamento grátis e pagamento depois."
   },
   "About": {
     "meta_title": "Sobre nós: tours com guias locais",

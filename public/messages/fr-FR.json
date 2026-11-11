@@ -4010,7 +4010,11 @@
     "tours_title": "Prêt à le vivre vous-même ?",
     "tours_text": "Petits groupes, guides locaux et réservation flexible.",
     "tours_cta": "Découvrir les circuits",
-    "related_title": "À lire aussi"
+    "related_title": "À lire aussi",
+    "article_tours_label": "Recommandé",
+    "article_tours_title": "Circuits pour ce voyage",
+    "article_tours_end_title": "Circuits pour ce voyage",
+    "article_tours_end_text": "Circuits privés avec chauffeur local, annulation gratuite et paiement plus tard."
   },
   "About": {
     "meta_title": "À propos : des circuits avec des guides locaux",

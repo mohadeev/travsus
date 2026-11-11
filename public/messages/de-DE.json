@@ -3994,7 +3994,11 @@
     "tours_title": "Bereit, es selbst zu erleben?",
     "tours_text": "Kleine Gruppen, lokale Guides und flexible Buchung.",
     "tours_cta": "Touren entdecken",
-    "related_title": "Weiterlesen"
+    "related_title": "Weiterlesen",
+    "article_tours_label": "Empfohlen",
+    "article_tours_title": "Touren für diese Reise",
+    "article_tours_end_title": "Touren für diese Reise",
+    "article_tours_end_text": "Private Touren mit lokalem Fahrer, kostenlose Stornierung und später bezahlen."
   },
   "About": {
     "meta_title": "Über uns: Touren mit lokalen Guides",

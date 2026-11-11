@@ -3010,7 +3010,11 @@
     "tours_title": "実際に体験してみませんか？",
     "tours_text": "少人数グループ、地元ガイド、柔軟な予約。",
     "tours_cta": "ツアーを見る",
-    "related_title": "こちらもおすすめ"
+    "related_title": "こちらもおすすめ",
+    "article_tours_label": "おすすめ",
+    "article_tours_title": "この旅におすすめのツアー",
+    "article_tours_end_title": "この旅におすすめのツアー",
+    "article_tours_end_text": "地元ドライバー付きのプライベートツアー。無料キャンセル、後払い可能。"
   },
   "About": {
     "meta_title": "私たちについて：地元ガイドと巡るツアー",

@@ -2872,7 +2872,11 @@
     "tours_title": "想亲身体验吗？",
     "tours_text": "小团出行、本地向导、灵活预订。",
     "tours_cta": "浏览行程",
-    "related_title": "继续阅读"
+    "related_title": "继续阅读",
+    "article_tours_label": "推荐",
+    "article_tours_title": "适合这次旅行的行程",
+    "article_tours_end_title": "适合这次旅行的行程",
+    "article_tours_end_text": "私人包车游，当地司机，免费取消，可稍后付款。"
   },
   "About": {
     "meta_title": "关于我们：本地向导带你出发",
