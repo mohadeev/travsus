@@ -1,9 +1,10 @@
-// Replaces a tour's day descriptions in one language (admin only). Used to
-// publish long, detailed day texts written outside the editor (for example
-// content/tours/*.md) without retyping them day by day.
+// Replaces a tour's day descriptions and/or FAQ in one language (admin only).
+// Used to publish long, detailed texts written outside the editor (for example
+// content/tours/*.md) without retyping them one by one.
 //
-// POST { tourId, language, descriptions: string[] }  (one text per day, in order;
-// an empty string keeps that day's current text)
+// POST { tourId, language, descriptions?: string[], faq?: { question, answer }[] }
+// descriptions: one text per day, in order (an empty string keeps that day's text);
+// faq: replaces the tour's questions in that language.
 // Allowed for the site owner's account, or with "Authorization: Bearer <CRON_SECRET>".
 import { NextResponse, type NextRequest } from 'next/server'
 import { revalidateTag } from 'next/cache'
@@ -27,9 +28,16 @@ export async function POST(request: NextRequest) {
 	const body = await request.json().catch(() => ({}))
 	const tourId = typeof body.tourId === 'string' ? body.tourId : ''
 	const language = typeof body.language === 'string' ? body.language : ''
-	const descriptions: unknown = body.descriptions
+	const descriptions: unknown = body.descriptions ?? []
+	const faq: unknown = body.faq
 	if (!tourId || !(routing.locales as readonly string[]).includes(language) || !Array.isArray(descriptions)) {
-		return NextResponse.json({ error: 'Send tourId, a site language and descriptions (an array of texts)' }, { status: 400 })
+		return NextResponse.json({ error: 'Send tourId, a site language and descriptions (an array of texts) and/or faq' }, { status: 400 })
+	}
+	const faqItems = Array.isArray(faq)
+		? faq.map((item: any) => ({ question: String(item?.question ?? '').trim(), answer: String(item?.answer ?? '').trim() }))
+		: null
+	if (faqItems && (faqItems.some((item) => !item.question || !item.answer || item.question.length > 300 || item.answer.length > 3000) || faqItems.length > 40)) {
+		return NextResponse.json({ error: 'Each FAQ needs a question (300 characters at most) and an answer (3000 at most), 40 questions at most' }, { status: 400 })
 	}
 	if (descriptions.some((text) => typeof text !== 'string' || text.length > MAX_TEXT)) {
 		return NextResponse.json({ error: `Each description must be text of at most ${MAX_TEXT} characters` }, { status: 400 })
@@ -53,10 +61,10 @@ export async function POST(request: NextRequest) {
 			changed.push(i + 1)
 			return { ...day, description: text }
 		})
-		const nextTranslations = translations.map((t, i) => (i === index ? { ...t, days: nextDays } : t))
+		const nextTranslations = translations.map((t, i) => (i === index ? { ...t, days: nextDays, ...(faqItems ? { faq: faqItems } : {}) } : t))
 		must(await db.from(T.tours).update(touch({ translations: nextTranslations })).eq('id', tourId))
 		revalidateTag(TOURS_TAG, { expire: 0 })
-		return NextResponse.json({ ok: true, tourId, language, changedDays: changed })
+		return NextResponse.json({ ok: true, tourId, language, changedDays: changed, faq: faqItems?.length ?? 'unchanged' })
 	} catch (error) {
 		console.error('Tour days update failed:', error)
 		return NextResponse.json({ error: 'Could not save. Please try again.' }, { status: 500 })
