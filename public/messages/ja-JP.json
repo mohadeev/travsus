@@ -2801,7 +2801,8 @@
     "seo_intro_price": "{city}発{days, plural, one {日帰り} other {#日間}}プライベートツアー、1名{price}から。",
     "seo_intro": "{city}発{days, plural, one {日帰り} other {#日間}}プライベートツアー。",
     "seo_outro": "無料キャンセル、今予約して後払い。",
-    "itinerary_heading": "{days, plural, one {旅程：1日} other {旅程：#日間（日ごと）}}"
+    "itinerary_heading": "{days, plural, one {旅程：1日} other {旅程：#日間（日ごと）}}",
+    "other_reviews_title": "他のツアーに寄せられたお客様の声"
   },
   "Booking": {
     "step_when": "いつ行きますか？",
@@ -2857,7 +2858,11 @@
     "map_unlock": "地図を動かす",
     "map_lock": "完了",
     "highlights": "ハイライト",
-    "day_drive": "約{km} km・移動{hours}時間"
+    "day_drive": "約{km} km・移動{hours}時間",
+    "table_day": "日",
+    "table_route": "ルート",
+    "table_overnight": "宿泊地",
+    "table_road": "移動"
   },
   "Affiliates": {
     "meta_title": "アフィリエイトプログラム：ツアー予約ごとに最大15%の報酬",
@@ -3525,5 +3530,29 @@
     "cta_text": "ツアーを選んで20ユーロで予約。24時間前までキャンセル無料。",
     "cta_button": "すべてのツアーを見る",
     "cta_note": "ご質問は {phone} までお電話・WhatsAppで。年中無休。"
+  },
+  "TourPlan": {
+    "title": "旅の準備",
+    "when_title": "ベストシーズン",
+    "spring": "3月〜5月：暖かく、谷が緑に染まる、この旅に最適な季節。",
+    "autumn": "9月〜11月：過ごしやすく、晴れの日が多い季節。",
+    "winter": "12月〜2月：穏やかな晴天が多い一方、山間部の夜は冷え込みます。",
+    "summer": "6月〜8月：内陸は暑く、海岸や山間部は比較的涼しいです。",
+    "spring_desert": "3月〜5月：暖かく谷が緑に染まる、最も良い季節。",
+    "autumn_desert": "9月〜11月：過ごしやすく、砂漠では満天の星空が楽しめます。",
+    "winter_desert": "12月〜2月：日中は晴れますが、砂漠と山の夜は寒いので防寒着を。",
+    "summer_desert": "6月〜8月：サハラは非常に暑く（40°C超も）、早朝出発がおすすめ。",
+    "getting_title": "アクセス",
+    "getting_text": "最寄りの空港：{airport}（{code}）、{city}から約{km}km。",
+    "custom_title": "自由にアレンジ",
+    "custom_text": "プライベートツアーなので、宿泊の追加、ホテルの変更、ルートの調整が可能です。",
+    "custom_cta": "相談する",
+    "bring_title": "持ち物",
+    "bring_shoes": "メディナや砂丘を歩ける歩きやすい靴",
+    "bring_layers": "砂漠の夜のための防寒着",
+    "bring_sun": "スカーフや帽子、サングラス、日焼け止め",
+    "bring_cash": "チップや買い物用の少額のディルハム現金",
+    "bring_cover": "村や宗教施設向けの肩と膝を隠す服",
+    "bring_passport": "パスポート（ホテルのチェックインで必要）"
   }
 }

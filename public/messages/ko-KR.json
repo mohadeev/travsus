@@ -2788,7 +2788,8 @@
     "seo_intro_price": "{city} 출발 {days, plural, one {당일} other {#일}} 프라이빗 투어, 1인 {price}부터.",
     "seo_intro": "{city} 출발 {days, plural, one {당일} other {#일}} 프라이빗 투어.",
     "seo_outro": "무료 취소, 지금 예약하고 나중에 결제.",
-    "itinerary_heading": "{days, plural, one {일정: 1일} other {일정: #일, 일자별}}"
+    "itinerary_heading": "{days, plural, one {일정: 1일} other {일정: #일, 일자별}}",
+    "other_reviews_title": "다른 투어에 대한 여행자 후기"
   },
   "Booking": {
     "step_when": "언제 가시나요?",
@@ -2844,7 +2845,11 @@
     "map_unlock": "지도 움직이기",
     "map_lock": "완료",
     "highlights": "하이라이트",
-    "day_drive": "약 {km}km · 이동 {hours}시간"
+    "day_drive": "약 {km}km · 이동 {hours}시간",
+    "table_day": "일",
+    "table_route": "경로",
+    "table_overnight": "숙박",
+    "table_road": "이동"
   },
   "Affiliates": {
     "meta_title": "제휴 프로그램: 투어 예약마다 최대 15% 수익",
@@ -3512,5 +3517,29 @@
     "cta_text": "투어를 고르고 20유로로 예약하세요. 24시간 전까지 무료 취소.",
     "cta_button": "모든 투어 보기",
     "cta_note": "궁금한 점은 {phone}로 전화나 WhatsApp 주세요. 연중무휴."
+  },
+  "TourPlan": {
+    "title": "여행 준비",
+    "when_title": "여행하기 좋은 시기",
+    "spring": "3월~5월: 따뜻한 날씨와 푸른 계곡, 이 여행에 아주 좋은 시기입니다.",
+    "autumn": "9월~11월: 쾌적한 날씨와 맑은 하늘.",
+    "winter": "12월~2월: 온화하고 맑은 날이 많지만 산악 지역의 밤은 춥습니다.",
+    "summer": "6월~8월: 내륙은 덥고 해안과 산악 지역은 비교적 시원합니다.",
+    "spring_desert": "3월~5월: 따뜻한 날씨와 푸른 계곡, 가장 좋은 시기입니다.",
+    "autumn_desert": "9월~11월: 쾌적한 낮과 별이 가득한 사막의 밤.",
+    "winter_desert": "12월~2월: 낮은 맑지만 사막과 산의 밤은 추우니 따뜻한 옷을 챙기세요.",
+    "summer_desert": "6월~8월: 사하라는 매우 덥고(40°C 이상) 이른 출발이 좋습니다.",
+    "getting_title": "오시는 길",
+    "getting_text": "가장 가까운 공항: {airport} ({code}), {city}에서 약 {km}km.",
+    "custom_title": "맞춤 여행",
+    "custom_text": "프라이빗 투어라 숙박 추가, 호텔 변경, 경로 조정이 가능합니다.",
+    "custom_cta": "문의하기",
+    "bring_title": "준비물",
+    "bring_shoes": "메디나와 사구를 걸을 편한 신발",
+    "bring_layers": "사막의 밤을 위한 따뜻한 옷",
+    "bring_sun": "스카프나 모자, 선글라스, 선크림",
+    "bring_cash": "팁과 작은 구매를 위한 디르함 현금 약간",
+    "bring_cover": "마을과 종교 시설을 위한 어깨와 무릎을 가리는 옷",
+    "bring_passport": "여권 (호텔 체크인 시 필요)"
   }
 }

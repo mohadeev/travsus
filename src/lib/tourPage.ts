@@ -5,7 +5,7 @@
 import 'server-only'
 import { unstable_cache } from '@/lib/stableCache'
 import { updateLineItemsLogic } from '@/app/api/updateLineItems/updateLineItemsLogic'
-import { getHomeData, type HomeTour } from '@/lib/homeData'
+import { getHomeData, type HomeReview, type HomeTour } from '@/lib/homeData'
 import { getTourData } from '@/lib/tourData'
 import { REVIEWS_TAG, TOURS_TAG } from '@/lib/tourCatalog'
 
@@ -44,6 +44,8 @@ export type TourPageExtras = {
 	/** Among the most visited tours */
 	popular: boolean
 	prices: { low: number; high: number } | null
+	/** Latest good reviews of other tours, shown while this tour has none */
+	siteReviews: HomeReview[]
 }
 
 /**
@@ -63,7 +65,7 @@ const cachedPriceRange = unstable_cache(priceRange, ['tour-price-range-v1'], {
  * a missing price range just leaves it out.
  */
 export async function getTourPageExtras(tourId: string, locale: string): Promise<TourPageExtras | null> {
-	const [tour, { tours }] = await Promise.all([getTourData(tourId, locale), getHomeData(locale)])
+	const [tour, { tours, reviews }] = await Promise.all([getTourData(tourId, locale), getHomeData(locale)])
 	if (!tour) return null
 	const city = (tour as any).startAddress?.city
 	const similar = tours
@@ -78,6 +80,7 @@ export async function getTourPageExtras(tourId: string, locale: string): Promise
 	return {
 		similar,
 		fromPricePerPerson: tours.find((t) => t.id === tourId)?.pricePerPerson ?? null,
+		siteReviews: reviews.filter((r) => r.rating >= 4 && r.content && !r.tour?.href.endsWith(tourId)).slice(0, 3),
 		popular: !!tours.find((t) => t.id === tourId)?.popular,
 		prices,
 	}
