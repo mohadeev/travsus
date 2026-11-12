@@ -15,3 +15,14 @@ early in peak season); luggage and child seats; reviews; 8–9 FAQs (time, price
 stopping at Ait Ben Haddou, airport, languages, Merzouga vs Erg Chebbi, return / onward to Fes).
 Added: new overview with all of the above (no prices: they depend on group size),
 richer day text, 13 FAQs; in 10 languages.
+
+## 5-day Morocco desert tour for first-timers (7468e4edffd820c004dc080e)
+Search: "5 days Morocco desert tour from Marrakech itinerary". Pages read: kimkim (5-day itinerary),
+gowithguide, moroccoinsightexcursions (onthegotours blocked by bot protection, skipped).
+What they have: narrative days naming specific places (Taddert argan cooperative, Amridil kasbah,
+Khamlia, Rissani, Moulay Ali Cherif mausoleum), km and hours per day, room and vehicle types,
+dietary requests, luggage left in the vehicle for the camp night, cancellation terms.
+Added: "first-timer" angle (what to expect each day, money / tipping / photo / dress tips),
+day-by-day km table, why the route works, rich days with schedule + tips + included,
+13 FAQs (cold nights, camp comfort, tipping amounts, skipping the camel, cash, airport start,
+kids, best season); in 10 languages.
