@@ -2502,7 +2502,10 @@
     "seo_intro": "Private {days, plural, one {day trip} other {#-day tour}} from {city}.",
     "seo_outro": "Free cancellation, reserve now and pay later.",
     "itinerary_heading": "{days, plural, one {Itinerary: 1 day} other {Itinerary: # days, day by day}}",
-    "other_reviews_title": "What travellers say about our other tours"
+    "other_reviews_title": "What travellers say about our other tours",
+    "explore_more": "Explore more",
+    "tag_things_to_do": "Things to do in {city}",
+    "tag_country_guide": "{country} travel guide"
   },
   "Booking": {
     "step_when": "When do you want to go?",

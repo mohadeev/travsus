@@ -2802,7 +2802,10 @@
     "seo_intro": "{city}発{days, plural, one {日帰り} other {#日間}}プライベートツアー。",
     "seo_outro": "無料キャンセル、今予約して後払い。",
     "itinerary_heading": "{days, plural, one {旅程：1日} other {旅程：#日間（日ごと）}}",
-    "other_reviews_title": "他のツアーに寄せられたお客様の声"
+    "other_reviews_title": "他のツアーに寄せられたお客様の声",
+    "explore_more": "ほかにもチェック",
+    "tag_things_to_do": "{city}の観光・アクティビティ",
+    "tag_country_guide": "{country}旅行ガイド"
   },
   "Booking": {
     "step_when": "いつ行きますか？",
