@@ -3785,7 +3785,8 @@
     "table_day": "Día",
     "table_route": "Ruta",
     "table_overnight": "Noche en",
-    "table_road": "Carretera"
+    "table_road": "Carretera",
+    "print": "Imprimir o guardar en PDF"
   },
   "Affiliates": {
     "meta_title": "Programa de afiliados: gana hasta un 15 % en cada reserva",
@@ -4476,6 +4477,21 @@
     "bring_sun": "Pañuelo o sombrero, gafas de sol y protector solar",
     "bring_cash": "Algo de efectivo en dírhams para propinas y pequeñas compras",
     "bring_cover": "Ropa que cubra hombros y rodillas para pueblos y lugares religiosos",
-    "bring_passport": "Tu pasaporte (los hoteles lo piden al registrarte)"
+    "bring_passport": "Tu pasaporte (los hoteles lo piden al registrarte)",
+    "practical_title": "Información práctica",
+    "practical_money": "Dinero: el dírham marroquí (MAD). Las tarjetas funcionan en ciudades y hoteles; lleva efectivo para pueblos, propinas y zocos.",
+    "practical_plugs": "Enchufes: tipo C y E (europeos), 220 V.",
+    "practical_sim": "Teléfono: una SIM local (Maroc Telecom, Orange o inwi) es barata en el aeropuerto y funciona en toda la ruta.",
+    "practical_visa": "Visado: muchas nacionalidades (UE, Reino Unido, EE. UU., Canadá) no lo necesitan hasta 90 días. Consulta las normas para tu pasaporte antes de viajar.",
+    "addons_title": "Añade a tu viaje",
+    "addons_text": "Excursiones y actividades en lugares de esta ruta."
+  },
+  "TourFaq": {
+    "pay_q": "¿Cómo pago este tour?",
+    "pay_a": "Puedes reservar ahora con 20 € y pagar el resto el primer día del tour, o pagarlo todo online al reservar.",
+    "cancel_q": "¿Cuál es la política de cancelación?",
+    "cancel_a": "Cancela al menos 24 horas antes del inicio y te devolvemos todo. Si el mal tiempo impide el tour, tendrás una nueva fecha o el reembolso completo.",
+    "ahead_q": "¿Con cuánta antelación debo reservar?",
+    "ahead_a": "La primavera (marzo a mayo) y el otoño (septiembre a noviembre) son las temporadas con más demanda, así que reserva pronto para esos meses. Puedes reservar con 20 € y cancelar gratis hasta 24 horas antes."
   }
 }

@@ -46,6 +46,8 @@ export type TourPageExtras = {
 	prices: { low: number; high: number } | null
 	/** Latest good reviews of other tours, shown while this tour has none */
 	siteReviews: HomeReview[]
+	/** Day trips and activities in the places this tour goes through ("Add to your trip") */
+	addOns: Omit<HomeTour, 'searchText'>[]
 }
 
 /**
@@ -68,6 +70,8 @@ export async function getTourPageExtras(tourId: string, locale: string): Promise
 	const [tour, { tours, reviews }] = await Promise.all([getTourData(tourId, locale), getHomeData(locale)])
 	if (!tour) return null
 	const city = (tour as any).startAddress?.city
+	// The places the tour goes through (day titles, cities), to find day trips there
+	const routeText = JSON.stringify([(tour as any).days ?? [], city]).toLowerCase()
 	const similar = tours
 		.filter((other) => other.id !== tourId)
 		.sort((a, b) => Number(b.city === city) - Number(a.city === city))
@@ -80,6 +84,11 @@ export async function getTourPageExtras(tourId: string, locale: string): Promise
 	return {
 		similar,
 		fromPricePerPerson: tours.find((t) => t.id === tourId)?.pricePerPerson ?? null,
+		addOns: tours
+			.filter((other) => other.id !== tourId && other.days === 1 && other.city && routeText.includes(other.city.toLowerCase()))
+			.sort((a, b) => Number(!!b.popular) - Number(!!a.popular))
+			.slice(0, 4)
+			.map(({ searchText, ...card }) => card),
 		siteReviews: reviews.filter((r) => r.rating >= 4 && r.content && !r.tour?.href.endsWith(tourId)).slice(0, 3),
 		popular: !!tours.find((t) => t.id === tourId)?.popular,
 		prices,

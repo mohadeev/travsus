@@ -3846,7 +3846,8 @@
     "table_day": "Tag",
     "table_route": "Route",
     "table_overnight": "Übernachtung",
-    "table_road": "Fahrt"
+    "table_road": "Fahrt",
+    "print": "Drucken oder als PDF speichern"
   },
   "Affiliates": {
     "meta_title": "Partnerprogramm: Bis zu 15 % Provision auf jede Tourbuchung",
@@ -4537,6 +4538,21 @@
     "bring_sun": "Tuch oder Hut, Sonnenbrille und Sonnencreme",
     "bring_cash": "Etwas Bargeld in Dirham für Trinkgeld und kleine Einkäufe",
     "bring_cover": "Kleidung, die Schultern und Knie bedeckt, für Dörfer und religiöse Orte",
-    "bring_passport": "Ihren Reisepass (Hotels verlangen ihn beim Check-in)"
+    "bring_passport": "Ihren Reisepass (Hotels verlangen ihn beim Check-in)",
+    "practical_title": "Praktische Infos",
+    "practical_money": "Geld: marokkanischer Dirham (MAD). Karten funktionieren in Städten und Hotels; Bargeld für Dörfer, Trinkgeld und Souks mitnehmen.",
+    "practical_plugs": "Stecker: Typ C und E (europäisch), 220 V.",
+    "practical_sim": "Telefon: Eine lokale SIM-Karte (Maroc Telecom, Orange oder inwi) gibt es günstig am Flughafen; sie funktioniert auf der ganzen Route.",
+    "practical_visa": "Visum: Viele Nationalitäten (EU, Schweiz, UK, USA) brauchen für bis zu 90 Tage keins. Prüfen Sie die Regeln für Ihren Pass vor der Reise.",
+    "addons_title": "Zu Ihrer Reise hinzufügen",
+    "addons_text": "Tagesausflüge und Aktivitäten an Orten dieser Route."
+  },
+  "TourFaq": {
+    "pay_q": "Wie bezahle ich diese Tour?",
+    "pay_a": "Sie können jetzt mit 20 € reservieren und den Rest am ersten Tourtag zahlen oder bei der Buchung alles online bezahlen.",
+    "cancel_q": "Wie sind die Stornobedingungen?",
+    "cancel_a": "Bei Stornierung bis 24 Stunden vor Beginn erhalten Sie den vollen Betrag zurück. Verhindert schlechtes Wetter die Tour, bekommen Sie einen neuen Termin oder Ihr Geld zurück.",
+    "ahead_q": "Wie früh sollte ich buchen?",
+    "ahead_a": "Frühling (März bis Mai) und Herbst (September bis November) sind die beliebtesten Reisezeiten; buchen Sie dafür früh. Sie können mit 20 € reservieren und bis 24 Stunden vorher kostenlos stornieren."
   }
 }

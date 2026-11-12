@@ -3296,7 +3296,8 @@
     "table_day": "Dia",
     "table_route": "Percurso",
     "table_overnight": "Dormida",
-    "table_road": "Estrada"
+    "table_road": "Estrada",
+    "print": "Imprimir ou guardar em PDF"
   },
   "Affiliates": {
     "meta_title": "Programa de afiliados: ganhe até 15% em cada reserva",
@@ -3987,6 +3988,21 @@
     "bring_sun": "Lenço ou chapéu, óculos de sol e protetor solar",
     "bring_cash": "Algum dinheiro em dirhams para gorjetas e pequenas compras",
     "bring_cover": "Roupa que cubra ombros e joelhos para aldeias e locais religiosos",
-    "bring_passport": "O passaporte (os hotéis pedem-no no check-in)"
+    "bring_passport": "O passaporte (os hotéis pedem-no no check-in)",
+    "practical_title": "Informações práticas",
+    "practical_money": "Dinheiro: o dirham marroquino (MAD). Os cartões funcionam nas cidades e hotéis; leve dinheiro para aldeias, gorjetas e souks.",
+    "practical_plugs": "Tomadas: tipo C e E (europeias), 220 V.",
+    "practical_sim": "Telemóvel: um cartão SIM local (Maroc Telecom, Orange ou inwi) é barato no aeroporto e funciona em todo o percurso.",
+    "practical_visa": "Visto: muitas nacionalidades (UE, Reino Unido, EUA, Brasil) não precisam até 90 dias. Confirme as regras para o seu passaporte antes de viajar.",
+    "addons_title": "Acrescente à sua viagem",
+    "addons_text": "Excursões e atividades em locais deste percurso."
+  },
+  "TourFaq": {
+    "pay_q": "Como pago este tour?",
+    "pay_a": "Pode reservar agora com 20 € e pagar o resto no primeiro dia do tour, ou pagar tudo online ao reservar.",
+    "cancel_q": "Qual é a política de cancelamento?",
+    "cancel_a": "Cancele pelo menos 24 horas antes do início para reembolso total. Se o mau tempo impedir o tour, terá uma nova data ou o reembolso total.",
+    "ahead_q": "Com quanta antecedência devo reservar?",
+    "ahead_a": "A primavera (março a maio) e o outono (setembro a novembro) são as épocas mais procuradas, por isso reserve cedo para esses meses. Pode reservar com 20 € e cancelar grátis até 24 horas antes."
   }
 }

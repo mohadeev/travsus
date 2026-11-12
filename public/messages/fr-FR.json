@@ -3862,7 +3862,8 @@
     "table_day": "Jour",
     "table_route": "Itinéraire",
     "table_overnight": "Nuit à",
-    "table_road": "Route"
+    "table_road": "Route",
+    "print": "Imprimer ou enregistrer en PDF"
   },
   "Affiliates": {
     "meta_title": "Programme d'affiliation : jusqu'à 15 % sur chaque réservation",
@@ -4553,6 +4554,21 @@
     "bring_sun": "Un foulard ou un chapeau, des lunettes et de la crème solaire",
     "bring_cash": "Un peu d’argent en dirhams pour les pourboires et petits achats",
     "bring_cover": "Des vêtements couvrant épaules et genoux pour les villages et lieux religieux",
-    "bring_passport": "Votre passeport (les hôtels le demandent à l’arrivée)"
+    "bring_passport": "Votre passeport (les hôtels le demandent à l’arrivée)",
+    "practical_title": "Infos pratiques",
+    "practical_money": "Argent : le dirham marocain (MAD). Les cartes fonctionnent en ville et à l’hôtel ; prévoyez du liquide pour les villages, les pourboires et les souks.",
+    "practical_plugs": "Prises : type C et E (européennes), 220 V.",
+    "practical_sim": "Téléphone : une carte SIM locale (Maroc Telecom, Orange ou inwi) s’achète pour peu cher à l’aéroport et fonctionne sur tout le parcours.",
+    "practical_visa": "Visa : de nombreuses nationalités (UE, Suisse, Canada, Belgique) n’en ont pas besoin jusqu’à 90 jours. Vérifiez les règles pour votre passeport avant de partir.",
+    "addons_title": "À ajouter à votre voyage",
+    "addons_text": "Excursions et activités dans des lieux de cet itinéraire."
+  },
+  "TourFaq": {
+    "pay_q": "Comment payer ce circuit ?",
+    "pay_a": "Vous pouvez réserver maintenant avec 20 € et payer le reste le premier jour du circuit, ou tout payer en ligne à la réservation.",
+    "cancel_q": "Quelle est la politique d’annulation ?",
+    "cancel_a": "Annulez au moins 24 heures avant le départ pour un remboursement complet. Si la météo empêche le circuit, vous avez une nouvelle date ou un remboursement complet.",
+    "ahead_q": "Combien de temps à l’avance réserver ?",
+    "ahead_a": "Le printemps (mars à mai) et l’automne (septembre à novembre) sont les saisons les plus demandées : réservez tôt pour ces mois. Vous pouvez réserver avec 20 € et annuler gratuitement jusqu’à 24 heures avant."
   }
 }
