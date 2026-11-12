@@ -2662,7 +2662,8 @@
     "seo_title_suffix": "私人包团游",
     "seo_intro_price": "从{city}出发的{days, plural, one {一日} other {#天}}私人包团游，每人{price}起。",
     "seo_intro": "从{city}出发的{days, plural, one {一日} other {#天}}私人包团游。",
-    "seo_outro": "免费取消，现在预订，稍后付款。"
+    "seo_outro": "免费取消，现在预订，稍后付款。",
+    "itinerary_heading": "{days, plural, one {行程：1 天} other {行程：# 天，逐日安排}}"
   },
   "Booking": {
     "step_when": "您想什么时候出发？",
@@ -2716,7 +2717,9 @@
     "tap_hint": "点按某一天即可在地图上查看",
     "loading": "地图加载中…",
     "map_unlock": "移动地图",
-    "map_lock": "完成"
+    "map_lock": "完成",
+    "highlights": "行程亮点",
+    "day_drive": "约 {km} 公里 · 车程约 {hours} 小时"
   },
   "Affiliates": {
     "meta_title": "联盟计划：每笔旅游预订最高赚取 15% 佣金",

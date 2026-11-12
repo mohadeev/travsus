@@ -3234,7 +3234,8 @@
     "seo_title_suffix": "Tour privado",
     "seo_intro_price": "{days, plural, one {Excursão privada de um dia} other {Tour privado de # dias}} a partir de {city}, desde {price} por pessoa.",
     "seo_intro": "{days, plural, one {Excursão privada de um dia} other {Tour privado de # dias}} a partir de {city}.",
-    "seo_outro": "Cancelamento grátis, reserve agora e pague depois."
+    "seo_outro": "Cancelamento grátis, reserve agora e pague depois.",
+    "itinerary_heading": "{days, plural, one {Itinerário: 1 dia} other {Itinerário: # dias, dia a dia}}"
   },
   "Booking": {
     "step_when": "Quando quer ir?",
@@ -3288,7 +3289,9 @@
     "tap_hint": "Toque num dia para o ver no mapa",
     "loading": "A carregar o mapa…",
     "map_unlock": "Mover o mapa",
-    "map_lock": "Concluído"
+    "map_lock": "Concluído",
+    "highlights": "Destaques",
+    "day_drive": "Cerca de {km} km · {hours} h de estrada"
   },
   "Affiliates": {
     "meta_title": "Programa de afiliados: ganhe até 15% em cada reserva",

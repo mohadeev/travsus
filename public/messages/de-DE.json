@@ -3784,7 +3784,8 @@
     "seo_title_suffix": "Private Tour",
     "seo_intro_price": "Private {days, plural, one {Tagestour} other {#-Tage-Tour}} ab {city}, ab {price} pro Person.",
     "seo_intro": "Private {days, plural, one {Tagestour} other {#-Tage-Tour}} ab {city}.",
-    "seo_outro": "Kostenlose Stornierung, jetzt reservieren und später bezahlen."
+    "seo_outro": "Kostenlose Stornierung, jetzt reservieren und später bezahlen.",
+    "itinerary_heading": "{days, plural, one {Reiseverlauf: 1 Tag} other {Reiseverlauf: # Tage, Tag für Tag}}"
   },
   "Booking": {
     "step_when": "Wann möchten Sie reisen?",
@@ -3838,7 +3839,9 @@
     "tap_hint": "Tippen Sie auf einen Tag, um ihn auf der Karte zu sehen",
     "loading": "Karte wird geladen…",
     "map_unlock": "Karte bewegen",
-    "map_lock": "Fertig"
+    "map_lock": "Fertig",
+    "highlights": "Highlights",
+    "day_drive": "Etwa {km} km · {hours} Std. Fahrt"
   },
   "Affiliates": {
     "meta_title": "Partnerprogramm: Bis zu 15 % Provision auf jede Tourbuchung",
