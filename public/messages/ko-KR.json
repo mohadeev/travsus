@@ -2789,7 +2789,10 @@
     "seo_intro": "{city} 출발 {days, plural, one {당일} other {#일}} 프라이빗 투어.",
     "seo_outro": "무료 취소, 지금 예약하고 나중에 결제.",
     "itinerary_heading": "{days, plural, one {일정: 1일} other {일정: #일, 일자별}}",
-    "other_reviews_title": "다른 투어에 대한 여행자 후기"
+    "other_reviews_title": "다른 투어에 대한 여행자 후기",
+    "explore_more": "더 둘러보기",
+    "tag_things_to_do": "{city}에서 할 만한 것",
+    "tag_country_guide": "{country} 여행 가이드"
   },
   "Booking": {
     "step_when": "언제 가시나요?",

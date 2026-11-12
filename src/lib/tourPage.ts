@@ -8,6 +8,7 @@ import { updateLineItemsLogic } from '@/app/api/updateLineItems/updateLineItemsL
 import { getHomeData, type HomeReview, type HomeTour } from '@/lib/homeData'
 import { getTourData } from '@/lib/tourData'
 import { REVIEWS_TAG, TOURS_TAG } from '@/lib/tourCatalog'
+import { tourTags, type TourTag } from '@/lib/tourTags'
 
 /** Per-person price for a group of `size` guests (same logic as the sidebar). */
 async function pricePerPerson(tour: any, size: number) {
@@ -48,6 +49,8 @@ export type TourPageExtras = {
 	siteReviews: HomeReview[]
 	/** Day trips and activities in the places this tour goes through ("Add to your trip") */
 	addOns: Omit<HomeTour, 'searchText'>[]
+	/** City and country guides of the places the tour goes through ("Explore more" tags) */
+	exploreTags: TourTag[]
 }
 
 /**
@@ -67,7 +70,12 @@ const cachedPriceRange = unstable_cache(priceRange, ['tour-price-range-v1'], {
  * a missing price range just leaves it out.
  */
 export async function getTourPageExtras(tourId: string, locale: string): Promise<TourPageExtras | null> {
-	const [tour, { tours, reviews }] = await Promise.all([getTourData(tourId, locale), getHomeData(locale)])
+	const [tour, { tours, reviews }, en] = await Promise.all([
+		getTourData(tourId, locale),
+		getHomeData(locale),
+		// The English tour, to recognise the places for the tags (same data when the page is English)
+		locale === 'en-US' ? null : getTourData(tourId, 'en-US').catch(() => null),
+	])
 	if (!tour) return null
 	const city = (tour as any).startAddress?.city
 	// The places the tour goes through (day titles, cities), to find day trips there
@@ -92,5 +100,6 @@ export async function getTourPageExtras(tourId: string, locale: string): Promise
 		siteReviews: reviews.filter((r) => r.rating >= 4 && r.content && !r.tour?.href.endsWith(tourId)).slice(0, 3),
 		popular: !!tours.find((t) => t.id === tourId)?.popular,
 		prices,
+		exploreTags: tourTags(en ?? tour, tour, locale),
 	}
 }

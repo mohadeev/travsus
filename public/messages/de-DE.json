@@ -3786,7 +3786,10 @@
     "seo_intro": "Private {days, plural, one {Tagestour} other {#-Tage-Tour}} ab {city}.",
     "seo_outro": "Kostenlose Stornierung, jetzt reservieren und später bezahlen.",
     "itinerary_heading": "{days, plural, one {Reiseverlauf: 1 Tag} other {Reiseverlauf: # Tage, Tag für Tag}}",
-    "other_reviews_title": "Was Reisende über unsere anderen Touren sagen"
+    "other_reviews_title": "Was Reisende über unsere anderen Touren sagen",
+    "explore_more": "Mehr entdecken",
+    "tag_things_to_do": "Unternehmungen in {city}",
+    "tag_country_guide": "Reiseführer: {country}"
   },
   "Booking": {
     "step_when": "Wann möchten Sie reisen?",

@@ -3802,7 +3802,10 @@
     "seo_intro": "{days, plural, one {Excursion privée d'une journée} other {Circuit privé de # jours}} au départ de {city}.",
     "seo_outro": "Annulation gratuite, réservez maintenant et payez plus tard.",
     "itinerary_heading": "{days, plural, one {Itinéraire : 1 jour} other {Itinéraire : # jours, jour par jour}}",
-    "other_reviews_title": "Ce que disent les voyageurs de nos autres circuits"
+    "other_reviews_title": "Ce que disent les voyageurs de nos autres circuits",
+    "explore_more": "À découvrir aussi",
+    "tag_things_to_do": "Que faire à {city}",
+    "tag_country_guide": "Guide de voyage : {country}"
   },
   "Booking": {
     "step_when": "Quand voulez-vous partir ?",

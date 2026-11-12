@@ -158,7 +158,7 @@ const DetailPage = async (props: DetailPageProps) => {
 			<div className="ListingDetailPage">
 				<RecentTourTracker tourId={tour.id} />
 				<div className="ListingDetailPage__content">
-					<ListingExperiencesDetailPage serviceData={{ ...tour, faq, fromPricePerPerson, popular: !!extras?.popular, siteReviews: extras?.siteReviews ?? [], addOns: extras?.addOns ?? [] }} similar={similar as any} />
+					<ListingExperiencesDetailPage serviceData={{ ...tour, faq, fromPricePerPerson, popular: !!extras?.popular, siteReviews: extras?.siteReviews ?? [], addOns: extras?.addOns ?? [], exploreTags: extras?.exploreTags ?? [] }} similar={similar as any} />
 				</div>
 				<script
 					type="application/ld+json"

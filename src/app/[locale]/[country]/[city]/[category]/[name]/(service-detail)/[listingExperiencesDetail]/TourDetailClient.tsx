@@ -23,6 +23,7 @@ import HomeRow from '@/app/[locale]/(home)/HomeRow'
 import MobileFooterSticky from '../(components)/MobileFooterSticky'
 import TourPreBookingInfo from './TourPreBookingInfo'
 import TourPlanning from './TourPlanning'
+import TourExploreTags from './TourExploreTags'
 import ContactReservations from './ContactReservations'
 import TourItineraryWithMap from './itinerary/TourItineraryWithMap'
 import { TourServiceProvider, useTourService } from '../TourServiceContext'
@@ -154,6 +155,8 @@ const TourDetail: FC<ListingExperiencesDetailPageProps> = ({ similar = [] }) => 
 							</HomeRow>
 						</section>
 					)}
+
+					<TourExploreTags />
 				</div>
 			)}
 			<MobileFooterSticky />

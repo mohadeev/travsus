@@ -3294,7 +3294,10 @@
     "seo_intro": "{days, plural, one {Escursione privata di un giorno} other {Tour privato di # giorni}} da {city}.",
     "seo_outro": "Cancellazione gratuita, prenota ora e paga dopo.",
     "itinerary_heading": "{days, plural, one {Itinerario: 1 giorno} other {Itinerario: # giorni, giorno per giorno}}",
-    "other_reviews_title": "Cosa dicono i viaggiatori degli altri nostri tour"
+    "other_reviews_title": "Cosa dicono i viaggiatori degli altri nostri tour",
+    "explore_more": "Scopri di più",
+    "tag_things_to_do": "Cosa fare a {city}",
+    "tag_country_guide": "Guida di viaggio: {country}"
   },
   "Booking": {
     "step_when": "Quando vuoi partire?",
