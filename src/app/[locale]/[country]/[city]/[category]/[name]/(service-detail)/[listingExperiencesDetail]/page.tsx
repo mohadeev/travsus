@@ -142,7 +142,14 @@ const DetailPage = async (props: DetailPageProps) => {
 		const similar = extras?.similar ?? []
 		const fromPricePerPerson = extras?.fromPricePerPerson ?? null
 
-		const jsonLd = tourJsonLd(tour, locale, {
+		// The tour's own questions, then the booking questions every tour shares
+		// (real terms: €20 to reserve, free cancellation up to 24 h before)
+		const tFaq = await getTranslations({ locale, namespace: 'TourFaq' })
+		const faq = [
+			...(Array.isArray(tour.faq) ? tour.faq : []),
+			...(['pay', 'cancel', 'ahead'] as const).map((key) => ({ question: tFaq(`${key}_q`), answer: tFaq(`${key}_a`) })),
+		]
+		const jsonLd = tourJsonLd({ ...tour, faq }, locale, {
 			prices: extras?.prices ?? undefined,
 			currency: tour.pricingTiers?.[0]?.pricing?.currency || 'EUR',
 		})
@@ -151,7 +158,7 @@ const DetailPage = async (props: DetailPageProps) => {
 			<div className="ListingDetailPage">
 				<RecentTourTracker tourId={tour.id} />
 				<div className="ListingDetailPage__content">
-					<ListingExperiencesDetailPage serviceData={{ ...tour, fromPricePerPerson, popular: !!extras?.popular, siteReviews: extras?.siteReviews ?? [] }} similar={similar as any} />
+					<ListingExperiencesDetailPage serviceData={{ ...tour, faq, fromPricePerPerson, popular: !!extras?.popular, siteReviews: extras?.siteReviews ?? [], addOns: extras?.addOns ?? [] }} similar={similar as any} />
 				</div>
 				<script
 					type="application/ld+json"

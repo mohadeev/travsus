@@ -2724,7 +2724,8 @@
     "table_day": "天",
     "table_route": "路线",
     "table_overnight": "住宿",
-    "table_road": "车程"
+    "table_road": "车程",
+    "print": "打印或保存为 PDF"
   },
   "Affiliates": {
     "meta_title": "联盟计划：每笔旅游预订最高赚取 15% 佣金",
@@ -3415,6 +3416,21 @@
     "bring_sun": "围巾或帽子、太阳镜和防晒霜",
     "bring_cash": "少量迪拉姆现金，用于小费和小额消费",
     "bring_cover": "前往村庄和宗教场所时遮住肩膀和膝盖的衣服",
-    "bring_passport": "护照（酒店入住时需要）"
+    "bring_passport": "护照（酒店入住时需要）",
+    "practical_title": "实用信息",
+    "practical_money": "货币：摩洛哥迪拉姆（MAD）。城市和酒店可刷卡；村庄、小费和集市请备好现金。",
+    "practical_plugs": "插头：C 型和 E 型（欧标），220V。",
+    "practical_sim": "通讯：当地 SIM 卡（Maroc Telecom、Orange 或 inwi）在机场即可便宜购买，全程可用。",
+    "practical_visa": "签证：中国公民赴摩洛哥旅游免签（90 天内）。出行前请确认适用于您护照的规定。",
+    "addons_title": "加入您的行程",
+    "addons_text": "沿途地点的一日游和活动。"
+  },
+  "TourFaq": {
+    "pay_q": "如何支付？",
+    "pay_a": "现在支付 20 欧元即可预订，余款在行程第一天支付；也可以预订时在线全额支付。",
+    "cancel_q": "取消政策是什么？",
+    "cancel_a": "出发前至少 24 小时取消可全额退款。如遇恶劣天气无法出行，可改期或全额退款。",
+    "ahead_q": "应该提前多久预订？",
+    "ahead_a": "春季（3 至 5 月）和秋季（9 至 11 月）最热门，这些月份请尽早预订。支付 20 欧元即可预订，出发前 24 小时内可免费取消。"
   }
 }

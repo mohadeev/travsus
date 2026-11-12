@@ -2,8 +2,10 @@
 // "Plan your trip": what the competitors ranking on Google give that a tour
 // page lacked. The best time to go (season by season, with a desert note when
 // the route reaches the Sahara), the nearest airport to the start, what to
-// bring, and that the private tour can be changed (opens the chat).
-import { CalendarRange, Luggage, MessageCircle, Plane } from 'lucide-react'
+// bring, practical info (money, plugs, SIM, visa), that the private tour can
+// be changed (opens the chat), and day trips along the route to add.
+import { CalendarRange, Info, Luggage, MessageCircle, Plane } from 'lucide-react'
+import ShelfCard from '@/app/[locale]/(home)/ShelfCard'
 import type { ReactNode } from 'react'
 import { useTranslations } from 'next-intl'
 import { useAppDispatch } from '@/store/hooks'
@@ -66,9 +68,16 @@ export default function TourPlanning() {
 						</button>
 					</Card>
 				</div>
-				<div className="sm:col-span-2">
+				<Card icon={<Info className="h-5 w-5" strokeWidth={2} />} title={t('practical_title')}>
+					<ul className="space-y-1.5">
+						{(['practical_money', 'practical_plugs', 'practical_sim', 'practical_visa'] as const).map((key) => (
+							<li key={key}>{t(key)}</li>
+						))}
+					</ul>
+				</Card>
+				<div>
 					<Card icon={<Luggage className="h-5 w-5" strokeWidth={2} />} title={t('bring_title')}>
-						<ul className="grid list-disc gap-x-6 gap-y-1 pl-5 sm:grid-cols-2">
+						<ul className="list-disc space-y-1 pl-5">
 							{BRING.filter((key) => desert || key !== 'bring_layers').map((key) => (
 								<li key={key}>{t(key)}</li>
 							))}
@@ -76,6 +85,21 @@ export default function TourPlanning() {
 					</Card>
 				</div>
 			</div>
+
+			{/* Day trips and activities in the places on the route */}
+			{(tour.addOns ?? []).length > 0 && (
+				<div className="mt-8">
+					<h3 className="text-lg font-bold leading-6">{t('addons_title')}</h3>
+					<p className="mt-1 text-sm text-ink-soft dark:text-neutral-400">{t('addons_text')}</p>
+					<ul className="mt-4 grid grid-cols-2 gap-x-2 gap-y-6 sm:gap-x-4 lg:grid-cols-4">
+						{(tour.addOns as any[]).map((addOn) => (
+							<li key={addOn.id} className="min-w-0">
+								<ShelfCard tour={addOn} />
+							</li>
+						))}
+					</ul>
+				</div>
+			)}
 		</section>
 	)
 }

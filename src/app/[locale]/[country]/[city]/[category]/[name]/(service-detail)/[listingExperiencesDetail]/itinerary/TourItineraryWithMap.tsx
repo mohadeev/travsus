@@ -4,7 +4,7 @@
 // all visible: search engines weigh visible text, and readers can scroll the
 // whole trip. Each day shows its approximate distance and time on the road.
 import { useMemo, useState } from 'react'
-import { Car, Sparkles } from 'lucide-react'
+import { Car, Printer, Sparkles } from 'lucide-react'
 import Image from 'next/image'
 import { MapPin } from 'lucide-react'
 import { useTranslations } from '@/lib/i18n'
@@ -71,6 +71,13 @@ export default function TourItineraryWithMap({ days }: { days: Day[]; title?: st
 
 	return (
 		<div>
+			{/* Keep the itinerary: print it or save it as a PDF from the print dialog */}
+			<div className="-mt-3 mb-3 flex justify-end print:hidden">
+				<button type="button" onClick={() => window.print()} className="inline-flex items-center gap-1.5 text-sm font-semibold text-ink underline underline-offset-4 hover:opacity-70 dark:text-white">
+					<Printer className="h-4 w-4" strokeWidth={1.8} aria-hidden />
+					{tRoute('print')}
+				</button>
+			</div>
 			{route.path.length > 0 && (
 				<div className="relative z-1 overflow-hidden rounded-lg">
 					<TourMap days={days} selectedDayIndex={selected} onDaySelect={setSelected} height={260} />

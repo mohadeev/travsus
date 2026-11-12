@@ -2562,7 +2562,8 @@
     "table_day": "Day",
     "table_route": "Route",
     "table_overnight": "Overnight",
-    "table_road": "On the road"
+    "table_road": "On the road",
+    "print": "Print or save as PDF"
   },
   "Affiliates": {
     "meta_title": "Affiliate Program: Earn up to 15% on Every Tour Booking",
@@ -3253,6 +3254,21 @@
     "bring_sun": "A scarf or hat, sunglasses and sunscreen",
     "bring_cash": "Some cash in dirhams for tips and small purchases",
     "bring_cover": "Clothes covering shoulders and knees for villages and religious sites",
-    "bring_passport": "Your passport (hotels ask for it at check-in)"
+    "bring_passport": "Your passport (hotels ask for it at check-in)",
+    "practical_title": "Practical info",
+    "practical_money": "Money: the Moroccan dirham (MAD). Cards work in cities and hotels; bring cash for villages, tips and souks.",
+    "practical_plugs": "Plugs: type C and E (European), 220 V.",
+    "practical_sim": "Phone: a local SIM (Maroc Telecom, Orange or inwi) is cheap at the airport and works along the whole route.",
+    "practical_visa": "Visa: many nationalities (EU, UK, US, Canada, Australia) need none for up to 90 days. Check the rules for your passport before you go.",
+    "addons_title": "Add to your trip",
+    "addons_text": "Day trips and activities in places on this route."
+  },
+  "TourFaq": {
+    "pay_q": "How do I pay for this tour?",
+    "pay_a": "You can reserve with €20 now and pay the rest on the first day of the tour, or pay everything online when you book.",
+    "cancel_q": "What is the cancellation policy?",
+    "cancel_a": "Cancel at least 24 hours before the start for a full refund. If bad weather stops the tour, you get a new date or a full refund.",
+    "ahead_q": "How far in advance should I book?",
+    "ahead_a": "Spring (March to May) and autumn (September to November) are the busiest seasons, so book early for those months. You can reserve with €20 and still cancel for free up to 24 hours before."
   }
 }

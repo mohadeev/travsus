@@ -3354,7 +3354,8 @@
     "table_day": "Giorno",
     "table_route": "Percorso",
     "table_overnight": "Notte a",
-    "table_road": "Strada"
+    "table_road": "Strada",
+    "print": "Stampa o salva in PDF"
   },
   "Affiliates": {
     "meta_title": "Programma di affiliazione: guadagna fino al 15% su ogni prenotazione",
@@ -4045,6 +4046,21 @@
     "bring_sun": "Foulard o cappello, occhiali da sole e crema solare",
     "bring_cash": "Un po’ di contanti in dirham per mance e piccoli acquisti",
     "bring_cover": "Abiti che coprano spalle e ginocchia per villaggi e luoghi religiosi",
-    "bring_passport": "Il passaporto (gli hotel lo chiedono al check-in)"
+    "bring_passport": "Il passaporto (gli hotel lo chiedono al check-in)",
+    "practical_title": "Informazioni pratiche",
+    "practical_money": "Denaro: il dirham marocchino (MAD). Le carte funzionano in città e negli hotel; porta contanti per villaggi, mance e souk.",
+    "practical_plugs": "Prese: tipo C ed E (europee), 220 V.",
+    "practical_sim": "Telefono: una SIM locale (Maroc Telecom, Orange o inwi) costa poco in aeroporto e funziona lungo tutto il percorso.",
+    "practical_visa": "Visto: molte nazionalità (UE, Svizzera, Regno Unito, USA) non ne hanno bisogno fino a 90 giorni. Verifica le regole per il tuo passaporto prima di partire.",
+    "addons_title": "Aggiungi al tuo viaggio",
+    "addons_text": "Escursioni e attività nei luoghi di questo percorso."
+  },
+  "TourFaq": {
+    "pay_q": "Come pago questo tour?",
+    "pay_a": "Puoi prenotare ora con 20 € e pagare il resto il primo giorno del tour, oppure pagare tutto online alla prenotazione.",
+    "cancel_q": "Qual è la politica di cancellazione?",
+    "cancel_a": "Cancella almeno 24 ore prima della partenza per un rimborso completo. Se il maltempo impedisce il tour, avrai una nuova data o il rimborso completo.",
+    "ahead_q": "Con quanto anticipo devo prenotare?",
+    "ahead_a": "La primavera (da marzo a maggio) e l’autunno (da settembre a novembre) sono le stagioni più richieste: prenota presto per quei mesi. Puoi prenotare con 20 € e cancellare gratis fino a 24 ore prima."
   }
 }
