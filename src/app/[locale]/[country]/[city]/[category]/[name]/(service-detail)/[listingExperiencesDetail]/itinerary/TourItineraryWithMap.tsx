@@ -130,7 +130,8 @@ export default function TourItineraryWithMap({ days }: { days: Day[]; title?: st
 							return (
 								<tr key={index} onClick={() => openDay(index)} className="cursor-pointer border-b border-neutral-100 align-top hover:bg-neutral-50 dark:border-neutral-900 dark:hover:bg-neutral-900">
 									<td className="py-2.5 pr-3 font-bold tabular-nums">{index + 1}</td>
-									<td className="py-2.5 pr-3">{dayRoute(day, index)}</td>
+									{/* The day number is in the first column: drop a "Day 1:" at the start of the name */}
+									<td className="py-2.5 pr-3">{dayRoute(day, index).replace(/^\D{0,10}?\d+\s*[:：.\-–]\s*/, '')}</td>
 									<td className="py-2.5 pr-3">{overnight}</td>
 									<td className="whitespace-nowrap py-2.5 tabular-nums text-ink-soft dark:text-neutral-400">{drive ? `${drive.km.toLocaleString()} km · ${drive.hours} h` : '—'}</td>
 								</tr>
