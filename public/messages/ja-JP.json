@@ -2800,7 +2800,8 @@
     "seo_title_suffix": "プライベートツアー",
     "seo_intro_price": "{city}発{days, plural, one {日帰り} other {#日間}}プライベートツアー、1名{price}から。",
     "seo_intro": "{city}発{days, plural, one {日帰り} other {#日間}}プライベートツアー。",
-    "seo_outro": "無料キャンセル、今予約して後払い。"
+    "seo_outro": "無料キャンセル、今予約して後払い。",
+    "itinerary_heading": "{days, plural, one {旅程：1日} other {旅程：#日間（日ごと）}}"
   },
   "Booking": {
     "step_when": "いつ行きますか？",
@@ -2854,7 +2855,9 @@
     "tap_hint": "日をタップすると地図に表示されます",
     "loading": "地図を読み込み中…",
     "map_unlock": "地図を動かす",
-    "map_lock": "完了"
+    "map_lock": "完了",
+    "highlights": "ハイライト",
+    "day_drive": "約{km} km・移動{hours}時間"
   },
   "Affiliates": {
     "meta_title": "アフィリエイトプログラム：ツアー予約ごとに最大15%の報酬",

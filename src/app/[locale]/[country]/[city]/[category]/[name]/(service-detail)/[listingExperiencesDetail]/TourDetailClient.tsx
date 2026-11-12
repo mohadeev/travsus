@@ -115,7 +115,7 @@ const TourDetail: FC<ListingExperiencesDetailPageProps> = ({ similar = [] }) => 
 
 							{days && (
 								<section id="itinerary">
-									<h2 className="headline mb-5 text-[24px] !leading-tight">{t('Itinerary_Title')}</h2>
+									<h2 className="headline mb-5 text-[24px] !leading-tight">{tPage('itinerary_heading', { days: days.length })}</h2>
 									<TourItineraryWithMap days={days} />
 								</section>
 							)}

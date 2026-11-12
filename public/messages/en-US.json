@@ -2500,7 +2500,8 @@
     "seo_title_suffix": "Private Tour",
     "seo_intro_price": "Private {days, plural, one {day trip} other {#-day tour}} from {city}, from {price} per person.",
     "seo_intro": "Private {days, plural, one {day trip} other {#-day tour}} from {city}.",
-    "seo_outro": "Free cancellation, reserve now and pay later."
+    "seo_outro": "Free cancellation, reserve now and pay later.",
+    "itinerary_heading": "{days, plural, one {Itinerary: 1 day} other {Itinerary: # days, day by day}}"
   },
   "Booking": {
     "step_when": "When do you want to go?",
@@ -2554,7 +2555,9 @@
     "tap_hint": "Tap a day to see it on the map",
     "loading": "Loading map…",
     "map_unlock": "Move the map",
-    "map_lock": "Done"
+    "map_lock": "Done",
+    "highlights": "Highlights",
+    "day_drive": "About {km} km · {hours} h on the road"
   },
   "Affiliates": {
     "meta_title": "Affiliate Program: Earn up to 15% on Every Tour Booking",

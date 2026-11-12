@@ -3800,7 +3800,8 @@
     "seo_title_suffix": "Circuit privé",
     "seo_intro_price": "{days, plural, one {Excursion privée d'une journée} other {Circuit privé de # jours}} au départ de {city}, à partir de {price} par personne.",
     "seo_intro": "{days, plural, one {Excursion privée d'une journée} other {Circuit privé de # jours}} au départ de {city}.",
-    "seo_outro": "Annulation gratuite, réservez maintenant et payez plus tard."
+    "seo_outro": "Annulation gratuite, réservez maintenant et payez plus tard.",
+    "itinerary_heading": "{days, plural, one {Itinéraire : 1 jour} other {Itinéraire : # jours, jour par jour}}"
   },
   "Booking": {
     "step_when": "Quand voulez-vous partir ?",
@@ -3854,7 +3855,9 @@
     "tap_hint": "Touchez un jour pour le voir sur la carte",
     "loading": "Chargement de la carte…",
     "map_unlock": "Déplacer la carte",
-    "map_lock": "Terminé"
+    "map_lock": "Terminé",
+    "highlights": "Points forts",
+    "day_drive": "Environ {km} km · {hours} h de route"
   },
   "Affiliates": {
     "meta_title": "Programme d'affiliation : jusqu'à 15 % sur chaque réservation",
