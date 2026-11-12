@@ -2,9 +2,10 @@
 // Used to publish long, detailed texts written outside the editor (for example
 // content/tours/*.md) without retyping them one by one.
 //
-// POST { tourId, language, descriptions?: string[], faq?: { question, answer }[] }
+// POST { tourId, language, descriptions?: string[], faq?: { question, answer }[], overview?: string }
 // descriptions: one text per day, in order (an empty string keeps that day's text);
 // faq: replaces the tour's questions in that language.
+// overview: replaces the tour's overview (the "About this tour" text) in that language.
 // Allowed for the site owner's account, or with "Authorization: Bearer <CRON_SECRET>".
 import { NextResponse, type NextRequest } from 'next/server'
 import { revalidateTag } from 'next/cache'
@@ -30,6 +31,8 @@ export async function POST(request: NextRequest) {
 	const language = typeof body.language === 'string' ? body.language : ''
 	const descriptions: unknown = body.descriptions ?? []
 	const faq: unknown = body.faq
+	const overview = typeof body.overview === 'string' ? body.overview.trim() : ''
+	if (overview.length > MAX_TEXT) return NextResponse.json({ error: `The overview must be at most ${MAX_TEXT} characters` }, { status: 400 })
 	if (!tourId || !(routing.locales as readonly string[]).includes(language) || !Array.isArray(descriptions)) {
 		return NextResponse.json({ error: 'Send tourId, a site language and descriptions (an array of texts) and/or faq' }, { status: 400 })
 	}
@@ -61,10 +64,10 @@ export async function POST(request: NextRequest) {
 			changed.push(i + 1)
 			return { ...day, description: text }
 		})
-		const nextTranslations = translations.map((t, i) => (i === index ? { ...t, days: nextDays, ...(faqItems ? { faq: faqItems } : {}) } : t))
+		const nextTranslations = translations.map((t, i) => (i === index ? { ...t, days: nextDays, ...(faqItems ? { faq: faqItems } : {}), ...(overview ? { overview } : {}) } : t))
 		must(await db.from(T.tours).update(touch({ translations: nextTranslations })).eq('id', tourId))
 		revalidateTag(TOURS_TAG, { expire: 0 })
-		return NextResponse.json({ ok: true, tourId, language, changedDays: changed, faq: faqItems?.length ?? 'unchanged' })
+		return NextResponse.json({ ok: true, tourId, language, changedDays: changed, faq: faqItems?.length ?? 'unchanged', overview: overview ? overview.length : 'unchanged' })
 	} catch (error) {
 		console.error('Tour days update failed:', error)
 		return NextResponse.json({ error: 'Could not save. Please try again.' }, { status: 500 })
