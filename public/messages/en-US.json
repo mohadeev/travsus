@@ -2501,7 +2501,8 @@
     "seo_intro_price": "Private {days, plural, one {day trip} other {#-day tour}} from {city}, from {price} per person.",
     "seo_intro": "Private {days, plural, one {day trip} other {#-day tour}} from {city}.",
     "seo_outro": "Free cancellation, reserve now and pay later.",
-    "itinerary_heading": "{days, plural, one {Itinerary: 1 day} other {Itinerary: # days, day by day}}"
+    "itinerary_heading": "{days, plural, one {Itinerary: 1 day} other {Itinerary: # days, day by day}}",
+    "other_reviews_title": "What travellers say about our other tours"
   },
   "Booking": {
     "step_when": "When do you want to go?",
@@ -2557,7 +2558,11 @@
     "map_unlock": "Move the map",
     "map_lock": "Done",
     "highlights": "Highlights",
-    "day_drive": "About {km} km · {hours} h on the road"
+    "day_drive": "About {km} km · {hours} h on the road",
+    "table_day": "Day",
+    "table_route": "Route",
+    "table_overnight": "Overnight",
+    "table_road": "On the road"
   },
   "Affiliates": {
     "meta_title": "Affiliate Program: Earn up to 15% on Every Tour Booking",
@@ -3225,5 +3230,29 @@
     "cta_text": "Pick a tour, reserve with €20 and cancel for free up to 24 hours before.",
     "cta_button": "See all tours",
     "cta_note": "Questions? Call or WhatsApp {phone}, 7 days a week."
+  },
+  "TourPlan": {
+    "title": "Plan your trip",
+    "when_title": "Best time to go",
+    "spring": "March to May: warm days and green valleys, a great time for this trip.",
+    "autumn": "September to November: pleasant days and clear skies.",
+    "winter": "December to February: mild, sunny days; cold nights in the mountains.",
+    "summer": "June to August: hot inland; cooler on the coast and in the mountains.",
+    "spring_desert": "March to May: the best season, warm days and green valleys.",
+    "autumn_desert": "September to November: pleasant days and clear, starry desert nights.",
+    "winter_desert": "December to February: sunny days, but desert and mountain nights are cold (bring warm layers).",
+    "summer_desert": "June to August: very hot in the Sahara (often above 40 °C); early starts help.",
+    "getting_title": "Getting there",
+    "getting_text": "Nearest airport: {airport} ({code}), about {km} km from {city}.",
+    "custom_title": "Make it yours",
+    "custom_text": "This is a private tour: we can add a night, change hotels or adjust the route to suit you.",
+    "custom_cta": "Ask us",
+    "bring_title": "What to bring",
+    "bring_shoes": "Comfortable shoes for the medinas and the dunes",
+    "bring_layers": "Warm layers for desert nights",
+    "bring_sun": "A scarf or hat, sunglasses and sunscreen",
+    "bring_cash": "Some cash in dirhams for tips and small purchases",
+    "bring_cover": "Clothes covering shoulders and knees for villages and religious sites",
+    "bring_passport": "Your passport (hotels ask for it at check-in)"
   }
 }

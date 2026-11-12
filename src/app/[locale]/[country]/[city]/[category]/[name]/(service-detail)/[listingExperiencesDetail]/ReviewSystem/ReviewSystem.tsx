@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation'
 import { PenLine } from 'lucide-react'
 import { useAuthAction } from '@/app/hooks/useAuthAction'
 import { useTranslations } from '@/lib/i18n'
+import { useTranslations as useIntlTranslations } from 'next-intl'
 import Review from './Review'
 import RatingBubbles from '@/app/[locale]/(home)/RatingBubbles'
 import ReviewComposer from './ReviewComposer'
@@ -19,6 +20,7 @@ interface ReviewProps {
 
 const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
 	const t = useTranslations('experience_reviews')
+	const tPage = useIntlTranslations('TourPage')
 	const router = useRouter()
 	const tour: any = useTourService() || {}
 	// The latest reviews come with the tour from the server, so they are in the
@@ -196,6 +198,28 @@ const ReviewSystem: React.FC<ReviewProps> = ({ serviceId, serviceName }) => {
 					<h3 className="mb-1 text-lg font-bold">{t('No_Reviews_Yet')}</h3>
 					<p className="mb-5 text-neutral-500">{t('First_Share')}</p>
 					{writeButton}
+				</div>
+			)}
+
+			{/* No reviews for this tour yet: real reviews of our other tours */}
+			{!isLoading && totalReviews === 0 && (tour.siteReviews ?? []).length > 0 && (
+				<div className="mt-8">
+					<h3 className="text-lg font-bold leading-6">{tPage('other_reviews_title')}</h3>
+					<ul className="mt-4 grid gap-3 md:grid-cols-3">
+						{(tour.siteReviews as any[]).map((r) => (
+							<li key={r.id} className="rounded-3xl bg-neutral-100 p-5 dark:bg-neutral-900">
+								<RatingBubbles rating={r.rating} size={14} tone="green" />
+								{r.title && <p className="mt-2 font-bold leading-6">{r.title}</p>}
+								<p className="mt-1 line-clamp-4 text-sm leading-5 text-ink-soft dark:text-neutral-400">{r.content}</p>
+								<p className="mt-3 text-sm font-semibold">{r.author}</p>
+								{r.tour && (
+									<a href={r.tour.href} className="text-sm text-ink-soft underline underline-offset-2 dark:text-neutral-400">
+										{r.tour.name}
+									</a>
+								)}
+							</li>
+						))}
+					</ul>
 				</div>
 			)}
 		</section>

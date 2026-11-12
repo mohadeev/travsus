@@ -22,6 +22,7 @@ import ShelfCard from '@/app/[locale]/(home)/ShelfCard'
 import HomeRow from '@/app/[locale]/(home)/HomeRow'
 import MobileFooterSticky from '../(components)/MobileFooterSticky'
 import TourPreBookingInfo from './TourPreBookingInfo'
+import TourPlanning from './TourPlanning'
 import ContactReservations from './ContactReservations'
 import TourItineraryWithMap from './itinerary/TourItineraryWithMap'
 import { TourServiceProvider, useTourService } from '../TourServiceContext'
@@ -120,6 +121,7 @@ const TourDetail: FC<ListingExperiencesDetailPageProps> = ({ similar = [] }) => 
 								</section>
 							)}
 
+							<TourPlanning />
 							<TourPreBookingInfo />
 							<TourFAQ faqs={faq} />
 							{service?.id && <ReviewSystem serviceId={service.id} serviceName={service.name} />}

@@ -111,20 +111,35 @@ export default function TourItineraryWithMap({ days }: { days: Day[]; title?: st
 				</div>
 			)}
 
-			{/* The route, one line per day (tap a line to open that day) */}
-			<ol className="space-y-3 px-1 pt-5">
-				{days.map((day, index) => (
-					<li key={index}>
-						<button type="button" onClick={() => openDay(index)} className="flex gap-2 text-left text-base leading-6 text-ink hover:underline dark:text-neutral-200">
-							<span className="font-bold tabular-nums text-brand-600">{index + 1}</span>
-							<span aria-hidden>•</span>
-							<span>{dayRoute(day, index)}</span>
-						</button>
-					</li>
-				))}
-			</ol>
+			{/* Day by day at a glance: route, where you sleep, time on the road (tap a row to open the day) */}
+			<div className="mt-5 overflow-x-auto">
+				<table className="w-full min-w-[480px] border-collapse text-left text-sm">
+					<thead>
+						<tr className="border-b border-neutral-200 text-ink-soft dark:border-neutral-800 dark:text-neutral-400">
+							<th className="py-2 pr-3 font-semibold">{tRoute('table_day')}</th>
+							<th className="py-2 pr-3 font-semibold">{tRoute('table_route')}</th>
+							<th className="py-2 pr-3 font-semibold">{tRoute('table_overnight')}</th>
+							<th className="py-2 font-semibold">{tRoute('table_road')}</th>
+						</tr>
+					</thead>
+					<tbody>
+						{days.map((day, index) => {
+							const drive = dayDrive(index)
+							const places = route.dayPlaces[index] ?? []
+							const overnight = index < days.length - 1 ? places[places.length - 1]?.name ?? '' : '—'
+							return (
+								<tr key={index} onClick={() => openDay(index)} className="cursor-pointer border-b border-neutral-100 align-top hover:bg-neutral-50 dark:border-neutral-900 dark:hover:bg-neutral-900">
+									<td className="py-2.5 pr-3 font-bold tabular-nums">{index + 1}</td>
+									<td className="py-2.5 pr-3">{dayRoute(day, index)}</td>
+									<td className="py-2.5 pr-3">{overnight}</td>
+									<td className="whitespace-nowrap py-2.5 tabular-nums text-ink-soft dark:text-neutral-400">{drive ? `${drive.km.toLocaleString()} km · ${drive.hours} h` : '—'}</td>
+								</tr>
+							)
+						})}
+					</tbody>
+				</table>
+			</div>
 
-			{/* One panel per day */}
 			{days.map((day, index) => {
 				const drive = dayDrive(index)
 				return (

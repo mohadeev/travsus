@@ -2663,7 +2663,8 @@
     "seo_intro_price": "从{city}出发的{days, plural, one {一日} other {#天}}私人包团游，每人{price}起。",
     "seo_intro": "从{city}出发的{days, plural, one {一日} other {#天}}私人包团游。",
     "seo_outro": "免费取消，现在预订，稍后付款。",
-    "itinerary_heading": "{days, plural, one {行程：1 天} other {行程：# 天，逐日安排}}"
+    "itinerary_heading": "{days, plural, one {行程：1 天} other {行程：# 天，逐日安排}}",
+    "other_reviews_title": "旅客对我们其他行程的评价"
   },
   "Booking": {
     "step_when": "您想什么时候出发？",
@@ -2719,7 +2720,11 @@
     "map_unlock": "移动地图",
     "map_lock": "完成",
     "highlights": "行程亮点",
-    "day_drive": "约 {km} 公里 · 车程约 {hours} 小时"
+    "day_drive": "约 {km} 公里 · 车程约 {hours} 小时",
+    "table_day": "天",
+    "table_route": "路线",
+    "table_overnight": "住宿",
+    "table_road": "车程"
   },
   "Affiliates": {
     "meta_title": "联盟计划：每笔旅游预订最高赚取 15% 佣金",
@@ -3387,5 +3392,29 @@
     "cta_text": "挑选行程，20 欧元即可预订，出发前 24 小时可免费取消。",
     "cta_button": "查看全部行程",
     "cta_note": "有疑问？致电或 WhatsApp {phone}，全年无休。"
+  },
+  "TourPlan": {
+    "title": "行程准备",
+    "when_title": "最佳旅行时间",
+    "spring": "3月至5月：天气温暖，山谷翠绿，非常适合这趟旅行。",
+    "autumn": "9月至11月：天气宜人，天空晴朗。",
+    "winter": "12月至2月：白天温和晴朗，山区夜晚寒冷。",
+    "summer": "6月至8月：内陆炎热，沿海和山区较凉爽。",
+    "spring_desert": "3月至5月：最佳季节，天气温暖，山谷翠绿。",
+    "autumn_desert": "9月至11月：白天舒适，沙漠夜空繁星点点。",
+    "winter_desert": "12月至2月：白天晴朗，但沙漠和山区夜晚寒冷（请带保暖衣物）。",
+    "summer_desert": "6月至8月：撒哈拉非常炎热（常超过40°C），建议早出发。",
+    "getting_title": "如何到达",
+    "getting_text": "最近的机场：{airport}（{code}），距{city}约{km}公里。",
+    "custom_title": "按您的需求定制",
+    "custom_text": "这是私人包团游：可以加一晚、换酒店或调整路线。",
+    "custom_cta": "咨询我们",
+    "bring_title": "携带物品",
+    "bring_shoes": "适合老城和沙丘的舒适鞋子",
+    "bring_layers": "沙漠夜晚的保暖衣物",
+    "bring_sun": "围巾或帽子、太阳镜和防晒霜",
+    "bring_cash": "少量迪拉姆现金，用于小费和小额消费",
+    "bring_cover": "前往村庄和宗教场所时遮住肩膀和膝盖的衣服",
+    "bring_passport": "护照（酒店入住时需要）"
   }
 }

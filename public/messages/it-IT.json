@@ -3293,7 +3293,8 @@
     "seo_intro_price": "{days, plural, one {Escursione privata di un giorno} other {Tour privato di # giorni}} da {city}, da {price} a persona.",
     "seo_intro": "{days, plural, one {Escursione privata di un giorno} other {Tour privato di # giorni}} da {city}.",
     "seo_outro": "Cancellazione gratuita, prenota ora e paga dopo.",
-    "itinerary_heading": "{days, plural, one {Itinerario: 1 giorno} other {Itinerario: # giorni, giorno per giorno}}"
+    "itinerary_heading": "{days, plural, one {Itinerario: 1 giorno} other {Itinerario: # giorni, giorno per giorno}}",
+    "other_reviews_title": "Cosa dicono i viaggiatori degli altri nostri tour"
   },
   "Booking": {
     "step_when": "Quando vuoi partire?",
@@ -3349,7 +3350,11 @@
     "map_unlock": "Sposta la mappa",
     "map_lock": "Fatto",
     "highlights": "Punti salienti",
-    "day_drive": "Circa {km} km · {hours} h di strada"
+    "day_drive": "Circa {km} km · {hours} h di strada",
+    "table_day": "Giorno",
+    "table_route": "Percorso",
+    "table_overnight": "Notte a",
+    "table_road": "Strada"
   },
   "Affiliates": {
     "meta_title": "Programma di affiliazione: guadagna fino al 15% su ogni prenotazione",
@@ -4017,5 +4022,29 @@
     "cta_text": "Scegli un tour, prenota con 20 € e cancella gratis fino a 24 ore prima.",
     "cta_button": "Vedi tutti i tour",
     "cta_note": "Domande? Chiama o scrivi su WhatsApp al {phone}, 7 giorni su 7."
+  },
+  "TourPlan": {
+    "title": "Pianifica il viaggio",
+    "when_title": "Periodo migliore",
+    "spring": "Da marzo a maggio: giornate calde e valli verdi, un periodo ideale per questo viaggio.",
+    "autumn": "Da settembre a novembre: giornate piacevoli e cieli limpidi.",
+    "winter": "Da dicembre a febbraio: giornate miti e soleggiate; notti fredde in montagna.",
+    "summer": "Da giugno ad agosto: caldo all’interno; più fresco sulla costa e in montagna.",
+    "spring_desert": "Da marzo a maggio: la stagione migliore, giornate calde e valli verdi.",
+    "autumn_desert": "Da settembre a novembre: giornate piacevoli e notti stellate nel deserto.",
+    "winter_desert": "Da dicembre a febbraio: giornate di sole, ma notti fredde nel deserto e in montagna (porta vestiti caldi).",
+    "summer_desert": "Da giugno ad agosto: molto caldo nel Sahara (spesso oltre 40 °C); meglio partire presto.",
+    "getting_title": "Come arrivare",
+    "getting_text": "Aeroporto più vicino: {airport} ({code}), a circa {km} km da {city}.",
+    "custom_title": "Su misura per te",
+    "custom_text": "È un tour privato: possiamo aggiungere una notte, cambiare hotel o adattare il percorso.",
+    "custom_cta": "Chiedici",
+    "bring_title": "Cosa portare",
+    "bring_shoes": "Scarpe comode per le medine e le dune",
+    "bring_layers": "Abiti caldi per le notti nel deserto",
+    "bring_sun": "Foulard o cappello, occhiali da sole e crema solare",
+    "bring_cash": "Un po’ di contanti in dirham per mance e piccoli acquisti",
+    "bring_cover": "Abiti che coprano spalle e ginocchia per villaggi e luoghi religiosi",
+    "bring_passport": "Il passaporto (gli hotel lo chiedono al check-in)"
   }
 }

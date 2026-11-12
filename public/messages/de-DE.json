@@ -3785,7 +3785,8 @@
     "seo_intro_price": "Private {days, plural, one {Tagestour} other {#-Tage-Tour}} ab {city}, ab {price} pro Person.",
     "seo_intro": "Private {days, plural, one {Tagestour} other {#-Tage-Tour}} ab {city}.",
     "seo_outro": "Kostenlose Stornierung, jetzt reservieren und später bezahlen.",
-    "itinerary_heading": "{days, plural, one {Reiseverlauf: 1 Tag} other {Reiseverlauf: # Tage, Tag für Tag}}"
+    "itinerary_heading": "{days, plural, one {Reiseverlauf: 1 Tag} other {Reiseverlauf: # Tage, Tag für Tag}}",
+    "other_reviews_title": "Was Reisende über unsere anderen Touren sagen"
   },
   "Booking": {
     "step_when": "Wann möchten Sie reisen?",
@@ -3841,7 +3842,11 @@
     "map_unlock": "Karte bewegen",
     "map_lock": "Fertig",
     "highlights": "Highlights",
-    "day_drive": "Etwa {km} km · {hours} Std. Fahrt"
+    "day_drive": "Etwa {km} km · {hours} Std. Fahrt",
+    "table_day": "Tag",
+    "table_route": "Route",
+    "table_overnight": "Übernachtung",
+    "table_road": "Fahrt"
   },
   "Affiliates": {
     "meta_title": "Partnerprogramm: Bis zu 15 % Provision auf jede Tourbuchung",
@@ -4509,5 +4514,29 @@
     "cta_text": "Wähle eine Tour, reserviere mit 20 € und storniere bis 24 Stunden vorher kostenlos.",
     "cta_button": "Alle Touren ansehen",
     "cta_note": "Fragen? Ruf an oder schreib per WhatsApp an {phone}, an 7 Tagen pro Woche."
+  },
+  "TourPlan": {
+    "title": "Reise planen",
+    "when_title": "Beste Reisezeit",
+    "spring": "März bis Mai: warme Tage und grüne Täler, eine ideale Zeit für diese Reise.",
+    "autumn": "September bis November: angenehme Tage und klarer Himmel.",
+    "winter": "Dezember bis Februar: milde, sonnige Tage; kalte Nächte in den Bergen.",
+    "summer": "Juni bis August: heiß im Landesinneren; kühler an der Küste und in den Bergen.",
+    "spring_desert": "März bis Mai: die beste Zeit, warme Tage und grüne Täler.",
+    "autumn_desert": "September bis November: angenehme Tage und klare Sternennächte in der Wüste.",
+    "winter_desert": "Dezember bis Februar: sonnige Tage, aber kalte Nächte in Wüste und Bergen (warme Kleidung mitnehmen).",
+    "summer_desert": "Juni bis August: sehr heiß in der Sahara (oft über 40 °C); früh starten hilft.",
+    "getting_title": "Anreise",
+    "getting_text": "Nächster Flughafen: {airport} ({code}), etwa {km} km von {city}.",
+    "custom_title": "Nach Ihren Wünschen",
+    "custom_text": "Dies ist eine private Tour: Wir können eine Nacht hinzufügen, Hotels wechseln oder die Route anpassen.",
+    "custom_cta": "Fragen Sie uns",
+    "bring_title": "Was Sie mitnehmen sollten",
+    "bring_shoes": "Bequeme Schuhe für Medinas und Dünen",
+    "bring_layers": "Warme Kleidung für Wüstennächte",
+    "bring_sun": "Tuch oder Hut, Sonnenbrille und Sonnencreme",
+    "bring_cash": "Etwas Bargeld in Dirham für Trinkgeld und kleine Einkäufe",
+    "bring_cover": "Kleidung, die Schultern und Knie bedeckt, für Dörfer und religiöse Orte",
+    "bring_passport": "Ihren Reisepass (Hotels verlangen ihn beim Check-in)"
   }
 }

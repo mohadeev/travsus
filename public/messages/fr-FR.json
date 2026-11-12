@@ -3801,7 +3801,8 @@
     "seo_intro_price": "{days, plural, one {Excursion privée d'une journée} other {Circuit privé de # jours}} au départ de {city}, à partir de {price} par personne.",
     "seo_intro": "{days, plural, one {Excursion privée d'une journée} other {Circuit privé de # jours}} au départ de {city}.",
     "seo_outro": "Annulation gratuite, réservez maintenant et payez plus tard.",
-    "itinerary_heading": "{days, plural, one {Itinéraire : 1 jour} other {Itinéraire : # jours, jour par jour}}"
+    "itinerary_heading": "{days, plural, one {Itinéraire : 1 jour} other {Itinéraire : # jours, jour par jour}}",
+    "other_reviews_title": "Ce que disent les voyageurs de nos autres circuits"
   },
   "Booking": {
     "step_when": "Quand voulez-vous partir ?",
@@ -3857,7 +3858,11 @@
     "map_unlock": "Déplacer la carte",
     "map_lock": "Terminé",
     "highlights": "Points forts",
-    "day_drive": "Environ {km} km · {hours} h de route"
+    "day_drive": "Environ {km} km · {hours} h de route",
+    "table_day": "Jour",
+    "table_route": "Itinéraire",
+    "table_overnight": "Nuit à",
+    "table_road": "Route"
   },
   "Affiliates": {
     "meta_title": "Programme d'affiliation : jusqu'à 15 % sur chaque réservation",
@@ -4525,5 +4530,29 @@
     "cta_text": "Choisissez un circuit, réservez avec 20 € et annulez gratuitement jusqu'à 24 heures avant.",
     "cta_button": "Voir tous les circuits",
     "cta_note": "Des questions ? Appelez ou écrivez sur WhatsApp au {phone}, 7 jours sur 7."
+  },
+  "TourPlan": {
+    "title": "Préparer votre voyage",
+    "when_title": "Meilleure période",
+    "spring": "De mars à mai : journées douces et vallées vertes, une période idéale pour ce voyage.",
+    "autumn": "De septembre à novembre : journées agréables et ciel dégagé.",
+    "winter": "De décembre à février : journées douces et ensoleillées ; nuits froides en montagne.",
+    "summer": "De juin à août : chaud à l'intérieur des terres ; plus frais sur la côte et en montagne.",
+    "spring_desert": "De mars à mai : la meilleure saison, journées douces et vallées vertes.",
+    "autumn_desert": "De septembre à novembre : journées agréables et nuits étoilées dans le désert.",
+    "winter_desert": "De décembre à février : journées ensoleillées, mais nuits froides dans le désert et en montagne (prévoyez des vêtements chauds).",
+    "summer_desert": "De juin à août : très chaud au Sahara (souvent plus de 40 °C) ; mieux vaut partir tôt.",
+    "getting_title": "Comment venir",
+    "getting_text": "Aéroport le plus proche : {airport} ({code}), à environ {km} km de {city}.",
+    "custom_title": "À votre façon",
+    "custom_text": "C'est un circuit privé : nous pouvons ajouter une nuit, changer d'hôtel ou adapter l'itinéraire.",
+    "custom_cta": "Nous demander",
+    "bring_title": "Quoi emporter",
+    "bring_shoes": "Des chaussures confortables pour les médinas et les dunes",
+    "bring_layers": "Des vêtements chauds pour les nuits dans le désert",
+    "bring_sun": "Un foulard ou un chapeau, des lunettes et de la crème solaire",
+    "bring_cash": "Un peu d’argent en dirhams pour les pourboires et petits achats",
+    "bring_cover": "Des vêtements couvrant épaules et genoux pour les villages et lieux religieux",
+    "bring_passport": "Votre passeport (les hôtels le demandent à l’arrivée)"
   }
 }
