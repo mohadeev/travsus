@@ -37,3 +37,13 @@ camp electricity, standard vs luxury camp.
 Our English was already rich (schedules, km, tips, weather plans). Added: Ifrane detail,
 4 FAQs (airport pick-up, add-ons sandboard/quad/Khamlia, diets, more desert time → 2-night version).
 Translations were short summaries with no FAQ: replaced with full translations in 9 languages.
+
+## 3 days Marrakech → Merzouga → Marrakech (680bc6a5aa6f43072c7700f6)
+Search: "3 day desert tour Marrakech to Merzouga itinerary camp". Pages read: local-morocco-tours,
+TourRadar listing (operator page with traveller reviews and questions).
+What they have: same Dades / Todra / Erg Chebbi route, 9 am departure, airport pick-up, shared vs
+private tents. Traveller reviews and questions showed real worries: hot camp nights in summer (no AC),
+unwanted shopping stops, arriving the day before, quad biking, camel ride length.
+Our English was already rich. Added 4 FAQs answering those worries (arrive day before / airport,
+no compulsory shopping, summer heat at camp, quad and sandboard), linked the Fes-ending FAQ.
+Translations were short summaries with 8 FAQs: replaced with full translations in 9 languages.
