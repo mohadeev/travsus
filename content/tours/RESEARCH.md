@@ -26,3 +26,14 @@ Added: "first-timer" angle (what to expect each day, money / tipping / photo / d
 day-by-day km table, why the route works, rich days with schedule + tips + included,
 13 FAQs (cold nights, camp comfort, tipping amounts, skipping the camel, cash, airport start,
 kids, best season); in 10 languages.
+
+## 3-day Fes → Merzouga → Todra/Dades → Fes (680bc6b6aa6f43072c7700f8)
+Search: "3 day desert tour from Fes to Merzouga itinerary". Pages read: local-morocco-tours,
+desert-merzouga-tours (friendlymorocco link was dead).
+What they have: Ifrane ("Switzerland of Morocco", stone lion), Azrou macaques, Midelt lunch, Ziz valley,
+90-min camel ride, Khamlia Gnawa music, nomad visit, sandboarding / quad as paid extras,
+vegetarian menus, vehicle by group size, airport pick-up, deposit/payment, luggage at camp,
+camp electricity, standard vs luxury camp.
+Our English was already rich (schedules, km, tips, weather plans). Added: Ifrane detail,
+4 FAQs (airport pick-up, add-ons sandboard/quad/Khamlia, diets, more desert time → 2-night version).
+Translations were short summaries with no FAQ: replaced with full translations in 9 languages.
