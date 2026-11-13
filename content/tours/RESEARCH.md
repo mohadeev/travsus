@@ -70,3 +70,13 @@ summary and highest point, why this order, 8 rich days with schedule, tips, incl
 and meals, 13 FAQs (fitness, Toubkal, guides, luggage, packing, weather, insurance); 10 languages.
 Note: the hike route on Day 3 is described generally (pass of about 2,300 m, chosen by the guide).
 Data issue: Days 2 and 3 have city "Casablanca" in the tour data; should be Imlil.
+
+## Ait Ben Haddou & Ouarzazate day trip from Marrakech (7c3f043cd0b560a6f555e9c0)
+Search: "Ait Ben Haddou day trip from Marrakech what to expect itinerary Telouet" (local-morocco-tours
+page was a 404, GetYourGuide page returned no readable text; used search-result summaries).
+What they have: 7 am start, ~12 hours, ~400 km round trip, Tichka 2,260 m, Telouet kasbah as a
+common stop, 1.5 hours at Ait Ben Haddou, some include a short camel ride, check what fees are included.
+Our English was already good (8 FAQs). Added: UNESCO year and film list, an "Ouarzazate or Telouet?"
+choice with the Telouet route, richer day text (how the ksar is built, Taddert argan stop),
+5 new FAQs (Ouarzazate vs Telouet, films, car sickness, what to bring, camel ride); 13 FAQs.
+Translations were short summaries with 4 FAQs: replaced with full translations in 9 languages.
