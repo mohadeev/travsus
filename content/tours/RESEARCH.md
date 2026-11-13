@@ -80,3 +80,15 @@ Our English was already good (8 FAQs). Added: UNESCO year and film list, an "Oua
 choice with the Telouet route, richer day text (how the ksar is built, Taddert argan stop),
 5 new FAQs (Ouarzazate vs Telouet, films, car sickness, what to bring, camel ride); 13 FAQs.
 Translations were short summaries with 4 FAQs: replaced with full translations in 9 languages.
+
+## Marrakech itinerary 5 days: city, Atlas, Essaouira, Agafay (663b84fbd70f497ca6f5ea75)
+Search: "5 days in Marrakech itinerary Atlas Mountains Essaouira Agafay day trips". Pages read:
+kimkim (Marrakesh, Imlil & Agafay ideas), moroccofriendlytravel (5-day Marrakech & Agafay journey);
+onthegotours blocked by bot protection, skipped.
+What they have: Agafay distance (~40 km, 45 min–1 h) and "stony desert, not dunes" explained, Imlil walk
+with lunch in a family home, hammam and Jemaa el-Fna, Majorelle early / timed tickets, best seasons,
+Essaouira 2.5 h, inclusions, FAQ on whether 5 days is enough and Agafay vs Sahara.
+Our page was thin (one-line days, 3 FAQs). Rewrote: overview with day plan and distances, why one base
+works, 5 rich days (named monuments, Aroumd walk, Essaouira port/Skala/fish grills, cooking class +
+Agafay sunset), 13 FAQs; in 10 languages.
+Data issue: the old overview said "5 days, 5 nights"; Day 5 is departure, so the new text says 4 nights.
