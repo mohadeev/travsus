@@ -47,3 +47,14 @@ unwanted shopping stops, arriving the day before, quad biking, camel ride length
 Our English was already rich. Added 4 FAQs answering those worries (arrive day before / airport,
 no compulsory shopping, summer heat at camp, quad and sandboard), linked the Fes-ending FAQ.
 Translations were short summaries with 8 FAQs: replaced with full translations in 9 languages.
+
+## Day trip to Meknes and Volubilis from Fes (2d6252883fe280cd9674f6c9)
+Search: "Meknes and Volubilis day trip from Fes itinerary". Pages read: local-morocco-tours,
+thenextguide (Volubilis / Moulay Idriss / Meknes itinerary), theabroadguide (review roundup).
+What they have: distances (Meknes 60 km, Volubilis 30 km further), Volubilis first before the heat,
+named mosaics / basilica / Caracalla arch, Moulay Idriss (non-Muslims cannot enter the shrine),
+Bab Mansour, Place el-Hedim, Heri es-Souani, mausoleum; tables for best time / what to bring /
+accessibility; FAQ on fees, lunch, kids, private. Reviews say stops can feel rushed.
+Our page was very thin (684-char overview, 3 one-word FAQs). Rewrote: overview with route and
+distances, "why this order", one rich day (Volubilis, Moulay Idriss, 4 hours in Meknes), schedule,
+tips, taste, photo spots, accessibility, 13 FAQs; in 10 languages.
