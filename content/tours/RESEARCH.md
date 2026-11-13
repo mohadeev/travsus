@@ -58,3 +58,15 @@ accessibility; FAQ on fees, lunch, kids, private. Reviews say stops can feel rus
 Our page was very thin (684-char overview, 3 one-word FAQs). Rewrote: overview with route and
 distances, "why this order", one rich day (Volubilis, Moulay Idriss, 4 hours in Meknes), schedule,
 tips, taste, photo spots, accessibility, 13 FAQs; in 10 languages.
+
+## 8-day Atlas Mountains trek & Sahara from Casablanca (fd4212074e6de19b36e7c8d0)
+Search: "8 day Morocco Atlas mountains trek Imlil and Sahara desert tour itinerary". Pages read:
+10adventures (Atlas valley trek & Sahara), Auswalk (High Atlas valleys & villages 8 days).
+What they have: altitudes of villages and passes, hours of walking per day, who carries luggage,
+daypack list, difficulty rating, meals per day, best season for walking (spring / autumn),
+insurance, optional Toubkal summit, Ait Ben Haddou / Todra / camel camp on the desert part.
+Our page was very thin (one-line days, 3 FAQs). Rewrote: overview with route and km, walking
+summary and highest point, why this order, 8 rich days with schedule, tips, included, overnight
+and meals, 13 FAQs (fitness, Toubkal, guides, luggage, packing, weather, insurance); 10 languages.
+Note: the hike route on Day 3 is described generally (pass of about 2,300 m, chosen by the guide).
+Data issue: Days 2 and 3 have city "Casablanca" in the tour data; should be Imlil.
