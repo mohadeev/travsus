@@ -92,3 +92,13 @@ Our page was thin (one-line days, 3 FAQs). Rewrote: overview with day plan and d
 works, 5 rich days (named monuments, Aroumd walk, Essaouira port/Skala/fish grills, cooking class +
 Agafay sunset), 13 FAQs; in 10 languages.
 Data issue: the old overview said "5 days, 5 nights"; Day 5 is departure, so the new text says 4 nights.
+
+## Easter week Morocco tour: 7 days Marrakech → Fes via the Sahara (8554a299aa7d61298b13807e)
+Search: "Easter Morocco tour 7 days Marrakech to Fes desert family itinerary". Results were generic
+7-day Marrakech–Fes desert tours (none specific to Easter): same route, family add-ons (camels,
+cooking, markets), flexible endings (Marrakech / Casablanca / Tangier), prices exclude fees and meals.
+Our angle: the Easter-specific info competitors lack — spring weather by region, snow on the Atlas,
+blossoms and when the roses really bloom, Ramadan/Eid overlap, book-early warning, family tips.
+Our page was thin (3 one-line FAQs). Rewrote: overview with route and km, why Easter / why book early,
+7 rich days (Jemaa el-Fna, Tichka & ksar sunset, Valley of Roses, Todra & camel camp, full Sahara day
+with 4x4/Khamlia, Ziz/Midelt/macaques/Ifrane, Fes medina), 13 FAQs; in 10 languages.
