@@ -4,15 +4,13 @@ import type { MetadataRoute } from 'next'
 import { routing } from '@/i18n/routing'
 import { db, T, fetchAll, asDate } from '@/lib/db'
 import { blogSitemapEntries } from '@/lib/blog'
-import { slugify } from '@/lib/destinations'
+import { getCitiesOf, getCountries } from '@/lib/destinations'
+import { SITE_URL } from '@/lib/seo'
+import { repairTourSlugs } from '@/lib/tourPath'
 
 // Render on request, not at build time (the full DB query can exceed Next's
 // 60s build limit). Cached at the CDN for an hour via next.config.js headers().
 export const dynamic = 'force-dynamic'
-
-const SITE_URL = (
-	process.env.NEXT_PUBLIC_SITE_URL || 'https://www.travsus.com'
-).replace(/\/$/, '')
 
 // Public pages that exist in every language
 const STATIC_PAGES = [
@@ -44,13 +42,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
 	// Tours: one entry per language slug, each listing all its translations
 	const tours = await fetchAll(() =>
-		db.from(T.tours).select('id, slugs, updatedAt').order('id'),
+		db.from(T.tours).select('id, slugs, days, updatedAt').order('id'),
 	)
 	for (const tour of tours) {
-		const slugs: { language: string; slug: string }[] = tour.slugs ?? []
+		const slugs = repairTourSlugs(tour.slugs, tour.days, null)
 		const languages = Object.fromEntries(
 			slugs
-				// A tour without a start address has no country/city in its link ("///") and 404s
+				// A tour we still can't place has no country/city in its link ("///") and 404s
 				.filter((s) => s.slug && !s.slug.includes('//'))
 				.map((s) => [s.language, `${SITE_URL}${s.slug}`]),
 		)
@@ -65,19 +63,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 		}
 	}
 
-	// Destinations: countries and cities that have a photo (the ones with full pages)
-	const enName = (row: any) => (row.translations ?? []).find((t: any) => t.language === 'en-US')?.name ?? row.translations?.[0]?.name ?? ''
+	// Destinations: countries and cities the pages can actually open (a photo
+	// alone is not enough — /destinations/spain/malaga was listed and 404'd).
 	const inAllLanguages = (path: string, priority: number) => {
 		const languages = Object.fromEntries(locales.map((l) => [l, `${SITE_URL}/${l}${path}`]))
 		for (const url of Object.values(languages)) entries.push({ url, changeFrequency: 'weekly', priority, alternates: { languages } })
 	}
-	const countries = (await db.from(T.countries).select('id, translations').not('image', 'is', null)).data ?? []
-	const countrySlug = new Map((countries as any[]).map((c) => [c.id, slugify(enName(c))]))
-	for (const slug of Array.from(countrySlug.values())) if (slug) inAllLanguages(`/destinations/${slug}`, 0.7)
-	const cities = (await db.from(T.cities).select('countryId, translations').not('image', 'is', null).in('countryId', Array.from(countrySlug.keys()))).data ?? []
-	for (const city of cities as any[]) {
-		const slug = slugify(enName(city))
-		if (slug) inAllLanguages(`/destinations/${countrySlug.get(city.countryId)}/${slug}`, 0.7)
+	const countries = await getCountries('en-US')
+	for (const country of countries) {
+		if (!country.slug) continue
+		inAllLanguages(`/destinations/${country.slug}`, 0.7)
+		for (const city of await getCitiesOf(country, 'en-US', 500)) {
+			const slug = city.href.split('/').pop()
+			if (slug) inAllLanguages(`/destinations/${country.slug}/${slug}`, 0.7)
+		}
 	}
 
 	// Blog posts (test posts and copies left out) in the languages they are translated into

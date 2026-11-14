@@ -9,6 +9,7 @@ import { cache } from 'react'
 import { ArrowLeft, ArrowRight, PenLine } from 'lucide-react'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { routing } from '@/i18n/routing'
+import { SITE_URL } from '@/lib/seo'
 import { blogPath, getBlogPost, listBlogPosts } from '@/lib/blog'
 import { getHomeData } from '@/lib/homeData'
 import { toursForArticle } from '@/lib/blogTours'
@@ -21,8 +22,6 @@ import ShareButtons from './ShareButtons'
 
 export const dynamic = 'force-dynamic'
 
-const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.travsus.com').replace(/\/$/, '')
-
 type PageProps = { params: Promise<{ locale: string; slug: string; id: string }> }
 
 // Metadata and page share one database read
@@ -34,13 +33,15 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
 	if (!found || 'redirectTo' in found) return {}
 	const { post, languages } = found
 	// Not translated into this language: the English page is the original
-	const canonical = languages[params.locale] ?? languages[routing.defaultLocale]
+	const absolute = (path: string) => (path.startsWith('http') ? path : `${SITE_URL}${path}`)
+	const canonical = absolute(languages[params.locale] ?? languages[routing.defaultLocale])
+	const languageUrls = Object.fromEntries(Object.entries(languages).map(([language, path]) => [language, absolute(path)]))
 	const description = post.excerpt.slice(0, 160)
 	const image = post.image || PHOTOS.sahara
 	return {
 		title: `${post.title} | TRAVSUS`,
 		description,
-		alternates: { canonical, languages: { ...languages, 'x-default': languages[routing.defaultLocale] } },
+		alternates: { canonical, languages: { ...languageUrls, 'x-default': languageUrls[routing.defaultLocale] } },
 		openGraph: {
 			type: 'article',
 			title: post.title,

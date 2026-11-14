@@ -27,6 +27,7 @@ import TourExploreTags from './TourExploreTags'
 import ContactReservations from './ContactReservations'
 import TourItineraryWithMap from './itinerary/TourItineraryWithMap'
 import { TourServiceProvider, useTourService } from '../TourServiceContext'
+import { tripCities } from './itinerary/route'
 
 export type ListingExperiencesDetailPageProps = {
 	serviceData: any
@@ -59,11 +60,14 @@ const TourDetail: FC<ListingExperiencesDetailPageProps> = ({ similar = [] }) => 
 		window.scrollTo(0, 0)
 	}, [service?.id])
 
-	// Quick facts under the overview (only the ones this tour has)
+	// Quick facts under the overview (only the ones this tour has).
+	// One-way tours keep the real departure and arrival, not a copied start city
+	// or the first night's stop.
+	const ends = tripCities(days, service?.startAddress?.city, service?.endAddress?.city)
 	const facts = [
 		days?.length && { icon: Clock3, label: tPage('duration'), value: tHome('days_count', { count: days.length }) },
-		service?.startAddress?.city && { icon: MapPin, label: tPage('starts_in'), value: service.startAddress.city },
-		service?.endAddress?.city && { icon: Flag, label: tPage('ends_in'), value: service.endAddress.city },
+		ends.departure && { icon: MapPin, label: tPage('starts_in'), value: ends.departure },
+		ends.arrival && { icon: Flag, label: tPage('ends_in'), value: ends.arrival },
 	].filter(Boolean) as { icon: typeof Clock3; label: string; value: string }[]
 
 	return (

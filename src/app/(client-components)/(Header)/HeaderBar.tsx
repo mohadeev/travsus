@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useClerk, useUser } from '@clerk/nextjs'
-import { useTranslations } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import Logo from '@/shared/Logo'
 import MenuBar from '@/shared/MenuBar'
 import { ACCOUNT_LINKS } from '@/constants/siteNav'
@@ -17,6 +17,7 @@ import LanguagePreferencesModal from './LanguagePreferencesModal'
 
 export default function HeaderBar() {
 	const t = useTranslations('Nav')
+	const locale = useLocale()
 	const tAccount = useOldTranslations('AvatarDropdown')
 	const pathname = usePathname()
 	const { isLoaded, isSignedIn } = useUser()
@@ -62,7 +63,7 @@ export default function HeaderBar() {
 				<nav aria-label={t('explore')} className="hidden items-center gap-1 lg:flex">
 					{link('/search?query=', t('all_tours'), !!pathname?.includes('/search'))}
 					{link(ACCOUNT_LINKS.blog, t('blog'), !!pathname?.includes('/blog'))}
-					{link(ACCOUNT_LINKS.help, t('help'), !!pathname?.includes('/contact'))}
+					{link(`/${locale}${ACCOUNT_LINKS.help}`, t('help'), !!pathname?.includes('/contact'))}
 					{link(ACCOUNT_LINKS.partner, t('partner'), !!pathname?.includes('/affiliates'))}
 				</nav>
 

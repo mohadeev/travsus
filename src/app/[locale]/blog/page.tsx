@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
-import { routing } from '@/i18n/routing'
+import { pageAlternates } from '@/lib/seo'
 import { listBlogPosts } from '@/lib/blog'
 import PostCard from './PostCard'
 
@@ -25,10 +25,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
 	return {
 		title: `${t('meta_title')}${page > 1 ? ` – ${t('page', { page })}` : ''} | TRAVSUS`,
 		description: t('meta_description'),
-		alternates: {
-			canonical: `/${params.locale}${path}`,
-			languages: Object.fromEntries(routing.locales.map((l) => [l, `/${l}${path}`])),
-		},
+		alternates: pageAlternates(params.locale, path),
 	}
 }
 

@@ -5,10 +5,28 @@
 // Photos from Wikimedia Commons carry a credit (author, license, source): it is
 // shown under the grid and under each photo in the gallery, as their licenses ask.
 import { useEffect, useRef, useState } from 'react'
-import Image from 'next/image'
 import { ArrowLeft, ArrowRight, Grid2x2, Image as ImageIcon, X } from 'lucide-react'
 import { useTranslations } from '@/lib/i18n'
+import { cloudinarySrc } from '@/lib/imageLoader'
 import { useTourService } from '../TourServiceContext'
+
+const PHOTO_WIDTHS = [480, 828, 1200, 1600]
+
+/** Gallery photo with Cloudinary f_auto,q_auto and a width cap (not the original file). */
+function TourPhoto({ src, alt, sizes, priority, className }: { src: string; alt: string; sizes: string; priority?: boolean; className?: string }) {
+	return (
+		<img
+			src={cloudinarySrc(src, 1200)}
+			srcSet={PHOTO_WIDTHS.map((width) => `${cloudinarySrc(src, width)} ${width}w`).join(', ')}
+			sizes={sizes}
+			alt={alt}
+			loading={priority ? 'eager' : 'lazy'}
+			fetchPriority={priority ? 'high' : undefined}
+			decoding="async"
+			className={`absolute inset-0 h-full w-full object-cover ${className ?? ''}`}
+		/>
+	)
+}
 
 export default function ListingExperiencesDetailsImages() {
 	const t = useTranslations('ListingExperiencesDetailsImages')
@@ -53,13 +71,12 @@ export default function ListingExperiencesDetailsImages() {
 				className={`group relative overflow-hidden bg-neutral-100 ${className}`}
 				aria-label={`${name} – ${index + 1}/${photos.length}`}
 			>
-				<Image
+				<TourPhoto
 					src={photos[index]}
 					alt={`${name} – ${index + 1}`}
-					fill
 					sizes={sizes}
 					priority={index === 0}
-					className="object-cover transition duration-500 group-hover:scale-[1.03]"
+					className="transition duration-500 group-hover:scale-[1.03]"
 				/>
 				<span className="absolute inset-0 bg-black/0 transition group-hover:bg-black/10" />
 			</button>
@@ -158,7 +175,7 @@ export default function ListingExperiencesDetailsImages() {
 						{list.map((image, index) => (
 							<figure key={image.url} id={`photo-${index}`} className="scroll-mt-20">
 								<div className="relative aspect-[3/2] overflow-hidden rounded-2xl bg-neutral-100">
-									<Image src={image.url} alt={`${name} – ${index + 1}`} fill sizes="(max-width: 896px) 100vw, 896px" className="object-cover" />
+									<TourPhoto src={image.url} alt={`${name} – ${index + 1}`} sizes="(max-width: 896px) 100vw, 896px" />
 								</div>
 								{image.credit?.license && (
 									<figcaption className="mt-1 text-xs text-neutral-400">
