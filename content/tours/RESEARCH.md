@@ -116,3 +116,8 @@ Translations were short summaries with no FAQ: replaced with full translations i
 - What the best pages do: clear meeting point (Outa el-Hammam), a named list of stops (kasbah, Ras el-Maa, Spanish Mosque), the "why blue" question answered, photo etiquette, walking effort.
 - Before: thin page, short overview, 6 short FAQs.
 - Now: history from the 1471 founding, kasbah garden/museum/tower, octagonal minaret, Souika and Onsar quarters, communal bread oven, weavers, Ras el-Maa, Spanish Mosque (1920s); estimated schedule, weather plan, accessibility, photo spots; 13 FAQs; cross-link to the Akchour hike; 10 languages.
+
+## El Jadida & Oualidia day trip from Casablanca (f6f84c9bb30fa2defaef0685)
+- Competitors reviewed (search summaries): Daytrip.com Casablanca–El Jadida/Oualidia, Pure Morocco private El Jadida day trip, Luxor and Aswan El Jadida tour, Lokalee/Expedia "Oualidia via Azemmour and Mazagan", Lonely Planet and National Geographic Oualidia articles, Wikipedia/Atlas Obscura on the cistern.
+- What they do well: drive times, Azemmour as an extra stop, clear "admission not included", the cistern story (Welles), Oualidia as the "oyster capital".
+- Gaps we filled: Mazagan history (1514–1769, renamed El Jadida in the 1820s), cistern details (25 columns, single light opening, may close for restoration), Oualidia kasbah (1630s, Sultan El Oualid) and royal summer palace ruins, oyster farming since the 1950s, boat-ride prices (150–200 MAD/boat/hour), swimming safety (inside the lagoon only), lunch budget, seasonality, one-way and airport options; 13 FAQs; 10 languages.
