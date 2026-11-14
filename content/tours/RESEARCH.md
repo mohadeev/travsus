@@ -145,3 +145,10 @@ Translations were short summaries with no FAQ: replaced with full translations i
 - What they do: list en-suite tents and hotel classes; many are vague about "private bathroom" (shared vs en-suite) – we define exactly what the luxury tent includes.
 - Our edge: two nights at Merzouga (hotel with pool + luxury camp) and a full private 4x4 desert day; honest about the 560 km return and offer Fes ending or an extra night.
 - Before: one-line days, 4 FAQs. Now: four rich days, 13 FAQs, 10 languages.
+
+## 10-day grand tour from Casablanca (bd1fc4fe0dad1d1f3c84b14e)
+- Competitors reviewed (search summaries): TourRadar private 10-day grand luxury and Casablanca-start listings, On The Go "Morocco Immersion Journey 10 days" (search only), Simply Morocco "10 Days: Highlights of Morocco", Lokalee 10-day private group, TravelStride private guided.
+- What they do well: same core order (Rabat–Chefchaouen–Fes–desert–Marrakech); Simply Morocco explains desert nights and flexibility.
+- Our edge: two full guided days (Fes, Marrakech), local guides at Volubilis and Ait Ben Haddou, km/hours per day, honest "longest day" warnings, and a true loop with no repeated roads.
+- Before: one-line days, 3 FAQs. Now: ten rich days, 13 FAQs, 10 languages.
+- Data note: Day 7 city is "Ait Benhaddou" while overview says the night is Ouarzazate – content says "Ouarzazate or Ait Ben Haddou".
