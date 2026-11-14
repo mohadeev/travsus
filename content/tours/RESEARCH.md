@@ -139,3 +139,9 @@ Translations were short summaries with no FAQ: replaced with full translations i
 - Competitors reviewed (search summaries): TourRadar "6 Days Desert Tour from Marrakech & Essaouira", KimKim "Marrakech & Grand Tour of the Sahara – 6 days", Local Adventures "6 days Sahara desert and the coastal city Essaouira", GoWithGuide 6-day private desert.
 - Common weakness: they hide how much driving is involved. We state it plainly (three long road days, km and hours per day) and point to the 8-day version.
 - Before: short day lines, 3 one-word FAQs. Now: six rich days (Saadian Tombs 1917 rediscovery, Tichka 2,260 m, Ait Ben Haddou UNESCO 1987, Skoura/Kelaat M'Gouna, Todra 10 m wide/300 m walls, Erg Chebbi ~150 m dunes, southern return via Rissani/Alnif/N'Kob/Draa, Essaouira UNESCO 2001), 13 FAQs, 10 languages.
+
+## 4-day luxury desert trip from Marrakech (dd9de5a476038459cba57f76)
+- Competitors reviewed (search summaries): Civitatis "4-day Merzouga desert trip" (standard vs superior tents), Expedia "4-day desert tour to Merzouga with glamping", TourRadar private luxury listings, Sun-trails luxury Sahara tour, Lokalee "4 Day Private Merzouga Desert and Luxury Camp".
+- What they do: list en-suite tents and hotel classes; many are vague about "private bathroom" (shared vs en-suite) – we define exactly what the luxury tent includes.
+- Our edge: two nights at Merzouga (hotel with pool + luxury camp) and a full private 4x4 desert day; honest about the 560 km return and offer Fes ending or an extra night.
+- Before: one-line days, 4 FAQs. Now: four rich days, 13 FAQs, 10 languages.
