@@ -152,3 +152,8 @@ Translations were short summaries with no FAQ: replaced with full translations i
 - Our edge: two full guided days (Fes, Marrakech), local guides at Volubilis and Ait Ben Haddou, km/hours per day, honest "longest day" warnings, and a true loop with no repeated roads.
 - Before: one-line days, 3 FAQs. Now: ten rich days, 13 FAQs, 10 languages.
 - Data note: Day 7 city is "Ait Benhaddou" while overview says the night is Ouarzazate – content says "Ouarzazate or Ait Ben Haddou".
+
+## Ouarzazate day tour (3ef3b0ce0392e15b60d63b2c)
+- Competitors reviewed (search summaries): TUI/Musement "Cinema and Kasbah Day in Ouarzazate", Exo Travel "Skoura–Ouarzazate adventure", Headout/Magpie/Lokalee Ouarzazate & Ait Ben Haddou day trips, Civitatis Ouarzazate private excursions.
+- Finding: competitors sell Taourirt+Studios+Ait Ben Haddou OR Skoura/Amridil separately; none combine all four in one day – that is our angle, now stated in the overview.
+- English day text was already detailed; added the Glaoui/caravan context, 30 km distance, Amridil on the old 50-dirham note, CLA/Cinema Museum fallback. FAQ 8 → 13. Translations were very thin (200–950 chars) – now full in 9 languages.
