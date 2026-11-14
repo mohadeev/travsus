@@ -162,3 +162,8 @@ Translations were short summaries with no FAQ: replaced with full translations i
 - Competitors reviewed (search summaries): Civitatis "Two-day desert tour" from Ouarzazate, TourRadar private 2-day listings, Local Morocco Tours and Finest Morocco Tours 2-day private tours, Lokalee, Expedia.
 - What they do: standard vs luxury camp choice, sunrise/sandboarding/music listed, most return to Ouarzazate. Ours is one-way ending in Merzouga – we now say so clearly (end time, onward options: Supratours bus, private transfer to Fes/Marrakech).
 - Before: short days, 5 one-line FAQs; translations 400–800 chars. Now: rich days with km/hours, Amridil, rose valley, Dades formations, Todra, khettara, Erfoud fossils, dunes; 13 FAQs; 10 languages.
+
+## 7-day itinerary: Marrakech, Atlas, two Sahara nights, Fes (94bd18ec87675d9247c69963)
+- Competitors reviewed (search summaries): On The Go "Sahara Big South Exploration 7 days" / "7 day itinerary" (search only), Sun-trails "classic Morocco 7 days", KimKim "Moroccan discovery tour 7 days", TourRadar 7-day listings, Fora Travel guide.
+- Finding: almost no 7-day competitor offers two desert nights AND an Atlas walking day – both now stated as the angle.
+- Before: one-line days, 3 FAQs; translations ~1,600 chars. Now: seven rich days, 13 FAQs, 10 languages.
