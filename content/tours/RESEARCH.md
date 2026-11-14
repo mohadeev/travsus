@@ -127,3 +127,10 @@ Translations were short summaries with no FAQ: replaced with full translations i
 - What they do well: the journey across the hamada (nomads, acacias, fossils), the gorge with seasonal waterfalls and pools, a picnic/family meal, ~6 h, private 4x4.
 - Before: very thin (one-line day, 4 short FAQs, "Hat and water").
 - Now: location (~45 km, gorge near the Algerian border), the hamada drive and fossil stop, three-layer oasis gardens and the water rota, family lunch, ksar stop, seasonal waterfall note, heat/rain plans, accessibility; 13 FAQs; links to the 4x4 Erg Chebbi tour and overnight camel trek; 10 languages.
+
+## 6-day Marrakech, Atlas, Agafay & Essaouira from Casablanca (7c3f313f9a7c62ff8cae76f3)
+- Competitors reviewed: KimKim "Marrakesh to Casablanca: Agafay Desert & Atlantic Coast – 6 days", TourRadar listings, On The Go Tours "Casablanca to Marrakech and Coast 6 days" (search summary only), Local Adventures.
+- What they do well: day-by-day narrative, drive times per day, argan cooperative stop, Essaouira ramparts/port/mellah, coastal return via El Jadida.
+- Our edge: none of the 6-day competitors include the High Atlas – we keep a full Imlil/Aroumd day; one Marrakech base for 4 nights.
+- Before: one-line days, 3 FAQs. Now: six rich days (Hassan II Mosque option, Majorelle timed tickets, Imlil walk stats, Agafay sunset, argan coop and goats-in-trees honesty, coastal option on Day 6), 13 FAQs, 10 languages.
+- Data issue flagged: Day 3 city is set to "Casablanca" in the tour data (should be Imlil/Marrakech); inclusions list says "daily breakfast and dinner" while days say dinners not included – content says breakfast daily + Agafay dinner, others per package.
