@@ -134,3 +134,8 @@ Translations were short summaries with no FAQ: replaced with full translations i
 - Our edge: none of the 6-day competitors include the High Atlas – we keep a full Imlil/Aroumd day; one Marrakech base for 4 nights.
 - Before: one-line days, 3 FAQs. Now: six rich days (Hassan II Mosque option, Majorelle timed tickets, Imlil walk stats, Agafay sunset, argan coop and goats-in-trees honesty, coastal option on Day 6), 13 FAQs, 10 languages.
 - Data issue flagged: Day 3 city is set to "Casablanca" in the tour data (should be Imlil/Marrakech); inclusions list says "daily breakfast and dinner" while days say dinners not included – content says breakfast daily + Agafay dinner, others per package.
+
+## 6-day itinerary: Marrakech, Sahara loop & Essaouira (fbca777d16e324c5ccb15043)
+- Competitors reviewed (search summaries): TourRadar "6 Days Desert Tour from Marrakech & Essaouira", KimKim "Marrakech & Grand Tour of the Sahara – 6 days", Local Adventures "6 days Sahara desert and the coastal city Essaouira", GoWithGuide 6-day private desert.
+- Common weakness: they hide how much driving is involved. We state it plainly (three long road days, km and hours per day) and point to the 8-day version.
+- Before: short day lines, 3 one-word FAQs. Now: six rich days (Saadian Tombs 1917 rediscovery, Tichka 2,260 m, Ait Ben Haddou UNESCO 1987, Skoura/Kelaat M'Gouna, Todra 10 m wide/300 m walls, Erg Chebbi ~150 m dunes, southern return via Rissani/Alnif/N'Kob/Draa, Essaouira UNESCO 2001), 13 FAQs, 10 languages.
