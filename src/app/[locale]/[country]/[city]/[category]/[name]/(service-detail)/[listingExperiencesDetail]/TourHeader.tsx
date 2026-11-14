@@ -15,6 +15,7 @@ import { selectUser } from '@/store/slices/user'
 import { selectTourLiked, setTourLiked } from '@/store/slices/tourPage'
 import { useTranslations as useIntlTranslations } from 'next-intl'
 import { useTourService } from '../TourServiceContext'
+import { tripCities } from './itinerary/route'
 import RatingBubbles from '@/app/[locale]/(home)/RatingBubbles'
 import PopularBadge from '@/app/[locale]/(home)/PopularBadge'
 
@@ -37,7 +38,8 @@ const TourHeader = () => {
 
 	const title = service.name
 	const country = service.days?.[0]?.country || service.startAddress?.country
-	const city = service.days?.[0]?.city || service.startAddress?.city
+	const { departure } = tripCities(service.days, service.startAddress?.city, service.endAddress?.city)
+	const city = departure || service.startAddress?.city || ''
 	// Real numbers only: nothing is shown until the tour has reviews
 	const reviews = service.reviewsCount || 0
 	const rating = reviews > 0 ? Number(service.averageRating) : 0

@@ -20,6 +20,7 @@ import HowItWorks from '../(home)/HowItWorks'
 import HomeFaq from '../(home)/HomeFaq'
 import HomeMotion from '../(home)/HomeMotion'
 import styles from '../(home)/home.module.css'
+import { pageAlternates } from '@/lib/seo'
 
 // Results depend on the URL (?query=…&maxPrice=…), so the page is built per
 // request, never at build time for every language.
@@ -39,7 +40,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
 	return {
 		title: `${filters.query ? t('title_query', { query: filters.query }) : t('meta_title')} | TRAVSUS`,
 		description: t('meta_description'),
-		alternates: { canonical: `/${params.locale}/search` },
+		alternates: pageAlternates(params.locale, '/search'),
 		// The plain list is indexable; every filtered variant points to it
 		robots: filtered ? { index: false, follow: true } : undefined,
 	}

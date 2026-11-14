@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { ArrowRight, Instagram, Mail, MessageCircle, Phone } from 'lucide-react'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { companyProfile } from '@/constants/companyProfile'
-import { routing } from '@/i18n/routing'
+import { pageAlternates } from '@/lib/seo'
 import ContactForm from './ContactForm'
 
 // Same page for every visitor: rendered once, served from the cache, refreshed at most every hour
@@ -18,10 +18,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
 	return {
 		title: `${t('meta_title')} | TRAVSUS`,
 		description: t('meta_description'),
-		alternates: {
-			canonical: `/${params.locale}/contact`,
-			languages: Object.fromEntries(routing.locales.map((l) => [l, `/${l}/contact`])),
-		},
+		alternates: pageAlternates(params.locale, '/contact'),
 	}
 }
 

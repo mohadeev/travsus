@@ -9,6 +9,6 @@ const GDPRDataSubjectRightsForm = dynamic(
 	{ ssr: false },
 )
 
-export default function RightsForm() {
-	return <GDPRDataSubjectRightsForm />
+export default function RightsForm({ right }: { right?: string }) {
+	return <GDPRDataSubjectRightsForm initialRight={right} />
 }

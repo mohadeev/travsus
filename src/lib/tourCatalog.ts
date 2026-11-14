@@ -6,6 +6,7 @@ import { revalidateTag } from 'next/cache'
 import { unstable_cache } from '@/lib/stableCache'
 import { db, T, REL, fetchAll, mongoCollection } from '@/lib/db'
 import { updateLineItemsLogic } from '@/app/api/updateLineItems/updateLineItemsLogic'
+import { repairTourSlugs } from '@/lib/tourPath'
 
 export const TOURS_TAG = 'tours'
 export const REVIEWS_TAG = 'reviews'
@@ -66,7 +67,7 @@ async function loadCatalog(): Promise<CatalogTour[]> {
 			subtitle: tour.subtitle ?? '',
 			overview: String(tour.overview ?? '').slice(0, 400),
 			tags: Array.isArray(tour.tags) ? tour.tags : [],
-			slugs: tour.slugs ?? [],
+			slugs: repairTourSlugs(tour.slugs, tour.days, tour.startAddress),
 			names: Object.fromEntries(
 				(tour.translations ?? []).filter((t: any) => t?.language && t.name).map((t: any) => [t.language, t.name]),
 			),

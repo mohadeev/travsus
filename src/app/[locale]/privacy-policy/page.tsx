@@ -1,7 +1,7 @@
 import { companyProfile } from '@/constants/companyProfile'
 import type { Metadata } from 'next'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
-import { routing } from '@/i18n/routing'
+import { pageAlternates } from '@/lib/seo'
 import LegalPage from '@/components/LegalPage'
 
 // Same page for every visitor: rendered once, served from the cache, refreshed at most every hour
@@ -13,10 +13,7 @@ export async function generateMetadata(props: { params: Promise<{ locale: string
 	return {
 		title: `${t('title_privacy')} | TRAVSUS`,
 		description: t('desc_privacy'),
-		alternates: {
-			canonical: `/${params.locale}/privacy-policy`,
-			languages: Object.fromEntries(routing.locales.map((l) => [l, `/${l}/privacy-policy`])),
-		},
+		alternates: pageAlternates(params.locale, '/privacy-policy'),
 	}
 }
 
@@ -175,13 +172,13 @@ These rights are characterized as follows:
 
 To facilitate the exercising of these rights, we have provided links below to the request form for each right:
 
-- [Right of access form](https://www.travsus.com/rights/access)
-- [Right to rectification form](https://www.travsus.com/rights/rectification)
-- [Right to object form](https://www.travsus.com/rights/object)
-- [Right to erasure ("right to be forgotten") form](https://www.travsus.com/rights/erasure)
-- [Right to restriction of processing form](https://www.travsus.com/rights/restriction)
-- [Right to data portability form](https://www.travsus.com/rights/portability)
-- [Right not to be subject to a decision based solely on automated processing form](https://www.travsus.com/rights/automated-decision)
+- [Right of access form](https://www.travsus.com/en-US/rights/access)
+- [Right to rectification form](https://www.travsus.com/en-US/rights/rectification)
+- [Right to object form](https://www.travsus.com/en-US/rights/object)
+- [Right to erasure ("right to be forgotten") form](https://www.travsus.com/en-US/rights/erasure)
+- [Right to restriction of processing form](https://www.travsus.com/en-US/rights/restriction)
+- [Right to data portability form](https://www.travsus.com/en-US/rights/portability)
+- [Right not to be subject to a decision based solely on automated processing form](https://www.travsus.com/en-US/rights/automated-decision)
 
 All the aforementioned rights can be exercised through the means of contact listed at the beginning.
 

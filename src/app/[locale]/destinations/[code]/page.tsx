@@ -10,6 +10,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server'
 import TourCard from '../../(home)/TourCard'
 import { countPlacesOfCountry, countryHref, flag, getCitiesOf, getCountries, getCountry, getPlacesOfCountry, getToursFor } from '@/lib/destinations'
 import { bigImage, CityCard, MapEmbed, PlaceCard, Section } from '../_components/ui'
+import { pageAlternates } from '@/lib/seo'
 
 type Props = { params: Promise<{ locale: string; code: string }> }
 
@@ -31,7 +32,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 	return {
 		title,
 		description: country.description.slice(0, 160),
-		alternates: { canonical: countryHref(params.locale, country) },
+		alternates: pageAlternates(params.locale, `/destinations/${country.slug}`),
 		openGraph: { title, description: country.description.slice(0, 200), images: country.image ? [bigImage(country.image)] : [] },
 	}
 }

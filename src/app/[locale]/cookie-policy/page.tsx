@@ -1,7 +1,7 @@
 import { companyProfile } from '@/constants/companyProfile'
 import type { Metadata } from 'next'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
-import { routing } from '@/i18n/routing'
+import { pageAlternates } from '@/lib/seo'
 import LegalPage from '@/components/LegalPage'
 
 // Same page for every visitor: rendered once, served from the cache, refreshed at most every hour
@@ -13,10 +13,7 @@ export async function generateMetadata(props: { params: Promise<{ locale: string
 	return {
 		title: `${t('title_cookies')} | TRAVSUS`,
 		description: t('desc_cookies'),
-		alternates: {
-			canonical: `/${params.locale}/cookie-policy`,
-			languages: Object.fromEntries(routing.locales.map((l) => [l, `/${l}/cookie-policy`])),
-		},
+		alternates: pageAlternates(params.locale, '/cookie-policy'),
 	}
 }
 
