@@ -110,3 +110,9 @@ caveat (many are Fes→Marrakech), private vs shared, spring/autumn best.
 Our English was already rich (10 FAQs). Added 3 FAQs: reverse direction, exactly where it ends in Fes
 (riad gate / airport / station / Chefchaouen), camp electricity & Wi-Fi; linked the round-trip FAQ.
 Translations were short summaries with no FAQ: replaced with full translations in 9 languages.
+
+## Chefchaouen walking tour (ac7be027090964df7cb918c0)
+- Competitors reviewed: Civitatis Chefchaouen guided tour, GuruWalk free tours, Journal of Nomads Chefchaouen guide, onthegotours guide (search summary only; site blocks bots).
+- What the best pages do: clear meeting point (Outa el-Hammam), a named list of stops (kasbah, Ras el-Maa, Spanish Mosque), the "why blue" question answered, photo etiquette, walking effort.
+- Before: thin page, short overview, 6 short FAQs.
+- Now: history from the 1471 founding, kasbah garden/museum/tower, octagonal minaret, Souika and Onsar quarters, communal bread oven, weavers, Ras el-Maa, Spanish Mosque (1920s); estimated schedule, weather plan, accessibility, photo spots; 13 FAQs; cross-link to the Akchour hike; 10 languages.
