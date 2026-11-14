@@ -157,3 +157,8 @@ Translations were short summaries with no FAQ: replaced with full translations i
 - Competitors reviewed (search summaries): TUI/Musement "Cinema and Kasbah Day in Ouarzazate", Exo Travel "Skoura–Ouarzazate adventure", Headout/Magpie/Lokalee Ouarzazate & Ait Ben Haddou day trips, Civitatis Ouarzazate private excursions.
 - Finding: competitors sell Taourirt+Studios+Ait Ben Haddou OR Skoura/Amridil separately; none combine all four in one day – that is our angle, now stated in the overview.
 - English day text was already detailed; added the Glaoui/caravan context, 30 km distance, Amridil on the old 50-dirham note, CLA/Cinema Museum fallback. FAQ 8 → 13. Translations were very thin (200–950 chars) – now full in 9 languages.
+
+## 2-day Ouarzazate to Merzouga (5dadd9a9ef01706f9ee87e75)
+- Competitors reviewed (search summaries): Civitatis "Two-day desert tour" from Ouarzazate, TourRadar private 2-day listings, Local Morocco Tours and Finest Morocco Tours 2-day private tours, Lokalee, Expedia.
+- What they do: standard vs luxury camp choice, sunrise/sandboarding/music listed, most return to Ouarzazate. Ours is one-way ending in Merzouga – we now say so clearly (end time, onward options: Supratours bus, private transfer to Fes/Marrakech).
+- Before: short days, 5 one-line FAQs; translations 400–800 chars. Now: rich days with km/hours, Amridil, rose valley, Dades formations, Todra, khettara, Erfoud fossils, dunes; 13 FAQs; 10 languages.
