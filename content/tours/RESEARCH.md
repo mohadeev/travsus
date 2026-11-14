@@ -121,3 +121,9 @@ Translations were short summaries with no FAQ: replaced with full translations i
 - Competitors reviewed (search summaries): Daytrip.com Casablanca–El Jadida/Oualidia, Pure Morocco private El Jadida day trip, Luxor and Aswan El Jadida tour, Lokalee/Expedia "Oualidia via Azemmour and Mazagan", Lonely Planet and National Geographic Oualidia articles, Wikipedia/Atlas Obscura on the cistern.
 - What they do well: drive times, Azemmour as an extra stop, clear "admission not included", the cistern story (Welles), Oualidia as the "oyster capital".
 - Gaps we filled: Mazagan history (1514–1769, renamed El Jadida in the 1820s), cistern details (25 columns, single light opening, may close for restoration), Oualidia kasbah (1630s, Sultan El Oualid) and royal summer palace ruins, oyster farming since the 1950s, boat-ride prices (150–200 MAD/boat/hour), swimming safety (inside the lagoon only), lunch budget, seasonality, one-way and airport options; 13 FAQs; 10 languages.
+
+## Safsaf oasis day trip from Merzouga (632bcdec46234661cdb0b7fe)
+- Competitors reviewed: "4x4 excursion to Safsaf Wild Oasis with traditional Berber picnic" (Booking/Pelago/Lokalee listings and The Abroad Guide review), Booking "Private Day Trip to Safsaf Oasis", Rough Guides and Lonely Planet on Tafilalet oases and khettara irrigation.
+- What they do well: the journey across the hamada (nomads, acacias, fossils), the gorge with seasonal waterfalls and pools, a picnic/family meal, ~6 h, private 4x4.
+- Before: very thin (one-line day, 4 short FAQs, "Hat and water").
+- Now: location (~45 km, gorge near the Algerian border), the hamada drive and fossil stop, three-layer oasis gardens and the water rota, family lunch, ksar stop, seasonal waterfall note, heat/rain plans, accessibility; 13 FAQs; links to the 4x4 Erg Chebbi tour and overnight camel trek; 10 languages.
