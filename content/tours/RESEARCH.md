@@ -102,3 +102,11 @@ blossoms and when the roses really bloom, Ramadan/Eid overlap, book-early warnin
 Our page was thin (3 one-line FAQs). Rewrote: overview with route and km, why Easter / why book early,
 7 rich days (Jemaa el-Fna, Tichka & ksar sunset, Valley of Roses, Todra & camel camp, full Sahara day
 with 4x4/Khamlia, Ziz/Midelt/macaques/Ifrane, Fes medina), 13 FAQs; in 10 languages.
+
+## 4 days Marrakech → Merzouga → Fes (685bced911aec55f866a967f)
+Search: "4 day desert tour Marrakech to Fes via Merzouga itinerary FAQ". Results: operator listings
+(TourRadar, headout, sun-trails): same route, one desert night, 4x4/sandboarding options, direction
+caveat (many are Fes→Marrakech), private vs shared, spring/autumn best.
+Our English was already rich (10 FAQs). Added 3 FAQs: reverse direction, exactly where it ends in Fes
+(riad gate / airport / station / Chefchaouen), camp electricity & Wi-Fi; linked the round-trip FAQ.
+Translations were short summaries with no FAQ: replaced with full translations in 9 languages.
