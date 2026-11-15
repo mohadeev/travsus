@@ -26,6 +26,9 @@ type Env = {
 	VINEXT_KV_CACHE?: KVNamespace
 }
 
+/** How long after the response ends a request's database clients stay open. */
+const CLOSE_GRACE_MS = 5000
+
 /**
  * Renders a request in its own database scope and closes that scope's
  * MongoDB clients once the response has been sent. Each client keeps several
@@ -33,11 +36,14 @@ type Env = {
  * piled up until the free Atlas cluster refused new connections (its limit is
  * 500) and every page that needed the database failed. Pages stream, and
  * the database can still be read while the body streams, so the clients
- * are closed after the last byte, not when vinext.fetch returns.
+ * are closed after the last byte, not when vinext.fetch returns – and a few
+ * seconds later still, since a query started during the render (a prefetch
+ * nobody awaited) can still be running when the last byte goes.
  */
 async function renderInScope(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
 	const scope: { mongo?: Record<string, Promise<{ close(): Promise<void> }>> } = {}
 	const closeClients = async () => {
+		await new Promise((done) => setTimeout(done, CLOSE_GRACE_MS))
 		const clients = Object.values(scope.mongo ?? {})
 		scope.mongo = {}
 		await Promise.all(clients.map(async (client) => (await client).close().catch(() => {})))
