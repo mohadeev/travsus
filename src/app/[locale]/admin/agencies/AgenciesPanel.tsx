@@ -4,6 +4,7 @@
 // them how to add their company and tours; declining always sends the
 // standard "no for now" email. A request can also be removed.
 import { Fragment, useMemo, useState } from 'react'
+import { BulkBar, RowCheck, SelectAll, type Decision } from '../_components/BulkBar'
 import { Dialog, Transition } from '@headlessui/react'
 import { Building2, Check, ExternalLink, Loader2, Mail, MapPin, Search, Trash2, X } from 'lucide-react'
 
@@ -43,6 +44,7 @@ export default function AgenciesPanel({ initial, loadError, emailReady }: { init
 	const [query, setQuery] = useState('')
 	const [open, setOpen] = useState<{ row: Agency; status: Status } | null>(null)
 	const [toast, setToast] = useState('')
+	const [selected, setSelected] = useState<Set<string>>(new Set())
 
 	const counts = useMemo(() => {
 		const c: Record<string, number> = { all: rows.length, pending: 0, approved: 0, declined: 0 }
@@ -68,6 +70,40 @@ export default function AgenciesPanel({ initial, loadError, emailReady }: { init
 		setRows((all) => all.filter((r) => r.id !== row.id))
 		setOpen(null)
 		notify(`${row.company} removed`)
+	}
+
+	// Bulk accept / decline: only rows you can see count, so a filter or search never hides a selected one
+	const shownIds = shown.map((r) => r.id)
+	const picked = shown.filter((r) => selected.has(r.id))
+	function toggle(id: string, on: boolean) {
+		setSelected((s) => {
+			const next = new Set(s)
+			if (on) next.add(id)
+			else next.delete(id)
+			return next
+		})
+	}
+	async function* saveMany(decision: Decision, notifyThem: boolean) {
+		for (const r of picked) {
+			try {
+				const res = await fetch('/api/admin/agencies', {
+					method: 'PATCH',
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify({ id: r.id, status: decision, notify: r.status !== decision && (decision === 'declined' || notifyThem) }),
+				})
+				const data = await res.json().catch(() => ({}))
+				if (!res.ok) throw new Error(data.error || 'Could not save')
+				yield { ok: true as const, row: data.agency as Agency, emailed: !!data.emailed }
+			} catch (e: any) {
+				yield { ok: false as const, error: `${r.company}: ${e.message}` }
+			}
+		}
+	}
+	function bulkDone(done: Agency[], message: string) {
+		const byId = new Map(done.map((r) => [r.id, r]))
+		setRows((all) => all.map((r) => byId.get(r.id) ?? r))
+		setSelected((s) => new Set(Array.from(s).filter((id) => !byId.has(id))))
+		if (done.length) notify(message)
 	}
 
 	return (
@@ -109,16 +145,21 @@ export default function AgenciesPanel({ initial, loadError, emailReady }: { init
 
 			{loadError && <p className="mt-6 rounded-2xl bg-red-50 px-4 py-3 text-sm text-red-700 dark:bg-red-950/50 dark:text-red-300">{loadError}</p>}
 
-			<ul className="mt-5 space-y-2.5">
+			<SelectAll ids={shownIds} selected={selected} onChange={setSelected} />
+
+			<ul className="mt-3 space-y-2.5">
 				{shown.map((r) => (
-					<li key={r.id} className="flex flex-col gap-4 rounded-3xl p-5 ring-1 ring-neutral-200 transition hover:ring-neutral-400 sm:flex-row sm:items-center dark:ring-neutral-800">
-						<button type="button" onClick={() => setOpen({ row: r, status: r.status })} className="flex min-w-0 flex-1 items-center gap-4 text-left">
-							<span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-neutral-100 text-base font-bold uppercase dark:bg-neutral-900">{r.company[0]}</span>
-							<span className="min-w-0">
-								<span className="block truncate font-semibold">{r.company}</span>
-								<span className="mt-0.5 block truncate text-sm text-neutral-500">{[r.email, r.location, `Asked ${date(r.created_at)}`, r.locale].filter(Boolean).join(' · ')}</span>
-							</span>
-						</button>
+					<li key={r.id} className={`flex flex-col gap-4 rounded-3xl p-5 pl-3 transition sm:flex-row sm:items-center ${selected.has(r.id) ? 'ring-2 ring-neutral-950 dark:ring-white' : 'ring-1 ring-neutral-200 hover:ring-neutral-400 dark:ring-neutral-800'}`}>
+						<span className="flex min-w-0 flex-1 items-center gap-2">
+							<RowCheck checked={selected.has(r.id)} onChange={(on) => toggle(r.id, on)} label={`Select ${r.company}`} />
+							<button type="button" onClick={() => setOpen({ row: r, status: r.status })} className="flex min-w-0 flex-1 items-center gap-4 text-left">
+								<span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-neutral-100 text-base font-bold uppercase dark:bg-neutral-900">{r.company[0]}</span>
+								<span className="min-w-0">
+									<span className="block truncate font-semibold">{r.company}</span>
+									<span className="mt-0.5 block truncate text-sm text-neutral-500">{[r.email, r.location, `Asked ${date(r.created_at)}`, r.locale].filter(Boolean).join(' · ')}</span>
+								</span>
+							</button>
+						</span>
 						<div className="flex flex-wrap items-center gap-2 sm:justify-end">
 							<span className={`rounded-full px-2.5 py-1 text-xs font-semibold ${BADGE[r.status][1]}`}>{BADGE[r.status][0]}</span>
 							{r.status === 'pending' && (
@@ -159,6 +200,8 @@ export default function AgenciesPanel({ initial, loadError, emailReady }: { init
 					</div>
 				</Dialog>
 			</Transition>
+
+			<BulkBar count={picked.length} emailReady={emailReady} onClear={() => setSelected(new Set())} save={saveMany} onDone={bulkDone} />
 
 			{toast && (
 				<div role="status" className="fixed inset-x-0 bottom-24 z-[60] flex justify-center px-4 sm:bottom-8">
