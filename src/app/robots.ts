@@ -33,6 +33,8 @@ const PRIVATE = [
 	'analyze',
 	'not-tracking',
 	'coming-soon',
+	// Endless query combinations (?query=…&sort=…): crawlers fetched thousands of them, each one a fresh render and database connection
+	'search',
 ]
 // Listed per locale on purpose: in robots.txt "*" also matches "/", so a
 // pattern like "/*/tours" would block every tour page (/en-US/…/tours/…).

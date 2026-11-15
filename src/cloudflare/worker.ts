@@ -26,6 +26,43 @@ type Env = {
 	VINEXT_KV_CACHE?: KVNamespace
 }
 
+/**
+ * Renders a request in its own database scope and closes that scope's
+ * MongoDB clients once the response has been sent. Each client keeps several
+ * sockets open (one per replica set member, plus monitoring); left open, they
+ * piled up until the free Atlas cluster refused new connections (its limit is
+ * 500) and every page that needed the database failed. Pages stream, and
+ * the database can still be read while the body streams, so the clients
+ * are closed after the last byte, not when vinext.fetch returns.
+ */
+async function renderInScope(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
+	const scope: { mongo?: Record<string, Promise<{ close(): Promise<void> }>> } = {}
+	const closeClients = async () => {
+		const clients = Object.values(scope.mongo ?? {})
+		scope.mongo = {}
+		await Promise.all(clients.map(async (client) => (await client).close().catch(() => {})))
+	}
+	let response: Response
+	try {
+		response = await requestScope.run(scope, () => vinext.fetch(request, env as never, ctx))
+	} catch (error) {
+		ctx.waitUntil(closeClients().catch(() => {}))
+		throw error
+	}
+	if (!response.body) {
+		ctx.waitUntil(closeClients().catch(() => {}))
+		return response
+	}
+	const { readable, writable } = new TransformStream()
+	ctx.waitUntil(
+		response.body
+			.pipeTo(writable)
+			.catch(() => {})
+			.finally(() => closeClients().catch(() => {})),
+	)
+	return new Response(readable, response)
+}
+
 /** Public, cached pages: kept by Cloudflare's edge for an hour, served stale for a day while refreshed. */
 // (Cloudflare's cache keeps the edge copy for s-maxage; browsers don't keep it)
 const PUBLIC_CACHE_CONTROL = 'public, s-maxage=3600, stale-while-revalidate=86400'
@@ -112,7 +149,7 @@ async function servePage(request: Request, env: Env, ctx: ExecutionContext) {
 		}
 	}
 
-	const response = await requestScope.run({}, () => vinext.fetch(request, env as never, ctx))
+	const response = await renderInScope(request, env, ctx)
 	const cacheControl = response.headers.get('cache-control') ?? ''
 	const servedFromCache = /\bs-maxage=/.test(cacheControl)
 	const firstRender = !url.search && isPublicPath(url.pathname) && response.headers.get('x-nextjs-cache') === 'MISS'
@@ -143,7 +180,7 @@ async function serveToursApi(request: Request, env: Env, ctx: ExecutionContext) 
 		answer.headers.set(EDGE_HEADER, 'HIT')
 		return answer
 	}
-	const response = await requestScope.run({}, () => vinext.fetch(request, env as never, ctx))
+	const response = await renderInScope(request, env, ctx)
 	if (response.status !== 200) return response
 	const answer = new Response(response.body, response)
 	const copy = new Response(answer.clone().body, answer)
@@ -197,7 +234,7 @@ export default {
 		const request = new Request(new URL(path, origin), {
 			headers: { authorization: `Bearer ${env.CRON_SECRET ?? ''}` },
 		})
-		const response = await requestScope.run({}, () => vinext.fetch(request, env as never, ctx))
+		const response = await renderInScope(request, env, ctx)
 		const body = await response.text()
 		if (!response.ok) throw new Error(`${path} failed (${response.status}): ${body.slice(0, 500)}`)
 		console.log(`${path}: ${body.slice(0, 500)}`)
