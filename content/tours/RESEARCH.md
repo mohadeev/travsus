@@ -178,3 +178,10 @@ Translations were short summaries with no FAQ: replaced with full translations i
 - What they do well: same core loop (Fes–Merzouga–gorges–Marrakech–Essaouira), drive times, seasonal advice. Few include Akchour; most give the desert one night only.
 - Our edge: two nights each in Chefchaouen (Akchour day), Fes, Merzouga (hotel + camp) and Marrakech; north via Rabat–Asilah–Tangier; ends on the coast.
 - Before: one-line days, 3 FAQs. Now: 14 rich days (Hassan II 1993/210 m, Hassan Tower, Udayas, Asilah murals, Cap Spartel, Akchour trail options and times, Fes el-Bali with Quaraouiyine 859, Ifrane 1,650 m, Erg Chebbi ~22 km/150 m, Todra ~300 m walls, Amridil, Ait Ben Haddou UNESCO 1987, Tichka ~2,260 m, Saadian Tombs 1917, Essaouira UNESCO 2001), nights and meals per day, 13 FAQs, 10 languages.
+
+## Morocco itinerary 2 weeks: Marrakech, Atlas, Sahara, Fes, the North and the Coast (0f6606724ffd187942ee9da5)
+- Competitors reviewed (search summaries): KimKim 2-week Morocco itineraries (Marrakech start, open-jaw to Casablanca/Tangier), Simply Morocco "Two Weeks in Morocco", TravelStride 2-week listings, On The Go Tours 14-day Casablanca loop (for contrast).
+- What they do well: one-way open-jaw routing, Atlas day from Marrakech, Chefchaouen and Tangier in week two.
+- Our edge: night at Ait Ben Haddou (sunset, not midday), full Sahara day with 2 nights, free day in Chefchaouen, Tetouan medina + Café Hafa, Rabat's Chellah.
+- Before: short days, 3 FAQs. Now: 14 rich days (Imlil 1,740 m / Aroumd ~1,900 m / Toubkal 4,167 m, Koutoubia 77 m, Saadian Tombs 1917, Tichka ~2,260 m, Ait Ben Haddou UNESCO 1987, Todra ~300 m walls, Erg Chebbi ~22 km/~150 m, Qarawiyyin 859, Chefchaouen 1471, Tetouan UNESCO 1997, Café Hafa 1921), 13 FAQs, 10 languages.
+- Data issue: tour END city is set to Marrakech but the route finishes in Casablanca.
