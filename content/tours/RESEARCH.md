@@ -167,3 +167,8 @@ Translations were short summaries with no FAQ: replaced with full translations i
 - Competitors reviewed (search summaries): On The Go "Sahara Big South Exploration 7 days" / "7 day itinerary" (search only), Sun-trails "classic Morocco 7 days", KimKim "Moroccan discovery tour 7 days", TourRadar 7-day listings, Fora Travel guide.
 - Finding: almost no 7-day competitor offers two desert nights AND an Atlas walking day – both now stated as the angle.
 - Before: one-line days, 3 FAQs; translations ~1,600 chars. Now: seven rich days, 13 FAQs, 10 languages.
+
+## Essaouira countryside: argan cooperative, Sidi Kaouki & Berber village lunch (e6147f33e475d49aa412a21e)
+- Competitors reviewed (search summaries): Headout "Essaouira Countryside Argan Oil Cooperative Workshop", Lokalee "A drive outside Essaouira and a visit to the argan trees", The Abroad Guide countryside listings (Sidi M'Barek village tea, Marjana cooperative), Magpie "Berber market in Ida Ougourd + argan cooperative", plus Sidi Kaouki guides (surf-report, Marrakech Tricks, Routard).
+- What they do well: cooperative demo, village tea, Sidi Kaouki beach, half-day or full-day private car. Most offer only tea, not a meal – our home-cooked family lunch is the differentiator.
+- Before: short day text, 7 FAQs. Now: full process of argan oil (raw vs roasted, amlou), UNESCO biosphere reserve 1998 and intangible heritage 2014, honest goats-in-trees note (we skip paid-photo spots), family lunch detail, Sidi Kaouki (~25 km, marabout, 1970s travellers, surf), wind plan, swimming safety, surf-lesson option, accessibility; 13 FAQs; 10 languages.
