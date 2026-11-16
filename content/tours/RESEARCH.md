@@ -200,3 +200,8 @@ Translations were short summaries with no FAQ: replaced with full translations i
 - Competitors: same route family as the 3-day Marrakech–Fes desert tours already researched (Viator/GetYourGuide/TourRadar shared tours start in Marrakech); few offer an Ouarzazate start, which is our differentiator.
 - Before: one-line days, 3 FAQs. Now: overview with distances per day, 3 rich days (Skoura/Amridil, Valley of Roses, Dades monkey fingers/Tisdrine, Todra ~300 m, khettaras, Erfoud fossils, camel trek, Ziz valley, Midelt, cedar forest, Ifrane 1,650 m), honest note that no night in Fes is included, 13 FAQs, 10 languages.
 - Data issues: tour END city is set to Ouarzazate but it finishes in Fes; Day 3 inclusions say "riad with breakfast" though no Fes night is part of a 3-day/2-night tour.
+
+## 8-day Morocco tour from Casablanca: Chefchaouen, Fes, Sahara & Marrakech (9abc453a84f62e4d21c11287)
+- Competitors: same family as the 10-day Casablanca tour researched earlier (TourRadar/Simply Morocco/Lokalee Casablanca-start listings); 8-day versions usually skip either the north or Volubilis – ours keeps both with one desert night.
+- Before: short days (Day 4 and Day 8 without schedules), 6 FAQs. Now: 8 rich days with schedules, distances, nights and meals; Volubilis mosaics and Moulay Idriss, full Fes day, honest long-day notes (Fes–Merzouga ~470 km, Dades–Marrakech ~340 km), 13 FAQs, 10 languages.
+- Data issue: tour END city is set to Casablanca but the tour finishes in Marrakech.
