@@ -23,7 +23,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
 	return {
 		title: 'Investors & Partners: The TRAVSUS TravelTech Platform | TRAVSUS',
 		description:
-			'TRAVSUS is a multilingual travel marketplace: booking engine, supplier and agency dashboards, a creator affiliate programme and an SEO content engine in 10 languages. Live, taking bookings, and expanding to the Middle East.',
+			'TRAVSUS is a multilingual travel marketplace: booking engine, supplier and agency dashboards, a creator affiliate programme and an SEO content engine in 10 languages. Live, taking bookings, and built to scale to new destinations worldwide.',
 		alternates: { canonical: `/${EN}/investors` },
 		robots: locale === EN ? undefined : { index: false, follow: true },
 		openGraph: { images: [PHOTOS.sahara] },
@@ -34,19 +34,19 @@ const PLATFORM = [
 	[ShoppingCart, 'Booking engine', 'Per-person pricing by date and group size, online checkout and booking management for tours, experiences and multi-day trips.'],
 	[LayoutDashboard, 'Supplier & agency dashboards', 'Local operators and agencies apply, are reviewed by our team and manage their own listings and bookings.'],
 	[Megaphone, 'Creator affiliate programme', `Tracked links with a 60-day cookie and tiered commission (${TIERS[0].rate}% to ${TIERS[TIERS.length - 1].rate}%), monthly payouts and a partner dashboard.`],
-	[Globe2, 'Multilingual content engine', `Every tour page, FAQ and URL is published in ${routing.locales.length} languages, built to rank on search engines in each European market.`],
+	[Globe2, 'Multilingual content engine', `Every tour page, FAQ and URL is published in ${routing.locales.length} languages, built to rank on search engines in every market we sell to.`],
 	[Users, 'Verified reviews', 'Reviews from real travellers, with verified bookings flagged, shown on every listing.'],
 	[ShieldCheck, 'Admin & quality control', 'Supplier, agency and affiliate approvals in bulk, content quality checks and per-request database handling built for scale.'],
 ] as const
 
 const ROADMAP = [
 	['Live', 'Proof of concept', 'Platform live and taking bookings in its first destination, Morocco, with the full stack: marketplace, dashboards, affiliates and 10-language content.'],
-	['Planned · Year 1', 'Qatar', 'Regional base in Doha. Onboard Qatari hotels, tour operators and DMCs; market Qatar to European travellers.'],
-	['Planned · Year 2', 'UAE and Oman', 'Replicate the supplier-onboarding playbook in two more Gulf markets.'],
-	['Planned · Year 3', 'Saudi Arabia and Jordan', 'Extend to the region’s fastest-growing tourism destinations.'],
+	['Planned · Year 1', 'Qatar', 'Regional base in Doha. Onboard Qatari hotels, tour operators and DMCs; sell Qatar to travellers from every market we serve.'],
+	['Planned · Year 2', 'UAE and Oman', 'Replicate the supplier-onboarding playbook in two more markets.'],
+	['Planned · Year 3', 'Saudi Arabia, Jordan and beyond', 'Extend to more fast-growing tourism destinations worldwide, using the same platform and playbook.'],
 ] as const
 
-const MARKETS = ['Spain', 'France', 'Germany', 'United Kingdom', 'Italy', 'Netherlands']
+const LANGUAGES = ['English', 'French', 'Spanish', 'German', 'Italian', 'Portuguese', 'Russian', 'Japanese', 'Korean', 'Chinese']
 
 export default async function InvestorsPage(props: PageProps) {
 	const { locale } = await props.params
@@ -67,7 +67,7 @@ export default async function InvestorsPage(props: PageProps) {
 			<section className="mx-auto max-w-7xl px-6 pt-12 text-center sm:pt-20">
 				<p className="text-sm font-semibold uppercase tracking-[0.2em] text-neutral-500">Investors &amp; partners</p>
 				<h1 className="mx-auto mt-4 max-w-5xl text-[40px] font-bold leading-[1.04] tracking-tight sm:text-7xl">
-					The marketplace connecting European travellers with trusted local experiences.
+					The global marketplace connecting travellers with trusted local experiences.
 				</h1>
 				<p className="mx-auto mt-5 max-w-3xl text-lg text-neutral-500 sm:mt-7 sm:text-2xl">
 					TRAVSUS is a TravelTech platform, not a travel agency: one multilingual marketplace where verified local suppliers reach international travellers, and travellers book with clear prices.
@@ -92,13 +92,13 @@ export default async function InvestorsPage(props: PageProps) {
 				<div>
 					<h2 className="text-4xl font-bold tracking-tight sm:text-5xl">The problem</h2>
 					<p className="mt-5 text-lg leading-relaxed text-neutral-500 sm:text-xl">
-						European travellers struggle to find and trust local experiences in emerging destinations, and the best local operators have no affordable way to reach them in their own language. Global platforms are generic and favour large suppliers.
+						Travellers everywhere struggle to find and trust local experiences in emerging destinations, and the best local operators have no affordable way to reach an international audience in its own language. The big platforms are generic and favour large suppliers.
 					</p>
 				</div>
 				<div>
 					<h2 className="text-4xl font-bold tracking-tight sm:text-5xl">Our answer</h2>
 					<p className="mt-5 text-lg leading-relaxed text-neutral-500 sm:text-xl">
-						A specialist marketplace: verified local suppliers, content written for each European market in its own language, transparent prices and a creator network that drives demand. Suppliers join free and pay commission only on bookings.
+						A specialist marketplace: verified local suppliers, content written for each market in its own language, transparent prices and a creator network that drives demand. Suppliers join free and pay commission only on bookings.
 					</p>
 				</div>
 			</section>
@@ -140,12 +140,12 @@ export default async function InvestorsPage(props: PageProps) {
 			{/* Markets */}
 			<section className="mx-auto mt-20 grid max-w-7xl items-center gap-10 px-6 sm:mt-32 lg:grid-cols-2 lg:gap-16">
 				<div>
-					<h2 className="text-4xl font-bold tracking-tight sm:text-5xl">Europe to the Middle East</h2>
+					<h2 className="text-4xl font-bold tracking-tight sm:text-5xl">Global demand, local supply</h2>
 					<p className="mt-5 text-lg leading-relaxed text-neutral-500 sm:text-xl">
-						Our demand comes from Europe&rsquo;s largest outbound travel markets. Our next destinations are in the Gulf and the wider Middle East, where tourism is a national growth priority and local suppliers need international reach.
+						Travellers reach TRAVSUS from around the world, and every page speaks their language. On the supply side, we focus on high-growth destinations where great local operators lack international reach – starting with Morocco and expanding next to the Middle East.
 					</p>
 					<ul className="mt-6 flex flex-wrap gap-2">
-						{MARKETS.map((m) => (
+						{LANGUAGES.map((m) => (
 							<li key={m} className="rounded-full bg-neutral-100 px-4 py-2 text-sm font-semibold dark:bg-neutral-900">{m}</li>
 						))}
 					</ul>
