@@ -15,7 +15,7 @@ import { SUPPORT_EMAIL, SUPPORT_PHONE, SUPPORT_PHONE_TEL } from '@/constants/con
 import Logo from '@/shared/Logo'
 
 // Most booked starting points; each opens the search for that city
-const DESTINATIONS = ['Marrakech', 'Fes', 'Merzouga', 'Chefchaouen', 'Essaouira', 'Ouarzazate']
+const DESTINATIONS = ['Marrakech', 'Fes', 'Merzouga', 'Chefchaouen', 'Essaouira', 'Doha']
 
 // [heading key (SiteFooter), links as [footer label key, href]]: edit to change the columns
 const COLUMNS: [string, [string, string][]][] = [

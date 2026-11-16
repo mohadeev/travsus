@@ -2664,7 +2664,9 @@
     "tab_restaurants": "レストラン",
     "tab_flights": "航空券",
     "tab_rentals": "バケーションレンタル",
-    "where_to_next": "次はどこへ？"
+    "where_to_next": "次はどこへ？",
+    "shelf_qatar": "新登場:カタール",
+    "shelf_qatar_sub": "ドーハ、砂漠、内海を地元ガイドと"
   },
   "Payment": {
     "preparing": "安全なお支払いを準備中…",
@@ -2844,7 +2846,11 @@
     "switch_deposit": "今{amount}を支払う",
     "switch_full": "全額支払う",
     "today": "本日",
-    "on_tour_day": "ツアー当日"
+    "on_tour_day": "ツアー当日",
+    "request_book": "予約をリクエスト",
+    "request_note": "今はお支払い不要です。空き状況と最終料金を24時間以内にメールでご連絡します。",
+    "request_sent_title": "リクエストを送信しました",
+    "request_sent_text": "ありがとうございます。現地パートナーに空き状況を確認し、24時間以内にメールでご連絡します。料金は請求されていません。"
   },
   "TourRoute": {
     "your_route": "ルート",

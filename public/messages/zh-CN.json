@@ -2526,7 +2526,9 @@
     "tab_restaurants": "餐厅",
     "tab_flights": "机票",
     "tab_rentals": "度假租赁",
-    "where_to_next": "下一站去哪儿？"
+    "where_to_next": "下一站去哪儿？",
+    "shelf_qatar": "新上线：卡塔尔",
+    "shelf_qatar_sub": "与当地导游一起游览多哈、沙漠和内海"
   },
   "Payment": {
     "preparing": "正在准备安全支付…",
@@ -2706,7 +2708,11 @@
     "switch_deposit": "现在付{amount}",
     "switch_full": "全额支付",
     "today": "今天",
-    "on_tour_day": "行程当天"
+    "on_tour_day": "行程当天",
+    "request_book": "申请预订",
+    "request_note": "现在无需付款。我们将在24小时内通过电子邮件确认是否可订及最终价格。",
+    "request_sent_title": "申请已发送！",
+    "request_sent_text": "谢谢。我们正在与当地合作伙伴确认是否可订，并将在24小时内给您发邮件。尚未收取任何费用。"
   },
   "TourRoute": {
     "your_route": "您的路线",

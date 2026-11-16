@@ -3098,7 +3098,9 @@
     "tab_restaurants": "Restaurantes",
     "tab_flights": "Voos",
     "tab_rentals": "Alojamento local",
-    "where_to_next": "Próximo destino?"
+    "where_to_next": "Próximo destino?",
+    "shelf_qatar": "Novidade: Catar",
+    "shelf_qatar_sub": "Doha, o deserto e o mar interior, com guias locais"
   },
   "Payment": {
     "preparing": "A preparar o pagamento seguro…",
@@ -3278,7 +3280,11 @@
     "switch_deposit": "Pagar {amount} agora",
     "switch_full": "Pagar tudo",
     "today": "Hoje",
-    "on_tour_day": "No dia do tour"
+    "on_tour_day": "No dia do tour",
+    "request_book": "Pedir reserva",
+    "request_note": "Sem pagamento agora. Confirmamos a disponibilidade e o preço final por e-mail em 24 horas.",
+    "request_sent_title": "Pedido enviado!",
+    "request_sent_text": "Obrigado. Estamos a verificar a disponibilidade com o nosso parceiro local e enviamos-lhe um e-mail em 24 horas. Nada foi cobrado."
   },
   "TourRoute": {
     "your_route": "O seu percurso",

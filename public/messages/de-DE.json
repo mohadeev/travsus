@@ -3648,7 +3648,9 @@
     "tab_restaurants": "Restaurants",
     "tab_flights": "Flüge",
     "tab_rentals": "Ferienwohnungen",
-    "where_to_next": "Wohin als Nächstes?"
+    "where_to_next": "Wohin als Nächstes?",
+    "shelf_qatar": "Neu: Katar",
+    "shelf_qatar_sub": "Doha, die Wüste und das Binnenmeer, mit lokalen Guides"
   },
   "Payment": {
     "preparing": "Sichere Zahlung wird vorbereitet…",
@@ -3828,7 +3830,11 @@
     "switch_deposit": "Jetzt {amount} zahlen",
     "switch_full": "Alles zahlen",
     "today": "Heute",
-    "on_tour_day": "Am Tourtag"
+    "on_tour_day": "Am Tourtag",
+    "request_book": "Buchung anfragen",
+    "request_note": "Jetzt keine Zahlung. Wir bestätigen Verfügbarkeit und Endpreis innerhalb von 24 Stunden per E-Mail.",
+    "request_sent_title": "Anfrage gesendet!",
+    "request_sent_text": "Danke. Wir prüfen die Verfügbarkeit mit unserem lokalen Partner und melden uns innerhalb von 24 Stunden per E-Mail. Es wurde nichts belastet."
   },
   "TourRoute": {
     "your_route": "Ihre Route",

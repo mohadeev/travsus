@@ -2364,7 +2364,9 @@
     "tab_restaurants": "Restaurants",
     "tab_flights": "Flights",
     "tab_rentals": "Vacation Rentals",
-    "where_to_next": "Where to next?"
+    "where_to_next": "Where to next?",
+    "shelf_qatar": "New: Qatar",
+    "shelf_qatar_sub": "Doha, the desert and the Inland Sea, with local guides"
   },
   "Payment": {
     "preparing": "Preparing secure payment…",
@@ -2544,7 +2546,11 @@
     "switch_deposit": "Pay {amount} now",
     "switch_full": "Pay all now",
     "today": "Today",
-    "on_tour_day": "On the tour day"
+    "on_tour_day": "On the tour day",
+    "request_book": "Request to book",
+    "request_note": "No payment now. We confirm availability and the final price by email within 24 hours.",
+    "request_sent_title": "Request sent!",
+    "request_sent_text": "Thank you. We’re checking availability with our local partner and will email you within 24 hours. Nothing has been charged."
   },
   "TourRoute": {
     "your_route": "Your route",
