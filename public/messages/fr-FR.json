@@ -381,7 +381,10 @@
     "private_title": "Circuit privé",
     "private_text": "Uniquement votre groupe, avec votre propre chauffeur et véhicule. Votre réservation est confirmée immédiatement.",
     "help_title": "Besoin d’aide ?",
-    "help_text": "Des questions sur ce circuit ou votre réservation ? Appelez-nous ou discutez avec notre équipe."
+    "help_text": "Des questions sur ce circuit ou votre réservation ? Appelez-nous ou discutez avec notre équipe.",
+    "private_text_request": "Seulement votre groupe, avec votre chauffeur et votre guide. Nous confirmons la disponibilité sous 24 heures.",
+    "request_title": "Réservation sur demande",
+    "request_text": "Envoyez une demande sans rien payer. Nous confirmons par e-mail sous 24 heures."
   },
   "bookings_cancelled_page": {
     "bookings_cancelled_page_Description": "Voir les réservations de circuit annulées",

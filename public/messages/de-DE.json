@@ -381,7 +381,10 @@
     "private_title": "Private Tour",
     "private_text": "Nur Ihre Gruppe, mit eigenem Fahrer und Fahrzeug. Ihre Buchung wird sofort bestätigt.",
     "help_title": "Brauchen Sie Hilfe?",
-    "help_text": "Fragen zu dieser Tour oder Ihrer Buchung? Rufen Sie uns an oder chatten Sie mit unserem Team."
+    "help_text": "Fragen zu dieser Tour oder Ihrer Buchung? Rufen Sie uns an oder chatten Sie mit unserem Team.",
+    "private_text_request": "Nur Ihre Gruppe, mit eigenem Fahrer und Guide. Wir bestätigen die Verfügbarkeit innerhalb von 24 Stunden.",
+    "request_title": "Buchung auf Anfrage",
+    "request_text": "Anfrage senden, jetzt nichts bezahlen. Wir bestätigen innerhalb von 24 Stunden per E-Mail."
   },
   "bookings_cancelled_page": {
     "bookings_cancelled_page_Description": "Stornierte Reisebuchungen anzeigen",

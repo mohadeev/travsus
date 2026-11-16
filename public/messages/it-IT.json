@@ -224,7 +224,10 @@
     "private_title": "Tour privato",
     "private_text": "Solo il tuo gruppo, con autista e veicolo dedicati. La prenotazione è confermata subito.",
     "help_title": "Serve aiuto?",
-    "help_text": "Domande su questo tour o sulla prenotazione? Chiamaci o scrivi in chat al nostro team."
+    "help_text": "Domande su questo tour o sulla prenotazione? Chiamaci o scrivi in chat al nostro team.",
+    "private_text_request": "Solo il suo gruppo, con autista e guida dedicati. Confermiamo la disponibilità entro 24 ore.",
+    "request_title": "Prenotazione su richiesta",
+    "request_text": "Invii una richiesta senza pagare ora. Confermiamo via e-mail entro 24 ore."
   },
   "BookNowAndPayLaterBanner": {
     "disclaimer": "Prenota oggi con soli 20 € e paga il resto il primo giorno del tour. Cancellazione gratuita fino a 24 ore prima.",

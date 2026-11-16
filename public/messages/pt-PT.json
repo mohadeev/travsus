@@ -224,7 +224,10 @@
     "private_title": "Tour privado",
     "private_text": "Apenas o seu grupo, com motorista e veículo próprios. A sua reserva é confirmada de imediato.",
     "help_title": "Precisa de ajuda?",
-    "help_text": "Dúvidas sobre este tour ou a sua reserva? Ligue-nos ou fale com a nossa equipa no chat."
+    "help_text": "Dúvidas sobre este tour ou a sua reserva? Ligue-nos ou fale com a nossa equipa no chat.",
+    "private_text_request": "Só o seu grupo, com motorista e guia próprios. Confirmamos a disponibilidade em 24 horas.",
+    "request_title": "Reserva a pedido",
+    "request_text": "Envie um pedido sem pagar nada agora. Confirmamos por e-mail em 24 horas."
   },
   "BookNowAndPayLaterBanner": {
     "disclaimer": "Reserve hoje com apenas 20 € e pague o resto no primeiro dia do seu tour. Cancelamento gratuito até 24 horas antes.",
