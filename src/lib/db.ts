@@ -31,9 +31,19 @@ const clientsForNow = (): Record<string, Promise<MongoClient>> => {
 	return request ? (request.mongo ??= {}) : processClients
 }
 // Timeouts: a stalled connection fails and is retried instead of waiting
-// forever (a hung request froze whole build workers)
+// forever (a hung request froze whole build workers).
+// Few connections per client: on Workers every request has its own client, and
+// the free Atlas tier allows 500 connections in all. Each client also keeps
+// monitoring sockets to every replica-set member; 'poll' keeps that to one each.
 const connect = (url: string) =>
-	(clientsForNow()[url] ??= new MongoClient(url, { maxPoolSize: 10, serverSelectionTimeoutMS: 5000, connectTimeoutMS: 5000, socketTimeoutMS: 20000 }).connect())
+	(clientsForNow()[url] ??= new MongoClient(url, {
+		maxPoolSize: 3,
+		serverMonitoringMode: 'poll',
+		maxIdleTimeMS: 10_000,
+		serverSelectionTimeoutMS: 5000,
+		connectTimeoutMS: 5000,
+		socketTimeoutMS: 20000,
+	}).connect())
 const mainDb = async (): Promise<Db> => (await connect(MAIN_URL)).db(MAIN_DB)
 /** The geography database keeps its own name (set in its connection string). */
 const placesDb = async (): Promise<Db> => (PLACES_URL === MAIN_URL ? mainDb() : (await connect(PLACES_URL!)).db())
