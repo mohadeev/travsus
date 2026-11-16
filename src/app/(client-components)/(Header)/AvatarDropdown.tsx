@@ -55,7 +55,7 @@ export default function AvatarDropdown({ className = '' }: { className?: string 
 		['my_account', ACCOUNT_LINKS.account, UserRound],
 		['my_bookings', ACCOUNT_LINKS.bookings, CalendarCheck],
 		['wishlist', ACCOUNT_LINKS.saved, Heart],
-		['help', ACCOUNT_LINKS.help, LifeBuoy],
+		['help', `/${locale}${ACCOUNT_LINKS.help}`, LifeBuoy],
 	]
 
 	return (

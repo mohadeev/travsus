@@ -20,7 +20,7 @@ import {
 	type LucideIcon,
 } from 'lucide-react'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
-import { routing } from '@/i18n/routing'
+import { pageAlternates } from '@/lib/seo'
 import { PHOTOS } from '@/lib/photos'
 import HomeMotion from '../(home)/HomeMotion'
 import motion from '../(home)/home.module.css'
@@ -65,10 +65,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
 	return {
 		title: `${t('meta_title')} | TRAVSUS`,
 		description: t('meta_description'),
-		alternates: {
-			canonical: `/${params.locale}/affiliates`,
-			languages: Object.fromEntries(routing.locales.map((l) => [l, `/${l}/affiliates`])),
-		},
+		alternates: pageAlternates(params.locale, '/affiliates'),
 		openGraph: { images: [PHOTOS.referral] },
 	}
 }

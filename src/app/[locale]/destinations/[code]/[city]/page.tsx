@@ -14,6 +14,7 @@ import { countryHref, flag, getCitiesOf, getCity, getCountry, getPlacesOfCity, g
 import guides from '@/content/destination-guides.json'
 import LocalTime from '../../_components/LocalTime'
 import { bigImage, CityCard, MapEmbed, PlaceCard, Section } from '../../_components/ui'
+import { pageAlternates } from '@/lib/seo'
 
 type Props = { params: Promise<{ locale: string; code: string; city: string }> }
 
@@ -41,7 +42,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 	return {
 		title,
 		description: city.description.slice(0, 160),
-		alternates: { canonical: city.href },
+		alternates: pageAlternates(params.locale, `/destinations/${city.country.slug}/${slugify(city.englishName)}`),
 		openGraph: { title, description: city.description.slice(0, 200), images: city.image ? [bigImage(city.image)] : [] },
 	}
 }

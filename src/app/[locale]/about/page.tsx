@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { ArrowRight, BadgeCheck, CalendarCheck, Headphones, Users } from 'lucide-react'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { routing } from '@/i18n/routing'
+import { pageAlternates } from '@/lib/seo'
 import { getHomeData } from '@/lib/homeData'
 import { PHOTOS } from '@/lib/photos'
 
@@ -27,10 +28,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
 	return {
 		title: `${t('meta_title')} | TRAVSUS`,
 		description: t('meta_description'),
-		alternates: {
-			canonical: `/${params.locale}/about`,
-			languages: Object.fromEntries(routing.locales.map((l) => [l, `/${l}/about`])),
-		},
+		alternates: pageAlternates(params.locale, '/about'),
 		openGraph: { images: [PHOTOS.hiking] },
 	}
 }

@@ -1,7 +1,7 @@
 import { companyProfile } from '@/constants/companyProfile'
 import type { Metadata } from 'next'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
-import { routing } from '@/i18n/routing'
+import { pageAlternates } from '@/lib/seo'
 import LegalPage from '@/components/LegalPage'
 
 // Same page for every visitor: rendered once, served from the cache, refreshed at most every hour
@@ -13,10 +13,7 @@ export async function generateMetadata(props: { params: Promise<{ locale: string
 	return {
 		title: `${t('title_notice')} | TRAVSUS`,
 		description: t('desc_notice'),
-		alternates: {
-			canonical: `/${params.locale}/legal-notice`,
-			languages: Object.fromEntries(routing.locales.map((l) => [l, `/${l}/legal-notice`])),
-		},
+		alternates: pageAlternates(params.locale, '/legal-notice'),
 	}
 }
 
@@ -31,7 +28,7 @@ We hereby inform you that the ownership of the Website under the domain: https:/
 
 The access and/or use of the Website grants you the capacity of user, and you accept, from such access and/or use, the following Legal Notice.
 
-The user (hereafter referred to as user) may contact TRAVSUS via www.travsus.com/contact/.
+The user (hereafter referred to as user) may contact TRAVSUS via https://www.travsus.com/contact/.
 
 Public Administrations wishing to contact TRAVSUS should do so electronically, preferably using the official electronic communication channels. If they cannot use these channels for accredited reasons, they should notify any issue arising through the corresponding electronic platform of the Public Administration to the e-mail ${companyProfile.contactEmail}.
 
@@ -99,7 +96,7 @@ The TRAVSUS Whistleblower Channel is managed in accordance with the principles a
 
 Reporting through the TRAVSUS Whistleblower Channel can be done by:
 
-1. Completing the online form available at [https://travsus.com/report/confidential](https://travsus.com/report/confidential)
+1. Completing the online form available at [https://www.travsus.com/report/confidential](https://www.travsus.com/report/confidential)
 2. Sending an email to ${companyProfile?.contactEmail}
 3. Scheduling a face-to-face or telephone meeting with the Compliance Officer
 

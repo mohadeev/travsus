@@ -6,13 +6,14 @@ import { ArrowUpRight } from 'lucide-react'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { countryHref, flag, getCountries, type Country } from '@/lib/destinations'
 import { bigImage } from './_components/ui'
+import { pageAlternates } from '@/lib/seo'
 
 export const revalidate = 3600
 
 export async function generateMetadata(props: { params: Promise<{ locale: string }> }): Promise<Metadata> {
 	const params = await props.params;
 	const t = await getTranslations({ locale: params.locale, namespace: 'Destination' })
-	return { title: `${t('destinations')} | TRAVSUS`, description: t('index_text'), alternates: { canonical: `/${params.locale}/destinations` } }
+	return { title: `${t('destinations')} | TRAVSUS`, description: t('index_text'), alternates: pageAlternates(params.locale, '/destinations') }
 }
 
 function CountryCard({ country, locale, big = false }: { country: Country; locale: string; big?: boolean }) {

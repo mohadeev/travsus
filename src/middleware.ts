@@ -5,6 +5,20 @@ import type { NextFetchEvent, NextRequest } from 'next/server'
 import createMiddleware from 'next-intl/middleware'
 import { routing } from './i18n/routing'
 
+const SITE_HOST = 'www.travsus.com'
+
+/** 301 the apex to www, keeping the path and query string. */
+function apexRedirect(request: NextRequest) {
+	const raw = request.headers.get('x-forwarded-host') || request.headers.get('host') || ''
+	const host = raw.split(',')[0].trim().split(':')[0].toLowerCase()
+	if (host !== 'travsus.com') return null
+	const url = request.nextUrl.clone()
+	url.protocol = 'https:'
+	url.hostname = SITE_HOST
+	url.port = ''
+	return NextResponse.redirect(url, 301)
+}
+
 const intlMiddleware = createMiddleware(routing)
 
 const TOUR_ID = /^[0-9a-f]{24}$/
@@ -52,7 +66,9 @@ async function tourRedirect(
 
 	const slugs = await tourSlugs(request, tourId)
 	const target = (slugs.find((s) => s.language === locale) ?? slugs.find((s) => s.language === routing.defaultLocale) ?? slugs[0])?.slug
-	if (!isSafePath(target)) return null
+	// A stored address with an empty country/city ("//") 404s. Keep a
+	// well-formed address instead of redirecting back to that broken one.
+	if (!isSafePath(target) || target.includes('//')) return null
 
 	const current = decodeURIComponent(request.nextUrl.pathname)
 	if (decodeURIComponent(target) === current) return null
@@ -126,6 +142,83 @@ const withClerk = clerkMiddleware(async (_auth, request) => {
 const PUBLIC_PAGES = new Set(['about', 'affiliates', 'agencies', 'blog', 'contact', 'cookie-policy', 'destinations', 'general-conditions', 'group-tours', 'legal-notice', 'privacy-policy', 'search'])
 
 /**
+ * Real one-segment pages. An unprefixed address of anything else
+ * (/help, /merzouga-desert-camp-guide) is not sent to the homepage:
+ * it is rendered as that locale path, which 404s.
+ */
+const UNPREFIXED_PAGES = new Set([
+	'404',
+	'TawkWidgetEditor',
+	'about',
+	'account-affiliate',
+	'account-delete',
+	'account-savelists',
+	'account-settings',
+	'add-listing',
+	'admin',
+	'affiliates',
+	'agencies',
+	'analyze',
+	'author',
+	'blog',
+	'bookings',
+	'checkout',
+	'cms-admin',
+	'coming-soon',
+	'contact',
+	'cookie-policy',
+	'dashboard',
+	'destinations',
+	'edite-reviews',
+	'edite-tours',
+	'editor',
+	'email',
+	'forms',
+	'forum',
+	'general-conditions',
+	'group-tours',
+	'itsonthemove',
+	'legal-notice',
+	'list-my-business',
+	'listing-car',
+	'listing-car-detail',
+	'listing-car-map',
+	'listing-experiences',
+	'listing-experiences-detail',
+	'listing-experiences-map',
+	'listing-real-estate',
+	'listing-real-estate-map',
+	'listing-stay',
+	'listing-stay-detail',
+	'not-tracking',
+	'pay-done',
+	'places',
+	'plan-trip',
+	'privacy-policy',
+	'report',
+	'rights',
+	'screen-shot',
+	'search',
+	'service-editor',
+	'sign-in',
+	'sign-up',
+	'testing',
+	'tours',
+	'trans-test',
+])
+
+function unknownUnprefixed(request: NextRequest) {
+	const parts = request.nextUrl.pathname.split('/').filter(Boolean)
+	if (parts.length !== 1) return null
+	const segment = decodeURIComponent(parts[0])
+	if ((routing.locales as readonly string[]).includes(segment)) return null
+	if (UNPREFIXED_PAGES.has(segment)) return null
+	const url = request.nextUrl.clone()
+	url.pathname = `/${routing.defaultLocale}/${segment}`
+	return NextResponse.rewrite(url)
+}
+
+/**
  * Pages read (GET) by visitors that never use the session on the server: the
  * home page, tours, destinations and the plain content pages. They skip
  * Clerk's middleware, which reads the request headers: under vinext that marks
@@ -145,6 +238,15 @@ function isPublicPage(request: NextRequest) {
 }
 
 export default function proxy(request: NextRequest, event: NextFetchEvent) {
+	const apex = apexRedirect(request)
+	if (apex) return apex
+	const { pathname } = request.nextUrl
+	const isFile = /\.[a-z0-9]+$/i.test(pathname) // sitemap.xml, robots.txt, llms.txt
+	if (isFile || /^\/(api|trpc|__clerk)(\/|$)/.test(pathname)) {
+		return NextResponse.next()
+	}
+	const missing = unknownUnprefixed(request)
+	if (missing) return missing
 	return isPublicPage(request) ? middleware(request) : withClerk(request, event)
 }
 

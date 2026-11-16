@@ -10,6 +10,7 @@ import { getSessionUser } from '@/lib/session'
 import Avatar from '../Avatar'
 import CommentThread from '../CommentThread'
 import { forumCategory } from '../categories'
+import { pageAlternates } from '@/lib/seo'
 
 export const dynamic = 'force-dynamic'
 
@@ -26,7 +27,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
 	return {
 		title: `${post.title} | TRAVSUS Forum`,
 		description,
-		alternates: { canonical: `/${params.locale}/forum/${post.id}` },
+		alternates: pageAlternates(params.locale, `/forum/${post.id}`),
 		openGraph: { title: post.title, description, type: 'article' },
 	}
 }

@@ -1,7 +1,7 @@
 import { companyProfile } from '@/constants/companyProfile'
 import type { Metadata } from 'next'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
-import { routing } from '@/i18n/routing'
+import { pageAlternates } from '@/lib/seo'
 import LegalPage from '@/components/LegalPage'
 
 // Same page for every visitor: rendered once, served from the cache, refreshed at most every hour
@@ -13,10 +13,7 @@ export async function generateMetadata(props: { params: Promise<{ locale: string
 	return {
 		title: `${t('title_terms')} | TRAVSUS`,
 		description: t('desc_terms'),
-		alternates: {
-			canonical: `/${params.locale}/general-conditions`,
-			languages: Object.fromEntries(routing.locales.map((l) => [l, `/${l}/general-conditions`])),
-		},
+		alternates: pageAlternates(params.locale, '/general-conditions'),
 	}
 }
 
@@ -37,16 +34,16 @@ const generalConditionsContent = `
 
 ## Introductory provisions
 
-TRAVSUS, owner of the Website www.travsus.com (hereafter the "Website"), is a company dedicated to the reservation and sale of activities, excursions guided tours and other touristic activities throughout the world, for those Users who are interested in contracting said services.
+TRAVSUS, owner of the Website https://www.travsus.com (hereafter the "Website"), is a company dedicated to the reservation and sale of activities, excursions guided tours and other touristic activities throughout the world, for those Users who are interested in contracting said services.
 
-TRAVSUS places a platform www.travsus.com at the disposition of its Users, through which a natural or legal person (hereafter "the User", "Users", "the Client", or "Clients") can reserve tourist activities, excursions, guided tours and transfers.
+TRAVSUS places a platform https://www.travsus.com at the disposition of its Users, through which a natural or legal person (hereafter "the User", "Users", "the Client", or "Clients") can reserve tourist activities, excursions, guided tours and transfers.
 
 The details of TRAVSUS are as follows:
 
 - Name: TRAVSUS
 - Address: ${companyProfile.legalAddress}
 - Contact Email: ${companyProfile.contactEmail}
-- Internal Complaint Management System: www.travsus.com/contact/
+- Internal Complaint Management System: https://www.travsus.com/contact/
 
 ## 1. GENERAL CONDITIONS OF WEBSITE USE AND ACCESS
 
@@ -82,7 +79,7 @@ By accepting these General Conditions of Use, Users state that they will provide
 
 Users will bear full responsibility for the use of their account. Therefore, they will also be responsible for the care and confidentiality of their Username and/or passwords which permit access to their account, and state that they will not provide use to third parties, whether temporary or permanent, nor provide access to said third parties.
 
-In accordance with the former, Users must immediately notify TRAVSUS at www.travsus.com/contact/ of any unusual activity regarding their User name and/or password, arising from circumstances such as theft, loss, or unauthorised use, so that TRAVSUS can proceed to cancel or block as soon as the undue use of your User Account is known. If you fail to communicate the above, TRAVSUS will be exempt from any responsibility for the consequences of undue use of the Username or password by unauthorised third parties.
+In accordance with the former, Users must immediately notify TRAVSUS at https://www.travsus.com/contact/ of any unusual activity regarding their User name and/or password, arising from circumstances such as theft, loss, or unauthorised use, so that TRAVSUS can proceed to cancel or block as soon as the undue use of your User Account is known. If you fail to communicate the above, TRAVSUS will be exempt from any responsibility for the consequences of undue use of the Username or password by unauthorised third parties.
 
 The TRAVSUS activity recommendation system used to offer Users the best experiences is based on the following parameters:
 
@@ -101,10 +98,10 @@ Reservations made by each User via the Website are subject to specific condition
 
 In general, the reservation of activities, excursions and guided tours that TRAVSUS promotes on its Website are subject to the following conditions:
 
-- The dates and schedules of the activities, excursions and guided tours published on the Website have been pre-established by the providers and cannot be modified. The only way the date and time of an activity could be modified would be when the User has contracted a private service, in which case this modification would need to be requested via the contact form on the Website, available at www.travsus.com/contact/. In any case, the response of TRAVSUS will depend on the conditions of each provider.
+- The dates and schedules of the activities, excursions and guided tours published on the Website have been pre-established by the providers and cannot be modified. The only way the date and time of an activity could be modified would be when the User has contracted a private service, in which case this modification would need to be requested via the contact form on the Website, available at https://www.travsus.com/contact/. In any case, the response of TRAVSUS will depend on the conditions of each provider.
 - Users can modify the details of their reservation if the conditions of the activity, excursion, and/or guided tour permit this. To be able to make this modification, the User should log in using the link sent in the confirmation email, or directly from the panel available in the User Account under the section marked "Reservations".
 - The minimum notice period to book an activity varies depending on the activity, excursion and/or guided tour that the User would like to reserve. This can be seen in the details of the activity on the Website. TRAVSUS informs you that it is impossible to reserve an activity with less notice than that which has been indicated in the corresponding activity.
-- To reserve an activity, excursion or guided tour privately, please contact TRAVSUS via the contact form available at www.travsus.com/contact/.
+- To reserve an activity, excursion or guided tour privately, please contact TRAVSUS via the contact form available at https://www.travsus.com/contact/.
 
 ### 4.2. – Specific conditions relating to the information of the activity, excursion and/or guided tour reserved.
 
@@ -160,7 +157,7 @@ If the service contracted takes place outside Ireland, TRAVSUS will send a purch
 
 If the service contracted takes place within Ireland, TRAVSUS will send an invoice for the supply of services as intermediaries in the provider's place, in accordance with the relevant Irish tax regulations.
 
-Users shall notify TRAVSUS of any undue or fraudulent charges on the card that was used for the purchase by writing to www.travsus.com/contact/ as soon as possible so that TRAVSUS can take the necessary steps.
+Users shall notify TRAVSUS of any undue or fraudulent charges on the card that was used for the purchase by writing to https://www.travsus.com/contact/ as soon as possible so that TRAVSUS can take the necessary steps.
 
 In order to offer you Klarna's payment methods, we may pass on your personal data to Klarna in the form of contact as well as order details in the payment process, in order for Klarna to assess whether you qualify for its payment methods and also to adapt the means of payment available to you. Your transferred personal data is processed in accordance with Klarna's privacy policy.
 
@@ -213,7 +210,7 @@ vii. Manipulated and extrapolated content: It is expressly forbidden to publish 
 
 Communications between TRAVSUS and the Users should be made by email with an acknowledgement of receipt or via another means of communication.
 
-i. Communication to TRAVSUS must be sent to ${companyProfile.bookingsEmail} or to www.travsus.com/contact/
+i. Communication to TRAVSUS must be sent to ${companyProfile.bookingsEmail} or to https://www.travsus.com/contact/
 ii. Communication to the Users will take place using the email used to register.
 
 ## 10. PRODUCT LIABILITY
@@ -297,7 +294,7 @@ In any case, TRAVSUS makes it clear to the Users that they have a Claim Form by 
 
 In the event that the User believes that the rights of the consumer have been infringed, the User must first complain to the supplier who provided the service.
 
-The User may also contact TRAVSUS to exercise their consumer rights, through the Internal Complaints Management System: www.travsus.com/contact/
+The User may also contact TRAVSUS to exercise their consumer rights, through the Internal Complaints Management System: https://www.travsus.com/contact/
 
 In any case, TRAVSUS informs the User that they have a Complaints Form through which they can make any complaint or claim in relation to TRAVSUS services.
 

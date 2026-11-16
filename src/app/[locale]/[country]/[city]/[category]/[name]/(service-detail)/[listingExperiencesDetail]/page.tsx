@@ -16,6 +16,7 @@ import {
 	tourTitle,
 	tourUrl,
 } from './tourSeo'
+import { tripCities } from './itinerary/route'
 
 // Same HTML for every visitor (the "saved" heart is set in the browser), so
 // each tour is rendered once and served from the cache (Cloudflare KV on the
@@ -73,8 +74,8 @@ export async function generateMetadata(
 	const [t, home] = await Promise.all([getTranslations({ locale, namespace: 'TourPage' }), getHomeData(locale).catch(() => null)])
 	const card = home?.tours.find((x) => x.id === tour.id)
 	const days = Array.isArray(tour.days) ? tour.days.length : card?.days ?? 0
-	// The city in the page's language (the first day's), else the start address
-	const city = tour.days?.[0]?.city || tour.startAddress?.city || card?.city || ''
+	// Departure city (where the tour starts), not the first overnight stop
+	const city = tripCities(tour.days, tour.startAddress?.city, tour.endAddress?.city).departure || card?.city || ''
 	const price = card?.pricePerPerson
 		? new Intl.NumberFormat(locale, { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(Math.ceil(card.pricePerPerson))
 		: ''
@@ -150,8 +151,7 @@ const DetailPage = async (props: DetailPageProps) => {
 			...(['pay', 'cancel', 'ahead'] as const).map((key) => ({ question: tFaq(`${key}_q`), answer: tFaq(`${key}_a`) })),
 		]
 		const jsonLd = tourJsonLd({ ...tour, faq }, locale, {
-			prices: extras?.prices ?? undefined,
-			currency: tour.pricingTiers?.[0]?.pricing?.currency || 'EUR',
+			fromPrice: extras?.fromPricePerPerson ?? null,
 		})
 
 		return (

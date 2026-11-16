@@ -20,6 +20,7 @@ import { formatCurrency } from '@/utils/formatCurrency'
 import slugifySecond from '@/utils/slugify'
 import { useTranslations } from '@/lib/i18n'
 import { slugify } from 'transliteration'
+import { repairTourSlug, routePlaceSlugs, slugifyPlace } from '@/lib/tourPath'
 import { openTourPreview } from '@/store/slices/tourPage'
 
 export interface ExperiencesCardProps {
@@ -62,8 +63,9 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 		slugs,
 	}: any = data
 
-	const day = days[0]
-	const { slug } = slugs?.find((lang) => locale === lang.language) || []
+	const day = days?.[0]
+	const found = slugs?.find((lang: { language: string; slug: string }) => locale === lang.language)
+	const slug = found?.slug as string | undefined
 
 	useEffect(() => {
 		const fetchPrices = async () => {
@@ -93,11 +95,13 @@ const ExperiencesCard: FC<ExperiencesCardProps> = ({
 		region[0].city = start?.name || ''
 	}
 
-	const href =
-		slug ||
-		(`/${locale}/${slugifySecond(
-			`${slugify(day?.country?.name)}/${slugify(day?.city?.name)}/${slugify(secondT('tours'))}/${slugify(title)}/${serviceId}`,
-		)}` as Route)
+	const countryName = day?.country?.name || (typeof day?.country === 'string' ? day.country : '') || data?.startAddress?.country || ''
+	const cityName = day?.city?.name || (typeof day?.city === 'string' ? day.city : '') || data?.startAddress?.city || ''
+	const built = `/${locale}/${slugifySecond(
+		`${slugify(countryName)}/${slugify(cityName)}/${slugify(secondT('tours'))}/${slugify(title)}/${serviceId}`,
+	)}`
+	const place = routePlaceSlugs(days, data?.startAddress)
+	const href = (repairTourSlug(slug || built, place.country || slugifyPlace(countryName), place.city || slugifyPlace(cityName)) || built) as Route
 
 	const handleCardClick = () => {
 		// The tour page draws this instantly (TourPreviewShell) while it loads

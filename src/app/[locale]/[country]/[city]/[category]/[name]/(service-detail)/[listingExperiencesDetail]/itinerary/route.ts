@@ -87,6 +87,20 @@ const PLACES: [string, number, number, string[]?][] = [
 	['Phi Phi', 7.7407, 98.7784],
 	// Maldives
 	['Malé', 4.1755, 73.5093, ['male']],
+	// France
+	['Paris', 48.8566, 2.3522],
+	['Nice', 43.7102, 7.262],
+	['Lyon', 45.764, 4.8357],
+	['Marseille', 43.2965, 5.3698],
+	['Bordeaux', 44.8378, -0.5792],
+	// Spain
+	['Madrid', 40.4168, -3.7038],
+	['Barcelona', 41.3874, 2.1686],
+	['Seville', 37.3891, -5.9845, ['sevilla']],
+	['Malaga', 36.7213, -4.4214, ['málaga']],
+	// Italy (towns named in multi-city itineraries)
+	['Siena', 43.3188, 11.3308],
+	['San Gimignano', 43.4677, 11.0432],
 ]
 
 const normalize = (text: string) =>
@@ -121,6 +135,48 @@ function placesIn(text: string): Place[] {
 }
 
 const findPlace = (name?: string | null) => (name ? placesIn(name)[0] : undefined)
+
+/** Place key → country slug used in tour URLs (/italy/rome/…). */
+const COUNTRY_SLUG: Record<string, string> = {}
+for (const [country, names] of [
+	['morocco', ['Marrakech', 'Boumalne Dades', 'Dades Valley', 'Merzouga', 'Fes', 'Tinghir', 'Todra Gorge', 'Sefrou', 'Bhalil', 'Ifrane', 'Azrou', 'Meknes', 'Volubilis', 'Moulay Idriss', 'Chefchaouen', 'Akchour', 'Tetouan', 'Tangier', 'Cap Spartel', 'Ait Ben Haddou', 'Ouarzazate', 'Skoura', 'Midelt', 'Essaouira', 'Ourika Valley', "Tizi n'Tichka", 'Erfoud', 'Rissani', 'Alnif', 'Draa Valley', 'Zagora', 'Ziz Valley', 'Rabat', 'Casablanca', 'Agadir', 'Imlil', 'Ouzoud']],
+	['albania', ['Tirana', 'Shkoder', 'Theth', 'Valbona', 'Durrës', 'Ksamil', 'Butrint', 'Gjirokaster']],
+	['italy', ['Rome', 'Vatican City', 'Florence', 'Venice', 'Murano', 'Amalfi Coast', 'Capri', 'Siena', 'San Gimignano']],
+	['thailand', ['Bangkok', 'Ayutthaya', 'Chiang Mai', 'Doi Suthep', 'Phuket', 'Krabi', 'Phi Phi']],
+	['maldives', ['Malé']],
+	['france', ['Paris', 'Nice', 'Lyon', 'Marseille', 'Bordeaux']],
+	['spain', ['Madrid', 'Barcelona', 'Seville', 'Malaga']],
+] as [string, string[]][]) {
+	for (const name of names) COUNTRY_SLUG[normalize(name)] = country
+}
+
+export function countrySlugFor(place: Place) {
+	return COUNTRY_SLUG[place.key] || ''
+}
+
+const samePlace = (a?: string | null, b?: string | null) => {
+	if (!a || !b) return false
+	const left = findPlace(a)
+	const right = findPlace(b)
+	if (left && right) return left.key === right.key
+	return normalize(a) === normalize(b)
+}
+
+/**
+ * Departure and arrival from the itinerary titles ("Marrakech to Fes"),
+ * not the first overnight stop. Stored addresses win when they name the
+ * same place; a stored end city that only repeats the start is replaced
+ * when the route finishes somewhere else.
+ */
+export function tripCities(days: any[] = [], startCity?: string | null, endCity?: string | null) {
+	const path = buildRoute(days).path
+	const start = path[0]
+	const end = path[path.length - 1]
+	const departure = startCity && (!start || samePlace(startCity, start.name)) ? startCity : start?.name || startCity || ''
+	const oneWay = !!(start && end && start.key !== end.key)
+	const arrival = oneWay ? (endCity && samePlace(endCity, end!.name) ? endCity : end!.name) : endCity || end?.name || departure
+	return { departure, arrival }
+}
 
 /**
  * Places in a day title, in travel order:

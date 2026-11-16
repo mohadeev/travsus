@@ -1,18 +1,22 @@
 // SEO helpers for the tour detail page: URLs, text cleanup and JSON-LD.
 import { routing } from '@/i18n/routing'
 import { stripLinks } from '@/components/text/LinkedText'
+import { SITE_URL } from '@/lib/seo'
+import { repairTourSlugs } from '@/lib/tourPath'
 
-export const SITE_URL = (
-	process.env.NEXT_PUBLIC_SITE_URL || 'https://www.travsus.com'
-).replace(/\/$/, '')
+export { SITE_URL }
 const BRAND = 'TRAVSUS'
 const DEFAULT_LOCALE = routing.defaultLocale
 
 type Slug = { language: string; slug: string }
 
+function slugsOf(tour: any): Slug[] {
+	return repairTourSlugs(tour.slugs, tour.days, tour.startAddress)
+}
+
 /** Absolute URL of the tour in `locale` (falls back to the default-language slug). */
 export function tourUrl(tour: any, locale: string): string {
-	const slugs: Slug[] = tour.slugs ?? []
+	const slugs = slugsOf(tour)
 	const slug =
 		slugs.find((s) => s.language === locale)?.slug ??
 		slugs.find((s) => s.language === DEFAULT_LOCALE)?.slug ??
@@ -23,8 +27,8 @@ export function tourUrl(tour: any, locale: string): string {
 /** hreflang map: every language the tour has a slug for, plus x-default. */
 export function tourAlternates(tour: any): Record<string, string> {
 	const languages: Record<string, string> = {}
-	for (const { language, slug } of (tour.slugs ?? []) as Slug[]) {
-		if (language && slug) languages[language] = `${SITE_URL}${slug}`
+	for (const { language, slug } of slugsOf(tour)) {
+		if (language && slug && !slug.includes('//')) languages[language] = `${SITE_URL}${slug}`
 	}
 	languages['x-default'] = tourUrl(tour, DEFAULT_LOCALE)
 	return languages
@@ -69,18 +73,59 @@ export function tourTitle(tour: any, suffix?: string): string {
 	return base
 }
 
-const DESCRIPTION_MAX = 158
+const DESCRIPTION_MAX = 155
+
+const wordsOf = (value: string) =>
+	value
+		.toLowerCase()
+		.replace(/[^\p{L}\p{N}]+/gu, ' ')
+		.trim()
+		.split(/\s+/)
+		.filter(Boolean)
+
+/** The tour text already starts the way the generated intro does. */
+function repeatsOpening(intro: string, summary: string) {
+	const a = wordsOf(intro)
+	const b = wordsOf(summary)
+	if (a.length < 2 || b.length < 2 || a[0] !== b[0] || a[1] !== b[1]) return false
+	let shared = 0
+	while (shared < a.length && shared < b.length && a[shared] === b[shared]) shared++
+	return shared >= 2
+}
+
+/** Whole sentences that fit, otherwise the last full word. No ellipsis. */
+function fitDescription(value: string, max = DESCRIPTION_MAX) {
+	const text = value.replace(/\s+/g, ' ').trim()
+	if (text.length <= max) return text
+	const sentences = text.match(/[^.!?]+[.!?]+(?:\s|$)/g) || []
+	let out = ''
+	for (const sentence of sentences) {
+		const next = `${out}${sentence}`.trim()
+		if (next.length > max) break
+		out = next
+	}
+	if (out.length >= 40) return out
+	const cut = text.lastIndexOf(' ', max)
+	return (cut > 40 ? text.slice(0, cut) : text.slice(0, max)).replace(/[.,;:–—-]+$/u, '').trim()
+}
 
 /**
- * Meta description, written to be clicked in Google's results: what it is and
- * the price first ("Private 10-day tour from Marrakech, from €276 per person."),
- * then the tour's own summary, then the booking promises when there is room.
+ * Meta description under ~155 characters. The generated intro is skipped when
+ * the tour text already starts the same way, so the opening is not repeated,
+ * and the text ends on a sentence or a whole word.
  */
 export function tourDescription(tour: any, intro = '', outro = ''): string {
 	const summary = plainText(seoText(tour, 'metaDescription') || tour.subtitle || tour.overview)
-	const start = intro ? `${intro} ${summary}` : summary
-	const full = outro ? `${start} ${outro}` : start
-	return full.length <= DESCRIPTION_MAX ? full : plainText(start, DESCRIPTION_MAX)
+	let text = summary
+	if (intro && !repeatsOpening(intro, summary)) text = `${intro} ${summary}`.trim()
+	else if (intro && !summary) text = intro
+	const price = intro.includes(',') ? intro.slice(intro.lastIndexOf(',') + 1).trim() : ''
+	if (price && /\d/.test(price) && text && !text.includes(price.replace(/\.$/, ''))) {
+		const withPrice = `${text.replace(/[.]\s*$/, '')}. ${price.charAt(0).toUpperCase()}${price.slice(1)}`
+		if (withPrice.length <= DESCRIPTION_MAX) text = withPrice
+	}
+	if (outro && text && !text.includes(outro) && `${text} ${outro}`.length <= DESCRIPTION_MAX) text = `${text} ${outro}`
+	return fitDescription(text || intro)
 }
 
 export const tourImages = (tour: any): string[] =>
@@ -112,32 +157,35 @@ export function tourJsonLd(
 	tour: any,
 	locale: string,
 	{
-		prices,
-		currency,
-	}: { prices?: { low: number; high: number }; currency: string },
+		fromPrice,
+	}: { fromPrice?: number | null },
 ) {
 	const url = tourUrl(tour, locale)
 	const images = richImages(tour)
 	const description = plainText(tour.overview)
 	const days: any[] = tour.days ?? []
-	const reviews: any[] = tour.formattedReviews ?? []
+	const reviews: any[] = (tour.formattedReviews ?? []).filter(
+		(review: any) => Number(review?.rating) > 0 && (review.tourId == null || review.tourId === tour.id),
+	)
 	const organization = { '@id': `${SITE_URL}/#organization` }
 
-	// Real per-person prices: "from" the cheapest group size up to the dearest
-	const offer = prices
+	// The same per-person "from" price the page shows, in euros (not the
+	// cheapest group size, which is a different amount).
+	const shown = fromPrice && fromPrice > 0 ? Math.ceil(fromPrice) : 0
+	const offer = shown
 		? {
 				'@type': 'AggregateOffer',
 				url,
-				lowPrice: prices.low.toFixed(2),
-				highPrice: prices.high.toFixed(2),
-				priceCurrency: currency,
+				lowPrice: String(shown),
+				highPrice: String(shown),
+				priceCurrency: 'EUR',
 				availability: 'https://schema.org/InStock',
 				seller: organization,
 			}
 		: undefined
 
 	const rating =
-		tour.reviewsCount > 0 && tour.averageRating
+		reviews.length > 0 && tour.reviewsCount > 0 && tour.averageRating
 			? {
 					'@type': 'AggregateRating',
 					ratingValue: tour.averageRating,
@@ -202,7 +250,7 @@ export function tourJsonLd(
 			...(offer && { offers: offer }),
 			...(rating && { aggregateRating: rating }),
 			...(reviews.length && {
-				review: reviews.slice(0, 5).map((r) => ({
+				review: reviews.slice(0, 5).map((r: any) => ({
 					'@type': 'Review',
 					reviewRating: {
 						'@type': 'Rating',

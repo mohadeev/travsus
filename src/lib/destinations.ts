@@ -103,6 +103,19 @@ function toCity(row: any, country: Country, locale: string): City {
 	}
 }
 
+/** English-name slug → city row, for one country (accent-insensitive). */
+const citiesBySlug = cache(async (countryId: string) => {
+	const { data } = await db.from(T.cities).select('id, image, translations').eq('countryId', countryId)
+	const map = new Map<string, any>()
+	for (const row of (data ?? []) as any[]) {
+		const slug = slugify(pick(row.translations, 'en-US').englishName)
+		if (!slug) continue
+		const current = map.get(slug)
+		if (!current || (row.image && !current.image)) map.set(slug, row)
+	}
+	return map
+})
+
 /** A city by its id (old links) or by country + name slug (/destinations/mar/tangier) */
 export const getCity = cache(async (countrySlug: string, slug: string, locale: string, id?: string | null): Promise<City | null> => {
 	const country = await getCountry(countrySlug, locale)
@@ -111,22 +124,36 @@ export const getCity = cache(async (countrySlug: string, slug: string, locale: s
 		const { data } = await db.from(T.cities).select(CITY_SELECT).eq('id', id).eq('countryId', country.id).maybeSingle()
 		if (data) return toCity(data, country, locale)
 	}
-	// By English name: the slug's words, matched without case
+	// By English name. The usual path matches the text directly. "Málaga" does
+	// not match "malaga" that way, which made /destinations/spain/malaga a 404,
+	// so a miss falls back to the accent-insensitive slug of the country's cities.
 	const words = slug.split('-').filter(Boolean)
-	if (!words.length) return null
-	// (the same name can exist in several countries: keep this country's)
-	const { data: texts } = await db.from(T.geoTexts).select('contentId, text').eq('type', 'city').eq('language', 'en-US').ilike('text', words.join('%')).limit(50)
-	const ids = ((texts ?? []) as any[]).filter((t) => slugify(t.text) === slug).map((t) => t.contentId)
-	if (!ids.length) return null
-	// Several matches in one country: the one with a photo first
-	const { data } = await db.from(T.cities).select(CITY_SELECT).in('contentId', ids).eq('countryId', country.id).order('image', { ascending: true, nullsFirst: false }).limit(1).maybeSingle()
+	if (words.length) {
+		const { data: texts } = await db.from(T.geoTexts).select('contentId, text').eq('type', 'city').eq('language', 'en-US').ilike('text', words.join('%')).limit(50)
+		const ids = ((texts ?? []) as any[]).filter((t) => slugify(t.text) === slug).map((t) => t.contentId)
+		if (ids.length) {
+			const { data } = await db.from(T.cities).select(CITY_SELECT).in('contentId', ids).eq('countryId', country.id).order('image', { ascending: true, nullsFirst: false }).limit(1).maybeSingle()
+			if (data) return toCity(data, country, locale)
+		}
+	}
+	const row = (await citiesBySlug(country.id)).get(slug.toLowerCase())
+	if (!row?.id) return null
+	const { data } = await db.from(T.cities).select(CITY_SELECT).eq('id', row.id).maybeSingle()
 	return data ? toCity(data, country, locale) : null
 })
 
-/** Cities of a country that have a photo */
+/** Cities of a country that have a photo and whose page actually opens. */
 export const getCitiesOf = cache(async (country: Country, locale: string, limit = 24) => {
 	const { data } = await db.from(T.cities).select(CITY_SELECT).eq('countryId', country.id).not('image', 'is', null).limit(limit)
-	return ((data ?? []) as any[]).map((r) => toCity(r, country, locale))
+	const cities = ((data ?? []) as any[]).map((r) => toCity(r, country, locale))
+	const visible = await Promise.all(
+		cities.map(async (city) => {
+			const slug = slugify(city.englishName)
+			if (!slug) return null
+			return (await getCity(country.slug, slug, locale)) ? city : null
+		}),
+	)
+	return visible.filter((city): city is City => city !== null)
 })
 
 const PLACE_SELECT = 'id, "cityId", geo, image, rating, category, subcategory, tags, address, website, translations'

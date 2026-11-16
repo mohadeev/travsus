@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { redirect } from 'next/navigation'
 import { ArrowRight, MessageCircle, Search } from 'lucide-react'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
-import { routing } from '@/i18n/routing'
+import { pageAlternates } from '@/lib/seo'
 import { forumCategoryCounts, listForumPosts } from '@/lib/forum'
 import Avatar from './Avatar'
 import NewDiscussion from './NewDiscussion'
@@ -26,10 +26,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
 	return {
 		title: `${t('meta_title')} | TRAVSUS`,
 		description: t('meta_description'),
-		alternates: {
-			canonical: `/${params.locale}/forum`,
-			languages: Object.fromEntries(routing.locales.map((l) => [l, `/${l}/forum`])),
-		},
+		alternates: pageAlternates(params.locale, '/forum'),
 		// Search results and category views point to the main list
 		robots: filtered ? { index: false, follow: true } : undefined,
 	}
