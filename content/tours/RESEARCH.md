@@ -185,3 +185,9 @@ Translations were short summaries with no FAQ: replaced with full translations i
 - Our edge: night at Ait Ben Haddou (sunset, not midday), full Sahara day with 2 nights, free day in Chefchaouen, Tetouan medina + Café Hafa, Rabat's Chellah.
 - Before: short days, 3 FAQs. Now: 14 rich days (Imlil 1,740 m / Aroumd ~1,900 m / Toubkal 4,167 m, Koutoubia 77 m, Saadian Tombs 1917, Tichka ~2,260 m, Ait Ben Haddou UNESCO 1987, Todra ~300 m walls, Erg Chebbi ~22 km/~150 m, Qarawiyyin 859, Chefchaouen 1471, Tetouan UNESCO 1997, Café Hafa 1921), 13 FAQs, 10 languages.
 - Data issue: tour END city is set to Marrakech but the route finishes in Casablanca.
+
+## Essaouira day trip from Marrakech with a local guide (1de90eded82dfb301dad3588)
+- Competitors reviewed (search summaries): Magpie "Essaouira Full-Day Trip from Marrakech", Musement/easyJet "Essaouira day trip with optional guide", TourRadar listing, WithLocals private local host, The Abroad Guide reviews of shared small-group trips.
+- What reviews say: shared trips are cheap but guidance is thin ("guide stays on the minibus", "self-guided with recommendations"); private local-host tours rate higher.
+- Our edge: a real local guide walks 2 hours (boatyard, fish auction, Skala, thuya workshops, Mellah) and still ~3 h free time; private timing.
+- Now: rich overview and day (Cornut 1760s for Sultan Mohammed ben Abdallah, UNESCO 2001, Orson Welles' Othello, thuya craft, Mogador island, kitesurf beach), honest goats note, port-grill pricing tip, 13 FAQs, 10 languages.
