@@ -34,6 +34,7 @@ const COLUMNS: [string, [string, string][]][] = [
 		[
 			['About', '/about'],
 			['Contact', '/contact'],
+			['Investors', '/investors'],
 		],
 	],
 	[
