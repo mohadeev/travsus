@@ -31,7 +31,8 @@ async function allowed(request: NextRequest) {
 	return isOwner()
 }
 
-type Photo = { source?: string; url?: string; public_id?: string; credit?: { author?: string; source?: string; license?: string }; alt?: string }
+// data: the photo itself as a data: URI, for hosts that refuse Cloudinary's fetcher (source still names it)
+type Photo = { source?: string; url?: string; data?: string; public_id?: string; credit?: { author?: string; source?: string; license?: string }; alt?: string }
 
 /** Copies a photo to Cloudinary once (kept when the same source was already uploaded). */
 async function stored(photo: Photo, folder: string, known: Map<string, any>) {
@@ -41,7 +42,7 @@ async function stored(photo: Photo, folder: string, known: Map<string, any>) {
 	if (done) return done
 	const result = source.includes('res.cloudinary.com/')
 		? { secure_url: source, public_id: photo.public_id ?? null }
-		: await cloudinary.v2.uploader.upload(source, { folder, resource_type: 'image' })
+		: await cloudinary.v2.uploader.upload(photo.data?.startsWith('data:image/') ? photo.data : source, { folder, resource_type: 'image' })
 	const image = { url: result.secure_url, public_id: result.public_id, source, credit: photo.credit ?? null, alt: photo.alt ?? null }
 	known.set(source, image)
 	return image
