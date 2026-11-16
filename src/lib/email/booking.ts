@@ -88,6 +88,20 @@ export async function sendBookingConfirmed(bookingId: string) {
 	}
 }
 
+/** Tour booked on request: "request received" to the customer, notice to the team. Never throws. */
+export async function sendBookingRequest(bookingId: string) {
+	try {
+		const data = await bookingEmailData(bookingId)
+		if (!data) return
+		if (data.customerEmail) await sendTemplate('booking-request-customer', { to: { email: data.customerEmail, name: data.customerName }, data })
+		const { tourId } = data as BookingEmail & { tourId: string }
+		const payUrl = `${SITE}/en-US/checkout/checkout?bookingId=${bookingId}&serviceId=${tourId}&plan=full`
+		await sendTemplate('booking-request-team', { to: OWNER_EMAIL, data: { ...data, payUrl } })
+	} catch (error) {
+		console.error('Booking request emails failed:', error)
+	}
+}
+
 /** Book now, pay later: the tour-day charge failed. Asks the customer to pay. Never throws. */
 export async function sendBalanceFailed(bookingId: string, reason?: string) {
 	try {

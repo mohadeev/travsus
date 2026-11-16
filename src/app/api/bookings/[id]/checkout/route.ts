@@ -38,7 +38,8 @@ export async function POST(request: NextRequest, props: { params: Promise<{ id: 
 	)
 	if (!booking) return NextResponse.json({ error: 'NOT_FOUND' }, { status: 404 })
 	// Full price or deposit: only unpaid bookings. Balance: only after a deposit.
-	const allowed = plan === 'balance' ? BALANCE_STATES : OPEN_STATES
+	// 'requested': a request-to-book tour the team confirmed, paid from the link in the team email
+	const allowed = plan === 'balance' ? BALANCE_STATES : [...OPEN_STATES, 'requested']
 	if (!allowed.includes(booking.bookingState)) return NextResponse.json({ error: 'ALREADY_PAID' }, { status: 409 })
 	const total = bookingTotal(booking.lineItems)
 	if (plan === 'deposit' && !depositAvailable(total, booking.selectedDate)) return NextResponse.json({ error: 'DEPOSIT_UNAVAILABLE' }, { status: 400 })

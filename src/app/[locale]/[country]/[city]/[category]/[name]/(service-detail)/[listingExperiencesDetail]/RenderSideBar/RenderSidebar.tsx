@@ -70,6 +70,9 @@ const RenderSidebar: FC = () => {
 	const hasStays = tourHasStays(tour.accommodations)
 
 	const [reserving, setReserving] = useState(false)
+	// Tours booked on request: no payment now, the team confirms by email
+	const onRequest = tour.bookingMode === 'request'
+	const [requested, setRequested] = useState(false)
 	// Book now, pay later: €20 now, the rest on the first tour day
 	const [plan, setPlan] = useState<PaymentPlan>('deposit')
 	const [needsDate, setNeedsDate] = useState(false)
@@ -125,6 +128,17 @@ const RenderSidebar: FC = () => {
 				return
 			}
 			const result = await response.json()
+			if (result.id && onRequest) {
+				const sent = await fetch(`/api/bookings/${result.id}/request`, { method: 'POST' })
+				if (sent.ok) {
+					setRequested(true)
+					setReserving(false)
+					return
+				}
+				alert((await sent.json().catch(() => ({})))?.error || tOld('no_booking_created'))
+				setReserving(false)
+				return
+			}
 			if (result.id) {
 				router.push(`/checkout/checkout?bookingId=${result.id}&serviceId=${tour.id}&plan=${payPlan}` as Route)
 				return
@@ -142,7 +156,7 @@ const RenderSidebar: FC = () => {
 	const updating = status === 'loading'
 	// The deposit needs a real balance; without a date yet it is still offered (the date is asked first)
 	const tripTotal = total || perPerson * people
-	const canDeposit = hasDate ? depositAvailable(tripTotal, booking.selectedDate) : tripTotal - DEPOSIT_EUR >= 20
+	const canDeposit = onRequest ? false : hasDate ? depositAvailable(tripTotal, booking.selectedDate) : tripTotal - DEPOSIT_EUR >= 20
 	const payPlan: PaymentPlan = canDeposit ? plan : 'full'
 	const deposit = formatCurrency(DEPOSIT_EUR)
 	const wholeMoney = new Intl.NumberFormat(locale, { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 })
@@ -157,6 +171,18 @@ const RenderSidebar: FC = () => {
 					{ value: 'Luxury', title: t('hotel_luxury'), hint: t('hotel_luxury_hint'), items: inclusions('luxury') },
 				]
 			: [{ value: hotel, title: tInfo('private_title'), hint: tInfo('private_text'), items: inclusions('standard') }]
+
+	if (requested) {
+		return (
+			<div role="status" className="listingSectionSidebar__wrap !space-y-4 text-center max-lg:!rounded-none max-lg:!border-0 max-lg:!shadow-none">
+				<span className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-brand-50">
+					<Check className="h-7 w-7 text-brand-600" strokeWidth={2.2} />
+				</span>
+				<p className="text-2xl font-bold">{t('request_sent_title')}</p>
+				<p className="text-base text-ink-soft dark:text-neutral-400">{t('request_sent_text')}</p>
+			</div>
+		)
+	}
 
 	return (
 		<div className="listingSectionSidebar__wrap !space-y-5 max-lg:!rounded-none max-lg:!border-0 max-lg:!px-6 max-lg:!pb-0 max-lg:!shadow-none">
@@ -330,8 +356,9 @@ const RenderSidebar: FC = () => {
 					disabled={reserving}
 					className="h-14 w-full rounded-full bg-brand-500 px-6 text-lg font-bold text-white shadow-[0_6px_18px_-6px_rgba(242,97,42,0.7)] transition hover:bg-brand-600 active:scale-[0.98] disabled:opacity-60"
 				>
-					{reserving ? tOld('processing') : payPlan === 'deposit' ? t('reserve_deposit', { amount: deposit }) : t('reserve')}
+					{reserving ? tOld('processing') : onRequest ? t('request_book') : payPlan === 'deposit' ? t('reserve_deposit', { amount: deposit }) : t('reserve')}
 				</button>
+				{onRequest && <p className="mt-2 text-center text-sm text-ink-soft dark:text-neutral-400">{t('request_note')}</p>}
 			</div>
 
 			{booking.lineItems.length > 0 && (

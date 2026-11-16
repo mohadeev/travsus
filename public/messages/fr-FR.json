@@ -3664,7 +3664,9 @@
     "tab_restaurants": "Restaurants",
     "tab_flights": "Vols",
     "tab_rentals": "Locations de vacances",
-    "where_to_next": "Prochaine destination ?"
+    "where_to_next": "Prochaine destination ?",
+    "shelf_qatar": "Nouveau : le Qatar",
+    "shelf_qatar_sub": "Doha, le désert et la mer intérieure, avec des guides locaux"
   },
   "Payment": {
     "preparing": "Préparation du paiement sécurisé…",
@@ -3844,7 +3846,11 @@
     "switch_deposit": "Payer {amount} maintenant",
     "switch_full": "Tout payer",
     "today": "Aujourd’hui",
-    "on_tour_day": "Le jour du circuit"
+    "on_tour_day": "Le jour du circuit",
+    "request_book": "Demander une réservation",
+    "request_note": "Aucun paiement maintenant. Nous confirmons la disponibilité et le prix final par e-mail sous 24 heures.",
+    "request_sent_title": "Demande envoyée !",
+    "request_sent_text": "Merci. Nous vérifions la disponibilité avec notre partenaire local et vous écrivons sous 24 heures. Rien n’a été débité."
   },
   "TourRoute": {
     "your_route": "Votre itinéraire",

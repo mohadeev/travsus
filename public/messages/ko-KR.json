@@ -2651,7 +2651,9 @@
     "tab_restaurants": "레스토랑",
     "tab_flights": "항공권",
     "tab_rentals": "휴가용 렌탈",
-    "where_to_next": "다음 여행지는?"
+    "where_to_next": "다음 여행지는?",
+    "shelf_qatar": "새로운 여행지: 카타르",
+    "shelf_qatar_sub": "현지 가이드와 함께하는 도하, 사막, 내해"
   },
   "Payment": {
     "preparing": "안전한 결제를 준비하는 중…",
@@ -2831,7 +2833,11 @@
     "switch_deposit": "지금 {amount} 결제",
     "switch_full": "전액 결제",
     "today": "오늘",
-    "on_tour_day": "투어 당일"
+    "on_tour_day": "투어 당일",
+    "request_book": "예약 요청하기",
+    "request_note": "지금은 결제하지 않습니다. 24시간 이내에 예약 가능 여부와 최종 가격을 이메일로 확인해 드립니다.",
+    "request_sent_title": "요청을 보냈습니다!",
+    "request_sent_text": "감사합니다. 현지 파트너와 예약 가능 여부를 확인한 뒤 24시간 이내에 이메일로 연락드리겠습니다. 결제된 금액은 없습니다."
   },
   "TourRoute": {
     "your_route": "여행 경로",

@@ -21,6 +21,13 @@ type Props = {
 }
 
 const DESERT = /\b(desert|sahara|merzouga|erg chebbi|zagora|dunes?)\b/
+const QATAR = /\b(qatar|doha)\b/
+
+/** The top city of each country first (so a new country shows up front), then the rest. */
+function byCountry(list: HomeDestination[]) {
+	const firsts = list.filter((d, i) => list.findIndex((x) => x.country === d.country) === i)
+	return [...firsts, ...list.filter((d) => !firsts.includes(d))]
+}
 
 export default function HomePage({ tours, destinations }: Props) {
 	const t = useTranslations('Home')
@@ -36,6 +43,8 @@ export default function HomePage({ tours, destinations }: Props) {
 		picked.slice(0, 4).forEach((tour) => seen.add(tour.id))
 		return picked.map(({ searchText, ...card }) => card) // search words aren't needed in the browser
 	}
+	// New destination first: its tours have no visits yet, so they would sit low in "Top tours"
+	const qatar = row((tour) => QATAR.test(tour.searchText))
 	const top = row(() => true)
 	const desert = row((tour) => DESERT.test(tour.searchText))
 	const dayTrips = row((tour) => tour.days === 1)
@@ -75,13 +84,14 @@ export default function HomePage({ tours, destinations }: Props) {
 				</div>
 
 				{shelf(t('top_tours'), t('top_tours_sub'), top)}
+				{shelf(t('shelf_qatar'), t('shelf_qatar_sub'), qatar)}
 				{shelf(t('shelf_desert'), t('shelf_desert_sub'), desert)}
 
 				{destinations.length > 0 && (
 					<section className="py-5 sm:py-7">
 						<h2 className="headline mb-4 text-[22px] !leading-[1.2] sm:text-[28px]">{t('destinations_title')}</h2>
 						<HomeRow label={t('destinations_title')} wide>
-							{destinations.slice(0, 12).map((d) => (
+							{byCountry(destinations).slice(0, 12).map((d) => (
 								<li key={d.city} className="min-w-0 snap-start">
 									<Link href={`/search?query=${encodeURIComponent(d.city)}` as any} className="group relative block overflow-hidden rounded-xl bg-neutral-100" style={{ aspectRatio: '4 / 5' }}>
 										<Image src={d.image} alt={d.city} fill sizes="(max-width: 680px) 62vw, (max-width: 1024px) 38vw, 300px" className="object-cover transition duration-500 group-hover:scale-105" />

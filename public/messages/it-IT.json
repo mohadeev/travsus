@@ -3156,7 +3156,9 @@
     "tab_restaurants": "Ristoranti",
     "tab_flights": "Voli",
     "tab_rentals": "Case vacanza",
-    "where_to_next": "Prossima meta?"
+    "where_to_next": "Prossima meta?",
+    "shelf_qatar": "Novità: Qatar",
+    "shelf_qatar_sub": "Doha, il deserto e il mare interno, con guide locali"
   },
   "Payment": {
     "preparing": "Preparazione del pagamento sicuro…",
@@ -3336,7 +3338,11 @@
     "switch_deposit": "Paga {amount} ora",
     "switch_full": "Paga tutto",
     "today": "Oggi",
-    "on_tour_day": "Il giorno del tour"
+    "on_tour_day": "Il giorno del tour",
+    "request_book": "Richiedi la prenotazione",
+    "request_note": "Nessun pagamento ora. Confermiamo disponibilità e prezzo finale via e-mail entro 24 ore.",
+    "request_sent_title": "Richiesta inviata!",
+    "request_sent_text": "Grazie. Stiamo verificando la disponibilità con il nostro partner locale e le scriveremo entro 24 ore. Non è stato addebitato nulla."
   },
   "TourRoute": {
     "your_route": "Il tuo percorso",
