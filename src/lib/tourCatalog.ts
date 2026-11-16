@@ -48,12 +48,15 @@ async function startingPrice(tour: any) {
 }
 
 async function loadCatalog(): Promise<CatalogTour[]> {
-	// Only the columns the lists need; long day texts are left out
+	// Only the columns the lists need. From the translations only each name
+	// (not the day texts, FAQ and overviews in 10 languages, tens of MB in all),
+	// and from the days only their names, to count them: a heavy read here, made
+	// by many pages at once when the cache is empty, overloaded the database.
 	const rows = await fetchAll(() =>
 		db
 			.from(T.tours)
 			.select(
-				`id, name, subtitle, overview, tags, slugs, translations, images, days, accommodations, pricingTiers, price, createdAt, ${REL.tourAddresses}`,
+				`id, name, subtitle, overview, tags, slugs, translations.language, translations.name, images, days.name, accommodations, pricingTiers, price, createdAt, ${REL.tourAddresses}`,
 			)
 			.gt('images', '[]')
 			.order('createdAt', { ascending: false })
