@@ -205,3 +205,8 @@ Translations were short summaries with no FAQ: replaced with full translations i
 - Competitors: same family as the 10-day Casablanca tour researched earlier (TourRadar/Simply Morocco/Lokalee Casablanca-start listings); 8-day versions usually skip either the north or Volubilis – ours keeps both with one desert night.
 - Before: short days (Day 4 and Day 8 without schedules), 6 FAQs. Now: 8 rich days with schedules, distances, nights and meals; Volubilis mosaics and Moulay Idriss, full Fes day, honest long-day notes (Fes–Merzouga ~470 km, Dades–Marrakech ~340 km), 13 FAQs, 10 languages.
 - Data issue: tour END city is set to Casablanca but the tour finishes in Marrakech.
+
+## 10-day Marrakech to Fes via the Sahara and the kasbahs (59f7ea95444e8387960d1e5c)
+- Competitors: same family as the other 10-day Marrakech–Fes tours (TourRadar/KimKim/Simply Morocco listings); most compress the south into one or two long driving days and go straight Merzouga–Fes (~470 km).
+- Our edge: night at Ait Ben Haddou for sunset, an easy Ouarzazate day (studios, Taourirt, Fint oasis), Midelt overnight to split the drive north, cedar forest and Ifrane on a short last day, full guided days in Marrakech and Fes.
+- Now: 10 rich days (Tichka ~2,260 m, Ait Ben Haddou UNESCO 1987, Todra ~300 m/~10 m, ~370 km Day 5, Rissani souk days, Ziz gorges, Midelt ~1,500 m, Jebel Ayachi ~3,750 m, Ifrane 1,650 m, Saadian Tombs 1917, Qarawiyyin 859), links to the mountain 10-day and private road-trip versions, 13 FAQs, 10 languages.
