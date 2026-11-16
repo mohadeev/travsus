@@ -195,3 +195,8 @@ Translations were short summaries with no FAQ: replaced with full translations i
 ## Essaouira medina & port walking tour with a local guide (01679fbf3d2ba2351438f951)
 - Competitors: same research as the Essaouira day trip (shared tours give thin guiding; private local-host walks rate higher).
 - Before: decent text, 7 FAQs. Now: richer overview and day narrative (Cornut 1760s, Mogador island and Juba II purple dye, Skala cannons, thuya craft and how to spot genuine pieces, Mellah with Slat Lkahal synagogue and Bayt Dakira, Gnawa festival), Sabbath closures note, 13 FAQs, links to the countryside day and the day trip from Marrakech, 10 languages.
+
+## 3-day Ouarzazate desert tour to Fes via the Dades, Todra and Merzouga (560a721c9bcb4b5ccfeaee9c)
+- Competitors: same route family as the 3-day Marrakech–Fes desert tours already researched (Viator/GetYourGuide/TourRadar shared tours start in Marrakech); few offer an Ouarzazate start, which is our differentiator.
+- Before: one-line days, 3 FAQs. Now: overview with distances per day, 3 rich days (Skoura/Amridil, Valley of Roses, Dades monkey fingers/Tisdrine, Todra ~300 m, khettaras, Erfoud fossils, camel trek, Ziz valley, Midelt, cedar forest, Ifrane 1,650 m), honest note that no night in Fes is included, 13 FAQs, 10 languages.
+- Data issues: tour END city is set to Ouarzazate but it finishes in Fes; Day 3 inclusions say "riad with breakfast" though no Fes night is part of a 3-day/2-night tour.
