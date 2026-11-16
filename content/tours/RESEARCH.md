@@ -191,3 +191,7 @@ Translations were short summaries with no FAQ: replaced with full translations i
 - What reviews say: shared trips are cheap but guidance is thin ("guide stays on the minibus", "self-guided with recommendations"); private local-host tours rate higher.
 - Our edge: a real local guide walks 2 hours (boatyard, fish auction, Skala, thuya workshops, Mellah) and still ~3 h free time; private timing.
 - Now: rich overview and day (Cornut 1760s for Sultan Mohammed ben Abdallah, UNESCO 2001, Orson Welles' Othello, thuya craft, Mogador island, kitesurf beach), honest goats note, port-grill pricing tip, 13 FAQs, 10 languages.
+
+## Essaouira medina & port walking tour with a local guide (01679fbf3d2ba2351438f951)
+- Competitors: same research as the Essaouira day trip (shared tours give thin guiding; private local-host walks rate higher).
+- Before: decent text, 7 FAQs. Now: richer overview and day narrative (Cornut 1760s, Mogador island and Juba II purple dye, Skala cannons, thuya craft and how to spot genuine pieces, Mellah with Slat Lkahal synagogue and Bayt Dakira, Gnawa festival), Sabbath closures note, 13 FAQs, links to the countryside day and the day trip from Marrakech, 10 languages.
