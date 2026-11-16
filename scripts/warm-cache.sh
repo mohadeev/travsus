@@ -3,6 +3,8 @@
 # tied to the deploy, so right after one every page would be built on its first
 # visit (2 s or more). This requests the home pages and every tour page in every
 # language, like a visitor, so the first real visitors get the saved copy.
+# Three at a time: each page opens its own database connections, and the free
+# Atlas tier allows 500 in all (8 at a time helped take the site down).
 # Usage: scripts/warm-cache.sh [site]   (default https://www.travsus.com)
 set -u
 SITE="${1:-https://www.travsus.com}"
@@ -12,4 +14,4 @@ urls=$(curl -s -A "$UA" "$SITE/sitemap.xml" | grep -o '<loc>[^<]*</loc>' | sed '
 	| grep -E '/[a-z]{2}-[A-Z]{2}$|/[0-9a-f]{24}$' | grep -v '/blog/')
 total=$(echo "$urls" | grep -c . || true)
 echo "Warming $total pages"
-echo "$urls" | xargs -P 8 -I{} curl -s -o /dev/null -A "$UA" --max-time 60 -w '%{http_code}\n' {} | sort | uniq -c
+echo "$urls" | xargs -P 3 -I{} curl -s -o /dev/null -A "$UA" --max-time 60 -w '%{http_code}\n' {} | sort | uniq -c
