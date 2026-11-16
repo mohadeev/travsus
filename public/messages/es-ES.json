@@ -326,7 +326,10 @@
     "private_title": "Tour privado",
     "private_text": "Solo tu grupo, con tu propio conductor y vehículo. Tu reserva se confirma al momento.",
     "help_title": "¿Necesitas ayuda?",
-    "help_text": "¿Preguntas sobre este tour o tu reserva? Llámanos o chatea con nuestro equipo."
+    "help_text": "¿Preguntas sobre este tour o tu reserva? Llámanos o chatea con nuestro equipo.",
+    "private_text_request": "Solo su grupo, con su propio conductor y guía. Confirmamos la disponibilidad en 24 horas.",
+    "request_title": "Reserva bajo petición",
+    "request_text": "Envíe una solicitud sin pagar nada ahora. Confirmamos por correo en 24 horas."
   },
   "bookings_cancelled_page": {
     "bookings_cancelled_page_Description": "Ver reservas de tour canceladas",

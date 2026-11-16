@@ -224,7 +224,10 @@
     "private_title": "私人团",
     "private_text": "仅限您的团队，配专属司机和车辆。预订立即确认。",
     "help_title": "需要帮助？",
-    "help_text": "对此行程或预订有疑问？请致电或在线联系我们的团队。"
+    "help_text": "对此行程或预订有疑问？请致电或在线联系我们的团队。",
+    "private_text_request": "仅限您的团体，配专属司机和导游。我们将在24小时内确认是否可订。",
+    "request_title": "申请预订",
+    "request_text": "现在发送申请无需付款，我们将在24小时内通过邮件确认。"
   },
   "BookNowAndPayLaterBanner": {
     "disclaimer": "今天只需支付20欧元即可预订，余款在行程第一天支付。出发前24小时可免费取消。",

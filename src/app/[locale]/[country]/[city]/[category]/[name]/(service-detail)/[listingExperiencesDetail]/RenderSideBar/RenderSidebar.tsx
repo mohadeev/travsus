@@ -170,7 +170,7 @@ const RenderSidebar: FC = () => {
 					{ value: 'Standard', title: t('hotel_standard'), hint: t('hotel_standard_hint'), items: inclusions('standard') },
 					{ value: 'Luxury', title: t('hotel_luxury'), hint: t('hotel_luxury_hint'), items: inclusions('luxury') },
 				]
-			: [{ value: hotel, title: tInfo('private_title'), hint: tInfo('private_text'), items: inclusions('standard') }]
+			: [{ value: hotel, title: tInfo('private_title'), hint: tInfo(onRequest ? 'private_text_request' : 'private_text'), items: inclusions('standard') }]
 
 	if (requested) {
 		return (

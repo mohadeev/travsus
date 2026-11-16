@@ -106,9 +106,13 @@ const TourDetail: FC<ListingExperiencesDetailPageProps> = ({ similar = [] }) => 
 
 								{/* Why book with us: four short promises, icon in a soft circle */}
 								<ul className="mt-6 grid gap-x-6 gap-y-5 sm:grid-cols-2">
-									<Fact icon={Users} title={tInfo('private_title')} text={tInfo('private_text')} />
+									<Fact icon={Users} title={tInfo('private_title')} text={tInfo(service?.bookingMode === 'request' ? 'private_text_request' : 'private_text')} />
 									<Fact icon={CalendarCheck} title={tPerks('free_cancellation')} text={tPerks('free_cancellation_description')} />
-									<Fact icon={Wallet} title={tPerks('reserve_now_pay_later')} text={tPerks('reserve_now_pay_later_description')} />
+									{service?.bookingMode === 'request' ? (
+										<Fact icon={Wallet} title={tInfo('request_title')} text={tInfo('request_text')} />
+									) : (
+										<Fact icon={Wallet} title={tPerks('reserve_now_pay_later')} text={tPerks('reserve_now_pay_later_description')} />
+									)}
 									<Fact icon={BadgeEuro} title={tPerks('lowest_price_guaranteed')} text={tPerks('lowest_price_guaranteed_description')} />
 								</ul>
 							</section>
