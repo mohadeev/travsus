@@ -7,6 +7,7 @@ import 'server-only'
 import { cache } from 'react'
 import { db, T } from '@/lib/db'
 import { getHomeData, type HomeTour } from '@/lib/homeData'
+import { cityPhoto, countryPhoto } from '@/lib/destinationPhotos'
 
 type Tr = { name?: string; description?: string; language: string }
 const pick = (translations: Tr[] | null | undefined, locale: string) => {
@@ -50,7 +51,7 @@ function toCountry(row: any, locale: string): Country {
 		name: t.name,
 		englishName: t.englishName,
 		description: t.description,
-		image: imageOf(row.image),
+		image: countryPhoto(row.code) ?? imageOf(row.image),
 		point: point(row.geo),
 		continent: row.continent ? pick(row.continent.translations, locale).name || null : null,
 	}
@@ -94,7 +95,7 @@ function toCity(row: any, country: Country, locale: string): City {
 		name: t.name,
 		englishName: t.englishName,
 		description: t.description,
-		image: imageOf(row.image),
+		image: cityPhoto(t.englishName) ?? imageOf(row.image),
 		point: point(row.geo),
 		population: row.population ?? null,
 		region: row.state ? pick(row.state.translations, locale).name || null : null,

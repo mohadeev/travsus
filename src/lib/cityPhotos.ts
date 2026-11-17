@@ -3,6 +3,7 @@
 import 'server-only'
 import { unstable_cache } from '@/lib/stableCache'
 import { db, T } from '@/lib/db'
+import { cityPhoto } from '@/lib/destinationPhotos'
 
 const contentIds = async (type: 'city' | 'country', name: string) => {
 	const { data } = await db.from(T.geoTexts).select('contentId, text').eq('type', type).eq('language', 'en-US').ilike('text', name).limit(50)
@@ -10,6 +11,8 @@ const contentIds = async (type: 'city' | 'country', name: string) => {
 }
 
 async function findCityPhoto(city: string, country: string | null): Promise<string | null> {
+	const chosen = cityPhoto(city)
+	if (chosen) return chosen
 	const cityIds = await contentIds('city', city)
 	if (!cityIds.length) return null
 	let query = db.from(T.cities).select('image').in('contentId', cityIds).not('image', 'is', null)
@@ -27,6 +30,6 @@ async function findCityPhoto(city: string, country: string | null): Promise<stri
 /** City photo URL, or null when the city has none (callers keep their fallback). */
 export const getCityPhoto = unstable_cache(
 	async (city: string, country: string | null) => findCityPhoto(city, country).catch(() => null),
-	['city-photo-v2'],
+	['city-photo-v3'],
 	{ revalidate: 86400 },
 )
