@@ -2656,7 +2656,11 @@
     "tab_rentals": "휴가용 렌탈",
     "where_to_next": "다음 여행지는?",
     "shelf_qatar": "새로운 여행지: 카타르",
-    "shelf_qatar_sub": "현지 가이드와 함께하는 도하, 사막, 내해"
+    "shelf_qatar_sub": "현지 가이드와 함께하는 도하, 사막, 내해",
+    "countries_title": "운영 중인 국가",
+    "countries_sub": "지금 모로코와 카타르의 현지 투어를 예약하세요. 더 많은 국가가 곧 추가됩니다.",
+    "country_active": "예약 가능",
+    "country_soon": "곧 오픈"
   },
   "Payment": {
     "preparing": "안전한 결제를 준비하는 중…",

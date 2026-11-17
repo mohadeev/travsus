@@ -3103,7 +3103,11 @@
     "tab_rentals": "Alojamento local",
     "where_to_next": "Próximo destino?",
     "shelf_qatar": "Novidade: Catar",
-    "shelf_qatar_sub": "Doha, o deserto e o mar interior, com guias locais"
+    "shelf_qatar_sub": "Doha, o deserto e o mar interior, com guias locais",
+    "countries_title": "Países onde operamos",
+    "countries_sub": "Reserve já tours locais em Marrocos e no Catar. Mais países estão a caminho.",
+    "country_active": "Reservar",
+    "country_soon": "Em breve"
   },
   "Payment": {
     "preparing": "A preparar o pagamento seguro…",

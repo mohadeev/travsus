@@ -2669,7 +2669,11 @@
     "tab_rentals": "バケーションレンタル",
     "where_to_next": "次はどこへ？",
     "shelf_qatar": "新登場:カタール",
-    "shelf_qatar_sub": "ドーハ、砂漠、内海を地元ガイドと"
+    "shelf_qatar_sub": "ドーハ、砂漠、内海を地元ガイドと",
+    "countries_title": "ツアーを提供している国",
+    "countries_sub": "モロッコとカタールの現地ツアーを今すぐ予約できます。ほかの国も近日追加予定です。",
+    "country_active": "予約受付中",
+    "country_soon": "近日公開"
   },
   "Payment": {
     "preparing": "安全なお支払いを準備中…",

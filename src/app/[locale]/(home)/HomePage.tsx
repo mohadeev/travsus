@@ -13,7 +13,11 @@ import HomeRow from './HomeRow'
 import PromoCard from './PromoCard'
 import ShelfCard from './ShelfCard'
 
+/** A country tile: where we operate (active, links to its page) or coming soon */
+export type HomeCountry = { code: string; name: string; image: string; href: string; active: boolean }
+
 type Props = {
+	countries?: HomeCountry[]
 	tours: HomeTour[]
 	destinations: HomeDestination[]
 	reviews: HomeReview[]
@@ -29,7 +33,7 @@ function byCountry(list: HomeDestination[]) {
 	return [...firsts, ...list.filter((d) => !firsts.includes(d))]
 }
 
-export default function HomePage({ tours, destinations }: Props) {
+export default function HomePage({ tours, destinations, countries = [] }: Props) {
 	const t = useTranslations('Home')
 	const tLanding = useTranslations('Landing')
 	const tTrust = useTranslations('Trust')
@@ -100,6 +104,50 @@ export default function HomePage({ tours, destinations }: Props) {
 									</Link>
 								</li>
 							))}
+						</HomeRow>
+					</section>
+				)}
+
+				{countries.length > 0 && (
+					<section className="py-5 sm:py-7">
+						<h2 className="headline text-[22px] !leading-[1.2] sm:text-[28px]">{t('countries_title')}</h2>
+						<p className="mb-4 mt-1 text-base leading-6 text-ink-soft dark:text-neutral-300">{t('countries_sub')}</p>
+						<HomeRow label={t('countries_title')} wide>
+							{countries.map((c) => {
+								const tile = (
+									<>
+										<Image
+											src={c.image}
+											alt={c.name}
+											fill
+											sizes="(max-width: 680px) 62vw, (max-width: 1024px) 38vw, 300px"
+											className={`object-cover transition duration-500 ${c.active ? 'group-hover:scale-105' : 'grayscale-[60%] opacity-80'}`}
+										/>
+										<span aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+										<span
+											className={`absolute left-3 top-3 rounded-full px-3 py-1 text-xs font-bold ${
+												c.active ? 'bg-brand-500 text-white' : 'bg-white/90 text-ink'
+											}`}
+										>
+											{c.active ? t('country_active') : t('country_soon')}
+										</span>
+										<span className="absolute bottom-3.5 left-4 right-4 text-2xl font-extrabold tracking-[-0.01em] text-white">{c.name}</span>
+									</>
+								)
+								return (
+									<li key={c.code} className="min-w-0 snap-start">
+										{c.active ? (
+											<Link href={c.href as any} className="group relative block overflow-hidden rounded-xl bg-neutral-100" style={{ aspectRatio: '4 / 5' }}>
+												{tile}
+											</Link>
+										) : (
+											<div aria-disabled className="relative block overflow-hidden rounded-xl bg-neutral-100" style={{ aspectRatio: '4 / 5' }}>
+												{tile}
+											</div>
+										)}
+									</li>
+								)
+							})}
 						</HomeRow>
 					</section>
 				)}

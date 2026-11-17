@@ -5,6 +5,9 @@ import type { Metadata } from 'next'
 import HomePage from './(home)/HomePage'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { getHomeData, type HomeTour } from '@/lib/homeData'
+import { countryHref, getCountries } from '@/lib/destinations'
+import { ACTIVE_COUNTRIES } from '@/lib/destinationPhotos'
+import type { HomeCountry } from './(home)/HomePage'
 import { routing } from '@/i18n/routing'
 import { PHOTOS } from '@/lib/photos'
 
@@ -139,12 +142,21 @@ export default async function Home(props: { params: Promise<{ locale: string }> 
 	} = params;
 
 	setRequestLocale(locale)
-	const [data, t] = await Promise.all([getHomeData(locale), getTranslations({ locale, namespace: 'HomeSeo' })])
+	const [data, t, allCountries] = await Promise.all([
+		getHomeData(locale),
+		getTranslations({ locale, namespace: 'HomeSeo' }),
+		getCountries(locale).catch(() => []),
+	])
+	// Countries with a photo: where we operate first (Morocco, Qatar), then the ones coming soon
+	const countries: HomeCountry[] = allCountries
+		.filter((c) => c.image)
+		.map((c) => ({ code: c.code, name: c.name, image: c.image as string, href: countryHref(locale, c), active: ACTIVE_COUNTRIES.includes(c.code) }))
+		.sort((a, b) => Number(b.active) - Number(a.active))
 	const jsonLd = structuredData(locale, t('description'), data.tours)
 	return (
 		<>
 			<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }} />
-			<HomePage {...data} />
+			<HomePage {...data} countries={countries} />
 		</>
 	);
 }

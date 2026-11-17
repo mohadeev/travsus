@@ -3669,7 +3669,11 @@
     "tab_rentals": "Locations de vacances",
     "where_to_next": "Prochaine destination ?",
     "shelf_qatar": "Nouveau : le Qatar",
-    "shelf_qatar_sub": "Doha, le désert et la mer intérieure, avec des guides locaux"
+    "shelf_qatar_sub": "Doha, le désert et la mer intérieure, avec des guides locaux",
+    "countries_title": "Les pays où nous opérons",
+    "countries_sub": "Réservez dès aujourd'hui des circuits locaux au Maroc et au Qatar. D'autres pays arrivent bientôt.",
+    "country_active": "Réserver",
+    "country_soon": "Bientôt"
   },
   "Payment": {
     "preparing": "Préparation du paiement sécurisé…",
