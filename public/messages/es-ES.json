@@ -4510,5 +4510,22 @@
     "cancel_a": "Cancela al menos 24 horas antes del inicio y te devolvemos todo. Si el mal tiempo impide el tour, tendrás una nueva fecha o el reembolso completo.",
     "ahead_q": "¿Con cuánta antelación debo reservar?",
     "ahead_a": "La primavera (marzo a mayo) y el otoño (septiembre a noviembre) son las temporadas con más demanda, así que reserva pronto para esos meses. Puedes reservar con 20 € y cancelar gratis hasta 24 horas antes."
+  },
+  "EmailCheck": {
+    "checking": "Comprobando su dirección de correo…",
+    "format": "Esto no parece una dirección de correo. Ejemplo: nombre@gmail.com",
+    "no_mail": "No podemos enviar correos a «{domain}». Revise su dirección o no podremos responderle.",
+    "typo": "¿Quería decir {email}?",
+    "fix": "Sí, corregir",
+    "reply_to": "Le responderemos a {email}.",
+    "server_bad": "Esta dirección no puede recibir mensajes. Revísela para que podamos responderle.",
+    "code_sent": "Hemos enviado un código de 6 cifras a {email}. Escríbalo abajo para enviar su mensaje: así confirmamos que podremos responderle.",
+    "code_label": "Código de verificación",
+    "code_help": "¿No le llega? Revise la carpeta de spam, o",
+    "code_resend": "enviar un código nuevo",
+    "code_change": "cambiar el correo",
+    "code_submit": "Verificar y enviar",
+    "code_wrong": "Ese código no es correcto. Revise el correo que le enviamos e inténtelo de nuevo.",
+    "code_expired": "Este código ha caducado. Pida un código nuevo."
   }
 }

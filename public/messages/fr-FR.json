@@ -4587,5 +4587,22 @@
     "cancel_a": "Annulez au moins 24 heures avant le départ pour un remboursement complet. Si la météo empêche le circuit, vous avez une nouvelle date ou un remboursement complet.",
     "ahead_q": "Combien de temps à l’avance réserver ?",
     "ahead_a": "Le printemps (mars à mai) et l’automne (septembre à novembre) sont les saisons les plus demandées : réservez tôt pour ces mois. Vous pouvez réserver avec 20 € et annuler gratuitement jusqu’à 24 heures avant."
+  },
+  "EmailCheck": {
+    "checking": "Vérification de votre adresse e-mail…",
+    "format": "Cela ne ressemble pas à une adresse e-mail. Exemple : nom@gmail.com",
+    "no_mail": "Nous ne pouvons pas envoyer d'e-mails à « {domain} ». Vérifiez votre adresse, sinon nous ne pourrons pas vous répondre.",
+    "typo": "Vouliez-vous dire {email} ?",
+    "fix": "Oui, corriger",
+    "reply_to": "Nous répondrons à {email}.",
+    "server_bad": "Cette adresse e-mail ne peut pas recevoir de messages. Vérifiez-la pour que nous puissions vous répondre.",
+    "code_sent": "Nous avons envoyé un code à 6 chiffres à {email}. Saisissez-le ci-dessous pour envoyer votre message – cela confirme que nous pourrons vous répondre.",
+    "code_label": "Code de vérification",
+    "code_help": "Pas d'e-mail ? Regardez vos spams, ou",
+    "code_resend": "renvoyer un code",
+    "code_change": "modifier l'adresse e-mail",
+    "code_submit": "Vérifier et envoyer",
+    "code_wrong": "Ce code n'est pas bon. Vérifiez l'e-mail que nous vous avons envoyé et réessayez.",
+    "code_expired": "Ce code a expiré. Demandez un nouveau code."
   }
 }
