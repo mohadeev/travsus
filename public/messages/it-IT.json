@@ -3161,7 +3161,11 @@
     "tab_rentals": "Case vacanza",
     "where_to_next": "Prossima meta?",
     "shelf_qatar": "Novità: Qatar",
-    "shelf_qatar_sub": "Doha, il deserto e il mare interno, con guide locali"
+    "shelf_qatar_sub": "Doha, il deserto e il mare interno, con guide locali",
+    "countries_title": "I paesi in cui operiamo",
+    "countries_sub": "Prenoti oggi tour locali in Marocco e Qatar. Presto arriveranno altri paesi.",
+    "country_active": "Prenota",
+    "country_soon": "Presto"
   },
   "Payment": {
     "preparing": "Preparazione del pagamento sicuro…",

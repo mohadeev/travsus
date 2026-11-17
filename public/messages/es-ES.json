@@ -3592,7 +3592,11 @@
     "tab_rentals": "Alquileres vacacionales",
     "where_to_next": "¿A dónde ahora?",
     "shelf_qatar": "Novedad: Catar",
-    "shelf_qatar_sub": "Doha, el desierto y el mar interior, con guías locales"
+    "shelf_qatar_sub": "Doha, el desierto y el mar interior, con guías locales",
+    "countries_title": "Países donde operamos",
+    "countries_sub": "Reserve hoy tours locales en Marruecos y Catar. Pronto llegarán más países.",
+    "country_active": "Reservar",
+    "country_soon": "Próximamente"
   },
   "Payment": {
     "preparing": "Preparando el pago seguro…",

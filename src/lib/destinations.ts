@@ -7,7 +7,7 @@ import 'server-only'
 import { cache } from 'react'
 import { db, T } from '@/lib/db'
 import { getHomeData, type HomeTour } from '@/lib/homeData'
-import { cityPhoto, countryPhoto } from '@/lib/destinationPhotos'
+import { COUNTRY_PHOTOS, cityPhoto, countryPhoto } from '@/lib/destinationPhotos'
 
 type Tr = { name?: string; description?: string; language: string }
 const pick = (translations: Tr[] | null | undefined, locale: string) => {
@@ -82,8 +82,14 @@ export const getCountry = cache(async (slugOrCode: string, locale: string): Prom
 
 /** Countries that have a photo (the ones worth showing), A–Z */
 export const getCountries = cache(async (locale: string) => {
-	const { data } = await db.from(T.countries).select(COUNTRY_SELECT).not('image', 'is', null)
-	return ((data ?? []) as any[]).map((r) => toCountry(r, locale)).sort((a, b) => a.name.localeCompare(b.name, locale))
+	const [{ data }, { data: chosen }] = await Promise.all([
+		db.from(T.countries).select(COUNTRY_SELECT).not('image', 'is', null),
+		// Countries whose photo is set in code (destinationPhotos.ts), e.g. Qatar
+		db.from(T.countries).select(COUNTRY_SELECT).in('code', Object.keys(COUNTRY_PHOTOS)),
+	])
+	const rows = new Map<string, any>()
+	for (const r of [...((data ?? []) as any[]), ...((chosen ?? []) as any[])]) rows.set(r.id, r)
+	return Array.from(rows.values()).map((r) => toCountry(r, locale)).sort((a, b) => a.name.localeCompare(b.name, locale))
 })
 
 const CITY_SELECT = `id, code3, geo, image, population, translations, "countryId", state:${T.states}(translations)`

@@ -3653,7 +3653,11 @@
     "tab_rentals": "Ferienwohnungen",
     "where_to_next": "Wohin als Nächstes?",
     "shelf_qatar": "Neu: Katar",
-    "shelf_qatar_sub": "Doha, die Wüste und das Binnenmeer, mit lokalen Guides"
+    "shelf_qatar_sub": "Doha, die Wüste und das Binnenmeer, mit lokalen Guides",
+    "countries_title": "Länder, in denen wir tätig sind",
+    "countries_sub": "Buchen Sie schon heute lokale Touren in Marokko und Katar. Weitere Länder folgen bald.",
+    "country_active": "Jetzt buchen",
+    "country_soon": "Demnächst"
   },
   "Payment": {
     "preparing": "Sichere Zahlung wird vorbereitet…",
