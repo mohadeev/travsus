@@ -6,6 +6,7 @@
 // is sent only when the second call brings that code back.
 import { headers } from 'next/headers'
 import { OWNER_EMAIL } from '@/lib/admin/owner'
+import { SUPPORT_EMAIL } from '@/constants/contact'
 import { sendTemplate } from '@/lib/email/send'
 import { cleanEmail, hasEmailFormat } from '@/lib/emailCheck'
 import { domainReceivesMail } from '@/lib/emailDomain'
@@ -52,6 +53,7 @@ export async function sendEmail(formData: FormData) {
 	const verdict = checkEmailCode(email, code, token)
 	if (verdict !== 'ok') return { success: false, error: verdict === 'expired' ? 'CODE_EXPIRED' : 'CODE_WRONG' }
 
-	const sent = await sendTemplate('contact-team', { to: { email: OWNER_EMAIL, name: 'TRAVSUS' }, data: { name, email, message } })
+	// To the owner, with a copy to the shared contact inbox
+	const sent = await sendTemplate('contact-team', { to: { email: OWNER_EMAIL, name: 'TRAVSUS' }, cc: [SUPPORT_EMAIL], data: { name, email, message } })
 	return sent.ok ? { success: true } : { success: false, error: 'SEND_FAILED' }
 }

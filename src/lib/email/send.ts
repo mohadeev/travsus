@@ -34,7 +34,7 @@ const address = (s: Sender | { email: string; name?: string }) => ({ name: s.nam
 /** Send one template. Never throws: returns { ok: false, error } instead. */
 export async function sendTemplate<K extends TemplateId>(
 	id: K,
-	{ to, data, attachments, subjectPrefix }: { to: string | { email: string; name?: string }; data: TemplateData<K>; attachments?: Attachment[]; subjectPrefix?: string },
+	{ to, cc, data, attachments, subjectPrefix }: { to: string | { email: string; name?: string }; cc?: string[]; data: TemplateData<K>; attachments?: Attachment[]; subjectPrefix?: string },
 ): Promise<SendResult> {
 	if (!emailConfigured()) {
 		console.error(`Email "${id}" not sent: SMTP login is missing`)
@@ -45,6 +45,7 @@ export async function sendTemplate<K extends TemplateId>(
 		const info = await smtp().sendMail({
 			from: address(from),
 			to: typeof to === 'string' ? to : address(to),
+			...(cc?.length ? { cc } : {}),
 			...(replyTo ? { replyTo: address(replyTo) } : {}),
 			subject: (subjectPrefix ?? '') + subject,
 			html,
