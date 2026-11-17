@@ -321,7 +321,7 @@ export default function AnalyticsPanel() {
 				</>
 			)}
 
-			<VisitDrawer id={visitId} onClose={() => setVisitId(null)} />
+			<VisitDrawer id={visitId} onClose={() => setVisitId(null)} onOpen={setVisitId} />
 		</div>
 	)
 }
@@ -388,8 +388,10 @@ function Table({ head, rows, empty = 'No data yet.' }: { head: string[]; rows: R
 	)
 }
 
-/** One visit: who, from where, and every step with time spent and scroll. */
-function VisitDrawer({ id, onClose }: { id: string | null; onClose: () => void }) {
+const ordinal = (n: number) => `${n}${n % 100 >= 11 && n % 100 <= 13 ? 'th' : ['th', 'st', 'nd', 'rd'][n % 10] ?? 'th'}`
+
+/** One visit: who, from where, every visit by the same person, and every step with time spent and scroll. */
+function VisitDrawer({ id, onClose, onOpen }: { id: string | null; onClose: () => void; onOpen: (id: string) => void }) {
 	const [visit, setVisit] = useState<any | null>(null)
 	useEffect(() => {
 		setVisit(null)
@@ -407,7 +409,9 @@ function VisitDrawer({ id, onClose }: { id: string | null; onClose: () => void }
 					<Transition.Child as={Fragment} enter="ease-out duration-200" enterFrom="translate-x-full" enterTo="translate-x-0" leave="ease-in duration-150" leaveFrom="translate-x-0" leaveTo="translate-x-full">
 						<Dialog.Panel className="h-full w-full max-w-xl overflow-y-auto bg-white p-6 text-ink shadow-2xl sm:p-8 dark:bg-neutral-950 dark:text-white">
 							<div className="flex items-center justify-between">
-								<Dialog.Title className="text-2xl font-bold tracking-tight">Visit</Dialog.Title>
+								<Dialog.Title className="text-2xl font-bold tracking-tight">
+									{visit?.history?.length > 1 ? `${ordinal(visit.history.find((h: any) => h.current)?.number ?? 1)} visit` : 'Visit'}
+								</Dialog.Title>
 								<button type="button" onClick={onClose} aria-label="Close" className="grid h-9 w-9 place-items-center rounded-full bg-neutral-100 dark:bg-neutral-900">
 									<X className="h-4 w-4" />
 								</button>
@@ -437,6 +441,46 @@ function VisitDrawer({ id, onClose }: { id: string | null; onClose: () => void }
 											</div>
 										))}
 									</dl>
+									{visit.history?.length > 1 && (
+										<>
+											<h3 className="mt-8 font-bold">All visits by this person ({visit.history.length})</h3>
+											<ol className="mt-3 space-y-2">
+												{visit.history.map((h: any) => (
+													<li key={h.id}>
+														<button
+															type="button"
+															disabled={h.current}
+															onClick={() => onOpen(h.id)}
+															className={`w-full rounded-2xl p-3 text-left text-sm transition ${
+																h.current ? 'bg-neutral-950 text-white dark:bg-white dark:text-ink' : 'bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-900 dark:hover:bg-neutral-800'
+															}`}
+														>
+															<span className="flex items-center justify-between gap-3">
+																<span className="font-semibold">
+																	{ordinal(h.number)} visit{h.current && ' · this one'}
+																</span>
+																<span className={`shrink-0 text-xs ${h.current ? 'opacity-80' : 'text-neutral-500'}`}>{time(h.started_at)}</span>
+															</span>
+															<span className={`mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs ${h.current ? 'opacity-80' : 'text-neutral-500'}`}>
+																<span>
+																	{flag(h.country)} {h.city ?? countryName(h.country)}
+																</span>
+																<DeviceIcon device={h.device} />
+																<span>{h.source}</span>
+																<span>{h.pageviews} page{h.pageviews === 1 ? '' : 's'}</span>
+																<span className="tabular-nums">{duration(h.duration)}</span>
+																{h.signedIn && <span>signed in</span>}
+																{h.errors > 0 && <span className="text-amber-600">⚠ {h.errors}</span>}
+															</span>
+															{h.pages.length > 0 && (
+																<span className={`mt-1 block truncate text-xs ${h.current ? 'opacity-90' : ''}`}>{h.pages.map(stripLocale).join('  →  ')}</span>
+															)}
+														</button>
+													</li>
+												))}
+											</ol>
+										</>
+									)}
 									<h3 className="mt-8 font-bold">Step by step</h3>
 									<ol className="mt-4 space-y-3 border-l-2 border-neutral-200 pl-5 dark:border-neutral-800">
 										{visit.events.map((e: any, i: number) => (

@@ -235,5 +235,57 @@ export async function visitDetail(id: string) {
 	const visits = session.visitor_id
 		? (await db.from(T.analyticsSessions).select('id', { count: 'exact', head: true }).eq('visitor_id', session.visitor_id)).count
 		: null
-	return { session: { ...session, email: user?.email ?? null, accountCreated: user?.createdAt ?? null }, events, visits }
+	const history = await visitHistory(session)
+	return {
+		session: { ...session, email: user?.email ?? null, accountCreated: user?.createdAt ?? null },
+		events,
+		visits: Math.max(visits ?? 0, history.length) || visits,
+		history,
+	}
 }
+
+/**
+ * Every visit by the same person, oldest first and numbered (1st, 2nd...):
+ * same browser (visitor_id, known only with consent) or same signed-in account.
+ */
+async function visitHistory(session: any) {
+	const [byVisitor, byUser] = await Promise.all([
+		session.visitor_id
+			? db.from(T.analyticsSessions).select(HISTORY_SELECT).eq('visitor_id', session.visitor_id).order('started_at').limit(200)
+			: Promise.resolve({ data: [] as any[] }),
+		session.user_id
+			? db.from(T.analyticsSessions).select(HISTORY_SELECT).eq('user_id', session.user_id).order('started_at').limit(200)
+			: Promise.resolve({ data: [] as any[] }),
+	])
+	const all = new Map<string, any>()
+	for (const s of [...((byVisitor as any).data ?? []), ...((byUser as any).data ?? [])]) all.set(s.id, s)
+	if (!all.size) all.set(session.id, session)
+	const sessions = Array.from(all.values()).sort((a, b) => String(a.started_at).localeCompare(String(b.started_at)))
+	// The pages of each visit, in order
+	const pages = new Map<string, string[]>()
+	const ids = sessions.map((s) => s.id)
+	if (ids.length > 1) {
+		const views = (must(
+			await db.from(T.analyticsEvents).select('session_id, path, created_at').in('session_id', ids).eq('type', 'pageview').order('created_at').limit(3000),
+		) ?? []) as any[]
+		for (const v of views) pages.set(v.session_id, [...(pages.get(v.session_id) ?? []), v.path])
+	}
+	return sessions.map((s, i) => ({
+		number: i + 1,
+		id: s.id,
+		current: s.id === session.id,
+		started_at: s.started_at,
+		duration: Math.max(0, (new Date(s.last_seen_at).getTime() - new Date(s.started_at).getTime()) / 1000),
+		pageviews: s.pageviews ?? 0,
+		errors: s.errors ?? 0,
+		source: s.source ?? 'direct',
+		device: s.device ?? null,
+		country: s.country ?? null,
+		city: s.city ?? null,
+		landing: s.landing_path ?? null,
+		signedIn: !!s.user_id,
+		pages: pages.get(s.id) ?? (s.landing_path ? [s.landing_path] : []),
+	}))
+}
+
+const HISTORY_SELECT = 'id, visitor_id, user_id, started_at, last_seen_at, country, city, source, device, landing_path, pageviews, errors'
