@@ -3287,5 +3287,22 @@
     "cancel_a": "Cancel at least 24 hours before the start for a full refund. If bad weather stops the tour, you get a new date or a full refund.",
     "ahead_q": "How far in advance should I book?",
     "ahead_a": "Spring (March to May) and autumn (September to November) are the busiest seasons, so book early for those months. You can reserve with €20 and still cancel for free up to 24 hours before."
+  },
+  "EmailCheck": {
+    "checking": "Checking your email address…",
+    "format": "This doesn't look like an email address. Example: name@gmail.com",
+    "no_mail": "We can't send emails to “{domain}”. Please check your email address, or we won't be able to reply.",
+    "typo": "Did you mean {email}?",
+    "fix": "Yes, fix it",
+    "reply_to": "We'll reply to {email}.",
+    "server_bad": "This email address can't receive messages. Please check it so we can reply to you.",
+    "code_sent": "We sent a 6-digit code to {email}. Enter it below to send your message – this confirms we can reply to you.",
+    "code_label": "Verification code",
+    "code_help": "No email? Check your spam folder, or",
+    "code_resend": "send a new code",
+    "code_change": "change the email address",
+    "code_submit": "Verify and send",
+    "code_wrong": "That code isn't right. Please check the email we sent and try again.",
+    "code_expired": "This code has expired. Please send a new code."
   }
 }

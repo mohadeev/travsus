@@ -4571,5 +4571,22 @@
     "cancel_a": "Bei Stornierung bis 24 Stunden vor Beginn erhalten Sie den vollen Betrag zurück. Verhindert schlechtes Wetter die Tour, bekommen Sie einen neuen Termin oder Ihr Geld zurück.",
     "ahead_q": "Wie früh sollte ich buchen?",
     "ahead_a": "Frühling (März bis Mai) und Herbst (September bis November) sind die beliebtesten Reisezeiten; buchen Sie dafür früh. Sie können mit 20 € reservieren und bis 24 Stunden vorher kostenlos stornieren."
+  },
+  "EmailCheck": {
+    "checking": "E-Mail-Adresse wird geprüft…",
+    "format": "Das sieht nicht nach einer E-Mail-Adresse aus. Beispiel: name@gmail.com",
+    "no_mail": "An „{domain}“ können wir keine E-Mails senden. Bitte prüfen Sie Ihre Adresse, sonst können wir Ihnen nicht antworten.",
+    "typo": "Meinten Sie {email}?",
+    "fix": "Ja, korrigieren",
+    "reply_to": "Wir antworten an {email}.",
+    "server_bad": "Diese E-Mail-Adresse kann keine Nachrichten empfangen. Bitte prüfen Sie sie, damit wir Ihnen antworten können.",
+    "code_sent": "Wir haben einen 6-stelligen Code an {email} gesendet. Geben Sie ihn unten ein, um Ihre Nachricht zu senden – so wissen wir, dass wir Ihnen antworten können.",
+    "code_label": "Bestätigungscode",
+    "code_help": "Keine E-Mail? Sehen Sie im Spam-Ordner nach, oder",
+    "code_resend": "neuen Code senden",
+    "code_change": "E-Mail-Adresse ändern",
+    "code_submit": "Bestätigen und senden",
+    "code_wrong": "Der Code stimmt nicht. Bitte prüfen Sie die E-Mail und versuchen Sie es erneut.",
+    "code_expired": "Dieser Code ist abgelaufen. Bitte fordern Sie einen neuen an."
   }
 }

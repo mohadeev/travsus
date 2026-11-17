@@ -339,6 +339,24 @@ export const TEMPLATES = {
 		sample: { name: 'Sofia Martin', email: 'sofia@example.com', message: 'Hello! Is the Merzouga trip suitable for a 7-year-old?\nThanks a lot.' },
 	}),
 
+	'email-code': template<{ code: string }>({
+		name: 'Email verification code',
+		category: 'Account',
+		to: 'Customer',
+		from: FROM.hello,
+		when: 'When a visitor sends the contact form: proves their email address works before the message is sent.',
+		connected: true,
+		subject: (d) => `${d.code} is your TRAVSUS code`,
+		preheader: () => 'Enter it on travsus.com to send your message. It expires in 15 minutes.',
+		body: (d) => [
+			eyebrow('Verify your email'),
+			title(d.code),
+			text('Enter this code on travsus.com to send your message. It expires in 15 minutes.'),
+			small('If you didn’t ask for this code, you can ignore this email.'),
+		],
+		sample: { code: '482915' },
+	}),
+
 	'affiliate-request-team': template<{ email: string; website?: string; locale?: string }>({
 		name: 'Affiliate request',
 		category: 'Team',
