@@ -24,20 +24,25 @@ export async function GET(request: NextRequest) {
 	const countries: any[] = must(await db.from(T.countries).select('id, code')) ?? []
 	const codeOf = new Map(countries.map((c) => [String(c.id), c.code]))
 	const cities = await (await mongoCollection(T.cities))
-		.find({}, { projection: { geo: 1, countryId: 1, contentId: 1, population: 1, 'translations.language': 1, 'translations.name': 1 } })
+		.find({}, { projection: { geo: 1, countryId: 1, stateId: 1, contentId: 1, population: 1, 'translations.language': 1, 'translations.name': 1 } })
 		.toArray()
+	// State / region names, to tell apart cities with the same name in one country
+	const states = await (await mongoCollection(T.states)).find({}, { projection: { contentId: 1, 'translations.language': 1, 'translations.name': 1 } }).toArray()
 	// English names from the geo texts, for rows without their own translations
-	const contentIds = cities.filter((c) => !c.translations?.length && c.contentId).map((c) => c.contentId)
+	const contentIds = [...cities, ...states].filter((c) => !c.translations?.length && c.contentId).map((c) => c.contentId)
 	const texts = contentIds.length
-		? await (await mongoCollection(T.geoTexts)).find({ contentId: { $in: contentIds }, language: 'en-US', type: 'city' }, { projection: { contentId: 1, text: 1 } }).toArray()
+		? await (await mongoCollection(T.geoTexts)).find({ contentId: { $in: contentIds }, language: 'en-US', type: { $in: ['city', 'state'] } }, { projection: { contentId: 1, text: 1 } }).toArray()
 		: []
 	const textOf = new Map(texts.map((t) => [String(t.contentId), t.text]))
+	const nameOf = (row: any) => row.translations?.find((t: any) => t.language === 'en-US')?.name ?? textOf.get(String(row.contentId)) ?? null
+	const stateName = new Map(states.map((s) => [String(s._id), nameOf(s)]))
 	return NextResponse.json({
 		count: cities.length,
 		cities: cities.map((c) => ({
 			id: String(c._id),
 			code: codeOf.get(String(c.countryId)) ?? null,
-			name: c.translations?.find((t: any) => t.language === 'en-US')?.name ?? textOf.get(String(c.contentId)) ?? null,
+			name: nameOf(c),
+			state: c.stateId ? stateName.get(String(c.stateId)) ?? null : null,
 			population: c.population ?? null,
 			geo: c.geo ?? null,
 		})),
