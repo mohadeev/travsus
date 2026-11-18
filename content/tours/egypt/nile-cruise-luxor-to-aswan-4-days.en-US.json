@@ -1,0 +1,86 @@
+{
+ "key": "egypt-nile-cruise-luxor-to-aswan-4-days",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {"city": "Luxor", "state": "Luxor", "country": "Egypt", "countryCode": "EG", "timeZone": "Africa/Cairo", "streetAddress": "Your hotel in Luxor or Luxor airport or station", "geoCoordinates": {"lat": 25.6872, "log": 32.6396}},
+ "slug": "/en-US/egypt/luxor/tours/4-day-nile-cruise-from-luxor-to-aswan-with-private-egyptologist",
+ "tour": {
+  "name": "4-Day Nile Cruise from Luxor to Aswan with Private Egyptologist",
+  "subtitle": "Three nights on a five-star Nile cruise ship from Luxor to Aswan, with a private Egyptologist for every visit: Karnak and Luxor Temple, the Valley of the Kings and Hatshepsut, the temples of Edfu and Kom Ombo, a felucca sail and Philae – with all meals on board.",
+  "seoTitle": "4-Day Nile Cruise Luxor to Aswan, Private Guide | TRAVSUS",
+  "metaDescription": "4-day, 3-night Nile cruise from Luxor to Aswan on a five-star ship with full board and a private Egyptologist: Karnak, Valley of the Kings, Edfu, Kom Ombo, Philae and a felucca sail.",
+  "tags": ["Nile cruise", "Luxor to Aswan cruise", "Edfu temple", "Kom Ombo", "Valley of the Kings", "Egypt multi-day tour"],
+  "highlights": [
+   "Three nights on a five-star Nile cruise ship with full board",
+   "Private Egyptologist guide for every visit, not a shared boat group",
+   "Karnak, Luxor Temple, the Valley of the Kings and Hatshepsut's temple",
+   "Passing through the Esna lock and sailing past village life",
+   "Edfu, the best-preserved temple in Egypt",
+   "Kom Ombo, the double temple of Sobek and Horus, at sunset",
+   "Felucca sail and Philae Temple in Aswan"
+  ],
+  "duration": 4,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "Travelling on the Nile is the oldest way to see Egypt, and still the most beautiful. Between Luxor and Aswan the river runs through a narrow green valley of palm groves, sugar cane and mud-brick villages, with the desert never far away, and the great temples stand right on its banks. This four-day cruise sails that stretch in comfort on a five-star ship, with a cabin overlooking the river, a sun deck with a pool, and all meals on board.\n\nWhat makes it different is the guiding. Instead of joining the ship's large group, you have your own licensed Egyptologist for every visit, who plans the timing around the crowds and your interests. You see Karnak and Luxor Temple, the Valley of the Kings and Hatshepsut's temple in Luxor, the vast Temple of Horus at Edfu, the riverside double temple at Kom Ombo, and in Aswan a felucca sail and the island temple of Philae.\n\nAT A GLANCE\n• Duration: 4 days, 3 nights\n• Start: Luxor (hotel, airport or station); end: Aswan (hotel, airport or station)\n• Type: five-star Nile cruise with full board and a private Egyptologist guide and car for all visits\n• Booking: on request – we confirm the ship, cabin and final price by email within 24 hours, and you pay only then\n• Level: easy; early starts on visiting days\n\nWHAT YOU SEE\n• Luxor: Karnak, Luxor Temple, the Valley of the Kings, Hatshepsut's temple and the Colossi of Memnon.\n• Esna lock and the river between Luxor and Edfu.\n• Edfu: the Temple of Horus.\n• Kom Ombo: the Temple of Sobek and Haroeris.\n• Aswan: a felucca sail, the High Dam and Philae.\n\nWHY THIS WORKS\nThe ship is your moving hotel, so you unpack once and wake up somewhere new. A private guide means you visit sites at the quieter times rather than with a hundred fellow passengers.\n\nWHO IT SUITS\nFirst-time visitors, couples, families and anyone who wants to see Upper Egypt in comfort.\n\nWHO MAY PREFER ANOTHER TOUR\nIf you prefer to stay in hotels, our Luxor and Aswan day tours can be combined with a private car between the two cities. Longer cruises of 5 or 8 days are available on request.\n\nPRACTICAL INFORMATION\nCruise ships usually sail from Luxor on fixed days of the week; we match your dates to a ship. Bring modest clothing for temple visits, a hat, sunscreen and a light jacket for evenings on deck in winter.",
+  "inclusions": {"standard": {
+   "private": ["3 nights on a five-star Nile cruise ship in an outside cabin", "Full board on the ship (breakfast, lunch and dinner)", "Private licensed Egyptologist guide for all visits", "Private air-conditioned vehicle for all visits and transfers", "Entrance tickets to Karnak, Luxor Temple, the Valley of the Kings (three tombs), Hatshepsut's temple, Edfu, Kom Ombo, the High Dam and Philae", "Felucca sail in Aswan", "Arrival and departure transfers in Luxor and Aswan", "Bottled water during visits"],
+   "shared": ["3 nights on a Nile cruise ship", "Full board", "Egyptologist guide", "Transfers", "Entrance tickets"]
+  }},
+  "pricingTiers": [
+   {"transportType": "Sedan / SUV", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png", "minSeats": 1, "maxSeats": 4, "pricing": {"currency": "EUR", "totalPrice": 1680, "pricePerDay": 420}},
+   {"transportType": "Minivan", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png", "minSeats": 5, "maxSeats": 8, "pricing": {"currency": "EUR", "totalPrice": 3120, "pricePerDay": 780}},
+   {"transportType": "Mini Bus", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png", "minSeats": 9, "maxSeats": 19, "pricing": {"currency": "EUR", "totalPrice": 6600, "pricePerDay": 1650}}
+  ],
+  "images": ["Luxor, Egypt, Cruise ship on River Nile.jpg", "Temple of Edfu, Egypt.jpg", "02010 05843 Double entrance of Kom Ombo Temple.jpg", "Nile River, Feluccas, Aswan, Egypt.jpg", "Temple of Isis in Philae.jpg"],
+  "days": [
+   {
+    "name": "Luxor: board the ship, Karnak and Luxor Temple",
+    "description": "What to expect: arrival in Luxor, boarding your cruise ship, and the great temples of the East Bank with your private Egyptologist.\n\nYour driver meets you at Luxor airport, station or hotel and takes you to the ship moored on the Corniche. After check-in and lunch on board, your guide collects you for the afternoon. At Karnak you walk through the avenue of ram-headed sphinxes into the Great Hypostyle Hall, 134 giant papyrus columns carved for Seti I and Ramesses II, and see Hatshepsut's obelisk and the sacred lake. Late in the afternoon you continue to Luxor Temple, built by Amenhotep III and Ramesses II, and stay as the sun sets and the floodlights come on along its colonnades. Back on board, dinner is served as the lights of Luxor reflect on the river.\n\nSCHEDULE (approximate)\n12:00 – Transfer to the ship and boarding; lunch on board.\n14:30 – Karnak Temple with your guide.\n17:15 – Luxor Temple at sunset.\n19:00 – Back on board; dinner.\n\nOvernight: cruise ship in Luxor.\nMeals: lunch and dinner.",
+    "stops": [
+     {"name": "Karnak Temple", "duration": "About 2 hours 15 minutes", "description": "The largest temple complex in Egypt, with the Great Hypostyle Hall and Hatshepsut's obelisk.", "image": "Luxor, Egypt, Karnak.jpg"},
+     {"name": "Luxor Temple", "duration": "About 1 hour 15 minutes", "description": "The temple of Amenhotep III and Ramesses II at sunset and under floodlights.", "image": "Luxor Temple at night, Luxor, Egypt.jpg"}
+    ]
+   },
+   {
+    "name": "Luxor West Bank, then sailing south through the Esna lock",
+    "description": "What to expect: an early morning among the royal tombs, then an afternoon of sailing on the Nile.\n\nAfter an early breakfast your guide takes you across the river to the Valley of the Kings, where the pharaohs of the New Kingdom were buried in painted tombs cut deep into the hills. Your ticket includes three tombs, and you can add Tutankhamun's or Seti I's on site. You continue to the terraced temple of Queen Hatshepsut at Deir el-Bahari and stop at the Colossi of Memnon on the way back. You are on board for lunch, and in the early afternoon the ship casts off and sails south. Spend the afternoon on the sun deck watching fields, palm groves and villages pass by, with fishermen in small boats and children waving from the banks. In the evening the ship passes through the lock at Esna, where the river level changes by several metres. The ship continues to Edfu overnight.\n\nSCHEDULE (approximate)\n06:30 – Breakfast on board.\n07:00 – Valley of the Kings, Hatshepsut's temple and the Colossi of Memnon.\n12:30 – Back on board; lunch; the ship sails south.\nAfternoon – Sailing; tea on the sun deck.\nEvening – Esna lock; dinner on board.\n\nOvernight: cruise ship, sailing to Edfu.\nMeals: breakfast, lunch and dinner.",
+    "stops": [
+     {"name": "Valley of the Kings", "duration": "About 2 hours", "description": "Three painted royal tombs of the New Kingdom, with optional special tombs.", "image": "Thebes, Luxor, Egypt, Valley of the Kings from above.jpg"},
+     {"name": "Temple of Hatshepsut", "duration": "About 1 hour 15 minutes", "description": "The terraced mortuary temple of the female pharaoh at Deir el-Bahari.", "image": "Temple of Hatshepsut, Deir el-Bahari, Luxor, Egypt.jpg"},
+     {"name": "Esna lock", "duration": "About 1 hour", "description": "The ship passes through the Nile lock at Esna as it sails south towards Edfu."}
+    ]
+   },
+   {
+    "name": "Edfu and Kom Ombo, sailing to Aswan",
+    "description": "What to expect: two Ptolemaic temples in one day and a sunset on the river.\n\nEarly in the morning your guide takes you from the ship to the Temple of Horus at Edfu. Built between 237 and 57 BC, it is the most complete temple in Egypt, with its great pylon, roof, sanctuary and granite shrine still in place, and walls covered with the story of the battle between Horus and Seth. Back on board, the ship sails south through the morning while you enjoy lunch and the sun deck. In the late afternoon you stop at Kom Ombo, where an unusual double temple stands right above the river, dedicated to the crocodile god Sobek on one side and the falcon god Haroeris on the other. Your guide shows you the reliefs of medical instruments and the small museum of mummified crocodiles. The ship then sails on to Aswan, arriving in the evening.\n\nSCHEDULE (approximate)\n07:00 – Temple of Horus at Edfu.\n09:30 – Back on board; sailing south.\n13:00 – Lunch on board.\n17:00 – Kom Ombo Temple and the Crocodile Museum.\n19:00 – Sailing to Aswan; dinner on board.\n\nOvernight: cruise ship in Aswan.\nMeals: breakfast, lunch and dinner.",
+    "stops": [
+     {"name": "Temple of Horus at Edfu", "duration": "About 1 hour 30 minutes", "description": "The best-preserved temple in Egypt, built under the Ptolemies between 237 and 57 BC.", "image": "Temple of Edfu, Egypt.jpg"},
+     {"name": "Kom Ombo Temple", "duration": "About 1 hour 15 minutes", "description": "The riverside double temple of Sobek and Haroeris, with the Crocodile Museum.", "image": "02010 05843 Double entrance of Kom Ombo Temple.jpg"}
+    ]
+   },
+   {
+    "name": "Aswan: Philae, the High Dam and a felucca sail, then departure",
+    "description": "What to expect: Aswan's highlights in the morning before disembarking and your onward transfer.\n\nAfter breakfast your guide takes you to the Aswan High Dam, which created Lake Nasser, and then by motorboat to the island Temple of Isis at Philae, rescued from the rising waters and rebuilt on Agilkia Island. Back on the river, you board a felucca for a sail between the granite islands, past Elephantine and Kitchener's Island with its botanical garden. Check-out from the ship is usually around 9:00, so your luggage stays in the car or at the reception until your transfer. In the early afternoon your driver takes you to Aswan airport, the station or your hotel, or on to Abu Simbel if you are extending your trip.\n\nSCHEDULE (approximate)\n07:00 – Breakfast and check-out.\n08:00 – High Dam and Philae Temple.\n11:00 – Felucca sail around the islands.\n12:30 – Transfer to Aswan airport, station or hotel.\n\nOvernight: none (end of tour).\nMeals: breakfast.",
+    "stops": [
+     {"name": "Philae Temple and the High Dam", "duration": "About 2 hours 30 minutes", "description": "The island Temple of Isis, reached by motorboat, and the dam that created Lake Nasser.", "image": "Temple of Isis in Philae.jpg"},
+     {"name": "Felucca sail", "duration": "About 1 hour", "description": "Sailing between the granite islands of Aswan past Elephantine and Kitchener's Island.", "image": "Nile River, Feluccas, Aswan, Egypt.jpg"}
+    ]
+   }
+  ],
+  "faq": [
+   {"question": "How does booking on request work?", "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm the ship, cabin and final price by email within 24 hours, and you pay online only when the tour is confirmed."},
+   {"question": "Which ship will we be on?", "answer": "We use selected five-star ships with river-view cabins, a sun deck and pool. We confirm the ship's name with your booking, based on your dates."},
+   {"question": "Is the guide shared with the other passengers?", "answer": "No. Your licensed Egyptologist and car are private for your group for every visit, so you choose the pace and avoid the busiest times."},
+   {"question": "On which days does the cruise start?", "answer": "Most Luxor–Aswan cruises depart on fixed days of the week. Tell us your dates and we will find the best match, or suggest a 5-day cruise from Aswan to Luxor."},
+   {"question": "Are meals included?", "answer": "Yes, full board on the ship from lunch on day 1 to breakfast on day 4. Drinks are paid on board. Vegetarian and other diets can be arranged."},
+   {"question": "Can we add the hot-air balloon or Abu Simbel?", "answer": "Yes. A sunrise balloon flight can be added on day 2 before the West Bank, and Abu Simbel can be added as an extra day in Aswan."},
+   {"question": "What is the cabin like?", "answer": "Outside cabins with large windows or balconies, private bathroom, air-conditioning and twin or double beds. Suites can be requested at extra cost."},
+   {"question": "Is it suitable for children?", "answer": "Yes. Children usually love the ship, the pool and the temples. Family cabins or connecting cabins can be requested."},
+   {"question": "Is it suitable for people with limited mobility?", "answer": "Partly. Ships have stairs between decks and gangways between moored boats, and temples have uneven ground. Tell us in advance and we will advise on suitable ships and visits."},
+   {"question": "Can we do the cruise from Aswan to Luxor instead?", "answer": "Yes. Northbound cruises from Aswan to Luxor usually take 5 days and 4 nights. Ask us for the itinerary."},
+   {"question": "What should I pack?", "answer": "Light, modest clothes for temple visits, comfortable shoes, a hat and sunscreen, swimwear for the pool and a jacket for winter evenings on deck."},
+   {"question": "What is the best time of year?", "answer": "October to April is the most pleasant. Summer is very hot, but cruises still run, with visits early in the morning and late in the afternoon."},
+   {"question": "What is the cancellation policy?", "answer": "Cruise cabins are subject to the ship's own conditions, which we send with your confirmation. Until your request is confirmed, nothing is charged at all."}
+  ]
+ }
+}
