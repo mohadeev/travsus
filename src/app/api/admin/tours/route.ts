@@ -156,6 +156,8 @@ export async function POST(request: NextRequest) {
 			durationType: tour.durationType ?? 'days',
 			includesOvernight: !!tour.includesOvernight,
 			bookingMode: tour.bookingMode === 'request' ? 'request' : 'instant',
+			// 2-letter country: the tour is hidden until that country is active (src/lib/destinationPhotos.ts)
+			countryCode: typeof address.countryCode === 'string' && /^[A-Z]{2}$/i.test(address.countryCode) ? address.countryCode.toUpperCase() : null,
 			startAddressId: addressId,
 			endAddressId: addressId,
 			translations: versions,

@@ -6,6 +6,7 @@ import { revalidateTag } from 'next/cache'
 import { unstable_cache } from '@/lib/stableCache'
 import { db, T, REL, fetchAll, mongoCollection } from '@/lib/db'
 import { updateLineItemsLogic } from '@/app/api/updateLineItems/updateLineItemsLogic'
+import { isTourLive } from '@/lib/destinationPhotos'
 
 export const TOURS_TAG = 'tours'
 export const REVIEWS_TAG = 'reviews'
@@ -56,14 +57,15 @@ async function loadCatalog(): Promise<CatalogTour[]> {
 		db
 			.from(T.tours)
 			.select(
-				`id, name, subtitle, overview, tags, slugs, translations.language, translations.name, images, days.name, accommodations, pricingTiers, price, createdAt, ${REL.tourAddresses}`,
+				`id, name, subtitle, overview, tags, slugs, translations.language, translations.name, images, days.name, accommodations, pricingTiers, price, createdAt, countryCode, ${REL.tourAddresses}`,
 			)
 			.gt('images', '[]')
 			.order('createdAt', { ascending: false })
 			.order('id'),
 	)
+	// Tours in countries that aren't open yet stay out of every list
 	return Promise.all(
-		rows.map(async (tour: any): Promise<CatalogTour> => ({
+		rows.filter(isTourLive).map(async (tour: any): Promise<CatalogTour> => ({
 			id: tour.id,
 			name: tour.name ?? '',
 			subtitle: tour.subtitle ?? '',

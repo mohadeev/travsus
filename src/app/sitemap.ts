@@ -1,5 +1,6 @@
 // /sitemap.xml — generated from the database: main pages, tours, destinations
 // (countries and cities with a photo) and blog, each with its other languages.
+import { isTourLive } from '@/lib/destinationPhotos'
 import type { MetadataRoute } from 'next'
 import { routing } from '@/i18n/routing'
 import { db, T, fetchAll, asDate } from '@/lib/db'
@@ -44,9 +45,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
 	// Tours: one entry per language slug, each listing all its translations
 	const tours = await fetchAll(() =>
-		db.from(T.tours).select('id, slugs, updatedAt').order('id'),
+		db.from(T.tours).select('id, slugs, updatedAt, countryCode').order('id'),
 	)
 	for (const tour of tours) {
+		if (!isTourLive(tour)) continue // country not open yet
 		const slugs: { language: string; slug: string }[] = tour.slugs ?? []
 		const languages = Object.fromEntries(
 			slugs
