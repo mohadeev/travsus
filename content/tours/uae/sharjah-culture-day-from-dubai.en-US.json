@@ -1,0 +1,91 @@
+{
+ "key": "uae-sharjah-culture-day",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {
+  "city": "Dubai",
+  "state": "Dubai",
+  "country": "United Arab Emirates",
+  "countryCode": "AE",
+  "timeZone": "Asia/Dubai",
+  "streetAddress": "Your hotel in Dubai",
+  "geoCoordinates": { "lat": 25.3463, "log": 55.4209 }
+ },
+ "slug": "/en-US/united-arab-emirates/dubai/tours/sharjah-culture-private-tour-from-dubai-islamic-museum-heart-of-sharjah-and-al-noor-mosque",
+ "tour": {
+  "name": "Sharjah Culture Private Tour from Dubai: Islamic Museum, Heart of Sharjah & Al Noor Mosque",
+  "subtitle": "A private half-day in the UAE's capital of culture, twenty minutes from Dubai: the Museum of Islamic Civilization under its golden dome, the old town and fort in the Heart of Sharjah, the Blue Souk and the Al Noor Mosque on the lagoon.",
+  "seoTitle": "Sharjah Culture Tour from Dubai: Museums & Mosque",
+  "metaDescription": "Private Sharjah culture tour from Dubai with a local guide: Sharjah Museum of Islamic Civilization, the Heart of Sharjah and Al Hisn fort, the Blue Souk, and Al Noor Mosque on Khalid Lagoon. Hotel pick-up.",
+  "tags": ["Sharjah tour", "Sharjah from Dubai", "Museum of Islamic Civilization", "Heart of Sharjah", "Al Noor Mosque", "UAE culture tour"],
+  "highlights": [
+   "Sharjah Museum of Islamic Civilization",
+   "The golden zodiac mosaic under the museum's dome",
+   "The Heart of Sharjah old quarter and Al Hisn fort",
+   "The Central Souq, known as the Blue Souk",
+   "Al Noor Mosque on Khalid Lagoon",
+   "Museum tickets included",
+   "Private car, local guide and pick-up in Dubai"
+  ],
+  "duration": 1,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "Sharjah is the emirate next door to Dubai, so close that the two cities run into each other, and yet it feels like a different country: quieter, more traditional, and home to more museums than any other emirate. UNESCO named it the Arab capital of culture in 1998, and its old town, restored stone by stone, is the best place in the UAE to see what a Gulf trading town looked like before oil.\n\nThis private half-day tour from your Dubai hotel starts at the Sharjah Museum of Islamic Civilization, in a former souk building on the waterfront, with galleries on Islamic faith, science and art and a golden dome decorated with a mosaic of the zodiac. Then you walk through the Heart of Sharjah: lanes of coral-stone houses, the restored Al Hisn fort first built in 1820, and the old souks. After a look at the Central Souq, the 'Blue Souk' with its tiled facades and wind towers, you finish at Al Noor Mosque, an Ottoman-style mosque on Khalid Lagoon.\n\nAT A GLANCE\n• Duration: about 5 hours\n• Start and finish: your hotel in Dubai\n• Type: private tour with car, driver and English-speaking local guide\n• Booking: on request – we confirm availability and the final price by email within 24 hours, and you pay only then\n• Level: easy, about 3 km of walking\n\nWHAT YOU SEE\n• Sharjah Museum of Islamic Civilization.\n• The Heart of Sharjah and Al Hisn fort.\n• The Central Souq (Blue Souk).\n• Al Noor Mosque and Khalid Lagoon.\n\nWHY THIS TOUR WORKS\nSharjah is only 20–40 minutes away but few visitors go, because it is hard to navigate and its sights are spread out. A local guide links the museums, old town and mosque into one easy morning and explains the history the buildings show.\n\nWHO IT IS FOR\nCulture and history lovers, repeat visitors to Dubai, families, and anyone who wants a quieter, more traditional side of the UAE.\n\nWHO MAY PREFER ANOTHER TOUR\nFor Dubai's old town and skyline, take the Dubai old and new tour. For Abu Dhabi's Grand Mosque and Louvre, take the Abu Dhabi day trip.\n\nPRACTICAL INFORMATION\nSharjah has a stricter public dress code than Dubai: shoulders and knees covered for everyone, and no alcohol anywhere in the emirate. Traffic between Dubai and Sharjah is heavy at rush hour; we time the drive to avoid it.",
+  "inclusions": {
+   "standard": {
+    "private": [
+     "Pick-up and drop-off at your hotel in Dubai",
+     "Private air-conditioned vehicle",
+     "English-speaking local guide",
+     "Sharjah Museum of Islamic Civilization ticket",
+     "Heart of Sharjah and Al Hisn fort visit",
+     "Water in the vehicle"
+    ],
+    "shared": [
+     "Hotel pick-up and drop-off in Dubai",
+     "Air-conditioned vehicle",
+     "Local guide",
+     "Museum ticket",
+     "Water"
+    ]
+   }
+  },
+  "pricingTiers": [
+   { "transportType": "SUV (prado)", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png", "minSeats": 1, "maxSeats": 5, "pricing": { "currency": "EUR", "totalPrice": 240, "pricePerDay": 240 } },
+   { "transportType": "Mercedes Vito", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png", "minSeats": 6, "maxSeats": 8, "pricing": { "currency": "EUR", "totalPrice": 300, "pricePerDay": 300 } },
+   { "transportType": "Mini Bus", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png", "minSeats": 9, "maxSeats": 19, "pricing": { "currency": "EUR", "totalPrice": 440, "pricePerDay": 440 } }
+  ],
+  "images": [
+   "Sharjah Museum of Islamic Civilization 10.jpg",
+   "AL NOORISLAND AND SHARJAH AL MAJAZ.jpg",
+   "Sharjah Museum of Islamic Civilization 13.jpg",
+   "Al Noor Mosque (10).jpg",
+   "Sharjah Museum of Islamic Civilization 16.jpg"
+  ],
+  "days": [
+   {
+    "name": "Museum of Islamic Civilization, the Heart of Sharjah, the Blue Souk and Al Noor Mosque",
+    "description": "What to expect: a private morning in Sharjah, the UAE's capital of culture, with a museum, the restored old town, the souks and a mosque on the lagoon.\n\nYour guide and driver collect you at about 9:00, after the morning rush, and drive north into Sharjah, 20 to 40 minutes from central Dubai. On the way your guide explains how the seven emirates differ, and why Sharjah, ruled since the 1970s by a historian, has put so much into museums, books and heritage.\n\nThe Sharjah Museum of Islamic Civilization opened in 2008 in the Souq al-Majarrah, a waterfront market building converted into galleries. The ground floor explains the five pillars of Islam and the pilgrimage to Mecca, with a piece of the black cloth that covers the Kaaba; upstairs, galleries of science and technology show astrolabes, medical texts and maps, and the art galleries hold ceramics, metalwork, glass and textiles from across the Islamic world. Under the central dome, a golden mosaic shows the night sky and the signs of the zodiac. Allow about an hour and a quarter.\n\nNext, walk into the Heart of Sharjah, the old quarter that is being restored house by house to its appearance in the mid-20th century. Lanes of coral-stone and gypsum houses with carved wooden doors lead to Al Hisn, the fort first built in 1820 as the ruler's residence, rebuilt in the 1990s from old photographs and plans, with exhibits on the town's history. Nearby are Souq Al Arsah, one of the oldest markets in the UAE, and small heritage museums.\n\nAfter a coffee break, drive past the Central Souq, called the Blue Souk for its blue tiles, opened in 1979 with wind-tower-shaped facades and hundreds of shops selling carpets, gold and antiques. The last stop is Al Noor Mosque on Khalid Lagoon, built in the Ottoman style with a central dome and two slender minarets, inspired by the Blue Mosque in Istanbul. You are back at your hotel in Dubai by about 14:00.\n\nSCHEDULE (approximate)\n09:00 – Hotel pick-up in Dubai.\n09:45 – Sharjah Museum of Islamic Civilization (about 1 hour 15 minutes).\n11:00 – Heart of Sharjah, Al Hisn fort and Souq Al Arsah (about 1 hour 15 minutes).\n12:15 – Coffee break.\n12:45 – Central Souq (Blue Souk) and Al Noor Mosque.\n14:00 – Return to your hotel in Dubai.\n\nGOOD TO KNOW\n• The Islamic museum opens later on Fridays; we adjust the order.\n• Al Noor Mosque opens to non-Muslim visitors on set days for guided visits; we include one when the schedule allows.\n• No alcohol is sold anywhere in Sharjah.\n\nINCLUDED: private vehicle and driver, English-speaking local guide, Sharjah Museum of Islamic Civilization ticket, Heart of Sharjah and Al Hisn visit, water, hotel pick-up in Dubai.\nNOT INCLUDED: coffee and food, shopping, tips.\n\nOvernight: none.\nMeals: none.",
+    "stops": [
+     { "name": "Sharjah Museum of Islamic Civilization", "duration": "About 1 hour 15 minutes", "description": "Faith, science and art of the Islamic world under a golden dome.", "image": "Sharjah Museum of Islamic Civilization 13.jpg" },
+     { "name": "Heart of Sharjah", "duration": "About 1 hour 15 minutes", "description": "The restored old quarter, Al Hisn fort and Souq Al Arsah.", "image": "Sharjah Museum of Islamic Civilization 16.jpg" },
+     { "name": "Al Noor Mosque", "duration": "About 30 minutes", "description": "The Ottoman-style mosque on Khalid Lagoon.", "image": "Al Noor Mosque (10).jpg" }
+    ]
+   }
+  ],
+  "faq": [
+   { "question": "How does booking on request work?", "answer": "You choose your date and the number of travellers and send the request. Nothing is charged. We confirm availability and the final price by email within 24 hours, and you pay online only once your tour is confirmed." },
+   { "question": "How far is Sharjah from Dubai?", "answer": "Twenty to forty minutes from central Dubai outside rush hour. Traffic is heavy in the early morning and late afternoon, so we start after 9:00." },
+   { "question": "What is the dress code in Sharjah?", "answer": "Shoulders and knees covered for everyone in public, and tight or see-through clothes are best avoided. Women need a headscarf inside the mosque." },
+   { "question": "Can we go inside Al Noor Mosque?", "answer": "The mosque runs guided visits for non-Muslims on set days. When the schedule allows, we include one; otherwise you see it from the lagoon and gardens." },
+   { "question": "Are tickets included?", "answer": "Yes, the Museum of Islamic Civilization ticket. The Heart of Sharjah and Al Hisn are included in the visit." },
+   { "question": "Is it suitable for children?", "answer": "Yes. The museum's science gallery and the old town are interesting for older children; we keep the pace easy for families. Child seats on request." },
+   { "question": "Can we add more museums?", "answer": "Yes. Sharjah has many: the Sharjah Art Museum, the Maritime Museum, the Aquarium, the Classic Car Museum. We can make this a full day." },
+   { "question": "Can we shop at the Blue Souk?", "answer": "Yes. The Central Souq sells carpets, gold, antiques and textiles; bargaining is normal. Tell us and we will leave more time." },
+   { "question": "Is alcohol available?", "answer": "No. Alcohol is not sold anywhere in the emirate of Sharjah, including hotels." },
+   { "question": "Can I do this on a layover?", "answer": "Yes, if you have at least 8 hours and can enter the UAE. Sharjah International Airport and Dubai International Airport are both close." },
+   { "question": "Can we combine Sharjah with Dubai?", "answer": "Yes. A popular full day is Sharjah in the morning and old Dubai, the creek and the souks in the afternoon." },
+   { "question": "When is the best time to go?", "answer": "All year, as most of the visit is indoors or in shaded lanes. From November to March the walk in the old town is most pleasant." },
+   { "question": "What is the cancellation policy?", "answer": "You can cancel free of charge up to 24 hours before the tour. Until your request is confirmed, nothing is charged at all." }
+  ]
+ }
+}
