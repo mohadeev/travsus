@@ -1,0 +1,92 @@
+{
+ "key": "uae-al-ain-oasis-day-trip",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {
+  "city": "Dubai",
+  "state": "Dubai",
+  "country": "United Arab Emirates",
+  "countryCode": "AE",
+  "timeZone": "Asia/Dubai",
+  "streetAddress": "Your hotel in Dubai",
+  "geoCoordinates": { "lat": 24.2075, "log": 55.7447 }
+ },
+ "slug": "/en-US/united-arab-emirates/dubai/tours/al-ain-private-day-trip-from-dubai-unesco-oasis-al-jahili-fort-and-jebel-hafeet",
+ "tour": {
+  "name": "Al Ain Private Day Trip from Dubai: UNESCO Oasis, Al Jahili Fort & Jebel Hafeet",
+  "subtitle": "A private day in the UAE's Garden City with a local guide: shaded lanes through the date palms of the UNESCO-listed Al Ain Oasis and its ancient falaj channels, Al Jahili Fort, the camel market, and sunset from the top of Jebel Hafeet.",
+  "seoTitle": "Al Ain Day Trip from Dubai: Oasis, Fort & Jebel Hafeet",
+  "metaDescription": "Private Al Ain day trip from Dubai: walk the UNESCO Al Ain Oasis and its falaj irrigation, Al Jahili Fort, the camel market and the mountain road to the top of Jebel Hafeet at sunset. Hotel pick-up.",
+  "tags": ["Al Ain day trip", "Al Ain Oasis", "Jebel Hafeet", "Al Jahili Fort", "UAE UNESCO sites", "Al Ain from Dubai"],
+  "highlights": [
+   "Al Ain Oasis, a UNESCO World Heritage site",
+   "Ancient falaj channels watering the date palms",
+   "Al Jahili Fort and its round tower",
+   "The Al Ain camel market",
+   "The mountain road up Jebel Hafeet",
+   "Sunset from the UAE's second-highest peak",
+   "Private car, local guide and hotel pick-up"
+  ],
+  "duration": 1,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "Al Ain is the UAE's oldest inhabited region and its greenest city, an inland oasis on the border with Oman where people have farmed for more than four thousand years. It was the birthplace of Sheikh Zayed, the founder of the country, and its oases, forts and Bronze Age tombs together form the UAE's first UNESCO World Heritage site. Yet it is only two hours from Dubai and visited by surprisingly few travellers.\n\nThis private day trip takes you there with a local guide. You walk through Al Ain Oasis, where shaded paths wind between some 147,000 date palms watered by falaj channels that have carried water from the mountains for millennia. You visit Al Jahili Fort, built in the 1890s, and the Qasr Al Muwaiji palace where Sheikh Khalifa was born, then the lively camel market. In the late afternoon the road climbs the 1,240-metre ridge of Jebel Hafeet in a series of sweeping bends to the summit, where you watch the sun set over the desert and the oasis city below.\n\nAT A GLANCE\n• Duration: about 11 hours\n• Start and finish: your hotel in Dubai\n• Type: private tour with car, driver and English-speaking local guide\n• Booking: on request – we confirm availability and the final price by email within 24 hours, and you pay only then\n• Level: easy, about 4 km of walking in the shade\n\nWHAT YOU SEE\n• Al Ain Oasis and its falaj system.\n• Al Jahili Fort.\n• Qasr Al Muwaiji (when open).\n• The Al Ain camel market.\n• Jebel Hafeet at sunset.\n\nWHY THIS TOUR WORKS\nAl Ain is too far for most half-day tours and hard to visit without a car. A full private day lets you walk the oasis in the cool of the morning and reach the top of Jebel Hafeet for sunset, with a guide who knows the history of the place where the UAE began.\n\nWHO IT IS FOR\nHistory lovers, repeat visitors to Dubai, families, photographers, and anyone who wants to see the traditional heart of the Emirates.\n\nWHO MAY PREFER ANOTHER TOUR\nFor Abu Dhabi's Grand Mosque and Louvre, take the Abu Dhabi day trip. For mountains and kayaking closer to Dubai, take the Hatta day trip.\n\nPRACTICAL INFORMATION\nWear comfortable shoes and clothing that covers shoulders and knees, and bring a hat. The camel market is busiest in the morning; the oasis is cool and shaded at midday, so the order of the day is flexible.",
+  "inclusions": {
+   "standard": {
+    "private": [
+     "Pick-up and drop-off at your hotel in Dubai",
+     "Private air-conditioned vehicle",
+     "English-speaking local guide",
+     "Al Ain Oasis and Al Jahili Fort visits",
+     "Camel market and Jebel Hafeet",
+     "Lunch at a local restaurant",
+     "Water in the vehicle"
+    ],
+    "shared": [
+     "Hotel pick-up and drop-off",
+     "Air-conditioned vehicle",
+     "Local guide",
+     "Lunch",
+     "Water"
+    ]
+   }
+  },
+  "pricingTiers": [
+   { "transportType": "SUV (prado)", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png", "minSeats": 1, "maxSeats": 5, "pricing": { "currency": "EUR", "totalPrice": 420, "pricePerDay": 420 } },
+   { "transportType": "Mercedes Vito", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png", "minSeats": 6, "maxSeats": 8, "pricing": { "currency": "EUR", "totalPrice": 580, "pricePerDay": 580 } },
+   { "transportType": "Mini Bus", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png", "minSeats": 9, "maxSeats": 19, "pricing": { "currency": "EUR", "totalPrice": 900, "pricePerDay": 900 } }
+  ],
+  "images": [
+   "Al Ain Oasis A UNESCO World heritage site.jpg",
+   "Al-Jahili Fort-2.jpg",
+   "Jebel Hafeet - Aerial View.jpg",
+   "Al-Ain Oasis (2).jpg",
+   "Ripe Dates in the Al Ain Oasis.jpg"
+  ],
+  "days": [
+   {
+    "name": "Al Ain Oasis, Al Jahili Fort, the camel market and Jebel Hafeet",
+    "description": "What to expect: a private day in Al Ain, the inland oasis city where the UAE began, from the palm groves and forts to sunset on the mountain.\n\nYour guide and driver collect you at about 8:00 for the two-hour drive south-east across the desert, through landscapes of red sand and ghaf trees. On the way your guide explains why this inland oasis, with water from the Hajar Mountains, has been settled since the Bronze Age, and how Sheikh Zayed governed it before he became the first president of the UAE.\n\nStart at the camel market on the edge of town, busiest in the morning, where traders buy and sell racing camels, breeding females and calves – a working market, not a show, so the guide helps you visit respectfully. Then on to Al Ain Oasis, the largest of the city's oases and part of the UNESCO-listed Cultural Sites of Al Ain. Walk the shaded paths between walled gardens of date palms, mango and fig trees, and see the falaj, narrow stone channels that bring water from underground sources and share it between farms by a schedule kept for centuries. The eco-centre at the entrance explains how the system works.\n\nLunch is at a local restaurant serving Emirati dishes such as machboos and harees. In the early afternoon visit Al Jahili Fort, built in the 1890s to guard the oasis, with its round four-storey tower and a gallery of the British explorer Wilfred Thesiger, who crossed the Empty Quarter in the 1940s. When open, Qasr Al Muwaiji, the restored fort-palace where Sheikh Khalifa was born, tells the story of the ruling family.\n\nIn the late afternoon drive up Jebel Hafeet, the 1,240-metre limestone ridge on the Omani border, on a road of 60 curves that is famous among drivers and cyclists. From the top, watch the sun set over the desert, the green oasis and the city lights coming on. The drive back to Dubai takes about two hours.\n\nSCHEDULE (approximate, adjusted to sunset)\n08:00 – Hotel pick-up in Dubai.\n10:00 – Al Ain camel market.\n10:45 – Al Ain Oasis walk and eco-centre (about 1 hour 30 minutes).\n12:30 – Lunch.\n14:00 – Al Jahili Fort; Qasr Al Muwaiji if open.\n15:45 – Drive up Jebel Hafeet.\n16:30 – Sunset at the summit.\n17:30 – Drive back to Dubai.\n19:30 – Return to your hotel.\n\nGOOD TO KNOW\n• Some sites close on Mondays or have short Friday hours; we adjust the order.\n• Sunset is around 17:30 in December and 19:10 in June.\n• The camel market is a working market; ask before taking close-up photos of traders.\n\nINCLUDED: private vehicle and driver, English-speaking local guide, all visits, lunch, water, hotel pick-up.\nNOT INCLUDED: drinks with lunch, tips.\n\nOvernight: none.\nMeals: lunch.",
+    "stops": [
+     { "name": "Al Ain Oasis", "duration": "About 1 hour 30 minutes", "description": "Palm groves and falaj channels in a UNESCO World Heritage site.", "image": "Al-Ain Oasis (2).jpg" },
+     { "name": "Al Jahili Fort", "duration": "About 1 hour", "description": "The 1890s fort and the Thesiger gallery.", "image": "Al-Jahili Fort-2.jpg" },
+     { "name": "Jebel Hafeet", "duration": "About 1 hour 30 minutes", "description": "The mountain road and sunset from the summit.", "image": "Jebel Hafeet - Aerial View.jpg" }
+    ]
+   }
+  ],
+  "faq": [
+   { "question": "How does booking on request work?", "answer": "You choose your date and the number of travellers and send the request. Nothing is charged. We confirm availability and the final price by email within 24 hours, and you pay online only once your tour is confirmed." },
+   { "question": "How far is Al Ain from Dubai?", "answer": "About 130 km, or two hours by road each way. The drive crosses the desert and is part of the experience." },
+   { "question": "Is it a long day?", "answer": "About 11 hours with the sunset on Jebel Hafeet. For a shorter day, we skip the sunset and return by about 17:00." },
+   { "question": "Is lunch included?", "answer": "Yes, at a local restaurant serving Emirati and Middle Eastern dishes. Vegetarian and other diets are easy to arrange." },
+   { "question": "What is the falaj?", "answer": "An ancient irrigation system of underground and surface channels that carries water from the mountains to the oasis and shares it between farms by time. Al Ain's falaj are part of the UNESCO listing." },
+   { "question": "Is the camel market suitable for visitors?", "answer": "Yes, with respect. It is a working market where traders do business; the guide helps you talk to them and asks before close-up photos." },
+   { "question": "Is it suitable for children?", "answer": "Yes. The oasis paths are shaded, the camels are popular, and the drive up Jebel Hafeet is exciting. Child seats on request." },
+   { "question": "What should I wear?", "answer": "Comfortable shoes, light clothing covering shoulders and knees, and a hat. A light jacket for the summit in winter." },
+   { "question": "Can we add Al Ain Zoo or the museum?", "answer": "Yes. Al Ain Zoo, Al Ain Palace Museum or the Hili Archaeological Park can replace or extend stops." },
+   { "question": "Can we start from Abu Dhabi?", "answer": "Yes. Al Ain is about 1 hour 45 minutes from Abu Dhabi; we can pick you up there instead." },
+   { "question": "Can I do this on a layover?", "answer": "Only with a very long layover. It is better as a full day during a stay in Dubai or Abu Dhabi." },
+   { "question": "When is the best time to go?", "answer": "October to April. In summer Al Ain is very hot by day; we keep the oasis walk short and the summit visit for the evening." },
+   { "question": "What is the cancellation policy?", "answer": "You can cancel free of charge up to 24 hours before the tour. Until your request is confirmed, nothing is charged at all." }
+  ]
+ }
+}
