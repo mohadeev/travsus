@@ -1,0 +1,90 @@
+{
+ "key": "qatar-modern-doha-katara-pearl-lusail",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {
+  "city": "Doha",
+  "state": "Doha",
+  "country": "Qatar",
+  "countryCode": "QA",
+  "timeZone": "Asia/Qatar",
+  "streetAddress": "Your hotel in Doha",
+  "geoCoordinates": { "lat": 25.36038, "log": 51.52632 }
+ },
+ "slug": "/en-US/qatar/doha/tours/modern-doha-tour-katara-the-pearl-and-lusail-at-sunset",
+ "tour": {
+  "name": "Modern Doha Tour: Katara, The Pearl & Lusail at Sunset",
+  "subtitle": "A private afternoon through the new Doha with a local guide: the mosques and amphitheatre of Katara Cultural Village, the marinas and canals of The Pearl, and Lusail's boulevard, crescent towers and World Cup final stadium as the lights come on.",
+  "seoTitle": "Modern Doha Tour: Katara, The Pearl & Lusail",
+  "metaDescription": "Private afternoon tour of modern Doha with a local guide: Katara Cultural Village, The Pearl-Qatar's marinas and Qanat Quartier, Lusail Boulevard, the Katara Towers and Lusail Stadium at sunset. Hotel pick-up.",
+  "tags": ["Modern Doha tour", "Katara Cultural Village", "The Pearl-Qatar", "Lusail Boulevard", "Lusail Stadium", "Doha sunset tour"],
+  "highlights": [
+   "Katara Cultural Village: amphitheatre, mosques and pigeon towers",
+   "Katara beach and the view of West Bay",
+   "Porto Arabia marina at The Pearl",
+   "The colourful canals of Qanat Quartier",
+   "Lusail Boulevard and the crescent Katara Towers",
+   "Lusail Stadium, home of the 2022 World Cup final",
+   "Private car, local guide and hotel pick-up"
+  ],
+  "duration": 1,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "In thirty years Doha has built a second city north of the old one, and this is the tour that shows it. Where the classic city tour looks at the souq and the Corniche, this private afternoon follows the coast north through the places Qataris themselves go out in the evening: a cultural village built for the arts, an island of marinas reclaimed from the sea, and a whole new city made for the 2022 World Cup.\n\nYou start at Katara Cultural Village, with its Greek-style amphitheatre, its two mosques – one covered in blue and turquoise tiles, one golden – and its tall pigeon towers, then walk down to the beach for the view back to West Bay. Next is The Pearl, the artificial island of yachts and cafés, where the guide takes you around the Porto Arabia marina and into Qanat Quartier, a Venetian-style district of pastel houses, bridges and canals. The tour ends in Lusail as the sun goes down: the wide boulevard between the towers, the twin crescents of the Katara Towers on the shore and the golden bowl of Lusail Stadium, where Argentina won the World Cup final in December 2022.\n\nAT A GLANCE\n• Duration: about 5 hours (afternoon to early evening)\n• Start and finish: your hotel in Doha\n• Type: private tour with car, driver and English-speaking local guide\n• Booking: on request – we confirm availability and the final price by email within 24 hours, and you pay only then\n• Level: easy, about 3 km of walking at an easy pace\n\nWHAT YOU SEE\n• Katara Cultural Village and its beach.\n• The Pearl-Qatar: Porto Arabia and Qanat Quartier.\n• Lusail Boulevard, the Katara Towers and Lusail Marina.\n• Lusail Stadium from outside.\n\nWHY THIS TOUR WORKS\nThe new districts are spread along 20 km of coast, poorly linked by public transport and at their best at sunset. With a car and a guide you see all three in one afternoon, with time to walk rather than just drive past, and you finish in Lusail just as the towers light up.\n\nWHO IT IS FOR\nFirst-time visitors who have seen old Doha, football fans, architecture lovers, families and couples who want an easy, photogenic afternoon.\n\nWHO MAY PREFER ANOTHER TOUR\nFor Souq Waqif, the Corniche and the Museum of Islamic Art, take our private Doha city tour. For a full day in the museums, take the Doha museums day.\n\nPRACTICAL INFORMATION\nWear comfortable shoes and clothing that covers shoulders and knees for the mosques. Bring sunglasses and water. Stadium interior tours depend on events and are not included; we can add one on request when available.",
+  "inclusions": {
+   "standard": {
+    "private": [
+     "Pick-up and drop-off at your hotel in Doha",
+     "Private air-conditioned vehicle",
+     "English-speaking local guide",
+     "Stops at Katara, The Pearl and Lusail",
+     "Water in the vehicle"
+    ],
+    "shared": [
+     "Pick-up and drop-off at your hotel in Doha",
+     "Air-conditioned vehicle",
+     "Local guide",
+     "Water"
+    ]
+   }
+  },
+  "pricingTiers": [
+   { "transportType": "SUV (prado)", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png", "minSeats": 1, "maxSeats": 5, "pricing": { "currency": "EUR", "totalPrice": 240, "pricePerDay": 240 } },
+   { "transportType": "Mercedes Vito", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png", "minSeats": 6, "maxSeats": 8, "pricing": { "currency": "EUR", "totalPrice": 300, "pricePerDay": 300 } },
+   { "transportType": "Mini Bus", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png", "minSeats": 9, "maxSeats": 19, "pricing": { "currency": "EUR", "totalPrice": 440, "pricePerDay": 440 } }
+  ],
+  "images": [
+   "Lusail skyline with the Lusail Marina Iconic Development in the center.jpg",
+   "Aerial view of Katara cultural village.jpg",
+   "Doha Katara Cultural Village Pigeon Towers 05.jpg",
+   "Beach at Marsa Malaz Kempinski at The Pearl-Qatar.jpg",
+   "View of Lusail Plaza Towers from Lusail Boulevard.png",
+   "Aerial view of Lusail Stadium during the daytime.png"
+  ],
+  "days": [
+   {
+    "name": "Katara, The Pearl and Lusail",
+    "description": "What to expect: a private afternoon through the new districts of Doha – Katara Cultural Village, The Pearl-Qatar and Lusail – ending at sunset among the towers and the World Cup final stadium.\n\nYour guide and driver collect you from your hotel at about 13:30 and drive north past the towers of West Bay to Katara Cultural Village, opened in 2010 as a home for the arts. It is built like an old Gulf town on a hill above the sea: lanes of sand-coloured buildings, galleries and the opera house, an open-air amphitheatre in Greek style facing the water, and two mosques that are among the most photographed buildings in Qatar – the Katara Mosque, covered in blue and turquoise tiles by Turkish craftsmen, and the small Golden Mosque. Near the entrance stand the pigeon towers, tall clay towers of a kind once built across the Middle East to collect birds and their droppings. Then walk down to Katara's public beach for the view south to West Bay.\n\nA short drive takes you to The Pearl-Qatar, an island reclaimed from the sea in the 2000s on old pearl-diving grounds, now home to apartments, cafés and three marinas. Walk part of the promenade at Porto Arabia, lined with yachts and towers, then cross into Qanat Quartier, a district designed after Venice with pastel houses, small bridges and canals. There is time for coffee or an ice cream by the water.\n\nThe last stop is Lusail, a new city about 20 km north of the centre, built mostly in the 2010s and still growing. Drive along Lusail Boulevard between the Plaza Towers, then down to the shore for the twin crescents of the Katara Towers, which house two hotels, and the Lusail Marina promenade. As the light fades you reach Lusail Stadium, the golden bowl inspired by traditional lanterns and hand-made bowls, which hosted the final of the 2022 FIFA World Cup in front of almost 89,000 people. Your guide shows you the best places for photos as the lights come on, and you are back at your hotel by about 18:30.\n\nSCHEDULE (approximate, adjusted to sunset)\n13:30 – Hotel pick-up.\n14:00 – Katara Cultural Village and beach (about 1 hour 15 minutes).\n15:30 – The Pearl-Qatar: Porto Arabia and Qanat Quartier (about 1 hour 15 minutes).\n17:00 – Lusail Boulevard, Katara Towers and Lusail Stadium at sunset (about 1 hour).\n18:30 – Return to your hotel.\n\nGOOD TO KNOW\n• Sunset is around 16:45 in December and 18:20 in June; we move the start time so you reach Lusail at golden hour.\n• On match and event days some Lusail roads close; we adjust the route.\n• You can end the tour at a restaurant at The Pearl or Lusail instead of your hotel.\n\nINCLUDED: private vehicle and driver, English-speaking local guide, all stops, water, hotel pick-up.\nNOT INCLUDED: food and drinks, stadium tour, tips.\n\nOvernight: none.\nMeals: none.",
+    "stops": [
+     { "name": "Katara Cultural Village", "duration": "About 1 hour 15 minutes", "description": "The amphitheatre, the tiled Katara Mosque, the Golden Mosque, the pigeon towers and the beach.", "image": "Doha Katara Cultural Village Pigeon Towers 05.jpg" },
+     { "name": "The Pearl-Qatar", "duration": "About 1 hour 15 minutes", "description": "The Porto Arabia marina and the canals of Qanat Quartier.", "image": "Beach at Marsa Malaz Kempinski at The Pearl-Qatar.jpg" },
+     { "name": "Lusail", "duration": "About 1 hour", "description": "Lusail Boulevard, the Katara Towers and Lusail Stadium at sunset.", "image": "View of Lusail Plaza Towers from Lusail Boulevard.png" }
+    ]
+   }
+  ],
+  "faq": [
+   { "question": "How does booking on request work?", "answer": "You choose your date and the number of travellers and send the request. Nothing is charged. We confirm availability and the final price by email within 24 hours, and you pay online only once your tour is confirmed." },
+   { "question": "Can we go inside Lusail Stadium?", "answer": "The tour views the stadium from outside. Guided stadium tours run on some days depending on events; we can add one on request when available, at extra cost." },
+   { "question": "Can we visit the mosques at Katara?", "answer": "You can see both mosques from outside at any time. Visitors may enter outside prayer times with modest dress; women should cover their hair, and the guide can lend a scarf." },
+   { "question": "How much walking is there?", "answer": "About 3 km in total, on flat promenades at an easy pace, with the car close by at each stop." },
+   { "question": "Is it suitable for children?", "answer": "Yes. The beach, the marinas and the stadium are popular with children, and there are ice cream and snack stops along the way. Child seats on request." },
+   { "question": "What should I wear?", "answer": "Comfortable shoes and clothing that covers shoulders and knees. Sunglasses and a hat for the first part of the afternoon." },
+   { "question": "Can we stay for dinner?", "answer": "Yes. Many guests end the tour at a restaurant at The Pearl or on the Lusail waterfront; the driver can drop you there instead of at your hotel." },
+   { "question": "Is this different from the Doha city tour?", "answer": "Yes. The city tour covers old Doha: Souq Waqif, the Corniche and the Museum of Islamic Art. This tour covers the new districts north of the centre. They fit well together on two days or as a morning and an afternoon." },
+   { "question": "Can I do this on a layover?", "answer": "Yes, if you have at least 8 hours between flights and can enter Qatar. We pick you up at Hamad International Airport and bring you back in time." },
+   { "question": "What happens on match days?", "answer": "When events are held at Lusail, some roads close. We change the order of stops or the time, and we tell you when we confirm your request." },
+   { "question": "Can we change the stops?", "answer": "Yes. It is a private tour: you can add Place Vendôme mall, Msheireb or the Corniche, or spend longer at the beach." },
+   { "question": "When is the best time to go?", "answer": "October to April, when afternoons are warm and evenings pleasant. In summer we start later so you are outside mostly after sunset." },
+   { "question": "What is the cancellation policy?", "answer": "You can cancel free of charge up to 24 hours before the tour. Until your request is confirmed, nothing is charged at all." }
+  ]
+ }
+}
