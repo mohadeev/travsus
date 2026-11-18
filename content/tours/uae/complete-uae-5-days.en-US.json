@@ -1,0 +1,127 @@
+{
+ "key": "uae-complete-5-days",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {
+  "city": "Dubai",
+  "state": "Dubai",
+  "country": "United Arab Emirates",
+  "countryCode": "AE",
+  "timeZone": "Asia/Dubai",
+  "streetAddress": "Your hotel in Dubai",
+  "geoCoordinates": { "lat": 25.2048, "log": 55.2708 }
+ },
+ "slug": "/en-US/united-arab-emirates/dubai/tours/complete-uae-in-5-days-dubai-abu-dhabi-sharjah-al-ain-and-the-desert",
+ "tour": {
+  "name": "Complete UAE in 5 Days: Dubai, Abu Dhabi, Sharjah, Al Ain & the Desert",
+  "subtitle": "Five private days from your Dubai hotel: old and new Dubai with the Burj Khalifa, Abu Dhabi's Grand Mosque and Louvre, Sharjah's museums and a Marina dinner cruise, the UNESCO oasis of Al Ain and Jebel Hafeet, and a last evening in the red dunes.",
+  "seoTitle": "Complete UAE 5-Day Private Tour from Dubai",
+  "metaDescription": "Five-day private UAE tour from Dubai: Al Fahidi, the souks and Burj Khalifa; Abu Dhabi's Grand Mosque and Louvre; Sharjah and a Dubai Marina dhow dinner; Al Ain Oasis and Jebel Hafeet; evening desert safari.",
+  "tags": ["UAE 5-day tour", "UAE itinerary 5 days", "Dubai Abu Dhabi Sharjah Al Ain", "UAE private tour", "Jebel Hafeet", "UAE desert safari"],
+  "highlights": [
+   "Al Fahidi, the souks and the Burj Khalifa at sunset",
+   "Sheikh Zayed Grand Mosque, Qasr Al Watan and the Louvre",
+   "Sharjah's Museum of Islamic Civilization and old town",
+   "Dhow dinner cruise in Dubai Marina",
+   "Al Ain Oasis, a UNESCO World Heritage site",
+   "Sunset on Jebel Hafeet",
+   "Evening desert safari with barbecue dinner"
+  ],
+  "duration": 5,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "Most visitors see Dubai's towers and one desert evening. In five days you can see the whole story of the Emirates: the trading town on the creek, the capital and its great mosque, Sharjah's museums and old houses, the inland oasis where the country began, and the desert that surrounds it all. This private tour keeps you in one Dubai hotel, with a local guide and driver and every ticket booked.\n\nDay one is old and new Dubai, ending at the top of the Burj Khalifa at sunset. Day two is Abu Dhabi: the Sheikh Zayed Grand Mosque, Qasr Al Watan and the Louvre. Day three is Sharjah in the morning, then the Palm Jumeirah and a dhow dinner cruise through Dubai Marina. Day four goes inland to Al Ain, with its UNESCO oasis, forts and camel market, and ends with sunset on Jebel Hafeet. Day five is free in the morning, then you head into the red dunes for the classic evening safari.\n\nAT A GLANCE\n• Duration: 5 days (day tours from your Dubai hotel)\n• Start and finish: your hotel in Dubai\n• Type: private tour with car, driver and English-speaking local guide; 4x4 with a desert driver for the safari\n• Booking: on request – we confirm availability and the final price by email within 24 hours, and you pay only then\n• Level: easy\n\nWHAT YOU SEE\n• Dubai: Al Fahidi, the creek, the souks, Jumeirah, the Burj Khalifa, the Palm and the Marina.\n• Abu Dhabi: the Grand Mosque, Qasr Al Watan and the Louvre.\n• Sharjah: the Museum of Islamic Civilization, the Heart of Sharjah and Al Noor Mosque.\n• Al Ain: the oasis, Al Jahili Fort, the camel market and Jebel Hafeet.\n• The red dunes and a desert camp.\n\nWHY THIS TOUR WORKS\nThe days alternate long and short, so you are never tired, and each is timed for the best light. The guide who started with you on day one knows by day five exactly what you like.\n\nWHO IT IS FOR\nTravellers who want to know the Emirates properly, families, couples, culture lovers and anyone with a longer stay in Dubai.\n\nWHO MAY PREFER ANOTHER TOUR\nWith three days, take our UAE highlights tour. For the mountains, add our Hatta day trip.\n\nPRACTICAL INFORMATION\nHotels are not included. Bring long sleeves and long trousers or skirts for the mosques (headscarf for women), comfortable shoes, a hat and sunscreen.",
+  "inclusions": {
+   "standard": {
+    "private": [
+     "Pick-up and drop-off at your hotel in Dubai each day",
+     "Private air-conditioned vehicle and driver",
+     "English-speaking local guide on days 1–4",
+     "Abra ride, Burj Khalifa At the Top and The View at The Palm",
+     "Grand Mosque registration, Qasr Al Watan and Louvre Abu Dhabi tickets",
+     "Sharjah Museum of Islamic Civilization ticket",
+     "Dubai Marina dhow dinner cruise",
+     "Lunch in Al Ain",
+     "Private 4x4 evening desert safari with barbecue dinner",
+     "Water in the vehicle"
+    ],
+    "shared": [
+     "Hotel pick-up and drop-off",
+     "Air-conditioned vehicle",
+     "Local guide",
+     "Main tickets",
+     "Shared desert safari"
+    ]
+   }
+  },
+  "pricingTiers": [
+   { "transportType": "SUV / 4x4 Land Cruiser", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png", "minSeats": 1, "maxSeats": 5, "pricing": { "currency": "EUR", "totalPrice": 1850, "pricePerDay": 370 } },
+   { "transportType": "Mercedes Vito / two 4x4s", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png", "minSeats": 6, "maxSeats": 10, "pricing": { "currency": "EUR", "totalPrice": 3100, "pricePerDay": 620 } },
+   { "transportType": "Mini Bus / four 4x4s", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png", "minSeats": 11, "maxSeats": 19, "pricing": { "currency": "EUR", "totalPrice": 5600, "pricePerDay": 1120 } }
+  ],
+  "images": [
+   "Sheikh Zayed Grand Mosque @ Abu Dhabi (15856602738).jpg",
+   "Burj Khalifa Dubai, UAE at Sunset 001 by Eric Chamchoum.jpg",
+   "Al Ain Oasis A UNESCO World heritage site.jpg",
+   "Dubai Marina Towers by night.jpg",
+   "Sharjah Museum of Islamic Civilization 10.jpg",
+   "DUBAI DESERT SAFARI.jpg",
+   "Jebel Hafeet - Aerial View.jpg"
+  ],
+  "days": [
+   {
+    "name": "Old and new Dubai: Al Fahidi, the creek, the souks and the Burj Khalifa at sunset",
+    "description": "What to expect: Dubai from the creek where it began to the top of the world's tallest building.\n\nYour guide collects you at about 10:00. Walk the wind-tower lanes of Al Fahidi, built by merchants in the late 19th century, and see Al Fahidi Fort, the oldest building in the city. An abra carries you across Dubai Creek to the Spice Souk and the Gold Souk in Deira. After lunch (at your own cost), drive along the Jumeirah coast to the beach facing the Burj Al Arab, then to Downtown Dubai for your timed ticket up the 828-metre Burj Khalifa to levels 124 and 125 at sunset, and the Dubai Fountain below.\n\nSCHEDULE (approximate)\n10:00 – Hotel pick-up.\n10:30 – Al Fahidi and the fort.\n11:45 – Abra; Spice and Gold Souks.\n13:15 – Lunch (at your own cost).\n14:45 – Jumeirah and the Burj Al Arab beach.\n16:00 – Burj Khalifa At the Top.\n17:45 – Dubai Fountain.\n18:30 – Return to your hotel.\n\nOvernight: your hotel in Dubai (not included).\nMeals: none.",
+    "stops": [
+     { "name": "Al Fahidi and the souks", "duration": "About 3 hours", "description": "Wind-tower lanes, the abra and the spice and gold souks.", "image": "Al Bastakiya 10.jpg" },
+     { "name": "Burj Khalifa", "duration": "About 1 hour 30 minutes", "description": "At the Top at sunset.", "image": "Burj Khalifa Dubai, UAE at Sunset 001 by Eric Chamchoum.jpg" }
+    ]
+   },
+   {
+    "name": "Abu Dhabi: Sheikh Zayed Grand Mosque, Qasr Al Watan and the Louvre",
+    "description": "What to expect: a day in the capital and its three great buildings.\n\nLeave at about 8:00 for the 90-minute drive. The Sheikh Zayed Grand Mosque, completed in 2007, has 82 white marble domes, more than a thousand inlaid columns and one of the world's largest hand-knotted carpets. Qasr Al Watan, the working presidential palace, has a Great Hall under a 37-metre dome. After lunch (at your own cost), the Louvre Abu Dhabi on Saadiyat Island shows the story of world art under Jean Nouvel's 180-metre dome of light. Drive back along the Corniche to Dubai.\n\nSCHEDULE (approximate)\n08:00 – Hotel pick-up.\n09:30 – Sheikh Zayed Grand Mosque.\n11:15 – Qasr Al Watan.\n12:45 – Lunch (at your own cost).\n14:00 – Louvre Abu Dhabi.\n16:15 – Corniche.\n18:00 – Return to your hotel.\n\nGOOD TO KNOW\n• Mosque dress code: long sleeves, long trousers or skirt, headscarf for women.\n• The mosque is closed to visitors on Friday mornings and the Louvre on Mondays.\n\nOvernight: your hotel in Dubai (not included).\nMeals: none.",
+    "stops": [
+     { "name": "Sheikh Zayed Grand Mosque", "duration": "About 1 hour 15 minutes", "description": "82 marble domes and a vast hand-knotted carpet.", "image": "Sheikh Zayed Grand Mosque approach 09.jpg" },
+     { "name": "Louvre Abu Dhabi", "duration": "About 2 hours", "description": "A museum of world art under a dome of light.", "image": "Louvre abu dhabi, interno, cortile coperto 01.jpg" }
+    ]
+   },
+   {
+    "name": "Sharjah in the morning, then the Palm Jumeirah and a Dubai Marina dhow dinner",
+    "description": "What to expect: the UAE's capital of culture in the morning and modern Dubai from above and from the water in the evening.\n\nAt about 9:00 drive to Sharjah, 20–40 minutes away. Visit the Sharjah Museum of Islamic Civilization, with galleries on faith, science and art under a golden zodiac dome, then walk the restored Heart of Sharjah and Al Hisn fort, first built in 1820. See the Blue Souk and Al Noor Mosque on Khalid Lagoon, and return to your hotel for a rest at about 13:30. At 16:00 your driver takes you along the Palm Jumeirah to the Atlantis and up The View at The Palm, 240 metres above the island, then to JBR beach for sunset. In the evening board a traditional dhow for a two-hour buffet dinner cruise through the lights of Dubai Marina.\n\nSCHEDULE (approximate)\n09:00 – Hotel pick-up.\n09:45 – Museum of Islamic Civilization and the Heart of Sharjah.\n12:45 – Blue Souk and Al Noor Mosque.\n13:30 – Return to your hotel; rest.\n16:00 – Palm Jumeirah and The View.\n17:30 – JBR beach at sunset.\n19:00 – Dhow dinner cruise in Dubai Marina.\n21:30 – Return to your hotel.\n\nOvernight: your hotel in Dubai (not included).\nMeals: dinner.",
+    "stops": [
+     { "name": "Sharjah", "duration": "About 3 hours 30 minutes", "description": "The Islamic museum, the old town and Al Noor Mosque.", "image": "Sharjah Museum of Islamic Civilization 13.jpg" },
+     { "name": "Dubai Marina dhow cruise", "duration": "About 2 hours", "description": "Dinner on a dhow through the Marina towers.", "image": "Dubai Marina Towers by night.jpg" }
+    ]
+   },
+   {
+    "name": "Al Ain: the UNESCO oasis, Al Jahili Fort, the camel market and sunset on Jebel Hafeet",
+    "description": "What to expect: a day inland in the green oasis city where the UAE began.\n\nLeave at about 8:00 for the two-hour drive across the desert. Start at the camel market, busiest in the morning, then walk the shaded paths of Al Ain Oasis, part of a UNESCO World Heritage site, where some 147,000 date palms are watered by ancient falaj channels. After an Emirati lunch, visit Al Jahili Fort, built in the 1890s, with its round tower and the Wilfred Thesiger gallery. In the late afternoon drive the 60 curves up Jebel Hafeet, 1,240 metres high on the Omani border, for sunset over the desert, then return to Dubai.\n\nSCHEDULE (approximate)\n08:00 – Hotel pick-up.\n10:00 – Camel market.\n10:45 – Al Ain Oasis.\n12:30 – Lunch.\n14:00 – Al Jahili Fort.\n15:45 – Jebel Hafeet; sunset at the summit.\n17:30 – Drive back to Dubai.\n19:30 – Return to your hotel.\n\nOvernight: your hotel in Dubai (not included).\nMeals: lunch.",
+    "stops": [
+     { "name": "Al Ain Oasis", "duration": "About 1 hour 30 minutes", "description": "Palm groves and falaj channels in a UNESCO site.", "image": "Al-Ain Oasis (2).jpg" },
+     { "name": "Jebel Hafeet", "duration": "About 1 hour 30 minutes", "description": "The mountain road and sunset from the summit.", "image": "Jebel Hafeet - Aerial View.jpg" }
+    ]
+   },
+   {
+    "name": "Free morning, then an evening desert safari with barbecue dinner",
+    "description": "What to expect: a slow morning and a last evening in the red dunes.\n\nThe morning is free for the beach, shopping or the pool. At about 15:00 an experienced desert driver collects you in a private 4x4 and drives 45 minutes south-east to the red dunes. After a 30–40-minute dune drive with photo stops, watch the sunset from a high crest and try sandboarding. At a desert camp you are welcomed with Arabic coffee and dates, ride a camel, have henna painted, and enjoy a barbecue dinner with tanoura and fire shows under the stars. You are back at your hotel at about 21:30, or at Dubai International Airport for a late flight.\n\nSCHEDULE (approximate, adjusted to sunset)\n15:00 – Pick-up by 4x4.\n16:00 – Dune drive, sunset and sandboarding.\n18:00 – Desert camp, camel ride, barbecue dinner and shows.\n21:30 – Return to your hotel or the airport.\n\nINCLUDED (whole tour): private vehicle and driver, English-speaking local guide on days 1–4, abra ride, Burj Khalifa At the Top, Grand Mosque registration, Qasr Al Watan and Louvre Abu Dhabi tickets, Sharjah Museum of Islamic Civilization ticket, The View at The Palm, Dubai Marina dhow dinner cruise, lunch in Al Ain, private 4x4 desert safari with barbecue dinner, water, daily hotel pick-up.\nNOT INCLUDED: hotel nights, other meals, alcoholic drinks, quad biking, tips.\n\nOvernight: none.\nMeals: dinner.",
+    "stops": [
+     { "name": "Red dunes and desert camp", "duration": "About 5 hours", "description": "Dune drive, sunset, camels and a barbecue under the stars.", "image": "DUBAI DESERT SAFARI.jpg" }
+    ]
+   }
+  ],
+  "faq": [
+   { "question": "How does booking on request work?", "answer": "You choose your date and the number of travellers and send the request. Nothing is charged. We confirm availability and the final price by email within 24 hours, and you pay online only once your tour is confirmed." },
+   { "question": "Are hotels included?", "answer": "No. You stay at your own hotel in Dubai and we pick you up there each day. We can book a hotel for you on request." },
+   { "question": "Can we change the order of the days?", "answer": "Yes. We arrange the days around the Grand Mosque's Friday-morning closure, the Louvre's Monday closure and your flights." },
+   { "question": "Are all tickets booked for us?", "answer": "Yes. The Burj Khalifa sunset slot, the Grand Mosque registration, Qasr Al Watan, the Louvre, the Sharjah museum, The View and the dhow cruise are booked when we confirm." },
+   { "question": "Is it the same guide every day?", "answer": "The same local guide on days 1–4 whenever possible. On day 5 an experienced desert driver takes you into the dunes." },
+   { "question": "Can we add Hatta?", "answer": "Yes. A sixth day in the Hajar Mountains with kayaking on Hatta Dam fits well; it can also replace the Sharjah morning." },
+   { "question": "Is it suitable for children?", "answer": "Yes. Each day has something for children, the long days alternate with shorter ones, and child seats are provided." },
+   { "question": "What should I wear?", "answer": "Comfortable shoes and clothing covering shoulders and knees; long sleeves and long trousers or skirts for the mosques, with a headscarf for women." },
+   { "question": "Is alcohol available?", "answer": "Not at the sites or in Sharjah. Some dhow cruises and desert camps sell alcohol at extra cost; tell us if you prefer dry options." },
+   { "question": "Can I do this on a stopover?", "answer": "Yes, with five days in the UAE and entry to the country. We meet you at Dubai International Airport on day 1 and can drop you there after the safari." },
+   { "question": "What about vegetarian food?", "answer": "The included meals all have vegetarian options, and the guide suggests restaurants for every diet on the other days." },
+   { "question": "When is the best time to go?", "answer": "November to March is ideal. From May to September it is very hot; we start early and spend the middle of the day indoors." },
+   { "question": "What is the cancellation policy?", "answer": "You can cancel free of charge up to 48 hours before the first day. Until your request is confirmed, nothing is charged at all." }
+  ]
+ }
+}
