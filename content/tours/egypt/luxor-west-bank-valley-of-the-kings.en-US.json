@@ -1,0 +1,62 @@
+{
+ "key": "egypt-luxor-west-bank-valley-of-the-kings",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {"city": "Luxor", "state": "Luxor", "country": "Egypt", "countryCode": "EG", "timeZone": "Africa/Cairo", "streetAddress": "Your hotel or Nile cruise boat in Luxor", "geoCoordinates": {"lat": 25.7402, "log": 32.6014}},
+ "slug": "/en-US/egypt/luxor/tours/valley-of-the-kings-hatshepsut-temple-and-colossi-of-memnon-private-tour",
+ "tour": {
+  "name": "Valley of the Kings, Hatshepsut Temple & Colossi of Memnon Private Tour",
+  "subtitle": "A private morning on Luxor's West Bank with an Egyptologist: painted royal tombs in the Valley of the Kings, the terraced temple of Queen Hatshepsut beneath the cliffs of Deir el-Bahari, and the giant seated Colossi of Memnon – before the midday heat.",
+  "seoTitle": "Luxor West Bank Private Tour: Valley of the Kings | TRAVSUS",
+  "metaDescription": "Private Luxor West Bank tour: three royal tombs in the Valley of the Kings, Hatshepsut's temple at Deir el-Bahari and the Colossi of Memnon. Egyptologist guide and tickets included.",
+  "tags": ["Valley of the Kings", "Hatshepsut temple", "Colossi of Memnon", "Luxor West Bank", "Tutankhamun tomb", "Luxor private tour"],
+  "highlights": [
+   "Three painted royal tombs in the Valley of the Kings",
+   "Option to enter the tombs of Tutankhamun, Seti I or Ramesses VI",
+   "The terraced temple of Queen Hatshepsut at Deir el-Bahari",
+   "The Punt expedition reliefs and Osiride statues of the queen",
+   "The 18-metre Colossi of Memnon of Amenhotep III",
+   "An early start to finish before the midday heat",
+   "Egyptologist guide and entrance tickets included"
+  ],
+  "duration": 1,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "For about 500 years, the pharaohs of the New Kingdom were buried not in pyramids but in tombs cut deep into a hidden desert valley on the west bank of the Nile at Thebes, today's Luxor. The Valley of the Kings holds more than 60 tombs, from Tutankhamun's small, famous burial to long corridors covered floor to ceiling in brilliant paintings of the sun's night journey through the underworld. This private morning takes you inside three of them with a licensed Egyptologist who reads the scenes with you and explains what the ancient Egyptians believed happened after death.\n\nFrom the valley you drive round the mountain to Deir el-Bahari, where Queen Hatshepsut – one of the few women to rule Egypt as pharaoh – built her mortuary temple in three great terraces against a wall of golden cliffs around 1470 BC. Its reliefs show her famous trading expedition to the land of Punt. On the way back to the river you stop at the Colossi of Memnon, two seated statues of Amenhotep III about 18 metres tall, which once guarded the largest temple on the West Bank.\n\nAT A GLANCE\n• Duration: about 5 to 6 hours\n• Start and end: your hotel or Nile cruise boat in Luxor\n• Type: private tour with car, driver and licensed Egyptologist guide\n• Booking: on request – we confirm availability and the final price by email within 24 hours, and you pay only then\n• Level: easy to moderate; tomb corridors can be steep, warm and humid\n\nWHAT YOU SEE\n• Valley of the Kings: three royal tombs with the standard ticket, plus optional special tombs.\n• Temple of Hatshepsut at Deir el-Bahari.\n• The Colossi of Memnon.\n\nWHY THIS WORKS\nThe West Bank is best early. Starting at about 7:00 lets you reach the Valley of the Kings ahead of most groups and be back at your hotel before the hottest part of the day, with the afternoon free for the East Bank or the pool.\n\nWHO IT SUITS\nFirst-time visitors to Luxor, Nile cruise passengers with a free morning, families and photographers.\n\nWHO MAY PREFER ANOTHER TOUR\nIf you want the great temples of Karnak and Luxor, see our Luxor East Bank tour. For both banks in one day, ask us to combine them.\n\nPRACTICAL INFORMATION\nWear comfortable shoes, a hat and sunglasses, and bring water. Photography inside the tombs is generally allowed without flash. Tickets for special tombs such as Tutankhamun's and Seti I's are bought on site and are not included.",
+  "inclusions": {"standard": {
+   "private": ["Pick-up and drop-off at your Luxor hotel or Nile cruise boat", "Private air-conditioned vehicle", "Licensed Egyptologist guide", "Entrance tickets to the Valley of the Kings (three tombs), Hatshepsut Temple and the Colossi of Memnon", "Electric tram at the Valley of the Kings", "Bottled water"],
+   "shared": ["Hotel pick-up and drop-off", "Air-conditioned vehicle", "Egyptologist guide", "Entrance tickets"]
+  }},
+  "pricingTiers": [
+   {"transportType": "Sedan / SUV", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png", "minSeats": 1, "maxSeats": 4, "pricing": {"currency": "EUR", "totalPrice": 170, "pricePerDay": 170}},
+   {"transportType": "Minivan", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png", "minSeats": 5, "maxSeats": 8, "pricing": {"currency": "EUR", "totalPrice": 300, "pricePerDay": 300}},
+   {"transportType": "Mini Bus", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png", "minSeats": 9, "maxSeats": 19, "pricing": {"currency": "EUR", "totalPrice": 590, "pricePerDay": 590}}
+  ],
+  "images": ["Thebes, Luxor, Egypt, Valley of the Kings from above.jpg", "Temple of Hatshepsut, Deir el-Bahari, Luxor, Egypt.jpg", "Thebes, Luxor, Egypt, Panoramic view of the Valley of the Kings.jpg", "Temple of Hatshepsut, Osirian statues, Luxor, Egypt.jpg", "Djeser-Djeseru.Hatshepsut's temple (2).jpg"],
+  "days": [
+   {
+    "name": "Luxor West Bank: tombs and temples",
+    "description": "What to expect: a private morning on the West Bank with an Egyptologist, tickets for three royal tombs and two more sites, and back by early afternoon.\n\nYour guide and driver collect you at about 7:00 from your hotel or cruise boat and cross the Nile by bridge to the West Bank, through sugar-cane fields and villages towards the Theban hills. At the Valley of the Kings a short electric tram takes you from the visitor centre into the valley. The standard ticket covers three tombs, and your guide chooses the best ones open that day – often tombs of Ramesses III, Ramesses IV, Ramesses IX or Merenptah – and explains the scenes from the Book of Gates and the Amduat that guided the king's soul through the twelve hours of the night. If you wish, you can buy extra tickets on site for Tutankhamun's tomb, where the young king's mummy still lies, the magnificent tomb of Seti I or the star-covered ceiling of Ramesses VI.\n\nNext you drive around the mountain to Deir el-Bahari and the Temple of Hatshepsut, called Djeser-Djeseru, 'holy of holies'. Built around 1470 BC by her architect Senenmut, it rises in three colonnaded terraces against the cliffs. Your guide shows you the reliefs of the expedition to Punt, with its ships, incense trees and exotic animals, the chapel of Hathor with cow-headed columns, and the Osiride statues of the queen on the upper terrace.\n\nOn the way back to the Nile you stop at the Colossi of Memnon, two seated statues of Amenhotep III about 18 metres high, which once stood at the gate of his vast mortuary temple. In Roman times one of them was said to 'sing' at dawn, and visitors carved their names on its legs. You are back at your hotel or boat at about 12:30.\n\nSCHEDULE (approximate times)\n07:00 – Pick-up from your hotel or cruise boat.\n07:45 – Valley of the Kings: three royal tombs (about 2 hours).\n10:00 – Temple of Hatshepsut at Deir el-Bahari (about 1 hour 15 minutes).\n11:30 – Colossi of Memnon (about 20 minutes).\n12:30 – Return to your hotel or boat.\n\nGOOD TO KNOW\n• Guides are not allowed to talk inside the tombs, so your guide explains each one at the entrance before you go in.\n• Which tombs are open changes on a rotation to protect the paintings.\n• Optional extras on request: the Ramesseum, the workers' village of Deir el-Medina, the tombs of the Nobles or Medinet Habu.\n\nINCLUDED: private vehicle and driver, licensed Egyptologist guide, tickets to the Valley of the Kings (three tombs), Hatshepsut Temple and the Colossi of Memnon, Valley of the Kings tram, bottled water, pick-up and drop-off.\nNOT INCLUDED: special tombs (Tutankhamun, Seti I, Ramesses VI), lunch, tips.\n\nOvernight: none.\nMeals: none.",
+    "stops": [
+     {"name": "Valley of the Kings", "duration": "About 2 hours", "description": "Three painted royal tombs of the New Kingdom with your Egyptologist guide, with optional tickets for Tutankhamun, Seti I or Ramesses VI.", "image": "Thebes, Luxor, Egypt, Valley of the Kings from above.jpg"},
+     {"name": "Temple of Hatshepsut", "duration": "About 1 hour 15 minutes", "description": "The terraced mortuary temple of the female pharaoh at Deir el-Bahari, with the Punt reliefs and the Hathor chapel.", "image": "Temple of Hatshepsut, Deir el-Bahari, Luxor, Egypt.jpg"},
+     {"name": "Colossi of Memnon", "duration": "About 20 minutes", "description": "Two 18-metre seated statues of Amenhotep III, the last guardians of his vanished temple."}
+    ]
+   }
+  ],
+  "faq": [
+   {"question": "How does booking on request work?", "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability and the final price by email within 24 hours, and you pay online only when the tour is confirmed."},
+   {"question": "How many tombs can we visit?", "answer": "The standard Valley of the Kings ticket includes three tombs from those open that day. Special tombs such as Tutankhamun, Seti I and Ramesses VI need an extra ticket each."},
+   {"question": "Is Tutankhamun's tomb worth the extra ticket?", "answer": "It is small and less decorated than many others, but it is the only tomb where the king's mummy still lies. Most of its treasures are at the Grand Egyptian Museum in Cairo. If you can choose only one extra, Seti I is the most beautiful."},
+   {"question": "Can we take photos inside the tombs?", "answer": "Photography without flash is generally allowed with the standard ticket. Rules can change, and your guide will tell you what applies on the day."},
+   {"question": "Why such an early start?", "answer": "The valley is a sun trap and gets very hot by late morning. Starting at 7:00 also means fewer crowds in the tombs."},
+   {"question": "Is it suitable for children?", "answer": "Yes. Children usually enjoy the tombs and the tram. Some corridors are steep, so very young children may need to be carried."},
+   {"question": "Is it suitable for people with limited mobility?", "answer": "The tram and paths help, but tombs have slopes and steps, and Hatshepsut's temple has ramps. Tell us in advance and we will choose the most accessible tombs."},
+   {"question": "Can you pick us up from a Nile cruise boat?", "answer": "Yes. We collect you from your boat in Luxor and bring you back in time for sailing."},
+   {"question": "Can we add the East Bank temples?", "answer": "Yes. Karnak and Luxor Temple are on the East Bank and can be added in the afternoon to make a full day."},
+   {"question": "Is lunch included?", "answer": "No, the tour ends before lunch. Your guide can recommend a restaurant on the West Bank or back in town."},
+   {"question": "Can we combine it with a hot-air balloon flight?", "answer": "Yes. Balloon flights take off over the West Bank at dawn, and we can go straight from the landing to the Valley of the Kings."},
+   {"question": "What is the best time of year?", "answer": "October to April. From May to September it is very hot; we start even earlier and keep the visits short."},
+   {"question": "What is the cancellation policy?", "answer": "You can cancel free of charge up to 24 hours before the tour. Until your request is confirmed, nothing is charged at all."}
+  ]
+ }
+}
