@@ -1,0 +1,62 @@
+{
+ "key": "egypt-abu-simbel-day-trip-from-aswan",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {"city": "Aswan", "state": "Aswan", "country": "Egypt", "countryCode": "EG", "timeZone": "Africa/Cairo", "streetAddress": "Your hotel or Nile cruise boat in Aswan", "geoCoordinates": {"lat": 22.3372, "log": 31.6258}},
+ "slug": "/en-US/egypt/aswan/tours/abu-simbel-private-day-trip-from-aswan",
+ "tour": {
+  "name": "Abu Simbel Private Day Trip from Aswan",
+  "subtitle": "A private early-morning drive across the Nubian desert to the great rock temples of Ramesses II and Queen Nefertari at Abu Simbel, with an Egyptologist guide – four 20-metre colossi on the shore of Lake Nasser, rescued and moved stone by stone in the 1960s.",
+  "seoTitle": "Abu Simbel Private Day Trip from Aswan | TRAVSUS",
+  "metaDescription": "Private day trip from Aswan to Abu Simbel: the Great Temple of Ramesses II and the Temple of Nefertari on Lake Nasser. Private car, Egyptologist guide, tickets and breakfast box.",
+  "tags": ["Abu Simbel", "Abu Simbel day trip", "Ramesses II temple", "Temple of Nefertari", "Lake Nasser", "Aswan private tour"],
+  "highlights": [
+   "The four 20-metre seated colossi of Ramesses II",
+   "The pillared hall and the Battle of Kadesh reliefs",
+   "The sanctuary lit by the sun twice a year",
+   "The Temple of Hathor and Queen Nefertari",
+   "The story of the 1960s UNESCO rescue",
+   "Sunrise drive across the Nubian desert",
+   "Private car, Egyptologist guide, tickets and breakfast box"
+  ],
+  "duration": 1,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "Some 280 kilometres south of Aswan, close to the border with Sudan, Ramesses II carved two temples into a sandstone cliff above the Nile around 1264 BC. The Great Temple, dedicated to the gods Amun-Ra, Ra-Horakhty and Ptah and to the king himself, is guarded by four seated statues of Ramesses about 20 metres high. Next to it, the smaller Temple of Hathor honours his beloved queen Nefertari, shown at the same size as the king – something almost unheard of in Egyptian art. Forgotten under the sand for centuries, the temples were rediscovered in 1813, and in the 1960s, when the High Dam was about to flood them, an international UNESCO campaign cut them into more than 1,000 blocks and rebuilt them 65 metres higher.\n\nThis private day trip leaves Aswan before dawn in a private air-conditioned car. You watch the sun rise over the desert on the way, explore both temples with a licensed Egyptologist in the cooler morning, and are back in Aswan by mid-afternoon.\n\nAT A GLANCE\n• Duration: about 11 to 12 hours\n• Start and end: your hotel or Nile cruise boat in Aswan\n• Type: private tour with car, driver and licensed Egyptologist guide\n• Booking: on request – we confirm availability and the final price by email within 24 hours, and you pay only then\n• Level: easy, but a long day in the car (about 3 to 3.5 hours each way)\n\nWHAT YOU SEE\n• The Great Temple of Ramesses II, inside and out.\n• The Temple of Hathor and Nefertari.\n• Lake Nasser and the Nubian desert.\n\nWHY THIS WORKS\nAn early private car means you arrive soon after opening and ahead of the heat, choose your own stops, and travel at your own pace rather than in a large coach.\n\nWHO IT SUITS\nAnyone visiting Aswan, Nile cruise passengers with a free day, history lovers and photographers.\n\nWHO MAY PREFER ANOTHER TOUR\nIf a long drive is not for you, ask us about the short flight from Aswan to Abu Simbel. For a relaxed day in Aswan itself, see our Philae, felucca and Nubian village tour.\n\nPRACTICAL INFORMATION\nThe day starts at about 4:00. Bring a hat, sunscreen and a light layer for the early morning. A breakfast box is provided in the car. Photography is allowed inside the temples.",
+  "inclusions": {"standard": {
+   "private": ["Pick-up and drop-off at your Aswan hotel or Nile cruise boat", "Private air-conditioned vehicle for the full day", "Licensed Egyptologist guide", "Entrance tickets to both temples of Abu Simbel", "Breakfast box", "Bottled water"],
+   "shared": ["Hotel pick-up and drop-off", "Air-conditioned vehicle", "Egyptologist guide", "Entrance tickets", "Breakfast box"]
+  }},
+  "pricingTiers": [
+   {"transportType": "Sedan / SUV", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png", "minSeats": 1, "maxSeats": 4, "pricing": {"currency": "EUR", "totalPrice": 290, "pricePerDay": 290}},
+   {"transportType": "Minivan", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png", "minSeats": 5, "maxSeats": 8, "pricing": {"currency": "EUR", "totalPrice": 480, "pricePerDay": 480}},
+   {"transportType": "Mini Bus", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png", "minSeats": 9, "maxSeats": 19, "pricing": {"currency": "EUR", "totalPrice": 940, "pricePerDay": 940}}
+  ],
+  "images": ["Templo de Ramsés II, Abu Simbel, Egipto, 2022-04-02, DD 03.jpg", "Templo de Nefertari, Abu Simbel, Egipto, 2022-04-02, DD 128-130 HDR.jpg", "Templo de Ramsés II, Abu Simbel, Egipto, 2022-04-02, DD 59-61 HDR.jpg", "Templo de Ramsés II, Abu Simbel, Egipto, 2022-04-02, DD 74-76 HDR.jpg", "Templo de Ramsés II, Abu Simbel, Egipto, 2022-04-02, DD 26-28 HDR.jpg"],
+  "days": [
+   {
+    "name": "The temples of Abu Simbel",
+    "description": "What to expect: a private day trip across the desert to the rock temples of Ramesses II and Nefertari, with an Egyptologist guide, tickets and breakfast.\n\nYour driver and guide collect you at about 4:00 from your hotel or cruise boat. The road runs south across the empty Nubian desert, and about an hour after leaving the sun rises over the dunes. You can sleep, eat your breakfast box or ask your guide about Nubia and the road ahead; there is a rest stop halfway.\n\nYou reach Abu Simbel at about 7:30, walk round the hill and suddenly face the Great Temple: four colossal seated statues of Ramesses II, about 20 metres high, carved straight from the cliff, with small figures of his mother, wife and children at their feet. One of the heads fell in an earthquake soon after the temple was finished and still lies on the ground. Inside, eight huge statues of the king as Osiris line the first hall, and the walls show his campaigns, above all the Battle of Kadesh against the Hittites around 1274 BC, with chariots, archers and the fortified city. At the far end, 60 metres into the rock, sit four gods in the sanctuary. The temple was aligned so that twice a year, around 22 February and 22 October, the rising sun shines down the whole length of the temple and lights three of them, leaving Ptah, god of the underworld, in shadow.\n\nNext door is the Temple of Hathor, built for Queen Nefertari. Its façade has six standing statues about 10 metres high, four of the king and two of the queen, and inside, delicate reliefs show Nefertari offering to the goddesses Hathor and Isis. Your guide also takes you to see how both temples were cut into blocks between 1964 and 1968 and rebuilt inside artificial hills above the rising waters of Lake Nasser, an engineering feat that helped inspire UNESCO's World Heritage Convention. After free time to take photos and look out over the lake, you start back at about 10:30 and reach Aswan at about 14:30.\n\nSCHEDULE (approximate times)\n04:00 – Pick-up from your hotel or cruise boat; breakfast box in the car.\n05:30 – Sunrise over the desert; short rest stop.\n07:30 – The Great Temple of Ramesses II (about 1 hour 30 minutes).\n09:00 – The Temple of Hathor and Nefertari (about 45 minutes).\n09:45 – Free time by Lake Nasser.\n10:30 – Drive back to Aswan.\n14:30 – Arrival at your hotel or boat.\n\nGOOD TO KNOW\n• Road rules for tourist traffic can change, and departure times follow local requirements.\n• For the sun festival on 22 February and 22 October, crowds are very large; ask us early.\n• Lunch is not included; we can stop at a restaurant on the way back or bring you straight to your hotel.\n\nINCLUDED: private vehicle and driver for the day, licensed Egyptologist guide, tickets to both temples, breakfast box, bottled water, pick-up and drop-off.\nNOT INCLUDED: lunch, sound and light show at Abu Simbel, tips.\n\nOvernight: none.\nMeals: breakfast box.",
+    "stops": [
+     {"name": "Great Temple of Ramesses II", "duration": "About 1 hour 30 minutes", "description": "The four 20-metre colossi, the Osiride pillared hall, the Battle of Kadesh reliefs and the sun-aligned sanctuary.", "image": "Templo de Ramsés II, Abu Simbel, Egipto, 2022-04-02, DD 03.jpg"},
+     {"name": "Temple of Hathor and Nefertari", "duration": "About 45 minutes", "description": "The queen's temple with six standing colossi and fine reliefs of Nefertari with Hathor and Isis.", "image": "Templo de Nefertari, Abu Simbel, Egipto, 2022-04-02, DD 128-130 HDR.jpg"},
+     {"name": "Lake Nasser", "duration": "About 45 minutes", "description": "Free time by the lake, with the story of how the temples were moved above the rising water."}
+    ]
+   }
+  ],
+  "faq": [
+   {"question": "How does booking on request work?", "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability and the final price by email within 24 hours, and you pay online only when the tour is confirmed."},
+   {"question": "Why such an early start?", "answer": "The drive takes about 3 to 3.5 hours each way. Leaving at 4:00 brings you to the temples soon after opening, before the heat and the larger groups."},
+   {"question": "Is the road safe?", "answer": "Yes. It is a good desert highway used daily by tourist traffic, and our drivers know it well. Local rules for tourist vehicles are followed."},
+   {"question": "Can we fly instead?", "answer": "Yes. There are short flights from Aswan to Abu Simbel on some days. Tell us and we will check schedules and arrange transfers and the guide at Abu Simbel."},
+   {"question": "Why was Abu Simbel moved?", "answer": "The Aswan High Dam would have drowned the temples under Lake Nasser. Between 1964 and 1968 they were cut into blocks and rebuilt 65 metres higher, inside artificial hills."},
+   {"question": "What is the sun festival?", "answer": "Around 22 February and 22 October, the rising sun shines through the entrance to the sanctuary and lights the statues of the gods. Those days are very busy; book early."},
+   {"question": "Is breakfast included?", "answer": "Yes, a breakfast box is provided in the car. Lunch is not included, but we can stop on the way back."},
+   {"question": "Is it suitable for children?", "answer": "Yes, but it is a long day in the car. Children usually love the colossi and can sleep on the way."},
+   {"question": "Is it suitable for people with limited mobility?", "answer": "The paths are paved and mostly flat, though there is a walk of a few hundred metres from the entrance. Tell us in advance and we will plan accordingly."},
+   {"question": "Can you collect us from a Nile cruise boat?", "answer": "Yes. We collect you from your boat in Aswan and bring you back in time for sailing."},
+   {"question": "Can we stay for the sound and light show?", "answer": "Yes, with an overnight stay in Abu Simbel. Tell us and we will arrange a hotel and an evening visit."},
+   {"question": "Is photography allowed inside?", "answer": "Yes, photography without flash is generally allowed inside both temples."},
+   {"question": "What is the cancellation policy?", "answer": "You can cancel free of charge up to 24 hours before the tour. Until your request is confirmed, nothing is charged at all."}
+  ]
+ }
+}
