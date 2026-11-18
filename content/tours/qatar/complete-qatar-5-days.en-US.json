@@ -1,0 +1,132 @@
+{
+ "key": "qatar-complete-5-days",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {
+  "city": "Doha",
+  "state": "Doha",
+  "country": "Qatar",
+  "countryCode": "QA",
+  "timeZone": "Asia/Qatar",
+  "streetAddress": "Your hotel in Doha",
+  "geoCoordinates": { "lat": 25.28545, "log": 51.53096 }
+ },
+ "slug": "/en-US/qatar/doha/tours/complete-qatar-in-5-days-doha-museums-north-west-coast-and-desert",
+ "tour": {
+  "name": "Complete Qatar in 5 Days: Doha, Museums, the North, the West Coast & the Desert",
+  "subtitle": "Five private days from your Doha hotel that cover the whole country: the souq and a dhow cruise, the National Museum and Lusail, Al Zubarah and the mangroves, Richard Serra's desert sculpture and the Zekreet rocks, and the dunes of the Inland Sea.",
+  "seoTitle": "Complete Qatar 5-Day Private Tour from Doha",
+  "metaDescription": "Five-day private Qatar tour from Doha with a local guide: Souq Waqif and a dhow cruise, the National Museum and Lusail, Al Zubarah UNESCO site, Richard Serra's East-West/West-East, Zekreet and the Inland Sea.",
+  "tags": ["Qatar 5-day tour", "Qatar itinerary 5 days", "Qatar private tour", "Zekreet", "Al Zubarah", "Inland Sea"],
+  "highlights": [
+   "Souq Waqif and a sunset dhow cruise on Doha Bay",
+   "The National Museum of Qatar and the Museum of Islamic Art",
+   "Katara, The Pearl and Lusail at sunset",
+   "Al Zubarah UNESCO site and the Al Thakhira mangroves",
+   "Richard Serra's East-West/West-East in the Brouq desert",
+   "The Zekreet mushroom rocks and Film City",
+   "4x4 dunes and the Inland Sea"
+  ],
+  "duration": 5,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "Five days is enough to see all of Qatar without hurrying: the capital's souq, museums and new districts, the history of the pearling coast in the north, the strange limestone landscapes of the west, and the dunes and Inland Sea in the south. This private tour keeps you in one Doha hotel and takes you to a different part of the country each day, with a local guide and driver who stay with you throughout.\n\nThe first day is old Doha: Souq Waqif, the Falcon Souq and the Museum of Islamic Art, ending with a dhow cruise at sunset. Day two is the National Museum of Qatar in the morning and the new city in the afternoon – Katara, The Pearl and Lusail as the lights come on. Day three goes north to Al Zubarah, Qatar's UNESCO World Heritage site, the abandoned village of Al Jumail, the mangroves of Al Thakhira and Al Khor. Day four crosses to the west coast for Richard Serra's four steel plates in the Brouq desert, the wind-carved rocks of Zekreet and the abandoned Film City. Day five ends the trip in the dunes, with a 4x4 drive to the Inland Sea, a swim, camels and sunset.\n\nAT A GLANCE\n• Duration: 5 days (day tours from your Doha hotel)\n• Start and finish: your hotel in Doha\n• Type: private tour with car, driver and English-speaking local guide; 4x4 on days 4 and 5\n• Booking: on request – we confirm availability and the final price by email within 24 hours, and you pay only then\n• Level: easy; the dune drive is bumpy and can be done gently\n\nWHAT YOU SEE\n• Souq Waqif, the Museum of Islamic Art and Doha Bay by dhow.\n• The National Museum of Qatar, Katara Cultural Village, The Pearl and Lusail.\n• Al Zubarah, Al Jumail, Al Thakhira and Al Khor.\n• East-West/West-East, the Zekreet peninsula and Film City.\n• The Sealine dunes and Khor Al Adaid (Inland Sea).\n\nWHY THIS TOUR WORKS\nMost visitors see Doha and one desert trip. In five days you see the whole country, at an easy pace, with time each evening to enjoy the city. One guide for the whole stay knows what you have liked and adjusts as you go.\n\nWHO IT IS FOR\nTravellers who want to know Qatar properly, families, couples, culture and photography lovers, and anyone with a long stay in Doha.\n\nWHO MAY PREFER ANOTHER TOUR\nWith three days, take our Qatar highlights tour. For a single night in the desert, take the Inland Sea overnight camp.\n\nPRACTICAL INFORMATION\nHotels are not included; choose your own in Doha or ask us to book one. Wear clothing that covers shoulders and knees in the souq, museums and mosques, and bring swimwear, sunscreen and a hat for the desert days.",
+  "inclusions": {
+   "standard": {
+    "private": [
+     "Pick-up and drop-off at your hotel in Doha each day",
+     "Private air-conditioned vehicle and driver; 4x4 on days 4 and 5",
+     "English-speaking local guide on days 1–4",
+     "Experienced desert driver on day 5",
+     "Tickets to the Museum of Islamic Art and the National Museum of Qatar",
+     "Shared dhow cruise on day 1",
+     "Lunch on days 3, 4 and 5",
+     "Camel ride and sandboarding",
+     "Water in the vehicle"
+    ],
+    "shared": [
+     "Hotel pick-up and drop-off",
+     "Air-conditioned vehicle",
+     "Local guide",
+     "Museum tickets",
+     "4x4 desert day",
+     "Water"
+    ]
+   }
+  },
+  "pricingTiers": [
+   { "transportType": "SUV / 4x4 Land Cruiser", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png", "minSeats": 1, "maxSeats": 5, "pricing": { "currency": "EUR", "totalPrice": 1650, "pricePerDay": 330 } },
+   { "transportType": "Mercedes Vito / two 4x4s", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png", "minSeats": 6, "maxSeats": 10, "pricing": { "currency": "EUR", "totalPrice": 2600, "pricePerDay": 520 } },
+   { "transportType": "Mini Bus / four 4x4s", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png", "minSeats": 11, "maxSeats": 19, "pricing": { "currency": "EUR", "totalPrice": 4500, "pricePerDay": 900 } }
+  ],
+  "images": [
+   "SERRA1",
+   "National Museum of Qatar 09.jpg",
+   "View of the Persian Gulf and the Museum of Islamic Art in Qatar at dusk.jpg",
+   "ZUBARAH1",
+   "MUSHROOM1",
+   "INLAND1",
+   "Lusail skyline with the Lusail Marina Iconic Development in the center.jpg"
+  ],
+  "days": [
+   {
+    "name": "Old Doha: Souq Waqif, the Museum of Islamic Art and a dhow cruise at sunset",
+    "description": "What to expect: an easy first day in the heart of Doha, from the souq and the Museum of Islamic Art to a dhow cruise across the bay at sunset.\n\nYour guide collects you at about 10:00, leaving time to recover from your flight. Start at the Museum of Islamic Art, I. M. Pei's limestone building on its own island, for an hour and a half among manuscripts, ceramics, metalwork and carpets from fourteen centuries and three continents, then walk through MIA Park for the view of West Bay. Lunch (at your own cost) is in Souq Waqif, the old market rebuilt in mud plaster and timber on the site of the pearling-era souq. Spend the early afternoon in its lanes of spices, perfumes and textiles and at the Falcon Souq, then rest at your hotel.\n\nIn the late afternoon walk down to the dhow harbour on the Corniche and board a traditional wooden dhow for a cruise across the bay as the sun sets and the towers light up. The guide brings you back to the souq for dinner if you like.\n\nSCHEDULE (approximate)\n10:00 – Hotel pick-up.\n10:15 – Museum of Islamic Art and MIA Park.\n12:30 – Lunch and Souq Waqif, Falcon Souq.\n15:00 – Rest at your hotel.\n16:15 – Dhow cruise at sunset (about 1 hour).\n17:30 – Souq Waqif at night (optional) or hotel.\n\nOvernight: your hotel in Doha (not included).\nMeals: none.",
+    "stops": [
+     { "name": "Museum of Islamic Art", "duration": "About 1 hour 30 minutes", "description": "Fourteen centuries of Islamic art in I. M. Pei's building.", "image": "View of the Persian Gulf and the Museum of Islamic Art in Qatar at dusk.jpg" },
+     { "name": "Souq Waqif", "duration": "About 2 hours", "description": "The old market and the Falcon Souq.", "image": "Souq Waqif, Doha, Catar, 2013-08-05, DD 26.JPG" },
+     { "name": "Dhow cruise", "duration": "About 1 hour", "description": "Doha Bay at sunset on a traditional dhow.", "image": "Doha MIA Park View to the Corniche 4.jpg" }
+    ]
+   },
+   {
+    "name": "The National Museum and the new city: Katara, The Pearl and Lusail",
+    "description": "What to expect: the story of Qatar at the National Museum in the morning, then the new districts along the coast, ending in Lusail at sunset.\n\nAt 9:30 your guide takes you to the National Museum of Qatar, Jean Nouvel's cluster of curved discs inspired by the desert rose, wrapped around the restored Old Palace of Sheikh Abdullah bin Jassim Al Thani. Its galleries follow the country from geology and Bedouin life through the pearling seasons to oil and the modern state; allow about two and a half hours.\n\nAfter lunch (at your own cost), drive north to Katara Cultural Village, with its amphitheatre, the blue-tiled Katara Mosque, the Golden Mosque and the pigeon towers, and on to The Pearl-Qatar for Porto Arabia's marina and the canals of Qanat Quartier. As the light fades, reach Lusail: the boulevard between the towers, the twin crescents of the Katara Towers and Lusail Stadium, where the 2022 World Cup final was played.\n\nSCHEDULE (approximate)\n09:30 – Hotel pick-up.\n09:45 – National Museum of Qatar (about 2 hours 30 minutes).\n12:30 – Lunch (at your own cost).\n14:00 – Katara Cultural Village.\n15:30 – The Pearl-Qatar.\n16:45 – Lusail at sunset.\n18:00 – Return to your hotel.\n\nOvernight: your hotel in Doha (not included).\nMeals: none.",
+    "stops": [
+     { "name": "National Museum of Qatar", "duration": "About 2 hours 30 minutes", "description": "Jean Nouvel's desert rose and the Old Palace.", "image": "National Museum of Qatar 10.jpg" },
+     { "name": "Katara and The Pearl", "duration": "About 2 hours 30 minutes", "description": "The cultural village, its mosques, the marina and Qanat Quartier.", "image": "Aerial view of Katara cultural village.jpg" },
+     { "name": "Lusail", "duration": "About 1 hour", "description": "The boulevard, the Katara Towers and Lusail Stadium at sunset.", "image": "View of Lusail Plaza Towers from Lusail Boulevard.png" }
+    ]
+   },
+   {
+    "name": "The north: Al Zubarah, Al Jumail, the Al Thakhira mangroves and Al Khor",
+    "description": "What to expect: a day on the north coast, with Qatar's UNESCO World Heritage site, an abandoned fishing village, a mangrove lagoon and a working harbour.\n\nLeave at about 8:00 for the hour-and-a-half drive north. Al Zubarah was one of the great pearling and trading towns of the Gulf in the 18th century, destroyed in 1811 and abandoned in the early 20th century; its excavated streets and harbour, with Al Zubarah Fort of 1938, became Qatar's first UNESCO site in 2013. Your guide explains how the pearl trade worked and what life was like for the divers. Nearby, Al Jumail is an abandoned village of coral-stone houses and a small mosque by the sea.\n\nAfter lunch at a local restaurant, visit the grey mangroves of Al Thakhira, where herons fish in the channels and flamingos come in winter (kayak in season at extra cost), then Al Khor with its dhow harbour, corniche and watchtowers before returning to Doha.\n\nSCHEDULE (approximate)\n08:00 – Hotel pick-up.\n09:30 – Al Zubarah Fort and archaeological site.\n11:30 – Al Jumail.\n12:45 – Lunch.\n14:15 – Al Thakhira mangroves.\n15:30 – Al Khor.\n17:00 – Return to Doha.\n\nOvernight: your hotel in Doha (not included).\nMeals: lunch.",
+    "stops": [
+     { "name": "Al Zubarah", "duration": "About 1 hour 30 minutes", "description": "The fort and the excavated pearling town, a UNESCO site.", "image": "ZUBARAH1" },
+     { "name": "Al Jumail", "duration": "About 30 minutes", "description": "An abandoned fishing village of coral-stone houses.", "image": "JUMAIL1" },
+     { "name": "Al Thakhira and Al Khor", "duration": "About 2 hours", "description": "Mangroves, birdlife and a dhow harbour.", "image": "MANGROVE1" }
+    ]
+   },
+   {
+    "name": "The west coast: Richard Serra's East-West/West-East, Zekreet and Film City",
+    "description": "What to expect: a 4x4 day in the empty west of Qatar, with a monumental desert sculpture, wind-carved limestone rocks and an abandoned film set.\n\nLeave Doha at about 8:00 and drive west for about an hour and a quarter, past the oil town of Dukhan's turn-off, into the Brouq nature reserve. Here, in a long flat valley between limestone plateaus, stand the four steel plates of East-West/West-East, made by the American sculptor Richard Serra in 2014. Each is over 14 metres tall, and together they run for more than a kilometre across the desert, their tops all at the same height so that they follow the line of the land. Walk between them and see how the scale of the desert changes.\n\nNearby are the Zekreet 'mushroom rocks', limestone outcrops shaped by wind and sand into pillars and caps, and Film City, a mock Arab village built as a film set and now abandoned on a desert hill. Lunch is a picnic or at a simple local place, and in the afternoon you can swim or rest on the shore of the Zekreet peninsula before returning to Doha.\n\nSCHEDULE (approximate)\n08:00 – Hotel pick-up.\n09:15 – East-West/West-East (about 1 hour).\n10:30 – Zekreet mushroom rocks.\n11:30 – Film City.\n12:45 – Lunch.\n14:00 – Zekreet beach.\n15:00 – Drive back to Doha.\n16:30 – Return to your hotel.\n\nOvernight: your hotel in Doha (not included).\nMeals: lunch.",
+    "stops": [
+     { "name": "East-West/West-East", "duration": "About 1 hour", "description": "Richard Serra's four steel plates in the Brouq desert.", "image": "SERRA1" },
+     { "name": "Zekreet rocks", "duration": "About 45 minutes", "description": "Wind-carved limestone 'mushroom' formations.", "image": "MUSHROOM1" },
+     { "name": "Film City", "duration": "About 30 minutes", "description": "An abandoned film-set village on a desert hill.", "image": "FILMCITY1" }
+    ]
+   },
+   {
+    "name": "The desert: dunes, the Inland Sea, camels and sunset",
+    "description": "What to expect: the last day in the dunes of the south, with a 4x4 drive to the Inland Sea, a swim and lunch on the shore, sandboarding, a camel ride and sunset over the sand.\n\nAn experienced desert driver collects you at about 10:00 and drives south to Sealine, where the dunes meet the sea. After letting the tyres down, cross the high dunes for about 40 minutes to Khor Al Adaid, the Inland Sea, a long arm of the Gulf reaching deep into the sand with Saudi Arabia on the far shore. Lunch is at a camp on the beach, with time to swim in the calm water.\n\nIn the afternoon try sandboarding and take a short camel ride, then climb a high dune for the last sunset of your trip before the drive back to Doha. If your flight is late in the evening, we can take you straight to Hamad International Airport.\n\nSCHEDULE (approximate, adjusted to sunset)\n10:00 – Hotel pick-up.\n11:00 – Sealine: tyres down.\n11:15 – Dune drive to Khor Al Adaid.\n12:30 – Lunch and swim at a beach camp.\n14:30 – Sandboarding and camel ride.\n16:30 – Sunset in the dunes.\n18:30 – Return to your hotel or the airport.\n\nINCLUDED (whole tour): private vehicle and driver, 4x4 on days 4 and 5, English-speaking local guide on days 1–4, desert driver on day 5, tickets to the Museum of Islamic Art and the National Museum of Qatar, shared dhow cruise, lunch on days 3–5, camel ride, sandboarding, water, daily hotel pick-up.\nNOT INCLUDED: hotel nights, lunches on days 1–2, dinners, kayak and quad bikes, tips.\n\nOvernight: none.\nMeals: lunch.",
+    "stops": [
+     { "name": "Sealine dunes", "duration": "About 45 minutes", "description": "4x4 drive across the high dunes.", "image": "DUNES1" },
+     { "name": "Khor Al Adaid (Inland Sea)", "duration": "About 4 hours", "description": "Lunch, swim, sandboarding, camels and sunset.", "image": "INLAND1" }
+    ]
+   }
+  ],
+  "faq": [
+   { "question": "How does booking on request work?", "answer": "You choose your date and the number of travellers and send the request. Nothing is charged. We confirm availability and the final price by email within 24 hours, and you pay online only once your tour is confirmed." },
+   { "question": "Are hotels included?", "answer": "No. You stay at your own hotel in Doha and we pick you up there each day. We can book a hotel for you on request." },
+   { "question": "Can we change the order of the days?", "answer": "Yes. We arrange the days around museum opening days, the weather and your flights, and confirm the final order with your request." },
+   { "question": "Is it the same guide every day?", "answer": "The same local guide on days 1–4 whenever possible. On day 5 an experienced desert driver takes over, as required for dune driving." },
+   { "question": "Can we spend a night in the desert?", "answer": "Yes. Day 5 can become an overnight at a beach camp on the Inland Sea, returning on the morning of day 6, for an extra cost." },
+   { "question": "Is it suitable for children?", "answer": "Yes, from about five years old. The days are easy, the dune drive is kept gentle for families, and child seats are provided." },
+   { "question": "Is the dhow cruise private?", "answer": "The standard tour includes a shared dhow cruise. A private dhow can be added at extra cost." },
+   { "question": "What should I wear?", "answer": "Clothing that covers shoulders and knees in the souq, museums and mosques, comfortable shoes, and swimwear, sunscreen and a hat for the desert days." },
+   { "question": "Can I do this on a stopover?", "answer": "Yes, if you have five days in Qatar and can enter the country. We can meet you at Hamad International Airport on day 1 and drop you there on day 5." },
+   { "question": "Is alcohol available on the tour?", "answer": "No. Alcohol is only served at licensed hotels and restaurants, not at the camps or local restaurants on the tour." },
+   { "question": "Can I shorten or lengthen the tour?", "answer": "Yes. Our 3-day Qatar highlights tour covers Doha, the north and the desert; we can also add free days or a night in the desert." },
+   { "question": "When is the best time to go?", "answer": "October to April, when days are warm and evenings pleasant. From May to September it is very hot; we start early, keep outdoor time short and move museum visits to midday." },
+   { "question": "What is the cancellation policy?", "answer": "You can cancel free of charge up to 48 hours before the first day. Until your request is confirmed, nothing is charged at all." }
+  ]
+ }
+}

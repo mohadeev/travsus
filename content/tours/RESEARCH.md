@@ -227,3 +227,11 @@ Translations were short summaries with no FAQ: replaced with full translations i
 - Tours: Doha private city tour (5d4ae3fdd64f188d67501c34), desert safari to the Inland Sea (0392cf758ff8dc6a35c49d3b), North Qatar day trip (196b52ddbf14c780f951a058), West Qatar tour (7d276253eba24eb312ca32a0).
 - Photos: Wikimedia Commons (CC BY / CC BY-SA), credited on each image; uploaded to Cloudinary through /api/admin/tours.
 - Prices are estimates per vehicle (EUR); the final price is confirmed with the supplier for each request.
+
+## Qatar, tours 5–10 (all bookingMode 'request', countryCode QA)
+- Competitors reviewed (search summaries from the Qatar launch): Doha dhow cruise listings (shared 1 h dhow, often no souq), half-day museum transfers (MIA only, ticket not included), "modern Doha" listings that drive past Katara/The Pearl/Lusail without stops, Inland Sea overnight camps sold as camp-only (no private 4x4), and 3–5 day Qatar packages that repeat Doha and skip the west coast.
+- Our edge: private car and guide, timing set around sunset and museum closing days, honest notes (dune driving cautions, match-day road closures, no alcohol at camps), Richard Serra / Zekreet / Film City included in the 5-day tour, 13 FAQs each in 10 languages.
+- Tours: Doha evening dhow cruise & Souq Waqif (149fcffa4bc3db0b55e3d3fd), Doha museums day (6904614d01b92a6c0213f9b8), modern Doha: Katara, The Pearl & Lusail (47f52995ce9494bcf3833064), Inland Sea overnight camp, 2 days (9de0b8e204af7f318652310b), Qatar highlights in 3 days (17a8341ec86ad327810cf461), complete Qatar in 5 days (e6ed204748775e344e2bd69c).
+- Facts used: NMQ opened 2019 (Jean Nouvel, desert rose, Old Palace of Sheikh Abdullah bin Jassim); MIA 2008 (I. M. Pei, Ibn Tulun fountain); Msheireb Museums (Bin Jelmood, Company, Mohammed Bin Jassim, Radwani houses); Katara 2010; Lusail Stadium hosted the 2022 World Cup final (~89,000); Khor Al Adaid ~10 km inland arm, Saudi far shore; Al Zubarah UNESCO 2013, fort 1938, town destroyed 1811; East-West/West-East (Richard Serra, 2014, four plates >14 m, >1 km).
+- Photos: Wikimedia Commons (CC BY / CC BY-SA), credited on each image.
+- Prices are estimates per vehicle (EUR); the final price is confirmed with the supplier for each request.
