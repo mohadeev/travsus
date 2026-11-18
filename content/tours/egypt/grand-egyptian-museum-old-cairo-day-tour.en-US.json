@@ -1,0 +1,62 @@
+{
+ "key": "egypt-grand-egyptian-museum-old-cairo-day-tour",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {"city": "Cairo", "state": "Cairo", "country": "Egypt", "countryCode": "EG", "timeZone": "Africa/Cairo", "streetAddress": "Your hotel in Cairo or Giza", "geoCoordinates": {"lat": 29.9947, "log": 31.1192}},
+ "slug": "/en-US/egypt/cairo/tours/grand-egyptian-museum-citadel-and-khan-el-khalili-private-day-tour",
+ "tour": {
+  "name": "Grand Egyptian Museum, Citadel & Khan el-Khalili Private Day Tour",
+  "subtitle": "A private day with an Egyptologist through Cairo's two great stories: the treasures of Tutankhamun at the new Grand Egyptian Museum in the morning, then Saladin's Citadel, the Muhammad Ali Mosque and the lanes of Khan el-Khalili and al-Muizz Street until dusk.",
+  "seoTitle": "Grand Egyptian Museum & Old Cairo Private Tour | TRAVSUS",
+  "metaDescription": "Private Cairo day tour: Grand Egyptian Museum and Tutankhamun's treasures, the Citadel and Muhammad Ali Mosque, Khan el-Khalili and al-Muizz Street. Egyptologist guide, tickets, lunch.",
+  "tags": ["Grand Egyptian Museum", "Tutankhamun", "Cairo Citadel", "Khan el-Khalili", "Islamic Cairo", "Cairo private tour"],
+  "highlights": [
+   "The complete Tutankhamun collection, shown together for the first time",
+   "The colossal statue of Ramesses II in the museum's Grand Hall",
+   "The Grand Staircase lined with kings and gods, with views to the pyramids",
+   "Saladin's Citadel and the alabaster Muhammad Ali Mosque",
+   "Khan el-Khalili bazaar and medieval al-Muizz Street",
+   "Mint tea at a historic café in the bazaar",
+   "Egyptologist guide, tickets and lunch included"
+  ],
+  "duration": 1,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "Cairo has two great stories, and most visitors only have time for one. This private day gives you both. The morning belongs to the pharaohs at the Grand Egyptian Museum, the vast new museum beside the Giza pyramids that opened fully in late 2025. For the first time, the entire burial treasure of Tutankhamun – more than 5,000 objects, from the gold mask to his chariots, sandals and board games – is displayed together. The afternoon belongs to medieval Cairo: the hilltop Citadel that Saladin began in the 1170s, the Ottoman-style Muhammad Ali Mosque with its alabaster walls and city views, and the bazaar lanes of Khan el-Khalili and al-Muizz Street, among the richest collections of medieval Islamic architecture anywhere.\n\nYour guide is a licensed Egyptologist who plans a clear route through the museum (it is far too large to see in one visit), explains what matters and why, and then switches easily to the Mamluk sultans and Ottoman pashas who built the old city. Lunch is at a local restaurant between the two halves, and the day ends with mint tea in the bazaar.\n\nAT A GLANCE\n• Duration: about 8 to 9 hours\n• Start and end: your hotel in Cairo or Giza\n• Type: private tour with car, driver and licensed Egyptologist guide\n• Booking: on request – we confirm availability and the final price by email within 24 hours, and you pay only then\n• Level: easy; a lot of walking indoors and on old paved streets\n\nWHAT YOU SEE\n• Grand Egyptian Museum: the Grand Hall and Ramesses II colossus, the Grand Staircase and the Tutankhamun galleries.\n• The Citadel of Saladin and the Muhammad Ali Mosque.\n• Khan el-Khalili bazaar and al-Muizz Street, with its mosques, madrasas and sabils.\n\nWHY THIS WORKS\nThe museum is best in the morning, when you are fresh and the halls are calmer. Old Cairo is best in the late afternoon, when the light softens and the bazaar comes to life. Together they show Egypt's ancient and Islamic past in one day.\n\nWHO IT SUITS\nFirst-time visitors who have already seen the pyramids, families, history lovers and anyone with a single free day in Cairo.\n\nWHO MAY PREFER ANOTHER TOUR\nIf you have not yet seen the pyramids, start with our Giza, Saqqara and Memphis private day tour, or ask us to combine the pyramids and the museum in one day.\n\nPRACTICAL INFORMATION\nWear comfortable shoes. Shoulders and knees should be covered for the mosque, and women need a scarf to cover their hair (one is provided at the door). Bring small notes for tips and shopping; bargaining in the bazaar is normal and friendly.",
+  "inclusions": {"standard": {
+   "private": ["Pick-up and drop-off at your hotel in Cairo or Giza", "Private air-conditioned vehicle", "Licensed Egyptologist guide", "Entrance tickets to the Grand Egyptian Museum and the Citadel", "Lunch at a local restaurant", "Mint tea in Khan el-Khalili", "Bottled water"],
+   "shared": ["Hotel pick-up and drop-off", "Air-conditioned vehicle", "Egyptologist guide", "Entrance tickets", "Lunch"]
+  }},
+  "pricingTiers": [
+   {"transportType": "Sedan / SUV", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png", "minSeats": 1, "maxSeats": 4, "pricing": {"currency": "EUR", "totalPrice": 230, "pricePerDay": 230}},
+   {"transportType": "Minivan", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png", "minSeats": 5, "maxSeats": 8, "pricing": {"currency": "EUR", "totalPrice": 400, "pricePerDay": 400}},
+   {"transportType": "Mini Bus", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png", "minSeats": 9, "maxSeats": 19, "pricing": {"currency": "EUR", "totalPrice": 780, "pricePerDay": 780}}
+  ],
+  "images": ["Grand Egyptian Museum 2025.jpg", "Grand Egyptian Museum Grand Hall.jpg", "Cairo, Cairo Citadel, Muhammad Ali Mosque, Egypt.jpg", "Khan el-Khalili 2019.jpg", "Muhammad Ali Mosque, Citadel, Cairo, Egypt3.jpg"],
+  "days": [
+   {
+    "name": "The Grand Egyptian Museum and Old Cairo",
+    "description": "What to expect: a private day from Tutankhamun's treasures to the medieval bazaar, with an Egyptologist guide, tickets and lunch.\n\nYour guide and driver collect you at about 8:30 and drive to the Grand Egyptian Museum, on the edge of the Giza plateau, to be there when it opens. You enter the Grand Hall, where a colossal granite statue of Ramesses II, about 11 metres tall and more than 3,000 years old, greets visitors. From there the Grand Staircase climbs past dozens of statues of kings, queens and gods to a window framing the pyramids. Your guide then leads you through the Tutankhamun galleries, where the young king's whole burial treasure is shown together for the first time since Howard Carter opened the tomb in 1922: the gold mask and coffins, the gilded shrines, his chariots, thrones, jewellery, clothes and even his childhood toys. With about three hours here, you see the essentials without rushing; your guide chooses the route and explains the stories behind the pieces.\n\nAfter lunch at a local restaurant you cross the city to the Citadel, the fortress Saladin began in the 1170s on a spur of the Muqattam hills. For almost 700 years it was the seat of Egypt's rulers. On top stands the Muhammad Ali Mosque, built between 1830 and 1848 in the Ottoman style, with slender minarets, a huge dome and walls faced in alabaster. From its terrace the whole of Cairo spreads out below, and on a clear day you can see the pyramids on the horizon.\n\nIn the late afternoon you walk into the heart of Fatimid and Mamluk Cairo. Khan el-Khalili has been a market since the 14th century: lanes of lamps, spices, copper, silver and textiles. Your guide takes you onto al-Muizz Street, lined with mosques, madrasas, mausoleums and public fountains, many of them restored, before you stop for mint tea at a historic café in the bazaar. You are back at your hotel at about 17:30, or you can stay on for dinner in the old city.\n\nSCHEDULE (approximate times)\n08:30 – Hotel pick-up.\n09:00 – Grand Egyptian Museum: Grand Hall, Grand Staircase and Tutankhamun galleries (about 3 hours).\n12:30 – Lunch at a local restaurant.\n14:00 – The Citadel and Muhammad Ali Mosque (about 1 hour 30 minutes).\n15:45 – Khan el-Khalili and al-Muizz Street on foot, with mint tea.\n17:30 – Return to your hotel.\n\nGOOD TO KNOW\n• Museum opening hours and gallery access can change; we confirm the plan when we confirm your booking.\n• The mosque is open to visitors outside prayer times; shoes are removed at the door.\n• In the bazaar, prices are always negotiable. Your guide can help, but there is never any obligation to buy.\n\nINCLUDED: private vehicle and driver, licensed Egyptologist guide, tickets to the Grand Egyptian Museum and the Citadel, lunch, mint tea, bottled water, hotel pick-up and drop-off.\nNOT INCLUDED: special-exhibition or camera fees where charged, drinks at lunch, shopping, tips.\n\nOvernight: none.\nMeals: lunch.",
+    "stops": [
+     {"name": "Grand Egyptian Museum", "duration": "About 3 hours", "description": "The Grand Hall with the colossus of Ramesses II, the Grand Staircase and the complete Tutankhamun collection, with your Egyptologist guide.", "image": "Grand Egyptian Museum Grand Hall.jpg"},
+     {"name": "Citadel of Saladin and Muhammad Ali Mosque", "duration": "About 1 hour 30 minutes", "description": "The medieval fortress on the Muqattam hills and the 19th-century Ottoman-style mosque with its alabaster walls and views across Cairo.", "image": "Cairo, Cairo Citadel, Muhammad Ali Mosque, Egypt.jpg"},
+     {"name": "Khan el-Khalili and al-Muizz Street", "duration": "About 1 hour 45 minutes", "description": "A walk through the 14th-century bazaar and the street of Mamluk mosques and madrasas, ending with mint tea at a historic café.", "image": "Khan el-Khalili 2019.jpg"}
+    ]
+   }
+  ],
+  "faq": [
+   {"question": "How does booking on request work?", "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability and the final price by email within 24 hours, and you pay online only when the tour is confirmed."},
+   {"question": "Is the Grand Egyptian Museum fully open?", "answer": "Yes. The museum opened fully in late 2025, including the Tutankhamun galleries. Opening hours and access to some halls can change, so we confirm the plan with your booking."},
+   {"question": "Is the whole Tutankhamun collection on show?", "answer": "Yes. For the first time, the complete burial treasure of more than 5,000 objects is displayed together, including the gold mask, which moved from the old Egyptian Museum in Tahrir Square."},
+   {"question": "Can we see the whole museum in three hours?", "answer": "No one can. Your guide plans a route through the highlights so you see the most important pieces without rushing. You can stay longer if you prefer to shorten the afternoon."},
+   {"question": "Can we visit the old Egyptian Museum in Tahrir Square instead?", "answer": "Yes. It still holds a superb collection, including Old Kingdom masterpieces and the royal gold of Tanis. Tell us and we will adjust the day."},
+   {"question": "What should I wear for the mosque?", "answer": "Clothes that cover shoulders and knees. Women also cover their hair; a scarf is provided at the entrance. Shoes are removed inside."},
+   {"question": "Is the bazaar safe?", "answer": "Yes. Khan el-Khalili is busy and lively and your guide stays with you. As in any crowded market, keep an eye on your bag."},
+   {"question": "Do we have to buy anything?", "answer": "No. There are no shopping stops on our tours. If you want to buy something, your guide can suggest honest shops and help with bargaining."},
+   {"question": "Is lunch included?", "answer": "Yes, an Egyptian lunch at a local restaurant. Vegetarian options are always available."},
+   {"question": "Is this tour suitable for children?", "answer": "Yes. Children usually love Tutankhamun's treasures and the bazaar. The guide keeps the pace easy and can shorten the museum visit."},
+   {"question": "Can we add the pyramids to this day?", "answer": "Yes. The museum stands next to the Giza plateau, so we can replace the Citadel with the pyramids and the Sphinx in the afternoon."},
+   {"question": "Can I take photos in the museum?", "answer": "Photos for personal use are allowed in most galleries without flash. Rules can change, and some areas may charge a camera fee."},
+   {"question": "What is the cancellation policy?", "answer": "You can cancel free of charge up to 24 hours before the tour. Until your request is confirmed, nothing is charged at all."}
+  ]
+ }
+}
