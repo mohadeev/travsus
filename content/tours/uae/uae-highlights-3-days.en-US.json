@@ -1,0 +1,110 @@
+{
+ "key": "uae-highlights-3-days",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {
+  "city": "Dubai",
+  "state": "Dubai",
+  "country": "United Arab Emirates",
+  "countryCode": "AE",
+  "timeZone": "Asia/Dubai",
+  "streetAddress": "Your hotel in Dubai",
+  "geoCoordinates": { "lat": 25.2048, "log": 55.2708 }
+ },
+ "slug": "/en-US/united-arab-emirates/dubai/tours/uae-highlights-in-3-days-dubai-abu-dhabi-and-the-desert",
+ "tour": {
+  "name": "UAE Highlights in 3 Days: Dubai, Abu Dhabi & the Desert",
+  "subtitle": "Three private days from your Dubai hotel: old and new Dubai with the Burj Khalifa at sunset, Abu Dhabi's Grand Mosque and Louvre, and a day that ends in the red dunes with a barbecue under the stars.",
+  "seoTitle": "UAE Highlights 3-Day Private Tour: Dubai, Abu Dhabi, Desert",
+  "metaDescription": "Three-day private UAE tour from Dubai with a local guide: Al Fahidi, the souks and Burj Khalifa; Abu Dhabi's Sheikh Zayed Grand Mosque, Qasr Al Watan and Louvre; Palm Jumeirah and an evening desert safari.",
+  "tags": ["UAE 3-day tour", "Dubai and Abu Dhabi tour", "UAE itinerary", "Dubai private tour", "UAE desert safari", "Burj Khalifa"],
+  "highlights": [
+   "Al Fahidi, the abra and the spice and gold souks",
+   "Burj Khalifa At the Top at sunset",
+   "Sheikh Zayed Grand Mosque in Abu Dhabi",
+   "Qasr Al Watan and the Louvre Abu Dhabi",
+   "Palm Jumeirah and The View",
+   "Evening desert safari with barbecue dinner",
+   "Same local guide and driver throughout"
+  ],
+  "duration": 3,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "Three days is the right length for a first visit to the Emirates: one for Dubai, one for Abu Dhabi and one for the desert. This private tour keeps you in one hotel in Dubai and puts all three together with a local guide and driver, the tickets booked and the timing worked out so you see each place at its best.\n\nDay one is Dubai old and new: the wind-tower lanes of Al Fahidi, an abra across the creek to the spice and gold souks, Jumeirah and the Burj Al Arab, and the Burj Khalifa observation decks at sunset. Day two is Abu Dhabi: the Sheikh Zayed Grand Mosque in the morning light, the presidential palace of Qasr Al Watan and the Louvre Abu Dhabi. Day three starts slowly with the Palm Jumeirah and The View, then heads into the red dunes for a dune drive, sunset, camels and a barbecue dinner at a desert camp.\n\nAT A GLANCE\n• Duration: 3 days (day tours from your Dubai hotel)\n• Start and finish: your hotel in Dubai\n• Type: private tour with car, driver and English-speaking local guide; 4x4 with a desert driver for the safari\n• Booking: on request – we confirm availability and the final price by email within 24 hours, and you pay only then\n• Level: easy\n\nWHAT YOU SEE\n• Al Fahidi, Dubai Creek, the souks, Jumeirah and the Burj Khalifa.\n• Sheikh Zayed Grand Mosque, Qasr Al Watan and the Louvre Abu Dhabi.\n• Palm Jumeirah and The View at The Palm.\n• The red dunes and a desert camp.\n\nWHY THIS TOUR WORKS\nEach day is built around the best light and the opening days of each site, and the hard parts – Burj Khalifa sunset slots, mosque registration, Louvre tickets – are done for you. The same guide all three days means you can change the plan as you go.\n\nWHO IT IS FOR\nFirst-time visitors to the UAE, families, couples, and stopover travellers with three days.\n\nWHO MAY PREFER ANOTHER TOUR\nWith five days, take our complete UAE tour, which adds Sharjah, Al Ain and Hatta. With one day, choose a single day tour.\n\nPRACTICAL INFORMATION\nHotels are not included; choose your own in Dubai or ask us to book one. Bring clothing with long sleeves and long trousers or skirts for the Grand Mosque (headscarf for women), and comfortable shoes throughout.",
+  "inclusions": {
+   "standard": {
+    "private": [
+     "Pick-up and drop-off at your hotel in Dubai each day",
+     "Private air-conditioned vehicle and driver",
+     "English-speaking local guide on days 1 and 2; driver-guide on day 3",
+     "Abra ride and Burj Khalifa At the Top ticket",
+     "Grand Mosque registration, Qasr Al Watan and Louvre Abu Dhabi tickets",
+     "The View at The Palm ticket",
+     "Private 4x4 evening desert safari with barbecue dinner",
+     "Water in the vehicle"
+    ],
+    "shared": [
+     "Hotel pick-up and drop-off",
+     "Air-conditioned vehicle",
+     "Local guide",
+     "Main tickets",
+     "Shared desert safari"
+    ]
+   }
+  },
+  "pricingTiers": [
+   { "transportType": "SUV / 4x4 Land Cruiser", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png", "minSeats": 1, "maxSeats": 5, "pricing": { "currency": "EUR", "totalPrice": 1050, "pricePerDay": 350 } },
+   { "transportType": "Mercedes Vito / two 4x4s", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png", "minSeats": 6, "maxSeats": 10, "pricing": { "currency": "EUR", "totalPrice": 1800, "pricePerDay": 600 } },
+   { "transportType": "Mini Bus / four 4x4s", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png", "minSeats": 11, "maxSeats": 19, "pricing": { "currency": "EUR", "totalPrice": 3300, "pricePerDay": 1100 } }
+  ],
+  "images": [
+   "Burj Khalifa Dubai, UAE at Sunset 001 by Eric Chamchoum.jpg",
+   "Sheikh Zayed Grand Mosque @ Abu Dhabi (15856602738).jpg",
+   "DUBAI DESERT SAFARI.jpg",
+   "Al Fahidi Historical Neighbourhood, Dubai.jpg",
+   "Louvre abu dhabi, interno, cortile coperto 01.jpg",
+   "2006-10-13 Palm Jumeirah, Dubai.jpg"
+  ],
+  "days": [
+   {
+    "name": "Dubai old and new: Al Fahidi, the creek and souks, Jumeirah and the Burj Khalifa at sunset",
+    "description": "What to expect: a full day in Dubai with your guide, from the old town on the creek to the top of the Burj Khalifa at sunset.\n\nYour guide and driver collect you at about 10:00. In Al Fahidi, the restored quarter of coral-stone houses with wind towers built by merchants in the late 19th century, you walk through courtyards and lanes and see Al Fahidi Fort, the oldest building in Dubai. A wooden abra takes you across Dubai Creek to Deira for the Spice Souk and the Gold Souk. After lunch (at your own cost), drive along the coast past Jumeirah Mosque to the beach facing the Burj Al Arab, then to Downtown Dubai. Your timed ticket takes you up the 828-metre Burj Khalifa to the decks on levels 124 and 125 for sunset, and you finish with the Dubai Fountain on the lake below.\n\nSCHEDULE (approximate)\n10:00 – Hotel pick-up.\n10:30 – Al Fahidi and Al Fahidi Fort.\n11:45 – Abra; Spice Souk and Gold Souk.\n13:15 – Lunch (at your own cost).\n14:45 – Jumeirah Mosque (outside) and Burj Al Arab beach.\n16:00 – Burj Khalifa At the Top (sunset slot).\n17:45 – Dubai Fountain.\n18:30 – Return to your hotel.\n\nOvernight: your hotel in Dubai (not included).\nMeals: none.",
+    "stops": [
+     { "name": "Al Fahidi and the souks", "duration": "About 3 hours", "description": "Wind-tower lanes, the abra and the spice and gold souks.", "image": "Al Fahidi Historical Neighbourhood, Dubai.jpg" },
+     { "name": "Burj Khalifa", "duration": "About 1 hour 30 minutes", "description": "At the Top at sunset and the Dubai Fountain.", "image": "Burj Khalifa Dubai, UAE at Sunset 001 by Eric Chamchoum.jpg" }
+    ]
+   },
+   {
+    "name": "Abu Dhabi: Sheikh Zayed Grand Mosque, Qasr Al Watan and the Louvre",
+    "description": "What to expect: a day in the capital, with its three great buildings and the Corniche.\n\nLeave Dubai at about 8:00 for the 90-minute drive to Abu Dhabi. The Sheikh Zayed Grand Mosque, completed in 2007, has 82 white marble domes, more than a thousand columns inlaid with mother-of-pearl and semi-precious stones, and one of the world's largest hand-knotted carpets in its main prayer hall. Next is Qasr Al Watan, the working presidential palace, with its Great Hall under a 37-metre dome and its library. After lunch (at your own cost), cross to Saadiyat Island for the Louvre Abu Dhabi, where Jean Nouvel's 180-metre dome lets the sun through in a 'rain of light' over galleries that tell the story of human civilisation. Drive back along the Corniche and return to Dubai in the early evening.\n\nSCHEDULE (approximate)\n08:00 – Hotel pick-up.\n09:30 – Sheikh Zayed Grand Mosque.\n11:15 – Qasr Al Watan.\n12:45 – Lunch (at your own cost).\n14:00 – Louvre Abu Dhabi.\n16:15 – Corniche.\n18:00 – Return to your hotel in Dubai.\n\nGOOD TO KNOW\n• Mosque dress code: long sleeves, long trousers or skirt, headscarf for women.\n• The mosque is closed to visitors on Friday mornings and the Louvre on Mondays; we set the days around them.\n\nOvernight: your hotel in Dubai (not included).\nMeals: none.",
+    "stops": [
+     { "name": "Sheikh Zayed Grand Mosque", "duration": "About 1 hour 15 minutes", "description": "82 marble domes and a vast hand-knotted carpet.", "image": "Sheikh Zayed Grand Mosque approach 09.jpg" },
+     { "name": "Qasr Al Watan", "duration": "About 1 hour 15 minutes", "description": "The presidential palace and its Great Hall.", "image": "Qasr Al Watan in March 2022 09.jpg" },
+     { "name": "Louvre Abu Dhabi", "duration": "About 2 hours", "description": "Jean Nouvel's dome of light and a museum of world art.", "image": "Louvre abu dhabi, interno, cortile coperto 01.jpg" }
+    ]
+   },
+   {
+    "name": "Palm Jumeirah and The View, then an evening desert safari with barbecue dinner",
+    "description": "What to expect: a relaxed morning, the Palm from above, and an evening in the red dunes.\n\nThe morning is free to rest or swim. At about 11:00 your driver-guide takes you along the trunk of the Palm Jumeirah to the Atlantis, then up The View at The Palm, about 240 metres above the island, where the fronds and crescent become clear. Back at your hotel after lunch, rest until about 15:00, when an experienced desert driver collects you in a private 4x4. In 45 minutes you reach the red dunes south-east of Dubai for a 30–40-minute dune drive with photo stops, sunset from the top of a dune and sandboarding. At a desert camp you are welcomed with Arabic coffee and dates, ride a camel, and have dinner from a barbecue buffet while tanoura and fire shows play under the stars. You are back at your hotel at about 21:30.\n\nSCHEDULE (approximate, adjusted to sunset)\n11:00 – Pick-up for the Palm Jumeirah and The View.\n13:00 – Return to your hotel; free time.\n15:00 – Pick-up by 4x4 for the desert.\n16:00 – Dune drive, sunset and sandboarding.\n18:00 – Desert camp: camel ride, henna, barbecue dinner and shows.\n21:30 – Return to your hotel.\n\nINCLUDED (whole tour): private vehicle and driver, English-speaking local guide on days 1–2, driver-guide on day 3, abra ride, Burj Khalifa At the Top, Grand Mosque registration, Qasr Al Watan and Louvre Abu Dhabi tickets, The View at The Palm, private 4x4 desert safari with barbecue dinner, water, daily hotel pick-up.\nNOT INCLUDED: hotel nights, lunches, other meals, alcoholic drinks, quad biking, tips.\n\nOvernight: none.\nMeals: dinner.",
+    "stops": [
+     { "name": "Palm Jumeirah and The View", "duration": "About 2 hours", "description": "The island from the trunk, the crescent and 240 metres above.", "image": "2006-10-13 Palm Jumeirah, Dubai.jpg" },
+     { "name": "Red dunes and desert camp", "duration": "About 5 hours", "description": "Dune drive, sunset, camels and a barbecue dinner under the stars.", "image": "DUBAI DESERT SAFARI.jpg" }
+    ]
+   }
+  ],
+  "faq": [
+   { "question": "How does booking on request work?", "answer": "You choose your date and the number of travellers and send the request. Nothing is charged. We confirm availability and the final price by email within 24 hours, and you pay online only once your tour is confirmed." },
+   { "question": "Are hotels included?", "answer": "No. You stay at your own hotel in Dubai and we pick you up there each day. We can book a hotel for you on request." },
+   { "question": "Can we change the order of the days?", "answer": "Yes. We usually arrange the days around the Grand Mosque's Friday-morning closure, the Louvre's Monday closure and the weather." },
+   { "question": "Are the tickets booked for us?", "answer": "Yes: the Burj Khalifa sunset slot, the Grand Mosque registration, Qasr Al Watan, the Louvre and The View are all booked when we confirm." },
+   { "question": "Is it the same guide every day?", "answer": "The same local guide on days 1 and 2 when possible. On day 3 a driver-guide takes you to the Palm, and an experienced desert driver takes over for the dunes." },
+   { "question": "Is it suitable for children?", "answer": "Yes. Children love the abra, the Burj Khalifa, the Palm and the desert. The dune drive is kept gentle for families, and child seats are provided." },
+   { "question": "What should I wear?", "answer": "Comfortable shoes and clothing covering shoulders and knees in the old town; long sleeves and long trousers or skirts for the Grand Mosque, with a headscarf for women." },
+   { "question": "Is alcohol available?", "answer": "Some desert camps sell alcohol at extra cost; tell us if you prefer a dry camp. No alcohol is served at the sites." },
+   { "question": "Can I do this on a stopover?", "answer": "Yes, if you have three days in the UAE and can enter the country. We can meet you at Dubai International Airport on day 1." },
+   { "question": "Can we add Sharjah or Al Ain?", "answer": "Yes. A fourth day in Sharjah or Al Ain fits well; our 5-day complete UAE tour includes both plus Hatta." },
+   { "question": "What about vegetarian food?", "answer": "The desert camp buffet has vegetarian dishes, and the guide suggests restaurants for every diet for the other meals." },
+   { "question": "When is the best time to go?", "answer": "November to March is ideal. From May to September it is very hot; we keep outdoor time short and spend the middle of the day indoors." },
+   { "question": "What is the cancellation policy?", "answer": "You can cancel free of charge up to 48 hours before the first day. Until your request is confirmed, nothing is charged at all." }
+  ]
+ }
+}
