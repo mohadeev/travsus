@@ -1,0 +1,90 @@
+{
+ "key": "uae-dubai-morning-desert-safari",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {
+  "city": "Dubai",
+  "state": "Dubai",
+  "country": "United Arab Emirates",
+  "countryCode": "AE",
+  "timeZone": "Asia/Dubai",
+  "streetAddress": "Your hotel in Dubai",
+  "geoCoordinates": { "lat": 24.82, "log": 55.66 }
+ },
+ "slug": "/en-US/united-arab-emirates/dubai/tours/private-morning-desert-safari-from-dubai-dunes-sandboarding-camels-and-falcons",
+ "tour": {
+  "name": "Private Morning Desert Safari from Dubai: Dunes, Sandboarding, Camels & Falcons",
+  "subtitle": "The desert in the cool, quiet hours after dawn: a private 4x4 dune drive in the red sand, sandboarding, a camel ride, a falconry display and Arabic coffee, back at your hotel by lunchtime.",
+  "seoTitle": "Private Morning Desert Safari Dubai: Dunes & Camels",
+  "metaDescription": "Private morning desert safari from Dubai: 4x4 dune drive in the red dunes, sandboarding, camel ride, falconry display, Arabic coffee and dates. Back by lunchtime. Hotel pick-up.",
+  "tags": ["Dubai morning safari", "morning desert safari", "Dubai dune bashing", "Dubai sandboarding", "Dubai camel ride", "falconry Dubai"],
+  "highlights": [
+   "The dunes in soft morning light",
+   "Private 4x4 dune drive",
+   "Sandboarding on a high dune",
+   "Camel ride across the sand",
+   "Falconry display with a falconer",
+   "Arabic coffee and dates in a desert camp",
+   "Back at your hotel by lunchtime"
+  ],
+  "duration": 1,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "Most visitors go to the desert in the evening, when the camps are full and the light is golden. The morning is the desert's quiet secret: cooler air, softer light, tracks of beetles and foxes still printed in the sand from the night, and the dunes almost to yourself. This private morning safari gives you all the thrills of the dunes and leaves the rest of your day free.\n\nYou are collected from your hotel early and driven to the red dunes south-east of Dubai. After letting the tyres down, your driver takes you across the sand on a dune drive as gentle or wild as you like, stopping on the crests for photos. On a high dune you try sandboarding, then ride a camel across the sand. At a small camp a falconer shows how saluki-hunting falcons are trained and flown – the national bird of the UAE – and you share Arabic coffee, dates and a light breakfast before driving back to Dubai.\n\nAT A GLANCE\n• Duration: about 4 hours 30 minutes\n• Start and finish: your hotel in Dubai\n• Type: private 4x4 with an experienced desert driver\n• Booking: on request – we confirm availability and the final price by email within 24 hours, and you pay only then\n• Level: easy; the dune drive is bumpy and can be done gently\n\nWHAT YOU SEE\n• The red dunes south-east of Dubai.\n• Desert wildlife tracks and, with luck, gazelles or oryx at a distance.\n• A falconry display.\n• A small desert camp.\n\nWHY THIS TOUR WORKS\nIn the morning the desert is cooler, emptier and more photogenic, and you are back at your hotel by lunchtime with the afternoon free for the city or the beach. The 4x4 is private, so the pace and the style of driving are yours.\n\nWHO IT IS FOR\nFamilies with young children, photographers, early risers, travellers with evening plans, and anyone visiting in the hotter months.\n\nWHO MAY PREFER ANOTHER TOUR\nFor sunset, dinner and shows at a camp, take the evening desert safari. For mountains and a lake, take the Hatta day trip.\n\nPRACTICAL INFORMATION\nWear light clothing, a hat and sunglasses, and closed shoes or sandals. Dune driving is not recommended in pregnancy, for infants or for people with back or heart problems; tell us and we will keep the drive gentle.",
+  "inclusions": {
+   "standard": {
+    "private": [
+     "Pick-up and drop-off at your hotel in Dubai",
+     "Private 4x4 with an experienced desert driver",
+     "Dune drive and sandboarding",
+     "Camel ride (about 15 minutes)",
+     "Falconry display",
+     "Arabic coffee, dates, light breakfast and water"
+    ],
+    "shared": [
+     "Hotel pick-up and drop-off",
+     "Shared 4x4",
+     "Dune drive and sandboarding",
+     "Camel ride",
+     "Water"
+    ]
+   }
+  },
+  "pricingTiers": [
+   { "transportType": "4x4 Land Cruiser", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png", "minSeats": 1, "maxSeats": 5, "pricing": { "currency": "EUR", "totalPrice": 260, "pricePerDay": 260 } },
+   { "transportType": "Two 4x4 Land Cruisers", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png", "minSeats": 6, "maxSeats": 10, "pricing": { "currency": "EUR", "totalPrice": 500, "pricePerDay": 500 } },
+   { "transportType": "Four 4x4 Land Cruisers", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png", "minSeats": 11, "maxSeats": 19, "pricing": { "currency": "EUR", "totalPrice": 960, "pricePerDay": 960 } }
+  ],
+  "images": [
+   "Desert Safari Dubai (8668541280).jpg",
+   "Dubai Desert Safari during cloudy weather.jpg",
+   "Jeeps (Desert Safari Dubai) (8668553232).jpg",
+   "Black Chevrolet Suburban (Desert Safari Dubai) (8667292413).jpg",
+   "Dubai Desert Safari Liwa.jpg"
+  ],
+  "days": [
+   {
+    "name": "Red dunes in the morning: dune drive, sandboarding, camels and falcons",
+    "description": "What to expect: a private morning in the desert outside Dubai, with a dune drive, sandboarding, a camel ride and a falconry display, back by lunchtime.\n\nYour driver collects you from your hotel at about 7:30 (earlier in summer) and drives south-east out of the city. In about 45 minutes you reach the red dunes, where the sand is still cool and the low sun throws long shadows across the ridges. Look for the tracks of the night: beetles, lizards, the neat prints of a desert fox, sometimes the larger hooves of oryx or gazelles from the nearby reserves. Your driver lets the tyres down and you set off.\n\nThe dune drive lasts about 30–40 minutes: climbing the faces, running along the crests and sliding down the steep sides, as gently or as thrillingly as you choose. Your driver stops on the high points so you can get out and take photos of the empty desert in the morning light. On a tall dune you try sandboarding – standing up or sitting down – and climb back up as many times as you like.\n\nThen ride a camel across the sand for about fifteen minutes, led by a handler. At a small desert camp, a falconer introduces you to the falcons used for hunting in the Gulf for centuries: how they are trained, how the hood calms them, and how they are flown to the lure. You can hold a falcon on the glove for a photo. Arabic coffee, dates, tea and a light breakfast are served in the shade before the drive back to Dubai. You are at your hotel by about 12:00.\n\nSCHEDULE (approximate)\n07:30 – Hotel pick-up (06:30 in summer).\n08:15 – Edge of the dunes; tyres down.\n08:30 – Dune drive with photo stops (about 40 minutes).\n09:15 – Sandboarding.\n09:45 – Camel ride.\n10:15 – Falconry display, coffee and light breakfast at the camp.\n11:15 – Drive back to Dubai.\n12:00 – Return to your hotel.\n\nGOOD TO KNOW\n• Quad bikes or dune buggies can be added at extra cost.\n• In summer we start earlier to avoid the heat.\n• The falconry display depends on the falconer's schedule; we confirm it with your request.\n\nINCLUDED: private 4x4 and desert driver, dune drive, sandboarding, camel ride, falconry display, Arabic coffee, dates, light breakfast and water, hotel pick-up.\nNOT INCLUDED: quad biking, tips.\n\nOvernight: none.\nMeals: breakfast.",
+    "stops": [
+     { "name": "Red dunes", "duration": "About 1 hour 15 minutes", "description": "Dune drive, photo stops and sandboarding in the morning light.", "image": "Desert Safari Dubai (8668541280).jpg" },
+     { "name": "Desert camp", "duration": "About 1 hour 30 minutes", "description": "Camel ride, falconry display, coffee and breakfast.", "image": "Dubai Desert Safari during cloudy weather.jpg" }
+    ]
+   }
+  ],
+  "faq": [
+   { "question": "How does booking on request work?", "answer": "You choose your date and the number of travellers and send the request. Nothing is charged. We confirm availability and the final price by email within 24 hours, and you pay online only once your tour is confirmed." },
+   { "question": "Why choose the morning instead of the evening?", "answer": "The morning is cooler and quieter, the light is soft for photos, and you have the afternoon and evening free. The evening safari adds sunset, dinner and shows at a camp." },
+   { "question": "Is the 4x4 private?", "answer": "Yes. The standard price is for a private 4x4 and driver for your group only." },
+   { "question": "Is the dune drive safe?", "answer": "Yes. Drivers are licensed for desert driving, the vehicles are reinforced and everyone wears a seatbelt. You can ask for a gentle drive at any time." },
+   { "question": "Can young children come?", "answer": "Yes, from about three years old with child seats. The morning is a good choice for families because it is cooler." },
+   { "question": "Who should not do the dune drive?", "answer": "Pregnant travellers and people with back, neck or heart problems. You can still join; the driver will take a smooth route." },
+   { "question": "Can I hold the falcon?", "answer": "Yes, on a protective glove, with the falconer beside you. It is one of the most popular photos of the morning." },
+   { "question": "Is breakfast included?", "answer": "A light breakfast with Arabic coffee, tea, dates, pastries and fruit is included at the camp." },
+   { "question": "Can we add quad biking?", "answer": "Yes. Quad bikes or dune buggies can be added at extra cost; tell us when you book." },
+   { "question": "What should I wear?", "answer": "Light clothing, a hat, sunglasses and closed shoes or sandals. A light jacket for early mornings in winter." },
+   { "question": "Can I do this on a layover?", "answer": "Yes, if you have a morning between flights and can enter the UAE. We pick you up at Dubai International Airport." },
+   { "question": "When is the best time to go?", "answer": "All year. In summer the morning is the most comfortable time in the desert; from November to March the early start can be cool." },
+   { "question": "What is the cancellation policy?", "answer": "You can cancel free of charge up to 24 hours before the tour. Until your request is confirmed, nothing is charged at all." }
+  ]
+ }
+}
