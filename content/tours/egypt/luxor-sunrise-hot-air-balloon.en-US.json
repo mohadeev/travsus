@@ -1,0 +1,62 @@
+{
+ "key": "egypt-luxor-sunrise-hot-air-balloon",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {"city": "Luxor", "state": "Luxor", "country": "Egypt", "countryCode": "EG", "timeZone": "Africa/Cairo", "streetAddress": "Your hotel or Nile cruise boat in Luxor", "geoCoordinates": {"lat": 25.7333, "log": 32.6100}},
+ "slug": "/en-US/egypt/luxor/tours/luxor-sunrise-hot-air-balloon-flight-over-the-west-bank",
+ "tour": {
+  "name": "Luxor Sunrise Hot-Air Balloon Flight over the West Bank",
+  "subtitle": "Float over ancient Thebes at dawn: a licensed hot-air balloon flight above the temples, villages and sugar-cane fields of Luxor's West Bank, with the sun rising over the Nile and the Valley of the Kings below – with private transfers and an early-morning boat crossing.",
+  "seoTitle": "Luxor Sunrise Hot-Air Balloon Flight | TRAVSUS",
+  "metaDescription": "Sunrise hot-air balloon over Luxor's West Bank: views of Hatshepsut's temple, the Colossi of Memnon and the Nile. Licensed operator, private transfers, boat crossing and flight certificate.",
+  "tags": ["Luxor hot air balloon", "Luxor sunrise", "Balloon over Valley of the Kings", "Luxor West Bank", "Hatshepsut temple from above", "Luxor experiences"],
+  "highlights": [
+   "Sunrise over the Nile from a hot-air balloon",
+   "Views of Hatshepsut's temple, the Colossi of Memnon and Medinet Habu",
+   "The Theban hills hiding the Valley of the Kings",
+   "Dozens of balloons rising together in the dawn sky",
+   "Early-morning motorboat crossing of the Nile",
+   "Licensed operator with experienced pilots",
+   "Private hotel transfers and flight certificate"
+  ],
+  "duration": 1,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "Luxor is one of the best places in the world to fly in a hot-air balloon. The air at dawn is calm and clear, the landscape below is extraordinary, and the sun rises straight out of the desert across the Nile. From the basket you see the whole of ancient Thebes laid out like a map: the green strip of fields along the river, the mud-brick villages of the West Bank, the temples of Medinet Habu and the Ramesseum, the Colossi of Memnon standing alone among the crops, and the terraces of Hatshepsut's temple set into the golden cliffs that hide the Valley of the Kings.\n\nWe collect you from your hotel or cruise boat before dawn and take you across the Nile by motorboat to the launch field, where you watch the crews inflate the balloons with roaring burners. The flight itself lasts about 40 to 60 minutes, depending on the wind, and climbs gently to several hundred metres. After landing among the fields, the ground crew packs the balloon, you receive your flight certificate, and we drive you back to your hotel in time for breakfast – or straight on to the Valley of the Kings if you have booked our West Bank tour.\n\nAT A GLANCE\n• Duration: about 3 to 4 hours, from pick-up to return\n• Start and end: your hotel or Nile cruise boat in Luxor\n• Type: shared balloon basket with a licensed operator; private transfers (private baskets on request)\n• Booking: on request – we confirm availability and the final price by email within 24 hours, and you pay only then\n• Level: easy; you climb into the basket with a small step\n\nWHAT YOU SEE\n• Sunrise over the Nile and the East Bank.\n• Hatshepsut's temple at Deir el-Bahari, the Ramesseum, Medinet Habu and the Colossi of Memnon from above.\n• The Theban hills and the villages and fields of the West Bank.\n\nWHY THIS WORKS\nLuxor's dawn winds are among the most reliable in Egypt, and flights are regulated by the Egyptian Civil Aviation Authority. Flying early leaves the whole day free.\n\nWHO IT SUITS\nCouples, families with older children, photographers and anyone celebrating a special occasion.\n\nWHO MAY PREFER ANOTHER TOUR\nIf you are afraid of heights or have back or knee problems, a sunrise felucca sail on the Nile offers calm dawn views from the water instead.\n\nPRACTICAL INFORMATION\nDress in layers: it can be cold before sunrise in winter and warm after landing. Wear flat, closed shoes and a hat. Flights can be cancelled at short notice for wind or visibility; if so, we rebook you or refund you in full.",
+  "inclusions": {"standard": {
+   "private": ["Private pick-up and drop-off at your Luxor hotel or Nile cruise boat", "Motorboat crossing of the Nile to the launch site", "Hot-air balloon flight of about 40 to 60 minutes with a licensed operator", "Tea, coffee and light snacks before take-off", "Flight certificate", "Bottled water"],
+   "shared": ["Hotel pick-up and drop-off", "Nile crossing", "Balloon flight", "Flight certificate"]
+  }},
+  "pricingTiers": [
+   {"transportType": "Sedan / SUV", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png", "minSeats": 1, "maxSeats": 4, "pricing": {"currency": "EUR", "totalPrice": 360, "pricePerDay": 360}},
+   {"transportType": "Minivan", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png", "minSeats": 5, "maxSeats": 8, "pricing": {"currency": "EUR", "totalPrice": 690, "pricePerDay": 690}},
+   {"transportType": "Mini Bus", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png", "minSeats": 9, "maxSeats": 19, "pricing": {"currency": "EUR", "totalPrice": 1450, "pricePerDay": 1450}}
+  ],
+  "images": ["Luxor hot air balloons (2025) 003.jpg", "Balloon over Luxor - Egypt.jpg", "Luxor hot air balloons (2025) 01.jpg", "Luxor hot air balloon E.jpg", "Temple of Hatshepsut, Luxor, Egypt.jpg"],
+  "days": [
+   {
+    "name": "Sunrise balloon flight over ancient Thebes",
+    "description": "What to expect: a dawn hot-air balloon flight over Luxor's West Bank with a licensed operator, private transfers and a Nile crossing, back in time for breakfast.\n\nYour driver collects you from your hotel or cruise boat at about 5:00 (earlier in summer, later in winter, depending on sunrise) and takes you to the river, where a motorboat carries you across the dark Nile to the West Bank. On the far side you are driven to the launch field, served tea, coffee and a light snack, and given a short safety briefing. Then you watch the crews unroll the great envelopes and fill them with air, first with fans and then with the roaring flames of the burners, until dozens of balloons stand upright in the half-light.\n\nYou climb into the basket, which is divided into compartments, and lift off gently just before the sun appears. As you rise, the sun comes up over the eastern desert and the Nile turns silver. The pilot steers by changing height to catch winds blowing in different directions, so every flight is different, but you will usually pass over the Colossi of Memnon, the great temple of Medinet Habu and the Ramesseum, with the terraces of Hatshepsut's temple glowing against the Theban cliffs and the hills of the Valley of the Kings beyond. Below, farmers start work in the fields, children wave from rooftops and dozens of other balloons drift around you.\n\nAfter about 40 to 60 minutes the pilot brings the balloon down in an open field, where the ground crew is waiting. You stay in the basket in the landing position until the pilot says it is safe to climb out, then watch the crew pack the balloon away and receive your flight certificate. Your driver brings you back across the river to your hotel or boat at about 8:30.\n\nSCHEDULE (approximate times, adjusted to sunrise)\n05:00 – Pick-up from your hotel or cruise boat.\n05:20 – Motorboat crossing of the Nile.\n05:45 – Tea and coffee, safety briefing and balloon inflation.\n06:15 – Take-off and sunrise flight (about 40 to 60 minutes).\n07:15 – Landing, packing and flight certificate.\n08:30 – Return to your hotel or boat.\n\nGOOD TO KNOW\n• Most operators do not take children under about 6 years old or pregnant travellers. Tell us ages when you book.\n• The pilot follows the wind, so the exact route and landing place cannot be fixed in advance.\n• Flights may be cancelled by the authorities for wind or poor visibility. If so, we try another day or refund you in full.\n• Private baskets for couples or families can be arranged at extra cost.\n\nINCLUDED: private transfers, Nile crossing, balloon flight with a licensed operator, tea, coffee and snacks, flight certificate, bottled water.\nNOT INCLUDED: breakfast, photos sold by the operator, tips for the pilot and crew.\n\nOvernight: none.\nMeals: light snacks.",
+    "stops": [
+     {"name": "Nile crossing and launch field", "duration": "About 1 hour", "description": "A motorboat crossing in the dark, tea and coffee, and the inflation of the balloons by the light of the burners.", "image": "Luxor hot air balloons (2025) 01.jpg"},
+     {"name": "Balloon flight over the West Bank", "duration": "About 40 to 60 minutes", "description": "Sunrise over the Nile and views of the Colossi of Memnon, Medinet Habu, the Ramesseum and Hatshepsut's temple.", "image": "Balloon over Luxor - Egypt.jpg"},
+     {"name": "Landing and flight certificate", "duration": "About 30 minutes", "description": "Landing in the fields, packing the balloon with the ground crew and receiving your flight certificate."}
+    ]
+   }
+  ],
+  "faq": [
+   {"question": "How does booking on request work?", "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability and the final price by email within 24 hours, and you pay online only when the flight is confirmed."},
+   {"question": "Is ballooning in Luxor safe?", "answer": "Flights are regulated and inspected by the Egyptian Civil Aviation Authority, and we work only with licensed operators and experienced pilots. Flights are cancelled whenever wind or visibility is not suitable."},
+   {"question": "What happens if the flight is cancelled?", "answer": "If the authorities cancel flights for weather, we offer another morning during your stay or a full refund."},
+   {"question": "How long is the flight?", "answer": "About 40 to 60 minutes in the air, depending on the wind. The whole experience, from pick-up to return, takes about three to four hours."},
+   {"question": "How high does the balloon go?", "answer": "Usually a few hundred metres, sometimes higher, and the pilot often drops low over the fields and villages. The ride is very smooth."},
+   {"question": "Is the basket private?", "answer": "The standard flight is in a shared basket divided into compartments. A private basket for your group can be arranged at extra cost."},
+   {"question": "Is there a minimum age?", "answer": "Most operators accept children from about 6 years old, accompanied by an adult. Pregnant travellers are not allowed to fly."},
+   {"question": "What should I wear?", "answer": "Layers, as it can be cool before sunrise and warm after landing, plus flat closed shoes and a hat. It can be warm close to the burners."},
+   {"question": "Can people with limited mobility fly?", "answer": "You need to climb in and out of a waist-high basket and hold a landing position, so serious back or knee problems may make it unsuitable. Tell us in advance."},
+   {"question": "Can you collect us from a Nile cruise boat?", "answer": "Yes. We collect you from your boat in Luxor and bring you back in time for breakfast or departure."},
+   {"question": "Can we go to the Valley of the Kings afterwards?", "answer": "Yes. Balloons land on the West Bank, so we can continue straight to the Valley of the Kings with our West Bank tour."},
+   {"question": "Will we see the Valley of the Kings from the air?", "answer": "Balloons do not fly over the valley itself, but you see the hills that hide it, together with Hatshepsut's temple and the other West Bank monuments."},
+   {"question": "What is the cancellation policy?", "answer": "You can cancel free of charge up to 24 hours before the flight. Until your request is confirmed, nothing is charged at all."}
+  ]
+ }
+}
