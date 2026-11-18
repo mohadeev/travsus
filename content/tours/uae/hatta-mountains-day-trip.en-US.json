@@ -1,0 +1,88 @@
+{
+ "key": "uae-hatta-mountains-day-trip",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {
+  "city": "Dubai",
+  "state": "Dubai",
+  "country": "United Arab Emirates",
+  "countryCode": "AE",
+  "timeZone": "Asia/Dubai",
+  "streetAddress": "Your hotel in Dubai",
+  "geoCoordinates": { "lat": 24.8, "log": 56.12 }
+ },
+ "slug": "/en-US/united-arab-emirates/dubai/tours/hatta-mountains-private-day-trip-from-dubai-dam-kayak-and-heritage-village",
+ "tour": {
+  "name": "Hatta Mountains Private Day Trip from Dubai: Dam, Kayak & Heritage Village",
+  "subtitle": "A private day in the Hajar Mountains, the other side of Dubai: the turquoise Hatta Dam by kayak, the restored Hatta Heritage Village and its fort, a mountain viewpoint, and the red dunes on the road back.",
+  "seoTitle": "Hatta Day Trip from Dubai: Dam, Kayak & Heritage",
+  "metaDescription": "Private Hatta day trip from Dubai: kayak on the turquoise Hatta Dam, Hatta Heritage Village and fort, Hajar Mountains viewpoints and a stop at the red dunes. Hotel pick-up.",
+  "tags": ["Hatta day trip", "Hatta Dam kayak", "Hajar Mountains", "Hatta Heritage Village", "Dubai mountains", "Dubai nature trip"],
+  "highlights": [
+   "Kayak on the turquoise water of Hatta Dam",
+   "The rugged Hajar Mountains",
+   "Hatta Heritage Village and its 19th-century fort",
+   "Mountain viewpoints over the reservoir",
+   "Lunch with a view in Hatta",
+   "A stop at the red dunes on the way",
+   "Private car and hotel pick-up"
+  ],
+  "duration": 1,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "Most visitors never see this side of Dubai. An hour and a half from the towers, past the red dunes, the road climbs into the Hajar Mountains, the jagged brown range that runs along the border with Oman, and reaches Hatta, a mountain town that belongs to the emirate of Dubai. Here the air is cooler, the wadis are lined with date palms, and a dam holds a lake of startling turquoise water.\n\nThis private day trip starts with a stop at the red dunes for photos, then crosses into the mountains. At Hatta Dam you paddle a kayak across the reservoir between steep rock walls, then climb to a viewpoint above the water. After lunch you visit Hatta Heritage Village, a restored mountain settlement of stone and palm-frond houses around a fort and watchtowers built in the 1890s, with exhibits on farming, weapons and traditional life. On the way back there is time for the honey bee garden or the Wadi Hub before the drive to Dubai.\n\nAT A GLANCE\n• Duration: about 9 hours\n• Start and finish: your hotel in Dubai\n• Type: private tour with car and English-speaking driver-guide\n• Booking: on request – we confirm availability and the final price by email within 24 hours, and you pay only then\n• Level: easy to moderate; kayaking is gentle and suitable for beginners\n\nWHAT YOU SEE\n• The red dunes on the Hatta road.\n• Hatta Dam and its turquoise reservoir.\n• The Hajar Mountains.\n• Hatta Heritage Village and fort.\n\nWHY THIS TOUR WORKS\nHatta is hard to reach without a car, and the bus tours spend little time there. With a private driver you go at your own pace, kayak when the water is calm, and see a side of the UAE that is all mountains and palm groves.\n\nWHO IT IS FOR\nActive travellers, families with children over six, repeat visitors to Dubai, and anyone who wants nature after the city.\n\nWHO MAY PREFER ANOTHER TOUR\nFor the classic dunes and camp, take the evening desert safari. For the city, take the Dubai old and new tour.\n\nPRACTICAL INFORMATION\nWear sports clothes and shoes that can get wet, and bring a hat, sunscreen and a change of clothes. Hatta is a few degrees cooler than Dubai, but summer days are still hot.",
+  "inclusions": {
+   "standard": {
+    "private": [
+     "Pick-up and drop-off at your hotel in Dubai",
+     "Private air-conditioned vehicle with English-speaking driver-guide",
+     "Kayak rental at Hatta Dam (about 1 hour, life jackets included)",
+     "Hatta Heritage Village visit",
+     "Water and snacks in the vehicle"
+    ],
+    "shared": [
+     "Hotel pick-up and drop-off",
+     "Air-conditioned vehicle",
+     "Kayak rental",
+     "Water"
+    ]
+   }
+  },
+  "pricingTiers": [
+   { "transportType": "SUV (prado)", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png", "minSeats": 1, "maxSeats": 5, "pricing": { "currency": "EUR", "totalPrice": 340, "pricePerDay": 340 } },
+   { "transportType": "Mercedes Vito", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png", "minSeats": 6, "maxSeats": 8, "pricing": { "currency": "EUR", "totalPrice": 460, "pricePerDay": 460 } },
+   { "transportType": "Mini Bus", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png", "minSeats": 9, "maxSeats": 19, "pricing": { "currency": "EUR", "totalPrice": 720, "pricePerDay": 720 } }
+  ],
+  "images": [
+   "Hatta Dam - UAE.jpg",
+   "Hatta Dam Kayaking.jpg",
+   "A view of the Hatta Mountains in Hatta Dam.jpg",
+   "Hatta Heritage Village.jpg",
+   "Hatta Mountains Sunset.jpg"
+  ],
+  "days": [
+   {
+    "name": "Red dunes, Hatta Dam by kayak and Hatta Heritage Village",
+    "description": "What to expect: a private day in the mountains of Hatta, with a kayak on the dam, a heritage village and mountain views, returning to Dubai past the dunes.\n\nYour driver-guide collects you at about 8:00 and drives south-east on the Dubai–Hatta road. After about 45 minutes, the red dunes rise on both sides of the road, and you stop for photos and a walk in the sand. Then the land changes: gravel plains, acacia trees, and ahead the dark, folded ridges of the Hajar Mountains, formed of ancient ocean crust pushed up onto the land. Hatta sits in a valley among them, about 130 km from Dubai, on the border with Oman.\n\nAt Hatta Dam, built in the 1990s and later turned into a hydroelectric reservoir, the water is a deep turquoise between brown rock walls. You take a kayak (single or double) and paddle for about an hour along the shore and into the narrow arms of the lake – the water is calm and the route is easy. Then climb the steps to the viewpoint above the dam for the view across the reservoir to the mountains.\n\nLunch is at a café in Hatta with a view of the mountains (at your own cost). In the afternoon visit Hatta Heritage Village, a restored mountain settlement of mud-brick and stone houses roofed with palm fronds, built around Hatta Fort and two round watchtowers dating from the 1890s. Inside the houses, small exhibits show farming with the falaj irrigation channels, weaving, weapons and daily life in the mountains. If there is time, stop at the honey bee garden to taste local sidr and samar honey, or at the Wadi Hub for a short zipline. You are back in Dubai by about 17:00.\n\nSCHEDULE (approximate)\n08:00 – Hotel pick-up.\n08:45 – Red dunes photo stop.\n09:45 – Arrival in Hatta.\n10:00 – Kayak on Hatta Dam (about 1 hour) and viewpoint.\n12:00 – Lunch (at your own cost).\n13:15 – Hatta Heritage Village and fort.\n14:30 – Honey bee garden or Wadi Hub (optional).\n15:30 – Drive back to Dubai.\n17:00 – Return to your hotel.\n\nGOOD TO KNOW\n• Hatta is part of Dubai; no border crossing is needed.\n• Kayaking can close in strong wind or extreme heat; we offer a pedal boat or a longer viewpoint walk instead.\n• Mountain bike trails and hiking can be added.\n\nINCLUDED: private vehicle with English-speaking driver-guide, kayak rental and life jackets, Hatta Heritage Village visit, water and snacks, hotel pick-up.\nNOT INCLUDED: lunch, zipline and other activities at the Wadi Hub, tips.\n\nOvernight: none.\nMeals: none.",
+    "stops": [
+     { "name": "Hatta Dam", "duration": "About 1 hour 45 minutes", "description": "Kayaking on the turquoise reservoir and the viewpoint above the dam.", "image": "Hatta Dam Kayaking.jpg" },
+     { "name": "Hatta Heritage Village", "duration": "About 1 hour 15 minutes", "description": "A restored mountain village, fort and watchtowers.", "image": "Hatta Heritage Village.jpg" }
+    ]
+   }
+  ],
+  "faq": [
+   { "question": "How does booking on request work?", "answer": "You choose your date and the number of travellers and send the request. Nothing is charged. We confirm availability and the final price by email within 24 hours, and you pay online only once your tour is confirmed." },
+   { "question": "Do I need a passport for Hatta?", "answer": "No border crossing is needed, as Hatta belongs to Dubai. Carry ID anyway, as you would anywhere in the UAE." },
+   { "question": "Is kayaking difficult?", "answer": "No. The reservoir is calm and the route is short. Single and double kayaks are available, and life jackets are provided. Children over six can paddle with an adult." },
+   { "question": "What if kayaking is closed?", "answer": "In strong wind or extreme heat kayaking can close. We replace it with a pedal boat, a longer walk to the viewpoints, or a visit to the Wadi Hub." },
+   { "question": "Is lunch included?", "answer": "No. Your driver suggests cafés and restaurants in Hatta with mountain views, from simple local places to resort restaurants." },
+   { "question": "What should I wear?", "answer": "Sports clothes, shoes that can get wet, a hat and sunscreen, and a change of clothes. Clothing covering shoulders and knees in the heritage village." },
+   { "question": "Is it cooler in Hatta?", "answer": "A few degrees cooler than Dubai, especially in the morning and evening. Summer days are still hot, so we start early." },
+   { "question": "Can we hike or bike?", "answer": "Yes. Hatta has marked hiking trails and mountain bike trails with bike rental. Tell us and we will plan the day around them." },
+   { "question": "Is it suitable for children?", "answer": "Yes, especially from six years old. Kayaking, the dam and the heritage village are popular with families. Child seats on request." },
+   { "question": "Can we stay overnight?", "answer": "Yes. Hatta has mountain lodges, a dome park and caravan sites. We can turn the trip into two days on request." },
+   { "question": "Can we see the dunes too?", "answer": "Yes. The tour stops at the red dunes on the way. A 4x4 dune drive can be added on the way back at extra cost." },
+   { "question": "When is the best time to go?", "answer": "October to April. In summer the morning is the best time for kayaking; we leave earlier." },
+   { "question": "What is the cancellation policy?", "answer": "You can cancel free of charge up to 24 hours before the tour. Until your request is confirmed, nothing is charged at all." }
+  ]
+ }
+}
