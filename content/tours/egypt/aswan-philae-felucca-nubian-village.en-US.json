@@ -1,0 +1,62 @@
+{
+ "key": "egypt-aswan-philae-felucca-nubian-village",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {"city": "Aswan", "state": "Aswan", "country": "Egypt", "countryCode": "EG", "timeZone": "Africa/Cairo", "streetAddress": "Your hotel or Nile cruise boat in Aswan", "geoCoordinates": {"lat": 24.0889, "log": 32.8998}},
+ "slug": "/en-US/egypt/aswan/tours/aswan-day-tour-philae-temple-felucca-sail-and-nubian-village",
+ "tour": {
+  "name": "Aswan Day Tour: Philae Temple, Felucca Sail & Nubian Village",
+  "subtitle": "A private day in Egypt's most beautiful river town with an Egyptologist: the island temple of Isis at Philae, the High Dam and the Unfinished Obelisk, a felucca sail between granite islands, and lunch and tea in a colourful Nubian village on the West Bank.",
+  "seoTitle": "Aswan Private Day Tour: Philae, Felucca & Nubian Village | TRAVSUS",
+  "metaDescription": "Private Aswan day tour: Philae Temple by boat, the High Dam, the Unfinished Obelisk, a felucca sail around Elephantine and a Nubian village with lunch. Egyptologist guide and tickets.",
+  "tags": ["Aswan day tour", "Philae Temple", "Felucca sail Aswan", "Nubian village", "Aswan High Dam", "Unfinished Obelisk"],
+  "highlights": [
+   "Boat ride to the island Temple of Isis at Philae",
+   "Trajan's Kiosk and the story of how Philae was moved stone by stone",
+   "The Aswan High Dam and the view over Lake Nasser",
+   "The Unfinished Obelisk in the ancient granite quarries",
+   "Felucca sail around Elephantine and Kitchener's Islands",
+   "Lunch and tea in a colourful Nubian village",
+   "Egyptologist guide, tickets, boats and lunch included"
+  ],
+  "duration": 1,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "Aswan, at the southern edge of ancient Egypt, is where the Nile is at its most beautiful: black granite boulders and green islands in a wide blue river, golden dunes on the West Bank and white-sailed feluccas everywhere. This private day shows you its temples, its modern engineering and its living Nubian culture.\n\nYou begin with a short motorboat ride to Agilkia Island and the Temple of Isis, built mainly under the Ptolemies and Romans. When the High Dam threatened to drown it forever, UNESCO and Egypt cut it into some 40,000 blocks in the 1970s and rebuilt it on higher ground. Your Egyptologist explains the cult of Isis, which lasted here longer than anywhere else in Egypt, and shows you Trajan's Kiosk on the water's edge. You then visit the High Dam, which created Lake Nasser, and the Unfinished Obelisk, a giant needle of granite abandoned in the quarry when it cracked.\n\nAfter the sites comes the river. A felucca, the traditional Nile sailing boat, carries you between the islands past Elephantine and the botanical garden on Kitchener's Island to the West Bank. There you are welcomed into a Nubian village, with its brightly painted houses, for a home-style lunch and tea, before returning to your hotel late in the afternoon.\n\nAT A GLANCE\n• Duration: about 8 hours\n• Start and end: your hotel or Nile cruise boat in Aswan\n• Type: private tour with car, driver, licensed Egyptologist guide, motorboat and felucca\n• Booking: on request – we confirm availability and the final price by email within 24 hours, and you pay only then\n• Level: easy; getting in and out of boats needs a steady step\n\nWHAT YOU SEE\n• The Temple of Isis at Philae and Trajan's Kiosk.\n• The Aswan High Dam and Lake Nasser.\n• The Unfinished Obelisk.\n• Elephantine Island, Kitchener's Island and the Aga Khan Mausoleum from the felucca.\n• A Nubian village on the West Bank.\n\nWHY THIS WORKS\nThe temples are visited in the cooler morning, and the felucca sails in the afternoon breeze, when the light on the granite and dunes is at its warmest.\n\nWHO IT SUITS\nNile cruise passengers starting or ending in Aswan, first-time visitors, families and anyone who wants to slow down.\n\nWHO MAY PREFER ANOTHER TOUR\nFor the great rock temples of Ramesses II, see our Abu Simbel day trip, which can be combined with this tour on consecutive days.\n\nPRACTICAL INFORMATION\nWear comfortable shoes, a hat and sunscreen. Bring small notes for tips and for buying spices or crafts in the village. Swimming in the Nile is not part of the tour.",
+  "inclusions": {"standard": {
+   "private": ["Pick-up and drop-off at your Aswan hotel or Nile cruise boat", "Private air-conditioned vehicle", "Licensed Egyptologist guide", "Entrance tickets to Philae Temple, the High Dam and the Unfinished Obelisk", "Motorboat to and from Philae", "Private felucca sail", "Lunch and tea in a Nubian village", "Bottled water"],
+   "shared": ["Hotel pick-up and drop-off", "Air-conditioned vehicle", "Egyptologist guide", "Entrance tickets", "Boats", "Lunch"]
+  }},
+  "pricingTiers": [
+   {"transportType": "Sedan / SUV", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png", "minSeats": 1, "maxSeats": 4, "pricing": {"currency": "EUR", "totalPrice": 210, "pricePerDay": 210}},
+   {"transportType": "Minivan", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png", "minSeats": 5, "maxSeats": 8, "pricing": {"currency": "EUR", "totalPrice": 380, "pricePerDay": 380}},
+   {"transportType": "Mini Bus", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png", "minSeats": 9, "maxSeats": 19, "pricing": {"currency": "EUR", "totalPrice": 760, "pricePerDay": 760}}
+  ],
+  "images": ["Temple of Isis in Philae.jpg", "Nile River, Feluccas, Aswan, Egypt.jpg", "The Temple of Isis from Philae, First pylon, Lake Nasser, Egypt.jpg", "Nubian Village at Aswan - panoramio.jpg", "Nile River, Felucca boats, Aswan, Egypt.jpg"],
+  "days": [
+   {
+    "name": "Philae, the High Dam, a felucca and a Nubian village",
+    "description": "What to expect: a private day in Aswan with an Egyptologist, from the island temple of Isis to a felucca sail and lunch in a Nubian village.\n\nYour guide and driver collect you at about 8:00 from your hotel or cruise boat and drive south to the old Aswan Dam, built by the British between 1898 and 1902. At the Shellal landing you board a small motorboat for the ten-minute crossing to Agilkia Island and the Temple of Isis at Philae. Most of what you see was built between about 280 BC and the Roman period, and the worship of Isis continued here until the 6th century AD, long after the rest of Egypt had become Christian; the last known hieroglyphic inscription in the world, dated 394 AD, is carved on one of its gates. Your guide explains the myth of Isis and Osiris on the walls of the birth house and the inner sanctuary and shows you Trajan's Kiosk, the elegant pavilion on the water. You also hear how the whole temple, flooded for months each year after the first dam was built, was dismantled into tens of thousands of blocks and rebuilt on this higher island between 1972 and 1980.\n\nNext you drive across the High Dam, completed in 1970. It is almost four kilometres long, created Lake Nasser, one of the largest artificial lakes in the world, and ended the Nile's annual flood. From the top you look south over the lake and north over the river. On the way back to town you stop at the Unfinished Obelisk in the ancient granite quarries: about 42 metres long, it would have been the largest obelisk ever raised if it had not cracked while being carved, and it shows exactly how the ancient masons worked.\n\nIn the early afternoon you board a felucca and sail with the breeze between the granite boulders, past Elephantine Island, where Aswan began, and Kitchener's Island with its botanical garden, below the Aga Khan Mausoleum on the West Bank hill. You land at a Nubian village, where families have painted their domed houses in bright blues and yellows. You are welcomed for a home-style lunch and tea, and can visit a house, try henna or buy spices and crafts. A motorboat brings you back to the East Bank, and you are at your hotel or boat at about 16:30.\n\nSCHEDULE (approximate times)\n08:00 – Pick-up from your hotel or cruise boat.\n08:30 – Motorboat to Philae and the Temple of Isis (about 1 hour 30 minutes).\n10:30 – The High Dam (about 30 minutes).\n11:15 – The Unfinished Obelisk (about 45 minutes).\n12:30 – Felucca sail around Elephantine and Kitchener's Islands (about 1 hour).\n13:30 – Nubian village: lunch, tea and a walk (about 2 hours).\n16:30 – Return to your hotel or boat.\n\nGOOD TO KNOW\n• Felucca timing depends on the wind; on calm days the boat may be towed for a stretch.\n• Optional extras: the Nubian Museum, a visit to the Botanical Garden on Kitchener's Island, or the Philae sound and light show in the evening.\n• Shops in the village are optional and there is no obligation to buy.\n\nINCLUDED: private vehicle and driver, licensed Egyptologist guide, tickets to Philae, the High Dam and the Unfinished Obelisk, motorboat to Philae, private felucca, lunch and tea in a Nubian village, bottled water, pick-up and drop-off.\nNOT INCLUDED: extra drinks, henna and souvenirs, tips.\n\nOvernight: none.\nMeals: lunch.",
+    "stops": [
+     {"name": "Philae Temple", "duration": "About 1 hour 30 minutes", "description": "A boat ride to the island Temple of Isis, rescued from the Nile and rebuilt on Agilkia Island, with Trajan's Kiosk.", "image": "Temple of Isis in Philae.jpg"},
+     {"name": "High Dam and Unfinished Obelisk", "duration": "About 1 hour 15 minutes", "description": "The dam that created Lake Nasser and the giant cracked obelisk lying in the ancient granite quarry."},
+     {"name": "Felucca sail and Nubian village", "duration": "About 3 hours", "description": "Sailing between Elephantine and Kitchener's Islands, then lunch and tea in a painted Nubian village on the West Bank.", "image": "Nile River, Feluccas, Aswan, Egypt.jpg"}
+    ]
+   }
+  ],
+  "faq": [
+   {"question": "How does booking on request work?", "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability and the final price by email within 24 hours, and you pay online only when the tour is confirmed."},
+   {"question": "Why was Philae Temple moved?", "answer": "After the first Aswan Dam, the island flooded for much of each year, and the High Dam would have drowned it for ever. Between 1972 and 1980 it was cut into blocks and rebuilt on Agilkia Island, higher up."},
+   {"question": "Is the felucca private?", "answer": "Yes. The felucca is for your group only, with a local captain. Sailing time depends on the wind."},
+   {"question": "What is a Nubian village like?", "answer": "The Nubians are the people of the Nile south of Aswan, with their own languages, music and architecture. The villages on the West Bank have domed houses painted in bright colours, and families welcome visitors for meals and tea."},
+   {"question": "Is lunch included?", "answer": "Yes, a home-style Nubian lunch with bread, vegetables, rice and chicken or fish. Vegetarian options are always available."},
+   {"question": "Is it suitable for children?", "answer": "Yes. Children love the boats and the village. Life jackets are available on the boats."},
+   {"question": "Is it suitable for people with limited mobility?", "answer": "The temples are mostly flat, but getting in and out of boats requires a steady step. Tell us in advance and the crew will help."},
+   {"question": "Can you collect us from a Nile cruise boat?", "answer": "Yes. We collect you from your boat in Aswan and bring you back in time for sailing or dinner."},
+   {"question": "Can we add Abu Simbel?", "answer": "Yes. Abu Simbel is a separate day trip of about 3 hours each way. Many guests do Abu Simbel early one day and this tour the next."},
+   {"question": "Can we add the Philae sound and light show?", "answer": "Yes. The show takes place in the evening at the temple in several languages. Tell us and we will arrange it."},
+   {"question": "What should I wear?", "answer": "Light clothes, comfortable shoes, a hat and sunscreen. Modest clothing is appreciated in the village."},
+   {"question": "What is the best time of year?", "answer": "October to April. Aswan is one of the hottest places in Egypt in summer; we then start earlier and keep the walking short."},
+   {"question": "What is the cancellation policy?", "answer": "You can cancel free of charge up to 24 hours before the tour. Until your request is confirmed, nothing is charged at all."}
+  ]
+ }
+}
