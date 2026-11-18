@@ -24,7 +24,7 @@ export default function ContactForm({ email }: { email: string }) {
 	const formRef = useRef<HTMLFormElement>(null)
 	const codeRef = useRef<HTMLInputElement>(null)
 
-	async function send(form: HTMLFormElement, withCode: boolean) {
+	async function send(form: HTMLFormElement, withCode: boolean, resend = false) {
 		setStatus('sending')
 		// Don't send a message we could never answer: the address is checked first
 		if (!withCode && !(await emailField.current?.validate())) {
@@ -36,6 +36,8 @@ export default function ContactForm({ email }: { email: string }) {
 			data.delete('code')
 			data.delete('codeToken')
 		}
+		// A new code for the same message: the team already has its unverified copy
+		if (resend) data.set('resend', '1')
 		const result: any = await sendEmail(data).catch(() => ({ success: false, error: 'SEND_FAILED' }))
 		if (result.success) {
 			setReplyTo(String(data.get('email') ?? '').trim())
@@ -134,7 +136,7 @@ export default function ContactForm({ email }: { email: string }) {
 					<input type="hidden" name="codeToken" value={codeStep.token} />
 					<p className="mt-3 text-sm text-neutral-600 dark:text-neutral-300">
 						{tEmail('code_help')}{' '}
-						<button type="button" disabled={sending} onClick={() => formRef.current && send(formRef.current, false)} className="font-semibold underline underline-offset-2">
+						<button type="button" disabled={sending} onClick={() => formRef.current && send(formRef.current, false, true)} className="font-semibold underline underline-offset-2">
 							{tEmail('code_resend')}
 						</button>
 						{' · '}

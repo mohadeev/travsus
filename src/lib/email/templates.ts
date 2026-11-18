@@ -319,19 +319,22 @@ export const TEMPLATES = {
 		sample: { ...SAMPLE_BOOKING, deposit: { paid: 20, balance: 657.6, dueAt: '2026-11-12T06:00:00.000Z' }, reason: 'Your card was declined.', payUrl: `${SITE}/en-US/bookings` },
 	}),
 
-	'contact-team': template<{ name: string; email: string; message: string }>({
+	'contact-team': template<{ name: string; email: string; message: string; unverified?: boolean }>({
 		name: 'Contact form message',
 		category: 'Team',
 		to: 'Team',
 		from: FROM.form,
-		when: 'To the TRAVSUS inbox when someone sends the contact form. Reply goes straight to them.',
+		when: 'To the TRAVSUS inbox when someone sends the contact form: first as UNVERIFIED as soon as they press Send, then again once they confirm their email with the code. Reply goes straight to them.',
 		connected: true,
-		subject: (d) => `Contact form: ${d.name.replace(/[\r\n]+/g, ' ')}`,
+		subject: (d) => `${d.unverified ? '[Unverified email] ' : ''}Contact form: ${d.name.replace(/[\r\n]+/g, ' ')}`,
 		preheader: (d) => d.message.slice(0, 120),
 		body: (d) => [
-			eyebrow('Contact form'),
+			eyebrow(d.unverified ? 'Contact form · email not verified yet' : 'Contact form · email verified'),
 			title(d.name),
 			text(link(d.email, `mailto:${d.email}`)),
+			d.unverified
+				? small('They pressed Send but haven’t confirmed this address with the code yet: it may be mistyped. If they confirm it, you’ll get this message again marked as verified.')
+				: raw(''),
 			raw(`<div style="margin:16px 0;padding:20px;background:#f5f5f5;border-radius:20px;font:400 15px/1.6 -apple-system,Segoe UI,Helvetica,Arial,sans-serif;color:#262626;white-space:pre-line">${esc(d.message)}</div>`),
 			small('Reply to this email to answer them directly.'),
 		],
