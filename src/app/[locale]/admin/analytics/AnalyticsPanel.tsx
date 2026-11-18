@@ -285,10 +285,21 @@ export default function AnalyticsPanel() {
 					{/* Sign-ups */}
 					<Card title="New accounts" icon={<UserPlus className="h-4 w-4" />} className="mt-4">
 						<Table
-							head={['Email', 'Created', 'Country', 'Came from', 'Visits before', 'First page']}
-							rows={data.signups.map((s: any) => [s.email, time(s.createdAt), s.country ? `${flag(s.country)} ${countryName(s.country)}` : '—', s.source ?? '—', s.visitsBefore || '—', s.landing ? stripLocale(s.landing) : '—'])}
+							head={['Email', 'Created', 'Country', 'Came from', 'Visits', 'First page', '']}
+							rows={data.signups.map((s: any) => [
+								s.email,
+								time(s.createdAt),
+								s.country ? `${flag(s.country)} ${countryName(s.country)}` : '—',
+								s.source ?? '—',
+								s.visits ? `${s.visits}${s.visitsBefore ? ` (${s.visitsBefore} before sign-up)` : ''}` : '—',
+								s.landing ? stripLocale(s.landing) : '—',
+								s.visitId ? <ArrowRight key="go" className="h-4 w-4 text-neutral-400" /> : '',
+							])}
+							onRowClick={(i) => data.signups[i]?.visitId && setVisitId(data.signups[i].visitId)}
+							rowClickable={(i) => !!data.signups[i]?.visitId}
 							empty="No new accounts in this period."
 						/>
+						<p className="mt-3 text-xs text-neutral-500">Click an account to see all of their visits, first to last.</p>
 						<p className="mt-3 text-xs text-neutral-500">Country and source are known only when the person accepted measurement cookies.</p>
 					</Card>
 
@@ -358,7 +369,19 @@ function Bars({ rows, empty = 'No data yet.' }: { rows: { name: string; label?: 
 	)
 }
 
-function Table({ head, rows, empty = 'No data yet.' }: { head: string[]; rows: ReactNode[][]; empty?: string }) {
+function Table({
+	head,
+	rows,
+	empty = 'No data yet.',
+	onRowClick,
+	rowClickable,
+}: {
+	head: string[]
+	rows: ReactNode[][]
+	empty?: string
+	onRowClick?: (index: number) => void
+	rowClickable?: (index: number) => boolean
+}) {
 	if (!rows.length) return <p className="text-sm text-neutral-500">{empty}</p>
 	return (
 		<div className="overflow-x-auto">
@@ -373,15 +396,22 @@ function Table({ head, rows, empty = 'No data yet.' }: { head: string[]; rows: R
 					</tr>
 				</thead>
 				<tbody className="divide-y divide-neutral-100 dark:divide-neutral-800">
-					{rows.map((row, i) => (
-						<tr key={i}>
+					{rows.map((row, i) => {
+						const clickable = !!onRowClick && (rowClickable ? rowClickable(i) : true)
+						return (
+						<tr
+							key={i}
+							onClick={clickable ? () => onRowClick!(i) : undefined}
+							className={clickable ? 'cursor-pointer transition hover:bg-neutral-50 dark:hover:bg-neutral-900' : undefined}
+						>
 							{row.map((cell, j) => (
 								<td key={j} className="py-2.5 pr-4 tabular-nums">
 									{cell}
 								</td>
 							))}
 						</tr>
-					))}
+						)
+					})}
 				</tbody>
 			</table>
 		</div>

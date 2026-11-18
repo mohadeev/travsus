@@ -128,17 +128,37 @@ export async function report(days: number) {
 	const reached = (test: (p: string) => boolean) => Array.from(pathsBySession.values()).filter((ps) => ps.some(test)).length
 
 	// New accounts and the visit that brought them (when linked with consent)
+	// A person's visits: signed in (user_id) plus, with consent, the same browser before sign-up (visitor_id)
 	const sessionsByUser = new Map<string, any[]>()
-	for (const s of sessions) if (s.user_id) sessionsByUser.set(s.user_id, [...(sessionsByUser.get(s.user_id) ?? []), s])
+	const visitorOfUser = new Map<string, Set<string>>()
+	for (const s of sessions) {
+		if (!s.user_id) continue
+		sessionsByUser.set(s.user_id, [...(sessionsByUser.get(s.user_id) ?? []), s])
+		if (s.visitor_id) visitorOfUser.set(s.user_id, (visitorOfUser.get(s.user_id) ?? new Set()).add(s.visitor_id))
+	}
+	for (const [userId, visitors] of Array.from(visitorOfUser.entries())) {
+		const known = new Set((sessionsByUser.get(userId) ?? []).map((s) => s.id))
+		const extra = sessions.filter((s) => !s.user_id && s.visitor_id && visitors.has(s.visitor_id) && !known.has(s.id))
+		sessionsByUser.set(userId, [...(sessionsByUser.get(userId) ?? []), ...extra])
+	}
+	// Accounts with no visit in this period: find their latest visit ever, so the row can still be opened
+	const missing = newUsers.filter((u) => !sessionsByUser.has(u.id)).map((u) => u.id)
+	if (missing.length) {
+		const older = ((await db.from(T.analyticsSessions).select('id, user_id, started_at').in('user_id', missing).order('started_at', { ascending: false }).limit(500)).data ?? []) as any[]
+		for (const s of older) if (!sessionsByUser.has(s.user_id)) sessionsByUser.set(s.user_id, [s])
+	}
 	const signups = newUsers
 		.map((u) => {
 			const visits = (sessionsByUser.get(u.id) ?? []).sort((a, b) => a.started_at.localeCompare(b.started_at))
 			const first = visits[0]
 			return {
+				userId: u.id,
+				visitId: visits.length ? visits[visits.length - 1].id : null,
+				visits: visits.length,
 				email: u.email,
 				createdAt: u.createdAt,
 				country: first?.country ?? null,
-				source: first ? `${first.source} / ${first.medium}` : null,
+				source: first?.source ? `${first.source} / ${first.medium ?? ''}` : null,
 				visitsBefore: visits.filter((v) => v.started_at <= u.createdAt).length,
 				landing: first?.landing_path ?? null,
 			}
