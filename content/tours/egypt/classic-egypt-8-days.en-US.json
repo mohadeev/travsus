@@ -1,0 +1,115 @@
+{
+ "key": "egypt-classic-egypt-8-days",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {"city": "Cairo", "state": "Cairo", "country": "Egypt", "countryCode": "EG", "timeZone": "Africa/Cairo", "streetAddress": "Cairo International Airport", "geoCoordinates": {"lat": 30.0444, "log": 31.2357}},
+ "slug": "/en-US/egypt/cairo/tours/classic-egypt-8-days-cairo-nile-cruise-and-abu-simbel",
+ "tour": {
+  "name": "Classic Egypt in 8 Days: Cairo, Nile Cruise & Abu Simbel",
+  "subtitle": "The essential first trip to Egypt in eight private days: the pyramids of Giza and Saqqara, Tutankhamun's treasures at the Grand Egyptian Museum, a three-night five-star Nile cruise from Luxor to Aswan, the temples of Abu Simbel and Philae – with private Egyptologist guides throughout and domestic flights included.",
+  "seoTitle": "Classic Egypt 8-Day Private Tour with Nile Cruise | TRAVSUS",
+  "metaDescription": "8-day private Egypt tour: Giza pyramids, Saqqara, the Grand Egyptian Museum, a 3-night Nile cruise from Luxor to Aswan, Abu Simbel and Philae. Private Egyptologists and domestic flights included.",
+  "tags": ["Egypt 8 day tour", "Egypt with Nile cruise", "Pyramids and Nile", "Abu Simbel", "Grand Egyptian Museum", "Egypt private tour"],
+  "highlights": [
+   "The pyramids of Giza, the Sphinx and the Step Pyramid of Saqqara",
+   "Tutankhamun's complete treasure at the Grand Egyptian Museum",
+   "Islamic Cairo: the Citadel and Khan el-Khalili",
+   "Three nights on a five-star Nile cruise with full board",
+   "Karnak, the Valley of the Kings, Edfu and Kom Ombo",
+   "The rock temples of Abu Simbel and the island temple of Philae",
+   "Private Egyptologist guides, transfers and domestic flights included"
+  ],
+  "duration": 8,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "This is the trip most people imagine when they think of Egypt, planned so that you see the very best without rushing. Three nights in Cairo cover the pyramids of Giza, the older Step Pyramid at Saqqara, the vast new Grand Egyptian Museum with the whole treasure of Tutankhamun, and the medieval Citadel and bazaars of Islamic Cairo. A short flight then takes you to Luxor, where you board a five-star cruise ship for three nights on the Nile, visiting Karnak, Luxor Temple, the Valley of the Kings and Hatshepsut's temple, then sailing past village life to the temples of Edfu and Kom Ombo. The trip ends in Aswan with the great rock temples of Ramesses II at Abu Simbel, the island temple of Isis at Philae and a felucca sail, before you fly back to Cairo.\n\nEvery visit is with a private licensed Egyptologist and a private car, never a big bus group. Hotels and the cruise ship are carefully chosen five-star properties, and domestic flights and all transfers are arranged for you.\n\nAT A GLANCE\n• Duration: 8 days, 7 nights\n• Start and end: Cairo International Airport\n• Type: private tour with Egyptologist guides, private transfers, 3 nights in Cairo, 3 nights on a Nile cruise and 1 night in Aswan\n• Booking: on request – we confirm hotels, ship, flights and the final price by email within 24 hours, and you pay only then\n• Level: easy to moderate; several early starts\n\nWHAT YOU SEE\n• Cairo: Giza, Saqqara, Memphis, the Grand Egyptian Museum, the Citadel and Khan el-Khalili.\n• Luxor: Karnak, Luxor Temple, the Valley of the Kings, Hatshepsut's temple and the Colossi of Memnon.\n• On the Nile: the Esna lock, Edfu and Kom Ombo.\n• Aswan: Abu Simbel, Philae, the High Dam and a felucca sail.\n\nWHY THIS WORKS\nThe route follows the river south, so you never backtrack, and the cruise lets you unpack once while seeing four cities. Flights replace long drives where it matters.\n\nWHO IT SUITS\nFirst-time visitors to Egypt, couples, families and anyone who wants a complete, comfortable introduction.\n\nWHO MAY PREFER ANOTHER TOUR\nWith less time, combine our Cairo day tours with the 4-day Nile cruise. With more time, ask us to add the Red Sea, Alexandria or the White Desert.\n\nPRACTICAL INFORMATION\nMost nationalities need a visa, available online or on arrival for many passports. Bring modest clothes for mosques and temples, comfortable shoes, a hat and sunscreen. The order of days may change to match cruise departure days.",
+  "inclusions": {"standard": {
+   "private": ["3 nights in a five-star hotel in Cairo or Giza with breakfast", "3 nights on a five-star Nile cruise ship with full board", "1 night in a five-star hotel in Aswan with breakfast", "Domestic flights Cairo–Luxor and Aswan–Cairo", "Private licensed Egyptologist guides for all visits", "Private air-conditioned vehicles for all transfers and visits", "Entrance tickets to all sites in the itinerary", "Lunches on Cairo touring days", "Felucca sail in Aswan", "Bottled water during visits"],
+   "shared": ["7 nights' accommodation", "Domestic flights", "Egyptologist guides", "Transfers", "Entrance tickets"]
+  }},
+  "pricingTiers": [
+   {"transportType": "Sedan / SUV", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png", "minSeats": 1, "maxSeats": 4, "pricing": {"currency": "EUR", "totalPrice": 3760, "pricePerDay": 470}},
+   {"transportType": "Minivan", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png", "minSeats": 5, "maxSeats": 8, "pricing": {"currency": "EUR", "totalPrice": 6960, "pricePerDay": 870}},
+   {"transportType": "Mini Bus", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png", "minSeats": 9, "maxSeats": 19, "pricing": {"currency": "EUR", "totalPrice": 14800, "pricePerDay": 1850}}
+  ],
+  "images": ["All Gizah Pyramids.jpg", "Grand Egyptian Museum Grand Hall.jpg", "Luxor, Egypt, Karnak.jpg", "Templo de Ramsés II, Abu Simbel, Egipto, 2022-04-02, DD 03.jpg", "Nile River, Feluccas, Aswan, Egypt.jpg"],
+  "days": [
+   {
+    "name": "Arrival in Cairo",
+    "description": "What to expect: a warm welcome at the airport and a relaxed first evening.\n\nOur representative meets you at Cairo International Airport, helps with the visa and formalities if needed, and your private driver takes you to your hotel in Cairo or Giza. Depending on your arrival time, you can rest by the pool or, if you have energy, ask for an evening stroll through Khan el-Khalili or dinner overlooking the Nile. Your guide calls in the evening to go through the plan for the coming days.\n\nOvernight: five-star hotel in Cairo or Giza.\nMeals: none.",
+    "stops": [
+     {"name": "Cairo International Airport", "duration": "About 1 hour", "description": "Meet and assist on arrival and private transfer to your hotel."}
+    ]
+   },
+   {
+    "name": "Giza, Saqqara and Memphis",
+    "description": "What to expect: 1,500 years of pyramid building in one day, with your Egyptologist, tickets and lunch.\n\nYou start at Saqqara with the Step Pyramid of Djoser, built by Imhotep around 2670 BC as the first great stone building, and visit painted tombs of Old Kingdom nobles. At Memphis, the first capital of united Egypt, you see the colossal statue of Ramesses II. After lunch you reach the Giza plateau in the softer afternoon light: the Great Pyramid of Khufu, originally about 146 metres high and the only surviving Wonder of the Ancient World, the pyramids of Khafre and Menkaure, the Great Sphinx and the Valley Temple, and finally the panoramic viewpoint over all three pyramids.\n\nOvernight: five-star hotel in Cairo or Giza.\nMeals: breakfast and lunch.",
+    "stops": [
+     {"name": "Saqqara and Memphis", "duration": "About 3 hours", "description": "The Step Pyramid of Djoser, Old Kingdom tombs and the colossus of Ramesses II.", "image": "Saqqara, Pyramid of Djoser, Ancient Egypt.jpg"},
+     {"name": "Giza pyramids and the Sphinx", "duration": "About 2 hours 45 minutes", "description": "The Great Pyramid, the pyramids of Khafre and Menkaure, the Sphinx and the panoramic viewpoint.", "image": "Great Sphinx of Giza (1).jpg"}
+    ]
+   },
+   {
+    "name": "Grand Egyptian Museum and Islamic Cairo",
+    "description": "What to expect: Tutankhamun's treasures in the morning and medieval Cairo in the afternoon.\n\nAt the Grand Egyptian Museum, opened fully in 2025 beside the pyramids, the colossus of Ramesses II greets you in the Grand Hall and the Grand Staircase climbs past statues of kings and gods. Your guide takes you through the Tutankhamun galleries, where the young king's entire burial treasure of more than 5,000 objects is shown together for the first time, from the gold mask to his chariots. After lunch you visit Saladin's Citadel and the alabaster Muhammad Ali Mosque, with its view over the city, and end with a walk through Khan el-Khalili and al-Muizz Street and mint tea in a historic café.\n\nOvernight: five-star hotel in Cairo or Giza.\nMeals: breakfast and lunch.",
+    "stops": [
+     {"name": "Grand Egyptian Museum", "duration": "About 3 hours", "description": "The Grand Hall, the Grand Staircase and the complete Tutankhamun collection.", "image": "Grand Egyptian Museum Grand Hall.jpg"},
+     {"name": "Citadel and Khan el-Khalili", "duration": "About 3 hours", "description": "The Muhammad Ali Mosque, the bazaar and the medieval monuments of al-Muizz Street.", "image": "Khan el-Khalili 2019.jpg"}
+    ]
+   },
+   {
+    "name": "Fly to Luxor, board the cruise, Karnak and Luxor Temple",
+    "description": "What to expect: a morning flight south and the great temples of the East Bank.\n\nAfter breakfast you are driven to the airport for the one-hour flight to Luxor, where your driver takes you to your five-star cruise ship. After lunch on board, your Luxor Egyptologist leads you through Karnak, the largest temple complex ever built, with the 134 columns of the Great Hypostyle Hall and Hatshepsut's obelisk. In the late afternoon you visit Luxor Temple as the sun sets and the floodlights come on, then return to the ship for dinner.\n\nOvernight: Nile cruise ship in Luxor.\nMeals: breakfast, lunch and dinner.",
+    "stops": [
+     {"name": "Karnak Temple", "duration": "About 2 hours 15 minutes", "description": "The Great Hypostyle Hall, the obelisks and the sacred lake.", "image": "Luxor, Egypt, Karnak.jpg"},
+     {"name": "Luxor Temple", "duration": "About 1 hour 15 minutes", "description": "The temple of Amenhotep III and Ramesses II at sunset.", "image": "Luxor Temple at night, Luxor, Egypt.jpg"}
+    ]
+   },
+   {
+    "name": "Valley of the Kings and sailing south",
+    "description": "What to expect: royal tombs in the morning and an afternoon on the river.\n\nEarly in the morning you cross to the West Bank and enter three painted tombs in the Valley of the Kings, with the option to add Tutankhamun's or Seti I's. You continue to the terraced temple of Hatshepsut at Deir el-Bahari and stop at the Colossi of Memnon. Back on board for lunch, the ship sets sail south. Spend the afternoon on the sun deck watching fields, palm groves and villages slip by, and pass through the Esna lock in the evening.\n\nOvernight: Nile cruise ship, sailing to Edfu.\nMeals: breakfast, lunch and dinner.",
+    "stops": [
+     {"name": "Valley of the Kings and Hatshepsut", "duration": "About 3 hours 30 minutes", "description": "Three royal tombs, the temple of Hatshepsut and the Colossi of Memnon.", "image": "Temple of Hatshepsut, Deir el-Bahari, Luxor, Egypt.jpg"},
+     {"name": "Sailing and the Esna lock", "duration": "Afternoon", "description": "Cruising south past village life and through the lock at Esna."}
+    ]
+   },
+   {
+    "name": "Edfu and Kom Ombo, arrival in Aswan",
+    "description": "What to expect: two Ptolemaic temples and a sunset on the river.\n\nIn the early morning you visit the Temple of Horus at Edfu, built between 237 and 57 BC and the most complete temple in Egypt. The ship sails on through the day, and in the late afternoon you stop at Kom Ombo, the riverside double temple of the crocodile god Sobek and the falcon god Haroeris, with its small museum of mummified crocodiles. The ship reaches Aswan in the evening.\n\nOvernight: Nile cruise ship in Aswan.\nMeals: breakfast, lunch and dinner.",
+    "stops": [
+     {"name": "Temple of Horus at Edfu", "duration": "About 1 hour 30 minutes", "description": "The best-preserved temple in Egypt.", "image": "Temple of Edfu, Egypt.jpg"},
+     {"name": "Kom Ombo Temple", "duration": "About 1 hour 15 minutes", "description": "The double temple of Sobek and Haroeris above the Nile.", "image": "02010 05843 Double entrance of Kom Ombo Temple.jpg"}
+    ]
+   },
+   {
+    "name": "Abu Simbel and a felucca sail",
+    "description": "What to expect: the great temples of Ramesses II and an easy afternoon on the river.\n\nAfter disembarking very early, you drive with your guide across the desert to Abu Simbel, about three hours away, with a breakfast box in the car. You explore the Great Temple, guarded by four 20-metre colossi of Ramesses II, and the Temple of Hathor built for Queen Nefertari, and hear how both were moved above Lake Nasser in the 1960s. Back in Aswan, you check in to your hotel and in the late afternoon sail by felucca between the granite islands, past Elephantine and Kitchener's Island, as the sun sets over the West Bank dunes.\n\nOvernight: five-star hotel in Aswan.\nMeals: breakfast.",
+    "stops": [
+     {"name": "Abu Simbel", "duration": "About 2 hours 30 minutes", "description": "The Great Temple of Ramesses II and the Temple of Hathor and Nefertari.", "image": "Templo de Ramsés II, Abu Simbel, Egipto, 2022-04-02, DD 03.jpg"},
+     {"name": "Felucca sail", "duration": "About 1 hour", "description": "A sunset sail between the granite islands of Aswan.", "image": "Nile River, Feluccas, Aswan, Egypt.jpg"}
+    ]
+   },
+   {
+    "name": "Philae and the High Dam, fly to Cairo and depart",
+    "description": "What to expect: one last temple and your journey home.\n\nAfter breakfast your guide takes you to the Aswan High Dam and by motorboat to the island Temple of Isis at Philae, rescued from the waters and rebuilt on Agilkia Island. You then transfer to Aswan airport for your flight to Cairo, where you connect with your international flight or, if you are staying longer, are driven to your hotel.\n\nOvernight: none (end of tour).\nMeals: breakfast.",
+    "stops": [
+     {"name": "Philae Temple and the High Dam", "duration": "About 2 hours 30 minutes", "description": "The island Temple of Isis and the dam that created Lake Nasser.", "image": "Temple of Isis in Philae.jpg"}
+    ]
+   }
+  ],
+  "faq": [
+   {"question": "How does booking on request work?", "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm hotels, ship, flights and the final price by email within 24 hours, and you pay online only when the tour is confirmed."},
+   {"question": "Are the guides private?", "answer": "Yes. You have a private licensed Egyptologist in Cairo, another in Luxor and on the cruise, and in Aswan, with private cars throughout. You never join a shared bus group."},
+   {"question": "Are domestic flights included?", "answer": "Yes. The flights from Cairo to Luxor and from Aswan to Cairo are included in economy class, with transfers at both ends."},
+   {"question": "Which hotels and ship do you use?", "answer": "Selected five-star hotels in Cairo and Aswan and a five-star Nile cruise ship. We confirm the exact names with your booking, and upgrades such as pyramid-view rooms or historic hotels are available."},
+   {"question": "What meals are included?", "answer": "Breakfast daily, lunches on Cairo touring days, full board on the cruise, and a breakfast box on the Abu Simbel day. Other meals are free so you can explore restaurants."},
+   {"question": "Do I need a visa?", "answer": "Most nationalities need a visa for Egypt. Many can apply online in advance or get one on arrival. We will tell you what applies to your passport when we confirm."},
+   {"question": "Can the itinerary start on any day?", "answer": "Yes, but Nile cruises sail on fixed days of the week, so we may adjust the order, for example by spending a day less in Cairo at the start and a day more at the end."},
+   {"question": "Can we add the Red Sea or Alexandria?", "answer": "Yes. Popular extensions are 3 or 4 nights on the Red Sea at Hurghada or El Gouna, or a day in Alexandria. Tell us and we will add them."},
+   {"question": "Is it suitable for children?", "answer": "Yes. Families love the pyramids, the cruise and the felucca. We can arrange family rooms and adapt the pace."},
+   {"question": "Is it suitable for people with limited mobility?", "answer": "Partly. Many sites involve uneven ground and steps, and ships have stairs. Tell us in advance and we will choose accessible hotels and adapt the visits."},
+   {"question": "Is Egypt safe for tourists?", "answer": "Millions of visitors travel to Egypt every year. Tourist sites are well protected, and with private drivers and guides you always have local support. We follow official travel advice closely."},
+   {"question": "What is the best time of year?", "answer": "October to April is the most pleasant. In summer it is very hot in Luxor and Aswan, so we start visits early and rest in the middle of the day."},
+   {"question": "What is the cancellation policy?", "answer": "Each part has its own conditions, which we send with your confirmation; the cruise and flights may be non-refundable close to departure. Until your request is confirmed, nothing is charged at all."}
+  ]
+ }
+}
