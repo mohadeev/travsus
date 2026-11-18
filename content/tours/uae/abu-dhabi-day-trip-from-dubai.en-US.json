@@ -1,0 +1,92 @@
+{
+ "key": "uae-abu-dhabi-day-trip-from-dubai",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {
+  "city": "Dubai",
+  "state": "Dubai",
+  "country": "United Arab Emirates",
+  "countryCode": "AE",
+  "timeZone": "Asia/Dubai",
+  "streetAddress": "Your hotel in Dubai",
+  "geoCoordinates": { "lat": 24.4128, "log": 54.4749 }
+ },
+ "slug": "/en-US/united-arab-emirates/dubai/tours/abu-dhabi-private-day-trip-from-dubai-grand-mosque-qasr-al-watan-and-louvre",
+ "tour": {
+  "name": "Abu Dhabi Private Day Trip from Dubai: Grand Mosque, Qasr Al Watan & Louvre",
+  "subtitle": "A private day in the UAE's capital with a local guide: the white marble Sheikh Zayed Grand Mosque, the presidential palace of Qasr Al Watan, the Louvre Abu Dhabi under its dome of light, and the Corniche.",
+  "seoTitle": "Abu Dhabi Day Trip from Dubai: Grand Mosque & Louvre",
+  "metaDescription": "Private Abu Dhabi day trip from Dubai with a local guide: Sheikh Zayed Grand Mosque, Qasr Al Watan presidential palace, Louvre Abu Dhabi and the Corniche. Tickets and hotel pick-up included.",
+  "tags": ["Abu Dhabi day trip", "Sheikh Zayed Grand Mosque", "Louvre Abu Dhabi", "Qasr Al Watan", "Abu Dhabi from Dubai", "UAE private tour"],
+  "highlights": [
+   "Sheikh Zayed Grand Mosque, 82 domes of white marble",
+   "One of the largest hand-knotted carpets in the world",
+   "Qasr Al Watan, the presidential palace",
+   "The Louvre Abu Dhabi and its 'rain of light' dome",
+   "The Abu Dhabi Corniche",
+   "Museum and palace tickets included",
+   "Private car, local guide and pick-up in Dubai"
+  ],
+  "duration": 1,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "Abu Dhabi is the capital of the United Arab Emirates and the quieter, grander neighbour of Dubai, an hour and a half down the coast. It has the country's most famous building, the Sheikh Zayed Grand Mosque, and two of its finest modern ones, the presidential palace and the Louvre Abu Dhabi. This private day trip from your Dubai hotel takes you to all three with a local guide, without the rush of a coach tour.\n\nYou start at the Grand Mosque in the morning light: 82 domes, more than a thousand columns inlaid with semi-precious stones, gold-plated chandeliers and a single hand-knotted carpet covering the main prayer hall. Next is Qasr Al Watan, the working presidential palace opened to visitors in 2019, with its great domed hall and library. After lunch you cross to Saadiyat Island for the Louvre Abu Dhabi, Jean Nouvel's museum under a 180-metre dome that lets the sun fall through in patterns of light, and a collection that tells the story of art across civilisations. The drive back follows the Corniche before returning to Dubai.\n\nAT A GLANCE\n• Duration: about 10 hours\n• Start and finish: your hotel in Dubai\n• Type: private tour with car, driver and English-speaking local guide\n• Booking: on request – we confirm availability and the final price by email within 24 hours, and you pay only then\n• Level: easy, about 4 km of walking\n\nWHAT YOU SEE\n• Sheikh Zayed Grand Mosque.\n• Qasr Al Watan.\n• Louvre Abu Dhabi on Saadiyat Island.\n• The Corniche and the Abu Dhabi skyline.\n\nWHY THIS TOUR WORKS\nShared coach tours spend much of the day collecting passengers and rush the mosque. With a private car you leave when you like, reach the mosque before the crowds, and choose how long to spend in the Louvre.\n\nWHO IT IS FOR\nCulture and architecture lovers, families, couples and anyone staying in Dubai who wants to see the capital in a day.\n\nWHO MAY PREFER ANOTHER TOUR\nFor Dubai itself, take our old and new Dubai city tour. For the desert, take the evening safari.\n\nPRACTICAL INFORMATION\nThe Grand Mosque has a strict dress code: long sleeves and long trousers or skirts for everyone, and a headscarf for women; loose clothing is best. The mosque is closed to visitors on Friday mornings and the Louvre is closed on Mondays; we plan the day around both.",
+  "inclusions": {
+   "standard": {
+    "private": [
+     "Pick-up and drop-off at your hotel in Dubai",
+     "Private air-conditioned vehicle",
+     "English-speaking local guide",
+     "Sheikh Zayed Grand Mosque visit (free entry, booked in advance)",
+     "Qasr Al Watan ticket",
+     "Louvre Abu Dhabi ticket",
+     "Water in the vehicle"
+    ],
+    "shared": [
+     "Hotel pick-up and drop-off in Dubai",
+     "Air-conditioned vehicle",
+     "Local guide",
+     "Grand Mosque visit",
+     "Water"
+    ]
+   }
+  },
+  "pricingTiers": [
+   { "transportType": "SUV (prado)", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png", "minSeats": 1, "maxSeats": 5, "pricing": { "currency": "EUR", "totalPrice": 380, "pricePerDay": 380 } },
+   { "transportType": "Mercedes Vito", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png", "minSeats": 6, "maxSeats": 8, "pricing": { "currency": "EUR", "totalPrice": 520, "pricePerDay": 520 } },
+   { "transportType": "Mini Bus", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png", "minSeats": 9, "maxSeats": 19, "pricing": { "currency": "EUR", "totalPrice": 820, "pricePerDay": 820 } }
+  ],
+  "images": [
+   "Sheikh Zayed Grand Mosque @ Abu Dhabi (15856602738).jpg",
+   "Qasr Al Watan in March 2022 09.jpg",
+   "Louvre abu dhabi, interno, cortile coperto 01.jpg",
+   "Sheikh Zayed Grand Mosque approach 09.jpg",
+   "Abu Dhabi seen from Qasr Al Watan 4.jpg"
+  ],
+  "days": [
+   {
+    "name": "Sheikh Zayed Grand Mosque, Qasr Al Watan, the Louvre and the Corniche",
+    "description": "What to expect: a private day in Abu Dhabi with the Grand Mosque, the presidential palace and the Louvre, returning to Dubai along the coast.\n\nYour guide and driver collect you from your hotel in Dubai at about 8:00. The drive to Abu Dhabi takes about an hour and a half along the coast road, past Jebel Ali port and the open desert between the two cities. Your guide explains how the seven emirates came together in 1971 and how Abu Dhabi, the largest, became the capital.\n\nThe Sheikh Zayed Grand Mosque, completed in 2007, is the largest mosque in the country and the resting place of Sheikh Zayed, the founder of the UAE. Its 82 white domes, four minarets and reflecting pools are built of marble from several countries, and inside, more than a thousand columns are inlaid with mother-of-pearl and semi-precious stones in floral patterns. The main prayer hall has one of the world's largest hand-knotted carpets, about 5,600 square metres, made by some 1,200 weavers in Iran, under chandeliers of gold-plated brass and Swarovski crystal. Allow about an hour and a quarter.\n\nNext, Qasr Al Watan, the presidential palace, where state visits and summits are still held. The Great Hall rises to a dome 37 metres across, and the library and exhibitions explain how the country is governed and its scientific and literary heritage. Lunch is at a café or restaurant in the city (at your own cost).\n\nIn the afternoon cross to Saadiyat Island for the Louvre Abu Dhabi, opened in 2017. Jean Nouvel's dome, 180 metres wide and made of eight layers of steel and aluminium stars, filters the sun into a moving 'rain of light' over the white buildings and the sea. The galleries follow the story of humanity from the first villages to the present, with works lent by French museums alongside the Louvre Abu Dhabi's own collection. After about two hours, drive along the Corniche, with its beaches and skyline, before the return to Dubai.\n\nSCHEDULE (approximate)\n08:00 – Hotel pick-up in Dubai.\n09:30 – Sheikh Zayed Grand Mosque (about 1 hour 15 minutes).\n11:15 – Qasr Al Watan (about 1 hour 15 minutes).\n12:45 – Lunch (at your own cost).\n14:00 – Louvre Abu Dhabi (about 2 hours).\n16:15 – Corniche drive.\n18:00 – Return to your hotel in Dubai.\n\nGOOD TO KNOW\n• Dress code at the mosque: long sleeves, long trousers or skirt, headscarf for women; abayas can be borrowed at the entrance.\n• The mosque is closed to visitors on Friday mornings; the Louvre is closed on Mondays.\n• Qasr Al Watan sometimes closes for official events; we check when we confirm.\n\nINCLUDED: private vehicle and driver, English-speaking local guide, Grand Mosque visit, Qasr Al Watan and Louvre Abu Dhabi tickets, water, hotel pick-up in Dubai.\nNOT INCLUDED: lunch, tips.\n\nOvernight: none.\nMeals: none.",
+    "stops": [
+     { "name": "Sheikh Zayed Grand Mosque", "duration": "About 1 hour 15 minutes", "description": "82 marble domes, inlaid columns and a vast hand-knotted carpet.", "image": "Sheikh Zayed Grand Mosque approach 09.jpg" },
+     { "name": "Qasr Al Watan", "duration": "About 1 hour 15 minutes", "description": "The presidential palace, its Great Hall and library.", "image": "Qasr Al Watan in March 2022 09.jpg" },
+     { "name": "Louvre Abu Dhabi", "duration": "About 2 hours", "description": "Jean Nouvel's dome and a museum of world art.", "image": "Louvre abu dhabi, interno, cortile coperto 01.jpg" }
+    ]
+   }
+  ],
+  "faq": [
+   { "question": "How does booking on request work?", "answer": "You choose your date and the number of travellers and send the request. Nothing is charged. We confirm availability and the final price by email within 24 hours, and you pay online only once your tour is confirmed." },
+   { "question": "What is the dress code at the Grand Mosque?", "answer": "Loose clothing with long sleeves and long trousers or a long skirt for everyone, and a headscarf for women. Abayas can be borrowed at the entrance, and shoes are removed in the prayer hall." },
+   { "question": "Are tickets included?", "answer": "Yes. Qasr Al Watan and the Louvre Abu Dhabi tickets are included; the Grand Mosque is free but needs advance registration, which we do for you." },
+   { "question": "Which days are closed?", "answer": "The mosque is closed to visitors on Friday mornings and the Louvre on Mondays. We set the day and order of visits around these when we confirm." },
+   { "question": "How long is the drive?", "answer": "About 1 hour 30 minutes each way from central Dubai, depending on traffic." },
+   { "question": "Is it suitable for children?", "answer": "Yes. Children are welcome at all three sites, and the Louvre has a children's museum. Child seats on request." },
+   { "question": "Can we swap the Louvre for something else?", "answer": "Yes. Popular alternatives are Ferrari World or Warner Bros. World on Yas Island, the Heritage Village, or the Abrahamic Family House." },
+   { "question": "Can we see the mosque at sunset?", "answer": "Yes. The mosque is beautiful at dusk when it is lit; we can reverse the order and end there, returning to Dubai later in the evening." },
+   { "question": "Can I take photos in the mosque?", "answer": "Yes, respectfully and not of people praying. Photography is allowed throughout the courtyards and halls open to visitors." },
+   { "question": "Can I do this on a layover?", "answer": "Yes, with at least 12 hours between flights and entry to the UAE. We can also pick you up at Abu Dhabi airport." },
+   { "question": "Is lunch included?", "answer": "No. Your guide suggests restaurants near Qasr Al Watan or on Saadiyat Island for every budget." },
+   { "question": "When is the best time to go?", "answer": "November to March is most comfortable. In summer the sites are air-conditioned, but the mosque courtyard is very hot by midday, so we start early." },
+   { "question": "What is the cancellation policy?", "answer": "You can cancel free of charge up to 24 hours before the tour. Until your request is confirmed, nothing is charged at all." }
+  ]
+ }
+}
