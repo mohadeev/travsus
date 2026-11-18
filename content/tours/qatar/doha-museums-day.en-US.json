@@ -1,0 +1,91 @@
+{
+ "key": "qatar-doha-museums-day",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {
+  "city": "Doha",
+  "state": "Doha",
+  "country": "Qatar",
+  "countryCode": "QA",
+  "timeZone": "Asia/Qatar",
+  "streetAddress": "Your hotel in Doha",
+  "geoCoordinates": { "lat": 25.28859, "log": 51.54830 }
+ },
+ "slug": "/en-US/qatar/doha/tours/doha-museums-day-national-museum-museum-of-islamic-art-and-msheireb",
+ "tour": {
+  "name": "Doha Museums Day: National Museum of Qatar, Museum of Islamic Art & Msheireb",
+  "subtitle": "A private day with a local guide through Doha's three great museum stops: Jean Nouvel's desert-rose National Museum, I. M. Pei's Museum of Islamic Art and the heritage houses of Msheireb, with lunch by the bay.",
+  "seoTitle": "Doha Museums Tour: National Museum, MIA & Msheireb",
+  "metaDescription": "Private Doha museums day with a local guide: the National Museum of Qatar, the Museum of Islamic Art and the Msheireb heritage houses. Tickets, hotel pick-up and lunch stop included.",
+  "tags": ["Doha museums", "National Museum of Qatar", "Museum of Islamic Art", "Msheireb Museums", "Doha culture tour", "Qatar history"],
+  "highlights": [
+   "The National Museum of Qatar, Jean Nouvel's desert rose",
+   "The restored palace of Sheikh Abdullah bin Jassim",
+   "The Museum of Islamic Art by I. M. Pei",
+   "MIA Park and the view across the bay",
+   "Msheireb's four heritage houses",
+   "Museum tickets and a local guide included",
+   "Lunch stop by the water"
+  ],
+  "duration": 1,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "Doha has put more into its museums than almost any city of its size, and three of them tell the whole story of Qatar between them: how people lived on this coast, what the wider Islamic world made over fourteen centuries, and how the town changed when oil arrived. This private day takes you through all three with a local guide, at a pace that leaves time to look properly rather than rush from room to room.\n\nThe morning is for the National Museum of Qatar, Jean Nouvel's building of interlocking discs inspired by the desert rose crystal, wrapped around the restored palace of Sheikh Abdullah bin Jassim Al Thani. Its galleries follow the country from its geology and Bedouin life to pearling and the modern state. After lunch by the bay you cross to I. M. Pei's Museum of Islamic Art, standing on its own island, for manuscripts, ceramics, metalwork and textiles from Spain to Central Asia, and the view of West Bay from MIA Park. The day ends in Msheireb, the rebuilt old quarter, where four restored houses tell the stories of the town's families, its oil workers and the history of slavery in the Gulf.\n\nAT A GLANCE\n• Duration: about 7 hours\n• Start and finish: your hotel in Doha\n• Type: private tour with car, driver and English-speaking local guide\n• Booking: on request – we confirm availability and the final price by email within 24 hours, and you pay only then\n• Level: easy, mostly indoors, about 3–4 km of walking in total\n\nWHAT YOU SEE\n• The National Museum of Qatar and the Old Palace.\n• The Museum of Islamic Art and MIA Park.\n• The Msheireb Museums: Bin Jelmood House, Company House, Mohammed Bin Jassim House and Radwani House.\n• The Corniche and Doha Bay between stops.\n\nWHY THIS TOUR WORKS\nMost Doha city tours drive past these buildings or give the MIA thirty minutes. Here the museums are the day: tickets are bought, the order follows Qatar's story from desert to city, and the guide picks the rooms worth your time so the day feels full but never tiring.\n\nWHO IT IS FOR\nTravellers who like history, art and architecture, families with older children, rainy-day or hot-day plans, and anyone who wants to understand Qatar beyond the skyline.\n\nWHO MAY PREFER ANOTHER TOUR\nIf you want the souq, the Corniche and Katara in a few hours, take our private Doha city tour. For dunes and the sea, take the Inland Sea desert safari.\n\nPRACTICAL INFORMATION\nWear clothing that covers shoulders and knees. Museum opening days change through the year and around holidays; we build the order of visits around them when we confirm your date. Lunch is at your own cost.",
+  "inclusions": {
+   "standard": {
+    "private": [
+     "Pick-up and drop-off at your hotel in Doha",
+     "Private air-conditioned vehicle",
+     "English-speaking local guide for the day",
+     "Tickets to the National Museum of Qatar and the Museum of Islamic Art",
+     "Msheireb Museums visit",
+     "Water in the vehicle"
+    ],
+    "shared": [
+     "Pick-up and drop-off at your hotel in Doha",
+     "Air-conditioned vehicle",
+     "Local guide",
+     "Museum tickets",
+     "Water"
+    ]
+   }
+  },
+  "pricingTiers": [
+   { "transportType": "SUV (prado)", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png", "minSeats": 1, "maxSeats": 5, "pricing": { "currency": "EUR", "totalPrice": 290, "pricePerDay": 290 } },
+   { "transportType": "Mercedes Vito", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png", "minSeats": 6, "maxSeats": 8, "pricing": { "currency": "EUR", "totalPrice": 360, "pricePerDay": 360 } },
+   { "transportType": "Mini Bus", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png", "minSeats": 9, "maxSeats": 19, "pricing": { "currency": "EUR", "totalPrice": 520, "pricePerDay": 520 } }
+  ],
+  "images": [
+   "National Museum of Qatar 09.jpg",
+   "View of the Persian Gulf and the Museum of Islamic Art in Qatar at dusk.jpg",
+   "National Museum of Qatar 16.jpg",
+   "Steps of tapestry in the Qatar National Museum.jpg",
+   "Musheireb downtown on Abdullah Bin Thani Street in 2021.jpg"
+  ],
+  "days": [
+   {
+    "name": "National Museum, Museum of Islamic Art and Msheireb",
+    "description": "What to expect: a private museum day following Qatar's story from the desert to the modern city, with a local guide, tickets and a lunch stop by the bay.\n\nYour guide and driver collect you from your hotel at about 9:00 and drive along the Corniche to the National Museum of Qatar, opened in 2019. Jean Nouvel designed it as a cluster of huge curved discs, like the desert rose crystals that form in Qatar's salt flats, and the building curls around the Old Palace, the early 20th-century home of Sheikh Abdullah bin Jassim Al Thani that later served as the seat of government and the first national museum. Inside, a winding route of galleries starts with the geology and wildlife of the peninsula, moves through Bedouin life and the camps of the desert, the pearl-diving seasons and the boats that carried them, and ends with the discovery of oil and the founding of the modern state. Your guide picks out the highlights, from the Pearl Carpet of Baroda to the films projected across the gallery walls, and leaves you time in the rooms you enjoy most. Allow about two and a half hours.\n\nLunch is by the water, at a café near the Museum of Islamic Art or at one of the restaurants on the Corniche (at your own cost). In the early afternoon you cross to the museum itself, which I. M. Pei designed in his nineties and which opened in 2008 on an island of its own. The building borrows from the ablution fountain of the Ibn Tulun Mosque in Cairo, and inside, a five-storey atrium rises to a dome under a single oculus. The collection covers fourteen centuries of Islamic art from Spain to India and Central Asia: Qur'an manuscripts, Iznik and Persian ceramics, carved ivory, astrolabes, carpets and jewellery. After about two hours, step into MIA Park for the view across the bay to the towers of West Bay.\n\nThe last stop is Msheireb, the old heart of Doha, rebuilt in the 2010s around four restored heritage houses that together form the Msheireb Museums. Bin Jelmood House tells the history of slavery in the Indian Ocean and the Gulf, Company House the story of the first Qatari oil workers, Mohammed Bin Jassim House the history of the quarter itself, and Radwani House everyday family life in old Doha. Your guide chooses one or two depending on your interests and energy, and you are back at your hotel by about 16:00.\n\nSCHEDULE (approximate)\n09:00 – Hotel pick-up.\n09:20 – National Museum of Qatar and the Old Palace (about 2 hours 30 minutes).\n12:00 – Lunch by the bay (at your own cost).\n13:15 – Museum of Islamic Art and MIA Park (about 2 hours).\n15:15 – Msheireb Museums (about 45 minutes).\n16:00 – Return to your hotel.\n\nGOOD TO KNOW\n• Opening days and hours change by season and around holidays; we confirm the order of visits with your request.\n• Large bags are left in the museum cloakrooms.\n• Photography without flash is allowed in most galleries.\n\nINCLUDED: private vehicle and driver, English-speaking local guide, tickets to the National Museum of Qatar and the Museum of Islamic Art, Msheireb Museums visit, hotel pick-up.\nNOT INCLUDED: lunch, tips.\n\nOvernight: none.\nMeals: none.",
+    "stops": [
+     { "name": "National Museum of Qatar", "duration": "About 2 hours 30 minutes", "description": "Jean Nouvel's desert-rose building and the Old Palace, from Bedouin life and pearling to the modern state.", "image": "National Museum of Qatar 10.jpg" },
+     { "name": "Museum of Islamic Art", "duration": "About 2 hours", "description": "I. M. Pei's museum on its own island: fourteen centuries of Islamic art, and MIA Park.", "image": "View of the Persian Gulf and the Museum of Islamic Art in Qatar at dusk.jpg" },
+     { "name": "Msheireb Museums", "duration": "About 45 minutes", "description": "Four restored heritage houses in old Doha.", "image": "Musheireb downtown on Abdullah Bin Thani Street in 2021.jpg" }
+    ]
+   }
+  ],
+  "faq": [
+   { "question": "How does booking on request work?", "answer": "You choose your date and the number of travellers and send the request. Nothing is charged. We confirm availability and the final price by email within 24 hours, and you pay online only once your tour is confirmed." },
+   { "question": "Are museum tickets included?", "answer": "Yes. Tickets to the National Museum of Qatar and the Museum of Islamic Art are included, and the Msheireb Museums are part of the visit." },
+   { "question": "Which days are the museums closed?", "answer": "Each museum has its own closing day and shorter hours on Fridays and holidays, and they change during the year. When we confirm your request we set the order of the visits so that every museum is open." },
+   { "question": "How much walking is there?", "answer": "About 3–4 km in total, mostly indoors on flat floors with lifts. Wheelchairs are available at the main museums." },
+   { "question": "Is it suitable for children?", "answer": "Yes, especially from about eight years old. The National Museum's films and big spaces work well for children; the guide adjusts the time in each museum." },
+   { "question": "What should I wear?", "answer": "Clothing that covers shoulders and knees, and comfortable shoes. Museums are well air-conditioned, so a light layer helps." },
+   { "question": "Where do we have lunch?", "answer": "At a café near the Museum of Islamic Art or on the Corniche, at your own cost. Your guide suggests places to suit your budget and diet." },
+   { "question": "Can I take photos?", "answer": "Yes, without flash, in most galleries. A few temporary exhibitions do not allow photography; staff will tell you." },
+   { "question": "Can we change the order or skip a museum?", "answer": "Yes. It is a private tour, so you can spend longer at one museum, add Souq Waqif at the end, or swap Msheireb for Katara Cultural Village." },
+   { "question": "Can I do this on a layover?", "answer": "A shorter version works on a long layover if you can enter Qatar: we pick you up at Hamad International Airport and focus on one or two museums." },
+   { "question": "Is the guide an art historian?", "answer": "Your guide is a licensed local guide who knows the collections well. Museum audio guides and free tours can be added where available." },
+   { "question": "When is the best time to go?", "answer": "All year. The museums are indoors and air-conditioned, which makes this a good choice for the hot months from May to September." },
+   { "question": "What is the cancellation policy?", "answer": "You can cancel free of charge up to 24 hours before the tour. Until your request is confirmed, nothing is charged at all." }
+  ]
+ }
+}
