@@ -47,6 +47,11 @@ export async function sendEmail(formData: FormData) {
 	if (!code || !token) {
 		const fresh = newEmailCode(email)
 		const sent = await sendTemplate('email-code', { to: { email, name }, data: { code: fresh.code } })
+		// Keep the message even if they never enter the code: a copy marked unverified
+		// (not again when they only ask for a new code)
+		if (!field(formData, 'resend', 2)) {
+			await sendTemplate('contact-team', { to: { email: OWNER_EMAIL, name: 'TRAVSUS' }, cc: [SUPPORT_EMAIL], data: { name, email, message, unverified: true } })
+		}
 		return sent.ok ? { success: false, error: 'CODE_SENT', token: fresh.token, email } : { success: false, error: 'SEND_FAILED' }
 	}
 	// Step 2: the code they received
