@@ -1,0 +1,91 @@
+{
+ "key": "uae-dubai-old-and-new-city-tour",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {
+  "city": "Dubai",
+  "state": "Dubai",
+  "country": "United Arab Emirates",
+  "countryCode": "AE",
+  "timeZone": "Asia/Dubai",
+  "streetAddress": "Your hotel in Dubai",
+  "geoCoordinates": { "lat": 25.2048, "log": 55.2708 }
+ },
+ "slug": "/en-US/united-arab-emirates/dubai/tours/dubai-old-and-new-private-city-tour-al-fahidi-abra-souks-and-burj-khalifa",
+ "tour": {
+  "name": "Dubai Old & New Private City Tour: Al Fahidi, Abra, Souks & Burj Khalifa",
+  "subtitle": "A private day with a local guide from the wind-tower lanes of Al Fahidi and an abra ride across Dubai Creek to the spice and gold souks, then Jumeirah, the Burj Al Arab and the top of the Burj Khalifa at sunset.",
+  "seoTitle": "Dubai Private City Tour: Old Dubai & Burj Khalifa",
+  "metaDescription": "Private Dubai city tour with a local guide: Al Fahidi Historical Neighbourhood, abra across Dubai Creek, spice and gold souks, Jumeirah Mosque, Burj Al Arab and Burj Khalifa At the Top. Hotel pick-up.",
+  "tags": ["Dubai city tour", "Old Dubai", "Al Fahidi", "Dubai Creek abra", "Burj Khalifa", "Dubai private tour"],
+  "highlights": [
+   "Al Fahidi Historical Neighbourhood and its wind towers",
+   "An abra ride across Dubai Creek",
+   "The Spice Souk and the Gold Souk in Deira",
+   "Jumeirah Mosque and the Burj Al Arab",
+   "Burj Khalifa At the Top, levels 124 and 125",
+   "The Dubai Fountain after dark",
+   "Private car, local guide and hotel pick-up"
+  ],
+  "duration": 1,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "Dubai was a small pearling and trading port on a creek less than a century ago, and the old town is still there, a few kilometres from the tallest building in the world. This private day tour links the two: the morning in the lanes, boats and markets of old Dubai, the afternoon along the coast to the new city, and the evening at the top of the Burj Khalifa as the sun goes down.\n\nYou start in Al Fahidi, the restored quarter of coral-stone houses with wind towers built by merchants in the late 19th century, and see Al Fahidi Fort, the oldest building in the city. An abra – the wooden water taxi that still crosses the creek for one dirham – takes you to Deira for the Spice Souk and the Gold Souk. After lunch the drive follows the coast to Jumeirah Mosque and the sail-shaped Burj Al Arab, then to Downtown Dubai for the Burj Khalifa, 828 metres high, with a timed ticket to the observation decks at sunset and the Dubai Fountain dancing below.\n\nAT A GLANCE\n• Duration: about 8 hours\n• Start and finish: your hotel in Dubai\n• Type: private tour with car, driver and English-speaking local guide\n• Booking: on request – we confirm availability and the final price by email within 24 hours, and you pay only then\n• Level: easy, about 4 km of walking\n\nWHAT YOU SEE\n• Al Fahidi Historical Neighbourhood and Al Fahidi Fort.\n• Dubai Creek by abra, the Spice Souk and the Gold Souk.\n• Jumeirah Mosque (outside) and the Burj Al Arab.\n• Burj Khalifa At the Top and the Dubai Fountain.\n\nWHY THIS TOUR WORKS\nMost visitors see either the malls and towers or the old town. With a car and guide you see both in one day, cross the creek the way people have for a century, and reach the Burj Khalifa at the best time, with the ticket already booked.\n\nWHO IT IS FOR\nFirst-time visitors to Dubai, families, couples and stopover travellers who want the story of the city as well as the views.\n\nWHO MAY PREFER ANOTHER TOUR\nFor the dunes, take our evening desert safari. For Abu Dhabi's Grand Mosque and Louvre, take the Abu Dhabi day trip.\n\nPRACTICAL INFORMATION\nWear clothing that covers shoulders and knees for the old town and mosques, and comfortable shoes. Burj Khalifa sunset slots sell out; we book yours when we confirm your request.",
+  "inclusions": {
+   "standard": {
+    "private": [
+     "Pick-up and drop-off at your hotel in Dubai",
+     "Private air-conditioned vehicle",
+     "English-speaking local guide",
+     "Abra ride across Dubai Creek",
+     "Burj Khalifa At the Top ticket (levels 124–125, sunset slot when available)",
+     "Water in the vehicle"
+    ],
+    "shared": [
+     "Hotel pick-up and drop-off",
+     "Air-conditioned vehicle",
+     "Local guide",
+     "Abra ride",
+     "Water"
+    ]
+   }
+  },
+  "pricingTiers": [
+   { "transportType": "SUV (prado)", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png", "minSeats": 1, "maxSeats": 5, "pricing": { "currency": "EUR", "totalPrice": 290, "pricePerDay": 290 } },
+   { "transportType": "Mercedes Vito", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png", "minSeats": 6, "maxSeats": 8, "pricing": { "currency": "EUR", "totalPrice": 360, "pricePerDay": 360 } },
+   { "transportType": "Mini Bus", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png", "minSeats": 9, "maxSeats": 19, "pricing": { "currency": "EUR", "totalPrice": 520, "pricePerDay": 520 } }
+  ],
+  "images": [
+   "Burj Khalifa Dubai, UAE at Sunset 001 by Eric Chamchoum.jpg",
+   "Al Fahidi Historical Neighbourhood, Dubai.jpg",
+   "Abra ferry boats, Dubai Creek.jpg",
+   "Al Bastakiya 10.jpg",
+   "Dubai Skyline mit Burj Khalifa (cropped).jpg"
+  ],
+  "days": [
+   {
+    "name": "Al Fahidi, Dubai Creek, the souks, Jumeirah and the Burj Khalifa",
+    "description": "What to expect: a private day from the old town on Dubai Creek to the new city, ending at the top of the Burj Khalifa at sunset.\n\nYour guide and driver collect you at about 10:00 and drive to Al Fahidi, also called Bastakiya, the old quarter on the creek. Its narrow lanes of coral-stone and gypsum houses were built in the late 19th century by merchants from southern Iran, and many still carry barjeel, the wind towers that caught the breeze and sent it down into the rooms before air conditioning. Walk through the courtyards, galleries and small museums, and see Al Fahidi Fort, built around 1787 and the oldest building in Dubai.\n\nAt the water's edge you board an abra, one of the wooden water taxis that have crossed Dubai Creek for generations, for the five-minute ride to Deira. Here the Spice Souk is a few lanes of saffron, frankincense, dried lemons and rose buds, and the Gold Souk next door has hundreds of jewellers under a long wooden roof. Lunch is at a local restaurant (at your own cost).\n\nIn the afternoon the drive follows the coast through Jumeirah, past Jumeirah Mosque, one of the most photographed mosques in the city, to the beach facing the Burj Al Arab, the sail-shaped hotel on its own island. Then on to Downtown Dubai. Your timed ticket takes you up the Burj Khalifa, 828 metres tall and opened in 2010, to the observation decks on levels 124 and 125, about 450 metres above the city, where you watch the sun set over the Gulf and the lights come on. Back at ground level, stay for a show of the Dubai Fountain on the lake before the drive back to your hotel.\n\nSCHEDULE (approximate, adjusted to sunset)\n10:00 – Hotel pick-up.\n10:30 – Al Fahidi and Al Fahidi Fort (about 1 hour 15 minutes).\n11:45 – Abra across Dubai Creek; Spice Souk and Gold Souk.\n13:15 – Lunch (at your own cost).\n14:45 – Jumeirah Mosque (outside) and the Burj Al Arab beach.\n16:00 – Burj Khalifa At the Top (sunset slot).\n17:45 – Dubai Fountain.\n18:30 – Return to your hotel.\n\nGOOD TO KNOW\n• Sunset is around 17:30 in December and 19:10 in June; the Burj Khalifa time is set when we confirm.\n• The souks close for a few hours in the early afternoon on Fridays.\n• Jumeirah Mosque runs guided visits on some mornings; we can add one on request.\n\nINCLUDED: private vehicle and driver, English-speaking local guide, abra ride, Burj Khalifa At the Top ticket, water, hotel pick-up.\nNOT INCLUDED: lunch, shopping, tips.\n\nOvernight: none.\nMeals: none.",
+    "stops": [
+     { "name": "Al Fahidi Historical Neighbourhood", "duration": "About 1 hour 15 minutes", "description": "Wind-tower houses, courtyards and Al Fahidi Fort.", "image": "Al Bastakiya 10.jpg" },
+     { "name": "Dubai Creek and the souks", "duration": "About 1 hour 30 minutes", "description": "Abra ride, the Spice Souk and the Gold Souk.", "image": "Abra ferry boats, Dubai Creek.jpg" },
+     { "name": "Burj Khalifa", "duration": "About 1 hour 30 minutes", "description": "At the Top at sunset and the Dubai Fountain.", "image": "Burj Khalifa Dubai, UAE at Sunset 001 by Eric Chamchoum.jpg" }
+    ]
+   }
+  ],
+  "faq": [
+   { "question": "How does booking on request work?", "answer": "You choose your date and the number of travellers and send the request. Nothing is charged. We confirm availability and the final price by email within 24 hours, and you pay online only once your tour is confirmed." },
+   { "question": "Is the Burj Khalifa ticket included?", "answer": "Yes, a timed At the Top ticket for levels 124 and 125. Sunset slots are popular; we book the closest available time when we confirm. Level 148 can be added at extra cost." },
+   { "question": "Can we go inside Jumeirah Mosque?", "answer": "The mosque runs guided visits for non-Muslims on some mornings. The standard tour views it from outside; we can add a visit on request with an earlier start." },
+   { "question": "How much walking is there?", "answer": "About 4 km in total, mostly in Al Fahidi and the souks, with the car close by." },
+   { "question": "Is it suitable for children?", "answer": "Yes. The abra, the souks and the Burj Khalifa are popular with children. Child seats on request." },
+   { "question": "What should I wear?", "answer": "Clothing that covers shoulders and knees, and comfortable shoes. A scarf for women is useful for mosques." },
+   { "question": "Can I buy gold and spices?", "answer": "Yes. Prices in the Gold Souk follow the daily gold price plus a making charge, and bargaining is normal in both souks. Your guide can help, but never takes a commission." },
+   { "question": "Can I do this on a layover?", "answer": "Yes, if you have at least 10 hours between flights and can enter the UAE. We pick you up at Dubai International Airport and bring you back in time." },
+   { "question": "Can we change the order?", "answer": "Yes. It is a private tour: you can do the Burj Khalifa in the morning, add the Museum of the Future or the Dubai Frame, or end at a restaurant." },
+   { "question": "Is lunch included?", "answer": "No, so you can choose. Your guide suggests local Emirati, Iranian or Indian restaurants near the creek for every budget." },
+   { "question": "Is the tour possible on Fridays?", "answer": "Yes. Some souk shops close around midday prayers, so we adjust the order on Fridays." },
+   { "question": "When is the best time to go?", "answer": "November to March, when days are warm and evenings pleasant. In summer we keep outdoor time short and spend the hottest hours indoors." },
+   { "question": "What is the cancellation policy?", "answer": "You can cancel free of charge up to 24 hours before the tour. Until your request is confirmed, nothing is charged at all." }
+  ]
+ }
+}
