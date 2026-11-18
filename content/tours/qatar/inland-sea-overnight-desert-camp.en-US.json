@@ -1,0 +1,97 @@
+{
+ "key": "qatar-inland-sea-overnight-camp",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {
+  "city": "Doha",
+  "state": "Doha",
+  "country": "Qatar",
+  "countryCode": "QA",
+  "timeZone": "Asia/Qatar",
+  "streetAddress": "Your hotel in Doha",
+  "geoCoordinates": { "lat": 24.62, "log": 51.33 }
+ },
+ "slug": "/en-US/qatar/doha/tours/inland-sea-overnight-desert-camp-from-doha-2-days",
+ "tour": {
+  "name": "Inland Sea Overnight Desert Camp from Doha (2 Days)",
+  "subtitle": "Dunes by 4x4 to Khor Al Adaid, sunset over the Inland Sea, a barbecue dinner and a night under the stars in a beach camp, then a swim at sunrise and a slow drive back through the sand.",
+  "seoTitle": "Qatar Inland Sea Overnight Desert Camp (2 Days)",
+  "metaDescription": "Two-day private desert trip from Doha: 4x4 dune drive to the Inland Sea (Khor Al Adaid), sunset, barbecue dinner and overnight camp, sunrise swim, camel ride and sandboarding. Hotel pick-up.",
+  "tags": ["Qatar overnight desert safari", "Inland Sea camp", "Khor Al Adaid", "Qatar desert camping", "Doha desert trip", "Sealine dunes"],
+  "highlights": [
+   "4x4 dune drive with an experienced desert driver",
+   "Khor Al Adaid, the Inland Sea, at sunset and sunrise",
+   "Overnight in a beach camp on the shore",
+   "Barbecue dinner and breakfast",
+   "Stars far from the city lights",
+   "Sandboarding and a short camel ride",
+   "Swim in calm, warm water"
+  ],
+  "duration": 2,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "The day trip to the Inland Sea gives you the dunes and the view; staying the night gives you the desert itself. When the day visitors leave, the shore of Khor Al Adaid goes quiet, the sun sets over the dunes on the far side of the water, and the sky fills with stars you never see in Doha. This private two-day trip takes you there by 4x4 with an experienced desert driver and puts you in a beach camp right on the water.\n\nYou leave Doha in the afternoon, stop at Sealine to let the tyres down and climb a dune, and then cross the big dunes to Khor Al Adaid, where a tongue of sea runs deep into the sand on the border with Saudi Arabia. After sunset at the water's edge, dinner is a barbecue at the camp, followed by tea, Arabic coffee and an evening around the fire. In the morning you wake up to the sea at sunrise, swim in the calm water, have breakfast, then try sandboarding and a short camel ride before the drive back across the dunes to Doha.\n\nAT A GLANCE\n• Duration: 2 days, 1 night (about 21 hours)\n• Start and finish: your hotel in Doha\n• Type: private 4x4 with an experienced desert driver who acts as your guide\n• Booking: on request – we confirm availability and the final price by email within 24 hours, and you pay only then\n• Level: easy; the dune drive is bumpy and can be done gently on request\n\nWHAT YOU SEE\n• The Sealine dunes.\n• Khor Al Adaid, the Inland Sea, a protected natural reserve.\n• The Saudi coast across the water.\n• Sunset, a desert night sky and sunrise over the sea.\n\nWHY THIS TOUR WORKS\nMost visitors see the Inland Sea for an hour in the middle of the day, when the light is flat and the heat strongest. Staying overnight gives you the two best moments, sunset and sunrise, and a quiet night on the shore, with a private car and driver so you set the pace.\n\nWHO IT IS FOR\nCouples, families with children over five, groups of friends and anyone who wants one night in the desert during a stay or a long stopover in Qatar.\n\nWHO MAY PREFER ANOTHER TOUR\nIf you only have half a day, take our Inland Sea desert safari. If you prefer culture to dunes, take the Doha city tour or the museums day.\n\nPRACTICAL INFORMATION\nBring swimwear, a towel, sunscreen, a hat and a warm layer for the night (December to February nights can drop to around 12–15 °C). Camps range from simple Bedouin-style tents to air-conditioned tents with private bathrooms; we confirm the camp and its facilities with your request.",
+  "inclusions": {
+   "standard": {
+    "private": [
+     "Pick-up and drop-off at your hotel in Doha",
+     "Private 4x4 with an experienced desert driver",
+     "Dune drive to Khor Al Adaid and back",
+     "One night in a beach camp at the Inland Sea (private tent)",
+     "Barbecue dinner, breakfast, tea, coffee and water",
+     "Sandboarding and a short camel ride"
+    ],
+    "shared": [
+     "Pick-up and drop-off at your hotel in Doha",
+     "4x4 with a desert driver",
+     "One night in a camp tent",
+     "Dinner and breakfast"
+    ]
+   }
+  },
+  "pricingTiers": [
+   { "transportType": "4x4 Land Cruiser", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png", "minSeats": 1, "maxSeats": 5, "pricing": { "currency": "EUR", "totalPrice": 720, "pricePerDay": 360 } },
+   { "transportType": "Two 4x4 Land Cruisers", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png", "minSeats": 6, "maxSeats": 10, "pricing": { "currency": "EUR", "totalPrice": 1380, "pricePerDay": 690 } },
+   { "transportType": "Four 4x4 Land Cruisers", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png", "minSeats": 11, "maxSeats": 19, "pricing": { "currency": "EUR", "totalPrice": 2640, "pricePerDay": 1320 } }
+  ],
+  "images": [
+   "Khor Al Adaid Inland Sea and desert in Katar.jpg",
+   "INLAND1",
+   "DUNES1",
+   "CAMEL1",
+   "INLAND2"
+  ],
+  "days": [
+   {
+    "name": "Doha – Sealine – Khor Al Adaid: dunes, sunset and a night in camp",
+    "description": "What to expect: an afternoon drive through the dunes to the Inland Sea, sunset at the water and a barbecue dinner and night in a beach camp.\n\nYour driver collects you from your hotel at about 14:00. The road south passes the industrial town of Mesaieed and reaches the edge of the sand at Sealine, about an hour from Doha, where the dunes run straight down to the sea. Here the driver lets air out of the tyres for grip on the sand, and you can climb a dune for the first view of the desert. Then the real drive begins: about 30–40 minutes across high dunes, up steep faces and along the crests, as fast or as gently as you like. Your driver has done this route hundreds of times and stops for photos on the ridges.\n\nKhor Al Adaid appears suddenly: a long arm of the Gulf that runs some 10 km into the desert, surrounded by dunes on all sides, and one of the few places in the world where the sea comes this far into a sand sea. It is a protected natural reserve, and the far shore is Saudi Arabia. You reach the camp on the beach in time to settle in, then walk down to the water or up the nearest dune for sunset, when the sand turns orange and then pink.\n\nIn the evening, dinner is a barbecue of grilled chicken, lamb and vegetables with salads, bread and rice, with soft drinks, tea and Arabic coffee. Afterwards there is time around the fire and under a sky that, on a clear night far from the city, shows the Milky Way. You sleep in a private tent at the camp.\n\nSCHEDULE (approximate, adjusted to sunset)\n14:00 – Hotel pick-up.\n15:00 – Sealine: tyres down, first dune.\n15:15 – Dune drive to Khor Al Adaid (about 40 minutes with photo stops).\n16:00 – Arrival at camp; settle in.\n16:45 – Sunset over the Inland Sea.\n19:00 – Barbecue dinner and evening by the fire.\n\nGOOD TO KNOW\n• Tell us if you prefer a gentle drive; the driver adjusts.\n• Dune driving is not recommended in pregnancy or with serious back problems.\n• Camps change by season; we confirm yours with your request.\n\nOvernight: beach camp at the Inland Sea (private tent).\nMeals: dinner.",
+    "stops": [
+     { "name": "Sealine dunes", "duration": "About 15 minutes", "description": "Tyres down and the first climb up a dune.", "image": "DUNES1" },
+     { "name": "Khor Al Adaid (Inland Sea)", "duration": "Overnight", "description": "Sunset, barbecue dinner and a night in a beach camp.", "image": "INLAND1" }
+    ]
+   },
+   {
+    "name": "Khor Al Adaid – Doha: sunrise, swim, sandboarding and camels",
+    "description": "What to expect: sunrise over the water, a swim and breakfast at the camp, sandboarding and a short camel ride, then the drive back to Doha.\n\nGet up for sunrise if you can: the light comes over the water and the dunes on the Saudi side glow before the heat of the day. The water of the Inland Sea is shallow, salty and calm, warm enough for a swim from about April to November and refreshing in winter. Breakfast at the camp is eggs, flatbread, cheese, labneh, dates, fruit, tea and coffee.\n\nAfter breakfast there is time for sandboarding on a dune near the camp – the driver shows you how – and for a short camel ride along the sand. Then you pack up and drive back across the dunes, taking a different line from the day before, to Sealine, where the tyres are pumped up again for the road. You are back at your hotel in Doha by about 11:00, in time for lunch or a flight.\n\nSCHEDULE (approximate)\n05:45–06:30 – Sunrise (depending on season).\n07:30 – Breakfast at camp.\n08:30 – Swim, sandboarding and camel ride.\n09:30 – Dune drive back to Sealine.\n11:00 – Return to your hotel.\n\nGOOD TO KNOW\n• Shoes that can get full of sand, or sandals.\n• If you have an afternoon flight, we can drop you at Hamad International Airport.\n\nINCLUDED: private 4x4 and desert driver, dune drive, one night in a beach camp (private tent), barbecue dinner, breakfast, soft drinks, tea, coffee and water, sandboarding, short camel ride, hotel pick-up and drop-off.\nNOT INCLUDED: quad biking, alcoholic drinks, tips.\n\nOvernight: none.\nMeals: breakfast.",
+    "stops": [
+     { "name": "Inland Sea at sunrise", "duration": "About 2 hours", "description": "Sunrise, a swim and breakfast at the camp.", "image": "INLAND2" },
+     { "name": "Sandboarding and camels", "duration": "About 1 hour", "description": "Sandboarding on a dune and a short camel ride.", "image": "CAMEL1" }
+    ]
+   }
+  ],
+  "faq": [
+   { "question": "How does booking on request work?", "answer": "You choose your date and the number of travellers and send the request. Nothing is charged. We confirm availability and the final price by email within 24 hours, and you pay online only once your tour is confirmed." },
+   { "question": "What is the camp like?", "answer": "Camps on the Inland Sea range from Bedouin-style tents with shared bathrooms to air-conditioned tents with beds and private bathrooms. The standard price uses a comfortable private tent; we confirm the exact camp and can upgrade on request." },
+   { "question": "Is the dune drive safe?", "answer": "Yes. Drivers are experienced and licensed for desert driving, vehicles have roll cages or reinforced frames and everyone wears a seatbelt. You can ask for a gentle drive at any time." },
+   { "question": "Can children come?", "answer": "Yes, from about five years old, with child seats provided. The driver keeps the dune drive gentle for families." },
+   { "question": "Is it cold at night?", "answer": "From December to February nights can drop to around 12–15 °C, so bring a warm layer. Blankets are provided. From May to September nights stay warm." },
+   { "question": "Can I swim?", "answer": "Yes. The water is calm and shallow near the shore. There are no lifeguards, so swim near the camp and never alone." },
+   { "question": "What food is served?", "answer": "A barbecue dinner with grilled chicken, lamb and vegetables, salads, rice and bread, and a breakfast with eggs, bread, cheese, dates and fruit. Vegetarian and other diets on request." },
+   { "question": "Is alcohol available?", "answer": "No. Alcohol is not served at the camps. Soft drinks, tea, coffee and water are included." },
+   { "question": "Can we see Saudi Arabia?", "answer": "Yes, the far shore of Khor Al Adaid is Saudi territory. You cannot cross the border, and the driver keeps to the permitted area." },
+   { "question": "Can we add quad biking?", "answer": "Yes, quad bikes can be rented at Sealine at extra cost. Your driver will advise on a safe operator." },
+   { "question": "Can I do this on a stopover?", "answer": "Yes, if you have about 24 hours in Qatar and can enter the country. We can pick you up and drop you at Hamad International Airport." },
+   { "question": "When is the best time to go?", "answer": "October to April, when days are warm and nights cool. From May to September it is very hot by day; the overnight trip still works, but most of the activity is around sunset and sunrise." },
+   { "question": "What is the cancellation policy?", "answer": "You can cancel free of charge up to 48 hours before the trip. Until your request is confirmed, nothing is charged at all." }
+  ]
+ }
+}
