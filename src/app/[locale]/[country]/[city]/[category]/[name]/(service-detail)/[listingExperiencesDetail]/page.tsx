@@ -4,6 +4,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { getHomeData } from '@/lib/homeData'
 import type { Metadata } from 'next'
 import { getTourData } from '@/lib/tourData'
+import { isTourLive } from '@/lib/destinationPhotos'
 import { getTourPageExtras } from '@/lib/tourPage'
 import ListingExperiencesDetailPage from './TourDetailClient'
 import { getTourCatalog } from '@/lib/tourCatalog'
@@ -60,7 +61,7 @@ export async function generateMetadata(
 		throw error
 	})
 
-	if (!tour) {
+	if (!tour || !isTourLive(tour)) {
 		return {
 			title: 'Tour Not Found | TRAVSUS',
 			description: 'The requested tour could not be found.',
@@ -125,7 +126,8 @@ const DetailPage = async (props: DetailPageProps) => {
 
 	try {
 		const tour: any = await getTourData(tourId, locale)
-		if (!tour) notFound()
+		// Not found until its country is open (src/lib/destinationPhotos.ts)
+		if (!tour || !isTourLive(tour)) notFound()
 
 
 		// Similar tours, "from" price and price range: one small cached result per tour

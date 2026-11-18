@@ -1,4 +1,5 @@
 export const dynamic = 'force-dynamic'
+import { isTourLive } from '@/lib/destinationPhotos'
 import { NextRequest, NextResponse } from 'next/server'
 import getUserData from '../user/getUserData'
 import { createOrderNumber } from '@/app/actions/generateOrderNumber'
@@ -31,7 +32,7 @@ export async function POST(request: NextRequest) {
 		const tour = must(
 			await db.from(T.tours).select('*').eq('id', tourId).maybeSingle(),
 		)
-		if (!tour) {
+		if (!tour || !isTourLive(tour)) {
 			return NextResponse.json({ error: 'Tour not found' }, { status: 404 })
 		}
 
