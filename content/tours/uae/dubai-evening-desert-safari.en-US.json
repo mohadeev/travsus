@@ -1,0 +1,89 @@
+{
+ "key": "uae-dubai-evening-desert-safari",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {
+  "city": "Dubai",
+  "state": "Dubai",
+  "country": "United Arab Emirates",
+  "countryCode": "AE",
+  "timeZone": "Asia/Dubai",
+  "streetAddress": "Your hotel in Dubai",
+  "geoCoordinates": { "lat": 24.8, "log": 55.65 }
+ },
+ "slug": "/en-US/united-arab-emirates/dubai/tours/private-evening-desert-safari-from-dubai-red-dunes-camels-and-bbq-dinner",
+ "tour": {
+  "name": "Private Evening Desert Safari from Dubai: Red Dunes, Camels & BBQ Dinner",
+  "subtitle": "A private 4x4 into the red dunes south-east of Dubai with an experienced desert driver: dune drive, sunset on the crest, sandboarding and a camel ride, then a barbecue dinner under the stars at a desert camp.",
+  "seoTitle": "Private Evening Desert Safari Dubai with BBQ Dinner",
+  "metaDescription": "Private evening desert safari from Dubai: 4x4 dune drive in the red dunes, sunset, sandboarding, camel ride, henna and a barbecue dinner at a desert camp with live shows. Hotel pick-up.",
+  "tags": ["Dubai desert safari", "evening desert safari", "red dunes Dubai", "Dubai BBQ dinner desert", "private desert safari", "Dubai dune bashing"],
+  "highlights": [
+   "Private 4x4 with an experienced desert driver",
+   "Dune drive in the red dunes",
+   "Sunset from the top of a dune",
+   "Sandboarding and a short camel ride",
+   "Barbecue dinner at a desert camp",
+   "Tanoura and fire shows under the stars",
+   "Hotel pick-up and drop-off"
+  ],
+  "duration": 1,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "Forty-five minutes from the towers of Dubai the city stops and the sand begins: long ridges of red-orange dunes that turn deep copper at sunset. The evening desert safari is the classic Dubai experience, and done privately it is a very different evening from the convoy of fifty cars that many visitors get. This tour gives you your own 4x4 and an experienced desert driver, and a pace set by you.\n\nAfter pick-up in the afternoon, you drive out to the red dunes, let the tyres down and set off across the sand – thrilling or gentle, as you choose – stopping on the crests for photos. On a high dune you watch the sun go down over the desert, then try sandboarding and take a short camel ride. The evening is spent at a desert camp: Arabic coffee and dates, henna, a barbecue dinner of grilled meats, salads and breads, and live tanoura and fire shows, before the drive back to Dubai under the stars.\n\nAT A GLANCE\n• Duration: about 6 hours (afternoon and evening)\n• Start and finish: your hotel in Dubai\n• Type: private 4x4 with an experienced desert driver\n• Booking: on request – we confirm availability and the final price by email within 24 hours, and you pay only then\n• Level: easy; the dune drive is bumpy and can be done gently\n\nWHAT YOU SEE\n• The red dunes south-east of Dubai.\n• Sunset over the desert.\n• A desert camp with dinner and shows.\n• The night sky away from the city.\n\nWHY THIS TOUR WORKS\nShared safaris put six strangers in each car and keep to a fixed timetable. Here the car is yours: stop where you like, ask for a gentle drive if you have children, and stay longer on the dune for sunset.\n\nWHO IT IS FOR\nFirst-time visitors to Dubai, families, couples, groups of friends and stopover travellers with an evening free.\n\nWHO MAY PREFER ANOTHER TOUR\nIf you prefer a quiet morning in the dunes, take the morning desert safari. For culture, take the Dubai city tour or the Abu Dhabi day trip.\n\nPRACTICAL INFORMATION\nWear light, comfortable clothing and closed shoes or sandals, and bring a light jacket from December to February. Dune driving is not recommended in pregnancy, for infants or for people with back or heart problems; tell us and we will keep the drive gentle or skip it.",
+  "inclusions": {
+   "standard": {
+    "private": [
+     "Pick-up and drop-off at your hotel in Dubai",
+     "Private 4x4 with an experienced desert driver",
+     "Dune drive, sandboarding and a short camel ride",
+     "Arabic coffee, dates and water",
+     "Barbecue dinner at a desert camp (vegetarian on request)",
+     "Henna and live shows at the camp"
+    ],
+    "shared": [
+     "Hotel pick-up and drop-off",
+     "Shared 4x4 with a desert driver",
+     "Dune drive and camel ride",
+     "Barbecue dinner at the camp"
+    ]
+   }
+  },
+  "pricingTiers": [
+   { "transportType": "4x4 Land Cruiser", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png", "minSeats": 1, "maxSeats": 5, "pricing": { "currency": "EUR", "totalPrice": 320, "pricePerDay": 320 } },
+   { "transportType": "Two 4x4 Land Cruisers", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png", "minSeats": 6, "maxSeats": 10, "pricing": { "currency": "EUR", "totalPrice": 620, "pricePerDay": 620 } },
+   { "transportType": "Four 4x4 Land Cruisers", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png", "minSeats": 11, "maxSeats": 19, "pricing": { "currency": "EUR", "totalPrice": 1200, "pricePerDay": 1200 } }
+  ],
+  "images": [
+   "DUBAI DESERT SAFARI.jpg",
+   "Dubai Desert Safari (2).jpg",
+   "Land Cruiser in Dubai Desert Safari.jpg",
+   "Dubai - Desert Safari - 54.jpg",
+   "Dubai Desert Safari Liwa.jpg"
+  ],
+  "days": [
+   {
+    "name": "Red dunes, sunset, camels and a barbecue at a desert camp",
+    "description": "What to expect: a private afternoon and evening in the dunes outside Dubai, with a 4x4 drive, sunset, sandboarding, a camel ride and dinner at a desert camp.\n\nYour driver collects you from your hotel between 14:30 and 15:30, depending on the season, and drives south-east out of the city on the Dubai–Hatta road. In about 45 minutes the houses give way to the desert, and the dunes near Lahbab and around the Dubai Desert Conservation Reserve rise in long ridges of red and orange sand, coloured by iron oxide. At the edge of the sand the driver lets air out of the tyres for grip, and you set off.\n\nThe dune drive lasts about 30–40 minutes: up steep faces, along the crests and down the slip faces, as fast or as gently as you like. Your driver has done this hundreds of times, and stops on the ridges so you can get out, walk in the sand and take photos. As the sun drops you climb to the top of a high dune to watch it set over the desert, when the sand turns deep copper and the shadows grow long. Then try sandboarding down the slope – the driver shows you how – before driving on to the camp.\n\nThe camp is a walled enclosure in the dunes in the style of a Bedouin settlement, with low cushions and carpets around a central stage. You are welcomed with Arabic coffee and dates, and can take a short camel ride, have henna painted on your hands, or try on traditional dress. Dinner is a barbecue of grilled chicken, lamb and kofta with rice, salads, hummus, breads and desserts, with soft drinks, tea and water. During the evening there are live shows: the tanoura, a whirling dance in a spinning multi-coloured skirt, and a fire show. After dinner, step away from the lights to see the stars before the drive back to your hotel, arriving at about 21:30.\n\nSCHEDULE (approximate, adjusted to sunset)\n15:00 – Hotel pick-up.\n15:45 – Edge of the desert; tyres down.\n16:00 – Dune drive with photo stops (about 40 minutes).\n17:15 – Sunset on a dune, sandboarding.\n18:00 – Desert camp: coffee, camel ride, henna.\n19:00 – Barbecue dinner and live shows.\n20:45 – Drive back to Dubai.\n21:30 – Return to your hotel.\n\nGOOD TO KNOW\n• Sunset is around 17:30 in December and 19:10 in June; pick-up time moves with it.\n• Quad bikes can be added at extra cost.\n• Alcohol is available at some camps for an extra charge; tell us if you want a dry camp.\n\nINCLUDED: private 4x4 and desert driver, dune drive, sandboarding, short camel ride, coffee and dates, barbecue dinner, soft drinks and water, henna, live shows, hotel pick-up.\nNOT INCLUDED: quad biking, alcoholic drinks, photos sold at the camp, tips.\n\nOvernight: none.\nMeals: dinner.",
+    "stops": [
+     { "name": "Red dunes", "duration": "About 1 hour 15 minutes", "description": "4x4 dune drive, photo stops, sunset and sandboarding.", "image": "Land Cruiser in Dubai Desert Safari.jpg" },
+     { "name": "Desert camp", "duration": "About 2 hours 45 minutes", "description": "Coffee, camel ride, henna, barbecue dinner and shows.", "image": "Dubai - Desert Safari - 54.jpg" }
+    ]
+   }
+  ],
+  "faq": [
+   { "question": "How does booking on request work?", "answer": "You choose your date and the number of travellers and send the request. Nothing is charged. We confirm availability and the final price by email within 24 hours, and you pay online only once your tour is confirmed." },
+   { "question": "Is the 4x4 private?", "answer": "Yes. The standard price is for a private 4x4 and driver for your group only. The camp is shared with other guests, as all desert camps are." },
+   { "question": "Is the dune drive safe?", "answer": "Yes. Drivers are licensed for desert driving, the vehicles are reinforced and everyone wears a seatbelt. You can ask for a gentle drive at any time." },
+   { "question": "Can children come?", "answer": "Yes, from about three years old with child seats. The driver keeps the dune drive gentle for families. It is not recommended for infants." },
+   { "question": "Who should not do the dune drive?", "answer": "Pregnant travellers and people with back, neck or heart problems. You can still come: the driver will take a smooth route straight to the sunset point and camp." },
+   { "question": "What is served for dinner?", "answer": "A barbecue buffet of grilled chicken, lamb and kofta with rice, salads, hummus, breads, fruit and desserts. Vegetarian, vegan and other diets are easy to arrange." },
+   { "question": "Is alcohol available?", "answer": "Some licensed camps sell alcohol at extra cost. If you prefer a camp without alcohol, tell us when you book." },
+   { "question": "What should I wear?", "answer": "Light, comfortable clothes and shoes you don't mind filling with sand. A light jacket from December to February, when evenings can be cool." },
+   { "question": "Can we add quad biking?", "answer": "Yes. Quad bikes or dune buggies can be added at extra cost before sunset; tell us when you book so we leave time." },
+   { "question": "Can I do this on a layover?", "answer": "Yes, if you have an evening between flights and can enter the UAE. We pick you up at Dubai International Airport and bring you back in time." },
+   { "question": "Is there a toilet at the camp?", "answer": "Yes, the camps have toilets and washbasins." },
+   { "question": "When is the best time to go?", "answer": "October to April, when evenings are warm and pleasant. In summer it is hot until sunset, but the evening in the camp is still enjoyable." },
+   { "question": "What is the cancellation policy?", "answer": "You can cancel free of charge up to 24 hours before the tour. Until your request is confirmed, nothing is charged at all." }
+  ]
+ }
+}
