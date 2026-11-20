@@ -11,9 +11,40 @@ import { Fragment, useMemo, useState } from 'react'
 import { BulkBar, RowCheck, SelectAll, type Decision } from '../_components/BulkBar'
 import { useRouter } from 'next/navigation'
 import { Dialog, Transition } from '@headlessui/react'
-import { Check, ExternalLink, Handshake, Link2, Loader2, Mail, Percent, RotateCw, Search, Send, Trash2, Wallet, X } from 'lucide-react'
+import { Check, Copy, ExternalLink, Handshake, Link2, Loader2, Mail, Percent, RotateCw, Search, Send, Trash2, Wallet, X } from 'lucide-react'
 import InviteForm from '../_components/InviteForm'
 import { cleanCode, CODE_MAX } from '@/lib/affiliateCode'
+import { routing } from '@/i18n/routing'
+
+// The affiliate's share link, in their own language when we know it
+function refLink(row: { code: string | null; locale: string | null }) {
+	const lang = row.locale && (routing.locales as readonly string[]).includes(row.locale) ? row.locale : routing.defaultLocale
+	const origin = typeof window !== 'undefined' ? window.location.origin : 'https://travsus.com'
+	return `${origin}/${lang}?ref=${row.code}`
+}
+
+// Copies an affiliate's link; shows a tick for 2 seconds
+function CopyRefLink({ row, label, onCopied, className }: { row: { code: string | null; locale: string | null }; label?: string; onCopied?: (link: string) => void; className?: string }) {
+	const [copied, setCopied] = useState(false)
+	if (!row.code) return null
+	const copy = async () => {
+		const link = refLink(row)
+		try {
+			await navigator.clipboard.writeText(link)
+		} catch {
+			window.prompt('Copy this link', link)
+		}
+		setCopied(true)
+		onCopied?.(link)
+		setTimeout(() => setCopied(false), 2000)
+	}
+	return (
+		<button type="button" onClick={copy} title={refLink(row)} className={className}>
+			{copied ? <Check className="h-3.5 w-3.5 text-emerald-600" /> : <Copy className="h-3.5 w-3.5" />}
+			{copied ? 'Copied' : (label ?? 'Copy link')}
+		</button>
+	)
+}
 
 export type Affiliate = {
 	id: string
@@ -240,6 +271,13 @@ export default function AffiliatesPanel({ initial, stats: initialStats, tiers, l
 									<Link2 className="h-3 w-3" />
 									{r.code}
 								</span>
+							)}
+							{r.status === 'approved' && r.code && (
+								<CopyRefLink
+									row={r}
+									onCopied={(link) => notify(`Link copied: ${link.replace(/^https?:\/\//, '')}`)}
+									className="inline-flex h-8 items-center gap-1.5 rounded-full px-3 text-xs font-semibold ring-1 ring-neutral-300 transition hover:ring-neutral-950 dark:ring-neutral-700 dark:hover:ring-white"
+								/>
 							)}
 							{stats[r.id] && stats[r.id].balance > 0 && (
 								<span className="rounded-full bg-emerald-100 px-2.5 py-1 text-xs font-semibold tabular-nums text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">
@@ -521,6 +559,13 @@ function EditorForm({
 					<span className="truncate">{row.website}</span>
 					<ExternalLink className="h-3.5 w-3.5 shrink-0" />
 				</a>
+			)}
+
+			{row.status === 'approved' && row.code && (
+				<div className="mt-5 flex items-center gap-2 rounded-2xl bg-neutral-100 p-2 pl-4 dark:bg-neutral-800">
+					<span className="min-w-0 flex-1 truncate font-mono text-sm">{refLink(row).replace(/^https?:\/\//, '')}</span>
+					<CopyRefLink row={row} className="inline-flex h-10 shrink-0 items-center gap-1.5 rounded-full bg-neutral-950 px-4 text-sm font-semibold text-white transition hover:bg-neutral-800 dark:bg-white dark:text-ink" />
+				</div>
 			)}
 
 			{stats && row.status === 'approved' && <Earnings row={row} stats={stats} onSaved={onSaved} />}
