@@ -1,0 +1,63 @@
+{
+ "key": "turkey-cappadocia-red-tour-goreme-uchisar-pasabag",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {"city": "Cappadocia", "state": "Nevşehir", "country": "Turkey", "countryCode": "TR", "timeZone": "Europe/Istanbul", "streetAddress": "Your hotel in central Cappadocia", "geoCoordinates": {"lat": 38.6398, "log": 34.8455}},
+ "slug": "/en-US/turkey/cappadocia/tours/cappadocia-red-tour-goreme-open-air-museum-uchisar-and-pasabag",
+ "tour": {
+  "name": "Cappadocia Red Tour: Göreme Open-Air Museum, Uçhisar & Paşabağ",
+  "subtitle": "A private day through the heart of Cappadocia with a licensed guide: Byzantine frescoes in the rock-cut churches of the Göreme Open-Air Museum, the rock castle of Uçhisar, the fairy chimneys of Paşabağ and Devrent, the old cave village of Çavuşin and the potters of Avanos.",
+  "seoTitle": "Cappadocia Red Tour Private: Göreme, Uçhisar, Paşabağ | TRAVSUS",
+  "metaDescription": "Private Cappadocia Red Tour: Göreme Open-Air Museum, Uçhisar castle, Paşabağ fairy chimneys, Devrent Valley, Çavuşin and Avanos with a licensed guide, tickets and lunch.",
+  "tags": ["Cappadocia Red Tour", "Göreme Open-Air Museum", "Uçhisar castle", "Paşabağ", "Fairy chimneys", "Cappadocia private tour"],
+  "highlights": [
+   "Byzantine frescoes in the rock-cut churches of Göreme",
+   "The Dark Church, the best-preserved painted church in Cappadocia",
+   "The view from Uçhisar, the highest rock castle in the region",
+   "The mushroom-capped fairy chimneys of Paşabağ",
+   "Devrent Valley and its animal-shaped rocks",
+   "The cave village of Çavuşin and the potters of Avanos",
+   "Licensed guide, private car, tickets and lunch included"
+  ],
+  "duration": 1,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "Millions of years ago, volcanic eruptions buried central Anatolia in ash that hardened into soft tuff, and wind and rain have been carving it ever since into cones, pillars and deep valleys. People then carved too: from the early centuries of Christianity, monks and villagers hollowed the rock into homes, chapels and monasteries, painting their walls with saints and scenes from the Gospels. The result, Göreme National Park and the Rock Sites of Cappadocia, has been a UNESCO World Heritage Site since 1985.\n\nThis private day, known locally as the Red Tour, covers the northern heart of the region with a licensed guide and private car. You begin at the Göreme Open-Air Museum, a monastic complex of rock-cut churches with frescoes from the 10th to 12th centuries, including the brilliant Dark Church. You climb Uçhisar castle for the widest view in Cappadocia, walk among the multi-capped fairy chimneys of Paşabağ, find shapes in the rocks of Devrent Valley, explore the half-abandoned cave village of Çavuşin and end in Avanos, the pottery town on the Red River.\n\nAT A GLANCE\n• Duration: about 7 hours\n• Start and end: your hotel in Göreme, Uçhisar, Ürgüp, Avanos or Ortahisar\n• Type: private tour with licensed guide, car and driver\n• Booking: on request – we confirm availability and the final price by email within 24 hours, and you pay only then\n• Level: easy to moderate; short walks on uneven paths and some steps\n\nWHAT YOU SEE\n• The Göreme Open-Air Museum and the Dark Church.\n• Uçhisar castle and Pigeon Valley.\n• Paşabağ (Monks Valley) and Devrent Valley.\n• Çavuşin old village.\n• Avanos and its pottery workshops.\n\nWHY THIS WORKS\nYour guide visits the museum early, before the tour coaches, and orders the rest of the day around the light, so you see the valleys at their best.\n\nWHO IT SUITS\nFirst-time visitors to Cappadocia, families, photographers and anyone who has just landed after the balloon flight.\n\nWHO MAY PREFER ANOTHER TOUR\nFor underground cities and the Ihlara Valley hike, see our Green Tour of Cappadocia.\n\nPRACTICAL INFORMATION\nWear good walking shoes. Photography is not allowed inside the painted churches. The Dark Church needs a small extra ticket, which we include.",
+  "inclusions": {"standard": {
+   "private": ["Pick-up and drop-off at your hotel in central Cappadocia", "Private car and driver", "Licensed private guide", "Entrance tickets to the Göreme Open-Air Museum, the Dark Church, Uçhisar castle and Paşabağ", "Lunch at a local restaurant", "Bottled water"],
+   "shared": ["Hotel pick-up and drop-off", "Licensed guide", "Entrance tickets", "Lunch"]
+  }},
+  "pricingTiers": [
+   {"transportType": "Sedan / SUV", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png", "minSeats": 1, "maxSeats": 4, "pricing": {"currency": "EUR", "totalPrice": 240, "pricePerDay": 240}},
+   {"transportType": "Minivan", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png", "minSeats": 5, "maxSeats": 8, "pricing": {"currency": "EUR", "totalPrice": 420, "pricePerDay": 420}},
+   {"transportType": "Mini Bus", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png", "minSeats": 9, "maxSeats": 19, "pricing": {"currency": "EUR", "totalPrice": 820, "pricePerDay": 820}}
+  ],
+  "images": ["Monks Valley.jpg", "Göreme Open Air Museum 01.jpg", "Uçhisar Castle 01.jpg", "Goreme fairy chimneys-2.jpg", "In a pottery workshop in Avanos, Cappadocia, Turkey, May, 2015-1.jpg"],
+  "days": [
+   {
+    "name": "Göreme, Uçhisar, Paşabağ, Çavuşin and Avanos",
+    "description": "What to expect: a private day through the northern valleys of Cappadocia with a licensed guide, private car, tickets and lunch.\n\nYour guide and driver collect you at about 9:00, or later if you have flown in a balloon that morning, and you start at the Göreme Open-Air Museum as it opens. This valley was a monastic settlement from around the 10th century, and its cliffs are honeycombed with refectories, kitchens and more than a dozen churches. Your guide explains the frescoes, from simple red ochre symbols of the Iconoclast period to the rich painted cycles of the Apple Church and Saint Barbara. The highlight is the Dark Church, named for its single tiny window, which kept its 11th-century paintings of Christ, the Annunciation and the Crucifixion in brilliant colour. Across the road you also visit the Tokalı Church, the largest in Göreme, with its deep blue walls.\n\nYou then drive to Uçhisar, where a great rock riddled with rooms rises above the village. Climb to the top for a 360-degree view over Pigeon Valley, Göreme, the Rose and Red valleys and Mount Erciyes on the horizon; on the way down your guide shows you the carved dovecotes, once used to collect pigeon droppings to fertilise the vineyards. After lunch at a local restaurant, you continue to Paşabağ, also called Monks Valley, where fairy chimneys with two and three stone caps cluster together, one of them hollowed into a hermit's chapel dedicated to Saint Simeon. Nearby, in Devrent Valley, the rocks have weathered into shapes that invite you to find a camel, a dolphin or the Virgin Mary.\n\nIn Çavuşin you walk up to the cliff of the old village, abandoned after rockfalls, and the Church of Saint John the Baptist, one of the oldest in the region. You end in Avanos on the Kızılırmak, the Red River and the longest river in Turkey, whose clay has been made into pottery since Hittite times; a family workshop shows you the kick wheel, with no obligation to buy. You are back at your hotel at about 16:30.\n\nSCHEDULE (approximate times)\n09:00 – Pick-up from your hotel.\n09:15 – Göreme Open-Air Museum, the Dark Church and the Tokalı Church (about 2 hours).\n11:30 – Uçhisar castle and Pigeon Valley viewpoint (about 1 hour).\n12:45 – Lunch at a local restaurant.\n14:00 – Paşabağ and Devrent Valley (about 1 hour).\n15:15 – Çavuşin old village (about 30 minutes).\n15:45 – Avanos and a pottery workshop (about 45 minutes).\n16:30 – Return to your hotel.\n\nGOOD TO KNOW\n• Photography is not allowed inside the painted churches, to protect the frescoes.\n• Uçhisar castle has steep, narrow steps; you can enjoy the view from the base if you prefer.\n• The order can change to avoid crowds or to start later after a balloon flight.\n\nINCLUDED: private car and driver, licensed guide, tickets to the Göreme Open-Air Museum, the Dark Church, Uçhisar castle and Paşabağ, lunch, bottled water, hotel pick-up and drop-off.\nNOT INCLUDED: drinks at lunch, shopping, tips.\n\nOvernight: none.\nMeals: lunch.",
+    "stops": [
+     {"name": "Göreme Open-Air Museum", "duration": "About 2 hours", "description": "Rock-cut monasteries and churches with Byzantine frescoes, including the Dark Church and the Tokalı Church.", "image": "Göreme Open Air Museum 01.jpg"},
+     {"name": "Uçhisar castle", "duration": "About 1 hour", "description": "The highest rock castle in Cappadocia, with views over Pigeon Valley and Mount Erciyes.", "image": "Uçhisar Castle 01.jpg"},
+     {"name": "Paşabağ and Devrent Valley", "duration": "About 1 hour", "description": "Multi-capped fairy chimneys, a hermit's chapel and rocks shaped like animals.", "image": "Monks Valley.jpg"},
+     {"name": "Çavuşin and Avanos", "duration": "About 1 hour 15 minutes", "description": "An abandoned cave village and the pottery town on the Red River.", "image": "In a pottery workshop in Avanos, Cappadocia, Turkey, May, 2015-1.jpg"}
+    ]
+   }
+  ],
+  "faq": [
+   {"question": "How does booking on request work?", "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability and the final price by email within 24 hours, and you pay online only when the tour is confirmed."},
+   {"question": "What is the Red Tour?", "answer": "It is the local name for the classic day tour of northern Cappadocia: Göreme, Uçhisar, Paşabağ, Devrent, Çavuşin and Avanos. The Green Tour covers the south, with underground cities and the Ihlara Valley."},
+   {"question": "Is this a private tour?", "answer": "Yes. Your guide, car and driver are for your group only, so you set the pace and can spend longer where you like."},
+   {"question": "Can we combine it with the balloon flight?", "answer": "Yes. Many guests fly at sunrise, rest for an hour and then start this tour at about 10:00. We adjust the timing."},
+   {"question": "Is the Dark Church included?", "answer": "Yes. It requires a small extra ticket inside the museum, which is included in this tour."},
+   {"question": "Can we take photos in the churches?", "answer": "No, photography is forbidden inside the painted churches to protect the frescoes. You can photograph everywhere else."},
+   {"question": "Is it suitable for children?", "answer": "Yes. Children love climbing into the caves and spotting shapes in the rocks. The walks are short."},
+   {"question": "Is it suitable for people with limited mobility?", "answer": "Partly. Some churches have steps and uneven floors, and Uçhisar castle has steep stairs. We can adapt the route and skip the climbs."},
+   {"question": "Will we be taken to shops?", "answer": "Only the pottery demonstration in Avanos, which is part of the town's culture. There is never any obligation to buy, and we can skip it on request."},
+   {"question": "Is lunch included?", "answer": "Yes, at a local restaurant, often with testi kebab, a meat stew cooked in a sealed clay pot that is broken open at the table."},
+   {"question": "What should I wear?", "answer": "Good walking shoes, a hat and sunscreen in summer, and warm layers in winter, when Cappadocia can be snowy."},
+   {"question": "What is the best time of year?", "answer": "April to June and September to November are ideal. Winter is cold but magical under snow, and the sites are quieter."},
+   {"question": "What is the cancellation policy?", "answer": "You can cancel free of charge up to 24 hours before the tour. Until your request is confirmed, nothing is charged at all."}
+  ]
+ }
+}
