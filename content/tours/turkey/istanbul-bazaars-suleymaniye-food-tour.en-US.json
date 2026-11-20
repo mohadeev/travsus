@@ -1,0 +1,63 @@
+{
+ "key": "turkey-istanbul-bazaars-suleymaniye-food-tour",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {"city": "Istanbul", "state": "Istanbul", "country": "Turkey", "countryCode": "TR", "timeZone": "Europe/Istanbul", "streetAddress": "Your hotel in Istanbul", "geoCoordinates": {"lat": 41.0107, "log": 28.9681}},
+ "slug": "/en-US/turkey/istanbul/tours/istanbul-bazaars-suleymaniye-mosque-and-kadikoy-food-tour",
+ "tour": {
+  "name": "Istanbul Bazaars, Süleymaniye Mosque & Kadıköy Food Tour",
+  "subtitle": "A private day of markets, Sinan's masterpieces and Turkish food: the Grand Bazaar and its hidden hans, the Süleymaniye Mosque above the Golden Horn, the Spice Bazaar and the tiled Rüstem Pasha Mosque, then a ferry to Asia for a tasting walk through Kadıköy market.",
+  "seoTitle": "Istanbul Bazaars & Food Tour: Grand Bazaar, Süleymaniye | TRAVSUS",
+  "metaDescription": "Private Istanbul day: the Grand Bazaar, Süleymaniye Mosque, the Spice Bazaar, Rüstem Pasha Mosque and a ferry to Kadıköy for a food tasting walk. Licensed guide and tastings included.",
+  "tags": ["Grand Bazaar", "Spice Bazaar", "Süleymaniye Mosque", "Istanbul food tour", "Kadıköy", "Istanbul private tour"],
+  "highlights": [
+   "The Grand Bazaar, one of the oldest covered markets in the world",
+   "A rooftop view from a hidden caravanserai",
+   "Sinan's Süleymaniye Mosque and its view over the Golden Horn",
+   "The Spice Bazaar and the Iznik tiles of the Rüstem Pasha Mosque",
+   "A public ferry across the Bosphorus to Asia",
+   "Tastings in Kadıköy market: meze, kebab, baklava and Turkish coffee",
+   "Licensed guide, tastings and ferry included"
+  ],
+  "duration": 1,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "Istanbul has traded for two thousand years, and its markets are still where the city feels most alive. This private day takes you through them with a licensed guide who knows which lanes, workshops and food stalls are worth your time – and who will never steer you into a shop for commission.\n\nYou begin in the Grand Bazaar, begun soon after the Ottoman conquest of 1453 and today a covered town of about sixty streets and thousands of shops, from carpets and lamps to gold and leather. Your guide leads you into the quieter hans, the old courtyard caravanserais, including one with a rooftop view over the domes. You then climb to the Süleymaniye Mosque, the masterpiece of the great architect Sinan for Suleiman the Magnificent, before walking down through the old trading streets to the Spice Bazaar and the tiny Rüstem Pasha Mosque, covered inside with some of the finest Iznik tiles anywhere. In the afternoon you cross the Bosphorus by public ferry, as Istanbul's commuters do every day, to Kadıköy on the Asian side for a tasting walk through its market streets.\n\nAT A GLANCE\n• Duration: about 8 hours\n• Start: your hotel; end: Kadıköy or your hotel\n• Type: private walking tour with licensed guide, ferry and food tastings\n• Booking: on request – we confirm availability and the final price by email within 24 hours, and you pay only then\n• Level: easy to moderate; about 6 km of walking with some slopes\n\nWHAT YOU SEE\n• The Grand Bazaar and its hans.\n• The Süleymaniye Mosque.\n• The Spice Bazaar and the Rüstem Pasha Mosque.\n• The Golden Horn and the Bosphorus by ferry.\n• Kadıköy market on the Asian side.\n\nWHY THIS WORKS\nBazaars can be overwhelming alone. With a guide you understand what you see, avoid tourist traps, and taste the city's best food in places locals actually use.\n\nWHO IT SUITS\nFood lovers, shoppers, photographers and repeat visitors to Istanbul.\n\nWHO MAY PREFER ANOTHER TOUR\nFor Hagia Sophia, the Blue Mosque and Topkapı, see our Istanbul old city tour.\n\nPRACTICAL INFORMATION\nThe Grand Bazaar is closed on Sundays and religious holidays; on Sundays we start at the Spice Bazaar and add Balat. Come hungry. Women need a headscarf for the mosques, and shoulders and knees should be covered.",
+  "inclusions": {"standard": {
+   "private": ["Pick-up at your hotel in Istanbul", "Licensed private guide", "Food tastings in Kadıköy (about 8 to 10 tastings, enough for lunch)", "Turkish tea and coffee", "Public ferry ticket to Kadıköy", "Return to your hotel by car or ferry", "Bottled water"],
+   "shared": ["Hotel pick-up", "Licensed guide", "Food tastings", "Ferry ticket"]
+  }},
+  "pricingTiers": [
+   {"transportType": "Sedan / SUV", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png", "minSeats": 1, "maxSeats": 4, "pricing": {"currency": "EUR", "totalPrice": 260, "pricePerDay": 260}},
+   {"transportType": "Minivan", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png", "minSeats": 5, "maxSeats": 8, "pricing": {"currency": "EUR", "totalPrice": 460, "pricePerDay": 460}},
+   {"transportType": "Mini Bus", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png", "minSeats": 9, "maxSeats": 19, "pricing": {"currency": "EUR", "totalPrice": 920, "pricePerDay": 920}}
+  ],
+  "images": ["Grand Bazaar, Istanbul, Turkey (Ank Kumar) 01.jpg", "Spices on Spice Bazaar in Istanbul 02.jpg", "Süleymaniye Mosque, 22 January 2025.jpg", "Sweets on Spice Bazaar in Istanbul 01.jpg", "Courtyard of the Süleymaniye Mosque in Istanbul, Turkey 004.jpg"],
+  "days": [
+   {
+   "name": "Grand Bazaar, Süleymaniye, Spice Bazaar and Kadıköy",
+    "description": "What to expect: a private day of markets, mosques and food, crossing from Europe to Asia by ferry, with a licensed guide and tastings.\n\nYour guide meets you at your hotel at about 9:30 and walks you to the Grand Bazaar as its shops open. Its oldest core, the Cevahir Bedesten, was built soon after 1453 to store precious goods, and the market grew around it into a covered maze of about sixty streets. Your guide explains how the guilds once ran each street, shows you craftsmen still at work, and takes you into one of the old hans, the courtyard inns where merchants lodged with their goods, where a staircase leads up to the roof for a view across the domes and minarets. There is time to shop, and your guide helps you bargain and tells you what quality to look for in carpets, lamps and ceramics.\n\nFrom the bazaar you climb to the Süleymaniye Mosque, built between 1550 and 1557 by Mimar Sinan for Suleiman the Magnificent. Its calm, light-filled interior and wide courtyard are a contrast to the bustle below, and from its terrace the Golden Horn and the Bosphorus spread out at your feet. Sinan and Suleiman are both buried in the garden. You then walk down through the old merchants' quarter of Tahtakale to the Spice Bazaar, built in the 1660s and also called the Egyptian Bazaar, full of spices, dried fruit, Turkish delight and teas, and visit the nearby Rüstem Pasha Mosque, small but lined inside with brilliant 16th-century Iznik tiles.\n\nIn the early afternoon you board a public ferry at Eminönü and cross the Bosphorus to Kadıköy in Asia, with tea on deck and views of the old city skyline. In Kadıköy's market streets your guide leads a tasting walk with enough food for lunch: meze and olives, a classic kebab or lahmacun, stuffed mussels, Turkish cheeses, pickles, baklava and Turkish delight, finished with a Turkish coffee. You end in Kadıköy at about 16:30, free to explore, or we bring you back to your hotel.\n\nSCHEDULE (approximate times)\n09:30 – Meet your guide at your hotel.\n10:00 – The Grand Bazaar and a han rooftop (about 1 hour 45 minutes).\n11:45 – The Süleymaniye Mosque (about 45 minutes).\n12:45 – Tahtakale, the Spice Bazaar and the Rüstem Pasha Mosque (about 1 hour).\n14:00 – Ferry from Eminönü to Kadıköy.\n14:30 – Kadıköy food tasting walk (about 2 hours).\n16:30 – End in Kadıköy or return to your hotel.\n\nGOOD TO KNOW\n• The Grand Bazaar is closed on Sundays and religious holidays.\n• Mosques close to visitors at prayer times; your guide plans around them.\n• Tell us about allergies or dietary needs; vegetarian tastings are easy to arrange.\n\nINCLUDED: licensed private guide, food tastings in Kadıköy, tea and Turkish coffee, ferry ticket, bottled water, hotel pick-up and return.\nNOT INCLUDED: shopping, alcoholic drinks, tips.\n\nOvernight: none.\nMeals: lunch (tasting walk).",
+    "stops": [
+     {"name": "Grand Bazaar", "duration": "About 1 hour 45 minutes", "description": "The covered market of about sixty streets, its craftsmen and a han rooftop view.", "image": "Grand Bazaar, Istanbul, Turkey (Ank Kumar) 01.jpg"},
+     {"name": "Süleymaniye Mosque", "duration": "About 45 minutes", "description": "Sinan's masterpiece for Suleiman the Magnificent, with a terrace over the Golden Horn.", "image": "Süleymaniye Mosque, 22 January 2025.jpg"},
+     {"name": "Spice Bazaar and Rüstem Pasha Mosque", "duration": "About 1 hour", "description": "The 17th-century spice market and a small mosque lined with Iznik tiles.", "image": "Spices on Spice Bazaar in Istanbul 02.jpg"},
+     {"name": "Kadıköy food walk", "duration": "About 2 hours", "description": "A ferry to Asia and a tasting walk through Kadıköy market."}
+    ]
+   }
+  ],
+  "faq": [
+   {"question": "How does booking on request work?", "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability and the final price by email within 24 hours, and you pay online only when the tour is confirmed."},
+   {"question": "Do we have to buy anything?", "answer": "No. There are no commission shops on our tours. If you want to buy, your guide helps you find honest sellers and bargain fairly."},
+   {"question": "Is the food enough for lunch?", "answer": "Yes. The 8 to 10 tastings in Kadıköy add up to a generous lunch, so come hungry."},
+   {"question": "Can you cater for vegetarians or allergies?", "answer": "Yes. Tell us in advance and we will adapt the tastings. Vegetarian Turkish food is easy to find."},
+   {"question": "What if we come on a Sunday?", "answer": "The Grand Bazaar is closed on Sundays. We start at the Spice Bazaar and add the colourful old neighbourhoods of Balat and Fener instead."},
+   {"question": "Is the ferry private?", "answer": "No, it is the regular public ferry, which is part of the experience. A private boat can be arranged at extra cost."},
+   {"question": "How do we get back from Kadıköy?", "answer": "You can stay to explore, take the ferry back on your own, or we arrange a car to your hotel."},
+   {"question": "Is it suitable for children?", "answer": "Yes. Children enjoy the bazaars, the ferry and the sweets. The walking can be shortened."},
+   {"question": "What should I wear?", "answer": "Comfortable shoes, as there are slopes and cobblestones. For the mosques, cover shoulders and knees; women need a headscarf."},
+   {"question": "Can we buy carpets safely?", "answer": "Your guide explains how to judge quality and fair prices and can recommend reputable dealers, but buying is entirely your choice."},
+   {"question": "Is alcohol included?", "answer": "No. Turkish tea and coffee are included; you can order raki or beer in Kadıköy at your own cost."},
+   {"question": "What is the best time of year?", "answer": "Any time. The covered bazaars are pleasant in rain or heat; spring and autumn are best for the walking parts."},
+   {"question": "What is the cancellation policy?", "answer": "You can cancel free of charge up to 24 hours before the tour. Until your request is confirmed, nothing is charged at all."}
+  ]
+ }
+}
