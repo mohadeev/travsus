@@ -1,0 +1,63 @@
+{
+ "key": "turkey-ephesus-private-day-tour",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {"city": "Ephesus", "state": "İzmir", "country": "Turkey", "countryCode": "TR", "timeZone": "Europe/Istanbul", "streetAddress": "Your hotel or cruise port in Kuşadası, Selçuk or İzmir", "geoCoordinates": {"lat": 37.9395, "log": 27.341}},
+ "slug": "/en-US/turkey/ephesus/tours/ephesus-private-day-tour-library-of-celsus-terrace-houses-and-house-of-the-virgin-mary",
+ "tour": {
+  "name": "Ephesus Private Day Tour: Library of Celsus, Terrace Houses & House of the Virgin Mary",
+  "subtitle": "A private day in the best-preserved Roman city of the eastern Mediterranean with a licensed guide: marble streets, the Library of Celsus and the Great Theatre, the painted Terrace Houses, the House of the Virgin Mary, the last column of the Temple of Artemis and lunch in the hill village of Şirince.",
+  "seoTitle": "Ephesus Private Tour: Celsus Library & Terrace Houses | TRAVSUS",
+  "metaDescription": "Private Ephesus day tour from Kuşadası, Selçuk or İzmir: the Library of Celsus, Great Theatre, Terrace Houses, House of the Virgin Mary, Temple of Artemis and Şirince. Guide, tickets and lunch.",
+  "tags": ["Ephesus tour", "Library of Celsus", "Terrace Houses", "House of the Virgin Mary", "Kuşadası shore excursion", "Turkey private tour"],
+  "highlights": [
+   "Walking down Curetes Street through the heart of Roman Ephesus",
+   "The façade of the Library of Celsus",
+   "The Great Theatre, where Saint Paul's preaching caused a riot",
+   "The Terrace Houses with their frescoes and mosaics",
+   "The House of the Virgin Mary on Mount Koressos",
+   "The last column of the Temple of Artemis, a Wonder of the Ancient World",
+   "Lunch in the hill village of Şirince"
+  ],
+  "duration": 1,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "Ephesus was one of the great cities of the Roman Empire: capital of the province of Asia, a port of perhaps a quarter of a million people, home of the Temple of Artemis – one of the Seven Wonders of the Ancient World – and a centre of early Christianity, visited by Saint Paul and, by tradition, the last home of the Virgin Mary and Saint John. When its harbour silted up, the city was slowly abandoned, and today its marble streets, temples and fountains are the most complete Roman cityscape in the eastern Mediterranean, a UNESCO World Heritage Site since 2015.\n\nThis private day explores it with a licensed guide. You walk downhill through the city from the Upper Gate, past the Odeon, the Temple of Hadrian and the public latrines, to the two-storey façade of the Library of Celsus and the Great Theatre. You step inside the Terrace Houses, where wealthy families lived among frescoes and mosaics, then visit the House of the Virgin Mary in the pine forest on the mountain and the solitary column that is all that remains of the Temple of Artemis. Lunch is in Şirince, a village of old Greek houses among vineyards and olive groves.\n\nAT A GLANCE\n• Duration: about 7 to 8 hours\n• Start and end: your hotel or cruise ship in Kuşadası, Selçuk or İzmir\n• Type: private tour with licensed guide, car and driver\n• Booking: on request – we confirm availability and the final price by email within 24 hours, and you pay only then\n• Level: easy to moderate; about 3 km of walking on uneven marble, mostly downhill\n\nWHAT YOU SEE\n• Ancient Ephesus: Curetes Street, the Temple of Hadrian, the Library of Celsus and the Great Theatre.\n• The Terrace Houses.\n• The House of the Virgin Mary.\n• The Temple of Artemis and the Basilica of Saint John.\n• Şirince village.\n\nWHY THIS WORKS\nYour guide starts at the Upper Gate so you walk downhill with the sun behind you, reaches the Library before the cruise groups where possible, and is met by the car at the lower gate.\n\nWHO IT SUITS\nCruise passengers, history lovers, families and anyone travelling along the Aegean coast.\n\nWHO MAY PREFER ANOTHER TOUR\nIf you want the white travertines of Pamukkale, see our Pamukkale and Hierapolis day trip, about three hours inland.\n\nPRACTICAL INFORMATION\nThere is little shade at Ephesus; bring a hat, sunscreen and water in summer. Wear comfortable shoes, as the marble is polished and slippery. For cruise passengers, we guarantee your return to the ship on time.",
+  "inclusions": {"standard": {
+   "private": ["Pick-up and drop-off at your hotel or cruise port in Kuşadası, Selçuk or İzmir", "Private air-conditioned vehicle and driver", "Licensed private guide", "Entrance tickets to Ephesus, the Terrace Houses and the House of the Virgin Mary", "Lunch in Şirince", "Bottled water"],
+   "shared": ["Hotel or port pick-up", "Licensed guide", "Entrance tickets", "Lunch"]
+  }},
+  "pricingTiers": [
+   {"transportType": "Sedan / SUV", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png", "minSeats": 1, "maxSeats": 4, "pricing": {"currency": "EUR", "totalPrice": 300, "pricePerDay": 300}},
+   {"transportType": "Minivan", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png", "minSeats": 5, "maxSeats": 8, "pricing": {"currency": "EUR", "totalPrice": 540, "pricePerDay": 540}},
+   {"transportType": "Mini Bus", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png", "minSeats": 9, "maxSeats": 19, "pricing": {"currency": "EUR", "totalPrice": 1080, "pricePerDay": 1080}}
+  ],
+  "images": ["Ephesus Celsus Library Façade.jpg", "The Great Theatre of Ephesus, Ephesus Archaeological Site, Selcuk, Turkiye (53525196367).jpg", "Terrace Houses in Ephesus 2024 10.jpg", "House of the Virgin Mary in Ephesus.jpg", "View of Sirince.jpg"],
+  "days": [
+   {
+    "name": "Ancient Ephesus, the Terrace Houses, the House of the Virgin Mary and Şirince",
+    "description": "What to expect: a private day at Ephesus and its surroundings with a licensed guide, private car, tickets and lunch.\n\nYour guide and driver collect you at about 8:30 from your hotel or cruise ship in Kuşadası (about 20 minutes away), Selçuk or İzmir (about 1 hour). You start at the Upper Gate of Ephesus and walk downhill through the city as the Romans knew it: the State Agora and the Odeon, where the city council met, the Memmius monument, and then Curetes Street, the marble main street lined with statues, fountains and shops. Your guide points out the Temple of Hadrian with its carved arch, the Trajan Fountain, the communal public latrines and the mosaic floors of the shops.\n\nHalfway down you enter the Terrace Houses, a covered excavation of the homes of wealthy Ephesians, with painted walls, marble-panelled rooms, mosaics and heating systems, some still being restored before your eyes. At the bottom of Curetes Street stands the Library of Celsus, built around 117 AD by the consul Gaius Julius Aquila in honour of his father, whose tomb lies beneath it; its two-storey façade with statues of Wisdom, Virtue, Knowledge and Intelligence is the most famous image of Ephesus. You continue along the Marble Road to the Great Theatre, carved into the hillside with seats for about 25,000 people, where, according to the Acts of the Apostles, Paul's preaching provoked a riot of the silversmiths.\n\nYour driver meets you at the lower gate and drives up Mount Koressos to the House of the Virgin Mary, a small stone chapel in the pine forest where, according to tradition, Mary spent her last years; it is a place of pilgrimage for Christians and Muslims alike. After lunch in Şirince, a hillside village of whitewashed Greek houses known for its fruit wines, you return via Selçuk to see the single column of the Temple of Artemis and, time permitting, the hilltop Basilica of Saint John. You are back at your hotel or ship at about 16:00.\n\nSCHEDULE (approximate times)\n08:30 – Pick-up from your hotel or cruise port.\n09:00 – Ephesus from the Upper Gate: the State Agora, the Odeon and Curetes Street.\n10:15 – The Terrace Houses (about 45 minutes).\n11:00 – The Library of Celsus and the Great Theatre.\n12:00 – The House of the Virgin Mary (about 45 minutes).\n13:15 – Lunch in Şirince.\n14:45 – The Temple of Artemis and the Basilica of Saint John.\n16:00 – Return to your hotel or ship.\n\nGOOD TO KNOW\n• Cruise passengers: we plan the day around your ship's times and guarantee your return on time.\n• The Ephesus Museum in Selçuk, with the famous statues of Artemis, can replace Şirince on request.\n• In July and August we start earlier to avoid the midday heat.\n\nINCLUDED: private car and driver, licensed guide, tickets to Ephesus, the Terrace Houses and the House of the Virgin Mary, lunch, bottled water, pick-up and drop-off.\nNOT INCLUDED: the Basilica of Saint John ticket, wine tasting, drinks at lunch, tips.\n\nOvernight: none.\nMeals: lunch.",
+    "stops": [
+     {"name": "Ancient Ephesus", "duration": "About 2 hours 30 minutes", "description": "Curetes Street, the Temple of Hadrian, the Library of Celsus and the Great Theatre.", "image": "Ephesus Celsus Library Façade.jpg"},
+     {"name": "Terrace Houses", "duration": "About 45 minutes", "description": "The covered homes of wealthy Ephesians with frescoes and mosaics.", "image": "Terrace Houses in Ephesus 2024 10.jpg"},
+     {"name": "House of the Virgin Mary", "duration": "About 45 minutes", "description": "The stone chapel on Mount Koressos venerated as Mary's last home.", "image": "House of the Virgin Mary in Ephesus.jpg"},
+     {"name": "Şirince and the Temple of Artemis", "duration": "About 2 hours", "description": "Lunch in a hill village of old Greek houses and the last column of a Wonder of the Ancient World.", "image": "View of Sirince.jpg"}
+    ]
+   }
+  ],
+  "faq": [
+   {"question": "How does booking on request work?", "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability and the final price by email within 24 hours, and you pay online only when the tour is confirmed."},
+   {"question": "Is this suitable as a cruise shore excursion?", "answer": "Yes. We meet you at the Kuşadası cruise port, plan around your ship's schedule and guarantee your return on time."},
+   {"question": "Are the Terrace Houses worth it?", "answer": "Yes. They show how wealthy Romans actually lived, with frescoes and mosaics still in place. The ticket is included in this tour."},
+   {"question": "How much walking is there?", "answer": "About 3 km through ancient Ephesus, mostly downhill on uneven, slippery marble. The car meets you at the lower gate so you don't walk back."},
+   {"question": "Can we visit from İzmir?", "answer": "Yes. The drive from İzmir takes about 1 hour each way; we adjust the pick-up time."},
+   {"question": "Is the House of the Virgin Mary a religious site?", "answer": "Yes, it is a place of prayer for Christians and Muslims. Visitors should dress modestly and keep silent inside. Photography is not allowed in the chapel."},
+   {"question": "Is lunch included?", "answer": "Yes, a Turkish lunch in Şirince. You can taste the village's fruit wines at your own cost."},
+   {"question": "Will we be taken to carpet or leather shops?", "answer": "No. There are no commission shops on our tours unless you ask for one."},
+   {"question": "Is it suitable for children?", "answer": "Yes. Children enjoy the theatre, the public latrines and the stories of gladiators. The walking is moderate."},
+   {"question": "Is it suitable for people with limited mobility?", "answer": "Partly. The ancient streets are uneven and there are steps. We can shorten the walk and use the car between sites; tell us in advance."},
+   {"question": "What should I wear?", "answer": "Comfortable shoes with good grip, a hat and sunscreen. Cover shoulders and knees for the House of the Virgin Mary."},
+   {"question": "What is the best time of year?", "answer": "April to June and September to November. July and August are very hot, so we start early."},
+   {"question": "What is the cancellation policy?", "answer": "You can cancel free of charge up to 24 hours before the tour. Until your request is confirmed, nothing is charged at all."}
+  ]
+ }
+}
