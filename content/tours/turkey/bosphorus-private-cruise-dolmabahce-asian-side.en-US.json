@@ -1,0 +1,63 @@
+{
+ "key": "turkey-bosphorus-private-cruise-dolmabahce-asian-side",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {"city": "Istanbul", "state": "Istanbul", "country": "Turkey", "countryCode": "TR", "timeZone": "Europe/Istanbul", "streetAddress": "Your hotel in Istanbul", "geoCoordinates": {"lat": 41.0391, "log": 29.0004}},
+ "slug": "/en-US/turkey/istanbul/tours/bosphorus-private-yacht-cruise-dolmabahce-palace-and-the-asian-side",
+ "tour": {
+  "name": "Bosphorus Private Yacht Cruise, Dolmabahçe Palace & the Asian Side",
+  "subtitle": "A private day between two continents: the glittering Dolmabahçe Palace of the last sultans, two hours on your own yacht past Ottoman waterside mansions and fortresses, lunch in Ortaköy, and the villages and hilltop views of Istanbul's Asian shore.",
+  "seoTitle": "Bosphorus Private Yacht Cruise & Dolmabahçe Palace | TRAVSUS",
+  "metaDescription": "Private Istanbul day: Dolmabahçe Palace, a 2-hour private yacht cruise on the Bosphorus to Rumeli Hisarı, lunch in Ortaköy, Kuzguncuk and Çamlıca Hill on the Asian side. Guide and tickets included.",
+  "tags": ["Bosphorus cruise", "Private yacht Istanbul", "Dolmabahçe Palace", "Ortaköy", "Asian side Istanbul", "Istanbul private tour"],
+  "highlights": [
+   "Dolmabahçe Palace, its crystal staircase and the great ceremonial hall",
+   "A two-hour cruise on your own private yacht",
+   "Ottoman yalı mansions, Rumeli Hisarı and the Bosphorus bridges from the water",
+   "Lunch in Ortaköy beside its waterside mosque",
+   "Crossing to Asia: the old village of Kuzguncuk",
+   "The panorama from Çamlıca Hill over both continents",
+   "Licensed guide, private car, yacht and tickets included"
+  ],
+  "duration": 1,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "The Bosphorus is what makes Istanbul unique: a 30-kilometre strait between the Black Sea and the Sea of Marmara, with Europe on one shore and Asia on the other. This private day lets you see it properly – from a palace, from the water and from a hilltop on the far side.\n\nYou begin at Dolmabahçe Palace, built in the 1850s for Sultan Abdülmecid when the Ottoman court left Topkapı for a European-style residence on the shore. Its ceremonial hall, crystal staircase and vast chandeliers show an empire trying to match Paris and Vienna, and it was here that Atatürk, founder of the Turkish Republic, died in 1938. You then board your own private yacht for two hours on the strait, cruising past wooden yalı mansions, the fortress of Rumeli Hisarı and the great suspension bridges. After lunch in the waterside quarter of Ortaköy, your car crosses to Asia for a stroll through the old village of Kuzguncuk and the sweeping view from Çamlıca Hill.\n\nAT A GLANCE\n• Duration: about 8 hours\n• Start and end: your hotel in Istanbul\n• Type: private tour with licensed guide, car and driver, and a private yacht for 2 hours\n• Booking: on request – we confirm availability and the final price by email within 24 hours, and you pay only then\n• Level: easy\n\nWHAT YOU SEE\n• Dolmabahçe Palace (Selamlık and ceremonial hall).\n• The Bosphorus by private yacht: Ortaköy, the bridges, yalı mansions, Rumeli Hisarı and Anadolu Hisarı.\n• Ortaköy and its mosque.\n• Kuzguncuk and Çamlıca Hill on the Asian side.\n\nWHY THIS WORKS\nShared Bosphorus boats are crowded and follow a fixed route. A private yacht lets you choose where to slow down, take photos and simply enjoy the strait with tea on deck.\n\nWHO IT SUITS\nCouples, families, photographers and anyone who has already seen the old city.\n\nWHO MAY PREFER ANOTHER TOUR\nFor Hagia Sophia, the Blue Mosque and Topkapı, see our Istanbul old city tour.\n\nPRACTICAL INFORMATION\nDolmabahçe Palace is closed on Mondays; on those days we replace it with Beylerbeyi Palace on the Asian shore. Photography is not allowed inside the palace. Bring a light jacket for the boat, as the wind on the water can be cool.",
+  "inclusions": {"standard": {
+   "private": ["Pick-up and drop-off at your hotel in Istanbul", "Private car and driver for the day", "Licensed private guide", "Private yacht on the Bosphorus for 2 hours with tea and soft drinks", "Entrance ticket to Dolmabahçe Palace", "Lunch in Ortaköy", "Bottled water"],
+   "shared": ["Hotel pick-up and drop-off", "Licensed guide", "Bosphorus boat", "Entrance ticket", "Lunch"]
+  }},
+  "pricingTiers": [
+   {"transportType": "Sedan / SUV", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png", "minSeats": 1, "maxSeats": 4, "pricing": {"currency": "EUR", "totalPrice": 520, "pricePerDay": 520}},
+   {"transportType": "Minivan", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png", "minSeats": 5, "maxSeats": 8, "pricing": {"currency": "EUR", "totalPrice": 820, "pricePerDay": 820}},
+   {"transportType": "Mini Bus", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png", "minSeats": 9, "maxSeats": 19, "pricing": {"currency": "EUR", "totalPrice": 1560, "pricePerDay": 1560}}
+  ],
+  "images": ["Ortakoy-mosque-bosporus-bridge.jpg", "Dolmabahce-Palace-Istanbul.jpg", "Rumelihisarı, Kale, Istanbul.jpg", "Bosphorus in 2026 01.jpg", "Bosphorus from the boat 1.jpg"],
+  "days": [
+   {
+    "name": "Dolmabahçe Palace, a private Bosphorus cruise and the Asian shore",
+    "description": "What to expect: a private day on and around the Bosphorus, with a licensed guide, private car, two hours on a private yacht, palace tickets and lunch.\n\nYour guide and driver collect you at about 9:00 and take you along the shore to Dolmabahçe Palace. Built between 1843 and 1856 for Sultan Abdülmecid by the Armenian architects of the Balyan family, it replaced Topkapı as the main residence of the sultans. Its façade stretches about 600 metres along the water, and inside you walk up a staircase with crystal balusters into rooms of gilded ceilings, Bohemian and English crystal and Hereke carpets. The ceremonial hall, crowned by a chandelier weighing about four and a half tonnes, is one of the largest throne rooms in Europe. Your guide also shows you the simple room where Mustafa Kemal Atatürk died on 10 November 1938; the palace clocks were stopped at 9:05 in his memory.\n\nAt about 11:30 you board your private yacht at a nearby pier for a two-hour cruise. You sail north under the 15 July Martyrs Bridge, past the Ortaköy Mosque and the Çırağan and Beylerbeyi palaces, and along shores lined with yalı, the wooden summer mansions of Ottoman pashas and merchants. At the narrowest point of the strait you pass Rumeli Hisarı, the fortress Mehmed II built in about four months in 1452 to cut Constantinople off before the conquest, facing the older Anadolu Hisarı in Asia, before turning back under the Fatih Sultan Mehmet Bridge. Tea and soft drinks are served on deck.\n\nAfter landing you have lunch in Ortaköy, a lively waterside quarter of cafés and craft stalls, beside its 19th-century Baroque mosque. In the afternoon your car crosses the bridge to Asia. You walk through Kuzguncuk, an old village of wooden houses where a mosque, a church and a synagogue stand side by side, and finish on Çamlıca Hill, where the view takes in the whole of the Bosphorus, the old city and the Sea of Marmara. You are back at your hotel at about 17:00.\n\nSCHEDULE (approximate times)\n09:00 – Pick-up from your hotel.\n09:30 – Dolmabahçe Palace (about 1 hour 45 minutes).\n11:30 – Private yacht cruise on the Bosphorus (2 hours).\n13:45 – Lunch in Ortaköy.\n15:00 – Kuzguncuk on the Asian side.\n16:00 – Çamlıca Hill viewpoint.\n17:00 – Return to your hotel.\n\nGOOD TO KNOW\n• Dolmabahçe Palace is closed on Mondays; we visit Beylerbeyi Palace instead.\n• The yacht route depends on sea traffic and weather; in strong wind we stay closer to the city.\n• A sunset cruise can be arranged instead of the midday cruise on request.\n\nINCLUDED: private car and driver, licensed guide, private yacht for 2 hours with tea and soft drinks, Dolmabahçe Palace ticket, lunch, bottled water, hotel pick-up and drop-off.\nNOT INCLUDED: Dolmabahçe Harem section, drinks at lunch, tips.\n\nOvernight: none.\nMeals: lunch.",
+    "stops": [
+     {"name": "Dolmabahçe Palace", "duration": "About 1 hour 45 minutes", "description": "The 19th-century palace of the last sultans, with its crystal staircase, ceremonial hall and Atatürk's room.", "image": "Dolmabahce-Palace-Istanbul.jpg"},
+     {"name": "Private Bosphorus cruise", "duration": "2 hours", "description": "Your own yacht past Ottoman mansions, palaces and the fortress of Rumeli Hisarı, under the Bosphorus bridges.", "image": "Rumelihisarı, Kale, Istanbul.jpg"},
+     {"name": "Ortaköy", "duration": "About 1 hour", "description": "Lunch in the waterside quarter beside the Ortaköy Mosque and the first Bosphorus bridge.", "image": "Ortakoy-mosque-bosporus-bridge.jpg"},
+     {"name": "Kuzguncuk and Çamlıca Hill", "duration": "About 2 hours", "description": "An old Asian-shore village and the highest viewpoint over both continents."}
+    ]
+   }
+  ],
+  "faq": [
+   {"question": "How does booking on request work?", "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability and the final price by email within 24 hours, and you pay online only when the tour is confirmed."},
+   {"question": "Is the yacht really private?", "answer": "Yes. The yacht, its captain and crew are for your group only for two hours, with tea and soft drinks on board."},
+   {"question": "How far up the Bosphorus do we go?", "answer": "Usually to Rumeli Hisarı and the second bridge, the most beautiful stretch. A longer cruise to the Black Sea mouth can be arranged at extra cost."},
+   {"question": "What if we visit on a Monday?", "answer": "Dolmabahçe Palace is closed on Mondays. We visit Beylerbeyi Palace on the Asian shore instead, a smaller but equally elegant summer palace."},
+   {"question": "Can we take photos in Dolmabahçe?", "answer": "Photography is not allowed inside the palace rooms, but you can photograph the gardens, gates and façade."},
+   {"question": "Can we do a sunset cruise instead?", "answer": "Yes. Tell us and we will move the cruise to late afternoon and visit the Asian side earlier."},
+   {"question": "Is lunch included?", "answer": "Yes, a Turkish lunch in Ortaköy. If you want to try kumpir, the famous stuffed baked potato, your guide will show you the best stall."},
+   {"question": "Is it suitable for children?", "answer": "Yes. Children love the boat and the palace's sparkling rooms. Life jackets are on board."},
+   {"question": "Is it suitable for people with limited mobility?", "answer": "Mostly. The palace has stairs and the yacht requires stepping on board with help from the crew. Tell us in advance and we will adapt."},
+   {"question": "Do we really cross into Asia?", "answer": "Yes. Your car drives across the Bosphorus bridge, so you stand on two continents in one day."},
+   {"question": "What should I wear?", "answer": "Comfortable shoes and a light jacket for the boat. Nothing special is needed for the palace."},
+   {"question": "What is the best time of year?", "answer": "April to June and September to October for calm water and soft light. Summer is warm and lively; winter cruises are possible on milder days."},
+   {"question": "What is the cancellation policy?", "answer": "You can cancel free of charge up to 24 hours before the tour. Until your request is confirmed, nothing is charged at all."}
+  ]
+ }
+}
