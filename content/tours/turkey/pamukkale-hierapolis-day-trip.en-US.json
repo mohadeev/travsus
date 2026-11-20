@@ -1,0 +1,63 @@
+{
+ "key": "turkey-pamukkale-hierapolis-day-trip",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {"city": "Pamukkale", "state": "Denizli", "country": "Turkey", "countryCode": "TR", "timeZone": "Europe/Istanbul", "streetAddress": "Your hotel in Pamukkale or Denizli", "geoCoordinates": {"lat": 37.9214, "log": 29.1206}},
+ "slug": "/en-US/turkey/pamukkale/tours/pamukkale-travertines-and-hierapolis-private-day-tour",
+ "tour": {
+  "name": "Pamukkale Travertines & Hierapolis Private Day Tour",
+  "subtitle": "A private day on the 'Cotton Castle' with a licensed guide: walk barefoot across the white travertine terraces, explore the Roman spa city of Hierapolis with its great theatre and vast necropolis, swim among sunken columns in the Antique Pool, and visit the ruins of Laodicea.",
+  "seoTitle": "Pamukkale & Hierapolis Private Day Tour | TRAVSUS",
+  "metaDescription": "Private Pamukkale day tour: the white travertine terraces, Hierapolis theatre and necropolis, the Antique Pool and Laodicea, with a licensed guide, private car, tickets and lunch.",
+  "tags": ["Pamukkale tour", "Hierapolis", "Travertine terraces", "Cleopatra's Pool", "Laodicea", "Turkey private tour"],
+  "highlights": [
+   "Walking barefoot on the white travertine terraces",
+   "The Roman theatre of Hierapolis and its carved stage building",
+   "One of the largest ancient cemeteries in Anatolia",
+   "Swimming among sunken marble columns in the Antique Pool",
+   "The Martyrium of Saint Philip on the hill",
+   "Laodicea, one of the Seven Churches of Revelation",
+   "Licensed guide, private car, tickets and lunch included"
+  ],
+  "duration": 1,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "Seen from the plain, the hillside above the village of Pamukkale looks as if it were covered in snow. For thousands of years, warm springs rich in calcium have flowed down the slope and left behind a white crust of travertine that forms terraces, frozen waterfalls and shallow turquoise pools – the Turks named it Pamukkale, the 'Cotton Castle'. On top of the cliff the Greeks and Romans built Hierapolis, a sacred spa city where people came to bathe, heal and, often, to be buried. Today the travertines and the ruins together form a UNESCO World Heritage Site.\n\nThis private day explores both with a licensed guide. You begin at the north gate and walk through the great necropolis and the colonnaded main street of Hierapolis, visit the Roman theatre with its richly carved stage building, and climb to the Martyrium of Saint Philip. You can swim in the Antique Pool among fallen marble columns, then walk barefoot down the travertines with the warm water flowing around your feet. After lunch you visit Laodicea, a wealthy Roman city named in the Book of Revelation, where excavations are bringing whole streets back to light.\n\nAT A GLANCE\n• Duration: about 7 hours\n• Start and end: your hotel in Pamukkale or Denizli\n• Type: private tour with licensed guide, car and driver\n• Booking: on request – we confirm availability and the final price by email within 24 hours, and you pay only then\n• Level: easy to moderate; about 4 km of walking, partly barefoot on travertine\n\nWHAT YOU SEE\n• The Hierapolis necropolis, Frontinus Street and the Domitian Gate.\n• The Roman theatre of Hierapolis.\n• The Martyrium of Saint Philip.\n• The Antique Pool.\n• The travertine terraces.\n• Laodicea.\n\nWHY THIS WORKS\nStarting at the north gate lets you walk the whole ancient city downhill and finish on the travertines in the softer afternoon light, with your driver waiting at the bottom.\n\nWHO IT SUITS\nFamilies, photographers, history lovers and anyone travelling between Cappadocia, Ephesus and the coast.\n\nWHO MAY PREFER ANOTHER TOUR\nIf you are based on the coast and want to avoid a long drive, choose our Ephesus day tour; Pamukkale is about three hours inland from Kuşadası.\n\nPRACTICAL INFORMATION\nShoes are not allowed on the travertines, so bring a bag for them and wear clothes you can roll up. In summer the white surface is very bright: bring sunglasses and sunscreen. Swimwear is needed if you want to use the Antique Pool.",
+  "inclusions": {"standard": {
+   "private": ["Pick-up and drop-off at your hotel in Pamukkale or Denizli", "Private air-conditioned vehicle and driver", "Licensed private guide", "Entrance tickets to Pamukkale-Hierapolis and Laodicea", "Lunch at a local restaurant", "Bottled water"],
+   "shared": ["Hotel pick-up and drop-off", "Licensed guide", "Entrance tickets", "Lunch"]
+  }},
+  "pricingTiers": [
+   {"transportType": "Sedan / SUV", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png", "minSeats": 1, "maxSeats": 4, "pricing": {"currency": "EUR", "totalPrice": 260, "pricePerDay": 260}},
+   {"transportType": "Minivan", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png", "minSeats": 5, "maxSeats": 8, "pricing": {"currency": "EUR", "totalPrice": 460, "pricePerDay": 460}},
+   {"transportType": "Mini Bus", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png", "minSeats": 9, "maxSeats": 19, "pricing": {"currency": "EUR", "totalPrice": 920, "pricePerDay": 920}}
+  ],
+  "images": ["Travertine terraces - Pamukkale, Denizli Province, Turkey - October 6, 2025.jpg", "Theatre of Hierapolis 1.jpg", "Pamukkale Travertines - 2014.10 - panoramio.jpg", "Cleopatra Antique pool (15688240214).jpg", "Lake of Pamukkale seen from the travertines.jpg"],
+  "days": [
+   {
+    "name": "Hierapolis, the Antique Pool, the travertines and Laodicea",
+    "description": "What to expect: a private day at Pamukkale and Laodicea with a licensed guide, private car, tickets and lunch.\n\nYour guide and driver collect you at about 9:00 and drive up to the north gate of Hierapolis. You enter through one of the largest ancient cemeteries in Anatolia, where hundreds of tombs line the road – round tumuli, house-shaped tombs and carved sarcophagi of people who came to the healing waters and never left. You pass through the Byzantine gate and walk down Frontinus Street, the colonnaded main avenue, to the triple-arched Domitian Gate. Your guide explains how the city was founded by the kings of Pergamon in the 2nd century BC, rebuilt by the Romans after earthquakes, and visited by emperors.\n\nYou then climb to the Roman theatre, built in the 2nd century AD on the hillside, with seats for several thousand spectators and one of the best-preserved stage buildings in Turkey, decorated with reliefs of Apollo, Artemis and Dionysus. Those who feel energetic can continue up to the Martyrium of Saint Philip, the octagonal shrine built where the apostle was believed to have been martyred. Back at the centre, you have time to swim in the Antique Pool, a natural thermal spring at around 35 °C where marble columns from a fallen Roman portico lie on the bottom (separate ticket).\n\nIn the early afternoon you take off your shoes and walk down the travertines, following the path between the terraces as warm, mineral-rich water flows over the white rock and gathers in pools that reflect the sky. Your driver meets you at the bottom and takes you to lunch, then about 15 minutes to Laodicea, a rich Roman city famous for its wool and banking, and one of the Seven Churches of Asia mentioned in the Book of Revelation. Here you walk along a restored colonnaded street, see two theatres and the restored church. You are back at your hotel at about 16:30.\n\nSCHEDULE (approximate times)\n09:00 – Pick-up from your hotel.\n09:15 – Hierapolis: the necropolis, Frontinus Street and the Domitian Gate.\n10:45 – The Roman theatre and the Martyrium of Saint Philip.\n12:00 – Free time at the Antique Pool.\n13:00 – Walk down the travertine terraces.\n14:00 – Lunch at a local restaurant.\n15:00 – Laodicea (about 1 hour 15 minutes).\n16:30 – Return to your hotel.\n\nGOOD TO KNOW\n• Shoes must be removed on the travertines to protect them; the surface can be rough in places.\n• Many pools are kept dry in rotation to let the white crust recover.\n• Pick-up from Kuşadası, Selçuk or Antalya is possible on request, with about 3 hours of driving each way.\n\nINCLUDED: private car and driver, licensed guide, tickets to Pamukkale-Hierapolis and Laodicea, lunch, bottled water, hotel pick-up and drop-off.\nNOT INCLUDED: Antique Pool ticket, Hierapolis Archaeology Museum, drinks at lunch, tips.\n\nOvernight: none.\nMeals: lunch.",
+    "stops": [
+     {"name": "Hierapolis", "duration": "About 2 hours 30 minutes", "description": "The necropolis, Frontinus Street, the Domitian Gate, the Roman theatre and the Martyrium of Saint Philip.", "image": "Theatre of Hierapolis 1.jpg"},
+     {"name": "Antique Pool", "duration": "About 1 hour", "description": "A warm thermal pool with sunken marble columns from a Roman portico.", "image": "Cleopatra Antique pool (15688240214).jpg"},
+     {"name": "Travertine terraces", "duration": "About 1 hour", "description": "A barefoot walk down the white terraces and turquoise pools of the Cotton Castle.", "image": "Travertine terraces - Pamukkale, Denizli Province, Turkey - October 6, 2025.jpg"},
+     {"name": "Laodicea", "duration": "About 1 hour 15 minutes", "description": "The colonnaded streets, theatres and church of one of the Seven Churches of Revelation."}
+    ]
+   }
+  ],
+  "faq": [
+   {"question": "How does booking on request work?", "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability and the final price by email within 24 hours, and you pay online only when the tour is confirmed."},
+   {"question": "Can we walk on the travertines?", "answer": "Yes, barefoot along the marked path. Shoes are not allowed, to protect the terraces. The surface is mostly smooth but can be rough in places."},
+   {"question": "Can we swim in the Antique Pool?", "answer": "Yes, with a separate ticket bought on site. The water is about 35 °C all year. Bring swimwear and a towel; changing rooms and lockers are available."},
+   {"question": "Can we swim in the travertine pools?", "answer": "You can paddle in the shallow pools along the path, but swimming there is not allowed."},
+   {"question": "Can we do this from Kuşadası or Antalya?", "answer": "Yes, as a long day of about 3 hours' driving each way. Many guests prefer to stay one night in Pamukkale and see the travertines at sunset."},
+   {"question": "Is lunch included?", "answer": "Yes, a Turkish lunch at a local restaurant. Vegetarian options are always available."},
+   {"question": "Is it suitable for children?", "answer": "Yes. Children love paddling on the travertines and swimming in the warm pool. The walking can be shortened."},
+   {"question": "Is it suitable for people with limited mobility?", "answer": "Partly. The car can drive to the south gate near the pool and travertines, avoiding most of the walk. The theatre and Martyrium require climbing."},
+   {"question": "What is the best time of day for photos?", "answer": "Late afternoon and sunset give the softest light on the white terraces. In summer, midday is very bright and hot."},
+   {"question": "Will we be taken to shops?", "answer": "No. There are no shopping stops on this tour unless you ask."},
+   {"question": "What should I bring?", "answer": "A bag for your shoes, sunglasses, sunscreen, a hat, swimwear and a towel if you want to swim, and clothes you can roll up."},
+   {"question": "What is the best time of year?", "answer": "April to June and September to November. Summer is very hot and bright; winter is quiet, and the warm water steams in the cold air."},
+   {"question": "What is the cancellation policy?", "answer": "You can cancel free of charge up to 24 hours before the tour. Until your request is confirmed, nothing is charged at all."}
+  ]
+ }
+}
