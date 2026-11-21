@@ -1,0 +1,119 @@
+{
+ "key": "spain-highlights-8-days",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {"city": "Madrid", "state": "Community of Madrid", "country": "Spain", "countryCode": "ES", "timeZone": "Europe/Madrid", "streetAddress": "Madrid-Barajas Airport or your hotel in Madrid", "geoCoordinates": {"lat": 40.4168, "log": -3.7038}},
+ "slug": "/en-US/spain/madrid/tours/8-day-private-spain-highlights-tour-madrid-toledo-cordoba-seville-ronda-granada",
+ "tour": {
+  "name": "8-Day Private Spain Highlights Tour: Madrid, Toledo, Córdoba, Seville, Ronda & Granada",
+  "subtitle": "The classic journey through central and southern Spain with licensed guides and private cars: the Royal Palace and Prado in Madrid, El Greco's Toledo, the Mezquita of Córdoba, the Alcázar and cathedral of Seville, the gorge of Ronda and the white villages, and the Alhambra of Granada.",
+  "seoTitle": "8-Day Private Spain Tour: Madrid to Granada | TRAVSUS",
+  "metaDescription": "Private 8-day Spain tour: Madrid, Toledo, Córdoba, Seville, Ronda and Granada with licensed guides, private cars, high-speed train, 7 nights' hotels, Alhambra and monument tickets.",
+  "tags": ["Spain tour", "8 days in Spain", "Madrid", "Seville", "Granada", "Andalusia"],
+  "highlights": [
+   "The Royal Palace and the masterpieces of the Prado",
+   "Toledo, the city of three cultures, and El Greco",
+   "The high-speed train to Córdoba and the Mezquita",
+   "The Real Alcázar, cathedral and Giralda of Seville",
+   "Ronda's Puente Nuevo and the white village of Setenil",
+   "The Alhambra, Nasrid Palaces and Generalife",
+   "7 nights in central hotels, licensed guides in every city"
+  ],
+  "duration": 8,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "This private journey follows the great story of Spain from the royal capital to the last Moorish kingdom. In Madrid you see the palace of the Spanish kings and the paintings of Velázquez and Goya; in Toledo, the city where Christians, Muslims and Jews lived side by side for centuries; in Córdoba, the great mosque of the caliphs with a cathedral at its heart; in Seville, the riches of the Americas trade; and in Granada, the Alhambra, the palace the Nasrid sultans surrendered in 1492.\n\nYou have a licensed guide in every city, a private car and driver for every transfer in Andalusia, a first-class high-speed train from Madrid to Córdoba, seven nights in well-located hotels and timed tickets for every major monument, including the Alhambra's Nasrid Palaces. The pace leaves afternoons and evenings free for tapas, flamenco and wandering.\n\nAT A GLANCE\n• Duration: 8 days, 7 nights\n• Start: Madrid-Barajas airport or your hotel in Madrid\n• End: Granada or Málaga airport, or Granada station\n• Type: private tour with licensed guides, private cars and drivers, high-speed train; 7 nights in hotels with breakfast\n• Booking: on request – we confirm availability, hotels, train, Alhambra slot and final price by email within 24 hours, and you pay only then\n• Level: easy to moderate; daily walks of 4 to 7 km\n\nWHAT YOU SEE\n• Madrid: the Royal Palace, the Prado, Plaza Mayor and Retiro Park.\n• Toledo: the cathedral, El Greco's Burial of the Count of Orgaz and the synagogues.\n• Córdoba: the Mosque-Cathedral and the Jewish quarter.\n• Seville: the Real Alcázar, the cathedral and Giralda, Santa Cruz and Plaza de España.\n• Ronda and Setenil de las Bodegas.\n• Granada: the Alhambra, the Generalife and the Albaicín.\n\nWHY THIS WORKS\nThe high-speed train covers Madrid to Córdoba in under two hours, and the private car handles the scenic but poorly connected stretch through Ronda to Granada, so every day has more sightseeing than travelling.\n\nWHO IT SUITS\nFirst-time visitors to Spain, couples, families and small groups who want the great classics with private guiding.\n\nWHO MAY PREFER ANOTHER TOUR\nIf you want Barcelona as well, ask us to add two nights there with a flight from Granada. If you prefer to stay in one place, choose our day tours.\n\nPRACTICAL INFORMATION\nAlhambra tickets are personal: we need each traveller's full name and passport number when you book. Spain eats late – lunch from 14:00, dinner from 21:00. Summers in Andalusia are very hot; spring and autumn are ideal.",
+  "inclusions": {"standard": {
+   "private": ["Airport or hotel welcome in Madrid and final transfer in Granada", "7 nights in central 4-star or boutique hotels with breakfast (double or twin rooms): 3 in Madrid, 2 in Seville, 2 in Granada", "First-class high-speed train from Madrid to Córdoba", "Private cars and drivers for Toledo and all transfers in Andalusia", "Licensed private guides in Madrid, Toledo, Córdoba, Seville, Ronda and Granada", "Timed tickets to all monuments in the programme, including the Alhambra's Nasrid Palaces", "Lunch on days 2 to 7", "Bottled water"],
+   "shared": ["Airport transfers", "7 nights in hotels with breakfast", "High-speed train", "Licensed guides", "Entrance tickets", "Lunches"]
+  }},
+  "pricingTiers": [
+   {"transportType": "Sedan / SUV", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png", "minSeats": 1, "maxSeats": 4, "pricing": {"currency": "EUR", "totalPrice": 4560, "pricePerDay": 570}},
+   {"transportType": "Minivan", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png", "minSeats": 5, "maxSeats": 8, "pricing": {"currency": "EUR", "totalPrice": 8480, "pricePerDay": 1060}},
+   {"transportType": "Mini Bus", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png", "minSeats": 9, "maxSeats": 19, "pricing": {"currency": "EUR", "totalPrice": 17600, "pricePerDay": 2200}}
+  ],
+  "images": ["Alhambra in the evening.jpg", "Madrid May 2014-35a.jpg", "Plaza de España, Seville 3.jpg", "Interior of the Mosque-Cathedral of Córdoba.jpg", "Toledo in May before sunset. Spain.jpg"],
+  "days": [
+   {
+    "name": "Arrival in Madrid and an evening in the old town",
+    "description": "What to expect: a private welcome, check-in at a central hotel and a gentle first walk.\n\nYour driver meets you at Madrid-Barajas airport, about 30 minutes from the centre, and takes you to your hotel near the Puerta del Sol or the Prado. In the early evening your guide walks with you through the heart of Habsburg Madrid: the Puerta del Sol with the kilometre-zero plaque from which Spain's roads are measured, the arcaded Plaza Mayor completed in 1619, and the lanes around the Mercado de San Miguel, where Madrileños gather for a glass of vermouth before dinner. Your guide recommends restaurants and explains the days ahead.\n\nSCHEDULE (approximate times)\nAny time – Airport welcome and transfer to your hotel.\n18:30 – Evening walk: Puerta del Sol, Plaza Mayor and San Miguel (about 1 hour 30 minutes).\n20:00 – Free evening.\n\nGOOD TO KNOW\n• If you arrive late, the walk moves to day 2.\n• Dinner in Spain starts around 21:00.\n\nINCLUDED: airport transfer, licensed guide for the evening walk.\nNOT INCLUDED: dinner, drinks, tips.\n\nOvernight: hotel in central Madrid.\nMeals: none.",
+    "stops": [
+     {"name": "Plaza Mayor", "duration": "About 1 hour 30 minutes", "description": "Puerta del Sol, Plaza Mayor and the Mercado de San Miguel at dusk.", "image": "Plaza Mayor, Madrid 20180720.jpg"}
+    ]
+   },
+   {
+    "name": "Madrid: Royal Palace, Prado Museum and Retiro Park",
+    "description": "What to expect: royal Madrid and one of the greatest art museums in the world, with a licensed guide and timed tickets.\n\nIn the morning you visit the Royal Palace, built after the old Alcázar burned in 1734, with its grand staircase, the Throne Room under a ceiling by Tiepolo, the porcelain room and the Royal Chapel, and look across the Plaza de la Armería to the Almudena Cathedral. After a tapas lunch, your guide leads you through the Prado to the paintings that matter most: Velázquez's Las Meninas, Goya's Third of May 1808 and his Black Paintings, El Greco, Titian, Rubens and Bosch's Garden of Earthly Delights. You end with a walk in Retiro Park to the Crystal Palace, part of a UNESCO World Heritage landscape since 2021.\n\nSCHEDULE (approximate times)\n09:30 – Royal Palace (about 1 hour 45 minutes).\n11:30 – Walk through Habsburg Madrid.\n13:00 – Tapas lunch.\n14:30 – Prado Museum (about 2 hours).\n16:45 – Retiro Park and the Crystal Palace.\n17:30 – Free evening.\n\nGOOD TO KNOW\n• The Royal Palace can close for state events; we then visit the Descalzas Reales or the Reina Sofía (Guernica).\n• Photography is not allowed inside the Prado.\n\nINCLUDED: licensed guide, Royal Palace and Prado tickets, lunch, transfers as needed.\nNOT INCLUDED: dinner, drinks, tips.\n\nOvernight: hotel in central Madrid.\nMeals: breakfast, lunch.",
+    "stops": [
+     {"name": "Royal Palace of Madrid", "duration": "About 1 hour 45 minutes", "description": "The Throne Room and state apartments.", "image": "Madrid May 2014-35a.jpg"},
+     {"name": "Prado Museum", "duration": "About 2 hours", "description": "Velázquez, Goya, El Greco and Bosch.", "image": "Museo del Prado 2016 (25185969599).jpg"},
+     {"name": "Retiro Park", "duration": "About 45 minutes", "description": "The lake and the Crystal Palace.", "image": "El Retiro in Madrid, Palacio de Cristal.jpg"}
+    ]
+   },
+   {
+    "name": "Day trip to Toledo, the city of three cultures",
+    "description": "What to expect: the hilltop city above the Tagus with a licensed guide, private car, tickets and lunch.\n\nYour driver takes you about an hour south to the Mirador del Valle for the view of Toledo wrapped by the river gorge. In the old town you visit the cathedral, begun in 1226, with its Transparente and a sacristy hung with paintings by El Greco, and see his masterpiece, The Burial of the Count of Orgaz, in the church of Santo Tomé. After a lunch of Castilian classics and a taste of marzipan, you walk through the Jewish quarter to the horseshoe arches of the Santa María la Blanca synagogue and the cloister of San Juan de los Reyes, before returning to Madrid in the late afternoon.\n\nSCHEDULE (approximate times)\n08:45 – Departure from your hotel.\n09:45 – Mirador del Valle.\n10:15 – Toledo Cathedral.\n12:00 – Santo Tomé and El Greco.\n13:00 – Lunch.\n14:30 – Santa María la Blanca and San Juan de los Reyes.\n16:00 – Return to Madrid.\n\nGOOD TO KNOW\n• Toledo's lanes are steep and cobbled; public escalators help.\n• The cathedral is closed to tourists on Sunday mornings.\n\nINCLUDED: private car and driver, licensed guide, tickets, lunch, bottled water.\nNOT INCLUDED: dinner, drinks, tips.\n\nOvernight: hotel in central Madrid.\nMeals: breakfast, lunch.",
+    "stops": [
+     {"name": "Mirador del Valle", "duration": "About 30 minutes", "description": "The panorama of Toledo above the Tagus.", "image": "Toledo in May before sunset. Spain.jpg"},
+     {"name": "Toledo Cathedral and Santo Tomé", "duration": "About 2 hours", "description": "Gothic naves, the El Greco sacristy and the Burial of the Count of Orgaz.", "image": "Toledo - Catedral de Santa Maria int 03.jpg"},
+     {"name": "Jewish quarter", "duration": "About 1 hour", "description": "Santa María la Blanca and San Juan de los Reyes.", "image": "Interior-Santa María-La-Blanca-synagogue-Toledo-2.jpg"}
+    ]
+   },
+   {
+    "name": "High-speed train to Córdoba, the Mezquita, and on to Seville",
+    "description": "What to expect: the jewel of al-Andalus on the way south.\n\nAfter breakfast your driver takes you to Atocha station for the high-speed train, which crosses La Mancha and the Sierra Morena to Córdoba in under two hours. Your guide meets you on the platform and leads you across the Roman bridge into the Mosque-Cathedral, where more than 800 columns carry double arches of red brick and white stone, to the golden 10th-century mihrab and the Renaissance cathedral built at its heart. After lunch you walk through the Jewish quarter, past the synagogue of 1315 and the Calleja de las Flores, before your driver takes you to Seville, about 1 hour 45 minutes away.\n\nSCHEDULE (approximate times)\n08:30 – Transfer to Atocha station.\n09:30 – High-speed train to Córdoba (about 1 hour 45 minutes).\n11:30 – Roman bridge and Mosque-Cathedral.\n13:30 – Lunch.\n14:45 – Jewish quarter and Calleja de las Flores.\n16:00 – Drive to Seville.\n18:00 – Check-in at your hotel in Seville.\n\nGOOD TO KNOW\n• Luggage travels with you on the train; there is space at the ends of each carriage.\n• Train times vary; we adapt the day to your ticket.\n\nINCLUDED: transfer to the station, first-class train, licensed guide, Mezquita ticket, lunch, private car to Seville.\nNOT INCLUDED: dinner, drinks, tips.\n\nOvernight: hotel in central Seville.\nMeals: breakfast, lunch.",
+    "stops": [
+     {"name": "Mosque-Cathedral of Córdoba", "duration": "About 1 hour 30 minutes", "description": "The forest of arches and the golden mihrab.", "image": "Interior of the Mosque-Cathedral of Córdoba.jpg"},
+     {"name": "Jewish quarter of Córdoba", "duration": "About 1 hour", "description": "The synagogue and the Calleja de las Flores.", "image": "Calleja de las Flores 002.jpg"}
+    ]
+   },
+   {
+    "name": "Seville: Real Alcázar, Cathedral and Giralda, Santa Cruz and Plaza de España",
+    "description": "What to expect: the great monuments of Seville with a licensed guide and timed tickets.\n\nYou start early in the Real Alcázar, where King Peter I built his palace in the Islamic style in the 1360s, with the Courtyard of the Maidens and the golden dome of the Hall of Ambassadors, and wander its gardens. Across the square you visit the cathedral, the largest Gothic church in the world, with the tomb of Columbus, and climb the ramps of the Giralda for the view. After tapas in the whitewashed lanes of Santa Cruz, your driver takes you to the tiled Plaza de España in María Luisa Park. The evening is free – perhaps for a flamenco show, which we can book.\n\nSCHEDULE (approximate times)\n09:00 – Real Alcázar and gardens (about 2 hours).\n11:15 – Cathedral and Giralda (about 1 hour 30 minutes).\n13:00 – Tapas in Santa Cruz.\n14:30 – Plaza de España.\n15:30 – Free afternoon and evening.\n\nGOOD TO KNOW\n• In summer we start earlier and keep the afternoon free during the heat.\n• Cover shoulders and knees in the cathedral.\n\nINCLUDED: licensed guide, Alcázar, cathedral and Giralda tickets, lunch, car transfer.\nNOT INCLUDED: flamenco show, dinner, drinks, tips.\n\nOvernight: hotel in central Seville.\nMeals: breakfast, lunch.",
+    "stops": [
+     {"name": "Real Alcázar", "duration": "About 2 hours", "description": "King Peter's palace and the gardens.", "image": "Alcázar Seville April 2019-11.jpg"},
+     {"name": "Seville Cathedral and Giralda", "duration": "About 1 hour 30 minutes", "description": "The tomb of Columbus and the view from the old minaret.", "image": "Giralda cathédrale tour Seville Espagne.jpg"},
+     {"name": "Plaza de España", "duration": "About 45 minutes", "description": "The tiled semicircle of 1929.", "image": "Plaza de España, Seville 3.jpg"}
+    ]
+   },
+   {
+    "name": "Ronda and Setenil de las Bodegas, then on to Granada",
+    "description": "What to expect: the most dramatic town of Andalusia and a white village on the scenic road to Granada.\n\nAfter breakfast your driver takes you about 1 hour 45 minutes into the mountains to Ronda, where your guide walks with you across the Puente Nuevo, completed in 1793 over the El Tajo gorge more than 100 m deep, along the cliff-edge promenades and into the 1785 bullring of the Real Maestranza. After lunch you stop in Setenil de las Bodegas, where white houses are built under overhanging rock, and continue east through olive country to Granada, arriving in the early evening with a first view of the Alhambra lit up on its hill.\n\nSCHEDULE (approximate times)\n08:30 – Departure from Seville.\n10:15 – Ronda: Puente Nuevo and the cliff-edge promenades.\n11:30 – Ronda bullring.\n13:00 – Lunch in Ronda.\n14:30 – Setenil de las Bodegas.\n15:30 – Drive to Granada (about 2 hours).\n17:45 – Check-in at your hotel in Granada.\n\nGOOD TO KNOW\n• Mountain roads are winding; tell us if you are prone to car sickness.\n• The best view of the bridge is from a short, steep path below it.\n\nINCLUDED: private car and driver, licensed guide in Ronda, bullring ticket, lunch, bottled water.\nNOT INCLUDED: dinner, drinks, tips.\n\nOvernight: hotel in central Granada.\nMeals: breakfast, lunch.",
+    "stops": [
+     {"name": "Ronda", "duration": "About 3 hours", "description": "The Puente Nuevo, El Tajo and the bullring.", "image": "Puente Nuevo in Ronda Spain photographed in 2019.jpg"},
+     {"name": "Setenil de las Bodegas", "duration": "About 45 minutes", "description": "Houses built under the rock.", "image": "Setenil de las Bodegas - Wallpaper.jpg"}
+    ]
+   },
+   {
+    "name": "Granada: the Alhambra, Generalife, Royal Chapel and Albaicín",
+    "description": "What to expect: the masterpiece of Moorish Spain with a licensed guide and your timed Nasrid Palaces entry.\n\nYou begin in the Alcazaba fortress and the Palace of Charles V, then at your exact slot enter the Nasrid Palaces: the Court of the Myrtles, the Hall of Ambassadors under its cedar dome of the seven heavens, and the Court of the Lions with its twelve marble lions and 124 slender columns. You stroll through the water gardens of the Generalife. After lunch you visit the Royal Chapel where Ferdinand and Isabella are buried, then drive up into the Albaicín, the old Moorish quarter, and end at the Mirador de San Nicolás as the evening sun turns the Alhambra gold against the Sierra Nevada.\n\nSCHEDULE (approximate times)\n08:30 – Alcazaba and Palace of Charles V.\n10:00 – Nasrid Palaces (timed entry).\n11:30 – Generalife gardens.\n13:00 – Lunch.\n14:30 – Royal Chapel.\n15:15 – Albaicín and Mirador de San Nicolás.\n16:30 – Free evening.\n\nGOOD TO KNOW\n• Bring the passport used for the Alhambra booking; entry is refused without it.\n• A flamenco show in the caves of Sacromonte can be booked for the evening.\n\nINCLUDED: licensed guide, Alhambra ticket with Nasrid Palaces, Royal Chapel ticket, car transfers, lunch.\nNOT INCLUDED: flamenco show, Arab baths, dinner, drinks, tips.\n\nOvernight: hotel in central Granada.\nMeals: breakfast, lunch.",
+    "stops": [
+     {"name": "Nasrid Palaces", "duration": "About 1 hour 15 minutes", "description": "The Court of the Myrtles and the Court of the Lions.", "image": "Court of the Lions, Alhambra de Granada (Spain).jpg"},
+     {"name": "Generalife", "duration": "About 1 hour", "description": "The sultans' summer palace and gardens.", "image": "Generalife Garden Alhambra 2014.jpg"},
+     {"name": "Albaicín and San Nicolás", "duration": "About 1 hour 15 minutes", "description": "Moorish lanes and the sunset view of the Alhambra.", "image": "Albaicin 2012 San Nicolas Sacromonte.jpg"}
+    ]
+   },
+   {
+    "name": "Departure from Granada",
+    "description": "What to expect: a free morning and your transfer.\n\nAfter breakfast you have time for a last walk – perhaps to the Arab baths, the cathedral or the tea houses of the Calderería Nueva – before your driver takes you to Granada airport (about 20 minutes), Málaga airport (about 1 hour 30 minutes) or Granada station for your onward journey.\n\nSCHEDULE (approximate times)\nMorning – Free time in Granada.\nAs needed – Transfer to Granada or Málaga airport, or the train station.\n\nGOOD TO KNOW\n• Málaga airport has many more international flights; allow 1 hour 30 minutes for the transfer.\n• We can add nights on the Costa del Sol or in Barcelona on request.\n\nINCLUDED: final private transfer.\nNOT INCLUDED: international flights, lunch, tips.\n\nOvernight: none.\nMeals: breakfast.",
+    "stops": [
+     {"name": "Granada", "duration": "Free morning", "description": "A last walk before your transfer.", "image": "Granada - View from Alhambra - 04.jpg"}
+    ]
+   }
+  ],
+  "faq": [
+   {"question": "How does booking on request work?", "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability, hotels, train, Alhambra slot and the final price by email within 24 hours, and you pay online only when the tour is confirmed."},
+   {"question": "Are the high-speed train and the Alhambra tickets included?", "answer": "Yes: a first-class high-speed train from Madrid to Córdoba and the Alhambra general ticket with a timed entry to the Nasrid Palaces, along with all other monument tickets in the programme."},
+   {"question": "What kind of hotels are used?", "answer": "Comfortable 4-star or boutique hotels in the historic centres, within walking distance of the main sights. Upgrades to 5-star or parador hotels are available."},
+   {"question": "Will we have the same guide throughout?", "answer": "You have a licensed local guide in each city, who knows it best. Your driver accompanies you from Córdoba to Granada."},
+   {"question": "Can we add Barcelona?", "answer": "Yes. We can add two or three nights in Barcelona with a flight from Granada or Málaga and our Gaudí day tour."},
+   {"question": "Can we start in Barcelona or end in Madrid?", "answer": "Yes. The route can be reversed or adapted to your flights."},
+   {"question": "Is it suitable for children?", "answer": "Yes. Children enjoy the palaces, the Alhambra's lions, the Ronda bridge and the train. We can book family rooms and shorten visits."},
+   {"question": "Is it suitable for people with limited mobility?", "answer": "Partly. Most monuments have accessible routes, but old towns such as Toledo, Ronda and the Albaicín are steep. Tell us your needs and we will adapt."},
+   {"question": "How much walking is there?", "answer": "About 4 to 7 km a day at an easy pace, with cars for the longer stretches."},
+   {"question": "What should we wear?", "answer": "Comfortable shoes for cobbles, sun protection, and clothes covering shoulders and knees for cathedrals."},
+   {"question": "Will we be taken to shops?", "answer": "No. There are no commission shopping stops."},
+   {"question": "What is the best time of year?", "answer": "March to June and September to November. Easter Week and Seville's April Fair are spectacular but busy; July and August are very hot in Andalusia."},
+   {"question": "What is the cancellation policy?", "answer": "You can cancel free of charge up to 14 days before the tour starts; train and Alhambra tickets may not be refundable after purchase. Until your request is confirmed, nothing is charged at all."}
+  ]
+ }
+}
