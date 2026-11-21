@@ -1,0 +1,64 @@
+{
+ "key": "spain-madrid-royal-palace-prado-private-tour",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {"city": "Madrid", "state": "Community of Madrid", "country": "Spain", "countryCode": "ES", "timeZone": "Europe/Madrid", "streetAddress": "Your hotel in Madrid", "geoCoordinates": {"lat": 40.4168, "log": -3.7038}},
+ "slug": "/en-US/spain/madrid/tours/madrid-private-day-tour-royal-palace-prado-museum-and-old-town",
+ "tour": {
+  "name": "Madrid Private Day Tour: Royal Palace, Prado Museum & Old Town",
+  "subtitle": "A private day in Spain's capital with a licensed guide: the state rooms of the Royal Palace, the old Madrid of the Habsburgs around Plaza Mayor, tapas at the Mercado de San Miguel, the masterpieces of Velázquez, Goya and Bosch at the Prado, and a stroll in Retiro Park to the Crystal Palace.",
+  "seoTitle": "Madrid Private Tour: Royal Palace & Prado | TRAVSUS",
+  "metaDescription": "Private Madrid day tour with a licensed guide: Royal Palace, Plaza Mayor, Mercado de San Miguel, the Prado Museum's masterpieces and Retiro Park. Tickets, tapas lunch and transfers included.",
+  "tags": ["Madrid tour", "Royal Palace Madrid", "Prado Museum", "Plaza Mayor", "Retiro Park", "Spain private tour"],
+  "highlights": [
+   "The Throne Room and state apartments of the Royal Palace",
+   "Las Meninas by Velázquez and Goya's Black Paintings at the Prado",
+   "Bosch's Garden of Earthly Delights",
+   "Plaza Mayor and the lanes of Habsburg Madrid",
+   "Tapas lunch around the Mercado de San Miguel",
+   "Retiro Park and the Crystal Palace",
+   "Skip-the-line tickets and a licensed private guide"
+  ],
+  "duration": 1,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "Madrid became Spain's capital in 1561, and in the following centuries the kings filled it with palaces, squares and one of the greatest art collections in the world. It is a city that rewards a guide: the Royal Palace is larger than Versailles but less known, the Prado holds more masterpieces than you can see in a week, and the old streets between them hide the taverns and convents of the Golden Age.\n\nThis private day picks the essentials with a licensed guide and timed tickets. You start at the Royal Palace, the official residence of the Spanish kings, built after the old Alcázar burned on Christmas Eve 1734, with its Throne Room, porcelain room and royal armoury. You walk through Habsburg Madrid to the Plaza Mayor and have a tapas lunch around the iron-and-glass Mercado de San Miguel. In the afternoon your guide leads you through the Prado to the paintings that matter most – Velázquez, Goya, El Greco, Titian, Bosch – and you finish with a walk in Retiro Park, part of a UNESCO World Heritage landscape since 2021.\n\nAT A GLANCE\n• Duration: about 8 hours\n• Start and end: your hotel in central Madrid\n• Type: private walking tour with licensed guide, with car transfers where useful\n• Booking: on request – we confirm availability, ticket times and the final price by email within 24 hours, and you pay only then\n• Level: easy; about 6 km of walking on flat streets and museum floors\n\nWHAT YOU SEE\n• The Royal Palace and Plaza de la Armería.\n• Almudena Cathedral (outside) and the Plaza de la Villa.\n• Plaza Mayor and the Mercado de San Miguel.\n• The Prado Museum.\n• Retiro Park and the Crystal Palace.\n\nWHY THIS WORKS\nThe palace opens early and is calmest in the morning; the Prado is best after lunch with a guide who knows a route through its 100 rooms, so you see the masterpieces without museum fatigue.\n\nWHO IT SUITS\nFirst-time visitors, art lovers, families and anyone with one or two days in Madrid.\n\nWHO MAY PREFER ANOTHER TOUR\nIf you have seen central Madrid, choose our Toledo or Segovia day trips.\n\nPRACTICAL INFORMATION\nThe Royal Palace sometimes closes for state ceremonies at short notice; we then switch to the Royal Monastery of the Descalzas Reales or the Reina Sofía (Guernica). Bags larger than a small backpack must be left in museum cloakrooms.",
+  "inclusions": {"standard": {
+   "private": ["Meeting at your hotel in central Madrid", "Licensed private guide for the whole day", "Timed tickets to the Royal Palace and the Prado Museum", "Tapas lunch around the Mercado de San Miguel", "Car transfer from the old town to the Prado", "Bottled water"],
+   "shared": ["Hotel meeting", "Licensed guide", "Entrance tickets", "Tapas lunch"]
+  }},
+  "pricingTiers": [
+   {"transportType": "Sedan / SUV", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png", "minSeats": 1, "maxSeats": 4, "pricing": {"currency": "EUR", "totalPrice": 460, "pricePerDay": 460}},
+   {"transportType": "Minivan", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png", "minSeats": 5, "maxSeats": 8, "pricing": {"currency": "EUR", "totalPrice": 820, "pricePerDay": 820}},
+   {"transportType": "Mini Bus", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png", "minSeats": 9, "maxSeats": 19, "pricing": {"currency": "EUR", "totalPrice": 1620, "pricePerDay": 1620}}
+  ],
+  "images": ["Madrid May 2014-35a.jpg", "Museo del Prado 2016 (25185969599).jpg", "Plaza Mayor, Madrid 20180720.jpg", "El Retiro in Madrid, Palacio de Cristal.jpg", "Exterior of Mercado de San Miguel 20180720.jpg"],
+  "days": [
+   {
+    "name": "Royal Palace, Habsburg Madrid, Plaza Mayor, the Prado and Retiro Park",
+    "description": "What to expect: royal Madrid in the morning and its great art in the afternoon, with a licensed guide, tickets and a tapas lunch.\n\nYour guide meets you at your hotel at about 9:15 and walks or drives with you to the Royal Palace, the official residence of the King of Spain, though the royal family lives elsewhere and uses it for ceremonies. Built from 1738 on the site of the Moorish and later Habsburg Alcázar, which burned in 1734, it is one of the largest palaces in Europe, with more than 3,000 rooms. You climb the grand staircase and visit the state rooms: the Hall of Columns, the Throne Room with its ceiling painted by Tiepolo, the Gasparini Room covered in silk and stucco, the Porcelain Room, and the Royal Chapel. Your guide points out the collection of Stradivarius instruments and, time permitting, the Royal Armoury with the armour of Charles V. From the Plaza de la Armería you look across to Almudena Cathedral and out over the Casa de Campo.\n\nYou then walk through Madrid de los Austrias, the old Habsburg town: the Plaza de la Villa with its 17th-century town hall, narrow streets of convents where nuns still sell sweets through a turntable, and the Plaza Mayor, completed in 1619 and rebuilt after fires, where bullfights, coronations and trials of the Inquisition once took place. Lunch is a selection of tapas – jamón ibérico, croquetas, tortilla, grilled squid in a sandwich, as Madrid likes it – around the Mercado de San Miguel, an iron market hall from 1916.\n\nA short drive takes you to the Prado, opened in 1819 and built around the Spanish royal collection. Your guide leads you to the essential rooms: Velázquez's Las Meninas and his royal portraits, Goya's Third of May 1808 and the haunting Black Paintings from his country house, El Greco's elongated saints, Titian's portraits of Charles V, Rubens, and Hieronymus Bosch's Garden of Earthly Delights. You finish with a walk into Retiro Park, the former royal gardens, to the lake and the Crystal Palace, an iron-and-glass pavilion of 1887. You are back at your hotel at about 17:15.\n\nSCHEDULE (approximate times)\n09:15 – Meeting at your hotel.\n09:45 – Royal Palace (about 1 hour 45 minutes).\n11:45 – Walk through Habsburg Madrid to Plaza Mayor.\n13:00 – Tapas lunch around the Mercado de San Miguel.\n14:30 – Prado Museum (about 2 hours).\n16:30 – Retiro Park and the Crystal Palace.\n17:15 – Return to your hotel.\n\nGOOD TO KNOW\n• Photography is not allowed in the Prado's galleries or in most palace rooms.\n• The Crystal Palace is closed during some exhibitions and in winter storms; the park is always open.\n• Prado entry is free in the evenings, but queues are long; our timed tickets avoid them.\n\nINCLUDED: licensed guide, Royal Palace and Prado tickets, tapas lunch, car transfer, bottled water.\nNOT INCLUDED: Royal Armoury or palace kitchens if sold separately, drinks with lunch, tips.\n\nOvernight: none.\nMeals: lunch.",
+    "stops": [
+     {"name": "Royal Palace of Madrid", "duration": "About 1 hour 45 minutes", "description": "The Throne Room, state apartments and Royal Chapel.", "image": "Madrid May 2014-35a.jpg"},
+     {"name": "Plaza Mayor", "duration": "About 1 hour", "description": "Habsburg Madrid, the Plaza de la Villa and the great arcaded square.", "image": "Plaza Mayor, Madrid 20180720.jpg"},
+     {"name": "Mercado de San Miguel", "duration": "About 1 hour 15 minutes", "description": "Tapas lunch in and around the 1916 iron market.", "image": "Exterior of Mercado de San Miguel 20180720.jpg"},
+     {"name": "Prado Museum", "duration": "About 2 hours", "description": "Velázquez, Goya, El Greco, Titian and Bosch.", "image": "Museo del Prado 2016 (25185969599).jpg"},
+     {"name": "Retiro Park", "duration": "About 45 minutes", "description": "The lake and the Crystal Palace.", "image": "El Retiro in Madrid, Palacio de Cristal.jpg"}
+    ]
+   }
+  ],
+  "faq": [
+   {"question": "How does booking on request work?", "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability, ticket times and the final price by email within 24 hours, and you pay online only when the tour is confirmed."},
+   {"question": "Are the tickets included?", "answer": "Yes, timed tickets to the Royal Palace and the Prado Museum are included, so you do not queue at the ticket offices."},
+   {"question": "Is it a walking tour?", "answer": "Mostly. The centre is compact and best seen on foot; we use a car for the longer stretch to the Prado and for hotel pick-up if needed."},
+   {"question": "What if the Royal Palace is closed?", "answer": "It sometimes closes for official events. We then visit the Descalzas Reales monastery or the Reina Sofía museum with Picasso's Guernica instead."},
+   {"question": "Can we add the Reina Sofía and Guernica?", "answer": "Yes, as an extra hour at the end of the day or instead of Retiro Park. Tell us when you book."},
+   {"question": "Is lunch included?", "answer": "Yes, a selection of tapas. Vegetarian, vegan and gluten-free options are available."},
+   {"question": "Is it suitable for children?", "answer": "Yes. Children enjoy the armour, the palace guards and the boats on the Retiro lake. We can shorten the museum visits."},
+   {"question": "Is it suitable for wheelchair users?", "answer": "Yes, mostly. The Royal Palace and the Prado are accessible with lifts, and the old town streets are mainly flat. Tell us your needs."},
+   {"question": "Can we take photos?", "answer": "Outside and in the park, freely. Photography is not allowed in the Prado galleries or in most of the palace."},
+   {"question": "Will we be taken to shops?", "answer": "No. There are no shopping stops unless you ask."},
+   {"question": "When is the changing of the guard?", "answer": "A small changing of the guard takes place on Wednesdays and Saturdays at the palace gate; a solemn one is held on the first Wednesday of most months. We plan around it if your date allows."},
+   {"question": "What is the best time of year?", "answer": "April to June and September to November. July and August are very hot in the afternoon; winter is cold but sunny."},
+   {"question": "What is the cancellation policy?", "answer": "You can cancel free of charge up to 48 hours before the tour. Until your request is confirmed, nothing is charged at all."}
+  ]
+ }
+}
