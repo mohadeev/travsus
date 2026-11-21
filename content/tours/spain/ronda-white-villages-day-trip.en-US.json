@@ -1,0 +1,64 @@
+{
+ "key": "spain-ronda-white-villages-day-trip",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {"city": "Ronda", "state": "Andalusia", "country": "Spain", "countryCode": "ES", "timeZone": "Europe/Madrid", "streetAddress": "Your hotel in Seville, Málaga or on the Costa del Sol", "geoCoordinates": {"lat": 36.7423, "log": -5.1665}},
+ "slug": "/en-US/spain/ronda/tours/ronda-and-white-villages-private-day-trip-puente-nuevo-setenil-and-zahara",
+ "tour": {
+  "name": "Ronda & White Villages Private Day Trip: Puente Nuevo, Setenil & Zahara de la Sierra",
+  "subtitle": "A private day through the mountains of Andalusia with a licensed guide and car: Ronda on its cliff-top and the Puente Nuevo over the El Tajo gorge, one of the oldest bullrings in Spain, the houses built under rock in Setenil de las Bodegas, and the castle of Zahara de la Sierra above a turquoise lake.",
+  "seoTitle": "Ronda & White Villages Private Day Trip | TRAVSUS",
+  "metaDescription": "Private Ronda day trip from Seville, Málaga or Marbella: Puente Nuevo and El Tajo gorge, Ronda bullring, Arab baths, Setenil de las Bodegas, Zahara de la Sierra and the Grazalema mountains. Guide, car, tickets and lunch.",
+  "tags": ["Ronda tour", "White villages", "Puente Nuevo", "Setenil de las Bodegas", "Zahara de la Sierra", "Spain private tour"],
+  "highlights": [
+   "The Puente Nuevo, spanning the El Tajo gorge more than 100 m deep",
+   "The 18th-century bullring of the Real Maestranza",
+   "The Arab baths and the old Moorish town",
+   "Setenil de las Bodegas, a village built under the rocks",
+   "Zahara de la Sierra and its castle above a turquoise lake",
+   "The mountain roads of the Sierra de Grazalema",
+   "Pick-up in Seville, Málaga or on the Costa del Sol"
+  ],
+  "duration": 1,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "In the mountains between Seville and the Costa del Sol, the hilltops are crowned by villages so white they look like snow – the pueblos blancos of Andalusia, built by the Moors and resettled after the Reconquest. The most dramatic of all is Ronda, split in two by El Tajo, a gorge more than 100 metres deep, and joined by the 18th-century Puente Nuevo. Writers and artists from Rilke to Hemingway and Orson Welles fell in love with it; the bullring, one of the oldest in Spain, shaped modern bullfighting.\n\nThis private day takes you through the most beautiful of these mountains with a licensed guide and a car. You walk across the Puente Nuevo and along the cliff-edge gardens of Ronda, visit the elegant stone bullring of the Real Maestranza and go down to the 13th-century Arab baths in the old town. After lunch you drive to Setenil de las Bodegas, where whole streets are tucked under overhanging rock, and over the Sierra de Grazalema to Zahara de la Sierra, a white village beneath a Moorish castle above a turquoise reservoir.\n\nAT A GLANCE\n• Duration: about 10 hours from Seville or Málaga, 8 hours from Marbella\n• Start and end: your hotel in Seville, Málaga or on the Costa del Sol\n• Type: private tour with licensed guide, car and driver\n• Booking: on request – we confirm availability and the final price by email within 24 hours, and you pay only then\n• Level: easy to moderate; about 5 km of walking with some steep steps\n\nWHAT YOU SEE\n• The Puente Nuevo and El Tajo gorge.\n• The Ronda bullring.\n• The old town and the Arab baths.\n• Setenil de las Bodegas.\n• Zahara de la Sierra.\n• The Sierra de Grazalema.\n\nWHY THIS WORKS\nWith a private car you can stop at viewpoints on the mountain roads, reach Setenil and Zahara, which have no practical public transport, and see Ronda before the coach groups.\n\nWHO IT SUITS\nPhotographers, couples, families, walkers and anyone staying on the Costa del Sol who wants to see the real Andalusia.\n\nWHO MAY PREFER ANOTHER TOUR\nIf you prefer monuments to landscapes, choose our Córdoba or Granada tours.\n\nPRACTICAL INFORMATION\nThe mountain roads are winding: tell us if you are prone to car sickness and we will plan more stops. Ronda is cooler than the coast in winter. The best views of the bridge need a short, steep walk down a path.",
+  "inclusions": {"standard": {
+   "private": ["Pick-up and drop-off at your hotel in Seville, Málaga or on the Costa del Sol", "Private air-conditioned vehicle and driver", "Licensed private guide", "Tickets to the Ronda bullring and the Arab baths", "Lunch at a local restaurant", "Bottled water"],
+   "shared": ["Hotel pick-up", "Licensed guide", "Entrance tickets", "Lunch"]
+  }},
+  "pricingTiers": [
+   {"transportType": "Sedan / SUV", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png", "minSeats": 1, "maxSeats": 4, "pricing": {"currency": "EUR", "totalPrice": 540, "pricePerDay": 540}},
+   {"transportType": "Minivan", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png", "minSeats": 5, "maxSeats": 8, "pricing": {"currency": "EUR", "totalPrice": 980, "pricePerDay": 980}},
+   {"transportType": "Mini Bus", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png", "minSeats": 9, "maxSeats": 19, "pricing": {"currency": "EUR", "totalPrice": 1920, "pricePerDay": 1920}}
+  ],
+  "images": ["Puente Nuevo in Ronda Spain photographed in 2019.jpg", "Panorama of Ronda.jpg", "Setenil de las Bodegas - Wallpaper.jpg", "Castle of Zahara de la Sierra, Zahara de la Sierra, Spanje.jpeg", "PlazaDeTorosDeRonda.jpg"],
+  "days": [
+   {
+    "name": "Ronda, the Puente Nuevo and bullring, Setenil de las Bodegas and Zahara de la Sierra",
+    "description": "What to expect: the most spectacular town of Andalusia and two white villages, with a licensed guide, private car, tickets and lunch.\n\nYour driver collects you at about 8:00 in Seville or Málaga, or at about 8:45 on the Costa del Sol, and drives into the mountains – about 1 hour 45 minutes from Seville or Málaga, or 1 hour 15 minutes up the winding road from Marbella. Your guide meets you in Ronda and leads you to the Puente Nuevo, the 'new bridge' completed in 1793 after more than three decades of work, which carries the road between the old Moorish town and the newer Mercadillo quarter, with the Guadalevín river far below in the gorge of El Tajo. You walk along the Alameda del Tajo and the Paseo de los Ingleses, cliff-edge promenades with views over the valley to the Sierra de las Nieves, and, if you like, down a path to the viewpoint below the bridge.\n\nYou visit the bullring of the Real Maestranza de Caballería, inaugurated in 1785 and one of the oldest and most beautiful in Spain, with its double ring of stone arcades, and learn how the Romero family of Ronda shaped the rules of modern bullfighting on foot. In the old town, you walk past Renaissance palaces and the church of Santa María la Mayor, built on the site of the main mosque, down to the 13th-century Arab baths, the best preserved in Spain, with their star-pierced vaults.\n\nAfter lunch – oxtail stew, a Ronda speciality, or mountain lamb and cheese – you drive about 20 minutes to Setenil de las Bodegas, where the white houses of the Calle Cuevas del Sol and Cuevas de la Sombra are built into and under huge overhangs of rock above the river. You continue over the Sierra de Grazalema, through cork oaks and limestone peaks, to Zahara de la Sierra, a white village clinging to a hillside beneath the tower of its Moorish castle, with a turquoise reservoir below. You stop at a viewpoint over the village and lake before the drive back, arriving at about 18:00 in Seville or Málaga, or 17:00 on the Costa del Sol.\n\nSCHEDULE (approximate times, from Seville or Málaga)\n08:00 – Pick-up at your hotel.\n09:45 – Ronda: Puente Nuevo and the cliff-edge promenades.\n11:00 – Ronda bullring.\n11:45 – Old town and the Arab baths.\n13:00 – Lunch in Ronda.\n14:30 – Setenil de las Bodegas.\n15:30 – Over the Sierra de Grazalema to Zahara de la Sierra.\n16:15 – Drive back.\n\nGOOD TO KNOW\n• Grazalema is one of the rainiest places in Spain; in wet weather we may swap Zahara for Olvera.\n• The bullring museum includes saddles and weapons of the Royal Cavalry Order.\n• A winery visit in the Ronda hills can be added on request.\n\nINCLUDED: private car and driver, licensed guide, tickets to the Ronda bullring and Arab baths, lunch, bottled water, hotel pick-up and drop-off.\nNOT INCLUDED: Mondragón palace and other museums, wine tasting, drinks with lunch, tips.\n\nOvernight: none.\nMeals: lunch.",
+    "stops": [
+     {"name": "Puente Nuevo and El Tajo", "duration": "About 1 hour", "description": "The 18th-century bridge over the gorge and the cliff-edge promenades.", "image": "Puente Nuevo in Ronda Spain photographed in 2019.jpg"},
+     {"name": "Ronda bullring", "duration": "About 45 minutes", "description": "The Real Maestranza ring of 1785 and its museum.", "image": "PlazaDeTorosDeRonda.jpg"},
+     {"name": "Old town and Arab baths", "duration": "About 1 hour", "description": "Moorish streets and the 13th-century baths.", "image": "Panorama of Ronda.jpg"},
+     {"name": "Setenil de las Bodegas", "duration": "About 45 minutes", "description": "White houses built under overhanging rock.", "image": "Setenil de las Bodegas - Wallpaper.jpg"},
+     {"name": "Zahara de la Sierra", "duration": "About 30 minutes", "description": "A white village beneath a Moorish castle above a turquoise lake.", "image": "Castle of Zahara de la Sierra, Zahara de la Sierra, Spanje.jpeg"}
+    ]
+   }
+  ],
+  "faq": [
+   {"question": "How does booking on request work?", "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability and the final price by email within 24 hours, and you pay online only when the tour is confirmed."},
+   {"question": "Where can the tour start?", "answer": "From Seville, Málaga or anywhere on the Costa del Sol, such as Marbella, Estepona or Torremolinos. The price is the same; only the timings change."},
+   {"question": "How long are the drives?", "answer": "About 1 hour 45 minutes each way from Seville or Málaga, 1 hour 15 minutes from Marbella, plus about 1 hour between Ronda, Setenil and Zahara."},
+   {"question": "Are the tickets included?", "answer": "Yes: the Ronda bullring and its museum, and the Arab baths."},
+   {"question": "Is there a bullfight?", "answer": "No. The visit is to the empty ring and museum. The bullring holds a famous goyesca event once a year in September."},
+   {"question": "Is lunch included?", "answer": "Yes, at a local restaurant in Ronda. Vegetarian and other diets can be arranged."},
+   {"question": "Is it suitable for children?", "answer": "Yes. Children love the bridge, the gorge and the houses under the rock. We keep the walks short."},
+   {"question": "Is it suitable for people with limited mobility?", "answer": "Partly. The bridge, promenades and bullring are reachable, but the path below the bridge and the Arab baths have steep steps."},
+   {"question": "Is the road difficult if I get car sick?", "answer": "The mountain roads are winding. Tell us and we will plan extra stops and keep you in the front seat."},
+   {"question": "What should we wear?", "answer": "Comfortable shoes with grip, a layer for the mountains and sun protection."},
+   {"question": "Will we be taken to shops?", "answer": "No. There are no shopping stops unless you ask."},
+   {"question": "What is the best time of year?", "answer": "March to June and September to November. In spring the mountains are green and full of flowers; summer is hot."},
+   {"question": "What is the cancellation policy?", "answer": "You can cancel free of charge up to 24 hours before the tour. Until your request is confirmed, nothing is charged at all."}
+  ]
+ }
+}
