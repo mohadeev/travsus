@@ -1,0 +1,64 @@
+{
+ "key": "spain-seville-alcazar-cathedral-private-tour",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {"city": "Seville", "state": "Andalusia", "country": "Spain", "countryCode": "ES", "timeZone": "Europe/Madrid", "streetAddress": "Your hotel in Seville", "geoCoordinates": {"lat": 37.3891, "log": -5.9845}},
+ "slug": "/en-US/spain/seville/tours/seville-private-day-tour-real-alcazar-cathedral-giralda-and-plaza-de-espana",
+ "tour": {
+  "name": "Seville Private Day Tour: Real Alcázar, Cathedral & Giralda, Plaza de España",
+  "subtitle": "A private day in the capital of Andalusia with a licensed guide: the Mudéjar palaces and gardens of the Real Alcázar, the largest Gothic cathedral in the world and the climb up the Giralda, the lanes of Santa Cruz, a tapas lunch, the tiled Plaza de España and the Triana quarter across the river.",
+  "seoTitle": "Seville Private Tour: Alcázar, Cathedral & Giralda | TRAVSUS",
+  "metaDescription": "Private Seville day tour with a licensed guide: Real Alcázar palaces and gardens, Seville Cathedral and the Giralda, Santa Cruz, tapas lunch, Plaza de España and Triana. Timed tickets included.",
+  "tags": ["Seville tour", "Real Alcázar", "Seville Cathedral", "Giralda", "Plaza de España", "Spain private tour"],
+  "highlights": [
+   "The Mudéjar palace of King Peter and the Hall of Ambassadors",
+   "The gardens of the Real Alcázar",
+   "The largest Gothic cathedral in the world and the tomb of Columbus",
+   "The ramps of the Giralda tower and the view over Seville",
+   "The whitewashed lanes and patios of Santa Cruz",
+   "Plaza de España and its tiled alcoves of every Spanish province",
+   "Tapas lunch and a walk across the river to Triana"
+  ],
+  "duration": 1,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "For centuries Seville was one of the richest cities in Europe. Under the Almohads it was a capital of al-Andalus; under Castile it became the only port allowed to trade with the Americas, and the silver of the New World built its churches and palaces. Three of its monuments – the Real Alcázar, the Cathedral and the General Archive of the Indies – form a UNESCO World Heritage Site, and its orange-scented lanes are the setting of Carmen, Don Juan and the Barber of Seville.\n\nThis private day takes you through the essentials with a licensed guide and timed tickets, so you skip the city's notorious queues. You begin in the Real Alcázar, still used by the Spanish royal family, where Christian kings built palaces in the Islamic style, and wander its gardens of fountains, palms and orange trees. You visit the immense cathedral built on the site of the great mosque, see the tomb of Columbus and climb the Giralda, the former minaret. After tapas in Santa Cruz, a short drive takes you to the Plaza de España in María Luisa Park, and you end the day in Triana, the quarter of potters, sailors and flamenco on the far bank of the Guadalquivir.\n\nAT A GLANCE\n• Duration: about 7 hours 30 minutes\n• Start and end: your hotel in Seville\n• Type: private walking tour with licensed guide and a car for the longer stretches\n• Booking: on request – we confirm availability, ticket times and the final price by email within 24 hours, and you pay only then\n• Level: easy to moderate; about 6 km of walking and 35 ramps up the Giralda\n\nWHAT YOU SEE\n• The Real Alcázar and its gardens.\n• Seville Cathedral and the Giralda.\n• The Santa Cruz quarter.\n• The Plaza de España and María Luisa Park.\n• The Triana quarter and its ceramics.\n\nWHY THIS WORKS\nThe Alcázar opens early and is best before the groups arrive; the cathedral follows at its least busy time, and the car takes you to the Plaza de España in the hot early afternoon.\n\nWHO IT SUITS\nFirst-time visitors, families, architecture lovers and anyone with one or two days in Seville.\n\nWHO MAY PREFER ANOTHER TOUR\nIf you have already seen the city, choose our Córdoba or Ronda day trips.\n\nPRACTICAL INFORMATION\nSeville is one of the hottest cities in Europe: from June to September we start earlier and keep the afternoon short. Shoulders and knees must be covered in the cathedral. The Alcázar can close at short notice for royal visits.",
+  "inclusions": {"standard": {
+   "private": ["Meeting at your hotel in Seville", "Licensed private guide", "Timed tickets to the Real Alcázar, the cathedral and the Giralda", "Tapas lunch in Santa Cruz", "Car transfer to the Plaza de España and Triana", "Bottled water"],
+   "shared": ["Hotel meeting", "Licensed guide", "Entrance tickets", "Tapas lunch"]
+  }},
+  "pricingTiers": [
+   {"transportType": "Sedan / SUV", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png", "minSeats": 1, "maxSeats": 4, "pricing": {"currency": "EUR", "totalPrice": 440, "pricePerDay": 440}},
+   {"transportType": "Minivan", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png", "minSeats": 5, "maxSeats": 8, "pricing": {"currency": "EUR", "totalPrice": 790, "pricePerDay": 790}},
+   {"transportType": "Mini Bus", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png", "minSeats": 9, "maxSeats": 19, "pricing": {"currency": "EUR", "totalPrice": 1560, "pricePerDay": 1560}}
+  ],
+  "images": ["Patio de las Doncellas, Alcázares Reales de Sevilla.jpg", "Giralda cathédrale tour Seville Espagne.jpg", "Plaza de España, Seville 3.jpg", "Alcázar Seville April 2019-11.jpg", "JardinLasDamas Alcazar Seville.jpg"],
+  "days": [
+   {
+    "name": "Real Alcázar, Cathedral and Giralda, Santa Cruz, Plaza de España and Triana",
+    "description": "What to expect: the great monuments of Seville with a licensed guide, timed tickets, a tapas lunch and a car for the longer stretches.\n\nYour guide meets you at your hotel at about 9:00 and walks with you to the Puerta del León, the lion gate of the Real Alcázar. The fortress was begun by the Muslim rulers in the 10th century, and after the Christian conquest of 1248 the kings of Castile kept building in the style they admired. You enter the palace of King Peter I, built in the 1360s by craftsmen from Granada and Toledo, with its Courtyard of the Maidens, a long pool between sunken gardens framed by lobed arches, and the Hall of Ambassadors, crowned by a golden wooden dome like a starry sky. Your guide shows you the Gothic rooms of Charles V hung with tapestries and the Admiral's Hall, where expeditions to the Americas were organised, before you wander the gardens, with their pavilions, fountains, tiled benches and the vaulted Baths of Lady María de Padilla.\n\nAcross the square stands the cathedral, the largest Gothic church in the world, built from 1401 on the site of the Almohad great mosque – the chapter is said to have wanted 'a church so large that those who see it will think us mad'. Inside, you see the gilded altarpiece of more than a thousand carved figures, the treasury, and the tomb of Christopher Columbus, carried by four kings representing the kingdoms of Spain. Then you climb the Giralda, the 12th-century minaret turned bell tower, by 35 ramps built wide enough for a horseman, for a view over the rooftops and the Courtyard of the Orange Trees, the old ablutions court of the mosque.\n\nLunch is tapas in the Santa Cruz quarter, the old Jewish neighbourhood of whitewashed lanes, flower-filled patios and little squares: salmorejo, spinach with chickpeas, Iberian pork and fried fish. In the afternoon your driver takes you to María Luisa Park and the Plaza de España, a vast semicircle of brick and tiles built for the 1929 Ibero-American Exposition, with a canal, bridges and tiled alcoves for every Spanish province. You finish by crossing the Isabel II bridge to Triana, the old quarter of potters, sailors and flamenco singers, to see the ceramic workshops and the Castle of San Jorge, once the seat of the Inquisition. You are back at your hotel at about 16:30.\n\nSCHEDULE (approximate times)\n09:00 – Meeting at your hotel.\n09:30 – Real Alcázar and gardens (about 2 hours).\n11:45 – Seville Cathedral and the Giralda (about 1 hour 30 minutes).\n13:30 – Tapas lunch in Santa Cruz.\n14:45 – Plaza de España and María Luisa Park.\n15:30 – Triana and its ceramic workshops.\n16:30 – Return to your hotel.\n\nGOOD TO KNOW\n• The cathedral is closed to tourists on Sunday mornings; we then visit it in the afternoon.\n• A flamenco show in the evening can be booked on request.\n• The upper royal apartments of the Alcázar can be added for a small extra fee.\n\nINCLUDED: licensed guide, timed tickets to the Real Alcázar, cathedral and Giralda, tapas lunch, car transfer, bottled water.\nNOT INCLUDED: Alcázar upper royal apartments, flamenco show, drinks with lunch, tips.\n\nOvernight: none.\nMeals: lunch.",
+    "stops": [
+     {"name": "Real Alcázar", "duration": "About 2 hours", "description": "King Peter's palace, the Hall of Ambassadors and the gardens.", "image": "Alcázar Seville April 2019-11.jpg"},
+     {"name": "Seville Cathedral and the Giralda", "duration": "About 1 hour 30 minutes", "description": "The tomb of Columbus and the view from the old minaret.", "image": "Giralda cathédrale tour Seville Espagne.jpg"},
+     {"name": "Santa Cruz", "duration": "About 1 hour", "description": "Whitewashed lanes, patios and a tapas lunch.", "image": "Casas (Barrio Santa Cruz).jpg"},
+     {"name": "Plaza de España", "duration": "About 45 minutes", "description": "The tiled semicircle of the 1929 exposition.", "image": "Plaza de España, Seville 3.jpg"},
+     {"name": "Triana", "duration": "About 45 minutes", "description": "The quarter of potters, sailors and flamenco across the river."}
+    ]
+   }
+  ],
+  "faq": [
+   {"question": "How does booking on request work?", "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability, ticket times and the final price by email within 24 hours, and you pay online only when the tour is confirmed."},
+   {"question": "Are the tickets included?", "answer": "Yes, timed tickets to the Real Alcázar, the cathedral and the Giralda, so you avoid the long queues."},
+   {"question": "Is climbing the Giralda hard?", "answer": "It has ramps instead of stairs – 35 of them – so it is gradual. Allow about 15 minutes to reach the top."},
+   {"question": "Is it a walking tour?", "answer": "The old town is walked; we use a car for the Plaza de España and Triana, which saves the hottest part of the walk."},
+   {"question": "Is lunch included?", "answer": "Yes, a selection of Andalusian tapas. Vegetarian, vegan and gluten-free options are available."},
+   {"question": "Can we add a flamenco show?", "answer": "Yes. We can book an evening show in an intimate tablao, with or without dinner."},
+   {"question": "Is it suitable for children?", "answer": "Yes. Children love the Alcázar gardens, the peacocks and the boats in the Plaza de España."},
+   {"question": "Is it suitable for wheelchair users?", "answer": "Mostly. The Alcázar ground floor and the cathedral are accessible; the Giralda ramps are not. Tell us your needs."},
+   {"question": "What should we wear?", "answer": "Comfortable shoes, a hat and sunscreen, and clothes covering shoulders and knees for the cathedral."},
+   {"question": "Was Game of Thrones filmed here?", "answer": "Yes, parts of the Alcázar were used for the Water Gardens of Dorne; your guide will point them out."},
+   {"question": "Will we be taken to shops?", "answer": "No. The Triana ceramic workshops are a cultural visit with no obligation to buy."},
+   {"question": "What is the best time of year?", "answer": "March to May and October to November. Easter Week and the April Fair are spectacular but very busy; summer is extremely hot."},
+   {"question": "What is the cancellation policy?", "answer": "You can cancel free of charge up to 48 hours before the tour. Until your request is confirmed, nothing is charged at all."}
+  ]
+ }
+}
