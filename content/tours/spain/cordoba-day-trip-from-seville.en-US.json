@@ -1,0 +1,63 @@
+{
+ "key": "spain-cordoba-day-trip-from-seville",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {"city": "Córdoba", "state": "Andalusia", "country": "Spain", "countryCode": "ES", "timeZone": "Europe/Madrid", "streetAddress": "Your hotel in Seville", "geoCoordinates": {"lat": 37.8882, "log": -4.7794}},
+ "slug": "/en-US/spain/cordoba/tours/cordoba-private-day-trip-from-seville-mosque-cathedral-jewish-quarter-and-alcazar",
+ "tour": {
+  "name": "Córdoba Private Day Trip from Seville: the Mosque-Cathedral, Jewish Quarter & Alcázar",
+  "subtitle": "A private day in the city that was once the greatest in Western Europe, with a licensed guide and car: the forest of red-and-white arches of the Mezquita and the cathedral built inside it, the Roman bridge, the medieval synagogue and flower-filled lanes of the Jewish quarter, and the gardens of the Alcázar of the Christian Kings.",
+  "seoTitle": "Córdoba Private Day Trip from Seville | TRAVSUS",
+  "metaDescription": "Private Córdoba day trip from Seville: the Mosque-Cathedral and its mihrab, the Roman bridge, the Jewish quarter and synagogue, Calleja de las Flores and the Alcázar gardens. Guide, car, tickets and lunch.",
+  "tags": ["Córdoba tour", "Mezquita", "Seville day trip", "Jewish quarter", "Alcázar of Córdoba", "Spain private tour"],
+  "highlights": [
+   "The forest of more than 800 columns and double arches in the Mezquita",
+   "The 10th-century mihrab with its golden Byzantine mosaics",
+   "The Renaissance cathedral built in the heart of the mosque",
+   "The Roman bridge over the Guadalquivir",
+   "The medieval synagogue and the Calleja de las Flores",
+   "The gardens and pools of the Alcázar of the Christian Kings",
+   "Lunch of salmorejo and Córdoba classics"
+  ],
+  "duration": 1,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "In the 10th century, when Córdoba was the capital of the Caliphate of al-Andalus, it was probably the largest and most sophisticated city in Western Europe, with paved and lit streets, public baths and libraries, and scholars – Muslim, Jewish and Christian – whose work travelled across the Mediterranean. Its great mosque, begun in 785 and enlarged three times, became one of the wonders of the medieval world. After the Christian conquest in 1236 it was consecrated as a cathedral, and in the 16th century a Renaissance cathedral was built right in its centre, creating the unique Mosque-Cathedral that stands today. The historic centre is a UNESCO World Heritage Site.\n\nThis private day from Seville shows Córdoba with a licensed guide and a car. You cross the Roman bridge for the view of the old city, then enter the Mezquita at its calmest hour to walk among its columns of marble, jasper and granite, under double arches of red brick and white stone, to the golden mihrab. You explore the Jewish quarter, birthplace of the philosopher Maimonides, with its 14th-century synagogue and flower-hung lanes, and finish in the gardens of the Alcázar of the Christian Kings, where Ferdinand and Isabella received Columbus before his first voyage.\n\nAT A GLANCE\n• Duration: about 9 hours\n• Start and end: your hotel in Seville\n• Type: private tour with licensed guide, car and driver\n• Booking: on request – we confirm availability and the final price by email within 24 hours, and you pay only then\n• Level: easy; about 4 km of flat walking\n\nWHAT YOU SEE\n• The Roman bridge and the Calahorra tower.\n• The Mosque-Cathedral of Córdoba.\n• The Jewish quarter and the synagogue.\n• The Calleja de las Flores.\n• The Alcázar of the Christian Kings and its gardens.\n\nWHY THIS WORKS\nThe drive is about 1 hour 45 minutes each way; we leave early so you reach the Mezquita as it opens to visitors, and see the Alcázar gardens in the softer afternoon light.\n\nWHO IT SUITS\nHistory and architecture lovers, families and anyone based in Seville for three days or more.\n\nWHO MAY PREFER ANOTHER TOUR\nIf you prefer mountain scenery and white villages, choose our Ronda day trip.\n\nPRACTICAL INFORMATION\nThe Mosque-Cathedral is a working cathedral: cover shoulders and knees, and note that it is closed to tourists during morning Mass on Sundays. Córdoba is one of the hottest cities in Spain in summer.",
+  "inclusions": {"standard": {
+   "private": ["Pick-up and drop-off at your hotel in Seville", "Private air-conditioned vehicle and driver", "Licensed private guide in Córdoba", "Tickets to the Mosque-Cathedral, the synagogue and the Alcázar of the Christian Kings", "Lunch at a local restaurant", "Bottled water"],
+   "shared": ["Hotel pick-up", "Licensed guide", "Entrance tickets", "Lunch"]
+  }},
+  "pricingTiers": [
+   {"transportType": "Sedan / SUV", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png", "minSeats": 1, "maxSeats": 4, "pricing": {"currency": "EUR", "totalPrice": 520, "pricePerDay": 520}},
+   {"transportType": "Minivan", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png", "minSeats": 5, "maxSeats": 8, "pricing": {"currency": "EUR", "totalPrice": 940, "pricePerDay": 940}},
+   {"transportType": "Mini Bus", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png", "minSeats": 9, "maxSeats": 19, "pricing": {"currency": "EUR", "totalPrice": 1840, "pricePerDay": 1840}}
+  ],
+  "images": ["Interior of the Mosque-Cathedral of Córdoba.jpg", "Mosque-Cathedral Puente Romano de Córdoba.jpg", "Great Mosque of Cordoba, interior, 8th - 10th centuries (32) (29799663656).jpg", "Calleja de las Flores 002.jpg", "Alcazar de los reyes cristianos gardens Cordoba.jpg"],
+  "days": [
+   {
+    "name": "Roman bridge, Mosque-Cathedral, Jewish quarter and the Alcázar of the Christian Kings",
+    "description": "What to expect: the jewel of al-Andalus with a licensed guide, private car, tickets and lunch.\n\nYour driver collects you at your Seville hotel at about 7:45 and drives east along the Guadalquivir valley, past olive groves and sunflower fields, for about 1 hour 45 minutes. Your guide meets you at the Calahorra tower and you cross the Roman bridge, first built in the 1st century BC and many times rebuilt, with the whole of old Córdoba in front of you: the walls of the Mezquita, the bell tower that wraps the old minaret, and the water mills on the river.\n\nYou enter the Mosque-Cathedral through the Courtyard of the Orange Trees. Inside, more than 800 columns of marble, jasper, onyx and granite – many reused from Roman and Visigothic buildings – support a forest of double arches striped in red brick and white stone. Your guide explains how Abd al-Rahman I began the mosque in 785 and how three later rulers extended it, and leads you to the 10th-century mihrab of al-Hakam II, a small octagonal chamber under a shell-shaped dome, framed by golden mosaics made with the help of craftsmen sent from Constantinople. In the centre rises the cathedral, begun in 1523 – Emperor Charles V is said to have lamented that they had destroyed something unique to build something that could be built anywhere. You see its carved mahogany choir stalls and the soaring Renaissance dome.\n\nAfter lunch – salmorejo, the thick cold tomato cream of Córdoba, flamenquín and aubergine fritters with honey – you walk through the Jewish quarter, birthplace of the philosopher Maimonides. You visit the small synagogue of 1315, one of only three medieval synagogues preserved in Spain, with its Hebrew inscriptions in stucco, and step into the Calleja de las Flores, a narrow lane hung with blue flowerpots framing the bell tower. You finish at the Alcázar of the Christian Kings, where Ferdinand and Isabella lived during the war against Granada and first received Christopher Columbus; you see its Roman mosaics and walk through terraced gardens of pools, fountains, orange trees and cypresses. You are back in Seville at about 18:00.\n\nSCHEDULE (approximate times)\n07:45 – Pick-up at your hotel in Seville.\n09:30 – Calahorra tower and Roman bridge.\n10:00 – Mosque-Cathedral (about 1 hour 30 minutes).\n12:00 – Jewish quarter and synagogue.\n13:00 – Lunch.\n14:30 – Calleja de las Flores.\n15:00 – Alcázar of the Christian Kings and gardens.\n16:15 – Drive back to Seville.\n\nGOOD TO KNOW\n• In early May, during the Patios Festival, Córdoba's private courtyards open to visitors; ask us to include some.\n• The bell tower climb is extra and sold in timed slots.\n• Córdoba can also be visited from Madrid by high-speed train; ask us for this option.\n\nINCLUDED: private car and driver, licensed guide, tickets to the Mosque-Cathedral, synagogue and Alcázar, lunch, bottled water, hotel pick-up and drop-off.\nNOT INCLUDED: bell tower climb, Medina Azahara, drinks with lunch, tips.\n\nOvernight: none.\nMeals: lunch.",
+    "stops": [
+     {"name": "Roman bridge", "duration": "About 30 minutes", "description": "The view of the old city across the Guadalquivir.", "image": "Mosque-Cathedral Puente Romano de Córdoba.jpg"},
+     {"name": "Mosque-Cathedral", "duration": "About 1 hour 30 minutes", "description": "The double arches, the mihrab and the Renaissance cathedral.", "image": "Interior of the Mosque-Cathedral of Córdoba.jpg"},
+     {"name": "Jewish quarter", "duration": "About 1 hour", "description": "The 1315 synagogue and the Calleja de las Flores.", "image": "Calleja de las Flores 002.jpg"},
+     {"name": "Alcázar of the Christian Kings", "duration": "About 1 hour 15 minutes", "description": "Roman mosaics and terraced gardens with pools.", "image": "Alcazar de los reyes cristianos gardens Cordoba.jpg"}
+    ]
+   }
+  ],
+  "faq": [
+   {"question": "How does booking on request work?", "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability and the final price by email within 24 hours, and you pay online only when the tour is confirmed."},
+   {"question": "How long is the drive from Seville?", "answer": "About 1 hour 45 minutes each way. You can rest in the air-conditioned car, and we can stop for coffee on the way."},
+   {"question": "Are the tickets included?", "answer": "Yes: the Mosque-Cathedral, the synagogue and the Alcázar of the Christian Kings. The bell tower and Medina Azahara are optional."},
+   {"question": "Can we add Medina Azahara?", "answer": "Yes. The ruins of the 10th-century caliphal city, a UNESCO site 8 km outside Córdoba, can be added in a longer day."},
+   {"question": "Can the tour start in Madrid?", "answer": "Yes, by high-speed train (about 1 hour 45 minutes). Your guide meets you at Córdoba station."},
+   {"question": "Is lunch included?", "answer": "Yes, at a local restaurant. Vegetarian and other diets can be arranged."},
+   {"question": "Is it suitable for children?", "answer": "Yes. Children enjoy the forest of arches, the bridge and the Alcázar gardens. Walking is flat and short."},
+   {"question": "Is it suitable for wheelchair users?", "answer": "Mostly. The Mezquita and the Alcázar gardens are largely accessible; some lanes in the Jewish quarter are narrow and uneven."},
+   {"question": "Can we take photos inside the Mezquita?", "answer": "Yes, without flash or tripods, except during services."},
+   {"question": "What should we wear?", "answer": "Comfortable shoes, sun protection in summer and clothes covering shoulders and knees for the Mosque-Cathedral."},
+   {"question": "Will we be taken to shops?", "answer": "No. There are no shopping stops unless you ask – though Córdoba's silver filigree and embossed leather are worth seeing."},
+   {"question": "What is the best time of year?", "answer": "March to May, especially early May for the patios, and October to November. July and August are extremely hot."},
+   {"question": "What is the cancellation policy?", "answer": "You can cancel free of charge up to 24 hours before the tour. Until your request is confirmed, nothing is charged at all."}
+  ]
+ }
+}
