@@ -1,0 +1,64 @@
+{
+ "key": "spain-segovia-avila-day-trip-from-madrid",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {"city": "Segovia", "state": "Castile and León", "country": "Spain", "countryCode": "ES", "timeZone": "Europe/Madrid", "streetAddress": "Your hotel in Madrid", "geoCoordinates": {"lat": 40.9481, "log": -4.1184}},
+ "slug": "/en-US/spain/segovia/tours/segovia-and-avila-private-day-trip-from-madrid-aqueduct-alcazar-and-walls",
+ "tour": {
+  "name": "Segovia & Ávila Private Day Trip from Madrid: Roman Aqueduct, Alcázar & Medieval Walls",
+  "subtitle": "Two UNESCO cities of Castile in one private day with a licensed guide and car: the Roman aqueduct of Segovia, the fairy-tale Alcázar and the last great Gothic cathedral of Spain, a suckling-pig lunch, then the complete medieval walls of Ávila and the city of Saint Teresa.",
+  "seoTitle": "Segovia & Ávila Private Day Trip from Madrid | TRAVSUS",
+  "metaDescription": "Private day trip from Madrid to Segovia and Ávila: Roman aqueduct, Alcázar, Segovia Cathedral, roast suckling pig lunch, Ávila's walls, the Cuatro Postes viewpoint and Saint Teresa. Guide, car and tickets.",
+  "tags": ["Segovia tour", "Ávila", "Madrid day trip", "Roman aqueduct", "Alcázar of Segovia", "Spain private tour"],
+  "highlights": [
+   "The two-tier Roman aqueduct of Segovia, built without mortar",
+   "The Alcázar of Segovia, the castle on a ship-shaped rock",
+   "Segovia Cathedral, the 'lady of cathedrals'",
+   "Roast suckling pig cut with the edge of a plate",
+   "A walk on the medieval walls of Ávila",
+   "The Cuatro Postes viewpoint over Ávila",
+   "Saint Teresa's Ávila and its convent sweets"
+  ],
+  "duration": 1,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "On the far side of the Guadarrama mountains from Madrid lie two of the finest small cities of Old Castile, each a UNESCO World Heritage Site since 1985. Segovia is crossed by a Roman aqueduct of granite blocks held together by nothing but their own weight, and crowned by an Alcázar that rises from a rock like the prow of a ship. Ávila, an hour away and the highest provincial capital in Spain, is still wrapped in its complete medieval walls, with dozens of towers and nine gates, and is the city of the mystic Saint Teresa.\n\nThis private day links both with a licensed guide and a car, which is the only practical way to see the two in one day. You start in Segovia under the aqueduct, walk through the old town to the Gothic cathedral and visit the Alcázar, where Isabella set out to be proclaimed Queen of Castile in 1474. Lunch is Segovia's famous roast suckling pig. In the afternoon you drive to Ávila, see the walls from the Cuatro Postes viewpoint, walk along their ramparts, and visit the cathedral built into the walls and the convent on the site of Saint Teresa's birthplace.\n\nAT A GLANCE\n• Duration: about 9 hours\n• Start and end: your hotel in Madrid\n• Type: private tour with licensed guide, car and driver\n• Booking: on request – we confirm availability and the final price by email within 24 hours, and you pay only then\n• Level: easy to moderate; about 5 km of walking, with steps on the Alcázar tower and the walls\n\nWHAT YOU SEE\n• The Roman aqueduct of Segovia.\n• Segovia's old town and cathedral.\n• The Alcázar of Segovia.\n• The Cuatro Postes viewpoint.\n• The walls and cathedral of Ávila.\n• The convent of Saint Teresa.\n\nWHY THIS WORKS\nBy car, the two cities are an hour apart; by public transport, they take a whole day each. We see Segovia in the morning light and Ávila's walls glowing gold in the late afternoon.\n\nWHO IT SUITS\nHistory lovers, families, photographers and anyone who has already seen Toledo.\n\nWHO MAY PREFER ANOTHER TOUR\nIf you only have time for one day trip from Madrid and prefer art, choose Toledo.\n\nPRACTICAL INFORMATION\nSegovia and Ávila are around 1,000 m above sea level and often 5 °C cooler than Madrid, with cold winters: bring a warm layer. Vegetarians can choose roast lamb alternatives or Castilian bean stews.",
+  "inclusions": {"standard": {
+   "private": ["Pick-up and drop-off at your hotel in Madrid", "Private air-conditioned vehicle and driver", "Licensed private guide", "Tickets to the Alcázar of Segovia, Segovia Cathedral and the walls of Ávila", "Roast suckling pig lunch in Segovia", "Bottled water"],
+   "shared": ["Hotel pick-up", "Licensed guide", "Entrance tickets", "Lunch"]
+  }},
+  "pricingTiers": [
+   {"transportType": "Sedan / SUV", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png", "minSeats": 1, "maxSeats": 4, "pricing": {"currency": "EUR", "totalPrice": 540, "pricePerDay": 540}},
+   {"transportType": "Minivan", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png", "minSeats": 5, "maxSeats": 8, "pricing": {"currency": "EUR", "totalPrice": 980, "pricePerDay": 980}},
+   {"transportType": "Mini Bus", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png", "minSeats": 9, "maxSeats": 19, "pricing": {"currency": "EUR", "totalPrice": 1920, "pricePerDay": 1920}}
+  ],
+  "images": ["Aqueduct of Segovia 01.jpg", "Segovia - Alcazar ext 01.jpg", "Murallas de Ávila - 01.jpg", "Catedral de Santa María de Segovia - 01.jpg", "Quatro postes and city walls of Avila in winter.jpg"],
+  "days": [
+   {
+    "name": "Segovia's aqueduct, cathedral and Alcázar, then the walls of Ávila",
+    "description": "What to expect: two walled cities of Castile with a licensed guide, private car, tickets and a classic Segovian lunch.\n\nYour driver collects you at your Madrid hotel at about 8:30 and takes the motorway north through a tunnel under the Guadarrama mountains, about an hour's drive. You start at the Plaza del Azoguejo, where the Roman aqueduct reaches its greatest height, about 28 m, in two tiers of granite arches. Your guide explains how, around the end of the 1st century AD, Roman engineers brought water some 15 km from the mountains, and how the blocks have stood for almost two thousand years without mortar.\n\nYou climb into the old town along the Calle Real, past Romanesque churches and the House of Spikes with its diamond-studded façade, to the Plaza Mayor and the cathedral, begun in 1525 and known as the 'lady of Spanish cathedrals' for its pinnacles and buttresses. At the tip of the old town, on a rock above the meeting of two rivers, stands the Alcázar. You visit its royal rooms with Mudéjar ceilings, the Hall of Kings with its frieze of Castilian monarchs, and the armoury, and climb the 152 steps of the Tower of John II for a view over the plain to the mountains. It was from here that Isabella left to be proclaimed Queen of Castile in 1474.\n\nLunch is Segovia's signature dish, cochinillo asado: suckling pig roasted in a wood oven until the skin crackles, traditionally cut with the edge of a plate to show how tender it is. In the afternoon you drive about an hour south-west to Ávila. From the Cuatro Postes viewpoint you see the whole circuit of walls, built in the 11th and 12th centuries, about 2.5 km long with dozens of round towers and nine gates. You walk a section of the ramparts, visit the fortress-like cathedral whose apse forms part of the walls, and see the convent built on the site of the house where Saint Teresa was born in 1515. Before leaving, try the yemas de Santa Teresa, sweets of egg yolk and sugar. You are back in Madrid at about 18:30.\n\nSCHEDULE (approximate times)\n08:30 – Pick-up at your hotel in Madrid.\n09:30 – Roman aqueduct of Segovia.\n10:00 – Old town and Segovia Cathedral.\n11:15 – Alcázar of Segovia (about 1 hour 15 minutes).\n13:00 – Roast suckling pig lunch.\n14:45 – Drive to Ávila (about 1 hour).\n15:45 – Cuatro Postes viewpoint.\n16:00 – Walls, cathedral and the convent of Saint Teresa.\n17:30 – Drive back to Madrid.\n\nGOOD TO KNOW\n• The Alcázar tower is closed in high winds or heavy rain.\n• Some wall sections in Ávila close in strong wind and on a few winter days.\n• La Granja palace and gardens can replace Ávila on request.\n\nINCLUDED: private car and driver, licensed guide, tickets to the Alcázar (with tower), Segovia Cathedral and the walls of Ávila, lunch, bottled water, hotel pick-up and drop-off.\nNOT INCLUDED: Ávila Cathedral ticket, drinks with lunch, tips.\n\nOvernight: none.\nMeals: lunch.",
+    "stops": [
+     {"name": "Aqueduct of Segovia", "duration": "About 30 minutes", "description": "Two tiers of Roman granite arches, about 28 m high.", "image": "Aqueduct of Segovia 01.jpg"},
+     {"name": "Segovia Cathedral", "duration": "About 45 minutes", "description": "The last great Gothic cathedral built in Spain.", "image": "Catedral de Santa María de Segovia - 01.jpg"},
+     {"name": "Alcázar of Segovia", "duration": "About 1 hour 15 minutes", "description": "Royal rooms, the Hall of Kings and the Tower of John II.", "image": "Segovia - Alcazar ext 01.jpg"},
+     {"name": "Cuatro Postes", "duration": "About 15 minutes", "description": "The panorama of Ávila's walls.", "image": "Quatro postes and city walls of Avila in winter.jpg"},
+     {"name": "Walls of Ávila", "duration": "About 1 hour 30 minutes", "description": "A walk on the ramparts, the cathedral and Saint Teresa's convent.", "image": "Murallas de Ávila - 01.jpg"}
+    ]
+   }
+  ],
+  "faq": [
+   {"question": "How does booking on request work?", "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability and the final price by email within 24 hours, and you pay online only when the tour is confirmed."},
+   {"question": "Is it too much to see both cities in one day?", "answer": "No. With a private car the drives are short – about 1 hour between each – and you spend most of the day walking in the old towns."},
+   {"question": "Are the tickets included?", "answer": "Yes: the Alcázar of Segovia with its tower, Segovia Cathedral and the walls of Ávila. Ávila Cathedral is an optional extra."},
+   {"question": "Is the suckling pig lunch suitable for vegetarians?", "answer": "We can arrange vegetarian or other dishes, such as Castilian bean stews or roast vegetables. Just tell us when you book."},
+   {"question": "Can we see only Segovia?", "answer": "Yes. A shorter Segovia day can add the royal palace and gardens of La Granja instead of Ávila."},
+   {"question": "Is it suitable for children?", "answer": "Yes. Children love the castle, the walls and the aqueduct. We keep the visits short and lively."},
+   {"question": "Is it suitable for people with limited mobility?", "answer": "Partly. The aqueduct, cathedral and Alcázar rooms are reachable, but the Alcázar tower and the walls have steep steps."},
+   {"question": "Is the Alcázar really the Disney castle?", "answer": "It is often said to have inspired a famous animated castle; whatever the truth, its slate spires are unforgettable."},
+   {"question": "What should we wear?", "answer": "Comfortable shoes and a warm layer – both cities are about 1,000 m high and cooler than Madrid."},
+   {"question": "Will we be taken to shops?", "answer": "No. There are no shopping stops unless you ask."},
+   {"question": "What is the best time of year?", "answer": "April to June and September to October. Winter can bring snow, which is beautiful but cold."},
+   {"question": "Can you pick us up outside Madrid?", "answer": "Yes, from anywhere in the Madrid area, including the airport, for a small supplement."},
+   {"question": "What is the cancellation policy?", "answer": "You can cancel free of charge up to 24 hours before the tour. Until your request is confirmed, nothing is charged at all."}
+  ]
+ }
+}
