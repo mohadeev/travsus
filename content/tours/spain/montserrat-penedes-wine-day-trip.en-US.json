@@ -1,0 +1,61 @@
+{
+ "key": "spain-montserrat-penedes-wine-day-trip",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {"city": "Montserrat", "state": "Catalonia", "country": "Spain", "countryCode": "ES", "timeZone": "Europe/Madrid", "streetAddress": "Your hotel or cruise terminal in Barcelona", "geoCoordinates": {"lat": 41.5933, "log": 1.8375}},
+ "slug": "/en-US/spain/montserrat/tours/montserrat-and-penedes-cava-private-day-trip-from-barcelona",
+ "tour": {
+  "name": "Montserrat & Penedès Cava Private Day Trip from Barcelona",
+  "subtitle": "A private day out of Barcelona with a licensed guide and car: the saw-toothed mountain of Montserrat and its Benedictine monastery, the Black Virgin and the boys' choir, a ride on the rack railway, mountain viewpoints, then a family cava winery in the vineyards of the Penedès with tasting and lunch.",
+  "seoTitle": "Montserrat & Cava Private Day Trip from Barcelona | TRAVSUS",
+  "metaDescription": "Private day trip from Barcelona: Montserrat monastery, the Black Virgin, the Escolania choir, rack railway and viewpoints, then a Penedès cava winery with tasting and lunch. Guide and car included.",
+  "tags": ["Montserrat tour", "Barcelona day trip", "Black Madonna", "Cava tasting", "Penedès", "Spain private tour"],
+  "highlights": [
+   "The rock pinnacles of Montserrat, 1,236 m above Catalonia",
+   "The Benedictine monastery, founded in 1025",
+   "La Moreneta, the Black Virgin of Montserrat",
+   "The Escolania boys' choir, one of the oldest in Europe",
+   "A ride on the rack railway or funicular to the viewpoints",
+   "Cellar visit and cava tasting at a family winery",
+   "Lunch among the Penedès vineyards"
+  ],
+  "duration": 1,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "An hour north-west of Barcelona, a mountain of rounded rock pinnacles rises straight out of the Catalan plain. The Catalans call it Montserrat, the 'serrated mountain', and for a thousand years it has been the spiritual heart of Catalonia: a Benedictine monastery founded in 1025 clings to a ledge halfway up, around the shrine of the Black Virgin, La Moreneta, the patron saint of Catalonia. Below, in the gentle hills of the Penedès, families have made sparkling wine since the 1870s, and the town of Sant Sadurní d'Anoia produces most of Spain's cava.\n\nThis private day brings the two together with a licensed guide and a car. You arrive at Montserrat before the crowds, visit the basilica and the Black Virgin, and – on most weekdays – hear the Escolania, one of the oldest boys' choirs in Europe. You ride the funicular up to walking paths with views over the pinnacles and, on a clear day, to the Pyrenees. After the mountain you drive down to a family cava house in the Penedès for a cellar visit, a tasting of several cavas and a long lunch among the vines, before returning to Barcelona.\n\nAT A GLANCE\n• Duration: about 8 hours\n• Start and end: your hotel or the cruise terminal in Barcelona\n• Type: private tour with licensed guide, car and driver\n• Booking: on request – we confirm availability and the final price by email within 24 hours, and you pay only then\n• Level: easy; optional mountain walks of 1 to 3 km on paved or stony paths\n\nWHAT YOU SEE\n• The monastery and basilica of Montserrat.\n• The Black Virgin (La Moreneta).\n• The Escolania choir (most weekdays).\n• The Sant Joan funicular and mountain viewpoints.\n• A family cava winery in the Penedès.\n\nWHY THIS WORKS\nWe drive up rather than queue for the train, reach the basilica early, time the visit to the choir's midday performance and move on to the wine country when the tour coaches arrive.\n\nWHO IT SUITS\nCouples, families, wine lovers, hikers and anyone who wants a break from the city.\n\nWHO MAY PREFER ANOTHER TOUR\nIf you have only one day in Barcelona, choose our Gaudí day tour instead.\n\nPRACTICAL INFORMATION\nMontserrat is cooler and windier than Barcelona: bring a layer. The basilica is a place of worship, so cover shoulders. Children and anyone not drinking get grape juice at the winery.",
+  "inclusions": {"standard": {
+   "private": ["Pick-up and drop-off at your hotel or the cruise terminal in Barcelona", "Private air-conditioned vehicle and driver", "Licensed private guide", "Sant Joan funicular tickets", "Cellar visit and tasting of several cavas", "Lunch at the winery or a nearby restaurant", "Bottled water"],
+   "shared": ["Hotel or port pick-up", "Licensed guide", "Funicular", "Cava tasting", "Lunch"]
+  }},
+  "pricingTiers": [
+   {"transportType": "Sedan / SUV", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png", "minSeats": 1, "maxSeats": 4, "pricing": {"currency": "EUR", "totalPrice": 520, "pricePerDay": 520}},
+   {"transportType": "Minivan", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png", "minSeats": 5, "maxSeats": 8, "pricing": {"currency": "EUR", "totalPrice": 940, "pricePerDay": 940}},
+   {"transportType": "Mini Bus", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png", "minSeats": 9, "maxSeats": 19, "pricing": {"currency": "EUR", "totalPrice": 1840, "pricePerDay": 1840}}
+  ],
+  "images": ["Monastery, Montserrat.jpg", "Abbey of Montserrat 04.jpg", "Paisatge del Penedes, Primavera..jpg", "Cremallera de Montserrat rack railway in Monistrol-Vila.JPG", "Gothic Cloister in the monastery of Montserrat 04.jpg"],
+  "days": [
+   {
+    "name": "Montserrat monastery, the Black Virgin, mountain viewpoints and a Penedès cava winery",
+    "description": "What to expect: the holy mountain of Catalonia in the morning and a family cava house with tasting and lunch in the afternoon, with a licensed guide and private car.\n\nYour guide and driver collect you at about 8:30 and drive about an hour north-west of Barcelona. As you approach, Montserrat appears on the horizon like a row of giant fingers; your guide explains how the conglomerate rock – pebbles and sand cemented on the bed of an ancient delta – was lifted and eroded into these shapes. The road climbs in hairpins to the monastery, built on a ledge at about 720 m.\n\nThe Benedictine community has lived here since 1025, and monks still pray in the basilica several times a day. You enter the basilica and, if the queue allows, climb the side stairs to the Black Virgin, La Moreneta, a Romanesque wooden statue of the Virgin and Child darkened over the centuries; pilgrims touch the orb she holds. On most weekdays at about 13:00 the Escolania, the boys' choir documented since the 14th century, sings the Virolai and the Salve in the basilica – an unforgettable few minutes. Before or after, you ride the Sant Joan funicular up the cliff for easy walks among the pinnacles, with views over the monastery, the Llobregat valley and, on clear days, the snowy Pyrenees.\n\nIn the early afternoon you drive about 40 minutes south to the Penedès, a landscape of vineyards between the mountains and the sea. At a family cava house near Sant Sadurní d'Anoia, you see how cava is made by the traditional method, with a second fermentation in the bottle, walk through the cellars where bottles rest for months or years, and taste several cavas, from a fresh brut nature to a long-aged reserve. Lunch is a Catalan meal with the winery's wines, among the vines. You are back in Barcelona at about 17:00.\n\nSCHEDULE (approximate times)\n08:30 – Pick-up in Barcelona.\n09:30 – Arrival at Montserrat; basilica and the Black Virgin.\n11:00 – Sant Joan funicular and walk to a viewpoint.\n12:45 – Escolania choir in the basilica (most weekdays).\n13:30 – Drive to the Penedès (about 40 minutes).\n14:15 – Cava cellar visit and tasting.\n15:00 – Lunch among the vineyards.\n17:00 – Return to your hotel or ship.\n\nGOOD TO KNOW\n• The Escolania does not sing on Saturdays, during school holidays (late June to August, Christmas) or on some feast days; we check your date.\n• The queue for the Black Virgin can be long at weekends.\n• Hikers can walk to Sant Jeroni, the summit (1,236 m), on request; allow 3 extra hours.\n\nINCLUDED: private car and driver, licensed guide, funicular, cava cellar visit and tasting, lunch, bottled water, pick-up and drop-off.\nNOT INCLUDED: Montserrat museum, rack railway ride (optional), extra wine purchases, tips.\n\nOvernight: none.\nMeals: lunch.",
+    "stops": [
+     {"name": "Montserrat monastery", "duration": "About 3 hours 30 minutes", "description": "The basilica, the Black Virgin, the Escolania choir and the funicular to the viewpoints.", "image": "Abbey of Montserrat 04.jpg"},
+     {"name": "Penedès cava winery", "duration": "About 2 hours 30 minutes", "description": "Cellar visit, cava tasting and lunch among the vineyards.", "image": "Paisatge del Penedes, Primavera..jpg"}
+    ]
+   }
+  ],
+  "faq": [
+   {"question": "How does booking on request work?", "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability and the final price by email within 24 hours, and you pay online only when the tour is confirmed."},
+   {"question": "Will we hear the boys' choir?", "answer": "On most weekdays and Sundays, yes. The Escolania does not sing on Saturdays, in school holidays or on some feast days. We check the calendar for your date."},
+   {"question": "Can we see the Black Virgin up close?", "answer": "Yes, through the stairs beside the basilica. At weekends and on holidays the queue can be over an hour; we plan around it."},
+   {"question": "Is the cava tasting suitable for non-drinkers and children?", "answer": "Yes. Non-drinkers and children get grape juice or soft drinks, and the cellar visit is interesting for everyone."},
+   {"question": "Can we ride the rack railway?", "answer": "Yes. If you like trains, your driver can drop you at Monistrol so you ride the rack railway up to the monastery, then pick you up at the top."},
+   {"question": "Is lunch included?", "answer": "Yes, a Catalan lunch with wine at or near the winery. Vegetarian and other diets can be arranged."},
+   {"question": "Can we hike to the summit?", "answer": "Yes. Sant Jeroni, the highest point, is about 3 hours return from the top of the funicular. Tell us in advance so we adapt the day."},
+   {"question": "Is it suitable for children?", "answer": "Yes. Children enjoy the funicular, the rock shapes and the mountain paths."},
+   {"question": "Is it suitable for people with limited mobility?", "answer": "Mostly. The monastery square and basilica are accessible, and the funicular gives easy access to a viewpoint. The stairs to the Black Virgin and mountain paths are not."},
+   {"question": "Is it suitable as a cruise shore excursion?", "answer": "Yes. We pick you up at the cruise terminal and guarantee your return in time for departure."},
+   {"question": "What should we wear?", "answer": "Comfortable shoes, a warm layer for the mountain, and clothing that covers shoulders in the basilica."},
+   {"question": "What is the best time of year?", "answer": "All year. Spring and autumn are ideal for walking; September and October are the grape harvest in the Penedès."},
+   {"question": "What is the cancellation policy?", "answer": "You can cancel free of charge up to 24 hours before the tour. Until your request is confirmed, nothing is charged at all."}
+  ]
+ }
+}
