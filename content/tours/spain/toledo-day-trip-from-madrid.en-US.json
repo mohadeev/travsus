@@ -1,0 +1,64 @@
+{
+ "key": "spain-toledo-day-trip-from-madrid",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {"city": "Toledo", "state": "Castile-La Mancha", "country": "Spain", "countryCode": "ES", "timeZone": "Europe/Madrid", "streetAddress": "Your hotel in Madrid", "geoCoordinates": {"lat": 39.8628, "log": -4.0273}},
+ "slug": "/en-US/spain/toledo/tours/toledo-private-day-trip-from-madrid-cathedral-el-greco-and-synagogues",
+ "tour": {
+  "name": "Toledo Private Day Trip from Madrid: Cathedral, El Greco & the City of Three Cultures",
+  "subtitle": "A private day in the hilltop city above the Tagus with a licensed guide and car: the panoramic viewpoint, the Gothic cathedral and its El Greco sacristy, The Burial of the Count of Orgaz, two medieval synagogues, the monastery of San Juan de los Reyes and a lunch of Castilian classics.",
+  "seoTitle": "Toledo Private Day Trip from Madrid | TRAVSUS",
+  "metaDescription": "Private Toledo day trip from Madrid: Mirador del Valle, Toledo Cathedral, El Greco's Burial of the Count of Orgaz, Santa María la Blanca and Tránsito synagogues, San Juan de los Reyes. Guide, car, tickets and lunch.",
+  "tags": ["Toledo tour", "Madrid day trip", "Toledo Cathedral", "El Greco", "Three cultures", "Spain private tour"],
+  "highlights": [
+   "The classic view of Toledo above the Tagus from the Mirador del Valle",
+   "Toledo Cathedral, its Transparente and El Greco sacristy",
+   "El Greco's Burial of the Count of Orgaz in Santo Tomé",
+   "The horseshoe arches of Santa María la Blanca synagogue",
+   "The monastery of San Juan de los Reyes",
+   "Lunch of Castilian classics and a taste of Toledo marzipan",
+   "Hotel pick-up in Madrid, private car and licensed guide"
+  ],
+  "duration": 1,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "Toledo sits on a rocky hill wrapped on three sides by a deep bend of the Tagus, and it has looked almost the same for five hundred years. It was the capital of the Visigoths, a great city of Muslim al-Andalus, and then the seat of the Castilian kings, where Christians, Muslims and Jews lived side by side for centuries and translators turned Arabic science into Latin. The result is a maze of lanes where a mosque, a synagogue and a Gothic cathedral stand within a few minutes' walk. The whole old town has been a UNESCO World Heritage Site since 1986.\n\nThis private day from Madrid shows Toledo with a licensed guide and a car, so you avoid the long climb from the coach parks and the crowded midday hours. You start at the Mirador del Valle for the postcard view, then enter the old town to visit the cathedral, one of the greatest Gothic churches in Spain, with its baroque Transparente and a sacristy hung with paintings by El Greco. You see his masterpiece, The Burial of the Count of Orgaz, in the little church of Santo Tomé, walk through the Jewish quarter to the synagogues of Santa María la Blanca and El Tránsito, and finish at the cloister of San Juan de los Reyes.\n\nAT A GLANCE\n• Duration: about 8 hours\n• Start and end: your hotel in Madrid\n• Type: private tour with licensed guide, car and driver\n• Booking: on request – we confirm availability and the final price by email within 24 hours, and you pay only then\n• Level: easy to moderate; about 4 km on steep cobbled lanes, with escalators to the old town\n\nWHAT YOU SEE\n• The Mirador del Valle viewpoint.\n• Toledo Cathedral.\n• The Burial of the Count of Orgaz in Santo Tomé.\n• The synagogues of Santa María la Blanca and El Tránsito.\n• The monastery of San Juan de los Reyes.\n• The Alcázar and the Zocodover square (outside).\n\nWHY THIS WORKS\nWe drive the ring road on the far side of the Tagus for the view, park close to the old town, and visit the cathedral early, before the tour groups.\n\nWHO IT SUITS\nHistory and art lovers, families and anyone staying in Madrid for three days or more.\n\nWHO MAY PREFER ANOTHER TOUR\nIf you prefer castles and Roman engineering, choose our Segovia and Ávila day trip.\n\nPRACTICAL INFORMATION\nToledo's lanes are steep and cobbled: wear comfortable shoes. The cathedral is closed to visitors during services on Sunday mornings; we then reorder the day. Summer afternoons are very hot.",
+  "inclusions": {"standard": {
+   "private": ["Pick-up and drop-off at your hotel in Madrid", "Private air-conditioned vehicle and driver", "Licensed private guide in Toledo", "Tickets to the cathedral, Santo Tomé, Santa María la Blanca and San Juan de los Reyes", "Lunch at a local restaurant", "Bottled water"],
+   "shared": ["Hotel pick-up", "Licensed guide", "Entrance tickets", "Lunch"]
+  }},
+  "pricingTiers": [
+   {"transportType": "Sedan / SUV", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png", "minSeats": 1, "maxSeats": 4, "pricing": {"currency": "EUR", "totalPrice": 480, "pricePerDay": 480}},
+   {"transportType": "Minivan", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png", "minSeats": 5, "maxSeats": 8, "pricing": {"currency": "EUR", "totalPrice": 860, "pricePerDay": 860}},
+   {"transportType": "Mini Bus", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png", "minSeats": 9, "maxSeats": 19, "pricing": {"currency": "EUR", "totalPrice": 1690, "pricePerDay": 1690}}
+  ],
+  "images": ["Toledo in May before sunset. Spain.jpg", "Alcázar and its reflection in the Tagus. Toledo, Spain.jpg", "Interior-Santa María-La-Blanca-synagogue-Toledo-2.jpg", "Toledo - Catedral de Santa Maria int 03.jpg", "Toledo, Calle Santo Tomé.jpg"],
+  "days": [
+   {
+    "name": "Mirador del Valle, Toledo Cathedral, El Greco, the synagogues and San Juan de los Reyes",
+    "description": "What to expect: the City of Three Cultures with a licensed guide, private car, tickets and lunch.\n\nYour driver collects you at your Madrid hotel at about 8:30 for the drive of about an hour south across the plain of La Mancha. Before entering the city, you follow the road on the far bank of the Tagus to the Mirador del Valle, where the whole of Toledo rises in front of you: the river gorge below, the square Alcázar on the highest point, and the spire of the cathedral above a jumble of roofs – the view El Greco painted. Your guide meets you here and explains how the river made the city almost impossible to conquer.\n\nYou ride the escalators up into the old town and start at the cathedral, begun in 1226 on the site of the main mosque and finished over more than two centuries. Inside, five naves of soaring columns lead to the gilded main altarpiece, the carved choir stalls, and the Transparente, an explosion of baroque marble and light cut through the ambulatory vault in the 1730s. In the sacristy, a gallery of El Greco paintings surrounds his Disrobing of Christ, with works by Goya, Titian and Caravaggio nearby.\n\nAfter lunch – roast lamb or partridge, Manchego cheese and a piece of the city's famous marzipan – you walk downhill to the little church of Santo Tomé to see El Greco's masterpiece, The Burial of the Count of Orgaz, painted in the 1580s, in which saints lower a knight into his tomb while heaven opens above. You continue into the old Jewish quarter to Santa María la Blanca, a synagogue of white horseshoe arches and carved capitals built by Mudéjar craftsmen around 1200, and pass the Synagogue of El Tránsito of 1356, home of the Sephardic Museum. You finish at San Juan de los Reyes, the monastery built by the Catholic Monarchs, with its double-storey Gothic cloister, before your driver takes you back to Madrid, arriving at about 16:45.\n\nSCHEDULE (approximate times)\n08:30 – Pick-up at your hotel in Madrid.\n09:30 – Mirador del Valle viewpoint.\n10:15 – Toledo Cathedral (about 1 hour 30 minutes).\n12:00 – Walk past Zocodover and the Alcázar.\n13:00 – Lunch in the old town.\n14:15 – Santo Tomé and The Burial of the Count of Orgaz.\n14:45 – Santa María la Blanca and El Tránsito.\n15:30 – San Juan de los Reyes.\n16:00 – Drive back to Madrid.\n\nGOOD TO KNOW\n• Toledo is famous for damascened steel and swords; there is no obligation to visit any workshop.\n• The cathedral is closed to tourists during Sunday morning services.\n• The Sephardic Museum in El Tránsito can be added on request.\n\nINCLUDED: private car and driver, licensed guide, tickets to the cathedral, Santo Tomé, Santa María la Blanca and San Juan de los Reyes, lunch, bottled water, hotel pick-up and drop-off.\nNOT INCLUDED: Sephardic Museum, Alcázar army museum, drinks with lunch, tips.\n\nOvernight: none.\nMeals: lunch.",
+    "stops": [
+     {"name": "Mirador del Valle", "duration": "About 30 minutes", "description": "The classic panorama of Toledo above the Tagus.", "image": "Toledo in May before sunset. Spain.jpg"},
+     {"name": "Toledo Cathedral", "duration": "About 1 hour 30 minutes", "description": "Gothic naves, the Transparente and the El Greco sacristy.", "image": "Toledo - Catedral de Santa Maria int 03.jpg"},
+     {"name": "Santo Tomé", "duration": "About 30 minutes", "description": "El Greco's Burial of the Count of Orgaz.", "image": "Toledo, Calle Santo Tomé.jpg"},
+     {"name": "Jewish quarter", "duration": "About 45 minutes", "description": "Santa María la Blanca and the Synagogue of El Tránsito.", "image": "Interior-Santa María-La-Blanca-synagogue-Toledo-2.jpg"},
+     {"name": "San Juan de los Reyes", "duration": "About 30 minutes", "description": "The Gothic monastery and cloister of the Catholic Monarchs."}
+    ]
+   }
+  ],
+  "faq": [
+   {"question": "How does booking on request work?", "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability and the final price by email within 24 hours, and you pay online only when the tour is confirmed."},
+   {"question": "How long is the drive from Madrid?", "answer": "About 1 hour each way, depending on traffic. We collect you at your hotel."},
+   {"question": "Are the entrance tickets included?", "answer": "Yes: the cathedral, Santo Tomé, Santa María la Blanca and San Juan de los Reyes. The Sephardic Museum and the Alcázar are optional extras."},
+   {"question": "Is there much walking?", "answer": "About 4 km on steep cobbled lanes. Public escalators take you up from the river to the old town, and we can shorten the walk."},
+   {"question": "Can we combine Toledo with another place?", "answer": "Yes. The windmills of Consuegra, about 45 minutes away, can be added for a longer day."},
+   {"question": "Is lunch included?", "answer": "Yes, a lunch of Castilian dishes in the old town. Vegetarian and other diets can be arranged."},
+   {"question": "Is it suitable for children?", "answer": "Yes. Children enjoy the swords and armour, the river views and the marzipan. We keep the visits short."},
+   {"question": "Is it suitable for people with limited mobility?", "answer": "Partly. The old town is steep. The car can reach some gates, and the cathedral is accessible, but some lanes and the synagogues have steps."},
+   {"question": "Will we be taken to sword or souvenir shops?", "answer": "No. There are no commission stops. If you want to see a damascene workshop, just ask."},
+   {"question": "Can we take photos in the cathedral?", "answer": "Photography without flash is generally allowed in the cathedral. It is not allowed in Santo Tomé."},
+   {"question": "What should we wear?", "answer": "Comfortable shoes with grip for the cobbles, and clothes that cover shoulders and knees for the churches."},
+   {"question": "What is the best time of year?", "answer": "March to June and September to November. Summer afternoons often pass 38 °C; winter is cold but quiet."},
+   {"question": "What is the cancellation policy?", "answer": "You can cancel free of charge up to 24 hours before the tour. Until your request is confirmed, nothing is charged at all."}
+  ]
+ }
+}
