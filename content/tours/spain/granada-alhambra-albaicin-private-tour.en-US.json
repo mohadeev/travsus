@@ -1,0 +1,64 @@
+{
+ "key": "spain-granada-alhambra-albaicin-private-tour",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {"city": "Granada", "state": "Andalusia", "country": "Spain", "countryCode": "ES", "timeZone": "Europe/Madrid", "streetAddress": "Your hotel in Granada", "geoCoordinates": {"lat": 37.1773, "log": -3.5986}},
+ "slug": "/en-US/spain/granada/tours/granada-private-day-tour-alhambra-nasrid-palaces-generalife-and-albaicin",
+ "tour": {
+  "name": "Granada Private Day Tour: the Alhambra, Nasrid Palaces, Generalife & Albaicín",
+  "subtitle": "A private day in the last Moorish kingdom of Spain with a licensed guide: the Nasrid Palaces of the Alhambra with their carved stucco and the Court of the Lions, the Generalife gardens and the Alcazaba, the Royal Chapel of the Catholic Monarchs, the lanes of the Albaicín and the sunset view from San Nicolás.",
+  "seoTitle": "Granada Private Tour: Alhambra & Albaicín | TRAVSUS",
+  "metaDescription": "Private Granada day tour with a licensed guide: Alhambra Nasrid Palaces, Court of the Lions, Generalife, Alcazaba, Royal Chapel, Albaicín and the Mirador de San Nicolás. Alhambra tickets and lunch included.",
+  "tags": ["Granada tour", "Alhambra", "Nasrid Palaces", "Generalife", "Albaicín", "Spain private tour"],
+  "highlights": [
+   "The Nasrid Palaces: Court of the Myrtles, Hall of Ambassadors, Court of the Lions",
+   "The water gardens of the Generalife",
+   "The Alcazaba fortress and the view from the Watch Tower",
+   "The Royal Chapel and the tombs of Ferdinand and Isabella",
+   "The whitewashed lanes and carmen gardens of the Albaicín",
+   "Sunset over the Alhambra from the Mirador de San Nicolás",
+   "Timed Alhambra tickets secured with your booking"
+  ],
+  "duration": 1,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "For two and a half centuries after the rest of al-Andalus had fallen, the Nasrid sultans ruled the Kingdom of Granada from a red-walled palace city on the hill above the Darro. They covered its rooms with carved stucco as fine as lace, ceilings of thousands of wooden pieces like honeycomb, and verses of poetry, and filled its courtyards with running water. On 2 January 1492 the last sultan handed the keys to Ferdinand and Isabella, and the Alhambra became a Christian royal palace. Together with the Generalife and the Albaicín quarter opposite, it is a UNESCO World Heritage Site and the most visited monument in Spain.\n\nThis private day gives the Alhambra the time it deserves, with a licensed guide and timed tickets booked for you – entry to the Nasrid Palaces is limited to a fixed half-hour slot and sells out weeks ahead. You explore the Alcazaba fortress, the Palace of Charles V and the three Nasrid palaces, then stroll through the summer gardens of the Generalife. After lunch you visit the Royal Chapel where the Catholic Monarchs are buried, climb through the Albaicín, the old Moorish quarter, and end at the Mirador de San Nicolás as the evening sun turns the Alhambra gold against the Sierra Nevada.\n\nAT A GLANCE\n• Duration: about 8 hours\n• Start and end: your hotel in Granada\n• Type: private tour with licensed guide and a car for the hill climbs\n• Booking: on request – we confirm availability, your Nasrid Palaces slot and the final price by email within 24 hours, and you pay only then\n• Level: moderate; about 6 km on slopes and cobbles\n\nWHAT YOU SEE\n• The Alcazaba and the Watch Tower.\n• The Palace of Charles V.\n• The Nasrid Palaces.\n• The Generalife gardens.\n• The Royal Chapel and the cathedral (outside).\n• The Albaicín and the Mirador de San Nicolás.\n\nWHY THIS WORKS\nThe day is built around your Nasrid Palaces time slot, the only fixed point; the car takes you up to the Alhambra and the Albaicín so you save your legs for walking inside.\n\nWHO IT SUITS\nEveryone visiting Granada, from first-timers to architecture and history lovers.\n\nWHO MAY PREFER ANOTHER TOUR\nIf you already know the Alhambra, ask us about a Sierra Nevada or Alpujarras day.\n\nPRACTICAL INFORMATION\nAlhambra tickets are personal: we need the full name and passport or ID number of each traveller when you book, and you must carry the same document on the day. Book as early as possible, especially from March to October.",
+  "inclusions": {"standard": {
+   "private": ["Meeting at your hotel in Granada", "Licensed private guide for the whole day", "Alhambra general ticket with timed Nasrid Palaces entry", "Royal Chapel ticket", "Car transfers up to the Alhambra and the Albaicín", "Lunch at a local restaurant", "Bottled water"],
+   "shared": ["Hotel meeting", "Licensed guide", "Alhambra and Royal Chapel tickets", "Lunch"]
+  }},
+  "pricingTiers": [
+   {"transportType": "Sedan / SUV", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png", "minSeats": 1, "maxSeats": 4, "pricing": {"currency": "EUR", "totalPrice": 460, "pricePerDay": 460}},
+   {"transportType": "Minivan", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png", "minSeats": 5, "maxSeats": 8, "pricing": {"currency": "EUR", "totalPrice": 820, "pricePerDay": 820}},
+   {"transportType": "Mini Bus", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png", "minSeats": 9, "maxSeats": 19, "pricing": {"currency": "EUR", "totalPrice": 1620, "pricePerDay": 1620}}
+  ],
+  "images": ["Alhambra in the evening.jpg", "Court of the Lions, Alhambra de Granada (Spain).jpg", "Generalife Garden Alhambra 2014.jpg", "Albaicin 2012 San Nicolas Sacromonte.jpg", "Granada - View from Alhambra - 04.jpg"],
+  "days": [
+   {
+    "name": "Alhambra, Generalife, Royal Chapel, Albaicín and sunset at San Nicolás",
+    "description": "What to expect: the Alhambra in depth in the morning and the old city in the afternoon, with a licensed guide, tickets, lunch and a car for the steep climbs.\n\nYour guide and driver meet you at your hotel at about 8:15 and drive up the wooded hill to the Alhambra gate. You begin in the Alcazaba, the oldest part of the citadel, and climb the Watch Tower, where the Christian banners were raised in 1492, for a view over the Albaicín, the city and the snowy Sierra Nevada. Your guide then shows you the Palace of Charles V, a perfect Renaissance square with a circular courtyard, built by Ferdinand and Isabella's grandson in the heart of the Moorish palace.\n\nAt your exact time slot you enter the Nasrid Palaces. In the Mexuar, the old council hall, you see the first carved inscriptions; in the Comares Palace, the long pool of the Court of the Myrtles reflects the tower that holds the Hall of Ambassadors, the throne room under a cedar dome of more than 8,000 pieces representing the seven heavens. In the Palace of the Lions, built by Muhammad V in the 14th century, twelve marble lions carry the fountain at the centre of a courtyard of 124 slender columns, and the Hall of the Two Sisters and the Hall of the Abencerrajes are crowned by muqarnas domes like stalactites of light. Your guide reads you the poems carved in the walls and explains how water, light and geometry were used to evoke paradise.\n\nA path through gardens leads to the Generalife, the sultans' summer palace, where the Court of the Water Channel runs between fountains, roses and cypresses. After lunch, your driver takes you down to the city centre to the Royal Chapel, where Ferdinand and Isabella chose to be buried in the city they conquered, beside their daughter Joanna and her husband Philip. You then drive up into the Albaicín, the Moorish quarter of narrow lanes and walled carmen gardens, walk down past old cisterns and the Great Mosque of Granada, and end at the Mirador de San Nicolás, where guitars often play as the setting sun lights up the Alhambra. You are back at your hotel at about 16:30, or later for the sunset in summer.\n\nSCHEDULE (approximate times)\n08:15 – Meeting at your hotel and drive to the Alhambra.\n08:30 – Alcazaba and Palace of Charles V.\n10:00 – Nasrid Palaces (timed entry, about 1 hour 15 minutes).\n11:30 – Generalife gardens.\n13:00 – Lunch.\n14:30 – Royal Chapel.\n15:15 – Albaicín walk.\n16:15 – Mirador de San Nicolás.\n16:30 – Return to your hotel.\n\nGOOD TO KNOW\n• Each traveller must bring the passport or ID used for the Alhambra booking; entry is refused without it.\n• Nasrid Palaces times are strict: late arrivals cannot enter.\n• In summer we can move San Nicolás to sunset and drop you there.\n\nINCLUDED: licensed guide, Alhambra general ticket with Nasrid Palaces, Royal Chapel ticket, car transfers, lunch, bottled water.\nNOT INCLUDED: Alhambra night visit, flamenco show in Sacromonte, Arab baths, drinks with lunch, tips.\n\nOvernight: none.\nMeals: lunch.",
+    "stops": [
+     {"name": "Alcazaba", "duration": "About 45 minutes", "description": "The fortress and the view from the Watch Tower.", "image": "Granada - View from Alhambra - 04.jpg"},
+     {"name": "Nasrid Palaces", "duration": "About 1 hour 15 minutes", "description": "Court of the Myrtles, Hall of Ambassadors and Court of the Lions.", "image": "Court of the Lions, Alhambra de Granada (Spain).jpg"},
+     {"name": "Generalife", "duration": "About 1 hour", "description": "The sultans' summer palace and the Court of the Water Channel.", "image": "Generalife Garden Alhambra 2014.jpg"},
+     {"name": "Royal Chapel", "duration": "About 45 minutes", "description": "The tombs of Ferdinand and Isabella."},
+     {"name": "Albaicín and San Nicolás", "duration": "About 1 hour 15 minutes", "description": "Moorish lanes and the classic view of the Alhambra.", "image": "Albaicin 2012 San Nicolas Sacromonte.jpg"}
+    ]
+   }
+  ],
+  "faq": [
+   {"question": "How does booking on request work?", "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability, your Nasrid Palaces time and the final price by email within 24 hours, and you pay online only when the tour is confirmed."},
+   {"question": "Are Alhambra tickets included?", "answer": "Yes, the general ticket with a timed entry to the Nasrid Palaces. Tickets are personal, so we need each traveller's full name and passport or ID number when you book."},
+   {"question": "How far ahead should we book?", "answer": "As early as possible – one to three months ahead in spring and autumn. Late requests sometimes have only gardens tickets left; we will tell you before you pay."},
+   {"question": "What if the Nasrid Palaces are sold out?", "answer": "We tell you before confirming. Options include another date, a night visit to the palaces or a gardens-only visit at a lower price."},
+   {"question": "Is there much walking?", "answer": "About 6 km, with slopes and cobbles in the Albaicín. The car takes you up the steepest hills."},
+   {"question": "Is lunch included?", "answer": "Yes, at a local restaurant. In Granada many bars still serve a free tapa with each drink – your guide will show you the best."},
+   {"question": "Is it suitable for children?", "answer": "Yes. Children enjoy the fortress towers, the fountains and the lions. Under-12s enter the Alhambra free but still need a named ticket."},
+   {"question": "Is it suitable for wheelchair users?", "answer": "Partly. There is an accessible route through much of the Alhambra; the Alcazaba towers and parts of the Albaicín are not accessible."},
+   {"question": "Can we add a flamenco show?", "answer": "Yes. The cave venues of Sacromonte host intimate shows in the evening; we can book one."},
+   {"question": "What should we wear?", "answer": "Comfortable shoes for slopes and cobbles, sun protection in summer and a warm layer in winter."},
+   {"question": "Will we be taken to shops?", "answer": "No. There are no shopping stops unless you ask."},
+   {"question": "What is the best time of year?", "answer": "March to June and September to November. Winter is cold but the Sierra Nevada is snowy and the Alhambra quieter."},
+   {"question": "What is the cancellation policy?", "answer": "You can cancel free of charge up to 7 days before the tour; after that, Alhambra tickets cannot be refunded. Until your request is confirmed, nothing is charged at all."}
+  ]
+ }
+}
