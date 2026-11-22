@@ -4,9 +4,9 @@ import { type FC, useEffect, useRef } from 'react'
 import ModalSelectDate from '@/components/ModalSelectDate'
 import { formatTripDates, readTripDates } from '@/lib/tripDates'
 import { useLocale } from 'next-intl'
-import ModalSelectGuests from '@/components/ModalSelectGuests'
 import Image from 'next/image'
 import CheckoutPayment from './CheckoutPayment'
+import TravellersRow from './TravellersRow'
 import PromoCodeForm from './PromoCode'
 import getFetchDataFromApi from '@/utils/getFetchDataFromApi'
 import { useRouter, useSearchParams } from 'next/navigation'
@@ -18,10 +18,7 @@ import {
 	setBooking,
 } from '@/store/slices/booking'
 import { useTranslations as useIntlTranslations } from 'next-intl'
-import RowBedAccommodationSelector from '../../[country]/[city]/[category]/[name]/(service-detail)/[listingExperiencesDetail]/RenderSideBar/RowBedAccommodationSelector'
-import GuestsInput from '../../[country]/[city]/[category]/[name]/(service-detail)/[listingExperiencesDetail]/GuestsInput'
 import LineItemsBreakdown from '../../[country]/[city]/[category]/[name]/(service-detail)/[listingExperiencesDetail]/LineItems/LineItemsBreakdown'
-import AcommodationAndTransport from '../../[country]/[city]/[category]/[name]/(service-detail)/[listingExperiencesDetail]/RenderSideBar/AcommodationAndTransport'
 import { useTranslations } from '@/lib/i18n'
 
 export interface CheckOutPagePageMainProps {
@@ -40,7 +37,7 @@ const CheckOutPagePageMain: FC<CheckOutPagePageMainProps> = ({
 	const bookingId = searchParams.get('bookingId')
 	const booking = useAppSelector(selectBooking)
 	const promoRemoved = useAppSelector(selectPromoRemoved)
-	const { guests, lineItems, accommodation, bookOwnHotels } = booking
+	const { lineItems } = booking
 	// Last date saved on the server, so only real changes are sent
 	const savedDate = useRef<string | null>(null)
 
@@ -76,9 +73,6 @@ const CheckOutPagePageMain: FC<CheckOutPagePageMainProps> = ({
 	const save = (changes: Record<string, any>) =>
 		booking.id && dispatch(saveBookingChanges({ bookingId: booking.id, changes }))
 
-	const handleGuestsChange = (data: any) => save({ guests: data?.guests })
-	const handleAccomodationChange = (accommodation: any) => save({ accommodation })
-	const handleBookOwnHotels = () => save({ bookOwnHotels: !bookOwnHotels })
 
 	// The date modal updates the store; save the new date
 	useEffect(() => {
@@ -140,24 +134,12 @@ const CheckOutPagePageMain: FC<CheckOutPagePageMainProps> = ({
 											tripRow(t('Date'), formatTripDates(...readTripDates(booking?.selectedDate), locale), openModal)
 										}
 									/>
-									<ModalSelectGuests
-										AcommodationAndTransport={
-											<AcommodationAndTransport
-												GuestsInput={<GuestsInput className="flex-1" onChange={handleGuestsChange} defaultValue={guests} />}
-												RowBedAccommodationSelector={
-													<RowBedAccommodationSelector defaultValue={accommodation} onChange={handleAccomodationChange} />
-												}
-												bookOwnHotels={bookOwnHotels}
-												handleBookOwnHotels={handleBookOwnHotels}
-											/>
-										}
-										renderChildren={({ openModal }) =>
-											tripRow(
-												t('Guests'),
-												t('Guests_Count', { adults: guests?.guestAdults || 0, children: guests?.guestChildren || 0 }),
-												openModal,
-											)
-										}
+									<TravellersRow
+										booking={booking}
+										label={t('Guests')}
+										describe={(adults, children) => t('Guests_Count', { adults, children })}
+										editLabel={tPayment('edit')}
+										onSave={save}
 									/>
 								</div>
 							</section>
