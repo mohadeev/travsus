@@ -1,0 +1,93 @@
+{
+ "key": "france-highlights-8-days",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {"city": "Paris", "state": "Île-de-France", "country": "France", "countryCode": "FR", "timeZone": "Europe/Paris", "streetAddress": "Paris Charles de Gaulle Airport or your hotel in Paris", "geoCoordinates": {"lat": 48.8566, "log": 2.3522}},
+ "slug": "/en-US/france/paris/tours/france-highlights-8-day-private-tour-paris-versailles-loire-valley-provence-and-riviera",
+ "tour": {
+  "name": "France Highlights 8-Day Private Tour: Paris, Versailles, the Loire Valley, Provence & the Riviera",
+  "subtitle": "Eight days through the France of postcards with licensed guides: the Louvre, the Eiffel Tower and Versailles, the châteaux of the Loire, the Palace of the Popes and the Pont du Gard in Provence, and Nice, Èze and Monaco on the Riviera, with high-speed trains and seven nights in central hotels.",
+  "seoTitle": "France Highlights 8-Day Private Tour | TRAVSUS",
+  "metaDescription": "8-day private France tour: Paris (Louvre, Notre-Dame, Eiffel Tower, Seine cruise), Versailles, Loire Valley châteaux, Avignon, Pont du Gard and Luberon villages, Nice, Èze and Monaco. Guides, TGV trains and 7 nights with breakfast.",
+  "tags": ["France tour", "Paris Provence Riviera", "France 8 days", "Loire Valley", "High-speed train", "France private tour"],
+  "highlights": [
+   "The Louvre, Notre-Dame and Sainte-Chapelle with a licensed guide",
+   "The Eiffel Tower, Montmartre and a Seine cruise",
+   "Versailles: the Hall of Mirrors and Marie-Antoinette's estate",
+   "The Loire châteaux of Chambord and Chenonceau",
+   "Avignon, the Pont du Gard and the hill villages of the Luberon",
+   "Nice, Èze and Monaco on the French Riviera",
+   "High-speed trains and seven nights in central hotels with breakfast"
+  ],
+  "duration": 8,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "France rewards travellers who go beyond Paris. In a week, you can see the art and boulevards of the capital, the palace of the Sun King, the Renaissance châteaux of the Loire, the light and Roman heritage of Provence and the glamour of the Riviera, connected by some of the fastest trains in the world.\n\nThis private journey gives you a licensed guide in every region, a private car wherever the countryside needs one, first-class TGV trains between Paris, Provence and the coast, timed tickets for every major monument and seven nights in well-located hotels. The guided visits leave late afternoons and evenings free for cafés, markets and dinners.\n\nAT A GLANCE\n• Duration: 8 days, 7 nights\n• Start: Paris Charles de Gaulle Airport or your hotel in Paris\n• End: Nice Côte d'Azur Airport or your hotel in Nice\n• Type: private tour with licensed guides, private cars and drivers, high-speed trains; 7 nights in hotels with breakfast\n• Booking: on request – we confirm availability, hotels, trains, monument slots and the final price by email within 24 hours, and you pay only then\n• Level: easy to moderate; daily walks of 4 to 7 km\n\nWHAT YOU SEE\n• Paris: the Louvre, Notre-Dame, Sainte-Chapelle, the Eiffel Tower, Montmartre and the Seine.\n• Versailles.\n• The Loire Valley: Chambord, Chenonceau and Amboise.\n• Provence: Avignon, the Pont du Gard, Gordes and Roussillon.\n• The Riviera: Nice, Èze, Monaco and Saint-Paul-de-Vence.\n\nWHY THIS WORKS\nFour nights in Paris give time for the capital and two great day trips without changing hotels; the TGV then takes you to Provence in under three hours, and the last nights by the sea make a relaxing end.\n\nWHO IT SUITS\nFirst-time visitors to France, couples, families and small groups who want the classics with private guiding.\n\nWHO MAY PREFER ANOTHER TOUR\nIf you are most interested in Normandy and the D-Day beaches, ask us to replace the Loire day with Mont-Saint-Michel or the landing beaches.\n\nPRACTICAL INFORMATION\nThe Louvre is closed on Tuesdays and Versailles on Mondays; we arrange the days around your dates. French cities charge a tourist tax per person per night, paid at the hotels.",
+  "inclusions": {"standard": {"private": ["Private arrival transfer from Paris Charles de Gaulle Airport and departure transfer to Nice Airport", "7 nights in central 4-star or boutique hotels with breakfast (double or twin rooms): 4 in Paris, 1 in Avignon, 2 in Nice", "First-class TGV trains Paris–Avignon and Avignon–Nice, with station transfers", "Licensed private guides in Paris, Versailles, the Loire, Provence and the Riviera", "Private cars and drivers for Versailles, the Loire, Provence and the Riviera", "Timed tickets to the Louvre, Sainte-Chapelle, the Eiffel Tower, Versailles, Chambord, Chenonceau and the Palace of the Popes", "Seine cruise", "Lunch on days 2 to 7", "Bottled water"], "shared": ["Airport transfers", "7 nights with breakfast", "High-speed trains", "Licensed guides", "Entrance tickets", "Lunches"]}},
+  "pricingTiers": [
+   {"transportType": "Sedan / SUV", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png", "minSeats": 1, "maxSeats": 4, "pricing": {"currency": "EUR", "totalPrice": 6080, "pricePerDay": 760}},
+   {"transportType": "Minivan", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png", "minSeats": 5, "maxSeats": 8, "pricing": {"currency": "EUR", "totalPrice": 11040, "pricePerDay": 1380}},
+   {"transportType": "Mini Bus", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png", "minSeats": 9, "maxSeats": 19, "pricing": {"currency": "EUR", "totalPrice": 21600, "pricePerDay": 2700}}
+  ],
+  "images": ["Q:Eiffel Tower Paris", "Q:Chateau de Chenonceau", "Q:Lavender field Provence", "Q:Eze village", "Q:Hall of Mirrors Versailles"],
+  "days": [
+   {"name": "Arrival in Paris and an evening on the Seine",
+    "description": "What to expect: a private welcome and a gentle first evening in Paris.\n\nYour driver meets you in the arrivals hall at Paris Charles de Gaulle with a name sign and drives you to your hotel in the centre, about 45 minutes away. After time to rest, your guide meets you in the early evening for a walk along the Seine from the Île Saint-Louis to the Pont Neuf, with tips for dinner in the Marais or Saint-Germain.\n\nSCHEDULE (approximate times)\nAny time – Private airport transfer to your hotel.\n18:00 – Evening walk along the Seine.\n\nGOOD TO KNOW\n• If you arrive late, the walk moves to another evening.\n\nINCLUDED: airport transfer, evening walk with a licensed guide.\nNOT INCLUDED: dinner, tips.\n\nOvernight: hotel in central Paris.\nMeals: none.",
+    "stops": [{"name": "The Seine", "duration": "About 1 hour 30 minutes", "description": "An evening walk past Notre-Dame and the Pont Neuf.", "image": "Q:Seine river Paris bridges"}]},
+   {"name": "Paris: the Louvre, Notre-Dame, Sainte-Chapelle and the Latin Quarter",
+    "description": "What to expect: the masterpieces and medieval heart of Paris with a licensed guide and timed tickets.\n\nYou enter the Louvre at opening time and see the Mona Lisa before the crowds, then the Winged Victory, the Venus de Milo and the great French paintings. After a bistro lunch, you visit Notre-Dame, reopened in December 2024 after the fire, and Sainte-Chapelle, whose fifteen stained-glass windows fill the chapel with coloured light. You end in the Latin Quarter and the Luxembourg Gardens.\n\nSCHEDULE (approximate times)\n09:00 – The Louvre.\n12:30 – Lunch in a bistro.\n14:00 – Notre-Dame and Sainte-Chapelle.\n15:30 – Latin Quarter and Luxembourg Gardens.\n\nGOOD TO KNOW\n• On a Tuesday, when the Louvre is closed, we visit the Musée d'Orsay.\n\nINCLUDED: licensed guide, Louvre and Sainte-Chapelle tickets, lunch, transfers.\nNOT INCLUDED: dinner, tips.\n\nOvernight: hotel in central Paris.\nMeals: breakfast, lunch.",
+    "stops": [
+     {"name": "The Louvre", "duration": "About 2 hours 30 minutes", "description": "The Mona Lisa and the great galleries.", "image": "Q:Louvre Pyramid"},
+     {"name": "Notre-Dame", "duration": "About 45 minutes", "description": "The restored Gothic cathedral.", "image": "Q:Notre-Dame de Paris"},
+     {"name": "Sainte-Chapelle", "duration": "About 45 minutes", "description": "Walls of stained glass.", "image": "Q:Sainte-Chapelle stained glass"}
+    ]},
+   {"name": "Paris: Eiffel Tower, Arc de Triomphe, Montmartre and a Seine cruise",
+    "description": "What to expect: the great views of Paris with a licensed guide and a private car.\n\nYou go up the Eiffel Tower to the second floor with timed tickets, see the Arc de Triomphe and the Champs-Élysées, and after lunch climb to Sacré-Cœur and the painters' village of Montmartre. The day ends with a one-hour cruise on the Seine past the Louvre, Notre-Dame and the Musée d'Orsay.\n\nSCHEDULE (approximate times)\n09:30 – Eiffel Tower.\n11:15 – Arc de Triomphe and the Champs-Élysées.\n12:30 – Lunch.\n14:00 – Montmartre and Sacré-Cœur.\n15:45 – Seine cruise.\n\nGOOD TO KNOW\n• The cruise can be moved to the evening to see the Eiffel Tower sparkle.\n\nINCLUDED: private car and driver, licensed guide, Eiffel Tower tickets, Seine cruise, lunch.\nNOT INCLUDED: Eiffel Tower summit, dinner, tips.\n\nOvernight: hotel in central Paris.\nMeals: breakfast, lunch.",
+    "stops": [
+     {"name": "Eiffel Tower", "duration": "About 1 hour 30 minutes", "description": "The second floor and the view over Paris.", "image": "Q:Eiffel Tower Paris"},
+     {"name": "Montmartre", "duration": "About 1 hour 45 minutes", "description": "Sacré-Cœur and Place du Tertre.", "image": "Q:Sacre-Coeur Montmartre"}
+    ]},
+   {"name": "Versailles: the palace, the Hall of Mirrors, the gardens and the Trianon",
+    "description": "What to expect: the palace of the kings of France with a licensed guide, private car and Passport tickets.\n\nYou enter Versailles at opening time for the State Apartments, the Hall of Mirrors and the Queen's Apartments. After lunch in the gardens, you see the fountains and the Grand Canal, then the Grand and Petit Trianon and Marie-Antoinette's hamlet, before returning to Paris for a free evening.\n\nSCHEDULE (approximate times)\n08:00 – Drive to Versailles.\n09:00 – The palace and the Hall of Mirrors.\n12:15 – Lunch in the gardens.\n13:30 – Gardens, Trianon and the Queen's Hamlet.\n16:30 – Back in Paris.\n\nGOOD TO KNOW\n• Versailles is closed on Mondays; we swap days if needed.\n\nINCLUDED: private car and driver, licensed guide, Passport ticket, lunch.\nNOT INCLUDED: dinner, tips.\n\nOvernight: hotel in central Paris.\nMeals: breakfast, lunch.",
+    "stops": [
+     {"name": "Hall of Mirrors", "duration": "About 2 hours", "description": "The palace and its State Apartments.", "image": "Q:Hall of Mirrors Versailles"},
+     {"name": "Gardens of Versailles", "duration": "About 2 hours 30 minutes", "description": "Fountains, the Trianon and the Queen's Hamlet.", "image": "Q:Versailles gardens fountains"}
+    ]},
+   {"name": "The Loire Valley: Chambord, Chenonceau and Amboise, then the TGV to Avignon",
+    "description": "What to expect: the greatest Renaissance châteaux and a fast train south to Provence.\n\nAfter an early breakfast, a high-speed train takes you to Saint-Pierre-des-Corps in about an hour, where your guide and driver meet you with your luggage loaded. You visit Chambord and its double-helix staircase, have lunch with a Vouvray wine tasting in a cave cellar, and see Chenonceau spanning the river Cher. In the late afternoon your driver takes you to the station for the TGV to Avignon, where a car brings you to your hotel inside the ramparts.\n\nSCHEDULE (approximate times)\n07:30 – Train to Saint-Pierre-des-Corps.\n09:00 – Chambord.\n12:15 – Lunch and wine tasting.\n14:00 – Chenonceau.\n16:30 – TGV to Avignon (connection via the high-speed line).\n20:00 – Arrival at your hotel in Avignon.\n\nGOOD TO KNOW\n• This is the longest day of the trip; you can choose to skip the Loire and spend a fifth day in Paris instead.\n\nINCLUDED: trains, private car and driver, licensed guide, château tickets, lunch with tasting.\nNOT INCLUDED: dinner, tips.\n\nOvernight: hotel in Avignon.\nMeals: breakfast, lunch.",
+    "stops": [
+     {"name": "Château de Chambord", "duration": "About 1 hour 45 minutes", "description": "Francis I's palace.", "image": "Q:Chateau de Chambord"},
+     {"name": "Château de Chenonceau", "duration": "About 1 hour 30 minutes", "description": "The château over the river.", "image": "Q:Chateau de Chenonceau"}
+    ]},
+   {"name": "Provence: the Palace of the Popes, the Pont du Gard and the Luberon, then on to Nice",
+    "description": "What to expect: popes, Romans and hill villages, then a train to the coast.\n\nYou visit the Palace of the Popes and see the Pont d'Avignon, drive to the Roman Pont du Gard, and have lunch in a Luberon village before seeing Gordes and, in summer, the lavender at Sénanque Abbey. In the late afternoon a TGV takes you from Avignon to Nice in about three hours, where a car brings you to your hotel near the Promenade des Anglais.\n\nSCHEDULE (approximate times)\n09:00 – Palace of the Popes.\n11:30 – Pont du Gard.\n13:15 – Lunch in the Luberon.\n14:45 – Gordes and Sénanque.\n17:00 – TGV to Nice.\n20:00 – Arrival at your hotel in Nice.\n\nGOOD TO KNOW\n• The lavender flowers from late June to late July.\n\nINCLUDED: private car and driver, licensed guide, tickets, lunch, train.\nNOT INCLUDED: dinner, tips.\n\nOvernight: hotel in Nice.\nMeals: breakfast, lunch.",
+    "stops": [
+     {"name": "Pont du Gard", "duration": "About 1 hour", "description": "The Roman aqueduct bridge.", "image": "Q:Pont du Gard"},
+     {"name": "Gordes", "duration": "About 45 minutes", "description": "The perched village of the Luberon.", "image": "Q:Gordes Provence"}
+    ]},
+   {"name": "The French Riviera: old Nice, Èze, Monaco and Saint-Paul-de-Vence",
+    "description": "What to expect: the coast and perched villages of the Côte d'Azur with a licensed guide and private car.\n\nYou explore old Nice and the Cours Saleya market, drive the corniche to the perched village of Èze and its exotic garden, and cross into Monaco for the Prince's Palace, the old town and lunch. In the afternoon you see the harbour, the Grand Prix circuit and the Monte-Carlo casino, and end in Saint-Paul-de-Vence, the walled village of artists.\n\nSCHEDULE (approximate times)\n08:45 – Old Nice.\n10:45 – Èze.\n11:45 – Monaco.\n13:00 – Lunch.\n14:15 – Monte-Carlo.\n16:15 – Saint-Paul-de-Vence.\n17:30 – Back at your hotel.\n\nGOOD TO KNOW\n• A farewell dinner can be arranged on request.\n\nINCLUDED: private car and driver, licensed guide, Èze garden ticket, lunch.\nNOT INCLUDED: dinner, casino, tips.\n\nOvernight: hotel in Nice.\nMeals: breakfast, lunch.",
+    "stops": [
+     {"name": "Èze", "duration": "About 1 hour", "description": "The village above the sea.", "image": "Q:Eze village"},
+     {"name": "Monaco", "duration": "About 2 hours 30 minutes", "description": "The palace, the Rock and the harbour.", "image": "Q:Monaco harbour"}
+    ]},
+   {"name": "Departure from Nice",
+    "description": "What to expect: a last morning by the sea and a private airport transfer.\n\nAfter breakfast you have free time for a swim, a walk on the Promenade des Anglais or a last coffee in the old town. At the time that suits your flight, your driver takes you to Nice Côte d'Azur Airport, 15 minutes away.\n\nSCHEDULE (approximate times)\nMorning – Free time.\nAs needed – Private transfer to Nice Airport.\n\nGOOD TO KNOW\n• Extra nights on the Riviera can be added.\n\nINCLUDED: airport transfer.\nNOT INCLUDED: lunch, tips.\n\nOvernight: none.\nMeals: breakfast.",
+    "stops": [{"name": "Promenade des Anglais", "duration": "Free time", "description": "A last walk by the sea.", "image": "Q:Nice Promenade des Anglais"}]}
+  ],
+  "faq": [
+   {"question": "How does booking on request work?", "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability, hotels, trains, monument slots and the final price by email within 24 hours, and you pay online only when the tour is confirmed."},
+   {"question": "Are the trains and tickets included?", "answer": "Yes: first-class TGV trains, and timed tickets for the Louvre, Sainte-Chapelle, the Eiffel Tower, Versailles, Chambord, Chenonceau and the Palace of the Popes, plus the Seine cruise."},
+   {"question": "What kind of hotels are used?", "answer": "Comfortable 4-star or boutique hotels in the centres of Paris, Avignon and Nice. Upgrades to 5-star hotels or a château hotel in the Loire are available."},
+   {"question": "Is the tourist tax included?", "answer": "No. French towns charge a small tax per person per night, paid at the hotels. We tell you the amounts when we confirm."},
+   {"question": "Will we have the same guide throughout?", "answer": "You have a licensed local guide in each region, who knows it best. Drivers change by region too."},
+   {"question": "Can we add Normandy?", "answer": "Yes. We can add Mont-Saint-Michel or the D-Day beaches from Paris, or replace the Loire day with one of them."},
+   {"question": "Can the route be reversed?", "answer": "Yes. The tour can start in Nice and end in Paris, or be adapted to your flights."},
+   {"question": "Is it suitable for children?", "answer": "Yes. Children love the Eiffel Tower, the castles and the beach. We can book family rooms and shorten museum visits."},
+   {"question": "Is it suitable for people with limited mobility?", "answer": "Partly. Trains, cars and most museums are accessible, but hill villages such as Èze and Gordes are steep. Tell us your needs and we will adapt."},
+   {"question": "How much walking is there?", "answer": "About 4 to 7 km a day at an easy pace, with cars and trains for longer distances."},
+   {"question": "What should we wear?", "answer": "Comfortable shoes, layers for changing weather, sun protection in summer and smart casual clothes for nicer restaurants."},
+   {"question": "What is the best time of year?", "answer": "April to June and September to October. Late June and July add lavender in Provence; August is hot and many Parisians are on holiday."},
+   {"question": "What is the cancellation policy?", "answer": "You can cancel free of charge up to 21 days before the tour starts; train and monument tickets may not be refundable after purchase. Until your request is confirmed, nothing is charged at all."}
+  ]
+ }
+}

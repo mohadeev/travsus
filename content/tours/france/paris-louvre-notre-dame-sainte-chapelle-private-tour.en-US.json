@@ -1,0 +1,59 @@
+{
+ "key": "france-paris-louvre-notre-dame-sainte-chapelle-private-tour",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {"city": "Paris", "state": "Île-de-France", "country": "France", "countryCode": "FR", "timeZone": "Europe/Paris", "streetAddress": "Your hotel in Paris", "geoCoordinates": {"lat": 48.8606, "log": 2.3376}},
+ "slug": "/en-US/france/paris/tours/paris-private-tour-louvre-notre-dame-sainte-chapelle-and-the-latin-quarter",
+ "tour": {
+  "name": "Paris Private Tour: The Louvre, Notre-Dame, Sainte-Chapelle & the Latin Quarter",
+  "subtitle": "A private day in the historic heart of Paris with a licensed guide: the Mona Lisa, the Venus de Milo and the Winged Victory in the Louvre, the restored Notre-Dame cathedral, the stained glass of Sainte-Chapelle, lunch in a bistro and the lanes of the Latin Quarter.",
+  "seoTitle": "Louvre, Notre-Dame & Sainte-Chapelle Private Tour | TRAVSUS",
+  "metaDescription": "Private Paris tour with licensed guide: the Louvre's masterpieces with timed entry, Notre-Dame cathedral reopened in 2024, Sainte-Chapelle, Île de la Cité, a bistro lunch and the Latin Quarter. Tickets and lunch included.",
+  "tags": ["Louvre tour", "Notre-Dame", "Sainte-Chapelle", "Paris private tour", "Latin Quarter", "France private tour"],
+  "highlights": [
+   "Timed entry to the Louvre and a route to its greatest masterpieces",
+   "The Mona Lisa, the Venus de Milo and the Winged Victory of Samothrace",
+   "Notre-Dame cathedral, reopened in December 2024 after the fire",
+   "The 13th-century stained glass of Sainte-Chapelle",
+   "The Île de la Cité, where Paris began",
+   "Lunch in a classic Parisian bistro",
+   "The Latin Quarter, the Sorbonne and the Luxembourg Gardens"
+  ],
+  "duration": 1,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "Paris was born on the Île de la Cité, an island in the Seine where a Celtic tribe, the Parisii, settled more than two thousand years ago. On this island the medieval kings built their palace and the bishops their cathedral, and across the river rose the Louvre, a fortress that became a royal palace and, after the Revolution, a museum open to everyone. The banks of the Seine from the Louvre to the Eiffel Tower have been a UNESCO World Heritage Site since 1991.\n\nThis private day takes you through that story with a licensed guide. In the morning you enter the Louvre with timed tickets and follow a route that makes sense of the largest museum in the world, from ancient Greece to the Italian Renaissance and French painting. After a bistro lunch, you cross to the Île de la Cité to see Notre-Dame, restored and reopened in 2024 after the fire of 2019, and Sainte-Chapelle, a jewel box of stained glass built by Saint Louis. You end in the Latin Quarter, the student district of the Sorbonne, and the Luxembourg Gardens.\n\nAT A GLANCE\n• Duration: about 7 hours 30 minutes\n• Start and end: your hotel in Paris\n• Type: private walking tour with licensed guide; car for hotel transfers\n• Booking: on request – we confirm availability and the final price by email within 24 hours, and you pay only then\n• Level: easy; about 6 km on flat ground, with stairs in the museum\n\nWHAT YOU SEE\n• The Louvre: the Mona Lisa, the Venus de Milo, the Winged Victory, the Raft of the Medusa and Liberty Leading the People.\n• The Pont des Arts and the Pont Neuf.\n• Notre-Dame cathedral.\n• Sainte-Chapelle.\n• The Latin Quarter, the Sorbonne and the Panthéon (outside).\n• The Luxembourg Gardens.\n\nWHY THIS WORKS\nWe enter the Louvre at opening time and go straight to the Mona Lisa before the crowds, then work back through the quieter galleries; Sainte-Chapelle is booked for the early afternoon, when the light through the windows is at its best.\n\nWHO IT SUITS\nFirst-time visitors to Paris, art lovers and families who want the great sights explained clearly.\n\nWHO MAY PREFER ANOTHER TOUR\nIf you prefer views and neighbourhoods to museums, choose our Eiffel Tower, Montmartre and Seine cruise tour.\n\nPRACTICAL INFORMATION\nThe Louvre is closed on Tuesdays. Notre-Dame is free to enter but has a queue; your guide knows the best time. Sainte-Chapelle has a security check shared with the Palais de Justice.",
+  "inclusions": {"standard": {"private": ["Pick-up and drop-off at your hotel in Paris", "Licensed private guide for the whole day", "Timed tickets to the Louvre and Sainte-Chapelle", "Lunch in a Parisian bistro", "Bottled water"], "shared": ["Hotel pick-up", "Licensed guide", "Entrance tickets", "Lunch"]}},
+  "pricingTiers": [
+   {"transportType": "Sedan / SUV", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png", "minSeats": 1, "maxSeats": 4, "pricing": {"currency": "EUR", "totalPrice": 520, "pricePerDay": 520}},
+   {"transportType": "Minivan", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png", "minSeats": 5, "maxSeats": 8, "pricing": {"currency": "EUR", "totalPrice": 920, "pricePerDay": 920}},
+   {"transportType": "Mini Bus", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png", "minSeats": 9, "maxSeats": 19, "pricing": {"currency": "EUR", "totalPrice": 1790, "pricePerDay": 1790}}
+  ],
+  "images": ["Q:Louvre Pyramid", "Q:Notre-Dame de Paris", "Q:Sainte-Chapelle stained glass", "Q:Seine river Paris bridges", "Q:Louvre Pyramid#2"],
+  "days": [
+   {"name": "The Louvre, Pont Neuf, Notre-Dame, Sainte-Chapelle, the Latin Quarter and the Luxembourg Gardens",
+    "description": "What to expect: the masterpieces and medieval heart of Paris in one day, with a licensed guide, timed tickets and a bistro lunch.\n\nYour guide meets you at your hotel at about 8:45 and you arrive at the Louvre's glass pyramid, designed by I. M. Pei and opened in 1989, for one of the first entries of the day. You go straight to the Mona Lisa, painted by Leonardo da Vinci in the early 1500s and brought to France by the artist himself, while the room is still calm. From there your guide leads you to the great French paintings – Géricault's Raft of the Medusa and Delacroix's Liberty Leading the People – down to the Winged Victory of Samothrace at the top of the Daru staircase, and through the Greek galleries to the Venus de Milo. You also see the remains of the medieval fortress of Philip Augustus in the basement, a reminder that the Louvre was a castle before it was a palace.\n\nYou cross the Seine on the Pont des Arts and walk along the river to the Pont Neuf, despite its name the oldest bridge in Paris, finished in 1607. Lunch is in a classic bistro – onion soup, steak frites or a croque-monsieur, with a crème brûlée to finish.\n\nIn the afternoon you visit the Île de la Cité. Notre-Dame, begun in 1163, was badly damaged by fire in April 2019 and reopened in December 2024 after five years of work by stone carvers, carpenters and glassmakers; your guide shows you the restored nave, the new spire and the rose windows. A few steps away, inside the old royal palace, you climb into the upper chapel of Sainte-Chapelle, built in the 1240s by King Louis IX to hold the Crown of Thorns. Its walls are almost entirely glass: fifteen windows, 15 metres high, telling over a thousand Bible stories in blue and red light. You then cross to the Left Bank into the Latin Quarter, past the Sorbonne and the domed Panthéon, and end in the Luxembourg Gardens, where your driver collects you at about 16:15.\n\nSCHEDULE (approximate times)\n08:45 – Pick-up at your hotel.\n09:00 – The Louvre (about 2 hours 30 minutes).\n11:45 – Pont des Arts and Pont Neuf.\n12:30 – Lunch in a bistro.\n14:00 – Notre-Dame cathedral.\n14:45 – Sainte-Chapelle.\n15:30 – Latin Quarter and Luxembourg Gardens.\n16:15 – Drive back to your hotel.\n\nGOOD TO KNOW\n• The Louvre is closed on Tuesdays; on a Tuesday we visit the Musée d'Orsay instead.\n• Notre-Dame's towers can be climbed with a separate timed ticket.\n• Photography without flash is allowed in the Louvre and Sainte-Chapelle.\n\nINCLUDED: licensed guide, Louvre and Sainte-Chapelle tickets, lunch, bottled water, hotel transfers.\nNOT INCLUDED: Notre-Dame towers, drinks with lunch, tips.\n\nOvernight: none.\nMeals: lunch.",
+    "stops": [
+     {"name": "The Louvre", "duration": "About 2 hours 30 minutes", "description": "The Mona Lisa, the Venus de Milo and the Winged Victory.", "image": "Q:Louvre Pyramid"},
+     {"name": "Pont Neuf", "duration": "About 20 minutes", "description": "The oldest bridge in Paris.", "image": "Q:Seine river Paris bridges"},
+     {"name": "Notre-Dame de Paris", "duration": "About 45 minutes", "description": "The Gothic cathedral restored after the 2019 fire.", "image": "Q:Notre-Dame de Paris"},
+     {"name": "Sainte-Chapelle", "duration": "About 45 minutes", "description": "Walls of 13th-century stained glass.", "image": "Q:Sainte-Chapelle stained glass"},
+     {"name": "Latin Quarter and Luxembourg Gardens", "duration": "About 45 minutes", "description": "The Sorbonne, the Panthéon and the palace gardens."}
+    ]}
+  ],
+  "faq": [
+   {"question": "How does booking on request work?", "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability and the final price by email within 24 hours, and you pay online only when the tour is confirmed."},
+   {"question": "Do we skip the lines at the Louvre?", "answer": "Yes. We book timed tickets, so you skip the ticket queue. Everyone still passes a security check at the entrance, which is quickest at opening time."},
+   {"question": "Is the tour possible on Tuesdays?", "answer": "The Louvre is closed on Tuesdays. On that day we visit the Musée d'Orsay, with its Impressionist masterpieces, instead."},
+   {"question": "Can we go inside Notre-Dame?", "answer": "Yes. Notre-Dame reopened in December 2024 and entry is free. There is often a queue; your guide plans the visit at a quieter moment."},
+   {"question": "Are the entrance tickets included?", "answer": "Yes: the Louvre and Sainte-Chapelle. Notre-Dame is free; its towers need a separate ticket."},
+   {"question": "Is there much walking?", "answer": "About 6 km on flat ground, plus stairs inside the Louvre, which also has lifts. We can use the car between the sights if you prefer."},
+   {"question": "Is lunch included?", "answer": "Yes, lunch in a Parisian bistro. Vegetarian, gluten-free and other diets can be arranged."},
+   {"question": "Is it suitable for children?", "answer": "Yes. We turn the Louvre into a treasure hunt for mummies, knights' armour and the Mona Lisa, and keep the visits short."},
+   {"question": "Is it suitable for wheelchair users?", "answer": "Largely. The Louvre is accessible and lends wheelchairs. Sainte-Chapelle's upper chapel is reached by a narrow spiral staircase. Tell us your needs and we will adapt."},
+   {"question": "Can we take photos?", "answer": "Yes, without flash, in the Louvre, Notre-Dame and Sainte-Chapelle."},
+   {"question": "What should we wear?", "answer": "Comfortable shoes. For Notre-Dame, respectful clothing is appreciated."},
+   {"question": "What is the best time of year?", "answer": "Paris is lovely all year. April to June and September to October are the most pleasant; winter is quiet and the museums are less crowded."},
+   {"question": "What is the cancellation policy?", "answer": "You can cancel free of charge up to 72 hours before the tour, because museum tickets are non-refundable after that. Until your request is confirmed, nothing is charged at all."}
+  ]
+ }
+}

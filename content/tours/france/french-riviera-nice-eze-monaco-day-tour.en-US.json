@@ -1,0 +1,59 @@
+{
+ "key": "france-french-riviera-nice-eze-monaco-day-tour",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {"city": "Nice", "state": "Provence-Alpes-Côte d'Azur", "country": "France", "countryCode": "FR", "timeZone": "Europe/Paris", "streetAddress": "Your hotel in Nice or the cruise port of Nice or Villefranche", "geoCoordinates": {"lat": 43.6961, "log": 7.2717}},
+ "slug": "/en-US/france/nice/tours/french-riviera-private-day-tour-nice-eze-monaco-and-saint-paul-de-vence",
+ "tour": {
+  "name": "French Riviera Private Day Tour: Nice, Èze, Monaco & Saint-Paul-de-Vence",
+  "subtitle": "A private day on the Côte d'Azur with a licensed guide and car: old Nice and its flower market, the corniche roads, the perched village of Èze and its garden above the sea, Monaco's palace, harbour and casino, and the artists' village of Saint-Paul-de-Vence.",
+  "seoTitle": "French Riviera Private Tour: Nice, Èze & Monaco | TRAVSUS",
+  "metaDescription": "Private French Riviera day tour from Nice or the cruise port: old Nice and the Promenade des Anglais, the Grande Corniche, Èze village and exotic garden, Monaco's Prince's Palace, harbour and Monte-Carlo casino, and Saint-Paul-de-Vence.",
+  "tags": ["French Riviera tour", "Nice", "Monaco", "Èze", "Saint-Paul-de-Vence", "France private tour"],
+  "highlights": [
+   "Old Nice, the Cours Saleya flower market and Castle Hill",
+   "The corniche roads with views over Villefranche and Cap Ferrat",
+   "Èze, perched 400 metres above the sea, and its exotic garden",
+   "Monaco: the Prince's Palace, the cathedral and the old town on the Rock",
+   "Monte-Carlo, its casino and the Formula 1 circuit",
+   "The walled artists' village of Saint-Paul-de-Vence",
+   "Pick-up in Nice or at the cruise port"
+  ],
+  "duration": 1,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "The French Riviera became the playground of Europe in the 19th century, when English aristocrats spent their winters in Nice and built the Promenade des Anglais along the bay. Then came the casino of Monte-Carlo, the painters – Matisse, Chagall, Renoir, Picasso – and the film stars. Between Nice and Italy, the Alps plunge into the Mediterranean, and three corniche roads carved into the mountains link villages perched like eagles' nests and coves of turquoise water.\n\nThis private day shows the best of the Riviera with a licensed guide and a car. You explore old Nice in the morning, drive the corniche to Èze, cross into the principality of Monaco for its palace, old town and Monte-Carlo, and end in Saint-Paul-de-Vence, the walled village loved by artists.\n\nAT A GLANCE\n• Duration: about 9 hours\n• Start and end: your hotel in Nice, or the cruise port of Nice or Villefranche\n• Type: private tour with licensed guide, car and driver\n• Booking: on request – we confirm availability and the final price by email within 24 hours, and you pay only then\n• Level: easy to moderate; about 5 km, with steep lanes in Èze and Saint-Paul\n\nWHAT YOU SEE\n• Old Nice, the Cours Saleya market and the view from Castle Hill.\n• The Promenade des Anglais.\n• The Moyenne and Grande Corniche roads.\n• Èze and its exotic garden.\n• Monaco: the Prince's Palace, the cathedral, the harbour, Monte-Carlo and the casino.\n• Saint-Paul-de-Vence.\n\nWHY THIS WORKS\nWe reach Èze and Monaco before the cruise groups, take the panoramic corniche roads public buses don't use, and end in Saint-Paul in the soft light of late afternoon.\n\nWHO IT SUITS\nCouples, families, cruise passengers and anyone who wants to see the whole Riviera in one day.\n\nWHO MAY PREFER ANOTHER TOUR\nIf you want lavender and hill villages, choose our Provence tour from Avignon.\n\nPRACTICAL INFORMATION\nMonaco is an independent state, but there are no border formalities. The changing of the guard at the Prince's Palace takes place at 11:55 every day. Dress code in the casino: no shorts or sportswear.",
+  "inclusions": {"standard": {"private": ["Pick-up and drop-off at your hotel in Nice or the cruise port", "Private air-conditioned vehicle and driver", "Licensed private guide", "Ticket to the Èze exotic garden", "Lunch at a local restaurant", "Bottled water"], "shared": ["Hotel or port pick-up", "Licensed guide", "Garden ticket", "Lunch"]}},
+  "pricingTiers": [
+   {"transportType": "Sedan / SUV", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png", "minSeats": 1, "maxSeats": 4, "pricing": {"currency": "EUR", "totalPrice": 640, "pricePerDay": 640}},
+   {"transportType": "Minivan", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png", "minSeats": 5, "maxSeats": 8, "pricing": {"currency": "EUR", "totalPrice": 1090, "pricePerDay": 1090}},
+   {"transportType": "Mini Bus", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png", "minSeats": 9, "maxSeats": 19, "pricing": {"currency": "EUR", "totalPrice": 2050, "pricePerDay": 2050}}
+  ],
+  "images": ["Q:Eze village", "Q:Monaco harbour", "Q:Nice Promenade des Anglais", "Q:Saint-Paul-de-Vence", "Q:Monaco harbour#2"],
+  "days": [
+   {"name": "Old Nice, the corniche roads, Èze, Monaco and Monte-Carlo, and Saint-Paul-de-Vence",
+    "description": "What to expect: the coast between Nice and Monaco and its perched villages, with a licensed guide, private car, garden ticket and lunch.\n\nYour guide and driver collect you at your hotel in Nice or at the cruise port at about 8:30. You start in old Nice, a maze of narrow streets painted in ochre and red, where the Cours Saleya market sells flowers, fruit and socca, the chickpea pancake of Nice. You climb, or take the lift, to Castle Hill for the view over the Baie des Anges and the long curve of the Promenade des Anglais.\n\nThe car follows the Moyenne Corniche east, above the bay of Villefranche and the peninsula of Cap Ferrat, where the Rothschilds and kings built villas, to Èze. The village clings to a rocky peak 427 metres above the sea, its lanes too narrow for cars. You walk up through stone arches to the exotic garden at the top, among cacti and succulents, with one of the widest views on the Riviera.\n\nYou then descend into Monaco, the second smallest state in the world, ruled by the Grimaldi family since 1297. On the Rock, the old town, you see the Prince's Palace and, if the timing works, the changing of the guard at 11:55, and the cathedral where Princess Grace and Prince Rainier are buried. After lunch you drive along the harbour, full of superyachts, and the streets of the Formula 1 Grand Prix, through the famous hairpin to Monte-Carlo, where you can step into the atrium of the 1863 casino and see the Hôtel de Paris.\n\nOn the way back you take the Grande Corniche, the highest of the three roads, built by Napoleon along the old Roman road, with views down to the sea. Your last stop is Saint-Paul-de-Vence, a walled medieval village on a hill full of galleries, where Marc Chagall lived and is buried and where Yves Montand and Simone Signoret played pétanque in the square. You are back at your hotel or ship at about 17:30.\n\nSCHEDULE (approximate times)\n08:30 – Pick-up in Nice or at the port.\n08:45 – Old Nice, Cours Saleya and Castle Hill.\n10:15 – Moyenne Corniche to Èze.\n10:45 – Èze village and exotic garden.\n11:45 – Monaco: the Rock, the palace and the cathedral.\n13:00 – Lunch.\n14:15 – Harbour, Grand Prix circuit and Monte-Carlo casino.\n15:15 – Grande Corniche.\n16:15 – Saint-Paul-de-Vence.\n17:30 – Back at your hotel or ship.\n\nGOOD TO KNOW\n• Cruise passengers: we plan to have you back at the ship at least one hour before all-aboard time.\n• The casino's gaming rooms require ID and a small entrance fee; the atrium is free.\n• A visit to the Fragonard perfume factory in Èze can be added, with no obligation to buy.\n\nINCLUDED: private car and driver, licensed guide, Èze exotic garden ticket, lunch, bottled water, pick-up and drop-off.\nNOT INCLUDED: Prince's Palace State Apartments, casino gaming rooms, drinks with lunch, tips.\n\nOvernight: none.\nMeals: lunch.",
+    "stops": [
+     {"name": "Old Nice", "duration": "About 1 hour 30 minutes", "description": "The Cours Saleya market and Castle Hill.", "image": "Q:Nice Promenade des Anglais"},
+     {"name": "Èze", "duration": "About 1 hour", "description": "The perched village and its exotic garden.", "image": "Q:Eze village"},
+     {"name": "Monaco", "duration": "About 2 hours 30 minutes", "description": "The Prince's Palace, the old town and the harbour.", "image": "Q:Monaco harbour"},
+     {"name": "Monte-Carlo", "duration": "About 45 minutes", "description": "The casino and the Grand Prix circuit."},
+     {"name": "Saint-Paul-de-Vence", "duration": "About 1 hour", "description": "The walled artists' village.", "image": "Q:Saint-Paul-de-Vence"}
+    ]}
+  ],
+  "faq": [
+   {"question": "How does booking on request work?", "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability and the final price by email within 24 hours, and you pay online only when the tour is confirmed."},
+   {"question": "Can you pick us up from the cruise ship?", "answer": "Yes, in Nice, Villefranche or Monaco. We plan the day so you are back at least one hour before the ship's all-aboard time."},
+   {"question": "Do we need passports for Monaco?", "answer": "No border check is made between France and Monaco, but always carry an ID. The casino gaming rooms require a passport or ID card."},
+   {"question": "Can we go into the casino?", "answer": "The atrium is free to visit during the day. The gaming rooms need ID, a small fee and a minimum age of 18; no shorts or sportswear."},
+   {"question": "Are the entrance tickets included?", "answer": "Yes, the Èze exotic garden. The Prince's Palace State Apartments and the Oceanographic Museum can be added."},
+   {"question": "Is lunch included?", "answer": "Yes, lunch at a local restaurant, usually in Monaco. Vegetarian, gluten-free and other diets can be arranged."},
+   {"question": "Is it suitable for children?", "answer": "Yes. Children enjoy the palace guards, the yachts and the race circuit. Child seats are provided free of charge on request."},
+   {"question": "Is it suitable for people with limited mobility?", "answer": "Partly. Èze and Saint-Paul are steep with steps; Monaco has lifts and escalators between levels. The views from the corniche roads are wonderful from the car."},
+   {"question": "Can we add Cannes or Antibes?", "answer": "Yes, in a custom version, instead of Saint-Paul-de-Vence. Cannes and Antibes are west of Nice."},
+   {"question": "Will we be taken to shops?", "answer": "No. There are no commission stops. The perfume factory in Èze is optional."},
+   {"question": "What should we wear?", "answer": "Comfortable shoes for the steep lanes, sun protection, and smart casual clothes if you want to enter the casino."},
+   {"question": "What is the best time of year?", "answer": "All year: the Riviera has mild winters. May, June, September and October are ideal. In May, the Cannes Film Festival and the Monaco Grand Prix make the coast very busy."},
+   {"question": "What is the cancellation policy?", "answer": "You can cancel free of charge up to 24 hours before the tour. Until your request is confirmed, nothing is charged at all."}
+  ]
+ }
+}

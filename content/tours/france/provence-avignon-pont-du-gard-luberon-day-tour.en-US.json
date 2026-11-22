@@ -1,0 +1,59 @@
+{
+ "key": "france-provence-avignon-pont-du-gard-luberon-day-tour",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {"city": "Avignon", "state": "Provence-Alpes-Côte d'Azur", "country": "France", "countryCode": "FR", "timeZone": "Europe/Paris", "streetAddress": "Your hotel in Avignon or Avignon TGV station", "geoCoordinates": {"lat": 43.9493, "log": 4.8055}},
+ "slug": "/en-US/france/avignon/tours/provence-private-day-tour-avignon-pont-du-gard-gordes-and-luberon-villages",
+ "tour": {
+  "name": "Provence Private Day Tour: Avignon Popes' Palace, Pont du Gard, Gordes & the Luberon",
+  "subtitle": "A private day in the light of Provence with a licensed guide and car: the Palace of the Popes and the famous bridge of Avignon, the Roman aqueduct of the Pont du Gard, lunch in the Luberon, the hill village of Gordes, Sénanque Abbey among the lavender and the ochre cliffs of Roussillon.",
+  "seoTitle": "Provence Private Tour: Avignon, Pont du Gard & Gordes | TRAVSUS",
+  "metaDescription": "Private Provence day tour from Avignon: the Palace of the Popes and Pont d'Avignon, the Roman Pont du Gard, lunch in a Luberon village, Gordes, Sénanque Abbey and its lavender, and the ochre village of Roussillon.",
+  "tags": ["Provence tour", "Avignon", "Pont du Gard", "Gordes", "Lavender", "France private tour"],
+  "highlights": [
+   "The Palace of the Popes, the largest Gothic palace in the world",
+   "The Pont d'Avignon of the famous song",
+   "The Pont du Gard, a Roman aqueduct bridge 49 metres high",
+   "The perched village of Gordes",
+   "Sénanque Abbey and, in summer, its lavender fields",
+   "The red and orange ochre cliffs of Roussillon",
+   "Lunch of Provençal cuisine in a village of the Luberon"
+  ],
+  "duration": 1,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "In 1309 the popes left a violent Rome and settled in Avignon, where for almost seventy years they built a fortress-palace and made the town the capital of Christendom. Fifteen centuries earlier, the Romans had built an aqueduct to carry water 50 kilometres to Nîmes, crossing the Gardon river on a three-tier bridge that still stands. Between them lies the Provence of painters and novels: hill villages of honey-coloured stone, lavender, olive groves and cliffs of ochre. The historic centre of Avignon and the Pont du Gard are both UNESCO World Heritage Sites.\n\nThis private day combines history and landscape with a licensed guide and a car. You visit the Palace of the Popes and see the bridge of Avignon in the morning, cross to the Pont du Gard, then drive into the Luberon for lunch in a village square, the perched village of Gordes, Sénanque Abbey and the ochre village of Roussillon.\n\nAT A GLANCE\n• Duration: about 9 hours\n• Start and end: your hotel in Avignon or Avignon TGV station\n• Type: private tour with licensed guide, car and driver\n• Booking: on request – we confirm availability and the final price by email within 24 hours, and you pay only then\n• Level: easy; about 5 km, with slopes and steps in the villages\n\nWHAT YOU SEE\n• Avignon: the Palace of the Popes and the Pont Saint-Bénézet.\n• The Pont du Gard.\n• Gordes.\n• Sénanque Abbey.\n• Roussillon and its ochre trail.\n\nWHY THIS WORKS\nThe villages of the Luberon are poorly served by public transport and the roads are narrow; with a driver you reach them all in one day and can stop wherever the view is best.\n\nWHO IT SUITS\nCouples, families, photographers and anyone arriving in Provence by high-speed train from Paris.\n\nWHO MAY PREFER ANOTHER TOUR\nIf you prefer the sea, choose our French Riviera tour from Nice.\n\nPRACTICAL INFORMATION\nThe lavender is in flower from about late June to late July and is usually harvested by mid-August. Many villages hold weekly markets in the morning: Gordes on Tuesdays and Roussillon on Thursdays. Summer is hot; spring and autumn are ideal.",
+  "inclusions": {"standard": {"private": ["Pick-up and drop-off at your hotel in Avignon or Avignon TGV station", "Private air-conditioned vehicle and driver", "Licensed private guide", "Tickets to the Palace of the Popes, the Pont d'Avignon and the Pont du Gard", "Lunch in a Luberon village", "Bottled water"], "shared": ["Hotel pick-up", "Licensed guide", "Entrance tickets", "Lunch"]}},
+  "pricingTiers": [
+   {"transportType": "Sedan / SUV", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png", "minSeats": 1, "maxSeats": 4, "pricing": {"currency": "EUR", "totalPrice": 620, "pricePerDay": 620}},
+   {"transportType": "Minivan", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png", "minSeats": 5, "maxSeats": 8, "pricing": {"currency": "EUR", "totalPrice": 1050, "pricePerDay": 1050}},
+   {"transportType": "Mini Bus", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png", "minSeats": 9, "maxSeats": 19, "pricing": {"currency": "EUR", "totalPrice": 1990, "pricePerDay": 1990}}
+  ],
+  "images": ["Q:Pont du Gard", "Q:Gordes Provence", "Q:Lavender field Provence", "Q:Avignon Palais des Papes", "Q:Pont du Gard#2"],
+  "days": [
+   {"name": "Avignon, the Pont du Gard, lunch in the Luberon, Gordes, Sénanque Abbey and Roussillon",
+    "description": "What to expect: popes, Romans and the hill villages of Provence in one day, with a licensed guide, private car, tickets and lunch.\n\nYour guide and driver meet you at your hotel or at Avignon TGV station at about 8:45. Inside the ramparts of Avignon, you visit the Palace of the Popes, built in barely twenty years in the 14th century, with its vast empty halls, the frescoed papal bedroom decorated with birds and vines, and the Stag Room painted with hunting and fishing scenes. From the palace gardens you look down on the Pont Saint-Bénézet, the bridge of the children's song 'Sur le pont d'Avignon', of which only four arches survive the floods of the Rhône.\n\nYou cross the river to the Pont du Gard, about 30 minutes away, built around the year 50 to carry water to the Roman city of Nîmes. Three tiers of arches, made of blocks weighing up to six tonnes laid without mortar, rise 49 metres above the river; the water channel on top drops only 25 centimetres over its whole length. You walk across the lower level and along the riverbank for the best view.\n\nYou then drive east into the Luberon for lunch on a village square – tapenade, ratatouille, lamb with herbs of Provence and a glass of local rosé. In the afternoon you see Gordes, a village of stone houses piled up a hillside below a Renaissance castle, and drive down a narrow valley to Sénanque Abbey, founded in 1148, where Cistercian monks still grow lavender in front of the church; from late June to late July the fields are purple. Your last stop is Roussillon, built on and from ochre, whose houses glow in shades of red, orange and yellow, with a trail through the old quarries like a small canyon. You are back in Avignon at about 18:00.\n\nSCHEDULE (approximate times)\n08:45 – Pick-up in Avignon.\n09:00 – Palace of the Popes and Pont d'Avignon.\n11:00 – Drive to the Pont du Gard.\n11:30 – Pont du Gard.\n12:30 – Drive into the Luberon.\n13:15 – Lunch in a village.\n14:45 – Gordes.\n15:30 – Sénanque Abbey.\n16:30 – Roussillon and the ochre trail.\n18:00 – Back in Avignon.\n\nGOOD TO KNOW\n• Sénanque Abbey church can only be visited at set times, as the monks live there; the lavender fields can be seen at any time from the path.\n• Market days in the villages are lively but busy; tell us if you want to include one.\n• The Pont du Gard can be combined with a swim in the river in summer.\n\nINCLUDED: private car and driver, licensed guide, Palace of the Popes, Pont d'Avignon and Pont du Gard tickets, lunch, bottled water, pick-up and drop-off.\nNOT INCLUDED: Sénanque Abbey visit, Roussillon ochre trail, drinks with lunch, tips.\n\nOvernight: none.\nMeals: lunch.",
+    "stops": [
+     {"name": "Palace of the Popes", "duration": "About 1 hour 30 minutes", "description": "The great Gothic palace of the Avignon popes.", "image": "Q:Avignon Palais des Papes"},
+     {"name": "Pont du Gard", "duration": "About 1 hour", "description": "The three-tier Roman aqueduct bridge.", "image": "Q:Pont du Gard"},
+     {"name": "Gordes", "duration": "About 45 minutes", "description": "The perched stone village of the Luberon.", "image": "Q:Gordes Provence"},
+     {"name": "Sénanque Abbey", "duration": "About 30 minutes", "description": "The Cistercian abbey and its lavender.", "image": "Q:Lavender field Provence"},
+     {"name": "Roussillon", "duration": "About 1 hour", "description": "The ochre village and its cliffs."}
+    ]}
+  ],
+  "faq": [
+   {"question": "How does booking on request work?", "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability and the final price by email within 24 hours, and you pay online only when the tour is confirmed."},
+   {"question": "Can we come from Paris for the day?", "answer": "Yes. The high-speed train from Paris to Avignon TGV takes about 2 hours 40 minutes; we meet you at the station and adapt the day to your trains."},
+   {"question": "When is the lavender in flower?", "answer": "From about late June to late July, depending on the year and altitude. It is usually harvested by mid-August. Outside that time the villages and landscapes are just as beautiful."},
+   {"question": "Are the entrance tickets included?", "answer": "Yes: the Palace of the Popes, the Pont d'Avignon and the Pont du Gard. Sénanque and the ochre trail can be added."},
+   {"question": "Is lunch included?", "answer": "Yes, a Provençal lunch in a Luberon village. Vegetarian, gluten-free and other diets can be arranged."},
+   {"question": "Is it suitable for children?", "answer": "Yes. Children love the bridges, the castle-like palace and the coloured cliffs of Roussillon. Child seats are provided free of charge on request."},
+   {"question": "Is it suitable for people with limited mobility?", "answer": "Partly. The Palace of the Popes has a lift and the Pont du Gard has paved paths, but the villages are steep. The car can reach close to most sights."},
+   {"question": "Can we add a wine tasting?", "answer": "Yes. Châteauneuf-du-Pape, the vineyard of the popes, is 20 minutes from Avignon and can replace Roussillon."},
+   {"question": "Can we swim at the Pont du Gard?", "answer": "In summer, yes, from the riverbank beaches. Bring a swimsuit and we will plan the time."},
+   {"question": "Will we be taken to shops?", "answer": "No. There are no commission stops. If you want lavender products or local crafts, your guide can suggest honest producers."},
+   {"question": "What should we wear?", "answer": "Comfortable shoes, a hat and sun protection. Clothes covering shoulders for the abbey."},
+   {"question": "What is the best time of year?", "answer": "April to June and September to October. July is lavender season but hot and busy; the mistral wind can be strong in winter and spring."},
+   {"question": "What is the cancellation policy?", "answer": "You can cancel free of charge up to 24 hours before the tour. Until your request is confirmed, nothing is charged at all."}
+  ]
+ }
+}

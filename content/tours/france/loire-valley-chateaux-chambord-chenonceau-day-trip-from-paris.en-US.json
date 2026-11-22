@@ -1,0 +1,58 @@
+{
+ "key": "france-loire-valley-chateaux-chambord-chenonceau-day-trip-from-paris",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {"city": "Amboise", "state": "Centre-Val de Loire", "country": "France", "countryCode": "FR", "timeZone": "Europe/Paris", "streetAddress": "Your hotel in Paris, or Tours or Amboise", "geoCoordinates": {"lat": 47.4133, "log": 0.9822}},
+ "slug": "/en-US/france/amboise/tours/loire-valley-chateaux-private-day-trip-from-paris-chambord-chenonceau-and-amboise",
+ "tour": {
+  "name": "Loire Valley Châteaux Private Day Trip from Paris: Chambord, Chenonceau & Amboise",
+  "subtitle": "A private day in the valley of the kings with a licensed guide and car: the Renaissance château of Chambord and its double staircase, lunch and a wine tasting in a cave cellar, Chenonceau spanning the river Cher, and Leonardo da Vinci's last home at Amboise.",
+  "seoTitle": "Loire Valley Châteaux: Chambord, Chenonceau & Amboise | TRAVSUS",
+  "metaDescription": "Private Loire Valley day trip from Paris: Chambord and its double-helix staircase, a lunch and Vouvray wine tasting in a troglodyte cellar, Chenonceau over the Cher, and Leonardo da Vinci's Clos Lucé in Amboise.",
+  "tags": ["Loire Valley tour", "Chambord", "Chenonceau", "Amboise", "Paris day trip", "France private tour"],
+  "highlights": [
+   "Chambord, the largest château of the Loire, and its double-helix staircase",
+   "Chenonceau, the 'ladies' château' built across the river Cher",
+   "Lunch and a Vouvray wine tasting in a cellar carved into the cliff",
+   "Amboise, the royal town where Leonardo da Vinci spent his last years",
+   "The Clos Lucé and models of Leonardo's inventions",
+   "The gardens of Catherine de' Medici and Diane de Poitiers",
+   "Hotel pick-up in Paris, private car and licensed guide"
+  ],
+  "duration": 1,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "In the 15th and 16th centuries, the kings of France lived not in Paris but along the Loire, the 'royal river', where the hunting was good and the climate mild. They and their courtiers built hundreds of châteaux, turning medieval fortresses into Renaissance palaces with the help of Italian artists, among them Leonardo da Vinci, whom Francis I invited to Amboise in 1516. The Loire Valley between Sully-sur-Loire and Chalonnes has been a UNESCO World Heritage Site since 2000.\n\nThis private day from Paris visits the two most famous châteaux and the town where Leonardo died, with a licensed guide and a car. You see Chambord, the dream palace of Francis I, at opening time, have lunch and taste the white wines of Vouvray in a cellar dug into the limestone cliffs, visit Chenonceau, whose gallery spans the river Cher, and end in Amboise at the Clos Lucé, Leonardo's last home.\n\nAT A GLANCE\n• Duration: about 12 hours\n• Start and end: your hotel in Paris (or Tours or Amboise for a shorter day)\n• Type: private tour with licensed guide, car and driver\n• Booking: on request – we confirm availability and the final price by email within 24 hours, and you pay only then\n• Level: easy; about 5 km, with stairs in the châteaux\n\nWHAT YOU SEE\n• Chambord: the double-helix staircase, the royal apartments and the roof terraces.\n• A troglodyte wine cellar in Vouvray.\n• Chenonceau: the gallery over the Cher and the gardens.\n• Amboise: the royal château (outside) and the Clos Lucé.\n\nWHY THIS WORKS\nWe leave Paris early to reach Chambord at opening time and visit Chenonceau in the mid-afternoon, after the coach groups, keeping each drive under an hour once in the valley.\n\nWHO IT SUITS\nHistory and architecture lovers, families who like castles, and wine lovers.\n\nWHO MAY PREFER ANOTHER TOUR\nIf you want a shorter day closer to Paris, choose our Versailles tour. If you can stay overnight, we recommend two days in the Loire with Villandry and Azay-le-Rideau.\n\nPRACTICAL INFORMATION\nThe drive from Paris is about 2 hours each way. You can also take the high-speed train to Saint-Pierre-des-Corps (Tours) in about an hour and meet your guide there. Chenonceau's gardens are at their best from May to September.",
+  "inclusions": {"standard": {"private": ["Pick-up and drop-off at your hotel in Paris", "Private air-conditioned vehicle and driver", "Licensed private guide", "Tickets to Chambord, Chenonceau and the Clos Lucé", "Lunch and wine tasting in a Vouvray cellar", "Bottled water"], "shared": ["Hotel pick-up", "Licensed guide", "Entrance tickets", "Lunch and wine tasting"]}},
+  "pricingTiers": [
+   {"transportType": "Sedan / SUV", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png", "minSeats": 1, "maxSeats": 4, "pricing": {"currency": "EUR", "totalPrice": 990, "pricePerDay": 990}},
+   {"transportType": "Minivan", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png", "minSeats": 5, "maxSeats": 8, "pricing": {"currency": "EUR", "totalPrice": 1490, "pricePerDay": 1490}},
+   {"transportType": "Mini Bus", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png", "minSeats": 9, "maxSeats": 19, "pricing": {"currency": "EUR", "totalPrice": 2590, "pricePerDay": 2590}}
+  ],
+  "images": ["Q:Chateau de Chenonceau", "Q:Chateau de Chambord", "Q:Amboise castle Loire", "Q:Chateau de Chenonceau#2", "Q:Chateau de Chambord#2"],
+  "days": [
+   {"name": "Chambord, a Vouvray cave cellar, Chenonceau and Leonardo da Vinci's Clos Lucé in Amboise",
+    "description": "What to expect: the greatest Renaissance châteaux of the Loire in one day, with a licensed guide, private car, tickets, lunch and a wine tasting.\n\nYour driver collects you at your hotel at 7:00 for the drive south-west, about 2 hours, to Chambord, where your guide meets you at opening time. Francis I began Chambord in 1519 as a hunting lodge on a scale never seen before: 440 rooms, 282 fireplaces and a roof bristling with chimneys, turrets and lanterns like a skyline. At its heart is the double-helix staircase, possibly inspired by Leonardo da Vinci, in which two people can climb and descend at the same time without ever meeting. You climb it to the roof terraces, where the court watched the hunts in the forest, the largest enclosed park in Europe.\n\nYou drive along the river to Vouvray, where cellars are dug deep into the white tufa limestone cliffs, the same stone used to build the châteaux. Lunch is in or beside a troglodyte cellar, followed by a tasting of Vouvray's chenin blanc wines, dry, sweet and sparkling.\n\nIn the afternoon you visit Chenonceau, which crosses the river Cher on a series of arches. Built from 1513, it was shaped by a succession of women: Diane de Poitiers, Henry II's favourite, who built the bridge; Catherine de' Medici, his widow, who took it from her and added the long gallery; and Louise Dupin, who saved it during the Revolution. You walk through the bedrooms and the kitchens set in the piers of the bridge, the 60-metre gallery that served as a hospital in the First World War, and the formal gardens of the two rival women. You end in Amboise, at the Clos Lucé, the manor house where Leonardo da Vinci lived from 1516 until his death in 1519, with his bedroom and models of his inventions in the park, and see the royal château above the river where he is buried. Your driver takes you back to Paris, arriving at about 19:30.\n\nSCHEDULE (approximate times)\n07:00 – Pick-up at your hotel in Paris.\n09:00 – Chambord (about 1 hour 45 minutes).\n11:30 – Drive to Vouvray.\n12:15 – Lunch and wine tasting in a cave cellar.\n14:00 – Chenonceau (about 1 hour 30 minutes).\n15:45 – Amboise and the Clos Lucé.\n17:15 – Drive back to Paris.\n19:30 – Back at your hotel.\n\nGOOD TO KNOW\n• By train: take the TGV to Saint-Pierre-des-Corps (about 1 hour) and we meet you there, saving the morning drive.\n• The royal château of Amboise, with Leonardo's tomb, can be visited instead of the Clos Lucé.\n• Children receive grape juice at the tasting.\n\nINCLUDED: private car and driver, licensed guide, Chambord, Chenonceau and Clos Lucé tickets, lunch with wine tasting, bottled water, hotel pick-up and drop-off.\nNOT INCLUDED: extra drinks, tips.\n\nOvernight: none.\nMeals: lunch.",
+    "stops": [
+     {"name": "Château de Chambord", "duration": "About 1 hour 45 minutes", "description": "Francis I's palace and its double-helix staircase.", "image": "Q:Chateau de Chambord"},
+     {"name": "Vouvray cave cellar", "duration": "About 1 hour 30 minutes", "description": "Lunch and a chenin blanc tasting in the limestone."},
+     {"name": "Château de Chenonceau", "duration": "About 1 hour 30 minutes", "description": "The gallery over the Cher and the gardens.", "image": "Q:Chateau de Chenonceau"},
+     {"name": "Amboise and the Clos Lucé", "duration": "About 1 hour 15 minutes", "description": "Leonardo da Vinci's last home.", "image": "Q:Amboise castle Loire"}
+    ]}
+  ],
+  "faq": [
+   {"question": "How does booking on request work?", "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability and the final price by email within 24 hours, and you pay online only when the tour is confirmed."},
+   {"question": "Is it a long day from Paris?", "answer": "About 12 hours, with roughly 4 hours of driving. To shorten it, take the high-speed train to Saint-Pierre-des-Corps (about 1 hour) and we meet you at the station."},
+   {"question": "Which châteaux do we visit?", "answer": "Chambord and Chenonceau, the two most famous, and Leonardo da Vinci's Clos Lucé in Amboise. We can swap in Villandry's gardens, Cheverny or Blois on request."},
+   {"question": "Are the entrance tickets included?", "answer": "Yes: Chambord, Chenonceau and the Clos Lucé."},
+   {"question": "Is lunch included?", "answer": "Yes, lunch with a tasting of Vouvray wines in or beside a troglodyte cellar. Vegetarian and other diets can be arranged; non-alcoholic drinks are always available."},
+   {"question": "Is it suitable for children?", "answer": "Yes. Children love the castles, the staircase where you can't meet and Leonardo's machines. Child seats are provided free of charge on request."},
+   {"question": "Is it suitable for people with limited mobility?", "answer": "Partly. The ground floors and gardens are accessible, and Chambord has a lift. Upper floors involve stairs. Tell us your needs and we will adapt."},
+   {"question": "Can we buy wine?", "answer": "Yes, if you wish, with no obligation. Many producers can ship abroad."},
+   {"question": "Can we stay overnight in the Loire?", "answer": "Yes, and we recommend it if you have time: a night in Amboise or a château hotel allows a second day with Villandry, Azay-le-Rideau or a bicycle ride along the river."},
+   {"question": "Will we be taken to shops?", "answer": "No. There are no commission stops."},
+   {"question": "What should we wear?", "answer": "Comfortable shoes for stairs and garden paths, and a light jumper for the cool cellar."},
+   {"question": "What is the best time of year?", "answer": "April to October, when the gardens are in bloom. Chenonceau decorates its rooms with flowers all year, and at Christmas the châteaux are beautifully decorated."},
+   {"question": "What is the cancellation policy?", "answer": "You can cancel free of charge up to 72 hours before the tour. Until your request is confirmed, nothing is charged at all."}
+  ]
+ }
+}
