@@ -3655,11 +3655,13 @@
     "shelf_qatar": "Neu: Katar",
     "shelf_qatar_sub": "Doha, die Wüste und das Binnenmeer, mit lokalen Guides",
     "countries_title": "Länder, in denen wir tätig sind",
-    "countries_sub": "Buchen Sie schon heute lokale Touren in Marokko und Katar. Weitere Länder folgen bald.",
+    "countries_sub": "Buchen Sie lokale Touren in Marokko, Katar, den VAE, Ägypten, der Türkei und Spanien. Weitere Länder folgen.",
     "country_active": "Jetzt buchen",
     "country_soon": "Demnächst",
     "cities_title": "Städte entdecken",
-    "cities_sub": "Städteführer für Marokko und Katar: Sehenswertes, Wetter und unsere Touren"
+    "cities_sub": "Städteführer für unsere Reiseländer: Sehenswertes, Wetter und unsere Touren",
+    "shelf_country": "Touren in {country}",
+    "shelf_country_sub": "Privattouren mit lokalen Guides, auf Anfrage buchbar"
   },
   "Payment": {
     "preparing": "Sichere Zahlung wird vorbereitet…",

@@ -2658,11 +2658,13 @@
     "shelf_qatar": "새로운 여행지: 카타르",
     "shelf_qatar_sub": "현지 가이드와 함께하는 도하, 사막, 내해",
     "countries_title": "운영 중인 국가",
-    "countries_sub": "지금 모로코와 카타르의 현지 투어를 예약하세요. 더 많은 국가가 곧 추가됩니다.",
+    "countries_sub": "모로코, 카타르, UAE, 이집트, 튀르키예, 스페인의 현지 투어를 예약하세요. 더 많은 나라가 곧 추가됩니다.",
     "country_active": "예약 가능",
     "country_soon": "곧 오픈",
     "cities_title": "둘러볼 도시",
-    "cities_sub": "모로코와 카타르 도시 가이드: 볼거리, 날씨, 투어"
+    "cities_sub": "저희가 운영하는 나라의 도시 가이드: 볼거리, 날씨, 투어",
+    "shelf_country": "{country} 투어",
+    "shelf_country_sub": "현지 가이드와 함께하는 프라이빗 투어, 요청 예약"
   },
   "Payment": {
     "preparing": "안전한 결제를 준비하는 중…",

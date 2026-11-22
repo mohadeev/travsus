@@ -2371,11 +2371,13 @@
     "shelf_qatar": "New: Qatar",
     "shelf_qatar_sub": "Doha, the desert and the Inland Sea, with local guides",
     "countries_title": "Countries where we operate",
-    "countries_sub": "Book local tours in Morocco and Qatar today. More countries are on the way.",
+    "countries_sub": "Book local tours in Morocco, Qatar, the UAE, Egypt, Turkey and Spain. More countries are on the way.",
     "country_active": "Book now",
     "country_soon": "Coming soon",
     "cities_title": "Cities to explore",
-    "cities_sub": "City guides for Morocco and Qatar: what to see, the weather and our tours"
+    "cities_sub": "City guides for the countries we operate in: what to see, the weather and our tours",
+    "shelf_country": "Tours in {country}",
+    "shelf_country_sub": "Private tours with local guides, booked on request"
   },
   "Payment": {
     "preparing": "Preparing secure payment…",
