@@ -135,8 +135,17 @@ export const getCity = cache(async (countrySlug: string, slug: string, locale: s
 
 /** Cities of a country that have a photo */
 export const getCitiesOf = cache(async (country: Country, locale: string, limit = 24) => {
-	const { data } = await db.from(T.cities).select(CITY_SELECT).eq('countryId', country.id).not('image', 'is', null).limit(limit)
-	return ((data ?? []) as any[]).map((r) => toCity(r, country, locale))
+	const [{ data }, { data: biggest }] = await Promise.all([
+		db.from(T.cities).select(CITY_SELECT).eq('countryId', country.id).not('image', 'is', null).limit(limit),
+		// The biggest cities too: their photo can be set in code (destinationPhotos.ts), e.g. Doha
+		db.from(T.cities).select(CITY_SELECT).eq('countryId', country.id).order('population', { ascending: false, nullsFirst: false }).limit(10),
+	])
+	const rows = new Map<string, any>()
+	for (const r of [...((data ?? []) as any[]), ...((biggest ?? []) as any[])]) rows.set(r.id, r)
+	return Array.from(rows.values())
+		.map((r) => toCity(r, country, locale))
+		.filter((city) => city.image)
+		.slice(0, limit)
 })
 
 const PLACE_SELECT = 'id, "cityId", geo, image, rating, category, subcategory, tags, address, website, translations'
