@@ -2673,7 +2673,9 @@
     "countries_title": "ツアーを提供している国",
     "countries_sub": "モロッコとカタールの現地ツアーを今すぐ予約できます。ほかの国も近日追加予定です。",
     "country_active": "予約受付中",
-    "country_soon": "近日公開"
+    "country_soon": "近日公開",
+    "cities_title": "おすすめの都市",
+    "cities_sub": "モロッコとカタールの都市ガイド：見どころ、天気、ツアー"
   },
   "Payment": {
     "preparing": "安全なお支払いを準備中…",

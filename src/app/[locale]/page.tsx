@@ -5,9 +5,9 @@ import type { Metadata } from 'next'
 import HomePage from './(home)/HomePage'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { getHomeData, type HomeTour } from '@/lib/homeData'
-import { countryHref, getCountries } from '@/lib/destinations'
+import { countryHref, getCitiesOf, getCountries } from '@/lib/destinations'
 import { ACTIVE_COUNTRIES } from '@/lib/destinationPhotos'
-import type { HomeCountry } from './(home)/HomePage'
+import type { HomeCity, HomeCountry } from './(home)/HomePage'
 import { routing } from '@/i18n/routing'
 import { PHOTOS } from '@/lib/photos'
 
@@ -152,11 +152,35 @@ export default async function Home(props: { params: Promise<{ locale: string }> 
 		.filter((c) => c.image)
 		.map((c) => ({ code: c.code, name: c.name, image: c.image as string, href: countryHref(locale, c), active: ACTIVE_COUNTRIES.includes(c.code) }))
 		.sort((a, b) => Number(b.active) - Number(a.active))
+	// City guides of the countries where we operate, biggest cities first
+	const cityLists = await Promise.all(
+		allCountries
+			.filter((c) => ACTIVE_COUNTRIES.includes(c.code))
+			.map((c) => getCitiesOf(c, locale, 40).catch(() => [])),
+	)
+	const cities: HomeCity[] = cityLists
+		.flatMap((list) =>
+			list
+				.filter((city) => city.image && city.name)
+				.sort((a, b) => (b.population ?? 0) - (a.population ?? 0))
+				.slice(0, 12),
+		)
+		.map((city) => ({ name: city.name, country: city.country.name, image: city.image as string, href: city.href, population: city.population ?? 0, code: city.country.code }))
 	const jsonLd = structuredData(locale, t('description'), data.tours)
 	return (
 		<>
 			<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }} />
-			<HomePage {...data} countries={countries} />
+			<HomePage {...data} countries={countries} cities={interleave(cities)} />
 		</>
 	);
+}
+
+/** One city of each country in turn (Marrakech, Doha, Casablanca, Al Rayyan, ...). */
+function interleave(cities: HomeCity[]) {
+	const byCode = new Map<string, HomeCity[]>()
+	for (const city of cities) byCode.set(city.code, [...(byCode.get(city.code) ?? []), city])
+	const lists = Array.from(byCode.values())
+	const out: HomeCity[] = []
+	for (let i = 0; out.length < cities.length; i++) for (const list of lists) if (list[i]) out.push(list[i])
+	return out
 }

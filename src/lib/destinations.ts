@@ -62,7 +62,9 @@ let slugs: { at: number; map: Promise<Map<string, string>> } | null = null
 function countrySlugs() {
 	if (!slugs || Date.now() - slugs.at > 86400_000) {
 		const map = (async () => {
-			const { data } = await db.from(T.countries).select('code3, translations')
+			const { data, error } = await db.from(T.countries).select('code3, translations')
+			// A failed lookup must not be kept (it would turn every country page into a cached 404)
+			if (error || !data?.length) throw new Error(`Country list unavailable: ${error?.message ?? 'empty'}`)
 			return new Map(((data ?? []) as any[]).map((r) => [slugify(pick(r.translations, 'en-US').englishName), r.code3 as string]))
 		})()
 		slugs = { at: Date.now(), map }
@@ -76,7 +78,8 @@ export const getCountry = cache(async (slugOrCode: string, locale: string): Prom
 	const key = slugOrCode.toLowerCase()
 	const code3 = /^[a-z]{3}$/.test(key) ? key.toUpperCase() : (await countrySlugs()).get(key)
 	if (!code3) return null
-	const { data } = await db.from(T.countries).select(COUNTRY_SELECT).eq('code3', code3).maybeSingle()
+	const { data, error } = await db.from(T.countries).select(COUNTRY_SELECT).eq('code3', code3).maybeSingle()
+	if (error) throw new Error(`Country lookup failed: ${error.message}`)
 	return data ? toCountry(data, locale) : null
 })
 

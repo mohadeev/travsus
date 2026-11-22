@@ -3165,7 +3165,9 @@
     "countries_title": "I paesi in cui operiamo",
     "countries_sub": "Prenoti oggi tour locali in Marocco e Qatar. Presto arriveranno altri paesi.",
     "country_active": "Prenota",
-    "country_soon": "Presto"
+    "country_soon": "Presto",
+    "cities_title": "Città da scoprire",
+    "cities_sub": "Guide delle città di Marocco e Qatar: cosa vedere, il meteo e i nostri tour"
   },
   "Payment": {
     "preparing": "Preparazione del pagamento sicuro…",

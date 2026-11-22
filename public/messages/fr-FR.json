@@ -3673,7 +3673,9 @@
     "countries_title": "Les pays où nous opérons",
     "countries_sub": "Réservez dès aujourd'hui des circuits locaux au Maroc et au Qatar. D'autres pays arrivent bientôt.",
     "country_active": "Réserver",
-    "country_soon": "Bientôt"
+    "country_soon": "Bientôt",
+    "cities_title": "Villes à découvrir",
+    "cities_sub": "Guides des villes du Maroc et du Qatar : que voir, la météo et nos circuits"
   },
   "Payment": {
     "preparing": "Préparation du paiement sécurisé…",
