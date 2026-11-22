@@ -3107,7 +3107,9 @@
     "countries_title": "Países onde operamos",
     "countries_sub": "Reserve já tours locais em Marrocos e no Catar. Mais países estão a caminho.",
     "country_active": "Reservar",
-    "country_soon": "Em breve"
+    "country_soon": "Em breve",
+    "cities_title": "Cidades a descobrir",
+    "cities_sub": "Guias das cidades de Marrocos e do Catar: o que ver, o tempo e os nossos tours"
   },
   "Payment": {
     "preparing": "A preparar o pagamento seguro…",

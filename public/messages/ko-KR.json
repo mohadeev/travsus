@@ -2660,7 +2660,9 @@
     "countries_title": "운영 중인 국가",
     "countries_sub": "지금 모로코와 카타르의 현지 투어를 예약하세요. 더 많은 국가가 곧 추가됩니다.",
     "country_active": "예약 가능",
-    "country_soon": "곧 오픈"
+    "country_soon": "곧 오픈",
+    "cities_title": "둘러볼 도시",
+    "cities_sub": "모로코와 카타르 도시 가이드: 볼거리, 날씨, 투어"
   },
   "Payment": {
     "preparing": "안전한 결제를 준비하는 중…",

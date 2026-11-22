@@ -3657,7 +3657,9 @@
     "countries_title": "Länder, in denen wir tätig sind",
     "countries_sub": "Buchen Sie schon heute lokale Touren in Marokko und Katar. Weitere Länder folgen bald.",
     "country_active": "Jetzt buchen",
-    "country_soon": "Demnächst"
+    "country_soon": "Demnächst",
+    "cities_title": "Städte entdecken",
+    "cities_sub": "Städteführer für Marokko und Katar: Sehenswertes, Wetter und unsere Touren"
   },
   "Payment": {
     "preparing": "Sichere Zahlung wird vorbereitet…",

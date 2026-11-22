@@ -16,8 +16,12 @@ import ShelfCard from './ShelfCard'
 /** A country tile: where we operate (active, links to its page) or coming soon */
 export type HomeCountry = { code: string; name: string; image: string; href: string; active: boolean }
 
+/** A city guide tile (destination page of a city where we operate) */
+export type HomeCity = { name: string; country: string; image: string; href: string; population: number; code: string }
+
 type Props = {
 	countries?: HomeCountry[]
+	cities?: HomeCity[]
 	tours: HomeTour[]
 	destinations: HomeDestination[]
 	reviews: HomeReview[]
@@ -33,7 +37,7 @@ function byCountry(list: HomeDestination[]) {
 	return [...firsts, ...list.filter((d) => !firsts.includes(d))]
 }
 
-export default function HomePage({ tours, destinations, countries = [] }: Props) {
+export default function HomePage({ tours, destinations, countries = [], cities = [] }: Props) {
 	const t = useTranslations('Home')
 	const tLanding = useTranslations('Landing')
 	const tTrust = useTranslations('Trust')
@@ -101,6 +105,27 @@ export default function HomePage({ tours, destinations, countries = [] }: Props)
 										<Image src={d.image} alt={d.city} fill sizes="(max-width: 680px) 62vw, (max-width: 1024px) 38vw, 300px" className="object-cover transition duration-500 group-hover:scale-105" />
 										<span aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
 										<span className="absolute bottom-3.5 left-4 text-2xl font-extrabold tracking-[-0.01em] text-white">{d.city}</span>
+									</Link>
+								</li>
+							))}
+						</HomeRow>
+					</section>
+				)}
+
+				{cities.length > 0 && (
+					<section className="py-5 sm:py-7">
+						<h2 className="headline text-[22px] !leading-[1.2] sm:text-[28px]">{t('cities_title')}</h2>
+						<p className="mb-4 mt-1 text-base leading-6 text-ink-soft dark:text-neutral-300">{t('cities_sub')}</p>
+						<HomeRow label={t('cities_title')} wide>
+							{cities.map((c) => (
+								<li key={c.href} className="min-w-0 snap-start">
+									<Link href={c.href as any} className="group relative block overflow-hidden rounded-xl bg-neutral-100" style={{ aspectRatio: '4 / 5' }}>
+										<Image src={c.image} alt={`${c.name}, ${c.country}`} fill sizes="(max-width: 680px) 62vw, (max-width: 1024px) 38vw, 300px" className="object-cover transition duration-500 group-hover:scale-105" />
+										<span aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+										<span className="absolute bottom-3.5 left-4 right-4 text-white">
+											<span className="block text-2xl font-extrabold leading-tight tracking-[-0.01em]">{c.name}</span>
+											<span className="block text-sm font-semibold opacity-90">{c.country}</span>
+										</span>
 									</Link>
 								</li>
 							))}

@@ -2373,7 +2373,9 @@
     "countries_title": "Countries where we operate",
     "countries_sub": "Book local tours in Morocco and Qatar today. More countries are on the way.",
     "country_active": "Book now",
-    "country_soon": "Coming soon"
+    "country_soon": "Coming soon",
+    "cities_title": "Cities to explore",
+    "cities_sub": "City guides for Morocco and Qatar: what to see, the weather and our tours"
   },
   "Payment": {
     "preparing": "Preparing secure payment…",
