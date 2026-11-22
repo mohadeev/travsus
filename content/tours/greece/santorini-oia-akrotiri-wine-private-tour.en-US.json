@@ -1,0 +1,59 @@
+{
+ "key": "greece-santorini-oia-akrotiri-wine-private-tour",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {"city": "Santorini", "state": "South Aegean", "country": "Greece", "countryCode": "GR", "timeZone": "Europe/Athens", "streetAddress": "Your hotel in Santorini, the port of Athinios or the Fira cruise tender port", "geoCoordinates": {"lat": 36.4166, "log": 25.4325}},
+ "slug": "/en-US/greece/santorini/tours/santorini-private-tour-akrotiri-pyrgos-wineries-red-beach-and-oia-sunset",
+ "tour": {
+  "name": "Santorini Private Tour: Akrotiri, Pyrgos, Wineries, Red Beach & Oia Sunset",
+  "subtitle": "A private day around the volcanic island with a licensed guide and car: the Bronze Age town of Akrotiri buried by the eruption, the Red Beach, the hill village of Pyrgos, a tasting of Assyrtiko and Vinsanto wines on the caldera, Fira, and the sunset in Oia.",
+  "seoTitle": "Santorini Private Tour: Akrotiri, Wine & Oia Sunset | TRAVSUS",
+  "metaDescription": "Private Santorini tour with licensed guide and car: prehistoric Akrotiri, the Red Beach, Pyrgos village, a wine tasting with caldera views, Fira, Imerovigli and the Oia sunset. Pick-up at your hotel or the port.",
+  "tags": ["Santorini tour", "Oia sunset", "Akrotiri", "Santorini wine", "Caldera", "Greece private tour"],
+  "highlights": [
+   "Akrotiri, the 'Minoan Pompeii' buried by the eruption of about 1600 BC",
+   "The Red Beach under its volcanic cliffs",
+   "The hilltop village of Pyrgos and its views over the island",
+   "A tasting of Assyrtiko and Vinsanto wines from basket-trained vines",
+   "Fira and Imerovigli on the rim of the caldera",
+   "The famous sunset over the blue domes of Oia",
+   "Pick-up at your hotel or the port, private car and licensed guide"
+  ],
+  "duration": 1,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "Santorini is the remains of a volcano. Around 1600 BC, one of the largest eruptions in human history blew the centre of a round island apart and left the crescent of cliffs we see today around a sea-filled crater, the caldera. The eruption buried the Bronze Age town of Akrotiri under ash, preserving houses three storeys high and their brilliant wall paintings, and may have inspired the legend of Atlantis. On the cliffs above the caldera, villages of white houses and blue domes look out over the sea.\n\nThis private day shows the whole island with a licensed guide and a car. You visit Akrotiri under its protective roof, see the Red Beach, climb through the lanes of Pyrgos, taste the island's wines – Assyrtiko grown in vines woven into baskets against the wind, and sweet Vinsanto made from sun-dried grapes – and walk the caldera paths of Fira and Imerovigli before ending the day at sunset in Oia.\n\nAT A GLANCE\n• Duration: about 8 hours, ending after sunset\n• Start and end: your hotel in Santorini, or the port of Athinios or the Fira tender port\n• Type: private tour with licensed guide, car and driver\n• Booking: on request – we confirm availability and the final price by email within 24 hours, and you pay only then\n• Level: easy; short walks with steps in the villages\n\nWHAT YOU SEE\n• The archaeological site of Akrotiri.\n• The Red Beach (viewpoint).\n• Pyrgos.\n• A winery with caldera views.\n• Fira and Imerovigli.\n• Oia and its sunset.\n\nWHY THIS WORKS\nWe visit the busy sites outside cruise-ship hours, avoid the crush of the main road by knowing the back roads, and reserve a good spot for the sunset.\n\nWHO IT SUITS\nCouples, honeymooners, families and wine lovers – and cruise passengers on a long port day.\n\nWHO MAY PREFER ANOTHER TOUR\nIf you prefer the sea, ask us for a private catamaran cruise around the caldera with a swim at the hot springs.\n\nPRACTICAL INFORMATION\nOia is very crowded at sunset in summer; we choose a quieter viewpoint or a reserved terrace. The Red Beach is reached by a rough path and may be closed because of rockfalls; we see it from the viewpoint.",
+  "inclusions": {"standard": {"private": ["Pick-up and drop-off at your hotel or the port", "Private air-conditioned vehicle and driver", "Licensed private guide", "Ticket to Akrotiri", "Wine tasting at a winery with caldera views", "Light lunch or meze in Pyrgos", "Bottled water"], "shared": ["Hotel or port pick-up", "Licensed guide", "Akrotiri ticket", "Wine tasting", "Lunch"]}},
+  "pricingTiers": [
+   {"transportType": "Sedan / SUV", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png", "minSeats": 1, "maxSeats": 4, "pricing": {"currency": "EUR", "totalPrice": 540, "pricePerDay": 540}},
+   {"transportType": "Minivan", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png", "minSeats": 5, "maxSeats": 8, "pricing": {"currency": "EUR", "totalPrice": 900, "pricePerDay": 900}},
+   {"transportType": "Mini Bus", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png", "minSeats": 9, "maxSeats": 19, "pricing": {"currency": "EUR", "totalPrice": 1690, "pricePerDay": 1690}}
+  ],
+  "images": ["Q:Oia Santorini", "Q:Fira caldera Santorini", "Q:Akrotiri Santorini excavation", "Q:Oia Santorini#2", "Q:Fira caldera Santorini#2"],
+  "days": [
+   {"name": "Akrotiri, the Red Beach, Pyrgos, a caldera winery, Fira, Imerovigli and the sunset in Oia",
+    "description": "What to expect: the volcano, the Bronze Age and the wines of Santorini in one day ending at sunset, with a licensed guide, private car, ticket, wine tasting and lunch.\n\nYour guide and driver collect you at your hotel or the port at about 12:30 in summer (earlier in winter, as the tour is timed to the sunset). You drive south to Akrotiri. Under a huge bioclimatic roof, you walk on raised paths through the streets of a town abandoned about 3,600 years ago, just before the eruption: houses of two and three storeys, staircases, storerooms with giant clay jars still in place, and the drains of a sophisticated town. No bodies and few valuables have been found, so the inhabitants probably fled in time. The frescoes found here, of boxing boys, antelopes and a fleet, are in Athens and Fira; your guide explains them.\n\nA short drive leads to the viewpoint over the Red Beach, a cove under cliffs of red and black lava. You then climb to Pyrgos, the highest village of the island, a maze of whitewashed lanes and churches around the ruins of a Venetian castle, with views over the vineyards to the sea on both sides. You have a light lunch of meze – tomato fritters, fava, cheese and local capers.\n\nAt a winery on the edge of the caldera, you see how vines are trained low into baskets, called kouloura, to protect the grapes from the strong wind, and taste three or four wines: crisp mineral Assyrtiko, Nykteri and the amber dessert wine Vinsanto, made from grapes dried in the sun. You continue to Fira, the capital, perched 260 metres above the caldera, and walk the cliff path to Imerovigli, the 'balcony of Santorini', facing the rock of Skaros. Finally you drive to Oia at the northern tip, with its blue-domed churches, windmills and captains' houses, and watch the sun set over the caldera from a viewpoint chosen to avoid the crowds. You are back at your hotel at about 21:00 in summer.\n\nSCHEDULE (approximate times, summer)\n12:30 – Pick-up at your hotel or the port.\n13:00 – Akrotiri (about 1 hour 15 minutes).\n14:30 – Red Beach viewpoint.\n15:00 – Pyrgos and light lunch.\n16:30 – Wine tasting with caldera views.\n17:45 – Fira and the cliff path to Imerovigli.\n19:00 – Oia.\n20:15 – Sunset.\n21:00 – Back at your hotel.\n\nGOOD TO KNOW\n• Cruise passengers usually cannot stay for the sunset; we adapt the order to your ship's times.\n• The cable car and the donkey path link Fira with the old port; we do not use donkeys.\n• A sunset dinner in Oia can be booked on request.\n\nINCLUDED: private car and driver, licensed guide, Akrotiri ticket, wine tasting, light lunch, bottled water, pick-up and drop-off.\nNOT INCLUDED: dinner, extra drinks, tips.\n\nOvernight: none.\nMeals: lunch.",
+    "stops": [
+     {"name": "Akrotiri", "duration": "About 1 hour 15 minutes", "description": "The Bronze Age town buried by the eruption.", "image": "Q:Akrotiri Santorini excavation"},
+     {"name": "Pyrgos", "duration": "About 1 hour 15 minutes", "description": "The highest village and a meze lunch."},
+     {"name": "Caldera winery", "duration": "About 1 hour", "description": "Assyrtiko and Vinsanto tasting."},
+     {"name": "Fira and Imerovigli", "duration": "About 1 hour", "description": "The cliff path above the caldera.", "image": "Q:Fira caldera Santorini"},
+     {"name": "Oia", "duration": "About 2 hours", "description": "Blue domes and the famous sunset.", "image": "Q:Oia Santorini"}
+    ]}
+  ],
+  "faq": [
+   {"question": "How does booking on request work?", "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability and the final price by email within 24 hours, and you pay online only when the tour is confirmed."},
+   {"question": "What time does the tour start?", "answer": "It is timed to end at sunset, so it starts around 12:30 in summer and earlier in spring, autumn and winter. We confirm the time with you."},
+   {"question": "Can cruise passengers join?", "answer": "Yes. We meet you at the Fira tender port or at Athinios and plan the day around your ship's times; usually the sunset is not possible, and we visit Oia earlier."},
+   {"question": "Are the tickets included?", "answer": "Yes: Akrotiri and the wine tasting. The Museum of Prehistoric Thera in Fira can be added."},
+   {"question": "Is lunch included?", "answer": "Yes, a light meze lunch in Pyrgos. A sunset dinner in Oia can be booked on request."},
+   {"question": "Can children come to the winery?", "answer": "Yes. Children are welcome and receive juice or soft drinks during the tasting."},
+   {"question": "Is it suitable for children?", "answer": "Yes. Children enjoy the buried town, the red cliffs and the sunset. Child seats are provided free of charge on request."},
+   {"question": "Is it suitable for people with limited mobility?", "answer": "Partly. Akrotiri has accessible paths; the villages and the caldera paths have many steps. The car can stop close to most viewpoints."},
+   {"question": "Is Oia very crowded at sunset?", "answer": "In summer, yes. Your guide knows quieter viewpoints, and we can reserve a terrace at a café or restaurant for a fee."},
+   {"question": "Can we swim?", "answer": "Yes, if you wish. We can add a stop at Perissa or Kamari black-sand beaches instead of one of the villages."},
+   {"question": "What should we wear?", "answer": "Comfortable shoes with grip for steps and cobbles, sun protection, and a light layer for the evening breeze."},
+   {"question": "What is the best time of year?", "answer": "April to June and September to October. July and August are hot and very busy; winter is quiet and many places close."},
+   {"question": "What is the cancellation policy?", "answer": "You can cancel free of charge up to 24 hours before the tour. Until your request is confirmed, nothing is charged at all."}
+  ]
+ }
+}
