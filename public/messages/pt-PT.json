@@ -3105,11 +3105,13 @@
     "shelf_qatar": "Novidade: Catar",
     "shelf_qatar_sub": "Doha, o deserto e o mar interior, com guias locais",
     "countries_title": "Países onde operamos",
-    "countries_sub": "Reserve já tours locais em Marrocos e no Catar. Mais países estão a caminho.",
+    "countries_sub": "Reserve tours locais em Marrocos, Catar, Emirados, Egito, Turquia e Espanha. Mais países a caminho.",
     "country_active": "Reservar",
     "country_soon": "Em breve",
     "cities_title": "Cidades a descobrir",
-    "cities_sub": "Guias das cidades de Marrocos e do Catar: o que ver, o tempo e os nossos tours"
+    "cities_sub": "Guias das cidades dos países onde operamos: o que ver, o tempo e os nossos tours",
+    "shelf_country": "Tours em {country}",
+    "shelf_country_sub": "Tours privados com guias locais, reserva a pedido"
   },
   "Payment": {
     "preparing": "A preparar o pagamento seguro…",

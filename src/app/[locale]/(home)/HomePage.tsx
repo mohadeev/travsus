@@ -51,8 +51,11 @@ export default function HomePage({ tours, destinations, countries = [], cities =
 		picked.slice(0, 4).forEach((tour) => seen.add(tour.id))
 		return picked.map(({ searchText, ...card }) => card) // search words aren't needed in the browser
 	}
-	// New destination first: its tours have no visits yet, so they would sit low in "Top tours"
-	const qatar = row((tour) => QATAR.test(tour.searchText))
+	// One row per country we operate in besides Morocco (whose tours fill the
+	// rows below), first, because new tours have no visits yet and would sit low in "Top tours"
+	const countryRows = countries
+		.filter((c) => c.active && c.code !== 'MA')
+		.map((c) => ({ country: c, cards: row((tour) => tour.countryCode === c.code || (c.code === 'QA' && !tour.countryCode && QATAR.test(tour.searchText))) }))
 	const top = row(() => true)
 	const desert = row((tour) => DESERT.test(tour.searchText))
 	const dayTrips = row((tour) => tour.days === 1)
@@ -92,7 +95,9 @@ export default function HomePage({ tours, destinations, countries = [], cities =
 				</div>
 
 				{shelf(t('top_tours'), t('top_tours_sub'), top)}
-				{shelf(t('shelf_qatar'), t('shelf_qatar_sub'), qatar)}
+				{countryRows.map(({ country, cards }) => (
+					<div key={country.code}>{shelf(t('shelf_country', { country: country.name }), t('shelf_country_sub', { country: country.name }), cards)}</div>
+				))}
 				{shelf(t('shelf_desert'), t('shelf_desert_sub'), desert)}
 
 				{destinations.length > 0 && (

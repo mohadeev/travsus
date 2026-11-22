@@ -3163,11 +3163,13 @@
     "shelf_qatar": "Novità: Qatar",
     "shelf_qatar_sub": "Doha, il deserto e il mare interno, con guide locali",
     "countries_title": "I paesi in cui operiamo",
-    "countries_sub": "Prenoti oggi tour locali in Marocco e Qatar. Presto arriveranno altri paesi.",
+    "countries_sub": "Prenota tour locali in Marocco, Qatar, Emirati, Egitto, Turchia e Spagna. Altri paesi in arrivo.",
     "country_active": "Prenota",
     "country_soon": "Presto",
     "cities_title": "Città da scoprire",
-    "cities_sub": "Guide delle città di Marocco e Qatar: cosa vedere, il meteo e i nostri tour"
+    "cities_sub": "Guide delle città dei paesi in cui operiamo: cosa vedere, il meteo e i nostri tour",
+    "shelf_country": "Tour in {country}",
+    "shelf_country_sub": "Tour privati con guide locali, prenotabili su richiesta"
   },
   "Payment": {
     "preparing": "Preparazione del pagamento sicuro…",

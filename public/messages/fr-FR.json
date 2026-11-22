@@ -3671,11 +3671,13 @@
     "shelf_qatar": "Nouveau : le Qatar",
     "shelf_qatar_sub": "Doha, le désert et la mer intérieure, avec des guides locaux",
     "countries_title": "Les pays où nous opérons",
-    "countries_sub": "Réservez dès aujourd'hui des circuits locaux au Maroc et au Qatar. D'autres pays arrivent bientôt.",
+    "countries_sub": "Réservez des circuits locaux au Maroc, au Qatar, aux Émirats, en Égypte, en Turquie et en Espagne. D’autres pays arrivent.",
     "country_active": "Réserver",
     "country_soon": "Bientôt",
     "cities_title": "Villes à découvrir",
-    "cities_sub": "Guides des villes du Maroc et du Qatar : que voir, la météo et nos circuits"
+    "cities_sub": "Guides des villes des pays où nous opérons : que voir, la météo et nos circuits",
+    "shelf_country": "Circuits en {country}",
+    "shelf_country_sub": "Circuits privés avec guides locaux, réservation sur demande"
   },
   "Payment": {
     "preparing": "Préparation du paiement sécurisé…",

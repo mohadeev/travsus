@@ -15,6 +15,8 @@ export type HomeTour = {
 	pricePerPerson: number | null
 	rating: number | null
 	reviewsCount: number
+	/** 2-letter country code (null for older tours, which are all in Morocco) */
+	countryCode: string | null
 	/** Among the most visited tours (real visits to its page, last 90 days) */
 	popular?: boolean
 	/** Lower-case words the search matches against (names, overview, cities) */
@@ -116,6 +118,7 @@ export const getHomeData = cache(async (locale: string) => {
 			image,
 			days: tour.dayCount,
 			city,
+			countryCode: tour.countryCode,
 			pricePerPerson: tour.pricePerPerson,
 			rating: rating ? Math.round((rating.sum / rating.count) * 10) / 10 : null,
 			reviewsCount: rating?.count ?? 0,

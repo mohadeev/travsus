@@ -29,6 +29,8 @@ export type CatalogTour = {
 	startAddress: Address
 	endAddress: Address
 	createdAt: string | null
+	/** 2-letter country code (null for older tours) */
+	countryCode: string | null
 	/** Per-person price for the default group (DEFAULT_ADULTS), as shown first on the tour page */
 	pricePerPerson: number | null
 }
@@ -80,13 +82,14 @@ async function loadCatalog(): Promise<CatalogTour[]> {
 			startAddress: address(tour.startAddress),
 			endAddress: address(tour.endAddress),
 			createdAt: tour.createdAt ?? null,
+			countryCode: tour.countryCode ? String(tour.countryCode).toUpperCase() : null,
 			pricePerPerson: await startingPrice(tour),
 		})),
 	)
 }
 
 /** Every tour with photos, newest first (cached; one database read per 10 minutes). */
-export const getTourCatalog = unstable_cache(loadCatalog, ['tour-catalog-v2'], {
+export const getTourCatalog = unstable_cache(loadCatalog, ['tour-catalog-v3'], {
 	revalidate: TEN_MINUTES,
 	tags: [TOURS_TAG],
 })

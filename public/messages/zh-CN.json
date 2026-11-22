@@ -2533,11 +2533,13 @@
     "shelf_qatar": "新上线：卡塔尔",
     "shelf_qatar_sub": "与当地导游一起游览多哈、沙漠和内海",
     "countries_title": "我们开展业务的国家",
-    "countries_sub": "现在即可预订摩洛哥和卡塔尔的当地行程，更多国家即将上线。",
+    "countries_sub": "预订摩洛哥、卡塔尔、阿联酋、埃及、土耳其和西班牙的当地行程，更多国家即将上线。",
     "country_active": "立即预订",
     "country_soon": "即将上线",
     "cities_title": "探索城市",
-    "cities_sub": "摩洛哥和卡塔尔城市指南：景点、天气和我们的行程"
+    "cities_sub": "我们运营国家的城市指南：景点、天气和我们的行程",
+    "shelf_country": "{country}行程",
+    "shelf_country_sub": "本地导游私人游，按需预订"
   },
   "Payment": {
     "preparing": "正在准备安全支付…",
