@@ -23,7 +23,7 @@ import {
 	totalOf,
 } from '@/store/slices/booking'
 import { formatCurrency } from '@/utils/formatCurrency'
-import { useAuthAction } from '@/app/hooks/useAuthAction'
+import { openSignInOnTop, useAuthAction } from '@/app/hooks/useAuthAction'
 import { Counter, MAX_PEOPLE, currentHotel, roomsFor, type Hotel } from './travellers'
 import { useTourService } from '../../TourServiceContext'
 import { hasStays as tourHasStays } from '@/lib/tourPricing'
@@ -106,7 +106,7 @@ const RenderSidebar: FC = () => {
 			// The server doesn't see a signed-in user (e.g. the session expired): sign in, then come back here
 			if (response.status === 401) {
 				setReserving(false)
-				openSignIn({ forceRedirectUrl: window.location.href })
+				openSignInOnTop(openSignIn)
 				return
 			}
 			const result = await response.json()
