@@ -21,7 +21,7 @@ export const CITY_PHOTOS: Record<string, DestinationPhoto> = {
 }
 
 /** Countries where TRAVSUS sells tours today (2-letter codes); the others are shown as coming soon */
-export const ACTIVE_COUNTRIES = ['MA', 'QA', 'AE', 'EG', 'TR', 'ES', 'IT', 'FR', 'GR', 'JP', 'VN', 'ID', 'TH']
+export const ACTIVE_COUNTRIES = ['MA', 'QA', 'AE', 'EG', 'TR', 'ES', 'IT', 'FR', 'GR', 'JP', 'VN', 'ID', 'TH', 'PE', 'BR']
 
 /** A tour is shown and bookable only in an active country (tours without a country code always are). */
 export const isTourLive = (tour: { countryCode?: string | null } | null | undefined) =>
