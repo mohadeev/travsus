@@ -1,0 +1,80 @@
+{
+ "key": "vietnam-highlights-8-days",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {"city": "Hanoi", "state": "Hanoi", "country": "Vietnam", "countryCode": "VN", "timeZone": "Asia/Ho_Chi_Minh", "streetAddress": "Hanoi Noi Bai Airport or your hotel in Hanoi", "geoCoordinates": {"lat": 21.0285, "log": 105.8542}},
+ "slug": "/en-US/vietnam/hanoi/tours/vietnam-highlights-8-day-private-tour-hanoi-ha-long-bay-hoi-an-and-saigon",
+ "tour": {
+  "name": "Vietnam Highlights 8-Day Private Tour: Hanoi, Ha Long Bay Overnight, Hoi An & Saigon",
+  "subtitle": "Eight days from north to south with private guides: Hanoi's Old Quarter and street food, a night aboard a boutique cruise among the islands of Ha Long Bay, the lantern-lit old town of Hoi An and the Cham ruins of My Son, and Saigon with the Cu Chi tunnels and the Mekong Delta.",
+  "seoTitle": "Vietnam Highlights 8-Day Private Tour | TRAVSUS",
+  "metaDescription": "8-day private Vietnam tour: Hanoi and street food, an overnight Ha Long Bay cruise, Hoi An and My Son, Saigon, the Cu Chi tunnels and the Mekong Delta. Domestic flights, private guides and cars, 7 nights with breakfast.",
+  "tags": ["Vietnam tour", "Hanoi Ha Long Hoi An Saigon", "Vietnam 8 days", "Ha Long Bay cruise", "Mekong Delta", "Vietnam private tour"],
+  "highlights": [
+   "Hanoi's Old Quarter, Temple of Literature and street food",
+   "A night aboard a boutique cruise in Ha Long or Lan Ha Bay",
+   "Kayaking among the limestone islands",
+   "The lantern-lit old town of Hoi An",
+   "The Cham temple ruins of My Son at sunrise",
+   "Saigon and the Cu Chi tunnels",
+   "A boat through the canals of the Mekong Delta"
+  ],
+  "duration": 8,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "Vietnam stretches 1,650 kilometres from the mountains of the north to the delta of the south, and each region has its own history, landscape and food. This private journey follows the country from Hanoi, the thousand-year-old capital, to the limestone islands of Ha Long Bay, the old trading port of Hoi An in the centre, and the energy of Saigon and the waterways of the Mekong Delta in the south.\n\nYou have a private guide and car in every region, two domestic flights, a night on a boutique cruise boat in Ha Long or Lan Ha Bay with meals and kayaking, and six nights in well-located hotels. Each region is seen at its best time of day, with free afternoons and evenings.\n\nAT A GLANCE\n• Duration: 8 days, 7 nights\n• Start: Hanoi Noi Bai Airport or your hotel in Hanoi\n• End: Ho Chi Minh City Tan Son Nhat Airport or your hotel\n• Type: private tour with guides, private cars and drivers, domestic flights, an overnight cruise; 7 nights with breakfast\n• Booking: on request – we confirm availability, hotels, cruise, flights and the final price by email within 24 hours, and you pay only then\n• Level: easy to moderate\n\nWHAT YOU SEE\n• Hanoi: the Old Quarter, the Temple of Literature and Hoan Kiem Lake.\n• Ha Long or Lan Ha Bay overnight.\n• Hoi An Ancient Town and My Son.\n• Saigon, the Cu Chi tunnels and the Mekong Delta.\n\nWHY THIS WORKS\nTwo short flights connect the three regions, and the night on the bay lets you see the islands at sunset and sunrise, when the day boats have gone.\n\nWHO IT SUITS\nFirst-time visitors, couples, families and small groups.\n\nWHO MAY PREFER ANOTHER TOUR\nIf you have more time, add Hue, Ninh Binh or the mountains of Sapa.\n\nPRACTICAL INFORMATION\nVietnam's climate differs by region: the north is cool in winter, the centre is rainy from October to December, the south is hot all year. We adapt the plan to your dates. Many nationalities need an e-visa.",
+  "inclusions": {"standard": {"private": ["Private airport transfers in Hanoi, Da Nang and Ho Chi Minh City", "6 hotel nights with breakfast (2 in Hanoi, 2 in Hoi An, 2 in Saigon) and 1 night on a boutique cruise in Ha Long or Lan Ha Bay with meals", "Domestic flights Hanoi–Da Nang and Da Nang–Ho Chi Minh City (economy, 20 kg bag)", "Private guides and cars for all sightseeing days", "Kayaking and cave visits on the cruise", "Entrance tickets in the programme", "Lunch on days 2 to 7, dinner on the cruise and in Hoi An", "Bottled water"], "shared": ["Airport transfers", "7 nights with breakfast", "Domestic flights", "Overnight cruise", "Guides", "Entrance tickets", "Lunches"]}},
+  "pricingTiers": [
+   {"transportType": "Sedan / SUV", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png", "minSeats": 1, "maxSeats": 4, "pricing": {"currency": "EUR", "totalPrice": 3920, "pricePerDay": 490}},
+   {"transportType": "Minivan", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png", "minSeats": 5, "maxSeats": 8, "pricing": {"currency": "EUR", "totalPrice": 7200, "pricePerDay": 900}},
+   {"transportType": "Mini Bus", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png", "minSeats": 9, "maxSeats": 19, "pricing": {"currency": "EUR", "totalPrice": 13600, "pricePerDay": 1700}}
+  ],
+  "images": ["Q:Ha Long Bay", "Q:Hoi An Ancient Town", "Q:Hoan Kiem Lake Ngoc Son", "Q:Japanese Covered Bridge Hoi An", "Q:Cu Chi tunnels"],
+  "days": [
+   {"name": "Arrival in Hanoi and a street-food evening",
+    "description": "What to expect: a private welcome and a first evening in Hanoi.\n\nYour driver meets you at Noi Bai Airport and takes you to your hotel in the Old Quarter. In the evening your guide takes you for a street-food walk: bun cha, pho, nem spring rolls and egg coffee by the lake.\n\nSCHEDULE (approximate times)\nAny time – Airport transfer.\n18:00 – Street-food walk.\n\nGOOD TO KNOW\n• Cross the streets slowly and steadily; scooters flow around you.\n\nINCLUDED: airport transfer, street-food walk with dinner.\nNOT INCLUDED: drinks.\n\nOvernight: hotel in Hanoi.\nMeals: dinner.",
+    "stops": [{"name": "Hanoi Old Quarter", "duration": "Evening", "description": "Street food in the 36 streets.", "image": "Q:Hanoi Old Quarter"}]},
+   {"name": "Hanoi: Ho Chi Minh's mausoleum, the Temple of Literature, Hoan Kiem Lake and water puppets",
+    "description": "What to expect: the history and daily life of Hanoi.\n\nYou visit the Ho Chi Minh complex and the One Pillar Pagoda, the Temple of Literature, Hoan Kiem Lake and Ngoc Son temple, ride a cyclo through the Old Quarter and watch a water puppet show.\n\nSCHEDULE (approximate times)\n08:00 – Ho Chi Minh complex.\n10:00 – Temple of Literature.\n12:00 – Lunch.\n13:30 – Hoan Kiem Lake and cyclo.\n17:00 – Water puppets.\n\nGOOD TO KNOW\n• The mausoleum is closed on Mondays and Fridays.\n\nINCLUDED: private car and driver, licensed guide, tickets, cyclo, lunch, show.\nNOT INCLUDED: dinner.\n\nOvernight: hotel in Hanoi.\nMeals: breakfast, lunch.",
+    "stops": [{"name": "Temple of Literature", "duration": "About 1 hour", "description": "Vietnam's first university.", "image": "Q:Temple of Literature Hanoi"}]},
+   {"name": "Ha Long or Lan Ha Bay: an overnight cruise",
+    "description": "What to expect: the limestone islands from a boutique cruise boat.\n\nYour driver takes you to the port, about two and a half hours. You board a small boutique cruise boat, have lunch as you sail among the karsts, kayak through caves and lagoons, swim from a quiet beach, and watch the sunset from the deck before dinner on board.\n\nSCHEDULE (approximate times)\n08:00 – Transfer to the bay.\n11:30 – Board and lunch.\n14:30 – Kayaking and swimming.\n18:00 – Sunset on deck.\n19:00 – Dinner on board.\n\nGOOD TO KNOW\n• Sailing can be suspended in storms; we then adapt the plan.\n\nINCLUDED: transfers, cruise cabin, meals, kayaking and cave fees.\nNOT INCLUDED: drinks on board.\n\nOvernight: boutique cruise boat.\nMeals: breakfast, lunch, dinner.",
+    "stops": [{"name": "Ha Long Bay", "duration": "Afternoon and night", "description": "Karsts, kayaks and a sunset on deck.", "image": "Q:Ha Long Bay"}]},
+   {"name": "Sunrise on the bay, back to Hanoi and fly to Da Nang for Hoi An",
+    "description": "What to expect: a morning on the water and a flight to the centre.\n\nYou wake up among the islands, join a tai chi session on deck, visit a cave and have brunch while sailing back. Your driver takes you to Hanoi airport for a flight to Da Nang, about 1 hour 20 minutes, and on to Hoi An, where you arrive in the evening as the lanterns are lit.\n\nSCHEDULE (approximate times)\n06:30 – Sunrise and tai chi.\n07:30 – Cave visit.\n09:30 – Brunch and return to port.\n11:00 – Transfer to Hanoi airport.\n15:00 – Flight to Da Nang.\n17:30 – Arrival in Hoi An.\n\nGOOD TO KNOW\n• The evening is free to explore the lantern-lit old town.\n\nINCLUDED: transfers, brunch on board, flight.\nNOT INCLUDED: dinner.\n\nOvernight: hotel in Hoi An.\nMeals: breakfast, brunch.",
+    "stops": [{"name": "Ha Long Bay at sunrise", "duration": "Morning", "description": "Tai chi and a cave."}]},
+   {"name": "My Son at sunrise and Hoi An's lantern evening",
+    "description": "What to expect: Cham ruins in the morning and the old town in the evening.\n\nYou visit My Son at opening time, watch an Apsara dance and return to Hoi An by boat on the Thu Bon river. After a free afternoon, your guide shows you the Japanese Covered Bridge, the merchant houses and the assembly halls, you make a lantern, have a cao lau dinner and float a candle lantern on the river.\n\nSCHEDULE (approximate times)\n05:15 – Departure for My Son.\n06:00 – My Son.\n09:15 – Boat back to Hoi An.\n12:00 – Lunch, free afternoon.\n16:00 – Hoi An Ancient Town.\n18:30 – Dinner and lantern boat.\n\nGOOD TO KNOW\n• Hoi An's tailors can make clothes in 24 hours.\n\nINCLUDED: private car and driver, licensed guide, tickets, boats, lunch, dinner, workshop.\nNOT INCLUDED: drinks.\n\nOvernight: hotel in Hoi An.\nMeals: breakfast, lunch, dinner.",
+    "stops": [
+     {"name": "My Son", "duration": "About 2 hours 30 minutes", "description": "Cham temples in the jungle.", "image": "Q:My Son sanctuary"},
+     {"name": "Hoi An Ancient Town", "duration": "Evening", "description": "Lanterns, the bridge and the river.", "image": "Q:Japanese Covered Bridge Hoi An"}
+    ]},
+   {"name": "Fly to Saigon: the Independence Palace, the War Remnants Museum and the colonial district",
+    "description": "What to expect: a morning flight south and an afternoon in the city.\n\nYour driver takes you to Da Nang airport for a flight to Ho Chi Minh City, about 1 hour 20 minutes. After lunch your guide shows you the Independence Palace, the War Remnants Museum, Notre-Dame Cathedral, the Central Post Office and Ben Thanh market, ending with a rooftop view at sunset.\n\nSCHEDULE (approximate times)\n08:00 – Transfer to Da Nang airport.\n09:30 – Flight to Saigon.\n12:00 – Lunch.\n13:45 – Independence Palace and War Remnants Museum.\n16:15 – Colonial district and Ben Thanh market.\n\nGOOD TO KNOW\n• A street-food evening by scooter can be added.\n\nINCLUDED: transfers, flight, private car and driver, guide, tickets, lunch.\nNOT INCLUDED: dinner.\n\nOvernight: hotel in Ho Chi Minh City.\nMeals: breakfast, lunch.",
+    "stops": [{"name": "Colonial Saigon", "duration": "Afternoon", "description": "Notre-Dame Cathedral and the Post Office.", "image": "Q:Saigon Notre-Dame Cathedral"}]},
+   {"name": "The Cu Chi tunnels and the Mekong Delta",
+    "description": "What to expect: the war's underground network and the river life of the delta.\n\nYou visit the Cu Chi tunnels in the morning, then drive south to the Mekong for a private boat across the river, a sampan through the coconut canals of Ben Tre, a family workshop and a garden lunch, before returning to Saigon.\n\nSCHEDULE (approximate times)\n07:00 – Cu Chi tunnels.\n10:30 – Drive to the Mekong.\n12:30 – Boat, sampan and lunch in Ben Tre.\n15:30 – Drive back to Saigon.\n17:30 – Back at your hotel.\n\nGOOD TO KNOW\n• A long but varied day; the order can be reversed.\n\nINCLUDED: private car and driver, guide, tickets, boats, lunch.\nNOT INCLUDED: dinner.\n\nOvernight: hotel in Ho Chi Minh City.\nMeals: breakfast, lunch.",
+    "stops": [
+     {"name": "Cu Chi tunnels", "duration": "About 2 hours", "description": "The tunnel network.", "image": "Q:Cu Chi tunnels"},
+     {"name": "Mekong Delta", "duration": "About 3 hours", "description": "Boats through the coconut canals.", "image": "Q:Mekong Delta Cai Rang floating market"}
+    ]},
+   {"name": "Departure from Saigon",
+    "description": "What to expect: a private transfer to the airport.\n\nAfter breakfast you have free time until your driver takes you to Tan Son Nhat Airport.\n\nSCHEDULE (approximate times)\nMorning – Free time.\nAs needed – Private transfer to the airport.\n\nGOOD TO KNOW\n• A beach extension to Phu Quoc or Con Dao can be added.\n\nINCLUDED: airport transfer.\nNOT INCLUDED: lunch.\n\nOvernight: none.\nMeals: breakfast.",
+    "stops": [{"name": "Saigon", "duration": "Free time", "description": "A last coffee before your flight."}]}
+  ],
+  "faq": [
+   {"question": "How does booking on request work?", "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability, hotels, cruise, flights and the final price by email within 24 hours, and you pay online only when the tour is confirmed."},
+   {"question": "Are the domestic flights included?", "answer": "Yes: Hanoi to Da Nang and Da Nang to Ho Chi Minh City, in economy with a 20 kg checked bag."},
+   {"question": "What kind of cruise is it?", "answer": "A small boutique boat with en-suite cabins, meals and activities. Private boats for your group alone can be booked as an upgrade."},
+   {"question": "What kind of hotels are used?", "answer": "Comfortable 4-star or boutique hotels in the Old Quarter of Hanoi, near the old town of Hoi An and in central Saigon. Upgrades are available."},
+   {"question": "Do we need a visa?", "answer": "Many nationalities need an e-visa, applied for online before travel. We send you the current information when you book."},
+   {"question": "Can we add Hue or Sapa?", "answer": "Yes. Hue fits easily between Hanoi and Hoi An, and Sapa or Ninh Binh can be added in the north."},
+   {"question": "Is it suitable for children?", "answer": "Yes. Children love the boats, the lanterns and the street food. We can book family rooms and cabins."},
+   {"question": "Is it suitable for people with limited mobility?", "answer": "Partly. Boats, caves and some temples involve steps. Tell us your needs and we will adapt."},
+   {"question": "What is the weather like?", "answer": "It varies by region and season: we adapt the route to your dates, for example avoiding the centre's heaviest rains from October to December."},
+   {"question": "Should we tip?", "answer": "Tips are appreciated in Vietnam but never required."},
+   {"question": "What should we wear?", "answer": "Light clothes, a jacket for northern winters, swimwear, covering clothes for temples and comfortable shoes."},
+   {"question": "What is the best time of year?", "answer": "February to April suits the whole country best. Autumn is good in the north and south; summer is hot."},
+   {"question": "What is the cancellation policy?", "answer": "You can cancel free of charge up to 21 days before the tour starts; flights and the cruise may not be refundable after booking. Until your request is confirmed, nothing is charged at all."}
+  ]
+ }
+}
