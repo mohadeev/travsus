@@ -1,0 +1,283 @@
+{
+ "key": "french-polynesia-tahiti-moorea-bora-bora-10-days",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {
+  "city": "Bora Bora",
+  "state": "Leeward Islands",
+  "country": "French Polynesia",
+  "countryCode": "PF",
+  "timeZone": "Pacific/Tahiti",
+  "streetAddress": "Tahiti Faa’a airport",
+  "geoCoordinates": {
+   "lat": -16.5004,
+   "log": -151.7415
+  }
+ },
+ "slug": "/en-US/french-polynesia/bora-bora/tours/french-polynesia-10-day-private-island-tour-tahiti-moorea-and-bora-bora",
+ "tour": {
+  "name": "French Polynesia 10-Day Private Island Tour: Tahiti, Moorea & Bora Bora",
+  "subtitle": "Ten days across the Society Islands with private guides: Tahiti's island circle and Papeete's market and roulottes, Moorea's bays, lagoon and pineapple valley, and the lagoon, motus and Mount Otemanu of Bora Bora, with ferries, inter-island flights and nine nights including overwater bungalows.",
+  "seoTitle": "French Polynesia 10-Day Private Tour: Tahiti, Moorea, Bora Bora | TRAVSUS",
+  "metaDescription": "10-day private French Polynesia tour: Tahiti, Moorea and Bora Bora with private guides, lagoon boats, ferry and inter-island flights, and 9 nights including an overwater bungalow in Bora Bora.",
+  "tags": [
+   "French Polynesia tour",
+   "Tahiti",
+   "Moorea",
+   "Bora Bora",
+   "Honeymoon",
+   "Overwater bungalow"
+  ],
+  "highlights": [
+   "The Tahiti circle island tour and Papeete’s roulottes",
+   "Moorea’s lagoon with stingrays and reef sharks",
+   "The Belvedere lookout and pineapple valley of Moorea",
+   "Four nights in Bora Bora, including an overwater bungalow",
+   "A private lagoon day and motu lunch in Bora Bora",
+   "A 4x4 tour of Bora Bora",
+   "Free days to enjoy the lagoons"
+  ],
+  "duration": 10,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "The Society Islands are the classic image of the South Pacific: green volcanic peaks, lagoons of impossible colours and overwater bungalows. This private tour combines the three best-known islands: Tahiti, with its culture, waterfalls and capital; Moorea, a short ferry ride away, with its dramatic bays; and Bora Bora, the most famous lagoon in the world.\n\nYou have private guides and boats on each island, the ferry and inter-island flights, and nine nights in carefully chosen hotels, with free days to enjoy the water. It is ideal for a honeymoon.\n\nAT A GLANCE\n• Duration: 10 days, 9 nights\n• Start: Tahiti Faa’a airport\n• End: Tahiti Faa’a airport (via Bora Bora)\n• Type: private tour with local guides, private boats and vehicles, ferry and inter-island flights; 9 nights with breakfast\n• Booking: on request – we confirm availability, hotels, flights and the final price by email within 24 hours, and you pay only then\n• Level: easy\n\nWHAT YOU SEE\n• Tahiti: the island circle and Papeete.\n• Moorea: the lagoon and the Opunohu valley.\n• Bora Bora: the lagoon, the motus and the island interior.\n\nWHY THIS WORKS\nThe route follows the natural flow from Tahiti to Moorea and on to Bora Bora, with nights long enough on each island to relax.\n\nWHO IT SUITS\nHoneymooners, couples, families and anyone dreaming of the South Pacific.\n\nWHO MAY PREFER ANOTHER TOUR\nTo add an atoll, extend with Rangiroa; for an authentic island, add Huahine.\n\nPRACTICAL INFORMATION\nInternational flights arrive in Tahiti, often at night. Inter-island baggage allowances are 23 kilograms. The local currency is the CFP franc, pegged to the euro.",
+  "inclusions": {
+   "standard": {
+    "private": [
+     "Private airport, ferry and hotel transfers",
+     "Ferry tickets Tahiti–Moorea and back",
+     "Inter-island flights Moorea or Tahiti–Bora Bora–Tahiti with a checked bag",
+     "9 nights with breakfast: 2 in Tahiti, 3 in Moorea, 4 in Bora Bora (including 2 in an overwater bungalow)",
+     "Private guides, boats and vehicles for all tours",
+     "Lunches on the lagoon tours and the island tour",
+     "Dinner at the roulottes",
+     "Bottled water"
+    ],
+    "shared": [
+     "Transfers",
+     "Ferry and flights",
+     "9 nights with breakfast",
+     "Guides and boats",
+     "Lunches"
+    ]
+   }
+  },
+  "pricingTiers": [
+   {
+    "transportType": "Sedan / SUV",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png",
+    "minSeats": 1,
+    "maxSeats": 4,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 9900,
+     "pricePerDay": 990
+    }
+   },
+   {
+    "transportType": "Minivan",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png",
+    "minSeats": 5,
+    "maxSeats": 8,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 17900,
+     "pricePerDay": 1790
+    }
+   },
+   {
+    "transportType": "Mini Bus",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png",
+    "minSeats": 9,
+    "maxSeats": 19,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 34900,
+     "pricePerDay": 3490
+    }
+   }
+  ],
+  "images": [
+   "Q:Bora Bora lagoon",
+   "Q:Cook's Bay Moorea",
+   "Q:Mount Otemanu",
+   "Q:Moorea lagoon",
+   "Q:Faarumai waterfall"
+  ],
+  "days": [
+   {
+    "name": "Arrival in Tahiti",
+    "description": "What to expect: a traditional welcome.\n\nYou are welcomed at Faa'a airport with a flower lei and taken to your hotel on the west coast.\n\nSCHEDULE (approximate times)\nAny time – Airport welcome and transfer.\n\nGOOD TO KNOW\n• Many flights arrive late at night.\n\nINCLUDED: airport transfer.\nNOT INCLUDED: dinner.\n\nOvernight: hotel in Tahiti.\nMeals: none.",
+    "stops": [
+     {
+      "name": "Tahiti",
+      "duration": "Free time",
+      "description": "Sunset over Moorea.",
+      "image": "Q:Point Venus Tahiti"
+     }
+    ]
+   },
+   {
+    "name": "Tahiti circle island tour and the roulottes",
+    "description": "What to expect: the whole island and its flavours.\n\nA private tour around Tahiti: Point Venus, the Arahoho blowhole, the Faarumai waterfalls, Teahupo'o, the Vaipahi gardens and the Marae Arahurahu, with lunch by the sea, and in the evening the Papeete market area and dinner at the roulottes.\n\nSCHEDULE (approximate times)\n08:30 – Island tour.\n12:00 – Lunch.\n18:30 – Dinner at the roulottes.\n\nGOOD TO KNOW\n• Bring a rain jacket for the east coast.\n\nINCLUDED: vehicle, guide, lunch, dinner.\nNOT INCLUDED: drinks.\n\nOvernight: hotel in Tahiti.\nMeals: breakfast, lunch, dinner.",
+    "stops": [
+     {
+      "name": "Faarumai waterfalls",
+      "duration": "About 45 minutes",
+      "description": "Waterfalls in the rainforest.",
+      "image": "Q:Faarumai waterfall"
+     }
+    ]
+   },
+   {
+    "name": "Ferry to Moorea",
+    "description": "What to expect: the short crossing and a free afternoon.\n\nA private transfer takes you to the ferry to Moorea, about 30 to 45 minutes, and to your hotel on the lagoon. The afternoon is free to swim and snorkel.\n\nSCHEDULE (approximate times)\n09:00 – Ferry to Moorea.\nAfternoon – Free.\n\nGOOD TO KNOW\n• Hotels lend snorkelling equipment.\n\nINCLUDED: transfers, ferry.\nNOT INCLUDED: lunch, dinner.\n\nOvernight: hotel in Moorea.\nMeals: breakfast.",
+    "stops": [
+     {
+      "name": "Moorea",
+      "duration": "Free time",
+      "description": "Your first lagoon.",
+      "image": "Q:Moorea lagoon"
+     }
+    ]
+   },
+   {
+    "name": "Moorea's lagoon by private boat",
+    "description": "What to expect: stingrays, reef sharks, coral and a motu picnic.\n\nA private boat day: Cook's Bay and Opunohu Bay, snorkelling with stingrays and reef sharks, the coral gardens and a picnic on a motu.\n\nSCHEDULE (approximate times)\n09:00 – Boat departure.\n12:30 – Motu picnic.\n14:30 – Back at your hotel.\n\nGOOD TO KNOW\n• Whales from July to October.\n\nINCLUDED: boat, guide, picnic.\nNOT INCLUDED: dinner.\n\nOvernight: hotel in Moorea.\nMeals: breakfast, lunch.",
+    "stops": [
+     {
+      "name": "Stingray sandbank",
+      "duration": "About 45 minutes",
+      "description": "Rays and reef sharks.",
+      "image": "Q:Moorea lagoon"
+     }
+    ]
+   },
+   {
+    "name": "Moorea island tour",
+    "description": "What to expect: the Belvedere, the marae and the pineapple valley.\n\nA private morning tour of the Opunohu valley, the marae, the Belvedere lookout, Magic Mountain and the juice factory, and a free afternoon.\n\nSCHEDULE (approximate times)\n08:30 – Island tour.\n12:30 – Free afternoon.\n\nGOOD TO KNOW\n• A Polynesian dinner show can be booked.\n\nINCLUDED: vehicle, guide, tastings.\nNOT INCLUDED: lunch, dinner.\n\nOvernight: hotel in Moorea.\nMeals: breakfast.",
+    "stops": [
+     {
+      "name": "Belvedere lookout",
+      "duration": "About 30 minutes",
+      "description": "Two bays and Mount Rotui.",
+      "image": "Q:Cook's Bay Moorea"
+     }
+    ]
+   },
+   {
+    "name": "Fly to Bora Bora",
+    "description": "What to expect: the arrival by boat in the world’s most famous lagoon.\n\nYou fly to Bora Bora, about 45 minutes, with views of the lagoon from the plane. The airport is on a motu, and your hotel's boat takes you across the lagoon to your overwater bungalow.\n\nSCHEDULE (approximate times)\nMorning – Flight to Bora Bora.\nAfternoon – Free.\n\nGOOD TO KNOW\n• Sit on the left side of the plane for the best views.\n\nINCLUDED: transfers, flight, boat transfer.\nNOT INCLUDED: lunch, dinner.\n\nOvernight: overwater bungalow in Bora Bora.\nMeals: breakfast.",
+    "stops": [
+     {
+      "name": "Bora Bora lagoon",
+      "duration": "Free time",
+      "description": "Your overwater bungalow.",
+      "image": "Q:Bora Bora lagoon"
+     }
+    ]
+   },
+   {
+    "name": "Bora Bora's lagoon by private boat",
+    "description": "What to expect: rays, sharks, coral and a motu lunch.\n\nA private lagoon day: stingrays and blacktip reef sharks, the coral garden, the manta ray channel and a Polynesian lunch on a motu.\n\nSCHEDULE (approximate times)\n09:00 – Boat departure.\n12:30 – Motu lunch.\n14:30 – Back at your hotel.\n\nGOOD TO KNOW\n• A sunset cruise can be added.\n\nINCLUDED: boat, guide, lunch.\nNOT INCLUDED: dinner.\n\nOvernight: overwater bungalow in Bora Bora.\nMeals: breakfast, lunch.",
+    "stops": [
+     {
+      "name": "Coral garden",
+      "duration": "About 45 minutes",
+      "description": "Reef fish and giant clams.",
+      "image": "Q:Bora Bora lagoon"
+     }
+    ]
+   },
+   {
+    "name": "Bora Bora 4x4 island tour",
+    "description": "What to expect: the island interior and Matira Beach.\n\nA private 4x4 morning: Vaitape, the viewpoints and WWII cannons, a marae, a pareo workshop and Matira Beach, then a free afternoon.\n\nSCHEDULE (approximate times)\n08:30 – 4x4 tour.\n12:30 – Free afternoon.\n\nGOOD TO KNOW\n• Matira Beach has restaurants.\n\nINCLUDED: 4x4, guide.\nNOT INCLUDED: lunch, dinner.\n\nOvernight: hotel in Bora Bora.\nMeals: breakfast.",
+    "stops": [
+     {
+      "name": "Viewpoints",
+      "duration": "About 1 hour",
+      "description": "The lagoon from above.",
+      "image": "Q:Mount Otemanu"
+     }
+    ]
+   },
+   {
+    "name": "A free day in Bora Bora",
+    "description": "What to expect: time to enjoy the lagoon.\n\nA free day to swim, snorkel, paddle or relax. Diving, a jet-ski tour, a helicopter flight or a spa can be arranged.\n\nSCHEDULE (approximate times)\nAll day – Free.\n\nGOOD TO KNOW\n• A Polynesian dinner on the beach can be booked.\n\nINCLUDED: —\nNOT INCLUDED: activities, meals.\n\nOvernight: hotel in Bora Bora.\nMeals: breakfast.",
+    "stops": [
+     {
+      "name": "Mount Otemanu",
+      "duration": "Free time",
+      "description": "The peak above the lagoon.",
+      "image": "Q:Mount Otemanu"
+     }
+    ]
+   },
+   {
+    "name": "Departure",
+    "description": "What to expect: the flight back to Tahiti and onward.\n\nYour hotel boat takes you to the airport for the flight to Tahiti, connecting with your international flight.\n\nSCHEDULE (approximate times)\nAs needed – Boat and flight to Tahiti.\n\nGOOD TO KNOW\n• Allow at least 3 hours between flights in Papeete.\n\nINCLUDED: transfers, flight.\nNOT INCLUDED: lunch.\n\nOvernight: none.\nMeals: breakfast.",
+    "stops": [
+     {
+      "name": "Bora Bora",
+      "duration": "Free time",
+      "description": "A last look at the lagoon.",
+      "image": "Q:Bora Bora lagoon"
+     }
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "question": "How does booking on request work?",
+    "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability, hotels and the final price by email within 24 hours, and you pay online only when the tour is confirmed."
+   },
+   {
+    "question": "Are the inter-island flights included?",
+    "answer": "Yes, with Air Tahiti, plus the ferry to Moorea."
+   },
+   {
+    "question": "Is an overwater bungalow included?",
+    "answer": "Yes, 2 nights in Bora Bora; it can be extended to all 4 nights."
+   },
+   {
+    "question": "What kind of hotels are used?",
+    "answer": "Comfortable 4- and 5-star resorts; we suggest options at different budgets."
+   },
+   {
+    "question": "Is it suitable for a honeymoon?",
+    "answer": "Perfectly. Tell us and we will add honeymoon touches."
+   },
+   {
+    "question": "Is it suitable for children?",
+    "answer": "Yes. Many resorts welcome families; we choose kid-friendly options."
+   },
+   {
+    "question": "Is it suitable for people with limited mobility?",
+    "answer": "Partly; boats require some agility. Tell us your needs."
+   },
+   {
+    "question": "Can we add Rangiroa or Huahine?",
+    "answer": "Yes, as extensions with extra flights."
+   },
+   {
+    "question": "What currency is used?",
+    "answer": "The CFP franc, pegged to the euro; cards are widely accepted."
+   },
+   {
+    "question": "What should we wear?",
+    "answer": "Light clothes, swimwear, a hat, sunglasses and reef-safe sun cream."
+   },
+   {
+    "question": "What is the best time of year?",
+    "answer": "May to October, the drier and cooler season. Humpback whales visit from July to October."
+   },
+   {
+    "question": "Should we tip?",
+    "answer": "Tipping is not customary in French Polynesia and is never expected, but a small gesture for excellent service is always appreciated."
+   },
+   {
+    "question": "What is the cancellation policy?",
+    "answer": "You can cancel free of charge up to 30 days before the tour starts. Flights and resorts may have stricter terms; we explain them when we confirm. Until your request is confirmed, nothing is charged at all."
+   }
+  ]
+ }
+}

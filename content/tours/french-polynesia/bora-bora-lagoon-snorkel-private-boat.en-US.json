@@ -1,0 +1,184 @@
+{
+ "key": "french-polynesia-bora-bora-lagoon-snorkel-private-boat",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {
+  "city": "Bora Bora",
+  "state": "Leeward Islands",
+  "country": "French Polynesia",
+  "countryCode": "PF",
+  "timeZone": "Pacific/Tahiti",
+  "streetAddress": "Your hotel in Bora Bora (boat pick-up)",
+  "geoCoordinates": {
+   "lat": -16.5004,
+   "log": -151.7415
+  }
+ },
+ "slug": "/en-US/french-polynesia/bora-bora/tours/bora-bora-private-lagoon-tour-snorkelling-with-rays-and-sharks-coral-gardens-and-a-motu-lunch",
+ "tour": {
+  "name": "Bora Bora Private Lagoon Tour: Snorkelling with Rays & Sharks, Coral Gardens and a Motu Lunch",
+  "subtitle": "A private boat day on the most beautiful lagoon in the world with a local guide: snorkelling among stingrays and blacktip reef sharks, the coral garden, the manta ray channel, a Polynesian lunch on a private islet with a coconut and pareo show, and views of Mount Otemanu.",
+  "seoTitle": "Bora Bora Private Lagoon Tour with Lunch on a Motu | TRAVSUS",
+  "metaDescription": "Private Bora Bora lagoon tour by boat with local guide: snorkelling with stingrays and blacktip reef sharks, the coral garden, manta rays, a Polynesian lunch on a motu, and views of Mount Otemanu.",
+  "tags": [
+   "Bora Bora",
+   "Lagoon tour",
+   "Snorkelling",
+   "Stingrays",
+   "Motu picnic",
+   "French Polynesia private tour"
+  ],
+  "highlights": [
+   "Snorkelling among gentle stingrays in waist-deep water",
+   "Blacktip reef sharks gliding around you",
+   "The coral garden and its tropical fish",
+   "The chance to see manta rays",
+   "A Polynesian lunch on a private motu",
+   "Views of Mount Otemanu from the lagoon",
+   "A private boat for your group"
+  ],
+  "duration": 1,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "Bora Bora, in the Leeward Islands of French Polynesia, is an ancient volcano crowned by the basalt peak of Mount Otemanu and surrounded by a lagoon of every shade of turquoise, enclosed by a ring of reef and sandy islets, the motus. The lagoon is rich in marine life: stingrays, blacktip reef sharks, manta rays, turtles and countless reef fish.\n\nThis private boat day takes you around the lagoon with a local guide, with several snorkelling stops and a traditional lunch on a motu, at your own pace and without other groups on board.\n\nAT A GLANCE\n• Duration: about 6 hours\n• Start and end: your hotel in Bora Bora (boat pick-up from the pontoon)\n• Type: private boat with captain and local guide\n• Booking: on request – we confirm availability and the final price by email within 24 hours, and you pay only then\n• Level: easy; basic swimming ability\n\nWHAT YOU SEE\n• The stingray and shark site.\n• The coral garden.\n• The manta ray channel.\n• A motu for lunch.\n• Mount Otemanu from the lagoon.\n\nWHY THIS WORKS\nA private boat lets you snorkel where and as long as you like and avoid the busiest times at each site.\n\nWHO IT SUITS\nHoneymooners, families, snorkellers and anyone visiting Bora Bora.\n\nWHO MAY PREFER ANOTHER TOUR\nFor the island interior, choose our Bora Bora 4x4 tour.\n\nPRACTICAL INFORMATION\nSnorkelling equipment is provided. Use reef-safe sun cream and do not touch the coral or the animals.",
+  "inclusions": {
+   "standard": {
+    "private": [
+     "Pick-up and drop-off at your hotel pontoon",
+     "Private boat with captain",
+     "Private local guide",
+     "Snorkelling equipment",
+     "Polynesian lunch on a motu",
+     "Fresh fruit, coconut and soft drinks",
+     "Bottled water"
+    ],
+    "shared": [
+     "Hotel pick-up",
+     "Private boat and guide",
+     "Snorkelling equipment",
+     "Lunch on a motu"
+    ]
+   }
+  },
+  "pricingTiers": [
+   {
+    "transportType": "Sedan / SUV",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png",
+    "minSeats": 1,
+    "maxSeats": 4,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 790,
+     "pricePerDay": 790
+    }
+   },
+   {
+    "transportType": "Minivan",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png",
+    "minSeats": 5,
+    "maxSeats": 8,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 1190,
+     "pricePerDay": 1190
+    }
+   },
+   {
+    "transportType": "Mini Bus",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png",
+    "minSeats": 9,
+    "maxSeats": 19,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 2190,
+     "pricePerDay": 2190
+    }
+   }
+  ],
+  "images": [
+   "Q:Bora Bora lagoon",
+   "Q:Mount Otemanu",
+   "Q:Bora Bora lagoon#2",
+   "Q:Bora Bora lagoon#3",
+   "Q:Mount Otemanu#2"
+  ],
+  "days": [
+   {
+    "name": "Stingrays and sharks, the coral garden, manta rays and a lunch on a motu",
+    "description": "What to expect: a day on the lagoon by private boat, with snorkelling stops and lunch.\n\nYour boat collects you at your hotel pontoon at about 9:00. Your guide, who grew up on the island, explains the legends of Bora Bora and the life of the lagoon as you cruise beneath Mount Otemanu.\n\nAt the first stop, you slip into clear, waist-deep water over white sand, where friendly stingrays glide around your legs and blacktip reef sharks circle at a respectful distance. At the coral garden, near the reef, you snorkel among parrotfish, butterflyfish, clownfish and giant clams. If conditions allow, you go to the manta ray channel, where these graceful animals come to be cleaned by small fish.\n\nAt midday, you land on a private motu for a Polynesian lunch, with poisson cru – raw tuna in lime and coconut milk – grilled fish, taro and tropical fruit, and your guide shows you how to open a coconut and tie a pareo. After a swim and time to relax in the shade of the palms, the boat takes you back to your hotel.\n\nSCHEDULE (approximate times)\n09:00 – Pick-up at your hotel pontoon.\n09:30 – Stingrays and sharks.\n10:30 – Coral garden.\n11:30 – Manta ray channel (if conditions allow).\n12:30 – Lunch on a motu.\n14:30 – Return to your hotel.\n\nGOOD TO KNOW\n• Bring a rash vest or T-shirt for sun protection.\n• The rays and sharks are wild; your guide explains how to behave.\n• A sunset cruise can be added.\n\nINCLUDED: private boat and captain, local guide, snorkelling equipment, lunch, fruit and drinks, bottled water, pontoon pick-up and drop-off.\nNOT INCLUDED: alcoholic drinks, tips.\n\nOvernight: none.\nMeals: lunch.",
+    "stops": [
+     {
+      "name": "Stingray and shark site",
+      "duration": "About 45 minutes",
+      "description": "Shallow water with rays and reef sharks.",
+      "image": "Q:Bora Bora lagoon"
+     },
+     {
+      "name": "Coral garden",
+      "duration": "About 45 minutes",
+      "description": "Reef fish and giant clams.",
+      "image": "Q:Bora Bora lagoon"
+     },
+     {
+      "name": "Motu lunch",
+      "duration": "About 2 hours",
+      "description": "A Polynesian lunch on a private islet."
+     }
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "question": "How does booking on request work?",
+    "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability and the final price by email within 24 hours, and you pay online only when the tour is confirmed."
+   },
+   {
+    "question": "Are the sharks dangerous?",
+    "answer": "Blacktip reef sharks are shy and not dangerous to snorkellers if you follow your guide’s advice."
+   },
+   {
+    "question": "Do we need to be good swimmers?",
+    "answer": "Basic swimming ability is enough; the stingray site is shallow and life vests are available."
+   },
+   {
+    "question": "Is lunch included?",
+    "answer": "Yes, a traditional Polynesian lunch on a motu with soft drinks."
+   },
+   {
+    "question": "Is the boat private?",
+    "answer": "Yes, a private boat with captain and guide for your group."
+   },
+   {
+    "question": "Can we see manta rays?",
+    "answer": "Often, depending on the season and conditions; they are wild, so sightings are never guaranteed."
+   },
+   {
+    "question": "Is it suitable for children?",
+    "answer": "Yes. Children love the rays. Child life vests are provided."
+   },
+   {
+    "question": "Is it suitable for people with limited mobility?",
+    "answer": "Partly. Boarding the boat needs a step; you can stay on board at the snorkelling sites."
+   },
+   {
+    "question": "Can we do it in the afternoon?",
+    "answer": "Yes. Morning light is best for snorkelling, but afternoon tours can be arranged."
+   },
+   {
+    "question": "What should we bring?",
+    "answer": "Swimwear, a towel, a hat, sunglasses and reef-safe sun cream."
+   },
+   {
+    "question": "What is the best time of year?",
+    "answer": "All year. May to October is drier and less humid."
+   },
+   {
+    "question": "Should we tip?",
+    "answer": "Tipping is not customary in French Polynesia and is never expected, but a small gesture for excellent service is always appreciated."
+   },
+   {
+    "question": "What is the cancellation policy?",
+    "answer": "You can cancel free of charge up to 24 hours before the tour. Until your request is confirmed, nothing is charged at all."
+   }
+  ]
+ }
+}
