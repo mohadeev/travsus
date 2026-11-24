@@ -28,7 +28,7 @@
    {"transportType": "Minivan", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png", "minSeats": 5, "maxSeats": 8, "pricing": {"currency": "EUR", "totalPrice": 13600, "pricePerDay": 1700}},
    {"transportType": "Mini Bus", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png", "minSeats": 9, "maxSeats": 19, "pricing": {"currency": "EUR", "totalPrice": 25600, "pricePerDay": 3200}}
   ],
-  "images": ["Q:Mount Fuji Lake Kawaguchi", "Q:Fushimi Inari torii", "Q:Kinkaku-ji", "Q:Senso-ji Asakusa", "Q:Dotonbori Osaka"],
+  "images": ["Lake Kawaguchi & Mount Fuji, Japan - Sony A7R (11832123266).jpg", "Double torii path at Fushimi Inari Taisha Shrine, Kyoto, Japan.jpg", "Water reflection of Kinkaku-ji Temple a sunny day, Kyoto, Japan.jpg", "Senso-ji, Asakusa, Tokyo.jpg", "Dotonbori Neon Sign, Osaka 20190415 1.jpg"],
   "days": [
    {"name": "Arrival in Tokyo",
     "description": "What to expect: a private welcome and a first evening in Tokyo.\n\nYour driver meets you in the arrivals hall at Narita or Haneda with a name sign and drives you to your hotel. In the evening your guide can take you for a first walk and dinner in a lively neighbourhood such as Shinjuku, with its tiny bars of Omoide Yokocho, and show you how to use the trains and a Suica card.\n\nSCHEDULE (approximate times)\nAny time – Private airport transfer.\n18:30 – Optional evening walk in Shinjuku.\n\nGOOD TO KNOW\n• Narita is about 1 hour 15 minutes from central Tokyo, Haneda about 30 minutes.\n\nINCLUDED: airport transfer, evening walk with a licensed guide.\nNOT INCLUDED: dinner.\n\nOvernight: hotel in central Tokyo.\nMeals: none.",
@@ -36,35 +36,35 @@
    {"name": "Tokyo: Asakusa and Senso-ji, Meiji Jingu, Harajuku and Shibuya",
     "description": "What to expect: old and new Tokyo with a licensed guide and private car.\n\nYou visit Senso-ji and the Nakamise street in Asakusa, have a sushi lunch, walk through the forest to Meiji Jingu, explore Harajuku and Omotesando and end at the Shibuya scramble crossing at dusk.\n\nSCHEDULE (approximate times)\n09:00 – Asakusa and Senso-ji.\n12:00 – Sushi lunch.\n13:30 – Meiji Jingu.\n14:45 – Harajuku.\n16:00 – Shibuya.\n\nGOOD TO KNOW\n• Your main luggage is collected this evening and forwarded to Kyoto; pack an overnight bag for Hakone.\n\nINCLUDED: private car and driver, licensed guide, lunch.\nNOT INCLUDED: dinner.\n\nOvernight: hotel in central Tokyo.\nMeals: breakfast, lunch.",
     "stops": [
-     {"name": "Senso-ji", "duration": "About 1 hour 45 minutes", "description": "Tokyo's oldest temple.", "image": "Q:Senso-ji Asakusa"},
-     {"name": "Shibuya crossing", "duration": "About 45 minutes", "description": "The famous scramble at dusk.", "image": "Q:Shibuya crossing"}
+     {"name": "Senso-ji", "duration": "About 1 hour 45 minutes", "description": "Tokyo's oldest temple.", "image": "Senso-ji, Asakusa, Tokyo.jpg"},
+     {"name": "Shibuya crossing", "duration": "About 45 minutes", "description": "The famous scramble at dusk.", "image": "Shibuya Crossing, Tokyo, 20240822 0931 5358.jpg"}
     ]},
    {"name": "Mount Fuji and Lake Kawaguchi, then a night in a Hakone ryokan",
     "description": "What to expect: Japan's sacred mountain and a traditional inn with hot springs.\n\nYour driver and guide take you to the Fuji Five Lakes: the Chureito Pagoda viewpoint, Lake Kawaguchi and, in season, the Fifth Station. After a hoto noodle lunch, you continue to Hakone for the Owakudani volcanic valley and Lake Ashi, then check in to your ryokan, change into a yukata, bathe in the hot spring and enjoy a multi-course kaiseki dinner.\n\nSCHEDULE (approximate times)\n07:30 – Departure from Tokyo.\n09:30 – Chureito Pagoda and Lake Kawaguchi.\n12:30 – Lunch.\n14:30 – Owakudani and Lake Ashi.\n16:30 – Check-in at the ryokan.\n18:30 – Kaiseki dinner.\n\nGOOD TO KNOW\n• Mount Fuji is often in cloud; your guide adapts the route to the weather.\n\nINCLUDED: private car and driver, licensed guide, ropeway, lunch, ryokan with dinner.\nNOT INCLUDED: drinks.\n\nOvernight: ryokan in Hakone.\nMeals: breakfast, lunch, dinner.",
     "stops": [
-     {"name": "Lake Kawaguchi", "duration": "About 1 hour", "description": "Fuji reflected in the lake.", "image": "Q:Mount Fuji Lake Kawaguchi"},
+     {"name": "Lake Kawaguchi", "duration": "About 1 hour", "description": "Fuji reflected in the lake.", "image": "Lake Kawaguchi & Mount Fuji, Japan - Sony A7R (11832123266).jpg"},
      {"name": "Hakone ryokan", "duration": "Evening", "description": "Hot springs and kaiseki dinner."}
     ]},
    {"name": "Bullet train to Kyoto: Fushimi Inari, Kiyomizu-dera and Gion",
     "description": "What to expect: the shinkansen and the great sights of eastern Kyoto.\n\nAfter a Japanese breakfast at the ryokan, your driver takes you to Odawara for the bullet train to Kyoto, about two hours. Your Kyoto guide meets you on the platform. After lunch you walk through the torii gates of Fushimi Inari, visit Kiyomizu-dera and the lanes of Sannenzaka, and end in Gion at dusk.\n\nSCHEDULE (approximate times)\n09:00 – Transfer to Odawara.\n10:00 – Bullet train to Kyoto.\n12:00 – Lunch in Kyoto.\n13:30 – Fushimi Inari.\n15:30 – Kiyomizu-dera and the old lanes.\n17:00 – Gion.\n\nGOOD TO KNOW\n• Your luggage is waiting at the Kyoto hotel.\n\nINCLUDED: transfers, bullet train, private car and driver, licensed guide, tickets, lunch.\nNOT INCLUDED: dinner.\n\nOvernight: hotel in central Kyoto.\nMeals: breakfast, lunch.",
     "stops": [
-     {"name": "Fushimi Inari", "duration": "About 1 hour 30 minutes", "description": "Tunnels of red torii.", "image": "Q:Fushimi Inari torii"},
-     {"name": "Gion", "duration": "About 1 hour", "description": "The geisha district at dusk.", "image": "Q:Gion Kyoto street"}
+     {"name": "Fushimi Inari", "duration": "About 1 hour 30 minutes", "description": "Tunnels of red torii.", "image": "Double torii path at Fushimi Inari Taisha Shrine, Kyoto, Japan.jpg"},
+     {"name": "Gion", "duration": "About 1 hour", "description": "The geisha district at dusk.", "image": "Gion Streets, Kyoto, 2024.jpg"}
     ]},
    {"name": "Kyoto: Arashiyama, Tenryu-ji, Kinkaku-ji, Ryoan-ji and Nijo Castle",
     "description": "What to expect: the gardens and temples of western Kyoto.\n\nYou walk through the Arashiyama bamboo grove at sunrise, visit Tenryu-ji and its garden, have a tofu lunch, and see the Golden Pavilion of Kinkaku-ji, the rock garden of Ryoan-ji and the nightingale floors of Nijo Castle.\n\nSCHEDULE (approximate times)\n07:00 – Arashiyama bamboo grove.\n08:30 – Tenryu-ji.\n11:30 – Tofu lunch.\n13:00 – Kinkaku-ji and Ryoan-ji.\n15:00 – Nijo Castle.\n\nGOOD TO KNOW\n• A tea ceremony can be added in the evening.\n\nINCLUDED: private car and driver, licensed guide, tickets, lunch.\nNOT INCLUDED: dinner.\n\nOvernight: hotel in central Kyoto.\nMeals: breakfast, lunch.",
     "stops": [
-     {"name": "Arashiyama bamboo grove", "duration": "About 1 hour", "description": "The bamboo path at sunrise.", "image": "Q:Arashiyama bamboo grove"},
-     {"name": "Kinkaku-ji", "duration": "About 45 minutes", "description": "The Golden Pavilion.", "image": "Q:Kinkaku-ji"}
+     {"name": "Arashiyama bamboo grove", "duration": "About 1 hour", "description": "The bamboo path at sunrise.", "image": "Arashiyama Bamboo Grove (Unsplash).jpg"},
+     {"name": "Kinkaku-ji", "duration": "About 45 minutes", "description": "The Golden Pavilion.", "image": "Water reflection of Kinkaku-ji Temple a sunny day, Kyoto, Japan.jpg"}
     ]},
    {"name": "Nara: Todai-ji, the deer park and Kasuga Taisha",
     "description": "What to expect: Japan's first capital and its sacred deer.\n\nYou drive to Nara to see the bowing deer of Nara Park, the Great Buddha of Todai-ji in its giant wooden hall, the lantern-lined Kasuga Taisha and lunch in Naramachi, returning to Kyoto in the afternoon for free time.\n\nSCHEDULE (approximate times)\n08:00 – Drive to Nara.\n09:00 – Nara Park and Todai-ji.\n10:45 – Kasuga Taisha.\n12:15 – Lunch in Naramachi.\n14:00 – Return to Kyoto, free afternoon.\n\nGOOD TO KNOW\n• Fushimi Sake district or a cooking class can fill the afternoon.\n\nINCLUDED: private car and driver, licensed guide, tickets, lunch.\nNOT INCLUDED: dinner.\n\nOvernight: hotel in central Kyoto.\nMeals: breakfast, lunch.",
-    "stops": [{"name": "Todai-ji", "duration": "About 1 hour 15 minutes", "description": "The Great Buddha.", "image": "Q:Todai-ji Nara"}]},
+    "stops": [{"name": "Todai-ji", "duration": "About 1 hour 15 minutes", "description": "The Great Buddha.", "image": "Tōdai-ji Mar 2025 03.jpg"}]},
    {"name": "Osaka: the castle, Kuromon market, Shinsekai and Dotonbori",
     "description": "What to expect: the city of merchants and food.\n\nYour driver takes you to Osaka, under an hour away. You visit Osaka Castle, taste your way through Kuromon market, eat kushikatsu in Shinsekai and end the day among the neon lights and street food of Dotonbori.\n\nSCHEDULE (approximate times)\n09:30 – Drive to Osaka.\n10:30 – Osaka Castle.\n12:15 – Kuromon market.\n13:45 – Shinsekai.\n16:30 – Dotonbori.\n\nGOOD TO KNOW\n• This evening is your last; a farewell dinner can be arranged.\n\nINCLUDED: private car and driver, licensed guide, castle ticket, food tastings.\nNOT INCLUDED: drinks.\n\nOvernight: hotel in Osaka.\nMeals: breakfast, tastings.",
     "stops": [
-     {"name": "Osaka Castle", "duration": "About 1 hour 30 minutes", "description": "Hideyoshi's fortress.", "image": "Q:Osaka Castle"},
-     {"name": "Dotonbori", "duration": "About 2 hours", "description": "Neon and street food.", "image": "Q:Dotonbori Osaka"}
+     {"name": "Osaka Castle", "duration": "About 1 hour 30 minutes", "description": "Hideyoshi's fortress.", "image": "Osaka castle 11.jpg"},
+     {"name": "Dotonbori", "duration": "About 2 hours", "description": "Neon and street food.", "image": "Dotonbori Neon Sign, Osaka 20190415 1.jpg"}
     ]},
    {"name": "Departure from Osaka",
     "description": "What to expect: a private transfer to the airport.\n\nAfter breakfast you have free time until your driver takes you to Kansai International Airport, about an hour away.\n\nSCHEDULE (approximate times)\nMorning – Free time.\nAs needed – Private transfer to Kansai Airport.\n\nGOOD TO KNOW\n• Extra nights or an extension to Hiroshima can be added.\n\nINCLUDED: airport transfer.\nNOT INCLUDED: lunch.\n\nOvernight: none.\nMeals: breakfast.",
