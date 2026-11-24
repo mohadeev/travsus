@@ -1,0 +1,191 @@
+{
+ "key": "portugal-lisbon-belem-alfama-private-tour",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {
+  "city": "Lisbon",
+  "state": "Lisbon",
+  "country": "Portugal",
+  "countryCode": "PT",
+  "timeZone": "Europe/Lisbon",
+  "streetAddress": "Your hotel in Lisbon",
+  "geoCoordinates": {
+   "lat": 38.7223,
+   "log": -9.1393
+  }
+ },
+ "slug": "/en-US/portugal/lisbon/tours/lisbon-private-tour-belem-tower-jeronimos-monastery-alfama-and-pasteis-de-belem",
+ "tour": {
+  "name": "Lisbon Private Tour: Belém Tower, Jerónimos Monastery, Alfama & Pastéis de Belém",
+  "subtitle": "Lisbon's history and hills in one private day with a licensed guide and vehicle: the Manueline Jerónimos Monastery and Belém Tower, the Monument to the Discoveries, the original custard tarts of Belém, the castle and lanes of Alfama, the Baixa and a ride on tram 28.",
+  "seoTitle": "Lisbon Private Tour: Belém, Jerónimos & Alfama | TRAVSUS",
+  "metaDescription": "Private Lisbon tour with licensed guide and vehicle: the Jerónimos Monastery, Belém Tower, the Monument to the Discoveries, pastéis de Belém, Alfama, São Jorge Castle viewpoints, the Baixa and tram 28.",
+  "tags": [
+   "Lisbon",
+   "Belém Tower",
+   "Jerónimos Monastery",
+   "Alfama",
+   "Tram 28",
+   "Portugal private tour"
+  ],
+  "highlights": [
+   "The Jerónimos Monastery, a masterpiece of Manueline architecture",
+   "The Belém Tower on the Tagus",
+   "The Monument to the Discoveries",
+   "Pastéis de Belém, warm from the oven",
+   "The tiled lanes and viewpoints of Alfama",
+   "A ride on the yellow tram 28",
+   "The Praça do Comércio and the Baixa"
+  ],
+  "duration": 1,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "Lisbon rises on seven hills above the estuary of the Tagus. From its riverside district of Belém, Vasco da Gama sailed for India in 1497, and the wealth of the spice trade paid for the Jerónimos Monastery and the Belém Tower, both UNESCO World Heritage Sites, built in the ornate Manueline style with carved ropes, shells and sea creatures. After the great earthquake of 1755, the Baixa was rebuilt on a grid, while the old Moorish quarter of Alfama survived with its maze of lanes.\n\nThis private day shows Lisbon with a licensed guide and a vehicle, combining the monuments of Belém with walks through the old quarters.\n\nAT A GLANCE\n• Duration: about 8 hours\n• Start and end: your hotel in Lisbon\n• Type: private tour with licensed guide, vehicle and driver\n• Booking: on request – we confirm availability and the final price by email within 24 hours, and you pay only then\n• Level: easy to moderate; hills and cobbles\n\nWHAT YOU SEE\n• The Jerónimos Monastery.\n• The Belém Tower and the Monument to the Discoveries.\n• Alfama and the Miradouro de Santa Luzia.\n• Tram 28.\n• The Baixa and Praça do Comércio.\n\nWHY THIS WORKS\nLisbon is steep; the vehicle takes you up the hills, and you walk downhill through the most beautiful lanes.\n\nWHO IT SUITS\nFirst-time visitors, families, couples and history lovers.\n\nWHO MAY PREFER ANOTHER TOUR\nFor palaces and the coast, choose our Sintra and Cascais day trip.\n\nPRACTICAL INFORMATION\nThe Jerónimos Monastery is closed on Mondays. Lisbon’s cobbles (calçada) are slippery: wear shoes with grip.",
+  "inclusions": {
+   "standard": {
+    "private": [
+     "Pick-up and drop-off at your hotel in Lisbon",
+     "Private vehicle and driver",
+     "Licensed private guide",
+     "Jerónimos Monastery cloister ticket",
+     "Pastéis de Belém tasting",
+     "Tram 28 ticket",
+     "Bottled water"
+    ],
+    "shared": [
+     "Hotel pick-up",
+     "Licensed guide",
+     "Monastery ticket",
+     "Tasting",
+     "Tram ticket"
+    ]
+   }
+  },
+  "pricingTiers": [
+   {
+    "transportType": "Sedan / SUV",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png",
+    "minSeats": 1,
+    "maxSeats": 4,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 390,
+     "pricePerDay": 390
+    }
+   },
+   {
+    "transportType": "Minivan",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png",
+    "minSeats": 5,
+    "maxSeats": 8,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 640,
+     "pricePerDay": 640
+    }
+   },
+   {
+    "transportType": "Mini Bus",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png",
+    "minSeats": 9,
+    "maxSeats": 19,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 1190,
+     "pricePerDay": 1190
+    }
+   }
+  ],
+  "images": [
+   "Q:Belem Tower",
+   "Q:Jeronimos Monastery",
+   "Q:Alfama Lisbon",
+   "Q:Belem Tower#2",
+   "Q:Alfama Lisbon#2"
+  ],
+  "days": [
+   {
+    "name": "Belém, the Jerónimos Monastery, Alfama, tram 28 and the Baixa",
+    "description": "What to expect: Lisbon's Age of Discovery and its old quarters, with a licensed guide, private vehicle, tickets and a tasting.\n\nYour guide and driver collect you at about 9:00 and drive along the river to Belém. In the Jerónimos Monastery, begun in 1501, you walk the two-storey cloister, carved like stone lace, and see the tomb of Vasco da Gama in the church. Nearby, the Monument to the Discoveries shows Henry the Navigator leading the explorers of the 15th and 16th centuries, with a giant compass rose in the pavement, and the Belém Tower, built to guard the river, stands in the water. You taste pastéis de Belém, the custard tarts made to a secret recipe since 1837.\n\nAfter lunch (not included), your driver takes you up to Alfama. From the Miradouro de Santa Luzia and the Portas do Sol, the red roofs and church domes tumble to the river. You walk down through the lanes, past houses covered in azulejo tiles and the Lisbon Cathedral, and ride tram 28 through the narrow streets. You end in the Baixa, at the grand riverside Praça do Comércio and the Rua Augusta Arch.\n\nSCHEDULE (approximate times)\n09:00 – Pick-up at your hotel.\n09:30 – Jerónimos Monastery.\n10:45 – Monument to the Discoveries and Belém Tower.\n11:45 – Pastéis de Belém.\n12:30 – Lunch break.\n14:00 – Alfama viewpoints and lanes.\n15:30 – Tram 28.\n16:15 – Baixa and Praça do Comércio.\n17:00 – Back at your hotel.\n\nGOOD TO KNOW\n• A fado dinner in Alfama can be booked for the evening.\n• Entry to the Belém Tower or São Jorge Castle can be added.\n• Watch out for pickpockets on tram 28.\n\nINCLUDED: private vehicle and driver, licensed guide, monastery ticket, tasting, tram ticket, bottled water, hotel pick-up and drop-off.\nNOT INCLUDED: lunch, other entries, tips.\n\nOvernight: none.\nMeals: tasting.",
+    "stops": [
+     {
+      "name": "Jerónimos Monastery",
+      "duration": "About 1 hour 15 minutes",
+      "description": "The Manueline cloister.",
+      "image": "Q:Jeronimos Monastery"
+     },
+     {
+      "name": "Belém Tower",
+      "duration": "About 45 minutes",
+      "description": "The fortress on the Tagus.",
+      "image": "Q:Belem Tower"
+     },
+     {
+      "name": "Alfama",
+      "duration": "About 1 hour 30 minutes",
+      "description": "Viewpoints, lanes and tiles.",
+      "image": "Q:Alfama Lisbon"
+     },
+     {
+      "name": "Baixa",
+      "duration": "About 45 minutes",
+      "description": "The rebuilt grid and the great square."
+     }
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "question": "How does booking on request work?",
+    "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability and the final price by email within 24 hours, and you pay online only when the tour is confirmed."
+   },
+   {
+    "question": "Are the tickets included?",
+    "answer": "Yes, the Jerónimos cloister and tram 28, plus a pastéis de Belém tasting."
+   },
+   {
+    "question": "Is lunch included?",
+    "answer": "No. Your guide suggests a tasca or a restaurant at the Time Out Market."
+   },
+   {
+    "question": "Is it suitable for children?",
+    "answer": "Yes. Children love the tram and the tarts. Child seats are provided free of charge on request."
+   },
+   {
+    "question": "Is it suitable for people with limited mobility?",
+    "answer": "Partly. Alfama is steep and cobbled; the vehicle can drive you between viewpoints."
+   },
+   {
+    "question": "Can we hear fado?",
+    "answer": "Yes, at a fado house in Alfama in the evening, on request."
+   },
+   {
+    "question": "Does the tour run on Mondays?",
+    "answer": "Yes, but the monastery is closed; we visit the MAAT or the Coaches Museum instead."
+   },
+   {
+    "question": "Can we add the castle?",
+    "answer": "Yes, São Jorge Castle can be added."
+   },
+   {
+    "question": "Will we be taken to shops?",
+    "answer": "No. There are no commission stops."
+   },
+   {
+    "question": "What should we wear?",
+    "answer": "Comfortable shoes with grip, light layers and sun protection."
+   },
+   {
+    "question": "What is the best time of year?",
+    "answer": "March to June and September to October. Summer is hot and busy."
+   },
+   {
+    "question": "Should we tip?",
+    "answer": "Tipping is not obligatory in Portugal, but rounding up or leaving 5 to 10 percent for a guide or driver you were happy with is appreciated."
+   },
+   {
+    "question": "What is the cancellation policy?",
+    "answer": "You can cancel free of charge up to 24 hours before the tour. Until your request is confirmed, nothing is charged at all."
+   }
+  ]
+ }
+}

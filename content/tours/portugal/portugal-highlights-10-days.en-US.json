@@ -1,0 +1,288 @@
+{
+ "key": "portugal-portugal-highlights-10-days",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {
+  "city": "Lisbon",
+  "state": "Lisbon",
+  "country": "Portugal",
+  "countryCode": "PT",
+  "timeZone": "Europe/Lisbon",
+  "streetAddress": "Lisbon airport or your hotel in Lisbon",
+  "geoCoordinates": {
+   "lat": 38.7223,
+   "log": -9.1393
+  }
+ },
+ "slug": "/en-US/portugal/lisbon/tours/portugal-highlights-10-day-private-tour-lisbon-sintra-evora-the-algarve-obidos-coimbra-porto-and-the-douro",
+ "tour": {
+  "name": "Portugal Highlights 10-Day Private Tour: Lisbon, Sintra, Évora, the Algarve, Óbidos, Coimbra, Porto & the Douro",
+  "subtitle": "Ten days across Portugal with private guides and a vehicle: Lisbon and Sintra, Évora and the Alentejo, the cliffs and caves of the Algarve, Óbidos, Nazaré and Coimbra, Porto and its port cellars, and the vineyards of the Douro Valley.",
+  "seoTitle": "Portugal Highlights 10-Day Private Tour | TRAVSUS",
+  "metaDescription": "10-day private Portugal tour: Lisbon, Sintra, Évora, the Algarve with Benagil, Óbidos, Nazaré, Coimbra, Porto and the Douro Valley. Private guides, vehicle, tickets and 9 nights with breakfast.",
+  "tags": [
+   "Portugal tour",
+   "Lisbon",
+   "Porto",
+   "Algarve",
+   "Douro Valley",
+   "Portugal 10 days"
+  ],
+  "highlights": [
+   "Belém, Alfama and the viewpoints of Lisbon",
+   "The palaces of Sintra",
+   "Évora and the Alentejo",
+   "The Benagil cave and the Algarve cliffs",
+   "Óbidos, Nazaré and the University of Coimbra",
+   "Porto, its port cellars and the Ribeira",
+   "A day in the Douro Valley vineyards"
+  ],
+  "duration": 10,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "Portugal is compact enough to see in depth in ten days. This private tour travels by road from Lisbon south to the Algarve and back north to Porto and the Douro, with private guides for each region and a driver throughout.\n\nYou see the monuments of the Age of Discovery, Sintra's palaces, the Roman and medieval Alentejo, the golden cliffs of the south, the heartland of Óbidos, Nazaré and Coimbra, and the wines and city of Porto, with nine nights in well-located hotels.\n\nAT A GLANCE\n• Duration: 10 days, 9 nights\n• Start: Lisbon airport or your hotel\n• End: Porto airport or your hotel\n• Type: private tour with licensed guides, private vehicle and driver; 9 nights with breakfast\n• Booking: on request – we confirm availability, hotels and the final price by email within 24 hours, and you pay only then\n• Level: easy to moderate\n\nWHAT YOU SEE\n• Lisbon and Sintra.\n• Évora.\n• The Algarve.\n• Óbidos, Nazaré and Coimbra.\n• Porto and the Douro Valley.\n\nWHY THIS WORKS\nTravelling by private vehicle lets you link regions with stops on the way, without changing trains or carrying luggage.\n\nWHO IT SUITS\nFirst-time visitors, couples, families and small groups.\n\nWHO MAY PREFER ANOTHER TOUR\nAdd Madeira or the Azores with a short flight.\n\nPRACTICAL INFORMATION\nPortugal is in the Schengen area. Summer is hot in the south and inland; spring and autumn are ideal.",
+  "inclusions": {
+   "standard": {
+    "private": [
+     "Private airport transfers",
+     "Private vehicle and driver throughout",
+     "Licensed private guides for all guided days",
+     "9 nights with breakfast in 4-star or boutique hotels (3 in Lisbon, 2 in the Algarve, 1 in Coimbra or Óbidos, 3 in Porto)",
+     "Entrance tickets, boat trips and tastings in the programme",
+     "Lunch at a Douro quinta",
+     "Bottled water"
+    ],
+    "shared": [
+     "Airport transfers",
+     "Private vehicle",
+     "Guides",
+     "9 nights with breakfast",
+     "Entrances and tastings"
+    ]
+   }
+  },
+  "pricingTiers": [
+   {
+    "transportType": "Sedan / SUV",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png",
+    "minSeats": 1,
+    "maxSeats": 4,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 6900,
+     "pricePerDay": 690
+    }
+   },
+   {
+    "transportType": "Minivan",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png",
+    "minSeats": 5,
+    "maxSeats": 8,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 11900,
+     "pricePerDay": 1190
+    }
+   },
+   {
+    "transportType": "Mini Bus",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png",
+    "minSeats": 9,
+    "maxSeats": 19,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 21900,
+     "pricePerDay": 2190
+    }
+   }
+  ],
+  "images": [
+   "Q:Belem Tower",
+   "Q:Pena Palace Sintra",
+   "Q:Benagil cave",
+   "Q:Ribeira Porto",
+   "Q:Douro Valley vineyards"
+  ],
+  "days": [
+   {
+    "name": "Arrival in Lisbon",
+    "description": "What to expect: a private welcome.\n\nYour driver meets you at the airport and takes you to your hotel. In the evening, walk to a miradouro for the sunset over the city.\n\nSCHEDULE (approximate times)\nAny time – Airport transfer.\n\nGOOD TO KNOW\n• A fado dinner can be booked.\n\nINCLUDED: airport transfer.\nNOT INCLUDED: dinner.\n\nOvernight: hotel in Lisbon.\nMeals: none.",
+    "stops": [
+     {
+      "name": "Lisbon",
+      "duration": "Free time",
+      "description": "Sunset from a viewpoint.",
+      "image": "Q:Alfama Lisbon"
+     }
+    ]
+   },
+   {
+    "name": "Lisbon: Belém, Alfama and tram 28",
+    "description": "What to expect: Lisbon's highlights.\n\nThe Jerónimos Monastery, the Belém Tower, pastéis de Belém, the viewpoints and lanes of Alfama, tram 28 and the Baixa.\n\nSCHEDULE (approximate times)\n09:00 – Belém.\n14:00 – Alfama.\n16:15 – Baixa.\n\nGOOD TO KNOW\n• Wear shoes with grip.\n\nINCLUDED: vehicle, guide, tickets, tasting.\nNOT INCLUDED: lunch.\n\nOvernight: hotel in Lisbon.\nMeals: breakfast.",
+    "stops": [
+     {
+      "name": "Jerónimos Monastery",
+      "duration": "About 1 hour 15 minutes",
+      "description": "The Manueline cloister.",
+      "image": "Q:Jeronimos Monastery"
+     }
+    ]
+   },
+   {
+    "name": "Sintra and Cascais",
+    "description": "What to expect: palaces and the coast.\n\nPena Palace, the Quinta da Regaleira, Sintra old town, Cabo da Roca and Cascais.\n\nSCHEDULE (approximate times)\n08:30 – Pena Palace.\n12:15 – Regaleira.\n15:00 – Cabo da Roca and Cascais.\n\nGOOD TO KNOW\n• Bring a jacket.\n\nINCLUDED: vehicle, guide, tickets.\nNOT INCLUDED: lunch.\n\nOvernight: hotel in Lisbon.\nMeals: breakfast.",
+    "stops": [
+     {
+      "name": "Pena Palace",
+      "duration": "About 2 hours",
+      "description": "The romantic palace.",
+      "image": "Q:Pena Palace Sintra"
+     }
+    ]
+   },
+   {
+    "name": "Évora and on to the Algarve",
+    "description": "What to expect: the Alentejo on the way south.\n\nYou visit Évora – the Roman temple, the cathedral and the Chapel of Bones – and drive on through the Alentejo to the Algarve.\n\nSCHEDULE (approximate times)\n08:30 – Departure.\n10:00 – Évora.\n13:00 – Lunch.\n17:00 – Arrival in the Algarve.\n\nGOOD TO KNOW\n• The Almendres Cromlech can be added.\n\nINCLUDED: vehicle, guide, entrances.\nNOT INCLUDED: lunch.\n\nOvernight: hotel in the Algarve.\nMeals: breakfast.",
+    "stops": [
+     {
+      "name": "Évora",
+      "duration": "About 2 hours 30 minutes",
+      "description": "The Roman temple.",
+      "image": "Q:Evora Roman Temple"
+     }
+    ]
+   },
+   {
+    "name": "The Algarve: Benagil, Lagos and Sagres",
+    "description": "What to expect: cliffs, caves and capes.\n\nA boat to the Benagil cave, the Seven Hanging Valleys, Lagos, Ponta da Piedade and sunset at Cape St Vincent.\n\nSCHEDULE (approximate times)\n08:30 – Benagil.\n12:30 – Lagos.\n14:30 – Ponta da Piedade.\nSunset – Cape St Vincent.\n\nGOOD TO KNOW\n• Bring swimwear.\n\nINCLUDED: vehicle, guide, boat trips.\nNOT INCLUDED: lunch.\n\nOvernight: hotel in the Algarve.\nMeals: breakfast.",
+    "stops": [
+     {
+      "name": "Benagil cave",
+      "duration": "About 1 hour",
+      "description": "The sunlit dome.",
+      "image": "Q:Benagil cave"
+     }
+    ]
+   },
+   {
+    "name": "North to Óbidos and Nazaré",
+    "description": "What to expect: the heartland.\n\nA long drive north with a stop in Nazaré and its clifftop, ending in the walled village of Óbidos for the night.\n\nSCHEDULE (approximate times)\n09:00 – Departure.\n14:00 – Nazaré.\n17:00 – Óbidos.\n\nGOOD TO KNOW\n• Try ginjinha in a chocolate cup.\n\nINCLUDED: vehicle, guide.\nNOT INCLUDED: lunch, dinner.\n\nOvernight: hotel in Óbidos.\nMeals: breakfast.",
+    "stops": [
+     {
+      "name": "Nazaré",
+      "duration": "About 1 hour 30 minutes",
+      "description": "The fishing town.",
+      "image": "Q:Nazare Portugal"
+     },
+     {
+      "name": "Óbidos",
+      "duration": "Evening",
+      "description": "The walled village.",
+      "image": "Q:Obidos Portugal"
+     }
+    ]
+   },
+   {
+    "name": "Batalha, Coimbra and Porto",
+    "description": "What to expect: a Gothic monastery and the university city.\n\nThe Batalha Monastery, the University of Coimbra and the Joanina Library, then the drive to Porto.\n\nSCHEDULE (approximate times)\n09:00 – Batalha.\n11:30 – Coimbra University.\n16:30 – Arrival in Porto.\n\nGOOD TO KNOW\n• No photos inside the Joanina Library.\n\nINCLUDED: vehicle, guide, tickets.\nNOT INCLUDED: lunch.\n\nOvernight: hotel in Porto.\nMeals: breakfast.",
+    "stops": [
+     {
+      "name": "University of Coimbra",
+      "duration": "About 2 hours",
+      "description": "The Joanina Library.",
+      "image": "Q:University of Coimbra"
+     }
+    ]
+   },
+   {
+    "name": "Porto",
+    "description": "What to expect: the city's tiles, riverside and port cellars.\n\nSão Bento station, the cathedral, Livraria Lello, Ribeira, the Dom Luís I bridge, a port cellar tasting and a six-bridges cruise.\n\nSCHEDULE (approximate times)\n09:30 – São Bento.\n14:00 – Ribeira.\n15:15 – Port cellar.\n16:30 – Cruise.\n\nGOOD TO KNOW\n• Try a francesinha.\n\nINCLUDED: guide, tickets, tasting, cruise.\nNOT INCLUDED: lunch.\n\nOvernight: hotel in Porto.\nMeals: breakfast.",
+    "stops": [
+     {
+      "name": "Ribeira",
+      "duration": "About 1 hour",
+      "description": "The riverside.",
+      "image": "Q:Ribeira Porto"
+     }
+    ]
+   },
+   {
+    "name": "The Douro Valley",
+    "description": "What to expect: a day in the vineyards.\n\nTwo quintas with tastings, lunch at a vineyard, Pinhão station and a boat trip on the Douro.\n\nSCHEDULE (approximate times)\n08:30 – Departure.\n10:45 – First quinta.\n12:45 – Lunch.\n15:00 – Boat trip.\n18:30 – Back in Porto.\n\nGOOD TO KNOW\n• September is harvest season.\n\nINCLUDED: vehicle, guide, tastings, lunch, boat.\nNOT INCLUDED: dinner.\n\nOvernight: hotel in Porto.\nMeals: breakfast, lunch.",
+    "stops": [
+     {
+      "name": "Douro Valley",
+      "duration": "Full day",
+      "description": "Terraced vineyards.",
+      "image": "Q:Douro Valley vineyards"
+     }
+    ]
+   },
+   {
+    "name": "Departure from Porto",
+    "description": "What to expect: a private transfer.\n\nAfter breakfast, your driver takes you to Porto airport.\n\nSCHEDULE (approximate times)\nAs needed – Airport transfer.\n\nGOOD TO KNOW\n• Porto airport is about 30 minutes from the centre.\n\nINCLUDED: airport transfer.\nNOT INCLUDED: lunch.\n\nOvernight: none.\nMeals: breakfast.",
+    "stops": [
+     {
+      "name": "Porto",
+      "duration": "Free time",
+      "description": "A last walk by the river.",
+      "image": "Q:Ribeira Porto"
+     }
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "question": "How does booking on request work?",
+    "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability, hotels and the final price by email within 24 hours, and you pay online only when the tour is confirmed."
+   },
+   {
+    "question": "Do we change vehicles?",
+    "answer": "No. One private driver accompanies you throughout, with local guides in each region."
+   },
+   {
+    "question": "Can the route be reversed?",
+    "answer": "Yes, starting in Porto and ending in Lisbon."
+   },
+   {
+    "question": "What kind of hotels are used?",
+    "answer": "Comfortable 4-star or boutique hotels, including a pousada or quinta where possible."
+   },
+   {
+    "question": "Can we add Madeira or the Azores?",
+    "answer": "Yes, with a short flight."
+   },
+   {
+    "question": "Is it suitable for children?",
+    "answer": "Yes. We book family rooms and adapt the pace."
+   },
+   {
+    "question": "Is it suitable for people with limited mobility?",
+    "answer": "Largely. Tell us your needs and we will adapt the walking."
+   },
+   {
+    "question": "Are meals included?",
+    "answer": "Breakfast daily and lunch in the Douro; your guides suggest restaurants."
+   },
+   {
+    "question": "Do we need a visa?",
+    "answer": "Portugal is in the Schengen area; check the rules for your nationality."
+   },
+   {
+    "question": "What should we wear?",
+    "answer": "Comfortable shoes with grip, layers, swimwear and sun protection."
+   },
+   {
+    "question": "What is the best time of year?",
+    "answer": "March to June and September to October."
+   },
+   {
+    "question": "Should we tip?",
+    "answer": "Tipping is not obligatory in Portugal, but rounding up or leaving 5 to 10 percent for a guide or driver you were happy with is appreciated."
+   },
+   {
+    "question": "What is the cancellation policy?",
+    "answer": "You can cancel free of charge up to 30 days before the tour starts. Until your request is confirmed, nothing is charged at all."
+   }
+  ]
+ }
+}
