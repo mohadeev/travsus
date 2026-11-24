@@ -94,11 +94,11 @@
    }
   ],
   "images": [
-   "Q:Padang Padang beach",
-   "Q:Melasti beach",
-   "Q:Garuda Wisnu Kencana",
-   "Q:Padang Padang beach#2",
-   "Q:Melasti beach#2"
+   "Padang Padang Beach Bali.jpg",
+   "Melasti Beach coast.jpg",
+   "Garuda Wisnu Kencana Cultural Park 1.jpg",
+   "Melasti Beach side view.jpg",
+   "Melasti Beach east view 2.jpg"
   ],
   "days": [
    {
@@ -109,19 +109,19 @@
       "name": "Garuda Wisnu Kencana",
       "duration": "About 1 hour",
       "description": "The giant statue of Vishnu and Garuda.",
-      "image": "Q:Garuda Wisnu Kencana"
+      "image": "Garuda Wisnu Kencana Cultural Park 1.jpg"
      },
      {
       "name": "Melasti beach",
       "duration": "About 1 hour 30 minutes",
       "description": "White sand below carved cliffs.",
-      "image": "Q:Melasti beach"
+      "image": "Melasti Beach coast.jpg"
      },
      {
       "name": "Padang Padang",
       "duration": "About 1 hour 30 minutes",
       "description": "A cove reached through the rocks.",
-      "image": "Q:Padang Padang beach"
+      "image": "Padang Padang Beach Bali.jpg"
      },
      {
       "name": "Nyang Nyang",
