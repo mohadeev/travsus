@@ -1,0 +1,58 @@
+{
+ "key": "peru-machu-picchu-private-day-trip-from-cusco",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {"city": "Machu Picchu", "state": "Cusco", "country": "Peru", "countryCode": "PE", "timeZone": "America/Lima", "streetAddress": "Your hotel in Cusco or the Sacred Valley", "geoCoordinates": {"lat": -13.1631, "log": -72.545}},
+ "slug": "/en-US/peru/machu-picchu/tours/machu-picchu-private-day-trip-from-cusco-by-train-with-licensed-guide",
+ "tour": {
+  "name": "Machu Picchu Private Day Trip from Cusco by Train, with a Licensed Guide",
+  "subtitle": "A private day to the lost city of the Incas: a car to Ollantaytambo, the panoramic train along the Urubamba river, the bus up to the citadel, a guided visit of Machu Picchu with timed tickets, lunch in Aguas Calientes and the train and car back to Cusco.",
+  "seoTitle": "Machu Picchu Private Day Trip from Cusco by Train | TRAVSUS",
+  "metaDescription": "Private Machu Picchu day trip from Cusco: car to Ollantaytambo, Vistadome train, Consettur bus, timed entry and a licensed private guide at Machu Picchu, lunch in Aguas Calientes and return to Cusco.",
+  "tags": ["Machu Picchu tour", "Cusco day trip", "Vistadome train", "Inca", "Aguas Calientes", "Peru private tour"],
+  "highlights": [
+   "Machu Picchu, the 15th-century citadel of the Inca emperor Pachacuti",
+   "Timed entry tickets and a licensed private guide",
+   "The classic view from the Guardhouse over the citadel and Huayna Picchu",
+   "The Temple of the Sun, the Intihuatana and the Temple of the Condor",
+   "The Vistadome train along the Urubamba river gorge",
+   "Lunch in Aguas Calientes",
+   "Hotel pick-up in Cusco or the Sacred Valley"
+  ],
+  "duration": 1,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "Machu Picchu was built around 1450 on a ridge between two peaks above the Urubamba river, probably as a royal estate of the Inca emperor Pachacuti. It was abandoned at the time of the Spanish conquest, never found by the Spaniards, and brought to world attention by Hiram Bingham in 1911. Its temples, terraces and houses, built of granite blocks fitted without mortar, sit in a landscape of cloud forest and sharp green peaks. The Historic Sanctuary of Machu Picchu has been a UNESCO World Heritage Site since 1983.\n\nThis private day takes you from Cusco to Machu Picchu and back with a car, the panoramic train and a licensed private guide at the site, with all tickets booked in advance. You follow one of the official circuits through the citadel, learning how the Incas built it and what each sector was for, and have lunch in Aguas Calientes before the train back.\n\nAT A GLANCE\n• Duration: about 15 hours\n• Start and end: your hotel in Cusco or the Sacred Valley\n• Type: private car, panoramic train, bus, licensed private guide at the site\n• Booking: on request – we confirm availability of tickets and trains and the final price by email within 24 hours, and you pay only then\n• Level: moderate; Machu Picchu is at 2,430 metres, with many stone steps\n\nWHAT YOU SEE\n• The Sacred Valley at dawn and the Urubamba gorge by train.\n• The Guardhouse viewpoint.\n• The Temple of the Sun, the Main Temple and the Intihuatana.\n• The agricultural terraces and the urban sector.\n• The Temple of the Condor.\n\nWHY THIS WORKS\nTickets for Machu Picchu and the trains sell out weeks or months ahead; we secure them with your booking and plan the day so you never wait.\n\nWHO IT SUITS\nAnyone visiting Cusco who wants to see Machu Picchu in one day without stress.\n\nWHO MAY PREFER ANOTHER TOUR\nIf you have time, spend a night in Aguas Calientes to visit at sunrise or climb Huayna Picchu, or hike the Inca Trail.\n\nPRACTICAL INFORMATION\nEntry is by timed ticket on a fixed circuit, with your passport. Only small bags are allowed, and there are no toilets inside the site. Acclimatise to the altitude in Cusco or the Sacred Valley for at least a day first.",
+  "inclusions": {"standard": {"private": ["Pick-up and drop-off at your hotel in Cusco or the Sacred Valley", "Private car and driver to and from Ollantaytambo", "Return Vistadome train tickets Ollantaytambo–Aguas Calientes", "Return bus tickets Aguas Calientes–Machu Picchu", "Machu Picchu timed entry tickets", "Licensed private guide at Machu Picchu", "Lunch in Aguas Calientes", "Bottled water"], "shared": ["Hotel pick-up", "Train", "Bus", "Entry tickets", "Licensed guide", "Lunch"]}},
+  "pricingTiers": [
+   {"transportType": "Sedan / SUV", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png", "minSeats": 1, "maxSeats": 4, "pricing": {"currency": "EUR", "totalPrice": 1490, "pricePerDay": 1490}},
+   {"transportType": "Minivan", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png", "minSeats": 5, "maxSeats": 8, "pricing": {"currency": "EUR", "totalPrice": 2790, "pricePerDay": 2790}},
+   {"transportType": "Mini Bus", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png", "minSeats": 9, "maxSeats": 19, "pricing": {"currency": "EUR", "totalPrice": 5990, "pricePerDay": 5990}}
+  ],
+  "images": ["Q:Machu Picchu", "Q:Huayna Picchu", "Q:Machu Picchu#2", "Q:Machu Picchu#3", "Q:Ollantaytambo"],
+  "days": [
+   {"name": "Car to Ollantaytambo, train along the Urubamba, Machu Picchu with a private guide, lunch and return to Cusco",
+    "description": "What to expect: the lost city of the Incas in one well-organised day, with private transfers, the panoramic train, the bus, timed tickets, a licensed private guide and lunch.\n\nYour driver collects you at your hotel in Cusco at about 4:30 and drives you across the high plateau and down into the Sacred Valley to Ollantaytambo, about 1 hour 45 minutes. You board the Vistadome train, whose large windows and roof panels show the valley narrowing into the gorge of the Urubamba, the snow-capped peak of Veronica and the cloud forest. After about 1 hour 30 minutes you arrive in Aguas Calientes, the village at the foot of Machu Picchu, where your guide meets you and takes you to the bus that zigzags up to the citadel in about 25 minutes.\n\nWith your timed tickets, you enter Machu Picchu along the official circuit. You start at the Guardhouse viewpoint, above the agricultural terraces, for the classic view of the city spread along the ridge with the peak of Huayna Picchu behind. Your guide explains how the Incas levelled the ridge, drained it with layers of stone and gravel and built some 200 structures. You walk down through the urban sector, see the Temple of the Sun, a curved tower of perfectly fitted stones aligned with the June solstice, the Main Temple and the Temple of the Three Windows, the Intihuatana, a carved stone used to track the sun, and the Temple of the Condor, a natural rock shaped into the wings of the sacred bird. Llamas graze on the terraces.\n\nYou take the bus back down to Aguas Calientes for lunch, with time to browse the market, then catch the afternoon train to Ollantaytambo, where your driver takes you back to your hotel in Cusco, arriving at about 20:30.\n\nSCHEDULE (approximate times)\n04:30 – Pick-up at your hotel in Cusco.\n06:10 – Vistadome train from Ollantaytambo.\n07:40 – Arrival in Aguas Calientes, bus to Machu Picchu.\n08:30 – Guided visit of Machu Picchu (about 2 hours 30 minutes).\n11:30 – Bus down and lunch in Aguas Calientes.\n14:30 – Train back to Ollantaytambo.\n16:00 – Drive back to Cusco.\n18:00 – Back at your hotel (later with afternoon trains).\n\nGOOD TO KNOW\n• Train and entry times depend on availability; we confirm the exact schedule with your booking.\n• Huayna Picchu or Machu Picchu mountain can be added with separate tickets that sell out early.\n• Re-entry is not allowed once you leave the site.\n\nINCLUDED: private transfers, Vistadome train, bus, entry tickets, licensed private guide, lunch, bottled water.\nNOT INCLUDED: Huayna Picchu or mountain tickets, drinks with lunch, tips.\n\nOvernight: none.\nMeals: lunch.",
+    "stops": [
+     {"name": "Ollantaytambo station", "duration": "About 30 minutes", "description": "Board the panoramic train."},
+     {"name": "Urubamba gorge", "duration": "About 1 hour 30 minutes", "description": "The train ride through the gorge."},
+     {"name": "Machu Picchu", "duration": "About 2 hours 30 minutes", "description": "The Inca citadel with your private guide.", "image": "Q:Machu Picchu"},
+     {"name": "Aguas Calientes", "duration": "About 2 hours", "description": "Lunch at the foot of the mountain."}
+    ]}
+  ],
+  "faq": [
+   {"question": "How does booking on request work?", "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm the availability of tickets and trains and the final price by email within 24 hours, and you pay online only when the tour is confirmed."},
+   {"question": "How far in advance should we book?", "answer": "As early as possible: Machu Picchu tickets are limited by day and circuit, and from May to September they often sell out weeks ahead."},
+   {"question": "Do we need our passports?", "answer": "Yes. Tickets are personal and checked against your passport at the entrance and on the train."},
+   {"question": "Are all tickets included?", "answer": "Yes: train, bus, Machu Picchu entry and the licensed private guide, plus lunch."},
+   {"question": "Can we climb Huayna Picchu?", "answer": "Yes, with a separate ticket that must be booked early. The climb is steep and takes about 1 hour each way."},
+   {"question": "Will the altitude be a problem?", "answer": "Machu Picchu is lower than Cusco, at 2,430 metres. Spend a day or two in Cusco or the Sacred Valley to acclimatise first."},
+   {"question": "Is it suitable for children?", "answer": "Yes, for children who can walk a few hours on steps. They love the llamas and the train."},
+   {"question": "Is it suitable for people with limited mobility?", "answer": "Partly. The site has many uneven stone steps and no lifts; a shorter circuit can be chosen. Tell us your needs."},
+   {"question": "Can we stay overnight?", "answer": "Yes. A night in Aguas Calientes allows a sunrise visit or a second circuit. We can book a hotel."},
+   {"question": "Should we tip?", "answer": "Tips are appreciated in Peru but never required."},
+   {"question": "What should we wear?", "answer": "Layers, a rain jacket, sun protection, insect repellent and comfortable walking shoes. Only small bags are allowed in the site."},
+   {"question": "What is the best time of year?", "answer": "April to October is the dry season. The rainy season, from November to March, is greener and quieter; the Inca Trail closes in February."},
+   {"question": "What is the cancellation policy?", "answer": "Train and Machu Picchu tickets are non-refundable once issued, so you can cancel free of charge only until we buy them, within 48 hours of confirmation. Until your request is confirmed, nothing is charged at all."}
+  ]
+ }
+}
