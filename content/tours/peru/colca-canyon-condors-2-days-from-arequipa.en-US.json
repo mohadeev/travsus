@@ -1,0 +1,63 @@
+{
+ "key": "peru-colca-canyon-condors-2-days-from-arequipa",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {"city": "Chivay", "state": "Arequipa", "country": "Peru", "countryCode": "PE", "timeZone": "America/Lima", "streetAddress": "Your hotel in Arequipa", "geoCoordinates": {"lat": -15.6386, "log": -71.6019}},
+ "slug": "/en-US/peru/chivay/tours/colca-canyon-private-2-day-tour-from-arequipa-condors-hot-springs-and-andean-villages",
+ "tour": {
+  "name": "Colca Canyon Private 2-Day Tour from Arequipa: Condors, Hot Springs & Andean Villages",
+  "subtitle": "Two days in one of the deepest canyons on Earth with a licensed guide and car: the vicuñas of the Salinas reserve, the Patapampa pass at 4,900 metres, the pre-Inca terraces and colonial villages of the Colca valley, the hot springs of La Calera, and the Andean condors gliding at the Cruz del Cóndor at dawn.",
+  "seoTitle": "Colca Canyon 2-Day Private Tour: Condors & Hot Springs | TRAVSUS",
+  "metaDescription": "Private 2-day Colca Canyon tour from Arequipa with licensed guide and car: vicuñas, the Patapampa pass, Chivay, La Calera hot springs, a night in the valley, Andean condors at Cruz del Cóndor and colonial villages.",
+  "tags": ["Colca Canyon", "Andean condor", "Arequipa", "Hot springs", "Vicuñas", "Peru private tour"],
+  "highlights": [
+   "Andean condors gliding on the morning thermals at the Cruz del Cóndor",
+   "The Colca Canyon, more than twice as deep as the Grand Canyon",
+   "Wild vicuñas in the Salinas y Aguada Blanca reserve",
+   "The Patapampa pass and its view of seven volcanoes",
+   "Pre-Inca agricultural terraces still farmed today",
+   "The hot springs of La Calera",
+   "Colonial churches and the embroidered dress of the Collagua and Cabana peoples"
+  ],
+  "duration": 2,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "North of Arequipa, the Colca river has cut a canyon more than 3,000 metres deep between the volcanoes of southern Peru, one of the deepest on Earth. Its valley has been farmed for at least 1,500 years on terraces built by the Collagua and Cabana peoples, whose descendants still wear distinctive embroidered hats and clothes. At its deepest point, Andean condors, with wingspans of up to three metres, rise on the morning air currents close above the heads of watchers.\n\nThis private two-day trip takes you from Arequipa across the high plateau, with its vicuñas and volcanoes, to the Colca valley, with a licensed guide and a car. You soak in hot springs, spend the night in the valley, and watch the condors at dawn before returning through the villages to Arequipa.\n\nAT A GLANCE\n• Duration: 2 days, 1 night\n• Start and end: your hotel in Arequipa\n• Type: private tour with licensed guide, car and driver; 1 night in a lodge with breakfast\n• Booking: on request – we confirm availability and the final price by email within 24 hours, and you pay only then\n• Level: easy to moderate; high altitude, up to 4,900 metres\n\nWHAT YOU SEE\n• The Salinas y Aguada Blanca reserve and its vicuñas.\n• The Patapampa pass.\n• Chivay and the La Calera hot springs.\n• The Cruz del Cóndor viewpoint.\n• The villages of Yanque, Maca and Pinchollo.\n\nWHY THIS WORKS\nSpending the night in the valley lets you reach the Cruz del Cóndor early, when the condors fly, without the 3 a.m. start of one-day tours.\n\nWHO IT SUITS\nNature and bird lovers, photographers and families.\n\nWHO MAY PREFER ANOTHER TOUR\nIf you want to hike, ask us about a two- or three-day trek down into the canyon.\n\nPRACTICAL INFORMATION\nThe Patapampa pass is at 4,900 metres: acclimatise in Arequipa (2,335 metres) or Cusco first. Condor sightings are most reliable from May to December.",
+  "inclusions": {"standard": {"private": ["Pick-up and drop-off at your hotel in Arequipa", "Private car and driver", "Licensed private guide", "1 night in a lodge in the Colca valley with breakfast", "Colca tourist ticket", "La Calera hot springs entrance", "Lunch on both days and dinner on day 1", "Bottled water and coca tea"], "shared": ["Hotel pick-up", "Licensed guide", "1 night with breakfast", "Entrance fees", "Meals"]}},
+  "pricingTiers": [
+   {"transportType": "Sedan / SUV", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png", "minSeats": 1, "maxSeats": 4, "pricing": {"currency": "EUR", "totalPrice": 890, "pricePerDay": 445}},
+   {"transportType": "Minivan", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png", "minSeats": 5, "maxSeats": 8, "pricing": {"currency": "EUR", "totalPrice": 1490, "pricePerDay": 745}},
+   {"transportType": "Mini Bus", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png", "minSeats": 9, "maxSeats": 19, "pricing": {"currency": "EUR", "totalPrice": 2790, "pricePerDay": 1395}}
+  ],
+  "images": ["Q:Colca Canyon condor", "Q:Colca Canyon condor#2", "Q:Colca Canyon condor#3", "Q:Arequipa Santa Catalina Monastery", "Q:Colca Canyon condor#4"],
+  "days": [
+   {"name": "Arequipa to the Colca valley: vicuñas, the Patapampa pass, Chivay and the hot springs",
+    "description": "What to expect: the high plateau and the Colca valley, with a private guide and car, entrance, hot springs and meals.\n\nYour guide and driver collect you at your hotel in Arequipa at about 8:00 and drive north, past the volcano El Misti, onto the plateau of the Salinas y Aguada Blanca national reserve. Herds of wild vicuñas, the delicate relatives of the llama whose wool is the finest in the world, graze among the grasses, along with alpacas and llamas. You stop for coca tea to help with the altitude, then climb to the Patapampa pass at 4,900 metres, where travellers have built hundreds of small stone cairns and where, on clear days, you see a line of volcanoes: Ampato, where the frozen Inca girl 'Juanita' was found in 1995, Sabancaya, often smoking, and others.\n\nYou descend into the Colca valley to Chivay, its main town, for lunch. In the afternoon you relax in the La Calera hot springs, open-air pools of thermal water by the river, and check in to your lodge in the valley. Dinner is at the lodge.\n\nSCHEDULE (approximate times)\n08:00 – Pick-up in Arequipa.\n10:00 – Salinas y Aguada Blanca reserve.\n11:30 – Patapampa pass.\n13:00 – Lunch in Chivay.\n15:00 – La Calera hot springs.\n17:00 – Check-in at your lodge.\n19:00 – Dinner.\n\nGOOD TO KNOW\n• Drink plenty of water and take it slowly at the pass.\n\nINCLUDED: transfers, guide, tourist ticket, hot springs, lunch and dinner.\nNOT INCLUDED: drinks.\n\nOvernight: lodge in the Colca valley.\nMeals: lunch, dinner.",
+    "stops": [
+     {"name": "Salinas y Aguada Blanca reserve", "duration": "About 45 minutes", "description": "Vicuñas on the high plateau."},
+     {"name": "Patapampa pass", "duration": "About 30 minutes", "description": "The view of the volcanoes at 4,900 metres."},
+     {"name": "La Calera hot springs", "duration": "About 1 hour 30 minutes", "description": "Thermal pools by the river."}
+    ]},
+   {"name": "Condors at the Cruz del Cóndor, the villages of the valley and back to Arequipa",
+    "description": "What to expect: the flight of the Andean condors and the colonial villages of Colca.\n\nAfter an early breakfast, you drive along the valley, past terraces still farmed with maize, potatoes and quinoa, to the Cruz del Cóndor, a viewpoint above the deepest part of the canyon. As the sun warms the cliffs, from about 8:00, the condors rise on the thermals, sometimes passing just metres above you, their white collars and wingtip feathers clearly visible, with the river far below.\n\nOn the way back you stop at the villages of Pinchollo, Maca and Yanque, with their whitewashed colonial churches, carved stone portals and plazas where women in embroidered hats and skirts sell crafts. After lunch in Chivay, you drive back over the plateau to Arequipa, arriving at about 17:30.\n\nSCHEDULE (approximate times)\n06:30 – Breakfast.\n07:00 – Drive along the valley.\n08:00 – Cruz del Cóndor.\n10:00 – Villages of Pinchollo, Maca and Yanque.\n12:30 – Lunch in Chivay.\n14:00 – Drive back to Arequipa.\n17:30 – Back at your hotel.\n\nGOOD TO KNOW\n• Instead of returning to Arequipa, you can continue to Puno and Lake Titicaca, about 6 hours.\n\nINCLUDED: transfers, guide, breakfast, lunch.\nNOT INCLUDED: dinner, tips.\n\nOvernight: none.\nMeals: breakfast, lunch.",
+    "stops": [
+     {"name": "Cruz del Cóndor", "duration": "About 1 hour 30 minutes", "description": "Andean condors above the canyon.", "image": "Q:Colca Canyon condor"},
+     {"name": "Colonial villages", "duration": "About 2 hours", "description": "Pinchollo, Maca and Yanque."}
+    ]}
+  ],
+  "faq": [
+   {"question": "How does booking on request work?", "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability and the final price by email within 24 hours, and you pay online only when the tour is confirmed."},
+   {"question": "Will we see condors?", "answer": "Very likely from May to December in the early morning; less reliably in the rainy season. They are wild birds, so sightings are never guaranteed."},
+   {"question": "Is the altitude a problem?", "answer": "The pass is at 4,900 metres and the valley at about 3,600 metres. Acclimatise first and drink coca tea; your guide carries oxygen."},
+   {"question": "What kind of lodge is used?", "answer": "A comfortable country lodge in the valley with heating and hot water; some have their own hot springs."},
+   {"question": "Are meals included?", "answer": "Yes: lunch on both days, dinner on day 1 and breakfast on day 2."},
+   {"question": "Can we continue to Puno?", "answer": "Yes. From Colca we can drive you to Puno instead of Arequipa, about 6 hours across the altiplano."},
+   {"question": "Is it suitable for children?", "answer": "Yes, for children who cope with altitude. They love the vicuñas, the hot springs and the condors."},
+   {"question": "Is it suitable for people with limited mobility?", "answer": "Largely. The viewpoints are close to the road; the hot springs have steps."},
+   {"question": "Can we hike in the canyon?", "answer": "Yes, on a longer trip: two- and three-day treks descend to the oasis of Sangalle."},
+   {"question": "Should we tip?", "answer": "Tips are appreciated in Peru but never required."},
+   {"question": "What should we wear?", "answer": "Warm layers, a hat, gloves, sun protection, a swimsuit for the hot springs and comfortable shoes."},
+   {"question": "What is the best time of year?", "answer": "May to December. The rainy season, from January to March, is greener but cloudier."},
+   {"question": "What is the cancellation policy?", "answer": "You can cancel free of charge up to 72 hours before the tour. Until your request is confirmed, nothing is charged at all."}
+  ]
+ }
+}
