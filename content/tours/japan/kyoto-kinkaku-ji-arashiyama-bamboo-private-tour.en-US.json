@@ -1,0 +1,59 @@
+{
+ "key": "japan-kyoto-kinkaku-ji-arashiyama-bamboo-private-tour",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {"city": "Kyoto", "state": "Kyoto", "country": "Japan", "countryCode": "JP", "timeZone": "Asia/Tokyo", "streetAddress": "Your hotel in Kyoto", "geoCoordinates": {"lat": 35.0394, "log": 135.7292}},
+ "slug": "/en-US/japan/kyoto/tours/kyoto-private-tour-arashiyama-bamboo-grove-tenryu-ji-kinkaku-ji-and-ryoan-ji",
+ "tour": {
+  "name": "Kyoto Private Tour: Arashiyama Bamboo Grove, Tenryu-ji, Kinkaku-ji & Ryoan-ji",
+  "subtitle": "A private day in western Kyoto with a licensed guide and car: the bamboo grove of Arashiyama at sunrise, the Zen garden of Tenryu-ji, a tofu lunch, the Golden Pavilion of Kinkaku-ji reflected in its pond, the rock garden of Ryoan-ji and the Nijo Castle of the shoguns.",
+  "seoTitle": "Kyoto: Arashiyama, Kinkaku-ji & Ryoan-ji Private Tour | TRAVSUS",
+  "metaDescription": "Private western Kyoto tour with licensed guide and car: Arashiyama bamboo grove early in the morning, Tenryu-ji garden, the Togetsukyo bridge, a tofu lunch, the Golden Pavilion, Ryoan-ji rock garden and Nijo Castle.",
+  "tags": ["Kyoto tour", "Arashiyama", "Kinkaku-ji", "Golden Pavilion", "Ryoan-ji", "Japan private tour"],
+  "highlights": [
+   "The Arashiyama bamboo grove in the quiet of early morning",
+   "Tenryu-ji, a Zen temple with a 14th-century garden",
+   "The Togetsukyo bridge over the Katsura river",
+   "A lunch of Kyoto tofu",
+   "Kinkaku-ji, the Golden Pavilion, mirrored in its pond",
+   "The fifteen stones of the Ryoan-ji rock garden",
+   "The 'nightingale floors' of Nijo Castle"
+  ],
+  "duration": 1,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "On the western edge of Kyoto, where wooded hills meet the city, emperors and aristocrats built villas and temples to enjoy the seasons. Arashiyama was their retreat for moon-viewing and autumn leaves, and the Zen temples of the north-west hold some of the most famous gardens in Japan. Like eastern Kyoto, these temples are part of the UNESCO World Heritage Site of Historic Kyoto.\n\nThis private day covers western Kyoto with a licensed guide and a car. You walk through the bamboo grove of Arashiyama soon after sunrise, visit Tenryu-ji and its garden, cross the Togetsukyo bridge, and have lunch of Kyoto's silken tofu. In the afternoon you see Kinkaku-ji, the Golden Pavilion, the meditative rock garden of Ryoan-ji, and Nijo Castle, where the shoguns received their lords.\n\nAT A GLANCE\n• Duration: about 8 hours 30 minutes\n• Start and end: your hotel in Kyoto\n• Type: private tour with licensed guide, car and driver\n• Booking: on request – we confirm availability and the final price by email within 24 hours, and you pay only then\n• Level: easy; about 6 km on flat paths\n\nWHAT YOU SEE\n• The Arashiyama bamboo grove.\n• Tenryu-ji and its Sogenchi garden.\n• The Togetsukyo bridge.\n• Kinkaku-ji, the Golden Pavilion.\n• Ryoan-ji and its rock garden.\n• Nijo Castle and its Ninomaru palace.\n\nWHY THIS WORKS\nThe bamboo grove is crowded by 9:00; we walk it at 7:30. The car then links temples that are far apart by bus, leaving time to sit and look at the gardens.\n\nWHO IT SUITS\nGarden lovers, photographers and anyone who wants the calm, contemplative side of Kyoto.\n\nWHO MAY PREFER ANOTHER TOUR\nIf you want the famous torii gates and the geisha district, choose our Fushimi Inari, Kiyomizu-dera and Gion tour.\n\nPRACTICAL INFORMATION\nNijo Castle's palace is closed on some Tuesdays in winter and summer; we then visit another site. Inside temple halls and the palace, shoes are removed and photography is restricted.",
+  "inclusions": {"standard": {"private": ["Pick-up and drop-off at your hotel in Kyoto", "Private air-conditioned vehicle and driver", "Licensed private guide", "Tickets to Tenryu-ji, Kinkaku-ji, Ryoan-ji and Nijo Castle", "Tofu lunch in Arashiyama", "Bottled water"], "shared": ["Hotel pick-up", "Licensed guide", "Entrance tickets", "Lunch"]}},
+  "pricingTiers": [
+   {"transportType": "Sedan / SUV", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png", "minSeats": 1, "maxSeats": 4, "pricing": {"currency": "EUR", "totalPrice": 720, "pricePerDay": 720}},
+   {"transportType": "Minivan", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png", "minSeats": 5, "maxSeats": 8, "pricing": {"currency": "EUR", "totalPrice": 1190, "pricePerDay": 1190}},
+   {"transportType": "Mini Bus", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png", "minSeats": 9, "maxSeats": 19, "pricing": {"currency": "EUR", "totalPrice": 2190, "pricePerDay": 2190}}
+  ],
+  "images": ["Q:Kinkaku-ji", "Q:Arashiyama bamboo grove", "Q:Kinkaku-ji#2", "Q:Arashiyama bamboo grove#2", "Q:Kinkaku-ji#3"],
+  "days": [
+   {"name": "Arashiyama bamboo grove, Tenryu-ji, Togetsukyo, a tofu lunch, Kinkaku-ji, Ryoan-ji and Nijo Castle",
+    "description": "What to expect: the gardens and temples of western Kyoto in one calm day, with a licensed guide, private car, tickets and lunch.\n\nYour guide and driver collect you at your hotel at about 7:00 and drive to Arashiyama. You walk through the bamboo grove while it is still quiet, along a path between towering stalks of moso bamboo that creak and rustle in the wind – a sound the Japanese government has listed among the country's 100 soundscapes to preserve. At the far end you reach the Okochi Sanso villa area and the hillside above the river.\n\nTenryu-ji opens at 8:30. Founded in 1339 by the shogun Ashikaga Takauji in memory of Emperor Go-Daigo, it is the most important Zen temple of Arashiyama. Its Sogenchi garden, designed by the monk Muso Soseki, uses the wooded hills behind as 'borrowed scenery' around a pond and a dry waterfall of stones. You walk down to the Togetsukyo, the 'moon-crossing bridge', over the Katsura river, then have lunch of yudofu, Kyoto tofu simmered in kelp broth, with small seasonal dishes.\n\nIn the afternoon you drive to Kinkaku-ji, the Golden Pavilion, built in 1397 as the retirement villa of the shogun Ashikaga Yoshimitsu and turned into a Zen temple after his death. Its two upper floors are covered in gold leaf, and it seems to float on its pond, the Kyoko-chi, 'mirror pond'. The building was burned by a monk in 1950 – the story of Mishima's novel The Temple of the Golden Pavilion – and rebuilt in 1955. Nearby, at Ryoan-ji, you sit on the veranda before the most famous rock garden in Japan: fifteen stones on white gravel, arranged so that you can never see all of them at once from any point. You end at Nijo Castle, built in 1603 for the first Tokugawa shogun, where the corridors of the Ninomaru palace have 'nightingale floors' that sing under your feet to warn of intruders. You are back at your hotel at about 16:30.\n\nSCHEDULE (approximate times)\n07:00 – Pick-up at your hotel.\n07:30 – Arashiyama bamboo grove.\n08:30 – Tenryu-ji and its garden.\n10:00 – Togetsukyo bridge and Arashiyama village.\n11:30 – Tofu lunch.\n13:00 – Kinkaku-ji.\n14:00 – Ryoan-ji.\n15:00 – Nijo Castle.\n16:30 – Back at your hotel.\n\nGOOD TO KNOW\n• A boat ride on the Hozu river or the Sagano scenic train can be added.\n• The bamboo grove is a public path, free and open all the time.\n• Photography is not allowed inside the Nijo palace.\n\nINCLUDED: private car and driver, licensed guide, temple and castle tickets, lunch, bottled water, hotel pick-up and drop-off.\nNOT INCLUDED: drinks with lunch, boat or train rides.\n\nOvernight: none.\nMeals: lunch.",
+    "stops": [
+     {"name": "Arashiyama bamboo grove", "duration": "About 1 hour", "description": "The path through the bamboo at sunrise.", "image": "Q:Arashiyama bamboo grove"},
+     {"name": "Tenryu-ji", "duration": "About 1 hour", "description": "A Zen temple and its 14th-century garden."},
+     {"name": "Kinkaku-ji", "duration": "About 45 minutes", "description": "The Golden Pavilion on its mirror pond.", "image": "Q:Kinkaku-ji"},
+     {"name": "Ryoan-ji", "duration": "About 45 minutes", "description": "The rock garden of fifteen stones."},
+     {"name": "Nijo Castle", "duration": "About 1 hour 15 minutes", "description": "The shoguns' palace and its nightingale floors."}
+    ]}
+  ],
+  "faq": [
+   {"question": "How does booking on request work?", "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability and the final price by email within 24 hours, and you pay online only when the tour is confirmed."},
+   {"question": "Why start so early?", "answer": "The bamboo grove fills with visitors from about 9:00. At 7:30 it is quiet and the light is beautiful."},
+   {"question": "Are the entrance tickets included?", "answer": "Yes: Tenryu-ji, Kinkaku-ji, Ryoan-ji and Nijo Castle. The bamboo grove is free."},
+   {"question": "Is lunch included?", "answer": "Yes, a tofu lunch in Arashiyama. It is naturally vegetarian; other diets can be arranged."},
+   {"question": "Is there much walking?", "answer": "About 6 km, mostly on flat paths and gravel. The car links the different areas."},
+   {"question": "Is it suitable for children?", "answer": "Yes. Children love the bamboo, the golden temple and the squeaky floors of the castle. Child seats are provided free of charge on request."},
+   {"question": "Is it suitable for people with limited mobility?", "answer": "Largely. The bamboo grove and Kinkaku-ji have flat paths; temple halls require removing shoes and a step up. Tell us your needs."},
+   {"question": "Can we go inside the Golden Pavilion?", "answer": "No. The pavilion is seen from the pond and the garden path; its interior is closed to visitors."},
+   {"question": "Can we add the monkey park?", "answer": "Yes. The Iwatayama monkey park is a 20-minute climb from Arashiyama and can be added."},
+   {"question": "Should we tip?", "answer": "Tipping is not customary in Japan, and no one will expect it."},
+   {"question": "What should we wear?", "answer": "Comfortable shoes easy to take off, and clean socks, as you remove your shoes in temple halls."},
+   {"question": "What is the best time of year?", "answer": "Early April and mid-November for cherry blossom and maple colours. Winter mornings are cold but clear, and snow on Kinkaku-ji is a rare, magical sight."},
+   {"question": "What is the cancellation policy?", "answer": "You can cancel free of charge up to 72 hours before the tour. Until your request is confirmed, nothing is charged at all."}
+  ]
+ }
+}
