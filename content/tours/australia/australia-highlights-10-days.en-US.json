@@ -1,0 +1,288 @@
+{
+ "key": "australia-australia-highlights-10-days",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {
+  "city": "Sydney",
+  "state": "New South Wales",
+  "country": "Australia",
+  "countryCode": "AU",
+  "timeZone": "Australia/Sydney",
+  "streetAddress": "Sydney airport or your hotel in Sydney",
+  "geoCoordinates": {
+   "lat": -33.8688,
+   "log": 151.2093
+  }
+ },
+ "slug": "/en-US/australia/sydney/tours/australia-highlights-10-day-private-tour-sydney-uluru-the-great-barrier-reef-and-melbourne",
+ "tour": {
+  "name": "Australia Highlights 10-Day Private Tour: Sydney, Uluru, the Great Barrier Reef & Melbourne",
+  "subtitle": "Ten days across Australia with private guides: the Opera House, harbour and Blue Mountains of Sydney, sunrise and sunset at Uluru and Kata Tjuta, the Great Barrier Reef and the Daintree rainforest from Cairns, and the laneways and Great Ocean Road of Melbourne.",
+  "seoTitle": "Australia Highlights 10-Day Private Tour | TRAVSUS",
+  "metaDescription": "10-day private Australia tour: Sydney and the Blue Mountains, Uluru and Kata Tjuta, the Great Barrier Reef and Daintree from Cairns, and Melbourne with the Great Ocean Road. Domestic flights, guides and 9 nights.",
+  "tags": [
+   "Australia tour",
+   "Sydney",
+   "Uluru",
+   "Great Barrier Reef",
+   "Melbourne",
+   "Australia 10 days"
+  ],
+  "highlights": [
+   "The Sydney Opera House and the harbour",
+   "The Three Sisters in the Blue Mountains",
+   "Sunset and sunrise at Uluru, and the domes of Kata Tjuta",
+   "Snorkelling on the Great Barrier Reef",
+   "The Daintree, the oldest tropical rainforest on Earth",
+   "Melbourne’s laneways and the Twelve Apostles",
+   "Domestic flights and private guides throughout"
+  ],
+  "duration": 10,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "Australia is as big as continental Europe, and its highlights are thousands of kilometres apart. This private tour links four of the best with domestic flights: Sydney and its harbour, the Red Centre and Uluru, the tropical north with the Great Barrier Reef and the Daintree, and Melbourne with the Great Ocean Road.\n\nYou have private guides and cars, internal flights, entrance tickets and nine nights in well-located hotels, with a balance of guided days and free time.\n\nAT A GLANCE\n• Duration: 10 days, 9 nights\n• Start: Sydney airport or your hotel\n• End: Melbourne airport\n• Type: private tour with guides, private cars and domestic flights; 9 nights with breakfast\n• Booking: on request – we confirm availability, hotels, flights and the final price by email within 24 hours, and you pay only then\n• Level: easy to moderate\n\nWHAT YOU SEE\n• Sydney and the Blue Mountains.\n• Uluru and Kata Tjuta.\n• The Great Barrier Reef and the Daintree.\n• Melbourne and the Great Ocean Road.\n\nWHY THIS WORKS\nThe route follows the direct flights, Sydney–Uluru–Cairns–Melbourne, avoiding backtracking.\n\nWHO IT SUITS\nFirst-time visitors to Australia, couples, families and small groups.\n\nWHO MAY PREFER ANOTHER TOUR\nFor wildlife, extend with Kangaroo Island or Phillip Island.\n\nPRACTICAL INFORMATION\nCheck the visa or electronic travel authority for Australia before travelling. Domestic flights include a checked bag. The Red Centre is very hot in summer.",
+  "inclusions": {
+   "standard": {
+    "private": [
+     "Private airport transfers in every city",
+     "3 domestic flights in economy with a checked bag",
+     "9 nights with breakfast in 4-star hotels (3 in Sydney, 2 at Uluru, 2 in Cairns or Port Douglas, 2 in Melbourne)",
+     "Private guides and cars for all guided days",
+     "Entrance tickets, park passes and the reef day in the programme",
+     "Sunset drinks at Uluru",
+     "Bottled water"
+    ],
+    "shared": [
+     "Airport transfers",
+     "Domestic flights",
+     "9 nights with breakfast",
+     "Guides",
+     "Entrance tickets"
+    ]
+   }
+  },
+  "pricingTiers": [
+   {
+    "transportType": "Sedan / SUV",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png",
+    "minSeats": 1,
+    "maxSeats": 4,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 11900,
+     "pricePerDay": 1190
+    }
+   },
+   {
+    "transportType": "Minivan",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png",
+    "minSeats": 5,
+    "maxSeats": 8,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 21500,
+     "pricePerDay": 2150
+    }
+   },
+   {
+    "transportType": "Mini Bus",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png",
+    "minSeats": 9,
+    "maxSeats": 19,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 41000,
+     "pricePerDay": 4100
+    }
+   }
+  ],
+  "images": [
+   "Q:Sydney Opera House",
+   "Q:Uluru",
+   "Q:Great Barrier Reef",
+   "Q:Twelve Apostles Victoria",
+   "Q:Three Sisters Blue Mountains"
+  ],
+  "days": [
+   {
+    "name": "Arrival in Sydney",
+    "description": "What to expect: a private welcome and the harbour at dusk.\n\nYour driver meets you at the airport and takes you to your hotel near the harbour. In the evening, walk to Circular Quay to see the Opera House lit up.\n\nSCHEDULE (approximate times)\nAny time – Airport transfer.\nEvening – Free.\n\nGOOD TO KNOW\n• Your guide calls to confirm the next day.\n\nINCLUDED: airport transfer.\nNOT INCLUDED: dinner.\n\nOvernight: hotel in Sydney.\nMeals: none.",
+    "stops": [
+     {
+      "name": "Circular Quay",
+      "duration": "Free time",
+      "description": "The harbour at dusk.",
+      "image": "Q:Sydney Opera House"
+     }
+    ]
+   },
+   {
+    "name": "Sydney: the Opera House, The Rocks, a ferry and Bondi",
+    "description": "What to expect: Sydney's icons.\n\nA guided tour inside the Opera House, The Rocks, Mrs Macquarie's Chair, a harbour ferry and the coastal walk from Bondi Beach.\n\nSCHEDULE (approximate times)\n08:30 – Opera House tour.\n10:30 – The Rocks.\n13:45 – Ferry.\n15:00 – Bondi.\n\nGOOD TO KNOW\n• A Bridge climb can be added.\n\nINCLUDED: car, guide, tour, ferry.\nNOT INCLUDED: lunch.\n\nOvernight: hotel in Sydney.\nMeals: breakfast.",
+    "stops": [
+     {
+      "name": "Sydney Opera House",
+      "duration": "About 1 hour 15 minutes",
+      "description": "Inside the icon.",
+      "image": "Q:Sydney Opera House"
+     },
+     {
+      "name": "Bondi Beach",
+      "duration": "About 1 hour 30 minutes",
+      "description": "The beach and coastal walk.",
+      "image": "Q:Bondi Beach"
+     }
+    ]
+   },
+   {
+    "name": "The Blue Mountains",
+    "description": "What to expect: wildlife, lookouts and bushwalks.\n\nA day trip to the Blue Mountains: a wildlife park with koalas and kangaroos, the Three Sisters at Echo Point, the Scenic World rides, Wentworth Falls and Leura.\n\nSCHEDULE (approximate times)\n08:00 – Wildlife park.\n10:30 – Three Sisters.\n11:15 – Scenic World.\n14:15 – Wentworth Falls.\n17:30 – Back in Sydney.\n\nGOOD TO KNOW\n• Bring a warm layer.\n\nINCLUDED: car, guide, tickets.\nNOT INCLUDED: lunch.\n\nOvernight: hotel in Sydney.\nMeals: breakfast.",
+    "stops": [
+     {
+      "name": "Three Sisters",
+      "duration": "About 30 minutes",
+      "description": "Sandstone pillars.",
+      "image": "Q:Three Sisters Blue Mountains"
+     }
+    ]
+   },
+   {
+    "name": "Fly to Uluru and sunset at the rock",
+    "description": "What to expect: the Red Centre.\n\nYou fly to Ayers Rock, about 3 hours. In the afternoon your guide takes you to the Cultural Centre and the Mutitjulu waterhole, then to watch Uluru turn red at sunset with drinks.\n\nSCHEDULE (approximate times)\nMorning – Flight to Uluru.\n15:30 – Cultural Centre and waterhole.\n18:00 – Sunset with drinks.\n\nGOOD TO KNOW\n• Uluru is 30 minutes behind Sydney in winter, 1.5 hours in summer.\n\nINCLUDED: transfers, flight, guide, park pass, drinks.\nNOT INCLUDED: lunch, dinner.\n\nOvernight: Ayers Rock Resort.\nMeals: breakfast.",
+    "stops": [
+     {
+      "name": "Uluru at sunset",
+      "duration": "About 1 hour",
+      "description": "The rock turning red.",
+      "image": "Q:Uluru"
+     }
+    ]
+   },
+   {
+    "name": "Kata Tjuta at sunrise and the Field of Light",
+    "description": "What to expect: the domes of Kata Tjuta and desert lights.\n\nSunrise at Kata Tjuta and the Valley of the Winds walk, an afternoon at leisure, and the Field of Light after dark.\n\nSCHEDULE (approximate times)\n05:30 – Kata Tjuta sunrise.\n07:15 – Valley of the Winds.\n19:00 – Field of Light.\n\nGOOD TO KNOW\n• The trail closes early on hot days.\n\nINCLUDED: guide, vehicle, Field of Light.\nNOT INCLUDED: lunch, dinner.\n\nOvernight: Ayers Rock Resort.\nMeals: breakfast.",
+    "stops": [
+     {
+      "name": "Kata Tjuta",
+      "duration": "About 4 hours",
+      "description": "Sunrise and the Valley of the Winds.",
+      "image": "Q:Kata Tjuta"
+     }
+    ]
+   },
+   {
+    "name": "Uluru at sunrise and fly to Cairns",
+    "description": "What to expect: the rock at dawn and the tropics.\n\nSunrise at Uluru and the Mala walk, then a flight to Cairns, about 3 hours, and a transfer to your hotel in Cairns or Port Douglas.\n\nSCHEDULE (approximate times)\n05:30 – Sunrise at Uluru.\n07:00 – Mala walk.\nAfternoon – Flight to Cairns.\n\nGOOD TO KNOW\n• Pack swimwear for the next day.\n\nINCLUDED: guide, transfers, flight.\nNOT INCLUDED: lunch, dinner.\n\nOvernight: hotel in Cairns or Port Douglas.\nMeals: breakfast.",
+    "stops": [
+     {
+      "name": "Mala walk",
+      "duration": "About 2 hours",
+      "description": "Caves and rock art.",
+      "image": "Q:Uluru"
+     }
+    ]
+   },
+   {
+    "name": "The Great Barrier Reef",
+    "description": "What to expect: a day on the outer reef with a private marine guide.\n\nA premium catamaran to the outer reef, snorkelling with your private marine guide among corals and turtles, a glass-bottom boat and lunch on board.\n\nSCHEDULE (approximate times)\n07:15 – Transfer to the marina.\n09:30 – First reef site.\n13:00 – Second reef site.\n16:30 – Back in Cairns.\n\nGOOD TO KNOW\n• Introductory dives can be added.\n\nINCLUDED: transfers, marine guide, catamaran, equipment, lunch.\nNOT INCLUDED: dives, drinks.\n\nOvernight: hotel in Cairns or Port Douglas.\nMeals: breakfast, lunch.",
+    "stops": [
+     {
+      "name": "Outer reef",
+      "duration": "About 5 hours",
+      "description": "Snorkelling among corals.",
+      "image": "Q:Great Barrier Reef"
+     }
+    ]
+   },
+   {
+    "name": "The Daintree rainforest and fly to Melbourne",
+    "description": "What to expect: the oldest rainforest, then the south.\n\nA morning at Mossman Gorge with a Kuku Yalanji guide and a Daintree River crocodile cruise, then an evening flight to Melbourne.\n\nSCHEDULE (approximate times)\n08:00 – Mossman Gorge.\n10:30 – Daintree River cruise.\nEvening – Flight to Melbourne.\n\nGOOD TO KNOW\n• Melbourne is much cooler: pack a layer.\n\nINCLUDED: car, guide, walk, cruise, transfers, flight.\nNOT INCLUDED: lunch, dinner.\n\nOvernight: hotel in Melbourne.\nMeals: breakfast.",
+    "stops": [
+     {
+      "name": "Mossman Gorge",
+      "duration": "About 1 hour 30 minutes",
+      "description": "A Dreamtime walk.",
+      "image": "Q:Daintree Rainforest"
+     }
+    ]
+   },
+   {
+    "name": "The Great Ocean Road and the Twelve Apostles",
+    "description": "What to expect: the great coastal drive.\n\nA full day along the Great Ocean Road: Bells Beach, the Memorial Arch, wild koalas at Kennett River, the Otway rainforest, the Twelve Apostles and Loch Ard Gorge.\n\nSCHEDULE (approximate times)\n07:30 – Departure.\n11:00 – Kennett River.\n15:15 – Twelve Apostles.\n20:00 – Back in Melbourne.\n\nGOOD TO KNOW\n• A long but spectacular day.\n\nINCLUDED: car, guide, morning tea, lunch.\nNOT INCLUDED: dinner.\n\nOvernight: hotel in Melbourne.\nMeals: breakfast, lunch.",
+    "stops": [
+     {
+      "name": "Twelve Apostles",
+      "duration": "About 1 hour",
+      "description": "Limestone stacks.",
+      "image": "Q:Twelve Apostles Victoria"
+     }
+    ]
+   },
+   {
+    "name": "Melbourne's laneways and departure",
+    "description": "What to expect: a last morning in the city.\n\nA morning walk with your guide through Melbourne's arcades, laneways and Hosier Lane, with a coffee, and the Queen Victoria Market, before your transfer to the airport.\n\nSCHEDULE (approximate times)\n09:00 – Laneways and coffee.\n11:00 – Queen Victoria Market.\nAs needed – Transfer to the airport.\n\nGOOD TO KNOW\n• Extensions to Phillip Island or the Yarra Valley are possible.\n\nINCLUDED: guide, coffee, airport transfer.\nNOT INCLUDED: lunch.\n\nOvernight: none.\nMeals: breakfast.",
+    "stops": [
+     {
+      "name": "Hosier Lane",
+      "duration": "About 45 minutes",
+      "description": "Street art.",
+      "image": "Q:Hosier Lane Melbourne"
+     }
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "question": "How does booking on request work?",
+    "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability, hotels and the final price by email within 24 hours, and you pay online only when the tour is confirmed."
+   },
+   {
+    "question": "Are the domestic flights included?",
+    "answer": "Yes, three domestic flights in economy with a checked bag."
+   },
+   {
+    "question": "Can the order be changed?",
+    "answer": "Yes. We can reverse the route to fit your international flights."
+   },
+   {
+    "question": "Do we need a visa?",
+    "answer": "Most visitors need an ETA or eVisitor authorisation; check before travelling."
+   },
+   {
+    "question": "What kind of hotels are used?",
+    "answer": "Comfortable 4-star hotels in central locations; upgrades are available."
+   },
+   {
+    "question": "Is the reef day private?",
+    "answer": "Your marine guide and transfers are private; the catamaran is shared. A private charter can be arranged."
+   },
+   {
+    "question": "Is it suitable for children?",
+    "answer": "Yes. We book family rooms and adapt the pace."
+   },
+   {
+    "question": "Is it suitable for people with limited mobility?",
+    "answer": "Largely. Tell us your needs and we will adapt the visits."
+   },
+   {
+    "question": "Can we add Kangaroo Island or Tasmania?",
+    "answer": "Yes, as extensions after Melbourne."
+   },
+   {
+    "question": "What should we wear?",
+    "answer": "Layers for very different climates, sun protection, swimwear and comfortable shoes."
+   },
+   {
+    "question": "What is the best time of year?",
+    "answer": "April to October suits Uluru and the tropics; Sydney and Melbourne are best from October to April."
+   },
+   {
+    "question": "Should we tip?",
+    "answer": "Tipping is not expected in Australia, where wages are higher, but it is always appreciated for excellent service."
+   },
+   {
+    "question": "What is the cancellation policy?",
+    "answer": "You can cancel free of charge up to 30 days before the tour starts. Flights are non-refundable once issued. Until your request is confirmed, nothing is charged at all."
+   }
+  ]
+ }
+}

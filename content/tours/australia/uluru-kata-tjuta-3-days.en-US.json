@@ -1,0 +1,220 @@
+{
+ "key": "australia-uluru-kata-tjuta-3-days",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {
+  "city": "Yulara",
+  "state": "Northern Territory",
+  "country": "Australia",
+  "countryCode": "AU",
+  "timeZone": "Australia/Darwin",
+  "streetAddress": "Ayers Rock airport (Yulara)",
+  "geoCoordinates": {
+   "lat": -25.2406,
+   "log": 130.9889
+  }
+ },
+ "slug": "/en-US/australia/yulara/tours/uluru-and-kata-tjuta-private-3-day-tour-sunrise-sunset-the-base-walk-and-the-field-of-light",
+ "tour": {
+  "name": "Uluru & Kata Tjuta Private 3-Day Tour: Sunrise, Sunset, the Base Walk & the Field of Light",
+  "subtitle": "Three days in Australia's Red Centre with a private guide: sunset and sunrise at Uluru, the base walk to the Mutitjulu waterhole and its rock art, the domes of Kata Tjuta and the Valley of the Winds, the Field of Light and a dinner under the desert stars.",
+  "seoTitle": "Uluru & Kata Tjuta 3-Day Private Tour | TRAVSUS",
+  "metaDescription": "Private 3-day Uluru tour with guide: sunset and sunrise at Uluru, the base walk and Mutitjulu waterhole, the Cultural Centre, Kata Tjuta and the Valley of the Winds, the Field of Light and a desert dinner. 2 nights included.",
+  "tags": [
+   "Uluru",
+   "Kata Tjuta",
+   "Red Centre",
+   "Field of Light",
+   "Outback",
+   "Australia private tour"
+  ],
+  "highlights": [
+   "Uluru glowing red at sunset and sunrise",
+   "The base walk to the Mutitjulu waterhole and its rock art",
+   "Anangu culture at the Cultural Centre",
+   "The domes of Kata Tjuta and the Valley of the Winds",
+   "The Field of Light, an installation of 50,000 lights in the desert",
+   "A dinner under the desert stars",
+   "Two nights at Ayers Rock Resort"
+  ],
+  "duration": 3,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "In the heart of Australia, Uluru rises 348 metres from the red desert plain, a single sandstone monolith that changes colour with the light. Thirty kilometres away, the 36 domes of Kata Tjuta form a maze of gorges. Both are sacred to the Anangu people, the traditional owners, whose culture here is among the oldest living cultures in the world; the national park is a UNESCO World Heritage Site for both nature and culture, and climbing Uluru has been banned since 2019 out of respect.\n\nThis private three-day tour shows the Red Centre with a private guide: the rock at sunset and sunrise, the base walks, Kata Tjuta, the Field of Light and a dinner under the stars, with two nights at Ayers Rock Resort.\n\nAT A GLANCE\n• Duration: 3 days, 2 nights\n• Start and end: Ayers Rock airport\n• Type: private tour with guide and vehicle; 2 nights with breakfast\n• Booking: on request – we confirm availability, your hotel and the final price by email within 24 hours, and you pay only then\n• Level: easy to moderate; walks of up to 7 kilometres\n\nWHAT YOU SEE\n• Uluru at sunset and sunrise.\n• The Mala and Kuniya walks and the Mutitjulu waterhole.\n• The Cultural Centre.\n• Kata Tjuta and the Valley of the Winds.\n• The Field of Light.\n\nWHY THIS WORKS\nThree days allow sunrise and sunset at both sites and walks in the cooler early mornings, with a guide who explains Anangu culture.\n\nWHO IT SUITS\nNature lovers, walkers, photographers and families.\n\nWHO MAY PREFER ANOTHER TOUR\nTo include Kings Canyon, ask us for a 4-day version.\n\nPRACTICAL INFORMATION\nSummer days (December to February) can exceed 40°C; walks start at dawn. Fly nets are useful from spring to autumn. Park passes are required.",
+  "inclusions": {
+   "standard": {
+    "private": [
+     "Private airport transfers at Yulara",
+     "Private vehicle and guide",
+     "National park pass",
+     "2 nights at Ayers Rock Resort with breakfast",
+     "Field of Light entry",
+     "Dinner under the stars",
+     "Bottled water"
+    ],
+    "shared": [
+     "Airport transfers",
+     "Guide",
+     "Park pass",
+     "2 nights with breakfast",
+     "Field of Light",
+     "Desert dinner"
+    ]
+   }
+  },
+  "pricingTiers": [
+   {
+    "transportType": "Sedan / SUV",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png",
+    "minSeats": 1,
+    "maxSeats": 4,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 2490,
+     "pricePerDay": 830
+    }
+   },
+   {
+    "transportType": "Minivan",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png",
+    "minSeats": 5,
+    "maxSeats": 8,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 4190,
+     "pricePerDay": 1397
+    }
+   },
+   {
+    "transportType": "Mini Bus",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png",
+    "minSeats": 9,
+    "maxSeats": 19,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 7790,
+     "pricePerDay": 2597
+    }
+   }
+  ],
+  "images": [
+   "Q:Uluru",
+   "Q:Kata Tjuta",
+   "Q:Uluru#2",
+   "Q:Kata Tjuta#2",
+   "Q:Uluru#3"
+  ],
+  "days": [
+   {
+    "name": "Arrival, the Cultural Centre and sunset at Uluru",
+    "description": "What to expect: a first look at Uluru and its culture.\n\nYour guide meets you at Ayers Rock airport and takes you to your hotel at the resort. In the afternoon you visit the Uluru-Kata Tjuta Cultural Centre, where the Anangu explain Tjukurpa, the law and stories that link the people to the land, and walk the Kuniya walk to the Mutitjulu waterhole, a permanent water source with rock art. At sunset, you watch Uluru turn from orange to deep red, with drinks and canapés.\n\nSCHEDULE (approximate times)\nAfternoon – Arrival and check-in.\n15:30 – Cultural Centre.\n16:30 – Kuniya walk and Mutitjulu waterhole.\n18:00 – Sunset at Uluru with drinks.\n\nGOOD TO KNOW\n• Some sacred sites must not be photographed; signs indicate them.\n\nINCLUDED: transfers, guide, park pass, sunset drinks.\nNOT INCLUDED: dinner.\n\nOvernight: Ayers Rock Resort.\nMeals: canapés.",
+    "stops": [
+     {
+      "name": "Cultural Centre",
+      "duration": "About 45 minutes",
+      "description": "Anangu culture."
+     },
+     {
+      "name": "Mutitjulu waterhole",
+      "duration": "About 1 hour",
+      "description": "Rock art and permanent water.",
+      "image": "Q:Uluru"
+     },
+     {
+      "name": "Sunset viewing area",
+      "duration": "About 1 hour",
+      "description": "Uluru turning red.",
+      "image": "Q:Uluru"
+     }
+    ]
+   },
+   {
+    "name": "Sunrise at Kata Tjuta, the Valley of the Winds, and the Field of Light",
+    "description": "What to expect: the domes of Kata Tjuta and an evening of desert lights.\n\nYou leave before dawn to watch the sunrise over Kata Tjuta, with Uluru on the horizon, then walk into the Valley of the Winds, a trail of about 7 kilometres between the great red domes to the Karu and Karingana lookouts. In the afternoon you rest at the resort. After dark, you walk among the Field of Light, an installation by the artist Bruce Munro of some 50,000 solar-powered lights that bloom slowly in changing colours, followed by a three-course dinner under the stars, with a guide pointing out the constellations of the southern sky.\n\nSCHEDULE (approximate times)\n05:30 – Drive to Kata Tjuta.\n06:30 – Sunrise.\n07:15 – Valley of the Winds walk.\n11:00 – Back at the resort.\n19:00 – Field of Light.\n19:45 – Dinner under the stars.\n\nGOOD TO KNOW\n• The Valley of the Winds trail closes at 11:00 on hot days.\n• Walpa Gorge is an easier alternative.\n\nINCLUDED: guide, vehicle, Field of Light, dinner.\nNOT INCLUDED: lunch.\n\nOvernight: Ayers Rock Resort.\nMeals: breakfast, dinner.",
+    "stops": [
+     {
+      "name": "Kata Tjuta",
+      "duration": "About 4 hours",
+      "description": "Sunrise and the Valley of the Winds.",
+      "image": "Q:Kata Tjuta"
+     },
+     {
+      "name": "Field of Light",
+      "duration": "About 1 hour",
+      "description": "Thousands of lights in the desert."
+     }
+    ]
+   },
+   {
+    "name": "Sunrise at Uluru, the base walk and departure",
+    "description": "What to expect: Uluru at dawn and up close.\n\nYou watch the sun rise over Uluru from the Talinguru Nyakunytjaku viewing area, then walk the Mala walk with your guide, past caves with rock art and the Kantju Gorge, or the full base walk of about 10 kilometres around the rock if you prefer. After breakfast, you are taken to the airport for your flight.\n\nSCHEDULE (approximate times)\n05:30 – Sunrise at Uluru.\n07:00 – Mala walk or full base walk.\n10:00 – Breakfast.\n12:00 – Airport transfer.\n\nGOOD TO KNOW\n• Book a flight from 13:00 onwards.\n\nINCLUDED: guide, vehicle, transfer.\nNOT INCLUDED: lunch.\n\nOvernight: none.\nMeals: breakfast.",
+    "stops": [
+     {
+      "name": "Uluru at sunrise",
+      "duration": "About 1 hour",
+      "description": "The rock in the first light.",
+      "image": "Q:Uluru"
+     },
+     {
+      "name": "Mala walk",
+      "duration": "About 2 hours",
+      "description": "Caves, rock art and Kantju Gorge."
+     }
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "question": "How does booking on request work?",
+    "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability, hotels and the final price by email within 24 hours, and you pay online only when the tour is confirmed."
+   },
+   {
+    "question": "Can we climb Uluru?",
+    "answer": "No. The climb was permanently closed in 2019 at the request of the Anangu."
+   },
+   {
+    "question": "How do we get to Uluru?",
+    "answer": "By direct flights to Ayers Rock airport from Sydney, Melbourne, Brisbane and other cities."
+   },
+   {
+    "question": "What kind of hotel is used?",
+    "answer": "A comfortable hotel at Ayers Rock Resort; Longitude 131° can be booked for luxury."
+   },
+   {
+    "question": "How hot is it?",
+    "answer": "From December to February, often over 40°C; from June to August, days are mild and nights cold."
+   },
+   {
+    "question": "Are there flies?",
+    "answer": "From spring to autumn, bush flies can be persistent: a fly net is a good idea."
+   },
+   {
+    "question": "Is it suitable for children?",
+    "answer": "Yes. Walks can be shortened. Child seats are provided free of charge on request."
+   },
+   {
+    "question": "Is it suitable for people with limited mobility?",
+    "answer": "Largely. Viewing areas and parts of the base walk are accessible."
+   },
+   {
+    "question": "Can we add a helicopter flight?",
+    "answer": "Yes, over Uluru and Kata Tjuta at sunrise or sunset."
+   },
+   {
+    "question": "What should we wear?",
+    "answer": "Light, covering clothes, a hat, sun cream, sturdy shoes and warm layers for the evenings."
+   },
+   {
+    "question": "What is the best time of year?",
+    "answer": "May to September, when days are cooler."
+   },
+   {
+    "question": "Should we tip?",
+    "answer": "Tipping is not expected in Australia, where wages are higher, but it is always appreciated for excellent service."
+   },
+   {
+    "question": "What is the cancellation policy?",
+    "answer": "You can cancel free of charge up to 30 days before the tour starts. Flights and the dinner under the stars may have stricter terms; we explain them when we confirm. Until your request is confirmed, nothing is charged at all."
+   }
+  ]
+ }
+}

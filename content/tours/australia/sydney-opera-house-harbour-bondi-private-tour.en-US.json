@@ -1,0 +1,189 @@
+{
+ "key": "australia-sydney-opera-house-harbour-bondi-private-tour",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {
+  "city": "Sydney",
+  "state": "New South Wales",
+  "country": "Australia",
+  "countryCode": "AU",
+  "timeZone": "Australia/Sydney",
+  "streetAddress": "Your hotel in Sydney",
+  "geoCoordinates": {
+   "lat": -33.8568,
+   "log": 151.2153
+  }
+ },
+ "slug": "/en-US/australia/sydney/tours/sydney-private-tour-the-opera-house-the-harbour-the-rocks-and-bondi-beach",
+ "tour": {
+  "name": "Sydney Private Tour: the Opera House, the Harbour, The Rocks & Bondi Beach",
+  "subtitle": "Sydney's icons in one private day with a local guide and car: a guided tour inside the Sydney Opera House, the historic lanes of The Rocks, the Harbour Bridge, Mrs Macquarie's Chair and the Royal Botanic Garden, a harbour ferry, and the clifftop walk from Bondi Beach.",
+  "seoTitle": "Sydney Private Tour: Opera House, Harbour & Bondi | TRAVSUS",
+  "metaDescription": "Private Sydney tour with local guide and car: a guided tour inside the Opera House, The Rocks, the Harbour Bridge, Mrs Macquarie's Chair, the Royal Botanic Garden, a ferry to Manly or Watsons Bay and the Bondi coastal walk.",
+  "tags": [
+   "Sydney Opera House",
+   "Sydney Harbour",
+   "Bondi Beach",
+   "The Rocks",
+   "Harbour Bridge",
+   "Australia private tour"
+  ],
+  "highlights": [
+   "A guided tour inside the Sydney Opera House",
+   "The view of the Opera House and the Bridge from Mrs Macquarie’s Chair",
+   "The sandstone lanes and pubs of The Rocks",
+   "The Sydney Harbour Bridge, the “Coathanger”",
+   "A harbour ferry ride past the icons",
+   "The clifftop coastal walk from Bondi Beach",
+   "The Royal Botanic Garden on the harbour"
+  ],
+  "duration": 1,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "Sydney grew around one of the most beautiful natural harbours in the world, where the British First Fleet landed in 1788 on the lands of the Gadigal people. Its two icons face each other across the water: the Harbour Bridge, opened in 1932, and the Sydney Opera House, designed by the Danish architect Jørn Utzon, opened in 1973 and a UNESCO World Heritage Site since 2007.\n\nThis private day shows Sydney with a local guide and a car: a guided tour inside the Opera House, the colonial lanes of The Rocks, the harbour viewpoints, a ferry ride and the ocean beaches of the east.\n\nAT A GLANCE\n• Duration: about 8 hours\n• Start and end: your hotel in Sydney\n• Type: private tour with local guide, car and driver\n• Booking: on request – we confirm availability and the final price by email within 24 hours, and you pay only then\n• Level: easy; an optional 2-kilometre coastal walk\n\nWHAT YOU SEE\n• The Sydney Opera House, inside and out.\n• The Rocks and the Harbour Bridge.\n• Mrs Macquarie’s Chair and the Royal Botanic Garden.\n• A harbour ferry.\n• Bondi Beach and the coastal walk.\n\nWHY THIS WORKS\nA local guide and a car link the harbour, the city and the eastern beaches, which are far apart by public transport.\n\nWHO IT SUITS\nFirst-time visitors to Sydney, families, couples and photographers.\n\nWHO MAY PREFER ANOTHER TOUR\nFor nature, choose our Blue Mountains day trip.\n\nPRACTICAL INFORMATION\nThe Opera House tour lasts about an hour, with stairs. Bring swimwear if you want to swim at Bondi, and always swim between the red and yellow flags.",
+  "inclusions": {
+   "standard": {
+    "private": [
+     "Pick-up and drop-off at your hotel in Sydney",
+     "Private car and driver",
+     "Private guide",
+     "Guided tour inside the Sydney Opera House",
+     "Harbour ferry tickets",
+     "Bottled water"
+    ],
+    "shared": [
+     "Hotel pick-up",
+     "Local guide",
+     "Opera House tour",
+     "Ferry tickets"
+    ]
+   }
+  },
+  "pricingTiers": [
+   {
+    "transportType": "Sedan / SUV",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png",
+    "minSeats": 1,
+    "maxSeats": 4,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 590,
+     "pricePerDay": 590
+    }
+   },
+   {
+    "transportType": "Minivan",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png",
+    "minSeats": 5,
+    "maxSeats": 8,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 890,
+     "pricePerDay": 890
+    }
+   },
+   {
+    "transportType": "Mini Bus",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png",
+    "minSeats": 9,
+    "maxSeats": 19,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 1590,
+     "pricePerDay": 1590
+    }
+   }
+  ],
+  "images": [
+   "Q:Sydney Opera House",
+   "Q:Sydney Harbour Bridge",
+   "Q:Bondi Beach",
+   "Q:Sydney Opera House#2",
+   "Q:Sydney Harbour Bridge#2"
+  ],
+  "days": [
+   {
+    "name": "The Opera House, The Rocks, the harbour viewpoints, a ferry and Bondi Beach",
+    "description": "What to expect: Sydney's harbour icons and its beaches, with a local guide, private car, Opera House tour and ferry.\n\nYour guide and driver collect you at about 8:30. You begin with a guided tour inside the Sydney Opera House: its concert halls under the white shells, clad in more than a million Swedish tiles, and the story of the design competition Jørn Utzon won in 1957 and the dispute that made him leave Australia before it was finished.\n\nYou then walk through The Rocks, Sydney's oldest district, with its sandstone warehouses, laneways and pubs, to the foot of the Harbour Bridge, whose steel arch rises 134 metres above the water. Your driver takes you through the Royal Botanic Garden to Mrs Macquarie's Chair, a rock seat carved by convicts in 1810, for the classic view of the Opera House in front of the Bridge.\n\nAfter lunch (not included), you take a ferry from Circular Quay across the harbour, past the Opera House and the harbour islands, to Watsons Bay or Manly, where your driver meets you. You end at Bondi Beach, Australia's most famous beach, and walk part of the clifftop coastal path towards Tamarama and Bronte, past sandstone cliffs and ocean pools, before returning to your hotel.\n\nSCHEDULE (approximate times)\n08:30 – Pick-up at your hotel.\n09:00 – Guided tour inside the Opera House.\n10:30 – The Rocks and the Harbour Bridge.\n11:45 – Mrs Macquarie’s Chair and the Botanic Garden.\n12:30 – Lunch break at Circular Quay.\n13:45 – Harbour ferry.\n15:00 – Bondi Beach and coastal walk.\n16:30 – Back at your hotel.\n\nGOOD TO KNOW\n• A Harbour Bridge climb can be added on request, about 3 hours.\n• Always swim between the flags at Bondi.\n• Sunday at The Rocks Markets is lively.\n\nINCLUDED: private car and driver, local guide, Opera House tour, ferry tickets, bottled water, hotel pick-up and drop-off.\nNOT INCLUDED: lunch, Bridge climb, tips.\n\nOvernight: none.\nMeals: none.",
+    "stops": [
+     {
+      "name": "Sydney Opera House",
+      "duration": "About 1 hour 15 minutes",
+      "description": "A guided tour inside.",
+      "image": "Q:Sydney Opera House"
+     },
+     {
+      "name": "The Rocks and the Harbour Bridge",
+      "duration": "About 1 hour",
+      "description": "Sandstone lanes and the Coathanger.",
+      "image": "Q:Sydney Harbour Bridge"
+     },
+     {
+      "name": "Harbour ferry",
+      "duration": "About 45 minutes",
+      "description": "The icons from the water."
+     },
+     {
+      "name": "Bondi Beach",
+      "duration": "About 1 hour 30 minutes",
+      "description": "The beach and the coastal walk.",
+      "image": "Q:Bondi Beach"
+     }
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "question": "How does booking on request work?",
+    "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability and the final price by email within 24 hours, and you pay online only when the tour is confirmed."
+   },
+   {
+    "question": "Is the Opera House tour included?",
+    "answer": "Yes, the one-hour guided tour inside. Performance tickets can be booked separately."
+   },
+   {
+    "question": "Can we climb the Harbour Bridge?",
+    "answer": "Yes, on request. The BridgeClimb takes about 3 hours and is booked in advance."
+   },
+   {
+    "question": "Is lunch included?",
+    "answer": "No. Your guide suggests a café or restaurant at Circular Quay or The Rocks."
+   },
+   {
+    "question": "Can we swim at Bondi?",
+    "answer": "Yes, between the red and yellow flags, where lifeguards patrol. The Icebergs ocean pool is another option."
+   },
+   {
+    "question": "Is it suitable for children?",
+    "answer": "Yes. Children love the ferry and the beach. Child seats are provided free of charge on request."
+   },
+   {
+    "question": "Is it suitable for people with limited mobility?",
+    "answer": "Largely. The Opera House has an accessible tour; the coastal walk can be skipped."
+   },
+   {
+    "question": "Can we see koalas?",
+    "answer": "Yes. Taronga Zoo, reached by ferry, or a wildlife park can replace Bondi."
+   },
+   {
+    "question": "Will we be taken to shops?",
+    "answer": "No. There are no commission stops."
+   },
+   {
+    "question": "What should we wear?",
+    "answer": "Light clothes, comfortable shoes, a hat and high-factor sun cream: the Australian sun is strong."
+   },
+   {
+    "question": "What is the best time of year?",
+    "answer": "September to May. December to February is summer, the beach season."
+   },
+   {
+    "question": "Should we tip?",
+    "answer": "Tipping is not expected in Australia, where wages are higher, but it is always appreciated for excellent service."
+   },
+   {
+    "question": "What is the cancellation policy?",
+    "answer": "You can cancel free of charge up to 24 hours before the tour. Until your request is confirmed, nothing is charged at all."
+   }
+  ]
+ }
+}
