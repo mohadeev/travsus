@@ -95,11 +95,11 @@
    }
   ],
   "images": [
-   "Q:Little penguin Phillip Island",
-   "Q:Koala#3",
-   "Q:Little penguin Phillip Island#2",
-   "Q:Koala#4",
-   "Q:Little penguin Phillip Island#3"
+   "Penguin Parade 3.jpg",
+   "Koala (Phascolarctos cinereus), Sídney, Australia18.JPG",
+   "Eudyptula minor Phillip Island.JPG",
+   "Koalas (Phascolarctos cinereus) female and joey Mount Lofty.jpg",
+   "Eudyptula minor Phillip Island 2.JPG"
   ],
   "days": [
    {
@@ -115,7 +115,7 @@
       "name": "Koala Conservation Reserve",
       "duration": "About 45 minutes",
       "description": "Koalas in the treetops.",
-      "image": "Q:Koala"
+      "image": "Koala (Phascolarctos cinereus) female Mount Lofty 4.jpg"
      },
      {
       "name": "The Nobbies",
@@ -126,7 +126,7 @@
       "name": "Penguin Parade",
       "duration": "About 1 hour 30 minutes",
       "description": "Little penguins at sunset.",
-      "image": "Q:Little penguin Phillip Island"
+      "image": "Penguin Parade 3.jpg"
      }
     ]
    }

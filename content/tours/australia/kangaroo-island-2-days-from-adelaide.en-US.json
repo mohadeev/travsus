@@ -98,11 +98,11 @@
    }
   ],
   "images": [
-   "Q:Remarkable Rocks Kangaroo Island",
-   "Q:Remarkable Rocks Kangaroo Island#2",
-   "Q:Koala#5",
-   "Q:Remarkable Rocks Kangaroo Island#3",
-   "Q:Remarkable Rocks Kangaroo Island#4"
+   "Remarkable Rocks in the Flinders Chase National Park, Kangaroo Island, Australia.jpg",
+   "Remarkable Rocks 01.jpg",
+   "Koala (Phascolarctos cinereus) female Mount Lofty 4.jpg",
+   "Remarkable Rocks granite dome.jpg",
+   "Remarkable Rocks 03.jpg"
   ],
   "days": [
    {
@@ -129,7 +129,7 @@
       "name": "Remarkable Rocks",
       "duration": "About 1 hour",
       "description": "Granite sculptures above the sea.",
-      "image": "Q:Remarkable Rocks Kangaroo Island"
+      "image": "Remarkable Rocks in the Flinders Chase National Park, Kangaroo Island, Australia.jpg"
      },
      {
       "name": "Admirals Arch",
@@ -140,7 +140,7 @@
       "name": "Hanson Bay",
       "duration": "About 1 hour",
       "description": "Koalas in the wild.",
-      "image": "Q:Koala"
+      "image": "Koala (Phascolarctos cinereus) female Mount Lofty 4.jpg"
      }
     ]
    }

@@ -92,11 +92,11 @@
    }
   ],
   "images": [
-   "Q:Twelve Apostles Victoria",
-   "Q:Loch Ard Gorge",
-   "Q:Twelve Apostles Victoria#2",
-   "Q:Koala#2",
-   "Q:Twelve Apostles Victoria#3"
+   "Twelve Apostles, East view 20230218 1.jpg",
+   "Loch Ard Gorge, northeast view 20230217 1.jpg",
+   "The Twelve Apostles (Victoria).jpg",
+   "Koala (Phascolarctos cinereus) female with joey Kangaroo Island.jpg",
+   "Princetown (AU), Port Campbell National Park, Twelve Apostles -- 2019 -- 0930.jpg"
   ],
   "days": [
    {
@@ -112,19 +112,19 @@
       "name": "Kennett River",
       "duration": "About 40 minutes",
       "description": "Wild koalas.",
-      "image": "Q:Koala"
+      "image": "Koala (Phascolarctos cinereus) female Mount Lofty 4.jpg"
      },
      {
       "name": "Twelve Apostles",
       "duration": "About 1 hour",
       "description": "Limestone stacks in the surf.",
-      "image": "Q:Twelve Apostles Victoria"
+      "image": "Twelve Apostles, East view 20230218 1.jpg"
      },
      {
       "name": "Loch Ard Gorge",
       "duration": "About 45 minutes",
       "description": "A gorge and a shipwreck story.",
-      "image": "Q:Loch Ard Gorge"
+      "image": "Loch Ard Gorge, northeast view 20230217 1.jpg"
      }
     ]
    }

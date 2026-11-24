@@ -94,11 +94,11 @@
    }
   ],
   "images": [
-   "Q:Three Sisters Blue Mountains",
-   "Q:Three Sisters Blue Mountains#2",
-   "Q:Koala",
-   "Q:Three Sisters Blue Mountains#3",
-   "Q:Three Sisters Blue Mountains#4"
+   "Blue Mountains National Park (AU), Three Sisters -- 2019 -- 1946.jpg",
+   "Three Sisters, Katoomba, NSW.jpg",
+   "Koala (Phascolarctos cinereus) female Mount Lofty 4.jpg",
+   "Sydney Blue Mountains Three Sisters 01.jpg",
+   "The Three Sisters, Australia.jpg"
   ],
   "days": [
    {
@@ -109,13 +109,13 @@
       "name": "Featherdale Wildlife Park",
       "duration": "About 1 hour 15 minutes",
       "description": "Kangaroos and koalas.",
-      "image": "Q:Koala"
+      "image": "Koala (Phascolarctos cinereus) female Mount Lofty 4.jpg"
      },
      {
       "name": "Echo Point",
       "duration": "About 30 minutes",
       "description": "The Three Sisters.",
-      "image": "Q:Three Sisters Blue Mountains"
+      "image": "Blue Mountains National Park (AU), Three Sisters -- 2019 -- 1946.jpg"
      },
      {
       "name": "Scenic World",

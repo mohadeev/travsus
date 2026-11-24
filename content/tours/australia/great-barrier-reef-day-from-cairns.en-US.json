@@ -96,11 +96,11 @@
    }
   ],
   "images": [
-   "Q:Great Barrier Reef",
-   "Q:Great Barrier Reef#2",
-   "Q:Great Barrier Reef#3",
-   "Q:Great Barrier Reef#4",
-   "Q:Great Barrier Reef#5"
+   "Great Barrier Reef snorkeling 18.jpg",
+   "Aerial View of Great Barrier Reef (Ank Kumar) 02.jpg",
+   "Great Barrier Reef off Cairns coast (Ank Kumar) 05.jpg",
+   "Aerial views of The Great Barrier Reef, Queensland (Ank Kumar) 02.jpg",
+   "The Great Barrier Reef, Queensland, Cairns (Ank kumar) 05.jpg"
   ],
   "days": [
    {
@@ -111,13 +111,13 @@
       "name": "First reef site",
       "duration": "About 2 hours 30 minutes",
       "description": "Snorkelling with your guide.",
-      "image": "Q:Great Barrier Reef"
+      "image": "Great Barrier Reef snorkeling 18.jpg"
      },
      {
       "name": "Second reef site",
       "duration": "About 2 hours",
       "description": "Snorkelling and the glass-bottom boat.",
-      "image": "Q:Great Barrier Reef"
+      "image": "Great Barrier Reef snorkeling 18.jpg"
      }
     ]
    }

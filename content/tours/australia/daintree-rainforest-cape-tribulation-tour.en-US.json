@@ -97,11 +97,11 @@
    }
   ],
   "images": [
-   "Q:Daintree Rainforest",
-   "Q:Daintree Rainforest#2",
-   "Q:Daintree Rainforest#3",
-   "Q:Great Barrier Reef#6",
-   "Q:Daintree Rainforest#4"
+   "Daintree Rainforest, Queensland (483843) (9443586080).jpg",
+   "Complex mesophyll vine forest canopy Daintree National Park Queensland 1986 IMG 0058.jpg",
+   "Daintree Rainforest, Queensland (483852) (9440809733).jpg",
+   "Great Barrier Reef Queensland Ank Kumar.jpg",
+   "Daintree Rainforest, Queensland (483850) (9443590252).jpg"
   ],
   "days": [
    {
@@ -112,7 +112,7 @@
       "name": "Mossman Gorge",
       "duration": "About 1 hour 30 minutes",
       "description": "A Dreamtime walk with the Kuku Yalanji.",
-      "image": "Q:Daintree Rainforest"
+      "image": "Daintree Rainforest, Queensland (483843) (9443586080).jpg"
      },
      {
       "name": "Daintree River",
@@ -123,7 +123,7 @@
       "name": "Rainforest boardwalk",
       "duration": "About 45 minutes",
       "description": "Fan palms and strangler figs.",
-      "image": "Q:Daintree Rainforest"
+      "image": "Daintree Rainforest, Queensland (483843) (9443586080).jpg"
      },
      {
       "name": "Cape Tribulation",

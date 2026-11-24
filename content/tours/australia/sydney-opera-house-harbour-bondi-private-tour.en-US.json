@@ -94,11 +94,11 @@
    }
   ],
   "images": [
-   "Q:Sydney Opera House",
-   "Q:Sydney Harbour Bridge",
-   "Q:Bondi Beach",
-   "Q:Sydney Opera House#2",
-   "Q:Sydney Harbour Bridge#2"
+   "Sydney Opera House and Harbour Bridge Dusk (2) 2019-06-21.jpg",
+   "Sydney Harbour Bridge 01.jpg",
+   "Bondi Beach, view towards southwest 20230225 1.jpg",
+   "Sydney (AU), Opera House -- 2019 -- 2280.jpg",
+   "Sydney Harbour Bridge from Circular Quay.jpg"
   ],
   "days": [
    {
@@ -109,13 +109,13 @@
       "name": "Sydney Opera House",
       "duration": "About 1 hour 15 minutes",
       "description": "A guided tour inside.",
-      "image": "Q:Sydney Opera House"
+      "image": "Sydney Opera House and Harbour Bridge Dusk (2) 2019-06-21.jpg"
      },
      {
       "name": "The Rocks and the Harbour Bridge",
       "duration": "About 1 hour",
       "description": "Sandstone lanes and the Coathanger.",
-      "image": "Q:Sydney Harbour Bridge"
+      "image": "Sydney Harbour Bridge 01.jpg"
      },
      {
       "name": "Harbour ferry",
@@ -126,7 +126,7 @@
       "name": "Bondi Beach",
       "duration": "About 1 hour 30 minutes",
       "description": "The beach and the coastal walk.",
-      "image": "Q:Bondi Beach"
+      "image": "Bondi Beach, view towards southwest 20230225 1.jpg"
      }
     ]
    }

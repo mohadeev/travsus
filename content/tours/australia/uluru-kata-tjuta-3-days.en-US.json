@@ -97,11 +97,11 @@
    }
   ],
   "images": [
-   "Q:Uluru",
-   "Q:Kata Tjuta",
-   "Q:Uluru#2",
-   "Q:Kata Tjuta#2",
-   "Q:Uluru#3"
+   "Uluru sunset - (13113209863).jpg",
+   "Kata Tjuta - Valley of the Winds.jpg",
+   "Uluru Sunset 1.jpg",
+   "Autumn at Kata Tjuta.jpg",
+   "Uluru at Sunset in November 2018.jpg"
   ],
   "days": [
    {
@@ -117,13 +117,13 @@
       "name": "Mutitjulu waterhole",
       "duration": "About 1 hour",
       "description": "Rock art and permanent water.",
-      "image": "Q:Uluru"
+      "image": "Uluru sunset - (13113209863).jpg"
      },
      {
       "name": "Sunset viewing area",
       "duration": "About 1 hour",
       "description": "Uluru turning red.",
-      "image": "Q:Uluru"
+      "image": "Uluru sunset - (13113209863).jpg"
      }
     ]
    },
@@ -135,7 +135,7 @@
       "name": "Kata Tjuta",
       "duration": "About 4 hours",
       "description": "Sunrise and the Valley of the Winds.",
-      "image": "Q:Kata Tjuta"
+      "image": "Kata Tjuta - Valley of the Winds.jpg"
      },
      {
       "name": "Field of Light",
@@ -152,7 +152,7 @@
       "name": "Uluru at sunrise",
       "duration": "About 1 hour",
       "description": "The rock in the first light.",
-      "image": "Q:Uluru"
+      "image": "Uluru sunset - (13113209863).jpg"
      },
      {
       "name": "Mala walk",
