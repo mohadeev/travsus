@@ -1,0 +1,201 @@
+{
+ "key": "brazil-paraty-colonial-town-2-days-from-rio",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {
+  "city": "Paraty",
+  "state": "Rio de Janeiro",
+  "country": "Brazil",
+  "countryCode": "BR",
+  "timeZone": "America/Sao_Paulo",
+  "streetAddress": "Your hotel in Rio de Janeiro",
+  "geoCoordinates": {
+   "lat": -23.2178,
+   "log": -44.7131
+  }
+ },
+ "slug": "/en-US/brazil/paraty/tours/paraty-private-2-day-tour-from-rio-colonial-town-islands-and-rainforest-waterfalls",
+ "tour": {
+  "name": "Paraty Private 2-Day Tour from Rio: Colonial Town, Islands & Rainforest Waterfalls",
+  "subtitle": "Two days on the Costa Verde with a licensed guide and car: the drive along the coast past Angra dos Reis, the whitewashed colonial streets of Paraty, a schooner trip among the islands of the bay, rainforest waterfalls and a cachaça distillery.",
+  "seoTitle": "Paraty 2-Day Private Tour from Rio | TRAVSUS",
+  "metaDescription": "Private 2-day Paraty tour from Rio with licensed guide and car: the Costa Verde, the colonial centre of Paraty, a schooner cruise to beaches and islands, waterfalls in the Serra da Bocaina and a cachaça distillery. 1 night included.",
+  "tags": [
+   "Paraty",
+   "Costa Verde",
+   "Rio 2 days",
+   "Colonial town",
+   "Schooner cruise",
+   "Brazil private tour"
+  ],
+  "highlights": [
+   "The cobbled, car-free colonial centre of Paraty, a UNESCO World Heritage Site",
+   "The drive along the Costa Verde past Angra dos Reis",
+   "A schooner trip to beaches and islands in the bay",
+   "Swimming in rainforest waterfalls",
+   "A visit and tasting at a traditional cachaça distillery",
+   "Sunset over the bay",
+   "A night in a colonial guesthouse"
+  ],
+  "duration": 2,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "Paraty was founded in the 17th century and grew rich as the port from which gold from Minas Gerais was shipped to Portugal. When a new road bypassed it in the 18th century, the town was almost forgotten, which preserved its grid of cobbled streets and whitewashed houses with coloured doors. The streets were built to flood at high tide, washing them clean. With the surrounding rainforest of the Serra da Bocaina and the island of Ilha Grande, it became a UNESCO World Heritage Site in 2019.\n\nThis private two-day trip takes you from Rio along the Costa Verde to Paraty with a licensed guide and a car, with a night in a colonial guesthouse, a schooner trip and time in the rainforest.\n\nAT A GLANCE\n• Duration: 2 days, 1 night\n• Start and end: your hotel in Rio de Janeiro\n• Type: private tour with licensed guide, car and driver; 1 night with breakfast\n• Booking: on request – we confirm availability, your hotel and the final price by email within 24 hours, and you pay only then\n• Level: easy\n\nWHAT YOU SEE\n• The Costa Verde coast.\n• The colonial centre of Paraty.\n• The islands and beaches of the bay.\n• Rainforest waterfalls.\n• A cachaça distillery.\n\nWHY THIS WORKS\nParaty is too far for a comfortable day trip; staying a night lets you enjoy the town in the evening and the bay in the best light.\n\nWHO IT SUITS\nCouples, families, photographers and travellers who want a break from the city.\n\nWHO MAY PREFER ANOTHER TOUR\nFor a shorter trip, choose our day trip to Petrópolis.\n\nPRACTICAL INFORMATION\nThe drive is about 4 hours each way. Paraty’s cobbles are uneven: wear flat shoes. The schooner trip depends on the weather.",
+  "inclusions": {
+   "standard": {
+    "private": [
+     "Pick-up and drop-off at your hotel in Rio",
+     "Private car and driver",
+     "Licensed private guide",
+     "1 night in a colonial guesthouse with breakfast",
+     "Private schooner trip with lunch on board",
+     "Cachaça distillery visit and tasting",
+     "Bottled water"
+    ],
+    "shared": [
+     "Hotel pick-up",
+     "Licensed guide",
+     "1 night with breakfast",
+     "Schooner trip with lunch",
+     "Distillery tasting"
+    ]
+   }
+  },
+  "pricingTiers": [
+   {
+    "transportType": "Sedan / SUV",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png",
+    "minSeats": 1,
+    "maxSeats": 4,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 1090,
+     "pricePerDay": 545
+    }
+   },
+   {
+    "transportType": "Minivan",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png",
+    "minSeats": 5,
+    "maxSeats": 8,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 1790,
+     "pricePerDay": 895
+    }
+   },
+   {
+    "transportType": "Mini Bus",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png",
+    "minSeats": 9,
+    "maxSeats": 19,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 3290,
+     "pricePerDay": 1645
+    }
+   }
+  ],
+  "images": [
+   "Q:Paraty historic center",
+   "Q:Paraty historic center#2",
+   "Q:Paraty historic center#3",
+   "Q:Paraty historic center#4",
+   "Q:Paraty historic center#5"
+  ],
+  "days": [
+   {
+    "name": "Rio to Paraty along the Costa Verde, and the colonial town at sunset",
+    "description": "What to expect: the coastal road and the historic centre of Paraty.\n\nYour guide and driver collect you at about 8:00 and drive west along the Costa Verde, where the forested mountains of the Serra do Mar drop straight into a sea of islands. You stop at a viewpoint over the bay of Angra dos Reis, with its 365 islands, and for lunch (not included) by the sea.\n\nYou arrive in Paraty in the early afternoon and check in to a colonial guesthouse. Your guide then walks you through the historic centre, closed to cars: the white churches built separately for the town's free white residents, its freed slaves and its enslaved people, such as the Church of Our Lady of the Rosary, the harbour and the streets of white houses with coloured doors and window frames. You visit a traditional cachaça distillery outside the town to see how Brazil's sugar-cane spirit is made, with a tasting, and return for the sunset over the bay.\n\nSCHEDULE (approximate times)\n08:00 – Pick-up in Rio.\n10:30 – Angra dos Reis viewpoint.\n12:30 – Lunch break.\n14:00 – Arrival in Paraty and check-in.\n15:00 – Walk through the historic centre.\n16:30 – Cachaça distillery.\n18:00 – Sunset over the bay.\n\nGOOD TO KNOW\n• Paraty has excellent restaurants; your guide can book dinner.\n• High tides sometimes flood the lower streets, as designed.\n\nINCLUDED: transfers, guide, distillery tasting.\nNOT INCLUDED: lunch, dinner.\n\nOvernight: colonial guesthouse in Paraty.\nMeals: none.",
+    "stops": [
+     {
+      "name": "Angra dos Reis viewpoint",
+      "duration": "About 20 minutes",
+      "description": "The bay of 365 islands."
+     },
+     {
+      "name": "Historic centre of Paraty",
+      "duration": "About 1 hour 30 minutes",
+      "description": "Churches, cobbles and coloured doors.",
+      "image": "Q:Paraty historic center"
+     },
+     {
+      "name": "Cachaça distillery",
+      "duration": "About 1 hour",
+      "description": "How cachaça is made, with a tasting."
+     }
+    ]
+   },
+   {
+    "name": "A schooner trip in the bay, rainforest waterfalls and back to Rio",
+    "description": "What to expect: the islands and beaches of the bay, and the rainforest.\n\nAfter breakfast you board a private wooden schooner for a cruise around the bay of Paraty. You stop at islands and small beaches with clear green water for swimming and snorkelling among colourful fish, with lunch of fresh fish and fruit served on board.\n\nIn the afternoon you drive into the forest of the Serra da Bocaina to the waterfalls near Paraty, such as the Cachoeira do Tobogã, where the water slides over a smooth rock you can slide down, and the pools of the Poço do Tarzan. You then drive back along the coast to Rio, arriving at about 20:00.\n\nSCHEDULE (approximate times)\n08:00 – Breakfast.\n09:00 – Private schooner trip.\n12:30 – Lunch on board.\n14:00 – Rainforest waterfalls.\n16:00 – Drive back to Rio.\n20:00 – Back at your hotel.\n\nGOOD TO KNOW\n• Bring a swimsuit, towel and reef-safe sun cream.\n• The return can be via Ilha Grande on request, with an extra night.\n\nINCLUDED: transfers, guide, schooner trip, lunch.\nNOT INCLUDED: dinner, tips.\n\nOvernight: none.\nMeals: breakfast, lunch.",
+    "stops": [
+     {
+      "name": "Paraty bay",
+      "duration": "About 4 hours",
+      "description": "Islands, beaches and snorkelling.",
+      "image": "Q:Paraty historic center"
+     },
+     {
+      "name": "Rainforest waterfalls",
+      "duration": "About 1 hour 30 minutes",
+      "description": "Natural slides and pools."
+     }
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "question": "How does booking on request work?",
+    "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability, hotels and the final price by email within 24 hours, and you pay online only when the tour is confirmed."
+   },
+   {
+    "question": "Is the schooner private?",
+    "answer": "Yes, a private boat for your group with a crew."
+   },
+   {
+    "question": "Can we swim?",
+    "answer": "Yes, at the islands and in the waterfalls. Snorkelling masks are on board."
+   },
+   {
+    "question": "How long is the drive?",
+    "answer": "About 4 hours each way from Rio."
+   },
+   {
+    "question": "What kind of guesthouse is used?",
+    "answer": "A charming colonial pousada in or near the historic centre, with breakfast."
+   },
+   {
+    "question": "Is it suitable for children?",
+    "answer": "Yes. Children love the boat, the beaches and the natural slides. Child seats are provided free of charge on request."
+   },
+   {
+    "question": "Is it suitable for people with limited mobility?",
+    "answer": "Partly. The cobbles are very uneven and the boat requires a step."
+   },
+   {
+    "question": "Can we add Ilha Grande?",
+    "answer": "Yes. A night on Ilha Grande, a car-free island with rainforest trails and beaches, fits well on the way back."
+   },
+   {
+    "question": "Can we add Trindade?",
+    "answer": "Yes. The beaches and natural pool of Trindade, south of Paraty, can replace the waterfalls."
+   },
+   {
+    "question": "What should we wear?",
+    "answer": "Light clothes, a swimsuit, sandals, flat shoes for the cobbles, sun protection and insect repellent."
+   },
+   {
+    "question": "What is the best time of year?",
+    "answer": "All year. December to March is hot with afternoon rain; April to November is milder and drier."
+   },
+   {
+    "question": "Should we tip?",
+    "answer": "Tips are appreciated in Brazil but never required. If you were happy with your guide and driver, a small tip at the end of the day is a kind gesture."
+   },
+   {
+    "question": "What is the cancellation policy?",
+    "answer": "You can cancel free of charge up to 72 hours before the tour. Until your request is confirmed, nothing is charged at all."
+   }
+  ]
+ }
+}

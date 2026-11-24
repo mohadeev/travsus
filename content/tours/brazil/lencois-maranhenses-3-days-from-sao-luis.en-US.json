@@ -1,0 +1,214 @@
+{
+ "key": "brazil-lencois-maranhenses-3-days-from-sao-luis",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {
+  "city": "Barreirinhas",
+  "state": "Maranhão",
+  "country": "Brazil",
+  "countryCode": "BR",
+  "timeZone": "America/Fortaleza",
+  "streetAddress": "São Luís airport or your hotel in São Luís",
+  "geoCoordinates": {
+   "lat": -2.7569,
+   "log": -42.8247
+  }
+ },
+ "slug": "/en-US/brazil/barreirinhas/tours/lencois-maranhenses-private-3-day-tour-white-dunes-blue-lagoons-and-sao-luis",
+ "tour": {
+  "name": "Lençóis Maranhenses Private 3-Day Tour: White Dunes, Blue Lagoons & São Luís",
+  "subtitle": "Three days in one of the strangest landscapes on Earth with licensed guides: a 4x4 into the dunes of the Lençóis Maranhenses to swim in rainwater lagoons, a boat down the Preguiças river to Caburé and the Mandacaru lighthouse, sunset on the dunes and the tiled colonial centre of São Luís.",
+  "seoTitle": "Lençóis Maranhenses 3-Day Private Tour | TRAVSUS",
+  "metaDescription": "Private 3-day Lençóis Maranhenses tour from São Luís with licensed guides: 4x4 to the Lagoa Azul and Lagoa Bonita, swimming in rainwater lagoons, the Preguiças river to Caburé and Mandacaru, and the tiled colonial centre of São Luís.",
+  "tags": [
+   "Lençóis Maranhenses",
+   "Sand dunes",
+   "Lagoons",
+   "São Luís",
+   "Barreirinhas",
+   "Brazil private tour"
+  ],
+  "highlights": [
+   "Swimming in clear rainwater lagoons between white dunes",
+   "A 4x4 ride across the river and into the national park",
+   "Sunset from the top of the dunes at the Lagoa Bonita",
+   "A boat down the Preguiças river among mangroves",
+   "The Mandacaru lighthouse and the village of Caburé",
+   "The monkeys of Vassouras and its small dunes",
+   "The tiled colonial houses of São Luís, a UNESCO World Heritage Site"
+  ],
+  "duration": 3,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "On the coast of north-eastern Brazil, the Lençóis Maranhenses National Park protects some 1,500 square kilometres of white sand dunes, shaped by the trade winds. From January to June heavy rains fill the hollows between the dunes, creating thousands of clear lagoons of blue and green water that last until September or October. From the air or the top of a dune, they look like sheets drying in the wind, which gives the park its name.\n\nThis private three-day trip takes you from São Luís to Barreirinhas, the gateway to the park, with licensed guides. You swim in the lagoons, watch the sunset from the dunes, travel down the Preguiças river to the sea, and explore the colonial centre of São Luís.\n\nAT A GLANCE\n• Duration: 3 days, 2 nights\n• Start and end: São Luís airport or your hotel in São Luís\n• Type: private tour with licensed guides, private car and driver, 4x4 and boat; 2 nights with breakfast\n• Booking: on request – we confirm availability, hotels and the final price by email within 24 hours, and you pay only then\n• Level: moderate; walking in soft sand\n\nWHAT YOU SEE\n• The Lagoa Azul and the Lagoa Bonita.\n• The Preguiças river.\n• Vassouras, Mandacaru and Caburé.\n• The historic centre of São Luís.\n\nWHY THIS WORKS\nTwo nights in Barreirinhas allow both the dunes at sunset and the river trip without rushing, and private 4x4s avoid the crowded shared trucks.\n\nWHO IT SUITS\nNature lovers, photographers, couples and active families.\n\nWHO MAY PREFER ANOTHER TOUR\nFor more remote dunes, ask us about a stay in Atins or a multi-day trek across the park.\n\nPRACTICAL INFORMATION\nThe lagoons are fullest from June to September. The drive from São Luís to Barreirinhas takes about 4 hours. Walking in the dunes is barefoot in soft sand: bring sun protection.",
+  "inclusions": {
+   "standard": {
+    "private": [
+     "Private airport transfers and car between São Luís and Barreirinhas",
+     "Private 4x4 in the national park",
+     "Private boat on the Preguiças river",
+     "Licensed local guides",
+     "2 nights in a comfortable lodge in Barreirinhas with breakfast",
+     "Lunch on days 2 and 3",
+     "São Luís walking tour",
+     "Bottled water"
+    ],
+    "shared": [
+     "Transfers",
+     "4x4 and boat",
+     "Licensed guides",
+     "2 nights with breakfast",
+     "Lunches"
+    ]
+   }
+  },
+  "pricingTiers": [
+   {
+    "transportType": "Sedan / SUV",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png",
+    "minSeats": 1,
+    "maxSeats": 4,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 1490,
+     "pricePerDay": 497
+    }
+   },
+   {
+    "transportType": "Minivan",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png",
+    "minSeats": 5,
+    "maxSeats": 8,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 2490,
+     "pricePerDay": 830
+    }
+   },
+   {
+    "transportType": "Mini Bus",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png",
+    "minSeats": 9,
+    "maxSeats": 19,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 4590,
+     "pricePerDay": 1530
+    }
+   }
+  ],
+  "images": [
+   "Q:Lencois Maranhenses",
+   "Q:Lencois Maranhenses#2",
+   "Q:Lencois Maranhenses#3",
+   "Q:Lencois Maranhenses#4",
+   "Q:Lencois Maranhenses#5"
+  ],
+  "days": [
+   {
+    "name": "São Luís to Barreirinhas and sunset on the dunes",
+    "description": "What to expect: the drive to the park and a first afternoon in the dunes.\n\nYour driver meets you at São Luís airport or your hotel in the morning and drives you east, about 4 hours, to Barreirinhas, on the Preguiças river. After checking in and having lunch (not included), you board a 4x4 that crosses the river on a small ferry and follows sandy tracks through the restinga scrub to the edge of the park.\n\nFrom there you walk barefoot over the white dunes to the Lagoa Bonita, climbing a high dune with a rope to see an endless landscape of sand and lagoons. You swim in the warm, clear water, then watch the sun set over the dunes before returning to Barreirinhas.\n\nSCHEDULE (approximate times)\n08:00 – Pick-up in São Luís.\n12:00 – Arrival in Barreirinhas and lunch.\n14:00 – 4x4 into the park.\n15:00 – Lagoa Bonita and swimming.\n17:30 – Sunset on the dunes.\n19:00 – Back at your lodge.\n\nGOOD TO KNOW\n• Bring a swimsuit, a towel and plenty of water.\n• The sand is cool enough to walk on in the late afternoon.\n\nINCLUDED: transfers, 4x4, guide.\nNOT INCLUDED: lunch, dinner.\n\nOvernight: lodge in Barreirinhas.\nMeals: none.",
+    "stops": [
+     {
+      "name": "Lagoa Bonita",
+      "duration": "About 3 hours",
+      "description": "Swimming and sunset among the dunes.",
+      "image": "Q:Lencois Maranhenses"
+     }
+    ]
+   },
+   {
+    "name": "The Preguiças river, Vassouras, Mandacaru and Caburé",
+    "description": "What to expect: a boat down the river through mangroves to the sea.\n\nAfter breakfast, a private boat takes you down the Preguiças river, lined with mangroves and buriti palms. At Vassouras, small dunes border the river and capuchin monkeys come down from the trees. At Mandacaru, a fishing village, you climb the lighthouse's 160 steps for a view over the river mouth, the dunes and the sea.\n\nYou continue to Caburé, a strip of sand between the river and the Atlantic, for a seafood lunch and a swim in the sea or the river. You return upstream to Barreirinhas in the afternoon.\n\nSCHEDULE (approximate times)\n08:30 – Boat down the Preguiças river.\n09:30 – Vassouras.\n10:45 – Mandacaru lighthouse.\n12:00 – Caburé and lunch.\n15:00 – Return to Barreirinhas.\n\nGOOD TO KNOW\n• A trip to Atins, at the river mouth, can be added for a night in a more remote village.\n\nINCLUDED: boat, guide, lunch.\nNOT INCLUDED: dinner.\n\nOvernight: lodge in Barreirinhas.\nMeals: breakfast, lunch.",
+    "stops": [
+     {
+      "name": "Vassouras",
+      "duration": "About 45 minutes",
+      "description": "Small dunes and monkeys."
+     },
+     {
+      "name": "Mandacaru lighthouse",
+      "duration": "About 45 minutes",
+      "description": "The view over the river mouth."
+     },
+     {
+      "name": "Caburé",
+      "duration": "About 2 hours 30 minutes",
+      "description": "Between the river and the sea.",
+      "image": "Q:Lencois Maranhenses"
+     }
+    ]
+   },
+   {
+    "name": "The Lagoa Azul and back to São Luís",
+    "description": "What to expect: a morning swim in the lagoons and the colonial centre of São Luís.\n\nEarly in the morning, before the heat, your 4x4 takes you to the Lagoa Azul circuit, a series of blue lagoons between the dunes, for a last swim. After lunch in Barreirinhas, you drive back to São Luís.\n\nIn the late afternoon, your guide walks you through the historic centre of São Luís, the only Brazilian state capital founded by the French, in 1612. Its colonial houses are covered in Portuguese azulejo tiles, which kept them cool in the tropical heat, and it has been a UNESCO World Heritage Site since 1997. You are dropped at your hotel or the airport.\n\nSCHEDULE (approximate times)\n07:00 – 4x4 to the Lagoa Azul.\n10:30 – Back in Barreirinhas.\n12:00 – Lunch.\n13:00 – Drive to São Luís.\n17:00 – Historic centre of São Luís.\n18:30 – Hotel or airport.\n\nGOOD TO KNOW\n• Book an evening flight, from 20:00 onwards.\n• São Luís is famous for its reggae and its Bumba Meu Boi festival in June.\n\nINCLUDED: 4x4, guide, lunch, transfers, walking tour.\nNOT INCLUDED: dinner, tips.\n\nOvernight: none.\nMeals: breakfast, lunch.",
+    "stops": [
+     {
+      "name": "Lagoa Azul",
+      "duration": "About 3 hours",
+      "description": "Blue lagoons between the dunes.",
+      "image": "Q:Lencois Maranhenses"
+     },
+     {
+      "name": "São Luís",
+      "duration": "About 1 hour 30 minutes",
+      "description": "Tiled colonial houses."
+     }
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "question": "How does booking on request work?",
+    "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability, hotels and the final price by email within 24 hours, and you pay online only when the tour is confirmed."
+   },
+   {
+    "question": "When are the lagoons full?",
+    "answer": "From about June to September; they start to fill in March and dry up from October. From November to January, many are empty."
+   },
+   {
+    "question": "Is the 4x4 private?",
+    "answer": "Yes, a private vehicle with a local driver-guide."
+   },
+   {
+    "question": "Is walking in the dunes difficult?",
+    "answer": "Moderate: climbing the soft sand is tiring but the distances are short."
+   },
+   {
+    "question": "Can we swim in the lagoons?",
+    "answer": "Yes. The water is clear, warm and fresh."
+   },
+   {
+    "question": "What kind of lodge is used?",
+    "answer": "A comfortable lodge or pousada in Barreirinhas with a pool and breakfast."
+   },
+   {
+    "question": "Is it suitable for children?",
+    "answer": "Yes, for children who enjoy walking and swimming. Child seats are provided free of charge on request."
+   },
+   {
+    "question": "Is it suitable for people with limited mobility?",
+    "answer": "Not really. The dunes require walking and climbing in soft sand."
+   },
+   {
+    "question": "Can we fly over the dunes?",
+    "answer": "Yes. Short scenic flights from Barreirinhas can be added."
+   },
+   {
+    "question": "What should we wear?",
+    "answer": "Swimwear, light long-sleeved clothes, a hat, sunglasses, high-factor sun cream and sandals."
+   },
+   {
+    "question": "How do we get to São Luís?",
+    "answer": "There are direct flights from São Paulo, Rio, Brasília and other cities."
+   },
+   {
+    "question": "Should we tip?",
+    "answer": "Tips are appreciated in Brazil but never required. If you were happy with your guide and driver, a small tip at the end of the day is a kind gesture."
+   },
+   {
+    "question": "What is the cancellation policy?",
+    "answer": "You can cancel free of charge up to 72 hours before the tour. Until your request is confirmed, nothing is charged at all."
+   }
+  ]
+ }
+}

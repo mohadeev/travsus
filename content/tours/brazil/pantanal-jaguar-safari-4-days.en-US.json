@@ -1,0 +1,216 @@
+{
+ "key": "brazil-pantanal-jaguar-safari-4-days",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {
+  "city": "Poconé",
+  "state": "Mato Grosso",
+  "country": "Brazil",
+  "countryCode": "BR",
+  "timeZone": "America/Cuiaba",
+  "streetAddress": "Cuiabá airport",
+  "geoCoordinates": {
+   "lat": -16.2566,
+   "log": -56.6229
+  }
+ },
+ "slug": "/en-US/brazil/pocone/tours/pantanal-private-4-day-jaguar-safari-the-transpantaneira-and-the-cuiaba-river",
+ "tour": {
+  "name": "Pantanal Private 4-Day Jaguar Safari: the Transpantaneira & the Cuiabá River",
+  "subtitle": "Four days in the largest tropical wetland on Earth with a specialist naturalist guide: the Transpantaneira road and its wooden bridges, capybaras, caimans and hyacinth macaws, and two days by boat on the rivers around Porto Jofre, the best place in the world to see wild jaguars.",
+  "seoTitle": "Pantanal 4-Day Private Jaguar Safari | TRAVSUS",
+  "metaDescription": "Private 4-day Pantanal jaguar safari from Cuiabá with naturalist guide: the Transpantaneira, capybaras, caimans and hyacinth macaws, and two days of boat safaris for jaguars and giant otters near Porto Jofre. Lodges and meals included.",
+  "tags": [
+   "Pantanal",
+   "Jaguar safari",
+   "Wildlife",
+   "Transpantaneira",
+   "Birdwatching",
+   "Brazil private tour"
+  ],
+  "highlights": [
+   "Wild jaguars on the riverbanks of the Cuiabá and its tributaries",
+   "Giant otters fishing in family groups",
+   "The Transpantaneira road and its wooden bridges",
+   "Hyacinth macaws, toucans, jabirus and hundreds of other birds",
+   "Capybaras, caimans, marsh deer and anteaters",
+   "Night drives to look for nocturnal animals",
+   "Nights in wildlife lodges in the heart of the wetland"
+  ],
+  "duration": 4,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "The Pantanal, shared by Brazil, Bolivia and Paraguay, is the largest tropical wetland in the world, a vast plain that floods each rainy season and drains slowly through the dry season. Its open landscapes make it the best place in South America to see wildlife: capybaras, caimans, giant otters, hundreds of species of birds and, above all, jaguars. Along the rivers around Porto Jofre, at the end of the Transpantaneira road, jaguars hunt caimans and capybaras on the banks, and sightings from boats are almost daily in the dry season.\n\nThis private four-day safari takes you there with a specialist naturalist guide: two days along the Transpantaneira and two days on the rivers by boat, with nights in wildlife lodges and all meals.\n\nAT A GLANCE\n• Duration: 4 days, 3 nights\n• Start and end: Cuiabá airport\n• Type: private safari with naturalist guide, vehicle and boat; 3 nights in lodges with all meals\n• Booking: on request – we confirm availability, lodges and the final price by email within 24 hours, and you pay only then\n• Level: easy; long days outdoors\n\nWHAT YOU SEE\n• The Transpantaneira road.\n• The wildlife of the open wetland.\n• The rivers around Porto Jofre.\n• The Meeting of the Waters State Park.\n\nWHY THIS WORKS\nA private boat and guide let you stay with a jaguar as long as you like and move on when you want, rather than following the crowd.\n\nWHO IT SUITS\nWildlife lovers, photographers and families with older children.\n\nWHO MAY PREFER ANOTHER TOUR\nFor a shorter trip, ask us about 2 nights on the northern Transpantaneira without the jaguar boat days.\n\nPRACTICAL INFORMATION\nThe best season for jaguars is July to October, in the dry season. From January to March much of the Transpantaneira floods. Bring binoculars and a camera with a zoom lens.",
+  "inclusions": {
+   "standard": {
+    "private": [
+     "Private airport transfers in Cuiabá",
+     "Private vehicle and driver on the Transpantaneira",
+     "Private boat with pilot for 2 days",
+     "Specialist naturalist guide",
+     "3 nights in wildlife lodges",
+     "All meals from lunch on day 1 to lunch on day 4",
+     "Park fees",
+     "Bottled water"
+    ],
+    "shared": [
+     "Airport transfers",
+     "Naturalist guide",
+     "Boat safaris",
+     "3 nights with all meals",
+     "Park fees"
+    ]
+   }
+  },
+  "pricingTiers": [
+   {
+    "transportType": "Sedan / SUV",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png",
+    "minSeats": 1,
+    "maxSeats": 4,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 3290,
+     "pricePerDay": 822
+    }
+   },
+   {
+    "transportType": "Minivan",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png",
+    "minSeats": 5,
+    "maxSeats": 8,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 5590,
+     "pricePerDay": 1398
+    }
+   },
+   {
+    "transportType": "Mini Bus",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png",
+    "minSeats": 9,
+    "maxSeats": 19,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 10400,
+     "pricePerDay": 2600
+    }
+   }
+  ],
+  "images": [
+   "Q:Pantanal jaguar",
+   "Q:Pantanal jaguar#2",
+   "Q:Pantanal jaguar#3",
+   "Q:Pantanal jaguar#4",
+   "Q:Pantanal jaguar#5"
+  ],
+  "days": [
+   {
+    "name": "Cuiabá to the Transpantaneira and the northern Pantanal",
+    "description": "What to expect: the drive into the wetland and first wildlife.\n\nYour naturalist guide meets you at Cuiabá airport in the morning and drives you south, about 2 hours, to Poconé, where the Transpantaneira begins: a dirt road of 145 kilometres across the wetland, crossing more than 100 wooden bridges, ending at Porto Jofre. From the first kilometres you see caimans basking by the pools, capybaras grazing, jabiru storks, herons and spoonbills.\n\nAfter lunch at your lodge, you go on a walk or a horse ride in the afternoon to look for hyacinth macaws, the largest parrots in the world, toucans and marsh deer. After dinner, a night drive with a spotlight looks for ocelots, tapirs, foxes and owls.\n\nSCHEDULE (approximate times)\n08:00 – Pick-up at Cuiabá airport.\n10:00 – Start of the Transpantaneira.\n12:30 – Lunch at your lodge.\n15:30 – Walk or horse ride.\n19:00 – Dinner.\n20:00 – Night drive.\n\nGOOD TO KNOW\n• Arrive on an early flight to make the most of the day.\n\nINCLUDED: transfers, guide, lodge, meals.\nNOT INCLUDED: drinks.\n\nOvernight: wildlife lodge on the Transpantaneira.\nMeals: lunch, dinner.",
+    "stops": [
+     {
+      "name": "Transpantaneira",
+      "duration": "About 3 hours",
+      "description": "Caimans, capybaras and birds.",
+      "image": "Q:Pantanal jaguar"
+     },
+     {
+      "name": "Lodge trails",
+      "duration": "About 2 hours",
+      "description": "Macaws and marsh deer."
+     }
+    ]
+   },
+   {
+    "name": "Down the Transpantaneira to Porto Jofre and the first jaguar boat safari",
+    "description": "What to expect: the length of the Transpantaneira and the jaguar rivers.\n\nAfter an early breakfast and a dawn bird walk, you drive the rest of the Transpantaneira to Porto Jofre, stopping for wildlife on the way. After lunch at your lodge by the river, you board your private boat for the first afternoon safari along the Cuiabá river and its side channels, the Três Irmãos and the Piquiri, in the Meeting of the Waters State Park. Your pilot and guide scan the banks for jaguars resting in the shade or hunting along the shore, and for families of giant otters fishing in the channels. You return at sunset.\n\nSCHEDULE (approximate times)\n05:30 – Dawn bird walk.\n07:00 – Breakfast and drive to Porto Jofre.\n12:00 – Lunch.\n14:00 – Boat safari.\n18:00 – Back at the lodge and dinner.\n\nGOOD TO KNOW\n• Jaguar guides communicate by radio, increasing the chance of sightings.\n\nINCLUDED: guide, vehicle, boat, lodge, meals.\nNOT INCLUDED: drinks.\n\nOvernight: lodge at Porto Jofre.\nMeals: breakfast, lunch, dinner.",
+    "stops": [
+     {
+      "name": "Cuiabá river",
+      "duration": "About 4 hours",
+      "description": "The first jaguar safari.",
+      "image": "Q:Pantanal jaguar"
+     }
+    ]
+   },
+   {
+    "name": "A full day of jaguar and giant otter safaris on the rivers",
+    "description": "What to expect: a full day on the water in jaguar country.\n\nToday is spent on the rivers, with a morning and an afternoon boat safari and lunch at the lodge, or a picnic on the boat. Jaguars are most active in the early morning and late afternoon, when they patrol the banks, swim across the channels or hunt caimans. You also see giant otters, capybaras, black howler monkeys, kingfishers and many more birds. In the evening, you share sightings with your guide over dinner.\n\nSCHEDULE (approximate times)\n06:00 – Morning boat safari.\n11:30 – Lunch and rest.\n14:30 – Afternoon boat safari.\n18:00 – Back at the lodge and dinner.\n\nGOOD TO KNOW\n• Bring a long lens and a beanbag or monopod for photography from the boat.\n\nINCLUDED: guide, boat, lodge, meals.\nNOT INCLUDED: drinks, tips.\n\nOvernight: lodge at Porto Jofre.\nMeals: breakfast, lunch, dinner.",
+    "stops": [
+     {
+      "name": "Jaguar rivers",
+      "duration": "Full day",
+      "description": "Jaguars, otters and birds.",
+      "image": "Q:Pantanal jaguar"
+     }
+    ]
+   },
+   {
+    "name": "A last boat safari and back to Cuiabá",
+    "description": "What to expect: a final morning on the river and the return.\n\nAfter a last early-morning boat safari, you have lunch at the lodge and drive back up the Transpantaneira to Cuiabá airport, arriving in the late afternoon, with stops for any wildlife you meet along the way.\n\nSCHEDULE (approximate times)\n06:00 – Morning boat safari.\n10:00 – Breakfast.\n12:00 – Lunch and departure.\n17:30 – Cuiabá airport.\n\nGOOD TO KNOW\n• Book an evening flight, from 19:00 onwards.\n\nINCLUDED: guide, boat, transfers, meals.\nNOT INCLUDED: tips.\n\nOvernight: none.\nMeals: breakfast, lunch.",
+    "stops": [
+     {
+      "name": "Cuiabá river",
+      "duration": "About 3 hours",
+      "description": "A last chance for jaguars.",
+      "image": "Q:Pantanal jaguar"
+     }
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "question": "How does booking on request work?",
+    "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability, hotels and the final price by email within 24 hours, and you pay online only when the tour is confirmed."
+   },
+   {
+    "question": "How likely are we to see jaguars?",
+    "answer": "From July to October, sightings near Porto Jofre are very likely, usually several in a few days. They are wild animals, so sightings are never guaranteed."
+   },
+   {
+    "question": "What is the best time of year?",
+    "answer": "July to October, in the dry season. From November the rains begin, and from January to March parts of the Transpantaneira are flooded."
+   },
+   {
+    "question": "What kind of lodges are used?",
+    "answer": "Comfortable wildlife lodges with air conditioning, private bathrooms and buffet meals."
+   },
+   {
+    "question": "Are meals included?",
+    "answer": "Yes, all meals from lunch on day 1 to lunch on day 4. Drinks are extra."
+   },
+   {
+    "question": "Is the boat private?",
+    "answer": "Yes, a private boat with a pilot and your guide."
+   },
+   {
+    "question": "Is it suitable for children?",
+    "answer": "Yes, for children who can sit patiently on a boat for several hours."
+   },
+   {
+    "question": "Is it suitable for people with limited mobility?",
+    "answer": "Largely. Wildlife viewing is by vehicle and boat; boarding the boat needs a step."
+   },
+   {
+    "question": "Are there many mosquitoes?",
+    "answer": "In the dry season, fewer; bring repellent and long sleeves for the evenings."
+   },
+   {
+    "question": "Do we need vaccinations?",
+    "answer": "Yellow fever vaccination is recommended; check with your doctor."
+   },
+   {
+    "question": "What should we wear?",
+    "answer": "Neutral-coloured light clothes, long sleeves, a hat, sun protection, binoculars and a rain jacket."
+   },
+   {
+    "question": "Should we tip?",
+    "answer": "Tips are appreciated in Brazil but never required. If you were happy with your guide and driver, a small tip at the end of the day is a kind gesture."
+   },
+   {
+    "question": "What is the cancellation policy?",
+    "answer": "You can cancel free of charge up to 30 days before the tour starts. Lodges have strict policies in the high season; we explain the terms when we confirm. Until your request is confirmed, nothing is charged at all."
+   }
+  ]
+ }
+}

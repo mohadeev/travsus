@@ -1,0 +1,189 @@
+{
+ "key": "brazil-rio-christ-redeemer-sugarloaf-private-tour",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {
+  "city": "Rio de Janeiro",
+  "state": "Rio de Janeiro",
+  "country": "Brazil",
+  "countryCode": "BR",
+  "timeZone": "America/Sao_Paulo",
+  "streetAddress": "Your hotel in Rio de Janeiro",
+  "geoCoordinates": {
+   "lat": -22.9068,
+   "log": -43.1729
+  }
+ },
+ "slug": "/en-US/brazil/rio-de-janeiro/tours/rio-de-janeiro-private-tour-christ-the-redeemer-sugarloaf-mountain-and-copacabana",
+ "tour": {
+  "name": "Rio de Janeiro Private Tour: Christ the Redeemer, Sugarloaf Mountain & Copacabana",
+  "subtitle": "Rio's two great viewpoints in one private day with a licensed guide and car: the cog train through the Tijuca forest to Christ the Redeemer on Corcovado, the cable cars to the summit of Sugarloaf Mountain above Guanabara Bay, the Selarón steps, and the beaches of Copacabana and Ipanema.",
+  "seoTitle": "Rio Private Tour: Christ the Redeemer & Sugarloaf | TRAVSUS",
+  "metaDescription": "Private Rio de Janeiro tour with licensed guide and car: the cog train to Christ the Redeemer, the Sugarloaf cable cars, the Selarón steps, the cathedral and the beaches of Copacabana and Ipanema. Tickets included.",
+  "tags": [
+   "Christ the Redeemer",
+   "Sugarloaf Mountain",
+   "Rio de Janeiro",
+   "Copacabana",
+   "Selarón steps",
+   "Brazil private tour"
+  ],
+  "highlights": [
+   "Christ the Redeemer on the summit of Corcovado, 710 metres above the city",
+   "The historic cog train through the Tijuca forest",
+   "The two cable cars to the top of Sugarloaf Mountain",
+   "The view over Guanabara Bay, Copacabana and the city",
+   "The tiled Selarón steps between Lapa and Santa Teresa",
+   "The cone-shaped Metropolitan Cathedral",
+   "Copacabana and Ipanema beaches"
+  ],
+  "duration": 1,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "Few cities have a setting like Rio de Janeiro, squeezed between granite peaks, rainforest and the Atlantic. Two of those peaks give the classic views: Corcovado, crowned since 1931 by the 30-metre statue of Christ the Redeemer, voted one of the New Seven Wonders of the World in 2007; and Sugarloaf Mountain, the 396-metre granite dome at the mouth of Guanabara Bay, reached by cable car since 1912.\n\nThis private day takes you up both with a licensed guide and a car, with timed tickets arranged in advance. Between the two, you see the tiled steps of the Chilean artist Jorge Selarón, the modernist cathedral and the old aqueduct of Lapa, and you end with a drive along Copacabana and Ipanema.\n\nAT A GLANCE\n• Duration: about 8 hours\n• Start and end: your hotel in Rio de Janeiro\n• Type: private tour with licensed guide, car and driver\n• Booking: on request – we confirm availability and the final price by email within 24 hours, and you pay only then\n• Level: easy; some steps at the viewpoints\n\nWHAT YOU SEE\n• Christ the Redeemer and Corcovado.\n• Sugarloaf Mountain and Morro da Urca.\n• The Selarón steps and the Lapa arches.\n• The Metropolitan Cathedral.\n• Copacabana and Ipanema.\n\nWHY THIS WORKS\nYour guide times the visits to the weather: the summits are often in cloud in the morning and clear later, or the other way round, and a private car lets you switch the order on the day.\n\nWHO IT SUITS\nFirst-time visitors to Rio, families, couples and photographers.\n\nWHO MAY PREFER ANOTHER TOUR\nIf you have seen the big sights, choose our Santa Teresa and Tijuca Forest tour or the day trip to Petrópolis.\n\nPRACTICAL INFORMATION\nBoth summits are reached by train and cable car, with short walks and some steps. Queues can be long at weekends and in high season; tickets are booked in advance. Bring a light jacket for the summits.",
+  "inclusions": {
+   "standard": {
+    "private": [
+     "Pick-up and drop-off at your hotel in Rio",
+     "Private car and driver",
+     "Licensed private guide",
+     "Corcovado cog train tickets",
+     "Sugarloaf cable car tickets",
+     "Bottled water"
+    ],
+    "shared": [
+     "Hotel pick-up",
+     "Licensed guide",
+     "Cog train and cable car tickets"
+    ]
+   }
+  },
+  "pricingTiers": [
+   {
+    "transportType": "Sedan / SUV",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png",
+    "minSeats": 1,
+    "maxSeats": 4,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 320,
+     "pricePerDay": 320
+    }
+   },
+   {
+    "transportType": "Minivan",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png",
+    "minSeats": 5,
+    "maxSeats": 8,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 520,
+     "pricePerDay": 520
+    }
+   },
+   {
+    "transportType": "Mini Bus",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png",
+    "minSeats": 9,
+    "maxSeats": 19,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 980,
+     "pricePerDay": 980
+    }
+   }
+  ],
+  "images": [
+   "Q:Christ the Redeemer Rio",
+   "Q:Sugarloaf Mountain",
+   "Q:Christ the Redeemer Rio#2",
+   "Q:Copacabana beach",
+   "Q:Escadaria Selaron"
+  ],
+  "days": [
+   {
+    "name": "Christ the Redeemer, the Selarón steps, the cathedral, Sugarloaf Mountain and the beaches",
+    "description": "What to expect: Rio's two great viewpoints and its historic centre, with a licensed guide, private car and tickets.\n\nYour guide and driver collect you at your hotel at about 8:30 and take you to the station in Cosme Velho, where the red cog train, running since 1884, climbs for about 20 minutes through the Tijuca forest to the top of Corcovado. From the platform at the foot of the statue of Christ the Redeemer, arms open over the city, the whole of Rio lies below: the lagoon, the beaches, the Maracanã stadium and Sugarloaf at the mouth of the bay. Your guide explains how the Art Deco statue was designed by Paul Landowski, built in reinforced concrete covered with soapstone tiles and inaugurated in 1931.\n\nBack down, you drive to Lapa to see the white arches of the 18th-century aqueduct and climb the Selarón steps, 215 steps covered by Jorge Selarón with more than 2,000 tiles from around the world. Nearby stands the Metropolitan Cathedral, a 75-metre concrete cone with four great stained-glass windows rising to the roof. After lunch at a local restaurant (not included), you drive to Urca.\n\nTwo cable cars take you from Praia Vermelha up to Morro da Urca and then to the summit of Sugarloaf. From the top you see Copacabana, the Niterói bridge, the forts at the entrance of the bay and Christ the Redeemer on the other side of the city, usually in the soft light of late afternoon. On the way back to your hotel you drive along Copacabana, with its wave-patterned promenade, and Ipanema.\n\nSCHEDULE (approximate times)\n08:30 – Pick-up at your hotel.\n09:15 – Cog train to Corcovado and Christ the Redeemer.\n11:30 – Lapa arches and Selarón steps.\n12:30 – Metropolitan Cathedral.\n13:00 – Lunch break.\n14:30 – Cable cars to Sugarloaf Mountain.\n16:30 – Drive along Copacabana and Ipanema.\n17:00 – Back at your hotel.\n\nGOOD TO KNOW\n• If Corcovado is in cloud, your guide may swap the order of the summits.\n• Sunset from Sugarloaf can be arranged; the day then ends later.\n• Keep valuables out of sight on the beaches and in crowded places.\n\nINCLUDED: private car and driver, licensed guide, cog train and cable car tickets, bottled water, hotel pick-up and drop-off.\nNOT INCLUDED: lunch, drinks, tips.\n\nOvernight: none.\nMeals: none.",
+    "stops": [
+     {
+      "name": "Christ the Redeemer",
+      "duration": "About 2 hours",
+      "description": "The statue and the view from Corcovado.",
+      "image": "Q:Christ the Redeemer Rio"
+     },
+     {
+      "name": "Selarón steps",
+      "duration": "About 30 minutes",
+      "description": "Tiles from around the world.",
+      "image": "Q:Escadaria Selaron"
+     },
+     {
+      "name": "Sugarloaf Mountain",
+      "duration": "About 2 hours",
+      "description": "The cable cars and the view of the bay.",
+      "image": "Q:Sugarloaf Mountain"
+     },
+     {
+      "name": "Copacabana",
+      "duration": "About 20 minutes",
+      "description": "The famous beach and promenade.",
+      "image": "Q:Copacabana beach"
+     }
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "question": "How does booking on request work?",
+    "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability and the final price by email within 24 hours, and you pay online only when the tour is confirmed."
+   },
+   {
+    "question": "Are the tickets included?",
+    "answer": "Yes, the Corcovado cog train and the Sugarloaf cable cars."
+   },
+   {
+    "question": "What happens if it is cloudy?",
+    "answer": "Your guide watches the weather and changes the order of the visits. If a summit is completely closed in, we suggest an alternative such as the Tijuca forest."
+   },
+   {
+    "question": "Can we drive up to Corcovado instead of taking the train?",
+    "answer": "Yes. Official vans run from Paineiras; your guide can use them if the train is full."
+   },
+   {
+    "question": "Is lunch included?",
+    "answer": "No. Your guide suggests a good local restaurant; lunch usually costs 15 to 30 euros per person."
+   },
+   {
+    "question": "Is it suitable for children?",
+    "answer": "Yes. Children love the train and the cable cars. Child seats are provided free of charge on request."
+   },
+   {
+    "question": "Is it suitable for people with limited mobility?",
+    "answer": "Largely. Both summits have lifts or escalators; the Selarón steps can be seen from the bottom."
+   },
+   {
+    "question": "Can we see the sunset from Sugarloaf?",
+    "answer": "Yes, on request. The tour then ends about an hour later."
+   },
+   {
+    "question": "Is Rio safe for visitors?",
+    "answer": "With a local guide and a private car, yes. As in any big city, keep valuables out of sight and follow your guide’s advice."
+   },
+   {
+    "question": "What should we wear?",
+    "answer": "Light clothes, comfortable shoes, sun protection and a light jacket for the summits."
+   },
+   {
+    "question": "What is the best time of year?",
+    "answer": "All year. December to March is hot with afternoon showers; May to October is drier and clearer."
+   },
+   {
+    "question": "Should we tip?",
+    "answer": "Tips are appreciated in Brazil but never required. If you were happy with your guide and driver, a small tip at the end of the day is a kind gesture."
+   },
+   {
+    "question": "What is the cancellation policy?",
+    "answer": "You can cancel free of charge up to 24 hours before the tour. Until your request is confirmed, nothing is charged at all."
+   }
+  ]
+ }
+}

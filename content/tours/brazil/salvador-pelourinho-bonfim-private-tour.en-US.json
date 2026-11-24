@@ -1,0 +1,190 @@
+{
+ "key": "brazil-salvador-pelourinho-bonfim-private-tour",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {
+  "city": "Salvador",
+  "state": "Bahia",
+  "country": "Brazil",
+  "countryCode": "BR",
+  "timeZone": "America/Bahia",
+  "streetAddress": "Your hotel in Salvador",
+  "geoCoordinates": {
+   "lat": -12.9714,
+   "log": -38.5014
+  }
+ },
+ "slug": "/en-US/brazil/salvador/tours/salvador-da-bahia-private-tour-pelourinho-the-golden-church-of-sao-francisco-and-bonfim",
+ "tour": {
+  "name": "Salvador da Bahia Private Tour: Pelourinho, the Golden Church of São Francisco & Bonfim",
+  "subtitle": "A private day in Brazil's first capital and the heart of Afro-Brazilian culture with a licensed guide and car: the colourful Pelourinho, the gilded baroque church of São Francisco, the Lacerda Elevator, the Mercado Modelo, the church of Bonfim and its ribbons, a capoeira show and acarajé.",
+  "seoTitle": "Salvador Private Tour: Pelourinho & Bonfim | TRAVSUS",
+  "metaDescription": "Private Salvador da Bahia tour with licensed guide and car: the Pelourinho, the golden church of São Francisco, the Lacerda Elevator, the Mercado Modelo, the church of Bonfim, capoeira and Bahian food.",
+  "tags": [
+   "Salvador",
+   "Pelourinho",
+   "Bahia",
+   "Afro-Brazilian culture",
+   "Capoeira",
+   "Brazil private tour"
+  ],
+  "highlights": [
+   "The colourful colonial squares and streets of the Pelourinho, a UNESCO World Heritage Site",
+   "The church of São Francisco, its interior covered in gold leaf",
+   "The Lacerda Elevator between the upper and lower cities",
+   "The church of Nosso Senhor do Bonfim and its wish ribbons",
+   "A capoeira performance",
+   "Acarajé and other Bahian flavours",
+   "The view over the Bay of All Saints"
+  ],
+  "duration": 1,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "Salvador was founded in 1549 as the first capital of Portuguese Brazil and remained so until 1763. Built on a cliff above the Bay of All Saints, it became the centre of the sugar trade and the main port of arrival for enslaved Africans, and today it is the heart of Afro-Brazilian culture, with its music, religion, capoeira and cuisine. Its upper town, the Pelourinho, with its baroque churches and pastel houses, has been a UNESCO World Heritage Site since 1985.\n\nThis private day shows Salvador with a licensed guide and a car, from the gilded churches of the old town to the pilgrimage church of Bonfim, with capoeira and Bahian food along the way.\n\nAT A GLANCE\n• Duration: about 7 hours\n• Start and end: your hotel in Salvador\n• Type: private tour with licensed guide, car and driver\n• Booking: on request – we confirm availability and the final price by email within 24 hours, and you pay only then\n• Level: easy; cobbled and sloping streets\n\nWHAT YOU SEE\n• The Pelourinho and the Terreiro de Jesus.\n• The church and convent of São Francisco.\n• The Lacerda Elevator and the Mercado Modelo.\n• The church of Bonfim.\n• The Barra lighthouse.\n\nWHY THIS WORKS\nYour guide brings Salvador’s history and Afro-Brazilian culture to life, and the car links the old town with Bonfim and the coast.\n\nWHO IT SUITS\nCulture and history lovers, music lovers, food lovers and families.\n\nWHO MAY PREFER ANOTHER TOUR\nFor beaches, ask us about Praia do Forte or Morro de São Paulo.\n\nPRACTICAL INFORMATION\nThe streets are cobbled and steep. Dress modestly for the churches. On Tuesday evenings the Pelourinho has live music.",
+  "inclusions": {
+   "standard": {
+    "private": [
+     "Pick-up and drop-off at your hotel in Salvador",
+     "Private car and driver",
+     "Licensed private guide",
+     "Entrance to the church and convent of São Francisco",
+     "Lacerda Elevator ticket",
+     "Capoeira performance",
+     "Acarajé tasting",
+     "Bottled water"
+    ],
+    "shared": [
+     "Hotel pick-up",
+     "Licensed guide",
+     "Entrance tickets",
+     "Capoeira show",
+     "Tasting"
+    ]
+   }
+  },
+  "pricingTiers": [
+   {
+    "transportType": "Sedan / SUV",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png",
+    "minSeats": 1,
+    "maxSeats": 4,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 280,
+     "pricePerDay": 280
+    }
+   },
+   {
+    "transportType": "Minivan",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png",
+    "minSeats": 5,
+    "maxSeats": 8,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 460,
+     "pricePerDay": 460
+    }
+   },
+   {
+    "transportType": "Mini Bus",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png",
+    "minSeats": 9,
+    "maxSeats": 19,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 860,
+     "pricePerDay": 860
+    }
+   }
+  ],
+  "images": [
+   "Q:Pelourinho Salvador",
+   "Q:Pelourinho Salvador#2",
+   "Q:Pelourinho Salvador#3",
+   "Q:Pelourinho Salvador#4",
+   "Q:Pelourinho Salvador#5"
+  ],
+  "days": [
+   {
+    "name": "The Pelourinho, São Francisco, the Lacerda Elevator, the Mercado Modelo and Bonfim",
+    "description": "What to expect: Salvador's colonial old town and Afro-Brazilian culture, with a licensed guide, private car, tickets, a capoeira show and a tasting.\n\nYour guide and driver collect you at about 9:00. You start in the Pelourinho, whose name recalls the whipping post that once stood in its main square. Its steep streets are lined with pastel-coloured colonial houses, and its squares are full of music. On the Terreiro de Jesus you see the former Jesuit cathedral, and nearby the church and convent of São Francisco, whose interior is almost entirely covered in carved wood and gold leaf, with cloisters lined with Portuguese tiles. You also see the blue church of Our Lady of the Rosary of the Black People, built by and for enslaved Africans.\n\nA capoeira group performs for you, combining martial art, dance and music to the sound of the berimbau. You take the Art Deco Lacerda Elevator, opened in 1873 and rebuilt in the 1930s, 72 metres down to the lower city, with a view over the bay, and browse the crafts of the Mercado Modelo. You taste acarajé, a black-eyed pea fritter fried in palm oil and filled with shrimp, sold by Baianas in white dresses.\n\nIn the afternoon you drive to the church of Nosso Senhor do Bonfim, Bahia's most beloved pilgrimage church, where visitors tie coloured ribbons to the railings and make three wishes. You return along the coast past the Barra lighthouse, at the entrance of the Bay of All Saints, to your hotel.\n\nSCHEDULE (approximate times)\n09:00 – Pick-up at your hotel.\n09:30 – Pelourinho and Terreiro de Jesus.\n10:30 – Church and convent of São Francisco.\n11:30 – Capoeira performance.\n12:15 – Lacerda Elevator and Mercado Modelo.\n13:00 – Acarajé tasting and lunch break.\n14:30 – Church of Bonfim.\n15:30 – Barra lighthouse.\n16:00 – Back at your hotel.\n\nGOOD TO KNOW\n• A Bahian cooking class or a moqueca lunch can be added.\n• Candomblé, the Afro-Brazilian religion, is deeply respected; your guide explains its customs.\n• Keep valuables out of sight in crowded areas.\n\nINCLUDED: private car and driver, licensed guide, entrance tickets, elevator, capoeira show, acarajé tasting, bottled water, hotel pick-up and drop-off.\nNOT INCLUDED: lunch, tips.\n\nOvernight: none.\nMeals: tasting.",
+    "stops": [
+     {
+      "name": "Pelourinho",
+      "duration": "About 2 hours",
+      "description": "Pastel houses and baroque churches.",
+      "image": "Q:Pelourinho Salvador"
+     },
+     {
+      "name": "Church of São Francisco",
+      "duration": "About 45 minutes",
+      "description": "Gold leaf and tiles."
+     },
+     {
+      "name": "Lacerda Elevator and Mercado Modelo",
+      "duration": "About 45 minutes",
+      "description": "Upper and lower cities."
+     },
+     {
+      "name": "Church of Bonfim",
+      "duration": "About 45 minutes",
+      "description": "Ribbons and wishes."
+     }
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "question": "How does booking on request work?",
+    "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability and the final price by email within 24 hours, and you pay online only when the tour is confirmed."
+   },
+   {
+    "question": "Are the tickets included?",
+    "answer": "Yes: São Francisco and the Lacerda Elevator, plus a capoeira show and an acarajé tasting."
+   },
+   {
+    "question": "Is lunch included?",
+    "answer": "No. Your guide suggests a restaurant serving moqueca, the Bahian fish stew."
+   },
+   {
+    "question": "Is acarajé spicy?",
+    "answer": "It can be. Ask for it \"frio\" (without chilli) if you prefer."
+   },
+   {
+    "question": "Is Salvador safe?",
+    "answer": "With a local guide and a private car, yes. Keep valuables out of sight and follow your guide’s advice."
+   },
+   {
+    "question": "Is it suitable for children?",
+    "answer": "Yes. Children love the capoeira and the elevator. Child seats are provided free of charge on request."
+   },
+   {
+    "question": "Is it suitable for people with limited mobility?",
+    "answer": "Partly. The Pelourinho is steep and cobbled; the car can drop you close to the main sights."
+   },
+   {
+    "question": "Can we see a Candomblé ceremony?",
+    "answer": "Respectful visits to a terreiro can sometimes be arranged; ask us."
+   },
+   {
+    "question": "Can we add a beach?",
+    "answer": "Yes. Praia do Forte, about an hour north, has beaches and a sea turtle project."
+   },
+   {
+    "question": "What should we wear?",
+    "answer": "Light clothes, comfortable shoes, sun protection and modest dress for the churches."
+   },
+   {
+    "question": "What is the best time of year?",
+    "answer": "September to March is sunny; April to July is the rainy season. Carnival in February is spectacular but very busy."
+   },
+   {
+    "question": "Should we tip?",
+    "answer": "Tips are appreciated in Brazil but never required. If you were happy with your guide and driver, a small tip at the end of the day is a kind gesture."
+   },
+   {
+    "question": "What is the cancellation policy?",
+    "answer": "You can cancel free of charge up to 24 hours before the tour. Until your request is confirmed, nothing is charged at all."
+   }
+  ]
+ }
+}

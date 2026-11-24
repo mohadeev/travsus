@@ -1,0 +1,288 @@
+{
+ "key": "brazil-brazil-highlights-10-days",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {
+  "city": "Rio de Janeiro",
+  "state": "Rio de Janeiro",
+  "country": "Brazil",
+  "countryCode": "BR",
+  "timeZone": "America/Sao_Paulo",
+  "streetAddress": "Rio de Janeiro airport or your hotel in Rio",
+  "geoCoordinates": {
+   "lat": -22.9068,
+   "log": -43.1729
+  }
+ },
+ "slug": "/en-US/brazil/rio-de-janeiro/tours/brazil-highlights-10-day-private-tour-rio-de-janeiro-iguazu-falls-salvador-and-the-amazon",
+ "tour": {
+  "name": "Brazil Highlights 10-Day Private Tour: Rio de Janeiro, Iguazu Falls, Salvador & the Amazon",
+  "subtitle": "Ten days across Brazil with private guides: Christ the Redeemer, Sugarloaf and the Tijuca forest in Rio, both sides of Iguazu Falls, the colonial Pelourinho and Afro-Brazilian culture of Salvador, and the Meeting of the Waters and pink dolphins of the Amazon around Manaus.",
+  "seoTitle": "Brazil Highlights 10-Day Private Tour | TRAVSUS",
+  "metaDescription": "10-day private Brazil tour: Rio de Janeiro (Christ the Redeemer, Sugarloaf), Iguazu Falls on both sides, Salvador da Bahia and the Amazon at Manaus. Domestic flights, private guides, transfers and 9 nights with breakfast.",
+  "tags": [
+   "Brazil tour",
+   "Rio de Janeiro",
+   "Iguazu Falls",
+   "Salvador",
+   "Amazon",
+   "Brazil 10 days"
+  ],
+  "highlights": [
+   "Christ the Redeemer and Sugarloaf Mountain",
+   "The Tijuca forest and Santa Teresa",
+   "Both sides of Iguazu Falls and a boat ride beneath them",
+   "The colonial Pelourinho and the golden church of São Francisco in Salvador",
+   "Capoeira, acarajé and Afro-Brazilian culture",
+   "The Meeting of the Waters and pink river dolphins in the Amazon",
+   "Domestic flights and private guides in every city"
+  ],
+  "duration": 10,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "Brazil is a country of continental size, and its highlights are far apart. This private tour links four of the most rewarding with domestic flights: Rio de Janeiro, with its peaks, forest and beaches; Iguazu Falls, the greatest waterfalls in the world; Salvador da Bahia, the first capital and the heart of Afro-Brazilian culture; and Manaus, in the heart of the Amazon.\n\nYou have private guides and cars in every city, internal flights, entrance tickets and nine nights in well-located hotels with breakfast, with free time to enjoy the beaches and the food.\n\nAT A GLANCE\n• Duration: 10 days, 9 nights\n• Start: Rio de Janeiro airport or your hotel\n• End: Manaus airport\n• Type: private tour with licensed guides, private cars, domestic flights and boats; 9 nights with breakfast\n• Booking: on request – we confirm availability, hotels, flights and the final price by email within 24 hours, and you pay only then\n• Level: easy to moderate\n\nWHAT YOU SEE\n• Rio de Janeiro: Christ the Redeemer, Sugarloaf, Santa Teresa and the Tijuca forest.\n• Iguazu Falls on the Brazilian and Argentine sides.\n• Salvador: the Pelourinho and Bonfim.\n• The Amazon: the Meeting of the Waters and pink river dolphins.\n\nWHY THIS WORKS\nThe order follows the flight connections and keeps travel days short, and each city has enough time to be enjoyed rather than just seen.\n\nWHO IT SUITS\nFirst-time visitors to Brazil, couples, families and small groups.\n\nWHO MAY PREFER ANOTHER TOUR\nTo add wildlife, extend with the Pantanal or a jungle lodge; for beaches, add Paraty or Praia do Forte.\n\nPRACTICAL INFORMATION\nYou need your passport for the Argentine side of Iguazu. Yellow fever vaccination is recommended for the Amazon. Domestic flights include a checked bag.",
+  "inclusions": {
+   "standard": {
+    "private": [
+     "Private airport transfers in every city",
+     "4 domestic flights in economy with a checked bag",
+     "9 nights with breakfast in 4-star or boutique hotels (3 in Rio, 2 in Foz do Iguaçu, 2 in Salvador, 2 in Manaus)",
+     "Licensed private guides and private cars for all visits",
+     "Entrance tickets, cog train, cable cars, boat safaris and park fees in the programme",
+     "Lunch on the Amazon day",
+     "Bottled water"
+    ],
+    "shared": [
+     "Airport transfers",
+     "Domestic flights",
+     "9 nights with breakfast",
+     "Guides",
+     "Entrance tickets"
+    ]
+   }
+  },
+  "pricingTiers": [
+   {
+    "transportType": "Sedan / SUV",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png",
+    "minSeats": 1,
+    "maxSeats": 4,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 8900,
+     "pricePerDay": 890
+    }
+   },
+   {
+    "transportType": "Minivan",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png",
+    "minSeats": 5,
+    "maxSeats": 8,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 16200,
+     "pricePerDay": 1620
+    }
+   },
+   {
+    "transportType": "Mini Bus",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png",
+    "minSeats": 9,
+    "maxSeats": 19,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 31000,
+     "pricePerDay": 3100
+    }
+   }
+  ],
+  "images": [
+   "Q:Christ the Redeemer Rio",
+   "Q:Iguazu Falls",
+   "Q:Pelourinho Salvador",
+   "Q:Sugarloaf Mountain",
+   "Q:Meeting of Waters Manaus"
+  ],
+  "days": [
+   {
+    "name": "Arrival in Rio de Janeiro",
+    "description": "What to expect: a private welcome and an evening by the beach.\n\nYour driver meets you at the airport and takes you to your hotel near Copacabana or Ipanema. The rest of the day is free to walk along the promenade and watch the sunset from the Arpoador rock.\n\nSCHEDULE (approximate times)\nAny time – Airport transfer.\nEvening – Free; sunset at Arpoador.\n\nGOOD TO KNOW\n• Your guide calls you to confirm the next day.\n\nINCLUDED: airport transfer.\nNOT INCLUDED: dinner.\n\nOvernight: hotel in Rio de Janeiro.\nMeals: none.",
+    "stops": [
+     {
+      "name": "Copacabana",
+      "duration": "Free time",
+      "description": "The beach and promenade.",
+      "image": "Q:Copacabana beach"
+     }
+    ]
+   },
+   {
+    "name": "Christ the Redeemer, the Selarón steps and Sugarloaf Mountain",
+    "description": "What to expect: Rio's two great viewpoints.\n\nYour guide takes you up Corcovado by cog train to Christ the Redeemer, then to the Selarón steps and the Metropolitan Cathedral, and in the afternoon up the cable cars to Sugarloaf Mountain above Guanabara Bay.\n\nSCHEDULE (approximate times)\n08:30 – Corcovado and Christ the Redeemer.\n11:30 – Selarón steps and the cathedral.\n14:30 – Sugarloaf Mountain.\n17:00 – Back at your hotel.\n\nGOOD TO KNOW\n• The order may change with the weather.\n\nINCLUDED: car, guide, tickets.\nNOT INCLUDED: lunch.\n\nOvernight: hotel in Rio de Janeiro.\nMeals: breakfast.",
+    "stops": [
+     {
+      "name": "Christ the Redeemer",
+      "duration": "About 2 hours",
+      "description": "The statue and the view.",
+      "image": "Q:Christ the Redeemer Rio"
+     },
+     {
+      "name": "Sugarloaf Mountain",
+      "duration": "About 2 hours",
+      "description": "The bay from above.",
+      "image": "Q:Sugarloaf Mountain"
+     }
+    ]
+   },
+   {
+    "name": "Santa Teresa, the Tijuca forest and the Botanical Garden",
+    "description": "What to expect: Rio's green side.\n\nYou ride the tram in Santa Teresa, walk in the Tijuca forest to the Cascatinha waterfall and the Vista Chinesa, and visit the Botanical Garden. The evening is free; your guide can recommend a samba bar in Lapa.\n\nSCHEDULE (approximate times)\n09:00 – Santa Teresa.\n10:30 – Tijuca forest.\n14:00 – Botanical Garden.\n16:00 – Back at your hotel.\n\nGOOD TO KNOW\n• A football match at the Maracanã can be arranged.\n\nINCLUDED: car, guide, tickets.\nNOT INCLUDED: lunch.\n\nOvernight: hotel in Rio de Janeiro.\nMeals: breakfast.",
+    "stops": [
+     {
+      "name": "Tijuca forest",
+      "duration": "About 2 hours",
+      "description": "Trails and waterfalls.",
+      "image": "Q:Tijuca Forest"
+     }
+    ]
+   },
+   {
+    "name": "Fly to Iguazu and the Brazilian side of the falls",
+    "description": "What to expect: the panorama of the falls and a boat ride beneath them.\n\nYou fly to Foz do Iguaçu, about 2 hours. Your guide takes you to the Brazilian side, where a trail leads along the gorge with the whole sweep of the falls before you, and you take the Macuco boat into the spray.\n\nSCHEDULE (approximate times)\nMorning – Flight to Foz do Iguaçu.\n13:00 – Brazilian side trail.\n15:30 – Macuco Safari boat.\n17:30 – Check-in at your hotel.\n\nGOOD TO KNOW\n• Bring a change of clothes for the boat.\n\nINCLUDED: transfers, flight, guide, park entry, boat.\nNOT INCLUDED: lunch.\n\nOvernight: hotel in Foz do Iguaçu.\nMeals: breakfast.",
+    "stops": [
+     {
+      "name": "Iguazu Falls, Brazilian side",
+      "duration": "About 3 hours",
+      "description": "The panorama and the boat.",
+      "image": "Q:Iguazu Falls"
+     }
+    ]
+   },
+   {
+    "name": "The Argentine side and the Devil’s Throat",
+    "description": "What to expect: walkways over the falls.\n\nYou cross into Argentina for the jungle train to the Devil's Throat and the Upper and Lower Circuits, with lunch in the park, and return to Foz do Iguaçu in the afternoon.\n\nSCHEDULE (approximate times)\n08:00 – Border crossing.\n09:00 – Devil’s Throat.\n12:30 – Lunch.\n16:00 – Back in Brazil.\n\nGOOD TO KNOW\n• Bring your passport.\n\nINCLUDED: car, guide, park entry, train.\nNOT INCLUDED: lunch.\n\nOvernight: hotel in Foz do Iguaçu.\nMeals: breakfast.",
+    "stops": [
+     {
+      "name": "Devil’s Throat",
+      "duration": "About 1 hour 30 minutes",
+      "description": "The chasm from above.",
+      "image": "Q:Iguazu Falls"
+     }
+    ]
+   },
+   {
+    "name": "Fly to Salvador da Bahia",
+    "description": "What to expect: a travel day and an evening in the Pelourinho.\n\nYou fly to Salvador via São Paulo or Rio. In the evening, your guide takes you to the Pelourinho for music in the squares and dinner suggestions.\n\nSCHEDULE (approximate times)\nMorning – Flight to Salvador.\nAfternoon – Check-in.\n19:00 – Evening in the Pelourinho.\n\nGOOD TO KNOW\n• On Tuesday nights, the Pelourinho has live music.\n\nINCLUDED: transfers, flight.\nNOT INCLUDED: lunch, dinner.\n\nOvernight: hotel in Salvador.\nMeals: breakfast.",
+    "stops": [
+     {
+      "name": "Pelourinho by night",
+      "duration": "Evening",
+      "description": "Music in the squares.",
+      "image": "Q:Pelourinho Salvador"
+     }
+    ]
+   },
+   {
+    "name": "Salvador: the Pelourinho, São Francisco, capoeira and Bonfim",
+    "description": "What to expect: Brazil's first capital and Afro-Brazilian culture.\n\nYour guide shows you the Pelourinho, the golden church of São Francisco, a capoeira performance, the Lacerda Elevator and the Mercado Modelo, an acarajé tasting and the church of Bonfim with its ribbons.\n\nSCHEDULE (approximate times)\n09:00 – Pelourinho and São Francisco.\n11:30 – Capoeira.\n12:15 – Lacerda Elevator and market.\n14:30 – Bonfim.\n16:00 – Back at your hotel.\n\nGOOD TO KNOW\n• Try moqueca, the Bahian fish stew.\n\nINCLUDED: car, guide, tickets, capoeira, tasting.\nNOT INCLUDED: lunch.\n\nOvernight: hotel in Salvador.\nMeals: breakfast.",
+    "stops": [
+     {
+      "name": "Pelourinho",
+      "duration": "About 2 hours",
+      "description": "Pastel houses and baroque churches.",
+      "image": "Q:Pelourinho Salvador"
+     }
+    ]
+   },
+   {
+    "name": "Fly to Manaus in the Amazon",
+    "description": "What to expect: a travel day and the city of the rubber boom.\n\nYou fly to Manaus, usually via Brasília. In the late afternoon your guide shows you the Teatro Amazonas and the square in front of it.\n\nSCHEDULE (approximate times)\nMorning – Flight to Manaus.\n16:00 – Teatro Amazonas.\n18:00 – Check-in.\n\nGOOD TO KNOW\n• Manaus is 1 hour behind Salvador.\n\nINCLUDED: transfers, flight, guide, theatre entry.\nNOT INCLUDED: lunch, dinner.\n\nOvernight: hotel in Manaus.\nMeals: breakfast.",
+    "stops": [
+     {
+      "name": "Teatro Amazonas",
+      "duration": "About 1 hour",
+      "description": "The opera house of the rubber boom.",
+      "image": "Q:Teatro Amazonas"
+     }
+    ]
+   },
+   {
+    "name": "The Meeting of the Waters, the flooded forest and pink dolphins",
+    "description": "What to expect: a day on the Amazon by private boat.\n\nYour private boat takes you to the Meeting of the Waters, Janauari lake and its giant water lilies, a canoe through the flooded forest, lunch in a floating restaurant and the pink river dolphins of the Rio Negro.\n\nSCHEDULE (approximate times)\n08:00 – Adolpho Lisboa market.\n09:00 – Meeting of the Waters.\n10:30 – Water lilies and canoe.\n12:30 – Lunch.\n14:00 – Pink dolphins.\n16:00 – Back at your hotel.\n\nGOOD TO KNOW\n• Bring insect repellent and a hat.\n\nINCLUDED: boat, guide, canoe, lunch.\nNOT INCLUDED: drinks.\n\nOvernight: hotel in Manaus.\nMeals: breakfast, lunch.",
+    "stops": [
+     {
+      "name": "Meeting of the Waters",
+      "duration": "About 45 minutes",
+      "description": "Two rivers side by side.",
+      "image": "Q:Meeting of Waters Manaus"
+     }
+    ]
+   },
+   {
+    "name": "Departure from Manaus",
+    "description": "What to expect: a private transfer to the airport.\n\nAfter breakfast, your driver takes you to Manaus airport for your onward flight. An extension to a jungle lodge or the Pantanal can be added.\n\nSCHEDULE (approximate times)\nAs needed – Transfer to the airport.\n\nGOOD TO KNOW\n• International connections are usually via São Paulo.\n\nINCLUDED: airport transfer.\nNOT INCLUDED: lunch.\n\nOvernight: none.\nMeals: breakfast.",
+    "stops": [
+     {
+      "name": "Manaus",
+      "duration": "Free time",
+      "description": "A last look at the Rio Negro.",
+      "image": "Q:Teatro Amazonas"
+     }
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "question": "How does booking on request work?",
+    "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability, hotels and the final price by email within 24 hours, and you pay online only when the tour is confirmed."
+   },
+   {
+    "question": "Are the domestic flights included?",
+    "answer": "Yes, four domestic flights in economy with a checked bag."
+   },
+   {
+    "question": "Can the order be changed?",
+    "answer": "Yes. We can reverse the route or start in Manaus, depending on your international flights."
+   },
+   {
+    "question": "Do we need a passport for Argentina?",
+    "answer": "Yes, for the Argentine side of Iguazu. Check whether you need a visa."
+   },
+   {
+    "question": "What kind of hotels are used?",
+    "answer": "Comfortable 4-star or boutique hotels in good locations; upgrades are available."
+   },
+   {
+    "question": "Can we add the Pantanal?",
+    "answer": "Yes. A 3- or 4-night jaguar safari from Cuiabá fits well after the Amazon."
+   },
+   {
+    "question": "Is it suitable for children?",
+    "answer": "Yes. We book family rooms and adapt the pace."
+   },
+   {
+    "question": "Is it suitable for people with limited mobility?",
+    "answer": "Largely. Tell us your needs and we will adapt the visits."
+   },
+   {
+    "question": "Do we need vaccinations?",
+    "answer": "Yellow fever vaccination is recommended for the Amazon and Iguazu; check with your doctor."
+   },
+   {
+    "question": "What should we wear?",
+    "answer": "Light clothes, a rain jacket, sun protection, comfortable shoes and a swimsuit."
+   },
+   {
+    "question": "What is the best time of year?",
+    "answer": "All year. April to October is drier in Rio and the Amazon; Iguazu is fullest from December to March."
+   },
+   {
+    "question": "Should we tip?",
+    "answer": "Tips are appreciated in Brazil but never required. If you were happy with your guide and driver, a small tip at the end of the day is a kind gesture."
+   },
+   {
+    "question": "What is the cancellation policy?",
+    "answer": "You can cancel free of charge up to 30 days before the tour starts. Flights are non-refundable once issued. Until your request is confirmed, nothing is charged at all."
+   }
+  ]
+ }
+}

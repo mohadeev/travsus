@@ -1,0 +1,189 @@
+{
+ "key": "brazil-rio-santa-teresa-tijuca-forest-tour",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {
+  "city": "Rio de Janeiro",
+  "state": "Rio de Janeiro",
+  "country": "Brazil",
+  "countryCode": "BR",
+  "timeZone": "America/Sao_Paulo",
+  "streetAddress": "Your hotel in Rio de Janeiro",
+  "geoCoordinates": {
+   "lat": -22.9205,
+   "log": -43.188
+  }
+ },
+ "slug": "/en-US/brazil/rio-de-janeiro/tours/rio-de-janeiro-private-tour-santa-teresa-the-tijuca-forest-and-the-historic-centre",
+ "tour": {
+  "name": "Rio de Janeiro Private Tour: Santa Teresa, the Tijuca Forest & the Historic Centre",
+  "subtitle": "A greener, slower side of Rio with a licensed guide and car: the hilltop district of Santa Teresa and its old tram, a walk in the Tijuca forest, one of the largest urban forests in the world, the Vista Chinesa and the Cascatinha waterfall, and the historic centre's Confeitaria Colombo and Real Gabinete Português de Leitura.",
+  "seoTitle": "Rio Private Tour: Santa Teresa & Tijuca Forest | TRAVSUS",
+  "metaDescription": "Private Rio tour with licensed guide and car: Santa Teresa and its tram, the Tijuca forest with the Cascatinha waterfall and the Vista Chinesa, the Botanical Garden, and the historic centre's cafés and libraries.",
+  "tags": [
+   "Tijuca Forest",
+   "Santa Teresa",
+   "Rio de Janeiro",
+   "Botanical Garden",
+   "Historic centre",
+   "Brazil private tour"
+  ],
+  "highlights": [
+   "A walk in the Tijuca forest, replanted by hand in the 19th century",
+   "The Cascatinha Taunay waterfall and the Vista Chinesa viewpoint",
+   "The cobbled streets, mansions and studios of Santa Teresa",
+   "A ride on the yellow bondinho tram",
+   "The royal palms of the Botanical Garden",
+   "Coffee and pastries at the Belle Époque Confeitaria Colombo",
+   "The Real Gabinete Português de Leitura, one of the world’s most beautiful libraries"
+  ],
+  "duration": 1,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "Behind Rio's beaches rise the forested mountains of the Tijuca National Park. In the 19th century coffee plantations had stripped these slopes bare, threatening the city's water supply; from 1861 Major Manuel Gomes Archer and a handful of workers replanted them with tens of thousands of trees, creating one of the largest urban forests in the world. Below the forest, the hill district of Santa Teresa grew into a neighbourhood of mansions, artists' studios and steep streets served by Brazil's oldest tram line.\n\nThis private day shows that side of Rio with a licensed guide and a car: Santa Teresa and its tram, a walk in the forest with waterfalls and viewpoints, the Botanical Garden, and two treasures of the historic centre.\n\nAT A GLANCE\n• Duration: about 8 hours\n• Start and end: your hotel in Rio de Janeiro\n• Type: private tour with licensed guide, car and driver\n• Booking: on request – we confirm availability and the final price by email within 24 hours, and you pay only then\n• Level: easy to moderate; a gentle forest walk\n\nWHAT YOU SEE\n• Santa Teresa and the bondinho tram.\n• The Tijuca forest, the Cascatinha and the Vista Chinesa.\n• The Botanical Garden.\n• The Confeitaria Colombo.\n• The Real Gabinete Português de Leitura.\n\nWHY THIS WORKS\nYour guide knows which trails suit your pace and which viewpoints are clear, and the car links the forest, the garden and the centre without the traffic stress.\n\nWHO IT SUITS\nNature lovers, returning visitors, families and anyone who has already seen Christ the Redeemer and Sugarloaf.\n\nWHO MAY PREFER ANOTHER TOUR\nFor the classic sights, choose our Christ the Redeemer and Sugarloaf tour.\n\nPRACTICAL INFORMATION\nThe forest walk is about 1 hour on easy trails; wear closed shoes and insect repellent. The library and the Confeitaria are closed on Sundays, when the route is adapted.",
+  "inclusions": {
+   "standard": {
+    "private": [
+     "Pick-up and drop-off at your hotel in Rio",
+     "Private car and driver",
+     "Licensed private guide",
+     "Botanical Garden entrance",
+     "Santa Teresa tram ticket",
+     "Coffee and pastry at the Confeitaria Colombo",
+     "Bottled water"
+    ],
+    "shared": [
+     "Hotel pick-up",
+     "Licensed guide",
+     "Entrance tickets",
+     "Coffee and pastry"
+    ]
+   }
+  },
+  "pricingTiers": [
+   {
+    "transportType": "Sedan / SUV",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png",
+    "minSeats": 1,
+    "maxSeats": 4,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 290,
+     "pricePerDay": 290
+    }
+   },
+   {
+    "transportType": "Minivan",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png",
+    "minSeats": 5,
+    "maxSeats": 8,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 480,
+     "pricePerDay": 480
+    }
+   },
+   {
+    "transportType": "Mini Bus",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png",
+    "minSeats": 9,
+    "maxSeats": 19,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 900,
+     "pricePerDay": 900
+    }
+   }
+  ],
+  "images": [
+   "Q:Tijuca Forest",
+   "Q:Escadaria Selaron",
+   "Q:Tijuca Forest#2",
+   "Q:Christ the Redeemer Rio#3",
+   "Q:Tijuca Forest#3"
+  ],
+  "days": [
+   {
+    "name": "Santa Teresa and its tram, the Tijuca forest, the Botanical Garden and the historic centre",
+    "description": "What to expect: Rio's hills, forest and historic cafés, with a licensed guide, private car, tickets and a coffee break.\n\nYour guide and driver collect you at about 8:30 and drive up to Santa Teresa. You ride the yellow bondinho tram, which has climbed the hill since the 1870s, and walk through cobbled streets of colonial and Belle Époque mansions, artists' studios and small bars, with views down to the bay. You pass the Parque das Ruínas, the shell of a mansion that was once a salon for artists and intellectuals.\n\nYou then drive into the Tijuca National Park. A walk of about an hour leads along shady trails, among giant trees, bromeliads and tree ferns, where marmosets and toucans are often seen, to the Cascatinha Taunay, a 35-metre waterfall. You stop at the Mayrink Chapel, with panels by the painter Candido Portinari, and at the Vista Chinesa, a pagoda-shaped viewpoint looking over the lagoon, Ipanema and Sugarloaf.\n\nAfter lunch (not included), you visit the Botanical Garden, founded in 1808 by the Portuguese prince regent João, with its avenue of royal palms, orchid house and giant Amazon water lilies. In the historic centre you stop at the Confeitaria Colombo, a Belle Époque café of mirrors and stained glass opened in 1894, for coffee and a pastry, and step into the Real Gabinete Português de Leitura, a neo-Manueline reading room with tens of thousands of books on carved wooden galleries.\n\nSCHEDULE (approximate times)\n08:30 – Pick-up at your hotel.\n09:00 – Santa Teresa and the tram.\n10:30 – Tijuca forest walk and the Cascatinha.\n12:00 – Vista Chinesa.\n12:30 – Lunch break.\n14:00 – Botanical Garden.\n15:30 – Confeitaria Colombo.\n16:15 – Real Gabinete Português de Leitura.\n17:00 – Back at your hotel.\n\nGOOD TO KNOW\n• A longer hike, such as the Pedra Bonita or Pico da Tijuca, can be arranged.\n• Bring insect repellent for the forest.\n• The Selarón steps are close to Santa Teresa and can be added.\n\nINCLUDED: private car and driver, licensed guide, tram and garden tickets, coffee and pastry, bottled water, hotel pick-up and drop-off.\nNOT INCLUDED: lunch, tips.\n\nOvernight: none.\nMeals: coffee and pastry.",
+    "stops": [
+     {
+      "name": "Santa Teresa",
+      "duration": "About 1 hour 30 minutes",
+      "description": "Tram, mansions and studios.",
+      "image": "Q:Escadaria Selaron"
+     },
+     {
+      "name": "Tijuca forest",
+      "duration": "About 2 hours",
+      "description": "Trails, waterfall and viewpoints.",
+      "image": "Q:Tijuca Forest"
+     },
+     {
+      "name": "Botanical Garden",
+      "duration": "About 1 hour 15 minutes",
+      "description": "Royal palms and water lilies."
+     },
+     {
+      "name": "Historic centre",
+      "duration": "About 1 hour",
+      "description": "The Confeitaria Colombo and the reading room."
+     }
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "question": "How does booking on request work?",
+    "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability and the final price by email within 24 hours, and you pay online only when the tour is confirmed."
+   },
+   {
+    "question": "Is the forest walk difficult?",
+    "answer": "No. About an hour on mostly flat, shady trails. Longer hikes can be arranged."
+   },
+   {
+    "question": "Will we see wildlife?",
+    "answer": "Often marmosets, coatis, toucans and butterflies. Sightings are never guaranteed."
+   },
+   {
+    "question": "Is lunch included?",
+    "answer": "No, but coffee and a pastry at the Confeitaria Colombo are. Your guide suggests a restaurant for lunch."
+   },
+   {
+    "question": "Can we add Christ the Redeemer?",
+    "answer": "Yes. Corcovado is inside the Tijuca park; the cog train or vans can be added."
+   },
+   {
+    "question": "Is it suitable for children?",
+    "answer": "Yes. Children enjoy the tram, the forest and the monkeys. Child seats are provided free of charge on request."
+   },
+   {
+    "question": "Is it suitable for people with limited mobility?",
+    "answer": "Partly. Santa Teresa is steep and cobbled; the forest walk can be shortened to viewpoints by car."
+   },
+   {
+    "question": "Does the tour run on Sundays?",
+    "answer": "Yes, but the library and the Confeitaria are closed, so we visit the Selarón steps and the Parque Lage instead."
+   },
+   {
+    "question": "Is Santa Teresa safe?",
+    "answer": "Yes, with your guide. Stay on the main streets and keep valuables out of sight."
+   },
+   {
+    "question": "What should we wear?",
+    "answer": "Light clothes, closed walking shoes, insect repellent and sun protection."
+   },
+   {
+    "question": "What is the best time of year?",
+    "answer": "All year. The forest is coolest and greenest from April to October."
+   },
+   {
+    "question": "Should we tip?",
+    "answer": "Tips are appreciated in Brazil but never required. If you were happy with your guide and driver, a small tip at the end of the day is a kind gesture."
+   },
+   {
+    "question": "What is the cancellation policy?",
+    "answer": "You can cancel free of charge up to 24 hours before the tour. Until your request is confirmed, nothing is charged at all."
+   }
+  ]
+ }
+}
