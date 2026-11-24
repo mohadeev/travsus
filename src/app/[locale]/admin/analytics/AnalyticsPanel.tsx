@@ -1,6 +1,7 @@
 'use client'
 // Analytics panel: live visitors (every 5 s), then reports for a time range,
 // and any visit opened step by step.
+import { momentEmoji } from '@/lib/analytics/mood'
 import { Fragment, useCallback, useEffect, useState, type ReactNode } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { AlertTriangle, ArrowRight, Eye, Globe2, Laptop, MousePointerClick, RefreshCw, Search, Smartphone, Tablet, UserPlus, X } from 'lucide-react'
@@ -32,6 +33,13 @@ const pct = (x: number) => `${Math.round(x * 100)}%`
 const time = (iso: string) => new Date(iso).toLocaleString('en-GB', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })
 const clock = (iso: string) => new Date(iso).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit' })
 const stripLocale = (p?: string | null) => (p ?? '').replace(/^\/[a-z]{2}-[A-Z]{2}(?=\/|$)/, '') || '/'
+/** The face for how a visit went (see lib/analytics/mood) */
+const Face = ({ mood }: { mood?: { emoji: string; label: string; score: number } }) =>
+	mood ? (
+		<span title={`${mood.label} experience (${mood.score}/100)`} className="text-base leading-none" role="img" aria-label={mood.label}>
+			{mood.emoji}
+		</span>
+	) : null
 const DeviceIcon = ({ device }: { device?: string }) =>
 	device === 'mobile' ? <Smartphone className="h-4 w-4" /> : device === 'tablet' ? <Tablet className="h-4 w-4" /> : <Laptop className="h-4 w-4" />
 
@@ -148,7 +156,7 @@ export default function AnalyticsPanel() {
 										</td>
 										<td className="py-3 pr-4 tabular-nums">{duration(v.on_site_seconds)}</td>
 										<td className="py-3 pr-4 tabular-nums">
-											{v.pageviews}
+											<Face mood={v.mood} /> {v.pageviews}
 											{v.errors > 0 && <span className="ml-2 text-amber-300">⚠ {v.errors}</span>}
 										</td>
 										<td className="py-3 pr-4">{v.source ?? 'direct'}</td>
@@ -193,6 +201,26 @@ export default function AnalyticsPanel() {
 							</div>
 						))}
 					</section>
+
+					{/* How visits went: share of each face */}
+					{data.moods?.length > 0 && (
+						<Card title="Visitor experience" className="mt-4">
+							<div className="flex flex-wrap gap-3">
+								{data.moods.map((m: any) => (
+									<div key={m.label} className="flex items-center gap-3 rounded-3xl bg-neutral-100 px-5 py-3 dark:bg-neutral-900">
+										<span className="text-3xl leading-none">{m.emoji}</span>
+										<span>
+											<span className="block text-xs text-neutral-500">{m.label}</span>
+											<span className="block text-xl font-bold tabular-nums">
+												{m.count} <span className="text-sm font-medium text-neutral-500">{pct(m.count / Math.max(1, data.kpis?.visits ?? data.recent.length))}</span>
+											</span>
+										</span>
+									</div>
+								))}
+							</div>
+							<p className="mt-3 text-xs text-neutral-500">Errors and rage clicks (3+ clicks on the same spot within a second) lower the score; searches, bookings and longer visits raise it.</p>
+						</Card>
+					)}
 
 					{/* Visits over time */}
 					<Card title="Visits over time" className="mt-4">
@@ -317,6 +345,7 @@ export default function AnalyticsPanel() {
 										</span>
 										<span className="min-w-0 flex-1 truncate text-sm">{v.pages.length ? v.pages.join('  →  ') : v.landing}</span>
 										<span className="flex shrink-0 items-center gap-3 text-sm text-neutral-500">
+											<Face mood={v.mood} />
 											{v.errors > 0 && <span className="text-amber-600">⚠ {v.errors}</span>}
 											<DeviceIcon device={v.device} />
 											{v.source}
@@ -471,6 +500,7 @@ function VisitDrawer({ id, onClose, onOpen }: { id: string | null; onClose: () =
 											</div>
 										))}
 									</dl>
+									<ExperienceLine visit={visit} />
 									{visit.history?.length > 1 && (
 										<>
 											<h3 className="mt-8 font-bold">All visits by this person ({visit.history.length})</h3>
@@ -500,6 +530,7 @@ function VisitDrawer({ id, onClose, onOpen }: { id: string | null; onClose: () =
 																<span>{h.pageviews} page{h.pageviews === 1 ? '' : 's'}</span>
 																<span className="tabular-nums">{duration(h.duration)}</span>
 																{h.signedIn && <span>signed in</span>}
+																<Face mood={h.mood} />
 																{h.errors > 0 && <span className="text-amber-600">⚠ {h.errors}</span>}
 															</span>
 															{h.pages.length > 0 && (
@@ -515,7 +546,7 @@ function VisitDrawer({ id, onClose, onOpen }: { id: string | null; onClose: () =
 									<ol className="mt-4 space-y-3 border-l-2 border-neutral-200 pl-5 dark:border-neutral-800">
 										{visit.events.map((e: any, i: number) => (
 											<li key={i} className="relative text-sm">
-												<span className={`absolute -left-[27px] top-1 h-3 w-3 rounded-full ${e.type === 'error' ? 'bg-amber-500' : e.type === 'pageview' ? 'bg-neutral-950 dark:bg-white' : 'bg-neutral-300 dark:bg-neutral-700'}`} />
+												<span className={`absolute -left-[27px] top-1 h-3 w-3 rounded-full ${e.type === 'error' ? 'bg-amber-500' : e.type === 'rage' ? 'bg-red-500' : e.type === 'pageview' ? 'bg-neutral-950 dark:bg-white' : 'bg-neutral-300 dark:bg-neutral-700'}`} />
 												<span className="text-xs text-neutral-500">{clock(e.created_at)}</span>
 												{e.type === 'pageview' && <p className="font-semibold">Opened {stripLocale(e.path)}</p>}
 												{e.type === 'leave' && (
@@ -525,6 +556,11 @@ function VisitDrawer({ id, onClose, onOpen }: { id: string | null; onClose: () =
 												)}
 												{e.type === 'click' && <p>Clicked “{e.data?.text || e.data?.href}”</p>}
 												{e.type === 'search' && <p>Searched “{e.data?.q}”</p>}
+												{e.type === 'rage' && (
+													<p className="font-semibold text-red-600">😡 Clicked {e.data?.clicks ?? 3}+ times quickly on “{e.data?.text || 'the page'}”</p>
+												)}
+												{e.type === 'booking_start' && <p className="font-semibold text-emerald-600">😍 Started a booking</p>}
+												{e.type === 'signup_open' && <p className="text-emerald-600">Opened sign-up</p>}
 												{e.type === 'error' && (
 													<p className="text-amber-700 dark:text-amber-400">
 														Error: <span className="font-mono text-xs">{e.data?.message}</span>
@@ -533,6 +569,7 @@ function VisitDrawer({ id, onClose, onOpen }: { id: string | null; onClose: () =
 											</li>
 										))}
 									</ol>
+									<VisitErrors events={visit.events} />
 								</>
 							)}
 						</Dialog.Panel>
@@ -540,5 +577,126 @@ function VisitDrawer({ id, onClose, onOpen }: { id: string | null; onClose: () =
 				</div>
 			</Dialog>
 		</Transition>
+	)
+}
+
+/** The errors of one visit, in full, at the bottom of the visit panel: when, on which page, the message and where in the code. */
+function VisitErrors({ events }: { events: any[] }) {
+	const errors = events.filter((e) => e.type === 'error')
+	const [copied, setCopied] = useState(false)
+	const text = errors
+		.map((e) => `${e.created_at} ${e.path}\n${e.data?.message ?? ''}${e.data?.source ? `\n  at ${e.data.source}:${e.data.line ?? 0}` : ''}`)
+		.join('\n\n')
+	const copy = () => {
+		navigator.clipboard?.writeText(text).then(
+			() => {
+				setCopied(true)
+				setTimeout(() => setCopied(false), 2000)
+			},
+			() => window.prompt('Copy the errors:', text),
+		)
+	}
+
+	return (
+		<section className="mt-10 border-t border-neutral-200 pt-6 dark:border-neutral-800">
+			<div className="flex items-center justify-between gap-3">
+				<h3 className="font-bold">
+					Errors in this visit {errors.length > 0 && <span className="text-amber-600">({errors.length})</span>}
+				</h3>
+				{errors.length > 0 && (
+					<button type="button" onClick={copy} className="rounded-full bg-neutral-100 px-3 py-1.5 text-xs font-semibold hover:bg-neutral-200 dark:bg-neutral-900 dark:hover:bg-neutral-800">
+						{copied ? 'Copied' : 'Copy all'}
+					</button>
+				)}
+			</div>
+			{errors.length === 0 ? (
+				<p className="mt-3 text-sm text-neutral-500">No errors in this visit. 🎉</p>
+			) : (
+				<ol className="mt-4 space-y-3">
+					{errors.map((e, i) => (
+						<li key={i} className="rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm dark:border-amber-900 dark:bg-amber-950/40">
+							<div className="flex flex-wrap items-center justify-between gap-2 text-xs text-amber-800 dark:text-amber-300">
+								<span className="font-semibold">{stripLocale(e.path ?? '')}</span>
+								<span>{clock(e.created_at)}</span>
+							</div>
+							<p className="mt-2 whitespace-pre-wrap break-words font-mono text-xs text-amber-950 dark:text-amber-100">{e.data?.message || 'Unknown error'}</p>
+							{e.data?.source && (
+								<p className="mt-1 font-mono text-[11px] text-amber-700 dark:text-amber-400">
+									at {e.data.source}
+									{e.data.line ? `:${e.data.line}` : ''}
+								</p>
+							)}
+						</li>
+					))}
+				</ol>
+			)}
+		</section>
+	)
+}
+
+/**
+ * The visit as one green line from first to last second, like a session
+ * replay bar: each page is a tick, and faces mark the moments that went well
+ * (searches, bookings) or badly (errors, rage clicks). Hover a face for details.
+ */
+function ExperienceLine({ visit }: { visit: any }) {
+	const events: any[] = visit.events ?? []
+	if (!events.length) return null
+	const start = new Date(visit.session.started_at).getTime()
+	const end = Math.max(new Date(visit.session.last_seen_at).getTime(), ...events.map((e) => new Date(e.created_at).getTime()), start + 1000)
+	const at = (iso: string) => Math.min(100, Math.max(0, ((new Date(iso).getTime() - start) / (end - start)) * 100))
+	const pages = events.filter((e) => e.type === 'pageview')
+	const moments = events
+		.map((e) => ({ e, emoji: momentEmoji(e.type) }))
+		.filter((m) => m.emoji)
+	const describe = (e: any) =>
+		e.type === 'rage'
+			? `Rage clicks on “${e.data?.text || 'the page'}”`
+			: e.type === 'error'
+				? `Error: ${e.data?.message ?? ''}`
+				: e.type === 'search'
+					? `Searched “${e.data?.q ?? ''}”`
+					: e.type === 'booking_start'
+						? 'Started a booking'
+						: 'Opened sign-up'
+
+	return (
+		<section className="mt-8">
+			<div className="flex items-center justify-between">
+				<h3 className="font-bold">Experience</h3>
+				{visit.mood && (
+					<span className="flex items-center gap-2 text-sm font-semibold">
+						<span className="text-2xl leading-none">{visit.mood.emoji}</span>
+						{visit.mood.label} · {visit.mood.score}/100
+					</span>
+				)}
+			</div>
+			<div className="relative mt-8 mb-2 h-2 rounded-full bg-emerald-500">
+				{pages.map((p, i) => (
+					<span
+						key={`p${i}`}
+						title={`${clock(p.created_at)} · ${stripLocale(p.path)}`}
+						className="absolute top-1/2 h-4 w-0.5 -translate-y-1/2 rounded bg-emerald-800 dark:bg-emerald-200"
+						style={{ left: `${at(p.created_at)}%` }}
+					/>
+				))}
+				{moments.map(({ e, emoji }, i) => (
+					<span
+						key={`m${i}`}
+						title={`${clock(e.created_at)} · ${describe(e)} · ${stripLocale(e.path)}`}
+						className="absolute -top-7 -translate-x-1/2 cursor-help text-xl leading-none drop-shadow"
+						style={{ left: `${at(e.created_at)}%` }}
+					>
+						{emoji}
+					</span>
+				))}
+			</div>
+			<div className="flex justify-between text-xs text-neutral-500">
+				<span>{clock(visit.session.started_at)}</span>
+				<span>{duration((end - start) / 1000)}</span>
+				<span>{clock(new Date(end).toISOString())}</span>
+			</div>
+			{moments.length === 0 && <p className="mt-2 text-xs text-neutral-500">No errors or rage clicks in this visit.</p>}
+		</section>
 	)
 }

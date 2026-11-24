@@ -2,6 +2,29 @@
 // analytics_events (and new accounts from users). Server only.
 import 'server-only'
 import { db, T, must } from '@/lib/db'
+import { GOOD_EVENTS, visitMood } from '@/lib/analytics/mood'
+
+/** Rage clicks and good moments per visit, from a list of events. */
+function signals(events: any[]) {
+	const bySession = new Map<string, { rage: number; good: number }>()
+	for (const e of events) {
+		if (e.type !== 'rage' && !GOOD_EVENTS.has(e.type)) continue
+		const s = bySession.get(e.session_id) ?? { rage: 0, good: 0 }
+		if (e.type === 'rage') s.rage += 1
+		else s.good += 1
+		bySession.set(e.session_id, s)
+	}
+	return bySession
+}
+
+const moodOf = (s: any, sig?: { rage: number; good: number }, duration?: number) =>
+	visitMood({
+		errors: s.errors ?? 0,
+		rage: sig?.rage ?? 0,
+		good: sig?.good ?? 0,
+		pageviews: s.pageviews ?? 0,
+		duration: duration ?? Math.max(0, (new Date(s.last_seen_at).getTime() - new Date(s.started_at).getTime()) / 1000),
+	})
 
 const LIVE_SECONDS = 60 // seen in the last minute = online now
 const MAX_ROWS = 50_000
@@ -52,8 +75,21 @@ export async function liveVisitors() {
 			.order('started_at', { ascending: true }),
 	) as any[]
 	const emails = await emailsOf(sessions.map((s) => s.user_id))
+	const liveSig = sessions.length
+		? signals(
+				(must(
+					await db
+						.from(T.analyticsEvents)
+						.select('session_id, type')
+						.in('session_id', sessions.map((s) => s.id))
+						.in('type', ['rage', 'search', 'booking_start', 'signup_open'])
+						.limit(2000),
+				) ?? []) as any[],
+			)
+		: new Map()
 	return sessions.map((s) => ({
 		...s,
+		mood: moodOf(s, liveSig.get(s.id)),
 		email: emails.get(s.user_id)?.email ?? null,
 		on_site_seconds: seconds(s.started_at, new Date().toISOString()),
 	}))
@@ -76,7 +112,7 @@ export async function report(days: number) {
 				.from(T.analyticsEvents)
 				.select('session_id, created_at, type, path, duration_ms, scroll, data')
 				.gte('created_at', since)
-				.in('type', ['pageview', 'leave', 'error', 'click', 'search'])
+				.in('type', ['pageview', 'leave', 'error', 'click', 'search', 'rage', 'booking_start', 'signup_open'])
 				.order('id', { ascending: true })
 				.range(from, to),
 		),
@@ -86,6 +122,7 @@ export async function report(days: number) {
 	const pageviews = events.filter((e) => e.type === 'pageview')
 	const leaves = events.filter((e) => e.type === 'leave' && e.duration_ms != null)
 	const errors = events.filter((e) => e.type === 'error')
+	const sig = signals(events)
 	const durations = sessions.map((s) => seconds(s.started_at, s.last_seen_at))
 	const avg = (xs: number[]) => (xs.length ? xs.reduce((a, b) => a + b, 0) / xs.length : 0)
 
@@ -222,6 +259,16 @@ export async function report(days: number) {
 		searches: countBy(events.filter((e) => e.type === 'search'), (e) => String(e.data?.q ?? '').toLowerCase().trim()).slice(0, 20),
 		clicks: countBy(events.filter((e) => e.type === 'click'), (e) => (e.data?.text ? `${e.data.text}` : e.data?.href ?? null)).slice(0, 20),
 		signups,
+		moods: (() => {
+			const counts = new Map<string, { emoji: string; label: string; count: number }>()
+			for (const s of sessions) {
+				const m = moodOf(s, sig.get(s.id))
+				const c = counts.get(m.label) ?? { emoji: m.emoji, label: m.label, count: 0 }
+				c.count += 1
+				counts.set(m.label, c)
+			}
+			return ['Great', 'Good', 'Neutral', 'Struggling', 'Frustrated'].map((l) => counts.get(l)).filter(Boolean)
+		})(),
 		recent: sessions.slice(0, 100).map((s) => ({
 			id: s.id,
 			started_at: s.started_at,
@@ -234,6 +281,8 @@ export async function report(days: number) {
 			browser: s.browser,
 			pageviews: s.pageviews,
 			errors: s.errors,
+			rage: sig.get(s.id)?.rage ?? 0,
+			mood: moodOf(s, sig.get(s.id)),
 			landing: pagePath(s.landing_path),
 			pages: (pathsBySession.get(s.id) ?? []).slice(0, 8),
 			email: emails.get(s.user_id)?.email ?? null,
@@ -256,8 +305,11 @@ export async function visitDetail(id: string) {
 		? (await db.from(T.analyticsSessions).select('id', { count: 'exact', head: true }).eq('visitor_id', session.visitor_id)).count
 		: null
 	const history = await visitHistory(session)
+	const detailSig = signals(events.map((e) => ({ ...e, session_id: id }))).get(id)
 	return {
 		session: { ...session, email: user?.email ?? null, accountCreated: user?.createdAt ?? null },
+		mood: moodOf(session, detailSig),
+		rage: detailSig?.rage ?? 0,
 		events,
 		visits: Math.max(visits ?? 0, history.length) || visits,
 		history,
@@ -284,11 +336,19 @@ async function visitHistory(session: any) {
 	// The pages of each visit, in order
 	const pages = new Map<string, string[]>()
 	const ids = sessions.map((s) => s.id)
+	let histSig = new Map<string, { rage: number; good: number }>()
 	if (ids.length > 1) {
 		const views = (must(
-			await db.from(T.analyticsEvents).select('session_id, path, created_at').in('session_id', ids).eq('type', 'pageview').order('created_at').limit(3000),
+			await db
+				.from(T.analyticsEvents)
+				.select('session_id, type, path, created_at')
+				.in('session_id', ids)
+				.in('type', ['pageview', 'rage', 'search', 'booking_start', 'signup_open'])
+				.order('created_at')
+				.limit(4000),
 		) ?? []) as any[]
-		for (const v of views) pages.set(v.session_id, [...(pages.get(v.session_id) ?? []), v.path])
+		for (const v of views) if (v.type === 'pageview') pages.set(v.session_id, [...(pages.get(v.session_id) ?? []), v.path])
+		histSig = signals(views)
 	}
 	return sessions.map((s, i) => ({
 		number: i + 1,
@@ -298,6 +358,7 @@ async function visitHistory(session: any) {
 		duration: Math.max(0, (new Date(s.last_seen_at).getTime() - new Date(s.started_at).getTime()) / 1000),
 		pageviews: s.pageviews ?? 0,
 		errors: s.errors ?? 0,
+		mood: moodOf(s, histSig.get(s.id)),
 		source: s.source ?? 'direct',
 		device: s.device ?? null,
 		country: s.country ?? null,
