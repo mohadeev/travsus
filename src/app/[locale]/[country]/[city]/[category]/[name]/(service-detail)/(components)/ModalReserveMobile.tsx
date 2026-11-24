@@ -1,4 +1,5 @@
-import React, { FC, Fragment, useState } from 'react'
+import React, { FC, Fragment, useEffect, useState } from 'react'
+import { SIGN_IN_OPENING_EVENT } from '@/app/hooks/useAuthAction'
 import { Dialog, Transition } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/solid'
 import RenderSidebar from '../[listingExperiencesDetail]/RenderSideBar/RenderSidebar'
@@ -35,6 +36,12 @@ const ModalReserveMobile: FC<ModalReserveMobileProps> = ({
 		closeModal()
 		dispatch(setMobileReserveOpen(false))
 	}
+	// Close when the sign-in window opens (it would be hidden behind this sheet)
+	useEffect(() => {
+		const close = () => haneleClose(closeModal)
+		window.addEventListener(SIGN_IN_OPENING_EVENT, close)
+		return () => window.removeEventListener(SIGN_IN_OPENING_EVENT, close)
+	}, []) // eslint-disable-line react-hooks/exhaustive-deps
 	return (
 		<>
 			{renderButtonOpenModal()}

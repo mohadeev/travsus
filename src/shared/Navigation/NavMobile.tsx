@@ -8,6 +8,7 @@ import { ArrowUpRight, Instagram, Search, X } from 'lucide-react'
 import Logo from '@/shared/Logo'
 import { ACCOUNT_LINKS, CATEGORY_LINKS, CITY_LINKS } from '@/constants/siteNav'
 import LanguagePreferencesModal from '@/app/(client-components)/(Header)/LanguagePreferencesModal'
+import { openSignInOnTop } from '@/app/hooks/useAuthAction'
 
 export interface NavMobileProps {
 	onClickClose?: () => void
@@ -97,7 +98,7 @@ const NavMobile: React.FC<NavMobileProps> = ({ onClickClose }) => {
 								type="button"
 								onClick={() => {
 									onClickClose?.()
-									openSignIn({ forceRedirectUrl: window.location.href })
+									openSignInOnTop(openSignIn)
 								}}
 								className="rounded-full bg-neutral-950 py-3 text-sm font-semibold text-white dark:bg-white dark:text-ink"
 							>
