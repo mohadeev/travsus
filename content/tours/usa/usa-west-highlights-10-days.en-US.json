@@ -1,0 +1,293 @@
+{
+ "key": "united-states-usa-west-highlights-10-days",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {
+  "city": "San Francisco",
+  "state": "California",
+  "country": "United States",
+  "countryCode": "US",
+  "timeZone": "America/Los_Angeles",
+  "streetAddress": "San Francisco airport or your hotel in San Francisco",
+  "geoCoordinates": {
+   "lat": 37.7749,
+   "log": -122.4194
+  }
+ },
+ "slug": "/en-US/united-states/san-francisco/tours/usa-west-highlights-10-day-private-tour-san-francisco-yosemite-the-grand-canyon-antelope-canyon-and-las-vegas",
+ "tour": {
+  "name": "USA West Highlights 10-Day Private Tour: San Francisco, Yosemite, the Grand Canyon, Antelope Canyon & Las Vegas",
+  "subtitle": "Ten days through the American West with private guides: San Francisco and Alcatraz, Yosemite Valley, the lights of Las Vegas, the Hoover Dam and Route 66, the South Rim of the Grand Canyon, Horseshoe Bend and Antelope Canyon, Monument Valley and Zion National Park.",
+  "seoTitle": "USA West Highlights 10-Day Private Tour | TRAVSUS",
+  "metaDescription": "10-day private USA West tour: San Francisco, Yosemite, Las Vegas, the Grand Canyon South Rim, Horseshoe Bend, Antelope Canyon, Monument Valley and Zion. Flight, private guides, vehicles and 9 nights included.",
+  "tags": [
+   "USA West tour",
+   "Grand Canyon",
+   "Yosemite",
+   "Antelope Canyon",
+   "Las Vegas",
+   "USA 10 days"
+  ],
+  "highlights": [
+   "San Francisco, the Golden Gate Bridge and Alcatraz",
+   "Yosemite Valley, El Capitan and Half Dome",
+   "Sunset and sunrise at the Grand Canyon",
+   "Horseshoe Bend and a Navajo-guided Antelope Canyon",
+   "The buttes of Monument Valley",
+   "The red cliffs of Zion National Park",
+   "The Las Vegas Strip"
+  ],
+  "duration": 10,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "The American West holds some of the most spectacular landscapes on Earth. This private tour links the best of them: San Francisco and Yosemite in California, then, after a flight to Las Vegas, a loop through the canyon country of Arizona and Utah – the Grand Canyon, Horseshoe Bend, Antelope Canyon, Monument Valley and Zion.\n\nYou travel with private guides and vehicles, with a domestic flight, park fees, Navajo-guided tours and nine nights in well-located hotels, at a pace that leaves time for sunsets and sunrises at the great viewpoints.\n\nAT A GLANCE\n• Duration: 10 days, 9 nights\n• Start: San Francisco airport or your hotel\n• End: Las Vegas airport\n• Type: private tour with guides, private vehicles and a domestic flight; 9 nights with breakfast\n• Booking: on request – we confirm availability, hotels, flight and the final price by email within 24 hours, and you pay only then\n• Level: easy to moderate\n\nWHAT YOU SEE\n• San Francisco and Alcatraz.\n• Yosemite Valley.\n• Las Vegas and the Hoover Dam.\n• The Grand Canyon South Rim.\n• Horseshoe Bend and Antelope Canyon.\n• Monument Valley and Zion.\n\nWHY THIS WORKS\nThe route avoids backtracking and keeps driving days reasonable, with nights placed at the canyons for the best light.\n\nWHO IT SUITS\nFirst-time visitors to the American West, couples, families and small groups.\n\nWHO MAY PREFER ANOTHER TOUR\nFor the cities of the east, combine with New York and Washington.\n\nPRACTICAL INFORMATION\nVisitors to the United States need an ESTA or visa. Desert summers are very hot; spring and autumn are ideal.",
+  "inclusions": {
+   "standard": {
+    "private": [
+     "Private airport transfers",
+     "Domestic flight San Francisco–Las Vegas with a checked bag",
+     "9 nights with breakfast in 3- and 4-star hotels and lodges (3 in San Francisco, 2 in Las Vegas, 1 at the Grand Canyon, 1 in Page, 1 in Monument Valley, 1 at Zion)",
+     "Private guides and vehicles",
+     "National park entrances",
+     "Alcatraz tickets",
+     "Navajo-guided Antelope Canyon and Monument Valley tours",
+     "Bottled water"
+    ],
+    "shared": [
+     "Airport transfers",
+     "Domestic flight",
+     "9 nights with breakfast",
+     "Guides and vehicles",
+     "Park entrances",
+     "Navajo tours"
+    ]
+   }
+  },
+  "pricingTiers": [
+   {
+    "transportType": "Sedan / SUV",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png",
+    "minSeats": 1,
+    "maxSeats": 4,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 12900,
+     "pricePerDay": 1290
+    }
+   },
+   {
+    "transportType": "Minivan",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png",
+    "minSeats": 5,
+    "maxSeats": 8,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 22900,
+     "pricePerDay": 2290
+    }
+   },
+   {
+    "transportType": "Mini Bus",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png",
+    "minSeats": 9,
+    "maxSeats": 19,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 43900,
+     "pricePerDay": 4390
+    }
+   }
+  ],
+  "images": [
+   "Q:Golden Gate Bridge",
+   "Q:Grand Canyon South Rim",
+   "Q:Antelope Canyon",
+   "Q:Yosemite Valley",
+   "Q:Horseshoe Bend Arizona"
+  ],
+  "days": [
+   {
+    "name": "Arrival in San Francisco",
+    "description": "What to expect: a private welcome.\n\nYour driver meets you at the airport and takes you to your hotel. In the evening, walk to the waterfront or Union Square.\n\nSCHEDULE (approximate times)\nAny time – Airport transfer.\n\nGOOD TO KNOW\n• Your guide calls to confirm the next day.\n\nINCLUDED: airport transfer.\nNOT INCLUDED: dinner.\n\nOvernight: hotel in San Francisco.\nMeals: none.",
+    "stops": [
+     {
+      "name": "San Francisco",
+      "duration": "Free time",
+      "description": "The waterfront at dusk.",
+      "image": "Q:Golden Gate Bridge"
+     }
+    ]
+   },
+   {
+    "name": "San Francisco: Alcatraz, cable cars and the Golden Gate",
+    "description": "What to expect: the city's landmarks.\n\nAlcatraz, a cable car ride, Lombard Street, Chinatown, the Painted Ladies, the Golden Gate Bridge and the redwoods of Muir Woods.\n\nSCHEDULE (approximate times)\n08:15 – Alcatraz.\n11:30 – Cable car and Chinatown.\n14:30 – Golden Gate Bridge.\n15:30 – Muir Woods.\n\nGOOD TO KNOW\n• Bring a warm layer.\n\nINCLUDED: vehicle, guide, tickets.\nNOT INCLUDED: lunch.\n\nOvernight: hotel in San Francisco.\nMeals: breakfast.",
+    "stops": [
+     {
+      "name": "Alcatraz",
+      "duration": "About 2 hours 30 minutes",
+      "description": "The cellhouse.",
+      "image": "Q:Alcatraz Island"
+     },
+     {
+      "name": "Golden Gate Bridge",
+      "duration": "About 1 hour",
+      "description": "The classic view.",
+      "image": "Q:Golden Gate Bridge"
+     }
+    ]
+   },
+   {
+    "name": "Yosemite National Park",
+    "description": "What to expect: a day in Yosemite Valley.\n\nA day trip to Yosemite: Tunnel View, Bridalveil Fall, El Capitan, a picnic by the Merced River and the walk to Yosemite Falls.\n\nSCHEDULE (approximate times)\n06:00 – Departure.\n10:00 – Tunnel View.\n13:30 – Yosemite Falls.\n20:30 – Back in San Francisco.\n\nGOOD TO KNOW\n• A long day; the valley is worth it.\n\nINCLUDED: vehicle, guide, park entrance, lunch.\nNOT INCLUDED: dinner.\n\nOvernight: hotel in San Francisco.\nMeals: breakfast, lunch.",
+    "stops": [
+     {
+      "name": "Tunnel View",
+      "duration": "About 30 minutes",
+      "description": "The valley panorama.",
+      "image": "Q:Yosemite Valley"
+     }
+    ]
+   },
+   {
+    "name": "Fly to Las Vegas",
+    "description": "What to expect: the desert city of lights.\n\nYou fly to Las Vegas, about 1 hour 30 minutes. In the evening, your guide shows you the Strip: the fountains of the Bellagio, the casinos and the lights of Fremont Street.\n\nSCHEDULE (approximate times)\nMorning – Flight to Las Vegas.\n19:00 – Evening on the Strip.\n\nGOOD TO KNOW\n• Shows can be booked in advance.\n\nINCLUDED: transfers, flight, evening guide.\nNOT INCLUDED: lunch, dinner.\n\nOvernight: hotel in Las Vegas.\nMeals: breakfast.",
+    "stops": [
+     {
+      "name": "Las Vegas Strip",
+      "duration": "Evening",
+      "description": "Fountains and lights.",
+      "image": "Q:Las Vegas Strip"
+     }
+    ]
+   },
+   {
+    "name": "The Hoover Dam, Route 66 and sunset at the Grand Canyon",
+    "description": "What to expect: the road to the canyon.\n\nYou drive past the Hoover Dam and along Route 66 to the South Rim: Mather Point, the Rim Trail and sunset at Hopi Point. You sleep near the rim.\n\nSCHEDULE (approximate times)\n08:00 – Departure.\n08:45 – Hoover Dam.\n11:30 – Route 66.\n14:00 – South Rim.\nSunset – Hopi Point.\n\nGOOD TO KNOW\n• It is cooler at the rim.\n\nINCLUDED: vehicle, guide, park entrance.\nNOT INCLUDED: lunch, dinner.\n\nOvernight: lodge at the Grand Canyon.\nMeals: breakfast.",
+    "stops": [
+     {
+      "name": "Grand Canyon South Rim",
+      "duration": "Afternoon",
+      "description": "The rim at sunset.",
+      "image": "Q:Grand Canyon South Rim"
+     }
+    ]
+   },
+   {
+    "name": "Sunrise at the Grand Canyon, Desert View and Horseshoe Bend",
+    "description": "What to expect: the canyon at dawn and the Colorado at sunset.\n\nSunrise over the canyon, the Desert View Watchtower, and the drive across the Navajo Nation to Page for sunset at Horseshoe Bend.\n\nSCHEDULE (approximate times)\nSunrise – Mather Point.\n09:30 – Desert View.\n13:00 – Page.\nSunset – Horseshoe Bend.\n\nGOOD TO KNOW\n• Bring water for the Horseshoe Bend trail.\n\nINCLUDED: vehicle, guide.\nNOT INCLUDED: lunch, dinner.\n\nOvernight: hotel in Page.\nMeals: breakfast.",
+    "stops": [
+     {
+      "name": "Horseshoe Bend",
+      "duration": "About 1 hour 30 minutes",
+      "description": "The Colorado at sunset.",
+      "image": "Q:Horseshoe Bend Arizona"
+     }
+    ]
+   },
+   {
+    "name": "Antelope Canyon and Monument Valley",
+    "description": "What to expect: a slot canyon and the buttes of the West.\n\nA Navajo-guided tour of Antelope Canyon in the morning, then the drive to Monument Valley for a Navajo-guided tour among its red buttes and mesas at sunset.\n\nSCHEDULE (approximate times)\n09:30 – Antelope Canyon.\n12:00 – Drive to Monument Valley.\n15:30 – Navajo-guided valley tour.\n\nGOOD TO KNOW\n• Bags are not allowed in Antelope Canyon.\n\nINCLUDED: vehicle, guide, Navajo tours.\nNOT INCLUDED: lunch, dinner.\n\nOvernight: hotel in Monument Valley.\nMeals: breakfast.",
+    "stops": [
+     {
+      "name": "Antelope Canyon",
+      "duration": "About 1 hour 30 minutes",
+      "description": "Light beams and sculpted walls.",
+      "image": "Q:Antelope Canyon"
+     },
+     {
+      "name": "Monument Valley",
+      "duration": "About 2 hours 30 minutes",
+      "description": "Red buttes at sunset."
+     }
+    ]
+   },
+   {
+    "name": "To Zion National Park",
+    "description": "What to expect: the drive to Zion.\n\nSunrise over Monument Valley, then the drive west to Zion National Park, about 4 hours, and an afternoon walk along the Virgin River on the Riverside Walk.\n\nSCHEDULE (approximate times)\nSunrise – Monument Valley.\n09:00 – Drive to Zion.\n14:00 – Zion Canyon and Riverside Walk.\n\nGOOD TO KNOW\n• The Zion Canyon shuttle runs most of the year.\n\nINCLUDED: vehicle, guide, park entrance.\nNOT INCLUDED: lunch, dinner.\n\nOvernight: lodge near Zion.\nMeals: breakfast.",
+    "stops": [
+     {
+      "name": "Zion Canyon",
+      "duration": "Afternoon",
+      "description": "Red cliffs and the Virgin River."
+     }
+    ]
+   },
+   {
+    "name": "Zion and back to Las Vegas",
+    "description": "What to expect: a morning hike and the return.\n\nA morning hike in Zion, such as the Emerald Pools or the Canyon Overlook trail, then the drive back to Las Vegas, about 2 hours 30 minutes.\n\nSCHEDULE (approximate times)\n08:00 – Hike in Zion.\n12:00 – Lunch.\n13:30 – Drive to Las Vegas.\n16:30 – Hotel.\n\nGOOD TO KNOW\n• A farewell show can be booked.\n\nINCLUDED: vehicle, guide.\nNOT INCLUDED: lunch, dinner.\n\nOvernight: hotel in Las Vegas.\nMeals: breakfast.",
+    "stops": [
+     {
+      "name": "Canyon Overlook",
+      "duration": "About 1 hour 30 minutes",
+      "description": "A view down Zion Canyon."
+     }
+    ]
+   },
+   {
+    "name": "Departure from Las Vegas",
+    "description": "What to expect: a private transfer to the airport.\n\nAfter breakfast, your driver takes you to the airport for your onward flight.\n\nSCHEDULE (approximate times)\nAs needed – Airport transfer.\n\nGOOD TO KNOW\n• Las Vegas has direct international flights.\n\nINCLUDED: airport transfer.\nNOT INCLUDED: lunch.\n\nOvernight: none.\nMeals: breakfast.",
+    "stops": [
+     {
+      "name": "Las Vegas",
+      "duration": "Free time",
+      "description": "A last look at the Strip.",
+      "image": "Q:Las Vegas Strip"
+     }
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "question": "How does booking on request work?",
+    "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability, hotels and the final price by email within 24 hours, and you pay online only when the tour is confirmed."
+   },
+   {
+    "question": "Is the flight included?",
+    "answer": "Yes, San Francisco to Las Vegas in economy with a checked bag."
+   },
+   {
+    "question": "Do we need a visa?",
+    "answer": "Most visitors need an ESTA or a visa; check before travelling."
+   },
+   {
+    "question": "What kind of hotels are used?",
+    "answer": "Comfortable 3- and 4-star hotels and lodges, chosen for location near the parks."
+   },
+   {
+    "question": "Can we drive ourselves?",
+    "answer": "This is a private guided tour, but we can design a self-drive version on request."
+   },
+   {
+    "question": "Is it suitable for children?",
+    "answer": "Yes. We book family rooms and adapt the walks."
+   },
+   {
+    "question": "Is it suitable for people with limited mobility?",
+    "answer": "Largely. Most viewpoints are near parking; tell us your needs."
+   },
+   {
+    "question": "Can we add Death Valley or Bryce Canyon?",
+    "answer": "Yes, as extensions."
+   },
+   {
+    "question": "How hot is it?",
+    "answer": "Las Vegas and Page exceed 40°C in summer; the Grand Canyon rim is much cooler."
+   },
+   {
+    "question": "What should we wear?",
+    "answer": "Layers, comfortable walking shoes, a hat, sun cream and a warm jacket for the canyon rims."
+   },
+   {
+    "question": "What is the best time of year?",
+    "answer": "April to June and September to October."
+   },
+   {
+    "question": "Should we tip?",
+    "answer": "Tipping is customary in the United States: 15 to 20 percent is usual for guides and drivers if you were happy with the service, but it is always your choice."
+   },
+   {
+    "question": "What is the cancellation policy?",
+    "answer": "You can cancel free of charge up to 30 days before the tour starts. Flights and Navajo tours are non-refundable once issued. Until your request is confirmed, nothing is charged at all."
+   }
+  ]
+ }
+}

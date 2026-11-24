@@ -1,0 +1,189 @@
+{
+ "key": "united-states-yosemite-national-park-day-trip-from-san-francisco",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {
+  "city": "Yosemite Valley",
+  "state": "California",
+  "country": "United States",
+  "countryCode": "US",
+  "timeZone": "America/Los_Angeles",
+  "streetAddress": "Your hotel in San Francisco",
+  "geoCoordinates": {
+   "lat": 37.7456,
+   "log": -119.5936
+  }
+ },
+ "slug": "/en-US/united-states/yosemite-valley/tours/yosemite-national-park-private-day-trip-from-san-francisco-el-capitan-half-dome-and-the-falls",
+ "tour": {
+  "name": "Yosemite National Park Private Day Trip from San Francisco: El Capitan, Half Dome & the Falls",
+  "subtitle": "A private day in Yosemite Valley with a local guide and vehicle: Tunnel View over El Capitan and Half Dome, Bridalveil Fall, walks to the foot of Yosemite Falls and along the Merced River, and, in season, the giant sequoias of the Mariposa Grove.",
+  "seoTitle": "Yosemite Private Day Trip from San Francisco | TRAVSUS",
+  "metaDescription": "Private Yosemite day trip from San Francisco with local guide and vehicle: Tunnel View, El Capitan, Half Dome, Bridalveil and Yosemite Falls, valley walks and the giant sequoias of Mariposa Grove. Park fees and lunch included.",
+  "tags": [
+   "Yosemite",
+   "El Capitan",
+   "Half Dome",
+   "Giant sequoias",
+   "San Francisco day trip",
+   "USA private tour"
+  ],
+  "highlights": [
+   "Tunnel View, the classic panorama of Yosemite Valley",
+   "El Capitan, the great granite wall",
+   "Half Dome above the valley",
+   "Yosemite Falls, the tallest waterfall in North America",
+   "Bridalveil Fall",
+   "Meadows and the Merced River",
+   "The giant sequoias of the Mariposa Grove (in season)"
+  ],
+  "duration": 1,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "Yosemite Valley, in the Sierra Nevada of California, is a glacier-carved valley of granite walls, domes and waterfalls. In 1864 President Lincoln signed the Yosemite Grant, the first time a US government protected land for its natural beauty, and Yosemite became a national park in 1890. El Capitan rises some 900 metres from the valley floor, and Yosemite Falls drops 739 metres in three tiers.\n\nThis private day trip takes you there from San Francisco, about four hours each way, with a local guide and a vehicle, with time for the viewpoints, short walks and, in season, the giant sequoias.\n\nAT A GLANCE\n• Duration: about 14 hours\n• Start and end: your hotel in San Francisco\n• Type: private tour with local guide, vehicle and driver\n• Booking: on request – we confirm availability and the final price by email within 24 hours, and you pay only then\n• Level: easy to moderate\n\nWHAT YOU SEE\n• Tunnel View.\n• El Capitan and Half Dome.\n• Bridalveil Fall and Yosemite Falls.\n• The valley meadows.\n• The Mariposa Grove.\n\nWHY THIS WORKS\nA private vehicle lets you start early, avoid the crowds at the viewpoints and stop where you like in the valley.\n\nWHO IT SUITS\nNature lovers, walkers, photographers and families.\n\nWHO MAY PREFER ANOTHER TOUR\nTo see more, ask us for a 2-day version with a night near the park, including Glacier Point.\n\nPRACTICAL INFORMATION\nIn some summers, a timed-entry reservation is required; we arrange it. The waterfalls are fullest in May and June and may be dry by late summer.",
+  "inclusions": {
+   "standard": {
+    "private": [
+     "Pick-up and drop-off at your hotel in San Francisco",
+     "Private vehicle and driver",
+     "Private guide",
+     "Yosemite National Park entrance",
+     "Picnic lunch",
+     "Bottled water",
+     "Snacks"
+    ],
+    "shared": [
+     "Hotel pick-up",
+     "Local guide",
+     "Park entrance",
+     "Lunch"
+    ]
+   }
+  },
+  "pricingTiers": [
+   {
+    "transportType": "Sedan / SUV",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png",
+    "minSeats": 1,
+    "maxSeats": 4,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 890,
+     "pricePerDay": 890
+    }
+   },
+   {
+    "transportType": "Minivan",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png",
+    "minSeats": 5,
+    "maxSeats": 8,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 1290,
+     "pricePerDay": 1290
+    }
+   },
+   {
+    "transportType": "Mini Bus",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png",
+    "minSeats": 9,
+    "maxSeats": 19,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 2390,
+     "pricePerDay": 2390
+    }
+   }
+  ],
+  "images": [
+   "Q:Yosemite Valley",
+   "Q:Yosemite Valley#2",
+   "Q:Yosemite Valley#3",
+   "Q:Yosemite Valley#4",
+   "Q:Yosemite Valley#5"
+  ],
+  "days": [
+   {
+    "name": "Tunnel View, El Capitan, the falls, the valley floor and the giant sequoias",
+    "description": "What to expect: the great sights of Yosemite Valley, with a local guide, private vehicle, park fees and lunch.\n\nYour guide and driver collect you at about 6:00 and drive east across the Central Valley into the foothills of the Sierra Nevada. Entering the park, you stop at Tunnel View, where the whole valley opens before you: El Capitan on the left, Bridalveil Fall on the right and Half Dome in the distance.\n\nYou walk to the foot of Bridalveil Fall, then drive along the valley floor beneath El Capitan, where you may spot climbers on the wall. A picnic lunch is served by the Merced River. In the afternoon, you take the easy loop trail to the foot of Lower Yosemite Falls, walk among the meadows with views of Half Dome, and see the historic Ahwahnee hotel.\n\nFrom late spring to autumn, on the way out, you visit the Mariposa Grove, where a trail leads to the Grizzly Giant, a giant sequoia thought to be some 2,000 years old. You drive back to San Francisco, arriving at about 20:30.\n\nSCHEDULE (approximate times)\n06:00 – Pick-up in San Francisco.\n10:00 – Tunnel View.\n10:30 – Bridalveil Fall.\n11:15 – El Capitan meadow.\n12:30 – Picnic lunch.\n13:30 – Yosemite Falls and the valley floor.\n15:00 – Mariposa Grove (in season).\n20:30 – Back in San Francisco.\n\nGOOD TO KNOW\n• Glacier Point, with a view over Half Dome, is open from late May to October and can be added on a 2-day tour.\n• Keep food away from wildlife; black bears live in the park.\n\nINCLUDED: private vehicle and driver, local guide, park entrance, picnic lunch, water and snacks, hotel pick-up and drop-off.\nNOT INCLUDED: dinner, tips.\n\nOvernight: none.\nMeals: lunch.",
+    "stops": [
+     {
+      "name": "Tunnel View",
+      "duration": "About 30 minutes",
+      "description": "The valley panorama.",
+      "image": "Q:Yosemite Valley"
+     },
+     {
+      "name": "El Capitan",
+      "duration": "About 45 minutes",
+      "description": "The granite wall and its climbers.",
+      "image": "Q:Yosemite Valley"
+     },
+     {
+      "name": "Yosemite Falls",
+      "duration": "About 1 hour",
+      "description": "The tallest falls in North America."
+     },
+     {
+      "name": "Mariposa Grove",
+      "duration": "About 1 hour 30 minutes",
+      "description": "Giant sequoias."
+     }
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "question": "How does booking on request work?",
+    "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability and the final price by email within 24 hours, and you pay online only when the tour is confirmed."
+   },
+   {
+    "question": "How long is the drive?",
+    "answer": "About 4 hours each way. It is a long day, with comfortable breaks."
+   },
+   {
+    "question": "Is lunch included?",
+    "answer": "Yes, a picnic lunch in the valley."
+   },
+   {
+    "question": "Do we need a reservation?",
+    "answer": "In some periods, the park requires timed entry; we arrange it."
+   },
+   {
+    "question": "Will the waterfalls be flowing?",
+    "answer": "They are fullest in May and June. Yosemite Falls can be dry from August to October."
+   },
+   {
+    "question": "Is it suitable for children?",
+    "answer": "Yes. The walks are easy. Child seats are provided free of charge on request."
+   },
+   {
+    "question": "Is it suitable for people with limited mobility?",
+    "answer": "Largely. The main viewpoints and the Lower Yosemite Falls trail are accessible."
+   },
+   {
+    "question": "Can we see bears?",
+    "answer": "Possibly; black bears live in the park. Keep a safe distance."
+   },
+   {
+    "question": "Can we stay overnight?",
+    "answer": "Yes. A 2-day version allows Glacier Point and sunrise in the valley."
+   },
+   {
+    "question": "What should we wear?",
+    "answer": "Layers, comfortable walking shoes, a hat and sun cream; warm clothes in winter."
+   },
+   {
+    "question": "What is the best time of year?",
+    "answer": "May to June for the waterfalls; September to October for fewer crowds. Winter is beautiful under snow, with some roads closed."
+   },
+   {
+    "question": "Should we tip?",
+    "answer": "Tipping is customary in the United States: 15 to 20 percent is usual for guides and drivers if you were happy with the service, but it is always your choice."
+   },
+   {
+    "question": "What is the cancellation policy?",
+    "answer": "You can cancel free of charge up to 24 hours before the tour. Until your request is confirmed, nothing is charged at all."
+   }
+  ]
+ }
+}

@@ -1,0 +1,218 @@
+{
+ "key": "united-states-yellowstone-national-park-3-days",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {
+  "city": "West Yellowstone",
+  "state": "Montana",
+  "country": "United States",
+  "countryCode": "US",
+  "timeZone": "America/Denver",
+  "streetAddress": "Bozeman airport or your hotel in Bozeman",
+  "geoCoordinates": {
+   "lat": 44.6621,
+   "log": -111.1041
+  }
+ },
+ "slug": "/en-US/united-states/west-yellowstone/tours/yellowstone-national-park-private-3-day-tour-old-faithful-grand-prismatic-and-the-wildlife-valleys",
+ "tour": {
+  "name": "Yellowstone National Park Private 3-Day Tour: Old Faithful, Grand Prismatic & the Wildlife Valleys",
+  "subtitle": "Three days in the world's first national park with a naturalist guide: the geysers of the Upper Geyser Basin and Old Faithful, the rainbow colours of Grand Prismatic Spring, the Grand Canyon of the Yellowstone, the bison of Hayden Valley, wolves in the Lamar Valley and the terraces of Mammoth Hot Springs.",
+  "seoTitle": "Yellowstone 3-Day Private Tour | TRAVSUS",
+  "metaDescription": "Private 3-day Yellowstone tour from Bozeman with naturalist guide: Old Faithful, Grand Prismatic Spring, the Grand Canyon of the Yellowstone, Hayden and Lamar valleys for bison and wolves, and Mammoth Hot Springs. 2 nights included.",
+  "tags": [
+   "Yellowstone",
+   "Old Faithful",
+   "Grand Prismatic Spring",
+   "Wildlife",
+   "Bison",
+   "USA private tour"
+  ],
+  "highlights": [
+   "Old Faithful erupting on schedule",
+   "The rainbow colours of Grand Prismatic Spring",
+   "The Lower Falls in the Grand Canyon of the Yellowstone",
+   "Herds of bison in the Hayden Valley",
+   "Wolves, elk and pronghorn in the Lamar Valley",
+   "The travertine terraces of Mammoth Hot Springs",
+   "A naturalist guide with spotting scopes"
+  ],
+  "duration": 3,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "Created in 1872, Yellowstone was the first national park in the world. It sits on top of a vast volcanic hotspot that powers more than half of the world's geysers, along with hot springs, mud pots and fumaroles, and its valleys are home to the largest concentration of mammals in the lower 48 states: bison, elk, wolves, grizzly and black bears.\n\nThis private three-day tour shows Yellowstone with a naturalist guide and a vehicle, with spotting scopes for wildlife and two nights near the park.\n\nAT A GLANCE\n• Duration: 3 days, 2 nights\n• Start and end: Bozeman airport or your hotel in Bozeman\n• Type: private tour with naturalist guide and vehicle; 2 nights with breakfast\n• Booking: on request – we confirm availability, hotels and the final price by email within 24 hours, and you pay only then\n• Level: easy to moderate\n\nWHAT YOU SEE\n• The Upper Geyser Basin and Old Faithful.\n• Grand Prismatic Spring.\n• The Grand Canyon of the Yellowstone.\n• The Hayden and Lamar valleys.\n• Mammoth Hot Springs.\n\nWHY THIS WORKS\nYellowstone is huge; a naturalist guide knows where the animals are that day, and the park is covered in a logical loop.\n\nWHO IT SUITS\nWildlife lovers, families, photographers.\n\nWHO MAY PREFER ANOTHER TOUR\nTo add the Grand Teton, ask us for a 5-day version ending in Jackson.\n\nPRACTICAL INFORMATION\nMost park roads are open from about late April or May to early November. Stay on the boardwalks in thermal areas, and keep 100 metres from bears and wolves, 25 metres from other animals.",
+  "inclusions": {
+   "standard": {
+    "private": [
+     "Private transfers from Bozeman",
+     "Private vehicle",
+     "Naturalist guide",
+     "Yellowstone National Park entrance",
+     "2 nights in hotels near the park with breakfast",
+     "Picnic lunches",
+     "Spotting scopes and binoculars",
+     "Bottled water"
+    ],
+    "shared": [
+     "Transfers",
+     "Naturalist guide",
+     "Park entrance",
+     "2 nights with breakfast",
+     "Picnic lunches"
+    ]
+   }
+  },
+  "pricingTiers": [
+   {
+    "transportType": "Sedan / SUV",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png",
+    "minSeats": 1,
+    "maxSeats": 4,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 2990,
+     "pricePerDay": 997
+    }
+   },
+   {
+    "transportType": "Minivan",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png",
+    "minSeats": 5,
+    "maxSeats": 8,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 4790,
+     "pricePerDay": 1597
+    }
+   },
+   {
+    "transportType": "Mini Bus",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png",
+    "minSeats": 9,
+    "maxSeats": 19,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 8990,
+     "pricePerDay": 2997
+    }
+   }
+  ],
+  "images": [
+   "Q:Grand Prismatic Spring",
+   "Q:Old Faithful",
+   "Q:Grand Prismatic Spring#2",
+   "Q:Old Faithful#2",
+   "Q:Grand Prismatic Spring#3"
+  ],
+  "days": [
+   {
+    "name": "Bozeman to West Yellowstone, Grand Prismatic Spring and Old Faithful",
+    "description": "What to expect: the geyser basins of the west.\n\nYour guide collects you in Bozeman in the morning and drives through the Gallatin canyon to West Yellowstone. In the park, you walk the boardwalk of the Midway Geyser Basin around Grand Prismatic Spring, the largest hot spring in the United States, some 90 metres across, its deep blue centre ringed by bands of yellow, orange and red bacteria, and climb to the Fairy Falls overlook for the view from above. After a picnic lunch, you watch Old Faithful erupt, sending water up to 50 metres high roughly every hour and a half, and walk among the geysers and pools of the Upper Geyser Basin, such as Morning Glory Pool.\n\nSCHEDULE (approximate times)\n08:00 – Pick-up in Bozeman.\n10:30 – Enter the park.\n11:15 – Grand Prismatic Spring.\n13:00 – Picnic lunch.\n14:00 – Old Faithful and the Upper Geyser Basin.\n18:00 – Hotel in West Yellowstone.\n\nGOOD TO KNOW\n• Eruption times for Old Faithful are predicted by rangers.\n\nINCLUDED: vehicle, guide, park entrance, lunch.\nNOT INCLUDED: dinner.\n\nOvernight: hotel in West Yellowstone.\nMeals: lunch.",
+    "stops": [
+     {
+      "name": "Grand Prismatic Spring",
+      "duration": "About 1 hour 30 minutes",
+      "description": "A rainbow of hot water.",
+      "image": "Q:Grand Prismatic Spring"
+     },
+     {
+      "name": "Old Faithful",
+      "duration": "About 2 hours",
+      "description": "Geysers and pools.",
+      "image": "Q:Old Faithful"
+     }
+    ]
+   },
+   {
+    "name": "Hayden Valley, the Grand Canyon of the Yellowstone and the Lamar Valley",
+    "description": "What to expect: the wildlife valleys and the great canyon.\n\nYou start early to watch wildlife at dawn. In the Hayden Valley, herds of bison graze along the Yellowstone River, with elk and, sometimes, grizzly bears. At the Grand Canyon of the Yellowstone, the river plunges 94 metres over the Lower Falls into a canyon of yellow and orange rock, seen from Artist Point and Lookout Point.\n\nAfter a picnic lunch, you cross Dunraven Pass to the Lamar Valley, often called the Serengeti of North America, where your guide uses spotting scopes to look for wolves, bears, pronghorn and bighorn sheep. You stay near the park's north entrance.\n\nSCHEDULE (approximate times)\n06:00 – Hayden Valley.\n09:30 – Grand Canyon of the Yellowstone.\n12:30 – Picnic lunch.\n14:00 – Lamar Valley.\n18:30 – Hotel in Gardiner.\n\nGOOD TO KNOW\n• Wolves are seen most often at dawn and dusk.\n\nINCLUDED: vehicle, guide, lunch.\nNOT INCLUDED: dinner.\n\nOvernight: hotel in Gardiner.\nMeals: breakfast, lunch.",
+    "stops": [
+     {
+      "name": "Hayden Valley",
+      "duration": "About 2 hours",
+      "description": "Bison and elk."
+     },
+     {
+      "name": "Grand Canyon of the Yellowstone",
+      "duration": "About 2 hours",
+      "description": "The Lower Falls."
+     },
+     {
+      "name": "Lamar Valley",
+      "duration": "About 3 hours",
+      "description": "Wolves and bears."
+     }
+    ]
+   },
+   {
+    "name": "Mammoth Hot Springs and back to Bozeman",
+    "description": "What to expect: the terraces of the north and the return.\n\nAfter breakfast, you walk among the travertine terraces of Mammoth Hot Springs, where hot water deposits white and orange stone in steps down the hillside, and see the elk that often graze on the lawns of the old Fort Yellowstone. You pass through the Roosevelt Arch, built in 1903, and drive back through the Paradise Valley to Bozeman, arriving in the early afternoon.\n\nSCHEDULE (approximate times)\n08:00 – Mammoth Hot Springs.\n10:30 – Roosevelt Arch.\n11:00 – Paradise Valley.\n13:30 – Bozeman airport or hotel.\n\nGOOD TO KNOW\n• Book a flight from 15:30 onwards.\n\nINCLUDED: vehicle, guide, transfer.\nNOT INCLUDED: lunch, tips.\n\nOvernight: none.\nMeals: breakfast.",
+    "stops": [
+     {
+      "name": "Mammoth Hot Springs",
+      "duration": "About 1 hour 30 minutes",
+      "description": "Travertine terraces."
+     },
+     {
+      "name": "Roosevelt Arch",
+      "duration": "About 15 minutes",
+      "description": "The historic entrance."
+     }
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "question": "How does booking on request work?",
+    "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability, hotels and the final price by email within 24 hours, and you pay online only when the tour is confirmed."
+   },
+   {
+    "question": "When can we visit?",
+    "answer": "From about May to October, when the park roads are open. Winter tours by snowcoach are possible on request."
+   },
+   {
+    "question": "Will we see bears and wolves?",
+    "answer": "Often, especially at dawn and dusk. They are wild, so sightings are never guaranteed."
+   },
+   {
+    "question": "What kind of hotels are used?",
+    "answer": "Comfortable hotels or lodges in West Yellowstone and Gardiner; in-park lodges on request."
+   },
+   {
+    "question": "Is lunch included?",
+    "answer": "Yes, picnic lunches on days 1 and 2."
+   },
+   {
+    "question": "Is it suitable for children?",
+    "answer": "Yes. Children love the geysers and the animals. Child seats are provided free of charge on request."
+   },
+   {
+    "question": "Is it suitable for people with limited mobility?",
+    "answer": "Largely. Many boardwalks are accessible; some viewpoints have stairs."
+   },
+   {
+    "question": "Can we add the Grand Teton?",
+    "answer": "Yes, with 2 extra days, ending in Jackson Hole."
+   },
+   {
+    "question": "Is it safe near the geysers?",
+    "answer": "Yes, if you stay on the boardwalks: the ground can be thin and the water scalding."
+   },
+   {
+    "question": "What should we wear?",
+    "answer": "Layers, a warm jacket, a hat, comfortable shoes and sun cream; it can snow even in June."
+   },
+   {
+    "question": "What is the best time of year?",
+    "answer": "June and September. July and August are busiest; May and October are cold but quiet."
+   },
+   {
+    "question": "Should we tip?",
+    "answer": "Tipping is customary in the United States: 15 to 20 percent is usual for guides and drivers if you were happy with the service, but it is always your choice."
+   },
+   {
+    "question": "What is the cancellation policy?",
+    "answer": "You can cancel free of charge up to 30 days before the tour starts. Park lodges book far ahead and have stricter terms; we explain them when we confirm. Until your request is confirmed, nothing is charged at all."
+   }
+  ]
+ }
+}

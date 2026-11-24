@@ -1,0 +1,187 @@
+{
+ "key": "united-states-new-york-city-statue-of-liberty-private-tour",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {
+  "city": "New York",
+  "state": "New York",
+  "country": "United States",
+  "countryCode": "US",
+  "timeZone": "America/New_York",
+  "streetAddress": "Your hotel in Manhattan",
+  "geoCoordinates": {
+   "lat": 40.7128,
+   "log": -74.006
+  }
+ },
+ "slug": "/en-US/united-states/new-york/tours/new-york-city-private-tour-the-statue-of-liberty-9-11-memorial-brooklyn-bridge-and-central-park",
+ "tour": {
+  "name": "New York City Private Tour: the Statue of Liberty, 9/11 Memorial, Brooklyn Bridge & Central Park",
+  "subtitle": "New York's essentials in one private day with a local guide and vehicle: the ferry to the Statue of Liberty and Ellis Island, the 9/11 Memorial, a walk across the Brooklyn Bridge, Grand Central Terminal, Times Square and the paths of Central Park.",
+  "seoTitle": "New York Private Tour: Statue of Liberty & Central Park | TRAVSUS",
+  "metaDescription": "Private New York City tour with local guide and vehicle: the Statue of Liberty and Ellis Island ferry, the 9/11 Memorial, the Brooklyn Bridge and DUMBO, Grand Central, Times Square and Central Park.",
+  "tags": [
+   "New York City",
+   "Statue of Liberty",
+   "Central Park",
+   "Brooklyn Bridge",
+   "9/11 Memorial",
+   "USA private tour"
+  ],
+  "highlights": [
+   "The ferry to the Statue of Liberty and Ellis Island",
+   "The reflecting pools of the 9/11 Memorial",
+   "A walk across the Brooklyn Bridge with the Manhattan skyline",
+   "The view from DUMBO",
+   "The Main Concourse of Grand Central Terminal",
+   "Times Square",
+   "Bethesda Terrace, Bow Bridge and Strawberry Fields in Central Park"
+  ],
+  "duration": 1,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "New York City needs no introduction, but its size can overwhelm a first visit. This private day gives you its essentials with a local guide and a vehicle: the Statue of Liberty, a gift from France dedicated in 1886, and Ellis Island, where some 12 million immigrants entered the United States between 1892 and 1954; the 9/11 Memorial in Lower Manhattan; the Brooklyn Bridge, opened in 1883; and Midtown and Central Park.\n\nYour guide handles the tickets and the timing, your driver the traffic, and you walk where walking is the best way to see the city.\n\nAT A GLANCE\n• Duration: about 9 hours\n• Start and end: your hotel in Manhattan\n• Type: private tour with local guide, vehicle and driver\n• Booking: on request – we confirm availability and the final price by email within 24 hours, and you pay only then\n• Level: easy to moderate; several walks\n\nWHAT YOU SEE\n• The Statue of Liberty and Ellis Island.\n• The 9/11 Memorial and One World Trade Center.\n• The Brooklyn Bridge and DUMBO.\n• Grand Central and Times Square.\n• Central Park.\n\nWHY THIS WORKS\nCombining walking with a private vehicle covers far more of the city than the subway, without exhausting you.\n\nWHO IT SUITS\nFirst-time visitors to New York, families, couples.\n\nWHO MAY PREFER ANOTHER TOUR\nIf you have seen the classics, ask us for a Harlem, Brooklyn or food tour.\n\nPRACTICAL INFORMATION\nThe Statue of Liberty ferry includes airport-style security. Crown and pedestal access are limited and must be booked months ahead.",
+  "inclusions": {
+   "standard": {
+    "private": [
+     "Pick-up and drop-off at your hotel in Manhattan",
+     "Private vehicle and driver",
+     "Private guide",
+     "Statue of Liberty and Ellis Island ferry tickets",
+     "Bottled water"
+    ],
+    "shared": [
+     "Hotel pick-up",
+     "Local guide",
+     "Ferry tickets"
+    ]
+   }
+  },
+  "pricingTiers": [
+   {
+    "transportType": "Sedan / SUV",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png",
+    "minSeats": 1,
+    "maxSeats": 4,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 690,
+     "pricePerDay": 690
+    }
+   },
+   {
+    "transportType": "Minivan",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png",
+    "minSeats": 5,
+    "maxSeats": 8,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 1090,
+     "pricePerDay": 1090
+    }
+   },
+   {
+    "transportType": "Mini Bus",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png",
+    "minSeats": 9,
+    "maxSeats": 19,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 1990,
+     "pricePerDay": 1990
+    }
+   }
+  ],
+  "images": [
+   "Q:Statue of Liberty",
+   "Q:Brooklyn Bridge",
+   "Q:Central Park New York",
+   "Q:Statue of Liberty#2",
+   "Q:Brooklyn Bridge#2"
+  ],
+  "days": [
+   {
+    "name": "The Statue of Liberty, Ellis Island, the 9/11 Memorial, the Brooklyn Bridge, Midtown and Central Park",
+    "description": "What to expect: New York's great landmarks, with a local guide, private vehicle and ferry tickets.\n\nYour guide and driver collect you at about 8:15 and take you to Battery Park for the first ferry to Liberty Island. You walk around the Statue of Liberty, designed by Frédéric Auguste Bartholdi with an iron framework by Gustave Eiffel, and visit the museum with the original torch. The ferry continues to Ellis Island, where the Great Hall and the records of millions of immigrants tell the story of a nation.\n\nBack in Manhattan, you visit the 9/11 Memorial, where two reflecting pools fill the footprints of the Twin Towers, with the names of the nearly 3,000 victims engraved around them, beneath One World Trade Center. After lunch (not included), you drive to Brooklyn and walk back across the Brooklyn Bridge on its wooden promenade, with the skyline before you, after a stop at DUMBO for the view of the Manhattan Bridge.\n\nYour driver takes you to Midtown to see the starry ceiling of Grand Central Terminal and the lights of Times Square, and you end in Central Park, designed by Frederick Law Olmsted and Calvert Vaux in 1858, with Bethesda Terrace, Bow Bridge and Strawberry Fields, the memorial to John Lennon.\n\nSCHEDULE (approximate times)\n08:15 – Pick-up at your hotel.\n09:00 – Ferry to the Statue of Liberty.\n11:00 – Ellis Island.\n12:45 – 9/11 Memorial.\n13:30 – Lunch break.\n14:30 – DUMBO and the Brooklyn Bridge walk.\n15:45 – Grand Central and Times Square.\n16:30 – Central Park.\n17:30 – Back at your hotel.\n\nGOOD TO KNOW\n• Entry to the 9/11 Museum or an observation deck can be added.\n• Wear comfortable shoes: you will walk several kilometres.\n\nINCLUDED: private vehicle and driver, local guide, ferry tickets, bottled water, hotel pick-up and drop-off.\nNOT INCLUDED: lunch, museum entries, tips.\n\nOvernight: none.\nMeals: none.",
+    "stops": [
+     {
+      "name": "Statue of Liberty",
+      "duration": "About 1 hour 30 minutes",
+      "description": "Liberty Island and the museum.",
+      "image": "Q:Statue of Liberty"
+     },
+     {
+      "name": "Ellis Island",
+      "duration": "About 1 hour",
+      "description": "The Great Hall of immigration."
+     },
+     {
+      "name": "Brooklyn Bridge",
+      "duration": "About 1 hour",
+      "description": "A walk with the skyline.",
+      "image": "Q:Brooklyn Bridge"
+     },
+     {
+      "name": "Central Park",
+      "duration": "About 1 hour",
+      "description": "Bethesda Terrace and Bow Bridge.",
+      "image": "Q:Central Park New York"
+     }
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "question": "How does booking on request work?",
+    "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability and the final price by email within 24 hours, and you pay online only when the tour is confirmed."
+   },
+   {
+    "question": "Are the ferry tickets included?",
+    "answer": "Yes, to Liberty and Ellis Islands. Pedestal and crown access can be booked if available."
+   },
+   {
+    "question": "Is lunch included?",
+    "answer": "No. Your guide suggests a good deli or restaurant along the way."
+   },
+   {
+    "question": "How much walking is there?",
+    "answer": "About 6 to 8 kilometres in total, at an easy pace; the vehicle covers the long distances."
+   },
+   {
+    "question": "Can we add an observation deck?",
+    "answer": "Yes: One World Observatory, the Empire State Building, Top of the Rock or the Edge."
+   },
+   {
+    "question": "Is it suitable for children?",
+    "answer": "Yes. Child seats are provided free of charge on request."
+   },
+   {
+    "question": "Is it suitable for people with limited mobility?",
+    "answer": "Largely. The ferry and Liberty Island are accessible; the walks can be shortened."
+   },
+   {
+    "question": "Can we see a Broadway show?",
+    "answer": "Yes. We can book tickets for the evening."
+   },
+   {
+    "question": "Will we be taken to shops?",
+    "answer": "No. There are no commission stops."
+   },
+   {
+    "question": "What should we wear?",
+    "answer": "Comfortable shoes and layers; winter is cold and windy on the ferry."
+   },
+   {
+    "question": "What is the best time of year?",
+    "answer": "April to June and September to November. December is magical with the holiday lights."
+   },
+   {
+    "question": "Should we tip?",
+    "answer": "Tipping is customary in the United States: 15 to 20 percent is usual for guides and drivers if you were happy with the service, but it is always your choice."
+   },
+   {
+    "question": "What is the cancellation policy?",
+    "answer": "You can cancel free of charge up to 24 hours before the tour. Until your request is confirmed, nothing is charged at all."
+   }
+  ]
+ }
+}

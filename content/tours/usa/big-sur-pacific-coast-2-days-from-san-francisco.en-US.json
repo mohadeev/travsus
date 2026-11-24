@@ -1,0 +1,206 @@
+{
+ "key": "united-states-big-sur-pacific-coast-2-days-from-san-francisco",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {
+  "city": "Big Sur",
+  "state": "California",
+  "country": "United States",
+  "countryCode": "US",
+  "timeZone": "America/Los_Angeles",
+  "streetAddress": "Your hotel in San Francisco",
+  "geoCoordinates": {
+   "lat": 36.2704,
+   "log": -121.8081
+  }
+ },
+ "slug": "/en-US/united-states/big-sur/tours/big-sur-and-the-pacific-coast-private-2-day-tour-from-san-francisco-monterey-carmel-and-bixby-bridge",
+ "tour": {
+  "name": "Big Sur & the Pacific Coast Private 2-Day Tour from San Francisco: Monterey, Carmel & Bixby Bridge",
+  "subtitle": "Two days on one of the most beautiful coastlines in the world with a local guide and vehicle: the 17-Mile Drive and the Lone Cypress, Carmel-by-the-Sea, Point Lobos, the Bixby Creek Bridge, McWay Falls dropping onto a beach, the elephant seals of Piedras Blancas and the Monterey Bay Aquarium.",
+  "seoTitle": "Big Sur & Pacific Coast 2-Day Private Tour | TRAVSUS",
+  "metaDescription": "Private 2-day Big Sur tour from San Francisco with local guide and vehicle: the 17-Mile Drive, Carmel, Point Lobos, Bixby Bridge, McWay Falls, elephant seals, and the Monterey Bay Aquarium. 1 night included.",
+  "tags": [
+   "Big Sur",
+   "Highway 1",
+   "Bixby Bridge",
+   "Carmel",
+   "Monterey",
+   "USA private tour"
+  ],
+  "highlights": [
+   "The Bixby Creek Bridge above the Pacific",
+   "McWay Falls dropping onto a hidden beach",
+   "The 17-Mile Drive and the Lone Cypress",
+   "Carmel-by-the-Sea and its fairy-tale cottages",
+   "Sea otters and sea lions at Point Lobos",
+   "The elephant seals of Piedras Blancas",
+   "The Monterey Bay Aquarium"
+  ],
+  "duration": 2,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "South of San Francisco, California's Highway 1 follows the coast of Big Sur, where the Santa Lucia Mountains plunge into the Pacific. Built in the 1920s and 1930s with the help of convict labour, the road crosses high bridges such as the Bixby Creek Bridge of 1932, and passes redwood canyons, waterfalls and coves where sea otters, seals and, in season, whales can be seen.\n\nThis private two-day tour takes you along the coast with a local guide and a vehicle, with a night in Carmel or Monterey, and time for the viewpoints and the wildlife.\n\nAT A GLANCE\n• Duration: 2 days, 1 night\n• Start and end: your hotel in San Francisco\n• Type: private tour with local guide, vehicle and driver; 1 night with breakfast\n• Booking: on request – we confirm availability, your hotel and the final price by email within 24 hours, and you pay only then\n• Level: easy\n\nWHAT YOU SEE\n• Monterey and the 17-Mile Drive.\n• Carmel-by-the-Sea and Point Lobos.\n• The Bixby Creek Bridge.\n• McWay Falls.\n• Piedras Blancas.\n• The Monterey Bay Aquarium.\n\nWHY THIS WORKS\nBig Sur is too far for a comfortable day trip; a night on the coast lets you drive it in the best light.\n\nWHO IT SUITS\nCouples, photographers, nature lovers and families.\n\nWHO MAY PREFER ANOTHER TOUR\nTo continue south, ask us for a one-way trip to Los Angeles.\n\nPRACTICAL INFORMATION\nLandslides sometimes close sections of Highway 1; your guide adapts the route. The coast is often foggy in the morning in summer.",
+  "inclusions": {
+   "standard": {
+    "private": [
+     "Pick-up and drop-off at your hotel in San Francisco",
+     "Private vehicle and driver",
+     "Private guide",
+     "1 night in Carmel or Monterey with breakfast",
+     "17-Mile Drive fee",
+     "Point Lobos entrance",
+     "Monterey Bay Aquarium tickets",
+     "Bottled water"
+    ],
+    "shared": [
+     "Hotel pick-up",
+     "Local guide",
+     "1 night with breakfast",
+     "Entrance fees",
+     "Aquarium tickets"
+    ]
+   }
+  },
+  "pricingTiers": [
+   {
+    "transportType": "Sedan / SUV",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png",
+    "minSeats": 1,
+    "maxSeats": 4,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 1690,
+     "pricePerDay": 845
+    }
+   },
+   {
+    "transportType": "Minivan",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png",
+    "minSeats": 5,
+    "maxSeats": 8,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 2590,
+     "pricePerDay": 1295
+    }
+   },
+   {
+    "transportType": "Mini Bus",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png",
+    "minSeats": 9,
+    "maxSeats": 19,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 4790,
+     "pricePerDay": 2395
+    }
+   }
+  ],
+  "images": [
+   "Q:Bixby Creek Bridge",
+   "Q:Bixby Creek Bridge#2",
+   "Q:Bixby Creek Bridge#3",
+   "Q:Golden Gate Bridge#4",
+   "Q:Bixby Creek Bridge#4"
+  ],
+  "days": [
+   {
+    "name": "San Francisco to Monterey, the 17-Mile Drive, Carmel and Point Lobos",
+    "description": "What to expect: the Monterey Peninsula and its coastline.\n\nYour guide and driver collect you at about 8:30 and drive south to Monterey, about 2 hours, once the capital of Spanish and Mexican California and later famous for the sardine canneries of John Steinbeck's Cannery Row. You drive the 17-Mile Drive around the Pebble Beach peninsula, past golf courses, mansions and the Lone Cypress, a lone tree on a rock above the sea.\n\nAfter lunch (not included) in Carmel-by-the-Sea, a village of storybook cottages and the Carmel Mission, founded in 1771, you walk the trails of Point Lobos, where sea otters float among the kelp and sea lions bask on the rocks. You check in to your hotel in Carmel or Monterey.\n\nSCHEDULE (approximate times)\n08:30 – Pick-up in San Francisco.\n10:45 – Monterey and Cannery Row.\n11:30 – 17-Mile Drive.\n13:00 – Lunch in Carmel.\n14:30 – Carmel Mission.\n15:30 – Point Lobos.\n17:30 – Check-in.\n\nGOOD TO KNOW\n• Your guide can book dinner in Carmel.\n\nINCLUDED: vehicle, guide, fees.\nNOT INCLUDED: lunch, dinner.\n\nOvernight: hotel in Carmel or Monterey.\nMeals: none.",
+    "stops": [
+     {
+      "name": "17-Mile Drive",
+      "duration": "About 1 hour",
+      "description": "The Lone Cypress and the coast."
+     },
+     {
+      "name": "Point Lobos",
+      "duration": "About 1 hour 30 minutes",
+      "description": "Sea otters and sea lions."
+     }
+    ]
+   },
+   {
+    "name": "Big Sur: Bixby Bridge, McWay Falls, the elephant seals, and the Monterey Bay Aquarium",
+    "description": "What to expect: the Big Sur coast and its wildlife.\n\nAfter breakfast, you drive south on Highway 1 into Big Sur. You stop at the Bixby Creek Bridge, a concrete arch 85 metres above a canyon mouth, and at viewpoints over the coast. In the Julia Pfeiffer Burns State Park, a short trail leads to the view of McWay Falls, which drops 24 metres directly onto a sandy cove. Further south, at Piedras Blancas, a colony of elephant seals lies on the beach.\n\nYou return north, stopping in the redwoods of Pfeiffer Big Sur State Park, and visit the Monterey Bay Aquarium, with its kelp forest, sea otters and open-ocean tank, before driving back to San Francisco, arriving at about 20:00.\n\nSCHEDULE (approximate times)\n08:30 – Breakfast and departure.\n09:15 – Bixby Creek Bridge.\n10:30 – McWay Falls.\n12:00 – Piedras Blancas elephant seals.\n13:00 – Lunch.\n15:30 – Monterey Bay Aquarium.\n17:30 – Drive back.\n20:00 – Back in San Francisco.\n\nGOOD TO KNOW\n• Grey whales migrate past the coast from December to April.\n• If the road is closed south of McWay, we adapt the route.\n\nINCLUDED: vehicle, guide, aquarium tickets.\nNOT INCLUDED: lunch, dinner, tips.\n\nOvernight: none.\nMeals: breakfast.",
+    "stops": [
+     {
+      "name": "Bixby Creek Bridge",
+      "duration": "About 30 minutes",
+      "description": "The famous arch.",
+      "image": "Q:Bixby Creek Bridge"
+     },
+     {
+      "name": "McWay Falls",
+      "duration": "About 45 minutes",
+      "description": "A waterfall onto a beach."
+     },
+     {
+      "name": "Piedras Blancas",
+      "duration": "About 45 minutes",
+      "description": "Elephant seals."
+     },
+     {
+      "name": "Monterey Bay Aquarium",
+      "duration": "About 1 hour 30 minutes",
+      "description": "Kelp forest and sea otters."
+     }
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "question": "How does booking on request work?",
+    "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability, hotels and the final price by email within 24 hours, and you pay online only when the tour is confirmed."
+   },
+   {
+    "question": "Is Highway 1 open?",
+    "answer": "Sections are sometimes closed by landslides; we check before your trip and adapt the route."
+   },
+   {
+    "question": "What kind of hotel is used?",
+    "answer": "A comfortable hotel or inn in Carmel or Monterey with breakfast."
+   },
+   {
+    "question": "Will we see whales?",
+    "answer": "Grey whales pass from December to April and humpbacks from April to November; sightings are never guaranteed."
+   },
+   {
+    "question": "Is it suitable for children?",
+    "answer": "Yes. Children love the aquarium and the seals. Child seats are provided free of charge on request."
+   },
+   {
+    "question": "Is it suitable for people with limited mobility?",
+    "answer": "Largely. Most viewpoints are near the road; McWay Falls has a short level trail."
+   },
+   {
+    "question": "Can we end in Los Angeles?",
+    "answer": "Yes, with a one-way supplement and an extra day."
+   },
+   {
+    "question": "Can we add a whale-watching boat?",
+    "answer": "Yes, from Monterey, on request."
+   },
+   {
+    "question": "Will we be taken to shops?",
+    "answer": "No. There are no commission stops."
+   },
+   {
+    "question": "What should we wear?",
+    "answer": "Layers and a windproof jacket; the coast is cool and foggy in the mornings."
+   },
+   {
+    "question": "What is the best time of year?",
+    "answer": "September and October are the clearest; spring brings wildflowers."
+   },
+   {
+    "question": "Should we tip?",
+    "answer": "Tipping is customary in the United States: 15 to 20 percent is usual for guides and drivers if you were happy with the service, but it is always your choice."
+   },
+   {
+    "question": "What is the cancellation policy?",
+    "answer": "You can cancel free of charge up to 72 hours before the tour. Until your request is confirmed, nothing is charged at all."
+   }
+  ]
+ }
+}
