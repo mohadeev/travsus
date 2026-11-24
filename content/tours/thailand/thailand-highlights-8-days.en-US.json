@@ -1,0 +1,77 @@
+{
+ "key": "thailand-highlights-8-days",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {"city": "Bangkok", "state": "Bangkok", "country": "Thailand", "countryCode": "TH", "timeZone": "Asia/Bangkok", "streetAddress": "Bangkok Suvarnabhumi Airport or your hotel in Bangkok", "geoCoordinates": {"lat": 13.7563, "log": 100.5018}},
+ "slug": "/en-US/thailand/bangkok/tours/thailand-highlights-8-day-private-tour-bangkok-ayutthaya-chiang-mai-and-phuket",
+ "tour": {
+  "name": "Thailand Highlights 8-Day Private Tour: Bangkok, Ayutthaya, Chiang Mai & Phuket",
+  "subtitle": "Eight days from temples to beaches with private guides: the Grand Palace and the canals of Bangkok, the ruins of Ayutthaya, the temples of Chiang Mai and a day with rescued elephants, then three nights on Phuket with a private boat in Phang Nga Bay.",
+  "seoTitle": "Thailand Highlights 8-Day Private Tour | TRAVSUS",
+  "metaDescription": "8-day private Thailand tour: Bangkok's Grand Palace, Wat Pho and canals, Ayutthaya, Chiang Mai's Doi Suthep and old city, an ethical elephant sanctuary, and Phuket with a private Phang Nga Bay boat. Flights, guides and 7 nights.",
+  "tags": ["Thailand tour", "Bangkok Chiang Mai Phuket", "Thailand 8 days", "Elephant sanctuary", "Phang Nga Bay", "Thailand private tour"],
+  "highlights": [
+   "The Grand Palace, Wat Pho and a long-tail boat in Bangkok",
+   "The ruins of the ancient capital, Ayutthaya",
+   "Doi Suthep and the temples of Chiang Mai",
+   "A day with rescued elephants at an ethical sanctuary",
+   "A private long-tail boat among the limestone islands of Phang Nga Bay",
+   "Free time on the beaches of Phuket",
+   "Domestic flights, private transfers and seven nights in good hotels"
+  ],
+  "duration": 8,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "Thailand in a week can be both culture and beach. This private journey begins in Bangkok with the Grand Palace and the canals, visits the ruins of Ayutthaya, flies north to Chiang Mai for the temples of the Lanna kingdom and a day with rescued elephants, then flies south to Phuket to end with the limestone islands of Phang Nga Bay and time on the beach.\n\nYou have a private guide and car on every sightseeing day, domestic flights between regions, a private long-tail boat in Phang Nga Bay and seven nights in well-located hotels with breakfast. The days are planned around the heat, with early starts and relaxed afternoons.\n\nAT A GLANCE\n• Duration: 8 days, 7 nights\n• Start: Bangkok Suvarnabhumi Airport or your hotel in Bangkok\n• End: Phuket Airport or your hotel in Phuket\n• Type: private tour with guides, private cars and drivers, domestic flights; 7 nights in hotels with breakfast\n• Booking: on request – we confirm availability, hotels, flights and the final price by email within 24 hours, and you pay only then\n• Level: easy to moderate\n\nWHAT YOU SEE\n• Bangkok: the Grand Palace, Wat Pho, the khlongs and Wat Arun.\n• Ayutthaya.\n• Chiang Mai: Doi Suthep, the old city temples and an elephant sanctuary.\n• Phuket and Phang Nga Bay.\n\nWHY THIS WORKS\nTwo short flights replace long overland journeys, and three nights at the beach at the end make a relaxing finish after the cities.\n\nWHO IT SUITS\nFirst-time visitors, couples, honeymooners and families who want culture, nature and beach.\n\nWHO MAY PREFER ANOTHER TOUR\nIf you prefer Krabi's beaches to Phuket's, we can switch the last stop; if you love history, add Chiang Rai or Sukhothai.\n\nPRACTICAL INFORMATION\nTemples require covered shoulders and knees. The best time is November to April; the Andaman coast is rainier from May to October.",
+  "inclusions": {"standard": {"private": ["Private airport transfers in Bangkok, Chiang Mai and Phuket", "7 nights in 4-star or boutique hotels with breakfast (double or twin rooms): 3 in Bangkok, 2 in Chiang Mai, 2 in Phuket", "Domestic flights Bangkok–Chiang Mai and Chiang Mai–Phuket (economy, 20 kg bag)", "Private guides and cars for all sightseeing days", "Private long-tail boat in Phang Nga Bay with canoeing", "Ethical elephant sanctuary programme", "Entrance tickets and park fees in the programme", "Lunch on days 2 to 7", "Bottled water"], "shared": ["Airport transfers", "7 nights with breakfast", "Domestic flights", "Guides", "Entrance fees", "Lunches"]}},
+  "pricingTiers": [
+   {"transportType": "Sedan / SUV", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png", "minSeats": 1, "maxSeats": 4, "pricing": {"currency": "EUR", "totalPrice": 3680, "pricePerDay": 460}},
+   {"transportType": "Minivan", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png", "minSeats": 5, "maxSeats": 8, "pricing": {"currency": "EUR", "totalPrice": 6720, "pricePerDay": 840}},
+   {"transportType": "Mini Bus", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png", "minSeats": 9, "maxSeats": 19, "pricing": {"currency": "EUR", "totalPrice": 12800, "pricePerDay": 1600}}
+  ],
+  "images": ["Q:Grand Palace Bangkok", "Q:Phang Nga Bay Khao Phing Kan", "Q:Wat Phra That Doi Suthep", "Q:Wat Chaiwatthanaram", "Q:Elephant Nature Park"],
+  "days": [
+   {"name": "Arrival in Bangkok and an evening by the river",
+    "description": "What to expect: a private welcome and a first evening in Bangkok.\n\nYour driver meets you in the arrivals hall at Suvarnabhumi Airport and takes you to your hotel. In the evening your guide can take you on a river boat along the Chao Phraya, past the lit-up Wat Arun and Grand Palace, and to a night market for dinner.\n\nSCHEDULE (approximate times)\nAny time – Airport transfer.\n18:30 – Optional evening river trip and night market.\n\nGOOD TO KNOW\n• Bangkok traffic is heavy in the evening; the river is the fastest way around.\n\nINCLUDED: airport transfer, evening outing with a guide.\nNOT INCLUDED: dinner.\n\nOvernight: hotel in Bangkok.\nMeals: none.",
+    "stops": [{"name": "Chao Phraya river", "duration": "Evening", "description": "Bangkok's temples lit up at night.", "image": "Q:Wat Arun"}]},
+   {"name": "Bangkok: the Grand Palace, Wat Pho, the khlongs and Wat Arun",
+    "description": "What to expect: royal Bangkok with a licensed guide, car and long-tail boat.\n\nYou visit the Grand Palace and the Emerald Buddha at opening time, the reclining Buddha of Wat Pho, have lunch by the river, then take a long-tail boat through the canals of Thonburi to Wat Arun.\n\nSCHEDULE (approximate times)\n08:30 – Grand Palace.\n11:00 – Wat Pho.\n12:30 – Lunch.\n14:00 – Khlong boat.\n15:15 – Wat Arun.\n\nGOOD TO KNOW\n• Strict dress code at the palace.\n\nINCLUDED: private car and driver, guide, tickets, boat, lunch.\nNOT INCLUDED: dinner.\n\nOvernight: hotel in Bangkok.\nMeals: breakfast, lunch.",
+    "stops": [
+     {"name": "Grand Palace", "duration": "About 2 hours", "description": "The Emerald Buddha.", "image": "Q:Grand Palace Bangkok"},
+     {"name": "Wat Pho", "duration": "About 1 hour", "description": "The reclining Buddha.", "image": "Q:Wat Pho reclining Buddha"}
+    ]},
+   {"name": "Ayutthaya, the ancient capital",
+    "description": "What to expect: the ruins of the capital of Siam with a licensed guide and car.\n\nYou drive north to Bang Pa-In palace and Ayutthaya, to see Wat Mahathat and its Buddha head in the tree roots, Wat Phra Si Sanphet, a river lunch and Wat Chaiwatthanaram in the late light, returning to Bangkok in the evening.\n\nSCHEDULE (approximate times)\n07:30 – Departure from Bangkok.\n09:00 – Bang Pa-In.\n10:30 – Ayutthaya temples.\n12:30 – Lunch.\n14:45 – Wat Chaiwatthanaram.\n17:30 – Back in Bangkok.\n\nGOOD TO KNOW\n• Hot and unshaded: bring a hat.\n\nINCLUDED: private car and driver, guide, tickets, lunch.\nNOT INCLUDED: dinner.\n\nOvernight: hotel in Bangkok.\nMeals: breakfast, lunch.",
+    "stops": [{"name": "Ayutthaya", "duration": "About 5 hours", "description": "The ruined temples of Siam's old capital.", "image": "Q:Wat Chaiwatthanaram"}]},
+   {"name": "Fly to Chiang Mai: Doi Suthep and the old city temples",
+    "description": "What to expect: a short flight north and the temples of the Lanna kingdom.\n\nA morning flight takes you to Chiang Mai in about an hour. Your guide meets you and drives you up to Wat Phra That Doi Suthep, then to the forest temple of Wat Umong. After a khao soi lunch, you explore Wat Chedi Luang, with a monk chat, and Wat Phra Singh.\n\nSCHEDULE (approximate times)\n07:30 – Flight to Chiang Mai.\n09:30 – Doi Suthep.\n11:30 – Wat Umong.\n12:30 – Lunch.\n14:00 – Old city temples.\n\nGOOD TO KNOW\n• On a Sunday, the Walking Street market fills the old city in the evening.\n\nINCLUDED: transfers, flight, private car and driver, guide, temple fees, lunch.\nNOT INCLUDED: dinner.\n\nOvernight: hotel in Chiang Mai.\nMeals: breakfast, lunch.",
+    "stops": [{"name": "Wat Phra That Doi Suthep", "duration": "About 1 hour 30 minutes", "description": "The golden chedi above the city.", "image": "Q:Wat Phra That Doi Suthep"}]},
+   {"name": "An ethical elephant sanctuary",
+    "description": "What to expect: a day with rescued elephants in the Mae Taeng valley.\n\nYou watch the herd in a natural setting, help prepare food for the older elephants, have lunch at the sanctuary and walk with the elephants through the forest and along the river. No riding, no shows.\n\nSCHEDULE (approximate times)\n08:00 – Pick-up.\n09:00 – Sanctuary programme.\n12:00 – Lunch.\n13:15 – Walk with the elephants.\n16:00 – Back at your hotel.\n\nGOOD TO KNOW\n• Wear clothes that can get dirty.\n\nINCLUDED: private car and driver, guide, sanctuary programme, lunch.\nNOT INCLUDED: dinner.\n\nOvernight: hotel in Chiang Mai.\nMeals: breakfast, lunch.",
+    "stops": [{"name": "Elephant sanctuary", "duration": "About 6 hours", "description": "Rescued elephants in the forest.", "image": "Q:Elephant Nature Park"}]},
+   {"name": "Fly to Phuket and an afternoon on the beach",
+    "description": "What to expect: a flight to the Andaman coast and time to relax.\n\nA morning flight takes you to Phuket in about two hours. Your driver takes you to your beach hotel, and the afternoon is free for the pool or the sea. In the evening you can visit Phuket Old Town, with its Sino-Portuguese shophouses, or watch the sunset from Promthep Cape.\n\nSCHEDULE (approximate times)\n09:00 – Flight to Phuket.\n11:30 – Transfer to your hotel.\nAfternoon – Free.\n\nGOOD TO KNOW\n• Phuket's west-coast beaches have strong currents from May to October; swim only where flags allow.\n\nINCLUDED: transfers, flight, lunch.\nNOT INCLUDED: dinner.\n\nOvernight: beach hotel in Phuket.\nMeals: breakfast, lunch.",
+    "stops": [{"name": "Phuket", "duration": "Afternoon", "description": "Free time on the beach."}]},
+   {"name": "Phang Nga Bay by private long-tail boat",
+    "description": "What to expect: the limestone islands of Phang Nga Bay from your own boat.\n\nYou cruise through the mangroves, canoe through sea caves into hidden lagoons, see James Bond Island, have lunch in the stilt village of Koh Panyee and swim from a quiet beach.\n\nSCHEDULE (approximate times)\n08:00 – Pick-up.\n10:00 – Sea canoeing.\n11:30 – James Bond Island.\n12:30 – Lunch in Koh Panyee.\n14:00 – Swim.\n17:00 – Back at your hotel.\n\nGOOD TO KNOW\n• Bring a dry bag for your phone.\n\nINCLUDED: transfers, private boat and guide, canoeing, park fees, lunch.\nNOT INCLUDED: dinner.\n\nOvernight: beach hotel in Phuket.\nMeals: breakfast, lunch.",
+    "stops": [{"name": "Phang Nga Bay", "duration": "About 6 hours", "description": "Sea caves and James Bond Island.", "image": "Q:Phang Nga Bay Khao Phing Kan"}]},
+   {"name": "Departure from Phuket",
+    "description": "What to expect: a last morning at the beach and a private transfer.\n\nAfter breakfast you have free time until your driver takes you to Phuket International Airport.\n\nSCHEDULE (approximate times)\nMorning – Free time.\nAs needed – Private transfer to the airport.\n\nGOOD TO KNOW\n• Extra beach nights in Phuket, Krabi or the islands can be added.\n\nINCLUDED: airport transfer.\nNOT INCLUDED: lunch.\n\nOvernight: none.\nMeals: breakfast.",
+    "stops": [{"name": "Phuket", "duration": "Free time", "description": "A last swim before your flight."}]}
+  ],
+  "faq": [
+   {"question": "How does booking on request work?", "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability, hotels, flights and the final price by email within 24 hours, and you pay online only when the tour is confirmed."},
+   {"question": "Are the domestic flights included?", "answer": "Yes: Bangkok to Chiang Mai and Chiang Mai to Phuket, in economy with a 20 kg checked bag each."},
+   {"question": "What kind of hotels are used?", "answer": "Comfortable 4-star or boutique hotels: riverside or central in Bangkok, in or near the old city in Chiang Mai, and on the beach in Phuket. Upgrades to 5-star resorts are available."},
+   {"question": "Is the elephant sanctuary ethical?", "answer": "Yes. We work only with sanctuaries that offer no riding or shows, rescue their elephants and limit visitor numbers."},
+   {"question": "Can we change the beach destination?", "answer": "Yes. Krabi, Koh Samui or Khao Lak can replace Phuket, depending on the season."},
+   {"question": "Can the route be reversed?", "answer": "Yes, or adapted to your international flights."},
+   {"question": "Is it suitable for children?", "answer": "Yes. Children love the boats, the elephants and the beach. We can book family rooms."},
+   {"question": "Is it suitable for people with limited mobility?", "answer": "Partly. Some temples and the boat trips involve steps and boarding. Tell us your needs and we will adapt."},
+   {"question": "Is there a dress code?", "answer": "At temples, cover shoulders and knees. Beachwear is for the beach only."},
+   {"question": "Should we tip?", "answer": "Tips are appreciated in Thailand but never required."},
+   {"question": "What should we wear?", "answer": "Light, breathable clothes, covering clothes for temples, swimwear, sandals and comfortable shoes."},
+   {"question": "What is the best time of year?", "answer": "November to April, when the north is cool and the Andaman coast dry. From May to October, the Gulf islands are a better beach choice."},
+   {"question": "What is the cancellation policy?", "answer": "You can cancel free of charge up to 21 days before the tour starts; flights and some hotels may not be refundable after booking. Until your request is confirmed, nothing is charged at all."}
+  ]
+ }
+}
