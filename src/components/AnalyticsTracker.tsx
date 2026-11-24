@@ -160,7 +160,25 @@ export default function AnalyticsTracker() {
 		const onScroll = () => {
 			page.current.maxScroll = Math.max(page.current.maxScroll, scrollPercent())
 		}
+		// Rage clicks: 3+ clicks on the same spot within a second, a sign something isn't working
+		let recent: { t: number; x: number; y: number }[] = []
+		let lastRage = 0
+		const onAnyClick = (e: MouseEvent) => {
+			const now = Date.now()
+			recent = [...recent.filter((c) => now - c.t < 1000 && Math.hypot(c.x - e.clientX, c.y - e.clientY) < 40), { t: now, x: e.clientX, y: e.clientY }]
+			if (recent.length < 3 || now - lastRage < 2000) return
+			lastRage = now
+			const count = Number(store.get(sessionStorage, 'tv_rage') ?? 0)
+			if (count >= MAX_ERRORS) return
+			store.set(sessionStorage, 'tv_rage', String(count + 1))
+			const target = e.target as HTMLElement | null
+			const el = (target?.closest?.('a, button, [role="button"], summary, input, label') as HTMLElement | null) ?? target
+			const text = (el?.getAttribute?.('aria-label') || (el?.innerText || '').split('\n')[0] || el?.tagName?.toLowerCase() || '').replace(/\s+/g, ' ').trim().slice(0, 80)
+			push({ type: 'rage', path: page.current.path, data: { text, clicks: recent.length } })
+			flush.current()
+		}
 		const onClick = (e: MouseEvent) => {
+			onAnyClick(e)
 			const el = (e.target as Element | null)?.closest?.('a, button, [role="button"], summary')
 			if (!el || el.closest('[data-analytics-ignore]')) return
 			// A readable name: its label, the heading inside (cards), or its first line of text

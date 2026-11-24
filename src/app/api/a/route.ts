@@ -8,7 +8,7 @@ import { getSessionUser } from '@/lib/session'
 
 export const dynamic = 'force-dynamic'
 
-const EVENT_TYPES = new Set(['pageview', 'leave', 'click', 'error', 'search', 'identify', 'booking_start', 'signup_open'])
+const EVENT_TYPES = new Set(['pageview', 'leave', 'click', 'rage', 'error', 'search', 'identify', 'booking_start', 'signup_open'])
 const ID = /^[a-zA-Z0-9_-]{8,40}$/
 const str = (v: unknown, max: number) => (typeof v === 'string' && v ? v.slice(0, max) : null)
 const int = (v: unknown, min: number, max: number) => (typeof v === 'number' && Number.isFinite(v) ? Math.min(max, Math.max(min, Math.round(v))) : null)
