@@ -97,11 +97,11 @@
    }
   ],
   "images": [
-   "Q:Lencois Maranhenses",
-   "Q:Lencois Maranhenses#2",
-   "Q:Lencois Maranhenses#3",
-   "Q:Lencois Maranhenses#4",
-   "Q:Lencois Maranhenses#5"
+   "Lençóis Maranhenses Roberto Silva 20.jpg",
+   "Parque Nacional dos Lencois Maranhenses Filo Vasconcellos (24).jpg",
+   "Casal de turistas caminha em uma duna, enquanto o dia morre nos Lençóis Maranhenses (edited).jpg",
+   "Parque Nacional dos Lençóis Maranhenses Paulo Cattelan (03).jpg",
+   "Os lencois.jpg"
   ],
   "days": [
    {
@@ -112,7 +112,7 @@
       "name": "Lagoa Bonita",
       "duration": "About 3 hours",
       "description": "Swimming and sunset among the dunes.",
-      "image": "Q:Lencois Maranhenses"
+      "image": "Lençóis Maranhenses Roberto Silva 20.jpg"
      }
     ]
    },
@@ -134,7 +134,7 @@
       "name": "Caburé",
       "duration": "About 2 hours 30 minutes",
       "description": "Between the river and the sea.",
-      "image": "Q:Lencois Maranhenses"
+      "image": "Lençóis Maranhenses Roberto Silva 20.jpg"
      }
     ]
    },
@@ -146,7 +146,7 @@
       "name": "Lagoa Azul",
       "duration": "About 3 hours",
       "description": "Blue lagoons between the dunes.",
-      "image": "Q:Lencois Maranhenses"
+      "image": "Lençóis Maranhenses Roberto Silva 20.jpg"
      },
      {
       "name": "São Luís",

@@ -98,11 +98,11 @@
    }
   ],
   "images": [
-   "Q:Iguazu Falls",
-   "Q:Iguazu Falls#2",
-   "Q:Iguazu Falls#3",
-   "Q:Iguazu Falls#4",
-   "Q:Iguazu Falls#5"
+   "00 1838 Iguazu Falls from the Brazilian side.jpg",
+   "Rainbows at Iguazu Falls frrom Argentina.jpg",
+   "Iguazu-Falls-January-2013-2.jpg",
+   "Iguazu Falls Brazilian Side 2019.jpg",
+   "00 1854 Iguazú-Wasserfälle - Südamerika.jpg"
   ],
   "days": [
    {
@@ -118,13 +118,13 @@
       "name": "Macuco Safari",
       "duration": "About 2 hours",
       "description": "A boat into the spray.",
-      "image": "Q:Iguazu Falls"
+      "image": "00 1838 Iguazu Falls from the Brazilian side.jpg"
      },
      {
       "name": "Brazilian side trail",
       "duration": "About 2 hours",
       "description": "The panorama of the falls.",
-      "image": "Q:Iguazu Falls"
+      "image": "00 1838 Iguazu Falls from the Brazilian side.jpg"
      }
     ]
    },
@@ -136,7 +136,7 @@
       "name": "Devil’s Throat",
       "duration": "About 1 hour 30 minutes",
       "description": "The great chasm from above.",
-      "image": "Q:Iguazu Falls"
+      "image": "00 1838 Iguazu Falls from the Brazilian side.jpg"
      },
      {
       "name": "Upper and Lower Circuits",

@@ -97,11 +97,11 @@
    }
   ],
   "images": [
-   "Q:Pantanal jaguar",
-   "Q:Pantanal jaguar#2",
-   "Q:Pantanal jaguar#3",
-   "Q:Pantanal jaguar#4",
-   "Q:Pantanal jaguar#5"
+   "009 Female jaguar in Encontro das Águas State Park Photo by Giles Laurent.jpg",
+   "188 Jaguar swimming in Encontro das Águas State Park Photo by Giles Laurent.jpg",
+   "Jaguar (Panthera onca palustris) female Piquiri River 2.JPG",
+   "011 Jaguar drinking in Encontro das Águas State Park Photo by Giles Laurent.jpg",
+   "Jaguar (Panthera onca palustris) male Three Brothers River.JPG"
   ],
   "days": [
    {
@@ -112,7 +112,7 @@
       "name": "Transpantaneira",
       "duration": "About 3 hours",
       "description": "Caimans, capybaras and birds.",
-      "image": "Q:Pantanal jaguar"
+      "image": "009 Female jaguar in Encontro das Águas State Park Photo by Giles Laurent.jpg"
      },
      {
       "name": "Lodge trails",
@@ -129,7 +129,7 @@
       "name": "Cuiabá river",
       "duration": "About 4 hours",
       "description": "The first jaguar safari.",
-      "image": "Q:Pantanal jaguar"
+      "image": "009 Female jaguar in Encontro das Águas State Park Photo by Giles Laurent.jpg"
      }
     ]
    },
@@ -141,7 +141,7 @@
       "name": "Jaguar rivers",
       "duration": "Full day",
       "description": "Jaguars, otters and birds.",
-      "image": "Q:Pantanal jaguar"
+      "image": "009 Female jaguar in Encontro das Águas State Park Photo by Giles Laurent.jpg"
      }
     ]
    },
@@ -153,7 +153,7 @@
       "name": "Cuiabá river",
       "duration": "About 3 hours",
       "description": "A last chance for jaguars.",
-      "image": "Q:Pantanal jaguar"
+      "image": "009 Female jaguar in Encontro das Águas State Park Photo by Giles Laurent.jpg"
      }
     ]
    }

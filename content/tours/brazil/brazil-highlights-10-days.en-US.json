@@ -96,11 +96,11 @@
    }
   ],
   "images": [
-   "Q:Christ the Redeemer Rio",
-   "Q:Iguazu Falls",
-   "Q:Pelourinho Salvador",
-   "Q:Sugarloaf Mountain",
-   "Q:Meeting of Waters Manaus"
+   "Christ-Redeemer-Rio-de-Janeiro.jpg",
+   "00 1838 Iguazu Falls from the Brazilian side.jpg",
+   "Largo do Pelourinho Salvador 2019-9754.jpg",
+   "Rio de Janeiro skyline and Sugarloaf Mountain at sunset, Brazil 3.jpg",
+   "Meeting of Waters (Manaus).jpg"
   ],
   "days": [
    {
@@ -111,7 +111,7 @@
       "name": "Copacabana",
       "duration": "Free time",
       "description": "The beach and promenade.",
-      "image": "Q:Copacabana beach"
+      "image": "Copacabana, Rio de Janeiro.jpg"
      }
     ]
    },
@@ -123,13 +123,13 @@
       "name": "Christ the Redeemer",
       "duration": "About 2 hours",
       "description": "The statue and the view.",
-      "image": "Q:Christ the Redeemer Rio"
+      "image": "Christ-Redeemer-Rio-de-Janeiro.jpg"
      },
      {
       "name": "Sugarloaf Mountain",
       "duration": "About 2 hours",
       "description": "The bay from above.",
-      "image": "Q:Sugarloaf Mountain"
+      "image": "Rio de Janeiro skyline and Sugarloaf Mountain at sunset, Brazil 3.jpg"
      }
     ]
    },
@@ -141,7 +141,7 @@
       "name": "Tijuca forest",
       "duration": "About 2 hours",
       "description": "Trails and waterfalls.",
-      "image": "Q:Tijuca Forest"
+      "image": "Floresta da Tijuca 60.jpg"
      }
     ]
    },
@@ -153,7 +153,7 @@
       "name": "Iguazu Falls, Brazilian side",
       "duration": "About 3 hours",
       "description": "The panorama and the boat.",
-      "image": "Q:Iguazu Falls"
+      "image": "00 1838 Iguazu Falls from the Brazilian side.jpg"
      }
     ]
    },
@@ -165,7 +165,7 @@
       "name": "Devil’s Throat",
       "duration": "About 1 hour 30 minutes",
       "description": "The chasm from above.",
-      "image": "Q:Iguazu Falls"
+      "image": "00 1838 Iguazu Falls from the Brazilian side.jpg"
      }
     ]
    },
@@ -177,7 +177,7 @@
       "name": "Pelourinho by night",
       "duration": "Evening",
       "description": "Music in the squares.",
-      "image": "Q:Pelourinho Salvador"
+      "image": "Largo do Pelourinho Salvador 2019-9754.jpg"
      }
     ]
    },
@@ -189,7 +189,7 @@
       "name": "Pelourinho",
       "duration": "About 2 hours",
       "description": "Pastel houses and baroque churches.",
-      "image": "Q:Pelourinho Salvador"
+      "image": "Largo do Pelourinho Salvador 2019-9754.jpg"
      }
     ]
    },
@@ -201,7 +201,7 @@
       "name": "Teatro Amazonas",
       "duration": "About 1 hour",
       "description": "The opera house of the rubber boom.",
-      "image": "Q:Teatro Amazonas"
+      "image": "Amazon Theatre, Teatro Amazonas. Manaus, Brazil. 01.jpg"
      }
     ]
    },
@@ -213,7 +213,7 @@
       "name": "Meeting of the Waters",
       "duration": "About 45 minutes",
       "description": "Two rivers side by side.",
-      "image": "Q:Meeting of Waters Manaus"
+      "image": "Meeting of Waters (Manaus).jpg"
      }
     ]
    },
@@ -225,7 +225,7 @@
       "name": "Manaus",
       "duration": "Free time",
       "description": "A last look at the Rio Negro.",
-      "image": "Q:Teatro Amazonas"
+      "image": "Amazon Theatre, Teatro Amazonas. Manaus, Brazil. 01.jpg"
      }
     ]
    }

@@ -95,11 +95,11 @@
    }
   ],
   "images": [
-   "Q:Tijuca Forest",
-   "Q:Escadaria Selaron",
-   "Q:Tijuca Forest#2",
-   "Q:Christ the Redeemer Rio#3",
-   "Q:Tijuca Forest#3"
+   "Floresta da Tijuca 60.jpg",
+   "Unique Moment with the Moon and Christ the Redeemer 3.jpg",
+   "Parque Nacional da Tijuca por Cesar Vieira (05).jpg",
+   "Redentor Over Clouds 1.jpg",
+   "Parque Nacional da Tijuca por Cesar Vieira (01).jpg"
   ],
   "days": [
    {
@@ -109,14 +109,13 @@
      {
       "name": "Santa Teresa",
       "duration": "About 1 hour 30 minutes",
-      "description": "Tram, mansions and studios.",
-      "image": "Q:Escadaria Selaron"
+      "description": "Tram, mansions and studios."
      },
      {
       "name": "Tijuca forest",
       "duration": "About 2 hours",
       "description": "Trails, waterfall and viewpoints.",
-      "image": "Q:Tijuca Forest"
+      "image": "Floresta da Tijuca 60.jpg"
      },
      {
       "name": "Botanical Garden",

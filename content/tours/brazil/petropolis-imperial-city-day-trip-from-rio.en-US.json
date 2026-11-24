@@ -92,11 +92,11 @@
    }
   ],
   "images": [
-   "Q:Petropolis Imperial Museum",
-   "Q:Petropolis Imperial Museum#2",
-   "Q:Tijuca Forest#4",
-   "Q:Petropolis Imperial Museum#3",
-   "Q:Christ the Redeemer Rio#4"
+   "Museu Imperial de Petrópolis, Rio de Janeiro, em dia de visitação.jpg",
+   "Museu Imperial, RJ 01.jpg",
+   "Parque Nacional da Tijuca por Cesar Vieira (06).jpg",
+   "Museu Imperial à noite julho 2017 04.jpg",
+   "Christ the Redeemer 2.jpg"
   ],
   "days": [
    {
@@ -107,7 +107,7 @@
       "name": "Imperial Museum",
       "duration": "About 1 hour 30 minutes",
       "description": "The summer palace and the crown of Pedro II.",
-      "image": "Q:Petropolis Imperial Museum"
+      "image": "Museu Imperial de Petrópolis, Rio de Janeiro, em dia de visitação.jpg"
      },
      {
       "name": "Cathedral of St Peter of Alcantara",

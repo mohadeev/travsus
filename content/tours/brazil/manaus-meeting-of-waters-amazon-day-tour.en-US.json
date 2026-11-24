@@ -97,11 +97,11 @@
    }
   ],
   "images": [
-   "Q:Meeting of Waters Manaus",
-   "Q:Teatro Amazonas",
-   "Q:Meeting of Waters Manaus#2",
-   "Q:Teatro Amazonas#2",
-   "Q:Meeting of Waters Manaus#3"
+   "Meeting of Waters (Manaus).jpg",
+   "Amazon Theatre, Teatro Amazonas. Manaus, Brazil. 01.jpg",
+   "Brazil-00285 - Meeting of Waters (48961509103).jpg",
+   "Interior of Teatro Amazonas, Manaus, Brazil 01.jpg",
+   "Meeting of waters from the air manaus brazil.JPG"
   ],
   "days": [
    {
@@ -112,13 +112,13 @@
       "name": "Teatro Amazonas",
       "duration": "About 1 hour",
       "description": "The opera house of the rubber boom.",
-      "image": "Q:Teatro Amazonas"
+      "image": "Amazon Theatre, Teatro Amazonas. Manaus, Brazil. 01.jpg"
      },
      {
       "name": "Meeting of the Waters",
       "duration": "About 45 minutes",
       "description": "Two rivers side by side.",
-      "image": "Q:Meeting of Waters Manaus"
+      "image": "Meeting of Waters (Manaus).jpg"
      },
      {
       "name": "Janauari lake",

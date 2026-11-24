@@ -93,11 +93,11 @@
    }
   ],
   "images": [
-   "Q:Christ the Redeemer Rio",
-   "Q:Sugarloaf Mountain",
-   "Q:Christ the Redeemer Rio#2",
-   "Q:Copacabana beach",
-   "Q:Escadaria Selaron"
+   "Christ-Redeemer-Rio-de-Janeiro.jpg",
+   "Rio de Janeiro skyline and Sugarloaf Mountain at sunset, Brazil 3.jpg",
+   "Rio skyline and Cristo Redentor from Sugarloaf Mountain, Brazil.jpg",
+   "Copacabana, Rio de Janeiro.jpg",
+   "Top Down View of Copacabana Mosaic and Palm Trees 3.jpg"
   ],
   "days": [
    {
@@ -108,25 +108,24 @@
       "name": "Christ the Redeemer",
       "duration": "About 2 hours",
       "description": "The statue and the view from Corcovado.",
-      "image": "Q:Christ the Redeemer Rio"
+      "image": "Christ-Redeemer-Rio-de-Janeiro.jpg"
      },
      {
       "name": "Selarón steps",
       "duration": "About 30 minutes",
-      "description": "Tiles from around the world.",
-      "image": "Q:Escadaria Selaron"
+      "description": "Tiles from around the world."
      },
      {
       "name": "Sugarloaf Mountain",
       "duration": "About 2 hours",
       "description": "The cable cars and the view of the bay.",
-      "image": "Q:Sugarloaf Mountain"
+      "image": "Rio de Janeiro skyline and Sugarloaf Mountain at sunset, Brazil 3.jpg"
      },
      {
       "name": "Copacabana",
       "duration": "About 20 minutes",
       "description": "The famous beach and promenade.",
-      "image": "Q:Copacabana beach"
+      "image": "Copacabana, Rio de Janeiro.jpg"
      }
     ]
    }
