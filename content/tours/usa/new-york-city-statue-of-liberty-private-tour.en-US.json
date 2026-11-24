@@ -92,11 +92,11 @@
    }
   ],
   "images": [
-   "Q:Statue of Liberty",
-   "Q:Brooklyn Bridge",
-   "Q:Central Park New York",
-   "Q:Statue of Liberty#2",
-   "Q:Brooklyn Bridge#2"
+   "Statue of liberty front.jpg",
+   "Brooklyn Bridge and the Lower Manhattan skyline from Pebble Beach, New York.jpg",
+   "LibertyStatue.JPG",
+   "Statue of Liberty, NY.jpg",
+   "Brooklyn Bridge August 2017.jpg"
   ],
   "days": [
    {
@@ -107,7 +107,7 @@
       "name": "Statue of Liberty",
       "duration": "About 1 hour 30 minutes",
       "description": "Liberty Island and the museum.",
-      "image": "Q:Statue of Liberty"
+      "image": "Statue of liberty front.jpg"
      },
      {
       "name": "Ellis Island",
@@ -118,13 +118,12 @@
       "name": "Brooklyn Bridge",
       "duration": "About 1 hour",
       "description": "A walk with the skyline.",
-      "image": "Q:Brooklyn Bridge"
+      "image": "Brooklyn Bridge and the Lower Manhattan skyline from Pebble Beach, New York.jpg"
      },
      {
       "name": "Central Park",
       "duration": "About 1 hour",
-      "description": "Bethesda Terrace and Bow Bridge.",
-      "image": "Q:Central Park New York"
+      "description": "Bethesda Terrace and Bow Bridge."
      }
     ]
    }

@@ -92,11 +92,11 @@
    }
   ],
   "images": [
-   "Q:Lincoln Memorial",
-   "Q:United States Capitol",
-   "Q:Lincoln Memorial#2",
-   "Q:United States Capitol#2",
-   "Q:Lincoln Memorial#3"
+   "Lincoln Memorial (2024).jpg",
+   "Capitol Building Full View.jpg",
+   "Abraham Lincoln seated at the Lincoln Memorial 20240601.jpg",
+   "US Capitol west side.JPG",
+   "Lincoln Memorial 4.jpg"
   ],
   "days": [
    {
@@ -112,7 +112,7 @@
       "name": "Lincoln Memorial",
       "duration": "About 1 hour",
       "description": "The memorial and the war memorials.",
-      "image": "Q:Lincoln Memorial"
+      "image": "Lincoln Memorial (2024).jpg"
      },
      {
       "name": "Smithsonian museum",
@@ -123,7 +123,7 @@
       "name": "Capitol and Library of Congress",
       "duration": "About 1 hour",
       "description": "The seat of Congress.",
-      "image": "Q:United States Capitol"
+      "image": "Capitol Building Full View.jpg"
      }
     ]
    }

@@ -96,11 +96,11 @@
    }
   ],
   "images": [
-   "Q:Golden Gate Bridge",
-   "Q:Alcatraz Island",
-   "Q:Golden Gate Bridge#2",
-   "Q:Alcatraz Island#2",
-   "Q:Golden Gate Bridge#3"
+   "Golden Gate Bridge as seen from Battery East.jpg",
+   "Alcatraz Island as seen from the East.jpg",
+   "GoldenGateBridge BakerBeach MC.jpg",
+   "San Francisco (CA, USA), Alcatraz -- 2012 -- 4193.jpg",
+   "Golden Gate Bridge and San Francisco skyline from Hawk Hill at Blue Hour dllu.jpg"
   ],
   "days": [
    {
@@ -111,7 +111,7 @@
       "name": "Alcatraz",
       "duration": "About 2 hours 30 minutes",
       "description": "The cellhouse and its stories.",
-      "image": "Q:Alcatraz Island"
+      "image": "Alcatraz Island as seen from the East.jpg"
      },
      {
       "name": "Cable car and Lombard Street",
@@ -122,7 +122,7 @@
       "name": "Golden Gate Bridge",
       "duration": "About 1 hour",
       "description": "The walkway and Battery Spencer.",
-      "image": "Q:Golden Gate Bridge"
+      "image": "Golden Gate Bridge as seen from Battery East.jpg"
      },
      {
       "name": "Muir Woods",

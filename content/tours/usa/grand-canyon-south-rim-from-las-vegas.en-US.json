@@ -95,11 +95,11 @@
    }
   ],
   "images": [
-   "Q:Grand Canyon South Rim",
-   "Q:Grand Canyon South Rim#2",
-   "Q:Grand Canyon South Rim#3",
-   "Q:Grand Canyon South Rim#4",
-   "Q:Grand Canyon South Rim#5"
+   "Grand Canyon Hopi Point with rainbow 2013.jpg",
+   "Grand Canyon (Arizona, USA), South Rim nahe Tusayan -- 2012 -- 5892.jpg",
+   "Grand Canyon Powell Point Evening Light 02 2013.jpg",
+   "Grand Canyon South Rim at Sunset.jpg",
+   "Grand Canyon (Arizona, USA), South Rim nahe Tusayan -- 2012 -- 6040.jpg"
   ],
   "days": [
    {
@@ -115,19 +115,19 @@
       "name": "Mather Point",
       "duration": "About 45 minutes",
       "description": "The first view of the canyon.",
-      "image": "Q:Grand Canyon South Rim"
+      "image": "Grand Canyon Hopi Point with rainbow 2013.jpg"
      },
      {
       "name": "Desert View Watchtower",
       "duration": "About 45 minutes",
       "description": "The bend of the Colorado.",
-      "image": "Q:Grand Canyon South Rim"
+      "image": "Grand Canyon Hopi Point with rainbow 2013.jpg"
      },
      {
       "name": "Hopi Point",
       "duration": "About 1 hour",
       "description": "Sunset over the canyon.",
-      "image": "Q:Grand Canyon South Rim"
+      "image": "Grand Canyon Hopi Point with rainbow 2013.jpg"
      }
     ]
    }

@@ -95,11 +95,11 @@
    }
   ],
   "images": [
-   "Q:Yosemite Valley",
-   "Q:Yosemite Valley#2",
-   "Q:Yosemite Valley#3",
-   "Q:Yosemite Valley#4",
-   "Q:Yosemite Valley#5"
+   "Tunnel View, Yosemite Valley, Yosemite NP - Diliff.jpg",
+   "Half Dome with Eastern Yosemite Valley.jpg",
+   "Valley View Yosemite August 2013 002.jpg",
+   "Yosemite National Park (California, USA), Yosemite Valley (Yosemite Tunnel) -- 2012 -- 4628.jpg",
+   "Yosemite meadows 2004-09-04.jpg"
   ],
   "days": [
    {
@@ -110,13 +110,13 @@
       "name": "Tunnel View",
       "duration": "About 30 minutes",
       "description": "The valley panorama.",
-      "image": "Q:Yosemite Valley"
+      "image": "Tunnel View, Yosemite Valley, Yosemite NP - Diliff.jpg"
      },
      {
       "name": "El Capitan",
       "duration": "About 45 minutes",
       "description": "The granite wall and its climbers.",
-      "image": "Q:Yosemite Valley"
+      "image": "Tunnel View, Yosemite Valley, Yosemite NP - Diliff.jpg"
      },
      {
       "name": "Yosemite Falls",

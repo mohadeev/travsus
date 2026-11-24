@@ -98,11 +98,11 @@
    }
   ],
   "images": [
-   "Q:Antelope Canyon",
-   "Q:Horseshoe Bend Arizona",
-   "Q:Antelope Canyon#2",
-   "Q:Horseshoe Bend Arizona#2",
-   "Q:Antelope Canyon#3"
+   "Upper Antelope Canyon 03 2013.jpg",
+   "Horseshoe Bend Arizona dllu.jpg",
+   "Lower Antelope Canyon November 2018 001.jpg",
+   "Horseshoe Bend overview.jpg",
+   "Lower Antelope Canyon November 2018 006.jpg"
   ],
   "days": [
    {
@@ -118,7 +118,7 @@
       "name": "Horseshoe Bend",
       "duration": "About 1 hour 30 minutes",
       "description": "The Colorado at sunset.",
-      "image": "Q:Horseshoe Bend Arizona"
+      "image": "Horseshoe Bend Arizona dllu.jpg"
      }
     ]
    },
@@ -130,7 +130,7 @@
       "name": "Antelope Canyon",
       "duration": "About 1 hour 30 minutes",
       "description": "Sculpted sandstone and light beams.",
-      "image": "Q:Antelope Canyon"
+      "image": "Upper Antelope Canyon 03 2013.jpg"
      },
      {
       "name": "Lake Powell overlook",

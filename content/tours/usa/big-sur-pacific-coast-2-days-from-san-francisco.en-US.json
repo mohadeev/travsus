@@ -97,11 +97,11 @@
    }
   ],
   "images": [
-   "Q:Bixby Creek Bridge",
-   "Q:Bixby Creek Bridge#2",
-   "Q:Bixby Creek Bridge#3",
-   "Q:Golden Gate Bridge#4",
-   "Q:Bixby Creek Bridge#4"
+   "Bixby Creek Bridge, California, USA - May 2013.jpg",
+   "Pacific Coast at Bixby Creek Bridge 2013.jpg",
+   "Bixby Creek Bridge 2013.jpg",
+   "Golden Gate Bridge at sunset 1.jpg",
+   "Bixby Creek Bridge Aug 2019.jpg"
   ],
   "days": [
    {
@@ -128,7 +128,7 @@
       "name": "Bixby Creek Bridge",
       "duration": "About 30 minutes",
       "description": "The famous arch.",
-      "image": "Q:Bixby Creek Bridge"
+      "image": "Bixby Creek Bridge, California, USA - May 2013.jpg"
      },
      {
       "name": "McWay Falls",

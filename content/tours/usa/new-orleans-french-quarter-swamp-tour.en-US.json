@@ -94,11 +94,11 @@
    }
   ],
   "images": [
-   "Q:French Quarter New Orleans",
-   "Q:Louisiana bayou swamp",
-   "Q:French Quarter New Orleans#2",
-   "Q:Louisiana bayou swamp#2",
-   "Q:French Quarter New Orleans#3"
+   "French Quarter, New Orleans, 5 July 2021 - 05.jpg",
+   "English Bayou in the Pearl River swamp in Louisiana.jpg",
+   "Burgundy St, French Quarter, New Orleans, USA2.jpg",
+   "Free alligator mississippiensis sunbathing on a turtle-Swamps in Louisiana.jpg",
+   "Orleans Street, French Quarter, New Orleans, 12 July 2021 - 01.jpg"
   ],
   "days": [
    {
@@ -109,7 +109,7 @@
       "name": "French Quarter",
       "duration": "About 2 hours",
       "description": "Balconies, courtyards and Jackson Square.",
-      "image": "Q:French Quarter New Orleans"
+      "image": "French Quarter, New Orleans, 5 July 2021 - 05.jpg"
      },
      {
       "name": "Garden District",
@@ -120,7 +120,7 @@
       "name": "Bayou swamp",
       "duration": "About 2 hours",
       "description": "Alligators and cypress trees.",
-      "image": "Q:Louisiana bayou swamp"
+      "image": "English Bayou in the Pearl River swamp in Louisiana.jpg"
      },
      {
       "name": "Frenchmen Street",

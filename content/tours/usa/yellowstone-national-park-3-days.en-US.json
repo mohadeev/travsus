@@ -97,11 +97,11 @@
    }
   ],
   "images": [
-   "Q:Grand Prismatic Spring",
-   "Q:Old Faithful",
-   "Q:Grand Prismatic Spring#2",
-   "Q:Old Faithful#2",
-   "Q:Grand Prismatic Spring#3"
+   "Aerial image of Grand Prismatic Spring (view from the east).jpg",
+   "Yellowstone National Park (WY, USA), Old Faithful Geyser -- 2022 -- 2592.jpg",
+   "Yellowstone National Park (WY, USA), Grand Prismatic Spring -- 2022 -- 2494.jpg",
+   "Yellowstone National Park (WY, USA), Old Faithful Geyser (und Bison) -- 2022 -- 2587.jpg",
+   "Grand Prismatic Spring 2013.jpg"
   ],
   "days": [
    {
@@ -112,13 +112,13 @@
       "name": "Grand Prismatic Spring",
       "duration": "About 1 hour 30 minutes",
       "description": "A rainbow of hot water.",
-      "image": "Q:Grand Prismatic Spring"
+      "image": "Aerial image of Grand Prismatic Spring (view from the east).jpg"
      },
      {
       "name": "Old Faithful",
       "duration": "About 2 hours",
       "description": "Geysers and pools.",
-      "image": "Q:Old Faithful"
+      "image": "Yellowstone National Park (WY, USA), Old Faithful Geyser -- 2022 -- 2592.jpg"
      }
     ]
    },

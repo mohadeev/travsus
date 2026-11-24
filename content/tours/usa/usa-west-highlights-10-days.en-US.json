@@ -98,11 +98,11 @@
    }
   ],
   "images": [
-   "Q:Golden Gate Bridge",
-   "Q:Grand Canyon South Rim",
-   "Q:Antelope Canyon",
-   "Q:Yosemite Valley",
-   "Q:Horseshoe Bend Arizona"
+   "Golden Gate Bridge as seen from Battery East.jpg",
+   "Grand Canyon Hopi Point with rainbow 2013.jpg",
+   "Upper Antelope Canyon 03 2013.jpg",
+   "Tunnel View, Yosemite Valley, Yosemite NP - Diliff.jpg",
+   "Horseshoe Bend Arizona dllu.jpg"
   ],
   "days": [
    {
@@ -113,7 +113,7 @@
       "name": "San Francisco",
       "duration": "Free time",
       "description": "The waterfront at dusk.",
-      "image": "Q:Golden Gate Bridge"
+      "image": "Golden Gate Bridge as seen from Battery East.jpg"
      }
     ]
    },
@@ -125,13 +125,13 @@
       "name": "Alcatraz",
       "duration": "About 2 hours 30 minutes",
       "description": "The cellhouse.",
-      "image": "Q:Alcatraz Island"
+      "image": "Alcatraz Island as seen from the East.jpg"
      },
      {
       "name": "Golden Gate Bridge",
       "duration": "About 1 hour",
       "description": "The classic view.",
-      "image": "Q:Golden Gate Bridge"
+      "image": "Golden Gate Bridge as seen from Battery East.jpg"
      }
     ]
    },
@@ -143,7 +143,7 @@
       "name": "Tunnel View",
       "duration": "About 30 minutes",
       "description": "The valley panorama.",
-      "image": "Q:Yosemite Valley"
+      "image": "Tunnel View, Yosemite Valley, Yosemite NP - Diliff.jpg"
      }
     ]
    },
@@ -155,7 +155,7 @@
       "name": "Las Vegas Strip",
       "duration": "Evening",
       "description": "Fountains and lights.",
-      "image": "Q:Las Vegas Strip"
+      "image": "Las Vegas Strip from Resorts World February 2023 HDR 1.jpg"
      }
     ]
    },
@@ -167,7 +167,7 @@
       "name": "Grand Canyon South Rim",
       "duration": "Afternoon",
       "description": "The rim at sunset.",
-      "image": "Q:Grand Canyon South Rim"
+      "image": "Grand Canyon Hopi Point with rainbow 2013.jpg"
      }
     ]
    },
@@ -179,7 +179,7 @@
       "name": "Horseshoe Bend",
       "duration": "About 1 hour 30 minutes",
       "description": "The Colorado at sunset.",
-      "image": "Q:Horseshoe Bend Arizona"
+      "image": "Horseshoe Bend Arizona dllu.jpg"
      }
     ]
    },
@@ -191,7 +191,7 @@
       "name": "Antelope Canyon",
       "duration": "About 1 hour 30 minutes",
       "description": "Light beams and sculpted walls.",
-      "image": "Q:Antelope Canyon"
+      "image": "Upper Antelope Canyon 03 2013.jpg"
      },
      {
       "name": "Monument Valley",
@@ -230,7 +230,7 @@
       "name": "Las Vegas",
       "duration": "Free time",
       "description": "A last look at the Strip.",
-      "image": "Q:Las Vegas Strip"
+      "image": "Las Vegas Strip from Resorts World February 2023 HDR 1.jpg"
      }
     ]
    }
