@@ -1,0 +1,190 @@
+{
+ "key": "mexico-frida-kahlo-coyoacan-xochimilco-tour",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {
+  "city": "Mexico City",
+  "state": "Mexico City",
+  "country": "Mexico",
+  "countryCode": "MX",
+  "timeZone": "America/Mexico_City",
+  "streetAddress": "Your hotel in Mexico City",
+  "geoCoordinates": {
+   "lat": 19.3551,
+   "log": -99.1626
+  }
+ },
+ "slug": "/en-US/mexico/mexico-city/tours/mexico-city-private-tour-frida-kahlo-s-blue-house-coyoacan-san-angel-and-xochimilco",
+ "tour": {
+  "name": "Mexico City Private Tour: Frida Kahlo's Blue House, Coyoacán, San Ángel & Xochimilco",
+  "subtitle": "The bohemian south of Mexico City in a private day with a licensed guide and vehicle: Frida Kahlo's Casa Azul, the plazas and markets of Coyoacán, the Saturday bazaar of San Ángel, the UNAM campus murals, and a colourful trajinera boat ride with mariachis on the canals of Xochimilco.",
+  "seoTitle": "Frida Kahlo, Coyoacán & Xochimilco Private Tour | TRAVSUS",
+  "metaDescription": "Private Mexico City tour with licensed guide and vehicle: Frida Kahlo's Blue House, Coyoacán, San Ángel, the UNAM murals and a trajinera ride on the canals of Xochimilco. Tickets and lunch included.",
+  "tags": [
+   "Frida Kahlo",
+   "Coyoacán",
+   "Xochimilco",
+   "Mexico City",
+   "Trajinera",
+   "Mexico private tour"
+  ],
+  "highlights": [
+   "Frida Kahlo’s Blue House, the Casa Azul",
+   "The colonial plazas and market of Coyoacán",
+   "Churros and coffee in Coyoacán",
+   "The UNAM central library and its mosaic facade",
+   "San Ángel and its Saturday art bazaar",
+   "A trajinera boat on the canals of Xochimilco",
+   "Mariachis and floating food stalls"
+  ],
+  "duration": 1,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "The south of Mexico City has a bohemian spirit. In Coyoacán, with its cobbled streets and leafy plazas, the painter Frida Kahlo was born, lived with Diego Rivera and died, in the cobalt-blue Casa Azul, now her museum. Nearby, Xochimilco preserves the canals and chinampas, the floating gardens of the Aztecs, a UNESCO World Heritage Site, where families float on colourful trajinera boats with music.\n\nThis private day shows this side of the city with a licensed guide and a vehicle.\n\nAT A GLANCE\n• Duration: about 8 hours\n• Start and end: your hotel in Mexico City\n• Type: private tour with licensed guide, vehicle and driver; private trajinera\n• Booking: on request – we confirm availability and the final price by email within 24 hours, and you pay only then\n• Level: easy\n\nWHAT YOU SEE\n• The Casa Azul.\n• Coyoacán.\n• The UNAM campus.\n• San Ángel.\n• Xochimilco.\n\nWHY THIS WORKS\nTimed tickets for the Casa Azul sell out, and the southern districts are far apart; we handle both.\n\nWHO IT SUITS\nArt lovers, families, couples and friends.\n\nWHO MAY PREFER ANOTHER TOUR\nFor Aztec and colonial history, choose our Zócalo and Anthropology Museum tour.\n\nPRACTICAL INFORMATION\nThe Casa Azul is closed on Mondays and requires timed tickets. Xochimilco is liveliest at weekends.",
+  "inclusions": {
+   "standard": {
+    "private": [
+     "Pick-up and drop-off at your hotel in Mexico City",
+     "Private vehicle and driver",
+     "Licensed private guide",
+     "Casa Azul ticket",
+     "Private trajinera boat (2 hours)",
+     "Lunch on the trajinera",
+     "Bottled water"
+    ],
+    "shared": [
+     "Hotel pick-up",
+     "Licensed guide",
+     "Museum ticket",
+     "Trajinera",
+     "Lunch"
+    ]
+   }
+  },
+  "pricingTiers": [
+   {
+    "transportType": "Sedan / SUV",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png",
+    "minSeats": 1,
+    "maxSeats": 4,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 390,
+     "pricePerDay": 390
+    }
+   },
+   {
+    "transportType": "Minivan",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png",
+    "minSeats": 5,
+    "maxSeats": 8,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 620,
+     "pricePerDay": 620
+    }
+   },
+   {
+    "transportType": "Mini Bus",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png",
+    "minSeats": 9,
+    "maxSeats": 19,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 1150,
+     "pricePerDay": 1150
+    }
+   }
+  ],
+  "images": [
+   "Q:Frida Kahlo Museum",
+   "Q:Xochimilco",
+   "Q:Frida Kahlo Museum#2",
+   "Q:Xochimilco#2",
+   "Q:Xochimilco#3"
+  ],
+  "days": [
+   {
+    "name": "The Casa Azul, Coyoacán, the UNAM, San Ángel and Xochimilco",
+    "description": "What to expect: Frida Kahlo’s world and the canals of Xochimilco, with a licensed guide, private vehicle, tickets, a boat and lunch.\n\nYour guide and driver collect you at about 9:00 and drive south to Coyoacán. In the Casa Azul, Frida Kahlo's home, you see her studio with her easel and wheelchair, her paintings, her bedroom with the mirror above the bed, her collection of Mexican folk art and an exhibition of her colourful Tehuana dresses and corsets. You walk through Coyoacán's plazas, past the church of San Juan Bautista and the coyote fountain, and taste churros in the market.\n\nOn the way to Xochimilco, you pass the campus of the National Autonomous University (UNAM), a UNESCO site, where the central library is covered in a giant mosaic by Juan O'Gorman, and, on Saturdays, San Ángel's bazaar of art and crafts.\n\nAt Xochimilco, you board your own trajinera, a flat boat painted in bright colours, and float along the canals for two hours past the chinampa gardens. Lunch is served on board, and other boats come by selling corn, flowers and drinks, while mariachi bands offer songs. You return to your hotel in the late afternoon.\n\nSCHEDULE (approximate times)\n09:00 – Pick-up at your hotel.\n09:45 – Casa Azul.\n11:15 – Coyoacán and churros.\n12:30 – UNAM campus or San Ángel.\n13:30 – Trajinera ride and lunch at Xochimilco.\n15:45 – Drive back.\n16:45 – Back at your hotel.\n\nGOOD TO KNOW\n• Mariachi songs are paid per song; your guide will tell you the going rate.\n• Diego Rivera’s Anahuacalli museum can be added.\n\nINCLUDED: private vehicle and driver, licensed guide, Casa Azul ticket, private trajinera, lunch, bottled water, hotel pick-up and drop-off.\nNOT INCLUDED: mariachi songs, drinks, tips.\n\nOvernight: none.\nMeals: lunch.",
+    "stops": [
+     {
+      "name": "Casa Azul",
+      "duration": "About 1 hour 15 minutes",
+      "description": "Frida Kahlo’s home.",
+      "image": "Q:Frida Kahlo Museum"
+     },
+     {
+      "name": "Coyoacán",
+      "duration": "About 1 hour",
+      "description": "Plazas and market."
+     },
+     {
+      "name": "UNAM",
+      "duration": "About 30 minutes",
+      "description": "The mosaic library."
+     },
+     {
+      "name": "Xochimilco",
+      "duration": "About 2 hours",
+      "description": "Trajineras and mariachis.",
+      "image": "Q:Xochimilco"
+     }
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "question": "How does booking on request work?",
+    "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability and the final price by email within 24 hours, and you pay online only when the tour is confirmed."
+   },
+   {
+    "question": "Are Casa Azul tickets included?",
+    "answer": "Yes. They sell out, so book early."
+   },
+   {
+    "question": "Is the trajinera private?",
+    "answer": "Yes, a private boat for your group."
+   },
+   {
+    "question": "Is lunch included?",
+    "answer": "Yes, on the trajinera."
+   },
+   {
+    "question": "Is it suitable for children?",
+    "answer": "Yes. Children love the boats and the music."
+   },
+   {
+    "question": "Is it suitable for people with limited mobility?",
+    "answer": "Partly. The Casa Azul has stairs; boarding the boat needs a step."
+   },
+   {
+    "question": "Does it run on Mondays?",
+    "answer": "Yes, but the Casa Azul is closed; we visit the Anahuacalli or the Dolores Olmedo museum instead."
+   },
+   {
+    "question": "Can we take photos inside the Casa Azul?",
+    "answer": "Photography requires an extra permit, which we can arrange."
+   },
+   {
+    "question": "Will we be taken to shops?",
+    "answer": "No. There are no commission stops."
+   },
+   {
+    "question": "What should we wear?",
+    "answer": "Comfortable shoes, layers and a hat."
+   },
+   {
+    "question": "What is the best time of year?",
+    "answer": "All year. Weekends are liveliest in Xochimilco."
+   },
+   {
+    "question": "Should we tip?",
+    "answer": "Tipping is customary in Mexico: 10 to 15 percent for guides and drivers is usual if you were happy with the service, but it is always your choice."
+   },
+   {
+    "question": "What is the cancellation policy?",
+    "answer": "You can cancel free of charge up to 24 hours before the tour. Until your request is confirmed, nothing is charged at all."
+   }
+  ]
+ }
+}

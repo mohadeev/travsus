@@ -1,0 +1,190 @@
+{
+ "key": "mexico-oaxaca-monte-alban-hierve-el-agua-tour",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {
+  "city": "Oaxaca",
+  "state": "Oaxaca",
+  "country": "Mexico",
+  "countryCode": "MX",
+  "timeZone": "America/Mexico_City",
+  "streetAddress": "Your hotel in Oaxaca",
+  "geoCoordinates": {
+   "lat": 17.0732,
+   "log": -96.7266
+  }
+ },
+ "slug": "/en-US/mexico/oaxaca/tours/oaxaca-private-tour-monte-alban-the-tule-tree-a-mezcal-distillery-and-hierve-el-agua",
+ "tour": {
+  "name": "Oaxaca Private Tour: Monte Albán, the Tule Tree, a Mezcal Distillery & Hierve el Agua",
+  "subtitle": "The valleys of Oaxaca in one private day with a licensed guide and vehicle: the Zapotec mountaintop city of Monte Albán, the giant Tule tree, a family mezcal distillery, the rug weavers of Teotitlán del Valle and the petrified waterfalls and mineral pools of Hierve el Agua.",
+  "seoTitle": "Oaxaca Private Tour: Monte Albán & Hierve el Agua | TRAVSUS",
+  "metaDescription": "Private Oaxaca tour with licensed guide and vehicle: Monte Albán, the Árbol del Tule, a mezcal distillery with tasting, the weavers of Teotitlán del Valle and the petrified waterfalls of Hierve el Agua. Lunch included.",
+  "tags": [
+   "Oaxaca",
+   "Monte Albán",
+   "Hierve el Agua",
+   "Mezcal",
+   "Zapotec",
+   "Mexico private tour"
+  ],
+  "highlights": [
+   "Monte Albán, the Zapotec capital on a flattened mountain",
+   "The Árbol del Tule, one of the widest trees in the world",
+   "A family mezcal distillery and tasting",
+   "The natural-dye rug weavers of Teotitlán del Valle",
+   "The petrified waterfalls of Hierve el Agua",
+   "A swim in the mineral pools above the valley",
+   "A traditional Oaxacan lunch with mole"
+  ],
+  "duration": 1,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "Oaxaca, in southern Mexico, is the country's culinary and craft capital and a stronghold of indigenous cultures. Above the city, the Zapotecs levelled a mountaintop around 500 BC to build Monte Albán, their capital for over a thousand years; together with the colonial city, it is a UNESCO World Heritage Site. The valleys around are home to weaving villages, mezcal distilleries and the strange mineral cliffs of Hierve el Agua.\n\nThis private day shows the valleys with a licensed guide and a vehicle.\n\nAT A GLANCE\n• Duration: about 10 hours\n• Start and end: your hotel in Oaxaca\n• Type: private tour with licensed guide, vehicle and driver\n• Booking: on request – we confirm availability and the final price by email within 24 hours, and you pay only then\n• Level: easy to moderate\n\nWHAT YOU SEE\n• Monte Albán.\n• The Árbol del Tule.\n• A mezcal distillery.\n• Teotitlán del Valle.\n• Hierve el Agua.\n\nWHY THIS WORKS\nThese sites are spread across two valleys; a private vehicle combines them in one day at your pace.\n\nWHO IT SUITS\nCulture lovers, food and drink lovers, photographers and families.\n\nWHO MAY PREFER ANOTHER TOUR\nFor the city, ask us for a market and food tour in Oaxaca.\n\nPRACTICAL INFORMATION\nOaxaca is at about 1,550 metres. Bring swimwear for Hierve el Agua. The Guelaguetza festival takes place in July.",
+  "inclusions": {
+   "standard": {
+    "private": [
+     "Pick-up and drop-off at your hotel in Oaxaca",
+     "Private vehicle and driver",
+     "Licensed private guide",
+     "Entrances to Monte Albán, the Tule tree and Hierve el Agua",
+     "Mezcal distillery visit and tasting",
+     "Weaving demonstration",
+     "Oaxacan lunch",
+     "Bottled water"
+    ],
+    "shared": [
+     "Hotel pick-up",
+     "Licensed guide",
+     "Entrances",
+     "Mezcal tasting",
+     "Lunch"
+    ]
+   }
+  },
+  "pricingTiers": [
+   {
+    "transportType": "Sedan / SUV",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png",
+    "minSeats": 1,
+    "maxSeats": 4,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 390,
+     "pricePerDay": 390
+    }
+   },
+   {
+    "transportType": "Minivan",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png",
+    "minSeats": 5,
+    "maxSeats": 8,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 620,
+     "pricePerDay": 620
+    }
+   },
+   {
+    "transportType": "Mini Bus",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png",
+    "minSeats": 9,
+    "maxSeats": 19,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 1150,
+     "pricePerDay": 1150
+    }
+   }
+  ],
+  "images": [
+   "Q:Monte Alban",
+   "Q:Oaxaca city",
+   "Q:Monte Alban#2",
+   "Q:Oaxaca city#2",
+   "Q:Monte Alban#3"
+  ],
+  "days": [
+   {
+    "name": "Monte Albán, the Tule tree, Teotitlán, a mezcal distillery and Hierve el Agua",
+    "description": "What to expect: the Zapotec heritage and crafts of the Oaxaca valleys, with a licensed guide, private vehicle, entrances, tastings and lunch.\n\nYour guide and driver collect you at about 8:00 and drive up to Monte Albán. On the great plaza, surrounded by temples and platforms, you see the Danzantes, carved stones of contorted figures, the ball court and the astronomical observatory, with views over the three valleys of Oaxaca.\n\nIn Santa María del Tule, you see the Árbol del Tule, a Montezuma cypress more than 2,000 years old, with a trunk about 14 metres across. In Teotitlán del Valle, a family of Zapotec weavers shows you how they dye wool with cochineal, indigo and plants and weave rugs on wooden looms. Lunch is Oaxacan, with one of the region's famous moles and tlayudas.\n\nAt a family palenque, you see agave hearts roasted in an earth pit and crushed by a stone wheel pulled by a horse, and taste several mezcals. You end at Hierve el Agua, where mineral springs have built cliffs that look like frozen waterfalls, with natural pools on the edge where you can swim with a view over the mountains.\n\nSCHEDULE (approximate times)\n08:00 – Pick-up at your hotel.\n08:30 – Monte Albán.\n11:00 – Árbol del Tule.\n11:45 – Teotitlán del Valle weavers.\n13:00 – Oaxacan lunch.\n14:30 – Mezcal distillery.\n16:00 – Hierve el Agua.\n18:30 – Back at your hotel.\n\nGOOD TO KNOW\n• Mitla, with its stone mosaics, can replace the weavers.\n• Purchases from the weavers are optional.\n\nINCLUDED: private vehicle and driver, licensed guide, entrances, mezcal tasting, weaving demonstration, lunch, bottled water, hotel pick-up and drop-off.\nNOT INCLUDED: purchases, drinks, tips.\n\nOvernight: none.\nMeals: lunch.",
+    "stops": [
+     {
+      "name": "Monte Albán",
+      "duration": "About 2 hours",
+      "description": "The Zapotec capital.",
+      "image": "Q:Monte Alban"
+     },
+     {
+      "name": "Árbol del Tule",
+      "duration": "About 30 minutes",
+      "description": "A giant cypress."
+     },
+     {
+      "name": "Mezcal distillery",
+      "duration": "About 1 hour",
+      "description": "Roasted agave and tastings."
+     },
+     {
+      "name": "Hierve el Agua",
+      "duration": "About 1 hour 30 minutes",
+      "description": "Petrified waterfalls."
+     }
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "question": "How does booking on request work?",
+    "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability and the final price by email within 24 hours, and you pay online only when the tour is confirmed."
+   },
+   {
+    "question": "Are entrances included?",
+    "answer": "Yes, for all sites."
+   },
+   {
+    "question": "Is lunch included?",
+    "answer": "Yes, a traditional Oaxacan lunch."
+   },
+   {
+    "question": "Can we swim at Hierve el Agua?",
+    "answer": "Yes, in the mineral pools, when open."
+   },
+   {
+    "question": "Is it suitable for children?",
+    "answer": "Yes; mezcal tasting is for adults."
+   },
+   {
+    "question": "Is it suitable for people with limited mobility?",
+    "answer": "Partly. Monte Albán has steps; Hierve el Agua has a steep path."
+   },
+   {
+    "question": "Will we be pressured to buy rugs?",
+    "answer": "No. Buying is entirely optional."
+   },
+   {
+    "question": "Can we add Mitla?",
+    "answer": "Yes, as a variation."
+   },
+   {
+    "question": "Is Oaxaca safe?",
+    "answer": "Yes, Oaxaca city and its valleys are welcoming to visitors."
+   },
+   {
+    "question": "What should we wear?",
+    "answer": "Comfortable shoes, a hat, sun cream, layers and swimwear."
+   },
+   {
+    "question": "What is the best time of year?",
+    "answer": "October to May; the Day of the Dead is unforgettable here."
+   },
+   {
+    "question": "Should we tip?",
+    "answer": "Tipping is customary in Mexico: 10 to 15 percent for guides and drivers is usual if you were happy with the service, but it is always your choice."
+   },
+   {
+    "question": "What is the cancellation policy?",
+    "answer": "You can cancel free of charge up to 24 hours before the tour. Until your request is confirmed, nothing is charged at all."
+   }
+  ]
+ }
+}

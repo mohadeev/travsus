@@ -1,0 +1,190 @@
+{
+ "key": "mexico-chichen-itza-cenote-valladolid-tour",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {
+  "city": "Chichén Itzá",
+  "state": "Yucatán",
+  "country": "Mexico",
+  "countryCode": "MX",
+  "timeZone": "America/Merida",
+  "streetAddress": "Your hotel in Cancún, Playa del Carmen or the Riviera Maya",
+  "geoCoordinates": {
+   "lat": 20.6843,
+   "log": -88.5678
+  }
+ },
+ "slug": "/en-US/mexico/chichen-itza/tours/chichen-itza-private-tour-el-castillo-a-cenote-swim-and-colonial-valladolid",
+ "tour": {
+  "name": "Chichén Itzá Private Tour: El Castillo, a Cenote Swim & Colonial Valladolid",
+  "subtitle": "The greatest Maya city of the Yucatán in a private day with a licensed guide and vehicle: El Castillo, the Temple of Kukulcán, the Great Ball Court, the Temple of the Warriors and the Sacred Cenote, a swim in the Ik Kil cenote, Yucatecan lunch and the colonial streets of Valladolid.",
+  "seoTitle": "Chichén Itzá Private Tour with Cenote & Valladolid | TRAVSUS",
+  "metaDescription": "Private Chichén Itzá tour from Cancún or the Riviera Maya with licensed guide and vehicle: El Castillo, the Great Ball Court, the Sacred Cenote, a swim in a cenote, Yucatecan lunch and Valladolid.",
+  "tags": [
+   "Chichén Itzá",
+   "Maya ruins",
+   "Cenote",
+   "Valladolid",
+   "Cancún day trip",
+   "Mexico private tour"
+  ],
+  "highlights": [
+   "El Castillo, the Temple of Kukulcán, one of the New Seven Wonders",
+   "The Great Ball Court, the largest in Mesoamerica",
+   "The Temple of the Warriors and its thousand columns",
+   "The Sacred Cenote",
+   "A swim in a cenote hung with vines",
+   "A Yucatecan lunch with cochinita pibil",
+   "The colonial town of Valladolid"
+  ],
+  "duration": 1,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "Chichén Itzá was one of the greatest cities of the Maya world, flourishing from around 600 to 1200 AD. Its pyramid, El Castillo, dedicated to the feathered serpent Kukulcán, is a stone calendar: its four stairways and platform total 365 steps, and at the equinoxes the setting sun casts a shadow like a serpent descending its steps. It has been a UNESCO World Heritage Site since 1988 and one of the New Seven Wonders since 2007.\n\nThis private day takes you there from the coast with a licensed guide and a vehicle, arriving early, with a swim in a cenote and a visit to Valladolid.\n\nAT A GLANCE\n• Duration: about 11 hours\n• Start and end: your hotel in Cancún, Playa del Carmen or the Riviera Maya\n• Type: private tour with licensed guide, vehicle and driver\n• Booking: on request – we confirm availability and the final price by email within 24 hours, and you pay only then\n• Level: easy\n\nWHAT YOU SEE\n• El Castillo.\n• The Great Ball Court.\n• The Temple of the Warriors.\n• The Sacred Cenote.\n• A cenote.\n• Valladolid.\n\nWHY THIS WORKS\nAn early private start brings you to Chichén Itzá at opening time, before the tour buses and the heat.\n\nWHO IT SUITS\nHistory lovers, families and couples.\n\nWHO MAY PREFER ANOTHER TOUR\nFor the coast, choose our Tulum, Cobá and cenotes tour.\n\nPRACTICAL INFORMATION\nClimbing El Castillo is not allowed. There is little shade: bring a hat and water. Bring biodegradable sun cream only for the cenote, or none.",
+  "inclusions": {
+   "standard": {
+    "private": [
+     "Pick-up and drop-off at your hotel",
+     "Private vehicle and driver",
+     "Licensed private guide",
+     "Chichén Itzá entrance and fees",
+     "Cenote entrance",
+     "Yucatecan lunch",
+     "Bottled water"
+    ],
+    "shared": [
+     "Hotel pick-up",
+     "Licensed guide",
+     "Entrances",
+     "Lunch"
+    ]
+   }
+  },
+  "pricingTiers": [
+   {
+    "transportType": "Sedan / SUV",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png",
+    "minSeats": 1,
+    "maxSeats": 4,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 490,
+     "pricePerDay": 490
+    }
+   },
+   {
+    "transportType": "Minivan",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png",
+    "minSeats": 5,
+    "maxSeats": 8,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 790,
+     "pricePerDay": 790
+    }
+   },
+   {
+    "transportType": "Mini Bus",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png",
+    "minSeats": 9,
+    "maxSeats": 19,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 1490,
+     "pricePerDay": 1490
+    }
+   }
+  ],
+  "images": [
+   "Q:Chichen Itza",
+   "Q:Cenote Yucatan",
+   "Q:Chichen Itza#2",
+   "Q:Chichen Itza#3",
+   "Q:Cenote Yucatan#2"
+  ],
+  "days": [
+   {
+    "name": "Chichén Itzá, a cenote swim, a Yucatecan lunch and Valladolid",
+    "description": "What to expect: the great Maya city, a cenote and a colonial town, with a licensed guide, private vehicle, entrances and lunch.\n\nYour guide and driver collect you early, at about 6:00 from Cancún, and drive inland to Chichén Itzá, arriving at opening time. Before El Castillo, your guide explains the Maya calendar and claps to show the echo that sounds like the call of the sacred quetzal bird. At the Great Ball Court, 168 metres long, carved panels show the ritual game and the sacrifice of a player. You see the Platform of Skulls, the Temple of the Warriors with its rows of carved columns and Chac Mool statue, and the Sacred Cenote, where offerings and people were thrown to the rain god Chaac. In the older southern part, the Observatory, El Caracol, shows the Maya knowledge of the stars.\n\nYou then swim in a cenote, a natural sinkhole open to the sky, with clear blue water and vines and roots hanging down from the rim. Lunch is Yucatecan: cochinita pibil, pork marinated in achiote and slow-cooked, and sopa de lima. In the afternoon, you walk through Valladolid, a colonial town of pastel houses, with the San Servacio church on its main square and the Calzada de los Frailes leading to the convent of San Bernardino, before driving back to the coast.\n\nSCHEDULE (approximate times)\n06:00 – Pick-up in Cancún (earlier from the Riviera Maya).\n08:00 – Chichén Itzá at opening time.\n11:00 – Cenote swim.\n12:30 – Yucatecan lunch.\n14:00 – Valladolid.\n15:30 – Drive back.\n17:30 – Back at your hotel.\n\nGOOD TO KNOW\n• Around the spring and autumn equinoxes, the serpent shadow appears in the late afternoon; we can adapt the timing.\n• Ek Balam, a Maya site you can still climb, can be added.\n\nINCLUDED: private vehicle and driver, licensed guide, entrances, cenote, lunch, bottled water, hotel pick-up and drop-off.\nNOT INCLUDED: drinks, tips.\n\nOvernight: none.\nMeals: lunch.",
+    "stops": [
+     {
+      "name": "El Castillo",
+      "duration": "About 1 hour",
+      "description": "The pyramid of Kukulcán.",
+      "image": "Q:Chichen Itza"
+     },
+     {
+      "name": "Great Ball Court and the Warriors",
+      "duration": "About 1 hour 30 minutes",
+      "description": "Carved panels and columns.",
+      "image": "Q:Chichen Itza"
+     },
+     {
+      "name": "Cenote",
+      "duration": "About 1 hour",
+      "description": "A swim in a sinkhole.",
+      "image": "Q:Cenote Yucatan"
+     },
+     {
+      "name": "Valladolid",
+      "duration": "About 1 hour 30 minutes",
+      "description": "A colonial town."
+     }
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "question": "How does booking on request work?",
+    "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability and the final price by email within 24 hours, and you pay online only when the tour is confirmed."
+   },
+   {
+    "question": "Can we climb El Castillo?",
+    "answer": "No. Climbing was banned in 2006 to protect the pyramid."
+   },
+   {
+    "question": "Is lunch included?",
+    "answer": "Yes, a Yucatecan lunch."
+   },
+   {
+    "question": "Can we swim in the cenote?",
+    "answer": "Yes. Life vests are available; showers are required before entering."
+   },
+   {
+    "question": "How long is the drive?",
+    "answer": "About 2 hours 30 minutes from Cancún, more from Tulum or Playa del Carmen."
+   },
+   {
+    "question": "Is it suitable for children?",
+    "answer": "Yes. Children love the cenote."
+   },
+   {
+    "question": "Is it suitable for people with limited mobility?",
+    "answer": "Largely. Chichén Itzá is flat; the cenote has steps."
+   },
+   {
+    "question": "Can we add Ek Balam?",
+    "answer": "Yes, on a longer day."
+   },
+   {
+    "question": "Will we be taken to shops?",
+    "answer": "No. There are no commission stops."
+   },
+   {
+    "question": "What should we wear?",
+    "answer": "Light clothes, a hat, comfortable shoes and swimwear."
+   },
+   {
+    "question": "What is the best time of year?",
+    "answer": "November to April, the dry and cooler season."
+   },
+   {
+    "question": "Should we tip?",
+    "answer": "Tipping is customary in Mexico: 10 to 15 percent for guides and drivers is usual if you were happy with the service, but it is always your choice."
+   },
+   {
+    "question": "What is the cancellation policy?",
+    "answer": "You can cancel free of charge up to 24 hours before the tour. Until your request is confirmed, nothing is charged at all."
+   }
+  ]
+ }
+}

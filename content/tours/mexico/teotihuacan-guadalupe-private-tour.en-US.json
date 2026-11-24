@@ -1,0 +1,190 @@
+{
+ "key": "mexico-teotihuacan-guadalupe-private-tour",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {
+  "city": "San Juan Teotihuacán",
+  "state": "State of Mexico",
+  "country": "Mexico",
+  "countryCode": "MX",
+  "timeZone": "America/Mexico_City",
+  "streetAddress": "Your hotel in Mexico City",
+  "geoCoordinates": {
+   "lat": 19.6925,
+   "log": -98.8438
+  }
+ },
+ "slug": "/en-US/mexico/san-juan-teotihuacan/tours/teotihuacan-private-tour-from-mexico-city-the-pyramids-of-the-sun-and-moon-and-the-basilica-of-guadalupe",
+ "tour": {
+  "name": "Teotihuacan Private Tour from Mexico City: the Pyramids of the Sun and Moon & the Basilica of Guadalupe",
+  "subtitle": "The great ancient city of Teotihuacan in a private day with a licensed guide and vehicle: the Avenue of the Dead, the Pyramids of the Sun and the Moon, the Temple of the Feathered Serpent, the Palace of the Quetzal Butterfly, an obsidian and agave workshop, and the Basilica of Our Lady of Guadalupe.",
+  "seoTitle": "Teotihuacan Private Tour from Mexico City | TRAVSUS",
+  "metaDescription": "Private Teotihuacan tour from Mexico City with licensed guide and vehicle: the Pyramids of the Sun and Moon, the Avenue of the Dead, the Feathered Serpent temple, an obsidian workshop, lunch and the Basilica of Guadalupe.",
+  "tags": [
+   "Teotihuacan",
+   "Pyramid of the Sun",
+   "Basilica of Guadalupe",
+   "Mexico City day trip",
+   "Ancient Mexico",
+   "Mexico private tour"
+  ],
+  "highlights": [
+   "The Pyramid of the Sun, one of the largest in the world",
+   "The Pyramid of the Moon and the view down the Avenue of the Dead",
+   "The Temple of the Feathered Serpent and its carved heads",
+   "The Palace of the Quetzal Butterfly and its murals",
+   "An obsidian and agave workshop",
+   "Lunch in a cave restaurant (optional)",
+   "The Basilica of Our Lady of Guadalupe"
+  ],
+  "duration": 1,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "Fifty kilometres north-east of Mexico City, Teotihuacan was one of the largest cities in the world around 450 AD, with perhaps 100,000 inhabitants. Who built it is still a mystery; centuries after its fall, the Aztecs found its ruins and named it 'the place where the gods were created'. Its Avenue of the Dead, lined with temples, leads to the Pyramid of the Moon, with the vast Pyramid of the Sun beside it. It has been a UNESCO World Heritage Site since 1987.\n\nThis private day takes you there with a licensed guide and a vehicle, with a stop at the Basilica of Guadalupe, the most visited Catholic shrine in the Americas.\n\nAT A GLANCE\n• Duration: about 8 hours\n• Start and end: your hotel in Mexico City\n• Type: private tour with licensed guide, vehicle and driver\n• Booking: on request – we confirm availability and the final price by email within 24 hours, and you pay only then\n• Level: moderate; walking in the sun\n\nWHAT YOU SEE\n• The Basilica of Guadalupe.\n• The Avenue of the Dead.\n• The Pyramids of the Sun and the Moon.\n• The Temple of the Feathered Serpent.\n• The Palace of the Quetzal Butterfly.\n\nWHY THIS WORKS\nAn early private start brings you to Teotihuacan before the heat and the crowds.\n\nWHO IT SUITS\nHistory lovers, families and photographers.\n\nWHO MAY PREFER ANOTHER TOUR\nFor a sunrise balloon flight over the pyramids, ask us to add it.\n\nPRACTICAL INFORMATION\nClimbing the Pyramid of the Sun is currently not allowed; the Pyramid of the Moon can be partly climbed when open. There is little shade.",
+  "inclusions": {
+   "standard": {
+    "private": [
+     "Pick-up and drop-off at your hotel in Mexico City",
+     "Private vehicle and driver",
+     "Licensed private guide",
+     "Teotihuacan entrance",
+     "Obsidian and agave workshop with tasting",
+     "Lunch",
+     "Bottled water"
+    ],
+    "shared": [
+     "Hotel pick-up",
+     "Licensed guide",
+     "Entrance",
+     "Workshop",
+     "Lunch"
+    ]
+   }
+  },
+  "pricingTiers": [
+   {
+    "transportType": "Sedan / SUV",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png",
+    "minSeats": 1,
+    "maxSeats": 4,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 340,
+     "pricePerDay": 340
+    }
+   },
+   {
+    "transportType": "Minivan",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png",
+    "minSeats": 5,
+    "maxSeats": 8,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 540,
+     "pricePerDay": 540
+    }
+   },
+   {
+    "transportType": "Mini Bus",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png",
+    "minSeats": 9,
+    "maxSeats": 19,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 990,
+     "pricePerDay": 990
+    }
+   }
+  ],
+  "images": [
+   "Q:Teotihuacan",
+   "Q:Teotihuacan#2",
+   "Q:Teotihuacan#3",
+   "Q:Teotihuacan#4",
+   "Q:Zocalo Mexico City#5"
+  ],
+  "days": [
+   {
+    "name": "The Basilica of Guadalupe and the pyramids of Teotihuacan",
+    "description": "What to expect: the great pre-Hispanic city and Mexico’s great shrine, with a licensed guide, private vehicle, entrance, a workshop and lunch.\n\nYour guide and driver collect you at about 8:00. On the way north you stop at the Basilica of Our Lady of Guadalupe, where the cloak of Juan Diego, bearing the image of the Virgin said to have appeared to him in 1531, hangs above the altar of the modern basilica, beside the tilting old basilica.\n\nAt Teotihuacan, you begin at the Ciudadela and the Temple of the Feathered Serpent, decorated with stone heads of Quetzalcoatl. You walk along the Avenue of the Dead, about 2 kilometres long, to the Pyramid of the Sun, some 65 metres high, and on to the Plaza of the Moon, where the Pyramid of the Moon closes the avenue. Next to it, the Palace of the Quetzal Butterfly has carved pillars and traces of red murals.\n\nAt a local workshop, you see how obsidian was worked and how the agave plant gives fibre, paper and drinks, with a tasting of pulque or mezcal. Lunch is at a nearby restaurant, perhaps in a cave, before driving back to Mexico City.\n\nSCHEDULE (approximate times)\n08:00 – Pick-up at your hotel.\n08:30 – Basilica of Guadalupe.\n10:00 – Teotihuacan: the Feathered Serpent temple.\n10:45 – Avenue of the Dead and the Pyramid of the Sun.\n12:00 – Plaza and Pyramid of the Moon.\n13:00 – Obsidian and agave workshop.\n13:45 – Lunch.\n16:30 – Back at your hotel.\n\nGOOD TO KNOW\n• A sunrise hot-air balloon flight can be booked; the day then starts at 5:00.\n• Bring a hat and sun cream.\n\nINCLUDED: private vehicle and driver, licensed guide, entrance, workshop and tasting, lunch, bottled water, hotel pick-up and drop-off.\nNOT INCLUDED: balloon flight, tips.\n\nOvernight: none.\nMeals: lunch.",
+    "stops": [
+     {
+      "name": "Basilica of Guadalupe",
+      "duration": "About 1 hour",
+      "description": "Mexico’s great shrine."
+     },
+     {
+      "name": "Avenue of the Dead",
+      "duration": "About 1 hour 30 minutes",
+      "description": "The great avenue and the Pyramid of the Sun.",
+      "image": "Q:Teotihuacan"
+     },
+     {
+      "name": "Pyramid of the Moon",
+      "duration": "About 45 minutes",
+      "description": "The view down the avenue.",
+      "image": "Q:Teotihuacan"
+     },
+     {
+      "name": "Obsidian workshop",
+      "duration": "About 45 minutes",
+      "description": "Stone and agave."
+     }
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "question": "How does booking on request work?",
+    "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability and the final price by email within 24 hours, and you pay online only when the tour is confirmed."
+   },
+   {
+    "question": "Can we climb the pyramids?",
+    "answer": "Climbing the Pyramid of the Sun is currently not permitted; rules change, and your guide will tell you what is open."
+   },
+   {
+    "question": "Is lunch included?",
+    "answer": "Yes."
+   },
+   {
+    "question": "Can we add a balloon flight?",
+    "answer": "Yes, at sunrise, weather permitting."
+   },
+   {
+    "question": "Is it suitable for children?",
+    "answer": "Yes. Children love the pyramids. Child seats are provided free of charge on request."
+   },
+   {
+    "question": "Is it suitable for people with limited mobility?",
+    "answer": "Partly. The site is large and uneven."
+   },
+   {
+    "question": "How long is the drive?",
+    "answer": "About 1 hour each way, depending on traffic."
+   },
+   {
+    "question": "Will we be taken to shops?",
+    "answer": "Only the workshop, with no obligation to buy."
+   },
+   {
+    "question": "Is the Basilica visit respectful?",
+    "answer": "Yes; services take place throughout the day, and your guide explains the etiquette."
+   },
+   {
+    "question": "What should we wear?",
+    "answer": "Comfortable shoes, a hat, sun cream and layers."
+   },
+   {
+    "question": "What is the best time of year?",
+    "answer": "October to May. Early mornings are best all year."
+   },
+   {
+    "question": "Should we tip?",
+    "answer": "Tipping is customary in Mexico: 10 to 15 percent for guides and drivers is usual if you were happy with the service, but it is always your choice."
+   },
+   {
+    "question": "What is the cancellation policy?",
+    "answer": "You can cancel free of charge up to 24 hours before the tour. Until your request is confirmed, nothing is charged at all."
+   }
+  ]
+ }
+}

@@ -1,0 +1,202 @@
+{
+ "key": "mexico-san-miguel-de-allende-guanajuato-2-days",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {
+  "city": "Guanajuato",
+  "state": "Guanajuato",
+  "country": "Mexico",
+  "countryCode": "MX",
+  "timeZone": "America/Mexico_City",
+  "streetAddress": "Your hotel in Mexico City",
+  "geoCoordinates": {
+   "lat": 21.019,
+   "log": -101.2574
+  }
+ },
+ "slug": "/en-US/mexico/guanajuato/tours/san-miguel-de-allende-and-guanajuato-private-2-day-tour-from-mexico-city",
+ "tour": {
+  "name": "San Miguel de Allende & Guanajuato Private 2-Day Tour from Mexico City",
+  "subtitle": "Two days in Mexico's colonial heartland with a licensed guide and vehicle: the pink Parroquia and art galleries of San Miguel de Allende, the Sanctuary of Atotonilco, the colourful hillside city of Guanajuato with its tunnels, the Callejón del Beso, the Teatro Juárez, a silver mine and a callejoneada at night.",
+  "seoTitle": "San Miguel de Allende & Guanajuato 2-Day Private Tour | TRAVSUS",
+  "metaDescription": "Private 2-day tour from Mexico City with licensed guide and vehicle: San Miguel de Allende, Atotonilco, Guanajuato’s tunnels, the Callejón del Beso, Teatro Juárez, a silver mine and a callejoneada. 1 night included.",
+  "tags": [
+   "San Miguel de Allende",
+   "Guanajuato",
+   "Colonial Mexico",
+   "Atotonilco",
+   "Silver mines",
+   "Mexico private tour"
+  ],
+  "highlights": [
+   "The pink neo-Gothic Parroquia of San Miguel de Allende",
+   "The galleries and rooftop terraces of San Miguel",
+   "The painted Sanctuary of Atotonilco, the “Sistine Chapel of Mexico”",
+   "The colourful hillside houses of Guanajuato",
+   "The underground road tunnels of Guanajuato",
+   "The Callejón del Beso and its legend",
+   "A callejoneada, a musical walk with student minstrels"
+  ],
+  "duration": 2,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "North of Mexico City, the Bajío region grew rich on the silver mines of the 16th to 18th centuries, which built some of the finest colonial towns in the Americas. San Miguel de Allende, with its cobbled streets and its pink Parroquia, is a magnet for artists, and Guanajuato, built in a narrow ravine, is a maze of colourful houses, alleys and road tunnels. Both are UNESCO World Heritage Sites, and the region is also the cradle of Mexican independence.\n\nThis private two-day tour takes you there from Mexico City with a licensed guide and a vehicle.\n\nAT A GLANCE\n• Duration: 2 days, 1 night\n• Start and end: your hotel in Mexico City\n• Type: private tour with licensed guide, vehicle and driver; 1 night with breakfast\n• Booking: on request – we confirm availability, your hotel and the final price by email within 24 hours, and you pay only then\n• Level: moderate; hills and stairs\n\nWHAT YOU SEE\n• San Miguel de Allende.\n• Atotonilco.\n• Guanajuato.\n• A silver mine.\n\nWHY THIS WORKS\nA private vehicle avoids long bus rides and lets you combine both towns, with an evening in Guanajuato.\n\nWHO IT SUITS\nCouples, art lovers, photographers and families.\n\nWHO MAY PREFER ANOTHER TOUR\nThis can also be done one-way, continuing to Querétaro or León airport.\n\nPRACTICAL INFORMATION\nThe drive from Mexico City to San Miguel is about 3 hours 30 minutes. Both towns are at about 2,000 metres and cool in the evening.",
+  "inclusions": {
+   "standard": {
+    "private": [
+     "Pick-up and drop-off at your hotel in Mexico City",
+     "Private vehicle and driver",
+     "Licensed private guide",
+     "1 night in a boutique hotel in Guanajuato with breakfast",
+     "Entrances to the Teatro Juárez and a silver mine",
+     "Callejoneada",
+     "Funicular ticket",
+     "Bottled water"
+    ],
+    "shared": [
+     "Hotel pick-up",
+     "Licensed guide",
+     "1 night with breakfast",
+     "Entrances",
+     "Callejoneada"
+    ]
+   }
+  },
+  "pricingTiers": [
+   {
+    "transportType": "Sedan / SUV",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png",
+    "minSeats": 1,
+    "maxSeats": 4,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 1190,
+     "pricePerDay": 595
+    }
+   },
+   {
+    "transportType": "Minivan",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png",
+    "minSeats": 5,
+    "maxSeats": 8,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 1890,
+     "pricePerDay": 945
+    }
+   },
+   {
+    "transportType": "Mini Bus",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png",
+    "minSeats": 9,
+    "maxSeats": 19,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 3490,
+     "pricePerDay": 1745
+    }
+   }
+  ],
+  "images": [
+   "Q:San Miguel de Allende",
+   "Q:Guanajuato city",
+   "Q:San Miguel de Allende#2",
+   "Q:Guanajuato city#2",
+   "Q:Guanajuato city#3"
+  ],
+  "days": [
+   {
+    "name": "San Miguel de Allende, Atotonilco and an evening in Guanajuato",
+    "description": "What to expect: an artists’ town, a painted sanctuary and a musical night.\n\nYour guide and driver collect you at about 7:00 and drive north to San Miguel de Allende. You walk through the Jardín, the main square, in front of the Parroquia, whose pink stone spires were added in the 1880s by a local mason inspired by postcards of European cathedrals, and through streets of colonial houses, galleries and craft shops, with lunch on a rooftop terrace (not included). Nearby, the Sanctuary of Atotonilco, a UNESCO site, is covered inside with folk-baroque murals. You continue to Guanajuato and check in to your hotel. In the evening, you join a callejoneada, following student minstrels in Renaissance costume through the alleys as they sing and tell legends.\n\nSCHEDULE (approximate times)\n07:00 – Pick-up in Mexico City.\n10:30 – San Miguel de Allende.\n13:00 – Lunch break.\n14:30 – Sanctuary of Atotonilco.\n16:30 – Check-in in Guanajuato.\n20:00 – Callejoneada.\n\nGOOD TO KNOW\n• San Miguel has excellent restaurants and rooftop bars.\n\nINCLUDED: vehicle, guide, callejoneada.\nNOT INCLUDED: lunch, dinner.\n\nOvernight: boutique hotel in Guanajuato.\nMeals: none.",
+    "stops": [
+     {
+      "name": "San Miguel de Allende",
+      "duration": "About 2 hours 30 minutes",
+      "description": "The Parroquia and the Jardín.",
+      "image": "Q:San Miguel de Allende"
+     },
+     {
+      "name": "Atotonilco",
+      "duration": "About 45 minutes",
+      "description": "The painted sanctuary."
+     }
+    ]
+   },
+   {
+    "name": "Guanajuato: tunnels, the Callejón del Beso, the Teatro Juárez and a silver mine",
+    "description": "What to expect: the colourful city in the ravine.\n\nAfter breakfast, you take the funicular up to the Pípila monument for the view over the coloured houses. You walk down to the Callejón del Beso, a lane so narrow that lovers could kiss from opposite balconies, see the Teatro Juárez, the Basilica and the University, and drive through the underground roads that follow old river channels. You visit a historic silver mine, such as La Valenciana, and its baroque church, then drive back to Mexico City, arriving in the evening.\n\nSCHEDULE (approximate times)\n09:00 – Funicular and Pípila.\n10:00 – Callejón del Beso and the centre.\n12:00 – Silver mine and La Valenciana.\n13:30 – Lunch.\n14:30 – Drive back.\n19:00 – Back in Mexico City.\n\nGOOD TO KNOW\n• The Mummy Museum is optional and not for everyone.\n• The Cervantino festival in October fills the city.\n\nINCLUDED: vehicle, guide, entrances, funicular.\nNOT INCLUDED: lunch, tips.\n\nOvernight: none.\nMeals: breakfast.",
+    "stops": [
+     {
+      "name": "Pípila viewpoint",
+      "duration": "About 30 minutes",
+      "description": "The coloured city.",
+      "image": "Q:Guanajuato city"
+     },
+     {
+      "name": "Callejón del Beso",
+      "duration": "About 20 minutes",
+      "description": "The alley of the kiss."
+     },
+     {
+      "name": "Silver mine",
+      "duration": "About 1 hour",
+      "description": "La Valenciana."
+     }
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "question": "How does booking on request work?",
+    "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability, hotels and the final price by email within 24 hours, and you pay online only when the tour is confirmed."
+   },
+   {
+    "question": "What kind of hotel is used?",
+    "answer": "A boutique hotel in a colonial building in Guanajuato."
+   },
+   {
+    "question": "Can we sleep in San Miguel instead?",
+    "answer": "Yes, on request."
+   },
+   {
+    "question": "Is it suitable for children?",
+    "answer": "Yes. Children enjoy the tunnels and the music."
+   },
+   {
+    "question": "Is it suitable for people with limited mobility?",
+    "answer": "Partly; both towns are hilly with many steps."
+   },
+   {
+    "question": "Can we end at an airport?",
+    "answer": "Yes, at Querétaro or León (Bajío) airport."
+   },
+   {
+    "question": "Is it safe?",
+    "answer": "Yes; these colonial towns are popular and welcoming."
+   },
+   {
+    "question": "Is the Mummy Museum included?",
+    "answer": "It is optional, as some find it disturbing."
+   },
+   {
+    "question": "Will we be taken to shops?",
+    "answer": "No. There are no commission stops."
+   },
+   {
+    "question": "What should we wear?",
+    "answer": "Comfortable shoes and layers; evenings are cool."
+   },
+   {
+    "question": "What is the best time of year?",
+    "answer": "October to May."
+   },
+   {
+    "question": "Should we tip?",
+    "answer": "Tipping is customary in Mexico: 10 to 15 percent for guides and drivers is usual if you were happy with the service, but it is always your choice."
+   },
+   {
+    "question": "What is the cancellation policy?",
+    "answer": "You can cancel free of charge up to 72 hours before the tour. Until your request is confirmed, nothing is charged at all."
+   }
+  ]
+ }
+}
