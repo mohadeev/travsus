@@ -1,0 +1,58 @@
+{
+ "key": "japan-tokyo-asakusa-meiji-shrine-shibuya-private-tour",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {"city": "Tokyo", "state": "Tokyo", "country": "Japan", "countryCode": "JP", "timeZone": "Asia/Tokyo", "streetAddress": "Your hotel in Tokyo", "geoCoordinates": {"lat": 35.7148, "log": 139.7967}},
+ "slug": "/en-US/japan/tokyo/tours/tokyo-private-tour-asakusa-senso-ji-meiji-shrine-harajuku-and-shibuya-crossing",
+ "tour": {
+  "name": "Tokyo Private Tour: Asakusa & Senso-ji, Meiji Shrine, Harajuku & Shibuya Crossing",
+  "subtitle": "A private day through old and new Tokyo with a licensed guide and car: Senso-ji temple and the lanes of Asakusa, a sushi lunch, the forest shrine of Meiji Jingu, the street fashion of Harajuku and the famous scramble crossing of Shibuya at dusk.",
+  "seoTitle": "Tokyo Private Tour: Asakusa, Meiji Shrine & Shibuya | TRAVSUS",
+  "metaDescription": "Private Tokyo tour with licensed guide and car: Senso-ji and Nakamise street in Asakusa, the Sumida river, a sushi lunch, Meiji Jingu shrine, Harajuku's Takeshita Street and the Shibuya scramble crossing.",
+  "tags": ["Tokyo tour", "Senso-ji", "Meiji Shrine", "Shibuya Crossing", "Harajuku", "Japan private tour"],
+  "highlights": [
+   "Senso-ji, Tokyo's oldest temple, and the Thunder Gate of Asakusa",
+   "Nakamise shopping street and its traditional snacks",
+   "A sushi lunch with an explanation of Japanese table manners",
+   "Meiji Jingu, the great Shinto shrine in a forest in the city",
+   "Harajuku and the youth fashion of Takeshita Street",
+   "The Shibuya scramble crossing seen from above and on foot",
+   "A licensed guide who helps with everything, from trains to menus"
+  ],
+  "duration": 1,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "Tokyo was a fishing village called Edo until 1603, when the shogun Tokugawa Ieyasu made it his capital. Over four centuries it grew into the largest city in the world, rebuilt twice after the earthquake of 1923 and the bombing of 1945. Yet among its towers and neon lights survive temples, shrines and old neighbourhoods where traditional Japan carries on.\n\nThis private day shows both sides of the city with a licensed guide and a car, so you never have to work out the subway at rush hour. You start in Asakusa at Senso-ji, founded in the 7th century, and walk its market street. After a sushi lunch, you visit Meiji Jingu, a shrine to the emperor who opened Japan to the world, hidden in a forest of 100,000 trees, then plunge into the youth culture of Harajuku and end at the Shibuya crossing, where thousands of people cross at once.\n\nAT A GLANCE\n• Duration: about 8 hours\n• Start and end: your hotel in Tokyo\n• Type: private tour with licensed guide, car and driver\n• Booking: on request – we confirm availability and the final price by email within 24 hours, and you pay only then\n• Level: easy; about 6 km on flat ground\n\nWHAT YOU SEE\n• Asakusa: Kaminarimon gate, Nakamise street, Senso-ji and its five-storey pagoda.\n• The Sumida river and Tokyo Skytree (outside).\n• Meiji Jingu and its forest.\n• Harajuku and Takeshita Street.\n• Omotesando.\n• The Shibuya scramble crossing and the Hachiko statue.\n\nWHY THIS WORKS\nWe visit Senso-ji early, before the tour groups, and end at Shibuya as the lights come on, with the car saving you the long transfers across the city.\n\nWHO IT SUITS\nFirst-time visitors to Japan, families and anyone who wants to feel at ease in Tokyo from day one.\n\nWHO MAY PREFER ANOTHER TOUR\nIf you want nature and Mount Fuji, choose our Mount Fuji and Hakone day trip.\n\nPRACTICAL INFORMATION\nAt shrines and temples, your guide shows you how to purify your hands and pray. Tipping is not customary in Japan. Many restaurants are small; we book ahead.",
+  "inclusions": {"standard": {"private": ["Pick-up and drop-off at your hotel in Tokyo", "Private air-conditioned vehicle and driver", "Licensed private guide", "Sushi lunch", "Bottled water"], "shared": ["Hotel pick-up", "Licensed guide", "Lunch"]}},
+  "pricingTiers": [
+   {"transportType": "Sedan / SUV", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png", "minSeats": 1, "maxSeats": 4, "pricing": {"currency": "EUR", "totalPrice": 690, "pricePerDay": 690}},
+   {"transportType": "Minivan", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png", "minSeats": 5, "maxSeats": 8, "pricing": {"currency": "EUR", "totalPrice": 1150, "pricePerDay": 1150}},
+   {"transportType": "Mini Bus", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png", "minSeats": 9, "maxSeats": 19, "pricing": {"currency": "EUR", "totalPrice": 2150, "pricePerDay": 2150}}
+  ],
+  "images": ["Q:Senso-ji Asakusa", "Q:Shibuya crossing", "Q:Meiji Jingu torii", "Q:Senso-ji Asakusa#2", "Q:Shibuya crossing#2"],
+  "days": [
+   {"name": "Asakusa and Senso-ji, a sushi lunch, Meiji Jingu, Harajuku and the Shibuya crossing",
+    "description": "What to expect: traditional and modern Tokyo in one day, with a licensed guide, private car and a sushi lunch.\n\nYour guide and driver collect you at your hotel at about 8:30 and drive to Asakusa, in the old merchant quarter of Shitamachi. You pass under the Kaminarimon, the Thunder Gate, with its giant red paper lantern, and walk up Nakamise, a street of stalls selling rice crackers, ningyo-yaki cakes and fans that has served pilgrims for centuries. Senso-ji, founded in 628 after two fishermen found a statue of Kannon, goddess of mercy, in their nets, is Tokyo's oldest temple. Your guide shows you how to purify yourself with incense smoke and water, and how to draw an omikuji fortune. You see the five-storey pagoda and walk to the Sumida river, with a view of the Tokyo Skytree, at 634 metres the tallest tower in the world.\n\nLunch is at a sushi restaurant, where your guide explains how to eat sushi – fingers or chopsticks, fish side into the soy sauce – and the difference between nigiri, maki and sashimi. In the afternoon the car takes you across the city to Meiji Jingu, built in 1920 for Emperor Meiji and Empress Shoken. You walk through the great wooden torii gates along a gravel path in a forest planted with 100,000 trees donated from all over Japan, pass the wall of sake barrels offered to the gods, and may see a traditional wedding procession.\n\nJust outside the forest lies Harajuku, where Takeshita Street is packed with teenagers, crêpe stands and fashion shops, and the elegant avenue of Omotesando is lined with architect-designed boutiques. You end at Shibuya, first looking down on the scramble crossing from a high viewpoint as up to 3,000 people cross at once when the lights turn green, then crossing it yourselves and meeting Hachiko, the bronze statue of the loyal dog who waited for his master here for nine years. Your driver takes you back to your hotel at about 17:00.\n\nSCHEDULE (approximate times)\n08:30 – Pick-up at your hotel.\n09:00 – Asakusa: Kaminarimon, Nakamise and Senso-ji.\n10:45 – Sumida river.\n12:00 – Sushi lunch.\n13:30 – Meiji Jingu.\n14:45 – Harajuku and Omotesando.\n16:00 – Shibuya crossing.\n17:00 – Back at your hotel.\n\nGOOD TO KNOW\n• The Shibuya Sky observation deck can be added with a timed ticket.\n• On weekends Takeshita Street is very crowded; we adapt the time.\n• Your guide can teach you to use a Suica card for trains, useful for the rest of your stay.\n\nINCLUDED: private car and driver, licensed guide, sushi lunch, bottled water, hotel pick-up and drop-off.\nNOT INCLUDED: Shibuya Sky and Tokyo Skytree tickets, drinks with lunch.\n\nOvernight: none.\nMeals: lunch.",
+    "stops": [
+     {"name": "Senso-ji and Asakusa", "duration": "About 1 hour 45 minutes", "description": "Tokyo's oldest temple and the Thunder Gate.", "image": "Q:Senso-ji Asakusa"},
+     {"name": "Meiji Jingu", "duration": "About 1 hour", "description": "The forest shrine of the Meiji emperor.", "image": "Q:Meiji Jingu torii"},
+     {"name": "Harajuku and Omotesando", "duration": "About 1 hour", "description": "Youth fashion and designer architecture."},
+     {"name": "Shibuya crossing", "duration": "About 45 minutes", "description": "The world's busiest pedestrian crossing.", "image": "Q:Shibuya crossing"}
+    ]}
+  ],
+  "faq": [
+   {"question": "How does booking on request work?", "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability and the final price by email within 24 hours, and you pay online only when the tour is confirmed."},
+   {"question": "Do we travel by car or by train?", "answer": "By private car, which saves time and stress. If you would like to experience the Tokyo subway, your guide can include a ride and show you how it works."},
+   {"question": "Are there entrance fees?", "answer": "No. Senso-ji and Meiji Jingu are free. Observation decks such as Shibuya Sky can be added."},
+   {"question": "Is lunch included?", "answer": "Yes, a sushi lunch. If you do not eat raw fish, we choose tempura, ramen or a vegetarian restaurant instead."},
+   {"question": "Is it suitable for children?", "answer": "Yes. Children love the fortune slips, the snacks of Nakamise, the colourful Harajuku and Shibuya. Child seats are provided free of charge on request."},
+   {"question": "Is it suitable for people with limited mobility?", "answer": "Largely. Most of the route is flat and the car can drop you close to each place. The gravel path at Meiji Jingu is long; wheelchairs can be borrowed there."},
+   {"question": "Should we tip our guide?", "answer": "Tipping is not customary in Japan, and no one will expect it."},
+   {"question": "How do we behave at temples and shrines?", "answer": "Your guide shows you: purify your hands at the water basin, bow at the gate, and at shrines toss a coin, bow twice, clap twice and bow once."},
+   {"question": "Can we change the places we visit?", "answer": "Yes. We can add Ginza, the Imperial Palace gardens, Akihabara, teamLab or the Tsukiji outer market, and remove places you have seen."},
+   {"question": "Will we be taken to shops?", "answer": "No. There are no commission stops."},
+   {"question": "What should we wear?", "answer": "Comfortable shoes that are easy to take off, since you may remove them in some places, and layers for changing weather."},
+   {"question": "What is the best time of year?", "answer": "Late March to early April for cherry blossom, and October to November for autumn colours. Summer is hot and humid; winter is cold but clear."},
+   {"question": "What is the cancellation policy?", "answer": "You can cancel free of charge up to 72 hours before the tour. Until your request is confirmed, nothing is charged at all."}
+  ]
+ }
+}
