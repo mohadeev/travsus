@@ -1,0 +1,198 @@
+{
+ "key": "jordan-petra-wadi-rum-2-days-from-amman",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {
+  "city": "Wadi Rum",
+  "state": "Aqaba",
+  "country": "Jordan",
+  "countryCode": "JO",
+  "timeZone": "Asia/Amman",
+  "streetAddress": "Your hotel in Amman",
+  "geoCoordinates": {
+   "lat": 29.5759,
+   "log": 35.4199
+  }
+ },
+ "slug": "/en-US/jordan/wadi-rum/tours/petra-and-wadi-rum-private-2-day-tour-from-amman-petra-by-night-and-a-bedouin-desert-camp",
+ "tour": {
+  "name": "Petra & Wadi Rum Private 2-Day Tour from Amman: Petra by Night & a Bedouin Desert Camp",
+  "subtitle": "Two days in southern Jordan with a licensed guide and vehicle: a full day in Petra with the Treasury, the Royal Tombs and the Monastery, Petra by Night by candlelight, then a 4x4 jeep tour of Wadi Rum’s red canyons and arches, sunset on the dunes and a night at a Bedouin camp.",
+  "seoTitle": "Petra & Wadi Rum 2-Day Private Tour | TRAVSUS",
+  "metaDescription": "Private 2-day Petra and Wadi Rum tour from Amman with licensed guide and vehicle: Petra, Petra by Night, a 4x4 jeep tour in Wadi Rum, sunset on the dunes and a night at a Bedouin camp.",
+  "tags": [
+   "Petra",
+   "Wadi Rum",
+   "Bedouin camp",
+   "Petra by Night",
+   "Desert jeep tour",
+   "Jordan private tour"
+  ],
+  "highlights": [
+   "A full day in Petra, from the Siq to the Monastery",
+   "Petra by Night, the Siq and the Treasury lit by candles",
+   "A 4x4 jeep tour among the canyons and arches of Wadi Rum",
+   "Lawrence’s Spring and the Khazali canyon inscriptions",
+   "Sunset from the red dunes",
+   "Zarb, a Bedouin dinner cooked under the sand",
+   "A night under the desert stars"
+  ],
+  "duration": 2,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "Petra and Wadi Rum, a few hours apart in the south of Jordan, are the country's two great sights. Wadi Rum, the 'Valley of the Moon', is a desert of red sand and sandstone mountains, crossed by T.E. Lawrence during the Arab Revolt and used as a backdrop for films set on Mars. Both are UNESCO World Heritage Sites.\n\nThis private two-day tour takes you from Amman with a licensed guide and a vehicle: a full day in Petra with Petra by Night, then a jeep tour in Wadi Rum and a night in a Bedouin camp.\n\nAT A GLANCE\n• Duration: 2 days, 1 night in Petra; optional extra night in Wadi Rum\n• Start: your hotel in Amman\n• End: your hotel in Amman (or Aqaba on request)\n• Type: private tour with licensed guide, vehicle and driver; Bedouin jeep and guide in Wadi Rum\n• Booking: on request – we confirm availability, hotels and the final price by email within 24 hours, and you pay only then\n• Level: moderate\n\nWHAT YOU SEE\n• Petra.\n• Petra by Night.\n• Wadi Rum by 4x4.\n• A Bedouin camp.\n\nWHY THIS WORKS\nTwo days avoid the long return in one day and let you see Petra at night and Wadi Rum at sunset.\n\nWHO IT SUITS\nCouples, families, adventurers and photographers.\n\nWHO MAY PREFER ANOTHER TOUR\nFor more of Jordan, choose our 8-day Jordan highlights tour.\n\nPRACTICAL INFORMATION\nPetra by Night runs on Monday, Wednesday and Thursday. Desert nights are cold from November to March.",
+  "inclusions": {
+   "standard": {
+    "private": [
+     "Pick-up and drop-off at your hotel in Amman",
+     "Private vehicle and driver",
+     "Licensed Petra guide",
+     "Petra entrance (2 days) and Petra by Night",
+     "1 night in a hotel in Wadi Musa with breakfast and dinner",
+     "4x4 jeep tour with a Bedouin guide in Wadi Rum",
+     "Lunch in Petra and in Wadi Rum",
+     "Bottled water"
+    ],
+    "shared": [
+     "Hotel pick-up",
+     "Licensed guide",
+     "Petra entrance and Petra by Night",
+     "1 night with breakfast and dinner",
+     "Jeep tour",
+     "Lunches"
+    ]
+   }
+  },
+  "pricingTiers": [
+   {
+    "transportType": "Sedan / SUV",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png",
+    "minSeats": 1,
+    "maxSeats": 4,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 1190,
+     "pricePerDay": 595
+    }
+   },
+   {
+    "transportType": "Minivan",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png",
+    "minSeats": 5,
+    "maxSeats": 8,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 1890,
+     "pricePerDay": 945
+    }
+   },
+   {
+    "transportType": "Mini Bus",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png",
+    "minSeats": 9,
+    "maxSeats": 19,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 3490,
+     "pricePerDay": 1745
+    }
+   }
+  ],
+  "images": [
+   "Q:Petra Treasury",
+   "Q:Wadi Rum desert",
+   "Q:Petra Monastery Ad Deir",
+   "Q:Wadi Rum desert#2",
+   "Q:Wadi Rum desert#3"
+  ],
+  "days": [
+   {
+    "name": "Amman to Petra, a full day in the rose-red city, and Petra by Night",
+    "description": "What to expect: Petra by day and by candlelight.\n\nYour driver collects you early in Amman and drives to Petra, about 3 hours. With your licensed guide, you walk through the Siq to the Treasury, along the Street of Facades to the theatre and the Royal Tombs, and after lunch climb to the Monastery or explore the Great Temple. After dinner at your hotel, you walk back down the Siq for Petra by Night, when some 1,500 candles light the path and the square in front of the Treasury, with Bedouin music and tea.\n\nSCHEDULE (approximate times)\n06:00 – Pick-up in Amman.\n09:30 – Petra with your guide.\n12:30 – Lunch.\n13:30 – Monastery or Great Temple.\n17:00 – Hotel.\n20:30 – Petra by Night.\n\nGOOD TO KNOW\n• On days without Petra by Night, we suggest a cooking class in Wadi Musa.\n\nINCLUDED: vehicle, guide, entrance, lunch, dinner, Petra by Night.\nNOT INCLUDED: drinks.\n\nOvernight: hotel in Wadi Musa.\nMeals: lunch, dinner.",
+    "stops": [
+     {
+      "name": "Petra",
+      "duration": "Full day",
+      "description": "The Siq, the Treasury and the tombs.",
+      "image": "Q:Petra Treasury"
+     },
+     {
+      "name": "Petra by Night",
+      "duration": "About 2 hours",
+      "description": "Candles in the Siq."
+     }
+    ]
+   },
+   {
+    "name": "Little Petra, Wadi Rum by 4x4 and sunset on the dunes",
+    "description": "What to expect: the canyons and dunes of Wadi Rum.\n\nAfter breakfast, you visit Little Petra, Siq al-Barid, a smaller Nabataean caravan stop with a rare painted ceiling, then drive south to Wadi Rum. A Bedouin guide takes you by 4x4 jeep to Lawrence's Spring, the Khazali canyon with its Thamudic and Nabataean inscriptions, the red sand dunes, the Um Fruth rock bridge and the Burdah arch viewpoint, with a Bedouin lunch in the shade of a cliff. You watch the sunset from a dune, then either drive back to Amman or, if you choose the optional extra night, stay at a Bedouin camp for a zarb dinner cooked in an underground oven and a night under the stars.\n\nSCHEDULE (approximate times)\n08:30 – Little Petra.\n11:00 – Arrival in Wadi Rum.\n11:30 – 4x4 jeep tour.\n13:00 – Bedouin lunch.\nSunset – Sunset on the dunes.\n18:00 – Drive back to Amman, or night at the camp.\n22:00 – Back in Amman.\n\nGOOD TO KNOW\n• An extra night at a camp, including a bubble tent, can be added.\n• Camel rides and hot-air balloon flights can be added.\n\nINCLUDED: vehicle, jeep tour, Bedouin guide, lunch.\nNOT INCLUDED: camel rides, tips.\n\nOvernight: none.\nMeals: breakfast, lunch.",
+    "stops": [
+     {
+      "name": "Little Petra",
+      "duration": "About 45 minutes",
+      "description": "A Nabataean caravan stop."
+     },
+     {
+      "name": "Wadi Rum",
+      "duration": "About 5 hours",
+      "description": "Canyons, arches and dunes.",
+      "image": "Q:Wadi Rum desert"
+     }
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "question": "How does booking on request work?",
+    "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability, hotels and the final price by email within 24 hours, and you pay online only when the tour is confirmed."
+   },
+   {
+    "question": "When does Petra by Night run?",
+    "answer": "On Monday, Wednesday and Thursday evenings. We plan your dates around it if you wish."
+   },
+   {
+    "question": "Can we sleep in the desert?",
+    "answer": "Yes. An extra night at a Bedouin camp, in a tent or a bubble tent, can be added."
+   },
+   {
+    "question": "Is the jeep private?",
+    "answer": "Yes, a private 4x4 with a Bedouin driver-guide."
+   },
+   {
+    "question": "What kind of hotel is used in Petra?",
+    "answer": "A comfortable 4-star hotel in Wadi Musa near the entrance."
+   },
+   {
+    "question": "Is it suitable for children?",
+    "answer": "Yes. Children love the jeep and the dunes."
+   },
+   {
+    "question": "Is it suitable for people with limited mobility?",
+    "answer": "Partly. Petra involves much walking; Wadi Rum is mostly by jeep."
+   },
+   {
+    "question": "Can we finish in Aqaba?",
+    "answer": "Yes, on request, for a stay by the Red Sea."
+   },
+   {
+    "question": "Is the Jordan Pass worth it?",
+    "answer": "Yes, if you stay at least three nights; it includes the visa and Petra entry."
+   },
+   {
+    "question": "What should we wear?",
+    "answer": "Walking shoes, a hat, sun protection, modest clothes and warm layers for the desert evening."
+   },
+   {
+    "question": "What is the best time of year?",
+    "answer": "March to May and September to November."
+   },
+   {
+    "question": "Should we tip?",
+    "answer": "Tipping is customary in Jordan: guides and drivers appreciate a tip if you were happy with their service, but it is always your choice."
+   },
+   {
+    "question": "What is the cancellation policy?",
+    "answer": "You can cancel free of charge up to 72 hours before the tour. Until your request is confirmed, nothing is charged at all."
+   }
+  ]
+ }
+}

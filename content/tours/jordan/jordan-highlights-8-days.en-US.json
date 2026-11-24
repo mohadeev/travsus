@@ -1,0 +1,258 @@
+{
+ "key": "jordan-jordan-highlights-8-days",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {
+  "city": "Petra",
+  "state": "Ma'an",
+  "country": "Jordan",
+  "countryCode": "JO",
+  "timeZone": "Asia/Amman",
+  "streetAddress": "Queen Alia airport, Amman",
+  "geoCoordinates": {
+   "lat": 30.3285,
+   "log": 35.4444
+  }
+ },
+ "slug": "/en-US/jordan/petra/tours/jordan-highlights-8-day-private-tour-amman-jerash-the-dead-sea-petra-wadi-rum-and-aqaba",
+ "tour": {
+  "name": "Jordan Highlights 8-Day Private Tour: Amman, Jerash, the Dead Sea, Petra, Wadi Rum & Aqaba",
+  "subtitle": "Eight days across Jordan with private guides and a vehicle: Amman and Roman Jerash, Madaba and Mount Nebo, the King's Highway and Kerak, two days in Petra with Petra by Night, a night in a Wadi Rum desert camp, the Red Sea at Aqaba and the Dead Sea.",
+  "seoTitle": "Jordan Highlights 8-Day Private Tour | TRAVSUS",
+  "metaDescription": "8-day private Jordan tour: Amman, Jerash, Madaba, Mount Nebo, the King’s Highway, Petra over two days, Wadi Rum desert camp, Aqaba and the Dead Sea. Guides, vehicle, entrances and 7 nights included.",
+  "tags": [
+   "Jordan tour",
+   "Petra",
+   "Wadi Rum",
+   "Dead Sea",
+   "Jerash",
+   "Jordan 8 days"
+  ],
+  "highlights": [
+   "Roman Jerash and the Amman Citadel",
+   "Madaba, Mount Nebo and the King’s Highway",
+   "Two days in Petra, with Petra by Night",
+   "A night in a Wadi Rum desert camp",
+   "Snorkelling in the Red Sea at Aqaba",
+   "Floating in the Dead Sea",
+   "Private guides and a driver throughout"
+  ],
+  "duration": 8,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "Jordan is small, safe and remarkably varied: Roman cities, Crusader castles, the rose-red city of Petra, the red desert of Wadi Rum, the coral reefs of the Red Sea and the Dead Sea, all within a few hours of each other. This private tour links them with a driver throughout and licensed guides at each site.\n\nYou have seven nights in well-located hotels and a desert camp, with time to enjoy Petra over two days and to relax by the Red Sea and the Dead Sea.\n\nAT A GLANCE\n• Duration: 8 days, 7 nights\n• Start and end: Queen Alia airport, Amman\n• Type: private tour with licensed guides, vehicle and driver; 7 nights with breakfast\n• Booking: on request – we confirm availability, hotels and the final price by email within 24 hours, and you pay only then\n• Level: moderate\n\nWHAT YOU SEE\n• Amman and Jerash.\n• Madaba, Mount Nebo and Kerak.\n• Petra.\n• Wadi Rum.\n• Aqaba.\n• The Dead Sea.\n\nWHY THIS WORKS\nThe loop from Amman south along the King’s Highway and back along the Dead Sea avoids backtracking and makes every day count.\n\nWHO IT SUITS\nFirst-time visitors, couples, families and small groups.\n\nWHO MAY PREFER ANOTHER TOUR\nAdd Dana and Feynan for hiking, or extend the Red Sea stay.\n\nPRACTICAL INFORMATION\nThe Jordan Pass, bought online before travel, covers the visa and most entrances, including Petra; we can include or deduct it.",
+  "inclusions": {
+   "standard": {
+    "private": [
+     "Private airport transfers",
+     "Private vehicle and driver throughout",
+     "Licensed guides at each site",
+     "7 nights with breakfast: 2 in Amman, 2 in Petra, 1 in a Wadi Rum camp, 1 in Aqaba, 1 at the Dead Sea",
+     "Entrances in the programme, Petra by Night and the Wadi Rum jeep tour",
+     "Dinner at the desert camp",
+     "Bottled water"
+    ],
+    "shared": [
+     "Airport transfers",
+     "Private vehicle",
+     "Guides",
+     "7 nights with breakfast",
+     "Entrances"
+    ]
+   }
+  },
+  "pricingTiers": [
+   {
+    "transportType": "Sedan / SUV",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png",
+    "minSeats": 1,
+    "maxSeats": 4,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 3990,
+     "pricePerDay": 499
+    }
+   },
+   {
+    "transportType": "Minivan",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png",
+    "minSeats": 5,
+    "maxSeats": 8,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 6490,
+     "pricePerDay": 811
+    }
+   },
+   {
+    "transportType": "Mini Bus",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png",
+    "minSeats": 9,
+    "maxSeats": 19,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 11990,
+     "pricePerDay": 1499
+    }
+   }
+  ],
+  "images": [
+   "Q:Petra Treasury",
+   "Q:Wadi Rum desert",
+   "Q:Jerash",
+   "Q:Dead Sea Jordan",
+   "Q:Petra Monastery Ad Deir"
+  ],
+  "days": [
+   {
+    "name": "Arrival in Amman",
+    "description": "What to expect: a private welcome.\n\nYour driver meets you at Queen Alia airport and takes you to your hotel in Amman. In the evening, walk along Rainbow Street.\n\nSCHEDULE (approximate times)\nAny time – Airport transfer.\n\nGOOD TO KNOW\n• Visa on arrival or the Jordan Pass.\n\nINCLUDED: airport transfer.\nNOT INCLUDED: dinner.\n\nOvernight: hotel in Amman.\nMeals: none.",
+    "stops": [
+     {
+      "name": "Amman",
+      "duration": "Free time",
+      "description": "An evening in the capital.",
+      "image": "Q:Amman Citadel"
+     }
+    ]
+   },
+   {
+    "name": "Jerash, Ajloun and Amman",
+    "description": "What to expect: Roman Jordan.\n\nJerash, Ajloun Castle, the Amman Citadel, the Roman theatre and the downtown souks.\n\nSCHEDULE (approximate times)\n08:30 – Jerash.\n13:30 – Ajloun.\n15:15 – Amman Citadel.\n\nGOOD TO KNOW\n• Try knafeh downtown.\n\nINCLUDED: vehicle, guide, entrances.\nNOT INCLUDED: lunch.\n\nOvernight: hotel in Amman.\nMeals: breakfast.",
+    "stops": [
+     {
+      "name": "Jerash",
+      "duration": "About 2 hours 30 minutes",
+      "description": "The Roman city.",
+      "image": "Q:Jerash"
+     }
+    ]
+   },
+   {
+    "name": "The King's Highway to Petra",
+    "description": "What to expect: mosaics, canyons and castles.\n\nMadaba, Mount Nebo, Wadi Mujib, Kerak Castle, the Dana viewpoint and Shobak, arriving in Petra.\n\nSCHEDULE (approximate times)\n08:00 – Madaba.\n12:15 – Kerak.\n15:45 – Shobak.\n17:00 – Petra.\n\nGOOD TO KNOW\n• Bring a torch for Kerak.\n\nINCLUDED: vehicle, guide, entrances.\nNOT INCLUDED: lunch.\n\nOvernight: hotel in Petra.\nMeals: breakfast.",
+    "stops": [
+     {
+      "name": "Mount Nebo",
+      "duration": "About 1 hour",
+      "description": "The Promised Land view.",
+      "image": "Q:Mount Nebo"
+     }
+    ]
+   },
+   {
+    "name": "Petra, and Petra by Night",
+    "description": "What to expect: the rose-red city.\n\nA full day with your guide: the Siq, the Treasury, the Royal Tombs, the colonnaded street and the Monastery, and Petra by Night when it runs.\n\nSCHEDULE (approximate times)\n08:00 – The Siq and the Treasury.\n13:30 – The Monastery.\n20:30 – Petra by Night.\n\nGOOD TO KNOW\n• Petra by Night runs Monday, Wednesday and Thursday.\n\nINCLUDED: guide, entrance, Petra by Night.\nNOT INCLUDED: lunch.\n\nOvernight: hotel in Petra.\nMeals: breakfast.",
+    "stops": [
+     {
+      "name": "Petra",
+      "duration": "Full day",
+      "description": "The Treasury and the tombs.",
+      "image": "Q:Petra Treasury"
+     }
+    ]
+   },
+   {
+    "name": "Little Petra and Wadi Rum",
+    "description": "What to expect: the desert.\n\nLittle Petra, then Wadi Rum by 4x4 with a Bedouin guide, sunset on the dunes, a zarb dinner and a night at a desert camp.\n\nSCHEDULE (approximate times)\n08:30 – Little Petra.\n11:30 – Jeep tour.\nSunset – Dunes.\n19:30 – Zarb dinner.\n\nGOOD TO KNOW\n• Nights are cold in winter.\n\nINCLUDED: vehicle, jeep, guide, dinner.\nNOT INCLUDED: lunch.\n\nOvernight: desert camp in Wadi Rum.\nMeals: breakfast, dinner.",
+    "stops": [
+     {
+      "name": "Wadi Rum",
+      "duration": "Afternoon",
+      "description": "Canyons and dunes.",
+      "image": "Q:Wadi Rum desert"
+     }
+    ]
+   },
+   {
+    "name": "Aqaba and the Red Sea",
+    "description": "What to expect: coral reefs.\n\nSunrise in the desert, then the drive to Aqaba for a private boat, snorkelling at the Japanese Garden and a free afternoon.\n\nSCHEDULE (approximate times)\nSunrise – Wadi Rum.\n10:00 – Drive to Aqaba.\n11:30 – Snorkelling.\n\nGOOD TO KNOW\n• Use reef-safe sun cream.\n\nINCLUDED: vehicle, boat, guide, equipment.\nNOT INCLUDED: lunch, dinner.\n\nOvernight: hotel in Aqaba.\nMeals: breakfast.",
+    "stops": [
+     {
+      "name": "Aqaba reefs",
+      "duration": "About 2 hours 30 minutes",
+      "description": "Snorkelling.",
+      "image": "Q:Aqaba Red Sea coral"
+     }
+    ]
+   },
+   {
+    "name": "To the Dead Sea",
+    "description": "What to expect: the lowest point on Earth.\n\nThe drive north along the Dead Sea Highway, with a stop at the baptism site, and an afternoon floating in the Dead Sea at your resort.\n\nSCHEDULE (approximate times)\n09:00 – Departure.\n13:00 – Baptism site.\n15:00 – Dead Sea resort.\n\nGOOD TO KNOW\n• Bring swimwear.\n\nINCLUDED: vehicle, guide, entrance.\nNOT INCLUDED: lunch, dinner.\n\nOvernight: resort at the Dead Sea.\nMeals: breakfast.",
+    "stops": [
+     {
+      "name": "Dead Sea",
+      "duration": "Afternoon",
+      "description": "Floating.",
+      "image": "Q:Dead Sea Jordan"
+     }
+    ]
+   },
+   {
+    "name": "Departure",
+    "description": "What to expect: a private transfer to the airport.\n\nA last float at sunrise if you wish, then your driver takes you to Queen Alia airport, about 1 hour.\n\nSCHEDULE (approximate times)\nAs needed – Airport transfer.\n\nGOOD TO KNOW\n• Allow 3 hours before your flight.\n\nINCLUDED: airport transfer.\nNOT INCLUDED: lunch.\n\nOvernight: none.\nMeals: breakfast.",
+    "stops": [
+     {
+      "name": "Dead Sea",
+      "duration": "Morning",
+      "description": "A last float.",
+      "image": "Q:Dead Sea Jordan"
+     }
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "question": "How does booking on request work?",
+    "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability, hotels and the final price by email within 24 hours, and you pay online only when the tour is confirmed."
+   },
+   {
+    "question": "Is the Jordan Pass included?",
+    "answer": "We can include it or deduct entrances if you buy it yourself; it covers the visa when you stay 3 nights or more."
+   },
+   {
+    "question": "What kind of hotels are used?",
+    "answer": "Comfortable 4-star hotels, a desert camp and a Dead Sea resort; upgrades are available."
+   },
+   {
+    "question": "Is Jordan safe?",
+    "answer": "Yes, Jordan is one of the safest and most welcoming countries in the region."
+   },
+   {
+    "question": "Can we add hiking?",
+    "answer": "Yes: Dana and Feynan, or the Wadi Mujib Siq Trail in season."
+   },
+   {
+    "question": "Is it suitable for children?",
+    "answer": "Yes. We book family rooms and adapt the walking."
+   },
+   {
+    "question": "Is it suitable for people with limited mobility?",
+    "answer": "Partly. Petra involves much walking; we can arrange carts."
+   },
+   {
+    "question": "Can we start in Aqaba?",
+    "answer": "Yes, the loop can be reversed or start at Aqaba airport."
+   },
+   {
+    "question": "Are meals included?",
+    "answer": "Breakfast daily and dinner at the desert camp; guides suggest restaurants."
+   },
+   {
+    "question": "What should we wear?",
+    "answer": "Walking shoes, modest clothes, layers for the desert, swimwear and sun protection."
+   },
+   {
+    "question": "What is the best time of year?",
+    "answer": "March to May and September to November."
+   },
+   {
+    "question": "Should we tip?",
+    "answer": "Tipping is customary in Jordan: guides and drivers appreciate a tip if you were happy with their service, but it is always your choice."
+   },
+   {
+    "question": "What is the cancellation policy?",
+    "answer": "You can cancel free of charge up to 30 days before the tour starts. Until your request is confirmed, nothing is charged at all."
+   }
+  ]
+ }
+}
