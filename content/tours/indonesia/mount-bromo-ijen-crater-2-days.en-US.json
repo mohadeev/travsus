@@ -1,0 +1,62 @@
+{
+ "key": "indonesia-mount-bromo-ijen-crater-2-days",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {"city": "Probolinggo", "state": "East Java", "country": "Indonesia", "countryCode": "ID", "timeZone": "Asia/Jakarta", "streetAddress": "Surabaya or Malang hotel or airport", "geoCoordinates": {"lat": -7.9425, "log": 112.953}},
+ "slug": "/en-US/indonesia/probolinggo/tours/mount-bromo-sunrise-and-ijen-blue-fire-private-2-day-tour-ending-in-bali",
+ "tour": {
+  "name": "Mount Bromo Sunrise & Ijen Crater 2-Day Private Tour, Ending in Bali",
+  "subtitle": "Two days among the volcanoes of East Java with a private guide, jeep and car: sunrise over Mount Bromo and the Sea of Sand from Penanjakan, the climb to Bromo's smoking crater, a night near the Ijen plateau, the walk up Ijen to its turquoise acid lake, and the ferry to Bali.",
+  "seoTitle": "Mount Bromo & Ijen Crater 2-Day Private Tour | TRAVSUS",
+  "metaDescription": "Private 2-day East Java volcano tour: Bromo sunrise from Penanjakan by jeep, the Sea of Sand and Bromo's crater, a night near Ijen, the hike to the Ijen crater lake at dawn, and the ferry to Bali. Guide, jeep, hotel and meals.",
+  "tags": ["Mount Bromo", "Ijen crater", "East Java", "Volcano sunrise", "Overland to Bali", "Indonesia private tour"],
+  "highlights": [
+   "Sunrise over Bromo, Batok and Semeru from the Penanjakan viewpoint",
+   "A jeep across the Sea of Sand inside the Tengger caldera",
+   "The climb to the rim of Bromo's smoking crater",
+   "A night near the Ijen plateau among coffee plantations",
+   "The hike up Ijen at dawn to its turquoise acid crater lake",
+   "The sulphur miners of Ijen and their stories",
+   "The ferry across the Bali Strait, ending in Bali"
+  ],
+  "duration": 2,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "East Java is a land of volcanoes. In the Tengger caldera, a crater ten kilometres wide, the active cone of Mount Bromo rises from a flat 'Sea of Sand', with the perfect cone of Mount Batok beside it and Mount Semeru, Java's highest peak at 3,676 metres, puffing smoke behind. At the eastern tip of the island, the Ijen volcano holds the world's largest acidic crater lake, a startling turquoise, where miners still carry baskets of sulphur up from the crater by hand.\n\nThis private two-day journey crosses East Java from Surabaya or Malang to Bali with a private guide, a 4x4 jeep at Bromo and a car. You watch the sunrise over Bromo, climb to its crater, drive to the Ijen plateau for the night, hike to the Ijen crater at dawn and continue by ferry to Bali.\n\nAT A GLANCE\n• Duration: 2 days, 1 night (plus an optional night before near Bromo)\n• Start: your hotel or the airport in Surabaya or Malang\n• End: Ketapang ferry port to Bali, or your hotel in Bali\n• Type: private tour with guide, jeep, car and driver; 1 night in a hotel near Ijen with breakfast\n• Booking: on request – we confirm availability and the final price by email within 24 hours, and you pay only then\n• Level: hard; very early starts and two volcano hikes of 1 to 2 hours\n\nWHAT YOU SEE\n• Penanjakan viewpoint at sunrise.\n• The Sea of Sand and Bromo's crater.\n• The Ijen plateau.\n• The Ijen crater lake.\n\nWHY THIS WORKS\nA private car and guide let you rest between the two sunrises, and ending in Bali saves the long drive back.\n\nWHO IT SUITS\nFit, adventurous travellers and photographers.\n\nWHO MAY PREFER ANOTHER TOUR\nIf you prefer an easier volcano, choose our Mount Batur sunrise trek in Bali.\n\nPRACTICAL INFORMATION\nIjen's sulphur gas can be strong: gas masks are provided, and the descent into the crater is not allowed when gas levels are high. Access to Ijen opens around 3:00 on most days; the famous 'blue fire' visible at night inside the crater is often off-limits for safety, and we follow park rules.",
+  "inclusions": {"standard": {"private": ["Pick-up in Surabaya or Malang and drop-off at the ferry or your hotel in Bali", "Private air-conditioned vehicle and driver", "Private English-speaking guide", "4x4 jeep for Bromo sunrise and the Sea of Sand", "1 night in a hotel near Ijen with breakfast", "National park fees for Bromo and Ijen", "Gas masks at Ijen", "Lunch and dinner on day 1, breakfast and lunch on day 2", "Ferry to Bali", "Bottled water"], "shared": ["Transfers", "Guide", "Jeep", "1 night with breakfast", "Park fees", "Meals", "Ferry"]}},
+  "pricingTiers": [
+   {"transportType": "Sedan / SUV", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png", "minSeats": 1, "maxSeats": 4, "pricing": {"currency": "EUR", "totalPrice": 980, "pricePerDay": 490}},
+   {"transportType": "Minivan", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png", "minSeats": 5, "maxSeats": 8, "pricing": {"currency": "EUR", "totalPrice": 1690, "pricePerDay": 845}},
+   {"transportType": "Mini Bus", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png", "minSeats": 9, "maxSeats": 19, "pricing": {"currency": "EUR", "totalPrice": 3190, "pricePerDay": 1595}}
+  ],
+  "images": ["Q:Mount Bromo", "Q:Kawah Ijen", "Q:Mount Bromo#2", "Q:Kawah Ijen#2", "Q:Mount Bromo#3"],
+  "days": [
+   {"name": "Bromo sunrise from Penanjakan, the Sea of Sand and the crater, then across East Java to Ijen",
+    "description": "What to expect: the most famous volcanic view in Indonesia, then a drive east.\n\nYour driver collects you at your hotel in Surabaya or Malang in the middle of the night (around 23:30), or you stay the night before in a lodge near Bromo for a later start. At about 3:30 you switch to a 4x4 jeep for the climb to the Penanjakan viewpoint at 2,770 metres. As the sun rises, the Tengger caldera fills with light: the smoking cone of Bromo, the ribbed cone of Batok and, behind, Semeru sending up puffs of ash every twenty minutes or so.\n\nThe jeep descends into the caldera and crosses the Sea of Sand, a plain of grey volcanic sand, to the foot of Bromo. You walk across the sand, past the Hindu temple of Pura Luhur Poten, where the Tengger people hold their annual Yadnya Kasada festival, and climb about 250 steps to the crater rim to look down into the roaring, smoking vent. After breakfast at a hotel and a rest, you drive east for about six hours, with lunch on the way, through plantations and along the coast, to a hotel on the edge of the Ijen plateau, among coffee and clove gardens. Dinner is at the hotel, and you go to bed early.\n\nSCHEDULE (approximate times)\n23:30 – Pick-up in Surabaya or Malang (or later from a lodge near Bromo).\n03:30 – Jeep to Penanjakan.\n05:00 – Sunrise.\n06:30 – Sea of Sand and Bromo's crater.\n08:30 – Breakfast and rest.\n10:30 – Drive to the Ijen plateau with lunch.\n17:00 – Arrival at the hotel near Ijen, dinner.\n\nGOOD TO KNOW\n• It is cold at Penanjakan before dawn, around 5 to 10 °C.\n• Horses offered for the crossing are optional; we recommend walking.\n\nINCLUDED: transfers, guide, jeep, park fees, breakfast, lunch, dinner.\nNOT INCLUDED: horse rides, drinks.\n\nOvernight: hotel near the Ijen plateau.\nMeals: breakfast, lunch, dinner.",
+    "stops": [
+     {"name": "Penanjakan viewpoint", "duration": "About 1 hour 30 minutes", "description": "Sunrise over Bromo, Batok and Semeru.", "image": "Q:Mount Bromo"},
+     {"name": "Bromo crater", "duration": "About 1 hour 30 minutes", "description": "The Sea of Sand and the smoking crater."}
+    ]},
+   {"name": "Ijen crater at dawn and the ferry to Bali",
+    "description": "What to expect: the turquoise acid lake of Ijen and the crossing to Bali.\n\nYou leave the hotel at about 1:30 for the Paltuding trailhead. From about 3:00, you hike by torchlight up a wide, steep path, about 3 kilometres and 1 hour 30 minutes, to the crater rim at 2,386 metres. As day breaks, the crater appears: a lake of milky turquoise water, a kilometre wide and highly acidic, with yellow sulphur deposits steaming on its shore. You meet the miners who carry loads of up to 80 kilograms of sulphur in baskets on their shoulders up from the crater and down the mountain, and your guide explains their work and the dangers they face. When park rules and gas levels allow, you can descend part of the way into the crater with a gas mask; the blue flames of burning sulphur gas are sometimes visible before dawn.\n\nYou walk back down, have breakfast at the hotel, and drive to the port of Ketapang for the 45-minute ferry across the Bali Strait to Gilimanuk. A driver in Bali can take you to your hotel, about 3 to 4 hours to the south, or to the north-west for a stay in Pemuteran or Menjangan.\n\nSCHEDULE (approximate times)\n01:30 – Departure for Paltuding.\n03:00 – Hike to the crater rim.\n05:00 – Sunrise over the Ijen crater.\n07:30 – Descent.\n09:00 – Breakfast at the hotel.\n11:00 – Ferry to Bali.\n13:00 – Lunch in Bali and transfer to your hotel.\n\nGOOD TO KNOW\n• Ijen closes on some days for safety or maintenance; we then visit the coffee plantations and Jagir waterfall.\n• The crater descent is steep and rocky.\n\nINCLUDED: transfers, guide, park fees, gas masks, breakfast, lunch, ferry.\nNOT INCLUDED: dinner, tips.\n\nOvernight: none (or your hotel in Bali).\nMeals: breakfast, lunch.",
+    "stops": [
+     {"name": "Ijen crater", "duration": "About 4 hours", "description": "The turquoise acid lake and the sulphur miners.", "image": "Q:Kawah Ijen"},
+     {"name": "Bali Strait ferry", "duration": "About 45 minutes", "description": "The crossing from Java to Bali."}
+    ]}
+  ],
+  "faq": [
+   {"question": "How does booking on request work?", "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability and the final price by email within 24 hours, and you pay online only when the tour is confirmed."},
+   {"question": "How fit do we need to be?", "answer": "Reasonably fit. Bromo is a short but steep climb; Ijen is about 1 hour 30 minutes up a steep path in the dark. Your private guide adapts the pace."},
+   {"question": "Will we see the blue fire?", "answer": "Sometimes, before dawn, if the park allows the descent into the crater and gas levels are safe. It is never guaranteed; the crater lake at sunrise is spectacular in any case."},
+   {"question": "Is the sulphur gas dangerous?", "answer": "It can be irritating. Gas masks are provided, and your guide decides when to stay away. People with asthma or heart conditions should not join."},
+   {"question": "Can we start in Bali instead?", "answer": "Yes. The tour can run in reverse, from Bali to Ijen and Bromo, ending in Surabaya or Malang."},
+   {"question": "What kind of hotel is used?", "answer": "A comfortable hotel or lodge near the Ijen plateau with hot water. A lodge near Bromo can be added the night before."},
+   {"question": "Are park fees and meals included?", "answer": "Yes: Bromo and Ijen park fees, the jeep, gas masks and the meals listed."},
+   {"question": "Is it suitable for children?", "answer": "For fit older children only; Ijen sets a minimum age on some days and the hikes are long and early."},
+   {"question": "Is it suitable for people with limited mobility?", "answer": "No. Both volcanoes require steep hikes on loose ground."},
+   {"question": "Should we tip?", "answer": "Tips are appreciated in Indonesia but never required."},
+   {"question": "What should we wear?", "answer": "Warm layers, a windproof jacket, gloves and a hat for the cold mornings, hiking shoes and a buff or scarf against the dust."},
+   {"question": "What is the best time of year?", "answer": "April to October, the dry season, for clear sunrises. In the rainy season the trails are muddy and views often cloudy."},
+   {"question": "What is the cancellation policy?", "answer": "You can cancel free of charge up to 7 days before the tour, and at no cost if a volcano is closed for safety. Until your request is confirmed, nothing is charged at all."}
+  ]
+ }
+}

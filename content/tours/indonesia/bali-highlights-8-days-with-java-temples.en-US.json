@@ -1,0 +1,77 @@
+{
+ "key": "indonesia-bali-highlights-8-days-with-java-temples",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {"city": "Ubud", "state": "Bali", "country": "Indonesia", "countryCode": "ID", "timeZone": "Asia/Makassar", "streetAddress": "Bali Ngurah Rai Airport or your hotel in Bali", "geoCoordinates": {"lat": -8.5069, "log": 115.2625}},
+ "slug": "/en-US/indonesia/ubud/tours/bali-and-java-highlights-8-day-private-tour-ubud-borobudur-east-bali-and-the-coast",
+ "tour": {
+  "name": "Bali & Java Highlights 8-Day Private Tour: Ubud, Borobudur, East Bali & the Coast",
+  "subtitle": "Eight days of temples, rice terraces, volcanoes and beaches with private guides: Ubud's culture and the Tegallalang terraces, a flight to Java for Borobudur and Prambanan, Mount Batur at sunrise, the Gates of Heaven of East Bali, and the sea temples and beaches of the south coast.",
+  "seoTitle": "Bali & Java Highlights 8-Day Private Tour | TRAVSUS",
+  "metaDescription": "8-day private Bali and Java tour: Ubud, Tegallalang and Tirta Empul, Borobudur and Prambanan in Java, Mount Batur sunrise, Lempuyang and Tirta Gangga, Tanah Lot, Uluwatu and the beach. Guides, flights and 7 nights.",
+  "tags": ["Bali tour", "Bali and Java", "Bali 8 days", "Borobudur", "Ubud", "Indonesia private tour"],
+  "highlights": [
+   "Ubud, the Tegallalang rice terraces and the Tirta Empul water temple",
+   "A flight to Java for Borobudur at sunrise and Prambanan",
+   "Mount Batur sunrise trek with breakfast on the volcano",
+   "Pura Lempuyang's Gates of Heaven and Tirta Gangga",
+   "Tanah Lot, Uluwatu and the Kecak fire dance",
+   "Free time on the beaches of the south coast",
+   "Private guides, flights and seven nights in good hotels"
+  ],
+  "duration": 8,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "Bali's Hindu culture, green rice terraces and volcanoes make it one of the most beloved islands in the world, and an hour's flight away, central Java holds two of the greatest monuments of Asia. This private journey combines both: three nights in Ubud for the culture of the island, a night in Yogyakarta for Borobudur and Prambanan, a sunrise on Mount Batur, a day in the quiet east, and the sea temples and beaches of the south to finish.\n\nYou have a private guide and car every sightseeing day, return flights between Bali and Yogyakarta, and seven nights in well-located hotels with breakfast. Early starts are balanced with free afternoons by the pool.\n\nAT A GLANCE\n• Duration: 8 days, 7 nights\n• Start and end: Bali Ngurah Rai Airport or your hotel in Bali\n• Type: private tour with guides, private cars and drivers, return flights to Yogyakarta; 7 nights with breakfast\n• Booking: on request – we confirm availability, hotels, flights and the final price by email within 24 hours, and you pay only then\n• Level: moderate; one optional volcano trek\n\nWHAT YOU SEE\n• Ubud, Tegallalang, Tirta Empul and the Monkey Forest.\n• Borobudur and Prambanan in Java.\n• Mount Batur at sunrise.\n• Lempuyang, Tirta Gangga and Besakih.\n• Tanah Lot, Uluwatu and Jimbaran.\n\nWHY THIS WORKS\nUbud is the best base for the interior, the Java flight is short, and the trip ends at the coast so the last days are relaxing.\n\nWHO IT SUITS\nFirst-time visitors to Indonesia, couples, honeymooners and families with older children.\n\nWHO MAY PREFER ANOTHER TOUR\nIf you prefer a slower trip with only Bali, ask us to replace Java with Nusa Penida and the north highlands.\n\nPRACTICAL INFORMATION\nBali charges a tourist levy on arrival, paid online or at the airport. Sarongs are required at temples and are provided. The best time is April to October.",
+  "inclusions": {"standard": {"private": ["Private airport transfers in Bali and Yogyakarta", "7 nights with breakfast in 4-star or boutique hotels (double or twin rooms): 3 in Ubud, 1 in Yogyakarta, 3 on the south coast of Bali", "Return flights Bali–Yogyakarta (economy, 20 kg bag)", "Private guides and cars for all sightseeing days", "Mount Batur trek with a licensed mountain guide", "Entrance fees, sarongs and the Kecak dance", "Lunch on sightseeing days and a seafood dinner in Jimbaran", "Bottled water"], "shared": ["Airport transfers", "7 nights with breakfast", "Flights", "Guides", "Entrance fees", "Lunches"]}},
+  "pricingTiers": [
+   {"transportType": "Sedan / SUV", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png", "minSeats": 1, "maxSeats": 4, "pricing": {"currency": "EUR", "totalPrice": 3200, "pricePerDay": 400}},
+   {"transportType": "Minivan", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png", "minSeats": 5, "maxSeats": 8, "pricing": {"currency": "EUR", "totalPrice": 5920, "pricePerDay": 740}},
+   {"transportType": "Mini Bus", "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png", "minSeats": 9, "maxSeats": 19, "pricing": {"currency": "EUR", "totalPrice": 11200, "pricePerDay": 1400}}
+  ],
+  "images": ["Q:Tegallalang rice terraces", "Q:Borobudur", "Q:Pura Lempuyang gate", "Q:Tanah Lot", "Q:Mount Batur sunrise"],
+  "days": [
+   {"name": "Arrival in Bali and transfer to Ubud",
+    "description": "What to expect: a private welcome and a first evening in Ubud.\n\nYour driver meets you at Ngurah Rai Airport and drives you to your hotel in Ubud, about 1 hour 30 minutes. In the evening you can watch a Legong dance at Ubud Palace or walk through the town.\n\nSCHEDULE (approximate times)\nAny time – Airport transfer.\n19:30 – Optional dance performance at Ubud Palace.\n\nGOOD TO KNOW\n• Pay the Bali tourist levy online before arrival to save time.\n\nINCLUDED: airport transfer.\nNOT INCLUDED: dinner, dance tickets.\n\nOvernight: hotel in Ubud.\nMeals: none.",
+    "stops": [{"name": "Ubud", "duration": "Evening", "description": "A first evening in Bali's cultural heart."}]},
+   {"name": "Ubud: a family compound, Tegallalang, Tirta Empul and the Monkey Forest",
+    "description": "What to expect: the culture and landscapes around Ubud.\n\nYou visit a Balinese family compound, walk through the Tegallalang rice terraces, join a purification ritual at Tirta Empul, have lunch with a jungle view and visit the Sacred Monkey Forest and Ubud Palace.\n\nSCHEDULE (approximate times)\n08:00 – Family compound.\n09:00 – Tegallalang.\n10:30 – Tirta Empul.\n12:30 – Lunch.\n14:00 – Monkey Forest and Ubud Palace.\n\nGOOD TO KNOW\n• Bring a change of clothes for the ritual.\n\nINCLUDED: private car and driver, licensed guide, entrance fees, lunch.\nNOT INCLUDED: dinner.\n\nOvernight: hotel in Ubud.\nMeals: breakfast, lunch.",
+    "stops": [
+     {"name": "Tegallalang", "duration": "About 1 hour", "description": "The rice terraces.", "image": "Q:Tegallalang rice terraces"},
+     {"name": "Tirta Empul", "duration": "About 1 hour 15 minutes", "description": "The holy spring.", "image": "Q:Tirta Empul"}
+    ]},
+   {"name": "Fly to Yogyakarta: Prambanan at sunset and the Sultan's Kraton",
+    "description": "What to expect: a short flight to Java and an afternoon of temples.\n\nA morning flight takes you to Yogyakarta in about an hour and a quarter. After lunch, your guide shows you the Sultan's Kraton and, in the late afternoon, the Hindu temples of Prambanan in the golden light. On many evenings you can watch the Ramayana ballet on the open-air stage facing the temples.\n\nSCHEDULE (approximate times)\n08:00 – Flight to Yogyakarta.\n11:00 – Lunch.\n13:00 – The Kraton.\n15:30 – Prambanan.\n19:30 – Optional Ramayana ballet.\n\nGOOD TO KNOW\n• Tomorrow starts very early for the Borobudur sunrise.\n\nINCLUDED: transfers, flight, private car and driver, guide, tickets, lunch.\nNOT INCLUDED: dinner, ballet.\n\nOvernight: hotel in Yogyakarta.\nMeals: breakfast, lunch.",
+    "stops": [{"name": "Prambanan", "duration": "About 1 hour 30 minutes", "description": "The Hindu temples at sunset.", "image": "Q:Prambanan"}]},
+   {"name": "Borobudur at sunrise and the flight back to Bali",
+    "description": "What to expect: Java's great Buddhist monument at dawn.\n\nYou watch the sunrise from Setumbu hill, explore Borobudur and its reliefs, and visit Mendut temple. After lunch, you fly back to Bali and return to Ubud for a quiet evening.\n\nSCHEDULE (approximate times)\n03:30 – Departure for Setumbu.\n06:30 – Borobudur and Mendut.\n11:00 – Lunch.\n14:00 – Flight to Bali.\n17:30 – Back in Ubud.\n\nGOOD TO KNOW\n• The climb to Borobudur's upper terraces depends on availability of the guided slots.\n\nINCLUDED: private car and driver, guide, tickets, lunch, flight, transfers.\nNOT INCLUDED: dinner.\n\nOvernight: hotel in Ubud.\nMeals: breakfast, lunch.",
+    "stops": [{"name": "Borobudur", "duration": "About 2 hours 30 minutes", "description": "The stupa at dawn.", "image": "Q:Borobudur"}]},
+   {"name": "Mount Batur sunrise trek and a free afternoon",
+    "description": "What to expect: Bali's volcano at dawn.\n\nAn early pick-up takes you to Mount Batur, where you climb with a licensed mountain guide to watch the sunrise over Mount Agung, have breakfast cooked in volcanic steam and soak in the hot springs by the lake. The afternoon is free to rest, take a cooking class or have a Balinese massage.\n\nSCHEDULE (approximate times)\n02:30 – Pick-up.\n04:00 – Trek.\n06:00 – Sunrise and breakfast.\n09:30 – Hot springs.\n12:00 – Back in Ubud.\n\nGOOD TO KNOW\n• If you prefer not to climb, we visit the Kintamani viewpoints and a coffee plantation instead.\n\nINCLUDED: transfers, mountain guide, permit, breakfast, hot springs.\nNOT INCLUDED: lunch, dinner.\n\nOvernight: hotel in Ubud.\nMeals: breakfast.",
+    "stops": [{"name": "Mount Batur", "duration": "About 6 hours", "description": "Sunrise from the volcano.", "image": "Q:Mount Batur sunrise"}]},
+   {"name": "East Bali: Lempuyang, Tirta Gangga and Besakih, then to the coast",
+    "description": "What to expect: the temples of the east and a move to the beach.\n\nYou leave Ubud early for Pura Lempuyang and its Gates of Heaven, visit the water palace of Tirta Gangga, have lunch above the Sidemen valley and see Besakih, the mother temple, before driving to your hotel on the south coast.\n\nSCHEDULE (approximate times)\n05:00 – Departure from Ubud.\n06:30 – Lempuyang.\n09:30 – Tirta Gangga.\n11:30 – Lunch.\n13:00 – Besakih.\n16:30 – Arrival at your beach hotel.\n\nGOOD TO KNOW\n• Mount Agung is clearest in the early morning.\n\nINCLUDED: private car and driver, guide, entrance fees, lunch.\nNOT INCLUDED: dinner.\n\nOvernight: hotel on the south coast.\nMeals: breakfast, lunch.",
+    "stops": [{"name": "Pura Lempuyang", "duration": "About 1 hour 45 minutes", "description": "The Gates of Heaven.", "image": "Q:Pura Lempuyang gate"}]},
+   {"name": "Beach morning, Tanah Lot, Uluwatu and the Kecak dance",
+    "description": "What to expect: a free morning and an evening of sea temples.\n\nThe morning is free on the beach. In the afternoon your guide takes you to Tanah Lot on its rock in the sea, then to the clifftop temple of Uluwatu for the Kecak fire dance at sunset, and a seafood dinner on the sand at Jimbaran.\n\nSCHEDULE (approximate times)\nMorning – Free.\n13:00 – Pick-up.\n14:00 – Tanah Lot.\n17:00 – Uluwatu.\n18:00 – Kecak dance.\n19:15 – Dinner in Jimbaran.\n\nGOOD TO KNOW\n• Keep glasses and phones safe from the Uluwatu monkeys.\n\nINCLUDED: private car and driver, guide, entrance fees, Kecak tickets, dinner.\nNOT INCLUDED: drinks.\n\nOvernight: hotel on the south coast.\nMeals: breakfast, dinner.",
+    "stops": [{"name": "Tanah Lot", "duration": "About 1 hour 15 minutes", "description": "The temple in the sea.", "image": "Q:Tanah Lot"}, {"name": "Uluwatu", "duration": "About 2 hours", "description": "Clifftop temple and Kecak dance.", "image": "Q:Uluwatu temple"}]},
+   {"name": "Departure from Bali",
+    "description": "What to expect: a last swim and a private airport transfer.\n\nAfter breakfast you have free time until your driver takes you to Ngurah Rai Airport.\n\nSCHEDULE (approximate times)\nMorning – Free time.\nAs needed – Private transfer to the airport.\n\nGOOD TO KNOW\n• Extra nights on Nusa Penida or the Gili islands can be added.\n\nINCLUDED: airport transfer.\nNOT INCLUDED: lunch.\n\nOvernight: none.\nMeals: breakfast.",
+    "stops": [{"name": "Bali coast", "duration": "Free time", "description": "A last swim before your flight."}]}
+  ],
+  "faq": [
+   {"question": "How does booking on request work?", "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability, hotels, flights and the final price by email within 24 hours, and you pay online only when the tour is confirmed."},
+   {"question": "Are the flights to Java included?", "answer": "Yes, return flights between Bali and Yogyakarta in economy with a 20 kg checked bag."},
+   {"question": "What kind of hotels are used?", "answer": "Comfortable 4-star or boutique hotels: a villa-style hotel in Ubud, a central hotel in Yogyakarta and a beach hotel on the south coast. Private pool villas are available."},
+   {"question": "Do we have to climb Mount Batur?", "answer": "No. It is optional; we can replace it with the Kintamani viewpoints and a coffee plantation."},
+   {"question": "Is the Bali tourist levy included?", "answer": "No. It is paid by each visitor on arrival or online beforehand. We send you the details."},
+   {"question": "Can we skip Java?", "answer": "Yes. We can replace it with Nusa Penida and the northern highlands for an all-Bali trip."},
+   {"question": "Is it suitable for children?", "answer": "Yes, with older children for the early starts. We can book family rooms and adapt the days."},
+   {"question": "Is it suitable for people with limited mobility?", "answer": "Partly. Temples and terraces involve steps. Tell us your needs and we will adapt."},
+   {"question": "Is there a dress code at temples?", "answer": "Yes. A sarong and sash (provided) and covered shoulders."},
+   {"question": "Should we tip?", "answer": "Tips are appreciated in Indonesia but never required."},
+   {"question": "What should we wear?", "answer": "Light clothes, a warm layer for sunrises, swimwear, hiking shoes for Batur and sandals for the beach."},
+   {"question": "What is the best time of year?", "answer": "April to October is dry. From November to March it rains most afternoons, but mornings are often clear and the landscapes greener."},
+   {"question": "What is the cancellation policy?", "answer": "You can cancel free of charge up to 21 days before the tour starts; flights and some hotels may not be refundable after booking. Until your request is confirmed, nothing is charged at all."}
+  ]
+ }
+}

@@ -1,0 +1,189 @@
+{
+ "key": "indonesia-bali-south-coast-beaches-tour",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {
+  "city": "Uluwatu",
+  "state": "Bali",
+  "country": "Indonesia",
+  "countryCode": "ID",
+  "timeZone": "Asia/Makassar",
+  "streetAddress": "Your hotel in south Bali",
+  "geoCoordinates": {
+   "lat": -8.8149,
+   "log": 115.1048
+  }
+ },
+ "slug": "/en-US/indonesia/uluwatu/tours/bali-hidden-beaches-private-tour-padang-padang-melasti-nyang-nyang-and-garuda-wisnu-kencana",
+ "tour": {
+  "name": "Bali Hidden Beaches Private Tour: Padang Padang, Melasti, Nyang Nyang & Garuda Wisnu Kencana",
+  "subtitle": "A private beach-hopping day on the Bukit peninsula with your own driver and guide: the giant Garuda Wisnu Kencana statue, the limestone cliffs and white sand of Melasti, the hidden cove of Padang Padang, lunch on a clifftop, the wild beach of Nyang Nyang and sunset at a beach club.",
+  "seoTitle": "Bali Hidden Beaches Private Tour: Bukit Peninsula | TRAVSUS",
+  "metaDescription": "Private beach day on Bali's Bukit peninsula with driver and guide: Garuda Wisnu Kencana, Melasti beach, Padang Padang cove, a clifftop lunch, Nyang Nyang beach and sunset. Entrance fees and lunch included.",
+  "tags": [
+   "Bali beaches",
+   "Padang Padang",
+   "Melasti beach",
+   "Bukit peninsula",
+   "Garuda Wisnu Kencana",
+   "Indonesia private tour"
+  ],
+  "highlights": [
+   "Garuda Wisnu Kencana, one of the tallest statues in the world",
+   "Melasti beach, reached by a road cut through the limestone cliffs",
+   "Padang Padang, a cove reached through a crack in the rocks",
+   "Lunch on a clifftop above the surf",
+   "Nyang Nyang, a wild beach below the cliffs",
+   "Sunset at a beach club",
+   "Your own driver and guide, with stops when you want them"
+  ],
+  "duration": 1,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "The Bukit peninsula, Bali's southern tip, is a limestone plateau that ends in cliffs above the Indian Ocean. Hidden at their feet lie some of the most beautiful beaches in Indonesia: coves of white sand and turquoise water reached by staircases, paths through rock clefts or roads carved into the cliffs, and famous surf breaks. On the plateau stands Garuda Wisnu Kencana, a statue of the god Vishnu riding the eagle Garuda, completed in 2018 and 121 metres tall including its base.\n\nThis private day is designed for relaxation, with a driver and guide who know the best beaches for the day's tide and swell. You see the great statue, swim and sunbathe at three different beaches, have lunch on a clifftop and end at sunset.\n\nAT A GLANCE\n• Duration: about 8 hours\n• Start and end: your hotel in south Bali\n• Type: private car with driver and guide\n• Booking: on request – we confirm availability and the final price by email within 24 hours, and you pay only then\n• Level: easy to moderate; steps down to some beaches\n\nWHAT YOU SEE\n• Garuda Wisnu Kencana cultural park.\n• Melasti beach.\n• Padang Padang beach.\n• Nyang Nyang beach.\n• Sunset on the west coast of the Bukit.\n\nWHY THIS WORKS\nThe Bukit's beaches change with the tide and swell; your guide chooses the order and the best spots for swimming that day, with a car waiting at each.\n\nWHO IT SUITS\nCouples, families and anyone who wants a relaxed beach day away from Kuta's crowds.\n\nWHO MAY PREFER ANOTHER TOUR\nIf you want culture, choose our Ubud or sea temples tours.\n\nPRACTICAL INFORMATION\nSome beaches have strong currents and big waves, especially from May to September; swim only where your guide advises. Sunbeds and umbrellas are rented locally. Nyang Nyang is reached by about 500 steps.",
+  "inclusions": {
+   "standard": {
+    "private": [
+     "Pick-up and drop-off at your hotel in south Bali",
+     "Private air-conditioned vehicle and driver",
+     "Private English-speaking guide",
+     "Entrance to Garuda Wisnu Kencana and beach fees",
+     "Lunch on a clifftop",
+     "Bottled water and towels"
+    ],
+    "shared": [
+     "Hotel pick-up",
+     "Guide",
+     "Entrance fees",
+     "Lunch"
+    ]
+   }
+  },
+  "pricingTiers": [
+   {
+    "transportType": "Sedan / SUV",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png",
+    "minSeats": 1,
+    "maxSeats": 4,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 190,
+     "pricePerDay": 190
+    }
+   },
+   {
+    "transportType": "Minivan",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png",
+    "minSeats": 5,
+    "maxSeats": 8,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 330,
+     "pricePerDay": 330
+    }
+   },
+   {
+    "transportType": "Mini Bus",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png",
+    "minSeats": 9,
+    "maxSeats": 19,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 620,
+     "pricePerDay": 620
+    }
+   }
+  ],
+  "images": [
+   "Q:Padang Padang beach",
+   "Q:Melasti beach",
+   "Q:Garuda Wisnu Kencana",
+   "Q:Padang Padang beach#2",
+   "Q:Melasti beach#2"
+  ],
+  "days": [
+   {
+    "name": "Garuda Wisnu Kencana, Melasti, Padang Padang, a clifftop lunch, Nyang Nyang and sunset",
+    "description": "What to expect: the best beaches of Bali's Bukit peninsula with a private driver and guide, entrance fees and lunch.\n\nYour driver and guide collect you at your hotel at about 9:00 and drive up onto the Bukit to Garuda Wisnu Kencana, a cultural park built in an old limestone quarry. The statue of Vishnu on the eagle Garuda, made of copper and brass plates on a steel frame by the sculptor Nyoman Nuarta, took 28 years from design to completion. You can also watch a short Balinese dance in the park.\n\nYou continue to Melasti, reached by a road carved down through white limestone cliffs, with a long beach of white sand and clear water, where you can swim when the sea is calm. Lunch is at a clifftop restaurant overlooking the surf. In the afternoon you go to Padang Padang, a small cove reached through a narrow cleft in the rocks, made famous by the film Eat Pray Love and by its surf break, where you can swim in the sheltered corners and watch surfers.\n\nFor those who want adventure, the 500 steps down to Nyang Nyang lead to a wide, wild beach below the cliffs, almost empty even in high season, with the wreck of a rusty ship on the sand. You end the day at a beach club or a clifftop bar on the west coast to watch the sunset over the ocean, and are back at your hotel at about 19:00.\n\nSCHEDULE (approximate times)\n09:00 – Pick-up at your hotel.\n09:45 – Garuda Wisnu Kencana.\n11:00 – Melasti beach.\n12:45 – Clifftop lunch.\n14:00 – Padang Padang beach.\n15:30 – Nyang Nyang beach (optional).\n17:30 – Sunset.\n19:00 – Back at your hotel.\n\nGOOD TO KNOW\n• The order changes with the tide; some beaches are best at low tide.\n• Surf lessons can be added at a beginner-friendly beach.\n• Beach clubs may charge a minimum spend.\n\nINCLUDED: private car and driver, guide, entrance and beach fees, lunch, water and towels, hotel pick-up and drop-off.\nNOT INCLUDED: sunbeds, beach-club spend, drinks, tips.\n\nOvernight: none.\nMeals: lunch.",
+    "stops": [
+     {
+      "name": "Garuda Wisnu Kencana",
+      "duration": "About 1 hour",
+      "description": "The giant statue of Vishnu and Garuda.",
+      "image": "Q:Garuda Wisnu Kencana"
+     },
+     {
+      "name": "Melasti beach",
+      "duration": "About 1 hour 30 minutes",
+      "description": "White sand below carved cliffs.",
+      "image": "Q:Melasti beach"
+     },
+     {
+      "name": "Padang Padang",
+      "duration": "About 1 hour 30 minutes",
+      "description": "A cove reached through the rocks.",
+      "image": "Q:Padang Padang beach"
+     },
+     {
+      "name": "Nyang Nyang",
+      "duration": "About 1 hour 30 minutes",
+      "description": "A wild beach below 500 steps."
+     }
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "question": "How does booking on request work?",
+    "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability and the final price by email within 24 hours, and you pay online only when the tour is confirmed."
+   },
+   {
+    "question": "Is swimming safe?",
+    "answer": "On calm days in the sheltered spots, yes. Some beaches have strong currents and big waves; your guide tells you where and when to swim."
+   },
+   {
+    "question": "Are the fees included?",
+    "answer": "Yes: Garuda Wisnu Kencana and the beach entrance fees. Sunbeds are rented locally."
+   },
+   {
+    "question": "Is lunch included?",
+    "answer": "Yes, on a clifftop. Vegetarian and other diets are easy to arrange."
+   },
+   {
+    "question": "Is it suitable for children?",
+    "answer": "Yes. Melasti and Padang Padang are great for children on calm days. Child seats are provided free of charge on request."
+   },
+   {
+    "question": "Is it suitable for people with limited mobility?",
+    "answer": "Partly. Melasti is reached by car close to the sand; Padang Padang and Nyang Nyang have steps."
+   },
+   {
+    "question": "Can we surf?",
+    "answer": "Yes. Beginner lessons can be added at a suitable beach; the famous reef breaks are for experienced surfers."
+   },
+   {
+    "question": "Can we change the beaches?",
+    "answer": "Yes. Your guide can include Suluban, Bingin, Dreamland or Pandawa depending on your wishes and the sea conditions."
+   },
+   {
+    "question": "Will we be taken to shops?",
+    "answer": "No. There are no commission stops."
+   },
+   {
+    "question": "Should we tip?",
+    "answer": "Tips are appreciated in Bali but never required."
+   },
+   {
+    "question": "What should we wear?",
+    "answer": "Swimwear, a cover-up, sandals, a hat and reef-safe sun cream."
+   },
+   {
+    "question": "What is the best time of year?",
+    "answer": "April to October for sunshine, though the swell is bigger from May to September. The rainy season brings calmer seas on the west side."
+   },
+   {
+    "question": "What is the cancellation policy?",
+    "answer": "You can cancel free of charge up to 24 hours before the tour. Until your request is confirmed, nothing is charged at all."
+   }
+  ]
+ }
+}
