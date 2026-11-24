@@ -94,11 +94,11 @@
    }
   ],
   "images": [
-   "Q:Mount Otemanu",
-   "Q:Bora Bora lagoon#4",
-   "Q:Mount Otemanu#3",
-   "Q:Bora Bora lagoon#5",
-   "Q:Mount Otemanu#4"
+   "Mount Otemanu, Bora Bora - French Polynesia.jpg",
+   "Bora-Bora Lagoon - French Polynesia.jpg",
+   "Borabora-2.jpg",
+   "Bora Bora (16542797633).jpg",
+   "Borabora.jpg"
   ],
   "days": [
    {
@@ -109,7 +109,7 @@
       "name": "Viewpoints and cannons",
       "duration": "About 1 hour",
       "description": "The lagoon from above.",
-      "image": "Q:Mount Otemanu"
+      "image": "Mount Otemanu, Bora Bora - French Polynesia.jpg"
      },
      {
       "name": "Marae",
@@ -120,7 +120,7 @@
       "name": "Matira Beach",
       "duration": "About 45 minutes",
       "description": "White sand and turquoise water.",
-      "image": "Q:Bora Bora lagoon"
+      "image": "Bora Bora (16542797633).jpg"
      }
     ]
    }

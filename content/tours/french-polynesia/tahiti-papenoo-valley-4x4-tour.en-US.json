@@ -93,11 +93,11 @@
    }
   ],
   "images": [
-   "Q:Papenoo valley",
-   "Q:Faarumai waterfall#3",
-   "Q:Papenoo valley#2",
-   "Q:Papenoo valley#3",
-   "Q:Faarumai waterfall#4"
+   "Vallée de Papenoo.jpg",
+   "Vallée de Papenoo.jpg",
+   "Vallée Papenoo chemin.jpg",
+   "Papenoo vallée.jpg",
+   "Vallée Papenoo chemin.jpg"
   ],
   "days": [
    {
@@ -108,7 +108,7 @@
       "name": "Papenoo valley",
       "duration": "About 2 hours",
       "description": "Waterfalls and river fords.",
-      "image": "Q:Papenoo valley"
+      "image": "Vallée de Papenoo.jpg"
      },
      {
       "name": "Farehape marae",

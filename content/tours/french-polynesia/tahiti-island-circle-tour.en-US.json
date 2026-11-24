@@ -92,11 +92,11 @@
    }
   ],
   "images": [
-   "Q:Faarumai waterfall",
-   "Q:Point Venus Tahiti",
-   "Q:Teahupoo",
-   "Q:Faarumai waterfall#2",
-   "Q:Point Venus Tahiti#2"
+   "Cascade vallée Papenoo.jpg",
+   "Tahiti, French Polynesia - Teahupo'o (48041216271).jpg",
+   "Teahupoʻo Surfing.jpg",
+   "Papenoo vallée.jpg",
+   "Teahupoo1.jpg"
   ],
   "days": [
    {
@@ -106,20 +106,19 @@
      {
       "name": "Point Venus",
       "duration": "About 30 minutes",
-      "description": "Black sand and history.",
-      "image": "Q:Point Venus Tahiti"
+      "description": "Black sand and history."
      },
      {
       "name": "Faarumai waterfalls",
       "duration": "About 45 minutes",
       "description": "Waterfalls in the rainforest.",
-      "image": "Q:Faarumai waterfall"
+      "image": "Cascade vallée Papenoo.jpg"
      },
      {
       "name": "Teahupo’o",
       "duration": "About 1 hour 30 minutes",
       "description": "The legendary wave and lunch.",
-      "image": "Q:Teahupoo"
+      "image": "Tahiti, French Polynesia - Teahupo'o (48041216271).jpg"
      },
      {
       "name": "Marae Arahurahu",

@@ -97,11 +97,11 @@
    }
   ],
   "images": [
-   "Q:Bora Bora lagoon",
-   "Q:Cook's Bay Moorea",
-   "Q:Mount Otemanu",
-   "Q:Moorea lagoon",
-   "Q:Faarumai waterfall"
+   "Bora Bora (16542797633).jpg",
+   "Opunohu Bay and Cook's Bay Seen From Belvedere Lookout in Moorea (6597138321).jpg",
+   "Mount Otemanu, Bora Bora - French Polynesia.jpg",
+   "DSC00041 French Polynésia Mooréa Island Lagoon Hauru (8076082336).jpg",
+   "Cascade vallée Papenoo.jpg"
   ],
   "days": [
    {
@@ -112,7 +112,7 @@
       "name": "Tahiti",
       "duration": "Free time",
       "description": "Sunset over Moorea.",
-      "image": "Q:Point Venus Tahiti"
+      "image": "TeahupooLaird.jpg"
      }
     ]
    },
@@ -124,7 +124,7 @@
       "name": "Faarumai waterfalls",
       "duration": "About 45 minutes",
       "description": "Waterfalls in the rainforest.",
-      "image": "Q:Faarumai waterfall"
+      "image": "Cascade vallée Papenoo.jpg"
      }
     ]
    },
@@ -136,7 +136,7 @@
       "name": "Moorea",
       "duration": "Free time",
       "description": "Your first lagoon.",
-      "image": "Q:Moorea lagoon"
+      "image": "DSC00041 French Polynésia Mooréa Island Lagoon Hauru (8076082336).jpg"
      }
     ]
    },
@@ -148,7 +148,7 @@
       "name": "Stingray sandbank",
       "duration": "About 45 minutes",
       "description": "Rays and reef sharks.",
-      "image": "Q:Moorea lagoon"
+      "image": "DSC00041 French Polynésia Mooréa Island Lagoon Hauru (8076082336).jpg"
      }
     ]
    },
@@ -160,7 +160,7 @@
       "name": "Belvedere lookout",
       "duration": "About 30 minutes",
       "description": "Two bays and Mount Rotui.",
-      "image": "Q:Cook's Bay Moorea"
+      "image": "Opunohu Bay and Cook's Bay Seen From Belvedere Lookout in Moorea (6597138321).jpg"
      }
     ]
    },
@@ -172,7 +172,7 @@
       "name": "Bora Bora lagoon",
       "duration": "Free time",
       "description": "Your overwater bungalow.",
-      "image": "Q:Bora Bora lagoon"
+      "image": "Bora Bora (16542797633).jpg"
      }
     ]
    },
@@ -184,7 +184,7 @@
       "name": "Coral garden",
       "duration": "About 45 minutes",
       "description": "Reef fish and giant clams.",
-      "image": "Q:Bora Bora lagoon"
+      "image": "Bora Bora (16542797633).jpg"
      }
     ]
    },
@@ -196,7 +196,7 @@
       "name": "Viewpoints",
       "duration": "About 1 hour",
       "description": "The lagoon from above.",
-      "image": "Q:Mount Otemanu"
+      "image": "Mount Otemanu, Bora Bora - French Polynesia.jpg"
      }
     ]
    },
@@ -208,7 +208,7 @@
       "name": "Mount Otemanu",
       "duration": "Free time",
       "description": "The peak above the lagoon.",
-      "image": "Q:Mount Otemanu"
+      "image": "Mount Otemanu, Bora Bora - French Polynesia.jpg"
      }
     ]
    },
@@ -220,7 +220,7 @@
       "name": "Bora Bora",
       "duration": "Free time",
       "description": "A last look at the lagoon.",
-      "image": "Q:Bora Bora lagoon"
+      "image": "Bora Bora (16542797633).jpg"
      }
     ]
    }

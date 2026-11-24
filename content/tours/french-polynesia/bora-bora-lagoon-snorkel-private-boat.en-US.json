@@ -95,11 +95,11 @@
    }
   ],
   "images": [
-   "Q:Bora Bora lagoon",
-   "Q:Mount Otemanu",
-   "Q:Bora Bora lagoon#2",
-   "Q:Bora Bora lagoon#3",
-   "Q:Mount Otemanu#2"
+   "Bora Bora (16542797633).jpg",
+   "Mount Otemanu, Bora Bora - French Polynesia.jpg",
+   "Matira Beach, Bora Bora, French Polynesia.jpg",
+   "Bora bora 9601a.jpg",
+   "Bora Bora - Mt Otemanu.jpg"
   ],
   "days": [
    {
@@ -110,13 +110,13 @@
       "name": "Stingray and shark site",
       "duration": "About 45 minutes",
       "description": "Shallow water with rays and reef sharks.",
-      "image": "Q:Bora Bora lagoon"
+      "image": "Bora Bora (16542797633).jpg"
      },
      {
       "name": "Coral garden",
       "duration": "About 45 minutes",
       "description": "Reef fish and giant clams.",
-      "image": "Q:Bora Bora lagoon"
+      "image": "Bora Bora (16542797633).jpg"
      },
      {
       "name": "Motu lunch",

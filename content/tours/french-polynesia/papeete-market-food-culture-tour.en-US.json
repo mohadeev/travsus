@@ -96,11 +96,11 @@
    }
   ],
   "images": [
-   "Q:Papeete market",
-   "Q:Papeete market#2",
-   "Q:Papeete market#3",
-   "Q:Point Venus Tahiti#3",
-   "Q:Papeete market#4"
+   "PF-papeete-markthalle.jpg",
+   "Tahitian local market 01.jpg",
+   "Marché Papeete.jpg",
+   "Sunday fFlower selers at the central market - panoramio.jpg",
+   "Tahitian local market 02.jpg"
   ],
   "days": [
    {
@@ -111,7 +111,7 @@
       "name": "Papeete Market",
       "duration": "About 1 hour 30 minutes",
       "description": "Fruit, flowers and crafts.",
-      "image": "Q:Papeete market"
+      "image": "PF-papeete-markthalle.jpg"
      },
      {
       "name": "Pearl museum",

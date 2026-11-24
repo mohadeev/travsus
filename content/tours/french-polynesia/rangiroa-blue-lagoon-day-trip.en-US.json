@@ -98,11 +98,11 @@
    }
   ],
   "images": [
-   "Q:Rangiroa",
-   "Q:Rangiroa#2",
-   "Q:Rangiroa#3",
-   "Q:Rangiroa#4",
-   "Q:Rangiroa#5"
+   "Entrance to the lagoon of Rangiroa Atoll in the Tuamotu Archipelago of French Polynesia. (35115394304).jpg",
+   "Rangiroa Atoll in the Tuamotu Archipelago of French Polynesia. (35145972913).jpg",
+   "Rangiroa, Tuamotus.jpg",
+   "French Polynésia Rangiroa Atoll - Anous stolidus juvénile (9291395473).jpg",
+   "Rangiroa STS51I-31-25.jpg"
   ],
   "days": [
    {
@@ -113,7 +113,7 @@
       "name": "Blue Lagoon",
       "duration": "About 2 hours",
       "description": "A lagoon within the lagoon.",
-      "image": "Q:Rangiroa"
+      "image": "Entrance to the lagoon of Rangiroa Atoll in the Tuamotu Archipelago of French Polynesia. (35115394304).jpg"
      },
      {
       "name": "Motu picnic",

@@ -93,11 +93,11 @@
    }
   ],
   "images": [
-   "Q:Cook's Bay Moorea",
-   "Q:Moorea lagoon#4",
-   "Q:Cook's Bay Moorea#3",
-   "Q:Moorea lagoon#5",
-   "Q:Cook's Bay Moorea#4"
+   "Opunohu Bay and Cook's Bay Seen From Belvedere Lookout in Moorea (6597138321).jpg",
+   "Moorea-teavaro.jpg",
+   "Moorea, Cook's Bay reef entrance - panoramio.jpg",
+   "DSC00042 Polynésia Mooréa Island Motu Moéa Lagoon and transportation Boat (8076082190).jpg",
+   "Moorea, entrance to Cook's Bay - panoramio.jpg"
   ],
   "days": [
    {
@@ -113,13 +113,13 @@
       "name": "Belvedere lookout",
       "duration": "About 30 minutes",
       "description": "Two bays and Mount Rotui.",
-      "image": "Q:Cook's Bay Moorea"
+      "image": "Opunohu Bay and Cook's Bay Seen From Belvedere Lookout in Moorea (6597138321).jpg"
      },
      {
       "name": "Magic Mountain",
       "duration": "About 30 minutes",
       "description": "A panorama of the lagoon.",
-      "image": "Q:Moorea lagoon"
+      "image": "DSC00041 French Polynésia Mooréa Island Lagoon Hauru (8076082336).jpg"
      },
      {
       "name": "Juice factory",

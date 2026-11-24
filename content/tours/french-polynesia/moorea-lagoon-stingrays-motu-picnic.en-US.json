@@ -95,11 +95,11 @@
    }
   ],
   "images": [
-   "Q:Moorea lagoon",
-   "Q:Cook's Bay Moorea",
-   "Q:Moorea lagoon#2",
-   "Q:Moorea lagoon#3",
-   "Q:Cook's Bay Moorea#2"
+   "DSC00041 French Polynésia Mooréa Island Lagoon Hauru (8076082336).jpg",
+   "Opunohu Bay and Cook's Bay Seen From Belvedere Lookout in Moorea (6597138321).jpg",
+   "Blacktip reef sharks at Moorea 2025.jpg",
+   "Moorea-hauru2.jpg",
+   "Moorea - Baies de Cook et de Opunohu.jpg"
   ],
   "days": [
    {
@@ -110,13 +110,13 @@
       "name": "Cook’s Bay",
       "duration": "About 30 minutes",
       "description": "A bay beneath the peaks.",
-      "image": "Q:Cook's Bay Moorea"
+      "image": "Opunohu Bay and Cook's Bay Seen From Belvedere Lookout in Moorea (6597138321).jpg"
      },
      {
       "name": "Stingray sandbank",
       "duration": "About 45 minutes",
       "description": "Rays and reef sharks.",
-      "image": "Q:Moorea lagoon"
+      "image": "DSC00041 French Polynésia Mooréa Island Lagoon Hauru (8076082336).jpg"
      },
      {
       "name": "Coral gardens",

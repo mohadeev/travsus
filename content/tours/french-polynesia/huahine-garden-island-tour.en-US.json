@@ -94,11 +94,11 @@
    }
   ],
   "images": [
-   "Q:Huahine",
-   "Q:Huahine#2",
-   "Q:Huahine#3",
-   "Q:Huahine#4",
-   "Q:Huahine#5"
+   "Tahiti, French Polynesia - Huahine (48069177991).jpg",
+   "Tahiti, French Polynesia - Huahine (48077648843).jpg",
+   "Tahiti, French Polynesia - Huahine (48079584891).jpg",
+   "Tahiti, French Polynesia - Huahine (48083914627).jpg",
+   "Tahiti, French Polynesia - Huahine (48086843086).jpg"
   ],
   "days": [
    {
@@ -109,7 +109,7 @@
       "name": "Maeva marae",
       "duration": "About 1 hour 15 minutes",
       "description": "Temples and fish traps.",
-      "image": "Q:Huahine"
+      "image": "Tahiti, French Polynesia - Huahine (48069177991).jpg"
      },
      {
       "name": "Faie",
@@ -125,7 +125,7 @@
       "name": "Pearl farm",
       "duration": "About 45 minutes",
       "description": "Black pearls on the lagoon.",
-      "image": "Q:Huahine"
+      "image": "Tahiti, French Polynesia - Huahine (48069177991).jpg"
      }
     ]
    }
