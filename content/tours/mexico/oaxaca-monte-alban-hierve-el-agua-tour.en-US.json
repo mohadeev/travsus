@@ -97,11 +97,11 @@
    }
   ],
   "images": [
-   "Q:Monte Alban",
-   "Q:Oaxaca city",
-   "Q:Monte Alban#2",
-   "Q:Oaxaca city#2",
-   "Q:Monte Alban#3"
+   "Monte Alban West Side Platform.jpg",
+   "Church of Santo Domingo in Oaxaca.jpg",
+   "Monte Albán aspectos 01.jpg",
+   "Iglesia de Santo Domingo Oaxaca Centro.jpg",
+   "Building J, Monte Alban, Oaxaca, Mexico.jpg"
   ],
   "days": [
    {
@@ -112,7 +112,7 @@
       "name": "Monte Albán",
       "duration": "About 2 hours",
       "description": "The Zapotec capital.",
-      "image": "Q:Monte Alban"
+      "image": "Monte Alban West Side Platform.jpg"
      },
      {
       "name": "Árbol del Tule",

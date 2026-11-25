@@ -94,11 +94,11 @@
    }
   ],
   "images": [
-   "Q:Dead Sea Jordan",
-   "Q:Mount Nebo",
-   "Q:Dead Sea Jordan#2",
-   "Q:Mount Nebo#2",
-   "Q:Dead Sea Jordan#3"
+   "Dead Sea-Jordan.JPG",
+   "Memorial of Moses in Mount Nebo (East facade).jpg",
+   "Dead Sea from Jordan.JPG",
+   "Mount Nebo Madabah.jpg",
+   "Dead Sea sunrise.jpg"
   ],
   "days": [
    {
@@ -114,7 +114,7 @@
       "name": "Mount Nebo",
       "duration": "About 1 hour",
       "description": "The view of the Promised Land.",
-      "image": "Q:Mount Nebo"
+      "image": "Memorial of Moses in Mount Nebo (East facade).jpg"
      },
      {
       "name": "Baptism site",
@@ -125,7 +125,7 @@
       "name": "Dead Sea",
       "duration": "About 3 hours",
       "description": "Floating and mud.",
-      "image": "Q:Dead Sea Jordan"
+      "image": "Dead Sea-Jordan.JPG"
      }
     ]
    }

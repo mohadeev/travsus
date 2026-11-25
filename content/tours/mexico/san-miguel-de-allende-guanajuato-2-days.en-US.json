@@ -97,11 +97,11 @@
    }
   ],
   "images": [
-   "Q:San Miguel de Allende",
-   "Q:Guanajuato city",
-   "Q:San Miguel de Allende#2",
-   "Q:Guanajuato city#2",
-   "Q:Guanajuato city#3"
+   "ParroquiaSanMiguelFacade2019.jpg",
+   "Guanajuato 2018 06.jpg",
+   "Mesones Street SnMiguelAllende2019.jpg",
+   "Panorama Guanajuato Atardecer.jpg",
+   "Guanajuato pano1.jpg"
   ],
   "days": [
    {
@@ -112,7 +112,7 @@
       "name": "San Miguel de Allende",
       "duration": "About 2 hours 30 minutes",
       "description": "The Parroquia and the Jardín.",
-      "image": "Q:San Miguel de Allende"
+      "image": "ParroquiaSanMiguelFacade2019.jpg"
      },
      {
       "name": "Atotonilco",
@@ -129,7 +129,7 @@
       "name": "Pípila viewpoint",
       "duration": "About 30 minutes",
       "description": "The coloured city.",
-      "image": "Q:Guanajuato city"
+      "image": "Guanajuato 2018 06.jpg"
      },
      {
       "name": "Callejón del Beso",

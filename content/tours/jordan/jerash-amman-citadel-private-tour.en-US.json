@@ -94,11 +94,11 @@
    }
   ],
   "images": [
-   "Q:Jerash",
-   "Q:Amman Citadel",
-   "Q:Jerash#2",
-   "Q:Jerash#3",
-   "Q:Amman Citadel#2"
+   "South Theater in Jerash, Jordan.jpg",
+   "View of the Amman Citadel, Jordan4.jpg",
+   "Jerash Archaeological Sites (2026) 13.jpg",
+   "Ancient and modern Jerash from South Theatre.jpg",
+   "Amman Citadel.jpg"
   ],
   "days": [
    {
@@ -109,7 +109,7 @@
       "name": "Jerash",
       "duration": "About 2 hours 30 minutes",
       "description": "The Roman city of Gerasa.",
-      "image": "Q:Jerash"
+      "image": "South Theater in Jerash, Jordan.jpg"
      },
      {
       "name": "Ajloun Castle",
@@ -120,7 +120,7 @@
       "name": "Amman Citadel",
       "duration": "About 1 hour",
       "description": "The Temple of Hercules.",
-      "image": "Q:Amman Citadel"
+      "image": "View of the Amman Citadel, Jordan4.jpg"
      },
      {
       "name": "Roman theatre",

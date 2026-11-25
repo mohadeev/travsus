@@ -96,11 +96,11 @@
    }
   ],
   "images": [
-   "Q:University of Coimbra",
-   "Q:University of Coimbra#2",
-   "Q:University of Coimbra#3",
-   "Q:University of Coimbra#4",
-   "Q:University of Coimbra#5"
+   "Biblioteca Joanina, Coimbra.jpg",
+   "Portal of Biblioteca Joanina 02.jpg",
+   "Coimbra, Biblioteca Joanina, piso médio (2).jpg",
+   "BibliotecaJoaninaExterior.jpg",
+   "Biblioteca Joanina (53560470042).jpg"
   ],
   "days": [
    {
@@ -111,7 +111,7 @@
       "name": "University of Coimbra",
       "duration": "About 2 hours",
       "description": "The Joanina Library and the Sala dos Capelos.",
-      "image": "Q:University of Coimbra"
+      "image": "Biblioteca Joanina, Coimbra.jpg"
      },
      {
       "name": "Old cathedral",

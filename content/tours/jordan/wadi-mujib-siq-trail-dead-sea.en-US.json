@@ -94,11 +94,11 @@
    }
   ],
   "images": [
-   "Q:Wadi Mujib",
-   "Q:Wadi Mujib#2",
-   "Q:Dead Sea Jordan#4",
-   "Q:Wadi Mujib#3",
-   "Q:Dead Sea Jordan#5"
+   "Wadi al Mujib hiking 2.jpg",
+   "Wadi Mujib 1.jpg",
+   "Dead Sea, Jordan 02.jpg",
+   "Wadi al Mujib view.jpg",
+   "Dead Sea beach 00.JPG"
   ],
   "days": [
    {
@@ -109,13 +109,13 @@
       "name": "Siq Trail",
       "duration": "About 3 hours",
       "description": "Wading up a canyon to the waterfall.",
-      "image": "Q:Wadi Mujib"
+      "image": "Wadi al Mujib hiking 2.jpg"
      },
      {
       "name": "Dead Sea",
       "duration": "About 3 hours",
       "description": "Floating and mud.",
-      "image": "Q:Dead Sea Jordan"
+      "image": "Dead Sea-Jordan.JPG"
      }
     ]
    }

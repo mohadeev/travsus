@@ -97,11 +97,11 @@
    }
   ],
   "images": [
-   "Q:Cenote Yucatan",
-   "Q:Cenote Yucatan#2",
-   "Q:Tulum ruins#4",
-   "Q:Cenote Yucatan#3",
-   "Q:Cenote Yucatan#5"
+   "Cenote Ik Kil, Yucatan, Dec 2011 - 01.jpg",
+   "Cenote Zaci, Valladolid de Yucatan, Julio 2012 01.jpg",
+   "Templo del Viento - Tulum ruins.jpg",
+   "Cenote Ik Kil, Yucatan, Dec 2011 - 02.jpg",
+   "Cenote Ik Kil, Yucatan, Dec 2011 - 03.jpg"
   ],
   "days": [
    {
@@ -117,13 +117,13 @@
       "name": "Dos Ojos",
       "duration": "About 1 hour 15 minutes",
       "description": "Cavern snorkelling.",
-      "image": "Q:Cenote Yucatan"
+      "image": "Cenote Ik Kil, Yucatan, Dec 2011 - 01.jpg"
      },
      {
       "name": "Jungle cenote",
       "duration": "About 45 minutes",
       "description": "A quiet swim.",
-      "image": "Q:Cenote Yucatan"
+      "image": "Cenote Ik Kil, Yucatan, Dec 2011 - 01.jpg"
      }
     ]
    }

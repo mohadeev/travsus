@@ -96,11 +96,11 @@
    }
   ],
   "images": [
-   "Q:Belem Tower",
-   "Q:Jeronimos Monastery",
-   "Q:Alfama Lisbon",
-   "Q:Belem Tower#2",
-   "Q:Alfama Lisbon#2"
+   "Torre de Belém, Lisbon 12.jpg",
+   "Jerónimos Monastery in Belém - Lisbon - Portugal - 02.jpg",
+   "Lissabon - Santa Luzia - Alfama - 2.jpg",
+   "Belem Tower (33641510924).jpg",
+   "Lissabon - Alfama - Largo Santa Luzia - Streetcar - 1.jpg"
   ],
   "days": [
    {
@@ -111,19 +111,19 @@
       "name": "Jerónimos Monastery",
       "duration": "About 1 hour 15 minutes",
       "description": "The Manueline cloister.",
-      "image": "Q:Jeronimos Monastery"
+      "image": "Jerónimos Monastery in Belém - Lisbon - Portugal - 02.jpg"
      },
      {
       "name": "Belém Tower",
       "duration": "About 45 minutes",
       "description": "The fortress on the Tagus.",
-      "image": "Q:Belem Tower"
+      "image": "Torre de Belém, Lisbon 12.jpg"
      },
      {
       "name": "Alfama",
       "duration": "About 1 hour 30 minutes",
       "description": "Viewpoints, lanes and tiles.",
-      "image": "Q:Alfama Lisbon"
+      "image": "Lissabon - Santa Luzia - Alfama - 2.jpg"
      },
      {
       "name": "Baixa",

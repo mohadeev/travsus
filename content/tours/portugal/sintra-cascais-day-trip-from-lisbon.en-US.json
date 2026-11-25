@@ -95,11 +95,11 @@
    }
   ],
   "images": [
-   "Q:Pena Palace Sintra",
-   "Q:Cabo da Roca",
-   "Q:Pena Palace Sintra#2",
-   "Q:Pena Palace Sintra#3",
-   "Q:Cabo da Roca#2"
+   "Pena Palace framed by park vegetation - Sintra - 2026-05-15.jpg",
+   "Cliffs at Cabo da Roca, Portugal, 20250606 1522 0263.jpg",
+   "Entrance courtyard and yellow facades of Pena Palace - Sintra - 2026-05-15.jpg",
+   "Courtyard and clock tower of Pena Palace - wide view - Sintra - 2026-05-15.jpg",
+   "Cabo da Roca - Cape Roca.JPG"
   ],
   "days": [
    {
@@ -110,7 +110,7 @@
       "name": "Pena Palace",
       "duration": "About 2 hours",
       "description": "The romantic palace on the peak.",
-      "image": "Q:Pena Palace Sintra"
+      "image": "Pena Palace framed by park vegetation - Sintra - 2026-05-15.jpg"
      },
      {
       "name": "Quinta da Regaleira",
@@ -121,7 +121,7 @@
       "name": "Cabo da Roca",
       "duration": "About 30 minutes",
       "description": "Europe’s western edge.",
-      "image": "Q:Cabo da Roca"
+      "image": "Cliffs at Cabo da Roca, Portugal, 20250606 1522 0263.jpg"
      },
      {
       "name": "Cascais",

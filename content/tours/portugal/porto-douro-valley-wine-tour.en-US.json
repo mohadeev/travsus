@@ -96,11 +96,11 @@
    }
   ],
   "images": [
-   "Q:Douro Valley vineyards",
-   "Q:Douro Valley vineyards#2",
-   "Q:Douro Valley vineyards#3",
-   "Q:Ribeira Porto",
-   "Q:Douro Valley vineyards#4"
+   "Terraced vineyards in the douro valley.jpg",
+   "Alto Douro vineyards.jpg",
+   "Douro valley (3912644713).jpg",
+   "Cais da Ribeira in Porto (1).jpg",
+   "View of the Douro valley vineyards on rocky schist.jpg"
   ],
   "days": [
    {
@@ -111,7 +111,7 @@
       "name": "São Leonardo de Galafura",
       "duration": "About 30 minutes",
       "description": "The great view of the valley.",
-      "image": "Q:Douro Valley vineyards"
+      "image": "Terraced vineyards in the douro valley.jpg"
      },
      {
       "name": "First quinta",
@@ -122,7 +122,7 @@
       "name": "Pinhão and the river",
       "duration": "About 1 hour 30 minutes",
       "description": "The station and a boat trip.",
-      "image": "Q:Douro Valley vineyards"
+      "image": "Terraced vineyards in the douro valley.jpg"
      },
      {
       "name": "Second quinta",

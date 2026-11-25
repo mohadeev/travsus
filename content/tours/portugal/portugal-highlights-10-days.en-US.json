@@ -96,11 +96,11 @@
    }
   ],
   "images": [
-   "Q:Belem Tower",
-   "Q:Pena Palace Sintra",
-   "Q:Benagil cave",
-   "Q:Ribeira Porto",
-   "Q:Douro Valley vineyards"
+   "Torre de Belém, Lisbon 12.jpg",
+   "Pena Palace framed by park vegetation - Sintra - 2026-05-15.jpg",
+   "Benagil Cave (3).jpg",
+   "Cais da Ribeira in Porto (1).jpg",
+   "Terraced vineyards in the douro valley.jpg"
   ],
   "days": [
    {
@@ -111,7 +111,7 @@
       "name": "Lisbon",
       "duration": "Free time",
       "description": "Sunset from a viewpoint.",
-      "image": "Q:Alfama Lisbon"
+      "image": "Lissabon - Santa Luzia - Alfama - 2.jpg"
      }
     ]
    },
@@ -123,7 +123,7 @@
       "name": "Jerónimos Monastery",
       "duration": "About 1 hour 15 minutes",
       "description": "The Manueline cloister.",
-      "image": "Q:Jeronimos Monastery"
+      "image": "Jerónimos Monastery in Belém - Lisbon - Portugal - 02.jpg"
      }
     ]
    },
@@ -135,7 +135,7 @@
       "name": "Pena Palace",
       "duration": "About 2 hours",
       "description": "The romantic palace.",
-      "image": "Q:Pena Palace Sintra"
+      "image": "Pena Palace framed by park vegetation - Sintra - 2026-05-15.jpg"
      }
     ]
    },
@@ -147,7 +147,7 @@
       "name": "Évora",
       "duration": "About 2 hours 30 minutes",
       "description": "The Roman temple.",
-      "image": "Q:Evora Roman Temple"
+      "image": "Roman Temple Evora Portugal 01.jpg"
      }
     ]
    },
@@ -159,7 +159,7 @@
       "name": "Benagil cave",
       "duration": "About 1 hour",
       "description": "The sunlit dome.",
-      "image": "Q:Benagil cave"
+      "image": "Benagil Cave (3).jpg"
      }
     ]
    },
@@ -171,13 +171,13 @@
       "name": "Nazaré",
       "duration": "About 1 hour 30 minutes",
       "description": "The fishing town.",
-      "image": "Q:Nazare Portugal"
+      "image": "Nazaré 2023 (2).jpg"
      },
      {
       "name": "Óbidos",
       "duration": "Evening",
       "description": "The walled village.",
-      "image": "Q:Obidos Portugal"
+      "image": "Castillo de Óbidos, Óbidos, Portugal, 2021-09-09, DD 24.jpg"
      }
     ]
    },
@@ -189,7 +189,7 @@
       "name": "University of Coimbra",
       "duration": "About 2 hours",
       "description": "The Joanina Library.",
-      "image": "Q:University of Coimbra"
+      "image": "Biblioteca Joanina, Coimbra.jpg"
      }
     ]
    },
@@ -201,7 +201,7 @@
       "name": "Ribeira",
       "duration": "About 1 hour",
       "description": "The riverside.",
-      "image": "Q:Ribeira Porto"
+      "image": "Cais da Ribeira in Porto (1).jpg"
      }
     ]
    },
@@ -213,7 +213,7 @@
       "name": "Douro Valley",
       "duration": "Full day",
       "description": "Terraced vineyards.",
-      "image": "Q:Douro Valley vineyards"
+      "image": "Terraced vineyards in the douro valley.jpg"
      }
     ]
    },
@@ -225,7 +225,7 @@
       "name": "Porto",
       "duration": "Free time",
       "description": "A last walk by the river.",
-      "image": "Q:Ribeira Porto"
+      "image": "Cais da Ribeira in Porto (1).jpg"
      }
     ]
    }

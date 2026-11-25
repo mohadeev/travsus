@@ -96,11 +96,11 @@
    }
   ],
   "images": [
-   "Q:Wadi Rum desert",
-   "Q:Wadi Rum desert#2",
-   "Q:Wadi Rum desert#3",
-   "Q:Wadi Rum desert#4",
-   "Q:Wadi Rum desert#5"
+   "Wadi Rum Desert, Jordan, The \"Seven Pillars of Wisdom\".jpg",
+   "Jordan, Wadi Rum Desert, Infinite Spaces.jpg",
+   "Jordan, Wadi Rum Desert, Jebel Khazali.jpg",
+   "Jordan, Wadi Rum Desert, Khor al Ajram.jpg",
+   "Wadi Rum Desert, Jordan, Infinite spaces.jpg"
   ],
   "days": [
    {
@@ -111,7 +111,7 @@
       "name": "Khazali canyon",
       "duration": "About 30 minutes",
       "description": "Ancient inscriptions.",
-      "image": "Q:Wadi Rum desert"
+      "image": "Wadi Rum Desert, Jordan, The \"Seven Pillars of Wisdom\".jpg"
      },
      {
       "name": "Um Fruth rock bridge",
@@ -122,7 +122,7 @@
       "name": "Sunset dunes",
       "duration": "About 1 hour",
       "description": "The desert turning red.",
-      "image": "Q:Wadi Rum desert"
+      "image": "Wadi Rum Desert, Jordan, The \"Seven Pillars of Wisdom\".jpg"
      }
     ]
    },
@@ -134,7 +134,7 @@
       "name": "Wadi Rum",
       "duration": "Morning",
       "description": "Sunrise in the desert.",
-      "image": "Q:Wadi Rum desert"
+      "image": "Wadi Rum Desert, Jordan, The \"Seven Pillars of Wisdom\".jpg"
      }
     ]
    }

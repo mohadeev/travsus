@@ -93,11 +93,11 @@
    }
   ],
   "images": [
-   "Q:Benagil cave",
-   "Q:Ponta da Piedade",
-   "Q:Benagil cave#2",
-   "Q:Ponta da Piedade#2",
-   "Q:Benagil cave#3"
+   "Benagil Cave (3).jpg",
+   "Ponta da Piedade (53803238903).jpg",
+   "Benagil Cave (4).jpg",
+   "Ponta da Piedade (48462178692).jpg",
+   "Benagil Cave (5).jpg"
   ],
   "days": [
    {
@@ -108,7 +108,7 @@
       "name": "Benagil cave",
       "duration": "About 1 hour",
       "description": "The sunlit dome.",
-      "image": "Q:Benagil cave"
+      "image": "Benagil Cave (3).jpg"
      },
      {
       "name": "Seven Hanging Valleys",
@@ -119,7 +119,7 @@
       "name": "Ponta da Piedade",
       "duration": "About 1 hour",
       "description": "Arches and grottoes.",
-      "image": "Q:Ponta da Piedade"
+      "image": "Ponta da Piedade (53803238903).jpg"
      },
      {
       "name": "Cape St Vincent",

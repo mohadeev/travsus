@@ -98,11 +98,11 @@
    }
   ],
   "images": [
-   "Q:Tulum ruins",
-   "Q:Cenote Yucatan#3",
-   "Q:Tulum ruins#2",
-   "Q:Cenote Yucatan#4",
-   "Q:Tulum ruins#3"
+   "Maya ruins at Tulum - Palms and beach.jpg",
+   "Cenote Ik Kil, Yucatan, Dec 2011 - 02.jpg",
+   "Tulum Ruinas Dec 2015 - Tulum Maya Ruins.jpg",
+   "Cenote Zaci Yucatan 2008.jpg",
+   "Ruins at Tulum, QR Mexico 2023.jpg"
   ],
   "days": [
    {
@@ -113,13 +113,13 @@
       "name": "Tulum ruins",
       "duration": "About 1 hour 30 minutes",
       "description": "A Maya port above the sea.",
-      "image": "Q:Tulum ruins"
+      "image": "Maya ruins at Tulum - Palms and beach.jpg"
      },
      {
       "name": "Cenote",
       "duration": "About 1 hour",
       "description": "A swim in clear water.",
-      "image": "Q:Cenote Yucatan"
+      "image": "Cenote Ik Kil, Yucatan, Dec 2011 - 01.jpg"
      },
      {
       "name": "Cobá",

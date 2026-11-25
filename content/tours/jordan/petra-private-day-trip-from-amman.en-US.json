@@ -94,11 +94,11 @@
    }
   ],
   "images": [
-   "Q:Petra Treasury",
-   "Q:Petra Monastery Ad Deir",
-   "Q:Petra Treasury#2",
-   "Q:Petra Treasury#3",
-   "Q:Petra Monastery Ad Deir#2"
+   "The Treasury (Al Khazneh) at Petra (25).jpg",
+   "Petra - Ad Deir facade.jpg",
+   "Al-Khazneh (The Treasury) 2, Petra, Jordan.jpg",
+   "Petra , Al-Khazneh 2.jpg",
+   "Ad Deir (The Monastery), El Deir, Petra, Jordan.jpg"
   ],
   "days": [
    {
@@ -109,7 +109,7 @@
       "name": "The Siq and the Treasury",
       "duration": "About 1 hour 30 minutes",
       "description": "The gorge and the famous facade.",
-      "image": "Q:Petra Treasury"
+      "image": "The Treasury (Al Khazneh) at Petra (25).jpg"
      },
      {
       "name": "Royal Tombs",
@@ -120,7 +120,7 @@
       "name": "The Monastery",
       "duration": "About 2 hours 30 minutes",
       "description": "The great facade on the mountain.",
-      "image": "Q:Petra Monastery Ad Deir"
+      "image": "Petra - Ad Deir facade.jpg"
      }
     ]
    }

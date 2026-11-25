@@ -94,11 +94,11 @@
    }
   ],
   "images": [
-   "Q:Palenque ruins",
-   "Q:Palenque ruins#2",
-   "Q:Palenque ruins#3",
-   "Q:Palenque ruins#4",
-   "Q:Palenque ruins#5"
+   "Palenque, Temple of the Inscriptions (20498755918).jpg",
+   "2013-12-31 Palenque Temple of Inscriptions anagoria.JPG",
+   "Temple of the Inscriptions, view from The Palace - Palenque Maya Site, Feb 2020.jpg",
+   "Temple of the Inscriptions - Palenque Maya Site, Feb 2020.jpg",
+   "Temple of Inscriptions, Palenque (2088170629).jpg"
   ],
   "days": [
    {
@@ -109,13 +109,13 @@
       "name": "Temple of the Inscriptions",
       "duration": "About 45 minutes",
       "description": "Pakal’s tomb.",
-      "image": "Q:Palenque ruins"
+      "image": "Palenque, Temple of the Inscriptions (20498755918).jpg"
      },
      {
       "name": "The Palace",
       "duration": "About 45 minutes",
       "description": "Courtyards and the tower.",
-      "image": "Q:Palenque ruins"
+      "image": "Palenque, Temple of the Inscriptions (20498755918).jpg"
      },
      {
       "name": "Misol-Ha",

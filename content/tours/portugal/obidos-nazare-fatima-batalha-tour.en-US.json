@@ -94,11 +94,11 @@
    }
   ],
   "images": [
-   "Q:Obidos Portugal",
-   "Q:Nazare Portugal",
-   "Q:Obidos Portugal#2",
-   "Q:Nazare Portugal#2",
-   "Q:Obidos Portugal#3"
+   "Castillo de Óbidos, Óbidos, Portugal, 2021-09-09, DD 24.jpg",
+   "Nazaré 2023 (2).jpg",
+   "Casa, Óbidos, Portugal, 2021-09-09, DD 53.jpg",
+   "Nazaré 2023 (3).jpg",
+   "Comercio, Óbidos, Portugal, 2021-09-09, DD 52.jpg"
   ],
   "days": [
    {
@@ -119,13 +119,13 @@
       "name": "Nazaré",
       "duration": "About 1 hour 30 minutes",
       "description": "Fishing town and giant waves.",
-      "image": "Q:Nazare Portugal"
+      "image": "Nazaré 2023 (2).jpg"
      },
      {
       "name": "Óbidos",
       "duration": "About 1 hour 15 minutes",
       "description": "A walled medieval village.",
-      "image": "Q:Obidos Portugal"
+      "image": "Castillo de Óbidos, Óbidos, Portugal, 2021-09-09, DD 24.jpg"
      }
     ]
    }

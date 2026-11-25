@@ -94,11 +94,11 @@
    }
   ],
   "images": [
-   "Q:Mount Nebo",
-   "Q:Wadi Mujib",
-   "Q:Dana Biosphere Reserve",
-   "Q:Mount Nebo#3",
-   "Q:Petra Treasury#4"
+   "Memorial of Moses in Mount Nebo (East facade).jpg",
+   "Wadi al Mujib hiking 2.jpg",
+   "Dana Biosphere Reserve - view point 02.jpg",
+   "Mount Nebo-6.JPG",
+   "Al Khazneh 02.jpg"
   ],
   "days": [
    {
@@ -109,13 +109,13 @@
       "name": "Mount Nebo",
       "duration": "About 1 hour",
       "description": "The view of the Promised Land.",
-      "image": "Q:Mount Nebo"
+      "image": "Memorial of Moses in Mount Nebo (East facade).jpg"
      },
      {
       "name": "Wadi Mujib",
       "duration": "About 20 minutes",
       "description": "A canyon a kilometre deep.",
-      "image": "Q:Wadi Mujib"
+      "image": "Wadi al Mujib hiking 2.jpg"
      },
      {
       "name": "Kerak Castle",
@@ -126,7 +126,7 @@
       "name": "Dana viewpoint",
       "duration": "About 20 minutes",
       "description": "The Great Rift.",
-      "image": "Q:Dana Biosphere Reserve"
+      "image": "Dana Biosphere Reserve - view point 02.jpg"
      }
     ]
    }

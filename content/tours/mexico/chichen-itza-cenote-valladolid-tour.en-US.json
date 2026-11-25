@@ -95,11 +95,11 @@
    }
   ],
   "images": [
-   "Q:Chichen Itza",
-   "Q:Cenote Yucatan",
-   "Q:Chichen Itza#2",
-   "Q:Chichen Itza#3",
-   "Q:Cenote Yucatan#2"
+   "El Castillo Stitch 2008 Edit 2.jpg",
+   "Cenote Ik Kil, Yucatan, Dec 2011 - 01.jpg",
+   "Templo el Castillo - Chichen Itza-Yucatan-Mexico0222.jpg",
+   "Serpent à plumes Chichen Itza.jpg",
+   "Cenote Zaci, Valladolid de Yucatan, Julio 2012 01.jpg"
   ],
   "days": [
    {
@@ -110,19 +110,19 @@
       "name": "El Castillo",
       "duration": "About 1 hour",
       "description": "The pyramid of Kukulcán.",
-      "image": "Q:Chichen Itza"
+      "image": "El Castillo Stitch 2008 Edit 2.jpg"
      },
      {
       "name": "Great Ball Court and the Warriors",
       "duration": "About 1 hour 30 minutes",
       "description": "Carved panels and columns.",
-      "image": "Q:Chichen Itza"
+      "image": "El Castillo Stitch 2008 Edit 2.jpg"
      },
      {
       "name": "Cenote",
       "duration": "About 1 hour",
       "description": "A swim in a sinkhole.",
-      "image": "Q:Cenote Yucatan"
+      "image": "Cenote Ik Kil, Yucatan, Dec 2011 - 01.jpg"
      },
      {
       "name": "Valladolid",

@@ -94,11 +94,11 @@
    }
   ],
   "images": [
-   "Q:Evora Roman Temple",
-   "Q:Evora Roman Temple#2",
-   "Q:Evora Roman Temple#3",
-   "Q:Evora Roman Temple#4",
-   "Q:Evora Roman Temple#5"
+   "Roman Temple Evora Portugal 01.jpg",
+   "Evora-RomanTemple.jpg",
+   "Roman-Temple-Evora.jpg",
+   "Roman Temple Evora Portugal 02.jpg",
+   "Templo romano de Évora 01.jpg"
   ],
   "days": [
    {
@@ -109,7 +109,7 @@
       "name": "Roman Temple",
       "duration": "About 30 minutes",
       "description": "Columns from the 1st century.",
-      "image": "Q:Evora Roman Temple"
+      "image": "Roman Temple Evora Portugal 01.jpg"
      },
      {
       "name": "Chapel of Bones",

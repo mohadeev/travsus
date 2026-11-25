@@ -100,11 +100,11 @@
    }
   ],
   "images": [
-   "Q:Douro Valley vineyards",
-   "Q:Douro Valley vineyards#2",
-   "Q:Douro Valley vineyards#3",
-   "Q:Douro Valley vineyards#4",
-   "Q:Douro Valley vineyards#5"
+   "Terraced vineyards in the douro valley.jpg",
+   "Alto Douro vineyards.jpg",
+   "Douro valley (3912644713).jpg",
+   "View of the Douro valley vineyards on rocky schist.jpg",
+   "View of Douro valley vineyards (4781789527).jpg"
   ],
   "days": [
    {
@@ -125,7 +125,7 @@
       "name": "Your quinta",
       "duration": "Evening",
       "description": "Sunset over the vines.",
-      "image": "Q:Douro Valley vineyards"
+      "image": "Terraced vineyards in the douro valley.jpg"
      }
     ]
    },
@@ -137,7 +137,7 @@
       "name": "Douro by boat",
       "duration": "About 1 hour",
       "description": "The terraces from the river.",
-      "image": "Q:Douro Valley vineyards"
+      "image": "Terraced vineyards in the douro valley.jpg"
      },
      {
       "name": "Douro railway",

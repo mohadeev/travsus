@@ -96,11 +96,11 @@
    }
   ],
   "images": [
-   "Q:Teotihuacan",
-   "Q:Teotihuacan#2",
-   "Q:Teotihuacan#3",
-   "Q:Teotihuacan#4",
-   "Q:Zocalo Mexico City#5"
+   "Teotihuacan Pyramid of the sun from the front.jpg",
+   "Teotihuacan Sun Front.jpg",
+   "Face of Pyramid of the Sun, Teotihuacan, seen from stairs.jpg",
+   "Pyramid of the Sun, Teotihuacan, from path to parking lot.jpg",
+   "Catrina in the Zocalo in Mexico City.jpg"
   ],
   "days": [
    {
@@ -116,13 +116,13 @@
       "name": "Avenue of the Dead",
       "duration": "About 1 hour 30 minutes",
       "description": "The great avenue and the Pyramid of the Sun.",
-      "image": "Q:Teotihuacan"
+      "image": "Teotihuacan Pyramid of the sun from the front.jpg"
      },
      {
       "name": "Pyramid of the Moon",
       "duration": "About 45 minutes",
       "description": "The view down the avenue.",
-      "image": "Q:Teotihuacan"
+      "image": "Teotihuacan Pyramid of the sun from the front.jpg"
      },
      {
       "name": "Obsidian workshop",

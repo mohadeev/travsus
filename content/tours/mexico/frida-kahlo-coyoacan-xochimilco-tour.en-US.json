@@ -96,11 +96,11 @@
    }
   ],
   "images": [
-   "Q:Frida Kahlo Museum",
-   "Q:Xochimilco",
-   "Q:Frida Kahlo Museum#2",
-   "Q:Xochimilco#2",
-   "Q:Xochimilco#3"
+   "Frida Kahlo Museum in Coyoacán's downtown.jpg",
+   "Mariachis - Xochimilco, Ciudad de México II.jpg",
+   "Museo Frida Kahlo 7.jpg",
+   "June 2007 Tourism boating in Xochimilco 10.jpg",
+   "June 2007 Tourism boating in Xochimilco 4.jpg"
   ],
   "days": [
    {
@@ -111,7 +111,7 @@
       "name": "Casa Azul",
       "duration": "About 1 hour 15 minutes",
       "description": "Frida Kahlo’s home.",
-      "image": "Q:Frida Kahlo Museum"
+      "image": "Frida Kahlo Museum in Coyoacán's downtown.jpg"
      },
      {
       "name": "Coyoacán",
@@ -127,7 +127,7 @@
       "name": "Xochimilco",
       "duration": "About 2 hours",
       "description": "Trajineras and mariachis.",
-      "image": "Q:Xochimilco"
+      "image": "Mariachis - Xochimilco, Ciudad de México II.jpg"
      }
     ]
    }

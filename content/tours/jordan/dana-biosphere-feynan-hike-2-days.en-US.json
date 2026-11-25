@@ -97,11 +97,11 @@
    }
   ],
   "images": [
-   "Q:Dana Biosphere Reserve",
-   "Q:Dana Biosphere Reserve#2",
-   "Q:Dana Biosphere Reserve#3",
-   "Q:Dana Biosphere Reserve#4",
-   "Q:Dana Biosphere Reserve#5"
+   "Dana Biosphere Reserve - view point 02.jpg",
+   "Dana Biosphere Reserve - view point 01.jpg",
+   "Dana Reserve 02.jpg",
+   "Dana Reserve 04.jpg",
+   "Dana Biosphere Reserve 1.JPG"
   ],
   "days": [
    {
@@ -112,13 +112,13 @@
       "name": "Dana village",
       "duration": "About 30 minutes",
       "description": "Stone houses over the canyon.",
-      "image": "Q:Dana Biosphere Reserve"
+      "image": "Dana Biosphere Reserve - view point 02.jpg"
      },
      {
       "name": "Wadi Dana trail",
       "duration": "About 6 hours",
       "description": "From highlands to desert.",
-      "image": "Q:Dana Biosphere Reserve"
+      "image": "Dana Biosphere Reserve - view point 02.jpg"
      }
     ]
    },

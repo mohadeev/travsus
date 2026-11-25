@@ -98,11 +98,11 @@
    }
   ],
   "images": [
-   "Q:Petra Treasury",
-   "Q:Wadi Rum desert",
-   "Q:Petra Monastery Ad Deir",
-   "Q:Wadi Rum desert#2",
-   "Q:Wadi Rum desert#3"
+   "The Treasury (Al Khazneh) at Petra (25).jpg",
+   "Wadi Rum Desert, Jordan, The \"Seven Pillars of Wisdom\".jpg",
+   "Petra - Ad Deir facade.jpg",
+   "Jordan, Wadi Rum Desert, Infinite Spaces.jpg",
+   "Jordan, Wadi Rum Desert, Jebel Khazali.jpg"
   ],
   "days": [
    {
@@ -113,7 +113,7 @@
       "name": "Petra",
       "duration": "Full day",
       "description": "The Siq, the Treasury and the tombs.",
-      "image": "Q:Petra Treasury"
+      "image": "The Treasury (Al Khazneh) at Petra (25).jpg"
      },
      {
       "name": "Petra by Night",
@@ -135,7 +135,7 @@
       "name": "Wadi Rum",
       "duration": "About 5 hours",
       "description": "Canyons, arches and dunes.",
-      "image": "Q:Wadi Rum desert"
+      "image": "Wadi Rum Desert, Jordan, The \"Seven Pillars of Wisdom\".jpg"
      }
     ]
    }
