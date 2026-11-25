@@ -1,0 +1,197 @@
+{
+ "key": "tanzania-kilimanjaro-day-hike-materuni-waterfalls",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {
+  "city": "Moshi",
+  "state": "Kilimanjaro",
+  "country": "Tanzania",
+  "countryCode": "TZ",
+  "timeZone": "Africa/Dar_es_Salaam",
+  "streetAddress": "Your hotel in Moshi or Arusha",
+  "geoCoordinates": {
+   "lat": -3.3349,
+   "log": 37.3404
+  }
+ },
+ "slug": "/en-US/tanzania/moshi/tours/kilimanjaro-private-day-hike-to-mandara-hut-and-materuni-waterfalls-with-chagga-coffee",
+ "tour": {
+  "name": "Kilimanjaro Private Day Hike to Mandara Hut & Materuni Waterfalls with Chagga Coffee",
+  "subtitle": "A taste of Africa's highest mountain in a private day with a licensed mountain guide: a hike through the rainforest on the Marangu route to Mandara Hut and the Maundi Crater, then the Materuni waterfall in the foothills and a coffee experience with a Chagga family.",
+  "seoTitle": "Kilimanjaro Day Hike & Materuni Waterfalls | TRAVSUS",
+  "metaDescription": "Private Kilimanjaro day hike with licensed mountain guide: the Marangu route through the rainforest to Mandara Hut and the Maundi Crater, the Materuni waterfall and a Chagga coffee experience. Park fees and lunch included.",
+  "tags": [
+   "Kilimanjaro",
+   "Day hike",
+   "Materuni waterfall",
+   "Chagga coffee",
+   "Moshi",
+   "Tanzania private tour"
+  ],
+  "highlights": [
+   "A hike on Kilimanjaro, the highest mountain in Africa",
+   "The montane rainforest with colobus monkeys",
+   "Mandara Hut at 2,720 metres",
+   "The view from the Maundi Crater towards the summit",
+   "The Materuni waterfall in the foothills",
+   "Roasting and grinding coffee with a Chagga family",
+   "Banana beer and local lunch"
+  ],
+  "duration": 2,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "Mount Kilimanjaro, at 5,895 metres, is the highest mountain in Africa and the highest freestanding mountain in the world. Climbing to its summit takes at least five days, but its lower slopes, covered in rainforest, can be explored in a day. The Chagga people, who live on its fertile foothills, grow bananas and some of Tanzania's finest coffee.\n\nThis private two-day experience combines a rainforest hike on Kilimanjaro with a day in the Chagga foothills, with a licensed mountain guide.\n\nAT A GLANCE\n• Duration: 2 days\n• Start and end: your hotel in Moshi or Arusha\n• Type: private tour with licensed mountain guide, vehicle and driver\n• Booking: on request – we confirm availability and the final price by email within 24 hours, and you pay only then\n• Level: moderate; a hike of about 16 kilometres with 900 metres of ascent on day 1\n\nWHAT YOU SEE\n• The Marangu route rainforest.\n• Mandara Hut and the Maundi Crater.\n• Materuni village.\n• The Materuni waterfall.\n\nWHY THIS WORKS\nYou experience Kilimanjaro without a week-long climb, at a pace and with a guide chosen for you.\n\nWHO IT SUITS\nWalkers, nature lovers and travellers combining safari and beach.\n\nWHO MAY PREFER ANOTHER TOUR\nTo reach the summit, ask us for a 6- to 8-day climb on the Machame or Lemosho route.\n\nPRACTICAL INFORMATION\nThe forest is often wet and muddy; bring a rain jacket and good boots. Kilimanjaro National Park fees are high and are included.",
+  "inclusions": {
+   "standard": {
+    "private": [
+     "Pick-up and drop-off at your hotel",
+     "Private vehicle and driver",
+     "Licensed mountain guide",
+     "Kilimanjaro National Park fees for a day hike",
+     "Packed lunch on day 1 and Chagga lunch on day 2",
+     "Materuni waterfall and coffee experience",
+     "Bottled water"
+    ],
+    "shared": [
+     "Hotel pick-up",
+     "Mountain guide",
+     "Park fees",
+     "Lunches",
+     "Coffee experience"
+    ]
+   }
+  },
+  "pricingTiers": [
+   {
+    "transportType": "Sedan / SUV",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png",
+    "minSeats": 1,
+    "maxSeats": 4,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 790,
+     "pricePerDay": 395
+    }
+   },
+   {
+    "transportType": "Minivan",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png",
+    "minSeats": 5,
+    "maxSeats": 8,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 1290,
+     "pricePerDay": 645
+    }
+   },
+   {
+    "transportType": "Mini Bus",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png",
+    "minSeats": 9,
+    "maxSeats": 19,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 2390,
+     "pricePerDay": 1195
+    }
+   }
+  ],
+  "images": [
+   "Q:Kilimanjaro",
+   "Q:Materuni waterfall",
+   "Q:Kilimanjaro#2",
+   "Q:Kilimanjaro#3",
+   "Q:Materuni waterfall#2"
+  ],
+  "days": [
+   {
+    "name": "A rainforest hike on Kilimanjaro to Mandara Hut and the Maundi Crater",
+    "description": "What to expect: the lower slopes of Kilimanjaro.\n\nYour guide and driver collect you at about 7:30 and drive to the Marangu Gate at 1,860 metres. You hike up through the montane rainforest, among giant ferns, moss-draped trees and wild orchids, where black-and-white colobus monkeys leap through the canopy. After about three hours you reach Mandara Hut, at 2,720 metres, where climbers spend their first night. After a packed lunch, a short trail leads to the rim of the Maundi Crater, from which, on clear days, you see Kibo, the snowy summit, and the plains of Kenya. You walk back down to the gate and return to your hotel.\n\nSCHEDULE (approximate times)\n07:30 – Pick-up.\n08:30 – Marangu Gate.\n09:00 – Hike through the rainforest.\n12:00 – Mandara Hut and lunch.\n13:00 – Maundi Crater.\n14:00 – Descent.\n16:30 – Back at the gate.\n17:30 – Back at your hotel.\n\nGOOD TO KNOW\n• Clouds often cover the summit by midday.\n\nINCLUDED: vehicle, guide, park fees, packed lunch.\nNOT INCLUDED: dinner.\n\nOvernight: none.\nMeals: lunch.",
+    "stops": [
+     {
+      "name": "Rainforest",
+      "duration": "About 3 hours",
+      "description": "Giant ferns and colobus monkeys.",
+      "image": "Q:Kilimanjaro"
+     },
+     {
+      "name": "Maundi Crater",
+      "duration": "About 45 minutes",
+      "description": "The view of Kibo.",
+      "image": "Q:Kilimanjaro"
+     }
+    ]
+   },
+   {
+    "name": "Materuni waterfall and a Chagga coffee experience",
+    "description": "What to expect: the Chagga foothills.\n\nYour guide takes you to Materuni, a Chagga village in the foothills. You walk through banana groves and coffee plants to the Materuni waterfall, which drops about 80 metres into a pool where you can swim. Back in the village, a Chagga family shows you how coffee is grown, harvested, roasted over a fire and ground in a wooden mortar to a song, and you drink the result. Lunch is Chagga food, with a taste of mbege banana beer, before you return to your hotel.\n\nSCHEDULE (approximate times)\n09:00 – Pick-up.\n10:00 – Walk to the Materuni waterfall.\n12:00 – Coffee experience.\n13:00 – Chagga lunch.\n15:00 – Back at your hotel.\n\nGOOD TO KNOW\n• Bring swimwear for the waterfall pool, which is cold.\n\nINCLUDED: vehicle, guide, entrance, coffee experience, lunch.\nNOT INCLUDED: tips.\n\nOvernight: none.\nMeals: lunch.",
+    "stops": [
+     {
+      "name": "Materuni waterfall",
+      "duration": "About 1 hour 30 minutes",
+      "description": "An 80-metre waterfall.",
+      "image": "Q:Materuni waterfall"
+     },
+     {
+      "name": "Chagga coffee",
+      "duration": "About 1 hour",
+      "description": "From bean to cup."
+     }
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "question": "How does booking on request work?",
+    "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability, hotels and the final price by email within 24 hours, and you pay online only when the tour is confirmed."
+   },
+   {
+    "question": "How fit do we need to be?",
+    "answer": "Reasonably fit: day 1 is a hike of about 16 kilometres with 900 metres of climbing."
+   },
+   {
+    "question": "Will we see the summit?",
+    "answer": "On clear mornings, from the Maundi Crater; clouds often gather by midday."
+   },
+   {
+    "question": "Will we get altitude sickness?",
+    "answer": "Unlikely at 2,720 metres, but go slowly and drink water."
+   },
+   {
+    "question": "Are park fees included?",
+    "answer": "Yes."
+   },
+   {
+    "question": "Is it suitable for children?",
+    "answer": "Day 2 suits all ages; day 1 suits older children used to hiking."
+   },
+   {
+    "question": "Is it suitable for people with limited mobility?",
+    "answer": "Day 1 is not; day 2 involves a steep path to the waterfall."
+   },
+   {
+    "question": "Can we climb to the summit?",
+    "answer": "Yes, on a 6- to 8-day climb, which we can arrange."
+   },
+   {
+    "question": "Can we do only one of the days?",
+    "answer": "Yes, each day can be booked separately on request."
+   },
+   {
+    "question": "What should we wear?",
+    "answer": "Hiking boots, a rain jacket, layers and swimwear for the waterfall."
+   },
+   {
+    "question": "What is the best time of year?",
+    "answer": "June to October and January to February; April and May are very wet."
+   },
+   {
+    "question": "Should we tip?",
+    "answer": "Tipping is customary on safari in Tanzania: guides, drivers and camp staff appreciate a tip if you were happy with their service, but it is always your choice. Your guide can suggest typical amounts."
+   },
+   {
+    "question": "What is the cancellation policy?",
+    "answer": "You can cancel free of charge up to 24 hours before the tour. Until your request is confirmed, nothing is charged at all."
+   }
+  ]
+ }
+}

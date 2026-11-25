@@ -1,0 +1,221 @@
+{
+ "key": "tanzania-serengeti-ngorongoro-4-day-safari",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {
+  "city": "Serengeti",
+  "state": "Mara",
+  "country": "Tanzania",
+  "countryCode": "TZ",
+  "timeZone": "Africa/Dar_es_Salaam",
+  "streetAddress": "Your hotel in Arusha or Kilimanjaro airport",
+  "geoCoordinates": {
+   "lat": -2.3333,
+   "log": 34.8333
+  }
+ },
+ "slug": "/en-US/tanzania/serengeti/tours/serengeti-and-ngorongoro-private-4-day-safari-from-arusha-the-great-migration-and-the-crater",
+ "tour": {
+  "name": "Serengeti & Ngorongoro Private 4-Day Safari from Arusha: the Great Migration & the Crater",
+  "subtitle": "Four days in Tanzania's greatest wildlife areas with a private driver-guide and 4x4: the endless plains of the Serengeti and the Great Migration, lions, leopards and cheetahs, Olduvai Gorge, and a morning on the floor of the Ngorongoro Crater with black rhinos and flamingos.",
+  "seoTitle": "Serengeti & Ngorongoro 4-Day Private Safari | TRAVSUS",
+  "metaDescription": "Private 4-day safari from Arusha with driver-guide and 4x4: two days of game drives in the Serengeti, the Great Migration, Olduvai Gorge and the Ngorongoro Crater. Lodges, park fees and full board included.",
+  "tags": [
+   "Serengeti",
+   "Ngorongoro Crater",
+   "Great Migration",
+   "Big Five",
+   "Tanzania safari",
+   "Tanzania private tour"
+  ],
+  "highlights": [
+   "Game drives across the endless plains of the Serengeti",
+   "The Great Migration of wildebeest and zebras, depending on the season",
+   "Lions, leopards and cheetahs in the Seronera valley",
+   "Olduvai Gorge, where early human ancestors were found",
+   "A morning on the floor of the Ngorongoro Crater",
+   "Black rhinos, flamingos and hippos in the crater",
+   "Three nights in safari lodges or tented camps"
+  ],
+  "duration": 4,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "The Serengeti, whose name comes from the Maasai for 'endless plains', is one of the greatest wildlife areas on Earth and a UNESCO World Heritage Site since 1981. It is the stage of the Great Migration, in which some 1.5 million wildebeest, with hundreds of thousands of zebras and gazelles, follow the rains in a vast circuit with Kenya's Maasai Mara, pursued by lions, cheetahs, hyenas and crocodiles. Next door, the Ngorongoro Crater, a collapsed volcano about 19 kilometres across and 600 metres deep, holds an extraordinary density of animals, including endangered black rhinos.\n\nThis private four-day safari takes you to both with a professional driver-guide in a 4x4 with a pop-up roof, staying in lodges or tented camps with all meals.\n\nAT A GLANCE\n• Duration: 4 days, 3 nights\n• Start and end: your hotel in Arusha or Kilimanjaro airport\n• Type: private safari with driver-guide and 4x4; 3 nights full board in lodges or tented camps\n• Booking: on request – we confirm availability, lodges and the final price by email within 24 hours, and you pay only then\n• Level: easy; long drives on rough roads\n\nWHAT YOU SEE\n• The Ngorongoro Highlands.\n• Olduvai Gorge.\n• The Serengeti.\n• The Ngorongoro Crater.\n\nWHY THIS WORKS\nA private vehicle lets you stay with a sighting as long as you like and set the pace, and your guide follows the migration through the year.\n\nWHO IT SUITS\nFirst-time safari-goers, families, couples and photographers.\n\nWHO MAY PREFER ANOTHER TOUR\nFor more time in the Serengeti or the northern river crossings, ask us for a 6- or 7-day safari.\n\nPRACTICAL INFORMATION\nWhere the migration is depends on the season: the southern plains from December to March (calving), the western corridor in May and June, and the north from July to October. Bring binoculars and neutral-coloured clothes.",
+  "inclusions": {
+   "standard": {
+    "private": [
+     "Pick-up and drop-off in Arusha or at Kilimanjaro airport",
+     "Private 4x4 safari vehicle with pop-up roof",
+     "Professional English-speaking driver-guide",
+     "All park and conservation fees, including the Ngorongoro crater fee",
+     "3 nights in lodges or tented camps with full board",
+     "Olduvai Gorge museum entrance",
+     "Bottled water"
+    ],
+    "shared": [
+     "Pick-up",
+     "Private 4x4 and guide",
+     "Park fees",
+     "3 nights full board"
+    ]
+   }
+  },
+  "pricingTiers": [
+   {
+    "transportType": "Sedan / SUV",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png",
+    "minSeats": 1,
+    "maxSeats": 4,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 3490,
+     "pricePerDay": 872
+    }
+   },
+   {
+    "transportType": "Minivan",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png",
+    "minSeats": 5,
+    "maxSeats": 8,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 5890,
+     "pricePerDay": 1472
+    }
+   },
+   {
+    "transportType": "Mini Bus",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png",
+    "minSeats": 9,
+    "maxSeats": 19,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 10900,
+     "pricePerDay": 2725
+    }
+   }
+  ],
+  "images": [
+   "Q:Serengeti wildebeest migration",
+   "Q:Ngorongoro Crater",
+   "Q:Serengeti lion",
+   "Q:Serengeti wildebeest migration#2",
+   "Q:Ngorongoro Crater#2"
+  ],
+  "days": [
+   {
+    "name": "Arusha to the Serengeti via the Ngorongoro Highlands and Olduvai Gorge",
+    "description": "What to expect: the drive into the Serengeti and a first game drive.\n\nYour driver-guide collects you in Arusha in the morning and drives west through the Rift Valley and up into the green Ngorongoro Highlands, with a stop at the crater rim viewpoint. You descend the far side past Maasai villages and herds of cattle to Olduvai Gorge, where Mary and Louis Leakey found fossils of early human ancestors nearly two million years old; a small museum tells the story. In the afternoon you enter the Serengeti at Naabi Hill and drive across the plains, with your first game drive on the way to your camp in the central Seronera area.\n\nSCHEDULE (approximate times)\n07:30 – Pick-up in Arusha.\n10:30 – Ngorongoro crater rim viewpoint.\n12:30 – Olduvai Gorge and picnic lunch.\n14:00 – Enter the Serengeti.\n14:30 – Game drive.\n18:00 – Camp or lodge.\n\nGOOD TO KNOW\n• The pop-up roof is perfect for photography.\n\nINCLUDED: vehicle, guide, park fees, lunch, dinner.\nNOT INCLUDED: drinks.\n\nOvernight: lodge or tented camp in the Serengeti.\nMeals: lunch, dinner.",
+    "stops": [
+     {
+      "name": "Olduvai Gorge",
+      "duration": "About 45 minutes",
+      "description": "The cradle of humankind.",
+      "image": "Q:Olduvai Gorge"
+     },
+     {
+      "name": "Serengeti plains",
+      "duration": "About 3 hours",
+      "description": "A first game drive.",
+      "image": "Q:Serengeti wildebeest migration"
+     }
+    ]
+   },
+   {
+    "name": "A full day of game drives in the Serengeti",
+    "description": "What to expect: the big cats and the migration.\n\nYou spend the whole day exploring the Serengeti, with a picnic lunch in the bush. In the Seronera valley, the river and kopjes, granite outcrops, attract lions, leopards resting in sausage trees and cheetahs hunting on the plains, along with giraffes, elephants, buffaloes, hippos and countless antelopes. Depending on the season, your guide drives towards the herds of the Great Migration, to watch wildebeest calving in the south, gathering in the west or crossing rivers in the north.\n\nSCHEDULE (approximate times)\n06:30 – Early game drive.\n09:00 – Breakfast in the bush or at camp.\n13:00 – Picnic lunch.\n15:00 – Afternoon game drive.\n18:30 – Back at camp.\n\nGOOD TO KNOW\n• A hot-air balloon flight at sunrise can be added.\n\nINCLUDED: vehicle, guide, park fees, all meals.\nNOT INCLUDED: balloon, drinks.\n\nOvernight: lodge or tented camp in the Serengeti.\nMeals: breakfast, lunch, dinner.",
+    "stops": [
+     {
+      "name": "Seronera valley",
+      "duration": "Full day",
+      "description": "Lions, leopards and cheetahs.",
+      "image": "Q:Serengeti lion"
+     },
+     {
+      "name": "Migration herds",
+      "duration": "Seasonal",
+      "description": "Wildebeest and zebras.",
+      "image": "Q:Serengeti wildebeest migration"
+     }
+    ]
+   },
+   {
+    "name": "Serengeti morning and on to the Ngorongoro crater rim",
+    "description": "What to expect: a last game drive and the highlands.\n\nAfter a final morning game drive in the Serengeti, you drive back across the plains to the Ngorongoro Conservation Area, home to Maasai herders alongside the wildlife. A visit to a Maasai village can be arranged. You spend the night at a lodge on or near the crater rim, cool at 2,300 metres, with views into the caldera at sunset.\n\nSCHEDULE (approximate times)\n06:30 – Morning game drive.\n10:00 – Drive towards Ngorongoro.\n13:00 – Lunch.\n16:00 – Lodge on the crater rim.\n\nGOOD TO KNOW\n• Bring warm layers; the rim is cold at night.\n\nINCLUDED: vehicle, guide, park fees, all meals.\nNOT INCLUDED: Maasai village fee, drinks.\n\nOvernight: lodge on or near the Ngorongoro crater rim.\nMeals: breakfast, lunch, dinner.",
+    "stops": [
+     {
+      "name": "Ngorongoro rim",
+      "duration": "Evening",
+      "description": "Sunset over the caldera.",
+      "image": "Q:Ngorongoro Crater"
+     }
+    ]
+   },
+   {
+    "name": "The Ngorongoro Crater floor and back to Arusha",
+    "description": "What to expect: a morning in the crater.\n\nYou descend early into the crater, before most vehicles, for a game drive on the crater floor. Within its walls live some 25,000 large animals: lions, spotted hyenas, elephants with huge tusks, buffaloes, wildebeest, zebras and one of the last populations of black rhinos in East Africa. Flamingos gather on the soda lake, and hippos wallow in the Ngoitokitok spring, where you have a picnic lunch. You climb out in the early afternoon and drive back to Arusha, arriving in the late afternoon.\n\nSCHEDULE (approximate times)\n06:30 – Descend into the crater.\n12:00 – Picnic lunch at the hippo pool.\n13:00 – Climb out of the crater.\n17:00 – Arusha or the airport.\n\nGOOD TO KNOW\n• Book an evening flight, from 20:00 onwards, if leaving the same day.\n\nINCLUDED: vehicle, guide, crater fee, breakfast, lunch.\nNOT INCLUDED: tips.\n\nOvernight: none.\nMeals: breakfast, lunch.",
+    "stops": [
+     {
+      "name": "Ngorongoro Crater",
+      "duration": "About 6 hours",
+      "description": "Rhinos, lions and flamingos.",
+      "image": "Q:Ngorongoro Crater"
+     }
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "question": "How does booking on request work?",
+    "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability, hotels and the final price by email within 24 hours, and you pay online only when the tour is confirmed."
+   },
+   {
+    "question": "Where is the Great Migration?",
+    "answer": "It moves with the rains: the southern Serengeti from December to March, the western corridor in May and June, and the north from July to October. We plan your route accordingly."
+   },
+   {
+    "question": "Will we see the Big Five?",
+    "answer": "Lions, elephants and buffaloes are seen on almost every safari; leopards and rhinos are rarer. They are wild animals, so sightings are never guaranteed."
+   },
+   {
+    "question": "What kind of accommodation is used?",
+    "answer": "Comfortable mid-range lodges or tented camps with private bathrooms; luxury upgrades are available."
+   },
+   {
+    "question": "Are all meals included?",
+    "answer": "Yes, full board from lunch on day 1 to lunch on day 4."
+   },
+   {
+    "question": "Is the vehicle private?",
+    "answer": "Yes, a private 4x4 with a pop-up roof and a window seat for everyone."
+   },
+   {
+    "question": "Is it suitable for children?",
+    "answer": "Yes, for children who can manage long drives. Some lodges have minimum ages."
+   },
+   {
+    "question": "Is it suitable for people with limited mobility?",
+    "answer": "Largely, as most of the safari is by vehicle; the roads are bumpy."
+   },
+   {
+    "question": "Do we need vaccinations?",
+    "answer": "Check with your doctor; yellow fever may be required depending on your route, and malaria prevention is recommended."
+   },
+   {
+    "question": "What should we wear?",
+    "answer": "Neutral-coloured light clothes, warm layers for mornings and the crater rim, a hat and sun protection."
+   },
+   {
+    "question": "What is the best time of year?",
+    "answer": "June to October for dry-season game viewing; January to March for the calving season."
+   },
+   {
+    "question": "Should we tip?",
+    "answer": "Tipping is customary on safari in Tanzania: guides, drivers and camp staff appreciate a tip if you were happy with their service, but it is always your choice. Your guide can suggest typical amounts."
+   },
+   {
+    "question": "What is the cancellation policy?",
+    "answer": "You can cancel free of charge up to 30 days before the tour starts. Lodges and camps have stricter terms in the high season; we explain them when we confirm. Until your request is confirmed, nothing is charged at all."
+   }
+  ]
+ }
+}

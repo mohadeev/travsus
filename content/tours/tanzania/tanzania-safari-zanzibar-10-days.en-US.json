@@ -1,0 +1,286 @@
+{
+ "key": "tanzania-tanzania-safari-zanzibar-10-days",
+ "template": "01679fbf3d2ba2351438f951",
+ "address": {
+  "city": "Arusha",
+  "state": "Arusha",
+  "country": "Tanzania",
+  "countryCode": "TZ",
+  "timeZone": "Africa/Dar_es_Salaam",
+  "streetAddress": "Kilimanjaro airport",
+  "geoCoordinates": {
+   "lat": -3.3869,
+   "log": 36.683
+  }
+ },
+ "slug": "/en-US/tanzania/arusha/tours/tanzania-safari-and-zanzibar-10-day-private-tour-tarangire-the-serengeti-ngorongoro-and-the-spice-island",
+ "tour": {
+  "name": "Tanzania Safari & Zanzibar 10-Day Private Tour: Tarangire, the Serengeti, Ngorongoro & the Spice Island",
+  "subtitle": "Ten days from the savannah to the Indian Ocean with private guides: elephants in Tarangire, two full days in the Serengeti with the Great Migration, the Ngorongoro Crater, a flight to Zanzibar, Stone Town and spices, and beach days on the white sands of the east coast.",
+  "seoTitle": "Tanzania Safari & Zanzibar 10-Day Private Tour | TRAVSUS",
+  "metaDescription": "10-day private Tanzania tour: Tarangire, the Serengeti and the Great Migration, the Ngorongoro Crater, then Zanzibar with Stone Town, a spice farm and beach days. Private safari, flight and 9 nights included.",
+  "tags": [
+   "Tanzania safari",
+   "Serengeti",
+   "Ngorongoro",
+   "Zanzibar",
+   "Safari and beach",
+   "Tanzania 10 days"
+  ],
+  "highlights": [
+   "Elephant herds and baobabs in Tarangire",
+   "Two full days of game drives in the Serengeti",
+   "The Great Migration, depending on the season",
+   "A morning on the floor of the Ngorongoro Crater",
+   "A flight from Arusha to Zanzibar",
+   "Stone Town and a spice farm",
+   "Beach days on the Indian Ocean"
+  ],
+  "duration": 10,
+  "durationType": "days",
+  "bookingMode": "request",
+  "overview": "Tanzania offers one of the world's great combinations: a safari in the north, among the wildlife of the Serengeti and Ngorongoro, followed by the white beaches and Swahili culture of Zanzibar. This private tour takes you from the parks of the northern circuit, with a private driver-guide and 4x4, to the Spice Island by plane.\n\nYou stay in safari lodges or tented camps with full board during the safari, and in a beach hotel on Zanzibar, with time to relax at the end.\n\nAT A GLANCE\n• Duration: 10 days, 9 nights\n• Start: Kilimanjaro airport\n• End: Zanzibar airport\n• Type: private safari with driver-guide and 4x4; domestic flight; 9 nights (full board on safari, breakfast on Zanzibar)\n• Booking: on request – we confirm availability, lodges, flight and the final price by email within 24 hours, and you pay only then\n• Level: easy\n\nWHAT YOU SEE\n• Tarangire.\n• The Serengeti.\n• The Ngorongoro Crater.\n• Stone Town and a spice farm.\n• Zanzibar’s beaches.\n\nWHY THIS WORKS\nThe private safari sets its own pace and follows the migration, and the flight to Zanzibar avoids a long journey back to the coast.\n\nWHO IT SUITS\nHoneymooners, families and first-time visitors to Africa.\n\nWHO MAY PREFER ANOTHER TOUR\nAdd a Kilimanjaro climb before, or Mnemba snorkelling on Zanzibar.\n\nPRACTICAL INFORMATION\nCheck vaccination and visa requirements for Tanzania. Domestic flights have a soft-bag limit of about 15 to 20 kilograms.",
+  "inclusions": {
+   "standard": {
+    "private": [
+     "Private airport transfers",
+     "Private 4x4 safari vehicle with pop-up roof",
+     "Professional English-speaking driver-guide",
+     "All park and conservation fees",
+     "1 night in Arusha with breakfast",
+     "5 nights in safari lodges or tented camps with full board",
+     "Flight from Arusha to Zanzibar",
+     "3 nights in a beach hotel on Zanzibar with breakfast",
+     "Stone Town and spice farm tour with lunch",
+     "Bottled water"
+    ],
+    "shared": [
+     "Airport transfers",
+     "Private safari",
+     "Park fees",
+     "9 nights",
+     "Flight",
+     "Zanzibar tour"
+    ]
+   }
+  },
+  "pricingTiers": [
+   {
+    "transportType": "Sedan / SUV",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/prado_nhgpvq.png",
+    "minSeats": 1,
+    "maxSeats": 4,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 6900,
+     "pricePerDay": 690
+    }
+   },
+   {
+    "transportType": "Minivan",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/vito_et5qqd.png",
+    "minSeats": 5,
+    "maxSeats": 8,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 11900,
+     "pricePerDay": 1190
+    }
+   },
+   {
+    "transportType": "Mini Bus",
+    "transportImage": "https://res.cloudinary.com/travsus/image/upload/v1745698557/mini-bus_gwoprr.png",
+    "minSeats": 9,
+    "maxSeats": 19,
+    "pricing": {
+     "currency": "EUR",
+     "totalPrice": 21900,
+     "pricePerDay": 2190
+    }
+   }
+  ],
+  "images": [
+   "Q:Serengeti wildebeest migration",
+   "Q:Ngorongoro Crater",
+   "Q:Zanzibar beach",
+   "Q:Tarangire elephants",
+   "Q:Stone Town Zanzibar"
+  ],
+  "days": [
+   {
+    "name": "Arrival at Kilimanjaro and Arusha",
+    "description": "What to expect: a private welcome.\n\nYour driver meets you at Kilimanjaro airport and takes you to your lodge near Arusha, among coffee plantations, with views of Mount Meru.\n\nSCHEDULE (approximate times)\nAny time – Airport transfer.\n\nGOOD TO KNOW\n• Your guide briefs you in the evening.\n\nINCLUDED: airport transfer.\nNOT INCLUDED: dinner.\n\nOvernight: lodge near Arusha.\nMeals: none.",
+    "stops": [
+     {
+      "name": "Arusha",
+      "duration": "Free time",
+      "description": "Rest before the safari.",
+      "image": "Q:Kilimanjaro"
+     }
+    ]
+   },
+   {
+    "name": "Tarangire National Park",
+    "description": "What to expect: elephants and baobabs.\n\nA full day of game drives in Tarangire, among elephant herds and giant baobabs, with a picnic lunch by the river.\n\nSCHEDULE (approximate times)\n07:30 – Departure.\n09:30 – Game drives.\n17:00 – Lodge.\n\nGOOD TO KNOW\n• Wear neutral colours.\n\nINCLUDED: vehicle, guide, fees, meals.\nNOT INCLUDED: drinks.\n\nOvernight: lodge near Tarangire.\nMeals: breakfast, lunch, dinner.",
+    "stops": [
+     {
+      "name": "Tarangire",
+      "duration": "Full day",
+      "description": "Elephant herds.",
+      "image": "Q:Tarangire elephants"
+     }
+    ]
+   },
+   {
+    "name": "To the Serengeti via Olduvai Gorge",
+    "description": "What to expect: the endless plains.\n\nThrough the Ngorongoro Highlands to Olduvai Gorge and into the Serengeti, with a game drive on the way to your camp.\n\nSCHEDULE (approximate times)\n07:30 – Departure.\n12:30 – Olduvai Gorge.\n14:30 – Serengeti game drive.\n\nGOOD TO KNOW\n• A long but spectacular day.\n\nINCLUDED: vehicle, guide, fees, meals.\nNOT INCLUDED: drinks.\n\nOvernight: camp in the Serengeti.\nMeals: breakfast, lunch, dinner.",
+    "stops": [
+     {
+      "name": "Olduvai Gorge",
+      "duration": "About 45 minutes",
+      "description": "The cradle of humankind.",
+      "image": "Q:Olduvai Gorge"
+     }
+    ]
+   },
+   {
+    "name": "The Serengeti",
+    "description": "What to expect: a full day of game drives.\n\nA full day in the Serengeti, following the big cats and, depending on the season, the herds of the Great Migration.\n\nSCHEDULE (approximate times)\n06:30 – Morning game drive.\n13:00 – Picnic.\n15:00 – Afternoon game drive.\n\nGOOD TO KNOW\n• A balloon flight can be added.\n\nINCLUDED: vehicle, guide, fees, meals.\nNOT INCLUDED: balloon.\n\nOvernight: camp in the Serengeti.\nMeals: breakfast, lunch, dinner.",
+    "stops": [
+     {
+      "name": "Serengeti",
+      "duration": "Full day",
+      "description": "Lions and the migration.",
+      "image": "Q:Serengeti lion"
+     }
+    ]
+   },
+   {
+    "name": "The Serengeti",
+    "description": "What to expect: a second day on the plains.\n\nAnother full day in a different area of the Serengeti, chosen by your guide for the best wildlife of the season.\n\nSCHEDULE (approximate times)\n06:30 – Game drives all day.\n\nGOOD TO KNOW\n• Sundowners can be arranged.\n\nINCLUDED: vehicle, guide, fees, meals.\nNOT INCLUDED: drinks.\n\nOvernight: camp in the Serengeti.\nMeals: breakfast, lunch, dinner.",
+    "stops": [
+     {
+      "name": "Serengeti plains",
+      "duration": "Full day",
+      "description": "The great herds.",
+      "image": "Q:Serengeti wildebeest migration"
+     }
+    ]
+   },
+   {
+    "name": "To the Ngorongoro crater rim",
+    "description": "What to expect: a last Serengeti morning and the highlands.\n\nA morning game drive, then the drive back to the Ngorongoro highlands for a night on the crater rim.\n\nSCHEDULE (approximate times)\n06:30 – Game drive.\n10:00 – Drive to Ngorongoro.\n16:00 – Lodge.\n\nGOOD TO KNOW\n• The rim is cold at night.\n\nINCLUDED: vehicle, guide, fees, meals.\nNOT INCLUDED: drinks.\n\nOvernight: lodge on the Ngorongoro rim.\nMeals: breakfast, lunch, dinner.",
+    "stops": [
+     {
+      "name": "Ngorongoro rim",
+      "duration": "Evening",
+      "description": "Sunset over the caldera.",
+      "image": "Q:Ngorongoro Crater"
+     }
+    ]
+   },
+   {
+    "name": "The Ngorongoro Crater and fly to Zanzibar",
+    "description": "What to expect: the crater and the Spice Island.\n\nAn early game drive on the crater floor, then the drive to Arusha airport (or Manyara airstrip) for the flight to Zanzibar, and a transfer to your beach hotel.\n\nSCHEDULE (approximate times)\n06:30 – Crater floor.\n12:00 – Drive to the airstrip.\nAfternoon – Flight to Zanzibar.\n\nGOOD TO KNOW\n• Pack light for the flight.\n\nINCLUDED: vehicle, guide, fees, flight, transfer.\nNOT INCLUDED: dinner.\n\nOvernight: beach hotel on Zanzibar.\nMeals: breakfast, lunch.",
+    "stops": [
+     {
+      "name": "Ngorongoro Crater",
+      "duration": "About 5 hours",
+      "description": "Rhinos and lions.",
+      "image": "Q:Ngorongoro Crater"
+     }
+    ]
+   },
+   {
+    "name": "Stone Town and a spice farm",
+    "description": "What to expect: Zanzibar’s history and flavours.\n\nA spice farm with lunch, the alleys and doors of Stone Town, the slave market memorial and Darajani market.\n\nSCHEDULE (approximate times)\n08:30 – Spice farm.\n13:30 – Stone Town.\n17:00 – Back at your hotel.\n\nGOOD TO KNOW\n• Dress modestly in Stone Town.\n\nINCLUDED: vehicle, guide, entrances, lunch.\nNOT INCLUDED: dinner.\n\nOvernight: beach hotel on Zanzibar.\nMeals: breakfast, lunch.",
+    "stops": [
+     {
+      "name": "Stone Town",
+      "duration": "About 3 hours",
+      "description": "Carved doors and history.",
+      "image": "Q:Stone Town Zanzibar"
+     }
+    ]
+   },
+   {
+    "name": "A free day on the beach",
+    "description": "What to expect: time to relax.\n\nA free day on the beach. Snorkelling at Mnemba, Jozani Forest or a sunset dhow cruise can be added.\n\nSCHEDULE (approximate times)\nAll day – Free.\n\nGOOD TO KNOW\n• Tides change the beaches dramatically on the east coast.\n\nINCLUDED: —\nNOT INCLUDED: activities, meals.\n\nOvernight: beach hotel on Zanzibar.\nMeals: breakfast.",
+    "stops": [
+     {
+      "name": "Zanzibar beach",
+      "duration": "Free time",
+      "description": "White sand and turquoise sea.",
+      "image": "Q:Zanzibar beach"
+     }
+    ]
+   },
+   {
+    "name": "Departure from Zanzibar",
+    "description": "What to expect: a private transfer.\n\nAfter breakfast, your driver takes you to Zanzibar airport for your onward flight.\n\nSCHEDULE (approximate times)\nAs needed – Airport transfer.\n\nGOOD TO KNOW\n• Allow 3 hours for international flights.\n\nINCLUDED: airport transfer.\nNOT INCLUDED: lunch.\n\nOvernight: none.\nMeals: breakfast.",
+    "stops": [
+     {
+      "name": "Zanzibar",
+      "duration": "Morning",
+      "description": "A last swim.",
+      "image": "Q:Zanzibar beach"
+     }
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "question": "How does booking on request work?",
+    "answer": "You choose a date and the number of travellers and send the request. Nothing is charged. We confirm availability, hotels and the final price by email within 24 hours, and you pay online only when the tour is confirmed."
+   },
+   {
+    "question": "Where is the Great Migration?",
+    "answer": "It moves with the rains; we place your Serengeti camps where the herds are expected."
+   },
+   {
+    "question": "What kind of accommodation is used?",
+    "answer": "Mid-range lodges or tented camps on safari and a beach hotel on Zanzibar; luxury upgrades are available."
+   },
+   {
+    "question": "Is the flight to Zanzibar included?",
+    "answer": "Yes, with a soft-bag limit of about 15 to 20 kilograms."
+   },
+   {
+    "question": "Are meals included?",
+    "answer": "Full board on safari and breakfast on Zanzibar, plus lunch on the spice tour."
+   },
+   {
+    "question": "Is it suitable for children?",
+    "answer": "Yes. We choose family-friendly lodges."
+   },
+   {
+    "question": "Is it suitable for a honeymoon?",
+    "answer": "Perfectly; tell us and we will add special touches."
+   },
+   {
+    "question": "Can we climb Kilimanjaro too?",
+    "answer": "Yes, before the safari, on a 6- to 8-day climb."
+   },
+   {
+    "question": "Do we need vaccinations or a visa?",
+    "answer": "Check with your doctor and embassy; malaria prevention is recommended and a visa is required for most nationalities."
+   },
+   {
+    "question": "What should we wear?",
+    "answer": "Neutral clothes for safari, warm layers for mornings, and beachwear for Zanzibar."
+   },
+   {
+    "question": "What is the best time of year?",
+    "answer": "June to October for safari; January to February for the calving season."
+   },
+   {
+    "question": "Should we tip?",
+    "answer": "Tipping is customary on safari in Tanzania: guides, drivers and camp staff appreciate a tip if you were happy with their service, but it is always your choice. Your guide can suggest typical amounts."
+   },
+   {
+    "question": "What is the cancellation policy?",
+    "answer": "You can cancel free of charge up to 30 days before the tour starts. Lodges and flights have stricter terms; we explain them when we confirm. Until your request is confirmed, nothing is charged at all."
+   }
+  ]
+ }
+}
