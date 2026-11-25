@@ -97,11 +97,11 @@
    }
   ],
   "images": [
-   "Q:Mnemba Atoll",
-   "Q:Zanzibar beach#2",
-   "Q:Mnemba Atoll#2",
-   "Q:Zanzibar beach#3",
-   "Q:Mnemba Atoll#3"
+   "Mnemba Atoll - 51861330922.jpg",
+   "Nungwi Beach, Zanzibar, Tanzania (south view from Z Hotel).jpg",
+   "Mnemba Island - Zanzibar - Flickr - Jorge Lascar.jpg",
+   "Bathers on Nungwi Beach, Zanzibar, Tanzania.jpg",
+   "Mnemba Atoll - 51862372373.jpg"
   ],
   "days": [
    {
@@ -117,13 +117,13 @@
       "name": "Mnemba reefs",
       "duration": "About 2 hours",
       "description": "Corals and turtles.",
-      "image": "Q:Mnemba Atoll"
+      "image": "Mnemba Atoll - 51861330922.jpg"
      },
      {
       "name": "Sandbank",
       "duration": "About 2 hours",
       "description": "Lunch and a swim.",
-      "image": "Q:Zanzibar beach"
+      "image": "Zanzibar beach (33911916866).jpg"
      }
     ]
    }

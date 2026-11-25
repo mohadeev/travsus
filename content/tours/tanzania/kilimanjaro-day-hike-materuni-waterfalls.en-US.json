@@ -96,11 +96,11 @@
    }
   ],
   "images": [
-   "Q:Kilimanjaro",
-   "Q:Materuni waterfall",
-   "Q:Kilimanjaro#2",
-   "Q:Kilimanjaro#3",
-   "Q:Materuni waterfall#2"
+   "Mlima Kilimanjaro.jpg",
+   "Vodopad Materuni u podnožju Nacionalnoga parka Kilimandžaro.jpg",
+   "Kilimanjaro from Amboseli.jpg",
+   "Mt. Kilimanjaro 12.2006.jpg",
+   "Vodopad Materuni u podnožju Nacionalnoga parka Kilimandžaro.jpg"
   ],
   "days": [
    {
@@ -111,13 +111,13 @@
       "name": "Rainforest",
       "duration": "About 3 hours",
       "description": "Giant ferns and colobus monkeys.",
-      "image": "Q:Kilimanjaro"
+      "image": "Mlima Kilimanjaro.jpg"
      },
      {
       "name": "Maundi Crater",
       "duration": "About 45 minutes",
       "description": "The view of Kibo.",
-      "image": "Q:Kilimanjaro"
+      "image": "Mlima Kilimanjaro.jpg"
      }
     ]
    },
@@ -129,7 +129,7 @@
       "name": "Materuni waterfall",
       "duration": "About 1 hour 30 minutes",
       "description": "An 80-metre waterfall.",
-      "image": "Q:Materuni waterfall"
+      "image": "Vodopad Materuni u podnožju Nacionalnoga parka Kilimandžaro.jpg"
      },
      {
       "name": "Chagga coffee",

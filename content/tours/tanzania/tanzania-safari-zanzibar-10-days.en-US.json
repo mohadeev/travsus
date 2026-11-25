@@ -100,11 +100,11 @@
    }
   ],
   "images": [
-   "Q:Serengeti wildebeest migration",
-   "Q:Ngorongoro Crater",
-   "Q:Zanzibar beach",
-   "Q:Tarangire elephants",
-   "Q:Stone Town Zanzibar"
+   "Serengeti wildebeest migration JF.jpg",
+   "Paisaje en la zona de conservación de Ngorongoro, Tanzania, 2024-05-27, DD 56.jpg",
+   "Zanzibar beach (33911916866).jpg",
+   "Elephants in Tarangire National Park (2015).jpg",
+   "Fuerte Viejo, Stone Town, Zanzíbar, Tanzania, 2024-05-31, DD 32.jpg"
   ],
   "days": [
    {
@@ -115,7 +115,7 @@
       "name": "Arusha",
       "duration": "Free time",
       "description": "Rest before the safari.",
-      "image": "Q:Kilimanjaro"
+      "image": "Mlima Kilimanjaro.jpg"
      }
     ]
    },
@@ -127,7 +127,7 @@
       "name": "Tarangire",
       "duration": "Full day",
       "description": "Elephant herds.",
-      "image": "Q:Tarangire elephants"
+      "image": "Elephants in Tarangire National Park (2015).jpg"
      }
     ]
    },
@@ -139,7 +139,7 @@
       "name": "Olduvai Gorge",
       "duration": "About 45 minutes",
       "description": "The cradle of humankind.",
-      "image": "Q:Olduvai Gorge"
+      "image": "Olduvai Gorge or Oldupai Gorge.jpg"
      }
     ]
    },
@@ -151,7 +151,7 @@
       "name": "Serengeti",
       "duration": "Full day",
       "description": "Lions and the migration.",
-      "image": "Q:Serengeti lion"
+      "image": "002 Male Lion prowling in the Serengeti National Park Photo by Giles Laurent.jpg"
      }
     ]
    },
@@ -163,7 +163,7 @@
       "name": "Serengeti plains",
       "duration": "Full day",
       "description": "The great herds.",
-      "image": "Q:Serengeti wildebeest migration"
+      "image": "Serengeti wildebeest migration JF.jpg"
      }
     ]
    },
@@ -175,7 +175,7 @@
       "name": "Ngorongoro rim",
       "duration": "Evening",
       "description": "Sunset over the caldera.",
-      "image": "Q:Ngorongoro Crater"
+      "image": "Paisaje en la zona de conservación de Ngorongoro, Tanzania, 2024-05-27, DD 56.jpg"
      }
     ]
    },
@@ -187,7 +187,7 @@
       "name": "Ngorongoro Crater",
       "duration": "About 5 hours",
       "description": "Rhinos and lions.",
-      "image": "Q:Ngorongoro Crater"
+      "image": "Paisaje en la zona de conservación de Ngorongoro, Tanzania, 2024-05-27, DD 56.jpg"
      }
     ]
    },
@@ -199,7 +199,7 @@
       "name": "Stone Town",
       "duration": "About 3 hours",
       "description": "Carved doors and history.",
-      "image": "Q:Stone Town Zanzibar"
+      "image": "Fuerte Viejo, Stone Town, Zanzíbar, Tanzania, 2024-05-31, DD 32.jpg"
      }
     ]
    },
@@ -211,7 +211,7 @@
       "name": "Zanzibar beach",
       "duration": "Free time",
       "description": "White sand and turquoise sea.",
-      "image": "Q:Zanzibar beach"
+      "image": "Zanzibar beach (33911916866).jpg"
      }
     ]
    },
@@ -223,7 +223,7 @@
       "name": "Zanzibar",
       "duration": "Morning",
       "description": "A last swim.",
-      "image": "Q:Zanzibar beach"
+      "image": "Zanzibar beach (33911916866).jpg"
      }
     ]
    }

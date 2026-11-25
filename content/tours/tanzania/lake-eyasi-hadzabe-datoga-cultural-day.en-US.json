@@ -96,11 +96,11 @@
    }
   ],
   "images": [
-   "Q:Lake Eyasi",
-   "Q:Lake Eyasi#2",
-   "Q:Lake Eyasi#3",
-   "Q:Ngorongoro Crater#5",
-   "Q:Lake Eyasi#4"
+   "Lake Eyasi-8.jpg",
+   "2024-06-10 Eyasi birds 0506.jpg",
+   "2024-06-10 Eyasi birds 0509.jpg",
+   "Paisaje en la zona de conservación de Ngorongoro, Tanzania, 2024-05-27, DD 60.jpg",
+   "2024-06-10 Eyasi birds 0513.jpg"
   ],
   "days": [
    {
@@ -111,7 +111,7 @@
       "name": "Hadzabe camp",
       "duration": "About 3 hours",
       "description": "A morning with hunter-gatherers.",
-      "image": "Q:Lake Eyasi"
+      "image": "Lake Eyasi-8.jpg"
      },
      {
       "name": "Datoga homestead",
@@ -122,7 +122,7 @@
       "name": "Lake Eyasi",
       "duration": "About 30 minutes",
       "description": "The lake and the escarpment.",
-      "image": "Q:Lake Eyasi"
+      "image": "Lake Eyasi-8.jpg"
      }
     ]
    }

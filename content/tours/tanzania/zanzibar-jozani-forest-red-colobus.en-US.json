@@ -96,11 +96,11 @@
    }
   ],
   "images": [
-   "Q:Zanzibar red colobus",
-   "Q:Zanzibar beach#4",
-   "Q:Zanzibar red colobus#2",
-   "Q:Zanzibar beach#5",
-   "Q:Zanzibar red colobus#3"
+   "Colobo rojo de Zanzíbar (Piliocolobus kirkii), parque nacional de la Bahía Jozani Chwaka, Zanzíbar, Tanzania, 2024-06-02, DD 05.jpg",
+   "Beach Coconut Kizimkazi Zanzibar Nov26 A7CR 17906.jpg",
+   "Colobo rojo de Zanzíbar (Piliocolobus kirkii), parque nacional de la Bahía Jozani Chwaka, Zanzíbar, Tanzania, 2024-06-02, DD 08.jpg",
+   "Boys playing on a Zanzibar beach.jpg",
+   "Colobo rojo de Zanzíbar (Piliocolobus kirkii), parque nacional de la Bahía Jozani Chwaka, Zanzíbar, Tanzania, 2024-06-02, DD 21.jpg"
   ],
   "days": [
    {
@@ -111,7 +111,7 @@
       "name": "Jozani Forest",
       "duration": "About 1 hour 15 minutes",
       "description": "Red colobus monkeys.",
-      "image": "Q:Zanzibar red colobus"
+      "image": "Colobo rojo de Zanzíbar (Piliocolobus kirkii), parque nacional de la Bahía Jozani Chwaka, Zanzíbar, Tanzania, 2024-06-02, DD 05.jpg"
      },
      {
       "name": "Mangrove boardwalk",
@@ -122,7 +122,7 @@
       "name": "Paje",
       "duration": "About 1 hour",
       "description": "Seaweed farms and the beach.",
-      "image": "Q:Zanzibar beach"
+      "image": "Zanzibar beach (33911916866).jpg"
      },
      {
       "name": "The Rock",

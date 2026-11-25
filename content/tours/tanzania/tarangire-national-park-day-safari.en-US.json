@@ -94,11 +94,11 @@
    }
   ],
   "images": [
-   "Q:Tarangire elephants",
-   "Q:Tarangire elephants#2",
-   "Q:Tarangire elephants#3",
-   "Q:Serengeti lion#3",
-   "Q:Tarangire elephants#4"
+   "Elephants in Tarangire National Park (2015).jpg",
+   "Elephants, Tarangire National Park (10) (28702336145).jpg",
+   "Elephants, Tarangire National Park (28) (28666890896).jpg",
+   "Serengeti National Park 08 - lion - Panthera leo.jpg",
+   "Elephants, Tarangire National Park (38) (28082152323).jpg"
   ],
   "days": [
    {
@@ -109,7 +109,7 @@
       "name": "Tarangire river",
       "duration": "About 3 hours",
       "description": "Elephants and giraffes.",
-      "image": "Q:Tarangire elephants"
+      "image": "Elephants in Tarangire National Park (2015).jpg"
      },
      {
       "name": "Baobab woodland",
