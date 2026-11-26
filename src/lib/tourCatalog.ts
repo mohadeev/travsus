@@ -60,7 +60,7 @@ export async function loadCatalog(): Promise<CatalogTour[]> {
 		db
 			.from(T.tours)
 			.select(
-				`id, name, subtitle, overview, tags, slugs, translations.language, translations.name, images.url, days.name, accommodations, pricingTiers, price, createdAt, countryCode, ${REL.tourAddresses}`,
+				`id, name, subtitle, overview, tags, slugs, translations.language, translations.name, images, days.name, accommodations, pricingTiers, price, createdAt, countryCode, ${REL.tourAddresses}`,
 			)
 			.gt('images', '[]')
 			// By id only: the id index serves each page at once, while sorting the
@@ -97,7 +97,7 @@ export async function loadCatalog(): Promise<CatalogTour[]> {
 }
 
 /** Every tour with photos, newest first (cached; one database read per 10 minutes). */
-export const getTourCatalog = unstable_cache(loadCatalog, ['tour-catalog-v3'], {
+export const getTourCatalog = unstable_cache(loadCatalog, ['tour-catalog-v4'], {
 	revalidate: TEN_MINUTES,
 	tags: [TOURS_TAG],
 })
