@@ -63,12 +63,16 @@ export async function loadCatalog(): Promise<CatalogTour[]> {
 				`id, name, subtitle, overview, tags, slugs, translations.language, translations.name, images.url, days.name, accommodations, pricingTiers, price, createdAt, countryCode, ${REL.tourAddresses}`,
 			)
 			.gt('images', '[]')
-			.order('createdAt', { ascending: false })
+			// By id only: the id index serves each page at once, while sorting the
+			// large tour documents by date took ~4 s per page (newest first is
+			// done below)
 			.order('id'),
 		// Small pages: read in one go, the whole list took about 20 s and timed
 		// out on Workers, so the cached copy was never refreshed
 		CATALOG_PAGE,
 	)
+	// Newest first, as before
+	rows.sort((a: any, b: any) => new Date(b.createdAt ?? 0).getTime() - new Date(a.createdAt ?? 0).getTime())
 	// Tours in countries that aren't open yet stay out of every list
 	return Promise.all(
 		rows.filter(isTourLive).map(async (tour: any): Promise<CatalogTour> => ({
