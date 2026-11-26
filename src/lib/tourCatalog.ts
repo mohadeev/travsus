@@ -50,7 +50,7 @@ async function startingPrice(tour: any) {
 	}
 }
 
-async function loadCatalog(): Promise<CatalogTour[]> {
+export async function loadCatalog(): Promise<CatalogTour[]> {
 	// Only the columns the lists need. From the translations only each name
 	// (not the day texts, FAQ and overviews in 10 languages, tens of MB in all),
 	// and from the days only their names, to count them: a heavy read here, made
