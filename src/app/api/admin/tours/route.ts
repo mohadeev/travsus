@@ -170,7 +170,7 @@ export async function POST(request: NextRequest) {
 		} else {
 			must(await db.from(T.tours).insert(withMeta({ ...EMPTY_TOUR_LISTS, ...owner, ...row, id })))
 		}
-		revalidateTag(TOURS_TAG, { expire: 0 })
+		revalidateTag(TOURS_TAG, 'max')
 		refreshTourCache()
 		return NextResponse.json({ ok: true, id, created: !existing, images: images.length, days: days.length, languages: versions.length, slugs: tourSlugs.map((s) => s.slug) })
 	} catch (error: any) {
