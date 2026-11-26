@@ -8,7 +8,7 @@ import { notFound, permanentRedirect } from 'next/navigation'
 import { Building2, ChevronRight, Globe2, Map as MapIcon, Route } from 'lucide-react'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import TourCard from '../../(home)/TourCard'
-import { countPlacesOfCountry, countryHref, flag, getCitiesOf, getCountries, getCountry, getPlacesOfCountry, getToursFor } from '@/lib/destinations'
+import { countPlacesOfCountry, countryHref, flag, getCitiesOf, getCountries, getCountry, getPlacesOfCountry, getToursOfCountry } from '@/lib/destinations'
 import { bigImage, CityCard, MapEmbed, PlaceCard, Section } from '../_components/ui'
 
 type Props = { params: Promise<{ locale: string; code: string }> }
@@ -48,7 +48,7 @@ export default async function CountryPage(props: Props) {
 	const [cities, places, tours, placesCount] = await Promise.all([
 		getCitiesOf(country, locale, 24),
 		getPlacesOfCountry(country, locale, 9),
-		getToursFor([country.englishName, country.name], locale),
+		getToursOfCountry(country.code, locale),
 		countPlacesOfCountry(country),
 	])
 
