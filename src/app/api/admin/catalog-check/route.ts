@@ -1,11 +1,12 @@
 // Admin check of the tour list behind search and country pages: reads it
 // without the cache and reports how many tours came back, how long it took,
-// and the error if it failed. With ?refresh=1 it also refreshes the cache.
+// and the error if it failed. With ?refresh=1 it also refreshes the cache;
+// with ?warm=1 it reads the list through the cache, filling it.
 // Allowed for the site owner's account, or with "Authorization: Bearer <CRON_SECRET>".
 import { NextResponse, type NextRequest } from 'next/server'
 import { db, T, fetchAll } from '@/lib/db'
 import { isOwner } from '@/lib/admin/owner'
-import { loadCatalog, refreshTourCache } from '@/lib/tourCatalog'
+import { getTourCatalog, loadCatalog, refreshTourCache } from '@/lib/tourCatalog'
 
 export const dynamic = 'force-dynamic'
 
@@ -31,6 +32,10 @@ export async function GET(request: NextRequest) {
 	if (!(await allowed(request))) return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
 	const out: Record<string, any> = {}
 	await step('ids', out, () => fetchAll(() => db.from(T.tours).select('id').gt('images', '[]').order('id')))
+	if (request.nextUrl.searchParams.get('warm') === '1') {
+		await step('cached', out, () => getTourCatalog())
+		return NextResponse.json(out)
+	}
 	await step('catalog', out, () => loadCatalog())
 	if (request.nextUrl.searchParams.get('refresh') === '1') {
 		refreshTourCache()
