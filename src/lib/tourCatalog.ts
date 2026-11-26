@@ -11,6 +11,7 @@ import { isTourLive } from '@/lib/destinationPhotos'
 export const TOURS_TAG = 'tours'
 export const REVIEWS_TAG = 'reviews'
 const TEN_MINUTES = 600
+const CATALOG_PAGE = 50
 
 type Address = { city: string | null; country: string | null } | null
 
@@ -59,11 +60,14 @@ export async function loadCatalog(): Promise<CatalogTour[]> {
 		db
 			.from(T.tours)
 			.select(
-				`id, name, subtitle, overview, tags, slugs, translations.language, translations.name, images, days.name, accommodations, pricingTiers, price, createdAt, countryCode, ${REL.tourAddresses}`,
+				`id, name, subtitle, overview, tags, slugs, translations.language, translations.name, images.url, days.name, accommodations, pricingTiers, price, createdAt, countryCode, ${REL.tourAddresses}`,
 			)
 			.gt('images', '[]')
 			.order('createdAt', { ascending: false })
 			.order('id'),
+		// Small pages: read in one go, the whole list took about 20 s and timed
+		// out on Workers, so the cached copy was never refreshed
+		CATALOG_PAGE,
 	)
 	// Tours in countries that aren't open yet stay out of every list
 	return Promise.all(
