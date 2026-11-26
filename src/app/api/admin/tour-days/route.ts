@@ -66,7 +66,7 @@ export async function POST(request: NextRequest) {
 		})
 		const nextTranslations = translations.map((t, i) => (i === index ? { ...t, days: nextDays, ...(faqItems ? { faq: faqItems } : {}), ...(overview ? { overview } : {}) } : t))
 		must(await db.from(T.tours).update(touch({ translations: nextTranslations })).eq('id', tourId))
-		revalidateTag(TOURS_TAG, { expire: 0 })
+		revalidateTag(TOURS_TAG, 'max')
 		return NextResponse.json({ ok: true, tourId, language, changedDays: changed, faq: faqItems?.length ?? 'unchanged', overview: overview ? overview.length : 'unchanged' })
 	} catch (error) {
 		console.error('Tour days update failed:', error)

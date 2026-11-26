@@ -4,7 +4,7 @@
 import 'server-only'
 import { revalidateTag } from 'next/cache'
 import { unstable_cache } from '@/lib/stableCache'
-import { db, T, REL, fetchAll, mongoCollection } from '@/lib/db'
+import { db, T, REL, fetchAll, must, mongoCollection } from '@/lib/db'
 import { updateLineItemsLogic } from '@/app/api/updateLineItems/updateLineItemsLogic'
 import { isTourLive } from '@/lib/destinationPhotos'
 
@@ -56,21 +56,29 @@ export async function loadCatalog(): Promise<CatalogTour[]> {
 	// (not the day texts, FAQ and overviews in 10 languages, tens of MB in all),
 	// and from the days only their names, to count them: a heavy read here, made
 	// by many pages at once when the cache is empty, overloaded the database.
-	const rows = await fetchAll(() =>
+	// Pages of 50 read side by side: in one go the list timed out on Workers,
+	// and page after page it took about 30 s (each tour document is large and
+	// read from disk). The cheap id list says how many pages there are.
+	const query = () =>
 		db
 			.from(T.tours)
 			.select(
 				`id, name, subtitle, overview, tags, slugs, translations.language, translations.name, images, days.name, accommodations, pricingTiers, price, createdAt, countryCode, ${REL.tourAddresses}`,
 			)
 			.gt('images', '[]')
-			// By id only: the id index serves each page at once, while sorting the
-			// large tour documents by date took ~4 s per page (newest first is
-			// done below)
-			.order('id'),
-		// Small pages: read in one go, the whole list took about 20 s and timed
-		// out on Workers, so the cached copy was never refreshed
-		CATALOG_PAGE,
+			// By id: the id index serves each page directly (newest first is done below)
+			.order('id')
+	const ids = await fetchAll(() => db.from(T.tours).select('id').gt('images', '[]').order('id'))
+	const pages = await Promise.all(
+		Array.from({ length: Math.ceil(ids.length / CATALOG_PAGE) + 1 }, (_, i) =>
+			query()
+				.range(i * CATALOG_PAGE, (i + 1) * CATALOG_PAGE - 1)
+				.then((res) => (must(res) as any[]) ?? []),
+		),
 	)
+	// A tour added between the two reads can appear on two pages
+	const seen = new Set<string>()
+	const rows = pages.flat().filter((tour: any) => !seen.has(tour.id) && seen.add(tour.id))
 	// Newest first, as before
 	rows.sort((a: any, b: any) => new Date(b.createdAt ?? 0).getTime() - new Date(a.createdAt ?? 0).getTime())
 	// Tours in countries that aren't open yet stay out of every list
@@ -174,8 +182,11 @@ export function toCard(tour: CatalogTour, language: string, pricing?: any) {
 /** Call after a tour or review changes so lists show it right away. */
 export function refreshTourCache() {
 	try {
-		revalidateTag(TOURS_TAG, { expire: 0 })
-		revalidateTag(REVIEWS_TAG, { expire: 0 })
+		// Keep serving the old lists while the new ones are read (stale-while-
+		// revalidate): dropping them at once left pages with no tours until the
+		// slow full read finished
+		revalidateTag(TOURS_TAG, 'max')
+		revalidateTag(REVIEWS_TAG, 'max')
 	} catch (error) {
 		console.error('Tour cache refresh failed:', error)
 	}
