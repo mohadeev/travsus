@@ -198,6 +198,13 @@ export async function getToursFor(names: string[], locale: string): Promise<Home
 	return tours.filter((t) => words.some((w) => t.searchText.includes(w)))
 }
 
+/** TRAVSUS tours of a country, by its 2-letter code (older tours without a code are all in Morocco) */
+export async function getToursOfCountry(code: string, locale: string): Promise<HomeTour[]> {
+	const { tours } = await getHomeData(locale)
+	const want = code.toUpperCase()
+	return tours.filter((t) => (t.countryCode ? t.countryCode.toUpperCase() : 'MA') === want)
+}
+
 // ---- Weather (Open-Meteo) ----------------------------------------------------
 
 export type Weather = {
