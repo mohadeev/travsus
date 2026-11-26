@@ -309,8 +309,8 @@ export function startTourStore(getCollection: () => Promise<Collection<Document>
 /** The subset of a MongoDB collection that src/lib/db.ts reads with. */
 export type ReadCollection = {
 	countDocuments(filter: Document): Promise<number>
-	aggregate(pipeline: Document[]): { toArray(): Promise<Document[]> }
-	find(filter: Document, options?: { projection?: Document }): { toArray(): Promise<Document[]> }
+	aggregate(pipeline: Document[], options?: { batchSize?: number }): { toArray(): Promise<Document[]> }
+	find(filter: Document, options?: { projection?: Document; batchSize?: number }): { toArray(): Promise<Document[]> }
 }
 
 function allTours(): Document[] {

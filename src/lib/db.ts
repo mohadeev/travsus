@@ -54,6 +54,12 @@ const mainDb = async (): Promise<Db> => (await connect(mainUrl())).db(mainDbName
 /** The geography database keeps its own name (set in its connection string). */
 const placesDb = async (): Promise<Db> => (placesUrl() === mainUrl() ? mainDb() : (await connect(placesUrl())).db())
 
+// Read every result in one batch. MongoDB sends the first 101 rows and the rest
+// on request (getMore); on Cloudflare Workers those follow-up requests were
+// lost, so any list longer than 101 rows was silently cut (search, country
+// pages, joined addresses). The results read here fit in one batch.
+const ALL_AT_ONCE = { batchSize: 100_000 } as const
+
 /** Table names — change them here if a collection is renamed. */
 export const T = {
 	users: 'users',
@@ -582,7 +588,7 @@ class Query implements PromiseLike<DbResult<any>> {
 				return this.returning(col, docs.map((d) => d._id))
 			}
 			case 'update': {
-				const ids = (await col.find(this.where_, { projection: { _id: 1 } }).toArray()).map((d) => d._id)
+				const ids = (await col.find(this.where_, { projection: { _id: 1 }, ...ALL_AT_ONCE }).toArray()).map((d) => d._id)
 				if (ids.length) await col.updateMany({ _id: { $in: ids } }, { $set: this.changes(this.action.values) })
 				await synced(ids)
 				return this.returning(col, ids)
@@ -608,7 +614,7 @@ class Query implements PromiseLike<DbResult<any>> {
 			}
 			case 'delete': {
 				if (!this.filters.length) throw new Error(`Refusing to delete every row of ${this.table}`)
-				const ids = (await col.find(this.where_, { projection: { _id: 1 } }).toArray()).map((d) => d._id)
+				const ids = (await col.find(this.where_, { projection: { _id: 1 }, ...ALL_AT_ONCE }).toArray()).map((d) => d._id)
 				const out = await this.returning(col, ids)
 				if (ids.length) await col.deleteMany({ _id: { $in: ids } })
 				await synced(ids, true)
@@ -670,7 +676,7 @@ class Query implements PromiseLike<DbResult<any>> {
 		}
 		const projection = projectionFor(spec)
 		if (projection) pipeline.push({ $project: projection })
-		const docs = await col.aggregate(pipeline).toArray()
+		const docs = await col.aggregate(pipeline, ALL_AT_ONCE).toArray()
 		await embed(this.table, docs, spec, this.orders.filter((o) => o.embed))
 		return { data: docs.map((d) => shape(d, spec)), count }
 	}
@@ -713,13 +719,13 @@ async function embed(parent: string, docs: Document[], spec: Spec, orders: Order
 			const key = e.fk ?? childKey
 			const ids = unique(docs.map((d) => fixId(e.table, key, d._id)))
 			if (e.spec.count) {
-				const counts = await col.aggregate([{ $match: { [key]: { $in: ids } } }, { $group: { _id: `$${key}`, n: { $sum: 1 } } }]).toArray()
+				const counts = await col.aggregate([{ $match: { [key]: { $in: ids } } }, { $group: { _id: `$${key}`, n: { $sum: 1 } } }], ALL_AT_ONCE).toArray()
 				const byId = new Map(counts.map((c) => [String(c._id), c.n]))
 				for (const d of docs) d[e.alias] = [{ count: byId.get(String(d._id)) ?? 0 }]
 				continue
 			}
 			const projection = projectionFor(e.spec)
-			const children = await col.find({ [key]: { $in: ids } }, projection ? { projection: { ...projection, [key]: 1 } } : {}).toArray()
+			const children = await col.find({ [key]: { $in: ids } }, { ...(projection ? { projection: { ...projection, [key]: 1 } } : {}), ...ALL_AT_ONCE }).toArray()
 			await embed(e.table, children, e.spec, orders)
 			const byParent = new Map<string, Document[]>()
 			for (const c of children) {
@@ -737,7 +743,7 @@ async function embed(parent: string, docs: Document[], spec: Spec, orders: Order
 			const key = e.fk ?? `${e.alias}Id`
 			const ids = unique(docs.map((d) => fixId(e.table, '_id', d[key])))
 			const projection = projectionFor(e.spec)
-			const found = ids.length ? await col.find({ _id: { $in: ids as any[] } }, projection ? { projection } : {}).toArray() : []
+			const found = ids.length ? await col.find({ _id: { $in: ids as any[] } }, { ...(projection ? { projection } : {}), ...ALL_AT_ONCE }).toArray() : []
 			await embed(e.table, found, e.spec, orders)
 			const byId = new Map(found.map((f) => [String(f._id), shape(f, e.spec)]))
 			for (const d of docs) d[e.alias] = notNull(d[key]) ? (byId.get(String(d[key])) ?? null) : null
